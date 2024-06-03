@@ -897,42 +897,38 @@ static void handle_irqs(struct pdc_data_t *data)
 	uint8_t ara;
 	int rv;
 
-	for (int i = 0; i < NUM_PDC_RTS54XX_PORTS; i++) {
-		/*
-		 * Read the Alert Response Address to determine
-		 * which port generated the interrupt.
-		 */
-		rv = get_ara(data->dev, &ara);
-		if (rv) {
-			return;
-		}
+	/*
+	 * Read the Alert Response Address to determine
+	 * which port generated the interrupt.
+	 */
+	rv = get_ara(data->dev, &ara);
+	if (rv) {
+		return;
+	}
 
-		/* Search for port with matching I2C address */
-		for (int j = 0; j < CONFIG_USB_PD_PORT_MAX_COUNT; j++) {
-			struct pdc_data_t *pdc_int_data = pdc_data[j];
-			const struct pdc_config_t *cfg =
-				pdc_int_data->dev->config;
+	/* Search for port with matching I2C address */
+	for (int j = 0; j < NUM_PDC_RTS54XX_PORTS; j++) {
+		struct pdc_data_t *pdc_int_data = pdc_data[j];
+		const struct pdc_config_t *cfg = pdc_int_data->dev->config;
 
-			if ((ara >> 1) == cfg->i2c.addr) {
-				LOG_INF("C%d: IRQ", cfg->connector_number);
+		if ((ara >> 1) == cfg->i2c.addr) {
+			LOG_INF("C%d: IRQ", cfg->connector_number);
 
-				/* Found pending interrupt, handle it */
-				/* Inform subsystem of the interrupt */
-				/* Clear the CCI Event */
-				pdc_int_data->cci_event.raw_value = 0;
-				/* Set the port the CCI Event occurred
-				 * on */
-				pdc_int_data->cci_event.connector_change =
-					cfg->connector_number + 1;
-				/* Set the interrupt event */
-				pdc_int_data->cci_event
-					.vendor_defined_indicator = 1;
-				pdc_int_data->conn_status_cached = false;
-				/* Notify system of status change */
-				call_cci_event_cb(pdc_int_data);
-				/* done with this port */
-				break;
-			}
+			/* Found pending interrupt, handle it */
+			/* Inform subsystem of the interrupt */
+			/* Clear the CCI Event */
+			pdc_int_data->cci_event.raw_value = 0;
+			/* Set the port the CCI Event occurred
+			 * on */
+			pdc_int_data->cci_event.connector_change =
+				cfg->connector_number + 1;
+			/* Set the interrupt event */
+			pdc_int_data->cci_event.vendor_defined_indicator = 1;
+			pdc_int_data->conn_status_cached = false;
+			/* Notify system of status change */
+			call_cci_event_cb(pdc_int_data);
+			/* done with this port */
+			break;
 		}
 	}
 }
