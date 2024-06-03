@@ -16,6 +16,23 @@
       "message": "Defer to Ting for final check.",
       "revId": "0df7d9463f8b4b8823e5d8e650256b11ce6db33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b53d4b_fb350840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-06-03T03:23:00Z",
+      "side": 1,
+      "message": "INFO    - LCOV report generated: twister-out-host/coverage.info\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out-host/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out-host/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out-host/twister_report.xml...\nINFO    - -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\nINFO    - The following issues were found (showing the top 10 items):\nINFO    - 1) kingler/corsola.usbc on native_posix failed (Failed)\nINFO    - \nINFO    - To rerun the tests, call twister using the following commandline:\nINFO    - west twister -p \u003cPLATFORM\u003e -s \u003cTEST ID\u003e, for example:\nINFO    - \nINFO    - west twister -p native_posix -s kingler/corsola.usbc\nINFO    - or with west:\nINFO    - west build -p -b native_posix ../../../platform/ec/zephyr/test/kingler -T corsola.usbc\nINFO    - -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\nINFO    - Run completed\nTEST EXECUTION FAILED\nmake: *** [Makefile.cq:89: /mnt/host/source/src/platform/ec/twister-out-host/coverage.info] Error 1\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 511, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 436, in main\n    opts.func(opts)\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 345, in test\n    subprocess.run(\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command \u0027[\u0027make\u0027, \u0027-f\u0027, \u0027Makefile.cq\u0027, \u0027-j32\u0027, \u0027test\u0027, \u0027COVERAGE\u003d1\u0027, \u0027SPECIAL_BOARDS\u003dkrabby skyrim kingler rex geralt roach ovis brox rauru nereid nivviks winterhold frostflow crystaldrift markarth\u0027]\u0027 returned non-zero exit status 2.",
+      "revId": "0df7d9463f8b4b8823e5d8e650256b11ce6db33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
