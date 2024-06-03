@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7f2aaed_6317a41a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-03T21:13:11Z",
+      "side": 1,
+      "message": "We can\u0027t just drop it for v3 because the existing callers are programmed to choose the latest version and truncate the received data to the version each caller supports. So, I think these structs can be only stretched if we don\u0027t want to run the large coordinated update across the kernel and FW branches. I\u0027m afraid that\u0027s not an option (at least for my bandwidth and the ETA). So, keeping the reserved[3] seems acceptable and I guess that\u0027s also what was decided when v1 was introduced.",
+      "parentUuid": "4209d465_6cae7aa7",
+      "range": {
+        "startLine": 4122,
+        "startChar": 8,
+        "endLine": 4122,
+        "endChar": 26
+      },
+      "revId": "60dd89491ef9673bd586f471ccfd03dc8287d8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0715df37_8a7374ac",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2024-06-03T19:11:45Z",
       "side": 1,
       "message": "please update ec_cmd_api.h\n\njust eyeballing the file, i think you need to replicate \u0026 update the existing\n`#define _CROS_EC_C1_F_RF(_cmd, _fn) _CROS_EC_CV_F_R(_cmd, 1, _fn##_v1, _fn##_v1)`\nto\n`#define _CROS_EC_C3_F_RF(_cmd, _fn) _CROS_EC_CV_F_R(_cmd, 3, _fn##_v3, _fn##_v3)`\nto support V3 host commands.\n\nthen, you replicate \u0026 update:\n`_CROS_EC_C1_F_RF(EC_CMD_GET_NEXT_EVENT, get_next_event)`\nto:\n`_CROS_EC_C3_F_RF(EC_CMD_GET_NEXT_EVENT, get_next_event)`",
+      "range": {
+        "startLine": 4155,
+        "startChar": 7,
+        "endLine": 4155,
+        "endChar": 36
+      },
+      "revId": "60dd89491ef9673bd586f471ccfd03dc8287d8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d2e724_e946b27f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-03T21:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0715df37_8a7374ac",
       "range": {
         "startLine": 4155,
         "startChar": 7,
