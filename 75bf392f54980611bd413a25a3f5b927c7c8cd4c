@@ -81,6 +81,24 @@
       "parentUuid": "40823fc9_74fcf9fe",
       "revId": "75bf392f54980611bd413a25a3f5b927c7c8cd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571c2105_e2f2ff04",
+        "filename": "zephyr/program/corsola/squirtle/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-06-03T02:15:04Z",
+      "side": 1,
+      "message": "`board_version \u003d\u003d 0` in not clear. Can you make board_version an enum data type and define all the values that will be used?",
+      "parentUuid": "d7e6121c_4436ff90",
+      "revId": "75bf392f54980611bd413a25a3f5b927c7c8cd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
