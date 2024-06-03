@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f623a4_b2f8f3a2",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-03T21:16:47Z",
+      "side": 1,
+      "message": "yes, can be configured once as POR. done",
+      "parentUuid": "799c58e3_783c08c8",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 36
+      },
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87984c55_11d5f1a5",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c28d437_f0b77c8b",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-03T21:16:47Z",
+      "side": 1,
+      "message": "add todo comments, will implement next",
+      "parentUuid": "87984c55_11d5f1a5",
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45c6c362_05368855",
         "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2024-06-03T19:43:54Z",
       "side": 1,
       "message": "nit: how about moving the below code to another function? so that we can differentiate logic between VI \u0026 non VCI hibernate",
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0035cabe_0ddabd2d",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-03T21:16:47Z",
+      "side": 1,
+      "message": "agreed, done",
+      "parentUuid": "45c6c362_05368855",
       "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
