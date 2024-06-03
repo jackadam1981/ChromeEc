@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1533a7_cac7df50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2024-06-03T19:45:24Z",
+      "side": 1,
+      "message": "Seems to work. I will note that if the magnet is left in the right place now you can get a bit of console spam:\n\n```\n24-06-03 19:41:25.203 [126.984606 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:25.458 [127.240478 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:25.714 [127.496486 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:25.970 [127.753002 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:26.225 [128.008481 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:26.481 [128.264617 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:26.742 [128.520458 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n24-06-03 19:41:26.992 [128.776473 Ignoring clamshell mode entry while gmr sensors reports lid flipped]\n...\n...\n```\n\n...but I guess that\u0027s OK?",
+      "revId": "185a820b223a51ae4e36443376308b0e7b8ab9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
