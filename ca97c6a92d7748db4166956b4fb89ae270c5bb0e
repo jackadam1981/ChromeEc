@@ -124,6 +124,24 @@
       "parentUuid": "639b2485_188d2e33",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d658c47f_a17e164f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-03T03:27:56Z",
+      "side": 1,
+      "message": "Have flash the test firmware image by uartupdatetool. Then, execute \u0027runtest\u0027 from the FW RW command console and the test can be finished and pass.\n\n```\n\u003e runtest\nRunning test_ram_lock_config_lock_region_invalid_addr...\nPass: ram_lock_config_lock_region( invalid_code_reg_addr_not_aligned.num_regions, invalid_code_reg_addr_not_aligned.addr[0], invalid_code_reg_addr_not_aligned.size[0]) \u003d\u003d -EC_ERROR_INVAL\nOK\nRunning test_ram_lock_config_lock_region_invalid_size...\nPass: ram_lock_config_lock_region( invalid_code_reg_size_not_aligned.num_regions, invalid_code_reg_size_not_aligned.addr[0], invalid_code_reg_size_not_aligned.size[0]) \u003d\u003d -EC_ERROR_INVAL\nOK\nRunning test_ram_lock_config_lock_region...\nPass: ram_lock_config_lock_region(REGION_DATA_RAM, 0x200B0000, 0x10000) \u003d\u003d EC_SUCCESS\nPass: ram_lock_config_lock_region(REGION_STORAGE, 0x10058000 + 0, 0x10000) \u003d\u003d EC_SUCCESS\nOK\nRunning test_ram_write_protect...\nPass: verify_no_write(0x10058000 + 0) \u003d\u003d EC_SUCCESS\nPass: verify_write(0x200B0000) \u003d\u003d EC_SUCCESS\nOK\nRunning test_ram_lock_config_lock_region_alias...\nPass: ram_lock_config_lock_region(alias_data_ram.num_regions, alias_data_ram.addr[0], alias_data_ram.size[0]) \u003d\u003d EC_SUCCESS\nPass: ram_lock_config_lock_region(alias_code_ram.num_regions, alias_code_ram.addr[0], alias_code_ram.size[0]) \u003d\u003d EC_SUCCESS\nOK\nRunning test_ram_alias_write_protect...\nPass: verify_no_write(alias_data_ram.addr[0]) \u003d\u003d EC_SUCCESS\nPass: verify_write(alias_code_ram.addr[0]) \u003d\u003d EC_SUCCESS\nOK\nRebooting to next test step...\n--- UART initialized after reboot ---\n[Image: RO, helipilot_v2.0.25203-209dc1a3c1 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 helipilot_15896.0.24_06_03 2024-05-30 10:58:20 user@user]\n[Reset cause: hard]\n[0.000436 Inits done]\n[0.000492 TRANSPORT_SEL: UART]\n[0.000642 TRANSPORT_SEL: UART]\nRunning test_ram_fetch_protect...\nPass: ram_lock_config_lock_region(fetch_lock_ram.num_regions, fetch_lock_ram.addr[0], fetch_lock_ram.size[0]) \u003d\u003d EC_SUCCESS\n\u003d\u003d\u003d PROCESS EXCEPTION: 05 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 01000000 \u003d\u003d\u003d\nr0 :00000000 r1 :00000000 r2 :00000000 r3 :00000000\nr4 :00000000 r5 :00000000 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:00000000 sp :200b56a0 lr :1005b883 pc :1005c9a8\nInstruction bus error\ncfsr \u003d 100, shcsr \u003d 70002, hfsr \u003d 0, dfsr \u003d 0\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Process Stack Contents \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n200b56c0: 100660cd 61005000 00000000 00000000\n200b56d0: 200b56e0 1006103d 00000002 00000000\n200b56e0: 200b56f0 1005be09 00000000 00000002\n200b56f0: 00000000 00000000 200b5720 1006255b\nRebooting...\n--- UART initialized after reboot ---\n[Image: RO, helipilot_v2.0.25203-209dc1a3c1 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 helipilot_15896.0.24_06_03 2024-05-30 10:58:20 user@user]\n[Reset cause: soft]\n[0.000437 Inits done]\n[0.000493 TRANSPORT_SEL: UART]\n[0.000642 TRANSPORT_SEL: UART]\n[0.258549 event set 0x0000000000800000]\nPass!\n[0.258643 Task 5 (TEST) exited!]\nConsole is enabled; type HELP for help.\n\u003e [0.258732 event set 0x0000000000002000]\n[0.258789 hostcmd init 0x0000000000802000]\n[0.258939 Verifying RW image...]\n[0.396580 RW verify OK]\n[1.259158 MKBP not cleared within threshold, toggling.]\n[1.397247 Jumping to image RW (0x00000020)]\n[1.401224 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n[1.408915 UART initialized after sysjump]\n[Image: RW, helipilot_v2.0.25203-209dc1a3c1 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 helipilot_15896.0.24_06_03 2024-05-30 10:58:20 user@user]\n```\n\nGuess you may build in FPMCU driver in your image that we don\u0027t have. Thus, I cannot duplicate the symptoms on my side.\n```\nprivate:v0.0.166-ae7500b fpc:v0.0.219-d3b2ef9\n```\nCan you remove the `HAVE_PRIVATE` macro and do the same test to check whether the issue can happen? Also, is there any way we can add the FPMCU library to our image for testing?",
+      "parentUuid": "44d95da5_ef1234b7",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
