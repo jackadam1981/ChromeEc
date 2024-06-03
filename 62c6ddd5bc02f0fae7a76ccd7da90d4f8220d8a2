@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42479d2d_227abc4f",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-06-03T05:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be261985_5ead2793",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c59195f9_9bb781b6",
@@ -88,6 +112,30 @@
       "writtenOn": "2024-06-03T05:08:57Z",
       "side": 1,
       "message": "unindent 1 level\n```suggestion\n\tmotionsense-sensor {\n```",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3efccb2_63b29b13",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-06-03T05:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c59195f9_9bb781b6",
       "range": {
         "startLine": 204,
         "startChar": 1,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9eb21a_d1024d1f",
+        "filename": "zephyr/program/corsola/veluza/src/sensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-06-03T05:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103639bf_6d4f507f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d258191_f0535228",
@@ -134,6 +206,30 @@
       "writtenOn": "2024-06-03T05:08:57Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "62c6ddd5bc02f0fae7a76ccd7da90d4f8220d8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ba8b4e_12614bd9",
+        "filename": "zephyr/program/corsola/veluza/src/sensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-06-03T05:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d258191_f0535228",
       "range": {
         "startLine": 11,
         "startChar": 0,
