@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8032553_8caa702f",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bbe84b3_0c45a6d7",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 19
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff9a834_5b069d0e",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24b545f_49f9db32",
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04796ec3_b1ea66e6",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-31T19:11:16Z",
       "side": 1,
       "message": "same here, please move to the top",
+      "range": {
+        "startLine": 174,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 29
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74c9c64_9829484b",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04796ec3_b1ea66e6",
       "range": {
         "startLine": 174,
         "startChar": 13,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26b5fc6_959f2222",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff620dc_a3422f56",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a54474e3_88083365",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-05-31T19:11:16Z",
       "side": 1,
       "message": "please add #define for that",
+      "range": {
+        "startLine": 246,
+        "startChar": 26,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebcecfaf_d42534fd",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a54474e3_88083365",
       "range": {
         "startLine": 246,
         "startChar": 26,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3be20d0_b88c68f2",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "I think function name confused you.\nI would like to change charging current \u0026 voltage in high temperature only when voltage of all cells is less than 4150.",
+      "parentUuid": "05c958c9_7527041d",
+      "range": {
+        "startLine": 247,
+        "startChar": 10,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eb538ce_ba68f144",
@@ -146,6 +284,30 @@
       "writtenOn": "2024-05-31T19:11:16Z",
       "side": 1,
       "message": "This function became very nested and long. Please split to sub-functions for better readability",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f832d0fd_8212966e",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb538ce_ba68f144",
       "range": {
         "startLine": 257,
         "startChar": 4,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "792fef5d_02de20cf",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c639613f_f4373389",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c9f83f_6b58963c",
@@ -192,6 +378,30 @@
       "writtenOn": "2024-05-31T19:11:16Z",
       "side": 1,
       "message": "Please move those up as well",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 39
+      },
+      "revId": "662bddad262824729126e0ac5f492d6eeb028b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18e6148_e5de211d",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-03T10:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c9f83f_6b58963c",
       "range": {
         "startLine": 491,
         "startChar": 0,
