@@ -334,7 +334,6 @@ void battery_get_params(struct batt_params *batt)
 		batt->desired_current = 4096;
 	}
 }
-
 /* Wait until battery is totally stable */
 int battery_wait_for_stable(void)
 {
