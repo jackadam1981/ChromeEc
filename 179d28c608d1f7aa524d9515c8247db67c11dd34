@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47718aec_e2cb9528",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-06-03T13:02:46Z",
+      "side": 0,
+      "message": "This should be the one which cause b/343878732.",
+      "revId": "179d28c608d1f7aa524d9515c8247db67c11dd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
