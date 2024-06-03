@@ -333,6 +333,7 @@ void battery_get_params(struct batt_params *batt)
 		batt->desired_voltage = battery_get_info()->voltage_max;
 		batt->desired_current = 4096;
 	}
+	board_battery_compensate_params(batt);
 }
 
 /* Wait until battery is totally stable */
