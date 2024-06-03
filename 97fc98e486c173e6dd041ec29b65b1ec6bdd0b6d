@@ -16,6 +16,23 @@
       "message": "we can build ec bin by \"zmake build orisa\", following CL will based on this one.",
       "revId": "97fc98e486c173e6dd041ec29b65b1ec6bdd0b6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5603c4b_99f6e137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-06-03T03:01:48Z",
+      "side": 1,
+      "message": "AssertionError: Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.",
+      "revId": "97fc98e486c173e6dd041ec29b65b1ec6bdd0b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
