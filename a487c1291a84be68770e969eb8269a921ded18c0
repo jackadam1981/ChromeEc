@@ -50,6 +50,115 @@
       "message": "Compile check passes.",
       "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c512d0a3_b6d996e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:36:56Z",
+      "side": 1,
+      "message": "Pin assignments check out OK against schematic.",
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb63952_cb6c59e0",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:36:56Z",
+      "side": 1,
+      "message": "`GPD3` appears on two pins (N4, connected to net `EC_DSW_PWROK`, the other, EM61, to `EC_PCH_PWR_BTN_ODL`). Is there a pinmux config needed?\n\nI flagged a couple other GPIOs with the comment \"Pinmux\" if they appear on multiple pins in case extra config is needed for these.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914f68dd_de50530e",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:36:56Z",
+      "side": 1,
+      "message": "Net is called `SEN_MODE2_EC_PCH_INT_ODL` in the schematic, if you want to match the naming of GPIOB6 / node `sen_mode1_ec_pch_wake_odl` further down in this file",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092ea4ed_c4648170",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:36:56Z",
+      "side": 1,
+      "message": "Pinmux",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2806aeb1_495dc3aa",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:36:56Z",
+      "side": 1,
+      "message": "Pinmux",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
