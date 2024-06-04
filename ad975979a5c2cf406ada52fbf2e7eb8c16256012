@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832e351f_099989a2",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-04T05:45:12Z",
+      "side": 1,
+      "message": "I ran that command(```cros format board/xol/battery.c```) but nothing was changed.",
+      "parentUuid": "09c39a9b_836b82a5",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47ee2db_504f8600",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-04T00:10:21Z",
       "side": 1,
       "message": "To match the comment above (assuming the comment is correct) this should be: \n```\nstep2_current *\u003d 18;\nstep2_current /\u003d 25;\n```",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 22
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f13134c_50eeb199",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-04T05:45:12Z",
+      "side": 1,
+      "message": "```step2_current``` is changed from ```step1_current```. And ```step1_current``` is already 0.9C.",
+      "parentUuid": "f47ee2db_504f8600",
       "range": {
         "startLine": 297,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b00ddb4_0f99d832",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-04T05:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e437fc99_1ad11f42",
+      "range": {
+        "startLine": 306,
+        "startChar": 2,
+        "endLine": 324,
+        "endChar": 30
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "197f5a33_755abce3",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-04T00:10:21Z",
       "side": 1,
       "message": "please define enum for those states",
+      "range": {
+        "startLine": 525,
+        "startChar": 28,
+        "endLine": 525,
+        "endChar": 29
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e17ab4_de9a0593",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2024-06-04T05:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "197f5a33_755abce3",
       "range": {
         "startLine": 525,
         "startChar": 28,
