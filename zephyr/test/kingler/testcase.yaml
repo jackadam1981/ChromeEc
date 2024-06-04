@@ -111,6 +111,9 @@ tests:
   kingler.kyogre_sensor:
     extra_configs:
     - CONFIG_TEST_KYOGRE_SENSOR_PROBE=y
+  kingler.kyogre_battery_detection:
+    extra_configs:
+    - CONFIG_TEST_KYOGRE_BATTERY_DETECTION_PROBE=y
     extra_dtc_overlay_files:
     - kingler.kyogre.overlay
   kingler.squirtle:
