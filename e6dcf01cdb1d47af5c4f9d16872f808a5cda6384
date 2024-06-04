@@ -22,6 +22,30 @@
       },
       "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c132ef7_999e21c2",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-04T18:42:28Z",
+      "side": 0,
+      "message": "When either port has an interrupt, it pulls the shared line down. When the ARA address is read, the first target on the bus with a pulled-down line will respond with its address and de-assert the interrupt line.\n\nI guess the outer loop will have to stay for when both ports fire since we configure the interrupt as edge-triggered. I\u0027ll update the CL. Good catch.",
+      "parentUuid": "206a727c_3ee2eebc",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 50
+      },
+      "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
