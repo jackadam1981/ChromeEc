@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206a727c_3ee2eebc",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T18:07:25Z",
+      "side": 0,
+      "message": "I\u0027m unsure why this outer loop was originally there. Maybe for cases where both ports have pending interrupts? How does `get_ara()` behave in that case? Do the SMBus alerts \"stack\"?",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 50
+      },
+      "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
