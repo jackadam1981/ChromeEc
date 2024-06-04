@@ -32,6 +32,8 @@ test_static int test_otp_key_with_mock(void)
 
 	print_key_buffer(otp_key_buffer);
 
+	otp_key_exit();
+
 	return EC_SUCCESS;
 }
 
