@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1332e79a_cded2bc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-04T22:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "833ccecc_31043259",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9415e376_6b826a4b",
@@ -165,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c50109_c0985201",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-04T22:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d79467d_246075ed",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c1c785_aab1282d",
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "The same case.",
       "parentUuid": "78c1c785_aab1282d",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 9
+      },
+      "revId": "a0dbe984356a969dce4d6303f5dcf73b2cfcef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae13aa7_8695be0c",
+        "filename": "zephyr/test/hwtest/src/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-04T22:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a41243_31e1de08",
       "range": {
         "startLine": 351,
         "startChar": 3,
