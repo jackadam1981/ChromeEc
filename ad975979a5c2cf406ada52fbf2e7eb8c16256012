@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a57839c_6657f0ec",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-04T17:50:17Z",
+      "side": 1,
+      "message": "Ah, got it, thanks!",
+      "parentUuid": "6f13134c_50eeb199",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 22
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e437fc99_1ad11f42",
