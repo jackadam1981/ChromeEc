@@ -33,6 +33,23 @@
       "message": "```\n/mnt/host/source/src/platform/ec/build/zephyr/spikyrock/modules/ec/common/usb_update.c:27:10: fatal error: usb-stream.h: No such file or directory\n   27 | #include \"usb-stream.h\"\n      |          ^~~~~~~~~~~~~~\n```",
       "revId": "f9add2a59c65edf6dda095d9bce8c49964c5f629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b82068_1e32bd5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-06-04T03:42:46Z",
+      "side": 1,
+      "message": "Thanks Ting. This CL has dependency on CL#5547223.",
+      "revId": "f9add2a59c65edf6dda095d9bce8c49964c5f629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
