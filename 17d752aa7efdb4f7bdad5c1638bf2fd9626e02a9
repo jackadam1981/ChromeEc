@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3001060_76233a77",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-04T14:35:10Z",
+      "side": 1,
+      "message": "This is going to be pretty noisy, isn\u0027t it? How about printing the entire string once (when the first byte is read)?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 17
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f05caf_85bda9ea",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-04T14:35:10Z",
+      "side": 1,
+      "message": "Do you need this cast?",
+      "range": {
+        "startLine": 191,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 34
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f077f87_b4921c65",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-04T14:35:10Z",
+      "side": 1,
+      "message": "IIUC, the 2nd time EC_ACPI_MEM_STRINGS_FIFO_ID_VERSION is read, we return 0 (because strings_fifo_offset will be incremented on the 1st read). Isn\u0027t it confusing from the AP\u0027s perspective?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 11
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb78d088_7c88e722",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-04T14:35:10Z",
+      "side": 1,
+      "message": "IIUC, this controls how the strings are read. Shall we give it a dedicated field (new acpi address) so that the AP can query it independently?",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 37
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57cb92f_ffb2395f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-04T14:35:10Z",
+      "side": 1,
+      "message": "This is defined at line 179.",
+      "range": {
+        "startLine": 588,
+        "startChar": 8,
+        "endLine": 588,
+        "endChar": 27
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
