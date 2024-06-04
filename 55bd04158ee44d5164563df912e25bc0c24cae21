@@ -50,6 +50,75 @@
       "message": "Compile check passes.",
       "revId": "55bd04158ee44d5164563df912e25bc0c24cae21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2718c6bb_b2ed2790",
+        "filename": "zephyr/program/brox/lotso/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:44:03Z",
+      "side": 1,
+      "message": "10mOhm matches value of PR1011",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "55bd04158ee44d5164563df912e25bc0c24cae21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "554e0ef9_2e400af0",
+        "filename": "zephyr/program/brox/lotso/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:44:03Z",
+      "side": 1,
+      "message": "10mOhm matches value of PR1001",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "55bd04158ee44d5164563df912e25bc0c24cae21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ec90bc_39f5e00b",
+        "filename": "zephyr/program/brox/lotso/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-04T23:44:03Z",
+      "side": 1,
+      "message": "I don\u0027t think this line is necessary as this and `...MEASURE_CHARGER` are mutually-exclusive choices under `PLATFORM_EC_USB_PD_VBUS_MEASURE_MODE`",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "55bd04158ee44d5164563df912e25bc0c24cae21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
