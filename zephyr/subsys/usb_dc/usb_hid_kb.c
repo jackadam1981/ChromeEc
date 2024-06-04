@@ -209,6 +209,15 @@ static int kb_get_report(const struct device *dev,
 	return -ENOTSUP;
 }
 
+static int kb_set_report(const struct device *dev,
+			struct usb_setup_packet *setup, int32_t *len,
+			uint8_t **data)
+{
+	LOG_ERR("%s ITE Debug %d len %d", __func__, __LINE__, *len);
+	LOG_HEXDUMP_ERR(*data, *len, "report");
+	return 0;
+}
+
 static void protocol_cb(const struct device *dev, uint8_t protocol)
 {
 	ARG_UNUSED(dev);
@@ -227,6 +236,7 @@ static void int_in_ready_cb(const struct device *dev)
 static const struct hid_ops ops = {
 	.protocol_change = protocol_cb,
 	.get_report = kb_get_report,
+	.set_report = kb_set_report,
 	.int_in_ready = int_in_ready_cb,
 };
 
