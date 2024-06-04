@@ -16,6 +16,23 @@
       "message": "@phoenixshen@chromium.org @shawnku@chromium.org @yllin@google.com\nWe don\u0027t have access rights to see the summary of the CQ failure. Could you please help check the reason for the CQ failure? Thanks.",
       "revId": "f9add2a59c65edf6dda095d9bce8c49964c5f629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d5ea75_908b6946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-04T03:06:09Z",
+      "side": 1,
+      "message": "```\n/mnt/host/source/src/platform/ec/build/zephyr/spikyrock/modules/ec/common/usb_update.c:27:10: fatal error: usb-stream.h: No such file or directory\n   27 | #include \"usb-stream.h\"\n      |          ^~~~~~~~~~~~~~\n```",
+      "revId": "f9add2a59c65edf6dda095d9bce8c49964c5f629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
