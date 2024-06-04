@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c756aa79_a0dd332f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-04T17:27:48Z",
+      "side": 1,
+      "message": "nit: update what is working",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f2d2c6_f1b47c68",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-04T17:27:48Z",
+      "side": 1,
+      "message": "can this be a macro?\nI am trying to see if we can make this file common.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
