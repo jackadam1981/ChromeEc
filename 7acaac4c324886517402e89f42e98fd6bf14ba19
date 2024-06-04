@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ed713e_c3acd982",
+        "filename": "chip/npcx/rom_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-04T18:18:52Z",
+      "side": 1,
+      "message": "i think it\u0027s worth adding a note as to why is `volatile` is needed here.\ndo these values change from underneath us\nduring the life of the chip due to memory remapping?\ndoes the compiler consider access to the \"1st page\" UB?",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "7acaac4c324886517402e89f42e98fd6bf14ba19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cecd52_2f7fa10d",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-04T18:18:52Z",
+      "side": 1,
+      "message": "ROM_CHIP seems too generic, add \"NPCX\", at least?\n__CROS_EC_NPCX_ROM_CHIP_H_",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8a33a67e_9d7a31c2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "chip/npcx/rom_chip.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "#ifndef __CROS_EC_NPCX_ROM_CHIP_H_\n#define __CROS_EC_NPCX_ROM_CHIP_H_\n"
+            },
+            {
+              "path": "chip/npcx/rom_chip.h",
+              "range": {
+                "startLine": 87,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "#endif /* __CROS_EC_NPCX_ROM_CHIP_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7acaac4c324886517402e89f42e98fd6bf14ba19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
