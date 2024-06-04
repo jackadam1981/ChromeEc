@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c39a9b_836b82a5",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-04T00:10:21Z",
+      "side": 1,
+      "message": "Please use pre-commit hooks. They would detect formatting issues. To fix formatting in this file please run `cros format board/xol/battery.c`",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47ee2db_504f8600",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-04T00:10:21Z",
+      "side": 1,
+      "message": "To match the comment above (assuming the comment is correct) this should be: \n```\nstep2_current *\u003d 18;\nstep2_current /\u003d 25;\n```",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 22
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e437fc99_1ad11f42",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-04T00:10:21Z",
+      "side": 1,
+      "message": "code duplication, this section should be moved outside the `if` condition on line 278\n\ni.e. the entire function simplified to:\n```\nvoid set_current_volatage_by_capacity(int *current, int *voltage)\n{\n\nint rateFCDC \u003d 0;\nuint32_t cal_current \u003d 0;\n\n*current \u003d 0;\n*voltage \u003d CHARGING_VOLTAGE;\n\ncal_current \u003d charging_data-\u003ebatt.full_capacity * 100;\ncal_current +\u003d (design_capacity / 2);\ncal_current /\u003d design_capacity;\nrateFCDC \u003d (int)cal_current;\n\n/* calculate current \u0026 voltage */\nif (rateFCDC \u003c\u003d 85) {\n\tcal_current \u003d charging_data-\u003ebatt.full_capacity;\n\n\t/* ChargingVoltage - (170mV * series) */\n\t*voltage -\u003d (170 * BAT_SERIES);\n} else if (rateFCDC \u003c\u003d 99) {\n\tcal_current \u003d charging_data-\u003ebatt.full_capacity;\n\n\t/* ChargingVoltage - ((1-FCC/DC)*100*series) -\n\t * (25*series) */\n\t*voltage -\u003d (((100 - rateFCDC) * 10 * BAT_SERIES) +\n\t\t     (25 * BAT_SERIES));\n} else {\n\tcal_current \u003d design_capacity;\n}\n\nif (chipset_in_state(CHIPSET_STATE_ON)) {\n\t/* FCC * 0.45C */\n\tcal_current *\u003d 9;\n\tcal_current /\u003d 20;\n} else {\n\t/* FCC * C-rate * Charge factor */\n\tcal_current *\u003d (CRATE_100 * CFACT_10);\n\tcal_current /\u003d 1000;\n\n\t/* Step1: 0.9C */\n\tstep1_current \u003d charging_data-\u003ebatt.full_capacity;\n\tstep1_current *\u003d 9;\n\tstep1_current /\u003d 10;\n\t/* Step2: 0.72C */\n\tstep2_current \u003d step1_current;\n\tstep2_current *\u003d 18;\n\tstep2_current /\u003d 25;\n}\n\n*current \u003d (int)cal_current;\n}\n```",
+      "range": {
+        "startLine": 306,
+        "startChar": 2,
+        "endLine": 324,
+        "endChar": 30
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197f5a33_755abce3",
+        "filename": "board/xol/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-04T00:10:21Z",
+      "side": 1,
+      "message": "please define enum for those states",
+      "range": {
+        "startLine": 525,
+        "startChar": 28,
+        "endLine": 525,
+        "endChar": 29
+      },
+      "revId": "ad975979a5c2cf406ada52fbf2e7eb8c16256012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
