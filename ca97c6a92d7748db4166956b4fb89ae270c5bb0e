@@ -142,6 +142,24 @@
       "parentUuid": "44d95da5_ef1234b7",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635a4327_919707c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-04T22:26:55Z",
+      "side": 1,
+      "message": "I can confirm this works if I disable the private build.\n\nI am requesting access to the private repo in [this issue](https://issuetracker.google.com/344991854).",
+      "parentUuid": "d658c47f_a17e164f",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
