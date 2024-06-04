@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e9ff2a9_c1d10f84",
+        "filename": "zephyr/program/corsola/squirtle/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-04T08:38:05Z",
+      "side": 1,
+      "message": "remove gpf2",
+      "revId": "4b7367fea34cdceea4e81e4358ba59dfdb7fcb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3192503_5f17bf3e",
+        "filename": "zephyr/program/corsola/squirtle/src/board_chipset.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-04T08:38:05Z",
+      "side": 1,
+      "message": "backlight is controlled by `ap_bl_en_interrupt`, so you don\u0027t need this handler",
+      "revId": "4b7367fea34cdceea4e81e4358ba59dfdb7fcb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
