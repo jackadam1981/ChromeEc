@@ -34,6 +34,24 @@
       "parentUuid": "ee719224_9ff2f3fa",
       "revId": "141830a2842d78928bd60119616e9aec0caf0c69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633823e5_4fcfe94f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-04T06:47:20Z",
+      "side": 1,
+      "message": "Isn\u0027t it just adding a battery_compensate_params() line at the bottom of battery_get_params?",
+      "parentUuid": "c0a501a6_1837f251",
+      "revId": "141830a2842d78928bd60119616e9aec0caf0c69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
