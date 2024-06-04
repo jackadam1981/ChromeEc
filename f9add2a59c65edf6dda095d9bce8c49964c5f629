@@ -50,6 +50,24 @@
       "message": "Thanks Ting. This CL has dependency on CL#5547223.",
       "revId": "f9add2a59c65edf6dda095d9bce8c49964c5f629",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff272d0_2468a344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-06-04T03:51:55Z",
+      "side": 1,
+      "message": "You can add `Cq-depend: chromium:5547223` in commit message to mention the dependency.",
+      "parentUuid": "30b82068_1e32bd5b",
+      "revId": "f9add2a59c65edf6dda095d9bce8c49964c5f629",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
