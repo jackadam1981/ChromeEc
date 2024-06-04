@@ -35,6 +35,28 @@ BUILD_ASSERT(IKM_SIZE_BYTES == 64);
 #error "fpsensor requires CONFIG_BORINGSSL_CRYPTO and ROLLBACK_SECRET_SIZE"
 #endif
 
+#ifdef CONFIG_OTP_KEY
+static enum ec_error_list
+get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> otp_key)
+{
+	otp_key_init();
+	const enum ec_error_list ret = otp_key_read(otp_key.data());
+	otp_key_exit();
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to read OTP key with ret=%d", ret);
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	if (bytes_are_trivial(otp_key.data(), otp_key.size_bytes())) {
+		CPRINTS("ERROR: bytes read from OTP are trivial!");
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	return EC_SUCCESS;
+}
+#endif
+
 test_export_static enum ec_error_list
 get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
 	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
@@ -61,30 +83,19 @@ get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
 	       tpm_seed.size_bytes());
 
 #ifdef CONFIG_OTP_KEY
-	uint8_t otp_key[OTP_KEY_SIZE_BYTES] = { 0 };
-
-	otp_key_init();
-	ret = (enum ec_error_list)otp_key_read(otp_key);
-	otp_key_exit();
-
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to read OTP key with ret=%d", ret);
-		return EC_ERROR_HW_INTERNAL;
-	}
-
-	if (bytes_are_trivial(otp_key, sizeof(otp_key))) {
-		CPRINTS("ERROR: bytes read from OTP are trivial!");
-		return EC_ERROR_HW_INTERNAL;
-	}
-
 	/*
 	 * IKM is now the concatenation of the rollback secret, the seed
-	 * from the TPM and the key stored in OTP
+	 * from the TPM and the key stored in OTP.
 	 */
-	memcpy(ikm.data() + IKM_OTP_OFFSET_BYTES, otp_key, sizeof(otp_key));
-	BUILD_ASSERT((IKM_SIZE_BYTES - IKM_OTP_OFFSET_BYTES) ==
-		     sizeof(otp_key));
-	OPENSSL_cleanse(otp_key, OTP_KEY_SIZE_BYTES);
+	std::span<uint8_t, OTP_KEY_SIZE_BYTES> otp_key(
+		ikm.data() + IKM_OTP_OFFSET_BYTES, OTP_KEY_SIZE_BYTES);
+	BUILD_ASSERT((ikm.size_bytes() - IKM_OTP_OFFSET_BYTES) ==
+		     otp_key.size_bytes());
+
+	ret = get_otp_key(otp_key);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
 #endif
 
 	return EC_SUCCESS;
