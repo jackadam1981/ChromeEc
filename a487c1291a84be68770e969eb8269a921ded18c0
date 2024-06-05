@@ -116,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe2bbe1_dbe63e56",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-05T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c0297bb_52767ffe",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "914f68dd_de50530e",
@@ -210,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69bd94c_5abaf9bd",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-05T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f70a202_90d4d3c7",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2806aeb1_495dc3aa",
@@ -247,6 +295,30 @@
       "side": 1,
       "message": "GPD0: N1 (NOTEBOOK_MODE_R) is from the EC, and EM56 (BATLOW_L) is from the AP, so they do not conflict.",
       "parentUuid": "2806aeb1_495dc3aa",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b88a87_927432da",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-05T17:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ee341d_6b164e7a",
       "range": {
         "startLine": 151,
         "startChar": 3,
