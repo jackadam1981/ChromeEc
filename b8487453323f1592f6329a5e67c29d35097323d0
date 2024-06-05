@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d429f533_cb195e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-05T16:45:55Z",
+      "side": 1,
+      "message": "Removing CC-1 vote because this is a revert CL and the original change is expected to be relanded later with fixes to restore the coverage.",
+      "revId": "b8487453323f1592f6329a5e67c29d35097323d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
