@@ -69,6 +69,53 @@
       },
       "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e772e0_3dffdfe0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-05T19:46:13Z",
+      "side": 1,
+      "message": "CL:5540431 is MCHP specific.\nThis file is generic. I am wondering something like\n\n#define PD_POW_I2C  i2c_smb_1\nrename:\nptlerb_mchp/include/power_signals.h\nto:\nptlerb_mchp/include/board.h\n\n\n\u0026PD_POW_I2C {\n  ......\n}\n\n\nand move this file under program/intelrvp/ptlrvp",
+      "parentUuid": "da4843dc_a8cee602",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca77f7c_b73306c4",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-05T19:46:13Z",
+      "side": 1,
+      "message": "change these similar to power signals.",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
