@@ -16,6 +16,24 @@
       "message": "Peter - can you test this out on a Pujjo board?\n\nI used `i2c read I2C_CHARGER 0x09 0x47 2` and `i2c read I2C_CHARGER 0x09 0x48 2` to confirm the register settings before and after applying this change.\n\nJust booting up on pujjo is probably sufficient.",
       "revId": "939524bf4091dc3fb3aa45946f0d1065b9040af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3625572_0ab9c777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-05T06:11:25Z",
+      "side": 1,
+      "message": "Looks good here, unchanged after an EC reboot with this change.\n\n```\nec:~\u003e i2c read I2C_USB_C0_TCPC 0x09 0x47 2\n00000000: c0 06\nec:~\u003e i2c read I2C_USB_C0_TCPC 0x09 0x48 2\n00000000: 80 19\n```",
+      "parentUuid": "24904e7d_6922d0a3",
+      "revId": "939524bf4091dc3fb3aa45946f0d1065b9040af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
