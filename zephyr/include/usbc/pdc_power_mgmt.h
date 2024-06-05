@@ -210,9 +210,9 @@ bool pdc_power_mgmt_pd_capable(int port);
  *
  * @param port USB-C port number
  *
- * @retval VBUS voltage
+ * @retval VBUS voltage in millivolts
  */
-uint32_t pdc_power_mgmt_get_vbus_voltage(int port);
+int pdc_power_mgmt_get_vbus_voltage(int port);
 
 /**
  * @brief Resets the PDC
@@ -249,6 +249,14 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port);
 void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state);
 
 /**
+ * @brief Get the previously set dual role state
+ *
+ * @param port USB-C port number
+ * @return most recently-set dual role state, or -1 if never set.
+ */
+enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port);
+
+/**
  * @brief Get the current PD state name of USB-C port
  *
  * @param port USB-C port number
@@ -275,10 +283,12 @@ void pdc_power_mgmt_request_data_swap(int port);
  *
  * @param port USB-C port number
  * @param pdc_info Output struct for chip info
+ * @param live True forces a read from the chip. False returns a cached value
+ *        from driver initialization or latest live read.
  *
  * @retval 0 if successful or error code
  */
-int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info);
+int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info, bool live);
 
 /**
  * @brief Query bus info from PDC used to access the chip
