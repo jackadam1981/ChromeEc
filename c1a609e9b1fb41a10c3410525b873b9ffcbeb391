@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1e7cb5e_96254395",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "I added a more specific bug at b/345292002.",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3beaeef0_27cc4745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "I included some nits for things that we talked about yesterday.",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7f59e3_09a3bf0a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Is this a log level different than the log level for this module, which would control whether `LOG_INF` does anything? Could you just do this unconditionally, mixed in with the loop on line 339, and get similar behavior?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef17c8e_e7e0c7b5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Is this state doing anything specifically to handle bits other than these 2? Should there be a TODO for the others?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d829ecf_6f83fdc4",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 24
@@ -20,6 +88,23 @@
         "endLine": 394,
         "endChar": 0
       },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2569075f_d0d0bf02",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "It looks like this will happen even if the next state is suspended? Is that appropriate? Don\u0027t we need to re-init after suspend?",
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +203,131 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70e0c052_12e99804",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Is this redundant with `GET_VDO`?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46dc2049_2b4f2011",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Nit: These exact 2 lines happen in almost every function, sometimes multiple times. This wouldn\u0027t be a terrible use-case for goto error handling.",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 858,
+        "endChar": 9
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df34884f_fe67b95a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Do we have struct definitions for these fields in the UCSI code?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd590db8_b585c44b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "If we\u0027re going to be comparing these strings as ints, as seems practical, we should have named constants and int-typed fields. That could turn the `memcpy` calls in the task functions into simple assignments, with no need for bounds checking.",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e696ac68_149035e7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Should this have a TODO, or is it intended to be a no-op?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecf9458_19a61dfa",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Can you do this check once inside `tps_post_command`?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba53baa0_e95b1538",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "This is only used once. It could be a `const int` inside the function.",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db1f65a3_64f9fe13",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 24
@@ -158,6 +368,132 @@
         "endLine": 1594,
         "endChar": 22
       },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d7003c_8ffaf1d4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Does this mean that there\u0027s 50 ms minimum latency in responding to interrupts? Can we do something like wait-for-event with a timeout here?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f0c83a1_359c62c0",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1625,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Eventually, we\u0027ll want this to be 1, right?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ad6e1e_16731a48",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Nit: A one-liner function for each command seems tedious to test and maintain. It would be a bit more economical for the business logic to call `tps_xfer_reg` directly. We could still have some logic in `tps_xfer_reg` to validate the size of the buffer based on the expected output type for the command. I\u0027m not sure what the best way would be to ensure that the caller uses the correct output type.",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2edf365_91004c7b",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T23:21:50Z",
+      "side": 1,
+      "message": "Nit: The registers where the underlying format is functionally the same could be collapsed into a common structure definition, e.g. `reg_vendor_id` and `reg_device_id`.",
+      "fixSuggestions": [
+        {
+          "fixId": "aaa2cdc3_60969d40",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/tps6699x_reg.h",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 144,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/usbc/tps6699x_reg.h",
+              "range": {
+                "startLine": 154,
+                "startChar": 0,
+                "endLine": 163,
+                "endChar": 0
+              },
+              "replacement": "union reg_protocol_version \u003d reg_vendor_id;\n"
+            },
+            {
+              "path": "zephyr/drivers/usbc/tps6699x_reg.h",
+              "range": {
+                "startLine": 169,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": "union reg_mode \u003d reg_vendor_id;\n"
+            },
+            {
+              "path": "zephyr/drivers/usbc/tps6699x_reg.h",
+              "range": {
+                "startLine": 184,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "union reg_type \u003d reg_vendor_id;\n"
+            },
+            {
+              "path": "zephyr/drivers/usbc/tps6699x_reg.h",
+              "range": {
+                "startLine": 286,
+                "startChar": 0,
+                "endLine": 295,
+                "endChar": 0
+              },
+              "replacement": "union reg_version \u003d reg_vendor_id;\n"
+            }
+          ]
+        }
+      ],
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
