@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87039727_e962f1f7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3105,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-05T18:19:04Z",
+      "side": 1,
+      "message": "How are we calling `CMD_PDC_GET_CABLE_PROPERTY` initially to seed this cache? We never reach `public_api_block(port, cmd);` with `cmd \u003d\u003d CMD_PDC_GET_CABLE_PROPERTY`",
+      "range": {
+        "startLine": 3105,
+        "startChar": 2,
+        "endLine": 3105,
+        "endChar": 55
+      },
+      "revId": "5713ea18f8d32ddfc63c3d4df61765c7929a0787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
