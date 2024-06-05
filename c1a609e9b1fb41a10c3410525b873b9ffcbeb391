@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d829ecf_6f83fdc4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to do anything.  `st_idle_entry()` clears `data-\u003ecmd`.\n\nCan `ST_INIT` be eliminated if you set `data-\u003einit_done` in the driver init function?",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb97528c_58e6a709",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "Please add a LOG_ERR for all instances that goto error recovery.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 37
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eca85e8_ccd2c7b0",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "LOG_ERR",
+      "range": {
+        "startLine": 591,
+        "startChar": 2,
+        "endLine": 591,
+        "endChar": 9
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b1743d0_d7459f12",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "ST_ERROR_RECOVERY?",
+      "range": {
+        "startLine": 592,
+        "startChar": 18,
+        "endLine": 592,
+        "endChar": 25
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a141cd6_f8ea08a0",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "This is common to all these direct access commands.\nAs a followup CL, consider maybe a lookup table to identify direct commands, or maybe have the indirect and direct command helpers return a value.\n\n```\nenum {\n    TPS_CMD_DIRECT, /* Caller should goto ST_IDLE */\n    TPS_CMD_INDIRECT, /* Caller goto ST_TASK_WAIT */\n    TPS_CMD_FAIL, /* Caller goto ST_ERROR_RECOVERY */\n```",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 0
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1f65a3_64f9fe13",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "This loop shouldn\u0027t be needed.  The GPIO interrupt callback already does this for you.",
+      "range": {
+        "startLine": 1521,
+        "startChar": 0,
+        "endLine": 1521,
+        "endChar": 51
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0828f2b_130425f7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "Considering the ST_IDLE already has a `k_event_wait`, this really only affects the polling while in the ST_TASK_WAIT.  Can this be shortened?",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1594,
+        "endChar": 22
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636e688c_edf66857",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T21:08:56Z",
+      "side": 1,
+      "message": "For a follow up CL, these fields don\u0027t need to be included with every command type.\n\nThe I2C write process can setup two separate buffers - one that contains the register number and length, and second message buffer for the command specific data.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
