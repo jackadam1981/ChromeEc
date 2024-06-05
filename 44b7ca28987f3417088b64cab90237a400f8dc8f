@@ -94,6 +94,30 @@
       },
       "revId": "44b7ca28987f3417088b64cab90237a400f8dc8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "671f8a00_79d006c3",
+        "filename": "zephyr/program/brox/brox/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-05T15:36:52Z",
+      "side": 1,
+      "message": "That seems like a pretty good trade off.  I\u0027d like to see a demo or have some documentation describing the workflows before turning this on by default.",
+      "parentUuid": "55c6521d_59f56bce",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "44b7ca28987f3417088b64cab90237a400f8dc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
