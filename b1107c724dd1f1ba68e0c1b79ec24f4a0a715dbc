@@ -16,6 +16,24 @@
       "message": "I notified the author about this as this upstream change seems wrong to me so it may get reverted in the near future, but I think it\u0027s fine to do this for now and move forward, if it gets reverted we can revert this as well.",
       "revId": "b1107c724dd1f1ba68e0c1b79ec24f4a0a715dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2bd69f5_1953ef67",
+        "filename": "third_party/boringssl/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-06-05T17:30:24Z",
+      "side": 1,
+      "message": "(https://github.com/zephyrproject-rtos/zephyr/pull/73047)",
+      "parentUuid": "cfee7c1a_9b7022a1",
+      "revId": "b1107c724dd1f1ba68e0c1b79ec24f4a0a715dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
