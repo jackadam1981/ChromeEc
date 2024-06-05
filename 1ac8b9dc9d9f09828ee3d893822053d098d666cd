@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7254be04_dccc923c",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-05T14:55:42Z",
+      "side": 1,
+      "message": "Out of scope: I never really thought about this before, but it\u0027s DC power on both sides of the charger. This name and most of our code references to AC are a little weird.",
+      "revId": "1ac8b9dc9d9f09828ee3d893822053d098d666cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
