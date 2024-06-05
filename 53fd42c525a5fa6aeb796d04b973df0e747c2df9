@@ -16,6 +16,23 @@
       "message": "Have to wait for https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/5582750 upstreaming.",
       "revId": "53fd42c525a5fa6aeb796d04b973df0e747c2df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070fd0a6_db615028",
+        "filename": "zephyr/program/rauru/overlay.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2024-06-05T08:02:24Z",
+      "side": 1,
+      "message": "Hi Eric,\n\nThe naming of the property has been changed from drive-current to drive-strength so that it conforms to the native naming in pincfg-node.yaml.\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/dts/bindings/pinctrl/pincfg-node.yaml#L55",
+      "revId": "53fd42c525a5fa6aeb796d04b973df0e747c2df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
