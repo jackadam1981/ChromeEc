@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99272326_7c36880a",
+        "filename": "zephyr/program/brox/lotso/include/keyboard_customization.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-05T17:01:19Z",
+      "side": 1,
+      "message": "You don\u0027t need this because CONFIG_KEYBOARD_CUSTOMIZATION is always defined for lotso.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2a4efd06_e9c59e05",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/lotso/include/keyboard_customization.h",
+              "range": {
+                "startLine": 17,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/brox/lotso/include/keyboard_customization.h",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "8e70b9a5979123c63cc1a5d35908addfa650491f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746f9aca_ede819f4",
+        "filename": "zephyr/program/brox/lotso/src/keyboard_customization.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-05T17:01:19Z",
+      "side": 1,
+      "message": "Where is this table from? It\u0027s different from the cros keyboard matrix v3.0. For example, (r\u003d5, c\u003d4) should be 0x0022 and (7, 4) should be 0x002d.",
+      "range": {
+        "startLine": 23,
+        "startChar": 43,
+        "endLine": 23,
+        "endChar": 49
+      },
+      "revId": "8e70b9a5979123c63cc1a5d35908addfa650491f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
