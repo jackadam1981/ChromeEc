@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdfb058a_2d1210de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-05T06:19:02Z",
+      "side": 1,
+      "message": "```\nlotso-rev0 /usr/local # ./flash_fp_mcu \n/usr/local/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is brox (brox).\nUsing config for brox.\n# Stopping biod\nbiod stop/waiting\n# Stopping timberslide\ntimberslide stop/waiting\nDetected chip NPCX.\n# Flashing \u0027NPCX\u0027 with \u0027/opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\u0027 over SPI\nFlashing SPI device ID: spi-PRP0001:00\nGetting model name.\n# Flashing \u0027/opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\u0027 over SPI\n# cmd flags\u003d \u0027 -p linux_spi:dev\u003d/dev/spidev0.0,spispeed\u003d250k -w /opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\u0027\n# flashrom  -p linux_spi:dev\u003d/dev/spidev0.0,spispeed\u003d250k -w /opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\nflashrom 1.4.0-devel on Linux 6.6.32-02855-gb9bccfebac44 (x86_64)\nflashrom is free software, get the source code at https://flashrom.org\n\nFound Winbond flash chip \"W25Q80.V\" (1024 kB, SPI) on linux_spi.\n\u003d\u003d\u003d\nThis flash part has status UNTESTED for operations: WP\nThe test status of this chip may have been updated in the latest development\nversion of flashrom. If you are running the latest development version,\nplease email a report to flashrom@flashrom.org if any of the above operations\nwork correctly for you with this flash chip. Please include the flashrom log\nfile for all operations you tested (see the man page for details), and mention\nwhich mainboard or programmer you tested in the subject line.\nYou can also try to follow the instructions here:\nhttps://www.flashrom.org/contrib_howtos/how_to_mark_chip_tested.html\nThanks for your help!\nReading old flash chip contents... done.\nErasing and writing flash chip... SUCCESS.\nVerifying flash... VERIFIED.\nSUCCESS\nPower cycling the FPMCU.\nRO version:    buccaneer_v2.0.24657-51824d5773\nRO cros fwid:  buccaneer_15864.0.0\nRW version:    buccaneer_v2.0.24657-51824d5773\nRW cros fwid:  buccaneer_15864.0.0\nFirmware copy: RW\nBuild info:    buccaneer_v2.0.24657-51824d5773 boringssl:v0.0.8052-083f72d72 cryptoc:v1.9308_26_0.14-0dd6790 private:v2.1.9999-51824d57 elan:s\nTool version:  v2.0.25252-8abd51b9f5 2024-06-03 16:19:34 @chromeos-release-builder-us-central1-b-x32-128-elwi\nEC uptime: 2.027 seconds\nAP resets since EC boot: 0\nMost recent AP reset causes:\nEC reset flags at last EC boot: power-on | sysjump\n# Restarting timberslide\ntimberslide (/sys/kernel/debug/cros_fp/console_log) start/running, process 10053\n# Restarting biod\nbiod start/running, process 10059\n```",
+      "revId": "d972905a4529c58d0c712489195d51c81408e853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
