@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b87c45_3c605117",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-05T14:40:28Z",
+      "side": 1,
+      "message": "I wrote similar test suite for `native_posix` https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/rollback/src/main.c. Is it possible to run this test on dragonclaw board?",
+      "revId": "cacc2ec6b12c10431e5c4b7725f24393e6c007d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46adbc2_d754a1b6",
+        "filename": "zephyr/test/hwtest/src/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-05T14:40:28Z",
+      "side": 1,
+      "message": "This is not true. In CrosEC rollback regions are always initiated, but the mechanism is more \"obfuscated\". See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/firmware_image.S;l\u003d39-47;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46 and https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/firmware_image.lds.S;l\u003d98-102;drc\u003df37804a6bdb895e60c484902a91aae79e64f2e25 for more details.",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "cacc2ec6b12c10431e5c4b7725f24393e6c007d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
