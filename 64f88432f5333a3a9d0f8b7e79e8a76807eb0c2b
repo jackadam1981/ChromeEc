@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c57d2d_78a7c3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-05T06:57:16Z",
+      "side": 1,
+      "message": "According to the LED spec in b/343125047 comment1, I think it can be implemented using pure device tree.\n\nNo need to add C code (and unit tests).",
+      "revId": "64f88432f5333a3a9d0f8b7e79e8a76807eb0c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
