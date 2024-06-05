@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2650c442_ac72f027",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb9766fd_4e74456a",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da0d94fd_4673c88e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08095fe9_be79d438",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "added details per data sheet",
+      "parentUuid": "da0d94fd_4673c88e",
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20509f6a_dec82371",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-06-03T22:00:43Z",
       "side": 1,
       "message": "nit: exceeds 80 chars",
+      "range": {
+        "startLine": 52,
+        "startChar": 70,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429ad2d0_703546d1",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "only 78 chars. secondly ran:\n$ ./../../repohooks/pre-upload.py\nchecked it already",
+      "parentUuid": "20509f6a_dec82371",
       "range": {
         "startLine": 52,
         "startChar": 70,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "085efa74_dd5390bc",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d762f4c7_322acfc0",
+      "range": {
+        "startLine": 181,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 4
+      },
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6808e77_3e3bfeb3",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-06-03T22:00:43Z",
       "side": 1,
       "message": "needed? already disabled",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d99b1f_9c4a3b88",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "need them for cros_system_xec_soc_reset() API",
+      "parentUuid": "b6808e77_3e3bfeb3",
       "range": {
         "startLine": 195,
         "startChar": 0,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9af105_4d39ad60",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "Done.\nbut need to keep cros_system_xec_soc_reset(), because this is one API\n.soc_reset \u003d cros_system_xec_soc_reset,",
+      "parentUuid": "4a0000a6_2dd62cc7",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 16
+      },
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e1c47ab_df379382",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "643e5094_f8724ed5",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e1c47ab_df379382",
+      "range": {
+        "startLine": 329,
+        "startChar": 1,
+        "endLine": 329,
+        "endChar": 4
+      },
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef3dee5e_4d8c7be2",
@@ -169,6 +331,24 @@
       "writtenOn": "2024-06-03T22:00:43Z",
       "side": 1,
       "message": "MTL RVP doesn\u0027t have the H/W feature, remove it",
+      "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ca2a40_2648c533",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-05T17:49:03Z",
+      "side": 1,
+      "message": "ok, removed it.\nsupposed to provide an example how to enable it in project file",
+      "parentUuid": "ef3dee5e_4d8c7be2",
       "revId": "37404b797a309533b9937f52ea45826f9f1e3ed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
