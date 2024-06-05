@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c0297bb_52767ffe",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-05T01:30:02Z",
+      "side": 1,
+      "message": "GPD3: N4 (EC_DSW_PWROK) is from the EC, and EM61 (EC_PCH_PWR_BTN_ODL) is from the AP, so they do not conflict.",
+      "parentUuid": "ffb63952_cb6c59e0",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "914f68dd_de50530e",
         "filename": "zephyr/program/brox/lotso/gpio.dtsi",
         "patchSetId": 8
@@ -105,6 +129,30 @@
       "writtenOn": "2024-06-04T23:36:56Z",
       "side": 1,
       "message": "Net is called `SEN_MODE2_EC_PCH_INT_ODL` in the schematic, if you want to match the naming of GPIOB6 / node `sen_mode1_ec_pch_wake_odl` further down in this file",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef1b8d7_4b497aa1",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-05T01:30:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "914f68dd_de50530e",
       "range": {
         "startLine": 86,
         "startChar": 23,
@@ -140,6 +188,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f70a202_90d4d3c7",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-05T01:30:02Z",
+      "side": 1,
+      "message": "GPD5: N7 (EC_PCH_SYS_PWROK) is from the EC, and  EP56 (SLP_S4_L) is from the AP, so they do not conflict.",
+      "parentUuid": "092ea4ed_c4648170",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2806aeb1_495dc3aa",
         "filename": "zephyr/program/brox/lotso/gpio.dtsi",
         "patchSetId": 8
@@ -151,6 +223,30 @@
       "writtenOn": "2024-06-04T23:36:56Z",
       "side": 1,
       "message": "Pinmux",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "a487c1291a84be68770e969eb8269a921ded18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ee341d_6b164e7a",
+        "filename": "zephyr/program/brox/lotso/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-05T01:30:02Z",
+      "side": 1,
+      "message": "GPD0: N1 (NOTEBOOK_MODE_R) is from the EC, and EM56 (BATLOW_L) is from the AP, so they do not conflict.",
+      "parentUuid": "2806aeb1_495dc3aa",
       "range": {
         "startLine": 151,
         "startChar": 3,
