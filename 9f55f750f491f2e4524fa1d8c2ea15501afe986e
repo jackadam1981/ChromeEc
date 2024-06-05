@@ -45,6 +45,30 @@
       },
       "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4843dc_a8cee602",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-05T19:12:05Z",
+      "side": 1,
+      "message": "Sure, this can be done in CL:5540431.",
+      "parentUuid": "17f2d2c6_f1b47c68",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
