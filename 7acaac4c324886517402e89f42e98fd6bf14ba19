@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "754ab31b_775d21a6",
+        "filename": "chip/npcx/rom_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-05T19:23:17Z",
+      "side": 1,
+      "message": "IIRC,volatile has been used with the download_from_flash implementation in our source code for some time. However, running a test where I removed the volatile keyword from all of the ROM functions and then exercised the ROM functions via console commands: \u0027reboot RO\u0027 which exercises download_from_flash and \u0027rollbackaddent\u0027 which exercises OTP APIs, I didn\u0027t see any negative side effects. To Caveh\u0027s point, the underlying code in ROM can\u0027t change per chip by definition, so I don\u0027t see a reason why volatile is needed",
+      "parentUuid": "c3ed713e_c3acd982",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "7acaac4c324886517402e89f42e98fd6bf14ba19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52cecd52_2f7fa10d",
         "filename": "chip/npcx/rom_chip.h",
         "patchSetId": 2
