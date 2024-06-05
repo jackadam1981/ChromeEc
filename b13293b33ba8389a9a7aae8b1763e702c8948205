@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6f003c_b1fe3ab4",
+        "filename": "test/otp_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-05T21:32:15Z",
+      "side": 1,
+      "message": "Do we really need to break these out into two separate functions? IIUC, your change will result in the mock only being run on the host (not the HW). If we kept the original test_otp_key() function in place, on HW that has already been provisioned, otp_key_provision() just reads the OTP key and returns EC_SUCCESS. On HW that hasn\u0027t been provisioned, the test would fail. Based on that, it looks like we\u0027re adding codewithout increasing test coverage since we\u0027ll read the OTP key on HW anyway. We\u0027d also potentially be introducing problems since the test_otp_key_read() would fail on unprovisioned hardware.",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba89549f_12f3ca73",
+        "filename": "test/otp_key.mocklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-05T21:32:15Z",
+      "side": 1,
+      "message": "Can you explain your thinking as to why we would only want to use the mock on the HOST and not HW?",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
