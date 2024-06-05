@@ -34,6 +34,23 @@
       "message": "We need this CL for Kyogre EVT, which will be built by this week, thank you.",
       "revId": "343db01905e66311ccc857794413500127bf6200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27d6980_d914fd1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-06-05T04:41:38Z",
+      "side": 1,
+      "message": "Seems like we have missing CLs to resolve following errors.\n```\nchromeos-ec-scp-0.0.1-r77: \u001b[01m\u001b[Kcommon/mkbp_fifo.c:34:45:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Karray type has incomplete element type \u0027\u001b[01m\u001b[Kstruct ec_response_get_next_event_v3\u001b[m\u001b[K\u0027\nchromeos-ec-scp-0.0.1-r77:    34 | static struct ec_response_get_next_event_v3 \u001b[01;31m\u001b[Kfifo\u001b[m\u001b[K[FIFO_DEPTH];\nchromeos-ec-scp-0.0.1-r77:       |                                             \u001b[01;31m\u001b[K^~~~\u001b[m\u001b[K\nchromeos-ec-scp-0.0.1-r77: \u001b[01m\u001b[Kcommon/mkbp_fifo.c:\u001b[m\u001b[K In function \u0027\u001b[01m\u001b[Kfifo_remove\u001b[m\u001b[K\u0027:\nchromeos-ec-scp-0.0.1-r77: \u001b[01m\u001b[Kcommon/mkbp_fifo.c:85:21:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kvariable \u0027\u001b[01m\u001b[Klast\u001b[m\u001b[K\u0027 set but not used [\u001b[01;31m\u001b[K\u001b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable\u0007-Werror\u003dunused-but-set-variable\u001b]8;;\u0007\u001b[m\u001b[K]\nchromeos-ec-scp-0.0.1-r77:    85 |                 int \u001b[01;31m\u001b[Klast\u001b[m\u001b[K \u003d (fifo_start + FIFO_DEPTH - 1) % FIFO_DEPTH;\nchromeos-ec-scp-0.0.1-r77:       |                     \u001b[01;31m\u001b[K^~~~\u001b[m\u001b[K\nchromeos-ec-scp-0.0.1-r77: \u001b[01m\u001b[Kcommon/mkbp_fifo.c:\u001b[m\u001b[K In function \u0027\u001b[01m\u001b[Kmkbp_fifo_clear_keyboard\u001b[m\u001b[K\u0027:\nchromeos-ec-scp-0.0.1-r77: \u001b[01m\u001b[Kcommon/mkbp_fifo.c:139:21:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kvariable \u0027\u001b[01m\u001b[Kcur\u001b[m\u001b[K\u0027 set but not used [\u001b[01;31m\u001b[K\u001b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable\u0007-Werror\u003dunused-but-set-variable\u001b]8;;\u0007\u001b[m\u001b[K]\nchromeos-ec-scp-0.0.1-r77:   139 |                 int \u001b[01;31m\u001b[Kcur\u001b[m\u001b[K \u003d (fifo_start + i) % FIFO_DEPTH;\nchromeos-ec-scp-0.0.1-r77:       |                     \u001b[01;31m\u001b[K^~~\u001b[m\u001b[K\nchromeos-ec-scp-0.0.1-r77: At top level:\nchromeos-ec-scp-0.0.1-r77: \u001b[01m\u001b[Kcommon/mkbp_fifo.c:34:45:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[K\u0027\u001b[01m\u001b[Kfifo\u001b[m\u001b[K\u0027 defined but not used [\u001b[01;31m\u001b[K\u001b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\u0007-Werror\u003dunused-variable\u001b]8;;\u0007\u001b[m\u001b[K]\nchromeos-ec-scp-0.0.1-r77:    34 | static struct ec_response_get_next_event_v3 \u001b[01;31m\u001b[Kfifo\u001b[m\u001b[K[FIFO_DEPTH];\nchromeos-ec-scp-0.0.1-r77:       |                                             \u001b[01;31m\u001b[K^~~~\u001b[m\u001b[K\nchromeos-ec-scp-0.0.1-r77: cc1: all warnings being treated as errors\nchromeos-ec-scp-0.0.1-r77:   CC      RW/common/peripheral.o\nchromeos-ec-scp-0.0.1-r77: make: *** [Makefile.rules:642: build/corsola_scp/RW/common/mkbp_fifo.o] Error 1\n```",
+      "revId": "343db01905e66311ccc857794413500127bf6200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
