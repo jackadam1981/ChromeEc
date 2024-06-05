@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d335edb_0f95909c",
+        "filename": "board/adlrvpp_mchp1521/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-05T20:43:26Z",
+      "side": 1,
+      "message": "Please put this in a separate CL.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "40b187ff_8bef74bf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/adlrvpp_mchp1521/board.h",
+              "range": {
+                "startLine": 145,
+                "startChar": 0,
+                "endLine": 146,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "3c531fbeab3b7a02e2734df97ae7bc0243d8852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e299b04b_3f59c11c",
+        "filename": "zephyr/test/drivers/acpi_strings_fifo/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-05T20:43:26Z",
+      "side": 1,
+      "message": "nit: You\u0027re not supposed to put this in testcase.yaml?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 25
+      },
+      "revId": "3c531fbeab3b7a02e2734df97ae7bc0243d8852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48144eaa_2b25197e",
+        "filename": "zephyr/test/drivers/acpi_strings_fifo/src/acpi_strings_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-05T20:43:26Z",
+      "side": 1,
+      "message": "Do you need this? Looks like you\u0027re testing the test code.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "3c531fbeab3b7a02e2734df97ae7bc0243d8852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
