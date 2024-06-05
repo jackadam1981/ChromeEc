@@ -119,6 +119,30 @@
       },
       "revId": "55bd04158ee44d5164563df912e25bc0c24cae21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06694743_a52b7c3b",
+        "filename": "zephyr/program/brox/lotso/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-05T07:01:51Z",
+      "side": 1,
+      "message": "Brox uses the PDC to measure the VBUS but Lotso uses the charger, and Lotso include the `brox/program.conf` so we should set `CONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_PDC\u003dn` and `CONFIG_PLATFORM_EC_USB_PD_VBUS_MEASURE_CHARGER\u003dy`",
+      "parentUuid": "20ec90bc_39f5e00b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "55bd04158ee44d5164563df912e25bc0c24cae21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
