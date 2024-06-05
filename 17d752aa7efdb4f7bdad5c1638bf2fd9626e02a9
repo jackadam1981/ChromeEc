@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1c2f6e_d6c88fd3",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-05T00:51:47Z",
+      "side": 1,
+      "message": "These logs were mostly added for debugging while i was developing this (and the LPC channel was disabled by default so they didn\u0027t seem noisy otherwise), but there\u0027s not much reason to keep them at all so I\u0027ve removed them.",
+      "parentUuid": "a3001060_76233a77",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 17
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f05caf_85bda9ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-04T14:35:10Z",
       "side": 1,
       "message": "Do you need this cast?",
+      "range": {
+        "startLine": 191,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 34
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193b52ec_499461a3",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-05T00:51:47Z",
+      "side": 1,
+      "message": "It needs *a* cast here to get a byte-addressible pointer since we\u0027re starting with a `struct battery_static_info*`, but after studying what C11 has to say about pointer casts, arithmetic and UB I do think we\u0027re okay to skip the intermediate `uintptr_t`.",
+      "parentUuid": "02f05caf_85bda9ea",
       "range": {
         "startLine": 191,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca5cda8_5b0d9a29",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-05T00:51:47Z",
+      "side": 1,
+      "message": "Perhaps, but I opted to give this index the same behavior as the others (continuously reading zero after reaching the end of the data) since that also simplifies possible extensions to this field later (if it turns out to want to be able to return more than one byte).",
+      "parentUuid": "8f077f87_b4921c65",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 11
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb78d088_7c88e722",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "611d2ab8_2211cb5a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-05T00:51:47Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any reason to. The EC always returns 0xff for reads of unknown addresses and ignores writes to them, so the AP can always safely probe for support by writing 0 here and checking that it reads back a value that is not zero (perhaps an EC that understands this feature but has it disabled) and not 0xff (an EC that doesn\u0027t understand this feature).",
+      "parentUuid": "bb78d088_7c88e722",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 37
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57cb92f_ffb2395f",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-06-04T14:35:10Z",
       "side": 1,
       "message": "This is defined at line 179.",
+      "range": {
+        "startLine": 588,
+        "startChar": 8,
+        "endLine": 588,
+        "endChar": 27
+      },
+      "revId": "17d752aa7efdb4f7bdad5c1638bf2fd9626e02a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc3c211_895c8752",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-05T00:51:47Z",
+      "side": 1,
+      "message": "Not sure why that ended up here. Removed.",
+      "parentUuid": "b57cb92f_ffb2395f",
       "range": {
         "startLine": 588,
         "startChar": 8,
