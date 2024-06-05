@@ -16,6 +16,24 @@
       "message": "According to the LED spec in b/343125047 comment1, I think it can be implemented using pure device tree.\n\nNo need to add C code (and unit tests).",
       "revId": "64f88432f5333a3a9d0f8b7e79e8a76807eb0c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b7a144_af2856ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2024-06-05T07:25:37Z",
+      "side": 1,
+      "message": "Because this project have different led behavior between SKU 180 and SKU 360",
+      "parentUuid": "14c57d2d_78a7c3ca",
+      "revId": "64f88432f5333a3a9d0f8b7e79e8a76807eb0c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
