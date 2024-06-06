@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -16,6 +17,8 @@
 #include "system.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
+#include "usb_pd.h"
+#include "usb_tc_sm.h"
 
 #include <zephyr/logging/log.h>
 
@@ -170,3 +173,127 @@ void board_reset_pd_mcu(void)
 	 */
 }
 /* LCOV_EXCL_STOP */
+
+// #define BATT_LVL_CURRENT_LIMITED 51 /* % */
+#define DISCHARGE_CURRENT_LIMITED (-1000) /* mA */
+
+#define PDO_FIXED_FLAGS \
+	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
+
+static bool current_limited;
+
+static const uint32_t pd_src_pdo_1A5[] = {
+	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
+};
+
+static const uint32_t pd_src_pdo_3A[] = {
+	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
+};
+
+int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
+{
+	if (current_limited) {
+		*src_pdo = pd_src_pdo_1A5;
+		return ARRAY_SIZE(pd_src_pdo_1A5);
+	}
+
+	*src_pdo = pd_src_pdo_3A;
+
+	return ARRAY_SIZE(pd_src_pdo_3A);
+}
+
+static void update_src_pdo_deferred(void);
+DECLARE_DEFERRED(update_src_pdo_deferred);
+static void update_src_pdo_deferred(void)
+{
+	static int get_curr[4];
+	static int i;
+	static bool limited_status;
+	int j;
+	int hold_flag,release_flag;
+	const struct batt_params *batt = charger_current_battery_params();
+	// struct battery_static_info *bs = &battery_static[BATT_IDX_MAIN];
+
+	// CPRINTSUSB("%s", bs->model_ext);
+
+	get_curr[i++] = batt->current;
+
+	if (i >= 4) {
+		i = 0;
+	}
+
+	hold_flag = 0;
+	release_flag = 0;
+
+	for (j = 0;j < 4;j++) {
+		// printk("--get_curr_%d=%d\n",j,get_curr[j]);
+		if (get_curr[j] < DISCHARGE_CURRENT_LIMITED) {
+			hold_flag++;
+		} else if (get_curr[j] < 0) {
+			release_flag++;
+		} else {
+			CPRINTSUSB("Battery is not discharged");
+			hook_call_deferred(&update_src_pdo_deferred_data, 500 * MSEC);
+			return;
+		}
+	}
+
+	if (hold_flag == 4) {
+		for (j = 0; j < board_get_usb_pd_port_count(); j++) {
+			if (!tc_is_attached_src(j)) {
+				break;
+			}
+		}
+
+		if (j == CONFIG_USB_PD_PORT_MAX_COUNT) {
+			current_limited = true;
+
+			if (limited_status == current_limited) {
+				hook_call_deferred(&update_src_pdo_deferred_data, 500 * MSEC);
+				return;
+			}
+			CPRINTSUSB("Battery over current!");
+
+			for (j = 0; j < board_get_usb_pd_port_count(); j++) {
+				CPRINTSUSB("Set C%d src pdo 1A5", j);
+				typec_set_source_current_limit(j, TYPEC_RP_1A5);
+				pd_update_contract(j);
+			}
+			limited_status = current_limited;
+		}
+	} else if (release_flag == 4) {
+		current_limited = false;
+
+		if (limited_status == current_limited) {
+			hook_call_deferred(&update_src_pdo_deferred_data, 500 * MSEC);
+			return;
+		}
+		CPRINTSUSB("Release current limited");
+
+		for (j = 0; j < board_get_usb_pd_port_count(); j++) {
+			if (tc_is_attached_src(j)) {
+				CPRINTSUSB("Set C%d src pdo 3A", j);
+				typec_set_source_current_limit(j, TYPEC_RP_3A0);
+				pd_update_contract(j);
+			}
+		}
+		limited_status = current_limited;
+	}
+
+	hook_call_deferred(&update_src_pdo_deferred_data, 500 * MSEC);
+}
+
+static void check_batt_current(void)
+{
+	/* Deferred 5s to avoid pd state conflict */
+	hook_call_deferred(&update_src_pdo_deferred_data, 5 * SECOND);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_batt_current, HOOK_PRIO_DEFAULT);
+
+static void stop_check_batt(void)
+{
+	// gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_prochot_odl), 1);
+	current_limited = false;
+	hook_call_deferred(&update_src_pdo_deferred_data, -1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, stop_check_batt, HOOK_PRIO_DEFAULT);
