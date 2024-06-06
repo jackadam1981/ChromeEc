@@ -20,6 +20,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/smf.h>
 #include <zephyr/sys/atomic.h>
+#include <zephyr/sys_clock.h>
 
 #ifdef CONFIG_ZTEST
 #include <zephyr/ztest.h>
@@ -73,6 +74,11 @@ LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
  * @brief maximum number of VDOs
  */
 #define VDO_NUM 8
+
+/**
+ * @brief Cached duration for VBUS voltage.
+ */
+#define VBUS_READ_CACHE_MS 500
 
 /**
  * @brief PDC driver commands
@@ -521,6 +527,11 @@ struct pdc_src_attached_policy_t {
 #define IDENTITY_PID_VDO_IDX 1
 
 /**
+ * @brief Invalid value for VDO used to check if VDO has been queried already.
+ */
+#define INVALID_VDO_VALUE -1u
+
+/**
  * @brief Table of VDO types to request in the GET_VDO command
  */
 static const enum vdo_type_t vdo_discovery_list[] = {
@@ -603,6 +614,11 @@ struct pdc_port_t {
 	/** SINK_PATH_EN temp variable used with CMD_PDC_SET_SINK_PATH command
 	 */
 	bool sink_path_en;
+	/**
+	 * Time at which the current vbus value is expired and should be
+	 * re-queried.
+	 */
+	k_timepoint_t vbus_expired;
 	/** VBUS temp variable used with CMD_PDC_GET_VBUS_VOLTAGE command */
 	uint16_t vbus;
 	/** UOR variable used with CMD_PDC_SET_UOR command */
@@ -1008,6 +1024,13 @@ static bool handle_connector_status(struct pdc_port_t *port)
 		atomic_set(&port->hard_reset_sent, true);
 	}
 
+	/* On potential power changes, expire the vbus cache immediately. */
+	if (conn_status_change_bits.negotiated_power_level ||
+	    conn_status_change_bits.connector_partner ||
+	    conn_status_change_bits.pwr_direction) {
+		port->vbus_expired = sys_timepoint_calc(K_NO_WAIT);
+	}
+
 	if (!status->connect_status) {
 		/* Port is not connected */
 		set_pdc_state(port, PDC_UNATTACHED);
@@ -1081,7 +1104,7 @@ static void discovery_info_init(struct pdc_port_t *port)
 	/* Create the list of VDO types being requested */
 	for (i = 0; i < ARRAY_SIZE(vdo_discovery_list); i++) {
 		port->vdo_type[i] = vdo_discovery_list[i];
-		port->vdo[i] = 0;
+		port->vdo[i] = INVALID_VDO_VALUE;
 	}
 
 	/* Clear the DP Config VDO, which stores the DP pin assignment */
@@ -1229,6 +1252,9 @@ static void pdc_unattached_entry(void *obj)
 
 	/* Ensure VDOs aren't valid from previous connection */
 	discovery_info_init(port);
+
+	/* Clear VBUS cache timeout. */
+	port->vbus_expired = sys_timepoint_calc(K_NO_WAIT);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port);
@@ -2715,9 +2741,17 @@ test_mockable bool pdc_power_mgmt_get_partner_data_swap_capable(int port)
 
 int pdc_power_mgmt_get_vbus_voltage(int port)
 {
+	struct pdc_port_t *port_data;
+
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
 		return 0;
+	}
+
+	port_data = &pdc_data[port]->port;
+
+	if (!sys_timepoint_expired(port_data->vbus_expired)) {
+		goto complete;
 	}
 
 	/* Block until command completes */
@@ -2726,6 +2760,10 @@ int pdc_power_mgmt_get_vbus_voltage(int port)
 		return 0;
 	}
 
+	port_data->vbus_expired =
+		sys_timepoint_calc(K_MSEC(VBUS_READ_CACHE_MS));
+
+complete:
 	/* Return VBUS */
 	return pdc_data[port]->port.vbus;
 }
@@ -3200,7 +3238,7 @@ uint16_t pdc_power_mgmt_get_identity_vid(int port)
 	 * capable.
 	 *
 	 */
-	if (pdc->vdo[IDENTITY_VID_VDO_IDX] == 0) {
+	if (pdc->vdo[IDENTITY_VID_VDO_IDX] == INVALID_VDO_VALUE) {
 		pdc_run_get_discovery(port);
 	}
 
@@ -3222,7 +3260,7 @@ uint16_t pdc_power_mgmt_get_identity_pid(int port)
 
 	pdc = &pdc_data[port]->port;
 
-	if (pdc->vdo[IDENTITY_VID_VDO_IDX] == 0) {
+	if (pdc->vdo[IDENTITY_VID_VDO_IDX] == INVALID_VDO_VALUE) {
 		pdc_run_get_discovery(port);
 	}
 
@@ -3244,7 +3282,7 @@ uint8_t pdc_power_mgmt_get_product_type(int port)
 
 	pdc = &pdc_data[port]->port;
 
-	if (pdc->vdo[IDENTITY_PTYPE_VDO_IDX] == 0) {
+	if (pdc->vdo[IDENTITY_PTYPE_VDO_IDX] == INVALID_VDO_VALUE) {
 		pdc_run_get_discovery(port);
 	}
 
