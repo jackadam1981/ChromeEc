@@ -2798,19 +2798,31 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 	switch (state) {
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
+		if (port_data->una_policy.cc_mode == CCOM_DRP) {
+			goto skip_ccom;
+		}
 		port_data->una_policy.cc_mode = CCOM_DRP;
 		atomic_set_bit(port_data->una_policy.flags, UNA_POLICY_CC_MODE);
 		break;
 	/* Stay in src until disconnect, then stay in sink forever */
 	case PD_DRP_TOGGLE_OFF:
+		if (port_data->una_policy.cc_mode == CCOM_RD) {
+			goto skip_ccom;
+		}
 		port_data->una_policy.cc_mode = CCOM_RD;
 		atomic_set_bit(port_data->una_policy.flags, UNA_POLICY_CC_MODE);
 		break;
 	/* Stay in current power role, don't switch. No auto-toggle support */
 	case PD_DRP_FREEZE:
 		if (pdc_power_mgmt_is_source_connected(port)) {
+			if (port_data->una_policy.cc_mode == CCOM_RP) {
+				goto skip_ccom;
+			}
 			port_data->una_policy.cc_mode = CCOM_RP;
 		} else {
+			if (port_data->una_policy.cc_mode == CCOM_RD) {
+				goto skip_ccom;
+			}
 			port_data->una_policy.cc_mode = CCOM_RD;
 		}
 		atomic_set_bit(port_data->una_policy.flags, UNA_POLICY_CC_MODE);
@@ -2842,6 +2854,8 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 		}
 		break;
 	}
+
+skip_ccom:
 
 	port_data->dual_role_state = state;
 }
