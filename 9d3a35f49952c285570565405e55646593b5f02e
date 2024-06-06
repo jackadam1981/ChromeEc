@@ -69,6 +69,23 @@
       "parentUuid": "b2e18ab4_5ebc9b43",
       "revId": "9d3a35f49952c285570565405e55646593b5f02e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da58c65_0a6e3da4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-06-06T15:32:55Z",
+      "side": 1,
+      "message": "Per offline chat, the fast-forward will only be done around branching time (e.g. N-1) so that ec built from the firmware branch will be relatively in sync with N-1.",
+      "revId": "9d3a35f49952c285570565405e55646593b5f02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
