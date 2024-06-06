@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54bd226_20f83ee5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2702,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:32:12Z",
+      "side": 1,
+      "message": "Nit prefer that you add an else to explicitly set `irq_pending_for_idle \u003d false;`.",
+      "range": {
+        "startLine": 2699,
+        "startChar": 0,
+        "endLine": 2702,
+        "endChar": 0
+      },
+      "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
