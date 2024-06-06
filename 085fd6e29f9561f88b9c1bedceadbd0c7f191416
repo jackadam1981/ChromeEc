@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f359934_8403b0ed",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T16:20:03Z",
+      "side": 1,
+      "message": "This register isn\u0027t shown in the datasheet.  Can you confirm this setting?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9159162f_44043d38",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T16:20:03Z",
+      "side": 1,
+      "message": "The datasheet doesn\u0027t show start charging limits, only the operating charge and discharge.  Where does the setting 50C come from?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7b24c2_80d6d8eb",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,l24d3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T16:20:03Z",
+      "side": 1,
+      "message": "I don\u0027t see this register documented in the datasheet provided on the bug.\nCan you confirm the FET information?",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d3dacf_b4f12c27",
+        "filename": "zephyr/program/brox/lotso/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T16:20:03Z",
+      "side": 1,
+      "message": "Move the board changes into a separate CL.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
