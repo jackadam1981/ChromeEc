@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58330540_72bf3d2c",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-06T19:31:20Z",
+      "side": 1,
+      "message": "Hi VJ,\nThanks your review in phase 1 code.\nMchp has done this VCI support, gets VCI pin via dts in board level.\n\ntotal 5 files are impacted, I plan to split as 2 CLs:\nFirst CL:\nKconfig.system\ncros-ec,hibernate-vci-pins.yaml\n\nsecond CL:\ncros_system_xec.c\nadlrvp_mchp.dts\nmtlrvp_mchp.dts\n\nplease add any feedbacks, then I will upload 2 official CLs and add Google eng into CLs.\nTalk to you more in meeting soon.",
+      "parentUuid": "43e4b1ee_83620fc5",
+      "revId": "cf68376410a4b7e92fc75228775b728525f27f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45c6c362_05368855",
