@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4fa4b2_d5c2eca8",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:13:10Z",
+      "side": 1,
+      "message": "This appears to be public only for the tests.  Can the tests be adjusted so that they don\u0027t need direct access to the internal state?\n\nGenerally, accessing the internal state leads to writing tests that are just change detectors (i.e. changing the code requires changing the test).",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50b6360_e70c8021",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:13:10Z",
+      "side": 1,
+      "message": "Please rebase and use the ucsi_v3.h definition.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c501b17e_18c4719b",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:13:10Z",
+      "side": 1,
+      "message": "Move to ucsi_v3.h",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5eab8fe_79401ee2",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:13:10Z",
+      "side": 1,
+      "message": "Most of these have an equivalent struct/union already defined in ucsi_v3.h.  Can you refactor the PPM code to use the ucsi_v3.h as a parent to this CL?\n\nThat would reduce the size of this CL quite a bit.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
