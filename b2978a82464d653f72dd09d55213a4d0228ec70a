@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a201624_6df75d3a",
+        "filename": "zephyr/program/rauru/navi/src/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-06-06T23:06:30Z",
+      "side": 1,
+      "message": "Can you rename this to `dp_alt_mode.c` or `dp_hpd_gpio.c` to align with the common code naming?",
+      "revId": "b2978a82464d653f72dd09d55213a4d0228ec70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
