@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1658daae_20fc044e",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-06T17:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2304cae_3fb79d74",
+      "range": {
+        "startLine": 1174,
+        "startChar": 18,
+        "endLine": 1174,
+        "endChar": 38
+      },
+      "revId": "d739648f34a3a511b809a25368bbfb6e3225ed67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffbe483e_408efce8",
@@ -56,6 +80,30 @@
       "side": 1,
       "message": "\u003e \"repsonse\" is a possible misspelling of \"response\".\n\nPlease fix.",
       "parentUuid": "17a3dea1_d76955d9",
+      "range": {
+        "startLine": 544,
+        "startChar": 60,
+        "endLine": 544,
+        "endChar": 68
+      },
+      "revId": "d739648f34a3a511b809a25368bbfb6e3225ed67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60216fe6_5bea1ba3",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-06T17:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbe483e_408efce8",
       "range": {
         "startLine": 544,
         "startChar": 60,
