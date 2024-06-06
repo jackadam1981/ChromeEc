@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fabef72_a915f669",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-06-06T14:53:00Z",
+      "side": 1,
+      "message": "The name suggests 5ms, but the value is set to 1ms",
+      "parentUuid": "bd14fe07_7171fdd9",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6346c937_b58fd49f",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
@@ -123,6 +141,24 @@
       "writtenOn": "2024-05-16T18:53:50Z",
       "side": 1,
       "message": "Nit: You could make `get_src_polarity` overridable (and maybe add `board_` to the name) and just override it in the Servo board code. I\u0027m not 100% on this, because overrides pose their own readability burden, but I think there\u0027s some value in making the state machine code more streamlined, since it tends to be inherently complicated without dealing with board logic.",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8baef80_a7a7fbc1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-06-06T14:53:00Z",
+      "side": 1,
+      "message": "I thought about setting some other functions as overridable, where the logic is completely removed by servo to return `not_implemented`.",
+      "parentUuid": "b3e6c76d_bc89c3a9",
       "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
