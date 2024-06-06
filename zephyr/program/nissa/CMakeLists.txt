@@ -192,10 +192,8 @@ if(DEFINED CONFIG_BOARD_ORISA)
 	zephyr_include_directories("orisa/include")
 	zephyr_library_sources(
 			"orisa/src/keyboard.c"
-			"orisa/src/hdmi.c"
-			"orisa/src/touch_panel.c"
+			"orisa/src/usbc_stubs.c"
 	)
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "orisa/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "orisa/src/charger.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	"orisa/src/keyboard.c"
