@@ -22,6 +22,30 @@
       },
       "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c15bd61_d3552736",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2702,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-06T17:26:35Z",
+      "side": 1,
+      "message": "This gets cleared when we actually handle `irq_pending_for_idle` below. Clearing this prematurely (on an else) would potentially cause us to drop irq without handling it.",
+      "parentUuid": "f54bd226_20f83ee5",
+      "range": {
+        "startLine": 2699,
+        "startChar": 0,
+        "endLine": 2702,
+        "endChar": 0
+      },
+      "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
