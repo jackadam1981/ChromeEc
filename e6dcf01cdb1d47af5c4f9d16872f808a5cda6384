@@ -46,6 +46,30 @@
       },
       "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b1e801_61297733",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2702,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T20:13:13Z",
+      "side": 1,
+      "message": "Ack - I now see that you only process the interrupt from the IDLE state.  At the time the interrupt fires, we may not be idle.",
+      "parentUuid": "5c15bd61_d3552736",
+      "range": {
+        "startLine": 2699,
+        "startChar": 0,
+        "endLine": 2702,
+        "endChar": 0
+      },
+      "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
