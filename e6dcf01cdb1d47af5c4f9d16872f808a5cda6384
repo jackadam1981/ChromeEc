@@ -46,6 +46,30 @@
       },
       "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b08dc5_cbeedc0b",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:38:22Z",
+      "side": 0,
+      "message": "This is correct.  We need to keep calling `get_ara()` until no device responds.\n\nThis does highlight a limitation of putting multiple PD controllers onto the same I2C bus.  In that case, all PDCs need to share the interrupt pin, and we probably need a common GET_ARA handler that can dispatch the correct driver ISR based on the I2C address that responds.  This would have to live outside the individual PDC driver.",
+      "parentUuid": "5c132ef7_999e21c2",
+      "range": {
+        "startLine": 902,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 50
+      },
+      "revId": "e6dcf01cdb1d47af5c4f9d16872f808a5cda6384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
