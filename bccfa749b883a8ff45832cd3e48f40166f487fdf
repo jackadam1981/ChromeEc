@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9aa6bd_07e0e00a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-06T01:17:29Z",
+      "side": 1,
+      "message": "Before cherry-picking crrev/c/5593755, this patch failed the \"make run-otp_key\" test with the below error (even after \u0027rm -rf build\u0027). You may not want to kick off the merge until that dependent patch is merged\n\n  CC      RO/chip/host/otp_key.o\nIn file included from chip/host/otp_key.c:8:\n./chip/npcx/rom_chip.h: In function \u0027download_from_flash\u0027:\n./chip/npcx/rom_chip.h:77:3: error: cast to pointer from integer of different size [-Werror\u003dint-to-pointer-cast]\n   77 |  ((download_from_flash_ptr)*ADDR_DOWNLOAD_FROM_FLASH)(\n      |   ^\ncc1: all warnings being treated as errors\nmake[1]: *** [Makefile.rules:640: build/host/otp_key/RO/chip/host/otp_key.o] Error 1\nmake: *** [Makefile.rules:372: host-otp_key] Error 2",
+      "revId": "bccfa749b883a8ff45832cd3e48f40166f487fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5641d58d_cab45328",
+        "filename": "chip/host/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-06T01:17:29Z",
+      "side": 1,
+      "message": "Did you mean to remove the newline at the end of the file? I recall hook scripts or CQ complaining about this",
+      "revId": "bccfa749b883a8ff45832cd3e48f40166f487fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
