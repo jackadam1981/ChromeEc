@@ -1,0 +1,131 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f35697_5cac1b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:00:10Z",
+      "side": 1,
+      "message": "I like the direction this is moving.  Dropping the `platform_` layer makes helps readability a lot.",
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9332be_238db123",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:00:10Z",
+      "side": 1,
+      "message": "The stack size needs a Kconfig option.",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 0
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff249967_6ef63a81",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:00:10Z",
+      "side": 1,
+      "message": "You may want a separate Kconfig for the PPM thread priority.",
+      "range": {
+        "startLine": 752,
+        "startChar": 8,
+        "endLine": 752,
+        "endChar": 44
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6298450b_3aacca3a",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:00:10Z",
+      "side": 1,
+      "message": "Adding functions only used by the tests isn\u0027t ideal. Are there any existing public APIs that you can use to infer this information?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 28
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8617bf_0979d5bf",
+        "filename": "zephyr/subsys/ucsi/ppm_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:00:10Z",
+      "side": 1,
+      "message": "CONFIG_ZTEST",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "486637b6_c4a8244b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/ucsi/ppm_common.h",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "#ifdef CONFIG_ZTEST\n"
+            }
+          ]
+        }
+      ],
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
