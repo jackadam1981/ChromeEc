@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74666c7d_386c785b",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:23:36Z",
+      "side": 1,
+      "message": "If you change this to an atomic, this becomes `atomic_test_and_clear_bit()`",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "f5f797beba7b2696893ce64cf53c463f0b0e4577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
