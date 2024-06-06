@@ -38,6 +38,8 @@ INCBIN(tps6699x_fw,
 #define PDC_CMD_EVENT BIT(1)
 /** @brief Sync command completed bit */
 #define PDC_CMD_SYNC_EVENT BIT(2)
+/** @brief Requests the driver to enter the suspended state */
+#define PDC_CMD_SUSPEND_REQUEST_EVENT BIT(3)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -448,15 +450,20 @@ static void st_idle_run(void *o)
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	uint32_t events;
 
-	/* Do not start executing commands if suspended */
+	/* Wait for interrupt or a command to send */
+	events = k_event_wait(&data->pdc_event,
+			      (PDC_IRQ_EVENT | PDC_CMD_EVENT |
+			       PDC_CMD_SUSPEND_REQUEST_EVENT),
+			      false, K_FOREVER);
+
 	if (check_comms_suspended()) {
+		/* Do not start executing commands or processing IRQs if
+		 * suspended. We don't need to check the event flag, it is
+		 * only needed to wake this thread.
+		 */
 		set_state(data, ST_SUSPENDED);
 		return;
 	}
-
-	/* Wait for interrupt or a command to send */
-	events = k_event_wait(&data->pdc_event, (PDC_IRQ_EVENT | PDC_CMD_EVENT),
-			      false, K_FOREVER);
 
 	if (events & PDC_IRQ_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_IRQ_EVENT);
@@ -1526,6 +1533,11 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 		 * operations to complete first.
 		 */
 		suspend_comms();
+
+		/* Signal the driver with the suspend request event in case the
+		 * thread is blocking on an event to process.
+		 */
+		k_event_post(&data->pdc_event, PDC_CMD_SUSPEND_REQUEST_EVENT);
 
 		/* Wait for driver to enter the suspended state */
 		if (!WAIT_FOR((get_state(data) == ST_SUSPENDED),
