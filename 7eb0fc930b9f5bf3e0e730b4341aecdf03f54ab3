@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "483df0e4_0ed31610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-06T01:08:36Z",
+      "side": 1,
+      "message": "Back in the long long ago, C compilers used to complain for mixing declarations after code. Doing some research, it looks like that is outdated and this works fine with C99/clang/gcc. Just FYI, there was a reason I coded it that way initially",
+      "revId": "7eb0fc930b9f5bf3e0e730b4341aecdf03f54ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
