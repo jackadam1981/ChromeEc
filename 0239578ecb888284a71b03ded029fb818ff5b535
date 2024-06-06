@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "099bba09_aa438f2d",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:19:58Z",
+      "side": 1,
+      "message": "Should this be an atomic?",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d50b6360_e70c8021",
         "filename": "zephyr/include/usbc/ppm.h",
         "patchSetId": 7
