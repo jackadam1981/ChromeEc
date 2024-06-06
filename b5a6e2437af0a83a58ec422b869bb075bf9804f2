@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c89d85d6_21db684f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-06T14:49:27Z",
+      "side": 1,
+      "message": "Thanks for fixing this!\n\nUnfortunately CONFIG_POSIX_API (required to have POSIX headers) enables CONFIG_POSIX_BASE_DEFINITIONS which enables lots of stuff we don\u0027t need (22 files). All of these are `select`, so we can\u0027t just disable them in config.\n\nThis is not super painful - we just compile code that will be dropped by linker, so let\u0027s merge it!",
+      "revId": "b5a6e2437af0a83a58ec422b869bb075bf9804f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
