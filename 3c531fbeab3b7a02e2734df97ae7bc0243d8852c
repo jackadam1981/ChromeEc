@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a95d210d_00207345",
+        "filename": "board/adlrvpp_mchp1521/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-06T01:07:35Z",
+      "side": 1,
+      "message": "That turns out to not even fix the `adlrvpp_mchp1521` build with clang so I\u0027ve removed it, but sure I\u0027ll do the build adjustment in another change.",
+      "parentUuid": "6d335edb_0f95909c",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "3c531fbeab3b7a02e2734df97ae7bc0243d8852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e299b04b_3f59c11c",
@@ -65,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e616ec89_9e10321d",
+        "filename": "zephyr/test/drivers/acpi_strings_fifo/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-06T01:07:35Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any guidelines on that, but I think it\u0027s neater to avoid putting more stuff into the top-level file even though this test currently only needs this one option.",
+      "parentUuid": "e299b04b_3f59c11c",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 25
+      },
+      "revId": "3c531fbeab3b7a02e2734df97ae7bc0243d8852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48144eaa_2b25197e",
@@ -78,6 +126,30 @@
       "writtenOn": "2024-06-05T20:43:26Z",
       "side": 1,
       "message": "Do you need this? Looks like you\u0027re testing the test code.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "3c531fbeab3b7a02e2734df97ae7bc0243d8852c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1412bdd_73682c18",
+        "filename": "zephyr/test/drivers/acpi_strings_fifo/src/acpi_strings_fifo.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-06T01:07:35Z",
+      "side": 1,
+      "message": "The test won\u0027t exercise the intended code path if the buffer contains a null terminator so I want to ensure that\u0027s correct, but that can be made a compile-time assertion so I\u0027ve done that.",
+      "parentUuid": "48144eaa_2b25197e",
       "range": {
         "startLine": 85,
         "startChar": 0,
