@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3d4fb9_cfd47005",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-06T18:44:17Z",
+      "side": 1,
+      "message": "This gets inifinitely true once power_button_raw_pressed changes the return value (because line 347 is removed). Maybe you can entirely remove line 359 through 361.",
+      "range": {
+        "startLine": 359,
+        "startChar": 6,
+        "endLine": 359,
+        "endChar": 46
+      },
+      "revId": "46a89d9f6d9cf14313790f798801304f2a9d2d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
