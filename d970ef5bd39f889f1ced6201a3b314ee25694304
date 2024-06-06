@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699a5563_424770f4",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:17:42Z",
+      "side": 1,
+      "message": "Convert all the `return -1` to errno.h values.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 12
+      },
+      "revId": "d970ef5bd39f889f1ced6201a3b314ee25694304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06de595_6c9f3eed",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-06T15:17:42Z",
+      "side": 1,
+      "message": "Use `sys_timepoint_calc()` and `sys_timepoint_expired()` to make the polling loop more deterministic.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 71
+      },
+      "revId": "d970ef5bd39f889f1ced6201a3b314ee25694304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
