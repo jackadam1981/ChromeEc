@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43300546_e66b785f",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-06T21:02:13Z",
+      "side": 1,
+      "message": "I\u0027d suggest removing the value from the name.",
+      "parentUuid": "3fabef72_a915f669",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6346c937_b58fd49f",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 27
@@ -159,6 +177,24 @@
       "side": 1,
       "message": "I thought about setting some other functions as overridable, where the logic is completely removed by servo to return `not_implemented`.",
       "parentUuid": "b3e6c76d_bc89c3a9",
+      "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fc69d3_2434deb9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-06T21:02:13Z",
+      "side": 1,
+      "message": "I\u0027d say my overall reaction to that would depend on how many you had to do.",
+      "parentUuid": "e8baef80_a7a7fbc1",
       "revId": "19761997c56313d101c3be3ea53a2a4a847d134b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
