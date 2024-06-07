@@ -16,6 +16,24 @@
       "message": "Now brya and yavista builds fail because they run out of Flash. Yavista has a lot of free flash but reduced RW size by 64k from other IT81302 devices for some reason, whereas brya is actually out of flash so needs a little bit of optimization.",
       "revId": "05f05f1d56a36a4cc17571470c24605e186620cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2967fe48_190ab7ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-07T02:59:25Z",
+      "side": 1,
+      "message": "Two new child changes to disable `hash` on those boards seem to fix it.",
+      "parentUuid": "cf4fe0fe_0b8ba3f2",
+      "revId": "05f05f1d56a36a4cc17571470c24605e186620cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
