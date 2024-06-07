@@ -22,6 +22,30 @@
       },
       "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e360c88_e087fac3",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-07T20:35:26Z",
+      "side": 1,
+      "message": "“vci-pos” is the VCI bit position in VCI registers, e.g. IE[6:1] in VCI INPUT ENABLE REGISTER, bit1 is for VCI_IN1 and bit2 is for VCI_IN2…, it doesn’t fix to a specific GPIO.\nNot sure if I capture your question.\n\nActually, you may bring up one concern which we are aware in developing,\"gpios:\" property is not really used in this VCI logic, it can be removed optionally.",
+      "parentUuid": "c86e0fa8_f087c910",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
