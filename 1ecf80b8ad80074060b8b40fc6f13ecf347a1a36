@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e73456_380bb1a7",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-07T16:12:04Z",
+      "side": 1,
+      "message": "Explained in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5608082",
+      "parentUuid": "858623fc_c8a70ab8",
+      "range": {
+        "startLine": 357,
+        "startChar": 12,
+        "endLine": 357,
+        "endChar": 44
+      },
+      "revId": "1ecf80b8ad80074060b8b40fc6f13ecf347a1a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c88e5f32_1da4f8fd",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-06-07T01:34:35Z",
       "side": 1,
       "message": "pls refer Rex project for example code\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/rex.dtsi;l\u003d143",
+      "revId": "1ecf80b8ad80074060b8b40fc6f13ecf347a1a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2fba1c_943fef17",
+        "filename": "zephyr/program/intelrvp/adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-07T16:12:04Z",
+      "side": 1,
+      "message": "VCI block is a customized design, for MEC chip, as VTR power is turned off, GPIO block’s power rail is off too, so GPIO feature is not functional. we have to add customized code to support VCI in MEC.",
+      "parentUuid": "c88e5f32_1da4f8fd",
       "revId": "1ecf80b8ad80074060b8b40fc6f13ecf347a1a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
