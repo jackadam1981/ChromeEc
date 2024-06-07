@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3579323_eed0e73b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioexp.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T23:41:23Z",
+      "side": 1,
+      "message": "I can go back to original convention.",
+      "parentUuid": "cfcdc629_026d362e",
+      "revId": "43bc8afbad45164b64cc45ae788f84fb5f61964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d573b85_7569d458",
         "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
         "patchSetId": 17
@@ -31,6 +49,30 @@
       "writtenOn": "2024-06-07T23:21:23Z",
       "side": 1,
       "message": "is this IO expander on the main RVP board or the EC AIC?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "43bc8afbad45164b64cc45ae788f84fb5f61964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3fc8bb_98718c37",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T23:41:23Z",
+      "side": 1,
+      "message": "It is on the TPM AIC.",
+      "parentUuid": "9d573b85_7569d458",
       "range": {
         "startLine": 16,
         "startChar": 0,
