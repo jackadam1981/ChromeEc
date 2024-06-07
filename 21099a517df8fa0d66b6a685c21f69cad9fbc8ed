@@ -22,6 +22,30 @@
       },
       "revId": "21099a517df8fa0d66b6a685c21f69cad9fbc8ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4268621_8ba64124",
+        "filename": "zephyr/emul/emul_smbus_ara.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-07T16:38:46Z",
+      "side": 1,
+      "message": "The ARA is queued before we pulse irq. So if another thread is reading as we\u0027re writing, it doesn\u0027t make sense for the ARA to become active until the interrupt is fired.\n\nAnother thought: We use an irq pulse for ARA but the actual implementation should actually be a level interrupt. Any alerting port will assert the shared line and only after reading all the ARAs will the line be de-asserted.\n\nBefore I do that refactor, we\u0027ll need to take a look at the current driver design to see if it makes sense.",
+      "parentUuid": "bd020093_aa391ad2",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "21099a517df8fa0d66b6a685c21f69cad9fbc8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
