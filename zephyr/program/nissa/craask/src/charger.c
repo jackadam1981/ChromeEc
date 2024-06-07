@@ -6,6 +6,7 @@
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "console.h"
@@ -72,7 +73,47 @@ __override int board_get_leave_safe_mode_delay_ms(void)
 		return 500;
 }
 
-void update_charger_config(void)
+#define CHECK_BATT_STAT_DELAY_MS (500 * MSEC)
+static int check_batt_retry;
+
+void board_check_battery_status(void)
+{
+	enum battery_disconnect_state battery_disconnect_status =
+		battery_get_disconnect_state();
+
+	/* battery is connected. Not need to do anything. */
+	if (battery_disconnect_status == BATTERY_NOT_DISCONNECTED) {
+		check_batt_retry = 0;
+		return;
+	}
+
+	check_batt_retry++;
+	if (check_batt_retry > 3) {
+		LOG_INF("Board has retried init_battery_type 3 times.");
+		check_batt_retry = 0;
+		return;
+	}
+
+	init_battery_type();
+}
+DECLARE_DEFERRED(board_check_battery_status);
+
+__override int board_get_default_battery_type(void)
+{
+	const struct batt_params *batt = charger_current_battery_params();
+
+	if (batt->flags & BATT_FLAG_RESPONSIVE) {
+		/* Check Battery status again after 500msec. */
+		hook_call_deferred(&board_check_battery_status_data,
+				   CHECK_BATT_STAT_DELAY_MS);
+	} else {
+		check_batt_retry = 0;
+	}
+
+	return DEFAULT_BATTERY_TYPE;
+}
+
+test_export_static void update_charger_config(void)
 {
 	uint32_t board_version;
 	int ret;
