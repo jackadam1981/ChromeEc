@@ -9,6 +9,7 @@
  */
 #line 11
 
+#include "cros_cbi.h"
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
 #include "system_boot_time.h"
@@ -36,6 +37,26 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 test_export_static bool s0_stable;
 #endif
+
+#ifdef CONFIG_BOARD_ORISA
+void board_gpp_r2_control(int enable)
+{
+	int ret;
+	uint32_t val;
+
+	ret = cros_cbi_get_fw_config(FW_GPP_R2, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_GPP_R2 field %d", FW_GPP_R2);
+		return;
+	}
+
+	if (val != FW_GPP_R2_DISABLE) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_gpp_r2_odl),
+				enable);
+	}
+}
+
+#endif /* CONFIG_BOARD_ORISA */
 
 static void generate_ec_soc_dsw_pwrok_handler(int delay)
 {
@@ -95,6 +116,9 @@ void board_ap_power_force_shutdown(void)
 
 	power_signal_disable(PWR_DSW_PWROK);
 	power_signal_disable(PWR_PG_PP1P05);
+#ifdef CONFIG_BOARD_ORISA
+	board_gpp_r2_control(0);
+#endif /* CONFIG_BOARD_ORISA */
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 	s0_stable = false;
 #endif
@@ -127,6 +151,9 @@ void board_ap_power_action_s0_s3(void)
 {
 	power_signal_enable(PWR_DSW_PWROK);
 	power_signal_enable(PWR_PG_PP1P05);
+#ifdef CONFIG_BOARD_ORISA
+	board_gpp_r2_control(0);
+#endif /* CONFIG_BOARD_ORISA */
 	s0_stable = false;
 }
 
@@ -147,6 +174,10 @@ int board_ap_power_assert_pch_power_ok(void)
 	if (power_signal_get(PWR_PCH_PWROK) == 0) {
 		k_msleep(AP_PWRSEQ_DT_VALUE(pch_pwrok_delay));
 		power_signal_set(PWR_PCH_PWROK, 1);
+#ifdef CONFIG_BOARD_ORISA
+		k_msleep(10);
+		board_gpp_r2_control(1);
+#endif /* CONFIG_BOARD_ORISA */
 	}
 
 	return 0;

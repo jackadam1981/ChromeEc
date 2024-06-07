@@ -115,10 +115,6 @@
 			gpios = <&gpiob 6 GPIO_OUTPUT>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
 		};
-		me_en {
-			/* workaround for b/333336079, reserved */
-			gpios = <&gpioc 0 GPIO_INPUT>;
-		};
 		gpio_en_pp5000_s5: en_pp5000_s5 {
 			gpios = <&gpio4 0 GPIO_OUTPUT>;
 		};
@@ -202,6 +198,9 @@
 		};
 		gpio_ec_i2c_pmc_pd_int_odl: ec_i2c_pmc_pd_int_odl {
 			gpios = <&gpio3 6 GPIO_INPUT>;
+		};
+		gpio_ec_soc_gpp_r2_odl: soc_gpp_r2_odl {
+			gpios = <&gpioc 0 GPIO_ODR_LOW>;
 		};
 	};
 
