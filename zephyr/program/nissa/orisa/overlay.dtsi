@@ -83,6 +83,10 @@
 			irq-pin = <&gpio_soc_enbkl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "soc_signal_interrupt";
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_ec_acok_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
 		};
 	};
 
