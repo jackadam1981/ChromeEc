@@ -46,6 +46,30 @@
       },
       "revId": "21099a517df8fa0d66b6a685c21f69cad9fbc8ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e75026_67717d21",
+        "filename": "zephyr/emul/emul_smbus_ara.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-07T17:44:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c4268621_8ba64124",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "21099a517df8fa0d66b6a685c21f69cad9fbc8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
