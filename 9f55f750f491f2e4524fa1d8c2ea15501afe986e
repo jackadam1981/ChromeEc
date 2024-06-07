@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd47ca2a_b06712d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c756aa79_a0dd332f",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f2d2c6_f1b47c68",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a25e535_22357d31",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e772e0_3dffdfe0",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ca77f7c_b73306c4",
@@ -108,6 +156,30 @@
       "writtenOn": "2024-06-05T19:46:13Z",
       "side": 1,
       "message": "change these similar to power signals.",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "9f55f750f491f2e4524fa1d8c2ea15501afe986e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e586c7_7232adaa",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlerb_mchp/pd.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca77f7c_b73306c4",
       "range": {
         "startLine": 16,
         "startChar": 15,
