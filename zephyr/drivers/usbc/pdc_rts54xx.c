@@ -2465,7 +2465,7 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
 	enum cmd_t use_cmd = CMD_RAW_UCSI;
 
-	if (ucsi_command == UCSI_CMD_GET_CONNECTOR_STATUS &&
+	if (ucsi_command == UCSI_GET_CONNECTOR_STATUS &&
 	    data->conn_status_cached) {
 		LOG_INF("%s: Read conn status from cache", __func__);
 		k_mutex_lock(&data->mtx, K_FOREVER);
@@ -2493,9 +2493,8 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 
 	/* Convert standard UCSI command to Realtek vendor specific formats. */
 	switch (ucsi_command) {
-	case UCSI_CMD_ACK_CC_CI: {
-		struct ucsiv3_ack_cc_ci_cmd *cmd =
-			(struct ucsiv3_ack_cc_ci_cmd *)command_specific;
+	case UCSI_ACK_CC_CI: {
+		union ack_cc_ci_t *cmd = (union ack_cc_ci_t *)command_specific;
 
 		data_size = 5;
 		memset(cmd_buffer, 0, ACK_CC_CI.len + 2);
@@ -2524,7 +2523,7 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 		}
 		break;
 	}
-	case UCSI_CMD_GET_CONNECTOR_STATUS:
+	case UCSI_GET_CONNECTOR_STATUS:
 		use_cmd = CMD_GET_CONNECTOR_STATUS;
 		break;
 	default:
