@@ -92,6 +92,26 @@
 		};
 
 		/*
+		 * FW_CONFIG field to defined for GPP_R2.
+		 */
+		 gpp-r2 {
+			enum-name = "FW_GPP_R2";
+			start = <5>;
+			size = <1>;
+
+			gpp-r2-default {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_GPP_R2_DEFAULT";
+				value = <0>;
+			};
+			gpp-r2-disable {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_GPP_R2_DISABLE";
+				value = <1>;
+			};
+		};
+
+		/*
 		 * FW_CONFIG field to defined for SD BOOT.
 		 */
 		sd-boot {
