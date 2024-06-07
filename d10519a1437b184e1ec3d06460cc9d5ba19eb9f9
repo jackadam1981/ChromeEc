@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5aed91_e0be9d4b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-07T23:44:09Z",
+      "side": 1,
+      "message": "is `CONFIG_PLATFORM_EC_MKBP_USE_GPIO_AND_HOST_EVENT`\nan option here or is the GPIO not available on the RVP?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "d10519a1437b184e1ec3d06460cc9d5ba19eb9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
