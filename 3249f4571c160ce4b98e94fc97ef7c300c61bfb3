@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a5eb26_a434e9e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-07T17:58:08Z",
+      "side": 1,
+      "message": "Looking through the files in `chip`, it looks like none of them are using the full path in the header guard. It would be better to change all of these rather than a one-off.",
+      "revId": "3249f4571c160ce4b98e94fc97ef7c300c61bfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
