@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "362cd05a_cb69239d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-07T15:44:41Z",
+      "side": 1,
+      "message": "pls remove board specific code, RVP doesn\u0027t support VCI logic.",
+      "revId": "f6c793581f10ac0cf5ca80f1b87b50abfe72ff0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa53347c_536d6abe",
