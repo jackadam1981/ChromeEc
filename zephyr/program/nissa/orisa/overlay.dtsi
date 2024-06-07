@@ -124,6 +124,7 @@
 		 */
 		gpio-hdmi-en-odl = &gpio_sb_3;
 		gpio-hpd-odl = &gpio_sb_4;
+		gpio-en-usb-a1-vbus = &gpio_en_sub_usb_a1_vbus;
 	};
 
 	temp_memory: memory {
