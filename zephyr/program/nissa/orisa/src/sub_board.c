@@ -259,20 +259,6 @@ static void nereid_subboard_config(void)
 		usb_port_enable[1] = -1;
 	}
 #endif
-	/*
-	 * USB-C port: the default configuration has I2C on the I2C pins,
-	 * but the interrupt line needs to be configured.
-	 */
-#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
-	if (sb == NISSA_SB_C_A || sb == NISSA_SB_C_LTE) {
-		/* Configure interrupt input */
-		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl),
-				      GPIO_INPUT | GPIO_PULL_UP);
-	} else {
-		/* Port doesn't exist, doesn't need muxing */
-		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_no_mux);
-	}
-#endif
 
 	switch (sb) {
 #if CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT
