@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "board_config.h"
 #include "button.h"
@@ -68,6 +69,10 @@ FAKE_VOID_FUNC(lpc_keyboard_resume_irq);
 
 FAKE_VALUE_FUNC(enum ec_error_list, charger_set_frequency, int);
 
+FAKE_VALUE_FUNC(const struct batt_params *, charger_current_battery_params);
+FAKE_VALUE_FUNC(enum battery_disconnect_state, battery_get_disconnect_state);
+FAKE_VOID_FUNC(init_battery_type);
+
 static void test_before(void *fixture)
 {
 	RESET_FAKE(cbi_get_board_version);
@@ -86,6 +91,9 @@ static void test_before(void *fixture)
 	RESET_FAKE(charger_discharge_on_ac);
 	RESET_FAKE(set_pwm_led_color);
 	RESET_FAKE(charger_set_frequency);
+	RESET_FAKE(charger_current_battery_params);
+	RESET_FAKE(battery_get_disconnect_state);
+	RESET_FAKE(init_battery_type);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -1245,4 +1253,87 @@ ZTEST(craask, test_update_charger_config_disable)
 	board_version = 0x0d;
 	hook_notify(HOOK_INIT);
 	zassert_equal(charger_set_frequency_fake.call_count, 0);
+}
+
+static bool batt_flag_responsive;
+static bool battery_seems_disconnected;
+
+static const struct batt_params *charger_current_battery_params_mock(void)
+{
+	static struct batt_params battery_param;
+
+	battery_param.flags = batt_flag_responsive ? BATT_FLAG_RESPONSIVE : 0;
+
+	return &battery_param;
+}
+
+static enum battery_disconnect_state battery_get_disconnect_state_mock(void)
+{
+	return battery_seems_disconnected ? BATTERY_DISCONNECT_ERROR :
+					    BATTERY_NOT_DISCONNECTED;
+}
+
+ZTEST(craask, test_battery_not_responsive)
+{
+	init_battery_type_fake.call_count = 0;
+	/* Battery is not responsive suddenly but B/I pin still present so
+	 * trigger process_battery_present_change to initialize the battery
+	 * type which will call board_get_default_battery_type.
+	 */
+	batt_flag_responsive = false;
+	battery_seems_disconnected = true;
+	charger_current_battery_params_fake.custom_fake =
+		charger_current_battery_params_mock;
+	battery_get_disconnect_state_fake.custom_fake =
+		battery_get_disconnect_state_mock;
+	board_get_default_battery_type();
+	k_sleep(K_MSEC(501));
+	zassert_equal(init_battery_type_fake.call_count, 0);
+}
+
+ZTEST(craask, test_battery_identified_within_retries)
+{
+	init_battery_type_fake.call_count = 0;
+	/* Battery is responsive now. */
+	batt_flag_responsive = true;
+	battery_seems_disconnected = true;
+	charger_current_battery_params_fake.custom_fake =
+		charger_current_battery_params_mock;
+	battery_get_disconnect_state_fake.custom_fake =
+		battery_get_disconnect_state_mock;
+	board_get_default_battery_type();
+	k_sleep(K_MSEC(501));
+	zassert_equal(init_battery_type_fake.call_count, 1);
+	board_get_default_battery_type();
+	/* Find battery configuration so battery is not disconnected */
+	battery_seems_disconnected = false;
+	battery_get_disconnect_state_fake.custom_fake =
+		battery_get_disconnect_state_mock;
+	k_sleep(K_MSEC(501));
+	zassert_equal(init_battery_type_fake.call_count, 1);
+}
+
+ZTEST(craask, test_battery_not_identified_within_retries)
+{
+	init_battery_type_fake.call_count = 0;
+	/* Battery is responsive now. */
+	batt_flag_responsive = true;
+	battery_seems_disconnected = true;
+	charger_current_battery_params_fake.custom_fake =
+		charger_current_battery_params_mock;
+	battery_get_disconnect_state_fake.custom_fake =
+		battery_get_disconnect_state_mock;
+	board_get_default_battery_type();
+	k_sleep(K_MSEC(501));
+	zassert_equal(init_battery_type_fake.call_count, 1);
+	board_get_default_battery_type();
+	k_sleep(K_MSEC(501));
+	zassert_equal(init_battery_type_fake.call_count, 2);
+	board_get_default_battery_type();
+	k_sleep(K_MSEC(501));
+	zassert_equal(init_battery_type_fake.call_count, 3);
+	board_get_default_battery_type();
+	k_sleep(K_MSEC(501));
+	/* Only retries 3 times */
+	zassert_equal(init_battery_type_fake.call_count, 3);
 }

@@ -175,7 +175,7 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
-void init_battery_type(void)
+test_mockable void init_battery_type(void)
 {
 	int type;
 	int dflt = board_get_default_battery_type();
@@ -393,7 +393,7 @@ test_mockable int battery_is_charge_fet_disabled(void)
  * the battery is able to provide power and thus prevent a brownout when the
  * AP is powered on by the EC.
  */
-enum battery_disconnect_state battery_get_disconnect_state(void)
+test_mockable enum battery_disconnect_state battery_get_disconnect_state(void)
 {
 	const struct board_batt_params *params = get_batt_params();
 	int reg;
