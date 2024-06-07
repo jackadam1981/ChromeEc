@@ -16,6 +16,7 @@ tests:
     - default/prj.conf
     extra_dtc_overlay_files:
     - default/boards/native_posix.overlay
+    - default/boards/touchpad.dtsi
   drivers.default.dp21:
     timeout: 360
     extra_configs:
