@@ -228,6 +228,13 @@ test_static int test_get_ikm_success(void)
 	TEST_ASSERT(!bytes_are_trivial(default_fake_tpm_seed,
 				       sizeof(default_fake_tpm_seed)));
 
+	/* GIVEN that the OTP key has been set. */
+	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		TEST_ASSERT(
+			!bytes_are_trivial(mock_otp.otp_key_buffer,
+					   sizeof(mock_otp.otp_key_buffer)));
+	}
+
 	/* GIVEN that reading the rollback secret will succeed. */
 	mock_ctrl_rollback.get_secret_fail = false;
 
