@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -16,6 +17,8 @@
 #include "system.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
+#include "usb_pd.h"
+#include "usb_tc_sm.h"
 
 #include <zephyr/logging/log.h>
 
@@ -170,3 +173,105 @@ void board_reset_pd_mcu(void)
 	 */
 }
 /* LCOV_EXCL_STOP */
+
+#define BATT_HOLD_CUR (-4700) /* mA */
+#define BATT_RLS_CUR  (-4500) /* mA */
+#define BATTCURR_CNT 4 /* Read the battery discharge current counter */
+
+static bool proc_status;
+
+static void update_prochot_deferred(void);
+DECLARE_DEFERRED(update_prochot_deferred);
+static void update_prochot_deferred(void)
+{
+	static int get_curr[4];
+	static int i;
+	static bool charge_status;
+	int j;
+	int hold_cnt,release_cnt,charge_cnt;
+	const struct batt_params *batt = charger_current_battery_params();
+	struct battery_static_info *bs = &battery_static[BATT_IDX_MAIN];
+
+	if (strcasecmp(bs->model_ext, "B140435")) {
+		CPRINTSUSB("Not B140435, give up limiting system power");
+		hook_call_deferred(&update_prochot_deferred_data, -1);
+		return;
+	}
+
+	if (!chipset_in_state(CHIPSET_STATE_ON)) {
+		CPRINTSUSB("Not S0, give up limiting system power");
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_prochot_odl), 1);
+		hook_call_deferred(&update_prochot_deferred_data, -1);
+		return;
+	}
+
+	// printk("--get_curr_%d=%d\n",i,get_curr[i]);
+	get_curr[i++] = batt->current;
+
+	if (i >= BATTCURR_CNT) {
+		i = 0;
+	}
+
+	hold_cnt = 0;
+	release_cnt = 0;
+	charge_cnt = 0;
+
+	for (j = 0;j < BATTCURR_CNT;j++) {
+		// printk("--get_curr_%d=%d\n",j,get_curr[j]);
+		if (get_curr[j] < BATT_HOLD_CUR) {
+			hold_cnt++;
+		} else if ((get_curr[j] >= BATT_RLS_CUR) && (get_curr[j] < 0)) {
+			release_cnt++;
+		} else if (get_curr[j] >= 0) {
+			charge_cnt++;
+		}
+	}
+
+	if (hold_cnt == BATTCURR_CNT) {
+		if (proc_status == true) {
+			hook_call_deferred(&update_prochot_deferred_data, 500 * MSEC);
+			return;
+		}
+		CPRINTSUSB("Hold prochot low!");
+
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_prochot_odl), 0);
+		proc_status = true;
+		charge_status = false;
+	} else if (release_cnt == BATTCURR_CNT) {
+		if (proc_status == false) {
+			hook_call_deferred(&update_prochot_deferred_data, 500 * MSEC);
+			return;
+		}
+		CPRINTSUSB("Release prochot high!");
+
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_prochot_odl), 1);
+		proc_status = false;
+		charge_status = false;
+	} else if (charge_cnt == BATTCURR_CNT) {
+		if (charge_status == true) {
+			hook_call_deferred(&update_prochot_deferred_data, 500 * MSEC);
+			return;
+		}
+		CPRINTSUSB("Battery is not discharge, release prochot high.");
+
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_prochot_odl), 1);
+		charge_status = true;
+	}
+
+	hook_call_deferred(&update_prochot_deferred_data, 500 * MSEC);
+}
+
+static void check_batt_current(void)
+{
+	/* Deferred 5s to avoid pd state conflict */
+	hook_call_deferred(&update_prochot_deferred_data, 5 * SECOND);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_batt_current, HOOK_PRIO_DEFAULT);
+
+static void stop_check_batt(void)
+{
+	proc_status = false;
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_prochot_odl), 1);
+	hook_call_deferred(&update_prochot_deferred_data, -1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, stop_check_batt, HOOK_PRIO_DEFAULT);
