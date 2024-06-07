@@ -1,0 +1,149 @@
+From b82f1a57c58a4919ab61ffa451208af871afd515 Mon Sep 17 00:00:00 2001
+From: LeoCX_Tsai <leocx_tsai@compal.corp-partner.google.com>
+Date: Fri, 7 Jun 2024 10:17:26 +0800
+Subject: [PATCH] [DO NOT MERGE]orisa: modify the gpp_r2 control
+
+follow the HW design add gpp_r2 control for Intel CSE boot sequence
+
+(note: keep this CL, until EE design can't resolve problem)
+
+BUG=b:333336079
+TEST=zmake build orisa pass
+LOW_COVERAGE_REASON=no test folder
+
+Change-Id: Ia59406389775a5f15ae5800f15e89fee9f4374fd
+---
+ zephyr/program/nissa/orisa/cbi.dtsi       | 20 +++++++++++++++
+ zephyr/program/nissa/orisa/generated.dtsi |  7 +++--
+ zephyr/program/nissa/src/board_power.c    | 31 +++++++++++++++++++++++
+ 3 files changed, 54 insertions(+), 4 deletions(-)
+
+diff --git a/zephyr/program/nissa/orisa/cbi.dtsi b/zephyr/program/nissa/orisa/cbi.dtsi
+index 1045607582..ad18a9b79b 100644
+--- a/zephyr/program/nissa/orisa/cbi.dtsi
++++ b/zephyr/program/nissa/orisa/cbi.dtsi
+@@ -91,6 +91,26 @@
+ 			};
+ 		};
+ 
++		/*
++		 * FW_CONFIG field to defined for GPP_R2.
++		 */
++		 gpp-r2 {
++			enum-name = "FW_GPP_R2";
++			start = <5>;
++			size = <1>;
++
++			gpp-r2-default {
++				compatible = "cros-ec,cbi-fw-config-value";
++				enum-name = "FW_GPP_R2_DEFAULT";
++				value = <0>;
++			};
++			gpp-r2-disable {
++				compatible = "cros-ec,cbi-fw-config-value";
++				enum-name = "FW_GPP_R2_DISABLE";
++				value = <1>;
++			};
++		};
++
+ 		/*
+ 		 * FW_CONFIG field to defined for SD BOOT.
+ 		 */
+diff --git a/zephyr/program/nissa/orisa/generated.dtsi b/zephyr/program/nissa/orisa/generated.dtsi
+index 3ed8053c53..d2e989f79f 100644
+--- a/zephyr/program/nissa/orisa/generated.dtsi
++++ b/zephyr/program/nissa/orisa/generated.dtsi
+@@ -115,10 +115,6 @@
+ 			gpios = <&gpiob 6 GPIO_OUTPUT>;
+ 			enum-name = "GPIO_TEMP_SENSOR_POWER";
+ 		};
+-		me_en {
+-			/* workaround for b/333336079, reserved */
+-			gpios = <&gpioc 0 GPIO_INPUT>;
+-		};
+ 		gpio_en_pp5000_s5: en_pp5000_s5 {
+ 			gpios = <&gpio4 0 GPIO_OUTPUT>;
+ 		};
+@@ -203,6 +199,9 @@
+ 		gpio_ec_i2c_pmc_pd_int_odl: ec_i2c_pmc_pd_int_odl {
+ 			gpios = <&gpio3 6 GPIO_INPUT>;
+ 		};
++		gpio_ec_soc_gpp_r2_odl: soc_gpp_r2_odl {
++			gpios = <&gpioc 0 GPIO_ODR_LOW>;
++		};
+ 	};
+ 
+ 	named-i2c-ports {
+diff --git a/zephyr/program/nissa/src/board_power.c b/zephyr/program/nissa/src/board_power.c
+index 5afa3b6c6e..2c48ddf6fc 100644
+--- a/zephyr/program/nissa/src/board_power.c
++++ b/zephyr/program/nissa/src/board_power.c
+@@ -9,6 +9,7 @@
+  */
+ #line 11
+ 
++#include "cros_cbi.h"
+ #include "gpio/gpio.h"
+ #include "gpio_signal.h"
+ #include "system_boot_time.h"
+@@ -37,6 +38,26 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
+ test_export_static bool s0_stable;
+ #endif
+ 
++#ifdef CONFIG_BOARD_ORISA
++void board_gpp_r2_control(int enable)
++{
++	int ret;
++	uint32_t val;
++
++	ret = cros_cbi_get_fw_config(FW_GPP_R2, &val);
++	if (ret != 0) {
++		LOG_ERR("Error retrieving CBI FW_GPP_R2 field %d", FW_GPP_R2);
++		return;
++	}
++
++	if (val != FW_GPP_R2_DISABLE) {
++		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_gpp_r2_odl),
++				enable);
++	}
++}
++
++#endif /* CONFIG_BOARD_ORISA */
++
+ static void generate_ec_soc_dsw_pwrok_handler(int delay)
+ {
+ 	int in_sig_val = power_signal_get(PWR_DSW_PWROK);
+@@ -95,6 +116,9 @@ void board_ap_power_force_shutdown(void)
+ 
+ 	power_signal_disable(PWR_DSW_PWROK);
+ 	power_signal_disable(PWR_PG_PP1P05);
++#ifdef CONFIG_BOARD_ORISA
++	board_gpp_r2_control(0);
++#endif /* CONFIG_BOARD_ORISA */
+ #ifndef CONFIG_AP_PWRSEQ_DRIVER
+ 	s0_stable = false;
+ #endif
+@@ -127,6 +151,9 @@ void board_ap_power_action_s0_s3(void)
+ {
+ 	power_signal_enable(PWR_DSW_PWROK);
+ 	power_signal_enable(PWR_PG_PP1P05);
++#ifdef CONFIG_BOARD_ORISA
++	board_gpp_r2_control(0);
++#endif /* CONFIG_BOARD_ORISA */
+ 	s0_stable = false;
+ }
+ 
+@@ -147,6 +174,10 @@ int board_ap_power_assert_pch_power_ok(void)
+ 	if (power_signal_get(PWR_PCH_PWROK) == 0) {
+ 		k_msleep(AP_PWRSEQ_DT_VALUE(pch_pwrok_delay));
+ 		power_signal_set(PWR_PCH_PWROK, 1);
++#ifdef CONFIG_BOARD_ORISA
++		k_msleep(10);
++		board_gpp_r2_control(1);
++#endif /* CONFIG_BOARD_ORISA */
+ 	}
+ 
+ 	return 0;
+-- 
+2.34.1
+
