@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8909a62a_3384dba2",
+        "filename": "chip/npcx/rom_chip.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-07T17:58:38Z",
+      "side": 1,
+      "message": "I made a separate CL for this: https://crrev.com/c/5604055.\n\nI want to keep this CL just focused on moving the code without any additional changes.",
+      "parentUuid": "754ab31b_775d21a6",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "7acaac4c324886517402e89f42e98fd6bf14ba19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52cecd52_2f7fa10d",
@@ -95,6 +119,30 @@
           ]
         }
       ],
+      "revId": "7acaac4c324886517402e89f42e98fd6bf14ba19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e249fc_0f65590c",
+        "filename": "chip/npcx/rom_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-07T17:58:38Z",
+      "side": 1,
+      "message": "I made a separate CL for this: https://crrev.com/c/5604054\n\nI want to keep this CL just focused on moving the code.",
+      "parentUuid": "52cecd52_2f7fa10d",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 29
+      },
       "revId": "7acaac4c324886517402e89f42e98fd6bf14ba19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
