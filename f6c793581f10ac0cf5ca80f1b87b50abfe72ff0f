@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8044d248_2068ac7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-07T16:04:14Z",
+      "side": 1,
+      "message": "Added hibernate_vci_pins {} holder in board level to pass compilation to support this generic feature, secondly, provide a template / reference for next RVP with VCI support.\nVCI is not enabled on both RVPs (ADL / MTL) since,\n\nPLATFORM_EC_HIBERNATE_VCI\u003dy is not defined in board\nstatus \u003d \"disabled\" in hibernate_vci_pins {} indicates this VCI pin is not enabled.\n\nThis way makes cros_system_xec.c more generic, otherwise, need to add\n#ifdef PLATFORM_EC_HIBERNATE_VCI Logic, this is another option.",
+      "parentUuid": "362cd05a_cb69239d",
+      "revId": "f6c793581f10ac0cf5ca80f1b87b50abfe72ff0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa53347c_536d6abe",
         "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2024-06-07T15:43:15Z",
       "side": 1,
       "message": "this logic seems we need to do it only once at init. Preferably in zephyr code pinctrl_configure_pins()",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 1
+      },
+      "revId": "f6c793581f10ac0cf5ca80f1b87b50abfe72ff0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f3fe69_6c5a9e2b",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-07T16:04:14Z",
+      "side": 1,
+      "message": "yes, this logic is done once, if it is moved to cros_system_xec_init() as POR, since those VCI pins are connected to LID / AC Present signals, those pins states change in normal operations will impact VCI register status, so before turning off VTR, FW still needs to reconfigure pins again.\n\nThose VCI pins with GPIO multiplexing are VCI alternative functions as POR, pinctrl_configure_pins() will configure VCI pins as VCI functions again. To enable VCI function, FW still needs to configure VCI registers which is in anothre hardware block.",
+      "parentUuid": "aa53347c_536d6abe",
       "range": {
         "startLine": 324,
         "startChar": 0,
