@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "059b78ca_152f1387",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T19:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e617cee_272f7bde",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "291ae8077c47688d2a189b3ae46057d9052b8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d63b0c85_752a125d",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-06-06T15:12:02Z",
       "side": 1,
       "message": "nit: fit in 80 chars",
+      "revId": "291ae8077c47688d2a189b3ae46057d9052b8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee9d772b_7341c565",
+        "filename": "zephyr/program/intelrvp/ptlrvp/i2c.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-07T19:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63b0c85_752a125d",
       "revId": "291ae8077c47688d2a189b3ae46057d9052b8663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
