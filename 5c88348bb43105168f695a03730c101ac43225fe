@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6243eb9f_797afc9c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T16:31:01Z",
+      "side": 1,
+      "message": "Nit - it would be clearer to create a separate event, such as `RTS54XX_COMMAND_READY` since this flow doesn\u0027t actually change the state.  \n\nAlternately, just add a comment here explaining that posting NEXT_STATE_READY reduces latency for issuing the command.",
+      "range": {
+        "startLine": 1544,
+        "startChar": 35,
+        "endLine": 1544,
+        "endChar": 59
+      },
+      "revId": "5c88348bb43105168f695a03730c101ac43225fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
