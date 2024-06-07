@@ -16,6 +16,24 @@
       "message": "Back in the long long ago, C compilers used to complain for mixing declarations after code. Doing some research, it looks like that is outdated and this works fine with C99/clang/gcc. Just FYI, there was a reason I coded it that way initially",
       "revId": "7eb0fc930b9f5bf3e0e730b4341aecdf03f54ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c350f3b2_0cebed4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-07T16:33:41Z",
+      "side": 1,
+      "message": "Yes, this style [was used in EC](https://crrev.com/c/3256741), but we\u0027re moving to follow [Google C++ style guide](https://google.github.io/styleguide/cppguide.html#Local_Variables) in this regard now.",
+      "parentUuid": "483df0e4_0ed31610",
+      "revId": "7eb0fc930b9f5bf3e0e730b4341aecdf03f54ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
