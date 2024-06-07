@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae5a763_b894530a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-07T23:26:20Z",
+      "side": 1,
+      "message": "Does it work if we pull this out of the `transport !\u003d UART` case? e.g., move to line 743?",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 6
+      },
+      "revId": "31c2e19f31ba4ac3e517be85c221ebf125af9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
