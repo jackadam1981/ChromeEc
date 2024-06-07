@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8234cd80_e5fc0d8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1e7cb5e_96254395",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3beaeef0_27cc4745",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 24
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "685f8703_433bb735",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "In order to do this, there needs to be something besides `i` to trigger the condition on line 346.",
+      "parentUuid": "af7f59e3_09a3bf0a",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef17c8e_e7e0c7b5",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-06-05T23:21:50Z",
       "side": 1,
       "message": "Is this state doing anything specifically to handle bits other than these 2? Should there be a TODO for the others?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0052d357_07f6595a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ef17c8e_e7e0c7b5",
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fe8996_96636275",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Added a TODO below.",
+      "parentUuid": "9d829ecf_6f83fdc4",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2569075f_d0d0bf02",
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8f86af_d3f69571",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2569075f_d0d0bf02",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb97528c_58e6a709",
@@ -122,6 +218,30 @@
       "writtenOn": "2024-06-05T21:08:56Z",
       "side": 1,
       "message": "Please add a LOG_ERR for all instances that goto error recovery.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 37
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032b7835_82b544af",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb97528c_58e6a709",
       "range": {
         "startLine": 584,
         "startChar": 0,
@@ -155,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab2daf7_4d0faeb6",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eca85e8_ccd2c7b0",
+      "range": {
+        "startLine": 591,
+        "startChar": 2,
+        "endLine": 591,
+        "endChar": 9
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b1743d0_d7459f12",
@@ -168,6 +312,30 @@
       "writtenOn": "2024-06-05T21:08:56Z",
       "side": 1,
       "message": "ST_ERROR_RECOVERY?",
+      "range": {
+        "startLine": 592,
+        "startChar": 18,
+        "endLine": 592,
+        "endChar": 25
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f44a63_4d212e30",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "I think this should still be idle. In this case, we never actually started a write, and the driver state is coherent. The caller was just wrong.",
+      "parentUuid": "8b1743d0_d7459f12",
       "range": {
         "startLine": 592,
         "startChar": 18,
@@ -201,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00cc9015_109b3d1b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2a141cd6_f8ea08a0",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 0
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e0c052_12e99804",
@@ -214,6 +406,24 @@
       "writtenOn": "2024-06-05T23:21:50Z",
       "side": 1,
       "message": "Is this redundant with `GET_VDO`?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0a9c07_2664cd1c",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "For the time being, this is a question for UCSI, which implements both.",
+      "parentUuid": "70e0c052_12e99804",
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -241,6 +451,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e6fd7f_9e220321",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46dc2049_2b4f2011",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 858,
+        "endChar": 9
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df34884f_fe67b95a",
@@ -254,6 +488,24 @@
       "writtenOn": "2024-06-05T23:21:50Z",
       "side": 1,
       "message": "Do we have struct definitions for these fields in the UCSI code?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73cd94c4_092b9f19",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df34884f_fe67b95a",
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -275,6 +527,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a900ff1c_1dbabcec",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd590db8_b585c44b",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e696ac68_149035e7",
@@ -288,6 +558,24 @@
       "writtenOn": "2024-06-05T23:21:50Z",
       "side": 1,
       "message": "Should this have a TODO, or is it intended to be a no-op?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aace48fa_12e10842",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e696ac68_149035e7",
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -309,6 +597,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "653a72a6_96970b36",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done, although we should probably check the logic of making changes to `data` before returning BUSY.",
+      "parentUuid": "0ecf9458_19a61dfa",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba53baa0_e95b1538",
@@ -326,6 +632,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce71e99b_ce44d270",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba53baa0_e95b1538",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db1f65a3_64f9fe13",
@@ -339,6 +663,30 @@
       "writtenOn": "2024-06-05T21:08:56Z",
       "side": 1,
       "message": "This loop shouldn\u0027t be needed.  The GPIO interrupt callback already does this for you.",
+      "range": {
+        "startLine": 1521,
+        "startChar": 0,
+        "endLine": 1521,
+        "endChar": 51
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44689226_01b25317",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "How would this function know which port\u0027s data to post the event to?",
+      "parentUuid": "db1f65a3_64f9fe13",
       "range": {
         "startLine": 1521,
         "startChar": 0,
@@ -389,6 +737,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1a837a_8f48193a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Added a TODO to rework this.",
+      "parentUuid": "a0828f2b_130425f7",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1594,
+        "endChar": 22
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ff054e_184a312c",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "88d7003c_8ffaf1d4",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f0c83a1_359c62c0",
@@ -402,6 +792,24 @@
       "writtenOn": "2024-06-05T23:21:50Z",
       "side": 1,
       "message": "Eventually, we\u0027ll want this to be 1, right?",
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce93675_74078d13",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1625,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9f0c83a1_359c62c0",
       "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -511,6 +919,30 @@
       "writtenOn": "2024-06-05T21:08:56Z",
       "side": 1,
       "message": "For a follow up CL, these fields don\u0027t need to be included with every command type.\n\nThe I2C write process can setup two separate buffers - one that contains the register number and length, and second message buffer for the command specific data.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "c1a609e9b1fb41a10c3410525b873b9ffcbeb391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ece08a0_4936ac9e",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "636e688c_edf66857",
       "range": {
         "startLine": 141,
         "startChar": 0,

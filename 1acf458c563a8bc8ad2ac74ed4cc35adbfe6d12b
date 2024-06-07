@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9438f1f3_186a4534",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "I think this is probably covered in some way by the TODO to use one command enum for all the drivers.",
+      "parentUuid": "d0466478_a418455e",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c31a71_72cdbe1b",
@@ -194,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb3ef7e_13a18f80",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "I think Sam addressed this in `write_task_cmd`.",
+      "parentUuid": "db9e1027_2517f4cf",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c634c14_aea8025c",
@@ -229,6 +265,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "527180b4_404008e7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "I think Sam addressed this in `write_task_cmd`.",
+      "parentUuid": "fc2eb7ed_9f0710b3",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbc20248_4ac117d3",
@@ -242,6 +296,24 @@
       "writtenOn": "2024-05-02T21:52:10Z",
       "side": 1,
       "message": "We should be caching the connector status as this gets cleared on each call. The eng FW adds a new interrupt bit for UCSI interrupts but I\u0027m not sure which interrupts would trigger new values for GET_CONNECTOR_STATUS.\n\nI\u0027d anticipate that we may get spurious interrupts without a correct connector status a result here.",
+      "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d69422b_0fad3eb8",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-07T22:58:30Z",
+      "side": 1,
+      "message": "Added a todo.",
+      "parentUuid": "cbc20248_4ac117d3",
       "revId": "1acf458c563a8bc8ad2ac74ed4cc35adbfe6d12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
