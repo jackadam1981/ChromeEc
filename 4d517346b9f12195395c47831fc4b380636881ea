@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e328ab79_8c04fc32",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-06-07T21:21:28Z",
+      "side": 1,
+      "message": "You probably don\u0027t need this.\n\nJust simply:\n\n```\n\tif ((system_get_reset_flags() \u0026 EC_RESET_FLAG_RESET_PIN))\n\t\treturn check_key_list(state);\n\n#ifdef CONFIG_BATTERY\n\tif ((system_get_reset_flags() \u0026 EC_RESET_FLAG_POWER_ON) \u0026\u0026\n\t    battery_is_present() \u003d\u003d BP_NO)\n\t\treturn check_key_list(state);\n#endif\n\n```",
+      "range": {
+        "startLine": 906,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 0
+      },
+      "revId": "4d517346b9f12195395c47831fc4b380636881ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
