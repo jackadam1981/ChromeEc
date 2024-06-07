@@ -6,6 +6,8 @@
 #ifndef __TEST_DRIVERS_TEST_MOCKS_H
 #define __TEST_DRIVERS_TEST_MOCKS_H
 
+#include "usb_hid_touchpad.h"
+
 #include <stdint.h>
 
 #include <zephyr/fff.h>
@@ -121,5 +123,9 @@ DECLARE_FAKE_VOID_FUNC(lid_angle_peripheral_enable, int);
 /* Mocks for gpio.h */
 DECLARE_FAKE_VALUE_FUNC(int, gpio_config_unused_pins);
 DECLARE_FAKE_VALUE_FUNC(int, gpio_configure_port_pin, int, int, int);
+
+/* Mocks for touchpad driver */
+DECLARE_FAKE_VOID_FUNC(set_touchpad_report, struct usb_hid_touchpad_report *);
+DECLARE_FAKE_VOID_FUNC(board_touchpad_reset);
 
 #endif /* __TEST_DRIVERS_TEST_MOCKS_H */

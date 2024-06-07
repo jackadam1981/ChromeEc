@@ -26,6 +26,10 @@ DEFINE_FAKE_VOID_FUNC(lid_angle_peripheral_enable, int);
 DEFINE_FAKE_VALUE_FUNC(int, gpio_config_unused_pins);
 DEFINE_FAKE_VALUE_FUNC(int, gpio_configure_port_pin, int, int, int);
 
+/* Mocks for touchpad driver */
+DEFINE_FAKE_VOID_FUNC(set_touchpad_report, struct usb_hid_touchpad_report *);
+DEFINE_FAKE_VOID_FUNC(board_touchpad_reset);
+
 /**
  * @brief Reset all the fakes before each test.
  */
