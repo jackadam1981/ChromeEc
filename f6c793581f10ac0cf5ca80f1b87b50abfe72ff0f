@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa53347c_536d6abe",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-07T15:43:15Z",
+      "side": 1,
+      "message": "this logic seems we need to do it only once at init. Preferably in zephyr code pinctrl_configure_pins()",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 1
+      },
+      "revId": "f6c793581f10ac0cf5ca80f1b87b50abfe72ff0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
