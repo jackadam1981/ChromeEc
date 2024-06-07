@@ -1,0 +1,286 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10072380_a23a1c04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "This version seems is working more reliably for me. A few more minor items to cleanup.",
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40db8de_b128190e",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f293318_bc100a73",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "fast_read_burst_cdata",
+      "range": {
+        "startLine": 534,
+        "startChar": 8,
+        "endLine": 534,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5a8f4905_aa4ad291",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 534,
+                "startChar": 0,
+                "endLine": 535,
+                "endChar": 0
+              },
+              "replacement": "uint8_t fast_read_burst_cdata(struct itecomdbgr_config *conf, uint8_t *C_Data,\n"
+            },
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 585,
+                "startChar": 0,
+                "endLine": 586,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tprintf(\"\\n\\rfast_read_burst_cdata ERR\");\n"
+            },
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 659,
+                "startChar": 0,
+                "endLine": 661,
+                "endChar": 0
+              },
+              "replacement": "\tif (fast_read_burst_cdata(conf, NULL, 1)) {\n"
+            },
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 671,
+                "startChar": 0,
+                "endLine": 673,
+                "endChar": 0
+              },
+              "replacement": "\tif (fast_read_burst_cdata(conf, conf-\u003eg_writebuf, 0)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da24ec9c_a4194ab7",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "Use lower case",
+      "range": {
+        "startLine": 606,
+        "startChar": 5,
+        "endLine": 606,
+        "endChar": 26
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e3f318d8_241473f1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 606,
+                "startChar": 0,
+                "endLine": 607,
+                "endChar": 0
+              },
+              "replacement": "void page_program_burst_v2(struct itecomdbgr_config *conf, uint8_t *wr_data)\n"
+            },
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 652,
+                "startChar": 0,
+                "endLine": 653,
+                "endChar": 0
+              },
+              "replacement": "\tpage_program_burst_v2(conf, conf-\u003eg_writebuf);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7695fa_f8cc7e22",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "Use lower case",
+      "range": {
+        "startLine": 680,
+        "startChar": 5,
+        "endLine": 680,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2272c11b_d1971cc7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 680,
+                "startChar": 0,
+                "endLine": 681,
+                "endChar": 0
+              },
+              "replacement": "void enter_uart_dbgr_mode(struct itecomdbgr_config *conf)\n"
+            },
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 747,
+                "startChar": 0,
+                "endLine": 748,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tenter_uart_dbgr_mode(conf);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fb7c61_361f5ae9",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "You should restore the tty settings before closing `conf-\u003eg_fd`.\n\n```\ntty_saved \u003d tty;\n...\n\nout:\ntcsetattr(conf-\u003eg_fd, TCSANOW, \u0026tty_saved);\n```",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 40
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4785c26_578cef0a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "Need to document `-b option`",
+      "range": {
+        "startLine": 869,
+        "startChar": 0,
+        "endLine": 869,
+        "endChar": 35
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2eeeb9_e8b87b7b",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-07T21:10:16Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 0
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
