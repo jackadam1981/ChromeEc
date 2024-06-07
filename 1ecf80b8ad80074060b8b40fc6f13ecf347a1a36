@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858623fc_c8a70ab8",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-07T01:34:35Z",
+      "side": 1,
+      "message": "this logic seems we need to do it only once at init. Preferably in zephyr code pinctrl_configure_pins()",
+      "range": {
+        "startLine": 357,
+        "startChar": 12,
+        "endLine": 357,
+        "endChar": 44
+      },
+      "revId": "1ecf80b8ad80074060b8b40fc6f13ecf347a1a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88e5f32_1da4f8fd",
+        "filename": "zephyr/program/intelrvp/adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-07T01:34:35Z",
+      "side": 1,
+      "message": "pls refer Rex project for example code\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/rex.dtsi;l\u003d143",
+      "revId": "1ecf80b8ad80074060b8b40fc6f13ecf347a1a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
