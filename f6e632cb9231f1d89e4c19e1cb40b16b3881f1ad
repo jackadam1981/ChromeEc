@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "278b8120_e2b05652",
+        "filename": "zephyr/program/brox/lotso/src/keyboard_customization.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-07T01:12:54Z",
+      "side": 1,
+      "message": "This shoudl be 0x0027.",
+      "range": {
+        "startLine": 34,
+        "startChar": 51,
+        "endLine": 34,
+        "endChar": 57
+      },
+      "revId": "f6e632cb9231f1d89e4c19e1cb40b16b3881f1ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964cd75a_de1e7f38",
+        "filename": "zephyr/program/brox/lotso/src/keyboard_customization.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-07T01:12:54Z",
+      "side": 1,
+      "message": "This should be 0x0037.",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "f6e632cb9231f1d89e4c19e1cb40b16b3881f1ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
