@@ -6,6 +6,7 @@
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "console.h"
@@ -70,6 +71,35 @@ __override int board_get_leave_safe_mode_delay_ms(void)
 		return 2000;
 	else
 		return 500;
+}
+
+static char batt_manuf_name[SBS_MAX_STR_OBJ_SIZE];
+static char batt_device_name[SBS_MAX_STR_OBJ_SIZE];
+
+__override int board_get_default_battery_type(void)
+{
+	int type = DEFAULT_BATTERY_TYPE;
+	int retry = 3;
+	int read_manuf_err;
+	int read_device_err;
+	const struct batt_params *batt = charger_current_battery_params();
+
+	if (batt->flags & BATT_FLAG_RESPONSIVE) {
+		/* Make sure that EC can read Manuf/Device name */
+		while (retry--) {
+			read_manuf_err = battery_manufacturer_name(
+				batt_manuf_name, sizeof(batt_manuf_name));
+			memset(batt_device_name, 0, sizeof(batt_device_name));
+			read_device_err = battery_device_name(
+				batt_device_name, sizeof(batt_device_name));
+			if (read_manuf_err == 0 && read_device_err == 0)
+				break;
+		}
+		if (read_manuf_err != 0 || read_device_err != 0)
+			LOG_INF("Read Manuf/Device name fail when batt responsive");
+	}
+
+	return type;
 }
 
 void update_charger_config(void)
