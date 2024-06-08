@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5a39db5_b8bef2d1",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:21:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "84f911c6_e2fd7efc",
+      "range": {
+        "startLine": 184,
+        "startChar": 18,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9c4e195_c6535128",
         "filename": "zephyr/program/intelrvp/Kconfig",
         "patchSetId": 9
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b87f8ad1_49ca189e",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:21:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f9c4e195_c6535128",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2f78834_bc251bb5",
         "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
         "patchSetId": 9
@@ -108,6 +156,30 @@
       "writtenOn": "2024-06-08T00:13:27Z",
       "side": 1,
       "message": "is EFS2 getting enabled later or not possible due to not connecting to the GSC?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c741b9d_0598f585",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:21:47Z",
+      "side": 1,
+      "message": "Yes, during power on we minimize dependencies with GSC, this can be enabled later.",
+      "parentUuid": "f2f78834_bc251bb5",
       "range": {
         "startLine": 8,
         "startChar": 0,
