@@ -16,6 +16,24 @@
       "message": "is any of this specific to the mchp EC?\nlooks like these could move up to the ptlrvp level.",
       "revId": "71ea1e79467db4d2f5a8e183bc5d3262197c682c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21f40ca_b6b0f35c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/pd.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:09:20Z",
+      "side": 1,
+      "message": "Moving to `ptlrvp` level.",
+      "parentUuid": "cfa04cc1_3fcac367",
+      "revId": "71ea1e79467db4d2f5a8e183bc5d3262197c682c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
