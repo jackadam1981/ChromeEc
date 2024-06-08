@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7177a65f_987c5940",
+        "filename": "zephyr/program/intelrvp/ptlrvp/i2c.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-08T00:11:30Z",
+      "side": 1,
+      "message": "does it still make sense to enable the external CBI EEPROM?\ndo support CBI-in-flash on this EC?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "389a94cb65bf8b972756143526078c8f6fd36afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5455531b_36116676",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-08T00:11:30Z",
+      "side": 1,
+      "message": "is this needed to bypass some WP checks?\nthis typically doesn\u0027t do anything since the system will be\nconsidered `unlocked` anyway until much later in the development\ncycle where we actually write protect programmables.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "389a94cb65bf8b972756143526078c8f6fd36afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
