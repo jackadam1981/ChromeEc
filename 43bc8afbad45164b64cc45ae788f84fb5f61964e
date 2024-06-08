@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "737ed512_cb3c5bf1",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioexp.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3579323_eed0e73b",
+      "revId": "43bc8afbad45164b64cc45ae788f84fb5f61964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d573b85_7569d458",
@@ -97,6 +115,30 @@
       "side": 1,
       "message": "cool. please add a note in the comment.",
       "parentUuid": "ce3fc8bb_98718c37",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "43bc8afbad45164b64cc45ae788f84fb5f61964e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a47e6e_89562205",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c9c5a99_23a9d04c",
       "range": {
         "startLine": 16,
         "startChar": 0,
