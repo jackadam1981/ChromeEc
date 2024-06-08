@@ -46,6 +46,30 @@
       },
       "revId": "6953fd82ea6b7918398633c7397083d62a19274d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988a41b8_b3aaf256",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-08T01:18:10Z",
+      "side": 1,
+      "message": "These GPIOs appear in sequence as in the schematics.\nMicrochip Zephyr logic expects not to define I2C pins as GPIO hence many comments for some the pins.",
+      "parentUuid": "34b4afea_6bb717ea",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "6953fd82ea6b7918398633c7397083d62a19274d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
