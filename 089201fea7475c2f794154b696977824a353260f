@@ -16,6 +16,24 @@
       "message": "if the IO expander is defined at the RVP level, why do you\nneed to define its pins at the EC AIC level?\nshouldn\u0027t they be at the same level?",
       "revId": "089201fea7475c2f794154b696977824a353260f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0567411_11738f42",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/ioexp_gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T00:21:47Z",
+      "side": 1,
+      "message": "Right, I will relocate them accordingly.",
+      "parentUuid": "9aaa8800_41acf108",
+      "revId": "089201fea7475c2f794154b696977824a353260f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
