@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf187df_0117b500",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-08T00:13:42Z",
+      "side": 1,
+      "message": "there are lots of GPIOs commented out here.\nare these place-holders for future changes?",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "6953fd82ea6b7918398633c7397083d62a19274d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
