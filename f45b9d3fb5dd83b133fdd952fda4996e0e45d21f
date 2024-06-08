@@ -22,6 +22,30 @@
       },
       "revId": "f45b9d3fb5dd83b133fdd952fda4996e0e45d21f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d22170_1d81fbab",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/adc.dtsi",
+        "patchSetId": 20
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-08T01:06:06Z",
+      "side": 1,
+      "message": "Adding full file path in comment.",
+      "parentUuid": "7cb0e1b3_2442a31e",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "f45b9d3fb5dd83b133fdd952fda4996e0e45d21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
