@@ -1,0 +1,121 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f911c6_e2fd7efc",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-08T00:13:27Z",
+      "side": 1,
+      "message": "i wonder if we should call this `ptlrvp_m1727` from the start\nso we don\u0027t end up with a _mchp and _m1723 build like we did\nfor MTL?",
+      "range": {
+        "startLine": 184,
+        "startChar": 18,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f3189727_b9ea02a0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/intelrvp/BUILD.py",
+              "range": {
+                "startLine": 184,
+                "startChar": 0,
+                "endLine": 185,
+                "endChar": 0
+              },
+              "replacement": "    project_name\u003d\"ptlrvp_m1727\",\n"
+            },
+            {
+              "path": "zephyr/program/intelrvp/BUILD.py",
+              "range": {
+                "startLine": 187,
+                "startChar": 0,
+                "endLine": 188,
+                "endChar": 0
+              },
+              "replacement": "        here / \"ptlrvp/ptlrvp_m1727/project.overlay\",\n"
+            },
+            {
+              "path": "zephyr/program/intelrvp/BUILD.py",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "        here / \"ptlrvp/ptlrvp_m1727/project.conf\",\n"
+            },
+            {
+              "path": "zephyr/program/intelrvp/BUILD.py",
+              "range": {
+                "startLine": 202,
+                "startChar": 0,
+                "endLine": 203,
+                "endChar": 0
+              },
+              "replacement": "assert_rw_fwid_DO_NOT_EDIT(project_name\u003d\"ptlrvp_m1727\", addr\u003d0x7FFE0)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c4e195_c6535128",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-08T00:13:27Z",
+      "side": 1,
+      "message": "is the mec1723 also supported by this config?\nif not, it\u0027s better to say `MEC1727 EC`.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f78834_bc251bb5",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-08T00:13:27Z",
+      "side": 1,
+      "message": "is EFS2 getting enabled later or not possible due to not connecting to the GSC?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
