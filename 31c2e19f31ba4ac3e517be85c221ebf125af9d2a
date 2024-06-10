@@ -22,6 +22,30 @@
       },
       "revId": "31c2e19f31ba4ac3e517be85c221ebf125af9d2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4cf0bb_87cc7146",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-10T05:46:59Z",
+      "side": 1,
+      "message": "The `cros_fp` device is not present for UART, so the `ectool` would fail. It means it would work for SPI and return error for UART. IMO it is better to keep it here.",
+      "parentUuid": "8ae5a763_b894530a",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 6
+      },
+      "revId": "31c2e19f31ba4ac3e517be85c221ebf125af9d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
