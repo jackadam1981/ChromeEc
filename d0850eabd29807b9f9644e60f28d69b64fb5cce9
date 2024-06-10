@@ -70,6 +70,30 @@
       },
       "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5120467_b1f378b0",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-10T18:40:11Z",
+      "side": 1,
+      "message": "Microchip parts change the number of VCI input per package and these functions can move to other pins in future parts.  The pin may be in the same package position but the internal routing from ball to die could change moving the pin to a different GPIO.\nTo configure the VCI hardware block application must supply for each VCI_INx pin that the application/board design uses:\nVCI_INx input number (1, 2, …)\nPolarity of this pin\nDoes the pin require latching\n\nTherefore, vci-pos will not be driving from GPIO, it is VCI block independently.\nWe will remove:\ngpios:\n      required: true\n      type: phandle-array\n      description: Reference to a VCI instance.\nIn yaml file, and\n    #gpio-cells\u003d\u003c2\u003e;\n    gpios \u003d \u003cMCHP_GPIO_DECODE_162 0\u003e;\nin board dts file, to avoid confusion.",
+      "parentUuid": "c6910f85_1d3dfbeb",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
