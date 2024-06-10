@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c38553_823672ca",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-10T18:10:08Z",
+      "side": 1,
+      "message": "I think this is intended for two port or single port solution, we have to come up with a plan for platforms with more than 2 ports with RTS chip.\n\nhow about submitting a separate CL?",
+      "range": {
+        "startLine": 140,
+        "startChar": 38,
+        "endLine": 140,
+        "endChar": 39
+      },
+      "revId": "778ea37b8eab8ae7054f276d1883d10b956bc70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
