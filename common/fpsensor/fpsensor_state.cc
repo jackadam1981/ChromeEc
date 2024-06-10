@@ -47,7 +47,9 @@ static_assert(
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-struct enc_buffer fp_enc_buffer FP_TEMPLATE_SECTION;
+// struct enc_buffer fp_enc_buffer FP_TEMPLATE_SECTION;
+// TODO: use boringssl or wrapper so it's auto-cleared
+std::unique_ptr<enc_buffer> fp_enc_buffer;
 
 struct fpsensor_context global_context = {
 	.template_newly_enrolled = FP_NO_SUCH_TEMPLATE,
@@ -77,6 +79,8 @@ __test_only void fp_task_simulate(void)
 {
 	int timeout_us = -1;
 
+	fp_enc_buffer = std::make_unique<enc_buffer>();
+
 	while (1)
 		task_wait_event(timeout_us);
 }
@@ -96,7 +100,9 @@ void fp_reset_context()
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+	// OPENSSL_cleanse(fp_enc_buffer.get(), sizeof(*fp_enc_buffer));
+	// fp_enc_buffer = nullptr;
+	fp_enc_buffer = std::make_unique<enc_buffer>();
 	OPENSSL_cleanse(global_context.user_id.data(),
 			sizeof(global_context.user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());

@@ -55,7 +55,8 @@ extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
  * Store the encryption metadata at the beginning of the buffer containing the
  * ciphered data.
  */
-extern struct enc_buffer fp_enc_buffer;
+// extern struct enc_buffer fp_enc_buffer;
+extern std::unique_ptr<enc_buffer> fp_enc_buffer;
 
 struct positive_match_secret_state {
 	/* Index of the most recently matched template. */

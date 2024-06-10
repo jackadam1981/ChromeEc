@@ -267,6 +267,8 @@ extern "C" void fp_task(void)
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(fpsensor_detect_get_type()));
 
+	fp_enc_buffer = std::make_unique<enc_buffer>();
+
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */
 	fp_sensor_init();
@@ -487,7 +489,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	if (fgr >= global_context.templ_valid)
 		return EC_RES_UNAVAILABLE;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = validate_fp_buffer_offset(sizeof(enc_buffer), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
@@ -498,10 +500,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		timestamp_t now = get_time();
 
 		/* Encrypted template is after the metadata. */
-		std::span templ = fp_enc_buffer.fp_template;
+		std::span templ = fp_enc_buffer->fp_template;
 		/* Positive match salt is after the template. */
 		std::span positive_match_salt =
-			fp_enc_buffer.positive_match_salt;
+			fp_enc_buffer->positive_match_salt;
 		std::span encrypted_template_and_positive_match_salt(
 			templ.data(),
 			templ.size_bytes() + positive_match_salt.size_bytes());
@@ -511,13 +513,14 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 		encryption_deadline.val = now.val + (1 * SECOND);
 
-		memset(&fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+		memset(fp_enc_buffer.get(), 0, sizeof(*fp_enc_buffer));
+
 		/*
 		 * The beginning of the buffer contains nonce, encryption_salt
 		 * and tag.
 		 */
 		struct ec_fp_template_encryption_metadata *enc_info =
-			&fp_enc_buffer.metadata;
+			&fp_enc_buffer->metadata;
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
 		trng_init();
 		trng_rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
@@ -568,8 +571,11 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		}
 		global_context.templ_dirty &= ~BIT(fgr);
 	}
-	memcpy(out, reinterpret_cast<uint8_t *>(&fp_enc_buffer) + offset, size);
+	memcpy(out, reinterpret_cast<uint8_t *>(fp_enc_buffer.get()) + offset,
+	       size);
 	args->response_size = size;
+
+	// TODO: free memory if we've reached the end of the frame
 
 	return EC_RES_SUCCESS;
 }
@@ -607,7 +613,8 @@ validate_template_format(struct ec_fp_template_encryption_metadata *enc_info)
 	return EC_RES_SUCCESS;
 }
 
-enum ec_status fp_commit_template(std::span<const uint8_t> context)
+enum ec_status fp_commit_template(enc_buffer &fp_enc_buffer,
+				  std::span<const uint8_t> context)
 {
 	ScopedFastCpu fast_cpu;
 
@@ -618,6 +625,7 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	 * decryption.
 	 */
 	fp_clear_finger_context(idx);
+
 	/*
 	 * The beginning of the buffer contains nonce, encryption_salt
 	 * and tag.
@@ -702,15 +710,20 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	    size + offsetof(struct ec_params_fp_template, data))
 		return EC_RES_INVALID_PARAM;
 	enum ec_error_list ret =
-		validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+		validate_fp_buffer_offset(sizeof(enc_buffer), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
-	memcpy(reinterpret_cast<uint8_t *>(&fp_enc_buffer) + offset,
+	memcpy(reinterpret_cast<uint8_t *>(fp_enc_buffer.get()) + offset,
 	       params->data, size);
 
 	if (xfer_complete) {
-		return fp_commit_template(global_context.user_id);
+		const ec_status rv = fp_commit_template(*fp_enc_buffer,
+							global_context.user_id);
+		// TODO: We need to keep the buffer around if we are doing
+		// a migration.
+		// fp_enc_buffer = nullptr;
+		return rv;
 	}
 
 	return EC_RES_SUCCESS;
@@ -743,7 +756,9 @@ fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)
 		return EC_RES_OVERFLOW;
 
 	BUILD_ASSERT(sizeof(params->userid) == SHA256_DIGEST_SIZE);
+
 	ec_status res = fp_commit_template(
+		*fp_enc_buffer,
 		{ reinterpret_cast<const uint8_t *>(params->userid),
 		  sizeof(params->userid) });
 	if (res != EC_RES_SUCCESS) {
