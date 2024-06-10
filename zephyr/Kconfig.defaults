@@ -56,4 +56,7 @@ config SHELL_BACKEND_SERIAL_INIT_PRIORITY
 config EMUL
 	default y if I2C && (BOARD_NATIVE_POSIX || BOARD_NATIVE_SIM)
 
+configdefault LEGACY_GENERATED_INCLUDE_PATH
+	default n
+
 orsource "Kconfig.defaults-$(ARCH)"
