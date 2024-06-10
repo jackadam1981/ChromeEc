@@ -122,6 +122,24 @@
       "parentUuid": "32914d83_6152c612",
       "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ce6c51_ce33298d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-10T20:59:38Z",
+      "side": 1,
+      "message": "FYI, this is not the first time I seen implementation issues with this macro.\nI believe the other implementation issue is that it can\u0027t be used without optimization, which causes problems for debugging.\n\nI think this needs to fixed at some point.",
+      "parentUuid": "fdb3498e_2e1d26f4",
+      "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
