@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a56372_1af6e877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-10T07:47:42Z",
+      "side": 1,
+      "message": "Not sure 100%, the test would need a few adjustments (I\u0027ve created a bug for that b/346195590). I would say let\u0027s merge this one for now, and pay attention to the `native_posix` one during the switch to twister. What do you think?",
+      "parentUuid": "f5b87c45_3c605117",
+      "revId": "cacc2ec6b12c10431e5c4b7725f24393e6c007d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c46adbc2_d754a1b6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-06-05T14:40:28Z",
       "side": 1,
       "message": "This is not true. In CrosEC rollback regions are always initiated, but the mechanism is more \"obfuscated\". See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/firmware_image.S;l\u003d39-47;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46 and https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/firmware_image.lds.S;l\u003d98-102;drc\u003df37804a6bdb895e60c484902a91aae79e64f2e25 for more details.",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "cacc2ec6b12c10431e5c4b7725f24393e6c007d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccf1e86_1b3a5708",
+        "filename": "zephyr/test/hwtest/src/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-10T07:47:42Z",
+      "side": 1,
+      "message": "I updated the comment.",
+      "parentUuid": "c46adbc2_d754a1b6",
       "range": {
         "startLine": 121,
         "startChar": 4,
