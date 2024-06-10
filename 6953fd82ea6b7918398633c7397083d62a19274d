@@ -70,6 +70,30 @@
       },
       "revId": "6953fd82ea6b7918398633c7397083d62a19274d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f7f5ef_378223ca",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-10T18:19:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "988a41b8_b3aaf256",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "6953fd82ea6b7918398633c7397083d62a19274d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
