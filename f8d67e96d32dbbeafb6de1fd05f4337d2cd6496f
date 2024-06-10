@@ -140,6 +140,24 @@
       "parentUuid": "fdb3498e_2e1d26f4",
       "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9aa60af_03855dce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-10T23:08:21Z",
+      "side": 1,
+      "message": "I filed a bug for this issue: http://b/346419141. Do you know if there is already one for the optimization issue?",
+      "parentUuid": "59ce6c51_ce33298d",
+      "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
