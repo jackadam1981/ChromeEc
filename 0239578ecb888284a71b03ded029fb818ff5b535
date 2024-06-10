@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a97afd7c_6b7403b2",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "The PPM states are defined in the spec and the entry/exit criteria are fairly well understood. In order to test that the PPM state machines works correctly, exposing this state is important.",
+      "parentUuid": "2c4fa4b2_d5c2eca8",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "099bba09_aa438f2d",
         "filename": "zephyr/include/usbc/ppm.h",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-06T15:19:58Z",
       "side": 1,
       "message": "Should this be an atomic?",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88394f7c_4a0fbda5",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Done in future CL.",
+      "parentUuid": "099bba09_aa438f2d",
       "range": {
         "startLine": 58,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6dc937e_49fba8c8",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d50b6360_e70c8021",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c501b17e_18c4719b",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0116061d_4fede06b",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c501b17e_18c4719b",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5eab8fe_79401ee2",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-06-06T15:13:10Z",
       "side": 1,
       "message": "Most of these have an equivalent struct/union already defined in ucsi_v3.h.  Can you refactor the PPM code to use the ucsi_v3.h as a parent to this CL?\n\nThat would reduce the size of this CL quite a bit.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3522ffac_678e08a0",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "I\u0027ll put that refactor in a subsequent CL (I.e. crrev.com/c/5582096) after `ppm_common.c` is migrated.",
+      "parentUuid": "b5eab8fe_79401ee2",
       "range": {
         "startLine": 123,
         "startChar": 0,

@@ -508,6 +508,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "841f04ca_b3bc95f3",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cd9bd8c0_2b4eba47",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca8cb53d_7a376c1b",
@@ -545,6 +569,30 @@
       "side": 1,
       "message": "Yup -- will make the change in the zephyr versions of the code.",
       "parentUuid": "ca8cb53d_7a376c1b",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac18b848_5ad5f0d2",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4855f072_5952fa59",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -609,6 +657,30 @@
       "side": 1,
       "message": "Will merge this header into `ppm_common.h` and we\u0027ll have a single ppm header.",
       "parentUuid": "66abb10f_aaa1f2af",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 24
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f942ff26_0abd1890",
+        "filename": "zephyr/subsys/ucsi/include/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "745452fa_db0b00b8",
       "range": {
         "startLine": 384,
         "startChar": 0,
@@ -750,6 +822,30 @@
       "side": 1,
       "message": "Once we move everything, I\u0027m going to try to convert this to a unit test. I can\u0027t figure out a good way to do this with the existing directory structure.",
       "parentUuid": "5b38bc56_7373f503",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "f2fbe5e70975a040ef0fa21fd2bc06fa8752218d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6950e6c2_82688cf8",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:27:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ffdf49ab_817e8114",
       "range": {
         "startLine": 50,
         "startChar": 0,
