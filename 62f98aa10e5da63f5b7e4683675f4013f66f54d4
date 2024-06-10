@@ -34,6 +34,24 @@
       "parentUuid": "79641572_81cdb172",
       "revId": "62f98aa10e5da63f5b7e4683675f4013f66f54d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7dcfc0_7524954d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-06-10T14:59:00Z",
+      "side": 1,
+      "message": "Patch 3 will get build error message as below\nERROR: ERROR: property kbd@f01d00/kso16-gpios \u003d \u003cgpioc 3 0x10\u003e. Flags don\u0027t match named-gpios 0x0\nERROR: ERROR: property kbd@f01d00/kso17-gpios \u003d \u003cgpioc 5 0x10\u003e. Flags don\u0027t match named-gpios 0x0\nNeed modify KSO16/17 flags to 0 in below link for build pass.\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/1b7a2f459ed40f243914cac4b84f110882e7c826/dts/riscv/ite/it8xxx2.dtsi#694",
+      "parentUuid": "b29180ba_c6378206",
+      "revId": "62f98aa10e5da63f5b7e4683675f4013f66f54d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
