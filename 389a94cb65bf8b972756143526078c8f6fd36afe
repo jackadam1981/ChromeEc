@@ -93,6 +93,30 @@
       },
       "revId": "389a94cb65bf8b972756143526078c8f6fd36afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62028e1e_80b4de0f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-10T18:42:21Z",
+      "side": 1,
+      "message": "ok, let\u0027s get rid of it as soon as we can.\nit eventually just gets in the way of \"normal\" system operation.",
+      "parentUuid": "26d88600_f6721f3f",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "389a94cb65bf8b972756143526078c8f6fd36afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
