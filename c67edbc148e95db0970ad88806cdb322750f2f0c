@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d62819a3_bbb561bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-06-10T19:34:53Z",
+      "side": 1,
+      "message": "The recommendation is from intel to WA board cannot boot up in b/333336079#comment85. We should have it reviewed by intel and HW to understand how we would like to deal with this.",
+      "revId": "c67edbc148e95db0970ad88806cdb322750f2f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "230875e8_b66c50e6",
         "filename": "zephyr/program/nissa/src/board_power.c",
         "patchSetId": 6
