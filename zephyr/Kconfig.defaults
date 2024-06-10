@@ -56,4 +56,7 @@ config SHELL_BACKEND_SERIAL_INIT_PRIORITY
 config I2C_ALLOW_NO_STOP_TRANSACTIONS
 	default y
 
+configdefault LEGACY_GENERATED_INCLUDE_PATH
+	default n
+
 orsource "Kconfig.defaults-$(ARCH)"
