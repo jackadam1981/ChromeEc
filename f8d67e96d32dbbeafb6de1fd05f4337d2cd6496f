@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bac82b_eee2b902",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-10T18:20:49Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something, but is this just masking another issue?\n\nWhy was the error attribute already added (with different message)?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/common.h;l\u003d518;drc\u003d6757ebe2dce2a23e2cd3149eb82b32faa4f16908\n\nWhy was the error attribute added at all for clang?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/common.h;l\u003d497-501;drc\u003d6757ebe2dce2a23e2cd3149eb82b32faa4f16908",
+      "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
