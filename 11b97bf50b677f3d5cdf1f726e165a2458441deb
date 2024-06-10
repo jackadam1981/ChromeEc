@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8bbb965_19fe2ee6",
+        "filename": "zephyr/program/intelrvp/BUILD.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-10T17:26:35Z",
+      "side": 1,
+      "message": "There is no plan to use m1723. No need to add it.",
+      "parentUuid": "d5a39db5_b8bef2d1",
+      "range": {
+        "startLine": 184,
+        "startChar": 18,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9c4e195_c6535128",
@@ -143,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91bf2ca0_9e29cec0",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-10T17:26:35Z",
+      "side": 1,
+      "message": "There is no plan to use m1723. No need to add it.",
+      "parentUuid": "b87f8ad1_49ca189e",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2f78834_bc251bb5",
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "Yes, during power on we minimize dependencies with GSC, this can be enabled later.",
       "parentUuid": "f2f78834_bc251bb5",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "11b97bf50b677f3d5cdf1f726e165a2458441deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9c8bf4_7a69e532",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-10T17:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c741b9d_0598f585",
       "range": {
         "startLine": 8,
         "startChar": 0,
