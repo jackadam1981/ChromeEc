@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2334e178_022db158",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9332be_238db123",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 0
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff249967_6ef63a81",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e591cd87_71f3602d",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff249967_6ef63a81",
+      "range": {
+        "startLine": 752,
+        "startChar": 8,
+        "endLine": 752,
+        "endChar": 44
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6298450b_3aacca3a",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-06-06T15:00:10Z",
       "side": 1,
       "message": "Adding functions only used by the tests isn\u0027t ideal. Are there any existing public APIs that you can use to infer this information?",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 28
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a590ed5f_bee2b058",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:28:06Z",
+      "side": 1,
+      "message": "No. This isn\u0027t public info and is necessary for unit testing the state machines.",
+      "parentUuid": "6298450b_3aacca3a",
       "range": {
         "startLine": 1042,
         "startChar": 0,
@@ -124,6 +196,30 @@
           ]
         }
       ],
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a89fd1_5c405bab",
+        "filename": "zephyr/subsys/ucsi/ppm_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-10T16:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8617bf_0979d5bf",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 28
+      },
       "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
