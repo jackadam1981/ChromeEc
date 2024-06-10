@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230875e8_b66c50e6",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:29:48Z",
+      "side": 1,
+      "message": "This is a very specific name, but yet doesn\u0027t really provide any insight as to what this GPIO is controlling. There should be some comment here that summarizes what is actually being accomplished.",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 25
+      },
+      "revId": "c67edbc148e95db0970ad88806cdb322750f2f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c278017e_20ced314",
+        "filename": "zephyr/program/nissa/src/board_power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:29:48Z",
+      "side": 1,
+      "message": "where does the 10 msec value come from?",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 13
+      },
+      "revId": "c67edbc148e95db0970ad88806cdb322750f2f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
