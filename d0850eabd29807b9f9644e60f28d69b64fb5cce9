@@ -94,6 +94,30 @@
       },
       "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62960aa3_5838f3f6",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-10T20:10:37Z",
+      "side": 1,
+      "message": "Understood, but under what circumstances would the board require a change in pin numbering for internal routing? If there aren\u0027t any practical applications, it might be more prudent to maintain a direct mapping to minimize the risk of manual errors.",
+      "parentUuid": "c5120467_b1f378b0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
