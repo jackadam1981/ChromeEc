@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fea2b3c_a8e26174",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-10T20:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7cef483_e96031bc",
+      "range": {
+        "startLine": 15,
+        "startChar": 47,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "1816510877eabbfaeb79ca10129480d35eb18ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d7228ee_504a8be9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a36254_b6b123d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-10T20:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d7228ee_504a8be9",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "1816510877eabbfaeb79ca10129480d35eb18ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b96c59d0_91d820fc",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-06-10T18:05:02Z",
       "side": 1,
       "message": "nit: /* PD Interrupts */",
+      "revId": "1816510877eabbfaeb79ca10129480d35eb18ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c87c1be_c35bcaa9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/include/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-10T20:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96c59d0_91d820fc",
       "revId": "1816510877eabbfaeb79ca10129480d35eb18ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
