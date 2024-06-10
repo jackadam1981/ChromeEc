@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2827da_6b35ac91",
+        "filename": "zephyr/program/nissa/orisa/generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:27:07Z",
+      "side": 1,
+      "message": "is this signal active high now? I\u0027m confused as to why this signal name is changed, but the gpio_ name was not?",
+      "range": {
+        "startLine": 96,
+        "startChar": 24,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9e83e1_e317e759",
+        "filename": "zephyr/program/nissa/orisa/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:27:07Z",
+      "side": 1,
+      "message": "Is there also an interrupt signal for the PCM path similar to Brox?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb13d1af_ec421f79",
+        "filename": "zephyr/program/nissa/orisa/src/charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:27:07Z",
+      "side": 1,
+      "message": "why is this always true now? There should be a comment added here to reflect the design that makes this always true.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7559bc80_4178a44a",
+        "filename": "zephyr/program/nissa/orisa/src/sub_board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:27:07Z",
+      "side": 1,
+      "message": "This file appears to just a be a copy of program/nissa/src/sub_board.c ? What this reason this needs to be copied here?",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d18767_15a76c1c",
+        "filename": "zephyr/program/nissa/orisa/src/usbc_stubs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-10T19:27:07Z",
+      "side": 1,
+      "message": "This is not a stubbed out function. Why is this add in usbc_stubs.c which would imply any function is here just to make the build work, but otherwise isn\u0027t implementing any code.",
+      "range": {
+        "startLine": 12,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
