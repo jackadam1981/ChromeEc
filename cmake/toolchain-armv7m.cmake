@@ -17,5 +17,5 @@ include("${CMAKE_CURRENT_LIST_DIR}/toolchain-common.cmake")
 add_compile_options(-mcpu=cortex-m4)
 add_compile_options(-mfloat-abi=hard)
 
-add_link_options(-lclang_rt.builtins-armv7m)
+add_link_options(/usr/lib64/clang/19/lib/baremetal/libclang_rt.builtins-armv7m.a)
 add_link_options(-lnosys)
