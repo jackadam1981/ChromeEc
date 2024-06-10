@@ -34,6 +34,41 @@
       "parentUuid": "66bac82b_eee2b902",
       "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32914d83_6152c612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-10T18:33:46Z",
+      "side": 1,
+      "message": "Ohhh. I guess the collision is because the `IS_ENABLED_BAD_ARGS` function is not scoped and said to be extern. Is that right?",
+      "parentUuid": "8ac33e9a_99ad3846",
+      "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44468b4_4e88e517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-10T18:33:46Z",
+      "side": 1,
+      "message": "This",
+      "revId": "f8d67e96d32dbbeafb6de1fd05f4337d2cd6496f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
