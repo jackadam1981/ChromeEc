@@ -33,6 +33,23 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8745430529876940833) is being automatically retried for the following reasons:\n- Some child builders are now retryable:betty-arc-r-container-cq, betty-arc-t-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "de8f5cf458e268164b8828767fe910e351569941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d3d4f1_a52e582a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-06-11T20:51:09Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8745412982383444625) is being automatically retried for the following reasons:\n- Some child builders are now retryable:betty-arc-r-container-cq, betty-arc-t-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "de8f5cf458e268164b8828767fe910e351569941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
