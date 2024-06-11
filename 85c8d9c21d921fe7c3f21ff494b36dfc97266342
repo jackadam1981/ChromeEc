@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19e555e3_db279bb5",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-06-11T15:57:57Z",
+      "side": 1,
+      "message": "IIUC, the purpose of setting this bit is to satisfy this condition in the kernel\u0027s UCSI driver (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v6.6/drivers/usb/typec/ucsi/ucsi.c;drc\u003dad44794717b5069a207ff689dec39a90c62b7567;l\u003d1205). There is another one which controls whether or not cable discovery will be attempted.\n\nIf that condition isn\u0027t met, then the driver wouldn\u0027t send GET_PD_MESSAGE, and subsequently the PPM won\u0027t send GET_VDOs. So, I think setting this bit will come before any GET_PD_MESSAGE or GET_VDO messages. And, the bit getting set here is in the UCSI_CMD_GET_CAPABILITY response.",
+      "parentUuid": "582d44fb_e4f84ea1",
+      "range": {
+        "startLine": 1394,
+        "startChar": 25,
+        "endLine": 1394,
+        "endChar": 48
+      },
+      "revId": "85c8d9c21d921fe7c3f21ff494b36dfc97266342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "220617df_a0d6b5c3",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 1
