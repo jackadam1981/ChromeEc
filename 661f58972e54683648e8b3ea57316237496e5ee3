@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02aeada6_a912fa1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-11T16:54:07Z",
+      "side": 1,
+      "message": "\u003e because the private directory is only for fp.\n\nThe `ec-private` directory is only used for fingerprint now?\n\nEven if it is, I think it\u0027s confusing to change the name like this:\n\n```\nfp-private:\u003d../ec-private\n```\n\nLet\u0027s just call it `ec-private` for now:\n\n```\nec-private:\u003d../ec-private\n```\n\nIf it really is fingerprint-specific only we can clean that up in a followup CL.",
+      "parentUuid": "274386fa_e1704fd6",
+      "revId": "661f58972e54683648e8b3ea57316237496e5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ab9dc91_143a21f0",
         "filename": "baseboard/bloonchipper/build.mk",
         "patchSetId": 28
