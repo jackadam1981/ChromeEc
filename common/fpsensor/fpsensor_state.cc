@@ -96,6 +96,7 @@ void fp_clear_finger_context(uint16_t idx)
 
 void fp_reset_context()
 {
+	ccprints("fp_reset_context");
 	global_context.templ_valid = 0;
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
