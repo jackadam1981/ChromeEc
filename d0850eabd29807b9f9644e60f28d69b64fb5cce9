@@ -118,6 +118,30 @@
       },
       "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abbbe872_8ede14d6",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2024-06-11T21:27:24Z",
+      "side": 1,
+      "message": "as soon as one package is determined, the GPIO / VCI_INx is fixed. if vci-pos is removed from property, need to add hard code like this?\n\n\t\t/* get vci bit position for vci control registers */\n\t\tif (gpio_pin_pos \u003d\u003d 18) {\n\t\t\t/* VCI_IN1 / GPIO162 */\n\t\t\tvci_pos \u003d 1;\n\t\t} else if (gpio_pin_pos \u003d\u003d 17) {\n\t\t\t/* VCI_IN2 / GPIO161 */\n\t\t\tvci_pos \u003d 2;\n\t\t} else if (gpio_pin_pos \u003d\u003d 0) {\n\t\t\t/* VCI_IN3 / GPIO000 */\n\t\t\tvci_pos \u003d 3;\n\t\t} else {\n\t\t\t/* VCI_IN0, always enable in default  */\n\t\t\tvci_pos \u003d 0;\n\t\t}",
+      "parentUuid": "62960aa3_5838f3f6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
