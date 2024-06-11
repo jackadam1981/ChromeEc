@@ -393,6 +393,16 @@ void host_command_task(void *u)
 
 		/* Process it */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
+			CPRINTF("%s: pending_args.send_response=%p, .cmd=%04x, .ver=%d",
+				pending_args->send_response,
+				pending_args->command, pending_args->version);
+			
+			if(pending_args->send_response == NULL) {
+				/* Busy spin */
+				crec_usleep(100000);
+				continue;
+			}
+
 			pending_args->result =
 				host_command_process(pending_args);
 			host_send_response(pending_args);
