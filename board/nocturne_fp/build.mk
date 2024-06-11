@@ -76,6 +76,13 @@ test-list-y=\
        utils \
        utils_str \
 
+# This test calls fp_reset_and_clear_context(), which calls private driver
+# functions.
+ifeq ($(HAVE_PRIVATE),y)
+test-list-y += \
+       fpsensor_auth_commands
+endif
+
 # Note that this variable includes the trailing "/"
 _nocturne_fp_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 -include $(_nocturne_fp_cur_dir)../../../ec-private/board/nocturne_fp/build.mk

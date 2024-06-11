@@ -19,6 +19,7 @@
 #include "sha256.h"
 #include "test_util.h"
 #include "util.h"
+#include "watchdog.h"
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -1617,6 +1618,9 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_nonce_context_deny);
 	RUN_TEST(test_fp_command_nonce_context_limit_without_generated_nonce);
 	RUN_TEST(test_fp_command_nonce_context_limit_normal_context);
+
+	watchdog_reload();
+
 	RUN_TEST(test_fp_command_nonce_context_limit_twice_1);
 	RUN_TEST(test_fp_command_nonce_context_limit_twice_2);
 	RUN_TEST(test_fp_command_nonce_context_load_pk_deny);
@@ -1628,6 +1632,9 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_unlock_template_pre_encrypted);
 	RUN_TEST(test_fp_command_commit_v3);
 	RUN_TEST(test_fp_command_commit_trivial_salt);
+
+	watchdog_reload();
+
 	RUN_TEST(test_fp_command_migrate_template_to_nonce_context);
 	RUN_TEST(test_fp_command_migrate_template_to_nonce_context_failure);
 	test_print_result();

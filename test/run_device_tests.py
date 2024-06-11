@@ -343,6 +343,9 @@ class AllTests:
                 test_name="fp_transport",
                 test_args=["uart"],
             ),
+            TestConfig(
+                test_name="fpsensor_auth_commands", exclude_boards=[HELIPILOT]
+            ),
             TestConfig(test_name="fpsensor_auth_crypto_stateful"),
             TestConfig(
                 test_name="fpsensor_auth_crypto_stateful_otp",
