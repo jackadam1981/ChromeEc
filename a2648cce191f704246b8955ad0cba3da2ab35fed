@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80917eff_775e0405",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-11T20:16:05Z",
+      "side": 1,
+      "message": "This won\u0027t stay in sync when `clang` is updated. Is there any way to get the version dynamically.",
+      "range": {
+        "startLine": 24,
+        "startChar": 34,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
