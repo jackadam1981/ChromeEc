@@ -46,6 +46,30 @@
       },
       "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36041977_a583a940",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2024-06-11T20:52:36Z",
+      "side": 1,
+      "message": "\u003e gbiv, do you know of a better mechanism here?\n\nIn the LLVM ebuild, we glob our way to victory: `/usr/lib64/clang/*/lib/...`.\n\nFailing that, `${CXX} --print-resource-dir` should DTRT:\n\n```\n$ aarch64-cros-linux-gnu-clang --print-resource-dir\n/usr/lib64/clang/18\n$\n```",
+      "parentUuid": "40aad176_f9f788ad",
+      "range": {
+        "startLine": 24,
+        "startChar": 34,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
