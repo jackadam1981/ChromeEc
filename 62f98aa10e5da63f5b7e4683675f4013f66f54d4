@@ -52,6 +52,24 @@
       "parentUuid": "b29180ba_c6378206",
       "revId": "62f98aa10e5da63f5b7e4683675f4013f66f54d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7420625_d440032e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-06-11T02:10:42Z",
+      "side": 1,
+      "message": "A quick wa should be \n```\n\u0026kso16_gpc3_default {\n        /delete-property/ bias-pull-up;\n};\n\n\u0026kso17_gpc3_default {\n        /delete-property/ bias-pull-up;\n};\n```\nBut still need to check whether you\u0027ll need this flag or not.",
+      "parentUuid": "cb7dcfc0_7524954d",
+      "revId": "62f98aa10e5da63f5b7e4683675f4013f66f54d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
