@@ -22,6 +22,30 @@
       },
       "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40aad176_f9f788ad",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-06-11T20:21:45Z",
+      "side": 1,
+      "message": "@gbiv@chromium.org, do you know of a better mechanism here?\n\nIf a way doesn\u0027t already exist, I think we can create a symlink, e.g. `latest -\u003e 19`.\n\nThe other consideration here is that I intend to send a patch to LLVM to put `__aeabi_memset` and `__aeabi_memclr*` in separate compilation units. This would avoid the duplicate symbol errors by allowing each symbol to be pulled in individually. I\u0027m hoping that, after that, we can do away with explicitly mentioning libclang_rt.builtins here.",
+      "parentUuid": "80917eff_775e0405",
+      "range": {
+        "startLine": 24,
+        "startChar": 34,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
