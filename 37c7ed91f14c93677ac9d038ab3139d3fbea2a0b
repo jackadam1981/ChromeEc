@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a0daca_5cda4847",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-11T23:59:24Z",
+      "side": 0,
+      "message": "This diff is hard to read, but basically the internals of `cmd_get_ic_status()` have been broken out into a helper function, `cmd_get_ic_status_sync_internal()` that is standalone and can be reused from the init state.",
+      "revId": "37c7ed91f14c93677ac9d038ab3139d3fbea2a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
