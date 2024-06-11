@@ -22,6 +22,30 @@
       },
       "revId": "8dc37f8e9fc9dbc56b9d574a5754d6d13cb8e5c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5940220_bf382dcd",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-11T18:18:16Z",
+      "side": 1,
+      "message": "Probably yes, will do",
+      "parentUuid": "2b758fc3_e686e8e5",
+      "range": {
+        "startLine": 1495,
+        "startChar": 0,
+        "endLine": 1495,
+        "endChar": 41
+      },
+      "revId": "8dc37f8e9fc9dbc56b9d574a5754d6d13cb8e5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
