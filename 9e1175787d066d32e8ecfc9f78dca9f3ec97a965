@@ -163,6 +163,30 @@
       },
       "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7296fc_55e929dc",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-11T02:57:37Z",
+      "side": 1,
+      "message": "i think 1,1 should be correct.\nthere are no required args.\nif exactly 1 arg is provided, it\u0027s the desired trace port\nincluding the \"off\" or \"none\" case.",
+      "parentUuid": "d94230b5_399ab6e4",
+      "range": {
+        "startLine": 500,
+        "startChar": 28,
+        "endLine": 500,
+        "endChar": 34
+      },
+      "revId": "9e1175787d066d32e8ecfc9f78dca9f3ec97a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
