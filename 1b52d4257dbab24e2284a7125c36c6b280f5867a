@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250dd7b9_a3fa78f7",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-11T15:38:58Z",
+      "side": 0,
+      "message": "How difficult is it move the de-dup the UCSI structs to the parent CL on the stack?\n\nAs is, I\u0027m forced to review the multiple CLs is parallel.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "1b52d4257dbab24e2284a7125c36c6b280f5867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
