@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffa1e52_92158617",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-11T18:48:17Z",
+      "side": 1,
+      "message": "Yes this should be UCSI_CMD_GET_CAPABILITY. I\u0027ll also compare `wr_buf` to make sure we\u0027re sending a UCSI command. \n\nPTAL.",
+      "parentUuid": "19e555e3_db279bb5",
+      "range": {
+        "startLine": 1394,
+        "startChar": 25,
+        "endLine": 1394,
+        "endChar": 48
+      },
+      "revId": "85c8d9c21d921fe7c3f21ff494b36dfc97266342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220617df_a0d6b5c3",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4210a847_2a6a6520",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-11T18:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220617df_a0d6b5c3",
+      "range": {
+        "startLine": 2556,
+        "startChar": 18,
+        "endLine": 2556,
+        "endChar": 21
+      },
+      "revId": "85c8d9c21d921fe7c3f21ff494b36dfc97266342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bdac921_92caf3f5",
@@ -108,6 +156,30 @@
       "writtenOn": "2024-06-11T15:35:54Z",
       "side": 1,
       "message": "GET_VDO[2]",
+      "range": {
+        "startLine": 2560,
+        "startChar": 18,
+        "endLine": 2560,
+        "endChar": 22
+      },
+      "revId": "85c8d9c21d921fe7c3f21ff494b36dfc97266342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d48f245_24d120fd",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2560,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-11T18:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bdac921_92caf3f5",
       "range": {
         "startLine": 2560,
         "startChar": 18,
