@@ -1,0 +1,49 @@
+# Copyright 2024 Google LLC
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+  Runtime keys definition.
+
+  TODO This can be used to define the key combinations that trigger boot key events:
+  TODO recovery mode, force memory retraining and boot without starting the AP.
+
+  Example configuration:
+
+  boot-keys {
+      compatible = "cros-ec,runtime-keys";
+      left-alt-rc = <KBD_RC(?, ?)>;
+      right-alt-rc = <KBD_RC(?, ?)>;
+      h-rc = <KBD_RC(?, ?)>;
+      r-rc = <KBD_RC(?, ?)>;
+  };
+
+compatible: "cros-ec,runtime-keys"
+
+include: base.yaml
+
+properties:
+  vol-up-rc:
+    type: int
+    required: true
+    description: Row-column position of the "volume up" key.
+
+  left-alt-rc:
+    type: int
+    required: true
+    description: Row-column position of the "left alt" key.
+
+  right-alt-rc:
+    type: int
+    required: true
+    description: Row-column position of the "right alt" key.
+
+  h-rc:
+    type: int
+    required: true
+    description: Row-column position of the "h" key.
+
+  r-rc:
+    type: int
+    required: true
+    description: Row-column position of the "r" key.
