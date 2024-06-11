@@ -343,6 +343,7 @@ class AllTests:
                 test_name="fp_transport",
                 test_args=["uart"],
             ),
+            TestConfig(test_name="fpsensor_auth_commands"),
             TestConfig(test_name="fpsensor_auth_crypto_stateful"),
             TestConfig(test_name="fpsensor_auth_crypto_stateless"),
             TestConfig(test_name="fpsensor_crypto"),
