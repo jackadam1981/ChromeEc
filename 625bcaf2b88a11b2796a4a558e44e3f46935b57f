@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c8bb783_9cb3ff56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-06-11T06:55:34Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8745461485969029041) is being automatically retried for the following reasons:\n- Some child builders are now retryable:betty-arc-r-container-cq, betty-arc-t-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "625bcaf2b88a11b2796a4a558e44e3f46935b57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
