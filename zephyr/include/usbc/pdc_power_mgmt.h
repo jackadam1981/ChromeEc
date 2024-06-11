@@ -547,4 +547,14 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status);
  */
 int pdc_power_mgmt_get_lpm_ppm_info(int port, struct lpm_ppm_info_t *info);
 
+#ifdef CONFIG_USBC_PDC_TPS6699X
+/**
+ * @brief Temporary EC-based FW update mechanism for TI PDC
+ *
+ * @returns 0 on success or negative error code
+ */
+int pdc_do_firmware_update();
+
+#endif /* defined(CONFIG_USBC_PDC_TPS6699X) */
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

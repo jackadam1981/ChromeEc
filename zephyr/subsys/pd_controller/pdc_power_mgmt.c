@@ -3604,6 +3604,17 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
 	return 0;
 }
 
+#ifdef CONFIG_USBC_PDC_TPS6699X
+/* LCOV_EXCL_START - non-shipping code */
+extern int tps6699x_do_firmware_update(const struct device *dev);
+
+int pdc_do_firmware_update()
+{
+	return tps6699x_do_firmware_update(pdc_data[0]->port.pdc);
+}
+/* LCOV_EXCL_STOP - non-shipping code */
+#endif /* defined(CONFIG_USBC_PDC_TPS6699X) */
+
 #ifdef CONFIG_ZTEST
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)
