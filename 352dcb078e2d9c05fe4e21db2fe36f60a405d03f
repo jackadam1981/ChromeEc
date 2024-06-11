@@ -16,6 +16,24 @@
       "message": "I can not find any definition that define 99% as full, could you point that out for me?",
       "revId": "352dcb078e2d9c05fe4e21db2fe36f60a405d03f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad7fd47_b7cd165f",
+        "filename": "zephyr/program/corsola/skitty/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 3353541
+      },
+      "writtenOn": "2024-06-11T06:12:13Z",
+      "side": 1,
+      "message": "I have modified,\nCharging: \u003c\u003d 99% (Amber LED ON) \nFull Charged: \u003e 99% (White LED ON)\nThanks.",
+      "parentUuid": "c4e6c902_476e2a33",
+      "revId": "352dcb078e2d9c05fe4e21db2fe36f60a405d03f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
