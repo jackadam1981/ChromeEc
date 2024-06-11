@@ -16,6 +16,24 @@
       "message": "Are you sure you want to do this? Bloonchipper failures haven\u0027t been addressed promptly in the past.",
       "revId": "9efcbd25c0a96a86aa24614cc5d6748c2b86bd4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b139ea4_81b94383",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-11T21:28:39Z",
+      "side": 1,
+      "message": "If the testing that I have done on my local machine reflects gitlab CI, the problem should have been resolved with the changes made in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5621013/4",
+      "parentUuid": "35c7b365_017d1b9d",
+      "revId": "9efcbd25c0a96a86aa24614cc5d6748c2b86bd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
