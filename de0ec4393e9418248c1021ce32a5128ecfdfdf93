@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f161f571_92eaa083",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-12T15:28:08Z",
+      "side": 1,
+      "message": "Return after this?",
+      "revId": "de0ec4393e9418248c1021ce32a5128ecfdfdf93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb7254c_e6f01746",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-12T15:28:08Z",
+      "side": 1,
+      "message": "If this code is no longer running asynchronously, do we need to use a temp buffer in `data`, or could this just be a local, or could the we write directly into `data-\u003einfo`?",
+      "revId": "de0ec4393e9418248c1021ce32a5128ecfdfdf93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1e602c_11faff68",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-12T15:28:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we also need to use this inside the command, since it\u0027s writing to `data-\u003einfo`?",
+      "revId": "de0ec4393e9418248c1021ce32a5128ecfdfdf93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
