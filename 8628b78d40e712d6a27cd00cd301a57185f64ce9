@@ -16,6 +16,24 @@
       "message": "For my knowledge: is this something that is only happening with a toolchain uprev? (I think so based on http://b/346309204#comment2, but want to confirm.) \n\n(I don\u0027t see the failure locally when building with `make`)",
       "revId": "8628b78d40e712d6a27cd00cd301a57185f64ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcacec8_573961fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-06-12T20:42:51Z",
+      "side": 1,
+      "message": "\u003e is this something that is only happening with a toolchain uprev\n\nYes. Tested with LLVM r530567. I haven\u0027t looked which specific commit causes the change in behavior.",
+      "parentUuid": "6be02d8d_b1a10bcd",
+      "revId": "8628b78d40e712d6a27cd00cd301a57185f64ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
