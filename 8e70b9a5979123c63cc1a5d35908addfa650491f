@@ -52,6 +52,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9cfa00_4818c8bb",
+        "filename": "zephyr/program/brox/lotso/include/keyboard_customization.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99272326_7c36880a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "8e70b9a5979123c63cc1a5d35908addfa650491f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "746f9aca_ede819f4",
@@ -113,6 +137,30 @@
       "side": 1,
       "message": "replied on Buganizer.",
       "parentUuid": "55399768_0e9e2d79",
+      "range": {
+        "startLine": 23,
+        "startChar": 43,
+        "endLine": 23,
+        "endChar": 49
+      },
+      "revId": "8e70b9a5979123c63cc1a5d35908addfa650491f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc72aa47_f3c34602",
+        "filename": "zephyr/program/brox/lotso/src/keyboard_customization.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648357cb_cd393610",
       "range": {
         "startLine": 23,
         "startChar": 43,

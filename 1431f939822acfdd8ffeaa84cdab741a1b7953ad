@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5169386_c16b1a12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:32:55Z",
+      "side": 1,
+      "message": "based on b:322721490#comment47, the CL should be good to go, but we still don\u0027t have a keyboard sample to verify the functions.\n\nThe CL has been pending for too long, most functions should be good, so I\u0027d like to merge the CL first.",
+      "revId": "1431f939822acfdd8ffeaa84cdab741a1b7953ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
