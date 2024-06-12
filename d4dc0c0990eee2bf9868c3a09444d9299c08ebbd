@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e6343b9_6d208bd1",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:11:01Z",
+      "side": 1,
+      "message": "Yes but I couldn\u0027t figure what it was relative to within a reasonable number of attempts. I could try more.",
+      "parentUuid": "15105390_3333f043",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a210bf_627b9aaf",
         "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
         "patchSetId": 3
