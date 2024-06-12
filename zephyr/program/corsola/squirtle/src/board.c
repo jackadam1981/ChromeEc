@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
 #include "charge_state.h"
 #include "common.h"
 #include "dps.h"
@@ -43,3 +44,18 @@ __override struct dps_config_t dps_config = {
 	.t_check = 5 * SECOND,
 	.is_more_efficient = &squirtle_is_more_efficient,
 };
+
+enum battery_present battery_is_present(void)
+{
+	int rv, temperature;
+
+	/* TODO(b/345163724)
+	 * Add battery detection mechanism:
+	 * Added judgment that the battery is damaged and cannot read the
+	 * temperature.
+	 */
+	rv = gpio_get_level(GPIO_BATT_PRES_ODL) ? BP_NO : BP_YES;
+	rv &= !(sb_read(SB_TEMPERATURE, &temperature));
+
+	return rv;
+}
