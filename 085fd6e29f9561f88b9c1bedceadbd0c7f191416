@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3633c97_5194128e",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:12:30Z",
+      "side": 1,
+      "message": "replied in b:339618382#comment3.\n\nI also checked the Reg values that are expected.\n```\n24-06-12 07:37:46.049 ec:\u003e i2c read I2C_PORT_CHARGER 0xb 0x0\n24-06-12 07:37:46.938 00000000: 18 00 32 32 32 32 32 32  32 32 32 32 32 32 32 32 |..222222 22222222|\n24-06-12 07:38:11.730 ec:\u003e cutoff\n24-06-12 07:38:17.508 ec:\u003e \n24-06-12 07:38:18.034 ec:\u003e i2c read I2C_PORT_CHARGER 0xb 0x0\n24-06-12 07:38:19.186 00000000: 00 00 cd cd cd cd cd cd  cd cd cd cd cd cd cd cd |........ ........|\n```",
+      "parentUuid": "6f359934_8403b0ed",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9159162f_44043d38",
         "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-06T16:20:03Z",
       "side": 1,
       "message": "The datasheet doesn\u0027t show start charging limits, only the operating charge and discharge.  Where does the setting 50C come from?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca4eb20_2e07ee89",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:12:30Z",
+      "side": 1,
+      "message": "In datasheet section 7.2.1 No.16 `High Temperature Charge start`, C-FET will be set off if temp ≥50℃",
+      "parentUuid": "9159162f_44043d38",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af158414_6627e9e7",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,l24d3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:12:30Z",
+      "side": 1,
+      "message": "replied in b:339618382#comment3.\n\nI also checked the Reg values that are expected.\n```\n24-06-12 07:48:56.123 ec:\u003e i2c read I2C_PORT_CHARGER 0xb 0x0\n24-06-12 07:48:56.814 00000000: 18 00 32 32 32 32 32 32  32 32 32 32 32 32 32 32 |..222222 22222222|\n\n24-06-12 07:50:24.155 ec:\u003e cutoff\n\n24-06-12 07:50:27.611 ec:\u003e i2c read I2C_PORT_CHARGER 0xb 0x0\n24-06-12 07:50:29.038 00000000: 00 00 cd cd cd cd cd cd  cd cd cd cd cd cd cd cd |........ ........|\n```",
+      "parentUuid": "ee7b24c2_80d6d8eb",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98d3dacf_b4f12c27",
         "filename": "zephyr/program/brox/lotso/project.overlay",
         "patchSetId": 10
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-06T16:20:03Z",
       "side": 1,
       "message": "Move the board changes into a separate CL.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7400275_39f6403e",
+        "filename": "zephyr/program/brox/lotso/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-12T08:12:30Z",
+      "side": 1,
+      "message": "another CL:5622560",
+      "parentUuid": "98d3dacf_b4f12c27",
       "range": {
         "startLine": 41,
         "startChar": 0,
