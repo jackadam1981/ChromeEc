@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee74340_36a052d2",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5764f10a_974728bc",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15105390_3333f043",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e59c1f06_11410cc9",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e6343b9_6d208bd1",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a210bf_627b9aaf",
@@ -84,6 +132,30 @@
       "writtenOn": "2024-06-12T20:08:04Z",
       "side": 1,
       "message": "You can use `timepoint \u003d sys_timepoint_calc(K_MSEC(200));` and `sys_timepoint_expired(timepoint)` to replace the fixed loop count.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de43c99_7391c009",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a210bf_627b9aaf",
       "range": {
         "startLine": 186,
         "startChar": 0,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0b3334_aded097c",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0420f495_3a1c4f02",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 3
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2be07403_fabd92df",
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "197762e7_88bebb35",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be07403_fabd92df",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b64af83f_bb94b6c7",
@@ -153,6 +273,30 @@
       "writtenOn": "2024-06-12T20:08:04Z",
       "side": 1,
       "message": "Can this be deleted?",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 22
+      },
+      "revId": "d4dc0c0990eee2bf9868c3a09444d9299c08ebbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1605e68_e73fa6e9",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T20:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64af83f_bb94b6c7",
       "range": {
         "startLine": 378,
         "startChar": 0,
