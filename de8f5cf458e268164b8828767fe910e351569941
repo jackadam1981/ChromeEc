@@ -50,6 +50,24 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8745412982383444625) is being automatically retried for the following reasons:\n- Some child builders are now retryable:betty-arc-r-container-cq, betty-arc-t-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "de8f5cf458e268164b8828767fe910e351569941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9548e525_5e9b5674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-12T11:11:38Z",
+      "side": 1,
+      "message": "It\u0027s not that easy. It requires changing also CrosEC name and the name in tast unit tests. If you really want that, please create a bug.",
+      "parentUuid": "325e804a_3325eeb9",
+      "revId": "de8f5cf458e268164b8828767fe910e351569941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
