@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37a4789_2daf430c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T16:56:39Z",
+      "side": 1,
+      "message": "This points to the same bug that indicates 45W adapter isn\u0027t working.  You need to open a bug specifically to add test coverage if you are going to use the LOW_COVERAGE_REASON.\n\nUse [`test_handle_tsp_ta`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/nissa/src/pirrha.c;l\u003d416) as en example for how to test this code.",
+      "range": {
+        "startLine": 16,
+        "startChar": 47,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "188ce563b29a39cf7fb68d94ca99d125e15e1db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "44e8e9cc_565d6645",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-06-12T11:06:07Z",
       "side": 1,
       "message": "Hi Bob, please help review the CL, thanks.",
+      "revId": "188ce563b29a39cf7fb68d94ca99d125e15e1db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de9458f_27418e90",
+        "filename": "zephyr/program/brox/lotso/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T16:56:39Z",
+      "side": 1,
+      "message": "Rename to `LOTSO_CHARGER_MIN_INPUT_VOLTAGE` so this is not confused with the definition provided in bq25710.h",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 36
+      },
       "revId": "188ce563b29a39cf7fb68d94ca99d125e15e1db5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
