@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb399cf_3b2bf1f1",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T16:44:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a3633c97_5194128e",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9159162f_44043d38",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ba4c64_acc27b35",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l24x3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T16:44:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5ca4eb20_2e07ee89",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee7b24c2_80d6d8eb",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "replied in b:339618382#comment3.\n\nI also checked the Reg values that are expected.\n```\n24-06-12 07:48:56.123 ec:\u003e i2c read I2C_PORT_CHARGER 0xb 0x0\n24-06-12 07:48:56.814 00000000: 18 00 32 32 32 32 32 32  32 32 32 32 32 32 32 32 |..222222 22222222|\n\n24-06-12 07:50:24.155 ec:\u003e cutoff\n\n24-06-12 07:50:27.611 ec:\u003e i2c read I2C_PORT_CHARGER 0xb 0x0\n24-06-12 07:50:29.038 00000000: 00 00 cd cd cd cd cd cd  cd cd cd cd cd cd cd cd |........ ........|\n```",
       "parentUuid": "ee7b24c2_80d6d8eb",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "085fd6e29f9561f88b9c1bedceadbd0c7f191416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c640471_7fe28c55",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,l24d3pg1.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T16:44:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "af158414_6627e9e7",
       "range": {
         "startLine": 27,
         "startChar": 13,
