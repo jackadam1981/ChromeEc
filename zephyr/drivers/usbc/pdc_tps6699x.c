@@ -17,7 +17,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/smf.h>
-LOG_MODULE_REGISTER(usbc, CONFIG_USBC_LOG_LEVEL);
+LOG_MODULE_REGISTER(usbc, LOG_LEVEL_DBG);
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
 #include "usbc/utils.h"
@@ -321,53 +321,81 @@ static void st_irq_run(void *o)
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_interrupt pdc_interrupt;
 	int rv;
-	int i;
+	int i, count = 0;
 	bool interrupt_pending = false;
 
-	/* Read the pending interrupt events */
-	rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
-	if (rv) {
-		LOG_ERR("Read interrupt events failed");
-		goto error_recovery;
-	}
-
-	/* All raw_value data uses byte-0 for contains the register data was
-	 * written too, or read from, and byte-1 contains the length of said
-	 * data. The actual data starts at index 2. */
-	LOG_DBG("IRQ PORT %d", cfg->connector_number);
-	for (i = RV_DATA_START; i < sizeof(union reg_interrupt); i++) {
-		LOG_DBG("Byte%d: %02x", i - RV_DATA_START,
-			pdc_interrupt.raw_value[i]);
-		if (pdc_interrupt.raw_value[i]) {
-			interrupt_pending = true;
-		}
-	}
-	LOG_DBG("\n");
-
-	if (interrupt_pending) {
-		/* Set CCI EVENT for connector change */
-		data->cci_event.connector_change =
-			pdc_interrupt.plug_insert_or_removal;
-		/* Set CCI EVENT for not supported */
-		data->cci_event.not_supported =
-			pdc_interrupt.not_supported_received;
-		/* Set CCI EVENT for vendor defined indicator (informs subsystem
-		 * that an interrupt occurred */
-		data->cci_event.vendor_defined_indicator = 1;
-
-		/* TODO(b/345783692): Handle other interrupt bits. */
-
-		/* Clear the pending interrupt events */
-		rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt,
-					    I2C_MSG_WRITE);
+	do {
+		LOG_INF("C%d: interrupt before: %d", cfg->connector_number,
+			gpio_pin_get_dt(&cfg->irq_gpios));
+		/* Read the pending interrupt events */
+		rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
 		if (rv) {
-			LOG_ERR("Clear interrupt events failed");
+			LOG_ERR("Read interrupt events failed");
 			goto error_recovery;
 		}
 
-		/* Inform the subsystem of the event */
-		call_cci_event_cb(data);
-	}
+		/* All raw_value data uses byte-0 for contains the register data
+		 * was written too, or read from, and byte-1 contains the length
+		 * of said data. The actual data starts at index 2. */
+		LOG_DBG("IRQ PORT %d", cfg->connector_number);
+		for (i = RV_DATA_START; i < sizeof(union reg_interrupt); i++) {
+			LOG_DBG("Byte%d: %02x", i - RV_DATA_START,
+				pdc_interrupt.raw_value[i]);
+			if (pdc_interrupt.raw_value[i]) {
+				interrupt_pending = true;
+			}
+		}
+		LOG_DBG("\n");
+
+		if (interrupt_pending) {
+			/* Set CCI EVENT for connector change */
+			data->cci_event.connector_change =
+				pdc_interrupt.plug_insert_or_removal;
+			/* Set CCI EVENT for not supported */
+			data->cci_event.not_supported =
+				pdc_interrupt.not_supported_received;
+			/* Set CCI EVENT for vendor defined indicator (informs
+			 * subsystem that an interrupt occurred */
+			data->cci_event.vendor_defined_indicator = 1;
+
+			/* TODO(b/345783692): Handle other interrupt bits. */
+
+			/* Clear the pending interrupt events */
+			rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt,
+						    I2C_MSG_WRITE);
+			if (rv) {
+				LOG_ERR("Clear interrupt events failed");
+				goto error_recovery;
+			}
+
+			/* Inform the subsystem of the event */
+			call_cci_event_cb(data);
+		}
+		LOG_INF("C%d: interrupt after: %d", cfg->connector_number,
+			gpio_pin_get_dt(&cfg->irq_gpios));
+		/* Read the pending interrupt events */
+		rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
+		if (rv) {
+			LOG_ERR("Read interrupt events failed");
+			goto error_recovery;
+		}
+
+		/* All raw_value data uses byte-0 for contains the register data
+		 * was written too, or read from, and byte-1 contains the length
+		 * of said data. The actual data starts at index 2. */
+		LOG_DBG("[after] IRQ PORT %d", cfg->connector_number);
+		for (i = RV_DATA_START; i < sizeof(union reg_interrupt); i++) {
+			LOG_DBG("Byte%d: %02x", i - RV_DATA_START,
+				pdc_interrupt.raw_value[i]);
+			if (pdc_interrupt.raw_value[i]) {
+				interrupt_pending = true;
+			}
+		}
+		if (count > 3 || !gpio_pin_get_dt(&cfg->irq_gpios))
+			break;
+		k_msleep(10);
+		LOG_INF("retry %d", count++);
+	} while (true);
 
 	/* All done, transition back to idle state */
 	set_state(data, ST_IDLE);
