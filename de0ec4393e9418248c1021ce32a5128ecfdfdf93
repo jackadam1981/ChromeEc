@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca7da624_3e56a489",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T15:46:42Z",
+      "side": 1,
+      "message": "`data-\u003einfo` is the cached chip info that we seed during INIT and refresh each time a user calls get_ic_status; it isn\u0027t temporary.\n\nWe do write directly to `data-\u003einfo` when calling `cmd_get_ic_status_sync_internal()` from the init state, and when called by users we write directly to the user-supplied buffer and also store a copy into `data-\u003einfo` so the driver can have it retained for a subsequent non-live read.",
+      "parentUuid": "2bb7254c_e6f01746",
+      "revId": "de0ec4393e9418248c1021ce32a5128ecfdfdf93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa1e602c_11faff68",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2024-06-12T15:28:08Z",
       "side": 1,
       "message": "Shouldn\u0027t we also need to use this inside the command, since it\u0027s writing to `data-\u003einfo`?",
+      "revId": "de0ec4393e9418248c1021ce32a5128ecfdfdf93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce829d5a_d47a0e1f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-12T15:46:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure, we seem to only use the lock for foreign thread access to the `pdc_data_t` struct (i.e. `tps_post_command()`). `tps_get_info()` can touch `data` directly from a foreign thread, too, so that\u0027s why I added it. None of the internal command handlers running under the driver thread lock currently but we should think about that.",
+      "parentUuid": "fa1e602c_11faff68",
       "revId": "de0ec4393e9418248c1021ce32a5128ecfdfdf93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
