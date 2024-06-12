@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f18cb07_85069342",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c836df_0644d3c2",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00d87d89_f307e8e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "You\u0027ve already included `stdboo.h`.  Use `true` and `false` instead.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc25f27a_6fec23d5",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00d87d89_f307e8e1",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5214a35_1aae191d",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f82554_0d192a21",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 5
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4da4394_d738cdfd",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "Please only use lower case with underscore for all variable and function definitions.",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 145,
+        "endChar": 25
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf7c7e4_339f5158",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4da4394_d738cdfd",
       "range": {
         "startLine": 145,
         "startChar": 14,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "036d404b_fe46067a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "475aec6d_f0137198",
+      "range": {
+        "startLine": 149,
+        "startChar": 14,
+        "endLine": 149,
+        "endChar": 30
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c72b7e5_c72944c2",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "Unused",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca3445e_38c68a1e",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c72b7e5_c72944c2",
       "range": {
         "startLine": 160,
         "startChar": 14,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3d1a65_5cd852e9",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662ac7ce_8a8001c3",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd810f71_47456f88",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "Unused",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 64
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b3a904_7232a4f7",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd810f71_47456f88",
       "range": {
         "startLine": 262,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e2c7953_713a87c7",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "405c4679_270d3f59",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 335,
+        "endChar": 14
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c54dcc4_f956f3db",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eeada09_f9bad731",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c54dcc4_f956f3db",
+      "range": {
+        "startLine": 348,
+        "startChar": 5,
+        "endLine": 348,
+        "endChar": 15
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5341c684_aa88131c",
@@ -244,6 +484,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "Unused",
+      "range": {
+        "startLine": 361,
+        "startChar": 5,
+        "endLine": 361,
+        "endChar": 17
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e918ab3_6010c58a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5341c684_aa88131c",
       "range": {
         "startLine": 361,
         "startChar": 5,
@@ -300,6 +564,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d556ad1_18115ef2",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac6badd_800ada34",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 12
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3125ee46_8c456152",
@@ -346,6 +634,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f76a2e_eafb8bdd",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7148c1d7_8224fd6b",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 16
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4516c232_35b32a5a",
@@ -359,6 +671,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 0
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ad9581_83bd0da5",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4516c232_35b32a5a",
       "range": {
         "startLine": 684,
         "startChar": 0,
@@ -438,6 +774,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1961d90d_6ea8c7c9",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a98d0637_25bed175",
+      "range": {
+        "startLine": 832,
+        "startChar": 5,
+        "endLine": 832,
+        "endChar": 24
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2605cdb4_d1d4ede0",
@@ -451,6 +811,30 @@
       "writtenOn": "2024-05-28T20:27:14Z",
       "side": 1,
       "message": "Remove this option.  It\u0027s not useful to save to fixed filename.\n\nIn a follow up CL, we need support for reading the flash (without erase or program).  This also needs to support for `--range` similar to the `iteflash` utility.\n\nBut please add reading from flash separately.  This CL is already very big.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 48
+      },
+      "revId": "83d0277cf5a7773a6fe7b0899efacf8b46545aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86f4c12_2c9c94ce",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2605cdb4_d1d4ede0",
       "range": {
         "startLine": 1006,
         "startChar": 0,
