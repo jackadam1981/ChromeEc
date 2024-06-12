@@ -70,6 +70,30 @@
       },
       "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e28b366_750fe1aa",
+        "filename": "cmake/toolchain-armv7m.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-12T18:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36041977_a583a940",
+      "range": {
+        "startLine": 24,
+        "startChar": 34,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "a2648cce191f704246b8955ad0cba3da2ab35fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
