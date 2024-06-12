@@ -22,6 +22,30 @@
       },
       "revId": "ed8558458971ee41609fa75e1270d0ff759c2ca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e697d9_ac8e8ab3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-12T19:24:36Z",
+      "side": 1,
+      "message": "Done, also updating rail name. Thanks.",
+      "parentUuid": "937fe8b1_104480fb",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "ed8558458971ee41609fa75e1270d0ff759c2ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
