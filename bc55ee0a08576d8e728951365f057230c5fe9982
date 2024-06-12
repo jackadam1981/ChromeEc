@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10927779_69ba823b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Can you please add the following comment along with your example comment to avoid confusion in the future?\n\n```\nRaptorlake uses Alderlake-P PCH and hence exports INTC1055 ACPI ID matching with tigerlake-pinctrl.c\n```",
+      "parentUuid": "3a6544aa_a90cc11c",
+      "range": {
+        "startLine": 1091,
+        "startChar": 50,
+        "endLine": 1091,
+        "endChar": 59
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e22f8cba_d12c7351",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 4
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "The pin number should be correct based on pinctrl-tigerlake.c.\n\nwe defined `INTC1055` In [coreboot...gpio.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/soc/intel/alderlake/include/soc/gpio.h), and the driver of `INTC1055` landed in [kernel...pinctrl-tigerlake.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v6.6/drivers/pinctrl/intel/pinctrl-tigerlake.c) and used the `static const struct pinctrl_pin_desc tgllp_pins[]`\n\nWe also can get the kernel log to confirm this.\n```\nlotso-rev0 ~ # ls /sys/kernel/debug/pinctrl/\nINTC1055:00  pinctrl-devices  pinctrl-handles  pinctrl-maps\nlotso-rev0 ~ # \nlotso-rev0 ~ # dmesg | grep pinctrl\n[    0.068306] pinctrl core: initialized pinctrl subsystem\n[  121.429665] tigerlake-pinctrl INTC1055:00: PM: calling acpi_subsys_suspend+0x0/0x60 @ 5059, parent: pci0000:00\n[  121.429671] tigerlake-pinctrl INTC1055:00: PM: acpi_subsys_suspend+0x0/0x60 returned 0 after 0 usecs\n[  121.476595] tigerlake-pinctrl INTC1055:00: PM: calling acpi_subsys_suspend_late+0x0/0x60 @ 5059, parent: pci0000:00\n[  121.476604] tigerlake-pinctrl INTC1055:00: PM: acpi_subsys_suspend_late+0x0/0x60 returned 0 after 0 usecs\n[  121.495514] tigerlake-pinctrl INTC1055:00: PM: calling acpi_subsys_suspend_noirq+0x0/0x60 @ 5059, parent: pci0000:00\n[  121.521830] tigerlake-pinctrl INTC1055:00: PM: acpi_subsys_suspend_noirq+0x0/0x60 returned 0 after 26305 usecs\n[  128.722777] tigerlake-pinctrl INTC1055:00: PM: calling acpi_subsys_resume_noirq+0x0/0x30 @ 5059, parent: pci0000:00\n[  128.747760] tigerlake-pinctrl INTC1055:00: PM: acpi_subsys_resume_noirq+0x0/0x30 returned 0 after 24977 usecs\n[  129.075958] tigerlake-pinctrl INTC1055:00: PM: calling acpi_subsys_resume_early+0x0/0x70 @ 5059, parent: pci0000:00\n[  129.075961] tigerlake-pinctrl INTC1055:00: PM: acpi_subsys_resume_early+0x0/0x70 returned 0 after 0 usecs\n[  129.083128] tigerlake-pinctrl INTC1055:00: PM: calling acpi_subsys_resume+0x0/0x60 @ 5059, parent: pci0000:00\n[  129.083132] tigerlake-pinctrl INTC1055:00: PM: acpi_subsys_resume+0x0/0x60 returned 0 after 1 usecs\n```\n\nAnd the `flash_fp_mcu` works well on Lotso.\n```\nlotso-rev0 /usr/local # ./flash_fp_mcu \n/usr/local/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is brox (brox).\nUsing config for brox.\n# Stopping biod\nbiod stop/waiting\n# Stopping timberslide\ntimberslide stop/waiting\nDetected chip NPCX.\n# Flashing \u0027NPCX\u0027 with \u0027/opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\u0027 over SPI\nFlashing SPI device ID: spi-PRP0001:00\nGetting model name.\n# Flashing \u0027/opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\u0027 over SPI\n# cmd flags\u003d \u0027 -p linux_spi:dev\u003d/dev/spidev0.0,spispeed\u003d250k -w /opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\u0027\n# flashrom  -p linux_spi:dev\u003d/dev/spidev0.0,spispeed\u003d250k -w /opt/google/biod/fw/buccaneer_v2.0.24657-51824d5773.bin\nflashrom 1.4.0-devel on Linux 6.6.32-02855-gb9bccfebac44 (x86_64)\nflashrom is free software, get the source code at https://flashrom.org\n\nFound Winbond flash chip \"W25Q80.V\" (1024 kB, SPI) on linux_spi.\n\u003d\u003d\u003d\nThis flash part has status UNTESTED for operations: WP\nThe test status of this chip may have been updated in the latest development\nversion of flashrom. If you are running the latest development version,\nplease email a report to flashrom@flashrom.org if any of the above operations\nwork correctly for you with this flash chip. Please include the flashrom log\nfile for all operations you tested (see the man page for details), and mention\nwhich mainboard or programmer you tested in the subject line.\nYou can also try to follow the instructions here:\nhttps://www.flashrom.org/contrib_howtos/how_to_mark_chip_tested.html\nThanks for your help!\nReading old flash chip contents... done.\nErasing and writing flash chip... SUCCESS.\nVerifying flash... VERIFIED.\nSUCCESS\nPower cycling the FPMCU.\nRO version:    buccaneer_v2.0.24657-51824d5773\nRO cros fwid:  buccaneer_15864.0.0\nRW version:    buccaneer_v2.0.24657-51824d5773\nRW cros fwid:  buccaneer_15864.0.0\nFirmware copy: RW\nBuild info:    buccaneer_v2.0.24657-51824d5773 boringssl:v0.0.8052-083f72d72 cryptoc:v1.9308_26_0.14-0dd6790 private:v2.1.9999-51824d57 elan:s\nTool version:  v2.0.25252-8abd51b9f5 2024-06-03 16:19:34 @chromeos-release-builder-us-central1-b-x32-128-elwi\nEC uptime: 2.027 seconds\nAP resets since EC boot: 0\nMost recent AP reset causes:\nEC reset flags at last EC boot: power-on | sysjump\n# Restarting timberslide\ntimberslide (/sys/kernel/debug/cros_fp/console_log) start/running, process 10053\n# Restarting biod\nbiod start/running, process 10059\n```",
       "parentUuid": "4a8974e4_96689747",
+      "range": {
+        "startLine": 1095,
+        "startChar": 65,
+        "endLine": 1095,
+        "endChar": 74
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3ae60d_68d2261e",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "36c68625_cff4415d",
       "range": {
         "startLine": 1095,
         "startChar": 65,
@@ -295,6 +343,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f11c18_2ef397d8",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2778a65e_75c56972",
+      "range": {
+        "startLine": 1107,
+        "startChar": 41,
+        "endLine": 1107,
+        "endChar": 44
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7008ccb3_c84d0d11",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "551f0931_bfaedbe0",
+      "range": {
+        "startLine": 1107,
+        "startChar": 47,
+        "endLine": 1107,
+        "endChar": 50
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8dc75c7_b336b553",
@@ -389,6 +485,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "484089e1_5884aaa3",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e08c1973_a9ce9b01",
+      "range": {
+        "startLine": 1110,
+        "startChar": 38,
+        "endLine": 1110,
+        "endChar": 46
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73498a4_c3251bae",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06e355d2_e27aeeef",
+      "range": {
+        "startLine": 1110,
+        "startChar": 31,
+        "endLine": 1110,
+        "endChar": 34
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "909434c0_bef680aa",
@@ -426,6 +570,30 @@
       "side": 1,
       "message": "The pin number should be correct based on `pinctrl-tigerlake.c.`\n\nWhy `pinctrl-tigerlake.c` is used was explained in the previous comment.",
       "parentUuid": "909434c0_bef680aa",
+      "range": {
+        "startLine": 1113,
+        "startChar": 37,
+        "endLine": 1113,
+        "endChar": 44
+      },
+      "revId": "bc55ee0a08576d8e728951365f057230c5fe9982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "226fcceb_333117af",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-12T16:01:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9776fda9_fe7e3025",
       "range": {
         "startLine": 1113,
         "startChar": 37,
