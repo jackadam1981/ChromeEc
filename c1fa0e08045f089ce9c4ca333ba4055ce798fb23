@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0546c97c_dac891e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-13T23:48:14Z",
+      "side": 1,
+      "message": "The labels and comments help, but this is still kinda confusing. I had to try to add a bunch of random number together until I found 512KB, which sounds like a correct max-ram value. Then, I was able to deduce that 352, 156, and 4 compose this total ram space.\n\nMaybe seeing some calculations that subtract from 512/total in the future might be helpful.",
+      "revId": "c1fa0e08045f089ce9c4ca333ba4055ce798fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
