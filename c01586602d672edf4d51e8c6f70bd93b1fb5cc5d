@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebb8cc8_b26b7d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-06-13T15:20:41Z",
+      "side": 1,
+      "message": "I suspect I don\u0027t have the context",
+      "revId": "c01586602d672edf4d51e8c6f70bd93b1fb5cc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c006c281_4cf9574c",
+        "filename": "zephyr/drivers/runtime_keys/runtime_keys.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-06-13T15:20:41Z",
+      "side": 1,
+      "message": "I don\u0027t have a ton of context, but this looks pretty similar to the `boot_keys.c` driver. LGTM, but you may want someone with more context. I\u0027m +2-ing though.",
+      "revId": "c01586602d672edf4d51e8c6f70bd93b1fb5cc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
