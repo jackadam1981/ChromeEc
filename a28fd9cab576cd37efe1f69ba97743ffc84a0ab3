@@ -16,6 +16,24 @@
       "message": "make this a bool, then you can drop the `!!` below",
       "revId": "a28fd9cab576cd37efe1f69ba97743ffc84a0ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f209f3_fb554064",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-06-13T03:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848252d2_7cb64d58",
+      "revId": "a28fd9cab576cd37efe1f69ba97743ffc84a0ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
