@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76a56ba_197b6cdd",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-13T02:26:35Z",
+      "side": 1,
+      "message": "Can you also limit this branch with refresh key:\n\n    state[key_typ.col_refresh] \u0026 keyboard_mask_refresh\n\n?",
+      "range": {
+        "startLine": 910,
+        "startChar": 1,
+        "endLine": 910,
+        "endChar": 3
+      },
+      "revId": "2ef30573d96f80ff7226c19e854224ece8f32791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
