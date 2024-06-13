@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5061559d_a17ea5f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-13T09:56:06Z",
+      "side": 1,
+      "message": "open a new bug b:346930325 to track the test code.",
+      "parentUuid": "e37a4789_2daf430c",
+      "range": {
+        "startLine": 16,
+        "startChar": 47,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "188ce563b29a39cf7fb68d94ca99d125e15e1db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44e8e9cc_565d6645",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2024-06-12T16:56:39Z",
       "side": 1,
       "message": "Rename to `LOTSO_CHARGER_MIN_INPUT_VOLTAGE` so this is not confused with the definition provided in bq25710.h",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "188ce563b29a39cf7fb68d94ca99d125e15e1db5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d9826d1_7c3eb9f0",
+        "filename": "zephyr/program/brox/lotso/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-13T09:56:06Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "1de9458f_27418e90",
       "range": {
         "startLine": 12,
         "startChar": 8,
