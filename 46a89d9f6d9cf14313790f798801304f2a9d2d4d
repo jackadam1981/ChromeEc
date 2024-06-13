@@ -22,6 +22,30 @@
       },
       "revId": "46a89d9f6d9cf14313790f798801304f2a9d2d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c2834a_2eb382a5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-06-13T01:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de3d4fb9_cfd47005",
+      "range": {
+        "startLine": 359,
+        "startChar": 6,
+        "endLine": 359,
+        "endChar": 46
+      },
+      "revId": "46a89d9f6d9cf14313790f798801304f2a9d2d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
