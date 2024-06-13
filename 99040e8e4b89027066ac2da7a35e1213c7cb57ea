@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f924d691_c2e9fdeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-13T18:15:36Z",
+      "side": 1,
+      "message": "i don\u0027t think the submitter/owner of the patch can override coverage +/- 1.\nsubmit for another dry run and the bot should clear the -1.\nother than that, i think this stack is submittable, excluding the PDC port count.",
+      "parentUuid": "f8611e63_7736a2fd",
+      "revId": "99040e8e4b89027066ac2da7a35e1213c7cb57ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1da06fd6_50eb8867",
