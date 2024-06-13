@@ -33,6 +33,24 @@
       "message": "I think if you don\u0027t define `CONFIG_PLATFORM_EC_MKBP_USE_HOST_EVENT` the default would be to use GPIO. Is that the behavior that you want?\nExplained in - https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/docs/zephyr/zephyr_mkbp.md",
       "revId": "99040e8e4b89027066ac2da7a35e1213c7cb57ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b898c4f_dbb25348",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-06-13T04:11:26Z",
+      "side": 1,
+      "message": "This is the behavior intended. For now there is no dedicated GPIO on RVP, it will be defined on next gen MECC.",
+      "parentUuid": "1da06fd6_50eb8867",
+      "revId": "99040e8e4b89027066ac2da7a35e1213c7cb57ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
