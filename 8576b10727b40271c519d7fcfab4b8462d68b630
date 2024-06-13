@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d92405_87831b9c",
+        "filename": "zephyr/program/nissa/craask/src/charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-13T16:25:04Z",
+      "side": 1,
+      "message": "init_battery_type can change battery_conf. It\u0027s concerning to change battery_conf asynchronously without concurrency control (between the hook task and the charger task).\n\nI think a right approach is to make get_batt_conf in battery_fuel_gauge.c retry init_battery_type until a timer expires with a certain interval (500ms).",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "8576b10727b40271c519d7fcfab4b8462d68b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
