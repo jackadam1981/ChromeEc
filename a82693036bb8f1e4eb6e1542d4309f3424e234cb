@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf344d0f_2d005558",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-13T23:17:19Z",
+      "side": 1,
+      "message": "This sensor frame was adjusted to 2x the size in the linked change, also. Therefore, we will assume 14bit for both sensors.",
+      "range": {
+        "startLine": 18,
+        "startChar": 45,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "47949976_9babb407",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/elan/elan_sensor.h",
+              "range": {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": "#define FP_SENSOR_IMAGE_SIZE_ELAN (52 * 150 * 2 * 2)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a82693036bb8f1e4eb6e1542d4309f3424e234cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
