@@ -817,6 +817,15 @@ static void power_button_change(void)
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_change, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_POWER_BUTTON */
 
+static uint8_t keyboard_mask_refresh;
+__overridable uint8_t board_keyboard_row_refresh(void)
+{
+	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
+		return 3;
+	else
+		return 2;
+}
+
 /*
  * Returns mask of the boot keys that are pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
@@ -917,6 +926,11 @@ static uint32_t check_boot_key(const uint8_t *state)
 	 * state.
 	 */
 	if ((system_get_reset_flags() & EC_RESET_FLAG_POWER_ON) &&
+#ifndef CONFIG_KEYBOARD_MULTIPLE
+	    (state[KEYBOARD_COL_REFRESH] & keyboard_mask_refresh) &&
+#else
+	    (state[key_typ.col_refresh] & keyboard_mask_refresh) &&
+#endif
 	    battery_is_present() == BP_NO)
 		return check_key_list(state);
 #endif
@@ -967,6 +981,10 @@ void keyboard_scan_init(void)
 		 */
 		CPRINTS("WARN: Debounce durations not equal");
 	}
+
+	/* Configure refresh key matrix */
+	keyboard_mask_refresh =
+		KEYBOARD_ROW_TO_MASK(board_keyboard_row_refresh());
 
 	if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC))
 		/* Configure GPIO */
