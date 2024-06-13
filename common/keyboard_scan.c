@@ -817,6 +817,14 @@ static void power_button_change(void)
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_change, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_POWER_BUTTON */
 
+__overridable uint8_t board_keyboard_row_refresh(void)
+{
+	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
+		return KEYBOARD_ROW_TO_MASK(3);
+	else
+		return KEYBOARD_ROW_TO_MASK(2);
+}
+
 /*
  * Returns mask of the boot keys that are pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
@@ -917,6 +925,11 @@ static uint32_t check_boot_key(const uint8_t *state)
 	 * state.
 	 */
 	if ((system_get_reset_flags() & EC_RESET_FLAG_POWER_ON) &&
+#ifndef CONFIG_KEYBOARD_MULTIPLE
+	    (state[KEYBOARD_COL_REFRESH] & board_keyboard_row_refresh()) &&
+#else
+	    (state[key_typ.col_refresh] & board_keyboard_row_refresh()) &&
+#endif
 	    battery_is_present() == BP_NO)
 		return check_key_list(state);
 #endif
