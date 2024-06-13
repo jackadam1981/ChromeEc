@@ -14,14 +14,15 @@
 #define FP_SENSOR_IMAGE_SIZE_ELAN (80 * 80 * 2)
 #define FP_SENSOR_RES_X_ELAN 80
 #define FP_SENSOR_RES_Y_ELAN 80
+#define FP_SENSOR_RES_BPP_ELAN (14)
 #elif defined(CONFIG_FP_SENSOR_ELAN515)
 #define FP_SENSOR_IMAGE_SIZE_ELAN (52 * 150 * 2)
 #define FP_SENSOR_RES_X_ELAN 52
 #define FP_SENSOR_RES_Y_ELAN 150
+#define FP_SENSOR_RES_BPP_ELAN (8)
 #endif
 
 #define FP_SENSOR_IMAGE_OFFSET_ELAN (0)
-#define FP_SENSOR_RES_BPP_ELAN (8)
 
 /**
  * Set ELAN fingerprint sensor into finger touch detects and power saving mode
