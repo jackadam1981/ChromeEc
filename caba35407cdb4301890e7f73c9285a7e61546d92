@@ -16,6 +16,29 @@
       "message": "Example of how it\u0027s used: https://crrev.com/c/5622407 and https://crrev.com/c/5623950",
       "revId": "caba35407cdb4301890e7f73c9285a7e61546d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b0cdcf_bad11553",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-06-13T22:10:35Z",
+      "side": 1,
+      "message": "Can you use `-` instead of `_` for make variables and a space?\n\nThe test name variables use `_` because they match the file names that use `_`, but make variables in EC typically use `-`, like the above variables.\n\n```suggestion\nrw-test \u003d rw\nifeq ($(and $(BOARD_HOST),$(TEST_BUILD)),y)\n# TODO(b/346616972): The \"emulator\" (TEST_BUILD\u003dy with BOARD\u003dhost) runs the\n# tests from the RO image, so we need to build for RO.\nrw-test \u003d ro\nendif\n```",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 5
+      },
+      "revId": "caba35407cdb4301890e7f73c9285a7e61546d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
