@@ -16,6 +16,24 @@
       "message": "This change was originally part of crrev/c/5371373, I guess the intention of this CL is to break that one up into smaller commits?",
       "revId": "76d7c46a0f74b7e6a06363b54cef6b93cd89bc70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa67a6a0_0212f4b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-13T18:16:50Z",
+      "side": 1,
+      "message": "Yes: http://go/small-cls",
+      "parentUuid": "817f2a54_3ca2189a",
+      "revId": "76d7c46a0f74b7e6a06363b54cef6b93cd89bc70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
