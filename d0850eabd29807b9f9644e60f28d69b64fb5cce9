@@ -190,6 +190,30 @@
       },
       "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25396edd_d470e00d",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-13T19:26:03Z",
+      "side": 1,
+      "message": "Removed vci-pos property in yaml file, but got vci bit position via GPIO.\nupdated in patch set 7.",
+      "parentUuid": "3021219c_934372de",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "d0850eabd29807b9f9644e60f28d69b64fb5cce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
