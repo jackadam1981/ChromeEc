@@ -33,6 +33,24 @@
       "message": "I don\u0027t have a ton of context, but this looks pretty similar to the `boot_keys.c` driver. LGTM, but you may want someone with more context. I\u0027m +2-ing though.",
       "revId": "c01586602d672edf4d51e8c6f70bd93b1fb5cc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25dfcadb_4c897f89",
+        "filename": "zephyr/drivers/runtime_keys/runtime_keys.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-06-13T16:39:10Z",
+      "side": 1,
+      "message": "there\u0027s not much into it to be honest, it covers all the code in a non trivial way, should be enough",
+      "parentUuid": "c006c281_4cf9574c",
+      "revId": "c01586602d672edf4d51e8c6f70bd93b1fb5cc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
