@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04bdd536_3dfda7bd",
+        "filename": "test/otp_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-13T18:34:16Z",
+      "side": 1,
+      "message": "\u003e  IIUC, your change will result in the mock only being run on the host (not the HW).\n\nCorrect.\n\n\u003e  since we\u0027ll read the OTP key on HW anyway. \n\nWe don\u0027t have any direct tests that exercise the real hardware OTP code. We may indirectly read OTP in other tests if `get_ikm` is called, but it\u0027s not great to rely on that because:\n\n1) It\u0027s hard to debug failures. e.g., why did this unrelated test start to fail? vs. OTP test is failing.\n2) The indirect testing may be changed in the future and no longer test OTP. e.g., if `get_ikm` is mocked (which it is in most of the other hardware tests, since those tests are not intended to directly test that layer.).\n\n\u003e On HW that hasn\u0027t been provisioned, the test would fail.\n\nCorrect. There isn\u0027t a great way to handle this when exercising the real OTP code. But it\u0027s somewhat limited since we have control of the development boards.",
+      "parentUuid": "2f6f003c_b1fe3ab4",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba89549f_12f3ca73",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-05T21:32:15Z",
       "side": 1,
       "message": "Can you explain your thinking as to why we would only want to use the mock on the HOST and not HW?",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50eb2bbd_9302e2ee",
+        "filename": "test/otp_key.mocklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-13T18:34:16Z",
+      "side": 1,
+      "message": "Ideally we want to be able to test as much of the real hardware code paths when running on hardware so that we\u0027re testing as closely as possible to what we\u0027re shipping.",
+      "parentUuid": "ba89549f_12f3ca73",
       "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
