@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2c910d_1f9240c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-13T19:28:01Z",
+      "side": 1,
+      "message": "Removed vci-pos property in yaml file, but got vci bit position via GPIO.\nupdated in patch set 3.",
+      "parentUuid": "8044d248_2068ac7f",
+      "revId": "f6c793581f10ac0cf5ca80f1b87b50abfe72ff0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa53347c_536d6abe",
