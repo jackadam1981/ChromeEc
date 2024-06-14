@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e55a92c_a4306f44",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-14T19:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e36b3b6_19337343",
+      "range": {
+        "startLine": 372,
+        "startChar": 23,
+        "endLine": 372,
+        "endChar": 25
+      },
+      "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "639f699d_c6f5d2cc",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-13T20:16:27Z",
       "side": 1,
       "message": "MCHP_GPIO_161",
+      "range": {
+        "startLine": 374,
+        "startChar": 30,
+        "endLine": 374,
+        "endChar": 32
+      },
+      "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ffe253_bc3142a9",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-14T19:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639f699d_c6f5d2cc",
       "range": {
         "startLine": 374,
         "startChar": 30,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38f24ba_d0bcb95c",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-14T19:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "423826ff_b00a4f12",
+      "range": {
+        "startLine": 376,
+        "startChar": 30,
+        "endLine": 376,
+        "endChar": 31
+      },
+      "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83395aeb_ff5618e6",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-13T20:16:27Z",
       "side": 1,
       "message": "is this error? need assert?\nHow will the VCI_IN0 handled?",
+      "range": {
+        "startLine": 379,
+        "startChar": 4,
+        "endLine": 379,
+        "endChar": 16
+      },
+      "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4454de72_33a17b46",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-14T19:16:36Z",
+      "side": 1,
+      "message": "Code should not reach here, but it really reaches here, set vci_pos as 0, i.e. enable VCI_IN0# pin, this pin is always enabled by hardware, re-enable it doesn’t harm.\nJust removed it to avoid confusion.",
+      "parentUuid": "83395aeb_ff5618e6",
       "range": {
         "startLine": 379,
         "startChar": 4,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5997d81c_0dd39f41",
+        "filename": "zephyr/program/intelrvp/adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-14T19:16:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9d203089_9feb3b44",
+      "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fd88c55_f2adddc8",
@@ -123,6 +237,24 @@
       "writtenOn": "2024-06-13T20:16:27Z",
       "side": 1,
       "message": "submit it separate CL as do not merge",
+      "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9785fd6_f732cc72",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/mtlrvp_mchp.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1242960
+      },
+      "writtenOn": "2024-06-14T19:16:36Z",
+      "side": 1,
+      "message": "ack-ed, also prj.conf with PLATFORM_EC_HIBERNATE_VCI\u003dy, as a refence for next rvp porting to support VCI functionality.",
+      "parentUuid": "7fd88c55_f2adddc8",
       "revId": "8a219d533030edc1485334ef276a9bea41c8e76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
