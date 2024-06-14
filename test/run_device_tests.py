@@ -856,6 +856,9 @@ def build_zephyr_upstream(test_name: str, board_name: str) -> List[str]:
     cmd = cmd + ["-p"] + [board_name]
     cmd = cmd + ["-O"] + [ZEPHYR_TWISTER_BUILD_DIR]
     cmd = cmd + ["-s"] + [test_name]
+    # compiler-rt is built with fp instructions enabled, so use FPU for every
+    # upstream test to avoid Usage fault.
+    cmd = cmd + ["-x=CONFIG_FPU=y"]
 
     return cmd
 
