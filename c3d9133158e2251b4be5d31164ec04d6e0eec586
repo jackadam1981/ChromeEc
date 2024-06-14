@@ -16,6 +16,24 @@
       "message": "```\nboard/magolor/board.c:722:19: error: initializer overrides prior initialization of this subobject [-Werror,-Winitializer-overrides]\n  722 |         .default_range \u003d 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */\n      |                          ^\nboard/magolor/board.c:718:19: note: previous initialization is here\n  718 |         .default_range \u003d 1000, /* dps */\n      |                          ^~~~\n1 error generated.\n```",
       "revId": "c3d9133158e2251b4be5d31164ec04d6e0eec586",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af9bb04a_1a7c48bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-06-14T08:40:50Z",
+      "side": 1,
+      "message": "update to set 3, thanks",
+      "parentUuid": "beeb8e0d_7948c0e1",
+      "revId": "c3d9133158e2251b4be5d31164ec04d6e0eec586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
