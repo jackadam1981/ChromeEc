@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d19abf_a9aba463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T21:07:36Z",
+      "side": 1,
+      "message": "I think we have sufficient coverage of this now in the `test_derive_encryption_key` test in https://crrev.com/c/5371373. If you agree, you can abandon this change.",
+      "revId": "92b6a0f4bcee40887d8d238c37fe9b9c92571e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
