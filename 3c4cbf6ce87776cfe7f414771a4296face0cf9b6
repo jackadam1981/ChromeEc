@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98776afc_d54c5798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T18:14:03Z",
+      "side": 1,
+      "message": "That\u0027s a bit of an extrapolation. 😊 I just said I don\u0027t have a fix for that specific macro.\n\nI\u0027ve fixed a *huge* number of issues. See the \"CLs merged\" section in http://b/172020503 (e.g., https://crrev.com/c/3179314, https://crrev.com/c/3169965, https://crrev.com/c/3182621, https://crrev.com/c/3188639, plus 100 more...).\n\nEverything builds fine on the host for `clang`, so there\u0027s no reason not to use it.\n\nThe only thing preventing a full cutover for all boards are the nds32 boards described in http://go/cros-clang-for-ec-firmware and some boards that have very limited flash space: http://b/256193799.",
+      "parentUuid": "85009e83_696c4814",
+      "revId": "3c4cbf6ce87776cfe7f414771a4296face0cf9b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8642d23a_aa767392",
         "filename": "Makefile.toolchain",
         "patchSetId": 12
