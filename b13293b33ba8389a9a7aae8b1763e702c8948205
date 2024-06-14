@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97650073_8ae5d777",
+        "filename": "test/otp_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T17:41:57Z",
+      "side": 1,
+      "message": "\u003e  test_otp_key() function calls the real hardware OTP read function\n\nIt\u0027s calling into the \"mock OTPI\", not the real hardware OTP.",
+      "parentUuid": "c9d72cc9_8acfe812",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba89549f_12f3ca73",
         "filename": "test/otp_key.mocklist",
         "patchSetId": 4
