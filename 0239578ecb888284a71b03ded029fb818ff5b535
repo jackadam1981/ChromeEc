@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "907774d3_f1afe25b",
+        "filename": "zephyr/include/usbc/ppm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-14T15:16:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a97afd7c_6b7403b2",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "0239578ecb888284a71b03ded029fb818ff5b535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "099bba09_aa438f2d",
