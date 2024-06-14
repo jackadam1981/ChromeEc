@@ -488,6 +488,8 @@ static bool battery_want_charge(struct batt_params *batt)
 	return false;
 }
 
+static int battery_noresp;
+
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
@@ -541,7 +543,8 @@ void battery_get_params(struct batt_params *batt)
 		batt_new.flags |= BATT_FLAG_BAD_STATUS;
 
 	/* If any of those reads worked, the battery is responsive */
-	if ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
+	if (!battery_noresp &&
+	    (batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
 		batt_new.flags |= BATT_FLAG_RESPONSIVE;
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
@@ -580,6 +583,18 @@ void battery_get_params(struct batt_params *batt)
 	memcpy(batt, &batt_new, sizeof(*batt));
 }
 #endif /* !CONFIG_FUEL_GAUGE */
+
+static int command_battnoresp(const struct shell *shell, size_t argc,
+			      char **argv)
+{
+	if (!strcasecmp(argv[1], "on")) {
+		battery_noresp = 1;
+	} else if (!strcasecmp(argv[1], "off")) {
+		battery_noresp = 0;
+	}
+	return EC_SUCCESS;
+}
+SHELL_CMD_ARG_REGISTER(battnoresp, NULL, NULL, command_battnoresp, 1, 1);
 
 /* Wait until battery is totally stable */
 int battery_wait_for_stable(void)
