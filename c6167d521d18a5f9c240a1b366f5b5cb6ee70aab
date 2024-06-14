@@ -22,6 +22,29 @@
       },
       "revId": "c6167d521d18a5f9c240a1b366f5b5cb6ee70aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6390e6d1_7a1b5296",
+        "filename": "baseboard/helipilot/base_board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T23:03:31Z",
+      "side": 1,
+      "message": "Since we use this in `bucaneer/board.h` and it can\u0027t change, we should probably push into `config_chip-npcx9.h` too.",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "c6167d521d18a5f9c240a1b366f5b5cb6ee70aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
