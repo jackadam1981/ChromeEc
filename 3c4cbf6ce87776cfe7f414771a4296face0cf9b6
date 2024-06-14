@@ -34,6 +34,24 @@
       "parentUuid": "7e00382c_bb37617c",
       "revId": "3c4cbf6ce87776cfe7f414771a4296face0cf9b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85009e83_696c4814",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-06-14T18:05:45Z",
+      "side": 1,
+      "message": "Also https://b.corp.google.com/issues/346419141#comment3, where you say you won\u0027t fix clang problems in the ec code base.",
+      "parentUuid": "f4b40355_eddf3739",
+      "revId": "3c4cbf6ce87776cfe7f414771a4296face0cf9b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
