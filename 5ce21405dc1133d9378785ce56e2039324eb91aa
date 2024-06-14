@@ -16,6 +16,24 @@
       "message": "This driver in its current state does not support a second PDC chip, mainly because it assumes a single interrupt line and won\u0027t route IRQs correctly with \u003e2 instances.",
       "revId": "5ce21405dc1133d9378785ce56e2039324eb91aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24567578_847156f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-06-14T20:44:36Z",
+      "side": 1,
+      "message": "any suggestion, how to handle on a with platform with more than 2 ports and all ports are Realtek PD chip and all have shared IRQ line on EC?",
+      "parentUuid": "2ace0ed9_bade21c4",
+      "revId": "5ce21405dc1133d9378785ce56e2039324eb91aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
