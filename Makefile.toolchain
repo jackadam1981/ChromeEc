@@ -112,7 +112,7 @@ OBJDUMP=$(CROSS_COMPILE)objdump
 ADDR2LINE=$(CROSS_COMPILE)addr2line
 PKG_CONFIG?=pkg-config
 BUILD_PKG_CONFIG?=$(PKG_CONFIG)
-BUILDCC?=$(CCACHE) $(BUILDCC_PREFIX)$(cc-name)
+BUILDCC?=$(CCACHE) $(BUILDCC_PREFIX)clang
 HOSTCC?=$(CCACHE) $(HOST_CROSS_COMPILE)$(cc-name)
 HOSTCXX?=$(CCACHE) $(HOST_CROSS_COMPILE)clang++
 HOST_PKG_CONFIG?=$(HOST_CROSS_COMPILE)pkg-config
@@ -142,13 +142,16 @@ COMMON_WARN+=-Werror=maybe-uninitialized
 endif
 endif
 
-ifeq ($(cc-name),clang)
 # TODO(b/172020503): Re-enabling this warning requires a large CL.
-C_WARN+= -Wno-ignored-attributes
+CLANG_C_WARN := -Wno-ignored-attributes
 # TODO(b/172020503): Re-enabling this warning requires the following large CLs:
 # https://crrev.com/c/3223973
 # https://crrev.com/c/3227261
-COMMON_WARN+= -Wno-unused-function
+CLANG_C_COMMON_WARN := -Wno-unused-function
+
+ifeq ($(cc-name),clang)
+C_WARN+= $(CLANG_C_WARN)
+COMMON_WARN+= $(CLANG_C_COMMON_WARN)
 endif
 
 UBSAN_FLAGS=-fsanitize=array-bounds,vla-bound \
@@ -250,6 +253,8 @@ endif
 
 BUILD_CFLAGS=$(LIBFTDIUSB_BUILD_CFLAGS) $(BUILD_CPPFLAGS) -O3 $(CFLAGS_DEBUG)
 BUILD_CFLAGS+=$(CFLAGS_WARN)
+BUILD_CFLAGS+=$(CLANG_C_WARN)
+BUILD_CFLAGS+=$(CLANG_C_COMMON_WARN)
 BUILD_CFLAGS+=-DCHROMIUM_EC=$(EMPTY)
 HOST_CFLAGS=$(HOST_CPPFLAGS) -O3 $(CFLAGS_DEBUG) $(CFLAGS_WARN) \
 	    -DHOST_TOOLS_BUILD=$(EMPTY)
