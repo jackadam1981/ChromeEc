@@ -177,6 +177,8 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
+static int manuf_fail;
+static int device_fail;
 static bool need_to_retry;
 
 void init_battery_type(void)
@@ -184,8 +186,8 @@ void init_battery_type(void)
 	int type;
 	int dflt = board_get_default_battery_type();
 
-	if (battery_manufacturer_name(batt_manuf_name,
-				      sizeof(batt_manuf_name))) {
+	if (manuf_fail || battery_manufacturer_name(batt_manuf_name,
+						    sizeof(batt_manuf_name))) {
 		BCFGPRT("Manuf name not found");
 		battery_conf = &board_battery_info[dflt];
 		need_to_retry = true;
@@ -194,11 +196,19 @@ void init_battery_type(void)
 
 	/* Don't carry over any previous name (in case i2c fail). */
 	memset(batt_device_name, 0, sizeof(batt_device_name));
-	if (battery_device_name(batt_device_name, sizeof(batt_device_name))) {
+	if (device_fail) {
 		BCFGPRT("Device name not found");
 		memset(batt_device_name, 0, sizeof(batt_device_name));
 		need_to_retry = true;
 		/* Battery name is optional. Proceed. */
+	} else {
+		if (battery_device_name(batt_device_name,
+					sizeof(batt_device_name))) {
+			BCFGPRT("Device name not found");
+			memset(batt_device_name, 0, sizeof(batt_device_name));
+			/* Battery name is optional. Proceed. */
+			need_to_retry = true;
+		}
 	}
 
 	BCFGPRT("Battery says %s,%s", batt_manuf_name, batt_device_name);
@@ -227,6 +237,30 @@ void init_battery_type(void)
 	battery_conf = &board_battery_info[type];
 }
 DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_BATTERY_INIT);
+
+static int command_manuf_fail(const struct shell *shell, size_t argc,
+			      char **argv)
+{
+	if (!strcasecmp(argv[1], "on")) {
+		manuf_fail = 1;
+	} else if (!strcasecmp(argv[1], "off")) {
+		manuf_fail = 0;
+	}
+	return EC_SUCCESS;
+}
+SHELL_CMD_ARG_REGISTER(manuffail, NULL, NULL, command_manuf_fail, 1, 1);
+
+static int command_device_fail(const struct shell *shell, size_t argc,
+			       char **argv)
+{
+	if (!strcasecmp(argv[1], "on")) {
+		device_fail = 1;
+	} else if (!strcasecmp(argv[1], "off")) {
+		device_fail = 0;
+	}
+	return EC_SUCCESS;
+}
+SHELL_CMD_ARG_REGISTER(devicefail, NULL, NULL, command_device_fail, 1, 1);
 
 const struct batt_conf_embed *get_batt_conf(void)
 {
