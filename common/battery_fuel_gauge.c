@@ -17,6 +17,8 @@
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 #define BCFGPRT(format, args...) cprints(CC_CHARGER, "BCFG " format, ##args)
 
+#define BATTERY_INIT_TYPE_TIMEOUT (2 * SECOND)
+
 /*
  * Pointer to an active config. It's battery_conf_cache if a config is found
  * in CBI or board_battery_info[x] if a config is found in FW.
@@ -175,6 +177,8 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
+static bool need_to_retry;
+
 void init_battery_type(void)
 {
 	int type;
@@ -184,6 +188,7 @@ void init_battery_type(void)
 				      sizeof(batt_manuf_name))) {
 		BCFGPRT("Manuf name not found");
 		battery_conf = &board_battery_info[dflt];
+		need_to_retry = true;
 		return;
 	}
 
@@ -215,6 +220,7 @@ void init_battery_type(void)
 		type = dflt;
 	} else {
 		BCFGPRT("Found config #%d", type);
+		need_to_retry = false;
 	}
 
 	battery_conf = &board_battery_info[type];
@@ -223,6 +229,22 @@ DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_BATTERY_INIT);
 
 const struct batt_conf_embed *get_batt_conf(void)
 {
+	uint64_t wait_timeout = get_time().val + BATTERY_INIT_TYPE_TIMEOUT;
+
+	/* Read Manuf/Device name successfully. Not need to retry. */
+	if (!need_to_retry)
+		return battery_conf;
+
+	CPRINTS("Retry init_battery_type during %d", BATTERY_INIT_TYPE_TIMEOUT);
+
+	while (get_time().val < wait_timeout) {
+		crec_msleep(500);
+		CPRINTS("Retry init_battery_type");
+		init_battery_type();
+		if (!need_to_retry)
+			break;
+	}
+	need_to_retry = false;
 	return battery_conf;
 }
 
