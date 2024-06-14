@@ -8,6 +8,7 @@
 #include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "builtin/assert.h"
+#include "charge_state.h"
 #include "console.h"
 #include "cros_board_info.h"
 #include "hooks.h"
@@ -16,6 +17,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 #define BCFGPRT(format, args...) cprints(CC_CHARGER, "BCFG " format, ##args)
+
+#define BATTERY_INIT_TYPE_TIMEOUT (2 * SECOND)
 
 /*
  * Pointer to an active config. It's battery_conf_cache if a config is found
@@ -175,7 +178,9 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
-void init_battery_type(void)
+static bool batt_initialized;
+
+int init_battery_type(void)
 {
 	int type;
 	int dflt = board_get_default_battery_type();
@@ -184,7 +189,7 @@ void init_battery_type(void)
 				      sizeof(batt_manuf_name))) {
 		BCFGPRT("Manuf name not found");
 		battery_conf = &board_battery_info[dflt];
-		return;
+		return EC_ERROR_UNKNOWN;
 	}
 
 	/* Don't carry over any previous name (in case i2c fail). */
@@ -202,7 +207,7 @@ void init_battery_type(void)
 		BCFGPRT("Searching in CBI");
 		if (bcfg_search_in_cbi(&battery_conf_cache) == EC_SUCCESS) {
 			battery_conf = &battery_conf_cache;
-			return;
+			return EC_SUCCESS;
 		}
 	}
 
@@ -211,6 +216,10 @@ void init_battery_type(void)
 
 	type = get_battery_type();
 	if (type == BATTERY_TYPE_COUNT) {
+		/*
+		 * Battery was successfully identified but no matching config
+		 * was found in CBI or FW. Retry won't help.
+		 */
 		BCFGPRT("Config not found. Fall back to config #%d", dflt);
 		type = dflt;
 	} else {
@@ -218,11 +227,29 @@ void init_battery_type(void)
 	}
 
 	battery_conf = &board_battery_info[type];
+
+	return EC_SUCCESS;
 }
-DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_BATTERY_INIT);
 
 const struct batt_conf_embed *get_batt_conf(void)
 {
+	const struct batt_params *batt = charger_current_battery_params();
+	static int prev_bf;
+	static timestamp_t deadline;
+
+	/* BATT_FLAG_RESPONSIVE is changed from 0x0 to 0x2 */
+	if (!(prev_bf & BATT_FLAG_RESPONSIVE) &&
+	    (batt->flags & BATT_FLAG_RESPONSIVE)) {
+		deadline.val = get_time().val + BATTERY_INIT_TYPE_TIMEOUT;
+	}
+
+	prev_bf = batt->flags;
+
+	if (!batt_initialized && !timestamp_expired(deadline, NULL)) {
+		CPRINTS("Retry init_battery_type");
+		batt_initialized = init_battery_type() == EC_SUCCESS;
+	}
+
 	return battery_conf;
 }
 
