@@ -11,6 +11,19 @@ config USB_DEVICE_GOOGLE_UPDATE
 	help
 	  Enable Google vender specific class.
 
+config GOOGLE_UPDATE_CLASS_INST_NUM
+	int "The instance number of Google update class"
+	depends on USB_DEVICE_GOOGLE_UPDATE
+	default USB_HID_DEVICE_COUNT if USB_DEVICE_HID
+	default 0
+	help
+	  Set the instance number of the Google update class.
+	  This configuration is used to place the USB descriptors in a
+	  predetermined order in the RAM. Coreboot only parses the first
+	  interface descriptor for boot keyboard detection. Due to this
+	  limitation, the Google Update descriptor is placed after the HID
+	  class.
+
 config GOOGLE_UPDATE_RX_THREAD_PRIORTY
 	int "Google update RX thread priority"
 	depends on USB_DEVICE_GOOGLE_UPDATE
@@ -42,6 +55,7 @@ config GOOGLE_UPDATE_TX_STACK_SIZE
 config USB_DC_HID_KEYBOARD
 	bool "Enable support USB HID keyboard"
 	depends on USB_DEVICE_STACK
+	select USB_DEVICE_HID
 	default n
 	help
 	  Enable keyboard support.
@@ -90,6 +104,7 @@ config USB_DC_KEYBOARD_TABLET_MODE_SWITCH
 config USB_DC_HID_TOUCHPAD
 	bool "Enable support USB HID touchpad"
 	depends on USB_DEVICE_STACK
+	select USB_DEVICE_HID
 	default n
 	help
 	  Enable touchpad support.

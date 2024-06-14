@@ -65,7 +65,7 @@ struct usb_google_update_config {
 		.wMaxPacketSize = sys_cpu_to_le16(mps), .bInterval = 0, \
 	}
 
-USBD_CLASS_DESCR_DEFINE(primary, 0)
+USBD_CLASS_DESCR_DEFINE(primary, CONFIG_GOOGLE_UPDATE_CLASS_INST_NUM)
 struct usb_google_update_config google_update_cfg = {
 	.if0 = INITIALIZER_IF(EP_NUM, USB_BCC_VENDOR,
 			      USB_SUBCLASS_GOOGLE_UPDATE,
