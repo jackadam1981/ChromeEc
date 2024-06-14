@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e00382c_bb37617c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-06-14T17:59:33Z",
+      "side": 1,
+      "message": "Why? We don\u0027t really use clang in legacy EC, it is disabled for most all of the boards.",
+      "revId": "3c4cbf6ce87776cfe7f414771a4296face0cf9b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
