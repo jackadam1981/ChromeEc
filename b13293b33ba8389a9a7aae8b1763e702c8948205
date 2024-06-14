@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9d72cc9_8acfe812",
+        "filename": "test/otp_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-14T17:38:27Z",
+      "side": 1,
+      "message": "\"We don\u0027t have any direct tests that exercise the real hardware OTP code.\"\nIf you exclude your changes to otp_key.c, the test_otp_key() function calls the real hardware OTP read function. This is directly exercising the real OTP code in the same way that the new function test_otp_key_read() is. It also has the benefit of provisioning unprovisioned hardware where applicable such that the test wouldn\u0027t fail. Further, it avoids adding new code where it is unnecessary. Based on these reasons, I think this CL is better with just the changes to otp_key.mocklist which only use the mock on host.",
+      "parentUuid": "04bdd536_3dfda7bd",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba89549f_12f3ca73",
         "filename": "test/otp_key.mocklist",
         "patchSetId": 4
