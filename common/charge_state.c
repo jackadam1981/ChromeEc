@@ -1251,7 +1251,6 @@ static void process_battery_present_change(const struct charger_info *info,
 	if (curr.batt.is_present && IS_ENABLED(CONFIG_BATTERY_FUEL_GAUGE)) {
 		/* Identify the attached battery. */
 		CPRINTS("Battery now present");
-		init_battery_type();
 	}
 
 	batt_info = battery_get_info();
