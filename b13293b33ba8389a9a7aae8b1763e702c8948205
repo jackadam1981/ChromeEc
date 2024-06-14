@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddce492a_cecec9c6",
+        "filename": "test/otp_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T19:55:04Z",
+      "side": 1,
+      "message": "Hmm, for some reason I thought `otp_key_provision` would fail if the key was already provisioned. Since it doesn\u0027t, you\u0027re right we can just run the test as-is.",
+      "parentUuid": "c52bb333_5a51c290",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba89549f_12f3ca73",
