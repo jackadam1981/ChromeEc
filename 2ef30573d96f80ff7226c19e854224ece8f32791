@@ -22,6 +22,54 @@
       },
       "revId": "2ef30573d96f80ff7226c19e854224ece8f32791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7b5b25_ba1c8bdb",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-06-14T02:14:59Z",
+      "side": 1,
+      "message": "I detected a bug. Press AC anly and press ESC key to enter recovery mode. I\u0027m going to fix it in this CL.",
+      "parentUuid": "e76a56ba_197b6cdd",
+      "range": {
+        "startLine": 910,
+        "startChar": 1,
+        "endLine": 910,
+        "endChar": 3
+      },
+      "revId": "2ef30573d96f80ff7226c19e854224ece8f32791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d726522_2bf54e6a",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-06-14T02:14:59Z",
+      "side": 1,
+      "message": "I\u0027ll submit on another CL[5628930](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5628930).",
+      "parentUuid": "e76a56ba_197b6cdd",
+      "range": {
+        "startLine": 910,
+        "startChar": 1,
+        "endLine": 910,
+        "endChar": 3
+      },
+      "revId": "2ef30573d96f80ff7226c19e854224ece8f32791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
