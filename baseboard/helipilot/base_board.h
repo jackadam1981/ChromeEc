@@ -62,6 +62,8 @@
  *-------------------------------------------------------------------------*
  */
 
+#define __NPCX_CHIP_TOTAL_RAM (512 * 1024)
+
 /**
  * RAM reserved for code.
  *
@@ -84,6 +86,12 @@
  * Cannot be adjusted.
  */
 #define __ROM_DATA_RAM_SIZE_BYTES (4 * 1024)
+
+#ifndef __ASSEMBLER__
+BUILD_ASSERT(HELIPILOT_CODE_RAM_SIZE_BYTES + HELIPILOT_DATA_RAM_SIZE_BYTES +
+		     __ROM_DATA_RAM_SIZE_BYTES ==
+	     __NPCX_CHIP_TOTAL_RAM);
+#endif
 
 /**
  * All data RAM (data RAM that can be used by our code and data RAM reserved for
