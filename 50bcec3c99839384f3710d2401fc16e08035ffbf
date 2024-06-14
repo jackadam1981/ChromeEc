@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3f4f1b_ff0bd77d",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T21:31:57Z",
+      "side": 1,
+      "message": "Is this case different because the exclusion comes from `NPCX_PROGRAM_MEMORY_SIZE`?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 80
+      },
+      "revId": "50bcec3c99839384f3710d2401fc16e08035ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff58dbd1_3f9d36a7",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-14T21:31:57Z",
+      "side": 1,
+      "message": "Is this the correct terminology? I didn\u0027t see \"blocks\" referred to in the docs.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "50bcec3c99839384f3710d2401fc16e08035ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
