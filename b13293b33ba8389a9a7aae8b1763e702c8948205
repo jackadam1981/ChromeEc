@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c52bb333_5a51c290",
+        "filename": "test/otp_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-06-14T17:44:40Z",
+      "side": 1,
+      "message": "\"It\u0027s calling into the \"mock OTPI\", not the real hardware OTP.\"\nIIUC, that is not true after your changes to otp_key.mocklist, since the mock will then only run with the host implementation and not on HW.",
+      "parentUuid": "97650073_8ae5d777",
+      "revId": "b13293b33ba8389a9a7aae8b1763e702c8948205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba89549f_12f3ca73",
         "filename": "test/otp_key.mocklist",
         "patchSetId": 4
