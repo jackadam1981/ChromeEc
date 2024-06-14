@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d62758_3d448dd6",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-06-14T18:09:51Z",
+      "side": 1,
+      "message": "Hrmm, we are mixing up CHOST and CBUILD variables here...",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "9de08fb78b44b7e7750de1d91eedf8a022ec6dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d5642c_2289953e",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-06-14T18:09:51Z",
+      "side": 1,
+      "message": "Could we try using sourcing `BUILD_CC` first, then fall back to the hard coded `clang?`\n\nWe set BUIULD_CC in the profile:  https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/third_party/chromiumos-overlay/profiles/features/llvm/make.defaults;l\u003d3?q\u003df:profile%20c:BUILD_CC\u0026ct\u003dos\u0026sq\u003dr:chrome-internal%2Fchromeos%2Fsuperproject%20b:main",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "9de08fb78b44b7e7750de1d91eedf8a022ec6dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
