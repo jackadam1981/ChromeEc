@@ -272,69 +272,72 @@ enum battery_present battery_is_present(void)
 
 void battery_get_params(struct batt_params *batt)
 {
+	struct batt_params batt_new;
 	int v;
 	const uint32_t flags_to_check = BATT_FLAG_BAD_TEMPERATURE |
 					BATT_FLAG_BAD_STATE_OF_CHARGE |
 					BATT_FLAG_BAD_VOLTAGE |
 					BATT_FLAG_BAD_CURRENT;
 
-	/* Reset flags */
-	batt->flags = 0;
+	memcpy(&batt_new, batt, sizeof(*batt));
 
-	if (bq27541_read(REG_TEMPERATURE, &batt->temperature))
-		batt->flags |= BATT_FLAG_BAD_TEMPERATURE;
+	/* Reset flags */
+	batt_new.flags = 0;
+
+	if (bq27541_read(REG_TEMPERATURE, &batt_new.temperature))
+		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
 
 	if (bq27541_read8(REG_STATE_OF_CHARGE, &v) && fake_state_of_charge < 0)
-		batt->flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 
-	batt->state_of_charge = fake_state_of_charge >= 0 ?
+	batt_new.state_of_charge = fake_state_of_charge >= 0 ?
 					fake_state_of_charge : v;
 
-	if (bq27541_read(REG_VOLTAGE, &batt->voltage))
-		batt->flags |= BATT_FLAG_BAD_VOLTAGE;
+	if (bq27541_read(REG_VOLTAGE, &batt_new.voltage))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
 
 	v = 0;
 	if (bq27541_read(REG_AVERAGE_CURRENT, &v))
-		batt->flags |= BATT_FLAG_BAD_CURRENT;
-	batt->current = (int16_t)v;
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	batt_new.current = (int16_t)v;
 
-	if (battery_remaining_capacity(&batt->remaining_capacity))
-		batt->flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
+	if (battery_remaining_capacity(&batt_new.remaining_capacity))
+		batt_new.flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
 
-	if (battery_full_charge_capacity(&batt->full_capacity))
-		batt->flags |= BATT_FLAG_BAD_FULL_CAPACITY;
+	if (battery_full_charge_capacity(&batt_new.full_capacity))
+		batt_new.flags |= BATT_FLAG_BAD_FULL_CAPACITY;
 
 	/* Default to not desiring voltage and current */
-	batt->desired_voltage = batt->desired_current = 0;
+	batt_new.desired_voltage = batt_new.desired_current = 0;
 
 	/* If any of those reads worked, the battery is responsive */
-	if ((batt->flags & flags_to_check) != flags_to_check) {
-		batt->flags |= BATT_FLAG_RESPONSIVE;
-		batt->is_present = BP_YES;
+	if ((batt_new.flags & flags_to_check) != flags_to_check) {
+		batt_new.flags |= BATT_FLAG_RESPONSIVE;
+		batt_new.is_present = BP_YES;
 	} else {
-
 	/* If all of those reads error, the battery is not present */
-		batt->is_present = BP_NO;
+		batt_new.is_present = BP_NO;
 	}
 
 	/* update the battery status */
-	if (battery_status(&batt->status))
-		batt->flags |= BATT_FLAG_BAD_STATUS;
+	if (battery_status(&batt_new.status))
+		batt_new.flags |= BATT_FLAG_BAD_STATUS;
 
 	v = 0;
 	if (battery_charging_allowed(&v)) {
-		batt->flags |= BATT_FLAG_BAD_ANY;
+		batt_new.flags |= BATT_FLAG_BAD_ANY;
 	} else if (v) {
-		batt->flags |= BATT_FLAG_WANT_CHARGE;
+		batt_new.flags |= BATT_FLAG_WANT_CHARGE;
 
 		/*
 		 * Desired voltage and current are not provided by the battery.
 		 * So ask for battery's max voltage and an arbitrarily large
 		 * current.
 		 */
-		batt->desired_voltage = battery_get_info()->voltage_max;
-		batt->desired_current = 4096;
+		batt_new.desired_voltage = battery_get_info()->voltage_max;
+		batt_new.desired_current = 4096;
 	}
+	memcpy(batt, &batt_new, sizeof(*batt));
 }
 
 /* Wait until battery is totally stable */
