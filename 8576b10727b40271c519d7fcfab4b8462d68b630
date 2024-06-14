@@ -22,6 +22,30 @@
       },
       "revId": "8576b10727b40271c519d7fcfab4b8462d68b630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f22d690_f7a6ac5a",
+        "filename": "zephyr/program/nissa/craask/src/charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-14T09:51:24Z",
+      "side": 1,
+      "message": "I upload a CL which retry init_battery_type in get_batt_conf.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5632543",
+      "parentUuid": "76d92405_87831b9c",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "8576b10727b40271c519d7fcfab4b8462d68b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
