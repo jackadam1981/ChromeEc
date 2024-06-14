@@ -52,6 +52,29 @@
       "parentUuid": "f4b40355_eddf3739",
       "revId": "3c4cbf6ce87776cfe7f414771a4296face0cf9b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8642d23a_aa767392",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-06-14T18:11:55Z",
+      "side": 1,
+      "message": "Can this default to `$HOSTCC`?",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "3c4cbf6ce87776cfe7f414771a4296face0cf9b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
