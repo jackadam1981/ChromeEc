@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f6cbac_90b3f112",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-14T19:14:00Z",
+      "side": 1,
+      "message": "How about returning a bool, which indicates needt_to_retry or not?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 4
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d9dc9b_f1ba9d4d",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-14T19:14:00Z",
+      "side": 1,
+      "message": "A device name is optional thus should be allowed to be missing. Do you need this for your device \u0026 battery to work?",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274bc281_3c4d04cd",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-14T19:14:00Z",
+      "side": 1,
+      "message": "Now with your change, I think we no longer need this hook. init_battery_type would be called on demand: whenever get_batt_conf is called.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 67
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "726d7a8c_f327a5b6",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-14T19:14:00Z",
+      "side": 1,
+      "message": "This makes get_batt_conf block up to 2 secs. How would that affect the existing callers? Also, while sleeping at line 248, another thread may call get_batt_conf. Are we handling cuncurrency properly?\n\nHow about returning NULL immediately if init_battery_type fails? The existing callers need to handle NULL. For example, board_cut_off_battery already does so.\n\nI thought we want something like this:\n\n    static bool need_retry \u003d true.\n\n    const struct batt_conf_embed *get_batt_conf(void)\n    {\n        if (need_retry \u0026\u0026 !timestamp_expired())\n            need_retry \u003d init_battery_type;\n        return battery_conf;\n    }\n    \nThe suggested change needs a large view. Please let me know if it\u0027s beyond your current scope.",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 6
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
