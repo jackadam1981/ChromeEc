@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb98c66_b391a8e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3490012
+      },
+      "writtenOn": "2024-06-17T11:44:02Z",
+      "side": 1,
+      "message": "In base code of EC, add driver for PixArt touchpad. This driver includes touch event reported to Chrome and upgrade FW of touchpad.Please help review this code to see if any change needed or any suggestion.",
+      "revId": "a26b03e55aef35aeaead5a78cb1281b699e2a949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
