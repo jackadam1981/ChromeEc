@@ -70,6 +70,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfd5eee_3b3afd0a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-17T20:36:34Z",
+      "side": 1,
+      "message": "\u003e When building outside chroot within Zephyr repo, the additional CONFIG_FPU\u003dy config is not required, because builtins are built without using floating-point instructions.\n\nOk, this sounds like a difference in how the toolchain is compiled. The LLVM toolchain that we\u0027re using for fingerprint inside the chroot is [configured for hardware floating point](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-libs/compiler-rt/compiler-rt-9999.ebuild;l\u003d122-126;drc\u003d7984a8973c18b79dabce656b9a5a0a1ca30f202e). It sounds like the toolchain from Zephyr is not.\n\nRather than try to add `CONFIG_FPU\u003dy` in every place where we might need it, I think it would be good to find a place to inject this so that it applies globally to the `google_dragonclaw` board/platform when building with a toolchain that is built with hardware floating point. If we need to do that dynamically, maybe we could use something like [this](https://www.cnx-software.com/2013/04/22/how-to-detect-if-an-arm-elf-binary-is-hard-float-armhf-or-soft-float-armel/).\n\nLooking at the [description of `CONFIG_FPU`](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_FPU), it says it is implied by [`CONFIG_HAS_FPU`](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_CPU_HAS_FPU). Maybe we just need to set that for `google_dragonclaw`.\n\nAlso, the documentation says\n\n\u003e this usually means that only one thread may perform floating point operations. If it is necessary for multiple threads to perform concurrent floating point operations, the \"FPU register sharing\" option must be enabled to preserve the floating point registers across context switches. \n\nso I think we need to enable [`CONFIG_FPU_SHARING`](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_FPU_SHARING).",
+      "parentUuid": "9866eee6_793fbb1a",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
