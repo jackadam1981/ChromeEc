@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50db30c_5eef5853",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-17T21:05:09Z",
+      "side": 1,
+      "message": "Not sure about all the cases, but I would imagine a brief OC/OV might take more than 1 cycle and less that N cycles to go away. In any case, I think changing this would be out of scope of this CL, which mainly tries to address the possible watchdog condition",
+      "parentUuid": "d9e40697_c24ee5f4",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1421c28b_b92f2a38",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a93a5cf_4d901167",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-17T21:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1421c28b_b92f2a38",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d94caf5_3b8afc6e",
@@ -66,6 +102,24 @@
       "writtenOn": "2024-06-14T20:28:33Z",
       "side": 1,
       "message": "Is this test testing anything? How would you know whether this feature is working?",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7742d5b6_3ccad834",
+        "filename": "zephyr/test/drivers/default/src/ppc_sn5s330.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-17T21:05:09Z",
+      "side": 1,
+      "message": "Good catch! It was added for code coverage, adding assert",
+      "parentUuid": "0d94caf5_3b8afc6e",
       "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
