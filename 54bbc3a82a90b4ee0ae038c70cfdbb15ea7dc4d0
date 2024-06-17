@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e61b1c1_8819c51f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2024-06-17T09:41:17Z",
+      "side": 1,
+      "message": "It is not implemented yet. Need to clarify the expected action when PS_ON# is toggled when system is in suspend.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "54bbc3a82a90b4ee0ae038c70cfdbb15ea7dc4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107ac4d1_b7234f1b",
+        "filename": "board/bujia/ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2024-06-17T09:41:17Z",
+      "side": 1,
+      "message": "We need to check with OPS display vendors to clarify the expected action (shutdown or wake up) when PS_ON# is toggled when system is in suspend. We can add a ToDo here.",
+      "revId": "54bbc3a82a90b4ee0ae038c70cfdbb15ea7dc4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
