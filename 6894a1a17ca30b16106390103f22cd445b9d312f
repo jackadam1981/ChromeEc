@@ -34,6 +34,24 @@
       "parentUuid": "6295ca20_e8a8ff76",
       "revId": "6894a1a17ca30b16106390103f22cd445b9d312f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329b4354_95ccd9ec",
+        "filename": "zephyr/program/nissa/riven/overlay.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-17T11:51:25Z",
+      "side": 1,
+      "message": "Hi Peter, for we only check if the EC can read the raw data from the sensors on board ver1, Could we merge this CL first? The driver can be fixed after board ver1.",
+      "parentUuid": "20b2d436_45b1c63e",
+      "revId": "6894a1a17ca30b16106390103f22cd445b9d312f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
