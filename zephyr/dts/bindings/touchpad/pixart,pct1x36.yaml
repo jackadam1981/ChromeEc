@@ -1,0 +1,35 @@
+# Copyright 2023 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: PIX I2C touchpad
+
+compatible: "pixart,pct1x36"
+
+include: i2c-device.yaml
+
+properties:
+  irq:
+    type: phandle
+    required: true
+    description: Interrupt from touchpad
+
+  logical_max_x:
+    type: int
+    required: true
+    description: The logical maximum x-axis setting
+
+  logical_max_y:
+    type: int
+    required: true
+    description: The logical maximum y-axis setting
+
+  physical_max_x:
+    type: int
+    required: true
+    description: The physical maximum x-axis setting
+
+  physical_max_y:
+    type: int
+    required: true
+    description: The physical maximum y-axis setting

@@ -17,3 +17,21 @@ config PLATFORM_EC_TOUCHPAD_ELAN
 	select PLATFORM_EC_TOUCHPAD
 	help
 	  Adds support for Elan I2C touchpad.
+
+config PLATFORM_EC_TOUCHPAD_PCT1X36
+	bool "PIX touchpad driver"
+	select PLATFORM_EC_TOUCHPAD
+	depends on USB_DEVICE_STACK
+	default n
+	help
+	  Adds support for pixart I2C touchpad.
+
+config USB_DC_TOUCHPAD_PCT1X36_HID_NUM
+	int "Set the HID number for touchpad instance name"
+	depends on PLATFORM_EC_TOUCHPAD_PCT1X36
+	default 1
+	help
+	  Set the hid number for touchpad instance name.
+	  The format of hid instance name is name_n, where the name can be
+	  configured by CONFIG_USB_HID_DEVICE_NAME and n(hid number) should be in
+	  the range of 0 to (CONFIG_USB_HID_DEVICE_COUNT - 1).

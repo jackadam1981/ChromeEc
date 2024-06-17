@@ -28,4 +28,11 @@
 		reg = <0x15>;
 		irq = <&int_tchpad>;
 	};
+
+	touchpad@2c {
+		compatible = "pixart,pct1x36";
+		status = "okay";
+		reg = <0x2c>;
+		irq = <&int_tchpad>;
+	};
 };
