@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61cc0e9_810024cb",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-17T22:40:57Z",
+      "side": 1,
+      "message": "I\u0027d suggest a follow-up. All other things being equal, one level of retry would be better than two levels of retry.",
+      "parentUuid": "c50db30c_5eef5853",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1421c28b_b92f2a38",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Good catch! It was added for code coverage, adding assert",
       "parentUuid": "0d94caf5_3b8afc6e",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541da86b_419ec5f5",
+        "filename": "zephyr/test/drivers/default/src/ppc_sn5s330.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-17T22:40:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure I get how this tests the feature. This is effectively checking that `sn5s330_emul_assert_interrupt` was called, which it clearly just was in the test code. I would expect this call count to be the same regardless of the evasive action feature.\n\nI would think that what you would want to be checking is the number of times that the alert register was checked at different times. I would expect that the call count for `ppc_get_alert_status` would be 10 after ~1500 us, 20 after 2500 us, 30 after 3500 us, etc.",
+      "parentUuid": "7742d5b6_3ccad834",
       "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
