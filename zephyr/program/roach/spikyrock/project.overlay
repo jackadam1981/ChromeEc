@@ -20,6 +20,13 @@
 		physical_max_x = <839>;
 		physical_max_y = <457>;
 	};
+
+	touchpad@2c {
+		logical_max_x = <1575>;
+		logical_max_y = <760>;
+		physical_max_x = <890>;
+		physical_max_y = <430>;
+	};
 };
 
 &touchpad_fw_hashes {

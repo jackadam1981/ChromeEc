@@ -549,6 +549,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_TOUCHPAD_ELAN
                                                 "${PLATFORM_EC}/driver/touchpad_elan.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_TOUCHPAD_PCT1X36
+                                                "${PLATFORM_EC}/driver/usb_hid_tp_pct1x36.c")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CONSOLE_CMD_CHARGEN
                                                 "${PLATFORM_EC}/common/chargen.c")
