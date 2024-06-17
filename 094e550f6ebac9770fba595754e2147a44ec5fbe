@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49822ef0_2a1b5e20",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-17T10:58:26Z",
+      "side": 1,
+      "message": "I still use need_retry to check if init_battery_type should be retried so I think it probably doesn\u0027t need to return a bool.",
+      "parentUuid": "87f6cbac_90b3f112",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 4
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03d9dc9b_f1ba9d4d",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-14T19:14:00Z",
       "side": 1,
       "message": "A device name is optional thus should be allowed to be missing. Do you need this for your device \u0026 battery to work?",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc10ee4_8219590e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-17T10:58:26Z",
+      "side": 1,
+      "message": "Yes, \"device name not found\" would cause \"BCFG Config not found\" on my device. I can move \"need_retry \u003d 1\" into \"type \u003d\u003d BATTERY_TYPE_COUNT\".\n```\n24-06-09 06:14:44.214 ec:~\u003e [163399.926800 BCFG Device name not found]\n24-06-09 06:14:44.217 ec:~\u003e [163399.927900 BCFG Battery says COSMX KT0030B004,]\n24-06-09 06:14:44.223 ec:~\u003e [163399.928900 BCFG Searching in FW]\n24-06-09 06:14:44.227 ec:~\u003e [163399.930800 BCFG Config not found. Fall back to config #0]\n```",
+      "parentUuid": "03d9dc9b_f1ba9d4d",
       "range": {
         "startLine": 201,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fbe999_f4a5ddc4",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-17T10:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "274bc281_3c4d04cd",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 67
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "726d7a8c_f327a5b6",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-14T19:14:00Z",
       "side": 1,
       "message": "This makes get_batt_conf block up to 2 secs. How would that affect the existing callers? Also, while sleeping at line 248, another thread may call get_batt_conf. Are we handling cuncurrency properly?\n\nHow about returning NULL immediately if init_battery_type fails? The existing callers need to handle NULL. For example, board_cut_off_battery already does so.\n\nI thought we want something like this:\n\n    static bool need_retry \u003d true.\n\n    const struct batt_conf_embed *get_batt_conf(void)\n    {\n        if (need_retry \u0026\u0026 !timestamp_expired())\n            need_retry \u003d init_battery_type;\n        return battery_conf;\n    }\n    \nThe suggested change needs a large view. Please let me know if it\u0027s beyond your current scope.",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 6
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5d4792_8e12c8e8",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-17T10:58:26Z",
+      "side": 1,
+      "message": "I tried to returning NULL but the EC log keep showing \"Batt too hot: 28C\" when I use console command to check if the retries work. However, returning battery_conf doesn\u0027t show this message. I think the curr.batt.temperature will be 0 when get_batt_conf return NULL.",
+      "parentUuid": "726d7a8c_f327a5b6",
       "range": {
         "startLine": 247,
         "startChar": 1,
