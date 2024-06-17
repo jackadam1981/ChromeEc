@@ -16,6 +16,24 @@
       "message": "This requires driver changes, because `bma4xx_interrupt` currently only supports one source.",
       "revId": "6894a1a17ca30b16106390103f22cd445b9d312f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b2d436_45b1c63e",
+        "filename": "zephyr/program/nissa/riven/overlay.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-17T09:51:21Z",
+      "side": 1,
+      "message": "Done. I remove int_imu and set accel-force-mode for base_accel.",
+      "parentUuid": "6295ca20_e8a8ff76",
+      "revId": "6894a1a17ca30b16106390103f22cd445b9d312f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
