@@ -460,6 +460,9 @@ __override void board_battery_compensate_params(struct batt_params *batt)
 	 * TODO(b:344542139):Change the battery capacity and battery
 	 * state_of_charge to 125% of the original value.
 	 */
-	batt->state_of_charge = MULTIPLY_125(batt->state_of_charge);
-	batt->remaining_capacity = MULTIPLY_125(batt->remaining_capacity);
+	if(!strcasecmp(current_region_code.region_code, "tw"))
+	{
+		batt->state_of_charge = MULTIPLY_125(batt->state_of_charge);
+		batt->remaining_capacity = MULTIPLY_125(batt->remaining_capacity);
+	}
 }
