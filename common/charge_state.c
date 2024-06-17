@@ -1432,6 +1432,14 @@ static void adjust_requested_vi(const struct charger_info *const info,
 	}
 }
 
+/**
+ * @return default sleep duration
+ */
+__overridable int board_get_sleep_dur(void)
+{
+	return CHARGE_POLL_PERIOD_VERY_LONG;
+}
+
 /* Calculate the sleep duration, before we run around the task loop again */
 int calculate_sleep_dur(int battery_critical, int sleep_usec)
 {
@@ -1455,7 +1463,7 @@ int calculate_sleep_dur(int battery_critical, int sleep_usec)
 			if (chipset_in_state(CHIPSET_STATE_ANY_OFF |
 					     CHIPSET_STATE_ANY_SUSPEND) &&
 			    output_current == 0)
-				sleep_usec = CHARGE_POLL_PERIOD_VERY_LONG;
+				sleep_usec = board_get_sleep_dur();
 			else
 				/* Discharging, not too urgent */
 				sleep_usec = CHARGE_POLL_PERIOD_LONG;
