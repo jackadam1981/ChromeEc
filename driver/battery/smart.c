@@ -576,6 +576,7 @@ void battery_get_params(struct batt_params *batt)
 	if (IS_ENABLED(CONFIG_CMD_BATTFAKE))
 		apply_fake_state_of_charge(&batt_new);
 
+	CPRINTS("battery_get_params test");
 	/* Update visible battery parameters */
 	memcpy(batt, &batt_new, sizeof(*batt));
 }
