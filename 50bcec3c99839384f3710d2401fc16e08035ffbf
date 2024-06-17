@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "566713cf_1c83991a",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-06-17T05:08:25Z",
+      "side": 1,
+      "message": "Yes, for npcx9m3f, its data RAM layout is from 0x200C0000~0x200D0000. \nThe RAM used by ROM doesn\u0027t influence it.\nThe reason it needs to excluded 4KB is because of the flash size.\nSee comment in line 81 for the detail.",
+      "parentUuid": "8f3f4f1b_ff0bd77d",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 80
+      },
+      "revId": "50bcec3c99839384f3710d2401fc16e08035ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff58dbd1_3f9d36a7",
         "filename": "chip/npcx/config_chip-npcx9.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-14T21:31:57Z",
       "side": 1,
       "message": "Is this the correct terminology? I didn\u0027t see \"blocks\" referred to in the docs.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "50bcec3c99839384f3710d2401fc16e08035ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc903cb_44a6bb58",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-06-17T05:08:25Z",
+      "side": 1,
+      "message": "The terminology is described in the section **4.24 ON-CHIP RAM** in the datasheet.\n1 block \u003d 32KB.",
+      "parentUuid": "ff58dbd1_3f9d36a7",
       "range": {
         "startLine": 116,
         "startChar": 3,
