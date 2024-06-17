@@ -46,6 +46,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9866eee6_793fbb1a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-17T05:48:58Z",
+      "side": 1,
+      "message": "To be precise, we are not building upstream tests for `bloonchipper`. [bloonchipper](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/BUILD.py) is a project/program based on the [google_dragonclaw](https://github.com/zephyrproject-rtos/zephyr/tree/main/boards/google/dragonclaw) board/platform. The upstream test uses the `google_dragonclaw` board and its config/dts files. When building outside chroot within Zephyr repo, the additional `CONFIG_FPU\u003dy` config is not required, because builtins are built without using floating-point instructions.\n\nSo, I think we have to add it here since it is chroot specific thing.",
+      "parentUuid": "8619ee60_f649c1d0",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
