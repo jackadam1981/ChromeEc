@@ -12,6 +12,7 @@
 #include "console.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
+#include "system.h"
 #include "util.h"
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
@@ -202,17 +203,20 @@ int charger_profile_override(struct charge_state_data *curr)
 	 * Battery: 98 -> 0, clear the battery full charge mark
 	 * 4104 mV: Battery voltage 80%
 	 */
-	if (curr->batt.state_of_charge > 99) {
-		charge_full_flag = true;
-		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-		curr->requested_voltage = MIN(4104, curr->requested_voltage);
-		curr->requested_current = MIN(1, curr->requested_current);
-	} else if (charge_full_flag && curr->batt.state_of_charge > 98) {
-		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-		curr->requested_voltage = MIN(4104, curr->requested_voltage);
-		curr->requested_current = MIN(1, curr->requested_current);
-	} else {
-		charge_full_flag = false;
+	if(!strcasecmp(current_region_code.region_code, "tw"))
+	{
+		if (curr->batt.state_of_charge > 99) {
+			charge_full_flag = true;
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			curr->requested_voltage = MIN(4104, curr->requested_voltage);
+			curr->requested_current = MIN(1, curr->requested_current);
+		} else if (charge_full_flag && curr->batt.state_of_charge > 98) {
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			curr->requested_voltage = MIN(4104, curr->requested_voltage);
+			curr->requested_current = MIN(1, curr->requested_current);
+		} else {
+			charge_full_flag = false;
+		}
 	}
 #endif
 
