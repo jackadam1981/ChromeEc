@@ -8,8 +8,6 @@ config PLATFORM_EC_USB_UPDATE
 	  Enable the firmware update protocol (see docs/usb_updater.md)
 	  over USB interface.
 
-if PLATFORM_EC_USB_UPDATE
-
 config PLATFORM_EC_TOUCHPAD_VIRTUAL_SIZE
 	int "Touchpad virtual size"
 	help
@@ -21,6 +19,8 @@ config PLATFORM_EC_TOUCHPAD_VIRTUAL_OFF
 	help
 	  Enable touchpad FW update over USB update protocol, and define
 	  the virtual address of the touchpad firmware.
+
+if PLATFORM_EC_USB_UPDATE
 
 config PLATFORM_EC_USB_PAIRING
 	bool "Pairing support"
