@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca3f2048_cc4c917f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-06-17T22:16:57Z",
+      "side": 1,
+      "message": "We have a pending discussion to lock down the config variants format in b/347345947.",
+      "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1774f8dc_f62266b1",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
