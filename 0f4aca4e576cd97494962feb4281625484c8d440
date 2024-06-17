@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10a26a3_06c3d9d9",
+        "filename": "zephyr/program/nissa/orisa/generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-17T20:44:48Z",
+      "side": 1,
+      "message": "I guess it\u0027s the case that you can\u0027t modify gpio_ec_soc_rsmrst_l as that GPIO is used for all Nissa variants? I don\u0027t know if there is a good solution in this case, but changing the node name makes this signal and the other few where this was done not follow the typical convention. Ideally the only difference is the `gpio_`, but I recognize are some signals which need to keep the same `gpio_` name to match other Nissa projects.",
+      "parentUuid": "e24d822d_a89c6f01",
+      "range": {
+        "startLine": 96,
+        "startChar": 24,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f9e83e1_e317e759",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Actaully, we implement it with another change CL:5607029.\nNow I just combined it into this change",
       "parentUuid": "7f9e83e1_e317e759",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "0f4aca4e576cd97494962feb4281625484c8d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d2c755_562ff25e",
+        "filename": "zephyr/program/nissa/orisa/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-17T20:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fc3297d_3f1ef8d7",
       "range": {
         "startLine": 18,
         "startChar": 1,
