@@ -6,8 +6,10 @@
  */
 #include "battery.h"
 #include "battery_fuel_gauge.h"
+#include "charge_state.h"
 #include "common.h"
 #include "gpio.h"
+#include "timer.h"
 #include "util.h"
 
 /*
@@ -262,3 +264,8 @@ const struct batt_conf_embed board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_LGC_AP18C8K;
+
+__override int board_get_sleep_dur(void)
+{
+	return (MSEC * 50000);
+}
