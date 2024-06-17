@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ec1ea6_9abc4153",
+        "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-17T22:17:27Z",
+      "side": 1,
+      "message": "@CHChang19@nuvoton.com What is this 4KB? I see it accounted for [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/helipilot/base_board.h;l\u003d122;drc\u003dc0f65dc488d48c4c9634276520337dcde4f57107).",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 72
+      },
+      "revId": "95bb809e143a4ad5f0fd9454c6e10ea6276d7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
