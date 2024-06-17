@@ -176,6 +176,11 @@ int charge_get_display_charge(void);
 __override_proto int charge_is_consuming_full_input_current(void);
 
 /**
+ * @return default sleep duration
+ */
+__override_proto int board_get_sleep_dur(void);
+
+/**
  * Return non-zero if discharging and battery so low we should shut down.
  */
 #if defined(CONFIG_CHARGER) && defined(CONFIG_BATTERY)
