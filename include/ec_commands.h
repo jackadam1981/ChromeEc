@@ -8632,6 +8632,7 @@ struct ec_response_get_boot_time {
 #define EC_CMD_BOARD_SPECIFIC_BASE 0x3E00
 #define EC_CMD_BOARD_SPECIFIC_LAST 0x3FFF
 
+#define EC_CMD_TRANSMIT_REGION_CODE 0x1234
 /*
  * Given the private host command offset, calculate the true private host
  * command value.

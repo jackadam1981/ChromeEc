@@ -51,6 +51,11 @@ extern "C" {
 void chip_save_reset_flags(uint32_t flags);
 uint32_t chip_read_reset_flags(void);
 
+struct ec_params_transmit_region_code {
+    char region_code[16];
+}__packed ;
+
+extern struct ec_params_transmit_region_code current_region_code;
 /**
  * Checks if running image is RW or not
  *
