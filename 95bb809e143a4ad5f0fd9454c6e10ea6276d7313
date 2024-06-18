@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dca66281_394a56c7",
+        "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T20:52:33Z",
+      "side": 1,
+      "message": "Ok, so this section is reserved for the 64-byte firmware header?\n\nIs there some documentation on what the 64-byte firmware header is (in the reference manual or [somewhere in the code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/header.c;l\u003d1;drc\u003d88684b2a25d0349bcd57cdba2a5aadb60d7bef07))?",
+      "parentUuid": "43f575b7_fdef0892",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 72
+      },
+      "revId": "95bb809e143a4ad5f0fd9454c6e10ea6276d7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ef8add8_99ee7fa6",
         "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
         "patchSetId": 2
