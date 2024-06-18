@@ -166,6 +166,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984dfc7a_82d6a83c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-18T12:04:41Z",
+      "side": 1,
+      "message": "One more point is that it looks like ZephyrSKD has prepared libs for every possible fp related command line switches:\n\n```\n(.venv) dawidn@dawidn-l:~/zephyr-sdk-0.16.3/arm-zephyr-eabi$ ~/zephyr-sdk-0.16.3/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -print-multi-lib \n.;\narm/v5te/softfp;@marm@march\u003darmv5te+fp@mfloat-abi\u003dsoftfp\narm/v5te/hard;@marm@march\u003darmv5te+fp@mfloat-abi\u003dhard\nthumb/nofp;@mthumb@mfloat-abi\u003dsoft\nthumb/v7/nofp;@mthumb@march\u003darmv7@mfloat-abi\u003dsoft\nthumb/v7+fp/softfp;@mthumb@march\u003darmv7+fp@mfloat-abi\u003dsoftfp\nthumb/v7+fp/hard;@mthumb@march\u003darmv7+fp@mfloat-abi\u003dhard\nthumb/v7-r+fp.sp/softfp;@mthumb@march\u003darmv7-r+fp.sp@mfloat-abi\u003dsoftfp\nthumb/v7-r+fp.sp/hard;@mthumb@march\u003darmv7-r+fp.sp@mfloat-abi\u003dhard\nthumb/v6-m/nofp;@mthumb@march\u003darmv6s-m@mfloat-abi\u003dsoft\nthumb/v7-m/nofp;@mthumb@march\u003darmv7-m@mfloat-abi\u003dsoft\nthumb/v7e-m/nofp;@mthumb@march\u003darmv7e-m@mfloat-abi\u003dsoft\nthumb/v7e-m+fp/softfp;@mthumb@march\u003darmv7e-m+fp@mfloat-abi\u003dsoftfp\nthumb/v7e-m+fp/hard;@mthumb@march\u003darmv7e-m+fp@mfloat-abi\u003dhard\nthumb/v7e-m+dp/softfp;@mthumb@march\u003darmv7e-m+fp.dp@mfloat-abi\u003dsoftfp\nthumb/v7e-m+dp/hard;@mthumb@march\u003darmv7e-m+fp.dp@mfloat-abi\u003dhard\nthumb/v8-m.base/nofp;@mthumb@march\u003darmv8-m.base@mfloat-abi\u003dsoft\nthumb/v8-m.main/nofp;@mthumb@march\u003darmv8-m.main@mfloat-abi\u003dsoft\nthumb/v8-m.main+fp/softfp;@mthumb@march\u003darmv8-m.main+fp@mfloat-abi\u003dsoftfp\nthumb/v8-m.main+fp/hard;@mthumb@march\u003darmv8-m.main+fp@mfloat-abi\u003dhard\nthumb/v8-m.main+dp/softfp;@mthumb@march\u003darmv8-m.main+fp.dp@mfloat-abi\u003dsoftfp\nthumb/v8-m.main+dp/hard;@mthumb@march\u003darmv8-m.main+fp.dp@mfloat-abi\u003dhard\nthumb/v8.1-m.main+mve/hard;@mthumb@march\u003darmv8.1-m.main+mve@mfloat-abi\u003dhard\n```",
+      "parentUuid": "940b38d0_cfc65bdd",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
