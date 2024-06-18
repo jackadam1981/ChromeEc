@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aebe1640_75a15677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-06-18T02:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e61b1c1_8819c51f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "54bbc3a82a90b4ee0ae038c70cfdbb15ea7dc4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "107ac4d1_b7234f1b",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-06-17T09:41:17Z",
       "side": 1,
       "message": "We need to check with OPS display vendors to clarify the expected action (shutdown or wake up) when PS_ON# is toggled when system is in suspend. We can add a ToDo here.",
+      "revId": "54bbc3a82a90b4ee0ae038c70cfdbb15ea7dc4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4f25bb_48c586b1",
+        "filename": "board/bujia/ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-06-18T02:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107ac4d1_b7234f1b",
       "revId": "54bbc3a82a90b4ee0ae038c70cfdbb15ea7dc4d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
