@@ -222,7 +222,7 @@ static int read_mapped_string(uint8_t offset, char *buffer, int max_size)
 }
 
 static int wait_event_mask(unsigned long event_mask,
-			   struct ec_response_get_next_event_v1 *buffer,
+			   struct ec_response_get_next_event *buffer,
 			   size_t buffer_size, long timeout)
 {
 	int rv;
@@ -240,7 +240,7 @@ static int wait_event_mask(unsigned long event_mask,
 }
 
 static int wait_event(long event_type,
-		      struct ec_response_get_next_event_v1 *buffer,
+		      struct ec_response_get_next_event *buffer,
 		      size_t buffer_size, long timeout)
 {
 	return wait_event_mask(1 << event_type, buffer, buffer_size, timeout);
@@ -10622,7 +10622,7 @@ static int cmd_pchg_info(const struct ec_response_pchg *res)
 
 static int cmd_pchg_wait_event(int port, uint32_t expected)
 {
-	struct ec_response_get_next_event_v1 event;
+	struct ec_response_get_next_event event;
 	const long timeout = 5000;
 	uint32_t *e = &event.data.host_event;
 	int rv;
@@ -11752,7 +11752,7 @@ int cmd_wait_event(int argc, char *argv[])
 	static const char *const host_event_text[] = HOST_EVENT_TEXT;
 
 	int rv, i;
-	struct ec_response_get_next_event_v1 buffer;
+	struct ec_response_get_next_event buffer;
 	long timeout = 5000;
 	long event_type;
 	char *e;
@@ -11854,7 +11854,7 @@ static int cmd_cec_write(int port, int argc, char *argv[])
 	int rv, i, msg_len;
 	struct ec_params_cec_write p;
 	struct ec_params_cec_write_v1 p_v1;
-	struct ec_response_get_next_event_v1 buffer;
+	struct ec_response_get_next_event buffer;
 	int version;
 	uint8_t *msg_param;
 	struct timespec start, now;
@@ -11983,7 +11983,7 @@ static int cmd_cec_read(int port, int argc, char *argv[])
 {
 	int i, rv;
 	char *e;
-	struct ec_response_get_next_event_v1 buffer;
+	struct ec_response_get_next_event buffer;
 	long timeout_ms = 5000;
 	unsigned long event_mask;
 	struct timespec start, now;

@@ -430,7 +430,7 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 {
 	static int last;
 	int i, evt;
-	struct ec_response_get_next_event_v3 *r = args->response;
+	struct ec_response_get_next_event *r = args->response;
 	const struct mkbp_event_source *src;
 
 	int data_size = -EC_ERROR_BUSY;
@@ -480,25 +480,21 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 	} while (data_size == -EC_ERROR_BUSY);
 
 	/*
-	 * Drop last columns if we send a key matrix with numpad to a v0 or v1
-	 * request.
+	 * Truncate the trailing columns based on the past struct sizes of older
+	 * versions (v0, v1, v2).
 	 */
 	if (r->event_type == EC_MKBP_EVENT_KEY_MATRIX) {
 		size_t max_size;
 		switch (args->version) {
 		case 0:
-			max_size = member_size(union ec_response_get_next_data,
-					       key_matrix);
-
+			max_size = EC_MKBP_GET_NEXT_EVENT_SIZE_V0;
 			break;
 		case 1:
 		case 2:
-			max_size = member_size(
-				union ec_response_get_next_data_v1, key_matrix);
+			max_size = EC_MKBP_GET_NEXT_EVENT_SIZE_V1;
 			break;
 		default:
-			max_size = member_size(
-				union ec_response_get_next_data_v3, key_matrix);
+			max_size = EC_MKBP_GET_NEXT_EVENT_SIZE_V3;
 		}
 		data_size = MIN(data_size, max_size);
 	}
