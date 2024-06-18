@@ -34,6 +34,29 @@
       "parentUuid": "dd019865_6f76e446",
       "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2679629e_b837e5ff",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-18T18:38:59Z",
+      "side": 1,
+      "message": "@vapier@chromium.org I added this script to find the chromium source directory. It works locally on my machine. However, when I am running the CQ, it is complaining that it is not finding `checkpatch.pl`. I based the root of that file on the dynamic search `${ZEPHYR_BASE}/scripts/`. Please advise",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
