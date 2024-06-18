@@ -214,6 +214,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb458eab_9eeaa083",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T18:20:17Z",
+      "side": 1,
+      "message": "\u003e The armv7m-cros-eabi toolchain is broken because it uses hardware FPU even when -mfpu\u003dnone is used (invalid code is generated).\n\n\u003e One more point is that it looks like ZephyrSKD has prepared libs for every possible fp related command line switches:\n\nYes, I think that\u0027s the correct way to do it. When configuring our LLVM toolchain I only copied the configuration that was being used in EC, since there wasn\u0027t an obvious way to generate the different combinations. It would be nice for our toolchain to do this correctly. I\u0027ll add a note to http://b/231650443.",
+      "parentUuid": "f474f6da_3ef6b87d",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
