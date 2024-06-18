@@ -94,6 +94,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8173c2_a1748ab1",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-18T08:33:11Z",
+      "side": 1,
+      "message": "\u003e The LLVM toolchain that we\u0027re using for fingerprint inside the chroot is configured for hardware floating point. It sounds like the toolchain from Zephyr is not.\n\nThat\u0027s true and this is a root cause of this problem. Our toolchain is `armv7m-cros-eabi`. ARMv7-M MCU cores may have FPU unit, but it\u0027s not required.\n\nThe `compiler-rt` provides some useful functions for single-precision floats and double-precision floats that can be used by the compiler when there is no hardware FPU. Our `compiler-rt` (for ARMv7-M) is compiled with assumption that it will run on Cortex-M4, so we have hardware support for single-precision floats, but not for double-precision. Providing this information allows the compiler to optimize the code by using FPU instructions - sounds great, but there is a catch, the FPU unit must be initialized.\n\n\u003e when building with a toolchain that is built with hardware floating point.\n\nThe problem is that the `compiler-rt` always uses hardware FPU, even when `-mfpu\u003dnone` is set. Does it mean the toolchain is broken?\n\n\u003e Looking at the description of CONFIG_FPU, it says it is implied by CONFIG_HAS_FPU.\n\nNo. `CONFIG_FPU` **depends on** `CONFIG_CPU_HAS_FPU` which is **selected** by `CONFIG_SOC_SERIES_STM32F4X`\n\n\u003e Maybe we just need to set that for google_dragonclaw.\n\nNo. Board `google_dragonclaw` only provides very basic config as a base for applications. Using FPU is an application decision.\n\n\u003e I think we need to enable CONFIG_FPU_SHARING\n\nNo. `CONFIG_FPU_SHARING` is implied by `CONFIG_ARMV7_M_ARMV8_M_FP` -\u003e it\u0027s enabled for ARMv7-M.\n\nConclusion. The `armv7m-cros-eabi` toolchain is broken because it uses hardware FPU even when `-mfpu\u003dnone` is used (invalid code is generated). We need to workaround this. Since this is our internal toolchain we need to do that in our code.",
+      "parentUuid": "dbfd5eee_3b3afd0a",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
