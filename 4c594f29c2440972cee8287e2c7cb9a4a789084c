@@ -176,6 +176,24 @@
       "parentUuid": "541da86b_419ec5f5",
       "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71043d3_534c101a",
+        "filename": "zephyr/test/drivers/default/src/ppc_sn5s330.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-18T22:15:13Z",
+      "side": 1,
+      "message": "I mentioned the time, because I think the only difference in behavior between ToT and this CL would be timing. I would expect the total-call-count behavior to be the same with or without this CL.\n\nThat being said, the timing behavior isn\u0027t really part of the interface of the driver, and with patchset 13, this test does verify the behavior that it describes. It doesn\u0027t verify the watchdog mitigation, but maybe that\u0027s OK.",
+      "parentUuid": "f63800af_d9d4f332",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
