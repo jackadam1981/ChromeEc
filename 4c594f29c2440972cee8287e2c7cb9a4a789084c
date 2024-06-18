@@ -158,6 +158,24 @@
       "parentUuid": "7742d5b6_3ccad834",
       "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f63800af_d9d4f332",
+        "filename": "zephyr/test/drivers/default/src/ppc_sn5s330.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-06-18T22:01:16Z",
+      "side": 1,
+      "message": "This is not based on time, the amount of times that `ppc_get_alert_status` is getting called should be the amount of non-zero elements in `vals` array + 1 (when it returns 0). Added a check for this.",
+      "parentUuid": "541da86b_419ec5f5",
+      "revId": "4c594f29c2440972cee8287e2c7cb9a4a789084c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
