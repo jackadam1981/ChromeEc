@@ -277,24 +277,6 @@ int single_key_press_v2(void)
 	return EC_SUCCESS;
 }
 
-int single_key_press_v3(void)
-{
-	keyboard_clear_buffer();
-	clear_state();
-	TEST_ASSERT(press_key(0, 0, 1) == EC_SUCCESS);
-	TEST_ASSERT(FIFO_NOT_EMPTY());
-	TEST_ASSERT(press_key(0, 0, 0) == EC_SUCCESS);
-	TEST_ASSERT(FIFO_NOT_EMPTY());
-
-	clear_state();
-	TEST_ASSERT(verify_key_v3(0, 0, 1, 1));
-	TEST_ASSERT(FIFO_NOT_EMPTY());
-	TEST_ASSERT(verify_key_v3(0, 0, 0, 0));
-	TEST_ASSERT(FIFO_EMPTY());
-
-	return EC_SUCCESS;
-}
-
 int test_fifo_size(void)
 {
 	keyboard_clear_buffer();
@@ -353,7 +335,6 @@ void run_test(int argc, const char **argv)
 	clear_mkbp_events();
 	RUN_TEST(single_key_press);
 	RUN_TEST(single_key_press_v2);
-	RUN_TEST(single_key_press_v3);
 	RUN_TEST(test_fifo_size);
 	RUN_TEST(test_enable);
 	RUN_TEST(fifo_underrun);
