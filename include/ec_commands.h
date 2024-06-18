@@ -8662,6 +8662,13 @@ struct ec_response_get_boot_time {
 	uint16_t cnt;
 } __ec_align4;
 
+/* Transmit the region code obtained from VPD to EC. */
+#define EC_CMD_TRANSMIT_REGION_CODE 0x2E00
+
+struct ec_params_transmit_region_code {
+	char region_code[16];
+};
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
