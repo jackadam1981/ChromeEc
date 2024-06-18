@@ -164,7 +164,7 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 	}
 
 	/* Poll for successful completion */
-	timeout = sys_timepoint_calc(K_MSEC(200));
+	timeout = sys_timepoint_calc(K_MSEC(1200));
 
 	while (1) {
 		k_sleep(K_USEC(200));
@@ -186,7 +186,6 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 		}
 
 		if (sys_timepoint_expired(timeout)) {
-			/* 200 ms allowed max */
 			LOG_ERR("Command '%s' timed out", task_str);
 			return -ETIMEDOUT;
 		}
@@ -360,6 +359,65 @@ static int tfuq_run(const struct i2c_dt_spec *i2c, uint8_t *output)
 	return run_task_sync(i2c, COMMAND_TASK_TFUQ, &cmd_data, output);
 };
 
+static int tfus_run(const struct i2c_dt_spec *i2c)
+{
+	int ret;
+
+	union reg_command cmd = {
+		.command = COMMAND_TASK_TFUS,
+	};
+
+	/* Make three attempts to run the TFUs command to start FW update. */
+	for (int attempts = 0; attempts < 3; attempts++) {
+		ret = tps_rw_command_for_i2c1(i2c, &cmd, I2C_MSG_WRITE);
+		if (ret == 0) {
+			break;
+		}
+
+		k_sleep(K_MSEC(100));
+		attempts++;
+	}
+
+	if (ret) {
+		LOG_ERR("Cannot write TFUs command (%d)", ret);
+		return ret;
+	}
+
+	/* Wait 500ms for entry to bootloader mode, per datasheet */
+	k_msleep(500);
+
+	/* Allow up to an additional 200ms */
+	k_timepoint_t timeout = sys_timepoint_calc(K_MSEC(200));
+
+	while (1) {
+		/* Check mode register for "F211" value */
+		union reg_mode mode;
+
+		ret = tps_rd_mode(i2c, &mode);
+
+		if (ret == 0) {
+			/* Got a mode result */
+			if (memcmp("F211", mode.data, sizeof(mode.data)) == 0) {
+				LOG_INF("TFUs complete, got F211");
+				return 0;
+			}
+
+			/* Wrong mode, continue re-trying */
+			LOG_ERR("TFUs failed! Mode is '%c%c%c%c'", mode.data[0],
+				mode.data[1], mode.data[2], mode.data[3]);
+		} else {
+			/* I2C error, continue re-trying */
+			LOG_ERR("Cannot read mode reg (%d)", ret);
+		}
+
+		if (sys_timepoint_expired(timeout)) {
+			return -ETIMEDOUT;
+		}
+
+		k_sleep(K_MSEC(50));
+	}
+}
+
 /**
  * @brief Temporary EC-based FW update routine
  *
@@ -391,35 +449,11 @@ int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
 	 * TFUs stage - enter bootloader code
 	 */
 
-	union reg_command cmd = {
-		.command = COMMAND_TASK_TFUS,
-	};
-
-	ret = tps_rw_command_for_i2c1(i2c, &cmd, I2C_MSG_WRITE);
+	ret = tfus_run(i2c);
 	if (ret) {
-		LOG_ERR("Cannot write TFUs command (%d)", ret);
+		LOG_ERR("Cannot enter bootloader mode (%d)", ret);
 		return ret;
 	}
-
-	/* Wait 500ms for entry to bootloader mode */
-	k_msleep(500);
-
-	/* Check mode register for "F211" value */
-	union reg_mode mode;
-
-	ret = tps_rd_mode(i2c, &mode);
-	if (ret) {
-		LOG_ERR("Cannot read mode reg (%d)", ret);
-		return ret;
-	}
-
-	if (memcmp("F211", mode.data, sizeof(mode.data)) != 0) {
-		LOG_ERR("TFUs failed! Mode is %02x %02x %02x %02x",
-			mode.data[0], mode.data[1], mode.data[2], mode.data[3]);
-		return -1;
-	}
-
-	LOG_INF("TFUs complete, got F211");
 
 	/********************
 	 * TFUi stage
