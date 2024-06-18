@@ -238,6 +238,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16b244e_c6a93dd9",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-18T20:49:17Z",
+      "side": 1,
+      "message": "Support for multilib was added in LLVM 18 https://clang.llvm.org/docs/Multilib.html#stability so it\u0027s realy recent feature.",
+      "parentUuid": "bb458eab_9eeaa083",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
