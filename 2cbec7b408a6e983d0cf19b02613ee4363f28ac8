@@ -104,6 +104,24 @@
       "parentUuid": "90192da6_828f9449",
       "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b431b013_ee76ff73",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-18T17:19:02Z",
+      "side": 1,
+      "message": "Whether it ultimately should come from the devicetree I think depends on whether we expect it to vary at all between boards. If it will always be the same, no need to clutter a bunch of devicetrees with boilerplate.",
+      "parentUuid": "e46afb00_e8cab706",
+      "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
