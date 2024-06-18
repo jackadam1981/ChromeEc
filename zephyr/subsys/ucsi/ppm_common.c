@@ -15,6 +15,7 @@
 #include <zephyr/kernel/thread_stack.h>
 #include <zephyr/logging/log.h>
 
+#include <builtin/assert.h>
 #include <usbc/ppm.h>
 
 LOG_MODULE_REGISTER(ppm_common, LOG_LEVEL_INF);
@@ -29,6 +30,15 @@ enum last_error_type {
 	 * PPM.
 	 */
 	ERROR_PPM,
+};
+
+/* Indicators of pending data states in the PPM. */
+struct ppm_pending_data {
+	/* Async events are received from the LPM. */
+	uint16_t async_event : 1;
+
+	/* Command is pending from OPM. */
+	uint16_t command : 1;
 };
 
 /* Internal data for ppm common implementation.  Exposed for test purposes. */
@@ -50,7 +60,6 @@ struct ucsi_ppm_device {
 	struct k_condvar ppm_condvar;
 
 	/* PPM state */
-	bool cleaning_up;
 	enum ppm_states ppm_state;
 	struct ppm_pending_data pending;
 
@@ -73,11 +82,17 @@ struct ucsi_ppm_device {
 	union notification_enable_t notif_mask;
 };
 
-const char *ppm_state_strings[PPM_STATE_MAX] = {
-	"PPM_STATE_NOT_READY",	    "PPM_STATE_IDLE",
-	"PPM_STATE_IDLE_NOTIFY",    "PPM_STATE_PROCESSING_COMMAND",
-	"PPM_STATE_WAITING_CC_ACK", "PPM_STATE_WAITING_ASYNC_EV_ACK",
+const char *ppm_state_strings[] = {
+	[PPM_STATE_NOT_READY] = "PPM_STATE_NOT_READY",
+	[PPM_STATE_IDLE] = "PPM_STATE_IDLE",
+	[PPM_STATE_IDLE_NOTIFY] = "PPM_STATE_IDLE_NOTIFY",
+	[PPM_STATE_PROCESSING_COMMAND] = "PPM_STATE_PROCESSING_COMMAND",
+	[PPM_STATE_WAITING_CC_ACK] = "PPM_STATE_WAITING_CC_ACK",
+	[PPM_STATE_WAITING_ASYNC_EV_ACK] = "PPM_STATE_WAITING_ASYNC_EV_ACK",
 };
+
+BUILD_ASSERT(ARRAY_SIZE(ppm_state_strings) == PPM_STATE_MAX,
+	     "PPM state strings incomplete");
 
 const char *ppm_state_to_string(int state)
 {
@@ -86,17 +101,6 @@ const char *ppm_state_to_string(int state)
 	}
 
 	return ppm_state_strings[state];
-}
-
-const char *ucsi_command_to_string(uint8_t command)
-{
-	if (command >= UCSI_CMD_MAX) {
-		return "UCSI_Outside_valid_range";
-	} else if (!get_ucsi_command_name(command)) {
-		return "UCSI_Deprecated";
-	} else {
-		return get_ucsi_command_name(command);
-	}
 }
 
 static void clear_cci(struct ucsi_ppm_device *dev)
@@ -132,6 +136,17 @@ static int ppm_common_opm_notify(struct ucsi_ppm_device *dev)
 	LOG_DBG("Notifying with CCI = 0x%08x", dev->ucsi_data.cci.raw_value);
 	dev->opm_notify(dev->opm_context);
 	return 0;
+}
+
+static bool is_pending_command(struct ucsi_ppm_device *dev)
+{
+	return dev->pending.command;
+}
+
+static bool match_pending_command(struct ucsi_ppm_device *dev, uint8_t command)
+{
+	return is_pending_command(dev) &&
+	       dev->ucsi_data.control.command == command;
 }
 
 static void clear_pending_command(struct ucsi_ppm_device *dev)
@@ -172,7 +187,7 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 	bool alert_port = false;
 
 	/* Handle any smbus alert. */
-	if (dev->pending.async_event) {
+	if (is_pending_async_event(dev)) {
 		LOG_DBG("PPM: Saw async event and processing.");
 
 		/* If we are in the not ready or IDLE (no notifications) state,
@@ -277,17 +292,6 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 	}
 }
 
-static bool is_pending_command(struct ucsi_ppm_device *dev)
-{
-	return dev->pending.command;
-}
-
-static bool match_pending_command(struct ucsi_ppm_device *dev, uint8_t command)
-{
-	return dev->pending.command &&
-	       dev->ucsi_data.control.command == command;
-}
-
 static void ppm_common_reset_data(struct ucsi_ppm_device *dev)
 {
 	clear_last_error(dev);
@@ -376,12 +380,12 @@ static int ppm_common_execute_pending_cmd(struct ucsi_ppm_device *dev)
 
 success:
 	LOG_DBG("Completed UCSI command 0x%x (%s). Read %d bytes.",
-		ucsi_command, ucsi_command_to_string(ucsi_command), ret);
+		ucsi_command, get_ucsi_command_name(ucsi_command), ret);
 	clear_cci(dev);
 
 	if (ret > 0) {
 		LOG_DBG("Command 0x%x (%s) response", ucsi_command,
-			ucsi_command_to_string(ucsi_command));
+			get_ucsi_command_name(ucsi_command));
 		LOG_HEXDUMP_DBG(message_in, ret, "");
 	}
 
@@ -465,14 +469,14 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 	uint8_t next_command = 0;
 	int ret;
 
-	if (dev->pending.command) {
+	if (is_pending_command(dev)) {
 		/* Check what command is currently pending. */
 		next_command = dev->ucsi_data.control.command;
 
 		LOG_DBG("PEND_CMD: Started command processing in "
 			"state %d (%s), cmd 0x%x (%s)",
 			dev->ppm_state, ppm_state_to_string(dev->ppm_state),
-			next_command, ucsi_command_to_string(next_command));
+			next_command, get_ucsi_command_name(next_command));
 		switch (dev->ppm_state) {
 		case PPM_STATE_IDLE:
 		case PPM_STATE_IDLE_NOTIFY:
@@ -702,12 +706,9 @@ static void ppm_common_task(void *context)
 
 	do {
 		ppm_common_taskloop(dev);
-	} while (!dev->cleaning_up);
+	} while (true);
 
-	k_mutex_unlock(&dev->ppm_lock);
-	LOG_DBG("Exiting ppm common task");
-
-	k_thread_abort(k_current_get());
+	__ASSERT_UNREACHABLE;
 }
 
 K_THREAD_STACK_DEFINE(ppm_stack, CONFIG_UCSI_PPM_STACK_SIZE);
@@ -717,7 +718,7 @@ static void ppm_common_thread_init(struct ucsi_ppm_device *dev)
 	dev->ppm_task_id = k_thread_create(
 		&dev->ppm_task_data, ppm_stack, CONFIG_UCSI_PPM_STACK_SIZE,
 		(void *)ppm_common_task, (void *)dev, 0, 0,
-		CONFIG_UCSI_PPM_THREAD_PRIORITY, 0, K_NO_WAIT);
+		CONFIG_UCSI_PPM_THREAD_PRIORITY, K_ESSENTIAL, K_NO_WAIT);
 }
 
 int ucsi_ppm_init_and_wait(struct ucsi_ppm_device *dev)
@@ -736,7 +737,6 @@ int ucsi_ppm_init_and_wait(struct ucsi_ppm_device *dev)
 	ucsi_data->version.lpm_address = 0x0;
 
 	/* Reset state. */
-	dev->cleaning_up = false;
 	dev->ppm_state = PPM_STATE_NOT_READY;
 	memset(&dev->pending, 0, sizeof(dev->pending));
 
@@ -822,7 +822,7 @@ static int ppm_common_handle_control_message(struct ucsi_ppm_device *dev,
 	 */
 	{
 		k_mutex_lock(&dev->ppm_lock, K_FOREVER);
-		busy = dev->pending.command || dev->ucsi_data.cci.busy;
+		busy = is_pending_command(dev) || dev->ucsi_data.cci.busy;
 		prev_cmd = dev->ucsi_data.control.command;
 		k_mutex_unlock(&dev->ppm_lock);
 	}
@@ -843,7 +843,7 @@ static int ppm_common_handle_control_message(struct ucsi_ppm_device *dev,
 	memcpy(&dev->ucsi_data.control, cmd, length);
 
 	LOG_DBG("Got valid control message: 0x%x (%s)", cmd[0],
-		ucsi_command_to_string(cmd[0]));
+		get_ucsi_command_name(cmd[0]));
 
 	/* Schedule command send. */
 	{
@@ -950,19 +950,6 @@ void ucsi_ppm_lpm_alert(struct ucsi_ppm_device *dev, uint8_t lpm_id)
 	}
 
 	k_mutex_unlock(&dev->ppm_lock);
-}
-
-void ucsi_ppm_cleanup(struct ucsi_ppm_device *dev)
-{
-	LOG_DBG("Cleaning up.");
-	/* Signal clean up to waiting thread. */
-	k_mutex_lock(&dev->ppm_lock, K_FOREVER);
-	dev->cleaning_up = true;
-	k_condvar_signal(&dev->ppm_condvar);
-	k_mutex_unlock(&dev->ppm_lock);
-
-	/* Wait for task to complete. */
-	k_thread_join(&dev->ppm_task_data, K_FOREVER);
 }
 
 struct ucsi_ppm_device *ppm_data_init(const struct ucsi_pd_driver *pd_driver,
