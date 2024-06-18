@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c8c7f49_ed599691",
+        "filename": "zephyr/cmake/toolchain/llvm/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-18T12:36:20Z",
+      "side": 1,
+      "message": "Maybe `with support for floating-point instructions` or `with enabled FPU`?",
+      "range": {
+        "startLine": 13,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f0516c_f48a4a0b",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-18T12:36:20Z",
+      "side": 1,
+      "message": "Please add that calling builtin functions that use floating-point instructions e.g.  __aeabi_ul2d, would cause Usage Fault.",
+      "range": {
+        "startLine": 22,
+        "startChar": 75,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfe08fa_6bc0d0d7",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-18T12:36:20Z",
+      "side": 1,
+      "message": "The same.",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
