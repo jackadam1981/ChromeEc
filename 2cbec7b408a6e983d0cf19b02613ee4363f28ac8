@@ -68,6 +68,24 @@
       "message": "Ultimately, I\u0027d like the bit selection to be in the config structure. Right now, that isn\u0027t being used that I can see, and this code is setting the interrupts differently.\n\nI\u0027m OK with this as an incremental improvement for now, but can you add a TODO on b/345783692 to clean this up?",
       "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90192da6_828f9449",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-06-18T06:35:13Z",
+      "side": 1,
+      "message": "Do you mean we would like eventually configure all the member in dev-\u003edata and used them for initialization ?",
+      "parentUuid": "1774f8dc_f62266b1",
+      "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
