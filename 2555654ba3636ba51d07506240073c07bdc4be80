@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3341e55c_b8007d27",
+        "filename": "zephyr/subsys/ucsi/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:08:08Z",
+      "side": 1,
+      "message": "Fix indentation",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "2555654ba3636ba51d07506240073c07bdc4be80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34808f6e_bc3df944",
+        "filename": "zephyr/subsys/ucsi/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:08:08Z",
+      "side": 1,
+      "message": "Nit - help text is indented by 2 instead of a full tab (I\u0027m not sure why).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "2555654ba3636ba51d07506240073c07bdc4be80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b1a18e_cf623acb",
+        "filename": "zephyr/subsys/ucsi/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:08:08Z",
+      "side": 1,
+      "message": "Indentation.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "2555654ba3636ba51d07506240073c07bdc4be80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
