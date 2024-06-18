@@ -6,7 +6,7 @@
 
 set -e
 
-: "${ZEPHYR_BASE:=$(realpath ../../../src/third_party/zephyr/main)}"
+: "${ZEPHYR_BASE:=$(realpath "${HOME}/chromiumos/src/third_party/zephyr/main")}"
 TMP="$(mktemp -d)"
 ec_commands_file_out="${TMP}/cros_ec_commands.h"
 
