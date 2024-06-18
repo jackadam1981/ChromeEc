@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c89cc1_ac009c8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-18T16:00:21Z",
+      "side": 1,
+      "message": "ISL9238C is a battery charger, not a battery.",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd479a6_ea372b5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-18T16:00:21Z",
+      "side": 1,
+      "message": "What does \"Open PLATFORM_EC_CHARGER_ISL9238C.\" mean? I think it can be removed.",
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a1fe28_6d3fcf33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-18T16:00:21Z",
+      "side": 1,
+      "message": "What other validation has been done to verify the charger behaves correctly when both:\n\n1. Charging normally\n2. Trickle charging",
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761e5491_44ce3fa6",
+        "filename": "zephyr/program/skyrim/crystaldrift/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-18T16:00:21Z",
+      "side": 1,
+      "message": "ref1",
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952a0c87_cf0f2835",
+        "filename": "zephyr/program/skyrim/crystaldrift/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-18T16:00:21Z",
+      "side": 1,
+      "message": "Remove (see ref1).",
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
