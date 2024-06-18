@@ -6251,6 +6251,14 @@ struct ec_params_charger_control {
 	uint8_t allow_charging;
 } __ec_align_size1;
 
+
+/* Transmit the region code obtained from VPD to EC. */
+#define EC_CMD_TRANSMIT_REGION_CODE 0x2E00
+
+struct ec_params_transmit_region_code {
+	char region_code[16];
+};
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
