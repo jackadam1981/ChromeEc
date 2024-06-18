@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a73d27b_14e8df34",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T19:48:36Z",
+      "side": 1,
+      "message": "Delete - this code is never reachable.",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 0
+      },
+      "revId": "eb9a4a6496e70fbe16506de3c3350a10122e7ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
