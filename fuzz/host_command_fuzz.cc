@@ -18,6 +18,7 @@
 
 #include <pthread.h>
 #include <sys/time.h>
+#include <vector>
 
 /* Only test requests with valid size and checksum (makes fuzzing faster) */
 #define VALID_REQUEST_ONLY
@@ -110,7 +111,7 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 
 	pkt.request_size = req_size;
 	req->data_len = req_size - sizeof(*req);
-	req->checksum = calculate_checksum(req_buf, req_size);
+	req->checksum = calculate_checksum((char *)req_buf, req_size);
 
 	/*
 	 * Print the full request on the first fuzzing attempt: useful to
@@ -118,11 +119,15 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	 * issues.
 	 */
 	if (first) {
-		char str_buf[hex_str_buf_size(req_size)];
+		std::vector<char> str_buf(hex_str_buf_size(req_size));
 
-		snprintf_hex_buffer(str_buf, sizeof(str_buf),
-				    HEX_BUF(req_buf, req_size));
-		ccprintf("Request: cmd=%04x data=%s\n", req->command, str_buf);
+		struct hex_buffer_params hex_params = {
+			.buffer = req_buf, .size = (uint16_t)req_size
+		};
+		snprintf_hex_buffer(str_buf.data(), str_buf.size(),
+				    &hex_params);
+		ccprintf("Request: cmd=%04x data=%s\n", req->command,
+			 str_buf.data());
 		first = 0;
 	}
 
