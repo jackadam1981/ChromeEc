@@ -430,7 +430,7 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 {
 	static int last;
 	int i, evt;
-	struct ec_response_get_next_event_v3 *r = args->response;
+	struct ec_response_get_next_event *r = args->response;
 	const struct mkbp_event_source *src;
 
 	int data_size = -EC_ERROR_BUSY;
@@ -487,18 +487,14 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		size_t max_size;
 		switch (args->version) {
 		case 0:
-			max_size = member_size(union ec_response_get_next_data,
-					       key_matrix);
-
+			max_size = 13;
 			break;
 		case 1:
 		case 2:
-			max_size = member_size(
-				union ec_response_get_next_data_v1, key_matrix);
+			max_size = 16;
 			break;
 		default:
-			max_size = member_size(
-				union ec_response_get_next_data_v3, key_matrix);
+			max_size = 18;
 		}
 		data_size = MIN(data_size, max_size);
 	}
@@ -514,8 +510,7 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_NEXT_EVENT, mkbp_get_next_event,
-		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2) |
-			     EC_VER_MASK(3));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 #ifdef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK
 #ifndef CONFIG_HOSTCMD_X86
