@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63a547c7_048c74a9",
+        "filename": "zephyr/program/ovis/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-06-18T20:59:35Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that the reset signal is an open drain signal and I think GPIO_ODR_LOW is correct",
+      "parentUuid": "97d1e507_806b6c97",
+      "range": {
+        "startLine": 290,
+        "startChar": 21,
+        "endLine": 290,
+        "endChar": 33
+      },
+      "revId": "083b5de7e702f87cc751886cfccfa324edd886cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b36c652a_7c8cfa61",
         "filename": "zephyr/program/ovis/generated.dtsi",
         "patchSetId": 1
