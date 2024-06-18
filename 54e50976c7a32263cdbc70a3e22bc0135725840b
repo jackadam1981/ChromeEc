@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7717afd_a3a0e2b9",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:28:08Z",
+      "side": 1,
+      "message": "Should this be in ec_commands.h, or does the kernel also define its own ucsi header?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 0,
+        "endLine": 1328,
+        "endChar": 58
+      },
+      "revId": "54e50976c7a32263cdbc70a3e22bc0135725840b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d2e2b9_6ef7288c",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:28:08Z",
+      "side": 1,
+      "message": "Nit: `2024/8`",
+      "range": {
+        "startLine": 1336,
+        "startChar": 24,
+        "endLine": 1336,
+        "endChar": 27
+      },
+      "revId": "54e50976c7a32263cdbc70a3e22bc0135725840b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9a7fb0_dcf7b4c8",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:28:08Z",
+      "side": 1,
+      "message": "Document invalid.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "54e50976c7a32263cdbc70a3e22bc0135725840b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa8e74f_ecbdf181",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:28:08Z",
+      "side": 1,
+      "message": "Document deprecated",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "54e50976c7a32263cdbc70a3e22bc0135725840b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041b9de4_411ef513",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T18:28:08Z",
+      "side": 1,
+      "message": "Document deprecated",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "54e50976c7a32263cdbc70a3e22bc0135725840b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
