@@ -86,6 +86,24 @@
       "parentUuid": "1774f8dc_f62266b1",
       "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46afb00_e8cab706",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-18T15:47:43Z",
+      "side": 1,
+      "message": "`dev-\u003econfig`. It\u0027s used for non-dynamic configuration data and filled out once during driver instantiation. Should we make it a goal to pull this interrupt info from the devicetree? That\u0027s where most info in `pdc_config_t` comes from.",
+      "parentUuid": "90192da6_828f9449",
+      "revId": "2cbec7b408a6e983d0cf19b02613ee4363f28ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
