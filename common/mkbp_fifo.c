@@ -31,7 +31,7 @@ static uint32_t fifo_start; /* first entry */
 static uint32_t fifo_end; /* last entry */
 static atomic_t fifo_entries; /* number of existing entries */
 static uint8_t fifo_max_depth = FIFO_DEPTH;
-static struct ec_response_get_next_event_v3 fifo[FIFO_DEPTH];
+static struct ec_response_get_next_event fifo[FIFO_DEPTH];
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 /* Check the FIFO size from the keyboard perspective. */
