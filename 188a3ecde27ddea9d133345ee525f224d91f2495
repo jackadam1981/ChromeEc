@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed02cd0_1735f392",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-18T19:02:03Z",
+      "side": 1,
+      "message": "it passed the `fullcheckout-presubmit succeeded` CQ now per the suggestion from Mike.",
+      "parentUuid": "39d40a5d_0edd5c1a",
+      "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb8d5654_37f2c351",
@@ -131,6 +149,54 @@
       "side": 1,
       "message": "you\u0027re adding leading whitespace to the variable.  shell code isn\u0027t make code where leading/trailing whitespace is (mostly) normalized, or at least, routinely expanded \u0026 thrown away.  you can check this by running:\n\n`printf \u0027%q\\n\u0027 \"${ZEPHYR_BASE}\"`\n\nyou already used `realpath` above to initialize chromiumos_src_dir.  the only way realpath would again be useful here is if there\u0027s a symlink with `src/third_party/zephyr/main` ... which there shouldn\u0027t be.  although, if there were, i don\u0027t see why that\u0027s a problem when you\u0027re only using it to find checkpatch.pl and it can DTRT in this scenario.",
       "parentUuid": "2679629e_b837e5ff",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad4be7a_3f36fbd7",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-18T19:02:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6d9ad0e_c504763c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cd6ea9_e79e4c25",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-18T19:02:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "48687ac3_f43d9927",
       "range": {
         "startLine": 8,
         "startChar": 0,
