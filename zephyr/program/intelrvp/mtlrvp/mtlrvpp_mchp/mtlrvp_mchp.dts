@@ -15,6 +15,41 @@
 		>;
 	};
 
+	/* vci-polarity use enum strings "Active_Low" or "Active_High"
+	 * vci-latch-enable is a boolean.
+	 *   If vci-latch-enable property is present the VCI_IN at vci-pos latch
+	 *     is enabled
+	 *   If vci-latch-enable property is not present the latching of the pin
+	 *     is disabled.
+	 * status = "disabled" means the entry will be skipped (not configured)
+	 * status = "okay" means pin used by VCI logic and will be configured
+	 *   based on DT properties.
+	 * If status property is not present DT compiler treats as "okay".
+	 */
+	hibernate_vci_pins {
+		compatible = "cros-ec,hibernate-vci-pins";
+
+		vci_input1: vci_input_1 {
+			gpios = <MCHP_GPIO_DECODE_162 0>;
+			vci-polarity = "Active_Low";
+			vci-latch-enable;
+			status = "okay";
+		};
+
+		vci_input2: vci_input_2 {
+			gpios = <MCHP_GPIO_DECODE_161 0>;
+			vci-polarity = "Active_High";
+			vci-latch-enable;
+			status = "okay";
+		};
+
+		vci_input3: vci_input_3 {
+			gpios = <MCHP_GPIO_DECODE_000 0>;
+			vci-polarity = "Active_Low";
+			status = "disabled";
+		};
+	};
+
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
