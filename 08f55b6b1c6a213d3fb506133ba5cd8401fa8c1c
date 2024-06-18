@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b10784_f5a74e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "Some minor items left.",
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7966b4d3_0f2c544b",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "Switch to a guard clause and you cam reduce the indentation level.",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5791cb_f28bba96",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif (dev-\u003elast_connector_alerted !\u003d 0) {\n```",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 36
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d61dd4_ae85abbe",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "Is it equivalent to do this?\n```\nif (dev-\u003elast_connector_alerted \u003d\u003d dev-\u003elast_connector_changed)\n```",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 49
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f30cdd3_1004a483",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif (dev-\u003elast_connector_changed !\u003d 0) {\n```",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 37
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bd5017_cc118e6a",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "I mentioned this on the bug, but can you prioritize switching to the SMF for the implementation with the follow up work?\n\nRight now state handling is split across both taskloop and handle_pending_command, which makes this card hard to trace.",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 27
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbac5c48_a1133ce8",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "The command has already been executed or at least sent to the LPM, correct?  Can you clarify this commment?",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 0
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7837082d_3d4520c8",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:39:24Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (dev-\u003elast_connector_changed !\u003d 0) {\n```",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 35
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
