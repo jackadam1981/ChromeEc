@@ -10,6 +10,7 @@
 #include "console.h"
 #include "host_command.h"
 #include "host_test.h"
+#include "libec/ec_command.h"
 #include "printf.h"
 #include "task.h"
 #include "test_util.h"
