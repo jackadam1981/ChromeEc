@@ -4033,7 +4033,22 @@ struct ec_result_keyscan_seq_ctrl {
  * V0: ec_response_get_next_data
  * V1: ec_response_get_next_data_v1. Increased key_matrix size from 13 -> 16.
  * V2: Added EC_MKBP_HAS_MORE_EVENTS.
- * V3: ec_response_get_next_data_v3. Increased key_matrix size from 16 -> 18.
+ * V3: Consolidate all ec_response_get_next_data_* into one.
+ *
+ * Theoretically, EC_CMD_GET_NEXT_EVENT doesn't need to change the version for
+ * the most cases. Below, let Old->New mean an old kernel sends get_next_event
+ * command to new FW and vice versa.
+ *
+ * When a field is extended (e.g. key_matrix[16]->[18]):
+ * Old->New:
+ *    An old kernel sends a smaller container (e.g. ec_response_get_next_data)
+ *    which may or may not fit the last few bytes. The FW copies as many bytes
+ *    as possible to the container. The kernel processes as many leading bytes
+ *    as it can understand.
+ * New->Old:
+ *    A new kernel send a bigger container. Existing FW copies as many bytes
+ *    as it needs, leaving the last few bytes empty. The kernel knows it
+ *    didn't receive full size data from the returned data length.
  */
 #define EC_CMD_GET_NEXT_EVENT 0x0067
 
@@ -4119,59 +4134,6 @@ BUILD_ASSERT(EC_MKBP_EVENT_COUNT <= EC_MKBP_EVENT_TYPE_MASK);
 /* clang-format on */
 
 union __ec_align_offset1 ec_response_get_next_data {
-	uint8_t key_matrix[13];
-
-	/* Unaligned */
-	uint32_t host_event;
-	uint64_t host_event64;
-
-	struct __ec_todo_unpacked {
-		/* For aligning the fifo_info */
-		uint8_t reserved[3];
-		struct ec_response_motion_sense_fifo_info info;
-	} sensor_fifo;
-
-	uint32_t buttons;
-
-	uint32_t switches;
-
-	uint32_t fp_events;
-
-	uint32_t sysrq;
-
-	/* CEC events from enum mkbp_cec_event */
-	uint32_t cec_events;
-};
-
-union __ec_align_offset1 ec_response_get_next_data_v1 {
-	uint8_t key_matrix[16];
-
-	/* Unaligned */
-	uint32_t host_event;
-	uint64_t host_event64;
-
-	struct __ec_todo_unpacked {
-		/* For aligning the fifo_info */
-		uint8_t reserved[3];
-		struct ec_response_motion_sense_fifo_info info;
-	} sensor_fifo;
-
-	uint32_t buttons;
-
-	uint32_t switches;
-
-	uint32_t fp_events;
-
-	uint32_t sysrq;
-
-	/* CEC events from enum mkbp_cec_event */
-	uint32_t cec_events;
-
-	uint8_t cec_message[16];
-};
-BUILD_ASSERT(sizeof(union ec_response_get_next_data_v1) == 16);
-
-union __ec_align_offset1 ec_response_get_next_data_v3 {
 	uint8_t key_matrix[18];
 
 	/* Unaligned */
@@ -4197,7 +4159,6 @@ union __ec_align_offset1 ec_response_get_next_data_v3 {
 
 	uint8_t cec_message[16];
 };
-BUILD_ASSERT(sizeof(union ec_response_get_next_data_v3) == 18);
 
 struct ec_response_get_next_event {
 	uint8_t event_type;
@@ -4205,17 +4166,9 @@ struct ec_response_get_next_event {
 	union ec_response_get_next_data data;
 } __ec_align1;
 
-struct ec_response_get_next_event_v1 {
-	uint8_t event_type;
-	/* Followed by event data if any */
-	union ec_response_get_next_data_v1 data;
-} __ec_align1;
-
-struct ec_response_get_next_event_v3 {
-	uint8_t event_type;
-	/* Followed by event data if any */
-	union ec_response_get_next_data_v3 data;
-} __ec_align1;
+#define EC_MKBP_GET_NEXT_EVENT_SIZE_V0 13
+#define EC_MKBP_GET_NEXT_EVENT_SIZE_V1 16
+#define EC_MKBP_GET_NEXT_EVENT_SIZE_V3 sizeof(union ec_response_get_next_data)
 
 /* Bit indices for buttons and switches.*/
 /* Buttons */

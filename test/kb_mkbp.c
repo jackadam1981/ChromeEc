@@ -79,7 +79,7 @@ int verify_key(int c, int r, int pressed)
 	args.params = NULL;
 	args.params_size = 0;
 	args.response = &event;
-	args.response_max = sizeof(event);
+	args.response_max = EC_MKBP_GET_NEXT_EVENT_SIZE_V0 + 1;
 	args.response_size = 0;
 
 	if (c >= 0 && r >= 0) {
@@ -104,7 +104,7 @@ int verify_key(int c, int r, int pressed)
 int verify_key_v2(int c, int r, int pressed, int expect_more)
 {
 	struct host_cmd_handler_args args;
-	struct ec_response_get_next_event_v1 event;
+	struct ec_response_get_next_event event;
 	int i;
 
 	args.version = 2;
@@ -112,7 +112,7 @@ int verify_key_v2(int c, int r, int pressed, int expect_more)
 	args.params = NULL;
 	args.params_size = 0;
 	args.response = &event;
-	args.response_max = sizeof(event);
+	args.response_max = EC_MKBP_GET_NEXT_EVENT_SIZE_V1 + 1;
 	args.response_size = 0;
 
 	if (c >= 0 && r >= 0) {
@@ -144,7 +144,7 @@ int verify_key_v2(int c, int r, int pressed, int expect_more)
 static int verify_key_v3(int c, int r, int pressed, int expect_more)
 {
 	struct host_cmd_handler_args args;
-	struct ec_response_get_next_event_v3 event;
+	struct ec_response_get_next_event event;
 	int i;
 
 	args.version = 3;
