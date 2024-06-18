@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87e65c8_2efab2b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-18T23:48:04Z",
+      "side": 1,
+      "message": "please add a bug for tracking",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4627b523_f11896fc",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-06-18T18:28:02Z",
       "side": 1,
       "message": "Hi Google engineer(s),\nplease review this CL and give feedback.\none reference CL (how to enable VCI from program): https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5638904",
+      "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1b3dcb_f953b313",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-18T23:48:04Z",
+      "side": 1,
+      "message": "not sure what you mean here: \"which rely on\"?",
+      "range": {
+        "startLine": 52,
+        "startChar": 70,
+        "endLine": 53,
+        "endChar": 10
+      },
       "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
