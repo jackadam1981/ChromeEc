@@ -6,7 +6,20 @@
 
 set -e
 
-: "${ZEPHYR_BASE:=$(realpath ../../../src/third_party/zephyr/main)}"
+# Get the script's absolute directory path
+home_dir=$(dirname "$(realpath "$0")")
+
+# Loop until we reach the root directory
+while [[ ${home_dir} != "/" ]]; do
+  # Check if .repo directory exists
+  if [[ -d ${home_dir}/.repo ]]; then
+    echo "${home_dir}"
+    break
+  fi
+  home_dir=$(dirname "${home_dir}")  # Go up one level in the directory tree
+done
+
+: "${ZEPHYR_BASE:=$(realpath "${home_dir}/src/third_party/zephyr/main")}"
 TMP="$(mktemp -d)"
 ec_commands_file_out="${TMP}/cros_ec_commands.h"
 
