@@ -16,6 +16,24 @@
       "message": "Hmm, looks like it\u0027s failing:\n\n```\nutil/linux_ec_commands_h_check.sh: line 43:    /b/s/w/ir/x/w/rc/chromiumos_workspace/src/third_party/zephyr/main/scripts/checkpatch.pl: No such file or directory\n```",
       "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d40a5d_0edd5c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-18T18:27:55Z",
+      "side": 1,
+      "message": "I am looking into this now.",
+      "parentUuid": "dd019865_6f76e446",
+      "revId": "188a3ecde27ddea9d133345ee525f224d91f2495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
