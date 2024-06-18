@@ -17,6 +17,7 @@
 /* Per chip implementation to save/read raw EC_RESET_FLAG_ flags. */
 void chip_save_reset_flags(uint32_t flags);
 uint32_t chip_read_reset_flags(void);
+extern struct ec_params_transmit_region_code current_region_code;
 
 /* System images */
 enum system_image_copy_t {

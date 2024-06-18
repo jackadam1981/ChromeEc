@@ -1584,3 +1584,17 @@ void clock_enable_module(enum module_id module, int enable)
 	 * function.
 	 */
 }
+
+struct ec_params_transmit_region_code current_region_code = {
+	.region_code = { 0 },
+};
+
+static enum ec_status board_get_region_code(struct host_cmd_handler_args *args)
+{
+	memcpy(current_region_code.region_code, args->params,
+	       sizeof(current_region_code.region_code));
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_TRANSMIT_REGION_CODE, board_get_region_code,
+		     EC_VER_MASK(0));
