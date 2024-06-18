@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43f575b7_fdef0892",
+        "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-18T02:09:30Z",
+      "side": 1,
+      "message": "It must be erased before writing data to Flash. Consider putting a 64 (0x40) byte long firmware header at the beginning and a minimum erase size of 4 KB. Therefore, the first 4KB is reserved for the 64 (0x40) byte-long firmware header.",
+      "parentUuid": "e2ec1ea6_9abc4153",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 72
+      },
+      "revId": "95bb809e143a4ad5f0fd9454c6e10ea6276d7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ef8add8_99ee7fa6",
         "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
         "patchSetId": 2
