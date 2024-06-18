@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36022841_bc8c2899",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T18:02:13Z",
+      "side": 1,
+      "message": "Looks like this an updated version of https://crrev.com/c/5634944. In the future, you can keep the `Change-Id` the same to preserve the comments and history on that CL. \"CR -1\" won\u0027t block the submission (only \"CR -2\") as long as someone else does \"CR +2\".",
+      "revId": "d991bbad0a3cd803b0691bb49c6d425ae4cdb133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1a7088_63c9f908",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T18:02:13Z",
+      "side": 1,
+      "message": "I think people may interpret this as a synonym for `$(HOME)`, but it\u0027s really the ChromiumOS checkout directory. How about calling it something like `chromiumos_src_dir`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "d991bbad0a3cd803b0691bb49c6d425ae4cdb133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
