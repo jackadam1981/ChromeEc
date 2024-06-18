@@ -118,6 +118,30 @@
       },
       "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940b38d0_cfc65bdd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-18T11:56:35Z",
+      "side": 1,
+      "message": "Thanks Patryk for the comment 😊\n\nIn terms of configs - everything is true. Let me put some link about [FPU_SHARING](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/arch/arm/core/cortex_m/Kconfig;l\u003d255) and [CPU_HAS_FPU](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/soc/st/stm32/stm32f4x/Kconfig;l\u003d10).\n\n\u003eThe problem is that the compiler-rt always uses hardware FPU, even when -mfpu\u003dnone is set. Does it mean the toolchain is broken?\n\nPersonally, I wouldn\u0027t say `broken`. It is just our specific configuration, which we have to adjust to with the build.\n\n\u003eRather than try to add CONFIG_FPU\u003dy in every place where we might need it, I think it would be good to find a place to inject this so that it applies globally to the google_dragonclaw board/platform when building with a toolchain that is built with hardware floating point. If we need to do that dynamically, maybe we could use something like this.\n\nI don\u0027t think changing config based on some toolchain properties is a good approach. Maybe some warning in the build time would be nice, but nothing more. \n\nI agree with that we need to deal with it on our side.",
+      "parentUuid": "ff8173c2_a1748ab1",
+      "range": {
+        "startLine": 861,
+        "startChar": 17,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "029f1ba7d02bb483673503a97d64be3f763626e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
