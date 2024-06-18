@@ -22,6 +22,30 @@
       },
       "revId": "e12da18f03ca2974dc9834dca78935158ad086dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d852ebd_89f4108f",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T17:17:31Z",
+      "side": 1,
+      "message": "@fsammoura@google.com You can change it to search for the path dynamically. This is python, but demonstrates the idea: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5277936/3/util/update_release_branch.py.",
+      "parentUuid": "67bc97fe_0761c5f0",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "e12da18f03ca2974dc9834dca78935158ad086dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
