@@ -178,6 +178,24 @@
       "parentUuid": "635a4327_919707c0",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b23f4e_fc85e1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T20:40:12Z",
+      "side": 1,
+      "message": "\u003e The reason is due to inappropriate protection region settings. Code RAM is not suitable for fetch lock testing, which will cause some processes not to be executed correctly in different building images.\n\nI don\u0027t understand what this means.",
+      "parentUuid": "6387c2db_233821da",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

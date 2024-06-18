@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484a576b_d8172b67",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T20:40:12Z",
+      "side": 1,
+      "message": "What does \"within the block region\" mean? Do you mean a region within the region defined by `fetch_lock_ram`?\n\nIs this an address in the aliased region?",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbed0dd1_dd92d7ad",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T20:40:12Z",
+      "side": 1,
+      "message": "It looks like this is similar to [`__hibernate_npcx_series`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system-npcx5.c;l\u003d121-143;drc\u003dc4402ac1c62c73c77c56c7af24247ce75cbb542c).\n\nCan you put the common code in a function that can be reused? I think that will make it a lot clearer what this test is doing.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b6c857_73435d9a",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T20:40:12Z",
+      "side": 1,
+      "message": "We should make sure that we can execute the code before we call `ram_lock_config_lock_region`. i.e., calling `__test_in_lpram();` should succeed here.",
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ffc31b_9dd7c79d",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-18T20:40:12Z",
+      "side": 1,
+      "message": "Are you testing both the \"normal\" region and the aliased region? (Looks like not.)",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
