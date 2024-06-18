@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec654f4e_b2bb04f7",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:11:33Z",
+      "side": 1,
+      "message": "Please add build asserts that the offsets in `struct ucsi_memory_region` match these defines.",
+      "range": {
+        "startLine": 1329,
+        "startChar": 0,
+        "endLine": 1329,
+        "endChar": 29
+      },
+      "revId": "d0807bd235291de55f0ef654fa17767bcb89c480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efb78fc_15602dd6",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-18T23:11:33Z",
+      "side": 1,
+      "message": "You can actually drop the invalid and deprecated entries by using a declared initializer.\n\n```suggestion\n#define UCSI_ENTRY(cmd, length)                                \\\n\t[cmd] \u003d {                                              \\\n\t\t.command \u003d cmd, .command_copy_length \u003d length, \\\n\t}\n\nstruct ucsi_commands_t ucsi_commands[] \u003d {\n```",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "d0807bd235291de55f0ef654fa17767bcb89c480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
