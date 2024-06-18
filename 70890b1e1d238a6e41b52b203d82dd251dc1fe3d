@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ed1aa1_8430fdd5",
+        "filename": "zephyr/cmake/toolchain/llvm/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-18T13:10:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c8c7f49_ed599691",
+      "range": {
+        "startLine": 13,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0f0516c_f48a4a0b",
@@ -65,6 +89,54 @@
         "startChar": 32,
         "endLine": 22,
         "endChar": 44
+      },
+      "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0354ee6b_bcfaf446",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-18T13:10:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebfe08fa_6bc0d0d7",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a893089b_13f4c44c",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-18T13:10:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f0516c_f48a4a0b",
+      "range": {
+        "startLine": 22,
+        "startChar": 75,
+        "endLine": 22,
+        "endChar": 76
       },
       "revId": "70890b1e1d238a6e41b52b203d82dd251dc1fe3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
