@@ -16,6 +16,23 @@
       "message": "I don\u0027t know what scancode set2 should I set for Fn key and \"G\" key (I mentioned in b/345231373#comment6). Is there any document I can reference?",
       "revId": "5231e1d7b98f177910b78d91cb27a51f84074d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858ffee5_9ea5275b",
+        "filename": "zephyr/test/nissa/Kconfig",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-19T03:17:21Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like this is actually used. Do you need it?",
+      "revId": "5231e1d7b98f177910b78d91cb27a51f84074d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
