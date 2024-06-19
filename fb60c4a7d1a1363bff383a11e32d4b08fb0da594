@@ -22,6 +22,29 @@
       },
       "revId": "fb60c4a7d1a1363bff383a11e32d4b08fb0da594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef5613e_88b4436c",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-19T00:05:51Z",
+      "side": 1,
+      "message": "i couldn\u0027t convince myself of how this field is defined in `dedede/program.star`.\nis this the correct comparison or does this bit field need to be masked?",
+      "range": {
+        "startLine": 890,
+        "startChar": 60,
+        "endLine": 890,
+        "endChar": 67
+      },
+      "revId": "fb60c4a7d1a1363bff383a11e32d4b08fb0da594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
