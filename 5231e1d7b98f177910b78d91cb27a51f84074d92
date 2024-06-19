@@ -51,6 +51,24 @@
       "parentUuid": "858ffee5_9ea5275b",
       "revId": "5231e1d7b98f177910b78d91cb27a51f84074d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14395ac4_2f592332",
+        "filename": "zephyr/test/nissa/Kconfig",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-06-19T23:41:04Z",
+      "side": 1,
+      "message": "Okay, I see; `get_keycap_label` in the test requires this option.",
+      "parentUuid": "5c579e71_d0e5526b",
+      "revId": "5231e1d7b98f177910b78d91cb27a51f84074d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
