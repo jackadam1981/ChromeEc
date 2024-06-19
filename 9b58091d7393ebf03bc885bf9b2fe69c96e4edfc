@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95798371_d6b584ab",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "For 3M speed",
+      "parentUuid": "6c08602f_d5d451c6",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 27
+      },
+      "revId": "9b58091d7393ebf03bc885bf9b2fe69c96e4edfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097c86ff_ab388baf",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-12T17:38:18Z",
       "side": 1,
       "message": "return -1",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 9
+      },
+      "revId": "9b58091d7393ebf03bc885bf9b2fe69c96e4edfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0ba91c_1e69d0c7",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "097c86ff_ab388baf",
       "range": {
         "startLine": 404,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da2dc668_6d24e1eb",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ac6c3b_aba57920",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 408,
+        "endChar": 15
+      },
+      "revId": "9b58091d7393ebf03bc885bf9b2fe69c96e4edfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e553d9a_fb2a2122",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba76529b_e46dd7e1",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "If the check status waiting time is enough, you may need to add a retry.\nDoes the fails occurred in the first erase ?\nOr maybe we need to move the enable_follow_mode inside the loop.",
+      "parentUuid": "7e553d9a_fb2a2122",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 30
+      },
+      "revId": "9b58091d7393ebf03bc885bf9b2fe69c96e4edfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b360a8e_04a4a48b",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-06-12T17:38:18Z",
       "side": 1,
       "message": "All the calls to `check_status()` need to check the return code.  If the operation fails, it probably doesn\u0027t make sense to continue.\n\nFor instance, I see failures at the write enable step above during the first erase block.  But the following commands appear to succeed.  However, this then causes the flash erase verify step to fail.",
+      "range": {
+        "startLine": 510,
+        "startChar": 2,
+        "endLine": 510,
+        "endChar": 14
+      },
+      "revId": "9b58091d7393ebf03bc885bf9b2fe69c96e4edfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b09d4c_f4326d19",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b360a8e_04a4a48b",
       "range": {
         "startLine": 510,
         "startChar": 2,

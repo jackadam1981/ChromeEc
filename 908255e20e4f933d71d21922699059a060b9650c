@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "850ef48b_1cc90ef0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de7a82f3_b737aef9",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "10072380_a23a1c04",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
@@ -54,6 +78,54 @@
       "writtenOn": "2024-06-07T21:10:16Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd6313b_b05a4982",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40db8de_b128190e",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d5b061_a6890a66",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40db8de_b128190e",
       "range": {
         "startLine": 24,
         "startChar": 23,
@@ -159,6 +231,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a957ed89_0b682a88",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f293318_bc100a73",
+      "range": {
+        "startLine": 534,
+        "startChar": 8,
+        "endLine": 534,
+        "endChar": 28
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da24ec9c_a4194ab7",
@@ -221,6 +317,30 @@
         "id": 1308749
       },
       "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da24ec9c_a4194ab7",
+      "range": {
+        "startLine": 606,
+        "startChar": 5,
+        "endLine": 606,
+        "endChar": 26
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fdb053_ad58a25b",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "da24ec9c_a4194ab7",
@@ -309,6 +429,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "717bafd0_6c99b61a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7695fa_f8cc7e22",
+      "range": {
+        "startLine": 680,
+        "startChar": 5,
+        "endLine": 680,
+        "endChar": 25
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58fb7c61_361f5ae9",
@@ -343,6 +487,30 @@
         "id": 1308749
       },
       "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fb7c61_361f5ae9",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 40
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c36923_54cd8a35",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "58fb7c61_361f5ae9",
@@ -403,6 +571,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ba31a3_6d6c122d",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4785c26_578cef0a",
+      "range": {
+        "startLine": 869,
+        "startChar": 0,
+        "endLine": 869,
+        "endChar": 35
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d2eeeb9_e8b87b7b",
@@ -437,6 +629,30 @@
         "id": 1308749
       },
       "writtenOn": "2024-06-12T17:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d2eeeb9_e8b87b7b",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 0
+      },
+      "revId": "908255e20e4f933d71d21922699059a060b9650c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9fee858_7e2d10b7",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-06-19T05:57:56Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "2d2eeeb9_e8b87b7b",
