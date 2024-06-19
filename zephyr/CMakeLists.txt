@@ -22,6 +22,17 @@ if(DEFINED CONFIG_PLATFORM_EC AND EXISTS "${EDT_PICKLE}")
     message(FATAL_ERROR "named_gpios.py failed with return code: ${ret}")
   endif()
 
+  set(USB_CONFIGURATION_SCRIPT ${PLATFORM_EC}/zephyr/scripts/usb_configuration_replace.py)
+  set(CMD_USB_CONFIG_REPLACE ${PYTHON_EXECUTABLE} ${USB_CONFIGURATION_SCRIPT}
+    --build-dir ${CMAKE_BINARY_DIR}
+    --project-dir ${ITE_PROJECT_DIR}
+    --project-name ${ITE_PROJECT_NAME}
+  )
+  execute_process(COMMAND ${CMD_USB_CONFIG_REPLACE} RESULT_VARIABLE ret)
+  if(NOT "${ret}" STREQUAL "0")
+    message(FATAL_ERROR "usb_configuration_replace.py failed with return code: ${ret}")
+  endif()
+
   set(LED_POLICY_SCRIPT ${PLATFORM_EC}/zephyr/scripts/led_policy.py)
   set(CMD_LED_POLICY ${PYTHON_EXECUTABLE} ${LED_POLICY_SCRIPT}
     --zephyr-base ${ZEPHYR_BASE}

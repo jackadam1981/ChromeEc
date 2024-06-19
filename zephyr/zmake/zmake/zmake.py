@@ -565,6 +565,9 @@ class Zmake:
                             / "user-cache"
                         ),
                         "ZEPHYR_BASE": str(self.zephyr_base),
+                        ## TODO: ITE Debug
+                        "ITE_PROJECT_DIR": str(project.config.project_dir),
+                        "ITE_PROJECT_NAME": str(project.config.project_name),
                         "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
                         "Python3_EXECUTABLE": sys.executable,
                         **(
