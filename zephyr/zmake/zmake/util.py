@@ -4,6 +4,7 @@
 
 """Common miscellaneous utility functions for zmake."""
 
+import io
 import os
 import pathlib
 import re
@@ -107,6 +108,31 @@ def read_kconfig_autoconf_value(path, key):
             if match:
                 return match.group(1)
     return None
+
+
+def update_kconfig_autoconf_value(path, key, value, only_if_changed=True):
+    """Parse an autoconf.h file to update a resolved Kconfig value
+
+    Args:
+        path: The path to the autoconf.h file.
+        key: The define key to lookup.
+        value: The value to be updated.
+        only_if_changed: Set to True if the value should not be written
+            unless it has changed.
+    """
+    if only_if_changed:
+        if read_kconfig_autoconf_value(path, key) == value:
+            return;
+    prog = re.compile(rf"^#define\s{key}\s(\S+)$")
+    with open(path / "autoconf.h", "r", encoding="utf-8") as file:
+        output = io.StringIO()
+        for line in file:
+            match = prog.match(line)
+            if match:
+                line = re.sub(match.group(1), value, line)
+            output.write(line)
+    with open(path / "autoconf.h", "w", encoding="utf-8") as f:
+            f.write(output.getvalue())
 
 
 def write_kconfig_file(path, config, only_if_changed=True):
