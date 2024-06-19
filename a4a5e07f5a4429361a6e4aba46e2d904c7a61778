@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a1b312_8911aca0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2024-06-19T02:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c89cc1_ac009c8c",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cd479a6_ea372b5e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006853f4_a7a94254",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2024-06-19T02:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd479a6_ea372b5e",
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54a1fe28_6d3fcf33",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-06-18T16:00:21Z",
       "side": 1,
       "message": "What other validation has been done to verify the charger behaves correctly when both:\n\n1. Charging normally\n2. Trickle charging",
+      "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a2ba27_37d491b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2024-06-19T02:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a1fe28_6d3fcf33",
       "revId": "a4a5e07f5a4429361a6e4aba46e2d904c7a61778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
