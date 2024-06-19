@@ -9,6 +9,7 @@ import getpass
 import io
 import platform
 import subprocess
+import logging
 
 from zmake import util
 
