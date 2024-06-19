@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4b7fa85_a58e1a93",
+        "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2024-06-19T02:05:57Z",
+      "side": 1,
+      "message": "Yes, it is reserved for the firmware header.\nYou can get the detail in the doc **NPCX99nS_BootLoader_Rev0.95_DS_Google.pdf**",
+      "parentUuid": "dca66281_394a56c7",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 72
+      },
+      "revId": "95bb809e143a4ad5f0fd9454c6e10ea6276d7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ef8add8_99ee7fa6",
         "filename": "docs/fingerprint/fingerprint-ram-and-flash.md",
         "patchSetId": 2
