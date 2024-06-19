@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acdd171_778bbdf6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-06-19T05:25:37Z",
+      "side": 1,
+      "message": "update issue No.",
+      "parentUuid": "765f99ee_3b84beaa",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "fb60c4a7d1a1363bff383a11e32d4b08fb0da594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ef5613e_88b4436c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-19T00:05:51Z",
       "side": 1,
       "message": "i couldn\u0027t convince myself of how this field is defined in `dedede/program.star`.\nis this the correct comparison or does this bit field need to be masked?",
+      "range": {
+        "startLine": 890,
+        "startChar": 60,
+        "endLine": 890,
+        "endChar": 67
+      },
+      "revId": "fb60c4a7d1a1363bff383a11e32d4b08fb0da594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71215760_7ccc945b",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-06-19T05:25:37Z",
+      "side": 1,
+      "message": "current magister sku_id 0xc0000 ~ 0xc0123\nhttps://chrome-internal.googlesource.com/chromeos/project/dedede/magolor/+/refs/heads/main/config.star#2776\n\ndesigned id list\nhttps://docs.google.com/spreadsheets/d/1v5Up6OtXzTDm4RGtG5v1v0ozQicxXWtonma78pM_zJQ/edit?resourcekey\u003d0-J89F7DKGvDLgHMAxye6B2w#gid\u003d1601939668",
+      "parentUuid": "2ef5613e_88b4436c",
       "range": {
         "startLine": 890,
         "startChar": 60,
