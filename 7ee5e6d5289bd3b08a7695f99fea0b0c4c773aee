@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9f547e3d_7fdc57a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2024-06-19T18:37:37Z",
+      "side": 1,
+      "message": "created an issue tracker:\nhttps://partnerissuetracker.corp.google.com/issues/348134481\nadded:\nBUG\u003db:348134481",
+      "parentUuid": "a87e65c8_2efab2b9",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4627b523_f11896fc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2024-06-18T23:48:04Z",
       "side": 1,
       "message": "not sure what you mean here: \"which rely on\"?",
+      "range": {
+        "startLine": 52,
+        "startChar": 70,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f646a4e_9013d413",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2024-06-19T18:37:37Z",
+      "side": 1,
+      "message": "in ultra-low power state, only VBAT (from battery coin) is powered to EC, VTR main power to EC is turned off.\nEC VCI hardware and VCI_IN# pins are powered by VBAT, only armed VCI_IN# can be triggered to wake up system, e.g. press power button or AC is plugged into.",
+      "parentUuid": "8a1b3dcb_f953b313",
       "range": {
         "startLine": 52,
         "startChar": 70,
