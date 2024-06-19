@@ -187,6 +187,30 @@
       },
       "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e2cc9c_274570de",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-19T04:09:28Z",
+      "side": 1,
+      "message": "Hi Daisuke, for some reason, this workaround is argent for craask. I might need your help. Does this CL still need to be modify?",
+      "parentUuid": "0c5d4792_8e12c8e8",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 6
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
