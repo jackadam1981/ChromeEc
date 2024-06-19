@@ -548,6 +548,14 @@ class Zmake:
                 if static_version:
                     ec_version_flags.append("--static")
 
+                # Compute the version string.
+                version_string = zmake.version.get_version_string(
+                    project.config.project_name,
+                    version,
+                    static=static_version,
+                    git_path=self.module_paths["ec"],
+                )
+
                 base_config = zmake.build_config.BuildConfig(
                     cmake_defs={
                         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
@@ -565,6 +573,7 @@ class Zmake:
                             / "user-cache"
                         ),
                         "ZEPHYR_BASE": str(self.zephyr_base),
+                        "EC_VERSION_STRING": str(version_string),
                         "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
                         "Python3_EXECUTABLE": sys.executable,
                         **(
@@ -678,9 +687,9 @@ class Zmake:
             if build_after_configure:
                 self._build(
                     build_dir=build_dir,
+                    version_string=version_string,
                     project=project,
                     coverage=coverage,
-                    version=version,
                     static_version=static_version,
                     delete_intermediates=delete_intermediates,
                 )
@@ -763,9 +772,9 @@ class Zmake:
     def _build(
         self,
         build_dir,
+        version_string,
         project: zmake.project.Project,
         coverage=False,
-        version=None,
         static_version=False,
         delete_intermediates=False,
     ):
@@ -775,14 +784,6 @@ class Zmake:
             dirs: Dict[str, pathlib.Path] = {}
 
             build_dir = build_dir.resolve()
-
-            # Compute the version string.
-            version_string = zmake.version.get_version_string(
-                project.config.project_name,
-                version,
-                static=static_version,
-                git_path=self.module_paths["ec"],
-            )
 
             # The version header needs to generated during the build phase
             # instead of configure, as the tree may have changed since

@@ -751,3 +751,14 @@ if (NOT DEFINED CONFIG_BOARD_NATIVE_POSIX)
       --delete
   )
 endif()
+
+# Replace usb configuration string
+set(USB_CONFIGURATION_SCRIPT ${PLATFORM_EC}/zephyr/scripts/usb_configuration_replace.py)
+set(CMD_USB_CONFIG_REPLACE ${PYTHON_EXECUTABLE} ${USB_CONFIGURATION_SCRIPT}
+  --build-dir ${CMAKE_BINARY_DIR}
+  --version-string ${EC_VERSION_STRING}
+)
+execute_process(COMMAND ${CMD_USB_CONFIG_REPLACE} RESULT_VARIABLE ret)
+if(NOT "${ret}" STREQUAL "0")
+  message(FATAL_ERROR "usb_configuration_replace.py failed with return code: ${ret}")
+endif()
