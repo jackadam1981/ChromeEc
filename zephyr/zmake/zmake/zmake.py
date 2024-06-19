@@ -565,6 +565,10 @@ class Zmake:
                             / "user-cache"
                         ),
                         "ZEPHYR_BASE": str(self.zephyr_base),
+                        "EC_PROJECT_DIR": str(project.config.project_dir),
+                        "EC_PROJECT_NAME": str(project.config.project_name),
+                        "EC_VERSION": str(version),
+                        "EC_STATIC_VERSION": int(static_version),
                         "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
                         "Python3_EXECUTABLE": sys.executable,
                         **(
@@ -776,12 +780,14 @@ class Zmake:
 
             build_dir = build_dir.resolve()
 
+            logging.error("*** zmake.py ITE Debug build dir:%s", build_dir)
             # Compute the version string.
             version_string = zmake.version.get_version_string(
                 project.config.project_name,
                 version,
                 static=static_version,
             )
+            logging.error("*** zmake.py ITE Debug version: %s ", version_string)
 
             # The version header needs to generated during the build phase
             # instead of configure, as the tree may have changed since
