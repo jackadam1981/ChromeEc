@@ -565,6 +565,10 @@ class Zmake:
                             / "user-cache"
                         ),
                         "ZEPHYR_BASE": str(self.zephyr_base),
+                        "EC_PROJECT_DIR": str(project.config.project_dir),
+                        "EC_PROJECT_NAME": str(project.config.project_name),
+                        "EC_VERSION": str(version),
+                        "EC_STATIC_VERSION": int(static_version),
                         "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
                         "Python3_EXECUTABLE": sys.executable,
                         **(
