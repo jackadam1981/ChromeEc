@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "529730cf_377e539f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-20T21:07:12Z",
+      "side": 1,
+      "message": "Based on that, we:\n\n1. Should not land this CL, since it will regress behavior.\n2. Should remove every other instance where this code is implemented.\n3. Add a test to formalize the expected behavior.",
+      "parentUuid": "66089648_977e3a17",
+      "revId": "7f00fc620e6848524550790861611175ca75fc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3b6c3e_30335cfa",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
