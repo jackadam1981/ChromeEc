@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "886b08d3_a29cd849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-06-20T17:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3794669a_66916b9c",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6eb145f_d65949d5",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-20T16:58:59Z",
       "side": 1,
       "message": "nit: \"waiting for the\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8b928a_e0704625",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-06-20T17:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6eb145f_d65949d5",
       "range": {
         "startLine": 11,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cb5e5b_d96f14c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-06-20T17:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ca2464_3603aab9",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5edcdc7f_dfcf43c7",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7c6d70_1ca76a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-06-20T17:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5edcdc7f_dfcf43c7",
+      "range": {
+        "startLine": 13,
+        "startChar": 42,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c609b50e_75a3c296",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-06-20T16:58:59Z",
       "side": 1,
       "message": "What do changes in accel/gyro sensor values trigger?\n\nIs there something else we should validate isn\u0027t regressed with this change?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7637f1d2_a68d8c94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-06-20T17:04:02Z",
+      "side": 1,
+      "message": "Screen rotation, which is also working.\n\nCTS would be the other thing to test I think.",
+      "parentUuid": "c609b50e_75a3c296",
       "range": {
         "startLine": 17,
         "startChar": 0,
