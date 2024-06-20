@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c4ca61d_4c6854a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-06-20T18:01:01Z",
+      "side": 1,
+      "message": "\u003e Then they\u0027re probably broken. :) If you have one of those devices, you can connect an external display, lower the brightness of the internal panel until the external display becomes the primary, put the device in tablet mode and verify that the internal keyboard and trackpad still work.\n\nSo a device in tablet mode with an external display attached should still allow the keyboard to work(?). And we get into tablet mode, because the internal display was disabled(?).\n\nThat seems unexpected to me. Specifically, why does disabling the internal display enable tablet mode? The S0 check feels more like a workaround for that unexpected behavior than a fix for a well-defined state.",
+      "parentUuid": "1b13040e_fff0aafa",
+      "revId": "7f00fc620e6848524550790861611175ca75fc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3b6c3e_30335cfa",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
