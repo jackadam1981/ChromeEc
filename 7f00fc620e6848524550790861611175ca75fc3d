@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66089648_977e3a17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2024-06-20T18:23:41Z",
+      "side": 1,
+      "message": "I agree it is unexpected, but it was a deliberate feature not a workaround.\nHere is another bug about it: b/252374628 -\u003e b/181370314 -\u003e \"This is a user visible feature that has been broken for over 1.5 years now\".\n\n\u003e why does disabling the internal display enable tablet mode?\n\nIt doesn\u0027t. You disable the internal display to make the external the primary. Then you put the device physically in tablet mode and place it screen down to use the keyboard with the external display.",
+      "parentUuid": "1c4ca61d_4c6854a6",
+      "revId": "7f00fc620e6848524550790861611175ca75fc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3b6c3e_30335cfa",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
