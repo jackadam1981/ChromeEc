@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
+#if 0
 #include "console.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -46,3 +46,4 @@ __override void board_pulse_entering_rw(void)
 {
 	/* no-op for dauntless */
 }
+#endif

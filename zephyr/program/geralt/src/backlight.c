@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
+#if 0
 #include "gpio_signal.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -47,3 +47,4 @@ static int install_backlight_handler(void)
 }
 
 SYS_INIT(install_backlight_handler, APPLICATION, 1);
+#endif

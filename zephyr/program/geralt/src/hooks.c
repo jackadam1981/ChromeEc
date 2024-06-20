@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
+#if 0
 #include "charger.h"
 #include "driver/charger/rt9490.h"
 #include "extpower.h"
@@ -100,3 +100,4 @@ static void board_hook_ac_change(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_hook_ac_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, board_hook_ac_change, HOOK_PRIO_LAST);
+#endif
