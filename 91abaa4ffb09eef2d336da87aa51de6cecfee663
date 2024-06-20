@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e8672c_0fbd272b",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a590ed5f_bee2b058",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 28
+      },
+      "revId": "91abaa4ffb09eef2d336da87aa51de6cecfee663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb8617bf_0979d5bf",
