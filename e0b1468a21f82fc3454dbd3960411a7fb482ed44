@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de678ad_38807989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-20T22:51:22Z",
+      "side": 1,
+      "message": "\"wake\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "e0b1468a21f82fc3454dbd3960411a7fb482ed44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0348ec81_27089348",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-20T22:51:22Z",
+      "side": 1,
+      "message": "Not needed for this CL, but since we\u0027re going to use the same values for every test, let\u0027s create a constant for this, which will help make sure we update it when we update these boards to use Zephyr.",
+      "range": {
+        "startLine": 551,
+        "startChar": 31,
+        "endLine": 551,
+        "endChar": 55
+      },
+      "revId": "e0b1468a21f82fc3454dbd3960411a7fb482ed44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
