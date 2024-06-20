@@ -871,6 +871,9 @@ struct queue {
 };
 static struct queue cached_messages[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+char int_flag;
+int int_freq;
+char int_list[30];
 /* Note this method can be called from an interrupt context. */
 int tcpm_enqueue_message(const int port)
 {
@@ -889,6 +892,12 @@ int tcpm_enqueue_message(const int port)
 	/* Call the raw driver without caching */
 	rv = tcpc_config[port].drv->get_message_raw(port, head->payload,
 						    &head->header);
+
+	if ((port == 0) && ((head->header & 0x7000) != 0) && ((head->header & 0x1F) == 0x1)) {
+		CPRINTS("C0 Rx SRC_CAP");
+		int_flag = 1;
+	}
+
 	if (rv) {
 		CPRINTS("C%d: Could not retrieve RX message (%d)", port, rv);
 		return rv;

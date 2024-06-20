@@ -529,6 +529,9 @@ static void restore_sop_header_pwr_data_role(enum usbpd_port port,
 	}
 }
 
+extern char int_flag;
+extern int int_freq;
+extern char int_list[30];
 static enum tcpc_transmit_complete it8xxx2_tx_data(enum usbpd_port port,
 						   enum tcpci_msg_type type,
 						   uint16_t header,
@@ -614,6 +617,20 @@ static enum tcpc_transmit_complete it8xxx2_tx_data(enum usbpd_port port,
 			 * when SOP'/SOP'' message is successfully transmitted.
 			 */
 			restore_sop_header_pwr_data_role(port, type);
+
+			if ((int_flag == 1) && (port == 0) && ((header & 0x7000) != 0) && ((header & 0x1F) == 0x2)) {
+				int_flag = 0;
+				CPRINTS("C0 Tx Request, INT[%d] = ", int_freq);
+				for (int temp = 0; temp < int_freq; temp++) {
+					CPRINTS("%d", int_list[temp]);
+					int_list[temp] = 0;
+				}
+				//CPRINTS("INT[%d] = {%d, %d, %d, %d, %d, %d, %d, %d, %d, %d}", int_freq, int_list[0], int_list[1], int_list[2], int_list[3], int_list[4], int_list[5], int_list[6], int_list[7], int_list[8], int_list[9]);
+				//CPRINTS("INT[%d] = {%d, %d, %d, %d, %d, %d, %d, %d, %d, %d}", int_freq, int_list[10], int_list[11], int_list[12], int_list[13], int_list[14], int_list[15], int_list[16], int_list[17], int_list[18], int_list[19]);
+				//CPRINTS("INT[%d] = {%d, %d, %d, %d, %d, %d, %d, %d, %d, %d}", int_freq, int_list[20], int_list[21], int_list[22], int_list[23], int_list[24], int_list[25], int_list[26], int_list[27], int_list[28], int_list[29]);
+				//memset(int_list, 0, sizeof(int_list));
+				int_freq = 0;
+			}
 			break;
 		}
 	}
