@@ -23,7 +23,10 @@ static int buf_in_use;
 static int max_used;
 
 /* 1 MB buffer for fake shared memory implementation */
-STATIC_IF(CONFIG_FAKE_SHMEM) char fake_shmem_buf[BIT(20)];
+#ifndef CONFIG_FAKE_SHMEM
+extern
+#endif /* CONFIG_FAKE_SHMEM */
+char fake_shmem_buf[BIT(20)];
 
 int shared_mem_size(void)
 {
