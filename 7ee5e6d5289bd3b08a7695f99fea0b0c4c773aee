@@ -110,6 +110,30 @@
       },
       "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce97f4ee_e3e32b99",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-20T17:07:25Z",
+      "side": 1,
+      "message": "ok, please update text to \"inputs which rely on\"...",
+      "parentUuid": "9f646a4e_9013d413",
+      "range": {
+        "startLine": 52,
+        "startChar": 70,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "7ee5e6d5289bd3b08a7695f99fea0b0c4c773aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
