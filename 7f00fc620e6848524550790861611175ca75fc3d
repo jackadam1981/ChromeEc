@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b13040e_fff0aafa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2024-06-20T17:50:30Z",
+      "side": 1,
+      "message": "It isn\u0027t the default because of the reason in that comment I linked, which led to b/159456704 for Zork.\nTo make it default, we would need to decide to no longer support the feature that the OS offers of \"external display is primary and tablet mode device is keyboard + trackpad\".\nIt is a pretty obscure feature, and presumably broken on quite a few boards, and not caught in testing.",
+      "parentUuid": "b557fe16_a8de88c8",
+      "revId": "7f00fc620e6848524550790861611175ca75fc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a3b6c3e_30335cfa",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
