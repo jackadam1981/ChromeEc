@@ -25,7 +25,6 @@
 #include "../power_signals.dtsi"
 #include "../power_signals_gpios.dtsi"
 #include "../pwm.dtsi"
-#include "../temp_sensors.dtsi"
 #include "../usb_typec.dtsi"
 #include "../usba.dtsi"
 
@@ -33,6 +32,7 @@
 #include "keyboard.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+#include "temp_sensors.dtsi"
 
 /* Lotso overrides follow... */
 
