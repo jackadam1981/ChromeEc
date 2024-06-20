@@ -234,6 +234,51 @@
       },
       "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bbc6d2_b0acf3de",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-06-20T18:54:11Z",
+      "side": 1,
+      "message": "I prefer 125HZ: \nFor bosh accel (ODR at 25, 50, 100, 200), the maximal ODR will be 100Hz.\nFor ST accel, ODR can be slightly higher: 26, 54, 108, ..).\nIn case we have second source accel, clamping at maximum ODR at 100Hz will prevent the sensors running at 108Hz, decreasing it to 54Hz. 125Hz give some marging. See https://chromium-review.git.corp.google.com/c/chromiumos/platform/ec/+/5458714",
+      "fixSuggestions": [
+        {
+          "fixId": "f266d38b_d27dbfb1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "baseboard/guybrush/baseboard.h",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": "/* Decrease the max sensor frequency to 125Hz to\n"
+            },
+            {
+              "path": "baseboard/guybrush/baseboard.h",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": "#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 125000\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f43e5272e990bb005b04c5d679f5650dc6fcea63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
