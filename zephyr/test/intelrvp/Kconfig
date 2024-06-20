@@ -1,0 +1,31 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+choice TEST_PROJECT_TYPE
+	prompt "Select Intel RVP board variant for tests"
+	help
+	  Choose the board variant for which the tests will be compiled and run.
+
+config TEST_PROJECT_MTLRVP_COMMON
+	bool "Enable mtlrvp common tests"
+	help
+	  Enable tests specific to the mtlrvp.
+endchoice
+
+config TEST_PROJECT_NAME
+	string "Board name"
+	default "intelrvp" if TEST_PROJECT_MTLRVPP_NPCX || TEST_PROJECT_MTLRVPP_PD
+
+config TEST_PROJECT_BOARD_POWER
+	bool "Run tests for board_power.c"
+	help
+	  Include board_power.c into the binary and test its functions.
+
+config TEST_X86_NON_DSX_PWRSEQ_MTL
+	bool "Replace CONFIG_X86_NON_DSX_PWRSEQ_MTL for testing"
+	help
+	  This is used to replace CONFIG_X86_NON_DSX_PWRSEQ_MTL for testing
+	  purposes directly.
+
+source "Kconfig.zephyr"
