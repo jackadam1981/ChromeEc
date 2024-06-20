@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6921b642_393de748",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-20T22:56:39Z",
+      "side": 1,
+      "message": "How effective is this? Do you observe a consistent delay between the time BATT_FLAG_RESPONSIVE is set and the time a battery is successfully identified? I\u0027m wondering if we should ignore this flag and just start a timer when get_batt_conf is called for the first time.",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 41
+      },
+      "revId": "fed9bbc20422354c4f7a4eedf1fd0e0f44d97d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1709ef_d1a70f26",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-20T22:56:39Z",
+      "side": 1,
+      "message": "This is initially false. So, you need to initialize it to true or revert the logic (e.g. batt_initialized).",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 15
+      },
+      "revId": "fed9bbc20422354c4f7a4eedf1fd0e0f44d97d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
