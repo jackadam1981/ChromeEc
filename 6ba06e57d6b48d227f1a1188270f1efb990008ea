@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a470acf8_332b923d",
+        "filename": "zephyr/test/crypto/src/sha256.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-20T22:47:51Z",
+      "side": 1,
+      "message": "In the original test there was this comment:\n\n```\nOur HMAC implementation does not support longer than 64 bytes keys.\n```\n\nI think it would be good to put that somewhere in case someone wants to add a test for a longer key.",
+      "revId": "6ba06e57d6b48d227f1a1188270f1efb990008ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb0c572_9540357c",
+        "filename": "zephyr/test/crypto/src/sha256.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-20T22:47:51Z",
+      "side": 1,
+      "message": "For these, would it be more \"natural\" to write as:\n\n```\nzassert_true(test_sha256(...));\n```",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "6ba06e57d6b48d227f1a1188270f1efb990008ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
