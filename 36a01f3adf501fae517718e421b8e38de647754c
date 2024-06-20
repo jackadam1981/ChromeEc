@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe16ced_a7e1ff88",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-20T22:32:56Z",
+      "side": 1,
+      "message": "What happened to the other tests from the original file?\n\nIt sounds like Zephyr doesn\u0027t call any of them?\n\nHowever, we will probably call some of them from the shim layer or the fingerprint code, so we\u0027ll want to test them if that\u0027s the case. You could add a comment that this is the only one called from upstream Zephyr code if that\u0027s the case.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "36a01f3adf501fae517718e421b8e38de647754c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
