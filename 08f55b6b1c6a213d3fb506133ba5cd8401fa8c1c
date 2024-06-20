@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11280957_b3de5567",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7966b4d3_0f2c544b",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a5791cb_f28bba96",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-06-18T23:39:24Z",
       "side": 1,
       "message": "```suggestion\n\t\tif (dev-\u003elast_connector_alerted !\u003d 0) {\n```",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 36
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0a07f4_791a9a51",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5791cb_f28bba96",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465f3626_7856d136",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d61dd4_ae85abbe",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 49
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f30cdd3_1004a483",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-06-18T23:39:24Z",
       "side": 1,
       "message": "```suggestion\n\t\tif (dev-\u003elast_connector_changed !\u003d 0) {\n```",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 37
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442e9408_02a1fbdb",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Bad AI.\n\nFix with: `dev-\u003elast_connector_changed \u003d\u003d 0`",
+      "parentUuid": "0f30cdd3_1004a483",
       "range": {
         "startLine": 251,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76952982_97c7d1fb",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Added a TODO comment and a bug (b/348486617)",
+      "parentUuid": "c6bd5017_cc118e6a",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 27
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbac5c48_a1133ce8",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6746b1ff_4eb7aee2",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dbac5c48_a1133ce8",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 0
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7837082d_3d4520c8",
@@ -169,6 +313,30 @@
       "writtenOn": "2024-06-18T23:39:24Z",
       "side": 1,
       "message": "```suggestion\n\tif (dev-\u003elast_connector_changed !\u003d 0) {\n```",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 35
+      },
+      "revId": "08f55b6b1c6a213d3fb506133ba5cd8401fa8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa53e85_feea1a0d",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-20T23:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7837082d_3d4520c8",
       "range": {
         "startLine": 777,
         "startChar": 0,
