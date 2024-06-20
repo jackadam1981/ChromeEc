@@ -1,0 +1,11 @@
+# Copyright 2021 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Note: this Zephyr board more closely represents the Chrome OS
+# concept of a baseboard.  Zephyr boards and Chrome OS boards do not
+# have a 1:1 mapping.
+
+config BOARD_GERALT_SCP_ZEPHYR
+	bool
+	select SOC_MEDIATEK_MT8188
