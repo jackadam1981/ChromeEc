@@ -20,10 +20,10 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_MTLRVP app PRIVATE
 target_sources_ifdef(CONFIG_TEST_PROJECT_MTLRVP app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/mtlrvp.c"
 )
-target_sources_ifdef(CONFIG_TEST_PROJECT_MTLRVP app PRIVATE mtlrvp/src/mtlrvp.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_MTLRVP app PRIVATE mtlrvp_npcx/src/board_id.c)
 
 # Add sources for pd.c (power delivery) functionality and related platform-specific files
-target_sources_ifdef(CONFIG_TEST_PROJECT_PD app PRIVATE src/pd.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_PD app PRIVATE mtlrvp_pd/src/pd.c)
 target_sources_ifdef(CONFIG_TEST_PROJECT_PD app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/pd.c"
 )
@@ -36,7 +36,10 @@ zephyr_include_directories_ifdef(CONFIG_TEST_PROJECT_TCPC ${PLATFORM_EC}/driver/
 target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/tcpc.c"
 )
-target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE mtlrvp/src/tcpc_test.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE mtlrvp_npcx/src/tcpc.c)
 
-add_subdirectory_ifdef(CONFIG_TEST_PROJECT_MTLRVP_NPCX tests/mtlrvp_npcx)
-add_subdirectory_ifdef(CONFIG_TEST_PROJECT_MTLRVP_PD  tests/mtlrvp_pd)
+# Add sources for chg_usb_pd_mecc_1_1.c functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE mtlrvp/src/chg_usb_pd_mecc_1_1.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/chg_usb_pd_mecc_1_1.c"
+)

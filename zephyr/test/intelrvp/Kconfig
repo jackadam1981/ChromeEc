@@ -7,6 +7,11 @@ choice TEST_PROJECT_TYPE
     help
         Choose the board variant for which the tests will be compiled and run.
 
+    config TEST_PROJECT_MTLRVP_COMMON
+        bool "Enable mtlrvp common tests"
+        help
+            Enable tests specific to the mtlrvp.
+
     config TEST_PROJECT_MTLRVPP_NPCX
         bool "Enable mtlrvpp_npcx-specific tests"
         help
@@ -16,6 +21,12 @@ choice TEST_PROJECT_TYPE
         bool "Enable mtlrvpp_pd-specific tests"
         help
             Enable tests specific to the mtlrvpp_pd board variant.
+
+    config TEST_PROJECT_MTLRVPP_MCHP
+        bool "Enable mtlrvpp_pd-specific tests"
+        help
+            Enable tests specific to the mtlrvpp_pd board variant.
+
 endchoice
 
 config TEST_X86_NON_DSX_PWRSEQ_MTL
@@ -33,11 +44,6 @@ config TEST_PROJECT_BOARD_POWER
     help
         Include board_power.c into the binary and test its functions.
 
-config TEST_PROJECT_MTLRVP
-    bool "Run tests for mtlrvp.c"
-    help
-        Include mtlrvp.c into the binary and test its functions.
-
 config TEST_MTLRVP_BOARD_ID
     bool "Run MTLRVP board id test"
     help
@@ -52,5 +58,10 @@ config TEST_PROJECT_TCPC
     bool "Run tests for tcpc.c"
     help
         Include tcpc.c into the binary and test its functions.
+
+config TEST_PROJECT_CHG_USB_PD_MECC
+    bool "Run tests for chg_usb_pd_mecc_1_1.c"
+    help
+        Include chg_usb_pd_mecc_1_1.c into the binary and test its functions.
 
 source "Kconfig.zephyr"
