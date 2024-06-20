@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6895430_e428e22a",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-20T05:19:23Z",
+      "side": 1,
+      "message": "Yes, it means a region defined by `fetch_lock_ram` and `0x100D5000` is an address in aliased region. In addition, the unit test has been rewritten, and removed this definition.",
+      "parentUuid": "484a576b_d8172b67",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbed0dd1_dd92d7ad",
         "filename": "test/ram_lock.c",
         "patchSetId": 11
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-18T20:40:12Z",
       "side": 1,
       "message": "It looks like this is similar to [`__hibernate_npcx_series`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/system-npcx5.c;l\u003d121-143;drc\u003dc4402ac1c62c73c77c56c7af24247ce75cbb542c).\n\nCan you put the common code in a function that can be reused? I think that will make it a lot clearer what this test is doing.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 0
+      },
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f79191_a14b08a9",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-20T05:19:23Z",
+      "side": 1,
+      "message": "The unit test has been updated.",
+      "parentUuid": "cbed0dd1_dd92d7ad",
       "range": {
         "startLine": 184,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44fd10f2_f74f04e1",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-20T05:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b6c857_73435d9a",
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ffc31b_9dd7c79d",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-06-18T20:40:12Z",
       "side": 1,
       "message": "Are you testing both the \"normal\" region and the aliased region? (Looks like not.)",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "90d0b4ff677771aedf94ca3dc6032165553abede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0550854_03765592",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-20T05:19:23Z",
+      "side": 1,
+      "message": "Done. Add test for both the \"normal\" region and the aliased region.",
+      "parentUuid": "a3ffc31b_9dd7c79d",
       "range": {
         "startLine": 221,
         "startChar": 1,

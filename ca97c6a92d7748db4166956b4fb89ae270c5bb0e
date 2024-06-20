@@ -196,6 +196,24 @@
       "parentUuid": "6387c2db_233821da",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fa312f_d1013b12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-20T05:19:23Z",
+      "side": 1,
+      "message": "The code RAM does not recommend doing the FETCH LOCK test. The location of the instruction is not fixed. Therefore, setting the fetch-lock protection area in code ram will lead to unexpected behavior. Because we don\u0027t know what instructions will be placed in the protected area.",
+      "parentUuid": "13b23f4e_fc85e1d3",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
