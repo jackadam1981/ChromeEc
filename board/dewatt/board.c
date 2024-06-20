@@ -368,6 +368,21 @@ const struct pct2075_sensor_t pct2075_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pct2075_sensors) == PCT2075_COUNT);
 
+/* This callback disables keyboard when convertibles are fully open */
+__override void lid_angle_peripheral_enable(int enable)
+{
+	/*
+	 * If the lid is in tablet position via other sensors,
+	 * ignore the lid angle, which might be faulty then
+	 * disable keyboard.
+	 */
+	if (tablet_get_mode())
+		enable = 0;
+
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+}
+
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
