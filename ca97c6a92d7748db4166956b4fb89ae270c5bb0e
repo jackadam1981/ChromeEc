@@ -214,6 +214,24 @@
       "parentUuid": "13b23f4e_fc85e1d3",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4546d0_12fa0fb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-20T21:57:44Z",
+      "side": 1,
+      "message": "\u003e The code RAM does not recommend doing the FETCH LOCK test. \n\nWhat does this mean?\n\n\u003e Because we don\u0027t know what instructions will be placed in the protected area.\n\nCorrect. But there shouldn\u0027t be any executable instructions placed in the protected area except for the ones that you\u0027re attempting to copy, right?",
+      "parentUuid": "21fa312f_d1013b12",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
