@@ -16,6 +16,29 @@
       "message": "Waiting on HW team to confirm desired thresholds.",
       "revId": "68f990b4450cdc1963057f3e87a4d514bb5a422f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba90042b_48a73b6c",
+        "filename": "zephyr/program/brox/program.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2024-06-20T20:15:02Z",
+      "side": 1,
+      "message": "AC value seems okay since we\u0027re regulating to 5A max. That said, I\u0027m not sure when this would trigger?\n\nDC value should be higher than this since this is 7us deglitch. Can we put at 12A? That is below the normal 15ms over current for the battery and is well above where we should be in normal situations.",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "68f990b4450cdc1963057f3e87a4d514bb5a422f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
