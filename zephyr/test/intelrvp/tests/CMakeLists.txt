@@ -16,3 +16,12 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_POWER app PRIVATE
 target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_POWER app PRIVATE
   mtlrvp/src/board_power.c
 )
+
+# Add sources for mtlrvp.c functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/intel_rvp_board_id.c"
+)
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/mtlrvp.c"
+)
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE mtlrvp/src/board_id.c)
