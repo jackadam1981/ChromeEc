@@ -7,6 +7,12 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/intelrvp/include")
 
+# Add sources for testing board_id functionality
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/intel_rvp_board_id.c"
+)
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE intelrvp/src/board_id.c)
+
 if((CONFIG_TEST_PROJECT_MTLRVPP_NPCX) OR (CONFIG_TEST_PROJECT_MTLRVPP_PD) OR (CONFIG_TEST_PROJECT_MTLRVPP_MCHP))
 # Add sources for board_power.c functionality and related platform-specific files
 target_sources_ifdef(CONFIG_TEST_PROJECT_MTL_BOARD_POWER app PRIVATE
@@ -14,5 +20,10 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_MTL_BOARD_POWER app PRIVATE
 )
 target_sources_ifdef(CONFIG_TEST_PROJECT_MTL_BOARD_POWER app PRIVATE
   ${PLATFORM_EC}/zephyr/test/power/mtl_power.c
+)
+
+# Add board specific sources for mtlrvp.c(board_id) functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/mtlrvp.c"
 )
 endif()
