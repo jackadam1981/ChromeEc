@@ -49,3 +49,25 @@ tests:
       - CONFIG_TEST_PROJECT_MTLRVPP_NPCX=y
       - CONFIG_TEST_PROJECT_BOARD_ID=y
       - CONFIG_GPIO_EMUL=y
+
+  intelrvp.mtlrvp_npcx.tcpc:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp_npcx/tcpc_gpio.dtsi
+      - boards/mtlrvp_npcx/tcpc_interrupts.dtsi
+      - boards/mtlrvp_npcx/tcpc_i2c.dtsi
+      - boards/mtlrvp_npcx/tcpc_ioex.dtsi
+      - boards/mtlrvp_npcx/i2c_charger.dtsi
+      - boards/mtlrvp/usbc.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_NPCX=y
+      - CONFIG_TEST_PROJECT_TCPC=y
+      - CONFIG_PLATFORM_EC_USB_MUX=y
+      - CONFIG_EMUL=y
+      - CONFIG_GPIO_EMUL=y
+      - CONFIG_I2C_EMUL=y
+      - CONFIG_EMUL_TCPCI=y
+      - CONFIG_PLATFORM_EC_USBC=y
+      - CONFIG_PLATFORM_EC_USBC_PPC=y
+      - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
