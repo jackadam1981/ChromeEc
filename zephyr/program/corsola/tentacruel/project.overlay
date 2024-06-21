@@ -32,6 +32,14 @@
 		bma4xx-int = &lid_accel;
 	};
 
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_usb_c0: usb-c0 {
+			i2c-port = <&i2c5>;/*2->5*/
+		};
+	};
+
 	named-gpios {
 		/delete-node/ usb_c0_ppc_bc12_int_odl;
 
@@ -439,7 +447,7 @@
 	};
 };
 
-&i2c2 {
+&i2c5 {
 	bc12_port0: pi3usb9201@5f {
 		compatible = "pericom,pi3usb9201";
 		status = "okay";
