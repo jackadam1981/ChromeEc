@@ -24,8 +24,9 @@ static const struct input_kbd_matrix_common_config kbd_cfg = {
 static const struct device *const fake_dev =
 	DEVICE_DT_GET(DT_NODELABEL(fake_input_device));
 
-DEVICE_DT_DEFINE(DT_INST(0, vnd_input_device), NULL, NULL, NULL, &kbd_cfg,
-		 PRE_KERNEL_1, CONFIG_KERNEL_INIT_PRIORITY_DEVICE, NULL);
+DEVICE_DT_DEFINE(DT_INST(0, vnd_keyboard_input_device), NULL, NULL, NULL,
+		 &kbd_cfg, PRE_KERNEL_1, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
+		 NULL);
 
 FAKE_VOID_FUNC(keyboard_state_changed, int, int, int);
 
@@ -133,6 +134,54 @@ uint8_t keyboard_get_rows(void);
 ZTEST(keyboard_input, test_get_rows)
 {
 	zassert_equal(keyboard_get_rows(), 99);
+}
+
+extern uint8_t keyboard_cols;
+
+ZTEST(keyboard_input, test_keyboard_cols)
+{
+	zassert_equal(keyboard_cols, 10);
+}
+
+#include <zephyr/shell/shell_dummy.h>
+
+ZTEST(keyboard_input, test_ksstate)
+{
+	const struct shell *shell_zephyr = shell_backend_dummy_get_ptr();
+	const char *outbuffer;
+	size_t buffer_size;
+
+	/* Give the backend time to initialize */
+	k_sleep(K_MSEC(100));
+
+	shell_backend_dummy_clear_output(shell_zephyr);
+
+	zassert_ok(shell_execute_cmd(shell_zephyr, "ksstate"), NULL);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(
+		strstr(outbuffer, "Keyboard scan disable mask: 0x00000000"));
+
+	shell_backend_dummy_clear_output(shell_zephyr);
+
+	keyboard_scan_enable(0, KB_SCAN_DISABLE_A);
+
+	zassert_ok(shell_execute_cmd(shell_zephyr, "ksstate"), NULL);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(
+		strstr(outbuffer, "Keyboard scan disable mask: 0x00000001"));
+
+	keyboard_scan_enable(1, KB_SCAN_DISABLE_A);
+
+	zassert_ok(shell_execute_cmd(shell_zephyr, "ksstate"), NULL);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(
+		strstr(outbuffer, "Keyboard scan disable mask: 0x00000000"));
 }
 
 static void reset(void *fixture)
