@@ -22,6 +22,30 @@
       },
       "revId": "c8d598822159360c0a70f5af9880c3e6aa4245b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9caa5076_a257c2a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-21T08:24:41Z",
+      "side": 1,
+      "message": "Yes, it is the counter test, which I added in the previous CL. \n\nThe RTC acts as a `counter`, and the counter API is used to [set an alarm](https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/timer/cortex_m_systick.c#L251) and wake up CPU.\n\nAdditionally, there is the [COUNTER_RTC_STM32_SUBSECONDS](https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/counter/Kconfig.stm32_rtc#L26) config to also used the subsecond register, which increases resolution of the counter (1s tick -\u003e 1/16000s tick IIRC). It is set for the counter tests.",
+      "parentUuid": "b3046020_399a2b5a",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "c8d598822159360c0a70f5af9880c3e6aa4245b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
