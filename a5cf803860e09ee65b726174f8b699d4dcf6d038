@@ -39,6 +39,23 @@
       "message": "Retry merging by adding +1 to Code-Coverage also",
       "revId": "a5cf803860e09ee65b726174f8b699d4dcf6d038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d223f364_698185fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-06-21T20:10:06Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this code so I can\u0027t +2 this change, but you\u0027re blocked on adding tests for the new code that\u0027s being added. Please reach out directly to either myself, Tristan, or Jeremy to get help writing a test for this CL if you need it.",
+      "revId": "a5cf803860e09ee65b726174f8b699d4dcf6d038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
