@@ -52,3 +52,9 @@ tests:
       - CONFIG_PLATFORM_EC_USBC=y
       - CONFIG_PLATFORM_EC_USBC_PPC=y
       - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
+
+  intelrvp.mtlrvp_pd.pd:
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_PD=y
+      - CONFIG_TEST_PROJECT_PD=y
