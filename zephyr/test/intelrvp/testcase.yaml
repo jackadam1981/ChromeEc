@@ -71,3 +71,26 @@ tests:
       - CONFIG_PLATFORM_EC_USBC=y
       - CONFIG_PLATFORM_EC_USBC_PPC=y
       - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
+
+  intelrvp.mtlrvp_mchp.chg_usb_pd_mecc_1_1:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp/usbc.dtsi
+      - boards/mtlrvp_npcx/tcpc_ioex.dtsi
+      - boards/mtlrvp_mchp/mtlrvp_mchp.dtsi
+      - boards/mtlrvp_mchp/gpio.dtsi
+      - boards/mtlrvp_mchp/i2c_charger.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_MCHP=y
+      - CONFIG_TEST_PROJECT_CHG_USB_PD_MECC=y
+      - CONFIG_PLATFORM_EC_USB_MUX=y
+      - CONFIG_EMUL=y
+      - CONFIG_GPIO_EMUL=y
+      - CONFIG_I2C_EMUL=y
+      - CONFIG_EMUL_TCPCI=y
+      - CONFIG_PLATFORM_EC_USBC=y
+      - CONFIG_PLATFORM_EC_USBC_PPC=y
+      - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
+      - CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG=y
+      - CONFIG_PLATFORM_EC_TCPC_INTERRUPT=n
