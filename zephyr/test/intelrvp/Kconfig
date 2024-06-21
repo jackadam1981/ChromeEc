@@ -22,6 +22,11 @@ config TEST_PROJECT_MTLRVPP_PD
 	help
 	  Enable tests specific to the mtlrvpp_pd board variant.
 
+config TEST_PROJECT_MTLRVPP_MCHP
+	bool "Enable mtlrvpp_pd-specific tests"
+	help
+	  Enable tests specific to the mtlrvpp_pd board variant.
+
 endchoice
 
 config TEST_PROJECT_NAME
@@ -53,5 +58,10 @@ config TEST_PROJECT_PD
     bool "Run tests for pd.c"
     help
         Include pd.c (power delivery) into the binary and test its functions.
+
+config TEST_PROJECT_CHG_USB_PD_MECC
+    bool "Run tests for chg_usb_pd_mecc_1_1.c"
+    help
+        Include chg_usb_pd_mecc_1_1.c into the binary and test its functions.
 
 source "Kconfig.zephyr"
