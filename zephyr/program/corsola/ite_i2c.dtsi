@@ -76,7 +76,7 @@
 	/* EC_I2C_BATTERY */
 	label = "I2C_BATTERY";
 	status = "okay";
-	clock-frequency = <50000>;
+	clock-frequency = <I2C_BITRATE_STANDARD>;
 	pinctrl-0 = <&i2c1_clk_gpc1_default
 		     &i2c1_data_gpc2_default>;
 	pinctrl-names = "default";
@@ -84,14 +84,31 @@
 };
 
 &i2c2 {
+	/* EMPTY */
+	label = "EMPTY";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	pinctrl-0 = <&i2c5_clk_gpa4_default
+		     &i2c5_data_gpa5_default>;
+	pinctrl-names = "default";
+	scl-gpios = <&gpioa 4 0>;
+	sda-gpios = <&gpioa 5 0>;
+	channel-switch-sel = <I2C_CHF_LOCATE>;
+	/delete-property/ fifo-enable;
+};
+
+&i2c5 {
 	/* EC_I2C_USB_C0 */
 	label = "I2C_USB_C0";
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_FAST>;
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>; /* 1MHz */
 	pinctrl-0 = <&i2c2_clk_gpf6_default
 		     &i2c2_data_gpf7_default>;
 	pinctrl-names = "default";
-	/delete-property/ fifo-enable;
+	prescale-scl-low = <1>;
+	scl-gpios = <&gpiof 6 0>;
+	sda-gpios = <&gpiof 7 0>;
+	channel-switch-sel = <I2C_CHC_LOCATE>;
 
 	bc12_ppc_port0: rt1739@70 {
 		compatible = "richtek,rt1739-bc12", "richtek,rt1739-ppc";
