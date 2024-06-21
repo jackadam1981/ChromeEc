@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9e41cb3_d6bbaf30",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-21T02:05:41Z",
+      "side": 1,
+      "message": "For b/325073964 is caused by the Manuf or Device name not found after \"Battery presence changed: 1-\u003e1 0x0-\u003e0x2\", I add this to make the retries only after BATT_FLAG_RESPONSIVE changed from 0x0 to 0x2.\nI think that Manuf/Device name not found is expected after BATT_FLAG_RESPONSIVE is 0x0.",
+      "parentUuid": "6921b642_393de748",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 41
+      },
+      "revId": "fed9bbc20422354c4f7a4eedf1fd0e0f44d97d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a1709ef_d1a70f26",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-20T22:56:39Z",
       "side": 1,
       "message": "This is initially false. So, you need to initialize it to true or revert the logic (e.g. batt_initialized).",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 15
+      },
+      "revId": "fed9bbc20422354c4f7a4eedf1fd0e0f44d97d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1540f766_8e8a4ea8",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-21T02:05:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0a1709ef_d1a70f26",
       "range": {
         "startLine": 246,
         "startChar": 5,
