@@ -1,0 +1,132 @@
+/* Copyright 2024 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <dt-bindings/gpio_defines.h>
+
+/ {
+        gpio_140_176: gpio@1400 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x1400 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <16>;
+	};
+
+	gpio_240_276: gpio@2400 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x2400 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <8>;
+	};
+
+	gpio_200_236: gpio@2000 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x2000 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <32>;
+	};
+
+	gpio_000_036: gpio@1000 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0x1000 0x4>;
+		rising-edge;
+		falling-edge;
+		high-level;
+		low-level;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <32>;
+	};
+
+	named-gpios {
+		usbc_tcpc_alrt_p0: usbc-tcpc-alrt-p0 {
+			gpios = <&gpio_140_176 3 (GPIO_INPUT | \
+				GPIO_ACTIVE_LOW)>;
+		}; /* GPIO143 */
+		/* NOTE: Netname is USBC_TCPC_PPC_ALRT_P0 */
+		usb_c0_c1_tcpc_rst_odl: usb-c0-c1-tcpc-rst-odl {
+			gpios = <&gpio_240_276 0 GPIO_ODR_HIGH>;
+		}; /* GPIO240 */
+		/* NOTE: Netname is USBC_TCPC_ALRT_P1 */
+		usbc_tcpc_ppc_alrt_p0: usbc-tcpc-ppc-alrt-p0 {
+			gpios = <&gpio_240_276 1 (GPIO_INPUT | \
+				GPIO_ACTIVE_LOW)>;
+		}; /* GPIO241 */
+		usbc_tcpc_ppc_alrt_p1: usbc-tcpc-ppc-alrt-p1 {
+			gpios = <&gpio_140_176 13 (GPIO_INPUT | \
+				GPIO_ACTIVE_LOW)>;
+		}; /* GPIO155 */
+		usbc_tcpc_alrt_p2: usbc-tcpc-alrt-p2 {
+			gpios = <&gpio_200_236 17 GPIO_INPUT>;
+		}; /* GPIO221 */
+		/* NOTE: Netname is USBC_TCPC_PPC_ALRT_P3 */
+		usbc_tcpc_alrt_p3: usbc-tcpc-alrt-p3 {
+			gpios = <&gpio_000_036 28 GPIO_INPUT>;
+		}; /* GPIO034 */
+
+		usb_c0_hb_retimer_ls_en: usb-c0-hbr-ls-en {
+			gpios = <&ioex_c0 2 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_HBR_LS_EN";
+			no-auto-init;
+		};
+		usb_c0_hb_retimer_rst: usb-c0-hbr-rst {
+			gpios = <&ioex_c0 3 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_HBR_RST";
+			no-auto-init;
+		};
+		usb_c1_hb_retimer_ls_en: usb-c1-hbr-ls-en {
+			gpios = <&ioex_c1 2 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C1_HBR_LS_EN";
+			no-auto-init;
+		};
+		usb_c1_hb_retimer_rst: usb-c1-hbr-rst {
+			gpios = <&ioex_c1 3 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C1_HBR_RST";
+			no-auto-init;
+		};
+		usb_c2_hb_retimer_rst: usb-c2-hbr-rst {
+			gpios = <&ioex_c2_port1 1 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C2_HBR_RST";
+			no-auto-init;
+		};
+		usb_c2_hb_retimer_ls_en: usb-c2-hbr-ls-en {
+			gpios = <&ioex_c2_port2 0 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C2_HBR_LS_EN";
+			no-auto-init;
+		};
+		usb_c3_hb_retimer_rst: usb-c3-hbr-rst {
+			gpios = <&ioex_c2_port1 3 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C3_HBR_RST";
+			no-auto-init;
+		};
+		usb_c3_hb_retimer_ls_en: usb-c3-hbr-ls-en {
+			gpios = <&ioex_c2_port3 3 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C3_HBR_LS_EN";
+			no-auto-init;
+		};
+	};
+};
