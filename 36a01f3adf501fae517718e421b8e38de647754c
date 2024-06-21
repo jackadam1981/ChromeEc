@@ -22,6 +22,30 @@
       },
       "revId": "36a01f3adf501fae517718e421b8e38de647754c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66cf0204_b052580b",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-21T08:32:04Z",
+      "side": 1,
+      "message": "My assumption is that we want to test only functions implemented in EC repo. We use only [strcasecmp](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/builtin/stdlib.c;l\u003d110).\n\nDo you want to also test stdlib function provided by an external lib?\n\nI agree, the comment was unclear, updated.",
+      "parentUuid": "ebe16ced_a7e1ff88",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "36a01f3adf501fae517718e421b8e38de647754c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
