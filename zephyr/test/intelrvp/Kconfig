@@ -38,5 +38,9 @@ config TEST_PROJECT_BOARD_ID
 	help
 	  Run board ID test for MTLRVP.
 
+config TEST_PROJECT_TCPC
+    bool "Run tests for tcpc.c"
+    help
+        Include tcpc.c into the binary and test its functions.
 
 source "Kconfig.zephyr"
