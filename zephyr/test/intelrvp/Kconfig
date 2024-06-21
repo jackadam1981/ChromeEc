@@ -16,6 +16,12 @@ config TEST_PROJECT_MTLRVPP_NPCX
 	bool "Enable mtlrvpp_npcx-specific tests"
 	help
 	  Enable tests specific to the mtlrvpp_npcx board variant.
+
+config TEST_PROJECT_MTLRVPP_PD
+	bool "Enable mtlrvpp_pd-specific tests"
+	help
+	  Enable tests specific to the mtlrvpp_pd board variant.
+
 endchoice
       
 config TEST_PROJECT_NAME
@@ -42,5 +48,10 @@ config TEST_PROJECT_TCPC
     bool "Run tests for tcpc.c"
     help
         Include tcpc.c into the binary and test its functions.
+
+config TEST_PROJECT_PD
+    bool "Run tests for pd.c"
+    help
+        Include pd.c (power delivery) into the binary and test its functions.
 
 source "Kconfig.zephyr"
