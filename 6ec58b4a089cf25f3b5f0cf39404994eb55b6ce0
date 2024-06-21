@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fe50a6c_1e9858fd",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-21T06:36:22Z",
+      "side": 1,
+      "message": "The part of this is to test the lock protection features. Data can still be written in the fetch lock protection area. Data cannot be written in the write lock protection area.",
+      "parentUuid": "3ab3d95a_07055186",
+      "range": {
+        "startLine": 166,
+        "startChar": 13,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "6ec58b4a089cf25f3b5f0cf39404994eb55b6ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e26f298d_fd8fd24b",
         "filename": "test/ram_lock.c",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-20T21:57:44Z",
       "side": 1,
       "message": "How about we just generate and copy the assembly instructions into an array for the trivial function you are trying to call:\n\n```\nstatic int func1(void)\n{\n\treturn EC_SUCCESS;\n}\n```\n\ne.g., generate the assembly and then copy the instructions into an array (with an annotation of what each instruction is):\n\n```\nrm -rf build \u0026\u0026 make BOARD\u003dhelipilot test-ram_lock -j\nllvm-objdump -S -d ./build/helipilot/ram_lock/RW/ram_lock.RW.elf\n```\n\nIt looks like we can implement it with two instructions:\n\n```\n10085818 \u003cfunc1\u003e:\n;       return EC_SUCCESS;\n10085818: 2000          movs    r0, #0x0\n1008581a: 4770          bx      lr\n```\n\nI think that will be a lot easier to read than trying to hijack an existing unrelated section (`.lowpower_ram`).",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 38
+      },
+      "revId": "6ec58b4a089cf25f3b5f0cf39404994eb55b6ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7198c97e_214a922d",
+        "filename": "test/ram_lock.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-21T06:36:22Z",
+      "side": 1,
+      "message": "Have any example code to do what you say? Then, I can reference it to revise the unit test. In addition, will using machine code directly make it difficult to read? In this case, would it be a better way to create another section?",
+      "parentUuid": "e26f298d_fd8fd24b",
       "range": {
         "startLine": 183,
         "startChar": 4,

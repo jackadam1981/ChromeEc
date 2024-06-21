@@ -232,6 +232,24 @@
       "parentUuid": "21fa312f_d1013b12",
       "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32f7919_f9f43b14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-06-21T06:36:22Z",
+      "side": 1,
+      "message": "\u003e What does this mean?\n\nWhat I want to express is that the fetch lock should not be set in code ram. If you need to set the fetch lock in the code RAM, ensure that the locked area only contains the instructions it wants to lock.\n\n\u003e Correct. But there shouldn\u0027t be any executable instructions placed in the protected area except for the ones that you\u0027re attempting to copy, right? \n\nYes. Thus, have revised the unit test to avoid any executable instructions placed in the protected area except for the ones that attempt to block.",
+      "parentUuid": "8e4546d0_12fa0fb9",
+      "revId": "ca97c6a92d7748db4166956b4fb89ae270c5bb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
