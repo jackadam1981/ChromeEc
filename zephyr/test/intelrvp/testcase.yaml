@@ -59,6 +59,16 @@ tests:
       - CONFIG_TEST_PROJECT_MTLRVPP_PD=y
       - CONFIG_TEST_PROJECT_PD=y
 
+  intelrvp.mtlrvp_mchp.board_id:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp_mchp/board_id.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_MCHP=y
+      - CONFIG_TEST_PROJECT_BOARD_ID=y
+      - CONFIG_GPIO_EMUL=y
+
   intelrvp.mtlrvp_mchp.chg_usb_pd_mecc_1_1:
     extra_dtc_overlay_files:
       - boards/native_sim.overlay
