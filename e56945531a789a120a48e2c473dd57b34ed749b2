@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7f3bd7_60b418d5",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-21T17:13:23Z",
+      "side": 1,
+      "message": "This should be a #define (same with per loop waits).\n\n```suggestion\n#define SYNC_CMD_TIMEOUT_MS 1200\n\ttimeout \u003d sys_timepoint_calc(K_MSEC(SYNC_CMD_TIMEOUT_MS));\n```",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6555cc2a_35c19fbf",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-21T17:13:23Z",
+      "side": 1,
+      "message": "This seems like a very short wait to query the register. Will this cause any starvation issues to the PDC or are register reads basically free?\n\nAlso please use #define for this constant.",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02201a08_d59c09b7",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-21T17:13:23Z",
+      "side": 1,
+      "message": "Why wait after completion?",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b357b171_8164c258",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-21T17:13:23Z",
+      "side": 1,
+      "message": "Are we observing the I2C transaction itself failing? Contention with another thread within the EC?\n\nIMO the loop should instead be:\n* Write to register\n* Wait 500ms for bootloader mode\n* Try to read the mode register to see if we succeeded (200ms timeout)\n* Loop again to try to enter bootloader mode.",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d09d2dc_b3f2741b",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-21T17:13:23Z",
+      "side": 1,
+      "message": "Missing return",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
