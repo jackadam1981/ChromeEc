@@ -19,6 +19,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ##args)
 
+#define KB_DISCRETE_I2C_ADDR_FLAGS 0x39
+
 static int it8801_ioex_set_level(int ioex, int port, int mask, int value);
 static void it8801_ioex_event_handler(void);
 DECLARE_DEFERRED(it8801_ioex_event_handler);
