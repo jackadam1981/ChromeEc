@@ -35,3 +35,9 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/tcpc.c"
 )
 target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE mtlrvp_npcx/src/tcpc.c)
+
+# Add sources for pd.c (power delivery) functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_PD app PRIVATE mtlrvp_pd/src/pd.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_PD app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/pd.c"
+)
