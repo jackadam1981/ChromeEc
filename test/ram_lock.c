@@ -178,12 +178,22 @@ test_static int test_ram_fetch_protect(uint32_t addr)
 {
 	uintptr_t __ram_test_addr = addr;
 	int (*__test_fptr)(void) = (int (*)(void))(__ram_test_addr | 0x01);
-	int i;
 
-	/* Copy the func1 to assigned address */
-	for (i = 0; i < &__flash_lpfw_end - &__flash_lpfw_start; i++) {
-		*((uint32_t *)__ram_test_addr + i) = *(&__flash_lpfw_start + i);
-	}
+	/*
+	 * Assembly for the following simple function:
+	 *
+	 *  int simple_function()
+	 * {
+	 *	return EC_SUCCESS;
+	 * }
+	 */
+	uint16_t simple_function[] = {
+		0x2000, /* movs    r0, #0x0 */
+		0x4770, /* bx      lr       */
+	};
+
+	/* Copy simple_function to assigned address */
+	memcpy(__ram_test_addr, simple_function, sizeof(simple_function));
 
 	/* Execute instruction and it can be run */
 	TEST_EQ(__test_fptr(), EC_SUCCESS, "%d");
