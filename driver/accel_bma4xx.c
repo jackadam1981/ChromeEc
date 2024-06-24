@@ -23,7 +23,9 @@
 
 #include <motion_sense_fifo.h>
 
-#ifdef CONFIG_ACCEL_BMA4XX_INT_EVENT
+#if defined(CONFIG_ACCEL_BMA4XX_INT_EVENT) ||         \
+	defined(CONFIG_ACCEL_BMA4XX_LID_INT_EVENT) || \
+	defined(CONFIG_ACCEL_BMA4XX_BASE_INT_EVENT)
 #define BMA4XX_USE_INTERRUPTS
 #endif
 
@@ -605,7 +607,22 @@ test_mockable void bma4xx_interrupt(enum gpio_signal signal)
 {
 	__atomic_store_n(&last_irq_timestamp, __hw_clock_source_read(),
 			 __ATOMIC_RELAXED);
+#ifdef CONFIG_BMA4XX_MULTIPLE_INTERRUPTS
+	switch (signal) {
+	case GPIO_LID_ACCEL_INT_L:
+		task_set_event(TASK_ID_MOTIONSENSE,
+			       CONFIG_ACCEL_BMA4XX_LID_INT_EVENT);
+		break;
+	case GPIO_BASE_ACCEL_INT_L:
+		task_set_event(TASK_ID_MOTIONSENSE,
+			       CONFIG_ACCEL_BMA4XX_BASE_INT_EVENT);
+		break;
+	default:
+		break;
+	}
+#else
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_BMA4XX_INT_EVENT);
+#endif
 }
 
 /* Process FIFO data read from accel and push data to host */

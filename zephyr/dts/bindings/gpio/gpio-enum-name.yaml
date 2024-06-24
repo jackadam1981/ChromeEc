@@ -24,6 +24,7 @@ properties:
       - GPIO_AP_IN_SLEEP_L
       - GPIO_AP_RST_L
       - GPIO_AP_SUSPEND
+      - GPIO_BASE_ACCEL_INT_L
       - GPIO_BATT_PRES_ODL
       - GPIO_BC12_DET_EN
       - GPIO_BOARD_VERSION1
