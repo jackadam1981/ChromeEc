@@ -46,6 +46,30 @@
       },
       "revId": "36a01f3adf501fae517718e421b8e38de647754c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e6e5b6_10d13669",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-24T16:20:08Z",
+      "side": 1,
+      "message": "\u003e Do you want to also test stdlib function provided by an external lib?\n\nIdeally we want test coverage of the stdlib functions that we use, regardless of where they are implemented. For example, if we change our libc from [newlib to llvm-libc](http://go/llvm-libc-chromeos), we want to make sure that the new implementation behaves in the same way.\n\nI think it would be nice if we could upstream all of these tests. It looks like there is interest in having them: https://github.com/zephyrproject-rtos/zephyr/issues/51982.",
+      "parentUuid": "66cf0204_b052580b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "36a01f3adf501fae517718e421b8e38de647754c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
