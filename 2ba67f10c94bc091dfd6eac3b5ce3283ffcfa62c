@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a11ba2_d1caf154",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-24T23:22:36Z",
+      "side": 1,
+      "message": "Can you please explain this? Why do you cancel the refresh key unconditionally? A refresh key is one of the boot keys.",
+      "range": {
+        "startLine": 834,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 6
+      },
+      "revId": "2ba67f10c94bc091dfd6eac3b5ce3283ffcfa62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
