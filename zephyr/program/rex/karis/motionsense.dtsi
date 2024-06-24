@@ -13,7 +13,8 @@
 		 * by alias. Using the alias, each driver creates
 		 * its own <>_INT_EVENT.
 		 */
-		bma4xx-int = &lid_accel;
+		bma4xx-lid-int = &lid_accel;
+		bma4xx-base-int = &base_accel;
 	};
 
 	/*
