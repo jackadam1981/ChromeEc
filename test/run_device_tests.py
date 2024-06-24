@@ -345,6 +345,8 @@ class AllTests:
             ),
             TestConfig(
                 test_name="fpsensor_auth_commands", exclude_boards=[HELIPILOT]
+            TestConfig(test_name="fpsensor_auth_commands_otp",
+                exclude_boards=[BLOONCHIPPER, DARTMONKEY],
             ),
             TestConfig(test_name="fpsensor_auth_crypto_stateful"),
             TestConfig(

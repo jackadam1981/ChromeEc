@@ -13,3 +13,8 @@
 #define CONFIG_TEST_TASK_LIST \
 	TASK_TEST(FPSENSOR, fp_task_simulate, NULL, TASK_STACK_SIZE)
 #endif
+
+#if 0
+#undef CONSOLE_TASK_STACK_SIZE
+#define CONSOLE_TASK_STACK_SIZE 6144
+#endif

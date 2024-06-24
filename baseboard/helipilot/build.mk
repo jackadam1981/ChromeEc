@@ -79,6 +79,13 @@ test-list-y = \
        utils \
        utils_str
 
+# This test calls fp_reset_and_clear_context(), which calls private driver
+# functions.
+ifeq ($(HAVE_PRIVATE),y)
+test-list-y += \
+       fpsensor_auth_commands_otp
+endif
+
 # This is relative to the EC root directory.
 ifneq ($(BOARD_BUCCANEER),y)
 -include ../ec-private/board/helipilot/build.mk
