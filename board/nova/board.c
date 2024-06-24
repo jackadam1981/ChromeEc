@@ -16,6 +16,7 @@
 #include "driver/als_tcs3400.h"
 #include "driver/cec/bitbang.h"
 #include "driver/tcpm/tcpci.h"
+#include "ec_commands.h"
 #include "fw_config.h"
 #include "gpio.h"
 #include "gpio_signal.h"
@@ -25,6 +26,7 @@
 #include "power_button.h"
 #include "switch.h"
 #include "throttle_ap.h"
+#include "usb_mux.h"
 
 #include <stdbool.h>
 
@@ -306,3 +308,18 @@ static void power_monitor(void)
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
+
+/* workaround for ap need get mux info from ec */
+static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_usb_pd_mux_info *r = args->response;
+
+	CPRINTS("%s", __func__);
+
+	r->flags = 0;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO, hc_usb_pd_mux_info,
+		     EC_VER_MASK(0));
