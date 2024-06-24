@@ -34,6 +34,24 @@
       "parentUuid": "bf4ef5be_8fb1faae",
       "revId": "5921fcab332b82bf59dc497aba3741579396898e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99cc4e6b_1b59b4a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-06-24T13:25:45Z",
+      "side": 1,
+      "message": "make sure to add a `LOW_COVERAGE_REASON` though or it\u0027ll get added again",
+      "parentUuid": "4c796e18_d9cbc2f9",
+      "revId": "5921fcab332b82bf59dc497aba3741579396898e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
