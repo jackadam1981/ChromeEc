@@ -46,6 +46,30 @@
       },
       "revId": "c8d598822159360c0a70f5af9880c3e6aa4245b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75007d06_15b7e8d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-24T16:38:58Z",
+      "side": 1,
+      "message": "I was thinking more about the `sec_to_date` and `date_to_sec`. Are there any equivalent functions in Zephyr? Do they have tests?\n\nFor the \"RTC is handled by Zephyr drivers\" comment in the code and the commit message, can you add the name of the test like we did with the [other tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d379;drc\u003d682542f43a11b6f345eda5c7ad63f54229aba74b)?",
+      "parentUuid": "9caa5076_a257c2a8",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "c8d598822159360c0a70f5af9880c3e6aa4245b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
