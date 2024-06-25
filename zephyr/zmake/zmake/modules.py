@@ -124,5 +124,5 @@ def default_projects_dirs(modules):
     ret = []
     if "ec" in modules:
         ret.append(modules["ec"] / "zephyr" / "program")
-        ret.append(modules["ec"] / "private" / "zephyr" / "program")
+        ret.append(modules["ec"] / ".." / "ec-private" / "zephyr" / "program")
     return ret
