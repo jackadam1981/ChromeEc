@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4fae44_85a94745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-25T22:14:47Z",
+      "side": 1,
+      "message": "I believe the package I am building is `sys-firmware/chromeos-zephyr-fpmcu-release-bloonchipper`, which only uses the release branch files. It is not able to find the fpc module if I do not add those check statements to `FPC_EXISTS`.",
+      "parentUuid": "39d8894f_5e3378e4",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "03d9e6737c88480789174fdf790100df1a6c9100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0e745b96_6d04003b",
