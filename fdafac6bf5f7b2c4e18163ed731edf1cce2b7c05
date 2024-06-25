@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba22047a_53c8cf5d",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-25T23:38:00Z",
+      "side": 1,
+      "message": "@patrykd@google.com Is this line of code used by any eBuild package? How about `sys-firmware/chromeos-zephyr-fpmcu-release-bloonchipper`?",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 78
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8d1b2eb8_6de2070d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/modules.py",
+              "range": {
+                "startLine": 127,
+                "startChar": 0,
+                "endLine": 128,
+                "endChar": 0
+              },
+              "replacement": "        ret.append(modules[\"ec\"] / \"..\" / \"ec-private\" / \"zephyr\" / \"program\")  # pylint: disable\u003dline-too-long\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
