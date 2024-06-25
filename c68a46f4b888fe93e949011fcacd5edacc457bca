@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c469710_317d5edd",
+        "filename": "zephyr/drivers/usbc/Kconfig.pdc_trace",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-25T18:15:45Z",
+      "side": 1,
+      "message": "Use the built-in local log level mechanism and you can drop this Kconfig.\n\n```\nmodule \u003d USBC_PDC_TRACE_MSG\nmodule-str \u003d usbc_pdc_trace_msg\nsource \"subsys/logging/Kconfig.template.log_config\"\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "c68a46f4b888fe93e949011fcacd5edacc457bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da76a5f1_b8ae8dfb",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-25T18:15:45Z",
+      "side": 1,
+      "message": "Enable a local log level here.  Feel free to pick a shorter name for the local log level defined in the Kconfig file.\n```\nLOG_MODULE_REGISTER(pdc_trace, CONFIG_USBC_PDC_TRACE_MSG_LOG_LEVEL);\n```",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "c68a46f4b888fe93e949011fcacd5edacc457bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123f8632_3e27cee7",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-25T18:15:45Z",
+      "side": 1,
+      "message": "This zeroes out the lock.  I also don\u0027t see a call to `k_mutex_init`.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "c68a46f4b888fe93e949011fcacd5edacc457bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
