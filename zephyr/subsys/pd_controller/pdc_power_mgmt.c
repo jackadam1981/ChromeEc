@@ -1371,8 +1371,9 @@ static void pdc_src_attached_run(void *obj)
 		port->src_attached_local_state = SRC_ATTACHED_GET_VDO;
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){ .accept_pr_swap = 1,
-					   .swap_to_src = 0,
+					   .swap_to_src = 1,
 					   .swap_to_snk = 0 };
+		LOG_INF("PRS: SRC: set_pdr = 0x%x", port->pdr.raw_value >> 7);
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
 	case SRC_ATTACHED_GET_VDO:
@@ -1462,7 +1463,8 @@ static void pdc_snk_attached_run(void *obj)
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){ .accept_pr_swap = 1,
 					   .swap_to_src = 0,
-					   .swap_to_snk = 0 };
+					   .swap_to_snk = 1 };
+		LOG_INF("PRS: SNK: set_pdr = 0x%02x", port->pdr.raw_value >> 7);
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
 	case SNK_ATTACHED_READ_POWER_LEVEL:
@@ -1675,6 +1677,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_set_uor(port->pdc, port->uor);
 		break;
 	case CMD_PDC_SET_PDR:
+		LOG_INF("CMD_PDC_SET_PDR: set_pdr = 0x%x", port->pdr.raw_value >> 7);
 		rv = pdc_set_pdr(port->pdc, port->pdr);
 		break;
 	case CMD_PDC_GET_CONNECTOR_STATUS:
@@ -2585,6 +2588,7 @@ test_mockable void pdc_power_mgmt_request_data_swap(int port)
 static int pdc_power_mgmt_request_power_swap_intern(int port,
 						    enum pd_power_role role)
 {
+	LOG_INF("PRS_REQ: new role  = %d", role);
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
 		return 1;
@@ -2600,6 +2604,8 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 		pdc_data[port]->port.pdr.swap_to_snk = 1;
 		pdc_data[port]->port.pdr.swap_to_src = 0;
 	}
+
+	LOG_INF("PRS_REQ: set_pdr = 0x%x", pdc_data[port]->port.pdr.raw_value >> 7);
 
 	/* Block until command completes */
 	if (public_api_block(port, CMD_PDC_SET_PDR)) {
@@ -2626,6 +2632,8 @@ test_mockable void pdc_power_mgmt_request_power_swap(int port)
 		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
 		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+	} else {
+		LOG_INF("prs[%d]: port is neither sink or src connected", port);
 	}
 }
 
