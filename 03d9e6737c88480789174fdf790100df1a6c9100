@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d8894f_5e3378e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-25T20:27:16Z",
+      "side": 1,
+      "message": "\u003e based on the discussion with Patryk, there is a difference between locate from directory and locate from checkout\n\nI think the part I am confused about is the release branch vs `main` branch aspect. I see the [code for `locate_from_directory` and `locate_from_checkout` in `zmake.py` on `main`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/zmake.py;l\u003d188-193?q\u003dzmake.py).\n\nIs there a difference for the release build vs `main` branch build on specifying [`modules_dir`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/zmake.py;l\u003d188;drc\u003d6c41a4f1bdb7accb6522da4bfb8bac005f378509)?\n\n[Searching for `modules_dir`](https://source.chromium.org/search?q\u003dmodules_dir\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F), I see [`modules_dir` is specified by gitlab](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/.gitlab-ci.yml;l\u003d127-128;drc\u003df3b4190257ac7fb48144d9f132d6f54881b258c6), so maybe the difference here isn\u0027t \"release vs main\", but \"ebuild vs gitlab\"?",
+      "parentUuid": "417296d0_8b3b0ca9",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "03d9e6737c88480789174fdf790100df1a6c9100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0e745b96_6d04003b",
