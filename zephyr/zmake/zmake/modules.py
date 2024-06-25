@@ -35,7 +35,9 @@ known_modules = {
 
 FPC_EXISTS = os.path.exists(
     os.path.join(os.getcwd(), os.pardir, "fingerprint/fpc")
+    or os.path.join(os.getcwd(), "modules/fpc")
 )
+
 if FPC_EXISTS:
     known_modules["fpc"] = lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "fpc"
