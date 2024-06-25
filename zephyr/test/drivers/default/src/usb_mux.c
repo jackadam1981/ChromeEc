@@ -915,6 +915,59 @@ ZTEST(usb_init_mux, test_usb_mux_set_idle_mode)
 	zassert_ok(tcpci_emul_disconnect_partner(tcpci_emul));
 }
 
+/* Test host command set usb port connections */
+ZTEST(usb_init_mux, test_usb_port_connections_command)
+{
+	struct ec_params_usb_port_connections params;
+
+	/* Test invalid port parameter */
+	params.port = 5;
+	params.usb2_present = 0;
+	params.usb3_present = 0;
+	zassert_equal(EC_RES_INVALID_PARAM,
+		      ec_cmd_usb_port_connections(NULL, &params));
+
+	/* Set correct port for rest of the test, enable idling */
+	params.port = USBC_PORT_C1;
+	proxy_mux_0.flags |= USB_MUX_FLAG_CAN_IDLE;
+
+	/* Check that idle mode was entered when only usb 2 dev present */
+	params.usb2_present = 1;
+	params.usb3_present = 0;
+	zassert_equal(EC_RES_SUCCESS,
+		      ec_cmd_usb_port_connections(NULL, &params));
+	CHECK_PROXY_FAKE_CALL_CNT(proxy_set_idle_mode, NUM_OF_PROXY_CAN_IDLE);
+	zassert_equal(proxy_set_idle_mode_fake.arg1_history[0], true);
+	reset_proxy_fakes();
+
+	/* Check that idle mode was exited when no dev present */
+	params.usb2_present = 0;
+	params.usb3_present = 0;
+	zassert_equal(EC_RES_SUCCESS,
+		      ec_cmd_usb_port_connections(NULL, &params));
+	CHECK_PROXY_FAKE_CALL_CNT(proxy_set_idle_mode, NUM_OF_PROXY_CAN_IDLE);
+	zassert_equal(proxy_set_idle_mode_fake.arg1_history[0], false);
+	reset_proxy_fakes();
+
+	/* Check that idle mode was not entered when both devs present */
+	params.usb2_present = 1;
+	params.usb3_present = 1;
+	zassert_equal(EC_RES_SUCCESS,
+		      ec_cmd_usb_port_connections(NULL, &params));
+	CHECK_PROXY_FAKE_CALL_CNT(proxy_set_idle_mode, NUM_OF_PROXY_CAN_IDLE);
+	zassert_equal(proxy_set_idle_mode_fake.arg1_history[0], false);
+	reset_proxy_fakes();
+
+	/* Check that idle mode was not entered when usb3 dev present*/
+	params.usb2_present = 0;
+	params.usb3_present = 1;
+	zassert_equal(EC_RES_SUCCESS,
+		      ec_cmd_usb_port_connections(NULL, &params));
+	CHECK_PROXY_FAKE_CALL_CNT(proxy_set_idle_mode, NUM_OF_PROXY_CAN_IDLE);
+	zassert_equal(proxy_set_idle_mode_fake.arg1_history[0], false);
+	reset_proxy_fakes();
+}
+
 /* Test host command get mux info */
 ZTEST(usb_init_mux, test_usb_mux_hc_mux_info)
 {

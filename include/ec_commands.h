@@ -5985,6 +5985,13 @@ struct ec_response_usb_pd_power_info {
 	uint32_t max_power;
 } __ec_align4;
 
+#define EC_CMD_USB_PORT_CONNECTIONS 0x013F
+struct ec_params_usb_port_connections {
+	uint8_t port;
+	uint8_t usb2_present;
+	uint8_t usb3_present;
+} __ec_align1;
+
 /*
  * This command will return the number of USB PD charge port + the number
  * of dedicated port present.
