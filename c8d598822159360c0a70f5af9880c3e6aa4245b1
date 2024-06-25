@@ -94,6 +94,30 @@
       },
       "revId": "c8d598822159360c0a70f5af9880c3e6aa4245b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff2e173_fb565380",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-25T21:55:28Z",
+      "side": 1,
+      "message": "Thanks. Since the `timeutil_timegm` code looks platform-agnostic, the unit test should give us good confidence.",
+      "parentUuid": "f559c47d_f7f62e7e",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "c8d598822159360c0a70f5af9880c3e6aa4245b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
