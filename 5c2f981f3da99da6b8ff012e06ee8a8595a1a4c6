@@ -16,6 +16,29 @@
       "message": "Land next week",
       "revId": "5c2f981f3da99da6b8ff012e06ee8a8595a1a4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a297cf6_6324ba37",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6495,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-25T19:06:36Z",
+      "side": 1,
+      "message": "Has this been tested with the TI PDC?",
+      "range": {
+        "startLine": 6495,
+        "startChar": 0,
+        "endLine": 6495,
+        "endChar": 29
+      },
+      "revId": "5c2f981f3da99da6b8ff012e06ee8a8595a1a4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
