@@ -210,6 +210,10 @@ struct pdc_data_t {
 	union get_vdo_t vdo_req;
 	/* PDC event: Interrupt or Command */
 	struct k_event pdc_event;
+	/* Should use cached connector status change bits */
+	bool use_cached_conn_status_change;
+	/* Cached connector status for this connector. */
+	union connector_status_t cached_conn_status;
 };
 
 /**
@@ -360,6 +364,12 @@ static void st_irq_run(void *o)
 		/* Set CCI EVENT for vendor defined indicator (informs subsystem
 		 * that an interrupt occurred */
 		data->cci_event.vendor_defined_indicator = 1;
+
+		/* If a UCSI event is seen, stop using the cached connector
+		 * status change bits and re-read from PDC. */
+		if (pdc_interrupt.ucsi_event) {
+			data->use_cached_conn_status_change = false;
+		}
 
 		/* TODO(b/345783692): Handle other interrupt bits. */
 
@@ -1230,7 +1240,23 @@ static void st_task_wait_run(void *o)
 	case CMD_GET_CONNECTOR_STATUS:
 		offset = 1;
 		len = sizeof(union connector_status_t);
-		/* TODO(b/345783692): Cache result */
+
+		/* If we had previously cached the connnection status change,
+		 * append those bits in GET_CONNECTOR_STATUS. The PDC clears
+		 * these after the first read but we want these to be visible
+		 * until they are ACK-ed.
+		 */
+		if (data->use_cached_conn_status_change) {
+			*((uint16_t *)&cmd_data.data[offset]) |=
+				data->cached_conn_status
+					.raw_conn_status_change_bits;
+		}
+
+		/* Cache result of GET_CONNECTOR_STATUS and use this for
+		 * subsequent calls.
+		 */
+		memcpy(&data->cached_conn_status, &cmd_data.data[offset], len);
+		data->use_cached_conn_status_change = true;
 		break;
 	case CMD_GET_CABLE_PROPERTY:
 		offset = 1;
@@ -1334,7 +1360,11 @@ static int tps_ack_cc_ci(const struct device *dev,
 		return -EBUSY;
 	}
 
-	/* TODO(b/345783692): Implement */
+	/* Clear cached status bits with given mask. */
+	if (ci.raw_value) {
+		data->cached_conn_status.raw_conn_status_change_bits &=
+			~(ci.raw_value);
+	}
 
 	return 0;
 }
@@ -1689,6 +1719,7 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.plug_insert_or_removal = 1,
 		.power_swap_complete = 1,
 		.fr_swap_complete = 1,
+		.ucsi_event = 1,
 		.status_updated = 1,
 		.power_event_occurred_error = 1,
 		.externl_dcdc_event_received = 1,
