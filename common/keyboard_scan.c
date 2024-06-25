@@ -348,6 +348,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
+		//printk("--- drive_column: %d\n", c);
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
@@ -355,6 +356,7 @@ static int read_matrix(uint8_t *state, bool at_boot)
 		state[c] = keyboard_read_adc_rows();
 #else
 		state[c] = keyboard_raw_read_rows();
+		//printk("--- read row: %d state: 0x%x\n", c, state[c]);
 #endif
 
 		/* Use simulated keyscan sequence instead if testing active */

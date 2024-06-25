@@ -103,6 +103,7 @@ static int cros_kb_raw_ite_read_row(const struct device *dev)
 	const struct cros_kb_raw_ite_config *config = dev->config;
 	struct kscan_it8xxx2_regs *const inst = config->base;
 
+        printk("--- ite_read_row %02x\n", (inst->KBS_KSI) ^ 0xff);
 	/* Bits are active-low, so invert returned levels */
 	return ((inst->KBS_KSI) ^ 0xff);
 }
@@ -145,6 +146,7 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 	const struct cros_kb_raw_ite_config *config = dev->config;
 	struct kscan_it8xxx2_regs *const inst = config->base;
 
+	printk("---ite_drive_column: %d\n", col);
 	/* Tri-state all outputs */
 	if (col == KEYBOARD_COLUMN_NONE)
 		mask = 0xffff;
