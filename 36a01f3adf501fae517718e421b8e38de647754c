@@ -70,6 +70,30 @@
       },
       "revId": "36a01f3adf501fae517718e421b8e38de647754c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0674bf_2f02dc85",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-25T12:50:32Z",
+      "side": 1,
+      "message": "Ok, makes sense.\n\nI won\u0027t try to upstream the tests for now, because I feel like it would take much time.",
+      "parentUuid": "f1e6e5b6_10d13669",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "36a01f3adf501fae517718e421b8e38de647754c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
