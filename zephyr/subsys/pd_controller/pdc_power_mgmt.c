@@ -1371,7 +1371,7 @@ static void pdc_src_attached_run(void *obj)
 		port->src_attached_local_state = SRC_ATTACHED_GET_VDO;
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){ .accept_pr_swap = 1,
-					   .swap_to_src = 0,
+					   .swap_to_src = 1,
 					   .swap_to_snk = 0 };
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
@@ -1462,7 +1462,7 @@ static void pdc_snk_attached_run(void *obj)
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){ .accept_pr_swap = 1,
 					   .swap_to_src = 0,
-					   .swap_to_snk = 0 };
+					   .swap_to_snk = 1 };
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
 	case SNK_ATTACHED_READ_POWER_LEVEL:
@@ -2626,6 +2626,8 @@ test_mockable void pdc_power_mgmt_request_power_swap(int port)
 		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
 		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+	} else {
+		LOG_INF("C%d: prs request ignored, no USB-PD connection", port);
 	}
 }
 
