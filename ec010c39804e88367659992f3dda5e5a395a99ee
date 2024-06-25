@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f47d1f6_27c5d726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-06-25T16:31:10Z",
+      "side": 1,
+      "message": "Jett, we talked about potential security implications of an attacker setting this new variable to hijack communication between the AP and GSC.  Did you conclude that it was not in fact a concern?",
+      "revId": "ec010c39804e88367659992f3dda5e5a395a99ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
