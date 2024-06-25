@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31445e5_4fd5e30b",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-25T23:38:52Z",
+      "side": 1,
+      "message": "Done, added several macros for TI-prescribed delays",
+      "parentUuid": "ef7f3bd7_60b418d5",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6555cc2a_35c19fbf",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2b7017b_b4855f0f",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-25T23:38:52Z",
+      "side": 1,
+      "message": "I thought so too, but 200us is the polling interval that the Internal Flash Programming Guide flowchart has. I don\u0027t think there is harm in lowering the rate to, say, 1ms or 5ms other than possibly slowing down the update process.",
+      "parentUuid": "6555cc2a_35c19fbf",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02201a08_d59c09b7",
         "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2024-06-21T17:13:23Z",
       "side": 1,
       "message": "Why wait after completion?",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517a57bc_df81990a",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-25T23:38:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this anymore",
+      "parentUuid": "02201a08_d59c09b7",
       "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a9930d9_949713cd",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-25T23:38:52Z",
+      "side": 1,
+      "message": "Yes, I2C-level failure for sending the start command (returning -EIO). If the bus mutex is locked this thread will just block forever until it is released. I should take a saleae trace to see what\u0027s going on, but this is an effective workaround for now. The mode check is in a separate loop in case it takes longer than the published time to enter bootloader mode and we know at that point that the PDC acknowledged the TFUs command.",
+      "parentUuid": "b357b171_8164c258",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d09d2dc_b3f2741b",
         "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2024-06-21T17:13:23Z",
       "side": 1,
       "message": "Missing return",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5920ff59_429ad56b",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-25T23:38:52Z",
+      "side": 1,
+      "message": "Such a return statement would be unreachable. The compiler will raise an error if somebody ever adds some path to break out of the loop.",
+      "parentUuid": "6d09d2dc_b3f2741b",
       "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
