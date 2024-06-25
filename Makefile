@@ -24,7 +24,7 @@ BDIR:=$(wildcard board/$(BOARD))
 # The rule below is reserved for the SCP firmware branches and local builds.
 # DO NOT remove PBDIR and PDIR before you read the bug and make sure that's the
 # right thing to do.
-PBDIR:=$(wildcard ../private-*/board/$(BOARD))
+PBDIR:=$(wildcard ./private-*/board/$(BOARD))
 
 # We need either public, or private board directory, or both.
 ifeq (,$(BDIR)$(PBDIR))
