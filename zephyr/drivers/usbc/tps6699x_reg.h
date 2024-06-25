@@ -428,7 +428,7 @@ union reg_interrupt {
 		uint8_t sink_caps_msg_received : 1;
 
 		/* Bits 16 - 23 */
-		uint8_t reserved3 : 1;
+		uint8_t ucsi_event : 1;
 		uint8_t power_swap_rquested : 1;
 		uint8_t data_swap_requested : 1;
 		uint8_t reserved4 : 1;

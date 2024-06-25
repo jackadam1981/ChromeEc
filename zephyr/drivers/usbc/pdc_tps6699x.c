@@ -210,6 +210,10 @@ struct pdc_data_t {
 	union get_vdo_t vdo_req;
 	/* PDC event: Interrupt or Command */
 	struct k_event pdc_event;
+	/* Should calls to GET_CONNECTOR_STATUS use the cached value. */
+	bool use_cached_conn_status;
+	/* Cached connector status for this connector. */
+	union connector_status_t cached_conn_status;
 };
 
 /**
@@ -360,6 +364,12 @@ static void st_irq_run(void *o)
 		/* Set CCI EVENT for vendor defined indicator (informs subsystem
 		 * that an interrupt occurred */
 		data->cci_event.vendor_defined_indicator = 1;
+
+		/* If a UCSI event is seen, stop using the cached connector
+		 * status and re-read from PDC. */
+		if (pdc_interrupt.ucsi_event) {
+			data->use_cached_conn_status = false;
+		}
 
 		/* TODO(b/345783692): Handle other interrupt bits. */
 
@@ -513,7 +523,25 @@ static void st_idle_run(void *o)
 			task_ucsi(data, UCSI_GET_PDOS);
 			break;
 		case CMD_GET_CONNECTOR_STATUS:
-			task_ucsi(data, UCSI_GET_CONNECTOR_STATUS);
+			if (data->use_cached_conn_status) {
+				if (data->user_buf) {
+					memcpy(data->user_buf,
+					       &data->cached_conn_status,
+					       sizeof(data->cached_conn_status));
+				}
+
+				/* Command has completed */
+				data->cci_event.command_completed = 1;
+				/* Inform the system of the event */
+				call_cci_event_cb(data);
+
+				/* Re-run idle entry (since we stay in idle
+				 * state). */
+				st_idle_entry(data);
+				return;
+			} else {
+				task_ucsi(data, UCSI_GET_CONNECTOR_STATUS);
+			}
 			break;
 		case CMD_GET_ERROR_STATUS:
 			task_ucsi(data, UCSI_GET_ERROR_STATUS);
@@ -1230,7 +1258,10 @@ static void st_task_wait_run(void *o)
 	case CMD_GET_CONNECTOR_STATUS:
 		offset = 1;
 		len = sizeof(union connector_status_t);
-		/* TODO(b/345783692): Cache result */
+
+		/* Cache result of GET_CONNECTOR_STATUS. */
+		memcpy(&data->cached_conn_status, &cmd_data.data[offset], len);
+		data->use_cached_conn_status = true;
 		break;
 	case CMD_GET_CABLE_PROPERTY:
 		offset = 1;
@@ -1689,6 +1720,7 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.plug_insert_or_removal = 1,
 		.power_swap_complete = 1,
 		.fr_swap_complete = 1,
+		.ucsi_event = 1,
 		.status_updated = 1,
 		.power_event_occurred_error = 1,
 		.externl_dcdc_event_received = 1,
