@@ -29,7 +29,7 @@ def register_fpmcu_variant(
 
 FPC_EXISTS = os.path.exists(
     os.path.join(os.getcwd(), os.pardir, "fingerprint/fpc")
-)
+) or os.path.join(os.path.join(os.getcwd(), "modules/fpc"))
 
 variant_modules_list = ["hal_stm32", "cmsis"]
 
