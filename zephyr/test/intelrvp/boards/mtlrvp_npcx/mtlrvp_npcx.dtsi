@@ -5,6 +5,13 @@
 
 
  /{
+	named-gpios {
+		std_adp_prsnt: std-adp-prsnt {
+			gpios = <&gpioc 6 GPIO_INPUT>;
+			enum-name = "GPIO_DC_JACK_PRESENT";
+		};
+	};
+	
         pca95xx: pca95xx@22 {
 		compatible = "zephyr,gpio-emul";
 		reg = <0x22 0x4>;
