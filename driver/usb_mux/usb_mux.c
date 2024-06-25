@@ -16,6 +16,7 @@
 #include "queue.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -65,6 +66,9 @@ enum mux_config_type {
 	USB_MUX_CHIPSET_RESET,
 	USB_MUX_HPD_UPDATE,
 };
+
+static int configure_mux(int port, int index, enum mux_config_type config,
+			 mux_state_t *mux_state);
 
 /* Define a USB mux task ID for the purpose of linking */
 #ifndef HAS_TASK_USB_MUX
@@ -229,6 +233,10 @@ __maybe_unused void usb_mux_task(void *u)
 							       next.mux_mode);
 				else if (next.type == USB_MUX_INIT)
 					perform_mux_init(port);
+				else if (next.type == USB_MUX_CHIPSET_ACTIVE ||
+					 next.type == USB_MUX_CHIPSET_IDLE)
+					configure_mux(port, next.type,
+						      next.index, NULL);
 				else
 					CPRINTS("Error: Unknown mux task type:"
 						"%d",
@@ -623,6 +631,20 @@ bool usb_mux_set_completed(int port)
 	return !sets_pending;
 }
 
+__maybe_unused static void usb_retimer_set_idle_mode(int port, bool idle_mode)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+	enum mux_config_type type = idle_mode ? USB_MUX_CHIPSET_IDLE :
+						USB_MUX_CHIPSET_ACTIVE;
+
+	/* Block if we have no mux task, but otherwise queue it up and return */
+	if (IS_ENABLED(HAS_TASK_USB_MUX))
+		mux_task_enqueue(port, 0, type, 0, 0, 0);
+	else
+		configure_mux(port, 0, type, NULL);
+}
+
 static enum ec_error_list try_usb_mux_get(int port, mux_state_t *mux_state)
 {
 	if (port >= board_get_usb_pd_port_count())
@@ -924,6 +946,27 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_ACK, hc_usb_pd_mux_ack, EC_VER_MASK(0));
+
+static enum ec_status
+usb_port_connections_entry(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_port_connections *p = args->params;
+	uint8_t port_num = p->port;
+
+	if (port_num >= board_get_usb_pd_port_count())
+		return EC_RES_INVALID_PARAM;
+
+#ifdef CONFIG_USBC_RETIMER_INTEL_BB
+	if (p->usb2_present && !p->usb3_present)
+		usb_retimer_set_idle_mode(port_num, true);
+	else if (p->usb3_present || !p->usb2_present)
+		usb_retimer_set_idle_mode(port_num, false);
+#endif /*CONFIG_USBC_RETIMER_INTEL_BB*/
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PORT_CONNECTIONS, usb_port_connections_entry,
+		     EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_RETIMER
 static int console_command_retimer(int argc, const char **argv)
