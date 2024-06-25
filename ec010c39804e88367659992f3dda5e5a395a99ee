@@ -16,6 +16,24 @@
       "message": "Jett, we talked about potential security implications of an attacker setting this new variable to hijack communication between the AP and GSC.  Did you conclude that it was not in fact a concern?",
       "revId": "ec010c39804e88367659992f3dda5e5a395a99ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9ef362_bb493c98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-06-25T16:32:32Z",
+      "side": 1,
+      "message": "Oh that makes sense. Maybe we should revert this.",
+      "parentUuid": "9f47d1f6_27c5d726",
+      "revId": "ec010c39804e88367659992f3dda5e5a395a99ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
