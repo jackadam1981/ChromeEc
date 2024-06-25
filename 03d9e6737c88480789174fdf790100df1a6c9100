@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "417296d0_8b3b0ca9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-25T16:57:43Z",
+      "side": 1,
+      "message": "I believe all modules are under the `modules` directory in the ebuild file:\n\n```\n(cr) fsammoura@fsammoura1 /build/brya/tmp/portage/sys-firmware/chromeos-zephyr-fpmcu-release-bloonchipper-9999/work/chromeos-zephyr-fpmcu-release-bloonchipper-9999/modules $ ls\nboringssl  cmsis  ec  fpc  googletest  hal_stm32  nanopb\n```\n\nbased on the discussion with Patryk, there is a difference between locate from directory and locate from checkout:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/modules.py;drc\u003d4cccabeef50b39e7c21da1402d7e8c8ef81787b3;l\u003d45\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/modules.py;l\u003d45#:~:text\u003d44-,45,-46",
+      "parentUuid": "4ae60442_06311ba9",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "03d9e6737c88480789174fdf790100df1a6c9100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0e745b96_6d04003b",
