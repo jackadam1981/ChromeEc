@@ -453,12 +453,10 @@ zephyr_boards_coverage:
   script:
     - cd ${EC_DIR}
     - projects=( $(zmake --zephyr-base "${ZEPHYR_BASE}"
-      --modules-dir "${MODULES_DIR}" list-projects |
-      split -n r/"${CI_NODE_INDEX}"/"${CI_NODE_TOTAL}") )
+      --modules-dir "${MODULES_DIR}" list-projects ) )
     - zmake --zephyr-base "${ZEPHYR_BASE}"
       --modules-dir "${MODULES_DIR}" -l DEBUG build
       --coverage --delete-intermediates "${projects[@]}"
-    - mv build/zephyr/all_builds.info "build/zephyr/all_builds${CI_NODE_INDEX}.info"
   artifacts:
     paths:
       - ec_dir/build/zephyr/all_builds*.info

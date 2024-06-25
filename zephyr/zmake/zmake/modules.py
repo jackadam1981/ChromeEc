@@ -33,13 +33,9 @@ known_modules = {
     "picolibc": third_party_module,
 }
 
-FPC_EXISTS = os.path.exists(
-    os.path.join(os.getcwd(), os.pardir, "fingerprint/fpc")
+known_modules["fpc"] = lambda name, checkout: (
+    checkout / "src" / "platform" / "fingerprint" / "fpc"
 )
-if FPC_EXISTS:
-    known_modules["fpc"] = lambda name, checkout: (
-        checkout / "src" / "platform" / "fingerprint" / "fpc"
-    )
 
 
 def locate_from_checkout(checkout_dir):

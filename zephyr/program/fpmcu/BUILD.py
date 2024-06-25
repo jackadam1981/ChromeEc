@@ -22,19 +22,13 @@ def register_fpmcu_variant(
         modules=["ec", *variant_modules],
         supported_toolchains=["llvm", "zephyr"],
         dts_overlays=[*variant_dts_overlays],
-        kconfig_files=[here / "prj.conf", *variant_kconfig_files],
+        kconfigjk_files=[here / "prj.conf", *variant_kconfig_files],
         signer=signer,
     )
 
 
-FPC_EXISTS = os.path.exists(
-    os.path.join(os.getcwd(), os.pardir, "fingerprint/fpc")
-)
 
-variant_modules_list = ["hal_stm32", "cmsis"]
-
-if FPC_EXISTS:
-    variant_modules_list.append("fpc")
+variant_modules_list = ["hal_stm32", "cmsis", "fpc"]
 
 
 bloonchipper = register_fpmcu_variant(
