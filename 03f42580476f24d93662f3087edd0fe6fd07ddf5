@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16259d2_89e9cc62",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-26T21:02:19Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "c9ad660d_f479489a",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "03f42580476f24d93662f3087edd0fe6fd07ddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5002f115_56e63d22",
@@ -84,6 +108,30 @@
       "writtenOn": "2024-06-26T17:33:15Z",
       "side": 1,
       "message": "```suggestion\n\t\tstr_index +\u003d sprintf(\u0026str[str_index], \" %02x\", p[i]);\n```",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 29
+      },
+      "revId": "03f42580476f24d93662f3087edd0fe6fd07ddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e176dc8_8077906d",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-26T21:02:19Z",
+      "side": 1,
+      "message": "i\u0027m highly skeptical of this suggested edit. this is a well controlled\nsituation where using a constant should be preferred over a computed result\neven when semantics dictate that they are the same value.\nwill the bot be happier if we use snprintf()?",
+      "parentUuid": "5002f115_56e63d22",
       "range": {
         "startLine": 212,
         "startChar": 0,
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10895be9_03e7a5ca",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-26T21:02:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bcc8422e_d1a9022a",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 30
+      },
+      "revId": "03f42580476f24d93662f3087edd0fe6fd07ddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7e657a_3f788a10",
@@ -130,6 +202,30 @@
       "writtenOn": "2024-06-26T17:33:15Z",
       "side": 1,
       "message": "I think this needs a call to `ring_buf_get_finish()`.",
+      "range": {
+        "startLine": 332,
+        "startChar": 3,
+        "endLine": 332,
+        "endChar": 21
+      },
+      "revId": "03f42580476f24d93662f3087edd0fe6fd07ddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e006c4e_356fbb86",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-26T21:02:19Z",
+      "side": 1,
+      "message": "fifo_entry_print() does its own _get_claim() and _get_finish() for\nthe payload portion of the entry - that will also resolve this\nget_claim().\nthis get_claim() is needed to advances the get position to the payload\nas we already have a copy of the entry header.",
+      "parentUuid": "fb7e657a_3f788a10",
       "range": {
         "startLine": 332,
         "startChar": 3,
