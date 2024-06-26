@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "41cd4a41_2e3d0876",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-26T22:25:27Z",
+      "side": 1,
+      "message": "It looks like the `modules/fpc` symlink is created in [this CL](https://crrev.com/c/5646391). Adding that context to the commit message and a comment in the code will make things clearer.",
+      "parentUuid": "5e228d1d_bfbe86f8",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "03d9e6737c88480789174fdf790100df1a6c9100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0e745b96_6d04003b",
