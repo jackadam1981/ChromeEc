@@ -51,6 +51,11 @@ config BOARD_PTLRVP_MCHP
 	  Build Intel PTLRVP_MCHP reference board. This board is Intel PTL RVP
 	  SOC with SOC_MEC172X_NSZ.
 
+config CCD_BYPASS_CTRL
+	bool "Enable CCD Bypass control feature"
+	help
+	  Control Bypass CCD mode
+
 # Override the default USB-C stack choice baseed on the board type.
 # This must be done before including Kconfig.zephyr below.
 choice PLATFORM_EC_USBC_STACK
