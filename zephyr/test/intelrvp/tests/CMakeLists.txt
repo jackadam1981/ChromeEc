@@ -47,3 +47,9 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE intelrvp/sr
 target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/chg_usb_pd_mecc_1_1.c"
 )
+
+# Add sources for dc_jack.c functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_DC_JACK app PRIVATE intelrvp/src/dc_jack.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_DC_JACK app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/dc_jack.c"
+)
