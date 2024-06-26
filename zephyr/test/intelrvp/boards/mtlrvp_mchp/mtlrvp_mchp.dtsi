@@ -7,14 +7,6 @@
 #include <dt-bindings/gpio_defines.h>
 
 / {
-	i2c_smb_0: i2c_smb_0@100 {
-		status = "okay";
-		compatible = "zephyr,i2c-emul-controller";
-		clock-frequency = <I2C_BITRATE_STANDARD>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		reg = <0x100 6>;
-	};
 
 	i2c_smb_1: i2c_smb_1@200 {
 		status = "okay";
@@ -37,14 +29,6 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
-		i2c_charger: charger {
-			i2c-port = <&i2c_smb_0>;
-			enum-names = "I2C_PORT_CHARGER",
-				"I2C_PORT_BATTERY",
-				"I2C_PORT_EEPROM",
-				"I2C_PORT_KB_DISCRETE",
-				"I2C_PORT_PORT80";
-		};
 		typec_aic1: typec-aic1{
 			i2c-port = <&i2c_smb_1>;
 			enum-names = "I2C_PORT_TYPEC_AIC_1";
@@ -70,18 +54,6 @@
 		#gpio-cells = <2>;
 		ngpios = <8>;
 
-	};
-};
-
-/* charger */
-&i2c_smb_0 {
-	status = "okay";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
-
-	charger_emul: isl9241@9 {
-		compatible = "intersil,isl9241";
-		status = "okay";
-		reg = <0x9>;
 	};
 };
 
