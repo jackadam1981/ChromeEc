@@ -133,6 +133,8 @@ static void kb_raw_ite_drive_column_reg_set_v1(const struct device *dev)
 	 *       disable the ISR in critical section to avoid race condition.
 	 */
 	inst->KBS_KSOH1 &= ~KSOH_PIN_MASK;
+	/* KSO[17:16] pins output low. */
+	inst->KBS_KSOH2 &= ~KSOH_PIN_MASK;
 	/* restore interrupts */
 	irq_unlock(key);
 }
@@ -147,13 +149,13 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 
 	/* Tri-state all outputs */
 	if (col == KEYBOARD_COLUMN_NONE)
-		mask = 0xffff;
+		mask = 0x3ffff;
 	/* Assert all outputs */
 	else if (col == KEYBOARD_COLUMN_ALL)
 		mask = 0;
 	/* Assert a single output */
 	else
-		mask = 0xffff ^ BIT(col);
+		mask = 0x3ffff ^ BIT(col);
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
 	/* KSO[2] is inverted. */
 	mask ^= BIT(2);
@@ -169,6 +171,9 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 	 */
 	inst->KBS_KSOH1 = ((inst->KBS_KSOH1) & ~KSOH_PIN_MASK) |
 			  ((mask >> 8) & KSOH_PIN_MASK);
+	/* Set KSO[17:16] output data */
+	inst->KBS_KSOH2 = ((inst->KBS_KSOH2) & ~KSOH_PIN_MASK) |
+			  ((mask >> 16) & KSOH_PIN_MASK);
 	/* restore interrupts */
 	irq_unlock(key);
 
