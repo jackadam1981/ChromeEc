@@ -147,13 +147,13 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 
 	/* Tri-state all outputs */
 	if (col == KEYBOARD_COLUMN_NONE)
-		mask = 0xffff;
+		mask = 0x3ffff;
 	/* Assert all outputs */
 	else if (col == KEYBOARD_COLUMN_ALL)
 		mask = 0;
 	/* Assert a single output */
 	else
-		mask = 0xffff ^ BIT(col);
+		mask = 0x3ffff ^ BIT(col);
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
 	/* KSO[2] is inverted. */
 	mask ^= BIT(2);
@@ -169,6 +169,7 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 	 */
 	inst->KBS_KSOH1 = ((inst->KBS_KSOH1) & ~KSOH_PIN_MASK) |
 			  ((mask >> 8) & KSOH_PIN_MASK);
+	inst->KBS_KSOH2 = (mask >> 16) & 0xff;
 	/* restore interrupts */
 	irq_unlock(key);
 
