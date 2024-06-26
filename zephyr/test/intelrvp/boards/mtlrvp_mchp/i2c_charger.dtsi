@@ -6,6 +6,24 @@
 #include <mchp_emul.dts>
 
 / {
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger_emul>;
+		};
+	};
+
+	named-gpios {
+		std_adp_prsnt: std-adp-prsnt {
+			gpios = <&gpio_040_076 3 GPIO_INPUT>;
+			enum-name = "GPIO_DC_JACK_PRESENT";
+		}; /* GPIO043 */
+	};
+
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
@@ -27,7 +45,7 @@
 		#size-cells = <0>;
 		reg = <0x700 6>;
 
-                charger_emul: isl9241@9 {
+		charger_emul: isl9241@9 {
 			compatible = "intersil,isl9241";
 			status = "okay";
 			reg = <0x9>;

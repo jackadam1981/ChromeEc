@@ -4,6 +4,13 @@
  */
 
 / {
+	named-gpios {
+		std_adp_prsnt: std-adp-prsnt {
+			gpios = <&gpioc 6 GPIO_INPUT>;
+			enum-name = "GPIO_DC_JACK_PRESENT";
+		};
+	};
+
 	usbc {
 		#address-cells = <1>;
 		#size-cells = <0>;
