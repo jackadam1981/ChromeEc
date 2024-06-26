@@ -117,13 +117,15 @@
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
-	tcpci_emul2: ccgxxf@b {
-		compatible = "cypress,ccgxxf", "cros,i2c-mock";
+	tcpci_emul2: tcpci_emul@b {
+		compatible = "cros,tcpci-generic-emul";
+		status = "okay";
 		reg = <0xb>;
 	};
 
-	tcpci_emul3: ccgxxf@1b {
-		compatible = "cypress,ccgxxf", "cros,i2c-mock";
+	tcpci_emul3: tcpci_emul@1b {
+		compatible = "cros,tcpci-generic-emul";
+		status = "okay";
 		reg = <0x1b>;
 	};
 

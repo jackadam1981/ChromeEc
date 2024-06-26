@@ -8,6 +8,11 @@
 
 / {
 	named-gpios {
+		/* NOTE: Netname is USBC_TCPC_ALRT_P3 */
+		ccd_mode_odl: ccd-mode-odl {
+			gpios = <&gpio_240_276 2 GPIO_INPUT>;
+			enum-name = "GPIO_CCD_MODE_ODL";
+		}; /* GPIO242 */
 		usbc_tcpc_alrt_p0: usbc-tcpc-alrt-p0 {
 			gpios = <&gpio_140_176 3 (GPIO_INPUT | \
 				GPIO_ACTIVE_LOW)>;
@@ -75,6 +80,16 @@
 			gpios = <&ioex_c2_port3 3 (GPIO_ODR_LOW | \
 				GPIO_VOLTAGE_1P8)>;
 			enum-name = "IOEX_USB_C3_HBR_LS_EN";
+			no-auto-init;
+		};
+		usb-c0-mux-sbu-sel-0 {
+			gpios = <&ioex_c0 6 GPIO_OUTPUT_HIGH>;
+			enum-name = "IOEX_USB_C0_MUX_SBU_SEL_0";
+			no-auto-init;
+		};
+		usb-c0-mux-sbu-sel-1 {
+			gpios = <&ioex_c1 4 GPIO_OUTPUT_LOW>;
+			enum-name = "IOEX_USB_C0_MUX_SBU_SEL_1";
 			no-auto-init;
 		};
 	};
