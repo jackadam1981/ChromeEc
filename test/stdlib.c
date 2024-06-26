@@ -340,16 +340,10 @@ static int test_memmove(void)
 
 	TEST_ASSERT(shared_mem_acquire(buf_size, &buf) == EC_SUCCESS);
 
-	for (i = 0; i < len; ++i)
-		buf[i] = i & 0x7f;
-	for (i = len; i < buf_size; ++i)
-		buf[i] = 0;
-
 	t0 = get_time();
 	for (i = 0; i < iteration; ++i)
 		memmove(buf + 101, buf, len); /* unaligned */
 	t1 = get_time();
-	TEST_ASSERT_ARRAY_EQ(buf + 101, buf, len);
 	ccprintf(" (speed gain: %" PRId64 " ->", t1.val - t0.val);
 
 	t2 = get_time();
@@ -357,10 +351,12 @@ static int test_memmove(void)
 		memmove(buf + 100, buf, len); /* aligned */
 	t3 = get_time();
 	ccprintf(" %" PRId64 " us) ", t3.val - t2.val);
-	TEST_ASSERT_ARRAY_EQ(buf + 100, buf, len);
 
 	if (!IS_ENABLED(EMU_BUILD))
 		TEST_ASSERT((t1.val - t0.val) > (t3.val - t2.val));
+
+	for (i = 0; i < buf_size; ++i)
+		buf[i] = i & 0x7f;
 
 	/* Test small moves */
 	memmove(buf + 1, buf, 1);
@@ -368,6 +364,37 @@ static int test_memmove(void)
 	memmove(buf + 5, buf, 4);
 	memmove(buf + 1, buf, 4);
 	TEST_ASSERT_ARRAY_EQ(buf + 1, buf + 5, 4);
+
+	shared_mem_release(buf);
+	return EC_SUCCESS;
+}
+
+static int test_memmove_overlap(void)
+{
+	int i;
+	char *buf;
+	const int buf_size = 1000;
+	const int len = 400;
+	char cmp_buf[len];
+
+	TEST_ASSERT(shared_mem_acquire(buf_size, &buf) == EC_SUCCESS);
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0x7f;
+	for (i = len; i < buf_size; ++i)
+		buf[i] = 0;
+	/* Store the original buffer. */
+	memcpy(cmp_buf, buf, len);
+
+	memmove(buf + 101, buf, len); /* unaligned */
+	TEST_ASSERT_ARRAY_EQ(buf + 101, cmp_buf, len);
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0x7f;
+	for (i = len; i < buf_size; ++i)
+		buf[i] = 0;
+	memmove(buf + 100, buf, len); /* aligned */
+	TEST_ASSERT_ARRAY_EQ(buf + 100, cmp_buf, len);
 
 	shared_mem_release(buf);
 	return EC_SUCCESS;
@@ -506,6 +533,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_snprintf);
 	RUN_TEST(test_strcspn);
 	RUN_TEST(test_memmove);
+	RUN_TEST(test_memmove_overlap);
 	RUN_TEST(test_memcpy);
 	RUN_TEST(test_memset);
 	RUN_TEST(test_memchr);
