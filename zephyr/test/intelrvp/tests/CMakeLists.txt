@@ -13,6 +13,12 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
 )
 target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE intelrvp/src/board_id.c)
 
+# Add sources for dc_jack.c functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_DC_JACK app PRIVATE intelrvp/src/dc_jack.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_DC_JACK app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/dc_jack.c"
+)
+
 if((CONFIG_TEST_PROJECT_MTLRVPP_NPCX) OR (CONFIG_TEST_PROJECT_MTLRVPP_PD) OR (CONFIG_TEST_PROJECT_MTLRVPP_MCHP))
 # Add sources for board_power.c functionality and related platform-specific files
 target_sources_ifdef(CONFIG_TEST_PROJECT_MTL_BOARD_POWER app PRIVATE
