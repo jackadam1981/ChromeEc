@@ -118,6 +118,30 @@
       },
       "revId": "36a01f3adf501fae517718e421b8e38de647754c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461f2bd3_8340e8cc",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-26T12:09:17Z",
+      "side": 1,
+      "message": "\u003e Can you create a bug to track upstreaming them and add a TODO in the file?\n\nDone\n\n\u003e How about adding a comment to https://github.com/zephyrproject-rtos/zephyr/issues/51982 to gauge upstream interest? e.g., if they are interested in what we have as-is or if we\u0027d need to make a lot of changes first. (I assume the latter is what you\u0027re worried about taking a lot of time.)\n\nI\u0027ll do, once we merge the Zephyr version of the test. I\u0027ll send a pointer to our tests.",
+      "parentUuid": "3413f400_d6c1985d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "36a01f3adf501fae517718e421b8e38de647754c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
