@@ -19,14 +19,14 @@
                 "name": "PA PPEXT VBUS SW Config",
                 "start position": 16,
                 "value (EDITABLE)": "0x3",
-                "value description": "PA PPEXT is sink but waits for 'SRDY'"
+                "value description": "PA PPEXT is sink but waits for 'SRDY'. On non-dead battery mode-Firmware waits for SRDY command to turn on sink switch. On dead battery mode-Firmware will NOT wait for SRDY but will turn on the switch automatically"
               },
               {
                 "end position": 21,
                 "name": "PB PPEXT VBUS SW Config",
                 "start position": 19,
                 "value (EDITABLE)": "0x3",
-                "value description": "PB PPEXT is sink but waits for 'SRDY'"
+                "value description": "PB PPEXT is sink but waits for 'SRDY'. On non-dead battery mode-Firmware waits for SRDY command to turn on sink switch. On dead battery mode-Firmware will NOT wait for SRDY but will trun on the switch automatically"
               },
               {
                 "end position": 24,
@@ -97,20 +97,6 @@
                 "start position": 43,
                 "value (EDITABLE)": "0x0",
                 "value description": "0x0"
-              },
-              {
-                "end position": 45,
-                "name": "EPR Supported As Source",
-                "start position": 45,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 46,
-                "name": "EPR Supported As Sink",
-                "start position": 46,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
               },
               {
                 "end position": 47,
@@ -223,6 +209,13 @@
                 "start position": 106,
                 "value (EDITABLE)": "0x0",
                 "value description": "Disabled"
+              },
+              {
+                "end position": 108,
+                "name": "Allow I2C4 access",
+                "start position": 108,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               },
               {
                 "end position": 0,
@@ -496,13 +489,6 @@
                 "start position": 184,
                 "value (EDITABLE)": "0x0",
                 "value description": "0  S"
-              },
-              {
-                "end position": 223,
-                "name": "Retimer DATA_STATUS mask",
-                "start position": 192,
-                "value (EDITABLE)": "0x0",
-                "value description": "0x0"
               }
             ],
             "length in bytes": "28",
@@ -2353,11 +2339,18 @@
                 "value description": "False"
               },
               {
+                "end position": 196,
+                "name": "Analog Input Enable",
+                "start position": 196,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
                 "end position": 228,
                 "name": "GPIO 4 Mux",
                 "start position": 228,
                 "value (EDITABLE)": "0x1",
-                "value description": "PB_PPEXT (for TPS66994 only)"
+                "value description": "PB_PPEXT"
               },
               {
                 "end position": 5,
@@ -2391,6 +2384,13 @@
                 "end position": 165,
                 "name": "Pull Up Enable",
                 "start position": 165,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 197,
+                "name": "Analog Input Enable",
+                "start position": 197,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -2433,6 +2433,13 @@
                 "end position": 166,
                 "name": "Pull Up Enable",
                 "start position": 166,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 198,
+                "name": "Analog Input Enable",
+                "start position": 198,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -2993,8 +3000,8 @@
                 "end position": 31,
                 "name": "Customer Use Word 1",
                 "start position": 0,
-                "value (EDITABLE)": "0x2",
-                "value description": "0x2"
+                "value (EDITABLE)": "0x3",
+                "value description": "0x3"
               },
               {
                 "end position": 63,
@@ -3011,198 +3018,9 @@
             "address": "0x16",
             "bitFields": [
               {
-                "end position": 1,
-                "name": "PD Hardreset",
-                "start position": 1,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 3,
-                "name": "Plug Insert or Removal",
-                "start position": 3,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 4,
-                "name": "Power Swap Complete",
-                "start position": 4,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 5,
-                "name": "Data Swap Complete",
-                "start position": 5,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 6,
-                "name": "FR Swap Complete",
-                "start position": 6,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 8,
-                "name": "Sink Ready",
-                "start position": 8,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 9,
-                "name": "Overcurrent",
-                "start position": 9,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 10,
-                "name": "Attention Received",
-                "start position": 10,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 11,
-                "name": "VDM Received",
-                "start position": 11,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 12,
-                "name": "New Contract as Consumer",
-                "start position": 12,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 13,
-                "name": "New Contract as Provider",
-                "start position": 13,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 14,
-                "name": "Source Cap Message Received",
-                "start position": 14,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 17,
-                "name": "Power Swap Requested",
-                "start position": 17,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 18,
-                "name": "Data Swap Requested",
-                "start position": 18,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 20,
-                "name": "USB Host Present",
-                "start position": 20,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 21,
-                "name": "USB Host No Longer Present",
-                "start position": 21,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 23,
-                "name": "Power Path Switch Changed",
-                "start position": 23,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 24,
-                "name": "Power Status Updated",
-                "start position": 24,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 25,
-                "name": "Data Status Updated",
-                "start position": 25,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 26,
-                "name": "Status Updated",
-                "start position": 26,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 27,
-                "name": "PD Status Updated",
-                "start position": 27,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 30,
-                "name": "CMD1 Complete",
-                "start position": 30,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 31,
-                "name": "CMD2 Complete",
-                "start position": 31,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 32,
-                "name": "Device Incompatible Error",
-                "start position": 32,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 33,
-                "name": "Cannot Provide Voltage or Current Error",
-                "start position": 33,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 34,
-                "name": "Can Provide Voltage or Current Later Error",
-                "start position": 34,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 35,
-                "name": "Power Event Occurred Error",
-                "start position": 35,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 36,
-                "name": "Missing Get Capabalities Message Error",
-                "start position": 36,
+                "end position": 37,
+                "name": "Reserved",
+                "start position": 37,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -3478,14 +3296,7 @@
                 "start position": 82,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
-              }
-            ],
-            "length in bytes": "11",
-            "name": "Interrupt Mask for I2C1"
-          },
-          {
-            "address": "0x17",
-            "bitFields": [
+              },
               {
                 "end position": 1,
                 "name": "PD Hardreset",
@@ -3616,8 +3427,8 @@
                 "end position": 25,
                 "name": "Data Status Updated",
                 "start position": 25,
-                "value (EDITABLE)": "0x1",
-                "value description": "True"
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               },
               {
                 "end position": 26,
@@ -3679,6 +3490,20 @@
                 "end position": 36,
                 "name": "Missing Get Capabalities Message Error",
                 "start position": 36,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              }
+            ],
+            "length in bytes": "11",
+            "name": "Interrupt Mask for I2C1"
+          },
+          {
+            "address": "0x17",
+            "bitFields": [
+              {
+                "end position": 37,
+                "name": "Reserved",
+                "start position": 37,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -3940,73 +3765,220 @@
                 "start position": 79,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
-              }
-            ],
-            "length in bytes": "11",
-            "name": "Interrupt Mask for I2C2"
-          },
-          {
-            "address": "0x1f",
-            "bitFields": [
+              },
               {
-                "end position": 0,
-                "name": "S0 Config Enable",
-                "start position": 0,
+                "end position": 80,
+                "name": "App Loaded",
+                "start position": 80,
+                "value (EDITABLE)": "0x1",
+                "value description": "True"
+              },
+              {
+                "end position": 82,
+                "name": "I2C Controller NACKed",
+                "start position": 82,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 1,
+                "name": "PD Hardreset",
+                "start position": 1,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
                 "end position": 3,
-                "name": "S0 Config Address Port 1",
-                "start position": 1,
-                "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
-              },
-              {
-                "end position": 48,
-                "name": "S3 Config Enable",
-                "start position": 48,
+                "name": "Plug Insert or Removal",
+                "start position": 3,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
-                "end position": 51,
-                "name": "S3 Config Address Port 1",
-                "start position": 49,
-                "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
-              },
-              {
-                "end position": 96,
-                "name": "S4 Config Enable",
-                "start position": 96,
+                "end position": 4,
+                "name": "Power Swap Complete",
+                "start position": 4,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
-                "end position": 99,
-                "name": "S4 Config Address Port 1",
-                "start position": 97,
-                "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
-              },
-              {
-                "end position": 144,
-                "name": "S5 Config Enable",
-                "start position": 144,
+                "end position": 5,
+                "name": "Data Swap Complete",
+                "start position": 5,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
-                "end position": 147,
-                "name": "S5 Config Address Port 1",
-                "start position": 145,
+                "end position": 6,
+                "name": "FR Swap Complete",
+                "start position": 6,
                 "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
+                "value description": "False"
+              },
+              {
+                "end position": 8,
+                "name": "Sink Ready",
+                "start position": 8,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 9,
+                "name": "Overcurrent",
+                "start position": 9,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 10,
+                "name": "Attention Received",
+                "start position": 10,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 11,
+                "name": "VDM Received",
+                "start position": 11,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 12,
+                "name": "New Contract as Consumer",
+                "start position": 12,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 13,
+                "name": "New Contract as Provider",
+                "start position": 13,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 14,
+                "name": "Source Cap Message Received",
+                "start position": 14,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 17,
+                "name": "Power Swap Requested",
+                "start position": 17,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 18,
+                "name": "Data Swap Requested",
+                "start position": 18,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 20,
+                "name": "USB Host Present",
+                "start position": 20,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 21,
+                "name": "USB Host No Longer Present",
+                "start position": 21,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 23,
+                "name": "Power Path Switch Changed",
+                "start position": 23,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 24,
+                "name": "Power Status Updated",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 25,
+                "name": "Data Status Updated",
+                "start position": 25,
+                "value (EDITABLE)": "0x1",
+                "value description": "True"
+              },
+              {
+                "end position": 26,
+                "name": "Status Updated",
+                "start position": 26,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 27,
+                "name": "PD Status Updated",
+                "start position": 27,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 30,
+                "name": "CMD1 Complete",
+                "start position": 30,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 31,
+                "name": "CMD2 Complete",
+                "start position": 31,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 32,
+                "name": "Device Incompatible Error",
+                "start position": 32,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 33,
+                "name": "Cannot Provide Voltage or Current Error",
+                "start position": 33,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 34,
+                "name": "Can Provide Voltage or Current Later Error",
+                "start position": 34,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 35,
+                "name": "Power Event Occurred Error",
+                "start position": 35,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 36,
+                "name": "Missing Get Capabalities Message Error",
+                "start position": 36,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               }
             ],
-            "length in bytes": "24",
-            "name": "SX Config"
+            "length in bytes": "11",
+            "name": "Interrupt Mask for I2C2"
           },
           {
             "address": "0x20",
@@ -4325,9 +4297,16 @@
                 "start position": 134,
                 "value (EDITABLE)": "0x0",
                 "value description": "DisplayPort mode enables AUX channel TBT and USB4 modes enable SBRX/TX channel"
+              },
+              {
+                "end position": 137,
+                "name": "EPRSupportedAsSink",
+                "start position": 137,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               }
             ],
-            "length in bytes": "17",
+            "length in bytes": "18",
             "name": "Port Configuration"
           },
           {
@@ -4474,6 +4453,13 @@
                 "value description": "True"
               },
               {
+                "end position": 24,
+                "name": "Resistor 15k Present",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "System does NOT have 15 kOhm pull-down"
+              },
+              {
                 "end position": 29,
                 "name": "USB Disable",
                 "start position": 29,
@@ -4485,7 +4471,7 @@
                 "name": "SbTxDirectionFromHost",
                 "start position": 30,
                 "value (EDITABLE)": "0x0",
-                "value description": "00b Normal (Px_SBTX is an input) SBU_NORMAL"
+                "value description": "00b Normal (Px_SBTX is an input) SBU_NORMAL "
               },
               {
                 "end position": 32,
@@ -4542,13 +4528,6 @@
                 "start position": 0,
                 "value (EDITABLE)": "0x1",
                 "value description": 1
-              },
-              {
-                "end position": 5,
-                "name": "TX Source Num Valid EPR PDOs",
-                "start position": 3,
-                "value (EDITABLE)": "0x0",
-                "value description": 0
               },
               {
                 "end position": 9,
@@ -5256,426 +5235,6 @@
                 "start position": 244,
                 "value (EDITABLE)": "0x0",
                 "value description": "SPR Programmable Power Supply"
-              },
-              {
-                "end position": 279,
-                "name": "Supply Type",
-                "start position": 278,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 257,
-                "name": "Maximum Current",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 267,
-                "name": "Voltage",
-                "start position": 258,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 269,
-                "name": "Peak Current",
-                "start position": 268,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 257,
-                "name": "Maximum Power",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 267,
-                "name": "Minimum Voltage",
-                "start position": 258,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 277,
-                "name": "Maximum Voltage",
-                "start position": 268,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 257,
-                "name": "Maximum Current",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 267,
-                "name": "Minimum Voltage",
-                "start position": 258,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 277,
-                "name": "Maximum Voltage",
-                "start position": 268,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 255,
-                "name": "PDP",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 263,
-                "name": "Minimum Voltage",
-                "start position": 256,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 273,
-                "name": "Maximum Voltage",
-                "start position": 265,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 275,
-                "name": "AVS Peak Current",
-                "start position": 274,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 277,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 276,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
-              },
-              {
-                "end position": 311,
-                "name": "Supply Type",
-                "start position": 310,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 289,
-                "name": "Maximum Current",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 299,
-                "name": "Voltage",
-                "start position": 290,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 301,
-                "name": "Peak Current",
-                "start position": 300,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 289,
-                "name": "Maximum Power",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 299,
-                "name": "Minimum Voltage",
-                "start position": 290,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 309,
-                "name": "Maximum Voltage",
-                "start position": 300,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 289,
-                "name": "Maximum Current",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 299,
-                "name": "Minimum Voltage",
-                "start position": 290,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 309,
-                "name": "Maximum Voltage",
-                "start position": 300,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 287,
-                "name": "PDP",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 295,
-                "name": "Minimum Voltage",
-                "start position": 288,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 305,
-                "name": "Maximum Voltage",
-                "start position": 297,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 307,
-                "name": "AVS Peak Current",
-                "start position": 306,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 309,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 308,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
-              },
-              {
-                "end position": 343,
-                "name": "Supply Type",
-                "start position": 342,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 321,
-                "name": "Maximum Current",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 331,
-                "name": "Voltage",
-                "start position": 322,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 333,
-                "name": "Peak Current",
-                "start position": 332,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 321,
-                "name": "Maximum Power",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 331,
-                "name": "Minimum Voltage",
-                "start position": 322,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 341,
-                "name": "Maximum Voltage",
-                "start position": 332,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 321,
-                "name": "Maximum Current",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 331,
-                "name": "Minimum Voltage",
-                "start position": 322,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 341,
-                "name": "Maximum Voltage",
-                "start position": 332,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 319,
-                "name": "PDP",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 327,
-                "name": "Minimum Voltage",
-                "start position": 320,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 337,
-                "name": "Maximum Voltage",
-                "start position": 329,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 339,
-                "name": "AVS Peak Current",
-                "start position": 338,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 341,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 340,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
-              },
-              {
-                "end position": 375,
-                "name": "Supply Type",
-                "start position": 374,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 353,
-                "name": "Maximum Current",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 363,
-                "name": "Voltage",
-                "start position": 354,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 365,
-                "name": "Peak Current",
-                "start position": 364,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 353,
-                "name": "Maximum Power",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 363,
-                "name": "Minimum Voltage",
-                "start position": 354,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 373,
-                "name": "Maximum Voltage",
-                "start position": 364,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 353,
-                "name": "Maximum Current",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 363,
-                "name": "Minimum Voltage",
-                "start position": 354,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 373,
-                "name": "Maximum Voltage",
-                "start position": 364,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 351,
-                "name": "PDP",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 359,
-                "name": "Minimum Voltage",
-                "start position": 352,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 369,
-                "name": "Maximum Voltage",
-                "start position": 361,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 371,
-                "name": "AVS Peak Current",
-                "start position": 370,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 373,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 372,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
               }
             ],
             "length in bytes": "48",
@@ -6847,13 +6406,6 @@
                 "value description": "False"
               },
               {
-                "end position": 129,
-                "name": "SPR AVS Enable Sink Mode",
-                "start position": 129,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
                 "end position": 166,
                 "name": "AVS Operating Current",
                 "start position": 160,
@@ -6870,6 +6422,69 @@
             ],
             "length in bytes": "24",
             "name": "Autonegotiate Sink"
+          },
+          {
+            "address": "0x3c",
+            "bitFields": [
+              {
+                "end position": 7,
+                "name": "SPM Allocated Extra Power",
+                "start position": 0,
+                "value (EDITABLE)": "0xa",
+                "value description": "0.25  W"
+              },
+              {
+                "end position": 23,
+                "name": "SPM Guaranteed Power",
+                "start position": 16,
+                "value (EDITABLE)": "0x1",
+                "value description": "0.025  W"
+              },
+              {
+                "end position": 39,
+                "name": "Port Disabled By SPM",
+                "start position": 32,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 47,
+                "name": "SPM Forced Safe State Power",
+                "start position": 40,
+                "value (EDITABLE)": "0x36",
+                "value description": "1.35  W"
+              }
+            ],
+            "length in bytes": "7",
+            "name": "SPM Client Control"
+          },
+          {
+            "address": "0x3d",
+            "bitFields": [
+              {
+                "end position": 7,
+                "name": "SPM Totat Vbus Power Used",
+                "start position": 0,
+                "value (EDITABLE)": "0xa",
+                "value description": "0.25  W"
+              },
+              {
+                "end position": 23,
+                "name": "SPM Requested Total VBUS Power",
+                "start position": 16,
+                "value (EDITABLE)": "0x1",
+                "value description": "0.025  W"
+              },
+              {
+                "end position": 39,
+                "name": "SPM Cap Mismatch",
+                "start position": 32,
+                "value (EDITABLE)": "0x1",
+                "value description": "0x1"
+              }
+            ],
+            "length in bytes": "5",
+            "name": "SPM Client Status"
           },
           {
             "address": "0x47",
@@ -8525,13 +8140,6 @@
                 "start position": 104,
                 "value (EDITABLE)": "0xf",
                 "value description": "15 W"
-              },
-              {
-                "end position": 119,
-                "name": "Source EPR PDP",
-                "start position": 112,
-                "value (EDITABLE)": "0xf",
-                "value description": "15 W"
               }
             ],
             "length in bytes": "15",
@@ -8766,8 +8374,8 @@
                 "end position": 31,
                 "name": "Customer Use Word 1",
                 "start position": 0,
-                "value (EDITABLE)": "0x2",
-                "value description": "0x2"
+                "value (EDITABLE)": "0x3",
+                "value description": "0x3"
               },
               {
                 "end position": 63,
@@ -8784,198 +8392,9 @@
             "address": "0x16",
             "bitFields": [
               {
-                "end position": 1,
-                "name": "PD Hardreset",
-                "start position": 1,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 3,
-                "name": "Plug Insert or Removal",
-                "start position": 3,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 4,
-                "name": "Power Swap Complete",
-                "start position": 4,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 5,
-                "name": "Data Swap Complete",
-                "start position": 5,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 6,
-                "name": "FR Swap Complete",
-                "start position": 6,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 8,
-                "name": "Sink Ready",
-                "start position": 8,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 9,
-                "name": "Overcurrent",
-                "start position": 9,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 10,
-                "name": "Attention Received",
-                "start position": 10,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 11,
-                "name": "VDM Received",
-                "start position": 11,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 12,
-                "name": "New Contract as Consumer",
-                "start position": 12,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 13,
-                "name": "New Contract as Provider",
-                "start position": 13,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 14,
-                "name": "Source Cap Message Received",
-                "start position": 14,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 17,
-                "name": "Power Swap Requested",
-                "start position": 17,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 18,
-                "name": "Data Swap Requested",
-                "start position": 18,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 20,
-                "name": "USB Host Present",
-                "start position": 20,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 21,
-                "name": "USB Host No Longer Present",
-                "start position": 21,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 23,
-                "name": "Power Path Switch Changed",
-                "start position": 23,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 24,
-                "name": "Power Status Updated",
-                "start position": 24,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 25,
-                "name": "Data Status Updated",
-                "start position": 25,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 26,
-                "name": "Status Updated",
-                "start position": 26,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 27,
-                "name": "PD Status Updated",
-                "start position": 27,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 30,
-                "name": "CMD1 Complete",
-                "start position": 30,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 31,
-                "name": "CMD2 Complete",
-                "start position": 31,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 32,
-                "name": "Device Incompatible Error",
-                "start position": 32,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 33,
-                "name": "Cannot Provide Voltage or Current Error",
-                "start position": 33,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 34,
-                "name": "Can Provide Voltage or Current Later Error",
-                "start position": 34,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 35,
-                "name": "Power Event Occurred Error",
-                "start position": 35,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 36,
-                "name": "Missing Get Capabalities Message Error",
-                "start position": 36,
+                "end position": 37,
+                "name": "Reserved",
+                "start position": 37,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -9251,14 +8670,7 @@
                 "start position": 82,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
-              }
-            ],
-            "length in bytes": "11",
-            "name": "Interrupt Mask for I2C1"
-          },
-          {
-            "address": "0x17",
-            "bitFields": [
+              },
               {
                 "end position": 1,
                 "name": "PD Hardreset",
@@ -9389,8 +8801,8 @@
                 "end position": 25,
                 "name": "Data Status Updated",
                 "start position": 25,
-                "value (EDITABLE)": "0x1",
-                "value description": "True"
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               },
               {
                 "end position": 26,
@@ -9452,6 +8864,20 @@
                 "end position": 36,
                 "name": "Missing Get Capabalities Message Error",
                 "start position": 36,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              }
+            ],
+            "length in bytes": "11",
+            "name": "Interrupt Mask for I2C1"
+          },
+          {
+            "address": "0x17",
+            "bitFields": [
+              {
+                "end position": 37,
+                "name": "Reserved",
+                "start position": 37,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -9713,73 +9139,220 @@
                 "start position": 79,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
-              }
-            ],
-            "length in bytes": "11",
-            "name": "Interrupt Mask for I2C2"
-          },
-          {
-            "address": "0x1f",
-            "bitFields": [
+              },
               {
-                "end position": 0,
-                "name": "S0 Config Enable",
-                "start position": 0,
+                "end position": 80,
+                "name": "App Loaded",
+                "start position": 80,
+                "value (EDITABLE)": "0x1",
+                "value description": "True"
+              },
+              {
+                "end position": 82,
+                "name": "I2C Controller NACKed",
+                "start position": 82,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 1,
+                "name": "PD Hardreset",
+                "start position": 1,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
                 "end position": 3,
-                "name": "S0 Config Address Port 1",
-                "start position": 1,
-                "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
-              },
-              {
-                "end position": 48,
-                "name": "S3 Config Enable",
-                "start position": 48,
+                "name": "Plug Insert or Removal",
+                "start position": 3,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
-                "end position": 51,
-                "name": "S3 Config Address Port 1",
-                "start position": 49,
-                "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
-              },
-              {
-                "end position": 96,
-                "name": "S4 Config Enable",
-                "start position": 96,
+                "end position": 4,
+                "name": "Power Swap Complete",
+                "start position": 4,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
-                "end position": 99,
-                "name": "S4 Config Address Port 1",
-                "start position": 97,
-                "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
-              },
-              {
-                "end position": 144,
-                "name": "S5 Config Enable",
-                "start position": 144,
+                "end position": 5,
+                "name": "Data Swap Complete",
+                "start position": 5,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
-                "end position": 147,
-                "name": "S5 Config Address Port 1",
-                "start position": 145,
+                "end position": 6,
+                "name": "FR Swap Complete",
+                "start position": 6,
                 "value (EDITABLE)": "0x0",
-                "value description": "Virtual Address 0"
+                "value description": "False"
+              },
+              {
+                "end position": 8,
+                "name": "Sink Ready",
+                "start position": 8,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 9,
+                "name": "Overcurrent",
+                "start position": 9,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 10,
+                "name": "Attention Received",
+                "start position": 10,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 11,
+                "name": "VDM Received",
+                "start position": 11,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 12,
+                "name": "New Contract as Consumer",
+                "start position": 12,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 13,
+                "name": "New Contract as Provider",
+                "start position": 13,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 14,
+                "name": "Source Cap Message Received",
+                "start position": 14,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 17,
+                "name": "Power Swap Requested",
+                "start position": 17,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 18,
+                "name": "Data Swap Requested",
+                "start position": 18,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 20,
+                "name": "USB Host Present",
+                "start position": 20,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 21,
+                "name": "USB Host No Longer Present",
+                "start position": 21,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 23,
+                "name": "Power Path Switch Changed",
+                "start position": 23,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 24,
+                "name": "Power Status Updated",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 25,
+                "name": "Data Status Updated",
+                "start position": 25,
+                "value (EDITABLE)": "0x1",
+                "value description": "True"
+              },
+              {
+                "end position": 26,
+                "name": "Status Updated",
+                "start position": 26,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 27,
+                "name": "PD Status Updated",
+                "start position": 27,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 30,
+                "name": "CMD1 Complete",
+                "start position": 30,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 31,
+                "name": "CMD2 Complete",
+                "start position": 31,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 32,
+                "name": "Device Incompatible Error",
+                "start position": 32,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 33,
+                "name": "Cannot Provide Voltage or Current Error",
+                "start position": 33,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 34,
+                "name": "Can Provide Voltage or Current Later Error",
+                "start position": 34,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 35,
+                "name": "Power Event Occurred Error",
+                "start position": 35,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 36,
+                "name": "Missing Get Capabalities Message Error",
+                "start position": 36,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               }
             ],
-            "length in bytes": "24",
-            "name": "SX Config"
+            "length in bytes": "11",
+            "name": "Interrupt Mask for I2C2"
           },
           {
             "address": "0x20",
@@ -10098,9 +9671,16 @@
                 "start position": 134,
                 "value (EDITABLE)": "0x0",
                 "value description": "DisplayPort mode enables AUX channel TBT and USB4 modes enable SBRX/TX channel"
+              },
+              {
+                "end position": 137,
+                "name": "EPRSupportedAsSink",
+                "start position": 137,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               }
             ],
-            "length in bytes": "17",
+            "length in bytes": "18",
             "name": "Port Configuration"
           },
           {
@@ -10247,6 +9827,13 @@
                 "value description": "True"
               },
               {
+                "end position": 24,
+                "name": "Resistor 15k Present",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "System does NOT have 15 kOhm pull-down"
+              },
+              {
                 "end position": 29,
                 "name": "USB Disable",
                 "start position": 29,
@@ -10258,7 +9845,7 @@
                 "name": "SbTxDirectionFromHost",
                 "start position": 30,
                 "value (EDITABLE)": "0x0",
-                "value description": "00b Normal (Px_SBTX is an input) SBU_NORMAL"
+                "value description": "00b Normal (Px_SBTX is an input) SBU_NORMAL "
               },
               {
                 "end position": 32,
@@ -10315,13 +9902,6 @@
                 "start position": 0,
                 "value (EDITABLE)": "0x1",
                 "value description": 1
-              },
-              {
-                "end position": 5,
-                "name": "TX Source Num Valid EPR PDOs",
-                "start position": 3,
-                "value (EDITABLE)": "0x0",
-                "value description": 0
               },
               {
                 "end position": 9,
@@ -11029,426 +10609,6 @@
                 "start position": 244,
                 "value (EDITABLE)": "0x0",
                 "value description": "SPR Programmable Power Supply"
-              },
-              {
-                "end position": 279,
-                "name": "Supply Type",
-                "start position": 278,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 257,
-                "name": "Maximum Current",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 267,
-                "name": "Voltage",
-                "start position": 258,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 269,
-                "name": "Peak Current",
-                "start position": 268,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 257,
-                "name": "Maximum Power",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 267,
-                "name": "Minimum Voltage",
-                "start position": 258,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 277,
-                "name": "Maximum Voltage",
-                "start position": 268,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 257,
-                "name": "Maximum Current",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 267,
-                "name": "Minimum Voltage",
-                "start position": 258,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 277,
-                "name": "Maximum Voltage",
-                "start position": 268,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 255,
-                "name": "PDP",
-                "start position": 248,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 263,
-                "name": "Minimum Voltage",
-                "start position": 256,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 273,
-                "name": "Maximum Voltage",
-                "start position": 265,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 275,
-                "name": "AVS Peak Current",
-                "start position": 274,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 277,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 276,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
-              },
-              {
-                "end position": 311,
-                "name": "Supply Type",
-                "start position": 310,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 289,
-                "name": "Maximum Current",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 299,
-                "name": "Voltage",
-                "start position": 290,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 301,
-                "name": "Peak Current",
-                "start position": 300,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 289,
-                "name": "Maximum Power",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 299,
-                "name": "Minimum Voltage",
-                "start position": 290,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 309,
-                "name": "Maximum Voltage",
-                "start position": 300,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 289,
-                "name": "Maximum Current",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 299,
-                "name": "Minimum Voltage",
-                "start position": 290,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 309,
-                "name": "Maximum Voltage",
-                "start position": 300,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 287,
-                "name": "PDP",
-                "start position": 280,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 295,
-                "name": "Minimum Voltage",
-                "start position": 288,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 305,
-                "name": "Maximum Voltage",
-                "start position": 297,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 307,
-                "name": "AVS Peak Current",
-                "start position": 306,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 309,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 308,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
-              },
-              {
-                "end position": 343,
-                "name": "Supply Type",
-                "start position": 342,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 321,
-                "name": "Maximum Current",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 331,
-                "name": "Voltage",
-                "start position": 322,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 333,
-                "name": "Peak Current",
-                "start position": 332,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 321,
-                "name": "Maximum Power",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 331,
-                "name": "Minimum Voltage",
-                "start position": 322,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 341,
-                "name": "Maximum Voltage",
-                "start position": 332,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 321,
-                "name": "Maximum Current",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 331,
-                "name": "Minimum Voltage",
-                "start position": 322,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 341,
-                "name": "Maximum Voltage",
-                "start position": 332,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 319,
-                "name": "PDP",
-                "start position": 312,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 327,
-                "name": "Minimum Voltage",
-                "start position": 320,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 337,
-                "name": "Maximum Voltage",
-                "start position": 329,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 339,
-                "name": "AVS Peak Current",
-                "start position": 338,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 341,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 340,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
-              },
-              {
-                "end position": 375,
-                "name": "Supply Type",
-                "start position": 374,
-                "value (EDITABLE)": "0x0",
-                "value description": "Fixed"
-              },
-              {
-                "end position": 353,
-                "name": "Maximum Current",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 363,
-                "name": "Voltage",
-                "start position": 354,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 365,
-                "name": "Peak Current",
-                "start position": 364,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 353,
-                "name": "Maximum Power",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 363,
-                "name": "Minimum Voltage",
-                "start position": 354,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 373,
-                "name": "Maximum Voltage",
-                "start position": 364,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 353,
-                "name": "Maximum Current",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 A"
-              },
-              {
-                "end position": 363,
-                "name": "Minimum Voltage",
-                "start position": 354,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 373,
-                "name": "Maximum Voltage",
-                "start position": 364,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 351,
-                "name": "PDP",
-                "start position": 344,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 W"
-              },
-              {
-                "end position": 359,
-                "name": "Minimum Voltage",
-                "start position": 352,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 369,
-                "name": "Maximum Voltage",
-                "start position": 361,
-                "value (EDITABLE)": "0x0",
-                "value description": "0 V"
-              },
-              {
-                "end position": 371,
-                "name": "AVS Peak Current",
-                "start position": 370,
-                "value (EDITABLE)": "0x0",
-                "value description": "100%"
-              },
-              {
-                "end position": 373,
-                "name": "EPR Adjustable Voltage Supply",
-                "start position": 372,
-                "value (EDITABLE)": "0x0",
-                "value description": "Reserved"
               }
             ],
             "length in bytes": "48",
@@ -12620,13 +11780,6 @@
                 "value description": "False"
               },
               {
-                "end position": 129,
-                "name": "SPR AVS Enable Sink Mode",
-                "start position": 129,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
                 "end position": 166,
                 "name": "AVS Operating Current",
                 "start position": 160,
@@ -12643,6 +11796,69 @@
             ],
             "length in bytes": "24",
             "name": "Autonegotiate Sink"
+          },
+          {
+            "address": "0x3c",
+            "bitFields": [
+              {
+                "end position": 7,
+                "name": "SPM Allocated Extra Power",
+                "start position": 0,
+                "value (EDITABLE)": "0xa",
+                "value description": "0.25  W"
+              },
+              {
+                "end position": 23,
+                "name": "SPM Guaranteed Power",
+                "start position": 16,
+                "value (EDITABLE)": "0x1",
+                "value description": "0.025  W"
+              },
+              {
+                "end position": 39,
+                "name": "Port Disabled By SPM",
+                "start position": 32,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 47,
+                "name": "SPM Forced Safe State Power",
+                "start position": 40,
+                "value (EDITABLE)": "0x36",
+                "value description": "1.35  W"
+              }
+            ],
+            "length in bytes": "7",
+            "name": "SPM Client Control"
+          },
+          {
+            "address": "0x3d",
+            "bitFields": [
+              {
+                "end position": 7,
+                "name": "SPM Totat Vbus Power Used",
+                "start position": 0,
+                "value (EDITABLE)": "0xa",
+                "value description": "0.25  W"
+              },
+              {
+                "end position": 23,
+                "name": "SPM Requested Total VBUS Power",
+                "start position": 16,
+                "value (EDITABLE)": "0x1",
+                "value description": "0.025  W"
+              },
+              {
+                "end position": 39,
+                "name": "SPM Cap Mismatch",
+                "start position": 32,
+                "value (EDITABLE)": "0x1",
+                "value description": "0x1"
+              }
+            ],
+            "length in bytes": "5",
+            "name": "SPM Client Status"
           },
           {
             "address": "0x47",
@@ -14298,13 +13514,6 @@
                 "start position": 104,
                 "value (EDITABLE)": "0xf",
                 "value description": "15 W"
-              },
-              {
-                "end position": 119,
-                "name": "Source EPR PDP",
-                "start position": 112,
-                "value (EDITABLE)": "0xf",
-                "value description": "15 W"
               }
             ],
             "length in bytes": "15",
@@ -14542,7 +13751,7 @@
     "mode": "config",
     "noOfConnectedDevices": "1",
     "sharedSettings": true,
-    "timeStamp": "6-21-2024_7-25-44"
+    "timeStamp": "6-26-2024_11-27-3"
   },
   "miscellaneous": {
     "configuration mapping": {
