@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45d40bc_e7abf860",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-26T21:59:11Z",
+      "side": 1,
+      "message": "This was my suggestion, not the from the bot.\n\nMy preference is that you increment by the calculated value returned by `snprintf`.  This way if the format string changes, then you don\u0027t need to also modify the hard coded increment.",
+      "parentUuid": "5e176dc8_8077906d",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 29
+      },
+      "revId": "03f42580476f24d93662f3087edd0fe6fd07ddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc8422e_d1a9022a",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "fifo_entry_print() does its own _get_claim() and _get_finish() for\nthe payload portion of the entry - that will also resolve this\nget_claim().\nthis get_claim() is needed to advances the get position to the payload\nas we already have a copy of the entry header.",
       "parentUuid": "fb7e657a_3f788a10",
+      "range": {
+        "startLine": 332,
+        "startChar": 3,
+        "endLine": 332,
+        "endChar": 21
+      },
+      "revId": "03f42580476f24d93662f3087edd0fe6fd07ddf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d273dca3_75d7ff03",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-26T21:59:11Z",
+      "side": 1,
+      "message": "Please add a comment explaining this.  As is, it looks like an oversight that `get_finish()` is missing.",
+      "parentUuid": "5e006c4e_356fbb86",
       "range": {
         "startLine": 332,
         "startChar": 3,
