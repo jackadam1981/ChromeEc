@@ -337,6 +337,7 @@ static int test_memmove(void)
 	const int buf_size = 1000;
 	const int len = 400;
 	const int iteration = 1000;
+	char cmp_buf[len];
 
 	TEST_ASSERT(shared_mem_acquire(buf_size, &buf) == EC_SUCCESS);
 
@@ -349,7 +350,6 @@ static int test_memmove(void)
 	for (i = 0; i < iteration; ++i)
 		memmove(buf + 101, buf, len); /* unaligned */
 	t1 = get_time();
-	TEST_ASSERT_ARRAY_EQ(buf + 101, buf, len);
 	ccprintf(" (speed gain: %" PRId64 " ->", t1.val - t0.val);
 
 	t2 = get_time();
@@ -357,10 +357,26 @@ static int test_memmove(void)
 		memmove(buf + 100, buf, len); /* aligned */
 	t3 = get_time();
 	ccprintf(" %" PRId64 " us) ", t3.val - t2.val);
-	TEST_ASSERT_ARRAY_EQ(buf + 100, buf, len);
 
 	if (!IS_ENABLED(EMU_BUILD))
 		TEST_ASSERT((t1.val - t0.val) > (t3.val - t2.val));
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0x7f;
+	for (i = len; i < buf_size; ++i)
+		buf[i] = 0;
+	/* Store the original buffer. */
+	memcpy(cmp_buf, buf, len);
+
+	memmove(buf + 101, buf, len); /* unaligned */
+	TEST_ASSERT_ARRAY_EQ(buf + 101, cmp_buf, len);
+
+	for (i = 0; i < len; ++i)
+		buf[i] = i & 0x7f;
+	for (i = len; i < buf_size; ++i)
+		buf[i] = 0;
+	memmove(buf + 100, buf, len); /* aligned */
+	TEST_ASSERT_ARRAY_EQ(buf + 100, cmp_buf, len);
 
 	/* Test small moves */
 	memmove(buf + 1, buf, 1);
