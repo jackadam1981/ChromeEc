@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ff915b_48dac064",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-26T22:59:10Z",
+      "side": 1,
+      "message": "Please comment the unbalanced calls to buf_get_claim and get_finish.",
+      "range": {
+        "startLine": 333,
+        "startChar": 3,
+        "endLine": 333,
+        "endChar": 21
+      },
+      "revId": "9618461b1f4b183f8c398e157ab3dcf04b81c0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7d2c55_298f4a22",
+        "filename": "zephyr/subsys/pd_controller/pdc_trace_msg.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-26T22:59:10Z",
+      "side": 1,
+      "message": "I\u0027ve been using the PDC tracing today.  It\u0027s odd that the trace is dumped when changing the trace option.  Should the trace buffer only be dumped/reset only when the user runs `pdc trace`?",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 11
+      },
+      "revId": "9618461b1f4b183f8c398e157ab3dcf04b81c0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
