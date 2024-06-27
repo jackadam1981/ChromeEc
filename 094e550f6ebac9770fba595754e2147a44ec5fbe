@@ -211,6 +211,30 @@
       },
       "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18c90df_01e04823",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-27T20:56:59Z",
+      "side": 1,
+      "message": "Hi Sue chen. I don\u0027t think this CL is ready. To handle all the cases (BP_YES, batt_initialized, timer), it needs to be further revisded. Let\u0027s go with CL:5604607, which will affect only Craask. Thanks.",
+      "parentUuid": "72e2cc9c_274570de",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 6
+      },
+      "revId": "094e550f6ebac9770fba595754e2147a44ec5fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
