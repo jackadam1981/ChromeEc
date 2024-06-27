@@ -189,6 +189,7 @@ static void sighandler(int signum)
 	request_exit("caught signal %d: %s\n", signum, strsignal(signum));
 }
 
+// TODO: FIXME
 static int find_interface_with_endpoint(int want_ep_num)
 {
 	int iface_num = -1;
