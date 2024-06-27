@@ -1,0 +1,9 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config PLATFORM_EC_USB_I2C
+	bool "I2C over USB support"
+	help
+	  Enable the I2C transaction over USB interface.
+
