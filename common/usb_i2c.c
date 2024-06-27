@@ -13,14 +13,23 @@
 #include "queue_policies.h"
 #include "registers.h"
 #include "task.h"
+
+#if defined(CONFIG_PLATFORM_EC_USB_I2C)
+#include "drivers/usb_stream.h"
+#include "drivers/usb_i2c.h"
+#else
 #include "usb-stream.h"
-#include "usb_descriptor.h"
 #include "usb_i2c.h"
+#endif
+
+#include "usb_descriptor.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ##args)
 
 USB_I2C_CONFIG(i2c, USB_IFACE_I2C, USB_STR_I2C_NAME, USB_EP_I2C)
+
+#if 0
 
 static int (*cros_cmd_handler)(void *data_in, size_t in_size, void *data_out,
 			       size_t out_size);
@@ -183,3 +192,4 @@ int usb_i2c_register_cros_cmd_handler(int (*cmd_handler)(
 	cros_cmd_handler = cmd_handler;
 	return 0;
 }
+#endif

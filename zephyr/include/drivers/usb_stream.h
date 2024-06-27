@@ -39,3 +39,4 @@ void updater_stream_written(struct consumer const *consumer, size_t count);
 	}
 
 extern const struct usb_stream_config usb_update;
+extern const struct usb_stream_config i2c_usb;
