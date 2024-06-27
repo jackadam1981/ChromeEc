@@ -13,10 +13,19 @@
 #include "queue_policies.h"
 #include "registers.h"
 #include "task.h"
+
+#if defined(CONFIG_PLATFORM_EC_USB_I2C)
+#include "drivers/usb_stream.h"
+#include "drivers/usb_i2c.h"
+#else
 #include "usb-stream.h"
-#include "usb_descriptor.h"
 #include "usb_i2c.h"
+#endif
+
+#include "usb_descriptor.h"
 #include "util.h"
+
+LOG_MODULE_REGISTER(usb_i2c, LOG_LEVEL_DBG);
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ##args)
 
@@ -48,12 +57,14 @@ static uint32_t usb_i2c_read_packet(struct usb_i2c_config const *config)
 {
 	return QUEUE_REMOVE_UNITS(config->consumer.queue, config->buffer,
 				  queue_count(config->consumer.queue));
+	LOG_HEXDUMP_DBG(config->buffer, queue_count(config->consumer.queue), "I2C RX:");
 }
 
 static void usb_i2c_write_packet(struct usb_i2c_config const *config,
 				 size_t count)
 {
 	QUEUE_ADD_UNITS(config->tx_queue, config->buffer, count);
+	LOG_HEXDUMP_DBG(config->buffer, count, "I2C TX:");
 }
 
 static uint8_t usb_i2c_executable(struct usb_i2c_config const *config)
