@@ -30,11 +30,11 @@ struct deferred_data {
  */
 int hook_call_deferred(const struct deferred_data *data, int us);
 
-#define DECLARE_DEFERRED(routine)                                    \
-	K_WORK_DELAYABLE_DEFINE(routine##_work_data,                 \
-				(void (*)(struct k_work *))routine); \
-	__maybe_unused const struct deferred_data routine##_data = { \
-		.work = &routine##_work_data,                        \
+#define DECLARE_DEFERRED(routine)                                             \
+	K_WORK_DELAYABLE_DEFINE(CONCAT2(routine, _work_data),                 \
+				(void (*)(struct k_work *))routine);          \
+	__maybe_unused const struct deferred_data CONCAT2(routine, _data) = { \
+		.work = &CONCAT2(routine, _work_data),                        \
 	}
 
 /**
