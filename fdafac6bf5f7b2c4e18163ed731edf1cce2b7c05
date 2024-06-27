@@ -88,6 +88,30 @@
       },
       "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418fc6d5_b8ddfad5",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-27T18:38:39Z",
+      "side": 1,
+      "message": "I added `cros-ec-reviewers`. I think they will know answer.",
+      "parentUuid": "b2435eb4_8f6dd8c3",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 78
+      },
+      "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
