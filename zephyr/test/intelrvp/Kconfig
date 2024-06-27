@@ -27,6 +27,11 @@ config TEST_PROJECT_MTLRVPP_MCHP
 	help
 	  Enable tests specific to the mtlrvpp_pd board variant.
 
+config TEST_PROJECT_PTLRVPP_MCHP
+	bool "Enable ptlrvp_mchp-specific tests"
+	help
+	  Enable tests specific to the mtlrvpp_pd board variant.
+
 endchoice
 
 config TEST_PROJECT_NAME
