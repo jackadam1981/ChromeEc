@@ -160,6 +160,39 @@ extern struct consumer_ops const usb_i2c_consumer_ops;
  * ENDPOINT is the index of the USB bulk endpoint used for receiving and
  * transmitting bytes.
  */
+#ifdef CONFIG_ZEPHYR
+#define USB_I2C_CONFIG(NAME, INTERFACE, INTERFACE_NAME, ENDPOINT)            \
+	static uint16_t CONCAT2(NAME, _buffer_)[USB_I2C_BUFFER_SIZE / 2];    \
+	static void NAME##_deferred_(void);                                  \
+	DECLARE_DEFERRED(NAME##_deferred_);                                  \
+	static struct queue const NAME##_to_usb;                             \
+	static struct queue const usb_to_##NAME;                             \
+	USB_STREAM_CONFIG_FULL(usb_##NAME, INTERFACE, USB_CLASS_VENDOR_SPEC, \
+			       USB_SUBCLASS_GOOGLE_I2C,                      \
+			       USB_PROTOCOL_GOOGLE_I2C, INTERFACE_NAME,      \
+			       ENDPOINT, USB_MAX_PACKET_SIZE,                \
+			       USB_MAX_PACKET_SIZE, usb_to_##NAME,           \
+			       NAME##_to_usb, 1, 0);                         \
+	struct usb_i2c_config const NAME = {				\
+		.buffer    = CONCAT2(NAME, _buffer_),			\
+		.deferred  = &CONCAT2(NAME, _deferred__data),		\
+		.consumer  = {						\
+			.queue = &usb_to_##NAME,		\
+			.ops   = &usb_i2c_consumer_ops,			\
+		},							\
+		.tx_queue = &NAME##_to_usb,			\
+	};                            \
+	static struct queue const NAME##_to_usb =                            \
+		QUEUE_DIRECT(USB_I2C_READ_BUFFER, uint8_t, null_producer,    \
+			     usb_##NAME.consumer);                           \
+	static struct queue const usb_to_##NAME =                            \
+		QUEUE_DIRECT(USB_I2C_WRITE_BUFFER, uint8_t,                  \
+			     usb_##NAME.producer, NAME.consumer);            \
+	static void CONCAT2(NAME, _deferred_)(void)                          \
+	{                                                                    \
+		usb_i2c_deferred(&NAME);                                     \
+	}
+#else
 #define USB_I2C_CONFIG(NAME, INTERFACE, INTERFACE_NAME, ENDPOINT)              \
 	static uint16_t CONCAT2(NAME, _buffer_)[USB_I2C_BUFFER_SIZE / 2];      \
 	static void CONCAT2(NAME, _deferred_)(void);                           \
@@ -191,6 +224,7 @@ extern struct consumer_ops const usb_i2c_consumer_ops;
 	{                                                                      \
 		usb_i2c_deferred(&NAME);                                       \
 	}
+#endif /* CONFIG_ZEPHYR */
 
 /*
  * Handle I2C request in a deferred callback.
