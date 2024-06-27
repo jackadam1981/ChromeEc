@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c72724f_165001cc",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T15:34:53Z",
+      "side": 1,
+      "message": "I mentioned this before - a fixed filename for the read doesn\u0027t work when running this utility as part of automation.\n\nYou should make the usage of itecomdbgr look more like the iteflash utility.\n\n-r \u003cfilename\u003e -R \u003crange\u003e",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 30
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc70c2fb_e2fbd2f6",
         "filename": "util/itecomdbgr.cc",
         "patchSetId": 27
