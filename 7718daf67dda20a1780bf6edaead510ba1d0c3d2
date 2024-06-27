@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f6b06a_107a7a89",
+        "filename": "zephyr/program/brox/greenbayupoc/keyboard.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-06-27T09:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53be6bf3_6a6e142a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 73
+      },
+      "revId": "7718daf67dda20a1780bf6edaead510ba1d0c3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4780c7dc_22c7e42a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-26T17:42:16Z",
       "side": 1,
       "message": "Nit - line length",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 73
+      },
+      "revId": "7718daf67dda20a1780bf6edaead510ba1d0c3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d948af_f527683b",
+        "filename": "zephyr/program/brox/lotso/keyboard.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-06-27T09:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4780c7dc_22c7e42a",
       "range": {
         "startLine": 17,
         "startChar": 0,
