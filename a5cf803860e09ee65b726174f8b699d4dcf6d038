@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e4613874_3de01cc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2024-06-27T14:50:30Z",
+      "side": 1,
+      "message": "added BUG\u003db:336751447",
+      "parentUuid": "1bb0a79a_3c21629d",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "a5cf803860e09ee65b726174f8b699d4dcf6d038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1df662da_de8a7a73",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
