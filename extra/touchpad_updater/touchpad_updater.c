@@ -20,10 +20,17 @@
 /* Command line options */
 static uint16_t vid = 0x18d1; /* Google */
 static uint16_t pid = 0x5022; /* Hammer */
-static uint8_t ep_num = 4; /* console endpoint */
+typedef struct {
+	uint8_t addr; /* Endpoint address */
+	uint8_t len; /* Max. packet size */
+} ep_info_t;
+static ep_info_t in_ep;
+static ep_info_t out_ep;
 static uint8_t extended_i2c_exercise; /* non-zero to exercise */
 static char *firmware_binary = "144.0_2.0.bin"; /* firmware blob */
 
+#define USB_I2C_SUBCLASS 0x52
+#define USB_I2C_PROTOCOL 0x01
 /* Firmware binary blob related */
 #define MAX_FW_PAGE_SIZE 512
 #define MAX_FW_PAGE_COUNT 1024
@@ -70,12 +77,11 @@ static void usage(int errs)
 	       "  -f,--file   STR         Firmware binary (default %s)\n"
 	       "  -v,--vid    HEXVAL      Vendor ID (default %04x)\n"
 	       "  -p,--pid    HEXVAL      Product ID (default %04x)\n"
-	       "  -e,--ep     NUM         Endpoint (default %d)\n"
 	       "  -d,--debug              Exercise extended read I2C over USB\n"
 	       "                          and print verbose debug messages.\n"
 	       "  -h,--help               Show this message\n"
 	       "\n",
-	       progname, firmware_binary, vid, pid, ep_num);
+	       progname, firmware_binary, vid, pid);
 
 	exit(!!errs);
 }
@@ -106,13 +112,6 @@ static void parse_cmdline(int argc, char *argv[])
 			break;
 		case 'v':
 			vid = (uint16_t)strtoull(optarg, &e, 16);
-			if (!*optarg || (e && *e)) {
-				printf("Invalid argument: \"%s\"\n", optarg);
-				errorcnt++;
-			}
-			break;
-		case 'e':
-			ep_num = (uint8_t)strtoull(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
 				printf("Invalid argument: \"%s\"\n", optarg);
 				errorcnt++;
@@ -189,7 +188,7 @@ static void sighandler(int signum)
 	request_exit("caught signal %d: %s\n", signum, strsignal(signum));
 }
 
-static int find_interface_with_endpoint(int want_ep_num)
+static int find_endpoints()
 {
 	int iface_num = -1;
 	int r, i, j, k;
@@ -210,13 +209,25 @@ static int find_interface_with_endpoint(int want_ep_num)
 		iface0 = &conf->interface[i];
 		for (j = 0; j < iface0->num_altsetting; j++) {
 			iface = &iface0->altsetting[j];
+			if (iface->bInterfaceClass != 0xFF ||
+			    iface->bInterfaceSubClass != USB_I2C_SUBCLASS ||
+			    iface->bInterfaceProtocol != USB_I2C_PROTOCOL) {
+				continue;
+			}
 			for (k = 0; k < iface->bNumEndpoints; k++) {
 				ep = &iface->endpoint[k];
-				if (ep->bEndpointAddress == want_ep_num) {
-					iface_num = i;
-					break;
+				if ((ep->bEndpointAddress &
+				     LIBUSB_ENDPOINT_DIR_MASK) ==
+				    LIBUSB_ENDPOINT_IN) {
+					in_ep.addr = ep->bEndpointAddress;
+					in_ep.len = ep->wMaxPacketSize;
+				} else {
+					out_ep.addr = ep->bEndpointAddress;
+					out_ep.len = ep->wMaxPacketSize;
 				}
+				iface_num = i;
 			}
+			break;
 		}
 	}
 
@@ -238,11 +249,12 @@ static void init_with_libusb(void)
 	if (!devh)
 		request_exit("can't find device\n");
 
-	iface_num = find_interface_with_endpoint(ep_num);
+	iface_num = find_endpoints();
 	if (iface_num < 0)
-		request_exit("can't find interface owning EP %d\n", ep_num);
+		request_exit("can't find interface");
 
-	printf("claim_interface %d to use endpoint %d\n", iface_num, ep_num);
+	printf("claim_interface %d to use IN ep 0x%x and OUT ep 0x%x\n",
+	       iface_num, in_ep.addr, out_ep.addr);
 	r = libusb_claim_interface(devh, iface_num);
 	if (r < 0)
 		DIE("claim interface", r);
@@ -333,14 +345,22 @@ static int libusb_single_write_and_read(const uint8_t *to_write,
 	while (sent_bytes < (offset + write_length)) {
 		tx_ready = remains = (offset + write_length) - sent_bytes;
 
-		r = libusb_bulk_transfer(devh, (ep_num | LIBUSB_ENDPOINT_OUT),
-					 tx_buf + sent_bytes, tx_ready,
-					 &actual_length, 5000);
+		r = libusb_bulk_transfer(devh, out_ep.addr, tx_buf + sent_bytes,
+					 tx_ready, &actual_length, 5000);
 		if (r == 0 && actual_length == tx_ready) {
-			r = libusb_bulk_transfer(devh,
-						 (ep_num | LIBUSB_ENDPOINT_IN),
-						 rx_buf, sizeof(rx_buf),
-						 &actual_length, 5000);
+			int rx_len = 0;
+
+			actual_length = 0;
+			do {
+				r = libusb_bulk_transfer(devh, in_ep.addr,
+							 rx_buf, sizeof(rx_buf),
+							 &rx_len, 5000);
+				if (r) {
+					break;
+				}
+				actual_length += rx_len;
+				usleep(100 * 1000);
+			} while ((read_length + 4) != actual_length);
 		}
 		r = check_read_status(r,
 				      (remains == tx_ready) ? read_length : 0,
