@@ -32,6 +32,28 @@ config CONSOLE_CMD_PDC_CCG8
 	  Enable console command to read/write to the power path registers of
 	  CCG8 Power Delivery chip.
 
+config USBC_PDC_IT5272
+        bool "ITE IT5272 Power Deleivery Controller driver"
+        default y if DT_HAS_ITE_IT5272_PDC_ENABLED
+        select SMF
+        select SMF_ANCESTOR_SUPPORT
+        help
+          This option enables the ITE IT5272 Power Delivery Controller.
+
+config USBC_PDC_IT5272_STACK_SIZE
+        int "USB-C ITE IT5272 PDC thread stack size"
+        default 1024
+	depends on USBC_PDC_IT5272
+        help
+          Stack size of thread created for each instance.
+
+config USBC_PDC_IT5272_THREAD_PRIORITY
+        int "USB-C ITE IT5272 PDC thread priority"
+        default 0
+	depends on USBC_PDC_IT5272
+        help
+          Set thread priority of the USB-C PDC
+
 config USBC_PDC_TPS6699X
 	bool "TI TPS6699X Power Deleivery Controller driver"
 	default y if DT_HAS_TI_TPS6699_PDC_ENABLED
@@ -84,7 +106,7 @@ config USBC_PDC_RTS54XX_THREAD_PRIORITY
         help
           Set thread priority of the USB-C PDC
 
-config USBC_PDC_TRACE_MSG
+config USBC_PDC_TRACE_MSG                   # only realtek enable this config
 	bool "USB-C PDC message tracing"
 	depends on USBC_PDC_RTS54XX
 	help

@@ -39,6 +39,16 @@
 	pinctrl-names = "default";
 	label = "I2C_1";
 
+	it5272P0@26 {
+		compatible = "ite,it5272-pdc";
+		reg = <0x26>; /* TCPC slave address */
+		irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+	};
+	it5272P1@26 {
+		compatible = "ite,it5272-pdc";
+		reg = <0x26>; /* TCPC slave address */
+		irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+	};
 	rts545x@67 {
 		compatible = "realtek,rts545x";
 		reg = <0x67>;

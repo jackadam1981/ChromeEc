@@ -13,6 +13,11 @@ int main(void)
 {
 	ec_app_main();
 
+	/* i2c test code (refer to i2c test) */
+	/* to be a file (need +makefile source) */
+
+
+
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		host_command_main();
 	} else if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {
