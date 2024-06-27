@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a03e416_0c04f582",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-27T20:28:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f2b7017b_b4855f0f",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02201a08_d59c09b7",
@@ -141,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5768f4_79350945",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-27T20:28:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9a9930d9_949713cd",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d09d2dc_b3f2741b",
@@ -172,6 +208,24 @@
       "side": 1,
       "message": "Such a return statement would be unreachable. The compiler will raise an error if somebody ever adds some path to break out of the loop.",
       "parentUuid": "6d09d2dc_b3f2741b",
+      "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb7dd31_57a38775",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-27T20:28:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5920ff59_429ad56b",
       "revId": "e56945531a789a120a48e2c473dd57b34ed749b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
