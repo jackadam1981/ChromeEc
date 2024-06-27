@@ -22,6 +22,30 @@
       },
       "revId": "d8c93afeb2cdd1c8880da58cbee7b38a7814d2b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0990413_991be697",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2024-06-27T20:15:41Z",
+      "side": 1,
+      "message": "done, both pass /repohooks/pre-upload.py checking.",
+      "parentUuid": "c1385364_2d5f7237",
+      "range": {
+        "startLine": 33,
+        "startChar": 40,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "d8c93afeb2cdd1c8880da58cbee7b38a7814d2b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
