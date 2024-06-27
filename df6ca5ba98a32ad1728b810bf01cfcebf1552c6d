@@ -81,6 +81,24 @@
       "parentUuid": "9cf75e73_6056526c",
       "revId": "df6ca5ba98a32ad1728b810bf01cfcebf1552c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48feece_c641d643",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2024-06-27T03:16:20Z",
+      "side": 1,
+      "message": "After testing, rauru can\u0027t set these 2 to in, so exclude rauru.",
+      "parentUuid": "4e7b5206_edbe375a",
+      "revId": "df6ca5ba98a32ad1728b810bf01cfcebf1552c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
