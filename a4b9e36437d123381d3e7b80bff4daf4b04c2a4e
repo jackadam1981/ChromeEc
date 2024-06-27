@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0e6704_6473539d",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T21:23:33Z",
+      "side": 1,
+      "message": "As a follow-up, can you use `#include native_sim.overlay` inside the chip specific overlay file?  That will clean this up a bit, and it makes the chip overlay self contained.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "a4b9e36437d123381d3e7b80bff4daf4b04c2a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
