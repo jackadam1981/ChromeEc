@@ -16,6 +16,24 @@
       "message": "I still want to test to see how much code RAM we have left after this change, but if we\u0027re too low on that front we can go the dynamic allocation route: https://crrev.com/c/5622408. I figure it makes sense to go ahead and submit something so that Elan and us can do more testing.",
       "revId": "6412dd61f22d768e1f101661d1236d2c7036fa7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c4b8d0_5c878bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-27T21:45:02Z",
+      "side": 1,
+      "message": "Briefly looking through the code, I\u0027m not convinced that the linker script is correctly checking that the size of the code written to flash will fit in the space allocated for Code RAM.\n\ne.g., If the size of the code stored on flash is 500 KB, but the Code RAM size is only 300 KB, will the compilation fail or will we just end up copying the first 300 KB of the code into Code RAM?\n\nI\u0027m ok with submitting this change to further unblock as long as we follow up on that.",
+      "parentUuid": "080525b8_22fc4f0b",
+      "revId": "6412dd61f22d768e1f101661d1236d2c7036fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
