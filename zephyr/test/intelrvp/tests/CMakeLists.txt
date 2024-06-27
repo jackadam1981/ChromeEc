@@ -7,9 +7,8 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/intelrvp/include")
 
-
-# Add sources for board_power.c functionality and related platform-specific files
-
+if((CONFIG_TEST_PROJECT_MTLRVP_COMMON) OR (CONFIG_TEST_PROJECT_MTLRVPP_NPCX) OR (CONFIG_TEST_PROJECT_MTLRVPP_PD) OR (CONFIG_TEST_PROJECT_MTLRVPP_MCHP))
+# Add sources for board_power.c functionality and related mtlrvp platform-specific files
 target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_POWER app PRIVATE
   ${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/board_power.c
 )
@@ -53,3 +52,15 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_DC_JACK app PRIVATE intelrvp/src/dc_jac
 target_sources_ifdef(CONFIG_TEST_PROJECT_DC_JACK app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/dc_jack.c"
 )
+endif()
+
+if(CONFIG_TEST_PROJECT_PTLRVPP_MCHP)
+zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/intelrvp/ptlrvp/ptlrvp_mchp/include")
+# Add sources for board_power.c functionality and related ptlrvp platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_POWER app PRIVATE
+  ${PLATFORM_EC_PROGRAM_DIR}/intelrvp/ptlrvp/src/board_power.c
+)
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_POWER app PRIVATE
+  ptlrvp/src/board_power.c
+)
+endif()

@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include "ap_power/ap_pwrseq_sm.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "system_boot_time.h"
@@ -12,6 +11,7 @@
 #include <zephyr/logging/log.h>
 
 #include <power_signals.h>
+#include "ap_power/ap_pwrseq_sm.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
