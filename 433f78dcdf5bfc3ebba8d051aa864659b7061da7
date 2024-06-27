@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "616bd2dc_918819b3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6495,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-27T16:20:19Z",
+      "side": 1,
+      "message": "Thanks for the heads up Wen. Looks like I should revert this and land fixes to both Coreboot + EC.",
+      "parentUuid": "cbf341b7_0aac30f2",
+      "range": {
+        "startLine": 6495,
+        "startChar": 11,
+        "endLine": 6495,
+        "endChar": 24
+      },
+      "revId": "433f78dcdf5bfc3ebba8d051aa864659b7061da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "121aa442_b1c35382",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-06-27T06:36:08Z",
       "side": 1,
       "message": "Hi Abhishek,\n\nThe `cbi_get_common_control(\u0026ctrl)` will return non-zero if the `common_control` field is unset, which is not match the `TEST\u003dConfirm cros_ec_ucsi runs successfully with CBI bit unset`\n\nIt has to set the `COMMON_CONTROL` to 0 to enable the PPM but set to 0 is not equal to `unset`.\n\n`cbi remove 11` can set  the `COMMON_CONTROL` to `unset`.\n\n```\n24-06-27 06:28:07.358 ec:\u003e cbi\n24-06-27 06:28:08.648 [258.852600 CBI Reading board info]\n24-06-27 06:28:08.651 CBI_VERSION: 0x0000\n24-06-27 06:28:08.653 TOTAL_SIZE: 29\n24-06-27 06:28:08.661 BOARD_VERSION: 0 (0x0)\n24-06-27 06:28:08.661 OEM_ID: (Error 1)\n24-06-27 06:28:08.661 MODEL_ID: (Error 1)\n24-06-27 06:28:08.661 SKU_ID: 65538 (0x10002)\n24-06-27 06:28:08.662 FW_CONFIG: 1365 (0x555)\n24-06-27 06:28:08.664 PCB_SUPPLIER: (Error 1)\n24-06-27 06:28:08.666 SSFC: 0 (0x0)\n24-06-27 06:28:08.668 REWORK_ID: (Error 1)\n24-06-27 06:28:08.670 COMMON_CONTROL: (Error 1)   --\u003e default unset\n```",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "433f78dcdf5bfc3ebba8d051aa864659b7061da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d439cb9_07084397",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-27T16:20:19Z",
+      "side": 1,
+      "message": "Ack. I tested this setting it to 0 -- misunderstood that to mean unset. Reverting.",
+      "parentUuid": "121aa442_b1c35382",
       "range": {
         "startLine": 310,
         "startChar": 5,
