@@ -64,6 +64,30 @@
       },
       "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2435eb4_8f6dd8c3",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-27T18:12:31Z",
+      "side": 1,
+      "message": "who uses it then? When the repos are unnested, we will deleted the private branch. This code will break. `private` will be replaced by `ec-private`",
+      "parentUuid": "4b99074e_2c10822b",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 78
+      },
+      "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
