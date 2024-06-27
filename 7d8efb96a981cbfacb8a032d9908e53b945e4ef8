@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed38e86f_ada6b6bc",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T21:16:30Z",
+      "side": 1,
+      "message": "This public header doesn\u0027t exist.",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 41
+      },
+      "revId": "7d8efb96a981cbfacb8a032d9908e53b945e4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1e13be_4ee3ab2d",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T21:16:30Z",
+      "side": 1,
+      "message": "Nit - some odd formatting of the line continuation.  Is this clang\u0027s fault?  If so just wrap with `/* clang-format off */` and make the line endings consistent (either with 1 space or aligned on a tab indent).",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 77
+      },
+      "revId": "7d8efb96a981cbfacb8a032d9908e53b945e4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
