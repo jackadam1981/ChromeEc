@@ -21,6 +21,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbf341b7_0aac30f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6495,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-06-27T07:29:14Z",
+      "side": 1,
+      "message": "coreboot also defined this in `coreboot/src/ec/google/chromeec/ec_commands.h` and used it in `coreboot/src/ec/google/chromeec/ec_commands.h`\n```\nbool google_chromeec_get_ucsi_enabled(void)\n{\n\tint rv;\n\tunion ec_common_control cc;\n\n\trv \u003d google_chromeec_check_feature(EC_FEATURE_UCSI_PPM);\n\tif (rv \u003c 0) {\n\t\tprintk(BIOS_INFO, \"Cannot check if EC_FEATURE_UCSI_PPM is available: status \u003d %d\\n\", rv);\n\t\treturn false;\n\t}\n\n\tif (rv \u003d\u003d 0)\n\t\treturn false;\n\n\t/* Check if PPM is enabled at runtime. */\n\tcc.ucsi_enabled \u003d 0;\n\trv \u003d cbi_get_uint32(\u0026cc.raw_value, CBI_TAG_COMMON_CONTROL);\n\tif (rv \u003c 0) {\n\t\tprintk(BIOS_DEBUG, \"Cannot get tag CBI_TAG_COMMON_CONTROL from CBI: status \u003d %d\\n\", rv);\n\t\treturn false;\n\t}\n\n\treturn (cc.ucsi_enabled !\u003d 0);\n}\n```",
+      "range": {
+        "startLine": 6495,
+        "startChar": 11,
+        "endLine": 6495,
+        "endChar": 24
+      },
+      "revId": "433f78dcdf5bfc3ebba8d051aa864659b7061da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "121aa442_b1c35382",
         "filename": "zephyr/subsys/ucsi/ppm_driver.c",
         "patchSetId": 3
