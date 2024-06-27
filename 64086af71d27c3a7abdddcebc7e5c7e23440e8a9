@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e61772_30a009ed",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-27T17:47:36Z",
+      "side": 1,
+      "message": "I don\u0027t like this. Can we add a check in `locate_from_checkout()` if the path returned by `locator` exists? For the `BUILD.py` it would be good to introduce `optional_modules`.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1dff993c_00d5237c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/modules.py",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/zmake/zmake/modules.py",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 62,
+                "endChar": 0
+              },
+              "replacement": "        path \u003d locator(name, checkout_dir)\n        if path.exists():\n            result[name] \u003d path\n"
+            }
+          ]
+        }
+      ],
+      "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
