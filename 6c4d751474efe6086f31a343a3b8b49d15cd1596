@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "279c0eff_3354605c",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T15:42:06Z",
+      "side": 1,
+      "message": "If the total size is less than a page size, this print shows odd results:\n\n```\n$ itecomdbgr -r 384000 518\nSaving... : 300%\n\n$ itecomdbgr -r 355024 4096\nSaving... : 106%\n```",
+      "range": {
+        "startLine": 619,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 50
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc70c2fb_e2fbd2f6",
         "filename": "util/itecomdbgr.cc",
         "patchSetId": 27
