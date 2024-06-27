@@ -1,0 +1,224 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc522404_0a3ac69d",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "Use 0xFFFFFFFF.",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e04a87_f7546cdd",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "bool values should only be assigned `true` or `false`.\n\nHowever, you should just have all these functions return int.  With 0 indicating success, and negative numbers for failures.",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 23
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc70c2fb_e2fbd2f6",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "This generates a warning.  You need parenthesis around the assignment.\n\nPlease run `make BOARD\u003dhost utils` before submitting your CL.\n\n\n```suggestion\n\tif ((result \u003d page_program_burst_v2(conf, conf-\u003eg_writebuf)) !\u003d 0) {\n```",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 62
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5ecff9_b5896a82",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "Needs parenthesis around the assignment of result.",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 53
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c873d8a_5f9df53e",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "Needs parenthesis around the assignment of result.",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 65
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696339e5_048dbf31",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "Needs parenthesis around the assignment of result.",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 53
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237f4ec6_b9140ecb",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "Nit - call this \"length\" instead.",
+      "range": {
+        "startLine": 986,
+        "startChar": 40,
+        "endLine": 986,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0485f387_88d26bec",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 986,
+                "startChar": 0,
+                "endLine": 987,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tprintf(\"\\n\\r\t-r : [read start addr] [length]\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b48c79_ce605b83",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-06-27T13:53:16Z",
+      "side": 1,
+      "message": "You also need to check that `read_range` is assigned if `read_start_addr !\u003d NO_READ`. This prevents trying to read 0 bytes from the flash.",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1004,
+        "endChar": 69
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "87488754_071ba0f6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 1004,
+                "startChar": 0,
+                "endLine": 1005,
+                "endChar": 0
+              },
+              "replacement": "\tif ((conf.file_name \u003d\u003d NULL) \u0026\u0026 (conf.read_start_addr \u003d\u003d NO_READ) \u0026\u0026\n\t    (conf.read_range \u003d\u003d 0)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
