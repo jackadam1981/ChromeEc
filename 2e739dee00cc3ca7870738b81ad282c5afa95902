@@ -16,6 +16,24 @@
       "message": "This looks fine, but I don\u0027t think I see it being used in the [followup CL](https://crrev.com/c/5639703). Is it needed somewhere else?\n\nOr are you just trying to make sure that [this is true](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/compiler.h;l\u003d21-24;drc\u003da65e4052bf8ec7d4be4a8c8125e2aaea6921a47f)?",
       "revId": "2e739dee00cc3ca7870738b81ad282c5afa95902",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31beb11f_b2085fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-06-27T05:07:57Z",
+      "side": 1,
+      "message": "The `compiler.h` is include for `DISABLE/ENABLE_GCC_WARNING` macros. \n\n\u003e Or are you just trying to make sure that this is true?\n\nYes, I get the macro redefine error without this include.",
+      "parentUuid": "bc79ad9d_0b8382a3",
+      "revId": "2e739dee00cc3ca7870738b81ad282c5afa95902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
