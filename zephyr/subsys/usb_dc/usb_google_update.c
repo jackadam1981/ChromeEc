@@ -22,8 +22,8 @@ LOG_MODULE_REGISTER(usb_google_update, LOG_LEVEL_INF);
 #define AUTO_EP_IN 0x80
 #define AUTO_EP_OUT 0x00
 
-NET_BUF_POOL_FIXED_DEFINE(update_rx_pool, 2, 128, USB_MAX_FS_BULK_MPS, NULL);
-NET_BUF_POOL_FIXED_DEFINE(update_tx_pool, 2, 128, USB_MAX_FS_BULK_MPS, NULL);
+NET_BUF_POOL_FIXED_DEFINE(update_rx_pool, 2, USB_MAX_FS_BULK_MPS, 0, NULL);
+NET_BUF_POOL_FIXED_DEFINE(update_tx_pool, 3, USB_MAX_FS_BULK_MPS, 0, NULL);
 
 static K_KERNEL_STACK_DEFINE(rx_thread_stack,
 			     CONFIG_GOOGLE_UPDATE_RX_STACK_SIZE);
@@ -103,7 +103,7 @@ static void google_update_read(uint8_t ep, int size, void *priv)
 
 		buf = net_buf_alloc(&update_rx_pool, K_NO_WAIT);
 		if (!buf) {
-			LOG_ERR("failed to allocate memory");
+			LOG_ERR("failed to allocate rx memory");
 			return;
 		}
 		net_buf_add_mem(buf, data, size);
@@ -137,25 +137,28 @@ void usb_written_usb_update(struct consumer const *consumer, size_t count)
 	LOG_ERR("%s ITE Debug %d", __func__, __LINE__);
 
 	static uint8_t data[USB_MAX_FS_BULK_MPS];
+	struct net_buf *buf;
 
-	while (!queue_is_empty(consumer->queue)) {
-		struct net_buf *buf;
-
-		if (count > USB_MAX_FS_BULK_MPS) {
-			LOG_ERR("invaild data count");
-			return;
-		}
-
-		queue_peek_units(consumer->queue, data, 0, count);
-		buf = net_buf_alloc(&update_tx_pool, K_NO_WAIT);
-		if (!buf) {
-			return;
-		}
-
-		net_buf_add_mem(buf, data, count);
-		net_buf_put(&tx_queue, buf);
-		queue_advance_head(consumer->queue, count);
+	if (queue_is_empty(consumer->queue)) {
+		LOG_ERR("consumer queue is empty");
+		return;
 	}
+
+	if (count > USB_MAX_FS_BULK_MPS) {
+		LOG_ERR("invaild data count");
+		return;
+	}
+
+	queue_peek_units(consumer->queue, data, 0, count);
+	buf = net_buf_alloc(&update_tx_pool, K_NO_WAIT);
+	if (!buf) {
+		LOG_ERR("failed to allocate tx memory");
+		return;
+	}
+
+	net_buf_add_mem(buf, data, count);
+	net_buf_put(&tx_queue, buf);
+	queue_advance_head(consumer->queue, count);
 }
 
 static void google_update_interface_config(struct usb_desc_header *head,
