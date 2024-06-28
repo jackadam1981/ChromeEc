@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f53a2c54_4b9e1265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-06-28T22:11:01Z",
+      "side": 1,
+      "message": "Was the interrupt firing before the PDC data struct was initialized?",
+      "revId": "ec3d975f7e6058c724afff825da3e35884573877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
