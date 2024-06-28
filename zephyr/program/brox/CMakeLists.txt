@@ -1,4 +1,4 @@
-# Copyright 2023 The ChromiumOS Authors
+# Copyright 2024 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 cmake_minimum_required(VERSION 3.20.1)
@@ -21,6 +21,17 @@ elseif(DEFINED CONFIG_BOARD_GREENBAYUPOC)
 	zephyr_library_sources("src/hibernate.c")
 	zephyr_library_sources("src/suspend_resume.c")
 	zephyr_library_sources("src/usbc.c")
+elseif(DEFINED CONFIG_BOARD_JUBILANT)
+	project(jubilant)
+	add_subdirectory(jubilant)
+
+	zephyr_include_directories("jubilant/include")
+	zephyr_library_sources("src/hibernate.c")
+	zephyr_library_sources("src/suspend_resume.c")
+	zephyr_library_sources("src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"jubilant/src/keyboard.c"
+					"jubilant/src/keyboard_customization.c")
 elseif(DEFINED CONFIG_BOARD_LOTSO)
 	project(lotso)
 	add_subdirectory(lotso)
