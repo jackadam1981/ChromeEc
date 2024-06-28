@@ -1156,6 +1156,10 @@ def all_targets():
         board = "joxer",
     )
     ec_target(
+        name = "jubilant",
+        board = "jubilant",
+    )
+    ec_target(
         name = "juniper",
         baseboard = "kukui",
         board = "juniper",

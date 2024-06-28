@@ -1,4 +1,4 @@
-# Copyright 2023 The ChromiumOS Authors
+# Copyright 2024 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 cmake_minimum_required(VERSION 3.20.1)
@@ -17,6 +17,13 @@ if(DEFINED CONFIG_BOARD_BROX)
 elseif(DEFINED CONFIG_BOARD_GREENBAYUPOC)
 	project(greenbayupoc)
 	add_subdirectory(greenbayupoc)
+
+	zephyr_library_sources("src/hibernate.c")
+	zephyr_library_sources("src/suspend_resume.c")
+	zephyr_library_sources("src/usbc.c")
+elseif(DEFINED CONFIG_BOARD_JUBILANT)
+	project(jubilant)
+	add_subdirectory(jubilant)
 
 	zephyr_library_sources("src/hibernate.c")
 	zephyr_library_sources("src/suspend_resume.c")
