@@ -145,6 +145,12 @@
 			temp_host_release_high = <59>;
 			sensor = <&charger_bc12_port1>;
 		};
+		temp_5v: 5v {
+			temp_host_high = <68>;
+			temp_host_halt = <90>;
+			temp_host_release_high = <59>;
+			sensor = <&temp_g753>;
+		};
 	};
 
 	/*
@@ -292,6 +298,10 @@
 &i2c0 {
 	charger_bc12_port1: rt9490@53 {
 		thermistor = <&thermistor_rt9490>;
+	};
+	temp_g753: g753@48 {
+		compatible = "cros-ec,temp-sensor-g753";
+		reg = <0x48>;
 	};
 };
 &i2c2 {
