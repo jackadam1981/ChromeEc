@@ -98,6 +98,30 @@
       },
       "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e00a32_9aed667b",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-28T11:18:45Z",
+      "side": 1,
+      "message": "\u003e Let me prepare CL that implements that.\n\nDone https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5666578\n\nFiras, could you rebase this CL onto https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5666579 ?",
+      "parentUuid": "594c9577_fbd098c0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
