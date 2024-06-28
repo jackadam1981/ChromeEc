@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3ca8553_340b2b17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-28T20:17:37Z",
+      "side": 1,
+      "message": "```\n ERROR   - uart connected to pseudotty: /dev/pts/0\n *** Booting Zephyr OS build v2.7.99-42124-g42e063a3915c ***\n     Assertion failed at CMAKE_SOURCE_DIR/src/main.c:35: test_main: (intptr_t)ptr not equal to CONFIG_PLATFORM_EC_MAPPED_STORAGE_BASE\n```",
+      "revId": "912a49eda2c6ba0369dc53145921b1fc8c4ddb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db579f8a_c5b14850",
         "filename": "zephyr/program/brox/BUILD.py",
         "patchSetId": 1
