@@ -68,6 +68,24 @@
       "message": "Thanks for your comment on dry run failure. I can reproduce it on my side.\n\nFind that it will cause the call to undeclared function \u0027ram_lock_config_lock_region\u0027 if add `#ifdef CONFIG_RAM_LOCK` for `ram_lock.h`.\n\nHow about using `#ifdef CONFIG_RAM_LOCK` here? Or it prefers to add `#ifdef CONFIG_SOC_SERIES_NPCX9` for this block. Thank you.",
       "revId": "5655ecc9c299e617c6e967ea0fef96ceab1bef15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f0d77c_138ea254",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-28T16:12:13Z",
+      "side": 1,
+      "message": "Let\u0027s use `#ifdef CONFIG_RAM_LOCK` here.",
+      "parentUuid": "108958f3_20e8e26b",
+      "revId": "5655ecc9c299e617c6e967ea0fef96ceab1bef15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
