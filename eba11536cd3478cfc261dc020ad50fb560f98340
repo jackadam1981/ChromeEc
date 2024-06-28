@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99f053e_af15c35d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-06-28T04:39:16Z",
+      "side": 1,
+      "message": "Hi Daisuke, and Shou-Chieh,\n\nFor PS6 has test build failed (isl923x.extpower.nissa.craask fail), I upload PS7 and make sure \"./twister -T zephyr/test/charger/\" pass. Please help to review it again. Thanks!",
+      "revId": "eba11536cd3478cfc261dc020ad50fb560f98340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
