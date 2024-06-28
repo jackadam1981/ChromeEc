@@ -1,0 +1,10 @@
+# Copyright 2024 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: >
+  Properties for a G753 I2C temperature sensor
+
+compatible: "cros-ec,temp-sensor-g753"
+
+include: i2c-device.yaml

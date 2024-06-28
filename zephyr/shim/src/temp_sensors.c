@@ -15,6 +15,7 @@
 #include "hooks.h"
 #include "temp_sensor.h"
 #include "temp_sensor/f75303.h"
+#include "temp_sensor/g753.h"
 #include "temp_sensor/pct2075.h"
 #include "temp_sensor/sb_tsi.h"
 #include "temp_sensor/temp_sensor.h"
@@ -25,7 +26,7 @@
  * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
  * #line marks the *next* line, so it is off by one.
  */
-#line 29
+#line 30
 
 #if DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT)
 
@@ -213,6 +214,41 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 	DT_FOREACH_STATUS_OKAY(TMP112_COMPAT, DEFINE_TMP112_DATA)
 };
 
+#if DT_HAS_COMPAT_STATUS_OKAY(G753_COMPAT)
+/* The function maybe unused because a temperature sensor can be added to dts
+ * without a reference in the cros_ec_temp_sensors node.
+ */
+__maybe_unused static int g753_get_temp(const struct temp_sensor_t *sensor,
+					int *temp_ptr)
+{
+	return g753_get_val_k(sensor->idx, temp_ptr);
+}
+#endif /* _COMPAT */
+
+#define DEFINE_G753_DATA(node_id)                       \
+	[G753_SENSOR_ID(node_id)] = {                   \
+		.i2c_port = I2C_PORT_BY_DEV(node_id),   \
+		.i2c_addr_flags = DT_REG_ADDR(node_id), \
+	},
+
+#define GET_ZEPHYR_TEMP_SENSOR_G753(named_id)                                 \
+	(&(const struct zephyr_temp_sensor){ .read = &g753_get_temp,          \
+					     .thermistor = NULL,              \
+					     .update_temperature =            \
+						     g753_update_temperature, \
+					     FILL_POWER_GOOD(named_id) })
+
+#define TEMP_G753(named_id, sensor_id)                                \
+	[TEMP_SENSOR_ID(named_id)] = {                                \
+		.name = DT_NODE_FULL_NAME(sensor_id),                 \
+		.idx = G753_SENSOR_ID(sensor_id),                     \
+		.type = TEMP_SENSOR_TYPE_BOARD,                       \
+		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_G753(named_id), \
+	}
+
+const struct g753_sensor_t g753_sensors[G753_COUNT] = { DT_FOREACH_STATUS_OKAY(
+	G753_COMPAT, DEFINE_G753_DATA) };
+
 #if DT_HAS_COMPAT_STATUS_OKAY(F75303_COMPAT)
 /* The function maybe unused because a temperature sensor can be added to dts
  * without a reference in the cros_ec_temp_sensors node.
@@ -287,6 +323,7 @@ const struct f75303_sensor_t f75303_sensors[F75303_IDX_COUNT] = {
 	CHECK_COMPAT(PCT2075_COMPAT, named_id, sensor_id, TEMP_PCT2075)       \
 	CHECK_COMPAT(SB_TSI_COMPAT, named_id, sensor_id, TEMP_SB_TSI)         \
 	CHECK_COMPAT(TMP112_COMPAT, named_id, sensor_id, TEMP_TMP112)         \
+	CHECK_COMPAT(G753_COMPAT, named_id, sensor_id, TEMP_G753)             \
 	CHECK_COMPAT(RT9490_CHG_COMPAT, named_id, sensor_id, TEMP_RT9490)     \
 	CHECK_COMPAT(F75303_COMPAT, named_id, sensor_id, TEMP_F75303)
 

@@ -7,13 +7,20 @@
 
 #include "common.h"
 #include "console.h"
-#include "g753.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "temp_sensor/g753.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+#include "temp_sensor/temp_sensor.h"
+
+static int temp_val_local[G753_COUNT];
+#else
 static int temp_val_local;
+
+#endif
 
 /**
  * Determine whether the sensor is powered.
@@ -28,17 +35,17 @@ static int has_power(void)
 	return 1;
 #endif
 }
-
+#ifndef CONFIG_ZEPHYR
 static int raw_read8(const int offset, int *data_ptr)
 {
-	return i2c_read8(I2C_PORT_THERMAL, G753_I2C_ADDR_FLAGS, offset,
+	return i2c_read8(I2C_PORT_THERMAL, G75x_I2C_ADDR_FLAGS, offset,
 			 data_ptr);
 }
 
 #ifdef CONFIG_CMD_TEMP_SENSOR
 static int raw_write8(const int offset, int data)
 {
-	return i2c_write8(I2C_PORT_THERMAL, G753_I2C_ADDR_FLAGS, offset, data);
+	return i2c_write8(I2C_PORT_THERMAL, G75x_I2C_ADDR_FLAGS, offset, data);
 }
 #endif
 
@@ -64,7 +71,29 @@ static int set_temp(const int offset, int temp)
 	return raw_write8(offset, (uint8_t)temp);
 }
 #endif
+#else
+static int raw_read8(int sensor, const int offset, int *data_ptr)
+{
+	return i2c_read8(g753_sensors[sensor].i2c_port, G75x_I2C_ADDR_FLAGS,
+			 offset, data_ptr);
+}
 
+static int get_temp(int sensor, const int offset, int *temp_ptr)
+{
+	int rv;
+	int temp_raw = 0;
+
+	rv = raw_read8(sensor, offset, &temp_raw);
+	if (rv < 0)
+		return rv;
+
+	*temp_ptr = (int)(int8_t)temp_raw;
+	return EC_SUCCESS;
+}
+
+#endif /* CONFIG_ZEPHYR */
+
+#ifndef CONFIG_ZEPHYR
 int g753_get_val(int idx, int *temp_ptr)
 {
 	if (!has_power())
@@ -90,7 +119,34 @@ static void temp_sensor_poll(void)
 	temp_val_local = C_TO_K(temp_val_local);
 }
 DECLARE_HOOK(HOOK_SECOND, temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
+#else
 
+void g753_update_temperature(int idx)
+{
+	if (idx >= G753_COUNT)
+		return;
+
+	if (get_temp(idx, G753_TEMP_LOCAL, &temp_val_local[idx]) == EC_SUCCESS)
+		temp_val_local[idx] = C_TO_K(temp_val_local[idx]);
+}
+int g753_get_val_k(int idx, int *temp_k_ptr)
+{
+	int temp[idx];
+
+	if (!has_power())
+		return EC_ERROR_NOT_POWERED;
+	if (idx >= G753_COUNT)
+		return EC_ERROR_INVAL;
+
+	if ((get_temp(idx, G753_TEMP_LOCAL, &temp[idx])) == EC_SUCCESS) {
+		*temp_k_ptr = C_TO_K(temp[idx]);
+		return EC_SUCCESS;
+	}
+	return EC_ERROR_UNKNOWN;
+}
+#endif /* CONFIG_ZEPHYR */
+
+#ifndef CONFIG_ZEPHYR
 #ifdef CONFIG_CMD_TEMP_SENSOR
 static void print_temps(const char *name, const int temp_reg,
 			const int high_limit_reg)
@@ -185,4 +241,6 @@ DECLARE_CONSOLE_COMMAND(
 	"[settemp|setbyte <offset> <value>] or [getbyte <offset>]. "
 	"Temps in Celsius.",
 	"Print g753 temp sensor status or set parameters.");
+#endif
+#else
 #endif
