@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c268b05_654e9aea",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-28T18:02:48Z",
+      "side": 1,
+      "message": "Whoops. Looks like the rts54xx header is private, but there\u0027s probably no reason for me to repeat that here.",
+      "parentUuid": "ed38e86f_ada6b6bc",
+      "range": {
+        "startLine": 198,
+        "startChar": 3,
+        "endLine": 198,
+        "endChar": 41
+      },
+      "revId": "7d8efb96a981cbfacb8a032d9908e53b945e4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e1e13be_4ee3ab2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-27T21:16:30Z",
       "side": 1,
       "message": "Nit - some odd formatting of the line continuation.  Is this clang\u0027s fault?  If so just wrap with `/* clang-format off */` and make the line endings consistent (either with 1 space or aligned on a tab indent).",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 77
+      },
+      "revId": "7d8efb96a981cbfacb8a032d9908e53b945e4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a20496c_ad6e2db6",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-06-28T18:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e1e13be_4ee3ab2d",
       "range": {
         "startLine": 133,
         "startChar": 0,
