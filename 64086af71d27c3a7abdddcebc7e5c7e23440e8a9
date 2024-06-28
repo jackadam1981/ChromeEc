@@ -50,6 +50,30 @@
       ],
       "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "357ce879_8a194aef",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-06-28T06:26:28Z",
+      "side": 1,
+      "message": "I believe this line is still failing:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/project.py;l\u003d149#:~:text\u003d148-,149,-150\n\n```\nFinding zmake targets under \u0027/mnt/host/source/src/platform/ec/private/zephyr/program\u0027.\n\"The \u0027fpc\u0027 module is required by the /mnt/host/source/src/platform/ec/zephyr/program/fpmcu project, but is not available.\"\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/project.py\", line 151, in prune_modules\n    result[module] \u003d module_paths[module]\nKeyError: \u0027fpc\u0027\n\nThe above exception was the direct cause of the following exception:\n```\n\nwhere are `self.config.modules` populated? can you add a optional module here? and where is the `module_paths` function defined in `result[module] \u003d module_paths[module]`?\n\nis this what you had in mind for optional_modules in `build.py`\n\n```\ndef register_fpmcu_variant(\n    project_name,\n    zephyr_board,\n    variant_modules\u003d(),\n    optional_modules\u003d(),\n    variant_dts_overlays\u003d(),\n    variant_kconfig_files\u003d(),\n    signer\u003d(),\n):\n    \"\"\"Register FPMCU project\"\"\"\n    return register_binman_project(\n        project_name\u003dproject_name,\n        zephyr_board\u003dzephyr_board,\n        modules\u003d[\"ec\", *variant_modules, *optional_modules],\n        supported_toolchains\u003d[\"llvm\", \"zephyr\"],\n        dts_overlays\u003d[*variant_dts_overlays],\n        kconfig_files\u003d[here / \"prj.conf\", *variant_kconfig_files],\n        signer\u003dsigner,\n    )\n```\nstill everything in under modules and they are still entangled. can we modify `register_binman_project` function\u003e?",
+      "parentUuid": "94e61772_30a009ed",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
