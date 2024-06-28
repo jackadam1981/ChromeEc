@@ -374,8 +374,8 @@
 
 &i2c2 {
 	label = "I2C_USB_C0";
-	prescale-scl-low = <8>;
-	clock-frequency = <I2C_BITRATE_FAST>;
+	prescale-scl-low = <6>;
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 };
 
 &i2c3 {
@@ -391,8 +391,8 @@
 
 &i2c4 {
 	label = "I2C_USB_C1";
-	clock-frequency = <I2C_BITRATE_FAST>;
-	prescale-scl-low = <8>;
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	prescale-scl-low = <6>;
 };
 
 &i2c5ALT {
