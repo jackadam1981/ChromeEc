@@ -74,6 +74,30 @@
       },
       "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594c9577_fbd098c0",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-28T08:14:07Z",
+      "side": 1,
+      "message": "\u003e I believe this line is still failing\n\nYes. It could be caused by (I don\u0027t know what your environment is):\n- Bug in `locate_from_checkout()` changes (`fpc` is not present when it should)\n- `BUILD.py` requests `fpc` when it shouldn\u0027t.\n\n\u003e can we modify register_binman_project function?\n\nYes, we should do that. Let me prepare CL that implements that.",
+      "parentUuid": "357ce879_8a194aef",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "64086af71d27c3a7abdddcebc7e5c7e23440e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
