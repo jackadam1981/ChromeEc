@@ -128,6 +128,24 @@
       "message": "I\u0027m not familiar with this code so I can\u0027t +2 this change, but you\u0027re blocked on adding tests for the new code that\u0027s being added. Please reach out directly to either myself, Tristan, or Jeremy to get help writing a test for this CL if you need it.",
       "revId": "a5cf803860e09ee65b726174f8b699d4dcf6d038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6810cf1a_80ab8799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2024-06-28T14:22:48Z",
+      "side": 1,
+      "message": "Thanks your input.\nMCHP will not perform test script at this point, since we hit same code coverage-1 issue in another CL before:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4928848\ntry to solve it in similar way because VCI is an on-chip peripheral block too.",
+      "parentUuid": "d223f364_698185fd",
+      "revId": "a5cf803860e09ee65b726174f8b699d4dcf6d038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
