@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef784717_4808a62c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-06-28T22:20:00Z",
+      "side": 1,
+      "message": "I need to regenerate some bazel files in this CL, but the script that generates files uses some other copy of `zmake` (zmake can be installed using `pip`), so the plan is:\n- Merge parent first\n- Wait for zmake uprev (not actually sure about this)\n- Prepare fix for the script that generates bazel files.\n- Finally regenerate bazel files in this CL.",
+      "revId": "19cd903251f7accae24a4b93e30f4d6d486c8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
