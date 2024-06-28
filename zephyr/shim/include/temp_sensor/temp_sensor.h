@@ -19,6 +19,7 @@ extern "C" {
 
 #define PCT2075_COMPAT nxp_pct2075
 #define TMP112_COMPAT cros_ec_temp_sensor_tmp112
+#define G753_COMPAT cros_ec_temp_sensor_g753
 #define F75303_COMPAT cros_ec_temp_sensor_f75303
 #define SB_TSI_COMPAT cros_ec_temp_sensor_sb_tsi
 #define THERMISTOR_COMPAT cros_ec_temp_sensor_thermistor
@@ -32,6 +33,7 @@ extern "C" {
 #define FOREACH_TEMP_SENSOR(fn)                                             \
 	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, fn)                          \
 	DT_FOREACH_STATUS_OKAY(TMP112_COMPAT, fn)                           \
+	DT_FOREACH_STATUS_OKAY(G753_COMPAT, fn)                             \
 	DT_FOREACH_STATUS_OKAY(F75303_COMPAT, fn)                           \
 	DT_FOREACH_STATUS_OKAY_VARGS(RT9490_CHG_COMPAT, TEMP_RT9490_FN, fn) \
 	DT_FOREACH_STATUS_OKAY(SB_TSI_COMPAT, fn)                           \
@@ -150,6 +152,24 @@ enum tmp112_sensor {
 /* clang-format on */
 
 #undef TMP112_SENSOR_ID_WITH_COMMA
+
+/* G753 access array */
+/*
+ * Get the G753 sensor ID from a hardware device node.
+ *
+ * @param node_id: node id of a hardware G753 sensor node
+ */
+#define G753_SENSOR_ID(node_id) DT_CAT(G753_, node_id)
+#define G753_SENSOR_ID_WITH_COMMA(node_id) G753_SENSOR_ID(node_id),
+
+/* clang-format off */
+enum g753_sensor {
+	DT_FOREACH_STATUS_OKAY(G753_COMPAT, G753_SENSOR_ID_WITH_COMMA)
+	G753_COUNT,
+};
+/* clang-format on */
+
+#undef G753_SENSOR_ID_WITH_COMMA
 
 /* F75303 access array */
 /*
