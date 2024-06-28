@@ -27,11 +27,18 @@ FAKE_VALUE_FUNC(int, test_sensor_trigger_set, const struct device *,
 static bool sensor_enabled;
 static int sensor_threshold_value;
 static bool sensor_threshold_polarity;
+static int sensor_attr_fail_counter;
 static int test_sensor_attr_set(const struct device *dev,
 				enum sensor_channel chan,
 				enum sensor_attribute attr,
 				const struct sensor_value *val)
 {
+	if (sensor_attr_fail_counter == 0) {
+		return -1;
+	} else if (sensor_attr_fail_counter > 0) {
+		sensor_attr_fail_counter--;
+	}
+
 	if (chan == SENSOR_CHAN_VOLTAGE && attr == SENSOR_ATTR_ALERT) {
 		sensor_enabled = val->val1;
 	} else if (chan == SENSOR_CHAN_VOLTAGE &&
@@ -58,6 +65,43 @@ static const struct sensor_driver_api test_sensor_api = {
 DEVICE_DT_DEFINE(DT_INST(0, test_sensor), NULL, NULL, NULL, NULL, PRE_KERNEL_1,
 		 CONFIG_KERNEL_INIT_PRIORITY_DEVICE, &test_sensor_api);
 
+ZTEST(prochot_vcmp, test_prochot_vcmp_cb_fail)
+{
+	/* initial state */
+	zassert_equal(sensor_threshold_value, 900);
+	zassert_equal(sensor_threshold_polarity, true);
+	zassert_equal(sensor_enabled, true);
+
+	sensor_attr_fail_counter = 0;
+
+	callback(NULL, NULL);
+
+	/* no changes */
+	zassert_equal(sensor_threshold_value, 900);
+	zassert_equal(sensor_threshold_polarity, true);
+	zassert_equal(sensor_enabled, true);
+
+	sensor_enabled = true;
+	sensor_attr_fail_counter = 1;
+
+	callback(NULL, NULL);
+
+	/* vcmp left disabled */
+	zassert_equal(sensor_threshold_value, 900);
+	zassert_equal(sensor_threshold_polarity, true);
+	zassert_equal(sensor_enabled, false);
+
+	sensor_enabled = true;
+	sensor_attr_fail_counter = 2;
+
+	callback(NULL, NULL);
+
+	/* threshold changed but vcmp disabled */
+	zassert_equal(sensor_threshold_value, 100);
+	zassert_equal(sensor_threshold_polarity, false);
+	zassert_equal(sensor_enabled, false);
+}
+
 ZTEST(prochot_vcmp, test_prochot_vcmp)
 {
 	const struct shell *shell_zephyr = shell_backend_dummy_get_ptr();
@@ -76,6 +120,7 @@ ZTEST(prochot_vcmp, test_prochot_vcmp)
 	zassert_equal(buffer_size, 0, "unexpected data on the log buffer");
 	zassert_equal(sensor_threshold_value, 100);
 	zassert_equal(sensor_threshold_polarity, false);
+	zassert_equal(sensor_enabled, true);
 	shell_backend_dummy_clear_output(shell_zephyr);
 
 	callback(NULL, NULL);
@@ -84,6 +129,7 @@ ZTEST(prochot_vcmp, test_prochot_vcmp)
 	zassert_equal(buffer_size, 0, "unexpected data on the log buffer");
 	zassert_equal(sensor_threshold_value, 900);
 	zassert_equal(sensor_threshold_polarity, true);
+	zassert_equal(sensor_enabled, true);
 	shell_backend_dummy_clear_output(shell_zephyr);
 
 	chipset_in_state_fake.return_val = CHIPSET_STATE_ON;
@@ -95,6 +141,7 @@ ZTEST(prochot_vcmp, test_prochot_vcmp)
 	zassert_not_null(strstr(outbuffer, "PROCHOT state: deasserted"));
 	zassert_equal(sensor_threshold_value, 100);
 	zassert_equal(sensor_threshold_polarity, false);
+	zassert_equal(sensor_enabled, true);
 	shell_backend_dummy_clear_output(shell_zephyr);
 
 	callback(NULL, NULL);
@@ -104,6 +151,7 @@ ZTEST(prochot_vcmp, test_prochot_vcmp)
 	zassert_not_null(strstr(outbuffer, "PROCHOT state: asserted"));
 	zassert_equal(sensor_threshold_value, 900);
 	zassert_equal(sensor_threshold_polarity, true);
+	zassert_equal(sensor_enabled, true);
 	shell_backend_dummy_clear_output(shell_zephyr);
 }
 
@@ -117,6 +165,7 @@ static void reset(void *fixture)
 	sensor_enabled = false;
 	sensor_threshold_value = -1;
 	sensor_threshold_polarity = false;
+	sensor_attr_fail_counter = -1;
 
 	test_reinit();
 
