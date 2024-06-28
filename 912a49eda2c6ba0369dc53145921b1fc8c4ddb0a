@@ -16,6 +16,46 @@
       "message": "\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04380.\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04480.\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04500.\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04380.\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04580.\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04480.\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04500.\nnode \u0027/usbc/ppm-driver\u0027 compatible \u0027ucsi,ppm\u0027 has unknown vendor prefix \u0027ucsi\u0027\n\u0027label\u0027 is marked as deprecated in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04580.\nnode \u0027/usbc/ppm-driver\u0027 compatible \u0027ucsi,ppm\u0027 has unknown vendor prefix \u0027ucsi\u0027\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-ro/zephyr/zephyr.dts:929.27-1352.5: Warning (avoid_unnecessary_addr_size): /soc/pin-controller: unnecessary #address-cells/#size-cells without \"ranges\" or child \"reg\" property\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-rw/zephyr/zephyr.dts:929.27-1352.5: Warning (avoid_unnecessary_addr_size): /soc/pin-controller: unnecessary #address-cells/#size-cells without \"ranges\" or child \"reg\" property\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-rw/zephyr/zephyr.dts:849.19-869.5: Warning (unique_unit_address_if_enabled): /soc/kbd@f01d00: duplicate unit-address (also used in node /soc/gpio@f01d00)\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-rw/zephyr/zephyr.dts:849.19-869.5: Warning (unique_unit_address_if_enabled): /soc/kbd@f01d00: duplicate unit-address (also used in node /soc/cros-kb-raw@f01d00)\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-rw/zephyr/zephyr.dts:918.25-928.5: Warning (unique_unit_address_if_enabled): /soc/gpio@f01d00: duplicate unit-address (also used in node /soc/cros-kb-raw@f01d00)\nINFO: Verified 45 GPIOs, no duplicates found\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-ro/zephyr/zephyr.dts:849.19-869.5: Warning (unique_unit_address_if_enabled): /soc/kbd@f01d00: duplicate unit-address (also used in node /soc/gpio@f01d00)\nINFO: Verified 29 \u0027*-gpios\u0027 properties, all flags match.\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-ro/zephyr/zephyr.dts:849.19-869.5: Warning (unique_unit_address_if_enabled): /soc/kbd@f01d00: duplicate unit-address (also used in node /soc/cros-kb-raw@f01d00)\n/mnt/host/source/src/platform/ec/build/zephyr/jubilant/build-ro/zephyr/zephyr.dts:918.25-928.5: Warning (unique_unit_address_if_enabled): /soc/gpio@f01d00: duplicate unit-address (also used in node /soc/cros-kb-raw@f01d00)\n\nbut i saw some warring message, does it have problem?",
       "revId": "912a49eda2c6ba0369dc53145921b1fc8c4ddb0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db579f8a_c5b14850",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-28T18:33:55Z",
+      "side": 1,
+      "message": "did you mean to add a blank line here?",
+      "revId": "912a49eda2c6ba0369dc53145921b1fc8c4ddb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80cf8554_d94abea6",
+        "filename": "zephyr/program/brox/jubilant/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-06-28T18:33:55Z",
+      "side": 1,
+      "message": "2024.\ndid you use a script to clone an existing config?",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "912a49eda2c6ba0369dc53145921b1fc8c4ddb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
