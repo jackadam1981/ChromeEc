@@ -1,0 +1,51 @@
+# Copyright 2024 Google LLC
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+  todo todo todo
+
+  Example configuration:
+
+  prochot-vcmp {
+      compatible = "cros-ec,prochot-vcmp";
+      vcmp-high = <&vcmp0>;
+      vcmp-low = <&vcmp1>;
+  };
+
+  &vcmp0 {
+      status = "okay";
+      scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_5MS>;
+      comparison = <IT8XXX2_VCMP_GREATER>;
+      /* PROCHOT is nominally 1.05V, using 105mV and 945mV as thresholds. */
+      threshold-mv = <945>;
+      io-channels = <&adc0 0>;
+  };
+
+  &vcmp1 {
+      status = "okay";
+      scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_5MS>;
+      comparison = <IT8XXX2_VCMP_LESS_OR_EQUAL>;
+      threshold-mv = <105>;
+      io-channels = <&adc0 0>;
+  };
+
+  &adc0 {
+      pinctrl-0 = <&adc0_ch0_gpi0_default>; /* ...and other ADC signals */
+      pinctrl-names = "default";
+  };
+
+compatible: "cros-ec,prochot-vcmp"
+
+include: base.yaml
+
+properties:
+  vcmp-high:
+    description: Voltage comparator device for the "high" threshold
+    type: phandle
+    required: true
+
+  vcmp-low:
+    description: Voltage comparator device for the "low" threshold
+    type: phandle
+    required: true
