@@ -8,7 +8,11 @@
 #ifndef __CROS_EC_G753_H
 #define __CROS_EC_G753_H
 
-#define G753_I2C_ADDR_FLAGS 0x48
+#ifdef CONFIG_TEMP_SENSOR_G754
+#define G75x_I2C_ADDR_FLAGS 0x70
+#else
+#define G75x_I2C_ADDR_FLAGS 0x48
+#endif
 
 #define G753_IDX_INTERNAL 0
 
@@ -38,6 +42,13 @@
 #define G753_STATUS_LOCAL_TEMP_HIGH_ALARM BIT(6)
 #define G753_STATUS_BUSY BIT(7)
 
+struct g753_sensor_t {
+	int i2c_port;
+	int i2c_addr_flags;
+};
+
+extern const struct g753_sensor_t g753_sensors[];
+
 /**
  * Get the last polled value of a sensor.
  *
@@ -48,5 +59,10 @@
  * @return EC_SUCCESS if successful, non-zero if error.
  */
 int g753_get_val(int idx, int *temp_ptr);
+
+#ifdef CONFIG_ZEPHYR
+void g753_update_temperature(int idx);
+int g753_get_val_k(int idx, int *temp_mk_ptr);
+#endif /* CONFIG_ZEPHYR */
 
 #endif /* __CROS_EC_G753_H */
