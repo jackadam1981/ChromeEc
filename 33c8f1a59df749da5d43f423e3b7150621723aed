@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0d9997_75b81fdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-06-28T21:42:20Z",
+      "side": 1,
+      "message": "We\u0027re not disabling *all* shellcheck warnings, so I would phrase it as:\n\n```\nec: Disable shellcheck warning SC1091\n\nThe shflags path is not correct for the release branch since the \nrelease branch is checked out in a different location than the\nmain branch.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "33c8f1a59df749da5d43f423e3b7150621723aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
