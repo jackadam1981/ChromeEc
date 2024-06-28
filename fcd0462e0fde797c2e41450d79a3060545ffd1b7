@@ -16,6 +16,24 @@
       "message": "First time reviewing `platform/ec` CL:\n\nIIUC, CONFIG_PLATFORM_EC_MAX_SENSOR_FREQ_MILLIHZ [1] lowers the limit for slower EC. Does this CL lower the maximum frequency, so that the cts passes with lower frequency expected?\n\nI\u0027ve seen another CL:5458714 that checks the max frequency with `ectool motionsense info`, and passes tast test `hardware.SensorIioserviceHard`.\nCould you also try these two?\n\n[1]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.motionsense;l\u003d77?q\u003d%22config%20PLATFORM_EC_MAX_SENSOR_FREQ_MILLIHZ%22\u0026ss\u003dchromiumos",
       "revId": "fcd0462e0fde797c2e41450d79a3060545ffd1b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041588b2_ad3aad96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-06-28T07:38:51Z",
+      "side": 1,
+      "message": "IIUC, CONFIG_PLATFORM_EC_MAX_SENSOR_FREQ_MILLIHZ 1 lowers the limit for slower EC. Does this CL lower the maximum frequency, so that the cts passes with lower frequency expected? -----\u003eYes, the driver uses polling to access. It cannot reach 200hz.\n\nI\u0027ve seen another CL:5458714 that checks the max frequency with ectool motionsense info, and passes tast test hardware.SensorIioserviceHard.\nCould you also try these two? ------\u003e Done",
+      "parentUuid": "da8df164_34f95fed",
+      "revId": "fcd0462e0fde797c2e41450d79a3060545ffd1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
