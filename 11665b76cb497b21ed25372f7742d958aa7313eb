@@ -16,6 +16,24 @@
       "message": "Is there any dependency with the coreboot change?",
       "revId": "11665b76cb497b21ed25372f7742d958aa7313eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc33de83_1d80e712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-06-28T17:27:00Z",
+      "side": 1,
+      "message": "Coreboot change controls how `cros_ec_typec` is disabled. Without it, both UCSI driver and cros_ec_typec driver may try to run simultaneously.\n\nI have the Cq-Depends set from Coreboot to this and the Coreboot downstreamer should be able to submit this once the Coreboot change lands.",
+      "parentUuid": "0857bf00_d478f38e",
+      "revId": "11665b76cb497b21ed25372f7742d958aa7313eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
