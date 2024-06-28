@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5a0cae_13d1e6d5",
+        "filename": "zephyr/program/corsola/starmie/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-06-28T09:00:27Z",
+      "side": 1,
+      "message": "won\u0027t this break the default `lid_interrupt` behavior?",
+      "revId": "2b0634d01d3c3d6cddccaf7e787e9e289749ff13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
