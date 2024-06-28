@@ -78,7 +78,7 @@ static struct first_response_pdu targ;
 static uint16_t protocol_version;
 static uint16_t header_type;
 static char *progname;
-static char *short_opts = "bd:efg:hjlnp:rsS:tuw";
+static char *short_opts = "bd:efg:hjlnp:rsS:tuwP";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{ "binvers", 1, NULL, 'b' },
@@ -97,6 +97,7 @@ static const struct option long_opts[] = {
 	{ "tp_info", 0, NULL, 't' },
 	{ "unlock_rollback", 0, NULL, 'u' },
 	{ "unlock_rw", 0, NULL, 'w' },
+	{ "pair_challenge", 0, NULL, 'P' },
 	{},
 };
 
@@ -133,6 +134,7 @@ static void usage(int errs)
 	       "  -t,--tp_info             Get touchpad information\n"
 	       "  -u,--unlock_rollback     Tell EC to unlock the rollback region\n"
 	       "  -w,--unlock_rw           Tell EC to unlock the RW region\n"
+	       "  -P,--pair_challenge      Tell EC to execute pair challenge\n"
 	       "\n",
 	       progname, VID, PID);
 
@@ -288,6 +290,39 @@ static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 	}
 
 	/* Read reply back */
+#if 1
+	struct timespec sleep_duration = {
+		/* 10 ms */
+		.tv_sec = 0,
+		.tv_nsec = 10l * 1000l * 1000l,
+	};
+	int rxed_count_test = 0;
+	// while(is_not_timeout) {
+	for(int i = 0; i < 3; i++) {
+		r = libusb_bulk_transfer(uep->devh, uep->in_ep.addr, (uint8_t *)inbuf + rxed_count_test,
+					 inlen, &actual, 5000);
+		if (r < 0) {
+			USB_ERROR("libusb_bulk_transfer", r);
+			exit(update_error);
+		}
+		inlen -= actual;
+		rxed_count_test += actual;
+		if (allow_less || inlen == 0) {
+			break;
+		}
+		nanosleep(&sleep_duration, NULL);
+	}
+	if (inlen != 0 && !allow_less) {
+		fprintf(stderr, "%s:%d, only received %d/%d bytes\n",
+				__FILE__, __LINE__, rxed_count_test, rxed_count_test + inlen);
+		hexdump(inbuf, rxed_count_test);
+		shut_down(uep);
+	}
+	fprintf(stderr, "ITE Debug RX:\n");
+	hexdump(inbuf, rxed_count_test);
+	if (rxed_count)
+		*rxed_count = rxed_count_test;
+#else
 	if (inbuf && inlen) {
 		actual = 0;
 		r = libusb_bulk_transfer(uep->devh, uep->in_ep.addr, inbuf,
@@ -306,6 +341,7 @@ static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 		if (rxed_count)
 			*rxed_count = actual;
 	}
+#endif
 }
 
 static void xfer(struct usb_endpoint *uep, void *outbuf, size_t outlen,
@@ -1140,6 +1176,13 @@ int main(int argc, char *argv[])
 			break;
 		case 'w':
 			extra_command = UPDATE_EXTRA_CMD_UNLOCK_RW;
+			break;
+		case 'P':
+			extra_command = UPDATE_EXTRA_CMD_PAIR_CHALLENGE;
+
+			extra_command_data_len = 50;
+			get_random(extra_command_data, 48);
+			extra_command_answer_len = 49;
 			break;
 		case 0: /* auto-handled option */
 			break;
