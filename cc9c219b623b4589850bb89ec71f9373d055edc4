@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba0b42b_71cf1440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-29T21:45:58Z",
+      "side": 1,
+      "message": "ec_cmd_api.h needs to be fixed:\n```\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h: In function \u0027int ec_cmd_get_next_event_v1(host_cmd_handler_args*, ec_response_get_next_event_v1*)\u0027:\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h:189:12: error: invalid application of \u0027sizeof\u0027 to incomplete type \u0027ec_response_get_next_event_v1\u0027\n  189 |            sizeof(*r));                  \\\n      |            ^~~~~~~~~~\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h:237:37: note: in expansion of macro \u0027_CROS_EC_CV_F_R\u0027\n  237 | #define _CROS_EC_C1_F_RF(_cmd, _fn) _CROS_EC_CV_F_R(_cmd, 1, _fn##_v1, _fn##_v1)\n      |                                     ^~~~~~~~~~~~~~~\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h:314:1: note: in expansion of macro \u0027_CROS_EC_C1_F_RF\u0027\n  314 | _CROS_EC_C1_F_RF(EC_CMD_GET_NEXT_EVENT, get_next_event);\n      | ^~~~~~~~~~~~~~~~\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h: In function \u0027int ec_cmd_get_next_event_v2(host_cmd_handler_args*, ec_response_get_next_event_v1*)\u0027:\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h:189:12: error: invalid application of \u0027sizeof\u0027 to incomplete type \u0027ec_response_get_next_event_v1\u0027\n  189 |            sizeof(*r));                  \\\n      |            ^~~~~~~~~~\n/mnt/host/source/src/platform/ec/include/ec_cmd_api.h:315:1: note: in expansion of macro \u0027_CROS_EC_CV_F_R\u0027\n  315 | _CROS_EC_CV_F_R(EC_CMD_GET_NEXT_EVENT, 2, get_next_event_v2, get_next_event_v1);\n      | ^~~~~~~~~~~~~~~\nninja: build stopped: subcommand failed.\n```\n\nIdeally, the existing callers should be updated to call a generic version (i.e. ec_cmd_get_next_event) using the highest supported version of EC_CMD_GET_NEXT_EVENT.",
+      "revId": "cc9c219b623b4589850bb89ec71f9373d055edc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
