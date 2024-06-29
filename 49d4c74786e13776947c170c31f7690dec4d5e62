@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b416de94_9b44f73d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-06-29T20:37:26Z",
+      "side": 1,
+      "message": "A compiler most likely optimizes this as a literal integer. Can you make it return KEYBOARD_ROW_TO_MASK(3) and KEYBOARD_ROW_TO_MASK(2) then call board_keyboard_mask_refresh directly from line 930 (and get rid of keyboard_mask_refresh)?",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 1
+      },
+      "revId": "49d4c74786e13776947c170c31f7690dec4d5e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
