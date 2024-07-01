@@ -56,10 +56,11 @@ static int test_set_board_id_gpios(void)
 	gpio_emul_input_set(board_id_config[4].port, board_id_config[4].pin, 1);
 	gpio_emul_input_set(board_id_config[5].port, board_id_config[5].pin, 1);
 
-	/* Compute the expected board ID based on the fake inputs. For MTLRVP
-	 * 1051 */
-	;
-	board_id = 1051;
+	/* Compute the expected ID based on the fake inputs */;
+	if (IS_ENABLED(CONFIG_TEST_PROJECT_MTLRVPP_COMMON))
+		board_id = 1051; /* For MTLRVP 1051 */
+	else if (IS_ENABLED(CONFIG_TEST_PROJECT_PTLRVPP_MCHP))
+		board_id = 1078; /* For PTLRVP 1078 */
 
 	return board_id;
 }
