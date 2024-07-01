@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac548cf7_6f3e71f1",
+        "filename": "util/ectool_pdc_net.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-01T21:02:49Z",
+      "side": 1,
+      "message": "Do we need to clean up the file pointers upon bailing here?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "b23ff256a5544ffbd21dcdc7ec49d4820848a345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879e8ab8_8d4f5f38",
+        "filename": "util/ectool_pdc_net.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-01T21:02:49Z",
+      "side": 1,
+      "message": "NIT - designated initializer",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5ad94583_59389d5b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool_pdc_net.cc",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 114,
+                "endChar": 0
+              },
+              "replacement": "\tdst_want \u003d {\n\t\t.ai_flags \u003d AI_NUMERICSERV,\n\t\t.ai_family \u003d AF_UNSPEC,\n\t\t.ai_socktype \u003d SOCK_DGRAM,\n\t\t.ai_protocol \u003d IPPROTO_UDP,\n\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b23ff256a5544ffbd21dcdc7ec49d4820848a345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
