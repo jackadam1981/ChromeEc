@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18a46df_adcaa9f4",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-07-01T18:42:11Z",
+      "side": 1,
+      "message": "Should these be unique and seperate from brox and brox-sku4 below?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7a46455d_ac7dab95",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/BUILD.py",
+              "range": {
+                "startLine": 130,
+                "startChar": 0,
+                "endLine": 131,
+                "endChar": 0
+              },
+              "replacement": "assert_rw_fwid_DO_NOT_EDIT(project_name\u003d\"greenbayupoc\", addr\u003d0x70098)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e0042e4cabaeb2b6e20210bd1d14bc358fa999d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eececdd8_d94accd3",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-07-01T18:42:11Z",
+      "side": 1,
+      "message": "Does the copyright date change when you are adding to a file?",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "e0042e4cabaeb2b6e20210bd1d14bc358fa999d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
