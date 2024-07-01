@@ -59,4 +59,9 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_PTL_BOARD_POWER app PRIVATE
 target_sources_ifdef(CONFIG_TEST_PROJECT_PTL_BOARD_POWER app PRIVATE
   ${PLATFORM_EC}/zephyr/test/power/ptl_power.c
 )
+
+# Add sources for board_id.c functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/ptlrvp/src/board_id.c"
+)
 endif()
