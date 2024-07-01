@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e9e31f_85f173fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-07-01T17:54:44Z",
+      "side": 1,
+      "message": "Discussed offline, but please add more detail here and run the EC unit tests. Also, there are code coverage requirements for submitting EC code so you will need to add some zephyr test before submitting this. See `zephyr/test/drivers/default/src/usb_mux.c`",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f700663_e6b81a11",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-07-01T17:54:44Z",
+      "side": 1,
+      "message": "can you check that the mux is not in low power mode before writing to it?",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 1
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6e6d8d_f19528b9",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-07-01T17:54:44Z",
+      "side": 1,
+      "message": "Can you change this to an IS_ENABLED guard to start the function? There is no need to create variables and check the port count if the function is just going to skip this.",
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955ddbeb_f94541a7",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-07-01T17:54:44Z",
+      "side": 1,
+      "message": "I don\u0027t really see why this is included, don\u0027t we want to enable USB 3.2 through the retimer regardless of weather or not USB 2.0 is present? Also, USB 3.2 hubs and devices will typically also have USB 2.0 to enable backwords comparability so I don\u0027t see this condition being met fequentlty.",
+      "range": {
+        "startLine": 962,
+        "startChar": 33,
+        "endLine": 962,
+        "endChar": 45
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75765289_52fa36ea",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-07-01T17:54:44Z",
+      "side": 1,
+      "message": "The plan is for the kernel to call this about 10 seconds after initial connection right?",
+      "range": {
+        "startLine": 968,
+        "startChar": 0,
+        "endLine": 968,
+        "endChar": 20
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
