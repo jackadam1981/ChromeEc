@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b91d3be_20be96d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-01T21:05:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "006559ec_c201955c",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60774a4c_4ae7cffd",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-07-01T18:07:11Z",
       "side": 1,
       "message": "can you add microchip too?",
+      "range": {
+        "startLine": 18,
+        "startChar": 52,
+        "endLine": 18,
+        "endChar": 75
+      },
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1008014b_6a149de1",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-01T21:05:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "60774a4c_4ae7cffd",
       "range": {
         "startLine": 18,
         "startChar": 52,
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85ae310f_d01e2638",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/board_power.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-01T21:05:43Z",
+      "side": 1,
+      "message": "let me add the test for microchip specific variant.",
+      "parentUuid": "dffa05c1_8fdab7fa",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebfd8114_01d74d50",
         "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/board_power.c",
         "patchSetId": 2
@@ -71,6 +131,24 @@
       "writtenOn": "2024-07-01T18:07:11Z",
       "side": 1,
       "message": "is it possible to reuse the file from rex?\nor how about making a common folder for all MTL variants ?\n./zephyr/test/power/**/mtl_power.c\n./zephyr/test/power/**/ptl_power.c",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701fb23f_e9e9998c",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-01T21:05:43Z",
+      "side": 1,
+      "message": "Initially I took the approach you mention to reuse the code but here are some factors I considered:\n\n1. It changes the structure in which the test code for various boards is organized right now. board_power.c is usually handled for each platform separately in their test directory.\n2. If from now on, we dont have CEPs, the platform specific board_power.c file would only be part of RVP code. There wouldn\u0027t be the need to reuse the code.",
+      "parentUuid": "ebfd8114_01d74d50",
       "revId": "82e710fc684aaa148efab5788d6a18da112416de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
