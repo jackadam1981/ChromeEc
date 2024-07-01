@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006559ec_c201955c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-01T18:07:11Z",
+      "side": 1,
+      "message": "may be add , how much % of code is covered now",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60774a4c_4ae7cffd",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-01T18:07:11Z",
+      "side": 1,
+      "message": "can you add microchip too?",
+      "range": {
+        "startLine": 18,
+        "startChar": 52,
+        "endLine": 18,
+        "endChar": 75
+      },
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dffa05c1_8fdab7fa",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/board_power.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-01T18:07:11Z",
+      "side": 1,
+      "message": "how to address this for microchip EC variant of MTLRVP?",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfd8114_01d74d50",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-01T18:07:11Z",
+      "side": 1,
+      "message": "is it possible to reuse the file from rex?\nor how about making a common folder for all MTL variants ?\n./zephyr/test/power/**/mtl_power.c\n./zephyr/test/power/**/ptl_power.c",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
