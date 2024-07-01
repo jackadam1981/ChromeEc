@@ -12,6 +12,7 @@ if(DEFINED CONFIG_BOARD_BROX)
 	add_subdirectory(brox)
 
 	zephyr_library_sources("src/hibernate.c")
+	zephyr_library_sources("src/lid_angle_tablet_mode.c")
 	zephyr_library_sources("src/suspend_resume.c")
 	zephyr_library_sources("src/usbc.c")
 elseif(DEFINED CONFIG_BOARD_GREENBAYUPOC)
