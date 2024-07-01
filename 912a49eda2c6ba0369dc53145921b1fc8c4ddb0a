@@ -73,6 +73,30 @@
       },
       "revId": "912a49eda2c6ba0369dc53145921b1fc8c4ddb0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d792772_82f28ed8",
+        "filename": "zephyr/program/brox/jubilant/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-07-01T02:45:47Z",
+      "side": 1,
+      "message": "Caveh - \n\nIs this the script you were looking for?\n\nhttp://cs/h/chrome-internal/chromeos/superproject/+/main:src/platform/dev/contrib/variant/create_zephyr_ec_image.sh;l\u003d1",
+      "parentUuid": "80cf8554_d94abea6",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "912a49eda2c6ba0369dc53145921b1fc8c4ddb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
