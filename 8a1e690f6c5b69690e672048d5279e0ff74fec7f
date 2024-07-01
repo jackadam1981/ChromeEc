@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05df780a_1ed23f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-01T16:46:13Z",
+      "side": 1,
+      "message": "I think the dry run may have gotten messed up by the CL it depended on being submitted part way through. Rebasing and trying again.",
+      "revId": "8a1e690f6c5b69690e672048d5279e0ff74fec7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
