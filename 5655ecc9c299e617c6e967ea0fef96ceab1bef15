@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "142b2d78_b3ac0e72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-01T05:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10b4845_aaeaa207",
+      "revId": "5655ecc9c299e617c6e967ea0fef96ceab1bef15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "108958f3_20e8e26b",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Let\u0027s use `#ifdef CONFIG_RAM_LOCK` here.",
       "parentUuid": "108958f3_20e8e26b",
+      "revId": "5655ecc9c299e617c6e967ea0fef96ceab1bef15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7887f0ac_fe876023",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-01T05:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11f0d77c_138ea254",
       "revId": "5655ecc9c299e617c6e967ea0fef96ceab1bef15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
