@@ -191,3 +191,12 @@ tests:
       - CONFIG_AP_PWRSEQ_DRIVER=y
       - CONFIG_EMUL_AP_PWRSEQ_DRIVER=y
       - CONFIG_TEST_AP_PWRSEQ_PP5500=y
+
+  intelrvp.ptlrvp.board_id:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/ptlrvp/board_id.dtsi
+    extra_configs:
+      - CONFIG_TEST_PROJECT_PTLRVPP_MCHP=y
+      - CONFIG_TEST_PROJECT_BOARD_ID=y
+      - CONFIG_GPIO_EMUL=y
