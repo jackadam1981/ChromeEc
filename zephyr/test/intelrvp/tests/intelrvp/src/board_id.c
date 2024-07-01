@@ -61,10 +61,19 @@ ZTEST(board_version_tests, test_board_get_version)
 	test_set_board_id_gpios();
 
 	int version = board_get_version();
-	/* Verification: Correct version is computed and returned. here
-	 * 1100110101b */
-	int expected_id =
-		1051 /* Compute the expected ID based on the fake inputs */;
+	int expected_id;
+
+	if (IS_ENABLED(CONFIG_TEST_PROJECT_MTLRVPP_NPCX) ||
+	    IS_ENABLED(CONFIG_TEST_PROJECT_MTLRVPP_PD) ||
+	    IS_ENABLED(CONFIG_TEST_PROJECT_MTLRVPP_MCHP))
+		/* Verification: Correct version is computed and returned. here
+		 * 1100110101b */
+		expected_id = 1051 /* Compute the expected ID based on the fake
+				      inputs */
+			;
+	else if (IS_ENABLED(CONFIG_TEST_PROJECT_PTLRVPP_MCHP))
+		expected_id = 1078;
+
 	zassert_equal(expected_id, version,
 		      "Expected version didn't match actual version");
 }
