@@ -377,6 +377,14 @@ __test_only bool charging_progress_displayed(void);
  */
 int board_should_charger_bypass(void);
 
+/**
+ * Maintain the battery's state of charge between these two thresholds.
+ *
+ * @param lower Battery lower limit
+ * @param upper Battery upper limit
+ */
+int battery_sustainer_set(int8_t lower, int8_t upper);
+
 #ifdef __cplusplus
 }
 #endif
