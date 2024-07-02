@@ -68,6 +68,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07f0e512_3ad9b886",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-02T06:52:42Z",
+      "side": 1,
+      "message": "\u003e I think it should create greenbayupoc CLs to changed it address. Is jubilant address is ok ?",
+      "parentUuid": "548a28ac_d9f8e21f",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 62
+      },
+      "revId": "e0042e4cabaeb2b6e20210bd1d14bc358fa999d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eececdd8_d94accd3",
         "filename": "zephyr/program/brox/CMakeLists.txt",
         "patchSetId": 4
