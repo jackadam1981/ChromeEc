@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "425b7581_267f5209",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-02T20:54:57Z",
+      "side": 1,
+      "message": "With this change, are there any remaining boards that override the default implementation?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d891211_83fa7e20",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
