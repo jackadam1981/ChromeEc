@@ -67,7 +67,7 @@ static bool ignore_key(uint8_t row, uint8_t col)
 				return false;
 			}
 		}
-		LOG_DBG("boot_keys: ignoring row=%d col=%d", row, col);
+		printk("boot_keys: ignoring row=%d col=%d", row, col);
 		return true;
 	}
 
@@ -95,58 +95,68 @@ static void process_key(uint8_t row, uint8_t col, bool pressed)
 		}
 	}
 
-	LOG_DBG("boot_keys: boot_keys_value=0x%x counter=%d "
-		"(set row=%d col=%d)",
+	printk("\nboot_keys: boot_keys_value=0x%x counter=%d "
+		"(set row=%d col=%d)\n",
 		boot_keys_value, boot_keys_counter, row, col);
 }
 
 static void boot_keys_input_cb(struct input_event *evt)
 {
+	printk("\nBK_input_cb --1\n");
 	static uint8_t row;
 	static uint8_t col;
 	static bool pressed;
 
 	/* Skip early once we settled and cleared all the keys */
 	if (boot_keys_timeout && boot_keys_value == 0) {
+		printk("\nBK_input_cb --2\n");
 		return;
 	}
 
 	switch (evt->code) {
 	case INPUT_ABS_X:
 		col = evt->value;
+		printk("\nBK_input_cb col = %d\n", col);
 		break;
 	case INPUT_ABS_Y:
 		row = evt->value;
+		printk("\nBK_input_cb row = %d\n", row);
 		break;
 	case INPUT_BTN_TOUCH:
 		pressed = evt->value;
+		printk("\nBK_input_cb pressed = %d\n", pressed);
 		break;
 	}
 
 	if (!evt->sync) {
+		printk("\nBK_input_cb --3\n");
 		return;
 	}
-
+	printk("\nprocess_key(%d, %d, %d)\n",row, col, pressed);
 	process_key(row, col, pressed);
 }
 INPUT_CALLBACK_DEFINE(DEVICE_DT_GET(CROS_EC_KEYBOARD_NODE), boot_keys_input_cb);
 
 static void power_button_change(void)
 {
+	printk("\nPB_change--1\n");
 	/* Skip early once we settled and cleared all the keys */
 	if (boot_keys_timeout && boot_keys_value == 0) {
+		printk("\nPB_change--2\n");
 		return;
 	}
 
 	if (power_button_is_pressed()) {
 		WRITE_BIT(boot_keys_value, BOOT_KEY_POWER, 1);
 		boot_keys_counter++;
+		printk("\nPB_change--3\n");
 	} else {
 		WRITE_BIT(boot_keys_value, BOOT_KEY_POWER, 0);
 		boot_keys_counter--;
+		printk("\nPB_change--4\n");
 	}
 
-	LOG_DBG("boot_keys: boot_keys_value=0x%x counter=%d (power)",
+	printk("\nboot_keys: boot_keys_value=0x%x counter=%d (power)\n",
 		boot_keys_value, boot_keys_counter);
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_change, HOOK_PRIO_DEFAULT);
@@ -161,16 +171,16 @@ static void boot_keys_timeout_handler(struct k_work *work)
 	boot_keys_timeout = true;
 
 	if (boot_keys_counter > POPCOUNT(boot_keys_value)) {
-		LOG_WRN("boot_keys: stray keys, skipping");
+		printk("boot_keys: stray keys, skipping");
 		return;
 	}
 
-	LOG_INF("boot_keys: boot_keys_value=0x%08x", boot_keys_value);
+	printk("\nboot_keys: boot_keys_value=0x%08x\n", boot_keys_value);
 
 	boot_keys_value_external = boot_keys_value;
 
 	if (boot_keys_value & BIT(BOOT_KEY_ESC)) {
-		LOG_WRN("boot_keys: recovery");
+		printk("boot_keys: recovery");
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 
 		if (IS_ENABLED(CONFIG_TABLET_MODE)) {
@@ -178,7 +188,7 @@ static void boot_keys_timeout_handler(struct k_work *work)
 		}
 
 		if (boot_keys_value & BIT(BOOT_KEY_LEFT_SHIFT)) {
-			LOG_WRN("boot_keys: memory retraining");
+			printk("boot_keys: memory retraining");
 			host_set_single_event(
 				EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT);
 		}
