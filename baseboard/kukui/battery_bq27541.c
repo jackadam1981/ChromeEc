@@ -12,6 +12,7 @@
 #include "console.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "util.h"
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
@@ -27,6 +28,10 @@
 #define BAT_LEVEL_PD_LIMIT 85
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
+
+#ifdef BATTERY_PROTECTION_POLICY
+#define BATTERY_PROTECTION_TIMEOUT_HOURS 24
+#endif
 
 enum battery_type { BATTERY_CPT = 0, BATTERY_COUNT };
 
@@ -218,3 +223,29 @@ int get_battery_manufacturer_name(char *dest, int size)
 	strzcpy(dest, name[BATT_ID], size);
 	return EC_SUCCESS;
 }
+
+#ifdef BATTERY_PROTECTION_POLICY
+static int time_hours = 0;
+
+static void battery_protection_enable(void)
+{
+	time_hours++;
+	if (time_hours == BATTERY_PROTECTION_TIMEOUT_HOURS)
+		battery_sustainer_set(80, 80);
+}
+DECLARE_DEFERRED(battery_protection_enable);
+
+static void battery_protection(void)
+{
+	hook_call_deferred(&battery_protection_enable_data, 1 * HOUR);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, battery_protection, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, battery_protection, HOOK_PRIO_DEFAULT);
+static void battery_protection_resume(void)
+{
+	hook_call_deferred(&battery_protection_enable_data, -1);
+	battery_sustainer_set(-1, -1);
+	time__hours = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, battery_protection_resume, HOOK_PRIO_DEFAULT);
+#endif
