@@ -106,11 +106,19 @@
  * (4) 0x50800000 0
  * (5) 0x5080000
  * MT8188 core1
+<<<<<<< HEAD   (89d8d0 Ciri: Optimize DPS function parameters)
 * (1) 0x70000000 0x009FF000
 * (2) 0x709FF000 0
 * (3) 0x709FF000 0x1000
 * (4) 0x7A000000 0x05000000
 * (5) 0x7F000000
+=======
+ * (1) 0x70000000 0x009FF000
+ * (2) 0x709FF000 0
+ * (3) 0x709FF000 0x1000
+ * (4) 0x7A000000 0x05000000
+ * (5) 0x7F000000
+>>>>>>> BRANCH (2b2857 crystaldrift: Open EC_CHARGER_TRICKLE for ISL9238C)
  */
 
 /* size of (1) */
