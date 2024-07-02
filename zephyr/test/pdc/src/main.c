@@ -8,6 +8,7 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
+#include <zephyr/ztest_error_hook.h>
 
 void test_main(void)
 {
