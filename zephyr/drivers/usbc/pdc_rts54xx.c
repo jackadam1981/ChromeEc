@@ -574,6 +574,18 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 	}
 
 	LOG_INF("C%d: CCI=0x%x", cfg->connector_number, cci.raw_value);
+	LOG_INF("C%d: conn change %d %s%s%s%s%s%s%s%s%s%s%s",
+		cfg->connector_number, cci.connector_change,
+		cci.end_of_message ? "EndOfMsg" : "",
+		cci.vendor_defined_indicator ? "VendorDef" : "",
+		cci.security_request ? "SecurityReq" : "",
+		cci.fw_update_request ? "FWUPReq" : "",
+		cci.not_supported ? "NotSupp" : "",
+		cci.cancel_completed ? "CancelComp" : "",
+		cci.reset_completed ? "ResetComp" : "", cci.busy ? "Busy" : "",
+		cci.acknowledge_command ? "AckComm" : "",
+		cci.error ? "Error" : "",
+		cci.command_completed ? "CommandComm" : "");
 
 	/*
 	 * CC and CI events are separately reported. So, we need to call only
