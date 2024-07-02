@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff3c5e1_06dc10f9",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc522404_0a3ac69d",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e04a87_f7546cdd",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-27T13:53:16Z",
       "side": 1,
       "message": "bool values should only be assigned `true` or `false`.\n\nHowever, you should just have all these functions return int.  With 0 indicating success, and negative numbers for failures.",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 23
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db9f5a9_fd8756a2",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e04a87_f7546cdd",
       "range": {
         "startLine": 500,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f53820d_164d0380",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c72724f_165001cc",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 30
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279c0eff_3354605c",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-06-27T15:42:06Z",
       "side": 1,
       "message": "If the total size is less than a page size, this print shows odd results:\n\n```\n$ itecomdbgr -r 384000 518\nSaving... : 300%\n\n$ itecomdbgr -r 355024 4096\nSaving... : 106%\n```",
+      "range": {
+        "startLine": 619,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 50
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c07506b4_90aa7e00",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279c0eff_3354605c",
       "range": {
         "startLine": 619,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c70688_5aed1fd4",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc70c2fb_e2fbd2f6",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 62
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e5ecff9_b5896a82",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-06-27T13:53:16Z",
       "side": 1,
       "message": "Needs parenthesis around the assignment of result.",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 53
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce3e0bc_6d35508c",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e5ecff9_b5896a82",
       "range": {
         "startLine": 735,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42abe3b1_8c0dbc4a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c873d8a_5f9df53e",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 65
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696339e5_048dbf31",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-06-27T13:53:16Z",
       "side": 1,
       "message": "Needs parenthesis around the assignment of result.",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 53
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff6499a_710d9d99",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696339e5_048dbf31",
       "range": {
         "startLine": 761,
         "startChar": 0,
@@ -226,6 +418,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ed7fba_ec691233",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "237f4ec6_b9140ecb",
+      "range": {
+        "startLine": 986,
+        "startChar": 40,
+        "endLine": 986,
+        "endChar": 45
+      },
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b48c79_ce605b83",
@@ -263,6 +479,30 @@
           ]
         }
       ],
+      "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df677d58_477e3332",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-02T05:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b48c79_ce605b83",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1004,
+        "endChar": 69
+      },
       "revId": "6c4d751474efe6086f31a343a3b8b49d15cd1596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
