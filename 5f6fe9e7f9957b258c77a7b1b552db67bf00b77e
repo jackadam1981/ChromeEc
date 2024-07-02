@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42842e18_ecc7b84d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-02T23:10:11Z",
+      "side": 1,
+      "message": "can you please add poornima.tom@intel.corp-partner.google.com to the crossbug, as i dont have access to it?",
+      "parentUuid": "eb5f0dd1_d5ba6f37",
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "425b7581_267f5209",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f586abfa_6a160061",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-02T23:10:11Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nplease note below comments:\n\nI did not remove the code from below boards, as they are looking either for sku id or fw_config :\nboard/fleex/board.c, board/lick/board.c, board/phaser/board.c, board/meep/board.c,board/dood/board.c, board/ampton/board.c,\nbaseboard/grunt/baseboard.c,baseboard/hatch/baseboard.c,\nboard/lindar/board.c,baseboard/zork/baseboard.c\n\nSome boards have extra functionalities like trackpad, touchpad in it\u0027s overridable functions - board/eve/board.c, board/elm/board.c\n\nBelow boards seemed to turn off keyboard scanning in the case of suspend, irrespective of whether tablet mode or not.\nboard/nami/board.c, board/coral/board.c, board/rammus/board.c, board/reef_mchp/board.c,board/nautilus/board.c,board/reef/board.c\nFrom comment in code, i suspect , if it is an error,and that \u0027or \u0027condition must be changed to \u0027and\u0027. code snippet:\n\n/* Enable or disable input devices, based on chipset state and tablet mode /\n__override void lid_angle_peripheral_enable(int enable)\n{\n/ If the lid is in 360 position, ignore the lid angle,\n* which might be faulty. Disable keyboard.\n*/\nif (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))\nenable \u003d 0;\nkeyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);\n}",
+      "parentUuid": "425b7581_267f5209",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d891211_83fa7e20",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
@@ -71,6 +113,30 @@
       "writtenOn": "2024-07-02T20:54:04Z",
       "side": 1,
       "message": "Please add a comment explaining the logic here.",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 25
+      },
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "291ab6a5_190f03ac",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-02T23:10:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8d891211_83fa7e20",
       "range": {
         "startLine": 189,
         "startChar": 7,
