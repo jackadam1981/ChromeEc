@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd69f64a_f8570d34",
+        "filename": "baseboard/kukui/battery_bq27541.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-02T09:08:26Z",
+      "side": 1,
+      "message": "the code can be simplified like this:\n\n```\nstatic void battery_protection_shutdown(void)\n{\n    hook_call_deferred(/* enable sustainer */, 24 * HOUR);\n}\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, battery_protection_shutdown, HOOK_PRIO_DEFAULT);\nDECLARE_HOOK(HOOK_CHIPSET_SUSPEND, battery_protection_shutdown, HOOK_PRIO_DEFAULT);\n\nstatic void battery_protection_resume(void)\n{\n    hook_call_deferred(/* enable sustainer */, -1);\n    battery_sustainer_set(-1, -1);\n}\nDECLARE_HOOK(HOOK_CHIPSET_RESUME, battery_protection_resume, HOOK_PRIO_DEFAULT);\n```",
+      "revId": "3f37c70e5efdfe26ab2a988d5682e15eba626161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
