@@ -6,6 +6,8 @@
 #include "battery_fuel_gauge.h"
 #include "board_config.h"
 #include "charge_manager.h"
+#include "charge_state.h"
+#include "charger_profile_override.h"
 #include "chipset.h"
 #include "common.h"
 #include "cros_board_info.h"
@@ -601,4 +603,46 @@ ZTEST(riven, test_set_keycap_label)
 	zassert_equal(get_keycap_label(0, 14), KLLI_UNKNO);
 	set_keycap_label(0, 14, KLLI_F15);
 	zassert_equal(get_keycap_label(0, 14), KLLI_F15);
+}
+
+ZTEST(riven, test_charger_profile_override)
+{
+	int rv;
+	struct charge_state_data data;
+
+	/* No need to change the max VBUS while discharging. */
+	data.state = ST_DISCHARGE;
+	rv = charger_profile_override(&data);
+	zassert_ok(rv);
+	zassert_equal(pd_get_max_voltage(), PD_MAX_VOLTAGE_MV);
+
+	/* The max VBUS is changed to 15V when the battery is
+	 * full charged.
+	 */
+	data.state = ST_CHARGE;
+	data.batt.status |= STATUS_FULLY_CHARGED;
+	rv = charger_profile_override(&data);
+	zassert_ok(rv);
+	zassert_equal(pd_get_max_voltage(), 15000);
+
+	/* The max VBUS is still PD_MAX_VOLTAGE_MV when the battery is
+	 * not full charged.
+	 */
+	data.state = ST_CHARGE;
+	data.batt.status &= ~STATUS_FULLY_CHARGED;
+	rv = charger_profile_override(&data);
+	zassert_ok(rv);
+	zassert_equal(pd_get_max_voltage(), PD_MAX_VOLTAGE_MV);
+}
+
+ZTEST(riven, test_charger_profile_override_get_param)
+{
+	zassert_equal(charger_profile_override_get_param(0, NULL),
+		      EC_RES_INVALID_PARAM);
+}
+
+ZTEST(riven, test_charger_profile_override_set_param)
+{
+	zassert_equal(charger_profile_override_set_param(0, 0),
+		      EC_RES_INVALID_PARAM);
 }
