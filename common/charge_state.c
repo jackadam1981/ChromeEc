@@ -198,7 +198,7 @@ test_export_static bool battery_sustainer_enabled(void)
 	return sustain_soc.lower != -1 && sustain_soc.upper != -1;
 }
 
-static int battery_sustainer_set(int8_t lower, int8_t upper)
+int battery_sustainer_set(int8_t lower, int8_t upper)
 {
 	if (lower == -1 || upper == -1) {
 		if (battery_sustainer_enabled()) {
