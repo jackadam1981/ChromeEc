@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3c14bb_f47d4c88",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-02T15:30:32Z",
+      "side": 1,
+      "message": "This is basically the new code you\u0027re replacing the original function in common/, but the same logic basically exists in tablet_mode.c no?\n\n```\nif (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) \u0026\u0026 gmr_sensor_at_360)\n\tlid_angle_peripheral_enable(0);\n```\n\nSeems to me that the better approach here would be to fix the common logic, not add custom code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
