@@ -22,6 +22,30 @@
       },
       "revId": "725969eb4b1bb2efc6c1cfb26762abaf781a29d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f06bb1f5_4e220e69",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-02T16:10:31Z",
+      "side": 1,
+      "message": "Done. That refactor caused the next segfault to move, but I\u0027m on the case.",
+      "parentUuid": "37d96aae_4f3a12e3",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "725969eb4b1bb2efc6c1cfb26762abaf781a29d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
