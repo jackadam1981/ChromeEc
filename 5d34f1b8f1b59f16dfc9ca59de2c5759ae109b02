@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcdb896_2caf0ab7",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-02T15:16:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c8d7752_b5198dfb",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "5d34f1b8f1b59f16dfc9ca59de2c5759ae109b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a642b82a_c5ff39ed",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-01T17:39:15Z",
       "side": 1,
       "message": "for all the boards, can this if condition be added in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/lid_angle.c;l\u003d188  ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "5d34f1b8f1b59f16dfc9ca59de2c5759ae109b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512123cd_ff45511d",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-02T15:16:50Z",
+      "side": 1,
+      "message": "Yes, it can be made common.For many boards, we can remove this override function. I will create a Seperate CL, so that , we  have track of this board specific change and  further move to common code.",
+      "parentUuid": "a642b82a_c5ff39ed",
       "range": {
         "startLine": 18,
         "startChar": 5,
