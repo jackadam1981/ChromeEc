@@ -12,6 +12,7 @@
 #include "console.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "util.h"
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
@@ -27,6 +28,12 @@
 #define BAT_LEVEL_PD_LIMIT 85
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
+
+#ifdef BATTERY_PROTECTION_POLICY
+#define BATTERY_PROTECTION_TIMEOUT_HOURS 24
+static bool sustain_flag = false;
+static bool sustain_state = false;
+#endif
 
 enum battery_type { BATTERY_CPT = 0, BATTERY_COUNT };
 
@@ -190,6 +197,28 @@ int charger_profile_override(struct charge_state_data *curr)
 		}
 	}
 
+#ifdef BATTERY_PROTECTION_POLICY
+	static timestamp_t deadline_24;
+
+	if (sustain_flag != true)
+		deadline_24.val = 0;
+	if (deadline_24.val == 0)
+		deadline_24.val = get_time().val +
+				  BATTERY_PROTECTION_TIMEOUT_HOURS * HOUR;
+
+	if (sustain_flag == true && timestamp_expired(deadline_24, NULL)) {
+		if (sustain_state != true) {
+			sustain_state = ture;
+			battery_sustainer_set(80, 80);
+		}
+	} else {
+		if (sustain_state != false) {
+			sustain_state = false;
+			battery_sustainer_set(-1, -1);
+		}
+	}
+
+#endif
 #ifdef VARIANT_KUKUI_CHARGER_MT6370
 	mt6370_charger_profile_override(curr);
 #endif /* CONFIG_CHARGER_MT6370 */
@@ -218,3 +247,23 @@ int get_battery_manufacturer_name(char *dest, int size)
 	strzcpy(dest, name[BATT_ID], size);
 	return EC_SUCCESS;
 }
+
+#ifdef BATTERY_PROTECTION_POLICY
+static void battery_protection_shutdown(void)
+{
+	sustain_flag = true;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, battery_protection_shutdown,
+	     HOOK_PRIO_DEFAULT);
+static void battery_protection_suspend(void)
+{
+	sustain_flag = true;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, battery_protection_suspend,
+	     HOOK_PRIO_DEFAULT);
+static void battery_protection_resume(void)
+{
+	sustain_flag = false;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, battery_protection_resume, HOOK_PRIO_DEFAULT);
+#endif
