@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da879834_f692179a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2024-07-02T09:00:41Z",
+      "side": 1,
+      "message": "That\u0027s the condition that turns the retimer back on when the usb 2.0 only device was disconnected",
+      "parentUuid": "955ddbeb_f94541a7",
+      "range": {
+        "startLine": 962,
+        "startChar": 33,
+        "endLine": 962,
+        "endChar": 45
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75765289_52fa36ea",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
@@ -100,6 +124,30 @@
       "writtenOn": "2024-07-01T17:54:44Z",
       "side": 1,
       "message": "The plan is for the kernel to call this about 10 seconds after initial connection right?",
+      "range": {
+        "startLine": 968,
+        "startChar": 0,
+        "endLine": 968,
+        "endChar": 20
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86322cdd_74c623ba",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2024-07-02T09:00:41Z",
+      "side": 1,
+      "message": "5 seconds when only usb 2.0 is enumerated, otherwise the message will be sent right away*, as we don\u0027t expect to turn off the retimer\n\n\u0027*\u0027 with exception of scenario when first usb 2.0 enumerates and is followed by usb 3.x enumeration - then then message will be sent on usb 3.x enumeration so any delay from 0 to 5s is possible",
+      "parentUuid": "75765289_52fa36ea",
       "range": {
         "startLine": 968,
         "startChar": 0,
