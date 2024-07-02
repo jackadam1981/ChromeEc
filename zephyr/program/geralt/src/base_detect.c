@@ -28,12 +28,22 @@ static void base_update(bool attached)
 		GPIO_DT_FROM_NODELABEL(en_cc_lid_base_pu);
 	const static struct device *one_wire_uart =
 		DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
+<<<<<<< HEAD   (89d8d0 Ciri: Optimize DPS function parameters)
 	bool base_en;
+=======
+>>>>>>> BRANCH (2b2857 crystaldrift: Open EC_CHARGER_TRICKLE for ISL9238C)
 
+<<<<<<< HEAD   (89d8d0 Ciri: Optimize DPS function parameters)
 	if (IS_ENABLED(CONFIG_GERALT_LID_DETECTION_SELECTED)) {
 		enable_lid_detect(attached);
 		base_en = attached && !chipset_in_state(CHIPSET_STATE_ANY_OFF);
+=======
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x), attached);
+	if (attached) {
+		one_wire_uart_enable(one_wire_uart);
+>>>>>>> BRANCH (2b2857 crystaldrift: Open EC_CHARGER_TRICKLE for ISL9238C)
 	} else {
+<<<<<<< HEAD   (89d8d0 Ciri: Optimize DPS function parameters)
 		base_en = attached;
 	}
 
@@ -41,6 +51,8 @@ static void base_update(bool attached)
 	if (base_en) {
 		one_wire_uart_enable(one_wire_uart);
 	} else {
+=======
+>>>>>>> BRANCH (2b2857 crystaldrift: Open EC_CHARGER_TRICKLE for ISL9238C)
 		one_wire_uart_disable(one_wire_uart);
 	}
 
@@ -96,20 +108,9 @@ static void base_startup_hook(struct ap_power_ev_callback *cb,
 	switch (data.event) {
 	case AP_POWER_STARTUP:
 		base_detect_enable(true);
-		if (IS_ENABLED(CONFIG_GERALT_LID_DETECTION_SELECTED)) {
-			if (base_get_state())
-				gpio_pin_set_dt(
-					GPIO_DT_FROM_NODELABEL(en_ppvar_base_x),
-					true);
-		}
 		break;
 	case AP_POWER_SHUTDOWN:
-		if (IS_ENABLED(CONFIG_GERALT_LID_DETECTION_SELECTED)) {
-			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_ppvar_base_x),
-					false);
-		} else {
-			base_detect_enable(false);
-		}
+		base_detect_enable(false);
 		break;
 	default:
 		return;
@@ -134,8 +135,13 @@ void base_init_setting(void)
 		base_update(false);
 	}
 
+<<<<<<< HEAD   (89d8d0 Ciri: Optimize DPS function parameters)
 	if (IS_ENABLED(CONFIG_GERALT_LID_DETECTION_SELECTED) ||
 	    !chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+=======
+	/* For system jump case to enable base detect */
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+>>>>>>> BRANCH (2b2857 crystaldrift: Open EC_CHARGER_TRICKLE for ISL9238C)
 		base_detect_enable(true);
 	}
 }
