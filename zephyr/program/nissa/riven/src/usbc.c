@@ -212,3 +212,46 @@ __override void nissa_configure_hdmi_power_gpios(void)
 	pinctrl_apply_state(pcfg, PINCTRL_STATE_SLEEP);
 }
 #endif /* DT_NODE_EXISTS(I2C5_1_NODE) */
+
+#define PD_VOLTAGE_WHEN_FULL 15000
+int charger_profile_override(struct charge_state_data *curr)
+{
+	static int saved_input_voltage = -1;
+	int max_pd_voltage_mv = pd_get_max_voltage();
+	int port;
+
+	if (curr->state != ST_CHARGE)
+		return 0;
+
+	/* Lower the max requested voltage to 15V when battery is full. */
+	if (curr->batt.status & STATUS_FULLY_CHARGED) {
+		if (max_pd_voltage_mv != PD_VOLTAGE_WHEN_FULL) {
+			saved_input_voltage = max_pd_voltage_mv;
+			max_pd_voltage_mv = PD_VOLTAGE_WHEN_FULL;
+		}
+	} else if (saved_input_voltage != -1) {
+		if (max_pd_voltage_mv == PD_VOLTAGE_WHEN_FULL)
+			max_pd_voltage_mv = saved_input_voltage;
+		saved_input_voltage = -1;
+	}
+
+	if (pd_get_max_voltage() != max_pd_voltage_mv) {
+		LOG_INF("VBUS limited to %dmV", max_pd_voltage_mv);
+		for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+			pd_set_external_voltage_limit(port, max_pd_voltage_mv);
+	}
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
