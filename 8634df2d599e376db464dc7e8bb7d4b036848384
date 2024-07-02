@@ -22,6 +22,30 @@
       },
       "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9d96f7a_d9f1a31a",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-02T18:07:25Z",
+      "side": 1,
+      "message": "Above mentioned scenario is when CONFIG_GMR_TABLET_MODE is enabled right?\nIN brox,i see only CONFIG_TABLET_MODE is what is enabled. Also, In the specifc error scenario  mentioned in  cross bug, once tablet mode is enabled by command, initially , it clears keyboard scanning. But, as lid is still kept opened as before,and lid_angle_peripheral_enable(1) is getting called by lid_angle_update() in motion sensor task. Here, gmr_tablet_switch_isr is never getting hit. (Also, note- here, in the error scenario, tablet mode entry is not through 360 flip of lid  . When tablet mode is entered by flip, kb scanning is retained to be disabled.)",
+      "parentUuid": "ae3c14bb_f47d4c88",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
