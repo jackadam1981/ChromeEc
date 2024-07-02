@@ -70,6 +70,30 @@
       },
       "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5778c87e_e9d0f483",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-02T20:46:01Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason to add the Brox specific code in this CL only to delete it in the very next CL.",
+      "parentUuid": "3c1f09a8_5195a42f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
