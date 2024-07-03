@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(utils)
 
+target_sources_ifdef(CONFIG_TEST_UTILS_FPSENSOR app PRIVATE
+	src/fpsensor.cc
+	${PLATFORM_EC}/common/fpsensor/fpsensor_utils.cc)
 target_sources_ifdef(CONFIG_TEST_STATIC_IF app PRIVATE src/static_if.c)
 target_sources_ifdef(CONFIG_TEST_UTILS app PRIVATE src/utils.c)
 target_sources_ifdef(CONFIG_TEST_UTILS_STR app PRIVATE src/utils_str.c)
