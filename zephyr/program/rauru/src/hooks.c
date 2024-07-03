@@ -27,6 +27,8 @@ DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 /* USB-A */
 void xhci_interrupt(enum gpio_signal signal)
 {
+	/* TODO(yllin): support xhci reset for PDC */
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPMV2
 	const int xhci_stat = gpio_get_level(signal);
 
 #ifdef USB_PORT_ENABLE_COUNT
@@ -55,6 +57,7 @@ void xhci_interrupt(enum gpio_signal signal)
 			pd_set_dual_role(i, PD_DRP_FORCE_SINK);
 		}
 	}
+#endif /* CONFIG_PLATFORM_EC_USB_PD_TCPMV2 */
 }
 
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
