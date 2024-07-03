@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c92d95f_e9d93529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-03T21:53:07Z",
+      "side": 1,
+      "message": "How does this impact the rts5453 generic test? If it doesn\u0027t can this function be removed from `pdc_power_mgmt.c`?",
+      "revId": "54a32faf1e9e9bea8d5c9cd8916882dd6ee35a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
