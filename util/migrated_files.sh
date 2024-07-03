@@ -27,6 +27,7 @@ test/fpsensor_crypto.cc
 test/fpsensor_hw.cc
 test/fpsensor_utils.cc
 test/ftrapv.c
+test/global_initialization.cc
 test/libc_printf.c
 test/malloc.c
 test/panic.c

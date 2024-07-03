@@ -84,6 +84,12 @@ config HW_TEST_FTRAPV
 	help
 	  The test verify if int overflow causes a crash.
 
+config HW_TEST_GLOBAL_INITIALIZATION
+	bool "global initialization test"
+	select ZTEST
+	help
+	  The test verify if global objects are initialized correctly.
+
 config HW_TEST_LIBC_PRINTF
 	bool "libc printf test"
 	select ZTEST
