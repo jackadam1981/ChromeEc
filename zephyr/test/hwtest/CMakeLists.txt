@@ -21,6 +21,7 @@ zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_CRYPTO src/fpsensor_crypto.
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_HW src/fpsensor_hw.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_UTILS ${PLATFORM_EC}/zephyr/test/utils/src/fpsensor.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FTRAPV src/ftrapv.c)
+zephyr_library_sources_ifdef(CONFIG_HW_TEST_GLOBAL_INITIALIZATION src/global_initialization.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_LIBC_PRINTF src/libc_printf.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_MALLOC src/malloc.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_PANIC src/panic.c)

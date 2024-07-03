@@ -92,6 +92,11 @@ tests:
     - CONFIG_HW_TEST_FTRAPV=y
     extra_conf_files:
     - prj_hw_tests.conf
+  global_initialization:
+    extra_configs:
+    - CONFIG_HW_TEST_GLOBAL_INITIALIZATION=y
+    extra_conf_files:
+    - prj_hw_tests.conf
   libc_printf:
     extra_configs:
     - CONFIG_HW_TEST_LIBC_PRINTF=y
