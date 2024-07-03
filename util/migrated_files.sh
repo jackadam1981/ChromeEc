@@ -29,6 +29,7 @@ test/fpsensor_utils.cc
 test/ftrapv.c
 test/global_initialization.cc
 test/libc_printf.c
+test/libcxx.cc
 test/malloc.c
 test/panic.c
 test/printf.c
