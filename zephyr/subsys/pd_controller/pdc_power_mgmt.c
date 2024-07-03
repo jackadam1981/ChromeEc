@@ -1636,6 +1636,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_set_power_level(port->pdc, port->una_policy.tcc);
 		break;
 	case CMD_PDC_SET_CCOM:
+		LOG_INF("C%d: SET_CCOM %02x", config->connector_num,
+			port->una_policy.cc_mode);
 		rv = pdc_set_ccom(port->pdc, port->una_policy.cc_mode);
 		break;
 	case CMD_PDC_SET_DRP:
@@ -2823,6 +2825,9 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 {
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
 
+	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: set role to %d", port,
+		state);
+
 	switch (state) {
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
@@ -2870,6 +2875,16 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 		}
 		break;
 	}
+
+	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: una_policy: $%08x, "
+		"src_policy: $%08x, sink_policy: $%08x, "
+		"una_policy.cc_mode: %d, pdr.swap_to_src: %d, "
+		"pdr.swap_to_snk: %d",
+		port, (unsigned int)atomic_get(port_data->una_policy.flags),
+		(unsigned int)atomic_get(port_data->src_policy.flags),
+		(unsigned int)atomic_get(port_data->snk_policy.flags),
+		port_data->una_policy.cc_mode, port_data->pdr.swap_to_src,
+		port_data->pdr.swap_to_snk);
 
 	port_data->dual_role_state = state;
 }

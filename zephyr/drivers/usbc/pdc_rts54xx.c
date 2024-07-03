@@ -2187,6 +2187,8 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom)
 		conn_opmode & 0xff,    (conn_opmode >> 8) & 0xff,
 	};
 
+	LOG_HEXDUMP_INF(&payload, sizeof(payload), "SET_CCOM Payload");
+
 	return rts54_post_command(dev, CMD_SET_CCOM, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
