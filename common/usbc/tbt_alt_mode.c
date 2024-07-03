@@ -612,7 +612,9 @@ static bool is_tbt_cable_superspeed(int port)
 		       disc->identity.product_t1.p_rev30.ss ==
 			       USB_R30_SS_U32_U40_GEN2 ||
 		       disc->identity.product_t1.p_rev30.ss ==
-			       USB_R30_SS_U40_GEN3;
+			       USB_R30_SS_U40_GEN3 ||
+		       disc->identity.product_t1.p_rev30.ss ==
+			       USB_R30_SS_U40_GEN4;
 
 	return disc->identity.product_t1.p_rev20.ss == USB_R20_SS_U31_GEN1 ||
 	       disc->identity.product_t1.p_rev20.ss == USB_R20_SS_U31_GEN1_GEN2;

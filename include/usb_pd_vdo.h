@@ -103,7 +103,7 @@ struct product_vdo {
 
 /*****************************************************************************/
 /*
- * USB PD r 3.1 v 1.8 Table 6-39 UFP VDO
+ * USB PD r 3.2 v 1.0 Table 6-40 UFP VDO
  * -------------------------------------------------------------
  * <31:29> : UFP VDO version
  *           Version 1.0 = 000b
@@ -154,7 +154,8 @@ struct product_vdo {
  *           001b = USB 3.2 Gen1
  *           010b = USB 3.2/USB4 Gen2
  *           011b = USB4 Gen3
- *           100b…111b = Reserved, Shall Not be used
+ *           100b = USB4 Gen4
+ *           101b…111b = Reserved, Shall Not be used
  */
 
 enum usb_rev30_ss {
@@ -162,7 +163,7 @@ enum usb_rev30_ss {
 	USB_R30_SS_U32_U40_GEN1,
 	USB_R30_SS_U32_U40_GEN2,
 	USB_R30_SS_U40_GEN3,
-	USB_R30_SS_RES_4,
+	USB_R30_SS_U40_GEN4,
 	USB_R30_SS_RES_5,
 	USB_R30_SS_RES_6,
 	USB_R30_SS_RES_7,
