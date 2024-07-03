@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1fc3eb_6a735624",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2024-07-03T14:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f700663_e6b81a11",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 1
+      },
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e6e6d8d_f19528b9",
@@ -60,6 +84,24 @@
       "writtenOn": "2024-07-01T17:54:44Z",
       "side": 1,
       "message": "Can you change this to an IS_ENABLED guard to start the function? There is no need to create variables and check the port count if the function is just going to skip this.",
+      "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedfe34e_aab2434f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2024-07-03T14:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e6e6d8d_f19528b9",
       "revId": "a8d4645762552b342ec60e8ae02949cbd51a579f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
