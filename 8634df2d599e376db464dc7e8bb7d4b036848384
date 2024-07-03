@@ -118,6 +118,30 @@
       },
       "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1092413_3a6eead9",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-03T17:06:45Z",
+      "side": 1,
+      "message": "My understanding was that the GMR sensors for tablet/lid-close weren\u0027t set up correctly on P1s and should be good on P2s. I think you just need to check the GPIO configuration and enable the right Kconfig for this to start working on P2s.",
+      "parentUuid": "6164d663_52b21003",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
