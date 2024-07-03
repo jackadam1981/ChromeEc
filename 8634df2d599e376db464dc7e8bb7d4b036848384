@@ -142,6 +142,30 @@
       },
       "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01486bd6_b26eda52",
+        "filename": "zephyr/program/brox/src/lid_angle_tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-03T17:18:58Z",
+      "side": 1,
+      "message": "Hi Yuval,  On flipping /rotating \u0026 entering tablet mode and then on suspending, system is not waking when pressing onboard keyboard (which is the expected behaviour). This scenario is working fine on P1 \u0026 P2 on both  Sku1 \u0026 Sku2. But , issue is when system is put into tablet mode using command and lid is kept open. Now, with this cl, onboard keyboard scaning continues to be disabled, when system is both suspended \u0026 is in tablet mode.",
+      "parentUuid": "a1092413_3a6eead9",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "8634df2d599e376db464dc7e8bb7d4b036848384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
