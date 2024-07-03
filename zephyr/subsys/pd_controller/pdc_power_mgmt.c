@@ -1191,6 +1191,7 @@ static void run_src_policies(struct pdc_port_t *port)
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_FORCE_SNK)) {
+		atomic_set_bit(port->una_policy.flags, UNA_POLICY_CC_MODE);
 		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
@@ -1226,6 +1227,7 @@ static void run_typec_src_policies(struct pdc_port_t *port)
 		queue_internal_cmd(port, CMD_PDC_SET_POWER_LEVEL);
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_FORCE_SNK)) {
+		atomic_set_bit(port->una_policy.flags, UNA_POLICY_CC_MODE);
 		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
 	} else {
 		send_pending_public_commands(port);
@@ -1620,7 +1622,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
