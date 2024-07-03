@@ -70,6 +70,10 @@ config HW_TEST_FPSENSOR_CRYPTO
 	select ZTEST
 
 config HW_TEST_FPSENSOR_HW
+	bool "FP sensor utils test"
+	select ZTEST
+
+config HW_TEST_FPSENSOR_UTILS
 	bool "FP sensor hw test"
 	select ZTEST
 
