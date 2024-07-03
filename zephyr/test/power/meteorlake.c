@@ -45,6 +45,14 @@ int mock_power_signal_set_ap_force_shutdown(enum power_signal signal, int value)
 			     value);
 		return 0;
 	}
+#if CONFIG_TEST_AP_PWRSEQ_PP5500
+	else if (power_signal_set_fake.call_count == 3) {
+		zassert_true(signal == PWR_EN_PP5000_A && value == 0,
+			     "Second call signal: %d, value: %d", signal,
+			     value);
+		return 0;
+	}
+#endif
 
 	zassert_unreachable("Wrong input received");
 	return -1;
@@ -131,6 +139,12 @@ static int chipset_run_count;
 int mock_power_signal_set_ap_power_action_g3_run_1(enum power_signal signal,
 						   int value)
 {
+#if CONFIG_TEST_AP_PWRSEQ_PP5500
+	if ((signal == PWR_EN_PP5000_A) && (value == 1)) {
+		return 0;
+	}
+#endif
+
 	if ((signal == PWR_EN_PP3300_A) && (value == 1)) {
 		return 0;
 	}
@@ -194,7 +208,11 @@ ZTEST_USER(board_power, test_board_ap_power_force_shutdown)
 		mock_power_signal_get_ap_force_shutdown;
 	board_ap_power_force_shutdown();
 
+#if CONFIG_TEST_AP_PWRSEQ_PP5500
+	zassert_equal(3, power_signal_set_fake.call_count);
+#else
 	zassert_equal(2, power_signal_set_fake.call_count);
+#endif
 	zassert_equal(7, power_signal_get_fake.call_count);
 }
 
@@ -211,9 +229,13 @@ ZTEST_USER(board_power, test_board_ap_power_force_shutdown_timeout)
 
 	const uint32_t end_ms = k_uptime_get();
 
-	zassert_equal(power_signal_set_fake.call_count, 2);
 	zassert_true((end_ms - start_ms) >=
 		     X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS);
+#if CONFIG_TEST_AP_PWRSEQ_PP5500
+	zassert_equal(power_signal_set_fake.call_count, 3);
+#else
+	zassert_equal(power_signal_set_fake.call_count, 2);
+#endif
 	zassert_true(power_signal_get_fake.call_count > 2);
 }
 
@@ -254,7 +276,8 @@ ZTEST_USER(board_power, test_board_ap_power_action_g3_run_2)
 		mock_power_signal_get_ap_power_action_g3_run_1;
 
 	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_STARTUP);
-	zassert_equal(1, chipset_run_count);
+	zassert_equal(1, chipset_run_count, "chipset run count: %d",
+		      chipset_run_count);
 }
 #else
 ZTEST_USER(board_power, test_board_ap_power_check_power_rails_enabled_0)
