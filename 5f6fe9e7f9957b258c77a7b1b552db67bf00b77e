@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b8c3c8f_3ecd852e",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-03T17:10:26Z",
+      "side": 1,
+      "message": "Before we land this, can we verify that all the Kconfigs and devicetree for tablet and lid-open GMR interrupts are correct? We turned these off for P1 because the GMR sensors were wired incorrectly.",
+      "parentUuid": "f586abfa_6a160061",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d891211_83fa7e20",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
