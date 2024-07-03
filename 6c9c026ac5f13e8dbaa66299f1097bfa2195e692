@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56caf49c_778aea38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-03T16:19:00Z",
+      "side": 1,
+      "message": "gauge -\u003e fuel gauge\n(same on the next line)",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "6c9c026ac5f13e8dbaa66299f1097bfa2195e692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e7273d_d92bc277",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-03T16:19:00Z",
+      "side": 1,
+      "message": "I\u0027m curious - how did you determine this number? I.e. why not 2 or 42?",
+      "range": {
+        "startLine": 130,
+        "startChar": 36,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "6c9c026ac5f13e8dbaa66299f1097bfa2195e692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
