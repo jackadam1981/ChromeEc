@@ -85,7 +85,7 @@ static uint32_t block_index;
 
 static int pair_challenge(struct pair_challenge *challenge)
 {
-	uint8_t response;
+	uint8_t response[sizeof(struct pair_challenge_response)];
 
 	/* Scratchpad for device secret and x25519 public/shared key. */
 	uint8_t tmp[32];
@@ -100,8 +100,8 @@ static int pair_challenge(struct pair_challenge *challenge)
 
 	/* tmp = device_secret */
 	if (rollback_get_secret(tmp) != EC_SUCCESS) {
-		response = EC_RES_UNAVAILABLE;
-		QUEUE_ADD_UNITS(&update_to_usb, &response, sizeof(response));
+		response[0] = EC_RES_UNAVAILABLE;
+		QUEUE_ADD_UNITS(&update_to_usb, &response, 1);
 		return 1;
 	}
 
@@ -109,8 +109,7 @@ static int pair_challenge(struct pair_challenge *challenge)
 	 * Nothing can fail from now on, let's push data to the queue as soon as
 	 * possible to save some temporary variables.
 	 */
-	response = EC_RES_SUCCESS;
-	QUEUE_ADD_UNITS(&update_to_usb, &response, sizeof(response));
+	response[0] = EC_RES_SUCCESS;
 
 	/*
 	 * tmp2 = device_private
@@ -121,7 +120,7 @@ static int pair_challenge(struct pair_challenge *challenge)
 
 	/* tmp = device_public = x25519(device_private, x25519_base_point) */
 	X25519_public_from_private(tmp, tmp2);
-	QUEUE_ADD_UNITS(&update_to_usb, tmp, sizeof(tmp));
+	memcpy(response + 1, tmp, member_size(struct pair_challenge_response, device_public));
 
 	/* tmp = shared_secret = x25519(device_private, host_public) */
 	X25519(tmp, tmp2, challenge->host_public);
@@ -129,9 +128,10 @@ static int pair_challenge(struct pair_challenge *challenge)
 	/* tmp2 = authenticator = HMAC_SHA256(shared_secret, nonce) */
 	hmac_SHA256(tmp2, tmp, sizeof(tmp), challenge->nonce,
 		    sizeof(challenge->nonce));
-	QUEUE_ADD_UNITS(&update_to_usb, tmp2,
-			member_size(struct pair_challenge_response,
-				    authenticator));
+	memcpy(response + 1 + sizeof(tmp), tmp2, member_size(struct pair_challenge_response, authenticator));
+
+	QUEUE_ADD_UNITS(&update_to_usb, &response, sizeof(response));
+
 	return 1;
 }
 #endif
@@ -401,6 +401,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 				break;
 			}
 			response = EC_SUCCESS;
+			// TODO: need to fix
 			QUEUE_ADD_UNITS(&update_to_usb, &response, 1);
 			QUEUE_ADD_UNITS(&update_to_usb, version_str,
 					sizeof(version_str));
