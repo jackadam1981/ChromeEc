@@ -343,12 +343,18 @@ class AllTests:
                 test_name="fp_transport",
                 test_args=["uart"],
             ),
-            TestConfig(test_name="fpsensor_auth_crypto_stateful"),
+            # Skip auth tests for Zephyr, since FP login is dropped
+            TestConfig(
+                test_name="fpsensor_auth_crypto_stateful", skip_for_zephyr=True
+            ),
             TestConfig(
                 test_name="fpsensor_auth_crypto_stateful_otp",
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],
+                skip_for_zephyr=True,
             ),
-            TestConfig(test_name="fpsensor_auth_crypto_stateless"),
+            TestConfig(
+                test_name="fpsensor_auth_crypto_stateless", skip_for_zephyr=True
+            ),
             TestConfig(test_name="fpsensor_crypto"),
             TestConfig(
                 test_name="fpsensor_hw", pre_test_callback=fp_sensor_sel
