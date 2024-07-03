@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c5915d_f1e60ca4",
+        "filename": "baseboard/kukui/battery_bq27541.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-03T03:42:53Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to run this after the sustainer is set, since there\u0027s no reason to continue looping here once the sustainer has been set.",
+      "revId": "c0e9f9c3963f03531dace3f14485150a4919844c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92210663_ca1f2351",
+        "filename": "baseboard/kukui/battery_bq27541.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-03T03:42:53Z",
+      "side": 1,
+      "message": "Does this run every hour because a 24-hour timeout would overflow the interval? If yes, I think the interval should be even shorter because `HOUR` is larger than `INT_MAX` so you\u0027re actually passing a negative timeout to `hook_call_deferred`.",
+      "revId": "c0e9f9c3963f03531dace3f14485150a4919844c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c46425_ae5c1217",
+        "filename": "include/charge_state.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-03T03:42:53Z",
+      "side": 1,
+      "message": "Exposing this feature to general EC code seems somewhat dangerous, since setting it requires care not to clobber an existing option set by the OS (from adaptive charging). I think this needs larger changes to be able to set and clear an \"override\" setting, so you can override the OS setting and return to whatever the OS set.",
+      "revId": "c0e9f9c3963f03531dace3f14485150a4919844c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
