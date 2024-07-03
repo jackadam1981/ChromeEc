@@ -26,6 +26,11 @@ config TEST_PROJECT_MTLRVPP_PD
 	bool "Enable tests for board mtlrvp_pd"
 	help
 	  Enable tests specific to the mtlrvp_pd variant.
+
+config TEST_PROJECT_PTLRVPP_MCHP
+	bool "Enable ptlrvp_mchp-specific tests"
+	help
+	  Enable tests specific to the ptlrvp_mchp variant.
 endchoice
 
 config TEST_PROJECT_MTL_BOARD_POWER
@@ -68,5 +73,11 @@ config PLATFORM_EC_PD_MAX_POWER_MW
 	  The maximum PD negotiated power for the system. The value should match
 	  with configured PLATFORM_EC_PD_MAX_CURRENT_MA and
 	  PLATFORM_EC_PD_MAX_VOLTAGE_MV
+
+config TEST_PROJECT_PTL_BOARD_POWER
+	bool "Run tests for board_power.c"
+	depends on TEST_PROJECT_PTLRVPP_MCHP
+	help
+	  Include board_power.c into the binary and test its functions.
 
 source "Kconfig.zephyr"
