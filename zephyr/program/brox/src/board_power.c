@@ -43,6 +43,10 @@ void board_ap_power_force_shutdown(void)
 		LOG_WRN("RSMRST_PWRGD is not deasserted! Assuming G3");
 	}
 
+	/* b/328634978 - extra delay needed after SLP_SUS_n asserts before
+	 * disabling the main rails.-dell-mistake
+	 */
+	k_msleep(5);
 	power_signal_set(PWR_EN_PP5000_A, 0);
 }
 
