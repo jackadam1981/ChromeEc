@@ -49,3 +49,14 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/chg_usb_pd_mecc_1_1.c"
 )
 endif()
+
+if (CONFIG_TEST_PROJECT_PTLRVPP_MCHP)
+zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/intelrvp/ptlrvp/ptlrvp_mchp/include")
+# Add sources for board_power.c functionality and related ptlrvp platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_PTL_BOARD_POWER app PRIVATE
+  ${PLATFORM_EC_PROGRAM_DIR}/intelrvp/ptlrvp/src/board_power.c
+)
+target_sources_ifdef(CONFIG_TEST_PROJECT_PTL_BOARD_POWER app PRIVATE
+  ${PLATFORM_EC}/zephyr/test/power/ptl_power.c
+)
+endif()
