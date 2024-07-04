@@ -559,6 +559,10 @@ class AllTests:
                 test_name="zephyr_cpp_std20",
             ),
             TestConfig(
+                zephyr_name="drivers.entropy",
+                test_name="zephyr_drivers_entropy",
+            ),
+            TestConfig(
                 zephyr_name="drivers.flash.stm32.f4",
                 test_name="zephyr_flash_stm32f4",
                 exclude_boards=[DARTMONKEY, HELIPILOT],
