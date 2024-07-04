@@ -432,10 +432,10 @@ static int usb_hid_tp_init(void)
 
 	usb_hid_register_device(hid_dev, report_desc, sizeof(report_desc),
 				&ops);
-
+#ifdef CONFIG_CROS_EC_RW
 	usb_hid_init(hid_dev);
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
-
+#endif
 	return 0;
 }
 SYS_INIT(usb_hid_tp_init, APPLICATION, CONFIG_KERNEL_INIT_PRIORITY_DEVICE);

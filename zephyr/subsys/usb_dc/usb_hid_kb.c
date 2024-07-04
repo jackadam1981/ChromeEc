@@ -405,10 +405,10 @@ static int usb_hid_kb_init(void)
 		LOG_WRN("failed to set interface protocol code");
 	}
 #endif
-
+#ifdef CONFIG_CROS_EC_RW
 	usb_hid_init(hid_dev);
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
-
+#endif
 	return 0;
 }
 SYS_INIT(usb_hid_kb_init, APPLICATION, CONFIG_KERNEL_INIT_PRIORITY_DEVICE);
