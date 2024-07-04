@@ -300,3 +300,9 @@
 		};
 	};
 };
+
+&i2c5ALT {
+	pinctrl-0 = <&i2c5_clk_gpa4_default
+		&i2c5_data_gpa5_default>;
+	pinctrl-names = "default";
+};
