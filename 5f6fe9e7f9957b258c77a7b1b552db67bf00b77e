@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dc92495_a238f4b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-07-04T08:29:23Z",
+      "side": 1,
+      "message": "Hi Poornima,\n\nPlease add this in the CL comments, may be refer to other CL\u0027s.\nLOW_COVERAGE_REASON\u003dCoverage to be handled in b/350787417",
+      "parentUuid": "42842e18_ecc7b84d",
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "425b7581_267f5209",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
