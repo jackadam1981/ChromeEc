@@ -86,6 +86,7 @@ BUILD_ASSERT(CONFIG_USB_DC_KEYBOARD_HID_NUM < CONFIG_USB_HID_DEVICE_COUNT,
 		HID_REPORT_COUNT(1), HID_REPORT_SIZE(6), HID_INPUT(0x01)
 #endif /* HID_KEYBOARD_EXTRA_FIELD */
 
+#ifdef CONFIG_CROS_EC_RW
 /* HID : Report Descriptor */
 static const uint8_t hid_report_desc[] = {
 	HID_USAGE_PAGE(HID_USAGE_GEN_DESKTOP),
@@ -120,6 +121,7 @@ static const uint8_t hid_report_desc[] = {
 #endif
 	HID_END_COLLECTION
 };
+#endif
 
 /* The standard Chrome OS keyboard matrix table. See HUT 1.12v2 Table 12 and
  * https://www.w3.org/TR/DOM-Level-3-Events-code .
@@ -183,6 +185,7 @@ static const struct device *hid_dev;
 static bool boot_protocol;
 static ATOMIC_DEFINE(hid_ep_in_busy, 1);
 
+#ifdef CONFIG_CROS_EC_RW
 static int kb_get_report(const struct device *dev,
 			 struct usb_setup_packet *setup, int32_t *len,
 			 uint8_t **data)
@@ -229,6 +232,7 @@ static const struct hid_ops ops = {
 	.get_report = kb_get_report,
 	.int_in_ready = int_in_ready_cb,
 };
+#endif
 
 static bool generate_keyboard_report(uint8_t keycode, int is_pressed)
 {
@@ -389,6 +393,7 @@ static void hid_kb_proc_queue(void)
 	hook_call_deferred(&hid_kb_proc_queue_data, 1 * MSEC);
 }
 
+#ifdef CONFIG_CROS_EC_RW
 static int usb_hid_kb_init(void)
 {
 	hid_dev = device_get_binding(KB_DEV_NAME);
@@ -412,3 +417,4 @@ static int usb_hid_kb_init(void)
 	return 0;
 }
 SYS_INIT(usb_hid_kb_init, APPLICATION, CONFIG_KERNEL_INIT_PRIORITY_DEVICE);
+#endif

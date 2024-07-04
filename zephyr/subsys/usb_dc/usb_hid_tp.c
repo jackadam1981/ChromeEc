@@ -32,6 +32,7 @@ static ATOMIC_DEFINE(hid_ep_in_busy, 1);
 
 #define HID_EP_BUSY_FLAG 0
 
+#ifdef CONFIG_CROS_EC_RW
 static const uint8_t report_desc[] =
 	REPORT_DESC(DT_PROP_OR(TP_NODE, max_pressure, 0),
 		    DT_PROP_OR(TP_NODE, logical_max_x, 0),
@@ -309,6 +310,7 @@ static uint8_t device_caps_response[] = {
 	MAX_FINGERS, /* Contact Count Maximum */
 	0x00, /* Pad Type: Depressible click-pad */
 };
+#endif
 
 static void hid_tp_proc_queue(void);
 DECLARE_DEFERRED(hid_tp_proc_queue);
@@ -325,6 +327,7 @@ static void write_tp_report(struct usb_hid_touchpad_report *report)
 	}
 }
 
+#ifdef CONFIG_CROS_EC_RW
 static int tp_get_report(const struct device *dev,
 			 struct usb_setup_packet *setup, int32_t *len,
 			 uint8_t **data)
@@ -352,6 +355,7 @@ static const struct hid_ops ops = {
 	.get_report = tp_get_report,
 	.int_in_ready = int_in_ready_cb,
 };
+#endif
 
 __overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
@@ -421,6 +425,7 @@ static void hid_tp_proc_queue(void)
 	hook_call_deferred(&hid_tp_proc_queue_data, 1 * MSEC);
 }
 
+#ifdef CONFIG_CROS_EC_RW
 static int usb_hid_tp_init(void)
 {
 	hid_dev = device_get_binding(TP_DEV_NAME);
@@ -439,3 +444,4 @@ static int usb_hid_tp_init(void)
 	return 0;
 }
 SYS_INIT(usb_hid_tp_init, APPLICATION, CONFIG_KERNEL_INIT_PRIORITY_DEVICE);
+#endif
