@@ -28,7 +28,12 @@
 #undef CONFIG_SYSTEM_UNLOCKED
 
 /* Battery */
+<<<<<<< HEAD   (724610 virtual_battery: support RunTimeToEmpty 0x11 command)
 #define BATTERY_DESIRED_CHARGING_CURRENT    3500  /* mA */
+=======
+#define BATTERY_DESIRED_CHARGING_CURRENT 3500 /* mA */
+#define BATTERY_PROTECTION_POLICY
+>>>>>>> CHANGE (c87cfb katsu: Add battery protection policy)
 
 #define CONFIG_CHARGER_MT6370_BACKLIGHT
 #define USB_CHARGER_MAX_CURR_MA 2000
