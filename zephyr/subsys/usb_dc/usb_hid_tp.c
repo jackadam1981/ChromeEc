@@ -6,7 +6,6 @@
 #include "queue.h"
 #include "task.h"
 #include "usb_dc.h"
-#include "usb_hid_touchpad.h"
 #include "util.h"
 
 #include <zephyr/logging/log.h>
