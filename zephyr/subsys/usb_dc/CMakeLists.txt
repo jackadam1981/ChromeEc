@@ -1,7 +1,19 @@
 # SPDX-License-Identifier: Apache-2.0
 
 zephyr_library_sources_ifdef(CONFIG_USB_DEVICE_STACK usb_dc.c)
+
+if (CONFIG_USB_DC_HID_KEYBOARD_RW_ONLY AND CONFIG_CROS_EC_RW)
 zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_KEYBOARD usb_hid_kb.c)
-zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_TOUCHPAD usb_hid_tp.c)
 zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_VIVALDI hid_vivaldi.c)
+elseif(NOT CONFIG_USB_DC_HID_KEYBOARD_RW_ONLY)
+zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_KEYBOARD usb_hid_kb.c)
+zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_VIVALDI hid_vivaldi.c)
+endif()
+
+if (CONFIG_USB_DC_HID_TOUCHPAD_RW_ONLY AND CONFIG_CROS_EC_RW)
+zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_TOUCHPAD usb_hid_tp.c)
+elseif(NOT CONFIG_USB_DC_HID_TOUCHPAD_RW_ONLY)
+zephyr_library_sources_ifdef(CONFIG_USB_DC_HID_TOUCHPAD usb_hid_tp.c)
+endif()
+
 zephyr_library_sources_ifdef(CONFIG_USB_DEVICE_GOOGLE_UPDATE usb_google_update.c)

@@ -9,6 +9,7 @@
 #define __USB_DC_H
 
 #include "common.h"
+#include "usb_hid_touchpad.h"
 
 #include <zephyr/usb/usb_ch9.h>
 

@@ -308,7 +308,7 @@ static bool generate_keyboard_report(uint8_t keycode, int is_pressed)
 	return valid;
 }
 
-__overridable void keyboard_state_changed(int row, int col, int is_pressed)
+void keyboard_state_changed(int row, int col, int is_pressed)
 {
 	static int print_full = 1;
 	uint8_t keycode = keycodes[col][row];

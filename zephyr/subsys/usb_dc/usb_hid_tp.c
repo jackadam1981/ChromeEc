@@ -6,7 +6,6 @@
 #include "queue.h"
 #include "task.h"
 #include "usb_dc.h"
-#include "usb_hid_touchpad.h"
 #include "util.h"
 
 #include <zephyr/logging/log.h>
@@ -353,7 +352,7 @@ static const struct hid_ops ops = {
 	.int_in_ready = int_in_ready_cb,
 };
 
-__overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
+void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
 	static int print_full = 1;
 

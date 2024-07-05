@@ -16,6 +16,16 @@ struct usb_controller_status {
 
 struct usb_controller_status usb_dc_status;
 
+__overridable void keyboard_state_changed(int row, int col, int is_pressed)
+{
+	return;
+}
+
+__overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
+{
+	return;
+}
+
 static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 {
 	switch (status) {
