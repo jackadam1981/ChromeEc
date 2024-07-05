@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d424d9d_737b810c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-07-05T19:12:09Z",
+      "side": 1,
+      "message": "This might be OK for EC only.\nThe system will need to be able to build it using the ebuild system.\n\nEG: cros build-packages --board brox chromeos-ec",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
