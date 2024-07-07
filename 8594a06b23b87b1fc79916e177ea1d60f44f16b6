@@ -39,6 +39,23 @@
       "message": "This currently, does not compile.  Please verify that it actually builds.",
       "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b33b610_146a6a6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-07-07T02:01:03Z",
+      "side": 1,
+      "message": "To the EC folks on this review.  Which is the correct build invocation to test this CL?  \n\nbuild-packages --board brox chromeos-zephyr succeeds, but does not appear to build a set of images for \"jubilant\".\n\nThe zmake line listed in the description does not succeed (for me).",
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
