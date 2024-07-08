@@ -56,6 +56,23 @@
       "message": "To the EC folks on this review.  Which is the correct build invocation to test this CL?  \n\nbuild-packages --board brox chromeos-zephyr succeeds, but does not appear to build a set of images for \"jubilant\".\n\nThe zmake line listed in the description does not succeed (for me).",
       "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f379ef_dc513d5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-08T19:36:03Z",
+      "side": 1,
+      "message": "looks like there are some kconfig issues like:\n```\nParsing /mnt/host/source/src/platform/ec/zephyr/program/brox/Kconfig\nwarning: INPUT_SHELL_KBD_MATRIX_STATE (defined at drivers/input/Kconfig.kbd_matrix:38) was assigned\nthe value \u0027y\u0027 but got the value \u0027n\u0027. Check these unsatisfied dependencies: INPUT_KBD_MATRIX (\u003dn).\nSee http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_INPUT_SHELL_KBD_MATRIX_STATE and/or\nlook up INPUT_SHELL_KBD_MATRIX_STATE in the menuconfig/guiconfig interface. The Application\n```",
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
