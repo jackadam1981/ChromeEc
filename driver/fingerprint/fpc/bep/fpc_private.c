@@ -116,7 +116,7 @@ void fp_sensor_lock(void)
 
 void fp_sensor_unlock(void)
 {
-	sensor_owner = 0xFF;
+	sensor_owner = 0xFC;
 	mutex_unlock(&sensor_lock);
 }
 

@@ -40,8 +40,10 @@
 . "${SHFLAGS:-/usr/share/misc/shflags}" || exit 1
 
 FLAGS_PRIVATE_DEFAULT="${FLAGS_FALSE}"
-if [[ -d private ]]; then
+echo $FLAGS_PRIVATE_DEFAULT
+if [[ -d ../ec-private && -d ../fingerprint ]]; then
   FLAGS_PRIVATE_DEFAULT="${FLAGS_TRUE}"
+  echo $FLAGS_PRIVATE_DEFAULT
 fi
 
 DEFINE_string 'boards' "nocturne_fp" 'Boards to build (all, fp, stm32, hatch)' \
@@ -73,6 +75,7 @@ assoc-add-keys() {
   done
 }
 
+
 # Usage: assoc-rm-keys <associate_array_name> [item1 [item2...]
 assoc-rm-keys() {
   # Shellcheck doesn't seem to support nameref variables yet.
@@ -103,6 +106,7 @@ boards-with() {
   local pattern="${1}"
 
   for b in $(make-print-boards); do
+    echo $b
     grep -E -q "${pattern}" "board/${b}/build.mk" && echo "${b}"
   done
 }
@@ -218,8 +222,9 @@ printf "%s\n" "${BOARDS[@]}" | sort | column
 # Symbolically linked directories
 LINKS=( )
 if [[ "${FLAGS_private}" == "${FLAGS_TRUE}" ]]; then
-  echo "# Requesting private directory link"
-  LINKS+=( private )
+  echo "# Requesting ec-private and fingerprint directory links"
+  LINKS+=( ec-private )
+  LINKS+=( fingerprint )
 fi
 
 ##########################################################################
@@ -231,8 +236,18 @@ fi
 # We should do the build comparison in the Makefile to allow for easier
 # debugging when --keep is enabled.
 echo "# Preparing Makefile"
+
+echo "ORIGIN" $(realpath .)
+echo $(dirname $(realpath .))
+echo "OLD_REF" ${OLD_REF}
+echo "NEW_REF" ${NEW_REF}
+
+
+
 cat > "${TMP_DIR}/Makefile" <<HEREDOC
 ORIGIN ?= $(realpath .)
+PARENT_DIR ?= $(realpath ../)
+
 BORINGSSL_DIR ?= $(realpath ../../third_party/boringssl)
 CRYPTOC_DIR ?= $(realpath ../../third_party/cryptoc)
 ZEPHYR_BASE ?= $(realpath ../../../src/third_party/zephyr/main)
@@ -243,14 +258,14 @@ LINKS ?= ${LINKS[*]}
 all: build-${OLD_REF} build-${NEW_REF}
 
 ec-%:
-	git clone --quiet --no-checkout --shared \$(ORIGIN) \$@
-	git -C \$@ checkout --quiet \$(@:ec-%=%)
+	git clone --quiet --no-checkout --shared \$(ORIGIN) \$(addprefix \$@/, ec)
+	git -C \$(addprefix \$@/, ec) checkout --quiet \$(@:ec-%=%)
 ifneq (\$(LINKS),)
-	ln -s \$(addprefix \$(ORIGIN)/,\$(LINKS)) \$@
+	ln -s \$(addprefix \$(PARENT_DIR)/,\$(LINKS)) \$@
 endif
 
 build-%: ec-%
-	\$(MAKE) --no-print-directory -C \$(@:build-%=ec-%)                   \\
+	\$(MAKE) --no-print-directory -C \$(@:build-%=\$(addprefix ec-%/, ec))                   \\
 		STATIC_VERSION=1                                              \\
 		BORINGSSL_DIR=\$(BORINGSSL_DIR)                               \\
 		CRYPTOC_DIR=\$(CRYPTOC_DIR)                                   \\
@@ -262,7 +277,7 @@ build-%: ec-%
 		printf "  CP -l   '%s' to '%s'\n"                             \\
 			"\$(@:build-%=ec-%)/build/\$\$b/ec.bin"               \\
                         "\$@/\$\$b-ec.bin";                                   \\
-		cp -l \$(@:build-%=ec-%)/build/\$\$b/ec.bin \$@/\$\$b-ec.bin; \\
+		cp -l \$(@:build-%=ec-%)/ec/build/\$\$b/ec.bin \$@/\$\$b-ec.bin; \\
 	done
 
 # So that make doesn't try to remove them
