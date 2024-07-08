@@ -10,6 +10,7 @@
 #define DT_DRV_COMPAT named_usbc_port
 
 #include "charge_manager.h"
+#include "chipset.h"
 #include "hooks.h"
 #include "test/util.h"
 #include "usbc/pdc_dpm.h"
@@ -412,6 +413,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_REQUEST_HIGH_POWER_PDO,
 	/** Selects the active charge port */
 	SNK_POLICY_SET_ACTIVE_CHARGE_PORT,
+	/** Runs a test to determine if we should become a source instead */
+	SNK_POLICY_EVAL_SWAP_TO_SRC,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -1161,8 +1164,15 @@ static void run_unattached_policies(struct pdc_port_t *port)
 	send_pending_public_commands(port);
 }
 
+/* Forward */
+static int pdc_power_mgmt_request_power_swap_intern(int port,
+						    enum pd_power_role role);
+
 static void run_snk_policies(struct pdc_port_t *port)
 {
+	const struct pdc_config_t *config = port->dev->config;
+	int port_num = config->connector_num;
+
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
 		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
@@ -1174,6 +1184,31 @@ static void run_snk_policies(struct pdc_port_t *port)
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_NEW_POWER_REQUEST)) {
 		port->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
+		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_EVAL_SWAP_TO_SRC)) {
+		/* If all of the following are true, swap to source:
+		 *  a) Source caps were received from the port partner
+		 *  b) Port partner supports unconstrained power and DRP
+		 *  c) Port isn't the active charging port.
+		 */
+
+		if (port->snk_policy.src.pdo_count == 0) {
+			return;
+		}
+
+		if (!(port->snk_policy.pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) &&
+		    (port->snk_policy.pdo & PDO_FIXED_DUAL_ROLE)) {
+			return;
+		}
+
+		if (charge_manager_get_active_charge_port() == port_num) {
+			return;
+		}
+
+		pdc_power_mgmt_request_power_swap_intern(port_num,
+							 PD_ROLE_SOURCE);
+
 		return;
 	}
 
@@ -1324,6 +1359,11 @@ static void pdc_src_attached_entry(void *obj)
 static void pdc_src_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+
+	/* Clear a piece of sink policy as it is no longer relevant in the
+	 * sourcing state.
+	 */
+	atomic_clear_bit(port->snk_policy.flags, SNK_POLICY_EVAL_SWAP_TO_SRC);
 
 	/* The CCI_EVENT is set on a connector disconnect, so check the
 	 * connector status and take the appropriate action. */
@@ -2082,6 +2122,50 @@ static void pdc_init_entry(void *obj)
 	discovery_info_init(port);
 }
 
+/* Forward-declare policy handlers */
+static void pd_chipset_startup(void);
+static void pd_chipset_resume(void);
+static void pd_chipset_suspend(void);
+static void pd_chipset_shutdown(void);
+
+/**
+ * @brief Apply correct policy in a scenario where we jumped into the currently
+ *        running EC image. This is normally handled by hooks on AP power state
+ *        changes (HOOK_CHIPSET_RESUME, etc) elsewhere in this file, but these
+ *        will not get triggered during a late sysjump, leaving the PDC and
+ *        subsystem in an inconsistent state. Note: this should run once, and
+ *        not per-port.
+ */
+static void pdc_handle_late_sysjump(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		LOG_INF("PD: AP is ON: apply 'startup' followed by 'resume'");
+		pd_chipset_startup();
+		pd_chipset_resume();
+	} else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
+		pd_chipset_suspend();
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		LOG_INF("PD: AP is OFF: apply 'shutdown' policy");
+		pd_chipset_shutdown();
+	}
+}
+
+/**
+ * @brief Returns true if all PDC port drivers have finished initializing
+ *
+ * @return bool True if all ports are ready, false if still pending.
+ */
+static bool pdc_all_ports_ready(void)
+{
+	for (uint8_t i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		if (!pdc_is_init_done(pdc_data[i]->port.pdc)) {
+			return false;
+		}
+	}
+	return true;
+}
+
 static void pdc_init_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
@@ -2090,6 +2174,15 @@ static void pdc_init_run(void *obj)
 	/* Wait until PDC driver is initialized */
 	if (pdc_is_init_done(port->pdc)) {
 		LOG_INF("C%d: PDC Subsystem Started", config->connector_num);
+		/* Apply policy in case of a late sysjump since we won't receive
+		 * the usual hook calls upon AP power state changes. Only called
+		 * once, after all port drivers are ready.
+		 */
+		if (system_jumped_late() && pdc_all_ports_ready()) {
+			LOG_INF("PD: Handling late sysjump");
+			pdc_handle_late_sysjump();
+		}
+
 		/* Send the connector status command to determine which state to
 		 * enter
 		 */
@@ -2823,6 +2916,9 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 {
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
 
+	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: set role to %d", port,
+		state);
+
 	switch (state) {
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
@@ -2895,39 +2991,19 @@ test_mockable int pdc_power_mgmt_set_trysrc(int port, bool enable)
  */
 
 /**
- * @brief Chipset Resume (S3->S0) Policy 1: Power Role Swap to Source if:
- *	a) Port is attached as a Sink
- *	b) No source caps were received from the port partner
- *	c) Port Partner PDO is Unconstrained Power or NOT DRP
- *	d) Port isn't a charging port
+ * @brief Chipset Resume (S3->S0) Policy 1: Set a flag to perform a one-time
+ *        test if we should swap to a source role. (applicable only if we are
+ *        currently a sink)
  */
 static void enforce_pd_chipset_resume_policy_1(int port)
 {
 	LOG_DBG("Chipset Resume Policy 1");
 
-	/* a) Port is attached as a Sink */
-	if (!pdc_power_mgmt_is_sink_connected(port)) {
-		return;
-	}
-
-	/* b) No source caps were received from the port partner */
-	if (pdc_data[port]->port.snk_policy.src.pdo_count == 0) {
-		return;
-	}
-
-	/* c) Unconstrained Power or NOT Dual Role Power we can charge from */
-	if (!(pdc_data[port]->port.snk_policy.pdo &
-	      PDO_FIXED_GET_UNCONSTRAINED_PWR) &&
-	    (pdc_data[port]->port.snk_policy.pdo & PDO_FIXED_DUAL_ROLE)) {
-		return;
-	}
-
-	/* d) Port isn't a charging port */
-	if (charge_manager_get_active_charge_port() == port) {
-		return;
-	}
-
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+	/* If we're in a sink role, run a check to determine if we'd prefer a
+	 * source role.
+	 */
+	atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+		       SNK_POLICY_EVAL_SWAP_TO_SRC);
 }
 
 /**
