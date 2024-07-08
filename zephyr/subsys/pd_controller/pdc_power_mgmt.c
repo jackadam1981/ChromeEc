@@ -10,6 +10,7 @@
 #define DT_DRV_COMPAT named_usbc_port
 
 #include "charge_manager.h"
+#include "chipset.h"
 #include "hooks.h"
 #include "test/util.h"
 #include "usbc/pdc_dpm.h"
@@ -2082,6 +2083,50 @@ static void pdc_init_entry(void *obj)
 	discovery_info_init(port);
 }
 
+/* Forward-declare policy handlers */
+static void pd_chipset_startup(void);
+static void pd_chipset_resume(void);
+static void pd_chipset_suspend(void);
+static void pd_chipset_shutdown(void);
+
+/**
+ * @brief Apply correct policy in a scenario where we jumped into the currently
+ *        running EC image. This is normally handled by hooks on AP power state
+ *        changes (HOOK_CHIPSET_RESUME, etc) elsewhere in this file, but these
+ *        will not get triggered during a late sysjump, leaving the PDC and
+ *        subsystem in an inconsistent state. Note: this should run once, and
+ *        not per-port.
+ */
+static void pdc_handle_late_sysjump(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		LOG_INF("PD: AP is ON: apply 'startup' followed by 'resume'");
+		pd_chipset_startup();
+		pd_chipset_resume();
+	} else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
+		pd_chipset_suspend();
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		LOG_INF("PD: AP is OFF: apply 'shutdown' policy");
+		pd_chipset_shutdown();
+	}
+}
+
+/**
+ * @brief Returns true if all PDC port drivers have finished initializing
+ *
+ * @return bool True if all ports are ready, false if still pending.
+ */
+static bool pdc_all_ports_ready(void)
+{
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		if (!pdc_is_init_done(pdc_data[i]->port.pdc)) {
+			return false;
+		}
+	}
+	return true;
+}
+
 static void pdc_init_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
@@ -2090,6 +2135,15 @@ static void pdc_init_run(void *obj)
 	/* Wait until PDC driver is initialized */
 	if (pdc_is_init_done(port->pdc)) {
 		LOG_INF("C%d: PDC Subsystem Started", config->connector_num);
+		/* Apply policy in case of a late sysjump since we won't receive
+		 * the usual hook calls upon AP power state changes. Only called
+		 * once, after all port drivers are ready.
+		 */
+		if (system_jumped_late() && pdc_all_ports_ready()) {
+			LOG_INF("PD: Handling late sysjump");
+			pdc_handle_late_sysjump();
+		}
+
 		/* Send the connector status command to determine which state to
 		 * enter
 		 */
@@ -2822,6 +2876,9 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 						enum pd_dual_role_states state)
 {
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
+
+	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: set role to %d", port,
+		state);
 
 	switch (state) {
 	/* While disconnected, toggle between src and sink */
