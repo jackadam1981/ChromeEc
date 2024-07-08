@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff778af5_d7c069b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-08T17:30:20Z",
+      "side": 1,
+      "message": "Nit: Although the enum is the same for partner and cable VDOs, I think the VDO that is actually relevant to this CL is the passive cable VDO in table 6.42.",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "3fd2035eb69bf68bcb82bd24e8140d4cd6ce12ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448af912_d00f3f7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-08T17:30:20Z",
+      "side": 1,
+      "message": "Does there need to be a corresponding change in `get_usb_cable_speed` to get the correct max speed for gen 4? As it stands, I think we\u0027d end up with a USB4 speed of gen 2.",
+      "revId": "3fd2035eb69bf68bcb82bd24e8140d4cd6ce12ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
