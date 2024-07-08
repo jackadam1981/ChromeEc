@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8d1aca_078c558c",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-08T16:11:38Z",
+      "side": 1,
+      "message": "If you\u0027re going to delete the old file when you upload a new one, why not just call it `tps6699x.bin` and not need to change this file every time?",
+      "revId": "de8ab4726c48cf129e6b798ade99842bf7775ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
