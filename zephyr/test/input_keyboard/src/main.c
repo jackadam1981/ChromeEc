@@ -3,7 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include "host_command.h"
 #include "keyboard_scan.h"
+#include "system.h"
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -27,6 +29,10 @@ static const struct device *const fake_dev =
 DEVICE_DT_DEFINE(DT_INST(0, vnd_keyboard_input_device), NULL, NULL, NULL,
 		 &kbd_cfg, PRE_KERNEL_1, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
 		 NULL);
+FAKE_VALUE_FUNC(int, system_is_locked)
+
+enum ec_status
+test_mkbp_command_simulate_key(struct host_cmd_handler_args *args);
 
 FAKE_VOID_FUNC(keyboard_state_changed, int, int, int);
 
@@ -225,11 +231,77 @@ ZTEST(keyboard_input, test_kbpress)
 	zassert_equal(last_evt.count, 3);
 }
 
+ZTEST(keyboard_input, test_mkbp_command_simulate_key)
+{
+	struct host_cmd_handler_args args;
+	struct ec_params_mkbp_simulate_key param;
+	enum ec_status ret;
+
+	args.params = &param;
+	param.col = 10;
+	param.row = 11;
+	param.pressed = 1;
+
+	ret = test_mkbp_command_simulate_key(&args);
+
+	zassert_equal(ret, EC_RES_SUCCESS);
+	zassert_equal(last_evt.x, 10);
+	zassert_equal(last_evt.y, 11);
+	zassert_equal(last_evt.touch, 1);
+	zassert_equal(last_evt.count, 3);
+
+	param.pressed = 0;
+
+	ret = test_mkbp_command_simulate_key(&args);
+
+	zassert_equal(last_evt.x, 10);
+	zassert_equal(last_evt.y, 11);
+	zassert_equal(last_evt.touch, 0);
+	zassert_equal(last_evt.count, 6);
+}
+
+ZTEST(keyboard_input, test_mkbp_command_simulate_key_denied)
+{
+	struct host_cmd_handler_args args;
+	struct ec_params_mkbp_simulate_key param;
+	enum ec_status ret;
+
+	args.params = &param;
+
+	system_is_locked_fake.return_val = 1;
+
+	ret = test_mkbp_command_simulate_key(&args);
+
+	zassert_equal(ret, EC_RES_ACCESS_DENIED);
+	zassert_equal(last_evt.count, 0);
+}
+
+ZTEST(keyboard_input, test_mkbp_command_simulate_key_invalid_param)
+{
+	struct host_cmd_handler_args args;
+	struct ec_params_mkbp_simulate_key param;
+	enum ec_status ret;
+
+	args.params = &param;
+	param.col = kbd_cfg.col_size;
+	param.row = 0;
+
+	ret = test_mkbp_command_simulate_key(&args);
+
+	zassert_equal(ret, EC_RES_INVALID_PARAM);
+	zassert_equal(last_evt.count, 0);
+
+	param.col = 0;
+	param.row = kbd_cfg.row_size;
+	;
+}
+
 static void reset(void *fixture)
 {
 	ARG_UNUSED(fixture);
 
 	RESET_FAKE(keyboard_state_changed);
+	RESET_FAKE(system_is_locked);
 
 	memset(&last_evt, 0, sizeof(last_evt));
 }
