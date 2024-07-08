@@ -18,6 +18,8 @@ static void charger_set_frequence_to_600KHZ(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, charger_set_frequence_to_600KHZ,
 	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, charger_set_frequence_to_600KHZ,
+	     HOOK_PRIO_DEFAULT);
 
 static void charger_set_frequence_to_1020KHZ(void)
 {
