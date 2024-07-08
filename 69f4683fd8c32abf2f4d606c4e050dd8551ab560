@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949dfbf1_3fe4bd80",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-08T17:54:07Z",
+      "side": 1,
+      "message": "I don\u0027t see an interrupt bit for FRS complete (just FRS signal received). Do you know if that would also set Power Swap Complete?",
+      "revId": "69f4683fd8c32abf2f4d606c4e050dd8551ab560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
