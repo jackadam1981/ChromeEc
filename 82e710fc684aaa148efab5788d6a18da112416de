@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f3a221_d9470fa4",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/board_power.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-09T21:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ae310f_d01e2638",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebfd8114_01d74d50",
@@ -149,6 +167,24 @@
       "side": 1,
       "message": "Initially I took the approach you mention to reuse the code but here are some factors I considered:\n\n1. It changes the structure in which the test code for various boards is organized right now. board_power.c is usually handled for each platform separately in their test directory.\n2. If from now on, we dont have CEPs, the platform specific board_power.c file would only be part of RVP code. There wouldn\u0027t be the need to reuse the code.",
       "parentUuid": "ebfd8114_01d74d50",
+      "revId": "82e710fc684aaa148efab5788d6a18da112416de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97a3a19_76ebc8af",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-09T21:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "701fb23f_e9e9998c",
       "revId": "82e710fc684aaa148efab5788d6a18da112416de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
