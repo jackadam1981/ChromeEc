@@ -73,6 +73,46 @@
       "message": "looks like there are some kconfig issues like:\n```\nParsing /mnt/host/source/src/platform/ec/zephyr/program/brox/Kconfig\nwarning: INPUT_SHELL_KBD_MATRIX_STATE (defined at drivers/input/Kconfig.kbd_matrix:38) was assigned\nthe value \u0027y\u0027 but got the value \u0027n\u0027. Check these unsatisfied dependencies: INPUT_KBD_MATRIX (\u003dn).\nSee http://docs.zephyrproject.org/latest/kconfig.html#CONFIG_INPUT_SHELL_KBD_MATRIX_STATE and/or\nlook up INPUT_SHELL_KBD_MATRIX_STATE in the menuconfig/guiconfig interface. The Application\n```",
       "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0774dba6_483da892",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-09T17:20:44Z",
+      "side": 1,
+      "message": "All the keyboard customization should be moved to a separate CL.  The first CL for jubilant should do the minimum required to build a jubilant image.\n\nThe first CL should only include the these files: \n```\nbrox/BUILD.py\nbrox/CMakeFiles.txt\nbrox/Kconfig\nbrox/jubilant/CMakeFiles.txt\nbrox/jubilant/project.conf\nbrox/jubilant/project.overlay\n```\n\nOnce that lands, then create a CL to modify the GPIO settings and a separate CL for the keyboard support.\n\nAlso note that the keyboard customization has moved into the devicetree.  The `keyboard_customization.h` file is no longer needed.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/brox/greenbayupoc/keyboard.dtsi;l\u003d43 for an example for configuring the boot and runtime key mappings.",
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d27c41_3b0bcab2",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-09T17:20:44Z",
+      "side": 1,
+      "message": "Keyboard changes should be in a separate CL.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
