@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f95c4a_2b1befb7",
+        "filename": "driver/fingerprint/elan/elan_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T22:53:17Z",
+      "side": 1,
+      "message": "We do not want to use the EC `enum module_id` to interface with the private library, since this locks in the usage of the EC type.\n\nWhat is the intention for this hook function? Can this clock adjustment be moved to the public code?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a53269_6acd7500",
+        "filename": "driver/fingerprint/elan/elan_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T22:53:17Z",
+      "side": 1,
+      "message": "We don\u0027t want to depend on this EC type. Either change to uint64_t or define your own elan timestamp type. Please add comment/documentation about what type of timestamp is expected, like a 64bit microsecond.",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
