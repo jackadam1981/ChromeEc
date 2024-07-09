@@ -16,6 +16,24 @@
       "message": "Jeremy, what would be the least bad way to get this bogus coverage result to go away? The test expects an oops, so `device_init` isn\u0027t supposed to return. It still seems silly that the ending bracket would be \"not covered.\"",
       "revId": "c60e8bb2ff21029465328b0b4d79bec8cce3d637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939e40e4_fd4eb81e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-07-09T19:41:16Z",
+      "side": 1,
+      "message": "LCOV_EXCL markers would be the easiest way.",
+      "parentUuid": "4ed507a4_811024eb",
+      "revId": "c60e8bb2ff21029465328b0b4d79bec8cce3d637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
