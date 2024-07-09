@@ -1,0 +1,54 @@
+diff --git a/zephyr/program/geralt/ciri/project.conf b/zephyr/program/geralt/ciri/project.conf
+index 411d7cc38c..3399be0c87 100644
+--- a/zephyr/program/geralt/ciri/project.conf
++++ b/zephyr/program/geralt/ciri/project.conf
+@@ -24,3 +24,6 @@ CONFIG_PLATFORM_EC_BRINGUP=n
+ 
+ # Battery config
+ CONFIG_PLATFORM_EC_I2C_VIRTUAL_BATTERY_ADDR=0x0f
++
++# Button config
++CONFIG_PLATFORM_EC_BUTTON_DEBOUNCE=15000
+diff --git a/zephyr/program/geralt/ciri/src/board_config.c b/zephyr/program/geralt/ciri/src/board_config.c
+index 49c7658e93..76b77b7573 100644
+--- a/zephyr/program/geralt/ciri/src/board_config.c
++++ b/zephyr/program/geralt/ciri/src/board_config.c
+@@ -49,3 +49,24 @@ __override struct dps_config_t dps_config = {
+ 	.t_check = 5 * SECOND,
+ 	.is_more_efficient = NULL,
+ };
++
++
++static int command_volupbtn(int argc, const char **argv)
++{
++	int ms = 200; /* Press duration in ms */
++	char *e;
++
++	if (argc > 1) {
++		ms = strtoi(argv[1], &e, 0);
++		if (*e || ms < 0)
++			return EC_ERROR_PARAM1;
++	}
++
++	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(volume_up_l), 0);
++	k_sleep(K_MSEC(ms));
++	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(volume_up_l), 1);
++	
++	return EC_SUCCESS;
++}
++DECLARE_CONSOLE_COMMAND(volupbtn, command_volupbtn, "[msec]",
++			"Simulate volup button press");
+\ No newline at end of file
+diff --git a/zephyr/program/geralt/gpio.dtsi b/zephyr/program/geralt/gpio.dtsi
+index 665232c4d2..e764a4795a 100644
+--- a/zephyr/program/geralt/gpio.dtsi
++++ b/zephyr/program/geralt/gpio.dtsi
+@@ -60,7 +60,7 @@
+ 			enum-name = "GPIO_VOLUME_DOWN_L";
+ 		};
+ 		volume_up_l: volume-up-l {
+-			gpios = <&gpiod 6 GPIO_INPUT>;
++			gpios = <&gpiod 6 GPIO_ODR_HIGH>;
+ 			enum-name = "GPIO_VOLUME_UP_L";
+ 		};
+ 		ac_present: ac-present {
