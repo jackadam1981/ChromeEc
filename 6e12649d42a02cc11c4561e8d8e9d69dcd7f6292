@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c267fa47_10fa8a30",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T16:33:22Z",
+      "side": 1,
+      "message": "FWIW, I see ~5k examples of `goto` error handling upstream. I think it\u0027s generally OK. I think I did it a few times here where it seemed like it made the code less redundant.",
+      "parentUuid": "4faf15b8_bc0b60db",
+      "range": {
+        "startLine": 634,
+        "startChar": 2,
+        "endLine": 634,
+        "endChar": 22
+      },
+      "revId": "6e12649d42a02cc11c4561e8d8e9d69dcd7f6292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c244abe8_e343cc48",

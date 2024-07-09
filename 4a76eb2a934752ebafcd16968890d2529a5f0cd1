@@ -16,6 +16,40 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4a76eb2a934752ebafcd16968890d2529a5f0cd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a84bcf_6de04a0a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T16:33:22Z",
+      "side": 1,
+      "message": "Can this field just be called `drp_mode`? The ones above it are abbreviated, but I think that\u0027s because UCSI uses those abbreviations for its commands. This is a command that we\u0027re defining for ourselves.",
+      "revId": "4a76eb2a934752ebafcd16968890d2529a5f0cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0bb5d7_ecea83e1",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T16:33:22Z",
+      "side": 1,
+      "message": "Can there be an enum for this field?",
+      "revId": "4a76eb2a934752ebafcd16968890d2529a5f0cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
