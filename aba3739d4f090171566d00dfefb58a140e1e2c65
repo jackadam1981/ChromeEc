@@ -3,6 +3,97 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ddb3498_9c1aeaa0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T19:36:23Z",
+      "side": 1,
+      "message": "There are already a handful of forward declarations at the top of the file. Can this just go there?",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ab4318_fd62e8a6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T19:36:23Z",
+      "side": 1,
+      "message": "Nit: This logic might be slightly easier to follow if it was inside a function like `bool should_swap_to_source(...)`. Then the guard clauses could `return false`. The call site could be like\n```\nif (should_swap_to_source())\n    pdc_power_mgmt_request_power_swap_intern();\n```",
+      "range": {
+        "startLine": 1190,
+        "startChar": 0,
+        "endLine": 1207,
+        "endChar": 3
+      },
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca85623_5b0d05e4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T19:36:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this happen on entry?",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f519e32_696dcf55",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T19:36:23Z",
+      "side": 1,
+      "message": "Can these just be up with the other forward declarations?",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9747552d_5514c3ee",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-09T19:36:23Z",
+      "side": 1,
+      "message": "There should probably be a comment _somewhere_ to the effect that power state hooks only change flags, and that should remain an invariant. This wouldn\u0027t be the worst place to do that, but I don\u0027t have a strong opinion on location.",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ee17c44_86c39d55",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
