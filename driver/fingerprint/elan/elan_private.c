@@ -52,8 +52,6 @@ void fp_sensor_low_power(void)
  */
 int fp_sensor_init(void)
 {
-	CPRINTF("========%s=======\n", __func__);
-
 	errors = 0;
 	elan_execute_reset();
 	algorithm_parameter_setting();
@@ -73,7 +71,6 @@ int fp_sensor_init(void)
  */
 int fp_sensor_deinit(void)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_fp_deinit();
 }
 
@@ -88,13 +85,9 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	int ret = 0;
 
-	CPRINTF("========%s=======\n", __func__);
 	memcpy(resp, &ec_fp_sensor_info, sizeof(struct ec_response_fp_info));
 	elan_sensor_get_alg_info(resp);
 	resp->errors |= errors;
-	CPRINTF("##%s## FrameSize=%d, errors=0x%04x\n", __func__,
-		resp->frame_size, resp->errors);
-
 	return ret;
 }
 
@@ -123,7 +116,6 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
 		    int32_t *match_index, uint32_t *update_bitmap)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_match(templ, templ_count, image, match_index,
 			  update_bitmap);
 }
@@ -136,7 +128,6 @@ int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
  */
 int fp_enrollment_begin(void)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_enrollment_begin();
 }
 
@@ -152,7 +143,6 @@ int fp_enrollment_begin(void)
  */
 int fp_enrollment_finish(void *templ)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_enrollment_finish(templ);
 }
 
@@ -173,7 +163,6 @@ int fp_enrollment_finish(void *templ)
  */
 int fp_finger_enroll(uint8_t *image, int *completion)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_enroll(image, completion);
 }
 
@@ -185,7 +174,6 @@ int fp_finger_enroll(uint8_t *image, int *completion)
  */
 void fp_configure_detect(void)
 {
-	CPRINTF("========%s=======\n", __func__);
 	elan_woe_mode();
 }
 
@@ -214,7 +202,6 @@ void fp_configure_detect(void)
  */
 int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_sensor_acquire_image_with_mode(image_data, mode);
 }
 
@@ -228,7 +215,6 @@ int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
  */
 enum finger_state fp_finger_status(void)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_sensor_finger_status();
 }
 
@@ -243,7 +229,6 @@ enum finger_state fp_finger_status(void)
  */
 int fp_maintenance(void)
 {
-	CPRINTF("========%s=======\n", __func__);
 	return elan_fp_maintenance(&errors);
 }
 
