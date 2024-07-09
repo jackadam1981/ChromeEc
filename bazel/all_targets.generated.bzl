@@ -1901,6 +1901,11 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "ptlrvpp_npcx",
+        board = "ptlrvpp_npcx",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "puff",
         board = "puff",
         chip = "npcx",
