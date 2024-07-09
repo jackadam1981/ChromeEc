@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891e0f19_447606c7",
+        "filename": "zephyr/drivers/keyboard_input/keyboard_input.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-09T16:50:27Z",
+      "side": 1,
+      "message": "Is this needed?  Can the test just call `host_command_process()` instead of creating a test specific wrapper?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 30
+      },
+      "revId": "33640a85342591bda01726fe889b77607bb9363f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84e81bb_a06e8405",
+        "filename": "zephyr/test/input_keyboard/include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-09T16:50:27Z",
+      "side": 1,
+      "message": "This seems fragile.  Why not include the real definition from `ec_commands.h`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "33640a85342591bda01726fe889b77607bb9363f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159d8d17_1ea1c787",
+        "filename": "zephyr/test/input_keyboard/include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-09T16:50:27Z",
+      "side": 1,
+      "message": "There is already a fake declared for this [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/common/include/test/drivers/test_mocks.h;l\u003d113).",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "33640a85342591bda01726fe889b77607bb9363f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
