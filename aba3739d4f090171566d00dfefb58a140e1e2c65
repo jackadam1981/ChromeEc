@@ -22,6 +22,30 @@
       },
       "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745683d9_688e6908",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-09T17:36:41Z",
+      "side": 1,
+      "message": "The policy handlers as-written have their own loops to affect each of the ports. I added this check so they only get called one time.",
+      "parentUuid": "0ee17c44_86c39d55",
+      "range": {
+        "startLine": 2178,
+        "startChar": 55,
+        "endLine": 2179,
+        "endChar": 44
+      },
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
