@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5e7b0c_dca777a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2024-07-09T18:30:35Z",
+      "side": 1,
+      "message": "We need to change the thresholds for 1.05V PROCHOT systems due to how the signal is driven.\n\nIt might be different for newer platforms.",
+      "revId": "a290f260f499d1f205887bf92313a79c14150d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb29074_5f2f12d6",
+        "filename": "zephyr/drivers/prochot_vcmp/prochot_vcmp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2024-07-09T18:30:35Z",
+      "side": 1,
+      "message": "Change to 80 for RPL",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "a290f260f499d1f205887bf92313a79c14150d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d472b829_77d894f0",
+        "filename": "zephyr/drivers/prochot_vcmp/prochot_vcmp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2024-07-09T18:30:35Z",
+      "side": 1,
+      "message": "change to 50 for RPL",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "a290f260f499d1f205887bf92313a79c14150d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
