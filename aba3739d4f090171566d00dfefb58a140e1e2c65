@@ -137,6 +137,29 @@
       },
       "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0609b3_99fa78de",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-09T19:37:32Z",
+      "side": 1,
+      "message": "This will get run again if the PDC Pwr Mgmt reset function is called, or if PD is suspended/resumed. Is that an issue to reapply the policy more than once or at those points?",
+      "range": {
+        "startLine": 2181,
+        "startChar": 2,
+        "endLine": 2181,
+        "endChar": 54
+      },
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
