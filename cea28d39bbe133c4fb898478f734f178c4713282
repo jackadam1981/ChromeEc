@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0665d298_1d7493e8",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2024-07-09T18:54:18Z",
+      "side": 1,
+      "message": "exclude_boards is placed in a newline in most cases other than test_otp_key, you might consider adding to a new line for consistency and moving the test_otp_key exclude_boards in a similar way",
+      "range": {
+        "startLine": 394,
+        "startChar": 38,
+        "endLine": 394,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "49fdd995_4883c4f9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 384,
+                "startChar": 0,
+                "endLine": 385,
+                "endChar": 0
+              },
+              "replacement": "                test_name\u003d\"otp_key\",\n                exclude_boards\u003d[BLOONCHIPPER, DARTMONKEY],\n"
+            },
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 394,
+                "startChar": 0,
+                "endLine": 395,
+                "endChar": 0
+              },
+              "replacement": "                test_name\u003d\"ram_lock\",\n                exclude_boards\u003d[BLOONCHIPPER, DARTMONKEY],\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cea28d39bbe133c4fb898478f734f178c4713282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
