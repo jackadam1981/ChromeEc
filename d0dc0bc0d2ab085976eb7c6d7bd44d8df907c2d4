@@ -45,6 +45,139 @@
       },
       "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1600a52d_322d3534",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T23:28:25Z",
+      "side": 1,
+      "message": "We only use the first byte, why do we need 2 bytes?\n```suggestion\n\tuint8_t id_hi \u003d 0, id_lo \u003d 0;\n```",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1474916_243752a9",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T23:28:25Z",
+      "side": 1,
+      "message": "```suggestion\nint elan_get_hwid(uint16_t *id)\n{\n\tint rc;\n\tuint8_t id_hi \u003d 0, id_lo \u003d 0;\n\n\tif (id \u003d\u003d NULL)\n\t\treturn EC_ERROR_INVAL;\n\n\trc \u003d elan_read_register(0x02, \u0026id_hi);\n\trc |\u003d elan_read_register(0x04, \u0026id_lo);\n\tif (rc) {\n\t\tCPRINTS(\"ELAN HW ID read failed %d\", rc);\n\t\treturn FP_ERROR_SPI_COMM;\n\t}\n\t*id \u003d (id_hi \u003c\u003c 8) | id_lo;\n\n\treturn EC_SUCCESS;\n}\n```\n\nDoes this change seem reasonable for readability?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abfbe45_f05be072",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T23:28:25Z",
+      "side": 1,
+      "message": "This should only be used if this function is used within the private library, but it seems like the usage is from within the public source.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 16
+      },
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e619559f_c473e5f2",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T23:28:25Z",
+      "side": 1,
+      "message": "I believe this will only ever write out 1 byte. If so, please add that to this comment.\n\n```suggestion\n * @param[out]   regdata  Single byte value read from register\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 26,
+        "endLine": 81,
+        "endChar": 51
+      },
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298604b5_b4373806",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-09T23:28:25Z",
+      "side": 1,
+      "message": "This should only be used if this function is used within the private library, but it seems like the usage is from within the public source.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1a20cc3e_7ddc5500",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/elan/elan_sensor_pal.h",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": "int elan_read_register(uint8_t regaddr, uint8_t *regdata);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0dc0bc0d2ab085976eb7c6d7bd44d8df907c2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
