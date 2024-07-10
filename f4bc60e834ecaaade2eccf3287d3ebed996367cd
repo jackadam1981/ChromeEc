@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cfbc2f8_6d1b93cf",
+        "filename": "zephyr/dts/mchp_emul.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-10T16:04:18Z",
+      "side": 1,
+      "message": "nit: submit it as a separate CL",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf0e0ce_8153dc20",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/board_power.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-10T16:04:18Z",
+      "side": 1,
+      "message": "try make a common file for all the variants \n\nrefer these:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/include/board.h\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/intelrvp/ptlrvp/power_signals.dtsi",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47943523_5ee8eea4",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/mtlrvp_npcx.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-10T16:04:18Z",
+      "side": 1,
+      "message": "need similar file for MCHP?\nrefer PTL project and make a common file",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db27588e_359937ae",
+        "filename": "zephyr/test/power/mtl_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-10T16:04:18Z",
+      "side": 1,
+      "message": "may be rename as meteorlake.c",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
