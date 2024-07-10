@@ -36,4 +36,9 @@ config TEST_X86_NON_DSX_PWRSEQ_MTL
 	  This is used to replace CONFIG_X86_NON_DSX_PWRSEQ_MTL for testing
 	  purposes directly.
 
+config TEST_PROJECT_BOARD_ID
+	bool "Run INTELRVP board id test"
+	help
+	  Run board ID test for INTELRVP.
+
 source "Kconfig.zephyr"

@@ -38,3 +38,13 @@ tests:
       - CONFIG_PLATFORM_EC_HOOKS=n
       - CONFIG_PLATFORM_EC_HIBERNATE=n
       - CONFIG_AP_PWRSEQ_DRIVER=n
+
+  intelrvp.mtlrvp_npcx.board_id:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp_npcx/board_id.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_NPCX=y
+      - CONFIG_TEST_PROJECT_BOARD_ID=y
+      - CONFIG_GPIO_EMUL=y
