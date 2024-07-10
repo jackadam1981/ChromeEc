@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b24c98_147a1a81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-10T04:47:17Z",
+      "side": 1,
+      "message": "keyboard fw recently added a GET_VERSION_STRING command,\nhammerd can use this command to get the version without using the compile time configuration string.\n\nPlease follow the code in platform2/hammerd/i2c_endpoint.cc around line 70 and implement similar thing in usb_util.cc",
+      "revId": "0b627597f327a5cd97c1a67ebf16f87262af687f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
