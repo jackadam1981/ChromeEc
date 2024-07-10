@@ -16,4 +16,18 @@
 #define PWR_SYS_RST &gpioc 5
 #define PWR_ALL_SYS_PWRGD &gpio7 0
 
+#define GPIO_CCD_MODE_ODL &gpio9 2
+#define GPIO_USBC_TCPC_ALRT_P0 &gpio4 0
+#define GPIO_USB_C0_C1_TCPC_RST_ODL &gpiod 0
+#define GPIO_USBC_TCPC_PPC_ALRT_P0 &gpiod 1
+#define GPIO_USBC_TCPC_PPC_ALRT_P1 &gpioe 4
+#define GPIO_USBC_TCPC_ALRT_P2 &gpio9 1
+#define GPIO_USBC_TCPC_ALRT_P3 &gpiof 3
+
+#define GPIO_USB_C0_MUX_SBU_SEL_0 &ioex_c0 6
+#define GPIO_USB_C0_MUX_SBU_SEL_1 &ioex_c1 4
+
+#define I2C_TYPEC_AIC1 i2c0_0
+#define I2C_TYPEC_AIC2 i2c1_0
+
 #endif /* MTLRVP_NPCX_BOARD_H_ */
