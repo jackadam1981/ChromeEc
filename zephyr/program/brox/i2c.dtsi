@@ -33,7 +33,9 @@
 &i2c5 {
 	pinctrl-0 = <&i2c5_clk_gpe1_default
 		     &i2c5_data_gpe2_default>;
-	pinctrl-names = "default";
+	pinctrl-1 = <&i2c5_data_gpe2_sleep
+		     &i2c5_clk_gpe1_sleep>;
+	pinctrl-names = "default", "sleep";
 
 	scl-gpios = <&gpioe 1 0>;
 	sda-gpios = <&gpioe 2 0>;
