@@ -16,6 +16,24 @@
       "message": "Can we also add this ADC to generated.dtsi with the other ADCs so we can query it directly?",
       "revId": "9df2e58857bab3b9a7b98c7b89aa90d7170d2eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e4aaac_3efe5e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-10T10:00:08Z",
+      "side": 1,
+      "message": "of course, it\u0027s not really generate anymore but looking at the commit history it hasn\u0027t been in a while",
+      "parentUuid": "c6941f40_b17e1a44",
+      "revId": "9df2e58857bab3b9a7b98c7b89aa90d7170d2eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
