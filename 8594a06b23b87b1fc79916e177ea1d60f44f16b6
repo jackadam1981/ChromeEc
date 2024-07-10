@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc7a9c0_265094cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-10T02:56:53Z",
+      "side": 1,
+      "message": "update it, currently build ec ok.",
+      "parentUuid": "1d424d9d_737b810c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe1d54b_18e9eb48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-10T02:56:53Z",
+      "side": 1,
+      "message": "currently zmake build jubilant ok",
+      "parentUuid": "1d424d9d_737b810c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f3259d78_b9414d85",
@@ -92,6 +140,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8058584d_e336bdc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-10T02:56:53Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "e3f379ef_dc513d5e",
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d454d96e_71c3d3df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-10T02:56:53Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "e3f379ef_dc513d5e",
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1d27c41_3b0bcab2",
@@ -105,6 +189,30 @@
       "writtenOn": "2024-07-09T17:20:44Z",
       "side": 1,
       "message": "Keyboard changes should be in a separate CL.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "8594a06b23b87b1fc79916e177ea1d60f44f16b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d645531_0d94db7f",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-10T02:56:53Z",
+      "side": 1,
+      "message": "update.",
+      "parentUuid": "c1d27c41_3b0bcab2",
       "range": {
         "startLine": 32,
         "startChar": 0,
