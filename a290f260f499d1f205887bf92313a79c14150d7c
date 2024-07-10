@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf79d933_cafa7f84",
+        "filename": "zephyr/drivers/prochot_vcmp/prochot_vcmp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-10T09:56:30Z",
+      "side": 1,
+      "message": "cool, changed both, what\u0027s the likelihood that they are going to change on other platforms? I can make them configurable if needed",
+      "parentUuid": "6cb29074_5f2f12d6",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "a290f260f499d1f205887bf92313a79c14150d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d472b829_77d894f0",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-07-09T18:30:35Z",
       "side": 1,
       "message": "change to 50 for RPL",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "a290f260f499d1f205887bf92313a79c14150d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0dd2456_c7346eb8",
+        "filename": "zephyr/drivers/prochot_vcmp/prochot_vcmp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-10T09:56:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d472b829_77d894f0",
       "range": {
         "startLine": 32,
         "startChar": 0,
