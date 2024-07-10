@@ -7,6 +7,11 @@ choice TEST_PROJECT_TYPE
 	help
 	  Choose the board variant for which the tests will be compiled and run.
 
+config TEST_PROJECT_MTLRVPP_COMMON
+	bool "Enable tests for board mtlrvp common source code"
+	help
+	  Enable tests specific to the mtlrvp common source code.
+
 config TEST_PROJECT_MTLRVPP_NPCX
 	bool "Enable tests for board mtlrvp_npcx"
 	help
@@ -35,5 +40,10 @@ config TEST_X86_NON_DSX_PWRSEQ_MTL
 	help
 	  This is used to replace CONFIG_X86_NON_DSX_PWRSEQ_MTL for testing
 	  purposes directly.
+
+config TEST_PROJECT_BOARD_ID
+	bool "Run INTELRVP board id test"
+	help
+	  Run board ID test for INTELRVP.
 
 source "Kconfig.zephyr"
