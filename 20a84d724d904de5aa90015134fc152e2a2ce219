@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2d13f5_2c6fa01b",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T20:33:49Z",
+      "side": 1,
+      "message": "All the functions, except `main` should include `static`.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 38
+      },
+      "revId": "20a84d724d904de5aa90015134fc152e2a2ce219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b6deb6_8dfd3171",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T20:33:49Z",
+      "side": 1,
+      "message": "General comment for the whole file.  Debug output should put the newline \ncharacter at the end of the string instead of the beginning.\n\nThe exception is for the status lines that update the erase/program/read percentage.  Using a leading carriage return `\\r` makes sense in these cases.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 29
+      },
+      "revId": "20a84d724d904de5aa90015134fc152e2a2ce219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c63cda3_a331abf5",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T20:33:49Z",
+      "side": 1,
+      "message": "If the user doesn\u0027t specify a range, the entire flash should be read.",
+      "range": {
+        "startLine": 952,
+        "startChar": 0,
+        "endLine": 952,
+        "endChar": 23
+      },
+      "revId": "20a84d724d904de5aa90015134fc152e2a2ce219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
