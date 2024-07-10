@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535d27f3_299effbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-10T18:32:17Z",
+      "side": 1,
+      "message": "The reason to add it for Coral is because host is spamming the EC with uptime requests. This CL is compiled from cl:1769393 and cl:1139028",
+      "revId": "6063871e3e1a80576e9a63aeec2cf0f647a88ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
