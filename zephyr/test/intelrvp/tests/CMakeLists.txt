@@ -26,4 +26,14 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_MTL_BOARD_POWER app PRIVATE
 target_sources_ifdef(CONFIG_TEST_PROJECT_BOARD_ID app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/mtlrvp.c"
 )
+
+# Add sources for tcpc.c functionality and related platform-specific files
+zephyr_include_directories_ifdef(CONFIG_TEST_PROJECT_TCPC ${PLATFORM_EC}/driver/charger)
+zephyr_include_directories_ifdef(CONFIG_TEST_PROJECT_TCPC ${PLATFORM_EC}/driver/ppc)
+zephyr_include_directories_ifdef(CONFIG_TEST_PROJECT_TCPC ${PLATFORM_EC}/driver/usb_mux)
+zephyr_include_directories_ifdef(CONFIG_TEST_PROJECT_TCPC ${PLATFORM_EC}/driver/tcpm)
+target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/tcpc.c"
+)
+target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE mtlrvp_npcx/src/tcpc.c)
 endif()
