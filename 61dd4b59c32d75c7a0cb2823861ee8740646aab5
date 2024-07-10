@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62267800_5ca7a6fa",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-10T16:07:38Z",
+      "side": 1,
+      "message": "nit: may be separate this file as\ncommon.c\nboard_id.c",
+      "revId": "61dd4b59c32d75c7a0cb2823861ee8740646aab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
