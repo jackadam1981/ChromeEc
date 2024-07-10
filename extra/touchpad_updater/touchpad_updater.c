@@ -16,6 +16,8 @@
 #include <glob.h>
 #include <libusb.h>
 #include <linux/hidraw.h>
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 #include <linux/input.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -308,7 +310,66 @@ static int i2c_single_write_and_read(const uint8_t *to_write,
 				     uint16_t write_length, uint8_t *to_read,
 				     uint16_t read_length)
 {
-	return -1;
+	char devpath[32];
+
+	snprintf(devpath, sizeof(devpath), "/dev/i2c-%d", i2c_devnum);
+
+	int fd = open(devpath, O_RDWR);
+	int ret = 0;
+
+	ioctl(fd, I2C_SLAVE_FORCE, i2c_addr);
+
+	memmove(tx_buf + 3, to_write, write_length);
+	tx_buf[0] = 0x12;
+	tx_buf[1] = read_length & 0xFF;
+	tx_buf[2] = read_length >> 8;
+
+	do {
+		struct i2c_msg msgs[1] = {
+			{ 0x56, 0, write_length + 3, tx_buf },
+		};
+		struct i2c_rdwr_ioctl_data msg_set = { msgs, 1 };
+
+		ret = ioctl(fd, I2C_RDWR, &msg_set);
+		if (ret < 0) {
+			close(fd);
+			return 0;
+		}
+	} while (0);
+
+	to_read += I2C_RESPONSE_OFFSET; /* ???? */
+
+	while (read_length) {
+		static uint8_t read_buf[4096] = {};
+		uint8_t reg = 0x13;
+		struct i2c_msg msgs[2] = {
+			{ i2c_addr, 0, 1, &reg },
+			{ i2c_addr, I2C_M_RD, read_length + 1, read_buf },
+		};
+		struct i2c_rdwr_ioctl_data msg_set = { msgs, 2 };
+
+		usleep(1000);
+		ret = ioctl(fd, I2C_RDWR, &msg_set);
+		if (ret < 0) {
+			close(fd);
+			return 0;
+		}
+
+		if (read_buf[0] > 0) {
+			int length = read_buf[0];
+
+			if (read_buf[0] > read_length) {
+				length = read_length;
+			}
+
+			memcpy(to_read, read_buf + 1, length);
+			read_length -= length;
+			to_read += length;
+		}
+	}
+	close(fd);
+
+	return 0;
 }
 
 static int libusb_single_write_and_read(const uint8_t *to_write,
