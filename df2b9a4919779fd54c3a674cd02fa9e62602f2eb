@@ -46,6 +46,30 @@
       },
       "revId": "df2b9a4919779fd54c3a674cd02fa9e62602f2eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02305da_8f48d3d0",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-10T22:52:18Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and remove it just so we don\u0027t have unneeded casting.",
+      "parentUuid": "36d58612_6f9fddc6",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 28
+      },
+      "revId": "df2b9a4919779fd54c3a674cd02fa9e62602f2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
