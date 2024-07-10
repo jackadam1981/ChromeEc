@@ -19,6 +19,7 @@
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ##args)
 
+#ifndef CONFIG_TEST_PROJECT_BOARD_ID
 /* eSPI device */
 #define espi_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))
 
@@ -38,6 +39,7 @@ __override const uint8_t it8801_kso_mapping[] = {
 	0, 1, 20, 3, 4, 5, 6, 11, 12, 13, 14, 15, 16,
 };
 BUILD_ASSERT(ARRAY_SIZE(it8801_kso_mapping) == KEYBOARD_COLS_MAX);
+#endif
 
 /*
  * Returns board information (board id[7:0] and Fab id[15:8]) on success
