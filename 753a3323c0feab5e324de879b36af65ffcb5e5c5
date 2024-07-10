@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aba4d5f_f880f14b",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-10T21:38:38Z",
+      "side": 1,
+      "message": "It seems like these should be `zassert_ok`, not `zassert_false`, even though it amounts to the same thing.",
+      "revId": "753a3323c0feab5e324de879b36af65ffcb5e5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
