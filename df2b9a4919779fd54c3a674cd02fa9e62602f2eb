@@ -22,6 +22,30 @@
       },
       "revId": "df2b9a4919779fd54c3a674cd02fa9e62602f2eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d58612_6f9fddc6",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-10T22:46:10Z",
+      "side": 1,
+      "message": "No, but I wanted to make it obvious why we aren\u0027t just providing a pointer to `resp-\u003emodel_id` to `fpc_get_hwid`. I can remove if you don\u0027t like it.",
+      "parentUuid": "b7450821_13020534",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 28
+      },
+      "revId": "df2b9a4919779fd54c3a674cd02fa9e62602f2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
