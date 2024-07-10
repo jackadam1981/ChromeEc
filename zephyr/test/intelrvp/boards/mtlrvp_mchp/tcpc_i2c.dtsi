@@ -1,0 +1,9 @@
+/* Copyright 2024 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <dt-bindings/usb_pd_tcpm.h>
+#include <dt-bindings/gpio_defines.h>
+#include "board.h"
+#include "../mtlrvp/tcpc_i2c.dtsi"
