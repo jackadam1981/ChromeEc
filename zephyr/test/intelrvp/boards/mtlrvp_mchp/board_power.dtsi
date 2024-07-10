@@ -1,0 +1,56 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <mchp_emul.dts>
+#include "mtlrvp_mchp.h"
+
+/ {
+	named-gpios {
+		compatible = "named-gpios";
+
+	        en_pp3300_a: ec-ds3-r {
+			gpios = <&gpio_000_036 21 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_EN_PP3300_A";
+			alias = "GPIO_TEMP_SENSOR_POWER";
+		}; /* GPIO025 */
+
+	        rsmrst_pwrgd: rsmrst-pwrgd {
+			gpios = <&gpio_000_036 9 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_RSMRST_ODL";
+		}; /* GPIO011 */
+
+	        ec_pch_rsmrst_l: pm-rsmrst-r-n {
+			gpios = <&gpio_040_076 12 GPIO_OUTPUT_LOW>; /* 1.8V */
+			enum-name = "GPIO_PCH_RSMRST_L";
+		}; /* GPIO054 */
+
+	        pch_slp_s0_n: pch-slp-s0-n-ec {
+			gpios = <&gpio_000_036 2 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S0_L"; /* 1.8V */
+		}; /* GPIO002 */
+
+	        ec_pch_pwrok_od: pch-pwrok-ec-r {
+			gpios = <&gpio_100_136 6 GPIO_ODR_LOW>;
+			enum-name = "GPIO_PCH_PWROK";
+		}; /* GPIO106 */
+
+	        sys_pwrok_ec: sys-pwrok-ec {
+			gpios = <&gpio_200_236 2 GPIO_ODR_LOW>;
+			enum-name = "GPIO_PCH_SYS_PWROK";
+		}; /* GPIO202 */
+
+	        sys_rst_odl: sys-rst-odl-ec {
+			gpios = <&gpio_140_176 21 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_SYS_RESET_L";
+		}; /* GPIO165 */
+
+	        all_sys_pwrgd: all-sys-pwrgd {
+			gpios = <&gpio_040_076 15 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
+		}; /* GPIO057 */
+	};
+};
+
+#include "../mtlrvp/power_signals.dtsi"
