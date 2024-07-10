@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7450821_13020534",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-10T22:43:18Z",
+      "side": 1,
+      "message": "Is this cast required?",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 28
+      },
+      "revId": "df2b9a4919779fd54c3a674cd02fa9e62602f2eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
