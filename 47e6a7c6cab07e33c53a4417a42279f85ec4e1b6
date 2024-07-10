@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c793bf_2f3c273c",
+        "filename": "common/uptime.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-10T22:55:59Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "d13f0cc4_d7f70939",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "47e6a7c6cab07e33c53a4417a42279f85ec4e1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23f228b0_b80bf040",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-10T19:34:13Z",
       "side": 1,
       "message": "You also need to add a Kconfig symbol.",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1519,
+        "endChar": 38
+      },
+      "revId": "47e6a7c6cab07e33c53a4417a42279f85ec4e1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70143d07_81cb8c25",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-10T22:55:59Z",
+      "side": 1,
+      "message": "This is an old firmware branch, I don\u0027t think kconfig is applicable..",
+      "parentUuid": "23f228b0_b80bf040",
       "range": {
         "startLine": 1519,
         "startChar": 0,
