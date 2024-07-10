@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eede247d_1a2ec2b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-07-10T06:05:19Z",
+      "side": 1,
+      "message": "test awasuki can build pass.",
+      "revId": "e7d99bd0d9a49314b38bd688cc573156e4bf7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e126c577_0cf705fa",
+        "filename": "board/drawcia/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-07-10T06:05:19Z",
+      "side": 1,
+      "message": "Should this be 18?",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e7d99bd0d9a49314b38bd688cc573156e4bf7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
