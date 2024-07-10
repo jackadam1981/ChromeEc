@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6659d6_52c5912e",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-10T11:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a84bcf_6de04a0a",
+      "revId": "4a76eb2a934752ebafcd16968890d2529a5f0cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff0bb5d7_ecea83e1",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-07-09T16:33:22Z",
       "side": 1,
       "message": "Can there be an enum for this field?",
+      "revId": "4a76eb2a934752ebafcd16968890d2529a5f0cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4390ea81_9c806764",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-10T11:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff0bb5d7_ecea83e1",
       "revId": "4a76eb2a934752ebafcd16968890d2529a5f0cd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
