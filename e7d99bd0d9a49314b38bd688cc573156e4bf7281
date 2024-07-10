@@ -39,6 +39,30 @@
       },
       "revId": "e7d99bd0d9a49314b38bd688cc573156e4bf7281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44014141_f60128af",
+        "filename": "board/drawcia/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2024-07-10T06:16:08Z",
+      "side": 1,
+      "message": "This example is suitable for platform with KSO0~KSO16 (a total of 17 scan output pins)",
+      "parentUuid": "e126c577_0cf705fa",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e7d99bd0d9a49314b38bd688cc573156e4bf7281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
