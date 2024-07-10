@@ -52,5 +52,9 @@ config TEST_PROJECT_BOARD_ID_VAL
 	default 1051 if TEST_PROJECT_MTLRVPP_COMMON
 	help
 	  Value to be used for board ID test.
+config TEST_PROJECT_TCPC
+	bool "Run tests for tcpc.c"
+	help
+	  Include tcpc.c into the binary and test its functions.
 
 source "Kconfig.zephyr"
