@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42190ac_0fd63f09",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T15:40:13Z",
+      "side": 1,
+      "message": "Don\u0027t update the copyright date for existing files.  Only update for new files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d582b120_af81388d",
+        "filename": "zephyr/program/brox/jubilant/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T15:40:13Z",
+      "side": 1,
+      "message": "Move this change into a separate CL.  The commit message should justify why these limits are changed on jubilant.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8075c8_483723b6",
+        "filename": "zephyr/program/brox/jubilant/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T15:40:13Z",
+      "side": 1,
+      "message": "Move this into the same CL that adds battery support to jubilant.",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c228d1_42310abc",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T15:40:13Z",
+      "side": 1,
+      "message": "Update the GPIOs in a separate CL.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebf34b5_f9473aab",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-10T15:40:13Z",
+      "side": 1,
+      "message": "Update the battery support and temperature sensor changes in a separate CL.\n\nLimit this CL to getting the jubilant project building.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
