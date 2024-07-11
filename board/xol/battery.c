@@ -415,7 +415,8 @@ int charger_profile_override(struct charge_state_data *curr)
 					data_v = bat_cell_ovp_volt;
 			}
 
-			if (curr->requested_current != data_c) {
+			if (curr->requested_current != data_c &&
+			    curr->requested_current != 0) {
 				curr->requested_current = data_c;
 			}
 			if (curr->requested_voltage != data_v) {
