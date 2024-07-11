@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94389c4_37b29441",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-11T19:44:25Z",
+      "side": 1,
+      "message": "Can this use TEST_WAIT_FOR instead?\n```\nhelper_get_ccom(emul)\n    enum ccom_t ccom;\n    zassert_ok(emul_pdc_get_ccom(emul, \u0026ccom);\n    return ccom;\n    \nTEST_WAIT_FOR(expected \u003d\u003d helper_get_ccom(), PDC_TEST_TIMEOUNT);\n```",
+      "range": {
+        "startLine": 1364,
+        "startChar": 0,
+        "endLine": 1377,
+        "endChar": 0
+      },
+      "revId": "e1e0380449f6a8dd71838386081de95eda779156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4879783_ead45858",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-11T19:44:25Z",
+      "side": 1,
+      "message": "Check return value.",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1390,
+        "endChar": 33
+      },
+      "revId": "e1e0380449f6a8dd71838386081de95eda779156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
