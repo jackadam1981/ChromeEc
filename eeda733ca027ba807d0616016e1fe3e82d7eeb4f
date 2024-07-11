@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac51a807_8615a0de",
+        "filename": "firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-11T09:16:22Z",
+      "side": 1,
+      "message": "Just tested the CL on my end, you can\u0027t use rmdir on non empty directories, so we fail exactly in this line",
+      "revId": "eeda733ca027ba807d0616016e1fe3e82d7eeb4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
