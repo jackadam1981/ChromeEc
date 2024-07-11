@@ -274,6 +274,12 @@ endif
 include test/build.mk
 include util/build.mk
 
+ifndef CROSS_COMPILE_arch
+$(shell ../../../chromite/contrib/sdk_extractor --install-path \
+${TOOLCHAIN_INSTALL_DIR} --toolchain \
+${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH})
+endif
+
 includes+=$(includes-y)
 
 # Wrapper for fetching all the sources relevant to this build
@@ -367,6 +373,7 @@ deps := $(rw-deps) $(deps-y)
 endif
 
 .PHONY: ro rw
+
 $(config): $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
