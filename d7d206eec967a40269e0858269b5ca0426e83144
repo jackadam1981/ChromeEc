@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44280eb2_c4995a09",
+        "filename": "zephyr/program/brox/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-11T01:44:03Z",
+      "side": 1,
+      "message": "keep default,",
+      "parentUuid": "f42190ac_0fd63f09",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d582b120_af81388d",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-10T15:40:13Z",
       "side": 1,
       "message": "Move this change into a separate CL.  The commit message should justify why these limits are changed on jubilant.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ae5438_19f63856",
+        "filename": "zephyr/program/brox/jubilant/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-11T01:44:03Z",
+      "side": 1,
+      "message": "keep default,",
+      "parentUuid": "d582b120_af81388d",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c157d1cf_13f47152",
+        "filename": "zephyr/program/brox/jubilant/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-11T01:44:03Z",
+      "side": 1,
+      "message": "keep default,",
+      "parentUuid": "2d8075c8_483723b6",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3c228d1_42310abc",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf08313b_0195ca5c",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-11T01:44:03Z",
+      "side": 1,
+      "message": "keep default,",
+      "parentUuid": "e3c228d1_42310abc",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ebf34b5_f9473aab",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-07-10T15:40:13Z",
       "side": 1,
       "message": "Update the battery support and temperature sensor changes in a separate CL.\n\nLimit this CL to getting the jubilant project building.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "d7d206eec967a40269e0858269b5ca0426e83144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6cc7250_b2a1e8c0",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-11T01:44:03Z",
+      "side": 1,
+      "message": "keep default,",
+      "parentUuid": "0ebf34b5_f9473aab",
       "range": {
         "startLine": 27,
         "startChar": 0,
