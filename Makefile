@@ -90,8 +90,10 @@ include Makefile.toolchain
 
 # Define the traditional first target. The dependencies of this are near the
 # bottom as they can be altered by chip and board files.
-.PHONY: all
+.PHONY: all sdk
 all:
+
+-include sdk
 
 # Returns the opposite of a configuration variable
 # y  ->
@@ -483,8 +485,15 @@ rw-deps := $(addsuffix .d, $(rw-objs))
 
 deps := $(ro-deps) $(rw-deps) $(deps-y)
 
-.PHONY: ro rw
-$(config): $(out)/$(PROJECT).bin
+.PHONY: ro rw sdk
+ifndef CROSS_COMPILE_arch
+sdk:
+	@../../../chromite/contrib/sdk_extractor --install-path \
+	${TOOLCHAIN_INSTALL_DIR} --toolchain \
+	${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH}
+endif
+
+$(config): sdk $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
 def_all_deps:=$(config) $(PROJECT_EXTRA) notice rw size utils
