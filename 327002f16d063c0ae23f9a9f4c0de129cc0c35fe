@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df6c358_c5ed55d2",
+        "filename": "common/usb_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-11T05:46:19Z",
+      "side": 1,
+      "message": "Ah I think this is a bug. We should always use system_get_image_copy()\n\n```suggestion\n\t\t\tenum ec_image active_slot \u003d system_get_image_copy();\n```",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 6
+      },
+      "revId": "327002f16d063c0ae23f9a9f4c0de129cc0c35fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
