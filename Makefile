@@ -145,6 +145,12 @@ include chip/$(CHIP)/build.mk
 # CHIP build file.
 include core/$(CORE)/toolchain.mk
 
+ifndef CROSS_COMPILE_arch
+$(shell ../../../chromite/scripts/setup_firmware_toolchain --install-path \
+${TOOLCHAIN_INSTALL_DIR} --toolchain \
+${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH})
+endif
+
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
