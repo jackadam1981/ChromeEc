@@ -21,7 +21,11 @@ CFLAGS_CPU+=-Oz		# Like -Os (and thus -O2), but reduces code size further.
 # b/256193799: Reduce inline threshold to decrease code size.
 CFLAGS_CPU+=-Wl,-mllvm -Wl,-inline-threshold=-10
 # Link compiler-rt when using clang, so clang finds the builtins it provides.
-LDFLAGS_EXTRA+=-lclang_rt.builtins-armv6m
+LDFLAGS_EXTRA:="$(shell $(CC) --print-resource-dir\
+	)/lib/baremetal/libclang_rt.builtins-armv6m.a"
+ifneq ($(.SHELLSTATUS),0)
+$(error Could not determine path to libclang_rt.builtins)
+endif
 else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
