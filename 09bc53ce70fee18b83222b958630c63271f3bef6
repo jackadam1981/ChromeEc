@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccb8ac6c_3077627f",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/board_power.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T22:34:26Z",
+      "side": 1,
+      "message": "can\u0027t make the file common since the board.h files are separate for npcx and mchp variants. Also, in case of common file, we would have to include mchp_emul.dts and npcx_emul.dts both for any variant.",
+      "parentUuid": "017d52d8_ef10c6bc",
+      "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9201ec45_1a0862e6",
         "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/mtlrvp_mchp.h",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-11T19:39:04Z",
       "side": 1,
       "message": "name it as board.h",
+      "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a5f9d8_e2230d71",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/mtlrvp_mchp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T22:34:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9201ec45_1a0862e6",
       "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2024-07-11T19:39:04Z",
       "side": 1,
       "message": "board.h\nso that this file can be common",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13cb91fc_c64b2785",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/board_power.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T22:34:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3b4343ce_197fb756",
       "range": {
         "startLine": 7,
         "startChar": 9,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89339da1_54603ba0",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/board_power.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T22:34:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "96a14f55_033b3108",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4fb9f67_ed6dd56d",
@@ -94,6 +178,24 @@
       "writtenOn": "2024-07-11T19:39:04Z",
       "side": 1,
       "message": "name it as board.h",
+      "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a215d0af_098988b8",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/mtlrvp_npcx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T22:34:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d4fb9f67_ed6dd56d",
       "revId": "09bc53ce70fee18b83222b958630c63271f3bef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
