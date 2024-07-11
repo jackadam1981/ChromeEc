@@ -103,3 +103,34 @@ config USB_DC_TOUCHPAD_HID_NUM
 	  The format of hid instance name is name_n, where the name can be
 	  configured by CONFIG_USB_HID_DEVICE_NAME and n(hid number) should be in
 	  the range of 0 to (CONFIG_USB_HID_DEVICE_COUNT - 1).
+
+config USB_GDUMMY_DEVICE_COUNT
+	int "Set the Google dummy device number"
+	default 0 if CROS_EC_RW
+	default 0 if !USB_DC_HID_KEYBOARD && !USB_DC_HID_TOUCHPAD
+	default 2 if USB_DC_HID_KEYBOARD && USB_DC_HID_TOUCHPAD
+	default 1
+	help
+	  The google dummy device number.
+
+if CROS_EC_RO
+
+config USB_DEVICE_HID
+	default n
+
+config USB_HID_DEVICE_COUNT
+	default 0
+
+endif #CROS_EC_RO
+
+if CROS_EC_RW
+
+config USB_HID_DEVICE_COUNT
+	default 0 if !USB_DC_HID_KEYBOARD && !USB_DC_HID_TOUCHPAD
+	default 2 if USB_DC_HID_KEYBOARD && USB_DC_HID_TOUCHPAD
+	default 1
+
+config USB_DEVICE_HID
+	default y if USB_DC_HID_KEYBOARD || USB_DC_HID_TOUCHPAD
+
+endif # CROS_EC_RW
