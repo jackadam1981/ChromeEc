@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "deafbe5c75cdf732acbdab1c64259ef7d0775d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf63d8b_5eaf2cec",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-11T23:15:54Z",
+      "side": 1,
+      "message": "Looks like there were some whitespace changes on these lines. If it wasn\u0027t intentional, can you remove it?",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 32
+      },
+      "revId": "deafbe5c75cdf732acbdab1c64259ef7d0775d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
