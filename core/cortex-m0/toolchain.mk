@@ -4,7 +4,17 @@
 
 ifeq ($(cc-name),gcc)
 # coreboot sdk
-CROSS_COMPILE_ARM_DEFAULT:=/opt/coreboot-sdk/bin/arm-eabi-
+TOOLCHAIN=arm-eabi
+TOOLCHAIN_VERSION=11.3.0-r2
+TOOLCHAIN_HASH=ee6ffc5a0f85d11c4a9f1c88f7d0cbd1e142a19e
+
+TOOLCHAIN_INSTALL_PATH=${TOOLCHAIN_INSTALL_DIR}/${TOOLCHAIN}/${TOOLCHAIN_VERSION}/${TOOLCHAIN_HASH}
+
+ifndef CROSS_COMPILE_arm
+$(shell ./sdk_extractor.py --install-path ${TOOLCHAIN_INSTALL_DIR} --toolchain ${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH})
+endif
+
+CROSS_COMPILE_ARM_DEFAULT:=${TOOLCHAIN_INSTALL_PATH}/bin/${TOOLCHAIN}-
 else
 # llvm sdk
 CROSS_COMPILE_ARM_DEFAULT:=arm-none-eabi-

@@ -282,6 +282,8 @@ HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
 		  $(if $(TEST_UBSAN), ${UBSAN_FLAGS}) \
 		  $(if $(TEST_FUZZ), -fsanitize=fuzzer)
 
+TOOLCHAIN_INSTALL_DIR=build/coreboot-sdk
+
 # utility function to provide overridable defaults
 # $1: name of variable to set
 # $2: first default to use

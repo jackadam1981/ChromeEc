@@ -3,7 +3,17 @@
 # found in the LICENSE file.
 
 # Set coreboot-sdk as the default toolchain for nds32
-NDS32_DEFAULT_COMPILE=/opt/coreboot-sdk/bin/nds32le-elf-
+TOOLCHAIN=nds32le-elf
+TOOLCHAIN_VERSION=11.3.0-r2
+TOOLCHAIN_HASH=c41e5fb8d49f77a8a6db8b12555585135e9fbd8f
+
+TOOLCHAIN_INSTALL_PATH=${TOOLCHAIN_INSTALL_DIR}/${TOOLCHAIN}/${TOOLCHAIN_VERSION}/${TOOLCHAIN_HASH}
+
+ifndef CROSS_COMPILE_nds32
+$(shell ./sdk_extractor.py --install-path ${TOOLCHAIN_INSTALL_DIR} --toolchain ${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH})
+endif
+
+NDS32_DEFAULT_COMPILE:=${TOOLCHAIN_INSTALL_PATH}/bin/${TOOLCHAIN}-
 
 # Select Andes bare-metal toolchain
 $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_nds32),$(NDS32_DEFAULT_COMPILE))
