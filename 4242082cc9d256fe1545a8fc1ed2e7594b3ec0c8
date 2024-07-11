@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "548a264a_c001a140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-11T16:46:25Z",
+      "side": 1,
+      "message": "PTAL, I think this and crrev.com/c/5675199 together will allow the build to succeed with the new LLVM.",
+      "revId": "4242082cc9d256fe1545a8fc1ed2e7594b3ec0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f04a1d_fa9f9f3f",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-11T16:46:25Z",
+      "side": 1,
+      "message": "Splitting the line here to avoid going over the 80-character limit.\n\nI\u0027ve tested that the sequence \u003cbackslash\u003e\u003cnewline\u003e\u003ctab\u003e\u003crparen\u003e results in the string we want (that is, nothing between the output of `clang --print-resource-dir` and the `/lib/...` string).\n\n`:\u003d` is used here so that the shell command is evaluated immediately, which is necessary to make the check on `$(.SHELLSTATUS)` work (with `\u003d`, the shell is not invoked until later, so the value of `$(.SHELLSTATUS)` on the next line does not reflect whether or not that invocation would actually succeed).",
+      "revId": "4242082cc9d256fe1545a8fc1ed2e7594b3ec0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69a8ede_3e5bd987",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-11T16:46:25Z",
+      "side": 1,
+      "message": "To avoid doing the wrong thing if `clang --print-resource-dir` fails (e.g. using `/lib/baremetal/...` as the path to the library), we error here if the command failed. I\u0027ve tested that this works by teporarily doing `--xprint-resource-dir`, which results (as intended) in:\n\n```\n * Building FPMCU unittest binary for targets: bloonchipper                                                                             \nmake -j128 BOARD\u003dbloonchipper ALLOW_CONFIG\u003d1 TOUCHPAD_FW_DIR\u003d/build/${BOARD}/firmware clean \nclang: error: unknown argument \u0027--xprint-resource-dir\u0027; did you mean \u0027--print-resource-dir\u0027?\nclang: error: no input files   \ncore/cortex-m/build.mk:34: *** Could not determine path to libclang_rt.builtins.  Stop.                                                                                                                                                                                                  \n * ERROR: chromeos-base/chromeos-fpmcu-bloonchipper-unittests-9999::chromiumos failed (compile phase):\n *   emake failed                                                                                                                       \n```",
+      "revId": "4242082cc9d256fe1545a8fc1ed2e7594b3ec0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
