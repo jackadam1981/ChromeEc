@@ -6,9 +6,22 @@
 # Minute-IA core build
 #
 
+# coreboot sdk
+TOOLCHAIN=i386-elf
+TOOLCHAIN_VERSION=11.3.0-r2
+TOOLCHAIN_HASH=fb03ed1518de7dfd962f6e7cb95e1f7ef3e5e0f0
+
+TOOLCHAIN_INSTALL_PATH=${TOOLCHAIN_INSTALL_DIR}/${TOOLCHAIN}
+
+ifdef CROSS_COMPILE_i386
+CROSS_COMPILE_arch:=x86
+endif
+
+CROSS_COMPILE_X86_DEFAULT:=${TOOLCHAIN_INSTALL_PATH}/bin/${TOOLCHAIN}-
+
 # Select Minute-IA bare-metal toolchain
 $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_i386),\
-	/opt/coreboot-sdk/bin/i386-elf-)
+	$(CROSS_COMPILE_X86_DEFAULT))
 
 # FPU compilation flags
 CFLAGS_FPU-$(CONFIG_FPU)=
