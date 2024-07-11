@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45fdf6f2_4aaa92e9",
+        "filename": "zephyr/dts/mchp_emul.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T18:37:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6cfbc2f8_6d1b93cf",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faf0e0ce_8153dc20",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-10T16:04:18Z",
       "side": 1,
       "message": "try make a common file for all the variants \n\nrefer these:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/include/board.h\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/intelrvp/ptlrvp/power_signals.dtsi",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb04df06_5123381c",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/board_power.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T18:37:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "faf0e0ce_8153dc20",
       "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a45825c_5d551313",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/mtlrvp_npcx.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T18:37:35Z",
+      "side": 1,
+      "message": "not required for npcx for this patch too. Removed.",
+      "parentUuid": "47943523_5ee8eea4",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db27588e_359937ae",
         "filename": "zephyr/test/power/mtl_power.c",
         "patchSetId": 5
@@ -65,6 +119,24 @@
       "writtenOn": "2024-07-10T16:04:18Z",
       "side": 1,
       "message": "may be rename as meteorlake.c",
+      "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "948fa54a_4c65cbda",
+        "filename": "zephyr/test/power/mtl_power.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-11T18:37:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "db27588e_359937ae",
       "revId": "f4bc60e834ecaaade2eccf3287d3ebed996367cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
