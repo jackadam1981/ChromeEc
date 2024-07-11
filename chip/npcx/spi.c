@@ -25,9 +25,6 @@
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ##args)
 #endif
 
-/* SPI IP as SPI controller */
-#define SPI_CLK 8000000
-
 static struct mutex spi_lock;
 
 /**
@@ -55,8 +52,8 @@ void spi_freq_changed(void)
 	uint8_t prescaler_divider = 0;
 
 	/* Set clock prescaler divider to SPI module*/
-	prescaler_divider =
-		(uint8_t)((uint32_t)clock_get_apb2_freq() / 2 / SPI_CLK);
+	prescaler_divider = (spi_devices[0].div + 1) / 2;;
+
 	if (prescaler_divider >= 1)
 		prescaler_divider = prescaler_divider - 1;
 	if (prescaler_divider > 0x7F)
