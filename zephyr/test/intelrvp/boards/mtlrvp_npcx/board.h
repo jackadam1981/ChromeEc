@@ -15,5 +15,6 @@
 #define PWR_EC_PCH_SYS_PWROK &gpiof 5
 #define PWR_SYS_RST &gpioc 5
 #define PWR_ALL_SYS_PWRGD &gpio7 0
+#define STD_ADP_PRSNT &gpioc 6
 
 #endif /* MTLRVP_NPCX_BOARD_H_ */
