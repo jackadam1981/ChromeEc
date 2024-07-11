@@ -15,6 +15,7 @@
 #define PWR_EC_PCH_SYS_PWROK &gpiof 5
 #define PWR_SYS_RST &gpioc 5
 #define PWR_ALL_SYS_PWRGD &gpio7 0
+#define STD_ADP_PRSNT &gpioc 6
 
 #define GPIO_CCD_MODE_ODL &gpio9 2
 #define GPIO_USBC_TCPC_ALRT_P0 &gpio4 0
