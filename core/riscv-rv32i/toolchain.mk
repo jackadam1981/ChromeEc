@@ -4,4 +4,4 @@
 
 # Select RISC-V bare-metal toolchain
 $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_riscv),\
-	/opt/coreboot-sdk/bin/riscv64-elf-)
+	coreboot-sdk-riscv)

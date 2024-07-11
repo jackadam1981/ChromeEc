@@ -4,7 +4,7 @@
 
 ifeq ($(cc-name),gcc)
 # coreboot sdk
-CROSS_COMPILE_X86_DEFAULT:=/opt/coreboot-sdk/bin/i386-elf-
+CROSS_COMPILE_X86_DEFAULT:=coreboot-sdk-i386-elf
 else
 # llvm sdk
 CROSS_COMPILE_X86_DEFAULT:=
