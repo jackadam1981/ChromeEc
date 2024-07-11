@@ -6,10 +6,26 @@
 # Cortex-M4 core OS files build
 #
 
+# coreboot sdk
+TOOLCHAIN=arm-eabi
+TOOLCHAIN_VERSION=11.3.0-r2
+TOOLCHAIN_HASH=ee6ffc5a0f85d11c4a9f1c88f7d0cbd1e142a19e
+
+TOOLCHAIN_INSTALL_PATH=${TOOLCHAIN_INSTALL_DIR}/${TOOLCHAIN}
+
+ifdef CROSS_COMPILE_arm
+CROSS_COMPILE_arch:=arm
+endif
+
+CROSS_COMPILE_ARM_DEFAULT:=${TOOLCHAIN_INSTALL_PATH}/bin/${TOOLCHAIN}-
+TOOLCHAIN=arm-eabi
+TOOLCHAIN_VERSION=11.3.0-r2
+TOOLCHAIN_HASH=ee6ffc5a0f85d11c4a9f1c88f7d0cbd1e142a19e
+
 # Use coreboot-sdk
 $(call set-option,CROSS_COMPILE,\
 	$(CROSS_COMPILE_arm),\
-	/opt/coreboot-sdk/bin/arm-eabi-)
+	$(CROSS_COMPILE_ARM_DEFAULT))
 # Force gcc compiler
 cc-name:=gcc
 # FPU compilation flags
