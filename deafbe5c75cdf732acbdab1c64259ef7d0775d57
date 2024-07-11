@@ -39,6 +39,30 @@
       },
       "revId": "deafbe5c75cdf732acbdab1c64259ef7d0775d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5f5ae7_5e78f547",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-11T23:31:39Z",
+      "side": 1,
+      "message": "Actually, maybe you meant to add `ec` in this line like you did on line 267? It won\u0027t affect the functionality since it\u0027s just logging/printing, but we should keep the logging in sync with the command.",
+      "parentUuid": "daf63d8b_5eaf2cec",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 32
+      },
+      "revId": "deafbe5c75cdf732acbdab1c64259ef7d0775d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
