@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "330c75c6_48cd37c1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-11T16:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ddb3498_9c1aeaa0",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7ab4318_fd62e8a6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-07-09T19:36:23Z",
       "side": 1,
       "message": "Nit: This logic might be slightly easier to follow if it was inside a function like `bool should_swap_to_source(...)`. Then the guard clauses could `return false`. The call site could be like\n```\nif (should_swap_to_source())\n    pdc_power_mgmt_request_power_swap_intern();\n```",
+      "range": {
+        "startLine": 1190,
+        "startChar": 0,
+        "endLine": 1207,
+        "endChar": 3
+      },
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f077501b_573ca2c8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-11T16:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7ab4318_fd62e8a6",
       "range": {
         "startLine": 1190,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc52573_dbb957d7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-11T16:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca85623_5b0d05e4",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f519e32_696dcf55",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c26551e_e07c20eb",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-11T16:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f519e32_696dcf55",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9747552d_5514c3ee",
@@ -88,6 +166,24 @@
       "writtenOn": "2024-07-09T19:36:23Z",
       "side": 1,
       "message": "There should probably be a comment _somewhere_ to the effect that power state hooks only change flags, and that should remain an invariant. This wouldn\u0027t be the worst place to do that, but I don\u0027t have a strong opinion on location.",
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63518587_719a9805",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2139,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-11T16:32:31Z",
+      "side": 1,
+      "message": "Added an extra comment above the policy handlers",
+      "parentUuid": "9747552d_5514c3ee",
       "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -200,6 +296,30 @@
       "side": 1,
       "message": "I would think that\u0027s probably what we want to happen.",
       "parentUuid": "5a0609b3_99fa78de",
+      "range": {
+        "startLine": 2181,
+        "startChar": 2,
+        "endLine": 2181,
+        "endChar": 54
+      },
+      "revId": "aba3739d4f090171566d00dfefb58a140e1e2c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21f73a9_bffa8779",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-11T16:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd898d89_14728f27",
       "range": {
         "startLine": 2181,
         "startChar": 2,
