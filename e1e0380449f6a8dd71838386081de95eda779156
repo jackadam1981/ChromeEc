@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df755223_0baf2e21",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-11T22:13:10Z",
+      "side": 1,
+      "message": "I see this copies the pattern of other tests.  I\u0027m okay with this.",
+      "parentUuid": "f94389c4_37b29441",
+      "range": {
+        "startLine": 1364,
+        "startChar": 0,
+        "endLine": 1377,
+        "endChar": 0
+      },
+      "revId": "e1e0380449f6a8dd71838386081de95eda779156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4879783_ead45858",
         "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
         "patchSetId": 2
