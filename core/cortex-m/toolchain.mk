@@ -4,7 +4,7 @@
 
 ifeq ($(cc-name),gcc)
 # coreboot sdk
-CROSS_COMPILE_ARM_DEFAULT:=/opt/coreboot-sdk/bin/arm-eabi-
+CROSS_COMPILE_ARM_DEFAULT:=coreboot-sdk-arm-eabi
 else
 # llvm sdk
 CROSS_COMPILE_ARM_DEFAULT:=armv7m-cros-eabi-
