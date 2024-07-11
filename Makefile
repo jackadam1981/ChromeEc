@@ -90,8 +90,10 @@ include Makefile.toolchain
 
 # Define the traditional first target. The dependencies of this are near the
 # bottom as they can be altered by chip and board files.
-.PHONY: all
+.PHONY: all sdk
 all:
+
+-include sdk
 
 # Returns the opposite of a configuration variable
 # y  ->
@@ -144,6 +146,12 @@ include chip/$(CHIP)/build.mk
 # is set in the CHIP build file, so this include must come after including the
 # CHIP build file.
 include core/$(CORE)/toolchain.mk
+
+ifndef CROSS_COMPILE_arch
+$(shell ../../../chromite/contrib/sdk_extractor --install-path \
+${TOOLCHAIN_INSTALL_DIR} --toolchain \
+${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH})
+endif
 
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
