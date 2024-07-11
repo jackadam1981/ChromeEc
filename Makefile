@@ -145,6 +145,13 @@ include chip/$(CHIP)/build.mk
 # CHIP build file.
 include core/$(CORE)/toolchain.mk
 
+ifndef CROSS_COMPILE_arch
+BASE_TOOLCHAIN_URI=''
+_:=$(shell ${SCRIPTS_DIR}/setup_firmware_toolchain --install-path \
+${TOOLCHAIN_INSTALL_DIR}/${TOOLCHAIN}/${TOOLCHAIN_VERSION}/${TOOLCHAIN_HASH} \
+https://storage.googleapis.com/chromiumos-sdk/toolchains/coreboot-sdk-${TOOLCHAIN}/${TOOLCHAIN_VERSION}/${TOOLCHAIN_HASH}.tar.zst)
+endif
+
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
