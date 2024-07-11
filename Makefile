@@ -145,6 +145,19 @@ include chip/$(CHIP)/build.mk
 # CHIP build file.
 include core/$(CORE)/toolchain.mk
 
+CROSS_COMPILE_TARGET_arm:=arm-eabi
+CROSS_COMPILE_TARGET_riscv:=riscv64-elf
+CROSS_COMPILE_TARGET_x86:=i386-elf
+
+ifneq (,$(USE_COREBOOT_SDK))
+ifneq (,$(COREBOOT_SDK_ROOT_$(ARCH)))
+CROSS_COMPILE:=$(COREBOOT_SDK_ROOT_$(ARCH))/bin/$(CROSS_COMPILE_TARGET_$(ARCH))-
+else
+CROSS_COMPILE:=$(shell bazel --project fwsdk run \
+	@coreboot-sdk-$(COREBOOT_TOOLCHAIN)//:get_path)/bin/$(CROSS_COMPILE)-
+endif
+endif
+
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
