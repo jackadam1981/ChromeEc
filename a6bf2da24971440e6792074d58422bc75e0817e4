@@ -16,6 +16,24 @@
       "message": "Do we want to rename the brox-sku4 to brox-ti-pdc instead of creating a new one ?",
       "revId": "a6bf2da24971440e6792074d58422bc75e0817e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6ca25e_a95a48d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-07-11T18:49:43Z",
+      "side": 1,
+      "message": "Re built without this, using the brox-sku4 ec and things seemed to do the right thing.  Don\u0027t need this CL.  It snuck in as an initial debugging attempt.",
+      "parentUuid": "7888f319_73ae6f60",
+      "revId": "a6bf2da24971440e6792074d58422bc75e0817e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
