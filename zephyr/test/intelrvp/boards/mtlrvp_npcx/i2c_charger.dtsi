@@ -3,6 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include <mchp_emul.dts>
+#include <npcx_emul.dts>
 #include "board.h"
 #include "../mtlrvp/i2c_charger.dtsi"
