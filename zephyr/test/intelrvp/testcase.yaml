@@ -56,7 +56,7 @@ tests:
       - boards/mtlrvp_npcx/tcpc_i2c.dtsi
       - boards/mtlrvp/tcpc_interrupts.dtsi
       - boards/mtlrvp/tcpc_ioex.dtsi
-      - boards/mtlrvp/i2c_charger.dtsi
+      - boards/mtlrvp_npcx/i2c_charger.dtsi
       - boards/mtlrvp/usbc.dtsi
     extra_configs:
       - CONFIG_PLATFORM_EC=y
@@ -70,6 +70,29 @@ tests:
       - CONFIG_PLATFORM_EC_USBC=y
       - CONFIG_PLATFORM_EC_USBC_PPC=y
       - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
+
+  intelrvp.mtlrvp_npcx.dc_jack:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp/interrupts.dtsi
+      - boards/mtlrvp/battery.dtsi
+      - boards/mtlrvp_npcx/i2c_charger.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_NPCX=y
+      - CONFIG_TEST_PROJECT_DC_JACK=y
+      - CONFIG_PLATFORM_EC_PD_MAX_POWER_MW=100000
+      - CONFIG_GPIO_EMUL=y
+      - CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT=y
+      - CONFIG_I2C_EMUL=y
+      - CONFIG_PLATFORM_EC_HOOKS=y
+      - CONFIG_PLATFORM_EC_HOSTCMD=y
+      - CONFIG_PLATFORM_EC_CHARGE_MANAGER=n
+      - CONFIG_PLATFORM_EC_SWITCH=n
+      - CONFIG_PLATFORM_EC_USBC=n
+      - CONFIG_PLATFORM_EC_VBOOT_HASH=n
+      - CONFIG_PLATFORM_EC_CHARGER_SENSE_RESISTOR=5
+      - CONFIG_PLATFORM_EC_CHARGER_SENSE_RESISTOR_AC=10
 
   intelrvp.mtlrvp_mchp.board_id:
     extra_dtc_overlay_files:
@@ -86,7 +109,7 @@ tests:
       - boards/native_sim.overlay
       - boards/mtlrvp/usbc.dtsi
       - boards/mtlrvp/tcpc_ioex.dtsi
-      - boards/mtlrvp/i2c_charger.dtsi
+      - boards/mtlrvp_mchp/i2c_charger.dtsi
       - boards/mtlrvp_mchp/mtlrvp_mchp.dtsi
       - boards/mtlrvp_mchp/gpio.dtsi
     extra_configs:
@@ -103,3 +126,27 @@ tests:
       - CONFIG_PLATFORM_EC_USB_PD_DISCHARGE_PPC=y
       - CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG=y
       - CONFIG_PLATFORM_EC_TCPC_INTERRUPT=n
+
+  intelrvp.mtlrvp_mchp.dc_jack:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/mtlrvp/battery.dtsi
+      - boards/mtlrvp/tcpc_ioex.dtsi
+      - boards/mtlrvp_mchp/i2c_charger.dtsi
+      - boards/mtlrvp/interrupts.dtsi
+    extra_configs:
+      - CONFIG_PLATFORM_EC=y
+      - CONFIG_TEST_PROJECT_MTLRVPP_MCHP=y
+      - CONFIG_TEST_PROJECT_DC_JACK=y
+      - CONFIG_PLATFORM_EC_PD_MAX_POWER_MW=100000
+      - CONFIG_GPIO_EMUL=y
+      - CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT=y
+      - CONFIG_I2C_EMUL=y
+      - CONFIG_PLATFORM_EC_HOOKS=y
+      - CONFIG_PLATFORM_EC_HOSTCMD=y
+      - CONFIG_PLATFORM_EC_CHARGE_MANAGER=n
+      - CONFIG_PLATFORM_EC_SWITCH=n
+      - CONFIG_PLATFORM_EC_USBC=n
+      - CONFIG_PLATFORM_EC_VBOOT_HASH=n
+      - CONFIG_PLATFORM_EC_CHARGER_SENSE_RESISTOR=5
+      - CONFIG_PLATFORM_EC_CHARGER_SENSE_RESISTOR_AC=10
