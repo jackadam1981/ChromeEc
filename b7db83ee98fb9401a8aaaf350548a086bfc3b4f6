@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0facc0_7ca7a92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-11T21:08:31Z",
+      "side": 1,
+      "message": "This fails with error:\n\n```\nld.lld: error: section .header virtual address range overlaps with .text\n\u003e\u003e\u003e .header range is [0x10058000, 0x1005803F]\n\u003e\u003e\u003e .text range is [0x10058000, 0x10062743]\n```\n\nThe linker script I am looking at has\n\n```\n FLASH_HDR (rx) : ORIGIN \u003d (0x10058000 + (0x0)), LENGTH \u003d 0x40\n FLASH (rx) : ORIGIN \u003d (0x10058000 + (0)) + 0x40, LENGTH \u003d (128 * 1024 - 0x1000) - 0x40\n...\n CDRAM (rx) : ORIGIN \u003d 0x10058000 + (0), LENGTH \u003d (128 * 1024 - 0x1000)\n \n...\n .header { ... } \u003e FLASH_HDR\n .text { ... } \u003e CDRAM AT \u003e FLASH\n```\n\nIf I\u0027m reading that correctly, we have FLASH_HDR starting at 0x10058000, FLASH starting at 0x10058040, and CDRAM starting at 0x10058000 (same as FLASH_HDR). \n\nBased on this, .header and .text both have the same virtual address of 0x10058000, and because both have nonzero length, the virtual address ranges overlap. But this doesn\u0027t seem like a new thing or something that would be caused by this CL.",
+      "revId": "b7db83ee98fb9401a8aaaf350548a086bfc3b4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
