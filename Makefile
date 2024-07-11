@@ -330,8 +330,15 @@ rw-deps := $(addsuffix .d, $(rw-objs))
 
 deps := $(ro-deps) $(rw-deps) $(deps-y)
 
-.PHONY: ro rw
-$(config): $(out)/$(PROJECT).bin
+.PHONY: ro rwsdk
+ifndef CROSS_COMPILE_arch
+sdk:
+	@../../../chromite/contrib/sdk_extractor --install-path \
+	${TOOLCHAIN_INSTALL_DIR} --toolchain \
+	${TOOLCHAIN}:${TOOLCHAIN_VERSION}:${TOOLCHAIN_HASH}
+endif
+
+$(config): sdk $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
 def_all_deps:=$(config) $(PROJECT_EXTRA) notice rw size
