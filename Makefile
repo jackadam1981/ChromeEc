@@ -145,6 +145,12 @@ include chip/$(CHIP)/build.mk
 # CHIP build file.
 include core/$(CORE)/toolchain.mk
 
+ifdef CROSS_COMPILE_FW_TOOLCHAIN
+_:=$(shell ${SCRIPTS_DIR}/setup_firmware_toolchain --install-path \
+${TOOLCHAIN_INSTALL_BASE} \
+https://storage.googleapis.com/${TOOLCHAIN_BASE_URI}${TOOLCHAIN_PATH}.tar.zst)
+endif
+
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
