@@ -34,6 +34,24 @@
       "parentUuid": "2c0facc0_7ca7a92b",
       "revId": "b7db83ee98fb9401a8aaaf350548a086bfc3b4f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a3c3f6_5a9e6b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-11T21:31:40Z",
+      "side": 1,
+      "message": "Ah. The problem is that I\u0027ve replaced `+\u003d` with `:\u003d`, so the `-Wl,--no-check-sections` is discarded.",
+      "parentUuid": "f4a6744a_aeed8327",
+      "revId": "b7db83ee98fb9401a8aaaf350548a086bfc3b4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
