@@ -79,6 +79,23 @@
       "message": "The build failure on the bot is probably caused by this change. It will probably need the same fix as crrev.com/c/5618850",
       "revId": "9319a26da6c9886763ab2c26f4a465a3e7c3d46f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74ba191_90b46c60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-11T16:48:18Z",
+      "side": 1,
+      "message": "After some further testing, it appears that we actually do need this. See https://issuetracker.google.com/issues/346309204#comment26 for the explanation, and crrev.com/c/5696485 for the fix.",
+      "revId": "9319a26da6c9886763ab2c26f4a465a3e7c3d46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
