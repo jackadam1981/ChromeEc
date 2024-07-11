@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45a0943_80c50fbb",
+        "filename": "zephyr/program/brox/jubilant/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-11T20:35:27Z",
+      "side": 1,
+      "message": "Rename this file to temp_sensors.dtsi",
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af76c9b7_e8695bf7",
+        "filename": "zephyr/program/brox/jubilant/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-11T20:35:27Z",
+      "side": 1,
+      "message": "These nodes are unchanged from the brox baseboard.\n\nYou can just add use `include ../temp_sensors.dtsi` to use the shared definition and then add the 3rd temperature sensor.\n\n```\n#include \u003ccros/thermistor/thermistor.dtsi\u003e\n#include \"../temp_sensors.dtsi\"\n\n/{\n\ttemp_charger_thermistor: charger {\n\t...\n\t;\n};\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9592a438_782a6c37",
+        "filename": "zephyr/program/brox/jubilant/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-11T20:35:27Z",
+      "side": 1,
+      "message": "You should add fan control for the charger sensor to this table.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
