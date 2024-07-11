@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060babf9_f9c04506",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-07-11T20:18:54Z",
+      "side": 1,
+      "message": "How is this supposed to work when building the cr50 firmware using the ebuild?\n\nhttps://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/third_party/chromiumos-overlay/chromeos-base/chromeos-cr50-dev/chromeos-cr50-dev-9999.ebuild;l\u003d78?q\u003df:ebuild%20f:cr50\u0026ct\u003dos\u0026sq\u003dr:chrome-internal%2Fchromeos%2Fsuperproject%20b:main",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "047a0b3f6b6e2782c54425821a24bb361edeb892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
