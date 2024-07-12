@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff6c6c6_1de38b63",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-12T19:19:31Z",
+      "side": 1,
+      "message": "Delete unused code.",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 36
+      },
+      "revId": "32965e02215ce6260c2476811520cda1e0bde0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9370581b_137af3a1",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-12T19:19:31Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 984,
+        "startChar": 0,
+        "endLine": 984,
+        "endChar": 36
+      },
+      "revId": "32965e02215ce6260c2476811520cda1e0bde0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc652d48_90d7356b",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-12T19:19:31Z",
+      "side": 1,
+      "message": "You should either print out all arguments or print out none of them.  \n\nI suggest that you don\u0027t print out any of the arguments.",
+      "range": {
+        "startLine": 1020,
+        "startChar": 0,
+        "endLine": 1020,
+        "endChar": 43
+      },
+      "revId": "32965e02215ce6260c2476811520cda1e0bde0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
