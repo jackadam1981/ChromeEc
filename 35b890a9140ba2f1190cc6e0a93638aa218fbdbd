@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46fe52b_88638b3a",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "thanks, change to gpio.dtsi.",
+      "parentUuid": "d0fa487a_a1998076",
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14e93293_8b9178db",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-07-11T20:29:52Z",
       "side": 1,
       "message": "Name this file \"gpio.dtsi\".",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a8e39c_fcac79fe",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "thanks, change to gpio.dtsi.",
+      "parentUuid": "14e93293_8b9178db",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52a654d_a3d40d28",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "56eb230b_2a807798",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 45
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f17194_ec171540",
@@ -94,6 +160,30 @@
       "writtenOn": "2024-07-11T20:29:52Z",
       "side": 1,
       "message": "Delete here instead using /delete-node/ at the end of the file.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986d0465_69d9d124",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "ok. think change it for jubilant not include brox gpio.dtsi.I remove it to defnine unused pin.",
+      "parentUuid": "a4f17194_ec171540",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b39681_0be33bfe",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "delete",
+      "parentUuid": "e3c3133c_a6bd5312",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 31
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c14282e_13c396f7",
@@ -140,6 +254,30 @@
       "writtenOn": "2024-07-11T20:29:52Z",
       "side": 1,
       "message": "Instead of overriding the GPIO property, just make this change directly under the `named-gpios` at line 45.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 31
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf5202c_216f2b2f",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "fix it .",
+      "parentUuid": "5c14282e_13c396f7",
       "range": {
         "startLine": 271,
         "startChar": 0,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd26b1c_6da5eddf",
+        "filename": "zephyr/program/brox/jubilant/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "fix it.",
+      "parentUuid": "f4d683cd_8e0ab7ba",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 18
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7377dc5f_dab6b255",
@@ -186,6 +348,30 @@
       "writtenOn": "2024-07-11T20:29:52Z",
       "side": 1,
       "message": "```suggestion\n#include \"gpio.dtsi\"\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "35b890a9140ba2f1190cc6e0a93638aa218fbdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ec23a7_ba1e412e",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T05:28:04Z",
+      "side": 1,
+      "message": "change it.",
+      "parentUuid": "7377dc5f_dab6b255",
       "range": {
         "startLine": 20,
         "startChar": 0,
