@@ -16,6 +16,7 @@
 #include <zephyr/input/input.h>
 #include <zephyr/input/input_kbd_matrix.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/pm/device.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/sys/atomic.h>
 
@@ -44,10 +45,29 @@ uint8_t keyboard_get_rows(void)
 
 void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 {
+	enum pm_device_state state;
+	int ret;
+
 	if (enable) {
 		atomic_and(&disable_scan_mask, ~mask);
 	} else {
 		atomic_or(&disable_scan_mask, mask);
+	}
+
+	ret = pm_device_state_get(kbd_dev, &state);
+	if (ret < 0) {
+		LOG_ERR("keyboard does not support power management");
+		return;
+	}
+
+	if (atomic_get(&disable_scan_mask) != 0) {
+		if (state != PM_DEVICE_STATE_SUSPENDED) {
+			pm_device_action_run(kbd_dev, PM_DEVICE_ACTION_SUSPEND);
+		}
+	} else {
+		if (state != PM_DEVICE_STATE_ACTIVE) {
+			pm_device_action_run(kbd_dev, PM_DEVICE_ACTION_RESUME);
+		}
 	}
 }
 
@@ -67,10 +87,6 @@ static void keyboard_input_cb(struct input_event *evt)
 	case INPUT_BTN_TOUCH:
 		pressed = evt->value;
 		break;
-	}
-
-	if (atomic_get(&disable_scan_mask) != 0) {
-		return;
 	}
 
 	if (evt->sync) {
