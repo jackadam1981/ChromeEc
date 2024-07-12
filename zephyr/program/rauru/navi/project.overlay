@@ -66,6 +66,12 @@
 		gpio_ec_cbi_wp: ec_cbi_wp {
 			gpios = <&gpiod 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
+		gpio_usb_c1_dp_in_hpd_l: ec_ap_dp_hpd_l {
+			gpios = <&gpiof 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
+		gpio_usb_c0_dp_in_hpd_l: usb_c0_dp_in_hpd {
+			gpios = <&gpiof 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
 	};
 
 	/* Rotation matrix used by drivers. */
