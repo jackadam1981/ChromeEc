@@ -229,6 +229,29 @@
       },
       "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f4adcd_854e2132",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/include/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:14:33Z",
+      "side": 1,
+      "message": "Are these aliases to GPIO_EN_PP3300_A , which are already defined in ptl\u0027s gpio.dtsi for gpio41 ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
