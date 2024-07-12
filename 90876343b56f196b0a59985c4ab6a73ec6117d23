@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c2d29a_f54876d2",
+        "filename": "coreboot-sdk.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T19:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e458f216_0fe39cf5",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "90876343b56f196b0a59985c4ab6a73ec6117d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e0128f_0a879b64",
