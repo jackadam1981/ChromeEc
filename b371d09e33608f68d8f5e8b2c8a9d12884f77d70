@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95aacd8_ad20a4c2",
+        "filename": "core/riscv-rv32i/toolchain.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-07-12T16:43:34Z",
+      "side": 1,
+      "message": "I think we need (or something like it):\n```\nifneq ($(CROSS_COMPILE_riscv),)\n$(config): sdk\nendif\n```\n\nThis way the SDK is only pulled down when it\u0027s the default.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "b371d09e33608f68d8f5e8b2c8a9d12884f77d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
