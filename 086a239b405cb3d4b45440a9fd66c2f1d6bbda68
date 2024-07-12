@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda6a01d_0a384d98",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T19:10:05Z",
+      "side": 1,
+      "message": "Should this be moved somewhere else so the Cr50 and ish builds can use it?",
+      "fixSuggestions": [
+        {
+          "fixId": "06e9be11_4af09347",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "sdk_extractor.py",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "sdk_extractor.py",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "sdk_extractor.py",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "sdk_extractor.py",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "            content \u003d urllib.request.urlopen(sdk_url).read()\n"
+            }
+          ]
+        }
+      ],
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
