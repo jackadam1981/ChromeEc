@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1165837_ed6d8055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T07:58:16Z",
+      "side": 1,
+      "message": "ok , i remember it",
+      "parentUuid": "a676952c_eccc6ab6",
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b45a0943_80c50fbb",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-11T20:35:27Z",
       "side": 1,
       "message": "Rename this file to temp_sensors.dtsi",
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e445af4a_d310bf3c",
+        "filename": "zephyr/program/brox/jubilant/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T07:58:16Z",
+      "side": 1,
+      "message": "fix it",
+      "parentUuid": "b45a0943_80c50fbb",
       "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daee46bc_1123fc4f",
+        "filename": "zephyr/program/brox/jubilant/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T07:58:16Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "af76c9b7_e8695bf7",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9592a438_782a6c37",
@@ -71,6 +131,30 @@
       "writtenOn": "2024-07-11T20:35:27Z",
       "side": 1,
       "message": "You should add fan control for the charger sensor to this table.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "b0c1b1d814c39106f20a3b2ddf506657f3fe9b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca788468_0bd9b26a",
+        "filename": "zephyr/program/brox/jubilant/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-12T07:58:16Z",
+      "side": 1,
+      "message": "fix it",
+      "parentUuid": "9592a438_782a6c37",
       "range": {
         "startLine": 25,
         "startChar": 0,
