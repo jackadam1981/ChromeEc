@@ -21,8 +21,11 @@
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	/* Fingerprint sensor (SCLK at 4Mhz) */
-	{ .port = CONFIG_SPI_FP_PORT, .div = 3, .gpio_cs = GPIO_FP_SPI_CS }
+	/* Fingerprint sensor (SCLK at 4Mhz)
+	 * The source clock is 15MHz. Thus, the divider needs to be set to 4 for
+	 * 4MHz SCLK.
+	 */
+	{ .port = CONFIG_SPI_FP_PORT, .div = 4, .gpio_cs = GPIO_FP_SPI_CS }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
