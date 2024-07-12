@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3343c5_43c30e48",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "Comment and Config not matching. Is the comment to do?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e929dd72_7414570e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "In schematics , i read this -\u003e BOM Note\n\nFor \"F\" and \"S\" SKUs connect EC_FAN_PWR_DISABLE_N to GPIO73/TA2/EXT . If that\u0027s true , wont this Gpio depend on BID for configuration?",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e99e6f_55ecaf35",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "Is F3 this ec-pg3-wake? isn\u0027t GPO85 --\u003eec-pg3-wake ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa05bae_066fc25d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "NB_PROCHOT_EC_N  ? GPIOD0 ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70aa55f_03627110",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "is C_EC_WP_ODL - \u003e gpioc7  ?",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d31f9be_a02d5949",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "output high? All ksos O/p ?",
+      "range": {
+        "startLine": 195,
+        "startChar": 21,
+        "endLine": 195,
+        "endChar": 31
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7431dc6_20fb3086",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "- For \"F\" and \"S\" SKUs connect PWR_BTN_PURST# to PSL_IN2#/GPIO00/EXT_PURST#\nDoes this needs to be handled based on BID?",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6cec3a_4986ec06",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "i3c2_sda?",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 7
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17694171_2b7e1dcb",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "i3c2_scl?",
+      "range": {
+        "startLine": 247,
+        "startChar": 6,
+        "endLine": 247,
+        "endChar": 7
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c342f8aa_506e4b16",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-12T16:02:24Z",
+      "side": 1,
+      "message": "o/p?",
+      "range": {
+        "startLine": 322,
+        "startChar": 21,
+        "endLine": 322,
+        "endChar": 31
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
