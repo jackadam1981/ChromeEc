@@ -64,6 +64,70 @@
       ],
       "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391a07f7_d49dfc50",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-07-12T19:24:50Z",
+      "side": 1,
+      "message": "Yeah I\u0027m thinking Chromite is an ideal location.  Ti50 needs something similar too to download and extract ti50-sdk.",
+      "parentUuid": "bda6a01d_0a384d98",
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e87cd0_0176e55c",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-07-12T19:24:50Z",
+      "side": 1,
+      "message": "Requests is fine, but we\u0027re missing a lot from cURL (auto-retry, resume, etc).  I\u0027d just subprocess to cURL.\n\nIf you move to chromite, there\u0027s already wrappers for cURL that do all the right things (`chromite/lib/retry_util.py`).",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93cf1b4_1bccdb75",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-07-12T19:24:50Z",
+      "side": 1,
+      "message": "Don\u0027t use `os.system` or `/bin/sh` for that matter.  Go thru `subprocess` APIs.  If you move to chromite, there\u0027s `chromite/lib/compression_lib.py`.",
+      "range": {
+        "startLine": 84,
+        "startChar": 11,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
