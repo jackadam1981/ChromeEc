@@ -297,7 +297,6 @@ static int elan_i2c_get_pattern(void)
 		CPRINTS("%s: read pattern failed", __func__);
 		return rv;
 	}
-	CPRINTS("%s: read pattern reg:%04X.", __func__, elan_tp_params.pattern);
 
 	/*
 	 * Not all versions of firmware implement "get pattern" command. When
@@ -305,6 +304,7 @@ static int elan_i2c_get_pattern(void)
 	 * 0xFF, which we will treat as "old" pattern 0.
 	 */
 	elan_tp_params.pattern = (*(uint16_t *)val == 0xFFFF) ? 0 : val[1];
+	CPRINTS("%s: read pattern reg:%04X.", __func__, elan_tp_params.pattern);
 
 	return EC_SUCCESS;
 }
@@ -344,6 +344,7 @@ static int elan_query_product(void)
 			return rv;
 		}
 		elan_tp_params.iap_version = val[1];
+		CPRINTS("%s: ITE Debug iap_version:%02X %02X.", __func__, val[1], val[0]);
 	} else {
 		rv = elan_tp_read_cmd(ETP_I2C_IAP_VERSION_P0_CMD,
 				      (uint16_t *)val);
