@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b40246c0_6b82c9ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-12T12:17:23Z",
+      "side": 1,
+      "message": "For me it works, I took artifact with servo FW from CQ and it works on servo, but please take a look on new comment above, if this is not an issue from your perspective go ahead with cq+2",
+      "revId": "3ae5b387ffd35a3a3392ad7d75abc8d428bf474b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d9248f_68fd6b7e",
+        "filename": "firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-12T12:17:23Z",
+      "side": 1,
+      "message": "Leaving to your judgment as I am not sure how you monitor regressions with clang.\n\ntry/finally here will silence situation where there is regression and e.g one board stops to build without error with clang. IIUC previously one regression in clang will fail whole script so I guess people see it easily and act appropriately",
+      "revId": "3ae5b387ffd35a3a3392ad7d75abc8d428bf474b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
