@@ -84,6 +84,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3cf8c09_814f2ec3",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T20:04:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "391a07f7_d49dfc50",
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89e87cd0_0176e55c",
@@ -107,6 +125,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b398e5_32dfbc52",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T20:04:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e87cd0_0176e55c",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f93cf1b4_1bccdb75",
@@ -120,6 +162,30 @@
       "writtenOn": "2024-07-12T19:24:50Z",
       "side": 1,
       "message": "Don\u0027t use `os.system` or `/bin/sh` for that matter.  Go thru `subprocess` APIs.  If you move to chromite, there\u0027s `chromite/lib/compression_lib.py`.",
+      "range": {
+        "startLine": 84,
+        "startChar": 11,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "086a239b405cb3d4b45440a9fd66c2f1d6bbda68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ecc95c9_8d12d26b",
+        "filename": "sdk_extractor.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T20:04:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93cf1b4_1bccdb75",
       "range": {
         "startLine": 84,
         "startChar": 11,
