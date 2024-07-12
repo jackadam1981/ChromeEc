@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d31d28_9a90be04",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-12T01:12:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "da3c7dae_759385d9",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "a882b6a992d06991374b3ca956e54dd3506fdb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f77154ef_a07a2004",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f31fa88_007473fe",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-12T01:12:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f77154ef_a07a2004",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "a882b6a992d06991374b3ca956e54dd3506fdb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7c7cf5d_fedbff33",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-07-11T23:38:44Z",
       "side": 1,
       "message": "this file should be common for both npcx \u0026 mchp similar to earlier CL",
+      "revId": "a882b6a992d06991374b3ca956e54dd3506fdb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1407b6_ed075241",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/board_id.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-12T01:12:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b7c7cf5d_fedbff33",
       "revId": "a882b6a992d06991374b3ca956e54dd3506fdb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
