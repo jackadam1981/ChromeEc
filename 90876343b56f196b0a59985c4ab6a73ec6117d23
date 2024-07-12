@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b86f9d_014a1cc0",
+        "filename": "coreboot-sdk.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T16:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e54c106_6719287c",
+      "revId": "90876343b56f196b0a59985c4ab6a73ec6117d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43cb4dac_db211ab1",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-07-11T20:55:12Z",
       "side": 1,
       "message": "This path is not writable (the SDK is normally mounted read-only on bots).\n\nYou\u0027ll want to use a path we can rely and keep, perhaps in the build directory or XDG_CACHE_HOME.",
+      "range": {
+        "startLine": 6,
+        "startChar": 23,
+        "endLine": 6,
+        "endChar": 40
+      },
+      "revId": "90876343b56f196b0a59985c4ab6a73ec6117d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcf35cc_9c0f6e21",
+        "filename": "coreboot-sdk.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T16:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cb4dac_db211ab1",
       "range": {
         "startLine": 6,
         "startChar": 23,
@@ -106,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846b009f_515a092f",
+        "filename": "coreboot-sdk.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T16:16:48Z",
+      "side": 1,
+      "message": "Created a temp dir, need to determine which make target this can be added as a prerequisite to.",
+      "parentUuid": "b5e0128f_0a879b64",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "90876343b56f196b0a59985c4ab6a73ec6117d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb17e105_2a563200",
         "filename": "coreboot-sdk.mk",
         "patchSetId": 1
@@ -117,6 +183,30 @@
       "writtenOn": "2024-07-11T20:55:12Z",
       "side": 1,
       "message": "if `CROSS_COMPILE_arch\u003d` is set, we don\u0027t want to download anything at all.  when executed in an ebuild, there\u0027ll be a network sandbox that prevents us from hitting the network.\n\nSame goes for bazel (not just ebuilds) 😊",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 5
+      },
+      "revId": "90876343b56f196b0a59985c4ab6a73ec6117d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9b2efe_29b5be54",
+        "filename": "coreboot-sdk.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T16:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb17e105_2a563200",
       "range": {
         "startLine": 11,
         "startChar": 0,
