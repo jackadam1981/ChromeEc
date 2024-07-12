@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2b0820_980b0318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-12T15:30:50Z",
+      "side": 1,
+      "message": "make it common for both npcx \u0026 mchp",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "695a264c8f92b3fc56dbcc7cff9fbe17f9f74bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2a19c6_1006bc17",
+        "filename": "zephyr/program/intelrvp/mtlrvp/src/board_id.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-12T15:30:50Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "695a264c8f92b3fc56dbcc7cff9fbe17f9f74bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2647406f_e81ad193",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/board_id.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-12T15:30:50Z",
+      "side": 1,
+      "message": "applicable to mchp?, may be follow similar approach as in CL:5647127",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "695a264c8f92b3fc56dbcc7cff9fbe17f9f74bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
