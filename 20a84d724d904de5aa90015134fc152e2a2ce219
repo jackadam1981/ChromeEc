@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef3cda4_bc1e83c2",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-12T06:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2d13f5_2c6fa01b",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 38
+      },
+      "revId": "20a84d724d904de5aa90015134fc152e2a2ce219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63b6deb6_8dfd3171",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23489ed_37a92114",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-12T06:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b6deb6_8dfd3171",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 29
+      },
+      "revId": "20a84d724d904de5aa90015134fc152e2a2ce219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c63cda3_a331abf5",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-07-10T20:33:49Z",
       "side": 1,
       "message": "If the user doesn\u0027t specify a range, the entire flash should be read.",
+      "range": {
+        "startLine": 952,
+        "startChar": 0,
+        "endLine": 952,
+        "endChar": 23
+      },
+      "revId": "20a84d724d904de5aa90015134fc152e2a2ce219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0bb5db_fc9f3572",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 28
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2024-07-12T06:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c63cda3_a331abf5",
       "range": {
         "startLine": 952,
         "startChar": 0,
