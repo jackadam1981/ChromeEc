@@ -53,4 +53,7 @@ config OUTPUT_DISASSEMBLY
 config SHELL_BACKEND_SERIAL_INIT_PRIORITY
 	default 51
 
+config PM_DEVICE_SYSTEM_MANAGED
+	default n
+
 orsource "Kconfig.defaults-$(ARCH)"
