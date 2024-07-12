@@ -22,6 +22,30 @@
       },
       "revId": "b371d09e33608f68d8f5e8b2c8a9d12884f77d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d20957c_e52b3dbd",
+        "filename": "core/riscv-rv32i/toolchain.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-07-12T16:44:24Z",
+      "side": 1,
+      "message": "Acknowledged, working on a current implementation in crrev/c/5698365",
+      "parentUuid": "b95aacd8_ad20a4c2",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "b371d09e33608f68d8f5e8b2c8a9d12884f77d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
