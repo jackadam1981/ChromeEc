@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2f6c79_089961e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-15T05:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41c8a451_29422e9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "fade76d23bb955b59b024e62b28db0e78cd498fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "971fc7a8_e62ce3db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-15T05:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87083c37_3bf437c5",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "fade76d23bb955b59b024e62b28db0e78cd498fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29d9e2c7_fd54eff8",
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f4dcd7_8f81b7ca",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-15T05:32:08Z",
+      "side": 1,
+      "message": "Done. Update the setting function for SPI clock.",
+      "parentUuid": "29d9e2c7_fd54eff8",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "fade76d23bb955b59b024e62b28db0e78cd498fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "186adebc_be9ee217",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-07-12T21:26:10Z",
       "side": 1,
       "message": "Since we\u0027ve removed the dependency on `clock_get_apb2_freq()`, does it still make sense to have this hook?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 66
+      },
+      "revId": "fade76d23bb955b59b024e62b28db0e78cd498fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38387029_ec08767d",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-15T05:32:08Z",
+      "side": 1,
+      "message": "Done. Have removed this hook.",
+      "parentUuid": "186adebc_be9ee217",
       "range": {
         "startLine": 67,
         "startChar": 0,
