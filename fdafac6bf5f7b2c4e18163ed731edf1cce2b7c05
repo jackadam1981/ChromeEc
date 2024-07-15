@@ -136,6 +136,30 @@
       },
       "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e62154_001bb3ea",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-07-15T19:35:00Z",
+      "side": 1,
+      "message": "The only project that was in there was removed, it can be deleted.",
+      "parentUuid": "fbad788d_f17df004",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 78
+      },
+      "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
