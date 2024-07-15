@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea7204d_b0641480",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-15T20:16:13Z",
+      "side": 1,
+      "message": "nit: return the value from the simulated function so that easy to modify if needed in one function\nint expected_id \u003d test_set_board_id_gpios()",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "022e368b1db02be5b473c703c3d5e214b99e51f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
