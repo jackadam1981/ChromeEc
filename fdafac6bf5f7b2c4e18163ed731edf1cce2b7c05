@@ -160,6 +160,30 @@
       },
       "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5902e1_e40f5612",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-15T19:58:57Z",
+      "side": 1,
+      "message": "ok, I deleted this line and deleted the private/zephyr/program folder: https://chrome-internal-review.googlesource.com/c/chromeos/platform/ec-private/+/7488803",
+      "parentUuid": "33e62154_001bb3ea",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 78
+      },
+      "revId": "fdafac6bf5f7b2c4e18163ed731edf1cce2b7c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
