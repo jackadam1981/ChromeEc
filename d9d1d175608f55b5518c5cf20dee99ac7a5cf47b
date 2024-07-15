@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa34312b_2fdf5dad",
+        "filename": "zephyr/program/rauru/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-15T05:44:03Z",
+      "side": 0,
+      "message": "don\u0027t touch auto generated file.\n\nif you want to remove this for navi, put the following block into navi/project.overlay\n```\n\u0026i2c5ALT {\n  /delete-property/ pinctrl-0;\n  /delete-property/ pinctrl-names;\n};\n```",
+      "revId": "d9d1d175608f55b5518c5cf20dee99ac7a5cf47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
