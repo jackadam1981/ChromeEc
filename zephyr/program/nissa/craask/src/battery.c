@@ -12,49 +12,13 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-#define CHECK_BATT_STAT_DELAY_MS (500 * MSEC)
-static int check_batt_retry;
-
-void board_check_battery_status(void)
-{
-	enum battery_disconnect_state battery_disconnect_status =
-		battery_get_disconnect_state();
-
-	/*
-	 * The following 2 states can read DFET status successfully
-	 * so not need to do initialize battery type again.
-	 * BATTERY_DISCONNECTED: The DFET is off.
-	 * BATTERY_NOT_DISCONNECTED: The battery can discharge.
-	 * Therefore, do initilialize only at BATTERY_DISCONNECT_ERROR.
-	 */
-	if (battery_disconnect_status != BATTERY_DISCONNECT_ERROR) {
-		check_batt_retry = 0;
-		return;
-	}
-
-	check_batt_retry++;
-	if (check_batt_retry > 5) {
-		LOG_INF("Board has retried init_battery_type 5 times.");
-		check_batt_retry = 0;
-		return;
-	}
-
-	LOG_INF("Retry init_battery_type: %d", check_batt_retry);
-	init_battery_type();
-}
-DECLARE_DEFERRED(board_check_battery_status);
-
 __override int board_get_default_battery_type(void)
 {
-	const struct batt_params *batt = charger_current_battery_params();
+	int prev_battery_type = board_get_prev_battery_type();
 
-	if (batt->flags & BATT_FLAG_RESPONSIVE) {
-		/* Check Battery status again after 500msec. */
-		hook_call_deferred(&board_check_battery_status_data,
-				   CHECK_BATT_STAT_DELAY_MS);
-	} else {
-		check_batt_retry = 0;
-	}
+	if (prev_battery_type < 0 || prev_battery_type == BATTERY_TYPE_COUNT)
+		return DEFAULT_BATTERY_TYPE;
 
-	return DEFAULT_BATTERY_TYPE;
+	LOG_INF("previous battery_type=%d", prev_battery_type);
+	return prev_battery_type;
 }
