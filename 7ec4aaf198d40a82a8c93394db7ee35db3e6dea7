@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8617ea02_6eeb7190",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-15T17:05:20Z",
+      "side": 1,
+      "message": "Do you add one here so that it rounds up? If so, can you use the `DIV_ROUND_UP` macro to make that clearer?",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "7ec4aaf198d40a82a8c93394db7ee35db3e6dea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4f6aa9_7aa44b1c",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-15T17:05:20Z",
+      "side": 1,
+      "message": "Extra semicolon here",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "7ec4aaf198d40a82a8c93394db7ee35db3e6dea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
