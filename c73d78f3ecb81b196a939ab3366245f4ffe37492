@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849d7317_201a8740",
+        "filename": "baseboard/helipilot/base_board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-15T17:08:28Z",
+      "side": 1,
+      "message": "Can you mention the `APB2_CLK` here like the commit message?",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "c73d78f3ecb81b196a939ab3366245f4ffe37492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc4389a_1f5f9c19",
+        "filename": "baseboard/helipilot/base_board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-15T17:08:28Z",
+      "side": 1,
+      "message": "Can you help me understand the calculation?\n\n15 / 4 \u003d 3.75\n\nDoes it round up?",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "c73d78f3ecb81b196a939ab3366245f4ffe37492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
