@@ -33,6 +33,24 @@
       "message": "Leaving to your judgment as I am not sure how you monitor regressions with clang.\n\ntry/finally here will silence situation where there is regression and e.g one board stops to build without error with clang. IIUC previously one regression in clang will fail whole script so I guess people see it easily and act appropriately",
       "revId": "3ae5b387ffd35a3a3392ad7d75abc8d428bf474b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c874cd8a_aca9de3f",
+        "filename": "firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-15T20:58:12Z",
+      "side": 1,
+      "message": "\u003e try/finally here will silence situation where there is regression\n\nThe exception isn\u0027t handled, so it [should be raised once `finally` has executed](https://docs.python.org/3/reference/compound_stmts.html#finally):\n\n\u003e If an exception occurs in any of the clauses and is not handled, the exception is temporarily saved. The finally clause is executed. If there is a saved exception it is re-raised at the end of the finally clause.",
+      "parentUuid": "07d9248f_68fd6b7e",
+      "revId": "3ae5b387ffd35a3a3392ad7d75abc8d428bf474b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
