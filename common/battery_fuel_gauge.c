@@ -175,6 +175,13 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
+static int prev_battery_type = -1;
+
+int board_get_prev_battery_type(void)
+{
+	return prev_battery_type;
+}
+
 void init_battery_type(void)
 {
 	int type;
@@ -217,6 +224,7 @@ void init_battery_type(void)
 		BCFGPRT("Found config #%d", type);
 	}
 
+	prev_battery_type = type;
 	battery_conf = &board_battery_info[type];
 }
 DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_BATTERY_INIT);

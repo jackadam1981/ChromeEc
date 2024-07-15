@@ -89,6 +89,11 @@ __override_proto bool board_batt_conf_enabled(void);
 __override_proto int
 board_battery_imbalance_mv(const struct board_batt_params *info);
 
+/**
+ * Return previous battery type
+ */
+int board_get_prev_battery_type(void);
+
 #ifdef __cplusplus
 }
 #endif
