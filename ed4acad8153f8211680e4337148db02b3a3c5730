@@ -16,6 +16,24 @@
       "message": "Is this something we still want to submit?",
       "revId": "ed4acad8153f8211680e4337148db02b3a3c5730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10f6af9_07a59b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-07-15T17:12:39Z",
+      "side": 1,
+      "message": "I think this is irrelevant since CL:5540638 \u0026 CL:5608090.",
+      "parentUuid": "2b0de978_107e8f46",
+      "revId": "ed4acad8153f8211680e4337148db02b3a3c5730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
