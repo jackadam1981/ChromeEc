@@ -16,6 +16,24 @@
       "message": "Conversely, I think this one should be `zassert_false`, because `false` is what `pd_capable` will return.",
       "revId": "dae53cebe945ce33e321bc14bf5ba4804e0476de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5097d27_1fffea8f",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-15T20:20:13Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "d7604b53_0b0db9dc",
+      "revId": "dae53cebe945ce33e321bc14bf5ba4804e0476de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
