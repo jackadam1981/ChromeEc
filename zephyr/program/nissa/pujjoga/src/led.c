@@ -58,6 +58,32 @@ const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
+static const struct board_led_pwm_dt_channel pwr_led =
+	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(DT_NODELABEL(pwm_led_0));
+
+static void pwr_led_pwm_set_duty(const struct board_led_pwm_dt_channel *ch,
+				 int percent)
+{
+	uint32_t pulse_ns;
+	int rv;
+
+	if (!device_is_ready(ch->dev)) {
+		LOG_ERR("device %s not ready", ch->dev->name);
+		return;
+	}
+
+	pulse_ns = DIV_ROUND_NEAREST(PWR_LED_PWM_PERIOD_NS * percent, 100);
+
+	LOG_DBG("PWM LED %s set percent (%d), pulse %d", ch->dev->name, percent,
+		pulse_ns);
+
+	rv = pwm_set(ch->dev, ch->channel, PWR_LED_PWM_PERIOD_NS, pulse_ns,
+		     ch->flags);
+	if (rv) {
+		LOG_ERR("pwm_set() failed %s (%d)", ch->dev->name, rv);
+	}
+}
+
 __override void led_set_color_power(enum ec_led_colors color)
 {
 	if (color == EC_LED_COLOR_WHITE)
