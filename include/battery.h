@@ -458,6 +458,15 @@ __override_proto int battery_get_vendor_param(uint32_t param, uint32_t *value);
 __override_proto int battery_set_vendor_param(uint32_t param, uint32_t value);
 
 /**
+ * Return if the battery is responsive.
+ *
+ * @param old_flags	curr.batt->flags from charge_state.c
+ * @param new_flags	batt_new.flags from battery_get_params
+ * @return true if the battery is responsive
+ */
+__override_proto bool battery_is_responsive(int old_flags, int new_flags);
+
+/**
  * Wait for battery stable.
  *
  * @return non-zero if error.
