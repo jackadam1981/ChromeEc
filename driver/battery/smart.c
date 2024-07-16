@@ -488,6 +488,11 @@ static bool battery_want_charge(struct batt_params *batt)
 	return false;
 }
 
+__overridable bool board_battery_is_responsive(int flags)
+{
+	return ((flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY);
+}
+
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
@@ -540,8 +545,8 @@ void battery_get_params(struct batt_params *batt)
 	if (battery_status(&batt_new.status))
 		batt_new.flags |= BATT_FLAG_BAD_STATUS;
 
-	/* If any of those reads worked, the battery is responsive */
-	if ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
+	/* If any of those reads worked, the battery is responsive. */
+	if (board_battery_is_responsive(batt_new.flags))
 		batt_new.flags |= BATT_FLAG_RESPONSIVE;
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
