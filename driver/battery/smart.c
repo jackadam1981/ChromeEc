@@ -540,8 +540,8 @@ void battery_get_params(struct batt_params *batt)
 	if (battery_status(&batt_new.status))
 		batt_new.flags |= BATT_FLAG_BAD_STATUS;
 
-	/* If any of those reads worked, the battery is responsive */
-	if ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
+	/* If all of those reads worked, the battery is responsive stablely. */
+	if ((batt_new.flags & BATT_FLAG_BAD_ANY) == 0)
 		batt_new.flags |= BATT_FLAG_RESPONSIVE;
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
