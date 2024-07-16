@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f7a9da_ec845519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:15:51Z",
+      "side": 1,
+      "message": "make this CL generic for npcx too",
+      "revId": "6900980af8ea476dd0d4611d26f515d1af95e438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c742809_8b264c76",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/gpio.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:15:51Z",
+      "side": 1,
+      "message": "make it generic for npcx too",
+      "revId": "6900980af8ea476dd0d4611d26f515d1af95e438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
