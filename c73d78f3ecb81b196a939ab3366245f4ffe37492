@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "906cde90_984e9a5a",
+        "filename": "baseboard/helipilot/base_board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-16T02:49:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849d7317_201a8740",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "c73d78f3ecb81b196a939ab3366245f4ffe37492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dc4389a_1f5f9c19",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-15T17:08:28Z",
       "side": 1,
       "message": "Can you help me understand the calculation?\n\n15 / 4 \u003d 3.75\n\nDoes it round up?",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "c73d78f3ecb81b196a939ab3366245f4ffe37492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf0f280_d3d1e1b8",
+        "filename": "baseboard/helipilot/base_board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2024-07-16T02:49:47Z",
+      "side": 1,
+      "message": "This ratio is given by (SCDV + 1) * 2. SCDV is the setting value in the register. Therefore, the ratio will be a multiple of 2. Here set a value that can be as close as the setting clock.",
+      "parentUuid": "4dc4389a_1f5f9c19",
       "range": {
         "startLine": 25,
         "startChar": 31,
