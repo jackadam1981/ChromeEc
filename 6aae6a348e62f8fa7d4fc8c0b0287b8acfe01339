@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1387e327_98dc0311",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:11:09Z",
+      "side": 1,
+      "message": "make it generic for mchp too",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29ee3c0_4dcac538",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:11:09Z",
+      "side": 1,
+      "message": "nit: tabs",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d945a01f_7f594348",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/i2c_charger.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:11:09Z",
+      "side": 1,
+      "message": "nit: tabs",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6853fde_92a7a206",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/tcpc_gpio.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:11:09Z",
+      "side": 1,
+      "message": "make it generic for MCHP too",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91a5e9e_6a8be4eb",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/tcpc_i2c.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-16T18:11:09Z",
+      "side": 1,
+      "message": "make it generic for mchp too",
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
