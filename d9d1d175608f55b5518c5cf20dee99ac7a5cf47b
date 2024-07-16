@@ -16,6 +16,24 @@
       "message": "don\u0027t touch auto generated file.\n\nif you want to remove this for navi, put the following block into navi/project.overlay\n```\n\u0026i2c5ALT {\n  /delete-property/ pinctrl-0;\n  /delete-property/ pinctrl-names;\n};\n```",
       "revId": "d9d1d175608f55b5518c5cf20dee99ac7a5cf47b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9205c4_cb551062",
+        "filename": "zephyr/program/rauru/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-07-16T04:17:50Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "fa34312b_2fdf5dad",
+      "revId": "d9d1d175608f55b5518c5cf20dee99ac7a5cf47b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
