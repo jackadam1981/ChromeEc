@@ -93,6 +93,30 @@
       },
       "revId": "c73d78f3ecb81b196a939ab3366245f4ffe37492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8171b9_dd16a1ef",
+        "filename": "baseboard/helipilot/base_board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-16T16:21:39Z",
+      "side": 1,
+      "message": "So we\u0027ll get a 3.75 MHz clock, right?\n\nLet\u0027s update the comment to reflect that.",
+      "parentUuid": "3cf0f280_d3d1e1b8",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "c73d78f3ecb81b196a939ab3366245f4ffe37492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
