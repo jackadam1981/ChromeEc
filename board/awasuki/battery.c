@@ -32,10 +32,10 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct batt_conf_embed board_battery_info[] = {
-	/* C21N2018_AS3GXXD3KA Battery Information */
-	[BATTERY_AS3GXXD3KA] = {
-		.manuf_name = "AS3GXXD3KA",
-		.device_name = "C110160",
+	/* C31N2314_AS3GXXD3KB Battery Information */
+	[BATTERY_C31N2314] = {
+		.manuf_name = "AS3GXXD3KB",
+		.device_name = "B340442",
 		.config = {
 			.fuel_gauge = {
 				.ship_mode = {
@@ -51,24 +51,24 @@ const struct batt_conf_embed board_battery_info[] = {
 				},
 			},
 			.batt_info = {
-				.voltage_max		= 8800,
-				.voltage_normal		= 7890, /* mV */
-				.voltage_min		= 6000, /* mV */
+				.voltage_max		= 13200,
+				.voltage_normal		= 11550, /* mV */
+				.voltage_min		= 9000, /* mV */
 				.precharge_current	= 256,	/* mA */
 				.start_charging_min_c	= 0,
 				.start_charging_max_c	= 45,
 				.charging_min_c		= 0,
 				.charging_max_c		= 60,
 				.discharging_min_c	= -20,
-				.discharging_max_c	= 60,
+				.discharging_max_c	= 40,
 			},
 		},
 	},
 
-	/* C21N2018_AS3FXXD3KA Battery Information */
-	[BATTERY_AS3FXXD3KA] = {
-		.manuf_name = "AS3FXXD3KA",
-		.device_name = "C110160",
+	/* C31N2315 model Battery Information */
+	[BATTERY_C31N2315] = {
+		.manuf_name = "AS3GXXD3KB",
+		.device_name = "B140435",
 		.config = {
 			.fuel_gauge = {
 				.ship_mode = {
@@ -84,13 +84,13 @@ const struct batt_conf_embed board_battery_info[] = {
 				},
 			},
 			.batt_info = {
-				.voltage_max		= 8800,
-				.voltage_normal		= 7890, /* mV */
-				.voltage_min		= 6000, /* mV */
+				.voltage_max		= 13200,
+				.voltage_normal		= 11550, /* mV */
+				.voltage_min		= 9000, /* mV */
 				.precharge_current	= 256,	/* mA */
-				.start_charging_min_c	= 0,
+				.start_charging_min_c	= 1,
 				.start_charging_max_c	= 45,
-				.charging_min_c		= 0,
+				.charging_min_c		= 1,
 				.charging_max_c		= 60,
 				.discharging_min_c	= -20,
 				.discharging_max_c	= 60,
@@ -100,4 +100,4 @@ const struct batt_conf_embed board_battery_info[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
-const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_AS3GXXD3KA;
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_C31N2314;
