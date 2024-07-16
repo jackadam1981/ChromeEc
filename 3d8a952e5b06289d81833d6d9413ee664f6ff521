@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2953375_d9012c9c",
+        "filename": "board/xol/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-16T18:39:52Z",
+      "side": 1,
+      "message": "Should we add `#undef CONFIG_USBC_PPC_VCONN` too?",
+      "fixSuggestions": [
+        {
+          "fixId": "fab0dfe8_3fcf645b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/xol/board.h",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "#undef CONFIG_USBC_PPC_VCONN\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3d8a952e5b06289d81833d6d9413ee664f6ff521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
