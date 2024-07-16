@@ -16,6 +16,24 @@
       "message": "it\u0027s worth mentioning this patch is based on\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5604607\n(craask).\n\nshould we revisit if we should update `get_batt_conf()` for this case as\nsuggested for craask?",
       "revId": "a1c0670fa24a7fbf8a0959db119449d6f31fa636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dc5d03_a35fd372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-16T06:48:01Z",
+      "side": 1,
+      "message": "it is depends on response flags, some times full guage IC it busy, cause battery type dnot match.",
+      "parentUuid": "688b7271_7dd4ca83",
+      "revId": "a1c0670fa24a7fbf8a0959db119449d6f31fa636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
