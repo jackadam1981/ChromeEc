@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61377ceb_b840fb21",
+        "filename": "zephyr/drivers/prochot_vcmp/prochot_vcmp.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-16T16:30:08Z",
+      "side": 1,
+      "message": "nit: with tokenizing this is better expressed as\n\n```\nif (data-\u003elast_state) {\n  LOG_INF(\"PROCHOT state: asserted\");\n} else {\n  LOG_INF(\"PROCHOT state: deasserted\");\n}\n```\n\nI don\u0027t mind if you keep things as they are, we\u0027re going to have to make a pass at all our logging at some point and better optimize it.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 68
+      },
+      "revId": "0fb456d7e861470aacf6c43928c6e41ccdf00992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
