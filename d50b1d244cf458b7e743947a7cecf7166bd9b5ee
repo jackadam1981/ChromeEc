@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ceedd46_4eb867e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-16T19:09:09Z",
+      "side": 1,
+      "message": "strange failure:\n```\nINFO    - 160/464 native_sim                pdc/pdc.generic                                     FAILED Timeout (native 300.622s)\n```",
+      "revId": "d50b1d244cf458b7e743947a7cecf7166bd9b5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
