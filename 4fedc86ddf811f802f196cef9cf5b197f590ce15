@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f54d5f6_3b5f164f",
+        "filename": "zephyr/program/rauru/navi/src/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-07-16T04:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a8ce494_84bd9181",
+      "revId": "4fedc86ddf811f802f196cef9cf5b197f590ce15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdc30b74_f689f29e",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-07-15T06:16:17Z",
       "side": 1,
       "message": "random guess from the name, isn\u0027t this high-active?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "4fedc86ddf811f802f196cef9cf5b197f590ce15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5d053f_c70f04d1",
+        "filename": "zephyr/program/rauru/navi/src/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-07-16T04:10:26Z",
+      "side": 1,
+      "message": "It\u0027s low active.",
+      "parentUuid": "bdc30b74_f689f29e",
       "range": {
         "startLine": 31,
         "startChar": 26,
