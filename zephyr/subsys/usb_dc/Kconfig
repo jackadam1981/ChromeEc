@@ -103,3 +103,5 @@ config USB_DC_TOUCHPAD_HID_NUM
 	  The format of hid instance name is name_n, where the name can be
 	  configured by CONFIG_USB_HID_DEVICE_NAME and n(hid number) should be in
 	  the range of 0 to (CONFIG_USB_HID_DEVICE_COUNT - 1).
+
+rsource "Kconfig.gi2c"
