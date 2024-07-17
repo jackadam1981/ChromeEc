@@ -23,6 +23,7 @@
 /* Command line options */
 static uint16_t vid = 0x18d1; /* Google */
 static uint16_t pid = 0x5022; /* Hammer */
+static uint16_t rsize = 637; /* Read size */
 typedef struct {
 	uint8_t addr; /* Endpoint address */
 	uint8_t len; /* Max. packet size */
@@ -60,11 +61,11 @@ static int be_bytes_to_int(uint8_t *buf)
 
 /* Command line parsing related */
 static char *progname;
-static char *short_opts = ":f:v:p:e:hd";
+static char *short_opts = ":f:v:p:r:hd";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{ "file", 1, NULL, 'f' }, { "vid", 1, NULL, 'v' },
-	{ "pid", 1, NULL, 'p' },  { "ep", 1, NULL, 'e' },
+	{ "pid", 1, NULL, 'p' },  { "rsize", 1, NULL, 'r' },
 	{ "help", 0, NULL, 'h' }, { "debug", 0, NULL, 'd' },
 	{ NULL, 0, NULL, 0 },
 };
@@ -80,11 +81,12 @@ static void usage(int errs)
 	       "  -f,--file   STR         Firmware binary (default %s)\n"
 	       "  -v,--vid    HEXVAL      Vendor ID (default %04x)\n"
 	       "  -p,--pid    HEXVAL      Product ID (default %04x)\n"
+	       "  -r,--rsize  VAL         Read Size (default %04x)\n"
 	       "  -d,--debug              Exercise extended read I2C over USB\n"
 	       "                          and print verbose debug messages.\n"
 	       "  -h,--help               Show this message\n"
 	       "\n",
-	       progname, firmware_binary, vid, pid);
+	       progname, firmware_binary, vid, pid, rsize);
 
 	exit(!!errs);
 }
@@ -105,6 +107,13 @@ static void parse_cmdline(int argc, char *argv[])
 		switch (i) {
 		case 'f':
 			firmware_binary = optarg;
+			break;
+		case 'r':
+			rsize = (uint16_t)strtoull(optarg, &e, 0);
+			if (!*optarg || (e && *e)) {
+				printf("Invalid argument: \"%s\"\n", optarg);
+				errorcnt++;
+			}
 			break;
 		case 'p':
 			pid = (uint16_t)strtoull(optarg, &e, 16);
@@ -151,7 +160,7 @@ static void parse_cmdline(int argc, char *argv[])
 }
 
 /* USB transfer related */
-static uint8_t rx_buf[1024];
+static uint8_t *rx_buf;
 static uint8_t tx_buf[1024];
 
 static struct libusb_device_handle *devh;
@@ -368,7 +377,7 @@ static int libusb_single_write_and_read(const uint8_t *to_write,
 			actual_length = 0;
 			do {
 				r = libusb_bulk_transfer(devh, in_ep.addr,
-							 rx_buf, sizeof(rx_buf),
+							 rx_buf, rsize,
 							 &rx_len, 5000);
 				if (r) {
 					break;
@@ -727,6 +736,12 @@ int main(int argc, char *argv[])
 
 	parse_cmdline(argc, argv);
 
+	rx_buf = (uint8_t *)malloc(rsize * sizeof(uint8_t));
+	if (!rx_buf) {
+		printf("failed to allocate rx buffer\n");
+		exit(1);
+	}
+
 	probe_device();
 	if (bus_type == BUS_USB) {
 		init_with_libusb();
@@ -760,8 +775,8 @@ int main(int argc, char *argv[])
 		tx_buf[3] = 0x02;
 		tx_buf[4] = 0x06;
 		tx_buf[5] = 0x00;
-		single_write_and_read(tx_buf, 6, rx_buf, 633);
-		pretty_print_buffer(rx_buf, 637);
+		single_write_and_read(tx_buf, 6, rx_buf, rsize - I2C_RESPONSE_OFFSET);
+		pretty_print_buffer(rx_buf, rsize);
 	}
 
 	/* Get the trackpad ready for receiving update */
@@ -777,5 +792,7 @@ int main(int argc, char *argv[])
 
 	/* Print the updated firmware information */
 	elan_get_fw_info();
+
+	free(rx_buf);
 	return 0;
 }
