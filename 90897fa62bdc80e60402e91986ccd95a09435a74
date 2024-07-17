@@ -33,6 +33,24 @@
       "message": "Will this sector effect ? I think it will entering line24 first.",
       "revId": "90897fa62bdc80e60402e91986ccd95a09435a74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdbd581_b59b2111",
+        "filename": "zephyr/program/rauru/src/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-07-17T05:06:48Z",
+      "side": 1,
+      "message": "This is not needed. Dropped.",
+      "parentUuid": "44f9c6b1_0c8b47fe",
+      "revId": "90897fa62bdc80e60402e91986ccd95a09435a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
