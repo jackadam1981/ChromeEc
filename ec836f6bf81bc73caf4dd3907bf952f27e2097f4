@@ -40,6 +40,30 @@
       ],
       "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c669315_d58a4289",
+        "filename": "zephyr/program/brox/jubilant/include/keyboard_customization.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-17T02:40:53Z",
+      "side": 1,
+      "message": "it is, but keyboard_customization.c, so don\u0027t include keyboard_config.h",
+      "parentUuid": "6c19f029_29eb8bc2",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
