@@ -437,6 +437,9 @@ static int command_crash(int argc, const char **argv)
 		cflush();
 		ccprintf("%08x", *(volatile int *)unaligned_ptr);
 #endif /* !CONFIG_ALLOW_UNALIGNED_ACCESS */
+	} else if (!strcasecmp(argv[1], "undefined")) {
+		cflush();
+		asm volatile(".byte 0x47, 0xFF");
 	} else if (!strcasecmp(argv[1], "watchdog")) {
 		while (1) {
 /* Yield on native posix to avoid locking up the simulated sys clock */
@@ -477,7 +480,7 @@ static int command_crash(int argc, const char **argv)
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
 			"[assert | divzero | udivzero | stack"
-			" | unaligned | watchdog | hang | null]",
+			" | unaligned | undefined | watchdog | hang | null]",
 			"Crash the system (for testing)."
 #ifndef CONFIG_CMD_CRASH_NESTED
 			" Repeat argument for nested crashes."
