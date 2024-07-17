@@ -64,6 +64,64 @@
       },
       "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd8a5bd_554b1cae",
+        "filename": "zephyr/program/brox/jubilant/include/keyboard_customization.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-17T08:41:21Z",
+      "side": 1,
+      "message": "these should not be used anymore, Brox based projects are getting this data from devicetree, I recently dropped these from other Brox based projects are well, feel free to reference to those.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 78
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b0d5ff0a_908adb32",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/jubilant/include/keyboard_customization.h",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 60,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a8b042_d8f1c39e",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-17T08:41:21Z",
+      "side": 1,
+      "message": "missing file from this PR?",
+      "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
