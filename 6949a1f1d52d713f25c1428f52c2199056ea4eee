@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc127fd9_80201551",
+        "filename": "board/awasuki/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-07-17T01:15:22Z",
+      "side": 1,
+      "message": "use storo test the cl need set gpioset EN_PP3300_A_A 1 before booting up",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "6949a1f1d52d713f25c1428f52c2199056ea4eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
