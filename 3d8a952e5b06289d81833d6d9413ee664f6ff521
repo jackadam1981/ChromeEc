@@ -52,6 +52,24 @@
       "parentUuid": "f2953375_d9012c9c",
       "revId": "3d8a952e5b06289d81833d6d9413ee664f6ff521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abffac99_8cbae093",
+        "filename": "board/xol/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-07-17T02:36:40Z",
+      "side": 1,
+      "message": "I believed CONFIG_USBC_PPC_VCONN is defined at the baseboard level for Brya. Xol does make use of definitions from the baseboard, though.",
+      "parentUuid": "3d0b467c_e3bb1eb4",
+      "revId": "3d8a952e5b06289d81833d6d9413ee664f6ff521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
