@@ -66,6 +66,12 @@ void cpu_return_from_exception_psp(void (*func)(void))
 	__builtin_unreachable();
 }
 
+__noreturn void cpu_undefined_instruction(void)
+{
+	asm volatile("udf #0");
+	__builtin_unreachable();
+}
+
 #ifdef CONFIG_ARMV7M_CACHE
 static void cpu_invalidate_icache(void)
 {
