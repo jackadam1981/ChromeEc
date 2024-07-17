@@ -431,6 +431,10 @@ static int command_crash(int argc, const char **argv)
 		ccprintf("%08x", 1U / zero);
 	} else if (!strcasecmp(argv[1], "stack")) {
 		stack_overflow_recurse(1);
+	} else if (!strcasecmp(argv[1], "trap")) {
+		cflush();
+		/* Usually implemented by executing an illegal instruction */
+		__builtin_trap();
 #ifndef CONFIG_ALLOW_UNALIGNED_ACCESS
 	} else if (!strcasecmp(argv[1], "unaligned")) {
 		volatile intptr_t unaligned_ptr = 0xcdef;
@@ -477,7 +481,7 @@ static int command_crash(int argc, const char **argv)
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
 			"[assert | divzero | udivzero | stack"
-			" | unaligned | watchdog | hang | null]",
+			" | trap | unaligned | watchdog | hang | null]",
 			"Crash the system (for testing)."
 #ifndef CONFIG_CMD_CRASH_NESTED
 			" Repeat argument for nested crashes."
