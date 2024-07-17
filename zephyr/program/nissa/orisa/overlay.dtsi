@@ -28,9 +28,6 @@
 		lges_ap23a8l {
 			compatible = "lges,ap23a8l", "battery-smart";
 		};
-		panasonic_ap23a5l {
-			compatible = "panasonic,ap23a5l", "battery-smart";
-		};
 	};
 
 	hibernate-wake-pins {
