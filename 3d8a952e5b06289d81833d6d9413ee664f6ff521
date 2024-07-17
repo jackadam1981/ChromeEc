@@ -88,6 +88,24 @@
       "parentUuid": "abffac99_8cbae093",
       "revId": "3d8a952e5b06289d81833d6d9413ee664f6ff521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178cb714_490de5e9",
+        "filename": "board/xol/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-17T18:19:52Z",
+      "side": 1,
+      "message": "You\u0027re right, I built xol board and checked the config - only `CONFIG_USB_PD_TCPC_VCONN\u003dy` is enabled",
+      "parentUuid": "a10f3f22_590bbf18",
+      "revId": "3d8a952e5b06289d81833d6d9413ee664f6ff521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
