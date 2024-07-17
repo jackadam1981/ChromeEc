@@ -336,6 +336,17 @@ DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_LAST);
 
 #ifdef CONFIG_CMD_CRASH
+
+void crash_undefined_instruction(void)
+{
+#if defined(CORE_CORTEX_M) || defined(CORE_CORTEX_M0) || \
+	defined(CORE_RISCV_RV21I)
+	cpu_undefined_instruction();
+#else
+	ccprintf("Unimplemented");
+#endif
+}
+
 /*
  * Disable infinite recursion warning, since we're intentionally doing that
  * here.
@@ -437,6 +448,9 @@ static int command_crash(int argc, const char **argv)
 		cflush();
 		ccprintf("%08x", *(volatile int *)unaligned_ptr);
 #endif /* !CONFIG_ALLOW_UNALIGNED_ACCESS */
+	} else if (!strcasecmp(argv[1], "undefined")) {
+		cflush();
+		crash_undefined_instruction();
 	} else if (!strcasecmp(argv[1], "watchdog")) {
 		while (1) {
 /* Yield on native posix to avoid locking up the simulated sys clock */
@@ -477,7 +491,7 @@ static int command_crash(int argc, const char **argv)
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
 			"[assert | divzero | udivzero | stack"
-			" | unaligned | watchdog | hang | null]",
+			" | unaligned | undefined | watchdog | hang | null]",
 			"Crash the system (for testing)."
 #ifndef CONFIG_CMD_CRASH_NESTED
 			" Repeat argument for nested crashes."

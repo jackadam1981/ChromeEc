@@ -20,6 +20,8 @@
 #endif
 
 #ifndef __ASSEMBLER__
+#include "common.h"
+
 #include <stdint.h>
 
 /* write Exception Program Counter register */
@@ -48,6 +50,8 @@ static inline uint32_t get_mcause(void)
 
 /* Generic CPU core initialization */
 void cpu_init(void);
+/* Execute an instruction that will cause an undefined instruction exception. */
+__noreturn void cpu_undefined_instruction(void);
 extern uint32_t ec_reset_lp;
 extern uint32_t ira;
 #endif

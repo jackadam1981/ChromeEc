@@ -18,3 +18,9 @@ void cpu_init(void)
 	/* Set lowest priority for PendSV */
 	CPU_NVIC_SHCSR3 = (0xff << 16);
 }
+
+__noreturn void cpu_undefined_instruction(void)
+{
+	asm volatile("udf #0");
+	__builtin_unreachable();
+}

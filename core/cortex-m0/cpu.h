@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_CPU_H
 #define __CROS_EC_CPU_H
 
+#include "common.h"
 #include "compile_time_macros.h"
 #include "debug.h"
 
@@ -50,6 +51,9 @@
 
 /* Set up the cpu to detect faults */
 void cpu_init(void);
+
+/* Execute an instruction that will cause an undefined instruction exception. */
+__noreturn void cpu_undefined_instruction(void);
 
 /* Set the priority of the given IRQ in the NVIC (0 is highest). */
 static inline void cpu_set_interrupt_priority(uint8_t irq, uint8_t priority)
