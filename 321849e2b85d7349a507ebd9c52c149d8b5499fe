@@ -1,0 +1,132 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f5652c_eae02540",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-17T23:25:22Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org with `1`, `sudo ./test/run_device_tests.py --board\u003dhelipilot -f servo_micro -t  system_is_locked.*` will fail and with `0`, it passes.",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 29
+      },
+      "revId": "321849e2b85d7349a507ebd9c52c149d8b5499fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a48573_0c3cfb7b",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-17T23:25:22Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org I make MPU_PROTECTION always enabled.",
+      "range": {
+        "startLine": 492,
+        "startChar": 3,
+        "endLine": 492,
+        "endChar": 36
+      },
+      "revId": "321849e2b85d7349a507ebd9c52c149d8b5499fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9278c03_a4da7b08",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-17T23:25:22Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org we discussed that this has o effect.",
+      "range": {
+        "startLine": 450,
+        "startChar": 13,
+        "endLine": 451,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1f508c8c_852fa9f8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 450,
+                "startChar": 0,
+                "endLine": 451,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "321849e2b85d7349a507ebd9c52c149d8b5499fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877c8b22_389d9d8c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-17T23:25:22Z",
+      "side": 1,
+      "message": "@tomhugh if these 2 lines of code are flipped, the test will pass",
+      "range": {
+        "startLine": 1276,
+        "startChar": 0,
+        "endLine": 1282,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e8b55a45_1a76bee7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 1276,
+                "startChar": 0,
+                "endLine": 1279,
+                "endChar": 0
+              },
+              "replacement": "        if not test.toggle_power:\n"
+            }
+          ]
+        }
+      ],
+      "revId": "321849e2b85d7349a507ebd9c52c149d8b5499fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
