@@ -1189,8 +1189,40 @@ int main(int argc, char *argv[])
 	setup_connection(&td);
 
 	if (show_fw_ver) {
-		printf("Current versions:\n");
-		printf("Writable %32s\n", targ.common.version);
+		union version_info_t {
+			uint8_t data[36];
+			struct {
+				uint8_t response; /* error code */
+				char label[3]; /* "RW:" or "RO:" */
+				char version[32]; /* version string */
+			} __attribute__((packed)) fields;
+		} __attribute__((packed)) version_info;
+
+		/* Get current firmware version */
+		send_subcommand(&td, UPDATE_EXTRA_CMD_GET_VERSION_STRING, NULL,
+				0, version_info.data, sizeof(version_info));
+		printf("Versions:\n");
+		if (version_info.fields.response) {
+			printf("failed to get current fw version\n");
+		} else {
+			printf("current fw version %.*s\n",
+			       (int)(sizeof(version_info.fields.label) +
+				     sizeof(version_info.fields.version)),
+			       version_info.fields.label);
+		}
+		printf("writable fw version ");
+		if (strncmp((const char *)version_info.fields.label,
+			    "RO:", sizeof(version_info.fields.label)) == 0) {
+			printf("RW:");
+		} else if (strncmp((const char *)version_info.fields.label,
+				   "RW:", sizeof(version_info.fields.label)) ==
+			   0) {
+			printf("RO:");
+		} else {
+			printf("Unknown:");
+		}
+		printf("%.*s\n", (int)sizeof(targ.common.version),
+		       targ.common.version);
 	}
 
 	if (data) {
