@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4806e10_22e680a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:17:30Z",
+      "side": 1,
+      "message": "There\u0027s a permanently undefined instruction in ARMv7m: See section `A7.7.194 UDF` in the [ARMv7-M Reference Manual](https://developer.arm.com/documentation/ddi0403/latest/).\n\nIIRC, the assembler recognizes it. [Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/panic.c;l\u003d49;drc\u003d85d7598eda5a6cb614b01e3a4f5d72a8ef9c202f)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90fdc262_2372ede4",
         "filename": "common/panic_output.c",
         "patchSetId": 1
