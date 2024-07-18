@@ -1355,3 +1355,29 @@ ZTEST(craask, test_init_battery_not_within_retries)
 	k_sleep(K_MSEC(501));
 	zassert_equal(battery_manufacturer_name_fake.call_count, 5);
 }
+
+ZTEST(craask, test_battery_flag_responsive)
+{
+	/* batt_new.flags in battery_get_params */
+	int batt_new_flags;
+
+	/* current battery is not responsive */
+	batt_flag_responsive = false;
+	charger_current_battery_params_fake.custom_fake =
+		charger_current_battery_params_mock;
+	batt_new_flags = BATT_FLAG_BAD_TEMPERATURE |
+			 BATT_FLAG_BAD_STATE_OF_CHARGE;
+	zassert_equal(board_battery_is_responsive(batt_new_flags), false);
+	batt_new_flags = 0;
+	zassert_equal(board_battery_is_responsive(batt_new_flags), true);
+
+	/* current battery is responsive */
+	batt_flag_responsive = true;
+	charger_current_battery_params_fake.custom_fake =
+		charger_current_battery_params_mock;
+	batt_new_flags = BATT_FLAG_BAD_TEMPERATURE |
+			 BATT_FLAG_BAD_STATE_OF_CHARGE;
+	zassert_equal(board_battery_is_responsive(batt_new_flags), true);
+	batt_new_flags = BATT_FLAG_BAD_ANY;
+	zassert_equal(board_battery_is_responsive(batt_new_flags), false);
+}
