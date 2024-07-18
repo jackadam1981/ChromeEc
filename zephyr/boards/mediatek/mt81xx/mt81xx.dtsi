@@ -1,0 +1,35 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+
+/dts-v1/;
+
+#include <freq.h>
+
+/ {
+	#address-cells = < 0x01 >;
+	#size-cells = < 0x01 >;
+	compatible = "riscv-mt6xxx";
+	model = "riscv-mrv55,mt6xxx";
+
+	uart0: uart {
+		compatible = "mrv55";
+	};
+	cpus {
+		#address-cells = < 0x01 >;
+		#size-cells = < 0x00 >;
+
+		cpu@0 {
+			device_type = "cpu";
+			reg = < 0x00 >;
+			status = "okay";
+			compatible = "riscv";
+//			clock-frequency = <DT_FREQ_M(26)>;
+		};
+
+	};
+	ram0: memory@00000000 {
+		device_type = "memory";
+		reg = < 0x00000000 0x100000 >;
+	};
+
+};

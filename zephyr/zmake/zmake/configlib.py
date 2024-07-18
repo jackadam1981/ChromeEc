@@ -65,3 +65,10 @@ def register_ish_project(**kwargs):
     kwargs.setdefault("output_packer", zmake.output_packers.IshBinPacker)
     kwargs.setdefault("modules", ["ec", "cmsis", "hal_intel_public"])
     return _register_project(**kwargs)
+
+def register_mtkscp_project(**kwargs):
+    """Register a project that uses RawBinPacker."""
+    kwargs.setdefault("supported_toolchains", ["coreboot-sdk", "zephyr"])
+    kwargs.setdefault("output_packer", zmake.output_packers.RawBinPacker)
+    kwargs.setdefault("modules", ["ec", "cmsis"])
+    return _register_project(**kwargs)
