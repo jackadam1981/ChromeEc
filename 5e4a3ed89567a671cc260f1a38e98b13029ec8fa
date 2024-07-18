@@ -39,6 +39,30 @@
       },
       "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dfac22_e478558b",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2024-07-18T23:29:11Z",
+      "side": 1,
+      "message": "I think it\u0027ll change with the execution env, but I\u0027ll benchmark:\n\n- Current patch\n- `num_cpus` `-j1` make jobs\n- one `-j{num_cpus}` make job at a time\n- 12 `make -j12` invocations simultaneously (minimal squared number to saturate a 128 core machine)\n\nand report whether there\u0027s a winner. Trivial to set up and I\u0027m about to head out for the day anyway :)",
+      "parentUuid": "da5e5b02_c3a3746e",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 65
+      },
+      "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
