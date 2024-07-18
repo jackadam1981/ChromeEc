@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f27dc5_99e596dc",
+        "filename": "zephyr/program/brox/jubilant/include/keyboard_customization.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-18T06:10:17Z",
+      "side": 1,
+      "message": "remove it, move to keyboard.dts",
+      "parentUuid": "afd8a5bd_554b1cae",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 78
+      },
+      "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09a8b042_d8f1c39e",
@@ -120,6 +144,24 @@
       "writtenOn": "2024-07-17T08:41:21Z",
       "side": 1,
       "message": "missing file from this PR?",
+      "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0532d397_cc381a39",
+        "filename": "zephyr/program/brox/jubilant/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-18T06:10:17Z",
+      "side": 1,
+      "message": "add it keyboard.dtsi",
+      "parentUuid": "09a8b042_d8f1c39e",
       "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
