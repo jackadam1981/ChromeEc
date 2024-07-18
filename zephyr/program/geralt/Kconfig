@@ -15,6 +15,14 @@ config BOARD_GERALT
 	  Build the Geralt reference board. The board is the reference design
 	  of Geralt family.
 
+config BOARD_GERALT_SCP_ZEPHYR
+	bool "Google Geralt SCP ZEPHYR Reference Board"
+	select SOC_MEDIATEK_MT8188
+	help
+	  Build the Geralt reference board. The board is the reference design
+	  of Geralt family.
+
+
 config BOARD_CIRI
 	bool "Google Geralt Variant Board"
 	help
