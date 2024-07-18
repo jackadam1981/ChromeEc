@@ -58,3 +58,14 @@ __override int board_get_default_battery_type(void)
 
 	return DEFAULT_BATTERY_TYPE;
 }
+
+__override bool battery_is_responsive(int old_flags, int new_flags)
+{
+	if (old_flags & BATT_FLAG_RESPONSIVE) {
+		/* If any of those reads worked, keeps the battery responsive */
+		return ((new_flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY);
+	}
+
+	/* If all of those reads worked, the battery is stablely responsive */
+	return ((new_flags & BATT_FLAG_BAD_ANY) == 0);
+}
