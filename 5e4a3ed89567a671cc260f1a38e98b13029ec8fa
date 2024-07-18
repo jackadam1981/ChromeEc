@@ -16,6 +16,29 @@
       "message": "(an alternative approach, fwiw, could be wrapping `build_with_clang.py` up in a `make -j${N}` invocation of its own. apparently we can have something like:\n\n```\nall:\n  +./build_with_clang.py\n```\n\nthe `+` will forward jobserver info, which recursive make invocations in `build_with_clang.py` will respect.\n\nugly from an invocation standpoint, less-ugly from a respecting-the-jobs-flag standpoint)",
       "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5e5b02_c3a3746e",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:14:21Z",
+      "side": 1,
+      "message": "The change looks fine, but one thought:\n\nWe\u0027re already attempting to run `num_threads` invocations of `make`. Should we just limit each `make` invocation to `1` job? I haven\u0027t tested this to see if it\u0027s slower.",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 65
+      },
+      "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
