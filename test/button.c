@@ -193,7 +193,7 @@ static int test_sim_button_debounce_short_bounce(void)
 
 	btn_mask |= (1 << KEYBOARD_BUTTON_VOLUME_DOWN);
 	send_button_hostcmd(btn_mask, 10);
-	crec_msleep(50);
+	crec_msleep(60);
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == UNCHANGED);
 
 	send_button_hostcmd(btn_mask, 100);
@@ -222,14 +222,14 @@ static int test_sim_button_debounce_stability(void)
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == UNCHANGED);
 	crec_msleep(20);
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == 1);
-	crec_msleep(60);
+	crec_msleep(80);
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == 1);
 
 	crec_msleep(20);
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == 1);
 	crec_msleep(20);
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == 0);
-	crec_msleep(60);
+	crec_msleep(80);
 	TEST_ASSERT(button_state[BUTTON_VOLUME_DOWN] == 0);
 
 	return EC_SUCCESS;

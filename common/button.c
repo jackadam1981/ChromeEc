@@ -439,6 +439,7 @@ static void simulate_button_release_deferred(void)
 			button_interrupt_simulate(button_idx);
 		}
 	}
+	CPRINTS("%s", __func__);
 }
 DECLARE_DEFERRED(simulate_button_release_deferred);
 
@@ -456,6 +457,7 @@ static void simulate_button(uint32_t button_mask, int press_ms)
 			button_interrupt_simulate(button_idx);
 		}
 	}
+	CPRINTS("%s %02x %d", __func__, button_mask, press_ms);
 
 	/* Defer the button release for specified duration */
 	hook_call_deferred(&simulate_button_release_deferred_data,
