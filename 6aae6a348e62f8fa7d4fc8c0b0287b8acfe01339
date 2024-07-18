@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "383003b7_e55b6c1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T19:33:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1387e327_98dc0311",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29ee3c0_4dcac538",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-16T18:11:09Z",
       "side": 1,
       "message": "nit: tabs",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593946bf_4210ee00",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T19:33:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e29ee3c0_4dcac538",
       "range": {
         "startLine": 50,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a977665_f20c2f32",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/i2c_charger.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T19:33:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d945a01f_7f594348",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6853fde_92a7a206",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "537ff1e7_766c4215",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/tcpc_gpio.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T19:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6853fde_92a7a206",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91a5e9e_6a8be4eb",
@@ -106,6 +202,24 @@
       "writtenOn": "2024-07-16T18:11:09Z",
       "side": 1,
       "message": "make it generic for mchp too",
+      "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8cc0ccf_dc5272c8",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/tcpc_i2c.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T19:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91a5e9e_6a8be4eb",
       "revId": "6aae6a348e62f8fa7d4fc8c0b0287b8acfe01339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
