@@ -8,6 +8,8 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 cros_ec_library_include_directories(include)
 
+if(NOT DEFINED CONFIG_BOARD_GERALT_SCP_ZEPHYR)
+
 # Include selected EC source from the baseboard
 zephyr_library_sources(
 	"src/ccd_mode.c"
@@ -26,6 +28,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DETACHABLE_BASE
 			"src/base_detect.c"
 )
 
+endif() # if(NOT DEFINED CONFIG_BOARD_GERALT_SCP_ZEPHYR)
+
 zephyr_include_directories(
 			"include"
 			"../roach/include"
@@ -36,4 +40,6 @@ if(DEFINED CONFIG_BOARD_GERALT)
 elseif(DEFINED CONFIG_BOARD_CIRI)
 	project(ciri)
 	add_subdirectory(ciri)
+elseif(DEFINED CONFIG_BOARD_GERALT_SCP_ZEPHYR)
+	project(geralt-scp-zephyr)
 endif()
