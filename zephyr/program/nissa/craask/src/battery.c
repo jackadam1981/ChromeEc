@@ -58,3 +58,17 @@ __override int board_get_default_battery_type(void)
 
 	return DEFAULT_BATTERY_TYPE;
 }
+
+__override bool board_battery_is_responsive(int flags)
+{
+	const struct batt_params *batt = charger_current_battery_params();
+
+	if (batt->flags & BATT_FLAG_RESPONSIVE) {
+		/* If any of those reads worked, keeps the battery is responsive
+		 */
+		return ((flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY);
+	}
+
+	/* If all of those reads worked, the battery is stablely responsive */
+	return ((flags & BATT_FLAG_BAD_ANY) == 0);
+}
