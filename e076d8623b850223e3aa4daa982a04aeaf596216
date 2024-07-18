@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a975ba_7b6ee120",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-07-18T03:04:17Z",
+      "side": 1,
+      "message": "This condition is meant to exclude the case where all bad read flags are set. That is, we consider the battery is responsive if at least one read is good (\u003d the original comment).\n\nThe code looks good to me.",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 10
+      },
+      "revId": "e076d8623b850223e3aa4daa982a04aeaf596216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
