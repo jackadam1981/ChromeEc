@@ -20,7 +20,6 @@ def register_geralt_project(
         inherited_from=["geralt"],
     )
 
-
 geralt = register_geralt_project(project_name="geralt")
 ciri = register_geralt_project(project_name="ciri")
 
