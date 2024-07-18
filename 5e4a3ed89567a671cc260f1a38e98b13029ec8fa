@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c990091_54a01f39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2024-07-18T23:12:33Z",
+      "side": 1,
+      "message": "(an alternative approach, fwiw, could be wrapping `build_with_clang.py` up in a `make -j${N}` invocation of its own. apparently we can have something like:\n\n```\nall:\n  +./build_with_clang.py\n```\n\nthe `+` will forward jobserver info, which recursive make invocations in `build_with_clang.py` will respect.\n\nugly from an invocation standpoint, less-ugly from a respecting-the-jobs-flag standpoint)",
+      "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
