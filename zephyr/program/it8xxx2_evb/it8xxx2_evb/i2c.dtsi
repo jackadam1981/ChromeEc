@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include <ite/it8801-mfd-map.dtsi>
+
 / {
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
@@ -56,4 +58,79 @@
 	pinctrl-0 = <&i2c4_clk_gpe0_default
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
+
+	it8801_mfd: it8801@38 {
+		compatible = "ite,it8801-mfd";
+		reg = <0x38>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		ioex_it8801_port0: it8801_port@0  {
+			compatible = "ite,it8801-gpio";
+			reg = <0x00 1   /* GPIPSR */
+			       0x05 1   /* GPSOVR */
+			       0x0a 8   /* GPCR */
+			       0x32 1   /* GPISR */
+			       0x37 1>; /* GPIER */
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			pin-mask = <0xdb>;
+		};
+
+		ioex_it8801_port1: it8801_port@1 {
+			compatible = "ite,it8801-gpio";
+			reg = <0x01 1   /* GPIPSR */
+			       0x06 1   /* GPSOVR */
+			       0x12 8   /* GPCR */
+			       0x33 1   /* GPISR */
+			       0x38 1>; /* GPIER */
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			pin-mask = <0x3f>;
+		};
+
+		ioex_it8801_port2: it8801_port@2 {
+			compatible = "ite,it8801-gpio";
+			reg = <0x02 1   /* GPIPSR */
+			       0x07 1   /* GPSOVR */
+			       0x1a 8   /* GPCR */
+			       0x34 1   /* GPISR */
+			       0x39 1>; /* GPIER */
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+			pin-mask = <0x0f>;
+		};
+
+		ioex_it8801_kbd: it8801_kbd@40  {
+			compatible = "ite,it8801-kbd";
+			reg = <0x40 1
+			       0x41 1
+			       0x42 1
+			       0x43 1>;
+			int-gpios = <&gpioa 1 0>;
+			mfdctrl = <&kso18_gp01_default &kso20_gp23_default>;
+			kso-mapping = <0 1 20 3 4 5 6
+				       17 18 16 15 11 12>;
+			row-size = <8>;
+			col-size = <13>;
+
+			kscan_input: kscan-input {
+				compatible = "zephyr,kscan-input";
+			};
+		};
+
+		ioex_it8801_pwm: it8801_pwm@90  {
+			compatible = "ite,it8801-pwm";
+			mfdctrl = <&pwm7_gp20_default>;
+			reg = <0x90 1   /* PWMMCR */
+		           0x94 1   /* PWMDCR */
+		           0x96 1   /* PWMPRSL */
+		           0x97 1>; /* PWMPRSM */
+			channel = <7>;
+			#pwm-cells = <3>;
+		};
+	};
 };
