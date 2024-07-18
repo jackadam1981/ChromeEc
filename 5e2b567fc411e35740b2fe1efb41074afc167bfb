@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7316d398_0044f8a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:44:17Z",
+      "side": 1,
+      "message": "shimmed",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "5e2b567fc411e35740b2fe1efb41074afc167bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e02559_871038de",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:44:17Z",
+      "side": 1,
+      "message": "shimmed",
+      "range": {
+        "startLine": 446,
+        "startChar": 50,
+        "endLine": 446,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "55da78dd_70d3a491",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 446,
+                "startChar": 0,
+                "endLine": 447,
+                "endChar": 0
+              },
+              "replacement": "            # task_wait_event works only with the shimmed task list, which is\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5e2b567fc411e35740b2fe1efb41074afc167bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70dd20c_0ff6e2bd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:44:17Z",
+      "side": 1,
+      "message": "synchronization",
+      "range": {
+        "startLine": 447,
+        "startChar": 34,
+        "endLine": 447,
+        "endChar": 49
+      },
+      "revId": "5e2b567fc411e35740b2fe1efb41074afc167bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f953e084_00c422b0",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:44:17Z",
+      "side": 1,
+      "message": "Could you add a comment with the name of the Zephyr tests? Are they tests that we can run on hardware?",
+      "range": {
+        "startLine": 447,
+        "startChar": 49,
+        "endLine": 448,
+        "endChar": 27
+      },
+      "revId": "5e2b567fc411e35740b2fe1efb41074afc167bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
