@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ba6204_b547b365",
+        "filename": "zephyr/test/utils/src/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:58:39Z",
+      "side": 1,
+      "message": "Does `zassert_mem_equal` work here?\n\nIt looks `zassert_mem_equal` doesn\u0027t print the character that failed. How important do you think that is? Maybe we could send a patch upstream to do that?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "e26c11dfec0e73e3daeb4a8bb2d62da9e2e2f358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d9bf8c_58e85a61",
+        "filename": "zephyr/test/utils/src/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:58:39Z",
+      "side": 1,
+      "message": "Yielding",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "e26c11dfec0e73e3daeb4a8bb2d62da9e2e2f358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1926bb2f_dcbccec7",
+        "filename": "zephyr/test/utils/src/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-18T23:58:39Z",
+      "side": 1,
+      "message": "Not sure what Zephyr style recommends, but might be easier to read as `zassert_false(x)` instead of `zassert_true(!x)`. If you change it, just make sure to change all the cases in this file.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 35
+      },
+      "revId": "e26c11dfec0e73e3daeb4a8bb2d62da9e2e2f358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
