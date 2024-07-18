@@ -1,0 +1,11 @@
+/ {
+	hibernate_vci_pins {
+		compatible = "cros-ec,hibernate-vci-pins";
+
+		bc_acok_vci: vci_input_2 {
+			gpios = <MCHP_GPIO_DECODE_161 0>;
+			vci-polarity = "Active_High";
+			status = "okay";
+		};
+	};
+};
