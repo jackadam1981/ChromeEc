@@ -20,6 +20,14 @@ def register_geralt_project(
         inherited_from=["geralt"],
     )
 
+register_mtkscp_project(
+    project_name="geralt-scp-zephyr",
+    zephyr_board="mt8188",
+    kconfig_files=[
+        here / "geralt-scp-zephyr" / "project.conf",
+    ],
+)
+
 
 geralt = register_geralt_project(project_name="geralt")
 ciri = register_geralt_project(project_name="ciri")
