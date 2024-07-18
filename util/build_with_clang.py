@@ -329,14 +329,20 @@ BOARDS_THAT_FAIL_WITH_CLANG += NDS32_BOARDS
 BOARDS_THAT_FAIL_WITH_CLANG += RISCV_BOARDS
 
 
-def build(board_name: str) -> None:
+def build(board_name: str, max_cpus: int) -> None:
     """Build with clang for specified board."""
     logging.debug('Building board: "%s"', board_name)
 
+    # The user passes in -j${N}, which is used to determine how many `make`
+    # invocations to run in parallel. On machines with high core counts, this
+    # can lead to loadavgs > 10,000, which can exhaust available resources.
+    # Pick an arbitrary, but reasonably bounded, loadavg limit.
+    max_loadavg = 8 * max_cpus
     cmd = [
         "make",
         "BOARD=" + board_name,
-        "-j",
+        f"-j{max_cpus}",
+        f"-l{max_loadavg}",
     ]
 
     logging.debug('Running command: "%s"', " ".join(cmd))
@@ -417,9 +423,10 @@ def main() -> int:
     logging.debug("Building with %d threads", args.num_threads)
 
     failed_boards = []
-    with ThreadPoolExecutor(max_workers=args.num_threads) as executor:
+    num_threads = args.num_threads
+    with ThreadPoolExecutor(max_workers=num_threads) as executor:
         future_to_board = {
-            executor.submit(build, board): board
+            executor.submit(build, board, num_threads): board
             for board in BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG
         }
         for future in concurrent.futures.as_completed(future_to_board):
