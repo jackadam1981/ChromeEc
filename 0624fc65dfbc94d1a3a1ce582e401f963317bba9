@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67f8348_c57b29c5",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/board.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T23:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e258762_9541aa17",
+      "revId": "0624fc65dfbc94d1a3a1ce582e401f963317bba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abff6b8a_34bb4e6f",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-07-18T19:53:38Z",
       "side": 1,
       "message": "needed?\nsame for MCHP file too",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "0624fc65dfbc94d1a3a1ce582e401f963317bba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9621368_04df0b20",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/board.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-18T23:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abff6b8a_34bb4e6f",
       "range": {
         "startLine": 27,
         "startChar": 0,
