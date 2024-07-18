@@ -58,3 +58,8 @@ __override int board_get_default_battery_type(void)
 
 	return DEFAULT_BATTERY_TYPE;
 }
+
+__override bool board_battery_is_responsive(int flags)
+{
+	return ((flags & BATT_FLAG_BAD_ANY) == 0);
+}
