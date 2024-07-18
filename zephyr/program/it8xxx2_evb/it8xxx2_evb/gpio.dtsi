@@ -43,6 +43,10 @@
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+
+		ioex_it8801 {
+			gpios = <&ioex_it8801_port0 0 GPIO_OUTPUT_LOW>;
+		};
 	};
 
 	hibernate-wake-pins {
@@ -55,8 +59,9 @@
 		compatible = "unused-gpios";
 
 		unused-gpios =
+			<&ioex_it8801_port0 3 GPIO_OUTPUT_LOW>,
 			/* gpioa1 */
-			<&gpioa 1 GPIO_INPUT_PULL_DOWN>,
+
 			/* gpioa2 */
 			<&gpioa 2 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa3 */
@@ -64,7 +69,7 @@
 			/* gpioa4 */
 			<&gpioa 4 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa5 */
-			<&gpioa 5 GPIO_INPUT_PULL_DOWN>,
+
 
 			/* gpiob2 */
 			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
