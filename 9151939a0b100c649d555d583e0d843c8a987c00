@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "9151939a0b100c649d555d583e0d843c8a987c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e12308_65a2c76e",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-19T20:50:09Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\n\nWhat it seems like might be happening is the issue that you mentioned with setting the hardware write protect GPIO and powering on the board. If we change the HW write protect GPIO after powering on, there is a race condition, since [`crec_flash_pre_init`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/main.c;l\u003d127;drc\u003ddd4f4957679f9842a0e48ad583ee1012657b415f) sets the flash protection flags early in boot [based on the write protect GPIO](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/flash.c;l\u003d836-846;drc\u003d85d7598eda5a6cb614b01e3a4f5d72a8ef9c202f) and `system_is_locked` uses [both the write protect GPIO and flash protect flags](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d212-223;drc\u003d2c108f019bf13230b6c6ee289cd312e8980dddac) to determine whether it\u0027s locked.\n\nI think we can demonstrate this as follows (just working on ToT without any of these changes):\n\n*  Disable HW WP: `dut-control fw_wp_state:force_off`\n*  `\u003e reboot`\n*  `\u003e sysinfo`: shows `Flags: unlocked` (which uses a call to `system_is_locked`)\n*  Enable HW WP: `dut-control fw_wp_state:force_on`\n*  Confirm that HW WP was enabled: `\u003e gpioget WP`: `1  WP`\n*  `\u003e sysinfo`: still shows `Flags: unlocked`\n*  `\u003e reboot`\n*  `\u003e sysinfo`: shows `Flags:  locked`\n\nThe above demonstrates that if the HW WP GPIO is changed after the boot process has completed, changes to `system_is_locked` won\u0027t take effect until the next reboot.\n\nI thought we were accounting for this in the `system_is_locked` test with reboots, but we actually [check `system_is_locked` at the very beginning of the test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/system_is_locked.c;l\u003d77;drc\u003d85d7598eda5a6cb614b01e3a4f5d72a8ef9c202f).\n\nThe part I\u0027m not entirely sure about is why adding a call to `system_is_locked()` in `main` causes the issue. It definitely changes the timing, but if anything I would think that it makes the boot slower and more likely that the HW WP GPIO would already be set.\n\nBut regardless, I think I\u0027ve convinced myself that we should set the HW WP GPIO before toggling power as you [suggested here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5719612/comment/877c8b22_389d9d8c/).",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "9151939a0b100c649d555d583e0d843c8a987c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
