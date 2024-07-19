@@ -10,6 +10,7 @@ zephyr_library_sources(
 		"src/keyboard.c"
 		"src/kb_backlight.c"
 		"src/thermal.c"
+		"src/battery.c"
 )
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	"src/keyboard.c"
