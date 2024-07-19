@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "840cfb4a_f6d09348",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-19T18:17:48Z",
+      "side": 1,
+      "message": "Can you explain this a bit more?\n\nIt looks like we\u0027re calling `memmove` in a loop. We only do the `TEST_ASSERT_ARRAY_EQ` after the last iteration, so we\u0027re not checking the result of each `memmove`, only the last one.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "53d8a6b2cf5f31c9c20b38396f2c8f916d83447c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ecf939c3_f1902d56",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-07-12T05:08:12Z",
       "side": 1,
       "message": "@tomhughes@chromium.org friendly ping",
+      "revId": "53d8a6b2cf5f31c9c20b38396f2c8f916d83447c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "889618c3_652d4ac4",
+        "filename": "test/stdlib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-19T18:17:48Z",
+      "side": 1,
+      "message": "I think it would be clearer what this code is testing if you put this in a separate function like `memmove_with_overlap()`. It also isolates the test a little more, so that the other tests in this function can\u0027t interfere with it.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 47
+      },
       "revId": "53d8a6b2cf5f31c9c20b38396f2c8f916d83447c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
