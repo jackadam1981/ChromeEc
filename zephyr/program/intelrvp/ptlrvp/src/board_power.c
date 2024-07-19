@@ -67,10 +67,26 @@ AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
 
 int board_power_signal_get(enum power_signal signal)
 {
+	switch (signal) {
+	case PWR_SYS_RST:
+		return gpio_get_level(GPIO_SYS_RST_ODL) ? 0 : 1;
+		break;
+	default:
+		return -EINVAL;
+		break;
+	}
 	return 0;
 }
 
 int board_power_signal_set(enum power_signal signal, int value)
 {
+	switch (signal) {
+	case PWR_SYS_RST:
+		gpio_set_level(GPIO_SYS_RST_ODL, value ? 0 : 1);
+		break;
+	default:
+		return -EINVAL;
+		break;
+	}
 	return 0;
 }
