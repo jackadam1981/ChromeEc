@@ -68,5 +68,13 @@ int board_power_signal_get(enum power_signal signal)
 
 int board_power_signal_set(enum power_signal signal, int value)
 {
+	switch (signal) {
+	case PWR_SYS_RST:
+		gpio_set_level(GPIO_SYS_RST_ODL, value);
+		break;
+	default:
+		return -EINVAL;
+		break;
+	}
 	return 0;
 }
