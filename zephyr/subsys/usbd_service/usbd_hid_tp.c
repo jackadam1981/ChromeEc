@@ -328,7 +328,8 @@ static int write_tp_report(struct usb_hid_touchpad_report *report)
 			if (ret != -EACCES) {
 				LOG_ERR("hid tp write error, %d", ret);
 			}
-			atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
+			// TODO: this causes shared fifo race condition
+			// atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
 		}
 	}
 
