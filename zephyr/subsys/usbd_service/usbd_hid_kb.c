@@ -322,6 +322,7 @@ static int write_kb_report(struct usb_hid_keyboard_report *report)
 			if (ret != -EACCES) {
 				LOG_ERR("hid kb write error, %d", ret);
 			}
+			// TODO: this causes shared fifo race condition
 			atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
 		}
 	}

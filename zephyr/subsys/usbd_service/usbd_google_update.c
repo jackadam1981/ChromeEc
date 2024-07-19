@@ -3,14 +3,11 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT google_update_device
-
 #include "drivers/usb_stream.h"
 #include "google_vendor.h"
 
 #include <zephyr/drivers/usb/udc.h>
 #include <zephyr/logging/log.h>
-#include <zephyr/usb/usbd.h>
 
 #include <usb_descriptor.h>
 LOG_MODULE_REGISTER(usbd_google_update, LOG_LEVEL_INF);
@@ -29,31 +26,6 @@ NET_BUF_POOL_FIXED_DEFINE(gupdate_pool, 10, GOOGLE_UPDATE_EP_FS_MPS, 0, NULL);
 
 static K_FIFO_DEFINE(rx_queue);
 static K_FIFO_DEFINE(tx_queue);
-
-struct gupdate_data {
-	struct gvendor_desc *const desc;
-	const struct usb_desc_header **const fs_desc;
-	atomic_t state;
-	struct k_thread tx_thread_data;
-	struct k_thread rx_thread_data;
-	struct k_sem sync_sem;
-};
-
-static inline uint8_t gupdate_get_in_ep(struct usbd_class_data *const c_data)
-{
-	struct gupdate_data *data = usbd_class_get_private(c_data);
-	struct gvendor_desc *desc = data->desc;
-
-	return desc->in_ep.bEndpointAddress;
-}
-
-static inline uint8_t gupdate_get_out_ep(struct usbd_class_data *const c_data)
-{
-	struct gupdate_data *data = usbd_class_get_private(c_data);
-	struct gvendor_desc *desc = data->desc;
-
-	return desc->out_ep.bEndpointAddress;
-}
 
 static struct net_buf *gupdate_buf_alloc(const uint8_t ep)
 {
@@ -75,7 +47,7 @@ static struct net_buf *gupdate_buf_alloc(const uint8_t ep)
 
 static int gupdate_out_start(struct usbd_class_data *const c_data)
 {
-	struct gupdate_data *data = usbd_class_get_private(c_data);
+	struct google_data *data = usbd_class_get_private(c_data);
 	struct net_buf *buf;
 	uint8_t ep;
 	int ret;
@@ -84,7 +56,7 @@ static int gupdate_out_start(struct usbd_class_data *const c_data)
 		return -EPERM;
 	}
 
-	buf = gupdate_buf_alloc(gupdate_get_out_ep(c_data));
+	buf = gupdate_buf_alloc(google_get_out_ep(c_data));
 	if (!buf) {
 		LOG_ERR("Failed to allocate rx buffer");
 		return -ENOMEM;
@@ -123,7 +95,7 @@ static void gupdate_rx_thread(void *arg1, void *arg2, void *arg3)
 static void gupdate_tx_thread(void *arg1, void *arg2, void *arg3)
 {
 	struct usbd_class_data *const c_data = arg1;
-	struct gupdate_data *data = usbd_class_get_private(c_data);
+	struct google_data *data = usbd_class_get_private(c_data);
 
 	ARG_UNUSED(arg2);
 	ARG_UNUSED(arg3);
@@ -151,14 +123,14 @@ static void gupdate_tx_thread(void *arg1, void *arg2, void *arg3)
 static int usbd_gupdate_request(struct usbd_class_data *const c_data,
 				struct net_buf *const buf, const int err)
 {
-	struct gupdate_data *data = usbd_class_get_private(c_data);
+	struct google_data *data = usbd_class_get_private(c_data);
 	struct usbd_context *uds_ctx = usbd_class_get_ctx(c_data);
 	struct udc_buf_info *bi;
 	struct net_buf *out_buf;
 
 	bi = udc_get_buf_info(buf);
 
-	if (bi->ep == gupdate_get_out_ep(c_data)) {
+	if (bi->ep == google_get_out_ep(c_data)) {
 		/* TODO: need to check */
 		out_buf = net_buf_alloc(&gupdate_pool, K_NO_WAIT);
 		if (!out_buf) {
@@ -170,7 +142,7 @@ static int usbd_gupdate_request(struct usbd_class_data *const c_data,
 		gupdate_out_start(c_data);
 	}
 
-	if (bi->ep == gupdate_get_in_ep(c_data)) {
+	if (bi->ep == google_get_in_ep(c_data)) {
 		/* Finish Tx */
 		k_sem_give(&data->sync_sem);
 	}
@@ -180,7 +152,7 @@ static int usbd_gupdate_request(struct usbd_class_data *const c_data,
 
 static void usbd_gupdate_enable(struct usbd_class_data *const c_data)
 {
-	struct gupdate_data *data = usbd_class_get_private(c_data);
+	struct google_data *data = usbd_class_get_private(c_data);
 
 	atomic_set_bit(&data->state, GUPDATE_DEV_CLASS_ENABLED);
 
@@ -193,7 +165,7 @@ static void usbd_gupdate_enable(struct usbd_class_data *const c_data)
 
 static void usbd_gupdate_disable(struct usbd_class_data *const c_data)
 {
-	struct gupdate_data *data = usbd_class_get_private(c_data);
+	struct google_data *data = usbd_class_get_private(c_data);
 
 	atomic_clear_bit(&data->state, GUPDATE_DEV_CLASS_ENABLED);
 
@@ -203,7 +175,7 @@ static void usbd_gupdate_disable(struct usbd_class_data *const c_data)
 static void *usbd_gupdate_get_desc(struct usbd_class_data *const c_data,
 				   const enum usbd_speed speed)
 {
-	struct gupdate_data *data = usbd_class_get_private(c_data);
+	struct google_data *data = usbd_class_get_private(c_data);
 
 	if (speed == USBD_SPEED_FS) {
 		return data->fs_desc;
@@ -228,7 +200,7 @@ struct usbd_class_api gupdate_api = {
 };
 
 #define DEFINE_GUPDATE_DESCRIPTOR(n)                                       \
-	static struct gvendor_desc gupdate_desc_##n = {                    \
+	static struct google_desc gupdate_desc_##n = {                    \
 		.if0 = INITIALIZER_IF(2, USB_BCC_VENDOR,                   \
 				      USB_SUBCLASS_GOOGLE_UPDATE,          \
 				      USB_PROTOCOL_GOOGLE_UPDATE),         \
@@ -244,6 +216,19 @@ struct usbd_class_api gupdate_api = {
 		NULL,                                                      \
 	};
 
+#ifdef TEST_SHARED_FIFO_RACE
+/* Need to disable Google I2C */
+#define DEFINE_GUPDATE_CLASS_DATA(n)                             \
+	static struct google_data gupdate_data_##n = {   \
+		.sync_sem = Z_SEM_INITIALIZER(                   \
+			gupdate_data_##n.sync_sem, 0, 1), \
+		.desc = &gupdate_desc_##n,                       \
+		.fs_desc = gupdate_fs_desc_##n,                  \
+	};                                                       \
+                                                                 \
+	USBD_DEFINE_CLASS(gupdate_##n, &gupdate_api,      \
+			  &gupdate_data_##n, NULL);
+#else
 /* Coreboot only parses the first interface descriptor for boot keyboard
  * detection. The section name format (full-speed) in RAM is
  * "._usbd_class_fs.static.<class>_<instance>_fs" and the USB descriptors
@@ -252,15 +237,16 @@ struct usbd_class_api gupdate_api = {
  * HID class.
  */
 #define DEFINE_GUPDATE_CLASS_DATA(n)                             \
-	static struct gupdate_data vendor_gupdate_data_##n = {   \
+	static struct google_data gupdate_data_##n = {   \
 		.sync_sem = Z_SEM_INITIALIZER(                   \
-			vendor_gupdate_data_##n.sync_sem, 0, 1), \
+			gupdate_data_##n.sync_sem, 0, 1), \
 		.desc = &gupdate_desc_##n,                       \
 		.fs_desc = gupdate_fs_desc_##n,                  \
 	};                                                       \
                                                                  \
 	USBD_DEFINE_CLASS(vendor_gupdate_##n, &gupdate_api,      \
-			  &vendor_gupdate_data_##n, NULL);
+			  &gupdate_data_##n, NULL);
+#endif
 
 /*
  * Google update subsystem does not support multiple instances.
@@ -273,15 +259,20 @@ void updater_stream_written(struct consumer const *consumer, size_t count)
 	static uint8_t data[GOOGLE_UPDATE_EP_FS_MPS];
 	struct net_buf *buf;
 
+	// TODO
+	// if (!atomic_test_bit(&data->state, GUPDATE_DEV_CLASS_ENABLED)) {
+	// 	return;
+	// }
+
 	if (queue_is_empty(consumer->queue)) {
 		LOG_ERR("consumer queue is empty");
 		return;
 	}
 
 	do {
-		count = (count > GOOGLE_UPDATE_EP_FS_MPS) ? 64 : count;
+		count = (count > GOOGLE_UPDATE_EP_FS_MPS) ? GOOGLE_UPDATE_EP_FS_MPS : count;
 		queue_peek_units(consumer->queue, data, 0, count);
-		buf = gupdate_buf_alloc(gupdate_get_in_ep(&vendor_gupdate_0));
+		buf = gupdate_buf_alloc(google_get_in_ep(&vendor_gupdate_0));
 		if (!buf) {
 			LOG_ERR("Failed to allocate tx buffer");
 			return;
