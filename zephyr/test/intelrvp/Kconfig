@@ -62,4 +62,17 @@ config TEST_PROJECT_CHG_USB_PD_MECC
     help
         Include chg_usb_pd_mecc_1_1.c into the binary and test its functions.
 
+config TEST_PROJECT_DC_JACK
+	bool "Run tests for dc_jack.c"
+	help
+	  Include dc_jack.c into the binary and test its functions.
+
+config PLATFORM_EC_PD_MAX_POWER_MW
+	int "PD maximum power in milliwatt"
+	default 60000
+	help
+	  The maximum PD negotiated power for the system. The value should match
+	  with configured PLATFORM_EC_PD_MAX_CURRENT_MA and
+	  PLATFORM_EC_PD_MAX_VOLTAGE_MV
+
 source "Kconfig.zephyr"
