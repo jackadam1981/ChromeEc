@@ -33,6 +33,24 @@
       "message": "ec:~\u003e \n    Assertion failed at EC_BASE/ec/zephyr/test/krabby/src/base_detect.c:102: baes_detect_test_base_detect_interrupt: 0 not equal to tablet_get_mode()\n\n FAIL - test_base_detect_interrupt in 0.510 seconds",
       "revId": "b529aadb925a2019515fd0a29c13d23a9283e365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf946187_a4e0dc08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-07-19T01:18:13Z",
+      "side": 1,
+      "message": "INFO    - -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\nINFO    - The following issues were found (showing the top 10 items):\nINFO    - 1) krabby/krabby.wugtrio on native_sim failed (Failed)\nINFO    - \nINFO    - To rerun the tests, call twister using the following commandline:\nINFO    - west twister -p \u003cPLATFORM\u003e -s \u003cTEST ID\u003e, for example:\nINFO    - \nINFO    - west twister -p native_sim -s krabby/krabby.wugtrio\nINFO    - or with west:\nINFO    - west build -p -b native_sim ../../../platform/ec/zephyr/test/krabby -T krabby.wugtrio\nINFO    - -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+      "parentUuid": "15ab43fb_b6b03b03",
+      "revId": "b529aadb925a2019515fd0a29c13d23a9283e365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
