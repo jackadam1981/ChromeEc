@@ -192,6 +192,9 @@ test_mockable __keep int main(void)
 	if (IS_ENABLED(CONFIG_EEPROM_CBI_WP) && system_is_locked())
 		cbi_latch_eeprom_wp();
 
+	if (system_is_locked())
+		ccprints("The system is locked.\n");
+
 #ifdef CONFIG_HOSTCMD_X86
 	/*
 	 * Keyboard scan init/Button init can set recovery events to
