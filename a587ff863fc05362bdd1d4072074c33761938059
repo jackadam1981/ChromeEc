@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ed29887_58e95016",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-07-19T05:39:01Z",
+      "side": 1,
+      "message": "Using \"##\" directly for token concatenation in the Zephyr codebase(DECLARE_DEFERRED in zephyr/shim/include/zephyr_hooks_shim.h) and mixing it with the CONCAT2 definition will cause compilation error.",
+      "parentUuid": "d0ea4f61_7793b8ed",
+      "revId": "a587ff863fc05362bdd1d4072074c33761938059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4aa66a5c_a3cb35ce",
         "filename": "zephyr/include/drivers/usb_stream.h",
         "patchSetId": 13
@@ -65,6 +83,30 @@
           ]
         }
       ],
+      "revId": "a587ff863fc05362bdd1d4072074c33761938059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed5b7fb_1318bd2d",
+        "filename": "zephyr/include/drivers/usb_stream.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-07-19T05:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa66a5c_a3cb35ce",
+      "range": {
+        "startLine": 29,
+        "startChar": 54,
+        "endLine": 29,
+        "endChar": 61
+      },
       "revId": "a587ff863fc05362bdd1d4072074c33761938059",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +158,30 @@
           ]
         }
       ],
+      "revId": "a587ff863fc05362bdd1d4072074c33761938059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e544a880_8b4377b6",
+        "filename": "zephyr/include/drivers/usb_stream.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-07-19T05:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ade185_7cbd3d52",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 61
+      },
       "revId": "a587ff863fc05362bdd1d4072074c33761938059",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
