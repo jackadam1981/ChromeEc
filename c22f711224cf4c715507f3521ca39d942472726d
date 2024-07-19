@@ -16,6 +16,24 @@
       "message": "@shawnku@chromium.org @phoenixshen@chromium.org\nCould you help check the failure reason?",
       "revId": "c22f711224cf4c715507f3521ca39d942472726d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf1b4dc_97611514",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-19T07:30:51Z",
+      "side": 1,
+      "message": "```\nError:\tThe EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr so that new\n\tfunctionality is available in Zephyr also. The following new ad-hoc\n\tCONFIG options were detected:\n\nCONFIG_USB_I2C_MAX_READ_COUNT\nCONFIG_USB_I2C_MAX_WRITE_COUNT\n\n(skipped...)\n\nmake: *** [Makefile.rules:210: build_boards] Error 2\nFailed boards/tests:\n\tnocturne_fp\n\tjewel\n\thyperdebug\n\tkingoftown\n\tgingerbread\n\tshuboz\n\tcasta\n\tdooly\n\tezkinil\n\tvoxel_ecmodeentry\n\tatlas\n\tkuldax\n\tdojo\n\tphaser\n\tgooey\n\tcareena\n\teve\n\tasurada_scp\n\tnpcx7_evb\n\tfizz\n\telm\n\tnucleo-f072rb\n\tpanqueque\n\tvolet\n\tc2d2\n\tbloonchipper-druid\n\tdrobit\n\thammer\n\tadlrvpp_mchp1521\n\tbloog\n\tcoffeecake\n```",
+      "parentUuid": "147de353_91e59817",
+      "revId": "c22f711224cf4c715507f3521ca39d942472726d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
