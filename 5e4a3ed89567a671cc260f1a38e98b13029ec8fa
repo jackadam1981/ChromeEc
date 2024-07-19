@@ -63,6 +63,30 @@
       },
       "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cbfc87_502bbb3c",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2024-07-19T14:04:59Z",
+      "side": 1,
+      "message": "According to my overnight benchmarking of `/mnt/host/source/src/platform/ec/firmware_builder.py --cpus\u003d128 --metrics\u003d/tmp/m build` (5 runs per test, all wall time, 1 warmup run per test, no significant outliers in test times):\n\n- Current patch took an average of 1479s\n- `num_cpus` `-j1` make jobs took an average of 2839s\n- 1 `-j{num_cpus}` job at a time took 1520s\n- `sqrt(num_cpus)` `-jsqrt(num_cpus)` make jobs took an average of 1373s\n\nSo I picked the last one; WDYT?",
+      "parentUuid": "69dfac22_e478558b",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 65
+      },
+      "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
