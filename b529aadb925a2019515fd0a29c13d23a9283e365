@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e8925f_3c15d109",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-07-19T01:15:35Z",
+      "side": 1,
+      "message": "ERROR   - [00:00:00.000,000] \u003cerr\u003e gpio_shim: Config failed ec_bl_en_od (-95)\n[00:00:00.000,000] \u003cerr\u003e gpio_shim: Config failed ec_int_l (-95)\n[00:00:00.000,000] \u003cerr\u003e gpio_shim: Config failed ec_ap_dp_hpd_odl (-95)\n[00:00:00.000,000] \u003cerr\u003e gpio_shim: Config failed en_ec_id_odl (-95)\n[00:00:00.000,000] \u003cinf\u003e emul: Registering 0 emulator(s) for i2c@f01c80\n[00:00:00.000,000] \u003cinf\u003e emul: Registering 0 emulator(s) for i2c@f01cc0\n[00:00:00.000,000] \u003cinf\u003e emul: Registering 0 emulator(s) for i2c@f03580\n[00:00:00.000,000] \u003cinf\u003e emul: Registering 0 emulator(s) for i2c@f03680\n[00:00:00.000,000] \u003cinf\u003e emul: Registering 7 emulator(s) for i2c@f01c40\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027pi3usb9201@5f\u0027 at I2C addr 5f\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027rt9490@53\u0027 at I2C addr 53\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027sb@b\u0027 at I2C addr 0b\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027tcpci_emul@82\u0027 at I2C addr 82\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027syv682x@42\u0027 at I2C addr 42\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027syv682x@43\u0027 at I2C addr 43\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027rt1718s@2c\u0027 at I2C addr 2c\n[00:00:00.000,000] \u003cinf\u003e emul: Registering 1 emulator(s) for i2c@f03500\n[00:00:00.000,000] \u003cinf\u003e i2c_emul_ctlr: Register emulator \u0027tusb1064-mux-1@44\u0027 at I2C addr 44\n[00:00:00.000,000] \u003cerr\u003e adc_emul: unsupported channel id \u00277\u0027\n*** Booting Zephyr OS build v2.7.99-42766-gfc194f4f0ca9 ***",
+      "revId": "b529aadb925a2019515fd0a29c13d23a9283e365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
