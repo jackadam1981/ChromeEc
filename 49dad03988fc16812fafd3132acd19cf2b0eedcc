@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637c9551_fe27eb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-07-19T06:34:44Z",
+      "side": 1,
+      "message": "```\n\nbazel/test_gen_bazel_targets.py::test_generated_file \nFAILED              [100%]\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d FAILURES \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n_____________________________ test_generated_file ______________________________\n\n    def test_generated_file():\n        \"\"\"Test that the generated file is up-to-date.\"\"\"\n        # TODO(b/300287548): Generate the public and private bazel targets\n        # separately.\n        if not (pathlib.Path(__file__).parent.parent / \"private\").is_dir():\n            pytest.skip(\"Don\u0027t test bazel generation in public checkouts\")\n\u003e       assert (\n            gen_bazel_targets.DEFAULT_OUTPUT.read_text(encoding\u003d\"utf-8\")\n            \u003d\u003d gen_bazel_targets.gen_bazel()\n        ), \"Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.\"\nE       AssertionError: Build targets were changed.  Please run ./bazel/gen_bazel_targets.py.\nE       assert \u0027# Copyright ...lse,\\n    )\\n\u0027 \u003d\u003d \u0027# Copyright 2...lse,\\n    )\\n\u0027\nE           # Copyright 2023 The ChromiumOS Authors\nE           # Use of this source code is governed by a BSD-style license that can be\nE           # found in the LICENSE file.\nE           \nE           # This file is auto-generated.  To update, run:\nE           # ./bazel/gen_bazel_targets.py\nE           ...\nE         \nE         ...Full output truncated (2527 lines hidden), use \u0027-vv\u0027 to show\n\nbazel/test_gen_bazel_targets.py:19: AssertionError\n```\n\nPlease run `./bazel/gen_bazel_targets.py` instead of adding in .bzl manually.",
+      "revId": "49dad03988fc16812fafd3132acd19cf2b0eedcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
