@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956e1da8_ab5fff7e",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-19T16:19:13Z",
+      "side": 1,
+      "message": "If the power management task tried to send an invalid/unsupported command, it\u0027s a programming error, but the driver state machine is still fine. We don\u0027t need to reinitialize the PDC. Can we just set the CCI bit for an error, call the callback, and go back to idle?",
+      "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e08bba8_9aa45e01",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-19T16:19:13Z",
+      "side": 1,
+      "message": "Can you do this as just a `memcpy` with no loop?",
+      "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
