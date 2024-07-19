@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b00f53_517df02c",
+        "filename": "zephyr/test/utils/src/utils_str.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-19T00:04:31Z",
+      "side": 1,
+      "message": "This file looks like the same as `zephyr/test/hwtest/src/utils_str.c`?\n\nIs the idea that this one is a unit test that can run in the simulator and the other one is a test that runs on hardware? If so, let\u0027s go ahead and use a symlink so they remain in sync.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "8d92f176e8b95c0202fc4b0c65416ca85f7f6a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
