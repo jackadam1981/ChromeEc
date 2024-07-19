@@ -34,6 +34,24 @@
       "message": "125000 to make sure we can support ST sensors with ODR of 108Hz.",
       "revId": "47779483ac4d1ddf0801cfb154163998ef15816f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb20e1b_110b7c49",
+        "filename": "zephyr/program/corsola/squirtle/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-07-19T02:14:31Z",
+      "side": 1,
+      "message": "Hi gwendal：\n\nIs this change necessary? We have already completed fw qual. This change may be carried forward to the next version.",
+      "parentUuid": "ee33871f_2127488b",
+      "revId": "47779483ac4d1ddf0801cfb154163998ef15816f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
