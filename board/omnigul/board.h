@@ -194,6 +194,11 @@
 /* DISABLE POWERINDEBUG */
 #undef CONFIG_CMD_POWERINDEBUG
 
+/* BATTERY */
+#define CONFIG_SMBUS_PEC
+#undef CONFIG_I2C_NACK_RETRY_COUNT
+#define CONFIG_I2C_NACK_RETRY_COUNT 10
+
 /*
  * Older boards have a different ADC assignment.
  */
