@@ -2927,6 +2927,7 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: set role to %d", port,
 		state);
 
+	atomic_clear_bit(port_data->src_policy.flags, SRC_POLICY_FORCE_SNK);
 	switch (state) {
 	/* While disconnected, toggle between src and sink */
 	case PD_DRP_TOGGLE_ON:
