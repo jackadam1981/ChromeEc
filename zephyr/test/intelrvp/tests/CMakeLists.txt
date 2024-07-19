@@ -37,4 +37,10 @@ target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE
   "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/mtlrvp/src/tcpc.c"
 )
 target_sources_ifdef(CONFIG_TEST_PROJECT_TCPC app PRIVATE mtlrvp_npcx/src/tcpc.c)
+
+# Add sources for chg_usb_pd_mecc_1_1.c functionality and related platform-specific files
+target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE intelrvp/src/chg_usb_pd_mecc_1_1.c)
+target_sources_ifdef(CONFIG_TEST_PROJECT_CHG_USB_PD_MECC app PRIVATE
+  "${PLATFORM_EC_PROGRAM_DIR}/intelrvp/src/chg_usb_pd_mecc_1_1.c"
+)
 endif()
