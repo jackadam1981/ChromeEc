@@ -22,6 +22,30 @@
       },
       "revId": "8d92f176e8b95c0202fc4b0c65416ca85f7f6a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de8ca4e_edbf2fc6",
+        "filename": "zephyr/test/utils/src/utils_str.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-19T11:52:27Z",
+      "side": 1,
+      "message": "This file is not used, I forgot to remove it. Thanks for catching that.",
+      "parentUuid": "62b00f53_517df02c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "8d92f176e8b95c0202fc4b0c65416ca85f7f6a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
