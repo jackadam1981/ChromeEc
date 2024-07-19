@@ -87,6 +87,30 @@
       },
       "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc86efe4_6370f688",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-19T16:02:26Z",
+      "side": 1,
+      "message": "SGTM. Can you paste those results into the commit message for posterity?",
+      "parentUuid": "94cbfc87_502bbb3c",
+      "range": {
+        "startLine": 427,
+        "startChar": 4,
+        "endLine": 427,
+        "endChar": 65
+      },
+      "revId": "5e4a3ed89567a671cc260f1a38e98b13029ec8fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
