@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ea4f61_7793b8ed",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-19T04:59:41Z",
+      "side": 1,
+      "message": "why do you need the ifdef here?",
+      "revId": "a587ff863fc05362bdd1d4072074c33761938059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa66a5c_a3cb35ce",
+        "filename": "zephyr/include/drivers/usb_stream.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-19T04:59:41Z",
+      "side": 1,
+      "message": "remove these whitespace",
+      "range": {
+        "startLine": 29,
+        "startChar": 54,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "94364980_9075869b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/usb_stream.h",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t.ops \u003d \u0026CONCAT2(consumer_ops_, NAME),               \\\n"
+            },
+            {
+              "path": "zephyr/include/drivers/usb_stream.h",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t.ops \u003d \u0026CONCAT2(producer_ops_, NAME),               \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a587ff863fc05362bdd1d4072074c33761938059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ade185_7cbd3d52",
+        "filename": "zephyr/include/drivers/usb_stream.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-07-19T04:59:41Z",
+      "side": 1,
+      "message": "remove these whitespace",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 61
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1b0465d5_b89be57e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/usb_stream.h",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t.ops \u003d \u0026CONCAT2(consumer_ops_, NAME),               \\\n"
+            },
+            {
+              "path": "zephyr/include/drivers/usb_stream.h",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t.ops \u003d \u0026CONCAT2(producer_ops_, NAME),              \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a587ff863fc05362bdd1d4072074c33761938059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
