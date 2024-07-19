@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6a618b_31ef3af5",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/i2c_charger.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-19T00:01:51Z",
+      "side": 1,
+      "message": "this should be part of previous CL",
+      "revId": "a3facc3704820576d41e59826f7017ddc05ef0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e813a7_bc24ba0c",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-19T00:01:51Z",
+      "side": 1,
+      "message": "how about adding two tests one for attached and another one for detached",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "a3facc3704820576d41e59826f7017ddc05ef0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
