@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "94bc259d056448262691a1333a279a728f88cb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8ea09a_3e9a6de4",
+        "filename": "zephyr/drivers/usbc/tps6699x.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-19T23:09:37Z",
+      "side": 1,
+      "message": "When should we change over to using `GOOGxy40`?",
+      "range": {
+        "startLine": 3137,
+        "startChar": 15,
+        "endLine": 3137,
+        "endChar": 42
+      },
+      "revId": "94bc259d056448262691a1333a279a728f88cb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
