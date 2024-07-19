@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7ee1d5e_465759c2",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-19T20:22:01Z",
+      "side": 1,
+      "message": "Here\u0027s an even simpler version that reproduces it:   https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5726441. I\u0027ll add my comments there.",
+      "parentUuid": "52f5652c_eae02540",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 29
+      },
+      "revId": "321849e2b85d7349a507ebd9c52c149d8b5499fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06a48573_0c3cfb7b",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 1
