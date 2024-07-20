@@ -39,6 +39,30 @@
       },
       "revId": "94bc259d056448262691a1333a279a728f88cb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f77c86_9ec51acb",
+        "filename": "zephyr/drivers/usbc/tps6699x.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-20T04:16:55Z",
+      "side": 1,
+      "message": "We could change it to GOOGxy40 after we think the config are locked down. Probably after validation by quanta and issue fixed.",
+      "parentUuid": "8b8ea09a_3e9a6de4",
+      "range": {
+        "startLine": 3137,
+        "startChar": 15,
+        "endLine": 3137,
+        "endChar": 42
+      },
+      "revId": "94bc259d056448262691a1333a279a728f88cb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
