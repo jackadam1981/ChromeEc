@@ -341,3 +341,9 @@ config PLATFORM_EC_LED_DRIVER_AW20198
 	  Enable driver for AW20198 LED controller.
 
 endif # PLATFORM_EC_RGB_KEYBOARD
+
+config PLATFORM_EC_USB_CONSOLE_READ
+	bool "Enable read ec console log"
+	default n
+	help
+	  Append detachable base EC console log to /var/log/hammerd.log.

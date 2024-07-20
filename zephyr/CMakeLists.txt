@@ -523,6 +523,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_TIMER
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_CHARGER
                                                 "${PLATFORM_EC}/common/usb_charger.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_CONSOLE_READ
+                                                "${PLATFORM_EC}/common/uart_buffering.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PORT_POWER_DUMB
                                                 "${PLATFORM_EC}/common/usb_port_power_dumb.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PORT_POWER_SMART
