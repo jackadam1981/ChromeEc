@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e489f9bb_115ee444",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:29:42Z",
+      "side": 1,
+      "message": "Such check is not correct e.g.\n\nbuff \u003d {1, 2, 3, 4, 5, 6};\n`memmove(buf + 2, buf, 4);`\nShould result in buf \u003d {1, 2, 1, 2, 3, 4}\nso\n`TEST_ASSERT_ARRAY_EQ(buf, buf + 2, 4);`\nis not a good check. And this is our case.\n\nAfter so many iteration the buffs end up being equal, but this is \na coincident.",
+      "parentUuid": "840cfb4a_f6d09348",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "53d8a6b2cf5f31c9c20b38396f2c8f916d83447c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ecf939c3_f1902d56",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-07-19T18:17:48Z",
       "side": 1,
       "message": "I think it would be clearer what this code is testing if you put this in a separate function like `memmove_with_overlap()`. It also isolates the test a little more, so that the other tests in this function can\u0027t interfere with it.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 47
+      },
+      "revId": "53d8a6b2cf5f31c9c20b38396f2c8f916d83447c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad12d0d3_f471fe42",
+        "filename": "test/stdlib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889618c3_652d4ac4",
       "range": {
         "startLine": 364,
         "startChar": 0,
