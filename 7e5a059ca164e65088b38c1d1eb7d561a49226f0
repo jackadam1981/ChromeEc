@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7571f063_232b4ef7",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/gpio.dtsi",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T15:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397b1a68_4ef4330e",
+      "revId": "7e5a059ca164e65088b38c1d1eb7d561a49226f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33591b08_bde19704",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-18T23:35:26Z",
       "side": 1,
       "message": "rename tcpc_i2c.dtsi to be consistent with NPCX?",
+      "revId": "7e5a059ca164e65088b38c1d1eb7d561a49226f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69858175_a3a127f1",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/mtlrvp_mchp.dtsi",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T15:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33591b08_bde19704",
       "revId": "7e5a059ca164e65088b38c1d1eb7d561a49226f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
