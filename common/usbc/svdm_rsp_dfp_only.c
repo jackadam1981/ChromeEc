@@ -14,14 +14,20 @@
 
 static int svdm_identity(int port, uint32_t *payload)
 {
-	if (pd_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) {
+	//PD3: when receive SVDM cmd request
+	//1)DFP: platform more than one DFP reply ACK
+	//       otherwise reply NAK
+	//2)UFP: reply NAK
+
+	//if (pd_get_rev(port, TCPCI_MSG_SOP) < PD_REV30 /* || we're UFP || we're DFP and only one DFP */) {
 		/*
 		 * PD 2 requires that DFPs nack received SVDM requests when no
 		 * modes are supported. PD 3 allows a response.
 		 */
-		return 0;
-	}
+		return 0; //always return NAK
+	//}
 
+#if 0
 	payload[VDO_I(CSTAT)] = VDO_CSTAT(CONFIG_USB_PD_XID);
 	payload[VDO_I(PRODUCT)] =
 		VDO_PRODUCT(CONFIG_USB_PID, CONFIG_USB_BCD_DEV);
@@ -37,6 +43,18 @@ static int svdm_identity(int port, uint32_t *payload)
 	payload[VDO_I(PRODUCT) + 1] = VDO_DFP(VDO_DFP_HOST_CAPABILITY_USB32,
 					      USB_TYPEC_RECEPTACLE, port);
 	return VDO_I(PRODUCT) + 2;
+#endif
+}
+
+
+static int svdm_svid(int port, uint32_t *payload)
+{
+	return 0; //always return NAK
+}
+
+static int svdm_mode(int port, uint32_t *payload)
+{
+	return 0; //always return NAK
 }
 
 __override const struct svdm_response svdm_rsp = {
@@ -47,4 +65,6 @@ __override const struct svdm_response svdm_rsp = {
 	 * as Responder in any mode, so leave them unimplemented. See 6.13.5,
 	 * Applicability of Structured VDM Commands.
 	 */
+	.svids = svdm_svid,
+	.modes = svdm_mode,
 };
