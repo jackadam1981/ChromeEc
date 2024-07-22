@@ -92,6 +92,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43a2fc85_18a22694",
+        "filename": "zephyr/program/brox/jubilant/include/keyboard_customization.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-22T20:26:20Z",
+      "side": 1,
+      "message": "my patch landed. you can remove this `extern` section now.",
+      "parentUuid": "00b41f7b_9fc1fb96",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "ec836f6bf81bc73caf4dd3907bf952f27e2097f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afd8a5bd_554b1cae",
         "filename": "zephyr/program/brox/jubilant/include/keyboard_customization.h",
         "patchSetId": 1
