@@ -16,6 +16,47 @@
       "message": "Friendly ping",
       "revId": "f7d58026aa43f7c7894a1b60632226529abcf3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfc378f_689e09f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-22T23:40:39Z",
+      "side": 1,
+      "message": "Sorry, not sure how I missed this.",
+      "parentUuid": "e2656c70_72c294cb",
+      "revId": "f7d58026aa43f7c7894a1b60632226529abcf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be4f55b_8ec143d7",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-22T23:40:39Z",
+      "side": 1,
+      "message": "Does 8k or faster work?",
+      "range": {
+        "startLine": 189,
+        "startChar": 90,
+        "endLine": 189,
+        "endChar": 94
+      },
+      "revId": "f7d58026aa43f7c7894a1b60632226529abcf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
