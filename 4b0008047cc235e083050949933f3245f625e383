@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8f4a966_ef09befd",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-22T23:51:54Z",
+      "side": 1,
+      "message": "Ack, may be remove the expected_id variable and return a macro at line 62",
+      "parentUuid": "90d065b8_f516b5bc",
+      "range": {
+        "startLine": 40,
+        "startChar": 66,
+        "endLine": 40,
+        "endChar": 67
+      },
+      "revId": "4b0008047cc235e083050949933f3245f625e383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de057cd4_d249872a",
         "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
         "patchSetId": 14
