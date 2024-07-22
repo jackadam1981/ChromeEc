@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc864b8_d040db0d",
+        "filename": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T23:35:02Z",
+      "side": 1,
+      "message": "nit: I think it may be a little easier to read with a [range-based for loop](https://en.cppreference.com/w/cpp/language/range-for):\n\n```\nfor (const auto \u0026item : data-\u003edata()) {\n\tzassert_equal(item, 1);\n}\n```",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "08dae519ea6f53b1a1cf20339ffe4dd89854f57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5f2721_3e116129",
+        "filename": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T23:35:02Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4c3658fb_ec523397",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 78,
+                "endChar": 0
+              },
+              "replacement": "\tfor (const auto \u0026item : data-\u003edata()) {\n\t\tzassert_true(item \u003d\u003d 1);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+              "range": {
+                "startLine": 175,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "\tfor (const auto \u0026item : array.data()) {\n\t\tzassert_true(item \u003d\u003d 1);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "08dae519ea6f53b1a1cf20339ffe4dd89854f57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
