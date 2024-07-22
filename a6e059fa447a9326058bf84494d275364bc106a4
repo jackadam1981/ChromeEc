@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7b4c180_779c318d",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:32:35Z",
+      "side": 1,
+      "message": "Do you mean in the commit message?",
+      "parentUuid": "36a9890a_df75edb0",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 36
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "604c95ce_509c46e3",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-19T18:48:01Z",
       "side": 1,
       "message": "Can you file a bug and add a `TODO(b/123` for it?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "675c8244_77aa5624",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "604c95ce_509c46e3",
       "range": {
         "startLine": 161,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec2f86b6_688a02eb",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:32:35Z",
+      "side": 1,
+      "message": "I left printing the timings.",
+      "parentUuid": "fb75a0b9_06983040",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71af7591_5857e5e9",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b3f5fd9_6ca11586",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:32:35Z",
+      "side": 1,
+      "message": "I left the timing compassion only for memset, to be sure we are better than dumb_memset.",
+      "parentUuid": "71af7591_5857e5e9",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 54
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f55ef02_6f85b129",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
@@ -106,6 +202,30 @@
       "writtenOn": "2024-07-19T18:48:01Z",
       "side": 1,
       "message": "Seems like we should put this in the original EC version too?",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 33
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9185486b_85c5fad2",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-22T11:32:35Z",
+      "side": 1,
+      "message": "Done in CL:5725545",
+      "parentUuid": "9f55ef02_6f85b129",
       "range": {
         "startLine": 425,
         "startChar": 0,
