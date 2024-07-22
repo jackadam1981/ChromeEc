@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9de44c7_591cf1d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-22T08:01:35Z",
+      "side": 1,
+      "message": "We split 3 CLs as follow:\nhttps://crrev.com/c/5727698\nhttps://crrev.com/c/5725840\nhttps://crrev.com/c/5657097\nBecause the matching library (https://crrev.com/i/7430117) was base on https://crrev.com/c/5725840 to develop. Therefore https://crrev.com/c/5657097 needs to be built with https://crrev.com/c/5725840 and https://crrev.com/i/7430117.",
+      "parentUuid": "8f95f91d_86eb0d82",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "112003e30c38e145f2252f24ec861e9e0a4f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8109b06a_d25f670a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-19T21:00:31Z",
       "side": 1,
       "message": "Elan?",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "112003e30c38e145f2252f24ec861e9e0a4f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb81fff_431b273b",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-22T08:01:35Z",
+      "side": 1,
+      "message": "Fixed in https://crrev.com/c/5727698.",
+      "parentUuid": "8109b06a_d25f670a",
       "range": {
         "startLine": 65,
         "startChar": 11,
