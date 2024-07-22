@@ -16,6 +16,23 @@
       "message": "Deferring to EC engineering group fro approval.",
       "revId": "e904860766c082800b983bebfb92133a3570c019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f54289_5ad1e54a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-22T17:24:06Z",
+      "side": 1,
+      "message": "code is fine, can you see about adding some test coverage? there should be some examples in `brox/tests/lotso/src/keyboard.c` and `brox/tests/greenbayupoc/src/keyboard.c`",
+      "revId": "e904860766c082800b983bebfb92133a3570c019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
