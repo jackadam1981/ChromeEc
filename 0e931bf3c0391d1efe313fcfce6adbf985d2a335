@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4a59bc_633fc19b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-22T18:25:34Z",
+      "side": 1,
+      "message": "I think you\u0027re right. The error recovery state isn\u0027t doing as much as I thought (for now). I note that there\u0027s a TODO to do more error recovery. If the state ends up doing anything to the PDC, then we\u0027d probably want to refactor this code to distinguish between failure in the driver interface and failure in the PDC. But this is fine for now.",
+      "parentUuid": "6ea75b91_f5cc998c",
+      "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e08bba8_9aa45e01",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "We could do with memcpy if thinking a debug log is not needed here.",
       "parentUuid": "7e08bba8_9aa45e01",
+      "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe2d093_d15e98f5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-22T18:25:34Z",
+      "side": 1,
+      "message": "If we\u0027re going to have a debug log, it might be nicer to have it at the `pdc_power_mgmt` level. We should be recording the same PDOs regardless of the PDC driver.",
+      "parentUuid": "59ab5dce_52af7dbf",
       "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
