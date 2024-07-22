@@ -82,18 +82,18 @@
 		&kso13_default
 		&kso14_default
 		&kso15_default
-		&kso16_gpc3_default
-		&kso17_gpc5_default
+		// &kso16_gpc3_default
+		// &kso17_gpc5_default
 	>;
 	pinctrl-names = "default";
 	row-size = <8>;
-	col-size = <18>;
+	col-size = <16>;
 	settle-time-us = <80>;
 	debounce-down-ms = <15>;
 	debounce-up-ms = <15>;
 	actual-key-mask = <0x08 0xff 0xff 0xff 0xff 0xff 0xff 0xa0
 			   0xff 0xff 0x01 0xff 0xff 0x40 0x0a 0x40
-			   0x01 0xc4>;
+			   /* 0x01 0xc4 */>;
 
 	kso-gpio {
 		compatible = "cros-ec,col-gpio";
