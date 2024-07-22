@@ -11,6 +11,10 @@
 # See https://chromium.googlesource.com/chromiumos/third_party/cryptoc .
 ifeq ($(CONFIG_LIBCRYPTOC),y)
 
+# The eigen3 path can be overridden on invocation, as in the following example:
+# $ make EIGEN3_DIR=~/src/eigen3 BOARD=bloonchipper-druid
+EIGEN3_DIR ?= ../../third_party/eigen3
+
 # The cryptoc path can be overridden on invocation, as in the following example:
 # $ make CRYPTOC_DIR=~/src/cryptoc BOARD=bloonchipper
 CRYPTOC_DIR ?= ../../third_party/cryptoc
