@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ea75b91_f5cc998c",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-22T02:52:44Z",
+      "side": 1,
+      "message": "I assume the error_recovery state is doing this: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/usbc/pdc_tps6699x.c;drc\u003d787a903d4df635e9c5993afc1b8c98375a3b4db7;l\u003d581",
+      "parentUuid": "956e1da8_ab5fff7e",
+      "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e08bba8_9aa45e01",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-19T16:19:13Z",
       "side": 1,
       "message": "Can you do this as just a `memcpy` with no loop?",
+      "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ab5dce_52af7dbf",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-22T02:52:44Z",
+      "side": 1,
+      "message": "We could do with memcpy if thinking a debug log is not needed here.",
+      "parentUuid": "7e08bba8_9aa45e01",
       "revId": "0e931bf3c0391d1efe313fcfce6adbf985d2a335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
