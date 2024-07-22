@@ -56,7 +56,7 @@ int fp_sensor_init(void)
 
 	errors = 0;
 	elan_execute_reset();
-	algorithm_parameter_setting();
+	elan_alg_param_setting();
 	if (IC_SELECTION == EFSA80SG)
 		elan_set_hv_chip(1);
 
@@ -90,7 +90,6 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 
 	CPRINTF("========%s=======\n", __func__);
 	memcpy(resp, &ec_fp_sensor_info, sizeof(struct ec_response_fp_info));
-	elan_sensor_get_alg_info(resp);
 	resp->errors |= errors;
 	CPRINTF("##%s## FrameSize=%d, errors=0x%04x\n", __func__,
 		resp->frame_size, resp->errors);
@@ -245,22 +244,4 @@ int fp_maintenance(void)
 {
 	CPRINTF("========%s=======\n", __func__);
 	return elan_fp_maintenance(&errors);
-}
-
-/**
- * Provides the init_trng function required by the elan library using the EC
- * trng API
- */
-void init_trng(void)
-{
-	trng_init();
-}
-
-/**
- * Provides the exit_trng function required by the elan library using the EC
- * trng API
- */
-void exit_trng(void)
-{
-	trng_exit();
 }
