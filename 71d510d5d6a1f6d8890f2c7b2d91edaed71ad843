@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b87e4c_879d9459",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "\"Unaligned\"",
+      "range": {
+        "startLine": 356,
+        "startChar": 12,
+        "endLine": 356,
+        "endChar": 21
+      },
+      "revId": "71d510d5d6a1f6d8890f2c7b2d91edaed71ad843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca528e7_74d9ea88",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "\"Aligned\"",
+      "range": {
+        "startLine": 358,
+        "startChar": 12,
+        "endLine": 358,
+        "endChar": 19
+      },
+      "revId": "71d510d5d6a1f6d8890f2c7b2d91edaed71ad843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95a2ab9_80b04695",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "\"Unaligned\"",
+      "range": {
+        "startLine": 438,
+        "startChar": 12,
+        "endLine": 438,
+        "endChar": 21
+      },
+      "revId": "71d510d5d6a1f6d8890f2c7b2d91edaed71ad843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5075678_5278f43b",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "\"Aligned\"",
+      "range": {
+        "startLine": 439,
+        "startChar": 12,
+        "endLine": 439,
+        "endChar": 19
+      },
+      "revId": "71d510d5d6a1f6d8890f2c7b2d91edaed71ad843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a53ed30_2823a8cc",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "\"Unaligned\"",
+      "range": {
+        "startLine": 505,
+        "startChar": 12,
+        "endLine": 505,
+        "endChar": 21
+      },
+      "revId": "71d510d5d6a1f6d8890f2c7b2d91edaed71ad843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73089f9_658f10a5",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "\"Aligned\"",
+      "range": {
+        "startLine": 507,
+        "startChar": 12,
+        "endLine": 507,
+        "endChar": 19
+      },
+      "revId": "71d510d5d6a1f6d8890f2c7b2d91edaed71ad843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

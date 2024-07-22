@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe11990_4426aad3",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "Yes. I see you added it. Thanks!",
+      "parentUuid": "b7b4c180_779c318d",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 36
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604c95ce_509c46e3",
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d10ca74_6ede398b",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "Is there any reason not to have the asserts too? It *should* always be faster, but it would be a concern if it wasn\u0027t for some reason, so it doesn\u0027t seem like it\u0027s bad to verify that.",
+      "parentUuid": "ec2f86b6_688a02eb",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71af7591_5857e5e9",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "I left the timing compassion only for memset, to be sure we are better than dumb_memset.",
       "parentUuid": "71af7591_5857e5e9",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 54
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2eb14a9_c16c8158",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:17:19Z",
+      "side": 1,
+      "message": "Oh, I meant something different. We collect the timing information on all architectures, but it looks like we only do the check if `!IS_ENABLED(CONFIG_ARCH_POSIX)`. Do we need the `if (!IS_ENABLED(CONFIG_ARCH_POSIX))`? (i.e., always do the check no matter what architecture)",
+      "parentUuid": "0b3f5fd9_6ca11586",
       "range": {
         "startLine": 403,
         "startChar": 0,
