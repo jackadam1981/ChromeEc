@@ -68,6 +68,24 @@
       "parentUuid": "0c9c1171_e409b201",
       "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbf2cc4_0f0f1816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-22T22:40:58Z",
+      "side": 1,
+      "message": "One thought that occurred to me is that I\u0027ve been trying to reproduce the error with LLVM r530567, but the builder is probably using the older LLVM version. I\u0027ll do a build with that to see if that makes a difference.",
+      "parentUuid": "ce9b66da_b582d6c0",
+      "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
