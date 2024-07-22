@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2178333_da103114",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T22:09:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06ee5d26_6570c539",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "4b0008047cc235e083050949933f3245f625e383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd98155_a017f636",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90d065b8_f516b5bc",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T22:09:57Z",
+      "side": 1,
+      "message": "The idea was to set the gpios and interpret the value based on it. This is also to make this function less complex for incorporating other boards in future. PTLRVP does not interpret the gpios in same order as MTLRVP for board_id. If gpios are set according to the board_id, we will have to set the gpios differently for individual boards which can elongate the function.",
+      "parentUuid": "2dd98155_a017f636",
+      "range": {
+        "startLine": 40,
+        "startChar": 66,
+        "endLine": 40,
+        "endChar": 67
+      },
+      "revId": "4b0008047cc235e083050949933f3245f625e383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de057cd4_d249872a",
         "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
         "patchSetId": 14
@@ -60,6 +108,30 @@
       "writtenOn": "2024-07-18T19:49:40Z",
       "side": 1,
       "message": "board_id;",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "4b0008047cc235e083050949933f3245f625e383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54737afb_2bfceadf",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T22:09:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "de057cd4_d249872a",
       "range": {
         "startLine": 62,
         "startChar": 8,
