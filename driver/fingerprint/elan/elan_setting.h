@@ -16,6 +16,9 @@
 #define MID 0x01
 #define VERSION 0x100B
 
+/* The 16-bit hardware ID is 0x4f4f */
+#define FP_SENSOR_HWID_ELAN 0x4f4f
+
 /**
  * Elan sensor operation is controlled by sending commands and receiving
  * through the SPI interface. There are several SPI command codes for

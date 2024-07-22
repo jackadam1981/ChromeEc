@@ -83,6 +83,13 @@ __staticlib_hook int elan_write_register(uint8_t regaddr, uint8_t regdata)
 	return ret;
 }
 
+int elan_read_register(uint8_t regaddr, uint8_t *regdata)
+{
+	regaddr = READ_REG_HEAD + regaddr;
+
+	return elan_read_cmd(regaddr, regdata);
+}
+
 __staticlib_hook int elan_write_page(uint8_t page)
 {
 	int ret = 0;
