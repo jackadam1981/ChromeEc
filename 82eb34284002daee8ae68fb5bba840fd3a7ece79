@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49f60ee_0f1bda8d",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/power_signals.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-22T21:40:07Z",
+      "side": 1,
+      "message": "why are these commented 1.8v but not GPIO_VOLTAGE_1P8?",
+      "range": {
+        "startLine": 34,
+        "startChar": 51,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d78a9b_cdd7fd9b",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-22T21:40:07Z",
+      "side": 1,
+      "message": "should most of these go into `prj.conf` as they\u0027ll be\ncommon among the test scenarios?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
