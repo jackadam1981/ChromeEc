@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2001e7ae_d96b4032",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_mchp/i2c_charger.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-22T23:55:06Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "36730f4f83bbee3cf8731141ce4efae28c586eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96963677_19afb637",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-22T23:55:06Z",
+      "side": 1,
+      "message": "when logic high, need to check if port is DC jack and current \u0026 vtg are max as provided in board file",
+      "revId": "36730f4f83bbee3cf8731141ce4efae28c586eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
