@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61741ad9_bed4001b",
+        "filename": "test/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:03:34Z",
+      "side": 1,
+      "message": "Even if we don\u0027t use the entire buffer, it\u0027s probably good to go ahead and initialize it all so that someone doesn\u0027t try to add a new test later and accidentally use uninitialized memory.\n\nMaybe it would just be simpler/clearer to split out the benchmark part of the test into its own test like you do with `test_memmove_overlap`. The remaining \"small moves\" tests could use a smaller buffer that\u0027s allocated on the stack.",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 20
+      },
+      "revId": "c4e8aa32e777e2bf169955faca94e9410f583d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c41383e_295c85d2",
+        "filename": "test/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-22T18:03:34Z",
+      "side": 1,
+      "message": "IIRC, this returns if it fails. In that case we would leak `buf`.\n\nWe could put `buf` on the stack. If the size is too big we could make it smaller. It probably doesn\u0027t need to be so big for this test. (I think they probably tried to make it somewhat large for the benchmark in the original test, but test only needs to check correctness.)",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 47
+      },
+      "revId": "c4e8aa32e777e2bf169955faca94e9410f583d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
