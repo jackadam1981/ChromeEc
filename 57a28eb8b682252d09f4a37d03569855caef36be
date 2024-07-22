@@ -16,6 +16,23 @@
       "message": "Please add the explanation for build.mk from https://crrev.com/c/5516677:\n\n\u003e Introduce a Makefile hook for third_party build variables. The third_party/rules.mk was designed to introduce strictly make rules, which are included too late to be able to influence things like adding build output dirs and source includes for certain step.",
       "revId": "57a28eb8b682252d09f4a37d03569855caef36be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b546a582_6b2bd2ec",
+        "filename": "third_party/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-22T23:51:08Z",
+      "side": 1,
+      "message": "Missing ending new line.",
+      "revId": "57a28eb8b682252d09f4a37d03569855caef36be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
