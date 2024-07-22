@@ -803,7 +803,8 @@ static void it8xxx2_init(enum usbpd_port port, int role)
 				     IT83XX_USBPD_CC_PIN_CONFIG2 :
 				     IT83XX_USBPD_CC_PIN_CONFIG);
 
-	if (IS_ENABLED(CONFIG_IT83XX_TUNE_CC_PHY)) {
+	if (IS_ENABLED(CONFIG_IT83XX_TUNE_CC_PHY) ||
+	    IS_ENABLED(CONFIG_PLATFORM_EC_IT83XX_TUNE_CC_PHY)) {
 		/* Tune cc Tx pre-driving time */
 		const struct cc_para_t *ptr =
 			board_get_cc_tuning_parameter(port);
