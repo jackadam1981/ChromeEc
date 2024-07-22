@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20906ac3_2a44805c",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/power_signals.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T23:39:04Z",
+      "side": 1,
+      "message": "fixed with required flag.",
+      "parentUuid": "a49f60ee_0f1bda8d",
+      "range": {
+        "startLine": 34,
+        "startChar": 51,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d78a9b_cdd7fd9b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-22T21:40:07Z",
       "side": 1,
       "message": "should most of these go into `prj.conf` as they\u0027ll be\ncommon among the test scenarios?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6f21f7_ab48b165",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-22T23:39:04Z",
+      "side": 1,
+      "message": "removed CONFIG_PLATFORM_EC which is common. The rest of the flags are not common when more tests are added in subsequent CLs.",
+      "parentUuid": "27d78a9b_cdd7fd9b",
       "range": {
         "startLine": 30,
         "startChar": 4,
