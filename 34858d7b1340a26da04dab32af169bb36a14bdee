@@ -46,6 +46,30 @@
       },
       "revId": "34858d7b1340a26da04dab32af169bb36a14bdee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bae714_dcb13bcf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-22T23:04:28Z",
+      "side": 1,
+      "message": "I think early bailout in `public_api_block` makes sense.  We should be able to drop the checks from all the callers.",
+      "parentUuid": "0ef37134_72282cea",
+      "range": {
+        "startLine": 2447,
+        "startChar": 0,
+        "endLine": 2447,
+        "endChar": 55
+      },
+      "revId": "34858d7b1340a26da04dab32af169bb36a14bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
