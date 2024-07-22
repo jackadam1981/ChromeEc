@@ -33,6 +33,24 @@
       "message": "Missing ending new line.",
       "revId": "57a28eb8b682252d09f4a37d03569855caef36be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d6e3d7_89fef50a",
+        "filename": "third_party/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-22T23:53:03Z",
+      "side": 1,
+      "message": "You can configure vscode to always place the final newline. https://stackoverflow.com/a/44704969\n\n`\"files.insertFinalNewline\": true,`",
+      "parentUuid": "b546a582_6b2bd2ec",
+      "revId": "57a28eb8b682252d09f4a37d03569855caef36be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
