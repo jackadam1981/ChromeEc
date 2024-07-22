@@ -16,6 +16,24 @@
       "message": "```\n  Cannot find source file:\n    /mnt/host/source/src/platform/ec/zephyr/program/brox/jubilant/src/keyboard.c\n```\n\nthis as well",
       "revId": "d1d212d8984ef18fe0274d343d04c04cef3832e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ca76d4_2d7e5b3f",
+        "filename": "zephyr/program/brox/jubilant/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-07-22T01:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c756979_b8a11735",
+      "revId": "d1d212d8984ef18fe0274d343d04c04cef3832e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
