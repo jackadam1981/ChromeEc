@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c8bb822_fb20404c",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-23T12:21:42Z",
+      "side": 1,
+      "message": "From my measurements, unaligned and aligned memmoves take the same amount of time. However aligned memcpy is ~3 times faster. Not sure what it works like that. Do you think we should investigate that?",
+      "parentUuid": "3d10ca74_6ede398b",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71af7591_5857e5e9",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "Oh, I meant something different. We collect the timing information on all architectures, but it looks like we only do the check if `!IS_ENABLED(CONFIG_ARCH_POSIX)`. Do we need the `if (!IS_ENABLED(CONFIG_ARCH_POSIX))`? (i.e., always do the check no matter what architecture)",
       "parentUuid": "0b3f5fd9_6ca11586",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 54
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d30078_7d094e0c",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-23T12:21:42Z",
+      "side": 1,
+      "message": "Time measurement doesn\u0027t work on `NATIVE_SIM`. It bases on kind of [event timer](https://github.com/zephyrproject-rtos/zephyr/blob/main/scripts/native_simulator/common/src/nsi_hw_scheduler.c#L78).",
+      "parentUuid": "a2eb14a9_c16c8158",
       "range": {
         "startLine": 403,
         "startChar": 0,
