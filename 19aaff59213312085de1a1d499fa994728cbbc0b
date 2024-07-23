@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081fc18e_1d37117d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-07-23T02:55:32Z",
+      "side": 1,
+      "message": "failed with \n```\nThe following boards are missing and must be added to BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG or BOARDS_THAT_FAIL_WITH_CLANG:\nawasuki\n```\nYou may need to add awasuki here https://chromium.googlesource.com/chromiumos/platform/ec/+/main/util/build_with_clang.py#242",
+      "revId": "19aaff59213312085de1a1d499fa994728cbbc0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
