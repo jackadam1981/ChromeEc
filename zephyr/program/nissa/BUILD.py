@@ -147,6 +147,16 @@ orisa = register_nissa_project(
     project_name="orisa",
     chip="npcx9/npcx9m3f",
 )
+orisa_ti = register_binman_project(
+    project_name="orisa_ti",
+    zephyr_board="npcx9/npcx9m3f",
+    dts_overlays=[here / "orisa_ti" / "project.overlay"],
+    kconfig_files=[
+        here / "program.conf",
+        here / "npcx_program.conf",
+        here / "orisa_ti" / "project.conf",
+    ],
+)
 pirrha = register_nissa_project(
     project_name="pirrha",
     chip="it8xxx2/it81302bx",
@@ -182,6 +192,7 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="anraggar", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="craask", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="craaskov", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="orisa", addr=0x7FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="orisa_ti", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="gothrax", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="joxer", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="naktal", addr=0xBFFE0)

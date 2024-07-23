@@ -1,0 +1,24 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../cbi.dtsi"
+
+#include "../orisa/cbi.dtsi"
+#include "../orisa/generated.dtsi"
+#include "../orisa/keyboard.dtsi"
+#include "../orisa/motionsense.dtsi"
+#include "overlay.dtsi"
+#include "../orisa/power_signals.dtsi"
+#include "../orisa/led_pins.dtsi"
+#include "../orisa/led_policy.dtsi"
+
+/* These GPIOS are initialized by the PDC driver */
+&gpio_usb_pd_int_odl {
+	no-auto-init;
+};
+
+&gpio_ec_i2c_pmc_pd_int_odl {
+	no-auto-init;
+};
