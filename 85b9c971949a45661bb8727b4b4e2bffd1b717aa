@@ -58,6 +58,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91f17e94_0d6bbc2d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2930,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-07-23T03:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b959b474_7981154f",
+      "range": {
+        "startLine": 2930,
+        "startChar": 1,
+        "endLine": 2930,
+        "endChar": 69
+      },
+      "revId": "85b9c971949a45661bb8727b4b4e2bffd1b717aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d57982_e92f45a1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2930,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-07-23T03:35:34Z",
+      "side": 1,
+      "message": "In my tests I didn\u0027t find the other flags to cause any bugs, but I think clearing everything just to be on the safe side is a good idea.",
+      "parentUuid": "7b6bd0ac_6f2d4cb7",
+      "revId": "85b9c971949a45661bb8727b4b4e2bffd1b717aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2146bfe_566adbdb",
