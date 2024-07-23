@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8911a682_e5adc4bb",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1285,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T22:48:27Z",
+      "side": 1,
+      "message": "This addition seems out of scope here. Should this be in another CL?",
+      "revId": "61826770c954ec16867314d5bb91df8089fe6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e48d97_fb478d70",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T22:48:27Z",
+      "side": 1,
+      "message": "I think the need to do this is probably another argument for caching at a higher level.\n\nHow much of the rest of the function is doing necessary work in the caching case?",
+      "revId": "61826770c954ec16867314d5bb91df8089fe6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
