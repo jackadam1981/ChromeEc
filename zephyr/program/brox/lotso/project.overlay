@@ -51,6 +51,36 @@
                 /delete-node/ volume_up;
                 /delete-node/ volume_down;
         };
+
+	console {
+		compatible = "ec-console";
+		disabled =
+			"accel",
+			"charger",
+			"clock",
+			"events",
+			"gpio",
+			"hostcmd",
+			"i2c",
+			"keyboard",
+			"lidangle",
+			"lpc",
+			"motionlid",
+			"motionsense",
+			"port80",
+			"pwm",
+			"spi",
+			"switch",
+			"system",
+			"task",
+			"dptf",
+			"thermal",
+			"usb",
+			"usbcharge",
+			"usbpd",
+			"vboot",
+			"hook";
+	};
 };
 
 /* These GPIOS are initialized by the PDC driver */
