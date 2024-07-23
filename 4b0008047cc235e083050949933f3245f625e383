@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "427e4c82_c74175e6",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/board_id.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-23T01:29:05Z",
+      "side": 1,
+      "message": "replaced by a Kconfig flag",
+      "parentUuid": "e8f4a966_ef09befd",
+      "range": {
+        "startLine": 40,
+        "startChar": 66,
+        "endLine": 40,
+        "endChar": 67
+      },
+      "revId": "4b0008047cc235e083050949933f3245f625e383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de057cd4_d249872a",
