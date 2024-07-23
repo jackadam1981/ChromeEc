@@ -121,6 +121,30 @@
       },
       "revId": "85b9c971949a45661bb8727b4b4e2bffd1b717aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e2c23d_a64cdb8e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2967,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T16:50:59Z",
+      "side": 1,
+      "message": "I think it was me who added the force sink flag, and I did it as simply as I could think of, because I wasn\u0027t familiar with the driver structure yet. I think that if we have already successfully swapped to sink, the SET_CCOM should be a no-op. But this could certainly be more elegant.",
+      "parentUuid": "f2146bfe_566adbdb",
+      "range": {
+        "startLine": 2964,
+        "startChar": 2,
+        "endLine": 2967,
+        "endChar": 32
+      },
+      "revId": "85b9c971949a45661bb8727b4b4e2bffd1b717aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
