@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74dddbb8_0dbfc7f5",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T16:00:03Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0532a4c5_62e0b4d3",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T16:00:03Z",
+      "side": 1,
+      "message": "Nit: Can port be the first argument to match our convention?",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8989ef_780105cc",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T16:00:03Z",
+      "side": 1,
+      "message": "Nit: This could be a one-line declaration and definition.",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d79a6f_97bacc47",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T16:00:03Z",
+      "side": 1,
+      "message": "Will this file even be built if PD 3.0 isn\u0027t enabled?",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b122fd_1eb8a1bb",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T16:00:03Z",
+      "side": 1,
+      "message": "typo?",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
