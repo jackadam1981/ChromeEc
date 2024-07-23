@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b377b3a_29709f44",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-23T01:28:59Z",
+      "side": 1,
+      "message": "This function just sets the gpio, emulating plugging in of dc jack. The updating of the values happen in board_charge_init or board_charge_handler.",
+      "parentUuid": "2a2e89af_68e8ec98",
+      "revId": "8b109b044fdfec8d08ab4d3eaf127b050947c0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be8f018f_edbfdbcd",
         "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
         "patchSetId": 20
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-22T23:55:06Z",
       "side": 1,
       "message": "need to update mock_charge_manager_update_charge() with new vals of vtg and current?",
+      "revId": "8b109b044fdfec8d08ab4d3eaf127b050947c0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e191d3_fce1bedf",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-23T01:28:59Z",
+      "side": 1,
+      "message": "same reason as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5660959/comment/2a2e89af_68e8ec98/",
+      "parentUuid": "be8f018f_edbfdbcd",
       "revId": "8b109b044fdfec8d08ab4d3eaf127b050947c0de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
