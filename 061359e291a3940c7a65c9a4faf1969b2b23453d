@@ -86,6 +86,24 @@
       "parentUuid": "ce9b66da_b582d6c0",
       "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b3a3ca_45767c41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-23T07:38:23Z",
+      "side": 1,
+      "message": "I\u0027ve successfully reproduced the \"No room left in the flash\" error for bobba using current LLVM, this patch applied, and running `/mnt/host/source/src/platform/ec/firmware_builder.py --metrics /tmp/tmp.GTnhEKGYmM build`.",
+      "parentUuid": "abbf2cc4_0f0f1816",
+      "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
