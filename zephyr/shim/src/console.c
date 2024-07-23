@@ -48,6 +48,8 @@ char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];
 
 LOG_MODULE_REGISTER(shim_console, LOG_LEVEL_ERR);
 
+__maybe_unused static int (*zephyr_char_out)(int);
+
 static const struct device *uart_shell_dev =
 	DEVICE_DT_GET(DT_CHOSEN(zephyr_shell_uart));
 static const struct shell *shell_zephyr;
@@ -290,8 +292,22 @@ static int init_ec_console(void)
 
 	return 0;
 }
-SYS_INIT(init_ec_console, PRE_KERNEL_1, 50);
+SYS_INIT(init_ec_console, PRE_KERNEL_1,
+	 CONFIG_PLATFORM_EC_CONSOLE_INIT_PRIORITY);
 #endif /* CONFIG_PLATFORM_EC_CONSOLE_CHANNEL */
+
+__maybe_unused static int zephyr_shim_console_out(int c)
+{
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr()) {
+		char console_char = c;
+		console_buf_notify_chars(&console_char, 1);
+	}
+
+	return zephyr_char_out(c);
+}
+
+extern void __printk_hook_install(int (*fn)(int));
+extern void *__printk_get_hook(void);
 
 static int init_ec_shell(void)
 {
@@ -302,9 +318,28 @@ static int init_ec_shell(void)
 #else
 #error A shell backend must be enabled
 #endif
+
+	/*
+	 * Install our own printk handler if using LOG_MODE_MINIMAL.  This
+	 * allows us to capture all character output and copy into the
+	 * AP console buffer.
+	 *
+	 * For other other logging modes, projects should enable
+	 * CONFIG_PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER to capture log
+	 * output into the AP console buffer.
+	 */
+	if (IS_ENABLED(CONFIG_LOG_MODE_MINIMAL)) {
+		zephyr_char_out = __printk_get_hook();
+		__printk_hook_install(zephyr_shim_console_out);
+	}
+
 	return 0;
 }
-SYS_INIT(init_ec_shell, PRE_KERNEL_1, 50);
+SYS_INIT(init_ec_shell, PRE_KERNEL_1, CONFIG_PLATFORM_EC_CONSOLE_INIT_PRIORITY);
+
+BUILD_ASSERT(CONFIG_PLATFORM_EC_CONSOLE_INIT_PRIORITY >
+		     CONFIG_CONSOLE_INIT_PRIORITY,
+	     "The console shim must be initialized after the console.");
 
 #ifdef TEST_BUILD
 const struct shell *get_ec_shell(void)
@@ -422,9 +457,24 @@ static void zephyr_print(const char *buff, size_t size)
 			printk("!%s", buff);
 		}
 	} else {
-		shell_fprintf(shell_zephyr, SHELL_NORMAL, "%s", buff);
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE))
-			console_buf_notify_chars(buff, size);
+		if (IS_ENABLED(CONFIG_LOG_MODE_MINIMAL)) {
+			/*
+			 * The shell UART backend uses uart_fifo_fill() while
+			 * the LOG_MODE_MINIMAL uses printk() and calls
+			 * uart_poll_out().
+			 *
+			 * When LOG_MODE_MINIMAL enabled, send all output
+			 * to the logging subsystem to minimize mixing output
+			 * messages.  AP console buffer is handled above
+			 * with a custom printk hook.
+			 */
+			LOG_RAW("%s", buff);
+		} else {
+			shell_fprintf(shell_zephyr, SHELL_NORMAL, "%s", buff);
+			if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE)) {
+				console_buf_notify_chars(buff, size);
+			}
+		}
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_DEBUG))
 			printk("%s", buff);
 	}
