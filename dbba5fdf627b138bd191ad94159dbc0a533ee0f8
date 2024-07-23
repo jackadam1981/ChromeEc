@@ -51,6 +51,24 @@
       "message": "If this buffer is null, it should be an error.",
       "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbca4e56_4f74c9e5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-07-23T23:25:14Z",
+      "side": 1,
+      "message": "`st_task_wait_run` doesn\u0027t return error if the buffer is null. Should both return null? It\u0027s likely a developer error encountering that branch.",
+      "parentUuid": "ad740fe6_2d09e7cd",
+      "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
