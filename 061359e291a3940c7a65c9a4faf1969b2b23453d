@@ -104,6 +104,24 @@
       "parentUuid": "abbf2cc4_0f0f1816",
       "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa96d37_67d86e9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-23T07:45:04Z",
+      "side": 1,
+      "message": "Much quicker way to get the repro:\n\n```shell\n(cr) ~/chromiumos/src/platform/ec$ cat only_build_bobba.diff\ndiff --git a/util/build_with_clang.py b/util/build_with_clang.py\nindex 875c542063..b7095f1e7b 100755\n--- a/util/build_with_clang.py\n+++ b/util/build_with_clang.py\n@@ -441,10 +441,11 @@ def main() -\u003e int:\n     failed_boards \u003d []\n \n     make_threads, jobs_per_make \u003d calculate_job_distribution(args.num_threads)\n+    boards_to_build \u003d [ \"bobba\" ]\n     with ThreadPoolExecutor(max_workers\u003dmake_threads) as executor:\n         future_to_board \u003d {\n             executor.submit(build, board, jobs_per_make): board\n-            for board in BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG\n+            for board in boards_to_build\n         }\n         for future in concurrent.futures.as_completed(future_to_board):\n             board \u003d future_to_board[future]\n(cr) ~/chromiumos/src/platform/ec$ patch -p1 \u003c only_build_bobba.diff\npatching file util/build_with_clang.py\n(cr) ~/chromiumos/src/platform/ec$ ./util/build_with_clang.py\n:\n  LD      RO/ec.RO.elf\nld.lld: error: No room left in the flash\n:\n```",
+      "parentUuid": "d0b3a3ca_45767c41",
+      "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
