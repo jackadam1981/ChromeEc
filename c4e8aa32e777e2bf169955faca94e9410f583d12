@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3530cac4_60c2e827",
+        "filename": "test/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-23T09:19:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61741ad9_bed4001b",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 20
+      },
+      "revId": "c4e8aa32e777e2bf169955faca94e9410f583d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c41383e_295c85d2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-22T18:03:34Z",
       "side": 1,
       "message": "IIRC, this returns if it fails. In that case we would leak `buf`.\n\nWe could put `buf` on the stack. If the size is too big we could make it smaller. It probably doesn\u0027t need to be so big for this test. (I think they probably tried to make it somewhat large for the benchmark in the original test, but test only needs to check correctness.)",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 47
+      },
+      "revId": "c4e8aa32e777e2bf169955faca94e9410f583d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5926b05_bcb6f5e7",
+        "filename": "test/stdlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-23T09:19:04Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "6c41383e_295c85d2",
       "range": {
         "startLine": 390,
         "startChar": 1,
