@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd68de0_efb6c6ed",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-23T16:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b377b3a_29709f44",
+      "revId": "8b109b044fdfec8d08ab4d3eaf127b050947c0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be8f018f_edbfdbcd",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "same reason as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5660959/comment/2a2e89af_68e8ec98/",
       "parentUuid": "be8f018f_edbfdbcd",
+      "revId": "8b109b044fdfec8d08ab4d3eaf127b050947c0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb4ac99_98172f7e",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-23T16:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e191d3_fce1bedf",
       "revId": "8b109b044fdfec8d08ab4d3eaf127b050947c0de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
