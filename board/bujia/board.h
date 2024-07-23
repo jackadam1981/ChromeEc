@@ -13,6 +13,10 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_MP2964
+#define I2C_PORT_MP2964 NPCX_I2C_PORT7_0
+#define I2C_ADDR_MP2964_FLAGS 0x20
+
 /* Barrel Jack */
 #define DEDICATED_CHARGE_PORT 1
 
