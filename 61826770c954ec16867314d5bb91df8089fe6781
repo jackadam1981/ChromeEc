@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d201f5b_6ca616b7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1285,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-07-23T23:24:18Z",
+      "side": 1,
+      "message": "I can move this to another CL. This + responding with `data-\u003ecci_event.data_len \u003d len` are critical to many `GET_` UCSI commands.",
+      "parentUuid": "8911a682_e5adc4bb",
+      "revId": "61826770c954ec16867314d5bb91df8089fe6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04e48d97_fb478d70",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-23T22:48:27Z",
       "side": 1,
       "message": "I think the need to do this is probably another argument for caching at a higher level.\n\nHow much of the rest of the function is doing necessary work in the caching case?",
+      "revId": "61826770c954ec16867314d5bb91df8089fe6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dab8b28_9d382512",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-07-23T23:24:18Z",
+      "side": 1,
+      "message": "Even in the cached case, responses need to come from the driver thread instead of the current thread (I.e. I can\u0027t just respond directly with the result).\n\nCaching for TI is done because the Connection Status Change bits get cleared after first read. For RTK, it\u0027s to avoid round trips to PDC (and potentially avoiding ack races too). I don\u0027t think moving it up to a higher level results in the same behavior (since PDM and PPM run at the same time).",
+      "parentUuid": "04e48d97_fb478d70",
       "revId": "61826770c954ec16867314d5bb91df8089fe6781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
