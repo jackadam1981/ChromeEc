@@ -93,6 +93,30 @@
       },
       "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337c7f84_a3feca57",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-23T23:50:39Z",
+      "side": 1,
+      "message": "can we make most of these configs common among all the mtlrvp tests?\n\nfor example, does `CONFIG_PLATFORM_EC_HOOKS\u003dn` need to be\nspecific to some tests? wouldn\u0027t it be better if all tests for\na particular board run against a substantially similar config\nthat is representative of the real board?",
+      "parentUuid": "ef6f21f7_ab48b165",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
