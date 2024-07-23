@@ -34,6 +34,24 @@
       "parentUuid": "ab86f375_518b5de8",
       "revId": "acb7c422707ba7ee15d210dc803efbb04631eed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee81f92d_96b422b1",
+        "filename": "zephyr/test/power/pantherlake.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-23T00:32:20Z",
+      "side": 1,
+      "message": "can this config be used CONFIG_PLATFORM_EC_POWERSEQ_PP5000_CONTROL to handle it?",
+      "parentUuid": "d0472fa4_668cb3bb",
+      "revId": "acb7c422707ba7ee15d210dc803efbb04631eed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
