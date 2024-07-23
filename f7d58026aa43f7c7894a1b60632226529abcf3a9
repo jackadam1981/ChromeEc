@@ -81,6 +81,30 @@
       },
       "revId": "f7d58026aa43f7c7894a1b60632226529abcf3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689a3f7a_c0ef881b",
+        "filename": "docs/fingerprint/fingerprint-debugging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-23T17:14:46Z",
+      "side": 1,
+      "message": "Gotcha. I only ask because I thought that the Segger default was 8k, but maybe I\u0027m recalling incorrectly.",
+      "parentUuid": "86beb23d_4a2a8538",
+      "range": {
+        "startLine": 189,
+        "startChar": 90,
+        "endLine": 189,
+        "endChar": 94
+      },
+      "revId": "f7d58026aa43f7c7894a1b60632226529abcf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
