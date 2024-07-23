@@ -16,6 +16,23 @@
       "message": "It turns out the problem was that, at some point in the history of this CL, I accidentally changed cortex-m/build.mk to link with the armv6m runtime library instead of the armv7m runtime library. This led to the size increase which caused us to run out of flash space.\n\nFixing the CL to use the correct runtime library resolves the issue; space used is the same with or without the patch.",
       "revId": "f10b8d8214d0532c6d6274225fcae38d76c4dd1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96c202b_7c1907b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-23T08:18:55Z",
+      "side": 1,
+      "message": "I also figured out why I initially failed to reproduce the issue locally. The file the build failed on (build/bobba/RW/ec.RW.elf) is built multiple times: once with gcc and once with clang. At least some of my attempts to reproduce locally only did the gcc build, which happens to succeed with or without the broken patch.",
+      "revId": "f10b8d8214d0532c6d6274225fcae38d76c4dd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
