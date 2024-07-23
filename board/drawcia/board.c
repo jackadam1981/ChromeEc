@@ -667,6 +667,12 @@ int board_set_active_charge_port(int port)
 	return EC_SUCCESS;
 }
 
+static void board_init_early(void)
+{
+	ccprints("!!! %s !!!", __func__);
+}
+DECLARE_HOOK(HOOK_INIT_EARLY, board_init_early, HOOK_PRIO_DEFAULT);
+
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
