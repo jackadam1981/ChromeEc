@@ -122,6 +122,23 @@
       "parentUuid": "d0b3a3ca_45767c41",
       "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e8f21c_bdd2509b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-07-23T07:47:04Z",
+      "side": 1,
+      "message": "Confirmed that the error about running out of flash is caused by this CL.",
+      "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
