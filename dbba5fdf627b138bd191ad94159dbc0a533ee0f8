@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65054a2_d0e7dc79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T22:33:09Z",
+      "side": 1,
+      "message": "We\u0027re doing similar caching in the Realtek driver, and it\u0027s basically orthogonal to the PDC functionality. I\u0027d suggest doing this in one place in `pdc_power_mgmt`.",
+      "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad740fe6_2d09e7cd",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-23T22:33:09Z",
+      "side": 1,
+      "message": "If this buffer is null, it should be an error.",
+      "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
