@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d5a9c30_44ba4d9a",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-24T23:40:00Z",
+      "side": 1,
+      "message": "\u003e Do you think we should investigate that?\n\nYes, that seems worth double-checking. Is it the same on Zephyr and EC?\n\nIf you want to check it separately from this CL, you can file a bug and add a `TODO(b/123)`.\n\nMy guess is that maybe the `memcpy` implementation is highly optimized (copying whole words, not single bytes) and maybe `memmove` is using a very basic implementation (e.g., individual bytes).",
+      "parentUuid": "4c8bb822_fb20404c",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71af7591_5857e5e9",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
