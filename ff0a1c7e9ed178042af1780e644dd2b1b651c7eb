@@ -213,6 +213,30 @@
       },
       "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8830bfb_430f2ca5",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-24T22:04:11Z",
+      "side": 1,
+      "message": "Oh, I see you mentioned `unimp` earlier in the thread. Missed that. 😊",
+      "parentUuid": "c85f74fb_9673f6b6",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 35
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
