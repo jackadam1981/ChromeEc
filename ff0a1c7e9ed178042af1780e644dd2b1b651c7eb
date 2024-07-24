@@ -189,6 +189,30 @@
       },
       "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85f74fb_9673f6b6",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-24T22:03:02Z",
+      "side": 1,
+      "message": "Yeah, I think otherwise it would be confusing for people on other architectures.\n\nTo make it a little cleaner you could create a bit of abstraction instead of implementing all the ugly conditional logic here.\n\nFor example, create an `undefined_instruction()` function and either put the logic there or create `arch_undefined_instruction()` (`system_undefined_instruction`?) that is implemented in the architecture-specific files.\n\nAnd not that you need to implement RISC-V right now, but for posterity it looks like [there is an equivalent undefined instruction](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/riscv-asm.md#instruction-aliases) (and https://reviews.llvm.org/D54316).",
+      "parentUuid": "75eb40e9_05e37b4f",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 35
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
