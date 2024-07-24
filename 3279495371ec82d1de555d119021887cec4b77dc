@@ -16,6 +16,24 @@
       "message": "Let\u0027s reorder this so it comes after https://crrev.com/c/5727982, since we need that change for the `system_is_locked` tests to pass with this CL.\n\nAlso, since this is relanding a CL that was reverted, can you use [this process](https://chromium.googlesource.com/chromium/src/+/HEAD/docs/contributing.md#relanding-a-change) to generate the reland CL? It should add some additional metadata that provides more context and lets people see the revert/reland history.",
       "revId": "3279495371ec82d1de555d119021887cec4b77dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb7b432_e9a6b766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-24T23:53:15Z",
+      "side": 1,
+      "message": "I tried to create a reland of this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5325938\n\nHowever, when I clock on `Create Reland` button, I get an error message:\n```\nCannot reland: Cherry pick failed: merge conflict while merging commits commit fb293b5b9456aea77812ef47478d9ec5f76704f9 1721858319 ------p and commit cd757991f1410993715b7347387c87ef0c1e1486 1715961804 ------p\n```",
+      "parentUuid": "cf9dc5d1_d8eb2b7e",
+      "revId": "3279495371ec82d1de555d119021887cec4b77dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
