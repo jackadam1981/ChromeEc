@@ -86,6 +86,24 @@
       "parentUuid": "ad740fe6_2d09e7cd",
       "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4837e94_99e0b05a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-24T16:26:14Z",
+      "side": 1,
+      "message": "I agree that it\u0027s a developer error for the commands that generate a response. We should probably do something to surface that error. I think it probably makes more sense to do it here than in `st_task_wait_run`. There\u0027s no point in sending the command if there\u0027s nowhere to put the response.\n\nThat being said, since there\u0027s no check for the other commands, it can be out of scope here. If you agree with the above, a TODO here would be fine.",
+      "parentUuid": "fbca4e56_4f74c9e5",
+      "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
