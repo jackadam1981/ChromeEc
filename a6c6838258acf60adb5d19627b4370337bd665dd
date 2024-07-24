@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af39c96b_8aa5270b",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-24T00:04:46Z",
+      "side": 1,
+      "message": "i don\u0027t recall if how well `testcase.yaml` files can be organized in\na hierarchy -- is it feasible to move this down one level to the\n`intelrvp/mtlrvp` directory you\u0027re introducing in the next patch?",
+      "revId": "a6c6838258acf60adb5d19627b4370337bd665dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
