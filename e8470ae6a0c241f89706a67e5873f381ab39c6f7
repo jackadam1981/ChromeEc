@@ -16,6 +16,24 @@
       "message": "Hi Fukuda-san,\nDid you verify the correctness on Kyogre as well? Thank you",
       "revId": "e8470ae6a0c241f89706a67e5873f381ab39c6f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fb71f4_ccfa0fb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-07-24T04:53:20Z",
+      "side": 1,
+      "message": "From b/338489934#comment6, seems this CL has been verified on DUT already, could you add the description into TEST as well? Thank you.",
+      "parentUuid": "a68a5327_f2d1f9ca",
+      "revId": "e8470ae6a0c241f89706a67e5873f381ab39c6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
