@@ -216,8 +216,8 @@ static int32_t cal_send_msg_len(uint32_t conn_id, struct mrd_t *msg)
 
 	conn = &heci_dev.connections[conn_id];
 	if (!(conn->state & HECI_CONN_STATE_OPEN)) {
-		LOG_ERR("bad connection id %d, state 0x%x", conn_id,
-			conn->state);
+		// LOG_ERR("bad connection id %d, state 0x%x", conn_id,
+		// 	conn->state);
 		heci_unlock();
 		return -1;
 	}

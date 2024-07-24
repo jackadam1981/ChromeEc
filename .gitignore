@@ -31,6 +31,7 @@ libcrypto.gcno
 __pycache__
 *.egg-info
 .hypothesis/
+.venv/
 zephyr/zmake/.coverage
 zephyr/zmake/htmlcov/
 zephyr/zmake/coverage.json

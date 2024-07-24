@@ -1,0 +1,29 @@
+tests:
+  cros.dsp.level_trigger.buffered_i2c:
+    harness: gtest
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+    platform_allow:
+      - native_sim
+  cros.dsp.level_triggered.pio_i2c:
+    harness: gtest
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/native_sim.pio_i2c.overlay
+    platform_allow:
+      - native_sim
+  cros.dsp.edge_trigger.buffered_i2c:
+    harness: gtest
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/native_sim.edge_trigger.overlay
+    platform_allow:
+      - native_sim
+  cros.dsp.edge_triggered.pio_i2c:
+    harness: gtest
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+      - boards/native_sim.pio_i2c.overlay
+      - boards/native_sim.edge_trigger.overlay
+    platform_allow:
+      - native_sim

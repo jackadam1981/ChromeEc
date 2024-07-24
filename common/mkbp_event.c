@@ -275,8 +275,8 @@ test_export_static void activate_mkbp_with_events(uint32_t events_to_add)
 
 	if (schedule_deferred) {
 		hook_call_deferred(&force_mkbp_if_events_data, SECOND);
-		if (rv != EC_SUCCESS)
-			CPRINTS("Could not activate MKBP (%d). Deferring", rv);
+		// if (rv != EC_SUCCESS)
+		// 	CPRINTS("Could not activate MKBP (%d). Deferring", rv);
 	}
 }
 

@@ -8,6 +8,7 @@
 def register_rex_project(
     project_name,
     kconfig_files=None,
+    extra_modules=[],
 ):
     """Register a variant of Rex."""
     if kconfig_files is None:
@@ -18,6 +19,7 @@ def register_rex_project(
             here / project_name / "project.conf",
         ]
 
+    modules = extra_modules + ["ec", "cmsis"]
     register_npcx_project(
         project_name=project_name,
         zephyr_board="npcx9/npcx9m7f",
@@ -26,6 +28,7 @@ def register_rex_project(
         ],
         kconfig_files=kconfig_files,
         inherited_from=["rex"],
+        modules=modules,
     )
 
 
@@ -43,6 +46,7 @@ register_rex_project(
         # Project-specific KConfig customization.
         here / "rex-ish-ec" / "project.conf",
     ],
+    extra_modules=["nanopb", "pigweed"],
 )
 
 register_rex_project(
@@ -59,6 +63,7 @@ register_ish_project(
         here / "rex-ish" / "project.overlay",
     ],
     kconfig_files=[here / "rex-ish" / "prj.conf"],
+    modules=["ec", "cmsis", "hal_intel_public", "nanopb", "pigweed"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
