@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d666a96e_d97e1757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-24T20:56:00Z",
+      "side": 1,
+      "message": "may be file a bug and share the BOM changes needed",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a82e9e48cd423f99177a9933824760906c9a142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "518646ef_724b0507",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/vci.dtsi",
         "patchSetId": 1
