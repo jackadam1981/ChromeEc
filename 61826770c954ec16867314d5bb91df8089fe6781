@@ -69,6 +69,24 @@
       "parentUuid": "04e48d97_fb478d70",
       "revId": "61826770c954ec16867314d5bb91df8089fe6781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cd3728_b5bfa98f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-24T16:25:32Z",
+      "side": 1,
+      "message": "\u003e Even in the cached case, responses need to come from the driver thread instead of the current thread (I.e. I can\u0027t just respond directly with the result).\n\nDo you mean because both the the PDM and the PPM need to respond to an interrupt by getting the status that caused that interrupt? Would it work to do this at the level of the PDC API? Right now, that\u0027s all inline in `pdc.h`, but I don\u0027t think all that stuff necessarily needs to be/should be in a header file.\n\nCan you envision a PDC driver for which you would _not_ want to cache this result?",
+      "parentUuid": "5dab8b28_9d382512",
+      "revId": "61826770c954ec16867314d5bb91df8089fe6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
