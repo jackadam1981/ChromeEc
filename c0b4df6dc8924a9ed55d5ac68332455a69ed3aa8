@@ -16,6 +16,24 @@
       "message": "It could be merged only when TI PDC FW is removed from EC.",
       "revId": "c0b4df6dc8924a9ed55d5ac68332455a69ed3aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1109493_9a99c734",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-24T22:30:13Z",
+      "side": 1,
+      "message": "Is there insufficient space in this EC?",
+      "parentUuid": "cc42ad87_0fc148bd",
+      "revId": "c0b4df6dc8924a9ed55d5ac68332455a69ed3aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
