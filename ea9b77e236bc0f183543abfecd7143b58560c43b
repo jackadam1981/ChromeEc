@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b97aebf_c01be3a1",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-24T00:09:08Z",
+      "side": 1,
+      "message": "Your change for craask looks at both the old and new flags, so I think it makes sense to pass both to `battery_is_responsive`:\n\n```\n__overridable bool battery_is_response(int old_flags, int new_flags);\n\nif (battery_is_responsive(batt-\u003eflags, batt_new.flags))\n```\n\nThe default implementation doesn\u0027t care about `old_flags`, but that\u0027s fine.",
+      "revId": "ea9b77e236bc0f183543abfecd7143b58560c43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
