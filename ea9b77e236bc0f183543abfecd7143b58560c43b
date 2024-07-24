@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4d2359c_64f65b4a",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-24T00:10:14Z",
+      "side": 1,
+      "message": "Move this comment into `battery_is_responsive`, since it may not be accurate for different implementations of the function.",
+      "revId": "ea9b77e236bc0f183543abfecd7143b58560c43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b97aebf_c01be3a1",
         "filename": "driver/battery/smart.c",
         "patchSetId": 6
