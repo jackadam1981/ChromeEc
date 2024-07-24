@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518646ef_724b0507",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-24T20:55:02Z",
+      "side": 1,
+      "message": "nit: add copywrite",
+      "revId": "a82e9e48cd423f99177a9933824760906c9a142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8957ab8_9a6445fd",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-24T20:55:02Z",
+      "side": 1,
+      "message": "add info about \n1. power button, ac present, which use the non GPIO based h/w logic.\n2. lid wake is n/a on PTL RVP",
+      "revId": "a82e9e48cd423f99177a9933824760906c9a142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41e1180_600e515d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-24T20:55:02Z",
+      "side": 1,
+      "message": "this is not used",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "a82e9e48cd423f99177a9933824760906c9a142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
