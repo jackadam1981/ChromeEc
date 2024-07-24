@@ -141,6 +141,30 @@
       },
       "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9359b632_53be88f8",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T17:10:23Z",
+      "side": 1,
+      "message": "It should compile, since this is written as just data, but I\u0027m just not sure if it will actually trigger undefined instruction exception.",
+      "parentUuid": "a4aa7fb0_8eba39d6",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 35
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
