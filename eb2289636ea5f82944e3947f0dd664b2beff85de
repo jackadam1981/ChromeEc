@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee85ec0_324230d7",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/mtlrvp_mchp.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-07-24T20:48:38Z",
+      "side": 1,
+      "message": "Is there a plan to enable configuring `VCI_IN0`? Currently there is no way to enable its latch using devicetree.",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "eb2289636ea5f82944e3947f0dd664b2beff85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1568dd5_580f983d",
+        "filename": "zephyr/program/intelrvp/mtlrvp/mtlrvpp_mchp/mtlrvp_mchp.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-07-24T20:48:38Z",
+      "side": 1,
+      "message": "Should we also have a flag that resets latch after waking up?",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "eb2289636ea5f82944e3947f0dd664b2beff85de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
