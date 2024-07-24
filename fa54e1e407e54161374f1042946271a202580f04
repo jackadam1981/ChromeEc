@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac5a5da1_b2c6216b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T23:54:15Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "19c23c5e_c4cb4bb4",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41d4d383_22579a88",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Yeah, this little library is odd and does not use the channel arg, but it is still conforming to the global console.h interface.\n\nIt looks to have been written as a \"light\" cprintf version for one or two devices and then abandoned. See the commit description.",
       "parentUuid": "41d4d383_22579a88",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3751fd29_044870fc",
+        "filename": "chip/stm32/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T23:54:15Z",
+      "side": 1,
+      "message": "Please reopen if there is something I\u0027m missing.",
+      "parentUuid": "c960ed44_56148cb2",
       "range": {
         "startLine": 60,
         "startChar": 34,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c45e0d_a84fbf0a",
+        "filename": "chip/stm32/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T23:54:15Z",
+      "side": 1,
+      "message": "Please reopen if there is something I\u0027m missing.",
+      "parentUuid": "2c09fe8a_59b9bf3c",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68a5824b_ce7090cb",
@@ -155,6 +227,30 @@
       "side": 1,
       "message": "I agree and think it can be replace with just va_start/va_end.\n\nIt looks like the usb_va_start/usb_va_end exist to simply make sure we never call va_start/va_end if USB is disabled, and wouldn\u0027t actually consume the args. I didn\u0027t think this was necessary, but I could be wrong.",
       "parentUuid": "68a5824b_ce7090cb",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 12
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebe0e34_979752d9",
+        "filename": "common/console_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T23:54:15Z",
+      "side": 1,
+      "message": "I removed these unnecessary conditional va_ macros.\n\nCheckout https://crrev.com/c/5740214.",
+      "parentUuid": "e911d5be_4a43b94f",
       "range": {
         "startLine": 106,
         "startChar": 1,
