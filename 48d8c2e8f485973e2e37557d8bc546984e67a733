@@ -16,6 +16,24 @@
       "message": "This get half of the interrupts?",
       "revId": "48d8c2e8f485973e2e37557d8bc546984e67a733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cab2d5e_d2376767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-24T04:27:27Z",
+      "side": 1,
+      "message": "yes, but this approach seemed not reliable, I have modified the code to use conditional S0ix signal",
+      "parentUuid": "245b008c_0a013456",
+      "revId": "48d8c2e8f485973e2e37557d8bc546984e67a733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
