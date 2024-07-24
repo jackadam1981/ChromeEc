@@ -14,8 +14,12 @@ def register_fpmcu_variant(
     variant_kconfig_files=(),
     signer=(),
 ):
-    """Register FPMCU project"""
-    return register_binman_project(
+    """Register an fpmcu variant"""
+    register_func = register_binman_project
+    if project_name.startswith("helipilot"):
+        register_func = register_npcx_project
+
+    return register_func(
         project_name=project_name,
         zephyr_board=zephyr_board,
         modules=["ec", *variant_modules],
