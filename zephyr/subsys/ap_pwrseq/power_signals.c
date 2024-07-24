@@ -134,6 +134,12 @@ power_signal_mask_t power_get_signals(void)
 		value = power_signal_get(polled_signals[i]);
 		atomic_set_bit_to(&power_signals, polled_signals[i], value);
 	}
+
+	if (test_s0ix_signal)
+		atomic_set_bit(&power_signals, S0IX_BIT);
+	else
+		atomic_clear_bit(&power_signals, S0IX_BIT);
+
 	return atomic_get(&power_signals);
 }
 

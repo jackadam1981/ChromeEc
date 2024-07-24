@@ -8,6 +8,9 @@
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
 
+extern bool test_s0ix_signal;
+#define S0IX_BIT 3
+
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 void ap_pwrseq_wake(void);
 #else

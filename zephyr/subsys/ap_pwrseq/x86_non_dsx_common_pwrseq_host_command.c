@@ -5,6 +5,8 @@
 
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
+LOG_MODULE_REGISTER(API, LOG_LEVEL_ERR);
+
 /* Host commands */
 static enum ec_status
 host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
@@ -34,6 +36,8 @@ DECLARE_HOST_COMMAND(EC_CMD_REBOOT_AP_ON_G3, host_command_reboot_ap_on_g3,
 /* Track last reported sleep event */
 static enum host_sleep_event host_sleep_state;
 
+bool test_s0ix_signal;
+
 static enum ec_status
 host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
@@ -41,6 +45,8 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 	struct ec_response_host_sleep_event_v1 *r = args->response;
 	struct host_sleep_event_context ctx;
 	enum host_sleep_event state = p->sleep_event;
+
+	LOG_ERR("**SLP=%d, state=%d", power_signals_off(IN_PCH_SLP_S0), state);
 
 	host_sleep_state = state;
 	ctx.sleep_transitions = 0;
@@ -55,6 +61,7 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 			ctx.sleep_timeout_ms =
 				p->suspend_params.sleep_timeout_ms;
 
+		test_s0ix_signal = true;
 		break;
 
 	default:
@@ -72,6 +79,7 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 			args->response_size = sizeof(*r);
 		}
 
+		test_s0ix_signal = false;
 		break;
 
 	default:

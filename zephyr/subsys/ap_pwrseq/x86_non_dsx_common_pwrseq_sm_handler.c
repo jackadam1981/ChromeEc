@@ -8,6 +8,7 @@
 #include "zephyr_console_shim.h"
 
 #include <zephyr/init.h>
+#include <ap_power/ap_pwrseq.h>
 
 #include <atomic.h>
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
@@ -692,6 +693,7 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		 */
 		this_in_signals = power_get_signals();
 
+		LOG_ERR("**SLP=%d test=%d", power_signals_off(IN_PCH_SLP_S0), test_s0ix_signal);
 		if (this_in_signals != last_in_signals ||
 		    curr_state != last_state) {
 			LOG_INF("power state %d = %s, in 0x%04x", curr_state,
