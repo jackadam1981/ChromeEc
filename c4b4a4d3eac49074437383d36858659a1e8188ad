@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6be568_94601597",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-24T23:34:30Z",
+      "side": 0,
+      "message": "Did you intend to remove this initialization? It\u0027s not strictly necessary, but just want to check.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 13
+      },
+      "revId": "c4b4a4d3eac49074437383d36858659a1e8188ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
