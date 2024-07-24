@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "522c078b_8518dc22",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-24T22:25:52Z",
+      "side": 1,
+      "message": "Does `make buildall` fail if this `IS_ENABLED` is removed? This file will only be built if USB4 is enabled: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/build.mk;l\u003d33;drc\u003dee2af1fa4fa802ab6eaf073e6b7625833fd214b3. It should not be possible to enable USB4 if PD 3.0 is disabled.\n\nIf this `IS_ENABLED` is not required to build, it should be removed.",
+      "parentUuid": "1024ea9a_7ad58b2f",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2b122fd_1eb8a1bb",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 4
