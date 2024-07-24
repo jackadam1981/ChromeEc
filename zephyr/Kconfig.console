@@ -5,7 +5,7 @@
 config PLATFORM_EC_CONSOLE_CHANNEL
 	bool "Console channels"
 	depends on CONSOLE
-	default y
+	default n
 	help
 	  Make it possible for console to be output to different channels that
 	  can be turned on and off. Channels are organized by functional area
