@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f82a82_6eeaaaed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fdd0af8_e648cfe2",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "3fd2035eb69bf68bcb82bd24e8140d4cd6ce12ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448af912_d00f3f7d",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Added function to convert tbt speed to USB4 \u0026 return USB4 Gen2 speed. This is required in retimer Bits 27-25 for  USB4/TBT Cable speed. Also, taken care of is_cable_speed_gen2_capable() \u0026 dp \u0026 tbt speed when cable is usb4 gen2.",
       "parentUuid": "448af912_d00f3f7d",
+      "revId": "3fd2035eb69bf68bcb82bd24e8140d4cd6ce12ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ab5a83_68cede53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cf35876_dd1defd7",
       "revId": "3fd2035eb69bf68bcb82bd24e8140d4cd6ce12ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

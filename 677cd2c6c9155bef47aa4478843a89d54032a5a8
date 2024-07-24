@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9547a3_783d3147",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "74dddbb8_0dbfc7f5",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0532a4c5_62e0b4d3",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-23T16:00:03Z",
       "side": 1,
       "message": "Nit: Can port be the first argument to match our convention?",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0babb47d_d45f8a03",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0532a4c5_62e0b4d3",
       "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae7edc1_314c2917",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8989ef_780105cc",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d79a6f_97bacc47",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1024ea9a_7ad58b2f",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "make buildall is success. There are boards like karma(baseboard \u003dkalista) , where PD3.0 is not enabled.So, i guess, this change should be fine.",
+      "parentUuid": "c8d79a6f_97bacc47",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b122fd_1eb8a1bb",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-07-23T16:00:03Z",
       "side": 1,
       "message": "typo?",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2843e743_a7fb7646",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-24T20:29:52Z",
+      "side": 1,
+      "message": "Oh..Yes!Removed!",
+      "parentUuid": "f2b122fd_1eb8a1bb",
       "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
