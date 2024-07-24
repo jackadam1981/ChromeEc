@@ -1697,6 +1697,26 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
 }
 
+static int pdc_setup_global_system_config(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_global_system_configuration sys_config;
+	int rv;
+
+	rv = tps_rw_global_system_configuration(&cfg->i2c, &sys_config,
+						I2C_MSG_READ);
+	if (rv < 0) {
+		LOG_ERR("Unable to read global system configuration");
+		return rv;
+	}
+
+	sys_config.port1_i2c2_target_address = 0x69;
+	sys_config.port2_i2c2_target_address = 0x68;
+
+	return tps_rw_global_system_configuration(&cfg->i2c, &sys_config,
+						  I2C_MSG_WRITE);
+}
+
 static void pdc_interrupt_callback(const struct device *dev,
 				   struct gpio_callback *cb, uint32_t pins)
 {
@@ -1766,6 +1786,12 @@ static int pdc_init(const struct device *dev)
 	rv = pdc_interrupt_mask_init(data);
 	if (rv < 0) {
 		LOG_ERR("Write interrupt mask failed");
+		return rv;
+	}
+
+	rv = pdc_setup_global_system_config(data);
+	if (rv < 0) {
+		LOG_ERR("Setup system configuration failed");
 		return rv;
 	}
 
