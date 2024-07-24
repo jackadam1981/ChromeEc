@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c23c5e_c4cb4bb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-24T01:37:49Z",
+      "side": 1,
+      "message": "variadic",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d4d383_22579a88",
+        "filename": "chip/stm32/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-24T01:37:49Z",
+      "side": 1,
+      "message": "channel is not used?",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc87e69_7c630597",
+        "filename": "chip/stm32/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-24T01:37:49Z",
+      "side": 1,
+      "message": "shouldn\u0027t that be `debug_txchar` here instead of line 62?",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a5824b_ce7090cb",
+        "filename": "common/console_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-24T01:37:49Z",
+      "side": 1,
+      "message": "I realize this is a bit out of scope question for this CL, but do you know why is the usb-related function used in common file? Could this be replaced by just `va_copy`?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 12
+      },
+      "revId": "fa54e1e407e54161374f1042946271a202580f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
