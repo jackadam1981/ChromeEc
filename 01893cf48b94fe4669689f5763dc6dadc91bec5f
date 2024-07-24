@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f86432f_255e6e8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-24T22:48:59Z",
+      "side": 1,
+      "message": "Zoss is being silly. I ran coverage locally (`-s pdc/pdc.console`) and `cmd_pdc_trysrc()` has 100% coverage. In fact, the entire file has 100% line coverage. (https://screenshot.googleplex.com/6kmsJNLrx8iiRkR)",
+      "revId": "01893cf48b94fe4669689f5763dc6dadc91bec5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
