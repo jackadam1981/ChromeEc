@@ -8,14 +8,19 @@
 def register_fpmcu_variant(
     project_name,
     zephyr_board,
+    chip,
     variant_modules=(),
     variant_optional_modules=(),
     variant_dts_overlays=(),
     variant_kconfig_files=(),
     signer=(),
 ):
-    """Register FPMCU project"""
-    return register_binman_project(
+    """Register an fpmcu variant"""
+    register_func = register_binman_project
+    if chip.startswith("npcx"):
+        register_func = register_npcx_project
+
+    return register_func(
         project_name=project_name,
         zephyr_board=zephyr_board,
         modules=["ec", *variant_modules],
@@ -30,6 +35,7 @@ def register_fpmcu_variant(
 bloonchipper = register_fpmcu_variant(
     project_name="bloonchipper",
     zephyr_board="google_dragonclaw",
+    chip="stm32f412",
     variant_modules=["hal_stm32", "cmsis"],
     variant_optional_modules=["fpc"],
     variant_dts_overlays=[
