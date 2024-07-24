@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43f8491c_34878819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-24T07:03:27Z",
+      "side": 1,
+      "message": "Could we have TI to update the interrupt mask bit 16 in TRM, and also clarify which event would trigger the refresh since in Figure 10-13, it is refreshed after the NewContractAsProv event.",
+      "revId": "dbba5fdf627b138bd191ad94159dbc0a533ee0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad740fe6_2d09e7cd",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
