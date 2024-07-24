@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1be3500d_18ec38d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T16:30:57Z",
+      "side": 1,
+      "message": "Totally missed that. I\u0027ll use that instruction, instead.",
+      "parentUuid": "c4806e10_22e680a8",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90fdc262_2372ede4",
         "filename": "common/panic_output.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-18T15:52:09Z",
       "side": 1,
       "message": "Is this a valid instruction to crash RISC-V?",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 35
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a522ac_9b36aac2",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-24T16:30:57Z",
+      "side": 1,
+      "message": "Hmm. I don\u0027t think so. I think risc-v undefined is `unimp` -- seen in https://reviews.llvm.org/D54316.\n\n\nI can add it, but I can\u0027t test it.",
+      "parentUuid": "90fdc262_2372ede4",
       "range": {
         "startLine": 442,
         "startChar": 2,
