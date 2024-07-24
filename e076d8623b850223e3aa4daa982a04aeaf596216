@@ -22,6 +22,30 @@
       },
       "revId": "e076d8623b850223e3aa4daa982a04aeaf596216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f864e5e4_485f678a",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-24T00:11:02Z",
+      "side": 1,
+      "message": "Looks to me like this was sorted out.",
+      "parentUuid": "25a975ba_7b6ee120",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 10
+      },
+      "revId": "e076d8623b850223e3aa4daa982a04aeaf596216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
