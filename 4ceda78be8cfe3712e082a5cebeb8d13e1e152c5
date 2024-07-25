@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a81b029_ee481829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-25T23:14:15Z",
+      "side": 1,
+      "message": "@herman.lin@emc.com.tw, this change conflicts with the other changes.\nPlus, the other two need to be submitted together.\n\nCan you please cherry-pick the other changes on top of this one and upload the stack of changes together?\n\nExample:\n\n```bash\n# Make sure you are already on a git branch.\n\ngit log\n# Should show this change.\n\n# Update to main\ngit pull --rebase cros main\n\n# Cherry-pick the other two changes on top of this one.\n# There will be one conflict that needs to be resolved.\ngit cherry-pick c1edbc70da1f89506b90960bdace37ea97060cb8\ngit cherry-pick 5eb24097fc9b8de15ec6bbf9cda5e741f5b8d3fc\n\nrepo upload --cbr .\n```",
+      "revId": "4ceda78be8cfe3712e082a5cebeb8d13e1e152c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bc214f4_966d21ec",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
         "patchSetId": 1
