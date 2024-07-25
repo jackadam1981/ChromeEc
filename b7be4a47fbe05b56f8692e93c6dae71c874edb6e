@@ -16,6 +16,23 @@
       "message": "@bmbm@google.com, ptal!",
       "revId": "b7be4a47fbe05b56f8692e93c6dae71c874edb6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77d3731_47c6c99c",
+        "filename": "common/console_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-25T06:13:53Z",
+      "side": 1,
+      "message": "Is `temp_args` somehow edited by `usb_vprintf` and we can\u0027t use `args` or it\u0027s just for safety?",
+      "revId": "b7be4a47fbe05b56f8692e93c6dae71c874edb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
