@@ -52,6 +52,24 @@
       "parentUuid": "5200824f_72a6f2bf",
       "revId": "cc3503357e6d6d0141041acdae225204416a97d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0197144_1bd73dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-25T05:09:06Z",
+      "side": 1,
+      "message": "Ok, thanks for the info. I\u0027m cross compiling for hatch with `USE\u003d\"-cros-debug\" emerge-hatch ec-utils`.",
+      "parentUuid": "78949f4e_9f616d13",
+      "revId": "cc3503357e6d6d0141041acdae225204416a97d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
