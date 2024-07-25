@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b89fdc94_fcc2f8c3",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-25T07:53:03Z",
+      "side": 1,
+      "message": "\u003e Is it the same on Zephyr and EC?\n\nIn EC, this test is intended to verify `builtin/stdlib.c`. It this case either `memcpy` and `memmove` are much faster for aligned request. If I run the test, not for builtin std, the results are the same as with Zephyr - `memcpy` 3x faster, `memmove` the same.\n\n\u003e My guess is that maybe the memcpy implementation is highly optimized (copying whole words, not single bytes) and maybe memmove is using a very basic implementation (e.g., individual bytes).\n\nI figured it out. newlib performs dumb [byte by byte coping](https://github.com/eblot/newlib/blob/master/newlib/libc/string/memmove.c#L92-L101) if there is an overlap. If there is no overlap and memory is aligned, `memmove` is ~3x faster than unaligned, as for `memcpy`.\n\nNot sure what to do with the test. IMO newlib could be implemented better e.g. handle overlap first, then perform coping word coping, but I wouldn\u0027t call it a bug. \n\nPersonally, I would stay with only printing the timings, what do you think?",
+      "parentUuid": "8d5a9c30_44ba4d9a",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71af7591_5857e5e9",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
