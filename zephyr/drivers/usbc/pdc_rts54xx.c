@@ -194,6 +194,7 @@ static const struct smbus_cmd_t GET_PCH_DATA_STATUS = { 0x08, 0x02, 0xE0 };
 static const struct smbus_cmd_t ACK_CC_CI = { 0x0A, 0x07, 0x00 };
 static const struct smbus_cmd_t RTS_UCSI_GET_LPM_PPM_INFO = { 0x0E, 0x03,
 							      0x22 };
+static const struct smbus_cmd_t RTS_UCSI_SET_NEW_CAM = { 0x0E, 0x08, 0x0F };
 
 /**
  * @brief PDC Command states
@@ -337,6 +338,8 @@ enum cmd_t {
 	CMD_RAW_UCSI,
 	/** CMD_GET_LPM_PPM_INFO */
 	CMD_GET_LPM_PPM_INFO,
+	/** CMD_SET_NEW_CAM */
+	CMD_SET_NEW_CAM,
 };
 
 /**
@@ -467,6 +470,7 @@ static const char *const cmd_names[] = {
 	[CMD_ACK_CC_CI] = "CMD_ACK_CC_CI",
 	[CMD_RAW_UCSI] = "CMD_RAW_UCSI",
 	[CMD_GET_LPM_PPM_INFO] = "CMD_GET_LPM_PPM_INFO",
+	[CMD_SET_NEW_CAM] = "CMD_SET_NEW_CAM",
 };
 
 /**
@@ -2640,6 +2644,31 @@ static int rts54_get_lpm_ppm_info(const struct device *dev,
 				  ARRAY_SIZE(payload), (uint8_t *)info);
 }
 
+static int rts54_set_new_cam(const struct device *dev,
+			     const union set_new_cam_t *new_cam)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (new_cam == NULL) {
+		return -EINVAL;
+	}
+
+	uint8_t payload[] = {
+		RTS_UCSI_SET_NEW_CAM.cmd, RTS_UCSI_SET_NEW_CAM.len,
+		RTS_UCSI_SET_NEW_CAM.sub, new_cam->raw_value[0],
+		new_cam->raw_value[1],	  new_cam->raw_value[2],
+		new_cam->raw_value[3],	  new_cam->raw_value[4],
+		new_cam->raw_value[5],
+	};
+
+	return rts54_post_command(dev, CMD_SET_NEW_CAM, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
@@ -2677,6 +2706,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.manage_callback = rts54_manage_callback,
 	.ack_cc_ci = rts54_ack_cc_ci,
 	.get_lpm_ppm_info = rts54_get_lpm_ppm_info,
+	.set_new_cam = rts54_set_new_cam,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
