@@ -139,6 +139,29 @@
       "message": "Confirmed that the error about running out of flash is caused by this CL.",
       "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b19929_0b6396a7",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T18:18:16Z",
+      "side": 1,
+      "message": "Is this a duplicate of the one on line 33?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 5
+      },
+      "revId": "061359e291a3940c7a65c9a4faf1969b2b23453d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
