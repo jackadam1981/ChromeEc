@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dca2d624_aaf330ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-25T22:27:48Z",
+      "side": 1,
+      "message": "Please adjust the two remaining comments and this change should good to merge.",
+      "revId": "4ceda78be8cfe3712e082a5cebeb8d13e1e152c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bc214f4_966d21ec",
         "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
         "patchSetId": 1
