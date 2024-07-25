@@ -141,6 +141,30 @@
       },
       "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e62abf_27b413b3",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-25T02:54:50Z",
+      "side": 1,
+      "message": "by enabling common configs and including the relevant dts*,\nyou have a representative RVP EC image running in the emulator.\nthat should provide a more predictable environment for running\nspecific unit tests.\n\nif you look at `.../handler.log` files for various tests,\nyou\u0027ll see the EC booting up and running some unrealistic\ninit code that probably doesn\u0027t make sense. the unit\ntest will run before or after this code depending on how\nthe test is set up.... my concern with this is that the test\ninevitably doesn\u0027t actually run in isolation as a unit test - it\nstill runs in a \"booted\" EC image in the emulator.",
+      "parentUuid": "9c4b585b_48e6db0a",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
