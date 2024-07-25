@@ -237,6 +237,30 @@
       },
       "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ad6eee_2d75cc76",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-25T18:45:04Z",
+      "side": 1,
+      "message": "So, new revelation. It looks like `__builtin_trap` typically is implemented using an undefined instruction. I\u0027ll go back and see if it was possible that this was hit on helipilot.",
+      "parentUuid": "d8830bfb_430f2ca5",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 442,
+        "endChar": 35
+      },
+      "revId": "ff0a1c7e9ed178042af1780e644dd2b1b651c7eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
