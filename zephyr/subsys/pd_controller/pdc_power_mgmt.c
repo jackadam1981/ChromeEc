@@ -162,6 +162,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_PD_VDO_DP_STATUS,
 	/** CMD_PDC_SET_FRS */
 	CMD_PDC_SET_FRS,
+	/** CMD_PDC_SET_NEW_CAM */
+	CMD_PDC_SET_NEW_CAM,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -300,6 +302,8 @@ enum src_typec_attached_local_state_t {
 enum unattached_local_state_t {
 	/** UNATTACHED_SET_SINK_PATH_OFF */
 	UNATTACHED_SET_SINK_PATH_OFF,
+	/** UNATTACHED_SET_NEW_CAM_OFF */
+	UNATTACHED_SET_NEW_CAM_OFF,
 	/** UNATTACHED_RUN */
 	UNATTACHED_RUN,
 };
@@ -360,6 +364,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_LPM_PPM_INFO] = "PDC_GET_LPM_PPM_INFO",
 	[CMD_PDC_GET_PD_VDO_DP_STATUS] = "PDC_GET_PD_VDO_DP_STATUS",
 	[CMD_PDC_SET_FRS] = "PDC_SET_FRS",
+	[CMD_PDC_SET_NEW_CAM] = "PDC_SET_NEW_CAM",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -530,6 +535,9 @@ enum policy_src_attached_t {
 	SRC_POLICY_GET_RDO,
 	/** Triggers an update of the allow_pr_swap bit in CMD_SET_DRP */
 	SRC_POLICY_UPDATE_ALLOW_PR_SWAP,
+
+	/** Disable automatic mode entry */
+	SRC_POLICY_DISABLE_MODE_ENTRY,
 
 	/** SRC_POLICY_COUNT */
 	SRC_POLICY_COUNT
@@ -709,6 +717,8 @@ struct pdc_port_t {
 	union conn_status_change_bits_t overlay_ppm_changes;
 	/** LPM should enable FRS. */
 	bool frs_enable;
+	/** New current alternate mode details */
+	union set_new_cam_t set_new_cam;
 };
 
 /**
@@ -1486,6 +1496,16 @@ static void run_src_policies(struct pdc_port_t *port)
 			port->src_policy.accept_power_role_swap;
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_DISABLE_MODE_ENTRY)) {
+		/* Connector number is 1-indexed but port number is 0-indexed */
+		port->set_new_cam.connector_number = port_num + 1;
+		port->set_new_cam.new_cam = 0xff;
+		port->set_new_cam.am_specific = 0x00;
+		port->set_new_cam.enter_or_exit = 0;
+
+		queue_internal_cmd(port, CMD_PDC_SET_NEW_CAM);
+		return;
 	}
 
 	send_pending_public_commands(port);
@@ -1556,6 +1576,8 @@ static void pdc_unattached_entry(void *obj)
 static void pdc_unattached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *config = port->dev->config;
+	int port_number = config->connector_num;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -1573,8 +1595,18 @@ static void pdc_unattached_run(void *obj)
 	switch (port->unattached_local_state) {
 	case UNATTACHED_SET_SINK_PATH_OFF:
 		port->sink_path_en = false;
-		port->unattached_local_state = UNATTACHED_RUN;
+		port->unattached_local_state = UNATTACHED_SET_NEW_CAM_OFF;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		return;
+	case UNATTACHED_SET_NEW_CAM_OFF:
+		/* Connector number is 1-indexed but port number is 0-indexed */
+		port->set_new_cam.connector_number = port_number + 1;
+		port->set_new_cam.new_cam = 0xff;
+		port->set_new_cam.am_specific = 0x00;
+		port->set_new_cam.enter_or_exit = 0;
+
+		port->unattached_local_state = UNATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_SET_NEW_CAM);
 		return;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
@@ -1597,6 +1629,10 @@ static void pdc_src_attached_entry(void *obj)
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port);
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
+
+		/* Disable mode entry on new src attached. */
+		atomic_set_bit(port->src_policy.flags,
+			       SRC_POLICY_DISABLE_MODE_ENTRY);
 	}
 
 	/* Clear a piece of sink policy as it is no longer relevant in the
@@ -2148,6 +2184,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		rv = pdc_get_lpm_ppm_info(port->pdc, port->lpm_ppm_info);
+		break;
+	case CMD_PDC_SET_NEW_CAM:
+		rv = pdc_set_new_cam(port->pdc, &port->set_new_cam);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);

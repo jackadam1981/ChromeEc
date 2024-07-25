@@ -196,6 +196,8 @@ typedef int (*pdc_ack_cc_ci_t)(const struct device *dev,
 typedef int (*pdc_get_lpm_ppm_info_t)(const struct device *dev,
 				      struct lpm_ppm_info_t *info);
 typedef int (*pdc_set_frs_t)(const struct device *dev, bool enable);
+typedef int (*pdc_set_new_cam_t)(const struct device *dev,
+				 const union set_new_cam_t *new_cam);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -241,6 +243,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_ack_cc_ci_t ack_cc_ci;
 	pdc_get_lpm_ppm_info_t get_lpm_ppm_info;
 	pdc_set_frs_t set_frs;
+	pdc_set_new_cam_t set_new_cam;
 };
 /**
  * @endcond
@@ -1207,6 +1210,29 @@ static inline int pdc_get_lpm_ppm_info(const struct device *dev,
 	}
 
 	return api->get_lpm_ppm_info(dev, info);
+}
+
+/**
+ * @brief Set new current alternate mode.
+ *
+ * @param dev PDC device structure pointer
+ * @param new_cam New current alternate mode settings
+ *
+ * @return 0 on success
+ * @return -ENOSYS if not implemented
+ * @return -EINVAL for other errors
+ */
+static inline int pdc_set_new_cam(const struct device *dev,
+				  const union set_new_cam_t *new_cam)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->set_new_cam == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_new_cam(dev, new_cam);
 }
 
 /**
