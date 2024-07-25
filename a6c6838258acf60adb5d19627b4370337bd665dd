@@ -16,6 +16,24 @@
       "message": "i don\u0027t recall if how well `testcase.yaml` files can be organized in\na hierarchy -- is it feasible to move this down one level to the\n`intelrvp/mtlrvp` directory you\u0027re introducing in the next patch?",
       "revId": "a6c6838258acf60adb5d19627b4370337bd665dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8aad5d_7f6357eb",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-25T00:04:23Z",
+      "side": 1,
+      "message": "I could not find creating hierarchy in the existing EC code. If I move the testcase.yaml to intelrvp/mtlrvp directory, the test configuration file becomes mtlrvp specific. If I compile the test source files that are common for all intelrvp boards eg board_id.c and dc_jack.c that are part of following CLs, they themselves fall subject to test coverage which shouldn\u0027t happen.",
+      "parentUuid": "af39c96b_8aa5270b",
+      "revId": "a6c6838258acf60adb5d19627b4370337bd665dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -117,6 +117,30 @@
       },
       "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4b585b_48e6db0a",
+        "filename": "zephyr/test/intelrvp/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-07-25T00:04:23Z",
+      "side": 1,
+      "message": "With that approach we will have to include all the dtsi files in all the tests and rather than it testing a particular module, it would become a test for big blob. Making change to one test configs might fail all other tests too. They wont remain isolated. Does it make sense?",
+      "parentUuid": "337c7f84_a3feca57",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "82eb34284002daee8ae68fb5bba840fd3a7ece79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
