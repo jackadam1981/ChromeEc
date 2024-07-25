@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba02690_5dbf3255",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "Technically this is the \"Change-Id\". It looks like the commit is `cd757991f1410993715b7347387c87ef0c1e1486`. Both will link in Gerrit, but when using the git commandline, it\u0027s easier to deal with commits, since those are native to git.\n\nCan you use the commit? It looks like that\u0027s what the tool would have generated: \n\n* https://crrev.com/c/5738088\n* https://crrev.com/c/5735003",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f37d06cd_7e1fff0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "Can you include a link to that CL?",
+      "range": {
+        "startLine": 11,
+        "startChar": 125,
+        "endLine": 11,
+        "endChar": 173
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d4a73f_7e6c12f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "Can you [wrap this to 72 characters](https://cbea.ms/git-commit/#wrap-72)?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 239
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457ebc1c_823c7f65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 11,
+        "startChar": 230,
+        "endLine": 11,
+        "endChar": 234
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e814c49_9d465ac8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "causes the",
+      "range": {
+        "startLine": 11,
+        "startChar": 181,
+        "endLine": 11,
+        "endChar": 187
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab1a067_258dbc20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "Can you add:\n\n```\nBUG\u003db:324677118\n```",
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb079183_13716e50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T21:35:17Z",
+      "side": 1,
+      "message": "Can you add a line for the tests you ran?\n\nIt would probably be good to run all the unit tests to make sure there are no other regressions: `run_device_tests.py -b helipilot`",
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
