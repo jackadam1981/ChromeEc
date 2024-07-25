@@ -41,7 +41,7 @@
 		>;
 	};
 
-	gpio-interrupts {
+	gpio_interrupts: gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";
 
 		int_power_button: power_button {
@@ -63,11 +63,6 @@
 			irq-pin = <&gpio_tablet_mode_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "gmr_tablet_switch_isr";
-		};
-		int_lid_accel: ec_lid_accel  {
-			irq-pin = <&gpio_acc_int_l>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "bma4xx_interrupt";
 		};
 		int_vol_down: vol_down {
 			irq-pin = <&gpio_voldn_btn_odl>;
@@ -331,3 +326,5 @@
 	leak-gpios = <&gpioa 4 GPIO_OPEN_DRAIN
 		      &gpiof 1 GPIO_OPEN_DRAIN>;
 };
+
+#include "interrupts_motionsense.dtsi"
