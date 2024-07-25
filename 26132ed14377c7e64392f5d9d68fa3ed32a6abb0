@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d41a1a1_5cd280cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba02690_5dbf3255",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f37d06cd_7e1fff0d",
@@ -116,6 +140,102 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16f3a1e_32698d53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d4a73f_7e6c12f4",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 239
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd7f00b_4b1bedec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "457ebc1c_823c7f65",
+      "range": {
+        "startLine": 11,
+        "startChar": 230,
+        "endLine": 11,
+        "endChar": 234
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c00284_ef330890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e814c49_9d465ac8",
+      "range": {
+        "startLine": 11,
+        "startChar": 181,
+        "endLine": 11,
+        "endChar": 187
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be85fb8e_7d51b2e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37d06cd_7e1fff0d",
+      "range": {
+        "startLine": 11,
+        "startChar": 125,
+        "endLine": 11,
+        "endChar": 173
+      },
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab1a067_258dbc20",
@@ -146,6 +266,42 @@
       "writtenOn": "2024-07-25T21:35:17Z",
       "side": 1,
       "message": "Can you add a line for the tests you ran?\n\nIt would probably be good to run all the unit tests to make sure there are no other regressions: `run_device_tests.py -b helipilot`",
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2d5199_8b82cff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab1a067_258dbc20",
+      "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f875bd82_bf5d2f52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-07-25T21:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb079183_13716e50",
       "revId": "26132ed14377c7e64392f5d9d68fa3ed32a6abb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
