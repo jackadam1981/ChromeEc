@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec264b92_5ffa0063",
+        "filename": "common/panic_output.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-25T18:55:31Z",
+      "side": 1,
+      "message": "Is it possible to implement a test?\n\nFor example, in the `abort` test, we [check the panic data](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/abort.c;l\u003d23-41;drc\u003d85d7598eda5a6cb614b01e3a4f5d72a8ef9c202f).",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 436,
+        "endChar": 63
+      },
+      "revId": "bbce36761f2d267753ee0d85750df0123154ee84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
