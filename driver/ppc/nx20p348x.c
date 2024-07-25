@@ -211,15 +211,17 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 
 	enable = !!enable;
 
+	/*
+	 * VBUS Discharge must be off in sink mode,
+	 * but it should be on when we are going out off sink
+	 */
 	if (enable) {
-		/*
-		 * VBUS Discharge must be off in sink mode.
-		 */
 		rv = nx20p348x_discharge_vbus(port, 0);
-		if (rv)
-			return rv;
-	}
+	} else
+		rv = nx20p348x_discharge_vbus(port, 1);
 
+	if (rv)
+		return rv;
 	/*
 	 * We cannot use an EC GPIO for EN_SNK since an EC reset
 	 * will float the GPIO thus browning out the board (without
