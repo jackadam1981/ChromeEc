@@ -117,6 +117,8 @@ enum cmd_t {
 	CMD_SET_DRP_MODE,
 	/** CMD_RAW_UCSI */
 	CMD_RAW_UCSI,
+	/** CMD_SET_NEW_CAM */
+	CMD_SET_NEW_CAM,
 };
 
 /**
@@ -231,6 +233,8 @@ struct pdc_data_t {
 	union connector_status_t cached_conn_status;
 	/* Raw UCSI data to send. */
 	union reg_data raw_ucsi_cmd_data;
+	/* New current alternate mode to send. */
+	union set_new_cam_t new_cam;
 };
 
 /**
@@ -603,6 +607,9 @@ static void st_idle_run(void *o)
 			break;
 		case CMD_RAW_UCSI:
 			task_raw_ucsi(data);
+			break;
+		case CMD_SET_NEW_CAM:
+			task_ucsi(data, UCSI_SET_NEW_CAM);
 		}
 	}
 }
@@ -1324,6 +1331,12 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 	case CMD_SET_NOTIFICATION_ENABLE:
 		*(uint32_t *)&cmd_data.data[2] = cfg->bits.raw_value;
 		break;
+	case CMD_SET_NEW_CAM:
+		/* Bit 7 of byte 2 is enter/exit of alt-mode. */
+		cmd_data.data[2] |= data->new_cam.enter_or_exit ? (1 << 7) : 0;
+		cmd_data.data[3] = data->new_cam.new_cam;
+		*(uint32_t *)&cmd_data.data[4] = data->new_cam.am_specific;
+		break;
 	default:
 		/* Data doesn't need processed */
 		break;
@@ -1952,6 +1965,20 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 					      callback);
 }
 
+static int tps_set_new_cam(const struct device *dev,
+			   const union set_new_cam_t *new_cam)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (new_cam == NULL) {
+		return -EINVAL;
+	}
+
+	data->new_cam = *new_cam;
+
+	return tps_post_command(dev, CMD_SET_NEW_CAM, NULL);
+}
+
 static const struct pdc_driver_api_t pdc_driver_api = {
 	.is_init_done = tps_is_init_done,
 	.get_ucsi_version = tps_get_ucsi_version,
@@ -1986,6 +2013,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.set_comms_state = tps_set_comms_state,
 	.get_pch_data_status = tps_get_pch_data_status,
 	.execute_ucsi_cmd = tps_execute_ucsi_cmd,
+	.set_new_cam = tps_set_new_cam,
 };
 
 static int pdc_interrupt_mask_init(struct pdc_data_t *data)

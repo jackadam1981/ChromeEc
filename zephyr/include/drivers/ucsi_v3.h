@@ -1308,6 +1308,20 @@ union get_pd_message_t {
 };
 
 /**
+ * @brief SET_NEW_CAM command
+ */
+union set_new_cam_t {
+	struct {
+		uint16_t connector_number : 7;
+		uint16_t enter_or_exit : 1;
+		uint16_t new_cam : 8;
+		uint32_t am_specific;
+	} __packed;
+
+	uint8_t raw_value[6];
+};
+
+/**
  * @brief response for UCSI_GET_LPM_PPM_INFO
  */
 struct lpm_ppm_info_t {

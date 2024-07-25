@@ -142,6 +142,8 @@ enum pdc_cmd_t {
 	CMD_PDC_ACK_CC_CI,
 	/** CMD_PDC_GET_LPM_PPM_INFO */
 	CMD_PDC_GET_LPM_PPM_INFO,
+	/** CMD_PDC_SET_NEW_CAM */
+	CMD_PDC_SET_NEW_CAM,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -276,6 +278,8 @@ enum src_typec_attached_local_state_t {
 enum unattached_local_state_t {
 	/** UNATTACHED_SET_SINK_PATH_OFF */
 	UNATTACHED_SET_SINK_PATH_OFF,
+	/** UNATTACHED_SET_NEW_CAM_OFF */
+	UNATTACHED_SET_NEW_CAM_OFF,
 	/** UNATTACHED_RUN */
 	UNATTACHED_RUN,
 };
@@ -330,6 +334,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_PCH_DATA_STATUS] = "PDC_GET_PCH_DATA_STATUS",
 	[CMD_PDC_ACK_CC_CI] = "PDC_ACK_CC_CI",
 	[CMD_PDC_GET_LPM_PPM_INFO] = "PDC_GET_LPM_PPM_INFO",
+	[CMD_PDC_SET_NEW_CAM] = "PDC_SET_NEW_CAM",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -651,6 +656,8 @@ struct pdc_port_t {
 	bool cc;
 	/** Vendor defined change indicator bits */
 	uint16_t vendor_defined_ci;
+	/** New current alternate mode details */
+	union set_new_cam_t set_new_cam;
 };
 
 /**
@@ -1304,6 +1311,8 @@ static void pdc_unattached_entry(void *obj)
 static void pdc_unattached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *config = port->dev->config;
+	int port_number = config->connector_num;
 
 	/* The CCI_EVENT is set on a connector disconnect, so check the
 	 * connector status and take the appropriate action. */
@@ -1320,8 +1329,18 @@ static void pdc_unattached_run(void *obj)
 	switch (port->unattached_local_state) {
 	case UNATTACHED_SET_SINK_PATH_OFF:
 		port->sink_path_en = false;
-		port->unattached_local_state = UNATTACHED_RUN;
+		port->unattached_local_state = UNATTACHED_SET_NEW_CAM_OFF;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		return;
+	case UNATTACHED_SET_NEW_CAM_OFF:
+		/* Connector number is 1-indexed but port number is 0-indexed */
+		port->set_new_cam.connector_number = port_number + 1;
+		port->set_new_cam.new_cam = 0xff;
+		port->set_new_cam.am_specific = 0x00;
+		port->set_new_cam.enter_or_exit = 0;
+
+		port->unattached_local_state = UNATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_SET_NEW_CAM);
 		return;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
@@ -1769,6 +1788,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		rv = pdc_get_lpm_ppm_info(port->pdc, port->lpm_ppm_info);
+		break;
+	case CMD_PDC_SET_NEW_CAM:
+		rv = pdc_set_new_cam(port->pdc, &port->set_new_cam);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
