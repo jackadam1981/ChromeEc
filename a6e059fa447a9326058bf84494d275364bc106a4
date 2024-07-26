@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a9b7c7e_3db7a50d",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T22:46:46Z",
+      "side": 1,
+      "message": "\u003e Personally, I would stay with only printing the timings, what do you think?\n\nDo the non-fingerprint Zephyr builds use `newlib` too? If not, you could make the check conditional.\n\nIn any case, I think it would be worth adding a comment with a description of what you found and a `TODO(b/123)` link. I think it\u0027s a very low priority thing to fix, but if someone does care about it at some point the additional context will be helpful.",
+      "parentUuid": "b89fdc94_fcc2f8c3",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71af7591_5857e5e9",
         "filename": "zephyr/test/lib/src/stdlib.c",
         "patchSetId": 15
@@ -347,6 +371,30 @@
       "side": 1,
       "message": "Time measurement doesn\u0027t work on `NATIVE_SIM`. It bases on kind of [event timer](https://github.com/zephyrproject-rtos/zephyr/blob/main/scripts/native_simulator/common/src/nsi_hw_scheduler.c#L78).",
       "parentUuid": "a2eb14a9_c16c8158",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 54
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7298446f_47391c78",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T22:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71d30078_7d094e0c",
       "range": {
         "startLine": 403,
         "startChar": 0,
