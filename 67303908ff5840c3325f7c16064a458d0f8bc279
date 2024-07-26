@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70077030_ed6c2776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-26T14:14:33Z",
+      "side": 1,
+      "message": "Its still WiP, just unmarking it so people can see updates",
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a008ee01_bcb35bb6",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-07-26T01:17:47Z",
       "side": 1,
       "message": "Sorry, but i\u0027m really struggling to understand the logic. The function `sink_enable` is called with `enable\u003d\u003d0` when we DISABLE sink (also according to the comment above). But in sink mode we don\u0027t drive VBUS, so the VBUS discharge is not needed. I would expect this code to be added in the SRC-\u003eSNK transition, where the VBUS is applied at the moment of transition. I\u0027m clearly missing something, could you please clarify?",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 7
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8102e24_84c88e3e",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-26T14:14:33Z",
+      "side": 1,
+      "message": "We talked a little on chat. I went through PD spec and in 2.5.2 Sink Operation I found this: https://screenshot.googleplex.com/6xZiJY9jEGVhjVm\n\nWhat I see in logs with extra prints, when doing `cc snkdts` on DUT EC side we clearly detect disconnection but we do not enable vbus discharging and it was earlier disabled by this explicitly added logic (crrev/c/3044411 - due to vendor specific vendor as i understand all bug/cl history). \n\nSo that change makes us more spec compliant and keeps that historical quirk.. or maybe I\u0027m reading spec too selectively, note that I do not have too much expirience working with that spec.",
+      "parentUuid": "a008ee01_bcb35bb6",
       "range": {
         "startLine": 220,
         "startChar": 3,
