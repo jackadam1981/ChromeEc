@@ -549,6 +549,11 @@
  */
 #undef CONFIG_BATTERY_SMART
 
+/*
+ * Defines i2c operation retry count for smart battery
+ */
+#define CONFIG_BATTERY_SMART_I2C_RETRY_COUNT 0
+
 /* Chemistry of the battery device */
 #undef CONFIG_BATTERY_DEVICE_CHEMISTRY
 
