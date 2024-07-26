@@ -108,6 +108,9 @@ static int nx20p348x_discharge_vbus(int port, int enable)
 	int newval;
 	int status;
 
+	if (!enable)
+		enable = !enable;
+
 	status = read_reg(port, NX20P348X_DEVICE_CONTROL_REG, &regval);
 	if (status)
 		return status;
