@@ -84,6 +84,16 @@ test_mockable int sb_read(int cmd, int *param)
 		return EC_ERROR_ACCESS_DENIED;
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
+
+	for (int i = 0; i < CONFIG_BATTERY_SMART_I2C_RETRY_COUNT; i++) {
+		int ret = i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+		if (ret == EC_SUCCESS) {
+			return ret;
+		}
+		CPRINTS("read failed, wait 50ms then retry (attempt %d)", i);
+		crec_msleep(50);
+	}
+
 	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
 }
 
@@ -101,6 +111,15 @@ test_mockable int sb_write(int cmd, int param)
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
 
+	for (int i = 0; i < CONFIG_BATTERY_SMART_I2C_RETRY_COUNT; i++) {
+		int ret = i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
+		if (ret == EC_SUCCESS) {
+			return ret;
+		}
+		CPRINTS("write failed, wait 50ms then retry (attempt %d)", i);
+		crec_msleep(50);
+	}
+
 	return i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
 }
 
@@ -112,6 +131,16 @@ int sb_read_string(int offset, uint8_t *data, int len)
 		return EC_ERROR_ACCESS_DENIED;
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
+
+	for (int i = 0; i < CONFIG_BATTERY_SMART_I2C_RETRY_COUNT; i++) {
+		int ret = i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset,
+					  data, len);
+		if (ret == EC_SUCCESS) {
+			return ret;
+		}
+		CPRINTS("read failed, wait 50ms then retry (attempt %d)", i);
+		crec_msleep(50);
+	}
 
 	return i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data, len);
 }
@@ -125,6 +154,16 @@ int sb_read_sized_block(int offset, uint8_t *data, int len)
 		return EC_ERROR_ACCESS_DENIED;
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
+
+	for (int i = 0; i < CONFIG_BATTERY_SMART_I2C_RETRY_COUNT; i++) {
+		int ret = i2c_read_sized_block(I2C_PORT_BATTERY, addr_flags,
+					       offset, data, len, &read_len);
+		if (ret == EC_SUCCESS) {
+			return ret;
+		}
+		CPRINTS("read failed, wait 50ms then retry (attempt %d)", i);
+		crec_msleep(50);
+	}
 
 	return i2c_read_sized_block(I2C_PORT_BATTERY, addr_flags, offset, data,
 				    len, &read_len);
