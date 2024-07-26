@@ -64,6 +64,8 @@ two mechanisms:
 
 2. AP terminal: `ectool pdctrace` with options:
 
+   * `-d <IP>`   Forward trace messages to host at IP addr <IP>.
+                 Trace messages are encapsulated in UDP packets on port 2012.
    * `-h`        Usage help.
    * `-p <PORT>` Enable tracing on port <PORT>. By default, tracing is
                  requested all ports.
