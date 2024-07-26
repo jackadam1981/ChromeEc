@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9787a0f0_e28eaddb",
+        "filename": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2024-07-26T15:46:38Z",
+      "side": 1,
+      "message": "this change wasn\u0027t necessary for things to build, but i added it due to:\n\n```\n[FAILED] chromiumos/platform/ec: migrated_files\n    Hook script \"util/migrated_files.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      WARNING: test/boringssl_crypto.cc is not used in Zephyr EC. The test has been migrated to Zephyr. Make sure you apply the same fix for the Zephyr version in zephyr/test directory.\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8ae01e00f1bdaa747ccb8ef723954b55b3ac7169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
