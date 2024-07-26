@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "629b788b_4f5207bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-07-26T02:52:21Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nSeems that all rodata in CL:5393681 should be correct to `HOOK_INIT_EARLY` except for cortex-m.",
+      "revId": "c41f837c1c61f332435cf45ee611d0d1fcd69d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
