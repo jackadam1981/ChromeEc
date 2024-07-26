@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46fc68c_ce19b97c",
+        "filename": "zephyr/drivers/dsp_comms/include/cros/dsp/internal/service_transport.hh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-26T20:39:13Z",
+      "side": 1,
+      "message": "This will go to Pigweed upstream",
+      "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da91720_a9c01adc",
+        "filename": "zephyr/drivers/dsp_comms/include/cros/dsp/internal/service_transport.hh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-26T20:39:13Z",
+      "side": 1,
+      "message": "I\u0027m not sold between having a virtual function and a function passed into the constructor.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f38568b_03a10f92",
+        "filename": "zephyr/drivers/dsp_comms/service/test_transport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-26T20:39:13Z",
+      "side": 1,
+      "message": "These are the tests for service_transport.hh",
+      "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
