@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b9ad742_a55b4d58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-26T07:35:23Z",
+      "side": 1,
+      "message": "Fixed in ps3.",
+      "parentUuid": "5a81b029_ee481829",
+      "revId": "4ceda78be8cfe3712e082a5cebeb8d13e1e152c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bc214f4_966d21ec",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-07-23T18:36:24Z",
       "side": 1,
       "message": "Minor readability:\n\n```suggestion\n\treturn elan_read_cmd(READ_REG_HEAD + regaddr, regdata);\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 40
+      },
+      "revId": "4ceda78be8cfe3712e082a5cebeb8d13e1e152c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3808b90e_1471c0d6",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-26T07:35:23Z",
+      "side": 1,
+      "message": "Fixed in ps3.",
+      "parentUuid": "2bc214f4_966d21ec",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -95,6 +137,30 @@
           ]
         }
       ],
+      "revId": "4ceda78be8cfe3712e082a5cebeb8d13e1e152c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a288fe2_2eb553cf",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-26T07:35:23Z",
+      "side": 1,
+      "message": "Fixed in ps3.",
+      "parentUuid": "f22e5440_2a6b4bbd",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 27
+      },
       "revId": "4ceda78be8cfe3712e082a5cebeb8d13e1e152c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
