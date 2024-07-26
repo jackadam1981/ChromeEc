@@ -23,6 +23,15 @@ CONSOLE_MAP = {
     "helipilot": "sysbus.cr_uart1",
 }
 
+GPIO_WP_MAP = {
+    "bloonchipper": "sysbus.gpioPortB.GPIO_WP",
+    "dartmonkey": "sysbus.gpioPortB.GPIO_WP",
+    "helipilot": None,
+}
+
+WRITE_PROTECT_GPIO_ENABLE = "Release"
+WRITE_PROTECT_GPIO_DISABLE = "Press"
+
 
 def msg_run(cmd: List[str]) -> None:
     """Prints a command and executes it.
@@ -52,6 +61,7 @@ def launch(opts: argparse.Namespace) -> int:
 
     board = opts.board
     project = opts.project
+    enable_write_protect = opts.enable_write_protect
 
     # Since we are going to cd later, we need to determine the absolute path
     # of EC.
@@ -94,6 +104,19 @@ def launch(opts: argparse.Namespace) -> int:
     # https://renode.readthedocs.io/en/latest/debugging/gdb.html
     # (gdb) target remote :3333
     renode_execute.append("machine StartGdbServer 3333;")
+
+    write_protect_gpio = GPIO_WP_MAP[board]
+    if write_protect_gpio:
+        renode_execute.append(
+            write_protect_gpio
+            + " "
+            + (
+                WRITE_PROTECT_GPIO_ENABLE
+                if enable_write_protect
+                else WRITE_PROTECT_GPIO_DISABLE
+            )
+            + ";"
+        )
 
     # Expose the console UART as a PTY on /tmp/renode-uart. You can connect to
     # the PTY with minicom, screen, etc.
@@ -146,6 +169,15 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
         name for on-board test images
         """,
     )
+
+    parser.add_argument("--enable_write_protect", action="store_true")
+    parser.add_argument(
+        "--no-enable_write_protect",
+        dest="enable_write_protect",
+        action="store_false",
+    )
+    parser.set_defaults(enable_write_protect=True)
+
     opts = parser.parse_args(argv)
     return launch(opts)
 
