@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7f15f3_fcc4b628",
+        "filename": "zephyr/test/hwtest/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T23:11:39Z",
+      "side": 1,
+      "message": "Can you add the comment from the commit message here too: `The Zephyr build\ndoesn\u0027t allow using try/throw instructions, when exceptions are disabled.`?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "e44ac933a35f7bc77afb26757c16c46860a20d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ef2733_73781dc2",
+        "filename": "zephyr/test/hwtest/src/exception.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T23:11:39Z",
+      "side": 1,
+      "message": "Since we use this same pattern in a few tests now, can you create a followup CL to create a helper function that the tests can share?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "e44ac933a35f7bc77afb26757c16c46860a20d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c0133c_783d6e3c",
+        "filename": "zephyr/test/hwtest/src/exception.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T23:11:39Z",
+      "side": 1,
+      "message": "Even if we had exceptions enabled, we would still never reach this since we\u0027re not catching the exception, right?",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "e44ac933a35f7bc77afb26757c16c46860a20d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
