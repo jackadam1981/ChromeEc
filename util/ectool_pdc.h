@@ -6,6 +6,7 @@
 #ifndef ECTOOL_PDC_H
 #define ECTOOL_PDC_H
 
+#include "ectool_pdc_net.h"
 #include "ectool_pdc_pcap.h"
 
 extern const char cmd_pdc_trace_usage[];

@@ -20,6 +20,8 @@
 /* clang-format off */
 const char cmd_pdc_trace_usage[] =
 	"\n\tCollect USB PDC messages\n"
+	"\t-d <host>  send to <host> (UDP port "
+		      STRINGIFY(USB_PDC_UDP_PORT) ")\n"
 	"\t-h         Usage help\n"
 	"\t-p <port>  collect on USB-C port <port>|all|none|on|off "
 		"(default all)\n"
@@ -31,6 +33,7 @@ static void walk_entries(const uint8_t *data, size_t data_size,
 			 bool with_stdout);
 
 static FILE *pcap = NULL;
+static int dst_net_status = -1;
 
 int cmd_pdc_trace(int argc, char *argv[])
 {
@@ -42,6 +45,7 @@ int cmd_pdc_trace(int argc, char *argv[])
 
 	int rv;
 
+	const char *d_flag = NULL;
 	bool h_flag = false;
 	const char *p_flag = NULL;
 	bool s_flag = false;
@@ -58,8 +62,13 @@ int cmd_pdc_trace(int argc, char *argv[])
 	int c;
 	optind = 0; /* reset previous getopt */
 
-	while ((c = getopt(argc, argv, "hp:sw:")) != -1) {
+	while ((c = getopt(argc, argv, "d:hp:sw:")) != -1) {
 		switch (c) {
+		case 'd':
+			d_flag = optarg;
+			with_stdout = false;
+			break;
+
 		case 'h':
 			h_flag = true;
 			break;
@@ -118,16 +127,36 @@ int cmd_pdc_trace(int argc, char *argv[])
 		return 0;
 	}
 
+	const char *dst_host = NULL;
+
+	if (d_flag != NULL) {
+		dst_host = d_flag;
+	}
+
+	if (dst_host != NULL) {
+		int net_status = pdc_net_open(dst_host);
+		if (net_status < 0) {
+			fprintf(stderr,
+				"could not set up network destination %s\n",
+				dst_host);
+			return -1;
+		}
+		dst_net_status = net_status;
+	}
+
 	if (w_flag != NULL) {
 		pcap = pdc_pcap_open(w_flag);
-		if (pcap == NULL)
+		if (pcap == NULL) {
+			pdc_net_close(dst_net_status);
 			return -1;
+		}
 	}
 
 	ep.port = pdc_port;
 	rv = ec_command(EC_CMD_PDC_TRACE_MSG_ENABLE, 0, &ep, sizeof(ep), &er,
 			sizeof(er));
 	if (rv < 0) {
+		pdc_net_close(dst_net_status);
 		pdc_pcap_close(pcap);
 		return rv;
 	}
@@ -163,6 +192,7 @@ int cmd_pdc_trace(int argc, char *argv[])
 		walk_entries(gr->payload, payload_size, with_stdout);
 	}
 
+	pdc_net_close(dst_net_status);
 	pdc_pcap_close(pcap);
 
 	/*
@@ -264,7 +294,7 @@ static void walk_entries(const uint8_t *const data, size_t data_size,
 			printf("\n}\n");
 		}
 
-		if (pcap != NULL) {
+		if (pcap != NULL || dst_net_status >= 0) {
 			size_t cc =
 				trace_to_pcap(pcap_buf, sizeof(pcap_buf), e);
 
@@ -276,6 +306,9 @@ static void walk_entries(const uint8_t *const data, size_t data_size,
 
 				pdc_pcap_append(pcap, tv, pcap_buf, cc);
 			}
+
+			if (dst_net_status >= 0)
+				pdc_net_out(dst_net_status, pcap_buf, cc);
 		}
 
 		consumed_bytes += e_size;
