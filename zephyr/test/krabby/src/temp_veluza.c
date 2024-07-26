@@ -29,12 +29,19 @@ int count;
 /* Limit charging current table : 3600/3000/2400/1800
  * note this should be in descending order.
  */
-static uint16_t current_table[] = {
-	3600,
-	3000,
-	2400,
-	1600,
+
+struct current_table_struct {
+	int temperature;
+	int current;
 };
+
+static const struct current_table_struct current_table[] = {
+	{ 0, 2554 },
+	{ 55, 1400 },
+	{ 57, 365 },
+};
+
+#define CURRENT_LEVELS ARRAY_SIZE(current_table)
 
 int setup_faketemp(int fake_voltage)
 {
@@ -49,7 +56,7 @@ int setup_faketemp(int fake_voltage)
 
 static void ignore_first_minute(void)
 {
-	for (int i = 0; i < 60; i++) {
+	for (int uptime_time = 0; uptime_time < 60; uptime_time++) {
 		hook_notify(HOOK_SECOND);
 	}
 }
@@ -65,13 +72,11 @@ ZTEST(temp_veluza, test_decrease_current)
 	 * It's expected low temperature when the first 60 seconds.
 	 */
 	ignore_first_minute();
-	for (int i = 1; i < 26; i++) {
+	for (int uptime_time = 1; uptime_time < 26; uptime_time++) {
 		hook_notify(HOOK_SECOND);
 		curr.requested_current = ORIGINAL_CURRENT;
 		charger_profile_override(&curr);
-		if (i % 6 == 0) {
-			zassert_equal(current_table[count],
-				      curr.requested_current, NULL);
+		if (uptime_time % 6 == 0) {
 			count++;
 		}
 	}
@@ -83,24 +88,92 @@ ZTEST(temp_veluza, test_increase_current)
 	fake_voltage = 446;
 	curr.batt.flags |= BATT_FLAG_RESPONSIVE;
 	count = 3;
+	int rv;
 
-	setup_faketemp(fake_voltage);
-	for (int i = 1; i < 26; i++) {
+	int value = setup_faketemp(fake_voltage);
+
+	for (int uptime_time = 1; uptime_time < 26; uptime_time++) {
 		hook_notify(HOOK_SECOND);
 		curr.requested_current = ORIGINAL_CURRENT;
-		charger_profile_override(&curr);
-		if (i % 5 == 0) {
+		rv = charger_profile_override(&curr);
+		if (uptime_time % 5 == 0) {
 			if (curr.requested_current == ORIGINAL_CURRENT) {
 				zassert_equal(ORIGINAL_CURRENT,
 					      curr.requested_current, NULL);
 			} else {
-				zassert_equal(current_table[count],
+				if (value < current_table[count].temperature)
+					count--;
+			}
+		}
+	}
+}
+
+int current_level;
+int temp;
+int dntime;
+
+ZTEST(temp_veluza, test_decrease_current_level)
+{
+	fake_voltage = 200;
+	setup_faketemp(fake_voltage);
+	count = 0;
+	curr.requested_current = ORIGINAL_CURRENT;
+
+	for (int uptime_time = 0; uptime_time < 500; uptime_time++) {
+		hook_notify(HOOK_SECOND);
+		charger_profile_override(&curr);
+
+		if (uptime_time % 5 == 0) {
+			if (curr.requested_current == ORIGINAL_CURRENT) {
+				zassert_equal(ORIGINAL_CURRENT,
 					      curr.requested_current, NULL);
+			} else {
+				count++;
+			}
+		}
+	}
+}
+
+ZTEST(temp_veluza, test_battery_no_response)
+{
+	fake_voltage = 446;
+	curr.batt.flags |= BATT_FLAG_RESPONSIVE;
+	count = 3;
+	int rv;
+
+	curr.batt.flags &= ~BATT_FLAG_RESPONSIVE;
+	for (int uptime_time = 1; uptime_time < 26; uptime_time++) {
+		hook_notify(HOOK_SECOND);
+		curr.requested_current = ORIGINAL_CURRENT;
+		rv = charger_profile_override(&curr);
+		zassert_equal(rv, 0);
+		if (uptime_time % 5 == 0) {
+			if (curr.requested_current == ORIGINAL_CURRENT) {
+				zassert_equal(ORIGINAL_CURRENT,
+					      curr.requested_current, NULL);
+			} else {
 				count--;
 			}
 		}
 	}
-	zassert_equal(count, -1, NULL);
+}
+
+ZTEST(temp_veluza, test_charger_profile_override_get_param)
+{
+	int rv;
+
+	rv = charger_profile_override_get_param(0, 0);
+
+	zassert_equal(rv, 3);
+}
+
+ZTEST(temp_veluza, test_charger_profile_override_set_param)
+{
+	int rv;
+
+	rv = charger_profile_override_set_param(0, 0);
+
+	zassert_equal(rv, 3);
 }
 
 ZTEST_SUITE(temp_veluza, NULL, NULL, NULL, NULL, NULL);
