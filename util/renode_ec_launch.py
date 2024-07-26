@@ -17,6 +17,12 @@ from typing import List, Optional
 DEFAULT_BOARD = "bloonchipper"
 DEFAULT_PROJECT = "ec"
 
+CONSOLE_MAP = {
+    "bloonchipper": "usart2",
+    "dartmonkey": "usart1",
+    "helipilot": "cr_uart1",
+}
+
 
 def msg_run(cmd: List[str]) -> None:
     """Prints a command and executes it.
@@ -88,6 +94,16 @@ def launch(opts: argparse.Namespace) -> int:
     # https://renode.readthedocs.io/en/latest/debugging/gdb.html
     # (gdb) target remote :3333
     renode_execute.append("machine StartGdbServer 3333;")
+
+    # Expose the console UART as a PTY on /tmp/renode-uart. You can connect to
+    # the PTY with minicom, screen, etc.
+    renode_execute.append(
+        'emulation CreateUartPtyTerminal "term" "/tmp/renode-uart" True;'
+    )
+    renode_execute.append(
+        "connector Connect sysbus." + CONSOLE_MAP[board] + " term;"
+    )
+
     renode_execute.append("start;")
 
     # Build the Renode command with script execution.
