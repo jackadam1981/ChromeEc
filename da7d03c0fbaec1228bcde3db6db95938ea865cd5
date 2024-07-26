@@ -52,6 +52,24 @@
       "parentUuid": "cd719581_d734acdb",
       "revId": "da7d03c0fbaec1228bcde3db6db95938ea865cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ac7b6c_8880370c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-26T22:00:20Z",
+      "side": 1,
+      "message": "Ohhh, I\u0027m sure the /dev/pts/? that it points to is still valid outside chroot, but I though there was a different tmpfs mounted in the chroot?",
+      "parentUuid": "8fcf28e8_44d9b65c",
+      "revId": "da7d03c0fbaec1228bcde3db6db95938ea865cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
