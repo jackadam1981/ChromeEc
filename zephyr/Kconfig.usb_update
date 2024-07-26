@@ -47,4 +47,9 @@ config PLATFORM_EC_TOUCHPAD_HASH_FW
 	  in their dts file, and set the size of `touchpad_fw_hashes` section to
 	  `(TOUCHPAD_VIRTUAL_SIZE / UPDATE_PDU_SIZE) * 32`.
 
+config PLATFORM_EC_USB_CONSOLE_READ
+	bool "TODO"
+	help
+	  TODO
+
 endif # PLATFORM_EC_USB_UPDATE
