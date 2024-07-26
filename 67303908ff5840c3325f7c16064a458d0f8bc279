@@ -97,6 +97,30 @@
       },
       "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b04d9e3_df55ca82",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-07-26T19:09:41Z",
+      "side": 1,
+      "message": "are we missing an explicit vbus discharge enable when we enable\nsrc mode? i\u0027m not sure what the pd stack actually does, we may\nneed to trace through it to see what calls it makes to the ppc.\n\ni assume the port can be in 3 states: src, off, sink.\nso, we should enable vbus discharge when going into src mode,\npresumably leave it enabled when for src-\u003eoff, then\ndisable when entering sink mode. when leaving sink mode,\nwe don\u0027t need to do anything until we enter src mode.",
+      "parentUuid": "f8102e24_84c88e3e",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 7
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
