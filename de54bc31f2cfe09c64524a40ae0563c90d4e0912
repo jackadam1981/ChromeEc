@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911755a2_6b69e6b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T23:15:09Z",
+      "side": 1,
+      "message": "Technically, this CL does not remove these right? (Since those references are in the private binary, not this public code.)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "de54bc31f2cfe09c64524a40ae0563c90d4e0912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
