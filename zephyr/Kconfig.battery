@@ -235,6 +235,12 @@ config PLATFORM_EC_BATTERY_STBL_STAT
 
 	  The default configuration is logical OR.
 
+config PLATFORM_EC_BATTERY_SMART_I2C_RETRY_COUNT
+	int "I2C operation retry count for smart battery"
+	default 0
+	help
+	  Define I2C retry count for read/write smart battery.
+
 if PLATFORM_EC_BATTERY_STBL_STAT
 
 config PLATFORM_EC_BATT_ALARM_MASK1
