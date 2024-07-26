@@ -72,6 +72,12 @@ bool console_channel_is_disabled(enum console_channel channel)
 		return true;
 	return false;
 }
+
+bool console_channel_is_quiet_mode(void)
+{
+	return channel_mask == CC_MASK(CC_COMMAND);
+}
+
 #endif /* CONFIG_CONSOLE_CHANNEL */
 
 #ifndef CONFIG_ZEPHYR

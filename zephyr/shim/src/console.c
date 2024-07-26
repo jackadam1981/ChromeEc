@@ -298,6 +298,13 @@ SYS_INIT(init_ec_console, PRE_KERNEL_1,
 
 __maybe_unused static int zephyr_shim_console_out(int c)
 {
+	if (console_channel_is_quiet_mode()) {
+		/* TODO - maybe it's worth continuing to log to the AP
+		 * but just suppress printing to stdout?
+		 */
+		return c;
+	}
+
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr()) {
 		char console_char = c;
 		console_buf_notify_chars(&console_char, 1);
@@ -446,7 +453,7 @@ static void handle_sprintf_rv(int rv, size_t *len)
 	}
 }
 
-static void zephyr_print(const char *buff, size_t size)
+static void zephyr_print(const char *buff, size_t size, bool is_shell_output)
 {
 	/*
 	 * shell_* functions can not be used in ISRs so optionally use
@@ -464,6 +471,8 @@ static void zephyr_print(const char *buff, size_t size)
 		    !in_isr) {
 			printk("!%s", buff);
 		}
+	} else if (is_shell_output) {
+		shell_fprintf(shell_zephyr, SHELL_NORMAL, "%s", buff);
 	} else {
 		if (IS_ENABLED(CONFIG_LOG_MODE_MINIMAL)) {
 			/*
@@ -500,7 +509,8 @@ int cputs(enum console_channel channel, const char *outstr)
 	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 
-	zephyr_print(outstr, strlen(outstr));
+	zephyr_print(outstr, strlen(outstr),
+		     channel == CC_COMMAND ? true : false);
 
 	return 0;
 }
@@ -521,7 +531,7 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
-	zephyr_print(buff, len);
+	zephyr_print(buff, len, channel == CC_COMMAND ? true : false);
 
 	return rv > 0 ? EC_SUCCESS : rv;
 }
@@ -557,7 +567,7 @@ int cprints(enum console_channel channel, const char *format, ...)
 			   "]\n");
 	handle_sprintf_rv(rv, &len);
 
-	zephyr_print(buff, len);
+	zephyr_print(buff, len, channel == CC_COMMAND ? true : false);
 
 	return rv > 0 ? EC_SUCCESS : rv;
 }

@@ -160,6 +160,12 @@ static inline bool console_channel_is_disabled(enum console_channel channel)
 }
 #endif
 
+/**
+ * Check if the console output is in quiet mode - all channels except
+ * CC_COMMAND are disabled
+ */
+bool console_channel_is_quiet_mode(void);
+
 #ifdef CONFIG_PIGWEED_LOG_TOKENIZED_LIB
 const char *get_timestamp_now(void);
 
