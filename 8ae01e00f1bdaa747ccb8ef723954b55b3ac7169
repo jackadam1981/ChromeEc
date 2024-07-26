@@ -22,6 +22,30 @@
       },
       "revId": "8ae01e00f1bdaa747ccb8ef723954b55b3ac7169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2593846_8e20ff06",
+        "filename": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T16:09:37Z",
+      "side": 1,
+      "message": "Thanks, you did the right thing.",
+      "parentUuid": "9787a0f0_e28eaddb",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "8ae01e00f1bdaa747ccb8ef723954b55b3ac7169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
