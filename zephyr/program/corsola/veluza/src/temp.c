@@ -7,11 +7,12 @@
 #include "driver/charger/rt9490.h"
 #include "hooks.h"
 #include "temp_sensor/temp_sensor.h"
-#define NUM_CURRENT_LEVELS ARRAY_SIZE(current_table)
-#define TEMP_THRESHOLD 50
+
 #define TEMP_BUFF_SIZE 60
 #define KEEP_TIME 5
+
 BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_VELUZA) || IS_ENABLED(CONFIG_TEST));
+
 /* calculate current average temperature */
 static int average_tempature(void)
 {
@@ -38,19 +39,28 @@ static int average_tempature(void)
 	return avg_temp;
 }
 static int current_level;
-/* Limit charging current table : 3600/3000/2400/1800
+
+struct current_table_struct {
+	int temperature;
+	int current;
+};
+
+/* Limit charging current table : 2554/1824/1094
  * note this should be in descending order.
  */
-static uint16_t current_table[] = {
-	3600,
-	3000,
-	2400,
-	1600,
+static const struct current_table_struct current_table[] = {
+	{ 0, 2554 },
+	{ 55, 1400 },
+	{ 57, 365 },
 };
+
+#define CURRENT_LEVELS ARRAY_SIZE(current_table)
+
 /* Called by hook task every hook second (1 sec) */
 static void current_update(void)
 {
-	int temp;
+	int temp, i;
+	static int prev_tmp;
 	static uint8_t uptime;
 	static uint8_t dntime;
 
@@ -63,51 +73,76 @@ static void current_update(void)
 		return;
 	}
 #endif
-	if (temp >= TEMP_THRESHOLD) {
-		dntime = 0;
-		if (uptime < KEEP_TIME) {
-			uptime++;
-		} else {
-			uptime = 0;
-			current_level++;
+
+	if (temp < prev_tmp) {
+		/* Decrease */
+		for (i = current_level; i > 0; i--) {
+			if (temp < current_table[i].temperature) {
+				uptime = 0;
+				if (dntime < KEEP_TIME) {
+					dntime++;
+				} else {
+					dntime = 0;
+					current_level = i - 1;
+					ccprints("Current temperature = %d",
+						 temp);
+					ccprints("Decrease current level = %d",
+						 current_level);
+				}
+			} else
+				break;
 		}
-	} else if (current_level != 0 && temp < TEMP_THRESHOLD) {
-		uptime = 0;
-		if (dntime < KEEP_TIME) {
-			dntime++;
-		} else {
-			dntime = 0;
-			current_level--;
+	} else if (temp >= prev_tmp) {
+		/* Increase */
+		for (i = current_level + 1; i < CURRENT_LEVELS; i++) {
+			if (temp >= current_table[i].temperature) {
+				dntime = 0;
+				if (uptime < KEEP_TIME) {
+					uptime++;
+				} else {
+					uptime = 0;
+					current_level = i;
+					ccprints("Current temperature = %d",
+						 temp);
+					ccprints("Increase current level = %d",
+						 current_level);
+				}
+			} else
+				break;
 		}
-	} else {
-		uptime = 0;
-		dntime = 0;
 	}
-	if (current_level > NUM_CURRENT_LEVELS) {
-		current_level = NUM_CURRENT_LEVELS;
-	}
+
+	if (current_level < 0)
+		current_level = 0;
+
+	if (current_level >= CURRENT_LEVELS)
+		current_level = CURRENT_LEVELS - 1;
+
+	if (!dntime && !uptime)
+		prev_tmp = temp;
 }
 DECLARE_HOOK(HOOK_SECOND, current_update, HOOK_PRIO_DEFAULT);
+
 int charger_profile_override(struct charge_state_data *curr)
 {
 	/*
 	 * Precharge must be executed when communication is failed on
 	 * dead battery.
 	 */
+
 	if (!(curr->batt.flags & BATT_FLAG_RESPONSIVE))
 		return 0;
-	if (current_level != 0) {
-		if (curr->requested_current > current_table[current_level - 1])
-			curr->requested_current =
-				current_table[current_level - 1];
-	}
+	if (curr->requested_current > current_table[current_level].current)
+		curr->requested_current = current_table[current_level].current;
 	return 0;
 }
+
 enum ec_status charger_profile_override_get_param(uint32_t param,
 						  uint32_t *value)
 {
 	return EC_RES_INVALID_PARAM;
 }
+
 enum ec_status charger_profile_override_set_param(uint32_t param,
 						  uint32_t value)
 {
