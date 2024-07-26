@@ -70,6 +70,24 @@
       "parentUuid": "8fcf28e8_44d9b65c",
       "revId": "da7d03c0fbaec1228bcde3db6db95938ea865cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cda3e14_b82a271a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T22:01:45Z",
+      "side": 1,
+      "message": "Yeah, I think with it in `/tmp` you need to be inside the chroot to access it.",
+      "parentUuid": "16ac7b6c_8880370c",
+      "revId": "da7d03c0fbaec1228bcde3db6db95938ea865cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
