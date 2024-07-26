@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1294fe8_125607fa",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-07-26T21:12:42Z",
+      "side": 1,
+      "message": "You are modifying the same dict that is passed into the function, that is not very nice to do to the callers. You should make a copy of the dict instead.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8bc81c1f_d2769c67",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/jobserver.py",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 70,
+                "endChar": 0
+              },
+              "replacement": "        env \u003d dict(env or {})\n"
+            }
+          ]
+        }
+      ],
+      "revId": "72035989740c7829d20b348b9620ae263e9d7cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
