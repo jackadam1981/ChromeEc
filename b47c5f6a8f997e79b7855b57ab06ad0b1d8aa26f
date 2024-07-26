@@ -16,6 +16,24 @@
       "message": "\"has to\" (be initialized...)?",
       "revId": "b47c5f6a8f997e79b7855b57ab06ad0b1d8aa26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec5278e_8ba70703",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-26T19:18:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01467d1d_dd88bd9e",
+      "revId": "b47c5f6a8f997e79b7855b57ab06ad0b1d8aa26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
