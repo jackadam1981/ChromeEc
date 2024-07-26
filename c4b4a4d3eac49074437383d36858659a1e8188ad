@@ -46,6 +46,30 @@
       },
       "revId": "c4b4a4d3eac49074437383d36858659a1e8188ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239cfb79_9981a963",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T22:38:00Z",
+      "side": 0,
+      "message": "It may be good to go ahead and initialize it so that the memory sanitizer doesn\u0027t complain: https://www.chromium.org/chromium-os/developer-library/guides/testing/fuzzing/\n\n(I\u0027m not sure if we\u0027re running msan for EC right now, but someone might try in the future.)\n\nIt will also have the added benefit of making the test more deterministic. (The speed shouldn\u0027t have any dependency of the data, but might as well rule that out.)",
+      "parentUuid": "2cd6d4cf_e18ca8df",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 13
+      },
+      "revId": "c4b4a4d3eac49074437383d36858659a1e8188ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
