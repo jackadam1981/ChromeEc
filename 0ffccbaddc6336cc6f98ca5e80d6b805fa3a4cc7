@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8990836f_f80fa45f",
+        "filename": "zephyr/test/hwtest/src/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-26T23:00:48Z",
+      "side": 1,
+      "message": "I think `zassert_false(memcmp(...) \u003d\u003d 0)` is *slightly* easier to read.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 67
+      },
+      "revId": "0ffccbaddc6336cc6f98ca5e80d6b805fa3a4cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
