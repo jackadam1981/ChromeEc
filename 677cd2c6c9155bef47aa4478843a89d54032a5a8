@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca99e957_23c17474",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-26T19:18:27Z",
+      "side": 1,
+      "message": "make buildall pass , if IS_ENABLED(CONFIG_USB_PD_REV30) is removed as well. hence removed it.",
+      "parentUuid": "522c078b_8518dc22",
+      "revId": "677cd2c6c9155bef47aa4478843a89d54032a5a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2b122fd_1eb8a1bb",
