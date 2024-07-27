@@ -9,10 +9,10 @@ compatible: "cros-ec,hibernate-vci-pins"
 child-binding:
   description: VCI child node
   properties:
-    gpios:
+    reg:
       required: true
-      type: phandle-array
-      description: Reference to a VCI instance.
+      type: array
+      description: VCI input id number according to VCI_INx.
 
     vci-polarity:
       required: true
@@ -25,3 +25,8 @@ child-binding:
     vci-latch-enable:
       type: boolean
       description: If present enable latching of VCI input
+
+    preserve:
+      type: boolean
+      description: If present its state will be preserved after exiting
+        hibernation.
