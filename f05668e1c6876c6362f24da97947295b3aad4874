@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bc8b68_4b21275f",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-27T08:55:37Z",
+      "side": 1,
+      "message": "fyi, https://github.com/zephyrproject-rtos/zephyr/pull/76213 just got merged, you can use `#include \u003czephyr/sys/printk-hooks.h\u003e` once it\u0027s downstreamed",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 0
+      },
+      "revId": "f05668e1c6876c6362f24da97947295b3aad4874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
