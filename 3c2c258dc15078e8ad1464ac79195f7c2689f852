@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03f038a_3f2e4a34",
+        "filename": "zephyr/program/nissa/orisa/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-07-29T16:26:01Z",
+      "side": 1,
+      "message": "Don\u0027t enable this port.",
+      "revId": "3c2c258dc15078e8ad1464ac79195f7c2689f852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2c7797_3514f2a2",
+        "filename": "zephyr/program/nissa/orisa/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-07-29T16:26:01Z",
+      "side": 1,
+      "message": "To enable tablet mode E2E, EC Needs this config and TABLET_MODE_SWITCH. you can have another patch for tablet mode.",
+      "revId": "3c2c258dc15078e8ad1464ac79195f7c2689f852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
