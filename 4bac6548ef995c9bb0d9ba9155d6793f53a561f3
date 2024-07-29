@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d023a5_df54b4f2",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-07-29T19:40:38Z",
+      "side": 1,
+      "message": "Is minimal logging *not* enabled anywhere currently?",
+      "range": {
+        "startLine": 473,
+        "startChar": 3,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "4bac6548ef995c9bb0d9ba9155d6793f53a561f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
