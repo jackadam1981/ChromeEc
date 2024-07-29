@@ -22,6 +22,30 @@
       },
       "revId": "4bac6548ef995c9bb0d9ba9155d6793f53a561f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ca8c32_7208219c",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-07-29T19:46:54Z",
+      "side": 1,
+      "message": "Most of the tests use LOG_MODE_IMMEDIATE.  Fingerprint also uses LOG_MODE_IMMEDIATE and enables console logging to the AP.",
+      "parentUuid": "c5d023a5_df54b4f2",
+      "range": {
+        "startLine": 473,
+        "startChar": 3,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "4bac6548ef995c9bb0d9ba9155d6793f53a561f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
