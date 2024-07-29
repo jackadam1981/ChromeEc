@@ -16,6 +16,24 @@
       "message": "I\u0027ve had to adjust this quite a bit due to the parallel build from `firmware_builder.py build`.  The script passes on my machine, even after deleting the build folder and starting from scratch.  I\u0027m wondering if we\u0027re still hitting a corner case on the server because the toolchain folder may exist but extraction may not be complete",
       "revId": "7ea5815ef9e0ddf656e349db4fb001ffd9f416db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8881dad3_9e72c8c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-07-29T15:05:02Z",
+      "side": 1,
+      "message": "Is `setup_firmware_toolchain` using a `temp` dir to extract the contents and then doing a `mv tmp real`? That should prevent broken folders.",
+      "parentUuid": "0d6d353f_b1ac583d",
+      "revId": "7ea5815ef9e0ddf656e349db4fb001ffd9f416db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
