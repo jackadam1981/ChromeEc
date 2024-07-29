@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5f3dd4_68d3871e",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-29T11:52:13Z",
+      "side": 1,
+      "message": "changed with pachset 2",
+      "parentUuid": "a2f7608c_edf67ff4",
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0456c4bc_7347f4bb",
@@ -82,6 +100,30 @@
       "writtenOn": "2024-07-26T22:33:59Z",
       "side": 1,
       "message": "out of",
+      "range": {
+        "startLine": 216,
+        "startChar": 42,
+        "endLine": 216,
+        "endChar": 49
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed6d98b_78e178c3",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-29T11:52:13Z",
+      "side": 1,
+      "message": "changed with pachset 2",
+      "parentUuid": "0456c4bc_7347f4bb",
       "range": {
         "startLine": 216,
         "startChar": 42,
@@ -213,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6524cac8_41ea95d9",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-29T11:52:13Z",
+      "side": 1,
+      "message": "I uploaded new patchset, PTAL - it should be review ready now",
+      "parentUuid": "f10a0288_dc2c1abd",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 7
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec014b97_2d9d5e82",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 1
@@ -224,6 +290,30 @@
       "writtenOn": "2024-07-26T22:33:59Z",
       "side": 1,
       "message": "Supposing that this logic correct (and I don\u0027t think I have a firm opinion on that yet), couldn\u0027t this just be `rv \u003d nx20p348x_discharge_vbus(port, !enable);`?",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 41
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3055ad0d_3665e7a4",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-29T11:52:13Z",
+      "side": 1,
+      "message": "changed with pachset 2",
+      "parentUuid": "ec014b97_2d9d5e82",
       "range": {
         "startLine": 218,
         "startChar": 1,
