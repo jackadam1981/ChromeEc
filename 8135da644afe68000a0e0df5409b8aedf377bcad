@@ -16,6 +16,24 @@
       "message": "I have  provided a commit message with a reason for skipping low coverage alerting: Coverage to be handled in b/356032502.  Even then commit to queue is failing with low coverage reason. How do i resolve this \u0026 get this CL merged.",
       "revId": "8135da644afe68000a0e0df5409b8aedf377bcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca7e006_c1556d15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-07-29T19:42:21Z",
+      "side": 1,
+      "message": "@zoss-cl-coverage@prod.google.com @alevkoy@chromium.org, How can i get this merged? Have raised a cross bug for handle coverage, as mentioned in commit message.",
+      "parentUuid": "4980bc3f_e69fb8ac",
+      "revId": "8135da644afe68000a0e0df5409b8aedf377bcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
