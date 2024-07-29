@@ -33,6 +33,40 @@
       "message": "Verified on Xol with servo v4.1 and also with manual \"power role swap\" test",
       "revId": "1476633947fc3ee481e5db93fe027fc0c2217f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3deaf7a0_183958b0",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-29T18:38:10Z",
+      "side": 1,
+      "message": "Out of scope, but this interface is a little bit weird. It returns an error code, but it doesn\u0027t look like the TCPM state machines ever check it. Also, `dev` is a weird name for the second parameter. The TC uses `role`, and that makes a lot more sense.",
+      "revId": "1476633947fc3ee481e5db93fe027fc0c2217f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae8f664_95b1463b",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-29T18:38:10Z",
+      "side": 1,
+      "message": "Nit: This should be an `else` as a guard against invalid values of `dev`.",
+      "revId": "1476633947fc3ee481e5db93fe027fc0c2217f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
