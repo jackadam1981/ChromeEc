@@ -286,6 +286,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf0ad9d_8256fb6b",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-07-29T11:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a9b7c7e_3db7a50d",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 4
+      },
+      "revId": "a6e059fa447a9326058bf84494d275364bc106a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71af7591_5857e5e9",
