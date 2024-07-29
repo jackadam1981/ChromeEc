@@ -40,6 +40,30 @@
       ],
       "revId": "ae7d5af039212344c3d76adb9d22f18327cbaeba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5712768_2383b743",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-29T06:38:52Z",
+      "side": 1,
+      "message": "Fixed in PS8.",
+      "parentUuid": "69196a96_f42dab76",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "ae7d5af039212344c3d76adb9d22f18327cbaeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
