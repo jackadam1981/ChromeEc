@@ -21,17 +21,29 @@
 
 K_MUTEX_DEFINE(modify_base_detection_mutex);
 
-#define BASE_DETECT_INTERVAL (200 * MSEC)
+#define BASE_DETECT_INTERVAL (30 * MSEC)
+#define BASE_DETECT_EN_DEBOUNCE_US (300 * MSEC)
+#define BASE_DETECT_DIS_DEBOUNCE_US (0 * MSEC)
+
 #define ATTACH_MAX_THRESHOLD_MV 300
 #define ATTACH_MIN_THRESHOLD_MV 100
 
 static bool attached;
+static bool debouncing;
 
 static void base_update(void);
 DECLARE_DEFERRED(base_update);
 
 static void base_update(void)
 {
+	int mv = adc_read_channel(ADC_BASE_DET);
+	debouncing = false;
+
+	if (mv >= ATTACH_MIN_THRESHOLD_MV && mv <= ATTACH_MAX_THRESHOLD_MV)
+		attached = true;
+	else
+		attached = false;
+
 	base_set_state(attached);
 	tablet_set_mode(!attached, TABLET_TRIGGER_BASE);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp5000_base_x), attached);
@@ -42,29 +54,20 @@ DECLARE_DEFERRED(base_detect_tick);
 
 static void base_detect_tick(void)
 {
-	static bool debouncing;
 	int mv = adc_read_channel(ADC_BASE_DET);
 	if ((mv > ATTACH_MAX_THRESHOLD_MV || mv < ATTACH_MIN_THRESHOLD_MV) &&
-	    base_get_state()) {
-		if (!debouncing) {
-			debouncing = true;
-		} else {
-			debouncing = false;
-			attached = false;
-			hook_call_deferred(&base_update_data, 300 * MSEC);
-		}
+	    base_get_state() && !debouncing) {
+		debouncing = true;
+		hook_call_deferred(&base_update_data,
+				   BASE_DETECT_DIS_DEBOUNCE_US);
 	} else if (mv >= ATTACH_MIN_THRESHOLD_MV &&
-		   mv <= ATTACH_MAX_THRESHOLD_MV && !base_get_state()) {
-		if (!debouncing) {
-			debouncing = true;
-		} else {
-			debouncing = false;
-			attached = true;
-			hook_call_deferred(&base_update_data, 300 * MSEC);
-		}
-	} else {
-		debouncing = false;
+		   mv <= ATTACH_MAX_THRESHOLD_MV && !base_get_state() &&
+		   !debouncing) {
+		debouncing = true;
+		hook_call_deferred(&base_update_data,
+				   BASE_DETECT_EN_DEBOUNCE_US);
 	}
+
 	hook_call_deferred(&base_detect_tick_data, BASE_DETECT_INTERVAL);
 }
 
