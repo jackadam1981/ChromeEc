@@ -34,6 +34,24 @@
       "parentUuid": "4980bc3f_e69fb8ac",
       "revId": "8135da644afe68000a0e0df5409b8aedf377bcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5c5d16_16b4a26c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-29T19:54:15Z",
+      "side": 1,
+      "message": "When you get a -1 from Zoss and then upload again with `LOW_COVERAGE_REASON`, you have to delete the old Zoss vote to get a new one. I don\u0027t know if you\u0027re able to do that, but I just did.",
+      "parentUuid": "0ca7e006_c1556d15",
+      "revId": "8135da644afe68000a0e0df5409b8aedf377bcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
