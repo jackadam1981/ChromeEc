@@ -165,6 +165,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9052a5e_ae506918",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-29T10:56:53Z",
+      "side": 1,
+      "message": "Sorry this CL was uploaded as WiP to show some progress and start discussion and maybe there was not to enough thinking behind and describing, just saw that it makes things working and wanted to start ASAP discussion/verification if that make sense. \n\nAnyway I believe that best would be to compare to syv682x driver. It is PPC that I think most Bryas uses and we do not see problems there. \n\nSo I did some debug prints in both XOL and Omnigul(other brya, with syv682x)\nSee logs just after we go with `cc snkdts` in servo console (it 1st diconnect cc lines, 2nd transforms servo do dumb snk with accessory mode but without PD, 3rd reconnect CC)\n- [Omnigul](https://paste.googleplex.com/5908042212442112) \n- [XOL](https://paste.googleplex.com/5156772287610880)\n\nAnd it seems that on XOL/nx20p348x we are missing an explicit discharge enable when disconnect during SNK. Then when we are in Attached SNK/SRC we should again ASAP disable active discharge. \n\nNow its matter of proper adding this explicit discharge enable",
+      "parentUuid": "9b04d9e3_df55ca82",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 7
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec014b97_2d9d5e82",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 1
