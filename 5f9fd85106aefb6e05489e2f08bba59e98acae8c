@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7da2d80_e5678e2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-29T06:46:29Z",
+      "side": 1,
+      "message": "Fixed in PS4.",
+      "parentUuid": "666a33c3_0796a3d9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "5f9fd85106aefb6e05489e2f08bba59e98acae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edc8d691_b2799a27",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-26T23:20:27Z",
       "side": 1,
       "message": "This is repeated from the subject line. Either leave it out or provide a more detailed description of what is being changed. See https://cbea.ms/git-commit.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "5f9fd85106aefb6e05489e2f08bba59e98acae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39a2eca_5b1b85ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2024-07-29T06:46:29Z",
+      "side": 1,
+      "message": "Fixed in PS4.",
+      "parentUuid": "edc8d691_b2799a27",
       "range": {
         "startLine": 9,
         "startChar": 0,
