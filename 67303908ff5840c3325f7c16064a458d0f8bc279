@@ -189,6 +189,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f10a0288_dc2c1abd",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-07-29T11:00:24Z",
+      "side": 1,
+      "message": "See how its done in case of syv682x \nhttps://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/driver/ppc/syv682x.c;l\u003d728",
+      "parentUuid": "c9052a5e_ae506918",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 7
+      },
+      "revId": "67303908ff5840c3325f7c16064a458d0f8bc279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec014b97_2d9d5e82",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 1
