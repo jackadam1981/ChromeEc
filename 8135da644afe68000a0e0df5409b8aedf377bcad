@@ -52,6 +52,24 @@
       "parentUuid": "0ca7e006_c1556d15",
       "revId": "8135da644afe68000a0e0df5409b8aedf377bcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1284d2e6_f13eae61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-07-29T20:02:51Z",
+      "side": 1,
+      "message": "Actually, on further consideration, this should be a pretty straightforward test for you to write. It would be very similar to the basic USB4 entry [test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c;l\u003d220;drc\u003dcfc740514c3de776534d22673ebf05fe8c906c5b), but you would [set](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c;l\u003d270;drc\u003dcfc740514c3de776534d22673ebf05fe8c906c5b) the cable values to have the Gen4 bit.\n\nThis fix doesn\u0027t appear to be urgent. The passive cable branches of the USB4 code are pretty well covered, and I\u0027d like for them to stay that way. I guess it\u0027s OK if you submit the test in a later CL, but I\u0027d like the `LOW_COVERAGE_REASON` to mention b:345881189 and for that bug to stay open until this CL is covered.",
+      "parentUuid": "4d5c5d16_16b4a26c",
+      "revId": "8135da644afe68000a0e0df5409b8aedf377bcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
