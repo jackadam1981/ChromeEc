@@ -47,7 +47,8 @@ typedef int (*emul_pdc_get_pdos_t)(const struct emul *target,
 typedef int (*emul_pdc_set_pdos_t)(const struct emul *target,
 				   enum pdo_type_t pdo_type,
 				   enum pdo_offset_t pdo_offset,
-				   uint8_t num_pdos, const uint32_t *pdos);
+				   uint8_t num_pdos, enum pdo_source_t source,
+				   const uint32_t *pdos);
 typedef int (*emul_pdc_set_info_t)(const struct emul *target,
 				   const struct pdc_info_t *info);
 typedef int (*emul_pdc_set_lpm_ppm_info_t)(const struct emul *target,
@@ -321,7 +322,8 @@ static inline int emul_pdc_get_pdos(const struct emul *target,
 static inline int emul_pdc_set_pdos(const struct emul *target,
 				    enum pdo_type_t pdo_type,
 				    enum pdo_offset_t pdo_offset,
-				    uint8_t num_pdos, const uint32_t *pdos)
+				    uint8_t num_pdos, enum pdo_source_t source,
+				    const uint32_t *pdos)
 {
 	if (!target || !target->backend_api) {
 		return -ENOTSUP;
@@ -331,7 +333,7 @@ static inline int emul_pdc_set_pdos(const struct emul *target,
 
 	if (api->set_pdos) {
 		return api->set_pdos(target, pdo_type, pdo_offset, num_pdos,
-				     pdos);
+				     source, pdos);
 	}
 	return -ENOSYS;
 }
@@ -534,6 +536,13 @@ emul_pdc_connect_partner(const struct emul *target,
 static inline int emul_pdc_disconnect(const struct emul *target)
 {
 	union connector_status_t connector_status;
+	const int max_pdos = 7;
+	uint32_t partner_pdos[max_pdos] = { 0 };
+
+	emul_pdc_set_pdos(target, SOURCE_PDO, PDO_OFFSET_0, max_pdos,
+			  PARTNER_PDO, partner_pdos);
+	emul_pdc_set_pdos(target, SINK_PDO, PDO_OFFSET_0, max_pdos, PARTNER_PDO,
+			  partner_pdos);
 
 	connector_status.connect_status = 0;
 	emul_pdc_set_connector_status(target, &connector_status);
