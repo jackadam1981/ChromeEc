@@ -10,15 +10,23 @@
 $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_i386),\
 	/opt/coreboot-sdk/bin/i386-elf-)
 
+# No fingerprint boards using Minute-IA, so we have no need for clang support.
+# Let GCC be the default unless explicitly requested otherwise.
+CROSS_COMPILE_CC_NAME?=gcc
+
 # FPU compilation flags
 CFLAGS_FPU-$(CONFIG_FPU)=
 
 # CPU specific compilation flags
-CFLAGS_CPU+=-O2 -fomit-frame-pointer -mno-accumulate-outgoing-args	\
+CFLAGS_CPU+=-O2 -fomit-frame-pointer \
 	    -ffunction-sections -fdata-sections				\
 	    -fno-builtin-printf -fno-builtin-sprintf			\
 	    -fno-stack-protector -gdwarf-2  -fno-common -ffreestanding	\
 	    -minline-all-stringops -fno-strict-aliasing
+
+ifneq ($(CROSS_COMPILE_CC_NAME),clang)
+CFLAGS_CPU+=-mno-accumulate-outgoing-args
+endif
 
 CFLAGS_CPU+=$(CFLAGS_FPU-y)
 
