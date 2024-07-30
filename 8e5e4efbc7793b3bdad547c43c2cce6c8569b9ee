@@ -143,6 +143,30 @@
       },
       "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc2c9ba_f623d49c",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-30T00:10:07Z",
+      "side": 1,
+      "message": "Also, you don\u0027t have to use the harder to type `_`, using `--enable-write-protect` automatically places the value in the `enable_write_protect` opt.",
+      "parentUuid": "5f19eb49_6b46e77a",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
