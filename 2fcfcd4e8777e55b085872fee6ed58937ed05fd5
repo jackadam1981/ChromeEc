@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9456e04e_a5b6eb5b",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T22:09:36Z",
+      "side": 1,
+      "message": "Given what we found below (b/356094145), I think this comment should be removed. Let\u0027s still print out the timing.",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 5
+      },
+      "revId": "2fcfcd4e8777e55b085872fee6ed58937ed05fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ad1033_01ee1280",
+        "filename": "zephyr/test/lib/src/stdlib.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T22:09:36Z",
+      "side": 1,
+      "message": "It\u0027s possible for a `memcpy` implementation to be equally slow for aligned and unaligned like we saw with `memmove` in b/356094145), so let\u0027s remove this comment and add a `zassert` to validate it. This could catch a regression when switching to a different version of `libc` (e.g., one of the [other versions supported by Zephyr](https://docs.zephyrproject.org/latest/develop/languages/c/index.html#standard-library) or `llvm-libc`](http://shortn/_LsEjng7joN)).",
+      "range": {
+        "startLine": 449,
+        "startChar": 2,
+        "endLine": 451,
+        "endChar": 5
+      },
+      "revId": "2fcfcd4e8777e55b085872fee6ed58937ed05fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
