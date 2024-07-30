@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03cd496_08ea6916",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-30T00:24:58Z",
+      "side": 1,
+      "message": "Totally agree! The naming confused me too, especially the `is_connected` part that sounds like this function is intended for checking the condition and returning a boolean as opposed to changing the PPC behaviour",
+      "parentUuid": "3deaf7a0_183958b0",
+      "revId": "1476633947fc3ee481e5db93fe027fc0c2217f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae8f664_95b1463b",
@@ -65,6 +83,24 @@
       "writtenOn": "2024-07-29T18:38:10Z",
       "side": 1,
       "message": "Nit: This should be an `else` as a guard against invalid values of `dev`.",
+      "revId": "1476633947fc3ee481e5db93fe027fc0c2217f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9fddecb_a07b1b54",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-07-30T00:24:58Z",
+      "side": 1,
+      "message": "Let\u0027s fix that in follow up CL",
+      "parentUuid": "aae8f664_95b1463b",
       "revId": "1476633947fc3ee481e5db93fe027fc0c2217f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
