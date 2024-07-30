@@ -10,6 +10,7 @@
 
 /* Select Baseboard features */
 #define VARIANT_DEDEDE_EC_IT8320
+#define BOARD_AWASUKI
 #include "baseboard.h"
 #undef GPIO_VOLUME_UP_L
 #undef GPIO_VOLUME_DOWN_L
@@ -109,6 +110,8 @@ enum battery_type {
 	BATTERY_C31N2315,
 	BATTERY_TYPE_COUNT,
 };
+
+void als_interrupt(enum gpio_signal s);
 
 #endif /* !__ASSEMBLER__ */
 

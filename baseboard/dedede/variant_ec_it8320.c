@@ -97,7 +97,7 @@ const struct i2c_port_t i2c_ports[] = {
 	  .sda = GPIO_EC_I2C_SENSOR_SDA },
 #endif
 
-#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+#if defined(BOARD_AWASUKI) || defined(HAS_TASK_PD_C1)
 	{ .name = "sub_usbc1",
 	  .port = I2C_PORT_SUB_USB_C1,
 	  .kbps = 1000,
