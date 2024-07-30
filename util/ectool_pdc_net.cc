@@ -22,6 +22,13 @@
 #include <termios.h>
 #include <unistd.h>
 
+static const char id_hash_query[] =
+	"ls -l /home/root | grep daemon-store | awk '{print $NF}'";
+static const char ip_query_template[] =
+	"vsh --vm_name=termina --owner_id='%s' --target_container=penguin -- "
+	"ip -4 -br -j addr show eth0 | "
+	"sed -n -e 's/.*local\":\"\\([0-9.]\\+\\)\",.*/\\1/p'";
+
 /*
  * "connection refused" errors go away when there's a listener:
  *
@@ -97,4 +104,65 @@ void pdc_net_close(int udp_tx_fd)
 		return;
 
 	close(udp_tx_fd);
+}
+
+/*
+ * get the IP addr of the "linux" VM where wireshark can run
+ */
+const char *pdc_net_get_vm_ip(void)
+{
+	char id_hash[500];
+	char ip_query[500];
+	static char ip_buf[500];
+	FILE *fp;
+	int sh_status;
+	size_t sz;
+
+	fp = popen(id_hash_query, "r");
+	if (fp == NULL) {
+		fprintf(stderr, "popen \"%s\" failed\n", id_hash_query);
+		return NULL;
+	}
+
+	sz = fread(id_hash, 1, sizeof(id_hash), fp);
+
+	sh_status = pclose(fp);
+	if (sz == 0 || sh_status != 0) {
+		fprintf(stderr,
+			"popen \"%s\" returned %zu bytes and exit status %d\n",
+			id_hash_query, sz, sh_status);
+		fprintf(stderr, "is anyone logged into chromeos?\n");
+		return NULL;
+	}
+
+	if (sz > 0)
+		id_hash[sz - 1] = '\0';
+
+	printf("found CROS_USER_ID_HASH=\"%s\"\n", id_hash);
+
+	snprintf(ip_query, sizeof(ip_query), ip_query_template, id_hash);
+
+	fp = popen(ip_query, "r");
+	if (fp == NULL) {
+		fprintf(stderr, "popen \"%s\" failed\n", ip_query);
+		return NULL;
+	}
+
+	sz = fread(ip_buf, 1, sizeof(ip_buf), fp);
+
+	sh_status = pclose(fp);
+	if (sz == 0 || sh_status != 0) {
+		fprintf(stderr,
+			"popen \"%s\" returned %zu bytes and exit status %d\n",
+			ip_query, sz, sh_status);
+		fprintf(stderr, "is the linux VM running?\n");
+		return NULL;
+	}
+
+	if (sz > 0)
+		ip_buf[sz - 1] = '\0';
+
+	printf("found crostini IP=\"%s\"\n", ip_buf);
+
+	return ip_buf;
 }
