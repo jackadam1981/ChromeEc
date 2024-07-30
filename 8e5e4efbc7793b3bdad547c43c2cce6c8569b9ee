@@ -281,6 +281,30 @@
       },
       "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7f2aff_8e04e3ee",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T17:03:51Z",
+      "side": 1,
+      "message": "For my own reference, looks like there is a bug tracking upgrading to Python 3.11, but not sure when it will actually happen: http://b/318532035.",
+      "parentUuid": "606881ff_378dd339",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
