@@ -305,6 +305,30 @@
       },
       "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6348b546_99d8dcae",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-07-30T21:08:30Z",
+      "side": 1,
+      "message": "\u003e I was trying to mimic the argparse.BooleanOptionalAction available in Python 3.9.\n\nAh, I see. Thanks for pointing that out.",
+      "parentUuid": "cf7f2aff_8e04e3ee",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
