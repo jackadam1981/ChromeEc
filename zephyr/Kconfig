@@ -1039,4 +1039,7 @@ config PLATFORM_EC_FEATURE_FINCH
 	  When this option is enabled, some of the experimental features
 	  (aka finch) will be enabled for CROS_EC.
 
+config NEWLIB_LIBC_CUSTOM_SBRK
+	default y
+
 endif # PLATFORM_EC
