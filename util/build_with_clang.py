@@ -11,7 +11,6 @@ from concurrent.futures import ThreadPoolExecutor
 import logging
 import math
 import multiprocessing
-import os
 import shutil
 import subprocess
 import sys
@@ -37,6 +36,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "discovery",
     "gingerbread",
     "hatch_fp",
+    "host",
     "hyperdebug",
     "nocturne_fp",
     "nucleo-f411re",
@@ -337,10 +337,11 @@ def build(board_name: str, max_cpus: int) -> None:
     cmd = [
         "make",
         "BOARD=" + board_name,
+        "CROSS_COMPILE_CC_NAME=clang",
         f"-j{max_cpus}",
     ]
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, env=dict(os.environ, CC="clang"), check=True)
+    subprocess.run(cmd, check=True)
 
 
 def get_all_boards() -> typing.List[str]:
