@@ -16,6 +16,24 @@
       "message": "I think this is a somewhat nicer solution than https://crrev.com/c/5710766, since it does a better job of preventing issues like this in the future.",
       "revId": "c0aa02fff44bc548125988898a381e519ece2d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02ff38a_fefbe0bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-07-30T07:17:37Z",
+      "side": 1,
+      "message": "I found this change would cause that the system can\u0027t power on without battery. EC will keep rebooting.",
+      "parentUuid": "897af8af_7cd68fdc",
+      "revId": "c0aa02fff44bc548125988898a381e519ece2d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
