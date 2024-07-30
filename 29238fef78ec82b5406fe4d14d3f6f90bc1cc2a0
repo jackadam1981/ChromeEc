@@ -22,6 +22,30 @@
       },
       "revId": "29238fef78ec82b5406fe4d14d3f6f90bc1cc2a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf91af7_cda90eef",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-07-30T05:06:42Z",
+      "side": 1,
+      "message": "The byte-0 of the UPDATE_EXTRA_CMD_CONSOLE_READ_INIT response is an error code. We think the host issues the next request(UPDATE_EXTRA_CMD_CONSOLE_READ_NEXT) only when READ_INIT is successful.\n\nOn the EC side, the error code (01h, EC_RES_INVALID_COMMAND) is returned if CONFIG_USB_CONSOLE_READ is disabled.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usb_update.c;drc\u003d4b732d7acf770a3b1c76e39212e40226fe42c882;l\u003d446\n\nError code table:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;drc\u003d58a4ddfe9766e3d33c79f9296d24579414f08ee4;l\u003d729",
+      "parentUuid": "13961a6c_0d4457d4",
+      "range": {
+        "startLine": 1029,
+        "startChar": 6,
+        "endLine": 1029,
+        "endChar": 22
+      },
+      "revId": "29238fef78ec82b5406fe4d14d3f6f90bc1cc2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
