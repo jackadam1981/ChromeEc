@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1bb0d2_3cb64446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-30T16:56:44Z",
+      "side": 1,
+      "message": "We need to explore why we\u0027re not getting a `reliable \u003d\u003d 0` in `motion_lid::calculate_lid_angle`",
+      "revId": "54d149641077d8dc398f5d8950a5f94a3e2334d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

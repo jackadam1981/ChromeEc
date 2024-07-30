@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d99ad31_0a18c726",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-07-30T16:56:44Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/motion_lid.c;l\u003d420 this logic should be handling the GMR lid_open and flagging the angle as unreliable which should not then toggle the peripherals. If there\u0027s a bug, I believe it\u0027s caused by the GMR driver not properly updating the `lid_is_open()` result",
+      "parentUuid": "363ff2bd_816b926f",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d891211_83fa7e20",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
