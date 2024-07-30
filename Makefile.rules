@@ -93,7 +93,7 @@ cmd_bin_to_hex = $(OBJCOPY) -I binary -O ihex \
 cmd_smap = $(NM) $< | sort > $@
 cmd_elf = $(COMPILER) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \
 	-o $@ -Wl,-T,$< -Wl,-Map,$(patsubst %.elf,%.map,$@)
-ifeq ($(cc-name),gcc)
+ifneq ($(CROSS_COMPILE_CC_NAME),clang)
 cmd_elf+= -flto-partition=one
 endif
 ifneq ($(MEMSIZE_FLAGS),)
