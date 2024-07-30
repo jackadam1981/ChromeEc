@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9b5778_be1ae58e",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T17:02:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02127b49_ddc66ab0",
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78745c9e_c9cf30e6",
@@ -66,6 +84,30 @@
       "writtenOn": "2024-07-30T00:04:10Z",
       "side": 1,
       "message": "Removing the `None` simplifies the dict type from `dict[str, Optional[str]]` (which usually appears as *Unknown* when inferred) to `dict[str,str]`. It also allows for the Pythonic `if board in GPIO_WP_MAP` conditional check.\n\n```suggestion\nGPIO_WP_MAP: dict[str,str] \u003d {\n    \"bloonchipper\": \"sysbus.gpioPortB.GPIO_WP\",\n    \"dartmonkey\": \"sysbus.gpioPortB.GPIO_WP\",\n}\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2adb1c6_6eb330ae",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T17:02:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78745c9e_c9cf30e6",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cec9309_2e65b523",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T17:02:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da0f2b2a_cbfc970a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73175723_325efddb",
@@ -112,6 +178,30 @@
       "writtenOn": "2024-07-30T00:04:10Z",
       "side": 1,
       "message": "Prefer to use a f-string instead of multiple `+` concatenation.\n\nhttps://google.github.io/styleguide/pyguide.html#310-strings\n\n```suggestion\n    if board in GPIO_WP_MAP:\n        wp_state \u003d GPIO_WP_ENABLE if enable_write_protect else GPIO_WP_DISABLE\n        renode_execute.append(f\"{GPIO_WP_MAP[board]} {wp_state};\")\n```",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "498e5ed9_668e14cd",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T17:02:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73175723_325efddb",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -159,6 +249,30 @@
       "side": 1,
       "message": "Also, you don\u0027t have to use the harder to type `_`, using `--enable-write-protect` automatically places the value in the `enable_write_protect` opt.",
       "parentUuid": "5f19eb49_6b46e77a",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "8e5e4efbc7793b3bdad547c43c2cce6c8569b9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606881ff_378dd339",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-07-30T17:02:58Z",
+      "side": 1,
+      "message": "\u003e , do we really need this additional logic?\n\nI was trying to mimic the [`argparse.BooleanOptionalAction` available in Python 3.9](https://docs.python.org/3/library/argparse.html#action). \n\nWe can use the version you suggest, but there won\u0027t be a `--no-enable-write-protect` flag. I guess that\u0027s consistent with the behavior in `run_device_test.py`, where we default to not having write protect enabled and only enable it in specific tests.",
+      "parentUuid": "cfc2c9ba_f623d49c",
       "range": {
         "startLine": 172,
         "startChar": 0,
