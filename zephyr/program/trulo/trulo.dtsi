@@ -3,19 +3,16 @@
  * found in the LICENSE file.
  */
 
- / {
+/ {
 	aliases {
-		gpio-wp = &ec_wp_l;
+		gpio-wp = &gpio_ec_wp_odl;
 	};
 
 	named-gpios {
 		compatible = "named-gpios";
 
-		ec_wp_l: write-protect {
-			gpios = <&gpioa 0 GPIO_INPUT>;
-		};
-		/* unimplemented GPIOs */
-		entering-rw {
+		/* The legacy system code requires GPIO_ENTERING_RW symbol */
+		gpio_ec_entering_rw: ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
 	};
