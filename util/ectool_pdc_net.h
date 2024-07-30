@@ -13,5 +13,6 @@
 int pdc_net_open(const char *hostname);
 void pdc_net_out(int udp_tx_fd, const void *buf, size_t buf_len);
 void pdc_net_close(int udp_tx_fd);
+const char *pdc_net_get_vm_ip(void);
 
 #endif /* ECTOOL_PDC_NET_H */

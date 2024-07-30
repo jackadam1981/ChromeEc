@@ -26,6 +26,8 @@ const char cmd_pdc_trace_usage[] =
 	"\t-p <port>  collect on USB-C port <port>|all|none|on|off "
 		"(default all)\n"
 	"\t-s         send to stdout (default if no other destination)\n"
+	"\t-v         send to crostini VM (UDP port "
+		      STRINGIFY(USB_PDC_UDP_PORT) ", on-device only)\n"
 	"\t-w <file>  write to <file>";
 /* clang-format on */
 
@@ -49,6 +51,7 @@ int cmd_pdc_trace(int argc, char *argv[])
 	bool h_flag = false;
 	const char *p_flag = NULL;
 	bool s_flag = false;
+	bool v_flag = false;
 	const char *w_flag = NULL;
 
 	/*
@@ -62,7 +65,7 @@ int cmd_pdc_trace(int argc, char *argv[])
 	int c;
 	optind = 0; /* reset previous getopt */
 
-	while ((c = getopt(argc, argv, "d:hp:sw:")) != -1) {
+	while ((c = getopt(argc, argv, "d:hp:svw:")) != -1) {
 		switch (c) {
 		case 'd':
 			d_flag = optarg;
@@ -79,6 +82,11 @@ int cmd_pdc_trace(int argc, char *argv[])
 
 		case 's':
 			s_flag = true;
+			break;
+
+		case 'v':
+			v_flag = true;
+			with_stdout = false;
 			break;
 
 		case 'w':
@@ -118,6 +126,12 @@ int cmd_pdc_trace(int argc, char *argv[])
 		}
 	}
 
+	if (v_flag && d_flag != NULL) {
+		fprintf(stderr,
+			"VM and host destination are mutually exclusive\n");
+		return -1;
+	}
+
 	if (pdc_port == EC_PDC_TRACE_MSG_PORT_NONE) {
 		ep.port = pdc_port;
 		rv = ec_command(EC_CMD_PDC_TRACE_MSG_ENABLE, 0, &ep, sizeof(ep),
@@ -129,7 +143,11 @@ int cmd_pdc_trace(int argc, char *argv[])
 
 	const char *dst_host = NULL;
 
-	if (d_flag != NULL) {
+	if (v_flag) {
+		dst_host = pdc_net_get_vm_ip();
+		if (dst_host == NULL)
+			return -1;
+	} else if (d_flag != NULL) {
 		dst_host = d_flag;
 	}
 
