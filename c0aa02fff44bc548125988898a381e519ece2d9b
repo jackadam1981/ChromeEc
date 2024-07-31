@@ -34,6 +34,29 @@
       "parentUuid": "897af8af_7cd68fdc",
       "revId": "c0aa02fff44bc548125988898a381e519ece2d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1824845a_1211e370",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-07-31T00:14:54Z",
+      "side": 1,
+      "message": "Since this gets stuck retrying when no battery is present, I think we need a little extra state to keep track of how many attempts we\u0027ve made and fail-fast if the battery isn\u0027t working.\n\n```\n    static uint8_t attempt_count \u003d 0;\n    int ret;\n\n    do {\n        ret \u003d i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);\n        if (ret \u003d\u003d EC_SUCCESS) {\n            attempt_count \u003d 0;\n            break;\n        }\n        if (attempt_count \u003c CONFIG_BATTERY_SMART_I2C_RETRY_COUNT) {\n            CPRINTS(\"read failed, wait 50ms then retry (attempt %d)\", i);\n            crec_msleep(50);\n        }\n        attempt_count \u003d MIN(attempt_count + 1, CONFIG_BATTERY_SMART_I2C_RETRY_COUNT);\n    } while (attempt_count \u003c CONFIG_BATTERY_SMART_I2C_RETRY_COUNT);\n    return ret;\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "c0aa02fff44bc548125988898a381e519ece2d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
