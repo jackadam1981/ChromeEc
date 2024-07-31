@@ -132,7 +132,12 @@ DECLARE_DEFERRED(lid_change_deferred);
 void lid_interrupt(enum gpio_signal signal)
 {
 	/* Reset lid debounce time */
+#if CONFIG_LID_DEBOUNCE_US_CUSTOM == 0
 	hook_call_deferred(&lid_change_deferred_data, LID_DEBOUNCE_US);
+#else
+	hook_call_deferred(&lid_change_deferred_data,
+			   CONFIG_LID_DEBOUNCE_US_CUSTOM);
+#endif
 }
 
 void enable_lid_detect(bool enable)
