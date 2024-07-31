@@ -44,4 +44,11 @@ config PLATFORM_EC_TABLET_MODE_SKIP_LID_CLOSE
       when devices are stacked, this configuration skips lid close event when
       the system is in tablet mode
 
+config PLATFORM_EC_GMR_SENSOR_DEBOUNCE_US
+	int "GMR sensor detect tablet mode debounce custom timing"
+	default 40000
+	help
+	  Enable GMR sensor detect tablet mode debounce custom timing.
+	  Refering to LID_DEBOUNCE_US + 10 * MSEC
+
 endif # PLATFORM_EC_TABLET_MODE
