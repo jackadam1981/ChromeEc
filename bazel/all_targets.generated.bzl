@@ -148,6 +148,14 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "awasuki",
+        baseboard = "dedede",
+        board = "awasuki",
+        chip = "it83xx",
+        core = "nds32",
+        zephyr = False,
+    )
+    ec_target(
         name = "axii",
         board = "axii",
     )
@@ -1158,6 +1166,10 @@ def all_targets():
     ec_target(
         name = "joxer",
         board = "joxer",
+    )
+    ec_target(
+        name = "jubilant",
+        board = "jubilant",
     )
     ec_target(
         name = "juniper",
