@@ -561,6 +561,12 @@ config PLATFORM_EC_LID_SWITCH
 
 	  This requires a GPIO named GPIO_LID_OPEN to be defined or aliased.
 
+config PLATFORM_EC_LID_SWITCH_DEBOUNCE_CUSTOM
+	int "Lid switch debounce custom timing"
+	default 0
+	help
+	  Enable lid switch debounce custom timing.
+
 config PLATFORM_EC_CONSOLE_CMD_MMAPINFO
 	bool "Console command: mmapinfo"
 	default y
