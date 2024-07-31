@@ -16,6 +16,24 @@
       "message": "Can you guide Fukuda-san for the code coverage failure?",
       "revId": "b54e1d67a5f772fea2b66ae72e2a6094dddba3ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "948abcae_23638615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-07-31T09:24:11Z",
+      "side": 1,
+      "message": "We\u0027re missing ztest here and lead to the \"Code-coverage-1\".",
+      "parentUuid": "3f7605b5_e4aabe0a",
+      "revId": "b54e1d67a5f772fea2b66ae72e2a6094dddba3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
