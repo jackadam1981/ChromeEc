@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc4cfef_d8704702",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-07-31T04:27:43Z",
+      "side": 1,
+      "message": "I think using for loop here is confusing though it could be used to protect the boundary. Suggest to rewrite the code snippet to be more straightforward.",
+      "revId": "68697f7cc96dfabd90e35f3e00bc85bbd119c39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
