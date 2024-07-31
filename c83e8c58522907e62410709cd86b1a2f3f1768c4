@@ -16,6 +16,23 @@
       "message": "Hi Fabio, please help review the CL, thanks.",
       "revId": "c83e8c58522907e62410709cd86b1a2f3f1768c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44119946_5c31e1f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-07-31T09:09:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be a `cros-ec,prochot-vcmp` node somewhere?",
+      "revId": "c83e8c58522907e62410709cd86b1a2f3f1768c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
