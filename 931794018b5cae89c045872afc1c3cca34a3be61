@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddacf93c_aaca7e67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-31T23:04:45Z",
+      "side": 1,
+      "message": "add the low test coverage reason to get this CL merged",
+      "revId": "931794018b5cae89c045872afc1c3cca34a3be61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ab1003_d40ca07c",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-07-31T23:04:45Z",
+      "side": 1,
+      "message": "nit: is this variable needed? id can be used directly",
+      "range": {
+        "startLine": 382,
+        "startChar": 2,
+        "endLine": 382,
+        "endChar": 17
+      },
+      "revId": "931794018b5cae89c045872afc1c3cca34a3be61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
