@@ -3374,6 +3374,12 @@
 #undef CONFIG_LID_SWITCH_GPIO_LIST
 
 /*
+ * Lid swtich debounce timing customize
+ */
+
+#undef CONFIG_LID_DEBOUNCE_US_CUSTOM
+
+/*
  * Support for turning the lightbar power rails on briefly when the AP is off.
  * Enabling this requires implementing the board-specific lb_power() function
  * to do it (see lb_common.h).
@@ -4282,6 +4288,11 @@
  * as the means for determining the state of the flipped-360-degree mode.
  */
 #undef CONFIG_GMR_TABLET_MODE_CUSTOM
+
+/*
+ *  GMR sensor detect tablet mode debounce timing customize
+ */
+#undef CONFIG_GMR_SENSOR_DEBOUNCE_US_CUSTOM
 
 /*
  * Add a virtual switch to indicate when detachable device has

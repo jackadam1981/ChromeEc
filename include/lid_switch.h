@@ -24,7 +24,11 @@ extern "C" {
 /**
  * Debounce time for lid switch
  */
+#ifndef CONFIG_LID_DEBOUNCE_US_CUSTOM
 #define LID_DEBOUNCE_US (30 * MSEC)
+#else
+#define LID_DEBOUNCE_US CONFIG_LID_DEBOUNCE_US_CUSTOM
+#endif
 
 /**
  * Return non-zero if lid is open.
