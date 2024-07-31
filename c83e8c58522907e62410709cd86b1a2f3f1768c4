@@ -33,6 +33,24 @@
       "message": "Shouldn\u0027t there be a `cros-ec,prochot-vcmp` node somewhere?",
       "revId": "c83e8c58522907e62410709cd86b1a2f3f1768c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b635b83f_84b0d0d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-07-31T09:33:15Z",
+      "side": 1,
+      "message": "It was contained in the `brox.dtsi` and Lotso included it in the `project.overlay`.\n\nMost work was done in Brox (CL:5675980) and Lotso just missed the ADC config.",
+      "parentUuid": "44119946_5c31e1f1",
+      "revId": "c83e8c58522907e62410709cd86b1a2f3f1768c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
