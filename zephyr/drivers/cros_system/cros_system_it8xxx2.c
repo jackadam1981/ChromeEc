@@ -259,6 +259,14 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 	return 0;
 }
 
+extern uint64_t ite_get_idle_count(void);
+
+static uint64_t
+cros_system_it8xxx2_get_deep_sleep_ticks(const struct device *dev)
+{
+	return ite_get_idle_count();
+}
+
 static const struct cros_system_driver_api cros_system_driver_it8xxx2_api = {
 	.get_reset_cause = cros_system_it8xxx2_get_reset_cause,
 	.soc_reset = cros_system_it8xxx2_soc_reset,
@@ -266,6 +274,9 @@ static const struct cros_system_driver_api cros_system_driver_it8xxx2_api = {
 	.chip_vendor = cros_system_it8xxx2_get_chip_vendor,
 	.chip_name = cros_system_it8xxx2_get_chip_name,
 	.chip_revision = cros_system_it8xxx2_get_chip_revision,
+#ifdef CONFIG_PM
+	.deep_sleep_ticks = cros_system_it8xxx2_get_deep_sleep_ticks,
+#endif
 };
 
 #if CONFIG_CROS_SYSTEM_IT8XXX2_INIT_PRIORITY >= \

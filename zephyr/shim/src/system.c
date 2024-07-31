@@ -186,8 +186,8 @@ static int command_idle_stats(int argc, const char **argv)
 	timestamp_t ts = get_time();
 	uint64_t deep_sleep_ticks = cros_system_deep_sleep_ticks(sys_dev);
 
-	ccprintf("Time spent in deep-sleep:            %.6llds\n",
-		 k_ticks_to_us_near64(deep_sleep_ticks));
+	ccprintf("Deep sleep count:                    %lld\n",
+		 deep_sleep_ticks);
 	ccprintf("Total time on:                       %.6llds\n", ts.val);
 	return EC_SUCCESS;
 }
