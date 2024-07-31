@@ -244,7 +244,11 @@ DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
 void gmr_tablet_switch_isr(enum gpio_signal signal)
 {
 	hook_call_deferred(&gmr_tablet_switch_interrupt_debounce_data,
+#ifndef CONFIG_GMR_SENSOR_DEBOUNCE_US_CUSTOM
 			   GMR_SENSOR_DEBOUNCE_US);
+#else
+			   CONFIG_GMR_SENSOR_DEBOUNCE_US_CUSTOM);
+#endif
 }
 
 /*
