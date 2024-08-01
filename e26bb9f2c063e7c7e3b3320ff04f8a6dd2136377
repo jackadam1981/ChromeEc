@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c406f8fc_7d350221",
+        "filename": "zephyr/program/nissa/orisa/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-01T13:19:20Z",
+      "side": 1,
+      "message": "Are these pins (and GPIO9 5) related to sensors?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "e26bb9f2c063e7c7e3b3320ff04f8a6dd2136377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fdde42_2db720c1",
+        "filename": "zephyr/program/nissa/orisa/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-01T13:19:20Z",
+      "side": 1,
+      "message": "brox-ish enabled this config and `CONFIG_PLATFORM_EC_TABLET_MODE_SWITCH` to get the tablet mode indication from the ISH over a GPIO.\nHow will orisa get the the tablet mode notification?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "e26bb9f2c063e7c7e3b3320ff04f8a6dd2136377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
