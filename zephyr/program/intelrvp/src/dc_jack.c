@@ -49,7 +49,7 @@ void board_dc_jack_interrupt(enum gpio_signal signal)
 	k_work_submit(&dc_jack_handle);
 }
 
-static void board_charge_init(void)
+STATIC_IF_NOT(CONFIG_ZTEST) void board_charge_init(void)
 {
 	int port, supplier;
 	struct charge_port_info charge_init = {
