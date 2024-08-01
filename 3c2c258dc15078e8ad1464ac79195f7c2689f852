@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0a9361_9a2bdb81",
+        "filename": "zephyr/program/nissa/orisa/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-08-01T09:27:03Z",
+      "side": 1,
+      "message": "this node is referenced in generated.dtsi file hence cannot remove directly, instead i have deleted this i2c node and sensor node in overlay file\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5740726/4/zephyr/program/nissa/orisa/project.overlay",
+      "parentUuid": "c03f038a_3f2e4a34",
+      "revId": "3c2c258dc15078e8ad1464ac79195f7c2689f852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a2c7797_3514f2a2",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-29T16:26:01Z",
       "side": 1,
       "message": "To enable tablet mode E2E, EC Needs this config and TABLET_MODE_SWITCH. you can have another patch for tablet mode.",
+      "revId": "3c2c258dc15078e8ad1464ac79195f7c2689f852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0695f902_463a443a",
+        "filename": "zephyr/program/nissa/orisa/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-08-01T09:27:03Z",
+      "side": 1,
+      "message": "yes planning to enable using another CL. Thank you",
+      "parentUuid": "7a2c7797_3514f2a2",
       "revId": "3c2c258dc15078e8ad1464ac79195f7c2689f852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
