@@ -31,6 +31,7 @@ test/global_initialization.cc
 test/libc_printf.c
 test/libcxx.cc
 test/malloc.c
+test/panic_data.c
 test/panic.c
 test/printf.c
 test/queue.c
