@@ -20,6 +20,11 @@ config POWER_SIGNALS_MOCK
 	help
 	  A simplified power signals driver that provides it's functions fakes.
 
+config CHIPSET_API_MOCK
+	bool "use mocked chipset API."
+	help
+	  A simplified chipset APIs that provides it's functions fakes.
+
 config ISL923X_MOCK
 	bool "Use mocked ISL923X functions"
 	help
