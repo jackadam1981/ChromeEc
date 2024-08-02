@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2aadf7c_5609ae98",
+        "filename": "zephyr/program/nissa/orisa-ish/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2024-08-02T05:48:01Z",
+      "side": 1,
+      "message": "has to be CONFIG_PM_DEVICE\u003dy",
+      "revId": "18f38decc45a3cf4c499df20f5039968b950e707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "251372ad_55669df6",
         "filename": "zephyr/program/nissa/orisa/motionsense.dtsi",
         "patchSetId": 4
