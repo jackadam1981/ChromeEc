@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34612093_cdd58b52",
+        "filename": "zephyr/program/nissa/orisa-ish/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-08-02T13:22:10Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "f2aadf7c_5609ae98",
+      "revId": "18f38decc45a3cf4c499df20f5039968b950e707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "251372ad_55669df6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-01T13:11:50Z",
       "side": 1,
       "message": "Is this a requirement of the ISH?  For a cleaner commit history, this should be moved to a separate CL.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 39
+      },
+      "revId": "18f38decc45a3cf4c499df20f5039968b950e707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493fa13c_0af0b709",
+        "filename": "zephyr/program/nissa/orisa/motionsense.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-08-02T13:22:10Z",
+      "side": 1,
+      "message": "Acknowledged. Not dependent on ISH. We will upload this change as part of separate CL.",
+      "parentUuid": "251372ad_55669df6",
       "range": {
         "startLine": 98,
         "startChar": 0,
