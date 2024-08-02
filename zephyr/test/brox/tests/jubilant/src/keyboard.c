@@ -12,7 +12,7 @@ ZTEST_SUITE(jubilant_keyboard, NULL, NULL, NULL, NULL, NULL);
 ZTEST(jubilant_keyboard, test_get_scancode_set2)
 {
 	/* Test some special keys of the customization matrix */
-	zassert_equal(get_scancode_set2(6, 15), SCANCODE_LEFT_WIN);
+	zassert_equal(get_scancode_set2(3, 0), SCANCODE_LEFT_WIN);
 	zassert_equal(get_scancode_set2(0, 12), SCANCODE_F15);
 
 	/* Test out of the matrix range */
