@@ -1,0 +1,18 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: BMA5XY driver data node
+
+compatible: "cros-ec,drvdata-bma5xy"
+
+include: drvdata-base.yaml
+
+#
+# examples:
+#
+# bma5xy_data: bma5xy-drv-data {
+#       compatible = "cros-ec,drvdata-bma5xy";
+#       status = "okay";
+# };
+#
