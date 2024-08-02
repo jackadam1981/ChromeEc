@@ -104,6 +104,24 @@
       "parentUuid": "2375a13e_2880c3b4",
       "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75779c3d_71d0e764",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-02T19:57:34Z",
+      "side": 1,
+      "message": "Our implementation needs to conform to the spec. Since we are intercepting the LPM call here, we need to ensure that we only return success under the conditions described by the spec.\n\nMy concern about \"is this synchronous\" is whether the check for `sink + attached` happens immediately (in the override call) or later (in the charge manager refresh thread).",
+      "parentUuid": "06c3427b_1e8f9220",
+      "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
