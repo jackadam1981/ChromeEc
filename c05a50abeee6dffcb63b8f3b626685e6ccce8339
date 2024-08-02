@@ -68,6 +68,24 @@
       "parentUuid": "5ac708fc_31a98ff1",
       "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2375a13e_2880c3b4",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-02T19:42:47Z",
+      "side": 1,
+      "message": "Actually if you apply the suggestion above to change `is_pdc_port_valid` to `pdc_power_mgmt_is_sink_connected`, I think you can continue using the charge manager api.\n\nWill the call be synchronous? i.e. it will enforce that only connected sinks can enable set_sink_path?",
+      "parentUuid": "99dbca74_3e53bde1",
+      "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
