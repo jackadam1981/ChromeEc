@@ -86,6 +86,24 @@
       "parentUuid": "99dbca74_3e53bde1",
       "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c3427b_1e8f9220",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-08-02T19:55:01Z",
+      "side": 1,
+      "message": "SET_SINK_PATH is only being sent to the PPM if the user selects to charge from the port partner via the UI? That\u0027s my understanding. The kernel will check the port power role and if it\u0027s not a snk, then it will first send a SET_PDR to attempt to change the port power role. Only after verifying the port is a snk, should the OPM then send SET_SINK_PATH to the PPM.\n\nAre we concerned that there might be gaps in the above logic? charge_manager_set_override() also checks the port power role and will also request a power role swap and set up a deferred callback if that step is necessary.",
+      "parentUuid": "2375a13e_2880c3b4",
+      "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
