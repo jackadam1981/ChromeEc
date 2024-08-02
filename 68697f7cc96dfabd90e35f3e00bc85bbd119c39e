@@ -16,6 +16,24 @@
       "message": "I think using for loop here is confusing though it could be used to protect the boundary. Suggest to rewrite the code snippet to be more straightforward.",
       "revId": "68697f7cc96dfabd90e35f3e00bc85bbd119c39e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379d4449_b7cf8c44",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2024-08-02T09:03:51Z",
+      "side": 1,
+      "message": "I have modified the method.",
+      "parentUuid": "ddc4cfef_d8704702",
+      "revId": "68697f7cc96dfabd90e35f3e00bc85bbd119c39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
