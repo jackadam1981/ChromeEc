@@ -11,7 +11,7 @@
 		/*
 		 * Interrupt bindings for sensor devices.
 		 */
-		bma4xx-int = &lid_accel;
+		bma5xy-int = &lid_accel;
 	};
 
 	/*
@@ -23,23 +23,23 @@
 	 */
 	motionsense-mutex {
 		compatible = "cros-ec,motionsense-mutex";
-		lid_mutex_bma422: bma422-mutex {
+		lid_mutex_bma530: bma530-mutex {
 		};
 
-		base_mutex_bma422: base_bma422-mutex {
+		base_mutex_bma530: base_bma530-mutex {
 		};
 	};
 
 	/* Rotation matrix used by drivers. */
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
-		lid_rot_bma422: lid-rotation-bma {
+		lid_rot_bma530: lid-rotation-bma {
 			mat33 = <(-1) 0 0
 				 0 1 0
 				 0 0 (-1)>;
 		};
 
-		base_rot_bma422: base-rotation-bma422 {
+		base_rot_bma530: base-rotation-bma530 {
 			mat33 = <(-1) 0 0
 				 0 (-1) 0
 				 0 0 1>;
@@ -56,13 +56,13 @@
 	 * "struct als_drv_data_t" in accelgyro.h
 	 */
 	motionsense-sensor-data {
-		bma422_data: bma4xx-drv-data {
-			compatible = "cros-ec,drvdata-bma4xx";
+		bma530_data: bma5xy-drv-data {
+			compatible = "cros-ec,drvdata-bma5xy";
 			status = "okay";
 		};
 
-		bma422_data_base: bma4xx-drv-data-base {
-			compatible = "cros-ec,drvdata-bma4xx";
+		bma530_data_base: bma5xy-drv-data-base {
+			compatible = "cros-ec,drvdata-bma5xy";
 			status = "okay";
 		};
 	};
@@ -77,17 +77,17 @@
 	 */
 	motionsense-sensor {
 		lid_accel: lid-accel {
-			compatible = "cros-ec,bma4xx";
+			compatible = "cros-ec,bma5xy";
 			status = "okay";
 
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_LID";
-			mutex = <&lid_mutex_bma422>;
+			mutex = <&lid_mutex_bma530>;
 			port = <&i2c_ec_i2c_sensor>;
-			rot-standard-ref = <&lid_rot_bma422>;
+			rot-standard-ref = <&lid_rot_bma530>;
 			default-range = <2>;
-			drv-data = <&bma422_data>;
-			i2c-spi-addr-flags = "BMA4_I2C_ADDR_PRIMARY";
+			drv-data = <&bma530_data>;
+			i2c-spi-addr-flags = "BMA5_I2C_ADDR";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
@@ -101,17 +101,17 @@
 		};
 
 		base_accel: base-accel {
-			compatible = "cros-ec,bma4xx";
+			compatible = "cros-ec,bma5xy";
 			status = "okay";
 
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_BASE";
-			mutex = <&base_mutex_bma422>;
+			mutex = <&base_mutex_bma530>;
 			port = <&i2c_ec_i2c_sensor_2>;
-			rot-standard-ref = <&base_rot_bma422>;
+			rot-standard-ref = <&base_rot_bma530>;
 			default-range = <2>;
-			drv-data = <&bma422_data_base>;
-			i2c-spi-addr-flags = "BMA4_I2C_ADDR_SECONDARY";
+			drv-data = <&bma530_data_base>;
+			i2c-spi-addr-flags = "BMA5_I2C_ADDR";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
@@ -127,12 +127,12 @@
 
 	motionsense-sensor-info {
 		compatible = "cros-ec,motionsense-sensor-info";
-
 		/*
 		 * list of GPIO interrupts that have to
 		 * be enabled at initial stage
 		 */
 		sensor-irqs = <&int_lid_accel>;
+
 
 		/* list of sensors in force mode */
 		accel-force-mode-sensors = <&base_accel>;
