@@ -67,4 +67,17 @@ config PLATFORM_EC_PD_MAX_POWER_MW
 	  with configured PLATFORM_EC_PD_MAX_CURRENT_MA and
 	  PLATFORM_EC_PD_MAX_VOLTAGE_MV.
 
+config TEST_PROJECT_BOARD_ID
+	bool "Run INTELRVP board id test"
+	help
+	  Run board ID test for INTELRVP.
+
+config TEST_PROJECT_BOARD_ID_VAL
+	int "Value to be used for board ID test"
+	depends on TEST_PROJECT_BOARD_ID
+	default 1051 if TEST_PROJECT_MTLRVPP_COMMON
+	default 1078 if TEST_PROJECT_PTLRVPP_MCHP
+	help
+	  Value to be used for board ID test.
+
 source "Kconfig.zephyr"
