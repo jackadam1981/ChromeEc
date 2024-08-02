@@ -15,4 +15,21 @@ config CROS_SYSTEM_XEC_PRE_INIT_PRIORITY
 	  must be a lower priority than CONFIG_BBRAM_INIT_PRIORITY and
 	  must be a higher priority than PLATFORM_EC_SYSTEM_PRE_INIT.
 
+config CROS_SYSTEM_XEC_VCI_GPIO
+	bool
+	default y if PLATFORM_EC_HIBERNATE_VCI && DT_HAS_CROS_EC_VCI_GPIOS_ENABLED
+	help
+	  Use VCI pins as GPIOS, this is useful in case VCI_INx pin is not
+	  multiplexed with any GPIO.
+
+
+if CROS_SYSTEM_XEC_VCI_GPIO
+
+config VCI_GPIO_IN0_RISING_TIMER
+	bool
+	default y
+	help
+	  VCI_IN0 pin does not support configuring risin edge interruption,
+	  this will use SW solution for this limitation.
+endif
 endif # PLATFORM_EC
