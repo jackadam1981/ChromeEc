@@ -50,6 +50,24 @@
       "message": "One of the requirements for `SET_SINK_PATH`: \n\n```\nAn attempt to enable the sink path when the LPM is in the power provider mode or \nwhen no port partner is connected shall result in the Error Indicator bit getting set to 1b.\n```\n\nThe charge manager call doesn\u0027t enforce this. Instead we probably need to call `pdc_power_mgmt_set_active_charge_port` and modify the else if branch to verify we are trying to enable charging on a sink port:\n```\n- } else if (is_pdc_port_valid(charge_port)) {\n+ } else if (pdc_power_mgmt_is_sink_connected(charge_port)) {\n```",
       "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99dbca74_3e53bde1",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-08-02T19:00:32Z",
+      "side": 1,
+      "message": "Where are you suggesting pdc_power_mgmt_set_active_charge_port() to be called from?\n\nThis function should only be called from the charge_manager.",
+      "parentUuid": "5ac708fc_31a98ff1",
+      "revId": "c05a50abeee6dffcb63b8f3b626685e6ccce8339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
