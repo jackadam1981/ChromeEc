@@ -19,6 +19,7 @@ driver-$(CONFIG_ACCELGYRO_BMI220)+=accelgyro_bmi260.o accelgyro_bmi_common.o
 driver-$(CONFIG_ACCELGYRO_BMI260)+=accelgyro_bmi260.o accelgyro_bmi_common.o
 driver-$(CONFIG_ACCELGYRO_BMI3XX)+=accelgyro_bmi3xx.o accelgyro_bmi_common.o
 driver-$(CONFIG_ACCEL_BMA4XX)+=accel_bma4xx.o
+driver-$(CONFIG_ACCEL_BMA5XY)+=accel_bma5xy.o
 driver-$(CONFIG_MAG_BMI_BMM150)+=mag_bmm150.o
 driver-$(CONFIG_ACCELGYRO_LSM6DSM)+=accelgyro_lsm6dsm.o stm_mems_common.o
 driver-$(CONFIG_ACCELGYRO_LSM6DSO)+=accelgyro_lsm6dso.o stm_mems_common.o
