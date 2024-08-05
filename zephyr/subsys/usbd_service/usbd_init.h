@@ -12,6 +12,29 @@
 #include <zephyr/drivers/usb/udc.h>
 #include <zephyr/usb/usbd.h>
 
+#define GOOGLE_EP_FS_MPS 64
+
+#define AUTO_EP_IN 0x80
+#define AUTO_EP_OUT 0x00
+
+#define INITIALIZER_IF(num_ep, iface_class, iface_subclass, iface_proto)      \
+	{                                                                     \
+		.bLength = sizeof(struct usb_if_descriptor),                  \
+		.bDescriptorType = USB_DESC_INTERFACE, .bInterfaceNumber = 0, \
+		.bAlternateSetting = 0, .bNumEndpoints = num_ep,              \
+		.bInterfaceClass = iface_class,                               \
+		.bInterfaceSubClass = iface_subclass,                         \
+		.bInterfaceProtocol = iface_proto, .iInterface = 0,           \
+	}
+
+#define INITIALIZER_IF_EP(addr, attr, mps)                              \
+	{                                                               \
+		.bLength = sizeof(struct usb_ep_descriptor),            \
+		.bDescriptorType = USB_DESC_ENDPOINT,                   \
+		.bEndpointAddress = addr, .bmAttributes = attr,         \
+		.wMaxPacketSize = sys_cpu_to_le16(mps), .bInterval = 0, \
+	}
+
 struct hid_dev_t {
 	const struct device *dev;
 	atomic_t state;
@@ -21,14 +44,36 @@ struct hid_dev_t {
 	struct k_mutex *report_queue_mutex;
 };
 
+struct google_desc {
+	struct usb_if_descriptor if0;
+	struct usb_ep_descriptor out_ep;
+	struct usb_ep_descriptor in_ep;
+} __packed;
+
+struct google_data {
+	struct google_desc *const desc;
+	const struct usb_desc_header **const fs_desc;
+	atomic_t state;
+	struct k_thread tx_thread_data;
+	struct k_thread rx_thread_data;
+	struct k_sem sync_sem;
+};
+
 enum {
 	HID_IFACE_READY = 0,
 	HID_EP_IN_BUSY,
+};
+
+enum {
+	GVENDOR_DEV_ENABLED = 0,
+	GVENDOR_DEV_OUT_BUSY,
 };
 
 typedef void (*msg_callback_t)(enum usbd_msg_type type);
 
 int request_usb_wake(void);
 int usb_msg_callback_register(msg_callback_t callback);
+uint8_t google_get_in_ep(struct usbd_class_data *const c_data);
+uint8_t google_get_out_ep(struct usbd_class_data *const c_data);
 
 #endif /* __USBD_INIT_H */

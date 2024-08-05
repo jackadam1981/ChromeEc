@@ -104,3 +104,5 @@ config USB_DEVICE_MAX_POWER
 
 endmenu
 
+rsource "Kconfig.gupdate"
+rsource "Kconfig.gi2c"
