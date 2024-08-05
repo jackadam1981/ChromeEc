@@ -87,6 +87,22 @@ int usb_msg_callback_register(msg_callback_t callback)
 	return 0;
 }
 
+uint8_t google_get_in_ep(struct usbd_class_data *const c_data)
+{
+	struct google_data *data = usbd_class_get_private(c_data);
+	struct google_desc *desc = data->desc;
+
+	return desc->in_ep.bEndpointAddress;
+}
+
+uint8_t google_get_out_ep(struct usbd_class_data *const c_data)
+{
+	struct google_data *data = usbd_class_get_private(c_data);
+	struct google_desc *desc = data->desc;
+
+	return desc->out_ep.bEndpointAddress;
+}
+
 static void usb_device_msg_cb(struct usbd_context *const ctx,
 			      const struct usbd_msg *msg)
 {
