@@ -39,6 +39,23 @@
       },
       "revId": "29e60e5418eacf982deba79f18b17e769c1d3390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db63c09b_59c5bf97",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-05T20:19:18Z",
+      "side": 1,
+      "message": "Please also add -EINVAL to ppm_common.c so that it correctly returns a PPM policy conflict error:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/ucsi/ppm_common.c;l\u003d369",
+      "revId": "29e60e5418eacf982deba79f18b17e769c1d3390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
