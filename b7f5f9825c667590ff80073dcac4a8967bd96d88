@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eca8478_6eedfa7d",
+        "filename": "zephyr/test/utils/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T12:45:27Z",
+      "side": 1,
+      "message": "I don\u0027t think this test belongs to `zephyr/test/utils`. I think it would be better to move these tests to `zephyr/test/fingerprint/task` where all fingerprint tests live.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
