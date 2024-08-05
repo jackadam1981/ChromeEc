@@ -1,0 +1,71 @@
+package {
+    default_applicable_licenses: ["external_gsctool_license"],
+}
+
+license {
+    name: "external_gsctool_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
+cc_defaults {
+    name: "gsctool_defaults",
+    host_supported: true,
+    cflags: [
+        "-std=gnu99",
+        "-g",
+        "-Wall",
+        "-Werror",
+        "-Wpointer-arith",
+        "-Wcast-align",
+        "-Wundef",
+        "-Wsign-compare",
+        "-Wredundant-decls",
+        "-Wmissing-declarations",
+
+        "-include generated_version.h"
+    ],
+
+    generated_headers: ["generated_version.h"],
+
+    include_dirs: [
+        "external/libusb/include/libusb",
+    ],
+
+    shared_libs: [
+        "libusb",
+        // Contains openssl headers.
+        "libcrypto",
+    ],
+    static_libs: [],
+}
+
+genrule {
+    name: "generated_version.h",
+    srcs: ["util/getversion.sh"],
+    cmd: "BOARD= $(location util/getversion.sh) > $(out)",
+    out: ["generated_version.h"],
+}
+
+cc_binary {
+    name: "gsctool",
+    defaults: ["gsctool_defaults"],
+
+    srcs: [
+        "extra/usb_updater/*.c",
+        "util/usb_if.c"
+    ],
+
+    local_include_dirs: [
+        "extra/usb_updater",
+        "util",
+        "include",
+        "chip/g",
+        "board/cr50",
+        "fuzz",
+        "test",
+    ],
+}
