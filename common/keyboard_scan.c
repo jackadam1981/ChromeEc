@@ -12,6 +12,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "drivers/one_wire_uart.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -722,6 +723,9 @@ static int check_keys_changed(uint8_t *state)
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 		mkbp_keyboard_add(state);
+#endif
+#ifdef CONFIG_PLATFORM_EC_ONE_WIRE_UART_KEYBOARD
+		one_wire_uart_keyboard_add(state);
 #endif
 	}
 

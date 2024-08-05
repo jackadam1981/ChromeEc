@@ -73,4 +73,6 @@ typedef void (*one_wire_uart_msg_received_cb_t)(uint8_t cmd,
 void one_wire_uart_set_callback(const struct device *device,
 				one_wire_uart_msg_received_cb_t msg_received);
 
+void one_wire_uart_keyboard_add(const uint8_t *key_matrix);
+
 #endif /* ZEPHYR_INCLUDE_DRIVERS_ONE_WIRE_UART_H_ */
