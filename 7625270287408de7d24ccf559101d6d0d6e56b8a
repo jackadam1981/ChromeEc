@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4b6b03_3b17c1a9",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-05T04:11:29Z",
+      "side": 1,
+      "message": "Could it be named to align the TRM v12, such as ucsi_connector_status_change_notification ?",
+      "fixSuggestions": [
+        {
+          "fixId": "44a623a8_e17194cd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/tps6699x_reg.h",
+              "range": {
+                "startLine": 464,
+                "startChar": 0,
+                "endLine": 465,
+                "endChar": 0
+              },
+              "replacement": "\t\tuint8_t ucsi_connector_status_change_notification : 1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7625270287408de7d24ccf559101d6d0d6e56b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
