@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "363e34c1_c7411a5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T10:14:38Z",
+      "side": 1,
+      "message": "We use 4 types of numbers when initializing buffer (`0XD1`, `0xD1`, `0xd1` and digits). I know it was in original EC code, but can we change it? I think we can leave digits and change hexadecimal numbers to either `0xab` or `0xAB`.",
+      "revId": "c67b3cd78876fb110c681689df4d99e6c1baac8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
