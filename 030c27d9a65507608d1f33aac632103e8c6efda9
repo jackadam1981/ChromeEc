@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34dd0156_d0fffbcc",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T15:51:41Z",
+      "side": 1,
+      "message": "This is not what `TEST_NEAR()` does.\n\nI think `zassert_within(sleep_duration, expected_duration, error_threshold)` is suitable here.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "030c27d9a65507608d1f33aac632103e8c6efda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
