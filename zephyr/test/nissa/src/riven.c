@@ -47,6 +47,7 @@ FAKE_VALUE_FUNC(int, cbi_get_ssfc, uint32_t *);
 FAKE_VALUE_FUNC(enum nissa_sub_board_type, nissa_get_sb_type);
 FAKE_VOID_FUNC(usb_interrupt_c1, enum gpio_signal);
 FAKE_VOID_FUNC(bma4xx_interrupt, enum gpio_signal);
+FAKE_VOID_FUNC(bma5xy_interrupt, enum gpio_signal);
 
 FAKE_VALUE_FUNC(enum ec_error_list, raa489000_is_acok, int, bool *);
 FAKE_VOID_FUNC(raa489000_hibernate, int, bool);
@@ -66,6 +67,7 @@ static void test_before(void *fixture)
 	RESET_FAKE(cbi_get_ssfc);
 	RESET_FAKE(nissa_get_sb_type);
 	RESET_FAKE(bma4xx_interrupt);
+	RESET_FAKE(bma5xy_interrupt);
 	RESET_FAKE(raa489000_is_acok);
 	RESET_FAKE(raa489000_hibernate);
 	RESET_FAKE(raa489000_enable_asgate);
@@ -149,6 +151,7 @@ ZTEST(riven, test_convertible)
 
 	/* Clear lid_imu_irq call count before test */
 	bma4xx_interrupt_fake.call_count = 0;
+	bma5xy_interrupt_fake.call_count = 0;
 
 	/* Verify lid_imu_irq is enabled. Interrupt is configured
 	 * GPIO_INT_EDGE_FALLING, so set high, then set low.
@@ -157,7 +160,8 @@ ZTEST(riven, test_convertible)
 	k_sleep(K_MSEC(100));
 	zassert_ok(gpio_emul_input_set(lid_imu_gpio, lid_imu_pin, 0), NULL);
 	k_sleep(K_MSEC(100));
-	interrupt_count = bma4xx_interrupt_fake.call_count;
+	interrupt_count = bma4xx_interrupt_fake.call_count +
+			  bma5xy_interrupt_fake.call_count;
 	zassert_equal(interrupt_count, 1);
 }
 
@@ -208,14 +212,84 @@ ZTEST(riven, test_clamshell)
 
 	/* Clear lid_imu_irq call count before test */
 	bma4xx_interrupt_fake.call_count = 0;
+	bma5xy_interrupt_fake.call_count = 0;
 
 	/* Verify lid_imu_irq is disabled. */
 	zassert_ok(gpio_emul_input_set(lid_imu_gpio, lid_imu_pin, 1), NULL);
 	k_sleep(K_MSEC(100));
 	zassert_ok(gpio_emul_input_set(lid_imu_gpio, lid_imu_pin, 0), NULL);
 	k_sleep(K_MSEC(100));
-	interrupt_count = bma4xx_interrupt_fake.call_count;
+	interrupt_count = bma4xx_interrupt_fake.call_count +
+			  bma5xy_interrupt_fake.call_count;
 	zassert_equal(interrupt_count, 0);
+}
+
+static int ssfc_data;
+
+static int cbi_get_ssfc_mock(uint32_t *ssfc)
+{
+	*ssfc = ssfc_data;
+	return 0;
+}
+
+ZTEST(riven, test_alt_sensor_lid_bma422)
+{
+	const struct device *lid_accel_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_acc_int_l), gpios));
+	const gpio_port_pins_t lid_accel_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
+
+	/* Initial ssfc data for BMA422 lid sensor. */
+	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
+	ssfc_data = 0x00;
+	cros_cbi_ssfc_init();
+
+	/* sensor_enable_irqs enable the interrupt int_lid_accel */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_accel));
+
+	alt_sensor_init();
+
+	/* Clear base_imu_irq call count before test */
+	bma4xx_interrupt_fake.call_count = 0;
+	bma5xy_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
+	zassert_equal(bma5xy_interrupt_fake.call_count, 0);
+}
+
+ZTEST(riven, test_alt_sensor_lid_bma530)
+{
+	const struct device *lid_accel_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_acc_int_l), gpios));
+	const gpio_port_pins_t lid_accel_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
+
+	/* Initial ssfc data for BMA530 lid sensor. */
+	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
+	ssfc_data = 0x01;
+	cros_cbi_ssfc_init();
+
+	/* sensor_enable_irqs enable the interrupt int_lid_accel */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_accel));
+
+	alt_sensor_init();
+
+	/* Clear base_imu_irq call count before test */
+	bma4xx_interrupt_fake.call_count = 0;
+	bma5xy_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bma5xy_interrupt_fake.call_count, 1);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 0);
 }
 
 static int extpower_handle_update_call_count;
