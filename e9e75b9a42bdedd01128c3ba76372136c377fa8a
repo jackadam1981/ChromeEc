@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc889bc_64caa7b4",
+        "filename": "zephyr/test/hwtest/src/global_initialization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T12:59:29Z",
+      "side": 1,
+      "message": "Zephyr has very, very similar test [here](https://github.com/zephyrproject-rtos/zephyr/blob/5305aa615b0f800508e253c3398712eca1b209b4/tests/lib/cpp/cxx/src/main.cpp#L117-L120) can we use Zephyr test instead of implementing our own?\n\n@tomhughes@chromium.org could you confirm that the test from Zephyr can be used?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
