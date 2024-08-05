@@ -22,6 +22,30 @@
       },
       "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e6b014_b3d50dc4",
+        "filename": "zephyr/test/hwtest/src/global_initialization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-05T23:24:39Z",
+      "side": 1,
+      "message": "That does look like it\u0027s doing the same thing. Just as a sanity check, can you try disabling the the call to `__libc_init_array` and make sure the test fails as described in the comment:\n\n```\n * When making changes to this test, make sure to disable the\n * call to call constructors of global objects\n * (__libc_init_array) and make sure the test fails.\n */\n```\n\nSee https://crrev.com/c/4081571 for reference.\n\nI guess we need to find the equivalent call site for Zephyr though since we\u0027re probably not using `core/cortex-m/init.S` when building for Zephyr.",
+      "parentUuid": "5dc889bc_64caa7b4",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
