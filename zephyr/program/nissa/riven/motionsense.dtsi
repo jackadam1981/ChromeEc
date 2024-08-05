@@ -12,6 +12,7 @@
 		 * Interrupt bindings for sensor devices.
 		 */
 		bma4xx-int = &lid_accel;
+		bma5xy-int = &lid_accel;
 	};
 
 	/*
@@ -28,6 +29,11 @@
 
 		base_mutex_bma422: base_bma422-mutex {
 		};
+		lid_mutex_bma530: bma530-mutex {
+		};
+
+		base_mutex_bma530: base_bma530-mutex {
+		};
 	};
 
 	/* Rotation matrix used by drivers. */
@@ -40,6 +46,17 @@
 		};
 
 		base_rot_bma422: base-rotation-bma422 {
+			mat33 = <(-1) 0 0
+				 0 (-1) 0
+				 0 0 1>;
+		};
+		lid_rot_bma530: lid-rotation-bma530 {
+			mat33 = <(-1) 0 0
+				 0 1 0
+				 0 0 (-1)>;
+		};
+
+		base_rot_bma530: base-rotation-bma530 {
 			mat33 = <(-1) 0 0
 				 0 (-1) 0
 				 0 0 1>;
@@ -63,6 +80,15 @@
 
 		bma422_data_base: bma4xx-drv-data-base {
 			compatible = "cros-ec,drvdata-bma4xx";
+			status = "okay";
+		};
+		bma530_data: bma5xy-drv-data {
+			compatible = "cros-ec,drvdata-bma5xy";
+			status = "okay";
+		};
+
+		bma530_data_base: bma5xy-drv-data-base {
+			compatible = "cros-ec,drvdata-bma5xy";
 			status = "okay";
 		};
 	};
@@ -112,6 +138,59 @@
 			default-range = <2>;
 			drv-data = <&bma422_data_base>;
 			i2c-spi-addr-flags = "BMA4_I2C_ADDR_SECONDARY";
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+	};
+
+	motionsense-sensor-alt {
+		alt_lid_accel: alt-lid-accel {
+			compatible = "cros-ec,bma5xy";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&lid_mutex_bma530>;
+			port = <&i2c_ec_i2c_sensor>;
+			rot-standard-ref = <&lid_rot_bma530>;
+			default-range = <2>;
+			drv-data = <&bma530_data>;
+			i2c-spi-addr-flags = "BMA5_I2C_ADDR";
+			alternate-for = <&lid_accel>;
+			alternate-ssfc-indicator = <&lid_sensor_1>;
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+		alt_base_accel: alt-base-accel {
+			compatible = "cros-ec,bma5xy";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&base_mutex_bma530>;
+			port = <&i2c_ec_i2c_sensor_2>;
+			rot-standard-ref = <&base_rot_bma530>;
+			default-range = <2>;
+			drv-data = <&bma530_data_base>;
+			i2c-spi-addr-flags = "BMA5_I2C_ADDR";
+			alternate-for = <&base_accel>;
+			alternate-ssfc-indicator = <&base_sensor_1>;
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
