@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ed0afb_823d3433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T14:46:39Z",
+      "side": 1,
+      "message": "In the long term, this should be upstreamed to Zephyr [libcxx test suite](https://github.com/zephyrproject-rtos/zephyr/tree/main/tests/lib/cpp/libcxx).",
+      "revId": "41f881d240fc2c54af695ac5ea303e2d9360356f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8548eca_83e18e73",
+        "filename": "zephyr/test/lib/src/std_vector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T14:46:39Z",
+      "side": 1,
+      "message": "Does `zassert_equal()` work here?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "41f881d240fc2c54af695ac5ea303e2d9360356f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
