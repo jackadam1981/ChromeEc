@@ -146,14 +146,21 @@
 #define CONFIG_RW_MEM_OFF 0
 #define CONFIG_RW_STORAGE_OFF 0
 
+
+/*
+ * Round value up to the smallest multiple of align that is equal to or larger
+ * than value. This is the minimum size which can store value bytes, aligned to
+ * align bytes.
+ */
+#define ALIGN_UP(value, align) ((((value) + ((align)-1)) / (align)) * (align))
+
 /*
  * The remaining flash size (CONFIG_FLASH_SIZE_BYTES -
  * (CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF) exceeds available program memory,
  * can only execute a program as big as the available program SRAM
  */
-#define CONFIG_RW_SIZE                                          \
-	((NPCX_PROGRAM_MEMORY_SIZE / CONFIG_FLASH_ERASE_SIZE) * \
-	 CONFIG_FLASH_ERASE_SIZE)
+#define CONFIG_RW_SIZE \
+	ALIGN_UP(NPCX_PROGRAM_MEMORY_SIZE, CONFIG_FLASH_ERASE_SIZE)
 
 #define CONFIG_EC_PROTECTED_STORAGE_OFF CONFIG_RO_MEM_OFF
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE (CONFIG_RO_SIZE + 0x1000)
