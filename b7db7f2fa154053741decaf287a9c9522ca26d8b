@@ -22,6 +22,30 @@
       },
       "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff294a1_6334d7fe",
+        "filename": "zephyr/test/hwtest/src/libcxx.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-05T23:28:56Z",
+      "side": 1,
+      "message": "The [exception test](https://crrev.com/c/5725260) may also qualify to be put [here](https://github.com/zephyrproject-rtos/zephyr/blob/bdcd5d00d075d20fd525cecf2345a5c6577a76df/tests/lib/cpp/libcxx/src/main.cpp#L93-L96).",
+      "parentUuid": "228127e0_ec6d6511",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
