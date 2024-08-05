@@ -20,13 +20,20 @@
  * See description in baseboard/helpilot/base_board.h.
  */
 #undef HELIPILOT_CODE_RAM_SIZE_BYTES
-#define HELIPILOT_CODE_RAM_SIZE_BYTES (320 * 1024)
+/* #define HELIPILOT_CODE_RAM_SIZE_BYTES (320 * 1024) */
+/* between 188 (doesn't work) and 192 (works).
+ * Even 191k does not work
+ */
+/* #define HELIPILOT_CODE_RAM_SIZE_BYTES (192 * 1024) */
+/* #define HELIPILOT_CODE_RAM_SIZE_BYTES (160 * 1024) */
+#define HELIPILOT_CODE_RAM_SIZE_BYTES (129 * 1024)
 
 /**
  * See description in baseboard/helpilot/base_board.h.
  */
 #undef HELIPILOT_DATA_RAM_SIZE_BYTES
-#define HELIPILOT_DATA_RAM_SIZE_BYTES (188 * 1024)
+/* #define HELIPILOT_DATA_RAM_SIZE_BYTES (188 * 1024) */
+#define HELIPILOT_DATA_RAM_SIZE_BYTES (181 * 1024)
 
 #ifdef SECTION_IS_RW
 #define CONFIG_FP_SENSOR_ELAN80SG
