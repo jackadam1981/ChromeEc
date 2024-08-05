@@ -26,6 +26,138 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0bb439d_63647511",
+        "filename": "zephyr/test/utils/src/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-05T23:13:13Z",
+      "side": 1,
+      "message": "typo: `fpsensor_utils`",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2c7a071c_114e2e39",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 12,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": "ZTEST_SUITE(fpsensor_utils, NULL, NULL, NULL, NULL, NULL);\n"
+            },
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": "ZTEST(fpsensor_utils, test_validate_fp_buffer_offset_success)\n"
+            },
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "ZTEST(fpsensor_utils, test_validate_fp_buffer_offset_failure_no_overflow)\n"
+            },
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "ZTEST(fpsensor_utils, test_validate_fp_buffer_offset_failure_overflow)\n"
+            },
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "ZTEST(fpsensor_utils, test_is_test_capture)\n"
+            },
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "ZTEST(fpsensor_utils, test_is_raw_capture)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc21796_7a917160",
+        "filename": "zephyr/test/utils/src/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-05T23:13:13Z",
+      "side": 1,
+      "message": "I guess it fails to compile without a return value, right? (I haven\u0027t looked at the `zassert_unreachable` implementation, so not sure if it\u0027s a `noreturn` that the compiler would understand.)\n\nIf we have to have a return value, it\u0027s probably best to make it an error code in case the `zassert_unreachable` doesn\u0027t work for some reason.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "375110a3_4b50cde2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/utils/src/fpsensor.cc",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "\treturn EC_ERROR_UNKNOWN;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87b0f800_0f1c2ec3",
         "filename": "zephyr/test/utils/src/fpsensor.cc",
         "patchSetId": 3
