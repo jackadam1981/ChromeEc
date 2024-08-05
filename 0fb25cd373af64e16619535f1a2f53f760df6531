@@ -1,0 +1,131 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3813887e_0fd86bd3",
+        "filename": "zephyr/test/console/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-05T21:14:34Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "0fb25cd373af64e16619535f1a2f53f760df6531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80926627_a2c0710d",
+        "filename": "zephyr/test/console/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-05T21:14:34Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 8,
+        "startChar": 25,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "0fb25cd373af64e16619535f1a2f53f760df6531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f7dcd9_1e4c3422",
+        "filename": "zephyr/test/console/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-05T21:14:34Z",
+      "side": 1,
+      "message": "Does this transitively mean that these legacy EC calls are sent to the UART?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cdaca4f0_85173aad",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/console/README.md",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "  console_channel` types sends output to the Zephyr logging backend.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0fb25cd373af64e16619535f1a2f53f760df6531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7193c76_6fe5370d",
+        "filename": "zephyr/test/console/console_output.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-05T21:14:34Z",
+      "side": 1,
+      "message": "Nit: These sound like they need to be set this way for the test to work. Could you add a little explanation?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "0fb25cd373af64e16619535f1a2f53f760df6531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ef50f3_0ac598b2",
+        "filename": "zephyr/test/console/src/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-05T21:14:34Z",
+      "side": 1,
+      "message": "cprintf?",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "0fb25cd373af64e16619535f1a2f53f760df6531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
