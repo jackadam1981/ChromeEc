@@ -68,7 +68,7 @@
  * Can be increased/decreased in conjunction with HELIPILOT_DATA_RAM_SIZE_BYTES
  * to adjust the split between code and data RAM.
  */
-#define HELIPILOT_CODE_RAM_SIZE_BYTES (352 * 1024)
+#define HELIPILOT_CODE_RAM_SIZE_BYTES (320 * 1024)
 
 /**
  * RAM reserved for data.
@@ -138,14 +138,15 @@
 #define CONFIG_RW_MEM_OFF 0
 #define CONFIG_RW_STORAGE_OFF 0
 
+#define ALIGN_UP(num,bytes) \
+	(( (((num) + ((bytes)-1)) / (bytes)) * (bytes) ))
 /*
  * The remaining flash size (CONFIG_FLASH_SIZE_BYTES -
  * (CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF) exceeds available program memory,
  * can only execute a program as big as the available program SRAM
  */
-#define CONFIG_RW_SIZE                                          \
-	((NPCX_PROGRAM_MEMORY_SIZE / CONFIG_FLASH_ERASE_SIZE) * \
-	 CONFIG_FLASH_ERASE_SIZE)
+#define CONFIG_RW_SIZE \
+	ALIGN_UP(NPCX_PROGRAM_MEMORY_SIZE, CONFIG_FLASH_ERASE_SIZE)
 
 #define CONFIG_EC_PROTECTED_STORAGE_OFF CONFIG_RO_MEM_OFF
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE (CONFIG_RO_SIZE + 0x1000)
