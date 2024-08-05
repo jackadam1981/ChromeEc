@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228127e0_ec6d6511",
+        "filename": "zephyr/test/hwtest/src/libcxx.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T13:07:58Z",
+      "side": 1,
+      "message": "Looks like we should be able to upstream this test to Zephyr https://github.com/zephyrproject-rtos/zephyr/blob/main/tests/lib/cpp/libcxx/src/main.cpp.\n\nI know that upstreaming can take a long time, so can we leave a comment here and add the tests from Zephyr to our tests list?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
