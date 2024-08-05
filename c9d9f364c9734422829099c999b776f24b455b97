@@ -40,6 +40,30 @@
       ],
       "revId": "c9d9f364c9734422829099c999b776f24b455b97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d491e3_5ffff4ad",
+        "filename": "zephyr/test/hwtest/src/fpsensor_hw.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-05T12:43:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d658ba_ad79c89e",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "c9d9f364c9734422829099c999b776f24b455b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
