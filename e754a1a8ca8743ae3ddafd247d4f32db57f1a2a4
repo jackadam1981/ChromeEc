@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de34919_df4135ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T14:22:07Z",
+      "side": 1,
+      "message": "Calling `trng_init()` and `trng_exit()` doesn\u0027t make sense in Zephyr FW, because these are [basically no-op](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/trng.h;l\u003d17-23;drc\u003d6757ebe2dce2a23e2cd3149eb82b32faa4f16908). It means that `test_trng_rand_bytes` and `test_trng_rand_bytes_toogle` are effectively the same tests, so we can remove the latter.\n\nAlso we should add Zephyr entropy tests to our test suite https://github.com/zephyrproject-rtos/zephyr/blob/main/tests/drivers/entropy/api/src/main.c. Zephyr entropy tests are not exactly the same as our tests, so we should keep both.",
+      "revId": "e754a1a8ca8743ae3ddafd247d4f32db57f1a2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
