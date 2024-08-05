@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d658ba_ad79c89e",
+        "filename": "zephyr/test/hwtest/src/fpsensor_hw.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-05T11:28:24Z",
+      "side": 1,
+      "message": "Can we change it to `zassert_ok`?",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9b1477d6_bbfe7e7d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/fpsensor_hw.cc",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "\t\tzassert_ok(fingerprint_get_info(fp_sensor_dev, \u0026info));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c9d9f364c9734422829099c999b776f24b455b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
