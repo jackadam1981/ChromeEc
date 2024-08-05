@@ -102,6 +102,24 @@ config USB_DEVICE_MAX_POWER
 	help
 	  bMaxPower value in the HID configuration in 2 mA units.
 
+if CROS_EC_RW
+
+config USBD_HID_SUPPORT
+	default y if USBD_HID_KEYBOARD || USBD_HID_TOUCHPAD
+	default n
+
+#config USBD_HID_LOG_LEVEL_WRN
+#	default y if USBD_HID_KEYBOARD || USBD_HID_TOUCHPAD
+
+endif # CROS_EC_RW
+
+if CROS_EC_RO
+
+config USBD_HID_SUPPORT
+	default n
+
+endif # CROS_EC_RO
+
 endmenu
 
 rsource "Kconfig.gupdate"

@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ec_commands.h"
 #include "usbd_init.h"
 
 #include <zephyr/device.h>
@@ -41,6 +42,20 @@ static struct usb_msg_manager {
 	.callback_count = 0,
 	.max_callbacks = 0,
 };
+
+#if defined(CONFIG_CROS_EC_RO) && defined(CONFIG_USBD_HID_KEYBOARD)
+__overridable void keyboard_state_changed(int row, int col, int is_pressed)
+{
+}
+#endif /* defined(CONFIG_CROS_EC_RO) && defined(CONFIG_USBD_HID_KEYBOARD) */
+
+#if defined(CONFIG_CROS_EC_RO) && defined(CONFIG_USBD_HID_TOUCHPAD)
+#include "usb_hid_touchpad.h"
+
+__overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
+{
+}
+#endif /* defined(CONFIG_CROS_EC_RO) && defined(CONFIG_USBD_HID_TOUCHPAD) */
 
 int request_usb_wake(void)
 {

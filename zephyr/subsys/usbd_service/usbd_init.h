@@ -12,6 +12,9 @@
 #include <zephyr/drivers/usb/udc.h>
 #include <zephyr/usb/usbd.h>
 
+#define USB_SUBCLASS_GOOGLE_FAKE 0xFF
+#define USB_PROTOCOL_GOOGLE_FAKE 0xFF
+
 #define GOOGLE_EP_FS_MPS 64
 
 #define AUTO_EP_IN 0x80
