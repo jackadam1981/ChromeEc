@@ -490,7 +490,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 		return ret;
 
 	swizzle_sample_data(s, acc, v);
-	CPRINTF("x:%d, y:%d,z:%d\n", v[0], v[1], v[2]);
+	// CPRINTF("x:%d, y:%d,z:%d\n", v[0], v[1], v[2]);
 	return EC_SUCCESS;
 }
 
@@ -527,7 +527,7 @@ static int init(struct motion_sensor_t *s)
 		 * Enable all interrupts on INT1 pin, active-low push-pull
 		 * output, latched until status register read.
 		 */
-		GOTO_ON_ERROR(out, bma5_write8(s, BMA5_INT1_CONF_ADDR, 0x01));
+		GOTO_ON_ERROR(out, bma5_write8(s, BMA5_INT1_CONF_ADDR, 0x02));
 		GOTO_ON_ERROR(out, bma5_write8(s, BMA5_INT_MAP_DATA_ADDR,
 					       BMA5_INT1_DRDY | BMA5_INT1_FWM |
 						       BMA5_INT1_FFULL));
