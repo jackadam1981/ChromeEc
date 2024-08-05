@@ -190,6 +190,10 @@
 			pdc = <&pdc_power_p0>;
 			policy = <&cros_policy>;
 		};
+		ppm-driver {
+			compatible = "ucsi-ppm";
+			lpm = <&pdc_power_p0>;
+		};
 	};
 
 	fans {
