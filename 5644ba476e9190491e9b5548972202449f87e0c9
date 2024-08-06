@@ -46,6 +46,30 @@
       },
       "revId": "5644ba476e9190491e9b5548972202449f87e0c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff9656a_948ee40d",
+        "filename": "zephyr/test/fingerprint/task/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T14:40:28Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "e942fe86_06123cfb",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "5644ba476e9190491e9b5548972202449f87e0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
