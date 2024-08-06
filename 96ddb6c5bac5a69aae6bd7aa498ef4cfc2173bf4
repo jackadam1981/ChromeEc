@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a62b590c_15ae5036",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:38:36Z",
+      "side": 1,
+      "message": "```suggestion\n */\n \n/**\n```",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6835533_a573d37e",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:38:36Z",
+      "side": 1,
+      "message": "```suggestion\n */\n\n#include \"panic.h\"\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e03e1a_ca6e4984",
         "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
         "patchSetId": 9
