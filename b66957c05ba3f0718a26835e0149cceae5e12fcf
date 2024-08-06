@@ -46,6 +46,30 @@
       },
       "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e14417c_a1e32ac1",
+        "filename": "board/buccaneer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-06T23:21:24Z",
+      "side": 1,
+      "message": "Changing the following line to 0x1000, allows for making the code ram size to 160KiB.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/config_flash_layout.h;l\u003d110;drc\u003d29c7712541e8f85c53bac4d23147604585a764d8",
+      "parentUuid": "89725ad2_894d03d7",
+      "range": {
+        "startLine": 23,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
