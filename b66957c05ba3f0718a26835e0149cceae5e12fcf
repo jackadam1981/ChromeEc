@@ -22,6 +22,30 @@
       },
       "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89725ad2_894d03d7",
+        "filename": "board/buccaneer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-06T21:14:10Z",
+      "side": 1,
+      "message": "It looks like a 64KiB block size being enforced by `LENGTH \u003d (((192 * 1024) / 0x10000) * 0x10000)`, which explains why 192KiB is the smallest workable size.\n\nFrom prepossessed linker script:\n\n```ld\nMEMORY\n{\n FLASH (rx) : ORIGIN \u003d (0x10058000 + (0)), LENGTH \u003d (((192 * 1024) / 0x10000) * 0x10000)\n IRAM (rw) : ORIGIN \u003d (0x200C0000 - (((181 * 1024) + (4 * 1024)) - (96 * 1024))), LENGTH \u003d (((181 * 1024) + (4 * 1024)) - (4 * 1024))\n CDRAM (rx) : ORIGIN \u003d 0x10058000 + (0), LENGTH \u003d (((192 * 1024) / 0x10000) * 0x10000)\n}\n```",
+      "parentUuid": "f5897ee4_7a2113b8",
+      "range": {
+        "startLine": 23,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
