@@ -52,6 +52,24 @@
       "parentUuid": "53c4b8d0_5c878bc0",
       "revId": "6412dd61f22d768e1f101661d1236d2c7036fa7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2d2749_a8c0a07e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-06T23:33:56Z",
+      "side": 1,
+      "message": "TL;DR we only use the code ram from one of RW or RO. We are only using about 145KiB (including .data section), which is much less than 320KiB. I did lower this number further and it does look like we do fail the build. Bug b/357938320 makes seeing this a little weird. See the other comment on this CL.\n\nI keep comfortable with this change, considering how far we are from the actual limits.",
+      "parentUuid": "6124a4a1_0545b3f3",
+      "revId": "6412dd61f22d768e1f101661d1236d2c7036fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
