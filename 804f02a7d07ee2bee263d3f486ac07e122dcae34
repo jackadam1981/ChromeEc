@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cfb900_75a66bdc",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-08-06T20:25:32Z",
+      "side": 1,
+      "message": "Why move this outside of the clang guard if it only applies to clang?",
+      "revId": "804f02a7d07ee2bee263d3f486ac07e122dcae34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e742c17_dd0fe248",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-08-06T20:25:32Z",
+      "side": 1,
+      "message": "Missed conversion?",
+      "revId": "804f02a7d07ee2bee263d3f486ac07e122dcae34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff550fb_0003d3bd",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-08-06T20:25:32Z",
+      "side": 1,
+      "message": "Missed conversion?",
+      "revId": "804f02a7d07ee2bee263d3f486ac07e122dcae34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
