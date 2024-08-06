@@ -70,6 +70,24 @@
       "parentUuid": "6124a4a1_0545b3f3",
       "revId": "6412dd61f22d768e1f101661d1236d2c7036fa7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f086a8_77037d57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-06T23:53:06Z",
+      "side": 1,
+      "message": "Let me be a more clear. This `HELIPILOT_CODE_RAM_SIZE_BYTES` macro doesn\u0027t actually make a ton of sense, since the other macro `CONFIG_RW_SIZE` actually sets the region size to to a multiple of 64KiB. So, after you fix b/357938320, you could set this code ram macro to 129KiB (1 more than 128), which is smaller than the actual needed code ram space (~145KiB), but the build succeeds and the firmware runs, since the region was automatically elevated top 192KiB. The build will fail if you set this HELIPILOT_CODE_RAM_SIZE_BYTES macro to 128KiB, since that actually yields a region is 128KiB, which is too small.",
+      "parentUuid": "9b2d2749_a8c0a07e",
+      "revId": "6412dd61f22d768e1f101661d1236d2c7036fa7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
