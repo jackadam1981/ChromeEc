@@ -313,11 +313,19 @@ static uint8_t device_caps_response[] = {
 static void hid_tp_proc_queue(void);
 DECLARE_DEFERRED(hid_tp_proc_queue);
 
+#if 1
+#include "hwtimer.h"
+uint32_t start, end;
+#endif
+
 static int write_tp_report(struct usb_hid_touchpad_report *report)
 {
 	int ret = -EBUSY;
 
 	if (!atomic_test_and_set_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG)) {
+#if 1
+		start = report->timestamp;
+#endif
 		ret = hid_int_ep_write(hid_dev, (uint8_t *)report,
 				       sizeof(*report), NULL);
 
@@ -350,6 +358,11 @@ static void int_in_ready_cb(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
+#if 1
+	end = (uint16_t) (__hw_clock_source_read() / USB_HID_TOUCHPAD_TIMESTAMP_UNIT);
+	if (end < start) end = end + 65535;
+	LOG_ERR("ITE Debug - t:%dus", (uint32_t)(end - start) * USB_HID_TOUCHPAD_TIMESTAMP_UNIT);
+#endif
 }
 
 static const struct hid_ops ops = {
@@ -425,7 +438,11 @@ static void hid_tp_proc_queue(void)
 	}
 
 	mutex_unlock(report_queue_mutex);
+#if 1
+	hook_call_deferred(&hid_tp_proc_queue_data, 0);
+#else
 	hook_call_deferred(&hid_tp_proc_queue_data, 1 * MSEC);
+#endif
 }
 
 static int usb_hid_tp_init(void)
