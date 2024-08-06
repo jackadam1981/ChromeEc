@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5897ee4_7a2113b8",
+        "filename": "board/buccaneer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-06T00:53:49Z",
+      "side": 1,
+      "message": "I tested the lowest value that would be acceptable here. In the current state, the code will compile and run with a value of `192` here. Any lower will trigger a linker flash space error (`No room left in the flash`).\n\nFrom the ec.RW.map, it appears that the code ram is only consuming at most 145KiB. This means that this code ram limit of 192KiB is about 47KiB larger, even though the closest 32KiB block size is 160KiB.\n\nI can\u0027t guarantee that the linker calculations are correct, but I can say that the linker is more restrictive than the direct symbol usage I am seeing.",
+      "range": {
+        "startLine": 23,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
