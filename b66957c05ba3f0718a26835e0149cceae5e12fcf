@@ -70,6 +70,30 @@
       },
       "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b73d039_92f395dd",
+        "filename": "board/buccaneer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-06T23:27:22Z",
+      "side": 1,
+      "message": "The 64KiB incorrectly forced alignment in http://b/357938320 seems to explain the odd behavior of why I needed such a high value of 192KiB here, when we were really using much less code ram.\n\nThis change is quite moderate, compared to how little code ram we actually need. 320 is also a multiple of 64KiB (and 32KiB and 4KiB), so all other code should be happy. I\u0027m happy with submitting this.",
+      "parentUuid": "3e14417c_a1e32ac1",
+      "range": {
+        "startLine": 23,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "b66957c05ba3f0718a26835e0149cceae5e12fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
