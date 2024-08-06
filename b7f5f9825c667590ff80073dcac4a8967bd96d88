@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d971afc_3513063a",
+        "filename": "zephyr/test/utils/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T12:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eca8478_6eedfa7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0bb439d_63647511",
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25518041_14581ad6",
+        "filename": "zephyr/test/utils/src/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T12:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0bb439d_63647511",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cc21796_7a917160",
@@ -156,6 +204,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "650c96ea_393a96c3",
+        "filename": "zephyr/test/utils/src/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T12:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc21796_7a917160",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87b0f800_0f1c2ec3",
@@ -169,6 +241,30 @@
       "writtenOn": "2024-08-05T16:00:56Z",
       "side": 1,
       "message": "In `zassert_*` function family this should contain additional message, not a type specifier:\n\nFrom `subsys/testsuite/ztest/include/zephyr/ztest_assert.h`\n```\n/**\n * @brief Assert that @a a equals @a b\n *\n * @a a and @a b won\u0027t be converted and will be compared directly.\n *\n * @param a Value to compare\n * @param b Value to compare\n * @param ... Optional message and variables to print if the assertion fails\n */\n#define zassert_equal(a, b, ...) zassert((a) \u003d\u003d (b), #a \" not equal to \" #b, ##__VA_ARGS__)\n```\n\nI think the best option is to remove these specifiers. Please also prepare patch that removes this in already merged tests.",
+      "range": {
+        "startLine": 24,
+        "startChar": 63,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "b7f5f9825c667590ff80073dcac4a8967bd96d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9aff952_c70d60d9",
+        "filename": "zephyr/test/utils/src/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T12:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b0f800_0f1c2ec3",
       "range": {
         "startLine": 24,
         "startChar": 63,
