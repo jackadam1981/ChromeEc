@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f26c0a_986bf58c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:35:55Z",
+      "side": 1,
+      "message": "access",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c98b132_f367af58",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:35:55Z",
+      "side": 1,
+      "message": "Could you remove this empty line?",
+      "fixSuggestions": [
+        {
+          "fixId": "1a6ba39b_969235cc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d38ddf_4b68d83e",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:35:55Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef574b0b_a11939a9",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:35:55Z",
+      "side": 1,
+      "message": "`get_time()` comes from EC and calls `k_uptime_ticks()` under the hood. Can we use `k_uptime_ticks()` directly (and `k_ticks_to_us_floor64()` to convert it to microseconds before printing). This will reduce dependency on EC codebase.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
