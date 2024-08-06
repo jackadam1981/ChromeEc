@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e689c4b8_432e8678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-06T16:40:35Z",
+      "side": 1,
+      "message": "Marking V+1 based on Steven Wu comment:\n\nhttps://b.corp.google.com/issues/347586569#comment16\n\nRe comment#14, Tested this change with jubilant proto board, flash_fp_mcu can flash FW.",
+      "revId": "c40cd5be6f283ae8d6d0691cddcfc2952b7b293a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
