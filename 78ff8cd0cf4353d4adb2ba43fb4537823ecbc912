@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "78ff8cd0cf4353d4adb2ba43fb4537823ecbc912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27160edb_b3d4e499",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-08-06T17:15:22Z",
+      "side": 1,
+      "message": "Could you add a comment for this line?\n\ne.g. /*  Disable EXTILIM to prevent input current being capped at 0.9A */",
+      "revId": "78ff8cd0cf4353d4adb2ba43fb4537823ecbc912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
