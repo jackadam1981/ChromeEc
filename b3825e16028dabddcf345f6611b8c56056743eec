@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2381f348_545be7b3",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-06T18:44:19Z",
+      "side": 1,
+      "message": "These should all be using the same reference design; I will follow up on the bug. \n\nTo allow development to proceed, but make sure that the hardware is fixed, we can make these conditional on the board version. See [this example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/flash_fp_mcu;l\u003d255-277;drc\u003dc4e8aea54fd2959438a977ba7c7a945dde4b4398).",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1179,
+        "endChar": 6
+      },
+      "revId": "b3825e16028dabddcf345f6611b8c56056743eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
