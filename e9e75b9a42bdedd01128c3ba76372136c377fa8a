@@ -46,6 +46,30 @@
       },
       "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8acefd_82876d08",
+        "filename": "zephyr/test/hwtest/src/global_initialization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T10:40:22Z",
+      "side": 1,
+      "message": "\u003e I guess we need to find the equivalent call site for Zephyr\n\nZephyr collects all constructors in one section using [linker magic](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/linker/common-rom/common-rom-init.ld) + code that [actually calls them](https://github.com/zephyrproject-rtos/zephyr/blob/ed31037d5fd828ce644f7ca8bbecaf3ef12c1e36/kernel/init_static.c#L11-L19) called from [bg_thread_main()](https://github.com/zephyrproject-rtos/zephyr/blob/ed31037d5fd828ce644f7ca8bbecaf3ef12c1e36/kernel/init.c#L437) just before application level init hooks are called.",
+      "parentUuid": "90e6b014_b3d50dc4",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
