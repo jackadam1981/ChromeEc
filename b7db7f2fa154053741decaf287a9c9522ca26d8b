@@ -46,6 +46,30 @@
       },
       "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22cd858_507608f1",
+        "filename": "zephyr/test/hwtest/src/libcxx.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T12:35:26Z",
+      "side": 1,
+      "message": "I\u0027ve created [bug](b/357798784) for that.",
+      "parentUuid": "0ff294a1_6334d7fe",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
