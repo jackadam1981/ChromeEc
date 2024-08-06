@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b88e2de_d5cd0d66",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-06T18:47:54Z",
+      "side": 1,
+      "message": "TEST_PROJECT_INTELRVP_CHG_USB_PD_MECC?\ni suppose MECC implies INTELRVP, but a bit of hierarchy in the\nnames seems appropriate here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "da359b05cea50343677c937bcdd5b38c6e6a7237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
