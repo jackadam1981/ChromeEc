@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d49bb6_8fe976ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T12:35:04Z",
+      "side": 1,
+      "message": "I think `test_strcspn()` from zephyr/test/lib/src/stdlib.c also needs to be fixed.",
+      "revId": "2fc6ddd1842759836d8270be34378b91eb93f739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
