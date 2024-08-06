@@ -22,6 +22,30 @@
       },
       "revId": "9b336219f699d77ab7252d3a7c0b8b4905c8bdb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1192bc81_49818f12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-06T16:46:50Z",
+      "side": 1,
+      "message": "Similarly, can you mention the upstream `drivers.entropy` test in the commit message?\n\nSomething like:\n\n```\nzephyr: fpmcu: add rng_benchmark test and upstream drivers.entropy test\n\nAdd the rng_benchmark test. The test measures performance of the\nhardware (TRNG) compared to the std::rand().\n\nThe upstream drivers.entropy tests whether the Zephyr entropy API\ngets random data.\n\nThis code was migrated from the following EC test:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/5aa9baf19b6b8e1c49276c8c37418d0a2d96f91a/test/rng_benchmark.cc\n```",
+      "parentUuid": "d9a4cfda_c701f48e",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "9b336219f699d77ab7252d3a7c0b8b4905c8bdb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
