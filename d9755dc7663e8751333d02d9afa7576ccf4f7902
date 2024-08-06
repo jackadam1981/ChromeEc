@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29487ca_24c7ac73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-06T16:24:52Z",
+      "side": 1,
+      "message": "This makes it sound like it\u0027s comparing the system clock to `udelay`. It is just using `udelay` to make sure that the correct time elapses when checking the system clock.\n\nYou could phrase it as \"The test verifies std::chrono::system_clock.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "d9755dc7663e8751333d02d9afa7576ccf4f7902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
