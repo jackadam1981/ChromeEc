@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4613d16_b73014eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T17:21:15Z",
+      "side": 1,
+      "message": "The original test was also checking line number. I found that if `CONFIG_ASSERT_NO_FILE_INFO` is not enabled, the `assert_post_action()` takes line number as second argument, so it should be present in `r1` if I remember ARM ABI correctly. As a bonus, `r0` should contain address of string with name of the file.\n\nCould you implement checking the line number?",
+      "revId": "1d9ccb93c43a8272c67f5ef85099193e7a9ecce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
