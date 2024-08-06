@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c26ad99_d0126513",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T19:36:25Z",
+      "side": 1,
+      "message": "\u003e The reference board brox does not directly support FPMCU at this point\n\nSo what is the source of \"default\" GPIO pins?",
+      "parentUuid": "f25e26e4_d4a6834b",
+      "range": {
+        "startLine": 1146,
+        "startChar": 5,
+        "endLine": 1155,
+        "endChar": 48
+      },
+      "revId": "c40cd5be6f283ae8d6d0691cddcfc2952b7b293a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da71c1bb_894b112f",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
