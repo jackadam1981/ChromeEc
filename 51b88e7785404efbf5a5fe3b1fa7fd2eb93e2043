@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "51b88e7785404efbf5a5fe3b1fa7fd2eb93e2043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e015bc8_dc049938",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-06T15:16:39Z",
+      "side": 1,
+      "message": "Should this be an early exit, like line 1138?",
+      "range": {
+        "startLine": 1171,
+        "startChar": 0,
+        "endLine": 1181,
+        "endChar": 8
+      },
+      "revId": "51b88e7785404efbf5a5fe3b1fa7fd2eb93e2043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
