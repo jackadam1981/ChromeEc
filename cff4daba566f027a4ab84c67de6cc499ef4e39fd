@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14be6d6d_f2c1024b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T15:53:51Z",
+      "side": 1,
+      "message": "FYI, Zephyr has wonderful group of UART test suites. Some tests require modified hardware (e.g. shorted TX and RX, or two UART interfaces connected each other) but there are also tests that need sending one character e.g [uart_basic_api](https://github.com/zephyrproject-rtos/zephyr/tree/main/tests/drivers/uart/uart_basic_api).\n\nThough, I\u0027m not saying this is something we should do now.",
+      "revId": "cff4daba566f027a4ab84c67de6cc499ef4e39fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
