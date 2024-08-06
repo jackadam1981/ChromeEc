@@ -16,6 +16,24 @@
       "message": "Hi Abe,\nIs there any issue in the format of LOW_COVERAGE_REASON given in the commit message here?\nCommit to queue has failed here, irrespective of +1 in code-coverage.",
       "revId": "fde9346a03dac6e221b66abd1206173b0ec73dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913147f4_d8b2f4d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-06T21:46:16Z",
+      "side": 1,
+      "message": "No, there\u0027s a code format error:\n```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      13:51:32: WARNING: common/usbc/usb_mode.c: needs formatting\n      13:52:06: NOTICE: You can fix formatting errors by running:\n        cros format common/usbc/usb_mode.c\n```\n\nAre you uploading with `repo upload`? That stops you from uploading with code style violations.",
+      "parentUuid": "85498ed3_c9f836f5",
+      "revId": "fde9346a03dac6e221b66abd1206173b0ec73dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
