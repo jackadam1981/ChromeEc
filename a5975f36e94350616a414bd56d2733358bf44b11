@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374bd4bb_a5d9f525",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T13:19:21Z",
+      "side": 1,
+      "message": "```suggestion\n\tbool \"FP sensor utils test\"\n```",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "a5975f36e94350616a414bd56d2733358bf44b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
