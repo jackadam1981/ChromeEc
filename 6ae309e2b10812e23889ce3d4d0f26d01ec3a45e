@@ -22,6 +22,29 @@
       },
       "revId": "6ae309e2b10812e23889ce3d4d0f26d01ec3a45e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff24ca7_a56af407",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:15:52Z",
+      "side": 1,
+      "message": "what kind of error is seen without this ? looks like rest of files in this CL enable them,",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "6ae309e2b10812e23889ce3d4d0f26d01ec3a45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
