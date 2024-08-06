@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e036ca7_23f0c3b7",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-06T04:26:53Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like there\u0027s any reason to have two branches here, just make `LID_DEBOUNCE_US` configurable and default to 30ms.\n\n```suggestion\n\thook_call_deferred(\u0026lid_change_deferred_data,\n\t\t\t   CONFIG_LID_DEBOUNCE_US);\n```\n\nThe same applies for the GMR sensor.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 6
+      },
+      "revId": "4d0c27473ea0f7a18651a6451362b23c88edc8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acc41f6c_90ce6f72",
         "filename": "common/tablet_mode.c",
         "patchSetId": 2
