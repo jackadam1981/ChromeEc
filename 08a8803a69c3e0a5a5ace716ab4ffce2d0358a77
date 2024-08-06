@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1df2c9_87a70abe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2024-08-06T16:14:08Z",
+      "side": 1,
+      "message": "The builder is actually missing the metadata file, not the metrics file. It looks like this CL writes the metrics file three times. Looking at https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/cr50/firmware_builder.py;drc\u003d6a5a38bc1b121104c9d55a34966e2616e7952be7;l\u003d83, I think we really need to write a (possibly empty?) `FirmwareArtifactInfo` proto to `opts.metadata` (or a default file location).",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "08a8803a69c3e0a5a5ace716ab4ffce2d0358a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
