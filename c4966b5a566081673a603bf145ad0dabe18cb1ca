@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f09c594_d791c5a7",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-06T18:41:33Z",
+      "side": 1,
+      "message": "`INTELRVP_TCPC`?",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "c4966b5a566081673a603bf145ad0dabe18cb1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d2aa1c_72a2a460",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-06T18:41:33Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "c4966b5a566081673a603bf145ad0dabe18cb1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
