@@ -70,6 +70,30 @@
       },
       "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c3ba83_72ee127d",
+        "filename": "zephyr/test/hwtest/src/global_initialization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-06T12:33:31Z",
+      "side": 1,
+      "message": "True, I confirmed the tests fail without calling the init functions.",
+      "parentUuid": "4f8acefd_82876d08",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "e9e75b9a42bdedd01128c3ba76372136c377fa8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
