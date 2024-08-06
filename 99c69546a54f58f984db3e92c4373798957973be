@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45957972_2f50cc43",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T13:49:58Z",
+      "side": 1,
+      "message": "```suggestion\n\tbool \"std_vector test\"\n```",
+      "range": {
+        "startLine": 173,
+        "startChar": 7,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "99c69546a54f58f984db3e92c4373798957973be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
