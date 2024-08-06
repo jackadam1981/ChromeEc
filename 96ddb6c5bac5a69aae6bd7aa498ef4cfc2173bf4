@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e03e1a_ca6e4984",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:10:35Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org Do you know if there is any reason against hexadecimal numbers here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 56
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa40d91_649725f5",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:10:35Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org I guess `static_cast\u003cint32_t\u003e` here is needed because the number has most significant bit set, so the value differs between `uint32_t` and `int32_t` and compiler doesn\u0027t want to cast it implicitly. Is this correct? Why we are using `int32_t` here? Is it possible to use `uint32_t` instead?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
