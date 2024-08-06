@@ -16,6 +16,148 @@
       "message": "given the large size of this patch,\nis it feasible to separate the introduction of `CHIPSET_API_MOCK`\ninto a stand-alone patch, then follow up with enabling mtlrvp tests?",
       "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff21929a_50f67221",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "try split into two CLs one for common code other for RVP code",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be54d1f_cd2834d5",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "is it needed if we make it default n?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40388479_30942be5",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/i2c_charger.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "try see if this file can split and named as i2c.dtsi \u0026 adc.dtsi",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142f4e8f_6aa33a15",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/mtlrvp_npcx.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0eb02bc_bf855210",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/fakes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "add ifdef to avoid multi include errors",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2a4b3a_2745253d",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "is it possible to make this as a common file for all MTL platforms including Rex? Any minor differences can be handled in board specific logic",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02895c4a_03c42f0c",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "try see if these are needed",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3d4934_4c61be84",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-06T18:46:09Z",
+      "side": 1,
+      "message": "nit remove.",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
