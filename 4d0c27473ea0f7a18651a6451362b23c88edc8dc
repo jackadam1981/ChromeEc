@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92650f7_49fc838b",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-08-06T04:12:01Z",
+      "side": 1,
+      "message": "Can we just make it overridable?",
+      "revId": "4d0c27473ea0f7a18651a6451362b23c88edc8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468bbf78_c637f76e",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-08-06T04:12:01Z",
+      "side": 1,
+      "message": "We can use ifndef here and undef in config.h",
+      "revId": "4d0c27473ea0f7a18651a6451362b23c88edc8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc41f6c_90ce6f72",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-08-06T04:12:01Z",
+      "side": 1,
+      "message": "same here to use ifndef",
+      "revId": "4d0c27473ea0f7a18651a6451362b23c88edc8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
