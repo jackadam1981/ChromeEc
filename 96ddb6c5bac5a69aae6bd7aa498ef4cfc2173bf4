@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfa5416b_fb42a372",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-06T16:12:39Z",
+      "side": 1,
+      "message": "```suggestion\n\tbool \"Unaligned access test\"\n```",
+      "range": {
+        "startLine": 203,
+        "startChar": 17,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21e03e1a_ca6e4984",
         "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
         "patchSetId": 9
