@@ -34,6 +34,24 @@
       "parentUuid": "85498ed3_c9f836f5",
       "revId": "fde9346a03dac6e221b66abd1206173b0ec73dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75a24af_e739be2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-08-06T22:05:05Z",
+      "side": 1,
+      "message": "Thanks Abe. Resolved the format error with \u0027cros format common/usbc/usb_mode.c\u0027.\nInfact , i had uploaded with git push cros HEAD:refs/for/main. I think, this is not checking for any formats.",
+      "parentUuid": "913147f4_d8b2f4d8",
+      "revId": "fde9346a03dac6e221b66abd1206173b0ec73dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
