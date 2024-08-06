@@ -140,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e56642d_6c6d3972",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-06T20:30:58Z",
+      "side": 1,
+      "message": "The default values are what Lotso originally uploaded.  Jubilant (a different OEM design) did not match.  This CL is to seperate the Lotso / Jubilant assignments.",
+      "parentUuid": "2c26ad99_d0126513",
+      "range": {
+        "startLine": 1146,
+        "startChar": 5,
+        "endLine": 1155,
+        "endChar": 48
+      },
+      "revId": "c40cd5be6f283ae8d6d0691cddcfc2952b7b293a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da71c1bb_894b112f",
