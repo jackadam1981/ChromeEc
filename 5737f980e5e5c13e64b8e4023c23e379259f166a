@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdac797b_0722b510",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2024-08-07T16:19:47Z",
+      "side": 1,
+      "message": "This `pass` is useless now that the function has an actual body. Recommend deleting.",
+      "fixSuggestions": [
+        {
+          "fixId": "f1b66c75_ef967c3b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware_builder.py",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 62,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "5737f980e5e5c13e64b8e4023c23e379259f166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
