@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba139e9_b7e4dcf5",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T21:45:15Z",
+      "side": 0,
+      "message": "Do any tests rely on this output?",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 29
+      },
+      "revId": "910d460f3607a27223531e7ec97d861e2027fa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
