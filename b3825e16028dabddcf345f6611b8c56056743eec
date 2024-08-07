@@ -46,6 +46,30 @@
       },
       "revId": "b3825e16028dabddcf345f6611b8c56056743eec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f258af7d_74ec5058",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-07T04:03:19Z",
+      "side": 1,
+      "message": "I see your other bug tracking the GPIO choices.  I think we should merge this CL to support the current factory hardware build that is ongoing.",
+      "parentUuid": "caaa0a19_7bb246a5",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1179,
+        "endChar": 6
+      },
+      "revId": "b3825e16028dabddcf345f6611b8c56056743eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
