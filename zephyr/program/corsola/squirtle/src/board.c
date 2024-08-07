@@ -53,6 +53,11 @@ enum battery_present battery_is_present(void)
 	int state;
 	struct battery_static_info *bs = &battery_static[BATT_IDX_MAIN];
 
+	uint64_t time_now = get_time().val;
+	if (time_now < 500 * MSEC &&
+	    !(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE))
+		return BP_NO;
+
 	/*
 	 * When the battery information is not ready, it is determined that
 	 * the battery is not present.
