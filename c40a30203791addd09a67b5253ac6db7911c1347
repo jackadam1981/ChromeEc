@@ -39,6 +39,30 @@
       },
       "revId": "c40a30203791addd09a67b5253ac6db7911c1347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcdad97_2f7bc3ed",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T21:58:12Z",
+      "side": 1,
+      "message": "Good catch.  Fixed.",
+      "parentUuid": "e619107e_69a6faf3",
+      "range": {
+        "startLine": 440,
+        "startChar": 33,
+        "endLine": 440,
+        "endChar": 39
+      },
+      "revId": "c40a30203791addd09a67b5253ac6db7911c1347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
