@@ -46,6 +46,30 @@
       },
       "revId": "262b4e87d86e2fc5adcace192b108df764015a2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3c82bc_e5850f06",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-08-07T18:56:17Z",
+      "side": 1,
+      "message": "I also don\u0027t think it is worth doing a re-release to fix this tag since you have already released this to portage. The version number is correct, it is just the version string. What are your thoughts?",
+      "parentUuid": "be862a13_c3d9f6f8",
+      "range": {
+        "startLine": 1753,
+        "startChar": 21,
+        "endLine": 1753,
+        "endChar": 34
+      },
+      "revId": "262b4e87d86e2fc5adcace192b108df764015a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
