@@ -52,6 +52,24 @@
       "parentUuid": "913147f4_d8b2f4d8",
       "revId": "fde9346a03dac6e221b66abd1206173b0ec73dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91b165f_84596d59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-07T14:11:59Z",
+      "side": 1,
+      "message": "That makes sense then. Please upload with `repo upload` and try to get a clean pre-submit run. It makes reviewing and submitting easier.",
+      "parentUuid": "f75a24af_e739be2c",
+      "revId": "fde9346a03dac6e221b66abd1206173b0ec73dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
