@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b05bacb_6f3b80c0",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-07T22:45:53Z",
+      "side": 0,
+      "message": "No, this row was added as a temporary thing. Neither TAST nor unit tests were checking it.",
+      "parentUuid": "8ba139e9_b7e4dcf5",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 29
+      },
+      "revId": "910d460f3607a27223531e7ec97d861e2027fa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e71c3a_bdcc7148",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-08-07T22:38:29Z",
       "side": 0,
       "message": "Should we combine the project name and FW config ver. together ? Assume both are named \"GOOGxxxx\" now ?",
+      "revId": "910d460f3607a27223531e7ec97d861e2027fa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf224dc4_c29494b0",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-07T22:45:53Z",
+      "side": 0,
+      "message": "Yeah. I took out the FW config ver field in `pdc info`. If one of the older TI configs is loaded, it will print \"TIn\" as the project name, where `n` is the integer value from the customer use register.",
+      "parentUuid": "c3e71c3a_bdcc7148",
       "revId": "910d460f3607a27223531e7ec97d861e2027fa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
