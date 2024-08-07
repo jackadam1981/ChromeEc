@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "c40a30203791addd09a67b5253ac6db7911c1347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e619107e_69a6faf3",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-07T21:21:47Z",
+      "side": 1,
+      "message": "did you mean to have a \"flash_\" prefix here?\nthis is used as `flash_\"${CHIP}\"` toward the end of the file.",
+      "range": {
+        "startLine": 440,
+        "startChar": 33,
+        "endLine": 440,
+        "endChar": 39
+      },
+      "revId": "c40a30203791addd09a67b5253ac6db7911c1347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
