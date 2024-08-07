@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8a31317_0cad0351",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2024-08-07T09:53:46Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "0fb2f898_831a7e15",
+      "revId": "ec60e8be27668c1525f40b2c99b27dfe6acecebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2cafd74_6d4e7e06",
         "filename": "zephyr/program/corsola/veluza/src/temp.c",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-05T05:38:56Z",
       "side": 1,
       "message": "As current_level is validated in the if conditions to ensure not exceeding boundray, probably don\u0027t need to check again here ?",
+      "revId": "ec60e8be27668c1525f40b2c99b27dfe6acecebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06c6ffb_cb83dd5e",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2024-08-07T09:53:46Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "a2cafd74_6d4e7e06",
       "revId": "ec60e8be27668c1525f40b2c99b27dfe6acecebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
