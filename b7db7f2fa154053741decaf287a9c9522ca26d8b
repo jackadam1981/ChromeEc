@@ -70,6 +70,30 @@
       },
       "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb31799_bca5d64f",
+        "filename": "zephyr/test/hwtest/src/libcxx.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:16:36Z",
+      "side": 1,
+      "message": "Currently, libcxx doesn\u0027t build for us.\n```\n/mnt/host/source/src/third_party/zephyr/main/tests/lib/cpp/libcxx/src/main.cpp:74:2: error: cannot use \u0027throw\u0027 with exceptions disabled\n   74 |         throw 42;\n      |         ^\n/mnt/host/source/src/third_party/zephyr/main/tests/lib/cpp/libcxx/src/main.cpp:79:2: error: cannot use \u0027try\u0027 with exceptions disabled\n   79 |         try\n      |         ^\n```\n\nI\u0027m guessing we need to handle `CONFIG_CPP_EXCEPTIONS` for Clang. Let\u0027s fix this first and then enable the upstream libcxx test.",
+      "parentUuid": "d22cd858_507608f1",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "b7db7f2fa154053741decaf287a9c9522ca26d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
