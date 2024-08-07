@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf7ac7a_7db226b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-07T20:31:23Z",
+      "side": 1,
+      "message": "This is my first attempt at the hysteresis behavior, which I can\u0027t currently test. The policy change causes the hooks tests to fail, and my first quick attempt at changing them didn\u0027t work. It\u0027s possible that\u0027s because I did the policy wrong, or it\u0027s possible that the test just needs more nuance.",
+      "revId": "dc7357b7a75abeb45fe00f32e3f1390dfce9c354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
