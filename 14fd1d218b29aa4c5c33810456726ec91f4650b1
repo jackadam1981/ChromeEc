@@ -69,6 +69,24 @@
       "parentUuid": "612ab486_4c13105c",
       "revId": "14fd1d218b29aa4c5c33810456726ec91f4650b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3df02dd_62bf36e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-08-07T10:04:05Z",
+      "side": 1,
+      "message": "```\n      01:23:27: WARNING: zephyr/program/brox/jubilant/src/keyboard_customization.c: needs formatting\n      01:23:42: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/program/brox/jubilant/src/keyboard_customization.c\n```\n\nthis is the error, you should be able to run the command above and it should do it for you",
+      "parentUuid": "5b298f22_1c908a5a",
+      "revId": "14fd1d218b29aa4c5c33810456726ec91f4650b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
