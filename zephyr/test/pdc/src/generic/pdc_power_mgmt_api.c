@@ -965,7 +965,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_suspend)
 {
 	union connector_status_t connector_status;
 	enum ccom_t ccom;
-	uint32_t timeout = k_ms_to_cyc_ceil32(PDC_TEST_TIMEOUT);
+	uint32_t timeout = k_ms_to_cyc_ceil32(5000);
 	uint32_t start;
 
 	emul_pdc_configure_src(emul, &connector_status);
@@ -998,7 +998,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_resume)
 	enum ccom_t ccom;
 
 	hook_notify(HOOK_CHIPSET_RESUME);
-	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+	TEST_WORKING_DELAY(5000);
 
 	zassert_ok(emul_pdc_get_ccom(emul, &ccom),
 		   "Invalid CCOM value in emul");
@@ -1009,7 +1009,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_startup)
 {
 	union connector_status_t connector_status;
 	enum ccom_t ccom;
-	uint32_t timeout = k_ms_to_cyc_ceil32(PDC_TEST_TIMEOUT);
+	uint32_t timeout = k_ms_to_cyc_ceil32(5000);
 	uint32_t start;
 
 	emul_pdc_configure_src(emul, &connector_status);
@@ -1041,7 +1041,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_shutdown)
 {
 	union connector_status_t connector_status;
 	union pdr_t pdr;
-	uint32_t timeout = k_ms_to_cyc_ceil32(PDC_TEST_TIMEOUT);
+	uint32_t timeout = k_ms_to_cyc_ceil32(5000);
 	uint32_t start;
 
 	emul_pdc_configure_src(emul, &connector_status);
