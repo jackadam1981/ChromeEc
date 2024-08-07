@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b686670_bd8fec78",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-07T16:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0ce768_92645d8e",
+      "range": {
+        "startLine": 1146,
+        "startChar": 5,
+        "endLine": 1155,
+        "endChar": 48
+      },
+      "revId": "c40cd5be6f283ae8d6d0691cddcfc2952b7b293a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da71c1bb_894b112f",
