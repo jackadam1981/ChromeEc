@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6330e413_15557029",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:30:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa5416b_fb42a372",
+      "range": {
+        "startLine": 203,
+        "startChar": 17,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a62b590c_15ae5036",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62028275_3d82aca6",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:30:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62b590c_15ae5036",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6835533_a573d37e",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-06T16:38:36Z",
       "side": 1,
       "message": "```suggestion\n */\n\n#include \"panic.h\"\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003bc32b_8053316a",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:30:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6835533_a573d37e",
       "range": {
         "startLine": 7,
         "startChar": 0,
