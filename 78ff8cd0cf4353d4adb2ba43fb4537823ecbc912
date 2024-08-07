@@ -33,6 +33,24 @@
       "message": "Could you add a comment for this line?\n\ne.g. /*  Disable EXTILIM to prevent input current being capped at 0.9A */",
       "revId": "78ff8cd0cf4353d4adb2ba43fb4537823ecbc912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "859354d9_ec5c9599",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-08-07T06:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27160edb_b3d4e499",
+      "revId": "78ff8cd0cf4353d4adb2ba43fb4537823ecbc912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
