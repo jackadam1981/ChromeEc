@@ -22,6 +22,30 @@
       },
       "revId": "0882bab79b4df95574b75f15668caf58f1844c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37517a7_06447cf7",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "776a5ded_6403dd18",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "0882bab79b4df95574b75f15668caf58f1844c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
