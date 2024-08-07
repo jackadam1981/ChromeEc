@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "36ce12df3af53cd16c91d3695652a274009f9e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2bccfc0_0b835bfc",
+        "filename": "zephyr/drivers/usbc/tps6699x.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-07T17:05:09Z",
+      "side": 1,
+      "message": "Not sure if their tool lets you edit the description field separately but would be nice to include the ASCII representation here for easy reading",
+      "range": {
+        "startLine": 3137,
+        "startChar": 0,
+        "endLine": 3137,
+        "endChar": 49
+      },
+      "revId": "36ce12df3af53cd16c91d3695652a274009f9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
