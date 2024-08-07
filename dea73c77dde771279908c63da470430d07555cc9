@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fbda12_7a60b347",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:31:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c98b132_f367af58",
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3d38ddf_4b68d83e",
@@ -105,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b2f537_2f732fa9",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:31:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d38ddf_4b68d83e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef574b0b_a11939a9",
@@ -118,6 +160,30 @@
       "writtenOn": "2024-08-06T16:35:55Z",
       "side": 1,
       "message": "`get_time()` comes from EC and calls `k_uptime_ticks()` under the hood. Can we use `k_uptime_ticks()` directly (and `k_ticks_to_us_floor64()` to convert it to microseconds before printing). This will reduce dependency on EC codebase.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90aa3899_1ee1978f",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:31:47Z",
+      "side": 1,
+      "message": "Many tests use `get_time`. I\u0027ll prepare one CL to switch to Zephyr functions.",
+      "parentUuid": "ef574b0b_a11939a9",
       "range": {
         "startLine": 35,
         "startChar": 5,
