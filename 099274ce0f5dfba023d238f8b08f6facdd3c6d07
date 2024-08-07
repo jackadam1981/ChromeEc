@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34143e53_4dfd27ba",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce19566_d21f2885",
+      "range": {
+        "startLine": 1589,
+        "startChar": 1,
+        "endLine": 1589,
+        "endChar": 9
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "239f0ca9_1b8fbcd4",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-25T02:27:38Z",
       "side": 1,
       "message": "local ...",
+      "range": {
+        "startLine": 1592,
+        "startChar": 1,
+        "endLine": 1592,
+        "endChar": 15
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32743ee2_f9b4b25f",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "It is already local.  I cleaned this up to be more consistent about initialization.",
+      "parentUuid": "239f0ca9_1b8fbcd4",
       "range": {
         "startLine": 1592,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54bbd4b6_996b62f3",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "2e0451c9_046d5e76",
+      "range": {
+        "startLine": 1596,
+        "startChar": 1,
+        "endLine": 1596,
+        "endChar": 15
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "287079ca_eaa4f72c",
         "filename": "util/flash_ec",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2024-07-25T02:27:38Z",
       "side": 1,
       "message": "local ...",
+      "range": {
+        "startLine": 1597,
+        "startChar": 1,
+        "endLine": 1597,
+        "endChar": 8
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b0f410_704a3c0b",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287079ca_eaa4f72c",
       "range": {
         "startLine": 1597,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ee9dbc_e145252f",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0e405c_303e580b",
+      "range": {
+        "startLine": 2117,
+        "startChar": 2,
+        "endLine": 2117,
+        "endChar": 23
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e68b5eb0_f29d949b",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "805e2a80_0e632ed7",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 2155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68b5eb0_f29d949b",
+      "range": {
+        "startLine": 2155,
+        "startChar": 2,
+        "endLine": 2155,
+        "endChar": 23
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "517188c8_71db8a13",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-07-25T02:27:38Z",
       "side": 1,
       "message": "that\u0027s based on the 1MB SKU at 115k?",
+      "range": {
+        "startLine": 2162,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 9
+      },
+      "revId": "099274ce0f5dfba023d238f8b08f6facdd3c6d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0642de82_db3f5edb",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-07T20:14:20Z",
+      "side": 1,
+      "message": "Removed the comment.  This was leftover from some testing where I increased the `-k` kill timeout.   Turns out the default flashing timeout is already set to 10 minutes.",
+      "parentUuid": "517188c8_71db8a13",
       "range": {
         "startLine": 2162,
         "startChar": 4,
