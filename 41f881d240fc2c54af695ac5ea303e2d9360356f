@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9faa0f0a_866fa15d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b95a42_a8767810",
+      "revId": "41f881d240fc2c54af695ac5ea303e2d9360356f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8548eca_83e18e73",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Looks like there are several other cases of `zassert_true(vec[i] \u003d\u003d i)` that we can switch if it works.",
       "parentUuid": "b8548eca_83e18e73",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "41f881d240fc2c54af695ac5ea303e2d9360356f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807edde8_227a5fbd",
+        "filename": "zephyr/test/lib/src/std_vector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-07T10:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b363d4_d9a89ba7",
       "range": {
         "startLine": 80,
         "startChar": 0,
