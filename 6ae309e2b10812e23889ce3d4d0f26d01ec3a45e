@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "281b0f3e_13b1fe6b",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-08T21:15:31Z",
+      "side": 1,
+      "message": "Acknowledged\n\nTry ifdef in the mock functions so that we can avoid manually adding configs in the board files.",
+      "parentUuid": "a995d82f_d3ff479b",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "6ae309e2b10812e23889ce3d4d0f26d01ec3a45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a95d5126_d85af7f4",
