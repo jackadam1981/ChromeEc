@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d7e33b3_dbb2858b",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8f09c594_d791c5a7",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "c4966b5a566081673a603bf145ad0dabe18cb1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3d2aa1c_72a2a460",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-06T18:41:33Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 54
+      },
+      "revId": "c4966b5a566081673a603bf145ad0dabe18cb1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21900c74_ae5630ca",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f3d2aa1c_72a2a460",
       "range": {
         "startLine": 26,
         "startChar": 0,
