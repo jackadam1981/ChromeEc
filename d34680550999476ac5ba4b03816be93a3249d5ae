@@ -34,6 +34,24 @@
       "parentUuid": "03125588_cc6d940a",
       "revId": "d34680550999476ac5ba4b03816be93a3249d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf86b91b_9784cfb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-08-08T11:07:24Z",
+      "side": 1,
+      "message": "`2024/08/07 20:55:12 could not download Bazel: failed to write mapping file after downloading bazel: failed to rename /home/chrome-bot/.cache/bazelisk/downloads/metadata/bazelbuild/bazel-7.2.0rc2-linux-x86_64.tmp to /home/chrome-bot/.cache/bazelisk/downloads/metadata/bazelbuild/bazel-7.2.0rc2-linux-x86_64: rename /home/chrome-bot/.cache/bazelisk/downloads/metadata/bazelbuild/bazel-7.2.0rc2-linux-x86_64.tmp /home/chrome-bot/.cache/bazelisk/downloads/metadata/bazelbuild/bazel-7.2.0rc2-linux-x86_64: no such file or directory`\n\n\nOdd that it only fails on one of the tests, surely unrelated, giving it another try let\u0027s see if it\u0027s transient.",
+      "parentUuid": "bc583326_441bf03f",
+      "revId": "d34680550999476ac5ba4b03816be93a3249d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
