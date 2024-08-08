@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b57d04e_58baa5cd",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-08T23:01:36Z",
+      "side": 1,
+      "message": "The FWID no longer needs to be allocated its own section.  Add `#include \u003ccros/integrated_fwid.dtsi\u003e` to the project.overlay to use the FWID included in the image header.\nSee CL:5494925 for an example.\n\nI recommend doing this now, so that the program never has to change the `assert_rw_fwid` checks.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "92b7fed8c9c4445a7b70f364663b7f40ba645834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
