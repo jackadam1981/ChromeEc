@@ -22,6 +22,30 @@
       },
       "revId": "09900eb3b8f15a8daa9c51edf1a24e6f4fb0a122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c0db26_5e028030",
+        "filename": "zephyr/program/nissa/orisa-ish/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-08-08T16:15:16Z",
+      "side": 1,
+      "message": "It is just now resolved in dependent CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5740726/8/zephyr/program/nissa/orisa_ti/project.overlay",
+      "parentUuid": "3cd6a53b_46a6ffab",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "09900eb3b8f15a8daa9c51edf1a24e6f4fb0a122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
