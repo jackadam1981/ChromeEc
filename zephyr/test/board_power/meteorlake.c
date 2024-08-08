@@ -246,6 +246,8 @@ ZTEST_USER(board_power, test_board_ap_power_action_g3_run_0)
 		mock_power_signal_get_ap_power_action_g3_run_0;
 
 	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_SIGNAL);
+	/* Buffer time to process event */
+	k_msleep(5);
 	zassert_equal(0, chipset_run_count);
 }
 
@@ -259,6 +261,8 @@ ZTEST_USER(board_power, test_board_ap_power_action_g3_run_1)
 		mock_power_signal_get_ap_power_action_g3_run_0;
 
 	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_STARTUP);
+	/* Buffer time to process event */
+	k_msleep(5);
 	zassert_equal(0, chipset_run_count);
 }
 
@@ -272,6 +276,8 @@ ZTEST_USER(board_power, test_board_ap_power_action_g3_run_2)
 		mock_power_signal_get_ap_power_action_g3_run_1;
 
 	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_STARTUP);
+	/* Buffer time to process event */
+	k_msleep(5);
 	zassert_equal(1, chipset_run_count);
 }
 #else
