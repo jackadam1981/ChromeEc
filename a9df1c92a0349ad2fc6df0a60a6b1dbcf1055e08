@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8a71e1a4_80161205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-08T14:24:31Z",
+      "side": 1,
+      "message": "Couldn\u0027t find the `bazel` binary. Not sure what that\u0027s about.",
+      "revId": "a9df1c92a0349ad2fc6df0a60a6b1dbcf1055e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e3ed8a7e_6dbf49a5",
         "filename": "zephyr/test/pdc/Kconfig",
         "patchSetId": 1
