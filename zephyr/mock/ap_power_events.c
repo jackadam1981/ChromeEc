@@ -8,3 +8,5 @@
 #include <mock/ap_power_events.h>
 
 LOG_MODULE_REGISTER(mock_ap_power_events);
+
+FAKE_VALUE_FUNC(int, ap_power_ev_add_callback, struct ap_power_ev_callback *);
