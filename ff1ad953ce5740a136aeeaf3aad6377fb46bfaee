@@ -22,6 +22,30 @@
       },
       "revId": "ff1ad953ce5740a136aeeaf3aad6377fb46bfaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45e4711_2a6af132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:53:07Z",
+      "side": 1,
+      "message": "I created this file for RVP unit tests in trail https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5647127?forceReload\u003dtrue. So there are no existing tests that use this dts file.",
+      "parentUuid": "37ce5af6_1b7ecd4c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "ff1ad953ce5740a136aeeaf3aad6377fb46bfaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
