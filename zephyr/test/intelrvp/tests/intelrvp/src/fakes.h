@@ -17,8 +17,19 @@
 
 DECLARE_FAKE_VOID_FUNC(nct38xx_reset_notify, int);
 DECLARE_FAKE_VALUE_FUNC(int, ccgxxf_reset, int);
+DECLARE_FAKE_VOID_FUNC(io_expander_it8801_interrupt, enum gpio_signal);
+
+#if defined(CONFIG_TEST_PROJECT_MTLRVPP_NPCX) ||     \
+	defined(CONFIG_TEST_PROJECT_MTLRVPP_MCHP) || \
+	defined(CONFIG_TEST_PROJECT_MTLRVPP_COMMON)
 DECLARE_FAKE_VOID_FUNC(lid_interrupt, enum gpio_signal);
 DECLARE_FAKE_VALUE_FUNC(int, ioex_init, int);
-DECLARE_FAKE_VOID_FUNC(io_expander_it8801_interrupt, enum gpio_signal);
+#endif
+
+#if defined(CONFIG_TEST_PROJECT_PTLRVP_MCHP)
+DECLARE_FAKE_VALUE_FUNC(int, clock_get_freq);
+DECLARE_FAKE_VOID_FUNC(keyboard_raw_drive_column, int);
+DECLARE_FAKE_VALUE_FUNC(int, keyboard_raw_read_rows);
+#endif
 
 #endif /* ZEPHYR_TEST_INTELRVP_SRC_FAKES_H */
