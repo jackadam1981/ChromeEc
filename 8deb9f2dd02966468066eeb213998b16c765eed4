@@ -33,6 +33,23 @@
       "message": "Seems https://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-zephyr-cq keep failing randomly.",
       "revId": "8deb9f2dd02966468066eeb213998b16c765eed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c882388_b2f08d39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-08-08T06:21:17Z",
+      "side": 1,
+      "message": "Overall this is more like a workaround than a proper fix for the charge current problem. It\u0027s OK merge this for Kyogre. I\u0027ll create another issue to work on the proper fix.",
+      "revId": "8deb9f2dd02966468066eeb213998b16c765eed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
