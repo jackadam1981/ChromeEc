@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd6a53b_46a6ffab",
+        "filename": "zephyr/program/nissa/orisa-ish/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-08T15:57:13Z",
+      "side": 1,
+      "message": "This is generating a build error when submitting this change on it\u0027s own.  Please fix:\n\n```\n/mnt/host/source/src/platform/ec/zephyr/program/nissa/orisa_ti/project.overlay:11:10: fatal error: \u0027../orisa/motionsense.dtsi\u0027 file not found\n   11 | #include \"../orisa/motionsense.dtsi\"\n      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "09900eb3b8f15a8daa9c51edf1a24e6f4fb0a122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
