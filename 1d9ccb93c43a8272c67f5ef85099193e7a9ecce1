@@ -34,6 +34,24 @@
       "parentUuid": "b4613d16_b73014eb",
       "revId": "1d9ccb93c43a8272c67f5ef85099193e7a9ecce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14501a2b_8ddbeb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-08T07:34:30Z",
+      "side": 1,
+      "message": "You are right in terms of [ABI](https://developer.arm.com/documentation/dui0056/d/using-the-procedure-call-standard/parameter-passing/nonvariadic-routines). However the `assert_post_action` overwrites `r0` and `r1` registers (`r0` is used to pass panic reason):\n```\n__weak void assert_post_action(const char *file, unsigned int line)\n#endif\n{\n 80844ec:       2000            movs    r0, #0\n  __ASM volatile (\"MSR basepri, %0\" : : \"r\" (basePri) : \"memory\");\n 80844ee:       f380 8811       msr     BASEPRI, r0\n 80844f2:       2104            movs    r1, #4\n  __ASM volatile (\"isb 0xF\":::\"memory\");\n 80844f4:       f3bf 8f6f       isb     sy\n        k_panic();\n 80844f8:       4608            mov     r0, r1\n 80844fa:       df02            svc     2\n}\n```\nWe would need to overwrite to `assert_post_action` for every arch to control usage of registers, but it is a bigger (probably not that needed) task.",
+      "parentUuid": "6984d784_825d4344",
+      "revId": "1d9ccb93c43a8272c67f5ef85099193e7a9ecce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
