@@ -23,6 +23,7 @@
 #endif
 
 #define X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS 50
+LOG_MODULE_REGISTER(test_meteorlake, LOG_LEVEL_ERR);
 
 DEFINE_FAKE_VOID_FUNC(ap_power_ev_send_callbacks, enum ap_power_events);
 
