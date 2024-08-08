@@ -43,6 +43,11 @@ LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
 #define PDC_PUBLIC_CMD_COMPLETE_EVENT BIT(1)
 
 /**
+ * @brief Event triggered when pdc state has settled
+ */
+#define PDC_SM_SETTLED_EVENT BIT(2)
+
+/**
  * @brief Time delay before running the state machine loop
  */
 #define LOOP_DELAY_MS 25
@@ -63,6 +68,11 @@ LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
  *
  */
 #define WAIT_MAX (PDC_CMD_TIMEOUT_MS / LOOP_DELAY_MS)
+
+/**
+ * @brief Maximum time to wait for PDC state to settle.
+ */
+#define PDC_SM_SETTLED_TIMEOUT_MS 500
 
 /**
  * @brief maximum number of times to try and send a command, or wait for a
@@ -1324,6 +1334,7 @@ static void pdc_unattached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case UNATTACHED_RUN:
+		k_event_post(&port->sm_event, PDC_SM_SETTLED_EVENT);
 		run_unattached_policies(port);
 		break;
 	}
@@ -1429,6 +1440,7 @@ static void pdc_src_attached_run(void *obj)
 			       SRC_POLICY_EVAL_SNK_FIXED_PDO);
 		return;
 	case SRC_ATTACHED_RUN:
+		k_event_post(&port->sm_event, PDC_SM_SETTLED_EVENT);
 		set_attached_pdc_state(port, SRC_ATTACHED_STATE);
 		run_src_policies(port);
 		break;
@@ -1624,6 +1636,7 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SNK_ATTACHED_RUN:
+		k_event_post(&port->sm_event, PDC_SM_SETTLED_EVENT);
 		set_attached_pdc_state(port, SNK_ATTACHED_STATE);
 		/* Hard Reset could disable Sink FET. Re-enable it */
 		if (atomic_get(&port->hard_reset_sent)) {
@@ -2029,6 +2042,7 @@ static void pdc_src_typec_only_run(void *obj)
 		pdc_dpm_add_non_pd_sink(port_number);
 		return;
 	case SRC_TYPEC_ATTACHED_RUN:
+		k_event_post(&port->sm_event, PDC_SM_SETTLED_EVENT);
 		run_typec_src_policies(port);
 		break;
 	}
@@ -2100,6 +2114,7 @@ static void pdc_snk_typec_only_run(void *obj)
 		}
 		return;
 	case SNK_TYPEC_ATTACHED_RUN:
+		k_event_post(&port->sm_event, PDC_SM_SETTLED_EVENT);
 		/* Note - hard resets specifically not checked for here.
 		 * We don't expect hard resets while connected to a non-PD
 		 * partner.
@@ -3601,6 +3616,35 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
 	}
 
 	memcpy(status, pdc_data[port]->port.pch_data_status, 5);
+	return 0;
+}
+
+int pdc_power_mgmt_resync_port_state_for_ppm(int port)
+{
+	struct pdc_port_t *pdc;
+	int rv;
+
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	/* First clear the settle state event if it wasn't triggered for PPM. */
+	k_event_clear(&pdc->sm_event, PDC_SM_SETTLED_EVENT);
+
+	/* Trigger re-scan of connector status. */
+	atomic_set_bit(pdc->cci_flags, CCI_EVENT);
+	k_event_post(&pdc->sm_event, PDC_SM_EVENT);
+
+	rv = k_event_wait(&pdc->sm_event, PDC_SM_SETTLED_EVENT, false,
+			  K_MSEC(PDC_SM_SETTLED_TIMEOUT_MS));
+
+	if (!rv) {
+		return -ETIMEDOUT;
+	}
+
+	k_event_clear(&pdc->sm_event, rv);
 	return 0;
 }
 
