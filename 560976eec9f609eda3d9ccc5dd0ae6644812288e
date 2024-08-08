@@ -16,6 +16,23 @@
       "message": "leaving some time for Lukasz\u0027s review",
       "revId": "560976eec9f609eda3d9ccc5dd0ae6644812288e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b48961_63cc8fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2024-08-08T10:11:12Z",
+      "side": 1,
+      "message": "It seems a little bit redundant with my previous CL. I guess some bigger refactor in EC may be needed around these PPC drivers and VBUS discharging, I would prefer we do not sew this kind of logic inside the dirver but to move it to higher parts of the stack.\n\nAnyway we can consider it as a XOL specific workaround, if this is OK for EC engineers and fixes XOL, I dont want and see reasons to block it for sure. \nTwo action points I see:\n- (Forest?) please create some bug against EC team to research potential refactor, this can be put on backlog and you can find time for it in future months without such pressure. Good to add it in TODO around this code.\n- (jongpil?) please make sure we dont have regression regarding servo_V4p1 + FAFTsetup (servo power swap to SNK). Sorry I left my XOL in office and at earliest I could check it in a few days",
+      "revId": "560976eec9f609eda3d9ccc5dd0ae6644812288e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
