@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "859ddd10_ae5a4176",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T09:41:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "22e026b3_b4e32772",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "213a3a5e65fd66354e3dc1e99a04e594b75792ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5debe382_d3080574",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf66cbf9_0e021a57",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T09:41:18Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "5debe382_d3080574",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "213a3a5e65fd66354e3dc1e99a04e594b75792ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "236fd27c_425502c4",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-06T20:07:32Z",
       "side": 1,
       "message": "try check if this file also can be made under tests/intervp/common/",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "213a3a5e65fd66354e3dc1e99a04e594b75792ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a55119_6155afee",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/dc_jack.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T09:41:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "236fd27c_425502c4",
       "range": {
         "startLine": 6,
         "startChar": 0,
