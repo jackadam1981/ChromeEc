@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0b6d87_9654ccb7",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-08T22:21:35Z",
+      "side": 1,
+      "message": "if enable \u003d\u003d 0, need to decrement ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "a6954694e8d7d39b5240770efc76ce8e43a47120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d39439d_f4f87b3a",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-08T22:21:35Z",
+      "side": 1,
+      "message": "0?",
+      "revId": "a6954694e8d7d39b5240770efc76ce8e43a47120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
