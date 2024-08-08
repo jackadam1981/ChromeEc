@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ed8a7e_6dbf49a5",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-08T00:51:16Z",
+      "side": 1,
+      "message": "This config is inverted, i.e. enabling it disables code, and all the checks for it are negative. I did this because I wanted 1) the config to only be enabled for `pdc.generic.tps6699x` and 2) enabling the config to mean that the bug was still in effect.\n\nBut I\u0027ll admit that this makes this description and the usages a little harder to reason about. Another setup that would work would be\n* Enable the config to enable the broken tests (not inverted)\n* Enable the config by default\n* Explicitly disable it for `pdc.generic.tps6699x`\n\nI could be convinced to switch to this usage if people think it\u0027s better.",
+      "revId": "a9df1c92a0349ad2fc6df0a60a6b1dbcf1055e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
