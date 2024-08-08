@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0d78c3_fec3e7a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "7f533e3d_3a52f0d5",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6be54d1f_cd2834d5",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-08-06T18:46:09Z",
       "side": 1,
       "message": "is it needed if we make it default n?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b0ddbe_3fa65dbd",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6be54d1f_cd2834d5",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b85578_25658362",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp/i2c_charger.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "40388479_30942be5",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "142f4e8f_6aa33a15",
@@ -88,6 +148,24 @@
       "writtenOn": "2024-08-06T18:46:09Z",
       "side": 1,
       "message": "nit: remove",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8504e5bc_9498a0a0",
+        "filename": "zephyr/test/intelrvp/boards/mtlrvp_npcx/mtlrvp_npcx.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142f4e8f_6aa33a15",
       "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60a4c22_768d0f28",
+        "filename": "zephyr/test/intelrvp/tests/mtlrvp/src/fakes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d0eb02bc_bf855210",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2a4b3a_2745253d",
@@ -122,6 +218,24 @@
       "writtenOn": "2024-08-06T18:46:09Z",
       "side": 1,
       "message": "is it possible to make this as a common file for all MTL platforms including Rex? Any minor differences can be handled in board specific logic",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7325eb37_103c3c4f",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "If we keep a test source file outside the directory where the unit test runs, the test source file itself will be subject to test coverage criteria which should not happen.",
+      "parentUuid": "8b2a4b3a_2745253d",
       "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78829829_0f45939e",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "02895c4a_03c42f0c",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe3d4934_4c61be84",
@@ -156,6 +288,24 @@
       "writtenOn": "2024-08-06T18:46:09Z",
       "side": 1,
       "message": "nit remove.",
+      "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "630c7072_0a4ab5e7",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-08T08:58:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fe3d4934_4c61be84",
       "revId": "9913a4a884dec1bac56df130997c61c70d87fa41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
