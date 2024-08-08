@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad40c926_6301a180",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-08T22:17:03Z",
+      "side": 1,
+      "message": "is it possible to make it common for all MTL variants including rex?",
+      "revId": "000ac93fb48c5ac7d2ec605ca763cca2891fd9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d58533d_c67fb5f8",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-08T22:17:03Z",
+      "side": 1,
+      "message": "try see if zephyr_library_include_directories() can be used to avoid hardcoded path",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "000ac93fb48c5ac7d2ec605ca763cca2891fd9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
