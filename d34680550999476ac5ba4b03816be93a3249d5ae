@@ -16,6 +16,24 @@
       "message": "firmware-zephyr-cq failed , has error message to check?",
       "revId": "d34680550999476ac5ba4b03816be93a3249d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc583326_441bf03f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-08T06:02:59Z",
+      "side": 1,
+      "message": "only one failed as firmware-zephyr-cq, has this detail info?",
+      "parentUuid": "03125588_cc6d940a",
+      "revId": "d34680550999476ac5ba4b03816be93a3249d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
