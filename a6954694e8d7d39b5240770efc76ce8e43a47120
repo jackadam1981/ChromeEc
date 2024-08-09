@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba3e4c6_3ef054c0",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-09T19:15:22Z",
+      "side": 1,
+      "message": "Test is to just check if this function is called when board_port_has_ppc(port) for port\u003d0 returns 0. This will be set to 1 for test_board_charging_enable_ppc_disable_0 when ppc is disabled for port 0",
+      "parentUuid": "dd0b6d87_9654ccb7",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "a6954694e8d7d39b5240770efc76ce8e43a47120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d39439d_f4f87b3a",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-08-08T22:21:35Z",
       "side": 1,
       "message": "0?",
+      "revId": "a6954694e8d7d39b5240770efc76ce8e43a47120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbb0b31_e5c5bb44",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-09T19:15:22Z",
+      "side": 1,
+      "message": "Testing the funtion for port 0. Let me add a comment.",
+      "parentUuid": "5d39439d_f4f87b3a",
       "revId": "a6954694e8d7d39b5240770efc76ce8e43a47120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
