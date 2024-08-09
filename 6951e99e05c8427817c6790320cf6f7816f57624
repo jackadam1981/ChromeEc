@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf3745d_c70be283",
+        "filename": "include/lid_switch.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-09T00:37:28Z",
+      "side": 1,
+      "message": "I was imagining an even simpler version of this, where `config.h` defaults to `#define CONFIG_LID_DEBOUNCE_US 10000` (and the zephyr Kconfig gets the same default), so these blocks don\u0027t even need to exist and the only changes required (other than setting the configs) are renaming references to `LID_DEBOUNCE_US` to `CONFIG_LID_DEBOUNCE_US`.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6951e99e05c8427817c6790320cf6f7816f57624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
