@@ -35,6 +35,9 @@ if("${ARCH}" STREQUAL "arm")
     # Baseline implementation processor is used.
     set(CROSS_COMPILE_TARGET arm-none-eabi)
   endif()
+
+  # LLVM based toolchains for ARM use newlib as a libc.
+  set(TOOLCHAIN_HAS_NEWLIB ON CACHE BOOL "True if toolchain supports newlib")
 endif()
 
 # CMAKE_{C, ASM, CXX}_COMPILER_TARGET is used by CMake to provide correct
