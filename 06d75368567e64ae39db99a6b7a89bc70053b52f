@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f2f9eb_afd3de49",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-09T19:29:12Z",
+      "side": 1,
+      "message": "i tried to follow the macro expansion here and got lost in the ## maze.\n\nthis is `s5-inactivity-timeout` from `intel,ap-pwrseq.yaml`, right?\nit makes more sense to do an integer compare here than cast to bool",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 11
+      },
+      "revId": "06d75368567e64ae39db99a6b7a89bc70053b52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
