@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "841ead78_67467cbc",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-09T19:14:19Z",
+      "side": 1,
+      "message": "we cannot have that meteorlake.c file common for rex and mtlrvp since they don\u0027t share a common test directory. Anything compiled outside of a test directory is tested for its own test coverage",
+      "parentUuid": "ad40c926_6301a180",
+      "revId": "000ac93fb48c5ac7d2ec605ca763cca2891fd9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d58533d_c67fb5f8",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-08T22:17:03Z",
       "side": 1,
       "message": "try see if zephyr_library_include_directories() can be used to avoid hardcoded path",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "000ac93fb48c5ac7d2ec605ca763cca2891fd9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d25c6e_c7fc497d",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-09T19:14:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0d58533d_c67fb5f8",
       "range": {
         "startLine": 6,
         "startChar": 11,
