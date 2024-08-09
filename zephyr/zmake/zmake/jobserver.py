@@ -74,6 +74,8 @@ class JobClient:
         env.setdefault("PATH", os.environ.get("PATH", os.defpath))
         for keep_env in [
             "HOME",
+            "HTTP_PROXY",
+            "HTTPS_PROXY",
             "XDG_CACHE_HOME",
             "JAVA_HOME",
             "JDK_HOME",
