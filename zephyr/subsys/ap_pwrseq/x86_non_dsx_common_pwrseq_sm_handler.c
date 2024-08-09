@@ -224,7 +224,7 @@ void request_start_from_g3(void)
 	 * the power button press and start up.
 	 */
 	if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S5 &&
-	    AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)) {
+	    (bool)AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)) {
 		k_timer_start(
 			&x86_non_dsx_timer,
 			K_SECONDS(AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)),
