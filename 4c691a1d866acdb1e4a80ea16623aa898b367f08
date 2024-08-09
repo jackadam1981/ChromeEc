@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f23eb39_529e9e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-08-09T05:09:55Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nThis is not the final code. This patch is only for test. We need to wait MA Ya to upload the final driver.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7e8e31a_9e9cbc04",
         "filename": "driver/accel_bma5xy.c",
         "patchSetId": 5
