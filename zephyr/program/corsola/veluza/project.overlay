@@ -117,9 +117,13 @@
 		};
 	};
 	named-adc-channels {
-		adc_ambient: ambient {
-			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
+		adc_temp_5v: 5v {
+			enum-name = "ADC_TEMP_SENSOR_2";
 			io-channels = <&adc0 5>;
+		};
+		adc_temp_ambient: ambient {
+			enum-name = "ADC_TEMP_SENSOR_3";
+			io-channels = <&adc0 6>;
 		};
 	};
 	named-i2c-ports {
@@ -131,6 +135,16 @@
 				"I2C_PORT_USB_MUX1";
 		};
 	};
+	temp_5v: 5v {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
+		adc = <&adc_temp_5v>;
+	};
+	temp_ambient: ambient {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
+		adc = <&adc_temp_ambient>;
+	};
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_charger: charger {
@@ -138,6 +152,12 @@
 			temp_host_halt = <90>;
 			temp_host_release_high = <59>;
 			sensor = <&charger_bc12_port1>;
+		};
+		temp_adc5v: 5v {
+			sensor = <&temp_5v>;
+		};
+		temp_adcambient: ambient {
+			sensor = <&temp_ambient>;
 		};
 	};
 
@@ -278,11 +298,18 @@
 	};
 };
 &adc0 {
+	status = "okay";
 	pinctrl-0 = <&adc0_ch0_gpi0_default
 		     &adc0_ch1_gpi1_default
 		     &adc0_ch2_gpi2_default
-			 &adc0_ch5_gpi5_default>;
+			 &adc0_ch5_gpi5_default
+			 &adc0_ch6_gpi6_default>;
 };
+
+&thermistor_3V3_51K1_47K_4050B {
+	status = "okay";
+};
+
 &i2c0 {
 	charger_bc12_port1: rt9490@53 {
 		thermistor = <&thermistor_rt9490>;
