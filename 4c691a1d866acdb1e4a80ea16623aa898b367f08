@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e8e31a_9e9cbc04",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "From data sheet figure 11, the sensor is in HPM at power up. Will it ever be in suspend mode?",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c218f4d5_a86af455",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "not true, there are multiple call throughout the driver, even during performance path, in irq_handler.\n\nI assume \"suspend\" mean the sensor is not collecting any samples. You can use the data rate to know when to issue a delay.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2233ae18_ec9e7bcc",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "This is dangerous since the another task can be schedule. Are you sure you are not holding mutext? Use udelay() instead (if really needed).",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b1ca38_ced585dc",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Remove unnecessary cast.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e8d708_c19c43ba",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Use a constant defined in .h.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8923ceaa_2b7bfeea",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Remove unnecessary (). You can use `clang-format` to beautify the code, or upload with `--verify` option.\n\n\n```suggestion\n\t\tv[i] \u003e\u003e\u003d 4;\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8247b98c_8b77b03b",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Use a vector from math.h: \n```suggestion\n\tintv3_t delta_value \u003d { 0, 0, 0 };\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b83f47_be34e94a",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Use a loop, be consistent between using 0,1,2 and X,Y,Z.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc1f030_85e77903",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "What if `range` is greater than 16g?",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea440ad_34e4e237",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "remove in production code. Consider adding unit test. See `src/platform/ec/zephyr/test/drivers/default/src/bmi160.c` for examples.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb16ec13_058d1dd0",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Why 400Hz. It could be even lower if the EC is slow. Use BMA5_ACCEL_MAX_FREQ instead. Even better, return an error if something want to set a higher ODR.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b1c0ad_10ea5df5",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "for clarity, use a temporary vector.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d8c51e_40ede155",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t     acc, ARRAY_SIZE(acc));\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b5611b_23a06874",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "At least one sensor must use interrupt, we risk otherwise to have latency issues, and difficulty to pass CTS tests.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18740310_aa45a5df",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "consider moving next bma5_read8, already mark `__maybe_unused`.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58430a8d_7550cca2",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "remove. Is it always true anyway?",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867ede16_53205655",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "```suggestion\n\n\t\tif (IS_ENABLED(CONFIG_ACCEL_FIFO)) {\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c6a79d_48af506c",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t.data \u003d { v[X], v[Y], v[Z] },\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf421717_07989370",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Each sample is 8 bytes (data sheet, table 8).",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c473629c_abb4284c",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "BMA530 fifo does not contain samples of fixed size, what if a frame is cut in the middle?",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4be41d0_660950e3",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Most of the register changes are done inside the motion sense task. Let\u0027s see if we can remove some mutex calls.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89fcab2_7f08105e",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "Should 400HZ max be enough since we can stay in LPM mode.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a5b152_0ed797b8",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-08-09T04:43:18Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\t\t8 + ((_reg) - BMA5_ACCEL_RANGE_8G) \u003e\u003e 3)\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
