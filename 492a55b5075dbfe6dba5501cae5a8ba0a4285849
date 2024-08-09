@@ -22,6 +22,30 @@
       },
       "revId": "492a55b5075dbfe6dba5501cae5a8ba0a4285849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66396330_6469fb4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-09T17:48:56Z",
+      "side": 1,
+      "message": "Yes, please documented how you tested the CL and mark V+1 if they pass. However the CQ will run the tests regardless.",
+      "parentUuid": "368d1c3d_f487915a",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "492a55b5075dbfe6dba5501cae5a8ba0a4285849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
