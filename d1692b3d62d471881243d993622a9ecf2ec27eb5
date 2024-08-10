@@ -16,6 +16,24 @@
       "message": "Could you elaborate more on why setting limit to 3.1 expects to have result in 2.95A?",
       "revId": "d1692b3d62d471881243d993622a9ecf2ec27eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4682563a_0b1f5277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-08-10T07:09:59Z",
+      "side": 1,
+      "message": "Input current will derate in dearte_input_current() in charge_state.c and the derate percentage is 4(3100*0.96\u003d2976).\nSo ec will set input current to 2950.",
+      "parentUuid": "b02e45d3_15a3b961",
+      "revId": "d1692b3d62d471881243d993622a9ecf2ec27eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
