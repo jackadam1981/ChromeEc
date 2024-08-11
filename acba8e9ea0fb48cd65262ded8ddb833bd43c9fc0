@@ -50,6 +50,23 @@
       "message": "Verified that correct error exit occurs on brox:\n\n```\nbrox-rev0 ~ # /usr/local/flash_fp_mcu\n/usr/local/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is brox (brox).\nUsing config for brox.\nFPMCU not supported on model brox\nConfiguration failed for platform brox.\n```",
       "revId": "acba8e9ea0fb48cd65262ded8ddb833bd43c9fc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15df740_48bbac11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-11T02:04:19Z",
+      "side": 1,
+      "message": "I need a +2 from either an EC or FPMCU developer on this one.  Sitting on this review will just encourage the ODM to ship this with a desktop build.  I would much rather deal with a versioned piece of firmware that comes from our server.",
+      "revId": "acba8e9ea0fb48cd65262ded8ddb833bd43c9fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
