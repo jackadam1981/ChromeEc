@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d15f56aa_2935b74d",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-08-12T16:11:29Z",
+      "side": 1,
+      "message": "not 100% sure. I believe if we use hex, we should interpret cast the numbers with the most significant bit set. maybe modify this to uint8_t??",
+      "parentUuid": "8e818e6f_185c18f6",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 56
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fa40d91_649725f5",
         "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
         "patchSetId": 9
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "\u003e needed because the number has most significant bit set, so the value differs between `uint32_t` and `int32_t` and compiler doesn\u0027t want to cast it implicitly. Is this correct? \n\nYes, that sounds right.\n\n\u003e Is it possible to use uint32_t instead?\n\nIt looks like it, since we\u0027re doing a `reinterpret_cast` already on line 45.\n\nCC @fsammoura@google.com who wrote the test in https://crrev.com/c/4652005.",
       "parentUuid": "2fa40d91_649725f5",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "96ddb6c5bac5a69aae6bd7aa498ef4cfc2173bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbed2dca_4c46b0c3",
+        "filename": "zephyr/test/hwtest/src/unaligned_access.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-08-12T16:11:29Z",
+      "side": 1,
+      "message": "I believe this should work with unit32_t. I can modify and check",
+      "parentUuid": "641b3289_47c44b36",
       "range": {
         "startLine": 30,
         "startChar": 2,
