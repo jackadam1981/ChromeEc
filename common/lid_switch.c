@@ -11,14 +11,16 @@
  */
 #line 13
 
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
-#line 18
+#line 19
 #include "hooks.h"
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
@@ -35,6 +37,9 @@
 static int debounced_lid_open; /* Debounced lid state */
 static int forced_lid_open; /* Forced lid open */
 
+extern void lid_switch_open(void);
+extern void lid_switch_close(void);
+
 /**
  * Get raw lid switch state.
  *
@@ -48,13 +53,42 @@ static int raw_lid_open(void)
 }
 
 /**
+ * Handle debounced lid switch changing state.
+ */
+void lid_change_deferred(void)
+{
+	const int new_open = raw_lid_open();
+
+	/* If lid hasn't changed state, nothing to do */
+	if (new_open == debounced_lid_open)
+		return;
+
+	if (new_open)
+		lid_switch_open();
+	else
+		lid_switch_close();
+}
+DECLARE_DEFERRED(lid_change_deferred);
+
+/**
  * Handle lid open.
  */
-static void lid_switch_open(void)
+void lid_switch_open(void)
 {
+	int lid_angle;
 	if (debounced_lid_open) {
 		CPRINTS("lid already open");
 		return;
+	}
+	motion_lid_calc();
+	lid_angle = motion_lid_get_angle();
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		if (lid_angle<=40) {
+			CPRINTS("Lid angle close skip lid open");
+			hook_call_deferred(&lid_change_deferred_data,
+						10000);
+			return;
+		}
 	}
 
 	CPRINTS("lid open");
@@ -68,8 +102,9 @@ static void lid_switch_open(void)
 /**
  * Handle lid close.
  */
-static void lid_switch_close(void)
+void lid_switch_close(void)
 {
+	int lid_angle;
 	if (!debounced_lid_open) {
 		CPRINTS("lid already closed");
 		return;
@@ -82,6 +117,15 @@ static void lid_switch_close(void)
 		return;
 	}
 #endif
+	motion_lid_calc();
+	lid_angle = motion_lid_get_angle();
+	if (lid_angle >=40) {
+	//if ((lid_angle == LID_ANGLE_UNRELIABLE) || (lid_angle >=30)) {
+		CPRINTS("Lid angle open skip lid close");
+		hook_call_deferred(&lid_change_deferred_data, 10000);
+		return;
+	}
+
 	/* Notify host */
 	CPRINTS("lid close");
 	debounced_lid_open = 0;
@@ -110,24 +154,6 @@ static void lid_init(void)
 #undef LID_GPIO
 }
 DECLARE_HOOK(HOOK_INIT, lid_init, HOOK_PRIO_INIT_LID);
-
-/**
- * Handle debounced lid switch changing state.
- */
-static void lid_change_deferred(void)
-{
-	const int new_open = raw_lid_open();
-
-	/* If lid hasn't changed state, nothing to do */
-	if (new_open == debounced_lid_open)
-		return;
-
-	if (new_open)
-		lid_switch_open();
-	else
-		lid_switch_close();
-}
-DECLARE_DEFERRED(lid_change_deferred);
 
 void lid_interrupt(enum gpio_signal signal)
 {
