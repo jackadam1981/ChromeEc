@@ -22,6 +22,30 @@
       },
       "revId": "06d75368567e64ae39db99a6b7a89bc70053b52f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb7c302_4e1aa814",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-12T20:51:35Z",
+      "side": 1,
+      "message": "yes, s5-inactivity-timeout is from intel,ap-pwrseq.yaml. The existing code seems to be checking if the property exists with a non-zero value. Although, the property has a non-zero default value. Not sure if there was any other thought to make it this way.",
+      "parentUuid": "45f2f9eb_afd3de49",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 11
+      },
+      "revId": "06d75368567e64ae39db99a6b7a89bc70053b52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
