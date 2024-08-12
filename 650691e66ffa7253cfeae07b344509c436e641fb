@@ -33,6 +33,24 @@
       "message": "Can you use `connector_status_t` for this field check and set?",
       "revId": "650691e66ffa7253cfeae07b344509c436e641fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d4239c_c6ffb0cb",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-12T14:45:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5015f8d0_7512f20d",
+      "revId": "650691e66ffa7253cfeae07b344509c436e641fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
