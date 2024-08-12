@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c666073_4a8203b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-12T10:10:30Z",
+      "side": 1,
+      "message": "This change looks good. In future, it would be nice to migrate to malloc-based shared memory implementation only, but this requires analysis how other libc allocates memory (`sbrk()` implementation).",
+      "revId": "722200248328c1745b5bddcdeb85033c41f0be40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
