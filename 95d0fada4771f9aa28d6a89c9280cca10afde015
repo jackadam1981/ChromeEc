@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac110ff_6c8988fa",
+        "filename": "zephyr/test/lib/src/sbrk.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-12T10:14:28Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "7d4a7362_28963908",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "95d0fada4771f9aa28d6a89c9280cca10afde015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a96010a4_370005b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-12T09:59:11Z",
       "side": 1,
       "message": "But `zassert_equal(prev, start_test);` should work, right?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "95d0fada4771f9aa28d6a89c9280cca10afde015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef53c1a9_7d6ff7b4",
+        "filename": "zephyr/test/lib/src/sbrk.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-12T10:14:28Z",
+      "side": 1,
+      "message": "Yes, added.",
+      "parentUuid": "a96010a4_370005b0",
       "range": {
         "startLine": 45,
         "startChar": 4,
