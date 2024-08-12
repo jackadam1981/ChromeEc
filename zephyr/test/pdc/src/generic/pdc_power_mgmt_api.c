@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "charge_manager.h"
 #include "chipset.h"
 #include "drivers/intel_altmode.h"
 #include "drivers/ucsi_v3.h"
@@ -1539,6 +1540,30 @@ ZTEST_USER(pdc_power_mgmt_api, test_sysjump_policy_on)
 	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
 
 	helper_wait_for_ccom_mode(CCOM_DRP);
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_set_active_charge_port)
+{
+	union connector_status_t connector_status;
+	bool sink_path_en;
+
+	zassert_ok(board_set_active_charge_port(CHARGE_PORT_NONE));
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	zassert_true(
+		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	emul_pdc_get_sink_path(emul, &sink_path_en);
+	zassert_false(sink_path_en);
+
+	zassert_ok(board_set_active_charge_port(TEST_PORT));
+	emul_pdc_disconnect(emul);
+	zassert_true(
+		TEST_WAIT_FOR(!pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	emul_pdc_connect_partner(emul, &connector_status);
+	zassert_true(
+		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	emul_pdc_get_sink_path(emul, &sink_path_en);
+	zassert_true(sink_path_en);
 }
 
 /*
