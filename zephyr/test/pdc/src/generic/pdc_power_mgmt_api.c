@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "charge_manager.h"
 #include "chipset.h"
 #include "drivers/intel_altmode.h"
 #include "drivers/ucsi_v3.h"
@@ -26,6 +27,7 @@ static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 #define TEST_PORT 0
 
 bool pdc_power_mgmt_test_wait_attached(int port);
+void pdc_power_mgmt_test_post_sm_event(int port);
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port);
 bool test_pdc_power_mgmt_is_src_typec_attached_run(int port);
@@ -1539,6 +1541,26 @@ ZTEST_USER(pdc_power_mgmt_api, test_sysjump_policy_on)
 	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
 
 	helper_wait_for_ccom_mode(CCOM_DRP);
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_set_active_charge_port)
+{
+	union connector_status_t connector_status;
+	bool sink_path_en;
+
+	zassert_ok(board_set_active_charge_port(CHARGE_PORT_NONE));
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	zassert_true(
+		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	zassert_ok(emul_pdc_get_sink_path(emul, &sink_path_en));
+	zassert_false(sink_path_en);
+
+	zassert_ok(board_set_active_charge_port(TEST_PORT));
+	pdc_power_mgmt_test_post_sm_event(TEST_PORT);
+	TEST_WORKING_DELAY(1);
+	zassert_ok(emul_pdc_get_sink_path(emul, &sink_path_en));
+	zassert_true(sink_path_en);
 }
 
 /*

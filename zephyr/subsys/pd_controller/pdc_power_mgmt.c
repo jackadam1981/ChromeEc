@@ -3791,6 +3791,11 @@ bool pdc_power_mgmt_test_wait_attached(int port)
 
 	return false;
 }
+
+void pdc_power_mgmt_test_post_sm_event(int port)
+{
+	k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+}
 /* LCOV_EXCL_STOP */
 
 #endif
