@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4518c00d_2ad841c9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 18
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-12T08:23:47Z",
+      "side": 1,
+      "message": "Is this equivalent to `default y if NEWLIB_LIBC`? It seems to be okay, but never saw that in sources.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 20
+      },
+      "revId": "c3623b9f9f265507197119fee548ab8f477f17f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
