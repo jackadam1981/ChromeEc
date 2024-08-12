@@ -25,8 +25,6 @@ LOG_MODULE_REGISTER(pdc_power_mgmt_api);
 static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 #define TEST_PORT 0
 
-bool pdc_power_mgmt_test_wait_attached(int port);
-
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port);
 bool test_pdc_power_mgmt_is_src_typec_attached_run(int port);
 
@@ -649,9 +647,9 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap)
 
 		test[i].s.configure(emul, &connector_status);
 		emul_pdc_connect_partner(emul, &connector_status);
-		zassert_true(TEST_WAIT_FOR(
-			pdc_power_mgmt_test_wait_attached(TEST_PORT),
-			PDC_TEST_TIMEOUT));
+		zassert_true(
+			TEST_WAIT_FOR(pdc_power_mgmt_is_connected(TEST_PORT),
+				      PDC_TEST_TIMEOUT));
 
 		pd_request_power_swap(TEST_PORT);
 
@@ -731,9 +729,9 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 
 		test[i].s.configure(emul, &connector_status);
 		emul_pdc_connect_partner(emul, &connector_status);
-		zassert_true(TEST_WAIT_FOR(
-			pdc_power_mgmt_test_wait_attached(TEST_PORT),
-			PDC_TEST_TIMEOUT));
+		zassert_true(
+			TEST_WAIT_FOR(pdc_power_mgmt_is_connected(TEST_PORT),
+				      PDC_TEST_TIMEOUT));
 
 		pd_request_data_swap(TEST_PORT);
 		start = k_cycle_get_32();
@@ -944,7 +942,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_set_dual_role)
 			test[i].s.configure(emul, &connector_status);
 			emul_pdc_connect_partner(emul, &connector_status);
 			zassert_true(TEST_WAIT_FOR(
-				pdc_power_mgmt_test_wait_attached(TEST_PORT),
+				pdc_power_mgmt_is_connected(TEST_PORT),
 				PDC_TEST_TIMEOUT));
 		}
 
