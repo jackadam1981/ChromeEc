@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b461fd_3f25e733",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7f23eb39_529e9e97",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7e8e31a_9e9cbc04",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "From data sheet figure 11, the sensor is in HPM at power up. Will it ever be in suspend mode?",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e343dc3_ab40c258",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Our default mode is HPM, LPM may be used to save power.",
+      "parentUuid": "c7e8e31a_9e9cbc04",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a511da88_62eb9a0e",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "There will be potentially risk to write register if no delay in LPM.",
+      "parentUuid": "c218f4d5_a86af455",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2233ae18_ec9e7bcc",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "This is dangerous since the another task can be schedule. Are you sure you are not holding mutext? Use udelay() instead (if really needed).",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a41276_53793850",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2233ae18_ec9e7bcc",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5314b5d4_a538a9b9",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Code quality scan do not allow bit operation between signed int.",
+      "parentUuid": "87b1ca38_ced585dc",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e8d708_c19c43ba",
@@ -99,6 +189,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "Use a constant defined in .h.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9195c196_595ce745",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "already removed",
+      "parentUuid": "20e8d708_c19c43ba",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b73d7a_a4d71a72",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "8923ceaa_2b7bfeea",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd31840_ddc1d3b6",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "8923ceaa_2b7bfeea",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8247b98c_8b77b03b",
@@ -133,6 +277,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "Use a vector from math.h: \n```suggestion\n\tintv3_t delta_value \u003d { 0, 0, 0 };\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a4e7cc_d8a86197",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "8247b98c_8b77b03b",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9e52eb_b249b869",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "There will be double for-loop here.",
+      "parentUuid": "51b83f47_be34e94a",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dc1f030_85e77903",
@@ -167,6 +347,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "What if `range` is greater than 16g?",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc30aa5_c19294b3",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Added limmit",
+      "parentUuid": "4dc1f030_85e77903",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +386,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a142db_f325babc",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4ea440ad_34e4e237",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb16ec13_058d1dd0",
@@ -201,6 +417,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "Why 400Hz. It could be even lower if the EC is slow. Use BMA5_ACCEL_MAX_FREQ instead. Even better, return an error if something want to set a higher ODR.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9984bba_e8864f31",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "For sensors on EC, what frequency is proper max limit？",
+      "parentUuid": "cb16ec13_058d1dd0",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -222,6 +456,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "992d512e_82c4d31d",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "27b1c0ad_10ea5df5",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d8c51e_40ede155",
@@ -235,6 +487,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t     acc, ARRAY_SIZE(acc));\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f438bfde_11aa15a9",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "12d8c51e_40ede155",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -256,6 +526,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77608b28_27c6cdbf",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "FIFO int is already tested by @sue.chen@quanta.corp-partner.google.com\nWe can enable BMA5_USE_INTERRUPTS if it is needed",
+      "parentUuid": "70b5611b_23a06874",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18740310_aa45a5df",
@@ -269,6 +557,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "consider moving next bma5_read8, already mark `__maybe_unused`.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78a788d_6f114574",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "This is due to code quality tools; it is only used with BMA5XY_USE_INTERRUPTS macro.",
+      "parentUuid": "18740310_aa45a5df",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -290,6 +596,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e922a2_8089478b",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58430a8d_7550cca2",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "867ede16_53205655",
@@ -303,6 +627,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "```suggestion\n\n\t\tif (IS_ENABLED(CONFIG_ACCEL_FIFO)) {\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b5db94_0b1da5d5",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "867ede16_53205655",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -324,6 +666,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b44c2eb_328e86bc",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "b6c6a79d_48af506c",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf421717_07989370",
@@ -337,6 +697,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "Each sample is 8 bytes (data sheet, table 8).",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7cf514e_ab1d0a48",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "In datasheet 4.6 FIFO, it could be 4/7/10 according to FIFO settings.",
+      "parentUuid": "cf421717_07989370",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -358,6 +736,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a835a79_1315ed00",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "We read all bytes first according to fifo_depth then process data later.",
+      "parentUuid": "c473629c_abb4284c",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4be41d0_660950e3",
@@ -371,6 +767,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "Most of the register changes are done inside the motion sense task. Let\u0027s see if we can remove some mutex calls.",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "590e2ce7_5cb2fb46",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d4be41d0_660950e3",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -392,6 +806,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86bde54_375743cd",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Default is HPM. Already set to 400Hz",
+      "parentUuid": "b89fcab2_7f08105e",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33277f8b_213d802f",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "default mode is HPM",
+      "parentUuid": "b89fcab2_7f08105e",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a5b152_0ed797b8",
@@ -405,6 +855,24 @@
       "writtenOn": "2024-08-09T04:43:18Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\t\t8 + ((_reg) - BMA5_ACCEL_RANGE_8G) \u003e\u003e 3)\n```",
+      "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcffad1f_d7aeff60",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2024-08-12T01:30:46Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "69a5b152_0ed797b8",
       "revId": "4c691a1d866acdb1e4a80ea16623aa898b367f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
