@@ -210,7 +210,6 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
                                                 "${PLATFORM_EC}/common/peripheral.c"
                                                 "${PLATFORM_EC}/common/printf.c"
                                                 "${PLATFORM_EC}/common/queue.c"
-                                                "${PLATFORM_EC}/common/shared_mem.c"
                                                 "${PLATFORM_EC}/common/system.c"
                                                 "${PLATFORM_EC}/common/system_boot_time.c"
                                                 "${PLATFORM_EC}/common/uart_printf.c"
@@ -496,6 +495,10 @@ if (NOT DEFINED CONFIG_PLATFORM_EC_SHA256_HW_ZEPHYR)
 	zephyr_library_sources_ifdef(CONFIG_SOC_IT8XXX2_SHA256_HW_ACCELERATE
                                                 "${PLATFORM_EC}/driver/sha256/sha256_it8xxx2.c")
 endif()
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SHARED_MEM_LIBC
+                                                "${PLATFORM_EC}/common/shared_mem_libc.c")
+zephyr_library_sources_ifndef(CONFIG_PLATFORM_EC_SHARED_MEM_LIBC
+                                                "${PLATFORM_EC}/common/shared_mem.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SWITCH
                                                 "${PLATFORM_EC}/common/switch.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SWITCHCAP_LN9310
