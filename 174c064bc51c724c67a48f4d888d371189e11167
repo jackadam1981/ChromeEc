@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "174c064bc51c724c67a48f4d888d371189e11167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8cae736_09627e98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-12T18:12:35Z",
+      "side": 1,
+      "message": "I checked and also did not find any callers to these functions. All except `pdc_power_mgmt_set_src_pdo` don\u0027t even appear in the public header. Do we have a use case planned for these functions?",
+      "revId": "174c064bc51c724c67a48f4d888d371189e11167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
