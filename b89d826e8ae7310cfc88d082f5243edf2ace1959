@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c30fed_00a2cd56",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-12T22:57:14Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "fa7534f5_30ed77dd",
+      "range": {
+        "startLine": 445,
+        "startChar": 57,
+        "endLine": 445,
+        "endChar": 63
+      },
+      "revId": "b89d826e8ae7310cfc88d082f5243edf2ace1959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a68d24f_9e12212c",
@@ -96,6 +120,30 @@
           ]
         }
       ],
+      "revId": "b89d826e8ae7310cfc88d082f5243edf2ace1959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47ffc3e_aebf78dd",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-12T22:57:14Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "5a68d24f_9e12212c",
+      "range": {
+        "startLine": 617,
+        "startChar": 73,
+        "endLine": 617,
+        "endChar": 79
+      },
       "revId": "b89d826e8ae7310cfc88d082f5243edf2ace1959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
