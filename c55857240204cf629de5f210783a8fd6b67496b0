@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "557c1d38_b5efed25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-12T05:45:27Z",
+      "side": 1,
+      "message": "This one is expected.",
+      "parentUuid": "3bf3b800_9ed7286d",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "c55857240204cf629de5f210783a8fd6b67496b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e92cfc8_9d65d185",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa733d4_fada5d0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-12T05:45:27Z",
+      "side": 1,
+      "message": "This one is expected.",
+      "parentUuid": "5e92cfc8_9d65d185",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "c55857240204cf629de5f210783a8fd6b67496b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "700bda5f_229de605",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-09T23:47:12Z",
       "side": 1,
       "message": "@dawidn@google.com Can you confirm this is expected for Zephyr?",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 57
+      },
+      "revId": "c55857240204cf629de5f210783a8fd6b67496b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdc0c97_68519ae8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-12T05:45:27Z",
+      "side": 1,
+      "message": "`power_utilization_*` - not expected. Can you show logs? Which board version are you using?\n`unaligned_access_bloonchipper_` - expected, [PR](https://github.com/zephyrproject-rtos/zephyr/pull/76599) is needed.\n`panic_data_bloonchipper*` - expected without this CL:5756520\n`zephyr_drivers_entropy` - not expected, please see the bug.",
+      "parentUuid": "700bda5f_229de605",
       "range": {
         "startLine": 155,
         "startChar": 5,
