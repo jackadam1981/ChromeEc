@@ -7,6 +7,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -701,6 +702,7 @@ static void closefd(int *fd)
 
 static void probe_device(void)
 {
+	bool is_found = false;
 	glob_t globbuf;
 
 	if (glob("/dev/hidraw*", 0, NULL, &globbuf) != 0) {
@@ -729,11 +731,43 @@ static void probe_device(void)
 				continue;
 		}
 		bus_type = info.bustype;
+		is_found = true;
 
 		break;
 	}
 
 	globfree(&globbuf);
+
+	/*
+	 * The /dev/hidraw* path may not exist because the HID functions are
+	 * disabled in the RO image. Therefore, retrieve the USB device list.
+	 *
+	 * TODO: Find a way to implement HID over the I2C bus.
+	 */
+	if (!is_found) {
+		libusb_context *ctx = NULL;
+		libusb_device **devs;
+		size_t i, cnt;
+
+		if (libusb_init(&ctx) < 0) {
+			return;
+		}
+
+		cnt = libusb_get_device_list(NULL, &devs);
+		for (i = 0; i < cnt; i++) {
+			struct libusb_device_descriptor desc;
+
+			if (libusb_get_device_descriptor(devs[i], &desc) < 0) {
+				continue;
+			}
+			if (vid == desc.idVendor && pid == desc.idProduct) {
+				bus_type = BUS_USB;
+				break;
+			}
+		}
+		libusb_free_device_list(devs, 1);
+		libusb_exit(ctx);
+	}
 
 	return;
 }
