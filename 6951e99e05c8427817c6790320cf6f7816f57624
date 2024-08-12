@@ -22,6 +22,30 @@
       },
       "revId": "6951e99e05c8427817c6790320cf6f7816f57624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cd9244_0f2f59cd",
+        "filename": "include/lid_switch.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-08-12T00:45:40Z",
+      "side": 1,
+      "message": "Should we keep this LID_DEBOUNCE_US naming for test in zephyr?",
+      "parentUuid": "dcf3745d_c70be283",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6951e99e05c8427817c6790320cf6f7816f57624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
