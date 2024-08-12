@@ -16,6 +16,23 @@
       "message": "please choose a more suitable name for this file.",
       "revId": "21ba6c9fc49925515b5b803970258dbae95ee9fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49815595_7a9f20c6",
+        "filename": "zephyr/test/intelrvp/tests/power/meteorlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-12T18:54:32Z",
+      "side": 1,
+      "message": "how about creating a symbolic link to the file in rex folder? differences cab be addressed with configs.\nwe can avoid duplicating code, OEM designs also can follow similar approach and reuse the RVP code in future",
+      "revId": "21ba6c9fc49925515b5b803970258dbae95ee9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
