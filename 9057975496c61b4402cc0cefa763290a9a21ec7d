@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287cedde_828e8863",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-12T18:31:18Z",
+      "side": 1,
+      "message": "If this fails, it could leave `sink_path_en` uninitialized. If you wrap this in `zassert_ok`, you\u0027ll avoid that risk.",
+      "revId": "9057975496c61b4402cc0cefa763290a9a21ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e17cad1f_b7b35e89",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-12T18:31:18Z",
+      "side": 1,
+      "message": "Why do you need to disconnect? Shouldn\u0027t disconnecting reset the active charge port?",
+      "revId": "9057975496c61b4402cc0cefa763290a9a21ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
