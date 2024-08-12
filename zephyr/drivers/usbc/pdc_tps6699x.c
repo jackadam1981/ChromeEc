@@ -41,6 +41,8 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
  * actual data starts at index 2
  */
 #define RV_DATA_START 2
+/** @ Maximum PDOs in one UCSI_GET_PDOS task */
+#define UCSI_GET_PDOS_CMD_MAX_NUM 4
 
 /**
  * @brief Number of TPS6699x ports detected
@@ -1250,7 +1252,14 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 		/* PDO Offset: Byte 3, bits 7:0 */
 		cmd_data.data[3] = data->pdo_offset;
 		/* Number of PDOs: Byte 4, bits 1:0 */
-		cmd_data.data[4] = data->num_pdos;
+		if (data->num_pdos > UCSI_GET_PDOS_CMD_MAX_NUM) {
+			cmd_data.data[4] = UCSI_GET_PDOS_CMD_MAX_NUM - 1;
+			data->num_pdos -= UCSI_GET_PDOS_CMD_MAX_NUM;
+			data->pdo_offset += UCSI_GET_PDOS_CMD_MAX_NUM;
+		} else {
+			cmd_data.data[4] = data->num_pdos - 1;
+			data->num_pdos = 0;
+		}
 		/* Source or Sink PDOSs: Byte 4, bits 2 */
 		cmd_data.data[4] |= (data->pdo_type << 2);
 		/* Source Capabilities Type: Byte 4, bits 4:3 */
@@ -1406,11 +1415,17 @@ static void st_task_wait_run(void *o)
 		}
 	}
 
-	/* Command has completed */
-	data->cci_event.command_completed = 1;
-	/* Inform the system of the event */
-	call_cci_event_cb(data);
-
+	if (data->cmd == CMD_GET_PDOS) {
+		if (data->num_pdos) {
+			data->user_buf += sizeof(uint32_t) * data->pdo_offset;
+			k_event_post(&data->pdc_event, PDC_CMD_EVENT);
+		}
+	} else {
+		/* Command has completed */
+		data->cci_event.command_completed = 1;
+		/* Inform the system of the event */
+		call_cci_event_cb(data);
+	}
 	/* Transition to idle state */
 	set_state(data, ST_IDLE);
 	return;
