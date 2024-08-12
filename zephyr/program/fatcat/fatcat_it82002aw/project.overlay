@@ -11,7 +11,8 @@
 
 /* fatcat_it82002aw project DTS includes */
 
-#include "console.dtsi"
+/* Use brox console UART routing for testing */
+#include "console-brox.dtsi"
 
 /* these need to be promoted to program.conf */
 
