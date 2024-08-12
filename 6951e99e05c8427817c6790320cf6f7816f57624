@@ -46,6 +46,30 @@
       },
       "revId": "6951e99e05c8427817c6790320cf6f7816f57624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f9a5c7_e34c4344",
+        "filename": "include/lid_switch.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-12T01:09:36Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason to keep it that way, since in either case it\u0027s referring to the configured debounce time.",
+      "parentUuid": "04cd9244_0f2f59cd",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6951e99e05c8427817c6790320cf6f7816f57624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
