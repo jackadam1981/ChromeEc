@@ -19,6 +19,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
@@ -34,6 +35,8 @@
 
 static int debounced_lid_open; /* Debounced lid state */
 static int forced_lid_open; /* Forced lid open */
+
+void lid_change_deferred(void);
 
 /**
  * Get raw lid switch state.
@@ -70,6 +73,7 @@ static void lid_switch_open(void)
  */
 static void lid_switch_close(void)
 {
+	int lid_angle;
 	if (!debounced_lid_open) {
 		CPRINTS("lid already closed");
 		return;
@@ -82,6 +86,11 @@ static void lid_switch_close(void)
 		return;
 	}
 #endif
+	motion_lid_calc();
+	lid_angle = motion_lid_get_angle();
+	if (lid_angle == LID_ANGLE_UNRELIABLE) {
+	}
+	
 	/* Notify host */
 	CPRINTS("lid close");
 	debounced_lid_open = 0;
@@ -114,7 +123,7 @@ DECLARE_HOOK(HOOK_INIT, lid_init, HOOK_PRIO_INIT_LID);
 /**
  * Handle debounced lid switch changing state.
  */
-static void lid_change_deferred(void)
+void lid_change_deferred(void)
 {
 	const int new_open = raw_lid_open();
 
