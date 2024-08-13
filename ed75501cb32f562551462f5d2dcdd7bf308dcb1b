@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27213d1_1cd5fbf6",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4296,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-13T06:46:10Z",
+      "side": 1,
+      "message": "This one can still be lid + 10ms.",
+      "revId": "ed75501cb32f562551462f5d2dcdd7bf308dcb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0abd3368_f5657e77",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-13T06:46:10Z",
+      "side": 1,
+      "message": "```suggestion\n\tint \"Lid switch debounce delay (microseconds)\"\n\tdefault 30000\n\thelp\n\t  Delay between seeing a lid switch change and sampling the new state.\n```",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 44
+      },
+      "revId": "ed75501cb32f562551462f5d2dcdd7bf308dcb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce38c4ed_ef0d28ef",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-13T06:46:10Z",
+      "side": 1,
+      "message": "```suggestion\n\tint \"GMR tablet mode sensor debounce delay (microseconds)\"\n\tdefault 40000\n\thelp\n\t  Delay between seeing a table mode switch change and sampling\n\t  the new state.\n\t  \n\t  Default is 10 milliseconds longer than the default lid switch\n\t  debounce delay (LID_DEBOUNCE_US).\n```",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "ed75501cb32f562551462f5d2dcdd7bf308dcb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
