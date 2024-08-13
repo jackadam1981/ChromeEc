@@ -22,6 +22,30 @@
       },
       "revId": "6431077c0be7399f82d1b461a9a667ea838066ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6335c69_5229136b",
+        "filename": "zephyr/test/nissa/testcase.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-13T22:44:00Z",
+      "side": 1,
+      "message": "no difference in coverage stats of nissa except the total number of lines reduced in zephyr/test/nissa/src/board_power.c",
+      "parentUuid": "a7a8c228_a982ddcb",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "6431077c0be7399f82d1b461a9a667ea838066ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
