@@ -38,6 +38,7 @@
 		 */
 		base-sensor {
 			enum-name = "BASE_SENSOR";
+<<<<<<< HEAD   (404853 Revert "Reland "zephyr: Enable automatic download of coreboo)
 			size = <2>;
 
 			base_sensor_none: none {
@@ -62,6 +63,37 @@
 		lid-sensor {
 			enum-name = "LID_SENSOR";
 			size = <2>;
+=======
+			size = <3>;
+
+			base_sensor_none: none {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+			};
+			base_sensor_bmi323: bmi323 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+				default;
+			};
+			base_sensor_lsm6dsm: lsm6dsm {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <2>;
+			};
+			base_sensor_icm42607: icm42607 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <3>;
+			};
+		};
+
+		/* SSFC field to identify LID motion sensor. */
+		lid-sensor {
+			enum-name = "LID_SENSOR";
+			size = <3>;
+>>>>>>> BRANCH (ba59ee pdc: ti: Overwrite data role in GET_CONNECTOR_STATUS output)
 
 			lid_sensor_none: none {
 				compatible = "cros-ec,cbi-ssfc-value";

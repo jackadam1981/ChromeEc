@@ -311,5 +311,9 @@ if(CONFIG_TEST_NISSA_TELIKS)
             app PRIVATE
             src/teliks.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/teliks/src/board.c
+<<<<<<< HEAD   (404853 Revert "Reland "zephyr: Enable automatic download of coreboo)
+=======
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/teliks/src/keyboard_customization.c
+>>>>>>> BRANCH (ba59ee pdc: ti: Overwrite data role in GET_CONNECTOR_STATUS output)
     )
 endif()
