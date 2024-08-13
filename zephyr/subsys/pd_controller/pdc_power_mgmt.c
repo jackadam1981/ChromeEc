@@ -1735,7 +1735,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
@@ -3698,6 +3698,10 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 	}
 
 	pdc = &pdc_data[port_num]->port;
+
+	LOG_INF("DPM: %d set current limit %d, state %s (%d)", port_num,
+		current, attached_state_names[pdc->attached_state],
+		pdc->attached_state);
 
 	/* Always set the new Rp value */
 	pdc->una_policy.tcc = current;

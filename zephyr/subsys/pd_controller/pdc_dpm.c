@@ -191,6 +191,8 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 	if (PDO_FIXED_VOLTAGE(vsafe5v_pdo) != 5000)
 		return;
 
+	LOG_INF("DPM: eval PDO %d", port);
+
 	if (pdc_power_mgmt_get_power_role(port) == PD_ROLE_SOURCE) {
 		if (CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS == 0)
 			return;
@@ -235,6 +237,8 @@ void pdc_dpm_add_non_pd_sink(int port)
 	if (CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS == 0)
 		return;
 
+	LOG_INF("DPM: add non PD sink %d", port);
+
 	atomic_set_bit(&non_pd_sink_max_requested, port);
 	pdc_dpm_balance_source_ports(&dpm_work.work);
 }
@@ -246,6 +250,8 @@ void pdc_dpm_evaluate_request_rdo(int port, uint32_t rdo)
 
 	if (CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS == 0)
 		return;
+
+	LOG_INF("DPM: eval request RDO %d", port);
 
 	idx = RDO_POS(rdo);
 	/* Check for invalid index */
@@ -273,8 +279,12 @@ void pdc_dpm_remove_sink(int port)
 		return;
 
 	if (!atomic_test_bit(&sink_max_pdo_requested, port) &&
-	    !atomic_test_bit(&non_pd_sink_max_requested, port))
+	    !atomic_test_bit(&non_pd_sink_max_requested, port)) {
+		LOG_INF("DPM: remove sink %d, no balancing required", port);
 		return;
+	}
+
+	LOG_INF("DPM: remove sink %d", port);
 
 	atomic_clear_bit(&sink_max_pdo_requested, port);
 	atomic_clear_bit(&non_pd_sink_max_requested, port);
@@ -295,6 +305,8 @@ void pdc_dpm_remove_source(int port)
 
 	if (!(BIT(port) & (uint32_t)source_frs_max_requested))
 		return;
+
+	LOG_INF("DPM: remove source %d", port);
 
 	atomic_clear_bit(&source_frs_max_requested, port);
 	pdc_dpm_balance_source_ports(&dpm_work.work);
