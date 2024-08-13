@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cb16a3e_449ad397",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-13T22:27:11Z",
+      "side": 1,
+      "message": "If the UCSI command is only supposed to retrieve 4 PDOs, then instead of changing the driver to call the command twice, shouldn\u0027t `pdc_power_mgmt` be changed to call it correctly?",
+      "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba974de0_1707a6dc",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -20,6 +37,23 @@
         "endLine": 1255,
         "endChar": 27
       },
+      "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31574c3a_45276d46",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-13T22:27:11Z",
+      "side": 1,
+      "message": "1. Instead of making this a special case here, can you add `CMD_GET_PDOS` to the switch statement above and return to idle early in that case?\n2. I can see that you\u0027re using `num_pdos` as a channel to control the execution of this command, but I can\u0027t exactly follow how. Can you comment what you\u0027re doing?",
       "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
