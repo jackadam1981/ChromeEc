@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb54d2df_9d371a1a",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-13T09:24:42Z",
+      "side": 1,
+      "message": "I think you still needs the zassert_equal(current_table[count], curr.requested_current, NULL); to ensure current is overridden to expected value.",
+      "revId": "8f9100b635f69c88560fef161710fa3b0866e12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec523bf_d4096e5a",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-13T09:24:42Z",
+      "side": 1,
+      "message": "Maybe you have to set a",
+      "revId": "8f9100b635f69c88560fef161710fa3b0866e12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820f2f26_069116e7",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-13T09:24:42Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this \"if\" condition.",
+      "revId": "8f9100b635f69c88560fef161710fa3b0866e12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d096d700_2df6e126",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-13T09:24:42Z",
+      "side": 1,
+      "message": "Suppose the test is to setup a low temperature to make current keep increasing ? The charger_profile_override(\u0026curr); could be called in line 90.\n\nIn addition, check curr.requested_current !\u003d ORIGINAL_CURRENT and validate if the current is overridden to the expected level ?",
+      "revId": "8f9100b635f69c88560fef161710fa3b0866e12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3734155a_119dfe0c",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-13T09:24:42Z",
+      "side": 1,
+      "message": "Why do we need this if we have increasing and decreasing covered ?",
+      "revId": "8f9100b635f69c88560fef161710fa3b0866e12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
