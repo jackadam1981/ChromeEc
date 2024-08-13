@@ -67,6 +67,14 @@ AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
 
 int board_power_signal_get(enum power_signal signal)
 {
+	switch (signal) {
+	case PWR_EC_PCH_SYS_PWROK:
+		return power_signal_get(PWR_PCH_PWROK);
+		break;
+	default:
+		return -EINVAL;
+		break;
+	}
 	return 0;
 }
 
