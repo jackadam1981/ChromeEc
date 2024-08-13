@@ -46,6 +46,30 @@
       },
       "revId": "06d75368567e64ae39db99a6b7a89bc70053b52f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1058cb_da220d91",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-13T04:14:45Z",
+      "side": 1,
+      "message": "nit: how about \"AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) !\u003d 0\" ?\nthis is more readable",
+      "parentUuid": "afb7c302_4e1aa814",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 11
+      },
+      "revId": "06d75368567e64ae39db99a6b7a89bc70053b52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
