@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db73bc6_5a961305",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2835,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-08-13T12:50:08Z",
+      "side": 1,
+      "message": "maybe rename to fixed_vsafe5v_pdo",
+      "range": {
+        "startLine": 2835,
+        "startChar": 10,
+        "endLine": 2835,
+        "endChar": 19
+      },
+      "revId": "2a2e7a2f28d2f84e0ca1c76887687aca939b494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba0ac9f_375653ec",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2842,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-08-13T12:50:08Z",
+      "side": 1,
+      "message": "Instead of casting, can you just access the first PDO with ```-\u003epdos[0]```",
+      "range": {
+        "startLine": 2842,
+        "startChar": 13,
+        "endLine": 2842,
+        "endChar": 26
+      },
+      "revId": "2a2e7a2f28d2f84e0ca1c76887687aca939b494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
