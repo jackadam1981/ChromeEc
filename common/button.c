@@ -246,10 +246,12 @@ void button_init(void)
 	}
 #endif /* defined(CONFIG_BUTTON_TRIGGERED_RECOVERY) */
 
-	/* Detect boot buttons. */
-	for (i = 0; i < BUTTON_COUNT; i++) {
-		if (raw_button_pressed(&buttons[i]))
-			boot_button_set(i);
+	/* Detect boot buttons if this is a manual reset. */
+	if (system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) {
+		for (i = 0; i < BUTTON_COUNT; i++) {
+			if (raw_button_pressed(&buttons[i]))
+				boot_button_set(i);
+		}
 	}
 	CPRINTS("boot buttons: 0x%x", boot_button);
 }
