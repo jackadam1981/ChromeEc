@@ -18,6 +18,11 @@
 			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
 		};
 
+		ite_test_pin {
+			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+			enum-name = "GPIO_ITE_TEST_PIN";
+		};
+
 		ec_flash_wp_odl: ec_flash_wp_odl {
 			gpios = <&gpioi 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
@@ -84,8 +89,6 @@
 			<&gpiod 5 GPIO_INPUT_PULL_DOWN>,
 			/* gpiod6 */
 			<&gpiod 6 GPIO_INPUT_PULL_DOWN>,
-			/* gpiod7 */
-			<&gpiod 7 GPIO_INPUT_PULL_DOWN>,
 
 			/* gpioe0 */
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,

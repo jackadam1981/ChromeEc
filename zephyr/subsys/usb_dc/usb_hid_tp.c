@@ -313,11 +313,15 @@ static uint8_t device_caps_response[] = {
 static void hid_tp_proc_queue(void);
 DECLARE_DEFERRED(hid_tp_proc_queue);
 
+#include "gpio.h"
+#define ITE_TEST_PIN GPIO_ITE_TEST_PIN
+
 static int write_tp_report(struct usb_hid_touchpad_report *report)
 {
 	int ret = -EBUSY;
 
 	if (!atomic_test_and_set_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG)) {
+		gpio_set_level(ITE_TEST_PIN, 0);
 		ret = hid_int_ep_write(hid_dev, (uint8_t *)report,
 				       sizeof(*report), NULL);
 
@@ -351,6 +355,7 @@ static void int_in_ready_cb(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
+	gpio_set_level(ITE_TEST_PIN, 1);
 }
 
 static const struct hid_ops ops = {
@@ -444,6 +449,7 @@ static int usb_hid_tp_init(void)
 	usb_hid_init(hid_dev);
 	atomic_clear_bit(hid_ep_in_busy, HID_EP_BUSY_FLAG);
 
+	gpio_set_level(ITE_TEST_PIN, 1);
 	return 0;
 }
 SYS_INIT(usb_hid_tp_init, APPLICATION, CONFIG_KERNEL_INIT_PRIORITY_DEVICE);
