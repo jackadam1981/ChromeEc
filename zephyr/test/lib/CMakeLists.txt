@@ -6,6 +6,10 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(utils)
 
+<<<<<<< HEAD   (404853 Revert "Reland "zephyr: Enable automatic download of coreboo)
+=======
+target_sources_ifdef(CONFIG_TEST_LIB_SBRK app PRIVATE src/sbrk.c)
+>>>>>>> BRANCH (ae08ee jubilant: fix keyboard function)
 target_sources_ifdef(CONFIG_TEST_LIB_STD_VECTOR app PRIVATE src/std_vector.cc)
 target_sources_ifdef(CONFIG_TEST_LIB_STDLIB app PRIVATE src/stdlib.c)
 
