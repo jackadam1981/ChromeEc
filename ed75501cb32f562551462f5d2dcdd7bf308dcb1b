@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36139921_c3451047",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4296,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-08-13T07:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27213d1_1cd5fbf6",
+      "revId": "ed75501cb32f562551462f5d2dcdd7bf308dcb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0abd3368_f5657e77",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6fd2df_c53ce838",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-08-13T07:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0abd3368_f5657e77",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 44
+      },
+      "revId": "ed75501cb32f562551462f5d2dcdd7bf308dcb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce38c4ed_ef0d28ef",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-08-13T06:46:10Z",
       "side": 1,
       "message": "```suggestion\n\tint \"GMR tablet mode sensor debounce delay (microseconds)\"\n\tdefault 40000\n\thelp\n\t  Delay between seeing a table mode switch change and sampling\n\t  the new state.\n\t  \n\t  Default is 10 milliseconds longer than the default lid switch\n\t  debounce delay (LID_DEBOUNCE_US).\n```",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "ed75501cb32f562551462f5d2dcdd7bf308dcb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3267099_15c3e41d",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-08-13T07:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce38c4ed_ef0d28ef",
       "range": {
         "startLine": 48,
         "startChar": 0,
