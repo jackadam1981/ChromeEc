@@ -16,6 +16,24 @@
       "message": "Use https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5785440 instead",
       "revId": "c28abfb901fb72cefb478df09ed1e348bf59cf47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27b7697_fd651fa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-08-13T14:32:00Z",
+      "side": 1,
+      "message": "Also seems like you\u0027re missing the zephyr one",
+      "parentUuid": "682fa1a4_3f3517cb",
+      "revId": "c28abfb901fb72cefb478df09ed1e348bf59cf47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
