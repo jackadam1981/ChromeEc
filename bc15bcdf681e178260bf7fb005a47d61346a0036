@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f577363_bc637986",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2024-08-13T12:54:31Z",
+      "side": 1,
+      "message": "Maybe just use 4 instead of (1 \u003c\u003c 2)",
+      "range": {
+        "startLine": 1254,
+        "startChar": 23,
+        "endLine": 1254,
+        "endChar": 31
+      },
+      "revId": "bc15bcdf681e178260bf7fb005a47d61346a0036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
