@@ -68,6 +68,30 @@
       },
       "revId": "2a2e7a2f28d2f84e0ca1c76887687aca939b494c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f585e61_912733a3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2842,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-13T22:16:02Z",
+      "side": 1,
+      "message": "I agree. Even if you directly dereference `pdos`, you shouldn\u0027t need the cast.",
+      "parentUuid": "bba0ac9f_375653ec",
+      "range": {
+        "startLine": 2842,
+        "startChar": 13,
+        "endLine": 2842,
+        "endChar": 26
+      },
+      "revId": "2a2e7a2f28d2f84e0ca1c76887687aca939b494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
