@@ -1573,6 +1573,17 @@ ZTEST_USER(pdc_power_mgmt_api, test_sysjump_policy_on)
 	helper_wait_for_ccom_mode(CCOM_DRP);
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_frs_enable)
+{
+	/*
+	 * TODO(b/337958604): Currently there is no mechanism to enable/disable
+	 * FRS. Waiting for this control to be available in PDC, then we can
+	 * validate the behavior here.
+	 */
+	zassert_ok(pdc_power_mgmt_frs_enable(TEST_PORT, true));
+	zassert_ok(pdc_power_mgmt_frs_enable(TEST_PORT, false));
+}
+
 /*
  * Suspended PDC - These tests take place with the PDC Power Mgmt subsystem
  * in the suspended state, when communication with the PDC is not allowed.
