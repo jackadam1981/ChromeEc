@@ -66,10 +66,10 @@ FILE *pcap_open(void)
 void pcap_append(FILE *fp, const void *pl, size_t pl_sz)
 {
 	struct pcap_pkthdr pkt;
-	timestamp_t ts_us = get_time();
+	int64_t ticks = k_uptime_ticks();
 
-	pkt.ts_sec = ts_us.val / SECOND;
-	pkt.ts_usec = ts_us.val % SECOND;
+	pkt.ts_sec = k_ticks_to_sec_near32(ticks);
+	pkt.ts_usec = k_ticks_to_us_near32(ticks);
 
 	pkt.caplen = pl_sz;
 	pkt.len = pl_sz;
