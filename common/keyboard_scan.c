@@ -90,6 +90,14 @@ __overridable struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+/*
+ * Boot keys are defined as the keys pressed during a manual (reset-pin) reset,
+ * which can be issued only by GSC (usually through refresh+power combo).
+ *
+ * If the EC resets differently (e.g. watchdog, power-on, unhandled exception),
+ * we don't want to accidentally enter recovery mode even if a refresh key or
+ * whatever key is pressed (as previously allowed).
+ */
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 #ifndef CONFIG_KEYBOARD_MULTIPLE
 static const
@@ -786,6 +794,10 @@ static void power_button_change(void)
 	refresh.row = KEYBOARD_ROW_REFRESH;
 #endif
 
+	/* Don't proceed if this isn't a manual reset. */
+	if ((system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN))
+		return;
+
 	/* Proceed only if the power button was initially pressed. */
 	if (!(keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_POWER)))
 		return;
@@ -906,15 +918,8 @@ static uint32_t check_boot_key(const uint8_t *state)
 	if (system_jumped_late())
 		return BOOT_KEY_NONE;
 
-	/*
-	 * Boot keys are available only through reset-pin reset, which can be
-	 * issued only by GSC (through refresh+power combo).
-	 *
-	 * If the EC resets differently (e.g. watchdog, power-on, exception),
-	 * we don't want to accidentally enter recovery mode even if a refresh
-	 * key or whatever key is pressed (as previously allowed).
-	 */
-	if ((system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN))
+	/* Check boot keys only for a manual reset. */
+	if (system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN)
 		return check_key_list(state);
 
 #ifdef CONFIG_BATTERY
