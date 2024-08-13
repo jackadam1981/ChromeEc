@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "788ef198_23c3792f",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "I remove it",
+      "parentUuid": "a756b1bc_3cc55f50",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c9985a8_6bdf2ded",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-13T01:42:57Z",
       "side": 1,
       "message": "rv is not used. Do you miss anything or need to remove ?",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19b1754_b4351f1d",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "I remove it",
+      "parentUuid": "9c9985a8_6bdf2ded",
       "revId": "2f6842c05702a271359c3809db965d70b022f82f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3357d2_17110cd5",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "Does not happen fail, if zassert_equal fail, cannot generate coverage report.",
+      "parentUuid": "19517f32_5cc740a3",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b43ce717_7330db2e",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-08-13T01:42:57Z",
       "side": 1,
       "message": "I think the correctness of curr should be verified after charge_profile_override being called here.",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0781de7_0d36faaf",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b43ce717_7330db2e",
       "revId": "2f6842c05702a271359c3809db965d70b022f82f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30fa9f0_a9aabe87",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "I remove it",
+      "parentUuid": "64153bb0_1b8698a0",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb1fccc2_a09012bb",
@@ -103,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fdb34ba_03b927ae",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "It test [battery no response](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/corsola/veluza/src/temp.c;l\u003d98)\nI simplify it.",
+      "parentUuid": "fb1fccc2_a09012bb",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "123b33b8_761a0b33",
@@ -116,6 +224,24 @@
       "writtenOn": "2024-08-13T01:42:57Z",
       "side": 1,
       "message": "Issue similar to above.",
+      "revId": "2f6842c05702a271359c3809db965d70b022f82f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c1751a_99cf8282",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-08-13T08:17:39Z",
+      "side": 1,
+      "message": "It will test two function [charger_profile_override_get_param](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/corsola/veluza/src/temp.c;l\u003d109),\n[charger_profile_override_set_param](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/corsola/veluza/src/temp.c;l\u003d114)",
+      "parentUuid": "123b33b8_761a0b33",
       "revId": "2f6842c05702a271359c3809db965d70b022f82f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
