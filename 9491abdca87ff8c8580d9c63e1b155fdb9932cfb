@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bdb3dc4_ec495212",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-14T12:21:49Z",
+      "side": 1,
+      "message": "I\u0027ll draft one CL to fix from pdc_power_mgmt then we could determine which way is preferred.",
+      "parentUuid": "9f5283ab_41e33f99",
+      "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba974de0_1707a6dc",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -49,6 +67,30 @@
       "writtenOn": "2024-08-13T14:29:40Z",
       "side": 1,
       "message": "nit: use 3 and add comment",
+      "range": {
+        "startLine": 1255,
+        "startChar": 22,
+        "endLine": 1255,
+        "endChar": 27
+      },
+      "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155ddb56_c92a22d2",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-14T12:21:49Z",
+      "side": 1,
+      "message": "Comment is at line 1253.",
+      "parentUuid": "ba974de0_1707a6dc",
       "range": {
         "startLine": 1255,
         "startChar": 22,
