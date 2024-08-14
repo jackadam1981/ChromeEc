@@ -35,9 +35,12 @@ $(error Could not determine path to libclang_rt.builtins)
 endif
 LDFLAGS_EXTRA+=\
 	"$(clang_resource_dir)/lib/baremetal/libclang_rt.builtins-armv7m.a"
+<<<<<<< HEAD   (3d39ce core/cortex-{m,m0}: specify full path to libclang_rt.builtin)
 ifneq ($(.SHELLSTATUS),0)
 $(error Could not determine path to libclang_rt.builtins)
 endif
+=======
+>>>>>>> BRANCH (67bd3f zephyr: switch to python 3.11 from 3.8)
 else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
