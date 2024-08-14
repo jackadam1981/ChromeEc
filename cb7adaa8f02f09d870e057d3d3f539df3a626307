@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9162fc_86f5812e",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-14T02:20:28Z",
+      "side": 1,
+      "message": "nit: to make it more readable \nprev_gpio_sov \u003d t8801_gpio_sov[port];\n\nif (prev_gpio_sov !\u003d t8801_gpio_sov[port]) {\n    it8801_ioex_write()\n}",
+      "range": {
+        "startLine": 414,
+        "startChar": 2,
+        "endLine": 414,
+        "endChar": 21
+      },
+      "revId": "cb7adaa8f02f09d870e057d3d3f539df3a626307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
