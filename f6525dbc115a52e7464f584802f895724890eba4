@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a747e404_14229929",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-14T16:26:01Z",
+      "side": 1,
+      "message": "Nit: This should be a no-op with `rem_bytes \u003d\u003d 0`. You could just call it without checking.",
+      "revId": "f6525dbc115a52e7464f584802f895724890eba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
