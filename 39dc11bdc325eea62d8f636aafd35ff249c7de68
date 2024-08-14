@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d343c161_e8099b01",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-14T16:49:10Z",
+      "side": 1,
+      "message": "Now that I\u0027m looking in the manual, I don\u0027t see anywhere that it says what it does with DATAx for an invalid command. Is this what the PDC actually does? If so, it would be good to note that in a comment here.",
+      "revId": "39dc11bdc325eea62d8f636aafd35ff249c7de68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
