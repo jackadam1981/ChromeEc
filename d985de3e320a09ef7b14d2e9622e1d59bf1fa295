@@ -16,6 +16,24 @@
       "message": "Do we still need `ccaps`? Or `GET_CONNECTOR_CAPABILITY`? Or should all of the code checking partner capabilities directly check the PDOs like this function now does?",
       "revId": "d985de3e320a09ef7b14d2e9622e1d59bf1fa295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd4c707_a04d13fe",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2841,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-14T01:42:02Z",
+      "side": 0,
+      "message": "It could be skipped if we assume the local port does support dr_swap and I think it should be safe for our case but I am fine to keep checking it.",
+      "parentUuid": "7d0cd04a_7df5e7ea",
+      "revId": "d985de3e320a09ef7b14d2e9622e1d59bf1fa295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
