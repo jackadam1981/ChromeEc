@@ -150,7 +150,9 @@ static void port80_dump_buffer(void)
 				printed = 0;
 				buf_offset = 0;
 			}
-			last_e = e;
+			if (e & 0xff) {
+				last_e = e;
+			}
 		}
 	}
 
