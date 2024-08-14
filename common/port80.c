@@ -132,8 +132,10 @@ static void port80_dump_buffer(void)
 				ccputs("\n ");
 				cflush();
 			}
-			ccprintf(" %02x", e);
-			last_e = e;
+			if (e) {
+				ccprintf(" %02x", e);
+				last_e = e;
+			}
 		}
 	}
 	ccputs(" <--new\n");
