@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7905152e_ccbed011",
+        "filename": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-14T10:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc864b8_d040db0d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "08dae519ea6f53b1a1cf20339ffe4dd89854f57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef5f2721_3e116129",
@@ -71,6 +95,30 @@
           ]
         }
       ],
+      "revId": "08dae519ea6f53b1a1cf20339ffe4dd89854f57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bce56ba_c00920bb",
+        "filename": "zephyr/test/hwtest/src/boringssl_crypto.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-14T10:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef5f2721_3e116129",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
       "revId": "08dae519ea6f53b1a1cf20339ffe4dd89854f57d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
