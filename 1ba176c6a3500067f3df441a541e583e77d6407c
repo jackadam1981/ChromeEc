@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e402403_83388856",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-14T17:14:54Z",
+      "side": 1,
+      "message": "A few commands may set this to non-zero. Do you want to accommodate them in this interface?",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59a42ae_cc43bcbf",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-14T17:14:54Z",
+      "side": 1,
+      "message": "For `GET_ALTERNATE_MODES`, will the connector number be included in `command_specific`?",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e844401f_3b55cf2a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-14T17:14:54Z",
+      "side": 1,
+      "message": "Should this be `0x7f`?",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
