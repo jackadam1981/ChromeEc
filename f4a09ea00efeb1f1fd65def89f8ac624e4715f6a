@@ -16,6 +16,24 @@
       "message": "Just a heads up, there is a slight difference in how the state name vs state ID functions work:\n\n`pdc_power_mgmt_get_task_state_name()` has a special case where the transitional CMD_START and CMD_WAIT states get translated into the return states, so that the caller only ever sees the actual permanent states (unattached, attached source, attached sink, suspended, type-c only, etc). The use case is the `pdc status` console command where we only care about what the port is doing.\n\n`pdc_power_mgmt_get_task_state()` returns the raw state. This might cause the tests to encounter the ephemeral states like CMD_WAIT and could lead to flakiness if the tests are not expecting that or aren\u0027t polling. It\u0027s probably okay since they are using `wait_state_name`, though.",
       "revId": "f4a09ea00efeb1f1fd65def89f8ac624e4715f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9744f97a_e91c7a12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-08-14T17:01:33Z",
+      "side": 1,
+      "message": "It looks like in these tests we\u0027re only using non-transitional states. So it looks LGTM. But I definitely defer to y\u0027all since the EC isn\u0027t a printer/scanner ;)",
+      "parentUuid": "e0faf2c0_9193d3ba",
+      "revId": "f4a09ea00efeb1f1fd65def89f8ac624e4715f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
