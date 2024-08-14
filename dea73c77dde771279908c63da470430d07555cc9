@@ -312,6 +312,30 @@
       },
       "revId": "dea73c77dde771279908c63da470430d07555cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad124136_744712d0",
+        "filename": "zephyr/test/hwtest/src/unaligned_access_benchmark.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-14T10:18:17Z",
+      "side": 1,
+      "message": "CL:5782759",
+      "parentUuid": "d02fa6aa_d807b17a",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "dea73c77dde771279908c63da470430d07555cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
