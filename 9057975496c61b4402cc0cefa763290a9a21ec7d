@@ -69,6 +69,24 @@
       "parentUuid": "e17cad1f_b7b35e89",
       "revId": "9057975496c61b4402cc0cefa763290a9a21ec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80fa854d_cfba369d",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-14T22:16:50Z",
+      "side": 1,
+      "message": "I had hoped to remove the wait-for-idle hook into the subsystem and do any test/subsystem synchronization through the emulator. I\u0027d prefer not to add another test hook into the subsystem. The cycles of the power management state machine are not part of its public interface, and I don\u0027t want to write tests in terms of them.\n\nI would have thought that this wouldn\u0027t be necessary, though. Shouldn\u0027t `board_set_active_charge_port` send an event to the subsystem? If not, how does the subsystem start sinking power after the active charge port changes?",
+      "parentUuid": "caaabe4c_67e5a7b3",
+      "revId": "9057975496c61b4402cc0cefa763290a9a21ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
