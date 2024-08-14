@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f5283ab_41e33f99",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-14T02:11:53Z",
+      "side": 1,
+      "message": "It is because realtek supports proprietary GET_PDO and the proprietary one supports retrieving all the PDOs in one shot while TI doesn\u0027t have similar API. Currently pdc_power_mgmt is implemented based on realtek\u0027s proprietary GET_PDO API. We could change the implementation if we prefer using UCSI across all PDCs.",
+      "parentUuid": "4cb16a3e_449ad397",
+      "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba974de0_1707a6dc",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -54,6 +72,24 @@
       "writtenOn": "2024-08-13T22:27:11Z",
       "side": 1,
       "message": "1. Instead of making this a special case here, can you add `CMD_GET_PDOS` to the switch statement above and return to idle early in that case?\n2. I can see that you\u0027re using `num_pdos` as a channel to control the execution of this command, but I can\u0027t exactly follow how. Can you comment what you\u0027re doing?",
+      "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad3e780_3e97e896",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-14T02:11:53Z",
+      "side": 1,
+      "message": "The num_pdos and pdo_offset from the PDM could be updated to the value for the next UCSI_GET_PDOS task after the values are filled into the cmd_data.data bytes in `task_ucsi`. Thus, checking the num_pdos here to determine if we need to update the output pointer for retrieving the next PDOs and trigger the UCSI_GET_PDOS again.",
+      "parentUuid": "31574c3a_45276d46",
       "revId": "9491abdca87ff8c8580d9c63e1b155fdb9932cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
