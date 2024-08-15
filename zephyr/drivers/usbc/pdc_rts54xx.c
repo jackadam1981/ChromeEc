@@ -110,6 +110,12 @@ BUILD_ASSERT(RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN <=
 	     (sizeof(((struct pdc_info_t *)0)->project_name) - 1));
 
 /**
+ * @brief Extra bits supported by the Realtek SET_NOTIFICATION_ENABLE command.
+ */
+#define RTS54XX_NOTIFY_DP_STATUS BIT(21)
+#define RTS54XX_NOTIFY_EXT_BIT_OFFSET 16
+
+/**
  * @brief Macro to transition to init or idle state and return
  */
 #define TRANSITION_TO_INIT_OR_IDLE_STATE(data)  \
@@ -545,6 +551,18 @@ static bool check_comms_suspended(void)
 	return atomic_get(&suspend_comms_flag) != 0;
 }
 
+/**
+ * Atomic flag to note a recent IRQ when handling connector status changes.
+ *
+ * This is local to the rts54 PDC driver and used for attention handling.
+ * When the PDC firmware properly supports attention IRQs, this should be
+ * removed.
+ *
+ * TODO(b/356955093) Remove this when the PDC firmware supports IRQs on
+ * Attention messages.
+ */
+static atomic_t handling_irq_flag;
+
 static void print_current_state(struct pdc_data_t *data)
 {
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -802,7 +820,10 @@ static void st_init_run(void *o)
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
 		return;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
-		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0);
+		rv = rts54_set_notification_enable(
+			data->dev, cfg->bits,
+			RTS54XX_NOTIFY_DP_STATUS >>
+				RTS54XX_NOTIFY_EXT_BIT_OFFSET);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_SET_NOTIFICATION_ENABLE)",
 				cnum);
@@ -942,6 +963,8 @@ static void handle_irqs(struct pdc_data_t *data)
 				pdc_int_data->cci_event
 					.vendor_defined_indicator = 1;
 				pdc_int_data->conn_status_cached = false;
+				/* Set local interrupt handling flag */
+				atomic_set_bit(&handling_irq_flag, j);
 				/* Notify system of status change */
 				call_cci_event_cb(pdc_int_data);
 				/* done with this port */
@@ -1383,6 +1406,31 @@ static void st_read_run(void *o)
 	}
 	case CMD_GET_CONNECTOR_STATUS:
 		memcpy(data->user_buf, data->rd_buf + offset, len);
+
+		/*
+		 * If this is the first connector status since an IRQ, it may
+		 * be in response to an Attention message. Check current partner
+		 * flags and status change bits to determine if it was likely an
+		 * Attention message (DP Status).
+		 *
+		 * TODO(b/356955093) Remove this when the PDC firmware supports
+		 * IRQs on Attention messages.
+		 */
+		if (atomic_test_and_clear_bit(&handling_irq_flag,
+					      cfg->connector_number)) {
+			union connector_status_t *status =
+				(union connector_status_t *)data->user_buf;
+			if ((status->conn_partner_flags &
+			     CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE) &&
+			    !status->raw_conn_status_change_bits) {
+				union conn_status_change_bits_t
+					status_change_bits = { 0 };
+				status_change_bits.attention = 1;
+				status->raw_conn_status_change_bits =
+					status_change_bits.raw_value;
+			}
+		}
+
 		/* Save connector status in cache. */
 		k_mutex_lock(&data->mtx, K_FOREVER);
 		memcpy(&data->conn_status, data->user_buf, len);
