@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4581bf_a8b6d325",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-15T02:03:34Z",
+      "side": 1,
+      "message": "Would it be the same if we try to check if(curr.requested_current !\u003d ORIGINAL_CURRENT) which means charger_profile_override(\u0026curr) in line 68 has overwrite the ORIGINAL_CURRENT so we don\u0027t have to call it again here but simply validate the correctness ? Then we don\u0027t need the `value` in test.",
+      "revId": "b3762024991d97f6a7229370ec96c010dee8acd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4597dfe2_9ad96afb",
+        "filename": "zephyr/test/krabby/src/temp_veluza.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-15T02:03:34Z",
+      "side": 1,
+      "message": "Same above.",
+      "revId": "b3762024991d97f6a7229370ec96c010dee8acd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
