@@ -17,6 +17,8 @@ LOG_MODULE_REGISTER(ppm_test, LOG_LEVEL_DBG);
 
 #define PDC_NUM_PORTS 2
 #define PDC_DEFAULT_CONNECTOR 1
+#define PDC_ALTERNATE_CONNECTOR PDC_NUM_PORTS
+#define PDC_INVALID_CONNECTOR (PDC_NUM_PORTS + 1)
 #define PDC_DEFAULT_CONNECTOR_STATUS_CHANGE (1 << 14)
 #define PDC_WAIT_FOR_ITERATIONS 3
 
@@ -141,8 +143,7 @@ static void queue_command_for_fake_driver(struct ppm_test_fixture *fixture,
 	k_queue_append(fixture->cmd_queue, cmd);
 }
 
-static void trigger_expected_connector_change(struct ppm_test_fixture *fixture,
-					      uint8_t connector)
+static void queue_expected_connector_change(struct ppm_test_fixture *fixture)
 {
 	uint8_t lpm_data[LPM_DATA_MAX];
 	union connector_status_t *data = (union connector_status_t *)lpm_data;
@@ -152,6 +153,12 @@ static void trigger_expected_connector_change(struct ppm_test_fixture *fixture,
 
 	queue_command_for_fake_driver(fixture, UCSI_GET_CONNECTOR_STATUS,
 				      /*result=*/sizeof(*data), lpm_data);
+}
+
+static void trigger_expected_connector_change(struct ppm_test_fixture *fixture,
+					      uint8_t connector)
+{
+	queue_expected_connector_change(fixture);
 	ucsi_ppm_lpm_alert(fixture->ppm_dev, connector);
 }
 
@@ -1059,4 +1066,61 @@ ZTEST_USER_F(ppm_test, test_invalid_read_writes)
 	/* First write succeeds and second one responds with -EBUSY. */
 	zassert_false(write_command(fixture, &control) < 0);
 	zassert_equal(write_command(fixture, &control), -EBUSY);
+}
+
+/* If multiple ports alert at the same time, the state machine should handle
+ * them correctly and in order (from lowest port to highest port).
+ */
+ZTEST_USER_F(ppm_test, test_simultaneous_lpm_alerts)
+{
+	initialize_fake_to_idle_notify(fixture);
+
+	int notified_count = 0;
+	fixture->notified_count = 0;
+
+	trigger_expected_connector_change(fixture, PDC_DEFAULT_CONNECTOR);
+
+	/* Alert but don't queue expected commands yet from the OPM. There will
+	 * be a few ACK_CC_CIs until then.
+	 */
+	ucsi_ppm_lpm_alert(fixture->ppm_dev, PDC_ALTERNATE_CONNECTOR);
+	ucsi_ppm_lpm_alert(fixture->ppm_dev, PDC_INVALID_CONNECTOR);
+
+	zassert_true(wait_for_async_event_to_process(fixture));
+	zassert_true(wait_for_notification(fixture, ++notified_count));
+
+	union cci_event_t cci = { .acknowledge_command = 1,
+				  .connector_change = PDC_DEFAULT_CONNECTOR };
+	zassert_true(check_cci_matches(fixture, &cci));
+
+	/* Expect Ack and next GET_CONNECTOR_STATUS. */
+	queue_command_for_fake_driver(fixture, UCSI_ACK_CC_CI,
+				      /*result=*/0, /*lpm_data=*/NULL);
+	queue_expected_connector_change(fixture);
+
+	/* Ack PDC_DEFAULT_CONNECTOR. */
+	zassert_false(write_ack_command(fixture,
+					/*connector_change_ack*/ true,
+					/*command_complete_ack*/ false) < 0);
+	zassert_true(wait_for_cmd_to_process(fixture));
+	zassert_true(wait_for_async_event_to_process(fixture));
+	zassert_true(wait_for_notification(fixture, ++notified_count));
+
+	cci.connector_change = PDC_ALTERNATE_CONNECTOR;
+	zassert_true(check_cci_matches(fixture, &cci));
+
+	/* Expect Ack but no GET_CONNECTOR_STATUS afterwards. */
+	queue_command_for_fake_driver(fixture, UCSI_ACK_CC_CI,
+				      /*result=*/0, /*lpm_data=*/NULL);
+	zassert_false(write_ack_command(fixture,
+					/*connector_change_ack*/ true,
+					/*command_complete_ack*/ false) < 0);
+	zassert_true(wait_for_cmd_to_process(fixture));
+	zassert_true(wait_for_async_event_to_process(fixture));
+
+	/* Invalid connector should not be seen after acking
+	 * PDC_ALTERNATE_CONNECTOR.
+	 */
+	cci.connector_change = 0;
+	zassert_true(check_cci_matches(fixture, &cci));
 }
