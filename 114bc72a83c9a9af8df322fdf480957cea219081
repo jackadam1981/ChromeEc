@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db039fd2_58691ba8",
+        "filename": "zephyr/test/intelrvp/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-15T21:03:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9902d6b2_6903b92b",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "114bc72a83c9a9af8df322fdf480957cea219081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "869e5ea6_c179b3b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-15T00:08:21Z",
       "side": 1,
       "message": "any reason for these configs?",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "114bc72a83c9a9af8df322fdf480957cea219081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f94803f_2514cc43",
+        "filename": "zephyr/test/intelrvp/tests/intelrvp/src/fakes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-15T21:03:19Z",
+      "side": 1,
+      "message": "these hw is not common in device tree. For eg, we dont have int_lid_open for ptlrvp but do have it for mtlrvp. That is why we might have to add few fake functions depending on the device tree and configs.",
+      "parentUuid": "869e5ea6_c179b3b0",
       "range": {
         "startLine": 22,
         "startChar": 4,
