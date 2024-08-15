@@ -443,6 +443,15 @@ int pdc_power_mgmt_get_connector_status(
 uint8_t pdc_power_mgmt_get_dp_pin_mode(int port);
 
 /**
+ * @brief Check for a DP HPD_LVL assertion and notify the AP if one occured.
+ *
+ * @param port USB-C port number
+ *
+ * @retval true if host is notified of HPD LVL assertion, false otherwise.
+ */
+bool pdc_power_mgmt_check_hpd_wake(int port);
+
+/**
  * @brief Put a cap on the max voltage requested as a sink.
  *
  * @param mv maximum voltage in millivolts.

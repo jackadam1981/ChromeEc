@@ -490,6 +490,7 @@ struct rts5453p_emul_pdc_data {
 
 	uint32_t snk_pdos[PDO_OFFSET_MAX];
 	uint32_t src_pdos[PDO_OFFSET_MAX];
+	uint32_t vdos[PDC_DISC_IDENTITY_VDO_COUNT];
 };
 
 /**
