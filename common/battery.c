@@ -435,16 +435,13 @@ static void ac_change(void)
 {
 	static bool was_ac_on;
 	bool key = false;
-
 	if (IS_ENABLED(HAS_TASK_KEYSCAN))
 		key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
-
 #ifdef CONFIG_VOLUME_BUTTONS
 	if (!key)
 		/* Strictly vol-up only. */
 		key = button_get_boot_button() == BIT(BUTTON_VOLUME_UP);
 #endif
-
 	if (!key) {
 		if (extpower_is_present()) {
 			/*
@@ -460,9 +457,7 @@ static void ac_change(void)
 		}
 		return;
 	}
-
 	/* Refresh key (or equivalent) is down. */
-
 	if (extpower_is_present()) {
 		/*
 		 * 1. AC is (still) on. Waiting for unplug.
@@ -473,12 +468,10 @@ static void ac_change(void)
 		was_ac_on = true;
 		return;
 	}
-
 	if (!was_ac_on) {
 		CPRINTS("backoff: Haven't seen AC on");
 		return;
 	}
-
 	CPRINTS("Refresh+Unplug! Scheduling cutoff.");
 	battery_cutoff_state = BATTERY_CUTOFF_STATE_SCHEDULED;
 	hook_call_deferred(&pending_cutoff_deferred_data,
