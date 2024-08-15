@@ -35,9 +35,12 @@ $(error Could not determine path to libclang_rt.builtins)
 endif
 LDFLAGS_EXTRA+=\
 	"$(clang_resource_dir)/lib/baremetal/libclang_rt.builtins-armv7m.a"
+<<<<<<< HEAD   (2db66c core/cortex-{m,m0}: specify full path to libclang_rt.builtin)
 ifneq ($(.SHELLSTATUS),0)
 $(error Could not determine path to libclang_rt.builtins)
 endif
+=======
+>>>>>>> BRANCH (af054c rauru: set fan RPM to 3000)
 else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
