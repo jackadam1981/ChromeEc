@@ -1573,6 +1573,61 @@ ZTEST_USER(pdc_power_mgmt_api, test_sysjump_policy_on)
 	helper_wait_for_ccom_mode(CCOM_DRP);
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
+{
+	uint32_t dp_status_vdo;
+	union connector_status_t in_conn_status;
+	union conn_status_change_bits_t in_conn_status_change_bits;
+
+	/* Connect (DP) alternate mode partner. */
+	in_conn_status_change_bits.connect_change = 1;
+	in_conn_status.raw_conn_status_change_bits =
+		in_conn_status_change_bits.raw_value;
+	in_conn_status.power_operation_mode = PD_OPERATION;
+	in_conn_status.conn_partner_flags =
+		CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE;
+	emul_pdc_configure_src(emul, &in_conn_status);
+	emul_pdc_connect_partner(emul, &in_conn_status);
+	zassert_true(TEST_WAIT_FOR(pdc_power_mgmt_is_connected(TEST_PORT),
+				   PDC_TEST_TIMEOUT));
+
+	/* Configure PDC emulator to respond to GET_VDO with DP Status VDO with
+	 * HPD_LVL low.
+	 */
+	dp_status_vdo = 0x01;
+	emul_pdc_set_vdo(emul, 1, &dp_status_vdo);
+	k_msleep(TEST_WAIT_FOR_INTERVAL_MS);
+
+	/* Send an IRQ for the PDC power manager to update its DP Status. */
+	in_conn_status.raw_conn_status_change_bits = 0x0;
+	emul_pdc_set_connector_status(emul, &in_conn_status);
+	emul_pdc_pulse_irq(emul);
+	k_msleep(TEST_WAIT_FOR_INTERVAL_MS * 2);
+
+	/* Suspend the DUT. */
+	fake_chipset_state = CHIPSET_STATE_SUSPEND;
+	hook_notify(HOOK_CHIPSET_SUSPEND);
+	k_msleep(TEST_WAIT_FOR_INTERVAL_MS);
+
+	/* Confirm that hpd_wake conditions are false. */
+	zassert_false(pdc_power_mgmt_check_hpd_wake(TEST_PORT));
+
+	/* Configure PDC emulator to respond to GET_VDO with DP Status VDO with
+	 * HPD_LVL high.
+	 */
+	dp_status_vdo = 0x81;
+	emul_pdc_set_vdo(emul, 1, &dp_status_vdo);
+	k_msleep(TEST_WAIT_FOR_INTERVAL_MS);
+
+	/* Send an IRQ for the PDC power manager to update its DP Status. */
+	emul_pdc_set_connector_status(emul, &in_conn_status);
+	emul_pdc_pulse_irq(emul);
+	k_msleep(TEST_WAIT_FOR_INTERVAL_MS * 2);
+
+	/* Confirm that hpd_wake conditions are true. */
+	zassert_true(pdc_power_mgmt_check_hpd_wake(TEST_PORT));
+}
+
 /*
  * Suspended PDC - These tests take place with the PDC Power Mgmt subsystem
  * in the suspended state, when communication with the PDC is not allowed.
