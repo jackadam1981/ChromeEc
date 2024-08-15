@@ -1358,7 +1358,7 @@ static bool tc_perform_src_hard_reset(int port)
  * Wait for recovery after a hard reset.  Call repeatedly until true is
  * returned, signaling that the hard reset is complete.
  */
-static bool tc_perform_snk_hard_reset(int port)
+static bool __attribute__((section(".__ram_code"))) tc_perform_snk_hard_reset(int port)
 {
 	switch (tc[port].ps_reset_state) {
 	case PS_STATE0:
@@ -1469,7 +1469,7 @@ void tc_start_error_recovery(int port)
 	set_state_tc(port, TC_ERROR_RECOVERY);
 }
 
-static void restart_tc_sm(int port, enum usb_tc_state start_state)
+static void __attribute__((section(".__ram_code"))) restart_tc_sm(int port, enum usb_tc_state start_state)
 {
 	int res;
 
@@ -2544,7 +2544,7 @@ static void tc_attached_snk_entry(const int port)
  *
  * Returns true if a new state was set and the calling run should exit.
  */
-static bool tc_snk_check_vbus_removed(const int port)
+static bool __attribute__((section(".__ram_code"))) tc_snk_check_vbus_removed(const int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
 		/*
@@ -2578,7 +2578,7 @@ static bool tc_snk_check_vbus_removed(const int port)
 	return false;
 }
 
-static void tc_attached_snk_run(const int port)
+static void __attribute__((section(".__ram_code"))) tc_attached_snk_run(const int port)
 {
 #ifdef CONFIG_USB_PE_SM
 	/*
@@ -3176,7 +3176,7 @@ static void tc_attached_src_entry(const int port)
 	pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, PD_T_SRC_DISCONNECT);
 }
 
-static void tc_attached_src_run(const int port)
+static void __attribute__((section(".__ram_code"))) tc_attached_src_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
 
@@ -3332,7 +3332,7 @@ static void tc_attached_src_run(const int port)
 	}
 }
 
-static void tc_attached_src_exit(const int port)
+static void __attribute__((section(".__ram_code"))) tc_attached_src_exit(const int port)
 {
 	/*
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting

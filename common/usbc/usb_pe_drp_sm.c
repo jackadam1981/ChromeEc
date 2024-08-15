@@ -836,7 +836,7 @@ void pe_set_debug_level(enum debug_level debug_level)
 #endif
 }
 
-void pe_run(int port, int evt, int en)
+void __attribute__((section(".__ram_code"))) pe_run(int port, int evt, int en)
 {
 	switch (local_state[port]) {
 	case SM_PAUSED:
@@ -930,7 +930,7 @@ void pe_hard_reset_sent(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_HARD_RESET_PENDING);
 }
 
-void pe_got_hard_reset(int port)
+void __attribute__((section(".__ram_code"))) pe_got_hard_reset(int port)
 {
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
@@ -971,7 +971,7 @@ void pe_got_hard_reset(int port)
  * If the PE is not running, generate an error recovery to turn off
  * Vbus and get the port back into a known state.
  */
-test_mockable void pd_got_frs_signal(int port)
+test_mockable void __attribute__((section(".__ram_code"))) pd_got_frs_signal(int port)
 {
 	if (pe_is_running(port))
 		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
@@ -993,7 +993,7 @@ test_mockable void pd_got_frs_signal(int port)
  * that supports FRS so we can determine if this is something we
  * can handle.
  */
-static void pe_set_frs_enable(int port, int enable)
+static void __attribute__((section(".__ram_code"))) pe_set_frs_enable(int port, int enable)
 {
 	int current = PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
 
@@ -1037,7 +1037,7 @@ void pe_set_explicit_contract(int port)
  *
  * @param port USB-C port number
  */
-static void pe_invalidate_explicit_contract_frs_untouched(int port)
+static void __attribute__((section(".__ram_code"))) pe_invalidate_explicit_contract_frs_untouched(int port)
 {
 	PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 
@@ -1046,7 +1046,7 @@ static void pe_invalidate_explicit_contract_frs_untouched(int port)
 		typec_update_cc(port);
 }
 
-void pe_invalidate_explicit_contract(int port)
+void __attribute__((section(".__ram_code"))) pe_invalidate_explicit_contract(int port)
 {
 	/* disable FRS and then invalidate the explicit contract */
 	pe_set_frs_enable(port, 0);
@@ -1265,7 +1265,7 @@ static bool pe_check_outgoing_discard(int port)
 	return false;
 }
 
-void pe_report_error(int port, enum pe_error e, enum tcpci_msg_type type)
+void __attribute__((section(".__ram_code"))) pe_report_error(int port, enum pe_error e, enum tcpci_msg_type type)
 {
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
@@ -1352,7 +1352,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpci_msg_type type)
 	}
 }
 
-void pe_got_soft_reset(int port)
+void __attribute__((section(".__ram_code"))) pe_got_soft_reset(int port)
 {
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
@@ -2359,7 +2359,7 @@ static void pe_sender_response_msg_exit(int port)
 /**
  * PE_SRC_Startup
  */
-static void pe_src_startup_entry(int port)
+static void __attribute__((section(".__ram_code"))) pe_src_startup_entry(int port)
 {
 	print_current_state(port);
 
@@ -3290,7 +3290,7 @@ static void pe_src_transition_to_default_run(int port)
 /**
  * PE_SNK_Startup State
  */
-static void pe_snk_startup_entry(int port)
+static void __attribute__((section(".__ram_code"))) pe_snk_startup_entry(int port)
 {
 	print_current_state(port);
 
@@ -3402,7 +3402,7 @@ static void pe_snk_discovery_entry(int port)
 	print_current_state(port);
 }
 
-static void pe_snk_discovery_run(int port)
+static void __attribute__((section(".__ram_code"))) pe_snk_discovery_run(int port)
 {
 	/*
 	 * Transition to the PE_SNK_Wait_for_Capabilities state when:
@@ -3415,7 +3415,7 @@ static void pe_snk_discovery_run(int port)
 /**
  * PE_SNK_Wait_For_Capabilities State
  */
-static void pe_snk_wait_for_capabilities_entry(int port)
+static void __attribute__((section(".__ram_code"))) pe_snk_wait_for_capabilities_entry(int port)
 {
 	print_current_state(port);
 
@@ -3423,7 +3423,7 @@ static void pe_snk_wait_for_capabilities_entry(int port)
 	pd_timer_enable(port, PE_TIMER_TIMEOUT, PD_T_SINK_WAIT_CAP);
 }
 
-static void pe_snk_wait_for_capabilities_run(int port)
+static void __attribute__((section(".__ram_code"))) pe_snk_wait_for_capabilities_run(int port)
 {
 	uint8_t type;
 	uint8_t cnt;
@@ -3557,7 +3557,7 @@ static void pe_snk_apply_psnkstdby(int port)
 		port, high > 0 ? PD_SNK_STDBY_MW * 1000 / high : PD_MIN_MA);
 }
 
-static void pe_snk_select_capability_run(int port)
+static void __attribute__((section(".__ram_code"))) pe_snk_select_capability_run(int port)
 {
 	uint8_t type;
 	uint8_t cnt;
@@ -5240,7 +5240,7 @@ static void pe_prs_snk_src_evaluate_swap_run(int port)
  *
  * NOTE: Shared action code used for Power Role Swap and Fast Role Swap
  */
-static void pe_prs_snk_src_transition_to_off_entry(int port)
+static void __attribute__((section(".__ram_code"))) pe_prs_snk_src_transition_to_off_entry(int port)
 {
 	print_current_state(port);
 
@@ -5381,7 +5381,7 @@ static void pe_prs_snk_src_source_on_exit(int port)
  *
  * NOTE: Shared action code used for Power Role Swap and Fast Role Swap
  */
-static void pe_prs_snk_src_send_swap_entry(int port)
+static void __attribute__((section(".__ram_code"))) pe_prs_snk_src_send_swap_entry(int port)
 {
 	print_current_state(port);
 
@@ -5404,7 +5404,7 @@ static void pe_prs_snk_src_send_swap_entry(int port)
 	pe_sender_response_msg_entry(port);
 }
 
-static void pe_prs_snk_src_send_swap_run(int port)
+static void __attribute__((section(".__ram_code"))) pe_prs_snk_src_send_swap_run(int port)
 {
 	int type;
 	int cnt;
@@ -5498,7 +5498,7 @@ static void pe_prs_snk_src_send_swap_exit(int port)
 /**
  * PE_FRS_SNK_SRC_Start_AMS
  */
-__maybe_unused static void pe_frs_snk_src_start_ams_entry(int port)
+__maybe_unused static void __attribute__((section(".__ram_code"))) pe_frs_snk_src_start_ams_entry(int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_REV30))
 		assert(0);
@@ -5533,7 +5533,7 @@ __maybe_unused static void pe_frs_snk_src_start_ams_entry(int port)
 /**
  * PE_PRS_FRS_SHARED
  */
-__maybe_unused static void pe_prs_frs_shared_entry(int port)
+__maybe_unused static void __attribute__((section(".__ram_code"))) pe_prs_frs_shared_entry(int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_REV30))
 		assert(0);
@@ -5549,7 +5549,7 @@ __maybe_unused static void pe_prs_frs_shared_entry(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
 }
 
-__maybe_unused static void pe_prs_frs_shared_exit(int port)
+__maybe_unused static void __attribute__((section(".__ram_code"))) pe_prs_frs_shared_exit(int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_REV30))
 		assert(0);

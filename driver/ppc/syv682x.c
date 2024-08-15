@@ -76,7 +76,7 @@ static int syv682x_init(int port);
 
 static void syv682x_interrupt_delayed(int port, int delay);
 
-static int read_reg(uint8_t port, int reg, int *regval)
+static int __attribute__((section(".__ram_code"))) read_reg(uint8_t port, int reg, int *regval)
 {
 	return i2c_read8(ppc_chips[port].i2c_port,
 			 ppc_chips[port].i2c_addr_flags, reg, regval);
@@ -98,7 +98,7 @@ __overridable int syv682x_board_is_syv682c(int port)
  * During channel transition or discharge, the SYV682X silently ignores I2C
  * writes. Poll the BUSY bit until the SYV682A is ready.
  */
-static int syv682x_wait_for_ready(int port, int reg)
+static int __attribute__((section(".__ram_code"))) syv682x_wait_for_ready(int port, int reg)
 {
 	int regval;
 	int rv;
@@ -144,12 +144,12 @@ static int write_reg(uint8_t port, int reg, int regval)
 			  ppc_chips[port].i2c_addr_flags, reg, regval);
 }
 
-static int syv682x_is_sourcing_vbus(int port)
+static int __attribute__((section(".__ram_code"))) syv682x_is_sourcing_vbus(int port)
 {
 	return !!(flags[port] & SYV682X_FLAGS_SOURCE_ENABLED);
 }
 
-static int syv682x_discharge_vbus(int port, int enable)
+static int __attribute__((section(".__ram_code"))) syv682x_discharge_vbus(int port, int enable)
 {
 #ifndef CONFIG_USBC_PPC_SYV682X_SMART_DISCHARGE
 	int regval;
@@ -187,7 +187,7 @@ static int syv682x_discharge_vbus(int port, int enable)
 #endif
 }
 
-static int syv682x_vbus_source_enable(int port, int enable)
+static int __attribute__((section(".__ram_code"))) syv682x_vbus_source_enable(int port, int enable)
 {
 	int regval;
 	int rv;
@@ -247,7 +247,7 @@ static int syv682x_vbus_source_enable(int port, int enable)
 }
 
 /* Filter interrupts with rising edge trigger */
-static bool syv682x_interrupt_filter(int port, int regval, int regmask,
+static bool __attribute__((section(".__ram_code"))) syv682x_interrupt_filter(int port, int regval, int regmask,
 				     int flagmask)
 {
 	if (regval & regmask) {
@@ -270,7 +270,7 @@ static bool syv682x_interrupt_filter(int port, int regval, int regmask,
  * no larger than tFRSwapTx(MAX). In order to avoid FRS errors in syv682,
  * add CC status judgment after FRS triggered.
  */
-static int check_cc_rp_timeout(int port, int timeout)
+static int __attribute__((section(".__ram_code"))) check_cc_rp_timeout(int port, int timeout)
 {
 #ifdef CONFIG_ZTEST
 	return EC_SUCCESS;
@@ -297,7 +297,7 @@ static int check_cc_rp_timeout(int port, int timeout)
  * cleared. Since they are clear on read, we should check the alerts whenever we
  * read these registers to avoid race conditions.
  */
-static void syv682x_handle_status_interrupt(int port, int regval)
+static void __attribute__((section(".__ram_code"))) syv682x_handle_status_interrupt(int port, int regval)
 {
 #ifdef CONFIG_USB_PD_FRS_PPC
 	/*
@@ -388,7 +388,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	}
 }
 
-static int syv682x_handle_control_4_interrupt(int port, int regval)
+static int __attribute__((section(".__ram_code"))) syv682x_handle_control_4_interrupt(int port, int regval)
 {
 	/*
 	 * VCONN OC is actually notifying that it is current limiting
@@ -483,7 +483,7 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-static int syv682x_is_vbus_present(int port)
+static int __attribute__((section(".__ram_code"))) syv682x_is_vbus_present(int port)
 {
 	int val;
 	int vbus = 0;
@@ -518,7 +518,7 @@ static int syv682x_is_vbus_present(int port)
 }
 #endif
 
-static int syv682x_set_vbus_source_current_limit(int port,
+static int __attribute__((section(".__ram_code"))) syv682x_set_vbus_source_current_limit(int port,
 						 enum tcpc_rp_value rp)
 {
 	int rv;
@@ -626,7 +626,7 @@ static int syv682x_dump(int port)
 }
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
-static void syv682x_handle_interrupt(int port)
+static void __attribute__((section(".__ram_code"))) syv682x_handle_interrupt(int port)
 {
 	int control4;
 	int status;
@@ -652,7 +652,7 @@ static void syv682x_handle_interrupt(int port)
 	}
 }
 
-static void syv682x_irq_deferred(void)
+static void __attribute__((section(".__ram_code"))) syv682x_irq_deferred(void)
 {
 	int i;
 	uint32_t pending = atomic_clear(&irq_pending);
@@ -663,13 +663,13 @@ static void syv682x_irq_deferred(void)
 }
 DECLARE_DEFERRED(syv682x_irq_deferred);
 
-static void syv682x_interrupt_delayed(int port, int delay)
+static void __attribute__((section(".__ram_code"))) syv682x_interrupt_delayed(int port, int delay)
 {
 	atomic_or(&irq_pending, BIT(port));
 	hook_call_deferred(&syv682x_irq_deferred_data, delay * MSEC);
 }
 
-test_mockable void syv682x_interrupt(int port)
+test_mockable void __attribute__((section(".__ram_code"))) syv682x_interrupt(int port)
 {
 	/* FRS timings require <15ms response to an FRS event */
 	syv682x_interrupt_delayed(port, 0);
@@ -680,7 +680,7 @@ test_mockable void syv682x_interrupt(int port)
  * In that case, no PPC configuration needs to be done to enable FRS
  */
 #ifdef CONFIG_USB_PD_FRS_PPC
-static int syv682x_set_frs_enable(int port, int enable)
+static int __attribute__((section(".__ram_code"))) syv682x_set_frs_enable(int port, int enable)
 {
 	int regval;
 
@@ -725,7 +725,7 @@ static int syv682x_set_frs_enable(int port, int enable)
 #endif /*CONFIG_USB_PD_FRS_PPC*/
 
 #ifndef CONFIG_USBC_PPC_SYV682X_SMART_DISCHARGE
-static int syv682x_dev_is_connected(int port, enum ppc_device_role dev)
+static int __attribute__((section(".__ram_code"))) syv682x_dev_is_connected(int port, enum ppc_device_role dev)
 {
 	/*
 	 * (b:160548079) We disable the smart discharge(SDSG), so we should
@@ -740,7 +740,7 @@ static int syv682x_dev_is_connected(int port, enum ppc_device_role dev)
 }
 #endif
 
-static bool syv682x_is_sink(uint8_t control_1)
+static bool __attribute__((section(".__ram_code"))) syv682x_is_sink(uint8_t control_1)
 {
 	/*
 	 * The SYV682 integrates power paths: 5V and HV (high voltage).
@@ -762,7 +762,7 @@ static bool syv682x_is_sink(uint8_t control_1)
 	return false;
 }
 
-static bool syv682x_is_vconn_controlled_by_tcpc(int port)
+static bool __attribute__((section(".__ram_code"))) syv682x_is_vconn_controlled_by_tcpc(int port)
 {
 	return tcpc_config[port].flags & TCPC_FLAGS_CONTROL_VCONN;
 }

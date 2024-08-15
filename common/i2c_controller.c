@@ -105,7 +105,7 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	return NULL;
 }
 
-__maybe_unused static int chip_i2c_xfer_with_notify(const int port,
+__maybe_unused static __attribute__((section(".__ram_code"))) int chip_i2c_xfer_with_notify(const int port,
 						    const uint16_t addr_flags,
 						    const uint8_t *out,
 						    int out_size, uint8_t *in,
@@ -191,7 +191,7 @@ static int i2c_xfer_no_retry(const int port, const uint16_t addr_flags,
 }
 #endif /* CONFIG_I2C_XFER_LARGE_TRANSFER */
 
-int i2c_xfer_unlocked(const int port, const uint16_t addr_flags,
+int __attribute__((section(".__ram_code"))) i2c_xfer_unlocked(const int port, const uint16_t addr_flags,
 		      const uint8_t *out, int out_size, uint8_t *in,
 		      int in_size, int flags)
 {
@@ -278,7 +278,7 @@ int i2c_xfer_unlocked(const int port, const uint16_t addr_flags,
 	return ret;
 }
 
-int i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
+int __attribute__((section(".__ram_code"))) i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	     int out_size, uint8_t *in, int in_size)
 {
 	int rv;
@@ -291,7 +291,7 @@ int i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	return rv;
 }
 
-void i2c_lock(int port, int lock)
+void __attribute__((section(".__ram_code"))) i2c_lock(int port, int lock)
 {
 #ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
 	/* Lock the controller, not the port */
@@ -337,7 +337,7 @@ void i2c_prepare_sysjump(void)
 }
 
 /* i2c_readN with optional error checking */
-static int platform_ec_i2c_read(const int port, const uint16_t addr_flags,
+static __attribute__((section(".__ram_code"))) int platform_ec_i2c_read(const int port, const uint16_t addr_flags,
 				uint8_t reg, uint8_t *in, int in_size)
 {
 	if (!IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(addr_flags))
@@ -456,7 +456,7 @@ int i2c_write32(const int port, const uint16_t addr_flags, int offset, int data)
 				     sizeof(uint32_t) + 1);
 }
 
-int i2c_read16(const int port, const uint16_t addr_flags, int offset, int *data)
+int __attribute__((section(".__ram_code"))) i2c_read16(const int port, const uint16_t addr_flags, int offset, int *data)
 {
 	int rv;
 	uint8_t reg, buf[sizeof(uint16_t)];
@@ -476,7 +476,7 @@ int i2c_read16(const int port, const uint16_t addr_flags, int offset, int *data)
 	return EC_SUCCESS;
 }
 
-int i2c_write16(const int port, const uint16_t addr_flags, int offset, int data)
+int __attribute__((section(".__ram_code"))) i2c_write16(const int port, const uint16_t addr_flags, int offset, int data)
 {
 	uint8_t buf[1 + sizeof(uint16_t)];
 
@@ -494,7 +494,7 @@ int i2c_write16(const int port, const uint16_t addr_flags, int offset, int data)
 				     1 + sizeof(uint16_t));
 }
 
-int i2c_read8(const int port, const uint16_t addr_flags, int offset, int *data)
+int __attribute__((section(".__ram_code"))) i2c_read8(const int port, const uint16_t addr_flags, int offset, int *data)
 {
 	int rv;
 	uint8_t reg = offset;
@@ -509,7 +509,7 @@ int i2c_read8(const int port, const uint16_t addr_flags, int offset, int *data)
 	return rv;
 }
 
-int i2c_write8(const int port, const uint16_t addr_flags, int offset, int data)
+int __attribute__((section(".__ram_code"))) i2c_write8(const int port, const uint16_t addr_flags, int offset, int data)
 {
 	uint8_t buf[2];
 
@@ -519,7 +519,7 @@ int i2c_write8(const int port, const uint16_t addr_flags, int offset, int data)
 	return platform_ec_i2c_write(port, addr_flags, buf, sizeof(buf));
 }
 
-int i2c_update8(const int port, const uint16_t addr_flags, const int offset,
+int __attribute__((section(".__ram_code"))) i2c_update8(const int port, const uint16_t addr_flags, const int offset,
 		const uint8_t mask, const enum mask_update_action action)
 {
 	int rv;
@@ -539,7 +539,7 @@ int i2c_update8(const int port, const uint16_t addr_flags, const int offset,
 	return i2c_write8(port, addr_flags, offset, write_val);
 }
 
-int i2c_update16(const int port, const uint16_t addr_flags, const int offset,
+int __attribute__((section(".__ram_code"))) i2c_update16(const int port, const uint16_t addr_flags, const int offset,
 		 const uint16_t mask, const enum mask_update_action action)
 {
 	int rv;
@@ -559,7 +559,7 @@ int i2c_update16(const int port, const uint16_t addr_flags, const int offset,
 	return i2c_write16(port, addr_flags, offset, write_val);
 }
 
-int i2c_field_update8(const int port, const uint16_t addr_flags,
+int __attribute__((section(".__ram_code"))) i2c_field_update8(const int port, const uint16_t addr_flags,
 		      const int offset, const uint8_t field_mask,
 		      const uint8_t set_value)
 {
@@ -579,7 +579,7 @@ int i2c_field_update8(const int port, const uint16_t addr_flags,
 	return i2c_write8(port, addr_flags, offset, write_val);
 }
 
-int i2c_field_update16(const int port, const uint16_t addr_flags,
+int __attribute__((section(".__ram_code"))) i2c_field_update16(const int port, const uint16_t addr_flags,
 		       const int offset, const uint16_t field_mask,
 		       const uint16_t set_value)
 {
@@ -774,7 +774,7 @@ int i2c_read_sized_block(const int port, const uint16_t addr_flags, int offset,
 	return rv;
 }
 
-int i2c_read_string(const int port, const uint16_t addr_flags, int offset,
+int __attribute__((section(".__ram_code"))) i2c_read_string(const int port, const uint16_t addr_flags, int offset,
 		    uint8_t *data, int len)
 {
 	int read_len = 0;
@@ -789,7 +789,7 @@ int i2c_read_string(const int port, const uint16_t addr_flags, int offset,
 	return rv;
 }
 
-int i2c_read_block(const int port, const uint16_t addr_flags, int offset,
+int __attribute__((section(".__ram_code"))) i2c_read_block(const int port, const uint16_t addr_flags, int offset,
 		   uint8_t *data, int len)
 {
 	int rv;
@@ -799,7 +799,7 @@ int i2c_read_block(const int port, const uint16_t addr_flags, int offset,
 	return rv;
 }
 
-int i2c_write_block(const int port, const uint16_t addr_flags, int offset,
+int __attribute__((section(".__ram_code"))) i2c_write_block(const int port, const uint16_t addr_flags, int offset,
 		    const uint8_t *data, int len)
 {
 	int i, rv;
