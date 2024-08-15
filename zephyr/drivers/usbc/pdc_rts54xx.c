@@ -110,6 +110,11 @@ BUILD_ASSERT(RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN <=
 	     (sizeof(((struct pdc_info_t *)0)->project_name) - 1));
 
 /**
+ * @brief Extra bits supported by the Realtek SET_NOTIFICATION_ENABLE command.
+ */
+#define RTS54XX_NOTIFY_DP_STATUS BIT(5)
+
+/**
  * @brief Macro to transition to init or idle state and return
  */
 #define TRANSITION_TO_INIT_OR_IDLE_STATE(data)  \
@@ -802,7 +807,8 @@ static void st_init_run(void *o)
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
 		return;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
-		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0);
+		rv = rts54_set_notification_enable(data->dev, cfg->bits,
+						   RTS54XX_NOTIFY_DP_STATUS);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_SET_NOTIFICATION_ENABLE)",
 				cnum);
