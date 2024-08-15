@@ -444,7 +444,7 @@ static void ac_change(void)
 		/* Strictly vol-up only. */
 		key = button_get_boot_button() == BIT(BUTTON_VOLUME_UP);
 #endif
-
+	CPRINTS("testtest key=%d was_ac_on=%d", key, was_ac_on);
 	if (!key) {
 		if (extpower_is_present()) {
 			/*
@@ -457,12 +457,14 @@ static void ac_change(void)
 			 * can be registered when the power button is released.
 			 */
 			was_ac_on = true;
+			CPRINTS("testtest01 key=%d was_ac_on=%d", key,
+				was_ac_on);
 		}
 		return;
 	}
 
 	/* Refresh key (or equivalent) is down. */
-
+	CPRINTS("testtest02 key=%d was_ac_on=%d", key, was_ac_on);
 	if (extpower_is_present()) {
 		/*
 		 * 1. AC is (still) on. Waiting for unplug.
@@ -471,14 +473,15 @@ static void ac_change(void)
 		 */
 		battery_cutoff_clear();
 		was_ac_on = true;
+		CPRINTS("testtest03 key=%d was_ac_on=%d", key, was_ac_on);
 		return;
 	}
-
+	CPRINTS("testtest04 key=%d was_ac_on=%d", key, was_ac_on);
 	if (!was_ac_on) {
 		CPRINTS("backoff: Haven't seen AC on");
 		return;
 	}
-
+	CPRINTS("testtest05 key=%d was_ac_on=%d", key, was_ac_on);
 	CPRINTS("Refresh+Unplug! Scheduling cutoff.");
 	battery_cutoff_state = BATTERY_CUTOFF_STATE_SCHEDULED;
 	hook_call_deferred(&pending_cutoff_deferred_data,
