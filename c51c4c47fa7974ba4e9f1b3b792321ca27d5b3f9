@@ -16,6 +16,24 @@
       "message": "chromeos-zephyr-3.7.0-r9521: OSError: Failed to run binman\n\n(didn\u0027t found any detailed error)",
       "revId": "c51c4c47fa7974ba4e9f1b3b792321ca27d5b3f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f261a196_de29e911",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-08-15T10:11:13Z",
+      "side": 1,
+      "message": "CL:5763508 removed $PATH from the binman command, binman needs $PATH",
+      "parentUuid": "00fb14bd_a026d619",
+      "revId": "c51c4c47fa7974ba4e9f1b3b792321ca27d5b3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
