@@ -20,20 +20,25 @@ static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 {
 	switch (status) {
 	case USB_DC_RESET:
+		LOG_INF("Device reset detected");
 		usb_dc_status.configured = false;
 		usb_dc_status.suspended = false;
 		break;
 	case USB_DC_CONFIGURED:
+		LOG_INF("Device configured");
 		usb_dc_status.configured = true;
 		break;
 	case USB_DC_DISCONNECTED:
+		LOG_INF("Device disconnected");
 		usb_dc_status.configured = false;
 		usb_dc_status.suspended = false;
 		break;
 	case USB_DC_SUSPEND:
+		LOG_INF("Device suspended");
 		usb_dc_status.suspended = true;
 		break;
 	case USB_DC_RESUME:
+		LOG_INF("Device resumed");
 		usb_dc_status.suspended = false;
 		break;
 	default:
