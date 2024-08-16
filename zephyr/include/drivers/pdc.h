@@ -111,6 +111,8 @@ enum pdo_source_t {
 struct get_pdo_t {
 	enum pdo_type_t pdo_type;
 	enum pdo_source_t pdo_source;
+	uint8_t num_pdos;
+	enum pdo_offset_t pdo_offset;
 };
 
 struct pdc_callback;
