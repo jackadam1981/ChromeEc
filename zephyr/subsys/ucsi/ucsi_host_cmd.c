@@ -18,7 +18,7 @@
 
 LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
 
-static struct ucsi_ppm_device *ppm_dev;
+test_export_static struct ucsi_ppm_device *ppm_dev;
 
 static void opm_notify(void *context)
 {
