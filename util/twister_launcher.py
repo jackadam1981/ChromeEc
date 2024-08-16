@@ -80,6 +80,10 @@ parameters that may be used, please consult the Twister documentation.
 #   name: "infra/python/wheels/west-py3"
 #   version: "version:0.14.0"
 # >
+# wheel: <
+#   name: "infra/python/wheels/pytest-py3"
+#   version: "version:7.3.1"
+# >
 # [VPYTHON:END]
 
 import argparse
