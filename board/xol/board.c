@@ -8,6 +8,7 @@
 #include "cros_board_info.h"
 #include "driver/mp2964.h"
 #include "hooks.h"
+#include "keyboard_customization.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
