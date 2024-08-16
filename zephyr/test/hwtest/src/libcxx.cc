@@ -26,3 +26,12 @@ ZTEST(libcxx, test_system_clock)
 				  .count();
 	zassert_within(elapsed_ms, 500ULL, 5ULL);
 }
+
+ZTEST(libcxx, test_aligned_allocation)
+{
+	constexpr std::size_t kAlignment = 16;
+	int *aligned = new (std::align_val_t(kAlignment)) int;
+	zassert_not_null(aligned);
+	zassert_true(IS_ALIGNED(aligned, kAlignment));
+	delete aligned;
+}
