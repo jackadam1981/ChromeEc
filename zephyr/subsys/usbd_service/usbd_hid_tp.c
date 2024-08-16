@@ -16,6 +16,11 @@
 #include <zephyr/usb/usbd.h>
 LOG_MODULE_DECLARE(usb_hid_tp, LOG_LEVEL_INF);
 
+#if 1 /* TODO: remove it */
+#include "gpio.h"
+#define ITE_TEST_PIN GPIO_ITE_TEST_PIN
+#endif
+
 #define TP_NODE DT_ALIAS(usb_hid_tp)
 BUILD_ASSERT(DT_NODE_EXISTS(TP_NODE),
 	     "Unsupported board: usb-hid-tp devicetree alias is not defined.");
@@ -329,6 +334,7 @@ static int write_tp_report(struct usb_hid_touchpad_report *report)
 			}
 		}
 
+		gpio_set_level(ITE_TEST_PIN, 0);
 		ret = hid_device_submit_report(touchpad.dev, sizeof(*report),
 					       (uint8_t *)report);
 		if (ret) {
@@ -391,6 +397,7 @@ static void tp_in_ready(const struct device *dev)
 	ARG_UNUSED(dev);
 
 	atomic_clear_bit(&touchpad.state, HID_EP_IN_BUSY);
+	gpio_set_level(ITE_TEST_PIN, 1);
 }
 
 static void tp_set_protocol(const struct device *dev, uint8_t protocol)
@@ -518,6 +525,7 @@ static int usb_hid_tp_init(void)
 	}
 
 	atomic_clear_bit(&touchpad.state, HID_EP_IN_BUSY);
+	gpio_set_level(ITE_TEST_PIN, 1);
 
 	return 0;
 
