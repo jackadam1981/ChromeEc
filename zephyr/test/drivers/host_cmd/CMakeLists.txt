@@ -27,6 +27,8 @@ target_sources(app PRIVATE
     src/usb_pd_control.c
     src/usb_pd_host_cmd.c
     src/ap_hang_detect.c
+    src/ucsi_host_cmd.c
+    ${PLATFORM_EC}/zephyr/subsys/ucsi/ucsi_host_cmd.c
 )
 
 add_subdirectory(
