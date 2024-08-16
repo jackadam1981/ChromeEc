@@ -322,7 +322,7 @@ config EMUL_TOUCHPAD_ELAN
 config EMUL_PPM_DRIVER
 	bool "UCSI PPM emulator"
 	default y
-	depends on ZTEST && DT_HAS_UCSI_PPM_ENABLED
+	depends on ZTEST && DT_HAS_UCSI_PPM_ENABLED && TEST_SUITE_UCSI_HOSTCMD
 	help
 	  Enable the UCSI PPM emulator.
 
