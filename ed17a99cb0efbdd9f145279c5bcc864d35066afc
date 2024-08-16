@@ -16,6 +16,24 @@
       "message": "Hi,\n\nPlease do not merge \"977f8173b8 orisa: disable sensors\" i.e \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5740726 \nto the nissa firmware 15217 branch.\n\nIt has dependency on\nCq-Depend: chrome-internal:7535641\nCq-Depend: chrome-internal:7550962\nCq-Depend: chrome-internal:7546747\n\nRequest to add this dependency.",
       "revId": "ed17a99cb0efbdd9f145279c5bcc864d35066afc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df06bb7_ed139e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-08-16T06:29:24Z",
+      "side": 1,
+      "message": "Those dependency are not landed on ToT yet as well, why did we land CL#5740726 on ToT?\n\nDry run pass so this does not seem to block the builder, I think we should land the merge first and fix Orisa one later with those cherrypicks.",
+      "parentUuid": "a7bece4d_9a108715",
+      "revId": "ed17a99cb0efbdd9f145279c5bcc864d35066afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
