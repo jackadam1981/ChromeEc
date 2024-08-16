@@ -21,3 +21,4 @@ board-y+=led.o
 board-y+=pwm.o
 board-y+=sensors.o
 board-y+=usbc_config.o
+board-y+=keyboard_customization.o
