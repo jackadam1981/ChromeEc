@@ -25,9 +25,19 @@ static int test_system_clock()
 	return EC_SUCCESS;
 }
 
+static int test_aligned_allocation()
+{
+	int *aligned = new (static_cast<std::align_val_t>(16)) int;
+	TEST_ASSERT(aligned != nullptr);
+	delete aligned;
+	// TODO: check pointer is actually aligned.
+	return EC_SUCCESS;
+}
+
 void run_test(int, const char **)
 {
 	test_reset();
 	RUN_TEST(test_system_clock);
+	RUN_TEST(test_aligned_allocation);
 	test_print_result();
 }
