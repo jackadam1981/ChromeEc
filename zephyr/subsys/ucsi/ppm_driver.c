@@ -242,7 +242,8 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 
 	/* Intercept and override some values. */
 	switch (ucsi_command) {
-	case UCSI_GET_CAPABILITY:
+	case UCSI_GET_CAPABILITY: {
+	}
 		/* Override the number of supported ports with what's defined in
 		 * device tree.
 		 */
