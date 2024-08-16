@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5adabf26_7843fb17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-16T20:13:47Z",
+      "side": 1,
+      "message": "Patchset 2 fixes the unit test failures, I\u0027ll followup with a pathset to add unit tests for code coverage.",
+      "parentUuid": "a18d40d4_a0d7ebd7",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "62cef30abdcfef605d54fe378970fdef529b545f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4e1916e1_337b1fd0",
@@ -71,6 +95,30 @@
       "writtenOn": "2024-08-16T17:29:34Z",
       "side": 1,
       "message": "This part is temporary. Once we have updated PDC firmware, we can check for Attention in connector status before sending queuing the DP status request. Same for `pdc_snk_attached_run`.",
+      "range": {
+        "startLine": 1415,
+        "startChar": 0,
+        "endLine": 1415,
+        "endChar": 62
+      },
+      "revId": "62cef30abdcfef605d54fe378970fdef529b545f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4766887c_88fecde8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-16T20:13:47Z",
+      "side": 1,
+      "message": "Resolving, no longer queuing the command here in PS2.",
+      "parentUuid": "602aac2c_6b3e1f7e",
       "range": {
         "startLine": 1415,
         "startChar": 0,

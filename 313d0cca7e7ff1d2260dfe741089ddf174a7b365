@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329d2362_46c94b99",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-16T20:13:47Z",
+      "side": 1,
+      "message": "This check is temporary. The issue is that the DP Status update is bit 21 in SET_NOTIFICATION_ENABLE, which is not included in the connector status change bits.\n\nOnce we update PDC firmware, we will be able to SET_NOTIFICATION_ENABLE for Attention messages and explicitly check that the connector change was an Attention.",
+      "range": {
+        "startLine": 1083,
+        "startChar": 7,
+        "endLine": 1083,
+        "endChar": 41
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
