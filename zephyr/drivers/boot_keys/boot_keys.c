@@ -106,11 +106,6 @@ static void boot_keys_input_cb(struct input_event *evt, void *user_data)
 	static uint8_t col;
 	static bool pressed;
 
-	/* Skip early once we settled and cleared all the keys */
-	if (boot_keys_timeout && boot_keys_value == 0) {
-		return;
-	}
-
 	switch (evt->code) {
 	case INPUT_ABS_X:
 		col = evt->value;
