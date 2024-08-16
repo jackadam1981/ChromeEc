@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1d21df8_7afad8f2",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2024-08-16T23:19:37Z",
+      "side": 1,
+      "message": "Hi @peress@google.com\nHere, lid_is_open() is returning \u0027true\u0027 correctly, because this is a scenario of convertible, where tablet mode is entered using command mode and lid is remaining as open. So, reliable \u003d\u003d 0 in motion_lid::calculate_lid_angle cannot happen.      When tablet mode is entered by physical flipping , we get correctly as reliable\u003d0 and behaviour is fine. But this issue is particularly about tablet mode entry through command. As per the change i have made here, eventhough reliable is not 0, based on tablet mode state and the soix  state, kb scanning is disabled. Infact, same is followed in other boards as well. Infact, as the issue described in  crossbug is happening in the scenario of tablet mode entry through command method, i think lid open() \u0026 reliable variable should not be the factors to decide about kb scanning here.",
+      "parentUuid": "8d99ad31_0a18c726",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "5f6fe9e7f9957b258c77a7b1b552db67bf00b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d891211_83fa7e20",
         "filename": "common/lid_angle.c",
         "patchSetId": 1
