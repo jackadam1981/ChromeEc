@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18d40d4_a0d7ebd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-16T17:29:34Z",
+      "side": 1,
+      "message": "This is causing some failures in the pdc_power_mgmt_api test suite. I\u0027ll follow up with a patchset to fix this and add new test for code coverage.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "62cef30abdcfef605d54fe378970fdef529b545f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1916e1_337b1fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-16T17:29:34Z",
+      "side": 1,
+      "message": "Hey Keith and Abhishek,  \ncan you take a look at this implementation for supporting HPD wake. I am still sorting out the unit tests, but was hoping to get feedback while that is in progress. Let me know if you have any questions.",
+      "revId": "62cef30abdcfef605d54fe378970fdef529b545f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602aac2c_6b3e1f7e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-16T17:29:34Z",
+      "side": 1,
+      "message": "This part is temporary. Once we have updated PDC firmware, we can check for Attention in connector status before sending queuing the DP status request. Same for `pdc_snk_attached_run`.",
+      "range": {
+        "startLine": 1415,
+        "startChar": 0,
+        "endLine": 1415,
+        "endChar": 62
+      },
+      "revId": "62cef30abdcfef605d54fe378970fdef529b545f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
