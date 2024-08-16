@@ -54,6 +54,7 @@
 
 		ppm-driver {
 			compatible = "ucsi-ppm";
+			lpm = <&pdc_emul1 &pdc_emul2>;
 		};
 	};
 
