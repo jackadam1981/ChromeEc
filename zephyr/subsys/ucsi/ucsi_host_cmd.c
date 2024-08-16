@@ -18,7 +18,7 @@
 
 LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
 
-static struct ucsi_ppm_device *ppm_dev;
+test_export_static struct ucsi_ppm_device *ppm_dev;
 
 static void opm_notify(void *context)
 {
@@ -26,10 +26,12 @@ static void opm_notify(void *context)
 }
 
 /* Sort of main */
-static int eppm_init(void)
+test_export_static int eppm_init(void)
 {
 	const struct ucsi_pd_driver *drv;
 	const struct device *pdc_dev;
+
+	ppm_dev = NULL;
 
 	pdc_dev = DEVICE_DT_GET(DT_INST(0, ucsi_ppm));
 	if (!device_is_ready(pdc_dev)) {
