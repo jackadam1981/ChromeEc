@@ -242,7 +242,7 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 
 	/* Intercept and override some values. */
 	switch (ucsi_command) {
-	case UCSI_GET_CAPABILITY:
+	case UCSI_GET_CAPABILITY:;
 		/* Override the number of supported ports with what's defined in
 		 * device tree.
 		 */
@@ -310,7 +310,7 @@ static struct ucsi_pd_driver ppm_drv = {
 	.get_active_port_count = ucsi_get_active_port_count,
 };
 
-static int ppm_init(const struct device *device)
+test_export_static int ppm_init(const struct device *device)
 {
 	const struct ppm_config *cfg =
 		(const struct ppm_config *)device->config;
