@@ -3916,6 +3916,12 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 	if (rv == 0) {
 		connector_status->raw_conn_status_change_bits |=
 			pdc->overlay_ppm_changes.raw_value;
+
+		/* TODO(b/360564522) - Sink path status isn't correctly
+		 * reflected in connector status. Just use the local charge
+		 * indicator instead.
+		 */
+		connector_status->sink_path_status = pdc->active_charge;
 	}
 
 	return rv;
