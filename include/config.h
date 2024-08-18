@@ -5603,6 +5603,9 @@
 
 /* Support correct handling of USB suspend (host-initiated). */
 #undef CONFIG_USB_SUSPEND
+#ifdef CONFIG_USB_DEVICE_REMOTE_WAKEUP
+#define CONFIG_USB_SUSPEND
+#endif
 
 /*
  * Enable this config for a USB-EP device that needs to interop properly with a

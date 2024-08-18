@@ -8,6 +8,7 @@
 
 #include "hooks.h"
 #include "queue.h"
+#include "usb_api.h"
 
 #include <stdint.h>
 #include <stdlib.h>
