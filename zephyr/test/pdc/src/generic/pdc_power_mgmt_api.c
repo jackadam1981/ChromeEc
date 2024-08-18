@@ -74,6 +74,41 @@ static void pdc_power_mgmt_after(void *fixture)
 ZTEST_SUITE(pdc_power_mgmt_api, NULL, pdc_power_mgmt_setup,
 	    pdc_power_mgmt_before, pdc_power_mgmt_after, NULL);
 
+ZTEST_USER(pdc_power_mgmt_api, test_set_new_power_request)
+{
+	uint32_t rdo;
+	union connector_status_t connector_status;
+	const uint32_t pdo_15W[] = {
+		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE),
+	};
+	const uint32_t pdo_27W[] = {
+		PDO_FIXED(9000, 3000, PDO_FIXED_DUAL_ROLE),
+	};
+
+	pdc_power_mgmt_set_new_power_request(TEST_PORT);
+
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+			  pdo_15W);
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	zassert_true(
+		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+	LOG_INF("RDO obj pos before: %d", RDO_POS(rdo));
+
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_1, 1, PARTNER_PDO,
+			  pdo_27W);
+	pdc_power_mgmt_set_new_power_request(TEST_PORT);
+	k_msleep(500);
+	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+	LOG_INF("RDO obj pos after: %d", RDO_POS(rdo));
+
+	/* The 27W PDO at position 2 must be selected after the new power
+	 * request.
+	 */
+	zassert_equal(RDO_POS(rdo), 2);
+}
+
 /* TODO(b/345292002): The tests below fail with the TPS6699x emulator/driver. */
 #ifndef CONFIG_TODO_B_345292002
 
