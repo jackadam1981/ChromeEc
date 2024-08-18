@@ -18,7 +18,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt_api);
+LOG_MODULE_REGISTER(pdc_power_mgmt_api, LOG_LEVEL_INF);
 
 #define PDC_TEST_TIMEOUT 2000
 #define RTS5453P_NODE DT_NODELABEL(pdc_emul1)
@@ -1574,6 +1574,51 @@ ZTEST_USER(pdc_power_mgmt_api, test_sysjump_policy_on)
 }
 
 /**
+<<<<<<< PATCH SET (aea30d pdc_power_mgmt: Test new power request)
+ * @brief Helper function for getting object position in RDO from the emulator
+ */
+static int get_obj_pos_from_rdo()
+{
+	uint32_t rdo;
+
+	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+	return RDO_POS(rdo);
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_set_new_power_request)
+{
+	union connector_status_t connector_status;
+	const uint32_t pdo_15W[] = {
+		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE),
+	};
+	const uint32_t pdo_27W[] = {
+		PDO_FIXED(9000, 3000, PDO_FIXED_DUAL_ROLE),
+	};
+
+	/* This should result in no-op */
+	zassert_not_ok(pdc_power_mgmt_set_new_power_request(TEST_PORT));
+
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+			  pdo_15W);
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	zassert_true(
+		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	LOG_DBG("RDO position before new power request: %d",
+		get_obj_pos_from_rdo());
+
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_1, 1, PARTNER_PDO,
+			  pdo_27W);
+	pdc_power_mgmt_set_new_power_request(TEST_PORT);
+
+	/* The 27W PDO at position 2 must be selected after the new power
+	 * request.
+	 */
+	zassert_true(
+		TEST_WAIT_FOR(get_obj_pos_from_rdo() == 2, PDC_TEST_TIMEOUT));
+	LOG_DBG("RDO position after new power request: %d",
+		get_obj_pos_from_rdo());
+=======
  * @brief Helper function for polling sink path status
  */
 static bool is_sink_path_enabled()
@@ -1598,6 +1643,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_set_active_charge_port)
 	zassert_ok(board_set_active_charge_port(TEST_PORT));
 	/* Sink path should be enabled after activating TEST_PORT */
 	zassert_true(TEST_WAIT_FOR(is_sink_path_enabled(), PDC_TEST_TIMEOUT));
+>>>>>>> BASE      (30dc74 pdc_poewr_mgmt: pdc_power_mgmt_set_new_power_request() shoul)
 }
 
 /*
