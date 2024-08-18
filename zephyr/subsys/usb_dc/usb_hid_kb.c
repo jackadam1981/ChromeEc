@@ -327,7 +327,7 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 			return;
 		}
 
-		if (check_usb_is_suspended()) {
+		if (usb_is_suspended()) {
 			if (!request_usb_wake()) {
 				return;
 			}
@@ -359,12 +359,12 @@ static void hid_kb_proc_queue(void)
 	mutex_lock(report_queue_mutex);
 
 	/* clear queue if the usb dc status is reset or disconected */
-	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
+	if (!check_usb_is_configured() && !usb_is_suspended()) {
 		queue_remove_units(&report_queue, NULL,
 				   queue_count(&report_queue));
 		mutex_unlock(report_queue_mutex);
 		return;
-	} else if (check_usb_is_suspended()) {
+	} else if (usb_is_suspended()) {
 		if (!request_usb_wake()) {
 			goto next;
 		}

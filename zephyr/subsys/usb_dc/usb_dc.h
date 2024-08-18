@@ -9,10 +9,10 @@
 #define __USB_DC_H
 
 #include "common.h"
+#include "usb_api.h"
 
 #include <zephyr/usb/usb_ch9.h>
 
-bool check_usb_is_suspended(void);
 bool check_usb_is_configured(void);
 
 /**

@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "hooks.h"
 #include "usb_dc.h"
 
 #include <zephyr/logging/log.h>
@@ -13,6 +14,14 @@ struct usb_controller_status {
 	bool suspended;
 	bool configured;
 };
+
+#ifdef CONFIG_USB_DEVICE_REMOTE_WAKEUP
+static void usb_pm_change_notify_hooks(void)
+{
+	hook_notify(HOOK_USB_PM_CHANGE);
+}
+DECLARE_DEFERRED(usb_pm_change_notify_hooks);
+#endif
 
 struct usb_controller_status usb_dc_status;
 
@@ -32,18 +41,33 @@ static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 		break;
 	case USB_DC_SUSPEND:
 		usb_dc_status.suspended = true;
+#ifdef CONFIG_USB_DEVICE_REMOTE_WAKEUP
+		hook_call_deferred(&usb_pm_change_notify_hooks_data, 0);
+#endif
 		break;
 	case USB_DC_RESUME:
 		usb_dc_status.suspended = false;
+#ifdef CONFIG_USB_DEVICE_REMOTE_WAKEUP
+		hook_call_deferred(&usb_pm_change_notify_hooks_data, 0);
+#endif
 		break;
 	default:
 		break;
 	}
 }
 
-bool check_usb_is_suspended(void)
+int usb_is_remote_wakeup_enabled(void)
 {
-	return usb_dc_status.suspended;
+	if (IS_ENABLED(CONFIG_USB_DEVICE_REMOTE_WAKEUP)) {
+		return (usb_get_remote_wakeup_status()) ? 1 : 0;
+	}
+
+	return 0;
+}
+
+int usb_is_suspended(void)
+{
+	return usb_dc_status.suspended ? 1 : 0;
 }
 
 bool check_usb_is_configured(void)

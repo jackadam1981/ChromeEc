@@ -368,7 +368,7 @@ __overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
 
 	mutex_lock(report_queue_mutex);
 
-	if (!check_usb_is_suspended()) {
+	if (!usb_is_suspended()) {
 		if (queue_is_empty(&report_queue)) {
 			if (write_tp_report(report) == -EBUSY) {
 				goto add_queue;
@@ -407,12 +407,12 @@ static void hid_tp_proc_queue(void)
 	mutex_lock(report_queue_mutex);
 
 	/* clear queue if the usb dc status is reset or disconected */
-	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
+	if (!check_usb_is_configured() && !usb_is_suspended()) {
 		queue_remove_units(&report_queue, NULL,
 				   queue_count(&report_queue));
 		mutex_unlock(report_queue_mutex);
 		return;
-	} else if (check_usb_is_suspended()) {
+	} else if (usb_is_suspended()) {
 		if (!request_usb_wake()) {
 			goto next;
 		}
