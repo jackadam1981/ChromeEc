@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d317c4a_d07e6f46",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-19T21:33:33Z",
+      "side": 1,
+      "message": "It might be helpful to mention that here, just so people don\u0027t have to go looking for it.",
+      "parentUuid": "45974370_83a2d7a4",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e844401f_3b55cf2a",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 4
