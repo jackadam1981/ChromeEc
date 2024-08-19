@@ -106,7 +106,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "banshee",
     "berknip",
     "bloog",
-    "bobba",
     "boldar",
     "brask",
     "brya",
@@ -243,6 +242,7 @@ NDS32_BOARDS = [
     "adlrvpm_ite",
     "adlrvpp_ite",
     "ampton",
+    "awasuki",
     "beadrix",
     "beetley",
     "blipper",
@@ -304,6 +304,7 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "volteer",
     "willow",
     # Not enough flash space with CONFIG_POWER_SLEEP_FAILURE_DETECTION enabled
+    "bobba",
     "burnet",
     "coachz",
     "corori2",
