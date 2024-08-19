@@ -46,6 +46,53 @@
       },
       "revId": "14fcf7efbbc0ba884414a4730a45d6a43e636a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1eec2d8_a0cda547",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-19T18:29:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9295c7bb_e33c9c78",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "14fcf7efbbc0ba884414a4730a45d6a43e636a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "260a3cff_cf06e8b3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-19T18:29:12Z",
+      "side": 1,
+      "message": "add /* CONFIG_AP_PWRSEQ_DRIVER */",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "14fcf7efbbc0ba884414a4730a45d6a43e636a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
