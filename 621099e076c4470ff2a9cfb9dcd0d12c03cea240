@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f48486_e13172c0",
+        "filename": "android/android_generated_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-08-19T20:13:32Z",
+      "side": 1,
+      "message": "Please add the bug that\u0027s tracking this work.\n\n----\n\nAre you sure you want this updated with every commit to this directory? I would have expected this is only desired whenever `gsc_utils` is rolled into Android, which would batch several commits together.\n\nAlternatively, leave it with default strings forever, and use the Android build ID to determine the version of `gsc_utils` that was used.\n\nAs a third alternative, I wonder if it\u0027s possible to refactor the code to move the uses of these definitions to a separate CrOS-specific file which is not included in the Android build at all, and then you can delete this file. I don\u0027t know how hard that would be to achieve though.",
+      "revId": "621099e076c4470ff2a9cfb9dcd0d12c03cea240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c614734_6b1b659c",
+        "filename": "android/android_generated_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-08-19T20:13:32Z",
+      "side": 1,
+      "message": "nit: auto-generate\n\nAlso, line length.",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "621099e076c4470ff2a9cfb9dcd0d12c03cea240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a970f843_953edfe5",
+        "filename": "android/android_generated_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-08-19T20:13:32Z",
+      "side": 1,
+      "message": "nit: and/or",
+      "range": {
+        "startLine": 8,
+        "startChar": 48,
+        "endLine": 8,
+        "endChar": 54
+      },
+      "revId": "621099e076c4470ff2a9cfb9dcd0d12c03cea240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
