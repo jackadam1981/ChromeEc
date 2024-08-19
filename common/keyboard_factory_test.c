@@ -99,3 +99,21 @@ static enum ec_status keyboard_factory_test(struct host_cmd_handler_args *args)
 
 DECLARE_HOST_COMMAND(EC_CMD_KEYBOARD_FACTORY_TEST, keyboard_factory_test,
 		     EC_VER_MASK(0));
+
+static int command_kb_factorytest(int argc, const char **argv)
+{
+	int shorted;
+
+	if (keyboard_factory_scan_pins_used == 0) {
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	shorted = keyboard_factory_test_scan();
+
+	ccprintf("Keyboard factory test: shorted=%d\n", shorted);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(kb_factorytest, command_kb_factorytest,
+			"kb_factorytest", "Run the keyboard factory test");
