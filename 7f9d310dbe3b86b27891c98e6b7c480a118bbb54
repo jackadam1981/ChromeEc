@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0344eb_6f93a3f8",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-19T21:15:39Z",
+      "side": 1,
+      "message": "Will this do anything? We shouldn\u0027t be connected yet, so it should be a no-op.",
+      "revId": "7f9d310dbe3b86b27891c98e6b7c480a118bbb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
