@@ -16,6 +16,24 @@
       "message": "can we base this on a group instead, Something like https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/third_party/chromiumos-overlay/chromeos-base/chromeos-cr50-dev/OWNERS;l\u003d1?q\u003df:OWNER%20f:cr50\u0026ss\u003dh%2Fchrome-internal%2Fchromeos%2Fsuperproject%2F%2B%2Frefs%2Fheads%2Fmain ?",
       "revId": "5868bba0ebed2c0f083cc09115b0ee28386cd23f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73dc6a6_2fdca2fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-08-19T21:22:07Z",
+      "side": 1,
+      "message": "Pretty sure we could, but to the best of my knowledge, not on precisely that group unless we\u0027re willing to go through the process of importing chromiumos-overlay as another third party project. \n\nWe could create a new file in the Android checkout to track GSC owners that could be reused in multiple places much as OWNERS.cros_gsc, but wouldn\u0027t be synced \n\nAlso looks like we could control ownership via an MDB group. https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:vendor/google_testing/pts/tests/hal/aam/OWNERS?q\u003dOWNERS%20mdb\u0026sq\u003d(%20repo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20AND%20b:main%20)%20OR%20(%20repo:android%2Fplatform%2Fsuperproject%2Fmain%20AND%20b:main%20)%20%20OR%20(%20repo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain-al-dev%20AND%20b:main-al-dev%20)",
+      "parentUuid": "ca47c2ff_b9e1f194",
+      "revId": "5868bba0ebed2c0f083cc09115b0ee28386cd23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
