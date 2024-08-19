@@ -55,7 +55,7 @@
 			enum-name = "GPIO_AP_IN_SLEEP_L";
 		};
 		gpio_ap_xhci_init_done_r: ap_xhci_init_done_r {
-			gpios = <&gpioj 4 (GPIO_INPUT)>;
+			gpios = <&gpioj 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpioe 5 (GPIO_INPUT)>;
