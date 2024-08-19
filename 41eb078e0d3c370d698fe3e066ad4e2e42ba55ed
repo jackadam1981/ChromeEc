@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf7e39b_826d9c72",
+        "filename": "zephyr/test/pdc/src/util_pcap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-19T15:37:34Z",
+      "side": 1,
+      "message": "This converts ticks to microseconds while original code calculated microseconds above full second.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "41eb078e0d3c370d698fe3e066ad4e2e42ba55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
