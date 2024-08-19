@@ -22,6 +22,30 @@
       },
       "revId": "99b3e5c7fea26374d9a4c08c81bfb34bebe27c69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e566bd5_673d8067",
+        "filename": "zephyr/program/brox/jubilant/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-19T19:24:38Z",
+      "side": 1,
+      "message": "And VIVALDI_TK_KBD_BKLIGHT_TOGGLE is removed. It\u0027s nice to mention these in the commit message.",
+      "parentUuid": "3ccfcb68_ea093d4d",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "99b3e5c7fea26374d9a4c08c81bfb34bebe27c69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
