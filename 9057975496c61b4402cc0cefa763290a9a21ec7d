@@ -105,6 +105,24 @@
       "parentUuid": "80fa854d_cfba369d",
       "revId": "9057975496c61b4402cc0cefa763290a9a21ec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920837ca_230b9aa0",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-19T21:29:04Z",
+      "side": 1,
+      "message": "If those are the two options, my strong preference would be for option 1. The wait times in `native_sim` are made-up, i.e. waiting longer doesn\u0027t actually take more wall clock or CPU time. There\u0027s no advantage to having something happen \"faster.\" There is an advantage to not adding test hooks to `pdc_power_mgmt.c`.\n\nI think the ultimate solution to problems like this is to properly implement wait-for-idle in the emulators. Right now, it\u0027s the drivers waiting until no commands are active, which is another inappropriate test hook. It should really be the emulators waiting until no commands have been in flight for X ms. If that existed, you could use it here to know when `pdc_power_mgmt` was done reacting to `set_active_charge_port`.",
+      "parentUuid": "952d7b37_047f6277",
+      "revId": "9057975496c61b4402cc0cefa763290a9a21ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
