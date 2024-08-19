@@ -16,6 +16,23 @@
       "message": "common.mk was also modified to make this change ag/28764708",
       "revId": "a9ba26fc371c7de9d53b28a660e9dc8e2a20f819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252babe9_17bf2afa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-08-19T18:35:32Z",
+      "side": 1,
+      "message": "This seems reasonable to me. +2. Maybe give Andrey and other reviewer a day to take a look before submitting though?",
+      "revId": "a9ba26fc371c7de9d53b28a660e9dc8e2a20f819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
