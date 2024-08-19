@@ -91,13 +91,6 @@ static inline void keyboard_raw_gpio_interrupt(enum gpio_signal signal)
 #endif /* !HAS_TASK_KEYSCAN */
 
 /**
- * Run keyboard factory test scanning.
- *
- * @return non-zero if keyboard pins are shorted.
- */
-int keyboard_factory_test_scan(void);
-
-/**
  * Return true if the current value of the given input GPIO port is zero
  *
  * @param port: GPIO port/bank number
