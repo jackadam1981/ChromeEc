@@ -22,6 +22,30 @@
       },
       "revId": "14fcf7efbbc0ba884414a4730a45d6a43e636a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9295c7bb_e33c9c78",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-08-19T16:40:12Z",
+      "side": 1,
+      "message": "All of them are logically related to board power. I think we can rather keep it this way for now. In case there are more non AP_PWRSEQ_DRIVER related functions later, we can split then.",
+      "parentUuid": "b363691f_ea0dfad8",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "14fcf7efbbc0ba884414a4730a45d6a43e636a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
