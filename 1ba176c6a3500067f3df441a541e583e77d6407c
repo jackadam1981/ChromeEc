@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19eb2cc0_2505d3cb",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-19T20:37:53Z",
+      "side": 1,
+      "message": "Good catch -- this is actually missing from the PPM API entirely. Opened b/360881314 to track this instead.",
+      "parentUuid": "3e402403_83388856",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b59a42ae_cc43bcbf",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45974370_83a2d7a4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-19T20:37:53Z",
+      "side": 1,
+      "message": "Yes. TRM shows INPUT DATAx 14:8 for connector number which will be part of command specific.",
+      "parentUuid": "b59a42ae_cc43bcbf",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e844401f_3b55cf2a",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-08-14T17:14:54Z",
       "side": 1,
       "message": "Should this be `0x7f`?",
+      "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d001892_fa7ecc54",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-19T20:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e844401f_3b55cf2a",
       "revId": "1ba176c6a3500067f3df441a541e583e77d6407c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
