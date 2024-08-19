@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04890e30_c59bda9a",
+        "filename": "android/android_generated_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-08-19T21:08:33Z",
+      "side": 1,
+      "message": "Intentionally kept TODO line length long to ensure the TODO didn\u0027t get cut in half by any external tools. Not sure if that\u0027s best practice however. With added bug and shortened description not an issue anyways.",
+      "parentUuid": "4c614734_6b1b659c",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 40
+      },
+      "revId": "621099e076c4470ff2a9cfb9dcd0d12c03cea240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b607ee4f_571ad86a",
+        "filename": "android/android_generated_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-08-19T21:08:33Z",
+      "side": 1,
+      "message": "Added bug b/360918766\n\nUpdating on each merge to Android instead of each commit sounds like a good idea. If we\u0027re okay with mild divergence, the Android Build ID is also a good idea. \n\nRE: Refactoring out the code entirely - I\u0027m sure we could do something like that without too much trouble, usage of `generated_version.h` is contained to just `gsctool -v`. However, we are going to eventually want version info for Android, so designing it like this sets up for that outcome.",
+      "parentUuid": "f3f48486_e13172c0",
+      "revId": "621099e076c4470ff2a9cfb9dcd0d12c03cea240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a970f843_953edfe5",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-08-19T20:13:32Z",
       "side": 1,
       "message": "nit: and/or",
+      "range": {
+        "startLine": 8,
+        "startChar": 48,
+        "endLine": 8,
+        "endChar": 54
+      },
+      "revId": "621099e076c4470ff2a9cfb9dcd0d12c03cea240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7791a906_a6d60e2b",
+        "filename": "android/android_generated_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-08-19T21:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a970f843_953edfe5",
       "range": {
         "startLine": 8,
         "startChar": 48,
