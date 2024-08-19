@@ -1,0 +1,114 @@
+# Copyright 2024 Google LLC
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+  Keyboard factory test definitions.
+
+  This configures the keyboard factory test functionality.
+
+  Example configuration:
+
+  TODO
+
+compatible: "cros-ec,keyboard-factory-test"
+
+include: base.yaml
+
+properties:
+  pin1-gpios:
+    type: phandle-array
+    description: The gpio connected to the keyboard connector pin 1.
+
+  pin2-gpios:
+    type: phandle-array
+
+  pin3-gpios:
+    type: phandle-array
+
+  pin4-gpios:
+    type: phandle-array
+
+  pin5-gpios:
+    type: phandle-array
+
+  pin6-gpios:
+    type: phandle-array
+
+  pin7-gpios:
+    type: phandle-array
+
+  pin8-gpios:
+    type: phandle-array
+
+  pin9-gpios:
+    type: phandle-array
+
+  pin10-gpios:
+    type: phandle-array
+
+  pin11-gpios:
+    type: phandle-array
+
+  pin12-gpios:
+    type: phandle-array
+
+  pin13-gpios:
+    type: phandle-array
+
+  pin14-gpios:
+    type: phandle-array
+
+  pin15-gpios:
+    type: phandle-array
+
+  pin16-gpios:
+    type: phandle-array
+
+  pin17-gpios:
+    type: phandle-array
+
+  pin18-gpios:
+    type: phandle-array
+
+  pin19-gpios:
+    type: phandle-array
+
+  pin20-gpios:
+    type: phandle-array
+
+  pin21-gpios:
+    type: phandle-array
+
+  pin22-gpios:
+    type: phandle-array
+
+  pin23-gpios:
+    type: phandle-array
+
+  pin24-gpios:
+    type: phandle-array
+
+  pin25-gpios:
+    type: phandle-array
+
+  pin26-gpios:
+    type: phandle-array
+
+  pin27-gpios:
+    type: phandle-array
+
+  pin28-gpios:
+    type: phandle-array
+
+  pin29-gpios:
+    type: phandle-array
+
+  pin30-gpios:
+    type: phandle-array
+
+  pin31-gpios:
+    type: phandle-array
+
+  pin32-gpios:
+    type: phandle-array
