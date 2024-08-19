@@ -93,6 +93,7 @@
 	tcpc_ps8815_port1: ps8xxx@b {
 		compatible = "parade,ps8xxx", "cros,i2c-mock";
 		reg = <0x0b>;
+		rst-gpios = <&gpio0 12 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
 		is-alt;
 	};
 

@@ -7,7 +7,9 @@
 #include "hooks.h"
 #include "usb_mux.h"
 #include "usb_mux_config.h"
+#include "usb_pd.h"
 #include "usbc/usb_muxes.h"
+#include "usbc_config.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/fff.h>
@@ -66,6 +68,9 @@ ZTEST_USER(usb_mux_config, test_setup_usb_db)
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(1, usb_db_type);
+
+	zassert_true(board_is_tbt_usb4_port(USBC_PORT_C0));
+	zassert_false(board_is_tbt_usb4_port(USBC_PORT_C1));
 }
 
 ZTEST_USER(usb_mux_config, test_setup_usb_db_anx7452)
@@ -88,6 +93,9 @@ ZTEST_USER(usb_mux_config, test_setup_usb_db_hb)
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(4, usb_db_type);
+
+	zassert_true(board_is_tbt_usb4_port(USBC_PORT_C0));
+	zassert_true(board_is_tbt_usb4_port(USBC_PORT_C1));
 }
 
 ZTEST_USER(usb_mux_config, test_setup_usb_db_no_usb_db)
@@ -110,6 +118,38 @@ ZTEST_USER(usb_mux_config, test_setup_usb_db_error_reading_cbi)
 
 	zassert_equal(1, cros_cbi_get_fw_config_fake.call_count);
 	zassert_equal(0, usb_db_type);
+}
+
+ZTEST_USER(usb_mux_config, test_reset_pd_mcu_usb3)
+{
+	cros_cbi_get_fw_config_fake.custom_fake = mock_cros_cbi_get_fw_config;
+
+	hook_notify(HOOK_INIT);
+
+	board_reset_pd_mcu();
+}
+
+ZTEST_USER(usb_mux_config, test_reset_pd_mcu_hb)
+{
+	cros_cbi_get_fw_config_fake.custom_fake =
+		mock_cros_cbi_get_fw_config_hb;
+
+	hook_notify(HOOK_INIT);
+
+	board_reset_pd_mcu();
+}
+
+ZTEST_USER(usb_mux_config, test_charge_port_none)
+{
+	cros_cbi_get_fw_config_fake.custom_fake =
+		mock_cros_cbi_get_fw_config_hb;
+
+	hook_notify(HOOK_INIT);
+
+	zassert_equal(EC_ERROR_INVAL, board_set_active_charge_port(9));
+	zassert_equal(EC_SUCCESS,
+		      board_set_active_charge_port(CHARGE_PORT_NONE));
+	zassert_equal(EC_SUCCESS, board_set_active_charge_port(USBC_PORT_C0));
 }
 
 ZTEST_SUITE(usb_mux_config, NULL, NULL, usb_mux_config_before, NULL, NULL);
