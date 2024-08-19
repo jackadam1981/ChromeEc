@@ -33,7 +33,6 @@ LOG_MODULE_REGISTER(boot_keys, LOG_LEVEL_INF);
 static uint32_t boot_keys_value;
 static uint32_t boot_keys_value_external;
 static uint32_t boot_keys_counter;
-static bool boot_keys_timeout;
 struct k_work_delayable boot_keys_timeout_dwork;
 
 #define BOOT_KEY_INIT(prop)                               \
@@ -100,16 +99,11 @@ static void process_key(uint8_t row, uint8_t col, bool pressed)
 		boot_keys_value, boot_keys_counter, row, col);
 }
 
-static void boot_keys_input_cb(struct input_event *evt)
+static void boot_keys_input_cb(struct input_event *evt, void *user_data)
 {
 	static uint8_t row;
 	static uint8_t col;
 	static bool pressed;
-
-	/* Skip early once we settled and cleared all the keys */
-	if (boot_keys_timeout && boot_keys_value == 0) {
-		return;
-	}
 
 	switch (evt->code) {
 	case INPUT_ABS_X:
@@ -129,15 +123,11 @@ static void boot_keys_input_cb(struct input_event *evt)
 
 	process_key(row, col, pressed);
 }
-INPUT_CALLBACK_DEFINE(DEVICE_DT_GET(CROS_EC_KEYBOARD_NODE), boot_keys_input_cb);
+INPUT_CALLBACK_DEFINE(DEVICE_DT_GET(CROS_EC_KEYBOARD_NODE), boot_keys_input_cb,
+		      NULL);
 
 static void power_button_change(void)
 {
-	/* Skip early once we settled and cleared all the keys */
-	if (boot_keys_timeout && boot_keys_value == 0) {
-		return;
-	}
-
 	if (power_button_is_pressed()) {
 		WRITE_BIT(boot_keys_value, BOOT_KEY_POWER, 1);
 		boot_keys_counter++;
@@ -158,8 +148,6 @@ uint32_t keyboard_scan_get_boot_keys(void)
 
 static void boot_keys_timeout_handler(struct k_work *work)
 {
-	boot_keys_timeout = true;
-
 	if (boot_keys_counter > POPCOUNT(boot_keys_value)) {
 		LOG_WRN("boot_keys: stray keys, skipping");
 		return;
@@ -222,7 +210,6 @@ void test_reset(void)
 	boot_keys_value = 0;
 	boot_keys_value_external = 0;
 	boot_keys_counter = 0;
-	boot_keys_timeout = false;
 }
 
 void test_reinit(void)
