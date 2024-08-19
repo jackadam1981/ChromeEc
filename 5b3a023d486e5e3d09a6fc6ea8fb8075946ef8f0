@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c2555a_bb397558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-19T18:50:00Z",
+      "side": 1,
+      "message": "Note for reviewers. Looks like CQ is still failing with:\n\n```\nld.lld: error: undefined symbol: operator new(unsigned int, std::align_val_t)\n\u003e\u003e\u003e referenced by libcxx.cc:32 (test/libcxx.cc:32)\n\u003e\u003e\u003e               build/dartmonkey/libcxx/RW/libcxx.RW.elf.lto.o:(command_run_test)\nclang++: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:610: build/dartmonkey/libcxx/RW/libcxx.RW.elf] Error 1\n```\n\nLooks like I will have to wait a bit for `libcxx` to be updated.",
+      "revId": "5b3a023d486e5e3d09a6fc6ea8fb8075946ef8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
