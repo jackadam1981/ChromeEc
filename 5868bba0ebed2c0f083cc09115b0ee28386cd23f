@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca47c2ff_b9e1f194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-08-19T20:01:28Z",
+      "side": 1,
+      "message": "can we base this on a group instead, Something like https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/third_party/chromiumos-overlay/chromeos-base/chromeos-cr50-dev/OWNERS;l\u003d1?q\u003df:OWNER%20f:cr50\u0026ss\u003dh%2Fchrome-internal%2Fchromeos%2Fsuperproject%2F%2B%2Frefs%2Fheads%2Fmain ?",
+      "revId": "5868bba0ebed2c0f083cc09115b0ee28386cd23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
