@@ -23,7 +23,6 @@ elseif(DEFINED CONFIG_BOARD_GREENBAYUPOC)
 	zephyr_library_sources("src/usbc.c")
 elseif(DEFINED CONFIG_BOARD_JUBILANT)
 	project(jubilant)
-	add_subdirectory(jubilant)
 
 	zephyr_include_directories("jubilant/include")
 	zephyr_library_sources("src/hibernate.c")
