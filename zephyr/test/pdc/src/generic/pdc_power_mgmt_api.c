@@ -512,7 +512,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_data_swap_capable)
 		zassert_equal(test[i].expected,
 			      pd_get_partner_data_swap_capable(TEST_PORT),
 			      "[%d] expected=%d, ccap=0x%X", i,
-			      test[i].expected, test[i].ccap);
+			      test[i].expected, test[i].ccap.raw_value);
 
 		emul_pdc_disconnect(emul);
 		zassert_true(TEST_WAIT_FOR(!pd_is_connected(TEST_PORT),
@@ -1471,7 +1471,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_identity_discovery)
 			TEST_PORT, test[i].s.type);
 		zassert_equal(test[i].expected_state, actual_state,
 			      "%s: expected state %d, actual %d",
-			      test[i].description, test[i].expected_state);
+			      test[i].description, test[i].expected_state,
+			      actual_state);
 
 		emul_pdc_disconnect(emul);
 		zassert_true(
