@@ -3207,17 +3207,6 @@
 #undef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 
 /*
- * Enable keyboard testing functionality. This enables a message which receives
- * a list of keyscan events from the AP and processes them.  This will cause
- * keypresses to appear on the AP through the same mechanism as a normal
- * keyboard press.
- *
- * This can be used to spoof keyboard events, so is not normally defined,
- * except during internal testing.
- */
-#undef CONFIG_KEYBOARD_TEST
-
-/*
  * Enable quasi-bidirectional buffers for KSO pins. It has an open-drain output
  * and a low-impedance pull-up. The low-impedance pull-up is active when ec
  * changes the output data buffers from 0 to 1, thereby reducing the
