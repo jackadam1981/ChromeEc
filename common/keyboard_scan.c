@@ -19,7 +19,6 @@
 #include "keyboard_protocol.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
-#include "keyboard_test.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "printf.h"
@@ -360,10 +359,6 @@ static int read_matrix(uint8_t *state, bool at_boot)
 #else
 		state[c] = keyboard_raw_read_rows();
 #endif
-
-		/* Use simulated keyscan sequence instead if testing active */
-		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
-			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
 
 	if (pb_pressed && at_boot) {

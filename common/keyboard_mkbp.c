@@ -13,7 +13,6 @@
 #include "keyboard_protocol.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
-#include "keyboard_test.h"
 #include "mkbp_event.h"
 #include "mkbp_fifo.h"
 #include "task.h"
