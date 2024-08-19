@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8900fcae_fa068bb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-19T20:44:21Z",
+      "side": 1,
+      "message": "I think this is an appropriate, correct incremental change to our PRS policy.\n\nOne thought: In TCPMv2, we also have separate flags/variables for sending PRS and accepting PRS, and the effect of the flags depends on the current power role. That means that for the flags to do what we want, the DPM/host command and the PE have to keep in sync about the current power role. And all the code that modifies the flags has to keep the send/accept flags coherent with each other. It\u0027s a bit complicated, and it makes power policy harder to understand and change.\n\nI had hoped to simplify it by having a single state bit for the preferred power role, and the PE would just do whatever it needed to to get to that power role. I made a tiny bit of progress in that direction last year, but it\u0027s not there yet.\n\nNow we have a completely new PD implementation, and as we reimplement the power policy, we\u0027re creating a very similar set of interlocked policy flags. If it\u0027s possible to simplify the state that we carry around or explicitly couple the desired action to the desired power role, I think that would be a good change to make soon. I suspect that we could get away with a single bit for the desired power role and maybe another bit for whether it\u0027s OK to force the role change if a PRS fails.\n\nBut that would a big change to hold up a bug fix for, so don\u0027t worry about it for this CL.",
+      "revId": "2b55cae907a00d9b12c84fcf5fc4b33871e0d2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b375e31c_c9513f3b",
@@ -14,6 +31,30 @@
       "writtenOn": "2024-08-19T16:06:43Z",
       "side": 1,
       "message": "I\u0027m wondering if we really need to send this command each time we go through either the SRC or SNK attached states. These states were added very early on when there wasn\u0027t really any other mechanism to set the accept_pr_swap bit. With the hooks that are added in this CL, isn\u0027t it the case now that the SET_PDR will be queued any time the accept_pr_swap policy is being changed?",
+      "range": {
+        "startLine": 1428,
+        "startChar": 6,
+        "endLine": 1428,
+        "endChar": 37
+      },
+      "revId": "2b55cae907a00d9b12c84fcf5fc4b33871e0d2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c140920_36ab1fd2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-19T20:44:21Z",
+      "side": 1,
+      "message": "+1. This flag change will take effect in a few cycles.",
+      "parentUuid": "b375e31c_c9513f3b",
       "range": {
         "startLine": 1428,
         "startChar": 6,
