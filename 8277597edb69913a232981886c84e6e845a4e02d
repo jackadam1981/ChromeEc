@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "732988cf_d9b4510f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-19T21:10:25Z",
+      "side": 1,
+      "message": "This seems like a separate bug fix. Should it be its own CL?",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f0be14d_235f8643",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
