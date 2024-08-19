@@ -262,10 +262,11 @@ enum pdo_augmented_pps {
 #define PD_T_SENDER_RESPONSE (30 * MSEC) /* between 24ms and 30ms */
 #else
 /*
- * In USB Power Delivery Specification Revision 3.1, Version 1.5,
- * the tSenderResponse have changed to min 26/ max 32 ms.
+ * In USB Power Delivery Specification Revision 3.2, Version 1.0,
+ * the tSenderResponse have changed to min 27/ max 33 ms.
  */
-#define PD_T_SENDER_RESPONSE (26 * MSEC) /* between 26ms and 32ms */
+#define PD2_T_SENDER_RESPONSE (24 * MSEC) /* between 24ms and 30ms */
+#define PD3_T_SENDER_RESPONSE (27 * MSEC) /* between 27ms and 33ms */
 #endif
 #define PD_T_PS_TRANSITION (500 * MSEC) /* between 450ms and 550ms */
 /*
