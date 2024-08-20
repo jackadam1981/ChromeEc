@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606e4524_d1cce560",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5258,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-08-20T23:28:19Z",
+      "side": 1,
+      "message": "The diff is displayed horribly.  What I have done here is moved a block of about 30 lines out of the above `if (!vid \u0026\u0026 !pid)` without otherwise changing it.",
+      "revId": "3f544b55c6b7e947eb5ec95596f822f84af420a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
