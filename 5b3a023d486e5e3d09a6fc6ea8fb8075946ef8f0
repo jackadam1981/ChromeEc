@@ -33,6 +33,24 @@
       "message": "There is a similar Zephyr [test](https://github.com/zephyrproject-rtos/zephyr/blob/e60da1bd640a37370870a83277142dd560f1fb8d/tests/lib/cpp/libcxx/src/main.cpp#L104), but it needs some changes before enabling that.",
       "revId": "5b3a023d486e5e3d09a6fc6ea8fb8075946ef8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc4c175_be9dc57e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-20T18:43:59Z",
+      "side": 1,
+      "message": "Looks like it is first included in [`libcxx-19.0_pre530567-r43`](https://source.chromium.org/chromiumos/_/chromium/chromiumos/overlays/chromiumos-overlay/+/5c10af2d775b9746bc25d75d77a8eeb7067f1589:sys-libs/libcxx/libcxx-19.0_pre530567-r43.ebuild;dlc\u003dac93fc7572f22dfffbcfd88ae1ffabead3a8ac93), but the [ChromiumOS SDK builder](https://luci-scheduler.appspot.com/jobs/chromeos/build-chromiumos-sdk) has not successfully built a new version of the SDK since then: http://b/360987147.",
+      "parentUuid": "a1c2555a_bb397558",
+      "revId": "5b3a023d486e5e3d09a6fc6ea8fb8075946ef8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
