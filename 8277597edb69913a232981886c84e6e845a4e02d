@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ac56413_7bc21e1e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-20T17:39:20Z",
+      "side": 1,
+      "message": "Ack. I think this is stretching the usefulness of the substate progression, but I don\u0027t have a better way of doing it that wouldn\u0027t be a significant refactor. Each of these substates initializes port state and then takes some action based on that state. This CL breaks the pattern by relying on state that was initialized in a previous run of the same substate, but it\u0027s the pattern that\u0027s unusual and limiting.\n\nIf you were inclined to clean it up, the first thing that comes to mind to me is that it would make more sense to initialize the port state in `pdc_src_attached_entry`. That would make the substate behavior much less vulnerable to dependency on the order of the substates. But that\u0027s probably out of scope for this CL.\n\nFor now, the placement of this initialization is unexpected and unexpectedly critical to correct operation. I\u0027d suggest a comment explaining why it\u0027s here.",
+      "parentUuid": "e5fbe84e_f69b5470",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd643d2_23158ee0",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 3
@@ -214,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfe44857_16413daf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-20T17:39:20Z",
+      "side": 1,
+      "message": "If this fails, I don\u0027t think we have any reason (yet) to believe that a retry might succeed, and the next set of PDOs wouldn\u0027t be useful by themselves. For now, let\u0027s just go to error recovery and see what the PDC does.",
+      "parentUuid": "58592c40_8e8fe39a",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c6e3b70_9a89358a",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 3
@@ -249,6 +285,30 @@
       "side": 1,
       "message": "Since pdo_nums and pdo_offset are used as params in UCSI command, so they have to be updated accordingly while determining the re-entrance of *_ATTACHED_GET_PDOS. Since it is not possible to use one variable to identify if we are going to enter another SRC or SNK_ATTACHED_GET_PDOS and get_pdo.pdo_nums is the shared variable could be used, I think it would be simpler rather than create an additional variable just for check.",
       "parentUuid": "0c6e3b70_9a89358a",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1742,
+        "endChar": 3
+      },
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a403896_fce6617f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-20T17:39:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e23132f3_b3714b31",
       "range": {
         "startLine": 1732,
         "startChar": 0,
