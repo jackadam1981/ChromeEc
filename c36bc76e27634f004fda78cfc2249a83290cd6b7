@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0059db18_cb18eee0",
+        "filename": "zephyr/emul/emul_ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-20T20:22:58Z",
+      "side": 1,
+      "message": "This would be awesome to use with the existing PPM test. We could expose what we do there as a private emul API.",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be4a9e7_e15ac130",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-20T20:22:58Z",
+      "side": 1,
+      "message": "naming nit: no need for `hc_ppm` for all these tests since the file says it\u0027s testing a ucsi_host_cmd. Just `test_get_succeeds`, `test_get_unavailable`, `test_get_res_error`, etc.",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae9423a_3c20198b",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-20T20:22:58Z",
+      "side": 1,
+      "message": "Should be `ucsi_ppm_read_fake`",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f8e36c_e013f8ac",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-20T20:22:58Z",
+      "side": 1,
+      "message": "Missing test for `EC_RES_ERROR` branch",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
