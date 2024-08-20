@@ -175,7 +175,7 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
-void init_battery_type(void)
+int init_battery_type(void)
 {
 	int type;
 	int dflt = board_get_default_battery_type();
@@ -184,7 +184,7 @@ void init_battery_type(void)
 				      sizeof(batt_manuf_name))) {
 		BCFGPRT("Manuf name not found");
 		battery_conf = &board_battery_info[dflt];
-		return;
+		return EC_ERROR_UNKNOWN;
 	}
 
 	/* Don't carry over any previous name (in case i2c fail). */
@@ -202,7 +202,7 @@ void init_battery_type(void)
 		BCFGPRT("Searching in CBI");
 		if (bcfg_search_in_cbi(&battery_conf_cache) == EC_SUCCESS) {
 			battery_conf = &battery_conf_cache;
-			return;
+			return EC_SUCCESS;
 		}
 	}
 
@@ -218,8 +218,8 @@ void init_battery_type(void)
 	}
 
 	battery_conf = &board_battery_info[type];
+	return EC_SUCCESS;
 }
-DECLARE_HOOK(HOOK_INIT, init_battery_type, HOOK_PRIO_BATTERY_INIT);
 
 const struct batt_conf_embed *get_batt_conf(void)
 {

@@ -560,6 +560,11 @@
 #undef CONFIG_BATTERY_FUEL_GAUGE
 
 /*
+ * Defines init_battery_type retry count
+ */
+#define CONFIG_BATTERY_INIT_TYPE_RETRY_COUNT 0
+
+/*
  * Critical battery shutdown timeout (seconds)
  *
  * If the battery is at extremely low charge (and discharging) or extremely

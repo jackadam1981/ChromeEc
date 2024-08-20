@@ -1246,12 +1246,28 @@ static void process_ac_change(const int chgnum)
 static void process_battery_present_change(const struct charger_info *info,
 					   int chgnum)
 {
+	int ret;
 	prev_bp = curr.batt.is_present;
 
 	if (curr.batt.is_present && IS_ENABLED(CONFIG_BATTERY_FUEL_GAUGE)) {
 		/* Identify the attached battery. */
 		CPRINTS("Battery now present");
-		init_battery_type();
+		ret = init_battery_type();
+
+		for (int i = 0; i < CONFIG_BATTERY_INIT_TYPE_RETRY_COUNT; i++) {
+			if (!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) {
+				/* Don't retry when the battery is not
+				 * responsive. */
+				break;
+			}
+			if (ret == EC_SUCCESS) {
+				break;
+			}
+			CPRINTS("init_battery_type failed, wait 100ms then retry (attempt %d)",
+				i);
+			crec_msleep(100);
+			ret = init_battery_type();
+		}
 	}
 
 	batt_info = battery_get_info();
