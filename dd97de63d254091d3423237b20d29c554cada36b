@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a6c228d_ea99e15d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-20T23:36:07Z",
+      "side": 1,
+      "message": "Is this long enough? There can be many command cycles before arriving at the *_RUN substates.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94f03c0f_666926d6",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
@@ -84,6 +107,24 @@
       "writtenOn": "2024-08-20T22:25:38Z",
       "side": 1,
       "message": "I\u0027m not sure I\u0027m emitting this event at the right place but it at least queues GET_CONNECTOR_STATUS as part of the execution that emits this event.\n\nIt may be more correct to call this before calling `run_queued_commands` but I\u0027m not 100% sure.",
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2e7171_51278285",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3640,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-20T23:36:07Z",
+      "side": 1,
+      "message": "It\u0027s tricky... the `run_*_policies()` functions can continue to adjust the port state and also queue up more commands after reaching the *_RUN substate and it might take extra cycles of the SM before it truly settles, depending on what policy flags may be set. A queued public command could further complicate this. \n\nI wonder if a more reliable approach would be to implement something like a debounce counter in `pdc_thread()` --track the state and raise the event once you\u0027ve been in a non-command-processing state for N consecutive cycles. That way the SM can bounce around as much as it wants before settling, subject to a timeout of course.",
+      "parentUuid": "edd9add5_97cb5f98",
       "revId": "dd97de63d254091d3423237b20d29c554cada36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
