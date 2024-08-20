@@ -101,7 +101,7 @@
 			gpios = <&gpioa 6 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		gpio_ec_soc_rtcrst: ec_soc_rtcrst {
-			gpios = <&gpio7 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpio7 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
 		gpio_ec_soc_sys_pwrok: ec_soc_sys_pwrok {
 			gpios = <&gpio3 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
