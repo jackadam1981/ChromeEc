@@ -7,20 +7,31 @@
 #include "../cbi.dtsi"
 #include "../generated.dtsi"
 #include "../i2c.dtsi"
-#include "../keyboard.dtsi"
 #include "../power_signals.dtsi"
 #include "../trulo.dtsi"
-#include "../usb_typec.dtsi"
 #include "../usba.dtsi"
 
 /* Trulo project DTS includes*/
+#include "battery.dtsi"
+#include "gpio.dtsi"
+#include "i2c.dtsi"
+#include "keyboard.dtsi"
+#include "usb_typec.dtsi"
+
+
+#include <cros/thermistor/thermistor.dtsi>
+
 
 /* Trulo overrides follow... */
 
-/ {
-	batteries {
-		default_battery: cosmx_ap20cbl-4 {
-			compatible = "cosmx,ap20cbl-4", "battery-smart";
-		};
-	};
+&adc_ec_vsense_pp3300_s5 {
+	/*
+	 * Voltage divider on input has 47k upper and 220k lower legs with
+	 * 2714 mV full-scale reading on the ADC. Apply the largest possible
+	 * multiplier (without overflowing int32) to get the best possible
+	 * approximation of the actual ratio, but derate by a factor of two to
+	 * ensure unexpectedly high values won't overflow.
+	 */
+	mul = <(791261 / 2)>;
+	div = <(651975 / 2)>;
 };
