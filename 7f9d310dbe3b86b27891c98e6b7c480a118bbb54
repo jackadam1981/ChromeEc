@@ -16,6 +16,24 @@
       "message": "Will this do anything? We shouldn\u0027t be connected yet, so it should be a no-op.",
       "revId": "7f9d310dbe3b86b27891c98e6b7c480a118bbb54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f26909_ab9c1bd2",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-08-20T16:45:36Z",
+      "side": 1,
+      "message": "This is for increasing the test coverage. But this led me to think `pdc_power_mgmt_set_new_power_request` doesn\u0027t return error code for no-op. Should `pdc_power_mgmt_set_new_power_request` return something like ENOTCONN when the port is not connected in SNK role?",
+      "parentUuid": "6c0344eb_6f93a3f8",
+      "revId": "7f9d310dbe3b86b27891c98e6b7c480a118bbb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
