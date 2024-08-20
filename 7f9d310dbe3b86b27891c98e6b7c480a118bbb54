@@ -34,6 +34,24 @@
       "parentUuid": "6c0344eb_6f93a3f8",
       "revId": "7f9d310dbe3b86b27891c98e6b7c480a118bbb54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8411b572_3ffe1d2a",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-20T17:17:49Z",
+      "side": 1,
+      "message": "I wouldn\u0027t object to returning `ENOTCONN`. `pdc_power_mgmt_set_new_power_request` is an implementation of `pd_set_new_power_request`, and that function doesn\u0027t return anything either. But I don\u0027t think anything bad would happen if you gave this function or even `pd_set_new_power_request` a return value. If you do make that change, I\u0027d suggest doing it in a CL to precede this one.",
+      "parentUuid": "a8f26909_ab9c1bd2",
+      "revId": "7f9d310dbe3b86b27891c98e6b7c480a118bbb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
