@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea51145f_01b66ddf",
+        "filename": "zephyr/program/corsola/skitty/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3353541
+      },
+      "writtenOn": "2024-08-20T06:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d016a0_0cd541b6",
+      "revId": "9a43a135dd7cffedd1d751d5fa55c98e37566b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ea4f6f_addf99c0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96adc9ac_17551e16",
+        "filename": "zephyr/program/corsola/skitty/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 3353541
+      },
+      "writtenOn": "2024-08-20T06:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ea4f6f_addf99c0",
+      "revId": "9a43a135dd7cffedd1d751d5fa55c98e37566b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a237a00_b0f35a91",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-08-20T03:31:11Z",
       "side": 1,
       "message": "Please keep format consistent",
+      "revId": "9a43a135dd7cffedd1d751d5fa55c98e37566b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1a1110_3df34ba9",
+        "filename": "zephyr/program/corsola/skitty/src/board_chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3353541
+      },
+      "writtenOn": "2024-08-20T06:34:08Z",
+      "side": 1,
+      "message": "Updated comments to match the code",
+      "parentUuid": "2a237a00_b0f35a91",
       "revId": "9a43a135dd7cffedd1d751d5fa55c98e37566b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
