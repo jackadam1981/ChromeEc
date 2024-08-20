@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f34bb3f_569d5c8c",
+        "filename": "board/xol/keyboard_customization.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2024-08-20T21:32:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we need all of this. `CONFIG_FEATURE_FINCH` should bring all this in.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
