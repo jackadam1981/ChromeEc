@@ -50,7 +50,7 @@ __override_proto int board_get_default_battery_type(void);
  *
  * which are serialized.
  */
-void init_battery_type(void);
+int init_battery_type(void);
 
 /**
  * Return pointer to active battery config.

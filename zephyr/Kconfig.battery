@@ -174,6 +174,12 @@ config PLATFORM_EC_BATTERY_FUEL_GAUGE
 	  information is used to set voltage, current and temperature operating
 	  limits for the battery.
 
+config PLATFORM_EC_BATTERY_INIT_TYPE_RETRY_COUNT
+	int "initial battery type retry count"
+	default 0
+	help
+	  Define retry count for init_battery_type when fail to read Manuf name.
+
 config PLATFORM_EC_BATTERY_HW_PRESENT_CUSTOM
 	bool "Hardware check of battery presence"
 	help

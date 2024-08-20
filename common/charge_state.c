@@ -1251,6 +1251,16 @@ static void process_battery_present_change(const struct charger_info *info,
 	if (curr.batt.is_present && IS_ENABLED(CONFIG_BATTERY_FUEL_GAUGE)) {
 		/* Identify the attached battery. */
 		CPRINTS("Battery now present");
+
+		for (int i = 0; i < CONFIG_BATTERY_INIT_TYPE_RETRY_COUNT; i++) {
+			int ret = init_battery_type();
+			if (ret == EC_SUCCESS) {
+				break;
+			}
+			CPRINTS("init_battery_type failed, wait 100ms then retry (attempt %d)",
+				i);
+			crec_msleep(100);
+		}
 		init_battery_type();
 	}
 
