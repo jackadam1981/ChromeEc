@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd9add5_97cb5f98",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3640,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-20T22:25:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m emitting this event at the right place but it at least queues GET_CONNECTOR_STATUS as part of the execution that emits this event.\n\nIt may be more correct to call this before calling `run_queued_commands` but I\u0027m not 100% sure.",
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
