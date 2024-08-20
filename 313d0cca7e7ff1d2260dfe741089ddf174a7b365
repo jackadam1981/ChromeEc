@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "602fd60e_63542863",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-20T23:54:19Z",
+      "side": 1,
+      "message": "`rts54_set_notification_enable` takes extended notification bits as a separate argument. This is passed as bit 5 of the extended notification bits which corresponds to bit 21 of the SET_NOTIFICATION_ENABLE data field.\n\nLet me know if you\u0027d rather this be BIT(21) shifted over by 16.",
+      "parentUuid": "89897739_599c23f4",
+      "range": {
+        "startLine": 115,
+        "startChar": 37,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70be3b0c_f70aafa9",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 2
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b04ad0ef_18756578",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-20T23:54:19Z",
+      "side": 1,
+      "message": "Updated this to set the attention bit from the Realtek driver and added a corresponding TODO comment.\n\nOn the latest update, I\u0027ve checked that multiple consecutive HPD wakes work.",
+      "parentUuid": "70be3b0c_f70aafa9",
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7d1e3dd_115d81ac",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -71,6 +113,30 @@
       "writtenOn": "2024-08-20T20:22:54Z",
       "side": 1,
       "message": "`CCI_DP_ATTENTION`?",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 14
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be378143_7b6d33e0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-20T23:54:19Z",
+      "side": 1,
+      "message": "I think we should either name this DP_STATUS or just ATTENTION. I don\u0027t see this message referred to in the DPAM specification as DP Attention. \n\nI went with ATTENTION here because once PDC FW can support SET_NOTIFICATION_ENABLE for Attention messages. The \"Attention\" bit of the connector status change bits is what will be checked to set this flag.",
+      "parentUuid": "d7d1e3dd_115d81ac",
       "range": {
         "startLine": 303,
         "startChar": 1,
@@ -142,6 +208,30 @@
       "side": 1,
       "message": "Is there a bug tracking the request for DP status update?",
       "parentUuid": "944ca425_1eb68dbf",
+      "range": {
+        "startLine": 1083,
+        "startChar": 7,
+        "endLine": 1083,
+        "endChar": 41
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60dd2cab_0a1533a7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-08-20T23:54:19Z",
+      "side": 1,
+      "message": "b/356955093 is tracking the PDC firmware update to allow notification on Attention messages. Once that is working properly, we can just check that Attention was the source of the IRQ in the GET_CONNECTOR_STATUS response.",
+      "parentUuid": "a4194fd1_0c18d9d3",
       "range": {
         "startLine": 1083,
         "startChar": 7,
