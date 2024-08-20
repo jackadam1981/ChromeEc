@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89897739_599c23f4",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-20T20:22:54Z",
+      "side": 1,
+      "message": "Why is bit 5 and not bit 21?",
+      "range": {
+        "startLine": 115,
+        "startChar": 37,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70be3b0c_f70aafa9",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 2
@@ -31,6 +54,29 @@
       "writtenOn": "2024-08-18T20:27:28Z",
       "side": 1,
       "message": "Currently, RTK notification bits are never read by the pdc_power_mgmt API. As a result, they are also never ack-ed (via rts54_ack_cc_ci). \n\nDoes HPD continue working even in that case? Are you getting an interrupt each time for HPD or only the very first time?\n\nIf you want to apply the connector change \"workaround\" for attention, you can set a flag when an interrupt occurs on the port and check the first result of GET_CONNECTOR_STATUS in `st_read_run` to overwrite the attention bit (using the same logic as you have in the common code). Please also add `TODO(b/356955093)` where you do that.",
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d1e3dd_115d81ac",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-20T20:22:54Z",
+      "side": 1,
+      "message": "`CCI_DP_ATTENTION`?",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 14
+      },
       "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -72,6 +118,30 @@
       "side": 1,
       "message": "Prefer to do this `attention` bit mapping in the RTS driver instead. Since this is common, you\u0027ll have incorrect behavior on TI systems.",
       "parentUuid": "329d2362_46c94b99",
+      "range": {
+        "startLine": 1083,
+        "startChar": 7,
+        "endLine": 1083,
+        "endChar": 41
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4194fd1_0c18d9d3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-20T20:22:54Z",
+      "side": 1,
+      "message": "Is there a bug tracking the request for DP status update?",
+      "parentUuid": "944ca425_1eb68dbf",
       "range": {
         "startLine": 1083,
         "startChar": 7,
