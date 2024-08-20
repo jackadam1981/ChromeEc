@@ -87,6 +87,30 @@
       },
       "revId": "2b55cae907a00d9b12c84fcf5fc4b33871e0d2a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc10b32_81cfd674",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-20T16:06:41Z",
+      "side": 1,
+      "message": "I can\u0027t speak for Scott, but I see the delta introduced by this CL to be redundant, and this is a part that I think could be removed to simplify the code. I think it\u0027s probably possible to remove this substate, and it might be worth doing to further consolidate our policy code, but I don\u0027t see this substate as a problem that needs to be solved now.",
+      "parentUuid": "6ea4666b_4670a7d3",
+      "range": {
+        "startLine": 1428,
+        "startChar": 6,
+        "endLine": 1428,
+        "endChar": 37
+      },
+      "revId": "2b55cae907a00d9b12c84fcf5fc4b33871e0d2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
