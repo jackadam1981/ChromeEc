@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94f03c0f_666926d6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-08-20T23:10:00Z",
+      "side": 1,
+      "message": "If the CCI_EVENT flag is going to set from the resync_port_state_for_ppm() function, we should update this comment here and in the other attached state handlers we have.",
+      "range": {
+        "startLine": 1318,
+        "startChar": 4,
+        "endLine": 1318,
+        "endChar": 51
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42f9f4e_df32c9e8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-08-20T23:10:00Z",
+      "side": 1,
+      "message": "The effect of setting this flag is to trigger a GET_CONNECTOR_STATUS message. I understand there may have been synchronization issues with the PPM and the PDM in terms of the PPM knowing when the PDM had reached a steady state. But, it\u0027s not clear to me why the cached info from the most recent GET_CONNECTOR_STATUS would still not be the most recent and up to date information.",
+      "range": {
+        "startLine": 3637,
+        "startChar": 1,
+        "endLine": 3637,
+        "endChar": 43
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edd9add5_97cb5f98",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
