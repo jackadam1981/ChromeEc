@@ -127,6 +127,24 @@
       "parentUuid": "edd9add5_97cb5f98",
       "revId": "dd97de63d254091d3423237b20d29c554cada36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3aedf60_4aec9691",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3640,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-20T23:56:21Z",
+      "side": 1,
+      "message": "I don\u0027t think I need to wait for the public apis but I would like for this to wait until the EC has had a chance to respond with anything that may impact the connector status. The goal is that a subsequent, \"GET_CONNECTOR_STATUS\", has all necessary changes that the OS can act upon it.\n\nFor example, if OS sent pr_swap, we need to wait until the EC is in the PDC_ATTACHED_SNK/SRC state (after querying data) and it has had a chance to apply any policy that can impact connector status. That way, trying to `SET_SINK_PATH` will not fail due to incorrect role.",
+      "parentUuid": "1e2e7171_51278285",
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
