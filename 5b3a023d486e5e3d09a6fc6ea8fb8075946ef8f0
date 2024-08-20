@@ -16,6 +16,23 @@
       "message": "Note for reviewers. Looks like CQ is still failing with:\n\n```\nld.lld: error: undefined symbol: operator new(unsigned int, std::align_val_t)\n\u003e\u003e\u003e referenced by libcxx.cc:32 (test/libcxx.cc:32)\n\u003e\u003e\u003e               build/dartmonkey/libcxx/RW/libcxx.RW.elf.lto.o:(command_run_test)\nclang++: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:610: build/dartmonkey/libcxx/RW/libcxx.RW.elf] Error 1\n```\n\nLooks like I will have to wait a bit for `libcxx` to be updated.",
       "revId": "5b3a023d486e5e3d09a6fc6ea8fb8075946ef8f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c525da57_b8a8f3ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-08-20T11:32:15Z",
+      "side": 1,
+      "message": "There is a similar Zephyr [test](https://github.com/zephyrproject-rtos/zephyr/blob/e60da1bd640a37370870a83277142dd560f1fb8d/tests/lib/cpp/libcxx/src/main.cpp#L104), but it needs some changes before enabling that.",
+      "revId": "5b3a023d486e5e3d09a6fc6ea8fb8075946ef8f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
