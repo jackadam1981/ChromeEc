@@ -63,6 +63,30 @@
       },
       "revId": "2b55cae907a00d9b12c84fcf5fc4b33871e0d2a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea4666b_4670a7d3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-20T15:40:18Z",
+      "side": 1,
+      "message": "Do you see this causing an issue currently or are you bringing this up to explore removing this substate from the attached entry sequence?",
+      "parentUuid": "3c140920_36ab1fd2",
+      "range": {
+        "startLine": 1428,
+        "startChar": 6,
+        "endLine": 1428,
+        "endChar": 37
+      },
+      "revId": "2b55cae907a00d9b12c84fcf5fc4b33871e0d2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
