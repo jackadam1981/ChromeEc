@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7e0a2d_f5c50244",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2834,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T06:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3459ccb3_3e68f6bf",
+      "range": {
+        "startLine": 2834,
+        "startChar": 1,
+        "endLine": 2834,
+        "endChar": 30
+      },
+      "revId": "bae1dbc13794e9bd5af8a686fd4d94286dd50b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abe50c79_6a0f5035",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-15T16:52:32Z",
       "side": 1,
       "message": "Needs a bounds check on array access. `!pdc_power_mgmt_is_connected(port)` can handle this for you if you re-order the code.",
+      "range": {
+        "startLine": 2835,
+        "startChar": 0,
+        "endLine": 2835,
+        "endChar": 28
+      },
+      "revId": "bae1dbc13794e9bd5af8a686fd4d94286dd50b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5740cbfb_3f3dc15e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2835,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T06:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe50c79_6a0f5035",
       "range": {
         "startLine": 2835,
         "startChar": 0,
