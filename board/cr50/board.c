@@ -1228,10 +1228,6 @@ static void key_combo0_irq(void)
 		hook_call_deferred(&board_reboot_ec_data, 0);
 	}
 
-#ifdef CONFIG_AP_RO_VERIFICATION
-	ap_ro_clear_ec_rst_override();
-#endif
-
 	CPRINTS("Recovery Requested");
 }
 DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT, key_combo0_irq, 0);
@@ -1347,14 +1343,6 @@ void assert_ec_rst(void)
 
 void deassert_ec_rst(void)
 {
-#ifdef CONFIG_AP_RO_VERIFICATION
-	if (ec_rst_override()) {
-		ccprintf("EC un-reset blocked, try powercycle or Cr50 reboot."
-			 "\n");
-		return;
-	}
-#endif /* CONFIG_AP_RO_VERIFICATION */
-
 	wait_ec_rst(0);
 
 	if (uart_bitbang_is_enabled())
