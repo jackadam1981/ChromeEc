@@ -39,6 +39,29 @@
       },
       "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f80c781a_332429be",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-20T15:29:53Z",
+      "side": 1,
+      "message": "Use Zephyr\u0027s work queue directly instead of using the shim code - which uses the system work queue anyways.\n[Example usage](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/subsys/pd_controller/pdc_dpm.c;l\u003d41)",
+      "range": {
+        "startLine": 2271,
+        "startChar": 3,
+        "endLine": 2271,
+        "endChar": 21
+      },
+      "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
