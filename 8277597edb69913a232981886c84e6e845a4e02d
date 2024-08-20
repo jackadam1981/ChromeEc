@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dbab4bd_8b9aee35",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T11:01:37Z",
+      "side": 1,
+      "message": "I\u0027ll move it to another CL.",
+      "parentUuid": "732988cf_d9b4510f",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f0be14d_235f8643",
         "filename": "zephyr/include/drivers/pdc.h",
         "patchSetId": 3
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "574769c4_da777137",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T11:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0be14d_235f8643",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c03202_61994381",
@@ -72,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5fbe84e_f69b5470",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T11:01:37Z",
+      "side": 1,
+      "message": "The variable is used as the pdos to be retrieved so initializing it before entering the *_ATTACHED_GET_PDOS state and updating the value in *_ATTACHED_GET_PDOS makes it easier.",
+      "parentUuid": "43c03202_61994381",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd643d2_23158ee0",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 3
@@ -83,6 +137,24 @@
       "writtenOn": "2024-08-19T21:00:36Z",
       "side": 1,
       "message": "Nit: No need for doc comment (`/**`).",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2253f15_2c66db78",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T11:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd643d2_23158ee0",
       "revId": "8277597edb69913a232981886c84e6e845a4e02d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58592c40_8e8fe39a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T11:01:37Z",
+      "side": 1,
+      "message": "Thanks. I think we should validate the rv before moving to next pdos, but probably we need a retry count to avoid blocking in this state if keeping failed ?",
+      "parentUuid": "8323dde7_b915e36b",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c6e3b70_9a89358a",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 3
@@ -117,6 +207,30 @@
       "writtenOn": "2024-08-19T21:00:36Z",
       "side": 1,
       "message": "This code is a bit complicated to read, and it checks `pdo_nums` twice. I think that could be avoided by using some variables at the beginning of this case.",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1742,
+        "endChar": 3
+      },
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23132f3_b3714b31",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-20T11:01:37Z",
+      "side": 1,
+      "message": "Since pdo_nums and pdo_offset are used as params in UCSI command, so they have to be updated accordingly while determining the re-entrance of *_ATTACHED_GET_PDOS. Since it is not possible to use one variable to identify if we are going to enter another SRC or SNK_ATTACHED_GET_PDOS and get_pdo.pdo_nums is the shared variable could be used, I think it would be simpler rather than create an additional variable just for check.",
+      "parentUuid": "0c6e3b70_9a89358a",
       "range": {
         "startLine": 1732,
         "startChar": 0,
