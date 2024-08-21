@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7925c2f3_be78e07e",
+        "filename": "zephyr/include/emul/emul_tps6699x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-21T16:18:07Z",
+      "side": 1,
+      "message": "Its mostly UCSI responses but there are some driver specific responses too.  This will consist of more data as I enable more requests in the emulator.",
+      "parentUuid": "f9c84b2e_9694654d",
+      "revId": "6b11d4bb1c7312b75903dbc4f281f51e6aa9d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a8b2b7_b6bba5bf",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-21T15:54:48Z",
       "side": 1,
       "message": "Do we also want to reset these and the above fields in `emul_tps6699x_reset()`?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "6b11d4bb1c7312b75903dbc4f281f51e6aa9d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e07f2c6_a093bda7",
+        "filename": "zephyr/include/emul/emul_tps6699x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-21T16:18:07Z",
+      "side": 1,
+      "message": "We didn\u0027t have a need with the realtek driver implementation.",
+      "parentUuid": "16a8b2b7_b6bba5bf",
       "range": {
         "startLine": 46,
         "startChar": 0,
