@@ -46,6 +46,30 @@
       },
       "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d64104a_db98ded6",
+        "filename": "board/xol/keyboard_customization.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2024-08-21T17:03:35Z",
+      "side": 1,
+      "message": "Looking at the build logs, it seemed that it did pick up finch, but because CONFIG_KEYBOARD_CUSTOMIZATION is now defined, that function got removed from the build.\n\nMy main chroot is broken, but simply `make -j BOARD\u003dxol` in the brya firmware branch seems to pull that in.",
+      "parentUuid": "39d64455_85230fbc",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
