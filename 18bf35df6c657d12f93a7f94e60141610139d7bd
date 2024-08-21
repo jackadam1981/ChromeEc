@@ -40,6 +40,30 @@
       },
       "revId": "18bf35df6c657d12f93a7f94e60141610139d7bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d6c11d_36f56fb1",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-21T22:59:03Z",
+      "side": 1,
+      "message": "https://crrev.com/c/5804707",
+      "parentUuid": "e817d22e_d1b56042",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "18bf35df6c657d12f93a7f94e60141610139d7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
