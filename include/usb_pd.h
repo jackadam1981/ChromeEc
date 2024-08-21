@@ -241,6 +241,20 @@ enum pdo_augmented_pps {
 
 #define SVID_DISCOVERY_MAX 16
 
+/* RMDO : Revision Message Data Object
+ * 31:28 Revision.major
+ * 27:24 Revision.minor
+ * 23:20 Version.major
+ * 19:16 Version.minor
+ * 15:0  Reserved, shall be set to zero.
+ */
+#define RMDO(rev_major, rev_minor, ver_major, ver_minor)                   \
+	(((rev_major) << 28) | ((rev_minor) << 24) | ((ver_major) << 20) | \
+	 ((ver_minor) << 16))
+
+/* The PD version we currently implement */
+#define DEFAULT_RMDO RMDO(3, 1, 1, 8)
+
 /* Timers */
 #define PD_T_SINK_TX (18 * MSEC) /* between 16ms and 20 */
 #define PD_T_CHUNKING_NOT_SUPPORTED (45 * MSEC) /* between 40ms and 50ms */
