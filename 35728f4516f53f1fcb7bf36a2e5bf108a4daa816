@@ -70,6 +70,30 @@
       },
       "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551d3391_d4ca914b",
+        "filename": "board/xol/keyboard_customization.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-08-21T17:12:35Z",
+      "side": 1,
+      "message": "yeah and CONFIG_KEYBOARD_CUSTOMIZATION has to be defined if I want to change `KEYBOARD_DEFAULT_COL_VOL_UP`. I would be glad to only update 3 `KEYBOARD_DEFAULT_...` defines but apparently all the rest is needed for that. \n\nMy local build worked for patchset 1, so I don\u0027t think it pulls the finch in.",
+      "parentUuid": "7d64104a_db98ded6",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
