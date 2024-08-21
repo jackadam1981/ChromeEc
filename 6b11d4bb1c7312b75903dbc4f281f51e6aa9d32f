@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c84b2e_9694654d",
+        "filename": "zephyr/include/emul/emul_tps6699x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-08-21T15:54:48Z",
+      "side": 1,
+      "message": "nit: Is this just the UCSI response? I\u0027m unfamiliar with PD/UCSI work.",
+      "revId": "6b11d4bb1c7312b75903dbc4f281f51e6aa9d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a8b2b7_b6bba5bf",
+        "filename": "zephyr/include/emul/emul_tps6699x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2024-08-21T15:54:48Z",
+      "side": 1,
+      "message": "Do we also want to reset these and the above fields in `emul_tps6699x_reset()`?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "6b11d4bb1c7312b75903dbc4f281f51e6aa9d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
