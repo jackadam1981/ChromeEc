@@ -34,6 +34,9 @@ static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 		LOG_INF("usb disconnected event");
 		break;
 	case USB_DC_SUSPEND:
+#if defined(CONFIG_CROS_EC_RW)
+		hook_call_deferred(&kb_resume_deferred_data, 0);
+#endif
 		usb_dc_status.suspended = true;
 		LOG_INF("usb suspended event");
 		break;
