@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b4b2b8_04583ed8",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-21T17:14:18Z",
+      "side": 1,
+      "message": "Nit: I\u0027d suggest logging test intermediate steps at DBG and setting the log level to INF or WRN by default. We don\u0027t really have a systematic way of picking log levels, but the amount of log output generated when we run the PDC tests, both from the tests and the implementation, is getting a bit overwhelming. It\u0027s probably due for a bit of cleanup.",
+      "revId": "47c3cd71658e3b7f958e39d7ca4b6f305ac15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428a0180_8797a8a6",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-21T17:14:18Z",
+      "side": 1,
+      "message": "You should also check the return value here.",
+      "revId": "47c3cd71658e3b7f958e39d7ca4b6f305ac15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
