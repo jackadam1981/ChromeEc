@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b383bde7_d87bae67",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-21T02:57:40Z",
+      "side": 1,
+      "message": "Describing this as \"initial\" seems misleading.\n\n```suggestion\n\tint \"Battery type read retry limit\"\n```",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 178,
+        "endChar": 38
+      },
+      "revId": "ad22ea6395f2cb16afdb58701f308fe93786415c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba33a9c_a19a7a28",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-21T02:57:40Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed on most boards, so elaborating on why somebody might want to use this is a good idea.\n\n```suggestion\n\t  Number of times to retry reading battery manufacturer or name during initialization.\n\t  \n\t  Some battery controller chips (such as BQ40Z555) will NACK I2C transactions\n\t  while they perform internal housekeeping, and do not update the\n\t  SBS BatteryStatus either; the EC will treat failures in these cases\n\t  as evidence that the battery is disconnected, and failures of this\n\t  type during battery initialization will leave the battery permanently\n\t  ignored even if present. If a battery is known to exhibit this behavior,\n\t  setting this option to a nonzero value will retry reading each of those\n\t  fields from the battery (up to a total of COUNT + 1 attempts) after a \n\t  short delay, allowing the battery time to complete its housekeeping.\n```",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 73
+      },
+      "revId": "ad22ea6395f2cb16afdb58701f308fe93786415c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
