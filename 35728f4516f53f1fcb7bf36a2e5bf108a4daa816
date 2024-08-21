@@ -94,6 +94,30 @@
       },
       "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d4d00b_dfd2d9bc",
+        "filename": "board/xol/keyboard_customization.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T18:19:17Z",
+      "side": 1,
+      "message": "This is a bug with all Finch devices. So, we want to fix it in include/keyboard_config.h. Can you please \u0027#define KEYBOARD_COL_KEY_R 9\u0027 (and others being fixed) there and guard them with #ifdef CONFIG_FINCH? Then, you wouldn\u0027t need CONFIG_KEYBOARD_CUSTOMIZATION.",
+      "parentUuid": "39d64455_85230fbc",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "35728f4516f53f1fcb7bf36a2e5bf108a4daa816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
