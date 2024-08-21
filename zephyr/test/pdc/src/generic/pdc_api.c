@@ -238,7 +238,7 @@ ZTEST_USER(pdc_api, test_set_pdr)
 	zassert_equal(out.raw_value, in.raw_value);
 }
 
-/* TODO(b/345292002): The tests below fail with the TPS6699x emulator/driver. */
+/* TODO(b/345292002): TPS6699x driver set_rdo is not supported yet. */
 #ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_rdo)
 {
@@ -253,6 +253,7 @@ ZTEST_USER(pdc_api, test_rdo)
 	k_sleep(K_MSEC(SLEEP_MS));
 	zassert_equal(in, out);
 }
+#endif
 
 ZTEST_USER(pdc_api, test_set_power_level)
 {
@@ -276,6 +277,8 @@ ZTEST_USER(pdc_api, test_set_power_level)
 	}
 }
 
+/* TODO(b/345292002): The tests below fail with the TPS6699x emulator/driver. */
+#ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_get_bus_voltage)
 {
 	uint32_t mv_units = 50;

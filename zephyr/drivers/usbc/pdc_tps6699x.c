@@ -727,10 +727,6 @@ static void cmd_set_tpc_rp(struct pdc_data_t *data)
 
 	/* Modify */
 	switch (data->tcc) {
-	case TC_CURRENT_PPM_DEFINED:
-		LOG_ERR("Unsupported type: TC_CURRENT_PPM_DEFINED");
-		set_state(data, ST_IDLE);
-		return;
 	case TC_CURRENT_3_0A:
 		pdc_port_control.typec_current = 2;
 		break;
@@ -740,6 +736,10 @@ static void cmd_set_tpc_rp(struct pdc_data_t *data)
 	case TC_CURRENT_USB_DEFAULT:
 		pdc_port_control.typec_current = 0;
 		break;
+	default:
+		LOG_ERR("Unsupported type: %u", data->tcc);
+		set_state(data, ST_IDLE);
+		return;
 	}
 
 	/* Write PDC port control */
@@ -1639,6 +1639,11 @@ static int tps_set_power_level(const struct device *dev,
 			       enum usb_typec_current_t tcc)
 {
 	struct pdc_data_t *data = dev->data;
+
+	/* Validate input */
+	if (tcc == TC_CURRENT_PPM_DEFINED) {
+		return -EINVAL;
+	}
 
 	data->tcc = tcc;
 
