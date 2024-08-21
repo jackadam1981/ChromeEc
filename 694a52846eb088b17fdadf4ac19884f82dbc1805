@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3524fc96_2b7a7044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T18:50:58Z",
+      "side": 1,
+      "message": "Just a few nits...",
+      "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2417d3_1ebb32b8",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T18:50:58Z",
+      "side": 1,
+      "message": "nit: Using APIs (button_reassing_gpio and button_disable_gpio) would be a little more maintainable and readable. Have you tried them?",
+      "range": {
+        "startLine": 520,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 55
+      },
+      "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633d1851_b2da9264",
+        "filename": "board/drawcia/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T18:50:58Z",
+      "side": 1,
+      "message": "nit: Do you need this? I assume you can use GPIOC0_NC as is. It\u0027s not connected physically. So, you don\u0027t need to set it to PULL_UP, right?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
