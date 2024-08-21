@@ -52,6 +52,24 @@
       "parentUuid": "f73dc6a6_2fdca2fc",
       "revId": "5868bba0ebed2c0f083cc09115b0ee28386cd23f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd89d4dd_c22e653d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2024-08-21T15:59:59Z",
+      "side": 1,
+      "message": "So, I wound up looking a bit deeper to confirm if MDB groups were actually supported, and got a resounding \"No\": https://yaqs.corp.google.com/eng/q/3792977565757472768\n\nSo unfortunately that\u0027s not an option. \n\nThis is the last CL before we can submit to go/android3p. Is it okay if we come back to this later?",
+      "parentUuid": "327a7227_e7258cc7",
+      "revId": "5868bba0ebed2c0f083cc09115b0ee28386cd23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
