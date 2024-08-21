@@ -21,7 +21,9 @@ add_compile_options(-mfloat-abi=hard)
 # explicitly, we cause it to be used for symbol resolution before newlib's
 # libc. This avoids some duplicate symbol errors we would otherwise get.
 # For more details, b/346309204
-execute_process(COMMAND "${CROSS_COMPILE}-clang" --print-resource-dir
-                RESULT_VARIABLE CLANG_RESOURCE_DIR)
-add_link_options("${CLANG_RESOURCE_DIR}/lib/baremetal/libclang_rt.builtins-armv7m.a")
+execute_process(COMMAND ${CMAKE_C_COMPILER}
+        --print-libgcc-file-name -rtlib=compiler-rt
+        OUTPUT_VARIABLE COMPILER_RT_BUILTINS
+        COMMAND_ERROR_IS_FATAL ANY)
+add_link_options("${COMPILER_RT_BUILTINS}")
 add_link_options(-lnosys)

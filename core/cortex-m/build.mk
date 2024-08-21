@@ -29,12 +29,12 @@ CFLAGS_CPU+=-Oz		# Like -Os (and thus -O2), but reduces code size further.
 CFLAGS_CPU+=-Wl,-mllvm -Wl,-inline-threshold=-10
 # Explicitly specify libclang_rt.builtins so that its symbols are preferred
 # over libc's. This avoids duplicate symbol errors. See b/346309204 for details.
-clang_resource_dir:="$(shell $(CC) --print-resource-dir)"
+compiler_rt_builtins:=\
+	"$(shell $(CC) --print-libgcc-file-name -rtlib=compiler-rt)"
 ifneq ($(.SHELLSTATUS),0)
-$(error Could not determine path to libclang_rt.builtins)
+$(error Could not determine path to compiler-rt builtins (libclang_rt.builtins))
 endif
-LDFLAGS_EXTRA+=\
-	"$(clang_resource_dir)/lib/baremetal/libclang_rt.builtins-armv7m.a"
+LDFLAGS_EXTRA+="$(compiler_rt_builtins)"
 else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
