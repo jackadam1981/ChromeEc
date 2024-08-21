@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab1ef15_4c5d801f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "\"also be alerting\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3ca059_59c4dbcf",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "Unrelated to this change, but the initialization here is suspicious. Is there a code path that doesn\u0027t set `port`?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 18
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f935bd_e661741c",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "Please add a comment indicating that `find_lsb_set()` is 1 indexed.  It looks like an off by 1 error when you substract 1 from the return, but you also subtract 1 when setting the map.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 55
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfa0691_4f081549",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "`BIT(port)`",
+      "range": {
+        "startLine": 242,
+        "startChar": 34,
+        "endLine": 242,
+        "endChar": 44
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8ecd74_9e6a3d41",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "BIT(lpm_id - 1)",
+      "range": {
+        "startLine": 973,
+        "startChar": 33,
+        "endLine": 973,
+        "endChar": 52
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e130e49_de11b120",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "It\u0027s not clear why bit 14 isn\u0027t in the notification map and bit 3 is.  Can you replace with the conn_status_change_bits_t definitions?",
+      "range": {
+        "startLine": 1151,
+        "startChar": 42,
+        "endLine": 1151,
+        "endChar": 52
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e93215_96e6ce51",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T21:19:05Z",
+      "side": 1,
+      "message": "masked or un-masked?  I would assume a masked notification doesn\u0027t generate an event.",
+      "range": {
+        "startLine": 1155,
+        "startChar": 27,
+        "endLine": 1155,
+        "endChar": 36
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
