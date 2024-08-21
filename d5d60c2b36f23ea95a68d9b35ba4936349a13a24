@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19c9bdb1_c1a43cbc",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "i think I would have kept a new line, both are different pins",
+      "parentUuid": "cb3343c5_43c30e48",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e929dd72_7414570e",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-12T16:02:24Z",
       "side": 1,
       "message": "In schematics , i read this -\u003e BOM Note\n\nFor \"F\" and \"S\" SKUs connect EC_FAN_PWR_DISABLE_N to GPIO73/TA2/EXT . If that\u0027s true , wont this Gpio depend on BID for configuration?",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa1b2c3_4555ed27",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "schematics tracing is little difficult , need to  ignore the note \u0026 follow the  stuffings",
+      "parentUuid": "e929dd72_7414570e",
       "range": {
         "startLine": 42,
         "startChar": 13,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00fb7eb7_01c980b3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "this is the netname: 85 is PSL_OUT (intended for PG3-wake)",
+      "parentUuid": "35e99e6f_55ecaf35",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa05bae_066fc25d",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2024-07-12T16:02:24Z",
       "side": 1,
       "message": "NB_PROCHOT_EC_N  ? GPIOD0 ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db144104_8fde8d28",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "b2 is pm-bat-low",
+      "parentUuid": "8fa05bae_066fc25d",
       "range": {
         "startLine": 101,
         "startChar": 2,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd977cbb_bf51c045",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "rtc-rst is c7",
+      "parentUuid": "a70aa55f_03627110",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d31f9be_a02d5949",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 3
@@ -129,6 +249,30 @@
       "writtenOn": "2024-07-12T16:02:24Z",
       "side": 1,
       "message": "output high? All ksos O/p ?",
+      "range": {
+        "startLine": 195,
+        "startChar": 21,
+        "endLine": 195,
+        "endChar": 31
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac92dd3e_49bdf03c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "looks like KSO is alternate pin, GPIO can be input",
+      "parentUuid": "7d31f9be_a02d5949",
       "range": {
         "startLine": 195,
         "startChar": 21,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb6c15f0_16210ae3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "no, its more of factory BOM stuffing",
+      "parentUuid": "f7431dc6_20fb3086",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f6cec3a_4986ec06",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 3
@@ -175,6 +343,30 @@
       "writtenOn": "2024-07-12T16:02:24Z",
       "side": 1,
       "message": "i3c2_sda?",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 7
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c08f62_6693ae31",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "net name on MECC connector side is i3c-1, muxed pin",
+      "parentUuid": "4f6cec3a_4986ec06",
       "range": {
         "startLine": 244,
         "startChar": 6,
@@ -210,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd5ef8b2_133037f6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "net name on MECC connector side is i3c-1, muxed pin",
+      "parentUuid": "17694171_2b7e1dcb",
+      "range": {
+        "startLine": 247,
+        "startChar": 6,
+        "endLine": 247,
+        "endChar": 7
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c342f8aa_506e4b16",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 3
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfcbe7cd_0da172ed",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "Alt pin can work as GPIO",
+      "parentUuid": "c342f8aa_506e4b16",
+      "range": {
+        "startLine": 322,
+        "startChar": 21,
+        "endLine": 322,
+        "endChar": 31
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6f4adcd_854e2132",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/include/board.h",
         "patchSetId": 3
@@ -244,6 +484,30 @@
       "writtenOn": "2024-07-12T16:14:33Z",
       "side": 1,
       "message": "Are these aliases to GPIO_EN_PP3300_A , which are already defined in ptl\u0027s gpio.dtsi for gpio41 ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9939ba8a_720668ea",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/include/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-21T20:34:05Z",
+      "side": 1,
+      "message": "looks like both are needed",
+      "parentUuid": "a6f4adcd_854e2132",
       "range": {
         "startLine": 10,
         "startChar": 8,
