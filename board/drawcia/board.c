@@ -24,6 +24,8 @@
 #include "driver/usb_mux/it5205.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
+#include "i2c_bitbang.h"
 #include "intc.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -292,6 +294,16 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+const struct i2c_port_t i2c_bitbang_ports[] = {
+	{ .name = "eeprom",
+	  .port = I2C_PORT_EEPROM,
+	  .kbps = 100,
+	  .scl = GPIO_EC_I2C_EEPROM_SCL,
+	  .sda = GPIO_EC_I2C_EEPROM_SDA,
+	  .drv = &bitbang_drv },
+};
+const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
+
 /* Sensor Mutexes */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
@@ -485,6 +497,30 @@ void board_init(void)
 	board_power_5v_enable(on);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_init_early(void)
+{
+	uint32_t cached_fw_config_early;
+	enum fw_config_db db;
+
+	if (cbi_get_fw_config(&cached_fw_config_early) != EC_SUCCESS)
+		cached_fw_config_early = 0;
+
+	ccprints("FW_CONFIG read 0x%04X in early init", cached_fw_config_early);
+
+	db = (cached_fw_config_early & FW_CONFIG_DB_MASK) >>
+	     FW_CONFIG_DB_OFFSET;
+	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE) {
+		/*
+		 * To avoid boot button triggered incorrectly for DB_HDMI SKUs,
+		 * assign fake pin GPIO_VOLUP_BTN_FAKE for volume up button.
+		 * See b:355586970.
+		 */
+		ccprints("DB_HDMI SKU! Assign fake vol_up button GPIO.");
+		buttons[BUTTON_VOLUME_UP].gpio = GPIO_VOLUP_BTN_FAKE;
+	}
+}
+DECLARE_HOOK(HOOK_INIT_EARLY, board_init_early, HOOK_PRIO_DEFAULT);
 
 static void board_resume(void)
 {
