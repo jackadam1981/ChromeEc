@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "428a24d2_62865c99",
+        "filename": "zephyr/test/drivers/host_cmd/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T21:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d284e98_331487cb",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "f9172be4e4e94cb7f83d59b0f40454412db02c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d17307_fc03ee5c",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-21T15:21:38Z",
       "side": 1,
       "message": "Reaching directly into the ucsi_host_cmd.c implementation and modifying it\u0027s state isn\u0027t ideal.\n\nIt would be better if you provided hooks into emul_ppm_driver.c so that the `get_ppm_dev` returns NULL in some cases.  This might require calling eppm_init() from the test code, but I prefer that over directly changing the state of ucsi_host_cmd",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "f9172be4e4e94cb7f83d59b0f40454412db02c98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "033dc75f_e81ee508",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T21:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d17307_fc03ee5c",
       "range": {
         "startLine": 57,
         "startChar": 0,

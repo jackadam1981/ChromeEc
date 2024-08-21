@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd66af9_23f22a5b",
+        "filename": "zephyr/emul/emul_ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T21:04:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0059db18_cb18eee0",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2be4a9e7_e15ac130",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-20T20:22:58Z",
       "side": 1,
       "message": "naming nit: no need for `hc_ppm` for all these tests since the file says it\u0027s testing a ucsi_host_cmd. Just `test_get_succeeds`, `test_get_unavailable`, `test_get_res_error`, etc.",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f40695c_e85e47c4",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T21:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be4a9e7_e15ac130",
       "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b5c435_fbcee848",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T21:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae9423a_3c20198b",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f8e36c_e013f8ac",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-08-20T20:22:58Z",
       "side": 1,
       "message": "Missing test for `EC_RES_ERROR` branch",
+      "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "567ce229_45a55ea3",
+        "filename": "zephyr/test/drivers/host_cmd/src/ucsi_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-21T21:04:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f8e36c_e013f8ac",
       "revId": "c36bc76e27634f004fda78cfc2249a83290cd6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
