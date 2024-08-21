@@ -9,8 +9,13 @@
 #define __USB_DC_H
 
 #include "common.h"
+#include "hooks.h"
 
 #include <zephyr/usb/usb_ch9.h>
+
+#if defined(CONFIG_CROS_EC_RW)
+extern  __maybe_unused const struct deferred_data kb_resume_deferred_data;
+#endif
 
 bool check_usb_is_suspended(void);
 bool check_usb_is_configured(void);

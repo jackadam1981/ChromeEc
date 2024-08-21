@@ -350,6 +350,25 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 	}
 }
 
+bool first = true;
+int cnt = 0;
+void kb_resume_deferred(void)
+{
+	if (first || cnt > 10000) {
+		LOG_ERR("ITE Debug %d - %s", __LINE__, first ? "first" : "finish");
+		first = false;
+	} else {
+		keyboard_state_changed(5, 7, 1);
+		keyboard_state_changed(0, 1, 1);
+		keyboard_state_changed(4, 9, 1);
+		keyboard_state_changed(5, 7, 0);
+		keyboard_state_changed(0, 1, 0);
+		keyboard_state_changed(4, 9, 0);
+		cnt++;
+	}
+}
+DECLARE_DEFERRED(kb_resume_deferred);
+
 static void hid_kb_proc_queue(void)
 {
 	struct usb_hid_keyboard_report kb_data;
