@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dab644_73342d2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T19:46:55Z",
+      "side": 1,
+      "message": "\u003e \"supress\" is a possible misspelling of \"suppress\".\n\nPlease fix.",
+      "parentUuid": "32e6f961_9876e7c4",
+      "range": {
+        "startLine": 17,
+        "startChar": 53,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "c86f758706e726bcd11b192ce209620c8053b194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda2a39e_a33f3370",
+        "filename": "zephyr/dts/bindings/usbc/pdc/pdc-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T19:46:55Z",
+      "side": 1,
+      "message": "This needs a todo referencing b/323371550.\n\nOnce multiple PDC chips are supported, you\u0027ll a mechanism to associate 2 ports together.  This might be a parent/child relationship or the port groups you proposed on CL:5378254.\n\nRegardless of the final solution for multiple PDC chips, this property should be revisited.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "c86f758706e726bcd11b192ce209620c8053b194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1428b5_4bc5842b",
+        "filename": "zephyr/program/brox/brox-sku4/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T19:46:55Z",
+      "side": 1,
+      "message": "Move the project changes to a separate CL for a cleaner commit history.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "c86f758706e726bcd11b192ce209620c8053b194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
