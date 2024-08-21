@@ -57,6 +57,30 @@
       },
       "revId": "3f544b55c6b7e947eb5ec95596f822f84af420a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2b634e_75dd0fec",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5258,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-08-21T03:45:38Z",
+      "side": 1,
+      "message": "As far as I can tell, before this change, if you specified -d/--device on the command line, the code would not call `usb_findit()`, meaning that it could not possible work.\n\nI have not looked into when that deficiency was introduced, I assume it worked when the command line switch was originally added.",
+      "parentUuid": "6b84134b_b053e579",
+      "range": {
+        "startLine": 5258,
+        "startChar": 2,
+        "endLine": 5258,
+        "endChar": 20
+      },
+      "revId": "3f544b55c6b7e947eb5ec95596f822f84af420a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
