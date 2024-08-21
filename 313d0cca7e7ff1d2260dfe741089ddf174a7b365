@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4de614c_e168ae26",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T22:39:56Z",
+      "side": 1,
+      "message": "Yes, BIT(21) shifted by 16 is clearer.",
+      "parentUuid": "602fd60e_63542863",
+      "range": {
+        "startLine": 115,
+        "startChar": 37,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70be3b0c_f70aafa9",
         "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
         "patchSetId": 2
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "I think we should either name this DP_STATUS or just ATTENTION. I don\u0027t see this message referred to in the DPAM specification as DP Attention. \n\nI went with ATTENTION here because once PDC FW can support SET_NOTIFICATION_ENABLE for Attention messages. The \"Attention\" bit of the connector status change bits is what will be checked to set this flag.",
       "parentUuid": "d7d1e3dd_115d81ac",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 14
+      },
+      "revId": "313d0cca7e7ff1d2260dfe741089ddf174a7b365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd7c058_66eb13fd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T22:39:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "be378143_7b6d33e0",
       "range": {
         "startLine": 303,
         "startChar": 1,

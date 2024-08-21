@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8616979e_ef59e305",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T22:39:56Z",
+      "side": 1,
+      "message": "This should be managed per PDC port instead of global for the driver.\nThe suspend_comms operates on both ports, so it uses a global.\nYou can add this atomic to `struct pdc_data_t`.\n\nAlso, probably no need for the helper functions.",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 51
+      },
+      "revId": "5fc5bb630c6736b0231b818476ca4966822e8011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ec1da8_5dec90ac",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T22:39:56Z",
+      "side": 1,
+      "message": "Use `atomic_set_bit()` directly.",
+      "range": {
+        "startLine": 979,
+        "startChar": 4,
+        "endLine": 979,
+        "endChar": 20
+      },
+      "revId": "5fc5bb630c6736b0231b818476ca4966822e8011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc9e212_1c737374",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T22:39:56Z",
+      "side": 1,
+      "message": "Use `atomic_test_and_clear_bit()` here.",
+      "range": {
+        "startLine": 1426,
+        "startChar": 0,
+        "endLine": 1428,
+        "endChar": 0
+      },
+      "revId": "5fc5bb630c6736b0231b818476ca4966822e8011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3d4289_cb57348d",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-21T22:39:56Z",
+      "side": 1,
+      "message": "Instead of checking this routine directly, you can check that the host even was set or not using `host_is_event_set()`.  This should avoid needing to make `pdc_power_mgmt_check_hpd_wake()` public.",
+      "range": {
+        "startLine": 1613,
+        "startChar": 15,
+        "endLine": 1613,
+        "endChar": 44
+      },
+      "revId": "5fc5bb630c6736b0231b818476ca4966822e8011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
