@@ -292,6 +292,7 @@ enum usb_pe_state {
 	PE_SNK_CHUNK_RECEIVED, /* pe-st76 */
 	PE_VCS_FORCE_VCONN, /* pe-st77 */
 	PE_GET_REVISION, /* pe-st78 */
+	PE_GIVE_REVISION,
 
 	/* EPR states */
 	PE_SNK_SEND_EPR_MODE_ENTRY,
@@ -3049,12 +3050,15 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_GIVE_STATUS);
 				return;
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+			case PD_CTRL_GET_REVISION:
+				set_state_pe(port, PE_GIVE_REVISION);
+				return;
+
 				/*
 				 * Receiving an unknown or unsupported message
 				 * shall be responded to with a not supported
 				 * message.
 				 */
-
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 				return;
@@ -3984,6 +3988,9 @@ static void pe_snk_ready_run(int port)
 					port, PD_HEADER_GET_SOP(
 						      rx_emsg[port].header));
 				return;
+			case PD_CTRL_GET_REVISION:
+				set_state_pe(port, PE_GIVE_REVISION);
+				return;
 			/*
 			 * Receiving an unknown or unsupported message
 			 * shall be responded to with a not supported message.
@@ -4684,6 +4691,30 @@ static void pe_give_status_entry(int port)
 }
 
 static void pe_give_status_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+		   PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
+	}
+}
+
+/**
+ * PE_Give_Revision
+ */
+static void pe_give_revision_entry(int port)
+{
+	tx_emsg[port].len = 4;
+	*(uint32_t*)tx_emsg[port].buf = 0x31130000;
+
+	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_REVISION);
+}
+
+static void pe_give_revision_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
@@ -8755,6 +8786,10 @@ static __const_data const struct usb_state pe_states[] = {
 		.entry = pe_get_revision_entry,
 		.run   = pe_get_revision_run,
 		.exit  = pe_get_revision_exit,
+	},
+	[PE_GIVE_REVISION] = {
+		.entry = pe_give_revision_entry,
+		.run   = pe_give_revision_run,
 	},
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = {
