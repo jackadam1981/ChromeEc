@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a183fbb_0f7046c9",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-08-22T10:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d2417d3_1ebb32b8",
+      "range": {
+        "startLine": 520,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 55
+      },
+      "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633d1851_b2da9264",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-21T18:50:58Z",
       "side": 1,
       "message": "nit: Do you need this? I assume you can use GPIOC0_NC as is. It\u0027s not connected physically. So, you don\u0027t need to set it to PULL_UP, right?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f8e85f_e8ac4853",
+        "filename": "board/drawcia/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-08-22T10:36:32Z",
+      "side": 1,
+      "message": "Since vol up button is active low, if we do not assign vol up btn\u0027s gpio to pull high pin, boot button will still be set.",
+      "parentUuid": "633d1851_b2da9264",
       "range": {
         "startLine": 45,
         "startChar": 0,
