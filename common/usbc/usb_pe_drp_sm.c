@@ -6801,24 +6801,26 @@ static void pe_vcs_evaluate_swap_entry(int port)
 	 */
 
 	/*
+	 * Transition to the PE_VCS_Reject_Swap state when:
+	 *  1) Port is not presently the VCONN Source and
+	 *  2.1) The DPM indicates that a VCONN Swap is not ok or
+	 *  2.2) The DPM indicates that a VCONN Swap cannot be done at this
+	 *       time.
+	 *
 	 * Transition to the PE_VCS_Accept_Swap state when:
 	 *  1) The Device Policy Manager indicates that a VCONN Swap is ok.
-	 *
-	 * Transition to the PE_VCS_Reject_Swap state when:
-	 *  1)  Port is not presently the VCONN Source and
-	 *  2) The DPM indicates that a VCONN Swap is not ok or
-	 *  3) The DPM indicates that a VCONN Swap cannot be done at this time.
 	 */
 
-	/* DPM rejects a VCONN Swap and port is not a VCONN source*/
-	if (!tc_check_vconn_swap(port) || tc_is_vconn_src(port) < 1) {
-		/* NOTE: PE_VCS_Reject_Swap State embedded here */
+	/* DPM rejects a VCONN Swap and port is not a VCONN source */
+	if (!tc_is_vconn_src(port) && !tc_check_vconn_swap(port)) {
+		/* NOTE: PE_VCS_Reject_Swap State embedded here.
+		 *
+		 * Always send PD_CTRL_REJECT here.
+		 * PD_CTRL_WAIT is currently not implemented because
+		 * pd_check_vconn_swap() does not have the capability to return
+		 * a "not ready" status.
+		 */
 		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_REJECT);
-	}
-	/* Port is not ready to perform a VCONN swap */
-	else if (tc_is_vconn_src(port) < 0) {
-		/* NOTE: PE_VCS_Reject_Swap State embedded here */
-		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_WAIT);
 	}
 	/* Port is ready to perform a VCONN swap */
 	else {
