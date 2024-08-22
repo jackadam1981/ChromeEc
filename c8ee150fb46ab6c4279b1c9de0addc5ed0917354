@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faaf5a01_acfeef4d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-08-22T22:25:28Z",
+      "side": 1,
+      "message": "nit: block comments in the EC codebase have blank opening/closing lines.\n\n/* \n * The CCI_EVENT is set to re-query connector status, so check the\n * connector status and take the appropriate action.\n */",
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
