@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e551ac3_79aaf251",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-22T09:08:21Z",
+      "side": 1,
+      "message": "Add an additional variable for the initialization to make port state work independently.",
+      "parentUuid": "5ac56413_7bc21e1e",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd643d2_23158ee0",
@@ -244,6 +262,24 @@
       "side": 1,
       "message": "If this fails, I don\u0027t think we have any reason (yet) to believe that a retry might succeed, and the next set of PDOs wouldn\u0027t be useful by themselves. For now, let\u0027s just go to error recovery and see what the PDC does.",
       "parentUuid": "58592c40_8e8fe39a",
+      "revId": "8277597edb69913a232981886c84e6e845a4e02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ddf2680_e38f2004",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-22T09:08:21Z",
+      "side": 1,
+      "message": "The I think we could just check !rv before updating the counter and let the send command loop handle the error recovery for either retry exceeding or timeout.",
+      "parentUuid": "dfe44857_16413daf",
       "revId": "8277597edb69913a232981886c84e6e845a4e02d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
