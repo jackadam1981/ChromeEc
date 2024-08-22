@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f088833_af7e98b2",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-22T02:52:43Z",
+      "side": 0,
+      "message": "Since you\u0027re turning this off, I think it\u0027s better to revert https://crrev.com/c/5644419 because that change should no longer be necessary.",
+      "revId": "5a61f7cb075cc69bb04fb33cdcfbc1a7ba6e1bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
