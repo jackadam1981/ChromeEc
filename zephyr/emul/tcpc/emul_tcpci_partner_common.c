@@ -790,6 +790,17 @@ tcpci_partner_revision_handler(struct tcpci_partner_data *data,
 }
 
 static enum tcpci_partner_handler_res
+tcpci_partner_sink_cap_extended_handler(struct tcpci_partner_data *data,
+					const struct tcpci_emul_msg *message)
+{
+	memcpy(&data->skedb,
+	       message->buf + TCPCI_MSG_HEADER_LEN + TCPCI_MSG_EXT_HEADER_LEN,
+	       sizeof(data->skedb));
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static enum tcpci_partner_handler_res
 tcpci_partner_common_cable_handler(struct tcpci_partner_data *data,
 				   const struct tcpci_emul_msg *message,
 				   enum tcpci_msg_type sop_type)
@@ -1123,6 +1134,10 @@ tcpci_partner_common_sop_msg_handler(struct tcpci_partner_data *data,
 
 			return tcpci_partner_common_battery_capability_handler(
 				data, tx_msg);
+		case PD_EXT_SINK_CAP:
+			LOG_INF("Got PD_EXT_SINK_CAP");
+			return tcpci_partner_sink_cap_extended_handler(data,
+								       tx_msg);
 		default:
 			return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
 		}

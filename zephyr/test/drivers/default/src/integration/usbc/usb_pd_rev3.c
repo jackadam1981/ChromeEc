@@ -496,3 +496,16 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_revision)
 		      "Expected RMDO %x, got %x", expected_rev,
 		      fixture->source_5v_3a.rmdo);
 }
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_sink_cap_ext)
+{
+	memset(&fixture->source_5v_3a.skedb, 0, sizeof(struct skedb));
+
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_SINK_CAP_EXT, 0);
+	k_sleep(K_SECONDS(2));
+	/* check some fields to verify that Sink_Capabilities_Extended is
+	 * received */
+	zassert_equal(fixture->source_5v_3a.skedb.vid, USB_VID_GOOGLE);
+	zassert_equal(fixture->source_5v_3a.skedb.pid, CONFIG_USB_PID);
+}
