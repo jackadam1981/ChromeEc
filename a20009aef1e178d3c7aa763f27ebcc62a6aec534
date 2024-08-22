@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821b7707_a1f7664e",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-22T06:16:23Z",
+      "side": 1,
+      "message": "Can you please use enum (e.g. enum pen_charge_status) and add comments to describe each state?",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc09b58_24f1752b",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-22T06:16:23Z",
+      "side": 1,
+      "message": "Can you please add comments to describe these?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee4c5b5_fa1df993",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-22T06:16:23Z",
+      "side": 1,
+      "message": "How about \u00270\u0027?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
