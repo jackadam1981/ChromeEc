@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80055640_79f05cb4",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-08-22T15:39:40Z",
+      "side": 1,
+      "message": "where is this value coming from? if this is coming from `fpc_get_hwid`, the function no longer modifies the `error` variable`??",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 22
+      },
+      "revId": "1b83eae6101adbb4f9533f2dfebd34e07009b690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
