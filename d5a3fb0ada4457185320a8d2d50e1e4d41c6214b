@@ -16,6 +16,24 @@
       "message": "Why not replace IS_ENABLED with #if instead? I think it is bad that we depend on the linker removing unused symbols.",
       "revId": "d5a3fb0ada4457185320a8d2d50e1e4d41c6214b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2054c43_129b2343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-22T18:32:35Z",
+      "side": 1,
+      "message": "ya, not good... and i think we have a lot of cases like this where we\ndepend on \"optimization\" to eliminate references.\n\ni\u0027d rather leave the main code untouched in this case and apply\nthe workaround in the non-production use case.",
+      "parentUuid": "4a13473c_b5a34dc4",
+      "revId": "d5a3fb0ada4457185320a8d2d50e1e4d41c6214b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
