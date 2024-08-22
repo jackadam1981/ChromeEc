@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32254f1_a00fb67d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2979,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-22T21:59:11Z",
+      "side": 1,
+      "message": "This code could be replaced with a call to the revised `pdc_power_mgmt_get_task_state()`",
+      "range": {
+        "startLine": 2968,
+        "startChar": 0,
+        "endLine": 2979,
+        "endChar": 2
+      },
+      "revId": "705dee396bf05a769e17bb01c35a7a2c062c6d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
