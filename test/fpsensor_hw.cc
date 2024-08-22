@@ -6,34 +6,43 @@
 #include "common.h"
 #include "config.h"
 #include "fpc_private.h"
+#include "fpsensor_driver.h"
 #include "test_util.h"
-
-#ifdef SECTION_IS_RW
-#include "fpc/fpc_sensor.h"
-static const uint32_t fp_sensor_hwid = FP_SENSOR_HWID_FPC;
-#else
-static const uint32_t fp_sensor_hwid = UINT32_MAX;
-#endif
 
 /* Hardware-dependent smoke test that makes a SPI transaction with the
  * fingerprint sensor.
  */
 test_static int test_fp_check_hwid(void)
 {
-	uint16_t id = 0;
+	/* All fingerprint sensor support exists exclusively in RW. */
+	TEST_ASSERT(IS_ENABLED(SECTION_IS_RW));
 
-	if (IS_ENABLED(SECTION_IS_RW)) {
+	if (IS_ENABLED(CONFIG_FP_SENSOR_FPC1025) ||
+	    IS_ENABLED(CONFIG_FP_SENSOR_FPC1145)) {
+		uint16_t id = 0;
 		TEST_EQ(fpc_get_hwid(&id), EC_SUCCESS, "%d");
 		/* The lower 4-bits of the sensor hardware id are a
 		 * manufacturing ID that is ok to vary.
 		 */
-		TEST_EQ(fp_sensor_hwid, id >> 4, "%d");
-	};
-	return EC_SUCCESS;
+		TEST_EQ(FP_SENSOR_HWID, id >> 4, "%d");
+		return EC_SUCCESS;
+	}
+
+	if (IS_ENABLED(CONFIG_FP_SENSOR_ELAN80SG)) {
+		uint16_t id = 0;
+		TEST_EQ(elan_get_hwid(&id), EC_SUCCESS, "%d");
+		TEST_EQ(FP_SENSOR_HWID, id, "%d");
+		return EC_SUCCESS;
+	}
+
+	return EC_ERROR_UNKNOWN;
 }
 
 void run_test(int argc, const char **argv)
 {
+	test_reset();
+
 	RUN_TEST(test_fp_check_hwid);
+
 	test_print_result();
 }
