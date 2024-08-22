@@ -16,6 +16,24 @@
       "message": "Since you\u0027re turning this off, I think it\u0027s better to revert https://crrev.com/c/5644419 because that change should no longer be necessary.",
       "revId": "5a61f7cb075cc69bb04fb33cdcfbc1a7ba6e1bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b07133_70e3b940",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2024-08-22T06:13:59Z",
+      "side": 0,
+      "message": "Done. I also revert the workaround https://crrev.com/c/5604607",
+      "parentUuid": "0f088833_af7e98b2",
+      "revId": "5a61f7cb075cc69bb04fb33cdcfbc1a7ba6e1bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
