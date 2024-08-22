@@ -504,14 +504,14 @@ enum ec_error_list {
  * technique requires that the optimizer be enabled so it can remove
  * the undefined function call.
  */
-#define __config_enabled(cfg, value)                                           \
+#define __config_enabled(cfg, value, unique)                                   \
 	__cfg_select(value, 1, ({                                              \
 			     int __undefined =                                 \
 				     __builtin_strcmp(cfg, #value) == 0;       \
-			     extern int IS_ENABLED_BAD_ARGS(void) __error(     \
+			     int IS_ENABLED_BAD_ARGS##unique(void) __error(    \
 				     cfg " must be <blank>, or not defined."); \
 			     if (!__undefined)                                 \
-				     IS_ENABLED_BAD_ARGS();                    \
+				     IS_ENABLED_BAD_ARGS##unique();            \
 			     0;                                                \
 		     }))
 
@@ -530,7 +530,7 @@ enum ec_error_list {
  * it checks for unknown values.
  */
 #ifndef CONFIG_ZEPHYR
-#define IS_ENABLED(option) __config_enabled(#option, option)
+#define IS_ENABLED(option) __config_enabled(#option, option, _##option)
 #else
 /* IS_ENABLED previously defined in sys/util.h */
 #undef IS_ENABLED
