@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0167a9_5c92294c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:57:01Z",
+      "side": 1,
+      "message": "Changed to be the same as command timeout.",
+      "parentUuid": "2a6c228d_ea99e15d",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94f03c0f_666926d6",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-20T23:10:00Z",
       "side": 1,
       "message": "If the CCI_EVENT flag is going to set from the resync_port_state_for_ppm() function, we should update this comment here and in the other attached state handlers we have.",
+      "range": {
+        "startLine": 1318,
+        "startChar": 4,
+        "endLine": 1318,
+        "endChar": 51
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1eb6de_02809687",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f03c0f_666926d6",
       "range": {
         "startLine": 1318,
         "startChar": 4,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bb954e_90b57987",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:57:01Z",
+      "side": 1,
+      "message": "Discussed offline. According to UCSI spec, commands initiated by host will not generate the corresponding connector status change interrupts.",
+      "parentUuid": "f17a4ba2_eaeb7fc4",
+      "range": {
+        "startLine": 3637,
+        "startChar": 1,
+        "endLine": 3637,
+        "endChar": 43
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edd9add5_97cb5f98",
@@ -167,6 +239,24 @@
       "side": 1,
       "message": "I don\u0027t think I need to wait for the public apis but I would like for this to wait until the EC has had a chance to respond with anything that may impact the connector status. The goal is that a subsequent, \"GET_CONNECTOR_STATUS\", has all necessary changes that the OS can act upon it.\n\nFor example, if OS sent pr_swap, we need to wait until the EC is in the PDC_ATTACHED_SNK/SRC state (after querying data) and it has had a chance to apply any policy that can impact connector status. That way, trying to `SET_SINK_PATH` will not fail due to incorrect role.",
       "parentUuid": "1e2e7171_51278285",
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c084b0_f72d9179",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3640,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:57:01Z",
+      "side": 1,
+      "message": "In the latest iteration, I opted to wait until queued public commands start running. Combined with the next CL (to generate events when the PDM creates side effects), I think this is sufficient to avoid issues.",
+      "parentUuid": "a3aedf60_4aec9691",
       "revId": "dd97de63d254091d3423237b20d29c554cada36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
