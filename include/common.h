@@ -504,16 +504,16 @@ enum ec_error_list {
  * technique requires that the optimizer be enabled so it can remove
  * the undefined function call.
  */
-#define __config_enabled(cfg, value)                                           \
-	__cfg_select(value, 1, ({                                              \
-			     int __undefined =                                 \
-				     __builtin_strcmp(cfg, #value) == 0;       \
-			     extern int IS_ENABLED_BAD_ARGS(void) __error(     \
-				     cfg " must be <blank>, or not defined."); \
-			     if (!__undefined)                                 \
-				     IS_ENABLED_BAD_ARGS();                    \
-			     0;                                                \
-		     }))
+#define __config_enabled(cfg, value)                                          \
+	__cfg_select(                                                         \
+		value, 1, ({                                                  \
+			int __undefined = __builtin_strcmp(cfg, #value) == 0; \
+			extern int IS_ENABLED_BAD_ARGS##value(void) __error(  \
+				cfg " must be <blank>, or not defined.");     \
+			if (!__undefined)                                     \
+				IS_ENABLED_BAD_ARGS##value();                 \
+			0;                                                    \
+		}))
 
 /**
  * Checks if a config option is enabled or disabled
