@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a13473c_b5a34dc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-22T17:18:45Z",
+      "side": 1,
+      "message": "Why not replace IS_ENABLED with #if instead? I think it is bad that we depend on the linker removing unused symbols.",
+      "revId": "d5a3fb0ada4457185320a8d2d50e1e4d41c6214b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
