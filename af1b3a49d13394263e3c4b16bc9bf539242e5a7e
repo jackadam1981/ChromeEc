@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79bea87_a22c5d02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-22T01:06:57Z",
+      "side": 1,
+      "message": "You\u0027ve described testing on a device in the bug, so summarize that here.",
+      "revId": "af1b3a49d13394263e3c4b16bc9bf539242e5a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802c3707_deb43bf7",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-08-22T01:06:57Z",
+      "side": 1,
+      "message": "Add a line break between the short description and explanation.\n\n```suggestion\n\t  initialization.\n\t  \n\t  Some battery controller chips (such as BQ40Z555) will\n\t  NACK I2C transactions while they perform internal housekeeping, and\n```",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 70
+      },
+      "revId": "af1b3a49d13394263e3c4b16bc9bf539242e5a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
