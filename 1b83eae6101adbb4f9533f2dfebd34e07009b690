@@ -22,6 +22,30 @@
       },
       "revId": "1b83eae6101adbb4f9533f2dfebd34e07009b690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7033261_3bdbaeaa",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-22T17:11:12Z",
+      "side": 1,
+      "message": "Its a file scoped global defined on line 51, but it is set in many of the above functions.",
+      "parentUuid": "80055640_79f05cb4",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 22
+      },
+      "revId": "1b83eae6101adbb4f9533f2dfebd34e07009b690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
