@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28069c56_22e7d0ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-22T22:43:19Z",
+      "side": 1,
+      "message": "Non-blocking comment.\n\nFundamentally, this re-sync step feels bolted on. As is we\u0027ve split the PPM responsibilities between pdc_power_mgmt and the PPM driver. \n\nLong term, should we consider a refactor such that the only the PPM communicates with the PDC, and the PPM has two clients - the EC with a small OPM that runs when the AP is off and the full-featured OPM run by the AP?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "faaf5a01_acfeef4d",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 6
@@ -14,6 +37,52 @@
       "writtenOn": "2024-08-22T22:25:28Z",
       "side": 1,
       "message": "nit: block comments in the EC codebase have blank opening/closing lines.\n\n/* \n * The CCI_EVENT is set to re-query connector status, so check the\n * connector status and take the appropriate action.\n */",
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014d123f_e38407b6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3647,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-22T22:43:19Z",
+      "side": 1,
+      "message": "This has no side effects.  rv is always 0 in this path.",
+      "range": {
+        "startLine": 3647,
+        "startChar": 0,
+        "endLine": 3647,
+        "endChar": 35
+      },
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aee78f6_3aa71bd3",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-22T22:43:19Z",
+      "side": 1,
+      "message": "This should be a separate CL.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 0
+      },
       "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

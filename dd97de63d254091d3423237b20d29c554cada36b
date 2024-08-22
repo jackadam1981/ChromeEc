@@ -259,6 +259,24 @@
       "parentUuid": "a3aedf60_4aec9691",
       "revId": "dd97de63d254091d3423237b20d29c554cada36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f279a2_07db7647",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3640,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-22T22:43:19Z",
+      "side": 1,
+      "message": "This should be help.  If there are any policy actions that have to complete, they get precedence before the public commands are processoed.",
+      "parentUuid": "e5c084b0_f72d9179",
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
