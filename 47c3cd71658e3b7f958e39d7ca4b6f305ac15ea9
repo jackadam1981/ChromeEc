@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490f65d5_e71abdb3",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-08-22T11:05:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b4b2b8_04583ed8",
+      "revId": "47c3cd71658e3b7f958e39d7ca4b6f305ac15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428a0180_8797a8a6",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-21T17:14:18Z",
       "side": 1,
       "message": "You should also check the return value here.",
+      "revId": "47c3cd71658e3b7f958e39d7ca4b6f305ac15ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec6e859_128fdca5",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-08-22T11:05:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "428a0180_8797a8a6",
       "revId": "47c3cd71658e3b7f958e39d7ca4b6f305ac15ea9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
