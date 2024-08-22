@@ -293,6 +293,7 @@ enum usb_pe_state {
 	PE_VCS_FORCE_VCONN, /* pe-st77 */
 	PE_GET_REVISION, /* pe-st78 */
 	PE_GIVE_REVISION,
+	PE_SNK_GIVE_SINK_CAP_EXT,
 
 	/* EPR states */
 	PE_SNK_SEND_EPR_MODE_ENTRY,
@@ -3972,6 +3973,9 @@ static void pe_snk_ready_run(int port)
 			case PD_CTRL_GET_STATUS:
 				set_state_pe(port, PE_GIVE_STATUS);
 				return;
+			case PD_CTRL_GET_SINK_CAP_EXT:
+				set_state_pe(port, PE_SNK_GIVE_SINK_CAP_EXT);
+				return;
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 			case PD_CTRL_NOT_SUPPORTED:
 				/* Do nothing */
@@ -4719,6 +4723,34 @@ __maybe_unused static void pe_give_revision_entry(int port)
 }
 
 __maybe_unused static void pe_give_revision_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+		   PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
+	}
+}
+
+/**
+ * PE_SNK_Give_Sink_Cap_Ext
+ */
+__maybe_unused static void pe_snk_give_sink_cap_ext_entry(int port)
+{
+	tx_emsg[port].len = 28;
+
+	/* GRL doesn't care most fields */
+	memset(tx_emsg[port].buf, 0, 28);
+	/* battery info, 1 fixed battery */
+	tx_emsg[port].buf[16] = 1;
+
+	send_ext_data_msg(port, TCPCI_MSG_SOP, PD_EXT_SINK_CAP);
+}
+
+__maybe_unused static void pe_snk_give_sink_cap_ext_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
@@ -8813,6 +8845,10 @@ static __const_data const struct usb_state pe_states[] = {
 	},
 	[PE_ALERT_RECEIVED] = {
 		.entry = pe_alert_received_entry,
+	},
+	[PE_SNK_GIVE_SINK_CAP_EXT] = {
+		.entry = pe_snk_give_sink_cap_ext_entry,
+		.run   = pe_snk_give_sink_cap_ext_run,
 	},
 #else
 	[PE_SRC_CHUNK_RECEIVED] = {
