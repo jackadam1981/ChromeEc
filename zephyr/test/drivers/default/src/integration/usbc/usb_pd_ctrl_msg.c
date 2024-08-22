@@ -169,6 +169,34 @@ ZTEST_F(usb_pd_ctrl_msg_test_sink, test_verify_vconn_swap)
 		      "SNK Returned vconn_role=%u", snk_resp.vconn_role);
 }
 
+ZTEST_F(usb_pd_ctrl_msg_test_source, test_verify_vconn_swap_reject)
+{
+	struct usb_pd_ctrl_msg_test_fixture *super_fixture = &fixture->fixture;
+	struct ec_response_typec_status typec_status = { 0 };
+	int rv = 0;
+
+	test_set_chipset_to_g3();
+	k_sleep(K_SECONDS(1));
+
+	typec_status = host_cmd_typec_status(TEST_USB_PORT);
+
+	zassert_equal(PD_ROLE_VCONN_OFF, typec_status.vconn_role,
+		      "Returned vconn_role=%u", typec_status.vconn_role);
+
+	/* Send VCONN_SWAP request, pd_check_vconn_swap() should reject
+	 * this because device is in G3 */
+	rv = tcpci_partner_send_control_msg(&super_fixture->partner_emul,
+					    PD_CTRL_VCONN_SWAP, 0);
+	zassert_ok(rv, "Failed to send VCONN_SWAP request, rv=%d", rv);
+
+	k_sleep(K_SECONDS(1));
+
+	typec_status = host_cmd_typec_status(TEST_USB_PORT);
+
+	zassert_equal(PD_ROLE_VCONN_OFF, typec_status.vconn_role,
+		      "Returned vconn_role=%u", typec_status.vconn_role);
+}
+
 ZTEST_F(usb_pd_ctrl_msg_test_sink, test_verify_pr_swap)
 {
 	struct usb_pd_ctrl_msg_test_fixture *super_fixture = &fixture->fixture;
