@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4947b9_0a3cf075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-22T16:33:07Z",
+      "side": 1,
+      "message": "It\u0027s probably worth adding a build assert that validates no-fw-update is set on one and only one port per driver type after this merges.",
+      "revId": "f897e0eaa90b44b529f3681d2af7defaf99f9262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
