@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe65086d_24079500",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-22T22:26:23Z",
+      "side": 1,
+      "message": "Agree, I don\u0027t want to change it as part of this CL. I\u0027m not sure if anyone will ever fix it, but just so it\u0027s recorded in the code in case anyone is confused again like me, can you file a bug about unifying the error handling behavior between the two and put a `TODO(b/123)` comment here?",
+      "parentUuid": "1edcab39_594e1033",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 53
+      },
+      "revId": "38b144629c61b2ec68bd12aed5c6b2786e92e3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "756ef3df_11bd5823",
         "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
         "patchSetId": 4
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Right, in the context of EC, I believe both can be disabled, but the hope is that we don\u0027t turn it off. This error is very unlikely.\n\nUndefining `CONFIG_DEBUG_ASSERT` will disable `ASSERT` and `assert`, if stdlib assert is not defined. If using stdlib, defining NDEBUG will be disable assert. I\u0027m not fully convinced that the stdlib assert implementation is what we want (I think it is a trap?), so I could be convinced to use ASSERT, instead.",
       "parentUuid": "756ef3df_11bd5823",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 7
+      },
+      "revId": "38b144629c61b2ec68bd12aed5c6b2786e92e3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ffba1a_728ca107",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-22T22:26:23Z",
+      "side": 1,
+      "message": "We can keep it as `assert`, but I think there is one slight difference in behavior that we should clean up: http://b/361641154.\n\nFiled a bug to clean this up more generally: http://b/361641909.",
+      "parentUuid": "6a84ddeb_9f084a1e",
       "range": {
         "startLine": 133,
         "startChar": 1,
