@@ -110,6 +110,30 @@
       },
       "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a760e8_4f9c0dcc",
+        "filename": "board/drawcia/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-22T17:43:41Z",
+      "side": 1,
+      "message": "Ack. I thougt of calling button_disable_gpio after button_reassign_gpio but it\u0027s risky because some code can call button_reset without knowing the side effect.",
+      "parentUuid": "30f8e85f_e8ac4853",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "694a52846eb088b17fdadf4ac19884f82dbc1805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

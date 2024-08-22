@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0abb15_2a42597c",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-22T17:43:41Z",
+      "side": 1,
+      "message": "Would GPIO_SIGNAL_NONE work (i.e. button_reassign_gpio(BUTTON_VOLUME_UP, GPIO_SIGNAL_NONE))?",
+      "range": {
+        "startLine": 529,
+        "startChar": 41,
+        "endLine": 529,
+        "endChar": 60
+      },
+      "revId": "3c08311ee0c58c4b527f181e4280e571ecd4fedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
