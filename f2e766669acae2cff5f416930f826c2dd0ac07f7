@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "626a3901_e845dbb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aab1ef15_4c5d801f",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e3ca059_59c4dbcf",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-21T21:19:05Z",
       "side": 1,
       "message": "Unrelated to this change, but the initialization here is suspicious. Is there a code path that doesn\u0027t set `port`?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 18
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f66708c_f7d15d46",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Nope. I\u0027ll remove the init so it raises warnings in the future.",
+      "parentUuid": "6e3ca059_59c4dbcf",
       "range": {
         "startLine": 186,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad94ad9_ea61fc3f",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f935bd_e661741c",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 55
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dfa0691_4f081549",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-08-21T21:19:05Z",
       "side": 1,
       "message": "`BIT(port)`",
+      "range": {
+        "startLine": 242,
+        "startChar": 34,
+        "endLine": 242,
+        "endChar": 44
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565a6990_eeec3d1a",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dfa0691_4f081549",
       "range": {
         "startLine": 242,
         "startChar": 34,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a49fc3_97307707",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8ecd74_9e6a3d41",
+      "range": {
+        "startLine": 973,
+        "startChar": 33,
+        "endLine": 973,
+        "endChar": 52
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e130e49_de11b120",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e989de_5e2c678d",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e130e49_de11b120",
+      "range": {
+        "startLine": 1151,
+        "startChar": 42,
+        "endLine": 1151,
+        "endChar": 52
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36e93215_96e6ce51",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-08-21T21:19:05Z",
       "side": 1,
       "message": "masked or un-masked?  I would assume a masked notification doesn\u0027t generate an event.",
+      "range": {
+        "startLine": 1155,
+        "startChar": 27,
+        "endLine": 1155,
+        "endChar": 36
+      },
+      "revId": "f2e766669acae2cff5f416930f826c2dd0ac07f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2259f4_0e85cbd4",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-22T20:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36e93215_96e6ce51",
       "range": {
         "startLine": 1155,
         "startChar": 27,
