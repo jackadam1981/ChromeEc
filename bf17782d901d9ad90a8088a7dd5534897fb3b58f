@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd80147_7636ef4a",
+        "filename": "include/common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-22T22:48:30Z",
+      "side": 1,
+      "message": "Can you just add a short message here about the purpose of `unique`? I don\u0027t think you need the full description from the commit message. Just something like:\n\n`unique` is used to avoid complaints about the `__error` attribute being applied to the same function (`IS_ENABLED_BAD_ARGS`) with different arguments. Instead we create a unique function prototype for each config: `IS_ENABLED_BAD_ARGS_CONFIG_FIX_EVERYTHING` for `IS_ENABLED(CONFIG_FIX_EVERYTHING)`.",
+      "revId": "bf17782d901d9ad90a8088a7dd5534897fb3b58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
