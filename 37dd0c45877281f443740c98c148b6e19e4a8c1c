@@ -1,0 +1,79 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b522525_f245eeb1",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-23T16:18:29Z",
+      "side": 1,
+      "message": "Can this just be a `memcpy`?",
+      "revId": "37dd0c45877281f443740c98c148b6e19e4a8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938ec310_14ab6689",
+        "filename": "zephyr/emul/emul_tps6699x_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-23T16:18:29Z",
+      "side": 1,
+      "message": "136 / 8 \u003d 17\n\nNit: You might want a build assert that this object is the size it\u0027s supposed to be.",
+      "range": {
+        "startLine": 169,
+        "startChar": 19,
+        "endLine": 169,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52e7f4aa_5d9fb42b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/emul/emul_tps6699x_private.h",
+              "range": {
+                "startLine": 169,
+                "startChar": 0,
+                "endLine": 170,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t raw_value[17];\n"
+            }
+          ]
+        }
+      ],
+      "revId": "37dd0c45877281f443740c98c148b6e19e4a8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90df4e9c_745073d9",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-23T16:18:29Z",
+      "side": 1,
+      "message": "What is the void cast for?",
+      "revId": "37dd0c45877281f443740c98c148b6e19e4a8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
