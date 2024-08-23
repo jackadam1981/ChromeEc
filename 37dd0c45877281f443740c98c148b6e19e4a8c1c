@@ -134,6 +134,24 @@
       "parentUuid": "90df4e9c_745073d9",
       "revId": "37dd0c45877281f443740c98c148b6e19e4a8c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99ff094_41b50bf5",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-23T22:57:18Z",
+      "side": 1,
+      "message": "You could also assert on it. This is a test, after all.",
+      "parentUuid": "3221304b_18c4545a",
+      "revId": "37dd0c45877281f443740c98c148b6e19e4a8c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
