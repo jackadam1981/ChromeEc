@@ -34,6 +34,24 @@
       "message": "Vivaldi 2.0 allows different number of top row keys, resulting in different volume up positions. do we suggest partners to use customization?",
       "revId": "715e99313268fba12f52caa6e7579a61d6c832bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b713f8aa_72369abf",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-23T17:06:43Z",
+      "side": 1,
+      "message": "That\u0027s right. I uploaded CL:5807296 and CL:5807298. I need somebody to test them.",
+      "parentUuid": "b5b1390a_372df817",
+      "revId": "715e99313268fba12f52caa6e7579a61d6c832bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
