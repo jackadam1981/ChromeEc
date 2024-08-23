@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f9f770c_8276e842",
+        "filename": "zephyr/program/rauru/rauru/rauru_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-08-23T06:33:42Z",
+      "side": 1,
+      "message": "In usb_pe_drp_sm.c, PE_VDM_RESPONSE state seems doesn\u0027t care about the role.\nSo both DFP/UFP fields should be true... I guess.\n\nPD.VDM.SNK.1 fails if I set Responds_To_Discov_SOP_UFP to false.",
+      "parentUuid": "730ab892_f8edd15d",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "74a6c967b5ac2723bd3b0970fbcf9d368ddd3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "232375cf_db8962b2",
         "filename": "zephyr/program/rauru/rauru/rauru_vif.xml",
         "patchSetId": 2
