@@ -68,6 +68,23 @@
       },
       "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5a741d_c786e99b",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-08-23T06:24:45Z",
+      "side": 1,
+      "message": "Is it possible to elaborate the logic here briefly, so that we may know the design mechanism clearly w/o checking the flow chart in ticket?",
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
