@@ -46,6 +46,30 @@
       },
       "revId": "3c08311ee0c58c4b527f181e4280e571ecd4fedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f430ec68_7536572e",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-08-23T09:17:24Z",
+      "side": 1,
+      "message": "BTW, I have also tried `gpio_set_flags(GPIO_SIGNAL_NONE, GPIO_INPUT | GPIO_PULL_UP)` before `button_reassign_gpio(BUTTON_VOLUME_UP, GPIO_SIGNAL_NONE)` and still doesn\u0027t work.",
+      "parentUuid": "ed2e8fc0_3ec77da2",
+      "range": {
+        "startLine": 529,
+        "startChar": 41,
+        "endLine": 529,
+        "endChar": 60
+      },
+      "revId": "3c08311ee0c58c4b527f181e4280e571ecd4fedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
