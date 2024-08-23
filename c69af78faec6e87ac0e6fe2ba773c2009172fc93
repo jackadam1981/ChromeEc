@@ -51,6 +51,23 @@
       "message": "-1 for now, I have a devicetree version of this out for review https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5803787/5, unfortunately it\u0027s still pending on https://github.com/zephyrproject-rtos/zephyr/pull/75678, I\u0027ve pinged that one (again)",
       "revId": "c69af78faec6e87ac0e6fe2ba773c2009172fc93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83d1045_a509aaa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2024-08-23T16:18:31Z",
+      "side": 1,
+      "message": "The preferred solution is blocked by an upstream pull request to zephyr.  What is the need date for this functionality?",
+      "revId": "c69af78faec6e87ac0e6fe2ba773c2009172fc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
