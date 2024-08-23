@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7d0029_c4036dd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-23T18:45:45Z",
+      "side": 1,
+      "message": "I don\u0027t think the EC wants to write an OPM. Instead, it makes more sense for the PDM and PPM to be merged.\n\nWhen an OPM is active and we are not suspended, the PDM should execute all the `run_*_policies`. However, when the OPM is active, the policies should not run but the state machines should still execute to make sure data is up to date in the PDM.\n\nThe other thing to think about is how would public API commands affect this as well?\n\nDaisuke might be taking a look at this soon (with the expectation that we probably also refactor ppm_common state machines to SMF and figure out how to integrate PPM driver into the PDM).",
+      "parentUuid": "28069c56_22e7d0ca",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faaf5a01_acfeef4d",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-08-22T22:25:28Z",
       "side": 1,
       "message": "nit: block comments in the EC codebase have blank opening/closing lines.\n\n/* \n * The CCI_EVENT is set to re-query connector status, so check the\n * connector status and take the appropriate action.\n */",
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a060d160_c3c3ac2f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-23T18:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faaf5a01_acfeef4d",
       "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1383efd8_dc6488b7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3647,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-23T18:45:45Z",
+      "side": 1,
+      "message": "The branch above is the 0 path `if (!rv) return -ETIMEDOUT`. This should be PDC_SM_SETTLED_EVENT",
+      "parentUuid": "014d123f_e38407b6",
+      "range": {
+        "startLine": 3647,
+        "startChar": 0,
+        "endLine": 3647,
+        "endChar": 35
+      },
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aee78f6_3aa71bd3",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-08-22T22:43:19Z",
       "side": 1,
       "message": "This should be a separate CL.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 0
+      },
+      "revId": "c8ee150fb46ab6c4279b1c9de0addc5ed0917354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec47e97_ffc192c1",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-23T18:45:45Z",
+      "side": 1,
+      "message": "Same contents but inside `if (rv \u003e\u003d 0)`. I don\u0027t think it makes sense to put in another CL.",
+      "parentUuid": "3aee78f6_3aa71bd3",
       "range": {
         "startLine": 325,
         "startChar": 0,
