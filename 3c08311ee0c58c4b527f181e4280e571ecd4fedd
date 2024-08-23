@@ -22,6 +22,30 @@
       },
       "revId": "3c08311ee0c58c4b527f181e4280e571ecd4fedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2e8fc0_3ec77da2",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2024-08-23T05:15:53Z",
+      "side": 1,
+      "message": "GPIO_SIGNAL_NONE does not work, boot_button is stilled set at boot.",
+      "parentUuid": "2c0abb15_2a42597c",
+      "range": {
+        "startLine": 529,
+        "startChar": 41,
+        "endLine": 529,
+        "endChar": 60
+      },
+      "revId": "3c08311ee0c58c4b527f181e4280e571ecd4fedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
