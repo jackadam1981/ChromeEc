@@ -22,6 +22,30 @@
       },
       "revId": "bc7eb078205b7afe7539632d90cb8d6a8b61abe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cc571f_d9510eb9",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-08-23T05:50:01Z",
+      "side": 1,
+      "message": "yes, I see the other project which has only port max count 2, so it is equivalent to CONFIG_USB_PD_PORT_MAX_COUNT \u003e 1 for other dedede project.",
+      "parentUuid": "19e140c7_ab2115f1",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "bc7eb078205b7afe7539632d90cb8d6a8b61abe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
