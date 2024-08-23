@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a49629_bb815746",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-08-23T20:31:49Z",
+      "side": 1,
+      "message": "roger roger -- checkout b/361826387",
+      "parentUuid": "fe65086d_24079500",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 53
+      },
+      "revId": "38b144629c61b2ec68bd12aed5c6b2786e92e3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "756ef3df_11bd5823",
