@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61579987_0916c0b3",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-23T13:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9022556_a22bd991",
+      "revId": "60a1e176a64d8d625ed3563878c5caf97746ba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba9edead_c28f0cc3",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-22T17:28:31Z",
       "side": 1,
       "message": "Your other accesses aren\u0027t atomic. I don\u0027t think this needs to be.",
+      "revId": "60a1e176a64d8d625ed3563878c5caf97746ba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a173eb_0c3b397e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-23T13:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba9edead_c28f0cc3",
       "revId": "60a1e176a64d8d625ed3563878c5caf97746ba95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
