@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730ab892_f8edd15d",
+        "filename": "zephyr/program/rauru/rauru/rauru_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1295075
+      },
+      "writtenOn": "2024-08-23T05:56:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure if there is a misunderstanding here. \nAs far as I know, UFP is our role (not port partner).\nSince we can\u0027t act as device (ex. reply Not_support to host for entering mode), then Responds_To_Discov_SOP_UFP should be false.",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "74a6c967b5ac2723bd3b0970fbcf9d368ddd3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232375cf_db8962b2",
+        "filename": "zephyr/program/rauru/rauru/rauru_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1295075
+      },
+      "writtenOn": "2024-08-23T05:56:59Z",
+      "side": 1,
+      "message": "Since we can act as host and request device entering mode, then I think Responds_To_Discov_SOP_DFP should be true.",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "74a6c967b5ac2723bd3b0970fbcf9d368ddd3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
