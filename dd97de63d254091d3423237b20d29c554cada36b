@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd54c431_e0dd3c03",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-23T16:57:34Z",
+      "side": 1,
+      "message": "Per synchronous meeting: increased this value to match `PDC_CMD_TIMEOUT_MS`",
+      "parentUuid": "2a6c228d_ea99e15d",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94f03c0f_666926d6",
@@ -275,6 +299,24 @@
       "side": 1,
       "message": "This should be help.  If there are any policy actions that have to complete, they get precedence before the public commands are processoed.",
       "parentUuid": "e5c084b0_f72d9179",
+      "revId": "dd97de63d254091d3423237b20d29c554cada36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484bb24e_9b45815a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3640,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-23T16:57:34Z",
+      "side": 1,
+      "message": "(Discussed in synchronous meeting)\n\nOnly other suggestion is check if the relevant `port-\u003e{src|snk}_policy.flags` are zero because that will ensure no more policy operations will happen. Those get handled one at a time, interpersed with the pending public API commands.",
+      "parentUuid": "a3aedf60_4aec9691",
       "revId": "dd97de63d254091d3423237b20d29c554cada36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
