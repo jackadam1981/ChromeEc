@@ -16,6 +16,24 @@
       "message": "Note this change in behavior. We only ACK if there are non zero change bits.",
       "revId": "3542105b1a367b7c1ba176517e0c457a77a1db8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b602ca52_3473ee1f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-23T18:45:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36152cc4_76b59868",
+      "revId": "3542105b1a367b7c1ba176517e0c457a77a1db8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
