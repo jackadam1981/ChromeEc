@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e078b292_155f62f5",
+        "filename": "board/xol/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-08-23T23:45:50Z",
+      "side": 1,
+      "message": "Xol uses baseboard brya which has a similar `set_register_charge_option` function in src/platform/ec/baseboard/brya/prochot.c \n\nLet\u0027s try to reuse it, by calling in appropriate moment",
+      "revId": "f1e4a83c2d3906f4d171077e83287a105c492b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
