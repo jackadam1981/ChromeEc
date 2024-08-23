@@ -34,6 +34,23 @@
       "parentUuid": "a068f629_f1f6415d",
       "revId": "c69af78faec6e87ac0e6fe2ba773c2009172fc93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a2c4b3_4e3dd06d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-08-23T16:01:42Z",
+      "side": 1,
+      "message": "-1 for now, I have a devicetree version of this out for review https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5803787/5, unfortunately it\u0027s still pending on https://github.com/zephyrproject-rtos/zephyr/pull/75678, I\u0027ve pinged that one (again)",
+      "revId": "c69af78faec6e87ac0e6fe2ba773c2009172fc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
