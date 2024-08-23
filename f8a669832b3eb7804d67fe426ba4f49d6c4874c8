@@ -22,6 +22,30 @@
       },
       "revId": "f8a669832b3eb7804d67fe426ba4f49d6c4874c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e461e0_e969a3c3",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-08-23T20:15:18Z",
+      "side": 1,
+      "message": "Since the tests run one after another immediately, if a previous command hadn\u0027t settled yet, writing a ppm reset would fail because the PPM was busy. \n\nThis change prevents failures in adjacent tests that have nothing to do with the test that\u0027s actually failing (and leaving the suite in a bad state).",
+      "parentUuid": "b37ae82d_d7bffb27",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 34
+      },
+      "revId": "f8a669832b3eb7804d67fe426ba4f49d6c4874c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
