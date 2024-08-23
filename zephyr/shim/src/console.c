@@ -264,11 +264,11 @@ int zshim_run_ec_console_command(const struct zephyr_console_command *command,
 
 	/* Print common parameter error conditions and help on error */
 	if (ret >= EC_ERROR_PARAM1 && ret < EC_ERROR_PARAM_COUNT)
-		printk("Parameter %d invalid\n", ret - EC_ERROR_PARAM1 + 1);
+		ccprintf("Parameter %d invalid\n", ret - EC_ERROR_PARAM1 + 1);
 	else if (ret == EC_ERROR_PARAM_COUNT)
-		printk("Wrong number of parameters\n");
+		ccprintf("Wrong number of parameters\n");
 	else
-		printk("Command returned error: %d\n", ret);
+		ccprintf("Command returned error: %d\n", ret);
 
 #ifdef CONFIG_SHELL_HELP
 	print_console_help(argv[0], command);
