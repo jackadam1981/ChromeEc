@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f841ac_1e10ef20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T16:31:04Z",
+      "side": 1,
+      "message": "Minor nit but LGTM",
+      "revId": "6e2796bdcbfbea1a2e46fc41e0f96daf0dfb0286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b60fc11_416760cc",
+        "filename": "zephyr/drivers/keyboard_factory_test/keyboard_factory_test.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T16:31:04Z",
+      "side": 1,
+      "message": "Why not use `GPIO_DT_SPEC_GET_OR`?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "6e2796bdcbfbea1a2e46fc41e0f96daf0dfb0286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
