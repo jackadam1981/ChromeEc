@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3413d392_53820fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T16:27:10Z",
+      "side": 1,
+      "message": "Small nit, but overall LGTM",
+      "revId": "233afc0c9917831e433c68429ae956c0a566ec7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d705c3ea_293f88e6",
+        "filename": "zephyr/drivers/keyboard_input/keyboard_input.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T16:27:10Z",
+      "side": 1,
+      "message": "Is this really an error? Seems like maybe INF is more appropriate.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "233afc0c9917831e433c68429ae956c0a566ec7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
