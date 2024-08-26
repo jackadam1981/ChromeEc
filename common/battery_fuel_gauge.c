@@ -175,6 +175,13 @@ static int bcfg_search_in_cbi(struct batt_conf_embed *batt)
 	}
 }
 
+#if defined(CONFIG_BATTERY_CONFIG_IN_CBI)
+#if !defined(CONFIG_HOSTCMD_BATTERY_V2)
+#error CONFIG_HOSTCMD_BATTERY_V2 is required if \
+CONFIG_BATTERY_CONFIG_IN_CBI is enabled.
+#endif
+#endif
+
 void init_battery_type(void)
 {
 	int type;
