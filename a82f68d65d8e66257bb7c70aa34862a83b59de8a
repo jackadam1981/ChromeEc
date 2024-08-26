@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e48f3d0_e5b64c14",
+        "filename": "zephyr/drivers/dsp_comms/include/cros/dsp/internal/service_transport.hh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T06:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46fc68c_ce19b97c",
+      "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1da91720_a9c01adc",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8757a8_330bfb64",
+        "filename": "zephyr/drivers/dsp_comms/include/cros/dsp/internal/service_transport.hh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T06:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1da91720_a9c01adc",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f38568b_03a10f92",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-07-26T20:39:13Z",
       "side": 1,
       "message": "These are the tests for service_transport.hh",
+      "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf086139_d29ee79c",
+        "filename": "zephyr/drivers/dsp_comms/service/test_transport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-26T06:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f38568b_03a10f92",
       "revId": "a82f68d65d8e66257bb7c70aa34862a83b59de8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
