@@ -39,6 +39,30 @@
       },
       "revId": "6e2796bdcbfbea1a2e46fc41e0f96daf0dfb0286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d98e73_1c7faa2d",
+        "filename": "zephyr/drivers/keyboard_factory_test/keyboard_factory_test.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-08-26T17:33:25Z",
+      "side": 1,
+      "message": "Tried to but it only works with optional properties, not the full optional nodes, not too sure why I may take another look later",
+      "parentUuid": "7b60fc11_416760cc",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "6e2796bdcbfbea1a2e46fc41e0f96daf0dfb0286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
