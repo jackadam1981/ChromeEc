@@ -566,6 +566,16 @@ class Zmake:
                         ),
                         "ZEPHYR_BASE": str(self.zephyr_base),
                         "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
+                        "PW_ROOT": str(
+                            self.checkout / "src" / "third_party" / "pigweed"
+                        ),
+                        "NANOPB_DIR": str(
+                            self.checkout
+                            / "src"
+                            / "third_party"
+                            / "zephyr"
+                            / "nanopb"
+                        ),
                         "Python3_EXECUTABLE": sys.executable,
                         **(
                             {
@@ -726,6 +736,14 @@ class Zmake:
                 project.config.project_name,
                 build_name,
             )
+            env = dict(os.environ)
+
+            protoc_path = shutil.which("protoc")
+            if protoc_path:
+                protoc_path_obj = pathlib.Path(protoc_path)
+                assert protoc_path_obj.parent.name == "bin"
+                cipd_install_dir = str(protoc_path_obj.parent.parent)
+                env["PW_PIGWEED_CIPD_INSTALL_DIR"] = cipd_install_dir
 
             kconfig_file = build_dir / f"kconfig-{build_name}.conf"
             proc = config.popen_cmake(
@@ -739,6 +757,7 @@ class Zmake:
                 stderr=subprocess.PIPE,
                 encoding="utf-8",
                 errors="replace",
+                env=env,
             )
             job_id = f"{project.config.project_name}:{build_name}"
             zmake.multiproc.LogWriter.log_output(
