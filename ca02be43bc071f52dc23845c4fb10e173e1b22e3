@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15075413_f96c1db1",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:13:24Z",
+      "side": 1,
+      "message": "This isn\u0027t the right approach.  This prevents the emulator from being added to any new test suites.\n\nThe tests that don\u0027t need this driver should add `CONFIG_EMUL_PPM_DRIVER\u003dn` in the testcase.yaml file.\n\nAlternately, you could move the [ppm-driver node](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/pdc/boards/native_sim.overlay;l\u003d56) into a test specific devicetree overlay.",
+      "range": {
+        "startLine": 325,
+        "startChar": 48,
+        "endLine": 325,
+        "endChar": 71
+      },
+      "revId": "ca02be43bc071f52dc23845c4fb10e173e1b22e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
