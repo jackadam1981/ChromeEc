@@ -8,6 +8,7 @@
 def register_brox_project(
     project_name,
     kconfig_files=None,
+    extra_modules=None,
 ):
     """Register a variant of brox."""
     if kconfig_files is None:
@@ -18,6 +19,7 @@ def register_brox_project(
             here / project_name / "project.conf",
         ]
 
+    modules = extra_modules + ["ec"]
     return register_binman_project(
         project_name=project_name,
         zephyr_board="it8xxx2/it82002aw",
@@ -26,6 +28,8 @@ def register_brox_project(
         ],
         kconfig_files=kconfig_files,
         inherited_from=["brox"],
+        modules=modules,
+        supported_toolchains=["llvm", "zephyr"],
     )
 
 
@@ -44,6 +48,7 @@ brox = register_brox_project(
 register_brox_project(
     project_name="brox-ish-ec",
     kconfig_files=[
+        here / "rpc.conf",
         # Common to all projects.
         here / "program.conf",
         # Parent project's config
@@ -51,6 +56,7 @@ register_brox_project(
         # Project-specific KConfig customization.
         here / "brox-ish-ec" / "project.conf",
     ],
+    extra_modules=["pigweed", "nanopb"],
 )
 
 register_brox_project(
@@ -82,9 +88,11 @@ register_ish_project(
         here / "brox-ish" / "project.overlay",
     ],
     kconfig_files=[
-        here / "brox-ish" / "prj.conf",
+        here / "rpc.conf",
         here / "motionsense.conf",
+        here / "brox-ish" / "prj.conf",
     ],
+    modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 greenbayupoc = register_brox_project(
