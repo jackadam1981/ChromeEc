@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4a3107_2d3d1ab3",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T23:35:58Z",
+      "side": 1,
+      "message": "Can you just add braces around the full case to make clang happy?\n```\n    case UCSI_GET_CAPABILITY: {\n        /* Override...*/\n        struct ...\n        break;\n    }\n```",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 27
+      },
+      "revId": "295be3ba3b2cde963c7cf572a914d739029ce658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
