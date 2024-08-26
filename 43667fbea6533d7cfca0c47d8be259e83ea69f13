@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd566c47_889ac718",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-26T23:11:44Z",
+      "side": 1,
+      "message": "The [other changes](https://crrev.com/c/5806993) do seem to be working, since reverting them causes CQ failures.",
+      "revId": "43667fbea6533d7cfca0c47d8be259e83ea69f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
