@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6599b35_33930f74",
+        "filename": "zephyr/test/keyboard_factory_test/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-08-26T21:11:00Z",
+      "side": 1,
+      "message": "yeah I had to do this in other tests as well, gotta figure it out",
+      "parentUuid": "66d63c69_6fa2ea20",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "041869683941cd4c13c2e9297ac8adb5227a33d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15196556_118ef499",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-26T18:00:40Z",
       "side": 1,
       "message": "Nit - add a comment that the test assumes pin 11 is GPIO0-3.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "041869683941cd4c13c2e9297ac8adb5227a33d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05760321_91136050",
+        "filename": "zephyr/test/keyboard_factory_test/boards/native_sim.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-08-26T21:11:00Z",
+      "side": 1,
+      "message": "Oh, I was meaning to not use magic from those but forgot to fix it, hey I added a TODO in the test code and here, I\u0027ll remove that assumption in a followup.",
+      "parentUuid": "15196556_118ef499",
       "range": {
         "startLine": 36,
         "startChar": 0,
