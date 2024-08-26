@@ -1,0 +1,80 @@
+diff --git a/zephyr/drivers/usbc/pdc_tps6699x.c b/zephyr/drivers/usbc/pdc_tps6699x.c
+index 569da116ba..3bb3ebfa63 100644
+--- a/zephyr/drivers/usbc/pdc_tps6699x.c
++++ b/zephyr/drivers/usbc/pdc_tps6699x.c
+@@ -18,7 +18,7 @@
+ #include <zephyr/kernel.h>
+ #include <zephyr/logging/log.h>
+ #include <zephyr/smf.h>
+-LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
++LOG_MODULE_REGISTER(tps6699x, LOG_LEVEL_DBG);
+ #include "tps6699x_cmd.h"
+ #include "tps6699x_reg.h"
+ #include "usbc/utils.h"
+@@ -34,6 +34,12 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
+ #define PDC_CMD_EVENT BIT(1)
+ /** @brief Requests the driver to enter the suspended state */
+ #define PDC_CMD_SUSPEND_REQUEST_EVENT BIT(2)
++/** @brief Time delay before running the state machine loop */
++#define LOOP_DELAY_MS 50
++/** @brief Maximum time to wait for a command to complete. */
++#define CMD_TIMEOUT_MS 1500
++/** @brief maximum number of times to try for a command to complete */
++#define WAIT_MAX (CMD_TIMEOUT_MS / LOOP_DELAY_MS)
+ 
+ /**
+  * @brief All raw_value data uses byte-0 for contains the register data was
+@@ -221,6 +227,8 @@ struct pdc_data_t {
+ 	enum cmd_t cmd;
+ 	/** UCSI command valid in |task_wait| state or 0 if vendor cmd */
+ 	enum ucsi_command_t running_ucsi_cmd;
++	/** Wait counter used for command timedout */
++	uint16_t wait_counter;
+ 	/* VDO request list */
+ 	enum vdo_type_t vdo_req_list[8];
+ 	/* Request VDO */
+@@ -1370,6 +1378,7 @@ static void st_task_wait_entry(void *o)
+ 	struct pdc_data_t *data = (struct pdc_data_t *)o;
+ 
+ 	print_current_state(data);
++	data->wait_counter = 0;
+ }
+ 
+ static void st_task_wait_run(void *o)
+@@ -1396,7 +1405,13 @@ static void st_task_wait_run(void *o)
+ 	 *  2) command is set to "!CMD" for unknown command
+ 	 */
+ 	if (cmd.command && cmd.command != COMMAND_TASK_NO_COMMAND) {
+-		return;
++	        data->wait_counter++;
++		if (data->wait_counter > WAIT_MAX) {
++		    LOG_ERR("Command %d timed out", data->cmd);
++		    goto error_recovery;
++		} else {
++		    return;
++		}
+ 	}
+ 
+ 	/*
+@@ -2144,7 +2159,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
+ 		/* TODO(b/345783692): Consider waiting for an event with a
+ 		 * timeout to avoid high interrupt-handling latency.
+ 		 */
+-		k_sleep(K_MSEC(50));
++		k_sleep(K_MSEC(LOOP_DELAY_MS));
+ 	}
+ }
+ 
+diff --git a/zephyr/subsys/pd_controller/pdc_power_mgmt.c b/zephyr/subsys/pd_controller/pdc_power_mgmt.c
+index 5df8fd6a25..f6ec7a47ca 100644
+--- a/zephyr/subsys/pd_controller/pdc_power_mgmt.c
++++ b/zephyr/subsys/pd_controller/pdc_power_mgmt.c
+@@ -31,7 +31,7 @@
+ #include <drivers/pdc.h>
+ #include <usbc/utils.h>
+ 
+-LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
++LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_DBG);
+ 
+ /**
+  * @brief Event triggered by sending an internal command
