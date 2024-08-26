@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cb00df9_c74a6fb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-08-26T19:06:55Z",
+      "side": 1,
+      "message": "one more thing: please mention how much flash space this saves",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "dca42f7e45c52c82d24350764d6347573f07dca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c13e8134_356950cd",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 4
