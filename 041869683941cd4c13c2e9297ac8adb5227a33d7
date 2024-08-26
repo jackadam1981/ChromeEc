@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66d63c69_6fa2ea20",
+        "filename": "zephyr/test/keyboard_factory_test/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T18:00:40Z",
+      "side": 1,
+      "message": "Nit - for a follow up this mock should be moved to a common location, or potentially just faked using FFF.\n\nI\u0027m not aware of any other of our Zephyr EC images or tests pulling in anything from the `chip/host` directory.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "041869683941cd4c13c2e9297ac8adb5227a33d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15196556_118ef499",
+        "filename": "zephyr/test/keyboard_factory_test/boards/native_sim.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T18:00:40Z",
+      "side": 1,
+      "message": "Nit - add a comment that the test assumes pin 11 is GPIO0-3.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "041869683941cd4c13c2e9297ac8adb5227a33d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
