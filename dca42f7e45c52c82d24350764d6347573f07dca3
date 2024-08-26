@@ -70,6 +70,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "245ab1cf_47c26595",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-08-26T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13e8134_356950cd",
+      "range": {
+        "startLine": 181,
+        "startChar": 12,
+        "endLine": 181,
+        "endChar": 35
+      },
+      "revId": "dca42f7e45c52c82d24350764d6347573f07dca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "229e9602_c14ff7e8",
@@ -83,6 +107,24 @@
       "writtenOn": "2024-08-26T19:05:29Z",
       "side": 1,
       "message": "do we still need to care about clearing the state?",
+      "revId": "dca42f7e45c52c82d24350764d6347573f07dca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4425bf_919dd5aa",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-08-26T19:28:47Z",
+      "side": 1,
+      "message": "Yes, shimless RMA still needs to get some *_TRIGGERED state after triggering AP RO verification. That state needs to get cleared after the AP resets.",
+      "parentUuid": "229e9602_c14ff7e8",
       "revId": "dca42f7e45c52c82d24350764d6347573f07dca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
