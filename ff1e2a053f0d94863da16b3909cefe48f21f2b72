@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b05016b_958c0b41",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "Yes. It is for working around the language restriction (no declaration right below a label). It seems twister uses clang, which complains, and ninja uses gcc, which doesn\u0027t. I\u0027m not sure whether there is a switch to allow it or whether we want to enable it.",
+      "parentUuid": "2e8e0564_fe0ccdb5",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84ce5214_b48ca267",
         "filename": "zephyr/test/pdc/CMakeLists.txt",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-26T17:31:17Z",
       "side": 1,
       "message": "Is this needed?  This test should already have CONFIG_UCSI\u003dy defined which should pick up the source driver file.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 75
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1322d662_230faaf8",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "If CONFIG_UCSI_PPM is defined, all real PPM files (ppm_common, ppm_driver, ucsi_host_cmd) will be included. ppm_driver is individually included here so that other ones (ppm_common and ucsi_host_cmd) can be served as mocks.",
+      "parentUuid": "84ce5214_b48ca267",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa54598_da2cb85d",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86923d0b_3f0843ff",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44cdb3a8_d46d371f",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-08-26T17:31:17Z",
       "side": 1,
       "message": "Nit - comment that UCSI command 0 is reserved.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08d6283_ec1de38f",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44cdb3a8_d46d371f",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38688af5_016a0cf0",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6835a8_7bc174af",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa042c57_a3080f52",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5873f21e_fbb9b37e",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa042c57_a3080f52",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "602ce835_40d52e1b",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-08-26T17:31:17Z",
       "side": 1,
       "message": "Here is where you could add another overlay file to include the ppm-driver emulator if it can\u0027t be used with the other tests.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2d7457_f71f9af3",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T21:11:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "602ce835_40d52e1b",
       "range": {
         "startLine": 93,
         "startChar": 0,
