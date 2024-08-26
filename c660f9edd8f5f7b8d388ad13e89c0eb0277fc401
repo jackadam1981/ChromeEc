@@ -16,6 +16,24 @@
       "message": "@dnojiri, how can we define this in project.conf?",
       "revId": "c660f9edd8f5f7b8d388ad13e89c0eb0277fc401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14b5e9d_52da2315",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-26T18:24:51Z",
+      "side": 1,
+      "message": "I uploaded a new PS for CL:5807296. Can you please try? project.conf should be written like CL:5807297. (Note I removed \u0027_DEFAULT_\u0027.)",
+      "parentUuid": "c566654b_ddd89c60",
+      "revId": "c660f9edd8f5f7b8d388ad13e89c0eb0277fc401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
