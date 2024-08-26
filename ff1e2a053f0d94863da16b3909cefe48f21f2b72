@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8e0564_fe0ccdb5",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "Was this change intentional?",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ce5214_b48ca267",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "Is this needed?  This test should already have CONFIG_UCSI\u003dy defined which should pick up the source driver file.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 75
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86923d0b_3f0843ff",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "Use a nodelabel to get the driver pointer.  The DT_INST numbering is not guaranteed by the devicetree model.\n\n```\n\t\tppm_driver_nodelabel: ppm-driver {\n\t\t\tcompatible \u003d \"ucsi-ppm\";\n\t\t\tlpm \u003d \u003c\u0026pdc_emul1 \u0026pdc_emul2\u003e;\n\t\t};\n\n\tpdc_dev \u003d DEVICE_DT_GET(DT_NODELABEL(ppm_driver_nodelabel));\n```\n\nYou should also create macro so this can be shared by all the test cases.\n\n[Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/pdc/src/tps6699x/tps6699x.c;l\u003d22)",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44cdb3a8_d46d371f",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "Nit - comment that UCSI command 0 is reserved.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6835a8_7bc174af",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "This test relies on direct knowledge of the `ucsi_get_active_port_count()` implementation.  Is this providing any value?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa042c57_a3080f52",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "Same here, this tests exactly what `ucsi_ppm_get_ppm_dev()` currently implements.  Any change to `ucsi_ppm_get_ppm_dev()` will require a change to the test.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602ce835_40d52e1b",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-26T17:31:17Z",
+      "side": 1,
+      "message": "Here is where you could add another overlay file to include the ppm-driver emulator if it can\u0027t be used with the other tests.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
