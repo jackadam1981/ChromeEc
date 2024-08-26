@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08fb4f9_d1204c44",
+        "filename": "zephyr/program/corsola/kyogre/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2024-08-26T09:20:57Z",
+      "side": 1,
+      "message": "QQ: didn\u0027t declaring col/row in project.conf work? wondering why you changed board.c\nKEYBOARD_DEFAULT_COL_VOL_UP\u003d9\nKEYBOARD_DEFAULT_ROW_VOL_UP\u003d3",
+      "revId": "2109b298ac44fd3b62abbbbddddfdf766c226770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
