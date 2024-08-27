@@ -708,6 +708,7 @@ static int emul_tps6699x_set_info(const struct emul *target,
 	reg_version->version = info->fw_version;
 	*((uint16_t *)reg_tx_identity->vendor_id) = info->vid_pid >> 16;
 	*((uint16_t *)reg_tx_identity->product_id) = info->vid_pid & 0xFFFF;
+	memset(reg_customer_use->data, 0, sizeof(reg_customer_use->data));
 	memcpy(reg_customer_use->data, info->project_name,
 	       MIN(sizeof(reg_customer_use->data), strlen(info->project_name)));
 	*((uint32_t *)reg_mode->data) =
@@ -739,6 +740,8 @@ static int emul_tps6699x_reset(const struct emul *target)
 {
 	struct tps6699x_emul_pdc_data *data =
 		tps6699x_emul_get_pdc_data(target);
+
+	memset(data->reg_val, 0, sizeof(data->reg_val));
 
 	/* Reset PDOs. */
 	memset(data->src_pdos, 0x0, sizeof(data->src_pdos));
