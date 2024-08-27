@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6690da49_e2bd05dd",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-27T15:12:56Z",
+      "side": 1,
+      "message": "The TI driver either expects this as `GOOG` or the first byte as an int to fill `TI%d`.  This manipulation within the TI driver makes it difficult to keep this test compatible with realtek.  I\u0027m exploring options to possibly put the `project_name` in the device tree to validate in the test.",
+      "parentUuid": "d7f69134_9288834c",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 31
+      },
+      "revId": "e1d94977766c2f12f5796dd66f645b27f346951e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0313c3a1_c3114cd2",
         "filename": "zephyr/emul/emul_tps6699x_private.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-27T00:04:28Z",
       "side": 1,
       "message": "Can these come from including `zephyr/drivers/usbc/tps6699x_reg.h`?",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 19
+      },
+      "revId": "e1d94977766c2f12f5796dd66f645b27f346951e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f712a6e6_931f3e2d",
+        "filename": "zephyr/emul/emul_tps6699x_private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-27T15:12:56Z",
+      "side": 1,
+      "message": "No, the register definitions there include 2 byte prefix of `cmd` and `length`.",
+      "parentUuid": "0313c3a1_c3114cd2",
       "range": {
         "startLine": 285,
         "startChar": 0,
