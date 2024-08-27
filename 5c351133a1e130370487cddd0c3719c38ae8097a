@@ -33,6 +33,23 @@
       "message": "Looks reasonable.  Deferring to EC Eng for approval.",
       "revId": "5c351133a1e130370487cddd0c3719c38ae8097a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "107a4f17_1e5662c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-27T18:03:18Z",
+      "side": 1,
+      "message": "I\u0027d like to test this against brox.\nIf TAST-EC and TAST-PD don\u0027t show any issues, we should enable this for all brox boards, not just Lotso.",
+      "revId": "5c351133a1e130370487cddd0c3719c38ae8097a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
