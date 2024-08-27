@@ -8760,15 +8760,36 @@ static int cmd_battery_config_set(int argc, char *argv[], bool search_only)
 
 	/* Clear the dst to ensure it'll be null-terminated. */
 	memset(identifier, 0, sizeof(identifier));
-	sprintf(identifier, "%s,%s", manuf_name, device_name);
-	base::Value::Dict *root_dict = dict->FindDict(identifier);
-	if (root_dict == nullptr) {
+	base::Value::Dict *root_dict = nullptr;
+	int num_matches = 0;
+
+	for (int prefix_len = strlen(device_name); prefix_len > 0;
+	     --prefix_len) {
+		sprintf(identifier, "%s,%.*s", manuf_name, prefix_len,
+			device_name);
+
+		base::Value::Dict *matching_root_dict =
+			dict->FindDict(identifier);
+		if (matching_root_dict != nullptr) {
+			++num_matches;
+			root_dict = matching_root_dict;
+		}
+	}
+
+	if (num_matches == 0) {
 		fprintf(stderr,
-			"Config matching identifier=%s not found in %s.\n",
-			identifier, json_file);
+			"No config found for any prefix of device_name=%s in %s.\n",
+			device_name, json_file);
+		free(json);
+		return -1;
+	} else if (num_matches > 1) {
+		fprintf(stderr,
+			"Multiple configs found for prefixes of device_name=%s in %s.\n",
+			device_name, json_file);
 		free(json);
 		return -1;
 	}
+
 	if (read_u8_from_json(root_dict, "struct_version", &struct_version))
 		return -1;
 
