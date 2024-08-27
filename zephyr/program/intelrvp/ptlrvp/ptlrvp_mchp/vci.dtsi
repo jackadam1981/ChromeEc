@@ -29,4 +29,16 @@
 			status = "okay";
 		};
 	};
+	vci_gpios: vci-gpios {
+		compatible = "cros-ec,vci-gpios";
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <3>;
+	};
+	named-gpios {
+		pwrbtn: vci-in0-n {
+			gpios = <&vci_gpios 0 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+	};
 };
