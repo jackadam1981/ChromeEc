@@ -1601,7 +1601,7 @@ static void pdc_src_attached_run(void *obj)
 		/* TODO read from DT */
 		port->uor.swap_to_dfp = 1;
 		port->uor.swap_to_ufp = 0;
-		port->uor.accept_dr_swap = 1;
+		port->uor.accept_dr_swap = 0;
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SRC_ATTACHED_SET_PR_SWAP_POLICY:
@@ -1731,7 +1731,7 @@ static void pdc_snk_attached_run(void *obj)
 		/* TODO read from DT */
 		port->uor.swap_to_dfp = 1;
 		port->uor.swap_to_ufp = 0;
-		port->uor.accept_dr_swap = 1;
+		port->uor.accept_dr_swap = 0;
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SNK_ATTACHED_SET_PR_SWAP_POLICY:
@@ -3009,13 +3009,18 @@ static int pdc_power_mgmt_request_data_swap_intern(int port,
 
 	/* Set DR accept swap policy */
 	if (role == PD_ROLE_UFP) {
-		/* Attempt to swapt to UFP */
+		/* Attempt to swap to UFP */
 		pdc_data[port]->port.uor.swap_to_dfp = 0;
 		pdc_data[port]->port.uor.swap_to_ufp = 1;
+		/* Allow external swaps that take us from UFP to DFP */
+		pdc_data[port]->port.uor.accept_dr_swap = 1;
 	} else if (role == PD_ROLE_DFP) {
-		/* Attempt to swapt to DFP */
+		/* Attempt to swap to DFP */
 		pdc_data[port]->port.uor.swap_to_dfp = 1;
 		pdc_data[port]->port.uor.swap_to_ufp = 0;
+		/* Do not allow external swaps when we are in the preferred
+		 * DPF role. */
+		pdc_data[port]->port.uor.accept_dr_swap = 0;
 	} else {
 		return EC_SUCCESS;
 	}
