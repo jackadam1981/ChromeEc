@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96b513e_32c0cb97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T05:14:17Z",
+      "side": 1,
+      "message": "(To myself) This restriction applies to EC_CMD_BATTERY_GET_STATIC not to ec_cmd_battery_config. So, v2 isn\u0027t strictly required but factory/rma scripts may use EC_CMD_BATTERY_GET_STATIC as part of BCIC process. So, we probably still want BCIC to require v2 to reduce any chance of accidents.",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "95c9a45c383403a6bb6159072f0b4e431ce2a692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517dfdfb_64ce5cd8",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T05:14:17Z",
+      "side": 1,
+      "message": "Can you please add comments to explain why v2 is required as written in the CL description? (\u0027V0/V1 host command strips 7+/12+ strings...\u0027)",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 1
+      },
+      "revId": "95c9a45c383403a6bb6159072f0b4e431ce2a692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
