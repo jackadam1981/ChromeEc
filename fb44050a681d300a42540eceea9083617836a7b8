@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d86e002_292e7980",
+        "filename": "zephyr/emul/emul_smart_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T04:47:07Z",
+      "side": 1,
+      "message": "Is it ok to simplify this to:\n\n    BUILD_ASSERT(sizeof(DT_INST_PROP(n, dev_chem)) \u003c\u003d MAX_BLOCK_SIZE);\n\n?",
+      "range": {
+        "startLine": 805,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 27
+      },
+      "revId": "fb44050a681d300a42540eceea9083617836a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3969a46d_385ced47",
+        "filename": "zephyr/test/drivers/host_cmd/src/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T04:47:07Z",
+      "side": 1,
+      "message": "This makes the check not fail even if a returned string isn\u0027t null-terminated. I\u0027m not sure if I understand \u0027... don\u0027t know why the host command returns null terminiated strings...\u0027. Can you please elaborate? How would a host know a returned short string is short if it\u0027s not null-terminated?",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "fb44050a681d300a42540eceea9083617836a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
