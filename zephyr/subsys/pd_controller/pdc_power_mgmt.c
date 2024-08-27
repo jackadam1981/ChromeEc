@@ -413,6 +413,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_EVAL_SWAP_TO_SRC,
 	/** Triggers an update of the allow_pr_swap bit in CMD_SET_DRP */
 	SNK_POLICY_UPDATE_ALLOW_PR_SWAP,
+	/** Re-enable the sink path following a PD contract change */
+	SNK_POLICY_REENABLE_SINK_PATH,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -1110,6 +1112,12 @@ static bool handle_connector_status(struct pdc_port_t *port)
 				atomic_set_bit(port->cci_flags, CCI_ATTENTION);
 			}
 
+			if (conn_status_change_bits.negotiated_power_level ||
+			    conn_status_change_bits.supported_provider_caps) {
+				atomic_set_bit(port->snk_policy.flags,
+					       SNK_POLICY_REENABLE_SINK_PATH);
+			}
+
 			if (status->power_direction) {
 				/* Port partner is a sink device
 				 */
@@ -1341,6 +1349,10 @@ static void run_snk_policies(struct pdc_port_t *port)
 			port->snk_policy.accept_power_role_swap;
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_REENABLE_SINK_PATH)) {
+		port->sink_path_en = true;
+		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 	}
 
 	send_pending_public_commands(port);
@@ -1822,6 +1834,8 @@ static void pdc_snk_attached_run(void *obj)
 		/* Test if battery can be charged from this port */
 		port->sink_path_en = port->active_charge;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		atomic_clear_bit(port->snk_policy.flags,
+				 SNK_POLICY_REENABLE_SINK_PATH);
 		return;
 	case SNK_ATTACHED_RUN:
 		set_attached_pdc_state(port, SNK_ATTACHED_STATE);
