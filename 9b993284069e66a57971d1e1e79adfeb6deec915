@@ -16,6 +16,29 @@
       "message": "Deferring to EC Eng for approval.",
       "revId": "9b993284069e66a57971d1e1e79adfeb6deec915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54eb28e_b38d2fe5",
+        "filename": "zephyr/program/brox/jubilant/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-08-27T17:53:59Z",
+      "side": 1,
+      "message": "can you look into `clock-bus \u003d \"NPCX_CLOCK_BUS_LFCLK\"` on pwm1?\ni see that used a lot on other boards.\nthe cros-ec equivalent seems to be `PWM_CONFIG_DSLEEP` and\ni remember we\u0027ve used that on previous boards to fix similar\nflicker issues.",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9b993284069e66a57971d1e1e79adfeb6deec915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
