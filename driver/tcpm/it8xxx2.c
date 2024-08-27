@@ -669,6 +669,7 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 				 uint16_t header, const uint32_t *data)
 {
 	int status = TCPC_TX_COMPLETE_FAILED;
+	bool skip_pd_transmit_complete = false;
 
 	switch (type) {
 	case TCPCI_MSG_SOP:
@@ -677,6 +678,10 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 	case TCPCI_MSG_SOP_DEBUG_PRIME:
 	case TCPCI_MSG_SOP_DEBUG_PRIME_PRIME:
 		status = it8xxx2_tx_data(port, type, header, data);
+#ifdef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+		skip_pd_transmit_complete =
+			(status == TCPC_TX_COMPLETE_SUCCESS);
+#endif
 		break;
 	case TCPCI_MSG_TX_BIST_MODE_2:
 		it8xxx2_send_bist_mode2_pattern(port);
@@ -692,7 +697,9 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 		status = TCPC_TX_COMPLETE_FAILED;
 		break;
 	}
-	pd_transmit_complete(port, status);
+	if (!skip_pd_transmit_complete) {
+		pd_transmit_complete(port, status);
+	}
 
 	return EC_SUCCESS;
 }
