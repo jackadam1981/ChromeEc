@@ -425,6 +425,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_UPDATE_ALLOW_PR_SWAP,
 	/** Sends SET_PDO to the LPM. */
 	SNK_POLICY_UPDATE_SRC_CAPS,
+	/** Forces an update to UOR (data role register) */
+	SNK_POLICY_UPDATE_UOR,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -520,6 +522,8 @@ enum policy_src_attached_t {
 	SRC_POLICY_GET_RDO,
 	/** Triggers an update of the allow_pr_swap bit in CMD_SET_DRP */
 	SRC_POLICY_UPDATE_ALLOW_PR_SWAP,
+	/** Forces an update to UOR (data role register) */
+	SRC_POLICY_UPDATE_UOR,
 
 	/** SRC_POLICY_COUNT */
 	SRC_POLICY_COUNT
@@ -1061,6 +1065,7 @@ static bool handle_connector_status(struct pdc_port_t *port)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
 	union conn_status_change_bits_t conn_status_change_bits;
+	bool update_uor = false;
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
@@ -1140,15 +1145,47 @@ static bool handle_connector_status(struct pdc_port_t *port)
 					port_number);
 			}
 
+			/* Check data role and correct external swap allow bit
+			 * if needed. Note: `conn_partner_type` is the port
+			 * partner's role */
+			if (status->conn_partner_type == DFP_ATTACHED &&
+			    port->uor.accept_dr_swap == 0) {
+				/* PDC has UFP role, but data role swap allow
+				 * bit incorrectly set (should be 1) */
+				port->uor.swap_to_dfp = 0;
+				port->uor.swap_to_ufp = 1; /* Stay as UFP */
+				port->uor.accept_dr_swap = 1;
+				update_uor = true;
+
+			} else if (status->conn_partner_type == UFP_ATTACHED &&
+				   port->uor.accept_dr_swap == 1) {
+				/* PDC has DFP role, but data role swap allow
+				 * bit incorrectly set (should be 0) */
+				port->uor.swap_to_dfp = 1; /* Stay as DFP */
+				port->uor.swap_to_ufp = 0;
+				port->uor.accept_dr_swap = 0;
+				update_uor = true;
+			}
+
 			if (status->power_direction) {
-				/* Port partner is a sink device
-				 */
+				/* Port partner is a sink device */
+				if (update_uor) {
+					atomic_set_bit(port->src_policy.flags,
+						       SRC_POLICY_UPDATE_UOR);
+				}
+
 				set_pdc_state(port, PDC_SRC_ATTACHED);
+
 				return true;
 			} else {
-				/* Port partner is a source
-				 * device */
+				/* Port partner is a source device */
+				if (update_uor) {
+					atomic_set_bit(port->snk_policy.flags,
+						       SNK_POLICY_UPDATE_UOR);
+				}
+
 				set_pdc_state(port, PDC_SNK_ATTACHED);
+
 				return true;
 			}
 			break;
@@ -1385,6 +1422,10 @@ static void run_snk_policies(struct pdc_port_t *port)
 		 */
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_UOR)) {
+		queue_internal_cmd(port, CMD_PDC_SET_UOR);
+		return;
 	}
 
 	send_pending_public_commands(port);
@@ -1448,6 +1489,10 @@ static void run_src_policies(struct pdc_port_t *port)
 		port->pdr.accept_pr_swap =
 			port->src_policy.accept_power_role_swap;
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_UPDATE_UOR)) {
+		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	}
 
@@ -1621,9 +1666,10 @@ static void pdc_src_attached_run(void *obj)
 		port->src_attached_local_state =
 			SRC_ATTACHED_SET_PR_SWAP_POLICY;
 		/* TODO read from DT */
+		atomic_clear_bit(port->src_policy.flags, SRC_POLICY_UPDATE_UOR);
 		port->uor.swap_to_dfp = 1;
 		port->uor.swap_to_ufp = 0;
-		port->uor.accept_dr_swap = 1;
+		port->uor.accept_dr_swap = 0;
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SRC_ATTACHED_SET_PR_SWAP_POLICY:
@@ -1751,9 +1797,10 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_PR_SWAP_POLICY;
 		/* TODO read from DT */
+		atomic_clear_bit(port->snk_policy.flags, SNK_POLICY_UPDATE_UOR);
 		port->uor.swap_to_dfp = 1;
 		port->uor.swap_to_ufp = 0;
-		port->uor.accept_dr_swap = 1;
+		port->uor.accept_dr_swap = 0;
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SNK_ATTACHED_SET_PR_SWAP_POLICY:
@@ -3044,13 +3091,18 @@ static int pdc_power_mgmt_request_data_swap_intern(int port,
 
 	/* Set DR accept swap policy */
 	if (role == PD_ROLE_UFP) {
-		/* Attempt to swapt to UFP */
+		/* Attempt to swap to UFP */
 		pdc_data[port]->port.uor.swap_to_dfp = 0;
 		pdc_data[port]->port.uor.swap_to_ufp = 1;
+		/* Allow external swaps that take us from UFP to DFP */
+		pdc_data[port]->port.uor.accept_dr_swap = 1;
 	} else if (role == PD_ROLE_DFP) {
-		/* Attempt to swapt to DFP */
+		/* Attempt to swap to DFP */
 		pdc_data[port]->port.uor.swap_to_dfp = 1;
 		pdc_data[port]->port.uor.swap_to_ufp = 0;
+		/* Do not allow external swaps when we are in the preferred
+		 * DPF role. */
+		pdc_data[port]->port.uor.accept_dr_swap = 0;
 	} else {
 		return EC_SUCCESS;
 	}
