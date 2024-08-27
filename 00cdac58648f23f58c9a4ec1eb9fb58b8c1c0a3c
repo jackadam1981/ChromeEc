@@ -22,6 +22,30 @@
       },
       "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e300d4a_30a1475d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-27T21:40:24Z",
+      "side": 1,
+      "message": "Are we willing to be a UFP if a port partner is forcing us to?  This sounds like a bigger question of what happens when a pair of port partners can\u0027t agree.",
+      "parentUuid": "ae7a8897_6b892cc8",
+      "range": {
+        "startLine": 1693,
+        "startChar": 27,
+        "endLine": 1693,
+        "endChar": 42
+      },
+      "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
