@@ -51,6 +51,29 @@
       "parentUuid": "e5b18859_48d89be6",
       "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e41e677_de0711cb",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T17:57:30Z",
+      "side": 1,
+      "message": "Do we still need this sub-state, or can this be handled entirely by the policy bit set/check now introduced?",
+      "range": {
+        "startLine": 1832,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 36
+      },
+      "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
