@@ -16,6 +16,68 @@
       "message": "verified on Xol",
       "revId": "0db16b99a3adb442402a19b7f15257f5e1a692fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f75219_492b425e",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T18:10:32Z",
+      "side": 1,
+      "message": "Is that also true of volume-down?",
+      "revId": "0db16b99a3adb442402a19b7f15257f5e1a692fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791ea49b_b7c37c28",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T18:10:32Z",
+      "side": 1,
+      "message": "It looks like in general, the \"inputs\" to this file are `CONFIG_*` items, e.g. `CONFIG_KEYBOARD_REFRESH_ROW3`. Should this similarly be `CONFIG_KEYBOARD_COL_VOL_UP`? That would also make `config_chip.h` more consistent.",
+      "fixSuggestions": [
+        {
+          "fixId": "bfb8b014_6caea252",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/keyboard_config.h",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": "#ifndef CONFIG_KEYBOARD_COL_VOL_UP\n#define CONFIG_KEYBOARD_COL_VOL_UP 4\n"
+            },
+            {
+              "path": "include/keyboard_config.h",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "#ifndef CONFIG_KEYBOARD_ROW_VOL_UP\n#define CONFIG_KEYBOARD_ROW_VOL_UP 0\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0db16b99a3adb442402a19b7f15257f5e1a692fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
