@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c987ce8d_d76bb695",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T17:52:04Z",
+      "side": 1,
+      "message": "Can you give this a more descriptive name, like `MAX_PDOS`?",
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd7eff9_b196cc90",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T17:52:04Z",
+      "side": 1,
+      "message": "Is it possible to implement this caching in a generic way above the level of the individual PDC driver?",
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f54996f1_bbb5dbf9",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 3
@@ -37,6 +71,23 @@
         "endLine": 913,
         "endChar": 0
       },
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd16225a_24f46a25",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T17:52:04Z",
+      "side": 1,
+      "message": "Fixed and augmented PDOs have macros in `usb_pd.h` to extract their fields. Can you add some for battery PDOs and use them here?",
       "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
