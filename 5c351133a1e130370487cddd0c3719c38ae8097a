@@ -50,6 +50,23 @@
       "message": "I\u0027d like to test this against brox.\nIf TAST-EC and TAST-PD don\u0027t show any issues, we should enable this for all brox boards, not just Lotso.",
       "revId": "5c351133a1e130370487cddd0c3719c38ae8097a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4fa9b6_8f3ab7f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-27T23:04:29Z",
+      "side": 1,
+      "message": "I found that running the test firmware.ECPDPowerSwap.suspend fails on Brox with this change.\nThe symptom is that the EC fails to power up the AP after the test issues a reset to the EC.\nCan you run this test against Lotso?",
+      "revId": "5c351133a1e130370487cddd0c3719c38ae8097a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
