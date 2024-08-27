@@ -46,8 +46,8 @@
 		ec-soc-vr-cntrl-pe {
 			gpios = <&pca95xx_1 4  GPIO_INPUT>;
 		};
-		pmc-gpio-boot-halt {
-			gpios = <&pca95xx_1 3  GPIO_INPUT>;
+		boot_halt: pmc-gpio-boot-halt {
+			gpios = <&pca95xx_1 3  (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		pnp-npnp-sku {
 			gpios = <&pca95xx_1 2  GPIO_INPUT>;

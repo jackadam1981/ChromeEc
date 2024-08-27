@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ap_power/ap_pwrseq_sm.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "system_boot_time.h"
@@ -11,13 +12,35 @@
 #include <zephyr/logging/log.h>
 
 #include <power_signals.h>
-#ifdef CONFIG_AP_PWRSEQ_DRIVER
-#include <ap_power/ap_pwrseq_sm.h>
-#endif
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define X86_NON_DSX_FORCE_SHUTDOWN_TO_MS 50
+
+#define BOARD_BOOT_HALT_DELAY	 K_MSEC(1000)
+
+static struct k_work_delayable boot_halt_work;
+
+static void board_boot_halt_handler(struct k_work *ccd_work)
+{
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(boot_halt))) {
+		/* Keep polling pin state */
+		k_work_schedule(&boot_halt_work, BOARD_BOOT_HALT_DELAY);
+	} else {
+		/* Resume normal power sequence */
+		const struct device *ap_dev = ap_pwrseq_get_instance();
+
+		ap_pwrseq_post_event(ap_dev, AP_PWRSEQ_EVENT_POWER_TIMEOUT);
+	}
+}
+
+static int board_boot_halt_handler_init(void)
+{
+	k_work_init_delayable(&boot_halt_work, board_boot_halt_handler);
+
+	return 0;
+}
+SYS_INIT(board_boot_halt_handler_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
 
 void board_ap_power_force_shutdown(void)
 {
@@ -40,7 +63,6 @@ void board_ap_power_force_shutdown(void)
 		LOG_WRN("RSMRST_PWRGD didn't go low!  Assuming G3.");
 }
 
-#ifdef CONFIG_AP_PWRSEQ_DRIVER
 int board_ap_power_action_g3_entry(void *data)
 {
 	board_ap_power_force_shutdown();
@@ -63,7 +85,23 @@ static int board_ap_power_action_g3_run(void *data)
 
 AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
 			  board_ap_power_action_g3_run, NULL);
-#endif /* CONFIG_AP_PWRSEQ_DRIVER */
+
+
+static int board_ap_power_action_s5_run(void *data)
+{
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(boot_halt)) &&
+	    power_signal_get(PWR_EC_PCH_RSMRST) == 0 &&
+	    power_signal_get(PWR_SLP_S5) != 0) {
+		LOG_INF("Halting SOC Boot");
+		k_work_schedule(&boot_halt_work, BOARD_BOOT_HALT_DELAY);
+		return 1;
+	}
+
+	return 0;
+}
+
+AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_S5, NULL,
+			  board_ap_power_action_s5_run, NULL);
 
 int board_power_signal_get(enum power_signal signal)
 {
