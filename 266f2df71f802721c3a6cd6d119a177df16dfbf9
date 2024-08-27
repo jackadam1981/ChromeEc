@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "266f2df71f802721c3a6cd6d119a177df16dfbf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392c30a3_55eeee54",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-27T16:22:53Z",
+      "side": 1,
+      "message": "In a separate CL, can you update the `clang` version in this file and check the flags?\n\nWe may want to brainstorm to see if there\u0027s a more sustainable way to keep it in sync since the compiler is updated frequently.",
+      "range": {
+        "startLine": 461,
+        "startChar": 30,
+        "endLine": 461,
+        "endChar": 136
+      },
+      "revId": "266f2df71f802721c3a6cd6d119a177df16dfbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
