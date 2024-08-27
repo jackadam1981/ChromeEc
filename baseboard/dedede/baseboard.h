@@ -254,8 +254,8 @@
 #define PD_OPERATING_POWER_MW 15000
 
 /* TODO(b:147314141): Verify these timings */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY 5000 /* = rauru series 5000, us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 25000 /* = keeby series 25000, us */
 
 /* System safe mode for improved panic debugging */
 #define CONFIG_SYSTEM_SAFE_MODE
