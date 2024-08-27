@@ -228,9 +228,8 @@
 		ec-cse-early-sw {
 			gpios = <MCHP_GPIO_DECODE_064 GPIO_INPUT>;
 		};
-		pwrbtn: pwrbtn-ec-in-n {
+		pwrbtn-ec-in-n {
 			gpios = <MCHP_GPIO_DECODE_106 GPIO_INPUT>;
-			enum-name = "GPIO_POWER_BUTTON_L";
 		};
 		en_pp3300_a: ec-pg3-r {
 			gpios = <MCHP_GPIO_DECODE_226 GPIO_OUTPUT_LOW>;
