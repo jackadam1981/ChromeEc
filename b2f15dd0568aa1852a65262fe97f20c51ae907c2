@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5727694_3e277182",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-08-27T17:58:11Z",
+      "side": 1,
+      "message": "I agree with Keith\u0027s suggestion. I would not expect `supported_provider_caps` to be set when in a SRC power role. Possibly negotiated_power_level bit could be set if new SRC CAPS are offered and a new contract is established even when in a SRC power role.",
+      "parentUuid": "bded2574_f8b7adf6",
+      "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e41e677_de0711cb",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 1
