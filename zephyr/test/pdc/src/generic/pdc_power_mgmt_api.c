@@ -793,16 +793,17 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 		struct setup_t s;
 		struct expect_t e;
 	} test[] = {
+		/* `conn_partner_type` refers to the PDC's role and state */
 		{ .s = { .conn_partner_type = DFP_ATTACHED,
 			 .configure = emul_pdc_configure_src },
 		  .e = { .uor = { .swap_to_dfp = 1,
 				  .swap_to_ufp = 0,
-				  .accept_dr_swap = 1 } } },
+				  .accept_dr_swap = 0 } } },
 		{ .s = { .conn_partner_type = DFP_ATTACHED,
 			 .configure = emul_pdc_configure_snk },
 		  .e = { .uor = { .swap_to_dfp = 1,
 				  .swap_to_ufp = 0,
-				  .accept_dr_swap = 1 } } },
+				  .accept_dr_swap = 0 } } },
 		{ .s = { .conn_partner_type = UFP_ATTACHED,
 			 .configure = emul_pdc_configure_src },
 		  .e = { .uor = { .swap_to_dfp = 0,
@@ -850,9 +851,15 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 		}
 
 		emul_pdc_get_uor(emul, &uor);
-		zassert_equal(uor.swap_to_ufp, test[i].e.uor.swap_to_ufp);
-		zassert_equal(uor.swap_to_dfp, test[i].e.uor.swap_to_dfp);
-		zassert_equal(uor.accept_dr_swap, test[i].e.uor.accept_dr_swap);
+		zassert_equal(uor.swap_to_ufp, test[i].e.uor.swap_to_ufp,
+			      "Got %d, expected %d (i=%d)", uor.swap_to_ufp,
+			      test[i].e.uor.swap_to_ufp, i);
+		zassert_equal(uor.swap_to_dfp, test[i].e.uor.swap_to_dfp,
+			      "Got %d, expected %d (i=%d)", uor.swap_to_dfp,
+			      test[i].e.uor.swap_to_dfp, i);
+		zassert_equal(uor.accept_dr_swap, test[i].e.uor.accept_dr_swap,
+			      "Got %d, expected %d (i=%d)", uor.accept_dr_swap,
+			      test[i].e.uor.accept_dr_swap, i);
 
 		emul_pdc_disconnect(emul);
 		zassert_true(TEST_WAIT_FOR(!pd_is_connected(TEST_PORT),
