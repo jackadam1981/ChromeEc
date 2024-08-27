@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75eeffbb_22f10a09",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-08-27T12:32:07Z",
+      "side": 1,
+      "message": "enum was added, could you please check that?",
+      "parentUuid": "821b7707_a1f7664e",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dc09b58_24f1752b",
         "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-22T06:16:23Z",
       "side": 1,
       "message": "Can you please add comments to describe these?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a678c34a_3301ae97",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-08-27T12:32:07Z",
+      "side": 1,
+      "message": "Descriptions ware added and it describes each value.\nCould you please check that?",
+      "parentUuid": "3dc09b58_24f1752b",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "786f1bb7_3663004b",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-08-27T12:32:07Z",
+      "side": 1,
+      "message": "I added \"0\" as STATUS_UNKNOWN. Thank you.",
+      "parentUuid": "8ee4c5b5_fa1df993",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b5a741d_c786e99b",
         "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
         "patchSetId": 8
@@ -83,6 +155,24 @@
       "writtenOn": "2024-08-23T06:24:45Z",
       "side": 1,
       "message": "Is it possible to elaborate the logic here briefly, so that we may know the design mechanism clearly w/o checking the flow chart in ticket?",
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a17794b_f9bab6d2",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-08-27T12:32:07Z",
+      "side": 1,
+      "message": "I added descriptions\u003e If it is not enough, please let me know.",
+      "parentUuid": "2b5a741d_c786e99b",
       "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
