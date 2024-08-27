@@ -16,6 +16,23 @@
       "message": "Not sure if this is the right approach. Do we need to evaluate the new PDOs first like in `SNK_ATTACHED_EVALUATE_PDOS` or does the PDC do that for us?",
       "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e27934a_71060ec2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3487009
+      },
+      "writtenOn": "2024-08-27T00:51:03Z",
+      "side": 1,
+      "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
