@@ -167,7 +167,7 @@
 		 * All `kbc-scanout-x` pins are configured as input GPIO's,
 		 * discrete keyboard connected to IO expander will be used.
 		 **/
-		kbc-scanout-15 {
+		ccd_mode_odl: kbc-scanout-15 {
 			gpios = <MCHP_GPIO_DECODE_151 GPIO_INPUT>;
 		};
 		kbc-scanout-14 {
