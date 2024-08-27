@@ -73,7 +73,7 @@ LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
 /**
  * @brief Maximum time to wait for PDC state to settle.
  */
-#define PDC_SM_SETTLED_TIMEOUT_MS PDC_CMD_TIMEOUT_MS
+#define PDC_SM_SETTLED_TIMEOUT_MS (PDC_CMD_TIMEOUT_MS * 10)
 
 /**
  * @brief maximum number of times to try and send a command, or wait for a
