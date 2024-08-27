@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54996f1_bbb5dbf9",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-27T17:00:28Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be possible.  The upper layer should never call SET_PDO if it hasn\u0027t done a GET_PDOS first.\n\nThis can probably be dropped as it will be hard to write a unit test for this path.",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 913,
+        "endChar": 0
+      },
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
