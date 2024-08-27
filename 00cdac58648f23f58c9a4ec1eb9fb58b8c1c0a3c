@@ -70,6 +70,30 @@
       },
       "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c61978f_72e3e8d6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-27T23:07:28Z",
+      "side": 1,
+      "message": "\u003e Abe - can a partner temporarily reject a data role swap? Or are there instances where a partner rejects a data role swap, but then initiates a data role swap?\n\nThe partner can response with _Wait_. I can\u0027t recall seeing this happen in real life. @bleung@chromium.org might have. UCSI is silent on the PPM\u0027s reaction to a _Wait_. It\u0027s plausible that the PDC could wait (min 100 ms) and try again before this command times out.\n\nAs to the complexity of the state machine, I\u0027ve been looking at UCSI for a while now, and I think this depends significantly on the default values of the PDC and whether changing the accept bit constitutes part of the \"USB mode.\" (If the command fails, \"USB mode\" is not supposed to change.)\n\nIf the PDC defaulted to reject, we could see the data role in `GET_CONNECTOR_STATUS`, change it without changing accept, and then change accept if we wanted to. We could be confident that the change to accept would succeed, because we would know the current data role.\n\nIf the PDC defaulted to Accept, I think we would always run the risk that our attempt to turn it off would fail due to the partner Rejecting the swap. (Imagine a pathological partner that sends DRS over and over forever but always Rejects when it receives it. We would potentially always be wrong about the current role while sending the command, and the command would always fail.)\n\nThis probably bears more discussion with the PDC vendors. This code could be a lot simpler if we could make reasonable assumptions about the PDC defaults.",
+      "parentUuid": "405e88b3_2f0ab128",
+      "range": {
+        "startLine": 1693,
+        "startChar": 27,
+        "endLine": 1693,
+        "endChar": 42
+      },
+      "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
