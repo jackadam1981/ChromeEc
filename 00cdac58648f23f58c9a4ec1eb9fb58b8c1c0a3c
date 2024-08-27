@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7a8897_6b892cc8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-27T21:33:09Z",
+      "side": 1,
+      "message": "This command can fail with the error `port_partner_rejected_swap`.\n\nIn that case, should we resend UOR, but with `swap_to_ufp` and `accept_dr_swap` set?\n\nAbe - can a partner temporarily reject a data role swap? Or are there instances where a partner rejects a data role swap, but then initiates a data role swap?",
+      "range": {
+        "startLine": 1693,
+        "startChar": 27,
+        "endLine": 1693,
+        "endChar": 42
+      },
+      "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
