@@ -33,6 +33,24 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bded2574_f8b7adf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-27T15:51:54Z",
+      "side": 1,
+      "message": "After chatting with Keith, he thinks we should be re-evaluating the PDOs. In this case instead of setting the flag I\u0027ll kick the state machine back to the sink state (IFF we were already sinking) so it can go through the normal sink entry steps which includes PDO evaluation and sink path enabling.\n\nDo `negotiated_power_level` and `supported_provider_caps` ever come up in non-sink roles?",
+      "parentUuid": "e5b18859_48d89be6",
+      "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
