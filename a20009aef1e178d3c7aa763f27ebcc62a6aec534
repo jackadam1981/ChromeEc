@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803db584_317783b4",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T18:25:35Z",
+      "side": 1,
+      "message": "Thanks. It\u0027s clear now.",
+      "parentUuid": "a678c34a_3301ae97",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ee4c5b5_fa1df993",
@@ -173,6 +197,24 @@
       "side": 1,
       "message": "I added descriptions\u003e If it is not enough, please let me know.",
       "parentUuid": "2b5a741d_c786e99b",
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "647c44f5_1f61a10e",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T18:25:35Z",
+      "side": 1,
+      "message": "This statemachine uses counters (pen_*_time) as states while pen_charge_status is used only by the tests. This looks unorthodox to me.\n\nDo you want to rewrite pen_charge using pen_charge_status as states?",
+      "parentUuid": "9a17794b_f9bab6d2",
       "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

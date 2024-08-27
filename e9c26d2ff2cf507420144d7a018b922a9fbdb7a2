@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78890d73_c7b15fcc",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-27T18:25:35Z",
+      "side": 1,
+      "message": "These will potentially race with pen_charge, which also changes pen_*_time. For example, \n\n1. Hook task calls pen_charge. line 65 returns true (pen_stp_time \u003e 0).\n1. interrupt. pen_stp_time \u003d 0.\n1. Hook task resumes. line 67 sets pen_stp_time \u003d -1.\n\nWhat\u0027s your thought?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 19
+      },
+      "revId": "e9c26d2ff2cf507420144d7a018b922a9fbdb7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
