@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0989db62_86718718",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-08-27T21:07:22Z",
+      "side": 1,
+      "message": "No, EC doesn\u0027t have to detect any key combo including Volume Down key on the keyboard. Side buttons (volume up/down) are defined separately",
+      "parentUuid": "92f75219_492b425e",
+      "revId": "0db16b99a3adb442402a19b7f15257f5e1a692fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "791ea49b_b7c37c28",
