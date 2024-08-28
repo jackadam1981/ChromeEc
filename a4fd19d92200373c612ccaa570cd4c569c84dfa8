@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dd57bc_83cc66ab",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-28T04:27:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c987ce8d_d76bb695",
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bd7eff9_b196cc90",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-08-27T17:52:04Z",
       "side": 1,
       "message": "Is it possible to implement this caching in a generic way above the level of the individual PDC driver?",
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973ca650_f9c9805f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-28T04:27:05Z",
+      "side": 1,
+      "message": "The PDOs are already cached in pdc_power_mgmt. Since SET_RDO only send PDO index so it\u0027s more convenient to cache it in TI driver without retrieve it from port partner again. Realtek supports the native function so no need the information.",
+      "parentUuid": "9bd7eff9_b196cc90",
       "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07619262_b17ff383",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-28T04:27:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f54996f1_bbb5dbf9",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 913,
+        "endChar": 0
+      },
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd16225a_24f46a25",
@@ -88,6 +148,24 @@
       "writtenOn": "2024-08-27T17:52:04Z",
       "side": 1,
       "message": "Fixed and augmented PDOs have macros in `usb_pd.h` to extract their fields. Can you add some for battery PDOs and use them here?",
+      "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6cdc99_1ff68b84",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-08-28T04:27:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd16225a_24f46a25",
       "revId": "a4fd19d92200373c612ccaa570cd4c569c84dfa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
