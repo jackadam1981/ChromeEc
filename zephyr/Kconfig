@@ -274,6 +274,13 @@ config PLATFORM_EC_CMD_GPIO_EXTENDED
 
 	  NOTE: This flag should be removed on a shipping device.
 
+config PLATFORM_EC_COMMON_GPIO_SHORTNAMES
+	bool "Only identify GPIOs by port and pin number"
+	default n
+	help
+	  Identify GPIOs by port and pin number. Do not include long names in
+	  build as strings. This is typically enabled only to save flash space.
+
 config PLATFORM_EC_CMD_POWERINDEBUG
 	bool "Console command: powerindebug"
 	default y
