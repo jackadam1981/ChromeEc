@@ -67,6 +67,24 @@
       "message": "I found that running the test firmware.ECPDPowerSwap.suspend fails on Brox with this change.\nThe symptom is that the EC fails to power up the AP after the test issues a reset to the EC.\nCan you run this test against Lotso?",
       "revId": "5c351133a1e130370487cddd0c3719c38ae8097a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b82606_0a736f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-08-28T02:55:33Z",
+      "side": 1,
+      "message": "Lotso tested firmware.ECPDPowerSwap.suspend PASS and uploaded the logs in b/354066707#comment23, #24.\n\nI also tested `dut-control -- power_state:reset` and `ecrst pulse` in Ti50 console, both can boot AP to S0.",
+      "parentUuid": "ed4fa9b6_8f3ab7f5",
+      "revId": "5c351133a1e130370487cddd0c3719c38ae8097a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
