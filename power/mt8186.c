@@ -575,7 +575,7 @@ DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	CPRINTS("Warning: Detected sleep hang! Waking host up!_mt8186");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 }
 
