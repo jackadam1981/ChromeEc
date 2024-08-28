@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3609be_d15baffe",
+        "filename": "zephyr/emul/emul_smart_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-28T20:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d86e002_292e7980",
+      "range": {
+        "startLine": 805,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 27
+      },
+      "revId": "fb44050a681d300a42540eceea9083617836a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3969a46d_385ced47",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-27T04:47:07Z",
       "side": 1,
       "message": "This makes the check not fail even if a returned string isn\u0027t null-terminated. I\u0027m not sure if I understand \u0027... don\u0027t know why the host command returns null terminiated strings...\u0027. Can you please elaborate? How would a host know a returned short string is short if it\u0027s not null-terminated?",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "fb44050a681d300a42540eceea9083617836a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78daafd_61dd3ffc",
+        "filename": "zephyr/test/drivers/host_cmd/src/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-28T20:44:46Z",
+      "side": 1,
+      "message": "If you want to put 5 bytes into a 8 byte buffer, you could put in 5 + 3 NULLs. Then if you want to put 8 bytes in the buffer, you could just fill it, there is no reason to waste a byte on the NULL. That is what I meant by that comment.",
+      "parentUuid": "3969a46d_385ced47",
       "range": {
         "startLine": 44,
         "startChar": 34,
