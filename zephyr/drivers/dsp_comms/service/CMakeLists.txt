@@ -15,6 +15,34 @@ pw_add_library(cros.dsp.service.transport_state_machine STATIC
     transport_state_machine.cc
 )
 
+zephyr_library_sources(
+  dsp_service.cc
+  i2c_target_pio_funcs.cc
+)
+zephyr_library_include_directories(include)
+zephyr_library_sources_ifdef(CONFIG_I2C_TARGET_BUFFER_MODE i2c_target_buffer_funcs.cc)
+zephyr_library_link_libraries(
+  pw_bytes
+  pw_function
+  pw_polyfill
+  pw_preprocessor
+  pw_result
+  pw_status
+  cros.dsp.service.transport_state_machine
+)
+
+pw_add_test(cros.dsp.service.transport_test
+  SOURCES
+    test_transport.cc
+  PRIVATE_DEPS
+    cros.dsp.service.transport_state_machine
+    pw_unit_test.light
+    pw_unit_test.logging_event_handler
+    zephyr_interface
+    cros_ec_interface
+    pw_function
+)
+
 pw_add_test(cros.dsp.service.transport_state_machine_test
   SOURCES
     test_transport_state_machine.cc
