@@ -118,6 +118,30 @@
       },
       "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d00063_4f0162a6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2024-08-28T00:59:58Z",
+      "side": 1,
+      "message": "\u003e The partner can response with Wait. I can\u0027t recall seeing this happen in real life. Benson Leung might have. UCSI is silent on the PPM\u0027s reaction to a Wait. It\u0027s plausible that the PDC could wait (min 100 ms) and try again before this command times out.\n\nI actually did see \"WAIT\" as a response to some swaps at the USB-IF Compliance event 3 weeks back, but not a Data Role Swap. My traces show I captured a Wait after a PR_Swap.\n\nMost of the cases I captured of interop with other DRPs at the USB-IF compliance event where swaps were sent to us or from us were basically when we connect two laptops together. PDCs from TI and Cypress, representing a laptop formfactor, basically we were plugged into a similar design as our laptop.\n\nThe general consensus I saw at the event for this use case (two DRP/DRD devices that prefer to be DFP) was that whichever DRP/DRD comes up as UFP tries to send a DR_Swap, but the other partner sends a Reject, because it\u0027s happy with the DFP role.",
+      "parentUuid": "98600789_d9339313",
+      "range": {
+        "startLine": 1693,
+        "startChar": 27,
+        "endLine": 1693,
+        "endChar": 42
+      },
+      "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
