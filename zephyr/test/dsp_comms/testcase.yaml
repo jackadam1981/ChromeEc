@@ -1,0 +1,7 @@
+tests:
+  cros.dsp.service.transport_state_machine:
+    harness: gtest
+    extra_args:
+      - TEST_LIB=cros.dsp.service.transport_state_machine_test
+    platform_allow:
+      - native_sim
