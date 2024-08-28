@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad1ea9a_a0de90a0",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,vci-gpios.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-28T16:19:57Z",
+      "side": 1,
+      "message": "as it MCHP specific, is it possible to re-use cros-ec,hibernate-vci-pins.yaml ?",
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241a5160_287df096",
+        "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-28T16:19:57Z",
+      "side": 1,
+      "message": "GPIO internally in the hardware.",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560bafe2_f9f75df2",
+        "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-28T16:19:57Z",
+      "side": 1,
+      "message": "is this needed? in which case it will not be enabled?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861568ed_99b0f644",
+        "filename": "zephyr/shim/chip/mchp/vci_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-28T16:19:57Z",
+      "side": 1,
+      "message": "how is falling edge handled?",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400c0eac_adc121fa",
+        "filename": "zephyr/shim/chip/mchp/vci_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-08-28T16:19:57Z",
+      "side": 1,
+      "message": "nit: index \u003d 1, 2, 3 etc in switch case\n\nat the end\n\nIRQ_CONNECT(DT_IRQ_BY_IDX(DT_NODELABEL(vci0), index, irq),\n\t    DT_IRQ_BY_IDX(DT_NODELABEL(vci0), index, priority),\n\t    vci_gpio_isr,\n\t    DEVICE_DT_GET(DT_NODELABEL(vci_gpios)), 0);",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 8
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
