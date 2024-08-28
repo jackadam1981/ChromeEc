@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80fe6cd_c649116d",
+        "filename": "zephyr/subsys/ucsi/ppm_driver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T15:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b05016b_958c0b41",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "ff1e2a053f0d94863da16b3909cefe48f21f2b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84ce5214_b48ca267",
