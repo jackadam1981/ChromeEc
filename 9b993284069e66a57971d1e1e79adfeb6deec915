@@ -39,6 +39,30 @@
       },
       "revId": "9b993284069e66a57971d1e1e79adfeb6deec915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "995ba7d6_34822ea6",
+        "filename": "zephyr/program/brox/jubilant/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-08-28T00:56:50Z",
+      "side": 1,
+      "message": "I am not sure we can do this for ITE boards. Like https://chromium.googlesource.com/chromiumos/platform/ec/+/8b370f0c0d8950bd1e4e47f0195babc0dd064930/zephyr/program/brox/led_pins.dtsi#11, We used ITE boards which are not greater than 324 Hz. I added ITE to share more detail and check.",
+      "parentUuid": "c54eb28e_b38d2fe5",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9b993284069e66a57971d1e1e79adfeb6deec915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
