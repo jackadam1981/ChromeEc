@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc7df91_b5827d50",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T20:53:12Z",
+      "side": 1,
+      "message": "This sets `cipd_install_dir` to `/usr` correct?  Why `/usr` and not `/usr/bin`?\n\nCan you add a comment explaining this?",
+      "range": {
+        "startLine": 745,
+        "startChar": 55,
+        "endLine": 745,
+        "endChar": 68
+      },
+      "revId": "04d671f21a4ba9a5d01eedb0be66281616b5776c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
