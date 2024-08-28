@@ -3,16 +3,104 @@
  * found in the LICENSE file.
  */
 
+#include "cros_board_info.h"
 #include "cros_cbi.h"
+#include "dptf.h"
 #include "fan.h"
 #include "gpio/gpio.h"
 #include "hooks.h"
+#include "time.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
-LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+LOG_MODULE_DECLARE(nissa, LOG_LEVEL_INF);
+
+enum override_status {
+	OVERRIDE_NONE,
+	OVERRIDE_CHECK,
+	OVERRIDE_15W,
+};
+static int override_flag = OVERRIDE_NONE;
+static uint32_t sku_id;
+static uint32_t fw_config_fan;
+
+void check_fan_status(void)
+{
+	int rpm = 0;
+	if (override_flag != OVERRIDE_CHECK)
+		return;
+
+	LOG_ERR("Fan Status Checking...");
+
+	for (int cnt = 0; cnt < 3; cnt++) {
+		rpm = fan_get_rpm_actual(0);
+	}
+
+	if (rpm != 0) {
+		override_flag = OVERRIDE_15W;
+	} else {
+		/* Disable the fan */
+		dptf_set_fan_duty_target(0);
+		fan_set_count(0);
+		override_flag = OVERRIDE_NONE;
+	}
+	set_thermal_control_enabled(0, 1);
+}
+DECLARE_DEFERRED(check_fan_status);
+
+int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	check_fan_status();
+	LOG_ERR("CBI Override Flag: %d, Tag: %d", override_flag, tag);
+	if (override_flag == OVERRIDE_15W) {
+		if (tag == CBI_TAG_SKU_ID) {
+			switch (sku_id) {
+			case 0xa0012:
+				sku_id = 0xa0054;
+				break;
+			case 0xa0013:
+				sku_id = 0xa0056;
+				break;
+			case 0xa0015:
+				sku_id = 0xa005a;
+				break;
+			case 0xa0016:
+				sku_id = 0xa005c;
+				break;
+			case 0xa002a:
+				sku_id = 0xa0055;
+				break;
+			case 0xa002b:
+				sku_id = 0xa0057;
+				break;
+			case 0xa002d:
+				sku_id = 0xa005b;
+				break;
+			case 0xa002e:
+				sku_id = 0xa005d;
+				break;
+			default:
+				break;
+			}
+			memcpy(buf, &sku_id, *size);
+		} else if (tag == CBI_TAG_FW_CONFIG) {
+			fw_config_fan |= 0x4;
+			memcpy(buf, &fw_config_fan, *size);
+		}
+	}
+	return EC_SUCCESS;
+}
+
+void set_fan_status(void)
+{
+	override_flag = OVERRIDE_CHECK;
+	/*Force read RPM once*/
+	fan_get_rpm_actual(0);
+	dptf_set_fan_duty_target(100);
+}
+DECLARE_DEFERRED(set_fan_status);
 
 /*
  * Pujjo fan support
@@ -30,12 +118,53 @@ test_export_static void fan_init(void)
 		return;
 	}
 	if (val != FW_FAN_PRESENT) {
-		/* Disable the fan */
-		fan_set_count(0);
+		ret = cbi_get_board_version(&val);
+		if (ret != 0) {
+			return;
+		}
+		if (val == 3) {
+			ret = cbi_get_sku_id(&sku_id);
+			if (ret != 0) {
+				return;
+			}
+			ret = cbi_get_fw_config(&fw_config_fan);
+			if (ret != 0) {
+				return;
+			}
+
+			switch (sku_id) {
+			case 0xa0012:
+			case 0xa0013:
+			case 0xa0015:
+			case 0xa0016:
+			case 0xa002a:
+			case 0xa002b:
+			case 0xa002d:
+			case 0xa002e:
+				if (override_flag != OVERRIDE_15W) {
+					/* Configure the fan enable GPIO */
+					gpio_pin_configure_dt(
+						GPIO_DT_FROM_NODELABEL(
+							gpio_fan_enable),
+						GPIO_OUTPUT);
+					hook_call_deferred(&set_fan_status_data,
+							   100 * MSEC);
+					LOG_ERR("Do Fan Detection");
+				}
+				break;
+			default:
+				/* Disable the fan */
+				fan_set_count(0);
+				break;
+			}
+		} else {
+			/* Disable the fan */
+			fan_set_count(0);
+		}
 	} else {
 		/* Configure the fan enable GPIO */
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
 				      GPIO_OUTPUT);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, fan_init, HOOK_PRIO_DEFAULT);
