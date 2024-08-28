@@ -429,6 +429,7 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	const struct board_batt_params *params = get_batt_params();
 	int reg;
 
+	//ccprints("--bgds");
 	/* If battery type is not known, can't check CHG/DCHG FETs */
 	if (!params) {
 		/* Still don't know, so return here */

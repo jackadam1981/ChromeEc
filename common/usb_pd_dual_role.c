@@ -310,6 +310,7 @@ bool pd_is_battery_capable(void)
 
 	/* Battery is present and at some minimum percentage. */
 	capable = (usb_get_battery_soc() >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC);
+	ccprints("---pd_is_battery_capable");
 
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
 	/*
@@ -317,6 +318,7 @@ bool pd_is_battery_capable(void)
 	 * FET may not be enabled and so attempting being a SRC may cut off
 	 * our only power source at the time.
 	 */
+	ccprints("---pd_is_battery_capable bgds");
 	capable &= (battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED);
 #elif defined(CONFIG_BATTERY_PRESENT_CUSTOM) || \
 	defined(CONFIG_BATTERY_PRESENT_GPIO)
@@ -345,6 +347,7 @@ bool pd_is_try_source_capable(void)
 	 * Enable try source when dual-role toggling AND battery is capable
 	 * of powering the whole system.
 	 */
+	ccprints("---pd_is_try_source_capable");
 	new_try_src = (try_src && pd_is_battery_capable());
 
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0

@@ -645,6 +645,8 @@ static void pd_update_pd_comm(void)
 	 * The init function disabled PD comm on startup. Need this
 	 * hook to enable PD comm when the battery level is enough.
 	 */
+	
+	ccprints("---pd_update_pd_comm");
 	if (pd_disabled_on_init && pd_is_battery_capable()) {
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
 			pd_comm_enable(i, 1);
@@ -669,7 +671,8 @@ static bool pd_comm_allowed_by_policy(void)
 	if (!system_is_locked()) {
 		if (IS_ENABLED(CONFIG_VBOOT_EFS2))
 			return true;
-
+		
+		ccprints("---pd_comm_allowed_by_policy");
 		if (pd_is_battery_capable())
 			return true;
 
@@ -1607,6 +1610,8 @@ void tc_state_init(int port)
 	 * EC RO! It was assumed that if CONFIG_BOARD_RESET_AFTER_POWER_ON is
 	 * defined now it was defined in EC RO too.
 	 */
+	
+	ccprints("---tc_state_init");
 	if (!IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON) &&
 	    !IS_ENABLED(CONFIG_VBOOT_EFS2) && IS_ENABLED(CONFIG_BATTERY) &&
 	    !pd_is_battery_capable()) {
@@ -1757,7 +1762,10 @@ void tc_event_check(int port, int evt)
 
 	if (IS_ENABLED(CONFIG_AP_POWER_CONTROL)) {
 		if (evt & PD_EVENT_POWER_STATE_CHANGE)
+		{
+			ccprints("---tc_event_check");
 			handle_new_power_state(port);
+		}
 	}
 
 	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
@@ -1837,6 +1845,7 @@ static void sink_stop_drawing_current(int port)
 static void pd_update_try_source(void)
 {
 #ifdef CONFIG_USB_PD_TRY_SRC
+	ccprints("---pd_update_try_source");
 	tc_enable_try_src(pd_is_try_source_capable());
 #endif
 }
@@ -1899,6 +1908,7 @@ __maybe_unused static void handle_new_power_state(int port)
 	 * the inconsistent Vconn state in order to keep the board powered.
 	 */
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
+		ccprints("---handle_new_power_state");
 		if (tc_is_vconn_src(port) && tc_is_attached_snk(port) &&
 		    !pd_check_vconn_swap(port) && pd_is_battery_capable())
 			pd_dpm_request(port, DPM_REQUEST_HARD_RESET_SEND);

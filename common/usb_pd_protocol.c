@@ -2394,6 +2394,7 @@ static void pd_update_snk_reset(void)
 static void pd_update_battery_soc_change(void)
 {
 #ifdef CONFIG_USB_PD_TRY_SRC
+	ccprints("---pd_update_battery_soc_change");
 	pd_update_try_source();
 #endif
 
@@ -2411,6 +2412,7 @@ static inline void pd_set_dual_role_no_wakeup(int port,
 	drp_state[port] = state;
 
 #ifdef CONFIG_USB_PD_TRY_SRC
+	ccprints("---pd_set_dual_role_no_wakeup");
 	pd_update_try_source();
 #endif
 }
@@ -2950,7 +2952,10 @@ void pd_task(void *u)
 #endif
 #ifdef CONFIG_AP_POWER_CONTROL
 		if (evt & PD_EVENT_POWER_STATE_CHANGE)
+		{
+			ccprints("---pd_task");
 			handle_new_power_state(port);
+		}
 #endif
 
 #if defined(CONFIG_USB_PD_ALT_MODE_DFP)
@@ -4768,6 +4773,7 @@ static void pd_chipset_startup(void)
 	int i;
 
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		ccprints("---pd_chipset_startup");
 		pd_set_dual_role_no_wakeup(i, PD_DRP_TOGGLE_OFF);
 		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
 		task_set_event(PD_PORT_TO_TASK_ID(i),

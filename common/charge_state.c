@@ -1547,6 +1547,7 @@ void charger_task(void *u)
 	charger_setup(info);
 
 	while (1) {
+		//ccprintf("--chg");
 		/* Let's see what's going on... */
 		curr.ts = get_time();
 		sleep_usec = 0;
