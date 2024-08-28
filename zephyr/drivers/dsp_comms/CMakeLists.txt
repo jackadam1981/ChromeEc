@@ -13,3 +13,7 @@ pw_proto_library(dsp_comms.proto
   DEPS
     pw_third_party.nanopb.proto
 )
+
+zephyr_include_directories(include)
+
+add_subdirectory_ifdef(CONFIG_PLATFORM_EC_DSP_SERVICE service)
