@@ -14,6 +14,12 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+void check_fan_status(void)
+{
+}
+DECLARE_DEFERRED(check_fan_status)
+
+void set_thermal_control_enabled(int fan, int enable);
 /*
  * Pujjo fan support
  */
@@ -31,11 +37,17 @@ test_export_static void fan_init(void)
 	}
 	if (val != FW_FAN_PRESENT) {
 		/* Disable the fan */
-		fan_set_count(0);
+		/* fan_set_count(0); */
+		/* Configure the fan enable GPIO */
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
+				      GPIO_OUTPUT);
+		set_thermal_control_enabled(0, 0);
+		set_duty_cycle(0, 100);
+		hook_call_deferred(check_fan_status_data, 500);
 	} else {
 		/* Configure the fan enable GPIO */
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_fan_enable),
 				      GPIO_OUTPUT);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, fan_init, HOOK_PRIO_POST_FIRST);
