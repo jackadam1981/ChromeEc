@@ -2544,22 +2544,6 @@ static void pe_src_discovery_run(int port)
 	}
 
 	/*
-	 * Note: While the DiscoverIdentityTimer is only required in an explicit
-	 * contract, we use it here to ensure we space any potential BUSY
-	 * requests properly.
-	 */
-	if (pd_get_identity_discovery(port, TCPCI_MSG_SOP_PRIME) ==
-		    PD_DISC_NEEDED &&
-	    pd_timer_is_expired(port, PE_TIMER_DISCOVER_IDENTITY) &&
-	    pe_can_send_sop_prime(port) &&
-	    (pe[port].discover_identity_counter <
-	     N_DISCOVER_IDENTITY_PRECONTRACT_LIMIT)) {
-		pe[port].tx_type = TCPCI_MSG_SOP_PRIME;
-		set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
-		return;
-	}
-
-	/*
 	 * Transition to the PE_SRC_Disabled state when:
 	 *   1) The Port Partners have not been PD Connected.
 	 *   2) And the NoResponseTimer times out.
