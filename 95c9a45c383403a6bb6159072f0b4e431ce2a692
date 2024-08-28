@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a366bb75_2359dcdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-28T17:14:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b96b513e_32c0cb97",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "95c9a45c383403a6bb6159072f0b4e431ce2a692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "517dfdfb_64ce5cd8",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-27T05:14:17Z",
       "side": 1,
       "message": "Can you please add comments to explain why v2 is required as written in the CL description? (\u0027V0/V1 host command strips 7+/12+ strings...\u0027)",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 1
+      },
+      "revId": "95c9a45c383403a6bb6159072f0b4e431ce2a692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a632366b_a39c7e9e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-28T17:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "517dfdfb_64ce5cd8",
       "range": {
         "startLine": 178,
         "startChar": 0,
