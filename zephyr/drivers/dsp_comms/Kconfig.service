@@ -2,10 +2,19 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+config PLATFORM_EC_DSP_TEST
+	bool "Allow test builds access to all DSP libraries"
+	default y
+	depends on TEST
+	help
+		Temporary config which allows unit tests to bypass the requirement of
+		having the drivers set up at this point. This config will be removed in
+		later iterations.
+
 config PLATFORM_EC_DSP_SERVICE
 	bool "Communication driver for EC"
 	default y
-	depends on DT_HAS_CROS_DSP_SERVICE_ENABLED
+	depends on DT_HAS_CROS_DSP_SERVICE_ENABLED || PLATFORM_EC_DSP_TEST
 	depends on NANOPB
 	depends on I2C
 	depends on I2C_TARGET
