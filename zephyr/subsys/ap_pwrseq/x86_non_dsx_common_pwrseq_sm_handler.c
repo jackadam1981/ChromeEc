@@ -19,6 +19,9 @@
 #include "zephyr_console_shim.h"
 #endif
 
+#define ccprintf(format, args...) cprintf(CC_COMMAND, format, ##args)
+
+
 /* Delay in ms when starting from G3 */
 static uint32_t start_from_g3_delay_ms;
 
@@ -496,16 +499,21 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_S3S0:
+		ccprintf("\n---in S3S0---\n");
 		if (!chipset_is_prim_power_good()) {
 			shutdown_and_notify(AP_POWER_SHUTDOWN_POWERFAIL);
+			ccprintf("\n---return G3---\n");
 			return SYS_POWER_STATE_G3;
 		}
 		if (!rsmrst_power_is_good()) {
+			ccprintf("\n---return S3---\n");
 			return SYS_POWER_STATE_S3;
 		}
 
 		/* All the power rails must be stable */
-		if (power_signal_get(PWR_ALL_SYS_PWRGD)) {
+		if (power_wait_signals_on_timeout(
+				POWER_SIGNAL_MASK(PWR_ALL_SYS_PWRGD),
+				AP_PWRSEQ_DT_VALUE(all_sys_pwrgd_timeout))) {
 			/*
 			 * Disable idle task deep sleep when in S0.
 			 */
@@ -516,8 +524,10 @@ static int common_pwr_sm_run(int state)
 #endif
 			/* Notify power event rails are up */
 			ap_power_ev_send_callbacks(AP_POWER_RESUME);
+			ccprintf("\n---return S0---\n");
 			return SYS_POWER_STATE_S0;
 		}
+		ccprintf("\n---still in S3S0---\n");
 		break;
 
 #if CONFIG_AP_PWRSEQ_S0IX
