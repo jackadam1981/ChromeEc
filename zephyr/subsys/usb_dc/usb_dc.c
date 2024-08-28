@@ -22,21 +22,27 @@ static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 	case USB_DC_RESET:
 		usb_dc_status.configured = false;
 		usb_dc_status.suspended = false;
+		LOG_INF("usb reset event");
 		break;
 	case USB_DC_CONFIGURED:
 		usb_dc_status.configured = true;
+		LOG_INF("usb configured event");
 		break;
 	case USB_DC_DISCONNECTED:
 		usb_dc_status.configured = false;
 		usb_dc_status.suspended = false;
+		LOG_INF("usb disconnected event");
 		break;
 	case USB_DC_SUSPEND:
 		usb_dc_status.suspended = true;
+		LOG_INF("usb suspended event");
 		break;
 	case USB_DC_RESUME:
 		usb_dc_status.suspended = false;
+		LOG_INF("usb resume event");
 		break;
 	default:
+		LOG_INF("usb event: %d", status);
 		break;
 	}
 }
