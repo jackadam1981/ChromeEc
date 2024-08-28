@@ -68,6 +68,37 @@ if(CONFIG_TEST_NISSA_GOTHRAX)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/hdmi.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/keyboard.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/usbc.c
+<<<<<<< HEAD   (c7f9ae Merge remote-tracking branch cros/main into firmware-nissa-1)
+=======
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/usb_mux_config.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/form_factor.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/fan.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/gothrax/src/thermal.c
+    )
+endif()
+
+if(CONFIG_TEST_NISSA_PUJJO)
+    target_sources(
+            app PRIVATE
+            src/pujjo.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/form_factor.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/hdmi.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/led.c
+    )
+endif()
+
+if(CONFIG_TEST_NISSA_PUJJOGA)
+    target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0)
+    target_sources(
+            app PRIVATE
+            src/pujjoga.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjoga/src/board.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjoga/src/charger.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjoga/src/hdmi.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjoga/src/led.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjoga/src/sub_board.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjoga/src/usbc.c
+>>>>>>> CHANGE (b3e6bb pujjo: Add override cbi function.)
     )
 endif()
 
