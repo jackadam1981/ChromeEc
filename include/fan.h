@@ -217,6 +217,8 @@ int temp_ratio_to_rpm_hysteresis(const struct fan_step_1_1 *fan_table,
  * These functions require chip-specific implementations.
  */
 
+void set_thermal_control_enabled(int fan, int enable);
+
 /* Enable/Disable the fan controller */
 void fan_set_enabled(int ch, int enabled);
 int fan_get_enabled(int ch);
