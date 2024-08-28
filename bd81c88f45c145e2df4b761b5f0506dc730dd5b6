@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84f08fd_aedd3abd",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T21:02:50Z",
+      "side": 1,
+      "message": "This conflicts with `ColumnLimit: 80` in .clang-format.",
+      "revId": "bd81c88f45c145e2df4b761b5f0506dc730dd5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98309d6_b1f0f7ac",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T21:02:50Z",
+      "side": 1,
+      "message": "We don\u0027t allow 100 columns in platform/ec.",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 28
+      },
+      "revId": "bd81c88f45c145e2df4b761b5f0506dc730dd5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605357ce_5b6e4ea2",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T21:02:50Z",
+      "side": 1,
+      "message": "Is the linter run on all C files or just CPP files?",
+      "range": {
+        "startLine": 4,
+        "startChar": 69,
+        "endLine": 4,
+        "endChar": 97
+      },
+      "revId": "bd81c88f45c145e2df4b761b5f0506dc730dd5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
