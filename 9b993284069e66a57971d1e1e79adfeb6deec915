@@ -63,6 +63,30 @@
       },
       "revId": "9b993284069e66a57971d1e1e79adfeb6deec915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e812d4e4_44f85072",
+        "filename": "zephyr/program/brox/jubilant/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-08-28T03:56:14Z",
+      "side": 1,
+      "message": "On Chrome EC OS, the PWM_CONFIG_DSLEEP flag makes pwm driver of ITE SOCs to select 32.768khz (stay active in low power mode) as clock source. Under the condition, maximum supported PWM frequency is 324HZ.\nOn Zephyr OS, if frequency property is \u003c\u003d 324HZ, the PWM driver will automatically select 32.768khz as clock source:\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/main/drivers/pwm/pwm_ite_it8xxx2.c#146",
+      "parentUuid": "995ba7d6_34822ea6",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9b993284069e66a57971d1e1e79adfeb6deec915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
