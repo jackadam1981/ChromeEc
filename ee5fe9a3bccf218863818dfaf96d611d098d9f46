@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6df2aeb7_76df8c49",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-28T08:30:45Z",
+      "side": 1,
+      "message": "just reserved,",
+      "parentUuid": "45459219_6b38aad2",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "ee5fe9a3bccf218863818dfaf96d611d098d9f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39091ca6_5769c103",
         "filename": "zephyr/program/brox/jubilant/temp_sensors.dtsi",
         "patchSetId": 5
