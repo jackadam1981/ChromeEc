@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e22fea_c435ff08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-28T05:50:01Z",
+      "side": 1,
+      "message": "But test run: ./twister -ci -T zephyr/test/brox/ -s brox.jubilant.fan\nit the [185/187] Linking C executable zephyr/zephyr.elf\nbuild some failed, it notes some symbols undefined.Where definition or config should add it.",
+      "revId": "819df36fb4e49a1ae564d0dd79b2e48741757885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
