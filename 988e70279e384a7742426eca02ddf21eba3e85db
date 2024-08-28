@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b821fe36_c054be1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-28T20:04:16Z",
+      "side": 1,
+      "message": "Hi Ben, Thanks for the change.\n\nNit: if you don\u0027t mind, can you change this something like \u0027Trigger cutoff iif refresh is pressed\u0027? I believe that\u0027ll allow this CL to be quickly found \u0026 understood later.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "988e70279e384a7742426eca02ddf21eba3e85db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a81d41d4_dbfd17f4",
@@ -18,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa94ce08_84814cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-28T20:04:16Z",
+      "side": 1,
+      "message": "You probably need to update the unit test.",
+      "revId": "988e70279e384a7742426eca02ddf21eba3e85db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a56f75b_183091de",
@@ -31,6 +71,30 @@
       "writtenOn": "2024-08-28T17:07:57Z",
       "side": 1,
       "message": "Does this comment match the description below?  Seems like three Keys.",
+      "range": {
+        "startLine": 443,
+        "startChar": 5,
+        "endLine": 443,
+        "endChar": 45
+      },
+      "revId": "988e70279e384a7742426eca02ddf21eba3e85db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059d468e_87a036f5",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-28T20:04:16Z",
+      "side": 1,
+      "message": "Something like \u0027Trigger cutoff iif refresh is pressed.\u0027 would be nice.",
+      "parentUuid": "2a56f75b_183091de",
       "range": {
         "startLine": 443,
         "startChar": 5,
