@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e267f8a7_3d0df5bb",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-08-28T16:00:14Z",
+      "side": 0,
+      "message": "This is a global setting, not only for battery i2c. Would it be better to leave that one defined as well?",
+      "revId": "e6c89b6a474bda69a9df5a12a809eabfd16eafe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
