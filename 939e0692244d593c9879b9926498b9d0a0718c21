@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c90f618_d4c520ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-28T19:56:15Z",
+      "side": 1,
+      "message": "Can you please elaborate on \u0027probed device name may be different ...\u0027? Are you talking about older versions of EC_CMD_BATTERY_GET_STATIC?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "03ff46b2_beb1fdc4",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-08-28T10:00:58Z",
       "side": 1,
       "message": "I\u0027ll let Daisuke review as well",
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba6a3f1_b715f0a1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8776,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-28T19:56:15Z",
+      "side": 1,
+      "message": "If the loop continues here, prefix_len will be decremented until there is a single char in \u0027identifier\u0027, which may likely match many configs. Can you please double check the logic?",
+      "range": {
+        "startLine": 8776,
+        "startChar": 2,
+        "endLine": 8776,
+        "endChar": 3
+      },
       "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
