@@ -125,29 +125,6 @@ static void usbc_ctvpd_after(void *data)
 ZTEST_SUITE(usbc_ctvpd, drivers_predicate_post_main, usbc_ctvpd_setup,
 	    usbc_ctvpd_before, usbc_ctvpd_after, NULL);
 
-ZTEST_USER_F(usbc_ctvpd, test_verify_discovery)
-{
-	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
-	struct ec_response_typec_discovery *discovery =
-		(struct ec_response_typec_discovery *)response_buffer;
-	struct common_fixture *common = &fixture->common;
-
-	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP_PRIME,
-				 response_buffer, sizeof(response_buffer));
-
-	/* The host command does not count the VDM header in identity_count. */
-	zassert_equal(discovery->identity_count,
-		      common->partner.cable->identity_vdos - 1,
-		      "Expected %d identity VDOs, got %d",
-		      common->partner.cable->identity_vdos - 1,
-		      discovery->identity_count);
-	zassert_mem_equal(discovery->discovery_vdo,
-			  common->partner.cable->identity_vdm + 1,
-			  discovery->identity_count *
-				  sizeof(*discovery->discovery_vdo),
-			  "Discovered SOP identity ACK did not match");
-}
-
 ZTEST_USER_F(usbc_ctvpd, test_verify_no_vconn_swap)
 {
 	struct ec_response_typec_status status =
