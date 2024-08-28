@@ -33,6 +33,24 @@
       "message": "Should we use `snprintf` to make sure this doesn\u0027t exceed the pre-allocated space for `identifier`?",
       "revId": "c6475c42a5b701f92425784fff77c358b9833b34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4daa940_75e82e4f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8768,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-08-28T09:38:26Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s use snprintf to avoid overflow.",
+      "parentUuid": "172c21f3_3e606bf0",
+      "revId": "c6475c42a5b701f92425784fff77c358b9833b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
