@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aec89f7_03d036b1",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T16:07:33Z",
+      "side": 1,
+      "message": "The correct prototype format for host commands is\n```\nstatic enum ec_status magic_foo_handler(struct host_cmd_handler_args *args)\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "d47cd31bc40f44462b1ddaf041cbfc12a3910e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df1169a_adc55658",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-28T16:07:33Z",
+      "side": 1,
+      "message": "It turns out, this support was never added to the Zephyr shim.\n\nYou can add the following to [zephyr_host_commands.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/include/zephyr_host_command.h;l\u003d53)\n\n```\n#define DECLARE_PRIVATE_HOST_COMMAND(_command, _routine, _version_mask) \\\n\tstatic const STRUCT_SECTION_ITERABLE(                           \\\n\t\thost_command,                                           \\\n\t\t_CONCAT_4(_cros_hcmd_, EC_CMD_BOARD_SPECIFIC_BASE, _,   \\\n\t\t\t  _command)) \u003d {                                \\\n\t\t.handler \u003d _routine,                                    \\\n\t\t.command \u003d _command + EC_CMD_BOARD_SPECIFIC_BASE,       \\\n\t\t.version_mask \u003d _version_mask,                          \\\n\t}\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "d47cd31bc40f44462b1ddaf041cbfc12a3910e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
