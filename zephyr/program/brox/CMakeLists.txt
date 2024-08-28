@@ -3,12 +3,16 @@
 # found in the LICENSE file.
 cmake_minimum_required(VERSION 3.20.1)
 
+set(ENV{PYTHONPATH} "$ENV{PYTHONPATH}:${PW_ROOT}/pw_rpc/py")
+set(ENV{PW_PIGWEED_CIPD_INSTALL_DIR} "/usr" CACHE PATH "" FORCE)
+set(dir_pw_third_party_nanopb "${NANOPB_DIR}" CACHE PATH "" FORCE)
+message("dir_pw_third_party_nanopb=${dir_pw_third_party_nanopb}")
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
 if(DEFINED CONFIG_BOARD_BROX)
-	project(brox)
+	project(brox C)
 	add_subdirectory(brox)
 
 	zephyr_library_sources("src/hibernate.c")
@@ -44,6 +48,6 @@ elseif(DEFINED CONFIG_BOARD_LOTSO)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"lotso/src/keyboard_customization.c")
 elseif(DEFINED CONFIG_BOARD_INTEL_ISH_5_6_0)
-	project(brox-ish)
+	project(brox-ish C CXX)
 	add_subdirectory(brox-ish)
 endif()

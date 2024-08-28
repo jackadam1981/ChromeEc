@@ -22,6 +22,11 @@ namespace cros::dsp::service {
  * response (since the status includes the response size).
  * - HAS_RESPONSE: the client already received the status with the response size
  * and should be requesting a read for the response.
+ * - HAS_STATUS_AND_RESPONSE: the service has both a status and a response that
+ * need to be sent to the client. The status will be sent first followed by a
+ * response (since the status includes the response size).
+ * - HAS_RESPONSE: the client already received the status with the response size
+ * and should be requesting a read for the response.
  */
 class TransportStateMachine {
  public:
@@ -30,29 +35,28 @@ class TransportStateMachine {
   /** Current state of the service. */
   enum State {
     /**
-     * The service is idle. We can either store a status bit or a
-     * response + response_ready status.
+     * The service is idle. We can either store a status bit or a response +
+     * response_ready status.
      */
     IDLE,
 
     /**
-     * The service has a pending status bit set. A response may
-     * still be added, but the client was notified that there's a
-     * pending status.
+     * The service has a pending status bit set. A response may still be added,
+     * but the client was notified that there's a pending status.
      */
     HAS_STATUS,
 
     /**
-     * The service has both a pending status and a response. The
-     * client was notified of the pending status and should schedule
-     * a read for the status followed by a read for the response.
+     * The service has both a pending status and a response. The client was
+     * notified of the pending status and should schedule a read for the status
+     * followed by a read for the response.
      */
     HAS_STATUS_AND_RESPONSE,
 
     /**
-     * The service has a pending response. The client MUST have
-     * already read the status and know the response length. The
-     * next read should be for the response.
+     * The service has a pending response. The client MUST have already read the
+     * status and know the response length. The next read should be for the
+     * response.
      */
     HAS_RESPONSE,
   };
@@ -63,8 +67,8 @@ class TransportStateMachine {
    * Update the state (assuming a valid state transition).
    *
    * @param new_state The desired new state.
-   * @return pw::OkStatus() on success or pw::Status::InvalidArgument() if
-   * the transition is invalid.
+   * @return pw::OkStatus() on success or pw::Status::InvalidArgument() if the
+   * transition is invalid.
    */
   pw::Status SetNewState(State new_state);
 
@@ -74,8 +78,8 @@ class TransportStateMachine {
   inline State current_state() const { return state_; }
 
   /**
-   * @brief Short hand function to check if the current_state() is one of
-   * the provided states.
+   * @brief Short hand function to check if the current_state() is one of the
+   * provided states.
    *
    * @param states The states to check.
    * @return true if the current_state() matches 1 of the provided states.
