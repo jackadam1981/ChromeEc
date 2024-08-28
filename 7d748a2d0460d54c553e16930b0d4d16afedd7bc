@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "745b5316_0f4847d0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8766,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-08-28T09:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312e0fbe_7c272845",
+      "range": {
+        "startLine": 8766,
+        "startChar": 55,
+        "endLine": 8766,
+        "endChar": 57
+      },
+      "revId": "7d748a2d0460d54c553e16930b0d4d16afedd7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "560cbc74_316a51bb",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-28T08:22:50Z",
       "side": 1,
       "message": "Can we make the copy only once outside of the for loop?",
+      "range": {
+        "startLine": 8768,
+        "startChar": 2,
+        "endLine": 8769,
+        "endChar": 43
+      },
+      "revId": "7d748a2d0460d54c553e16930b0d4d16afedd7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee0233f_caef7e81",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8769,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-08-28T09:08:54Z",
+      "side": 1,
+      "message": "Yeah and I think we can use device_name directly. Done.",
+      "parentUuid": "560cbc74_316a51bb",
       "range": {
         "startLine": 8768,
         "startChar": 2,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f56b7d_b0496e89",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8772,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-08-28T09:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "358a9856_763333de",
+      "range": {
+        "startLine": 8772,
+        "startChar": 2,
+        "endLine": 8772,
+        "endChar": 51
+      },
+      "revId": "7d748a2d0460d54c553e16930b0d4d16afedd7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d3f0a50_e7576e1d",
@@ -118,6 +190,30 @@
       "writtenOn": "2024-08-28T08:22:50Z",
       "side": 1,
       "message": "Is it behavior documented? (e.g. should we report error, or match the first one?)",
+      "range": {
+        "startLine": 8788,
+        "startChar": 12,
+        "endLine": 8788,
+        "endChar": 27
+      },
+      "revId": "7d748a2d0460d54c553e16930b0d4d16afedd7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c12ae603_46ef3144",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8788,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-08-28T09:08:54Z",
+      "side": 1,
+      "message": "We don\u0027t expect multiple match [ref](https://docs.google.com/document/d/1KweeFgsb4wKAu1eprS2mBqHCs7WZicogWCC_lHU2z4g/edit?tab\u003dt.0#heading\u003dh.5k141n49bwdq) so I think we should report an error here.",
+      "parentUuid": "4d3f0a50_e7576e1d",
       "range": {
         "startLine": 8788,
         "startChar": 12,
