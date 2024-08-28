@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "c6475c42a5b701f92425784fff77c358b9833b34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172c21f3_3e606bf0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8768,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2024-08-28T09:18:53Z",
+      "side": 1,
+      "message": "Should we use `snprintf` to make sure this doesn\u0027t exceed the pre-allocated space for `identifier`?",
+      "revId": "c6475c42a5b701f92425784fff77c358b9833b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
