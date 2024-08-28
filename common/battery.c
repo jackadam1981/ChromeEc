@@ -437,8 +437,15 @@ static void ac_change(void)
 	bool key = false;
 
 	if (IS_ENABLED(HAS_TASK_KEYSCAN) ||
-	    IS_ENABLED(CONFIG_CROS_EC_KEYBOARD_INPUT))
+	    IS_ENABLED(CONFIG_CROS_EC_KEYBOARD_INPUT)) {
 		key = keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_REFRESH);
+
+		/* Trigger cutoff if refresh is pressed.*/
+		if (keyboard_scan_get_boot_keys() &
+		    (BIT(BOOT_KEY_ESC) | BIT(BOOT_KEY_DOWN_ARROW) |
+		     BIT(BOOT_KEY_LEFT_SHIFT)))
+			key = false;
+	}
 
 #ifdef CONFIG_VOLUME_BUTTONS
 	if (!key)
