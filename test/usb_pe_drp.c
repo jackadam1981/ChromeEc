@@ -85,10 +85,8 @@ test_static void rx_message(enum tcpci_msg_type sop,
  * Send in how many SOP' DiscoverIdentity requests have been processed so far,
  * as this may vary depending on startup sequencing as a source.
  */
-test_static int finish_src_discovery(int startup_cable_probes)
+test_static int finish_src_discovery(void)
 {
-	int i;
-
 	/* Expect GET_SOURCE_CAP, reply NOT_SUPPORTED. */
 	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPCI_MSG_SOP,
 					 PD_CTRL_GET_SOURCE_CAP, 0, 10 * MSEC),
@@ -107,11 +105,8 @@ test_static int finish_src_discovery(int startup_cable_probes)
 	rx_message(TCPCI_MSG_SOP, PD_CTRL_NOT_SUPPORTED, 0, PD_ROLE_SINK,
 		   PD_ROLE_UFP, 0);
 
-	/*
-	 * Cable identity discovery is attempted 6 times total. 1 was done
-	 * above, so expect 5 more now.
-	 */
-	for (i = startup_cable_probes; i < 6; i++) {
+	/* Cable identity discovery is attempted 6 times total. */
+	for (int i = 0; i < 6; i++) {
 		TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPCI_MSG_SOP_PRIME, 0,
 						 PD_DATA_VENDOR_DEF, 60 * MSEC),
 			EC_SUCCESS, "%d");
@@ -152,15 +147,6 @@ test_static int test_send_caps_error_before_connected(void)
 	mock_prl_report_error(PORT0, ERR_TCH_XMIT, TCPCI_MSG_SOP);
 
 	/*
-	 * We should have gone to PE_SRC_Discovery on above error, so expect
-	 * VENDOR_DEF for cable identity, simulate no cable.
-	 */
-	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPCI_MSG_SOP_PRIME, 0,
-					 PD_DATA_VENDOR_DEF, 10 * MSEC),
-		EC_SUCCESS, "%d");
-	mock_prl_report_error(PORT0, ERR_TCH_XMIT, TCPCI_MSG_SOP_PRIME);
-
-	/*
 	 * Expect SOURCE_CAP again. This is a retry since the first one above
 	 * got ERR_TCH_XMIT. Now simulate success (ie GoodCRC).
 	 */
@@ -190,7 +176,7 @@ test_static int test_send_caps_error_before_connected(void)
 		EC_SUCCESS, "%d");
 	mock_prl_message_sent(PORT0);
 
-	TEST_EQ(finish_src_discovery(1), EC_SUCCESS, "%d");
+	TEST_EQ(finish_src_discovery(), EC_SUCCESS, "%d");
 
 	task_wait_event(5 * SECOND);
 
@@ -225,7 +211,7 @@ test_static int test_send_caps_error_when_connected(void)
 		EC_SUCCESS, "%d");
 	mock_prl_message_sent(PORT0);
 
-	TEST_EQ(finish_src_discovery(0), EC_SUCCESS, "%d");
+	TEST_EQ(finish_src_discovery(), EC_SUCCESS, "%d");
 
 	task_wait_event(5 * SECOND);
 
@@ -287,7 +273,7 @@ test_static int test_interrupting_pr_swap(void)
 		EC_SUCCESS, "%d");
 	mock_prl_message_sent(PORT0);
 
-	TEST_EQ(finish_src_discovery(0), EC_SUCCESS, "%d");
+	TEST_EQ(finish_src_discovery(), EC_SUCCESS, "%d");
 
 	task_wait_event(5 * SECOND);
 
