@@ -17,6 +17,7 @@
 #include "lpc.h"
 #include "power.h"
 #include "system.h"
+#include "task.h"
 #include "timer.h"
 #include "util.h"
 
@@ -143,6 +144,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, handle_chipset_suspend, HOOK_PRIO_LAST);
  */
 #if defined(SECTION_IS_RW) && defined(CONFIG_POWER_SLEEP_FAILURE_DETECTION)
 
+static mutex_t sleep_signal_timeout_mutex;
 static uint16_t sleep_signal_timeout;
 /* Non-const because it may be set by sleeptimeout console cmd */
 static uint16_t host_sleep_timeout_default = CONFIG_SLEEP_TIMEOUT_MS;
@@ -279,7 +281,7 @@ void power_sleep_hang_recovery(enum sleep_hang_type hang_type)
 	 * Always send a host event, in case the AP is stuck in FW.
 	 * This will be ignored if the AP is in the OS.
 	 */
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	CPRINTS("Warning: Detected sleep hang! Waking host up!_host");
 #ifdef CONFIG_POWER_S0IX
 	{
 		host_event_t sleep_wake_mask;
@@ -321,12 +323,14 @@ static void sleep_increment_transition(void)
 
 void sleep_suspend_transition(void)
 {
+	ccprints("--sst");
 	sleep_increment_transition();
 	hook_call_deferred(&sleep_transition_timeout_data, -1);
 }
 
 void sleep_resume_transition(void)
 {
+	ccprints("--srt");
 	sleep_increment_transition();
 
 	/*
@@ -336,15 +340,22 @@ void sleep_resume_transition(void)
 	 * internal periodic housekeeping code might result in a situation
 	 * like this.
 	 */
+	mutex_lock(&sleep_signal_timeout_mutex);
+	int data = sleep_signal_timeout;
+	int data2 = 0xff;
 	if (sleep_signal_timeout) {
 		timeout_hang_type = SLEEP_HANG_S0IX_RESUME;
+		data2 = sleep_signal_timeout;
 		hook_call_deferred(&sleep_transition_timeout_data,
 				   (uint32_t)sleep_signal_timeout * 1000);
 	}
+	mutex_unlock(&sleep_signal_timeout_mutex);
+	ccprints("--srt time = %d, %d", data, data2);
 }
 
 static void sleep_transition_timeout(void)
 {
+	ccprints("--stt");
 	/* Mark the timeout. */
 	sleep_signal_transitions |= EC_HOST_RESUME_SLEEP_TIMEOUT;
 	hook_call_deferred(&sleep_transition_timeout_data, -1);
@@ -368,14 +379,17 @@ void sleep_start_suspend(struct host_sleep_event_context *ctx)
 
 	sleep_signal_transitions = 0;
 
+	ccprints("--sss");
 	/* Use default to indicate no timeout given. */
 	if (timeout == EC_HOST_SLEEP_TIMEOUT_DEFAULT) {
 		timeout = host_sleep_timeout_default;
 	}
 
+	mutex_lock(&sleep_signal_timeout_mutex);
 	/* Use 0xFFFF to disable the timeout */
 	if (timeout == EC_HOST_SLEEP_TIMEOUT_INFINITE) {
 		sleep_signal_timeout = 0;
+		mutex_unlock(&sleep_signal_timeout_mutex);
 		return;
 	}
 
@@ -383,6 +397,7 @@ void sleep_start_suspend(struct host_sleep_event_context *ctx)
 	timeout_hang_type = SLEEP_HANG_S0IX_SUSPEND;
 	hook_call_deferred(&sleep_transition_timeout_data,
 			   (uint32_t)timeout * 1000);
+	mutex_unlock(&sleep_signal_timeout_mutex);
 }
 
 void sleep_complete_resume(struct host_sleep_event_context *ctx)
@@ -392,15 +407,31 @@ void sleep_complete_resume(struct host_sleep_event_context *ctx)
 	 * if the the HOST_SLEEP_EVENT_S0IX_RESUME message arrives before
 	 * the CHIPSET task transitions to the POWER_S0ixS0 state.
 	 */
+	ccprints("--scr");
+	mutex_lock(&sleep_signal_timeout_mutex);
 	sleep_signal_timeout = 0;
 	hook_call_deferred(&sleep_transition_timeout_data, -1);
 	ctx->sleep_transitions = sleep_signal_transitions;
+
+	int busy_state =
+		k_work_delayable_busy_get(sleep_transition_timeout_data.work);
+	CPRINTS("busy_state_after=%02x", busy_state);
+	if (busy_state & K_WORK_DELAYED) {
+		CPRINTS("hook_call_deferred(-1) failed ????");
+		/* retry */
+		hook_call_deferred(&sleep_transition_timeout_data, -1);
+	}
+	
+	mutex_unlock(&sleep_signal_timeout_mutex);
+
 }
 
 void sleep_reset_tracking(void)
 {
 	sleep_signal_transitions = 0;
+	mutex_lock(&sleep_signal_timeout_mutex);
 	sleep_signal_timeout = 0;
+	mutex_unlock(&sleep_signal_timeout_mutex);
 	timeout_hang_type = SLEEP_HANG_NONE;
 }
 
