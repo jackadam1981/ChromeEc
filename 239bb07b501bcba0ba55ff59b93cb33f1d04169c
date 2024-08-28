@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0b12e67_cdf2aad9",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,vci-gpios.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-08-28T17:41:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8ad1ea9a_a0de90a0",
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "241a5160_287df096",
         "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-28T16:19:57Z",
       "side": 1,
       "message": "GPIO internally in the hardware.",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ac9bc7_6ed0494c",
+        "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-08-28T17:41:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "241a5160_287df096",
       "range": {
         "startLine": 23,
         "startChar": 20,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2afeb8_b2535529",
+        "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-08-28T17:41:12Z",
+      "side": 1,
+      "message": "I wonder if in a later VCI HW version, rising edge detection will be supported.",
+      "parentUuid": "560bafe2_f9f75df2",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "861568ed_99b0f644",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5434bc_7aa1ed6a",
+        "filename": "zephyr/shim/chip/mchp/vci_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-08-28T17:41:12Z",
+      "side": 1,
+      "message": "Falling edge is already handled by hardware. Rising edge detection is not possible to be configured since we need to first disable VCI_IN0, this disablement is not allowed by HW.\nI will add comments to code as well.",
+      "parentUuid": "861568ed_99b0f644",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 43
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "400c0eac_adc121fa",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-08-28T16:19:57Z",
       "side": 1,
       "message": "nit: index \u003d 1, 2, 3 etc in switch case\n\nat the end\n\nIRQ_CONNECT(DT_IRQ_BY_IDX(DT_NODELABEL(vci0), index, irq),\n\t    DT_IRQ_BY_IDX(DT_NODELABEL(vci0), index, priority),\n\t    vci_gpio_isr,\n\t    DEVICE_DT_GET(DT_NODELABEL(vci_gpios)), 0);",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 8
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3436a966_5555a898",
+        "filename": "zephyr/shim/chip/mchp/vci_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-08-28T17:41:12Z",
+      "side": 1,
+      "message": "This is not allowed by `IRQ_CONNECT` macro expansion.",
+      "parentUuid": "400c0eac_adc121fa",
       "range": {
         "startLine": 225,
         "startChar": 0,
