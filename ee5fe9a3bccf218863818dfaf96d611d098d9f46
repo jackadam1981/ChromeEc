@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c29b41_64bf2607",
+        "filename": "zephyr/program/brox/jubilant/fan.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-08-28T07:44:14Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ee5fe9a3bccf218863818dfaf96d611d098d9f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45459219_6b38aad2",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-08-28T07:44:14Z",
+      "side": 1,
+      "message": "We don\u0027t need this for Jubilant. right?",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "ee5fe9a3bccf218863818dfaf96d611d098d9f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39091ca6_5769c103",
+        "filename": "zephyr/program/brox/jubilant/temp_sensors.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-08-28T07:44:14Z",
+      "side": 1,
+      "message": "I think we don\u0027t have halt release point paramter with dts.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "ee5fe9a3bccf218863818dfaf96d611d098d9f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b189355_013b1c8a",
+        "filename": "zephyr/test/brox/boards/jubilant/fan.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-08-28T07:44:14Z",
+      "side": 1,
+      "message": "Semms this is duplicate with temp_sensors.dtsi?",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 19
+      },
+      "revId": "ee5fe9a3bccf218863818dfaf96d611d098d9f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
