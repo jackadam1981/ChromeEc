@@ -16,6 +16,24 @@
       "message": "don\u0027t we need to make cq-depend with crrev/c/5807296 (chromium:5807296)",
       "revId": "487909e7a41635ffdf62a1f4d6d3a0b560c70da8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806e80ec_988eac1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-28T18:14:27Z",
+      "side": 1,
+      "message": "I suggest crrev/c/5816291 be the first option. Please take a look at https://issuetracker.google.com/360063350#comment14.",
+      "parentUuid": "8da078a7_5ca7f273",
+      "revId": "487909e7a41635ffdf62a1f4d6d3a0b560c70da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
