@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7afd72b1_5b5e960b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-29T19:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cacd307b_00c71b73",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "72cec548_99be8f7e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "I think what Rack was referring to in http://b/360183429#comment16 is that we shouldn\u0027t be calling \"bare\" clang anywhere (i.e., `clang`) and should only be calling the prefixed version (`armv7m-cros-eabi-clang`).\n\nDo you know where we\u0027re calling the bare version of `clang`? [These comments](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/cmake/toolchain/llvm/target.cmake;l\u003d45-50;drc\u003d1822f1b6b47f8b14b1068007f8a63d91dcea01aa) suggest we may be using `clang --target TRIPLE`.\n\n`gcc` [isn\u0027t a native cross compiler](https://clang.llvm.org/docs/CrossCompilation.html#cross-compilation-issues), so you always have to call the prefixed version (`armv7m-cros-eabi-gcc`), which may be one motivation for the [the check](http://b/360183429#comment14).\n\nThere shouldn\u0027t be anything wrong with calling `clang --target TRIPLE`, but maybe it results in bypassing the [\"compiler wrapper\"](http://shortn/_WwRVuS34Ym) from the toolchain team: https://crsrc.org/o/src/third_party/toolchain-utils/compiler_wrapper ? @ajordanr@google.com or someone from the toolchain team may be able to comment.\n\nIIUC, the other [method that was suggested](http://b/360183429#comment7) was to add a [`--toolchain`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/README.md;l\u003d63;drc\u003d06fe199c92548d0d8eba627ec2fc8d854c57cf0f) argument to `zmake` in the [ebuild](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/eclass/cros-zephyr-fpmcu.eclass;l\u003d101-102;drc\u003dc9c1b9cda881e168d50e4ebeaef50ee2cf11e749). From [this code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/toolchains.py;l\u003d162-166;drc\u003dc007b4b7d54ae91b5158145a14aa87818c94f8d6), it looks like it should be `--toolchain llvm`. Does that work?\n\nI\u0027ll go ahead and +2 since this CL unbreaks the build for us by restoring behavior before https://crrev.com/c/5763509.",
       "parentUuid": "72cec548_99be8f7e",
+      "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72883aa2_dc4df439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-29T19:16:53Z",
+      "side": 1,
+      "message": "\u003e Do you know where we\u0027re calling the bare version of clang?\n\nIn Zephyr CMake files, [here](https://github.com/zephyrproject-rtos/zephyr/blob/91a1e706535b2f99433280513c5bc66dfb918506/cmake/compiler/clang/target.cmake#L46) for example.\n\nThis is a bit complicated. Clang is a native cross compiler and Zephyr knows it. Zephyr doesn\u0027t support prefixes (`CROSS_COMPILE` variable) for LLVM. It will just call `clang --target TRIPLE` and this is more/less equivalent to calling `armv7m-cros-eabi-clang`. `strace -f armv7m-cros-eabi-clang` finally passes control to `/usr/bin/clang`:\n\n```\n$ strace -f armv7m-cros-eabi-clang\n...\nexecve(\"/usr/bin/clang\", [\"/usr/bin/clang\", \"--sysroot\u003d/usr/armv7m-cros-eabi\", \"-L/usr/armv7m-cros-eabi/usr/lib\", \"-Qunused-arguments\", \"-Werror\u003dpoison-system-directorie\"..., \"-Wno-deprecated-declarations\", \"-Wno-enum-constexpr-conversion\", \"-Wno-error\u003dimplicit-function-dec\"..., \"-Wno-error\u003dimplicit-int\", \"-Wno-unknown-warning-option\", \"-fdebug-default-version\u003d5\", \"-Wno-int-conversion\", \"-Wno-incompatible-function-point\"..., \"-Wno-error\u003dvla-cxx-extension\", \"-D_LIBCPP_ENABLE_CXX17_REMOVED_F\"..., \"-Wno-section\", \"-static-libgcc\", \"--prefix\u003d../../../../../../usr/l\"..., \"-B../../../../../../usr/libexec/\"..., \"-target\", \"armv7m-cros-eabi\"], 0x556ae763ff90 /* 49 vars */) \u003d 0\n...\n```\n\nZephyr only calls `clang` to find path to compiler headers and path to compiler-rt library. This is okay because `/usr/bin/clang` and `armv7m-cros-eabi-clang` are the same compiler, so paths are the same.\n\nLater we change the compiler to `armv7m-cros-eabi-clang` in our CMake scripts, so source files are compiled using wrapper.\n\n\u003e I think what Rack was referring to in http://b/360183429#comment16 is that we shouldn\u0027t be calling \"bare\" clang anywhere (i.e., clang) and should only be calling the prefixed version (armv7m-cros-eabi-clang).\n\nThere are two `clang` compilers really. The first is a \"board\" compiler (used to compile ebuilds) and the second compiler is our `armv7m-cros-eabi-clang` (`/usr/bin/clang` + arguments actually). As a result of Rack change, we call the \"board\" compiler.\n\n\u003e There shouldn\u0027t be anything wrong with calling `clang --target TRIPLE`\n\nYes. I agree. Calling clang using `clang --target TRIPLE` should be the preferred way. I understand that toolchain team provided wrapper to be compatible with GCC though.\n\n\u003e IIUC, the other method that was suggested was to add a --toolchain argument to zmake in the ebuild.\n\nIt won\u0027t work. `--toolchain` argument only forces zmake to use LLVM, but actually zmake tries to use LLVM so it\u0027s not a problem. The problem is that Zephyr finds \"board\" clang instead of `/usr/bin/clang` aka \u0027our\u0027 clang.",
+      "parentUuid": "65659e3e_ac89829e",
       "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
