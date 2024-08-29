@@ -62,6 +62,30 @@
       },
       "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016eac48_516b5ed6",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8776,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2024-08-29T08:53:30Z",
+      "side": 1,
+      "message": "If there are multiple matches, it will go into the `else if (num_matches \u003e 1)` block. The question is: do we disallow multiple matches, or always choose the first match?",
+      "parentUuid": "7ba6a3f1_b715f0a1",
+      "range": {
+        "startLine": 8776,
+        "startChar": 2,
+        "endLine": 8776,
+        "endChar": 3
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
