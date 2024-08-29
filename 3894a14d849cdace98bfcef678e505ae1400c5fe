@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cec548_99be8f7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-08-29T17:33:32Z",
+      "side": 1,
+      "message": "Tom, this forces CMake to look for `clang` binary in `/usr/bin`. The `TOOLCHAIN_HOME` variable is used in a [Zephyr compiler script](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/cmake/compiler/clang/target.cmake;l\u003d14-19;drc\u003d779018f2eda4eb8617046d628fec2ba2a0919cc0).\n\nIf you have some questions, please let me know.",
+      "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
