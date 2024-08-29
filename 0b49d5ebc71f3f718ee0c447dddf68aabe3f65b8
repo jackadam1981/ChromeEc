@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b06255_5c965c49",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-29T08:26:14Z",
+      "side": 1,
+      "message": "temp include, i think to has remind which index to use that, in this case, just reference TEMP_SOC.",
+      "parentUuid": "99169e90_faeca032",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 18
+      },
+      "revId": "0b49d5ebc71f3f718ee0c447dddf68aabe3f65b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a90f5a0_d1c9c7e2",
