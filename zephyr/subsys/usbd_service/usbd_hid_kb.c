@@ -427,6 +427,25 @@ static void hid_kb_proc_queue(void)
 	hook_call_deferred(&hid_kb_proc_queue_data, 1 * MSEC);
 }
 
+bool first = true;
+int cnt = 0;
+void kb_resume_deferred(void)
+{
+	if (first || cnt > 10000) {
+		LOG_ERR("ITE Debug %d - %s", __LINE__, first ? "first" : "finish");
+		first = false;
+	} else {
+		keyboard_state_changed(5, 7, 1);
+		keyboard_state_changed(0, 1, 1);
+		keyboard_state_changed(4, 9, 1);
+		keyboard_state_changed(5, 7, 0);
+		keyboard_state_changed(0, 1, 0);
+		keyboard_state_changed(4, 9, 0);
+		cnt++;
+	}
+}
+DECLARE_DEFERRED(kb_resume_deferred);
+
 __maybe_unused static void kb_msg_deferred(void)
 {
 	switch (usb_message) {
@@ -436,6 +455,7 @@ __maybe_unused static void kb_msg_deferred(void)
 		break;
 	case USBD_MSG_SUSPEND:
 		atomic_set_bit(&keyboard.state, HID_CLASS_SUSPENDED);
+		hook_call_deferred(&kb_resume_deferred_data, 0);
 		break;
 	case USBD_MSG_RESUME:
 		atomic_clear_bit(&keyboard.state, HID_CLASS_SUSPENDED);
