@@ -34,6 +34,24 @@
       "parentUuid": "10e22fea_c435ff08",
       "revId": "819df36fb4e49a1ae564d0dd79b2e48741757885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca2d092_2fff0e76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-29T09:24:06Z",
+      "side": 1,
+      "message": "set10, ./twister -ci -T zephyr/test/brox/ -s brox.jubilant.fan\nbut show Assertion failed at CMAKE_SOURCE_DIR/tests/jubilant/src/fan.c:90: jubilant_fan_test_fan_table: fan_get_rpm_mode(0) not equal to 1.\nafter check the CHIPSET_STATE_ON has effective the result.",
+      "parentUuid": "b3730907_814c12e5",
+      "revId": "819df36fb4e49a1ae564d0dd79b2e48741757885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
