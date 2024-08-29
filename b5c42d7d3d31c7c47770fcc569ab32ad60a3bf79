@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf81a29_bed8a5b4",
+        "filename": "common/lid_angle_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-29T20:29:54Z",
+      "side": 1,
+      "message": "There\u0027s not need to provide coverage for this path.  This isn\u0027t built on any real boards.\n\nAlso - I\u0027m not sure this is even used by the legacy tests.  I can\u0027t find any reference to CONFIG_LID_ANGLE_UPDATE in the platform/ec/test directory.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d9bfa8_bd3e9035",
+        "filename": "zephyr/test/lid_angle_common/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-29T20:29:54Z",
+      "side": 1,
+      "message": "We don\u0027t need coverage for the TEST_BUILD code.  You can drop this.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bec8a7_99fae2bd",
+        "filename": "zephyr/test/lid_angle_common/include/chipset.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-29T20:29:54Z",
+      "side": 1,
+      "message": "I don\u0027t like that you\u0027ve redefined a bunch of existing header files.  This means that future changes have to modify both headers.  Or if someone fails to update the test version of the header, the test code has now diverged from the real code.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12aa944_32edbb4d",
+        "filename": "zephyr/test/lid_angle_common/test_test_build.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-29T20:29:54Z",
+      "side": 1,
+      "message": "Delete - this isn\u0027t testing any code that runs on a board.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
