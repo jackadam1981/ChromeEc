@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d525067b_7f47833c",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T18:23:27Z",
+      "side": 1,
+      "message": "FYI: V2 is supported by all boards which support BCIC. The problem is the host can speak V0 or V1 (and the EC happily responds as such). So, the additional restriction we need is to remove V0 and V1 from [EC_CMD_BATTERY_GET_STATIC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/battery_v2.c;l\u003d149) if CONFIG_BATTERY_CONFIG_IN_CBI is defined. And I\u0027m not against deprecating v0/v1 entirely...",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 62
+      },
+      "revId": "1d3599a501f861af5dfd6ed7b759caac81cdfd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
