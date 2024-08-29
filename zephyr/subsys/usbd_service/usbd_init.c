@@ -236,3 +236,50 @@ error:
 	return err;
 }
 SYS_INIT(usb_device_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+
+int usbd_debug_mode, usbd_hexdump_mode;
+
+static int cmd_usbd_state(const struct shell *sh, size_t argc, char **argv)
+{
+	if (!strcasecmp(argv[1], "state")) {
+		if (argc != 2) {
+			LOG_ERR("invaild parameters number(%d)", argc);
+			return EC_ERROR_PARAM_COUNT;
+		}
+		// LOG_INF("debug/hexdump mode: %d/%d configured %d suspended %d",
+		// 	usbd_debug_mode, usbd_hexdump_mode, usb_dc_status.configured, usb_dc_status.suspended);
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[1], "debug-mode")) {
+		if (argc != 3) {
+			LOG_ERR("invaild parameters number(%d)", argc);
+			return EC_ERROR_PARAM_COUNT;
+		}
+		if (!parse_bool(argv[2], &usbd_debug_mode)) {
+			LOG_ERR("unknown parameter2, should be \"on\" or \"off\"");
+			return EC_ERROR_PARAM2;
+		}
+		LOG_INF("usbd debug mode is %s", usbd_debug_mode ? "on" : "off");
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[1], "hexdump")) {
+		if (argc != 3) {
+			LOG_ERR("invaild parameters number(%d)", argc);
+			return EC_ERROR_PARAM_COUNT;
+		}
+		if (!parse_bool(argv[2], &usbd_hexdump_mode)) {
+			LOG_ERR("unknown parameter2, should be \"on\" or \"off\"");
+			return EC_ERROR_PARAM2;
+		}
+		LOG_INF("usbd hexdump mode is %s", usbd_hexdump_mode ? "on" : "off");
+		return EC_SUCCESS;
+	}
+
+	LOG_INF("unknown subcommand");
+	return EC_ERROR_PARAM1;
+}
+
+SHELL_CMD_ARG_REGISTER(usbd, NULL, "Show usb state or enable debug mode",
+					   cmd_usbd_state, 2, 1);

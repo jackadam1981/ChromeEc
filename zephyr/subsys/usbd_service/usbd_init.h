@@ -16,6 +16,14 @@
 #include <zephyr/drivers/usb/udc.h>
 #include <zephyr/usb/usbd.h>
 
+#define USB_LOG_DBG(format, args...) \
+	if (usbd_debug_mode)         \
+		LOG_INF("<dbg> %s:" format, __func__, ##args);
+
+#define USB_LOG_HEXDUMP_DBG(format, args...) \
+	if (usbd_hexdump_mode)         \
+		LOG_HEXDUMP_INF(format, ##args);
+
 #define USB_SUBCLASS_GOOGLE_FAKE 0xFF
 #define USB_PROTOCOL_GOOGLE_FAKE 0xFF
 
@@ -85,6 +93,7 @@ struct usb_msg_manager {
 
 extern struct usb_msg_manager msg_manager;
 extern enum usbd_msg_type usb_message;
+extern int usbd_debug_mode, usbd_hexdump_mode;
 
 int request_usb_wake(void);
 int usb_msg_deferred_register(const struct deferred_data *deferred);

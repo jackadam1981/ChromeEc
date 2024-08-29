@@ -96,7 +96,7 @@ static void gupdate_rx_thread(void *arg1, void *arg2, void *arg3)
 			continue;
 		}
 		queue_add_units(usb_to_update, buf->data, buf->len);
-		LOG_HEXDUMP_DBG(buf->data, buf->len, "Gupdate Rx:");
+		USB_LOG_HEXDUMP_DBG(buf->data, buf->len, "Gupdate Rx:");
 		net_buf_unref(buf);
 
 		atomic_clear_bit(&data->state, GVENDOR_DEV_OUT_BUSY);
@@ -122,7 +122,7 @@ static void gupdate_tx_thread(void *arg1, void *arg2, void *arg3)
 			continue;
 		}
 
-		LOG_HEXDUMP_DBG(buf->data, buf->len, "Gupdate Tx:");
+		USB_LOG_HEXDUMP_DBG(buf->data, buf->len, "Gupdate Tx:");
 
 		ret = usbd_ep_enqueue(c_data, buf);
 		if (ret) {
