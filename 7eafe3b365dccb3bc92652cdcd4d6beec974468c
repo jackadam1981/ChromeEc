@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f37f5764_c1da4bf7",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-29T19:27:03Z",
+      "side": 1,
+      "message": "Was a deadlock occurring at this point when the outer `if` statement matched but not the inner `if`, allowing execution to proceed down to the `shell_fprintf`?\n\nThis is a very confusingly laid out set of conditions. `in_isr` followed by a `!in_isr`?",
+      "range": {
+        "startLine": 498,
+        "startChar": 1,
+        "endLine": 498,
+        "endChar": 55
+      },
+      "revId": "7eafe3b365dccb3bc92652cdcd4d6beec974468c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
