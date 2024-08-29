@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8159c610_d063311f",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-29T21:28:43Z",
+      "side": 1,
+      "message": "Zero this out first",
+      "range": {
+        "startLine": 638,
+        "startChar": 8,
+        "endLine": 638,
+        "endChar": 30
+      },
+      "revId": "a9cca22e9f535f0085c0e7849460a4cbc7949c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e58ebc1_1228435d",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-08-29T21:28:43Z",
+      "side": 1,
+      "message": "NIT - `#endif /* DT_NODE_EXISTS(ZEPHYR_USER_NODE) */`",
+      "revId": "a9cca22e9f535f0085c0e7849460a4cbc7949c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
