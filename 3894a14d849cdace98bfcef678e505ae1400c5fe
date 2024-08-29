@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacd307b_00c71b73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-29T18:42:07Z",
+      "side": 1,
+      "message": "\"toolchain\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "72cec548_99be8f7e",
@@ -14,6 +37,24 @@
       "writtenOn": "2024-08-29T17:33:32Z",
       "side": 1,
       "message": "Tom, this forces CMake to look for `clang` binary in `/usr/bin`. The `TOOLCHAIN_HOME` variable is used in a [Zephyr compiler script](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/cmake/compiler/clang/target.cmake;l\u003d14-19;drc\u003d779018f2eda4eb8617046d628fec2ba2a0919cc0).\n\nIf you have some questions, please let me know.",
+      "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65659e3e_ac89829e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-08-29T18:42:07Z",
+      "side": 1,
+      "message": "I think what Rack was referring to in http://b/360183429#comment16 is that we shouldn\u0027t be calling \"bare\" clang anywhere (i.e., `clang`) and should only be calling the prefixed version (`armv7m-cros-eabi-clang`).\n\nDo you know where we\u0027re calling the bare version of `clang`? [These comments](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/cmake/toolchain/llvm/target.cmake;l\u003d45-50;drc\u003d1822f1b6b47f8b14b1068007f8a63d91dcea01aa) suggest we may be using `clang --target TRIPLE`.\n\n`gcc` [isn\u0027t a native cross compiler](https://clang.llvm.org/docs/CrossCompilation.html#cross-compilation-issues), so you always have to call the prefixed version (`armv7m-cros-eabi-gcc`), which may be one motivation for the [the check](http://b/360183429#comment14).\n\nThere shouldn\u0027t be anything wrong with calling `clang --target TRIPLE`, but maybe it results in bypassing the [\"compiler wrapper\"](http://shortn/_WwRVuS34Ym) from the toolchain team: https://crsrc.org/o/src/third_party/toolchain-utils/compiler_wrapper ? @ajordanr@google.com or someone from the toolchain team may be able to comment.\n\nIIUC, the other [method that was suggested](http://b/360183429#comment7) was to add a [`--toolchain`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/README.md;l\u003d63;drc\u003d06fe199c92548d0d8eba627ec2fc8d854c57cf0f) argument to `zmake` in the [ebuild](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/eclass/cros-zephyr-fpmcu.eclass;l\u003d101-102;drc\u003dc9c1b9cda881e168d50e4ebeaef50ee2cf11e749). From [this code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/zmake/zmake/toolchains.py;l\u003d162-166;drc\u003dc007b4b7d54ae91b5158145a14aa87818c94f8d6), it looks like it should be `--toolchain llvm`. Does that work?\n\nI\u0027ll go ahead and +2 since this CL unbreaks the build for us by restoring behavior before https://crrev.com/c/5763509.",
+      "parentUuid": "72cec548_99be8f7e",
       "revId": "3894a14d849cdace98bfcef678e505ae1400c5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
