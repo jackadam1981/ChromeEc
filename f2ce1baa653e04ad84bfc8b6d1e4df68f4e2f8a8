@@ -34,6 +34,23 @@
       "tag": "mailMessageId\u003d\u003cCAC0y+AjCPuRombJ4HxCif+unnhMrO\u003dW2Mxg\u003diOv+5NUYpTuUMg@mail.gmail.com\u003e",
       "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa76abf_95d5b453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2024-08-29T15:47:23Z",
+      "side": 1,
+      "message": "This patch have another issue, if we pressed esc + powerbtn once then release the keys, but we don\u0027t remove charger. Wait for while, removing charger, battery will be cutoff. It seems https://chromium.googlesource.com/chromiumos/platform/ec/+/c26b8849c8f56d65ea2e6b0236b34ace12afa4a6/zephyr/drivers/boot_keys/boot_keys.c#146 doesn\u0027t runtime update the boot keys value even we release boot keys.",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
