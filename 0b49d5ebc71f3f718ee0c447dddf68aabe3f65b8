@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6789c3f_b1aa386b",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T17:14:17Z",
+      "side": 1,
+      "message": "I still think using a variable is better for readability and for avoiding mistakes.\n\n    const int s \u003d TEMP_SOC;\n    ...\n    if (temp[s] \u003c prev_temp[s]) {\n        for ...",
+      "parentUuid": "75b06255_5c965c49",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 18
+      },
+      "revId": "0b49d5ebc71f3f718ee0c447dddf68aabe3f65b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a90f5a0_d1c9c7e2",
@@ -277,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ece769c_b012ef20",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T17:14:17Z",
+      "side": 1,
+      "message": "How about something like LOG_ERR(\"Error reading FW_THERMAL from CBI (%d)\", ret)?",
+      "parentUuid": "8bba20e1_e107a60f",
+      "range": {
+        "startLine": 126,
+        "startChar": 53,
+        "endLine": 126,
+        "endChar": 63
+      },
+      "revId": "0b49d5ebc71f3f718ee0c447dddf68aabe3f65b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00273d61_fa9d63d0",
@@ -314,6 +362,30 @@
       "side": 1,
       "message": "thermal team will create other fan table, it for reference table control as a parameter",
       "parentUuid": "00273d61_fa9d63d0",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "0b49d5ebc71f3f718ee0c447dddf68aabe3f65b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919016fe_57abe569",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T17:14:17Z",
+      "side": 1,
+      "message": "Ack. Can you please add a comment, then?\n\nAlso, you probably want to log it?\n\n    LOG_INF(\"Fan table is %u\", val);",
+      "parentUuid": "d727237c_fa60c9b0",
       "range": {
         "startLine": 130,
         "startChar": 1,
