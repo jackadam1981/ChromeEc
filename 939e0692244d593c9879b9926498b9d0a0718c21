@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e13b801d_8f8820c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T16:52:32Z",
+      "side": 1,
+      "message": "This is clear.",
+      "parentUuid": "1c90f618_d4c520ce",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "03ff46b2_beb1fdc4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "If there are multiple matches, it will go into the `else if (num_matches \u003e 1)` block. The question is: do we disallow multiple matches, or always choose the first match?",
       "parentUuid": "7ba6a3f1_b715f0a1",
+      "range": {
+        "startLine": 8776,
+        "startChar": 2,
+        "endLine": 8776,
+        "endChar": 3
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc5ba52_b992b3a5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8776,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T16:52:32Z",
+      "side": 1,
+      "message": "What I imagine is, *AS3FXXD3KB,C340152* was added to bc.json to fix a bug with *AS3FXXD3KB,C3401* for a specific model. So, it seems we want the 2nd example (*ectool bcfg search bc.json AS3FXXD3KB C340152 345*) to pass: the more specific config (*AS3FXXD3KB,C340152*) should be used.\n\nIf *AS3FXXD3KB,C3401* is meant to be used, *AS3FXXD3KB,C340152* should have been removed from bc.json. So, I assume the more specific match should be always the intended one.\n\nWhen multiple matches are found, I think we should print \u0027warning: multiple matches were found\u0027 or ask the user for confirmation.\n\nWhat\u0027s your thought?",
+      "parentUuid": "016eac48_516b5ed6",
       "range": {
         "startLine": 8776,
         "startChar": 2,
