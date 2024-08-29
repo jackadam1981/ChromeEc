@@ -51,6 +51,47 @@
       "message": "This patch have another issue, if we pressed esc + powerbtn once then release the keys, but we don\u0027t remove charger. Wait for while, removing charger, battery will be cutoff. It seems https://chromium.googlesource.com/chromiumos/platform/ec/+/c26b8849c8f56d65ea2e6b0236b34ace12afa4a6/zephyr/drivers/boot_keys/boot_keys.c#146 doesn\u0027t runtime update the boot keys value even we release boot keys.",
       "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990367b1_1f591b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T18:01:46Z",
+      "side": 1,
+      "message": "Fabio, boot keys need to be cleared when keys are released. Do you also see boot keys not cleared in zephyr/drivers/boot_keys/boot_keys.c? If not, can you please fix it?",
+      "parentUuid": "0aa76abf_95d5b453",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f346fc91_9bcfd8ab",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-29T18:01:46Z",
+      "side": 1,
+      "message": "This can be simply:\n\n    key \u003d keyboard_scan_get_boot_keys() \u003d\u003d BIT(BOOT_KEY_REFRESH);",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 15
+      },
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
