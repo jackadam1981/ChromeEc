@@ -16,6 +16,23 @@
       "message": "The [other changes](https://crrev.com/c/5806993) do seem to be working, since reverting them causes CQ failures.",
       "revId": "43667fbea6533d7cfca0c47d8be259e83ea69f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d835ae14_ef4058ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2024-08-29T15:02:52Z",
+      "side": 1,
+      "message": "I think we should take crrev.com/c/5804707 instead.\n\nThis change, I think, will cause b/346309204 unable to find library \"-lclang_rt.builtins-armv7m\" to start happening again.\n\nAs an aside, it seems that a number of broken changes passed the CQ, notably my crrev.com/c/5618850 and crrev.com/c/5675199. By your analysis here, both of those try to run a compiler binary that doesn\u0027t exist - yet they passed the CQ and we were even able to validate your LLVM update with that code in. Any idea why that happened and what we can do about it?",
+      "revId": "43667fbea6533d7cfca0c47d8be259e83ea69f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
