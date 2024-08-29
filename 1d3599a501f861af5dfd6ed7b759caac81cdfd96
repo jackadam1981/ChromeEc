@@ -22,6 +22,30 @@
       },
       "revId": "1d3599a501f861af5dfd6ed7b759caac81cdfd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454803fc_9606c3ee",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-08-29T20:13:27Z",
+      "side": 1,
+      "message": "My #error caught many boards that had CONFIG_BATTERY_CONFIG_IN_CBI but not CONFIG_HOSTCMD_BATTERY_V2\n\nAnd ectool will use the highest version available.",
+      "parentUuid": "d525067b_7f47833c",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 62
+      },
+      "revId": "1d3599a501f861af5dfd6ed7b759caac81cdfd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
