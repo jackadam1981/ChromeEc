@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f70dc272_4a7759de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-29T01:34:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b821fe36_c054be1f",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "988e70279e384a7742426eca02ddf21eba3e85db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a81d41d4_dbfd17f4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "Something like \u0027Trigger cutoff iif refresh is pressed.\u0027 would be nice.",
       "parentUuid": "2a56f75b_183091de",
+      "range": {
+        "startLine": 443,
+        "startChar": 5,
+        "endLine": 443,
+        "endChar": 45
+      },
+      "revId": "988e70279e384a7742426eca02ddf21eba3e85db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd50499e_e8d3e3c8",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-29T01:34:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059d468e_87a036f5",
       "range": {
         "startLine": 443,
         "startChar": 5,
