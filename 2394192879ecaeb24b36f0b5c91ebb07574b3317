@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "494a4c23_63a26314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-29T20:14:20Z",
+      "side": 1,
+      "message": "@asemjonovs@google.com This seems to work in practice but could use some cleanup, most notably getting the test to pass.",
+      "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70603622_18d79cb2",
@@ -60,6 +77,23 @@
         "endLine": 2271,
         "endChar": 21
       },
+      "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f83de7_fdeaeca8",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-08-29T20:14:20Z",
+      "side": 1,
+      "message": "@asemjonovs@google.com I increased this to give the debounce code time to stabilize and call the real hook. But it doesn\u0027t seem sufficient. It may be that I calculated the timeout incorrectly, or it may be that some extra synchronization step is needed in the test now that the effect of the hook is delayed.",
       "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
