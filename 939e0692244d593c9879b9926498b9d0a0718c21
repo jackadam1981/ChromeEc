@@ -67,6 +67,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfa9bc03_7a3e176b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8768,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-30T17:07:54Z",
+      "side": 1,
+      "message": "I\u0027m afraid this loop is not exactly ideal. It decrements prefix_len to 1 but there will be practically never such short device names.\n\nDo you think you can rewrite the loop as follows?\n\n1. Pick one config from JSON.\n1. Compare the config ID with the battery\u0027s ID. (e.g EC uses strncasecmp where len \u003d strlen(battery\u0027s ID) [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/battery_fuel_gauge.c;l\u003d67)).\n1. Go to step 1 (for the next config).\n\nThis is faster and I believe is more readable and orthodox.",
+      "range": {
+        "startLine": 8766,
+        "startChar": 0,
+        "endLine": 8768,
+        "endChar": 0
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ba6a3f1_b715f0a1",
         "filename": "util/ectool.cc",
         "patchSetId": 3
