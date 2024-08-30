@@ -142,6 +142,30 @@
       },
       "revId": "349b2df7f26fb408a5386a759c46b961f55b0d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7231028_b6bf6c2b",
+        "filename": "zephyr/program/nissa/orisa/motionsense.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-08-30T06:16:20Z",
+      "side": 1,
+      "message": "\u003e There is a chrome requirement for a wake event In tablet mode\n\nThanks",
+      "parentUuid": "90d87b17_812a4044",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "349b2df7f26fb408a5386a759c46b961f55b0d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
