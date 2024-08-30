@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2c0498_b8e5f016",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-30T18:18:49Z",
+      "side": 1,
+      "message": "Use a `k_timepoint` in place of a fixed loop.\n\n```\nk_timepoint timeout \u003d sys_timepoint_calc(K_MSEC(200));\nwhile (!sys_timepoint_expired((timeout))\n    ...\n```",
+      "range": {
+        "startLine": 2308,
+        "startChar": 0,
+        "endLine": 2308,
+        "endChar": 31
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f0e6d8_ba88b405",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-30T18:18:49Z",
+      "side": 1,
+      "message": "For a follow up CL: As these emulators gain functionality, the emulator should automatically set the correct interrupt bit and pulse the IRQ automatically.",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 43
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e08b14_7fc937d8",
+        "filename": "zephyr/emul/emul_tps6699x_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-30T18:18:49Z",
+      "side": 1,
+      "message": "This duplicates the `union reg_interrupt` defined by tps6699x_reg.h.  Can you use the real header instead?",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 21
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
