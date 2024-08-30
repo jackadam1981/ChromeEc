@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f3db58_24092255",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-30T03:06:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a84f08fd_aedd3abd",
+      "revId": "bd81c88f45c145e2df4b761b5f0506dc730dd5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a98309d6_b1f0f7ac",
@@ -54,6 +72,54 @@
       "writtenOn": "2024-08-28T21:02:50Z",
       "side": 1,
       "message": "Is the linter run on all C files or just CPP files?",
+      "range": {
+        "startLine": 4,
+        "startChar": 69,
+        "endLine": 4,
+        "endChar": 97
+      },
+      "revId": "bd81c88f45c145e2df4b761b5f0506dc730dd5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e09822_e1eaedbd",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-30T03:06:11Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "a98309d6_b1f0f7ac",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 28
+      },
+      "revId": "bd81c88f45c145e2df4b761b5f0506dc730dd5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106168eb_c8652d09",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-08-30T03:06:11Z",
+      "side": 1,
+      "message": "All, but I didn\u0027t read the PW style correctly. Leaving 80 cols.",
+      "parentUuid": "605357ce_5b6e4ea2",
       "range": {
         "startLine": 4,
         "startChar": 69,
