@@ -140,6 +140,30 @@
       },
       "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97bc1940_402678a6",
+        "filename": "zephyr/emul/emul_tps6699x_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-30T21:25:07Z",
+      "side": 1,
+      "message": "We want to remove the `_inter_reg` and `_intern_len` fields from the driver, but this effort is blocked until we have unit tests to give us confidence in the change.\n\nIf this prevents the emulator from using this struct, that\u0027s fine for now, but it makes sense to use a unique name.\n\nRegarding catching bit offset errors - I think this is somewhat of a corner case and not needed in the unit test.  A better check would be to just add a build_assert that overall size of the struct is correct.",
+      "parentUuid": "9e545963_6a95bc40",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 21
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
