@@ -40,6 +40,30 @@
       },
       "revId": "cf8a53e5d5b0d8941564932374a5dc2787f0a7ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32a5cb1_e85e4f53",
+        "filename": "zephyr/program/corsola/src/npcx_usbc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-08-30T01:44:35Z",
+      "side": 1,
+      "message": "I submitted a new CL[5823259](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5823259)",
+      "parentUuid": "6f3aee7a_2d170750",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "cf8a53e5d5b0d8941564932374a5dc2787f0a7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
