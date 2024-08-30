@@ -132,6 +132,9 @@
 /* ADC */
 #define CONFIG_ADC
 
+/* Keyboard */
+#undef CONFIG_CMD_KEYBOARD
+
 /*
  * TODO(b/197478860): Enable the fan control. We need
  * to check the sensor value and adjust the fan speed.
