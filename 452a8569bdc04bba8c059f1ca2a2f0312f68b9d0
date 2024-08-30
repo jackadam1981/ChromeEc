@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c23be4d_b1afe502",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-08-30T05:58:30Z",
+      "side": 1,
+      "message": "IT83XX driver has another config (CONFIG_TCPM_DRIVER_IT83XX), it8xxx2.c is enabled when CONFIG_TCPM_DRIVER_IT8XXX2 \u003d y.\nSo I think we needn\u0027t use #ifdef.",
+      "parentUuid": "3ba3adf6_15a1eea6",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 40
+      },
+      "revId": "452a8569bdc04bba8c059f1ca2a2f0312f68b9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb7d2f46_d8ef0c00",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 1
