@@ -22,4 +22,10 @@ config TEST_AP_POWER_BROX
 	  Run the AP power sequence tests using the Brox devicetree
 	  configuration and the Brox project specific source files.
 
+config BOARD_BROX
+	bool "Simulate Brox board"
+	help
+	  Simulate Brox board for testing purposes.
+
+
 source "Kconfig.zephyr"

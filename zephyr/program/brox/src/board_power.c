@@ -26,7 +26,16 @@ void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
 
-	power_signal_set(PWR_EC_PCH_RSMRST, 1);
+	/*
+	 * Brox follower devices populate a diode so that de-asserting
+	 * DSW_PWROK also asserts RSMRST.
+	 *
+	 * Brox is missing this, so the Brox specifically asserts RSMRST
+	 * before DSR_PWROK.
+	 */
+	if (IS_ENABLED(CONFIG_BOARD_BROX)) {
+		power_signal_set(PWR_EC_PCH_RSMRST, 1);
+	}
 	power_signal_set(PWR_EC_SOC_DSW_PWROK, 0);
 
 	/* TODO: replace with power_wait_signals_on_timeout()? */
