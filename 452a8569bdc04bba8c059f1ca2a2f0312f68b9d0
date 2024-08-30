@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4887a00_1423f334",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-08-30T05:40:58Z",
+      "side": 1,
+      "message": "why do we need this #ifdef?",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 40
+      },
+      "revId": "452a8569bdc04bba8c059f1ca2a2f0312f68b9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7d2f46_d8ef0c00",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-08-30T05:40:58Z",
+      "side": 1,
+      "message": "nit: rename skip_pd_transmit_complete to pd_transmit_error\n\u003d\u003e pd_transmit_error \u003d (status !\u003d TCPC_TX_COMPLETE_SUCCESS);",
+      "range": {
+        "startLine": 668,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 40
+      },
+      "revId": "452a8569bdc04bba8c059f1ca2a2f0312f68b9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
