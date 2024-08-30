@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf3c0a1_6a4ef487",
+        "filename": "zephyr/program/corsola/wugtrio/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-08-30T15:06:07Z",
+      "side": 0,
+      "message": "the default-range is 4 in `cros-ec,bmi3xx-accel.yaml`, delete this line will use the default value.",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 23
+      },
+      "revId": "ac000444d439d42ef06ec653e3ebc484cbd8b878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
