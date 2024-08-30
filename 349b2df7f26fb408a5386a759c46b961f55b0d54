@@ -46,6 +46,30 @@
       },
       "revId": "349b2df7f26fb408a5386a759c46b961f55b0d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19fc457_573b3922",
+        "filename": "zephyr/program/nissa/orisa/motionsense.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-08-30T02:13:05Z",
+      "side": 1,
+      "message": "\u003e this number to make sure polling is at 10hz in suspend which is required.\n\nthanks for the clarification. Is that 10KHz or 10Hz ?",
+      "parentUuid": "5cf06d7f_619e6b72",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "349b2df7f26fb408a5386a759c46b961f55b0d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
