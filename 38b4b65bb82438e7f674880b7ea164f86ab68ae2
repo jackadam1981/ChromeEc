@@ -22,6 +22,30 @@
       },
       "revId": "38b4b65bb82438e7f674880b7ea164f86ab68ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b388863d_76c36799",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-08-30T02:40:23Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "dd71e409_32168470",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "38b4b65bb82438e7f674880b7ea164f86ab68ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
