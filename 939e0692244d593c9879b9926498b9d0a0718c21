@@ -134,6 +134,30 @@
       },
       "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecb4110_222615cf",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8776,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2024-08-30T06:23:21Z",
+      "side": 1,
+      "message": "Sounds good, but then it doesn\u0027t match the logic mentioned in go/bcic-care. Here you\u0027re proposing to match the more specific config, but the doc says we match the first one. Can you align the logic in the doc?",
+      "parentUuid": "ebc5ba52_b992b3a5",
+      "range": {
+        "startLine": 8776,
+        "startChar": 2,
+        "endLine": 8776,
+        "endChar": 3
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
