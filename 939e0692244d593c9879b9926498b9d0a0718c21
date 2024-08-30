@@ -158,6 +158,30 @@
       },
       "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd99dd5_8ac5137a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8776,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-08-30T07:40:35Z",
+      "side": 1,
+      "message": "I think the reason why we use prefix matching is because there will be addition suffix in device name providing the manufacturer date.\n\nFor example `DELL CFD72[0-9].*`. So the device name in battery config would be `DELL CFD72`, and `[0-9].*` is the addition date which is different for each battery. A probed battery device name could be `DELL CFD729A`.\n\nThe additional suffix only happends after a space. ([See more example here](https://source.corp.google.com/search?q\u003dDELL\u0026sq\u003d\u0026ss\u003dh%2Fchrome-internal%2Fchromeos%2Fsuperproject%2F%2B%2Frefs%2Fheads%2Fmain:src%2Fplatform%2Fchromeos-hwid%2Fv3%2F))\n\nHow about we do prefix matching until we see a space?\n\nFor example, probed device name is `ABC DE5` so the for loop looks for device name :\n(1) `ABC DE5` (2) `ABC DE` (3) `ABC D`.",
+      "parentUuid": "9ecb4110_222615cf",
+      "range": {
+        "startLine": 8776,
+        "startChar": 2,
+        "endLine": 8776,
+        "endChar": 3
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
