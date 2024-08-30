@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39320c56_3d67ffa6",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-30T20:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2c0498_b8e5f016",
+      "range": {
+        "startLine": 2308,
+        "startChar": 0,
+        "endLine": 2308,
+        "endChar": 31
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1f0e6d8_ba88b405",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1db9aa_c6fafc81",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-30T20:24:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e1f0e6d8_ba88b405",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 43
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e08b14_7fc937d8",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-30T18:18:49Z",
       "side": 1,
       "message": "This duplicates the `union reg_interrupt` defined by tps6699x_reg.h.  Can you use the real header instead?",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 21
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e545963_6a95bc40",
+        "filename": "zephyr/emul/emul_tps6699x_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-30T20:24:26Z",
+      "side": 1,
+      "message": "Unfortunately the `tps6699x_reg.h` contain register/length info in its structs for sending over I2C bus. \n```\nunion reg_interrupt {\n\tstruct {\n\t\t/** Used for */\n\t\tuint8_t _intern_reg : 8;\n\t\tuint8_t _intern_len : 8;\n:\n```\nAlso, how would we catch any issues with bit offsets if we include the same file? I\u0027m not a fan of copy/paste, but I\u0027ll do a quick comparison against the data sheet for correctness.",
+      "parentUuid": "09e08b14_7fc937d8",
       "range": {
         "startLine": 348,
         "startChar": 0,
