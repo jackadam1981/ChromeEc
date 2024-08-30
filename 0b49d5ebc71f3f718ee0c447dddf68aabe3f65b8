@@ -207,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed2ca5fe_902fd63c",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-30T03:04:09Z",
+      "side": 1,
+      "message": "next, i will record it",
+      "parentUuid": "a6789c3f_b1aa386b",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 18
+      },
+      "revId": "0b49d5ebc71f3f718ee0c447dddf68aabe3f65b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a90f5a0_d1c9c7e2",
@@ -315,6 +339,30 @@
       "side": 1,
       "message": "How about something like LOG_ERR(\"Error reading FW_THERMAL from CBI (%d)\", ret)?",
       "parentUuid": "8bba20e1_e107a60f",
+      "range": {
+        "startLine": 126,
+        "startChar": 53,
+        "endLine": 126,
+        "endChar": 63
+      },
+      "revId": "0b49d5ebc71f3f718ee0c447dddf68aabe3f65b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ebf2f4_bbc345b5",
+        "filename": "zephyr/program/brox/jubilant/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-08-30T03:04:09Z",
+      "side": 1,
+      "message": "next, i will record it",
+      "parentUuid": "8ece769c_b012ef20",
       "range": {
         "startLine": 126,
         "startChar": 53,
