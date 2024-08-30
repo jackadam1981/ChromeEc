@@ -183,12 +183,19 @@ void board_reset_pd_mcu(void)
 	/* reset C1 RT1718s */
 	rt1718s_sw_reset(USBC_PORT_C1);
 
+<<<<<<< HEAD   (5f30ad wugtrio: Modify keyboard ADC check range)
 #ifdef CONFIG_BOARD_SQUIRTLE
 	/* set GPIO 1~3 as push pull, as output, output low. */
 	rt1718s_gpio_set_flags(USBC_PORT_C1, RT1718S_GPIO1, GPIO_OUT_LOW);
 	rt1718s_gpio_set_flags(USBC_PORT_C1, RT1718S_GPIO2, GPIO_OUT_LOW);
 	rt1718s_gpio_set_flags(USBC_PORT_C1, RT1718S_GPIO3, GPIO_OUT_LOW);
 #endif
+=======
+	/* set GPIO 1~3 as push pull, as output, output low. */
+	rt1718s_gpio_set_flags(USBC_PORT_C1, RT1718S_GPIO1, GPIO_OUT_LOW);
+	rt1718s_gpio_set_flags(USBC_PORT_C1, RT1718S_GPIO2, GPIO_OUT_LOW);
+	rt1718s_gpio_set_flags(USBC_PORT_C1, RT1718S_GPIO3, GPIO_OUT_LOW);
+>>>>>>> BRANCH (b9c30e lid_angle: Remove unused function)
 #endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 }
 
