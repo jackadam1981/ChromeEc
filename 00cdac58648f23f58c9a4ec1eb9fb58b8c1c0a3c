@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be30c68_df75b289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-08-30T20:08:45Z",
+      "side": 1,
+      "message": "LGTM, the concern about supporting a partner initiated data role swap after rejecting the DUT initiated swap can be addressed later.",
+      "revId": "00cdac58648f23f58c9a4ec1eb9fb58b8c1c0a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae7a8897_6b892cc8",
