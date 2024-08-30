@@ -94,6 +94,30 @@
       },
       "revId": "349b2df7f26fb408a5386a759c46b961f55b0d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4eb4b1c_de51b955",
+        "filename": "zephyr/program/nissa/orisa/motionsense.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-08-30T03:02:05Z",
+      "side": 1,
+      "message": "yeah, that is what I also guessed.\n\nis there any reason we are polling at that low freq?",
+      "parentUuid": "5a5923f4_2bcb3485",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "349b2df7f26fb408a5386a759c46b961f55b0d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
