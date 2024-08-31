@@ -7,6 +7,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "rex_fakes.h"
+#include "usb_mux_config.h"
 
 #include <stdbool.h>
 
@@ -75,6 +76,8 @@ ZTEST_USER(i2c_policy, test_deny_hb)
 
 	update_usb_db(mock_cros_cbi_get_fw_config_hb);
 
+	zassert_equal(usb_db_type, FW_USB_DB_USB4_HB);
+
 	zassert_equal(board_allow_i2c_passthru(&cmd_desc_hb0), false);
 	zassert_equal(board_allow_i2c_passthru(&cmd_desc_hb1), false);
 }
@@ -90,6 +93,8 @@ ZTEST_USER(i2c_policy, test_allow_c1_anx_only)
 
 	update_usb_db(mock_cros_cbi_get_fw_config_anx7452_v2);
 
+	zassert_equal(usb_db_type, FW_USB_DB_USB4_ANX7452_V2);
+
 	zassert_equal(board_allow_i2c_passthru(&cmd_desc_anx), true);
 }
 
@@ -103,6 +108,8 @@ ZTEST_USER(i2c_policy, test_allow_c1_usb3_only)
 	zassert_equal(board_allow_i2c_passthru(&cmd_desc_ps), false);
 
 	update_usb_db(mock_cros_cbi_get_fw_config_usb3);
+
+	zassert_equal(usb_db_type, FW_USB_DB_USB3);
 
 	zassert_equal(board_allow_i2c_passthru(&cmd_desc_ps), true);
 }
