@@ -164,6 +164,30 @@
       },
       "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f026a822_0cf81ec1",
+        "filename": "zephyr/emul/emul_tps6699x_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-08-31T13:42:23Z",
+      "side": 1,
+      "message": "The `reg`/`len` fields do cause offset issues in the emulator as I\u0027m casting this over the `reg_val` array which is used in the emulator reads.",
+      "parentUuid": "97bc1940_402678a6",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 21
+      },
+      "revId": "5e4799f95c64fb8e6484f3f283bf3e475062eb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
