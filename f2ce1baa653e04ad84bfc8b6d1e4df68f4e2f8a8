@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e701a90_58f5cfe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-09-02T05:16:28Z",
+      "side": 1,
+      "message": "about refhresh key, could land to firware? or other action?",
+      "parentUuid": "990367b1_1f591b44",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f346fc91_9bcfd8ab",
         "filename": "common/battery.c",
         "patchSetId": 3
