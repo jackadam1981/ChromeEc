@@ -229,6 +229,30 @@
       },
       "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c11658_7452b96b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8776,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-09-02T04:10:05Z",
+      "side": 1,
+      "message": "\u003e If the loop continues here, prefix_len will be decremented until there is a single char in \u0027identifier\u0027, which may likely match many configs.\n\nI don\u0027t think there will be many matched configs. For example if the device name decrements to a single char `A`, it will only match the config like this: `\"\u003cmanu_name\u003e,A\": {...}`.\n\n---\n\n\u003e What I imagine is, AS3FXXD3KB,C340152 was added to bc.json to fix a bug with AS3FXXD3KB,C3401 for a specific model. So, it seems we want the 2nd example (ectool bcfg search bc.json AS3FXXD3KB C340152 345) to pass: the more specific config (AS3FXXD3KB,C340152) should be used.\n\nThe current device name consists of two parts, prefix depends on the battery model and suffix is the date info. The battery config only uses prefix but each battery has full device name. This is why we need to do prefix matching: The batteries with same model but manufactured on different dates are using the same config.\n\nThe sceneria you mentioned is a new feature: Fixing old battery by adding a new battery config with more specific device name. I don\u0027t think we need to support this since it\u0027s not the use case for BCIC.\n\nSo I don\u0027t think we should allow multiple matches in BCIC as discussed in the meeting.",
+      "parentUuid": "ef642fab_90c8e176",
+      "range": {
+        "startLine": 8776,
+        "startChar": 2,
+        "endLine": 8776,
+        "endChar": 3
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
