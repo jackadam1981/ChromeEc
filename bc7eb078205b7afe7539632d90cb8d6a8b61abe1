@@ -46,6 +46,30 @@
       },
       "revId": "bc7eb078205b7afe7539632d90cb8d6a8b61abe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5947e313_29280de0",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-02T09:04:17Z",
+      "side": 1,
+      "message": "Can we keep as what it is and simply add `|| defined(BOARD_AWASUKI)`? I don\u0027t see the need of changing current behavior.",
+      "parentUuid": "e2cc571f_d9510eb9",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "bc7eb078205b7afe7539632d90cb8d6a8b61abe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
