@@ -46,7 +46,8 @@
 bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];
-static uint8_t tx_error_status[IT83XX_USBPD_PHY_PORT_COUNT] = { 0 };
+uint8_t tx_recovery_count[IT83XX_USBPD_PHY_PORT_COUNT] = {3, 3};
+enum tcpci_msg_type tx_sop_type[IT83XX_USBPD_PHY_PORT_COUNT];
 
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{ &IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0 },
@@ -188,19 +189,6 @@ static int it8xxx2_tcpm_get_message_raw(int port, uint32_t *buf, int *head)
 	return EC_SUCCESS;
 }
 
-void it8xxx2_clear_tx_error_status(enum usbpd_port port)
-{
-	tx_error_status[port] = 0;
-}
-
-void it8xxx2_get_tx_error_status(enum usbpd_port port)
-{
-	tx_error_status[port] = IT83XX_USBPD_MTCR(port) &
-				(USBPD_REG_MASK_TX_NOT_EN_STAT |
-				 USBPD_REG_MASK_TX_DISCARD_STAT |
-				 USBPD_REG_MASK_TX_NO_RESPONSE_STAT);
-}
-
 static enum tcpc_transmit_complete it8xxx2_send_hw_reset(enum usbpd_port port)
 {
 	/* Send hard reset */
@@ -228,11 +216,13 @@ it8xxx2_send_cable_reset(enum usbpd_port port)
 	return TCPC_TX_COMPLETE_SUCCESS;
 }
 
-static void it8xxx2_send_bist_mode2_pattern(enum usbpd_port port)
+static enum tcpc_transmit_complete it8xxx2_send_bist_mode2_pattern(enum usbpd_port port)
 {
 	USBPD_ENABLE_SEND_BIST_MODE_2(port);
 	crec_usleep(PD_T_BIST_TRANSMIT);
 	USBPD_DISABLE_SEND_BIST_MODE_2(port);
+
+	return TCPC_TX_COMPLETE_SUCCESS;
 }
 
 static void it8xxx2_enable_vconn(enum usbpd_port port, int enabled)
@@ -520,24 +510,14 @@ static int it8xxx2_tcpm_set_msg_header(int port, int power_role, int data_role)
 	return EC_SUCCESS;
 }
 
-static void restore_sop_header_pwr_data_role(enum usbpd_port port,
-					     enum tcpci_msg_type type)
-{
-	if (type != TCPCI_MSG_SOP) {
-		it8xxx2_tcpm_set_msg_header(port, pd_get_power_role(port),
-					    pd_get_data_role(port));
-	}
-}
-
-static enum tcpc_transmit_complete it8xxx2_tx_data(enum usbpd_port port,
+static void it8xxx2_tx_data(enum usbpd_port port,
 						   enum tcpci_msg_type type,
 						   uint16_t header,
 						   const uint32_t *buf)
 {
-	int r;
-	uint32_t evt;
 	uint8_t length = PD_HEADER_CNT(header);
 	uint8_t retry_count = pd_get_retry_count(port, type);
+	tx_sop_type[port] = type;
 
 	/* Set message header */
 	IT83XX_USBPD_MHSR0(port) = (uint8_t)header;
@@ -557,73 +537,17 @@ static enum tcpc_transmit_complete it8xxx2_tx_data(enum usbpd_port port,
 	/* Limited by PD_HEADER_CNT() */
 	ASSERT(length <= 0x7);
 
-	if (length)
+	if (length) {
 		/* Set data */
 		memcpy((uint32_t *)&IT83XX_USBPD_TDO(port), buf, length * 4);
-
-	for (r = 0; r <= retry_count; r++) {
-		/* Start Tx */
-		USBPD_KICK_TX_START(port);
-		evt = task_wait_event_mask(TASK_EVENT_PHY_TX_DONE,
-					   PD_T_TCPC_TX_TIMEOUT);
-
-		/*
-		 * Check Tx error status (TCPC won't set multi tx errors at one
-		 * time transmission):
-		 * 1) If we doesn't enable Tx.
-		 * 2) If discard, means HW doesn't send the msg and resend.
-		 * 3) If port partner doesn't respond GoodCRC.
-		 * 4) If Tx timeout.
-		 */
-		if (tx_error_status[port] || (evt & TASK_EVENT_TIMER)) {
-			if (tx_error_status[port] &
-			    USBPD_REG_MASK_TX_NOT_EN_STAT) {
-				CPRINTS("p%d TxErr: Tx EN and resend", port);
-				tx_error_status[port] &=
-					~USBPD_REG_MASK_TX_NOT_EN_STAT;
-				IT83XX_USBPD_PDGCR(port) |=
-					USBPD_REG_MASK_TX_MESSAGE_ENABLE;
-				continue;
-			} else if (tx_error_status[port] &
-				   USBPD_REG_MASK_TX_DISCARD_STAT) {
-				CPRINTS("p%d TxErr: Discard and resend", port);
-				tx_error_status[port] &=
-					~USBPD_REG_MASK_TX_DISCARD_STAT;
-				continue;
-			} else if (tx_error_status[port] &
-				   USBPD_REG_MASK_TX_NO_RESPONSE_STAT) {
-				/* HW had automatically resent message twice */
-				tx_error_status[port] &=
-					~USBPD_REG_MASK_TX_NO_RESPONSE_STAT;
-				/*
-				 * The power role and data role bits in the
-				 * message header are only set for SOP messages.
-				 * If an SOP'/SOP'' message fails, restore the
-				 * power role and data role bits.
-				 */
-				restore_sop_header_pwr_data_role(port, type);
-				return TCPC_TX_COMPLETE_FAILED;
-			} else if (evt & TASK_EVENT_TIMER) {
-				CPRINTS("p%d TxErr: Timeout", port);
-				restore_sop_header_pwr_data_role(port, type);
-				return TCPC_TX_UNSET;
-			}
-		} else {
-			/*
-			 * Restored power and data role in the MHSR registers
-			 * when SOP'/SOP'' message is successfully transmitted.
-			 */
-			restore_sop_header_pwr_data_role(port, type);
-			break;
-		}
 	}
 
-	if (r > retry_count) {
-		restore_sop_header_pwr_data_role(port, type);
-		return TCPC_TX_COMPLETE_DISCARDED;
-	}
+	//IT83XX_USBPD_PDGCR(port) &= ~USBPD_REG_MASK_TX_MESSAGE_ENABLE; //test dis tx
+	/* Init tx recovery count */
+	tx_recovery_count[port] = 3;
 
-	return TCPC_TX_COMPLETE_SUCCESS;
+	/* Start Tx */
+	USBPD_KICK_TX_START(port);
 }
 
 static int it8xxx2_tcpm_set_rx_enable(int port, int enable)
@@ -655,6 +579,7 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 				 uint16_t header, const uint32_t *data)
 {
 	int status = TCPC_TX_COMPLETE_FAILED;
+	bool report_tx_status_in_interrupt = false;
 
 	switch (type) {
 	case TCPCI_MSG_SOP:
@@ -662,11 +587,12 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 	case TCPCI_MSG_SOP_PRIME_PRIME:
 	case TCPCI_MSG_SOP_DEBUG_PRIME:
 	case TCPCI_MSG_SOP_DEBUG_PRIME_PRIME:
-		status = it8xxx2_tx_data(port, type, header, data);
+		it8xxx2_tx_data(port, type, header, data);
+		report_tx_status_in_interrupt = true;
+		//pd_transmit_error = (status != TCPC_TX_COMPLETE_SUCCESS);
 		break;
 	case TCPCI_MSG_TX_BIST_MODE_2:
-		it8xxx2_send_bist_mode2_pattern(port);
-		status = TCPC_TX_COMPLETE_SUCCESS;
+		status = it8xxx2_send_bist_mode2_pattern(port);
 		break;
 	case TCPCI_MSG_TX_HARD_RESET:
 		status = it8xxx2_send_hw_reset(port);
@@ -678,7 +604,9 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 		status = TCPC_TX_COMPLETE_FAILED;
 		break;
 	}
-	pd_transmit_complete(port, status);
+	if (!report_tx_status_in_interrupt) {
+		pd_transmit_complete(port, status);
+	}
 
 	return EC_SUCCESS;
 }
