@@ -430,8 +430,6 @@ struct cc_para_t {
 };
 
 extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
-void it8xxx2_clear_tx_error_status(enum usbpd_port port);
-void it8xxx2_get_tx_error_status(enum usbpd_port port);
 void it83xx_Rd_5_1K_only_for_hibernate(int port);
 void switch_plug_out_type(enum usbpd_port port);
 /*
