@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52967dde_3418b427",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8768,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-09-02T04:14:14Z",
+      "side": 1,
+      "message": "This looks better since we can prevent the magic number \u00271\u0027.",
+      "parentUuid": "bfa9bc03_7a3e176b",
+      "range": {
+        "startLine": 8766,
+        "startChar": 0,
+        "endLine": 8768,
+        "endChar": 0
+      },
+      "revId": "939e0692244d593c9879b9926498b9d0a0718c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ba6a3f1_b715f0a1",
         "filename": "util/ectool.cc",
         "patchSetId": 3
