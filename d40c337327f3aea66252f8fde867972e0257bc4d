@@ -123,6 +123,24 @@
       "parentUuid": "047742d6_0bc6442f",
       "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3c1041_6ab11dd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-03T21:08:46Z",
+      "side": 1,
+      "message": "`CMAKE_C_FLAGS` gets initialized after line 22 `enable_language(C)`. These are my findings in the bug. It is empty before this line.\n\nhttps://b.corp.google.com/issues/361855883#comment14\n\nIf I set `CMAKE_C_FLAGS` to the compiler macro needed or pass it as `-DCMAKE_C_FLAGS` from the rules.mk file, it will override what the default. I am not sure how to overcome this issue.",
+      "parentUuid": "73823b68_208f801d",
+      "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
