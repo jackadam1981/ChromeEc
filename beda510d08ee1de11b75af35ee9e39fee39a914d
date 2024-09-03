@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "778e8167_c3f6dfd3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2491,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-03T23:56:37Z",
+      "side": 1,
+      "message": "I think this is outdated. We now call this function both via the debounced power-state-change hooks AND from init code if there is a late sysjump.\n```suggestion\n/**\n * @brief Apply correct policy based on system power state\n *\n * This is normally triggered by hooks on AP power state changes\n * (HOOK_CHIPSET_RESUME, etc) elsewhere in this file. The hooks enforce\n * hysteresis on the power state to avoid rapid policy flapping.\n *\n * In the case of a late sysjump, this function is also called during\n * init to force the correct policy, since the normal start-up power\n * state transition hooks will not be occur.\n```",
+      "range": {
+        "startLine": 2481,
+        "startChar": 0,
+        "endLine": 2491,
+        "endChar": 45
+      },
+      "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df53cfb_77f28b11",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-03T23:56:37Z",
+      "side": 1,
+      "message": "I think we could call `pdc_apply_power_state_policy()` directly. In the late sysjump case the AP power is already stabilized.",
+      "range": {
+        "startLine": 2558,
+        "startChar": 3,
+        "endLine": 2559,
+        "endChar": 44
+      },
+      "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3aa23e98_1ffdcd7d",
         "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
         "patchSetId": 5
