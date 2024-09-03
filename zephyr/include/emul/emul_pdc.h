@@ -60,8 +60,8 @@ typedef int (*emul_pdc_set_lpm_ppm_info_t)(const struct emul *target,
 					   const struct lpm_ppm_info_t *info);
 typedef int (*emul_pdc_set_current_pdo_t)(const struct emul *target,
 					  uint32_t pdo);
-typedef int (*emul_pdc_get_current_flash_bank_t)(const struct emul *target,
-						 uint8_t *bank);
+typedef int (*emul_pdc_set_current_flash_bank_t)(const struct emul *target,
+						 uint8_t bank);
 typedef int (*emul_pdc_get_retimer_fw_t)(const struct emul *target,
 					 bool *enable);
 
@@ -109,7 +109,7 @@ __subsystem struct emul_pdc_api_t {
 	emul_pdc_set_pdos_t set_pdos;
 	emul_pdc_set_info_t set_info;
 	emul_pdc_set_lpm_ppm_info_t set_lpm_ppm_info;
-	emul_pdc_get_current_flash_bank_t get_current_flash_bank;
+	emul_pdc_set_current_flash_bank_t set_current_flash_bank;
 	emul_pdc_get_retimer_fw_t get_retimer;
 	emul_pdc_get_requested_power_level_t get_requested_power_level;
 	emul_pdc_get_reconnect_req_t get_reconnect_req;
@@ -427,8 +427,8 @@ static inline int emul_pdc_set_current_pdo(const struct emul *target,
 	return -ENOSYS;
 }
 
-static inline int emul_pdc_get_current_flash_bank(const struct emul *target,
-						  uint8_t *bank)
+static inline int emul_pdc_set_current_flash_bank(const struct emul *target,
+						  uint8_t bank)
 {
 	if (!target || !target->backend_api) {
 		return -ENOTSUP;
@@ -436,8 +436,8 @@ static inline int emul_pdc_get_current_flash_bank(const struct emul *target,
 
 	const struct emul_pdc_api_t *api = target->backend_api;
 
-	if (api->get_current_flash_bank) {
-		return api->get_current_flash_bank(target, bank);
+	if (api->set_current_flash_bank) {
+		return api->set_current_flash_bank(target, bank);
 	}
 	return -ENOSYS;
 }
