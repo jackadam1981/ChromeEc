@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd57c0e_ac606c49",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2228,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-03T23:12:43Z",
+      "side": 1,
+      "message": "Oops, I reverted some dev changes too far 😄",
+      "parentUuid": "00cc2e5f_8a97e36a",
+      "range": {
+        "startLine": 2228,
+        "startChar": 29,
+        "endLine": 2228,
+        "endChar": 50
+      },
+      "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f80c781a_332429be",
