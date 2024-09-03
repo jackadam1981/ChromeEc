@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bfd1436_99ec0bb7",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8770,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-03T18:08:26Z",
+      "side": 1,
+      "message": "Looks like AI is also suggesting it. Please take a look.",
+      "parentUuid": "509f0ab5_dffaa90e",
+      "range": {
+        "startLine": 8770,
+        "startChar": 3,
+        "endLine": 8770,
+        "endChar": 42
+      },
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02737663_3e6998a1",
         "filename": "util/ectool.cc",
         "patchSetId": 4
