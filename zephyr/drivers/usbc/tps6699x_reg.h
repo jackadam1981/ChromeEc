@@ -317,7 +317,7 @@ enum command_task {
 	COMMAND_TASK_TFUQ = 0x71554654,
 	/* Abort current task */
 	COMMAND_TASK_ABRT,
-	/*Auto Negotiate Sink Update */
+	/* Auto Negotiate Sink Update */
 	COMMAND_TASK_ANEG = 0x67654E41,
 	/* Clear Dead Battery Flag */
 	COMMAND_TASK_DBFG = 0x67664244,
@@ -1199,7 +1199,7 @@ union reg_active_pdo_contract {
 		uint32_t active_pdo : 32;
 		/* NOTE: The upper 7 bits should be ignored */
 		uint16_t first_pdo_control_bits;
-	} _packed;
+	} __packed;
 	uint8_t raw_value[8];
 };
 
