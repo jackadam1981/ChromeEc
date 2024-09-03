@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa23e98_1ffdcd7d",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T23:28:18Z",
+      "side": 1,
+      "message": "To make this easier to understand, can you\n1. define a new constant with this value and use that in the tests, and\n1. comment that constant to explain why it\u0027s longer?",
+      "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
