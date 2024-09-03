@@ -14,5 +14,6 @@ if(DEFINED CONFIG_BOARD_TRULO)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	"trulo/src/keyboard.c"
 	"trulo/src/keyboard_customization.c"
+	"trulo/src/touch_panel.c"
 	)
 endif()

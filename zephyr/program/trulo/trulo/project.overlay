@@ -11,18 +11,22 @@
 #include "../trulo.dtsi"
 #include "../usba.dtsi"
 
+
 /* Trulo project DTS includes*/
 #include "battery.dtsi"
+#include "cbi.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dtsi"
 #include "keyboard.dtsi"
 #include "usb_typec.dtsi"
 
-
 #include <cros/thermistor/thermistor.dtsi>
 
-
 /* Trulo overrides follow... */
+
+&thermistor_3V3_51K1_47K_4050B {
+	status = "okay";
+};
 
 &adc_ec_vsense_pp3300_s5 {
 	/*

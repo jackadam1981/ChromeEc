@@ -51,6 +51,9 @@
 		gpio_ec_acok_otg_c0: ec_acok_otg_c0 {
 			gpios = <&gpioc 6 GPIO_OUTPUT>;
 		};
+		gpio_soc_enbkl: soc_enbkl {
+			gpios = <&gpioc 7 GPIO_INPUT>;
+		};
 	};
 
 	unused-pins {
