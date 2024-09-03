@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33f04479_e24a0a45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-03T09:42:02Z",
+      "side": 1,
+      "message": "Yeah I see there\u0027s some details I didn\u0027t quite pick up right when reimplementing the functionality, on it.",
+      "parentUuid": "2e701a90_58f5cfe6",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f346fc91_9bcfd8ab",
         "filename": "common/battery.c",
         "patchSetId": 3
