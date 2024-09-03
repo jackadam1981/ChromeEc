@@ -69,6 +69,24 @@
       "parentUuid": "ea544e62_44efac2a",
       "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020bda34_d11c40c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-03T18:32:17Z",
+      "side": 1,
+      "message": "Does that mean that these compiler flags are being overridden, too?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/cmake/toolchain-common.cmake;l\u003d46-48;drc\u003da5171b272b59c859ed130160d5d77ea816b0511b\n\nDo you have a link to where these are being overridden in boringssl?",
+      "parentUuid": "555c63ea_69de5ab3",
+      "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
