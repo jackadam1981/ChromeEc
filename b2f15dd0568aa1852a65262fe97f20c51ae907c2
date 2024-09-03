@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "289972f0_16ced9a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-03T23:21:04Z",
+      "side": 1,
+      "message": "flag `SNK_POLICY_NEW_POWER_REQUEST` seems to do what we want and will set the substate back to get PDOs.",
+      "parentUuid": "bded2574_f8b7adf6",
+      "revId": "b2f15dd0568aa1852a65262fe97f20c51ae907c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e41e677_de0711cb",
