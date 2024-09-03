@@ -24,6 +24,7 @@
 
 #include <errno.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <sys/stat.h>
 
@@ -37,7 +38,11 @@
 void _exit(int rc)
 {
 	panic_printf("%s called with rc: %d\n", __func__, rc);
-	software_panic(PANIC_SW_EXIT, task_get_current());
+	if (strcmp(__func__, "exit") || strcmp(__func__, "abort") == 0) {
+		software_panic(PANIC_SW_EXIT, task_get_current());
+	} else if (strcmp(__func__, "assert") == 0) {
+		software_panic(PANIC_SW_ASSERT, task_get_current());
+	}
 }
 
 /**
