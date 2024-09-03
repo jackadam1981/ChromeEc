@@ -59,6 +59,12 @@ $(third-party-test-targets): $(out)/cryptoc/libcryptoc.a
 endif # CONFIG_LIBCRYPTOC
 
 ifeq ($(CONFIG_BORINGSSL_CRYPTO), y)
+# When compiling the code with the portage build system, it will generate very
+# long file path strings. This compile options will strip the source path, and
+# reduce the final code size.
+# The reason we don't use "-ffile-prefix-map" here is because we don't want to
+# break the debug symbols for debugging.
+CFLAGS+= -fmacro-prefix-map=$(CURDIR)/../../third_party/boringssl/=.
 ifndef CMAKE_SYSTEM_PROCESSOR
 $(error ERROR: Set CMAKE_SYSTEM_PROCESSOR in core/$(CORE)/toolchain.mk)
 endif
