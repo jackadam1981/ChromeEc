@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81be8140_9f24458d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T18:57:18Z",
+      "side": 1,
+      "message": "The TI tests are incomplete, but they run now. You should be able to add tests or fix up existing tests to cover this CL.",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf7e5cc_ea9c2e6f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T18:57:18Z",
+      "side": 1,
+      "message": "Can you call it `RECONNECT_DELAY_SECONDS`, `RECONNECT_DELAY_S`, or something similar with the unit included?",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7399cf_bfb284c1",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T18:57:18Z",
+      "side": 1,
+      "message": "Nit: The result of this `\u0026` should implicitly cast to a bool. This is already an elaborate expression with multiple levels of parenthesis, so letting that be implicit might make this slightly easier to read. But I don\u0027t have a really strong preference here. Putting the choice of `pa_vconn_sw` and `pb_vconn_sw` into a separate variable might be equally helpful.",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0c01ed_b58eef23",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T18:57:18Z",
+      "side": 1,
+      "message": "If `RECONNECT_DELAY` only applies here, I\u0027d just make it a variable in this function.",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f654bf9_adf3bdb1",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2089,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T18:57:18Z",
+      "side": 1,
+      "message": "Is the format of `bank` generic to PDCs or specific to the TI PDC?",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
