@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bff931c_94280203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-03T22:38:11Z",
+      "side": 1,
+      "message": "```\n[COMMIT 1/3 cf6249698f8f XS] ec: Align stdlib assert with builtin ASSERT macro\n[FAILED] chromiumos/platform/ec: migrated_files\n    Hook script \"util/migrated_files.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      WARNING: libc/syscalls.c is not used in Zephyr EC. There is probably another file in the zephyr/shim directory that needs the same fix that you just made. Alternativly, you might have edited the wrong file.\n```",
+      "revId": "cf6249698f8f6a7dbf464c583bba79e13dc9c390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
