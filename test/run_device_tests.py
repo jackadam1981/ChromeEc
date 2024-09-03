@@ -312,6 +312,14 @@ class AllTests:
                     ALL_TESTS_FAILED_REGEX,
                 ],
             ),
+            TestConfig(
+                test_name="assert_stdlib",
+                fail_regexes=[
+                    ALL_TESTS_FAILED_REGEX,
+                    ASSERTION_FAILURE_REGEX,
+                ],
+                exclude_boards=[DARTMONKEY, HELIPILOT],
+            ),
             TestConfig(test_name="benchmark"),
             TestConfig(test_name="boringssl_crypto"),
             TestConfig(test_name="cortexm_fpu"),
