@@ -87,6 +87,24 @@
       "parentUuid": "555c63ea_69de5ab3",
       "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047742d6_0bc6442f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-03T18:39:13Z",
+      "side": 1,
+      "message": "currently, I am adding this compiler flag to the other flags that we are passing. If I add \n```\nset(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -fmacro-prefix-map\u003d${CMAKE_CURRENT_SOURCE_DIR}/\u003d.\")\n```\nto `src/platform/ec/third_party/boringssl/boringssl-toolchain.cmake`, I will override all the compiler flags that we are passing.\n\nThe cleanest solution would be to add:\n```\nset(C_CXX_FLAGS \"${C_CXX_FLAGS} -fmacro-prefix-map\u003d${CMAKE_CURRENT_SOURCE_DIR}/\u003d.\")\n```\nto `src/platform/ec/third_party/boringssl/boringssl-toolchain.cmake`. However, this requires a change from the boringssl team:\n```\n  set(C_CXX_FLAGS \"${C_CXX_FLAGS} -Werror -Wformat\u003d2 -Wsign-compare -Wwrite-strings -Wvla -Wshadow -Wtype-limits -Wmissing-field-initializers\")\n```\nin https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/CMakeLists.txt;drc\u003ddfcaaddcb9229d309fc5eecda5e03e7cca5578e5;l\u003d108\n\nplease let me know if you have other thoughts.",
+      "parentUuid": "020bda34_d11c40c5",
+      "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
