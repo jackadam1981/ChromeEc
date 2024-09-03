@@ -365,8 +365,6 @@ ZTEST_USER(pdc_api, test_set_frs)
 }
 #endif
 
-/* TODO(b/345292002): TPS6699x pdc_reconnect not implemented */
-#ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_reconnect)
 {
 	uint8_t expected, val;
@@ -377,7 +375,6 @@ ZTEST_USER(pdc_api, test_reconnect)
 	zassert_ok(emul_pdc_get_reconnect_req(emul, &expected, &val));
 	zassert_equal(expected, val);
 }
-#endif
 
 /**
  * @brief Clears the cached PDC FW info struct inside the driver.
