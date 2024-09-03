@@ -11,21 +11,53 @@
  * https://sourceware.org/git/?p=newlib-cygwin.git;a=tree;f=libgloss/libnosys.
  */
 
-#include "builtin/assert.h"
 #include "gettimeofday.h"
 #include "link_defs.h"
 #include "panic.h"
 #include "recursive_mutex.h"
 #include "shared_mem.h"
+#include "signal.h"
 #include "software_panic.h"
 #include "system.h"
 #include "task.h"
 #include "uart.h"
+#include <assert.h>
+#include <stdio.h>
 
 #include <errno.h>
+#include <stdbool.h>
+
+static bool is_sigabrt;
+
 #include <stdlib.h>
 
 #include <sys/stat.h>
+
+void __assert_fail(const char *assertion, const char *file, unsigned int line, const char *function) {
+  fprintf(stderr, "Assertion failed: %s, function %s, file %s, line %u.\n", 
+          assertion, function, file, line);
+  abort();
+}
+
+
+/**
+ * Send a signal to a specified process identified by its process ID.
+ *
+ * This function is called from libc functions such as abort() and assert().
+ *
+ * @param pid  the process ID of the target process
+ * @param sig the signal to be sent to the target process
+ * @return 0 on success and -1 on error. The global variable errno is set to
+ * indicate the specific error
+ */
+ int _kill(int pid, int sig)
+{
+	if (sig == SIGABRT) {
+		is_sigabrt = true;
+	}
+	return 0;
+}
+
 
 /**
  * Reboot the system.
@@ -37,7 +69,15 @@
 void _exit(int rc)
 {
 	panic_printf("%s called with rc: %d\n", __func__, rc);
-	software_panic(PANIC_SW_EXIT, task_get_current());
+	if (is_sigabrt) {
+		is_sigabrt = false;
+		ccprintf("The line is @__exit: %d", __LINE__);
+		uint32_t info = (__FILE__[0] << 24) | (__FILE__[1] << 16) |
+				(__LINE__ & 0xffff);
+		software_panic(PANIC_SW_ASSERT, info);
+	} else {
+		software_panic(PANIC_SW_EXIT, task_get_current());
+	}
 }
 
 /**
@@ -125,86 +165,86 @@ K_MUTEX_R_DEFINE(__lock___env_recursive_mutex);
 
 void __retarget_lock_init(_LOCK_T *lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	*lock = malloc(sizeof(mutex_t));
-	ASSERT(*lock != NULL);
+	assert(*lock != NULL);
 
 	memset(*lock, 0, sizeof(mutex_t));
 }
 
 void __retarget_lock_close(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	free(lock);
 }
 
 void __retarget_lock_acquire(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_lock((mutex_t *)lock);
 }
 
 int __retarget_lock_try_acquire(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	return mutex_try_lock((mutex_t *)lock);
 }
 
 void __retarget_lock_release(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_unlock((mutex_t *)lock);
 }
 
 void __retarget_lock_init_recursive(_LOCK_T *lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	*lock = malloc(sizeof(struct mutex_r));
-	ASSERT(*lock != NULL);
+	assert(*lock != NULL);
 
 	mutex_init_recursive((struct mutex_r *)*lock);
 }
 
 void __retarget_lock_close_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	free(lock);
 }
 
 void __retarget_lock_acquire_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_lock_recursive((struct mutex_r *)lock);
 }
 
 int __retarget_lock_try_acquire_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	return mutex_try_lock_recursive((struct mutex_r *)lock);
 }
 
 void __retarget_lock_release_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_unlock_recursive((struct mutex_r *)lock);
 }

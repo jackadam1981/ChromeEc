@@ -9,6 +9,8 @@
 #include "task.h"
 #include "test_util.h"
 
+#include <stdlib.h>
+
 test_static int false_assertion()
 {
 	assert(1 == 0);
@@ -17,7 +19,7 @@ test_static int false_assertion()
 
 test_static int test_panic_data(void)
 {
-	const uint32_t expected_reason = PANIC_SW_EXIT;
+	const uint32_t expected_reason = PANIC_SW_ASSERT;
 	/* Note: The task_id can be found with the "taskinfo" command. */
 	const uint32_t expected_task_id = 5;
 	const uint8_t expected_exception = 0;
