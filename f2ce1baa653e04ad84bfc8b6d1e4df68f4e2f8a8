@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56a76835_e3e5d863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-03T18:05:29Z",
+      "side": 1,
+      "message": "\u003e sent out the CL for the stale keys, about this change, shouldn\u0027t this be BIT(BOOT_KEY_POWER) | BIT(BOOT_KEY_REFRESH)?\n\nThat\u0027s the old UI. The new UI requires no other keys to be pressed (including the power button). The doc is being updated (https://issuetracker.google.com/351706860).",
+      "parentUuid": "30d60c7a_9ad114d5",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f346fc91_9bcfd8ab",
         "filename": "common/battery.c",
         "patchSetId": 3
