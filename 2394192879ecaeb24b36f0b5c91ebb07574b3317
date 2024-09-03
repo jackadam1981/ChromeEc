@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "331a4b29_08995a6f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2228,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-03T20:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70603622_18d79cb2",
+      "range": {
+        "startLine": 2228,
+        "startChar": 29,
+        "endLine": 2228,
+        "endChar": 50
+      },
+      "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f80c781a_332429be",
@@ -94,6 +118,24 @@
       "writtenOn": "2024-08-29T20:14:20Z",
       "side": 1,
       "message": "@asemjonovs@google.com I increased this to give the debounce code time to stabilize and call the real hook. But it doesn\u0027t seem sufficient. It may be that I calculated the timeout incorrectly, or it may be that some extra synchronization step is needed in the test now that the effect of the hook is delayed.",
+      "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d930b7c_05af5a05",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-03T20:42:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "60f83de7_fdeaeca8",
       "revId": "2394192879ecaeb24b36f0b5c91ebb07574b3317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
