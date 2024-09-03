@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "46335a80_a44b74d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-03T17:57:47Z",
+      "side": 1,
+      "message": "I added notes to the bug: https://b.corp.google.com/issues/361855883?pli\u003d1\u0026authuser\u003d0\n\nIf I modify `CMAKE_C_FLAGS` from that file, it will override the toolchain flags.",
+      "parentUuid": "93106184_4d1440dc",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "c9cf08764e0cb539e4c5fdf42770c43c6cdc599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "56163361_668c684a",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-09-03T17:53:09Z",
       "side": 1,
       "message": "reduce",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "c9cf08764e0cb539e4c5fdf42770c43c6cdc599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb27431_6514683a",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-03T17:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275c0561_90faf220",
       "range": {
         "startLine": 64,
         "startChar": 2,
