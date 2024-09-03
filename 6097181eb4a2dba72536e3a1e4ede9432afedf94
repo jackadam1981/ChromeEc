@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f992d479_85c0ebd4",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-03T23:34:47Z",
+      "side": 1,
+      "message": "Out of scope: TIL that it makes sense to call this function when the partner is already connected to update the connector status. Maybe the function should have a different name.",
+      "revId": "6097181eb4a2dba72536e3a1e4ede9432afedf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
