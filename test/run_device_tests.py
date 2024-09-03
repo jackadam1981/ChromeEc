@@ -305,6 +305,14 @@ class AllTests:
             # Cryptoc is not supported with Zephyr.
             # TODO(b/333039464) A new test for OPENSSL_cleanse has to be implemented.
             TestConfig(test_name="always_memset", skip_for_zephyr=True),
+            TestConfig(
+                test_name="assert_builtin",
+                exclude_boards=[DARTMONKEY, HELIPILOT],
+            ),
+            TestConfig(
+                test_name="assert_stdlib",
+                exclude_boards=[DARTMONKEY, HELIPILOT],
+            ),
             TestConfig(test_name="benchmark"),
             TestConfig(test_name="boringssl_crypto"),
             TestConfig(test_name="cortexm_fpu"),
