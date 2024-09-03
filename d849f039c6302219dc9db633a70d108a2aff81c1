@@ -16,6 +16,24 @@
       "message": "Looks reasonable to me as long as the previously latched behavior is important to some use case.  Deferring to EC eng for approval.",
       "revId": "d849f039c6302219dc9db633a70d108a2aff81c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7ff1c3_bd584957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-03T16:22:17Z",
+      "side": 1,
+      "message": "It should be alright to track the keys all the time, I forgot the exact reason why I originally implemented it like that but I think it was more like a \"sounded like a good idea\" at the time, manly drive by the fact that I missed the fact that \"boot\" keys are used by code that runs well past the boot time of the device.",
+      "parentUuid": "7f4def38_0a841d53",
+      "revId": "d849f039c6302219dc9db633a70d108a2aff81c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
