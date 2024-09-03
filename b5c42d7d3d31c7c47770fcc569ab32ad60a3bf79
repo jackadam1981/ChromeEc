@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ae7e6f_b1471bcb",
+        "filename": "zephyr/test/lid_angle_common/include/chipset.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-03T14:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eced33a_9c46fbf0",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f12aa944_32edbb4d",
@@ -179,6 +203,30 @@
       "writtenOn": "2024-08-29T20:29:54Z",
       "side": 1,
       "message": "Delete - this isn\u0027t testing any code that runs on a board.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bb5c2b_4a960ef1",
+        "filename": "zephyr/test/lid_angle_common/test_test_build.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-03T14:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f12aa944_32edbb4d",
       "range": {
         "startLine": 1,
         "startChar": 0,
