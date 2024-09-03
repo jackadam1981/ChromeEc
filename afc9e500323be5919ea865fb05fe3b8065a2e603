@@ -16,6 +16,23 @@
       "message": "I still need to test against a brox device.",
       "revId": "afc9e500323be5919ea865fb05fe3b8065a2e603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "754447fe_985a0788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2024-09-03T18:13:20Z",
+      "side": 1,
+      "message": "We need to drive RSMRST low still - we should just do it after DSW_PWROK on power-down.",
+      "revId": "afc9e500323be5919ea865fb05fe3b8065a2e603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
