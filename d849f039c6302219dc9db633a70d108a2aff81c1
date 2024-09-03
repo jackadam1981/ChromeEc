@@ -51,6 +51,24 @@
       "message": "Which test tests the release-then-clear case?",
       "revId": "d849f039c6302219dc9db633a70d108a2aff81c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913a5045_30d9e62e",
+        "filename": "zephyr/test/boot_keys/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-03T18:27:57Z",
+      "side": 1,
+      "message": "good point, there was none, added one",
+      "parentUuid": "5b7cfe5d_a2b9aaf4",
+      "revId": "d849f039c6302219dc9db633a70d108a2aff81c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
