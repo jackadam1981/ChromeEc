@@ -17,15 +17,41 @@
 #include "panic.h"
 #include "recursive_mutex.h"
 #include "shared_mem.h"
+#include "signal.h"
 #include "software_panic.h"
 #include "system.h"
 #include "task.h"
 #include "uart.h"
 
 #include <errno.h>
+#undef errno
+extern int errno;
+
+static int is_sigabrt = 0;
+
 #include <stdlib.h>
+#include <string.h>
 
 #include <sys/stat.h>
+
+/**
+ * Send a signal to a specified process identified by its process ID.
+ *
+ * This function is called from libc functions such as abort() and assert().
+ *
+ * @param pid  the process ID of the target process
+ * @param sig the signal to be sent to the target process
+ * @return 0 on success and -1 on error. The global variable errno is set to
+ * indicate the specific error
+ */
+int _kill(int pid, int sig)
+{
+	errno = ENOSYS;
+	if (sig == SIGABRT) {
+		is_sigabrt = 1;
+	}
+	return -1;
+}
 
 /**
  * Reboot the system.
@@ -37,7 +63,12 @@
 void _exit(int rc)
 {
 	panic_printf("%s called with rc: %d\n", __func__, rc);
-	software_panic(PANIC_SW_EXIT, task_get_current());
+	if (is_sigabrt) {
+		is_sigabrt = 0;
+		software_panic(PANIC_SW_ASSERT, task_get_current());
+	} else {
+		software_panic(PANIC_SW_EXIT, task_get_current());
+	}
 }
 
 /**
