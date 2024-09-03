@@ -347,6 +347,36 @@ ZTEST_USER(pdc_api, test_set_sink_path)
 	}
 }
 
+ZTEST_USER(pdc_api, test_get_current_pdo)
+{
+	uint32_t in = 0x01234567;
+	uint32_t out = 0;
+	int rv;
+
+	rv = emul_pdc_set_current_pdo(emul, in);
+	if (rv == -ENOSYS)
+		ztest_test_skip();
+	zassert_ok(rv);
+	zassert_ok(pdc_get_current_pdo(dev, &out));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_equal(in, out, "Got 0x%x, expected 0x%x", out, in);
+}
+
+ZTEST_USER(pdc_api, test_get_current_flash_bank)
+{
+	uint8_t in = 0;
+	uint8_t out = 0xff;
+	int rv;
+
+	rv = emul_pdc_set_current_flash_bank(emul, in);
+	if (rv == -ENOSYS)
+		ztest_test_skip();
+	zassert_ok(rv);
+	zassert_ok(pdc_get_current_flash_bank(dev, &out));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_equal(in, out, "Got 0x%x, expected 0x%x", out, in);
+}
+
 /* TODO(b/345292002): TPS6699x set_frs not implemented */
 #ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_set_frs)
@@ -365,8 +395,6 @@ ZTEST_USER(pdc_api, test_set_frs)
 }
 #endif
 
-/* TODO(b/345292002): TPS6699x pdc_reconnect not implemented */
-#ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_reconnect)
 {
 	uint8_t expected, val;
@@ -377,7 +405,6 @@ ZTEST_USER(pdc_api, test_reconnect)
 	zassert_ok(emul_pdc_get_reconnect_req(emul, &expected, &val));
 	zassert_equal(expected, val);
 }
-#endif
 
 /**
  * @brief Clears the cached PDC FW info struct inside the driver.
