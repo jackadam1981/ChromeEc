@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30d60c7a_9ad114d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-03T16:16:59Z",
+      "side": 1,
+      "message": "hey Ben, was this to fix the sticky bootkey issue? I see it\u0027s tagged with b/362389623. If that\u0027s the case then it\u0027s a boot key driver issue, http://crrev.com/c/5829127 fixes that.",
+      "parentUuid": "23b2f663_4de0b420",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f346fc91_9bcfd8ab",
         "filename": "common/battery.c",
         "patchSetId": 3
