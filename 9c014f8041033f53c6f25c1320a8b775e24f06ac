@@ -16,6 +16,24 @@
       "message": "Could you confirm you can build sundance successfully with this change?",
       "revId": "9c014f8041033f53c6f25c1320a8b775e24f06ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef3dca5_675eacdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-03T03:03:05Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/program/nissa/sundance/overlay.dtsi#358 I can see it\u0027s still referenced here",
+      "parentUuid": "fbbc5baf_c5936f41",
+      "revId": "9c014f8041033f53c6f25c1320a8b775e24f06ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
