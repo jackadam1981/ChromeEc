@@ -9,6 +9,8 @@
 #include "task.h"
 #include "test_util.h"
 
+#include <stdlib.h>
+
 test_static int false_assertion()
 {
 	assert(1 == 0);
@@ -17,9 +19,15 @@ test_static int false_assertion()
 
 test_static int test_panic_data(void)
 {
-	const uint32_t expected_reason = PANIC_SW_EXIT;
-	/* Note: The task_id can be found with the "taskinfo" command. */
-	const uint32_t expected_task_id = 5;
+	const uint32_t expected_reason = PANIC_SW_ASSERT;
+	/*
+	 * The value of expected_info can be calculated as shown below.
+	 * char fname[] = "test/assert_builtin.cc";
+	 * int linenum = 14;
+	 * int expected_info = (fname[0] << 24) | (fname[1] << 16) | (linenum &
+	 * 0xffff);
+	 */
+	const uint32_t expected_task_id = 1952776208;
 	const uint8_t expected_exception = 0;
 
 	uint32_t reason = 0;
