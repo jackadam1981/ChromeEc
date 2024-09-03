@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8a8c76_73b5146b",
+        "filename": "common/lid_angle_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-03T07:28:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00290743_7d4f981a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15d9bfa8_bd3e9035",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-08-29T20:29:54Z",
       "side": 1,
       "message": "We don\u0027t need coverage for the TEST_BUILD code.  You can drop this.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "b5c42d7d3d31c7c47770fcc569ab32ad60a3bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adca9d7c_e8ba2f73",
+        "filename": "zephyr/test/lid_angle_common/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-03T07:28:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15d9bfa8_bd3e9035",
       "range": {
         "startLine": 16,
         "startChar": 0,
