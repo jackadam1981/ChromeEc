@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23b2f663_4de0b420",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-03T11:14:44Z",
+      "side": 1,
+      "message": "sent out the CL for the stale keys, about this change, shouldn\u0027t this be `BIT(BOOT_KEY_POWER) | BIT(BOOT_KEY_REFRESH)`? https://support.google.com/chrome/a/answer/9139543 is pretty clear that both keys should be held pressed for the cutoff to kick in",
+      "parentUuid": "33f04479_e24a0a45",
+      "revId": "f2ce1baa653e04ad84bfc8b6d1e4df68f4e2f8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f346fc91_9bcfd8ab",
         "filename": "common/battery.c",
         "patchSetId": 3
