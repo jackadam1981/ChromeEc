@@ -105,6 +105,24 @@
       "parentUuid": "020bda34_d11c40c5",
       "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73823b68_208f801d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-03T20:50:29Z",
+      "side": 1,
+      "message": "Ahh, I see.\n\n\u003e However, this requires a change from the boringssl team:\n\nHmm. It looks like this `C_CXX_FLAGS` is simply a local/internal variable used in that one part of their cmake script to [apply options to C and C++ compilers equally](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/CMakeLists.txt;l\u003d163-164;drc\u003ddfcaaddcb9229d309fc5eecda5e03e7cca5578e5). I wouldn\u0027t think that they would want to export that as an API to add args. The var `C_CXX_FLAGS` doesn\u0027t seem to be a known patterned variable.\n\nAppending to `CMAKE_CXX_FLAGS` and `CMAKE_C_FLAGS` makes sense, but I don\u0027t see how/why that would \"override all the compiler flags that we are passing.\"",
+      "parentUuid": "047742d6_0bc6442f",
+      "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
