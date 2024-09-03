@@ -37,7 +37,7 @@
 void _exit(int rc)
 {
 	panic_printf("%s called with rc: %d\n", __func__, rc);
-	software_panic(PANIC_SW_EXIT, task_get_current());
+	software_panic(PANIC_SW_ASSERT, task_get_current());
 }
 
 /**
