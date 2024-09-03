@@ -316,8 +316,8 @@ class AllTests:
             TestConfig(
                 test_name="assert_stdlib",
                 fail_regexes=[
+                    SINGLE_CHECK_FAILED_REGEX,
                     ALL_TESTS_FAILED_REGEX,
-                    ASSERTION_FAILURE_REGEX,
                 ],
             ),
             TestConfig(test_name="benchmark"),

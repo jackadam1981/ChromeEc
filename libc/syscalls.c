@@ -23,9 +23,35 @@
 #include "uart.h"
 
 #include <errno.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <sys/stat.h>
+
+static bool is_assert;
+static uint32_t info;
+
+/**
+ * The function called when assertion fails.
+ *
+ * This function is called from libc functions such as abort() and ASSERT().
+ *
+ * @param file  the file name from where the failed assertion was called
+ * @param line the line at which the failed assertion was called
+ * @param function the function from which the failed assertion was called
+ * @param expression the failed expression
+ */
+void __assert_func(const char *file, int line, const char *function,
+		   const char *expr)
+{
+	fprintf(stderr,
+		"ASSERTION FAILURE: %s in function %s, at file %s, :line %u.\n",
+		expr, function, file, line);
+	info = (file[0] << 24) | (file[1] << 16) | (line & 0xffff);
+	is_assert = true;
+
+	abort();
+}
 
 /**
  * Reboot the system.
@@ -37,7 +63,12 @@
 void _exit(int rc)
 {
 	panic_printf("%s called with rc: %d\n", __func__, rc);
-	software_panic(PANIC_SW_EXIT, task_get_current());
+	if (is_assert) {
+		is_assert = false;
+		software_panic(PANIC_SW_ASSERT, info);
+	} else {
+		software_panic(PANIC_SW_EXIT, task_get_current());
+	}
 }
 
 /**
