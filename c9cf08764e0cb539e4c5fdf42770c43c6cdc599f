@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "93106184_4d1440dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-03T17:53:09Z",
+      "side": 1,
+      "message": "Why is that?",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "c9cf08764e0cb539e4c5fdf42770c43c6cdc599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "56163361_668c684a",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-09-03T17:41:56Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "c9cf08764e0cb539e4c5fdf42770c43c6cdc599f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275c0561_90faf220",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-03T17:53:09Z",
+      "side": 1,
+      "message": "reduce",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 8
+      },
       "revId": "c9cf08764e0cb539e4c5fdf42770c43c6cdc599f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
