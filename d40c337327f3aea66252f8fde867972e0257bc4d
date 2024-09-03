@@ -51,6 +51,24 @@
       "parentUuid": "ea544e62_44efac2a",
       "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555c63ea_69de5ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-03T18:18:01Z",
+      "side": 1,
+      "message": "it is possible if the boringssl team gives us access to modifying the `C_CXX_FLAGS` externally. Currently this is an internal flag. Any changes that we make to `CMAKE_C_FLAGS` is overriding out toolchain input. I am open to discussion.",
+      "parentUuid": "ea544e62_44efac2a",
+      "revId": "d40c337327f3aea66252f8fde867972e0257bc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
