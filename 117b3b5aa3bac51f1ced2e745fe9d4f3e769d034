@@ -16,6 +16,93 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509f0ab5_dffaa90e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8770,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-03T16:47:16Z",
+      "side": 1,
+      "message": "You cannot do something like: root_dict \u003d identifier_in_json? A match is already found. So it\u0027s redundant to call FindDict, isn\u0027t it?",
+      "range": {
+        "startLine": 8770,
+        "startChar": 3,
+        "endLine": 8770,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "33f1b31a_2933ac00",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 8770,
+                "startChar": 0,
+                "endLine": 8771,
+                "endChar": 0
+              },
+              "replacement": "\t\t\troot_dict \u003d \u0026identifier_in_json.second;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02737663_3e6998a1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8777,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-03T16:47:16Z",
+      "side": 1,
+      "message": "How about the following?\n\n    \"no configs found for \u0027%s,%s\u0027 in %s\\n\",\n    manuf_name, device_name, json_file\n\nManuf name should be also printed because it is also part of ID.",
+      "range": {
+        "startLine": 8777,
+        "startChar": 24,
+        "endLine": 8777,
+        "endChar": 52
+      },
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43105573_2f849774",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8783,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-03T16:47:16Z",
+      "side": 1,
+      "message": "How about the following?\n\n    \"Multiple (%d) configs found for \u0027%s,%s\u0027 in %s\\n\", \n    num_matches, manuf_name, device_name, json_file",
+      "range": {
+        "startLine": 8783,
+        "startChar": 3,
+        "endLine": 8783,
+        "endChar": 66
+      },
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
