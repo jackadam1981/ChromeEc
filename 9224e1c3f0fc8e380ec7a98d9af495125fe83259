@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251497ea_04c7c25d",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-04T00:08:19Z",
+      "side": 1,
+      "message": "can this file be symbolic link too?",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ae0b3b_233d8ab7",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/i2c.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-04T00:08:19Z",
+      "side": 1,
+      "message": "how about removing it, as above comment has the details",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d2efa5_a47aea39",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/i2c.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-04T00:08:19Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83052c4_629405a2",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-04T00:08:19Z",
+      "side": 1,
+      "message": "try check some of these can be common to all EC vendors and separate them and keep in ptlrvp",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903605a7_c50f2c2f",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/ptlrvp_mchp.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-04T00:08:19Z",
+      "side": 1,
+      "message": "check below code can be common code for all EC vendors",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
