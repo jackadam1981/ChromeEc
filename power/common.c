@@ -1020,26 +1020,18 @@ host_command_hibernation_delay(struct host_cmd_handler_args *args)
 	const struct ec_params_hibernation_delay *p = args->params;
 	struct ec_response_hibernation_delay *r = args->response;
 
-	uint32_t time_g3;
-	uint64_t t = get_time().val - last_shutdown_time;
-
-	uint64divmod(&t, SECOND);
-	time_g3 = (uint32_t)t;
-
 	/* Only change the hibernation delay if seconds is non-zero. */
 	if (p->seconds)
 		hibernate_delay = p->seconds;
 
-	if (state == POWER_G3 && !extpower_is_present())
-		r->time_g3 = time_g3;
-	else
-		r->time_g3 = 0;
-
-	if ((time_g3 != 0) && (time_g3 > hibernate_delay))
-		r->time_remaining = 0;
-	else
-		r->time_remaining = hibernate_delay - time_g3;
 	r->hibernate_delay = hibernate_delay;
+	/*
+	 * It makes no sense to try and set these values since
+	 * they are only valid when the AP is in G3 (so this
+	 * host command will never be called at that point).
+	 */
+	r->time_g3 = 0;
+	r->time_remaining = 0;
 
 	args->response_size = sizeof(struct ec_response_hibernation_delay);
 	return EC_RES_SUCCESS;
