@@ -34,6 +34,24 @@
       "parentUuid": "23525533_b669e8f5",
       "revId": "78421f4100961111543fc4e5eaf3f52e8d632920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb04c495_efaab81e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-04T04:36:23Z",
+      "side": 1,
+      "message": "resolved with this change:\n```\n            TestConfig(\n                test_name\u003d\"assert_builtin\",\n                fail_regexes\u003d[\n                    SINGLE_CHECK_FAILED_REGEX,\n                    ALL_TESTS_FAILED_REGEX,\n                ],\n                exclude_boards\u003d[DARTMONKEY, HELIPILOT],\n            ),\n```",
+      "parentUuid": "e74f314c_b3332e8c",
+      "revId": "78421f4100961111543fc4e5eaf3f52e8d632920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
