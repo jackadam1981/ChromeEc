@@ -22,6 +22,30 @@
       },
       "revId": "37ac89ac0acaa20bbcef8acfa4cea087a9d2401f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967f1cbe_f2df1d43",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1295075
+      },
+      "writtenOn": "2024-09-04T02:54:04Z",
+      "side": 1,
+      "message": "Oh, you\u0027re right. How about moving pd_transmit_complete() into each case? Or re-name to other better name?\n`\nex.\n\tswitch (type) {\n\tcase TCPCI_MSG_SOP:\n\tcase TCPCI_MSG_SOP_PRIME:\n\tcase TCPCI_MSG_SOP_PRIME_PRIME:\n\tcase TCPCI_MSG_SOP_DEBUG_PRIME:\n\tcase TCPCI_MSG_SOP_DEBUG_PRIME_PRIME:\n\t\tstatus \u003d it8xxx2_tx_data(port, type, header, data);\n\t\tif (status !\u003d TCPC_TX_COMPLETE_SUCCESS) {\n\t\t    pd_transmit_complete(port, status);\n\t\t}\n\t\tbreak;\n\tcase TCPCI_MSG_TX_BIST_MODE_2:\n\t\tit8xxx2_send_bist_mode2_pattern(port);\n\t\tstatus \u003d TCPC_TX_COMPLETE_SUCCESS;\n\t\tpd_transmit_complete(port, status);\n\t\tbreak;\n\tcase TCPCI_MSG_TX_HARD_RESET:\n\t\tstatus \u003d it8xxx2_send_hw_reset(port);\n\t\tpd_transmit_complete(port, status);\n\t\tbreak;\n\tcase TCPCI_MSG_CABLE_RESET:\n\t\tstatus \u003d it8xxx2_send_cable_reset(port);\n\t\tpd_transmit_complete(port, status);\n\t\tbreak;\n\tdefault:\n\t\tstatus \u003d TCPC_TX_COMPLETE_FAILED;\n\t\tpd_transmit_complete(port, status);\n\t\tbreak;\n\t}\n`",
+      "parentUuid": "d974626e_cdc97a94",
+      "range": {
+        "startLine": 697,
+        "startChar": 5,
+        "endLine": 697,
+        "endChar": 22
+      },
+      "revId": "37ac89ac0acaa20bbcef8acfa4cea087a9d2401f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
