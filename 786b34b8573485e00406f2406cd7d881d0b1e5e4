@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ee25a9_b89501e2",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "Nit - help text body is supposed to have 1 hard tab followed by 2 space indent.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde7e373_3493d074",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "The option name says \"remote\", but the prompt text says \"local\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb48989_cce45bce",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "Align to first line.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ec5519_eeed3206",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c013b6_13687a7c",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.service",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "Fix indentation of help body for all options.",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88063244_e918b026",
+        "filename": "zephyr/drivers/dsp_comms/proto/ec_ish.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "Should the filename be `ec_dsp.proto`?",
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb027734_096c693b",
+        "filename": "zephyr/drivers/dsp_comms/proto/ec_ish.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T15:56:43Z",
+      "side": 1,
+      "message": "You should comment the source of truth for these values.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
