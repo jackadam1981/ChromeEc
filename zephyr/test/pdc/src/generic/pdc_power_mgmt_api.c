@@ -27,8 +27,10 @@ LOG_MODULE_REGISTER(pdc_power_mgmt_api, LOG_LEVEL_INF);
 #else
 #define PDC_TEST_TIMEOUT 2000
 #endif
-/* Time needed for chipset power to stabilize */
-#define PDC_POWER_STABLE_TIMEOUT (PDC_TEST_TIMEOUT * 2)
+/* Time needed for chipset power to stabilize
+ * (PDC_POWER_STATE_DEBOUNCE_S * 2) defined in pdc_power_mgmt.c
+ */
+#define PDC_POWER_STABLE_TIMEOUT (4000)
 #define RTS5453P_NODE DT_NODELABEL(pdc_emul1)
 
 static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
@@ -299,6 +301,9 @@ static void run_toggle_test(union connector_status_t *connector_status)
 	struct pdc_info_t pdc_info;
 	struct k_thread test_thread_data;
 	int ret;
+
+	/* Slow down driver response to give -EBUSY response */
+	emul_pdc_set_response_delay(emul, 20);
 
 	LOG_INF("Emul PDC disconnect partner");
 	emul_pdc_disconnect(emul);
@@ -957,7 +962,6 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_vbus_voltage)
 	zassert_equal(expected_voltage_mv,
 		      pdc_power_mgmt_get_vbus_voltage(TEST_PORT));
 
-	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 	zassert_true(TEST_WAIT_FOR(
 		next_expected_voltage_mv ==
 			pdc_power_mgmt_get_vbus_voltage(TEST_PORT),
@@ -975,7 +979,6 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_vbus_voltage)
 	emul_pdc_pulse_irq(emul);
 	k_msleep(TEST_WAIT_FOR_INTERVAL_MS);
 
-	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 	zassert_equal(next_expected_voltage_mv,
 		      pdc_power_mgmt_get_vbus_voltage(TEST_PORT));
 
@@ -1298,13 +1301,13 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_startup)
 		zassert_ok(emul_pdc_get_ccom(emul, &ccom),
 			   "Invalid CCOM value in emul");
 
-		if (ccom != CCOM_RD)
+		if (ccom != CCOM_DRP)
 			continue;
 
 		break;
 	}
 
-	zassert_equal(CCOM_RD, ccom);
+	zassert_equal(CCOM_DRP, ccom);
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_chipset_shutdown)
