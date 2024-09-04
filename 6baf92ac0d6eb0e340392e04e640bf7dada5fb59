@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f306f743_840c8de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-04T16:24:05Z",
+      "side": 1,
+      "message": "Just a thought: If most of these filters are only being triggered by isolated sections of the code, could you exclude a small set of directories and then turn on more filters? This would be a balancing act, because I\u0027d like the bad code to get better without the good code getting worse.",
+      "revId": "6baf92ac0d6eb0e340392e04e640bf7dada5fb59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
