@@ -16,6 +16,23 @@
       "message": "The driver doesn\u0027t explicitly follow the PPM/OPM modal, but tries to adhere to the rest of the UCSI specification, and cci.connector_change should be set as specified in the spec.",
       "revId": "6781ef920c5850f15b3af615f61d1e85167c31ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5427a8cc_315da5c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T20:25:58Z",
+      "side": 1,
+      "message": "Is this change still needed?",
+      "revId": "6781ef920c5850f15b3af615f61d1e85167c31ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
