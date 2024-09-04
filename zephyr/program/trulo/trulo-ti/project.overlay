@@ -11,17 +11,18 @@
 #include "../trulo.dtsi"
 #include "../usba.dtsi"
 
+
 /* Trulo project DTS includes*/
-#include "battery.dtsi"
-#include "cbi.dtsi"
-#include "gpio.dtsi"
-#include "i2c.dtsi"
-#include "fan.dtsi"
-#include "keyboard.dtsi"
-#include "led_pins.dtsi"
-#include "led_policy.dtsi"
-#include "temp_sensors.dtsi"
-#include "usb_typec.dtsi"
+#include "../trulo/battery.dtsi"
+#include "../trulo/cbi.dtsi"
+#include "../trulo/gpio.dtsi"
+#include "../trulo/i2c.dtsi"
+#include "../trulo/fan.dtsi"
+#include "../trulo/keyboard.dtsi"
+#include "../trulo/led_pins.dtsi"
+#include "../trulo/led_policy.dtsi"
+#include "../trulo/temp_sensors.dtsi"
+#include "../trulo/usb_typec.dtsi"
 
 /* Trulo overrides follow... */
 
@@ -35,5 +36,18 @@
 	 */
 	mul = <(791261 / 2)>;
 	div = <(651975 / 2)>;
+};
+
+/delete-node/ &pdc_power_p0;
+
+&i2c3_0 {
+	label = "I2C_PORT_PD";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+
+	pdc_power_p0: tps6699-pdc@20 {
+		compatible = "ti,tps6699-pdc";
+		reg = <0x20>;
+		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+	};
 };
 
