@@ -13,6 +13,7 @@
 
 /* Cache SSFC on init since we don't expect it to change in runtime */
 static union dedede_cbi_ssfc cached_ssfc;
+static uint32_t cached_fw_config;
 BUILD_ASSERT(sizeof(cached_ssfc) == sizeof(uint32_t));
 
 static void cbi_ssfc_init(void)
@@ -22,6 +23,12 @@ static void cbi_ssfc_init(void)
 		cached_ssfc.raw_value = 0;
 
 	CPRINTS("Read CBI SSFC : 0x%04X", cached_ssfc.raw_value);
+
+	if (cbi_get_fw_config(&cached_fw_config) != EC_SUCCESS)
+		/* Default to 0 when CBI isn't populated */
+		cached_fw_config = 0;
+
+	CPRINTS("FW_CONFIG: 0x%04X", cached_fw_config);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_FIRST);
 
@@ -33,4 +40,10 @@ enum ec_ssfc_base_sensor get_cbi_ssfc_base_sensor(void)
 enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void)
 {
 	return (enum ec_ssfc_lid_sensor)cached_ssfc.lid_sensor;
+}
+
+enum fw_config_tcpc get_cbi_fw_config_tcpc(void)
+{
+	return ((cached_fw_config & FW_CONFIG_TCPC_MASK) >>
+		FW_CONFIG_TCPC_OFFSET);
 }

@@ -59,3 +59,8 @@ int pd_set_power_supply_ready(int port)
 
 	return EC_SUCCESS;
 }
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	return raa48900_check_vbus_level(port, level);
+}

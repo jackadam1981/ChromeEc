@@ -43,6 +43,16 @@ union dedede_cbi_ssfc {
 	uint32_t raw_value;
 };
 
+/*
+ * Daughter Board (Bits 0)
+ */
+enum fw_config_tcpc {
+	TCPC_RAA48900 = 0,
+	ITE8320 = 1,
+};
+#define FW_CONFIG_TCPC_OFFSET 31
+#define FW_CONFIG_TCPC_MASK GENMASK(31, 31)
+
 /**
  * Get the Base sensor type from SSFC_CONFIG.
  *
@@ -56,5 +66,12 @@ enum ec_ssfc_base_sensor get_cbi_ssfc_base_sensor(void);
  * @return the Lid sensor board type.
  */
 enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void);
+
+/**
+ * Get the TCPC type from FW_CONFIG.
+ *
+ * @return the TCPC board type.
+ */
+enum fw_config_tcpc get_cbi_fw_config_tcpc(void);
 
 #endif /* _DEDEDE_CBI_SSFC__H_ */
