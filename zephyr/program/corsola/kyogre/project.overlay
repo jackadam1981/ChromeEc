@@ -172,7 +172,7 @@
 		/delete-property/ sensor-irqs;
 
 		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&lid_accel &base_accel>;
+		accel-force-mode-sensors = <&lid_accel &base_accel &base_gyro>;
 	};
 
 	/* Rotation matrix used by drivers. */
