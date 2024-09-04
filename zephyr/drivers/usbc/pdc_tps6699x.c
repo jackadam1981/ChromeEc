@@ -30,12 +30,24 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
 /** @brief maximum number of PDOs */
 #define MAX_PDOS 7
+
 /** @brief PDC IRQ EVENT bit */
 #define PDC_IRQ_EVENT BIT(0)
 /** @brief PDC COMMAND EVENT bit */
 #define PDC_CMD_EVENT BIT(1)
 /** @brief Requests the driver to enter the suspended state */
 #define PDC_CMD_SUSPEND_REQUEST_EVENT BIT(2)
+/** @brief Trigger internal event to wake up (or keep awake) thread to handle
+ *         requests */
+#define PDC_INTERNAL_EVENT BIT(3)
+/** @brief Trigger thread to send command complete back to
+ *         PDC Power Mgmt thread */
+#define PDC_CMD_COMPLETE_EVENT BIT(4)
+/** @brief Bit mask of all PDC events */
+#define PDC_ALL_EVENTS BIT_MASK(5)
+
+/** @brief Time between checking TI CMDx register for data ready */
+#define PDC_TI_DATA_READY_TIME_MS (10)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -235,6 +247,10 @@ struct pdc_data_t {
 	union get_vdo_t vdo_req;
 	/* PDC event: Interrupt or Command */
 	struct k_event pdc_event;
+	/* Events to be processed */
+	uint32_t events;
+	/* Deferred handler to trigger event to check if data is ready */
+	struct k_work_delayable data_ready;
 	/* Should use cached connector status change bits */
 	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
@@ -425,6 +441,7 @@ static void st_irq_run(void *o)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void st_init_entry(void *o)
@@ -452,6 +469,7 @@ static void st_init_run(void *o)
 		LOG_ERR("DR%d: Cannot obtain initial chip info (%d)",
 			cfg->connector_number, rv);
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
@@ -498,13 +516,7 @@ static void st_idle_entry(void *o)
 static void st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
-	uint32_t events;
-
-	/* Wait for interrupt or a command to send */
-	events = k_event_wait(&data->pdc_event,
-			      (PDC_IRQ_EVENT | PDC_CMD_EVENT |
-			       PDC_CMD_SUSPEND_REQUEST_EVENT),
-			      false, K_FOREVER);
+	uint32_t events = data->events;
 
 	if (check_comms_suspended()) {
 		/* Do not start executing commands or processing IRQs if
@@ -514,11 +526,15 @@ static void st_idle_run(void *o)
 		set_state(data, ST_SUSPENDED);
 		return;
 	}
-
-	if (events & PDC_IRQ_EVENT) {
+	if (events & PDC_CMD_COMPLETE_EVENT) {
+		k_event_clear(&data->pdc_event, PDC_CMD_COMPLETE_EVENT);
+		data->cci_event.command_completed = 1;
+		call_cci_event_cb(data);
+	} else if (events & PDC_IRQ_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_IRQ_EVENT);
 		/* Handle interrupt */
 		set_state(data, ST_IRQ);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	} else if (events & PDC_CMD_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_CMD_EVENT);
@@ -673,6 +689,8 @@ static void st_suspended_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
+	k_event_clear(&data->pdc_event, PDC_CMD_SUSPEND_REQUEST_EVENT);
+
 	/* Stay here while suspended */
 	if (check_comms_suspended()) {
 		return;
@@ -693,6 +711,7 @@ static void cmd_set_drp_mode(struct pdc_data_t *data)
 	if (rv) {
 		LOG_ERR("Read port configuration failed");
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
@@ -714,6 +733,7 @@ static void cmd_set_drp_mode(struct pdc_data_t *data)
 	if (rv) {
 		LOG_ERR("Write port configuration failed");
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
@@ -760,6 +780,7 @@ static void cmd_set_tpc_rp(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_set_src_pdos(struct pdc_data_t *data)
@@ -803,6 +824,7 @@ static void cmd_set_src_pdos(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_set_snk_pdos(struct pdc_data_t *data)
@@ -846,6 +868,7 @@ static void cmd_set_snk_pdos(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_get_rdo(struct pdc_data_t *data)
@@ -880,6 +903,7 @@ static void cmd_get_rdo(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_set_rdo(struct pdc_data_t *data)
@@ -926,6 +950,7 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_get_vdo(struct pdc_data_t *data)
@@ -982,6 +1007,7 @@ static void cmd_get_vdo(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_get_identity_discovery(struct pdc_data_t *data)
@@ -1025,6 +1051,7 @@ static void cmd_get_identity_discovery(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 /**
@@ -1142,6 +1169,7 @@ static void cmd_get_ic_status(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_get_vbus_voltage(struct pdc_data_t *data)
@@ -1176,6 +1204,7 @@ static void cmd_get_vbus_voltage(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data)
@@ -1213,6 +1242,7 @@ static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static int write_task_cmd(struct pdc_config_t const *cfg,
@@ -1243,10 +1273,12 @@ static void task_gaid(struct pdc_data_t *data)
 	rv = write_task_cmd(cfg, COMMAND_TASK_GAID, NULL);
 	if (rv) {
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
 	set_state(data, ST_TASK_WAIT);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 	return;
 }
 
@@ -1293,10 +1325,12 @@ static void task_srdy(struct pdc_data_t *data)
 
 	/* Transition to wait state */
 	set_state(data, ST_TASK_WAIT);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 	return;
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void task_dbfg(struct pdc_data_t *data)
@@ -1307,10 +1341,12 @@ static void task_dbfg(struct pdc_data_t *data)
 	rv = write_task_cmd(cfg, COMMAND_TASK_DBFG, NULL);
 	if (rv) {
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
 	set_state(data, ST_TASK_WAIT);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 	return;
 }
 
@@ -1322,10 +1358,12 @@ static void task_aneg(struct pdc_data_t *data)
 	rv = write_task_cmd(cfg, COMMAND_TASK_ANEG, NULL);
 	if (rv) {
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
 	set_state(data, ST_TASK_WAIT);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 	return;
 }
 
@@ -1401,11 +1439,14 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 	if (rv) {
 		LOG_ERR("Failed to write command");
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return;
 	}
 
 	/* Transition to wait state */
 	set_state(data, ST_TASK_WAIT);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
+
 	return;
 }
 
@@ -1421,6 +1462,8 @@ static void task_raw_ucsi(struct pdc_data_t *data)
 
 	/* Transition to wait state */
 	set_state(data, ST_TASK_WAIT);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
+
 	return;
 }
 
@@ -1429,6 +1472,15 @@ static void st_task_wait_entry(void *o)
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	print_current_state(data);
+}
+
+static void tps_check_data_ready(struct k_work *work)
+{
+	struct k_work_delayable *dwork = k_work_delayable_from_work(work);
+	struct pdc_data_t *data =
+		CONTAINER_OF(dwork, struct pdc_data_t, data_ready);
+
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 static void st_task_wait_run(void *o)
@@ -1455,6 +1507,10 @@ static void st_task_wait_run(void *o)
 	 *  2) command is set to "!CMD" for unknown command
 	 */
 	if (cmd.command && cmd.command != COMMAND_TASK_NO_COMMAND) {
+		LOG_INF("Data not ready, check again in %d ms",
+			PDC_TI_DATA_READY_TIME_MS);
+		k_work_reschedule(&data->data_ready,
+				  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
 		return;
 	}
 
@@ -1566,6 +1622,7 @@ static void st_task_wait_run(void *o)
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
 /* Populate state table */
@@ -1654,6 +1711,8 @@ static int tps_ack_cc_ci(const struct device *dev,
 		data->cached_conn_status.raw_conn_status_change_bits &=
 			~(ci.raw_value);
 	}
+
+	k_event_post(&data->pdc_event, PDC_CMD_COMPLETE_EVENT);
 
 	return 0;
 }
@@ -1965,6 +2024,7 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 		 * PDC driver is a no-op)
 		 */
 		enable_comms();
+		k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
 
 	} else {
 		/** Allow 3 seconds for the driver to suspend itself. */
@@ -2109,6 +2169,7 @@ static int pdc_exit_dead_battery(struct pdc_data_t *data)
 	if (rv) {
 		LOG_ERR("Read boot flags failed");
 		set_state(data, ST_ERROR_RECOVERY);
+		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 		return rv;
 	}
 
@@ -2149,6 +2210,7 @@ static int pdc_init(const struct device *dev)
 
 	k_event_init(&data->pdc_event);
 	k_mutex_init(&data->mtx);
+	k_work_init_delayable(&data->data_ready, tps_check_data_ready);
 
 	data->cmd = CMD_NONE;
 	data->dev = dev;
@@ -2222,13 +2284,20 @@ int tps_pdc_do_firmware_update(void)
 static void tps_thread(void *dev, void *unused1, void *unused2)
 {
 	struct pdc_data_t *data = ((const struct device *)dev)->data;
+	const struct pdc_config_t *cfg = ((const struct device *)dev)->config;
 
 	while (1) {
 		smf_run_state(SMF_CTX(data));
 		/* TODO(b/345783692): Consider waiting for an event with a
 		 * timeout to avoid high interrupt-handling latency.
 		 */
-		k_sleep(K_MSEC(50));
+		/* Wait for event to handle */
+		data->events = k_event_wait(&data->pdc_event, PDC_ALL_EVENTS,
+					    false, K_FOREVER);
+		LOG_INF("tps_thread[%d]: events=0x%X", cfg->connector_number,
+			data->events);
+
+		k_event_clear(&data->pdc_event, PDC_INTERNAL_EVENT);
 	}
 }
 
