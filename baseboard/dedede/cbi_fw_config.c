@@ -74,3 +74,8 @@ int get_cbi_fw_config_bc_support(void)
 	return ((cached_fw_config & FW_CONFIG_BC12_MASK) >>
 		FW_CONFIG_BC12_SUPPORT);
 }
+
+int get_cbi_fw_config_tcpc(void)
+{
+	return ((cached_fw_config & FW_CONFIG_TCPC_MASK) >> FW_CONFIG_TCPC_ALT);
+}

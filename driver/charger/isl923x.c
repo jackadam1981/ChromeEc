@@ -21,6 +21,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -1443,6 +1444,42 @@ static enum ec_error_list isl923x_get_vbus_voltage(int chgnum, int port,
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_CHARGER_RAA489000
+bool raa48900_check_vbus_level(int chgnum, enum vbus_level level)
+{
+	int rv, vbus_voltage;
+
+	/*
+	 * Analog reading of VBUS is more accurate and helps reliability when
+	 * doing power role swaps, but if the charger is in LPM with the GPADCs
+	 * disabled then the reading won't update.
+	 *
+	 * Digital VBUS presence (with transitions flagged by STATUS1_CHG_DET
+	 * interrupt) still works when GPADCs are off, and shouldn't otherwise
+	 * impact performance because the GPADCs should be enabled in any
+	 * situation where we're doing a PRS.
+	 */
+	rv = isl923x_get_vbus_voltage(chgnum, chgnum, &vbus_voltage);
+
+	if (rv == EC_SUCCESS) {
+		switch (level) {
+		case VBUS_PRESENT:
+			return vbus_voltage > PD_V_SAFE5V_MIN;
+		case VBUS_SAFE0V:
+			return vbus_voltage < PD_V_SAFE0V_MAX;
+		case VBUS_REMOVED:
+			return vbus_voltage < PD_V_SINK_DISCONNECT_MAX;
+		default:
+			CPRINTS("%s: unrecognized vbus_level value: %d",
+				__func__, level);
+			return false;
+		}
+	} else {
+		return false;
+	}
+}
+#endif
 
 #if defined(CONFIG_CHARGER_RAA489000) && defined(CONFIG_OCPC)
 static enum ec_error_list raa489000_enable_linear_charge(int chgnum,

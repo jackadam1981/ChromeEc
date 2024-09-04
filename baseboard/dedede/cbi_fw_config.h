@@ -91,6 +91,16 @@ enum fw_config_bc12 {
 #define FW_CONFIG_BC12_SUPPORT 20
 #define FW_CONFIG_BC12_MASK GENMASK(20, 20)
 
+/*
+ * TCPC(1 bit)
+ */
+enum fw_config_tcpc {
+	DEFAULT_TCPC = 0,
+	ALT_TCPC = 1,
+};
+#define FW_CONFIG_TCPC_ALT 31
+#define FW_CONFIG_TCPC_MASK GENMASK(31, 31)
+
 enum fw_config_db get_cbi_fw_config_db(void);
 enum fw_config_stylus get_cbi_fw_config_stylus(void);
 enum fw_config_kblight_type get_cbi_fw_config_kblight(void);
@@ -100,5 +110,6 @@ enum fw_config_hdmi_type get_cbi_fw_config_hdmi(void);
 
 int get_cbi_fw_config_keyboard(void);
 int get_cbi_fw_config_bc_support(void);
+int get_cbi_fw_config_tcpc(void);
 
 #endif /* _DEDEDE_CBI_FW_CONFIG__H_ */
