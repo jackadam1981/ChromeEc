@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19bd4f93_4cd85d0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T20:21:51Z",
+      "side": 1,
+      "message": "I see the WIP CL has a README and a diagram - but gittiles isn\u0027t rendering it.\n\nCan you upload the documentation separately?  It will make reviewing this easier if I know the end target.",
+      "revId": "4d3583b9daac1691d0ae625136ec1caecd4071be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649a3f0d_9a9d7321",
+        "filename": "zephyr/drivers/dsp_comms/service/include/cros/dsp/service/transport_state_machine.hh",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T20:21:51Z",
+      "side": 1,
+      "message": "Zephyr already provides a state machine.  Can you use that instead of creating a new one?\nhttps://docs.zephyrproject.org/latest/services/smf/index.html",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "4d3583b9daac1691d0ae625136ec1caecd4071be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752776cc_90186215",
+        "filename": "zephyr/drivers/dsp_comms/service/test_transport_state_machine.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-04T20:21:51Z",
+      "side": 1,
+      "message": "Does the test code need to live along side the real code?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "4d3583b9daac1691d0ae625136ec1caecd4071be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
