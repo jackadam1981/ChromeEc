@@ -16,6 +16,23 @@
       "message": "Still need to run TAST tests against this.",
       "revId": "d2964c8c1201ddff13b02411cffc064b0e444bff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5afea661_e3f71821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-09-04T04:35:07Z",
+      "side": 1,
+      "message": "Hi Keith, Lotso passed TAST-EC, reboot stress and suspend stress tests with this change.\nCould we merge the CL now? It’s currently blocking some stress tests.",
+      "revId": "d2964c8c1201ddff13b02411cffc064b0e444bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
