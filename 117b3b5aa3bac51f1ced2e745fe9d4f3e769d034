@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf30884c_d39755f4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8770,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-09-04T13:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bfd1436_99ec0bb7",
+      "range": {
+        "startLine": 8770,
+        "startChar": 3,
+        "endLine": 8770,
+        "endChar": 42
+      },
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02737663_3e6998a1",
@@ -106,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c863eaed_59335e05",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8777,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-09-04T13:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02737663_3e6998a1",
+      "range": {
+        "startLine": 8777,
+        "startChar": 24,
+        "endLine": 8777,
+        "endChar": 52
+      },
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43105573_2f849774",
@@ -119,6 +167,30 @@
       "writtenOn": "2024-09-03T16:47:16Z",
       "side": 1,
       "message": "How about the following?\n\n    \"Multiple (%d) configs found for \u0027%s,%s\u0027 in %s\\n\", \n    num_matches, manuf_name, device_name, json_file",
+      "range": {
+        "startLine": 8783,
+        "startChar": 3,
+        "endLine": 8783,
+        "endChar": 66
+      },
+      "revId": "117b3b5aa3bac51f1ced2e745fe9d4f3e769d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "805ed2ab_fca44d3c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 8783,
+      "author": {
+        "id": 1526258
+      },
+      "writtenOn": "2024-09-04T13:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43105573_2f849774",
       "range": {
         "startLine": 8783,
         "startChar": 3,
