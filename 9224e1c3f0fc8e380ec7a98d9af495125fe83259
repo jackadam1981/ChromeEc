@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "867911d0_39647bc6",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-09-04T17:35:23Z",
+      "side": 1,
+      "message": "sorry, I was deleting wrong node from native-sim.dts earlier. I deleted the correct node and now ioex_gpio.dtsi is symbolic link.",
+      "parentUuid": "5fdda7de_a7533d0c",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ae0b3b_233d8ab7",
