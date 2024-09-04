@@ -6,7 +6,7 @@
  */
 
 #include "battery.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_state.h"
 #include "charger_mt6370.h"
 #include "console.h"
@@ -235,7 +235,7 @@ int get_battery_manufacturer_name(char *dest, int size)
 	static const char *const name[] = {
 		[BATTERY_CPT] = "AS1XXXD3Ka",
 	};
-	ASSERT(dest);
+	assert(dest);
 	strzcpy(dest, name[BATT_ID], size);
 	return EC_SUCCESS;
 }

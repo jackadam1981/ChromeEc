@@ -12,7 +12,7 @@
 #include "adc.h"
 #include "atomic.h"
 #include "battery.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
@@ -845,7 +845,7 @@ static void charge_manager_refresh(void)
 		}
 
 		/* 'Dont charge' request must be accepted. */
-		ASSERT(new_port != CHARGE_PORT_NONE);
+		assert(new_port != CHARGE_PORT_NONE);
 
 		/*
 		 * The board rejected the offered port & supplier. Clear the
