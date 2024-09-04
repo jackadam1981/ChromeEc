@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d974626e_cdc97a94",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-09-04T00:05:05Z",
+      "side": 1,
+      "message": "The flag name is a little confused. It implies, for all other cases: BIST, HARD_RESET, CABLE_RESET, always reporting a failure?",
+      "range": {
+        "startLine": 697,
+        "startChar": 5,
+        "endLine": 697,
+        "endChar": 22
+      },
+      "revId": "37ac89ac0acaa20bbcef8acfa4cea087a9d2401f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
