@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "stdbool.h"
+#include "usb_pd_tcpm.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -84,6 +85,8 @@ void raa489000_check_ac_present(void);
 
 enum ec_error_list isl9238c_hibernate(int chgnum);
 enum ec_error_list isl9238c_resume(int chgnum);
+
+bool raa48900_check_vbus_level(int chgnum, enum vbus_level level);
 
 #ifdef __cplusplus
 }
