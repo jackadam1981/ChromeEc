@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "048d14f5_c3a5d79c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2491,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-04T01:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "778e8167_c3f6dfd3",
+      "range": {
+        "startLine": 2481,
+        "startChar": 0,
+        "endLine": 2491,
+        "endChar": 45
+      },
+      "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df53cfb_77f28b11",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90a23fb_8670e4cc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-04T01:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df53cfb_77f28b11",
+      "range": {
+        "startLine": 2558,
+        "startChar": 3,
+        "endLine": 2559,
+        "endChar": 44
+      },
+      "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aa23e98_1ffdcd7d",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-09-03T23:28:18Z",
       "side": 1,
       "message": "To make this easier to understand, can you\n1. define a new constant with this value and use that in the tests, and\n1. comment that constant to explain why it\u0027s longer?",
+      "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a781b0_939bb9fb",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-04T01:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa23e98_1ffdcd7d",
       "revId": "beda510d08ee1de11b75af35ee9e39fee39a914d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
