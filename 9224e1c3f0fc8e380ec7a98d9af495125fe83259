@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fdda7de_a7533d0c",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-09-04T16:24:34Z",
+      "side": 1,
+      "message": "ec-entering-rw node already in native-sim.dts. And we cannot delete that node coming from native-sim.dts",
+      "parentUuid": "251497ea_04c7c25d",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9ae0b3b_233d8ab7",
         "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/i2c.dts",
         "patchSetId": 17
@@ -31,6 +49,30 @@
       "writtenOn": "2024-09-04T00:08:19Z",
       "side": 1,
       "message": "how about removing it, as above comment has the details",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e631d443_daffb8de",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/i2c.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-09-04T16:24:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c9ae0b3b_233d8ab7",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1958984_0081b755",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/i2c.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-09-04T16:24:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "92d2efa5_a47aea39",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b83052c4_629405a2",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd369c4d_1570ceff",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-09-04T16:24:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b83052c4_629405a2",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "903605a7_c50f2c2f",
@@ -94,6 +178,24 @@
       "writtenOn": "2024-09-04T00:08:19Z",
       "side": 1,
       "message": "check below code can be common code for all EC vendors",
+      "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4456c962_3f81b993",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/ptlrvp_mchp/ptlrvp_mchp.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570962
+      },
+      "writtenOn": "2024-09-04T16:24:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "903605a7_c50f2c2f",
       "revId": "9224e1c3f0fc8e380ec7a98d9af495125fe83259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
