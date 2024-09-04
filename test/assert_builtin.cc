@@ -11,7 +11,7 @@
 
 test_static int false_assertion()
 {
-	ASSERT(1 == 0);
+	__ASSERT(1 == 0);
 	return EC_SUCCESS;
 }
 
