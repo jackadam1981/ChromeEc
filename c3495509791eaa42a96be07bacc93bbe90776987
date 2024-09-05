@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0eeb91_b1b23a6d",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-05T21:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df66b415_775e42c8",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 53
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15e6896a_427b4df2",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-05T18:28:37Z",
       "side": 1,
       "message": "This looks like a bug fix - this event was never cleared.  Move to a separate CL.",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 64
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2373be70_78d3b1fc",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-05T21:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e6896a_427b4df2",
       "range": {
         "startLine": 692,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4f63c7c_37b192d8",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-05T21:17:24Z",
+      "side": 1,
+      "message": "We only want to poll on the cmd register when we have sent a command and are waiting for a response from the PDC.  Having the thread wakeup every X ms for to run its state handler may hide issues within the driver itself.",
+      "parentUuid": "d11d041f_daa45408",
+      "range": {
+        "startLine": 1513,
+        "startChar": 13,
+        "endLine": 1513,
+        "endChar": 38
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eefd00c_fc5af0c0",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2024-09-05T18:28:37Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 2291,
+        "startChar": 0,
+        "endLine": 2293,
+        "endChar": 0
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2edeefc2_216c1674",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-05T21:17:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eefd00c_fc5af0c0",
       "range": {
         "startLine": 2291,
         "startChar": 0,
