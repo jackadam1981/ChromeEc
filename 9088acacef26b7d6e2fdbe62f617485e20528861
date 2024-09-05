@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865b5e3a_2aea7c9e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4097,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-09-05T18:50:56Z",
+      "side": 1,
+      "message": "nit: Update the comment to mention \"Ti50\" rather than \"DT\".",
+      "range": {
+        "startLine": 4097,
+        "startChar": 39,
+        "endLine": 4097,
+        "endChar": 41
+      },
+      "revId": "9088acacef26b7d6e2fdbe62f617485e20528861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad17e0db_0ee945c9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4697,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-09-05T18:50:56Z",
+      "side": 1,
+      "message": "If this is running on the AP, are we not able to query for the TPM DID:VID ?  If using USB, we can use the USB VID:PID.\n\nExcept that old/current OpenTitan chips report Dauntless identifiers, is that why we have the version logic below?  If so, I suppose we could retire the version logic, once we no longer need to support the factory GSC images on Z1 silicon.\n\nIn any case, I do not see why we would add a new TPMV command just to be able to distinguish GSC type?",
+      "revId": "9088acacef26b7d6e2fdbe62f617485e20528861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
