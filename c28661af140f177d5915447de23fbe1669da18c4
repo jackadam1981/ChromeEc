@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149499ed_2db6b49d",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-05T02:17:19Z",
+      "side": 1,
+      "message": "if (\"!\"pd_transmit_complete_called) \u003d\u003e BIST_MODE_2/HARD_RESET/CABLE_RESET/default cases can pass the status to PRL.",
+      "range": {
+        "startLine": 702,
+        "startChar": 1,
+        "endLine": 702,
+        "endChar": 35
+      },
+      "revId": "c28661af140f177d5915447de23fbe1669da18c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
