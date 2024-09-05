@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6affea1_d5c8d0da",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4097,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-09-05T19:10:38Z",
+      "side": 1,
+      "message": "I added a new `is_ti50_device` static method to single source this logic.",
+      "parentUuid": "865b5e3a_2aea7c9e",
+      "range": {
+        "startLine": 4097,
+        "startChar": 39,
+        "endLine": 4097,
+        "endChar": 41
+      },
+      "revId": "9088acacef26b7d6e2fdbe62f617485e20528861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad17e0db_0ee945c9",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-09-05T18:50:56Z",
       "side": 1,
       "message": "If this is running on the AP, are we not able to query for the TPM DID:VID ?  If using USB, we can use the USB VID:PID.\n\nExcept that old/current OpenTitan chips report Dauntless identifiers, is that why we have the version logic below?  If so, I suppose we could retire the version logic, once we no longer need to support the factory GSC images on Z1 silicon.\n\nIn any case, I do not see why we would add a new TPMV command just to be able to distinguish GSC type?",
+      "revId": "9088acacef26b7d6e2fdbe62f617485e20528861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3222ce4a_5c1c668a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4697,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-09-05T19:10:38Z",
+      "side": 1,
+      "message": "We actually [want][0] to be able to collect more version/chip information in general, and this is a good reason to do it. We want to expose the chip id as well (Z1 versus A1) in case we need to fork on that later.\n\n\n[0]:https://docs.google.com/document/d/1rcmQ9uIa_-oS0Zvx0M0EOBRdTet8CJudGRsTng0PKRU/r/0-nYDBylLoSHqO-HC-mp3ang/edit?disco\u003dAAABUylmaOM",
+      "parentUuid": "ad17e0db_0ee945c9",
       "revId": "9088acacef26b7d6e2fdbe62f617485e20528861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
