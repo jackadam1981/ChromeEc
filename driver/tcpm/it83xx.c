@@ -43,6 +43,11 @@
 int rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];
+/* Set init value 1 to allow Vconn disable */
+STATIC_IF(CONFIG_USBC_VCONN)
+bool allow_vconn_dis[IT83XX_USBPD_PHY_PORT_COUNT] = {
+	[0 ...(IT83XX_USBPD_PHY_PORT_COUNT - 1)] = 1
+};
 
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{ &IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0 },
@@ -386,6 +391,10 @@ static void it83xx_init(enum usbpd_port port, int role)
 #endif
 	/* cc connect */
 	IT83XX_USBPD_CCCSR(port) = 0;
+	/* Set value 1 to allow Vconn disable */
+	if (IS_ENABLED(CONFIG_USBC_VCONN)) {
+		allow_vconn_dis[port] = 1;
+	}
 	/* disable vconn */
 	it83xx_tcpm_set_vconn(port, 0);
 	/* TX start from high */
@@ -550,7 +559,11 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 						    USBPD_CC_PIN_2 :
 						    USBPD_CC_PIN_1,
 					    enable);
+			allow_vconn_dis[port] = 1;
 		} else {
+			if (!allow_vconn_dis[port]) {
+				return EC_SUCCESS;
+			}
 			/*
 			 * If the pd port has previous connection and supplies
 			 * Vconn, then RO jumping to RW reset the system,
@@ -576,6 +589,7 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 			 * module (ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
 			 */
 			it83xx_enable_vconn(port, enable);
+			allow_vconn_dis[port] = 0;
 		}
 	}
 
