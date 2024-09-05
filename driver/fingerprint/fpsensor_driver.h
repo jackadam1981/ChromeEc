@@ -17,6 +17,14 @@
 #define FP_SENSOR_RES_Y (FP_SENSOR_RES_Y_ELAN)
 #endif /* CONFIG_FP_SENSOR_ELAN80 || CONFIG_FP_SENSOR_ELAN515 */
 
+#if defined(CONFIG_FP_SENSOR_EC630) 
+#include "../fingerprint/egis/sensor_control/inc/sensor_parameter_ec6xx.h"
+#define FP_SENSOR_IMAGE_OFFSET (FP_SENSOR_IMAGE_OFFSET_EGIS)
+#define FP_SENSOR_IMAGE_SIZE (FP_SENSOR_IMAGE_SIZE_EGIS)
+#define FP_SENSOR_RES_X (FP_SENSOR_RES_X_EGIS)
+#define FP_SENSOR_RES_Y (FP_SENSOR_RES_Y_EGIS)
+#endif /* CONFIG_FP_SENSOR_EC630 */
+
 #if defined(CONFIG_FP_SENSOR_FPC1025) || defined(CONFIG_FP_SENSOR_FPC1145)
 #include "fpc/fpc_sensor.h"
 #define FP_SENSOR_IMAGE_OFFSET (FP_SENSOR_IMAGE_OFFSET_FPC)
