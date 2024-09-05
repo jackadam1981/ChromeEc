@@ -7,6 +7,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
+#include "motionsense_sensors.h"
 #include "nissa_common.h"
 #include "tablet_mode.h"
 #include "task.h"
@@ -21,6 +22,9 @@
 #include <ap_power/ap_power.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+#define LID_ACC SENSOR_ID(DT_NODELABEL(lid_accel))
+#define LID_ACC_ALT SENSOR_ID(DT_NODELABEL(lid_accel_alt))
 
 /*
  * Enable interrupts
@@ -50,8 +54,15 @@ static void board_init(void)
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
 				      GPIO_INPUT | GPIO_PULL_DOWN);
 		LOG_INF("Clameshell: Disable motion sensors and gmr sensor!");
-	} else
-		LOG_INF("Convertible!!!");
+	} else {
+		if (cros_cbi_ssfc_check_match(
+			    CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_1)))) {
+			LOG_INF("Lid accel sensor is BMA422");
+		} else {
+			LOG_INF("Lid accel sensor is KX022");
+		}
+		motion_sensors_check_ssfc();
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_POST_I2C);
 
