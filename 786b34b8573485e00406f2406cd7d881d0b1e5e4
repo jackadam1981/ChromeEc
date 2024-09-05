@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db44038_269cc05c",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ee25a9_b89501e2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fde7e373_3493d074",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-04T15:56:43Z",
       "side": 1,
       "message": "The option name says \"remote\", but the prompt text says \"local\".",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e96884_fe097d99",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Yeah, this was a bit tricky to word. I\u0027m open to suggestions. What I means is that the client implements the local read operation by making a remote call. So the read operation doesn\u0027t actually need to know it\u0027s getting the information remotely.",
+      "parentUuid": "fde7e373_3493d074",
       "range": {
         "startLine": 20,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "861c8d66_a624e129",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb48989_cce45bce",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ec5519_eeed3206",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-09-04T15:56:43Z",
       "side": 1,
       "message": "Fix indentation.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fbef76b_176cdaa4",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ec5519_eeed3206",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fb3ce2_018eed53",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.service",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c013b6_13687a7c",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88063244_e918b026",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a60d82d_171aa282",
+        "filename": "zephyr/drivers/dsp_comms/proto/ec_ish.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88063244_e918b026",
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb027734_096c693b",
@@ -146,6 +284,30 @@
       "writtenOn": "2024-09-04T15:56:43Z",
       "side": 1,
       "message": "You should comment the source of truth for these values.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9c8284_e194bb62",
+        "filename": "zephyr/drivers/dsp_comms/proto/ec_ish.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb027734_096c693b",
       "range": {
         "startLine": 43,
         "startChar": 5,
