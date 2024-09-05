@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e282176_9b831ea0",
+        "filename": "zephyr/drivers/dsp_comms/service/include/cros/dsp/service/transport_state_machine.hh",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T03:53:30Z",
+      "side": 1,
+      "message": "I looked at it and I wasn\u0027t a fan. I\u0027m happy to be shown otherwise (maybe tomorrow at our 1:1?) but I couldn\u0027t figure out how the state machine could set simple rules like don\u0027t allow `HAS_STATUS_AND_RESPONSE` -\u003e `IDLE` transitions.",
+      "parentUuid": "649a3f0d_9a9d7321",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "4d3583b9daac1691d0ae625136ec1caecd4071be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "752776cc_90186215",
         "filename": "zephyr/drivers/dsp_comms/service/test_transport_state_machine.cc",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2024-09-04T20:21:51Z",
       "side": 1,
       "message": "Does the test code need to live along side the real code?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "4d3583b9daac1691d0ae625136ec1caecd4071be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "085caa35_3c052a8e",
+        "filename": "zephyr/drivers/dsp_comms/service/test_transport_state_machine.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-05T03:53:30Z",
+      "side": 1,
+      "message": "We should discuss this tomorrow in our 1:1. There are several benefits to having the tests live next to the code.\n\n1. It\u0027s a library that can be added to any test binary that meets the requirements.\n2. If we refactor the tree, the tests move with the code so we don\u0027t need to mirror another tree.\n3. This is forward proofing to Bazel which (while not impossible) want tests to live next to the code.\n4. Making the test a library that lives next to the library it tests makes for an interesting possibility of running the test on hardware later. I can envision a hook similar to main.cc in this CL that allows us to run all the tests linked to the binary via a console command. If the tests lived under the `test/` directory it would make it a bit harder to do since that directory includes CMake entry points.\n5. (a bit of a weak reason) Pigweed already structures their tests like this. I was trying to workshop what it would look like to use `pw_add_test` and have a test runner that just links the library. I think this is going to be the pattern moving forward in Pigweed.",
+      "parentUuid": "752776cc_90186215",
       "range": {
         "startLine": 18,
         "startChar": 0,
