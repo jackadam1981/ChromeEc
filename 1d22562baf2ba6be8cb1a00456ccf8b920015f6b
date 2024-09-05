@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63aa03c9_900681a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-05T04:29:19Z",
+      "side": 1,
+      "message": "suggest:\n```\ntest/pdc/ppm_driver: Add tests for execute_cmd\n```",
+      "revId": "1d22562baf2ba6be8cb1a00456ccf8b920015f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a0c52f8_7c4120c6",
         "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
         "patchSetId": 1
