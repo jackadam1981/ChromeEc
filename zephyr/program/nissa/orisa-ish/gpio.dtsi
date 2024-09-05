@@ -21,6 +21,11 @@
 			enum-name = "GPIO_LID_OPEN";
 		};
 
+		gpio_tablet_mode_int_l: lid_sw2_soc {
+			gpios = <&gpio0 7 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
+
 		ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
