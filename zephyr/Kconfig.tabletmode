@@ -53,4 +53,12 @@ config PLATFORM_EC_GMR_SENSOR_DEBOUNCE_US
 	  Default is 10 milliseconds longer than the default lid switch
 	  debounce delay (LID_DEBOUNCE_US).
 
+config PLATFORM_EC_EXTERNAL_NOTEBOOK_MODE
+    bool "Notify EC for clamshell/tablet mode change"
+    depends on PLATFORM_EC_TABLET_MODE
+    help
+      Enable this config if motionsensor task is handled by ISH or any other IP
+      and EC is not aware about the clamshell/tablet mode change. ISH notifies
+      EC for mode change by updating gpio_nb_mode if this config is enabled.
+
 endif # PLATFORM_EC_TABLET_MODE
