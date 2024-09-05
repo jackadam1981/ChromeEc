@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df66b415_775e42c8",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-05T18:28:37Z",
+      "side": 1,
+      "message": "It\u0027s a violation of the state machine contract to do any work after calling `set_state()`.\nThis needs to be fixed at locations where you post PDC_INTERNAL_EVENT.\n\nAlso, would it make sense to create a wrapper function around `set_state()` that always posts the PDC_INTERNVAL_EVENT?",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 53
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e6896a_427b4df2",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-05T18:28:37Z",
+      "side": 1,
+      "message": "This looks like a bug fix - this event was never cleared.  Move to a separate CL.",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 64
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11d041f_daa45408",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-05T18:28:37Z",
+      "side": 1,
+      "message": "You could add this timeout to the `k_event_wait()` call instead.  That would ensure the driver thread always restarts in case there is a missed path that fails to post an event.",
+      "range": {
+        "startLine": 1513,
+        "startChar": 13,
+        "endLine": 1513,
+        "endChar": 38
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eefd00c_fc5af0c0",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-05T18:28:37Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 2291,
+        "startChar": 0,
+        "endLine": 2293,
+        "endChar": 0
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5b75a8_e24a2bfd",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-05T18:28:37Z",
+      "side": 1,
+      "message": "Separate out the test fixes into their own CL.  This allows us to rollback the TI driver change if necessary.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 28
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
