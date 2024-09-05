@@ -109,6 +109,12 @@ static enum tcpc_cc_voltage_status it83xx_get_cc(enum usbpd_port port,
 	else
 		SET_MASK(cc_state, BIT(2));
 
+	/*
+	 * PD spec defines that message header bit(8) field has a different
+	 * definition between SOP and SOP'/SOP''.
+	 * it83xx gets PD power role from register,
+	 * instead of message header bit(8), so there is no misjudgment chance.
+	 */
 	/* sink */
 	if (USBPD_GET_POWER_ROLE(port) == USBPD_POWER_ROLE_CONSUMER) {
 		if (cc_pin == USBPD_CC_PIN_1)
@@ -523,16 +529,15 @@ __maybe_unused static int it83xx_tcpm_decode_sop_prime_enable(int port,
 	/* Save SOP'/SOP'' enable state */
 	sop_prime_en[port] = enable;
 
-	if (rx_en[port]) {
-		if (enable)
-			IT83XX_USBPD_PDMSR(port) |=
-				(USBPD_REG_MASK_SOPP_ENABLE |
-				 USBPD_REG_MASK_SOPPP_ENABLE);
-		else
-			IT83XX_USBPD_PDMSR(port) &=
-				~(USBPD_REG_MASK_SOPP_ENABLE |
-				  USBPD_REG_MASK_SOPPP_ENABLE);
-	}
+	if (!rx_en[port])
+		return EC_SUCCESS;
+
+	if (enable)
+		IT83XX_USBPD_PDMSR(port) |= (USBPD_REG_MASK_SOPP_ENABLE |
+					     USBPD_REG_MASK_SOPPP_ENABLE);
+	else
+		IT83XX_USBPD_PDMSR(port) &= ~(USBPD_REG_MASK_SOPP_ENABLE |
+					      USBPD_REG_MASK_SOPPP_ENABLE);
 
 	return EC_SUCCESS;
 }
@@ -727,7 +732,7 @@ static enum tcpc_transmit_complete it83xx_tx_data(enum usbpd_port port,
 static int it83xx_tcpm_set_rx_enable(int port, int enable)
 {
 	/* Save rx_on */
-	rx_en[port] = enable;
+	rx_en[port] = !!enable;
 
 	if (enable) {
 		IT83XX_USBPD_IMR(port) &= ~USBPD_REG_MASK_MSG_RX_DONE;
