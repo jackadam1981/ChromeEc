@@ -371,3 +371,23 @@ __test_only void tablet_reset(void)
 	tablet_mode_forced = false;
 	disabled = false;
 }
+
+#ifdef CONFIG_SOC_FAMILY_INTEL_ISH
+static void notify_ec_for_nb_mode_change(void)
+{
+	/*
+	 * gpio_nb_mode_l is an active low pin; default level is
+	 * low. This pin is an output from SOC (ISH) to EC.
+	 *
+	 * In this config, ISH runs motion sense task; while EC doesn't.
+	 * When ISH motion sense task detects notebook(clamshell)/tablet mode
+	 * changes, ISH will notify EC about the change by updating this pin.
+	 *
+	 * Set this gpio to low if changing to notebook(clamshell) mode;
+	 * Set this gpio to high if changing to tablet mode.
+	 */
+	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_nb_mode_l), tablet_get_mode());
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, notify_ec_for_nb_mode_change,
+	     HOOK_PRIO_DEFAULT);
+#endif
