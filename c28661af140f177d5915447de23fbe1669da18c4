@@ -22,6 +22,30 @@
       },
       "revId": "c28661af140f177d5915447de23fbe1669da18c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d63f66d_374e7bcf",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-09-05T04:43:50Z",
+      "side": 1,
+      "message": "Ah.. fixed",
+      "parentUuid": "149499ed_2db6b49d",
+      "range": {
+        "startLine": 702,
+        "startChar": 1,
+        "endLine": 702,
+        "endChar": 35
+      },
+      "revId": "c28661af140f177d5915447de23fbe1669da18c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
