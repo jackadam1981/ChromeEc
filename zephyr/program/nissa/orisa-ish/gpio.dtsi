@@ -26,6 +26,10 @@
 			enum-name = "GPIO_TABLET_MODE_L";
 		};
 
+		gpio_soc_ec_ish_nb_mode_l: sen_mode_ec_pch_int_odl {
+			gpios = <&gpio0 2 GPIO_OUTPUT_LOW>;
+		};
+
 		ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
