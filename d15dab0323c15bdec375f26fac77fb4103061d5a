@@ -22,6 +22,47 @@
       },
       "revId": "d15dab0323c15bdec375f26fac77fb4103061d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a42075_4d8c4573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-05T04:28:27Z",
+      "side": 1,
+      "message": "Agreed -- suggestion:\n\n```\ntest/pdc/ppm_driver: Add tests for ppm_init\n```",
+      "parentUuid": "7514dd93_60279c7d",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "d15dab0323c15bdec375f26fac77fb4103061d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80037cc6_40dbb8d7",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-05T04:28:27Z",
+      "side": 1,
+      "message": "I missed commenting on the first part of this series but I think we need to use the emulated drivers so that interaction with PDM works properly.\n\nWhile this gives us coverage, it won\u0027t fully test our interaction with PDM and underlying driver.",
+      "revId": "d15dab0323c15bdec375f26fac77fb4103061d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
