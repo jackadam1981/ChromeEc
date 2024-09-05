@@ -1298,13 +1298,13 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_startup)
 		zassert_ok(emul_pdc_get_ccom(emul, &ccom),
 			   "Invalid CCOM value in emul");
 
-		if (ccom != CCOM_RD)
+		if (ccom != CCOM_DRP)
 			continue;
 
 		break;
 	}
 
-	zassert_equal(CCOM_RD, ccom);
+	zassert_equal(CCOM_DRP, ccom);
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_chipset_shutdown)
