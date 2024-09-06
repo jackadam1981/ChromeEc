@@ -5,8 +5,8 @@
 
 /* Task scheduling / events module for Chrome EC operating system */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "console.h"
 #include "cpu.h"
 #include "irq_chip.h"
@@ -219,7 +219,7 @@ task_id_t __ram_code task_get_current(void)
 {
 #ifdef CONFIG_DEBUG_BRINGUP
 	/* If we haven't done a context switch then our task ID isn't valid */
-	ASSERT(current_task != (task_ *)scratchpad);
+	assert(current_task != (task_ *)scratchpad);
 #endif
 	return current_task - tasks;
 }
@@ -381,14 +381,14 @@ static uint32_t __ram_code __wait_evt(int timeout_us, task_id_t resched)
 	uint32_t evt;
 	int ret;
 
-	ASSERT(!in_interrupt_context());
+	assert(!in_interrupt_context());
 
 	if (timeout_us > 0) {
 		timestamp_t deadline = get_time();
 
 		deadline.val += timeout_us;
 		ret = timer_arm(deadline, me);
-		ASSERT(ret == EC_SUCCESS);
+		assert(ret == EC_SUCCESS);
 	}
 	while (!(evt = atomic_clear(&tsk->events))) {
 		/* Remove ourself and get the next task in the scheduler */
@@ -407,7 +407,7 @@ void __ram_code task_set_event(task_id_t tskid, uint32_t event)
 {
 	task_ *receiver = __task_id_to_ptr(tskid);
 
-	ASSERT(receiver);
+	assert(receiver);
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
@@ -549,7 +549,7 @@ void __ram_code mutex_lock(struct mutex *mtx)
 	uint32_t locked;
 	uint32_t id = 1 << task_get_current();
 
-	ASSERT(id != TASK_ID_INVALID);
+	assert(id != TASK_ID_INVALID);
 	atomic_or(&mtx->waiters, id);
 
 	while (1) {

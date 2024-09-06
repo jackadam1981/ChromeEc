@@ -5,7 +5,7 @@
 
 /* I2C drivers for STM32L4xx as well as STM32L5xx. */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -335,8 +335,8 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	int xfer_start = flags & I2C_XFER_START;
 	int xfer_stop = flags & I2C_XFER_STOP;
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	assert(out || !out_bytes);
+	assert(in || !in_bytes);
 
 	/* Clear status */
 	if (xfer_start) {

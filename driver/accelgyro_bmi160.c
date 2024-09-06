@@ -11,7 +11,7 @@
 #include "accelgyro.h"
 #include "accelgyro_bmi160.h"
 #include "accelgyro_bmi_common.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "hwtimer.h"
@@ -269,7 +269,7 @@ static int perform_calib(struct motion_sensor_t *s, int enable)
 	/* LCOV_EXCL_START */
 	default:
 		/* Unreachable due to sensor type check above. */
-		ASSERT(false);
+		assert(false);
 		return EC_RES_INVALID_PARAM;
 		/* LCOV_EXCL_STOP */
 	}

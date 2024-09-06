@@ -5,7 +5,7 @@
 
 /* UART driver for emulator */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "queue.h"
 #include "task.h"
@@ -115,7 +115,7 @@ void uart_write_char(char c)
 int uart_read_char(void)
 {
 	char ret;
-	ASSERT(in_interrupt_context());
+	assert(in_interrupt_context());
 	queue_remove_unit(&cached_char, &ret);
 	--char_available;
 	return ret;

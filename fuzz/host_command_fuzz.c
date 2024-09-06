@@ -5,7 +5,7 @@
  * Fuzz host command.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "host_command.h"
@@ -168,7 +168,7 @@ int test_fuzz_one_input(const uint8_t *data, unsigned int size)
 	 * we should never receive an invalid checksum error. (but ignore
 	 * EC_CMD_TEST_PROTOCOL, as it can lead to arbitrary result values).
 	 */
-	ASSERT(req->command == EC_CMD_TEST_PROTOCOL ||
+	assert(req->command == EC_CMD_TEST_PROTOCOL ||
 	       resp->result != EC_RES_INVALID_CHECKSUM);
 #endif
 

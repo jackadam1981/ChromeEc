@@ -5,7 +5,7 @@
 
 /* System module for emulator */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "ec_commands.h"
 #include "host_test.h"
@@ -32,10 +32,10 @@ static void ramdata_set_persistent(void)
 	FILE *f = get_persistent_storage("ramdata", "wb");
 	int sz;
 
-	ASSERT(f != NULL);
+	assert(f != NULL);
 
 	sz = fwrite(__ram_data, RAM_DATA_SIZE, 1, f);
-	ASSERT(sz == 1);
+	assert(sz == 1);
 
 	release_persistent_storage(f);
 }
@@ -63,8 +63,8 @@ static void set_image_copy(uint32_t copy)
 {
 	FILE *f = get_persistent_storage("image_copy", "wb");
 
-	ASSERT(f != NULL);
-	ASSERT(fwrite(&copy, sizeof(copy), 1, f) == 1);
+	assert(f != NULL);
+	assert(fwrite(&copy, sizeof(copy), 1, f) == 1);
 
 	release_persistent_storage(f);
 }
@@ -86,8 +86,8 @@ static void save_reset_flags(uint32_t flags)
 {
 	FILE *f = get_persistent_storage("reset_flags", "wb");
 
-	ASSERT(f != NULL);
-	ASSERT(fwrite(&flags, sizeof(flags), 1, f) == 1);
+	assert(f != NULL);
+	assert(fwrite(&flags, sizeof(flags), 1, f) == 1);
 
 	release_persistent_storage(f);
 }
@@ -109,8 +109,8 @@ static void save_time(timestamp_t t)
 {
 	FILE *f = get_persistent_storage("time", "wb");
 
-	ASSERT(f != NULL);
-	ASSERT(fwrite(&t, sizeof(t), 1, f) == 1);
+	assert(f != NULL);
+	assert(fwrite(&t, sizeof(t), 1, f) == 1);
 
 	release_persistent_storage(f);
 }
