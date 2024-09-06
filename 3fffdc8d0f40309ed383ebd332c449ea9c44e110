@@ -16,6 +16,24 @@
       "message": "I am wondering you should initialize the GPIO, and use gpio_set_level for toggling ?",
       "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef23509_ab501a3f",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1596857
+      },
+      "writtenOn": "2024-09-06T09:47:08Z",
+      "side": 1,
+      "message": "I have use gpio_set_level (GPIO_EC_I2C_SUB_USB_C1_SDA, 0); to test, but only gpio_set_flags can set to low state",
+      "parentUuid": "a37d1789_b00ed596",
+      "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
