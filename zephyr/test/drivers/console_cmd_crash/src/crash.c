@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "test/drivers/test_mocks.h"
 #include "test/drivers/test_state.h"

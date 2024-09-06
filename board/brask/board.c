@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 #include "adc.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "button.h"
 #include "cec.h"
 #include "charge_manager.h"
@@ -275,7 +275,7 @@ void adp_connect_interrupt(enum gpio_signal signal)
 
 static void adp_state_init(void)
 {
-	ASSERT(CHARGE_PORT_ENUM_COUNT == CHARGE_PORT_COUNT);
+	assert(CHARGE_PORT_ENUM_COUNT == CHARGE_PORT_COUNT);
 	/*
 	 * Initialize all charge suppliers to 0. The charge manager waits until
 	 * all ports have reported in before doing anything.

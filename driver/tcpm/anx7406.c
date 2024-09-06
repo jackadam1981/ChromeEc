@@ -98,7 +98,7 @@ void anx7406_update_hpd_status(const struct usb_mux *mux, mux_state_t mux_state)
 	 * it doesn't have a re-driver). If that changes, we need to update this
 	 * code.
 	 */
-	ASSERT(!(mux->flags & USB_MUX_FLAG_NOT_TCPC));
+	assert(!(mux->flags & USB_MUX_FLAG_NOT_TCPC));
 
 	anx7406_set_hpd(port, hpd_lvl);
 

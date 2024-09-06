@@ -87,5 +87,5 @@ SECTIONS
 	PROVIDE(__stack = __StackTop);
 
 	/* Check if data + heap + stack exceeds RAM limit */
-	ASSERT(__StackLimit >= __bss_end__, "region RAM overflowed with stack")
+	assert(__StackLimit >= __bss_end__, "region RAM overflowed with stack")
 }
