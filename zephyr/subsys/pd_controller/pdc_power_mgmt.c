@@ -426,6 +426,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_UPDATE_ALLOW_PR_SWAP,
 	/** Sends SET_PDO to the LPM. */
 	SNK_POLICY_UPDATE_SRC_CAPS,
+	/** Enables/disables FRS on the LPM. */
+	SNK_POLICY_UPDATE_FRS,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -1386,6 +1388,13 @@ static void run_snk_policies(struct pdc_port_t *port)
 		 */
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_FRS)) {
+		/* Port is currently a SNK, but we need enable or disable
+		 * fast role swap to comply with the Chromebook source policy.
+		 */
+		queue_internal_cmd(port, CMD_PDC_SET_FRS);
+		return;
 	}
 
 	send_pending_public_commands(port);
@@ -1885,7 +1894,7 @@ static void pdc_snk_attached_run(void *obj)
 		charge_manager_set_ceil(config->connector_num,
 					CEIL_REQUESTOR_PD, max_ma);
 
-		if (((PDO_GET_TYPE(port->snk_policy.pdo) == 0) &&
+		if (((PDO_GET_TYPE(port->snk_policy.pdo) == PDO_TYPE_FIXED) &&
 		     (!(port->snk_policy.pdo & PDO_FIXED_GET_DRP) ||
 		      (port->snk_policy.pdo &
 		       PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
@@ -1910,6 +1919,38 @@ static void pdc_snk_attached_run(void *obj)
 		port->sink_path_en = port->active_charge;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
+	case SNK_ATTACHED_GET_SINK_PDO:
+		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+
+		if (PDO_GET_TYPE(port->snk_policy.pdo) == PDO_TYPE_FIXED &&
+		    port->snk_policy.pdo & PDO_FIXED_GET_DRP) {
+			/* Request up to 4 pdos to honor USCI 6.5.15 Get PDOs -
+			 * Number of PDOs to return starting from the PDO
+			 * Offset. The number of PDOs to return is the value in
+			 * this field plus 1.
+			 */
+			if (!port->get_pdo.updating) {
+				port->get_pdo.num_pdos = PDO_NUM;
+				port->get_pdo.pdo_offset = PDO_OFFSET_0;
+				port->get_pdo.updating = true;
+			}
+			if (port->get_pdo.num_pdos > 4) {
+				port->src_attached_local_state =
+					SNK_ATTACHED_GET_SINK_PDO;
+			} else {
+				port->src_attached_local_state =
+					SNK_ATTACHED_RUN;
+				port->get_pdo.updating = false;
+			}
+			port->get_pdo.pdo_type = SINK_PDO;
+			port->get_pdo.pdo_source = PARTNER_PDO;
+			queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+			/* Evaluate SNK CAP after it's been retrieved from the
+			 * PDC */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_EVAL_SNK_FIXED_PDO);
+		}
+
 	case SNK_ATTACHED_RUN:
 		/* Hard Reset could disable Sink FET. Re-enable it */
 		if (atomic_get(&port->hard_reset_sent)) {
@@ -4038,10 +4079,17 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 
 int pdc_power_mgmt_frs_enable(int port_num, bool enable)
 {
-	/*
-	 * TODO(b/337958604): Currently there is no mechanism to enable/disable
-	 * FRS. Waiting for this control to be available in PDC.
-	 */
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port_num)) {
+		return -ERANGE;
+	}
+
+	pdc = &pdc_data[port_num]->port;
+
+	pdc->frs_enable = enable;
+
+	atomic_set_bit(pdc->snk_policy.flags, SNK_POLICY_UPDATE_FRS);
 
 	return EC_SUCCESS;
 }
