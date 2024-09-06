@@ -5,7 +5,7 @@
  * Objects which can be shared between RO and RW for 8042 keyboard protocol.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "button.h"
 #include "console.h"
 #include "keyboard_8042_sharedlib.h"

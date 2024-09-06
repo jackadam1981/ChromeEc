@@ -5,8 +5,8 @@
 
 /* Task scheduling / events module for Chrome EC operating system */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -186,7 +186,7 @@ task_id_t task_get_current(void)
 {
 #ifdef CONFIG_DEBUG_BRINGUP
 	/* If we haven't done a context switch then our task ID isn't valid */
-	ASSERT(current_task != (task_ *)scratchpad);
+	assert(current_task != (task_ *)scratchpad);
 #endif
 	return current_task - tasks;
 }
@@ -248,7 +248,7 @@ task_ __attribute__((noinline)) * __svc_handler(int desched, task_id_t resched)
 	}
 	tasks_ready |= 1 << resched;
 
-	ASSERT(tasks_ready & tasks_enabled);
+	assert(tasks_ready & tasks_enabled);
 	next = __task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
 
 #ifdef CONFIG_TASK_PROFILING
@@ -338,14 +338,14 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 	 * Hard Fault because disabling interrupt using 'cpsid i' also disables
 	 * SVCall handler (because it has configurable priority)
 	 */
-	ASSERT(is_interrupt_enabled());
-	ASSERT(!in_interrupt_context());
+	assert(is_interrupt_enabled());
+	assert(!in_interrupt_context());
 
 	if (timeout_us > 0) {
 		timestamp_t deadline = get_time();
 		deadline.val += timeout_us;
 		ret = timer_arm(deadline, me);
-		ASSERT(ret == EC_SUCCESS);
+		assert(ret == EC_SUCCESS);
 	}
 	while (!(evt = atomic_clear(&tsk->events))) {
 		/*
@@ -370,7 +370,7 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 void task_set_event(task_id_t tskid, uint32_t event)
 {
 	task_ *receiver = __task_id_to_ptr(tskid);
-	ASSERT(receiver);
+	assert(receiver);
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
@@ -512,7 +512,7 @@ void mutex_lock(struct mutex *mtx)
 {
 	uint32_t id = 1 << task_get_current();
 
-	ASSERT(id != TASK_ID_INVALID);
+	assert(id != TASK_ID_INVALID);
 	atomic_or(&mtx->waiters, id);
 
 	while (1) {

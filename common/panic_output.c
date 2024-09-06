@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -418,7 +418,7 @@ static int command_crash(int argc, const char **argv)
 	}
 
 	if (!strcasecmp(argv[1], "assert")) {
-		ASSERT(0);
+		assert(0);
 	} else if (!strcasecmp(argv[1], "divzero")) {
 		volatile int zero = 0;
 
