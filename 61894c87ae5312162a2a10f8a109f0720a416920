@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79cf4e3_d8c94214",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-09-06T08:53:52Z",
+      "side": 1,
+      "message": "It\u0027s dangerous to define CONFIG_BATTERY_VENDOR_PARAM for overall projects. Is it possible to narrow down the scope to platform or even board level variable?",
+      "revId": "61894c87ae5312162a2a10f8a109f0720a416920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be756d4f_4633a35f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2603,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-09-06T08:53:52Z",
+      "side": 1,
+      "message": "Why we need to define this?",
+      "revId": "61894c87ae5312162a2a10f8a109f0720a416920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387f91af_368e533c",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-09-06T08:53:52Z",
+      "side": 1,
+      "message": "Could you elaborate more detail about this property?",
+      "revId": "61894c87ae5312162a2a10f8a109f0720a416920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
