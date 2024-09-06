@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "b7527618618672f12e06cf8ea1a2abb1fc084fea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36adecf9_78bd2bb4",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-06T18:20:47Z",
+      "side": 1,
+      "message": "Nit: This is a weird variable name. Maybe we should just change it to make sense and avoid the comment.",
+      "revId": "b7527618618672f12e06cf8ea1a2abb1fc084fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
