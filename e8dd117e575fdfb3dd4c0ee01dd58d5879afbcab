@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd8ee2e_061fa43d",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-06T21:09:45Z",
+      "side": 1,
+      "message": "Is `I2C_MSG_RESTART` required here?",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 57
+      },
+      "revId": "e8dd117e575fdfb3dd4c0ee01dd58d5879afbcab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
