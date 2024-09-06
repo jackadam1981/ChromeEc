@@ -290,7 +290,7 @@ __override int board_c1_ps8818_mux_set(const struct usb_mux *me,
  */
 uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me)
 {
-	ASSERT(me->usb_port == USBC_PORT_C1);
+	assert(me->usb_port == USBC_PORT_C1);
 	return 0x2a;
 }
 

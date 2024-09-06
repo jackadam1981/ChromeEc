@@ -162,7 +162,7 @@ static int wait_for_bytes(dma_chan_t *rxdma, int needed, enum gpio_signal nss)
 {
 	timestamp_t deadline;
 
-	ASSERT(needed <= sizeof(in_msg));
+	assert(needed <= sizeof(in_msg));
 	deadline.val = 0;
 	while (1) {
 		if (dma_bytes_done(rxdma, sizeof(in_msg)) >= needed)

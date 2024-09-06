@@ -23,7 +23,7 @@ int thermistor_linear_interpolate(uint16_t mv,
 	int head, tail, mid = 0;
 
 	/* We need at least two points to form a line. */
-	ASSERT(info->num_pairs >= 2);
+	assert(info->num_pairs >= 2);
 
 	/*
 	 * If input value is out of bounds return the lowest or highest

@@ -79,13 +79,13 @@ static void stm32g4_config_pll(uint32_t hclk_hz, uint32_t pll_src,
 		STM32G4_PLL_IN_FREQ_HZ;
 
 	/* validity checks */
-	ASSERT(pll_m && (pll_m <= 16));
-	ASSERT((pll_n >= 8) && (pll_n <= 127));
+	assert(pll_m && (pll_m <= 16));
+	assert((pll_n >= 8) && (pll_n <= 127));
 
 	hclk_freq = pll_clk_in_hz * pll_n /
 		    (pll_m * STM32G4_PLL_R * STM32G4_AHB_PRE);
 	/* Ensure that there aren't any integer rounding errors */
-	ASSERT(hclk_freq == hclk_hz);
+	assert(hclk_freq == hclk_hz);
 
 	/* Program PLL config register */
 	STM32_RCC_PLLCFGR =
@@ -126,7 +126,7 @@ static void stm32g4_config_high_speed_clock(uint32_t hclk_hz,
 					    uint32_t pll_clksrc)
 {
 	/* TODO(b/161502871): PLL is currently only supported clock source */
-	ASSERT(sysclk_src == sysclk_pll);
+	assert(sysclk_src == sysclk_pll);
 
 	/* Ensure that HSI is ON */
 	wait_for_ready(&(STM32_RCC_CR), STM32_RCC_CR_HSION,
@@ -153,7 +153,7 @@ void stm32g4_set_flash_ws(uint32_t freq_hz)
 {
 	int ws;
 
-	ASSERT(freq_hz <= STM32G4_SYSCLK_MAX_HZ);
+	assert(freq_hz <= STM32G4_SYSCLK_MAX_HZ);
 	/*
 	 * Need to calculate and then set number of wait states (in CPU cycles)
 	 * required for access to internal flash. The required values can be

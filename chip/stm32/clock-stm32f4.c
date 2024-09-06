@@ -108,7 +108,7 @@ static void clock_enable_osc(enum clock_osc osc, bool enabled)
 		on = STM32_RCC_CR_PLLON;
 		break;
 	default:
-		ASSERT(0);
+		assert(0);
 		return;
 	}
 
@@ -518,7 +518,7 @@ void __idle(void)
 			 * assert won't fire if we are already part way through
 			 * the watchdog period.
 			 */
-			ASSERT(next_delay < CONFIG_WATCHDOG_PERIOD_MS * MSEC);
+			assert(next_delay < CONFIG_WATCHDOG_PERIOD_MS * MSEC);
 
 			/* Deep-sleep in STOP mode */
 			idle_dsleep_cnt++;

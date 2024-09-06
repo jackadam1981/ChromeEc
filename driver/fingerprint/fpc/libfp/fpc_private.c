@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "assert.h"
+#include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
 #include "fpc_bio_algorithm.h"

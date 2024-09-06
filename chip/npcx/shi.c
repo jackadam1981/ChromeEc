@@ -331,7 +331,7 @@ static void shi_parse_header(void)
 		 * If request is over 32 bytes,
 		 * we need to modified the algorithm again.
 		 */
-		ASSERT(sizeof(*r) < SHI_IBUF_HALF_SIZE);
+		assert(sizeof(*r) < SHI_IBUF_HALF_SIZE);
 
 		/* Wait for the rest of the command header */
 		if (!shi_read_inbuf_wait(sizeof(*r) - 3))

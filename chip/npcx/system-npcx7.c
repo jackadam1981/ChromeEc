@@ -206,7 +206,7 @@ void __hibernate_npcx_series(void)
 	__enter_hibernate_in_psl();
 #else
 	/* Make sure this is located in the last 32K code RAM block */
-	ASSERT((uint32_t)(&__after_init_end) - CONFIG_PROGRAM_MEMORY_BASE <
+	assert((uint32_t)(&__after_init_end) - CONFIG_PROGRAM_MEMORY_BASE <
 	       (32 * 1024));
 
 	/* Execute hibernate func in last 32K block */

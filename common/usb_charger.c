@@ -173,8 +173,8 @@ void usb_charger_task_shared(void *u)
 	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
 		bc12_port = &bc12_ports[port];
 
-		ASSERT(bc12_port->drv->usb_charger_task_init);
-		ASSERT(bc12_port->drv->usb_charger_task_event);
+		assert(bc12_port->drv->usb_charger_task_init);
+		assert(bc12_port->drv->usb_charger_task_event);
 
 		bc12_port->drv->usb_charger_task_init(port);
 	}
@@ -217,8 +217,8 @@ void usb_charger_task(void *u)
 
 	bc12_port = &bc12_ports[port];
 
-	ASSERT(bc12_port->drv->usb_charger_task_init);
-	ASSERT(bc12_port->drv->usb_charger_task_event);
+	assert(bc12_port->drv->usb_charger_task_init);
+	assert(bc12_port->drv->usb_charger_task_event);
 
 	bc12_port->drv->usb_charger_task_init(port);
 

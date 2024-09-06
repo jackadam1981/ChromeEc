@@ -235,7 +235,7 @@ int get_battery_manufacturer_name(char *dest, int size)
 	static const char *const name[] = {
 		[BATTERY_CPT] = "AS1XXXD3Ka",
 	};
-	ASSERT(dest);
+	assert(dest);
 	strzcpy(dest, name[BATT_ID], size);
 	return EC_SUCCESS;
 }

@@ -23,9 +23,9 @@ struct queue_policy const queue_policy_null = {
 
 void queue_init(struct queue const *q)
 {
-	ASSERT(q->policy);
-	ASSERT(q->policy->add);
-	ASSERT(q->policy->remove);
+	assert(q->policy);
+	assert(q->policy->add);
+	assert(q->policy->remove);
 
 	q->state->head = 0;
 	q->state->tail = 0;

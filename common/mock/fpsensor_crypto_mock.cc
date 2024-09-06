@@ -7,7 +7,7 @@
  * @file fpsensor_crypto_mock.cc
  * @brief Mock fpsensor_crypto library
  */
-#include "assert.h"
+#include "builtin/assert.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"

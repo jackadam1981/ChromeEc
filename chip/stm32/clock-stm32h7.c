@@ -127,7 +127,7 @@ static void clock_flash_latency(enum freq axi_freq, enum voltage_scale vos)
 		target_acr = STM32_FLASH_ACR_WRHIGHFREQ_285MHZ |
 			     (2 << STM32_FLASH_ACR_LATENCY_SHIFT);
 	} else {
-		ASSERT(0);
+		assert(0);
 		return;
 	}
 
@@ -182,7 +182,7 @@ static void clock_pll1_configure(enum freq output_freq)
 		divp = 2;
 		break;
 	default:
-		ASSERT(0);
+		assert(0);
 		return;
 	}
 
@@ -190,13 +190,13 @@ static void clock_pll1_configure(enum freq output_freq)
 	 * Using VCO wide-range setting, STM32_RCC_PLLCFG_PLL1VCOSEL_WIDE,
 	 * requires input frequency to be between 2MHz and 16MHz.
 	 */
-	ASSERT(FREQ_2MHZ <= (STM32_HSI_CLOCK / divm));
-	ASSERT((STM32_HSI_CLOCK / divm) <= FREQ_16MHZ);
+	assert(FREQ_2MHZ <= (STM32_HSI_CLOCK / divm));
+	assert((STM32_HSI_CLOCK / divm) <= FREQ_16MHZ);
 
 	/*
 	 * Ensure that we actually reach the target frequency.
 	 */
-	ASSERT((STM32_HSI_CLOCK / divm * divn / divp) == output_freq);
+	assert((STM32_HSI_CLOCK / divm * divn / divp) == output_freq);
 
 	/* Configure PLL1 using 64 Mhz HSI as input */
 	STM32_RCC_PLLCKSELR = STM32_RCC_PLLCKSEL_PLLSRC_HSI |
@@ -234,7 +234,7 @@ static enum freq clock_peripheral_configure(enum freq sysclk)
 		/* TODO(b/149512910): Adjust more peripheral prescalers */
 		return FREQ_200MHZ;
 	default:
-		ASSERT(0);
+		assert(0);
 		return 0;
 	}
 }
@@ -254,7 +254,7 @@ static void clock_enable_osc(enum clock_osc osc, bool enabled)
 		on = STM32_RCC_CR_PLL1ON;
 		break;
 	default:
-		ASSERT(0);
+		assert(0);
 		return;
 	}
 
@@ -310,7 +310,7 @@ static void switch_voltage_scale(enum voltage_scale vos)
 	 * SYS boost register. We currently do not implement this functionality.
 	 */
 	if (vos == VOLTAGE_SCALE0) {
-		ASSERT(0);
+		assert(0);
 		return;
 	}
 
@@ -333,7 +333,7 @@ static void clock_set_osc(enum clock_osc osc)
 	case OSC_PLL:
 		break;
 	default:
-		ASSERT(0);
+		assert(0);
 		return;
 	}
 
@@ -529,7 +529,7 @@ void __idle(void)
 			 * assert won't fire if we are already part way through
 			 * the watchdog period.
 			 */
-			ASSERT(next_delay < CONFIG_WATCHDOG_PERIOD_MS * MSEC);
+			assert(next_delay < CONFIG_WATCHDOG_PERIOD_MS * MSEC);
 
 			/* deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
