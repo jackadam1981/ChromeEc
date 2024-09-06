@@ -11,7 +11,7 @@
 #include "accelgyro.h"
 #include "accelgyro_bmi260.h"
 #include "accelgyro_bmi_common.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "hwtimer.h"
 #include "i2c.h"
@@ -259,7 +259,7 @@ static int perform_calib(struct motion_sensor_t *s, int enable)
 	/* LCOV_EXCL_START */
 	default:
 		/* Unreachable due to sensor type check above. */
-		ASSERT(false);
+		assert(false);
 		break;
 		/* LCOV_EXCL_STOP */
 	}
@@ -469,7 +469,7 @@ static int bmi_config_load(const struct motion_sensor_t *s)
 		burst_write_len = MIN(BMI_RAM_BUFFER_SIZE, burst_write_len);
 
 	/* We have to write the config even bytes of data every time */
-	ASSERT(((burst_write_len & 1) == 0) && (burst_write_len != 0));
+	assert(((burst_write_len & 1) == 0) && (burst_write_len != 0));
 
 	for (i = 0; i < bmi_config_tbin_len; i += burst_write_len) {
 		uint8_t addr[2];

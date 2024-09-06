@@ -5,7 +5,7 @@
  * Test thermal engine.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "driver/temp_sensor/thermistor.h"
@@ -515,7 +515,7 @@ static int test_ncp15wb_adc_to_temp(void)
 	/* Verify several datapoints are within 1C accuracy */
 	for (i = 0; i < ARRAY_SIZE(adc_temp_datapoints); ++i) {
 		temp = ncp15wb_calculate_temp(adc_temp_datapoints[i].adc);
-		ASSERT(temp >= adc_temp_datapoints[i].temp - 1 &&
+		assert(temp >= adc_temp_datapoints[i].temp - 1 &&
 		       temp <= adc_temp_datapoints[i].temp + 1);
 	}
 

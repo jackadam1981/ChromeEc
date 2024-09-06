@@ -5,7 +5,7 @@
 
 /* Utility functions for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "util.h"
@@ -203,7 +203,7 @@ bool is_aligned(uint32_t addr, uint32_t align)
 
 int alignment_log2(unsigned int x)
 {
-	ASSERT(x != 0); /* ctz(0) is undefined */
+	assert(x != 0); /* ctz(0) is undefined */
 	return __builtin_ctz(x);
 }
 
