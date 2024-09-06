@@ -9,6 +9,7 @@
 
 #define DT_DRV_COMPAT named_usbc_port
 
+#include "battery.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "hooks.h"
@@ -31,7 +32,7 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
+LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_DBG);
 
 /**
  * @brief Event triggered by sending an internal command
@@ -975,6 +976,9 @@ static void invalidate_charger_settings(struct pdc_port_t *port)
 	port->snk_policy.src.pdo_count = 0;
 	memset(port->src_policy.snk.pdos, 0, sizeof(uint32_t) * PDO_NUM);
 	port->src_policy.snk.pdo_count = 0;
+
+	atomic_clear_bit(port->snk_policy.flags,
+			 SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
 }
 
 /**
@@ -1061,6 +1065,9 @@ static bool handle_connector_status(struct pdc_port_t *port)
 	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
+	port->sink_path_en = status->sink_path_status;
+	LOG_DBG("C%d: Sink path status: %d", port_number,
+		status->sink_path_status);
 	/*
 	 * Set CCI_ACK flag to trigger sending ACK_CC_CI to clear the connector
 	 * change indicator bits which were just read as part of the connector
@@ -1396,6 +1403,11 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		 * a safe PDO.
 		 */
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
+	} else if (atomic_test_and_clear_bit(
+			   port->snk_policy.flags,
+			   SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
+		port->snk_typec_attached_local_state =
+			SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON;
 	} else {
 		send_pending_public_commands(port);
 	}
@@ -1885,7 +1897,7 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
 		break;
 	case SNK_ATTACHED_GET_RDO:
-		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
+		port->snk_attached_local_state = SNK_ATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_GET_RDO);
 		return;
 	case SNK_ATTACHED_SET_SINK_PATH:
@@ -1980,6 +1992,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_vbus_voltage(port->pdc, &port->vbus);
 		break;
 	case CMD_PDC_SET_SINK_PATH:
+		LOG_DBG("C%d: sink_path_en: %d", config->connector_num,
+			port->sink_path_en);
 		rv = pdc_set_sink_path(port->pdc, port->sink_path_en);
 		break;
 	case CMD_PDC_READ_POWER_LEVEL:
@@ -2393,18 +2407,18 @@ static void pdc_snk_typec_only_run(void *obj)
 	switch (port->snk_typec_attached_local_state) {
 	case SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT:
 		port->snk_typec_attached_local_state =
-			SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON;
+			SNK_TYPEC_ATTACHED_DEBOUNCE;
 
 		typec_set_input_current_limit(config->connector_num,
 					      port->typec_current_ma, 5000);
 
 		charge_manager_update_dualrole(config->connector_num,
 					       CAP_DEDICATED);
+
 		break;
 	case SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON:
-		port->snk_typec_attached_local_state =
-			SNK_TYPEC_ATTACHED_DEBOUNCE;
-		port->sink_path_en = true;
+		port->snk_typec_attached_local_state = SNK_TYPEC_ATTACHED_RUN;
+		port->sink_path_en = port->active_charge;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SNK_TYPEC_ATTACHED_DEBOUNCE:
@@ -2717,7 +2731,7 @@ static void init_port_variables(struct pdc_port_t *port)
 	port->get_pdo.updating = false;
 
 	/* Can charge from port by default */
-	port->active_charge = true;
+	port->active_charge = false;
 
 	port->last_state = PDC_INIT;
 	port->next_state = PDC_INIT;
@@ -2902,23 +2916,57 @@ uint8_t pdc_power_mgmt_get_usb_pd_port_count(void)
 
 int pdc_power_mgmt_set_active_charge_port(int charge_port)
 {
+	LOG_DBG("Active charge port: %d", charge_port);
+
 	if (charge_port == CHARGE_PORT_NONE) {
 		/* Disable all ports */
 		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			pdc_data[i]->port.active_charge = false;
-			atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
-				       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
+			if (pdc_power_mgmt_is_connected(i)) {
+				pdc_data[i]->port.active_charge = false;
+				atomic_set_bit(
+					pdc_data[i]->port.snk_policy.flags,
+					SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
+			}
 		}
 	} else if (is_pdc_port_valid(charge_port)) {
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			if (i == charge_port) {
-				pdc_data[i]->port.active_charge = true;
-			} else {
-				pdc_data[i]->port.active_charge = false;
+		if (battery_is_present() != BP_YES &&
+		    !pdc_data[charge_port]->port.sink_path_en) {
+			LOG_INF("System not powered by battery, setting new sink path not allowed");
+			for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+				if (pdc_data[i]->port.sink_path_en == true) {
+					charge_port = i;
+					LOG_DBG("Active charge port overriden with existing port: %d",
+						charge_port);
+					break;
+				}
 			}
-			atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
-				       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
 		}
+
+		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+			if (i != charge_port &&
+			    pdc_data[i]->port.sink_path_en) {
+				pdc_data[i]->port.active_charge = false;
+				atomic_set_bit(
+					pdc_data[i]->port.snk_policy.flags,
+					SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
+
+				int ret = WAIT_FOR(
+					pdc_data[i]->port.sink_path_en == false,
+					USEC_PER_SEC,
+					k_sleep(K_MSEC(LOOP_DELAY_MS)));
+
+				if (!ret) {
+					LOG_ERR("Timeout waiting for dsabling charge port %d",
+						i);
+				} else {
+					LOG_DBG("Charge port %d disabled", i);
+				}
+			}
+		}
+
+		pdc_data[charge_port]->port.active_charge = true;
+		atomic_set_bit(pdc_data[charge_port]->port.snk_policy.flags,
+			       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
 	}
 
 	return EC_SUCCESS;
