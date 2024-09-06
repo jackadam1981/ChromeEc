@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -462,8 +462,8 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 		gpio_set_level(CONFIG_I2C_SCL_GATE_GPIO, 1);
 #endif
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	assert(out || !out_bytes);
+	assert(in || !in_bytes);
 
 	/* Clear status */
 	if (xfer_start) {

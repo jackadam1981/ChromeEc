@@ -11,10 +11,10 @@
  */
 #line 13
 
+#include "assert.h"
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
@@ -1962,7 +1962,7 @@ int charge_set_input_current_limit(int ma, int mv)
 #ifdef CONFIG_OCPC
 void charge_set_active_chg_chip(int idx)
 {
-	ASSERT(idx < (int)board_get_charger_chip_count());
+	assert(idx < (int)board_get_charger_chip_count());
 
 	if (idx == curr.ocpc.active_chg_chip)
 		return;

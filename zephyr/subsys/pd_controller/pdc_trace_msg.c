@@ -7,8 +7,8 @@
  * USB PDC message tracing.
  */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"

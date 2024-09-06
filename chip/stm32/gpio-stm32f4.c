@@ -5,7 +5,7 @@
 
 /* GPIO module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "common.h"
 #include "gpio.h"
@@ -30,7 +30,7 @@ int gpio_required_clocks(void)
 	 * If no ports are in use, then system_is_reboot_warm
 	 * may not be valid.
 	 */
-	ASSERT(gpio_ports_used);
+	assert(gpio_ports_used);
 
 	return gpio_ports_used;
 }

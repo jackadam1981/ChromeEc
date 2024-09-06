@@ -11,7 +11,7 @@
  */
 #line 13
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "crc8.h"
 #include "host_command.h"

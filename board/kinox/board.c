@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "button.h"
 #include "cec.h"
 #include "charge_manager.h"
@@ -126,7 +126,7 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 static void adp_state_init(void)
 {
-	ASSERT(CHARGE_PORT_ENUM_COUNT == CHARGE_PORT_COUNT);
+	assert(CHARGE_PORT_ENUM_COUNT == CHARGE_PORT_COUNT);
 	/*
 	 * Initialize all charge suppliers to 0. The charge manager waits until
 	 * all ports have reported in before doing anything.

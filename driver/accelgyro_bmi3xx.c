@@ -11,7 +11,7 @@
 #include "accelgyro.h"
 #include "accelgyro_bmi323.h"
 #include "accelgyro_bmi_common.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "hwtimer.h"
 #include "i2c.h"
@@ -1029,7 +1029,7 @@ static int init(struct motion_sensor_t *s)
 	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
 
 	/* This driver requires a mutex */
-	ASSERT(s->mutex);
+	assert(s->mutex);
 
 	/*
 	 * BMI3xx driver only supports MOTIONSENSE_TYPE_ACCEL and
