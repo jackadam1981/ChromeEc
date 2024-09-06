@@ -5,7 +5,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -793,7 +793,7 @@ void prl_run(int port, int evt, int en)
 void prl_set_rev(int port, enum tcpci_msg_type type, enum pd_rev_type rev)
 {
 	/* We only store revisions for SOP* types. */
-	ASSERT(type < NUM_SOP_STAR_TYPES);
+	assert(type < NUM_SOP_STAR_TYPES);
 
 	pdmsg[port].rev[type] = rev;
 }
@@ -801,7 +801,7 @@ void prl_set_rev(int port, enum tcpci_msg_type type, enum pd_rev_type rev)
 enum pd_rev_type prl_get_rev(int port, enum tcpci_msg_type type)
 {
 	/* We only store revisions for SOP* types. */
-	ASSERT(type < NUM_SOP_STAR_TYPES);
+	assert(type < NUM_SOP_STAR_TYPES);
 
 	return pdmsg[port].rev[type];
 }

@@ -7,7 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "builtin/endian.h"
 #include "charge_manager.h"
 #include "charger.h"

@@ -12,7 +12,7 @@
 #line 13
 
 #include "atomic.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
@@ -148,7 +148,7 @@ int timer_arm(timestamp_t event, task_id_t tskid)
 {
 	timestamp_t now = get_time();
 
-	ASSERT(tskid < TASK_ID_COUNT);
+	assert(tskid < TASK_ID_COUNT);
 
 	if (timer_running & BIT(tskid))
 		return EC_ERROR_BUSY;
@@ -166,7 +166,7 @@ int timer_arm(timestamp_t event, task_id_t tskid)
 
 void timer_cancel(task_id_t tskid)
 {
-	ASSERT(tskid < TASK_ID_COUNT);
+	assert(tskid < TASK_ID_COUNT);
 
 	atomic_clear_bits((atomic_t *)&timer_running, BIT(tskid));
 	/*

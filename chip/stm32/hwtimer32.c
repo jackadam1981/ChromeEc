@@ -5,7 +5,7 @@
 
 /* Hardware 32-bit timer driver */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "clock_chip.h"
 #include "common.h"
@@ -45,7 +45,7 @@ uint32_t __hw_clock_source_read(void)
 
 void __hw_clock_source_set(uint32_t ts)
 {
-	ASSERT(!is_interrupt_enabled());
+	assert(!is_interrupt_enabled());
 
 	/*
 	 * Stop counter to avoid race between setting counter value

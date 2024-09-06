@@ -11,7 +11,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -106,7 +106,7 @@ static void pd_task_init(int port)
 	 * when CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT is enabled
 	 */
 	if (IS_ENABLED(CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT))
-		ASSERT(gpio_get_default_flags(_GPIO_CCD_MODE_ODL) &
+		assert(gpio_get_default_flags(_GPIO_CCD_MODE_ODL) &
 		       GPIO_ODR_HIGH);
 }
 

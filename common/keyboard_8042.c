@@ -12,7 +12,7 @@
 #line 13
 
 #include "atkbd_protocol.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "button.h"
 #include "chipset.h"
 #include "common.h"
@@ -402,8 +402,8 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 {
 	uint16_t make_code;
 
-	ASSERT(scan_code);
-	ASSERT(len);
+	assert(scan_code);
+	assert(len);
 
 	if (row >= KEYBOARD_ROWS || col >= keyboard_cols)
 		return EC_ERROR_INVAL;
@@ -500,7 +500,7 @@ test_mockable void keyboard_state_changed(int row, int col, int is_pressed)
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
 			      &len);
 	if (ret == EC_SUCCESS) {
-		ASSERT(len > 0);
+		assert(len > 0);
 		if (keystroke_enabled)
 			i8042_send_to_host(len, scan_code, CHAN_KBD, 0);
 	}
@@ -621,7 +621,7 @@ static int handle_mouse_data(uint8_t data, uint8_t *output, int *count)
 		return 0;
 	}
 
-	ASSERT(out_len <= MAX_SCAN_CODE_LEN);
+	assert(out_len <= MAX_SCAN_CODE_LEN);
 
 	*count = out_len;
 
@@ -779,13 +779,13 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 
 	/* For resend, keep output before leaving. */
 	if (out_len && save_for_resend) {
-		ASSERT(out_len <= MAX_SCAN_CODE_LEN);
+		assert(out_len <= MAX_SCAN_CODE_LEN);
 		for (i = 0; i < out_len; ++i)
 			resend_command[i] = output[i];
 		resend_command_len = out_len;
 	}
 
-	ASSERT(out_len <= MAX_SCAN_CODE_LEN);
+	assert(out_len <= MAX_SCAN_CODE_LEN);
 	return out_len;
 }
 
@@ -1126,7 +1126,7 @@ test_mockable void keyboard_update_button(enum keyboard_button_type button,
 	button_8042 = buttons_8042[button];
 	scancode_bytes(button_8042.scancode, is_pressed, code_set, scan_code,
 		       &len);
-	ASSERT(len > 0);
+	assert(len > 0);
 
 	if (button_8042.repeat) {
 		if (is_pressed)

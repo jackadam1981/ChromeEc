@@ -8,7 +8,7 @@
 #include "adc.h"
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "common.h"
@@ -1526,7 +1526,7 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 	int regval;
 
 	/* This should never be called against the primary charger. */
-	ASSERT(chgnum != CHARGER_PRIMARY);
+	assert(chgnum != CHARGER_PRIMARY);
 
 	/* Only B0+ silicon supports VSYS compensation. */
 	rv = isl923x_device_id(chgnum, &device_id);

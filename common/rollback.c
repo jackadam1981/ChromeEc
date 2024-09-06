@@ -5,7 +5,7 @@
 
 /* Rollback protection logic. */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "flash.h"
@@ -56,7 +56,7 @@ static int get_rollback_offset(int region)
 	int rollback_start_bank = crec_flash_bank_index(CONFIG_ROLLBACK_OFF);
 
 	rv = crec_flash_bank_start_offset(rollback_start_bank + region);
-	ASSERT(rv >= 0);
+	assert(rv >= 0);
 	return rv;
 #else
 	return CONFIG_ROLLBACK_OFF + region * CONFIG_FLASH_ERASE_SIZE;
@@ -210,9 +210,9 @@ static int get_rollback_erase_size_bytes(int region)
 
 	erase_size = crec_flash_bank_erase_size(rollback_start_bank + region);
 #endif
-	ASSERT(erase_size > 0);
-	ASSERT(ROLLBACK_REGIONS * erase_size <= CONFIG_ROLLBACK_SIZE);
-	ASSERT(sizeof(struct rollback_data) <= erase_size);
+	assert(erase_size > 0);
+	assert(ROLLBACK_REGIONS * erase_size <= CONFIG_ROLLBACK_SIZE);
+	assert(sizeof(struct rollback_data) <= erase_size);
 	return erase_size;
 }
 

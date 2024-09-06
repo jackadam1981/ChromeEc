@@ -4,7 +4,7 @@
  */
 
 #include "bluetooth_le.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "util.h"
 
@@ -26,7 +26,7 @@ int chan2freq(int channel)
 {
 	int freq;
 
-	ASSERT(channel < 40 && channel >= 0);
+	assert(channel < 40 && channel >= 0);
 
 	switch (channel) {
 	case 37: /* Advertising */

@@ -6,7 +6,7 @@
 /* LCOV_EXCL_START - TCPMv1 is difficult to meaningfully test: b/304349098. */
 
 #include "atomic.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
