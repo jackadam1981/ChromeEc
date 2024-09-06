@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37d1789_b00ed596",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-06T08:16:09Z",
+      "side": 1,
+      "message": "I am wondering you should initialize the GPIO, and use gpio_set_level for toggling ?",
+      "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
