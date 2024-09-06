@@ -43,6 +43,7 @@
 		.charging_max_c = DT_PROP(node, charging_max_c),             \
 		.discharging_min_c = DT_PROP(node, discharging_min_c),       \
 		.discharging_max_c = DT_PROP(node, discharging_max_c),       \
+		.vendor_param_start = DT_PROP(node, vendor_param_start),     \
 	},
 
 #define NODE_BATT_PARAMS(node)                                              \

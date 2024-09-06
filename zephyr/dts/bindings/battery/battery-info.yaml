@@ -67,3 +67,7 @@ properties:
        Maximum working temperature of battery.
        If temperature is above this value, the system will shutdown.
     type: int
+  vendor_param_start:
+    description: |
+       vendor param start
+    type: int

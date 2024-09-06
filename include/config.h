@@ -606,7 +606,7 @@
  * write arbirary vendor-specific parameters stored in the battery.
  * See include/battery.h for prototypes.
  */
-#undef CONFIG_BATTERY_VENDOR_PARAM
+#define CONFIG_BATTERY_VENDOR_PARAM
 
 /*
  * TODO(crosbug.com/p/29467): allows charging of a dead battery that
@@ -2600,7 +2600,7 @@
  * Host command parameters and response are 32-bit aligned.  This generates
  * much more efficient code on ARM.
  */
-#undef CONFIG_HOSTCMD_ALIGNED
+#define CONFIG_HOSTCMD_ALIGNED
 
 /*
  * Include host commands to fetch battery information from

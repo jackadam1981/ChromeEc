@@ -55,3 +55,5 @@ properties:
     default: -20
   discharging_max_c:
     default: 60
+  vendor_param_start:
+    default: 0x31
