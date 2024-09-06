@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -38,7 +38,7 @@ int get_sda_from_i2c_port(int port, enum gpio_signal *sda)
 	const struct i2c_port_t *i2c_port = get_i2c_port(port);
 
 	/* Crash if the port given is not in the i2c_ports[] table. */
-	ASSERT(i2c_port);
+	assert(i2c_port);
 
 	/* Check if the SCL and SDA pins have been defined for this port. */
 	if (i2c_port->scl == 0 && i2c_port->sda == 0)
@@ -53,7 +53,7 @@ int get_scl_from_i2c_port(int port, enum gpio_signal *scl)
 	const struct i2c_port_t *i2c_port = get_i2c_port(port);
 
 	/* Crash if the port given is not in the i2c_ports[] table. */
-	ASSERT(i2c_port);
+	assert(i2c_port);
 
 	/* Check if the SCL and SDA pins have been defined for this port. */
 	if (i2c_port->scl == 0 && i2c_port->sda == 0)

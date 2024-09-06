@@ -5,8 +5,8 @@
 
 /* USB mux high-level driver. */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -470,7 +470,7 @@ static void perform_mux_init(int port)
 {
 	int rv;
 
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	if (port >= board_get_usb_pd_port_count()) {
 		return;

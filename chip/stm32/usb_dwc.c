@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "common.h"
 #include "config.h"
@@ -401,15 +401,15 @@ int initialize_in_transfer(const void *source, uint32_t len)
 
 #ifdef CONFIG_USB_DWC_FS
 	/* FS OTG port does not support DMA or external phy */
-	ASSERT(!(usb->dma_en));
-	ASSERT(usb->phy_type == USB_PHY_INTERNAL);
-	ASSERT(usb->speed == USB_SPEED_FS);
-	ASSERT(usb->irq == STM32_IRQ_OTG_FS);
+	assert(!(usb->dma_en));
+	assert(usb->phy_type == USB_PHY_INTERNAL);
+	assert(usb->speed == USB_SPEED_FS);
+	assert(usb->irq == STM32_IRQ_OTG_FS);
 #else
 	/* HS OTG port requires an external phy to support HS */
-	ASSERT(!((usb->phy_type == USB_PHY_INTERNAL) &&
+	assert(!((usb->phy_type == USB_PHY_INTERNAL) &&
 		 (usb->speed == USB_SPEED_HS)));
-	ASSERT(usb->irq == STM32_IRQ_OTG_HS);
+	assert(usb->irq == STM32_IRQ_OTG_HS);
 #endif
 
 	/* Copy the data into our FIFO buffer */

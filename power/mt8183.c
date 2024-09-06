@@ -5,7 +5,7 @@
 
 /* mt8183 chipset power control module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
@@ -570,7 +570,7 @@ enum power_state power_handle_state(enum power_state state)
 
 	default:
 		CPRINTS("Unexpected power state %d", state);
-		ASSERT(0);
+		assert(0);
 		break;
 	}
 

@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "hbm.h"
@@ -1005,7 +1005,7 @@ void heci_rx_task(void)
 	heci_bus_ctx.ipc_handle = ipc_open(IPC_PEER_ID_HOST, IPC_PROTOCOL_HECI,
 					   EVENT_FLAG_BIT_HECI_MSG);
 
-	ASSERT(heci_bus_ctx.ipc_handle != IPC_INVALID_HANDLE);
+	assert(heci_bus_ctx.ipc_handle != IPC_INVALID_HANDLE);
 
 	/* get ipc handle */
 	ipc_handle = heci_bus_ctx.ipc_handle;

@@ -6,9 +6,9 @@
 /* Guybrush board-specific configuration */
 
 #include "adc.h"
+#include "assert.h"
 #include "base_fw_config.h"
 #include "board_fw_config.h"
-#include "builtin/assert.h"
 #include "button.h"
 #include "common.h"
 #include "cros_board_info.h"
@@ -290,7 +290,7 @@ __override int board_c1_ps8818_mux_set(const struct usb_mux *me,
  */
 uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me)
 {
-	ASSERT(me->usb_port == USBC_PORT_C1);
+	assert(me->usb_port == USBC_PORT_C1);
 	return 0x2a;
 }
 
