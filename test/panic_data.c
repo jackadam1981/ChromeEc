@@ -11,13 +11,13 @@
 
 static int get_assert_line(void)
 {
-	/* Returned number should point to ASSERT(0) line below */
+	/* Returned number should point to assert(0) line below */
 	return __LINE__ + 5;
 }
 
 static void crash_system(void)
 {
-	ASSERT(0);
+	assert(0);
 }
 
 test_static int test_panic_data(void)

@@ -8406,7 +8406,7 @@ pd_get_am_discovery(int port, enum tcpci_msg_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		assert(0);
-	ASSERT(type < DISCOVERY_TYPE_COUNT);
+	assert(type < DISCOVERY_TYPE_COUNT);
 
 	return &pe[port].discovery[type];
 }

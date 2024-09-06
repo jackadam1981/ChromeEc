@@ -413,7 +413,7 @@ static void test_aes_gcm_speed(void)
 
 	uint8_t *encrypted_data = tmp;
 
-	ASSERT(plaintext.size() <= sizeof(tmp));
+	assert(plaintext.size() <= sizeof(tmp));
 
 	benchmark.run("AES-GCM encrypt", [&]() {
 		bssl::ScopedEVP_AEAD_CTX ctx;
@@ -421,7 +421,7 @@ static void test_aes_gcm_speed(void)
 		int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(),
 					    key.data(), key.size(), tag.size(),
 					    nullptr);
-		ASSERT(ret == 1);
+		assert(ret == 1);
 
 		size_t out_tag_len = 0;
 
@@ -435,8 +435,8 @@ static void test_aes_gcm_speed(void)
 			plaintext.data(), plaintext.size(), extra_input.data(),
 			extra_input.size(), additional_data.data(),
 			additional_data.size());
-		ASSERT(ret == 1);
-		ASSERT(out_tag_len == tag.size());
+		assert(ret == 1);
+		assert(out_tag_len == tag.size());
 	});
 
 	benchmark.run("AES-GCM decrypt", [&]() {
@@ -445,7 +445,7 @@ static void test_aes_gcm_speed(void)
 		int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(),
 					    key.data(), key.size(), tag.size(),
 					    nullptr);
-		ASSERT(ret == 1);
+		assert(ret == 1);
 
 		std::span<uint8_t> additional_data; /* no additional data */
 		ret = EVP_AEAD_CTX_open_gather(ctx.get(), plaintext.data(),
@@ -454,7 +454,7 @@ static void test_aes_gcm_speed(void)
 					       tag.data(), tag.size(),
 					       additional_data.data(),
 					       additional_data.size());
-		ASSERT(ret == 1);
+		assert(ret == 1);
 	});
 	benchmark.print_results();
 }

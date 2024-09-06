@@ -248,7 +248,7 @@ void host_packet_receive(struct host_packet *pkt)
 	 * Response buffer needs to be big enough for a header.  If it's not
 	 * we can't even return an error packet.
 	 */
-	ASSERT(pkt->response_max >= sizeof(struct ec_host_response));
+	assert(pkt->response_max >= sizeof(struct ec_host_response));
 
 	/* Start checksum and copy request header if necessary */
 	if (pkt->request_temp) {

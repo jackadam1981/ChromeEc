@@ -316,12 +316,12 @@ static int stm32_configure_pll(enum clock_osc osc, uint8_t m, uint8_t n,
 		return -1;
 	}
 
-	ASSERT(m > 0 && m < 9);
+	assert(m > 0 && m < 9);
 	val &= ~STM32_RCC_PLLCFGR_PLLM_MSK;
 	val |= (m - 1) << STM32_RCC_PLLCFGR_PLLM_POS;
 
 	/* Max and min values are from TRM */
-	ASSERT(n > 7 && n < 87);
+	assert(n > 7 && n < 87);
 	val &= ~STM32_RCC_PLLCFGR_PLLN_MSK;
 	val |= n << STM32_RCC_PLLCFGR_PLLN_POS;
 
@@ -446,7 +446,7 @@ static void clock_set_osc(enum clock_osc osc, enum clock_osc pll_osc)
 			freq = stm32_configure_pll(pll_osc, STM32_PLLM,
 						   STM32_PLLN, STM32_PLLR);
 		}
-		ASSERT(freq > 0);
+		assert(freq > 0);
 
 		if (freq > 26000000U) {
 			/* Change to Range 0/1 if Freq > 26MHz */
@@ -965,7 +965,7 @@ void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
 	}
 
 	/* Alarm timeout must be within 1 day (86400 seconds) */
-	ASSERT((delay_s + delay_us / SECOND) < SECS_PER_DAY);
+	assert((delay_s + delay_us / SECOND) < SECS_PER_DAY);
 
 	pre_work_set_rtc_alarm();
 	rtc_read(rtc);

@@ -845,7 +845,7 @@ static void charge_manager_refresh(void)
 		}
 
 		/* 'Dont charge' request must be accepted. */
-		ASSERT(new_port != CHARGE_PORT_NONE);
+		assert(new_port != CHARGE_PORT_NONE);
 
 		/*
 		 * The board rejected the offered port & supplier. Clear the

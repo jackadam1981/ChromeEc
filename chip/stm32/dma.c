@@ -88,8 +88,8 @@ void dma_select_channel(enum dma_channel channel, unsigned char stream)
 	const unsigned char mask = BIT(shift) - 1;
 	uint32_t val;
 
-	ASSERT(ch < STM32_DMAC_PER_CTLR);
-	ASSERT(stream <= mask);
+	assert(ch < STM32_DMAC_PER_CTLR);
+	assert(stream <= mask);
 	val = STM32_DMA_CSELR(channel) & ~(mask << ch * shift);
 	STM32_DMA_CSELR(channel) = val | (stream << ch * shift);
 }

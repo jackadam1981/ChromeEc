@@ -470,7 +470,7 @@ static void perform_mux_init(int port)
 {
 	int rv;
 
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	if (port >= board_get_usb_pd_port_count()) {
 		return;

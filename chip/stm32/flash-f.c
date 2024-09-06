@@ -675,7 +675,7 @@ int flash_physical_set_rdp_level(enum flash_rdp_level level)
 		 * go from Level 1 to Level 0, which triggers a mass erase.
 		 * Remove assert if you want to use it.
 		 */
-		ASSERT(false);
+		assert(false);
 		reg_level = FLASH_OPTCR_RDP_LEVEL_0;
 		break;
 	case FLASH_RDP_LEVEL_1:
@@ -686,7 +686,7 @@ int flash_physical_set_rdp_level(enum flash_rdp_level level)
 		 * Asserting by default since it's permanent (there is no
 		 * way to reverse). Remove assert if you want to use it.
 		 */
-		ASSERT(false);
+		assert(false);
 		reg_level = FLASH_OPTCR_RDP_LEVEL_2;
 		break;
 	default:

@@ -53,7 +53,7 @@ static void get_storage_path(char *out)
 	sz = readlink("/proc/self/exe", buf, PATH_MAX - 1);
 	buf[sz] = '\0';
 
-	ASSERT(sz <= max_len);
+	assert(sz <= max_len);
 
 	/* replace / by underscores in the path to get the shared memory name */
 	current = strchr(buf, '/');
@@ -64,11 +64,11 @@ static void get_storage_path(char *out)
 
 	sz = snprintf(out, PATH_MAX - 1, "/dev/shm/EC_persist_%.*s", max_len,
 		      buf);
-	ASSERT(sz > 0);
+	assert(sz > 0);
 
 	out[PATH_MAX - 1] = '\0';
 
-	ASSERT(sz <= max_len + max_prefix_len);
+	assert(sz <= max_len + max_prefix_len);
 }
 
 FILE *get_persistent_storage(const char *tag, const char *mode)
@@ -78,7 +78,7 @@ FILE *get_persistent_storage(const char *tag, const char *mode)
 	int sz;
 
 	/* There's no longer tag in use right now, and there shouldn't be. */
-	ASSERT(strlen(tag) < 32);
+	assert(strlen(tag) < 32);
 
 	/*
 	 * The persistent storage with tag 'foo' for test 'bar' would
@@ -87,7 +87,7 @@ FILE *get_persistent_storage(const char *tag, const char *mode)
 	get_storage_path(buf);
 	sz = snprintf(path, PATH_MAX - 1, "%.*s_%32s", max_len + max_prefix_len,
 		      buf, tag);
-	ASSERT(sz > 0);
+	assert(sz > 0);
 	path[PATH_MAX - 1] = '\0';
 
 	return fopen(path, mode);
@@ -105,12 +105,12 @@ void remove_persistent_storage(const char *tag)
 	int sz;
 
 	/* There's no longer tag in use right now, and there shouldn't be. */
-	ASSERT(strlen(tag) < 32);
+	assert(strlen(tag) < 32);
 
 	get_storage_path(buf);
 	sz = snprintf(path, PATH_MAX - 1, "%.*s_%32s", max_len + max_prefix_len,
 		      buf, tag);
-	ASSERT(sz > 0);
+	assert(sz > 0);
 	path[PATH_MAX - 1] = '\0';
 
 	unlink(path);

@@ -207,7 +207,7 @@ static enum tcpc_transmit_complete it83xx_tx_data(enum usbpd_port port,
 	/* clear msg length */
 	IT83XX_USBPD_MTSR1(port) &= (~0x7);
 	/* Limited by PD_HEADER_CNT() */
-	ASSERT(length <= 0x7);
+	assert(length <= 0x7);
 
 	if (length) {
 		/* set data bit */

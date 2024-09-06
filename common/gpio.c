@@ -201,7 +201,7 @@ int gpio_power_down_module(enum module_id id)
 void gpio_set_level_verbose(enum console_channel channel,
 			    enum gpio_signal signal, int value)
 {
-	ASSERT(signal_is_gpio(signal));
+	assert(signal_is_gpio(signal));
 	cprints(channel, "Set %s: %d", gpio_get_name(signal), value);
 	gpio_set_level(signal, value);
 }

@@ -467,7 +467,7 @@ int fan_table_to_rpm(int fan, int *temp)
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i)
 		prev_tmp[i] = avg_tmp[i];
 
-	ASSERT(current_level < NUM_FAN_LEVELS);
+	assert(current_level < NUM_FAN_LEVELS);
 
 	switch (fan) {
 	case FAN_CH_0:

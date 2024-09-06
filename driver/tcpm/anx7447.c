@@ -289,7 +289,7 @@ static int anx7447_init(int port)
 	const struct usb_mux_chain *me = &usb_muxes[port];
 	bool unused;
 
-	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	memset(&anx[port], 0, sizeof(struct anx_state));
 
@@ -525,7 +525,7 @@ void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
 	 * it doesn't have a re-driver). If that changes, we need to update this
 	 * code.
 	 */
-	ASSERT(!(me->flags & USB_MUX_FLAG_NOT_TCPC));
+	assert(!(me->flags & USB_MUX_FLAG_NOT_TCPC));
 
 	anx7447_set_hpd_level(port, hpd_lvl);
 
@@ -582,7 +582,7 @@ static int anx7447_mux_init(const struct usb_mux *me)
 		return EC_ERROR_UNKNOWN;
 	}
 
-	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	memset(&mux[port], 0, sizeof(struct anx_usb_mux));
 

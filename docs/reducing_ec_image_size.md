@@ -343,23 +343,23 @@ equivalent configuration option, so there is also no Kconfig equivalent.
 
 ## Other optional features
 
-### ASSERT() Calls
+### assert() Calls
 
-By default, `ASSERT()` calls generate a console message of the following form:
+By default, `assert()` calls generate a console message of the following form:
 
 ```
     ASSERTION FAILURE '<expr>' in function() at file:line
 ```
 
 There are two options available that reduce the size of strings stored with the
-`ASSERT()` calls.
+`assert()` calls.
 
 <!-- mdformat off(Don't format table) -->
 
 Description | cros-ec setting | zephyr-ec setting | Total Savings
 :--- | :--- | :--- | :---
 Display only file and line number | `#define CONFIG_DEBUG_ASSERT_BRIEF` | `CONFIG_PLATFORM_EC_DEBUG_ASSERT_BRIEF=y` | 2000-2500 bytes
-Disable all debug from ASSERT() calls.<br> EC is reset using a software breakpoint. | `#undef CONFIG_DEBUG_ASSERT_REBOOTS` | `CONFIG_PLATFORM_EC_DEBUG_ASSERT_REBOOTS=n`<br>`CONFIG_PLATFORM_EC_DEBUG_ASSERT_BREAKPOINT=y` | 3000-4000 bytes
+Disable all debug from assert() calls.<br> EC is reset using a software breakpoint. | `#undef CONFIG_DEBUG_ASSERT_REBOOTS` | `CONFIG_PLATFORM_EC_DEBUG_ASSERT_REBOOTS=n`<br>`CONFIG_PLATFORM_EC_DEBUG_ASSERT_BREAKPOINT=y` | 3000-4000 bytes
 
 <!-- mdformat on -->
 

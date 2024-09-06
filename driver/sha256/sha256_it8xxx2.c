@@ -82,7 +82,7 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 	uint32_t *p = (uint32_t *)data;
 
 	/* Requires 4-byte alignment */
-	ASSERT(len % 4 == 0);
+	assert(len % 4 == 0);
 
 	while (rem_len) {
 		uint32_t tmp, x = p[data_index++];

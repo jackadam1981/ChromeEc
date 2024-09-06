@@ -41,10 +41,10 @@ static void flash_set_persistent(void)
 	FILE *f = get_persistent_storage("flash", "wb");
 	int sz;
 
-	ASSERT(f != NULL);
+	assert(f != NULL);
 
 	sz = fwrite(__host_flash, sizeof(__host_flash), 1, f);
-	ASSERT(sz == 1);
+	assert(sz == 1);
 
 	release_persistent_storage(f);
 }
@@ -62,14 +62,14 @@ static void flash_get_persistent(void)
 	}
 
 	sz = fread(__host_flash, sizeof(__host_flash), 1, f);
-	ASSERT(sz == 1);
+	assert(sz == 1);
 
 	release_persistent_storage(f);
 }
 
 int crec_flash_physical_write(int offset, int size, const char *data)
 {
-	ASSERT((size & (CONFIG_FLASH_WRITE_SIZE - 1)) == 0);
+	assert((size & (CONFIG_FLASH_WRITE_SIZE - 1)) == 0);
 
 	if (flash_pre_op() != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
@@ -85,7 +85,7 @@ int crec_flash_physical_write(int offset, int size, const char *data)
 
 int crec_flash_physical_erase(int offset, int size)
 {
-	ASSERT((size & (CONFIG_FLASH_ERASE_SIZE - 1)) == 0);
+	assert((size & (CONFIG_FLASH_ERASE_SIZE - 1)) == 0);
 
 	if (flash_pre_op() != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;

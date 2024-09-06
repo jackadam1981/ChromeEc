@@ -375,7 +375,7 @@ static enum ec_error_list battery_get_fet_status_regval(int *regval)
 	int rv;
 	uint8_t data[6];
 
-	ASSERT(params);
+	assert(params);
 
 	/* Read the status of charge/discharge FETs */
 	if (params->fuel_gauge.flags & FUEL_GAUGE_FLAG_MFGACC) {
