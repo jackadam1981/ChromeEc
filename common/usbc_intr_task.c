@@ -11,7 +11,7 @@
  */
 #line 13
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -93,7 +93,7 @@ void pd_interrupt_handler_task(void *p)
 	const int port = (int)((intptr_t)p);
 	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
 
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	/*
 	 * If port does not exist, return

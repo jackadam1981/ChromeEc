@@ -11,7 +11,7 @@
 #ifndef __CROS_EC_KEYBOARD_RAW_H
 #define __CROS_EC_KEYBOARD_RAW_H
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "gpio_signal.h"
 #include "keyboard_config.h"

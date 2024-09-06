@@ -4,7 +4,7 @@
  */
 
 #include "adc.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -560,7 +560,7 @@ void pd_hw_init_rx(int port)
 		phy->tim_rx->ccmr2 |= TIM_CCR_CS << 8;
 	else
 		/*  Unsupported RX timer capture input */
-		ASSERT(0);
+		assert(0);
 
 	phy->tim_rx->ccer = 0xB << ((TIM_RX_CCR_IDX(port) - 1) * 4);
 	/* configure DMA request on CCRx update */

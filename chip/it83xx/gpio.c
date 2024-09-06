@@ -5,7 +5,7 @@
 
 /* GPIO module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "common.h"
 #include "gpio.h"
@@ -898,7 +898,7 @@ static void __gpio_irq(void)
 	int irq = intc_get_ec_int();
 
 	/* assert failure if interrupt number is zero */
-	ASSERT(irq);
+	assert(irq);
 
 #if defined(HAS_TASK_KEYSCAN) && !defined(CONFIG_KEYBOARD_DISCRETE)
 	if (irq == IT83XX_IRQ_WKINTC) {

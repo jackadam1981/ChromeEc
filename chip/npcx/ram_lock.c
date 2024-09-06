@@ -5,7 +5,7 @@
 
 /* RAM lock control for NPCX */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "mpu.h"

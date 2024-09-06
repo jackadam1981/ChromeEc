@@ -6,7 +6,7 @@
  * SPI flash driver for Chrome EC.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -586,7 +586,7 @@ static int command_spi_flashwrite(int argc, const char **argv)
 		bytes -= write_len;
 	}
 
-	ASSERT(bytes == 0);
+	assert(bytes == 0);
 
 	return rv;
 }
@@ -644,7 +644,7 @@ static int command_spi_flashread(int argc, const char **argv)
 		bytes -= read_len;
 	}
 
-	ASSERT(bytes == 0);
+	assert(bytes == 0);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(spi_flashread, command_spi_flashread, "offset bytes",

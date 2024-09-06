@@ -11,7 +11,7 @@
 
 #include "accel_bma2x2.h"
 #include "accelgyro.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "i2c.h"
@@ -274,7 +274,7 @@ static int init(struct motion_sensor_t *s)
 	int ret = 0, tries = 0, val, reg, reset_field;
 
 	/* This driver requires a mutex */
-	ASSERT(s->mutex);
+	assert(s->mutex);
 
 	ret = raw_read8(s->port, s->i2c_spi_addr_flags, BMA2x2_CHIP_ID_ADDR,
 			&val);

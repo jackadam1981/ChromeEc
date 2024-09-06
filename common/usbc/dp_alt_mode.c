@@ -9,8 +9,8 @@
  * section 5.2
  */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"

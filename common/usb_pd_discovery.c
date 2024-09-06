@@ -5,7 +5,7 @@
  * Alternate Mode Discovery storage, access, and helpers
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"
