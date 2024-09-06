@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ad6f98_74c3b7ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-06T22:18:59Z",
+      "side": 1,
+      "message": "Good catch/fix. I have read through this code numerous times and never noticed how wrong it was.",
+      "revId": "dd3ebce6157dda17d94d4b8bb59713307cf6daec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157b0c05_0dbb26cd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 6813,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-06T22:18:59Z",
+      "side": 1,
+      "message": "You\u0027ve found several problems here. I think it would be easier to say what the logic should be here than to list the things it\u0027s currently doing wrong:\n1. First, we should check `tc_is_vconn_src`. If it\u0027s true, we should Accept.\n2. If we\u0027re not VCONN Source, we should check `tc_check_vconn_swap`. If it returns true, we should Accept. If it returns false, we should Reject.\n\nNote that we are only allowed to send Wait if we are not currently VCONN Source, so the request would be for us to become VCONN Source. The only scenario I can think of where it would make sense to send Wait would be if\n* the board is not capable of sourcing VCONN in its current power state, but\n* the board is currently transitioning to a power state where it _will_ be capable of sourcing VCONN.\n\nAt present, `pd_check_vconn_swap`, the board function that checks power states, does not have this capability. Adding meaningful support for Wait would be a new feature and one that probably has minimal value. We shouldn\u0027t need it to pass compliance. For now, I\u0027d suggest just removing Wait support and leaving a comment explaining why it isn\u0027t here.",
+      "revId": "dd3ebce6157dda17d94d4b8bb59713307cf6daec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

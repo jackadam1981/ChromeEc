@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7f8d8a_3a79f485",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 6808,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-06T22:18:59Z",
+      "side": 0,
+      "message": "I believe this comment was correct as-is, although it could use some parentheses for clarification. The PD spec requires the current VCONN Source to Accept a VCONN_Swap. So we only want to check what the DPM thinks if we are _not_ VCONN Source.\n\nAs noted elsewhere, we don\u0027t have meaningful Wait support, so it might be best to remove condition 3 (and leave a small note acknowledging that this is where it would go if we supported it).",
+      "revId": "b0c38a08703da00de72c365645e604cd48d23e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
