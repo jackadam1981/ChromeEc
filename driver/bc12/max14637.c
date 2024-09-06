@@ -12,7 +12,7 @@
  * the system will have to charge ramp.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
@@ -179,7 +179,7 @@ static void max14637_usb_charger_task_init(const int port)
 {
 	const struct max14637_config_t *const cfg = &max14637_config[port];
 
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	/*
 	 * Have chip enable active as default state so data switches are closed
 	 * and bc1.2 client side detection is not activated when the port power

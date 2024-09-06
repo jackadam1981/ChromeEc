@@ -6,9 +6,9 @@
 /* Motion sense module to read from various motion sensors. */
 
 #include "accelgyro.h"
+#include "assert.h"
 #include "atomic.h"
 #include "body_detection.h"
-#include "builtin/assert.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -284,10 +284,10 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 
 	BUILD_ASSERT(SENSOR_COUNT < 32);
 #if defined(HAS_TASK_CONSOLE)
-	ASSERT((in_deferred_context()) ||
+	assert((in_deferred_context()) ||
 	       (task_get_current() == TASK_ID_CONSOLE));
 #elif !defined(CONFIG_ZTEST)
-	ASSERT(in_deferred_context());
+	assert(in_deferred_context());
 #endif /* HAS_TASK_CONSOLE */
 
 	/* Initialize accelerometers. */
@@ -338,7 +338,7 @@ static void motion_sense_switch_sensor_rate(void)
 	struct motion_sensor_t *sensor;
 	unsigned int sensor_setup_mask = 0;
 
-	ASSERT(in_deferred_context());
+	assert(in_deferred_context());
 
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
@@ -615,8 +615,8 @@ static void update_sense_data(uint8_t *lpc_status, int *psample_id)
 
 static int motion_sense_read(struct motion_sensor_t *sensor)
 {
-	ASSERT(sensor->state == SENSOR_READY);
-	ASSERT(sensor->drv->get_data_rate(sensor) != 0);
+	assert(sensor->state == SENSOR_READY);
+	assert(sensor->drv->get_data_rate(sensor) != 0);
 
 	/*
 	 * If the sensor is in spoof mode, the readings are already present in
@@ -702,7 +702,7 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 	int has_data_read = 0;
 	int sensor_num = sensor - motion_sensors;
 
-	ASSERT(task_get_current() == TASK_ID_MOTIONSENSE);
+	assert(task_get_current() == TASK_ID_MOTIONSENSE);
 
 	if (*event & TASK_EVENT_MOTION_ODR_CHANGE) {
 		const int sensor_bit = 1 << sensor_num;

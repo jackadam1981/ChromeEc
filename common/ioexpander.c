@@ -5,7 +5,7 @@
 
 /* IO Expander Controller Common Code */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "ioexpander.h"
@@ -24,7 +24,7 @@ static const struct ioex_info *ioex_get_signal_info(enum ioex_signal signal)
 {
 	const struct ioex_info *g;
 
-	ASSERT(signal_is_ioex(signal));
+	assert(signal_is_ioex(signal));
 
 	g = ioex_list + signal - IOEX_SIGNAL_START;
 

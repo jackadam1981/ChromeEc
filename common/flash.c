@@ -11,7 +11,7 @@
  */
 #line 13
 
-#include "builtin/assert.h"
+#include "assert.h"
 #ifdef CONFIG_ZEPHYR
 #include "cbi_flash.h"
 #endif /* CONFIG_ZEPHYR */
@@ -163,7 +163,7 @@ int crec_flash_bank_size(int bank)
 		return -1;
 
 	rv = BIT(info->size_exp);
-	ASSERT(rv > 0);
+	assert(rv > 0);
 	return rv;
 }
 
@@ -176,7 +176,7 @@ int crec_flash_bank_erase_size(int bank)
 		return -1;
 
 	rv = BIT(info->erase_size_exp);
-	ASSERT(rv > 0);
+	assert(rv > 0);
 	return rv;
 }
 
