@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4ebfa76_05e949c6",
+        "filename": "zephyr/dts/bindings/battery/SIMPLO,CP856932.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-09-06T09:08:37Z",
+      "side": 1,
+      "message": "What if another battery\u0027s yaml doesn\u0027t provide a \"vendor_param_start\" field, will it cause any errors?",
+      "revId": "61894c87ae5312162a2a10f8a109f0720a416920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "387f91af_368e533c",
         "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
         "patchSetId": 1
