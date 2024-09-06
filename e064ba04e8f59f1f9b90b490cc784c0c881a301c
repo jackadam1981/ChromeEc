@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "600d3e81_103bc1ed",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-06T21:28:23Z",
+      "side": 1,
+      "message": "Yes, this works. I think the `status-\u003esink_path_status \u003d\u003d 0` is sufficient to prevent the loop",
+      "parentUuid": "1e619da0_d41b6f65",
+      "range": {
+        "startLine": 1121,
+        "startChar": 7,
+        "endLine": 1125,
+        "endChar": 24
+      },
+      "revId": "e064ba04e8f59f1f9b90b490cc784c0c881a301c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0de29853_be1cdf5f",
         "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
         "patchSetId": 1
