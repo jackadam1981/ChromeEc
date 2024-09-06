@@ -9,10 +9,10 @@
  */
 #line 11
 
+#include "assert.h"
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -8406,7 +8406,7 @@ pd_get_am_discovery(int port, enum tcpci_msg_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		assert(0);
-	ASSERT(type < DISCOVERY_TYPE_COUNT);
+	assert(type < DISCOVERY_TYPE_COUNT);
 
 	return &pe[port].discovery[type];
 }

@@ -5,7 +5,7 @@
 
 /* Timer module */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
@@ -24,7 +24,7 @@ int crec_usleep(unsigned int us)
 		return 0;
 	}
 
-	ASSERT(!in_interrupt_context() &&
+	assert(!in_interrupt_context() &&
 	       task_get_current() != TASK_ID_INT_GEN);
 
 	task_wait_event(us);

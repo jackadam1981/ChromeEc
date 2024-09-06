@@ -9,7 +9,7 @@
  * These functions are shared by the STM32F0 and STM32L variants.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "gpio_chip.h"
 #include "registers.h"
@@ -129,7 +129,7 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		STM32_GPIO_OTYPER(port) &= ~mask;
 
 	/* Set up interrupts if necessary */
-	ASSERT(!(flags & (GPIO_INT_F_LOW | GPIO_INT_F_HIGH)));
+	assert(!(flags & (GPIO_INT_F_LOW | GPIO_INT_F_HIGH)));
 	if (flags & GPIO_INT_F_RISING)
 		STM32_EXTI_RTSR |= mask;
 	if (flags & GPIO_INT_F_FALLING)

@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "crc.h"
@@ -228,7 +228,7 @@ int pd_dequeue_bits(int port, int off, int len, uint32_t *val)
 	int i;
 
 	/* Rx must have started to receive message */
-	ASSERT(pd_phy[port].rx_started);
+	assert(pd_phy[port].rx_started);
 
 	if (pd_phy[port].total <= off + len - PREAMBLE_OFFSET)
 		return -1;
@@ -245,9 +245,9 @@ int pd_find_preamble(int port)
 
 int pd_write_preamble(int port)
 {
-	ASSERT(pd_phy[port].preamble_written == 0);
+	assert(pd_phy[port].preamble_written == 0);
 	pd_phy[port].preamble_written = 1;
-	ASSERT(pd_phy[port].has_msg == 0);
+	assert(pd_phy[port].has_msg == 0);
 	return 0;
 }
 
@@ -293,7 +293,7 @@ void pd_tx_clear_circular_mode(int port)
 
 int pd_start_tx(int port, int polarity, int bit_len)
 {
-	ASSERT(pd_phy[port].hw_init_done);
+	assert(pd_phy[port].hw_init_done);
 	pd_phy[port].has_msg = 0;
 	pd_phy[port].preamble_written = 0;
 	pd_phy[port].verified_idx = 0;
@@ -316,7 +316,7 @@ void pd_tx_done(int port, int polarity)
 
 void pd_rx_start(int port)
 {
-	ASSERT(pd_phy[port].hw_init_done);
+	assert(pd_phy[port].hw_init_done);
 
 	task_wake(TASK_ID_TEST_RUNNER);
 	task_wait_event(-1);
@@ -326,7 +326,7 @@ void pd_rx_start(int port)
 
 void pd_rx_complete(int port)
 {
-	ASSERT(pd_phy[port].hw_init_done);
+	assert(pd_phy[port].hw_init_done);
 	pd_test_reset_phy(port);
 }
 
@@ -337,7 +337,7 @@ int pd_rx_started(int port)
 
 void pd_rx_enable_monitoring(int port)
 {
-	ASSERT(pd_phy[port].hw_init_done);
+	assert(pd_phy[port].hw_init_done);
 	pd_phy[port].rx_monitoring = 1;
 }
 
