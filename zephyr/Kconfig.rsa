@@ -73,4 +73,18 @@ config PLATFORM_EC_RO_PUBKEY_STORAGE_OFF
 	help
 	  Offset of the RWSIG public key, relative to RO firmware.
 
+config PLATFORM_EC_RO_PUBKEY_READ_ADDR
+	hex "Address of RO pubkey for mapped storage devices"
+	default $(dt_node_int_prop_int,/binman/wp-ro/ec-ro/key-ro,offset)
+	help
+	  Address of the RWSIG public key, relative to RO firmware. Different from
+	  the storage offset since it includes a mapped storage offset
+
+config PLATFORM_EC_RWSIG_READ_ADDR
+	hex "Address of RW signature for mapped storage devices"
+	default $(dt_node_int_prop_int,/binman/ec-rw/rw-fw/sig-rw,offset)
+	help
+	  Address of the RW signature, relative to RW firmware. It includes a
+	  mapped storage offset
+
 endif # PLATFORM_EC_RWSIG
