@@ -6,7 +6,7 @@
  */
 
 #include "battery.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "extpower.h"
 #include "hooks.h"
@@ -178,7 +178,7 @@ static int bq27621_probe(void)
 	int battery_type_id;
 
 	/* Delays need to be added for correct operation at > 100Kbps */
-	ASSERT(i2c_ports[I2C_PORT_BATTERY].kbps <= 100);
+	assert(i2c_ports[I2C_PORT_BATTERY].kbps <= 100);
 
 	rv = bq27621_write(REG_CTRL, CONTROL_DEVICE_TYPE);
 	rv |= bq27621_read(REG_CTRL, &battery_type_id);

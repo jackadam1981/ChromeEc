@@ -5,7 +5,7 @@
 
 /* MPU module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "cpu.h"
 #include "mpu.h"
@@ -207,7 +207,7 @@ int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
 				      &consumed);
 	if (rv != EC_SUCCESS)
 		return rv;
-	ASSERT(consumed <= size);
+	assert(consumed <= size);
 	addr += consumed;
 	size -= consumed;
 
@@ -217,7 +217,7 @@ int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
 					      enable, &consumed);
 		if (rv != EC_SUCCESS)
 			return rv;
-		ASSERT(consumed <= size);
+		assert(consumed <= size);
 		addr += consumed;
 		size -= consumed;
 	}

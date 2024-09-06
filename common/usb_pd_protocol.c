@@ -9,7 +9,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "board.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -367,7 +367,7 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 {
 #ifdef CONFIG_USB_PD_REV30
 	/* TCPMv1 Only stores PD revision for SOP and SOP' types */
-	ASSERT(type < NUM_SOP_STAR_TYPES - 1);
+	assert(type < NUM_SOP_STAR_TYPES - 1);
 
 	return pd[port].rev;
 #else

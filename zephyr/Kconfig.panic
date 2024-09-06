@@ -30,7 +30,7 @@ config PLATFORM_EC_CONSOLE_CMD_CRASH
 	  the 'crash' command which supports generating various exceptions,
 	  selected by its parameter:
 
-	     assert              - assertion failure (ASSERT() macro)
+	     assert              - assertion failure (assert() macro)
 	     divzero             - division by zero
 	     udivzero            - division of unsigned value by zero
 	     stack (if enabled)  - stack overflow

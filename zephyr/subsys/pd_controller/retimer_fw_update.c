@@ -7,7 +7,7 @@
  * Source file for retimer firmware update using Power Delivery chip.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "usb_mux.h"
 #include "usbc/utils.h"
 
@@ -338,7 +338,7 @@ int usb_retimer_fw_update_get_result(void)
 
 void usb_retimer_fw_update_process_op(int port, int op)
 {
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	last_op = op;
 	last_port = port;

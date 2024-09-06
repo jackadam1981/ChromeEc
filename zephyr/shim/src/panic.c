@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "panic.h"
 #include "system_safe_mode.h"

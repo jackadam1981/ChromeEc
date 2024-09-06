@@ -9,7 +9,7 @@
  */
 #line 11
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "hooks.h"
@@ -332,7 +332,7 @@ void usb_retimer_fw_update_process_op_cb(int port)
 
 void usb_retimer_fw_update_process_op(int port, int op)
 {
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	assert(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	/*
 	 * The order of requests from host are:

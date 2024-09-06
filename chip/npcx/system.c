@@ -5,7 +5,7 @@
 
 /* System module for Chrome EC : NPCX hardware specific implementation */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "clock_chip.h"
 #include "common.h"
@@ -962,7 +962,7 @@ void system_pre_init(void)
 		}
 
 		/* Don't set PSL_OUT to open-drain if it is the level mode */
-		ASSERT((opt_flag & NPCX_PSL_CFG_PSL_OUT_PULSE) ||
+		assert((opt_flag & NPCX_PSL_CFG_PSL_OUT_PULSE) ||
 		       !(opt_flag & NPCX_PSL_CFG_PSL_OUT_OD));
 
 		if (opt_flag & NPCX_PSL_CFG_PSL_OUT_OD)

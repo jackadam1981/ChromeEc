@@ -11,7 +11,7 @@
  */
 #line 13
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"

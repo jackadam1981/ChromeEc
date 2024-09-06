@@ -10,7 +10,7 @@
  */
 
 #include "bd99992gw.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -70,7 +70,7 @@ static void bd99992gw_init(void)
 				temp_sensors[i].idx;
 
 	/* Make sure we don't have too many active channels. */
-	ASSERT(active_channel_count <= ARRAY_SIZE(active_channels));
+	assert(active_channel_count <= ARRAY_SIZE(active_channels));
 
 	/* Mark the first unused channel so we know where to stop searching */
 	if (active_channel_count != ARRAY_SIZE(active_channels))

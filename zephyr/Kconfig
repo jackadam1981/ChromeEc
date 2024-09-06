@@ -372,7 +372,7 @@ config PLATFORM_EC_DEBUG_ASSERT
 
 	     ASSERTION FAILURE '<expr>' in function() at file:line
 
-	  Note: There is also ASSERT() which is an alias of assert(), used in
+	  Note: There is also assert() which is an alias of assert(), used in
 	  host code where cstdlib is used.
 
 config PLATFORM_EC_DEDICATED_RECOVERY_BUTTON

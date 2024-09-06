@@ -71,7 +71,7 @@ SECTIONS
 		 * text section to avoid gap.
 		 */
 		__flash_dma_start = .;
-		ASSERT((__flash_dma_start == 0),
+		assert((__flash_dma_start == 0),
 		       "__flash_dma_start has to be 4k-byte aligned");
 #endif
 		KEEP(STRINGIFY(OUTDIR/core/CORE/init.o) (.text.vecttable))
@@ -88,7 +88,7 @@ SECTIONS
 		KEEP(*(.ram_code))
 
 		__flash_dma_size = . - __flash_dma_start;
-		ASSERT((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
+		assert((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
 		       "__flash_dma_size < IT83XX_ILM_BLOCK_SIZE");
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 		__ilm0_ram_code = .;
@@ -273,7 +273,7 @@ SECTIONS
 #endif
 
 #ifdef CONFIG_CHIP_INIT_ROM_REGION
-	ASSERT(0, "CONFIG_CHIP_INIT_ROM_REGION not supported by linker script")
+	assert(0, "CONFIG_CHIP_INIT_ROM_REGION not supported by linker script")
 #endif /* CONFIG_CHIP_INIT_ROM_REGION */
 		/*
 		 * This linker file does not yet support a separate ROM resident
@@ -318,7 +318,7 @@ SECTIONS
 	} > IRAM
 	__preserved_logs_size = __preserved_logs_end - __preserved_logs_start;
 #ifdef CONFIG_IT83XX_HARD_RESET_BY_GPG1
-	ASSERT(__preserved_logs_size <= CHIP_FLASH_PRESERVE_LOGS_SIZE,
+	assert(__preserved_logs_size <= CHIP_FLASH_PRESERVE_LOGS_SIZE,
 	       "Not enough flash space to save EC logs.")
 #endif
 #endif /* CONFIG_PRESERVE_LOGS */
@@ -380,7 +380,7 @@ SECTIONS
 		__shared_mem_buf = .;
 	} > IRAM
 
-	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
+	assert((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
 	       "Not enough space for shared memory.")
 
@@ -411,7 +411,7 @@ SECTIONS
 
 #if defined(SECTION_IS_RW) && (CONFIG_FLASH_WRITE_SIZE > 0)
 	/* Alignment is needed by flash_command_write() for RW update. */
-	ASSERT(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
+	assert(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
 	       "Error: RW image is not aligned to CONFIG_FLASH_WRITE_SIZE")
 #endif
 
@@ -440,7 +440,7 @@ SECTIONS
 		__h2ram_end = .;
 	} > H2RAM
 
-	ASSERT((__h2ram_end) <= (CONFIG_H2RAM_BASE + CONFIG_H2RAM_SIZE),
+	assert((__h2ram_end) <= (CONFIG_H2RAM_BASE + CONFIG_H2RAM_SIZE),
 	       "Not enough space for h2ram section.")
 #endif
 #endif /* CHIP_FAMILY_IT8XXX2 */

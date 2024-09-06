@@ -421,7 +421,7 @@ SECTIONS
 		__preserved_logs_end = .;
 	} > IRAM
 
-	ASSERT((SIZEOF(.preserve_logs) + CONFIG_RAM_BASE) ==
+	assert((SIZEOF(.preserve_logs) + CONFIG_RAM_BASE) ==
 	       __preserved_logs_end,
 	       "preserve_logs must be at CONFIG_RAM_BASE.")
 #endif
@@ -489,7 +489,7 @@ SECTIONS
 		/* NOTHING MAY GO AFTER THIS! */
 	} > IRAM AT > DATA_LMA_MEM_REGION
 
-	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
+	assert((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
 	       "Not enough space for shared memory.")
 
@@ -504,7 +504,7 @@ SECTIONS
 	{
 		KEEP(*(.got*));
 	}
-	ASSERT(SIZEOF(.got) == 0, "GOT section found, but not supported.\
+	assert(SIZEOF(.got) == 0, "GOT section found, but not supported.\
  Make sure that all code is compiled without -fPIC.")
 
 #ifdef CONFIG_CHIP_DATA_IN_INIT_ROM
@@ -544,7 +544,7 @@ SECTIONS
 #endif
 #if defined(SECTION_IS_RW) && (CONFIG_FLASH_WRITE_SIZE > 0)
 	/* Alignment is needed by flash_command_write() for RW update. */
-	ASSERT(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
+	assert(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
 	       "Error: RW image is not aligned to CONFIG_FLASH_WRITE_SIZE")
 #endif
 #endif /* CONFIG_CHIP_INIT_ROM_REGION */
@@ -565,7 +565,7 @@ SECTIONS
 	 * apparently because we're sending it into IRAM, not FLASH.
 	 * Verify that all sections linked into the FLASH region will fit.
 	 */
-	ASSERT((LENGTH(EC_IMAGE_LMA_MEM_REGION)
+	assert((LENGTH(EC_IMAGE_LMA_MEM_REGION)
 #if defined(CONFIG_RWSIG) && defined(SECTION_IS_RO)
 	       - CONFIG_RO_PUBKEY_SIZE
 #endif
@@ -615,7 +615,7 @@ SECTIONS
 	 * The layout assumes the ROM_RESIDENT region follows the FLASH
 	 * region.
 	 */
-	ASSERT((ORIGIN(FLASH) + LENGTH(FLASH)) == ORIGIN(ROM_RESIDENT),
+	assert((ORIGIN(FLASH) + LENGTH(FLASH)) == ORIGIN(ROM_RESIDENT),
 		".init_rom section must follow the flash section")
 
 	.init_rom INIT_ROM_LMA : {
@@ -644,7 +644,7 @@ SECTIONS
 	 * The end of the .fill region should also be the start of the ROM
 	 * resident region.
 	 */
-	ASSERT(__fill_end == ORIGIN(ROM_RESIDENT),
+	assert(__fill_end == ORIGIN(ROM_RESIDENT),
 		".fill region end not aligned to start of ROM_RESIDENT region")
 
 	/*

@@ -5,7 +5,7 @@
 
 /* System : hardware specific implementation */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock_chip.h"
 #include "console.h"
 #include "cpu.h"
@@ -110,11 +110,11 @@ void system_reset(int flags)
 		save_flags |= EC_RESET_FLAG_HARD;
 
 	/* Reset flags are 32-bits, but save only 16 bits. */
-	ASSERT(!(save_flags >> 16));
+	assert(!(save_flags >> 16));
 	SCP_GPR[0] = (save_flags << 16) | (SCP_GPR[0] & 0xffff);
 
 	/* SCP can not hard reset itself */
-	ASSERT(!(flags & SYSTEM_RESET_HARD));
+	assert(!(flags & SYSTEM_RESET_HARD));
 
 	if (flags & SYSTEM_RESET_WAIT_EXT) {
 		int i;

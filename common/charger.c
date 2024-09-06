@@ -12,7 +12,7 @@
 #line 13
 
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "common.h"
@@ -526,7 +526,7 @@ test_mockable enum ec_error_list charger_discharge_on_ac(int enable)
 
 enum ec_error_list charger_enable_bypass_mode(int chgnum, bool enable)
 {
-	ASSERT(chgnum >= 0 && chgnum < board_get_charger_chip_count());
+	assert(chgnum >= 0 && chgnum < board_get_charger_chip_count());
 
 	if (!chg_chips[chgnum].drv->enable_bypass_mode)
 		return EC_ERROR_UNIMPLEMENTED;

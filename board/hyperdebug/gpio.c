@@ -6,7 +6,7 @@
 
 #include "adc.h"
 #include "atomic.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock_chip.h"
 #include "cmsis-dap.h"
 #include "common.h"
@@ -424,9 +424,9 @@ replace(struct monitoring_slot_t *slot,
 	size_t instruction_offset =
 		instr->location - THUMB_CODE_TO_DATA_PTR(&edge_int);
 	size_t instruction_size = instr->location_end - instr->location;
-	ASSERT(instr->table_end - instr->table ==
+	assert(instr->table_end - instr->table ==
 	       instr->count * instruction_size);
-	ASSERT(index < instr->count);
+	assert(index < instr->count);
 	(void)instruction_offset;
 	memcpy(slot->code + instruction_offset,
 	       THUMB_CODE_TO_DATA_PTR(instr->table) + index * instruction_size,
@@ -561,7 +561,7 @@ static void board_gpio_init(void)
 {
 	size_t interrupt_handler_size = THUMB_CODE_TO_DATA_PTR(&edge_int_end) -
 					THUMB_CODE_TO_DATA_PTR(&edge_int);
-	ASSERT(interrupt_handler_size <= sizeof(monitoring_slots[0].code));
+	assert(interrupt_handler_size <= sizeof(monitoring_slots[0].code));
 
 	/* Mark every slot as unused. */
 	for (int i = 0; i < ARRAY_SIZE(monitoring_slots); i++)
@@ -1541,8 +1541,8 @@ extern struct snippet_t finish_snippet;
 void append_snippet(uint8_t **code_ptr, const struct snippet_t *snippet,
 		    size_t index)
 {
-	ASSERT(index < snippet->count);
-	ASSERT((snippet->table_end - snippet->table) % (snippet->count * 2) ==
+	assert(index < snippet->count);
+	assert((snippet->table_end - snippet->table) % (snippet->count * 2) ==
 	       0);
 	size_t snippet_size =
 		(snippet->table_end - snippet->table) / snippet->count;
