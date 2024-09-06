@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "gpio.h"
 #include "ioexpander.h"
@@ -15,7 +15,7 @@ static int last_val_changed(enum ioex_signal signal, int v)
 {
 	const int i = signal - IOEX_SIGNAL_START;
 
-	ASSERT(signal_is_ioex(signal));
+	assert(signal_is_ioex(signal));
 
 	if (v && !(last_val[i / 8] & (BIT(i % 8)))) {
 		last_val[i / 8] |= BIT(i % 8);

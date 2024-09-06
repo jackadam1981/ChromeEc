@@ -5,7 +5,7 @@
 
 /* PECI interface for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "hooks.h"
 #include "peci.h"
@@ -98,7 +98,7 @@ int peci_transaction(struct peci_data *peci)
 	IT83XX_PECI_HOTRADDR = peci->addr;
 
 	/* This register is the write length field of the PECI protocol. */
-	ASSERT(peci->w_len <= PECI_WRITE_DATA_FIFO_SIZE);
+	assert(peci->w_len <= PECI_WRITE_DATA_FIFO_SIZE);
 
 	if (peci->cmd_code == PECI_CMD_PING) {
 		/* write length is 0 */
@@ -128,7 +128,7 @@ int peci_transaction(struct peci_data *peci)
 	}
 
 	/* This register is the read length field of the PECI protocol. */
-	ASSERT(peci->r_len <= PECI_READ_DATA_FIFO_SIZE);
+	assert(peci->r_len <= PECI_READ_DATA_FIFO_SIZE);
 	IT83XX_PECI_HORDLR = peci->r_len;
 
 	/* This register is the command field of the PECI protocol. */

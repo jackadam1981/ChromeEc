@@ -11,7 +11,7 @@
 
 #include "accel_bma422.h"
 #include "accelgyro.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "hwtimer.h"
@@ -318,7 +318,7 @@ static int bma4_reg_to_odr(uint8_t reg)
 	 * we can only cause undefined behavior if the register value is too
 	 * large; it's only wrong if reg = 0, not undefined.
 	 */
-	ASSERT(reg >= 1 && reg <= 15);
+	assert(reg >= 1 && reg <= 15);
 	return 12800000 >> (0xf - reg);
 }
 
@@ -381,7 +381,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int round)
 	} else {
 		uint8_t odr_reg_val = bma4_odr_to_reg(rate);
 
-		ASSERT((odr_reg_val & BMA4_ACCEL_ODR_MSK) == odr_reg_val &&
+		assert((odr_reg_val & BMA4_ACCEL_ODR_MSK) == odr_reg_val &&
 		       odr_reg_val != 0);
 
 		if (data->odr == 0) {
@@ -534,7 +534,7 @@ static int init(struct motion_sensor_t *s)
 	struct accelgyro_saved_data_t *data = s->drv_data;
 
 	/* This driver requires a mutex. Assert if mutex is not supplied. */
-	ASSERT(s->mutex);
+	assert(s->mutex);
 
 	/* Read accelerometer's CHID ID */
 	RETURN_ERROR(bma4_read8(s, BMA4_CHIP_ID_ADDR, &reg_val));
@@ -612,7 +612,7 @@ test_mockable void bma4xx_interrupt(enum gpio_signal signal)
 static void process_fifo_data(struct motion_sensor_t *s, uint8_t *data,
 			      size_t data_bytes, uint32_t timestamp)
 {
-	ASSERT(data_bytes % 6 == 0);
+	assert(data_bytes % 6 == 0);
 
 	for (int i = 0; i < data_bytes; i += 6) {
 		int *v = s->raw_xyz;

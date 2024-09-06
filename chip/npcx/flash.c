@@ -5,7 +5,7 @@
 
 /* Flash memory module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "flash.h"
 #include "hooks.h"
@@ -78,7 +78,7 @@ static void flash_execute_cmd(uint8_t code, uint8_t cts)
 	 * Flash mutex must be held while executing UMA commands after
 	 * task_start().
 	 */
-	ASSERT(!task_start_called() || flash_lock.lock);
+	assert(!task_start_called() || flash_lock.lock);
 
 	/* set UMA_CODE */
 	NPCX_UMA_CODE = code;

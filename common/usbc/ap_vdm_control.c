@@ -8,7 +8,7 @@
  * Note: this is mutually exclusive with EC VDM control
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
 #include "console.h"
