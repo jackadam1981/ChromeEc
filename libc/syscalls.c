@@ -125,86 +125,86 @@ K_MUTEX_R_DEFINE(__lock___env_recursive_mutex);
 
 void __retarget_lock_init(_LOCK_T *lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	*lock = malloc(sizeof(mutex_t));
-	ASSERT(*lock != NULL);
+	assert(*lock != NULL);
 
 	memset(*lock, 0, sizeof(mutex_t));
 }
 
 void __retarget_lock_close(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	free(lock);
 }
 
 void __retarget_lock_acquire(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_lock((mutex_t *)lock);
 }
 
 int __retarget_lock_try_acquire(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	return mutex_try_lock((mutex_t *)lock);
 }
 
 void __retarget_lock_release(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_unlock((mutex_t *)lock);
 }
 
 void __retarget_lock_init_recursive(_LOCK_T *lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	*lock = malloc(sizeof(struct mutex_r));
-	ASSERT(*lock != NULL);
+	assert(*lock != NULL);
 
 	mutex_init_recursive((struct mutex_r *)*lock);
 }
 
 void __retarget_lock_close_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	free(lock);
 }
 
 void __retarget_lock_acquire_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_lock_recursive((struct mutex_r *)lock);
 }
 
 int __retarget_lock_try_acquire_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	return mutex_try_lock_recursive((struct mutex_r *)lock);
 }
 
 void __retarget_lock_release_recursive(_LOCK_T lock)
 {
-	ASSERT(lock != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(lock != NULL);
+	assert(!in_interrupt_context());
 
 	mutex_unlock_recursive((struct mutex_r *)lock);
 }

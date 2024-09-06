@@ -418,7 +418,7 @@ static int command_crash(int argc, const char **argv)
 	}
 
 	if (!strcasecmp(argv[1], "assert")) {
-		ASSERT(0);
+		assert(0);
 	} else if (!strcasecmp(argv[1], "divzero")) {
 		volatile int zero = 0;
 

@@ -64,7 +64,7 @@ static void usb_charge_set_control_mode(int port_id, int mode)
 
 static void usb_charge_set_enabled(int port_id, int en)
 {
-	ASSERT(port_id < CONFIG_USB_PORT_POWER_SMART_PORT_COUNT);
+	assert(port_id < CONFIG_USB_PORT_POWER_SMART_PORT_COUNT);
 	/*
 	 * Only enable valid ports.
 	 */

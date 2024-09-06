@@ -25,7 +25,7 @@ void pwm_set_duty(enum pwm_channel ch, int percent)
 	const struct pwm_t *pwm = pwm_channels + ch;
 	timer_ctlr_t *tim = (timer_ctlr_t *)(pwm->tim.base);
 
-	ASSERT((percent >= 0) && (percent <= 100));
+	assert((percent >= 0) && (percent <= 100));
 	tim->ccr[pwm->channel] = percent;
 }
 

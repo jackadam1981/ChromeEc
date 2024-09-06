@@ -38,7 +38,7 @@ const void *init_rom_map(const void *addr, int size)
 	 */
 	offset = (uintptr_t)addr;
 
-	ASSERT(offset <= __INT_MAX__);
+	assert(offset <= __INT_MAX__);
 
 	/*
 	 * Convert flash offset to memory mapped address

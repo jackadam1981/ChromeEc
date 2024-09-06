@@ -198,11 +198,11 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	 * important to make sure srcAddr, dstAddr and size of transactions
 	 * are 16 bytes aligned in case failure occurs.
 	 */
-	ASSERT((size % chunkSize) == 0 && (srcAddr % chunkSize) == 0 &&
+	assert((size % chunkSize) == 0 && (srcAddr % chunkSize) == 0 &&
 	       (dstAddr % chunkSize) == 0);
 
 	/* Check valid address for jumpiing */
-	ASSERT(exeAddr != 0x0);
+	assert(exeAddr != 0x0);
 
 	/* Enable power for the Low Power RAM */
 	CLEAR_BIT(NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_6), 6);

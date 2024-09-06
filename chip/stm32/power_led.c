@@ -45,7 +45,7 @@ void powerled_set_state(enum powerled_state new_state)
 
 static void power_led_set_duty(int percent)
 {
-	ASSERT((percent >= 0) && (percent <= 100));
+	assert((percent >= 0) && (percent <= 100));
 	power_led_percent = percent;
 	pwm_set_duty(PWM_CH_POWER_LED, percent);
 }

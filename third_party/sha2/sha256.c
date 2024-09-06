@@ -280,7 +280,7 @@ static void hmac_SHA256_step(uint8_t *output, uint8_t mask,
 void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
 		 const uint8_t *message, const int message_len) {
 	/* This code does not support key_len > block_size. */
-	ASSERT(key_len <= SHA256_BLOCK_SIZE);
+	assert(key_len <= SHA256_BLOCK_SIZE);
 
 	/*
 	 * i_key_pad = key (zero-padded) ^ 0x36

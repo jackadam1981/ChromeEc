@@ -170,8 +170,8 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	int rv = EC_SUCCESS;
 	int i;
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	assert(out || !out_bytes);
+	assert(in || !in_bytes);
 
 	dump_i2c_reg(port, "xfer start");
 

@@ -409,9 +409,9 @@ static int chip_fmpi2c_xfer(const int port, const uint16_t addr_8bit,
 	int rv = EC_SUCCESS;
 	int i;
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
-	ASSERT(!started);
+	assert(out || !out_bytes);
+	assert(in || !in_bytes);
+	assert(!started);
 
 	if (STM32_FMPI2C_ISR(port) & FMPI2C_ISR_BUSY) {
 		CPRINTS("fmpi2c port %d busy", port);
@@ -554,9 +554,9 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	int i;
 	const struct i2c_port_t *p = find_port(port);
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
-	ASSERT(!started);
+	assert(out || !out_bytes);
+	assert(in || !in_bytes);
+	assert(!started);
 
 	if (p->port == STM32F4_FMPI2C_PORT) {
 		return chip_fmpi2c_xfer(port, addr_8bit, out, out_bytes, in,

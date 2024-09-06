@@ -704,7 +704,7 @@ void ipc_mng_task(void)
 	handle = ipc_open(IPC_PEER_ID_HOST, IPC_PROTOCOL_MNG,
 			  EVENT_FLAG_BIT_MNG_MSG);
 
-	ASSERT(handle != IPC_INVALID_HANDLE);
+	assert(handle != IPC_INVALID_HANDLE);
 
 	ipc_send_reset_notify(handle);
 

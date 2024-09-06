@@ -787,7 +787,7 @@ void run_test(int argc, const char **argv)
 	 * Set the TPM seed here because it can only be set once and cannot be
 	 * cleared.
 	 */
-	ASSERT(fpsensor_state_mock_set_tpm_seed(default_fake_tpm_seed) ==
+	assert(fpsensor_state_mock_set_tpm_seed(default_fake_tpm_seed) ==
 	       EC_SUCCESS);
 
 	/* The following test requires TPM seed to be already set. */

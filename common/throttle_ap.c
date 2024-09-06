@@ -113,7 +113,7 @@ static void prochot_input_deferred(void)
 	/*
 	 * Validate board called throttle_ap_config_prochot().
 	 */
-	ASSERT(prochot_cfg);
+	assert(prochot_cfg);
 
 	prochot_in = gpio_get_level(prochot_cfg->gpio_prochot_in);
 

@@ -117,7 +117,7 @@ static void i2c_set_timingr_port(const struct i2c_port_t *p)
 	int index;
 	uint32_t timingr;
 
-	ASSERT(port < I2C_PORT_COUNT);
+	assert(port < I2C_PORT_COUNT);
 	base = i2c_regs_base[port];
 
 	/*
@@ -168,7 +168,7 @@ static void i2c_init_port(const struct i2c_port_t *p)
 	int port = p->port;
 	uint32_t base;
 
-	ASSERT(port < I2C_PORT_COUNT);
+	assert(port < I2C_PORT_COUNT);
 	base = i2c_regs_base[port];
 
 	/*
@@ -229,7 +229,7 @@ static int wait_isr(int port, int mask)
 	uint32_t delta;
 	uint32_t base;
 
-	ASSERT(port < I2C_PORT_COUNT);
+	assert(port < I2C_PORT_COUNT);
 	base = i2c_regs_base[port];
 
 	do {
@@ -271,11 +271,11 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	int xfer_stop = flags & I2C_XFER_STOP;
 	uint32_t base;
 
-	ASSERT(port < I2C_PORT_COUNT);
+	assert(port < I2C_PORT_COUNT);
 	base = i2c_regs_base[port];
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	assert(out || !out_bytes);
+	assert(in || !in_bytes);
 
 	/* Clear status */
 	if (xfer_start) {

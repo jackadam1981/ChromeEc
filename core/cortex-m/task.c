@@ -253,7 +253,7 @@ task_id_t task_get_current(void)
 {
 #ifdef CONFIG_DEBUG_BRINGUP
 	/* If we haven't done a context switch then our task ID isn't valid */
-	ASSERT(current_task != (task_ *)scratchpad);
+	assert(current_task != (task_ *)scratchpad);
 #endif
 	return current_task - tasks;
 }
@@ -316,10 +316,10 @@ void svc_handler(int desched, task_id_t resched)
 		 */
 		tasks_ready &= ~(1 << (current - tasks));
 	}
-	ASSERT(resched <= TASK_ID_COUNT);
+	assert(resched <= TASK_ID_COUNT);
 	tasks_ready |= 1 << resched;
 
-	ASSERT(tasks_ready & tasks_enabled);
+	assert(tasks_ready & tasks_enabled);
 	next = __task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
 
 #ifdef CONFIG_TASK_PROFILING
@@ -421,14 +421,14 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 	 * - Escalation to Hard Fault (also known as 'priority escalation')
 	 *   occurs when handler for that fault is not enabled
 	 */
-	ASSERT(is_interrupt_enabled());
-	ASSERT(!in_interrupt_context());
+	assert(is_interrupt_enabled());
+	assert(!in_interrupt_context());
 
 	if (timeout_us > 0) {
 		timestamp_t deadline = get_time();
 		deadline.val += timeout_us;
 		ret = timer_arm(deadline, me);
-		ASSERT(ret == EC_SUCCESS);
+		assert(ret == EC_SUCCESS);
 	}
 	while (!(evt = atomic_clear(&tsk->events))) {
 		/* Remove ourself and get the next task in the scheduler */
@@ -446,7 +446,7 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 void task_set_event(task_id_t tskid, uint32_t event)
 {
 	task_ *receiver = __task_id_to_ptr(tskid);
-	ASSERT(receiver);
+	assert(receiver);
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
@@ -887,7 +887,7 @@ void mutex_lock(struct mutex *mtx)
 	 * mutex_lock() must not be used in interrupt context (because we wait
 	 * if there is contention).
 	 */
-	ASSERT(!in_interrupt_context());
+	assert(!in_interrupt_context());
 
 	/*
 	 * Task ID is not valid before task_start() (since current_task is
@@ -914,7 +914,7 @@ int mutex_try_lock(struct mutex *mtx)
 	uint32_t value;
 
 	/* mutex_try_lock() must not be used in interrupt context. */
-	ASSERT(!in_interrupt_context());
+	assert(!in_interrupt_context());
 
 	/*
 	 * Task ID is not valid before task_start() (since current_task is

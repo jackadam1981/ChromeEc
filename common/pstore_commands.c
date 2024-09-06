@@ -16,7 +16,7 @@ pstore_command_get_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pstore_info *r = args->response;
 
-	ASSERT(EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE <=
+	assert(EEPROM_BLOCK_START_PSTORE + EEPROM_BLOCK_COUNT_PSTORE <=
 	       eeprom_get_block_count());
 
 	r->pstore_size = EEPROM_BLOCK_COUNT_PSTORE * eeprom_get_block_size();
