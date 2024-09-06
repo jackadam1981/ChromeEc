@@ -556,7 +556,7 @@ static enum tcpc_transmit_complete it8xxx2_tx_data(enum usbpd_port port,
 				    (retry_count << 6);
 
 	/* Limited by PD_HEADER_CNT() */
-	ASSERT(length <= 0x7);
+	assert(length <= 0x7);
 
 	if (length)
 		/* Set data */

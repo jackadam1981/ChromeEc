@@ -226,7 +226,7 @@ void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
 	}
 
 	/* Alarm timeout must be within 1 day (86400 seconds) */
-	ASSERT((delay_s + delay_us / SECOND) < SECS_PER_DAY);
+	assert((delay_s + delay_us / SECOND) < SECS_PER_DAY);
 
 	pre_work_set_rtc_alarm();
 	rtc_read(rtc);

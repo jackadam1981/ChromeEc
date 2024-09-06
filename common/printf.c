@@ -469,7 +469,7 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 
 			vstr = uint64_to_str(intbuf, sizeof(intbuf), v,
 					     precision, base, c == 'X');
-			ASSERT(vstr);
+			assert(vstr);
 
 			/*
 			 * Precision field was interpreted by fixed-point

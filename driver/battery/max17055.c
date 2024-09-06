@@ -384,7 +384,7 @@ static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
 	    max17055_write(REG_LOCK2, 0x00c4))
 		return EC_ERROR_UNKNOWN;
 
-	ASSERT(config->ocv_table);
+	assert(config->ocv_table);
 
 	/* Write ocv data */
 	for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {

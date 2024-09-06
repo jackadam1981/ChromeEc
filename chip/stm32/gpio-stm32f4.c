@@ -30,7 +30,7 @@ int gpio_required_clocks(void)
 	 * If no ports are in use, then system_is_reboot_warm
 	 * may not be valid.
 	 */
-	ASSERT(gpio_ports_used);
+	assert(gpio_ports_used);
 
 	return gpio_ports_used;
 }

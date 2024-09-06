@@ -15,7 +15,7 @@ BUILD_ASSERT(sizeof(atomic_t) * 8 >= TASK_ID_COUNT);
 
 void mutex_init_recursive(struct mutex_r *mtx)
 {
-	ASSERT(mtx != NULL);
+	assert(mtx != NULL);
 
 	mtx->state = MUTEX_R_UNLOCKED;
 	mtx->waiters = 0;
@@ -28,8 +28,8 @@ void mutex_lock_recursive(struct mutex_r *mtx)
 	atomic_val_t state;
 	task_id_t current;
 
-	ASSERT(mtx != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(mtx != NULL);
+	assert(!in_interrupt_context());
 
 	current = task_get_current();
 
@@ -76,8 +76,8 @@ int mutex_try_lock_recursive(struct mutex_r *mtx)
 	atomic_val_t state;
 	task_id_t current;
 
-	ASSERT(mtx != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(mtx != NULL);
+	assert(!in_interrupt_context());
 
 	current = task_get_current();
 
@@ -102,15 +102,15 @@ void mutex_unlock_recursive(struct mutex_r *mtx)
 {
 	uint32_t waiters;
 
-	ASSERT(mtx != NULL);
-	ASSERT(!in_interrupt_context());
+	assert(mtx != NULL);
+	assert(!in_interrupt_context());
 
 	/* Panic if mutex is not locked. */
-	ASSERT(atomic_load(&mtx->state) != MUTEX_R_UNLOCKED);
+	assert(atomic_load(&mtx->state) != MUTEX_R_UNLOCKED);
 
 	/* Panic if not called by the owner */
-	ASSERT(mtx->owner == task_get_current());
-	ASSERT(mtx->count > 0);
+	assert(mtx->owner == task_get_current());
+	assert(mtx->count > 0);
 
 	mtx->count--;
 	if (mtx->count == 0) {

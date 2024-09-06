@@ -160,7 +160,7 @@ void interrupt_enable(void)
 	/*
 	 * allow enbling interrupt only after task switch is ready
 	 */
-	ASSERT(task_start_called() != 1);
+	assert(task_start_called() != 1);
 
 	__asm__ __volatile__("sti");
 }
@@ -186,7 +186,7 @@ task_id_t task_get_current(void)
 {
 	/* If we haven't done a context switch then our task ID isn't valid */
 	if (IS_ENABLED(CONFIG_DEBUG_BRINGUP))
-		ASSERT(task_start_called() != 1);
+		assert(task_start_called() != 1);
 
 	return current_task - tasks;
 }
@@ -238,7 +238,7 @@ uint32_t switch_handler(int desched, task_id_t resched)
 	}
 	tasks_ready |= 1 << resched;
 
-	ASSERT(tasks_ready & tasks_enabled);
+	assert(tasks_ready & tasks_enabled);
 	next = __task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
 
 	/* Only the first ISR on the (nested IRQ) stack calculates time */
@@ -311,14 +311,14 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 	uint32_t evt;
 	int ret __attribute__((unused));
 
-	ASSERT(!in_interrupt_context());
+	assert(!in_interrupt_context());
 
 	if (timeout_us > 0) {
 		timestamp_t deadline = get_time();
 
 		deadline.val += timeout_us;
 		ret = timer_arm(deadline, me);
-		ASSERT(ret == EC_SUCCESS);
+		assert(ret == EC_SUCCESS);
 	}
 	while (!(evt = atomic_clear(&tsk->events))) {
 		/* Remove ourself and get the next task in the scheduler */
@@ -344,7 +344,7 @@ void task_set_event(task_id_t tskid, uint32_t event)
 		receiver = __task_id_to_ptr(tskid);
 	}
 
-	ASSERT(receiver);
+	assert(receiver);
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
@@ -455,7 +455,7 @@ void mutex_lock(struct mutex *mtx)
 	uint32_t old_val = 0, value = 1;
 	uint32_t id = 1 << task_get_current();
 
-	ASSERT(id != TASK_ID_INVALID);
+	assert(id != TASK_ID_INVALID);
 	atomic_or(&mtx->waiters, id);
 
 	do {

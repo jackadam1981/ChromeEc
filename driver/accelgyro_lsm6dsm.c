@@ -176,7 +176,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 			       << LSM6DSM_FIFO_DEC_XL_OFF));
 	/* b/255967867: Cannot use IS_ENABLED here with clang. */
 #ifdef CONFIG_LSM6DSM_SEC_I2C
-	ASSERT(ARRAY_SIZE(decimators) > FIFO_DEV_MAG);
+	assert(ARRAY_SIZE(decimators) > FIFO_DEV_MAG);
 	st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
 		      LSM6DSM_FIFO_CTRL4_ADDR, decimators[FIFO_DEV_MAG]);
 

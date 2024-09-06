@@ -164,7 +164,7 @@ static void vivaldi_init(void)
 		if (col >= keyboard_cols || row >= KEYBOARD_ROWS) {
 			CPRINTS("VIVALDI: Bad (row,col) for T-%u: (%u,%u)", i,
 				row, col);
-			ASSERT(false);
+			assert(false);
 		}
 
 		mask = &keyscan_config.actual_key_mask[col];

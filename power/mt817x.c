@@ -753,7 +753,7 @@ enum power_state power_handle_state(enum power_state state)
 	default:
 		/* Elm does not have space for such an extravagant print. */
 		/* CPRINTS("Unexpected power state %d", state); */
-		ASSERT(0);
+		assert(0);
 		break;
 	}
 

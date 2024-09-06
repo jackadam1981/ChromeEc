@@ -203,7 +203,7 @@ bool is_aligned(uint32_t addr, uint32_t align)
 
 int alignment_log2(unsigned int x)
 {
-	ASSERT(x != 0); /* ctz(0) is undefined */
+	assert(x != 0); /* ctz(0) is undefined */
 	return __builtin_ctz(x);
 }
 

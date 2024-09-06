@@ -247,7 +247,7 @@ static int i2c_ch_reg_shift(int p)
 	/*
 	 * only enhanced port needs to be changed the parameter of registers
 	 */
-	ASSERT(p >= I2C_STANDARD_PORT_COUNT && p < I2C_PORT_COUNT);
+	assert(p >= I2C_STANDARD_PORT_COUNT && p < I2C_PORT_COUNT);
 
 	/*
 	 * The registers of i2c enhanced ports are not sequential.
