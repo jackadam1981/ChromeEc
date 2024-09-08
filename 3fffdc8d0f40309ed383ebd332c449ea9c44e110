@@ -34,6 +34,24 @@
       "parentUuid": "a37d1789_b00ed596",
       "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d630ba61_5dfabe85",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-08T09:20:23Z",
+      "side": 1,
+      "message": "Does it work to set the flag to GPIO_ODR_LOW in board_init ?",
+      "parentUuid": "cef23509_ab501a3f",
+      "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
