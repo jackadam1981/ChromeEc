@@ -46,6 +46,30 @@
       },
       "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49163336_f2de13f9",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T23:37:09Z",
+      "side": 1,
+      "message": "I do not believe what I said makes sense. `__func__` will just print the `_exit` function name.",
+      "parentUuid": "79526d0f_80505aec",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
