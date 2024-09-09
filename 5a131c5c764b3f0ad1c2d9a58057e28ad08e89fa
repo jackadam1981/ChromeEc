@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea29be4_2b6f13d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:33:14Z",
+      "side": 1,
+      "message": "Let\u0027s split this into a followup CL since otherwise it gets buried in the giant set of mechanical changes.",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "5a131c5c764b3f0ad1c2d9a58057e28ad08e89fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee56252a_4c7d94b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:33:14Z",
+      "side": 1,
+      "message": "For changes like these that could affect a lot of boards, it\u0027s best to use the `compare_build.sh` script to make sure that the output is exactly the same before and after this change. If it\u0027s not, then we should break up the change into the parts that should not result in any change and isolate the part of the change that has an effect; that way if there are issues we can easily revert just the part that is problematic.\n\nFor example, I would expect to be able to change `#include \"builtin/assert.h\"` to `#include \"assert.h\"` everywhere without resulting in a change in the output, so we could split that piece out into a separate CL if `compare_build.sh` shows this change resulting in different output.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "5a131c5c764b3f0ad1c2d9a58057e28ad08e89fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
