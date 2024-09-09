@@ -22,6 +22,30 @@
       },
       "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79526d0f_80505aec",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T23:27:19Z",
+      "side": 1,
+      "message": "do you mean some logic like the below?\n```\nvoid _exit(int rc)\n{\n\tpanic_printf(\"%s called with rc: %d\\n\", __func__, rc);\n\tif (strcmp(__func__, \"exit\") || strcmp(__func__, \"abort\") \u003d\u003d 0) {\n\t\tsoftware_panic(PANIC_SW_EXIT, task_get_current());\n\t} else if (strcmp(__func__, \"assert\") \u003d\u003d 0) {\n\t\tsoftware_panic(PANIC_SW_ASSERT, task_get_current());\n\t}\n}\n```",
+      "parentUuid": "31149126_e49d3835",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
