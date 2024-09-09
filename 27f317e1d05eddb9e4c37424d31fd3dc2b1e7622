@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3b86fc1_15202b36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T23:14:20Z",
+      "side": 1,
+      "message": "I do not see an assert test in zephyr:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/\nI created this bug to port these tests to zephyr\nb/365628799",
+      "parentUuid": "5992e07c_2b996fbf",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17bb2b50_6f809b00",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "709ddbe5_6c9cd392",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T23:14:20Z",
+      "side": 1,
+      "message": "IIRC, this test generate `failed` because of the assertion failure. This is counted as `SINGLE_CHECK_FAILED_REGEX,`",
+      "parentUuid": "b8804436_b300030c",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 18
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61f4807a_3c91966e",
         "filename": "test/run_device_tests.py",
         "patchSetId": 5
@@ -83,6 +131,30 @@
       "writtenOn": "2024-09-09T21:51:42Z",
       "side": 1,
       "message": "This test should work on all boards",
+      "range": {
+        "startLine": 322,
+        "startChar": 16,
+        "endLine": 322,
+        "endChar": 55
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63c0e5a_cbb1ecbc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T23:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f4807a_3c91966e",
       "range": {
         "startLine": 322,
         "startChar": 16,
