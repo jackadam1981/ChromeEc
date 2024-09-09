@@ -30,8 +30,27 @@ def register_trulo_project(
 
 register_trulo_project(
     project_name="trulo",
+    kconfig_files=[
+        # Common to all projects.
+        here / "program.conf",
+        # Parent project's config
+        here / "trulo" / "project.conf",
+    ],
+)
+
+register_trulo_project(
+    project_name="trulo-ti",
+    kconfig_files=[
+        # Common to all projects.
+        here / "program.conf",
+        # Parent project's config
+        here / "trulo" / "project.conf",
+        # Project-specific KConfig customization.
+        here / "trulo-ti" / "project.conf",
+    ],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="trulo", addr=0x7FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="trulo-ti", addr=0x7FFE0)
