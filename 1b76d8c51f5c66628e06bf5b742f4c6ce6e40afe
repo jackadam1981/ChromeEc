@@ -45,6 +45,29 @@
       },
       "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9adc7e9_a74f08a8",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:27:05Z",
+      "side": 1,
+      "message": "All of these are C flags, not CXX flags. i.e., they apply to both C and CXX flags.\n\nSame for `-Os` above.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
