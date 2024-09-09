@@ -7,6 +7,7 @@
 #   CC_NAME: the name of the C compiler.
 #   CXX_NAME: the name of the C++ compiler.
 
+
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(CMAKE_C_COMPILER   "${CROSS_COMPILE}${CC_NAME}")
@@ -33,19 +34,19 @@ set(CMAKE_RANLIB       "${CROSS_COMPILE}ranlib")
 endif()
 
 if ("${CC_NAME}" STREQUAL gcc)
-add_compile_options(-Os)
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Os")
 else()
 add_compile_options(-Oz)
 endif()
 
 # Enable Link Time Optimization.
-add_compile_options(-flto)
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -flto")
 add_link_options(-flto)
 
 # See https://www.chromium.org/chromium-os/build/c-exception-support
-add_compile_options(-fno-exceptions)
-add_compile_options(-fno-unwind-tables)
-add_compile_options(-fno-asynchronous-unwind-tables)
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-exceptions")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-unwind-tables")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-asynchronous-unwind-tables")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
 
@@ -53,3 +54,35 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -mno-unaligned-access")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -mthumb")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wl,-mllvm -Wl,-inline-threshold=-10")
+
+if (CORTEX_M7)
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -mcpu=cortex-m7")
+else()
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -mcpu=cortex-m4")
+endif()
+
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -mfloat-abi=hard")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -g")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -ftrapv")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wall")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wundef")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wno-trigraphs")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wno-format-security")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wno-address-of-packed-member")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-common")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-strict-aliasing")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-strict-overflow")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wimplicit-fallthrough")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Werror")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Werror=uninitialized")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -Wno-unused-function")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -ffunction-sections")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-delete-null-pointer-checks")
+set(C_CXX_FLAGS "${C_CXX_FLAGS} -fno-PIC")    
+    
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C_CXX_FLAGS}")
