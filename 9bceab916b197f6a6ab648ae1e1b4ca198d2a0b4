@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef0e35d_cf6ca286",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-09T15:45:24Z",
+      "side": 1,
+      "message": "Nit - change name to `test_chipset_on()`.",
+      "range": {
+        "startLine": 1277,
+        "startChar": 31,
+        "endLine": 1277,
+        "endChar": 51
+      },
+      "revId": "9bceab916b197f6a6ab648ae1e1b4ca198d2a0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f903bb1_e8ee3355",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-09T15:45:24Z",
+      "side": 1,
+      "message": "Because you\u0027ve set the chip state to ON, on a real system, the HOOK_CHIPSET_RESUME will also be triggered.\nThis should also call `hook_notify(HOOK_CHIPSET_RESUME)` for completeness.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1290,
+        "endChar": 35
+      },
+      "revId": "9bceab916b197f6a6ab648ae1e1b4ca198d2a0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
