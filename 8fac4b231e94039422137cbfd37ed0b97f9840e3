@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e925bf_f7729528",
+        "filename": "test/assert_builtin.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:37:18Z",
+      "side": 1,
+      "message": "There needs to be a comment that explains where this value comes from.",
+      "range": {
+        "startLine": 21,
+        "startChar": 32,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "8fac4b231e94039422137cbfd37ed0b97f9840e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9586634e_096add1a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:37:18Z",
+      "side": 1,
+      "message": "Why don\u0027t the default regexes work?",
+      "range": {
+        "startLine": 310,
+        "startChar": 11,
+        "endLine": 313,
+        "endChar": 18
+      },
+      "revId": "8fac4b231e94039422137cbfd37ed0b97f9840e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2cfac1_de4cc330",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:37:18Z",
+      "side": 1,
+      "message": "This test should work on all boards",
+      "range": {
+        "startLine": 314,
+        "startChar": 6,
+        "endLine": 314,
+        "endChar": 55
+      },
+      "revId": "8fac4b231e94039422137cbfd37ed0b97f9840e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
