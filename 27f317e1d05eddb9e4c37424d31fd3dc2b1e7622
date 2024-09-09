@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5992e07c_2b996fbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:51:42Z",
+      "side": 1,
+      "message": "We\u0027ll also need to port this test to Zephyr, similar to all the [other hardware tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/migrated_files.sh;l\u003d15-51;drc\u003d9c2c9a7d9e434df1ec692a7ecb17a84e3918ec0a). See the blame history on that file for the associated tests.\n\nYou can check to see if there is already an upstream test that tests assert, but IIRC there were some differences in Zephyr. See https://crrev.com/c/5725260/7/zephyr/test/hwtest/src/exception.cc and [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5725260/comment/65ef2733_73781dc2/).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bb2b50_6f809b00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:51:42Z",
+      "side": 1,
+      "message": "stdlib",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8804436_b300030c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:51:42Z",
+      "side": 1,
+      "message": "Why don\u0027t the default regexes work?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 18
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f4807a_3c91966e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:51:42Z",
+      "side": 1,
+      "message": "This test should work on all boards",
+      "range": {
+        "startLine": 322,
+        "startChar": 16,
+        "endLine": 322,
+        "endChar": 55
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
