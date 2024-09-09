@@ -15,4 +15,4 @@ add_definitions(-DCROS_EC)
 # recude the final code size.
 # The reason we don't use "-ffile-prefix-map" here is because we don't want to
 # break the debug symbols for debugging.
-add_compile_options(-fmacro-prefix-map="${CMAKE_CURRENT_SOURCE_DIR}/=")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fmacro-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}/=.")
