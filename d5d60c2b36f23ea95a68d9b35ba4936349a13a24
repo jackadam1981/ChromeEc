@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0410020a_6792b58c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c9bdb1_c1a43cbc",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e929dd72_7414570e",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "schematics tracing is little difficult , need to  ignore the note \u0026 follow the  stuffings",
       "parentUuid": "e929dd72_7414570e",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ede73b_dfd3ee47",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efa1b2c3_4555ed27",
       "range": {
         "startLine": 42,
         "startChar": 13,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75c05bc_f0805228",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00fb7eb7_01c980b3",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa05bae_066fc25d",
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "b2 is pm-bat-low",
       "parentUuid": "8fa05bae_066fc25d",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "434e8ce4_f6e45995",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db144104_8fde8d28",
       "range": {
         "startLine": 101,
         "startChar": 2,
@@ -236,6 +332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca77791_996b6978",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd977cbb_bf51c045",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d31f9be_a02d5949",
@@ -273,6 +393,30 @@
       "side": 1,
       "message": "looks like KSO is alternate pin, GPIO can be input",
       "parentUuid": "7d31f9be_a02d5949",
+      "range": {
+        "startLine": 195,
+        "startChar": 21,
+        "endLine": 195,
+        "endChar": 31
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6470d1_93bede1c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac92dd3e_49bdf03c",
       "range": {
         "startLine": 195,
         "startChar": 21,
@@ -330,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c9a1b6_4a5aa8b1",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb6c15f0_16210ae3",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 21
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6cec3a_4986ec06",
@@ -367,6 +535,30 @@
       "side": 1,
       "message": "net name on MECC connector side is i3c-1, muxed pin",
       "parentUuid": "4f6cec3a_4986ec06",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 7
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e74a6ad_54a2cd0a",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35c08f62_6693ae31",
       "range": {
         "startLine": 244,
         "startChar": 6,
@@ -424,6 +616,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abf5a07_0414ab57",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5ef8b2_133037f6",
+      "range": {
+        "startLine": 247,
+        "startChar": 6,
+        "endLine": 247,
+        "endChar": 7
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c342f8aa_506e4b16",
@@ -471,6 +687,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af74dd2c_b66622b0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfcbe7cd_0da172ed",
+      "range": {
+        "startLine": 322,
+        "startChar": 21,
+        "endLine": 322,
+        "endChar": 31
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f4adcd_854e2132",
@@ -508,6 +748,30 @@
       "side": 1,
       "message": "looks like both are needed",
       "parentUuid": "a6f4adcd_854e2132",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "d5d60c2b36f23ea95a68d9b35ba4936349a13a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef4a8a4_2d65989d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/include/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-09T22:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9939ba8a_720668ea",
       "range": {
         "startLine": 10,
         "startChar": 8,
