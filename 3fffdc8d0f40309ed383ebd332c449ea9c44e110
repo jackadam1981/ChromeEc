@@ -52,6 +52,24 @@
       "parentUuid": "cef23509_ab501a3f",
       "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc86d778_465a7842",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1596857
+      },
+      "writtenOn": "2024-09-09T06:13:56Z",
+      "side": 1,
+      "message": "Set in board_init didn\u0027t work, when boot into OS \"GPIO_EC_I2C_SUB_USB_C1_SDA\" is still high status",
+      "parentUuid": "d630ba61_5dfabe85",
+      "revId": "3fffdc8d0f40309ed383ebd332c449ea9c44e110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
