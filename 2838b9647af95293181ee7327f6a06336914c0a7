@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31149126_e49d3835",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:45:34Z",
+      "side": 1,
+      "message": "This function can be called for both `assert()` and `exit()`. In the case of `exit()`, we should still return `PANIC_SW_EXIT`. As written, this will cause the `test/abort.c` and `test/exception.cc` tests to fail too.\n\nWe should probably add a new `test/exit.c` unit test to test the `exit()` path.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
