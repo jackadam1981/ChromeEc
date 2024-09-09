@@ -116,6 +116,30 @@
       },
       "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ef425b_a975b8a0",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T22:05:10Z",
+      "side": 1,
+      "message": "\u003e I am calling the variable `C_CXX_FLAGS`\n\nThis variable name is confusing. It should just be something like `C_FLAGS` or (`__C_FLAGS` if that variable already exists) to indicate that they\u0027re just normal C flags.",
+      "parentUuid": "eac29d51_ef2f0a04",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

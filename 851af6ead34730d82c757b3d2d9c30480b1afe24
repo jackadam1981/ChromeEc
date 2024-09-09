@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "830173f9_4a9eedf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T22:05:10Z",
+      "side": 1,
+      "message": "Is this in the boringssl cmake files? Can you provide a link?",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c098f10_3c7b66e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T22:05:10Z",
+      "side": 1,
+      "message": "Do you mean \"CFLAGS\" passed from the `Makefile` via environment variable?",
+      "range": {
+        "startLine": 11,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40c0c2d0_653f9867",
@@ -14,6 +60,75 @@
       "writtenOn": "2024-09-09T21:35:13Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "288370cb_b8b3c438",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T22:05:10Z",
+      "side": 1,
+      "message": "Let\u0027s see what is different about `boringssl` and `googletest`, which also uses cmake and seemed to need `add_compile_options` to work correctly. See [this CL](https://crrev.com/c/4610318).",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3df160_b7f281a7",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T22:05:10Z",
+      "side": 1,
+      "message": "I\u0027m worried that these flags are going to get out of sync with the ones in the Makefile.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f60a4a1_d0816352",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T22:05:10Z",
+      "side": 1,
+      "message": "Does this change work by itself without all the other changes?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 87
+      },
       "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
