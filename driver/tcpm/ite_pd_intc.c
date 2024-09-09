@@ -47,13 +47,17 @@ void chip_pd_irq(enum usbpd_port port)
 	}
 
 	if (USBPD_IS_TX_DONE(port)) {
-#ifdef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+#if defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
 		it8xxx2_clear_tx_error_status(port);
 		/* check TX status, clear by TX_DONE status too */
 		if (USBPD_IS_TX_ERR(port))
 			it8xxx2_get_tx_error_status(port);
 		else
 			pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
+#elif defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
+		if (!USBPD_IS_TX_ERR(port)) {
+			pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
+		}
 #endif
 		/* clear TX done interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
