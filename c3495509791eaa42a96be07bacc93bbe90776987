@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5ef3531_d68b2599",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-09T18:49:37Z",
+      "side": 1,
+      "message": "I think Keith\u0027s concern here is that we\u0027ll only find these bugs in production since it\u0027s hard to test \"missed events\". I can see merits to both. Do we have a Kconfig for test/production builds? Can we do a timeout in a production build and leave it out in test builds so we still see driver bugs in our own testing?",
+      "parentUuid": "a4f63c7c_37b192d8",
+      "range": {
+        "startLine": 1513,
+        "startChar": 13,
+        "endLine": 1513,
+        "endChar": 38
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eefd00c_fc5af0c0",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
