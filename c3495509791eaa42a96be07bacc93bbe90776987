@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "745a7671_cc62ee0b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-09T19:37:08Z",
+      "side": 1,
+      "message": "The general flow for every PDC command is \n```\nState: IDLE \n1. PDC API -\u003e Update internal data with command.\n2. Send command to PDC\n3. post INTERNAL_EVENT -- runs st_task_wait_run\n4. Set state to TASK_WAIT\n\nState: TASK_WAIT\n5. Read CMD register\n6a. if not complete, post INTERNAL_EVENT 10ms from now \n6b. else read CMD response, confirm CCI complete, and return to IDLE state\n```\n\nThe logging for a completed command looks like this\n```\n[00:00:24.530,000] \u003cdbg\u003e pdc_power_mgmt: send_pdc_cmd: C0: Send PDC_GET_CONNECTOR_STATUS (15) internal\n[00:00:24.530,000] \u003cinf\u003e pdc_power_mgmt: C0: SendCmdWait\n[00:00:24.530,000] \u003cinf\u003e tps6699x: tps_thread[0]: events\u003d0x2\n[00:00:24.530,000] \u003cinf\u003e tps6699x_emul: UCSI command 0x12\n[00:00:24.530,000] \u003cinf\u003e tps6699x: DR0: TASK_WAIT\n[00:00:24.530,000] \u003cinf\u003e tps6699x: tps_thread[0]: events\u003d0x8\n[00:00:24.530,000] \u003cinf\u003e tps6699x: C0: CCI\u003d0x80001300\n[00:00:24.530,000] \u003cinf\u003e tps6699x: DR0: IDLE\n[00:00:24.530,000] \u003cdbg\u003e pdc_power_mgmt: pdc_send_cmd_wait_run: CCI_CMD_COMPLETED\n```\n\nI think Keith\u0027s concern is if we miss step 3 above when adding support for a new command, the thread will never wakeup and complete the command. \n\nIn that scenario, we shouldn\u0027t see any additional logging from `tps6699x`.  Identifying the hung command will be easily identifiable from the log as it will stop after `TASK_WAIT`.  Waking up the thread every 10ms, independent of current state, will hide this hung command and may cause issues in the future.  I\u0027m trying to keep this 10ms wakeup in the `TASK_WAIT` state only.\n\nI\u0027d hope that our unit/TAST tests cover all commands so we can catch these hard failures and resolve them quickly.",
+      "parentUuid": "e5ef3531_d68b2599",
+      "range": {
+        "startLine": 1513,
+        "startChar": 13,
+        "endLine": 1513,
+        "endChar": 38
+      },
+      "revId": "c3495509791eaa42a96be07bacc93bbe90776987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eefd00c_fc5af0c0",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 2
