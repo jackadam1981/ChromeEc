@@ -74,6 +74,16 @@ BORINGSSL_OUTDIR := $(out)/third_party/boringssl/crypto
 BORINGSSL_TOOLCHAIN := \
 	$(shell pwd)/third_party/boringssl/boringssl-toolchain.cmake
 
+# Check if CORTEX_M7 is one of the target boards is dartmonkey or nocturne_fp
+$(info "BOARD" $(BOARD))
+ifeq ($(BOARD),dartmonkey)
+    IS_CORTEX_M7 := 1
+else ifeq ($(BOARD),nocturne_fp)
+    IS_CORTEX_M7 := 1
+else
+    IS_CORTEX_M7 := 0
+endif
+
 $(BORINGSSL_OUTDIR)/libcrypto.a:
 	mkdir -p $(out)/third_party/boringssl/
 	cmake \
@@ -84,6 +94,7 @@ $(BORINGSSL_OUTDIR)/libcrypto.a:
 		-DCMAKE_SYSROOT=$(SYSROOT) \
 		-DOPENSSL_NO_ASM=$(OPENSSL_NO_ASM) \
 		-DCROS_EC_REPO=$(CURDIR) \
+		-DCORTEX_M7=$(IS_CORTEX_M7) \
 		-DCMAKE_TOOLCHAIN_FILE=$(BORINGSSL_TOOLCHAIN) \
 		-DCMAKE_VERBOSE_MAKEFILE=$(V) \
 		-B $(out)/third_party/boringssl/ \
