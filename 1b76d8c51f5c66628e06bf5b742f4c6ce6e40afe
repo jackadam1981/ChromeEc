@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "137b2c05_be4a412a",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nwe verified that add_link_options does not add this to the linker command. Not sure if passing them as part of `CMAKE_C_FLAGS` is sufficient.",
+      "parentUuid": "5825ac14_0e43e7b9",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9adc7e9_a74f08a8",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "\u003e I am calling the variable `C_CXX_FLAGS`\n\nThis variable name is confusing. It should just be something like `C_FLAGS` or (`__C_FLAGS` if that variable already exists) to indicate that they\u0027re just normal C flags.",
       "parentUuid": "eac29d51_ef2f0a04",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64805c9d_4b14fdd1",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "I will modify the name once we agree after the method of implementation.",
+      "parentUuid": "49ef425b_a975b8a0",
       "range": {
         "startLine": 57,
         "startChar": 0,

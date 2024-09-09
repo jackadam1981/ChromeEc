@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "73afb460_c1cc8dc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/CMakeLists.txt;l\u003d22#:~:text\u003d21-,22,-23\n\nIt is also in the bug comment:\nhttps://b.corp.google.com/issues/361855883#comment14",
+      "parentUuid": "830173f9_4a9eedf7",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f3ae7d_7a56da5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "yes, I listed the flags being passed in this comment: https://b.corp.google.com/issues/361855883#comment14",
+      "parentUuid": "0c098f10_3c7b66e5",
+      "range": {
+        "startLine": 11,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40c0c2d0_653f9867",
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb2d8ec2_7073b935",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "If I use `add_compile_options`, I cannot see them in the `CMAKE_C_FLAGS` inside the boringssl CMAKELists.txt:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/CMakeLists.txt;l\u003d22",
+      "parentUuid": "288370cb_b8b3c438",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a3df160_b7f281a7",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 4
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46fbe09e_cb2c93b8",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "agreed, I am not sure how `CMAKE_C_FLAGS` is initialized after `enable_language(C)` and if there are rules for that? I cannot access the `CLFGAS` of the makefile from their. So some logic is being implemented...",
+      "parentUuid": "9a3df160_b7f281a7",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f60a4a1_d0816352",
         "filename": "third_party/boringssl/boringssl-toolchain.cmake",
         "patchSetId": 4
@@ -123,6 +219,30 @@
       "writtenOn": "2024-09-09T22:05:10Z",
       "side": 1,
       "message": "Does this change work by itself without all the other changes?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 87
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f06fde_c024b249",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-09T22:49:16Z",
+      "side": 1,
+      "message": "no. Any definitions of `CMAKE_C_FLAGS` in this file will override the flags passed from the Makefile toolchain. This is why I defined them in the common cmake file.",
+      "parentUuid": "7f60a4a1_d0816352",
       "range": {
         "startLine": 18,
         "startChar": 0,
