@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ef2c329_75f59471",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-09T21:25:11Z",
+      "side": 1,
+      "message": "This tells the \"how\", but not the \"why\". We [care more about the \"why\"](https://google.github.io/styleguide/cppguide.html#Implementation_Comment_Donts) in documentation.\n\nhttps://cbea.ms/git-commit/#why-not-how",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "1b76d8c51f5c66628e06bf5b742f4c6ce6e40afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5825ac14_0e43e7b9",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 3
