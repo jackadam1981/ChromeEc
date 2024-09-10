@@ -16,6 +16,24 @@
       "message": "Is the lid accel still in force mode? The code removes force mode for both sensors.",
       "revId": "d643cc6f8d62c6ed0483a8d29f0186f570a4cdaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63ef4c9_94e87c28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2024-09-10T01:04:17Z",
+      "side": 1,
+      "message": "sorry Gwendal. this was FCCL test CL. I asked to abandon this\ncrrev/c/5833012 is the target CL, functionality \u0026 EC reboot issue tested, waiting for the review",
+      "parentUuid": "dc7ba9d1_5b4a3542",
+      "revId": "d643cc6f8d62c6ed0483a8d29f0186f570a4cdaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
