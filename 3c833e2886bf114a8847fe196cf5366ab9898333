@@ -69,6 +69,24 @@
       "parentUuid": "d8f4e22f_d08da842",
       "revId": "3c833e2886bf114a8847fe196cf5366ab9898333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c41b882_4e81dfa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-09-10T07:33:48Z",
+      "side": 1,
+      "message": "base_accel and base_gyro should be interrupt driven. This has been the configuration of all chromebook so far. The EC reset and possible interrupt storm is the indication of deeper issues. The lid accel can stay in force mode since its ODR will always be around 10Hz. Can be 200Hz for the IMU.\n\nTo check the sensors at high speed, try `tast run \u003cIP\u003e hardware.SensorIioserviceHard`. For CTS tests, use autotest  `cheets_CTS_T.internal.x86.CtsSensor_-_CtsSensorTestCase`",
+      "parentUuid": "32b25b3a_ad719005",
+      "revId": "3c833e2886bf114a8847fe196cf5366ab9898333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
