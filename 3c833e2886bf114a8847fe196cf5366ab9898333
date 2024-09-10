@@ -16,6 +16,23 @@
       "message": "https://drive.google.com/corp/drive/folders/12dbqdcBOWyAk_CbTDqEwyJCKAr78wSbD\nFCCL verified Gyro function and also confirmed random EC reboot does not reproduce with the change b/363958135#comment5",
       "revId": "3c833e2886bf114a8847fe196cf5366ab9898333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0265180_dbe7d5eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-09-10T00:04:57Z",
+      "side": 1,
+      "message": "The sensor presented to ARCVM should be interrupt based, otherwise, we won\u0027t pass CTS. I think the issue is elsewhere, we need to know why the IMU interrupt is not propagated.",
+      "revId": "3c833e2886bf114a8847fe196cf5366ab9898333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
