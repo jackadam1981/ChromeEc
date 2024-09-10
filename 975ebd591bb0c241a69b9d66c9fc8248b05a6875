@@ -16,6 +16,24 @@
       "message": "What if we want to run this command on fizz, which has `EC_IMAGE_RW_B`?",
       "revId": "975ebd591bb0c241a69b9d66c9fc8248b05a6875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47667a3b_7d4cd076",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-09-10T07:35:12Z",
+      "side": 1,
+      "message": "I need to double-check that, but the `RW` still applies here. `EC_IMAGE_RW_B` is still `RW`. Updater gets offset for [EC_FLASH_REGION_UPDATE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d2108), so it is correct. However there is no switching active RW copy in the updater code. I\u0027m not 100% sure at the moment if it should be done by the updater. It can be done with reboot_ec HC with an additional flag.",
+      "parentUuid": "1cc5ea4c_76812d76",
+      "revId": "975ebd591bb0c241a69b9d66c9fc8248b05a6875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
