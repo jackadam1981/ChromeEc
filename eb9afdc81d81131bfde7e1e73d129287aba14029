@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f03e9c_e0cdf476",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-09-10T06:51:28Z",
+      "side": 1,
+      "message": "This isn\u0027t getting the lock so much as it\u0027s verifying the lock is set up.\n\n```suggestion\n\t__ASSERT(mfd_lock[port] !\u003d NULL, \"mfd_lock not yet initialized (port %d)\", port);\n```",
+      "range": {
+        "startLine": 386,
+        "startChar": 35,
+        "endLine": 386,
+        "endChar": 57
+      },
+      "revId": "eb9afdc81d81131bfde7e1e73d129287aba14029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71a5bac_d54bee9b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-09-10T06:51:28Z",
+      "side": 1,
+      "message": "This should be clear that it\u0027s papering over what is probably an init ordering bug:\n\n```suggestion\n\t\tLOG_WRN(\"%s: mfd_lock %d not yet initialized (init ordering is probably wrong)\", __func__, port);\n```",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 66
+      },
+      "revId": "eb9afdc81d81131bfde7e1e73d129287aba14029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbebd786_b9012c6b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-09-10T06:51:28Z",
+      "side": 1,
+      "message": "There\u0027s a hazard here if `CONFIG_USB_PD_TCPC_RUNTIME_CONFIG` is enabled (so `tcpc_config` is non-const), since `mfd_parent` might change at any time (but presumably only during init). Since we know this can occur if there\u0027s an initialization order problem, this assignment should probably only be done if `CONFIG_USB_PD_TCPC_RUNTIME_CONFIG` is disabled (and if it\u0027s enabled always oops).\n\nMore broadly, hitting this code path probably indicates a bug but it\u0027s somewhat useful to avoid crashing if there\u0027s a safe way to do so.",
+      "range": {
+        "startLine": 390,
+        "startChar": 3,
+        "endLine": 390,
+        "endChar": 31
+      },
+      "revId": "eb9afdc81d81131bfde7e1e73d129287aba14029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
