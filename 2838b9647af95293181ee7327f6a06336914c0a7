@@ -70,6 +70,30 @@
       },
       "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d8f131_adb332c2",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-10T05:58:14Z",
+      "side": 1,
+      "message": "@tomhughes how can I make assert() and abort() have different outcomes when calling __exit() in the standard c library?",
+      "parentUuid": "49163336_f2de13f9",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
