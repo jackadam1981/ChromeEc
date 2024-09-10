@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 #include "adc.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "button.h"
 #include "cec.h"
 #include "charge_manager.h"

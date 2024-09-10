@@ -11,7 +11,7 @@
  * https://sourceware.org/git/?p=newlib-cygwin.git;a=tree;f=libgloss/libnosys.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "gettimeofday.h"
 #include "link_defs.h"
 #include "panic.h"

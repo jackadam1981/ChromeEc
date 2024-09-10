@@ -11,7 +11,7 @@
 #include "accelgyro.h"
 #include "accelgyro_bmi160.h"
 #include "accelgyro_bmi_common.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "hwtimer.h"

@@ -5,7 +5,7 @@
  */
 
 /* SHA256 module for Chrome EC */
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "sha256.h"
 #include "util.h"

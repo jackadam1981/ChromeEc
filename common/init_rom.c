@@ -5,7 +5,7 @@
 
 /* Init ROM module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "flash.h"
 #include "init_rom.h"

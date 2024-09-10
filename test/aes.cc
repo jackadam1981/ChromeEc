@@ -4,7 +4,7 @@
  */
 
 #include "benchmark.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "openssl/aead.h"

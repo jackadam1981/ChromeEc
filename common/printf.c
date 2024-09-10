@@ -17,7 +17,7 @@
 #define _POSIX_C_SOURCE 200809
 #endif /* CONFIG_NEWLIB_LIBC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "builtin/string.h"
 #include "console.h"
 #include "printf.h"

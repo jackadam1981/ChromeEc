@@ -5,7 +5,7 @@
 
 /* GPIO common functionality for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "gpio.h"
 #include "ioexpander.h"

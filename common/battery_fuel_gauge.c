@@ -7,7 +7,7 @@
 
 #include "battery_fuel_gauge.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "cros_board_info.h"
 #include "hooks.h"

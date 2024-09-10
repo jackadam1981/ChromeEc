@@ -6,7 +6,7 @@
 /* Task scheduling / events module for Chrome EC operating system */
 
 #include "atomic.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"

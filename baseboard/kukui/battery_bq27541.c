@@ -6,7 +6,7 @@
  */
 
 #include "battery.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_state.h"
 #include "charger_mt6370.h"
 #include "console.h"

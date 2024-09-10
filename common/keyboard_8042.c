@@ -12,7 +12,7 @@
 #line 13
 
 #include "atkbd_protocol.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "button.h"
 #include "chipset.h"
 #include "common.h"

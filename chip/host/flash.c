@@ -5,7 +5,7 @@
 
 /* Flash module for emulator */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "config_chip.h"
 #include "flash.h"

@@ -5,7 +5,7 @@
  * Queue data structure implementation.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "queue.h"
 #include "util.h"

@@ -11,7 +11,7 @@
  */
 #line 13
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"

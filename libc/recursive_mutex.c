@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "recursive_mutex.h"
 #include "system.h"
 #include "task.h"

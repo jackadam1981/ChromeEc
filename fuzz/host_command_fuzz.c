@@ -5,7 +5,7 @@
  * Fuzz host command.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "host_command.h"

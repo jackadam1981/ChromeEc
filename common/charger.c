@@ -12,7 +12,7 @@
 #line 13
 
 #include "battery_smart.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "common.h"

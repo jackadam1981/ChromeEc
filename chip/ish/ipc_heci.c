@@ -23,7 +23,7 @@
  *  - Doorbell Clear Status Register (DB CSR)
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "hooks.h"
 #include "hwtimer.h"

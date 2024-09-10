@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "ec_commands.h"

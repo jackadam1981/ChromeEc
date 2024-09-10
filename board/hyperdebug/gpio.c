@@ -6,7 +6,7 @@
 
 #include "adc.h"
 #include "atomic.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock_chip.h"
 #include "cmsis-dap.h"
 #include "common.h"

@@ -5,7 +5,7 @@
 
 /* UART driver for emulator */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "queue.h"
 #include "task.h"

@@ -10,7 +10,7 @@
  */
 
 #include "atomic.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"

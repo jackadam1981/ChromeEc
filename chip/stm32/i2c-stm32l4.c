@@ -5,7 +5,7 @@
 
 /* I2C drivers for STM32L4xx as well as STM32L5xx. */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"

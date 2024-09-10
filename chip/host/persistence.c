@@ -18,7 +18,7 @@
  * this homegrown implementation of something similar-yet-different.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "util.h"
 
 #include <stdio.h>

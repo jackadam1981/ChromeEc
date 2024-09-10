@@ -5,7 +5,7 @@
 
 /* Timer module */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
