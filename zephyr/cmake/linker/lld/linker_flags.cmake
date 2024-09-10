@@ -10,3 +10,10 @@ include("${ZEPHYR_BASE}/cmake/linker/ld/${COMPILER}/linker_flags.cmake" OPTIONAL
 
 # Add the -nopie option to the linker flags to match the compilation options
 set_property(TARGET linker PROPERTY no_position_independent "-nopie")
+
+# Add the LLVM C++ Standard Library (libc++).  Zephyr upstream is currently
+# broken and doesn't enable this library.
+# See https://github.com/zephyrproject-rtos/zephyr/issues/78226
+if (DEFINED CONFIG_LIBCXX_LIBCPP)
+  set_property(TARGET linker PROPERTY cpp_base -lc++)
+endif()
