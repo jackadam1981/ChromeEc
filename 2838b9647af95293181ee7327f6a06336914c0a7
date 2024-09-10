@@ -94,6 +94,30 @@
       },
       "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7bc820_75a85cd1",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-10T16:26:43Z",
+      "side": 1,
+      "message": "`aseert()`, should call `abort()`, which will [call `raise(SIGABRT)`](https://sourceware.org/git/?p\u003dnewlib-cygwin.git;a\u003dblob;f\u003dnewlib/libc/stdlib/abort.c;h\u003d065dee5b6c710102420d91139434e5fd0897838a;hb\u003dHEAD#l58). `raise()` should call the newlib \"syscall\" [`_kill()`](https://sourceware.org/git/?p\u003dnewlib-cygwin.git;a\u003dblob;f\u003dlibgloss/libnosys/kill.c;h\u003d27c4f8cf667f278b05761382e368b61ef44a9a63;hb\u003dHEAD), which we can add to our `libc/syscalls.c` file. The `int sig` argument to `_kill()` should be `SIGABRT` in the `assert/abort` case. If we receive a `SIGABRT` before `_exit()` is called, then we know it was an `assert/abort`. If we don\u0027t receive that signal before `_exit()` is called, then it is just a regular exit.",
+      "parentUuid": "19d8f131_adb332c2",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "2838b9647af95293181ee7327f6a06336914c0a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
