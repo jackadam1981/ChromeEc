@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "158a0029_00e8f852",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2024-09-10T20:32:11Z",
+      "side": 1,
+      "message": "Did you happen try `add_compile_options` and `add_compile_definitions` together?\n\nAlso did you try the other method I mentioned in the bug, where you instead should change the working directory instead of using absolute paths?",
+      "parentUuid": "bb2d8ec2_7073b935",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a3df160_b7f281a7",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 4
@@ -208,6 +232,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "834807f2_a86bbc98",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2024-09-10T20:32:11Z",
+      "side": 1,
+      "message": "nit: You can add many flags in a single set call, and several of these I think can be grouped.\n\nI would check to make sure you actually need an override for everything here though. I\u0027m not sure at all how this is related to the BoringSSL change and I\u0027m not convinced that you should need to do this.",
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f60a4a1_d0816352",
         "filename": "third_party/boringssl/boringssl-toolchain.cmake",
         "patchSetId": 4
@@ -243,6 +284,30 @@
       "side": 1,
       "message": "no. Any definitions of `CMAKE_C_FLAGS` in this file will override the flags passed from the Makefile toolchain. This is why I defined them in the common cmake file.",
       "parentUuid": "7f60a4a1_d0816352",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 87
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca31c4bc_b64ec505",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2024-09-10T20:32:11Z",
+      "side": 1,
+      "message": "Wait, how? I\u0027m trying to understand the .cmake file invocation order. How are the flags passed from the Makefile toolchain? Are they setting the CFLAGS environment variable directly?\n\nAlso don\u0027t you want it for CXX flags too?\n\nAlso did you try",
+      "parentUuid": "24f06fde_c024b249",
       "range": {
         "startLine": 18,
         "startChar": 0,
