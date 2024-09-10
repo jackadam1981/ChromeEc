@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4bde09_e980d020",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-10T23:02:12Z",
+      "side": 1,
+      "message": "Do we need it to be an unrestricted command? i.e., are you thinking we\u0027d run it on a write-protected device?",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "63344c6ac57620d14ea3bf0cceb950977a5a00cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
