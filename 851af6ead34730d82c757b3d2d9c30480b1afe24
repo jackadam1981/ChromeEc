@@ -316,6 +316,30 @@
       },
       "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e7cb50_f470e90a",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-10T23:13:33Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n@hesling@chromium.org\n@ajordanr@google.com\n\none solution is to add only these lines to this file (no other file need to be changes)\n```\nset(CMAKE_C_FLAGS \"$ENV{CFLAGS} -fmacro-prefix-map\u003d${CMAKE_CURRENT_SOURCE_DIR}/\u003d.\")\nset(CMAKE_CXX_FLAGS \"$ENV{CFLAGS}\")\n```\n\nAll the Makefile toolchain CFLAGS are still passed to `CMAKE_C_FLAGS` \nI outlined it in https://b.corp.google.com/issues/361855883#comment27",
+      "parentUuid": "ca31c4bc_b64ec505",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 87
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
