@@ -33,6 +33,24 @@
       "message": "Nit: This is a weird variable name. Maybe we should just change it to make sense and avoid the comment.",
       "revId": "b7527618618672f12e06cf8ea1a2abb1fc084fea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc0a99b_bf7a2aee",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-10T00:36:46Z",
+      "side": 1,
+      "message": "I\u0027m actually wrong about this. Everything is consistent now.",
+      "parentUuid": "36adecf9_78bd2bb4",
+      "revId": "b7527618618672f12e06cf8ea1a2abb1fc084fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
