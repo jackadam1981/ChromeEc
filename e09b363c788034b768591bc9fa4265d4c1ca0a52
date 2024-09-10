@@ -22,6 +22,30 @@
       },
       "revId": "e09b363c788034b768591bc9fa4265d4c1ca0a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4f9e97_df31b21f",
+        "filename": "zephyr/program/rauru/overlay.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-09-10T00:18:22Z",
+      "side": 1,
+      "message": "Yes and no.\nThe FW_STORAGE is currently at its maximum capacity (32).\nIf it require more config bits, we\u0027ll allocate a separate bit for them.",
+      "parentUuid": "f1ca6518_a7860418",
+      "range": {
+        "startLine": 172,
+        "startChar": 11,
+        "endLine": 172,
+        "endChar": 12
+      },
+      "revId": "e09b363c788034b768591bc9fa4265d4c1ca0a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
