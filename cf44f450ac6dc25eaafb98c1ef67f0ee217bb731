@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4500669_f10a176d",
+        "filename": "zephyr/cmake/linker/lld/linker_flags.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-09-10T20:27:11Z",
+      "side": 1,
+      "message": "I think we should be able to fix this in upstream.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 81
+      },
+      "revId": "cf44f450ac6dc25eaafb98c1ef67f0ee217bb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
