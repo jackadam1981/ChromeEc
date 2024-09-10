@@ -1,0 +1,114 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Trulo program common DTS includes */
+#include "generated.dtsi"
+#include "../cbi.dtsi"
+/*#include "../generated.dtsi"*/
+#include "../i2c.dtsi"
+#include "../power_signals.dtsi"
+#include "../trulo.dtsi"
+#include "../usba.dtsi"
+
+
+/* Trulo project DTS includes*/
+#include "../trulo/battery.dtsi"
+#include "../trulo/cbi.dtsi"
+#include "../trulo/gpio.dtsi"
+#include "../trulo/i2c.dtsi"
+#include "../trulo/fan.dtsi"
+#include "../trulo/keyboard.dtsi"
+#include "../trulo/led_pins.dtsi"
+#include "../trulo/led_policy.dtsi"
+#include "../trulo/temp_sensors.dtsi"
+/*#include "../trulo/usb_typec.dtsi"*/
+
+#include <dt-bindings/usbc_mux.h>
+#include <dt-bindings/usb_pd_tcpm.h>
+#include <usbc-policy.dtsi>
+
+/* Trulo overrides follow... */
+
+/ {
+	/*
+	 * Aliases used for sub-board GPIOs.
+	 */
+	aliases {
+		/*
+		 * HPD pins for HDMI sub-board.
+		 */
+		gpio-hdmi-en-odl = &gpio_sb_3;
+		gpio-hpd-odl = &gpio_sb_4;
+	};
+
+	named-gpios {
+		/*
+		 * Set I2C pins for type C sub-board to be low voltage (I2C5_1).
+		 * We do this for all boards, since the pins are 3.3V tolerant,
+		 * and the only 2 types of sub-boards used on nivviks both have
+		 * type-C ports on them.
+		 */
+		gpio_sb_3: sb-3 {
+			gpios = <&gpiof 4 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+			no-auto-init;
+		};
+		gpio_sb_4: sb-4 {
+			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			no-auto-init;
+		};
+	};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger>;
+			pdc = <&pdc_power_p0>;
+			policy = <&cros_policy>;
+		};
+	};
+};
+
+&adc_ec_vsense_pp3300_s5 {
+	/*
+	 * Voltage divider on input has 47k upper and 220k lower legs with
+	 * 2714 mV full-scale reading on the ADC. Apply the largest possible
+	 * multiplier (without overflowing int32) to get the best possible
+	 * approximation of the actual ratio, but derate by a factor of two to
+	 * ensure unexpectedly high values won't overflow.
+	 */
+	mul = <(791261 / 2)>;
+	div = <(651975 / 2)>;
+};
+
+/* The eSPI shim requires this GPIO nodelabel */
+gpio_en_pp5000_vbus: &gpio_en_usb_a0_vbus {
+};
+
+
+&i2c3_0 {
+	label = "I2C_PORT_PD";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+
+	pdc_power_p0: rts54-pdc@67 {
+		compatible = "realtek,rts54-pdc";
+		reg = <0x67>;
+		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+	};
+};
+
+&i2c7_0 {
+	label = "I2C_BATTERY";
+	label = "I2C_PORT_CHARGER";
+
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	charger: bq25710@9 {
+		compatible = "ti,bq25710";
+		status = "okay";
+		reg = <0x9>;
+	};
+};
