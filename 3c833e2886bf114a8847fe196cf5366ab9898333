@@ -33,6 +33,24 @@
       "message": "The sensor presented to ARCVM should be interrupt based, otherwise, we won\u0027t pass CTS. I think the issue is elsewhere, we need to know why the IMU interrupt is not propagated.",
       "revId": "3c833e2886bf114a8847fe196cf5366ab9898333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f4e22f_d08da842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2024-09-10T00:23:11Z",
+      "side": 1,
+      "message": "line 172 `/delete-property/ sensor-irqs;` disabled sensor IRQ, \nbut with Gyro running in interrupt mode causing EC reset issue (b/355137280, b/363958135#comment4)\nQQ which CTS item does partner need to run? it was initially found by factory test",
+      "parentUuid": "e0265180_dbe7d5eb",
+      "revId": "3c833e2886bf114a8847fe196cf5366ab9898333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
