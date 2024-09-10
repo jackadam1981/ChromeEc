@@ -33,6 +33,23 @@
       "message": "Nit: My personal preference would be to have Accept be the first condition. Then both of these checks would be positive instead of negative (with an `||`). I think it would be a little easier to read.",
       "revId": "658d4b55d9d796a615a967d1c83be5ac1717cc71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc89ab85_ac7b1323",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 6821,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-10T17:20:03Z",
+      "side": 1,
+      "message": "FYI, there was a PD ECN approved a few months ago to allow a VCONN Source/DFP to send Wait in response to a VCONN_Swap to allow it to finish mode entry faster. So we could theoretically add the Wait clause back in at some point in the future, but that would still be a new feature.",
+      "revId": "658d4b55d9d796a615a967d1c83be5ac1717cc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
