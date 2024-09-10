@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59f2401_07779165",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 6811,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-10T17:16:19Z",
+      "side": 1,
+      "message": "Nit: This comment should explicitly say that we will accept if we\u0027re current VCONN Source.",
+      "revId": "658d4b55d9d796a615a967d1c83be5ac1717cc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4806f3e_c9393071",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 6815,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-10T17:16:19Z",
+      "side": 1,
+      "message": "Nit: My personal preference would be to have Accept be the first condition. Then both of these checks would be positive instead of negative (with an `||`). I think it would be a little easier to read.",
+      "revId": "658d4b55d9d796a615a967d1c83be5ac1717cc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
