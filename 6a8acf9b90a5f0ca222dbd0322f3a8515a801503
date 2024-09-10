@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144a20f7_cdb9611f",
+        "filename": "zephyr/program/nissa/orisa-ish/src/board_nb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-10T18:45:59Z",
+      "side": 1,
+      "message": "Does this need to be board specific?  Can you use `GPIO_DT_FROM_ALIAS()` and move this code somewhere common?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "6a8acf9b90a5f0ca222dbd0322f3a8515a801503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
