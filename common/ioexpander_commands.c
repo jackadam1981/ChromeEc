@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "gpio.h"
 #include "ioexpander.h"

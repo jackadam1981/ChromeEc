@@ -3,9 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"

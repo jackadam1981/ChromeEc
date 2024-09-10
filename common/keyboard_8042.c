@@ -11,8 +11,8 @@
  */
 #line 13
 
+#include "assert.h"
 #include "atkbd_protocol.h"
-#include "builtin/assert.h"
 #include "button.h"
 #include "chipset.h"
 #include "common.h"

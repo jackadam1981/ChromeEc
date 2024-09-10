@@ -5,7 +5,7 @@
 
 /* Flash memory module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "console.h"
 #include "flash.h"
 #include "hooks.h"

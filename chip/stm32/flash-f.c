@@ -5,8 +5,8 @@
 
 /* Common flash memory module for STM32F and STM32F0 */
 
+#include "assert.h"
 #include "battery.h"
-#include "builtin/assert.h"
 #include "clock.h"
 #include "console.h"
 #include "flash-f.h"

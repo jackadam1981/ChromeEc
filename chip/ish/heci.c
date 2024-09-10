@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "hbm.h"

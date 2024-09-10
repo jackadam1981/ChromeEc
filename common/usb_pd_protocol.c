@@ -5,11 +5,11 @@
 
 /* LCOV_EXCL_START - TCPMv1 is difficult to meaningfully test: b/304349098. */
 
+#include "assert.h"
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "board.h"
-#include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"

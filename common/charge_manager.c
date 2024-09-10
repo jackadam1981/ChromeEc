@@ -10,9 +10,9 @@
 #line 11
 
 #include "adc.h"
+#include "assert.h"
 #include "atomic.h"
 #include "battery.h"
-#include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charge_state.h"

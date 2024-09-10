@@ -5,7 +5,7 @@
 
 /* GPIO module for Chrome EC */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "clock.h"
 #include "common.h"
 #include "gpio.h"

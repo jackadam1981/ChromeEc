@@ -11,7 +11,7 @@
  */
 #line 13
 
-#include "builtin/assert.h"
+#include "assert.h"
 #ifdef CONFIG_ZEPHYR
 #include "cbi_flash.h"
 #endif /* CONFIG_ZEPHYR */

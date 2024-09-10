@@ -5,7 +5,7 @@
 
 /* Clocks configuration routines */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "clock.h"
 #include "clock_chip.h"

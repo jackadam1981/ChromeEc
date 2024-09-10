@@ -13,7 +13,7 @@
  * but at least yields predictable behavior.
  */
 
-#include "builtin/assert.h"
+#include "assert.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"

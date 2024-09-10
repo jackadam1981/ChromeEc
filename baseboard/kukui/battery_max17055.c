@@ -5,8 +5,8 @@
  * Battery pack vendor provided charging profile
  */
 
+#include "assert.h"
 #include "battery.h"
-#include "builtin/assert.h"
 #include "charge_state.h"
 #include "charger_mt6370.h"
 #include "console.h"

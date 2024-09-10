@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "benchmark.h"
-#include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
 #include "openssl/aead.h"

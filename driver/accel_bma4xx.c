@@ -11,7 +11,7 @@
 
 #include "accel_bma422.h"
 #include "accelgyro.h"
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "hwtimer.h"

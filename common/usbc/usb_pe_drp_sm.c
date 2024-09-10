@@ -9,10 +9,10 @@
  */
 #line 11
 
+#include "assert.h"
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
-#include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"

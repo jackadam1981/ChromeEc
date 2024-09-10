@@ -5,8 +5,8 @@
 /* HyperDebug GPIO logic and console commands */
 
 #include "adc.h"
+#include "assert.h"
 #include "atomic.h"
-#include "builtin/assert.h"
 #include "clock_chip.h"
 #include "cmsis-dap.h"
 #include "common.h"

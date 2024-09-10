@@ -4,7 +4,7 @@
  */
 
 /* System module driver depends on chip series for Chrome EC */
-#include "builtin/assert.h"
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"

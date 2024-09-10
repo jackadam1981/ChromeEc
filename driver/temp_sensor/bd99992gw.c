@@ -9,8 +9,8 @@
  * the PMIC is in S0.
  */
 
+#include "assert.h"
 #include "bd99992gw.h"
-#include "builtin/assert.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"

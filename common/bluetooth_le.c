@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "assert.h"
 #include "bluetooth_le.h"
-#include "builtin/assert.h"
 #include "console.h"
 #include "util.h"
 
