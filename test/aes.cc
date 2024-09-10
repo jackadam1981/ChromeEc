@@ -7,6 +7,7 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "console.h"
+#include "debug.h"
 #include "openssl/aead.h"
 #include "openssl/aes.h"
 #include "openssl/cipher.h"
@@ -571,6 +572,14 @@ static void test_aes_speed(void)
 
 void run_test(int argc, const char **argv)
 {
+	if (debugger_is_connected()) {
+		ccprints("debugger enabled");
+	} else {
+		ccprints("debugger disabled");
+	}
+
+	asm volatile("bkpt #0");
+
 	watchdog_reload();
 
 	/* do not check result, just as a benchmark */
