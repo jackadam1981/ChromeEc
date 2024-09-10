@@ -7,6 +7,11 @@
 #include "fpsensor/fpsensor_utils.h"
 #include "overflow.h"
 
+#include <stdio.h>
+
+#include <array>
+#include <cctype>
+
 bool fp_match_success(int match_result)
 {
 	return match_result == EC_MKBP_FP_ERR_MATCH_YES ||
@@ -46,4 +51,21 @@ bool is_raw_capture(uint32_t mode)
 	return (mode & FP_MODE_CAPTURE) &&
 	       (capture_type == FP_CAPTURE_VENDOR_FORMAT ||
 		capture_type == FP_CAPTURE_QUALITY_TEST);
+}
+
+/**
+ * Format an unsigned int FOURCC value as a printable string.
+ *
+ * If the character is unprintable, we will print '.', instead. This logic is
+ * subject to change.
+ */
+const char *fourcc_to_string(uint32_t value, std::array<char, 5> &str)
+{
+	auto get_char = [&value](int index) {
+		const unsigned char ch = (value >> (index * 8)) & 0xFF;
+		return std::isprint(ch) ? ch : '.';
+	};
+	snprintf(str.data(), str.size(), "%c%c%c%c", get_char(0), get_char(1),
+		 get_char(2), get_char(3));
+	return str.data();
 }

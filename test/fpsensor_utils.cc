@@ -3,9 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "rollback.h"
 #include "test_util.h"
+
+#include <array>
 
 enum ec_error_list rollback_get_secret(uint8_t *secret)
 {
@@ -88,6 +91,20 @@ test_static int test_is_raw_capture()
 	return EC_SUCCESS;
 }
 
+test_static int test_fourcc_to_string()
+{
+	std::array<char, 5> s;
+
+	TEST_ASSERT_ARRAY_EQ(fourcc_to_string(FOURCC('F', 'P', 'C', ' '), s),
+			     "FPC ", 5);
+	TEST_ASSERT_ARRAY_EQ(fourcc_to_string(FOURCC('\0', '*', ' ', '.'), s),
+			     ".* .", 5);
+	TEST_ASSERT_ARRAY_EQ(fourcc_to_string(FOURCC(128, 129, 130, 131), s),
+			     "....", 5);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_validate_fp_buffer_offset_success);
@@ -96,6 +113,8 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_is_test_capture);
 	RUN_TEST(test_is_raw_capture);
+
+	RUN_TEST(test_fourcc_to_string);
 
 	test_print_result();
 }
