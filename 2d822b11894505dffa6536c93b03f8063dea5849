@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6559a7a_24f1649e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-10T17:31:01Z",
+      "side": 1,
+      "message": "How do we get from UFP-not-accepting-swap to DFP-not-accepting-swap?",
+      "revId": "2d822b11894505dffa6536c93b03f8063dea5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd9567f_a1655bad",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-10T17:31:01Z",
+      "side": 1,
+      "message": "Strictly speaking, this should happen before the state change.",
+      "revId": "2d822b11894505dffa6536c93b03f8063dea5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57872859_06cc2f10",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-10T17:31:01Z",
+      "side": 1,
+      "message": "This is out of scope for this review, but we have a lot of duplicate source and sink policy flags. We should probably try to combine them and have one function that handles most of them for both power roles, like we do for TCPMv2.",
+      "revId": "2d822b11894505dffa6536c93b03f8063dea5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
