@@ -100,6 +100,54 @@
       },
       "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0bf10f_295f1bb4",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-10T23:25:12Z",
+      "side": 1,
+      "message": "Right, I wanted to, but then I recalled the Google C++ style guide said that outputs should be at the end of the arguments list and pointers. On second read, I can\u0027t find the pointers recommendation....hmmm.",
+      "parentUuid": "fc699d75_9edfbad3",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18a1dc9_7b80f4df",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-10T23:25:12Z",
+      "side": 1,
+      "message": "Ahh, true, but then the call sight would be a bit more cluttered with conversions and there could be some heap usage, right?",
+      "parentUuid": "ae5889d7_36691e4e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 70
+      },
+      "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
