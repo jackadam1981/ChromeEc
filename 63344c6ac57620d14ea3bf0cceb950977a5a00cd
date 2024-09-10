@@ -22,6 +22,30 @@
       },
       "revId": "63344c6ac57620d14ea3bf0cceb950977a5a00cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4886f7cf_681c9502",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-10T23:12:49Z",
+      "side": 1,
+      "message": "It doesn\u0027t exactly *need* to be unrestrictive, but I viewed this as equivalent to the \"version\" fpmcu command, where is doesn\u0027t harm anything to allow users to invoke this command and helps debugging.\n\n---\n\nAm I missing something? Is the pattern that only restricted debug commands live in this source file? Why are all these commands not using the restricted mechanism (CMD_FLAG_RESTRICTED)?",
+      "parentUuid": "da4bde09_e980d020",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "63344c6ac57620d14ea3bf0cceb950977a5a00cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
