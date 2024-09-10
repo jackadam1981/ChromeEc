@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af94b39d_a4dbdbe3",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-10T08:58:20Z",
+      "side": 1,
+      "message": "Why do we lower the priority? I thought we should raise the priority instead.",
+      "range": {
+        "startLine": 153,
+        "startChar": 44,
+        "endLine": 153,
+        "endChar": 65
+      },
+      "revId": "eea9ac8754e9e440a2472522c1a78a29e7bc34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b920d3_b99a16e2",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-10T08:58:20Z",
+      "side": 1,
+      "message": "Do we really need to run fan_init in each resume?\nMy assumption is that given you have static flag override_flag, you expect to do this flag initialization as early as possible; once it is decided, we don\u0027t need to update it anymore so as you will return early in fan_init. Therefore I don\u0027t see the reason that we need to run in each resume. \nI understand that we need to wait for fan pin to be ready, do we have better choice for the hooktype?",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 32
+      },
+      "revId": "eea9ac8754e9e440a2472522c1a78a29e7bc34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
