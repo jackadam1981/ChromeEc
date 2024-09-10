@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "511d93bc_ba867cf0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-10T17:42:03Z",
+      "side": 1,
+      "message": "I made this check symmetrical to cover our bases and for completeness (perhaps if things get out of sync), even though we don\u0027t expect to receive an external swap from PDC-is-DFP to PDC-is-UFP. UTs do exercise both cases.",
+      "parentUuid": "e6559a7a_24f1649e",
+      "revId": "2d822b11894505dffa6536c93b03f8063dea5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edd9567f_a1655bad",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-10T17:31:01Z",
       "side": 1,
       "message": "Strictly speaking, this should happen before the state change.",
+      "revId": "2d822b11894505dffa6536c93b03f8063dea5849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f7b57be_8940303e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-10T17:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd9567f_a1655bad",
       "revId": "2d822b11894505dffa6536c93b03f8063dea5849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
