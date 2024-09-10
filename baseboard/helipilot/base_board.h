@@ -10,6 +10,8 @@
 
 #include "compile_time_macros.h"
 
+#define CONFIG_ENABLE_JTAG_SELECTION
+
 #undef CONFIG_SYSTEM_UNLOCKED
 
 #define CONFIG_ALLOW_UNALIGNED_ACCESS
