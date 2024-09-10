@@ -225,6 +225,7 @@ fpsensor_auth_crypto_stateless-y=fpsensor_auth_crypto_stateless.o
 fpsensor_crypto-y=fpsensor_crypto.o
 fpsensor_crypto_with_mock-y=fpsensor_crypto_with_mock.o
 fpsensor_crypto_with_mock_otp-y=fpsensor_crypto_with_mock_otp.o
+fpsensor_debug-y=fpsensor_debug.o
 fpsensor_hw-y=fpsensor_hw.o
 fpsensor_state-y=fpsensor_state.o
 fpsensor_utils-y=fpsensor_utils.o
