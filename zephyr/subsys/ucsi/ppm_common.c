@@ -517,7 +517,6 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 		dev->ppm_state = PPM_STATE_PROCESSING_COMMAND;
 		clear_cci(dev);
 		dev->ucsi_data.cci.busy = 1;
-		ppm_common_opm_notify(dev);
 		/* Intentional fallthrough since we are now processing.
 		 */
 		__attribute__((fallthrough));
@@ -749,6 +748,7 @@ static void ppm_common_thread_init(struct ucsi_ppm_device *dev)
 		&dev->ppm_task_data, ppm_stack, CONFIG_UCSI_PPM_STACK_SIZE,
 		(void *)ppm_common_task, (void *)dev, 0, 0,
 		CONFIG_UCSI_PPM_THREAD_PRIORITY, K_ESSENTIAL, K_NO_WAIT);
+	k_thread_name_set(dev->ppm_task_id, "UCSI PPM");
 }
 
 int ucsi_ppm_init_and_wait(struct ucsi_ppm_device *dev)
