@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9942a33_d17a5fb3",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-11T17:27:45Z",
+      "side": 1,
+      "message": "Wondering if there\u0027s an edge case here since before we were writing directly to CC and now we\u0027re writing to CROSS_COMPILE_CC_NAME and CC is/was modified before this line",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a633128f_7a6d9b6f",
         "filename": "Makefile.toolchain",
         "patchSetId": 6
