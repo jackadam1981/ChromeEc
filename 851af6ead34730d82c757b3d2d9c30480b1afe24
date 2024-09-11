@@ -97,6 +97,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dfe18f3f_1a47c91b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "58f3ae7d_7a56da5e",
+      "range": {
+        "startLine": 11,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8794f8_e52f1122",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "73afb460_c1cc8dc9",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "40c0c2d0_653f9867",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -207,6 +255,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cb519d_84fdf1ab",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ae06f3f_1756f0f8",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3df160_b7f281a7",
@@ -302,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a53db0_e70f2588",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb99d8c_90e08563",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "834807f2_a86bbc98",
@@ -333,6 +429,24 @@
       "side": 1,
       "message": "adding the flags as `add_definitions` solves the problem.",
       "parentUuid": "834807f2_a86bbc98",
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bbbaea_83aecd5b",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33806984_38831483",
       "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -456,6 +570,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39650f45_d462f975",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2281e03e_2110ac7a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 87
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce4a528_68f58b08",
@@ -493,6 +631,30 @@
       "side": 1,
       "message": "adding the flags as `add_definitions` solves the problem.",
       "parentUuid": "bce4a528_68f58b08",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ce3f26_0bc52804",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c2bb1f_59658a27",
       "range": {
         "startLine": 76,
         "startChar": 0,
