@@ -249,7 +249,6 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
 static int command_fpinfo(int argc, const char **argv)
 {
 	ec_response_fp_info info;
-	std::array<char, 5> fourcc_str;
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	if (fp_sensor_get_info(&info) < 0)
@@ -261,7 +260,7 @@ static int command_fpinfo(int argc, const char **argv)
 	constexpr int align = 15;
 
 	ccprintf("%*s: 0x%X (%s)\n", align, "Vendor ID", info.vendor_id,
-		 fourcc_to_string(info.vendor_id, &fourcc_str));
+		 fourcc_to_string(info.vendor_id).c_str());
 	ccprintf("%*s: 0x%X\n", align, "Product ID", info.product_id);
 	ccprintf("%*s: 0x%X\n", align, "Model ID", info.model_id);
 	ccprintf("%*s: 0x%X\n", align, "Version", info.version);
@@ -270,7 +269,7 @@ static int command_fpinfo(int argc, const char **argv)
 		 info.height, info.bpp);
 	ccprintf("%*s: %u\n", align, "Frame Size", info.frame_size);
 	ccprintf("%*s: 0x%X (%s)\n", align, "Pixel Format", info.pixel_format,
-		 fourcc_to_string(info.pixel_format, &fourcc_str));
+		 fourcc_to_string(info.pixel_format).c_str());
 
 	ccprintf("%*s: 0x%X\n", align, "Error State", info.errors);
 
