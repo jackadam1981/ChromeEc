@@ -46,6 +46,30 @@
       },
       "revId": "63344c6ac57620d14ea3bf0cceb950977a5a00cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89f9c86_fbe45cd8",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-11T20:27:06Z",
+      "side": 1,
+      "message": "\u003e I viewed this as equivalent to the \"version\" fpmcu command, where is doesn\u0027t harm anything to allow users to invoke this command and helps debugging.\n\nOk\n\n\u003e  Is the pattern that only restricted debug commands live in this source file? \n\nI don\u0027t think so. I think it\u0027s just any \"debug\" command.\n\n\u003e Why are all these commands not using the restricted mechanism (CMD_FLAG_RESTRICTED)?\n\nAre they all manually checking `system_is_locked()`? Looks like this came up in the past: http://b/279821940.",
+      "parentUuid": "4886f7cf_681c9502",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "63344c6ac57620d14ea3bf0cceb950977a5a00cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
