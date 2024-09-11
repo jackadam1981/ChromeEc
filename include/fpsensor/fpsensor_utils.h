@@ -10,8 +10,8 @@
 
 #include "common.h"
 
-#include <array>
 #include <cstdint>
+#include <string>
 
 /**
  * Test that size+offset does not exceed buffer_size
@@ -50,6 +50,6 @@ bool is_raw_capture(uint32_t mode);
  * If the character is unprintable, we will print '.', instead.
  * This is similar to hexdump's behavior.
  */
-const char *fourcc_to_string(uint32_t value, std::array<char, 5> *str);
+const std::string fourcc_to_string(uint32_t value);
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_UTILS_H */

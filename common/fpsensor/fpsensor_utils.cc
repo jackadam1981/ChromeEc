@@ -9,8 +9,9 @@
 
 #include <stdio.h>
 
-#include <array>
 #include <cctype>
+#include <format>
+#include <string>
 
 bool fp_match_success(int match_result)
 {
@@ -59,13 +60,12 @@ bool is_raw_capture(uint32_t mode)
  * If the character is unprintable, we will print '.', instead. This logic is
  * subject to change.
  */
-const char *fourcc_to_string(uint32_t value, std::array<char, 5> *str)
+const std::string fourcc_to_string(uint32_t value)
 {
 	auto get_char = [&value](int index) {
 		const unsigned char ch = (value >> (index * 8)) & 0xFF;
 		return std::isprint(ch) ? ch : '.';
 	};
-	snprintf(str->data(), str->size(), "%c%c%c%c", get_char(0), get_char(1),
-		 get_char(2), get_char(3));
-	return str->data();
+	return std::format("{:c}{:c}{:c}{:c}", get_char(0), get_char(1), get_char(2),
+			   get_char(3));
 }

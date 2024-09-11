@@ -93,14 +93,15 @@ test_static int test_is_raw_capture()
 
 test_static int test_fourcc_to_string()
 {
-	std::array<char, 5> s;
-
-	TEST_ASSERT_ARRAY_EQ(fourcc_to_string(FOURCC('F', 'P', 'C', ' '), &s),
-			     "FPC ", 5);
-	TEST_ASSERT_ARRAY_EQ(fourcc_to_string(FOURCC('\0', '*', ' ', '.'), &s),
-			     ".* .", 5);
-	TEST_ASSERT_ARRAY_EQ(fourcc_to_string(FOURCC(128, 129, 130, 131), &s),
-			     "....", 5);
+	TEST_ASSERT_ARRAY_EQ(
+		fourcc_to_string(FOURCC('F', 'P', 'C', ' ')).c_str(), "FPC ",
+		5);
+	TEST_ASSERT_ARRAY_EQ(
+		fourcc_to_string(FOURCC('\0', '*', ' ', '.')).c_str(), ".* .",
+		5);
+	TEST_ASSERT_ARRAY_EQ(
+		fourcc_to_string(FOURCC(128, 129, 130, 131)).c_str(), "....",
+		5);
 
 	return EC_SUCCESS;
 }
