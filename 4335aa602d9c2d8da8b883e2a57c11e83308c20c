@@ -1,0 +1,65 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee1acd2_816973b4",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T22:56:01Z",
+      "side": 1,
+      "message": "@patrykd@google.com is this still required?\nI see it defined in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/zephyr_console_shim.h;l\u003d72?q\u003dDECLARE_CONSOLE_COMMAND_FLAGS\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d71-,72,-73",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "74de48f4_24dcefce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 165,
+                "startChar": 0,
+                "endLine": 170,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 204,
+                "startChar": 0,
+                "endLine": 207,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 220,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4335aa602d9c2d8da8b883e2a57c11e83308c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
