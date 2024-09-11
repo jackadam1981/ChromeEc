@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "467407bc_f632e90b",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,vci-gpios.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-11T20:45:10Z",
+      "side": 1,
+      "message": "I have been exploring this comment, I do not think it is possible, since we are trying to make VCI pins as GPIO\u0027s to be easily included into `named-gpios` node.\nIn contrast, `cros-ec,hibernate-vci-pins.yaml` only configures wake up functionality of the same pins.",
+      "parentUuid": "d0b12e67_cdf2aad9",
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "241a5160_287df096",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "241a5160_287df096",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc02cbd6_efa6464e",
+        "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-11T20:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ac9bc7_6ed0494c",
       "range": {
         "startLine": 23,
         "startChar": 20,
