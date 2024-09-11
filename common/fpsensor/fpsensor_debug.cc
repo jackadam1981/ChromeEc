@@ -201,14 +201,17 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpupload, command_fpupload, NULL,
  */
 static int command_fpdownload(int argc, const char **argv)
 {
+#ifdef CONFIG_ZEPHYR
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
+#endif
 
 	upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fpdownload, command_fpdownload, NULL,
-			"Copy fp image from fpmcu fpsensor buffer");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpdownload, command_fpdownload, NULL,
+			      "Copy fp image from fpmcu fpsensor buffer",
+			      CMD_FLAG_RESTRICTED);
 
 static int command_fpenroll(int argc, const char **argv)
 {
