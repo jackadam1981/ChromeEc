@@ -57,6 +57,30 @@
       },
       "revId": "975ebd591bb0c241a69b9d66c9fc8248b05a6875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e07136_3434894d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-09-11T07:58:39Z",
+      "side": 1,
+      "message": "Oh sorry, I forgot to upload libec. Can you pull the new patchset and try again?",
+      "parentUuid": "f0cdde47_e354fd45",
+      "range": {
+        "startLine": 1560,
+        "startChar": 29,
+        "endLine": 1560,
+        "endChar": 43
+      },
+      "revId": "975ebd591bb0c241a69b9d66c9fc8248b05a6875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
