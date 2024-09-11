@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ae06f3f_1756f0f8",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:26:56Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "158a0029_00e8f852",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a3df160_b7f281a7",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 4
@@ -256,6 +280,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddb99d8c_90e08563",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:26:56Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "e46db694_f0fd1f82",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "834807f2_a86bbc98",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 4
@@ -267,6 +315,24 @@
       "writtenOn": "2024-09-10T20:32:11Z",
       "side": 1,
       "message": "nit: You can add many flags in a single set call, and several of these I think can be grouped.\n\nI would check to make sure you actually need an override for everything here though. I\u0027m not sure at all how this is related to the BoringSSL change and I\u0027m not convinced that you should need to do this.",
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33806984_38831483",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:26:56Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "834807f2_a86bbc98",
       "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -368,6 +434,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2281e03e_2110ac7a",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:26:56Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "c2e7cb50_f470e90a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 87
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bce4a528_68f58b08",
         "filename": "third_party/rules.mk",
         "patchSetId": 4
@@ -379,6 +469,30 @@
       "writtenOn": "2024-09-11T00:09:27Z",
       "side": 1,
       "message": "I think there are more nuanced flags that need to be conditionally set, other than just the mcpu tuning. That being said, it would be easier to condition based on `$(CHIP_FAMILY)` being `stm32h7`.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c2bb1f_59658a27",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-11T18:26:56Z",
+      "side": 1,
+      "message": "adding the flags as `add_definitions` solves the problem.",
+      "parentUuid": "bce4a528_68f58b08",
       "range": {
         "startLine": 76,
         "startChar": 0,
