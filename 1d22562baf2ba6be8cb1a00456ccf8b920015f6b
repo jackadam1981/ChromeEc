@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "606ebab2_e12679ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-11T20:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63aa03c9_900681a6",
+      "revId": "1d22562baf2ba6be8cb1a00456ccf8b920015f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a0c52f8_7c4120c6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-09-04T19:53:49Z",
       "side": 1,
       "message": "Nit - prefer that the rename is done as a separate CL for a cleaner commit history.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "1d22562baf2ba6be8cb1a00456ccf8b920015f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb12f65_4a8cfce8",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-11T20:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0c52f8_7c4120c6",
       "range": {
         "startLine": 58,
         "startChar": 0,
