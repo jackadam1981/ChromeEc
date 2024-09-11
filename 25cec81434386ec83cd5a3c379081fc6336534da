@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca2a6bb_85abfd3f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-11T09:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cf7e5cc_ea9c2e6f",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca7399cf_bfb284c1",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-09-03T18:57:18Z",
       "side": 1,
       "message": "Nit: The result of this `\u0026` should implicitly cast to a bool. This is already an elaborate expression with multiple levels of parenthesis, so letting that be implicit might make this slightly easier to read. But I don\u0027t have a really strong preference here. Putting the choice of `pa_vconn_sw` and `pb_vconn_sw` into a separate variable might be equally helpful.",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3148e57d_7b0e06d3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-11T09:40:56Z",
+      "side": 1,
+      "message": "I assume the \u0026 just apply the mask and result is still an integer. Comparing the result with 0 might be more clear.",
+      "parentUuid": "ca7399cf_bfb284c1",
       "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4a6903_46a56a3d",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-11T09:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb0c01ed_b58eef23",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f654bf9_adf3bdb1",
@@ -82,6 +136,24 @@
       "writtenOn": "2024-09-03T18:57:18Z",
       "side": 1,
       "message": "Is the format of `bank` generic to PDCs or specific to the TI PDC?",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb47fc0_d5d78129",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2089,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-11T09:40:56Z",
+      "side": 1,
+      "message": "I think the format is generic for PDC in interger.",
+      "parentUuid": "5f654bf9_adf3bdb1",
       "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
