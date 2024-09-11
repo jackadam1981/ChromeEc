@@ -34,6 +34,23 @@
       "parentUuid": "ead6b45f_29ad1a9e",
       "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a633128f_7a6d9b6f",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-11T17:25:28Z",
+      "side": 1,
+      "message": "Add $(COMMON_WARN-$(CROSS_COMPILE_CC_NAME))\n```suggestion\nCFLAGS\u003d$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(COMMON_WARN) $(COMMON_WARN-$(CROSS_COMPILE_CC_NAME)) $(CFLAGS_y)\n```",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
