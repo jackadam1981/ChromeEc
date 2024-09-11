@@ -34,6 +34,29 @@
       "parentUuid": "1cc5ea4c_76812d76",
       "revId": "975ebd591bb0c241a69b9d66c9fc8248b05a6875",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0cdde47_e354fd45",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2024-09-11T07:48:14Z",
+      "side": 1,
+      "message": "This seems to be inconsistant with libec?\n\n```\nutil/ectool.cc:1560:30: error: no viable conversion from \u0027base::FilePath\u0027 to \u0027const char *\u0027          \n 1560 |         if (ec_updater-\u003eUpdateImage(base::FilePath(argv[1]), image) !\u003d                       \n      |                                     ^~~~~~~~~~~~~~~~~~~~~~~                                  \n/build/corsola/usr/include/libec/ec_updater.h:24:38: note: passing argument to parameter \u0027file\u0027 here \n   24 |   ec::Status UpdateImage(const char *file, enum ec_image image);                             \n      |                                      ^                                                       \n1 error generated.                                                                                   \nmake: *** [Makefile.rules:713: build/host/util/ectool] Error 1                                       \n```",
+      "range": {
+        "startLine": 1560,
+        "startChar": 29,
+        "endLine": 1560,
+        "endChar": 43
+      },
+      "revId": "975ebd591bb0c241a69b9d66c9fc8248b05a6875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
