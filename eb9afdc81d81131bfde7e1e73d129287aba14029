@@ -140,6 +140,30 @@
       },
       "revId": "eb9afdc81d81131bfde7e1e73d129287aba14029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2604360d_1b3fa95a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2024-09-11T04:54:54Z",
+      "side": 1,
+      "message": "This wasn\u0027t changed.",
+      "parentUuid": "ccc36abc_48e77a92",
+      "range": {
+        "startLine": 390,
+        "startChar": 3,
+        "endLine": 390,
+        "endChar": 31
+      },
+      "revId": "eb9afdc81d81131bfde7e1e73d129287aba14029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
