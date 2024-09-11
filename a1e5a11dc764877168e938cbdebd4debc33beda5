@@ -148,6 +148,54 @@
       },
       "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f133fa_642d5122",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-11T20:21:02Z",
+      "side": 1,
+      "message": "heap usage: yes (pigweed strings have a stack-only variant, but probably don\u0027t want to pull another dependency just for this)\n\n\u003e call sight would be a bit more cluttered with conversions \n\nDo you mean calling `c_str()` on the string or something else:\n\n```\nccprintf(\"%*s: 0x%X (%s)\\n\", align, \"Pixel Format\", info.pixel_format,\n\t\t fourcc_to_string(info.pixel_format).c_str());\n```",
+      "parentUuid": "e18a1dc9_7b80f4df",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 70
+      },
+      "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90981ede_9d9dac08",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-11T20:21:02Z",
+      "side": 1,
+      "message": "It looks like the [current guide](https://google.github.io/styleguide/cppguide.html#Inputs_and_Outputs) says to use references:\n\n\u003e while non-optional output and input/output parameters should usually be references (which cannot be null).",
+      "parentUuid": "fe0bf10f_295f1bb4",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
