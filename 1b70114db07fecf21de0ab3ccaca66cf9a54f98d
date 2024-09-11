@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28d6928_36fa667d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-11T16:48:23Z",
+      "side": 1,
+      "message": "Right now, we still have one of these boilerplate functions for each register we actually use. The only things that the functions are responsible for are\n1. Specifying the register enum,\n2. Specifying the operation in the case of `_rd` functions, and\n3. Specifying the register size.\n\nThe first 2 are implied by the name of the function and don\u0027t really abstract anything away for the caller. I suspect that there is a readable, error-resistant way to implement the third one without needing a wrapper function for each register. Maybe an array of register sizes indexed by the register enum. If there is, it could get rid of a lot of boilerplate.\n\nThis is a good start.",
+      "revId": "1b70114db07fecf21de0ab3ccaca66cf9a54f98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
