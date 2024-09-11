@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9366d509_2879338d",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-11T18:37:06Z",
+      "side": 1,
+      "message": "\"The flag needs to be passed to the preprocessor: https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html#index-fmacro-prefix-map\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "0c8f9f01f318f6c2f0aac92ca3e919a17f3f6780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe7b666_a71b269a",
+        "filename": "third_party/boringssl/boringssl-toolchain.cmake",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-11T18:37:06Z",
+      "side": 1,
+      "message": "It looks like this part of the change is not needed.",
+      "range": {
+        "startLine": 19,
+        "startChar": 64,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "0c8f9f01f318f6c2f0aac92ca3e919a17f3f6780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

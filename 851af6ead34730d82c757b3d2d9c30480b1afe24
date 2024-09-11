@@ -281,6 +281,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92566622_cf7996f6",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-11T18:37:06Z",
+      "side": 1,
+      "message": "I met with @fsammoura@google.com and this suggestion from @ajordanr@google.com was exactly on track. It looks like the flag needs to be passed to the preprocessor: https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html#index-fmacro-prefix-map, which can be done with `add_definitions`.",
+      "parentUuid": "158a0029_00e8f852",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a3df160_b7f281a7",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 4
