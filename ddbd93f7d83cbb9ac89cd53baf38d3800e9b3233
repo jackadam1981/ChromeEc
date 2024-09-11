@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36640067_b2ace330",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-11T17:33:55Z",
+      "side": 1,
+      "message": "Maybe move lines 70-74 to line 94 and use CROSS_COMPILE_CC_NAME and CROSS_COMPILE_CXX_NAME instead of CC and CXX",
+      "parentUuid": "c9942a33_d17a5fb3",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a633128f_7a6d9b6f",
         "filename": "Makefile.toolchain",
         "patchSetId": 6
