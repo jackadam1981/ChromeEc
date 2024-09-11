@@ -162,10 +162,13 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
  */
 static int command_fpupload(int argc, const char **argv)
 {
-	if (argc != 3)
-		return EC_ERROR_PARAM1;
+#ifdef CONFIG_ZEPHYR
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
+#endif
+
+	if (argc != 3)
+		return EC_ERROR_PARAM1;
 	int offset = atoi(argv[1]);
 	if (offset < 0)
 		return EC_ERROR_PARAM1;
@@ -183,8 +186,9 @@ static int command_fpupload(int argc, const char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fpupload, command_fpupload, NULL,
-			"Copy fp image onto fpmcu fpsensor buffer");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpupload, command_fpupload, NULL,
+			      "Copy fp image onto fpmcu fpsensor buffer",
+			      CMD_FLAG_RESTRICTED);
 
 /* Transfer an image from the FPMCU to the host
  *
