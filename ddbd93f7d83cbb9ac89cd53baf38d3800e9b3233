@@ -16,6 +16,24 @@
       "message": "This conditional statement is why boards are failing.  When I remove this check and revert to the original logic below for USE_BUILTIN_STDLIB and USE_CXX_COMPILER the builds work.\n\nI noticed that the passing builds were using builtins and the failing builds were linking against libc, so I started tracing backward.  \n\nIn this case, in the original logic, we set the clang compiler and override the builtin stdlib if it\u0027s a clang board regardless of whether the compiler name was set or not.  \n\nIn the new logic, we only check and override the compiler if the compiler isn\u0027t already set, which is likely more valid, but we also override the USE_BUILTIN_STDLIB for all boards where the compiler is clang, and we likely want the clang boards filter there as well.",
       "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee11f1b_05fc8e15",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-11T15:01:27Z",
+      "side": 1,
+      "message": "Should clarify, this resolved Guybrush, further testing showed more errors.  I can look into it again today.",
+      "parentUuid": "ead6b45f_29ad1a9e",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
