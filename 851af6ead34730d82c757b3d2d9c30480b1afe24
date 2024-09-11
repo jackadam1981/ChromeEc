@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e46db694_f0fd1f82",
+        "filename": "cmake/toolchain-common.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-11T00:09:27Z",
+      "side": 1,
+      "message": "Yeah, I think we could do a bit better on integrating into EC, rather than reconstructing all build flags in one place.\n\n1. One solution is that we separate out the particular build flags in EC a bit, so they can be imported cleanly into cmake. Right now, we already have `CFLAGS_CPU`, which has the cpu specific compiler arch/tuning flags. We would combine the minimal + relevant variables in this cmake file.\n2. Another solution would be to fully support the two build systems by adding a cmake file fragment along side all of the build.mk fragments, where flags are added. For example, we would add a cmake file in chip/stm32 that would mirror the build.mk that adds the `-mcpu` compiler tuning flags. The hope is that people would update both when modifying flags, but realistically, I think people might be too scared to update something they don\u0027t know how to test easily.\n3. Another solution is to not use cmake from our EC build system. We would simply reference the relevant source files from boringssl in third_party and compile them along with other EC source files. I don\u0027t believe we have ever actually achieved build isolation when building cryptoc and clearly not with boringssl, either. Both require lots of custom EC configuration to build *correctly* and are not immune from EC mistakes. This is probably a tough sell for maintenance, but I don\u0027t believe the build isolation is a reason to continue using boringssl\u0027s build system.\n4. We simply acknowledge that we are passing in a massive amount of compiler flags that can potentially break boringssl in odd ways and just explicitly set `CMAKE_C_FLAGS` and `CMAKE_CXX_FLAGS` to our EC\u0027s CFLAGS (with the extra `-fmacro-prefix-map\u003d...` flag).",
+      "parentUuid": "46fbe09e_cb2c93b8",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "834807f2_a86bbc98",
         "filename": "cmake/toolchain-common.cmake",
         "patchSetId": 4
@@ -337,6 +361,29 @@
         "startChar": 0,
         "endLine": 18,
         "endChar": 87
+      },
+      "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce4a528_68f58b08",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-11T00:09:27Z",
+      "side": 1,
+      "message": "I think there are more nuanced flags that need to be conditionally set, other than just the mcpu tuning. That being said, it would be easier to condition based on `$(CHIP_FAMILY)` being `stm32h7`.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 31
       },
       "revId": "851af6ead34730d82c757b3d2d9c30480b1afe24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
