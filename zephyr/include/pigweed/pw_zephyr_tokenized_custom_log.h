@@ -28,8 +28,9 @@
  * Borrow bits from MODULE_BITS to keep 32 bit meta data
  * as this is not used in EC logging output.
  */
-#define PW_LOG_TOKENIZED_FLAG_BITS 6
+#define PW_LOG_TOKENIZED_FLAG_BITS 17
 #define PW_LOG_TOKENIZED_MODULE_BITS 12
+#define PW_LOG_TOKENIZED_LINE_BITS 0
 
 #define PW_EC_CHANNEL_TO_FLAG(channel) ((channel) + 1)
 #define PW_FLAG_TO_EC_CHANNEL(flag) ((enum console_channel)((flag)-1))
