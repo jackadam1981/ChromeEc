@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c545bd2_a8ecc74d",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-11T16:41:58Z",
+      "side": 1,
+      "message": "http://go/cppref/c/language/conversion\n\n\u003e A value of any scalar type can be implicitly converted to bool. The values that compare equal to an integer constant expression of value zero are a zero (for arithmetic types), null (for pointer types) or have a type of nullptr_t are converted to ​false, all other values are converted to true.\n\nBut what you did seems fine to me.",
+      "parentUuid": "3148e57d_7b0e06d3",
+      "revId": "25cec81434386ec83cd5a3c379081fc6336534da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb0c01ed_b58eef23",
