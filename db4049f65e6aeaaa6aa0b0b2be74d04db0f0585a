@@ -34,6 +34,24 @@
       "message": "This is already in branch firmware-brya-14505.B-main",
       "revId": "db4049f65e6aeaaa6aa0b0b2be74d04db0f0585a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e127d6a_37cc436d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2024-09-11T02:22:10Z",
+      "side": 1,
+      "message": "It looks like it was included starting from 14505.586.0",
+      "parentUuid": "5f5762a0_839a7394",
+      "revId": "db4049f65e6aeaaa6aa0b0b2be74d04db0f0585a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
