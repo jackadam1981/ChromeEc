@@ -304,6 +304,9 @@ DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, NULL,
 
 static int command_fpclear(int argc, const char **argv)
 {
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+
 	/*
 	 * We intentionally run this on the fp_task so that we use the
 	 * same code path as host commands.
