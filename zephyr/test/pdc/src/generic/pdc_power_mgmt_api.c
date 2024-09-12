@@ -9,6 +9,7 @@
 #include "drivers/ucsi_v3.h"
 #include "emul/emul_pdc.h"
 #include "hooks.h"
+#include "pdc_thread.h"
 #include "test/util.h"
 #include "usbc/pdc_power_mgmt.h"
 
@@ -19,6 +20,11 @@
 #include <zephyr/ztest.h>
 
 LOG_MODULE_REGISTER(pdc_power_mgmt_api, LOG_LEVEL_INF);
+
+#ifdef CONFIG_USBC_PDC_SINGLE_THREAD
+#define pdc_power_mgmt_resync_port_state_for_ppm(p) \
+	pdc_thread_wait_for_idle(2000)
+#endif
 
 #define ZEPHYR_USER_NODE DT_PATH(zephyr_user)
 
