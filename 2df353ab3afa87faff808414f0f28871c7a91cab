@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55133d88_c0d0a97b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-12T15:53:44Z",
+      "side": 1,
+      "message": "LEDs on RVP are green color only.\nRefer these files and we can reuse the logic from ADL-RVP\nzephyr/program/intelrvp/led.md\nzephyr/program/intelrvp/adlrvp/adlrvp_npcx/pwm_leds.dts\nzephyr/program/intelrvp/src/intel_rvp_led.c",
+      "revId": "2df353ab3afa87faff808414f0f28871c7a91cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
