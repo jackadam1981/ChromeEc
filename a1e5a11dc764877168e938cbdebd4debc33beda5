@@ -196,6 +196,54 @@
       },
       "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e84831_97d19d9e",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-12T00:39:49Z",
+      "side": 1,
+      "message": "Yeah, I didn\u0027t want to use heap and the c_str() at the callsight, but I guess I can then drop the std::array.\n\nAnyways, I switched to using `std::string`, but using `std::format` caused a linker error with running out of flash `ld.lld: error: No room left in the flash`. See https://crrev.com/c/5855642. Plus, it doesn\u0027t look like like we have `std::format` for EC host tests, so it fails when including `\u003cformat\u003e`.",
+      "parentUuid": "28f133fa_642d5122",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 70
+      },
+      "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf02feb3_d2bf1b5c",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-12T00:39:49Z",
+      "side": 1,
+      "message": "Yep yep. I see that.\n\nIt looks like they [changed the style guide in May 2020](https://github.com/google/styleguide/commit/7a7a2f510efe7d7fc5ea8fbed549ddb31fac8f3e?diff\u003dsplit\u0026w\u003d0#diff-bcadcf8be931ffdd5d6a65c60c266039cf1f96b7f35bfb772662db811214c5a0L1708-L1710) from `while output and input/output parameters will be pointers to non-const.` to what you mentioned now about the references, which explains why the updater still used this scheme.",
+      "parentUuid": "90981ede_9d9dac08",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "a1e5a11dc764877168e938cbdebd4debc33beda5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
