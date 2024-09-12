@@ -254,6 +254,11 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
 
 static int command_fpmatch(int argc, const char **argv)
 {
+#ifdef CONFIG_ZEPHYR
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+#endif
+
 	enum ec_error_list rc = fp_console_action(FP_MODE_MATCH);
 	uint32_t event = atomic_clear(&global_context.fp_events);
 
@@ -267,8 +272,9 @@ static int command_fpmatch(int argc, const char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, NULL,
-			"Run match algorithm against finger");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpmatch, command_fpmatch, NULL,
+			      "Run match algorithm against finger",
+			      CMD_FLAG_RESTRICTED);
 
 static int command_fpclear(int argc, const char **argv)
 {
