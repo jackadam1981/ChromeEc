@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d104699c_00eb0633",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-09-12T11:36:42Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "04c1fa63_01f09384",
+      "revId": "5820b875839ac58a067fdfd62247e416d08630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2df8cbe_f989e3db",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b2557b_7c12541f",
+        "filename": "zephyr/program/nissa/orisa/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-09-12T11:36:42Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "a2df8cbe_f989e3db",
+      "revId": "5820b875839ac58a067fdfd62247e416d08630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69c95cfc_efba6ac2",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-09-12T08:34:20Z",
       "side": 1,
       "message": "referring to CL:5839221, please check if this needs a change.",
+      "revId": "5820b875839ac58a067fdfd62247e416d08630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1be7271_af76932c",
+        "filename": "zephyr/program/nissa/orisa/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-09-12T11:36:42Z",
+      "side": 1,
+      "message": "label for this node \"sen_mode_ec_pch_int_odl\" is not defined in device tree file. so need to remove this using node name only. Verified it manually, node is not available in generated device tree file.",
+      "parentUuid": "69c95cfc_efba6ac2",
       "revId": "5820b875839ac58a067fdfd62247e416d08630ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
