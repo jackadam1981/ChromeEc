@@ -137,6 +137,21 @@ test_static int test_command_fpclear(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_fpmaintenance(void)
+{
+	enum ec_error_list res;
+
+	/* System is locked. */
+	is_locked = 1;
+
+	/* Test for the case when access is denied. */
+	char console_input2[] = "fpmaintenance";
+	res = test_send_console_command(console_input2);
+	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	test_reset();
@@ -147,6 +162,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_command_fpdownload);
 	RUN_TEST(test_command_fpmatch);
 	RUN_TEST(test_command_fpclear);
+	RUN_TEST(test_command_fpmaintenance);
 
 	test_print_result();
 }
