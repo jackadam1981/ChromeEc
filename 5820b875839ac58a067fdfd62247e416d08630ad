@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2df8cbe_f989e3db",
+        "filename": "zephyr/program/nissa/orisa/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-09-12T08:34:20Z",
+      "side": 1,
+      "message": "these configs are applicable for \u0027orisa_ti\u0027 project too. can we combine the CL:5850231 changes with this CL?",
+      "revId": "5820b875839ac58a067fdfd62247e416d08630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c95cfc_efba6ac2",
+        "filename": "zephyr/program/nissa/orisa/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2024-09-12T08:34:20Z",
+      "side": 1,
+      "message": "referring to CL:5839221, please check if this needs a change.",
+      "revId": "5820b875839ac58a067fdfd62247e416d08630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
