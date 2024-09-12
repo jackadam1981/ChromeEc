@@ -22,6 +22,30 @@
       },
       "revId": "e9c26d2ff2cf507420144d7a018b922a9fbdb7a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510de909_712c2b80",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-12T06:55:32Z",
+      "side": 1,
+      "message": "It is very good point and you are right, thank you.\nIt should not update the pen_*_time during interrupt process.\nAnd ec_pen_chg_dis_odl signal is the same.\n\nSo can I call pen_charge() from pen_fault_interrupt()?\nI will move the following codes (line.93-95) to pen_charge(),\n\npen_err_time \u003d ERR_TIME;\npen_chg_time \u003d 0;\npen_stp_time \u003d 0;\n\nand I will delete the following code (line.96-98) from pen_fault_interrupt().\n\ngpio_pin_configure_dt(\n\tGPIO_DT_FROM_NODELABEL(ec_pen_chg_dis_odl),\n\tGPIO_ODR_LOW);",
+      "parentUuid": "78890d73_c7b15fcc",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 19
+      },
+      "revId": "e9c26d2ff2cf507420144d7a018b922a9fbdb7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
