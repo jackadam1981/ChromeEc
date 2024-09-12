@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d3c36c_b90ffedc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-12T14:41:13Z",
+      "side": 1,
+      "message": "Looks like the unit tests are breaking\n\n```\nmake[1]: Entering directory \u0027/mnt/host/source/src/platform/ec/twister-out-host/native_sim/system_shim/system_shim.ish/zephyr\u0027\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.41/ld.bfd.real: /mnt/host/source/src/platform/ec/twister-out-host/native_sim/system_shim/system_shim.ish/zephyr/NSI/mnt/host/source/src/platform/ec/twister-out-host/native_sim/system_shim/system_shim.ish/zephyr/zephyr.elf.loc_cpusw.o: in function `system_reset\u0027:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/ish_system.c:73:(.text.system_reset+0x23): undefined reference to `sedi_pm_reset\u0027\ncollect2: error: ld returned 1 exit status\nmake[1]: *** [/mnt/host/source/src/third_party/zephyr/main/scripts/native_simulator/Makefile:131: /mnt/host/source/src/platform/ec/twister-out-host/native_sim/system_shim/system_shim.ish/zephyr/zephyr.exe] Error 1\nmake[1]: Leaving directory \u0027/mnt/host/source/src/platform/ec/twister-out-host/native_sim/system_shim/system_shim.ish/zephyr\u0027\n```",
+      "revId": "d6e353bdc4a8d75d0213296aefcb537a8ef6f98e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
