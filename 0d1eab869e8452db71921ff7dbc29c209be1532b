@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fde6fb8_c626aa52",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-12T22:02:43Z",
+      "side": 1,
+      "message": "Can you use `DT_FOREACH_CHILD_STATUS_OKAY` instead?  It\u0027s not typical to process nodes that are disabled.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 50
+      },
+      "revId": "0d1eab869e8452db71921ff7dbc29c209be1532b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1a6439_a9dfc7ab",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-12T22:02:43Z",
+      "side": 1,
+      "message": "This is provided by `base.yaml`.  You should include that file instead.  You can still add the `required` and `description` tags here.\n\nThis file should also document the typical usage of this node.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "0d1eab869e8452db71921ff7dbc29c209be1532b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fda731_3980be7d",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-12T22:02:43Z",
+      "side": 1,
+      "message": "Nit - line length.",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 83
+      },
+      "revId": "0d1eab869e8452db71921ff7dbc29c209be1532b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
