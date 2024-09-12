@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e19790ba_c63f7296",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:25:23Z",
+      "side": 1,
+      "message": "$(COMPILER) needs to be lead with $(CCACHE) $(CROSS_COMPILE)\n\n\n```suggestion\ncmd_elf \u003d $(CCACHE) $(CROSS_COMPILE)$(COMPILER) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \\\n```",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ead6b45f_29ad1a9e",
         "filename": "Makefile.toolchain",
         "patchSetId": 6
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "Maybe move lines 70-74 to line 94 and use CROSS_COMPILE_CC_NAME and CROSS_COMPILE_CXX_NAME instead of CC and CXX",
       "parentUuid": "c9942a33_d17a5fb3",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de14cdb_cb4aef4e",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:25:23Z",
+      "side": 1,
+      "message": "Confirmed that this is problematic for nocturne builds",
+      "parentUuid": "36640067_b2ace330",
       "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
