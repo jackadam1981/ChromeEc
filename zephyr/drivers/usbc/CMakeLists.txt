@@ -4,6 +4,7 @@
 
 zephyr_library_sources_ifdef(CONFIG_USBC_INTEL_ALTMODE intel_altmode.c)
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_CCG8 pdc_ccg8.c)
+zephyr_library_sources_ifdef(CONFIG_USBC_PDC_SINGLE_THREAD pdc_thread.c)
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_RTS54XX pdc_rts54xx.c ucsi_v3.c)
 
 if (CONFIG_USBC_PDC_TPS6699X)

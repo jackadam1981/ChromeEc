@@ -19,6 +19,8 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/smf.h>
 LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
+#include "pdc_config.h"
+#include "pdc_thread.h"
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
 #include "usbc/utils.h"
@@ -161,24 +163,6 @@ enum state_t {
 };
 
 /**
- * @brief PDC Config object
- */
-struct pdc_config_t {
-	/** I2C config */
-	struct i2c_dt_spec i2c;
-	/** pdc power path interrupt */
-	struct gpio_dt_spec irq_gpios;
-	/** connector number of this port */
-	uint8_t connector_number;
-	/** Notification enable bits */
-	union notification_enable_t bits;
-	/** Create thread function */
-	void (*create_thread)(const struct device *dev);
-	/** If true, do not apply PDC FW updates to this port */
-	bool no_fw_update;
-};
-
-/**
  * @brief PDC Data object
  */
 struct pdc_data_t {
@@ -307,6 +291,15 @@ static void task_ucsi(struct pdc_data_t *data,
 		      enum ucsi_command_t ucsi_command);
 static void task_raw_ucsi(struct pdc_data_t *data);
 
+#ifdef CONFIG_USBC_PDC_SINGLE_THREAD
+#define tps_event_post(data, event) pdc_thread_post_msg(data->dev, event)
+#else
+static int tps_event_post(struct pdc_data_t *data, uint32_t event)
+{
+	return k_event_post(&data->pdc_event, event);
+}
+#endif
+
 /**
  * @brief PDC port data used in interrupt handler
  */
@@ -328,7 +321,7 @@ static void set_state(struct pdc_data_t *data, const enum state_t next_state)
 	case ST_ERROR_RECOVERY:
 	case ST_IRQ:
 	case ST_SUSPENDED:
-		k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
+		tps_event_post(data, PDC_INTERNAL_EVENT);
 		break;
 	default:
 		break;
@@ -1613,7 +1606,7 @@ static void tps_check_data_ready(struct k_work *work)
 	struct pdc_data_t *data =
 		CONTAINER_OF(dwork, struct pdc_data_t, data_ready);
 
-	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
+	tps_event_post(data, PDC_INTERNAL_EVENT);
 }
 
 static void st_task_wait_run(void *o)
@@ -1806,7 +1799,7 @@ static int tps_post_command_with_callback(const struct device *dev,
 		}
 
 		k_mutex_unlock(&data->mtx);
-		k_event_post(&data->pdc_event, PDC_CMD_EVENT);
+		tps_event_post(data, PDC_CMD_EVENT);
 	} else {
 		return -EBUSY;
 	}
@@ -1844,7 +1837,7 @@ static int tps_ack_cc_ci(const struct device *dev,
 			~(ci.raw_value);
 	}
 
-	k_event_post(&data->pdc_event, PDC_CMD_COMPLETE_EVENT);
+	tps_event_post(data, PDC_CMD_COMPLETE_EVENT);
 
 	return 0;
 }
@@ -2186,7 +2179,7 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 		 * PDC driver is a no-op)
 		 */
 		enable_comms();
-		k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
+		tps_event_post(data, PDC_IRQ_EVENT);
 
 	} else {
 		/** Allow 3 seconds for the driver to suspend itself. */
@@ -2200,7 +2193,7 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 		/* Signal the driver with the suspend request event in case the
 		 * thread is blocking on an event to process.
 		 */
-		k_event_post(&data->pdc_event, PDC_CMD_SUSPEND_REQUEST_EVENT);
+		tps_event_post(data, PDC_CMD_SUSPEND_REQUEST_EVENT);
 
 		/* Wait for driver to enter the suspended state */
 		if (!WAIT_FOR((get_state(data) == ST_SUSPENDED),
@@ -2348,7 +2341,7 @@ static void pdc_interrupt_callback(const struct device *dev,
 {
 	struct pdc_data_t *data = CONTAINER_OF(cb, struct pdc_data_t, gpio_cb);
 
-	k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
+	tps_event_post(data, PDC_IRQ_EVENT);
 }
 
 static int pdc_init(const struct device *dev)
@@ -2403,7 +2396,7 @@ static int pdc_init(const struct device *dev)
 	/* Set initial state */
 	smf_set_initial(SMF_CTX(data), &states[ST_INIT]);
 
-	/* Create the thread for this port */
+	/* Create the thread */
 	cfg->create_thread(dev);
 
 	/* Setup I2C1 interrupt mask for this port */
@@ -2419,7 +2412,7 @@ static int pdc_init(const struct device *dev)
 	}
 
 	/* Trigger an interrupt on startup */
-	k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
+	tps_event_post(data, PDC_IRQ_EVENT);
 
 	LOG_INF("TI TPS6699X PDC DRIVER FOR PORT %d", cfg->connector_number);
 
@@ -2442,26 +2435,43 @@ int tps_pdc_do_firmware_update(void)
 #endif /* CONFIG_USBC_PDC_TPS6699X_FW_UPDATER */
 /* LCOV_EXCL_STOP - temporary code */
 
+static void process_event(const struct device *dev, uint32_t event)
+{
+	struct pdc_data_t *data = ((const struct device *)dev)->data;
+
+	data->events = event;
+
+	smf_run_state(SMF_CTX(data));
+}
+
+#ifdef CONFIG_USBC_PDC_SINGLE_THREAD
+#define PDC_DEFINE_THREAD(inst)                                    \
+	static void create_thread_##inst(const struct device *dev) \
+	{                                                          \
+		pdc_thread_init(dev);                              \
+	}
+#else
 static void tps_thread(void *dev, void *unused1, void *unused2)
 {
 	struct pdc_data_t *data = ((const struct device *)dev)->data;
 	const struct pdc_config_t *cfg = ((const struct device *)dev)->config;
+	uint32_t events;
 
 	while (1) {
-		smf_run_state(SMF_CTX(data));
-
 		/* Wait for event to handle */
-		data->events = k_event_wait(&data->pdc_event, PDC_ALL_EVENTS,
-					    false, K_FOREVER);
+		events = k_event_wait(&data->pdc_event, PDC_ALL_EVENTS, false,
+				      K_FOREVER);
 		LOG_INF("tps_thread[%d][%s]: events=0x%X",
 			cfg->connector_number, state_names[get_state(data)],
 			data->events);
 
 		k_event_clear(&data->pdc_event, PDC_INTERNAL_EVENT);
+
+		cfg->process_event(dev, events);
 	}
 }
 
-#define PDC_DEFINE(inst)                                                       \
+#define PDC_DEFINE_THREAD(inst)                                                \
 	K_THREAD_STACK_DEFINE(thread_stack_area_##inst,                        \
 			      CONFIG_USBC_PDC_TPS6699X_STACK_SIZE);            \
                                                                                \
@@ -2476,7 +2486,11 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 			CONFIG_USBC_PDC_TPS6699X_THREAD_PRIORITY, K_ESSENTIAL, \
 			K_NO_WAIT);                                            \
 		k_thread_name_set(data->thread, "TPS6699X" STRINGIFY(inst));   \
-	}                                                                      \
+	}
+#endif /* CONFIG_USBC_PDC_SINGLE_THREAD */
+
+#define PDC_DEFINE(inst)                                                       \
+	PDC_DEFINE_THREAD(inst)                                                \
                                                                                \
 	static struct pdc_data_t pdc_data_##inst;                              \
                                                                                \
@@ -2506,6 +2520,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.bits.error = 1,                                               \
 		.bits.sink_path_status_change = 1,                             \
 		.create_thread = create_thread_##inst,                         \
+		.process_event = process_event,                                \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),              \
 	};                                                                     \
                                                                                \
