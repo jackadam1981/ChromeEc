@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f87a82_bfbae1db",
+        "filename": "zephyr/program/intelrvp/ptlrvp/interrupts.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-12T18:28:31Z",
+      "side": 1,
+      "message": "is `_n` intended to denote the associated pin is active low?\nit would make more sense to annotate the gpio instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "88d0cfdfc1efb11091f219714aeaaeae1eff3315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
