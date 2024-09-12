@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6791eca_1d5d1218",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-12T20:35:03Z",
+      "side": 1,
+      "message": "No apostrophe",
+      "range": {
+        "startLine": 800,
+        "startChar": 24,
+        "endLine": 800,
+        "endChar": 33
+      },
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d84ea9_f5c75b32",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-12T20:35:03Z",
+      "side": 1,
+      "message": "This is somewhat contrived. Sink Caps shall always contain one 5V fixed PDO. It would be reasonable for us to disregard this sink caps message without ever having evaluated the voltage/current. Maybe we want to test the case of an invalid Sink Caps, but another, separate case would be a fixed 5V/1.5A followed by a variable 5V/3A (still a little silly, but valid).",
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3aaed9b_86420e5d",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-12T20:35:03Z",
+      "side": 1,
+      "message": "Out of scope: Assuming a valid Sink Caps message, the behavior being tested for here is probably not what we actually want. Although the PD spec is ambiguous about this, conventionally, including in your sink caps a variable sink PDO with your entire voltage/current range is construed as accepting fixed PDOs in that range. We take advantage of this in our own sink caps. We should probably offer 3A when we can in this situation.",
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "970b33b4_aa6ed195",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-12T20:35:03Z",
+      "side": 1,
+      "message": "Nit: This is a long test covering multiple requirements. I\u0027d suggest breaking it up into multiple tests for improved readability. It might benefit from a helper function/structure to reduce the boilerplate.",
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1efdd3b_3a371b4b",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-12T20:35:03Z",
+      "side": 1,
+      "message": "Nit: \"advertise FRS support.\" We\u0027re the ones that go looking for this.",
+      "range": {
+        "startLine": 858,
+        "startChar": 22,
+        "endLine": 858,
+        "endChar": 44
+      },
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9090c835_2caa10d8",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-12T20:35:03Z",
+      "side": 1,
+      "message": "Should there be a scenario where FRS is enabled for 3A?",
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
