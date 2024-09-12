@@ -7,7 +7,6 @@
 #include "../cbi.dtsi"
 #include "../generated.dtsi"
 #include "../i2c.dtsi"
-#include "../keyboard.dtsi"
 #include "../power_signals.dtsi"
 #include "../trulo.dtsi"
 #include "../usba.dtsi"
@@ -17,6 +16,7 @@
 #include "cbi.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dtsi"
+#include "keyboard.dtsi"
 #include "usb_typec.dtsi"
 
 /* Trulo overrides follow... */
