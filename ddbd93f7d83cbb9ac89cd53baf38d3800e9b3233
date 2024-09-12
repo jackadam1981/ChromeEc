@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fcd1ae4_400c649c",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e19790ba_c63f7296",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc08bfc_0bb787e8",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:53:12Z",
+      "side": 1,
+      "message": "Wondering if we need to add the CCACHE and CROSS_COMPILE variables here as well",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ead6b45f_29ad1a9e",
@@ -49,6 +84,24 @@
       "side": 1,
       "message": "Should clarify, this resolved Guybrush, further testing showed more errors.  I can look into it again today.",
       "parentUuid": "ead6b45f_29ad1a9e",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c68791_2278bba1",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee11f1b_05fc8e15",
       "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "136f7120_6f976195",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de14cdb_cb4aef4e",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2abaef3f_02ef2443",
@@ -158,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2f927a_9db84890",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5945ab90_d0b5f7e6",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a633128f_7a6d9b6f",
@@ -171,6 +260,24 @@
       "writtenOn": "2024-09-11T17:25:28Z",
       "side": 1,
       "message": "Add $(COMMON_WARN-$(CROSS_COMPILE_CC_NAME))\n```suggestion\nCFLAGS\u003d$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(COMMON_WARN) $(COMMON_WARN-$(CROSS_COMPILE_CC_NAME)) $(CFLAGS_y)\n```",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8513e037_80853b06",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a633128f_7a6d9b6f",
       "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
