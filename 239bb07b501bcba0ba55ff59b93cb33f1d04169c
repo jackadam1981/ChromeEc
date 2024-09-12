@@ -172,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "940ab9eb_1798c55f",
+        "filename": "zephyr/shim/chip/mchp/Kconfig.xec",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-12T17:25:18Z",
+      "side": 1,
+      "message": "most likely they will mux VCI with GPIO",
+      "parentUuid": "fb2afeb8_b2535529",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "239bb07b501bcba0ba55ff59b93cb33f1d04169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "861568ed_99b0f644",
