@@ -301,6 +301,11 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpclear, command_fpclear, NULL,
 
 static int command_fpmaintenance(int argc, const char **argv)
 {
+#ifdef CONFIG_ZEPHYR
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+#endif
+
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	uint32_t mode_output = 0;
 	int rc = fp_set_sensor_mode(FP_MODE_SENSOR_MAINTENANCE, &mode_output);
@@ -321,7 +326,8 @@ static int command_fpmaintenance(int argc, const char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fpmaintenance, command_fpmaintenance, NULL,
-			"Run fingerprint sensor maintenance");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpmaintenance, command_fpmaintenance, NULL,
+			      "Run fingerprint sensor maintenance",
+			      CMD_FLAG_RESTRICTED);
 
 #endif /* CONFIG_CMD_FPSENSOR_DEBUG */
