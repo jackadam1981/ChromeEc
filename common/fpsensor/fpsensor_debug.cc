@@ -278,6 +278,10 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpmatch, command_fpmatch, NULL,
 
 static int command_fpclear(int argc, const char **argv)
 {
+#ifdef CONFIG_ZEPHYR
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+#endif
 	/*
 	 * We intentionally run this on the fp_task so that we use the
 	 * same code path as host commands.
@@ -291,8 +295,9 @@ static int command_fpclear(int argc, const char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, NULL,
-			"Clear fingerprint sensor context");
+DECLARE_CONSOLE_COMMAND_FLAGS(fpclear, command_fpclear, NULL,
+			      "Clear fingerprint sensor context",
+			      CMD_FLAG_RESTRICTED);
 
 static int command_fpmaintenance(int argc, const char **argv)
 {
