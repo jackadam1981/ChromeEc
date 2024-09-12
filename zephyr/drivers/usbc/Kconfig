@@ -32,9 +32,30 @@ config CONSOLE_CMD_PDC_CCG8
 	  Enable console command to read/write to the power path registers of
 	  CCG8 Power Delivery chip.
 
+config USBC_PDC_SINGLE_THREAD
+	bool "Use single thread in PDC driver"
+	help
+	  This option uses a single thread within PDC driver to handle all
+	  ports.
+
+config USBC_PDC_SINGLE_THREAD_STACK_SIZE
+	int "USB-C PDC thread stack size"
+	default 1024
+	depends on USBC_PDC_SINGLE_THREAD
+	help
+	  Stack size of thread created for each instance.
+
+config USBC_PDC_SINGLE_THREAD_PRIORITY
+	int "USB-C PDC thread priority"
+	default 0
+	depends on USBC_PDC_SINGLE_THREAD
+	help
+	  Set thread priority of the USB-C PDC
+
 config USBC_PDC_TPS6699X
 	bool "TI TPS6699X Power Deleivery Controller driver"
 	default y if DT_HAS_TI_TPS6699_PDC_ENABLED
+	select USBC_PDC_SINGLE_THREAD
 	select SMF
 	select SMF_ANCESTOR_SUPPORT
 	help
