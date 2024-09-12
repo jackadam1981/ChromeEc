@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952fef87_56bf9196",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-12T18:17:15Z",
+      "side": 1,
+      "message": "how about marking this (and similar) gpio `GPIO_ACTIVE_LOW` so you\ndon\u0027t have to invert it in the `gpio_*` accessor functions?",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "1c1b53b14b652509fc9bf31818b95b7371e74df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
