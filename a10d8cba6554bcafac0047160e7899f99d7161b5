@@ -45,6 +45,75 @@
       },
       "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5d72f7_9f300d2b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-09-12T21:53:37Z",
+      "side": 1,
+      "message": "comments do not match policy throughout the entire dts.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c583b5_c2f8f419",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-09-12T21:53:37Z",
+      "side": 1,
+      "message": "fix typo",
+      "range": {
+        "startLine": 58,
+        "startChar": 20,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1cfae3_635a997c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2024-09-12T21:53:37Z",
+      "side": 1,
+      "message": "0.5 Hz is a 2s period. 2Hz is 500ms period.",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
