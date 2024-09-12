@@ -16,6 +16,24 @@
       "message": "Build instructions (from my memory), inside chroot.  It is important to build in the branch firmware-servo-12768.B-master, as code in main did not work out of the box on uServo devices last time I tried:\n\ncd src/platform/ec\nmake BOARD\u003dservo_micro\nsudo servo_updater -b servo_micro -f build/servo_micro/ec.bin --force\n\nAfter the update, you should see uServo show up with the string CMSIS-DAP on `lsusb`.",
       "revId": "d18324cb91c990002e1e2790a8ed8085b7cd792b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feaad485_3d527f76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-12T18:50:16Z",
+      "side": 1,
+      "message": "👌",
+      "parentUuid": "1768102d_520f8c46",
+      "revId": "d18324cb91c990002e1e2790a8ed8085b7cd792b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
