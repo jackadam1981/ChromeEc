@@ -60,6 +60,30 @@
       ],
       "revId": "4335aa602d9c2d8da8b883e2a57c11e83308c20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819238ad_c051877e",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-12T18:53:22Z",
+      "side": 1,
+      "message": "+1 -- should be able to remove all of these manual checks for system_is_locked.",
+      "parentUuid": "fee1acd2_816973b4",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 6
+      },
+      "revId": "4335aa602d9c2d8da8b883e2a57c11e83308c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
