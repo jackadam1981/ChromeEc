@@ -22,6 +22,53 @@
       },
       "revId": "1c1b53b14b652509fc9bf31818b95b7371e74df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153fe19b_c0eebd3e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-12T21:39:27Z",
+      "side": 1,
+      "message": "+1.  Any code that uses Zephyr\u0027s GPIO API should set the ACTIVE_LOW/ACTIVE_HIGH flags.",
+      "parentUuid": "952fef87_56bf9196",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "1c1b53b14b652509fc9bf31818b95b7371e74df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fad585d_9ff13fe4",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-12T21:39:27Z",
+      "side": 1,
+      "message": "Use Zephyr\u0027s GPIO APIs directly for all code under `platform/ec/zephyr`.",
+      "range": {
+        "startLine": 72,
+        "startChar": 9,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "1c1b53b14b652509fc9bf31818b95b7371e74df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
