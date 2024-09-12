@@ -73,6 +73,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2abaef3f_02ef2443",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T04:24:08Z",
+      "side": 1,
+      "message": "This doesn\u0027t work because CROSS_COMPILE is set in toolchain.mk by the respective chipset, which is included in Makefile at line 146 and this file is included at line 89",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5945ab90_d0b5f7e6",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-12T04:24:08Z",
+      "side": 1,
+      "message": "I think this block needs to have clang replaced with $(CROSS_COMPILE_CC_NAME).  Otherwise BUILDCC will always be clang",
+      "revId": "ddbd93f7d83cbb9ac89cd53baf38d3800e9b3233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a633128f_7a6d9b6f",
         "filename": "Makefile.toolchain",
         "patchSetId": 6
