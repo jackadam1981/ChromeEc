@@ -21,7 +21,7 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define VERSION "0.0.15"
+#define VERSION "0.1.2"
 #define ITE_ERR 0xF0
 
 #define FW_UPDATE_START 0x00000
@@ -453,6 +453,7 @@ static void getchipid(struct itecomdbgr_config *conf)
 	chipid[1] = rd_reg(conf, 0xF02086);
 	chipid[2] = rd_reg(conf, 0xF02087);
 	chipver = rd_reg(conf, 0xF02002);
+	msleep(1);
 	printf("\rChip ID = %02x%02x%02x", chipid[0], chipid[1], chipid[2]);
 	printf(" , Chip Ver= %02x", chipver);
 	eflash_size_flag = chipver >> 4;
@@ -496,7 +497,6 @@ static int read_id_2(struct itecomdbgr_config *conf)
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
 	printf(" Flash ID :%02x %02x %02x\n\r", FlashID[0], FlashID[1],
 	       FlashID[2]);
-	tcflush(conf->g_fd, TCIOFLUSH);
 
 	if ((FlashID[0] == 0xFF) && (FlashID[1] == 0xFF) &&
 	    (FlashID[2] == 0xFE)) {
@@ -858,6 +858,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 		perror("tcsetattr");
 	}
 	tcflush(conf->g_fd, TCIOFLUSH);
+	msleep(1);
 
 	while (1) {
 		if (conf->g_steps == STEPS_TEST) {
@@ -867,6 +868,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 		}
 
 		if (conf->g_steps == STEPS_NORMAL) {
+			tcflush(conf->g_fd, TCIOFLUSH);
+			msleep(1);
 			enter_uart_dbgr_mode_and_set_nack_mode(conf);
 
 			write_com(conf, cs_high, sizeof(cs_high));
@@ -878,6 +881,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 			write_com(conf, cs_high, sizeof(cs_high));
 			write_com(conf, cs_low, sizeof(cs_low));
 
+			tcflush(conf->g_fd, TCIOFLUSH);
+			msleep(1);
 			getchipid(conf);
 
 			/* Reset UART1*/
@@ -888,7 +893,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 
 			read_id_2(conf);
 
-			tcflush(conf->g_fd, TCIOFLUSH);
+			//tcflush(conf->g_fd, TCIOFLUSH);
 		}
 
 		if (conf->g_steps == STEPS_EXIT) {
@@ -1041,7 +1046,7 @@ int main(int argc, char **argv)
 	}
 
 	if ((conf.file_name == NULL) && (conf.read_start_addr == NO_READ) &&
-	    (conf.read_range == 0)) {
+	    (conf.read_file_name == NULL) && (conf.read_range == 0)) {
 		printf("choose a file to flash..\n\r");
 		return 0;
 	}
