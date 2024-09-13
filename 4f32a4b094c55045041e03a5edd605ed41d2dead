@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adea5eb7_82e5fc87",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "Please create a separate Kconfig option.  This mechanism of triggering notebook mode isn\u0027t necessarily specific to ISH.",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 375,
+        "endChar": 34
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55607e00_2e41b543",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "```suggestion\n\t * The gpio_nb_mode pin is an output from SOC (ISH) to EC.\n\t *\n```",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 0
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8026d126_695edbea",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "```suggestion\n\t * Assert this gpio if changing to notebook(clamshell) mode;\n```",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 65
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ad408f_c42c398f",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "```suggestion\n\t * Deassert this gpio if changing to tablet mode.\n```",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 53
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b928132_5e61ad8a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "Rely on the devicetree setting the active high/log flag.\n```suggestion\n\tgpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_nb_mode), !tablet_get_mode());\n```",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 72
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32cd779_2730ccb8",
+        "filename": "zephyr/program/nissa/orisa-ish/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "Move the board specific changes into a separate CL for a cleaner commit history.\n\nAlso, drop the trailing `-l` from the alias name.  This provides flexibility for platforms to configure this pin as active high.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d67528_48447bfb",
+        "filename": "zephyr/program/nissa/orisa-ish/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-13T15:52:38Z",
+      "side": 1,
+      "message": "Set the flags to `(GPIO_ACTIVE_LOW|GPIO_OUTPUT_ACTIVE)`.  This will also initialize the pin to physical state 0, but makes it clear this is an active low signal.",
+      "range": {
+        "startLine": 34,
+        "startChar": 21,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
