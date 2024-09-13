@@ -62,6 +62,14 @@ tests:
     extra_configs:
       - CONFIG_TEST_PROJECT_REX=y
 
+  rex.rex.usb_config:
+    extra_conf_files:
+      - boards/rex/prj.conf
+    extra_dtc_overlay_files:
+      - boards/rex/rex.dtsi
+    extra_configs:
+      - CONFIG_TEST_PROJECT_USB_CONFIG=y
+
   rex.rex.usb_mux_config:
     extra_conf_files:
       - boards/rex/prj.conf
