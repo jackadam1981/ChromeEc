@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae864fc4_b620b82c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-09-13T15:59:04Z",
+      "side": 1,
+      "message": "Looking at the test failure, it seems to be introduce by this change:\n\n\n```\nINFO    - 451/517 native_sim                nissa/nissa.pujjoga                                 ERROR Cmake build failure (native)\nINFO    - -----/mnt/host/source/src/platform/ec/twister-out-host/native_sim/nissa/nissa.pujjoga/build.log-----\nERROR   - Loading Zephyr default modules (Zephyr base (cached)).\n-- Application: /mnt/host/source/src/platform/ec/zephyr/test/nissa\n-- CMake version: 3.26.4\n-- Found Python3: /home/chrome-bot/.cache/.vpython-root/store/python_venv-2cmev5eugqv1s31i7mirob1dp4/contents/bin/python3 (found suitable version \"3.11.8\", minimum required is \"3.8\") found components: Interpreter \n-- Cache files will be written to: /home/chrome-bot/.cache/zephyr\n-- Zephyr version: 3.7.99 (/mnt/host/source/src/third_party/zephyr/main)\n-- Found west (found suitable version \"0.14.0\", minimum required is \"0.14.0\")\n-- Board: native_sim, qualifiers: native\n-- Found toolchain: host  (gcc/ld)\n-- Found Dtc: /usr/bin/dtc (found suitable version \"1.6.0\", minimum required is \"1.4.6\") \n-- Found BOARD.dts: /mnt/host/source/src/third_party/zephyr/main/boards/native/native_sim/native_sim.dts\n-- Found devicetree overlay: boards/pujjoga.dts\n-- In: /mnt/host/source/src/platform/ec/twister-out-host/native_sim/nissa/nissa.pujjoga/zephyr, command: /home/chrome-bot/.cache/.vpython-root/store/python_venv-2cmev5eugqv1s31i7mirob1dp4/contents/bin/python3;/mnt/host/source/src/third_party/zephyr/main/scripts/dts/gen_defines.py;--dts;/mnt/host/source/src/platform/ec/twister-out-host/native_sim/nissa/nissa.pujjoga/zephyr/zephyr.dts.pre;--dtc-flags;\u0027\u0027;--bindings-dirs;/mnt/host/source/src/platform/ec/zephyr/dts/bindings;/mnt/host/source/src/third_party/zephyr/ish/dts/bindings;/mnt/host/source/src/third_party/zephyr/main/dts/bindings;--header-out;/mnt/host/source/src/platform/ec/twister-out-host/native_sim/nissa/nissa.pujjoga/zephyr/include/generated/zephyr/devicetree_generated.h.new;--dts-out;/mnt/host/source/src/platform/ec/twister-out-host/native_sim/nissa/nissa.pujjoga/zephyr/zephyr.dts.new;--edt-pickle-out;/mnt/host/source/src/platform/ec/twister-out-host/native_sim/nissa/nissa.pujjoga/zephyr/edt.pickle;--vendor-prefixes;/mnt/host/source/src/platform/ec/zephyr/dts/bindings/vendor-prefixes.txt;--vendor-prefixes;/mnt/host/source/src/third_party/zephyr/main/dts/bindings/vendor-prefixes.txt\nCMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:311 (message):\n  gen_defines.py failed with result code: 1 - stderr contents:\n\n  devicetree error: /motionsense-sensor-info: undefined node label\n  \u0027int_lid_accel\u0027\n```",
+      "revId": "b6a96e8f494a33d21c7218ea322347dd29288e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
