@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd076768_99f44549",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-13T02:05:53Z",
+      "side": 1,
+      "message": "where does it check that the Jlink version is newer or same than the default one?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "21c482ec_9bc0d96f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/flash_jlink.py",
+              "range": {
+                "startLine": 193,
+                "startChar": 0,
+                "endLine": 194,
+                "endChar": 0
+              },
+              "replacement": "    default_jlink \u003d \"./JLink_Linux_V798h_x86_64/JLinkExe\"  # pylint: disable\u003dline-too-long\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5af9d95d90586b96eadd93828514ed28f56ee9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
