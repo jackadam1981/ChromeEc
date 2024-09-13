@@ -167,3 +167,57 @@ int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
+
+static void print_delay(void)
+{
+	int mask, alert;
+
+	i2c_read16(tcpc_config[1].i2c_info.port,
+		   tcpc_config[1].i2c_info.addr_flags, TCPC_REG_ALERT_MASK,
+		   &mask);
+	CPRINTSUSB("TCPC_REG_ALERT_MASK 0x%02X", mask);
+	i2c_read16(tcpc_config[1].i2c_info.port,
+		   tcpc_config[1].i2c_info.addr_flags, TCPC_REG_ALERT, &alert);
+	CPRINTSUSB("TCPC_REG_ALERT 0x%02X", alert);
+
+	if (mask == 0x7fff && alert == 0x2c5f) {
+		CPRINTSUSB("gpio_usb_c0_c1_tcpc_rst_odl %d",
+			   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+				   gpio_usb_c0_c1_tcpc_rst_odl)));
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c0_c1_tcpc_rst_odl), 1);
+		CPRINTSUSB("gpio_usb_c0_c1_tcpc_rst_odl %d",
+			   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+				   gpio_usb_c0_c1_tcpc_rst_odl)));
+		crec_msleep(10);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c0_c1_tcpc_rst_odl), 0);
+		CPRINTSUSB("gpio_usb_c0_c1_tcpc_rst_odl %d",
+			   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+				   gpio_usb_c0_c1_tcpc_rst_odl)));
+		nct38xx_reset_notify(1);
+		crec_msleep(10);
+		CPRINTSUSB("gpio_usb_c0_c1_tcpc_rst_odl %d",
+			   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+				   gpio_usb_c0_c1_tcpc_rst_odl)));
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c0_c1_tcpc_rst_odl), 1);
+		CPRINTSUSB("gpio_usb_c0_c1_tcpc_rst_odl %d",
+			   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+				   gpio_usb_c0_c1_tcpc_rst_odl)));
+		crec_msleep(10);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_usb_c0_c1_tcpc_rst_odl), 0);
+		CPRINTSUSB("gpio_usb_c0_c1_tcpc_rst_odl %d",
+			   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+				   gpio_usb_c0_c1_tcpc_rst_odl)));
+		nct38xx_reset_notify(1);
+	}
+}
+DECLARE_DEFERRED(print_delay);
+
+static void print_delay_hook(void)
+{
+	hook_call_deferred(&print_delay_data, 10000 * MSEC);
+}
+DECLARE_HOOK(HOOK_INIT, print_delay_hook, HOOK_PRIO_INIT_I2C);
