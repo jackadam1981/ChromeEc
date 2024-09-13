@@ -359,6 +359,14 @@ SECTIONS
 #endif
 
 		/*
+		 * Keep the libcxx override detection section:
+		 * https://github.com/llvm/llvm-project/blob/52b48a70d3752f9db36ddcfd26d0451c009b19fc/libcxx/src/include/overridable_function.h#L103
+		 */
+		__lcxx_override_start = .;
+		*(__lcxx_override)
+		__lcxx_override_end = .;
+
+		/*
 		 * https://developer.arm.com/documentation/dui0475/c/the-arm-c-and-c---libraries/c---initialization--construction-and-destruction
 		 */
 		. = ALIGN(4);
