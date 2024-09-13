@@ -21,7 +21,7 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define VERSION "0.0.15"
+#define VERSION "0.1.4"
 #define ITE_ERR 0xF0
 
 #define FW_UPDATE_START 0x00000
@@ -235,6 +235,7 @@ static int read_com(struct itecomdbgr_config *conf, uint8_t *inbuff,
 	int bReadStat;
 
 	bReadStat = read(conf->g_fd, inbuff, ReadBytes);
+	tcdrain(conf->g_fd);
 
 	return bReadStat;
 }
@@ -245,6 +246,7 @@ static int write_com(struct itecomdbgr_config *conf, const uint8_t *lpOutBuffer,
 	int bWriteStat;
 
 	bWriteStat = write(conf->g_fd, lpOutBuffer, WriteBytes);
+	tcdrain(conf->g_fd);
 
 	return bWriteStat;
 }
@@ -255,6 +257,7 @@ static uint8_t debug_getc(struct itecomdbgr_config *conf)
 	int res;
 
 	res = read(conf->g_fd, data, 1);
+	tcdrain(conf->g_fd);
 
 	if (res > 0) {
 		return data[0];
@@ -496,7 +499,6 @@ static int read_id_2(struct itecomdbgr_config *conf)
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
 	printf(" Flash ID :%02x %02x %02x\n\r", FlashID[0], FlashID[1],
 	       FlashID[2]);
-	tcflush(conf->g_fd, TCIOFLUSH);
 
 	if ((FlashID[0] == 0xFF) && (FlashID[1] == 0xFF) &&
 	    (FlashID[2] == 0xFE)) {
@@ -858,6 +860,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 		perror("tcsetattr");
 	}
 	tcflush(conf->g_fd, TCIOFLUSH);
+	msleep(1);
 
 	while (1) {
 		if (conf->g_steps == STEPS_TEST) {
@@ -867,6 +870,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 		}
 
 		if (conf->g_steps == STEPS_NORMAL) {
+			tcflush(conf->g_fd, TCIOFLUSH);
+			msleep(1);
 			enter_uart_dbgr_mode_and_set_nack_mode(conf);
 
 			write_com(conf, cs_high, sizeof(cs_high));
@@ -880,15 +885,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 
 			getchipid(conf);
 
-			/* Reset UART1*/
-			wr_reg(conf, 0xF02011, 1);
-
-			wr_reg(conf, 0xF01618, 0xFF);
-			wr_reg(conf, 0xF01619, 0xFF);
-
 			read_id_2(conf);
 
-			tcflush(conf->g_fd, TCIOFLUSH);
 		}
 
 		if (conf->g_steps == STEPS_EXIT) {
@@ -924,6 +922,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 		goto out;
 	}
 
+
 	if (erase_flash(conf))
 		goto out;
 
@@ -941,9 +940,10 @@ out:
 
 	/* dbgr reset */
 	write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
-	tcflush(conf->g_fd, TCIOFLUSH);
 	tcsetattr(conf->g_fd, TCSANOW, &tty_saved);
 	close(conf->g_fd);
+	/* Add a msleep after dbgr reset */
+	msleep(100);
 	return 0;
 }
 
@@ -1041,7 +1041,7 @@ int main(int argc, char **argv)
 	}
 
 	if ((conf.file_name == NULL) && (conf.read_start_addr == NO_READ) &&
-	    (conf.read_range == 0)) {
+	    (conf.read_file_name == NULL) && (conf.read_range == 0)) {
 		printf("choose a file to flash..\n\r");
 		return 0;
 	}
