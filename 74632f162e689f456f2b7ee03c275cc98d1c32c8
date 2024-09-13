@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d721d9a_92dd3177",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-13T21:42:59Z",
+      "side": 1,
+      "message": "i have mixed feelings about moving this to the platform level since\nit probably impacts EC behavior more than platform behavior.\na new EC may need this more than a validated EC, so i\u0027d be OK\nwith configuring this for specific ECs.\n\noften, `SYSTEM_UNLOCKED` modifies system behavior in ways that\nhides problems in the short term and i\u0027d strive to remove this\nas soon as possible. do we even need it now?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
