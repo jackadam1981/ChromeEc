@@ -40,6 +40,30 @@
       ],
       "revId": "5af9d95d90586b96eadd93828514ed28f56ee9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26ac23f_4627cbd9",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-13T16:25:47Z",
+      "side": 1,
+      "message": "It doesn\u0027t. This line just checks to see if there is a version of JLink that is extracted from the Linux tarball from https://www.segger.com/downloads/jlink/. By default that tarball will create a directory with the version number. If that file does not exist, it falls back to the JLink version in the chroot. I\u0027ll have a separate CL to update that version.",
+      "parentUuid": "cd076768_99f44549",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 4
+      },
+      "revId": "5af9d95d90586b96eadd93828514ed28f56ee9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
