@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b9ab83_fbfcae56",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-13T22:13:01Z",
+      "side": 1,
+      "message": "can we use `GPIO_DT_FROM_NODELABEL` or similar here?",
+      "range": {
+        "startLine": 72,
+        "startChar": 25,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "2a4d95afcb00efd6e637a1602666c9a3a9f25694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
