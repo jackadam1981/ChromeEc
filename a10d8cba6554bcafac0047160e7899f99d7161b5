@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64f8382_2f9b7203",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-13T20:31:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "50dce562_6acdc037",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b3a4de6_073317a8",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-12T18:30:41Z",
       "side": 1,
       "message": "`status`?",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3658234f_05866a79",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_pins.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-13T20:31:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9b3a4de6_073317a8",
       "range": {
         "startLine": 12,
         "startChar": 23,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4ec251_59577a32",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-13T20:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5d72f7_9f300d2b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19c583b5_c2f8f419",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb326978_b506ec58",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-13T20:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c583b5_c2f8f419",
+      "range": {
+        "startLine": 58,
+        "startChar": 20,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c1cfae3_635a997c",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-09-12T21:53:37Z",
       "side": 1,
       "message": "0.5 Hz is a 2s period. 2Hz is 500ms period.",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "a10d8cba6554bcafac0047160e7899f99d7161b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d4cbe1b_ee43187f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/led_policy.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-13T20:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c1cfae3_635a997c",
       "range": {
         "startLine": 72,
         "startChar": 31,
