@@ -21,7 +21,7 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define VERSION "0.0.15"
+#define VERSION "0.1.3"
 #define ITE_ERR 0xF0
 
 #define FW_UPDATE_START 0x00000
@@ -496,7 +496,6 @@ static int read_id_2(struct itecomdbgr_config *conf)
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
 	printf(" Flash ID :%02x %02x %02x\n\r", FlashID[0], FlashID[1],
 	       FlashID[2]);
-	tcflush(conf->g_fd, TCIOFLUSH);
 
 	if ((FlashID[0] == 0xFF) && (FlashID[1] == 0xFF) &&
 	    (FlashID[2] == 0xFE)) {
@@ -858,6 +857,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 		perror("tcsetattr");
 	}
 	tcflush(conf->g_fd, TCIOFLUSH);
+	msleep(1);
 
 	while (1) {
 		if (conf->g_steps == STEPS_TEST) {
@@ -867,6 +867,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 		}
 
 		if (conf->g_steps == STEPS_NORMAL) {
+			tcflush(conf->g_fd, TCIOFLUSH);
+			msleep(1);
 			enter_uart_dbgr_mode_and_set_nack_mode(conf);
 
 			write_com(conf, cs_high, sizeof(cs_high));
@@ -878,6 +880,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 			write_com(conf, cs_high, sizeof(cs_high));
 			write_com(conf, cs_low, sizeof(cs_low));
 
+			tcflush(conf->g_fd, TCIOFLUSH);
+			msleep(1);
 			getchipid(conf);
 
 			/* Reset UART1*/
@@ -888,7 +892,6 @@ static int uart_app(struct itecomdbgr_config *conf)
 
 			read_id_2(conf);
 
-			tcflush(conf->g_fd, TCIOFLUSH);
 		}
 
 		if (conf->g_steps == STEPS_EXIT) {
@@ -942,8 +945,11 @@ out:
 	/* dbgr reset */
 	write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
 	tcflush(conf->g_fd, TCIOFLUSH);
+	msleep(1);
 	tcsetattr(conf->g_fd, TCSANOW, &tty_saved);
 	close(conf->g_fd);
+	/* Add a msleep after dbgr reset */
+	msleep(100);
 	return 0;
 }
 
@@ -1041,7 +1047,7 @@ int main(int argc, char **argv)
 	}
 
 	if ((conf.file_name == NULL) && (conf.read_start_addr == NO_READ) &&
-	    (conf.read_range == 0)) {
+	    (conf.read_file_name == NULL) && (conf.read_range == 0)) {
 		printf("choose a file to flash..\n\r");
 		return 0;
 	}
