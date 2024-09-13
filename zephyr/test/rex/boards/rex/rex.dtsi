@@ -56,12 +56,12 @@
 		int_usb_c0_bc12: usb_c0_bc12 {
 			irq-pin = <&gpio_usb_c0_bc12_int_l>;
 			flags = <GPIO_INT_LEVEL_LOW>;
-			handler = "usb0_evt";
+			handler = "bc12_interrupt";
 		};
 		int_usb_c1_bc12: usb_c1_bc12 {
 			irq-pin = <&gpio_usb_c1_bc12_int_l>;
 			flags = <GPIO_INT_LEVEL_LOW>;
-			handler = "usb0_evt";
+			handler = "bc12_interrupt";
 		};
 		int_usb_c0_sbu_fault: c0_sbu_fault {
 			irq-pin = <&ioex_usb_c0_sbu_fault_odl>;
