@@ -108,15 +108,16 @@ ZTEST(jubilant_keyboard, test_keyboard_matrix_init)
 	uint16_t fn_key = 0x0037;
 	uint16_t forwardslash_pipe_key = 0x0061;
 
+	kb_numpad = 0;
 	cros_cbi_get_fw_config_fake.custom_fake =
 		cros_cbi_get_fw_config_kb_numpad;
-
-	kb_numpad = 0;
 	keyboard_matrix_init();
 
 	zassert_equal(get_scancode_set2(0, 16), fn_key);
 	zassert_equal(get_scancode_set2(7, 17), forwardslash_pipe_key);
 	kb_numpad = 1;
+	cros_cbi_get_fw_config_fake.custom_fake =
+		cros_cbi_get_fw_config_kb_numpad;
 	keyboard_matrix_init();
 
 	zassert_equal(get_scancode_set2(4, 10), fn_key);
