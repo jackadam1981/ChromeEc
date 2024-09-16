@@ -311,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf91408_f5069ff1",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:54:13Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5867308",
+      "parentUuid": "8975927c_5a0b7ff9",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8daec65e_b264a209",
@@ -365,6 +389,30 @@
       "writtenOn": "2024-09-16T20:11:24Z",
       "side": 1,
       "message": "Should this just be removed?\n\ncc @fsammoura@google.com",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1140727_bd6a807d",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:54:13Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868337/1",
+      "parentUuid": "764dc95a_e0e9b278",
       "range": {
         "startLine": 78,
         "startChar": 0,
