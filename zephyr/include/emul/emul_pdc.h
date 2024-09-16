@@ -89,6 +89,9 @@ typedef int (*emul_pdc_get_frs_t)(const struct emul *target, bool *enabled);
 
 typedef int (*emul_pdc_idle_wait_t)(const struct emul *target);
 
+typedef int (*emul_pdc_set_sourcing_vconn_t)(const struct emul *target,
+					     bool enabled);
+
 __subsystem struct emul_pdc_api_t {
 	emul_pdc_set_response_delay_t set_response_delay;
 	emul_pdc_set_ucsi_version_t set_ucsi_version;
@@ -122,6 +125,7 @@ __subsystem struct emul_pdc_api_t {
 	emul_pdc_set_vdo_t set_vdo;
 	emul_pdc_get_frs_t get_frs;
 	emul_pdc_idle_wait_t idle_wait;
+	emul_pdc_set_sourcing_vconn_t set_sourcing_vconn;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -659,6 +663,21 @@ static inline int emul_pdc_idle_wait(const struct emul *target)
 
 	if (api->idle_wait) {
 		return api->idle_wait(target);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_sourcing_vconn(const struct emul *target,
+					      bool enabled)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_api_t *api = target->backend_api;
+
+	if (api->set_sourcing_vconn) {
+		return api->set_sourcing_vconn(target, enabled);
 	}
 	return -ENOSYS;
 }
