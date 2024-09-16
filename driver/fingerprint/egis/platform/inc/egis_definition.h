@@ -14,18 +14,6 @@
 #define RESULT_NOT_MATCHED 1
 #define RESULT_ABORT 2
 
-#ifndef FALSE
-#define FALSE 0
-#endif
-#ifndef TRUE
-#define TRUE 1
-#endif
-#ifndef false
-#define false 0
-#endif
-#ifndef true
-#define true 1
-#endif
 #ifdef NULL
 #undef NULL
 #define NULL 0
