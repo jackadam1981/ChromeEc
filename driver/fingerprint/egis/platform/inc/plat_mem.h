@@ -24,5 +24,9 @@ static inline void PLAT_FREE(void *x)
 	}
 }
 
-#define plat_alloc(fmt) sys_alloc(1, fmt)
+static inline void *plat_alloc(size_t size)
+{
+	return sys_alloc(1, size);
+}
+
 #endif
