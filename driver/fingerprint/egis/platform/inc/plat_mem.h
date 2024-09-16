@@ -18,16 +18,14 @@ static inline void plat_free(void *x)
 	sys_free(x);
 }
 
-#define plat_alloc(fmt) sys_alloc(1, fmt)
-#define PLAT_FREE(x)          \
-	if (x != NULL) {      \
-		plat_free(x); \
-		x = NULL;     \
-	}
-
-static inline void *plat_alloc(size_t size)
+static inline void PLAT_FREE(void *x)
 {
-	return sys_alloc(1, size);
+	if (x != NULL) {
+		plat_free(x);
+		x = NULL;
+	}
 }
+
+#define plat_alloc(fmt) sys_alloc(1, fmt)
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_PLAT_MEM_H_ */
