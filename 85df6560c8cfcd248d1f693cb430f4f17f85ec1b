@@ -376,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12b1206_6019a536",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T22:17:25Z",
+      "side": 1,
+      "message": "I believe this is used in the private code.",
+      "parentUuid": "8daec65e_b264a209",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "764dc95a_e0e9b278",
