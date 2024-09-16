@@ -85,6 +85,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7cda5dae_209cddd3",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T16:47:38Z",
+      "side": 1,
+      "message": "I think probably the only thing I\u0027d change about this particular test case is to make the comment say that the sink caps are invalid. The current wording makes it seem like they\u0027re just not to our liking.\n\nAs far as future work goes, I don\u0027t know if the PDC vendors or UCSI are explicit about what the PDC should do if it receives invalid Sink Caps or any other invalid message. On the PD side, it should muddle through as best it can. On the UCSI side, I could see reasonable arguments for presenting an invalid message exactly as is and for concealing invalid messages from the PPM, i.e. pretending the response was Not_Supported or editing the incoming message to be valid and as accurate as can be determined.\n\nOn the push-it-under-the-rug side, it\u0027s the LPM\u0027s job to deal with PD protocol issues. The PPM should just have to set policy and not worry about protocol. If the LPM was completely indifferent to invalid responses, the PPM would have to be a de-facto LPM to function correctly.\n\nOn the warts-and-all side, there may be situations where the LPM just can\u0027t present a cohesive view of the world to the PPM without showing the actual, invalid message contents. And even if a perfect LPM could make everything look perfect, the PPM should probably still engage in some defensive programming, and I don\u0027t know where the line is.\n\nEither way, the assumptions of our policy code should be things that we can actually rely upon from the LPM.",
+      "parentUuid": "ae13aee4_1cf56932",
+      "revId": "3e49f287668e4973fa46ae47e49ecc15f76e9056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c3aaed9b_86420e5d",
         "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
         "patchSetId": 2
