@@ -16,6 +16,57 @@
       "message": "Added a test case to cover the reject case, please review again, thanks!",
       "revId": "178dba0019e6ab9b87586a0695610f589875b8f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449b903e_2c152531",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:34:17Z",
+      "side": 1,
+      "message": "Does this test still make sense? IDK what the starting power state is, but it seems like this might be exercising the exact same code path as the test you added. If this test is different, it should be more obvious how it\u0027s different.",
+      "revId": "178dba0019e6ab9b87586a0695610f589875b8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d9e900_fab65193",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:34:17Z",
+      "side": 1,
+      "message": "Nit: The default assertion failure message will tell you that the two values were supposed to be equal and what they were. I don\u0027t think it\u0027s that useful to have a formatted error message if it just prints the incorrect value.",
+      "revId": "178dba0019e6ab9b87586a0695610f589875b8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7c934f_2b6b2348",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:34:17Z",
+      "side": 1,
+      "message": "Nit: It should reject the swap because the board code says we can\u0027t source VCONN. That\u0027s typically true in G3, and it\u0027s true of the fake environment we set up for these tests. But the thing the test should be validating is that the TCPM obeys the board policy, whatever it is. You could imagine a board that can source VCONN in G3. You might want to clarify the comment.",
+      "revId": "178dba0019e6ab9b87586a0695610f589875b8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
