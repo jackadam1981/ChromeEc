@@ -361,6 +361,7 @@ static int get_rtk_status(struct rts5453p_emul_pdc_data *data,
 	data->response.rtk_status.battery_charging_status =
 		data->connector_status.battery_charging_cap_status &
 		BIT_MASK(2);
+	data->response.rtk_status.pd_sourcing_vconn = data->pd_sourcing_vconn;
 
 	/* BYTE 12 */
 	data->response.rtk_status.plug_direction =
@@ -1473,6 +1474,17 @@ static int emul_realtek_rts54xx_idle_wait(const struct emul *target)
 	return -ETIMEDOUT;
 }
 
+static int emul_realtek_rts54xx_set_sourcing_vconn(const struct emul *target,
+						   bool enabled)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	data->pd_sourcing_vconn = enabled;
+
+	return 0;
+}
+
 struct emul_pdc_api_t emul_realtek_rts54xx_api = {
 	.reset = emul_realtek_rts54xx_reset,
 	.set_response_delay = emul_realtek_rts54xx_set_response_delay,
@@ -1502,6 +1514,7 @@ struct emul_pdc_api_t emul_realtek_rts54xx_api = {
 	.set_vdo = emul_realtek_rts54xx_set_vdo,
 	.get_frs = emul_realtek_rts54xx_get_frs,
 	.idle_wait = emul_realtek_rts54xx_idle_wait,
+	.set_sourcing_vconn = emul_realtek_rts54xx_set_sourcing_vconn,
 };
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \
