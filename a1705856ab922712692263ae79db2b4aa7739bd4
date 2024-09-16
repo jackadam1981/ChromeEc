@@ -16,6 +16,74 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9a3de0_bba2b607",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:19:22Z",
+      "side": 1,
+      "message": "You should update the comment with the new criteria (and possibly a spec citation).",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d297d25f_26453b6f",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:19:22Z",
+      "side": 1,
+      "message": "Where is this described in the TI interface spec?",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3acea5_6369d2e7",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:19:22Z",
+      "side": 1,
+      "message": "Is the test meaningful if this isn\u0027t OK? Shouldn\u0027t you just `assert_ok`?",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b575b389_ee8c528a",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-16T18:19:22Z",
+      "side": 1,
+      "message": "Nit: IMO, no need for explicit error messages that are \"obvious.\" The basic assertion failure should tell the reader everything that this string will contain.",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
