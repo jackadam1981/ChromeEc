@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9416ecf_5d251cd7",
+        "filename": "zephyr/program/trulo/i2c.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-16T20:34:12Z",
+      "side": 1,
+      "message": "do we really run the PMIC at ~ 1 MHz?",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "bfce7afdb80cbe50c3836b45dc2fd274c1ddb62e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
