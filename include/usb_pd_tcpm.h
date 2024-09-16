@@ -630,7 +630,7 @@ struct tcpc_config_t {
 };
 
 #ifndef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
-extern const struct tcpc_config_t tcpc_config[];
+extern struct tcpc_config_t tcpc_config[];
 #else
 extern struct tcpc_config_t tcpc_config[];
 #endif
