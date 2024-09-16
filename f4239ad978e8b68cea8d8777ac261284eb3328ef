@@ -16,6 +16,24 @@
       "message": "it can be common for all RVPs. move under intelrvp/src\n\nAs discussed try these\nOption1:\n1. Keep CCD_MODE as interrupt gpio\n2. in the handler check if platform config is for INTEL CCD\n3. change the CCD_MODE gpio to output and driver it high\n\nOption2:\n1. Keep CCD_MODE as input\n2. Detect CCD \u0026 Platform config at cold boot\n3. change CCD_MODE gpio as output and drive it high",
       "revId": "f4239ad978e8b68cea8d8777ac261284eb3328ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6868ae3d_e3072b9d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_ccd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-16T23:44:17Z",
+      "side": 1,
+      "message": "Since this is mostly to enable debug on platform, I think Option 2 is good enough.",
+      "parentUuid": "49956f69_f926f53c",
+      "revId": "f4239ad978e8b68cea8d8777ac261284eb3328ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
