@@ -16,10 +16,9 @@ void *sys_alloc(size_t count, size_t size)
 
 	if (rc == EC_SUCCESS)
 		return addr;
-	else {
-		CPRINTS("Error - %s of size %u failed.", __func__, size);
-		return NULL;
-	}
+
+	CPRINTS("Error - %s of size %u failed.", __func__, size);
+	return NULL;
 }
 
 void sys_free(void *ptr)
