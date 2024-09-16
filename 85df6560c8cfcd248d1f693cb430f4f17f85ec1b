@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e81cd8f_fa722de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:20:14Z",
+      "side": 1,
+      "message": "created \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5867302",
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c4e22e_f4525b84",
@@ -395,6 +412,30 @@
       "writtenOn": "2024-09-16T20:11:24Z",
       "side": 1,
       "message": "Best to make this `static` to limit visibility to this translation unit (file) instead of global.\n\ncc @fsammoura@google.com",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a0cc74_dbf06083",
+        "filename": "driver/fingerprint/egis/platform/src/plat_log_mcu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63839ff_91243ef3",
       "range": {
         "startLine": 20,
         "startChar": 0,
