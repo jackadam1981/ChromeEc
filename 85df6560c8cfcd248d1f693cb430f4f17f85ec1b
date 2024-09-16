@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95404bcc_e3b0d2f7",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:35:51Z",
+      "side": 1,
+      "message": "Done\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868335/1",
+      "parentUuid": "28c4e22e_f4525b84",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d33348f_9f97d4ec",
@@ -128,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4807af37_03ec4fcb",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:35:51Z",
+      "side": 1,
+      "message": "Done\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868335",
+      "parentUuid": "a68d6d55_bed69651",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 22
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a2598f_0b45431e",
@@ -151,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "771812ba_73b7e45b",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:35:51Z",
+      "side": 1,
+      "message": "Done\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868335",
+      "parentUuid": "a8a2598f_0b45431e",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 69
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bca6beec_98ff39d0",
@@ -164,6 +236,30 @@
       "writtenOn": "2024-09-16T20:11:24Z",
       "side": 1,
       "message": "Generally, let\u0027s try not to commit commented-out code that will never be used. In this case, these are FPC functions, so we never use them.\n\ncc @fsammoura@google.com",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 66
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8d4547_19429fcd",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T21:35:51Z",
+      "side": 1,
+      "message": "Done\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868335",
+      "parentUuid": "bca6beec_98ff39d0",
       "range": {
         "startLine": 121,
         "startChar": 0,
