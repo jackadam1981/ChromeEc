@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf2f6fb_f25755b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-16T20:32:06Z",
+      "side": 1,
+      "message": "technically, this introduces `trulo` as a program and as a project.",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524aad4e_9064eecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-16T20:32:06Z",
+      "side": 1,
+      "message": "what\u0027s the naming convention going to be? `trulo` is npcx9 and\nothers are trulo_\u003cother\u003e?",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2da063_2b564575",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-16T20:32:06Z",
+      "side": 1,
+      "message": "please add `#include \u003ccros/integrated_fwid.dtsi\u003e` to this project.\n\nsee: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5766811/comment/3b57d04e_58baa5cd/",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 61
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b2ba03d6_4e0df200",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "            here / \"program.overlay\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
