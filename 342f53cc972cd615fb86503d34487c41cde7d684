@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5baf2d59_dbee0302",
+        "filename": "driver/fingerprint/egis/platform/src/plat_log_mcu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-16T21:18:24Z",
+      "side": 1,
+      "message": "Can you also check with Egis to see if \"RBS\" is something meaningful and not someone\u0027s initials?",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "342f53cc972cd615fb86503d34487c41cde7d684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94dae8bf_d222405a",
+        "filename": "driver/fingerprint/egis/platform/src/plat_log_mcu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-16T21:18:24Z",
+      "side": 1,
+      "message": "Also noticed that there is some commented out code here. Let\u0027s remove if we\u0027re not planning on using it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "342f53cc972cd615fb86503d34487c41cde7d684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
