@@ -26,6 +26,9 @@ static inline void PLAT_FREE(void *x)
 	}
 }
 
-#define plat_alloc(fmt) sys_alloc(1, fmt)
+static inline void *plat_alloc(size_t size)
+{
+	return sys_alloc(1, size);
+}
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_PLAT_MEM_H_ */
