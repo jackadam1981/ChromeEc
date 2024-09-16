@@ -91,6 +91,16 @@ enum fw_config_bc12 {
 #define FW_CONFIG_BC12_SUPPORT 20
 #define FW_CONFIG_BC12_MASK GENMASK(20, 20)
 
+/*
+* TCPC (1bit)
+*/
+enum fw_config_tcpc {
+	IT8320_DRV = 0,
+	RAA48900_DRV = 1,
+};
+#define FW_CONFIG_TCPC_DRV 25
+#define FW_CONFIG_TCPC_MASK GENMASK(25, 25)
+
 enum fw_config_db get_cbi_fw_config_db(void);
 enum fw_config_stylus get_cbi_fw_config_stylus(void);
 enum fw_config_kblight_type get_cbi_fw_config_kblight(void);
@@ -100,5 +110,6 @@ enum fw_config_hdmi_type get_cbi_fw_config_hdmi(void);
 
 int get_cbi_fw_config_keyboard(void);
 int get_cbi_fw_config_bc_support(void);
+int get_cbi_fw_config_tcpc_drv(void);
 
 #endif /* _DEDEDE_CBI_FW_CONFIG__H_ */
