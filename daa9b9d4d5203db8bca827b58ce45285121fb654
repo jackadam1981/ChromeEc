@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46db358_4f89cf8e",
+        "filename": "driver/fingerprint/egis/platform/src/plat_mem_mcu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-16T20:56:49Z",
+      "side": 1,
+      "message": "Actually, thinking about it a bit more, I think we usually early return on error, so I would write it as:\n\n```\nif (rc !\u003d EC_SUCCESS) {\n  CPRINTS(\"Error - %s of size %u failed.\", __func__, size);\n  return NULL;\n}\n\nreturn addr;\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "daa9b9d4d5203db8bca827b58ce45285121fb654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
