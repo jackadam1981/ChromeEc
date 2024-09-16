@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13fb11fe_f0f0ba08",
+        "filename": "zephyr/test/rex/tests/rex/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-09-16T16:24:31Z",
+      "side": 1,
+      "message": "Why doesn\u0027t it work? It should work. It works in other tests.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "78ac413ea880da560fff6e94c86514da4d4f60c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
