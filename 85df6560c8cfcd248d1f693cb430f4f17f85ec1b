@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1be0dc_e01f5562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T20:59:44Z",
+      "side": 1,
+      "message": "created \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5867301\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868330/1",
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c4e22e_f4525b84",
@@ -37,6 +54,30 @@
       "writtenOn": "2024-09-16T20:11:24Z",
       "side": 1,
       "message": "extra semicolon \n\ncc @fsammoura@google.com",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59e05cc_c09cc22f",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T20:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d33348f_9f97d4ec",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -377,6 +418,30 @@
       "writtenOn": "2024-09-16T20:12:21Z",
       "side": 1,
       "message": "unnecessary `else` here since line 18 returns",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9db9e4_52ff5645",
+        "filename": "driver/fingerprint/egis/platform/src/plat_mem_mcu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-16T20:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a958042e_f183573e",
       "range": {
         "startLine": 19,
         "startChar": 1,
