@@ -15,6 +15,7 @@
 #include "cros_board_info.h"
 #include "driver/charger/isl923x.h"
 #include "driver/tcpm/raa489000.h"
+#include "driver/tcpm/it83xx_pd.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/usb_mux/it5205.h"
 #include "extpower.h"
@@ -138,7 +139,7 @@ const struct charger_config_t chg_chips[] = {
 };
 
 /* TCPCs */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -149,6 +150,29 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.drv = &raa489000_tcpm_drv,
 	},
 };
+
+const struct tcpc_config_t tcpc_config_IT8320 = {
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		.drv = &it83xx_tcpm_drv,
+};
+
+/* Vconn control for integrated ITE TCPC */
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
+{
+	/* Vconn control is only for port 0 */
+	if (port)
+		return;
+
+	if (cc_pin == USBPD_CC_PIN_1)
+		gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
+	else
+		gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
+}
+
+void update_tcpc_drv_from_config(void)
+{
+	tcpc_config[IT8320_DRV] = tcpc_config_IT8320;
+}
 
 /* USB Muxes */
 const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = { {
@@ -370,5 +394,9 @@ void board_init(void)
 
 	/* Initialize THERMAL */
 	setup_thermal();
+
+	if (get_cbi_fw_config_tcpc_drv() == IT8320_DRV) {
+		update_tcpc_drv_from_config();
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

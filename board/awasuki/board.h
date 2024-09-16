@@ -59,13 +59,14 @@
 #define CONFIG_LED_ONOFF_STATES_BAT_LOW 10
 
 /* TCPC */
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_RAA489000
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_TCPM_ITE_ON_CHIP /* C0: ITE EC TCPC */
+#define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 
 /* USB defines specific to external TCPCs */
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-#define CONFIG_USB_PD_VBUS_DETECT_TCPC
-#define CONFIG_USB_PD_DISCHARGE_TCPC
 #define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_5V_EN_CUSTOM
 
@@ -115,6 +116,7 @@ enum battery_type {
 };
 
 int als_enable_status(void);
+void update_tcpc_drv_from_config(void);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
