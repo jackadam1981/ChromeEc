@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65c3cf38_3abcad05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-16T20:57:16Z",
+      "side": 1,
+      "message": "does trulo boot with these changes? you should be able to get\nto the EC console pretty early on on this patch series.\n\nif using CBI-in-flash, i\u0027d suggest adding the CBI config very early\nin the series so you don\u0027t wipe any existing settings if you\u0027re using\na provisioned device for testing.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bfce7afdb80cbe50c3836b45dc2fd274c1ddb62e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9416ecf_5d251cd7",
         "filename": "zephyr/program/trulo/i2c.dtsi",
         "patchSetId": 4
