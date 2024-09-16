@@ -362,6 +362,29 @@
       },
       "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a958042e_f183573e",
+        "filename": "driver/fingerprint/egis/platform/src/plat_mem_mcu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-16T20:12:21Z",
+      "side": 1,
+      "message": "unnecessary `else` here since line 18 returns",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
