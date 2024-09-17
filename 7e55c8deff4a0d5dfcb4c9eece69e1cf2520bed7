@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc89d551_28adf22e",
+        "filename": "zephyr/program/brox/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-09-17T19:36:22Z",
+      "side": 1,
+      "message": "LGTM, but I think we need to update this test https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/brox/tests/baseboard/src/usbc.c;drc\u003db9f8929eb0435525eaccf5c907df654cd3b1ad51;l\u003d12",
+      "range": {
+        "startLine": 12,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "7e55c8deff4a0d5dfcb4c9eece69e1cf2520bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
