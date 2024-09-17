@@ -40,6 +40,30 @@
       ],
       "revId": "319b4cdc017ceca160a7e6009716437fbaa6ac12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7d4204_03b731c8",
+        "filename": "test/assert_builtin.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-17T22:35:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58123617_c28bcd72",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "319b4cdc017ceca160a7e6009716437fbaa6ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
