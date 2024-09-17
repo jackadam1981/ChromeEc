@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324ad4fa_5eeaece3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:19:28Z",
+      "side": 1,
+      "message": "\"This\" sounds like it refers to the macro, but I think what you meant is \"static inline should be optimized to eliminate function call overhead and behavior the same as a macro\".\n\nI put \"should\" in the description because the [compiler could still generate a function call](https://en.wikipedia.org/wiki/Inline_function#:~:text\u003dRegardless%20of%20the%20storage%20class%2C%20the%20compiler%20can%20ignore%20the%20inline%20qualifier%20and%20generate%20a%20function%20call%20in%20all%20C%20dialects%20and%20C%2B%2B.) (but shouldn\u0027t with optimizations enabled)",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "1f0e103e97e1755acd001fecf3c7424509b72394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
