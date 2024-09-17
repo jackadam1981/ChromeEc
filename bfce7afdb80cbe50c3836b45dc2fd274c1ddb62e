@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e944836_ee879fea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:03:13Z",
+      "side": 1,
+      "message": "If there were a reference board that matched the trulo reference schematics, then it could boot at this stage. However, Trulo being a different reference platform than previously, there is no way to test a build based solely on the reference schematic.",
+      "parentUuid": "65c3cf38_3abcad05",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bfce7afdb80cbe50c3836b45dc2fd274c1ddb62e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9416ecf_5d251cd7",
         "filename": "zephyr/program/trulo/i2c.dtsi",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-16T20:34:12Z",
       "side": 1,
       "message": "do we really run the PMIC at ~ 1 MHz?",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "bfce7afdb80cbe50c3836b45dc2fd274c1ddb62e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f70a038_dcf0dde5",
+        "filename": "zephyr/program/trulo/i2c.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:03:13Z",
+      "side": 1,
+      "message": "I changed this to 400 kHz. I must have had a copy/paste error there.",
+      "parentUuid": "b9416ecf_5d251cd7",
       "range": {
         "startLine": 20,
         "startChar": 20,
