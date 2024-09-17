@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edc66824_e8dbd145",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-17T22:09:14Z",
+      "side": 1,
+      "message": "For `assert_stdlib`, the assertion failure message is:\n```\nDEBUG:assertion \"1 \u003d\u003d 0\" failed: file \"test/assert_stdlib.cc\", line 14, function: int false_assertion()\nDEBUG:_exit called with rc: 1\n```\nI assume the first line is coming from the C standard library and that we have no control over this, am I right?\n\nFor `assert_builtin`, the assertion failure message is:\n```\nDEBUG:ASSERTION FAILURE \u00271 \u003d\u003d 0\u0027 in false_assertion() at test/assert_builtin.cc:14\n```",
+      "parentUuid": "5cfb7839_613a565c",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 18
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61f4807a_3c91966e",
         "filename": "test/run_device_tests.py",
         "patchSetId": 5
