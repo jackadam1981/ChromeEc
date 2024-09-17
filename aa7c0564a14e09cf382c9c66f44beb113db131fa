@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8f5046_9a0afa6f",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-17T21:30:41Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\n\nI believe `FP_SENSOR_HWID_EGIS` is not defined. It should be added by Egis.\n\nThanks",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4450d8e5_d8050cc0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/fpsensor_driver.h",
+              "range": {
+                "startLine": 17,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "aa7c0564a14e09cf382c9c66f44beb113db131fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
