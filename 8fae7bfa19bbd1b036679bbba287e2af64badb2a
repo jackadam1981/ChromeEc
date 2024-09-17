@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d801e4ad_b8b711fc",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-17T18:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5e0a6a_895aa16b",
+      "range": {
+        "startLine": 1903,
+        "startChar": 1,
+        "endLine": 1903,
+        "endChar": 26
+      },
+      "revId": "8fae7bfa19bbd1b036679bbba287e2af64badb2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "371faa76_0345da48",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-16T20:50:01Z",
       "side": 1,
       "message": "This is a pretty thin test and almost useless.  \n\n`pdc_power_mgmt_request_source_voltage()` also triggers a new power request which can renegotiate the contract with the charger.\n\nVerifying the contract gets renegotiated is the side effect you should be testing.\n\nI recommend this test flow:\n* Configure the partner\u0027s source PDOs to include a 5V, 15V, and 20V\n* Set max voltage to 5V.\n* configure sink, connect partner\n* Verify 5V PDO selected using `emul_pdc_get_rdo()`.\n* Set max voltage to 15V\n* Verify 15V PDO selected using `emul_pdc_get_rdo()`.\n\nYou also need a test that connects a DRP sink (PDC is the source), and verify that the PDC swapped to sink.",
+      "range": {
+        "startLine": 1905,
+        "startChar": 0,
+        "endLine": 1905,
+        "endChar": 60
+      },
+      "revId": "8fae7bfa19bbd1b036679bbba287e2af64badb2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdad79d_5297f43a",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-17T18:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371faa76_0345da48",
       "range": {
         "startLine": 1905,
         "startChar": 0,
