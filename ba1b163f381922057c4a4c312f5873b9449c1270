@@ -16,6 +16,24 @@
       "message": "Is the assumption that this will get called on any connect? or only ones that are not alt modes? I haven\u0027t see the associated kernel patch so wanted some clarity on that",
       "revId": "ba1b163f381922057c4a4c312f5873b9449c1270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e0558d_8c57f9b5",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2024-09-17T16:36:07Z",
+      "side": 1,
+      "message": "Any connection change - the POC patch is here: https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/5643114/5",
+      "parentUuid": "2910f977_2b6147f2",
+      "revId": "ba1b163f381922057c4a4c312f5873b9449c1270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
