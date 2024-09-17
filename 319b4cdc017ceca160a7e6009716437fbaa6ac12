@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58123617_c28bcd72",
+        "filename": "test/assert_builtin.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T22:28:32Z",
+      "side": 1,
+      "message": "Let\u0027s change to an error. We should never get here and should fail the test if we do.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dbd41a84_020ad3f6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/assert_builtin.cc",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "\treturn EC_ERROR_UNKNOWN;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "319b4cdc017ceca160a7e6009716437fbaa6ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
