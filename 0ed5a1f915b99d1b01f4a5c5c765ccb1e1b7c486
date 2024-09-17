@@ -40,6 +40,30 @@
       ],
       "revId": "0ed5a1f915b99d1b01f4a5c5c765ccb1e1b7c486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a658c1d_f431535a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:31:56Z",
+      "side": 1,
+      "message": "It looks like this macro is intentionally modifying the caller variable, so that it\u0027s value will be `NULL` after freeing the data. Consider the following:\n\n```\n  int* foo \u003d malloc(sizeof(int));\n  // foo now has a value, which corresponds to a memory address. Let\u0027s say it\u0027s 0x12345.\n  *foo \u003d 42;\n  PLAT_FREE(foo);\n```\n\nAfter running that code, `foo` will be `NULL`. If the `x \u003d NULL` part of the macro was left out, then `foo` would still be `0x12345`. However, that memory location is no longer valid because it was freed. Setting the variable to `NULL` is just a defensive coding mechanism to prevent accidentally referring to an already freed address.\n\nIn the case where you change this to a function, you cannot preserve this behavior unless you make the argument a `void **`. If it\u0027s just pass as `void *`, you\u0027ll only be modifying the copy of the pointer, not the original pointer. Note that if you change the function signature, you\u0027ll need to change the callers as well. Search for them in https://crrev.com/i/7674342.",
+      "parentUuid": "e956d2ca_5d9ebdba",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "0ed5a1f915b99d1b01f4a5c5c765ccb1e1b7c486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
