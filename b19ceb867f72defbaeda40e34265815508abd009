@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72f8099_79fe3ba4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-17T18:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20613147_336dc465",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "b19ceb867f72defbaeda40e34265815508abd009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5dd9b3_fe10a605",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bee6ba8_2d2bfec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-17T18:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5dd9b3_fe10a605",
+      "range": {
+        "startLine": 11,
+        "startChar": 60,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "b19ceb867f72defbaeda40e34265815508abd009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e97ce216_fb111d24",
@@ -60,6 +108,54 @@
       "writtenOn": "2024-09-12T17:10:55Z",
       "side": 1,
       "message": "nit:\ngpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(cse_early_rec_sw), \n                    system_is_manual_recovery());\n                    \nuse repo upload to fix the indentation issue",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "b19ceb867f72defbaeda40e34265815508abd009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cad9f58_a0796906",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-17T18:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e97ce216_fb111d24",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "b19ceb867f72defbaeda40e34265815508abd009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e83eedb_bfb18a42",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-17T18:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e97ce216_fb111d24",
       "range": {
         "startLine": 59,
         "startChar": 0,
