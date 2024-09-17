@@ -22,6 +22,30 @@
       },
       "revId": "3bed1231209ea927682a6fd9940517135149e8b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b6856f1_69bfe01e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:03:32Z",
+      "side": 1,
+      "message": "The power sequencing changes should be enough to power up the AP, but running on an actual board can\u0027t happen without the GPIO differences being included which happens later in the CL stack.",
+      "parentUuid": "968c7524_cf23c18d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "3bed1231209ea927682a6fd9940517135149e8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
