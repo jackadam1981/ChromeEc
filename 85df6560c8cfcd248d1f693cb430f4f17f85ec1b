@@ -681,6 +681,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e664a2d9_437e156a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-17T16:17:30Z",
+      "side": 1,
+      "message": "created those 3 CLs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868653/3\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868341/4\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5868655/4",
+      "parentUuid": "4c67c0f4_0673db24",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d63839ff_91243ef3",
