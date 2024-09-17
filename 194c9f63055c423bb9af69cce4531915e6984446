@@ -22,6 +22,30 @@
       },
       "revId": "194c9f63055c423bb9af69cce4531915e6984446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206f6231_1518b48e",
+        "filename": "zephyr/program/trulo/program.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:04:42Z",
+      "side": 1,
+      "message": "Trulo should be switching to CBI in EC flash. However, the Trulo reference project does have CBI in EEPROM.",
+      "parentUuid": "de39b9c7_ffbaae76",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "194c9f63055c423bb9af69cce4531915e6984446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
