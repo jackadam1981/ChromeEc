@@ -22,6 +22,30 @@
       },
       "revId": "78ac413ea880da560fff6e94c86514da4d4f60c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2ad573_6c5c973a",
+        "filename": "zephyr/test/rex/tests/rex/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-17T09:02:34Z",
+      "side": 1,
+      "message": "the basic problem is in\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/gpio/gpio_emul.c;l\u003d271\n`gpio_emul_pend_interrupt()`\n\nwhich calls the interrupt handler via `gpio_fire_callbacks()`,\nbut does not update `values`, its notion of the state of input pins.\nthis means that if the interrupt handler clears a level-triggered\ninterrupt source by changing the state of the input pin,\nthe loop will run forever.\n\ni changed the logic use `drv_data-\u003einput_vals` instead and that fixes\nthe problem for this unit test but breaks `drivers/drivers.usbc_power_contract`\ndue to a timeout.\nthat\u0027s the only one of the 440+ tests that would be affected...\ni\u0027m willing to bet the failure is due to a dependency on the original\nquirky behavior rather than a new bug.",
+      "parentUuid": "13fb11fe_f0f0ba08",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "78ac413ea880da560fff6e94c86514da4d4f60c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
