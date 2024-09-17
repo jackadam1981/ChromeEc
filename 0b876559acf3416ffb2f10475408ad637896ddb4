@@ -22,6 +22,30 @@
       },
       "revId": "0b876559acf3416ffb2f10475408ad637896ddb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7368c6_658416c3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4709,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-09-17T15:04:21Z",
+      "side": 1,
+      "message": "Existing `chip_id`s are:\n * `0x4e545a31` (`NTZ1`)\n * `0x4e544131` (`NTA1`)\n * `0x44324331` (`D2C1`)\n * `0x44334331` (`D3C1`)",
+      "parentUuid": "f7254850_d1b40c71",
+      "range": {
+        "startLine": 4709,
+        "startChar": 1,
+        "endLine": 4709,
+        "endChar": 18
+      },
+      "revId": "0b876559acf3416ffb2f10475408ad637896ddb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
