@@ -232,8 +232,15 @@ class Platform(ABC):
         flasher: str,
         remote_ip: str,
         remote_port: int,
+        build_board: str,
+        test_name: str,
+        enable_hw_write_protect: bool,
     ) -> bool:
         """Flash specified test to specified board."""
+
+    @abstractmethod
+    def cleanup(self) -> None:
+        """Clean up after a test run."""
 
 
 class Hardware(Platform):
@@ -288,6 +295,9 @@ class Hardware(Platform):
         flasher: str,
         remote_ip: str,
         remote_port: int,
+        build_board: str,
+        test_name: str,
+        enable_hw_write_protect: bool,
     ) -> bool:
         logging.info("Flashing test")
 
@@ -312,6 +322,50 @@ class Hardware(Platform):
         logging.debug('Running command: "%s"', " ".join(cmd))
         completed_process = subprocess.run(cmd, check=False)
         return completed_process.returncode == 0
+
+    def cleanup(self) -> None:
+        pass
+
+
+class Renode(Platform):
+    """Platform implementation for running on Renode emulator."""
+
+    def __init__(self):
+        self.process = None
+
+    def get_console(self, board_config: BoardConfig) -> Optional[str]:
+        return "/tmp/renode-uart"
+
+    def hw_write_protect(self, enable: bool) -> None:
+        pass
+
+    def power(self, board_config: BoardConfig, power_on: bool) -> None:
+        pass
+
+    def flash(
+        self,
+        image_path: str,
+        board: str,
+        flasher: str,
+        remote_ip: str,
+        remote_port: int,
+        build_board: str,
+        test_name: str,
+        enable_hw_write_protect: bool,
+    ) -> bool:
+        cmd = ["./util/renode-ec-launch", build_board, test_name]
+        if enable_hw_write_protect:
+            cmd.append("--enable-write-protect")
+
+        # pylint: disable-next=consider-using-with
+        self.process = subprocess.Popen(
+            cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE
+        )
+        time.sleep(10)
+        return True
+
+    def cleanup(self) -> None:
+        self.process.kill()
 
 
 @dataclass
@@ -1360,13 +1414,17 @@ def flash_and_run_test(
         # run the test
         logging.info('Running test: "%s"', test.config_name)
 
-        return run_test(
+        ret = run_test(
             test,
             board_config,
             console,
             executor=executor,
             zephyr=args.zephyr,
         )
+
+        platform.cleanup()
+
+        return ret
 
 
 def parse_remote_arg(remote: str) -> str:
@@ -1485,6 +1543,10 @@ def main():
         "--zephyr", help="Use Zephyr build", action="store_true"
     )
 
+    parser.add_argument(
+        "--renode", help="Run tests with Renode emulator", action="store_true"
+    )
+
     args = parser.parse_args()
     logging.basicConfig(
         format="%(levelname)s:%(message)s", level=args.log_level
@@ -1496,6 +1558,11 @@ def main():
     if args.zephyr:
         board_config.expected_fp_power = board_config.expected_fp_power_zephyr
         board_config.expected_mcu_power = board_config.expected_mcu_power_zephyr
+
+    if args.renode:
+        platform = Renode()
+    else:
+        platform = Hardware()
 
     test_list = get_test_list(
         platform, board_config, args.tests, args.with_private, args.zephyr
