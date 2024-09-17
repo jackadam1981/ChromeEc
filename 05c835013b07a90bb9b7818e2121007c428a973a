@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82fa0a6_d366fecf",
+        "filename": "test/exit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:57:33Z",
+      "side": 1,
+      "message": "Let\u0027s make this return an error. We should never get there, so if we do we want the test to fail.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6a7c7588_1133ec68",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/exit.cc",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 17,
+                "endChar": 0
+              },
+              "replacement": "\treturn EC_ERROR_UNKNOWN;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "05c835013b07a90bb9b7818e2121007c428a973a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
