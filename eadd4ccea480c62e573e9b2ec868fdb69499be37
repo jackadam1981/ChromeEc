@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf21b97b_dede1eea",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:55:51Z",
+      "side": 1,
+      "message": "Change type to `bool` and use `true`/`false`.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d085880e_a3f60a8a",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:55:51Z",
+      "side": 1,
+      "message": "`errno` should only be set in the case that the system call is returning an error (see `@return` function description that you wrote).\n\nIn this case we\u0027re handling the signal, so we shouldn\u0027t be setting an error and should return success.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7956e864_8574e947",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:55:51Z",
+      "side": 1,
+      "message": "We need to do the exact same thing that the the builtin assert does and pass the encoded function name and line number.",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30032aea_15762654",
+        "filename": "test/assert_stdlib.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:55:51Z",
+      "side": 1,
+      "message": "With this change, both `assert_stdlib.c` and `assert_builtin.c` should behave exactly the same. This should have the same `expected_info` value.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
