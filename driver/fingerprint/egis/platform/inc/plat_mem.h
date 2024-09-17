@@ -2,8 +2,9 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-#ifndef __PLAT_MEM_H__
-#define __PLAT_MEM_H__
+
+#ifndef __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_PLAT_MEM_H_
+#define __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_PLAT_MEM_H_
 
 #include <stddef.h>
 #include <stdint.h>
@@ -30,4 +31,4 @@ static inline void *plat_alloc(size_t size)
 	return sys_alloc(1, size);
 }
 
-#endif
+#endif /* __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_PLAT_MEM_H_ */
