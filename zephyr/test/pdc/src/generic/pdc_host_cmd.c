@@ -29,7 +29,8 @@ const static struct pdc_info_t info = {
 	.pd_revision = 123,
 	.pd_version = 456,
 	/* VID:PID = 7890:3456 */
-	.vid_pid = (0x7890 << 16) | (0x3456 << 0),
+	.vid = 0x7890,
+	.pid = 0x3456,
 	.is_running_flash_code = 1,
 	.running_in_flash_bank = 16,
 	.project_name = "ProjectName",
@@ -80,8 +81,8 @@ ZTEST(host_cmd_pdc, test_ec_cmd_pd_chip_info_v0)
 	zassert_equal(EC_RES_SUCCESS, rv, "Got %d, expected %d", rv,
 		      EC_RES_SUCCESS);
 
-	zassert_equal(PDC_VIDPID_GET_VID(info.vid_pid), resp.vendor_id);
-	zassert_equal(PDC_VIDPID_GET_PID(info.vid_pid), resp.product_id);
+	zassert_equal(info.vid, resp.vendor_id);
+	zassert_equal(info.pid, resp.product_id);
 	zassert_equal(PDC_FWVER_GET_MAJOR(info.fw_version),
 		      resp.fw_version_string[2]);
 	zassert_equal(PDC_FWVER_GET_MINOR(info.fw_version),
@@ -108,8 +109,8 @@ ZTEST(host_cmd_pdc, test_ec_cmd_pd_chip_info_v1)
 	zassert_equal(EC_RES_SUCCESS, rv, "Got %d, expected %d", rv,
 		      EC_RES_SUCCESS);
 
-	zassert_equal(PDC_VIDPID_GET_VID(info.vid_pid), resp.vendor_id);
-	zassert_equal(PDC_VIDPID_GET_PID(info.vid_pid), resp.product_id);
+	zassert_equal(info.vid, resp.vendor_id);
+	zassert_equal(info.pid, resp.product_id);
 	zassert_equal(PDC_FWVER_GET_MAJOR(info.fw_version),
 		      resp.fw_version_string[2]);
 	zassert_equal(PDC_FWVER_GET_MINOR(info.fw_version),
@@ -139,8 +140,8 @@ ZTEST(host_cmd_pdc, test_ec_cmd_pd_chip_info_v2)
 	zassert_equal(EC_RES_SUCCESS, rv, "Got %d, expected %d", rv,
 		      EC_RES_SUCCESS);
 
-	zassert_equal(PDC_VIDPID_GET_VID(info.vid_pid), resp.vendor_id);
-	zassert_equal(PDC_VIDPID_GET_PID(info.vid_pid), resp.product_id);
+	zassert_equal(info.vid, resp.vendor_id);
+	zassert_equal(info.pid, resp.product_id);
 	zassert_equal(PDC_FWVER_GET_MAJOR(info.fw_version),
 		      resp.fw_version_string[2]);
 	zassert_equal(PDC_FWVER_GET_MINOR(info.fw_version),
@@ -177,8 +178,8 @@ ZTEST(host_cmd_pdc, test_ec_cmd_pd_chip_info_v3)
 	zassert_equal(EC_RES_SUCCESS, rv, "Got %d, expected %d", rv,
 		      EC_RES_SUCCESS);
 
-	zassert_equal(PDC_VIDPID_GET_VID(info.vid_pid), resp.vendor_id);
-	zassert_equal(PDC_VIDPID_GET_PID(info.vid_pid), resp.product_id);
+	zassert_equal(info.vid, resp.vendor_id);
+	zassert_equal(info.pid, resp.product_id);
 	zassert_equal(PDC_FWVER_GET_MAJOR(info.fw_version),
 		      resp.fw_version_string[2]);
 	zassert_equal(PDC_FWVER_GET_MINOR(info.fw_version),
