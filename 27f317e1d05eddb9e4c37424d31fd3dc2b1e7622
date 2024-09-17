@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f210bfe_b26ea4af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17bb2b50_6f809b00",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8804436_b300030c",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "IIRC, this test generate `failed` because of the assertion failure. This is counted as `SINGLE_CHECK_FAILED_REGEX,`",
       "parentUuid": "b8804436_b300030c",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 18
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cfb7839_613a565c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:46:38Z",
+      "side": 1,
+      "message": "Can you double-check? In the [other CL](https://crrev.com/c/5834578/7/test/run_device_tests.py) for builtin assert, you removed the `ASSERTION_FAILURE_REGEX`, but in this one you removed `SINGLE_CHECK_FAILED_REGEX`. Just want to make sure this one is right.",
+      "parentUuid": "709ddbe5_6c9cd392",
       "range": {
         "startLine": 318,
         "startChar": 0,
