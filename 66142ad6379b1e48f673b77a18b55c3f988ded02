@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29974b9b_7785288e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2123,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-17T23:37:59Z",
+      "side": 1,
+      "message": "\"fails to generate\"?",
+      "range": {
+        "startLine": 2123,
+        "startChar": 53,
+        "endLine": 2123,
+        "endChar": 69
+      },
+      "revId": "66142ad6379b1e48f673b77a18b55c3f988ded02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29dc87e6_23d4f4d7",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-17T23:37:59Z",
+      "side": 1,
+      "message": "Maybe add a static assert that `sizeof(payload) \u003d\u003d sizeof(RTS_UCSI_GET_PDOS) + /* length byte */ 1 + sizeof(union get_pdos_t)` since we\u0027re relying on `payload` to be padded out enough to fit this.",
+      "range": {
+        "startLine": 2141,
+        "startChar": 1,
+        "endLine": 2141,
+        "endChar": 43
+      },
+      "revId": "66142ad6379b1e48f673b77a18b55c3f988ded02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
