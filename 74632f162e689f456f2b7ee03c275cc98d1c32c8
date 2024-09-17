@@ -70,6 +70,30 @@
       },
       "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f4cbbf_bf70876d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-17T19:09:38Z",
+      "side": 1,
+      "message": "Acknowledged\n\nI have filed a bug b:367750568 to remove EEPROM CBI settings, along with it we will plan to remove SYSTEM_LOCKED config",
+      "parentUuid": "8c61293b_ca7ed564",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
