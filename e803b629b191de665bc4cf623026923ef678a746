@@ -22,6 +22,30 @@
       },
       "revId": "e803b629b191de665bc4cf623026923ef678a746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191e5e83_387d40bb",
+        "filename": "zephyr/program/trulo/generated.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T23:34:12Z",
+      "side": 1,
+      "message": "I have updated the spreadsheet to produce generated.dtsi with this setting. But, It\u0027s still going to look it\u0027s still going to look like a diff relative to the previous CL in this chain..",
+      "parentUuid": "535b1313_497c879c",
+      "range": {
+        "startLine": 144,
+        "startChar": 35,
+        "endLine": 144,
+        "endChar": 50
+      },
+      "revId": "e803b629b191de665bc4cf623026923ef678a746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
