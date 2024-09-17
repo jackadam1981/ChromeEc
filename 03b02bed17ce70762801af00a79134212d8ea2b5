@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87349b02_d17aa9f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf2f6fb_f25755b1",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524aad4e_9064eecf",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-16T20:32:06Z",
       "side": 1,
       "message": "what\u0027s the naming convention going to be? `trulo` is npcx9 and\nothers are trulo_\u003cother\u003e?",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326757f5_42229441",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:03:04Z",
+      "side": 1,
+      "message": "I am just focusing on npcx now as there is no ite reference board to test with.",
+      "parentUuid": "524aad4e_9064eecf",
       "range": {
         "startLine": 10,
         "startChar": 28,
@@ -84,6 +132,30 @@
           ]
         }
       ],
+      "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168b5b78_9e356e6c",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-17T20:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca2da063_2b564575",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 61
+      },
       "revId": "03b02bed17ce70762801af00a79134212d8ea2b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
