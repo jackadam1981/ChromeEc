@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c3fc8a_cbb049fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:12:44Z",
+      "side": 1,
+      "message": "The `-D` flag is used to pass preprocessor defines, so I would change this to `EGIS_DEBUG` or `-DEGIS_DEBUG` to make it clear that the `D` is not part of the flag.",
+      "range": {
+        "startLine": 7,
+        "startChar": 47,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "038dd35c137b24d07c4213800bb5c4fe4b8fc95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
