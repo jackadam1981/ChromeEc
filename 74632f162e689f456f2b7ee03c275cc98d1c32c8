@@ -46,6 +46,30 @@
       },
       "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c61293b_ca7ed564",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-17T18:19:36Z",
+      "side": 1,
+      "message": "not really.\nfor the nuvoton and ITE EC under fatcat, we\u0027re planning to put CBI in EC flash,\nso EEPROM specifically isn\u0027t going to be relevant. i\u0027m not sure if\nwe have an implementation of CBI-in-flash for the microchip EC - if\nthat\u0027s feasible, we should switch over.",
+      "parentUuid": "4c4f1863_a41e2850",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
