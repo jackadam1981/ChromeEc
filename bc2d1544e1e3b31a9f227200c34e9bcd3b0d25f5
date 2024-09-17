@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "999479b4_80fdcc9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-17T22:19:09Z",
+      "side": 1,
+      "message": "done, now its is called MECC Gen2.x",
+      "parentUuid": "52fe13c3_10de78fd",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "bc2d1544e1e3b31a9f227200c34e9bcd3b0d25f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dabbfa6f_81711123",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/project.overlay",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2024-09-13T22:05:30Z",
       "side": 1,
       "message": "you should be able to add `#include \u003ccros/integrated_fwid.dtsi\u003e` here.\n\nsee: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5494925",
+      "revId": "bc2d1544e1e3b31a9f227200c34e9bcd3b0d25f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c10a088_6f62e2b0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-17T22:19:09Z",
+      "side": 1,
+      "message": "Done\nAddressed in CL:5869951",
+      "parentUuid": "dabbfa6f_81711123",
       "revId": "bc2d1544e1e3b31a9f227200c34e9bcd3b0d25f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
