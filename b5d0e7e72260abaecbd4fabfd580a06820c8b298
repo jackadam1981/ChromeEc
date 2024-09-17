@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489e19aa_24ce7002",
+        "filename": "test/assert_builtin.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T21:43:21Z",
+      "side": 1,
+      "message": "\"shown\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "807e4155_2bc85df8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/assert_builtin.cc",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": "\t * The value of expected_info can be calculated as shown below.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b5d0e7e72260abaecbd4fabfd580a06820c8b298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
