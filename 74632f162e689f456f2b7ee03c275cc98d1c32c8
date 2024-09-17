@@ -22,6 +22,30 @@
       },
       "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c4f1863_a41e2850",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-17T17:35:38Z",
+      "side": 1,
+      "message": "we have CONFIG_PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK enabled at line 50.\nWe can remove CONFIG_PLATFORM_EC_SYSTEM_UNLOCKED together for all PTLRVP SKU once CONFIG_PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK is removed.\n\nAny preference on keeping it common or separately defined for each board?",
+      "parentUuid": "4d721d9a_92dd3177",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "74632f162e689f456f2b7ee03c275cc98d1c32c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
