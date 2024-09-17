@@ -40,6 +40,30 @@
       ],
       "revId": "05c835013b07a90bb9b7818e2121007c428a973a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8034c7_c0f9c4e6",
+        "filename": "test/exit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-17T22:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d82fa0a6_d366fecf",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "05c835013b07a90bb9b7818e2121007c428a973a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
