@@ -40,12 +40,6 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lsm6dso_interrupt";
 		};
-
-		int_lid_imu: lid_imu {
-			irq-pin = <&lid_accel_int_l>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "lis2dw12_interrupt";
-		};
 	};
 
 	named-gpios {
@@ -112,12 +106,10 @@
 				compatible =
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <(100 * USEC_PER_MSEC)>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <0>;
+					odr = <(12450 | ROUND_UP_FLAG)>;
 				};
 			};
 		};
@@ -137,12 +129,10 @@
 				compatible =
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <(100 * USEC_PER_MSEC)>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <0>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 			};
 		};
@@ -151,7 +141,7 @@
 			compatible = "cros-ec,lsm6dso-gyro";
 			status = "okay";
 
-			active-mask = "SENSOR_ACTIVE_S0_S3";
+			active-mask = "SENSOR_ACTIVE_S0";
 			location = "MOTIONSENSE_LOC_BASE";
 			mutex = <&base_mutex>;
 			port = <&i2c_sensor>;
@@ -169,10 +159,9 @@
 		 * list of GPIO interrupts that have to
 		 * be enabled at initial stage
 		 */
-		/delete-property/ sensor-irqs;
-
+		sensor-irqs = <&int_base_imu>;
 		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&lid_accel &base_accel>;
+		accel-force-mode-sensors = <&lid_accel>;
 	};
 
 	/* Rotation matrix used by drivers. */
