@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2910f977_2b6147f2",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-09-17T16:30:02Z",
+      "side": 1,
+      "message": "Is the assumption that this will get called on any connect? or only ones that are not alt modes? I haven\u0027t see the associated kernel patch so wanted some clarity on that",
+      "revId": "ba1b163f381922057c4a4c312f5873b9449c1270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
