@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0d71f59_903489cd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-17T22:29:33Z",
+      "side": 1,
+      "message": "\u003e I assume the first line is coming from the C standard library and that we have no control over this, am I right?\n\nCorrect. I think the problem with changing these regexes as you\u0027re doing right now is that it won\u0027t fail the test if you return an error from the test. For example, comment out the `assert()` call and return `EC_ERROR_UNKNOWN`.",
+      "parentUuid": "edc66824_e8dbd145",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 18
+      },
+      "revId": "27f317e1d05eddb9e4c37424d31fd3dc2b1e7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61f4807a_3c91966e",
         "filename": "test/run_device_tests.py",
         "patchSetId": 5
