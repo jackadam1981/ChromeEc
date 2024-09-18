@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e271db9_2a037c9d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-09-18T06:50:38Z",
+      "side": 1,
+      "message": "These 3 args are added in the next commit. Please change the Platform abstract class or add passing these args in the next commit.",
+      "fixSuggestions": [
+        {
+          "fixId": "6e2a4b90_cb3a2039",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 233,
+                "startChar": 0,
+                "endLine": 233,
+                "endChar": 0
+              },
+              "replacement": "        build_board: str,\n        test_name: str,\n        enable_hw_write_protect: bool,\n"
+            },
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 1326,
+                "startChar": 0,
+                "endLine": 1329,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "8b8c1f0ac180f58d43ebdfb55aeb1305210ef5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
