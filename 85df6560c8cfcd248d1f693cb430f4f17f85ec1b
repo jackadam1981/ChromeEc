@@ -379,6 +379,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e6e7ee0_b5981a19",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T04:15:06Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com",
+      "parentUuid": "959301c7_748ea599",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8daec65e_b264a209",
         "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
         "patchSetId": 2
@@ -432,6 +456,30 @@
       "side": 1,
       "message": "I believe this is used in the private code.",
       "parentUuid": "8daec65e_b264a209",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f64f6ac_0c532f38",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T04:15:06Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com",
+      "parentUuid": "f12b1206_6019a536",
       "range": {
         "startLine": 33,
         "startChar": 0,
