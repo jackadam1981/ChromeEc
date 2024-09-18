@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "821c85f5_70da76c0",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T00:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf21b97b_dede1eea",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d085880e_a3f60a8a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-17T21:55:51Z",
       "side": 1,
       "message": "`errno` should only be set in the case that the system call is returning an error (see `@return` function description that you wrote).\n\nIn this case we\u0027re handling the signal, so we shouldn\u0027t be setting an error and should return success.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2708ad3_7ee6bef3",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T00:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d085880e_a3f60a8a",
       "range": {
         "startLine": 49,
         "startChar": 1,
