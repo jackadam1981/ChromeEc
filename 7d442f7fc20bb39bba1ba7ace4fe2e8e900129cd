@@ -16,6 +16,29 @@
       "message": "This is adding an unprefixed tool",
       "revId": "7d442f7fc20bb39bba1ba7ace4fe2e8e900129cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aef439d_2af35e43",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 25
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-09-18T15:34:32Z",
+      "side": 1,
+      "message": "We should really be setting `BUILDCC` from the ebuild file.\n\n```\nexport BUILDCC\nBUILDCC\u003d\"$(tc-getBUILD_CC)\n```",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 7
+      },
+      "revId": "7d442f7fc20bb39bba1ba7ace4fe2e8e900129cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
