@@ -203,6 +203,14 @@ __override_proto void tc_update_pd_sleep_mask(int port);
 void tc_snk_power_off(int port);
 
 /**
+ * Instructs the Attached.SNK to stop drawing power. This function only has
+ * effect if the current Type-C state Attached.SNK.
+ *
+ * @param port USB_C port number
+ */
+void sink_stop_drawing_current(int port);
+
+/**
  * Instructs the Attached.SRC to stop supplying power. The function has
  * no effect if the current Type-C state is not Attached.SRC.
  *
