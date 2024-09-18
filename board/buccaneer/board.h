@@ -20,7 +20,8 @@
  * See description in baseboard/helpilot/base_board.h.
  */
 #undef HELIPILOT_CODE_RAM_SIZE_BYTES
-#define HELIPILOT_CODE_RAM_SIZE_BYTES (320 * 1024)
+/*#define HELIPILOT_CODE_RAM_SIZE_BYTES (320 * 1024)*/
+#define HELIPILOT_CODE_RAM_SIZE_BYTES (129 * 1024)
 
 /**
  * See description in baseboard/helpilot/base_board.h.
