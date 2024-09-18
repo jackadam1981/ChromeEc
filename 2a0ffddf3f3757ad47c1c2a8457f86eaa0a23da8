@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee1be2b_40bcd747",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-18T20:54:27Z",
+      "side": 1,
+      "message": "ptlrvp_npcx is merged now, \"build all\" may fail, use GPIOD0 for NPCX",
+      "revId": "2a0ffddf3f3757ad47c1c2a8457f86eaa0a23da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
