@@ -3324,6 +3324,7 @@ int pdc_power_mgmt_get_vbus_voltage(int port)
 	}
 
 	/* Return VBUS */
+	LOG_INF("pdc_power_mgmt vbus=%d", pdc_data[port]->port.vbus);
 	return pdc_data[port]->port.vbus;
 }
 
