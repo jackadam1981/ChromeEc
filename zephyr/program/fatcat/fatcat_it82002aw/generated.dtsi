@@ -105,7 +105,7 @@
 		gpio_fmosi_r: fmosi_r {
 			gpios = <&gpiog 4 (GPIO_INPUT)>;
 		};
-		gpio_fsce#_r: fsce#_r {
+		gpio_fsce_n_r: fsce_n_r {
 			gpios = <&gpiog 3 (GPIO_INPUT)>;
 		};
 		gpio_fsck_r: fsck_r {
