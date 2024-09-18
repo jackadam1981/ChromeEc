@@ -5,6 +5,10 @@
 #ifndef __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_EGIS_DEFINITION_H_
 #define __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_EGIS_DEFINITION_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //
 //	Return code
 //
@@ -170,5 +174,9 @@ typedef enum { EDGE_TRIGGER = 0, LEVEL_TRIGGER = 4 } INT_TRIGGER;
 #define GET_IMAGE_lEVEL_1 1
 #define GET_IMAGE_lEVEL_2 2
 #define GET_IMAGE_lEVEL_3 3
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_EGIS_DEFINITION_H_ */

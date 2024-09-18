@@ -10,6 +10,10 @@
 
 #include <string.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef enum {
 	LOG_VERBOSE = 2,
 	LOG_DEBUG = 3,
@@ -71,4 +75,9 @@ void set_debug_log_callback(event_callback_t event_callback);
 		LOGE("%s, " #x " is NULL", __func__); \
 		return errorcode;                     \
 	}
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_PLAT_LOG_H_ */
