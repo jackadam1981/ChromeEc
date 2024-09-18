@@ -175,7 +175,7 @@ static int command_fpupload(int argc, const char **argv)
 	const char *pixels_str = argv[2];
 	while (*pixels_str) {
 		if (dest >= fp_buffer + FP_SENSOR_IMAGE_SIZE)
-			return EC_ERROR_PARAM1;
+			return EC_ERROR_PARAM3;
 		char hex_str[] = { pixels_str[0], pixels_str[1], '\0' };
 		*dest = static_cast<uint8_t>(strtol(hex_str, NULL, 16));
 		pixels_str += 2;
