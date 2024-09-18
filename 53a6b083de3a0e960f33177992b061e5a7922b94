@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd85236e_54cda822",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-18T21:11:17Z",
+      "side": 1,
+      "message": "add details like default is Chrome CCD and with the platform config jumper selection I3C debug is selected etc.\nalso mention about this is done only during cold boot etc",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "53a6b083de3a0e960f33177992b061e5a7922b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0b568f_cf43d1e7",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_ccd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-18T21:11:17Z",
+      "side": 1,
+      "message": "default should be input so this line can be removed",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "53a6b083de3a0e960f33177992b061e5a7922b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292edaa6_a85bf879",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_ccd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-09-18T21:11:17Z",
+      "side": 1,
+      "message": "not sure PD or EC wins the rase, try experiment and see if it has to be done post init (before A-rail is on)",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "53a6b083de3a0e960f33177992b061e5a7922b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
