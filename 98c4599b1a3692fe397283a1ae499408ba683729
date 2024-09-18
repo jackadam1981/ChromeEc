@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7feb825b_3a9efe51",
+        "filename": "zephyr/test/brox/tests/jubilant/src/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-18T16:06:13Z",
+      "side": 1,
+      "message": "For a follow up, `keyboard_matrix_init()` should really use `SYS_INIT` instead of the legacy hooks.  This would add a return code to `keyboard_matrix_init()` that could be checked by this test.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 21
+      },
+      "revId": "98c4599b1a3692fe397283a1ae499408ba683729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
