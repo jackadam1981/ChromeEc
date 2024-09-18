@@ -22,16 +22,18 @@ static inline void plat_free(void *x)
 	sys_free(x);
 }
 
+static inline void PLAT_FREE(void **x)
+{
+	if (*x != NULL) {
+		plat_free(*x);
+		*x = NULL;
+	}
+}
+
 static inline void *plat_alloc(size_t size)
 {
 	return sys_alloc(1, size);
 }
-
-#define PLAT_FREE(x)          \
-	if (x != NULL) {      \
-		plat_free(x); \
-		x = NULL;     \
-	}
 
 #ifdef __cplusplus
 }
