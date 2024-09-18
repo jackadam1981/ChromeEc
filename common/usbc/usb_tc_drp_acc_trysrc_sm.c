@@ -473,8 +473,6 @@ static atomic_t pd_try_src;
 static volatile enum try_src_override_t pd_try_src_override;
 static void pd_update_try_source(void);
 
-static void sink_stop_drawing_current(int port);
-
 __maybe_unused static bool is_try_src_enabled(int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
@@ -995,7 +993,7 @@ void tc_snk_power_off(int port)
 {
 	if (IS_ATTACHED_SNK(port)) {
 		TC_SET_FLAG(port, TC_FLAGS_POWER_OFF_SNK);
-		sink_stop_drawing_current(port);
+		pd_sink_stop_drawing_current(port);
 	}
 }
 
@@ -1391,7 +1389,7 @@ static bool tc_perform_snk_hard_reset(int port)
 			 * Partner dropped Vbus, reduce our current consumption
 			 * and await its return.
 			 */
-			sink_stop_drawing_current(port);
+			pd_sink_stop_drawing_current(port);
 
 			tcpm_enable_auto_discharge_disconnect(port, 0);
 
@@ -1823,7 +1821,7 @@ void tc_set_data_role(int port, enum pd_data_role role)
 	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
 }
 
-static void sink_stop_drawing_current(int port)
+void pd_sink_stop_drawing_current(int port)
 {
 	pd_set_input_current_limit(port, 0, 0);
 
@@ -2758,7 +2756,7 @@ static void tc_attached_snk_exit(const int port)
 	}
 
 	/* Stop drawing power */
-	sink_stop_drawing_current(port);
+	pd_sink_stop_drawing_current(port);
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER) &&
 	    !TC_CHK_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP)) {
@@ -3836,7 +3834,7 @@ __maybe_unused static void tc_ct_attached_snk_exit(int port)
 		assert(0);
 
 	/* Stop drawing power */
-	sink_stop_drawing_current(port);
+	pd_sink_stop_drawing_current(port);
 
 	TC_CLR_FLAG(port, TC_FLAGS_REJECT_VCONN_SWAP);
 }
