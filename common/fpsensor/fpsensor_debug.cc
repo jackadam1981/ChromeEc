@@ -257,7 +257,7 @@ static int command_fpinfo(int argc, const char **argv)
 	return EC_ERROR_UNKNOWN;
 #endif
 
-	constexpr int align = 15;
+	constexpr int align = 30;
 
 	ccprintf("%*s: 0x%X (%s)\n", align, "Vendor ID", info.vendor_id,
 		 fourcc_to_string(info.vendor_id).c_str());
@@ -275,6 +275,25 @@ static int command_fpinfo(int argc, const char **argv)
 
 	ccprintf("%*s: %s\n", align, "Sensor Strap",
 		 fp_sensor_type_to_str(fpsensor_detect_get_type()));
+
+#	define PRINTIT(macro,fmt) ccprintf("%*s = " fmt "\n", align, #macro, macro)
+	ccprintf("\n");
+	PRINTIT(CONFIG_PROGRAM_MEMORY_BASE, "0x%X");
+	PRINTIT(CONFIG_RAM_BASE, "0x%X");
+	ccprintf("\n");
+	PRINTIT(NPCX_PROGRAM_MEMORY_SIZE, "%d");
+	ccprintf("\n");
+	PRINTIT(CONFIG_RAM_SIZE, "%d");
+	PRINTIT(CONFIG_DATA_RAM_SIZE, "%d");
+	PRINTIT(NPCX_RAM_SIZE, "%d");
+	ccprintf("\n");
+	PRINTIT(CONFIG_CODE_RAM_SIZE, "%d");
+	PRINTIT(CONFIG_RW_SIZE, "%d");
+	ccprintf("\n");
+	PRINTIT(CONFIG_EC_PROTECTED_STORAGE_OFF, "%d");
+	PRINTIT(CONFIG_EC_PROTECTED_STORAGE_SIZE, "%d");
+	PRINTIT(CONFIG_EC_WRITABLE_STORAGE_OFF, "%d");
+	PRINTIT(CONFIG_EC_WRITABLE_STORAGE_SIZE, "%d");
 
 	return EC_SUCCESS;
 }
