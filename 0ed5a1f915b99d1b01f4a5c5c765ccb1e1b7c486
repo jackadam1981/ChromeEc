@@ -64,6 +64,30 @@
       },
       "revId": "0ed5a1f915b99d1b01f4a5c5c765ccb1e1b7c486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3b5efa_1bf0128a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T02:57:48Z",
+      "side": 1,
+      "message": "I understand. I changed the inline function to take a pointer of the pointer.",
+      "parentUuid": "7a658c1d_f431535a",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "0ed5a1f915b99d1b01f4a5c5c765ccb1e1b7c486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
