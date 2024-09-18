@@ -38,13 +38,15 @@ Run the script on the remote machine:
 """
 
 # pylint: enable=line-too-long
-# TODO(b/267800058): refactor into multiple modules
+
+# TODO(b/267803007): refactor into multiple modules
 # pylint: disable=too-many-lines
 
 import argparse
 from collections import namedtuple
 import concurrent
 from concurrent.futures.thread import ThreadPoolExecutor
+from contextlib import ExitStack
 import copy
 from dataclasses import dataclass
 from dataclasses import field
@@ -63,7 +65,6 @@ from typing import BinaryIO, Callable, Dict, List, Optional, Tuple
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
-from contextlib2 import ExitStack
 import fmap
 import yaml
 
@@ -305,11 +306,26 @@ class AllTests:
             # Cryptoc is not supported with Zephyr.
             # TODO(b/333039464) A new test for OPENSSL_cleanse has to be implemented.
             TestConfig(test_name="always_memset", skip_for_zephyr=True),
+            TestConfig(
+                test_name="assert_builtin",
+                fail_regexes=[
+                    SINGLE_CHECK_FAILED_REGEX,
+                    ALL_TESTS_FAILED_REGEX,
+                ],
+            ),
+            TestConfig(
+                test_name="assert_stdlib",
+                fail_regexes=[
+                    ALL_TESTS_FAILED_REGEX,
+                    ASSERTION_FAILURE_REGEX,
+                ],
+            ),
             TestConfig(test_name="benchmark"),
             TestConfig(test_name="boringssl_crypto"),
             TestConfig(test_name="cortexm_fpu"),
             TestConfig(test_name="crc"),
             TestConfig(test_name="exception"),
+            TestConfig(test_name="exit"),
             TestConfig(
                 test_name="flash_physical",
                 imagetype_to_use=ImageType.RO,
@@ -350,6 +366,7 @@ class AllTests:
             ),
             TestConfig(test_name="fpsensor_auth_crypto_stateless"),
             TestConfig(test_name="fpsensor_crypto"),
+            TestConfig(test_name="fpsensor_debug"),
             TestConfig(
                 test_name="fpsensor_hw", pre_test_callback=fp_sensor_sel
             ),
@@ -359,10 +376,11 @@ class AllTests:
                 test_name="libc_printf",
                 finish_regexes=[PRINTF_CALLED_REGEX],
             ),
-            TestConfig(test_name="global_initialization"),
+            # Handled by Zephyr - cpp.main.* tests
+            TestConfig(test_name="global_initialization", skip_for_zephyr=True),
             TestConfig(test_name="libcxx"),
             TestConfig(test_name="malloc", imagetype_to_use=ImageType.RO),
-            # MPU functionality is handled by Zephyr code.
+            # TODO(b/363277530): Add Zephyr MPU tests.
             TestConfig(
                 config_name="mpu_ro",
                 test_name="mpu",
@@ -550,6 +568,14 @@ class AllTests:
         """Return Zephyr upstream test configs."""
         # Make sure proper paths are added in the twister script, see ZEPHYR_TEST_PATHS
         tests = [
+            TestConfig(
+                zephyr_name="cpp.main.newlib",
+                test_name="zephyr_cpp_newlib",
+            ),
+            TestConfig(
+                zephyr_name="cpp.main.cpp20",
+                test_name="zephyr_cpp_std20",
+            ),
             TestConfig(
                 zephyr_name="drivers.entropy",
                 test_name="zephyr_drivers_entropy",

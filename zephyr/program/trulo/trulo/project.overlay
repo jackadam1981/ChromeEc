@@ -1,0 +1,13 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Trulo program common DTS includes */
+#include "../generated.dtsi"
+#include "../i2c.dtsi"
+#include "../trulo.dtsi"
+
+/* Trulo project DTS includes*/
+
+/* Trulo overrides follow... */
