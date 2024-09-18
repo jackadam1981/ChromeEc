@@ -1,0 +1,144 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac5939f_7ad017f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T23:49:08Z",
+      "side": 1,
+      "message": "This is an improvement to the original command, so +2 to that, but I think all the errors are wrong. Any chance you could fix the others?",
+      "revId": "0c5bf0aaff2ec14acde4b9c3e0341e7f55c5af1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bd28be_a3ab183c",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T23:49:08Z",
+      "side": 1,
+      "message": "`EC_ERROR_PARAM_COUNT`",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "14e1a6b1_0e671461",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 167,
+                "startChar": 0,
+                "endLine": 168,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_ERROR_PARAM_COUNT;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0c5bf0aaff2ec14acde4b9c3e0341e7f55c5af1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da24b7c8_3e15bbfb",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T23:49:08Z",
+      "side": 1,
+      "message": "This should be `PARAM1`.",
+      "range": {
+        "startLine": 172,
+        "startChar": 9,
+        "endLine": 172,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a174aebb_45ed957c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 172,
+                "startChar": 0,
+                "endLine": 173,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_ERROR_PARAM1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0c5bf0aaff2ec14acde4b9c3e0341e7f55c5af1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7603133a_129699dd",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T23:49:08Z",
+      "side": 1,
+      "message": "I think these are both wrong. This should be `PARAM2`.\n\nI believe argv[0] is the name of the command and we consider the first parameter to be argv[1].",
+      "range": {
+        "startLine": 178,
+        "startChar": 10,
+        "endLine": 178,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7ad5fb58_212614d4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 178,
+                "startChar": 0,
+                "endLine": 179,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn EC_ERROR_PARAM2;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0c5bf0aaff2ec14acde4b9c3e0341e7f55c5af1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
