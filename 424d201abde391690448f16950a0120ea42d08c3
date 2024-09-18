@@ -16,6 +16,23 @@
       "message": "This should actually have sufficient code coverage, it just needs to rerun the code coverage analysis.",
       "revId": "424d201abde391690448f16950a0120ea42d08c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76315cda_f7c27b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T02:35:37Z",
+      "side": 1,
+      "message": "I covered all code lines I added with unit test.",
+      "revId": "424d201abde391690448f16950a0120ea42d08c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
