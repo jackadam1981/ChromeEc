@@ -16,6 +16,12 @@ static void kb_layout_init(void)
 	uint32_t val;
 
 	ret = cros_cbi_get_fw_config(FW_KB_LAYOUT, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d",
+			FW_KB_LAYOUT);
+		return;
+	}
+
 	/*
 	 * If keyboard is ANSI(KEYBOARD_ANSI), we need translate make code 64
 	 * to 45.And translate 29 to 42
