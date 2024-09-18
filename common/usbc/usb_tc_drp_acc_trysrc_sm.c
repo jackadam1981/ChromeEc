@@ -473,8 +473,6 @@ static atomic_t pd_try_src;
 static volatile enum try_src_override_t pd_try_src_override;
 static void pd_update_try_source(void);
 
-static void sink_stop_drawing_current(int port);
-
 __maybe_unused static bool is_try_src_enabled(int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
@@ -1823,7 +1821,7 @@ void tc_set_data_role(int port, enum pd_data_role role)
 	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
 }
 
-static void sink_stop_drawing_current(int port)
+void sink_stop_drawing_current(int port)
 {
 	pd_set_input_current_limit(port, 0, 0);
 
