@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccd53ad_d0b8be8c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 26
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-09-18T15:59:15Z",
+      "side": 1,
+      "message": "Switch this to `type -P` as well.",
+      "range": {
+        "startLine": 82,
+        "startChar": 33,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "fd22a76a337214a4381a2346bf0c5c0910bd76c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
