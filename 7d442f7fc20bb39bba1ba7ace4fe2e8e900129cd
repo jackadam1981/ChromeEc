@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea6e781f_0e60b12e",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 25
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-09-18T15:44:33Z",
+      "side": 1,
+      "message": "The bazel Stage2 SDK doesn\u0027t have `which`. You need to add it as a `BDEPEND` if you want to use it. The easier thing to do is switch to `test -e /usr/bin/x86_64-pc-linux-gnu-$(CROSS_COMPILE_CC_NAME)`, but I question the hard coding of this path.\n\nMaybe `BUILDCC?\u003d$(shell type -P x86_64-linux-gnu-$(CROSS_COMPILE_CC_NAME) || echo $(CROSS_COMPILE_CC_NAME))`\n\nIt\u0027s also a bit strange that we are mixing the `CROSS_COMPILE_CC_NAME` which is a target variable with a BUILDXXX variables.",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "7d442f7fc20bb39bba1ba7ace4fe2e8e900129cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0db255c8_1901bb34",
         "filename": "Makefile.toolchain",
         "patchSetId": 25
