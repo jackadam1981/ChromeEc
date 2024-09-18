@@ -22,6 +22,30 @@
       },
       "revId": "8b1ef676990b76110677048758e122752e522a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7432b32b_c5bab0bc",
+        "filename": "zephyr/program/trulo/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-18T19:25:47Z",
+      "side": 1,
+      "message": "I still think it makes sense to have it cloned here.",
+      "parentUuid": "9d4d0179_a6621bcc",
+      "range": {
+        "startLine": 8,
+        "startChar": 46,
+        "endLine": 8,
+        "endChar": 65
+      },
+      "revId": "8b1ef676990b76110677048758e122752e522a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
