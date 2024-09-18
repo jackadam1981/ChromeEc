@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87c7973_c98b9006",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T22:05:00Z",
+      "side": 1,
+      "message": "confirmed that this function works:\n```\n int num \u003d 1234;\n  int* ptr \u003d (int*)malloc(sizeof(int));\n  *ptr \u003d num;\n\n  LOG(ERROR) \u003c\u003c \"ptr: \" \u003c\u003c ptr;\n\n  PLAT_FREE_FUNC((void**)\u0026ptr);\n  LOG(ERROR) \u003c\u003c \"ptr: \" \u003c\u003c ptr;\n}\n```\n\n```\nE0918 14:36:51.541277    2192 course1_test.cc:313] ptr: 0x5170ffe08c20\nE0918 14:36:51.541310    2192 course1_test.cc:317] ptr: (nil)\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e6e9e58a_1b9984df",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "static inline void PLAT_FREE_FUNC(void **x)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8e5400d0465cd7d868104562cc87599f53337fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
