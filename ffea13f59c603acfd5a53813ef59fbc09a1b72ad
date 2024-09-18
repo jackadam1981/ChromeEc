@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff1ad5b_46a585a4",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T23:50:48Z",
+      "side": 1,
+      "message": "`EC_ERROR_PARAM_COUNT`",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7a682766_595fb0a5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 167,
+                "startChar": 0,
+                "endLine": 168,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_ERROR_PARAM_COUNT;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ffea13f59c603acfd5a53813ef59fbc09a1b72ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da927c63_e0f4338a",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-18T23:50:48Z",
+      "side": 1,
+      "message": "This should then remain PARAM1.",
+      "range": {
+        "startLine": 172,
+        "startChar": 9,
+        "endLine": 172,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9eef84d5_1bee434f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 172,
+                "startChar": 0,
+                "endLine": 173,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_ERROR_PARAM1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ffea13f59c603acfd5a53813ef59fbc09a1b72ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
