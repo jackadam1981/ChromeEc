@@ -169,7 +169,7 @@ static int command_fpupload(int argc, const char **argv)
 		return EC_ERROR_ACCESS_DENIED;
 	int offset = atoi(argv[1]);
 	if (offset < 0)
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_PARAM2;
 	uint8_t *dest = fp_buffer + FP_SENSOR_IMAGE_OFFSET + offset;
 
 	const char *pixels_str = argv[2];
