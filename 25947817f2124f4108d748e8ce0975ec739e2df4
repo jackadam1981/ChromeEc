@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a77ebad_20e411ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-09-18T17:56:41Z",
+      "side": 1,
+      "message": "Run the tast sensor test if possible:\ntast run \u003cIP\u003e hardware.SensorIioserviceHard",
+      "revId": "25947817f2124f4108d748e8ce0975ec739e2df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "080ae77b_40d17456",
         "filename": "zephyr/program/corsola/kyogre/project.overlay",
         "patchSetId": 2
