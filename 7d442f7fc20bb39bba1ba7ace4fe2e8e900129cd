@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "393022fc_3caecfdb",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 25
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-18T15:52:12Z",
+      "side": 1,
+      "message": "removed the full path, took your first suggestion.",
+      "parentUuid": "ea6e781f_0e60b12e",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "7d442f7fc20bb39bba1ba7ace4fe2e8e900129cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0db255c8_1901bb34",
         "filename": "Makefile.toolchain",
         "patchSetId": 25
@@ -54,6 +78,48 @@
       "writtenOn": "2024-09-18T15:34:32Z",
       "side": 1,
       "message": "We should really be setting `BUILDCC` from the ebuild file.\n\n```\nexport BUILDCC\nBUILDCC\u003d\"$(tc-getBUILD_CC)\n```",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 7
+      },
+      "revId": "7d442f7fc20bb39bba1ba7ace4fe2e8e900129cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f636fb_13ad2409",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 25
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-18T15:52:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0db255c8_1901bb34",
+      "revId": "7d442f7fc20bb39bba1ba7ace4fe2e8e900129cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c26a2c_e9f6a540",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 25
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-18T15:52:12Z",
+      "side": 1,
+      "message": "deferring due to b/332378804",
+      "parentUuid": "7aef439d_2af35e43",
       "range": {
         "startLine": 105,
         "startChar": 0,
