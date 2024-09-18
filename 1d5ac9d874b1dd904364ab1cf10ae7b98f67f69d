@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d1313f_1206f530",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-18T15:59:11Z",
+      "side": 1,
+      "message": "Instead of forcing DRP on, you could force the chipset state CHIPSET_STATE_ON.  This file already has a fake for `chipset_in_state()`.",
+      "range": {
+        "startLine": 1924,
+        "startChar": 0,
+        "endLine": 1924,
+        "endChar": 59
+      },
+      "revId": "1d5ac9d874b1dd904364ab1cf10ae7b98f67f69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
