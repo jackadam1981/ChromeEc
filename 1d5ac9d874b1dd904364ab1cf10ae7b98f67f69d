@@ -22,6 +22,30 @@
       },
       "revId": "1d5ac9d874b1dd904364ab1cf10ae7b98f67f69d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ffb7297_23221356",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-18T20:21:20Z",
+      "side": 1,
+      "message": "Thats the default fake value for these tests. I\u0027ll remove this line.",
+      "parentUuid": "d7d1313f_1206f530",
+      "range": {
+        "startLine": 1924,
+        "startChar": 0,
+        "endLine": 1924,
+        "endChar": 59
+      },
+      "revId": "1d5ac9d874b1dd904364ab1cf10ae7b98f67f69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
