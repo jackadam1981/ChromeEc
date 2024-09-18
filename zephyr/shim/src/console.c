@@ -507,6 +507,23 @@ static void zephyr_print(const char *buff, size_t size)
 		printk("%s", buff);
 	}
 }
+
+K_FIFO_DEFINE(log_fifo);
+
+static void log_thread(void *unused, void *unused1, void *unused2)
+{
+	char *log;
+
+	while (1) {
+		log = k_fifo_get(&log_fifo, K_FOREVER);
+		zephyr_print(log, strlen(log));
+	}
+}
+
+#define LOG_THREAD_STACK_SIZE 512
+#define LOG_THREAD_PRIORITY 0
+K_THREAD_DEFINE(console_logger, LOG_THREAD_STACK_SIZE, log_thread, NULL, NULL,
+		NULL, LOG_THREAD_PRIORITY, 0, 0);
 #endif /* CONFIG_PIGWEED_LOG_TOKENIZED_LIB */
 
 #if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
@@ -520,7 +537,7 @@ int cputs(enum console_channel channel, const char *outstr)
 	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 
-	zephyr_print(outstr, strlen(outstr));
+	k_fifo_alloc_put(&log_fifo, (void *)outstr);
 
 	return 0;
 }
@@ -538,7 +555,7 @@ int cvprintf(enum console_channel channel, const char *format, va_list args)
 	rv = crec_vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
 	handle_sprintf_rv(rv, &len);
 
-	zephyr_print(buff, len);
+	k_fifo_alloc_put(&log_fifo, buff);
 
 	return rv > 0 ? EC_SUCCESS : rv;
 }
@@ -583,7 +600,7 @@ int cvprints(enum console_channel channel, const char *format, va_list args)
 			   "]\n");
 	handle_sprintf_rv(rv, &len);
 
-	zephyr_print(buff, len);
+	k_fifo_alloc_put(&log_fifo, buff);
 
 	return rv > 0 ? EC_SUCCESS : rv;
 }
