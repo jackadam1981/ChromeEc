@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3b8d23_97224b7a",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-18T06:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e9a3de0_bba2b607",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d297d25f_26453b6f",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-09-16T18:19:22Z",
       "side": 1,
       "message": "Where is this described in the TI interface spec?",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0315d45a_173c020f",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-18T06:49:15Z",
+      "side": 1,
+      "message": "the cmd_error is a flag I defined to force access failed to validate error handling path in PDC driver which is not in TI spec to improve the test coverage higher than threshold.",
+      "parentUuid": "d297d25f_26453b6f",
       "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6a755c7_89445741",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-18T06:49:15Z",
+      "side": 1,
+      "message": "Yes. The snippet in if {} is used to test the error recovery path in TI driver.\nCurrently emul_realtek_rts54xx.c hasn\u0027t implemented this function so we should skip it and continue to run the normal path.",
+      "parentUuid": "5c3acea5_6369d2e7",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b575b389_ee8c528a",
         "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
         "patchSetId": 10
@@ -82,6 +136,24 @@
       "writtenOn": "2024-09-16T18:19:22Z",
       "side": 1,
       "message": "Nit: IMO, no need for explicit error messages that are \"obvious.\" The basic assertion failure should tell the reader everything that this string will contain.",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d3753c_4dab6478",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-18T06:49:15Z",
+      "side": 1,
+      "message": "I am printing it to check the out value returned from driver while debugging. Removed.",
+      "parentUuid": "b575b389_ee8c528a",
       "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
