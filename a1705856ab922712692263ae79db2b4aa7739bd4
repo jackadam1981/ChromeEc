@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93835adf_23c70510",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-18T15:48:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0315d45a_173c020f",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c3acea5_6369d2e7",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Yes. The snippet in if {} is used to test the error recovery path in TI driver.\nCurrently emul_realtek_rts54xx.c hasn\u0027t implemented this function so we should skip it and continue to run the normal path.",
       "parentUuid": "5c3acea5_6369d2e7",
+      "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85091eb_d36c8986",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-18T15:48:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a6a755c7_89445741",
       "revId": "a1705856ab922712692263ae79db2b4aa7739bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
