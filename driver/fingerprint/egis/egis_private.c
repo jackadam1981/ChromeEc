@@ -14,6 +14,10 @@
 #include <stdint.h>
 #define LOG_TAG "RBS-rapwer"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Lock to access the sensor */
 static K_MUTEX_DEFINE(sensor_lock);
 static task_id_t sensor_owner;
