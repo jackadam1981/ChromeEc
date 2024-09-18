@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b601e73e_db05f086",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T22:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7956e864_8574e947",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30032aea_15762654",
@@ -131,6 +155,30 @@
       "writtenOn": "2024-09-17T21:55:51Z",
       "side": 1,
       "message": "With this change, both `assert_stdlib.c` and `assert_builtin.c` should behave exactly the same. This should have the same `expected_info` value.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "eadd4ccea480c62e573e9b2ec868fdb69499be37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec939a1_94e31af1",
+        "filename": "test/assert_stdlib.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-18T22:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30032aea_15762654",
       "range": {
         "startLine": 22,
         "startChar": 1,
