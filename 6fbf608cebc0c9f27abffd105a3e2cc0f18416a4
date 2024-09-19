@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54ed893_88a859ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-19T15:34:07Z",
+      "side": 1,
+      "message": "small nit only",
+      "revId": "6fbf608cebc0c9f27abffd105a3e2cc0f18416a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ce89bb_b54238cc",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-09-19T15:34:07Z",
+      "side": 1,
+      "message": "Why hardcoded 5 instead of VOLTAGE_SCALE_FACTOR?",
+      "range": {
+        "startLine": 1352,
+        "startChar": 54,
+        "endLine": 1352,
+        "endChar": 55
+      },
+      "revId": "6fbf608cebc0c9f27abffd105a3e2cc0f18416a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
