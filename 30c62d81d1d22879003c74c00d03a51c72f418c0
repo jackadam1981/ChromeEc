@@ -88,6 +88,24 @@
       "parentUuid": "9ceebbd4_e7f67cab",
       "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1dff90_02dbada1",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T21:04:14Z",
+      "side": 1,
+      "message": "@hesling@chromium.org and I chatted about this again today. Let\u0027s add a comment in the code that there\u0027s variability across the boards and we don\u0027t really know where the center is.",
+      "parentUuid": "93c47a7e_cb9a86bc",
+      "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
