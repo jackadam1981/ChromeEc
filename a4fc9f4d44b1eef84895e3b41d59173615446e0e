@@ -16,6 +16,24 @@
       "message": "cros format blows this away and I don\u0027t know why",
       "revId": "a4fc9f4d44b1eef84895e3b41d59173615446e0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c141a19_d151ba67",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:56:21Z",
+      "side": 1,
+      "message": "Ti50 doeesn\u0027t use this toolchain, nvm",
+      "parentUuid": "aa86163a_811d210f",
+      "revId": "a4fc9f4d44b1eef84895e3b41d59173615446e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
