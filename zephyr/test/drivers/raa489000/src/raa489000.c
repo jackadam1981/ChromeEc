@@ -26,5 +26,43 @@ ZTEST(tcpc_raa489000, test_check_vendor)
 	tcpm_dump_registers(RAA489000_PORT);
 }
 
+FAKE_VALUE_FUNC(int, pd_vbus_valid_for_bist, int);
+bool raa489000_tcpm_should_enter_bist_mode(int port, uint32_t *payload,
+					   int *head);
+
+bool mock_pd_vbus_valid_for_bist_pass(int port)
+{
+	return true;
+}
+
+ZTEST(tcpc_raa489000, test_raa489000_tcpm_should_enter_bist_mode)
+{
+	uint32_t payload[1];
+	int hdr;
+
+	hdr = 0x3003;
+	payload[0] = 0x80000000;
+	pd_vbus_valid_for_bist_fake.custom_fake =
+		mock_pd_vbus_valid_for_bist_pass;
+
+	bool result = raa489000_tcpm_should_enter_bist_mode(RAA489000_PORT,
+							    payload, &hdr);
+	zassert_true(result, "BIST mode should be enabled");
+}
+
+ZTEST(tcpc_raa489000, test_raa489000_tcpm_should_not_enter_bist_mode)
+{
+	uint32_t payload[1] = { 0 };
+	int head = 0;
+
+	bool result = raa489000_tcpm_should_enter_bist_mode(RAA489000_PORT,
+							    payload, &head);
+	zassert_false(result, "BIST mode should not be enabled");
+
+	bool enable = true;
+	zassert_equal(tcpc_set_bist_test_mode(RAA489000_PORT, enable),
+		      EC_SUCCESS);
+}
+
 ZTEST_SUITE(tcpc_raa489000, drivers_predicate_post_main, NULL, NULL, NULL,
 	    NULL);
