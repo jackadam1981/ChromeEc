@@ -14,8 +14,21 @@
 #define CHARGER_I2C i2c4
 #define PD_POW_I2C i2c1
 
+#define PD_POW_IRQ_GPIO &gpiof 5
+
+/ {
+	named-gpios {
+		gpio_pdc_pow_irq: wc_usbc_pd_alrt_aic1_r {
+			gpios = <&gpiof 5 (GPIO_INPUT)>;
+		};
+	};
+};
+
+#include "../../intelrvp/ptlrvp/battery.dtsi"
+#include "../../intelrvp/ptlrvp/usbc.dtsi"
 #include "../../intelrvp/ptlrvp/i2c.dtsi"
 #include "../../intelrvp/ptlrvp/keyboard.dtsi"
+#include "../../intelrvp/ptlrvp/pd.dtsi"
 
 #include "adc.dtsi"
 #include "console.dtsi"
@@ -35,6 +48,9 @@
 / {
 	aliases {
 		gpio-wp = &gpio_c_ec_wp_odl_r;
+		gpio-wp = &gpio_c_ec_wp_odl_r;
+
+		/*gpio_pdc_pow_irq = &gpio_wc_usbc_pd_alrt_aic1_r;*/
 	};
 
 	named-gpios {
@@ -46,6 +62,12 @@
 		};
 		c_ioex_kbd_intr_r {
 			enum-name = "GPIO_KB_DISCRETE_INT";
+		};
+		bat_det_r {
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_bga_pine5: bga_pine5 {
+			enum-name = "GPIO_AC_PRESENT";
 		};
 	};
 };
