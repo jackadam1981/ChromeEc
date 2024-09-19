@@ -1,0 +1,60 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+
+/ {
+	modular-aic-slots {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		/* Slots definition */
+		mod-aic-slot@1 {
+			compatible = "intel,modular-aic-slot";
+			reg = <0>;
+			detect-gpios = <&pca95xx_1 0 GPIO_ACTIVE_LOW>;
+			conn-type = "MODULAR_AIC_PORT_CONN_TYPE_USBC";
+			max-data-speed = "MODULAR_AIC_PORT_DATA_SPEED_40GBPS";
+			detection-power-state = "AP_POWER_STATE_S4";
+			ports = <&rts_single_p2>;
+		};
+		mod-aic-slot@2 {
+			compatible = "intel,modular-aic-slot";
+			reg = <1>;
+			detect-gpios = <&pca95xx_1 1 GPIO_ACTIVE_LOW>;
+			conn-type = "MODULAR_AIC_PORT_CONN_TYPE_HDMI";
+			max-data-speed = "MODULAR_AIC_PORT_DATA_SPEED_6GBPS";
+			detection-power-state = "AP_POWER_STATE_S4";
+			ports = <&hdmi_port>;
+		};
+	};
+	/* Ports Definition */
+	hdmi_port: hdmi-port {
+		compatible = "intel,modular-aic-hdmi-port";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_6GBPS";
+	};
+	rts_single_p2: realtek-single-port2 {
+		compatible = "intel,modular-aic-usbc-port";
+		devices = <&pd_pow_port2 &usb_port2>;
+		retimer-status = "MODULAR_AIC_PORT_RETIMER_SINGLE";
+		pd-cntrl-type = "MODULAR_AIC_PORT_PD_CNTRL_REALTEK";
+		tbt-status = "MODULAR_AIC_PORT_TBT_CAPABLE";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_40GBPS";
+	};
+};
+
+&mod_aic1_detect {
+	no-auto-init;
+};
+
+&mod_aic2_detect {
+	no-auto-init;
+};
+
+&pd_pow_port2 {
+	zephyr,deferred-init;
+};
+
+&usb_port2 {
+	zephyr,deferred-init;
+};
