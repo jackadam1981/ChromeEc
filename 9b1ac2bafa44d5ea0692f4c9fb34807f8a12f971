@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89cc5f0e_8c54d270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f2304f93_9250b245",
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e85ac1d_3bbbe3e8",
@@ -59,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b28d13b_4566000f",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Was trying to do this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5873815/1..3/bazel/deps.bzl#b49",
+      "parentUuid": "5e85ac1d_3bbbe3e8",
+      "range": {
+        "startLine": 5,
+        "startChar": 50,
+        "endLine": 5,
+        "endChar": 67
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "518a71ba_bac54687",
@@ -72,6 +114,30 @@
       "writtenOn": "2024-09-19T19:12:56Z",
       "side": 1,
       "message": "you need to load this from `@bazel_tools//tools/build_defs/repo:http.bzl`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1f6a5e_3b42fb7a",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518a71ba_bac54687",
       "range": {
         "startLine": 11,
         "startChar": 4,
@@ -128,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2606b6_68be8756",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2d7c9a1_fa1df4e6",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b44cb120_5513f144",
@@ -141,6 +231,30 @@
       "writtenOn": "2024-09-19T19:12:56Z",
       "side": 1,
       "message": "We don\u0027t use this for the EC, it can be removed.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d7da002_42dd9484",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b44cb120_5513f144",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -174,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0b34f1_bfe9c682",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36581c3_4bfb844f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13728470_7d65c0d1",
@@ -197,6 +335,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0145cdaf_c66145f4",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13728470_7d65c0d1",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afd2ebac_0a641f80",
@@ -210,6 +372,30 @@
       "writtenOn": "2024-09-19T19:12:56Z",
       "side": 1,
       "message": "split across mutliple lines.",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 208
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "117167c6_2db57413",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd2ebac_0a641f80",
       "range": {
         "startLine": 66,
         "startChar": 34,
