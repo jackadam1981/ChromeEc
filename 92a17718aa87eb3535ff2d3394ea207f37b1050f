@@ -103,6 +103,24 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8736354907781631489) is being automatically retried for the following reasons:\n- Some tests are now retryable:hatch-cq.hw.cq-medium, hatch-cq.hw.crostini-slow-cq, fizz-cq.hw.cq-minimal\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "92a17718aa87eb3535ff2d3394ea207f37b1050f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0705a2_7fdda303",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:34:43Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/firmware_builder.py;l\u003d177\n\nfirmware_builder.py runs it, and it passes in CQ.\n\nAdditionally, the invocation was updated.  See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5765791/30/util/build_with_clang.py#339",
+      "parentUuid": "af6f8545_aab54e22",
+      "revId": "92a17718aa87eb3535ff2d3394ea207f37b1050f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
