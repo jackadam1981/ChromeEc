@@ -83,3 +83,22 @@ ZTEST(restricted_console, test_command_fpupload)
 	rv = shell_execute_cmd(get_ec_shell(), console_input2);
 	zassert_equal(rv, EC_ERROR_ACCESS_DENIED);
 }
+
+ZTEST(restricted_console, test_command_fpdownload)
+{
+	int rv;
+	/* System is unlocked. */
+	is_locked = 0;
+
+	char console_input1[] = "fpdownload";
+	rv = shell_execute_cmd(get_ec_shell(), console_input1);
+	zassert_equal(rv, EC_SUCCESS);
+
+	/* System is locked. */
+	is_locked = 1;
+
+	/* Test for the case when access is denied. */
+	char console_input2[] = "fpdownload";
+	rv = shell_execute_cmd(get_ec_shell(), console_input2);
+	zassert_equal(rv, EC_ERROR_ACCESS_DENIED);
+}
