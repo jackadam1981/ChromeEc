@@ -40,6 +40,30 @@
       ],
       "revId": "8e5400d0465cd7d868104562cc87599f53337fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1fc993_5dfaafd3",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T22:51:35Z",
+      "side": 1,
+      "message": "In C++, you\u0027ll need the `(void**)` cast due to its stricter typing, but I don\u0027t believe you\u0027ll need it in C. You can try it by adding it somewhere in the EC code.",
+      "parentUuid": "a87c7973_c98b9006",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "8e5400d0465cd7d868104562cc87599f53337fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
