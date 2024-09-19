@@ -244,7 +244,7 @@
 	pinctrl-names = "default";
 };
 
-&i2c3ALT {
+&i2c3 {
 	status = "okay";
 	pinctrl-0 = <&i2c3_clk_gph1_default
 		&i2c3_data_gph2_default>;
