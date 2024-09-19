@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "973d8c25_db31e716",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:45:03Z",
+      "side": 1,
+      "message": "# Comparing Files\n\n# Verdict: MATCH\n\n# Removing temp directory",
+      "parentUuid": "c257524a_516d1819",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "92a17718aa87eb3535ff2d3394ea207f37b1050f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af6f8545_aab54e22",
