@@ -70,6 +70,30 @@
       },
       "revId": "194c9f63055c423bb9af69cce4531915e6984446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c269dc_f4071837",
+        "filename": "zephyr/program/trulo/program.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-19T22:47:45Z",
+      "side": 1,
+      "message": "There is a subsequent CL that adds support for EEPROM CBI. My plan is to add the support for CBI in flash and to transfer from EEPROM to flash in that CL.",
+      "parentUuid": "a8cb2fea_9a64ec70",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "194c9f63055c423bb9af69cce4531915e6984446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
