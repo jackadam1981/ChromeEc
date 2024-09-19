@@ -16,6 +16,47 @@
       "message": "Dear Firas,\n\n    This commit was for add FP_SENSOR_HWID_EGIS.\n    \n    please help to review\n    \nThanks,\nJacob kung",
       "revId": "12429540058cf5ea9fc1892baa3b91bf770eaece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab817cd_35326e41",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-19T15:49:59Z",
+      "side": 1,
+      "message": "can you split this into a separate CL? It does not fit with the commit description.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "142bb5ff_921c4462",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/fpsensor_driver.h",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "12429540058cf5ea9fc1892baa3b91bf770eaece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
