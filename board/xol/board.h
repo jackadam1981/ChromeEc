@@ -73,6 +73,9 @@
 #define PD_MAX_VOLTAGE_MV 20000
 #define PD_PREFER_HIGH_VOLTAGE
 
+#undef CONFIG_USB_PD_INT_STORM_MAX
+#define CONFIG_USB_PD_INT_STORM_MAX 160
+
 /*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
