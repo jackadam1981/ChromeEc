@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc4f6ec_b4078128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57baad89_3281f978",
+      "revId": "434a89d4e8573b6cf4c235e2b1878ddd78677b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c6def36_a79bb0f3",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-09-19T17:47:08Z",
       "side": 1,
       "message": "Not sure what this is supposed to be here, you can\u0027t use that module here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 17,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "434a89d4e8573b6cf4c235e2b1878ddd78677b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4704fb15_72f50be6",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:18:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4c6def36_a79bb0f3",
       "range": {
         "startLine": 6,
         "startChar": 17,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d26a743_a1f92790",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b3e1520_c3a05541",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "434a89d4e8573b6cf4c235e2b1878ddd78677b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de155f50_b260e23c",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da40c36_8c14e3bf",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de155f50_b260e23c",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "434a89d4e8573b6cf4c235e2b1878ddd78677b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0372763a_2e4d6bc8",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-09-19T17:47:08Z",
       "side": 1,
       "message": "This module will need loaded from `src/bazel/workspace_root/fwsdk/MODULE.bazel`.",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "434a89d4e8573b6cf4c235e2b1878ddd78677b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3abf6b43_017af8a2",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T18:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0372763a_2e4d6bc8",
       "range": {
         "startLine": 49,
         "startChar": 10,
