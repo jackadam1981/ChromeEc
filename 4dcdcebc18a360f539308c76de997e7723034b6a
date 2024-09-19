@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccf29f88_4699f531",
+        "filename": "zephyr/program/corsola/kyogre/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-09-19T01:53:21Z",
+      "side": 1,
+      "message": "Do you verify this with non-sb battery pack as well? What\u0027s the consequence? This might be a dangerous operation that our code assumes all the battery packs support sb. OTOH, all stakeholders need to know that Kyogre CANNOT use non-sb components in the future since our code is trying to leverage the sb\u0027s API to obtain the info.\n\nIt\u0027d be better to add some guard code or verify there\u0027s no side effect with non-sb battery as well.",
+      "revId": "4dcdcebc18a360f539308c76de997e7723034b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bf35d80_7ee98e09",
         "filename": "zephyr/program/corsola/kyogre/src/battery.c",
         "patchSetId": 1
