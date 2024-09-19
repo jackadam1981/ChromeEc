@@ -16,6 +16,24 @@
       "message": "Hi @tomhughes@chromium.org @hesling@chromium.org. This is the second RTC patch that where asking you to run the `rtc_stm32f4` test on `bloonchipper` hardware",
       "revId": "271b6163b5652a72b1ea120d37b0b1bda773481d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8c81a2f_a0c62ab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T22:35:22Z",
+      "side": 1,
+      "message": "Hangs until watchdog fires:\n\n```\n--- UART initialized after reboot ---\n[Image: RO, bloonchipper_v2.0.26290-271b616 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16029.0.24_09_19 2024-09-19 11:23:36 tomhughes@tomhughes-ssd.c.googlers.com]\n[Reset cause: reset-pin power-on]\n[0.000267 Inits done]\n[0.000316 TRANSPORT_SEL: SPI]\n[0.000362 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [0.000461 event set 0x0000000000002000]\n[0.000520 hostcmd init 0x0000000000002000]\n[0.000600 Verifying RW image...]\n[0.162074 RW verify OK]\n[1.000530 MKBP not cleared within threshold, toggling.]\n[1.162301 Jumping to image RW (0x0000000a)]\n[1.166152 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n\n[1.173725 UART initialized after sysjump]\n[Image: RW, bloonchipper_v2.0.26290-271b616 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16029.0.24_09_19 2024-09-19 11:23:36 tomhughes@tomhughes-ssd.c.googlers.com]\n[Reset cause: reset-pin power-on sysjump]\n[1.174011 Inits done]\n[1.174059 TRANSPORT_SEL: SPI]\n[1.174109 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [1.174214 event set 0x0000000000002000]\n[1.174277 hostcmd init 0x0000000000002000]\n[1.174345 FP_SENSOR_SEL: FPC]\n[1.174383 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\n[1.174442 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\n[1�\n```\n\nWatchdog eventually fires and we reboot:\n\n```\n--- UART initialized after reboot ---\n[Image: RO, bloonchipper_v2.0.26290-271b616 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16029.0.24_09_19 2024-09-19 11:23:36 tomhughes@tomhughes-ssd.c.googlers.com]\n[Reset cause: reset-pin watchdog]\n[0.000267 Inits done]\n[0.000316 TRANSPORT_SEL: SPI]\n[0.000362 TRANSPORT_SEL: SPI]\n[0.000420 event set 0x0000000000800000]\nConsole is enabled; type HELP for help.\n\u003e [0.000522 event set 0x0000000000002000]\n[0.000579 hostcmd init 0x0000000000802000]\n[0.000661 Verifying RW image...]\n[0.162219 RW verify OK]\n[1.000493 MKBP not cleared within threshold, toggling.]\n[1.162446 Jumping to image RW (0x00000012)]\n[1.166300 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n\n[1.173875 UART initialized after sysjump]\n[Image: RW, bloonchipper_v2.0.26290-271b616 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16029.0.24_09_19 2024-09-19 11:23:36 tomhughes@tomhughes-ssd.c.googlers.com]\n[Reset cause: reset-pin watchdog sysjump]\n[1.174159 Inits done]\n[1.174206 TRANSPORT_SEL: SPI]\n[1.174256 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [1.174362 event set 0x0000000000002000]\n[1.174425 hostcmd init 0x0000000000002000]\n[1.174493 FP_SENSOR_SEL: FPC]\n[1.174532 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\n[1.174590 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\n[1\n```",
+      "parentUuid": "23853216_0b2af606",
+      "revId": "271b6163b5652a72b1ea120d37b0b1bda773481d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
