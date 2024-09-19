@@ -24,6 +24,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 static int dev_id[CONFIG_USB_PD_PORT_MAX_COUNT] = { -1 };
+static bool raa489000_bist_test_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static int raa489000_enter_low_power_mode(int port)
@@ -336,6 +337,43 @@ int raa489000_debug_detach(int port)
 	return rv;
 }
 
+int raa489000_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
+{
+	int ret = tcpci_tcpm_get_message_raw(port, payload, head);
+
+	/*
+	 * Detect bist message here and enable bist mode
+	 * BIST message: number of data objects is not zero, ext number
+	 * of data object is zero, and message type is BIST
+	 */
+	const uint32_t hdr = *head;
+	if ((PD_HEADER_EXT(hdr) == 0) && (PD_HEADER_CNT(hdr) > 0) &&
+	    (PD_HEADER_TYPE(hdr) == PD_DATA_BIST)) {
+		tcpci_set_bist_test_mode(port, true);
+	}
+
+	return ret;
+}
+
+enum ec_error_list raa489000_set_bist_test_mode(const int port,
+						const bool enable)
+{
+	int ret;
+
+	raa489000_bist_test_mode[port] = enable;
+	CPRINTS("C%d: bist test mode %s", port, enable ? "enable" : "disable");
+	ret = tcpci_set_bist_test_mode(port, enable);
+
+	return ret;
+}
+
+enum ec_error_list raa489000_get_bist_test_mode(const int port, bool *enable)
+{
+	*enable = raa489000_bist_test_mode[port];
+
+	return EC_SUCCESS;
+}
+
 /* RAA489000 is a TCPCI compatible port controller */
 const struct tcpm_drv raa489000_tcpm_drv = {
 	.init = &raa489000_init,
@@ -356,7 +394,7 @@ const struct tcpm_drv raa489000_tcpm_drv = {
 	.set_vconn = &tcpci_tcpm_set_vconn,
 	.set_msg_header = &tcpci_tcpm_set_msg_header,
 	.set_rx_enable = &tcpci_tcpm_set_rx_enable,
-	.get_message_raw = &tcpci_tcpm_get_message_raw,
+	.get_message_raw = &raa489000_tcpm_get_message_raw,
 	.transmit = &tcpci_tcpm_transmit,
 	.tcpc_alert = &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
@@ -370,8 +408,8 @@ const struct tcpm_drv raa489000_tcpm_drv = {
 	.enter_low_power_mode = &raa489000_enter_low_power_mode,
 	.wake_low_power_mode = &tcpci_wake_low_power_mode,
 #endif
-	.set_bist_test_mode = &tcpci_set_bist_test_mode,
-	.get_bist_test_mode = &tcpci_get_bist_test_mode,
+	.set_bist_test_mode = &raa489000_set_bist_test_mode,
+	.get_bist_test_mode = &raa489000_get_bist_test_mode,
 	.tcpc_enable_auto_discharge_disconnect =
 		&tcpci_tcpc_enable_auto_discharge_disconnect,
 	.debug_detach = &raa489000_debug_detach,
