@@ -165,6 +165,21 @@ __override int pd_snk_is_vbus_provided(int port)
 	 * (b:181203590#comment20) TODO(yllin): use
 	 *  PD_VSINK_DISCONNECT_PD for non-5V case.
 	 */
-	return adc_read_channel(board_get_vbus_adc(port)) >=
-	       PD_V_SINK_DISCONNECT_MAX;
+	return !pd_check_vbus_level(port, VBUS_REMOVED);
+}
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int vbus = adc_read_channel(board_get_vbus_adc(port));
+
+	switch (level) {
+	case VBUS_SAFE0V:
+		return vbus <= PD_V_SAFE0V_MAX + 700;
+	case VBUS_PRESENT:
+		return vbus >= PD_V_SAFE5V_MIN;
+	case VBUS_REMOVED:
+		return vbus <= PD_V_SINK_DISCONNECT_MAX - 500;
+	default:
+		return false;
+	}
 }
