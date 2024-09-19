@@ -254,8 +254,14 @@ static void led_set_battery(void)
 				   !battery_low_triggeied) {
 				battery_low_triggeied = 0;
 				battery_critical_triggeied = 0;
+				hook_call_deferred(
+					&battery_set_pwm_led_tick_data, -1);
 				led_set_color_battery_duty(LED_OFF, 0);
 			}
+		} else {
+			battery_low_triggeied = 0;
+			battery_critical_triggeied = 0;
+			hook_call_deferred(&battery_set_pwm_led_tick_data, -1);
 		}
 		break;
 	case LED_PWRS_ERROR:
@@ -312,8 +318,9 @@ static void battery_set_pwm_led_tick(void)
 		batt_led_pulse.duty = 0;
 	else
 		batt_led_pulse.duty -= batt_led_pulse.duty_inc;
-
-	led_set_color_battery_duty(batt_led_pulse.color, batt_led_pulse.duty);
+	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+		led_set_color_battery_duty(batt_led_pulse.color,
+					   batt_led_pulse.duty);
 
 	if (next == 0)
 		next = batt_led_pulse.interval;
