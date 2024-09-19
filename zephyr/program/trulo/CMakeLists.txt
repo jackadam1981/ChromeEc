@@ -11,8 +11,4 @@ if(DEFINED CONFIG_BOARD_TRULO)
 	project(trulo)
 	add_subdirectory(trulo)
 	zephyr_include_directories("include")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-	"src/keyboard.c"
-	"src/keyboard_customization.c"
-	)
 endif()
