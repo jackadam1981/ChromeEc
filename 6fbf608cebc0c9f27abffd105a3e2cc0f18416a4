@@ -39,6 +39,30 @@
       },
       "revId": "6fbf608cebc0c9f27abffd105a3e2cc0f18416a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa3bff8_2e47f721",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-19T16:19:34Z",
+      "side": 1,
+      "message": "The previous API had a scale factor of 50, but since it was only used there I can update it to 5.",
+      "parentUuid": "c4ce89bb_b54238cc",
+      "range": {
+        "startLine": 1352,
+        "startChar": 54,
+        "endLine": 1352,
+        "endChar": 55
+      },
+      "revId": "6fbf608cebc0c9f27abffd105a3e2cc0f18416a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
