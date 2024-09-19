@@ -457,6 +457,8 @@ static bool timer_interrupt_pending(void)
 	return task_is_irq_pending(IRQ_TIM(TIM_CLOCK32));
 }
 
+extern volatile int deep_sleep_count;
+
 void __idle(void)
 {
 	timestamp_t t0;
@@ -522,6 +524,7 @@ void __idle(void)
 
 			/* Deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
+			deep_sleep_count++;
 
 			/*
 			 * TODO(b/174337385) no support for wake-up on USART

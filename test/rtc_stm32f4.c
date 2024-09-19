@@ -23,15 +23,28 @@ void rtc_alarm_irq(void)
 	reset_rtc_alarm(&rtc_irq);
 }
 
+volatile int deep_sleep_count = 0;
+
+int get_deep_sleep_count(void)
+{
+	int copy = deep_sleep_count;
+	deep_sleep_count = 0;
+	return copy;
+};
+
 test_static int test_rtc_alarm(void)
 {
 	struct rtc_time_reg rtc;
 	uint32_t rtc_diff_us;
 	const int delay_us = rtc_delay_ms * MSEC;
 
+	ccprintf("---Deep sleeps before: %d---\n", get_deep_sleep_count());
+
 	set_rtc_alarm(0, delay_us, &rtc, 0);
 
 	crec_msleep(2 * rtc_delay_ms);
+
+	ccprintf("---Deep sleeps after: %d---\n", get_deep_sleep_count());
 
 	/* Make sure the interrupt fired exactly once. */
 	TEST_EQ(1, atomic_clear(&rtc_fired), "%d");
@@ -60,11 +73,15 @@ test_static int test_rtc_match_delay(void)
 	struct rtc_time_reg rtc;
 	int i;
 
+	ccprintf("---Deep sleeps before: %d---\n", get_deep_sleep_count());
+
 	atomic_clear(&rtc_fired);
 	for (i = 0; i < rtc_match_delay_iterations; i++) {
 		set_rtc_alarm(0, SET_RTC_MATCH_DELAY, &rtc, 0);
 		crec_usleep(2 * SET_RTC_MATCH_DELAY);
 	}
+
+	ccprintf("---Deep sleeps after: %d---\n", get_deep_sleep_count());
 
 	ccprintf("Expected number of RTC alarm interrupts %d\n",
 		 rtc_match_delay_iterations);
