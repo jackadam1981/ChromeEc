@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d878c7_d40ac000",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-09-19T19:03:19Z",
+      "side": 1,
+      "message": "Hey Abhishek and Keith,  \nrecent PDC FW is correctly implementing GET_PD_MESSAGE. Can you take a look at this CL to remove the workarounds? We still get partner/cable identity in the kernel/userspace without these.",
+      "revId": "952d9d084449182759c6655495342e9044146684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
