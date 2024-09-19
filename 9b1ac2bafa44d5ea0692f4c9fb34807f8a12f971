@@ -16,6 +16,208 @@
       "message": "I assume Ti50 needs this change too?",
       "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2304f93_9250b245",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "They don\u0027t use `coreboot-sdk`.",
+      "parentUuid": "e7f7c008_6544824f",
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e85ac1d_3bbbe3e8",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "Name is not used, this `load` is useless.",
+      "range": {
+        "startLine": 5,
+        "startChar": 50,
+        "endLine": 5,
+        "endChar": 67
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518a71ba_bac54687",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "you need to load this from `@bazel_tools//tools/build_defs/repo:http.bzl`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8c4165_e321458e",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "We don\u0027t have to clean this up yet, but we should prefix these with `ec-` so that people know these are for the EC (and to define their own for other purposes).",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d7c9a1_fa1df4e6",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "formatting is weird, can you run `cros format`?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44cb120_5513f144",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "We don\u0027t use this for the EC, it can be removed.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36581c3_4bfb844f",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "We don\u0027t use this for the EC, it can be removed.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13728470_7d65c0d1",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "We don\u0027t use this for the EC, it can be removed.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 5
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd2ebac_0a641f80",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-19T19:12:56Z",
+      "side": 1,
+      "message": "split across mutliple lines.",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 208
+      },
+      "revId": "9b1ac2bafa44d5ea0692f4c9fb34807f8a12f971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
