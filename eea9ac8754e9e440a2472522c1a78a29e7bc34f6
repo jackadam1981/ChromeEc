@@ -69,6 +69,30 @@
       },
       "revId": "eea9ac8754e9e440a2472522c1a78a29e7bc34f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a8d2d8_09c9cb4a",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-19T05:22:12Z",
+      "side": 1,
+      "message": "It just copy from other function, I will change it in next patch.",
+      "parentUuid": "af94b39d_a4dbdbe3",
+      "range": {
+        "startLine": 153,
+        "startChar": 44,
+        "endLine": 153,
+        "endChar": 65
+      },
+      "revId": "eea9ac8754e9e440a2472522c1a78a29e7bc34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
