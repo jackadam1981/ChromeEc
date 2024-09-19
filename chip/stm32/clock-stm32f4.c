@@ -457,6 +457,8 @@ static bool timer_interrupt_pending(void)
 	return task_is_irq_pending(IRQ_TIM(TIM_CLOCK32));
 }
 
+extern volatile int deep_sleep_count;
+
 void __idle(void)
 {
 	timestamp_t t0;
@@ -508,9 +510,7 @@ void __idle(void)
 			continue;
 		}
 
-		if (DEEP_SLEEP_ALLOWED &&
-		    (next_delay > (STOP_MODE_LATENCY + PLL_LOCK_LATENCY +
-				   SET_RTC_MATCH_DELAY))) {
+		if (true) {
 			/*
 			 * Sleep time MUST be smaller than watchdog period.
 			 * Otherwise watchdog will wake us from deep sleep
@@ -522,6 +522,7 @@ void __idle(void)
 
 			/* Deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
+			deep_sleep_count++;
 
 			/*
 			 * TODO(b/174337385) no support for wake-up on USART
