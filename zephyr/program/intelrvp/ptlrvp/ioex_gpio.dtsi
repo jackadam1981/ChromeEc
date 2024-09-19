@@ -52,10 +52,10 @@
 		pnp-npnp-sku {
 			gpios = <&pca95xx_1 2  GPIO_INPUT>;
 		};
-		mod-tcss2-detect {
+		mod_aic2_detect: mod-tcss2-detect {
 			gpios = <&pca95xx_1 1  GPIO_INPUT>;
 		};
-		mod-tcss1-detect {
+		mod_aic1_detect: mod-tcss1-detect {
 			gpios = <&pca95xx_1 0  GPIO_INPUT>;
 		};
 
