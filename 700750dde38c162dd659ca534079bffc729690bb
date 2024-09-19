@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb05407_315c8689",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fb3ead61_92bf0e60",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32591b72_7b2a3841",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-19T20:19:39Z",
       "side": 1,
       "message": "Unnecessary because this is handled by the state machine.",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d949436_dbfa1e41",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "32591b72_7b2a3841",
       "revId": "700750dde38c162dd659ca534079bffc729690bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0192b183_9ce311f8",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "987c795c_35e98014",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac68d142_cc760799",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-09-19T20:19:39Z",
       "side": 1,
       "message": "Log message is wrong.",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "557944d2_72af29aa",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ac68d142_cc760799",
       "revId": "700750dde38c162dd659ca534079bffc729690bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9495c0_6ab0268e",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5016956c_4bfe2db5",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad3c90c9_b640e287",
@@ -103,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7808e2d0_bcb19787",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ad3c90c9_b640e287",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96588110_0f2bb7dc",
@@ -116,6 +224,24 @@
       "writtenOn": "2024-09-19T20:19:39Z",
       "side": 1,
       "message": "Should also check that we override the `numConnectors` with what\u0027s in device tree (by returning wrong value from emulator).",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d134fa_2d8c3d67",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-19T23:37:09Z",
+      "side": 1,
+      "message": "Done (in  test_get_capability).",
+      "parentUuid": "96588110_0f2bb7dc",
       "revId": "700750dde38c162dd659ca534079bffc729690bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
