@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57baad89_3281f978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T16:54:57Z",
+      "side": 1,
+      "message": "Tried adding the following load and cros format removed it:\n\n```\n\nload(\"//platform/rules_cros_firmware/rules_cros_firmware:deps.bzl\", _cros_firmware_deps \u003d \"cros_firmware_deps\")\n```",
+      "revId": "434a89d4e8573b6cf4c235e2b1878ddd78677b1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
