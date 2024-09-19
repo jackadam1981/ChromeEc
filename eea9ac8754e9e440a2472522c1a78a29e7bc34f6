@@ -45,6 +45,30 @@
       },
       "revId": "eea9ac8754e9e440a2472522c1a78a29e7bc34f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b552e4_15a7ca8d",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-19T05:20:37Z",
+      "side": 1,
+      "message": "We can run in hook_init, but the timing is around 1s and I think it\u0027s not stable.\nAnd fan duty will be clear during the 1s.\nWe have to separated to two deferred function to set fan duty.\nFirst is deferred to set fan duty, second is deferred to check fan rotate.",
+      "parentUuid": "d9b920d3_b99a16e2",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 32
+      },
+      "revId": "eea9ac8754e9e440a2472522c1a78a29e7bc34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
