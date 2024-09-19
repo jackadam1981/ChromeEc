@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc13f59_3f94c524",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-19T17:45:32Z",
+      "side": 1,
+      "message": "why this is only 1?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "82a8febf_cb4f5eba",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "#define FP_MAX_FINGER_COUNT_EGIS 2\n"
+            }
+          ]
+        }
+      ],
+      "revId": "527f55b29781dfb31bd8f8beddd2d3c4773a8a77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
