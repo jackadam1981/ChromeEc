@@ -70,6 +70,24 @@
       "parentUuid": "b54ba2ec_a8e358de",
       "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c47a7e_cb9a86bc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-19T18:57:31Z",
+      "side": 1,
+      "message": "New reworked Quincy V3 with FPC1025 @ `bc34d1b5c1 driver/fingerprint: Remove unnecessary header`:\n\n```\nDEBUG:Running command: \"dut-control --value_only -t 10 ppvar_fp_mw pp3300_mcu_mw\"\nDEBUG:fp_power_mw:None \t mcu_power_mw:None\nDEBUG:fp_power_mw:None \t mcu_power_mw:None\nDEBUG:fp_power_mw:None \t mcu_power_mw:28.9994\nDEBUG:fp_power_mw:0.0407 \t mcu_power_mw:28.9994\nINFO:fp power:\tactual: 0.04 expected: 0.00 threshold: +/-0.10\nINFO:mcu power:\tactual: 29.00 expected: 34.80 threshold: +/-3.00\n```\n\n*I saw 28.96 on previous runs.*\n\n```\nDEBUG:Running command: \"dut-control --value_only -t 10 ppvar_fp_mw pp3300_mcu_mw\"\nDEBUG:fp_power_mw:None \t mcu_power_mw:None\nDEBUG:fp_power_mw:None \t mcu_power_mw:None\nDEBUG:fp_power_mw:None \t mcu_power_mw:0.5837\nDEBUG:fp_power_mw:0.04 \t mcu_power_mw:0.5837\nINFO:fp power:\tactual: 0.04 expected: 0.00 threshold: +/-0.10\nINFO:mcu power:\tactual: 0.58 expected: 2.70 threshold: +/-2.50\n```\n\n```\nTest \"power_utilization_idle\": FAILED\nTest \"power_utilization_sleep\": PASSED\n```",
+      "parentUuid": "9ceebbd4_e7f67cab",
+      "revId": "30c62d81d1d22879003c74c00d03a51c72f418c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
