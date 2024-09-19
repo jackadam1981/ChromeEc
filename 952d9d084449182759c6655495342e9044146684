@@ -16,6 +16,23 @@
       "message": "Hey Abhishek and Keith,  \nrecent PDC FW is correctly implementing GET_PD_MESSAGE. Can you take a look at this CL to remove the workarounds? We still get partner/cable identity in the kernel/userspace without these.",
       "revId": "952d9d084449182759c6655495342e9044146684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6621f945_418ebc0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3487009
+      },
+      "writtenOn": "2024-09-19T19:05:41Z",
+      "side": 1,
+      "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "952d9d084449182759c6655495342e9044146684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
