@@ -22,6 +22,30 @@
       },
       "revId": "27a0a786ceadc4f9312dc84c336c4d296c1078be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a46ec1_9fc5a687",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_log.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-19T23:20:35Z",
+      "side": 1,
+      "message": "I removed the already existing one and added one at the top and bottom of the file for better visibility.",
+      "parentUuid": "1f8bace8_ad57bfaf",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "27a0a786ceadc4f9312dc84c336c4d296c1078be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
