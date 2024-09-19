@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc965852_455d3186",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1759c287_d2a9e762",
+      "range": {
+        "startLine": 6,
+        "startChar": 51,
+        "endLine": 6,
+        "endChar": 67
+      },
+      "revId": "ee9bd02481e41c04d8157a9f2cd07c25d4aa923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d565a4_3a829e64",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d567f633_d4d11f73",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:50:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "04d565a4_3a829e64",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "ee9bd02481e41c04d8157a9f2cd07c25d4aa923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a2dbf55_f8d75b98",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-09-19T19:26:13Z",
       "side": 1,
       "message": "```suggestion\n            \"coreboot_sdk\",\n            \"coreboot-sdk-arm-eabi\",\n            \"coreboot-sdk-i386-elf\",\n            \"coreboot-sdk-nds32le-elf\",\n            \"coreboot-sdk-riscv-elf\",\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 38
+      },
+      "revId": "ee9bd02481e41c04d8157a9f2cd07c25d4aa923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e8c1ad_a4deb830",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-19T19:50:02Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "1a2dbf55_f8d75b98",
       "range": {
         "startLine": 52,
         "startChar": 0,
