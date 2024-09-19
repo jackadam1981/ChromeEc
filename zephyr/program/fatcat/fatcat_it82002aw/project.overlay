@@ -11,10 +11,29 @@
 
 #include "generated.dtsi"
 
+#define CHARGER_I2C i2c4
+
+#define PD_POW_I2C i2c1
+#define PD_POW_IRQ_GPIO &gpiof 5
+
+/ {
+	named-gpios {
+		gpio_pdc_pow_irq: wc_usbc_pd_alrt_aic1_r {
+			gpios = <&gpiof 5 (GPIO_INPUT)>;
+		};
+	};
+};
+
+#include "../../intelrvp/ptlrvp/battery.dtsi"
+#include "../../intelrvp/ptlrvp/usbc.dtsi"
+#include "../../intelrvp/ptlrvp/i2c.dtsi"
+#include "../../intelrvp/ptlrvp/pd.dtsi"
+
 #include "console.dtsi"
 #include "adc.dtsi"
 #include "keyboard.dtsi"
 #include "i2c.dtsi"
+#include "interrupts.dtsi"
 #include "pwm.dtsi"
 
 /* these need to be promoted to program.conf */
@@ -26,6 +45,8 @@
 / {
 	aliases {
 		 gpio-wp = &gpio_c_ec_wp_odl_r;
+
+		 /*gpio_pdc_pow_irq = &gpio_wc_usbc_pd_alrt_aic1_r;*/
 	};
 
 	named-gpios {
@@ -34,6 +55,12 @@
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
+		};
+		bat_det_r {
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_bga_pine5: bga_pine5 {
+			enum-name = "GPIO_AC_PRESENT";
 		};
 	};
 };
