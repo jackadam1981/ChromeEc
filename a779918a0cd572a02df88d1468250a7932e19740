@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965af88e_6d9166c3",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T23:41:11Z",
+      "side": 1,
+      "message": "Like the commit message suggests, it seems like this should cover a superset of what\u0027s current covered by ppm_driver tests. Does this belong in the same Kconfig then?\n\nCan we have both implementations run as part of the same test case? If not, could this implementation replace the mocked instance (as it seems more useful for testing + coverage)?",
+      "revId": "a779918a0cd572a02df88d1468250a7932e19740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
