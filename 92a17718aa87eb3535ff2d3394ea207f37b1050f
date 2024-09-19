@@ -45,6 +45,23 @@
       },
       "revId": "92a17718aa87eb3535ff2d3394ea207f37b1050f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6f8545_aab54e22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T16:20:47Z",
+      "side": 1,
+      "message": "Does the [`build_with_clang.py`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/build_with_clang.py) script still work?\n\nIt sets `CC\u003dclang` to build everything with `clang`.",
+      "revId": "92a17718aa87eb3535ff2d3394ea207f37b1050f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
