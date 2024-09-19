@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3ead61_92bf0e60",
+        "filename": "zephyr/subsys/ucsi/ppm_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "We should replace this with CONFIG_ZTEST. Looks like this was done in ppm_common.h but not in ppm_common.c",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32591b72_7b2a3841",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "Unnecessary because this is handled by the state machine.",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987c795c_35e98014",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "This test isn\u0027t useful in its current form.\n\nIMO, the test we should be doing is that `ppm_reset` and `set_notification_enable` don\u0027t call anything in PDC driver.",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac68d142_cc760799",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "Log message is wrong.",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5016956c_4bfe2db5",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "Instead of using a constant, can we look up the number of emulated PDC devices from devicetree and add 1 to get an invalid connector?",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3c90c9_b640e287",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "Wrong log message.",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96588110_0f2bb7dc",
+        "filename": "zephyr/test/pdc/src/generic/ucsi_ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-19T20:19:39Z",
+      "side": 1,
+      "message": "Should also check that we override the `numConnectors` with what\u0027s in device tree (by returning wrong value from emulator).",
+      "revId": "700750dde38c162dd659ca534079bffc729690bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
