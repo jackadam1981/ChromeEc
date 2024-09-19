@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4007087_0610545f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-19T22:53:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695d0d56_183d5cf0",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "083e6b2c858a6a42e24cd44e850beb8fc4e3bbc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a91f83be_a6bde8a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-19T22:41:35Z",
       "side": 1,
       "message": "Does the linter complain about C++-style comments? I thought it did in `.c` files, but I can\u0027t remember. In any case, let\u0027s use all one style of comments in the file. Looks like they\u0027re all C-style except for this one.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 44
+      },
+      "revId": "083e6b2c858a6a42e24cd44e850beb8fc4e3bbc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c175857_0b396e99",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-19T22:53:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a91f83be_a6bde8a5",
       "range": {
         "startLine": 104,
         "startChar": 1,
