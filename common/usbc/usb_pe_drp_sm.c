@@ -5680,17 +5680,10 @@ __maybe_unused static void pe_prs_frs_shared_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
 }
 
-/**
- * PE_BIST_TX
- */
-static void pe_bist_tx_entry(int port)
+bool pd_vbus_valid_for_bist(int port)
 {
-	uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
-	uint8_t mode = BIST_MODE(payload[0]);
 	int vbus_mv;
 	int ibus_ma;
-
-	print_current_state(port);
 
 	/* Get the current nominal VBUS value */
 	if (pe[port].power_role == PD_ROLE_SOURCE) {
@@ -5706,6 +5699,23 @@ static void pe_bist_tx_entry(int port)
 
 	/* If VBUS is not at vSafe5V, then don't enter BIST test mode */
 	if (vbus_mv != PD_V_SAFE5V_NOM) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * PE_BIST_TX
+ */
+static void pe_bist_tx_entry(int port)
+{
+	uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
+	uint8_t mode = BIST_MODE(payload[0]);
+
+	print_current_state(port);
+
+	if (!pd_vbus_valid_for_bist(port)) {
 		pe_set_ready_state(port);
 		return;
 	}
