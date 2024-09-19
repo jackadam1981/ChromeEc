@@ -33,7 +33,7 @@ def init_toolchain():
     """
     # (environment variable, bazel target)
     toolchains = [
-        ("COREBOOT_SDK_ROOT_arm", "@coreboot-sdk-arm-eabi//:get_path"),
+        ("COREBOOT_SDK_ROOT_arm", "@cr50-coreboot-sdk-arm-eabi//:get_path"),
     ]
 
     subprocess.run(
