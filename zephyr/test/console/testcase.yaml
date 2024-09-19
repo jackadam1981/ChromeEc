@@ -50,3 +50,4 @@ tests:
     extra_configs:
     - CONFIG_TEST_CONSOLE_RESTRICTED=y
     - CONFIG_BOARD_FINGERPRINT=y
+    - CONFIG_FINGERPINT_SHELL=y
