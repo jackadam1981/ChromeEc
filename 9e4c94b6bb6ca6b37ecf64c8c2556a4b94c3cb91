@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094d2187_c0c91e8b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T21:25:18Z",
+      "side": 1,
+      "message": "\u003e \"tollerance\" is a possible misspelling of \"tolerance\".\n\nPlease fix.",
+      "parentUuid": "a9dc32f1_48117f66",
+      "range": {
+        "startLine": 704,
+        "startChar": 64,
+        "endLine": 704,
+        "endChar": 74
+      },
+      "revId": "9e4c94b6bb6ca6b37ecf64c8c2556a4b94c3cb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b064000_0a8f7c29",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T21:25:18Z",
+      "side": 1,
+      "message": "expanded",
+      "range": {
+        "startLine": 704,
+        "startChar": 50,
+        "endLine": 704,
+        "endChar": 59
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f4338367_a4126bdf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 704,
+                "startChar": 0,
+                "endLine": 705,
+                "endChar": 0
+              },
+              "replacement": "    # Without knowing the true mean, we have just expanded the tollerance\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9e4c94b6bb6ca6b37ecf64c8c2556a4b94c3cb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
