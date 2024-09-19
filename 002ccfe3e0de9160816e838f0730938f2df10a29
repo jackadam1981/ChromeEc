@@ -22,6 +22,30 @@
       },
       "revId": "002ccfe3e0de9160816e838f0730938f2df10a29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3bf1fcc_da555712",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-19T15:59:42Z",
+      "side": 0,
+      "message": "I believe this CL can be abandoned since this header is not used per this CL:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5872442/1",
+      "parentUuid": "6a9f4e80_b8f39d5f",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "002ccfe3e0de9160816e838f0730938f2df10a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
