@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "999fe130_f1189730",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-19T16:31:31Z",
+      "side": 1,
+      "message": "Non-Intel APs might provide a different kind of micro-controller to handle sensors.  Please create a separate Kconfig `CONFIG_EXTERNAL_NOTEBOOK_MODE`.",
+      "parentUuid": "496c1188_814cf3ec",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 375,
+        "endChar": 34
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55607e00_2e41b543",
         "filename": "common/tablet_mode.c",
         "patchSetId": 3
