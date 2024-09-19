@@ -336,6 +336,19 @@ int raa489000_debug_detach(int port)
 	return rv;
 }
 
+int raa489000_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
+{
+	int ret = tcpci_tcpm_get_message_raw(port, payload, head);
+
+	/*
+	 * TODO: Detect bist message here and enable bist mode
+	 * head: number of data objects is not zero, message type is BIST
+	 * payload[0]: BIT[31:28] == 1000b
+	 */
+
+	return ret;
+}
+
 /* RAA489000 is a TCPCI compatible port controller */
 const struct tcpm_drv raa489000_tcpm_drv = {
 	.init = &raa489000_init,
@@ -356,7 +369,7 @@ const struct tcpm_drv raa489000_tcpm_drv = {
 	.set_vconn = &tcpci_tcpm_set_vconn,
 	.set_msg_header = &tcpci_tcpm_set_msg_header,
 	.set_rx_enable = &tcpci_tcpm_set_rx_enable,
-	.get_message_raw = &tcpci_tcpm_get_message_raw,
+	.get_message_raw = &raa489000_tcpm_get_message_raw,
 	.transmit = &tcpci_tcpm_transmit,
 	.tcpc_alert = &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
