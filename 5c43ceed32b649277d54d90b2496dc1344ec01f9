@@ -16,6 +16,24 @@
       "message": "Hi @tomhughes@chromium.org @hesling@chromium.org. This is the first RTC patch that we where asking you to run the `rtc_stm32f4` test on `bloonchipper` hardware",
       "revId": "5c43ceed32b649277d54d90b2496dc1344ec01f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc8c600_050a76c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-19T22:28:39Z",
+      "side": 1,
+      "message": "Initial test results after flashing:\n\n```\n\u003e runtest\nruntest\nRunning test_rtc_alarm...\n---Deep sleeps before: 0---\n---Deep sleeps after: 0---\nPass: 1 \u003d\u003d atomic_clear(\u0026rtc_fired)\nTarget delay was 500000us\nActual delay was 499938us\nThe delays are expected to be within +/- 500us\nPass: delay_us - delay_tol_us \u003c rtc_diff_us\nPass: rtc_diff_us \u003c delay_us + delay_tol_us\nOK\nRunning test_rtc_match_delay...\n---Deep sleeps before: 0---\n---Deep sleeps after: 0---\nExpected number of RTC alarm interrupts 5000\nActual number of RTC alarm interrupts 5000\nPass: rtc_match_delay_iterations \u003d\u003d atomic_clear(\u0026rtc_fired)\nOK\nPass!\n```\n\nAfter disconnecting power and J-Trace and then reconnecting power:\n\n```\n\u003e runtest\nruntest\nRunning test_rtc_alarm...\n---Deep sleeps before: 17---\n---Deep sleeps after: 0---\ntest/rtc_stm32f4.c:50: ASSERTION failed: 1 \u003d\u003d atomic_clear(\u0026rtc_fired)\n                EVAL: 1 \u003d\u003d 17\nFail\nRunning test_rtc_match_delay...\n---Deep sleeps before: 0---\n---Deep sleeps after: 0---\nExpected number of RTC alarm interrupts 5000\nActual number of RTC alarm interrupts 5000\nPass: rtc_match_delay_iterations \u003d\u003d atomic_clear(\u0026rtc_fired)\nOK\nFail! (1 tests)\n```\n\nResults after running `reboot`:\n\n```\n\u003e runtest\nruntest\nRunning test_rtc_alarm...\n---Deep sleeps before: 0---\n---Deep sleeps after: 0---\nPass: 1 \u003d\u003d atomic_clear(\u0026rtc_fired)\nTarget delay was 500000us\nActual delay was 499938us\nThe delays are expected to be within +/- 500us\nPass: delay_us - delay_tol_us \u003c rtc_diff_us\nPass: rtc_diff_us \u003c delay_us + delay_tol_us\nOK\nRunning test_rtc_match_delay...\n---Deep sleeps before: 0---\n---Deep sleeps after: 0---\nExpected number of RTC alarm interrupts 5000\nActual number of RTC alarm interrupts 5000\nPass: rtc_match_delay_iterations \u003d\u003d atomic_clear(\u0026rtc_fired)\nOK\nPass!\n```",
+      "parentUuid": "b80895f4_5f827413",
+      "revId": "5c43ceed32b649277d54d90b2496dc1344ec01f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
