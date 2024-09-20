@@ -6,12 +6,26 @@
 #include "test_util.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 static int is_locked;
 
 int system_is_locked(void)
 {
 	return is_locked;
+}
+
+static inline void plat_free_func(void *x)
+{
+	free(x);
+}
+
+static inline void PLAT_FREE_FUNC(void **x)
+{
+	if (*x != NULL) {
+		plat_free_func(*x);
+		*x = NULL;
+	}
 }
 
 test_static int test_command_mem_dump(void)
@@ -105,6 +119,25 @@ test_static int test_command_fpdownload(void)
 	char console_input2[] = "fpdownload";
 	res = test_send_console_command(console_input2);
 	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
+
+	int num = 1234;
+	int *ptr = (int *)malloc(sizeof(int));
+	*ptr = num;
+
+	ccprints("ptr: %p", ptr);
+
+	// ... use data ...
+	PLAT_FREE_FUNC((void **)&ptr); // data is now NULL
+	ccprints("ptr: %p", ptr);
+
+	int *ptr1 = (int *)malloc(sizeof(int));
+	*ptr = num;
+
+	ccprints("ptr1: %p", ptr1);
+
+	// ... use data ...
+	PLAT_FREE_FUNC(&ptr1); // data is now NULL
+	ccprints("ptr1: %p", ptr1);
 
 	return EC_SUCCESS;
 }
