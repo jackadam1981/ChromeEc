@@ -562,8 +562,9 @@ struct partner_active_modes {
 	(((vid) << 16) | ((type) << 15) | ((custom) & 0x7FFF))
 
 #define VDO_SVDM_TYPE BIT(15)
-#define VDO_SVDM_VERS_MAJOR(x) (x << 13)
-#define VDO_SVDM_VERS_MINOR(x) (x << 11)
+#define VDO_SVDM_VERS_MAJOR(x) (((x) == SVDM_VER_1_0 ? 0 : 1) << 13)
+#define VDO_SVDM_VERS_MINOR(x) (((x) < SVDM_VER_2_1 ? 0 : 1) << 11)
+#define VDO_SVDM_VERS(x) (VDO_SVDM_VERS_MAJOR(x) | VDO_SVDM_VERS_MINOR(x))
 #define VDO_OPOS(x) (x << 8)
 #define VDO_CMDT(x) (x << 6)
 #define VDO_OPOS_MASK VDO_OPOS(0x7)
