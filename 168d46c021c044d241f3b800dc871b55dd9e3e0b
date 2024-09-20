@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6f9658_08c28f5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-20T22:14:41Z",
+      "side": 1,
+      "message": "There are already TCPC driver tests. It should be straightforward to add tests for this CL.",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d93897e_7059110e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-20T22:14:41Z",
+      "side": 1,
+      "message": "I think this needs some work to be ready, but I do think we need some intervention here to solve this latency problem.\n\nWhen it is ready, we\u0027ll probably want to do something like this in the main TCPCI driver and not just for this one TCPC.",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463a0777_29c1c458",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-20T22:14:41Z",
+      "side": 1,
+      "message": "These are not all of the requirements for entering BIST test mode. The BIST message type has to be BIST Test Mode (and not one of the other BIST modes). But also, VBUS has to be within vSafe5v.\n\nMaybe more fundamentally, the BIST message needs to arrive at a time that makes sense from a protocol POV, i.e. the port has started PD communication, is in an explicit contract, and is not in the middle of an uninterruptible AMS.\n\nThe PE is well positioned to check all of these things (see `pe_bist_tx_entry`), and the TCPC driver isn\u0027t. All of these checks are required by the PD spec. Some of them are required to pass other compliance tests.\n\nAs it stands, there\u0027s a risk that the TCPM could enter BIST mode incorrectly, and there\u0027s also a risk that the TCPC could get out of sync with the TCPM, if the TCPC driver and the PE evaluate this message differently.",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59c39b3_dbca8b3b",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-20T22:14:41Z",
+      "side": 1,
+      "message": "IIUC, the effect of calling `tcpci_set_bist_test_mode` here is to do it in the PD interrupt task, rather than waiting for the PD interrupt task to signal the PD task, which will run the PE to process the message. This basically makes `pe_bist_tx_entry` a no-op.\n\nThere are some potential problems with this, and it\u0027s not my favorite way to do it (see above comment).\n\nWhat is the BIST entry latency with and without this function? Could you get a similar reduction by reducing downtime in the PD-interrupt-task to PD-task-event to PE-BIST-entry chain? The latter would be my preferred solution. For instance, could you check for BIST message type here, and then set a flag that triggers higher-priority event handling in the PE (a mechanism we\u0027d need to create)?",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bf42d3_35b57ad9",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-20T22:14:41Z",
+      "side": 1,
+      "message": "I am guessing that the purpose of this caching is to avoid wasting time enabling BIST mode after the second BIST message when it was already enabled by the first BIST message. There might be better ways to do this, like checking this flag in `raa489000_tcpm_get_message_raw`.\n\nIn isolation, it seems to me like this caching should only take place when `enable \u003d\u003d true`. When `enable \u003d\u003d false`, we\u0027re disabling BIST mode on init or after a Hard Reset, and the latency requirement is much less strict.",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf0a438_d0dfe3e2",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-20T22:14:41Z",
+      "side": 1,
+      "message": "Do you need `raa489000_bist_mode_pre`? It seems like you could first compare `raa489000_bist_mode` to `enable`, then call `tcpci_set_bist_test_mode`, then set `raa489000_bist_mode \u003d enable`.",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
