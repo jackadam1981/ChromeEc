@@ -16,6 +16,24 @@
       "message": "ptlrvp_npcx is merged now, \"build all\" may fail, use GPIOD0 for NPCX",
       "revId": "2a0ffddf3f3757ad47c1c2a8457f86eaa0a23da8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c341f990_f9f579ab",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-20T22:13:44Z",
+      "side": 1,
+      "message": "GPI0D0 seems configured as an i/p power signal as below:\n\nptlrvp_npcx/gpio.dtsi:76:                       gpios \u003d \u003c\u0026gpiod 0 GPIO_INPUT\u003e;\n\nptlrvp_npcx/include/board.h:16:#define PWR_EC_PCH_SYS_PWROK \u0026gpiod 0\n\ncse_early_rec_sw must be configured as o/p active low signal. \nIn this case, can we use any other unused pin as cse_early_rec_sw signal in npcx?",
+      "parentUuid": "0ee1be2b_40bcd747",
+      "revId": "2a0ffddf3f3757ad47c1c2a8457f86eaa0a23da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
