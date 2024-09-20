@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7b8382_690c1bbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-20T16:38:59Z",
+      "side": 1,
+      "message": "nit: missing trailing parentheses",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "826453e3042f15daf2eadddf07a5baa731379257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d307c2d5_ee154413",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-20T16:38:59Z",
+      "side": 1,
+      "message": "I was originally confused about why this was here, but I think you\u0027re trying to justify the `BUCCANEER_CONFIG.expected_fp_power` values, right? If so, it would probably be good to include this as a comment on that variable.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 63
+      },
+      "revId": "826453e3042f15daf2eadddf07a5baa731379257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
