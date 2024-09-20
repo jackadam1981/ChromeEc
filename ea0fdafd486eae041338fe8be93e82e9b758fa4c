@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc932d3_842d4117",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-09-20T06:24:49Z",
+      "side": 1,
+      "message": "it is strange, the test need the print,otherwise the test would fail.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 72
+      },
+      "revId": "ea0fdafd486eae041338fe8be93e82e9b758fa4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
