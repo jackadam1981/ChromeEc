@@ -16,6 +16,24 @@
       "message": "Looks like CQ is failing",
       "revId": "f8071c6a2d39b958b57bec938edf596fbcd54cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719af9a7_4bd49ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-20T21:10:52Z",
+      "side": 1,
+      "message": "I worked with Al Semjonovs and it runs now. We have to add a lot of configs and fix the simoverlay file.",
+      "parentUuid": "1569f856_52206487",
+      "revId": "f8071c6a2d39b958b57bec938edf596fbcd54cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
