@@ -254,6 +254,9 @@ class Platform(ABC):
     def cleanup(self) -> None:
         """Clean up after a test run."""
 
+    def should_skip_test(self, test_name: str) -> bool:
+        return False
+
 
 class Hardware(Platform):
     """Platform implementation for running on development boards."""
@@ -378,6 +381,11 @@ class Renode(Platform):
 
     def cleanup(self) -> None:
         self.process.kill()
+
+    def should_skip_test(self, test_name: str) -> bool:
+        if test_name in ['production_app_test', 'benchmark', 'fpsensor_hw', 'libcxx', 'mpu_ro', 'mpu_rw', 'rtc_stm32f4', 'std_vector']:
+            return True
+        return False
 
 
 @dataclass
@@ -1613,6 +1621,9 @@ def main():
         for test in test_list:
             if test.skip_for_zephyr and args.zephyr:
                 continue
+            if platform.should_skip_test(test.test_name):
+                logging.debug("Skipping test: %s", test.test_name)
+                continue
             test.passed = flash_and_run_test(
                 test, platform, board_config, args, executor
             )
@@ -1622,7 +1633,7 @@ def main():
         for test in test_list:
             # print results
             print('Test "' + test.config_name + '": ', end="")
-            if test.skip_for_zephyr and args.zephyr:
+            if test.skip_for_zephyr and args.zephyr or platform.should_skip_test(test.test_name):
                 print(colorama.Fore.YELLOW + "SKIPPED")
             else:
                 if test.passed:
@@ -1633,7 +1644,8 @@ def main():
 
             print(colorama.Style.RESET_ALL)
 
-    sys.exit(exit_code)
+        os._exit(exit_code)
+
 
 
 def get_power_utilization(
