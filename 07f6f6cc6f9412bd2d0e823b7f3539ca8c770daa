@@ -16,6 +16,24 @@
       "message": "Looks like CQ is failing",
       "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb9c195_0c96a099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-20T17:02:10Z",
+      "side": 1,
+      "message": "it failed locally the twister test: \n`(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ ./twister -vvv -i -s console.restricted` \n\nbut passes the hardware test: \n\n`./test/run_device_tests.py -b bloonchipper -t restricted_console --zephyr`\n\nDawid suggested that I include `fpsensor.debug.cc` in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/console/CMakeLists.txt\n\nHowever, now I am seeing this error:\n```\nIn file included from /mnt/host/source/src/platform/ec/common/fpsensor/fpsensor_debug.cc:14:\nIn file included from /mnt/host/source/src/platform/ec/include/fpsensor/fpsensor_crypto.h:12:\n/mnt/host/source/src/platform/ec/include/crypto/cleanse_wrapper.h:11:10: fatal error: \u0027openssl/mem.h\u0027 file not found\n   11 | #include \"openssl/mem.h\"\n      |          ^~~~~~~~~~~~~~~\n1 error generated.\nninja: build stopped: subcommand failed.\n```\nI am trying to see how the sensor HW test was ported to zephyr, maybe that will give me a clue",
+      "parentUuid": "ef2b48c1_1b1b88cf",
+      "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
