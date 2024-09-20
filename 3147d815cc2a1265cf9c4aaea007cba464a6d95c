@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "3147d815cc2a1265cf9c4aaea007cba464a6d95c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c949050_0eadc4c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-20T19:43:02Z",
+      "side": 1,
+      "message": "TI driver needs to be adapted too. See `pdc_tps6699x.c, cmd_get_ic_status_sync_internal()`. Run the full PDC suite `./twister -T zephyr/test/pdc` and `zmake build brox brox-sku4`",
+      "revId": "3147d815cc2a1265cf9c4aaea007cba464a6d95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
