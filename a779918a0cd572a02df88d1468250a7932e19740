@@ -34,6 +34,24 @@
       "parentUuid": "965af88e_6d9166c3",
       "revId": "a779918a0cd572a02df88d1468250a7932e19740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a475cf_88dbe1e4",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-20T00:13:25Z",
+      "side": 1,
+      "message": "Could we not add `emul_` apis for PDC to return specific values?",
+      "parentUuid": "4e0ea5d0_94107aa5",
+      "revId": "a779918a0cd572a02df88d1468250a7932e19740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
