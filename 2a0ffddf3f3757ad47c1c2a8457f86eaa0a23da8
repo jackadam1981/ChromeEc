@@ -34,6 +34,24 @@
       "parentUuid": "0ee1be2b_40bcd747",
       "revId": "2a0ffddf3f3757ad47c1c2a8457f86eaa0a23da8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ac57c0_1f3fb1b1",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-20T23:43:53Z",
+      "side": 1,
+      "message": "PWR_EC_PCH_SYS_PWROK seems redirected to different signal- GPIO6 1. I have redefined GPIOD0 as o/p to use as cse_early_sw pin. Also, I have used another unused i/p signal to define  PWR_EC_PCH_SYS_PWROK. Have pushed next CL with changes - CL:5875251",
+      "parentUuid": "c341f990_f9f579ab",
+      "revId": "2a0ffddf3f3757ad47c1c2a8457f86eaa0a23da8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
