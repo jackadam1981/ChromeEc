@@ -22,6 +22,30 @@
       },
       "revId": "dc422f18f485b41e19abd7cadb19b5cc04ff4bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f14bef4_fda04506",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-20T00:01:37Z",
+      "side": 1,
+      "message": "Validate with [test/run_device_tests.py: Expand helipilot idle power range (5469248)](https://crrev.com/c/5469248/7) and [test: Support buccaneer power utilization testing (5877100)](https://crrev.com/c/5877100/4).",
+      "parentUuid": "6b0502dc_5e55c221",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "dc422f18f485b41e19abd7cadb19b5cc04ff4bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
