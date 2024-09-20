@@ -1633,7 +1633,8 @@ def main():
 
             print(colorama.Style.RESET_ALL)
 
-    sys.exit(exit_code)
+        os._exit(exit_code)
+
 
 
 def get_power_utilization(
