@@ -1874,7 +1874,7 @@ __override_proto int pd_check_data_swap(int port, enum pd_data_role data_role);
  * @return True if vconn swap is allowed, False otherwise
  */
 
-int pd_check_vconn_swap(int port);
+__override_proto int pd_check_vconn_swap(int port);
 
 /**
  * Check current power role for potential power swap

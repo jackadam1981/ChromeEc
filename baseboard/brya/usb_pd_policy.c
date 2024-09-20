@@ -27,7 +27,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
-int pd_check_vconn_swap(int port)
+__overridable int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap after the PP5000_Z1 rail is enabled */
 	return gpio_get_level(GPIO_SEQ_EC_DSW_PWROK);

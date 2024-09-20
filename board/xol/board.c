@@ -228,3 +228,9 @@ static void set_register_charge_option(void)
 	}
 }
 DECLARE_HOOK(HOOK_TICK, set_register_charge_option, HOOK_PRIO_DEFAULT);
+
+__override int pd_check_vconn_swap(int port)
+{
+	/* Allow VCONN swaps if the AP is on. */
+	return chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON);
+}
