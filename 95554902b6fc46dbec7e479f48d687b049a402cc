@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45d307a_59363593",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-20T18:04:35Z",
+      "side": 1,
+      "message": "This sleep doesn\u0027t accomplish anything.",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 11
+      },
+      "revId": "95554902b6fc46dbec7e479f48d687b049a402cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96aea39e_ac10f465",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-20T18:04:35Z",
+      "side": 1,
+      "message": "Not related directly to this change, but why is this here?",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 0
+      },
+      "revId": "95554902b6fc46dbec7e479f48d687b049a402cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd68eba_ac178827",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-20T18:04:35Z",
+      "side": 1,
+      "message": "Should this be `tcdrain()` instead?  This could discard pending writes.",
+      "range": {
+        "startLine": 884,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 34
+      },
+      "revId": "95554902b6fc46dbec7e479f48d687b049a402cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babaefa9_dc1e0abf",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-20T18:04:35Z",
+      "side": 1,
+      "message": "If this isn\u0027t needed, delete instead of commenting out.",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fdd68f02_672d4b68",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 896,
+                "startChar": 0,
+                "endLine": 897,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "95554902b6fc46dbec7e479f48d687b049a402cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
