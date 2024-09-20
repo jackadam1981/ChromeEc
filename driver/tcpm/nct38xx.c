@@ -188,6 +188,10 @@ int nct38xx_init(int port)
 	      NCT38XX_REG_VBC_FAULT_CTL_FAULT_VC_OFF;
 
 	rv = tcpc_update8(port, NCT38XX_REG_VBC_FAULT_CTL, reg, MASK_SET);
+#if defined(CONFIG_HAS_TASK_PD_INT_SHARED)
+	/* Schedule pd interrupt for other port interrupt trigger after init */
+	schedule_deferred_pd_interrupt(port);
+#endif
 
 	return rv;
 }
