@@ -21,7 +21,7 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define VERSION "0.1.2"
+#define VERSION "0.1.3"
 #define ITE_ERR 0xF0
 
 #define FW_UPDATE_START 0x00000
@@ -411,14 +411,17 @@ enter_uart_dbgr_mode_and_set_nack_mode(struct itecomdbgr_config *conf)
 
 /* Return 0 on success, non-zero on a timeout */
 static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
-			uint8_t f)
+			bool wait_for_set)
 {
 	uint8_t status;
 	int timeout = 0;
-	uint8_t check_value = wait_mask;
+	uint8_t check_value;
 
-	if (f)
+	if (wait_for_set) {
+		check_value = wait_mask;
+	} else {
 		check_value = 0;
+	}
 
 	do {
 		write_com(conf, cs_low, sizeof(cs_low));
@@ -426,7 +429,8 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 		status = debug_getc(conf);
 		write_com(conf, cs_high, sizeof(cs_high));
 		if (timeout++ > 200) {
-			printf("check_status timeout exit!\n\r");
+			printf("check_status timeout exit!  Last status 0x%02x\n\r",
+			       status);
 			return -1;
 		}
 
@@ -434,7 +438,7 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 		if (conf->baudrate == 3000000)
 			msleep(1);
 
-	} while ((status & wait_mask) == check_value);
+	} while ((status & wait_mask) != check_value);
 
 	return 0;
 }
@@ -453,7 +457,7 @@ static void getchipid(struct itecomdbgr_config *conf)
 	chipid[1] = rd_reg(conf, 0xF02086);
 	chipid[2] = rd_reg(conf, 0xF02087);
 	chipver = rd_reg(conf, 0xF02002);
-	msleep(1);
+
 	printf("\rChip ID = %02x%02x%02x", chipid[0], chipid[1], chipid[2]);
 	printf(" , Chip Ver= %02x", chipver);
 	eflash_size_flag = chipver >> 4;
@@ -523,6 +527,7 @@ static int erase_4k(struct itecomdbgr_config *conf)
 	unsigned long start_addr = conf->update_start_addr;
 	unsigned long end_addr = conf->update_end_addr;
 	int total_size = (end_addr - start_addr) / conf->sector_size;
+	int retries = 0;
 
 	/* [3] mapping to spi erase command ,*/
 	/* [7][11][15] mapping to Address A2 A1 A0 */
@@ -537,10 +542,16 @@ static int erase_4k(struct itecomdbgr_config *conf)
 	while (start_addr < end_addr) {
 		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
 		if (check_status(conf, 0x02, 1) < 0) {
+			if (++retries < 3) {
+				printf("\nwrite enable timeout, retrying...\n");
+				continue;
+			}
 			printf("erase_4k:check_status error 1\n\r");
 			result = FAIL;
 			goto out;
 		}
+		retries = 0;
+
 		write_com(conf, cs_low, sizeof(cs_low));
 		erase_buf[7] = start_addr >> 16;
 		erase_buf[11] = start_addr >> 8;
@@ -638,6 +649,7 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 		for (k = 0; k < 4; k++) {
 			read_com(conf, &DBG_BUF[0 + k * 64], 64);
 		}
+		write_com(conf, cs_high, sizeof(cs_high));
 
 		if (conf->read_start_addr != NO_READ) {
 			fwrite(DBG_BUF, 1, read_count, pW);
@@ -663,12 +675,6 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 				result = FAIL;
 				goto out;
 			}
-		}
-		write_com(conf, cs_high, sizeof(cs_high));
-		if (check_status(conf, 0x01, 0) < 0) {
-			printf("fast_read_burst_cdata:check_status error 2\n\r");
-			result = FAIL;
-			goto out;
 		}
 		start_addr += read_count;
 	}
@@ -878,10 +884,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 			/* dbgr reset */
 			write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
 
-			write_com(conf, cs_high, sizeof(cs_high));
-			write_com(conf, cs_low, sizeof(cs_low));
-
-			tcflush(conf->g_fd, TCIOFLUSH);
+			tcdrain(conf->g_fd);
 			msleep(1);
 			getchipid(conf);
 
@@ -892,8 +895,6 @@ static int uart_app(struct itecomdbgr_config *conf)
 			wr_reg(conf, 0xF01619, 0xFF);
 
 			read_id_2(conf);
-
-			//tcflush(conf->g_fd, TCIOFLUSH);
 		}
 
 		if (conf->g_steps == STEPS_EXIT) {
