@@ -117,12 +117,6 @@ CFLAGS_BASEBOARD=
 endif
 include chip/$(CHIP)/build.mk
 
-# The toolchain must be set before referencing any toolchain-related variables
-# (CC, CPP, CXX, etc.) so that the correct toolchain is used. The CORE variable
-# is set in the CHIP build file, so this include must come after including the
-# CHIP build file.
-include core/$(CORE)/toolchain.mk
-
 CROSS_COMPILE_TARGET_arm:=arm-eabi
 
 CROSS_COMPILE_TOOLCHAIN:=$(CROSS_COMPILE_TARGET_$(COREBOOT_TOOLCHAIN))
