@@ -70,6 +70,24 @@
       "parentUuid": "a8a475cf_88dbe1e4",
       "revId": "a779918a0cd572a02df88d1468250a7932e19740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d944ae4b_5eee2c4b",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-20T17:17:29Z",
+      "side": 1,
+      "message": "In that case, maybe just a naming change --\n\nSUITE_PPM_DRIVER_MOCKED\nSUITE_PPM_DRIVER\n\nIMO, my confusion is because they are both testing ppm_driver but `SUITE_UCSI_PPM` is less descriptive of what\u0027s being tested.\n\nI would also support renaming `SUITE_PPM` into `SUITE_PPM_STATE_MACHINE`.",
+      "parentUuid": "6828ab9d_2a094174",
+      "revId": "a779918a0cd572a02df88d1468250a7932e19740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
