@@ -1633,7 +1633,9 @@ def main():
 
             print(colorama.Style.RESET_ALL)
 
-    sys.exit(exit_code)
+        # TODO(b/368684364): Fix the underlying issue that prevents sys.exit()
+        # from working correctly.
+        os._exit(exit_code)  # pylint: disable=protected-access
 
 
 def get_power_utilization(
