@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec21ddda_a885051e",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-20T16:31:47Z",
+      "side": 1,
+      "message": "nit: Can you change it to \"early return\" to match our style better: https://testing.googleblog.com/2017/06/code-health-reduce-nesting-reduce.html?\n\n```\nif (errors) {\n  return EC_SUCCESS;\n}\n\nif (elan_execute_calibration() \u003c 0)\n  errors |\u003d FP_ERROR_INIT_FAIL;\nif (elan_woe_mode() !\u003d 0)\n  errors |\u003d FP_ERROR_SPI_COMM;\n\nreturn EC_SUCCESS;\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "210dab917c65b7245c031818a67593cfc326add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
