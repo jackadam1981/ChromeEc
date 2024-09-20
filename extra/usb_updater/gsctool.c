@@ -4704,35 +4704,35 @@ static int process_get_boot_trace(struct transfer_descriptor *td, bool erase,
 	return 0;
 }
 
-struct get_chip_id_response {
-	uint32_t tpm_vid_pid;
-	uint32_t chip_id;
-};
-
-static struct get_chip_id_response get_chip_id_info(
-	struct transfer_descriptor *td)
-{
-	uint32_t rv;
-	struct get_chip_id_response response;
-	size_t response_size = sizeof(response);
-
-	rv = send_vendor_command(td, VENDOR_CC_GET_CHIP_ID, NULL, 0,
-				 (uint8_t *)&response, &response_size);
-	if (rv != VENDOR_RC_SUCCESS) {
-		debug("Failed getting chip id: 0x%X. Okay for older chips\n",
-		      rv);
-	} else if (response_size < sizeof(response)) {
-		debug("Unexpected response size. (%zu)\n", response_size);
-	} else {
-		/* Success, convert endianness then return */
-		response.tpm_vid_pid = be32toh(response.tpm_vid_pid);
-		response.chip_id = be32toh(response.chip_id);
-		return response;
-	}
-	/* Zero memory before returning since there was an error */
-	memset(&response, 0, sizeof(response));
-	return response;
-}
+//struct get_chip_id_response {
+//	uint32_t tpm_vid_pid;
+//	uint32_t chip_id;
+//};
+//
+//static struct get_chip_id_response get_chip_id_info(
+//	struct transfer_descriptor *td)
+//{
+//	uint32_t rv;
+//	struct get_chip_id_response response;
+//	size_t response_size = sizeof(response);
+//
+//	rv = send_vendor_command(td, VENDOR_CC_GET_CHIP_ID, NULL, 0,
+//				 (uint8_t *)&response, &response_size);
+//	if (rv != VENDOR_RC_SUCCESS) {
+//		debug("Failed getting chip id: 0x%X. Okay for older chips\n",
+//		      rv);
+//	} else if (response_size < sizeof(response)) {
+//		debug("Unexpected response size. (%zu)\n", response_size);
+//	} else {
+//		/* Success, convert endianness then return */
+//		response.tpm_vid_pid = be32toh(response.tpm_vid_pid);
+//		response.chip_id = be32toh(response.chip_id);
+//		return response;
+//	}
+//	/* Zero memory before returning since there was an error */
+//	memset(&response, 0, sizeof(response));
+//	return response;
+//}
 
 /*
  * Returns the GSC device type determine by how is responds to TPMV and
@@ -4740,35 +4740,36 @@ static struct get_chip_id_response get_chip_id_info(
  */
 static enum gsc_device determine_gsc_type(struct transfer_descriptor *td)
 {
-	int major;
-	/* First try the newer TPMV command */
-	const struct get_chip_id_response chip_id = get_chip_id_info(td);
+	return GSC_DEVICE_DT;
+	//int major;
+	///* First try the newer TPMV command */
+	//const struct get_chip_id_response chip_id = get_chip_id_info(td);
 
-	switch (chip_id.tpm_vid_pid) {
-	case 0x50666666:
-		return GSC_DEVICE_NT;
-	case 0x504a6666:
-		return GSC_DEVICE_DT;
-	case 0x00281ae0:
-		return GSC_DEVICE_H1;
-	}
+	//switch (chip_id.tpm_vid_pid) {
+	//case 0x50666666:
+	//	return GSC_DEVICE_NT;
+	//case 0x504a6666:
+	//	return GSC_DEVICE_DT;
+	//case 0x00281ae0:
+	//	return GSC_DEVICE_H1;
+	//}
 
-	if (chip_id.tpm_vid_pid)
-		fprintf(stderr, "Unregonized VID_PID 0x%X\n",
-			chip_id.tpm_vid_pid);
+	//if (chip_id.tpm_vid_pid)
+	//	fprintf(stderr, "Unregonized VID_PID 0x%X\n",
+	//		chip_id.tpm_vid_pid);
 
-	/*
-	 * If TPMV command doesn't exist or VID_PID is unrecognized then,
-	 * use the firmware version to determine type.
-	 */
-	get_version(td, false);
-	major = targ.shv[1].major;
-	if (major >= 30 && major < 40)
-		return GSC_DEVICE_NT;
-	else if (major >= 20 && major < 30)
-		return GSC_DEVICE_DT;
-	else
-		return GSC_DEVICE_H1;
+	///*
+	// * If TPMV command doesn't exist or VID_PID is unrecognized then,
+	// * use the firmware version to determine type.
+	// */
+	//get_version(td, false);
+	//major = targ.shv[1].major;
+	//if (major >= 30 && major < 40)
+	//	return GSC_DEVICE_NT;
+	//else if (major >= 20 && major < 30)
+	//	return GSC_DEVICE_DT;
+	//else
+	//	return GSC_DEVICE_H1;
 }
 
 int main(int argc, char *argv[])
