@@ -93,6 +93,30 @@
       },
       "revId": "826453e3042f15daf2eadddf07a5baa731379257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ba0d52_078a4dd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-09-20T20:56:47Z",
+      "side": 1,
+      "message": "\u003e include this as a comment on that variable.\n\nI couldn\u0027t quite hang these comments on the variable docstring, but I put them close to where we define the acceptable power range.",
+      "parentUuid": "f82812b4_2887eb25",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 63
+      },
+      "revId": "826453e3042f15daf2eadddf07a5baa731379257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
