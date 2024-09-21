@@ -16,6 +16,24 @@
       "message": "Is this tied to the MessageLoop above? I poked around the libraries a bit but didn\u0027t get a good sense of what\u0027s going on.",
       "revId": "243ffcc6fa617f962983c9f9f44a229f040864e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40028a74_9110ad69",
+        "filename": "tpm_generated/tpm_generated_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2024-09-21T20:44:25Z",
+      "side": 1,
+      "message": "In this file, I\u0027m effectively reverting these two PRs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/2388541\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/4179667\n\nReverting these was necessary to make this test build in Android; I believe that is because Android has an older revision of libchrome.",
+      "parentUuid": "ce46026e_d0d7dddb",
+      "revId": "243ffcc6fa617f962983c9f9f44a229f040864e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
