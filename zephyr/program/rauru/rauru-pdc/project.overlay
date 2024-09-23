@@ -28,6 +28,12 @@
 	usbc {
 		#address-cells = <1>;
 		#size-cells = <0>;
+
+		cros_poliy: usbc-policy {
+			board_unattach_cb = "rauru_pdc_set_unattached";
+			board_dp_attention_cb = "rauru_pdc_dp_attention";
+		};
+
 		usbc_port0: port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
@@ -75,10 +81,10 @@
 		/delete-node/ ec_gpa7_test;
 
 		gpio_usb_c0_pdc_ec_hpd: usb_c0_pdc_ec_hpd {
-			gpios = <&gpiod 5 GPIO_INPUT>;
+			gpios = <&gpiod 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_usb_c1_pdc_ec_hpd: usb_c1_pdc_ec_hpd {
-			gpios = <&gpioa 7 GPIO_INPUT>;
+			gpios = <&gpioa 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 	};
 
