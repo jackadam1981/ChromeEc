@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5457314f_38c4b484",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T19:24:15Z",
+      "side": 1,
+      "message": "Use the Zephyr config namespace here directly.  `CONFIG_PLATFORM_EC_EXTERNAL_NOTEBOOK_MODE`.",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 375,
+        "endChar": 36
+      },
+      "revId": "f42a42ede51f97c41fa9d7265a9d7032da8f27ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9477d84_1af1e5ed",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T19:24:15Z",
+      "side": 1,
+      "message": "\"Enable this option when the motionsense task runs on a separate processor\n(such as the ISH) so that the motionsense task can notify the EC of\nclamshell/tablet mode changes.  The motionsense task notifies the EC\nusing the GPIO mapped to the devicetree alias \"gpio_nb_mode\".",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "f42a42ede51f97c41fa9d7265a9d7032da8f27ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7718aa6_33e3a043",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2524,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T19:24:15Z",
+      "side": 1,
+      "message": "This mapping to the legacy EC config namespace is not required.",
+      "range": {
+        "startLine": 2520,
+        "startChar": 0,
+        "endLine": 2524,
+        "endChar": 0
+      },
+      "revId": "f42a42ede51f97c41fa9d7265a9d7032da8f27ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
