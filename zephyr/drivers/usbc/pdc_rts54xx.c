@@ -176,8 +176,8 @@ static const struct smbus_cmd_t RTS_UCSI_GET_CAPABILITY = { 0x0E, 0x02, 0x06 };
 static const struct smbus_cmd_t RTS_UCSI_GET_CONNECTOR_CAPABILITY = { 0x0E,
 								      0x03,
 								      0x07 };
-static const struct smbus_cmd_t RTS_UCSI_SET_UOR = { 0x0E, 0x04, 0x09 };
-static const struct smbus_cmd_t RTS_UCSI_SET_PDR = { 0x0E, 0x04, 0x0B };
+static const struct smbus_cmd_t RTS_UCSI_SET_UOR = { 0x0E, 0x03, 0x09 };
+static const struct smbus_cmd_t RTS_UCSI_SET_PDR = { 0x0E, 0x03, 0x0B };
 static const struct smbus_cmd_t RTS_UCSI_GET_CONNECTOR_STATUS = { 0x0E, 0x3,
 								  0x12 };
 static const struct smbus_cmd_t RTS_UCSI_GET_ERROR_STATUS = { 0x0E, 0x03,
@@ -2261,7 +2261,7 @@ static int rts54_set_uor(const struct device *dev, union uor_t uor)
 	uint8_t payload[] = {
 		RTS_UCSI_SET_UOR.cmd, RTS_UCSI_SET_UOR.len,
 		RTS_UCSI_SET_UOR.sub, 0x00,
-		uor.raw_value & 0xff, (uor.raw_value >> 8) & 0xff
+		(uor.raw_value >> 8) & 0x3
 	};
 
 	return rts54_post_command(dev, CMD_SET_UOR, payload,
@@ -2279,7 +2279,7 @@ static int rts54_set_pdr(const struct device *dev, union pdr_t pdr)
 	uint8_t payload[] = {
 		RTS_UCSI_SET_PDR.cmd, RTS_UCSI_SET_PDR.len,
 		RTS_UCSI_SET_PDR.sub, 0x00,
-		pdr.raw_value & 0xff, (pdr.raw_value >> 8) & 0xff
+		(pdr.raw_value >> 8) & 0x3
 	};
 
 	return rts54_post_command(dev, CMD_SET_PDR, payload,
