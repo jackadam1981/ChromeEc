@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5af21e_58d5abac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-09-23T03:48:38Z",
+      "side": 1,
+      "message": "To be more precise, I think the description should be something like:\nAlert register bits may be set during TCPM initialization. Need to process and clear alter register after TCPM initilaztion, otherwise the alert# pin stays low indefinitely.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "f812b1d2a6c098131f1e80309cd4c83f3dd956e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
