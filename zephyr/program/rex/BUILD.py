@@ -51,6 +51,9 @@ register_rex_project(
 register_rex_project(
     project_name="karis",
 )
+register_rex_project(
+    project_name="kanix",
+)
 
 register_ish_project(
     project_name="rex-ish",
@@ -64,6 +67,7 @@ register_ish_project(
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="screebo", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="kanix", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="karis", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="rex", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="rex-ish-ec", addr=0x80144)

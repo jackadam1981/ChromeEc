@@ -22,6 +22,11 @@ choice TEST_PROJECT_TYPE
 		help
 		Enable tests for karis variant.
 
+	config TEST_PROJECT_KANIX
+		bool "Enable kanix-specific tests"
+		help
+		Enable tests for kanix variant.
+
 	config TEST_PROJECT_REX_ISH
 		bool "Enable rex ISH tests"
 		help
