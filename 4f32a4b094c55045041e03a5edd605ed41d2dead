@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad17a69_660234a5",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-09-23T12:55:54Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "999fe130_f1189730",
+      "range": {
+        "startLine": 375,
+        "startChar": 7,
+        "endLine": 375,
+        "endChar": 34
+      },
+      "revId": "4f32a4b094c55045041e03a5edd605ed41d2dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55607e00_2e41b543",
