@@ -28,6 +28,7 @@
 	usbc {
 		#address-cells = <1>;
 		#size-cells = <0>;
+
 		usbc_port0: port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
@@ -69,16 +70,14 @@
 	};
 
 	named-gpios {
-		compatible = "named-gpios";
-
 		/delete-node/ usb_c1_dp_in_hpd;
 		/delete-node/ ec_gpa7_test;
 
 		gpio_usb_c0_pdc_ec_hpd: usb_c0_pdc_ec_hpd {
-			gpios = <&gpiod 5 GPIO_INPUT>;
+			gpios = <&gpiod 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_usb_c1_pdc_ec_hpd: usb_c1_pdc_ec_hpd {
-			gpios = <&gpioa 7 GPIO_INPUT>;
+			gpios = <&gpioa 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 	};
 
