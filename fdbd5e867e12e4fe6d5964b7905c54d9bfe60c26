@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "256125c0_73e193d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3750,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-23T21:54:37Z",
+      "side": 1,
+      "message": "IIUC, if the Source is offering a 0A PDO, it should only be 5V/0A. However, if a Source incorrectly offered another voltage with 0A, and we somehow ended up in a contract with it, we should probably also not draw current as a defense mechanism. I think `pd_find_pdo_index` as implemented would not select such a PDO. Either way, we might want to just check for `curr_limit` here and not voltage.",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a49f75_420e6cf1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-23T21:54:37Z",
+      "side": 1,
+      "message": "Would `tc_snk_power_off` (a function already intended to be called by the PE) do what you want here? If so, that seems a bit cleaner than making this function externally linked.\n\nThat being said, I\u0027m not sure this is exactly what you want.\n* `sink_stop_drawing_current` calls `pd_set_input_current_limit(port,0,0)`. The current limit should be 0A, but the voltage is still expected to be within vSafe5v, not 0V.\n* It calls `typec_set_input_current_limit(port,0,0)`. But I don\u0027t think the type-C current limit is even relevant at this time, since we\u0027re running PD.\n* It calls `charge_manager_set_ceil` with `CHARGE_CEIL_NONE`. Admittedly, I don\u0027t understand the charge manager API well.\n\nWhich of these parts are needed to change the behavior here? I would have thought from looking at the previous code that it was already doing what we want in the case of 0 mA Source Caps.",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f13cbd_b8d951ad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3768,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-23T21:54:37Z",
+      "side": 1,
+      "message": "Nit: This change further nests this code, so the lines are even more broken up than they were. As noted above, the actual function calls are very similar between the old code and the new branch.\n\nIf you truly don\u0027t need `typec_set_input_current_limit`, it seems like you could reduce nesting here by defining variables for the arguments to these functions and then setting them based on `supply_voltage` and `curr_limit`.",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efc768cd_e98ad30f",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 4
