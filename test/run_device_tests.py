@@ -98,6 +98,9 @@ ASSERTION_FAILURE_REGEX = re.compile(
     r"(ASSERTION FAILURE.*)|(.*Assertion failed at)"
 )
 
+# https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/panic.c;l=283;drc=022c5e9e85bf73a0dbbb16d62710d49650feda1c
+PANIC_FAILURE_REGEX = re.compile(r"=== (HANDLER|PROCESS) EXCEPTION:.*")
+
 DATA_ACCESS_VIOLATION_8020000_REGEX = re.compile(
     r"(Data access violation, mfar = 8020000\r\n)|(.*MMFAR Address: 0x8020000\r\n)"
 )
@@ -428,6 +431,7 @@ class TestConfig:
     num_fails: int = field(init=False, default=0)
     skip_for_zephyr: bool = False
     zephyr_name: str = None
+    expect_panic: bool = False
 
     # The callbacks below are called before and after a test is executed and
     # may be used for additional test setup, post test activities, or other tasks
@@ -449,6 +453,8 @@ class TestConfig:
                 ALL_TESTS_FAILED_REGEX,
                 ASSERTION_FAILURE_REGEX,
             ]
+            if not self.expect_panic:
+                self.fail_regexes.append(PANIC_FAILURE_REGEX)
         if self.config_name is None:
             self.config_name = self.test_name
 
@@ -500,7 +506,7 @@ class AllTests:
                 imagetype_to_use=ImageType.RW,
                 apptype_to_use=ApplicationType.PRODUCTION,
             ),
-            TestConfig(test_name="abort"),
+            TestConfig(test_name="abort", expect_panic=True),
             TestConfig(test_name="aes"),
             # Cryptoc is not supported with Zephyr.
             # TODO(b/333039464) A new test for OPENSSL_cleanse has to be implemented.
@@ -523,8 +529,8 @@ class AllTests:
             TestConfig(test_name="boringssl_crypto"),
             TestConfig(test_name="cortexm_fpu"),
             TestConfig(test_name="crc"),
-            TestConfig(test_name="exception"),
-            TestConfig(test_name="exit"),
+            TestConfig(test_name="exception", expect_panic=True),
+            TestConfig(test_name="exit", expect_panic=True),
             TestConfig(
                 test_name="flash_physical",
                 imagetype_to_use=ImageType.RO,
@@ -573,7 +579,7 @@ class AllTests:
                 ),
             ),
             TestConfig(test_name="fpsensor_utils"),
-            TestConfig(test_name="ftrapv"),
+            TestConfig(test_name="ftrapv", expect_panic=True),
             TestConfig(
                 test_name="libc_printf",
                 finish_regexes=[PRINTF_CALLED_REGEX],
@@ -588,12 +594,14 @@ class AllTests:
                 test_name="mpu",
                 imagetype_to_use=ImageType.RO,
                 finish_regexes=[board_config.mpu_regex],
+                expect_panic=True,
                 skip_for_zephyr=True,
             ),
             TestConfig(
                 config_name="mpu_rw",
                 test_name="mpu",
                 finish_regexes=[board_config.mpu_regex],
+                expect_panic=True,
                 skip_for_zephyr=True,
             ),
             # Handled by Zephyr - kernel.mutex test
@@ -604,7 +612,7 @@ class AllTests:
                 test_name="otp_key",
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],
             ),
-            TestConfig(test_name="panic"),
+            TestConfig(test_name="panic", expect_panic=True),
             # Task synchronization covered by Zephyr tests and shim layer by unit tests.
             # task_wait_event is implemented based on k_poll_event and it is verified by
             # the kernel.poll test.
@@ -621,12 +629,14 @@ class AllTests:
                 config_name="rollback_region0",
                 test_name="rollback",
                 finish_regexes=[board_config.rollback_region0_regex],
+                expect_panic=True,
                 test_args=["region0"],
             ),
             TestConfig(
                 config_name="rollback_region1",
                 test_name="rollback",
                 finish_regexes=[board_config.rollback_region1_regex],
+                expect_panic=True,
                 test_args=["region1"],
             ),
             TestConfig(
