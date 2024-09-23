@@ -22,6 +22,29 @@
       },
       "revId": "f812b1d2a6c098131f1e80309cd4c83f3dd956e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "978aee4a_547a83bd",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-09-23T03:56:18Z",
+      "side": 1,
+      "message": "@alevkoy@chromium.org, Is it better to do this in tcpm_init() or in board_tcpc_post_init(port)?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 6
+      },
+      "revId": "f812b1d2a6c098131f1e80309cd4c83f3dd956e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
