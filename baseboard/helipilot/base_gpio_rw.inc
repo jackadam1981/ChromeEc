@@ -10,7 +10,7 @@
 
 /* Interrupts */
 /* FP_MCU_INT_L in the schematic. */
-GPIO_INT(FPS_INT,              PIN(B, 0), GPIO_INT_RISING, fps_event)
+GPIO_INT(FPS_INT,              PIN(B, 0), GPIO_INT_FALLING, fps_event)
 
 /* Inputs */
 GPIO(FP_SENSOR_SEL,            PIN(4, 4), GPIO_INPUT)

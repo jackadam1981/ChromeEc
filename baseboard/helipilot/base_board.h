@@ -68,7 +68,7 @@
  * Can be increased/decreased in conjunction with HELIPILOT_DATA_RAM_SIZE_BYTES
  * to adjust the split between code and data RAM.
  */
-#define HELIPILOT_CODE_RAM_SIZE_BYTES (352 * 1024)
+#define HELIPILOT_CODE_RAM_SIZE_BYTES (256 * 1024)
 
 /**
  * RAM reserved for data.
@@ -76,7 +76,7 @@
  * Can be increased/decreased in conjunction with HELIPILOT_CODE_RAM_SIZE_BYTES
  * to adjust the split between code and data RAM.
  */
-#define HELIPILOT_DATA_RAM_SIZE_BYTES (156 * 1024)
+#define HELIPILOT_DATA_RAM_SIZE_BYTES (252 * 1024)
 
 /**
  * RAM reserved for ROM functions.
