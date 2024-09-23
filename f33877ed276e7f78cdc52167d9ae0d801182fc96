@@ -33,6 +33,190 @@
       "message": "Friendly ping.",
       "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd5a165_99ad9cf7",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "Nit - The emulator need not point to a Realtek implementation.  I suggest `PDC_EMUL_NODE`.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75fc327_4a6728c5",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "Use the devicetree to get the port number.  Please also rename to make it clear this is PPM connector number, and not the PDC port number.\n\n```\n#define PPM_CONNECTOR_NUM USBC_PORT_FROM_DRIVER_NODE(PDC_EMUL_NODE, pdc) + 1\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b0acb6_fe72784f",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "Is `host_cmd_pdc_reset` needed for both the test before and test after actions?",
+      "range": {
+        "startLine": 47,
+        "startChar": 54,
+        "endLine": 47,
+        "endChar": 72
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2771f5a_616b3858",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "Adding debug on each loop is probably overkill, and makes the logic more complicated.\n```\nfor (int i \u003d 0; i \u003c ITERATIONS; i++) {\n  if (ppm_test_is_cmd_pending()) {\n    return true;\n  }\n}\nreturn false;\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d84ba4a_bb9dc393",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "All the error cases need a `LOG_ERR` call so one can troubleshoot test failures.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e063d6fe_7b2662ff",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "Use `zassert_ok` for functions that return 0 on success.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 14
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0eb2669_9a2a9401",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "Please expand the error text so it\u0027s clear which is the expected value and which is the actual value returned by get capability.",
+      "range": {
+        "startLine": 232,
+        "startChar": 48,
+        "endLine": 232,
+        "endChar": 56
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2c2340_5a564635",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-23T17:53:07Z",
+      "side": 1,
+      "message": "`emul_pdc_connect_partner` sets this for you.  You should also set the `ccts.power_operation` field to something valid.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 25
+      },
+      "revId": "f33877ed276e7f78cdc52167d9ae0d801182fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
