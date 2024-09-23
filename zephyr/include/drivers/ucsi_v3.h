@@ -1200,7 +1200,7 @@ union uor_t {
 		 * This field indicates the connector whose USB
 		 * operational role is to be modified.
 		 */
-		uint16_t connector_number : 7;
+		uint16_t connector_number : 8;
 		/**
 		 * If this bit is set, then the connector
 		 * shall initiate swap to DFP if not
@@ -1237,7 +1237,7 @@ union pdr_t {
 		 * This field indicates the connector whose Power
 		 * Direction Role is to be modified.
 		 */
-		uint16_t connector_number : 7;
+		uint16_t connector_number : 8;
 		/**
 		 * If this bit is set then the connector
 		 * shall initiate swap to Source, if not
