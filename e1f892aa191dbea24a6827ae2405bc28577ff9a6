@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9513d0_f3e81e68",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-23T22:06:40Z",
+      "side": 1,
+      "message": "Double-check where this string is generated. I think it can take different values, so probably need to make the regex more generic.",
+      "range": {
+        "startLine": 101,
+        "startChar": 51,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "e1f892aa191dbea24a6827ae2405bc28577ff9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6053ce_0bb7567f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-23T22:06:40Z",
+      "side": 1,
+      "message": "Need to exclude this on tests that are expected to generate an exception.",
+      "range": {
+        "startLine": 453,
+        "startChar": 16,
+        "endLine": 453,
+        "endChar": 48
+      },
+      "revId": "e1f892aa191dbea24a6827ae2405bc28577ff9a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
