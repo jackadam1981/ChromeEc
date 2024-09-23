@@ -98,6 +98,8 @@ ASSERTION_FAILURE_REGEX = re.compile(
     r"(ASSERTION FAILURE.*)|(.*Assertion failed at)"
 )
 
+PROCESS_EXCEPTION_FAILURE_REGEX = re.compile(r"=== PROCESS EXCEPTION:.*")
+
 DATA_ACCESS_VIOLATION_8020000_REGEX = re.compile(
     r"(Data access violation, mfar = 8020000\r\n)|(.*MMFAR Address: 0x8020000\r\n)"
 )
@@ -448,6 +450,7 @@ class TestConfig:
                 SINGLE_CHECK_FAILED_REGEX,
                 ALL_TESTS_FAILED_REGEX,
                 ASSERTION_FAILURE_REGEX,
+                PROCESS_EXCEPTION_FAILURE_REGEX,
             ]
         if self.config_name is None:
             self.config_name = self.test_name
