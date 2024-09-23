@@ -70,6 +70,12 @@ int egis_get_image(uint8_t *image_data);
 void egis_set_detect_mode(void);
 int egis_check_int_status(void);
 
+int egis_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
+		      int32_t *match_index, uint32_t *update_bitmap);
+int egis_enrollment_begin(void);
+int egis_enrollment_finish(void *templ);
+int egis_finger_enroll(uint8_t *image, int *completion);
+
 #ifdef __cplusplus
 }
 #endif
