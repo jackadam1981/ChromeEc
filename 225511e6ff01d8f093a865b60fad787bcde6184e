@@ -16,6 +16,179 @@
       "message": "After hibernation, EC reset, batterycutoff, the SKU ID override well.",
       "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8197981e_faa77950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "Could you update those in the commit meesage `TEST\u003d` field?",
+      "parentUuid": "38213b7b_97880b8a",
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9cc726d_b7f3f54c",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "As override_flag is initialed as `OVERRIDE_NONE`, have you checked if there\u0027s any chance the AP will query the CBI before `set_fan_status` hook runs and set the flag?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f313d28c_33394a9e",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "nit: add a space",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69e5a94_491117ae",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "Suggest to define 0x4 with something like `PUJJOTEEN_FAN_PRESENT` for readability.",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8410b20b_4e75f8c5",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "nit: add a space",
+      "range": {
+        "startLine": 75,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce646ae2_beec337e",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "We can move `if (override_flag !\u003d OVERRIDE_CHECK)` here to avoid extra function call in each CBI query.",
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b690855e_24e3f062",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "Can we ensure this will always happen way earlier than CBI query?  \nI am thinking if we need a mutex to protect those fan operations.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 43
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf785d35_542452c5",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-23T12:28:13Z",
+      "side": 1,
+      "message": "In previous patchset we didn\u0027t have such delay, is it for waiting until GPIO is stable?",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 22
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
