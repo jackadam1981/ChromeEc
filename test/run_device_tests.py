@@ -98,6 +98,9 @@ ASSERTION_FAILURE_REGEX = re.compile(
     r"(ASSERTION FAILURE.*)|(.*Assertion failed at)"
 )
 
+# https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/panic.c;l=283;drc=022c5e9e85bf73a0dbbb16d62710d49650feda1c
+PANIC_FAILURE_REGEX = re.compile(r"=== (HANDLER|PROCESS) EXCEPTION:.*")
+
 DATA_ACCESS_VIOLATION_8020000_REGEX = re.compile(
     r"(Data access violation, mfar = 8020000\r\n)|(.*MMFAR Address: 0x8020000\r\n)"
 )
@@ -428,6 +431,7 @@ class TestConfig:
     num_fails: int = field(init=False, default=0)
     skip_for_zephyr: bool = False
     zephyr_name: str = None
+    expect_panic: bool = False
 
     # The callbacks below are called before and after a test is executed and
     # may be used for additional test setup, post test activities, or other tasks
@@ -449,6 +453,8 @@ class TestConfig:
                 ALL_TESTS_FAILED_REGEX,
                 ASSERTION_FAILURE_REGEX,
             ]
+            if not self.expect_panic:
+                self.fail_regexes.append(PANIC_FAILURE_REGEX)
         if self.config_name is None:
             self.config_name = self.test_name
 
@@ -573,7 +579,7 @@ class AllTests:
                 ),
             ),
             TestConfig(test_name="fpsensor_utils"),
-            TestConfig(test_name="ftrapv"),
+            TestConfig(test_name="ftrapv", expect_panic=True),
             TestConfig(
                 test_name="libc_printf",
                 finish_regexes=[PRINTF_CALLED_REGEX],
