@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "common.h"
+#include "console.h"
+#include "system.h"
+
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
@@ -10,6 +14,13 @@
 #include <fpsensor/fpsensor_utils.h>
 #include <mkbp_event.h>
 #include <rollback.h>
+
+static int is_locked;
+
+int system_is_locked(void)
+{
+	return is_locked;
+}
 
 DEFINE_FFF_GLOBALS;
 
@@ -91,4 +102,23 @@ ZTEST(fpsensor_utils, test_is_raw_capture)
 	/* Check the case where FP_MODE_CAPTURE is not set. */
 	zassert_false(is_raw_capture(FP_CAPTURE_VENDOR_FORMAT
 				     << FP_MODE_CAPTURE_TYPE_SHIFT));
+}
+
+ZTEST(fpsensor_utils, test_command_fpupload)
+{
+	int rv;
+	/* System is unlocked. */
+	is_locked = 0;
+
+	char console_input1[] = "fpupload 52 image";
+	rv = shell_execute_cmd(get_ec_shell(), console_input1);
+	zassert_equal(rv, EC_SUCCESS);
+
+	/* System is locked. */
+	is_locked = 1;
+
+	/* Test for the case when access is denied. */
+	char console_input2[] = "fpupload 52 image";
+	rv = shell_execute_cmd(get_ec_shell(), console_input2);
+	zassert_equal(rv, EC_ERROR_ACCESS_DENIED);
 }
