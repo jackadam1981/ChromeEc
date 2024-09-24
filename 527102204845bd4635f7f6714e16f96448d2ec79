@@ -16,6 +16,23 @@
       "message": "I think undefining CONFIG_POWER_SLEEP_FAILURE_DETECTION is enough to fix b/353831728 and CONFIG_EMULATED_SYSRQ is useful for debugging kernel hangs.",
       "revId": "527102204845bd4635f7f6714e16f96448d2ec79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc26a563_80f9e11a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3487009
+      },
+      "writtenOn": "2024-09-24T17:57:31Z",
+      "side": 1,
+      "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "527102204845bd4635f7f6714e16f96448d2ec79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
