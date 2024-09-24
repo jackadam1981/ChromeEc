@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21677c7a_a5eac06a",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-24T09:13:47Z",
+      "side": 1,
+      "message": "I still think it should be harmless to have a lock to protect this, in case in the future someone changes the behavior of AP or OS that concurrency happens.  \n\nGiven the flag is shared and check fan status is a HW behavior which may take longer time, one race condition is that concurrency happens with both getting OVERRIDE_CHECK, and the first is about to finish so turn off the fan while the latter is about to check fan rpm, then the final result will be OVERRIDE_NONE.  \nYou may also have to include `#include \"task.h\"`.\n```suggestion\nK_MUTEX_DEFINE(check_fan_lock);\nint cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)\n{\n        mutex_lock(\u0026 check_fan_lock);\n\tif (override_flag \u003d\u003d OVERRIDE_CHECK)\n\t\tcheck_fan_status();\n        mutex_unlock(\u0026 check_fan_lock);\n```",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "0916f5529b82c48e01ffbbca848e8252c140c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

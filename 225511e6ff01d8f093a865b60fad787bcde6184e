@@ -145,6 +145,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c64c055a_25f1afc6",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-24T09:13:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "55d1811c_f808e1be",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f313d28c_33394a9e",
         "filename": "zephyr/program/nissa/pujjo/src/fan.c",
         "patchSetId": 18
@@ -318,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aaadae2_c713025d",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-24T09:13:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "135d540c_9dd1b085",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 43
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf785d35_542452c5",
@@ -355,6 +403,30 @@
       "side": 1,
       "message": "I am not sure, maybe fan related setups not ready yet, but after 100ms delay, the Fan can be controlled. This delay exists in previous patcheset.",
       "parentUuid": "bf785d35_542452c5",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 22
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f94348_eb38b6ec",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-09-24T09:13:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c04b1fb0_a7b95962",
       "range": {
         "startLine": 158,
         "startChar": 5,
