@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58866e10_13fd1aa0",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-24T17:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87519151_09479ce4",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "3090ded470bbe29dae69599a2f21b2cd9a7d9768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf7ed9d_3746715e",
