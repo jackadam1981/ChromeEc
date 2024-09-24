@@ -256,6 +256,9 @@ static inline int tcpm_set_vconn(int port, int enable)
 			return rv;
 	}
 
+	if (tcpc_config[port].flags & TCPC_FLAGS_VCONN_DELAY)
+		tcpc_config[port].drv->set_vconn(port, enable);
+
 	return tcpm_sop_prime_enable(port, enable);
 }
 
