@@ -52,6 +52,24 @@
       "parentUuid": "8eb9c195_0c96a099",
       "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caba6e91_38e69977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-24T20:19:59Z",
+      "side": 1,
+      "message": "I believe `src/platform/ec/common/fpsensor/fpsensor.cc` will pull back most of the removed headers from `fpsensor_debug.cc`\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc",
+      "parentUuid": "5cb5fff4_1534a13a",
+      "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
