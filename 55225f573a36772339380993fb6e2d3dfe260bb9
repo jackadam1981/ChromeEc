@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37125b44_41b8e045",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-24T21:19:11Z",
+      "side": 1,
+      "message": "I believe the only place were `plat_free` is used in inside `PLAT_FREE`",
+      "parentUuid": "f45ba593_7d667c89",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "55225f573a36772339380993fb6e2d3dfe260bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15acc972_fb841972",
         "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
         "patchSetId": 11
@@ -71,6 +95,30 @@
           ]
         }
       ],
+      "revId": "55225f573a36772339380993fb6e2d3dfe260bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e6a9c9_e8576393",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-24T21:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15acc972_fb841972",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 2
+      },
       "revId": "55225f573a36772339380993fb6e2d3dfe260bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
