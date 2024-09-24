@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c5e1aa_370187f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-24T19:20:40Z",
+      "side": 1,
+      "message": "this is still the cros-ec keyboard setup, right?\n\nbrox switched to the upstream keyboard driver here\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5651121\nwonder if it makes sense to do that for trulo from the beginning.",
+      "revId": "c0f333829be00a735269f5c229907cbd22f74e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
