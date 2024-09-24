@@ -69,6 +69,30 @@
       },
       "revId": "3090ded470bbe29dae69599a2f21b2cd9a7d9768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c60c6f_1e036f18",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-24T17:50:28Z",
+      "side": 1,
+      "message": "Oh, it looks like [`handle_command`] (which is called by `test_send_console_command`) modifies the buffer, so it can\u0027t be `const`.",
+      "parentUuid": "178066ea_95dc49c6",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "3090ded470bbe29dae69599a2f21b2cd9a7d9768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
