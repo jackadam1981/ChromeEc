@@ -16,6 +16,24 @@
       "message": "add this for ptlrvp_npcx GPIO too",
       "revId": "7010fcfbed6db88cff6a1e12d7b3c982202a56a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe78e76_4739ae18",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-09-24T16:54:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcef80f1_b5abf770",
+      "revId": "7010fcfbed6db88cff6a1e12d7b3c982202a56a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
