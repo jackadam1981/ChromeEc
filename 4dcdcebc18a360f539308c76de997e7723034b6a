@@ -33,6 +33,24 @@
       "message": "By doing this, the `output_board_battery_type` will be called while each time the system resumes from suspend mode. Is this expected behavior and why should we detect the battery type so frequently?  Why not using something like `HOOK_CHIPSET_STARTUP` to call this function during the system starts up?",
       "revId": "4dcdcebc18a360f539308c76de997e7723034b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa23102_92c2347e",
+        "filename": "zephyr/program/corsola/kyogre/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-24T15:36:56Z",
+      "side": 1,
+      "message": "I would like to recode the values for battery data in cros_ec.log.\nBut the timing of HOOK_CHIPSET_STARTUP is too early. So the outputted battery data were not recoded in cros_ec.log.",
+      "parentUuid": "5bf35d80_7ee98e09",
+      "revId": "4dcdcebc18a360f539308c76de997e7723034b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
