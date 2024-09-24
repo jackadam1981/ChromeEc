@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "617ba21e_d7bfdbc1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3750,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-24T07:33:47Z",
+      "side": 1,
+      "message": "In TEST.PD.PS.SNK.1, the tester(SRC) negotiate many different voltage and current level SRC_CAPs to test DUT(SNK) PDO transitions. There is a case that the tester sends only one SRC_CAP with 5V/0A, after negotiating, the tester checks that current drawn by the UUT does not exceed pSnkSusp (25mW) max for tSrcTransition min time.\n\nChanged to only check for `curr_limit`, but PD spec ch.6.4.1.2.2 only defines 5V/0A for giving the lowest power usage, I\u0027m not sure if other-voltage/0A of Fixed-PDO violates the spec or not.",
+      "parentUuid": "256125c0_73e193d9",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16a49f75_420e6cf1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-23T21:54:37Z",
       "side": 1,
       "message": "Would `tc_snk_power_off` (a function already intended to be called by the PE) do what you want here? If so, that seems a bit cleaner than making this function externally linked.\n\nThat being said, I\u0027m not sure this is exactly what you want.\n* `sink_stop_drawing_current` calls `pd_set_input_current_limit(port,0,0)`. The current limit should be 0A, but the voltage is still expected to be within vSafe5v, not 0V.\n* It calls `typec_set_input_current_limit(port,0,0)`. But I don\u0027t think the type-C current limit is even relevant at this time, since we\u0027re running PD.\n* It calls `charge_manager_set_ceil` with `CHARGE_CEIL_NONE`. Admittedly, I don\u0027t understand the charge manager API well.\n\nWhich of these parts are needed to change the behavior here? I would have thought from looking at the previous code that it was already doing what we want in the case of 0 mA Source Caps.",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd63e82f_95aea6fb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-24T07:33:47Z",
+      "side": 1,
+      "message": "Well, I don\u0027t understand the charge manager API well, either, but I did experiments before committing this change.\n\nWhen `pe[port].curr_limit \u003d\u003d 0`, calling `tc_snk_power_off()` would set flag `POWER_OFF_SNK` (Don\u0027t trigger dis-connect usage for power swap), then this cause we can\u0027t detect dis-connect properly after tester re-attaches, I tested this before.\n\nI also tried only calling `pd_set_input_current_limit(port, 5V, 0A)` when `pe[port].curr_limit \u003d\u003d 0`, and it failed the test #11. In the test log, we draw current \u003e50mA  (goal is 5mA) for tSrcTransition time period. \nIt needs to call `typec_set_input_current_limit()`, then the drawing current can be down to 1~4mA (\u003c 5mA), and satisfy pSnkSusp (25mW).",
+      "parentUuid": "16a49f75_420e6cf1",
       "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b39770f_8f114ba4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3768,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-24T07:33:47Z",
+      "side": 1,
+      "message": "Yes, needn\u0027t `typec_set_input_current_limit()`, it causes detecting dis-connection not properly.",
+      "parentUuid": "59f13cbd_b8d951ad",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efc768cd_e98ad30f",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 4
@@ -65,6 +119,30 @@
       "writtenOn": "2024-09-23T20:09:53Z",
       "side": 1,
       "message": "Prefix with `pd_` since it becomes a non-static function.",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 30
+      },
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "794bda2a_f9fde443",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-24T07:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc768cd_e98ad30f",
       "range": {
         "startLine": 211,
         "startChar": 5,
