@@ -254,6 +254,8 @@ static inline int tcpm_set_vconn(int port, int enable)
 		rv = tcpc_config[port].drv->set_vconn(port, enable);
 		if (rv)
 			return rv;
+	} else if (tcpc_config[port].flags & TCPC_FLAGS_SET_VCONN_IN_SYNC) {
+		tcpc_config[port].drv->set_vconn(port, enable);
 	}
 
 	return tcpm_sop_prime_enable(port, enable);
