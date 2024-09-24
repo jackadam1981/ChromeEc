@@ -34,6 +34,24 @@
       "parentUuid": "ef2b48c1_1b1b88cf",
       "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb5fff4_1534a13a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-24T17:28:28Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need to include the \"fpsensor_crypto.h\" header in that file. I created a CL to remove it: https://crrev.com/c/5886765.\n\nWith that change, can you try removing the extra configs you added and see if it works?\n\nAnother option is to just create the \"fpsensor_debug\" test and put the logic there instead of the restricted_console test. Looks like you started to do that in https://crrev.com/c/5883857. If we go that route we should do it in EC too for consistency.",
+      "parentUuid": "8eb9c195_0c96a099",
+      "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
