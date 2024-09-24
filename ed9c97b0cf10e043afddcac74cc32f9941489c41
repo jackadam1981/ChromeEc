@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b111a3ab_fd59ef8a",
+        "filename": "zephyr/test/console/src/console_restricted.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-24T16:55:31Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "ed9c97b0cf10e043afddcac74cc32f9941489c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d230566f_bac55944",
+        "filename": "zephyr/test/console/src/console_restricted.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-24T16:55:31Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "ed9c97b0cf10e043afddcac74cc32f9941489c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
