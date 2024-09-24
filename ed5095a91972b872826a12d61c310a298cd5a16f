@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0380a7fc_80794809",
+        "filename": "dice/platform_host.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-09-24T19:14:39Z",
+      "side": 1,
+      "message": "something is missing here with specification of the curve.\n```\n#include \u003copenssl/bn.h\u003e\n#include \u003copenssl/ec.h\u003e\n\n  // hex text to bn to initialize private key BN\n  BN_hex2bn(\u0026private_key, argv[1]);\n\n  eckey \u003d EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);\n\n  group \u003d EC_KEY_get0_group(eckey);\n  pub_key \u003d EC_POINT_new(group);\n\n  EC_KEY_set_private_key(eckey, private_key);\n  if (!EC_POINT_mul(group, pub_key, private_key, NULL, NULL, ctx))\n    printf(\"Error at EC_POINT_mul.\\n\");\n\n  EC_KEY_set_public_key(eckey, pub_key);\n  char *cc \u003d EC_POINT_point2hex(group, pub_key, 4, ctx);\n  char *c \u003d cc;\n\n  // print key\n  for (size_t i \u003d 0; i \u003c 2*65; i++)\n    printf(\"%c\", *c++);\n\n```",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "ed5095a91972b872826a12d61c310a298cd5a16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
