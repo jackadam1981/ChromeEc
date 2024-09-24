@@ -33,6 +33,24 @@
       "message": "Shall we just disable sending sysrq-x for Brask (and keeping sleep hang detection)?",
       "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e0f3f5_cbea6816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-24T20:00:56Z",
+      "side": 1,
+      "message": "I\u0027m talking about disabling these host_send_sysrq calls for Brask: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/power/host_sleep.c;l\u003d230-236.",
+      "parentUuid": "748929df_6f0db39e",
+      "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
