@@ -51,6 +51,24 @@
       "parentUuid": "748929df_6f0db39e",
       "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9200907_0f74ac76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-09-24T20:59:56Z",
+      "side": 1,
+      "message": "That\u0027s what [brask: Disable CONFIG_EMULATED_SYSRQ](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5886766) does, but you mention disabling `CONFIG_POWER_SLEEP_FAILURE_DETECTION` in that CL (which is what this CL is doing).\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5886766/comments/1affc54d_ce65172c\n\n\u003e I think undefining CONFIG_POWER_SLEEP_FAILURE_DETECTION is enough to fix b/353831728 and CONFIG_EMULATED_SYSRQ is useful for debugging kernel hangs.\n\nI\u0027m fine with either, we just need to pick one.",
+      "parentUuid": "83e0f3f5_cbea6816",
+      "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
