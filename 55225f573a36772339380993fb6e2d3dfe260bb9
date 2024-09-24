@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f45ba593_7d667c89",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-24T20:55:29Z",
+      "side": 1,
+      "message": "Is there any reason to keep the `plat_free` function?\n\ni.e., is it used anywhere? If so, why isn\u0027t `PLAT_FREE` used instead?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "55225f573a36772339380993fb6e2d3dfe260bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15acc972_fb841972",
         "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
         "patchSetId": 11
