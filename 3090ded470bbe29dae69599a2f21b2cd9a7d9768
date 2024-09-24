@@ -45,6 +45,30 @@
       },
       "revId": "3090ded470bbe29dae69599a2f21b2cd9a7d9768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178066ea_95dc49c6",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-24T17:41:43Z",
+      "side": 1,
+      "message": "if I use \n```\n\tconst console_input1[] \u003d \"fpupload 52 image\";\n```\nI get the below error:\n```\ntest/restricted_console.c:74:53: error: passing \u0027const char[18]\u0027 to parameter of type \u0027char *\u0027 discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]\n   74 |         enum ec_error_list res \u003d test_send_console_command(console_input1);\n      |                                                            ^~~~~~~~~~~~~~\ninclude/test_util.h:214:52: note: passing argument to parameter \u0027input\u0027 here\n  214 | enum ec_error_list test_send_console_command(char *input);\n      |                                                    ^\ntest/restricted_console.c:82:34: error: passing \u0027const char[18]\u0027 to parameter of type \u0027char *\u0027 discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]\n   82 |         res \u003d test_send_console_command(console_input2);\n      |                                         ^~~~~~~~~~~~~~\ninclude/test_util.h:214:52: note: passing argument to parameter \u0027input\u0027 here\n  214 | enum ec_error_list test_send_console_command(char *input);\n      |                                                    ^\n2 errors generated.\nmake[1]: *** [Makefile.rules:645: build/bloonchipper/restricted_console/RW/test/restricted_console.o] Error 1\nmake[1]: *** Waiting for unfinished jobs....\n[235/235] Linking C static library libcrypto.a\nmake: *** [Makefile.rules:353: test-restricted_console] Error 2\nERROR:failed to build restricted_console: Command \u0027[\u0027make\u0027, \u0027BOARD\u003dbloonchipper\u0027, \u0027-j\u0027, \u0027test-restricted_console\u0027]\u0027 returned non-zero exit status 2.\nTest \"restricted_console\": FAILED\n```",
+      "parentUuid": "ddf7ed9d_3746715e",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "3090ded470bbe29dae69599a2f21b2cd9a7d9768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
