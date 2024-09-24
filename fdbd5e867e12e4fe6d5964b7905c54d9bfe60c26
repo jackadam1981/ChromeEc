@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91881a3_c4257e37",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3750,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-24T18:35:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure either if sending a 20V/0A PDO violates the spec, but I\u0027m highly confident that drawing current for a hypothetical 20V/0A PDO _would_ violate the spec, so I think being extra cautious here is correct.",
+      "parentUuid": "617ba21e_d7bfdbc1",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a49f75_420e6cf1",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Well, I don\u0027t understand the charge manager API well, either, but I did experiments before committing this change.\n\nWhen `pe[port].curr_limit \u003d\u003d 0`, calling `tc_snk_power_off()` would set flag `POWER_OFF_SNK` (Don\u0027t trigger dis-connect usage for power swap), then this cause we can\u0027t detect dis-connect properly after tester re-attaches, I tested this before.\n\nI also tried only calling `pd_set_input_current_limit(port, 5V, 0A)` when `pe[port].curr_limit \u003d\u003d 0`, and it failed the test #11. In the test log, we draw current \u003e50mA  (goal is 5mA) for tSrcTransition time period. \nIt needs to call `typec_set_input_current_limit()`, then the drawing current can be down to 1~4mA (\u003c 5mA), and satisfy pSnkSusp (25mW).",
       "parentUuid": "16a49f75_420e6cf1",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb0187e_0d36e3d8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-24T18:35:09Z",
+      "side": 1,
+      "message": "\u003e It needs to call typec_set_input_current_limit(), then the drawing current can be down to 1~4mA (\u003c 5mA), and satisfy pSnkSusp (25mW).\n\nThat\u0027s surprising to me. I would have expected only one of these functions to be operative at a given time, and I would have expected it to be `pd_set_input_current_limit` when the PE is running. I think we should probably debug that difference. I\u0027ll take a look.",
+      "parentUuid": "dd63e82f_95aea6fb",
       "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -108,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32f8bc3c_9850ff4e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3768,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-24T18:35:09Z",
+      "side": 1,
+      "message": "Did you mean that we don\u0027t need to call `tc_snk_power_off`? From your comment above, it sounds like we don\u0027t need to call `tc_snk_power_off`, but we do need to call `typec_set_input_current_limit`.",
+      "parentUuid": "5b39770f_8f114ba4",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efc768cd_e98ad30f",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 4
@@ -143,6 +197,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "efc768cd_e98ad30f",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 30
+      },
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1615698d_7702b6c6",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-24T18:35:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "794bda2a_f9fde443",
       "range": {
         "startLine": 211,
         "startChar": 5,
