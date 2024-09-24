@@ -136,7 +136,7 @@ static int command_fpcapture(int argc, const char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
+DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, nullptr,
 			      "Capture fingerprint in PGM format",
 			      CMD_FLAG_RESTRICTED);
 
@@ -164,14 +164,14 @@ static int command_fpupload(int argc, const char **argv)
 		if (dest >= fp_buffer + FP_SENSOR_IMAGE_SIZE)
 			return EC_ERROR_PARAM1;
 		const char hex_str[] = { pixels_str[0], pixels_str[1], '\0' };
-		*dest = static_cast<uint8_t>(strtol(hex_str, NULL, 16));
+		*dest = static_cast<uint8_t>(strtol(hex_str, nullptr, 16));
 		pixels_str += 2;
 		++dest;
 	}
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fpupload, command_fpupload, NULL,
+DECLARE_CONSOLE_COMMAND(fpupload, command_fpupload, nullptr,
 			"Copy fp image onto fpmcu fpsensor buffer");
 
 /* Transfer an image from the FPMCU to the host
@@ -191,7 +191,7 @@ static int command_fpdownload(int argc, const char **argv)
 	upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fpdownload, command_fpdownload, NULL,
+DECLARE_CONSOLE_COMMAND(fpdownload, command_fpdownload, nullptr,
 			"Copy fp image from fpmcu fpsensor buffer");
 
 static int command_fpenroll(int argc, const char **argv)
@@ -230,7 +230,7 @@ static int command_fpenroll(int argc, const char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
+DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, nullptr,
 			      "Enroll a new fingerprint", CMD_FLAG_RESTRICTED);
 
 static int command_fpinfo(int argc, const char **argv)
@@ -265,7 +265,7 @@ static int command_fpinfo(int argc, const char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(fpinfo, command_fpinfo, NULL,
+DECLARE_SAFE_CONSOLE_COMMAND(fpinfo, command_fpinfo, nullptr,
 			     "Print fingerprint system info");
 
 static int command_fpmatch(int argc, const char **argv)
@@ -286,7 +286,7 @@ static int command_fpmatch(int argc, const char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, NULL,
+DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, nullptr,
 			"Run match algorithm against finger");
 
 static int command_fpclear(int argc, const char **argv)
@@ -304,7 +304,7 @@ static int command_fpclear(int argc, const char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, NULL,
+DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, nullptr,
 			"Clear fingerprint sensor context");
 
 static int command_fpmaintenance(int argc, const char **argv)
@@ -330,7 +330,7 @@ static int command_fpmaintenance(int argc, const char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fpmaintenance, command_fpmaintenance, NULL,
+DECLARE_CONSOLE_COMMAND(fpmaintenance, command_fpmaintenance, nullptr,
 			"Run fingerprint sensor maintenance");
 
 #endif /* CONFIG_CMD_FPSENSOR_DEBUG */
