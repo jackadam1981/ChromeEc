@@ -69,6 +69,24 @@
       "parentUuid": "83e0f3f5_cbea6816",
       "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d79add_7d6b49e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-24T21:24:59Z",
+      "side": 1,
+      "message": "Disabling CONFIG_EMULATED_SYSRQ also disables manual sysrq-x (which is triggered by the recovery button or a console command).",
+      "parentUuid": "b9200907_0f74ac76",
+      "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
