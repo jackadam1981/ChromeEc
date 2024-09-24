@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15acc972_fb841972",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-24T20:54:07Z",
+      "side": 1,
+      "message": "You should also check that `x` is not `NULL:\n\n```\nif (x \u003d\u003d NULL || *x \u003d\u003d NULL) {\n  return;\n}\n\nplat_free(*x);\n*x \u003d NULL;\n```",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e323be98_85193dc2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "\tif (x \u003d\u003d NULL || *x \u003d\u003d NULL) {\n\t\treturn;\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "\tplat_free(*x);\n\t*x \u003d NULL;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "55225f573a36772339380993fb6e2d3dfe260bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
