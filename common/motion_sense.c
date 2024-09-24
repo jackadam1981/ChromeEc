@@ -649,12 +649,6 @@ static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
 			int missed_events =
 				time_until(sensor->next_collection, ts->le.lo) /
 				sensor->collection_rate;
-
-			CPRINTS("%s Missed %d data collections at %u"
-				" - rate: %d",
-				sensor->name, missed_events,
-				sensor->next_collection,
-				sensor->collection_rate);
 		}
 		sensor->next_collection = ts->le.lo + motion_min_interval;
 	}
