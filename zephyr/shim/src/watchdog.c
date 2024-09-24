@@ -158,6 +158,68 @@ void watchdog_reload(void)
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
+static void rt_stats_dump(const struct k_thread *thread, void *user_data)
+{
+	k_thread_runtime_stats_t rt_stats_thread;
+	k_thread_runtime_stats_t rt_stats_all;
+	struct k_thread *t2 = (struct k_thread *)thread;
+	int ret = 0;
+	unsigned int pcnt;
+	const char *tname;
+	char state_str[32];
+
+	if (k_thread_runtime_stats_get(t2, &rt_stats_thread) != 0) {
+		ret++;
+	}
+
+	if (k_thread_runtime_stats_all_get(&rt_stats_all) != 0) {
+		ret++;
+	}
+
+	tname = k_thread_name_get(t2);
+
+	printk("%s%p %-10s\n",
+		      (thread == k_current_get()) ? "*" : " ",
+		      thread,
+		      tname ? tname : "NA");
+	printk("\tstate: %s, entry: %p\n",
+		    k_thread_state_str(t2, state_str, sizeof(state_str)),
+		    t2->entry.pEntry);
+
+	if (ret == 0) {
+		pcnt = (rt_stats_thread.execution_cycles * 100U) /
+		       rt_stats_all.execution_cycles;
+
+		/*
+		 * z_prf() does not support %llu by default unless
+		 * CONFIG_MINIMAL_LIBC_LL_PRINTF=y. So do conditional
+		 * compilation to avoid blindly enabling this kconfig
+		 * so it won't increase RAM/ROM usage too much on 32-bit
+		 * targets.
+		 */
+		printk("\tTotal execution cycles: %u (%u %%)\n",
+			    (uint32_t)rt_stats_thread.execution_cycles,
+			    pcnt);
+		printk("\tCurrent execution cycles: %u\n",
+			    (uint32_t)rt_stats_thread.current_cycles);
+		printk("\tPeak execution cycles: %u\n",
+			    (uint32_t)rt_stats_thread.peak_cycles);
+		printk("\tAverage execution cycles: %u\n",
+			    (uint32_t)rt_stats_thread.average_cycles);
+	} else {
+		printk("\tTotal execution cycles: ? (? %%)\n");
+		printk("\tCurrent execution cycles: ?\n");
+		printk("\tPeak execution cycles: ?\n");
+		printk("\tAverage execution cycles: ?\n");
+	}
+}
+
+static void thread_stats_dump()
+{
+	k_thread_foreach_unlocked(rt_stats_dump, (void*)NULL);
+}
+DECLARE_HOOK(HOOK_SECOND, thread_stats_dump, HOOK_PRIO_DEFAULT);
+
 __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					       int channel_id)
 {
@@ -170,6 +232,7 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
 #endif
+	thread_stats_dump();
 #ifdef TEST_BUILD
 	wdt_warning_triggered = true;
 #endif
