@@ -64,6 +64,30 @@
       },
       "revId": "8e5400d0465cd7d868104562cc87599f53337fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d5ab4a_ca6ad842",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-24T20:14:04Z",
+      "side": 1,
+      "message": "Done. we verified that this will need casting to `void**` even when used with C.",
+      "parentUuid": "db1fc993_5dfaafd3",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "8e5400d0465cd7d868104562cc87599f53337fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
