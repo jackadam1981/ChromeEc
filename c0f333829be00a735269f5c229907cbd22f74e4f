@@ -16,6 +16,24 @@
       "message": "this is still the cros-ec keyboard setup, right?\n\nbrox switched to the upstream keyboard driver here\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5651121\nwonder if it makes sense to do that for trulo from the beginning.",
       "revId": "c0f333829be00a735269f5c229907cbd22f74e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd87230_a9e91c1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-09-24T19:59:52Z",
+      "side": 1,
+      "message": "This is the strauss keyboard configuration that I pulled in from nissa/riven. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5528638",
+      "parentUuid": "c8c5e1aa_370187f4",
+      "revId": "c0f333829be00a735269f5c229907cbd22f74e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
