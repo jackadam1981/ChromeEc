@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1affc54d_ce65172c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-24T17:56:24Z",
+      "side": 1,
+      "message": "I think undefining CONFIG_POWER_SLEEP_FAILURE_DETECTION is enough to fix b/353831728 and CONFIG_EMULATED_SYSRQ is useful for debugging kernel hangs.",
+      "revId": "527102204845bd4635f7f6714e16f96448d2ec79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
