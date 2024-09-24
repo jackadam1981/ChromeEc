@@ -33,6 +33,24 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "527102204845bd4635f7f6714e16f96448d2ec79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12181f6f_10fdca3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-09-24T20:59:52Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s another option, and is available here:\n\n[brask: Disable CONFIG_POWER_SLEEP_FAILURE_DETECTION](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5887806)",
+      "parentUuid": "1affc54d_ce65172c",
+      "revId": "527102204845bd4635f7f6714e16f96448d2ec79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
