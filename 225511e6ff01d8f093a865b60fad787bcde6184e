@@ -239,6 +239,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3493511d_5d5c807f",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-24T15:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69e5a94_491117ae",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8410b20b_4e75f8c5",
         "filename": "zephyr/program/nissa/pujjo/src/fan.c",
         "patchSetId": 18
@@ -288,6 +312,24 @@
         "id": 1544537
       },
       "writtenOn": "2024-09-24T05:13:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce646ae2_beec337e",
+      "revId": "225511e6ff01d8f093a865b60fad787bcde6184e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80561e0a_1e08a270",
+        "filename": "zephyr/program/nissa/pujjo/src/fan.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-24T15:18:54Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "ce646ae2_beec337e",
