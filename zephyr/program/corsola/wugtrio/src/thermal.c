@@ -60,6 +60,7 @@ static void average_tempature(void)
 	int charger_temp, charger_temp_c;
 	int charger_temp_sum = 0;
 	static int temperature_increase;
+	enum power_state chipset_state = power_get_state();
 
 	/*
 	 * Keep track of battery temperature range:
@@ -147,6 +148,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		if (curr->state != ST_DISCHARGE)
 			curr->state = ST_IDLE;
 	}
+
+	/* This policy only execute in state s0*/
+	if (chipset_state != POWER_S0)
+		return 0;
+
 	if (current >= 0)
 		curr->requested_current = MIN(curr->requested_current, current);
 
