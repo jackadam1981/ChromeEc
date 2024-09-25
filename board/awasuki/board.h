@@ -115,6 +115,7 @@ enum battery_type {
 };
 
 int als_enable_status(void);
+void audio_switch_interrupt(enum gpio_signal signal);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

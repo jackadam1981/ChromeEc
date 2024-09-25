@@ -372,3 +372,31 @@ void board_init(void)
 	setup_thermal();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void audio_switch(void)
+{
+    enum power_state powerstate;
+
+    powerstate = power_get_state();
+    if (POWER_S0 == powerstate || POWER_S3S0 == powerstate) {
+        if (0 == gpio_get_level(GPIO_AUDIO_SWITCH_OD)) {
+            gpio_set_level(GPIO_SWITCH_ENABLE, 1);
+        } else {
+            gpio_set_level(GPIO_SWITCH_ENABLE, 0);
+        }
+    } else {
+        gpio_set_level(GPIO_SWITCH_ENABLE, 0);
+    }
+}
+DECLARE_DEFERRED(audio_switch);
+
+void audio_switch_interrupt(enum gpio_signal signal)
+{
+    hook_call_deferred(&audio_switch_data, 0);
+}
+
+static void audio_switch_disable(void)
+{
+    gpio_set_level(GPIO_SWITCH_ENABLE, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, audio_switch_disable, HOOK_PRIO_DEFAULT);
