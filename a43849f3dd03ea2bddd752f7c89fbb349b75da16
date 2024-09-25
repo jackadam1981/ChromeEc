@@ -40,6 +40,30 @@
       },
       "revId": "a43849f3dd03ea2bddd752f7c89fbb349b75da16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aded6291_566bc2a3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/include/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-09-25T17:51:54Z",
+      "side": 1,
+      "message": "ok. Keeping it as it is, for now, as not causing issue. will address it as part of Gen2.1 CL series.",
+      "parentUuid": "63278acf_3c590533",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "a43849f3dd03ea2bddd752f7c89fbb349b75da16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
