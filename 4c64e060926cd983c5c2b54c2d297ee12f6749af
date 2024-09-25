@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac6d1e9_1ed5f323",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-25T15:44:07Z",
+      "side": 1,
+      "message": "Might be a good idea to document what you\u0027re testing and what cases here (see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/src/generic/ppm_state_machine.c as example).\n\nExample:\n```\n/* Check SET_SINK_PATH behavior when sink (valid) and source/disconnected \n * (invalid).\n */\n```\n\nI like this approach because one functional aspect this isn\u0027t testing is that setting sink path on one port disables it on another port (which is a behavior of charge_manager but should be tested somewhere).",
+      "revId": "4c64e060926cd983c5c2b54c2d297ee12f6749af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3696e2fe_548adb8f",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-25T15:44:07Z",
+      "side": 1,
+      "message": "This CCI read and comparison could be reduced to a single command like in `ppm_state_machine.c`: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/src/generic/ppm_state_machine.c;l\u003d93?q\u003dppm_state_machine.c",
+      "revId": "4c64e060926cd983c5c2b54c2d297ee12f6749af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
