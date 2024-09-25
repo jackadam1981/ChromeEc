@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a3ac7b_e4e38660",
+        "filename": "dice/dice.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-09-25T18:25:32Z",
+      "side": 1,
+      "message": "confirmed that it has to be 64 bytes by succeeding hwtest",
+      "parentUuid": "346b1e84_0a173508",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 69
+      },
+      "revId": "ed5095a91972b872826a12d61c310a298cd5a16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0380a7fc_80794809",
