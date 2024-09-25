@@ -134,6 +134,7 @@ DECLARE_HOOK(HOOK_SECOND, average_tempature, HOOK_PRIO_DEFAULT);
 
 int charger_profile_override(struct charge_state_data *curr)
 {
+	enum power_state chipset_state = power_get_state();
 	/*
 	 * Precharge must be executed when communication is failed on
 	 * dead battery.
@@ -147,6 +148,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		if (curr->state != ST_DISCHARGE)
 			curr->state = ST_IDLE;
 	}
+
+	/* This policy only execute in state s0*/
+	if (chipset_state != POWER_S0)
+		return 0;
+
 	if (current >= 0)
 		curr->requested_current = MIN(curr->requested_current, current);
 
