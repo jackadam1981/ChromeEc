@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2a71c85_838d6afd",
+        "filename": "dice/platform_host.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-09-25T00:00:40Z",
+      "side": 1,
+      "message": "well, I work on EVP_PKEY, not on EC_KEY (which is obsolete).\nand the curve is already set in EVP_PKEY\nthis procedure is a shortcut, compare e.g. to https://docs.openssl.org/3.0/man3/EVP_PKEY_sign/#examples",
+      "parentUuid": "0380a7fc_80794809",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "ed5095a91972b872826a12d61c310a298cd5a16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f431e33_8d70b4d0",
         "filename": "dice/platform_host.c",
         "patchSetId": 18
