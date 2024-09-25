@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6cf78aa_84cd3470",
+        "filename": "zephyr/program/corsola/kyogre/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-25T10:58:34Z",
+      "side": 1,
+      "message": "sb battery has a device name and it can be used to identify our battery. So I added a device name check process on Patchset 2. Could you please review that?",
+      "parentUuid": "ccf29f88_4699f531",
+      "revId": "4dcdcebc18a360f539308c76de997e7723034b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bf35d80_7ee98e09",
         "filename": "zephyr/program/corsola/kyogre/src/battery.c",
         "patchSetId": 1
