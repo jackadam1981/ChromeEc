@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "346b1e84_0a173508",
+        "filename": "dice/dice.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-09-25T00:16:04Z",
+      "side": 1,
+      "message": "https://datatracker.ietf.org/doc/html/rfc8152#section-13.1.1 describes it as \"The integer is converted to an octet string as defined in [SEC1].  Leading zero octets MUST be preserved.\"\n[SEC1] \u003d http://www.secg.org/sec1-v2.pdf in section 2.3.7 Integer-to-Octet-String Conversion just describes a string of bytes, no prefix.",
+      "parentUuid": "79838a86_da0bf9a9",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 69
+      },
+      "revId": "ed5095a91972b872826a12d61c310a298cd5a16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0380a7fc_80794809",
         "filename": "dice/platform_host.c",
         "patchSetId": 18
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "no, it seems there is no prefix.",
       "parentUuid": "8f431e33_8d70b4d0",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 39
+      },
+      "revId": "ed5095a91972b872826a12d61c310a298cd5a16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c33ef46_97bcaf8a",
+        "filename": "dice/platform_host.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-09-25T00:16:04Z",
+      "side": 1,
+      "message": "yep, the example shows exactly 64 bytes: https://datatracker.ietf.org/doc/html/rfc8152#appendix-C.1.1",
+      "parentUuid": "114289ac_208a884b",
       "range": {
         "startLine": 249,
         "startChar": 1,
