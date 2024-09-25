@@ -803,6 +803,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 {
 	struct termios tty, tty_saved;
 	uint8_t dbgr_reset_buf[4] = { W_CMD_PORT, 0x27, W_DATA_PORT, 0x80 };
+	int return_status = 0;
 
 	if (conf->device_name == NULL) {
 		fprintf(stderr,
@@ -919,6 +920,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 		break;
 	default:
 		printf("Invalid EFLASH TYPE!\n\r");
+		return_status = -1;
 		goto out;
 	}
 
@@ -927,19 +929,30 @@ static int uart_app(struct itecomdbgr_config *conf)
 		goto out;
 	}
 
-	if (erase_flash(conf))
+	if (erase_flash(conf)) {
+		return_status = -1;
 		goto out;
+	}
 
-	if (!conf->noverify)
-		if (check_flash(conf))
+	if (!conf->noverify) {
+		if (check_flash(conf)) {
+			return_status = -1;
 			goto out;
+		}
+	}
 
-	if (write_flash(conf))
+	if (write_flash(conf)) {
+		return_status = -1;
 		goto out;
+	}
 
-	if (!conf->noverify)
-		if (verify_flash(conf))
+	if (!conf->noverify) {
+		if (verify_flash(conf)) {
+			return_status = -1;
 			goto out;
+		}
+	}
+
 out:
 
 	/* dbgr reset */
@@ -950,7 +963,7 @@ out:
 	close(conf->g_fd);
 	/* Add a msleep after dbgr reset */
 	msleep(100);
-	return 0;
+	return return_status;
 }
 
 int main(int argc, char **argv)
@@ -1058,7 +1071,7 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	uart_app(&conf);
+	r = uart_app(&conf);
 	exit_file(&conf);
 	show_time();
 	return r;
