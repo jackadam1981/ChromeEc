@@ -88,6 +88,24 @@
       "parentUuid": "caba6e91_38e69977",
       "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afb03f9_7ee9b348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-25T02:58:41Z",
+      "side": 1,
+      "message": "I rebased against your change. The CL does not pass the twister test without adding all the configurations. I believe those are for simulating the board. They were not required for the hardware test running on the physical board.",
+      "parentUuid": "caba6e91_38e69977",
+      "revId": "07f6f6cc6f9412bd2d0e823b7f3539ca8c770daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
