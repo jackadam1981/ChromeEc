@@ -16,6 +16,24 @@
       "message": "Please document what cases you are testing. This looks like LPM alert should reject invalid connectors.",
       "revId": "f66f43da75b724918afe49f0b24bc39ccca84a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2189e17e_d50b5590",
+        "filename": "zephyr/test/pdc/src/generic/ppm_driver.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T16:31:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51e7605b_c9147922",
+      "revId": "f66f43da75b724918afe49f0b24bc39ccca84a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
