@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476ddbf2_4df05d8d",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T07:58:59Z",
+      "side": 1,
+      "message": "Do you mean this mode is for recovering a deeply discharged pen?",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "3706a8de85e91c66082fca57ce65e007e9ed904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05679cca_facee10c",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T07:58:59Z",
+      "side": 1,
+      "message": "I was expecting something like this:\n\n\tif (flags \u0026 PEN_FAULT_DETECT) {\n\t\tpen_timer \u003d ERR_TIME;\n\t\tpen_charge_state \u003d STATUS_STOP;\n\t}\n\t\n\tswitch (pen_charge_state) {\n\tcase STATUS_CHARGE:\n\t\tgpio_pin_configure_dt(\n\t\t\tGPIO_DT_FROM_NODELABEL(ec_pen_chg_dis_odl),\n\t\t\tGPIO_ODR_HIGH);\n\t\tpen_timer--;\n\t\tif (pen_timer \u003c\u003d 0) {\n\t\t\tpen_charge_state \u003d STATUS_STOP;\n\t\t\tpen_timer \u003d STP_TIME;\n\t\t}\n\t\tbreak;\n\tcase STATUS_STOP:\n\t\tgpio_pin_configure_dt(\n\t\t\tGPIO_DT_FROM_NODELABEL(ec_pen_chg_dis_odl),\n\t\t\tGPIO_ODR_LOW);\n\t\tpen_timer--;\n\t\tif (pen_timer \u003c\u003d 0) {\n\t\t\tpen_charge_state \u003d STATUS_CHARGE;\n\t\t\tpen_timer \u003d CHG_TIME;\n\t\t\tflags \u0026\u003d ~PEN_FAULT_DETECT;\n\t\t}\n\t\tbreak;\n\tdefault:\n\t\tbreak;\n\t}\n\t\nThen, you need only one timer and two states. WDYT?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "3706a8de85e91c66082fca57ce65e007e9ed904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad751373_240e44b9",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T07:58:59Z",
+      "side": 1,
+      "message": "Do you also want to disable interrupt for int_pen_fault until the fault time is over? Otherwise, this handler may keep triggering and keep resetting the error timer. You need to re-enable the interrupt when transitioning from STATUS_STOP to STATUS_CHARGE.\n\nAnother option is to set PEN_FAULT_DETECT here only if it\u0027s not set yet. Please see the code in my comment as well (where PEN_FAULT_DETECT is cleared).",
+      "revId": "3706a8de85e91c66082fca57ce65e007e9ed904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
