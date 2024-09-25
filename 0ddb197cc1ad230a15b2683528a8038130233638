@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353a1b66_57c1a486",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-25T18:10:27Z",
+      "side": 1,
+      "message": "Out of scope: Are we even using this task anymore? If this module has stuff we need in it, we might want to move it elsewhere.",
+      "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d875f5_f9b80f70",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-25T18:10:27Z",
+      "side": 1,
+      "message": "Nit: This would simpler if phrased as `port \u003c 0 || port \u003e MAX_COUNT`.",
+      "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f8aa05_61847516",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-25T18:10:27Z",
+      "side": 1,
+      "message": "Why not just `zassert_ok`?",
+      "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
