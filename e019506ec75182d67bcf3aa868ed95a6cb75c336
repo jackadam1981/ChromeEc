@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d86f83b_23f61408",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T06:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85c723c9_3bdfa80d",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 34
+      },
+      "revId": "e019506ec75182d67bcf3aa868ed95a6cb75c336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8cfe224_5aefe8e6",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-09-24T23:57:31Z",
       "side": 1,
       "message": "Nit - These are all single bit fields.  I think you can use `zassert_true(cci.\u003cbitfield\u003e)` and `zassert_false(cci.\u003cbitfield\u003e)`.\n\nAt a minimum, you should use the same semantics to check each bit - either `zassert_equal` or `zassert_true/false`.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 0
+      },
+      "revId": "e019506ec75182d67bcf3aa868ed95a6cb75c336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3baa805_3229cd55",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T06:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8cfe224_5aefe8e6",
       "range": {
         "startLine": 310,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23477996_951f802e",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T06:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b83d83_783c47ae",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 0
+      },
+      "revId": "e019506ec75182d67bcf3aa868ed95a6cb75c336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99cf7de2_9b738794",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a33df3_c1d08ca1",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T06:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99cf7de2_9b738794",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 34
+      },
+      "revId": "e019506ec75182d67bcf3aa868ed95a6cb75c336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e39e356_a11a62c6",
@@ -123,6 +219,24 @@
       "writtenOn": "2024-09-24T23:57:31Z",
       "side": 1,
       "message": "Should the test try SET_SINK_PATH when the PDC is a source?",
+      "revId": "e019506ec75182d67bcf3aa868ed95a6cb75c336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5e0500_cb5e8143",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T06:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e39e356_a11a62c6",
       "revId": "e019506ec75182d67bcf3aa868ed95a6cb75c336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
