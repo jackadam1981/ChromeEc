@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e23f6b_c8dc3ec1",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T16:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ac6d1e9_1ed5f323",
+      "revId": "4c64e060926cd983c5c2b54c2d297ee12f6749af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3696e2fe_548adb8f",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-25T15:44:07Z",
       "side": 1,
       "message": "This CCI read and comparison could be reduced to a single command like in `ppm_state_machine.c`: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/src/generic/ppm_state_machine.c;l\u003d93?q\u003dppm_state_machine.c",
+      "revId": "4c64e060926cd983c5c2b54c2d297ee12f6749af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ab0b81_250cbb04",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-25T16:30:25Z",
+      "side": 1,
+      "message": "Ack. Maybe in another CL.",
+      "parentUuid": "3696e2fe_548adb8f",
       "revId": "4c64e060926cd983c5c2b54c2d297ee12f6749af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
