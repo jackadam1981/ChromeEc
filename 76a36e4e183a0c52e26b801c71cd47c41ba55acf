@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12593253_6740848e",
+        "filename": "zephyr/program/rex/kanix/keyboard.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-25T11:05:49Z",
+      "side": 1,
+      "message": "Rex is not using the new keyboard driver so you should be able to drop this block and nothing changes, no point copy pasting it around, it was there for reference and for testing on npcx boards but does not need to be in every variant",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 2
+      },
+      "revId": "76a36e4e183a0c52e26b801c71cd47c41ba55acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
