@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "fc65c752113420310e3e5b9ba3c2c9aab04da580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a460dfd0_5acb053f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-09-25T08:12:39Z",
+      "side": 1,
+      "message": "Looks good to me. However, can you attach logs how it is possible we match the pass regex, despite the exception? Is that this case b/367411510 or something else? Your change should catch the case from the bug, because we [parse](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/613fab1ab133d2df64c2b8be698e18ece5083d3e:src/platform/ec/test/run_device_tests.py;l\u003d1312) the renaming lines after pass, right?",
+      "revId": "fc65c752113420310e3e5b9ba3c2c9aab04da580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
