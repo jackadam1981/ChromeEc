@@ -60,6 +60,7 @@ static void average_tempature(void)
 	int charger_temp, charger_temp_c;
 	int charger_temp_sum = 0;
 	static int temperature_increase;
+	enum power_state chipset_state = power_get_state();
 
 	/*
 	 * Keep track of battery temperature range:
@@ -91,7 +92,7 @@ static void average_tempature(void)
 		temperature_increase = 0;
 	}
 
-	if (thermals[4]) {
+	if (thermals[4] && chipset_state == POWER_S0) {
 		if (temperature_increase) {
 			if (charger_temp_ave >= 70 && temp_zone <= TEMP_ZONE_2)
 				clear_remaining_array(time, ROW_NUM, 0, 2);
