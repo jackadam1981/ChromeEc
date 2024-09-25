@@ -464,7 +464,7 @@ esac
 
 SERVO_TYPE="$(dut_control_get servo_type || :)"
 
-if [[ "${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_.*$ ]]; then
+if [[ XXX"${SERVO_TYPE}" =~ ^servo_v4(p1)?_with_.*$ ]]; then
 	ACTIVE_DEVICE="$(dut_control_get active_dut_controller)"
 	if [[ ${ACTIVE_DEVICE} == neither ]]; then
           die "Could not determine servo V4 active device"
