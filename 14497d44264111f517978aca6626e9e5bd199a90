@@ -33,6 +33,46 @@
       "message": "sounds good, hard to tell if this will match the VIF exactly, but we will see",
       "revId": "14497d44264111f517978aca6626e9e5bd199a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f43a84_acae8544",
+        "filename": "zephyr/program/brox/brox/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-25T22:29:04Z",
+      "side": 1,
+      "message": "Board specific changes should be in a separate CL.\n\nAlso the correct way to set choice symbols is to use\n```\nchoice PDC_POWER_MGMT_SRC_PDO_PEAK_OCP\n    default PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_110\nendchoice\n```",
+      "revId": "14497d44264111f517978aca6626e9e5bd199a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d926ce_c0c28c63",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-25T22:29:04Z",
+      "side": 1,
+      "message": "`choice` symbols should be given a name.  Your `endchoice` comment used `PDC_POWER_MGMT_SRC_PDO_PEAK_OCP` and seems reasonable.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "14497d44264111f517978aca6626e9e5bd199a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
