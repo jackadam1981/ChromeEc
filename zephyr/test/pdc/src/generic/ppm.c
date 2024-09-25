@@ -29,6 +29,7 @@ LOG_MODULE_REGISTER(ucsi_ppm_test, LOG_LEVEL_DBG);
 
 static struct ucsi_ppm_device *ppm_dev;
 static const struct emul *emul = EMUL_DT_GET(PDC_EMUL_NODE);
+static const struct device *pdc_dev = DEVICE_DT_GET(PDC_EMUL_NODE);
 
 static const struct ucsi_control_t enable_all_notifications = {
 	.command = UCSI_SET_NOTIFICATION_ENABLE,
@@ -45,6 +46,7 @@ static void host_cmd_pdc_reset(void *fixture)
 	drv = pdc->api;
 	ppm_dev = drv->get_ppm_dev(pdc);
 	emul_pdc_reset(emul);
+	pdc_set_comms_state(pdc_dev, true);
 }
 
 ZTEST_SUITE(ucsi_ppm, NULL, NULL, host_cmd_pdc_reset, NULL, NULL);
@@ -354,6 +356,37 @@ ZTEST(ucsi_ppm, test_set_sink_path)
 	zassert_true(cci.error);
 
 	LOG_INF("Acking SET_SINK_PATH");
+	zassert_ok(write_ack_command(false, true));
+	zassert_true(wait_for_cmd_to_process());
+}
+
+ZTEST(ucsi_ppm, test_pdc_busy)
+{
+	struct ucsi_control_t ctrl = {};
+	union cci_event_t cci;
+
+	zassert_true(reset_to_idle_notify());
+
+	/* Disable comm. */
+	pdc_set_comms_state(pdc_dev, false);
+
+	LOG_INF("Sending GET_CONNECTOR_CAPABILITY while PDC in suspend");
+	ctrl.command = UCSI_GET_CONNECTOR_CAPABILITY;
+	ctrl.data_length = 0;
+	ctrl.command_specific[0] = PPM_CONNECTOR_NUM;
+	zassert_ok(write_command(&ctrl));
+	zassert_false(wait_for_cmd_to_process());
+
+	zassert_true(read_cci(&cci));
+	zassert_false(cci.command_completed);
+	zassert_true(cci.error != 1);
+	zassert_equal(cci.data_len, 0);
+
+	/* Resume PDC. This will reset the driver. */
+	pdc_set_comms_state(pdc_dev, true);
+	zassert_true(wait_for_cmd_to_process());
+
+	LOG_INF("Acking GET_CONNECTOR_CAPABILITY");
 	zassert_ok(write_ack_command(false, true));
 	zassert_true(wait_for_cmd_to_process());
 }
