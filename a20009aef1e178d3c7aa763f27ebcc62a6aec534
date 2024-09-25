@@ -235,6 +235,24 @@
       "parentUuid": "647c44f5_1f61a10e",
       "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86488432_42537a6f",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-25T02:56:34Z",
+      "side": 1,
+      "message": "Hi Nojiri-san, I re-designed the pen_charge.\nCould you please review the new code? Thank you.",
+      "parentUuid": "68e47d5f_2275861c",
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
