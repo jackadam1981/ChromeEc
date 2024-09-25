@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ad2406_e588bed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-09-25T18:30:46Z",
+      "side": 1,
+      "message": "I\u0027d say cbor part deserves to be its own library, e.g. `static_cbor`",
+      "revId": "ebbca5eec6c25cd8a34beaf3f3a61e5d8c6566c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93816e21_ac7a52b9",
+        "filename": "dice/cbor_dice.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-09-25T18:30:46Z",
+      "side": 1,
+      "message": "nice!",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b2b3e8b7_1e747d18",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dice/cbor_dice.h",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "#define CFG_DESCR_COMP_NAME                                                 \\\n\t{                                                                    \\\n\t\tCBOR_HDR1(CBOR_MAJOR_TSTR, CFG_DESCR_COMP_NAME_VALUE_LEN),      \\\n\t\t\t\u0027C\u0027, \u0027r\u0027, \u0027O\u0027, \u0027S\u0027, \u0027 \u0027, \u0027A\u0027, \u0027P\u0027, \u0027 \u0027, \u0027F\u0027, \u0027W\u0027         \\\n"
+            },
+            {
+              "path": "dice/cbor_dice.h",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 136,
+                "endChar": 0
+              },
+              "replacement": "#define CWT_PROFILE_NAME                                                  \\\n\t{                                                                   \\\n\t\tCBOR_HDR1(CBOR_MAJOR_TSTR, CWT_PROFILE_NAME_VALUE_LEN),       \\\n\t\t\t\u0027a\u0027, \u0027n\u0027, \u0027d\u0027, \u0027r\u0027, \u0027o\u0027, \u0027i\u0027, \u0027d\u0027, \u0027.\u0027, \u00271\u0027, \u00276\u0027       \\\n"
+            },
+            {
+              "path": "dice/cbor_dice.h",
+              "range": {
+                "startLine": 208,
+                "startChar": 0,
+                "endLine": 212,
+                "endChar": 0
+              },
+              "replacement": "#define CDI_SIG_STRUCT_CONTEXT                                              \\\n\t{                                                                    \\\n\t\tCBOR_HDR1(CBOR_MAJOR_TSTR, CDI_SIG_STRUCT_CONTEXT_VALUE_LEN),  \\\n\t\t\t\u0027S\u0027, \u0027i\u0027, \u0027g\u0027, \u0027n\u0027, \u0027a\u0027, \u0027t\u0027, \u0027u\u0027, \u0027r\u0027, \u0027e\u0027, \u00271\u0027       \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ebbca5eec6c25cd8a34beaf3f3a61e5d8c6566c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
