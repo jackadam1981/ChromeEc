@@ -37,3 +37,15 @@ static void alt_sensor_init(void)
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
+
+static void gpiom2_s0(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_m2), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, gpiom2_s0, HOOK_PRIO_DEFAULT);
+
+static void gpiom2_s3(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_m2), 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, gpiom2_s3, HOOK_PRIO_DEFAULT);
