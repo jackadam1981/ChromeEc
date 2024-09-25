@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "43cdd7e9_39c3600f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-09-25T18:35:18Z",
+      "side": 1,
+      "message": "this is already a separate \"package\" similar to PW, it\u0027s very specialized to what we do in GSC: we have a pre-assembled cbor structure instead of building it using primitives. I don\u0027t want to build it as a separate library and would rather let GSC fw include the sources. GSC fw will include dice.c from here and will need to provide its own __platform functions.",
+      "parentUuid": "c2ad2406_e588bed4",
+      "revId": "ebbca5eec6c25cd8a34beaf3f3a61e5d8c6566c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "93816e21_ac7a52b9",
         "filename": "dice/cbor_dice.h",
         "patchSetId": 24
