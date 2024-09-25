@@ -177,7 +177,7 @@ static int init_file(struct itecomdbgr_config *conf)
 	if (conf->read_start_addr != NO_READ)
 		return 0;
 
-	printf("\n\rOpen file: %s\n\r", conf->file_name);
+	printf("Open file: %s\n\r", conf->file_name);
 	conf->fi = fopen(conf->file_name, "rb");
 	if (conf->fi != NULL) {
 		if (fstat(fileno(conf->fi), &st) < 0) {
@@ -413,7 +413,7 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 		status = debug_getc(conf);
 		write_com(conf, cs_high, sizeof(cs_high));
 		if (timeout++ > 200) {
-			printf("check_status timeout exit!\n\r");
+			printf("check_status: timeout exit!\n\r");
 			return -1;
 		}
 
@@ -441,14 +441,14 @@ static void getchipid(struct itecomdbgr_config *conf)
 	chipid[2] = rd_reg(conf, 0xF02087);
 	chipver = rd_reg(conf, 0xF02002);
 	printf("\rChip ID = %02x%02x%02x", chipid[0], chipid[1], chipid[2]);
-	printf(" , Chip Ver= %02x", chipver);
+	printf(", Chip Ver = %02x", chipver);
 	eflash_size_flag = chipver >> 4;
 	if (eflash_size_flag == 0xC)
 		conf->eflash_size_in_k = 1024;
 	if (eflash_size_flag == 0x8)
 		conf->eflash_size_in_k = 512;
-	printf(" , eflash size = %04d KB", conf->eflash_size_in_k);
-	printf(" , file size = %04d B\n", conf->file_size);
+	printf(", eflash size = %d KB", conf->eflash_size_in_k);
+	printf(", file size = %d KB\n", conf->file_size / 1024);
 
 	/* Get the real flash size , 64K for 1 Block*/
 	/* Reset the global flash value */
@@ -481,7 +481,7 @@ static int read_id_2(struct itecomdbgr_config *conf)
 
 	write_com(conf, cs_high, sizeof(cs_high));
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
-	printf(" Flash ID :%02x %02x %02x\n\r", FlashID[0], FlashID[1],
+	printf("Flash ID = %02x %02x %02x\n\r", FlashID[0], FlashID[1],
 	       FlashID[2]);
 
 	if ((FlashID[0] == 0xFF) && (FlashID[1] == 0xFF) &&
@@ -523,7 +523,7 @@ static int erase_4k(struct itecomdbgr_config *conf)
 	while (start_addr < end_addr) {
 		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
 		if (check_status(conf, 0x02, 1) < 0) {
-			printf("erase_4k:check_status error 1\n\r");
+			printf("erase_4k: check_status failed\n\r");
 			result = FAIL;
 			goto out;
 		}
@@ -539,10 +539,13 @@ static int erase_4k(struct itecomdbgr_config *conf)
 			goto out;
 		}
 
-		start_addr += conf->sector_size;
-		printf("\rEraseing...     : %d%%",
-		       (++i * 100) / (total_size - 1));
+		printf("\rErasing...     : %d%% @ %06lx/%06lx",
+		       (++i * 100) / (total_size - 1),
+		       start_addr, end_addr
+			);
 		fflush(stdout);
+
+		start_addr += conf->sector_size;
 	}
 out:
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
@@ -554,10 +557,8 @@ static int erase_flash(struct itecomdbgr_config *conf)
 	int result = SUCCESS;
 
 	if (erase_4k(conf)) {
-		printf("check_flash : error\n\r");
 		result = FAIL;
 	}
-	printf("\n\r");
 	return result;
 }
 
@@ -720,10 +721,13 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 			goto out;
 		}
 
-		start_addr += conf->page_size;
-		printf("\rPrograming...   : %d%%",
-		       (++j * 100) / (total_size - 1));
+		printf("\rProgramming...   : %d%% @ %06lx/%06lx",
+		       (++j * 100) / (total_size - 1),
+		       start_addr, end_addr
+			);
 		fflush(stdout);
+
+		start_addr += conf->page_size;
 	}
 out:
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
@@ -734,7 +738,7 @@ static int write_flash(struct itecomdbgr_config *conf)
 {
 	int result = SUCCESS;
 	if ((result = page_program_burst_v2(conf, conf->g_writebuf)) != 0) {
-		printf("write_flash : error\n\r");
+		printf("write_flash: error\n\r");
 	}
 	printf("\n\r");
 	return result;
@@ -745,7 +749,7 @@ static int check_flash(struct itecomdbgr_config *conf)
 	int result = SUCCESS;
 
 	if ((result = fast_read_burst_cdata(conf, NULL, 1)) != 0) {
-		printf("check_flash : error\n\r");
+		printf("check_flash: error\n\r");
 	}
 	printf("\n\r");
 	return result;
@@ -756,7 +760,7 @@ static int verify_flash(struct itecomdbgr_config *conf)
 	int result = SUCCESS;
 
 	if ((result = fast_read_burst_cdata(conf, conf->g_writebuf, 0)) != 0) {
-		printf("verify_flash : error\n\r");
+		printf("verify_flash: error\n\r");
 		result = FAIL;
 	}
 	printf("\n\r");
