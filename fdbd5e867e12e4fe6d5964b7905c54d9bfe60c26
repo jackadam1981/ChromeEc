@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17125b6c_798d2c3d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3750,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-25T02:23:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b91881a3_c4257e37",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a49f75_420e6cf1",
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "Did you mean that we don\u0027t need to call `tc_snk_power_off`? From your comment above, it sounds like we don\u0027t need to call `tc_snk_power_off`, but we do need to call `typec_set_input_current_limit`.",
       "parentUuid": "5b39770f_8f114ba4",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10907ecb_8f6de786",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3768,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-09-25T02:23:18Z",
+      "side": 1,
+      "message": "Oh, yeah, it\u0027s typo, we don\u0027t need to call `tc_snk_power_off()`.",
+      "parentUuid": "32f8bc3c_9850ff4e",
       "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
