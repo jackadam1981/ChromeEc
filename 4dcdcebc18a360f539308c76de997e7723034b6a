@@ -69,6 +69,24 @@
       "parentUuid": "5bf35d80_7ee98e09",
       "revId": "4dcdcebc18a360f539308c76de997e7723034b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed63bae8_fbcfd355",
+        "filename": "zephyr/program/corsola/kyogre/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-25T11:00:30Z",
+      "side": 1,
+      "message": "I updated the code using HOOK_CHIPSET_STARTUP and 10second timer on Patchset 2. Could you please review that?",
+      "parentUuid": "3fa23102_92c2347e",
+      "revId": "4dcdcebc18a360f539308c76de997e7723034b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
