@@ -12,7 +12,7 @@ extern const uint32_t pd_src_pdo[1];
 extern const int pd_src_pdo_cnt;
 extern const uint32_t pd_src_pdo_max[1];
 extern const int pd_src_pdo_max_cnt;
-extern const uint32_t pd_snk_pdo[3];
+extern const uint32_t pd_snk_pdo[4];
 extern const int pd_snk_pdo_cnt;
 #endif /* CONFIG_USB_PD_CUSTOM_PDO */
 
