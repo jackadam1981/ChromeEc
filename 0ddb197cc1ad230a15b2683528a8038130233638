@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a23fb11_93878f95",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-26T03:01:22Z",
+      "side": 1,
+      "message": "Need the data structure `union data_status_reg` here which also used in src/platform/ec/zephyr/subsys/pd_controller/pdc_pmc_debug.c though we are not enable this task now.",
+      "parentUuid": "353a1b66_57c1a486",
+      "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2d875f5_f9b80f70",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d36ad9_2d306f2a",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-26T03:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2d875f5_f9b80f70",
+      "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f8aa05_61847516",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-09-25T18:10:27Z",
       "side": 1,
       "message": "Why not just `zassert_ok`?",
+      "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0d157a_38dbf302",
+        "filename": "zephyr/test/pdc/src/generic/pdc_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-09-26T03:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f8aa05_61847516",
       "revId": "0ddb197cc1ad230a15b2683528a8038130233638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
