@@ -24,6 +24,7 @@
 #define CANNOT_ENTER_SAFE_MODE_FMT "Cannot start SSM: %s\n"
 
 static bool in_safe_mode;
+static bool attempted_safe_mode;
 
 static const int safe_mode_allowed_hostcmds[] = {
 	EC_CMD_CONSOLE_READ,
@@ -145,6 +146,17 @@ DECLARE_DEFERRED(system_safe_mode_start);
 
 int start_system_safe_mode(void)
 {
+	/* Safe mode should only ever be attempted once */
+	if (attempted_safe_mode)
+		return EC_ERROR_INVAL;
+	attempted_safe_mode = true;
+
+	/*
+	 * Reload watchdog to ensure safe mode has time to handle the panic.
+	 * This is especially important when handling a watchdog panic.
+	 */
+	watchdog_reload();
+
 	if (!system_is_in_rw()) {
 		panic_printf(CANNOT_ENTER_SAFE_MODE_FMT, "RO image");
 		return EC_ERROR_INVAL;
