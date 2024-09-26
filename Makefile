@@ -93,6 +93,27 @@ not_cfg = $(subst ro rw,y,$(filter-out $(1:y=ro rw),ro rw))
 # Include those now, since they must be defined for _flag_cfg below.
 include $(BDIR)/build.mk
 
+CROSS_COMPILE_TARGET_arm:=arm-eabi
+CROSS_COMPILE_TARGET_riscv:=riscv64-elf
+CROSS_COMPILE_TARGET_x86:=i386-elf
+CROSS_COMPILE_TARGET_nds32:=nds32le-elf
+
+CROSS_COMPILE_TOOLCHAIN:=$(CROSS_COMPILE_TARGET_$(COREBOOT_TOOLCHAIN))
+CROSS_COREBOOT:=$(CROSS_COMPILE_TARGET_$(COREBOOT_TOOLCHAIN))
+
+ifeq (riscv,$(COREBOOT_TOOLCHAIN))
+CROSS_COMPILE_TOOLCHAIN:=riscv-elf
+endif
+
+ifneq (,$(COREBOOT_SDK_ROOT_$(COREBOOT_TOOLCHAIN)))
+CROSS_COMPILE:=$(COREBOOT_SDK_ROOT_$(COREBOOT_TOOLCHAIN))/bin/$(CROSS_COREBOOT)-
+else
+ifneq (,$(USE_COREBOOT_SDK))
+CROSS_COMPILE:=$(shell bazel --project fwsdk run \
+	@coreboot-sdk-$(CROSS_COMPILE_TOOLCHAIN)//:get_path)/bin/$(CROSS_COREBOOT)-
+endif
+endif
+
 # Baseboard directory
 ifneq (,$(BASEBOARD))
 BASEDIR:=baseboard/$(BASEBOARD)
