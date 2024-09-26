@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91b9aef_c5ad50d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-26T20:28:29Z",
+      "side": 1,
+      "message": "Generally, we want to keep the EC and Zephyr tests in sync; that\u0027s why we have the warning that pops up from `migrated_files.sh`.\n\nWhat that means in this case is that you should first create a CL that ports the [existing EC `fpsensor_debug.cc` unit test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_debug.cc) functionality. Then make this CL the one that just adds the `fpupload` test to it.",
+      "revId": "413a60e3b54bf96b7587e3d9ccda7fa6b620fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
