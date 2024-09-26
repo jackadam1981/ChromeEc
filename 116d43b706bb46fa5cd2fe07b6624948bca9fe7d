@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0993d0_8674559a",
+        "filename": "zephyr/program/rauru/navi/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-09-26T07:56:42Z",
+      "side": 1,
+      "message": "Remove extra empty line.",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3bbf18f_43d938d5",
+        "filename": "zephyr/program/rauru/navi/src/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-09-26T07:56:42Z",
+      "side": 1,
+      "message": "Please add some comment to explain the reason for this function, thanks.",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e04909e_17736376",
+        "filename": "zephyr/program/rauru/navi/src/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-09-26T07:56:42Z",
+      "side": 1,
+      "message": "`board_version` would be more clear.",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b664dc52_945bf187",
+        "filename": "zephyr/program/rauru/navi/src/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-09-26T07:56:42Z",
+      "side": 1,
+      "message": "Better combine these 2 conditions.\n \n```suggestion\n\tif (cbi_get_board_version(\u0026version) \u003d\u003d EC_SUCCESS \u0026\u0026\n\t    board_version \u003d\u003d 0) {\n```",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
