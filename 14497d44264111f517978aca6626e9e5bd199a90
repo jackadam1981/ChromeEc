@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7bc27b_30b7cc1f",
+        "filename": "zephyr/program/brox/brox/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-26T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f43a84_acae8544",
+      "revId": "14497d44264111f517978aca6626e9e5bd199a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0d926ce_c0c28c63",
@@ -65,6 +83,30 @@
       "writtenOn": "2024-09-25T22:29:04Z",
       "side": 1,
       "message": "`choice` symbols should be given a name.  Your `endchoice` comment used `PDC_POWER_MGMT_SRC_PDO_PEAK_OCP` and seems reasonable.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "14497d44264111f517978aca6626e9e5bd199a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2655e7c_6bdbfb90",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-26T21:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0d926ce_c0c28c63",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -124,6 +166,24 @@
       "side": 1,
       "message": "There appear to be [2 usages of the enum values in the entire codebase](https://source.chromium.org/search?q\u003dPDO_PEAK_OVERCURR_%20-f:release-firmware%20-f:%5Egen%2F\u0026sq\u003d\u0026ss\u003dchromiumos). Could we basically move the enum into Kconfig?",
       "parentUuid": "0ef6c1cb_eb72f633",
+      "revId": "14497d44264111f517978aca6626e9e5bd199a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7eb2078_c0233699",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-26T21:30:52Z",
+      "side": 1,
+      "message": "I\u0027d rather keep the enum. Test code needs named constants to compare against.",
+      "parentUuid": "f5f5b180_bc6b8db0",
       "revId": "14497d44264111f517978aca6626e9e5bd199a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
