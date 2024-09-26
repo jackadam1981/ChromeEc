@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42b18122_3746c3a5",
+        "filename": "zephyr/program/rauru/navi/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-26T09:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0993d0_8674559a",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3bbf18f_43d938d5",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-26T07:56:42Z",
       "side": 1,
       "message": "Please add some comment to explain the reason for this function, thanks.",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f54bf7_7c440027",
+        "filename": "zephyr/program/rauru/navi/src/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-26T09:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3bbf18f_43d938d5",
       "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3ddf18_74d63e43",
+        "filename": "zephyr/program/rauru/navi/src/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-26T09:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e04909e_17736376",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b664dc52_945bf187",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-09-26T07:56:42Z",
       "side": 1,
       "message": "Better combine these 2 conditions.\n \n```suggestion\n\tif (cbi_get_board_version(\u0026version) \u003d\u003d EC_SUCCESS \u0026\u0026\n\t    board_version \u003d\u003d 0) {\n```",
+      "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0c6a0a_9890ef1d",
+        "filename": "zephyr/program/rauru/navi/src/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-26T09:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b664dc52_945bf187",
       "revId": "116d43b706bb46fa5cd2fe07b6624948bca9fe7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
