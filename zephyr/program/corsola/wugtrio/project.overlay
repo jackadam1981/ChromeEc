@@ -54,6 +54,12 @@
 		usb_c0_ppc_bc12 {
 			handler = "ppc_interrupt";
 		};
+
+		gpio_m2_irq: gpio_m2_irq {
+			irq-pin = <&gpio_m2>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "gpio_m2_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -114,6 +120,14 @@
 			gpios = <&gpiof 0 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_USB_C0_FRS_EN";
 		};
+
+		gpio_m2: gpio_m2 {
+			gpios = <&gpiom 2 GPIO_INPUT>;
+		};
+
+		gpio_j7: gpio_j7 {
+			gpios = <&gpioj 7 GPIO_OUTPUT_LOW>;
+		};
 	};
 
 	unused-pins {
@@ -122,8 +136,6 @@
 			<&gpioa 3 GPIO_INPUT>,
 			/* ec_pen_chg_dis_odl */
 			<&gpioh 3 GPIO_INPUT>,
-			/* adp_present */
-			<&gpiom 2 GPIO_INPUT>,
 			/* pg_pp5000_z1_od */
 			<&gpiod 2 GPIO_INPUT>,
 			/* charge_en */
