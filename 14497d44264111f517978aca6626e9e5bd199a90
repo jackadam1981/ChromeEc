@@ -108,6 +108,24 @@
       "parentUuid": "9aa2c4d1_78075e30",
       "revId": "14497d44264111f517978aca6626e9e5bd199a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f5b180_bc6b8db0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-26T20:46:40Z",
+      "side": 1,
+      "message": "There appear to be [2 usages of the enum values in the entire codebase](https://source.chromium.org/search?q\u003dPDO_PEAK_OVERCURR_%20-f:release-firmware%20-f:%5Egen%2F\u0026sq\u003d\u0026ss\u003dchromiumos). Could we basically move the enum into Kconfig?",
+      "parentUuid": "0ef6c1cb_eb72f633",
+      "revId": "14497d44264111f517978aca6626e9e5bd199a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
