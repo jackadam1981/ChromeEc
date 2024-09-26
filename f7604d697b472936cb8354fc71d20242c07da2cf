@@ -39,6 +39,24 @@
       "message": "Please add a unit test for it for EC and Zephyr",
       "revId": "f7604d697b472936cb8354fc71d20242c07da2cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5957f4da_41ccbc11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-26T20:40:36Z",
+      "side": 1,
+      "message": "I added it in EC. Will add it to zephyr after first zephyr test merges",
+      "parentUuid": "79ad6d10_1358840a",
+      "revId": "f7604d697b472936cb8354fc71d20242c07da2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
