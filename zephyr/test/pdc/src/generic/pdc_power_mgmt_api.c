@@ -1888,7 +1888,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_sysjump_policy_on)
 }
 
 /* TODO(b/345292002): Need Set RDO API for TPS6699x emulator/driver. */
-#ifndef CONFIG_TODO_B_345292002
+#ifdef CONFIG_TODO_B_345292002
 /**
  * @brief Helper function for getting object position in RDO from the emulator
  */
