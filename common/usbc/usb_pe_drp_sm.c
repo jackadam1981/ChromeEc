@@ -6054,14 +6054,6 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 	 */
 	if (pe[port].discover_identity_counter >= N_DISCOVER_IDENTITY_COUNT)
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
-	else if (pe[port].discover_identity_counter ==
-		 N_DISCOVER_IDENTITY_PD3_0_LIMIT)
-		/*
-		 * Downgrade to PD 2.0 if the partner hasn't replied before
-		 * all retries are exhausted in case the cable is
-		 * non-compliant about GoodCRC-ing higher revisions
-		 */
-		set_cable_rev(port, PD_REV20);
 
 	/*
 	 * Set discover identity timer unless BUSY case already did so.
