@@ -10,6 +10,7 @@
 #include "emul/emul_tps6699x.h"
 #include "tps6699x_reg.h"
 #include "usbc/utils.h"
+#include "zephyr/sys/util.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -324,7 +325,53 @@ static void tps6699x_emul_handle_sryr(struct tps6699x_emul_pdc_data *data,
 static void tps6699x_emul_handle_aneg(struct tps6699x_emul_pdc_data *data,
 				      uint8_t *data_reg)
 {
+	const union reg_autonegotiate_sink *an_snk =
+		(const union reg_autonegotiate_sink *)&data
+			->reg_val[REG_AUTONEGOTIATE_SINK];
+	union reg_active_rdo_contract *active_rdo_contract =(union reg_active_rdo_contract *)&data
+			->reg_val[REG_ACTIVE_RDO_CONTRACT];
+
+	uint32_t pdos[PDO_OFFSET_MAX];
+	uint32_t rdo_idx = 0;
+
+	int max_v = an_snk->auto_neg_max_voltage * 50;
+	int min_v = an_snk->auto_neg_min_voltage * 50;
+	int max_a = an_snk->auto_neg_max_current * 10;
+	int min_power = an_snk->auto_neg_sink_min_required_power * 250;
+
 	LOG_INF("ANEg TASK");
+	emul_pdc_pdo_get_direct(&data->pdo, SOURCE_PDO, PDO_OFFSET_0,
+				ARRAY_SIZE(pdos), PARTNER_PDO, pdos);
+
+	/* Find matching PDO */
+	for (int i = 0; i < ARRAY_SIZE(pdos); i++) {
+		if ((pdos[i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+			max_v = PDO_BATT_GET_MAX_VOLT(pdos[i]);
+			min_v = PDO_BATT_GET_MIN_VOLT(pdos[i]);
+			max_a = CONFIG_PLATFORM_EC_PD_MAX_CURRENT_MA / 10;
+			min_power = PDO_BATT_GET_OP_POWER(pdos[i]);
+		} else {
+			max_v = min_v = PDO_FIXED_GET_VOLT(pdos[i]);
+			max_a = PDO_FIXED_GET_CURR(pdos[i]);
+			min_power = max_v * max_a;
+		}
+
+		if ((max_v / 50 == an_snk->auto_neg_max_voltage) &&
+		    (min_v / 50 == an_snk->auto_neg_min_voltage) &&
+		    (min_power / 250 ==
+		     an_snk->auto_neg_sink_min_required_power) &&
+		    (max_a / 10 == an_snk->auto_neg_max_current)) {
+			rdo_idx = i + 1;
+			break;
+		}
+	}
+
+	if (rdo_idx != 0) {
+		LOG_INF("Found PDO match idx=%d", rdo_idx);
+		int max_curr = PDO_FIXED_GET_CURR(pdos[rdo_idx - 1]);
+		data->pdo.rdo = RDO_FIXED(rdo_idx, max_curr, max_a, 0);
+		active_rdo_contract->rdo = data->pdo.rdo;
+	}
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 }
 
@@ -916,6 +963,19 @@ static int emul_tps6699x_set_pdos(const struct emul *target,
 				       num_pdos, source, pdos);
 }
 
+static int emul_tps6699x_get_rdo(const struct emul *target, uint32_t *rdo)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	/* Always return the RDO configured using SET_RDO or
+	 * pdc_power_mgmt_set_new_power_request().
+	 */
+	*rdo = data->pdo.rdo;
+
+	return 0;
+}
+
 static int tps6699x_emul_init(const struct emul *emul,
 			      const struct device *parent)
 {
@@ -1033,6 +1093,7 @@ static struct emul_pdc_api_t emul_tps6699x_api = {
 	.set_lpm_ppm_info = NULL,
 	.set_pdos = emul_tps6699x_set_pdos,
 	.get_pdos = emul_tps6699x_get_pdos,
+	.get_rdo = emul_tps6699x_get_rdo,
 	.get_cable_property = emul_tps6699x_get_cable_property,
 	.set_cable_property = emul_tps6699x_set_cable_property,
 	.idle_wait = tps6699x_emul_idle_wait,
