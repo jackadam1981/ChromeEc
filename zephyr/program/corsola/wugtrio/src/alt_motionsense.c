@@ -14,9 +14,14 @@
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
+#include "power.h"
+#include "ec_commands.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
+
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
 static bool base_use_alt_sensor;
 
@@ -37,3 +42,62 @@ static void alt_sensor_init(void)
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
+
+static void gpio_m2_init(void)
+{
+	int status;
+
+	status = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_m2));
+
+	if (status == 1) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 0);
+	}
+	else {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 1);
+	}
+
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_gpio_m2));
+}
+DECLARE_HOOK(HOOK_INIT, gpio_m2_init, HOOK_PRIO_POST_DEFAULT);
+
+void gpio_m2_interrupt(enum gpio_signal signal)
+{
+	enum power_state chipset_state = power_get_state();
+	int status;
+
+	status = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_m2));
+	CPRINTF("---status : %d chipset_state : %d---",status ,chipset_state);
+	if (chipset_state != POWER_S3) {
+		if (status == 1) {
+			CPRINTF("---gpio_j7 to 1---");
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 0);
+		}
+		else {
+			CPRINTF("---gpio_j7 to 0---");
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 1);
+		}
+	}
+}
+
+static void get_gpiom2_s3(void)
+{
+	gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_gpio_m2));
+
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_m2)) == 1)
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 0);
+	else
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, get_gpiom2_s3, HOOK_PRIO_DEFAULT);
+
+static void get_gpiom2_s0s5(void)
+{
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_gpio_m2));
+
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_m2)) == 1)
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 0);
+	else
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_j7), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, get_gpiom2_s0s5, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, get_gpiom2_s0s5, HOOK_PRIO_DEFAULT);
