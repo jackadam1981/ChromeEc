@@ -306,7 +306,8 @@ SYS_INIT(init_ec_console, PRE_KERNEL_1,
 	 CONFIG_PLATFORM_EC_CONSOLE_INIT_PRIORITY);
 #endif /* CONFIG_PLATFORM_EC_CONSOLE_CHANNEL */
 
-#ifdef CONFIG_LOG_MODE_MINIMAL
+#if defined(CONFIG_LOG_MODE_MINIMAL) && \
+	!defined(CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
 static int zephyr_shim_console_out(int c)
 {
 	/* Always capture EC output into the AP console buffer. */
@@ -352,7 +353,8 @@ static int init_ec_shell(void)
 	 * CONFIG_PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER to capture log
 	 * output into the AP console buffer.
 	 */
-#ifdef CONFIG_LOG_MODE_MINIMAL
+#if defined(CONFIG_LOG_MODE_MINIMAL) && \
+	!defined(CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
 	zephyr_char_out = __printk_get_hook();
 	__printk_hook_install(zephyr_shim_console_out);
 #endif
