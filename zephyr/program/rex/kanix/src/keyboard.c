@@ -12,11 +12,33 @@
 
 #include <zephyr/logging/log.h>
 
+#include <drivers/vivaldi_kbd.h>
+
 LOG_MODULE_REGISTER(kanix, LOG_LEVEL_INF);
 
 /*
  * Keyboard function decided by FW config.
  */
+
+int8_t board_vivaldi_keybd_idx(void)
+{
+	uint32_t val;
+	int ret;
+
+	ret = cros_cbi_get_fw_config(FW_KB_BL, &val);
+
+	if (ret < 0) {
+		LOG_ERR("error retrieving CBI config: %d", ret);
+		return -1;
+	}
+
+	if (val == FW_KB_BL_PRESENT) {
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+	} else {
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	}
+}
+
 test_export_static void kb_init(void)
 {
 	int ret;
