@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f6b29e_3646226a",
+        "filename": "zephyr/program/brox/brox-sku4/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-27T18:19:11Z",
+      "side": 1,
+      "message": "This should not be checked in.  We\u0027re not enabling FRS by default for now.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "546bb8c344a0cb1d76de98e5597b4b5c161df454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
