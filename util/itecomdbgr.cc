@@ -150,6 +150,9 @@ const static uint8_t read_status_buf[7] = { W_CMD_PORT, DBUS_DATA,  W_DATA_PORT,
 					    SPI_RDSR,	W_CMD_PORT, DBUS_DATA,
 					    R_DATA_PORT };
 
+static struct termios tty_saved;
+static int tty_saved_valid_fd = -1;
+
 static void hexdump(uint8_t *buffer, int len)
 {
 	int i;
@@ -675,6 +678,55 @@ static void set_prog_addr(unsigned long addr, uint8_t *pp_buf)
 	pp_buf[15] = (addr) & 0xFF;
 }
 
+static int program_page(struct itecomdbgr_config *conf,
+			unsigned long flash_offset,
+			const uint8_t *wr_data, int wr_count)
+{
+	uint8_t pp_buf[20] = {
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       SPI_PP,
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
+		W_CMD_PORT, DBUS_256W_DATA, W_BURST_DATA_PORT, 0xFF
+	};
+	int i;
+
+	/*
+	 * We know the page has been erased to 0xff.
+	 * Can we skip this page?
+	 */
+	for (i = 0; i < wr_count; ++i) {
+		if (wr_data[i] != 0xff)
+			break;
+	}
+	if (i == wr_count)
+		return SUCCESS;
+
+	/* OK, need to program page after all. */
+
+	write_com(conf, spi_write_enable, sizeof(spi_write_enable));
+
+	/* Check Write Enable Latch on */
+	if (check_status(conf, 0x02, 1) < 0) {
+		printf("%s: check_status WEL err\n", __func__);
+		return FAIL;
+	}
+
+	write_com(conf, cs_low, sizeof(cs_low));
+	set_prog_addr(flash_offset, pp_buf);
+	write_com(conf, pp_buf, sizeof(pp_buf));
+	write_com(conf, wr_data, wr_count);
+	write_com(conf, cs_high, sizeof(cs_high));
+
+	/* Check WIP bit off */
+	if (check_status(conf, 0x01, 0) < 0) {
+		printf("%s: check_status WIP err\n", __func__);
+		return FAIL;
+	}
+
+	return SUCCESS;
+}
+
 static int page_program_burst_v2(struct itecomdbgr_config *conf,
 				 uint8_t *wr_data)
 {
@@ -684,6 +736,7 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 	unsigned long end_addr = conf->update_end_addr;
 	int write_count;
 	int total_size = (end_addr - start_addr) / conf->page_size;
+#if 0
 	uint8_t pp_buf[20] = {
 		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       SPI_PP,
 		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
@@ -691,14 +744,17 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
 		W_CMD_PORT, DBUS_256W_DATA, W_BURST_DATA_PORT, 0xFF
 	};
+#endif
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
+
 	while (start_addr < end_addr) {
 		if ((end_addr - start_addr) >= conf->page_size)
 			write_count = conf->page_size;
 		else
 			write_count = end_addr - start_addr;
 
+#if 0
 		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
 
 		/* Check Write Enable Latch on */
@@ -720,6 +776,14 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 			result = FAIL;
 			goto out;
 		}
+#else
+		if (program_page(conf, start_addr,
+				 &wr_data[start_addr], write_count) !=
+		    SUCCESS) {
+			result = FAIL;
+			goto out;
+		}
+#endif
 
 		printf("\rProgramming...   : %d%% @ %06lx/%06lx",
 		       (++j * 100) / (total_size - 1),
