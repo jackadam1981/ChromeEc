@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b64ed8_c6547a85",
+        "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-09-27T22:00:12Z",
+      "side": 1,
+      "message": "Make this 0x30000000",
+      "range": {
+        "startLine": 932,
+        "startChar": 9,
+        "endLine": 932,
+        "endChar": 19
+      },
+      "revId": "44223607a16367f5a46fd92d506f963a610fa162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
