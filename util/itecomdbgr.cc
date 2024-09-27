@@ -237,6 +237,11 @@ static int write_com(struct itecomdbgr_config *conf, const uint8_t *lpOutBuffer,
 
 	bWriteStat = write(conf->g_fd, lpOutBuffer, WriteBytes);
 
+	if (bWriteStat != WriteBytes) {
+		fprintf(stderr, "%s: partial write %d/%d\n",
+			__func__, bWriteStat, WriteBytes);
+	}
+
 	return bWriteStat;
 }
 
@@ -246,6 +251,11 @@ static uint8_t debug_getc(struct itecomdbgr_config *conf)
 	int res;
 
 	res = read(conf->g_fd, data, 1);
+
+	if (res != 1) {
+		fprintf(stderr, "%s: res %d/1\n",
+			__func__, res);
+	}
 
 	if (res > 0) {
 		return data[0];
@@ -412,19 +422,23 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 		check_value = 0;
 
 	do {
-		write_com(conf, cs_low, sizeof(cs_low));
-		write_com(conf, read_status_buf, sizeof(read_status_buf));
-		status = debug_getc(conf);
-		write_com(conf, cs_high, sizeof(cs_high));
 		if (timeout++ > 200) {
-			printf("check_status: timeout exit!\n\r");
+			printf("%s: status %02x mask %02x want %02x\n",
+			       __func__,
+			       status, wait_mask, check_value);
+			printf("%s: timeout!\n\r", __func__);
 			return -1;
 		}
+
+		write_com(conf, cs_low, sizeof(cs_low));
+		write_com(conf, read_status_buf, sizeof(read_status_buf));
 
 		/* Add a delay for 3M speed*/
 		if (conf->baudrate == 3000000)
 			msleep(1);
 
+		status = debug_getc(conf);
+		write_com(conf, cs_high, sizeof(cs_high));
 	} while ((status & wait_mask) == check_value);
 
 	return 0;
@@ -496,8 +510,8 @@ static int read_id_2(struct itecomdbgr_config *conf)
 	} else if ((FlashID[0] == 0xC8) || (FlashID[0] == 0xEF)) {
 		printf("FLASH TYPE = KGD\n\r");
 		conf->eflash_type = EFLASH_TYPE_KGD;
-		result = 0;
 		conf->g_steps = STEPS_EXIT;
+		result = 0;
 	} else {
 		printf("\rInvalid EFLASH TYPE");
 		conf->eflash_type = EFLASH_TYPE_NONE;
@@ -524,33 +538,40 @@ static int erase_4k(struct itecomdbgr_config *conf)
 	};
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
+
 	while (start_addr < end_addr) {
+//		fprintf(stderr, "WE\n");
 		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
 		if (check_status(conf, 0x02, 1) < 0) {
-			printf("erase_4k: check_status failed\n\r");
+			printf("%s: WE: check_status failed\n\r", __func__);
 			result = FAIL;
 			goto out;
 		}
+//		fprintf(stderr, "CS0\n");
 		write_com(conf, cs_low, sizeof(cs_low));
 		erase_buf[7] = start_addr >> 16;
 		erase_buf[11] = start_addr >> 8;
 		erase_buf[15] = 0;
+//		fprintf(stderr, "ER\n");
 		write_com(conf, erase_buf, sizeof(erase_buf));
+//		fprintf(stderr, "CS1\n");
 		write_com(conf, cs_high, sizeof(cs_high));
+//		fprintf(stderr, "CSe\n");
 		if (check_status(conf, 0x01, 0) < 0) {
 			printf("erase_4k:check_status error 2\n\r");
 			result = FAIL;
 			goto out;
 		}
 
-		printf("\rErasing...     : %d%% @ %06lx/%06lx",
+		printf("\rErasing...     : %3d%%, %d KB @ %06lx/%06lx",
 		       (++i * 100) / (total_size - 1),
-		       start_addr, end_addr
+		       conf->sector_size, start_addr, end_addr
 			);
 		fflush(stdout);
 
 		start_addr += conf->sector_size;
 	}
+
 out:
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
 	return result;
@@ -786,9 +807,9 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 		}
 #endif
 
-		printf("\rProgramming...   : %d%% @ %06lx/%06lx",
+		printf("\rProgramming...   : %3d%%, %d B @ %06lx/%06lx",
 		       (++j * 100) / (total_size - 1),
-		       start_addr, end_addr
+		       conf->page_size, start_addr, end_addr
 			);
 		fflush(stdout);
 
@@ -899,7 +920,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 	tty.c_oflag &= ~OPOST;
 	tty.c_oflag &= ~ONLCR;
 
-	tty.c_cc[VTIME] = 10;
+	tty.c_cc[VTIME] = 10; /* 1 sec */
 	tty.c_cc[VMIN] = 255;
 
 	if (conf->baudrate != 3000000) {
@@ -962,7 +983,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 
 	dbgr_disable_protect_path(conf);
 
-	conf->eflash_type = EFLASH_TYPE_KGD;
+	// conf->eflash_type = EFLASH_TYPE_KGD;
 
 	switch (conf->eflash_type) {
 	case EFLASH_TYPE_8315:
