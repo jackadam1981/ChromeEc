@@ -154,6 +154,7 @@ void lid_angle_update(int lid_ang)
 		lid_angle_peripheral_enable(1);
 	else if (ignore && !accept)
 		lid_angle_peripheral_enable(0);
+	lid_angle_change(lid_ang);
 }
 
 static void enable_peripherals(void)

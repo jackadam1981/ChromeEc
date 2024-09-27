@@ -20,6 +20,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
@@ -97,6 +98,11 @@ test_mockable int lid_is_open(void)
 	return debounced_lid_open;
 }
 
+test_mockable int lid_is_open_motion(void)
+{
+	return raw_lid_open();
+}
+
 /**
  * Lid switch initialization code
  */
@@ -129,6 +135,17 @@ static void lid_change_deferred(void)
 		lid_switch_close();
 }
 DECLARE_DEFERRED(lid_change_deferred);
+
+/**
+ * Handle debounced lid switch changing state.
+ */
+void lid_angle_change(int angle)
+{
+	if ((angle < 16) && (debounced_lid_open))
+		lid_switch_close();
+	else if ((angle > 18) && (!debounced_lid_open))
+		lid_switch_open();
+}
 
 void lid_interrupt(enum gpio_signal signal)
 {
