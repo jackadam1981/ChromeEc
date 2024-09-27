@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bef73f_7767925b",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-27T20:34:05Z",
+      "side": 1,
+      "message": "Add a comment pointing to the tokenizer backend that handles updating the AP console buffer.",
+      "range": {
+        "startLine": 310,
+        "startChar": 10,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "b3e8724348bb08f559265186cbd4b65b12df0904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
