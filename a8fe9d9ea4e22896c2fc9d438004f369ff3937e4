@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acfcca0d_22e28007",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-27T08:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd59ccb3_9a17c872",
+      "revId": "a8fe9d9ea4e22896c2fc9d438004f369ff3937e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3c01fd_50f0dd1a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-27T06:28:26Z",
       "side": 1,
       "message": "naming should not be hdmi.",
+      "revId": "a8fe9d9ea4e22896c2fc9d438004f369ff3937e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57961295_367c15b7",
+        "filename": "zephyr/program/rauru/navi/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-09-27T08:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e3c01fd_50f0dd1a",
       "revId": "a8fe9d9ea4e22896c2fc9d438004f369ff3937e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
