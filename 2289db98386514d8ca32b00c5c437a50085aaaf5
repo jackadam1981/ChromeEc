@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b463bfa8_14685b90",
+        "filename": "firmware_builder.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-09-27T16:28:41Z",
+      "side": 1,
+      "message": "Will this work with new and old versions of coreboot-sdk? I don\u0027t know when we\u0027ll be able to switch to the new version of GCC on our release branches. We still want to keep platform/cr50 in sync with tot on our release branches.\n\nWe need to be able to pick these changes to our branches without switching to the new GCC version on our branches.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1938e5ee_a297b464",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware_builder.py",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "        (\"COREBOOT_SDK_ROOT_arm\", \"@coreboot-sdk-arm-eabi//:get_path_old\"),\n        (\"COREBOOT_SDK_ROOT_arm\", \"@coreboot-sdk-arm-eabi//:get_path_new\"),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2289db98386514d8ca32b00c5c437a50085aaaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
