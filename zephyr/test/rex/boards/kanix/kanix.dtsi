@@ -5,6 +5,7 @@
 
 #include "../native_sim.overlay"
 #include "../../../../program/rex/kanix/cbi.dtsi"
+#include <cros/vivaldi_kbd_default.dtsi>
 
 / {
 	aliases {
@@ -15,5 +16,14 @@
 		gpio_ec_wp_l: ec_wp_l {
 			gpios = <&gpio1 13 GPIO_OUTPUT>;
 		};
+	};
+};
+
+&vivaldi_kbd {
+	status = "okay";
+
+	kbd_config_1: kbd-config-1 {
+		vivaldi-codes = <0 0 0 0 0 0 0 0 0 0>;
+		capabilities = <0>;
 	};
 };

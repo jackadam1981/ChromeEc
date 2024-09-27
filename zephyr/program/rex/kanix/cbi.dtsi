@@ -67,5 +67,23 @@
 				value = <1>;
 			};
 		};
+
+		kb-bl {
+			enum-name = "FW_KB_BL";
+			start = <15>;
+			size = <1>;
+
+			no-kb-bl {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_NOT_PRESENT";
+				value = <0>;
+				default;
+			};
+			kb-bl-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_PRESENT";
+				value = <1>;
+			};
+		};
 	};
 };

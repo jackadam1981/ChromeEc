@@ -8,11 +8,15 @@
 #include "keyboard_protocol.h"
 
 #include <zephyr/fff.h>
+#include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
+
+#include <drivers/vivaldi_kbd.h>
 
 void kb_init(void);
 
 static bool keyboard_type;
+static int keyboard_backlight;
 
 FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
@@ -22,8 +26,17 @@ FAKE_VOID_FUNC(get_scancode_set2, uint8_t, uint8_t);
 int cros_cbi_get_fw_config_mock(enum cbi_fw_config_field_id field_id,
 				uint32_t *value)
 {
-	zassert_equal(field_id, FW_KB_TYPE);
-	*value = keyboard_type ? FW_KB_CA_FR : FW_KB_DEFAULT;
+	if (keyboard_backlight == -1) {
+		return -1;
+	}
+
+	if (field_id == FW_KB_TYPE) {
+		*value = keyboard_type ? FW_KB_CA_FR : FW_KB_DEFAULT;
+	} else if (field_id == FW_KB_BL) {
+		*value = keyboard_backlight ? FW_KB_BL_PRESENT :
+					      FW_KB_BL_NOT_PRESENT;
+	}
+
 	return 0;
 }
 
@@ -57,4 +70,16 @@ ZTEST(kanix_keyboard, test_keyboard_type_init_error)
 	kb_init();
 	zassert_equal(get_scancode_set2_fake.call_count, 0);
 	zassert_equal(set_scancode_set2_fake.call_count, 0);
+}
+
+ZTEST(kanix_keyboard, test_vivaldi_keybd_idx)
+{
+	cros_cbi_get_fw_config_fake.custom_fake = cros_cbi_get_fw_config_mock;
+
+	keyboard_backlight = 0;
+	zassert_equal(board_vivaldi_keybd_idx(), 0);
+	keyboard_backlight = 1;
+	zassert_equal(board_vivaldi_keybd_idx(), 1);
+	keyboard_backlight = -1;
+	zassert_equal(board_vivaldi_keybd_idx(), -1);
 }
