@@ -40,6 +40,30 @@
       ],
       "revId": "2289db98386514d8ca32b00c5c437a50085aaaf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9bc55f1_49913580",
+        "filename": "firmware_builder.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-27T16:37:49Z",
+      "side": 1,
+      "message": "This is currently selecting a different build of the same version being used on your release branch.  It\u0027s gcc 11.3.0.  It is currently pulling from the bazel dependencies file that\u0027s used by EC and ISH, I have a CL up to move it into the EC repo so you can control your own version.",
+      "parentUuid": "b463bfa8_14685b90",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "2289db98386514d8ca32b00c5c437a50085aaaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
