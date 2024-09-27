@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c827ed6f_f230d1b1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-09-27T17:59:09Z",
+      "side": 1,
+      "message": "@dnojiri@chromium.org can you provide any insight on this?\n\nMe:\n\u003e It calls typec_set_input_current_limit(port,0,0). But I don\u0027t think the type-C current limit is even relevant at this time, since we\u0027re running PD.\n\nRuibin:\n\u003e I also tried only calling pd_set_input_current_limit(port, 5V, 0A) when pe[port].curr_limit \u003d\u003d 0, and it failed the test #11. In the test log, we draw current \u003e50mA (goal is 5mA) for tSrcTransition time period.\nIt needs to call typec_set_input_current_limit(), then the drawing current can be down to 1~4mA (\u003c 5mA), and satisfy pSnkSusp (25mW).\n\nIn talking to Keith and Aaron just now, they agreed with my intuition that setting the type-C current limit should be a no-op at this time. However, Keith speculated that maybe setting the PD current limit to 0 causes the charge manager to switch to type-C in some way and apply the type-C current limit. If that were happening, they type-C current limit would also need to be set to 0 to actually draw 0mA.",
+      "parentUuid": "ceb0187e_0d36e3d8",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
