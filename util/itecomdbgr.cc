@@ -7,6 +7,7 @@
  * Function: ITE COM DBGR Flash Utility
  */
 
+#include <signal.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -856,7 +857,7 @@ static void enter_uart_dbgr_mode(struct itecomdbgr_config *conf)
 
 static int uart_app(struct itecomdbgr_config *conf)
 {
-	struct termios tty, tty_saved;
+	struct termios tty;
 	uint8_t dbgr_reset_buf[4] = { W_CMD_PORT, 0x27, W_DATA_PORT, 0x80 };
 	int return_status = 0;
 
@@ -879,6 +880,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 	}
 
 	tty_saved = tty;
+	tty_saved_valid_fd = dup(conf->g_fd);
 
 	tty.c_cflag |= PARENB;
 	tty.c_cflag &= ~CSTOPB;
@@ -1014,11 +1016,23 @@ out:
 	write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
 	tcflush(conf->g_fd, TCIOFLUSH);
 	msleep(1);
+
 	tcsetattr(conf->g_fd, TCSANOW, &tty_saved);
+	tty_saved_valid_fd = -1;
 	close(conf->g_fd);
+
 	/* Add a msleep after dbgr reset */
 	msleep(100);
 	return return_status;
+}
+
+static void exit_handler(int signum)
+{
+	if (tty_saved_valid_fd >= 0) {
+		tcsetattr(tty_saved_valid_fd, TCSANOW, &tty_saved);
+		close(tty_saved_valid_fd);
+	}
+	_exit(EXIT_FAILURE);
 }
 
 int main(int argc, char **argv)
@@ -1125,7 +1139,14 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
+	signal(SIGHUP, exit_handler);
+	signal(SIGINT, exit_handler);
+	signal(SIGQUIT, exit_handler);
+	signal(SIGTERM, exit_handler);
+
 	r = uart_app(&conf);
+
 	exit_file(&conf);
+
 	return r;
 }
