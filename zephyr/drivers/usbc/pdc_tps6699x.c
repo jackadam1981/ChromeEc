@@ -291,7 +291,6 @@ static void cmd_set_snk_pdos(struct pdc_data_t *data);
 static void cmd_get_ic_status(struct pdc_data_t *data);
 static int cmd_get_ic_status_sync_internal(struct pdc_config_t const *cfg,
 					   struct pdc_info_t *info);
-static void cmd_get_vbus_voltage(struct pdc_data_t *data);
 static void cmd_get_vdo(struct pdc_data_t *data);
 static void cmd_get_identity_discovery(struct pdc_data_t *data);
 static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data);
@@ -605,13 +604,11 @@ static void st_idle_run(void *o)
 				cmd_set_snk_pdos(data);
 			break;
 		case CMD_GET_CONNECTOR_STATUS:
+		case CMD_GET_VBUS_VOLTAGE:
 			task_ucsi(data, UCSI_GET_CONNECTOR_STATUS);
 			break;
 		case CMD_GET_ERROR_STATUS:
 			task_ucsi(data, UCSI_GET_ERROR_STATUS);
-			break;
-		case CMD_GET_VBUS_VOLTAGE:
-			cmd_get_vbus_voltage(data);
 			break;
 		case CMD_GET_IC_STATUS:
 			cmd_get_ic_status(data);
@@ -1238,9 +1235,11 @@ static int cmd_get_ic_status_sync_internal(struct pdc_config_t const *cfg,
 	/* TI FW main version */
 	info->fw_version = version.version;
 
-	/* TI VID PID (little-endian) */
-	info->vid_pid = (*(uint16_t *)tx_identity.vendor_id) << 16 |
-			*(uint16_t *)tx_identity.product_id;
+	/* TI VID (little-endian) */
+	info->vid = *(uint16_t *)tx_identity.vendor_id;
+
+	/* TI PID (little-endian) */
+	info->pid = *(uint16_t *)tx_identity.product_id;
 
 	/* TI Running flash bank offset */
 	info->running_in_flash_bank = 0;
@@ -1302,40 +1301,6 @@ error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
 }
 
-static void cmd_get_vbus_voltage(struct pdc_data_t *data)
-{
-	struct pdc_config_t const *cfg = data->dev->config;
-	union reg_adc_results adc_results;
-
-	uint16_t *vbus = (uint16_t *)data->user_buf;
-	int rv;
-
-	if (data->user_buf == NULL) {
-		LOG_ERR("Null user buffer; can't read VBUS voltage");
-		goto error_recovery;
-	}
-
-	rv = tps_rd_adc_results(&cfg->i2c, &adc_results);
-	if (rv) {
-		LOG_ERR("Failed to read ADC results");
-		goto error_recovery;
-	}
-
-	*vbus = cfg->connector_number ? adc_results.pa_vbus :
-					adc_results.pb_vbus;
-
-	/* Command has completed */
-	data->cci_event.command_completed = 1;
-	/* Inform the system of the event */
-	call_cci_event_cb(data);
-
-	set_state(data, ST_IDLE);
-	return;
-
-error_recovery:
-	set_state(data, ST_ERROR_RECOVERY);
-}
-
 static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -1354,12 +1319,7 @@ static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data)
 		goto error_recovery;
 	}
 
-	/* Copy over the 5 status bytes, skipping the reg and length bytes */
-	data->user_buf[0] = data_status.raw_value[2];
-	data->user_buf[1] = data_status.raw_value[3];
-	data->user_buf[2] = data_status.raw_value[4];
-	data->user_buf[3] = data_status.raw_value[5];
-	data->user_buf[4] = data_status.raw_value[6];
+	memcpy(data->user_buf, data_status.raw_value, sizeof(data_status));
 
 	/* Command has completed */
 	data->cci_event.command_completed = 1;
@@ -1680,39 +1640,46 @@ static void st_task_wait_run(void *o)
 		offset = 1;
 		len = sizeof(union connector_capability_t);
 		break;
-	case UCSI_GET_CONNECTOR_STATUS:
+	case UCSI_GET_CONNECTOR_STATUS: {
 		offset = 1;
-		len = sizeof(union connector_status_t);
-		if (((union connector_status_t *)&cmd_data.data[offset])
-			    ->conn_partner_type == DEBUG_ACCESSORY_ATTACHED) {
-			union reg_status pdc_status;
-			rv = tps_rd_status(&cfg->i2c, &pdc_status);
-			if (!rv) {
-				((union connector_status_t *)&cmd_data
-					 .data[offset])
-					->conn_partner_type =
-					(pdc_status.data_role ? UFP_ATTACHED :
-								DFP_ATTACHED);
+		union connector_status_t *cs =
+			(union connector_status_t *)&cmd_data.data[offset];
+		if (data->cmd == CMD_GET_VBUS_VOLTAGE) {
+			uint16_t *voltage = (uint16_t *)data->user_buf;
+			len = 0;
+			*voltage = cs->voltage_reading * cs->voltage_scale * 5;
+		} else {
+			len = sizeof(union connector_status_t);
+			if (cs->conn_partner_type == DEBUG_ACCESSORY_ATTACHED) {
+				union reg_status pdc_status;
+				rv = tps_rd_status(&cfg->i2c, &pdc_status);
+				if (!rv) {
+					cs->conn_partner_type =
+						(pdc_status.data_role ?
+							 UFP_ATTACHED :
+							 DFP_ATTACHED);
+				}
 			}
-		}
 
-		/* If we had previously cached the connection status change,
-		 * append those bits in GET_CONNECTOR_STATUS. The PDC clears
-		 * these after the first read but we want these to be visible
-		 * until they are ACK-ed.
-		 */
-		if (data->use_cached_conn_status_change) {
-			*((uint16_t *)&cmd_data.data[offset]) |=
-				data->cached_conn_status
-					.raw_conn_status_change_bits;
-		}
+			/* If we had previously cached the connection status
+			 * change, append those bits in GET_CONNECTOR_STATUS.
+			 * The PDC clears these after the first read but we want
+			 * these to be visible until they are ACK-ed.
+			 */
+			if (data->use_cached_conn_status_change) {
+				cs->raw_conn_status_change_bits |=
+					data->cached_conn_status
+						.raw_conn_status_change_bits;
+			}
 
-		/* Cache result of GET_CONNECTOR_STATUS and use this for
-		 * subsequent calls.
-		 */
-		memcpy(&data->cached_conn_status, &cmd_data.data[offset], len);
-		data->use_cached_conn_status_change = true;
+			/* Cache result of GET_CONNECTOR_STATUS and use this for
+			 * subsequent calls.
+			 */
+			data->cached_conn_status = *cs;
+			data->use_cached_conn_status_change = true;
+		}
 		break;
+	}
 	case UCSI_GET_CABLE_PROPERTY:
 		offset = 1;
 		len = sizeof(union cable_property_t);
