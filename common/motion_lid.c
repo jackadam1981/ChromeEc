@@ -417,7 +417,7 @@ static int calculate_lid_angle(const intv3_t base, const intv3_t lid,
 
 #ifdef CONFIG_TABLET_MODE
 	/* Ignore large angles when the lid is closed. */
-	if (!lid_is_open() && (lid_to_base_fp > SMALL_LID_ANGLE_RANGE)) {
+	if (!lid_is_open_motion() && (lid_to_base_fp > SMALL_LID_ANGLE_RANGE)) {
 		reliable = 0;
 		goto end_calculate_lid_angle;
 	}
@@ -433,7 +433,7 @@ static int calculate_lid_angle(const intv3_t base, const intv3_t lid,
 	 * may wake us up.  This is because we require at least 4 consecutive
 	 * reliable readings over a threshold to disable key scanning.
 	 */
-	if (lid_is_open() && (lid_to_base_fp <= SMALL_LID_ANGLE_RANGE)) {
+	if (lid_is_open_motion() && (lid_to_base_fp <= SMALL_LID_ANGLE_RANGE)) {
 		reliable = 0;
 		goto end_calculate_lid_angle;
 	}

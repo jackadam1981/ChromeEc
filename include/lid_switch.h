@@ -42,6 +42,10 @@ void lid_interrupt(enum gpio_signal signal);
  */
 void enable_lid_detect(bool enable);
 
+void lid_angle_change(int angle);
+
+int lid_is_open_motion(void);
+
 #ifdef __cplusplus
 }
 #endif

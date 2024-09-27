@@ -20,6 +20,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
@@ -35,6 +36,7 @@
 
 static int debounced_lid_open; /* Debounced lid state */
 static int forced_lid_open; /* Forced lid open */
+static void lid_re_check(void);
 
 /**
  * Get raw lid switch state.
@@ -97,6 +99,11 @@ test_mockable int lid_is_open(void)
 	return debounced_lid_open;
 }
 
+test_mockable int lid_is_open_motion(void)
+{
+	return raw_lid_open();
+}
+
 /**
  * Lid switch initialization code
  */
@@ -112,6 +119,20 @@ static void lid_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, lid_init, HOOK_PRIO_INIT_LID);
 
+__attribute__((weak)) int board_is_lid_angle_lid_open(void)
+{
+	int lid_angle;
+
+	lid_angle = motion_lid_get_angle();
+
+	if (lid_angle == LID_ANGLE_UNRELIABLE)
+		return 0;
+	if (lid_angle < 20)
+		return 0;
+	else
+		return 1;
+}
+
 /**
  * Handle debounced lid switch changing state.
  */
@@ -123,12 +144,35 @@ static void lid_change_deferred(void)
 	if (new_open == debounced_lid_open)
 		return;
 
-	if (new_open)
-		lid_switch_open();
-	else
+	if (new_open) {
+		if (board_is_lid_angle_lid_open())
+			lid_switch_open();
+		else
+			lid_re_check();
+	} else
 		lid_switch_close();
 }
 DECLARE_DEFERRED(lid_change_deferred);
+
+/**
+ * Handle debounced lid switch changing state.
+ */
+static void lid_re_check(void)
+{
+	/* Reset lid debounce time */
+	hook_call_deferred(&lid_change_deferred_data, CONFIG_LID_DEBOUNCE_US);
+}
+
+/**
+ * Handle debounced lid switch changing state.
+ */
+void lid_angle_change(int angle)
+{
+	if ((angle < 20) && (debounced_lid_open))
+		lid_switch_close();
+	else if ((angle > 20) && (!debounced_lid_open))
+		lid_switch_open();
+}
 
 void lid_interrupt(enum gpio_signal signal)
 {
