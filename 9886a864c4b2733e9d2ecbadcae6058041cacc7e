@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e729009_c3e1a840",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-27T17:48:21Z",
+      "side": 1,
+      "message": "Verified on brox-sku4.",
+      "parentUuid": "a551e0c9_d8cef562",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 844,
+        "endChar": 57
+      },
+      "revId": "9886a864c4b2733e9d2ecbadcae6058041cacc7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19252906_c617b749",
