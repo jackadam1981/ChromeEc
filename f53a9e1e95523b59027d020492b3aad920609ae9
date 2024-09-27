@@ -16,6 +16,24 @@
       "message": "Please update the tests to catch this error. zephyr/test/hostcmd_console",
       "revId": "f53a9e1e95523b59027d020492b3aad920609ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a9b384_994f0992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-09-27T20:25:31Z",
+      "side": 1,
+      "message": "Enabling tokenization with twister isn\u0027t as straightforward as expected, seeing compile errors related to possibly the toolchain used.\n```\n/mnt/host/source/src/third_party/zephyr/picolibc/newlib/libm/common/isnanl.c:37:10: error: use of unknown builtin \u0027__builtin_isnanl\u0027 [-Wimplicit-function-declaration]\n   37 |   return __builtin_isnanl(x);\n```\nswitching to host toolchain gives\n```\nIn file included from /mnt/host/source/src/platform/ec/twister-out/native_sim/hostcmd_console.log_minimal.tokenized/modules/picolibc/picolibc/include/ctype.h:39,\n                 from /mnt/host/source/src/third_party/zephyr/picolibc/newlib/libc/ctype/isalpha_l.c:7:\n/mnt/host/source/src/platform/ec/twister-out/native_sim/hostcmd_console.log_minimal.tokenized/modules/picolibc/picolibc/include/limits.h:138:16: fatal error: limits.h: No such file or directory\n  138 | # include_next \u003climits.h\u003e\n```\n\n\nI created http://b/370074692 to track this effort",
+      "parentUuid": "e3d47c2e_548da845",
+      "revId": "f53a9e1e95523b59027d020492b3aad920609ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
