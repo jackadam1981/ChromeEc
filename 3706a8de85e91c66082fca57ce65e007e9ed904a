@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07821ef7_fb8b7039",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-27T07:35:39Z",
+      "side": 1,
+      "message": "It is very cool, thank you.\nI have updated the code a little.\n- add \"pen_charge_state !\u003d STATE_ERROR\" condition before setting \"pen_timer \u003d ERR_TIME\".\n- add STATE_ERROR in case condition.\n- initial state and timer are STATE_STOP and STP_TIME\nCould you please review Patchset 11?",
+      "parentUuid": "05679cca_facee10c",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "3706a8de85e91c66082fca57ce65e007e9ed904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad751373_240e44b9",
         "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
         "patchSetId": 10
