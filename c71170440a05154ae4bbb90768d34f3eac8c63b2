@@ -104,6 +104,23 @@
       "message": "I don\u0027t have a Brask to do any testing with for this CL, so if anyone can do any extra verification locally, that would be helpful.",
       "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9524cd_fac9d118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-09-27T19:29:24Z",
+      "side": 1,
+      "message": "I don\u0027t have a brask to test with, so I flashed this change on to a Nipperkin and ran `suspend_stress_test` without issues.\n\n```\nnipperkin-rev4 ~ # suspend_stress_test -c 100 --suspend_min 20 --wake_min 20\n...\nFinished 100 iterations.\nPremature wakes: 0\nLate wakes: 0\nSuspend failures: 0\nHwrng errors: 0\nWakealarm errors: 0\nFirmware log errors: 0\nEC detected AP suspend errors: 0\ns0ix errors: 0\ns0ix substate errors: 0\ns0ix pc10 errors: 0\n```\n\nI\u0027m going to mark this Verified and land the CL so we can (hopefully) start getting some feedback to inform next steps for b/353831728.",
+      "revId": "c71170440a05154ae4bbb90768d34f3eac8c63b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
