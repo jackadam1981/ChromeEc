@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7d21da_300bbf9f",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-27T16:24:32Z",
+      "side": 1,
+      "message": "Nit - these choices should have help text.\n\nMaybe shorten the prompt text to `Peak overcurrent of xx%`, and then the help text provide the additional details `xx% for 10ms, xx% for 2ms, etc`",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "f20bea4490f3b1cc71badd96d02779e8a7fbb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
