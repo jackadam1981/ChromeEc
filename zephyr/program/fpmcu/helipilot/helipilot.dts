@@ -69,10 +69,10 @@
 			filename = "../build-rw/rollback_initial_data.bin";
 		};
 
-		/* 352 kB used for RW - NPCX program memory size */
+		/* 344 kB used for RW - NPCX program memory size */
 		ec-rw {
 			offset = <0x30000>;
-			size = <0x58000>;
+			size = <0x56000>;
 			rw-fw {
 				/*
 				 * Clang doesn't emit STT_SECTION symbols (also

@@ -29,9 +29,19 @@
 				overlap;
 			};
 
+			rw-fwid {
+				/* Fix the lcoation of the FWID to the
+				 * last 32 bytes of the flash. This
+				 * ensures the RW entries in the FMAP
+				 * stored in the RO section of flash
+				 * are always correct.
+				 */
+				offset = <0x55be0>;
+			};
+
 			sig-rw {
 				type = "section";
-				offset = <0x57c00>;
+				offset = <0x55c00>;
 				size = <0x400>;
 			};
 			pad-byte = <0xff>;

@@ -13,12 +13,12 @@
 
 /* Update program memory size */
 &flash0 {
-    reg = <0x10058000 DT_SIZE_K(352)>;
+    reg = <0x10058000 DT_SIZE_K(344)>;
 };
 
 /* Update data memory size */
 &sram0 {
-    reg = <0x200B0000 DT_SIZE_K(156)>;
+    reg = <0x200B0000 DT_SIZE_K(164)>;
 };
 
 /* UART1: Servo UART (console) */

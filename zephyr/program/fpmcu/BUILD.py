@@ -57,6 +57,7 @@ helipilot = register_fpmcu_variant(
     project_name="helipilot",
     zephyr_board="google_quincy",
     variant_modules=["cmsis"],
+    variant_optional_modules=["fpc"],
     variant_dts_overlays=[
         here / "helipilot" / "helipilot.dts",
         here / "helipilot" / "ec_quirks.dts",
@@ -72,4 +73,4 @@ helipilot = register_fpmcu_variant(
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
-assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x6FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x85BE0)
