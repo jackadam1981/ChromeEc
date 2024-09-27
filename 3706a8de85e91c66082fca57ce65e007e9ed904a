@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faf80403_1dacceb1",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-27T07:27:34Z",
+      "side": 1,
+      "message": "It means that even if the pen is in the pen garage, the battery SOC will drop to 99%, 98%... with self discharge. So it needs to restart charging.",
+      "parentUuid": "476ddbf2_4df05d8d",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "3706a8de85e91c66082fca57ce65e007e9ed904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05679cca_facee10c",
         "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
         "patchSetId": 10
