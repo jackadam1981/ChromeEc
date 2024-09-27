@@ -34,6 +34,24 @@
       "parentUuid": "c91b9aef_c5ad50d8",
       "revId": "413a60e3b54bf96b7587e3d9ccda7fa6b620fc01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f12760_798a4094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-27T23:08:20Z",
+      "side": 1,
+      "message": "\u003e I created a CL that ports the existing EC fpsensor_debug.cc unit test functionality.\n\u003e \n\u003e https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5892969\n\nIt looks like you\u0027re modifying the EC unit test in this CL, not porting that EC unit test to the Zephyr tests.",
+      "parentUuid": "b81a9129_e6799b24",
+      "revId": "413a60e3b54bf96b7587e3d9ccda7fa6b620fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
