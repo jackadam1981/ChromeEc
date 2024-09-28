@@ -33,6 +33,8 @@ typedef union {
 	};
 } task_;
 
+#define IDIVZE BIT(30)
+
 /* Value to store in unused stack */
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
@@ -203,10 +205,23 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
  * | EXT_IERx |     | INT_MASK|
  * ------------     -----------
  */
+
 void __ram_code interrupt_disable(void)
 {
-	/* Mask all interrupts, only keep division by zero exception */
-	uint32_t val = BIT(30);
+	/* Mask all interrupts, except division by zero and timer-related */
+	uint32_t val = IDIVZE | BIT(3);
+
+	/* Group 3: disable and clear interrupt */
+	IT83XX_INTC_REG(IT83XX_INTC_IER3) &= ~GROUP3_TO_INT3_MASK;
+	IT83XX_INTC_ISR3 |= GROUP3_TO_INT3_MASK;
+	/* Group 7: disable and clear interrupts */
+	IT83XX_INTC_REG(IT83XX_INTC_IER7) &= ~GROUP7_TO_INT3_MASK;
+	IT83XX_INTC_ISR7 |= GROUP7_TO_INT3_MASK;
+	/* Group 10: bit0 is pre-watchdog, keep it */
+	/* Group 19: disable and clear interrupts */
+	IT83XX_INTC_REG(IT83XX_INTC_IER19) &= ~GROUP19_TO_INT3_MASK;
+	IT83XX_INTC_ISR19 |= GROUP7_TO_INT3_MASK;
+
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 	asm volatile("dsb");
 }
@@ -214,8 +229,13 @@ void __ram_code interrupt_disable(void)
 void __ram_code interrupt_enable(void)
 {
 	/* Enable HW2 ~ HW15 and division by zero exception interrupts */
-	uint32_t val = (BIT(30) | 0xFFFC);
+	uint32_t val = (IDIVZE | 0xFFFC);
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
+
+	/* Restore in reverse order */
+	IT83XX_INTC_REG(IT83XX_INTC_IER19) |= GROUP19_TO_INT3_MASK;
+	IT83XX_INTC_REG(IT83XX_INTC_IER7) |= GROUP7_TO_INT3_MASK;
+	IT83XX_INTC_REG(IT83XX_INTC_IER3) |= GROUP3_TO_INT3_MASK;
 }
 
 inline bool is_interrupt_enabled(void)
@@ -475,7 +495,7 @@ uint32_t __ram_code task_wait_event_mask(uint32_t event_mask, int timeout_us)
 
 uint32_t __ram_code read_clear_int_mask(void)
 {
-	uint32_t int_mask, int_dis = BIT(30);
+	uint32_t int_mask, int_dis = IDIVZE;
 
 	asm volatile("mfsr %0, $INT_MASK\n\t"
 		     "mtsr %1, $INT_MASK\n\t"
