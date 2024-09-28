@@ -203,18 +203,49 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
  * | EXT_IERx |     | INT_MASK|
  * ------------     -----------
  */
+
+/* INT30 always ON - no need to backup */
+uint8_t group3;
+/* Group 7 is unused ---> NUKE IT */
+uint8_t group7;
+uint8_t group19;
+
 void __ram_code interrupt_disable(void)
 {
 	/* Mask all interrupts, only keep division by zero exception */
-	uint32_t val = BIT(30);
+	uint32_t val = BIT(30) | BIT(3);
+	/* Group 7 is unused ---> NUKE IT */
+	uint8_t group7_mask = BIT(2) | BIT(4) | BIT(5) | BIT(6) | BIT(7);
+	uint8_t group19_mask = BIT(3) | BIT(4) | BIT(5) | BIT(7);
+
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 	asm volatile("dsb");
+
+	/* Backup, disable and clear interrups in each Interrupt Group */
+	group3 = IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(3)) & BIT(6);
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(3)) &= ~BIT(6);
+	IT83XX_INTC_ISR3 = BIT(6);
+
+	/* Group 7 is unused ---> NUKE IT */
+	group7 = IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(7)) & group7_mask;
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(7)) &= ~group7_mask;
+	IT83XX_INTC_ISR7 = group7_mask;
+
+	group19 = IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(19)) & group19_mask;
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(19)) &= ~group19_mask;
+	IT83XX_INTC_ISR19 = group19_mask;
 }
 
 void __ram_code interrupt_enable(void)
 {
 	/* Enable HW2 ~ HW15 and division by zero exception interrupts */
 	uint32_t val = (BIT(30) | 0xFFFC);
+
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(3)) |= group3;
+	/* Group 7 is unused ---> NUKE IT */
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(7)) |= group7;
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(19)) |= group19;
+
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 }
 
