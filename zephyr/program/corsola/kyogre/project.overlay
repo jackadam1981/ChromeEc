@@ -141,8 +141,13 @@
 					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 				ec-s3 {
+<<<<<<< HEAD   (6ecc03 skitty: Modify LED default brightness range)
 					odr = <(10000 | ROUND_UP_FLAG)>;
 					ec-rate = <0>;
+=======
+					odr = <(12500 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
+>>>>>>> CHANGE (fcea34 kyogre: base gyro and accel use irq mode during S0 and force)
 				};
 			};
 		};
