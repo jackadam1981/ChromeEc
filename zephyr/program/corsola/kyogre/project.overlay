@@ -132,6 +132,7 @@
 				};
 				ec-s3 {
 					odr = <(12500 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -148,6 +149,13 @@
 			default-range = <(1000 | ROUND_UP_FLAG)>; /* dps */
 			drv-data = <&lsm6dso_gyro_data>;
 			i2c-spi-addr-flags = "LSM6DSO_ADDR1_FLAGS";
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s3 {
+					ec-rate = <(100 * USEC_PER_MSEC)>;
+				};
+			};
 		};
 	};
 
