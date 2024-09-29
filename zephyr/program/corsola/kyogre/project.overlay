@@ -131,7 +131,12 @@
 					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
+<<<<<<< PATCH SET (4886d3 kyogre: base gyro and accel use irq mode during S0 and force)
+					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
+=======
 					odr = <(12500 | ROUND_UP_FLAG)>;
+>>>>>>> BASE      (5f90ba kyogre: re-design sensor settings and gyro active mask)
 				};
 			};
 		};
