@@ -245,6 +245,9 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	struct lsm6dso_fstatus fsts;
 	bool has_read_fifo = false;
 
+	/* For debug, need to be removed */
+	CPRINTS("%s irq_handler", s->name);
+
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_LSM6DSO_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;

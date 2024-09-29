@@ -743,6 +743,9 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 	}
 
 	if (motion_sensor_in_forced_mode(sensor)) {
+		/* For debug, need to be removed */
+		CPRINTF("forced_mode\n");
+
 		if (motion_sensor_time_to_read(ts, sensor)) {
 			/*
 			 * Since motion_sense_read can sleep, other task may be
@@ -912,6 +915,9 @@ void motion_sense_task(void *u)
 		atomic_add(&motion_sense_task_loops, 1);
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
+
+			/* For debug, need to be removed */
+			CPRINTF("%s task\n", sensor->name);
 
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
