@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37cf120f_486f5db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:55:19Z",
+      "side": 1,
+      "message": "Based on the discussion we had in the other CL, it sounds like it makes more sense to put this test in the [`fpsensor_debug` test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_debug.cc) (both the EC and Zephyr versions).",
+      "revId": "7f707ba34926e821cdfe452d17d4acb8207e6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
