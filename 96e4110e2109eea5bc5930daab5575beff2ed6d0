@@ -16,6 +16,23 @@
       "message": "Ptal.",
       "revId": "96e4110e2109eea5bc5930daab5575beff2ed6d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4c2f19_ef2b3a53",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-30T20:32:05Z",
+      "side": 1,
+      "message": "Please use #ifdef to define the timeout.\n\nPrefer `#define SYNC_CMD_TIMEOUT_MS 2000` and use `k_msleep(SYNC_CMD_TIMEOUT_MS + 100)`",
+      "revId": "96e4110e2109eea5bc5930daab5575beff2ed6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
