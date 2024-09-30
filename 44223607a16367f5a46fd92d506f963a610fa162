@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7617a682_e62a6415",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-30T18:41:38Z",
+      "side": 1,
+      "message": "Nit - explicitly check against `!\u003d 0` so that the if statement resolves to a bool.  This is per Misra rule 14.4.",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 27
+      },
+      "revId": "44223607a16367f5a46fd92d506f963a610fa162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08b64ed8_c6547a85",
         "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 9,
         "endLine": 932,
         "endChar": 19
+      },
+      "revId": "44223607a16367f5a46fd92d506f963a610fa162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80916e0_0b3614a3",
+        "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-30T18:41:38Z",
+      "side": 1,
+      "message": "It might be more useful if the console command displayed the decoded RDO value, or maybe both.",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 943,
+        "endChar": 56
       },
       "revId": "44223607a16367f5a46fd92d506f963a610fa162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
