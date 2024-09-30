@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f48c9d1_4be482a2",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-30T17:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f5c9ab_12bd8187",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "87f50908cb7e5931ea6b206ed26b599f1dc9e706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ce4a822_1ec54522",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-30T17:33:04Z",
       "side": 1,
       "message": "Not provided",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "87f50908cb7e5931ea6b206ed26b599f1dc9e706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc19c47_a9099d17",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-30T17:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ce4a822_1ec54522",
       "range": {
         "startLine": 24,
         "startChar": 0,
