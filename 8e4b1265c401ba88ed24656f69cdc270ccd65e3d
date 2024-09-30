@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dca385a7_be3a15ec",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-30T20:59:03Z",
+      "side": 1,
+      "message": "At the moment, I\u0027m focusing on the coverage. Ideally, each command should have more cases to check it is implemented as specified in the spec.",
+      "parentUuid": "8d895252_983af7b6",
+      "revId": "8e4b1265c401ba88ed24656f69cdc270ccd65e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a16102a_ca205728",
         "filename": "zephyr/test/pdc/src/generic/ppm.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-09-30T20:37:03Z",
       "side": 1,
       "message": "I\u0027d add a comment to the fact that connector num is at a unique location here.",
+      "revId": "8e4b1265c401ba88ed24656f69cdc270ccd65e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442ccd90_bb034536",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-09-30T20:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a16102a_ca205728",
       "revId": "8e4b1265c401ba88ed24656f69cdc270ccd65e3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
