@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d4d190_9f0ff993",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-30T18:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbb68c5_a7dfac55",
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4494fd33_37d4418e",
@@ -93,6 +111,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb94f09_b5618187",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-30T18:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4494fd33_37d4418e",
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f15a998_a2e4f1e6",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-30T18:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5195d25_833e8856",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "953c5c1b_1a5567e6",
@@ -106,6 +166,30 @@
       "writtenOn": "2024-09-30T18:13:54Z",
       "side": 1,
       "message": "I don\u0027t know if we want to specifically call out a vendor in this manner. How about something like: \"For vendors that only store image data, the value should be zero.\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 75,
+        "endLine": 15,
+        "endChar": 71
+      },
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "110b52e1_662c21e9",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-30T18:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "953c5c1b_1a5567e6",
       "range": {
         "startLine": 14,
         "startChar": 75,
@@ -163,6 +247,30 @@
           ]
         }
       ],
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b30e49_5308adaf",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-30T18:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3c035f_90e08d35",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 39
+      },
       "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
