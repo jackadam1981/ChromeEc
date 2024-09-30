@@ -21,6 +21,7 @@
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
 #define SB_AP23A7L 0x00
+#define CONFIG_BATTERY_ACTIVATION_TIMEOUT (10 * SECOND)
 
 bool squirtle_is_more_efficient(int curr_mv, int prev_mv, int batt_mv,
 				int batt_mw, int input_mw)
@@ -68,4 +69,27 @@ enum battery_present battery_is_present(void)
 		return BP_NO;
 
 	return BP_YES;
+}
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	if (get_time().val < CONFIG_BATTERY_ACTIVATION_TIMEOUT &&
+	    !gpio_get_level(GPIO_BATT_PRES_ODL)) {
+		int current = 256;
+		curr->requested_current = MAX(curr->requested_current, current);
+	}
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
 }
