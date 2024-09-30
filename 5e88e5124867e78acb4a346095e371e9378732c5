@@ -16,6 +16,24 @@
       "message": "2 bytes of bits_raw_value do not cover bit 16.",
       "revId": "5e88e5124867e78acb4a346095e371e9378732c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f7687b_112f8666",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-30T20:12:45Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "c8758f8c_cb8e77c6",
+      "revId": "5e88e5124867e78acb4a346095e371e9378732c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
