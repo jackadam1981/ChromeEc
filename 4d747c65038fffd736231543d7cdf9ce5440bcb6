@@ -16,6 +16,24 @@
       "message": "Does this cause any issues on older FW or is the bit simply ignored?",
       "revId": "4d747c65038fffd736231543d7cdf9ce5440bcb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0ea07d_01919212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-30T20:39:42Z",
+      "side": 1,
+      "message": "I\u0027m on 0.30.1 and it seems to be simply ignored. SMBUS shows bit 16 as \"not supported\" and is struck through for older versions.",
+      "parentUuid": "c5447c10_aac2b5ca",
+      "revId": "4d747c65038fffd736231543d7cdf9ce5440bcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
