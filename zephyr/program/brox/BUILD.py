@@ -8,6 +8,7 @@
 def register_brox_project(
     project_name,
     kconfig_files=None,
+    **kwargs,
 ):
     """Register a variant of brox."""
     if kconfig_files is None:
@@ -26,6 +27,7 @@ def register_brox_project(
         ],
         kconfig_files=kconfig_files,
         inherited_from=["brox"],
+        **kwargs,
     )
 
 
@@ -38,7 +40,10 @@ brox = register_brox_project(
         here / "brox" / "project.conf",
         # Common sensor configs
         here / "motionsense.conf",
+        # Tokenized Brox
+        here / "brox-tokenized" / "project.conf",
     ],
+    modules=["picolibc", "ec", "pigweed"],
 )
 
 register_brox_project(
