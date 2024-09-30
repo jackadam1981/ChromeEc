@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e26373_c1a0fcd4",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:29:38Z",
+      "side": 1,
+      "message": "For all of the Egis APIs in this file, it looks like they might be using the `egis_api_return_t` for all return values. None of those are negative.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "10f8b9795e9f03e4c1ee6495581f41933b95670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58a6fd8_1af27fea",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:29:38Z",
+      "side": 1,
+      "message": "Is this `FP_SENSOR_IMAGE_SIZE`? We should use same description as [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor.h;l\u003d110-111;drc\u003d2626d4c80128c70bbf8ea151cf39f05cb2c87335).",
+      "range": {
+        "startLine": 102,
+        "startChar": 74,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "10f8b9795e9f03e4c1ee6495581f41933b95670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
