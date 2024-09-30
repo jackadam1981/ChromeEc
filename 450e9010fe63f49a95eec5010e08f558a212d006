@@ -16,6 +16,24 @@
       "message": "pen_charge.c looks good. can you please fix the tests?",
       "revId": "450e9010fe63f49a95eec5010e08f558a212d006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9936b94_a56169b5",
+        "filename": "zephyr/test/kingler/src/kyogre_pen_charge.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-09-30T13:12:26Z",
+      "side": 1,
+      "message": "I have fixed the tests. Could you please review the test code?\nThank you.",
+      "parentUuid": "b9714a53_4f90e5b0",
+      "revId": "450e9010fe63f49a95eec5010e08f558a212d006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
