@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "179cc4ce_61f7116a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:31:40Z",
+      "side": 1,
+      "message": "If that\u0027s the case, then we probably don\u0027t need two separate functions. You could just change `plat_free` to be the same as `PLAT_FREE` and remove `PLAT_FREE`.",
+      "parentUuid": "37125b44_41b8e045",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "55225f573a36772339380993fb6e2d3dfe260bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15acc972_fb841972",
         "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
         "patchSetId": 11
