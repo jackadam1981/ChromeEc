@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347878fc_66091a64",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T22:50:13Z",
+      "side": 1,
+      "message": "This code is copied from `firmware_builder.py`. I have a separate CL to extract the common parts into a module for sharing: https://crrev.com/c/5900834.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "5d6c41c38e9ef66dfe31f9e2c35fcbe3a20429e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
