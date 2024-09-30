@@ -16,6 +16,155 @@
       "message": "@hesling@chromium.org Hello Craig, please let me know if this is what you were looking for.",
       "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbb68c5_a7dfac55",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:13:54Z",
+      "side": 1,
+      "message": "\"in bytes\"",
+      "fixSuggestions": [
+        {
+          "fixId": "19e19b3b_678b012d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/fpsensor_driver.h",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 12,
+                "endChar": 0
+              },
+              "replacement": " * @brief Maximum size of the image in bytes.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4494fd33_37d4418e",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:13:54Z",
+      "side": 1,
+      "message": "(in bytes)",
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5195d25_833e8856",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:13:54Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "953c5c1b_1a5567e6",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:13:54Z",
+      "side": 1,
+      "message": "I don\u0027t know if we want to specifically call out a vendor in this manner. How about something like: \"For vendors that only store image data, the value should be zero.\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 75,
+        "endLine": 15,
+        "endChar": 71
+      },
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3c035f_90e08d35",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T18:13:54Z",
+      "side": 1,
+      "message": "in pixels",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dc9846d9_e29bc433",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/fpsensor_driver.h",
+              "range": {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": " * @brief Width of a fingerprint image in pixels.\n"
+            },
+            {
+              "path": "driver/fingerprint/fpsensor_driver.h",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": " * @brief Height of a fingerprint image in pixels.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f69c85fd8447080cf4d7a790803a8d65f7f3cecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
