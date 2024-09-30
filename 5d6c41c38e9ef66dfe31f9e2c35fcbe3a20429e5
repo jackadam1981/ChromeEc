@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b0cd480_0aef3dc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-09-30T22:52:28Z",
+      "side": 1,
+      "message": "The `firmware-ec-renode-cq` builder is non-critical, so the run doesn\u0027t show up in Gerrit. However, you can see the runs here: https://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-ec-renode-cq. \n\nAn example run of this CL is [here](https://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-ec-renode-cq/b8735333820357269921/overview), with logs [here](https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8735333820357269921/+/u/test_firmware/stdout).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "5d6c41c38e9ef66dfe31f9e2c35fcbe3a20429e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "347878fc_66091a64",
         "filename": "util/renode/firmware_builder.py",
         "patchSetId": 4
