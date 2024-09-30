@@ -22,6 +22,30 @@
       },
       "revId": "7815ea9c91edf1c3ef1018bd91e57c5e882cf53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb683fc8_5336c6d4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3396,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-09-30T18:34:52Z",
+      "side": 1,
+      "message": "`pdc_power_mgmt_is_sink_connected()` returns true after entry into the Snk.Attached state.  This is before any of the substates run.  So I think you need a check that the RDO is valid.",
+      "parentUuid": "1d525017_9588bfa3",
+      "range": {
+        "startLine": 3396,
+        "startChar": 40,
+        "endLine": 3396,
+        "endChar": 43
+      },
+      "revId": "7815ea9c91edf1c3ef1018bd91e57c5e882cf53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
