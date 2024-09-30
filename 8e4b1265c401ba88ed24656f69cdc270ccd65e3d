@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d895252_983af7b6",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-30T20:37:03Z",
+      "side": 1,
+      "message": "Should this be `test_get_alternate_modes_as_snk_fails`? \n\nWhat\u0027s the value of this test for ppm? I can see this would give us coverage for checking the connector number but why else?",
+      "revId": "8e4b1265c401ba88ed24656f69cdc270ccd65e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a16102a_ca205728",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-09-30T20:37:03Z",
+      "side": 1,
+      "message": "I\u0027d add a comment to the fact that connector num is at a unique location here.",
+      "revId": "8e4b1265c401ba88ed24656f69cdc270ccd65e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
