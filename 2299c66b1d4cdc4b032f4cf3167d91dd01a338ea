@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b64e70_da1a5dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-30T17:33:58Z",
+      "side": 1,
+      "message": "Note updating this repo isn\u0027t strictly necessary as ISH is probably only ever built via ebuild.",
+      "revId": "2299c66b1d4cdc4b032f4cf3167d91dd01a338ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da6e34a_dc1c2cf1",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-30T17:33:58Z",
+      "side": 1,
+      "message": "There\u0027s only a single call, you can fold this function.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "2299c66b1d4cdc4b032f4cf3167d91dd01a338ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9778f83e_a10e420d",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-09-30T17:33:58Z",
+      "side": 1,
+      "message": "Not provided.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "2299c66b1d4cdc4b032f4cf3167d91dd01a338ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
