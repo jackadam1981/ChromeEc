@@ -1,0 +1,11 @@
+// Copyright 2024 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+using "platforms/cpus/nuvoton_npcx9.repl"
+
+// NCT3807
+nct3807: Mocks.DummyI2CSlave @ smbus1 0x70
+
+// Battery charger - ISL9241
+isl9241: Mocks.DummyI2CSlave @ smbus7 0x9
