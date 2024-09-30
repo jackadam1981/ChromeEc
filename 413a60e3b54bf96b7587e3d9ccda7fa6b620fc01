@@ -52,6 +52,24 @@
       "parentUuid": "b81a9129_e6799b24",
       "revId": "413a60e3b54bf96b7587e3d9ccda7fa6b620fc01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6226b61_c78f5098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-09-30T23:34:51Z",
+      "side": 1,
+      "message": "ok, I modified the CL. right now, I am porting the `fpsensor_debug` test from EC",
+      "parentUuid": "c9f12760_798a4094",
+      "revId": "413a60e3b54bf96b7587e3d9ccda7fa6b620fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
