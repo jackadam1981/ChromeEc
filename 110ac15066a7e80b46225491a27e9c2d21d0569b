@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ad82cf_38c6add8",
+        "filename": "zephyr/program/rex/kanix/cbi.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-09-30T05:38:09Z",
+      "side": 1,
+      "message": "i don\u0027t see bit 14 and 15 reserved for touch and keyboard backlight\nin `src/project/rex/karis/config.star`. could you check that these\nbits are allocate properly?",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "110ac15066a7e80b46225491a27e9c2d21d0569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
