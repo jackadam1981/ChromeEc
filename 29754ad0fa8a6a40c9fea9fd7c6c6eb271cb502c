@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0ab460_691b57de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-30T18:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d341abe_d03eef4e",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "29754ad0fa8a6a40c9fea9fd7c6c6eb271cb502c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51a88cae_9d42b6aa",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-09-30T17:53:47Z",
       "side": 1,
       "message": "You\u0027ll also need an empty `BUILD.bazel` in this directory since it doesn\u0027t exist yet.",
+      "revId": "29754ad0fa8a6a40c9fea9fd7c6c6eb271cb502c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c2dae4_6a69b36b",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-30T18:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51a88cae_9d42b6aa",
       "revId": "29754ad0fa8a6a40c9fea9fd7c6c6eb271cb502c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
