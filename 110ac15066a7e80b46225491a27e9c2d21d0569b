@@ -22,6 +22,29 @@
       },
       "revId": "110ac15066a7e80b46225491a27e9c2d21d0569b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff24960c_a263a505",
+        "filename": "zephyr/test/rex/tests/kanix/src/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-09-30T09:45:58Z",
+      "side": 1,
+      "message": "could you add braces around this? that\u0027s the preferred style for code under zephyr/\n\n\n\n```suggestion\n\tif (keyboard_backlight \u003d\u003d -1) {\n\t\treturn -1;\n\t}\n\n```",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "110ac15066a7e80b46225491a27e9c2d21d0569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
