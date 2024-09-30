@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "debf084b_544e1155",
+        "filename": "zephyr/program/rex/kanix/cbi.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2024-09-30T10:48:30Z",
+      "side": 1,
+      "message": "I just checked with the Quanta sie team, The bit field of kanix’s fw_config is not defined yet. But follow karis/cbi.dtsi, the bit 14 is touch-en and the bit 15 is reserve. Touch-en bit is only for ec function, so maybe config.star missed it.",
+      "parentUuid": "33ad82cf_38c6add8",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "110ac15066a7e80b46225491a27e9c2d21d0569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff24960c_a263a505",
         "filename": "zephyr/test/rex/tests/kanix/src/keyboard.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-30T09:45:58Z",
       "side": 1,
       "message": "could you add braces around this? that\u0027s the preferred style for code under zephyr/\n\n\n\n```suggestion\n\tif (keyboard_backlight \u003d\u003d -1) {\n\t\treturn -1;\n\t}\n\n```",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "110ac15066a7e80b46225491a27e9c2d21d0569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9422eb4b_5c6595e3",
+        "filename": "zephyr/test/rex/tests/kanix/src/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2024-09-30T10:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff24960c_a263a505",
       "range": {
         "startLine": 29,
         "startChar": 0,
