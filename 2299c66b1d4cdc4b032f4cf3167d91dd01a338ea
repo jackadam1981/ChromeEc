@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc238a0_796c63ab",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-30T17:51:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da6e34a_dc1c2cf1",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "2299c66b1d4cdc4b032f4cf3167d91dd01a338ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9778f83e_a10e420d",
