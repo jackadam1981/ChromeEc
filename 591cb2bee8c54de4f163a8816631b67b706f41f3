@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb55b8a4_5e7f8e48",
+        "filename": "common/usbc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-01T02:30:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "318df3fe_d381d71a",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "591cb2bee8c54de4f163a8816631b67b706f41f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a87ddf59_816b4eff",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-09-30T18:31:02Z",
       "side": 1,
       "message": "I think the logic is easier to follow if you calculate the max current allowed by the board first.\n```\nboard_max_ma \u003d MIN(PD_MAX_CURRENT_MA, PD_MAX_POWER_MW * 1000 /\n\t\t\t\t       PROCESS_ZERO_DIVISOR(*min_mv));\n*ma \u003d min(*ma, board_max_ma);\n```",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "591cb2bee8c54de4f163a8816631b67b706f41f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1884ba64_e2f3d8f2",
+        "filename": "common/usbc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-01T02:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a87ddf59_816b4eff",
       "range": {
         "startLine": 69,
         "startChar": 0,
