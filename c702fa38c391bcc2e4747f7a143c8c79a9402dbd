@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3fc76c_2e27b985",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-01T22:57:53Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be hiding double free situations this early in development. I disagree with this change.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
