@@ -100,6 +100,8 @@ static void port80_dump_buffer(void)
 	int i;
 	int head, tail;
 	int last_e = 0;
+	char buffer[80];
+	int buf_offset = 0;
 
 	/*
 	 * Print the port 80 writes so far, clipped to the length of our
@@ -115,28 +117,45 @@ static void port80_dump_buffer(void)
 	else
 		tail = 0;
 
-	ccputs("Port 80 writes:");
+	ccputs("Port 80 writes:\n");
 	for (i = tail; i < head; i++) {
 		int e = history[i % ARRAY_SIZE(history)];
 		switch (e) {
 		case PORT_80_EVENT_RESUME:
-			ccprintf("\n(S3->S0)");
-			printed = 0;
+			if (buf_offset != 0) {
+				ccprintf("%s\n", buffer);
+				printed = 0;
+				buf_offset = 0;
+			}
+			ccputs("(S3->S0)\n");
 			break;
 		case PORT_80_EVENT_RESET:
-			ccprintf("\n(RESET)");
-			printed = 0;
+			if (buf_offset != 0) {
+				ccprintf("%s\n", buffer);
+				printed = 0;
+				buf_offset = 0;
+			}
+			ccputs("(RESET)\n");
 			break;
 		default:
-			if (!(printed++ % 20)) {
-				ccputs("\n ");
+			buf_offset += snprintf(&buffer[buf_offset],
+					       sizeof(buffer) - buf_offset,
+					       " %02x", e);
+			if (++printed >= 20) {
+				ccprintf("%s\n", buffer);
 				cflush();
+				printed = 0;
+				buf_offset = 0;
 			}
-			ccprintf(" %02x", e);
 			last_e = e;
 		}
 	}
-	ccputs(" <--new\n");
+
+	if (buf_offset != 0) {
+		ccprintf("%s <--new\n", buffer);
+	} else {
+		ccputs(" <--new\n");
+	}
 
 	/* Displaying last port80 msg on 7-segment if it is enabled */
 	if (IS_ENABLED(CONFIG_SEVEN_SEG_DISPLAY) && last_e)
