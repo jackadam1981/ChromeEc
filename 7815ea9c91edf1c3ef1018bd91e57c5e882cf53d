@@ -46,6 +46,30 @@
       },
       "revId": "7815ea9c91edf1c3ef1018bd91e57c5e882cf53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7289ed_17d1d444",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3396,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-01T02:30:25Z",
+      "side": 1,
+      "message": "Expanded check to include substate",
+      "parentUuid": "bb683fc8_5336c6d4",
+      "range": {
+        "startLine": 3396,
+        "startChar": 40,
+        "endLine": 3396,
+        "endChar": 43
+      },
+      "revId": "7815ea9c91edf1c3ef1018bd91e57c5e882cf53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
