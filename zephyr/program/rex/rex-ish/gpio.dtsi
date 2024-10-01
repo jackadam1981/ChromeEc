@@ -5,6 +5,11 @@
 #include <dt-bindings/gpio_defines.h>
 
 / {
+
+	aliases {
+		gpio-nb-mode = &gpio_soc_ec_ish_nb_mode_l;
+	};
+
 	named-gpios {
 		compatible = "named-gpios";
 

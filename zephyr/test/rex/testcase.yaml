@@ -256,3 +256,5 @@ tests:
       - boards/rex_ish/ish.dtsi
     extra_configs:
       - CONFIG_TEST_PROJECT_REX_ISH=y
+      - CONFIG_PLATFORM_EC_TABLET_MODE=y
+      - CONFIG_PLATFORM_EC_EXTERNAL_NOTEBOOK_MODE=y
