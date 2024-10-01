@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a12a2b85_e62a4888",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-01T16:00:06Z",
+      "side": 1,
+      "message": "Use Zephyr\u0027s `BUILD_ASSERT`.\nI wonder if this assertion is always true though.  The [octopus board](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/baseboard/octopus/baseboard.h;l\u003d253) doesn\u0027t conform to this check.\n\nWe could enable this check for now, and look to add an Kconfig option to allow mismatched power/voltage/current numbers if an ODM requests it.",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 14
+      },
+      "revId": "b1980d6af66925aa7c572b03ae379de1937e93e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
