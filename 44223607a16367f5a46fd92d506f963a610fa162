@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ace4dc_65b521dc",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-01T02:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7617a682_e62a6415",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 27
+      },
+      "revId": "44223607a16367f5a46fd92d506f963a610fa162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b64ed8_c6547a85",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d486655_8647c764",
+        "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-01T02:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b64ed8_c6547a85",
+      "range": {
+        "startLine": 932,
+        "startChar": 9,
+        "endLine": 932,
+        "endChar": 19
+      },
+      "revId": "44223607a16367f5a46fd92d506f963a610fa162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c80916e0_0b3614a3",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-09-30T18:41:38Z",
       "side": 1,
       "message": "It might be more useful if the console command displayed the decoded RDO value, or maybe both.",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 943,
+        "endChar": 56
+      },
+      "revId": "44223607a16367f5a46fd92d506f963a610fa162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "394b2a68_de76d292",
+        "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-01T02:31:13Z",
+      "side": 1,
+      "message": "Decoded the two current values (for fixed RDOs --we don\u0027t do battery ones)",
+      "parentUuid": "c80916e0_0b3614a3",
       "range": {
         "startLine": 943,
         "startChar": 0,
