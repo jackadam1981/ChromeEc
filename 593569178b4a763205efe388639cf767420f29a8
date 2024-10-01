@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8479a64_b84f921b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-01T16:21:04Z",
+      "side": 1,
+      "message": "Go ahead and add the Zephyr unit test in `fpsensor_debug` in this CL as well.",
+      "revId": "593569178b4a763205efe388639cf767420f29a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f8a798_62df58b5",
+        "filename": "test/restricted_console.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-01T16:21:04Z",
+      "side": 1,
+      "message": "Let\u0027s put it in the `test/fpsensor_debug.cc` file now that we\u0027re moving them all there.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "593569178b4a763205efe388639cf767420f29a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
