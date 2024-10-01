@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6d79c4_179e8029",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-01T17:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05b5adba_0ea8641e",
+      "revId": "935eaa18ebc2f0e6a564ddccb79316c5ff1b8282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "578c5e8e_5af7da00",
@@ -66,6 +84,30 @@
       "writtenOn": "2024-10-01T16:11:25Z",
       "side": 1,
       "message": "Is this needed?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "935eaa18ebc2f0e6a564ddccb79316c5ff1b8282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590f97c5_264caa60",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-01T17:03:27Z",
+      "side": 1,
+      "message": "without this, I am getting a build error: `ld.lld: error: undefined symbol: mkbp_send_event`.\n\nhttps://paste.googleplex.com/5486356978728960",
+      "parentUuid": "578c5e8e_5af7da00",
       "range": {
         "startLine": 20,
         "startChar": 0,
