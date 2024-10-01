@@ -140,6 +140,30 @@
       },
       "revId": "9b7bec3fd95438022e8513d98869c8fb2a1a5a3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c04511_fac2f0af",
+        "filename": "firmware_builder.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-10-01T19:58:50Z",
+      "side": 1,
+      "message": "Ok, so we can\u0027t pick any of this bazel stuff to our current release branches. We will need to create new branches off of a version that supports these commands.\n\nThis is fine. I can create new branches after everything lands.",
+      "parentUuid": "3c49a770_c1707467",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "9b7bec3fd95438022e8513d98869c8fb2a1a5a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
