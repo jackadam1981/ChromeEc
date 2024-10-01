@@ -22,6 +22,30 @@
       },
       "revId": "7ce2dca559c2fcc330cebdc411a6211e0869cf42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1db9b81e_068c287a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-01T23:38:21Z",
+      "side": 1,
+      "message": "Yeah, same as the fpmaintenance command, I don\u0027t think there is any direct way to use fpclear to learn what fingerprints would yield a correct match (oracle attack). Might want to drop this part of the commit message.",
+      "parentUuid": "29bbbcdb_3c6572db",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "7ce2dca559c2fcc330cebdc411a6211e0869cf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
