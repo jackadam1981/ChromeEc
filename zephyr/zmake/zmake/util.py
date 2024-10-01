@@ -10,6 +10,7 @@ import re
 import shlex
 import shutil
 import subprocess
+import sys
 
 import zmake.jobserver
 import zmake.multiproc
@@ -273,29 +274,54 @@ def merge_token_databases(databases, merged_db):
     modules = zmake.modules.locate_from_checkout(checkout)
     jobclient = zmake.jobserver.GNUMakeJobServer()
 
-    proc = jobclient.popen(
-        [
-            get_tool_path("vpython3"),
-            "-vpython-spec",
-            checkout / modules["ec"] / "zephyr" / "pigweed-vpython3",
-            checkout
-            / modules["pigweed"]
-            / "pw_tokenizer"
-            / "py"
-            / "pw_tokenizer"
-            / "database.py",
-            "create",
-            "--type",
-            "binary",
-            "--force",
-            "--database",
-            merged_db,
-            *databases,
-        ],
-        cwd=os.path.dirname(merged_db),
-        encoding="utf-8",
-        env={"PATH": os.environ["PATH"], "HOME": os.environ["HOME"]},
-    )
+    print(sys.version)
+    PW_TOKENIZER_SUPPORTED = sys.version_info >= (3, 11)
+
+    if PW_TOKENIZER_SUPPORTED:
+        proc = jobclient.popen(
+            [
+                sys.executable,
+                checkout
+                / modules["pigweed"]
+                / "pw_tokenizer"
+                / "py"
+                / "pw_tokenizer"
+                / "database.py",
+                "create",
+                "--type",
+                "binary",
+                "--force",
+                "--database",
+                merged_db,
+                *databases,
+            ],
+            cwd=os.path.dirname(merged_db),
+            encoding="utf-8",
+        )
+    else:
+        proc = jobclient.popen(
+            [
+                get_tool_path("vpython3"),
+                "-vpython-spec",
+                checkout / modules["ec"] / "zephyr" / "pigweed-vpython3",
+                checkout
+                / modules["pigweed"]
+                / "pw_tokenizer"
+                / "py"
+                / "pw_tokenizer"
+                / "database.py",
+                "create",
+                "--type",
+                "binary",
+                "--force",
+                "--database",
+                merged_db,
+                *databases,
+            ],
+            cwd=os.path.dirname(merged_db),
+            encoding="utf-8",
+            env={"PATH": os.environ["PATH"], "HOME": os.environ["HOME"]},
+        )
 
     if proc.wait(timeout=60):
         raise OSError("Failed to run PW database.py")
