@@ -233,6 +233,17 @@ $(out)/RW/common/pinweaver.o: $(PINWEAVERLIB)/pinweaver.c
 	$(call quiet,c_to_o,CC     )
 endif
 
+# Build platform/gsc-utils/dice.
+ifeq ($(CONFIG_PLATFORM_DICE),y)
+DICELIB := $(realpath ../gsc-utils/dice)
+CPPFLAGS += -I$(DICELIB)
+
+common-y += dice.o
+
+$(out)/RW/common/dice.o: $(DICELIB)/dice.c
+	$(call quiet,c_to_o,CC     )
+endif
+
 # Build and link against libcryptoc.
 ifeq ($(CONFIG_LIBCRYPTOC),y)
 CRYPTOCLIB := $(realpath ../../third_party/cryptoc)

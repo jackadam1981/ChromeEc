@@ -585,6 +585,9 @@ enum nvmem_users {
 /* Enable hardware backed brute force resistance feature */
 #define CONFIG_PLATFORM_PINWEAVER
 
+/* Enable starting DICE chain in GSC */
+#define CONFIG_PLATFORM_DICE
+
 /*
  * Disabling p256 will result in RMA Auth falling back to the x25519 curve
  * which in turn would require extra 5328 bytes of flash space.

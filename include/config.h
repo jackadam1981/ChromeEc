@@ -2643,6 +2643,14 @@
 #undef CONFIG_PLATFORM_PINWEAVER
 
 /*****************************************************************************/
+/* PinWeaver config
+ * A feature which allows starting DICE chain for the device in GSC. This
+ * enables a vnvmem space that lets AP FW read boot parameters from cr50.
+ */
+/* Use platform/gsc-utils/dice */
+#undef CONFIG_PLATFORM_DICE
+
+/*****************************************************************************/
 /* PMU config */
 
 /*
