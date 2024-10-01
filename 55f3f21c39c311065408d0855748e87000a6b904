@@ -51,6 +51,24 @@
       "message": "I agree with this change, please disable the [command flags feature](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/bloonchipper/base_board.h;l\u003d138-145;drc\u003dc9590e5abb7b27563857e3f59b918ca55c4ffed6) and remove [the hook function that it calls](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/bloonchipper/base_board.c;l\u003d17-25;drc\u003dc9590e5abb7b27563857e3f59b918ca55c4ffed6), when all usages are removed.\n\nOther usages are in the gpioset command and the memory write commands.",
       "revId": "55f3f21c39c311065408d0855748e87000a6b904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c47d74a_ff9a530d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-01T16:34:45Z",
+      "side": 1,
+      "message": "I added this to the bug:\nhttps://b.corp.google.com/issues/279821940#comment12",
+      "parentUuid": "7f0f852f_e4da785c",
+      "revId": "55f3f21c39c311065408d0855748e87000a6b904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
