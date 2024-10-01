@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb172c3_8ed0dc89",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-10-01T19:50:23Z",
+      "side": 1,
+      "message": "Is this the sha256sum of 8adade1392d87565482ea57bfafaf74223cebbe5.tar.zst",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 82
+      },
+      "revId": "9b7bec3fd95438022e8513d98869c8fb2a1a5a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effd924e_948b3fa5",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-10-01T19:50:23Z",
+      "side": 1,
+      "message": "nit: Can you add a comment about why this specific tarball was picked?",
+      "range": {
+        "startLine": 12,
+        "startChar": 94,
+        "endLine": 12,
+        "endChar": 152
+      },
+      "revId": "9b7bec3fd95438022e8513d98869c8fb2a1a5a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b534c8_e05f37ed",
+        "filename": "firmware_builder.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-10-01T19:50:23Z",
+      "side": 1,
+      "message": "Does fwsdk mean firmware sdk? Does it work in a normal chroot?",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "9b7bec3fd95438022e8513d98869c8fb2a1a5a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
