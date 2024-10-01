@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1594cdf6_0357f0e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-01T20:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a123695_18bbfaf9",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "bf0e38868a3a2f6ef5d2ea994ab46d0add8c7ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ef495e6_900908d6",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-10-01T16:16:37Z",
       "side": 1,
       "message": "Can you also create a CL to move [the EC test from `test/restricted_console.c`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/restricted_console.c;l\u003d68-86;drc\u003d65ea08cbdaac98850af3ba9ba467818d63aef737) to `test/fpsensor_debug.cc`?\n\nWe want to keep the tests in the same structure between EC and Zephyr so that we can make sure they stay in sync.",
+      "revId": "bf0e38868a3a2f6ef5d2ea994ab46d0add8c7ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1930cd_c22ba675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-01T20:19:12Z",
+      "side": 1,
+      "message": "I created this CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5892969) to move the EC test from `test/restricted_console.c` to `test/fpsensor_debug.cc`. The test currently fails because it runs also on the host and the commands will not run properly on the host.",
+      "parentUuid": "6ef495e6_900908d6",
       "revId": "bf0e38868a3a2f6ef5d2ea994ab46d0add8c7ba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
