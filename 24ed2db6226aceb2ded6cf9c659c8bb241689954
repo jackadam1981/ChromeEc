@@ -16,6 +16,24 @@
       "message": "Matt, do you see anything obviously wrong with this CL?\n\nCQ is failing with:\n\n```\n(17:56:53) ERROR: Skipping \u0027@ec-coreboot-sdk-arm-eabi//:get_path\u0027: No repository visible as \u0027@ec-coreboot-sdk-arm-eabi\u0027 from main repository\n(17:56:53) ERROR: Skipping \u0027@ec-coreboot-sdk-i386-elf//:get_path\u0027: No repository visible as \u0027@ec-coreboot-sdk-i386-elf\u0027 from main repository\n(17:56:53) ERROR: Skipping \u0027@ec-coreboot-sdk-riscv-elf//:get_path\u0027: No repository visible as \u0027@ec-coreboot-sdk-riscv-elf\u0027 from main repository\n(17:56:53) ERROR: Skipping \u0027@ec-coreboot-sdk-nds32le-elf//:get_path\u0027: No repository visible as \u0027@ec-coreboot-sdk-nds32le-elf\u0027 from main repository\n(17:56:53) ERROR: No repository visible as \u0027@ec-coreboot-sdk-arm-eabi\u0027 from main repository\n```",
       "revId": "24ed2db6226aceb2ded6cf9c659c8bb241689954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcc3dda_0d76f802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-01T15:09:05Z",
+      "side": 1,
+      "message": "For some additional context, it works locally for me, and these errors seem to be a catch all for something being wrong with the deps.bzl file.  I tested messing up the path, removing the BUILD.bazel file, and adding/removing from the ignore list in crrev/c/5895948 and all of those issues cause the error above.  I\u0027m confused as to why it would work locally and not in the CQ.  does the ignore file need to be merged?",
+      "parentUuid": "edf8c359_7b40bd65",
+      "revId": "24ed2db6226aceb2ded6cf9c659c8bb241689954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
