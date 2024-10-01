@@ -1173,6 +1173,11 @@ static void st_ping_status_run(void *o)
 			 */
 			data->cci_event.command_completed = 1;
 
+			/* Workaround: Force reading data. */
+			if (data->cmd == CMD_GET_IC_STATUS &&
+			    data->ping_status.data_len == 0) {
+				data->ping_status.data_len = 38;
+			}
 			if (data->ping_status.data_len > 0) {
 				/* Data is available, so read it */
 				set_state(data, ST_READ);
