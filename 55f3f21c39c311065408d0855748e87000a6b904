@@ -16,6 +16,24 @@
       "message": "Let\u0027s move this change after the test that verifies it works correctly (in both Zephyr and EC).",
       "revId": "55f3f21c39c311065408d0855748e87000a6b904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e63ec41_77024db9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-01T00:00:49Z",
+      "side": 1,
+      "message": "I created this zephyr test:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5900536/1",
+      "parentUuid": "766c002c_1d112405",
+      "revId": "55f3f21c39c311065408d0855748e87000a6b904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
