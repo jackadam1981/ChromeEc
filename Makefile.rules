@@ -322,6 +322,7 @@ utils-art: $(build-art)
 
 .PHONY: utils-host
 ifeq ($(BOARD),host)
+HOST_CPPFLAGS+= -fsanitize=address
 utils-host: $(host-utils) $(host-utils-cxx)
 else
 utils-host:
