@@ -70,6 +70,30 @@
       },
       "revId": "61eaa4a60b74efe48e18dce0d1624d4c0429434e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74da11d_660cf55b",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/adc.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-02T20:19:35Z",
+      "side": 1,
+      "message": "Also, devicetree only resembles C syntax, but it\u0027s not fully formed C code.",
+      "parentUuid": "0e6fb4cc_57782206",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "61eaa4a60b74efe48e18dce0d1624d4c0429434e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
