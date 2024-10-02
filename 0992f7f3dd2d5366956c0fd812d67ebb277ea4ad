@@ -22,6 +22,30 @@
       },
       "revId": "0992f7f3dd2d5366956c0fd812d67ebb277ea4ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bb4146_26f98d6c",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-02T19:04:10Z",
+      "side": 1,
+      "message": "I guess a toolchain test didn\u0027t seem like a valid use case, but maybe it would be?  It feels complicated since the checkouts are out of tree which causes this issue in the first place.  We would need the deps.bazel file from each checkout, and as written, we would need them to be in src/platform/ec within a full checkout at the time of invoking the script.\n\nThe alternative would be to checkout additional repos in each of the ec repos with the correct hierarchy to be able to use the bazel command correctly from within the new checkout.\n\nSince both feel complicated, and the script is currently broken, can we merge as is and file a feature request?  Or add a comment and decide that that\u0027s WAI?",
+      "parentUuid": "58bf476b_37357441",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 0
+      },
+      "revId": "0992f7f3dd2d5366956c0fd812d67ebb277ea4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
