@@ -218,16 +218,6 @@ enum cmd_sts_t {
 };
 
 /**
- * @brief PDC port flags
- */
-enum pdc_flags_t {
-	/** PDC is currently processing IRQ. */
-	PDC_HANDLING_IRQ,
-	/** Number of supported PDC flags. */
-	PDC_FLAGS_COUNT,
-};
-
-/**
  * @brief Ping Status of the PDC
  */
 union ping_status_t {
@@ -445,8 +435,6 @@ struct pdc_data_t {
 	union error_status_t es;
 	/* Driver specific events to handle. */
 	struct k_event driver_event;
-	/** Port specific PDC flags */
-	atomic_t flags;
 	/* Currently running UCSI command. */
 	enum ucsi_command_t active_ucsi_cmd;
 };
@@ -973,9 +961,6 @@ static void handle_irqs(struct pdc_data_t *data)
 				/* Set the interrupt event */
 				pdc_int_data->cci_event
 					.vendor_defined_indicator = 1;
-				/* Set local interrupt handling flag */
-				atomic_set_bit(&pdc_int_data->flags,
-					       PDC_HANDLING_IRQ);
 				/* Notify system of status change */
 				call_cci_event_cb(pdc_int_data);
 				/* done with this port */
@@ -1416,32 +1401,6 @@ static void st_read_run(void *o)
 		*vconn_sourcing = (data->rd_buf[11] & 0x20);
 		break;
 	}
-	case CMD_GET_CONNECTOR_STATUS:
-		memcpy(data->user_buf, data->rd_buf + offset, len);
-
-		/*
-		 * If this is the first connector status since an IRQ, it may
-		 * be in response to an Attention message. Check current partner
-		 * flags and status change bits to determine if it was likely an
-		 * Attention message (DP Status).
-		 *
-		 * TODO(b/356955093) Remove this when the PDC firmware supports
-		 * IRQs on Attention messages.
-		 */
-		if (atomic_test_and_clear_bit(&data->flags, PDC_HANDLING_IRQ)) {
-			union connector_status_t *status =
-				(union connector_status_t *)data->user_buf;
-			if ((status->conn_partner_flags &
-			     CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE) &&
-			    !status->raw_conn_status_change_bits) {
-				union conn_status_change_bits_t
-					status_change_bits = { 0 };
-				status_change_bits.attention = 1;
-				status->raw_conn_status_change_bits =
-					status_change_bits.raw_value;
-			}
-		}
-		break;
 	default:
 		/* No preprocessing needed for the user data */
 		memcpy(data->user_buf, data->rd_buf + offset, len);
@@ -2852,7 +2811,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.bits.command_completed = 1,                                  \
 		.bits.external_supply_change = 1,                             \
 		.bits.power_operation_mode_change = 1,                        \
-		.bits.attention = 0,                                          \
+		.bits.attention = 1,                                          \
 		.bits.fw_update_request = 0,                                  \
 		.bits.provider_capability_change_supported = 1,               \
 		.bits.negotiated_power_level_change = 1,                      \
