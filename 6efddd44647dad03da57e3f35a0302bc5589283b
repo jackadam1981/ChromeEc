@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d61e6b_9ffd0b37",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/generated.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-02T19:02:20Z",
+      "side": 1,
+      "message": "Since this file is auto-generated, this change can easily be lost.\nYou can create use another devicetree overlay to assign another nodelabel to this bus.  We had a similar issue on brox.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/brox/brox/project.overlay;l\u003d12",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 7
+      },
+      "revId": "6efddd44647dad03da57e3f35a0302bc5589283b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
