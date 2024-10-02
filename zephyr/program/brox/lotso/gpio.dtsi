@@ -8,6 +8,10 @@
 	named-adc-channels {
 		compatible = "named-adc-channels";
 
+		adc_prochot: prochot {
+			enum-name = "ADC_PROCHOT";
+			io-channels = <&adc0 0>;
+		};
 		adc_charger_amon: charger_amon {
 			enum-name = "ADC_AMON_BMON";
 			io-channels = <&adc0 1>;
@@ -54,6 +58,10 @@
 		};
 		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
 			gpios = <&gpioj 0 GPIO_INPUT>;
+		};
+		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
+			gpios = <&gpioi 7 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
 		};
 		gpio_ec_dsw_pwrok: ec_dsw_pwrok {
 			gpios = <&gpiod 3 GPIO_OUTPUT>;
@@ -167,6 +175,7 @@
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpiod 1 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
 		};
 		gpio_usb_pd_int_odl: usb_pd_int_odl {
 			gpios = <&gpiof 5 GPIO_INPUT>;
@@ -223,8 +232,6 @@
 			<&gpioa 7 0>,
 			/* USB3_REDRIVER_PD */
 			<&gpiod 7 0>,
-			/* ec_batt_pres_odl */
-			<&gpioi 7 0>,
 			/* I2C_EC_PMC_PD_SCL */
 			<&gpioh 1 GPIO_INPUT>,
 			/* I2C_EC_PMC_PD_SDA */

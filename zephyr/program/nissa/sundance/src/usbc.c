@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "system.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
 #include "usbc_ppc.h"
 
 #include <zephyr/logging/log.h>
@@ -162,4 +163,24 @@ void board_reset_pd_mcu(void)
 int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
+}
+
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+{
+	int rv = 0;
+	const int current = TYPEC_RP_1A5;
+	rv = ppc_set_vbus_source_current_limit(port, current);
+	if (rv != EC_SUCCESS) {
+		LOG_WRN("Failed to set source ilimit on port %d to %d: %d",
+			port, current, rv);
+	}
+}
+
+int board_tcpc_post_init(int port)
+{
+	/* Alert register bits may be set during TCPM initialization.
+	 * Need to process and clear alert register after TCPM initilaztion,
+	 * otherwise the alert# pin stays low indefinitely */
+	schedule_deferred_pd_interrupt(port);
+	return EC_SUCCESS;
 }

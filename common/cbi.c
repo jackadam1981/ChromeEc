@@ -78,6 +78,7 @@ struct cbi_data *cbi_find_tag(const void *buf, enum cbi_data_tag tag)
 #ifndef HOST_TOOLS_BUILD
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, "CBI " format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, "CBI " format, ##args)
 
 static int cache_status = CBI_CACHE_STATUS_INVALID;
 static uint8_t cbi[CBI_IMAGE_SIZE];
@@ -185,13 +186,15 @@ int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 {
 	const struct cbi_data *d;
 
-	if (cbi_read())
+	if (cbi_read()) {
 		return EC_ERROR_UNKNOWN;
+	}
 
 	d = cbi_find_tag(cbi, tag);
-	if (!d)
+	if (!d) {
 		/* Not found */
 		return EC_ERROR_UNKNOWN;
+	}
 	if (*size < d->size)
 		/* Insufficient buffer size */
 		return EC_ERROR_INVAL;
@@ -281,21 +284,6 @@ int cbi_get_model_id(uint32_t *id)
 	uint8_t size = sizeof(*id);
 
 	return cbi_get_board_info(CBI_TAG_MODEL_ID, (uint8_t *)id, &size);
-}
-
-test_mockable int cbi_get_fw_config(uint32_t *fw_config)
-{
-	uint8_t size = sizeof(*fw_config);
-
-	return cbi_get_board_info(CBI_TAG_FW_CONFIG, (uint8_t *)fw_config,
-				  &size);
-}
-
-test_mockable int cbi_get_ssfc(uint32_t *ssfc)
-{
-	uint8_t size = sizeof(*ssfc);
-
-	return cbi_get_board_info(CBI_TAG_SSFC, (uint8_t *)ssfc, &size);
 }
 
 int cbi_get_pcb_supplier(uint32_t *pcb_supplier)
@@ -531,8 +519,8 @@ static enum ec_status hc_cbi_bin_write(struct host_cmd_handler_args *args)
 			cbi_invalidate_cache();
 			cbi_read();
 			if (cbi_get_cache_status() != CBI_CACHE_STATUS_SYNCED) {
-				ccprintf("Cannot Read CBI (Error %d)\n",
-					 cbi_get_cache_status());
+				CPRINTF("Cannot Read CBI (Error %d)\n",
+					cbi_get_cache_status());
 				return EC_RES_ERROR;
 			}
 		} else {

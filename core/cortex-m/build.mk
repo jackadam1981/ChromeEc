@@ -8,7 +8,7 @@
 
 # FPU compilation flags
 CFLAGS_FPU-$(CONFIG_FPU)=-mfloat-abi=hard
-ifeq ($(cc-name),gcc)
+ifneq ($(CROSS_COMPILE_CC_NAME),clang)
 # -mfpu=auto will choose correct hardware based on settings of -mcpu and -march
 # https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html.
 #
@@ -23,12 +23,18 @@ endif
 
 # CPU specific compilation flags
 CFLAGS_CPU+=-mthumb
-ifeq ($(cc-name),clang)
+ifeq ($(CROSS_COMPILE_CC_NAME),clang)
 CFLAGS_CPU+=-Oz		# Like -Os (and thus -O2), but reduces code size further.
 # b/256193799: Reduce inline threshold to decrease code size.
 CFLAGS_CPU+=-Wl,-mllvm -Wl,-inline-threshold=-10
-# Link compiler-rt when using clang, so clang finds the builtins it provides.
-LDFLAGS_EXTRA+=-lclang_rt.builtins-armv7m
+# Explicitly specify libclang_rt.builtins so that its symbols are preferred
+# over libc's. This avoids duplicate symbol errors. See b/346309204 for details.
+clang_resource_dir:="$(shell $(CC) --print-resource-dir)"
+ifneq ($(.SHELLSTATUS),0)
+$(error Could not determine path to libclang_rt.builtins)
+endif
+LDFLAGS_EXTRA+=\
+	"$(clang_resource_dir)/lib/baremetal/libclang_rt.builtins-armv7m.a"
 else
 CFLAGS_CPU+=-Os
 CFLAGS_CPU+=-mno-sched-prolog
@@ -43,7 +49,7 @@ endif
 
 core-y=cpu.o debug.o init.o vecttable.o
 # When using clang, we get these as builtins from compiler-rt.
-ifneq ($(cc-name),clang)
+ifneq ($(CROSS_COMPILE_CC_NAME),clang)
 core-y+=ldivmod.o llsr.o uldivmod.o
 endif
 core-$(CONFIG_ARMV7M_CACHE)+=cache.o

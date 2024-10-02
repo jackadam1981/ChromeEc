@@ -148,6 +148,9 @@ enum pdo_peak_overcurrent {
 #define PDO_BATT_MAX_VOLT(mv) ((((mv) / 50) & 0x3FF) << 20)
 #define PDO_BATT_MIN_VOLT(mv) ((((mv) / 50) & 0x3FF) << 10)
 #define PDO_BATT_OP_POWER(mw) ((((mw) / 250) & 0x3FF) << 0)
+#define PDO_BATT_GET_MAX_VOLT(pdo) (((pdo >> 20) & 0x3FF) * 50)
+#define PDO_BATT_GET_MIN_VOLT(pdo) (((pdo >> 10) & 0x3FF) * 50)
+#define PDO_BATT_GET_OP_POWER(pdo) ((pdo & 0x3FF) * 250)
 
 #define PDO_BATT(min_mv, max_mv, op_mw)                          \
 	(PDO_BATT_MIN_VOLT(min_mv) | PDO_BATT_MAX_VOLT(max_mv) | \
@@ -2399,6 +2402,7 @@ void pd_ufp_enable_hpd_send(int port);
  * @return      True if Cable supports speed USB_R20_SS_U31_GEN1_GEN2/
  *                                           USB_R30_SS_U32_U40_GEN2/
  *                                           USB_R30_SS_U40_GEN3,
+ *                                           USB_R30_SS_U40_GEN4
  *             False otherwise
  */
 bool is_cable_speed_gen2_capable(int port);

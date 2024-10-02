@@ -35,6 +35,13 @@ config SHELL_BACKEND_SERIAL_TX_RING_BUFFER_SIZE
 config SHELL_BACKEND_SERIAL_RX_RING_BUFFER_SIZE
 	default 192
 
+config PLATFORM_EC_CONSOLE_INIT_PRIORITY
+	int "EC console shim init priority"
+	default 61
+	help
+	  Console shim initialization priority.  This must be a lower priority
+	  than CONFIG_CONSOLE_INIT_PRIORITY.
+
 config PLATFORM_EC_ISR_CONSOLE_OUTPUT
 	bool "Log in ISRs"
 	depends on CONSOLE
@@ -125,10 +132,13 @@ config PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER_REDUCED
 
 config PLATFORM_EC_LOG_CUSTOM_TIMESTAMP
 	bool "Use EC format of timestamp"
-	select LOG_OUTPUT_FORMAT_CUSTOM_TIMESTAMP
 	help
 	  Change the default format of the timestamp, to the one EC uses -
 	  "[s.us]" at the beginning of a log.
+
+choice LOG_BACKEND_FORMAT_TIMESTAMP_MODE
+	default LOG_OUTPUT_FORMAT_CUSTOM_TIMESTAMP if PLATFORM_EC_LOG_CUSTOM_TIMESTAMP
+endchoice
 
 config PLATFORM_EC_PRINTF_LONG_IS_32BITS
 	bool "Support %l in 32-bit systems"

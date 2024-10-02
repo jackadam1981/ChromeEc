@@ -32,7 +32,7 @@ used for JTAG and SWD for ARM devices.
     is the only software required for flashing.
 *   In order to perform breakpoint debugging, you will need a tool that supports
     connecting `gdbserver`. This document will assume [CLion] \(Googlers see
-    [CLion for ChromeOS]) and was tested with `JLink v6.94a`. Alternatively, you
+    [CLion for ChromeOS]) and was tested with `JLink v7.98h`. Alternatively, you
     can use [Ozone], a standalone debugger from Segger.
 
 ## JLink Software {#software}
@@ -77,7 +77,7 @@ Icetower v3 with 20-pin SWD (0.05" / 1.27mm) on `CORESIGHT20 DB CONN`. |
 ---------------------------------------------------------------------- |
 ![Icetower with 20-pin SWD]                                            |
 
-### Quincy v3
+### Quincy v3 {#quincy}
 
 The connector for SWD is `J4`. It is labeled with `CORESIGHT20`.
 
@@ -105,7 +105,7 @@ default:
 ```
 
 where `<BOARD>` is the board you are working with
-([`dartmonkey` or `bloonchipper`][fingerprint hardware]).
+([`dartmonkey`, `bloonchipper`, or `helipilot`][fingerprint hardware]).
 
 Theoretically, it's also possible to power through J-Trace, though the
 [power pin] on J-Trace only outputs 5V, whereas the MCU runs at 3.3V and the
@@ -131,14 +131,14 @@ sensor runs at 1.8V. The pin is also not connected on the current designs.
 You should see the following:
 
 ```bash
-SEGGER J-Link Remote Server V6.94a
-Compiled Jan 14 2021 11:52:48
+SEGGER J-Link Remote Server V7.98h
+Compiled Sep 11 2024 14:27:52
 
 'q' to quit '?' for help
 
-Connected to J-Link with S/N 123456
-
-Waiting for client connections...
+2024-09-13 18:07:20 - Remote Server started
+2024-09-13 18:07:20 - Connected to J-Link with S/N 123456
+2024-09-13 18:07:20 - Waiting for client connections...
 ```
 
 *   Build the FPMCU image:
@@ -151,7 +151,8 @@ Waiting for client connections...
 (chroot) $ make BOARD=<BOARD> -j
 ```
 
-replacing `<BOARD>` with [`bloonchipper` or `dartmonkey`][fingerprint hardware].
+replacing `<BOARD>` with
+[`bloonchipper`, `dartmonkey`, or `helipilot`][fingerprint hardware].
 
 *   Run the [`flash_jlink.py`] script:
 
@@ -159,17 +160,41 @@ replacing `<BOARD>` with [`bloonchipper` or `dartmonkey`][fingerprint hardware].
 (chroot) $ ~/trunk/src/platform/ec/util/flash_jlink.py --board <BOARD> --image ./build/<BOARD>/ec.bin
 ```
 
-replacing `<BOARD>` with [`bloonchipper` or `dartmonkey`][fingerprint hardware].
+replacing `<BOARD>` with
+[`bloonchipper`, `dartmonkey`, or `helipilot`][fingerprint hardware].
 
 ## Using JLink gdbserver {#gdb}
 
-Start the JLink gdbserver for the appropriate MCU type:
+Start the JLink gdbserver for the appropriate MCU type and interface speed:
 
 *   Dragonclaw / [Nucleo STM32F412ZG]: `STM32F412CG`
 *   Icetower / [Nucleo STM32H743ZI]: `STM32H743ZI`
+*   Quincy / NPCX99FP: `NPCX998F`
+
+Dragonclaw:
 
 ```bash
 (chroot) $ JLinkGDBServerCLExe -select USB -device STM32F412CG -endian little -if SWD -speed auto -noir -noLocalhostOnly
+```
+
+Icetower:
+
+```bash
+(chroot) $ JLinkGDBServerCLExe -select USB -device STM32H743ZI -endian little -if SWD -speed auto -noir -noLocalhostOnly
+```
+
+Quincy:
+
+<!-- mdformat off(b/139308852) -->
+*** note
+**NOTE**: Make sure [correct switches are set](#quincy) and
+[`CONFIG_ENABLE_JTAG_SELECTION`] is enabled for the board
+([Example][config jtag example]).
+***
+<!-- mdformat on -->
+
+```bash
+(chroot) $ JLinkGDBServerCLExe -select USB -device NPCX998F -endian little -if SWD -speed 4000 -noir -noLocalhostOnly
 ```
 
 You should see the port that `gdbserver` is running on in the output:
@@ -236,7 +261,7 @@ Ozone is a free standalone debugger provided by Segger that works with the
 gdbserver can provide. For example, Ozone has a register mapping for the MCUs we
 use, so you can easily inspect CPU registers. It can also be automated with a
 scripting language and show code coverage when used with a [J-Trace] that is
-connected to the trace pins on a board. Note that the Dragonclaw v0.3 uses an
+connected to the trace pins on a board. Note that the Dragonclaw v4 uses an
 STM32F412 package that does not have the synchronous trace pins, but the
 [Nucleo STM32F412ZG] does have the trace pins.
 
@@ -258,6 +283,7 @@ STM32F412 package that does not have the synchronous trace pins, but the
 [fingerprint hardware]: ./fingerprint.md#hardware
 [`flash_jlink.py`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/flash_jlink.py
 [`CONFIG_ENABLE_JTAG_SELECTION`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/config.h;l=3084-3091;drc=a8b8b850ccc36b704f823094b62339662f6a7077
+[config jtag example]: https://crrev.com/c/5852491
 
 <!-- Images -->
 
