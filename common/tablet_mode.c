@@ -239,12 +239,11 @@ DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
  * the tablet_mode to be clamshell, but |gmr_sensor_at_360| will still be true,
  * the request will be ignored.
  */
-#define GMR_SENSOR_DEBOUNCE_US (LID_DEBOUNCE_US + 10 * MSEC)
 
 void gmr_tablet_switch_isr(enum gpio_signal signal)
 {
 	hook_call_deferred(&gmr_tablet_switch_interrupt_debounce_data,
-			   GMR_SENSOR_DEBOUNCE_US);
+			   CONFIG_GMR_SENSOR_DEBOUNCE_US);
 }
 
 /*
@@ -372,3 +371,22 @@ __test_only void tablet_reset(void)
 	tablet_mode_forced = false;
 	disabled = false;
 }
+
+#ifdef CONFIG_PLATFORM_EC_EXTERNAL_NOTEBOOK_MODE
+static void notify_ec_for_nb_mode_change(void)
+{
+	/*
+	 * The gpio_nb_mode pin is an output from SOC (ISH) to EC.
+	 *
+	 * In this config, ISH runs motion sense task; while EC doesn't.
+	 * When ISH motion sense task detects notebook(clamshell)/tablet mode
+	 * changes, ISH will notify EC about the change by updating this pin.
+	 *
+	 * Assert this gpio if changing to notebook(clamshell) mode;
+	 * Deassert this gpio if changing to tablet mode.
+	 */
+	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_nb_mode), !tablet_get_mode());
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, notify_ec_for_nb_mode_change,
+	     HOOK_PRIO_DEFAULT);
+#endif

@@ -231,7 +231,6 @@
 			mutex = <&lid_mutex_bmi323>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&lid_rot_ref_bmi>;
-			default-range = <2>;
 			drv-data = <&bmi323_data>;
 			configs {
 				compatible =
@@ -600,6 +599,7 @@
 	charger_bc12_port1: rt9490@53{
 		compatible = "richtek,rt9490";
 		thermistor = <&thermistor_rt9490>;
+		eoc-current = <120>;
 		/delete-property/ irq;
 	};
 };

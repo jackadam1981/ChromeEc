@@ -7,7 +7,9 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 zephyr_include_directories(include)
-zephyr_library_sources("src/common.c")
+if(NOT DEFINED CONFIG_BOARD_INTEL_ISH_5_4_1)
+	zephyr_library_sources("src/common.c")
+endif()
 zephyr_library_sources_ifdef(CONFIG_NISSA_SUB_BOARD "src/sub_board.c")
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
@@ -52,7 +54,6 @@ if(DEFINED CONFIG_BOARD_NAKTAL)
 endif()
 if(DEFINED CONFIG_BOARD_CRAASK)
 	zephyr_library_sources(
-			"craask/src/battery.c"
 			"craask/src/fan.c"
 			"craask/src/form_factor.c"
 			"craask/src/keyboard.c"
@@ -276,6 +277,7 @@ if(DEFINED CONFIG_BOARD_RIVEN)
 			"riven/src/form_factor.c"
 			"riven/src/led.c"
 			"riven/src/touch_panel.c"
+			"riven/src/usb_mux_config.c"
 	)
 	project(riven)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "riven/src/usbc.c")
@@ -296,4 +298,22 @@ if(DEFINED CONFIG_BOARD_DOMIKA)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "domika/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "domika/src/charger.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "domika/src/fan.c")
+endif()
+if(DEFINED CONFIG_BOARD_TELIKS)
+	project(teliks)
+	zephyr_include_directories("teliks/include")
+	zephyr_library_sources(
+			"teliks/src/board.c"
+			"teliks/src/sub_board.c"
+			"teliks/src/prochot.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "teliks/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "teliks/src/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+			"teliks/src/keyboard_customization.c"
+	)
+endif()
+if(DEFINED CONFIG_BOARD_INTEL_ISH_5_4_1)
+	project(orisa-ish)
+	add_subdirectory(orisa-ish)
 endif()

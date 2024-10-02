@@ -16,21 +16,22 @@
 
 #include "../binman.dtsi"
 #include "../brox.dtsi"
-#include "../fan.dtsi"
+
 #include "gpio.dtsi"
 #include "../i2c.dtsi"
 #include "../interrupts.dtsi"
-#include "../led_pins.dtsi"
-#include "../led_policy.dtsi"
-#include "../keyboard.dtsi"
-#include "../motionsense.dtsi"
 #include "../power_signals.dtsi"
 #include "../power_signals_gpios.dtsi"
 #include "../pwm.dtsi"
 #include "../usb_typec.dtsi"
 #include "../usba.dtsi"
 
-/* Jubilant project DTS includes*/
+/* Jubilant project DTS includes */
+#include "cbi.dtsi"
+#include "fan.dtsi"
+#include "keyboard.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
 #include "temp_sensors.dtsi"
 
 /* Brox overrides follow... */
@@ -62,3 +63,5 @@
 &gpio_ec_i2c_pmc_pd_int_odl {
 	no-auto-init;
 };
+
+/delete-node/ &int_lid_imu;

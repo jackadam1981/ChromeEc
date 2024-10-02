@@ -11,7 +11,6 @@ from concurrent.futures import ThreadPoolExecutor
 import logging
 import math
 import multiprocessing
-import os
 import shutil
 import subprocess
 import sys
@@ -106,7 +105,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "banshee",
     "berknip",
     "bloog",
-    "bobba",
     "boldar",
     "brask",
     "brya",
@@ -243,6 +241,7 @@ NDS32_BOARDS = [
     "adlrvpm_ite",
     "adlrvpp_ite",
     "ampton",
+    "awasuki",
     "beadrix",
     "beetley",
     "blipper",
@@ -304,6 +303,7 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "volteer",
     "willow",
     # Not enough flash space with CONFIG_POWER_SLEEP_FAILURE_DETECTION enabled
+    "bobba",
     "burnet",
     "coachz",
     "corori2",
@@ -336,10 +336,11 @@ def build(board_name: str, max_cpus: int) -> None:
     cmd = [
         "make",
         "BOARD=" + board_name,
+        "CROSS_COMPILE_CC_NAME=clang",
         f"-j{max_cpus}",
     ]
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(cmd, env=dict(os.environ, CC="clang"), check=True)
+    subprocess.run(cmd, check=True)
 
 
 def get_all_boards() -> typing.List[str]:

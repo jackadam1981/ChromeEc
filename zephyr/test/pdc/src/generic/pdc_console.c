@@ -25,7 +25,8 @@ static void console_cmd_pdc_setup(void)
 		.fw_version = 0x001a2b3c,
 		.pd_version = 0xabcd,
 		.pd_revision = 0x1234,
-		.vid_pid = 0x12345678,
+		.vid = 0x1234,
+		.pid = 0x5678,
 	};
 
 	/* Set a FW version in the emulator for `test_info` */
@@ -171,18 +172,22 @@ ZTEST_USER(console_cmd_pdc, test_trysrc)
 	const char *outbuffer;
 	size_t buffer_size;
 
-	/* Invalid param */
-	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc enable");
+	/* Invalid port number */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 99 0");
 	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
 
 	/* Invalid param */
-	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 2");
+	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0 enable");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Invalid param */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0 2");
 	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
 
 	/* Internal failure of pdc_power_mgmt_set_trysrc() */
 	pdc_power_mgmt_set_trysrc_fake.return_val = 1;
 
-	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0");
+	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0 0");
 	zassert_equal(rv, pdc_power_mgmt_set_trysrc_fake.return_val,
 		      "Expected %d, but got %d",
 		      pdc_power_mgmt_set_trysrc_fake.return_val, rv);
@@ -191,7 +196,7 @@ ZTEST_USER(console_cmd_pdc, test_trysrc)
 
 	/* Disable Try.SRC */
 	shell_backend_dummy_clear_output(get_ec_shell());
-	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0");
+	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0 0");
 	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
 		      rv);
 	k_sleep(K_MSEC(SLEEP_MS));
@@ -204,7 +209,7 @@ ZTEST_USER(console_cmd_pdc, test_trysrc)
 
 	/* Enable Try.SRC */
 	shell_backend_dummy_clear_output(get_ec_shell());
-	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 1");
+	rv = shell_execute_cmd(get_ec_shell(), "pdc trysrc 0 1");
 	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
 		      rv);
 	k_sleep(K_MSEC(SLEEP_MS));
@@ -602,10 +607,13 @@ static int custom_fake_pdc_power_mgmt_get_info(int port, struct pdc_info_t *out,
 		.pd_revision = 123,
 		.pd_version = 456,
 		/* VID:PID = 7890:3456 */
-		.vid_pid = (0x7890 << 16) | (0x3456 << 0),
+		.vid = 0x7890,
+		.pid = 0x3456,
 		.is_running_flash_code = 1,
 		.running_in_flash_bank = 16,
 		.extra = 0xffff,
+		.driver_name = "driver_name",
+		.no_fw_update = true,
 	};
 
 	memcpy(out->project_name, get_info_project_name,
@@ -667,6 +675,8 @@ ZTEST_USER(console_cmd_pdc, test_info)
 	zassert_not_null(strstr(outbuffer, "Running Flash Code: Y"));
 	zassert_not_null(strstr(outbuffer, "Flash Bank: 16"));
 	zassert_not_null(strstr(outbuffer, "Project Name: 'ProjectName'"));
+	zassert_not_null(strstr(outbuffer, "Driver Name: 'driver_name'"));
+	zassert_not_null(strstr(outbuffer, "FW Update: N"));
 
 	RESET_FAKE(pdc_power_mgmt_get_info);
 

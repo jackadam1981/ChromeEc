@@ -560,6 +560,11 @@
 #undef CONFIG_BATTERY_FUEL_GAUGE
 
 /*
+ * Defines retry count for reading Manuf/Device name in init_battery_type
+ */
+#define CONFIG_BATTERY_INIT_TYPE_RETRY_COUNT 0
+
+/*
  * Critical battery shutdown timeout (seconds)
  *
  * If the battery is at extremely low charge (and discharging) or extremely
@@ -1968,15 +1973,6 @@
  */
 #undef CONFIG_EC_EC_COMM_BATTERY
 
-/*
- * Enable the experimental console.
- *
- * NOTE: If you enable this experimental console, you will need to run the
- * EC-3PO interactive console in the util directory!  Otherwise, you won't be
- * able to enter any commands.
- */
-#undef CONFIG_EXPERIMENTAL_CONSOLE
-
 /* Include CRC-8 utility function */
 #undef CONFIG_CRC8
 
@@ -2308,6 +2304,7 @@
 #undef CONFIG_FP_SENSOR_FPC1025
 #undef CONFIG_FP_SENSOR_FPC1035
 #undef CONFIG_FP_SENSOR_FPC1145
+#undef CONFIG_FP_SENSOR_EGIS630
 #undef CONFIG_FP_SENSOR_ELAN80
 #undef CONFIG_FP_SENSOR_ELAN80SG
 #undef CONFIG_FP_SENSOR_ELAN515
@@ -3197,7 +3194,7 @@
 #undef CONFIG_KEYBOARD_CUSTOMIZATION
 
 /*
- * Allow support multiple keyboard matrix for speical key.
+ * Allow support multiple keyboard matrix for special key.
  */
 #undef CONFIG_KEYBOARD_MULTIPLE
 
@@ -3244,6 +3241,11 @@
  * in the order the keys are pressed.
  */
 #undef CONFIG_KEYBOARD_STRICT_DEBOUNCE
+
+/*
+ * Enable Strauss keyboard.
+ */
+#undef CONFIG_KEYBOARD_STRAUSS
 
 /*
  * Enable the 8042 AUX port. This is typically used for PS/2 mouse devices.
@@ -3372,6 +3374,12 @@
  * If not defined, it is using GPIO_LID_OPEN.
  */
 #undef CONFIG_LID_SWITCH_GPIO_LIST
+
+/*
+ * Lid swtich debounce timing customize.
+ * Default is 30ms.
+ */
+#define CONFIG_LID_DEBOUNCE_US (30 * MSEC)
 
 /*
  * Support for turning the lightbar power rails on briefly when the AP is off.
@@ -4282,6 +4290,11 @@
  * as the means for determining the state of the flipped-360-degree mode.
  */
 #undef CONFIG_GMR_TABLET_MODE_CUSTOM
+
+/*
+ * GMR tablet mode sensor debounce time.
+ */
+#define CONFIG_GMR_SENSOR_DEBOUNCE_US (CONFIG_LID_DEBOUNCE_US + 10 * MSEC)
 
 /*
  * Add a virtual switch to indicate when detachable device has
@@ -5360,6 +5373,14 @@
 #undef CONFIG_USBC_NX20P348X_RCP_5VSRC_MASK_ENABLE
 
 /*
+ * NX20P348x control vbus discharge with SRC_EN
+ * in case we don't have hardware logic.
+ * When SRC_EN goes low, we want to control vbus discharge earlier.
+ * It is to speed up the speed at which vbus falls to zero.
+ */
+#undef CONFIG_USBC_NX20P348X_VBUS_DISCHARGE_BY_SRC_EN
+
+/*
  * Setting SYV682X OVP to 15v power profile application
  */
 #undef CONFIG_USBC_PPC_SYV682X_OVP_SET_15V
@@ -6340,18 +6361,6 @@
 #define CONFIG_SHAREDMEM_MINIMUM_SIZE 0
 #endif
 #endif /* !CONFIG_SHAREDMEM_MINIMUM_SIZE */
-
-/******************************************************************************/
-/*
- * Disable the built-in console history if using the experimental console.
- *
- * The experimental console keeps its own session-persistent history which
- * survives EC reboot.  It also requires CRC8 for command integrity.
- */
-#ifdef CONFIG_EXPERIMENTAL_CONSOLE
-#undef CONFIG_CONSOLE_HISTORY
-#define CONFIG_CRC8
-#endif /* defined(CONFIG_EXPERIMENTAL_CONSOLE) */
 
 /******************************************************************************/
 /*

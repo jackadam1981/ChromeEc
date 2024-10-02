@@ -343,8 +343,6 @@ int cmd_hibdelay(int argc, char *argv[])
 	}
 
 	printf("Hibernation delay: %u s\n", r.hibernate_delay);
-	printf("Time G3: %u s\n", r.time_g3);
-	printf("Time left: %u s\n", r.time_remaining);
 	return 0;
 }
 
@@ -8761,20 +8759,35 @@ static int cmd_battery_config_set(int argc, char *argv[], bool search_only)
 	/* Clear the dst to ensure it'll be null-terminated. */
 	memset(identifier, 0, sizeof(identifier));
 	sprintf(identifier, "%s,%s", manuf_name, device_name);
-	base::Value::Dict *root_dict = dict->FindDict(identifier);
-	if (root_dict == nullptr) {
-		fprintf(stderr,
-			"Config matching identifier=%s not found in %s.\n",
-			identifier, json_file);
+	base::Value::Dict *root_dict = nullptr;
+	int num_matches = 0;
+
+	for (const auto &identifier_in_json : *dict) {
+		if (!strncasecmp(identifier, identifier_in_json.first.c_str(),
+				 identifier_in_json.first.size())) {
+			root_dict = identifier_in_json.second.GetIfDict();
+			++num_matches;
+		}
+	}
+
+	if (num_matches == 0) {
+		fprintf(stderr, "No config found for '%s' in %s\n", identifier,
+			json_file);
+		free(json);
+		return -1;
+	} else if (num_matches > 1) {
+		fprintf(stderr, "Multiple (%d) configs found for '%s' in %s\n",
+			num_matches, identifier, json_file);
 		free(json);
 		return -1;
 	}
+
 	if (read_u8_from_json(root_dict, "struct_version", &struct_version))
 		return -1;
 
 	if (search_only) {
-		printf("Battery config with identifier: %s,%s is found at %s\n",
-		       manuf_name, device_name, json_file);
+		printf("Battery config with identifier: '%s' is found at %s\n",
+		       identifier, json_file);
 		return 0;
 	}
 
@@ -11080,7 +11093,7 @@ int cmd_pd_control(int argc, char *argv[])
 int cmd_pd_chip_info(int argc, char *argv[])
 {
 	struct ec_params_pd_chip_info p;
-	struct ec_response_pd_chip_info_v2 r;
+	struct ec_response_pd_chip_info_v3 r;
 	char *e;
 	int rv;
 	int cmdver;
@@ -11115,6 +11128,15 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	if (rv)
 		return rv;
 
+	/* Protect against the EC supporting a higher HC version than ectool.
+	 * This should be incremented as ectool support for newer versions is
+	 * implemented (specific response struct type and decoding logic below)
+	 */
+	const int highest_supported_version = 3;
+	if (cmdver > highest_supported_version) {
+		cmdver = highest_supported_version;
+	}
+
 	rv = ec_command(EC_CMD_PD_CHIP_INFO, cmdver, &p, sizeof(p), &r,
 			sizeof(r));
 	if (rv < 0)
@@ -11147,6 +11169,12 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	} else {
 		printf("fw_update_flags: UNSUPPORTED\n");
 		printf("fw_name_str: UNSUPPORTED\n");
+	}
+
+	if (cmdver >= 3) {
+		printf("driver_name: '%s'\n", r.driver_name);
+	} else {
+		printf("driver_name: UNSUPPORTED\n");
 	}
 
 	return 0;
@@ -12405,6 +12433,7 @@ const struct command commands[] = {
 	{ "pdcontrol", cmd_pd_control,
 	  "[suspend|resume|reset|disable|on]\n"
 	  "\tControls the PD chip." },
+	{ "pdctrace", cmd_pdc_trace, cmd_pdc_trace_usage },
 	{ "pdgetmode", cmd_pd_get_amode,
 	  "<port>\n"
 	  "\tGet All USB-PD alternate SVIDs and modes on <port>." },

@@ -26,14 +26,8 @@
 extern "C" {
 #endif
 
-/**
- * Extract the 16-bit VID or PID from the 32-bit container in
- * `struct pdc_info_t`
- */
-#define PDC_VIDPID_GET_VID(vidpid) (((vidpid) >> 16) & 0xFFFF)
-#define PDC_VIDPID_GET_PID(vidpid) ((vidpid) & 0xFFFF)
-
-#define PDC_VIDPID_INVALID (0x00000000)
+#define PDC_VID_INVALID (0x0000)
+#define PDC_PID_INVALID (0x0000)
 
 /**
  * Compare PDC versions
@@ -59,20 +53,24 @@ extern "C" {
 struct pdc_info_t {
 	/** Firmware version running on the PDC */
 	uint32_t fw_version;
-	/** Config version of the firmware, specific to this firmware version */
-	uint8_t fw_config_version;
 	/** Power Delivery Revision supported by the PDC */
 	uint16_t pd_revision;
 	/** Power Delivery Version supported by the PDC */
 	uint16_t pd_version;
-	/** VID:PID of the PDC (optional) */
-	uint32_t vid_pid;
+	/** VID of the PDC (optional) */
+	uint16_t vid;
+	/** PID of the PDC (optional) */
+	uint16_t pid;
 	/** Set to 1 if running from flash code (optional) */
 	uint8_t is_running_flash_code;
 	/** Set to the currently used flash bank (optional) */
 	uint8_t running_in_flash_bank;
 	/** 12-byte program name string plus NUL terminator */
 	char project_name[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
+	/** Compat string of driver */
+	char driver_name[USB_PD_CHIP_INFO_DRIVER_NAME_LEN + 1];
+	/** If true, do not apply PDC FW updates to this port */
+	bool no_fw_update;
 	/** Extra information (optional) */
 	uint16_t extra;
 };
@@ -98,21 +96,15 @@ struct pdc_bus_info_t {
 };
 
 /**
- * @brief PDO Source: PDC or Port Partner
- */
-enum pdo_source_t {
-	/** LPM */
-	LPM_PDO,
-	/** Port Partner PDO */
-	PARTNER_PDO,
-};
-
-/**
  * @brief Used for building CMD_PDC_GET_PDOS
  */
 struct get_pdo_t {
 	enum pdo_type_t pdo_type;
 	enum pdo_source_t pdo_source;
+	uint8_t num_pdos;
+	enum pdo_offset_t pdo_offset;
+	/** flag to indicate retrieving pdo from PDC */
+	bool updating;
 };
 
 struct pdc_callback;
@@ -148,7 +140,7 @@ typedef int (*pdc_get_vbus_t)(const struct device *dev, uint16_t *vbus);
 typedef int (*pdc_get_pdos_t)(const struct device *dev,
 			      enum pdo_type_t pdo_type,
 			      enum pdo_offset_t pdo_offset, uint8_t num_pdos,
-			      bool port_partner_pdo, uint32_t *pdos);
+			      enum pdo_source_t source, uint32_t *pdos);
 typedef int (*pdc_get_rdo_t)(const struct device *dev, uint32_t *rdo);
 typedef int (*pdc_set_rdo_t)(const struct device *dev, uint32_t rdo);
 typedef int (*pdc_get_info_t)(const struct device *dev, struct pdc_info_t *info,
@@ -189,6 +181,7 @@ typedef int (*pdc_ack_cc_ci_t)(const struct device *dev,
 			       uint16_t vendor_defined);
 typedef int (*pdc_get_lpm_ppm_info_t)(const struct device *dev,
 				      struct lpm_ppm_info_t *info);
+typedef int (*pdc_set_frs_t)(const struct device *dev, bool enable);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -233,6 +226,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_manage_callback_t manage_callback;
 	pdc_ack_cc_ci_t ack_cc_ci;
 	pdc_get_lpm_ppm_info_t get_lpm_ppm_info;
+	pdc_set_frs_t set_frs;
 };
 /**
  * @endcond
@@ -656,7 +650,7 @@ static inline int pdc_get_vbus_voltage(const struct device *dev,
 static inline int pdc_get_pdos(const struct device *dev,
 			       enum pdo_type_t pdo_type,
 			       enum pdo_offset_t pdo_offset, uint8_t num_pdos,
-			       bool port_partner_pdo, uint32_t *pdos)
+			       enum pdo_source_t source, uint32_t *pdos)
 {
 	const struct pdc_driver_api_t *api =
 		(const struct pdc_driver_api_t *)dev->api;
@@ -666,8 +660,11 @@ static inline int pdc_get_pdos(const struct device *dev,
 		return -ENOSYS;
 	}
 
-	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos,
-			     port_partner_pdo, pdos);
+	__ASSERT(num_pdos <= GET_PDOS_MAX_NUM,
+		 "GET_PDOS supports a maximum count of " STRINGIFY(
+			 GET_PDOS_MAX_NUM) " PDOs");
+
+	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos, source, pdos);
 }
 
 /**
@@ -1288,6 +1285,25 @@ static inline void pdc_fire_callbacks(sys_slist_t *list,
 		__ASSERT(cb->handler, "No callback handler!");
 		cb->handler(dev, cb, cci_event);
 	}
+}
+
+/**
+ * @brief Enable or disable fast role swap (FRS).
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param enable Set to true to enable FRS, set to false to disable FRS
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_frs(const struct device *dev, bool enable)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->set_frs == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_frs(dev, enable);
 }
 
 #ifdef __cplusplus

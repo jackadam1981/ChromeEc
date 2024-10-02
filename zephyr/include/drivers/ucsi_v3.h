@@ -191,6 +191,24 @@ enum source_caps_t {
 };
 
 /**
+ * @brief PDO range
+ */
+enum range_t {
+	/**
+	 * Read the SPR PDOs only.
+	 */
+	SPR_RANGE = 0,
+	/**
+	 * Read the EPR PDOs only.
+	 */
+	EPR_RANGE = 1,
+	/**
+	 * Read the SPR and EPR PDOs.
+	 */
+	SPR_EPR_RANGE = 2,
+};
+
+/**
  * @brief Type of PD reset to send
  */
 enum connector_reset {
@@ -224,6 +242,16 @@ enum drp_mode_t {
 	DRP_TRY_SNK,
 	/** DRP Invalid */
 	DRP_INVALID,
+};
+
+/**
+ * @brief PDO Source: PDC or Port Partner
+ */
+enum pdo_source_t {
+	/** LPM */
+	LPM_PDO,
+	/** Port Partner PDO */
+	PARTNER_PDO,
 };
 
 /**
@@ -309,6 +337,12 @@ enum vdo_type_t {
 	VDO_PD_DP_STATUS = 14,
 	VDO_PD_DP_CFG = 15,
 };
+
+/**
+ * @brief Number of VDOs used to send a discovery identity response with
+ * GET_PD_MESSAGE. This includes the VDM header and 6 Identity VDOs.
+ */
+#define PDC_DISC_IDENTITY_VDO_COUNT 7
 
 /**
  * @brief CCI - USB Type-C Command Status and Connector Change Indication
@@ -696,6 +730,23 @@ union conn_status_change_bits_t {
 	};
 	uint16_t raw_value;
 };
+
+static inline union conn_status_change_bits_t
+conn_status_mask_from_notification(union notification_enable_t notification)
+{
+	union conn_status_change_bits_t status;
+	/* Mask of bits that match between notification and status change in the
+	 * first 16 bits.
+	 */
+	uint32_t exact_copy_mask = 0x0000DBEE;
+
+	status.raw_value = (notification.raw_value & exact_copy_mask);
+	if (notification.sink_path_status_change) {
+		status.sink_path_status_change = 1;
+	}
+
+	return status;
+}
 
 #define CONNECTOR_PARTNER_FLAG_USB BIT(0)
 #define CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE BIT(1)
@@ -1215,6 +1266,38 @@ union pdr_t {
 	uint16_t raw_value;
 };
 
+#define GET_PDOS_MAX_NUM 4
+/**
+ * @brief GET_PDOS command format
+ */
+union get_pdos_t {
+	struct {
+		/** Connector number */
+		uint8_t connector_number : 7;
+		/** Set to 0 to read LPM PDOs, 1 to read partner PDOs */
+		enum pdo_source_t pdo_source : 1;
+		/** Starting offset of the first PDO to be returned. */
+		uint8_t pdo_offset : 8;
+		/**
+		 * Number of PDOs to return starting from the PDO offset.
+		 * The number of PDOs to return is the value in this field
+		 * plus 1.
+		 */
+		uint8_t number_of_pdos : 2;
+		/**
+		 * This field is set to 1 to retrieve Source PDOs, otherwise
+		 * retrieve the Sink PDOs.
+		 */
+		enum pdo_type_t pdo_type : 1;
+		/** This field indicates the type of Source Caps requested. */
+		enum source_caps_t source_caps : 2;
+		/** This sets the range of PDOs (SPR, EPR, or both). */
+		enum range_t range : 2;
+		uint8_t reserved : 1;
+	} __packed;
+	uint8_t raw_value[3];
+};
+
 /**
  * @brief PDOs received from source
  */
@@ -1288,6 +1371,19 @@ union get_vdo_t {
 		uint8_t vdo_origin : 2;
 		/** Reserved, set to 0. */
 		uint8_t reserved : 3;
+	};
+	uint8_t raw_value;
+};
+
+/**
+ * @brief SET_SINK_PATH command
+ */
+union set_sink_path_t {
+	struct {
+		/** Connector number */
+		uint8_t connector_number : 7;
+		/** Sink path enable control */
+		uint8_t sink_path_enable : 1;
 	};
 	uint8_t raw_value;
 };

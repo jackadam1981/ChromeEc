@@ -109,7 +109,6 @@ if(CONFIG_TEST_NISSA_PUJJO)
     target_sources(
             app PRIVATE
             src/pujjo.c
-            ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/fan.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/form_factor.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/hdmi.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/pujjo/src/led.c
@@ -148,7 +147,6 @@ if(CONFIG_TEST_NISSA_CRAASK)
     target_sources(
 	    app PRIVATE
 	    src/craask.c
-	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/battery.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/charger.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/fan.c
 	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/craask/src/form_factor.c
@@ -194,6 +192,7 @@ if(CONFIG_TEST_NISSA_ANRAGGAR)
     target_sources(
             app PRIVATE
             src/anraggar.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/anraggar/src/board.c
     )
 endif()
 
@@ -300,5 +299,16 @@ if(CONFIG_TEST_NISSA_DOMIKA)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/domika/src/keyboard.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/domika/src/thermal.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/domika/src/usbc.c
+    )
+endif()
+
+if(CONFIG_TEST_NISSA_TELIKS)
+    zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/nissa/teliks/include")
+    target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0)
+    target_sources(
+            app PRIVATE
+            src/teliks.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/teliks/src/board.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/teliks/src/keyboard_customization.c
     )
 endif()

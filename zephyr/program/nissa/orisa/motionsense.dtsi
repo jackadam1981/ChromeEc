@@ -34,9 +34,9 @@
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
 		lid_rot_ref: lid-rotation-ref {
-			mat33 = <0 1 0
+			mat33 = <0 (-1) 0
 				 1 0 0
-				 0 0 (-1)>;
+				 0 0 1>;
 		};
 
 		base_rot_ref: base-rot-ref {
@@ -95,6 +95,7 @@
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -119,6 +120,7 @@
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};

@@ -11,11 +11,21 @@ config TEST_SUITE_PDC_API_NULL_CHECK
 config TEST_SUITE_PDC_DEVICE_NOT_READY
 	bool "Enable PDC subsystem tests for device-not-ready"
 
+config TEST_SUITE_PDC_POLICY
+	bool "Enable PDC policy tests"
+
 config TEST_SUITE_PDC_RTS54XX
 	bool "Enable RTS54xx PDC tests"
 
 config TEST_SUITE_PDC_TPS6699X
 	bool "Enable TPS6699x PDC tests"
+
+config TODO_B_345292002
+	bool "Disable tests that fail for TPS6699x PDC config"
+	help
+	  Enable this config for pdc.generic.tps6699x to disable tests that
+	  currently fail. As b/345292002 progresses, the amount of code
+	  protected by this config should go down.
 
 config TEST_SUITE_PDC_RETIMER_FW_UPDATE
 	bool "Enable retimer FW update tests"
@@ -26,11 +36,32 @@ config TEST_SUITE_PDC_CONSOLE
 config TEST_SUITE_PDC_HOSTCMD
 	bool "Enable PDC host command tests"
 
+config TEST_SUITE_UCSI_HOSTCMD
+	bool "Enable UCSI host command tests"
+
+config TEST_SUITE_PPM
+	bool "Enable UCSI PPM tests"
+	help
+	  Enable tests for the PPM of the UCSI. This suite tests our PPM from
+	  the perspective of the UCSI spec. All layers use the actual code
+	  (ppm_common, ppm_driver, pdc_driver) and mocking is discouraged.
+	  Inputs to the tests are controlled through a PDC emulator.
+
+config TEST_SUITE_PPM_DRIVER
+	bool "Enable PPM driver tests"
+	help
+	  Enable tests for the lower layer (ppm_driver) of the PPM. This suite
+	  exercises the behaviors specific to the implementation. Mocking the
+	  upper layer (ppm_common) and lower layer (pdc driver) is used to cover
+	  corner cases.
+
 config TEST_SUITE_PDC_UCSI
 	bool "Enable UCSI tests"
 
-config TEST_SUITE_PPM
-	bool "Enable PPM tests"
+config TEST_SUITE_PPM_STATE_MACHINE
+	bool "Enable PPM state machine tests"
+	help
+	  Enable tests for the state machine (ppm_common) of the PPM.
 
 config TEST_PDC_MESSAGE_TRACING
 	bool "Enable PDC message tracing"

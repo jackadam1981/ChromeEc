@@ -3,18 +3,23 @@
  * found in the LICENSE file.
  */
 
-#ifndef ELAN_SETTING_H
-#define ELAN_SETTING_H
+#ifndef __CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SETTINGS_H_
+#define __CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SETTINGS_H_
 
 #include "common.h"
+#include "elan_misc.h"
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* The hardware ID information and FW version */
-#define VID 0x04F3
-#define PID 0x0903
-#define MID 0x01
-#define VERSION 0x100B
+#define VID 0x04F3 /* Elan USB vendor ID */
+#define PID 0x0903 /* USB product ID */
+#define MID 0x01 /* Elan doesn't track model, so this has no meaning. */
+#define VERSION 0x100B /* Elan internal firmware version */
 
 /**
  * Elan sensor operation is controlled by sending commands and receiving
@@ -94,7 +99,7 @@
 #define REK_TIMES 3
 
 /* Console output macros */
-#define LOGE_SA(format, args...) cprints(CC_FP, format, ##args)
+#define LOGE_SA(format, args...) elan_log_var(format, ##args)
 
 /**
  * Set ELAN fingerprint sensor register initialization
@@ -102,7 +107,7 @@
  * @return 0 on success.
  *         negative value on error.
  */
-__staticlib int register_initialization(void);
+__staticlib int elan_register_initialization(void);
 
 /**
  * To calibrate ELAN fingerprint sensor and keep the calibration results
@@ -111,6 +116,10 @@ __staticlib int register_initialization(void);
  * @return 0 on success.
  *         negative value on error.
  */
-__staticlib int calibration(void);
+__staticlib int elan_calibration(void);
 
-#endif /* _ELAN_SETTING_H */
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __CROS_EC_DRIVER_FINGERPRINT_ELAN_ELAN_SETTINGS_H_ */
