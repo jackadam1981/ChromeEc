@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e81fbb4d_b0e094fd",
+        "filename": "zephyr/test/pdc/src/generic/ppm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-02T17:55:12Z",
+      "side": 1,
+      "message": "Friendly ping.\n\nThis exercises not only the special case for get_alternate_modes but also error handling (events \u0026 BIT(1) --\u003e return rv \u003d -EIO). So, if we do (eventually) implement get_alternate_modes in the emulator, we will still need another way to make an async call fail.",
+      "parentUuid": "dca385a7_be3a15ec",
+      "revId": "8e4b1265c401ba88ed24656f69cdc270ccd65e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a16102a_ca205728",
         "filename": "zephyr/test/pdc/src/generic/ppm.c",
         "patchSetId": 2
