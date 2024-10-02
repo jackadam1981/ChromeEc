@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd61571_b563ba82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-10-02T06:40:11Z",
+      "side": 1,
+      "message": "General question. These tests aren\u0027t actual tests of `fpenroll` and `fpcapture` commands. It\u0027s only checking the restricted console part. Do we have actual tests of the commands? Can you give some background of this change? We want to check only denying when the system is locked?",
+      "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
