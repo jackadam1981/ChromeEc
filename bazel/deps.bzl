@@ -15,23 +15,23 @@ def _ec_deps_impl(module_ctx):
 
     _coreboot_sdk_subtool(
         "nds32le-elf",
-        "11.3.0-r2/47a9bb6b7ef1ea584ed24078ea152a87204a37e1",
-        "7299ae598233876ec2f562a1173f8b65de169b1de51cb6e04e003edfb4d04fe7",
+        "14.2.0-r3/bd5bb04ddc34fa01dd0434ebb60e15d857095dbf",
+        "1526127d31eed03bf0645a4097afe7b154e25ac2efc0e97d235becbba147d233",
     )
     _coreboot_sdk_subtool(
         "i386-elf",
-        "11.3.0-r2/5ba88fb0227c76584851bd9cbb24d785e31a717b",
-        "72f0b55516120e0919f10ddf28c53a429ccc8132685b6dbd6a8dcefeba92fcc5",
+        "14.2.0-r3/ea688ec47700247598fc4764596a27e62ebed88f",
+        "fdb94315fbecd56513277907d9f3ad08132d05a92fa542c7959be5ec59851745",
     )
     _coreboot_sdk_subtool(
         "arm-eabi",
-        "11.3.0-r2/8adade1392d87565482ea57bfafaf74223cebbe5",
-        "312557355983bf732b20dcf7b7553a5b2a13247fc3ad6f21226ff260db1783cd",
+        "14.2.0-r3/8e94b5a316192651d9dafe1497e6826528f601a3",
+        "e9613b9b275a641571722af633cb591a80921cd869bf881e41e62fda556d859c",
     )
     _coreboot_sdk_subtool(
         "riscv-elf",
-        "11.3.0-r2/c97eb9fef0cf77f9d58d890de4e3e67f5158166f",
-        "2345cfbf3dffd2efe0cdfa8d6100a0923d2dc8b77da9d98b9fd07200b18abec1",
+        "14.2.0-r3/e84d6218dbbf87e59f4cf164b8f1353649712ba6",
+        "75f4cbe2b5607fc0c421a60994c8834a3bf5f051029974e87eb1a87db905853b",
     )
 
     return module_ctx.extension_metadata(
