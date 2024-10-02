@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3981ba75_614770b1",
+        "filename": "zephyr/drivers/usbc/tps6699x.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-02T20:28:44Z",
+      "side": 1,
+      "message": "Should be 36-\u003e37 for GOOG0620-\u003eGOOG0720",
+      "range": {
+        "startLine": 3143,
+        "startChar": 16,
+        "endLine": 3144,
+        "endChar": 49
+      },
+      "revId": "f57e2b5cb43a9590cd643133b47079705cd85681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
