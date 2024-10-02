@@ -16,6 +16,24 @@
       "message": "try remove below configs and also address it for NPCX.\n\n# Unlocking system. TODO: Remove after development phase\nCONFIG_PLATFORM_EC_SYSTEM_UNLOCKED\u003dy\n\n\n# Enable external CBI EEPROM\nCONFIG_EEPROM\u003dy\nCONFIG_PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK\u003dy",
       "revId": "a585505a14c9d5bbc8c7e0e0688b0066368c55a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fdb6b9_1643abd6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-10-02T06:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f29dde5_05c7534e",
+      "revId": "a585505a14c9d5bbc8c7e0e0688b0066368c55a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
