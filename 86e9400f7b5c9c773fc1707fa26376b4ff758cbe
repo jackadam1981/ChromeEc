@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f084901b_534c0415",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-02T18:45:54Z",
+      "side": 1,
+      "message": "Nit - This could be restructured as \n```\nfor (...) {\n    if (check_status() \u003d\u003d 0) {\n        printf(\"Success...\");\n        return SUCCESS;\n    }\n}\n\nreturn FAIL;\n```",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "86e9400f7b5c9c773fc1707fa26376b4ff758cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
