@@ -152,10 +152,12 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					       int channel_id)
 {
 	const char *thread_name = k_thread_name_get(k_current_get());
+	uint32_t exception_address = 0;
 
 #ifdef CONFIG_RISCV
+	exception_address = csr_read(mepc);
 	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
-	       (void *)csr_read(mepc), thread_name);
+	       (void *)exception_address, thread_name);
 #else
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
@@ -174,7 +176,16 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	 * PANIC_SW_WATCHDOG in system_common_pre_init if a watchdog reset
 	 * occurs.
 	 */
+<<<<<<< HEAD   (0f5649162acaedc11236543f185b8eeb89a3cc70 cros_flash_npcx: Check device is ready before getting status)
 	panic_set_reason(PANIC_SW_WATCHDOG_WARN, 0, task_get_current());
+||||||| BASE   (454faadbcda62bab093d550a5262767f279dbaec kinox: remove the TCPC_FLAGS_CONTROL_VCONN)
+	panic_set_reason(PANIC_SW_WATCHDOG_WARN, 0, task_get_current());
+}
+=======
+	panic_set_reason(PANIC_SW_WATCHDOG_WARN, exception_address,
+			 task_get_current());
+}
+>>>>>>> CHANGE (ef0b09cfb13343b8042b604800209ad3699870f4 watchdog: Capture exception address for RISC-V)
 
 	/* Watchdog is disabled after calling handler. Re-enable it now. */
 	watchdog_enable(wdt_dev);
