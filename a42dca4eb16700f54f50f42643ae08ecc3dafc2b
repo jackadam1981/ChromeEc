@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c60dbfe_279c19ba",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-02T18:48:45Z",
+      "side": 1,
+      "message": "Might as well rename `erase_4k()` to `erase_flash()`.",
+      "range": {
+        "startLine": 600,
+        "startChar": 11,
+        "endLine": 600,
+        "endChar": 22
+      },
+      "revId": "a42dca4eb16700f54f50f42643ae08ecc3dafc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
