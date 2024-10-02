@@ -46,6 +46,30 @@
       },
       "revId": "f57e2b5cb43a9590cd643133b47079705cd85681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25003ee_abc86c54",
+        "filename": "zephyr/drivers/usbc/tps6699x.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-10-02T22:56:51Z",
+      "side": 1,
+      "message": "I assume it would be a subversion update for PDC driven CCD feature if we want it by default so bump version to GOOG0261.",
+      "parentUuid": "d72bb9da_ad810df6",
+      "range": {
+        "startLine": 3143,
+        "startChar": 16,
+        "endLine": 3144,
+        "endChar": 49
+      },
+      "revId": "f57e2b5cb43a9590cd643133b47079705cd85681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
