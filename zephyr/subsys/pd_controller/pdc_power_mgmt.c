@@ -168,6 +168,7 @@ enum pdc_cmd_t {
 	/** CMD_PDC_GET_ATTENTION_VDO */
 	CMD_PDC_GET_ATTENTION_VDO,
 	/** CMD_PDC_COUNT */
+	CMD_PDC_RECONNECT,
 	CMD_PDC_COUNT
 };
 
@@ -308,6 +309,8 @@ enum unattached_local_state_t {
 	UNATTACHED_SET_SINK_PATH_OFF,
 	/** UNATTACHED_RUN */
 	UNATTACHED_RUN,
+	/** UNATTACHED_WA */
+	UNATTACHED_WA,
 };
 
 /**
@@ -389,6 +392,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_LPM_PPM_INFO] = "PDC_GET_LPM_PPM_INFO",
 	[CMD_PDC_SET_FRS] = "PDC_SET_FRS",
 	[CMD_PDC_GET_ATTENTION_VDO] = "PDC_GET_ATTENTION_VDO",
+	[CMD_PDC_RECONNECT] = "PDC_RECONNECT",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -744,6 +748,7 @@ struct pdc_port_t {
 	bool frs_enable;
 	/** Store response to the GET_ATTENTION_VDO command */
 	union get_attention_vdo_t attention_vdo;
+	bool wa_done;
 };
 
 /**
@@ -1766,6 +1771,14 @@ static void pdc_unattached_run(void *obj)
 		return;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
+		if (port->wa_done == false) {
+			port->unattached_local_state = UNATTACHED_WA;
+			port->wa_done = true;
+		}
+		break;
+	case UNATTACHED_WA:
+		queue_internal_cmd(port, CMD_PDC_RECONNECT);
+		port->unattached_local_state = UNATTACHED_RUN;
 		break;
 	}
 }
@@ -2384,6 +2397,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		rv = pdc_get_lpm_ppm_info(port->pdc, port->lpm_ppm_info);
 		break;
+	case CMD_PDC_RECONNECT:
+		rv = pdc_reconnect(port->pdc);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -2877,6 +2893,7 @@ static void pdc_apply_power_state_policy(struct k_work *work)
 			enforce_pd_chipset_resume_policy_2(i);
 			enforce_pd_chipset_resume_policy_1(i);
 			clear_hpd_wake_watch(i);
+			pdc_data[i]->port.wa_done = false;
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
 		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
