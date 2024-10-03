@@ -94,6 +94,29 @@
       },
       "revId": "61eaa4a60b74efe48e18dce0d1624d4c0429434e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb2148c_573c9c57",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/i2c.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-03T00:25:08Z",
+      "side": 1,
+      "message": "This planned to be I2C_PORT_AIC1 ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "61eaa4a60b74efe48e18dce0d1624d4c0429434e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
