@@ -1,0 +1,93 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d45d60_a6ae32cc",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-03T22:13:43Z",
+      "side": 1,
+      "message": "You mentioned elsewhere that it would be possible to avoid this issue by, instead of delaying after the VCONN change, clearing bit `POWER_CONTROL[Enable VCONN]`.\n\nWould it work to just call `tcpci_tcpm_set_vconn` unconditionally here and maybe get rid of the delay? Or would that require a hardware change to work?",
+      "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8e57a1_41c60f24",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-03T22:13:43Z",
+      "side": 1,
+      "message": "The control flow would be more obvious here if you added `|| tcpc_config[port].flags \u0026 TCPC_FLAGS_VCONN_DELAY` to this condition. Then you wouldn\u0027t need the following check.",
+      "fixSuggestions": [
+        {
+          "fixId": "c3e343cd_bfeca17a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/driver/tcpm/tcpm.h",
+              "range": {
+                "startLine": 251,
+                "startChar": 0,
+                "endLine": 252,
+                "endChar": 0
+              },
+              "replacement": "\t    tcpc_config[port].flags \u0026 TCPC_FLAGS_CONTROL_VCONN ||\n\t    tcpc_config[port].flags \u0026 TCPC_FLAGS_VCONN_DELAY) {\n"
+            },
+            {
+              "path": "include/driver/tcpm/tcpm.h",
+              "range": {
+                "startLine": 257,
+                "startChar": 0,
+                "endLine": 260,
+                "endChar": 0
+              },
+              "replacement": "\t} else {\n"
+            },
+            {
+              "path": "include/driver/tcpm/tcpm.h",
+              "range": {
+                "startLine": 261,
+                "startChar": 0,
+                "endLine": 261,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457fc883_8ffc16b1",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-03T22:13:43Z",
+      "side": 1,
+      "message": "The flag shouldn\u0027t really be called \"VCONN delay.\" The delay is an implementation detail of the PS8xxx driver. All that `tcpm_set_vconn` knows is that it should call `set_vconn` here despite the fact that `TCPC_FLAGS_CONTROL_VCONN` is not set.\n\nI\u0027d call this something like `TCPC_FLAGS_SET_VCONN_IN_SYNC` or `TCPC_FLAGS_FOLLOW_VCONN`. You can put a comment like, \"Call the driver\u0027s `set_vconn` function even when the TCPC does not control VCONN.\"",
+      "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
