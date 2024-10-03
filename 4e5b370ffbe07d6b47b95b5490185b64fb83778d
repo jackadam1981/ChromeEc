@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4e5b370ffbe07d6b47b95b5490185b64fb83778d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e3becc_280699ab",
+        "filename": "bazel/all_targets.generated.bzl",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-03T23:55:51Z",
+      "side": 1,
+      "message": "Maybe remove the unrelated updates?",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 318,
+        "endChar": 14
+      },
+      "revId": "4e5b370ffbe07d6b47b95b5490185b64fb83778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566c0c4a_84cd22b5",
+        "filename": "board/gwendolin/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-03T23:55:51Z",
+      "side": 1,
+      "message": "Maybe update this and add a trailing newline to file.\n\nAdding this to your VSCode \"User\" JSON settings always ensures files end with a newline.\n\n```json\n    \"files.insertFinalNewline\": true,\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "4e5b370ffbe07d6b47b95b5490185b64fb83778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
