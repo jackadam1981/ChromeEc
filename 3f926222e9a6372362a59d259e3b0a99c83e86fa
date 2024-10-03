@@ -70,6 +70,30 @@
       },
       "revId": "3f926222e9a6372362a59d259e3b0a99c83e86fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0c67af_200a3cb6",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-03T23:26:46Z",
+      "side": 1,
+      "message": "Ah, yeah that should work. Thanks.",
+      "parentUuid": "75c13ae3_a999115a",
+      "range": {
+        "startLine": 58,
+        "startChar": 45,
+        "endLine": 58,
+        "endChar": 51
+      },
+      "revId": "3f926222e9a6372362a59d259e3b0a99c83e86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
