@@ -39,6 +39,30 @@
       },
       "revId": "e5a33cf4cc2421df5848a1acedfe0cef771bf727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c0d1f6_b4012e0d",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-10-03T17:29:12Z",
+      "side": 1,
+      "message": "\u003e we should apply these up one level in `intelrvp/ptlrvp/program.conf` so they apply to all variants.\n\u003e if i read `BUILD.py` correctly,\n\u003e we could even move this to `intelrvp/prj.conf` for all RVPs.\n\nsure, let me take a look",
+      "parentUuid": "23661aae_f38a7804",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "e5a33cf4cc2421df5848a1acedfe0cef771bf727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
