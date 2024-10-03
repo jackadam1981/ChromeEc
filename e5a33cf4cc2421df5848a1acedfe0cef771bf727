@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "e5a33cf4cc2421df5848a1acedfe0cef771bf727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23661aae_f38a7804",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-03T17:05:37Z",
+      "side": 1,
+      "message": "we should apply these up one level in `intelrvp/ptlrvp/program.conf` so they apply to all variants.\nif i read `BUILD.py` correctly,\nwe could even move this to `intelrvp/prj.conf` for all RVPs.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "e5a33cf4cc2421df5848a1acedfe0cef771bf727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
