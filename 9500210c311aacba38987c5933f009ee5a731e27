@@ -128,6 +128,24 @@
       "parentUuid": "3e4dff57_28f33db3",
       "revId": "9500210c311aacba38987c5933f009ee5a731e27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9151aec3_d6898503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-03T22:53:54Z",
+      "side": 1,
+      "message": "Ok, that one looks good, but we still need the EC versions of `test_command_fpcapture` and `test_command_fpenroll` that you\u0027re adding here. You can put them in this CL or create a separate CL.",
+      "parentUuid": "0ef81581_ec76576d",
+      "revId": "9500210c311aacba38987c5933f009ee5a731e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

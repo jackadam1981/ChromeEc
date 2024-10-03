@@ -16,6 +16,24 @@
       "message": "General question. These tests aren\u0027t actual tests of `fpenroll` and `fpcapture` commands. It\u0027s only checking the restricted console part. Do we have actual tests of the commands? Can you give some background of this change? We want to check only denying when the system is locked?",
       "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e43959_7becaf0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-03T22:53:54Z",
+      "side": 1,
+      "message": "\u003e Do we have actual tests of the commands?\n\nNo, we do not. It would be nice to have that too.\n\n\u003e  Can you give some background of this change?\n\n@fsammoura@google.com started working on http://b/279821940, but you pointed out that Zephyr doesn\u0027t support [`CMD_FLAG_RESTRICTED`](http://b/279821940#comment8). I [suggested that we just completely remove `CMD_FLAG_RESTRICTED`](http://b/279821940#comment9) in EC as well since it\u0027s only used for FP-related code and leads to differences between EC and Zephyr. But before we remove `CMD_FLAG_RESTRICTED`, I want some test coverage to verify that the commands continue to remain restricted.",
+      "parentUuid": "1bd61571_b563ba82",
+      "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
