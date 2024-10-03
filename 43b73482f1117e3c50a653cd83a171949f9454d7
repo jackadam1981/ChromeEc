@@ -34,6 +34,24 @@
       "parentUuid": "1bd61571_b563ba82",
       "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f5ff1e_6934e205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T23:06:37Z",
+      "side": 1,
+      "message": "this test is only testing when the system is locked. When are add additional tests that check other return codes.",
+      "parentUuid": "95e43959_7becaf0a",
+      "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

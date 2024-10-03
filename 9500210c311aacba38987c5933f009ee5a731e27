@@ -146,6 +146,24 @@
       "parentUuid": "0ef81581_ec76576d",
       "revId": "9500210c311aacba38987c5933f009ee5a731e27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd755964_06896ed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T23:06:37Z",
+      "side": 1,
+      "message": "I created this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5907797",
+      "parentUuid": "9151aec3_d6898503",
+      "revId": "9500210c311aacba38987c5933f009ee5a731e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
