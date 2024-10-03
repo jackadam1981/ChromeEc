@@ -70,6 +70,30 @@
       },
       "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7da395_c10d92ec",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-03T20:03:08Z",
+      "side": 1,
+      "message": "Given the functionality is the same, I\u0027ll remove the -1, but I strongly believe this needs to be revised.",
+      "parentUuid": "c6def097_885a81cf",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
