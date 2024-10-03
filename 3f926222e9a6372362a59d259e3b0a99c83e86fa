@@ -22,6 +22,30 @@
       },
       "revId": "3f926222e9a6372362a59d259e3b0a99c83e86fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04792aa_287a697f",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-03T22:32:42Z",
+      "side": 1,
+      "message": "Yes, but I\u0027m not sure how to get that. If you know of an example offhand, let me know.",
+      "parentUuid": "7f8b69a9_ea321f65",
+      "range": {
+        "startLine": 58,
+        "startChar": 45,
+        "endLine": 58,
+        "endChar": 51
+      },
+      "revId": "3f926222e9a6372362a59d259e3b0a99c83e86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
