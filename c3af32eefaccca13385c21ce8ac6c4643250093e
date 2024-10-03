@@ -16,6 +16,24 @@
       "message": "Based on the discussion we had in the other CL, it sounds like it makes more sense to put this test in the [`fpsensor_debug` test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_debug.cc) (both the EC and Zephyr versions).",
       "revId": "c3af32eefaccca13385c21ce8ac6c4643250093e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a957fd4_ef502a60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T23:07:50Z",
+      "side": 1,
+      "message": "done.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5907797\nI will abandon this CL",
+      "parentUuid": "b16f8222_8ce89f5a",
+      "revId": "c3af32eefaccca13385c21ce8ac6c4643250093e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
