@@ -26,6 +26,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05d41fc5_5790d2cd",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T22:53:21Z",
+      "side": 1,
+      "message": "I agree. All the returned values are positive when there is an error. I believe we do not want to elaborate what is value is exactly returned, right? some of the return descriptions are in the private repo.",
+      "parentUuid": "10e26373_c1a0fcd4",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "10f8b9795e9f03e4c1ee6495581f41933b95670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2a02b0_f6b93861",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T22:53:21Z",
+      "side": 1,
+      "message": "I agree. The return errors are all positive. I believe we should not specify the exact error or the value of the error (Ex: 2 - and the exact egis error macro). Some of those are defined in the private repo, am I right?",
+      "parentUuid": "10e26373_c1a0fcd4",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "10f8b9795e9f03e4c1ee6495581f41933b95670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f58a6fd8_1af27fea",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 2
@@ -37,6 +85,30 @@
       "writtenOn": "2024-09-30T18:29:38Z",
       "side": 1,
       "message": "Is this `FP_SENSOR_IMAGE_SIZE`? We should use same description as [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor.h;l\u003d110-111;drc\u003d2626d4c80128c70bbf8ea151cf39f05cb2c87335).",
+      "range": {
+        "startLine": 102,
+        "startChar": 74,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "10f8b9795e9f03e4c1ee6495581f41933b95670f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c714eb45_2424d288",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T22:53:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58a6fd8_1af27fea",
       "range": {
         "startLine": 102,
         "startChar": 74,
