@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb1b3f0_2ffb6a4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-03T00:05:41Z",
+      "side": 1,
+      "message": "Hi Keith and Abhishek, can you look at this update to remove the Attention workaround pdc_rts54xx.c?\n\nI think we should wait for PDC FW to correctly set optional features in its GET_CAPAPBILITY response before merging, but this CL won\u0027t need to change.",
+      "revId": "e8ca82b80299f99ae6c09c06525ffba01c3c9a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
