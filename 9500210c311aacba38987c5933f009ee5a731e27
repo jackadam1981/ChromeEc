@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d730f91_914b1c41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T21:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d0c1c3_6f24989b",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "9500210c311aacba38987c5933f009ee5a731e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce9f24e8_1a918268",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da585800_d585b928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T21:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9f24e8_1a918268",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "9500210c311aacba38987c5933f009ee5a731e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e4dff57_28f33db3",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-10-01T16:18:55Z",
       "side": 1,
       "message": "Can you also create a CL to move the EC test from `test/restricted_console.c` to `test/fpsensor_debug.cc`?\n\nWe want to keep the tests in the same structure between EC and Zephyr so that we can make sure they stay in sync.",
+      "revId": "9500210c311aacba38987c5933f009ee5a731e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef81581_ec76576d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T21:52:18Z",
+      "side": 1,
+      "message": "created this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5892969",
+      "parentUuid": "3e4dff57_28f33db3",
       "revId": "9500210c311aacba38987c5933f009ee5a731e27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
