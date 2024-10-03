@@ -46,6 +46,30 @@
       },
       "revId": "3f926222e9a6372362a59d259e3b0a99c83e86fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c13ae3_a999115a",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-10-03T22:49:56Z",
+      "side": 1,
+      "message": "Probably hard code the version here or in some file that you bring in. That is essentially what the ebuild does.",
+      "parentUuid": "d04792aa_287a697f",
+      "range": {
+        "startLine": 58,
+        "startChar": 45,
+        "endLine": 58,
+        "endChar": 51
+      },
+      "revId": "3f926222e9a6372362a59d259e3b0a99c83e86fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
