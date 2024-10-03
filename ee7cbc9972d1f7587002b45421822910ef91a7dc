@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74456b8a_378e87b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T22:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff0eafc3_3c02bab2",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "ee7cbc9972d1f7587002b45421822910ef91a7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a11309b2_ba06f2d3",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-30T18:32:45Z",
       "side": 1,
       "message": "I don\u0027t think this is needed (there are no input parameters or return parameters).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "ee7cbc9972d1f7587002b45421822910ef91a7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ac065a_337178a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-03T22:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11309b2_ba06f2d3",
       "range": {
         "startLine": 9,
         "startChar": 0,
