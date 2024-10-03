@@ -62,12 +62,79 @@ typedef enum {
 	EGIS_API_ERROR_SENSOR_OCP_DETECT = 110,
 } egis_api_return_t;
 
+/**
+ * @brief Reset and initialize the sensor IC.
+ *
+ * @return 0 : on success.
+ * @return 1 : incorrect parameter.
+ * @return 2 : memody memory fail.
+ * @return 4 : can not detedt sensor.
+ * @return 99: sensor need reset.
+ * @return 100 : spi transfer fail.
+ * @return 106 : sensor do sensinf mode calibration fail.
+ * @return 107 : sensor do detect mode calibration fail.
+ * @return 108 : get sensor's OTP FAIL.
+ * @return 110 : sensor detect over current happen and cut off power of sensing
+ * area.
+ */
 int egis_sensor_init(void);
+
+/**
+ * Deinitialize the sensor IC.
+ *
+ * @return 0 : on success.
+ * @return positive value on error.
+ */
 int egis_sensor_deinit(void);
+
+/**
+ * Power down the sensor IC.
+ *
+ */
 void egis_sensor_power_down(void);
+
+/**
+ * Acquire a fingerprint image with specific capture mode.
+ *
+ * @param[out] image_data Image from sensor. Buffer must be allocated by caller
+ * with size FP_SENSOR_IMAGE_SIZE.
+ * @param mode  enum fp_capture_type.
+ *
+ * @return 0 : on success.
+ * @return 2 : alloc memory fail
+ * @return 128 : incorrect parameter
+ * @return 256 : alloc memory fail
+ */
 int egis_get_image_with_mode(uint8_t *image_data, int mode);
+
+/**
+ * Get 16bits image data from EGIS fingerprint sensor.
+ *
+ * @param[out] image_data Image from sensor. Buffer must be allocated by caller
+ * with size FP_SENSOR_IMAGE_SIZE.
+ *
+ * @return 0 : on success.
+ * @return 2 : alloc memory fail.
+ * @return 128 : incorrect parameter.
+ * @return 256 : alloc memory fail.
+ */
 int egis_get_image(uint8_t *image_data);
+
+/**
+ * Set the finger detection mode for the Egis sensor.
+ *
+ */
 void egis_set_detect_mode(void);
+
+/**
+ * Check the sensor interrupt status.
+ *
+ * @return EGIS_API_FINGER_PRESENT when the finger is present.
+ * @return EGIS_API_FINGER_LOST when the finger is partial.
+ * @return EGIS_API_ERROR_SENSOR_OCP_DETECT when the sensor detects an
+ * overcurrent condition, it will cut the power to its sensing area.
+ * @return EGIS_API_FINGER_UNSTABLE.
+ */
 int egis_check_int_status(void);
 
 #ifdef __cplusplus
