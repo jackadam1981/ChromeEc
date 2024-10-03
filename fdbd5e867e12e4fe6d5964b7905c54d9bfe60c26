@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df8ab68d_9ff0ee97",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-03T23:32:36Z",
+      "side": 1,
+      "message": "One potential fix would be to make the charge manager ignore a source only if available voltage is 0:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_manager.c;l\u003d716-718\n```\n-    if (available_charge[i][j].voltage \u003d\u003d 0 || ...current \u003d\u003d 0)\n+    if (available_charge[i][j].voltage \u003d\u003d 0)\n        continue;\n```\nThis will make the charge manager select a source such as 5V 0mA. We need to ensure all boards set 0V 0mA when disabling the source (I assume that\u0027s the case).",
+      "parentUuid": "23d5f865_964dd8c3",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
