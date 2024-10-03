@@ -22,6 +22,30 @@
       },
       "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791f5d58_3461f2f2",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-03T18:52:46Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think we should be hiding double free situation\n\nThis won\u0027t change the behavior of double-free from how it it works now using the macro, right?\n\nWe could change the return to an `ASSERT` to catch the free of a pointer to `NULL` (technically that\u0027s allowed by `free()`, but as long as calling the code isn\u0027t relying on it, it would be ok.)",
+      "parentUuid": "cc3fc76c_2e27b985",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
