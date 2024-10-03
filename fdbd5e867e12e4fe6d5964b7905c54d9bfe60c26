@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23d5f865_964dd8c3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-03T23:06:13Z",
+      "side": 1,
+      "message": "typec_set_input_current_limit and pd_set_input_current_limit just report available power to the charge manager. The charge manager runs in a HOOK thread and picks the port/supplier which can provide the highest power.\n\nWhen selecting the best supplier, the charge manager prefers PD to Type-C. However, it doesn\u0027t consider suppliers with current \u003d\u003d 0mA. So, I think that\u0027s why Type-C\u0027s current limit is effective.\n\nYou might as well call pd_set_input_current_limit with 1mA instead of 0 to verify the behavior.",
+      "parentUuid": "c827ed6f_f230d1b1",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
