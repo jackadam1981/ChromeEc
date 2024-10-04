@@ -56,6 +56,7 @@ def launch(opts: argparse.Namespace) -> int:
     Opts:
         board: The name of the EC board.
         project: The name of the EC project.
+        console: Path to map console.
 
     Returns:
         0 on success, otherwise non-zero.
@@ -63,6 +64,7 @@ def launch(opts: argparse.Namespace) -> int:
 
     board = opts.board
     project = opts.project
+    console = opts.console
     enable_write_protect = opts.enable_write_protect
 
     # Since we are going to cd later, we need to determine the absolute path
@@ -105,7 +107,8 @@ def launch(opts: argparse.Namespace) -> int:
     renode_execute.append("logLevel 3;")
     # https://renode.readthedocs.io/en/latest/debugging/gdb.html
     # (gdb) target remote :3333
-    renode_execute.append("machine StartGdbServer 3333;")
+    # TODO: can't re-use same port when running in parallel.
+    # renode_execute.append("machine StartGdbServer 3333;")
 
     if board in GPIO_WP_MAP:
         wp_state = GPIO_WP_ENABLE if enable_write_protect else GPIO_WP_DISABLE
@@ -115,7 +118,7 @@ def launch(opts: argparse.Namespace) -> int:
         # Expose the console UART as a PTY on /tmp/renode-uart. You can connect to
         # the PTY with minicom, screen, etc.
         renode_execute.append(
-            'emulation CreateUartPtyTerminal "term" "/tmp/renode-uart" True;'
+            'emulation CreateUartPtyTerminal "term" "' + console + '" True;'
         )
         renode_execute.append(
             "connector Connect " + CONSOLE_MAP[board] + " term;"
@@ -164,6 +167,12 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
         Name of the EC project. This is normally just 'ec', but could be a test
         name for on-board test images
         """,
+    )
+    parser.add_argument(
+        "console",
+        nargs="?",
+        default="/tmp/renode-uart",
+        help="Path to map console",
     )
 
     parser.add_argument(
