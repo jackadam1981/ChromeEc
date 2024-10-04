@@ -16,6 +16,24 @@
       "message": "@bleung@google.com @jthies@google.com What is your initial reaction to this?\n\nOur current implementation sends Discover SVIDs REQ even when Modal Operation \u003d 0, which I\u0027ve thought of as maximizing compatibility. The spec is clear that a product that set Modal Operation \u003d 0 but ACKed Discover SVIDs would be in violation. Tim Wei says he has never seen such a product (hence the behavior of the EX350). Do you think there\u0027s any risk to interop by only sending Discover SVIDs when Modal Operation \u003d 1?",
       "revId": "d54ea9b393a042c6dc94470eaf99546731a56673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbb227b_21b3e131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2024-10-04T21:38:04Z",
+      "side": 1,
+      "message": "I think this should be safe to do.\n\nI believe this is the way that other PDCs already behave in the ecosystem anyway, right?",
+      "parentUuid": "3114896d_666a0471",
+      "revId": "d54ea9b393a042c6dc94470eaf99546731a56673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
