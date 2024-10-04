@@ -16,6 +16,40 @@
       "message": "Hi Keith and Abhishek, can you take a look at this update to switch from GET_VDO to GET_ATTENTION_VDO for HPD wake? Let me know if you have any questions.",
       "revId": "4daca5359816150d35dbe08511b5878ff997b980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dea2a14_d58e72d1",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-10-04T20:21:53Z",
+      "side": 1,
+      "message": "`:32` is unnecessary",
+      "revId": "4daca5359816150d35dbe08511b5878ff997b980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79424922_a12e510d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-10-04T20:21:53Z",
+      "side": 1,
+      "message": "It\u0027s a union -- shouldn\u0027t need to do sizeof() on the raw_value.",
+      "revId": "4daca5359816150d35dbe08511b5878ff997b980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
