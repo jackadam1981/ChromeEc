@@ -11,6 +11,7 @@ gets invoked by chromite/api/controller/firmware.py.
 
 import argparse
 import multiprocessing
+from multiprocessing.pool import ThreadPool
 import os
 from pathlib import Path
 import subprocess
@@ -39,7 +40,24 @@ def bundle(opts):
         )
 
 
-def test(_opts):
+def run_device_tests(test_name, working_dir):
+    """Run the device tests."""
+
+    subprocess.run(
+        [
+            "test/run_device_tests.py",
+            "-b",
+            "bloonchipper",
+            "--renode",
+            "-t",
+            test_name,
+        ],
+        cwd=working_dir,
+        check=True,
+    )
+
+
+def test(opts):
     """Runs EC unit tests with Renode."""
 
     working_dir = Path(__file__).parents[2].resolve()
@@ -76,18 +94,86 @@ def test(_opts):
     os.environ["PATH"] += ":" + str(renode_install_dir.joinpath("bin"))
 
     # Run unit tests with Renode.
-    subprocess.run(
-        [
-            "test/run_device_tests.py",
-            "-b",
-            "bloonchipper",
-            "--renode",
-            "--with_private",
-            "no",
-        ],
-        cwd=working_dir,
-        check=True,
-    )
+    tests = [
+        "production_app_test",
+        "abort",
+        "aes",
+        "always_memset",
+        "assert_builtin",
+        "assert_stdlib",
+        "benchmark",
+        "boringssl_crypto",
+        "cortexm_fpu",
+        "crc",
+        "exception",
+        "exit",
+        "flash_physical",
+        "flash_write_protect",
+        "fp_transport_spi_ro",
+        "fp_transport_spi_rw",
+        "fp_transport_uart_ro",
+        "fp_transport_uart_rw",
+        "fpsensor_auth_crypto_stateful",
+        "fpsensor_auth_crypto_stateless",
+        "fpsensor_crypto",
+        "fpsensor_debug",
+        "fpsensor_hw",
+        "fpsensor_utils",
+        "ftrapv",
+        "libc_printf",
+        "global_initialization",
+        "libcxx",
+        "malloc",
+        "mpu_ro",
+        "mpu_rw",
+        "mutex",
+        "mutex_trylock",
+        "mutex_recursive",
+        "panic",
+        "pingpong",
+        "printf",
+        "queue",
+        "restricted_console",
+        "rng_benchmark",
+        "rollback_region0",
+        "rollback_region1",
+        "rollback_entropy",
+        "rtc",
+        "rtc_stm32f4",
+        "sbrk",
+        "sha256",
+        "sha256_unrolled",
+        "static_if",
+        "stdlib",
+        "std_vector",
+        "system_is_locked_wp_on",
+        "system_is_locked_wp_off",
+        "timer",
+        "timer_dos",
+        "tpm_seed_clear",
+        "uart",
+        "unaligned_access",
+        "unaligned_access_benchmark",
+        "utils",
+        "utils_str",
+        "power_utilization_idle",
+        "power_utilization_sleep",
+        "unaligned_access_bloonchipper_v2.0.4277",
+        "unaligned_access_bloonchipper_v2.0.5938",
+        "panic_data_bloonchipper_v2.0.4277",
+        "panic_data_bloonchipper_v2.0.5938",
+    ]
+
+    pool = ThreadPool(opts.cpus)
+    results = []
+    for t in tests:
+        results.append(pool.apply_async(run_device_tests, (t, working_dir)))
+
+    for r in results:
+        r.get()
+
+    pool.close()
+    pool.join()
 
 
 def main(args):
@@ -129,7 +215,7 @@ def parse_args(args):
     parser.add_argument(
         "--metrics",
         dest="metrics",
-        required=True,
+        # required=True,
         help="File to write the json-encoded MetricsList proto message.",
     )
 
