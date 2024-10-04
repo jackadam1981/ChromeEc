@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e054a749_56955426",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-10-04T23:19:40Z",
+      "side": 1,
+      "message": "This don\u0027t work over USB, but only TPM bus since the reset command is restricted to TPM-bus only. This is by design. How useful is this change with that in mind? What are your thoughts?",
+      "revId": "726d6e55cfd4574b65235f8702763d5a30ed265a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
