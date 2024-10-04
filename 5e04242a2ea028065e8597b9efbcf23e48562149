@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0daff03c_b45048ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-04T20:36:15Z",
+      "side": 1,
+      "message": "Looks like we don\u0027t need to modify the [Zephyr version of the test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/panic_data.c) since it\u0027s not checking that data, right? \n\nCan you update the commit message to mention that?",
+      "revId": "5e04242a2ea028065e8597b9efbcf23e48562149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
