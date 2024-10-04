@@ -34,6 +34,24 @@
       "parentUuid": "6d1de4c1_5ab56034",
       "revId": "bcac9d02c9c0227d2a902de7393eadf0f21ba9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b02119_32068a5c",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-04T21:45:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8297c55d_df1c48c0",
+      "revId": "bcac9d02c9c0227d2a902de7393eadf0f21ba9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
