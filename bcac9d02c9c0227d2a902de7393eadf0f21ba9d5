@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1de4c1_5ab56034",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-04T01:44:29Z",
+      "side": 1,
+      "message": "Since `strstr` returns a pointer to the location of the string in `buffer`, would it be worthwhile to have a check for \n```\nport80_header_ptr \u003c port_80_str_ptr\nhead_ptr \u003c tail_ptr\nport_80_str_ptr \u003c port80_footer_ptr\n```\nto validate it came out in the right order?",
+      "revId": "bcac9d02c9c0227d2a902de7393eadf0f21ba9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
