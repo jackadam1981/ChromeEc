@@ -39,6 +39,7 @@ GPIO(EC_GSC_PACKET_MODE,             PIN(7, 5), GPIO_OUT_LOW)
 
 /* Fan */
 GPIO(EN_PP5000_FAN,                  PIN(6, 1), GPIO_OUT_HIGH)
+GPIO(OPS_SYS_FAN,                    PIN(0, 6), GPIO_ODR_HIGH)
 
 /* ADC, need to check the usage */
 GPIO(ANALOG_PPVAR_PWR_IN_IMON_EC,    PIN(4, 2), GPIO_INPUT)
@@ -135,7 +136,6 @@ UNUSED(PIN(9, 7))       /* GPIO97 */
 UNUSED(PIN(8, 6))       /* GPIO86/TXD/CR_SOUT2 */
 UNUSED(PIN(1, 3))       /* KSO06/GPO13/GP_SEL# */
 UNUSED(PIN(1, 2))       /* KSO07/GPO12/JEN# */
-UNUSED(PIN(0, 6))       /* KSO11/GPIO06/P80_CLK */
 UNUSED(PIN(A, 0))
 UNUSED(PIN(A, 2))
 UNUSED(PIN(A, 3))
