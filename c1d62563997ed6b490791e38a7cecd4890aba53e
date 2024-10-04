@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a040aba0_a5c507e9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-10-04T02:42:43Z",
+      "side": 1,
+      "message": "If call tcpci_tcpm_set_vconn, need change hardware design. Because the SYV682 voltage of HOST_CCx pin is 3.6V. Vconn source by TCPC amy exceed 3.6V and damage syv682.",
+      "parentUuid": "b8d45d60_a6ae32cc",
+      "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d8e57a1_41c60f24",
         "filename": "include/driver/tcpm/tcpm.h",
         "patchSetId": 1
