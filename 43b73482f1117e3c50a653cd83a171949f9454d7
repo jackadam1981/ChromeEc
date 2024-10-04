@@ -52,6 +52,41 @@
       "parentUuid": "95e43959_7becaf0a",
       "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aca05bf_edca9f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-10-04T05:01:53Z",
+      "side": 1,
+      "message": "Thanks for the info.",
+      "parentUuid": "f3f5ff1e_6934e205",
+      "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a38eae8e_94a89cb7",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-10-04T05:01:53Z",
+      "side": 1,
+      "message": "It would be nice to add TODO(b/xxx), to add other tests of the commands that verify entire handlers.",
+      "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
