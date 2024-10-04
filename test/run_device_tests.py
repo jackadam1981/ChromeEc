@@ -56,6 +56,7 @@ import io
 import logging
 import os
 from pathlib import Path
+from random import randrange
 import re
 import socket
 import subprocess
@@ -248,6 +249,7 @@ class Platform(ABC):
         build_board: str,
         test_name: str,
         enable_hw_write_protect: bool,
+        console_pty: str,
     ) -> bool:
         """Flash specified test to specified board."""
 
@@ -315,6 +317,7 @@ class Hardware(Platform):
         build_board: str,
         test_name: str,
         enable_hw_write_protect: bool,
+        console_pty: str,
     ) -> bool:
         logging.info("Flashing test")
 
@@ -372,11 +375,13 @@ class Renode(Platform):
         build_board: str,
         test_name: str,
         enable_hw_write_protect: bool,
+        console_pty: str,
     ) -> bool:
-        cmd = ["./util/renode-ec-launch", build_board, test_name]
+        cmd = ["./util/renode-ec-launch", build_board, test_name, console_pty]
         if enable_hw_write_protect:
             cmd.append("--enable-write-protect")
 
+        logging.debug("Launching with " + " ".join(cmd))
         # pylint: disable-next=consider-using-with
         self.process = subprocess.Popen(
             cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE
@@ -1411,16 +1416,20 @@ def flash_and_run_test(
         build_board = board_config.zephyr_board_name
 
     # attempt to build test binary, reporting a test failure on error
-    try:
-        build(
-            test,
-            build_board,
-            args.compiler,
-            args.zephyr,
-        )
-    except Exception as exception:  # pylint: disable=broad-except
-        logging.error("failed to build %s: %s", test.test_name, exception)
-        return False
+    # TODO: Add option to skip building. When building with multiple calls to
+    # run_device_tests.py, the variants of a given test fail because it tries to
+    # compile the same test at the same time.
+    if False:
+        try:
+            build(
+                test,
+                build_board,
+                args.compiler,
+                args.zephyr,
+            )
+        except Exception as exception:  # pylint: disable=broad-except
+            logging.error("failed to build %s: %s", test.test_name, exception)
+            return False
 
     image_path = get_image_path(test, build_board, args.zephyr)
 
@@ -1437,6 +1446,7 @@ def flash_and_run_test(
 
     # Get the console file before flashing to listen ASAP after flashing.
     console_pty = platform.get_console(board_config)
+    console_pty += str(randrange(100000))
 
     # flash test binary
     if not platform.flash(
@@ -1448,6 +1458,7 @@ def flash_and_run_test(
         build_board,
         test.test_name,
         test.enable_hw_write_protect,
+        console_pty,
     ):
         logging.debug("Flashing failed")
         return False
