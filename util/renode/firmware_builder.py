@@ -22,6 +22,14 @@ from google.protobuf import json_format
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
 
 
+BOARDS = [
+    "bloonchipper",
+    "buccaneer",
+    "dartmonkey",
+    "helipilot",
+]
+
+
 def build(opts):
     """Build all the EC unit tests."""
 
@@ -85,18 +93,22 @@ def test(_opts):
     os.environ["PATH"] += ":" + str(renode_install_dir.joinpath("bin"))
 
     # Run unit tests with Renode.
-    subprocess.run(
-        [
-            "test/run_device_tests.py",
-            "-b",
-            "bloonchipper",
-            "--renode",
-            "--with_private",
-            "no",
-        ],
-        cwd=working_dir,
-        check=True,
-    )
+    # TODO(b/): Add a parallel option to run_device_tests.py to speed this up.
+    # Right now the EC/Zephyr coverage builders take longer than this, so it
+    # doesn't affect overall CQ time.
+    for board in BOARDS:
+        subprocess.run(
+            [
+                "test/run_device_tests.py",
+                "-b",
+                board,
+                "--renode",
+                "--with_private",
+                "no",
+            ],
+            cwd=working_dir,
+            check=True,
+        )
 
 
 def main(args):
