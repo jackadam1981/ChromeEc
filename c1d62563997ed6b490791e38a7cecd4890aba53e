@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7aa0328_27f6ef46",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-04T18:47:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a040aba0_a5c507e9",
+      "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d8e57a1_41c60f24",
@@ -105,6 +123,24 @@
       "side": 1,
       "message": "Thanks for your suggest. I modify it and submit patch2.",
       "parentUuid": "2d8e57a1_41c60f24",
+      "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe29190e_7177283e",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-04T18:47:31Z",
+      "side": 1,
+      "message": "The logic in patchset 2 still isn\u0027t quite right. The action in the `TCPC_FLAGS_SET_VCONN_IN_SYNC` case should be exactly the same as in the first case (call `set_vconn` and check the result).\n\nYou should just add `TCPC_FLAGS_SET_VCONN_IN_SYNC` to the existing check. (See other comment.)",
+      "parentUuid": "775c4dec_0b7a0f3b",
       "revId": "c1d62563997ed6b490791e38a7cecd4890aba53e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

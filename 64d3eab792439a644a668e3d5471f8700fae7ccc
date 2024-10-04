@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d831b894_8c64e813",
+        "filename": "board/marasov/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-04T18:47:31Z",
+      "side": 1,
+      "message": "Can you move this change into its own CL? Ordinarily, we like to separate driver logic changes from board-specific config changes for easier bisecting/reverts.\n\nSo that would be one change called something like: \"ps8xxx: Support synchronized VCONN delay\" and a change on top of that called something like \"marasov: Enable synchronized VCONN delay\".",
+      "revId": "64d3eab792439a644a668e3d5471f8700fae7ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e78628_65eb817f",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-04T18:47:31Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (IS_ENABLED(CONFIG_USB_PD_TCPC_VCONN) ||\n\t    tcpc_config[port].flags \u0026 TCPC_FLAGS_CONTROL_VCONN ||\n\t    tcpc_config[port].flags \u0026 TCPC_FLAGS_SET_VCONN_IN_SYNC) {\n```",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 58
+      },
+      "revId": "64d3eab792439a644a668e3d5471f8700fae7ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
