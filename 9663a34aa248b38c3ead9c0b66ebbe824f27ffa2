@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3973c016_98b41242",
+        "filename": "board/cr50/dice_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-04T16:40:28Z",
+      "side": 1,
+      "message": "I will just replace this logic with `static bool initialized`. no reason to check all 32 bytes",
+      "parentUuid": "f0b73b64_ad4e60f0",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "9663a34aa248b38c3ead9c0b66ebbe824f27ffa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "da41913e_284f5e0c",
@@ -83,6 +107,30 @@
       "writtenOn": "2024-10-01T03:07:37Z",
       "side": 1,
       "message": "so, this specific function takes a scalar as big-endian, and adds 1. is it what is expected?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "9663a34aa248b38c3ead9c0b66ebbe824f27ffa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae0d260_db765e2d",
+        "filename": "board/cr50/dice_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-04T16:40:28Z",
+      "side": 1,
+      "message": "probably not since the external code wil lneed to be able to repro CDI -\u003e CDI_Key. so I believe shall just test for `0 \u003c key \u003c SECP256r1 - 1` w/o adding 1. we don\u0027t have a function for that though, right? would need to move the logic here.",
+      "parentUuid": "851aa78c_49a4397f",
       "range": {
         "startLine": 120,
         "startChar": 2,
