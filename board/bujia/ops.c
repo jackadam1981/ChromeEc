@@ -54,3 +54,15 @@ void ps_on_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&ps_on_irq_deferred_data, PS_ON_DEBOUNCE_MS * MSEC);
 }
+
+void ops_sys_fan_enable(int enable)
+{
+	gpio_set_level(GPIO_OPS_SYS_FAN, !enable);
+}
+
+/* Called on AP S0 -> S3 transition */
+static void ops_sys_fan_suspend(void)
+{
+	ops_sys_fan_enable(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, ops_sys_fan_suspend, HOOK_PRIO_DEFAULT);
