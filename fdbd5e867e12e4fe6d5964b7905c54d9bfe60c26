@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76506a15_1ef52471",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-04T19:02:07Z",
+      "side": 1,
+      "message": "\u003e One potential fix would be to make the charge manager ignore a source only if available voltage is 0\n\n@Ruibin.Chang@ite.com.tw Can you try this? If it works, it seems like a more general and obviously correct solution.",
+      "parentUuid": "df8ab68d_9ff0ee97",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
