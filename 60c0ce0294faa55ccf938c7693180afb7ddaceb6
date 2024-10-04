@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66f4dc6_da384c9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-10-04T05:17:46Z",
+      "side": 1,
+      "message": "I think CONFIG_PLATFORM_EC_USB_UPDATE is more suitable than CONFIG_ZEPHYR, as we need to account for the one-wire scenario.\nIn this case, only the Zephyr codebase(usb_dc and udc) related to the USB interface requires specific handling.",
+      "revId": "60c0ce0294faa55ccf938c7693180afb7ddaceb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
