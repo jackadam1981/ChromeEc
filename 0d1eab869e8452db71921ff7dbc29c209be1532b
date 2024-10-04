@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e24878b_fd5ed62d",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-10-04T00:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fde6fb8_c626aa52",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 50
+      },
+      "revId": "0d1eab869e8452db71921ff7dbc29c209be1532b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f1a6439_a9dfc7ab",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92915263_001a6425",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-10-04T00:19:09Z",
+      "side": 1,
+      "message": "Sorry for late response.\nI have some doubts on how to address this comment, if I include `base.yaml` I would need to use add `compatible` on every child node, is this the intention?\n\nFor reference, please see an example of how devicetree would look like with current implementation. [vci.dtsi](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5738978/26/zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/vci.dtsi).",
+      "parentUuid": "2f1a6439_a9dfc7ab",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "0d1eab869e8452db71921ff7dbc29c209be1532b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6fda731_3980be7d",
         "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
         "patchSetId": 10
@@ -60,6 +108,30 @@
       "writtenOn": "2024-09-12T22:02:43Z",
       "side": 1,
       "message": "Nit - line length.",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 83
+      },
+      "revId": "0d1eab869e8452db71921ff7dbc29c209be1532b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cfe5a37_c0ed97fa",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pins.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-10-04T00:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6fda731_3980be7d",
       "range": {
         "startLine": 31,
         "startChar": 72,
