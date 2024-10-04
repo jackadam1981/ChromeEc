@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Lisbon board configuration */
+/* Bujia board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -153,6 +153,8 @@ enum cec_port { CEC_PORT_0, CEC_PORT_COUNT };
 extern void adp_connect_interrupt(enum gpio_signal signal);
 
 void ps_on_interrupt(enum gpio_signal signal);
+
+void ops_sys_fan_enable(int enable);
 
 #endif /* !__ASSEMBLER__ */
 

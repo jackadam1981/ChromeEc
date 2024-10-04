@@ -113,6 +113,9 @@ int fan_table_to_rpm(int fan, int *temp)
 	if (current_level >= NUM_FAN_LEVELS)
 		current_level = NUM_FAN_LEVELS - 1;
 
+	/* The OPS FAN follows system FAN control which is spinning up. */
+	current_level > 0 ? ops_sys_fan_enable(1) : ops_sys_fan_enable(0);
+
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i)
 		prev_tmp[i] = temp[i];
 
