@@ -16,6 +16,24 @@
       "message": "Since `strstr` returns a pointer to the location of the string in `buffer`, would it be worthwhile to have a check for \n```\nport80_header_ptr \u003c port_80_str_ptr\nhead_ptr \u003c tail_ptr\nport_80_str_ptr \u003c port80_footer_ptr\n```\nto validate it came out in the right order?",
       "revId": "bcac9d02c9c0227d2a902de7393eadf0f21ba9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8297c55d_df1c48c0",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-04T18:33:58Z",
+      "side": 1,
+      "message": "Good idea.  I opted to advance `buffer` on each `strstr()` call.  This ensures that header, port80 codes, and footer are all in order.",
+      "parentUuid": "6d1de4c1_5ab56034",
+      "revId": "bcac9d02c9c0227d2a902de7393eadf0f21ba9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
