@@ -16,6 +16,24 @@
       "message": "Did we figure out the reason for the WDT? It does not happen on other devices.",
       "revId": "a5346879a65754176d4c6dd073474c348bd35569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c4bc6c_89106ffe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2024-10-04T11:55:55Z",
+      "side": 1,
+      "message": "we have not found the root cause of the EC WDT yet, we assume this is a regression on firmware branch. details commented in b/355137280#comment55",
+      "parentUuid": "726452dd_7ec616c6",
+      "revId": "a5346879a65754176d4c6dd073474c348bd35569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
