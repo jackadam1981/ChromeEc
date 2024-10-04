@@ -33,6 +33,42 @@
       "message": "kyogre is a convertible, we need to measure the lid angle in S3, therefore the gyro must be enabled.\n```suggestion\n\t\t\tactive-mask \u003d \"SENSOR_ACTIVE_S0_S3\";\n```",
       "revId": "25947817f2124f4108d748e8ce0975ec739e2df4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "210cb018_1abee2e3",
+        "filename": "zephyr/program/corsola/kyogre/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-04T06:21:39Z",
+      "side": 1,
+      "message": "I understood. It is solved this CL.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5897214",
+      "parentUuid": "080ae77b_40d17456",
+      "revId": "25947817f2124f4108d748e8ce0975ec739e2df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77944cd6_83c7d984",
+        "filename": "zephyr/program/corsola/kyogre/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-04T06:21:39Z",
+      "side": 1,
+      "message": "I understood. It is solved on this CL.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5897214",
+      "parentUuid": "080ae77b_40d17456",
+      "revId": "25947817f2124f4108d748e8ce0975ec739e2df4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
