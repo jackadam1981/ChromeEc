@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c549ac_b5d3e9f7",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-04T06:09:41Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "75eeffbb_22f10a09",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dc09b58_24f1752b",
@@ -166,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8ed6f44_a47006e3",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-04T06:09:41Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "786f1bb7_3663004b",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b5a741d_c786e99b",
@@ -251,6 +299,24 @@
       "side": 1,
       "message": "Hi Nojiri-san, I re-designed the pen_charge.\nCould you please review the new code? Thank you.",
       "parentUuid": "68e47d5f_2275861c",
+      "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bda2c5a_ae281e3b",
+        "filename": "zephyr/program/corsola/kyogre/src/pen_charge.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-04T06:09:41Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "86488432_42537a6f",
       "revId": "a20009aef1e178d3c7aa763f27ebcc62a6aec534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
