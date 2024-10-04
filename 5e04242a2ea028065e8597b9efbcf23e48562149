@@ -16,6 +16,24 @@
       "message": "Looks like we don\u0027t need to modify the [Zephyr version of the test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/panic_data.c) since it\u0027s not checking that data, right? \n\nCan you update the commit message to mention that?",
       "revId": "5e04242a2ea028065e8597b9efbcf23e48562149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14473039_95deebcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-04T21:04:02Z",
+      "side": 1,
+      "message": "Right. It didn\u0027t look like we were doing anything chip specific in the zephyr test, but I couldn\u0027t be 100% sure. I added a note about my findings, but can do a follow-up CL if my assumption is incorrect.",
+      "parentUuid": "0daff03c_b45048ac",
+      "revId": "5e04242a2ea028065e8597b9efbcf23e48562149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
