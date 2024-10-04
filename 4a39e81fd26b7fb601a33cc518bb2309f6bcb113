@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e54ddc_f1710042",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-04T22:31:41Z",
+      "side": 1,
+      "message": "This makes sense to me. Some of the recent bugs we\u0027ve seen are making me paranoid that other devices are going to fail when we send a message they aren\u0027t expecting. \n\nSo, seems like a generally a good idea to gate messages if we aren\u0027t expecting response data anyway.",
+      "revId": "4a39e81fd26b7fb601a33cc518bb2309f6bcb113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
