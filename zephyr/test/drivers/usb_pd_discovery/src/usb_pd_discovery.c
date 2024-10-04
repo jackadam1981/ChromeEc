@@ -19,6 +19,7 @@
 
 #include <zephyr/kernel.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/sys/slist.h>
 #include <zephyr/ztest.h>
 
 #define TEST_PORT USBC_PORT_C0
@@ -176,7 +177,7 @@ ZTEST_F(usb_pd_discovery, test_no_modal_operation)
 	partner->identity_vdm[VDO_INDEX_HDR] =
 		VDO(USB_SID_PD, /* structured VDM */ true,
 		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_IDENT) |
-		VDO_SVDM_VERS(SVDM_VER_2_0);
+		VDO_SVDM_VERS_MAJOR(SVDM_VER_2_0);
 	partner->identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
 		/* USB host */ false, /* USB device */ true, IDH_PTYPE_HUB,
 		/* modal operation */ false, USB_VID_GOOGLE);
@@ -192,7 +193,7 @@ ZTEST_F(usb_pd_discovery, test_no_modal_operation)
 	partner->svids_vdm[VDO_INDEX_HDR] =
 		VDO(USB_SID_PD, /* structured VDM */ true,
 		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_SVID) |
-		VDO_SVDM_VERS(SVDM_VER_2_0);
+		VDO_SVDM_VERS_MAJOR(SVDM_VER_2_0);
 	partner->svids_vdm[VDO_INDEX_HDR + 1] =
 		VDO_SVID(USB_SID_DISPLAYPORT, 0);
 	partner->svids_vdos = VDO_INDEX_HDR + 2;
