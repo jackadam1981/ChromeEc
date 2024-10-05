@@ -20,4 +20,16 @@
 #define CONFIG_FP_SENSOR_EGIS630
 #endif /* SECTION_IS_RW */
 
+/**
+ * See description in baseboard/helpilot/base_board.h.
+ */
+#undef HELIPILOT_CODE_RAM_SIZE_BYTES
+#define HELIPILOT_CODE_RAM_SIZE_BYTES (256 * 1024)
+
+/**
+ * See description in baseboard/helpilot/base_board.h.
+ */
+#undef HELIPILOT_DATA_RAM_SIZE_BYTES
+#define HELIPILOT_DATA_RAM_SIZE_BYTES (252 * 1024)
+
 #endif /* __CROS_EC_BOARD_GWENDOLIN_BOARD_H */
