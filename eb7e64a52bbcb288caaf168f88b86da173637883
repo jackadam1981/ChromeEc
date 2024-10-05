@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79924aeb_48f80e8b",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-05T04:30:20Z",
+      "side": 1,
+      "message": "I mentioned here `positive value` on error instead of `non-zero`. Can the function return `negative values`?",
+      "parentUuid": "413e1cdb_4e58a138",
+      "revId": "eb7e64a52bbcb288caaf168f88b86da173637883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e61b2ef5_53f3ff9c",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-04T15:08:59Z",
       "side": 1,
       "message": "@fsammoura@google.com\n**\n * Check the sensor interrupt status.\n *\n * @return EGIS_API_FINGER_PRESENT mean FINGER_PRESENT.\n * @return EGIS_API_FINGER_LOST mean FINGER_PARTIAL.\n * @return other value on error.\n */",
+      "revId": "eb7e64a52bbcb288caaf168f88b86da173637883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dade482_5097e3b8",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-05T04:30:20Z",
+      "side": 1,
+      "message": "Done. I modified it slightly. Please confirm. It does not return 0 upon success, am I right?",
+      "parentUuid": "e61b2ef5_53f3ff9c",
       "revId": "eb7e64a52bbcb288caaf168f88b86da173637883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
