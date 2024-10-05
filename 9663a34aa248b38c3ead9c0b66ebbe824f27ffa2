@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b4991b_39b4383d",
+        "filename": "board/cr50/dice_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-05T01:07:09Z",
+      "side": 1,
+      "message": "Logic changed",
+      "parentUuid": "124369f3_d74240f5",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "9663a34aa248b38c3ead9c0b66ebbe824f27ffa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0b73b64_ad4e60f0",
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "probably not since the external code wil lneed to be able to repro CDI -\u003e CDI_Key. so I believe shall just test for `0 \u003c key \u003c SECP256r1 - 1` w/o adding 1. we don\u0027t have a function for that though, right? would need to move the logic here.",
       "parentUuid": "851aa78c_49a4397f",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "9663a34aa248b38c3ead9c0b66ebbe824f27ffa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3affdf31_d6cce486",
+        "filename": "board/cr50/dice_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-05T01:07:09Z",
+      "side": 1,
+      "message": "Updated logic",
+      "parentUuid": "6ae0d260_db765e2d",
       "range": {
         "startLine": 120,
         "startChar": 2,
