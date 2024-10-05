@@ -87,6 +87,24 @@
       "message": "It would be nice to add TODO(b/xxx), to add other tests of the commands that verify entire handlers.",
       "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea931ed9_34807e4c",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-05T03:34:26Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5909820",
+      "parentUuid": "a38eae8e_94a89cb7",
+      "revId": "43b73482f1117e3c50a653cd83a171949f9454d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
