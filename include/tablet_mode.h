@@ -47,6 +47,8 @@ void tablet_disable(void);
  */
 void gmr_tablet_switch_isr(enum gpio_signal signal);
 
+void remote_tablet_switch_notify();
+
 /**
  * Disables the interrupt on GPIO connected to gmr sensor. Additionally, it
  * disables the tablet mode switch sub-system and turns off tablet mode. This

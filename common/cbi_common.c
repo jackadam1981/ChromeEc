@@ -6,9 +6,15 @@
 #include "common.h"
 #include "cros_board_info.h"
 
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(yuval, LOG_LEVEL_DBG);
+
 test_mockable int cbi_get_ssfc(uint32_t *ssfc)
 {
 	uint8_t size = sizeof(*ssfc);
+
+	LOG_DBG("cbi_common.c::cbi_get_ssfc()");
 
 	return cbi_get_board_info(CBI_TAG_SSFC, (uint8_t *)ssfc, &size);
 }
