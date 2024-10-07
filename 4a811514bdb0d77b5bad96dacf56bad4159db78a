@@ -33,6 +33,42 @@
       "message": "@fsammoura@google.com, you need to make a symbolic link in the util/renode directory for gwendolin.",
       "revId": "4a811514bdb0d77b5bad96dacf56bad4159db78a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a12251_211deab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-07T21:03:18Z",
+      "side": 1,
+      "message": "thanks for the comment. I created this CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5913711/2",
+      "parentUuid": "f6960a5a_226b28df",
+      "revId": "4a811514bdb0d77b5bad96dacf56bad4159db78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e523ebb_7e019650",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-07T21:03:18Z",
+      "side": 1,
+      "message": "let me work on this shortly",
+      "parentUuid": "3aa71de0_f928433e",
+      "revId": "4a811514bdb0d77b5bad96dacf56bad4159db78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
