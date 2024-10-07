@@ -94,6 +94,30 @@
       },
       "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a5e36b_3c237d7d",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-07T18:05:00Z",
+      "side": 1,
+      "message": "I will go ahead and give CR+2, since this change shouldn\u0027t change behavior of existing code.\n\n@fsammoura@google.com Can you file a bug and add a `TODO` on this function to followup with @hesling@chromium.org\u0027s concerns in a future CL?",
+      "parentUuid": "0a7da395_c10d92ec",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "c702fa38c391bcc2e4747f7a143c8c79a9402dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
