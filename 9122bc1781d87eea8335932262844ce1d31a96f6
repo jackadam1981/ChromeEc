@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9e1023_ae110aba",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-07T21:08:43Z",
+      "side": 1,
+      "message": "😞 more manual lists of board names.\n\nI guess you could argue that having this list serves as a better reminder to add renode support than if we simply turned this into a glob expression of the available `*.resc` files.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "9122bc1781d87eea8335932262844ce1d31a96f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
