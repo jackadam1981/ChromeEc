@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f9fa2c_967839ed",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-07T20:29:50Z",
+      "side": 1,
+      "message": "This would usually be called something like `CONFIG_FP_SENSOR_INT_ACTIVE_LOW`.",
+      "range": {
+        "startLine": 2311,
+        "startChar": 7,
+        "endLine": 2311,
+        "endChar": 40
+      },
+      "revId": "1bae86669c84c488d90b1a1b24f74b8ced999443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
