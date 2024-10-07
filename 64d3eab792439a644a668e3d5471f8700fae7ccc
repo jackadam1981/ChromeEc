@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc63921f_a8944372",
+        "filename": "board/marasov/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-10-07T03:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d831b894_8c64e813",
+      "revId": "64d3eab792439a644a668e3d5471f8700fae7ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10e78628_65eb817f",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "You could equivalently do this. I don\u0027t have a strong preference. Whichever looks better to you/fits more easily in 80 columns.\n```suggestion\n\tif (IS_ENABLED(CONFIG_USB_PD_TCPC_VCONN) ||\n\t    tcpc_config[port].flags \u0026\n\t    (TCPC_FLAGS_CONTROL_VCONN | TCPC_FLAGS_SET_VCONN_IN_SYNC)) {\n```",
       "parentUuid": "10e78628_65eb817f",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 58
+      },
+      "revId": "64d3eab792439a644a668e3d5471f8700fae7ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "174298f8_46e87d65",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-10-07T03:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2877074_66ba887c",
       "range": {
         "startLine": 250,
         "startChar": 0,
