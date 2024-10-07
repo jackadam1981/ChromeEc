@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccead69e_c0a4df2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T22:02:13Z",
+      "side": 1,
+      "message": "This should be a specific bug for this test.",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcffa93_3ff9768f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T22:02:13Z",
+      "side": 1,
+      "message": "Does it fail to build without this `#ifdef`? We have a handful of checks for this config in TCPMv2, but I don\u0027t think there are any TCPMv2 boards that are PD-2.0-only, and I don\u0027t think we\u0027ve considered that to be a supported configuration. This might be an opportunity to simplify our config checking a little bit.",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ed67b1_0718068c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 8344,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T22:02:13Z",
+      "side": 1,
+      "message": "If `pd_rmdo` were a defined structure, then this could be `sizeof(struct pd_rmdo`, which would be more obviously correct.",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95eebe5_02dc166c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T22:02:13Z",
+      "side": 1,
+      "message": "Nit: The existing style of this file is macros and bit ops. But I think these kinds of structures are easier to read and harder to mess up as bit-field structs/unions. How would you feel about this?\n\n```\nunion pd_rmdo {\n  struct {\n    unsigned revision_major : 4;\n    unsigned revision_minor : 4;\n    unsigned version_major  : 4;\n    unsigned version_minor  : 4;\n    unsigned reserved       : 16;\n  }\n  uint32_t raw;\n};\n```",
+      "fixSuggestions": [
+        {
+          "fixId": "496a7d01_e98434c6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/usb_pd.h",
+              "range": {
+                "startLine": 252,
+                "startChar": 0,
+                "endLine": 254,
+                "endChar": 0
+              },
+              "replacement": "\t(((rev_major) \u003c\u003c 28) | ((rev_minor) \u003c\u003c 24) | ((ver_major) \u003c\u003c20) | \\\n\t ((ver_minor) \u003c\u003c16))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44767641_c2ff7b61",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T22:02:13Z",
+      "side": 1,
+      "message": "For test-passing purposes, this is fine. The 2024 Q3 CTS is targeting PD 3.1, but it\u0027s just checking against the VIF. For purposes of this particular test, we could put whatever we want here and change the VIF. I don\u0027t think we can set it any lower than this. But if we can set it to r3.2 v1.0 and not cause any problems, then we probably should. Where practical, we should aim for the most current spec.",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
