@@ -36,15 +36,31 @@ uint32_t mkbp_get_switch_state(void)
 	 * These all read already debounced states and cause no side effects
 	 * or latency.
 	 */
-	if (IS_ENABLED(CONFIG_LID_SWITCH))
+	if (IS_ENABLED(CONFIG_LID_SWITCH)) {
+		printk("mkbp_switch_state(0x%08x) |= lid_is_open(%d) << %d\n",
+		       mkbp_switch_state, lid_is_open(), EC_MKBP_LID_OPEN);
 		mkbp_switch_state |= lid_is_open() << EC_MKBP_LID_OPEN;
-	if (IS_ENABLED(CONFIG_TABLET_MODE_SWITCH))
+	}
+	if (IS_ENABLED(CONFIG_TABLET_MODE_SWITCH)) {
+		printk("mkbp_switch_state(0x%08x) |= tablet_get_mode(%d) << %d\n",
+		       mkbp_switch_state, tablet_get_mode(),
+		       EC_MKBP_TABLET_MODE);
 		mkbp_switch_state |= tablet_get_mode() << EC_MKBP_TABLET_MODE;
-	if (IS_ENABLED(CONFIG_BASE_ATTACHED_SWITCH))
+	}
+	if (IS_ENABLED(CONFIG_BASE_ATTACHED_SWITCH)) {
+		printk("mkbp_switch_state(0x%08x) |= base_get_state(%d) << %d\n",
+		       mkbp_switch_state, base_get_state(),
+		       EC_MKBP_BASE_ATTACHED);
 		mkbp_switch_state |= base_get_state() << EC_MKBP_BASE_ATTACHED;
-	if (IS_ENABLED(CONFIG_BODY_DETECTION_NOTIFY_MKBP))
+	}
+	if (IS_ENABLED(CONFIG_BODY_DETECTION_NOTIFY_MKBP)) {
+		printk("mkbp_switch_state(0x%08x) |= body_detect_get_state(%d) << %d\n",
+		       mkbp_switch_state, body_detect_get_state(),
+		       EC_MKBP_FRONT_PROXIMITY);
 		mkbp_switch_state |= body_detect_get_state()
 				     << EC_MKBP_FRONT_PROXIMITY;
+	}
+	printk("mkbp_switch_state = 0x%08x\n", mkbp_switch_state);
 	return mkbp_switch_state;
 };
 

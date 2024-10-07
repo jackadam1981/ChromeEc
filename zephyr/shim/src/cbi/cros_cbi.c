@@ -8,13 +8,26 @@
 #include "cros_cbi.h"
 #include "hooks.h"
 
+// #define USE_SYS_INIT
+
+#ifdef USE_SYS_INIT
+static int cros_cbi_ec_init(void)
+#else
 static void cros_cbi_ec_init(void)
+#endif
 {
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH)) {
 		cros_cbi_transfer_eeprom_to_flash();
 	}
 	cros_cbi_ssfc_init();
 	cros_cbi_fw_config_init();
+#ifdef USE_SYS_INIT
+	return 0;
+#endif
 }
 
+#ifdef USE_SYS_INIT
+SYS_INIT(cros_cbi_ec_init, POST_KERNEL, 50);
+#else
 DECLARE_HOOK(HOOK_INIT, cros_cbi_ec_init, HOOK_PRIO_FIRST);
+#endif

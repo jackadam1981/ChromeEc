@@ -174,6 +174,9 @@ static void motion_lid_set_tablet_mode(int reliable)
 				/* Alright, we're convinced. */
 				tablet_mode_debounce_cnt =
 					TABLET_MODE_DEBOUNCE_COUNT;
+				printk("\n\n motion_lid.c::motion_lid_set_tablet_mode() calling "
+				       "tablet_set_mode(%d)\n\n",
+				       new_mode);
 				tablet_set_mode(new_mode, TABLET_TRIGGER_LID);
 				return;
 			}

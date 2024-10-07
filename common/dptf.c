@@ -72,7 +72,7 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 	int max, i;
 
 	if (sensor_id >= TEMP_SENSOR_COUNT) {
-		CPRINTS("DPTF: Invalid sensor ID");
+		// CPRINTS("DPTF: Invalid sensor ID");
 		return 0;
 	}
 
@@ -108,7 +108,7 @@ void dptf_set_temp_threshold(int sensor_id, int temp, int idx, int enable)
 
 	if ((sensor_id >= TEMP_SENSOR_COUNT) ||
 	    (idx >= DPTF_THRESHOLDS_PER_SENSOR)) {
-		CPRINTS("DPTF: Invalid sensor ID");
+		// CPRINTS("DPTF: Invalid sensor ID");
 		return;
 	}
 
