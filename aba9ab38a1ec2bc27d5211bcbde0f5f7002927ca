@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f921712_fbe2e16c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-07T15:05:20Z",
+      "side": 1,
+      "message": "b:222106582",
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64612cc4_78a40aac",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-07T15:05:20Z",
+      "side": 1,
+      "message": "Nit - line too long (and others). Needs a pass by a formatter.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 189
+      },
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82d7c17_7cc90ae0",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-07T15:05:20Z",
+      "side": 1,
+      "message": "Nit - it would be helpful if there was a difference between the 2 keyboard configs.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 36
+      },
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92db2b01_4fcd4f74",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-07T15:05:20Z",
+      "side": 1,
+      "message": "Missing trailing backtick.\n\nThe usage column for the `kbpress`, `input dump` and `input kbd_matrix_state_dump` rows didn\u0027t render correctly.",
+      "range": {
+        "startLine": 213,
+        "startChar": 52,
+        "endLine": 213,
+        "endChar": 77
+      },
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
