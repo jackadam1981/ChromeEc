@@ -199,6 +199,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bbccf24_753373f4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-10-07T06:18:51Z",
+      "side": 1,
+      "message": "\u003e You might as well call `pd_set_input_current_limit` with 1mA instead of 0 to verify the behavior.\n\nChange to call `pd_set_input_current_limit()` to 1mA, then run TEST.PD.PS.SNK.1: \nFail the test, after PS_RDY, we draw current 60-90mA (\u003e pSnkSusp 25mW)\n\nAlso try:\nWhen negotiate with adapter 20V/3.25A, calling `pd_set_input_current_limit()` to \n-\u003e 1A: the drawing current can be limited to 99XmA (without any change the current is 18xxmA)\n-\u003e 1mA or 0mA: the drawing current is 60-90mA (needs to call `typec_set_input_current_limit()`, current can be down to 1~4mA)\n\n\n \n\u003e\u003e One potential fix would be to make the charge manager ignore a source only if available voltage is 0:\n\n\u003e Can you try this? If it works, it seems like a more general and obviously correct solution.\n\nFail the test TEST.PD.PS.SNK.1, the drawing current is 60-90mA (\u003e pSnkSusp 25mW)",
+      "parentUuid": "df8ab68d_9ff0ee97",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
