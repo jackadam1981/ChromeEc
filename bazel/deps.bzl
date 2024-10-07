@@ -10,28 +10,28 @@ def _ec_deps_impl(module_ctx):
             name = "ec-coreboot-sdk-%s" % arch,
             build_file = "//platform/rules_cros_firmware/cros_firmware:BUILD.gcs_subtool",
             sha256 = sha256,
-            url = "https://storage.googleapis.com/chromiumos-sdk/toolchains/coreboot-sdk-%s/%s.tar.zst" % (arch, version),
+            url = "https://storage.googleapis.com/chromeos-throw-away-bucket/toolchains/coreboot-sdk-%s/%s.tar.zst" % (arch, version),
         )
 
     _coreboot_sdk_subtool(
         "nds32le-elf",
-        "11.3.0-r2/47a9bb6b7ef1ea584ed24078ea152a87204a37e1",
-        "7299ae598233876ec2f562a1173f8b65de169b1de51cb6e04e003edfb4d04fe7",
+        "14.2/jpmurphy_build",
+        "1ddeee8b906381c422932d7abfe075634e75667b81cd7e774858caad80258e28",
     )
     _coreboot_sdk_subtool(
         "i386-elf",
-        "11.3.0-r2/5ba88fb0227c76584851bd9cbb24d785e31a717b",
-        "72f0b55516120e0919f10ddf28c53a429ccc8132685b6dbd6a8dcefeba92fcc5",
+        "14.2/jpmurphy_build",
+        "4c75ef43d234b7bac62cd6fd13a3b1fb7aab52d93fc14b7628ed3003340ffeda",
     )
     _coreboot_sdk_subtool(
         "arm-eabi",
-        "11.3.0-r2/8adade1392d87565482ea57bfafaf74223cebbe5",
-        "312557355983bf732b20dcf7b7553a5b2a13247fc3ad6f21226ff260db1783cd",
+        "14.2/jpmurphy_build",
+        "910a2ce2f704caa9ea8c7c2a918d23ad79099cc2b1ab3a04bc579952a51420cc",
     )
     _coreboot_sdk_subtool(
         "riscv-elf",
-        "11.3.0-r2/c97eb9fef0cf77f9d58d890de4e3e67f5158166f",
-        "2345cfbf3dffd2efe0cdfa8d6100a0923d2dc8b77da9d98b9fd07200b18abec1",
+        "14.2/jpmurphy_build",
+        "750ce5caafc566d648b51ef6d95c6fef7a95fd02f39aa34fd30f0311b1235b63",
     )
 
     return module_ctx.extension_metadata(
