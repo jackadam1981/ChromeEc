@@ -1,0 +1,19 @@
+
+syntax = "proto3";
+
+package cros.dsp.comms;
+
+message EchoRequest
+{
+	string message = 1;
+}
+
+message EchoResponse
+{
+	string message = 1;
+}
+
+service Echo
+{
+	rpc Echo(EchoRequest) returns (EchoResponse);
+}

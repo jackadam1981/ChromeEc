@@ -1,3 +1,6 @@
+# For compatibility replace the following 2 lines with:
+# cros.dsp.comms.GetStatusResponse.flags callback_datatype:'struct flags_bytes_t { uint8_t size; uint8_t bytes[2];}'
+# cros.dsp.comms.GetStatusResponse.flags callback_function:'cros_dsp_comms_GetStatusResponse_flags_callback'
 cros.dsp.comms.GetStatusResponse.flags max_size:2
 cros.dsp.comms.GetStatusResponse.flags fixed_length:True
 cros.dsp.comms.GetStatusResponse.response_length int_size:IS_8

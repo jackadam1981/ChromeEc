@@ -1,0 +1,3 @@
+pw.transport.Status.flags max_size:@PW_TRANSPORT_STATUS_FLAGS_SIZE@
+pw.transport.Status.flags fixed_length:True
+pw.transport.Status.response_length int_size:IS_8
