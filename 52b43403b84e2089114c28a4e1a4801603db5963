@@ -22,6 +22,30 @@
       },
       "revId": "52b43403b84e2089114c28a4e1a4801603db5963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ed11c2_5b678aa5",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 3639181
+      },
+      "writtenOn": "2024-10-07T03:09:01Z",
+      "side": 1,
+      "message": "That was a mistake, and I\u0027ve already reverted it.",
+      "parentUuid": "45040629_cbd5d5d8",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "52b43403b84e2089114c28a4e1a4801603db5963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
