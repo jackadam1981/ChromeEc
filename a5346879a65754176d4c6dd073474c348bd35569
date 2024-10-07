@@ -34,6 +34,24 @@
       "parentUuid": "726452dd_7ec616c6",
       "revId": "a5346879a65754176d4c6dd073474c348bd35569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959d9c12_766e0cf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-07T16:48:08Z",
+      "side": 1,
+      "message": "We did not figure out the reason.\nRegarding firmware-corsola-15194.B, we found the following results.\n R109-15194.199.0 : WDT issue was not reproduced\n R109-15194.200.0 : WDT issue was reproduuuced.\nAnd we reproduced the WDT issue on corsola Steelix with 15194.246.0",
+      "parentUuid": "726452dd_7ec616c6",
+      "revId": "a5346879a65754176d4c6dd073474c348bd35569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
