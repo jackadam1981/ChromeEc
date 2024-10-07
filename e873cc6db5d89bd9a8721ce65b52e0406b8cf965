@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30992235_0a0c69e6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T20:55:29Z",
+      "side": 1,
+      "message": "Nit: This comment references a now-obsolete compliance test and also describes the current code behavior in terms of our plans years ago when this comment was added, which IMO is a bit confusing. I\u0027d suggest, at minimum, updating the compliance test reference. It also seems possible to explain the rationale for each value a bit more directly:\n* TCPMv1: Retain legacy behavior\n* TCPMv2: Ensure that the TCPM actually sends any Hard Reset within the specified range of tSenderResponse.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 3
+      },
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca09bbd_793b6f10",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T20:55:29Z",
+      "side": 1,
+      "message": "Nit: There is now a `CONFIG_USB_PD_TCPMV1`. This conditional would probably be more readable if phrased positively, either `#ifdef CONFIG_USB_PD_TCPMV1` or with the TCPMv2 clause coming first.",
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6a0b65_fbd4f93a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T20:55:29Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any specific partner that approaches the upper edge of tSenderResponse (which would be a non-compliant partner), and I don\u0027t see any historical evidence of us increasing this value to improve interop. But I can imagine a partner where decreasing it would worsen interop, and I\u0027m a little curious what is the maximum value that still lets us pass TEST.PD.PROT.SRC.2.",
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
