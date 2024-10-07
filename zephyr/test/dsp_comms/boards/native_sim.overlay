@@ -16,6 +16,8 @@
 
     aliases {
         gpio-wp = &gpio_wp_l;
+        test-dsp-client = &dsp_client;
+        test-dsp-service = &dsp_service;
     };
 
     named-i2c-ports {
@@ -46,6 +48,12 @@
 		#size-cells = <0>;
 		#forward-cells = <1>;
 		reg = <0x400 4>;
+
+        dsp_service: dsp-service@20 {
+            compatible = "cros,dsp-service";
+            int-gpios = <&gpio1 0 (GPIO_PUSH_PULL | GPIO_ACTIVE_LOW)>;
+            reg = <0x20>;
+        };
     };
 
 
@@ -73,4 +81,10 @@
 
 &i2c0 {
     forwards = <&i2c1 0x20>;
+
+    dsp_client: dsp-client@20 {
+        compatible = "cros,dsp-client";
+        reg = <0x20>;
+        int-gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
+    };
 };

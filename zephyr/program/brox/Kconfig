@@ -8,6 +8,12 @@ config BOARD_BROX
 	  Build Google Brox reference board.  This board uses an Intel RPL SoC
 	  and ITE EC
 
+config BOARD_BROX_ISH_EC
+	bool "Google Brox Board when ISH is enabled"
+	help
+	  Build Google Brox reference board EC for ISH enabled Brox. This board
+	  uses an Intel RPL SoC and ITE EC.
+
 config BOARD_GREENBAYUPOC
 	bool "Google Greenbayupoc Board"
 	help
