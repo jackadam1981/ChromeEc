@@ -27,7 +27,23 @@ def init_toolchain():
     # (environment variable, bazel target)
     toolchains = [
         ("COREBOOT_SDK_ROOT_arm", "@ec-coreboot-sdk-arm-eabi//:get_path"),
+        (
+            "COREBOOT_SDK_ROOT_arm_picolibc",
+            "@ec-coreboot-sdk-picolibc-arm-eabi//:get_path",
+        ),
+        (
+            "COREBOOT_SDK_ROOT_arm_libstdcxx",
+            "@ec-coreboot-sdk-libstdcxx-arm-eabi//:get_path",
+        ),
         ("COREBOOT_SDK_ROOT_x86", "@ec-coreboot-sdk-i386-elf//:get_path"),
+        (
+            "COREBOOT_SDK_ROOT_x86_picolibc",
+            "@ec-coreboot-sdk-picolibc-i386-elf//:get_path",
+        ),
+        (
+            "COREBOOT_SDK_ROOT_x86_libstdcxx",
+            "@ec-coreboot-sdk-libstdcxx-i386-elf//:get_path",
+        ),
         ("COREBOOT_SDK_ROOT_riscv", "@ec-coreboot-sdk-riscv-elf//:get_path"),
         ("COREBOOT_SDK_ROOT_nds32", "@ec-coreboot-sdk-nds32le-elf//:get_path"),
     ]
