@@ -5,12 +5,18 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def _ec_deps_impl(module_ctx):
-    def _coreboot_sdk_subtool(arch, version, sha256):
+    def _coreboot_sdk_subtool(arch, version, sha256, bucket = "chromiumos-sdk", qualifier = ""):
+        name = "ec-coreboot-sdk-%s" % arch
+        if qualifier:
+            name = "%s-%s" % (name, qualifier)
+        toolchain_name = "coreboot-sdk-%s" % arch
+        if qualifier:
+            toolchain_name = "%s-%s" % (toolchain_name, qualifier)
         http_archive(
-            name = "ec-coreboot-sdk-%s" % arch,
+            name = name,
             build_file = "//platform/rules_cros_firmware/cros_firmware:BUILD.gcs_subtool",
             sha256 = sha256,
-            url = "https://storage.googleapis.com/chromiumos-sdk/toolchains/coreboot-sdk-%s/%s.tar.zst" % (arch, version),
+            url = "https://storage.googleapis.com/%s/toolchains/%s/%s.tar.zst" % (bucket, toolchain_name, version),
         )
 
     _coreboot_sdk_subtool(
@@ -34,10 +40,30 @@ def _ec_deps_impl(module_ctx):
         "4fcde5976454537569dd07e62c47f35fc2f4db745a4ad269cfb153d27da8d0b1",
     )
 
+    ######################################################################################
+    # TODO(b/384559486) Fix this block
+    _coreboot_sdk_subtool(
+        "i386-elf",
+        "14.2.0-r3/5ba88fb0227c76584851bd9cbb24d785e3000036",
+        "d29027cb780e424feb2cc548a13837abb5a3dd6d0a0d3e239ee2ecdda4b18aae",
+        "chromeos-throw-away-bucket",
+        "c-libs",
+    )
+    _coreboot_sdk_subtool(
+        "arm-eabi",
+        "14.2.0-r3/8adade1392d87565482ea57bfafaf74223000036",
+        "6dee98e5e70663a60a1fe47e2981f637d3f9ab677f77d3ea23d9edc7e49d8e35",
+        "chromeos-throw-away-bucket",
+        "c-libs",
+    )
+    ######################################################################################
+
     return module_ctx.extension_metadata(
         root_module_direct_deps = [
             "ec-coreboot-sdk-arm-eabi",
+            "ec-coreboot-sdk-arm-eabi-c-libs",
             "ec-coreboot-sdk-i386-elf",
+            "ec-coreboot-sdk-i386-elf-c-libs",
             "ec-coreboot-sdk-nds32le-elf",
             "ec-coreboot-sdk-riscv-elf",
         ],
