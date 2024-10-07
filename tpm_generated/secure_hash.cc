@@ -12,8 +12,9 @@
 #include <openssl/sha.h>
 #include <stddef.h>
 
-#include "base/logging.h"
-#include "base/pickle.h"
+#include <android-base/logging.h>
+//#include "base/logging.h"
+//#include "base/pickle.h"
 
 namespace crypto {
 
@@ -59,7 +60,7 @@ SecureHash* SecureHash::Create(Algorithm algorithm) {
     case SHA256:
       return new SecureHashSHA256();
     default:
-      NOTIMPLEMENTED();
+      LOG(ERROR) << "SecureHash not implemented for algorithm " << algorithm;
       return NULL;
   }
 }
