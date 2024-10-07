@@ -13,3 +13,29 @@ pw_proto_library(dsp_comms.proto
   DEPS
     pw_third_party.nanopb.proto
 )
+
+zephyr_link_libraries(dsp_comms.proto.nanopb pw_transport.proto.nanopb)
+
+add_subdirectory(service)
+add_subdirectory(client)
+
+pw_add_test(cros.dsp.test
+  SOURCES
+    test_comms.cc
+  PRIVATE_DEPS
+    pw_unit_test.light
+    pw_unit_test.logging_event_handler
+    dsp_comms.proto.nanopb
+    dsp.client
+    dsp.service
+    zephyr_interface
+    cros_ec_interface
+)
+
+# pw_proto_library(dsp_comms.service.proto
+#   SOURCES
+#     proto/service.proto
+#   DEPS
+#     pw_protobuf.common_proto
+# )
+# zephyr_link_libraries(dsp_comms.service.proto.pwpb)
