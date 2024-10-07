@@ -22,6 +22,30 @@
       },
       "revId": "f1a265771e2432390ea59ffd42c64149c1ab3447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98da184f_0d53ad3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-07T20:29:08Z",
+      "side": 1,
+      "message": "My understanding is that the default values in the helipilot baseboard are as follows:\n\n```\n#define HELIPILOT_DATA_RAM_SIZE_BYTES (156 * 1024)\n#define HELIPILOT_CODE_RAM_SIZE_BYTES (352 * 1024)\n```",
+      "parentUuid": "909871dd_1a995d26",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "f1a265771e2432390ea59ffd42c64149c1ab3447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
