@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8750fda_fa9aca2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-07T15:56:43Z",
+      "side": 1,
+      "message": "Document, at least one line.",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f753686c_a187049d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-07T15:56:43Z",
+      "side": 1,
+      "message": "Add\n\nBUG\u003db:369509279",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ad7567_c5b41b1c",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-07T15:56:43Z",
+      "side": 1,
+      "message": "16 - 18 are too close from each other, you will get spurious events.\n\nDo you really need to add a new level, we already have `wake_small_angle`.",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f555aa_63ff1d79",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-07T15:56:43Z",
+      "side": 1,
+      "message": "As I explained in https://b.corp.google.com/issues/369509279#comment5, it will not work: lid_angle_change() is called only when the lid angle is reliable. When the user closes the lid, the lid angle is **not** reliable, since the lid is moving. Si lid_angle_change() will never/seldom get called when the lid is closing.",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0d5c2e_abd390f7",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-07T15:56:43Z",
+      "side": 1,
+      "message": "Why is this change needed? Should it be in a separate bug/cl?",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
