@@ -51,7 +51,7 @@ static int raw_lid_open(void)
 /**
  * Handle lid open.
  */
-static void lid_switch_open(void)
+void lid_switch_open(void)
 {
 	if (debounced_lid_open) {
 		CPRINTS("lid already open");
@@ -69,7 +69,7 @@ static void lid_switch_open(void)
 /**
  * Handle lid close.
  */
-static void lid_switch_close(void)
+void lid_switch_close(void)
 {
 	if (!debounced_lid_open) {
 		CPRINTS("lid already closed");

@@ -25,24 +25,22 @@ enum ServiceState {
   HAS_RESPONSE,
 };
 
-inline constexpr auto kTransportFsmConfig = pw::fsm::MakeFsmConfig(
+inline constexpr pw::fsm::FsmConfig kTransportFsmConfig(
     ServiceState::IDLE,
-    std::to_array({
-        pw::fsm::Transition<ServiceState>(ServiceState::IDLE,
-                                          ServiceState::HAS_STATUS),
-        pw::fsm::Transition<ServiceState>(
-            ServiceState::IDLE, ServiceState::HAS_STATUS_AND_RESPONSE),
-        pw::fsm::Transition<ServiceState>(ServiceState::HAS_STATUS,
-                                          ServiceState::IDLE),
-        pw::fsm::Transition<ServiceState>(
-            ServiceState::HAS_STATUS, ServiceState::HAS_STATUS_AND_RESPONSE),
-        pw::fsm::Transition<ServiceState>(ServiceState::HAS_STATUS_AND_RESPONSE,
-                                          ServiceState::HAS_RESPONSE),
-        pw::fsm::Transition<ServiceState>(ServiceState::HAS_RESPONSE,
-                                          ServiceState::HAS_STATUS),
-        pw::fsm::Transition<ServiceState>(ServiceState::HAS_RESPONSE,
-                                          ServiceState::IDLE),
-    }));
+    pw::fsm::Transition<ServiceState>(ServiceState::IDLE,
+                                      ServiceState::HAS_STATUS),
+    pw::fsm::Transition<ServiceState>(ServiceState::IDLE,
+                                      ServiceState::HAS_STATUS_AND_RESPONSE),
+    pw::fsm::Transition<ServiceState>(ServiceState::HAS_STATUS,
+                                      ServiceState::IDLE),
+    pw::fsm::Transition<ServiceState>(ServiceState::HAS_STATUS,
+                                      ServiceState::HAS_STATUS_AND_RESPONSE),
+    pw::fsm::Transition<ServiceState>(ServiceState::HAS_STATUS_AND_RESPONSE,
+                                      ServiceState::HAS_RESPONSE),
+    pw::fsm::Transition<ServiceState>(ServiceState::HAS_RESPONSE,
+                                      ServiceState::HAS_STATUS),
+    pw::fsm::Transition<ServiceState>(ServiceState::HAS_RESPONSE,
+                                      ServiceState::IDLE));
 static_assert(kTransportFsmConfig.IsValid());
 }  // namespace impl
 

@@ -20,11 +20,20 @@ config PLATFORM_EC_DSP_CLIENT_REMOTE_CBI
 	bool "DSP client implements local CBI read operations"
 	default y if !TEST
 	depends on PLATFORM_EC_DSP_CLIENT
+	depends on PLATFORM_EC_CBI
 	help
 	  When enabled, functions such as cbi_get_board_info() will be routed
 	  to the DSP client instead of their local implementation. The
 	  Kconfig is needed to allow tests which implement both the
 	  client and the service to function.
+
+config PLATFORM_EC_DSP_CLIENT_REMOTE_LID_ANGLE
+	bool "DSP client notifies tablet/clamshell modes based on lid angle"
+	default y if !TEST
+	depends on PLATFORM_EC_DSP_CLIENT
+	help
+	  When enabled, the DSP client will call remote_lid_angle_peripheral_enable()
+	  based on the lid_angle_peripheral_enable() calls.
 
 config PLATFORM_EC_DSP_CLIENT_TIMEOUT_MS
 	int "Milliseconds to timeout waiting for the service response"
