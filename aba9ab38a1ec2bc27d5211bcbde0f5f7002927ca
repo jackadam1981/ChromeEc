@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a340e801_6daa2abc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-10-07T15:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f921712_fbe2e16c",
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64612cc4_78a40aac",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-07T15:05:20Z",
       "side": 1,
       "message": "Nit - line too long (and others). Needs a pass by a formatter.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 189
+      },
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1000612a_a10d23f1",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-10-07T15:35:55Z",
+      "side": 1,
+      "message": "weird, thought `cros format` would handle this, it doesn\u0027t, went through the whole file wrapped everything but tables and links",
+      "parentUuid": "64612cc4_78a40aac",
       "range": {
         "startLine": 140,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fbc950_a04f271f",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-10-07T15:35:55Z",
+      "side": 1,
+      "message": "ah good point, expanded to the whole setup, no point saving 5 lines or someting",
+      "parentUuid": "b82d7c17_7cc90ae0",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 36
+      },
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92db2b01_4fcd4f74",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-10-07T15:05:20Z",
       "side": 1,
       "message": "Missing trailing backtick.\n\nThe usage column for the `kbpress`, `input dump` and `input kbd_matrix_state_dump` rows didn\u0027t render correctly.",
+      "range": {
+        "startLine": 213,
+        "startChar": 52,
+        "endLine": 213,
+        "endChar": 77
+      },
+      "revId": "aba9ab38a1ec2bc27d5211bcbde0f5f7002927ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4a6b86_24083aca",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-10-07T15:35:55Z",
+      "side": 1,
+      "message": "thanks, fixed",
+      "parentUuid": "92db2b01_4fcd4f74",
       "range": {
         "startLine": 213,
         "startChar": 52,
