@@ -706,24 +706,30 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
 		for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
 			/* Skip this port if it is not valid. */
-			if (!is_valid_port(j))
+			if (!is_valid_port(j)) {
+				CPRINTS("port %d not valid", j);
 				continue;
+			}
 
 			/*
 			 * Skip this supplier if there is no
 			 * available charge.
 			 */
 			if (available_charge[i][j].current == 0 ||
-			    available_charge[i][j].voltage == 0)
+			    available_charge[i][j].voltage == 0) {
+				CPRINTS("s%d, p%d VorI = 0", i, j);
 				continue;
+			}
 
 			/*
 			 * Don't select this port if we have a
 			 * charge on another override port.
 			 */
 			if (override_port != OVERRIDE_OFF &&
-			    override_port == port && override_port != j)
+			    override_port == port && override_port != j) {
+				CPRINTS("Don't select this, we have another override port");
 				continue;
+			}
 
 #ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 			/*
@@ -732,11 +738,14 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			 */
 			if (dualrole_capability[j] != CAP_DEDICATED &&
 			    override_port != j &&
-			    !charge_manager_spoof_dualrole_capability())
+			    !charge_manager_spoof_dualrole_capability()) {
+				CPRINTS("Don't charge from a dual-role port");
 				continue;
+			}
 #endif
 
 			candidate_port_power = POWER(available_charge[i][j]);
+			CPRINTS("candidate pwr%d", candidate_port_power);
 
 			/* Select DPS port if provided. */
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) &&
@@ -745,6 +754,7 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			    j == dps_get_charge_port()) {
 				supplier = i;
 				port = j;
+				CPRINTS("Select DPS port %d", j);
 				break;
 				/* Select if no supplier chosen yet. */
 			} else if (supplier == CHARGE_SUPPLIER_NONE ||
@@ -772,6 +782,7 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 				supplier = i;
 				port = j;
 				best_port_power = candidate_port_power;
+				CPRINTS("Select prio or high pwr port%d", j);
 			}
 		}
 	}
@@ -839,6 +850,7 @@ static void charge_manager_refresh(void)
 		 * to switch to the port.
 		 */
 		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
+			CPRINTS("board set active chg port SUCCESS");
 			if (IS_ENABLED(CONFIG_EXTPOWER))
 				board_check_extpower();
 			break;
@@ -890,11 +902,15 @@ static void charge_manager_refresh(void)
 #endif /* CONFIG_CHARGE_RAMP_HW */
 		/* Enforce port charge ceiling. */
 		ceil = charge_manager_get_ceil(new_port);
+		//CPRINTS("chg mngr get  %d", );//5V3A: -11mA?
+
 		if (left_safe_mode && ceil != CHARGE_CEIL_NONE)
 			new_charge_current =
 				MIN(ceil, new_charge_current_uncapped);
 		else
 			new_charge_current = new_charge_current_uncapped;
+
+		CPRINTS("ceil i%d, new i%d, new uncapped i%d", ceil, new_charge_current, new_charge_current_uncapped);
 
 		new_charge_voltage =
 			available_charge[new_supplier][new_port].voltage;
@@ -1764,6 +1780,8 @@ __overridable void board_set_charge_limit(int port, int supplier, int charge_ma,
 					  int max_ma, int charge_mv)
 {
 #if defined(CONFIG_CHARGER) && defined(CONFIG_BATTERY)
-	charge_set_input_current_limit(charge_ma, charge_mv);
+	int ret;
+	ret = charge_set_input_current_limit(charge_ma, charge_mv);
+	CPRINTS("chg set input current limit ret%d", ret);
 #endif
 }
