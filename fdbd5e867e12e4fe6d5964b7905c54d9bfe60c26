@@ -217,6 +217,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7ba3727_f66cf0a9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-07T16:07:44Z",
+      "side": 1,
+      "message": "Which board are you using? The battery charger driver in the EC may have an internal minimum input current limit. Here is an example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-helipilot/ec/driver/charger/bd9995x.c;l\u003d629.",
+      "parentUuid": "9bbccf24_753373f4",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
