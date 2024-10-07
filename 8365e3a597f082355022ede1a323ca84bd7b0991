@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b131ec_6925129b",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-07T15:26:57Z",
+      "side": 1,
+      "message": "This `else if` is now redundant.",
+      "revId": "8365e3a597f082355022ede1a323ca84bd7b0991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
