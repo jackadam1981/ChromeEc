@@ -366,7 +366,7 @@ def main(args):
     Additionally, the tool reports build metrics.
     """
     opts = zephyr.scripts.firmware_builder_lib.parse_args(
-        args, build, bundle, test
+        args, build, bundle, test, check_inherits=None
     )
 
     if not hasattr(opts, "func"):

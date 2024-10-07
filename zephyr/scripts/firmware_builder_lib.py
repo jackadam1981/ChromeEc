@@ -8,7 +8,7 @@ import argparse
 import multiprocessing
 
 
-def parse_args(args, build, bundle, test):
+def parse_args(args, build, bundle, test, check_inherits):
     """Parse all command line args and return opts dict."""
     parser = argparse.ArgumentParser(description=__doc__)
 
@@ -67,5 +67,12 @@ def parse_args(args, build, bundle, test):
 
     test_cmd = sub_cmds.add_parser("test", help="Runs all firmware unit tests")
     test_cmd.set_defaults(func=test)
+
+    if check_inherits:
+        check_inherits_cmd = sub_cmds.add_parser(
+            "check_inherits",
+            help="Checks the inherited_from values against Boxster",
+        )
+        check_inherits_cmd.set_defaults(func=check_inherits)
 
     return parser.parse_args(args)
