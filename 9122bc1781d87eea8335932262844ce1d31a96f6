@@ -22,6 +22,30 @@
       },
       "revId": "9122bc1781d87eea8335932262844ce1d31a96f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8834cc_cd4685ef",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-08T15:56:55Z",
+      "side": 1,
+      "message": "Yeah, it does make it a bit more obvious when a board is missing.\n\nI can\u0027t think of a great solution, though it would probably be good to document these lists in the \"sensor bringup\" documentation.\n\n@fsammoura@google.com",
+      "parentUuid": "ed9e1023_ae110aba",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "9122bc1781d87eea8335932262844ce1d31a96f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
