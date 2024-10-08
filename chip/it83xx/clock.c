@@ -387,7 +387,18 @@ static void clock_event_timer_clock_change(enum ext_timer_clock_source clock,
 	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) &= ~BIT(0);
 	IT83XX_ETWD_ETXPSR(EVENT_EXT_TIMER) = clock;
 	IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) = count;
-	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= 0x3;
+	/* enable timer (enable clock input source for timer) */
+	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= BIT(0);
+	/* force timer to re-start */
+	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= BIT(1);
+
+	/* Wait for one clock of 32.768khz to ensure new count takes effect. */
+	if (clock == EXT_PSR_32P768K_HZ) {
+		/* delay ~15.25us */
+		IT83XX_GCTRL_WNCKR = 0;
+		/* delay ~15.25us */
+		IT83XX_GCTRL_WNCKR = 0;
+	}
 }
 
 static void clock_htimer_enable(void)
@@ -400,6 +411,12 @@ static void clock_htimer_enable(void)
 #else
 	c = TIMER_CNT_8M_32P768K(IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER));
 #endif
+	if (c * 30 > HOOK_TICK_INTERVAL) {
+		ccprintf("!!! event timer overflow? !!! %d\n", c);
+		/* Wake up ec immediately after entering low power mode. */
+		c = 1;
+	}
+
 	clock_event_timer_clock_change(EXT_PSR_32P768K_HZ, c);
 }
 
