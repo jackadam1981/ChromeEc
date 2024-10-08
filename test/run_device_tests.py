@@ -443,7 +443,6 @@ class Renode(Platform):
                 "fpsensor_hw",
                 "libcxx",
                 "power_utilization",
-                "rtc_stm32f4",
                 "timer_dos",  # TODO(b/374798079)
             ]:
                 return True
