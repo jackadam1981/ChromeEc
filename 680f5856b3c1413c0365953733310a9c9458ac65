@@ -16,6 +16,24 @@
       "message": "remove gyro never used in S3.",
       "revId": "680f5856b3c1413c0365953733310a9c9458ac65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2356d6_d95b9003",
+        "filename": "zephyr/program/corsola/kyogre/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-08T06:36:10Z",
+      "side": 1,
+      "message": "I\u0027m a little confused. Before you mentioned active-mask \u003d \"SENSOR_ACTIVE_S0_S3\" should be remained. If I remove the ec-s3{ec-rate \u003d \u003c(100 * USEC_PER_MSEC)\u003e} for gyro, the following condition on motion_sensor_in_forced_mode() returns false.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/common/motion_sense.c#134\nreturn (sensor-\u003econfig[cfg_index].ec_rate \u003e 0) || (sensor-\u003econfig[cfg_index].odr \u003d\u003d 0);\n\nIn this case, I assume the gyro runs with IRQ mode during S3 state. It causes WDT issue.\nShould I set active-mask \u003d \"SENSOR_ACTIVE_S0\" for gyro?",
+      "parentUuid": "1fe61351_e4bd4614",
+      "revId": "680f5856b3c1413c0365953733310a9c9458ac65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
