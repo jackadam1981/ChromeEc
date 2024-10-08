@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e119f2e4_69da5ad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-08T22:07:13Z",
+      "side": 1,
+      "message": "FYI: for the `firmware-ec-renode-cq` failure, I am disabling the tests that are flaky here: https://crrev.com/c/5917716. Sorry for the breakage.",
+      "revId": "32bcc37b491357c14e40326ce7c852c41e028bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
