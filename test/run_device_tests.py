@@ -462,10 +462,6 @@ class Renode(Platform):
                     "zephyr_counter_basic_api_stm32_subsec",
                 ]:
                     return True
-            if test_name in [
-                "rtc_stm32f4",  # TODO(b/384991107)
-            ]:
-                return True
         elif board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]:
             if test_name in [
                 "exception",  # TODO(b/384730599)
