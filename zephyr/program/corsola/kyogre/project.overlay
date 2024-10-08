@@ -28,7 +28,6 @@
 		 * its own <>_INT_EVENT.
 		 */
 		lsm6dso-int = &base_accel;
-		lis2dw12-int = &lid_accel;
 	};
 
 	gpio-interrupts {
@@ -40,11 +39,18 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lsm6dso_interrupt";
 		};
+<<<<<<< HEAD   (6ecc03 skitty: Modify LED default brightness range)
 
 		int_lid_imu: lid_imu {
 			irq-pin = <&lid_accel_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lis2dw12_interrupt";
+=======
+		int_pen_fault: pen_fault {
+			irq-pin = <&pen_fault_od>;
+			flags = <GPIO_INT_EDGE_RISING>;
+			handler = "pen_fault_interrupt";
+>>>>>>> CHANGE (f8ceac kyogre: re-design sensor settings and gyro active mask)
 		};
 	};
 
@@ -112,12 +118,10 @@
 				compatible =
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <(100 * USEC_PER_MSEC)>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <0>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 			};
 		};
@@ -137,12 +141,10 @@
 				compatible =
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <(100 * USEC_PER_MSEC)>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-					ec-rate = <0>;
+					odr = <(12500 | ROUND_UP_FLAG)>;
 				};
 			};
 		};
@@ -169,10 +171,9 @@
 		 * list of GPIO interrupts that have to
 		 * be enabled at initial stage
 		 */
-		/delete-property/ sensor-irqs;
-
+		sensor-irqs = <&int_base_imu>;
 		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&lid_accel &base_accel>;
+		accel-force-mode-sensors = <&lid_accel>;
 	};
 
 	/* Rotation matrix used by drivers. */
