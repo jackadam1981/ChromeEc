@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1917a684_c07cbf62",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-08T15:21:10Z",
+      "side": 1,
+      "message": "The MECC 2.1 connector pinout shows that these signals are available as GPIOs.  Are they not connected on the AIC?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "98da8e9cb8a6448852121d0ab5103f321e495b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
