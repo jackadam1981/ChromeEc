@@ -135,7 +135,7 @@
 			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_en_z1_rails: en_z1_rails {
-			gpios = <&gpio8 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpio8 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
 		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
 			gpios = <&gpioc 6 (GPIO_INPUT | GPIO_PULL_UP)>;
