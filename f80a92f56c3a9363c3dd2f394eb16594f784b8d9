@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3faecd0_1691bbaf",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-08T17:51:44Z",
+      "side": 1,
+      "message": "Looks like buccaneer and helipilot don\u0027t pass all the tests yet, so I\u0027m removing those for now.\n\nI\u0027ll have to set up more test exclusions for those boards so we\u0027re only testing the passing tests for now.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "f80a92f56c3a9363c3dd2f394eb16594f784b8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
