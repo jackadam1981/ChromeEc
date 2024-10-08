@@ -253,6 +253,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40f3b481_04db52a2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-08T16:22:10Z",
+      "side": 1,
+      "message": "\u003e Change to call pd_set_input_current_limit() to 1mA, then run TEST.PD.PS.SNK.1:\nFail the test, after PS_RDY, we draw current 60-90mA (\u003e pSnkSusp 25mW)\n\nWhat does \u0027chgsup\u0027 command say?\n\nSince your CL works, I think there is no minimum current limit statically enforced internally or externally. Thus, if the charge manager is working as expected, I still believe setting limit to 1 mA should make the charge manager choose the PD as a source. In other words, a call to typec_set_input_current_limit in your pd_sink_stop_drawing_current isn\u0027t needed because the charege manager selects the PD port because of the PD\u0027s priority is higher than TC\u0027s.\n\n[This](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_manager.c;l\u003d683) is the code I\u0027m referring to. You might as well add printfs and see what\u0027s happening there?",
+      "parentUuid": "a47d0100_8481e91c",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
