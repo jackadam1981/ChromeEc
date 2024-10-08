@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ed8556_7f9a6c92",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-08T16:17:06Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "8dea2a14_d58e72d1",
+      "revId": "4daca5359816150d35dbe08511b5878ff997b980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79424922_a12e510d",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-10-04T20:21:53Z",
       "side": 1,
       "message": "It\u0027s a union -- shouldn\u0027t need to do sizeof() on the raw_value.",
+      "revId": "4daca5359816150d35dbe08511b5878ff997b980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6305a434_87d3e026",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-08T16:17:06Z",
+      "side": 1,
+      "message": "Switched to sizeof just the attention vdo",
+      "parentUuid": "79424922_a12e510d",
       "revId": "4daca5359816150d35dbe08511b5878ff997b980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
