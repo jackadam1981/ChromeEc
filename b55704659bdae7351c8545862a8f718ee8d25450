@@ -16,6 +16,24 @@
       "message": "IIRC, there was a CL for this purpose that could be reverted, am I right?",
       "revId": "b55704659bdae7351c8545862a8f718ee8d25450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ebd40c_ddfe3048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-08T17:49:45Z",
+      "side": 1,
+      "message": "Yes, this is just a revert of https://crrev.com/c/5858779. There\u0027s nothing inherently special about a revert, other than you can add metadata to the commit that says \"This is a revert of commit XYZ\".",
+      "parentUuid": "4b9c0f88_1c97e967",
+      "revId": "b55704659bdae7351c8545862a8f718ee8d25450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
