@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed9d23e_452448b7",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-08T22:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac7f615_1349d265",
+      "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f97c52_1542047d",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-10-02T15:10:04Z",
       "side": 1,
       "message": "So BIT(30) is division and BIT(3) is watchdog warning? Please describe with comments.",
+      "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc218e4_9d866f0b",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-08T22:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f97c52_1542047d",
       "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc91de21_d8ca754c",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-08T22:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5467b3d9_252db5b0",
+      "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f106e1a_0f2ce4db",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "134ec92f_89925daa",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-08T22:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f106e1a_0f2ce4db",
+      "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75f601f4_2c4bca19",
@@ -99,6 +171,24 @@
       "writtenOn": "2024-10-02T15:10:04Z",
       "side": 1,
       "message": "A group3_mask would make this more consistent.",
+      "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1116ff91_007b36ea",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-08T22:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75f601f4_2c4bca19",
       "revId": "746e8a30ff946146d387422a7be6d8f469f87dc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
