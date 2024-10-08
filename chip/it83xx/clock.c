@@ -400,6 +400,12 @@ static void clock_htimer_enable(void)
 #else
 	c = TIMER_CNT_8M_32P768K(IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER));
 #endif
+	if (c * 30 > HOOK_TICK_INTERVAL) {
+		ccprintf("!!! event timer overflow? !!! %d\n", c);
+		/* Wake up ec immediately after entering low power mode. */
+		c = 1;
+	}
+
 	clock_event_timer_clock_change(EXT_PSR_32P768K_HZ, c);
 }
 
