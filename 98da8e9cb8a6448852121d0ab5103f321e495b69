@@ -22,6 +22,30 @@
       },
       "revId": "98da8e9cb8a6448852121d0ab5103f321e495b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4f1ccc_0424fe55",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-08T18:53:27Z",
+      "side": 1,
+      "message": "the ptlrvp inherits these configs from `intelrvp/prj.conf`.\nas a starting point, i\u0027d like to mimic the ptlrvp configs\nhere to the extent feasible.",
+      "parentUuid": "1917a684_c07cbf62",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "98da8e9cb8a6448852121d0ab5103f321e495b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
