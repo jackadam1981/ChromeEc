@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07650250_268c305e",
+        "filename": "zephyr/program/trulo/trulo/src/touch_panel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-08T22:12:14Z",
+      "side": 1,
+      "message": "do you need to worry about cancelling a pending deferred call?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "f25b4de0f67b64b9f7ea84c9131d2a42e830db50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
