@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7e2055_e8525f1d",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-08T16:49:34Z",
+      "side": 1,
+      "message": "1. 1 : incorrect parameter\n2. 2 : memody memory fail\n3. 4 : can not detedt sensor\n4. 99: sensor need reset\n5. 100 : spi transfer fail\n6. 106 : sensor do sensinf mode calibration fail\n7. 107 : sensor do detect  mode calibration fail\n8. 108 : get sensor\u0027s OTP FAIL\n9. 110 : sensor detect over current happen and cut off power of sensing area",
+      "revId": "fbce925edd5a3bbe15c7d417df69caecb02ee248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a012eefe_55e64749",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-08T16:49:34Z",
+      "side": 1,
+      "message": "current return error code in this function will be\n\n1. 2 : alloc momory fail\n2. 128 : incorrect parameter\n3. 256 : alloc momory fail",
+      "revId": "fbce925edd5a3bbe15c7d417df69caecb02ee248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a413034b_c36e071c",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-08T16:49:34Z",
+      "side": 1,
+      "message": "current return error code in this function will be\n1. 2   : alloc momory fail\n2. 128 : incorrect parameter\n3. 256 : alloc momory fail",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "fbce925edd5a3bbe15c7d417df69caecb02ee248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
