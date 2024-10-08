@@ -34,6 +34,24 @@
       "parentUuid": "1fe61351_e4bd4614",
       "revId": "680f5856b3c1413c0365953733310a9c9458ac65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e408f24_fae2aa90",
+        "filename": "zephyr/program/corsola/kyogre/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-08T06:46:51Z",
+      "side": 1,
+      "message": "\u003e In this case, I assume the gyro runs with IRQ mode during S3 state. It causes WDT issue.\n\n`motion_sensor_in_forced_mode()` will always by `true`, because ODR is always 0 in S3. So `enable_interrupt` in `motion_sense_handle_interrupt_change()` will always be `false`.",
+      "parentUuid": "7c2356d6_d95b9003",
+      "revId": "680f5856b3c1413c0365953733310a9c9458ac65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
