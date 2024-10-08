@@ -16,6 +16,24 @@
       "message": "This `else if` is now redundant.",
       "revId": "8365e3a597f082355022ede1a323ca84bd7b0991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fecbaefc_efcd5d54",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-10-08T00:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b131ec_6925129b",
+      "revId": "8365e3a597f082355022ede1a323ca84bd7b0991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
