@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ab57de5_e70cbe56",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-10-08T03:05:50Z",
+      "side": 1,
+      "message": "Hi Mike,\n\nPD_DATA_BIST has three subset mode, so it also needs to configure the  payload[0]: BIT[31:28] \u003d\u003d 1000b.",
+      "range": {
+        "startLine": 351,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 43
+      },
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c59c39b3_dbca8b3b",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 11
