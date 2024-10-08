@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8050f046_825ad260",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-08T15:22:52Z",
+      "side": 1,
+      "message": "Don\u0027t we plan to use the keyboard connector directly on the AIC?  The IT8801 keyboard is meant for use by the Microchip EC.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "2c44e1ec81907a0ec2cf985069fa9ae07b31effe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
