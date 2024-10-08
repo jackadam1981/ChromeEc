@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdbb51ae_6bb912a9",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-08T16:16:18Z",
+      "side": 1,
+      "message": "current version, this function would not return negative values",
+      "parentUuid": "79924aeb_48f80e8b",
+      "revId": "eb7e64a52bbcb288caaf168f88b86da173637883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e61b2ef5_53f3ff9c",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 4
