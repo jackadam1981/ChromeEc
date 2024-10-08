@@ -409,6 +409,29 @@ class Renode(Platform):
                 "std_vector",
             ]:
                 return True
+        elif board_config.name in [HELIPILOT, BUCCANEER]:
+            if test_name in [
+                "production_app_test",
+                "benchmark",
+                "fpsensor_hw",
+                "libcxx",
+                "mpu",
+                "power_utilization",
+                "std_vector",
+                "exception",
+                "exit",
+                "flash_physical",
+                "flash_write_protect",
+                "fpsensor_auth_crypto_stateless",
+                "ftrapv",
+                "malloc",
+                "rollback_region0",
+                "rollback_region1",
+                "sbrk",
+                "system_is_locked_wp_off",
+                "unaligned_access_benchmark",
+            ]:
+                return True
 
         return False
 
