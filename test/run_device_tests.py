@@ -410,7 +410,6 @@ class Renode(Platform):
                 "fpsensor_hw",
                 "libcxx",
                 "power_utilization",
-                "rtc_stm32f4",
                 "std_vector",
             ]:
                 return True

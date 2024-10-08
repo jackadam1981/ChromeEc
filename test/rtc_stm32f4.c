@@ -4,6 +4,7 @@
  */
 
 #include "clock_chip.h"
+#include "system.h"
 #include "test_util.h"
 
 static uint32_t rtc_fired;
@@ -78,10 +79,20 @@ test_static int test_rtc_match_delay(void)
 
 void run_test(int argc, const char **argv)
 {
+	/*
+	 * Disable the ability to enter sleep for the duration of the test.
+	 * This is needed because the sleep routines use the RTC alarm that is
+	 * used in this test, causing the once alarm to be used for two
+	 * purposes.
+	 */
+	disable_sleep(SLEEP_MASK_AP_RUN);
+
 	test_reset();
 
 	RUN_TEST(test_rtc_alarm);
 	RUN_TEST(test_rtc_match_delay);
 
 	test_print_result();
+
+	enable_sleep(SLEEP_MASK_AP_RUN);
 }
