@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301ddb7a_4d1e1651",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\nWhere do I find the egis codes for these numbers?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 79
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dca447cd_94c79dbb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 78,
+                "endChar": 0
+              },
+              "replacement": " * @return @c 0 : on success.\n * @return @c 1 : incorrect parameter.\n * @return @c 2 : memody memory fail.\n * @return @c 4 : can not detedt sensor.\n * @return @c 99: sensor need reset.\n * @return @c 100 : spi transfer fail.\n * @return @c 106 : sensor do sensinf mode calibration fail.\n * @return @c 107 : sensor do detect mode calibration fail.\n * @return @c 108 : get sensor\u0027s OTP FAIL.\n * @return @c 110 : sensor detect over current happen and cut off power of sensing\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 86,
+                "endChar": 0
+              },
+              "replacement": " * @return @c 0 : on success.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 103,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": " * @return @c 0 : on success.\n * @return @c 2 : alloc memory fail\n * @return @c 128 : incorrect parameter\n * @return @c 256 : alloc memory fail\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 120,
+                "endChar": 0
+              },
+              "replacement": " * @return @c 0 : on success.\n * @return @c 2 : alloc memory fail.\n * @return @c 128 : incorrect parameter.\n * @return @c 256 : alloc memory fail.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa79d602_36572d8f",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\nWhat are the return codes for this function?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "07562ec6_5bf5e9cd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 89,
+                "endChar": 0
+              },
+              "replacement": "int egis_sensor_deinit(void);  // NOLINT(modernize-redundant-void-arg)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f14054b_1fe50259",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\n2 is EGIS_OUT_OF_MEMORY\nhow about 128 and 256. I could not find them. I do not see that the function returns those error codes. Can you please explain?",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b8f45346_90ba5845",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 117,
+                "startChar": 0,
+                "endLine": 118,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18cc83f5_87e483e2",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\nCan you please explain more `EGIS_API_FINGER_UNSTABLE` and difference between `EGIS_API_FINGER_UNSTABLE` and `EGIS_API_FINGER_LOST`?\n\nThe errors int values are 5, 6, 7, and 8\n\nI do not see `EGIS_API_FINGER_PARTIAL` in the @return. Did we make a mistake?",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c228428c_642ef125",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 136,
+                "startChar": 0,
+                "endLine": 137,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_API_FINGER_UNSTABLE when the finger is unstable.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

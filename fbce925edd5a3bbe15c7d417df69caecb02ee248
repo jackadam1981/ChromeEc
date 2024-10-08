@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2db173_6f9b26e4",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7e2055_e8525f1d",
+      "revId": "fbce925edd5a3bbe15c7d417df69caecb02ee248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a012eefe_55e64749",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48e7415_1a799e36",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a012eefe_55e64749",
+      "revId": "fbce925edd5a3bbe15c7d417df69caecb02ee248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a413034b_c36e071c",
@@ -48,6 +84,30 @@
       "writtenOn": "2024-10-08T16:49:34Z",
       "side": 1,
       "message": "current return error code in this function will be\n1. 2   : alloc momory fail\n2. 128 : incorrect parameter\n3. 256 : alloc momory fail",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "fbce925edd5a3bbe15c7d417df69caecb02ee248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f13d49_0bbe49be",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-08T18:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a413034b_c36e071c",
       "range": {
         "startLine": 108,
         "startChar": 4,
