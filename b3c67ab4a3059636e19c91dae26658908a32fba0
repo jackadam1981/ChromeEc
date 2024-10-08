@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be75855d_dd84dfe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-08T03:52:17Z",
+      "side": 1,
+      "message": "Update:\n\n* Remove lid_imu, not present on this board.\n* Set base_imu in interrupt mode\n* ec-rate for accelerometer not needed anymore.",
+      "revId": "b3c67ab4a3059636e19c91dae26658908a32fba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51979d1_fe8f478d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-08T03:52:17Z",
+      "side": 1,
+      "message": "nit commit message.",
+      "revId": "b3c67ab4a3059636e19c91dae26658908a32fba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
