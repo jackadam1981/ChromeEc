@@ -40,6 +40,30 @@
       },
       "revId": "314ef4563bba184c75db948e3c4bf71eb949ca76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c05189_01f4d5af",
+        "filename": "core/nds32/ec.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-09T04:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28d43fc9_acfa0641",
+      "range": {
+        "startLine": 89,
+        "startChar": 17,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "314ef4563bba184c75db948e3c4bf71eb949ca76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
