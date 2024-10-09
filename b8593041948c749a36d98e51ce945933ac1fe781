@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62cb07d_122317ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T11:44:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccead69e_c0a4df2b",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfcffa93_3ff9768f",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d4140b_f54b9a90",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T11:44:10Z",
+      "side": 1,
+      "message": "Lazor (and maybe all Trogdor family) is TCPMv2 + PD2.0.",
+      "parentUuid": "dfcffa93_3ff9768f",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7ed67b1_0718068c",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-10-07T22:02:13Z",
       "side": 1,
       "message": "If `pd_rmdo` were a defined structure, then this could be `sizeof(struct pd_rmdo`, which would be more obviously correct.",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab715b9f_d45b469f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 8344,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T11:44:10Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "d7ed67b1_0718068c",
       "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c36392_0a76f546",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T11:44:10Z",
+      "side": 1,
+      "message": "I would not recommanded this because order of bit field is implementation defined.\n(https://gcc.gnu.org/onlinedocs/gcc/Structures-unions-enumerations-and-bit-fields-implementation.html)\n\nBut I just found that we already have a rmdo struct in usb_pd.h. So I\u0027ll use that instead.",
+      "parentUuid": "f95eebe5_02dc166c",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44767641_c2ff7b61",
@@ -100,6 +172,24 @@
       "writtenOn": "2024-10-07T22:02:13Z",
       "side": 1,
       "message": "For test-passing purposes, this is fine. The 2024 Q3 CTS is targeting PD 3.1, but it\u0027s just checking against the VIF. For purposes of this particular test, we could put whatever we want here and change the VIF. I don\u0027t think we can set it any lower than this. But if we can set it to r3.2 v1.0 and not cause any problems, then we probably should. Where practical, we should aim for the most current spec.",
+      "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19fb407e_db63663b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T11:44:10Z",
+      "side": 1,
+      "message": "Done, changed to R3.2 V1.0.\nTester seems don\u0027t care about the version as long as it matches the number in VIF.",
+      "parentUuid": "44767641_c2ff7b61",
       "revId": "b8593041948c749a36d98e51ce945933ac1fe781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
