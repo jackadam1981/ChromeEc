@@ -25,6 +25,14 @@
 		tcs3400-int = &als_clear;
 	};
 
+	named-gpios {
+		gpio_ap_in_sleep_l: ap_in_sleep_l {
+			gpios = <&gpiom 2 (GPIO_OUTPUT | GPIO_OPEN_DRAIN |
+			                   GPIO_ACTIVE_LOW |
+					   GPIO_OUTPUT_INIT_HIGH)>;
+		};
+	};
+
 	/* Rotation matrix used by drivers. */
 	motionsense-rotation-ref {
 		compatible = "cros-ec,motionsense-rotation-ref";
