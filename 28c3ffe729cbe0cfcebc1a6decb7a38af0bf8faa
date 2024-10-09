@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "449f738c_120c8904",
+        "filename": "chip/it83xx/hwtimer_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-09T18:59:46Z",
+      "side": 1,
+      "message": "The comment was in the wrong order, which was very confusing",
+      "parentUuid": "c8b3ce9b_bc17696f",
+      "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633368a7_3781f324",
@@ -66,6 +84,24 @@
       "writtenOn": "2024-10-09T16:11:27Z",
       "side": 1,
       "message": "When does group 10 bit0 get enabled? Is it just enabled by default?",
+      "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dabbc3d_a650e3e8",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-09T18:59:46Z",
+      "side": 1,
+      "message": "Right, it is enabled by irq init function. If you search `irq_groups` in irq.c, all those group-to-CPU-interrupt bits are enabled on init",
+      "parentUuid": "633368a7_3781f324",
       "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f42bf74a_90502536",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-09T18:59:46Z",
+      "side": 1,
+      "message": "In my understanding \"symmetrical\" is the other way around: one outer layer and one inner layer, which might be logically split to separate functions. My intention is to\n* disable outer layer\n* disable inner layer\n...\n* enable inner layer\n* enable outer layer\n\nSo enable and disable functions should be in the reverse order.\n\nPlease let me know if that makes sense..",
+      "parentUuid": "e7ba21e4_f0e7034a",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 49
+      },
+      "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "266815e4_2c4b05e7",
         "filename": "core/nds32/task.c",
         "patchSetId": 4
@@ -106,6 +166,24 @@
       "writtenOn": "2024-10-09T16:11:27Z",
       "side": 1,
       "message": "nit: Extend this comment so it\u0027s clear any changes here should be mirrored in interrupt_disable. I would include comments about group 7 not being used too.",
+      "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff0b636_f571d5b1",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-09T18:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266815e4_2c4b05e7",
       "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
