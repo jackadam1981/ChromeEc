@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a6b712_b19ccfd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 30
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T10:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5451e518_c9654218",
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30992235_0a0c69e6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-07T20:55:29Z",
       "side": 1,
       "message": "Nit: This comment references a now-obsolete compliance test and also describes the current code behavior in terms of our plans years ago when this comment was added, which IMO is a bit confusing. I\u0027d suggest, at minimum, updating the compliance test reference. It also seems possible to explain the rationale for each value a bit more directly:\n* TCPMv1: Retain legacy behavior\n* TCPMv2: Ensure that the TCPM actually sends any Hard Reset within the specified range of tSenderResponse.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 3
+      },
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31cadcff_e0c1c633",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T10:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30992235_0a0c69e6",
       "range": {
         "startLine": 254,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e40d322_2c7933c9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T10:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca09bbd_793b6f10",
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf6a0b65_fbd4f93a",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-10-07T20:55:29Z",
       "side": 1,
       "message": "I\u0027m not aware of any specific partner that approaches the upper edge of tSenderResponse (which would be a non-compliant partner), and I don\u0027t see any historical evidence of us increasing this value to improve interop. But I can imagine a partner where decreasing it would worsen interop, and I\u0027m a little curious what is the maximum value that still lets us pass TEST.PD.PROT.SRC.2.",
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd5c24b_ba252c95",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-09T10:56:01Z",
+      "side": 1,
+      "message": "On Navi PD2_T_SENDER_RESPONSE\u003d25ms can pass the test. So theoretically hard reset takes ~7ms on Rauru.\nBut we have slower Corsola / IT81202BX. Still not sure how much I can optimize.",
+      "parentUuid": "cf6a0b65_fbd4f93a",
       "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
