@@ -26,14 +26,8 @@
 extern "C" {
 #endif
 
-/**
- * Extract the 16-bit VID or PID from the 32-bit container in
- * `struct pdc_info_t`
- */
-#define PDC_VIDPID_GET_VID(vidpid) (((vidpid) >> 16) & 0xFFFF)
-#define PDC_VIDPID_GET_PID(vidpid) ((vidpid) & 0xFFFF)
-
-#define PDC_VIDPID_INVALID (0x00000000)
+#define PDC_VID_INVALID (0x0000)
+#define PDC_PID_INVALID (0x0000)
 
 /**
  * Compare PDC versions
@@ -63,8 +57,10 @@ struct pdc_info_t {
 	uint16_t pd_revision;
 	/** Power Delivery Version supported by the PDC */
 	uint16_t pd_version;
-	/** VID:PID of the PDC (optional) */
-	uint32_t vid_pid;
+	/** VID of the PDC (optional) */
+	uint16_t vid;
+	/** PID of the PDC (optional) */
+	uint16_t pid;
 	/** Set to 1 if running from flash code (optional) */
 	uint8_t is_running_flash_code;
 	/** Set to the currently used flash bank (optional) */
@@ -97,16 +93,6 @@ struct pdc_bus_info_t {
 	union {
 		struct i2c_dt_spec i2c;
 	};
-};
-
-/**
- * @brief PDO Source: PDC or Port Partner
- */
-enum pdo_source_t {
-	/** LPM */
-	LPM_PDO,
-	/** Port Partner PDO */
-	PARTNER_PDO,
 };
 
 /**
@@ -673,6 +659,10 @@ static inline int pdc_get_pdos(const struct device *dev,
 	if (api->get_pdos == NULL) {
 		return -ENOSYS;
 	}
+
+	__ASSERT(num_pdos <= GET_PDOS_MAX_NUM,
+		 "GET_PDOS supports a maximum count of " STRINGIFY(
+			 GET_PDOS_MAX_NUM) " PDOs");
 
 	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos, source, pdos);
 }
