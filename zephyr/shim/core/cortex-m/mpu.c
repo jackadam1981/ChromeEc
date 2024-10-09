@@ -72,15 +72,22 @@ static int mpu_add_static_rollback_regions(void)
 	 * create one entry with 256kiB because start address is not aligned to
 	 * it.
 	 */
+
+#ifdef CONFIG_MAPPED_STORAGE
+	uint32_t storage_addr = CONFIG_MAPPED_STORAGE_BASE;
+#else
+	uint32_t storage_addr = CONFIG_FLASH_BASE_ADDRESS;
+#endif
+
 	const struct z_arm_mpu_partition rollback_regions[] = {
 		{
-			.start = CONFIG_FLASH_BASE_ADDRESS +
+			.start = storage_addr +
 				 DT_REG_ADDR(DT_NODELABEL(rollback0)),
 			.size = DT_REG_SIZE(DT_NODELABEL(rollback0)),
 			.attr = K_MEM_PARTITION_P_NA_U_NA,
 		},
 		{
-			.start = CONFIG_FLASH_BASE_ADDRESS +
+			.start = storage_addr +
 				 DT_REG_ADDR(DT_NODELABEL(rollback1)),
 			.size = DT_REG_SIZE(DT_NODELABEL(rollback1)),
 			.attr = K_MEM_PARTITION_P_NA_U_NA,
@@ -105,8 +112,7 @@ static int mpu_add_static_rollback_regions(void)
 	for (int index = 0; index < 7; index++) {
 		MPU->RNR = index;
 		if ((MPU->RBAR & MPU_RBAR_ADDR_Msk) ==
-		    CONFIG_FLASH_BASE_ADDRESS +
-			    DT_REG_ADDR(DT_NODELABEL(rollback0))) {
+		    storage_addr + DT_REG_ADDR(DT_NODELABEL(rollback0))) {
 			mpu_static_rollback_region_id = index;
 			LOG_DBG("Rollback MPU regions start at %d", index);
 			return 0;
