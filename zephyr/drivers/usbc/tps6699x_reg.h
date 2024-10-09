@@ -911,7 +911,7 @@ union reg_port_control {
 		uint8_t unconstrained_power : 1;
 		uint8_t enable_current_monitor : 1;
 		uint8_t sink_control_bit : 1;
-		uint8_t fw_swap_enabled : 1;
+		uint8_t fr_swap_enabled : 1;
 		uint8_t reserved0 : 1;
 
 		/* Bits 24 - 31 */
@@ -1113,7 +1113,7 @@ union reg_active_pdo_contract {
 		uint32_t active_pdo : 32;
 		/* NOTE: The upper 7 bits should be ignored */
 		uint16_t first_pdo_control_bits;
-	} _packed;
+	} __packed;
 	uint8_t raw_value[8];
 };
 

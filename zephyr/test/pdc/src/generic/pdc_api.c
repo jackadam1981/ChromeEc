@@ -347,6 +347,77 @@ ZTEST_USER(pdc_api, test_set_sink_path)
 	}
 }
 
+ZTEST_USER(pdc_api, test_get_current_pdo)
+{
+	uint32_t in = 0x01234567;
+	uint32_t out = 0;
+	int rv;
+
+	rv = emul_pdc_set_current_pdo(emul, in);
+	if (rv == -ENOSYS)
+		ztest_test_skip();
+	zassert_ok(rv);
+
+	rv = emul_pdc_set_cmd_error(emul, true);
+	if (rv != -ENOSYS) {
+		zassert_ok(pdc_get_current_pdo(dev, &out));
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_equal(0, out);
+		emul_pdc_set_cmd_error(emul, false);
+	}
+	zassert_ok(pdc_get_current_pdo(dev, &out));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_equal(in, out, "Got 0x%x, expected 0x%x", out, in);
+}
+
+ZTEST_USER(pdc_api, test_get_current_flash_bank)
+{
+	uint8_t in = 0;
+	uint8_t out = 0xff;
+	int rv;
+
+	rv = emul_pdc_set_current_flash_bank(emul, in);
+	if (rv == -ENOSYS)
+		ztest_test_skip();
+	rv = emul_pdc_set_cmd_error(emul, true);
+	if (rv != -ENOSYS) {
+		zassert_not_ok(pdc_get_current_flash_bank(dev, &out));
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_equal(0xff, out, "Got 0x%x, expected 0x%x", out, 0xff);
+		emul_pdc_set_cmd_error(emul, false);
+	}
+	zassert_ok(rv);
+	zassert_ok(pdc_get_current_flash_bank(dev, &out));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_equal(in, out, "Got 0x%x, expected 0x%x", out, in);
+}
+
+ZTEST_USER(pdc_api, test_is_vconn_sourcing)
+{
+	int i;
+	bool in[] = { false, true, false }, out;
+	int rv;
+
+	rv = emul_pdc_set_cmd_error(emul, true);
+	if (rv != -ENOSYS) {
+		out = false;
+		zassert_ok(emul_pdc_set_vconn_sourcing(emul, true));
+		zassert_ok(pdc_is_vconn_sourcing(dev, &out));
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_equal(false, out, "Got 0x%x, expected 0x%x", out,
+			      false);
+		emul_pdc_set_cmd_error(emul, false);
+	}
+
+	for (i = 0; i < ARRAY_SIZE(in); i++) {
+		zassert_ok(emul_pdc_set_vconn_sourcing(emul, in[i]));
+		zassert_ok(pdc_is_vconn_sourcing(dev, &out));
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_equal(in[i], out, "[%d] Got 0x%x, expected 0x%x", i,
+			      out, in[i]);
+	}
+}
+
 /* TODO(b/345292002): TPS6699x set_frs not implemented */
 #ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_set_frs)
@@ -365,8 +436,6 @@ ZTEST_USER(pdc_api, test_set_frs)
 }
 #endif
 
-/* TODO(b/345292002): TPS6699x pdc_reconnect not implemented */
-#ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api, test_reconnect)
 {
 	uint8_t expected, val;
@@ -377,7 +446,6 @@ ZTEST_USER(pdc_api, test_reconnect)
 	zassert_ok(emul_pdc_get_reconnect_req(emul, &expected, &val));
 	zassert_equal(expected, val);
 }
-#endif
 
 /**
  * @brief Clears the cached PDC FW info struct inside the driver.
@@ -397,14 +465,16 @@ static const struct pdc_info_t info_in1 = {
 	.fw_version = 0x001a2b3c,
 	.pd_version = DT_PROP(ZEPHYR_USER_NODE, pd_version),
 	.pd_revision = DT_PROP(ZEPHYR_USER_NODE, pd_revision),
-	.vid_pid = 0x12345678,
+	.vid = 0x1234,
+	.pid = 0x5678,
 	.project_name = DT_PROP(ZEPHYR_USER_NODE, project_name),
 };
 static const struct pdc_info_t info_in2 = {
 	.fw_version = 0x002a3b4c,
 	.pd_version = DT_PROP(ZEPHYR_USER_NODE, pd_version),
 	.pd_revision = DT_PROP(ZEPHYR_USER_NODE, pd_revision),
-	.vid_pid = 0x9abcdef0,
+	.vid = 0x9abc,
+	.pid = 0xdef0,
 	.project_name = DT_PROP(ZEPHYR_USER_NODE, project_name),
 };
 #else
@@ -413,7 +483,8 @@ static const struct pdc_info_t info_in1 = {
 	.fw_version = 0x001a2b3c,
 	.pd_version = 0xabcd,
 	.pd_revision = 0x1234,
-	.vid_pid = 0x12345678,
+	.vid = 0x1234,
+	.pid = 0x5678,
 	.project_name = "ProjectName",
 };
 
@@ -421,7 +492,8 @@ static const struct pdc_info_t info_in2 = {
 	.fw_version = 0x002a3b4c,
 	.pd_version = 0xef01,
 	.pd_revision = 0x5678,
-	.vid_pid = 0x9abcdef0,
+	.vid = 0x9abc,
+	.pid = 0xdef0,
 	.project_name = "MyProj",
 };
 #endif /* DT_NODE_EXISTS(ZEPHYR_USER_NODE) */
@@ -449,8 +521,11 @@ ZTEST_USER(pdc_api, test_get_info)
 		      info_in1.fw_version, out.fw_version);
 	zassert_equal(info_in1.pd_version, out.pd_version);
 	zassert_equal(info_in1.pd_revision, out.pd_revision);
-	zassert_equal(info_in1.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
-		      info_in1.vid_pid, out.vid_pid);
+	zassert_equal(info_in1.vid, out.vid, "in=0x%X, out=0x%X", info_in1.vid,
+		      out.vid);
+	zassert_equal(info_in1.pid, out.pid, "in=0x%X, out=0x%X", info_in1.pid,
+		      out.pid);
+
 	zassert_mem_equal(info_in1.project_name, out.project_name,
 			  sizeof(info_in1.project_name));
 
@@ -466,8 +541,10 @@ ZTEST_USER(pdc_api, test_get_info)
 		      info_in1.fw_version, out.fw_version);
 	zassert_equal(info_in1.pd_version, out.pd_version);
 	zassert_equal(info_in1.pd_revision, out.pd_revision);
-	zassert_equal(info_in1.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
-		      info_in1.vid_pid, out.vid_pid);
+	zassert_equal(info_in1.vid, out.vid, "in=0x%X, out=0x%X", info_in1.vid,
+		      out.vid);
+	zassert_equal(info_in1.pid, out.pid, "in=0x%X, out=0x%X", info_in1.pid,
+		      out.pid);
 	zassert_mem_equal(info_in1.project_name, out.project_name,
 			  sizeof(info_in1.project_name));
 
@@ -482,8 +559,10 @@ ZTEST_USER(pdc_api, test_get_info)
 		      info_in2.fw_version, out.fw_version);
 	zassert_equal(info_in2.pd_version, out.pd_version);
 	zassert_equal(info_in2.pd_revision, out.pd_revision);
-	zassert_equal(info_in2.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
-		      info_in2.vid_pid, out.vid_pid);
+	zassert_equal(info_in2.vid, out.vid, "in=0x%X, out=0x%X", info_in2.vid,
+		      out.vid);
+	zassert_equal(info_in2.pid, out.pid, "in=0x%X, out=0x%X", info_in2.pid,
+		      out.pid);
 	zassert_mem_equal(info_in2.project_name, out.project_name,
 			  sizeof(info_in2.project_name));
 }
@@ -655,8 +734,10 @@ ZTEST_USER(pdc_api_suspended, test_get_info)
 		      info_in1.fw_version, out.fw_version);
 	zassert_equal(info_in1.pd_version, out.pd_version);
 	zassert_equal(info_in1.pd_revision, out.pd_revision);
-	zassert_equal(info_in1.vid_pid, out.vid_pid, "in=0x%X, out=0x%X",
-		      info_in1.vid_pid, out.vid_pid);
+	zassert_equal(info_in1.vid, out.vid, "in=0x%X, out=0x%X", info_in1.vid,
+		      out.vid);
+	zassert_equal(info_in1.pid, out.pid, "in=0x%X, out=0x%X", info_in1.pid,
+		      out.pid);
 	zassert_mem_equal(info_in1.project_name, out.project_name,
 			  sizeof(info_in1.project_name));
 }
