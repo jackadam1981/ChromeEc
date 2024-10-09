@@ -366,8 +366,8 @@ The following commands will enable software write protection:
 ```bash
 (dut) $ ectool --name=cros_fp flashprotect enable    # enable
 (dut) $ sleep 2
-(dut) $ ectool --name=cros_fp reboot_ec              # reboot so it takes effect
-(dut) $ sleep 2
+# reboot so it takes effect
+(dut) $ ectool --name=cros_fp waitevent HOST_EVENT 2000 waitevent HOST_EVENT 2000 reboot_ec
 ```
 
 To validate that software write protection has taken effect, run the following:
