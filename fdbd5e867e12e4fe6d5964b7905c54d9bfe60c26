@@ -271,6 +271,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dde8feb7_cdfb8eb4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-10-09T10:10:24Z",
+      "side": 1,
+      "message": "\u003e What does \u0027chgsup\u0027 command say?\n\nAs previous experiment result, the draw current issue can be reproduced when connected to adapter. I set `pe[port].curr_limit \u003d 1` in usb_pe_drp_sm.c line 3766 of patchset5, then after power negotiate 20V/3A with adapter, the \u0027chgsup\u0027 command say:\n`\n24-10-09 06:11:09.772 ec:~\u003e chgsup                                  \n24-10-09 06:11:10.963                                               \n24-10-09 06:11:10.971 Port --Supplier-- Prio -Available Power-               \n24-10-09 06:11:10.976 *P0  PD             1      1mA 20000mV              \n24-10-09 06:11:10.979      USBC           2   3000mA  5000mV              \n24-10-09 06:11:10.981                                                       \n24-10-09 06:11:10.981   Left safe mode                                      \n24-10-09 06:11:10.981   Override port \u003d P-1              \n`\nAnd the drawing current is 60-90mA.\n\n\u003e This is the code I\u0027m referring to. You might as well add printfs and see what\u0027s happening there?\n\nOK, I\u0027m checking it.",
+      "parentUuid": "40f3b481_04db52a2",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
