@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9c5280_d477a4e5",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-09T22:18:25Z",
+      "side": 1,
+      "message": "My mistake, the disable and enable paths are in reverse.",
+      "parentUuid": "f42bf74a_90502536",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 49
+      },
+      "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "266815e4_2c4b05e7",
