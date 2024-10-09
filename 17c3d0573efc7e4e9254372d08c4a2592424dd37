@@ -1,0 +1,316 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23c42be_bc1f296c",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Google style: `kAny`",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "acbb16c9_9a1fcfd6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "  kAny,\n"
+            },
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 72,
+                "startChar": 0,
+                "endLine": 73,
+                "endChar": 0
+              },
+              "replacement": "        std::get\u003cStateMatcher\u003e(transition.from()) \u003d\u003d StateMatcher::kAny;\n"
+            },
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "   * may be of type StateMatcher::kAny which symbolizes that the transition can\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc6e5d4f_122365d0",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Google style is `CapitalizedCamelCase`",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4efcd13a_cb05de35",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 51,
+                "startChar": 0,
+                "endLine": 52,
+                "endChar": 0
+              },
+              "replacement": "constexpr void VisitTransitionNodes(\n"
+            },
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 82,
+                "startChar": 0,
+                "endLine": 83,
+                "endChar": 0
+              },
+              "replacement": "    VisitTransitionNodes(\n"
+            },
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 164,
+                "startChar": 0,
+                "endLine": 165,
+                "endChar": 0
+              },
+              "replacement": "  VisitTransitionNodes(starting_state, transitions, visited);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c63d33_6e7ad187",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Unfortunately `find_if` is not `constexpr` until C++20. For landing in upstream Pigweed, can implement it with a for loop / with a `constexpr` `find_if` function.\n\nAlso applies to `std::any_of` below.",
+      "range": {
+        "startLine": 56,
+        "startChar": 27,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72094017_f0b49421",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Pigweed upstream uses `///` for Doxygen-style comments.",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba496c6_5af33ba4",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Not sure I understand this -- the `Transition`s are equal if `from_` and `to_` are equal, or if either holds a `StateMatcher`?",
+      "range": {
+        "startLine": 120,
+        "startChar": 35,
+        "endLine": 120,
+        "endChar": 47
+      },
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93df1cfc_6244d8a9",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Suggest implementing `operator!\u003d` too (in terms of `operator\u003d\u003d`).",
+      "fixSuggestions": [
+        {
+          "fixId": "4b4992c3_e4cbdac3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\n  /** Test if a transition is not equal to another (the must be of the same\n   * State type).\n   */\n  bool operator!\u003d(const Transition\u003cState\u003e\u0026 other) const {\n    return !(*this \u003d\u003d other);\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a756ca_dd2076c9",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "You can add a variadic template constructor to avoid needing `std::to_array` and the extra `{`.\n\nHaven\u0027t tested, but something like this should work:\n```\ntemplate \u003ctypename... Transitions\u003e\nconstexpr FsmConfigStorage(\n  State starting_state,\n  Transitions... transitions)\n    : FsmConfigStorage(starting_state, std::to_array({transitions...})) {}\n```",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33564cda_24a47246",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "This type of function should no longer be necessary with class template argument deduction.\n\nSomething like this:\n```\ntemplate \u003ctypename State, size_t kNumTransitions\u003e\nFsmConfig(State starting_state, std::array\u003cTransition\u003cState\u003e, kNumTransitions\u003e transitions) -\u003e FsmConfig\u003cState, kNumTransitions\u003e;\n```\n\nThen, you can declare `FsmConfig` without template arguments, and it will deduce them.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 1
+      },
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2a155d_e4455507",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Should also delete assignment operator",
+      "fixSuggestions": [
+        {
+          "fixId": "e10c7536_9b96fe09",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 389,
+                "startChar": 0,
+                "endLine": 390,
+                "endChar": 0
+              },
+              "replacement": "    /** Delete the copy constructor, only 1 copy is allowed. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da861d24_f1122ed5",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-09T17:33:05Z",
+      "side": 1,
+      "message": "Should also define move assignment",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
