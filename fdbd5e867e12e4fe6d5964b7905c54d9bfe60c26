@@ -289,6 +289,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44060fbc_6ec07ef9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-09T14:29:01Z",
+      "side": 1,
+      "message": "Hi Ruibin. The output of chgsup confirms PD is selected (indicated by \u0027*\u0027). So, the charge manager\u0027s port selection seems working as expected (no need to debug charge_manager_get_best_port). The problem is what\u0027s happening after that (in charge_manager_refresh). For example, what does board_set_charge_limit get?",
+      "parentUuid": "dde8feb7_cdfb8eb4",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
