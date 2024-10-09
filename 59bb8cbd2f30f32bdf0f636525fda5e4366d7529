@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf3b95c_9d7d9b71",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-09T15:51:31Z",
+      "side": 0,
+      "message": "Nit - this seems unrelated to the watchdog change.  Can you split into a separate CL?",
+      "range": {
+        "startLine": 1300,
+        "startChar": 1,
+        "endLine": 1300,
+        "endChar": 7
+      },
+      "revId": "59bb8cbd2f30f32bdf0f636525fda5e4366d7529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

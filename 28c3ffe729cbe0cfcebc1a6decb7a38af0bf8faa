@@ -34,6 +34,29 @@
       "parentUuid": "854ed7f8_a468f476",
       "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ba21e4_f0e7034a",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-09T15:51:31Z",
+      "side": 1,
+      "message": "Should the `mtsr` register be updated after enabling the masks to be symmetrical with the interrupt disable order?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 49
+      },
+      "revId": "28c3ffe729cbe0cfcebc1a6decb7a38af0bf8faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
