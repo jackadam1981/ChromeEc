@@ -158,10 +158,10 @@ enum pdc_cmd_t {
 	CMD_PDC_ACK_CC_CI,
 	/** CMD_PDC_GET_LPM_PPM_INFO */
 	CMD_PDC_GET_LPM_PPM_INFO,
-	/** CMD_PDC_GET_PD_VDO_DP_STATUS */
-	CMD_PDC_GET_PD_VDO_DP_STATUS,
 	/** CMD_PDC_SET_FRS */
 	CMD_PDC_SET_FRS,
+	/** CMD_PDC_GET_ATTENTION_VDO */
+	CMD_PDC_GET_ATTENTION_VDO,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -273,8 +273,6 @@ enum src_attached_local_state_t {
 enum snk_typec_attached_local_state_t {
 	/** SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT */
 	SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT,
-	/** SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON */
-	SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON,
 	/** SNK_TYPEC_ATTACHED_DEBOUNCE */
 	SNK_TYPEC_ATTACHED_DEBOUNCE,
 	/** SNK_TYPEC_ATTACHED_RUN */
@@ -359,8 +357,8 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_PCH_DATA_STATUS] = "PDC_GET_PCH_DATA_STATUS",
 	[CMD_PDC_ACK_CC_CI] = "PDC_ACK_CC_CI",
 	[CMD_PDC_GET_LPM_PPM_INFO] = "PDC_GET_LPM_PPM_INFO",
-	[CMD_PDC_GET_PD_VDO_DP_STATUS] = "PDC_GET_PD_VDO_DP_STATUS",
 	[CMD_PDC_SET_FRS] = "PDC_SET_FRS",
+	[CMD_PDC_GET_ATTENTION_VDO] = "PDC_GET_ATTENTION_VDO",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -434,6 +432,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_EVAL_SNK_FIXED_PDO,
 	/** Enables/disables FRS on the LPM. */
 	SNK_POLICY_UPDATE_FRS,
+	/** TypeC sink only */
+	SNK_POLICY_UPDATE_TYPEC_CURRENT,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -668,8 +668,6 @@ struct pdc_port_t {
 	uint32_t vdo[VDO_NUM];
 	/** Store the VDO returned for the PD_VDO_DP_CFG */
 	uint32_t vdo_dp_cfg;
-	/** Store the VDO returned for the PD_VDO_DP_STATUS */
-	uint32_t vdo_dp_status;
 	/** CONNECTOR_RESET temp variable used with CMD_PDC_CONNECTOR_RESET */
 	union connector_reset_t connector_reset;
 	/** PD Port Partner discovery state: True if discovery is complete, else
@@ -708,6 +706,8 @@ struct pdc_port_t {
 	union conn_status_change_bits_t overlay_ppm_changes;
 	/** LPM should enable FRS. */
 	bool frs_enable;
+	/** Store response to the GET_ATTENTION_VDO command */
+	union get_attention_vdo_t attention_vdo;
 };
 
 /**
@@ -735,8 +735,21 @@ struct pdc_config_t {
 	void (*create_thread)(const struct device *dev);
 };
 
+#if defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_100)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_100
+#elif defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_110)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_110
+#elif defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_125)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_125
+#elif defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_150)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_150
+#else
+#error Invalid peak overcurrent setting
+#endif
+
 static const uint32_t pdo_fixed_flags =
-	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP);
+	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP |
+	 PDO_FIXED_PEAK_CURR(PDO_PEAK_OCP));
 
 static const uint32_t pdc_src_pdo_nominal[] = {
 	PDO_FIXED(5000, 1500, pdo_fixed_flags),
@@ -1179,6 +1192,10 @@ static bool handle_connector_status(struct pdc_port_t *port)
 			return true;
 		} else {
 			/* Port partner is a Typec Source device */
+			if (conn_status_change_bits.pwr_operation_mode) {
+				atomic_set_bit(port->snk_policy.flags,
+					       SNK_POLICY_UPDATE_TYPEC_CURRENT);
+			}
 			set_pdc_state(port, PDC_SNK_TYPEC_ONLY);
 			return true;
 		}
@@ -1256,8 +1273,8 @@ static void discovery_info_init(struct pdc_port_t *port)
 
 	/* Clear the DP Config VDO, which stores the DP pin assignment */
 	port->vdo_dp_cfg = 0;
-	/* Clear DP Status */
-	port->vdo_dp_status = 0;
+	/* Clear attention VDO which contains DP status */
+	memset(&port->attention_vdo, 0, sizeof(port->attention_vdo));
 }
 
 /**
@@ -1339,16 +1356,19 @@ static bool should_swap_to_source(struct pdc_port_t *port)
 	return true;
 }
 
-static void handle_dp_status(struct pdc_port_t *port)
+static void handle_attention_vdo(struct pdc_port_t *port)
 {
 	/* Check for an HPD wake on DP Status. The conditions are...
 	 *  a) Device is suspended.
-	 *  b) Port entered suspend in DP Alt Mode with HPD_LVL low.
-	 *  c) Updated DP Status has HPD_LVL high.
+	 *  b) Port is currently using an alternate mode.
+	 *  c) Port entered suspend in DP Alt Mode with HPD_LVL low.
+	 *  d) Updated DP Status has HPD_LVL high.
 	 */
-
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
-	    port->hpd_wake_watch && PD_VDO_DPSTS_HPD_LVL(port->vdo_dp_status)) {
+	    (port->connector_status.conn_partner_flags &
+	     CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE) &&
+	    port->hpd_wake_watch &&
+	    PD_VDO_DPSTS_HPD_LVL(port->attention_vdo.vdo)) {
 		host_set_single_event(EC_HOST_EVENT_USB_MUX);
 	}
 }
@@ -1427,16 +1447,29 @@ static void run_snk_policies(struct pdc_port_t *port)
 
 static void run_typec_snk_policies(struct pdc_port_t *port)
 {
+	const struct pdc_config_t *config = port->dev->config;
 	/* Note - hard resets specifically not checked for here.
+
 	 * We don't expect hard resets while connected to a non-PD
 	 * partner.
 	 */
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
-				      SNK_POLICY_UPDATE_SRC_CAPS)) {
+				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
+		port->sink_path_en = port->active_charge;
+		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_SRC_CAPS)) {
 		/* Ensure the next time a PD capable SNK connects, we offer
 		 * a safe PDO.
 		 */
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_TYPEC_CURRENT)) {
+		typec_set_input_current_limit(config->connector_num,
+					      port->typec_current_ma, 5000);
+
+		charge_manager_update_dualrole(config->connector_num,
+					       CAP_DEDICATED);
 	} else {
 		send_pending_public_commands(port);
 	}
@@ -1630,7 +1663,7 @@ static void pdc_src_attached_run(void *obj)
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ATTENTION)) {
-		queue_internal_cmd(port, CMD_PDC_GET_PD_VDO_DP_STATUS);
+		queue_internal_cmd(port, CMD_PDC_GET_ATTENTION_VDO);
 		return;
 	}
 
@@ -1768,7 +1801,7 @@ static void pdc_snk_attached_run(void *obj)
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ATTENTION)) {
-		queue_internal_cmd(port, CMD_PDC_GET_PD_VDO_DP_STATUS);
+		queue_internal_cmd(port, CMD_PDC_GET_ATTENTION_VDO);
 		return;
 	}
 
@@ -2103,18 +2136,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 				 &port->vdo_dp_cfg);
 		break;
 	}
-	case CMD_PDC_GET_PD_VDO_DP_STATUS: {
-		union get_vdo_t vdo_req;
-		uint8_t vdo_type;
-
-		vdo_req.raw_value = 0;
-		vdo_req.num_vdos = 1;
-		vdo_req.vdo_origin = VDO_ORIGIN_SOP;
-
-		vdo_type = VDO_PD_DP_STATUS;
-
-		rv = pdc_get_vdo(port->pdc, vdo_req, &vdo_type,
-				 &port->vdo_dp_status);
+	case CMD_PDC_GET_ATTENTION_VDO: {
+		rv = pdc_get_attention_vdo(port->pdc, &port->attention_vdo);
 		break;
 	}
 	case CMD_PDC_CONNECTOR_RESET:
@@ -2278,8 +2301,8 @@ static void pdc_send_cmd_wait_run(void *obj)
 				return;
 			}
 		} else {
-			if (port->cmd->cmd == CMD_PDC_GET_PD_VDO_DP_STATUS) {
-				handle_dp_status(port);
+			if (port->cmd->cmd == CMD_PDC_GET_ATTENTION_VDO) {
+				handle_attention_vdo(port);
 			}
 
 			set_pdc_state(port, port->send_cmd_return_state);
@@ -2441,7 +2464,7 @@ static void pdc_snk_typec_only_entry(void *obj)
 	port->send_cmd.intern.pending = false;
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		port->snk_typec_attached_local_state =
-			SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT;
+			SNK_TYPEC_ATTACHED_DEBOUNCE;
 
 		/* Start one shot typec only timer. This timer is used to
 		 * differentiate between a port partner that supports USB PD or
@@ -2479,9 +2502,22 @@ static void pdc_snk_typec_only_run(void *obj)
 	}
 
 	switch (port->snk_typec_attached_local_state) {
+	case SNK_TYPEC_ATTACHED_DEBOUNCE:
+		if (k_timer_status_get(&port->typec_only_timer) > 0) {
+			port->snk_typec_attached_local_state =
+				SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT;
+		}
+		return;
 	case SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT:
-		port->snk_typec_attached_local_state =
-			SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON;
+		port->snk_typec_attached_local_state = SNK_TYPEC_ATTACHED_RUN;
+
+		/* Once we're updating the charger with the new current limit,
+		 * it's safe to clear the policy bit.  If the PDC reports
+		 * a new change to power operation mode, this but will be
+		 * set again.
+		 */
+		atomic_clear_bit(port->snk_policy.flags,
+				 SNK_POLICY_UPDATE_TYPEC_CURRENT);
 
 		typec_set_input_current_limit(config->connector_num,
 					      port->typec_current_ma, 5000);
@@ -2489,18 +2525,6 @@ static void pdc_snk_typec_only_run(void *obj)
 		charge_manager_update_dualrole(config->connector_num,
 					       CAP_DEDICATED);
 		break;
-	case SNK_TYPEC_ATTACHED_SET_SINK_PATH_ON:
-		port->snk_typec_attached_local_state =
-			SNK_TYPEC_ATTACHED_DEBOUNCE;
-		port->sink_path_en = true;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
-		return;
-	case SNK_TYPEC_ATTACHED_DEBOUNCE:
-		if (k_timer_status_get(&port->typec_only_timer) > 0) {
-			port->snk_typec_attached_local_state =
-				SNK_TYPEC_ATTACHED_RUN;
-		}
-		return;
 	case SNK_TYPEC_ATTACHED_RUN:
 		run_typec_snk_policies(port);
 		break;
@@ -3499,7 +3523,7 @@ static void set_hpd_wake_watch(int port)
 	if (!pdc_power_mgmt_pd_capable(port) ||
 	    !(port_data->connector_status.conn_partner_flags &
 	      CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE) ||
-	    PD_VDO_DPSTS_HPD_LVL(port_data->vdo_dp_status)) {
+	    PD_VDO_DPSTS_HPD_LVL(port_data->attention_vdo.vdo)) {
 		return;
 	}
 
@@ -4128,7 +4152,7 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable)
 	return EC_SUCCESS;
 }
 
-int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
+test_mockable int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
 {
 	if (!is_pdc_port_valid(port)) {
 		return -ERANGE;
