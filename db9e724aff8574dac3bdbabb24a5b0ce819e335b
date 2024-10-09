@@ -16,6 +16,24 @@
       "message": "FYI: for the `firmware-ec-renode-cq` failure, I disabled the tests that are flaky here: https://crrev.com/c/5917716. It should work if you retry the CQ. Sorry for the breakage.",
       "revId": "db9e724aff8574dac3bdbabb24a5b0ce819e335b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d0e884_e43cec4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2024-10-09T02:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8caf96b_85b5aecd",
+      "revId": "db9e724aff8574dac3bdbabb24a5b0ce819e335b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
