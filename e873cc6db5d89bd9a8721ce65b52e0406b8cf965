@@ -151,6 +151,24 @@
       "parentUuid": "cf6a0b65_fbd4f93a",
       "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f9694e_aeec701b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-09T17:05:11Z",
+      "side": 1,
+      "message": "Alright, this seems good for now. If we need to adjust timeouts for board-specific latency, that should probably be implemented as a refactor of usbc_timer.c",
+      "parentUuid": "4fd5c24b_ba252c95",
+      "revId": "e873cc6db5d89bd9a8721ce65b52e0406b8cf965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
