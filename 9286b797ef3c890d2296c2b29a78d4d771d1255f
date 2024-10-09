@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0960f0b6_fbf9423d",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-10-09T04:01:49Z",
+      "side": 1,
+      "message": "wake_small_angle will cause EC get angle unreliable if lid open and angle \u003c\u003d 15.",
+      "parentUuid": "56ad7567_c5b41b1c",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35f555aa_63ff1d79",
         "filename": "common/lid_switch.c",
         "patchSetId": 2
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cecf0daa_f742610c",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-10-09T04:01:49Z",
+      "side": 1,
+      "message": "If EC can get angle normally then this function work, if not then still can work with hall sensor.\nWe want to cover hall sensor limitation as possible as we can.",
+      "parentUuid": "35f555aa_63ff1d79",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce0d5c2e_abd390f7",
         "filename": "common/motion_lid.c",
         "patchSetId": 2
@@ -82,6 +118,24 @@
       "writtenOn": "2024-10-07T15:56:43Z",
       "side": 1,
       "message": "Why is this change needed? Should it be in a separate bug/cl?",
+      "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af7fc34_b72ae8dd",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-10-09T04:01:49Z",
+      "side": 1,
+      "message": "Same reason as not using wake_small_angle.\nBut I think we can remove it since hall sensor will trigger first.",
+      "parentUuid": "ce0d5c2e_abd390f7",
       "revId": "9286b797ef3c890d2296c2b29a78d4d771d1255f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
