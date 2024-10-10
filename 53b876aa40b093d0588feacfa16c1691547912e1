@@ -34,6 +34,24 @@
       "parentUuid": "4e2796e6_05629630",
       "revId": "53b876aa40b093d0588feacfa16c1691547912e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7246e5_d38b62c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-10T22:31:49Z",
+      "side": 1,
+      "message": "you should be able to #include ../trulo/project.overlay or tweak BUILD.py.\nthen, sprinkle in the necessary overrides in trulo-ti.\nthat\u0027s better than replicating the configs.",
+      "parentUuid": "42bce73f_75a1c7dd",
+      "revId": "53b876aa40b093d0588feacfa16c1691547912e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
