@@ -429,7 +429,6 @@ class Renode(Platform):
                 "benchmark",
                 "exception",
                 "fpsensor_hw",
-                "libcxx",
                 "power_utilization",
                 "rtc_stm32f4",
                 "std_vector",
@@ -641,7 +640,7 @@ class AllTests:
             ),
             # Handled by Zephyr - cpp.main.* tests
             TestConfig(test_name="global_initialization", skip_for_zephyr=True),
-            TestConfig(test_name="libcxx"),
+            TestConfig(test_name="libcxx", timeout_secs=600),
             TestConfig(test_name="malloc", imagetype_to_use=ImageType.RO),
             # TODO(b/363277530): Add Zephyr MPU tests.
             TestConfig(
