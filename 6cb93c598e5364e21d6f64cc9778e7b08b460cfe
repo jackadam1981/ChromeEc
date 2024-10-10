@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a22c3e_965f1672",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-10T20:49:36Z",
+      "side": 1,
+      "message": "Do we know why battery_is_present() doesn\u0027t return BP_NO? Does any other boards behave the same or this is a Brox thing?",
+      "range": {
+        "startLine": 786,
+        "startChar": 30,
+        "endLine": 786,
+        "endChar": 41
+      },
+      "revId": "6cb93c598e5364e21d6f64cc9778e7b08b460cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
