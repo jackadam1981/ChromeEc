@@ -22,6 +22,30 @@
       },
       "revId": "727cc2356985ca70a9116fde09be63b709271548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e90ebaa3_ff00b15a",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-10-10T20:28:12Z",
+      "side": 1,
+      "message": "Yes, this should technically be atomic, however I think the consequence of a race here is low. I will open a separate CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5924239/",
+      "parentUuid": "f54ede7e_e0c91334",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "727cc2356985ca70a9116fde09be63b709271548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
