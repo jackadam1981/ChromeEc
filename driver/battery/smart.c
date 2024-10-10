@@ -419,6 +419,7 @@ int battery_manufacturer_data(char *data, int size)
 
 int battery_manufacturer_access(int cmd)
 {
+	CPRINTS("---cmd : %d---", cmd);
 	return sb_write(SB_MANUFACTURER_ACCESS, cmd);
 }
 
