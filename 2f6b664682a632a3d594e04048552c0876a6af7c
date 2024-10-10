@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4767d302_8bc39d37",
+        "filename": "zephyr/scripts/firmware_builder_lib.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-10-10T16:47:59Z",
+      "side": 1,
+      "message": "If this function just created the parser and didn\u0027t call parse_args, then the caller could add more options, and then call parse_args itself. That would be more flexible.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "2f6b664682a632a3d594e04048552c0876a6af7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
