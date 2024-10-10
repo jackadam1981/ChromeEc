@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba385f56_d3c2cc07",
+        "filename": "common/memory_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-10T19:17:51Z",
+      "side": 1,
+      "message": "@hesling@chromium.org\n\n```\n\u003e rw .h 0x1007231e 0xbf00\n```\n\n```\n\u003e sysinfo\nReset flags: 0x00000420 (soft sysjump)\nCopy:   RW\nJumped: yes\nRecovery: no\nFlags:  locked\n\u003e rw .h 0x1007231e 0xbf00\nwrite 0x1007231e \u003d 0xbf00\n\n\u003d\u003d\u003d PROCESS EXCEPTION: 04 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 81000000 \u003d\u003d\u003d\nr0 :00000000 r1 :00000000 r2 :00000000 r3 :00000000\nr4 :00000000 r5 :00000000 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:00000000 sp :200bd3f8 lr :1007d811 pc :1007d810\nData access violation, mfar \u003d 1007231e\ncfsr \u003d 82, shcsr \u003d 70001, hfsr \u003d 0, dfsr \u003d 0\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Process Stack Contents \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n200bd418: 200c4148 200b0d17 1008af68 00000000\n200bd428: 200c41c4 10091100 00000004 200c4148\n200bd438: 200bd470 1007874d 00000000 1008af68\n200bd448: 200b0d00 200b0d03 200b0d06 200b0d11\n\nRebooting...\n\n\n--- UART initialized after reboot ---\n[Image: RO, helipilot_v2.0.26490+07e4365111 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172]\n[Reset cause: soft]\n[0.000505 code RAM protected.]\n[0.000548 Inits done]\n[0.000602 TRANSPORT_SEL: SPI]\n[0.000655 TRANSPORT_SEL: SPI]\n[0.258537 event set 0x0000000000800000]\nConsole is enabled; type HELP for help.\n\u003e [0.258659 event set 0x0000000000002000]\n[0.258717 hostcmd init 0x0000000000802000]\n[0.258858 Verifying RW image...]\n[0.397300 RW verify OK]\n[1.259461 MKBP not cleared within threshold, toggling.]\n[1.398363 Jumping to image RW (0x00000020)]\n[1.402345 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n\n[1.410035 UART initialized after sysjump]\n[Image: RW, helipilot_v2.0.26490+07e4365111 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172]\n[Reset cause: soft sysjump]\n[1.430096 code RAM protected.]\n[1.430139 Inits done]\n[1.430364 TRANSPORT_SEL: SPI]\n[1.430427 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [1.687577 event set 0x0000000000002000]\n[1.687642 hostcmd init 0x0000000000002000]\n[1.687737 FP_SENSOR_SEL: FPC]\n[1.687780 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\n[1.687840 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\nfp_sensor_open - Sensor init failed. Result\u003d-9\n[1.690002 Error: fp_sensor_open() failed, result\u003d-9]\n[1.690079 FPC unknown silicon 0x0000]\nbio_algorithm_init - Failed getting recommended parameters. Result\u003d-21\n[1.690202 Error: bio_algorithm_init() failed, result\u003d-21]\n[2.688473 MKBP not cleared within threshold, toggling.]\n^C\n\u003e [3.689332 MKBP: The AP is failing to respond because it is sleeping or off]\n^C\n\u003e sysinfo\nReset flags: 0x00000420 (soft sysjump)\nCopy:   RW\nJumped: yes\nRecovery: no\nFlags:  locked\n\u003e \n```\n\n```\n\u003e sysinfo\nReset flags: 0x00000420 (soft sysjump)\nCopy:   RW\nJumped: yes\nRecovery: no\nFlags:  unlocked\n\u003e rw .h 0x1007231e 0xbf00\nwrite 0x1007231e \u003d 0xbf00\n\u003e sysinfo\nReset flags: 0x00000420 (soft sysjump)\nCopy:   RW\nJumped: yes\nRecovery: no\nFlags:  unlocked\n\u003e \n```",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 24
+      },
+      "revId": "5eb01d33d493f3b1d37c91052b56beab34ee31e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
