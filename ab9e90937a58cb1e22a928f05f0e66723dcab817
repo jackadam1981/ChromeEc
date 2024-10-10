@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02fd3f1_c9aa41d6",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-10-10T16:40:25Z",
+      "side": 1,
+      "message": "I think this is failing in the unit tests because the chromeos-base/zephyr-build-tools/zephyr-build-tools-9999.ebuild file only extracts the files from the `zephyr/zmake` subdirectory.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "ab9e90937a58cb1e22a928f05f0e66723dcab817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
