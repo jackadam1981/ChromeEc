@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00bb9b2a_9eae73a3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-10-10T17:33:20Z",
+      "side": 1,
+      "message": "If I am reading this right, I think cr50 can only handle TPMV commands that have a response of 31 bytes or less: https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/cr50/chip/g/usb_upgrade.c;l\u003d120?q\u003dextension_route_command\u0026ss\u003dh%2Fchrome-internal%2Fchromeos%2Fsuperproject%2F%2B%2Frefs%2Fheads%2Fmain:src%2Fplatform%2Fcr50%2F\n\nTi50 is the only one that can handle the full 2KB buffer for TPMV commands\n\n---\n\nAlso we just need to ensure that the temp buffer is big enough. We could actually make it 10KB without any adverse side affects (other than taking up more stack RAM than needed).\n\n\nI prefer keeping this local temp buffer at 1 + the max, so all of the callers can just use the MAX_RX_BUF_SIZE constants without having to know internal details about USB protocol. Thoughts?",
+      "parentUuid": "d6f3862a_b85a6456",
+      "range": {
+        "startLine": 1787,
+        "startChar": 24,
+        "endLine": 1787,
+        "endChar": 43
+      },
+      "revId": "ab1f4de5c77b834e99f372c549beeac31b57600d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bfa6b51_f09e8f20",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-10T02:56:00Z",
       "side": 1,
       "message": "shall this actually be MAX_RX_BUF_SIZE - 1 \u003d 2048 - 1? see the other comment.",
+      "range": {
+        "startLine": 4376,
+        "startChar": 18,
+        "endLine": 4376,
+        "endChar": 22
+      },
+      "revId": "ab1f4de5c77b834e99f372c549beeac31b57600d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419e5550_13ee430d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4376,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-10-10T17:33:20Z",
+      "side": 1,
+      "message": "We could change this too and leave the other. I think it makes sense to allow for these buffers to be the nice 2048, while the temp buffer is one more. Thoughts?",
+      "parentUuid": "4bfa6b51_f09e8f20",
       "range": {
         "startLine": 4376,
         "startChar": 18,
