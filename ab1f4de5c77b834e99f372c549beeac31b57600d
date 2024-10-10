@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f3862a_b85a6456",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-10T02:56:00Z",
+      "side": 1,
+      "message": "one question I still have though if cr50 impl actually cannot transmit more than MAX_RX_BUF_SIZE over USB, so the logic was correct, and the callers of send_vendor_command() should not request more than MAX_RX_BUF_SIZE-1 bytes.",
+      "range": {
+        "startLine": 1787,
+        "startChar": 24,
+        "endLine": 1787,
+        "endChar": 43
+      },
+      "revId": "ab1f4de5c77b834e99f372c549beeac31b57600d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bfa6b51_f09e8f20",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4376,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-10T02:56:00Z",
+      "side": 1,
+      "message": "shall this actually be MAX_RX_BUF_SIZE - 1 \u003d 2048 - 1? see the other comment.",
+      "range": {
+        "startLine": 4376,
+        "startChar": 18,
+        "endLine": 4376,
+        "endChar": 22
+      },
+      "revId": "ab1f4de5c77b834e99f372c549beeac31b57600d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec59429_3a57cc59",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4398,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-10T02:56:00Z",
+      "side": 1,
+      "message": "shall this actually be MAX_RX_BUF_SIZE - 1 \u003d 2048 - 1? see the other comment.",
+      "range": {
+        "startLine": 4398,
+        "startChar": 18,
+        "endLine": 4398,
+        "endChar": 22
+      },
+      "revId": "ab1f4de5c77b834e99f372c549beeac31b57600d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
