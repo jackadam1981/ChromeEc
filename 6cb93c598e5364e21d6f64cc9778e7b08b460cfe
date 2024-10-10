@@ -22,6 +22,30 @@
       },
       "revId": "6cb93c598e5364e21d6f64cc9778e7b08b460cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee18f8fc_02252233",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-10T21:23:44Z",
+      "side": 1,
+      "message": "Brox did not stuff the battery presence GPIO.  So the `wakeup_battery()` call keeps running until `PRECHARGE_TIMEOUT_US` expires (30 seconds).\n\nIf we don\u0027t know the battery state, I think the charge manager should skip any changes to the charge port to avoid losing power.\n\nI think we might hit the same scenario when exiting battery cutoff.  There could be a period of time where the battery hasn\u0027t woken up, but the charger manager is fully seeded and tries to switch the charging port.\n\nThis is a corner case, as it means a user connected multiple chargers to the chromebook to exit battery cut-off.",
+      "parentUuid": "32a22c3e_965f1672",
+      "range": {
+        "startLine": 786,
+        "startChar": 30,
+        "endLine": 786,
+        "endChar": 41
+      },
+      "revId": "6cb93c598e5364e21d6f64cc9778e7b08b460cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
