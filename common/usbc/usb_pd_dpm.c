@@ -1149,9 +1149,21 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	/* Power Status */
 	sdb.power_status = 0x0;
 
+	/* PD r3.1 added the Power State Change byte to SDB and also added the
+	 * requirement that, "Additional bytes that might be added to existing
+	 * Messages in [a] future revision of this specification Shall be
+	 * Ignored." Plausibly, a PD 3.0 implementation could react poorly to
+	 * receiving this 7th byte. However, the PD r3.1 CTS (2024 Q1) requires
+	 * that the SDB be 7 bytes long.
+	 *
+	 * In the interest of caution, do not send the 7th byte to partners that
+	 * affirmatively provide a revision below PD r3.1. In the interest of
+	 * passing COMMON.CHECK.PD3.10 Check Extended Message Header, DO send
+	 * the 7th byte to partners that do not respond to Get_Revision.
+	 */
 	partner_rmdo = pd_get_partner_rmdo(port);
 	if ((partner_rmdo.major_rev == 3 && partner_rmdo.minor_rev >= 1) ||
-	    partner_rmdo.major_rev > 3) {
+	    partner_rmdo.major_rev > 3 || partner_rmdo.major_rev == 0) {
 		/* USB PD Rev 3.1: 6.5.2 Status Message */
 		sdb.power_state_change = get_status_power_state_change();
 		*len = 7;
