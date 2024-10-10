@@ -16,6 +16,24 @@
       "message": "how different is the trulo-ti SKU?\nif it\u0027s just the PDC chip, we should only need a few lines of deltas/overrides.",
       "revId": "53b876aa40b093d0588feacfa16c1691547912e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42bce73f_75a1c7dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-10-10T22:09:10Z",
+      "side": 1,
+      "message": "It is just the PDC that\u0027s different. project.overlay from trulo/trulo does not not get included when trulo-ti gets built. The pdc node is deleted and the override is added in the trulo-ti/project.overlay. There are 2 other nodes that need to be included that also exist only in trulo/project.overlay.",
+      "parentUuid": "4e2796e6_05629630",
+      "revId": "53b876aa40b093d0588feacfa16c1691547912e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
