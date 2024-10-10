@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb5c3b67_b9b55259",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-10T15:22:35Z",
+      "side": 1,
+      "message": "Can you confirm that fatcat has `CONFIG_AP_PWRSEQ_DRIVER\u003dy`.  This should be on by default, but some platforms had this disabled.",
+      "revId": "1fa45c6a18837bde804d63a437b057dce913ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9074f2fa_e4d44592",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-10T15:22:35Z",
+      "side": 1,
+      "message": "Can you bring in this file using CMake instead?",
+      "range": {
+        "startLine": 1,
+        "startChar": 29,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "1fa45c6a18837bde804d63a437b057dce913ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2f8b11_31a998d2",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/zephyr_ap_pwrseq.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-10T15:22:35Z",
+      "side": 1,
+      "message": "How about including this file from BUILD.py instead?",
+      "revId": "1fa45c6a18837bde804d63a437b057dce913ca37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
