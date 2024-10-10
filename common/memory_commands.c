@@ -199,8 +199,7 @@ static int command_read_word(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND_FLAGS(
+DECLARE_CONSOLE_COMMAND(
 	rw, command_read_word, "[.b|.h] addr [value]",
-	"Read or write a word in memory optionally specifying the size",
-	CMD_FLAG_RESTRICTED);
+	"Read or write a word in memory optionally specifying the size");
 #endif /* CONFIG_CMD_RW */
