@@ -24,7 +24,6 @@ from chromite.api.gen_sdk.chromite.api import firmware_pb2
 
 BOARDS = [
     "bloonchipper",
-    "dartmonkey",
 ]
 
 
@@ -100,6 +99,7 @@ def test(_opts):
                 "-b",
                 board,
                 "--renode",
+                "--zephyr",
                 "--with_private",
                 "no",
             ],

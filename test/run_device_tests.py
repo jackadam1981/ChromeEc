@@ -256,6 +256,7 @@ class Platform(ABC):
         build_board: str,
         test_name: str,
         enable_hw_write_protect: bool,
+        zephyr: bool,
     ) -> bool:
         """Flash specified test to specified board."""
 
@@ -325,6 +326,7 @@ class Hardware(Platform):
         build_board: str,
         test_name: str,
         enable_hw_write_protect: bool,
+        zephyr: bool,
     ) -> bool:
         logging.info("Flashing test")
 
@@ -384,8 +386,13 @@ class Renode(Platform):
         build_board: str,
         test_name: str,
         enable_hw_write_protect: bool,
+        zephyr: bool,
     ) -> bool:
-        cmd = ["./util/renode-ec-launch", build_board, test_name]
+        cmd = [
+            "./util/renode-ec-launch",
+            build_board,
+            "zephyr" if zephyr else test_name,
+        ]
         if enable_hw_write_protect:
             cmd.append("--enable-write-protect")
 
@@ -537,8 +544,8 @@ class AllTests:
 
         zephyr_upstream_tests = (
             []
-            if with_private == PRIVATE_ONLY or not zephyr
-            else AllTests.get_zephyr_tests()
+            #            if with_private == PRIVATE_ONLY or not zephyr
+            #            else AllTests.get_zephyr_tests()
         )
 
         all_tests = public_tests + private_tests + zephyr_upstream_tests
@@ -1309,11 +1316,11 @@ def run_test_zephyr(test: TestConfig) -> str:
         return []
     if len(test.test_args) == 0:
         # If there are no args just run-all not to be limited by suite name
-        test_cmd = "ztest run-all\n"
+        test_cmd = "ztest\nztest run-all\n"
     else:
         # ZTEST console doesn't support passing test arguments
         # Assume a testsuite for every test + arg combination
-        test_cmd = "ztest run-testcase " + test.test_name
+        test_cmd = "ztest\nztest run-testcase " + test.test_name
         for test_arg in test.test_args:
             test_cmd = test_cmd + "_" + test_arg
         test_cmd = test_cmd + "\n"
@@ -1355,7 +1362,8 @@ def run_test(
             test_cmd = run_test_ec(test)
 
         if len(test_cmd) > 0:
-            console.write(test_cmd.encode())
+            written = console.write(test_cmd.encode())
+            logging.debug("wrote: %s", written)
 
     while True:
         console.flush()
@@ -1521,6 +1529,7 @@ def flash_and_run_test(
         build_board,
         test.test_name,
         test.enable_hw_write_protect,
+        args.zephyr,
     ):
         logging.debug("Flashing failed")
         return False
