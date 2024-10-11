@@ -1162,15 +1162,18 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	 * the 7th byte to partners that do not respond to Get_Revision.
 	 */
 	partner_rmdo = pd_get_partner_rmdo(port);
+	CPRINTS("RMDO: 0x%08x", *(uint32_t *)&partner_rmdo);
 	if ((partner_rmdo.major_rev == 3 && partner_rmdo.minor_rev >= 1) ||
 	    partner_rmdo.major_rev > 3 || partner_rmdo.major_rev == 0) {
 		/* USB PD Rev 3.1: 6.5.2 Status Message */
 		sdb.power_state_change = get_status_power_state_change();
 		*len = 7;
+		CPRINTS("Sending 7-byte Status");
 	} else {
 		/* USB PD Rev 3.0: 6.5.2 Status Message */
 		sdb.power_state_change = 0;
 		*len = 6;
+		CPRINTS("Sending 6-byte Status");
 	}
 
 	memcpy(msg, &sdb, *len);
