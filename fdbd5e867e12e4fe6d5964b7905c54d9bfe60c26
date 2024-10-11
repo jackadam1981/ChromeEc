@@ -325,6 +325,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb241ce4_11430243",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-11T16:54:16Z",
+      "side": 1,
+      "message": "Everything looks good. So, I don\u0027t know why you\u0027re getting a different result.\n\nA last experiment I would suggest is actually changing the supply selection logic as proposed above: \n```\n-    if (available_charge[i][j].voltage \u003d\u003d 0 || ...current \u003d\u003d 0)\n+    if (available_charge[i][j].voltage \u003d\u003d 0)\n        continue;\n```\n(Please don\u0027t forget to revert the 1mA hack.) If this doesn\u0027t work, I\u0027m fine with the CL. Thanks,",
+      "parentUuid": "50b0247c_3cf931a1",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
