@@ -25,6 +25,8 @@ from chromite.api.gen_sdk.chromite.api import firmware_pb2
 BOARDS = [
     "bloonchipper",
     "dartmonkey",
+    "helipilot",
+    "buccaneer",
 ]
 
 
