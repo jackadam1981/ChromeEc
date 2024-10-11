@@ -404,7 +404,6 @@ class Renode(Platform):
                 "exception",
                 "fpsensor_hw",
                 "libcxx",
-                "mpu",
                 "panic_data",
                 "panic_data_nami_fp_v2.2.144",
                 "panic_data_nocturne_fp_v2.2.64",
