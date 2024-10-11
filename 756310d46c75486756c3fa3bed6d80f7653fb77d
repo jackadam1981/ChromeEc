@@ -34,6 +34,24 @@
       "parentUuid": "58131b4c_57015a04",
       "revId": "756310d46c75486756c3fa3bed6d80f7653fb77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea1ca4e_ca917d36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-11T20:47:05Z",
+      "side": 1,
+      "message": "I see this is needed as part of https://github.com/zephyrproject-rtos/zephyr/pull/79703",
+      "parentUuid": "4929d45e_509e9a69",
+      "revId": "756310d46c75486756c3fa3bed6d80f7653fb77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
