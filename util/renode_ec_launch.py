@@ -81,13 +81,21 @@ def launch(opts: argparse.Namespace) -> int:
     script_path = pathlib.Path(__file__).parent.resolve()
     ec_dir = script_path.parent
 
-    out_dir = ec_dir / "build" / board
-    if project != "ec":
-        out_dir /= project
+    #    out_dir = ec_dir / "build" / board
+    #    if project != "ec":
+    #        out_dir /= project
+    out_dir = ec_dir / "build" / "zephyr" / board / "output"
 
-    bin_file = out_dir / f"{project}.bin"
-    elf_ro_file = out_dir / "RO" / f"{project}.RO.elf"
-    elf_rw_file = out_dir / "RW" / f"{project}.RW.elf"
+    # bin_file = out_dir / f"{project}.bin"
+    #    elf_ro_file = out_dir / "RO" / f"{project}.RO.elf"
+    #    elf_rw_file = out_dir / "RW" / f"{project}.RW.elf"
+    bin_file = out_dir / "ec.bin"
+    #    bin_file = (
+    #        ec_dir
+    #        / "build/zephyr/fpmcu-test/google_dragonclaw/tests/lib/cpp/cxx/cpp.main.newlib/zephyr/zephyr.bin"
+    #    )
+    elf_ro_file = out_dir / "zephyr.ro.elf"
+    elf_rw_file = out_dir / "zephyr.rw.elf"
 
     if not bin_file.exists():
         print(f"Error - The bin file '{bin_file}' does not exist.")
