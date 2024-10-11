@@ -98,7 +98,7 @@ static void verify_response_header(const struct identity_response response,
 	zassert_equal(PD_HEADER_REV(response.header), pd_rev);
 }
 
-ZTEST_F(usbc_svdm_dfp_only, test_verify_identity)
+ZTEST_F(usbc_svdm_dfp_only, test_identity)
 {
 	fixture->partner.rev = PD_REV30;
 	connect_source_to_port(&fixture->partner, &fixture->src_emul_data, 0,
@@ -190,7 +190,7 @@ ZTEST_F(usbc_svdm_dfp_only, test_pd20_ufp)
 		      "Product VDO value unexpected: %#x", response.vdos[3]);
 }
 
-ZTEST_F(usbc_svdm_dfp_only, test_pd20_dfp_nak)
+ZTEST_F(usbc_svdm_dfp_only, test_pd20_nak)
 {
 	fixture->partner.rev = PD_REV20;
 	connect_source_to_port(&fixture->partner, &fixture->src_emul_data, 0,
