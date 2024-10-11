@@ -409,6 +409,12 @@ class Renode(Platform):
     def skip_test(
         self, test_name: str, board_config: BoardConfig, zephyr: bool
     ) -> bool:
+        # TODO(b/380468811): Re-enable upstream Zephyr tests when they work.
+        if test_name in [
+            test.test_name for test in AllTests.get_zephyr_tests()
+        ]:
+            return True
+
         if board_config.name in [BLOONCHIPPER, DARTMONKEY]:
             if board_config.name == BLOONCHIPPER:
                 if test_name in [
@@ -1319,11 +1325,11 @@ def run_test_zephyr(test: TestConfig) -> str:
         return []
     if len(test.test_args) == 0:
         # If there are no args just run-all not to be limited by suite name
-        test_cmd = "ztest run-all\n"
+        test_cmd = "ztest\nztest run-all\n"
     else:
         # ZTEST console doesn't support passing test arguments
         # Assume a testsuite for every test + arg combination
-        test_cmd = "ztest run-testcase " + test.test_name
+        test_cmd = "ztest\nztest run-testcase " + test.test_name
         for test_arg in test.test_args:
             test_cmd = test_cmd + "_" + test_arg
         test_cmd = test_cmd + "\n"
