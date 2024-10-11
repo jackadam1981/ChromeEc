@@ -26,9 +26,13 @@ CONSOLE_MAP: dict[str, str] = {
     "helipilot": "sysbus.cr_uart1",
 }
 
+HELIPILOT_GPIO_WP = "sysbus.gpioa.GPIO_WP"
+
 GPIO_WP_MAP: dict[str, str] = {
     "bloonchipper": "sysbus.gpioPortB.GPIO_WP",
     "dartmonkey": "sysbus.gpioPortB.GPIO_WP",
+    "helipilot": HELIPILOT_GPIO_WP,
+    "buccaneer": HELIPILOT_GPIO_WP,
 }
 
 GPIO_WP_ENABLE = "Release"
