@@ -432,7 +432,6 @@ class Renode(Platform):
                 "libcxx",
                 "power_utilization",
                 "rtc_stm32f4",
-                "std_vector",
                 "timer_dos",  # TODO(b/374798079)
             ]:
                 return True
@@ -459,7 +458,6 @@ class Renode(Platform):
                 "rtc_npcx9",
                 "sbrk",
                 "stdlib",  # TODO(b/379897213)
-                "std_vector",
                 "fpsensor_auth_crypto_stateless",  # TODO(b/372969110)
                 "unaligned_access_benchmark",  # TODO(372969629)
             ]:
