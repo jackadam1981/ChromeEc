@@ -165,7 +165,8 @@ void cflush(void)
 
 /*****************************************************************************/
 /* Console commands */
-
+#include "registers.h"
+#include "clock.h"
 #ifdef CONFIG_CONSOLE_CHANNEL
 /* Set active channels */
 static int command_ch(int argc, const char **argv)
@@ -173,39 +174,69 @@ static int command_ch(int argc, const char **argv)
 	int i;
 	char *e;
 
-	/* If one arg, save / restore, or set the mask */
-	if (argc == 2) {
-		if (strcasecmp(argv[1], "save") == 0) {
-			channel_mask_saved = channel_mask;
-			return EC_SUCCESS;
-		} else if (strcasecmp(argv[1], "restore") == 0) {
-			channel_mask = channel_mask_saved;
-			return EC_SUCCESS;
+	// for(int i = 0; i < 16; i++) {
+	// 	ccprintf("DMAMUX1_C%dCR val :  0x%08x\n", i, *((uint32_t*)(0x40020800 + 4*i)));
+	// 	ccprintf("DMAMUX1_RG%dCR val : 0x%08x\n", i, *((uint32_t*)(0x40020800 + 0x100 + 4*i)));
+	// }
+	// for(int i = 0; i < 8; i++) {
+	// 	ccprintf("DMA2_S%dCR   val: 0x%08x\n", i, *((uint32_t*)(0x40020400 + 0x10 + 0x18*i)));
+	// 	ccprintf("DMA2_S%dPAR  val: 0x%08x\n", i, *((uint32_t*)(0x40020400 + 0x18 + 0x18*i)));
+	// 	ccprintf("DMA2_S%dM0AR val: 0x%08x\n", i, *((uint32_t*)(0x40020400 + 0x1C + 0x18*i)));
+	// 	ccprintf("DMA2_S%dM1AR val: 0x%08x\n", i, *((uint32_t*)(0x40020400 + 0x20 + 0x18*i)));
+	// 	ccprintf("DMA2_S%dFCR  val: 0x%08x\n", i, *((uint32_t*)(0x40020400 + 0x24 + 0x18*i)));
+	// }
+	// for(int i = 0; i < 8; i++) {
+	// 	ccprintf("DMA1_S%dCR   val: 0x%08x\n", i, *((uint32_t*)(0x40020000 + 0x10 + 0x18*i)));
+	// 	ccprintf("DMA1_S%dPAR  val: 0x%08x\n", i, *((uint32_t*)(0x40020000 + 0x18 + 0x18*i)));
+	// 	ccprintf("DMA1_S%dM0AR val: 0x%08x\n", i, *((uint32_t*)(0x40020000 + 0x1C + 0x18*i)));
+	// 	ccprintf("DMA1_S%dM1AR val: 0x%08x\n", i, *((uint32_t*)(0x40020000 + 0x20 + 0x18*i)));
+	// 	ccprintf("DMA1_S%dFCR  val: 0x%08x\n", i, *((uint32_t*)(0x40020000 + 0x24 + 0x18*i)));
+	// }
+	clock_enable_module(MODULE_FAST_CPU, 1);
+	ccprintf("DN RCC_CR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x00)));
+	ccprintf("DN RCC_CFGR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x10)));
+	ccprintf("DN RCC_D1CFGR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x18)));
+	ccprintf("DN RCC_D2CFGR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x1c)));
+	ccprintf("DN RCC_D3CFGR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x20)));
+	ccprintf("DN RCC_PLLCKSELR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x28)));
+	ccprintf("DN RCC_PLLCFGR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x2c)));
+	ccprintf("DN RCC_PLL1DIVR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x30)));
+	ccprintf("DN RCC_PLL1FRACR val : 0x%08x\n", *((uint32_t*)(0x58024400 + 0x34)));
 
-		} else {
-			/* Set the mask */
-			int index = console_channel_name_to_index(argv[1]);
+	clock_enable_module(MODULE_FAST_CPU, 0);
+       /* If one arg, save / restore, or set the mask */
+       if (argc == 2) {
+               if (strcasecmp(argv[1], "save") == 0) {
+                       channel_mask_saved = channel_mask;
+                       return EC_SUCCESS;
+               } else if (strcasecmp(argv[1], "restore") == 0) {
+                       channel_mask = channel_mask_saved;
+                       return EC_SUCCESS;
 
-			if (index >= 0) {
-				if (console_channel_is_disabled(index)) {
-					console_channel_enable(argv[1]);
-					ccprintf("chan %s enabled\n", argv[1]);
-				} else {
-					console_channel_disable(argv[1]);
-					ccprintf("chan %s disabled\n", argv[1]);
-				}
-			} else {
-				int m = strtoi(argv[1], &e, 0);
-				if (*e) {
-					return EC_ERROR_PARAM1;
-				}
-				/* No disabling the command output channel */
-				channel_mask = m | CC_MASK(CC_COMMAND);
-			}
+               } else {
+                       /* Set the mask */
+                       int index = console_channel_name_to_index(argv[1]);
 
-			return EC_SUCCESS;
-		}
-	}
+                       if (index >= 0) {
+                               if (console_channel_is_disabled(index)) {
+                                       console_channel_enable(argv[1]);
+//                                       ccprintf("chan %s enabled\n", argv[1]);
+                               } else {
+                                       console_channel_disable(argv[1]);
+  //                                     ccprintf("chan %s disabled\n", argv[1]);
+                               }
+                       } else {
+                               int m = strtoi(argv[1], &e, 0);
+                               if (*e) {
+                                       return EC_ERROR_PARAM1;
+                               }
+                               /* No disabling the command output channel */
+                               channel_mask = m | CC_MASK(CC_COMMAND);
+                       }
+
+                       return EC_SUCCESS;
+               }
+       }
 
 	/* Print the list of channels */
 	ccputs(" # Mask     E Channel\n");
