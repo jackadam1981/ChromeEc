@@ -412,7 +412,6 @@ class Renode(Platform):
                 "mpu",
                 "power_utilization",
                 "rtc_stm32f4",
-                "std_vector",
             ]:
                 return True
         elif board_config.name in [HELIPILOT, BUCCANEER]:
@@ -423,7 +422,6 @@ class Renode(Platform):
                 "libcxx",
                 "mpu",
                 "power_utilization",
-                "std_vector",
                 "exception",
                 "exit",
                 "flash_physical",
