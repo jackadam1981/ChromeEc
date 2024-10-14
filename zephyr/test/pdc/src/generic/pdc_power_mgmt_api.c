@@ -350,7 +350,7 @@ static void run_toggle_test(union connector_status_t *connector_status)
 	 * Thread priority set to cooperative to ensure it preempts the PDC
 	 * subsystem.
 	 */
-	memset(connector_status, 0, sizeof(union connector_status_t));
+	memset(&test_toggle_status, 0, sizeof(union connector_status_t));
 	k_tid_t test_thread =
 		start_toggle_thread(&test_thread_data, connector_status);
 
