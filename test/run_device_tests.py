@@ -411,7 +411,6 @@ class Renode(Platform):
                 "libcxx",
                 "power_utilization",
                 "rtc_stm32f4",
-                "std_vector",
             ]:
                 return True
         elif board_config.name in [HELIPILOT, BUCCANEER]:
@@ -421,7 +420,6 @@ class Renode(Platform):
                 "fpsensor_hw",
                 "libcxx",
                 "power_utilization",
-                "std_vector",
                 "fpsensor_auth_crypto_stateless",  # TODO(b/372969110)
                 "unaligned_access_benchmark",  # TODO(372969629)
             ]:
