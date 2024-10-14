@@ -16,6 +16,24 @@
       "message": "It should be straightforward to copy this test into a TCPM-as-source configuration to get more coverage.\n\nMore generally, we would probably be well-served by refactoring the ready states to avoid duplicating the message-handling logic for source and sink. Almost none of the message trigger different behavior depending on power role.",
       "revId": "eca287a136ea977ad842457b48d71527f8367a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0559201c_866a457d",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-14T09:45:35Z",
+      "side": 1,
+      "message": "filed b/373303680 for refactor the *_ready states",
+      "parentUuid": "a15ccb11_b7bde25d",
+      "revId": "eca287a136ea977ad842457b48d71527f8367a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
