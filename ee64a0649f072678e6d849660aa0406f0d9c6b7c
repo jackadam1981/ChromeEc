@@ -40,6 +40,30 @@
       ],
       "revId": "ee64a0649f072678e6d849660aa0406f0d9c6b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e5bd5c_8b9579eb",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-14T17:08:50Z",
+      "side": 1,
+      "message": "Since we\u0027re repeating the same value, it\u0027s cleaner to use a constant. We should change `bloonchipper` and `dartmonkey` too.",
+      "parentUuid": "98602806_f09e4930",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "ee64a0649f072678e6d849660aa0406f0d9c6b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
