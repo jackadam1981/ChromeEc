@@ -466,9 +466,21 @@ ZTEST_USER(pdc_power_mgmt_api_connectionless, test_get_pch_data_status)
 
 ZTEST_USER(pdc_power_mgmt_api_connectionless, test_set_trysrc)
 {
-	/* Send a command that requires a connection. It should fail. */
 	LOG_INF("Sending SET DRP");
-	zassert_equal(-EIO, pdc_power_mgmt_set_trysrc(TEST_PORT, true));
+	zassert_ok(pdc_power_mgmt_set_trysrc(TEST_PORT, true));
+}
+
+ZTEST_USER(pdc_power_mgmt_api_connectionless, test_get_drp)
+{
+	enum drp_mode_t drp_mode = DRP_NORMAL;
+	int rv;
+
+	LOG_INF("Sending GET DRP");
+	rv = pdc_power_mgmt_get_drp_mode(TEST_PORT, &drp_mode);
+	if (rv == -ENOSYS) {
+		ztest_test_skip();
+	}
+	zassert_ok(rv, "rv=%d", rv);
 }
 
 ZTEST_USER(pdc_power_mgmt_api_connectionless, test_get_lpm_ppm_info)
