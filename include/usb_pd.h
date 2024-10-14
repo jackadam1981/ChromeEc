@@ -189,6 +189,7 @@ enum pdo_augmented_pps {
 #define RDO_CAP_MISMATCH BIT(26)
 #define RDO_COMM_CAP BIT(25)
 #define RDO_NO_SUSPEND BIT(24)
+#define RDO_UNCHUNKED_EXTENDED_MESSAGES_SUPPORTED BIT(23)
 #define RDO_EPR_MODE_CAPABLE BIT(22)
 #define RDO_FIXED_VAR_OP_CURR(ma) ((((ma) / 10) & 0x3FF) << 10)
 #define RDO_FIXED_VAR_MAX_CURR(ma) ((((ma) / 10) & 0x3FF) << 0)

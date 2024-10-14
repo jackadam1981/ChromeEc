@@ -21,6 +21,7 @@
 #include <zephyr/sys/util.h>
 #include <zephyr/sys_clock.h>
 LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
+#include "usbc/pdc_power_mgmt.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -2007,11 +2008,30 @@ static int rts54_get_error_status(const struct device *dev,
 
 static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
 {
+	const struct pdc_config_t *cfg = dev->config;
 	struct pdc_data_t *data = dev->data;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
+
+	/* It is assumed the Realtek PDC always supports unchunked messages if
+	 * the partner supports PD3.0.  In this case we always set the unchunked
+	 * support bit.
+	 * TODO: b/369716280 - The PDC firmware should set or clear this
+	 * bit on it's own.
+	 *
+	 * TODO: b/372910804 - This check assumes the PDC power management
+	 * connector_number is always the same as the PDC driver connector
+	 * number.
+	 */
+	if (pdc_power_mgmt_get_rev(cfg->connector_number, TCPCI_MSG_SOP) !=
+	    PD_REV20) {
+		rdo |= RDO_UNCHUNKED_EXTENDED_MESSAGES_SUPPORTED;
+	}
+
+	LOG_INF("RTK%d: SET RDO, unchunking %d", cfg->connector_number,
+		(rdo & RDO_UNCHUNKED_EXTENDED_MESSAGES_SUPPORTED) ? 1 : 0);
 
 	uint8_t payload[] = {
 		SET_RDO.cmd, SET_RDO.len, SET_RDO.sub, 0x00,
