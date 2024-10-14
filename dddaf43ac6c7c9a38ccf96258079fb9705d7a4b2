@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10054d7d_828b8164",
+        "filename": "zephyr/program/rauru/navi/src/touch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-14T09:44:34Z",
+      "side": 1,
+      "message": "rauru\n```suggestion\nLOG_MODULE_DECLARE(rauru, CONFIG_RAURU_LOG_LEVEL);\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "dddaf43ac6c7c9a38ccf96258079fb9705d7a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
