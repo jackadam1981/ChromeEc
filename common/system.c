@@ -89,6 +89,9 @@ BUILD_ASSERT((sizeof(struct panic_data) + sizeof(struct jump_data) +
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_seconds;
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_microseconds;
 
+static const bool get_jump_data_function_exists =
+	IS_ENABLED(CONFIG_RAM_SIZE) && IS_ENABLED(CONFIG_COMMON_PANIC_OUTPUT);
+
 /* On-going actions preventing going into deep-sleep mode */
 atomic_t sleep_mask;
 
@@ -231,6 +234,14 @@ test_mockable int system_is_locked(void)
 
 test_mockable uintptr_t system_usable_ram_end(void)
 {
+	/* This function can be called while initializing C++ objects with
+	 * static storage duration, which occurs before any calls to
+	 * set jdata. e.g., from __libc_init_array in init.S.
+	 */
+	if (get_jump_data_function_exists && jdata == NULL) {
+		jdata = get_jump_data();
+	}
+
 	/* Leave space at the end of RAM for jump data and tags.
 	 *
 	 * Note that jump_tag_total is 0 on a reboot, so we have the maximum
