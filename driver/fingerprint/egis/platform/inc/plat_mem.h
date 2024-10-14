@@ -18,16 +18,10 @@ extern "C" {
 void *sys_alloc(size_t count, size_t size);
 void sys_free(void *data);
 
-static inline void plat_free(void *x)
-{
-	sys_free(x);
-}
-
-// TODO (b/373435445): Combine PLAT_FREE and plat_free.
-static inline void PLAT_FREE(void **x)
+static inline void plat_free(void **x)
 {
 	assert(x != NULL && *x != NULL);
-	plat_free(*x);
+	sys_free(*x);
 	*x = NULL;
 }
 
