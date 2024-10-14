@@ -22,6 +22,30 @@
       },
       "revId": "d4414ef4cfcf74f952f3acf65746b6f324064bff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ce1edf_92fae8e7",
+        "filename": "include/private_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3639181
+      },
+      "writtenOn": "2024-10-14T03:19:12Z",
+      "side": 1,
+      "message": "added this file to avoid build errors when the HAVE_PRIVATE flag is set. \nrelevant code in config.h at line 7428:\n#ifdef HAVE_PRIVATE\n#include \"private_config.h\"\n#endif /* HAVE_PRIVATE */",
+      "parentUuid": "eb406a5f_190419c2",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "d4414ef4cfcf74f952f3acf65746b6f324064bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
