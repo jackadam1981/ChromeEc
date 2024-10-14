@@ -88,6 +88,30 @@
       },
       "revId": "ee64a0649f072678e6d849660aa0406f0d9c6b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b57b477_1966e01a",
+        "filename": "util/renode_ec_launch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-14T18:21:22Z",
+      "side": 1,
+      "message": "This is a topic of debate, though. In my opinion, not all constants should be deduplcated and pulled into constants. No one asked, but I error on the side of not deduplicating.\n\nReplacing constants with variables will add an additional cognitive step to be able to determine what the concrete value is and where/when it could even be used. If the deduplication is worth adding that extra step, like when the expression is complex/long, it will be changed in the future,  and/or the variable name adds meaning to the value (eg. `MPU_BASE_ADDRESS\u003d0xDEADBEEF`), then by all means extract it to a constant.\n\nI think there are some lessons to be learned from run_device_tests.py, where we are pulling out too many trivial expressions, that make it hard to understand. Take for example the `BLOONCHIPPER \u003d \"bloonchipper\"` constant variable. If we renamed this, we would end up replacing the variable name, anyways. It also does\u0027t hide any complex object/expression, its just the string \"bloonchipper\". It also doesn\u0027t add any additional information about the value, since they are essentially the same name. Plus, these variables are not immutable and can be accidentally globally overwritten.\n\n---\n\nConstants that have a specific type / object are valuable. In Go, you can create good function interfaces that require a specific type, like an enum.\n\n```go\ntype FPBoard string\n\nconst (\n    Bloonchipper FPBoard \u003d \"bloonchipper\"\n    Dartmonkey FPBoard \u003d \"dartmonkey\"\n)\n\n// Logically constrains the input to an FPBoard.\n// Now documentation will show all FPBoard options.\nfunc DoSomthing(board FPBoard) {}\n```\n\nThere is value here.\n\n---\n\nIt\u0027s hard to find internal best practices for this, but here is one http://go/java-practices/constants .",
+      "parentUuid": "00dfb82b_15ba6fda",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "ee64a0649f072678e6d849660aa0406f0d9c6b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
