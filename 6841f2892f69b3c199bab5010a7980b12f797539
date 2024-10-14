@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7429beb8_12e7b43c",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-14T10:25:27Z",
+      "side": 1,
+      "message": "these numbers can be found in \"egis_definition.h\"",
+      "parentUuid": "301ddb7a_4d1e1651",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 79
+      },
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa79d602_36572d8f",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 7
@@ -109,6 +133,30 @@
           ]
         }
       ],
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa12d28b_c3216a37",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-14T10:25:27Z",
+      "side": 1,
+      "message": "this function will just return 0",
+      "parentUuid": "fa79d602_36572d8f",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 29
+      },
       "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -215,6 +263,30 @@
           ]
         }
       ],
+      "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401136b9_e86f3b1d",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-14T10:25:27Z",
+      "side": 1,
+      "message": "EGIS_API_FINGER_UNSTABLE:\nThis usually occurs when the sensor detects ESD or reset.\n\nEGIS_API_FINGER_LOST:\nThis mean the capacitive sensor detecting a decrease in the capacitance value on the surface, with the difference exceeding the threshold we have set for finger removal.\n\nEGIS_API_FINGER_PRESENT:\nThis mean the capacitive sensor detecting an increase in the capacitance value on the surface, with the difference exceeding the threshold we have set for finger presence.\n\n\nOur sensor just can detect finger on/off int detect mode. So we would not return EGIS_API_FINGER_PARTIAL.",
+      "parentUuid": "18cc83f5_87e483e2",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 35
+      },
       "revId": "6841f2892f69b3c199bab5010a7980b12f797539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
