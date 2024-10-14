@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75035063_36654d15",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-14T18:21:18Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com is `memody` correct? What does it mean?",
+      "range": {
+        "startLine": 70,
+        "startChar": 37,
+        "endLine": 70,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f9860b41_5ead198b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_OUT_OF_MEMORY : when memory memory fails.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e166686_de9599a6",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-14T18:21:18Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com is this correct `sensinf` or `sensing`?",
+      "range": {
+        "startLine": 74,
+        "startChar": 59,
+        "endLine": 74,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8ce404f7_df1a43e3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_CALIBRATION_SENSING_FAIL : when the sensor sensing mode\n"
+            }
+          ]
+        }
+      ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b6d2e3_d2eae29a",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-14T18:21:18Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com we might need to rewrite this statement. do you have any suggestions?",
+      "range": {
+        "startLine": 76,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "487bf887_fc28b7b1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_CALIBRATION_SENSING_FAIL : when the sensor sensing mode\n"
+            }
+          ]
+        }
+      ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29075f63_57ae2368",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-14T18:21:18Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\nwe might need to rewrite this statement. How about:\n```\nwhen the attempt to retrieve the sensor\u0027s OTP (One-Time Programmable) data has failed\n```",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "69663c0e_0cc5714d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 79,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_GET_OTP_FAIL : when the attempt to retrieve the sensor\u0027s OTP\n * (One-Time Programmable) data has failed.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bbf84fa_4bc87bc6",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-14T18:21:18Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\nI believe this has to be rewritten as such:\n```\nwhen memory allocation fails.\n```",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 60
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "54ddd433_051c0931",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_OUT_OF_MEMORY : when @ allocation memory fails.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
