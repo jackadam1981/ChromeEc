@@ -242,7 +242,24 @@ enum drp_mode_t {
 	DRP_TRY_SNK,
 	/** DRP Invalid */
 	DRP_INVALID,
+	DRP_MAX_ENUM = DRP_INVALID,
 };
+
+static const char *drp_mode_names[] = {
+	"NORMAL",
+	"TRY_SRC",
+	"TRY_SNK",
+};
+BUILD_ASSERT(ARRAY_SIZE(drp_mode_names) == DRP_MAX_ENUM);
+
+static inline const char *get_drp_mode_name(enum drp_mode_t mode)
+{
+	if (mode < DRP_INVALID) {
+		return drp_mode_names[mode];
+	} else {
+		return "INVALID DRP MODE";
+	}
+}
 
 /**
  * @brief PDO Source: PDC or Port Partner
