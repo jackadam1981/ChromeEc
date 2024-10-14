@@ -231,6 +231,15 @@ test_mockable int system_is_locked(void)
 
 test_mockable uintptr_t system_usable_ram_end(void)
 {
+	/* This function can be called while initializing C++ objects with
+	 * static storage duration, which occurs before any calls to
+	 * set jdata. e.g., from __libc_init_array in init.S.
+	 */
+	if (IS_ENABLED(CONFIG_RAM_SIZE) &&
+	    IS_ENABLED(CONFIG_COMMON_PANIC_OUTPUT) && jdata == NULL) {
+		jdata = get_jump_data();
+	}
+
 	/* Leave space at the end of RAM for jump data and tags.
 	 *
 	 * Note that jump_tag_total is 0 on a reboot, so we have the maximum
