@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93c06e1_433e2291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-10-15T12:21:21Z",
+      "side": 1,
+      "message": "add Fan support.\nTODO:\n1. tach1 doesn\u0027t support input debounce\n2. Fan RPM need modify to match SPEC\n3. gpio_en_pp5000_fan need check default state with EE",
+      "revId": "21f91ec2316922b10e3f69afc1ea009bff28af8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
