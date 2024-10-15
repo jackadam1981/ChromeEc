@@ -12,6 +12,23 @@
 extern "C" {
 #endif
 
+/**
+ * @brief Issue a SPI transaction.  Assumes SPI port has already been enabled.
+ *
+ * Transmits <txlen> bytes from <txdata>, throwing away the corresponding
+ * received data, then transmits <rxlen> bytes, saving the received data in
+ * <rxdata>.
+ *
+ * @param tx_addr A pointer to the transmit buffer containing the data to be
+ * sent.
+ * @param tx_len The length of the transmit buffer in bytes.
+ * @param rx_buf A pointer to the receive buffer where the received data will be
+ * stored.
+ * @param rx_len The length of the receive buffer in bytes.
+ *
+ * @return 0 on success.
+ * @return negative value on error.
+ */
 int periphery_spi_write_read(uint8_t *tx_addr, uint32_t tx_len, uint8_t *rx_buf,
 			     uint32_t rx_len);
 
