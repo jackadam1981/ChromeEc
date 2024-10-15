@@ -48,16 +48,15 @@ static int td_pd_vndi3_e3(enum pd_data_role data_role)
 	 * No, the tester checks that the UUT replies Not_Supported.  The test
 	 * stops here in this case.
 	 */
-	TEST_EQ(verify_tcpci_transmit(TCPCI_MSG_SOP, PD_CTRL_NOT_SUPPORTED, 0),
+
+	/* TODO: usb_pd_dpm_mock responds an NAK instead of Identity message */
+	TEST_EQ(verify_tcpci_transmit(TCPCI_MSG_SOP, 0, PD_DATA_VENDOR_DEF),
 		EC_SUCCESS, "%d");
 	mock_set_alert(TCPC_REG_ALERT_TX_SUCCESS);
 
 	/*
 	 * TODO: Items d)-i) could be verified if the unit tests are configured
 	 * to reply to Identity messages.
-	 *
-	 * d) For Cables, the Tester checks the consistency of
-	 * Specification_Revision
 	 *
 	 * e) For all devices, the Tester checks in the ID Header consistency
 	 * of:
