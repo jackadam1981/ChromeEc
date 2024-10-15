@@ -50,6 +50,11 @@ static int svdm_identity(int port, uint32_t *payload)
 	}
 }
 
+static int svdm_responder_nak(int port, uint32_t *payload)
+{
+	return 0;
+}
+
 __override const struct svdm_response svdm_rsp = {
 	.identity = svdm_identity,
 	/*
@@ -58,4 +63,8 @@ __override const struct svdm_response svdm_rsp = {
 	 * as Responder in any mode, so leave them unimplemented. See 6.13.5,
 	 * Applicability of Structured VDM Commands.
 	 */
+	.svids = svdm_responder_nak,
+	.modes = svdm_responder_nak,
+	.enter_mode = svdm_responder_nak,
+	.exit_mode = svdm_responder_nak,
 };
