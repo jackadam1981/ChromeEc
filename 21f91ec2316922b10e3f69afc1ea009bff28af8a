@@ -16,6 +16,29 @@
       "message": "add Fan support.\nTODO:\n1. tach1 doesn\u0027t support input debounce\n2. Fan RPM need modify to match SPEC\n3. gpio_en_pp5000_fan need check default state with EE",
       "revId": "21f91ec2316922b10e3f69afc1ea009bff28af8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568a2224_6fa0e17c",
+        "filename": "zephyr/program/nissa/telith/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-10-15T12:36:47Z",
+      "side": 1,
+      "message": "PWM_CHANNEL_3",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "21f91ec2316922b10e3f69afc1ea009bff28af8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
