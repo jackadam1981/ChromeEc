@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03260f8d_ad70bf20",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-15T22:26:44Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "2fb0425c_536c7c63",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 36
+      },
+      "revId": "31ca820f0ad941bf53932092c384d327b0978777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a9efce_b9b69cf9",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-15T22:26:44Z",
+      "side": 1,
+      "message": "this is actually wrong, will need to a new callback that happens on TPM_Init only.\n_plat__StartupCallback is called for all kinds of Startup, including Startup(STATE) on S3-\u003eS0, for which we don\u0027t want to clear the current state.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "31ca820f0ad941bf53932092c384d327b0978777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "921d2a0a_5bfe254a",
         "filename": "board/cr50/tpm2/platform.c",
         "patchSetId": 1
@@ -37,6 +84,30 @@
       "writtenOn": "2024-10-15T16:09:35Z",
       "side": 1,
       "message": "Do we need to clear it if CCD is opened?",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 30
+      },
+      "revId": "31ca820f0ad941bf53932092c384d327b0978777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b39a68e_a7cd0d5a",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-15T22:26:44Z",
+      "side": 1,
+      "message": "yes, since it clears the owner. what happens to vars on CCD open? I though they are not preserved",
+      "parentUuid": "921d2a0a_5bfe254a",
       "range": {
         "startLine": 167,
         "startChar": 1,
