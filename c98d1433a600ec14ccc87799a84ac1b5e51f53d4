@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4977ce_debb207c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-15T16:48:22Z",
+      "side": 1,
+      "message": "CQ failed at a line inside the old tcpmv2 compliance test (sec/test/usb_tcpmv2_compliance.c).\n\nIt\u0027s not hard to fix, but I\u0027m wondering is there any plan to deprecate it?",
+      "revId": "c98d1433a600ec14ccc87799a84ac1b5e51f53d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
