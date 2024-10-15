@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fb0425c_536c7c63",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2024-10-15T16:29:16Z",
+      "side": 1,
+      "message": "does it make sense to clean `uds_ubf` after use or may be directly output to `uds` in dcrypto_ladder_derive?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 36
+      },
+      "revId": "31ca820f0ad941bf53932092c384d327b0978777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "921d2a0a_5bfe254a",
         "filename": "board/cr50/tpm2/platform.c",
         "patchSetId": 1
