@@ -34,6 +34,24 @@
       "message": "IIUC, this clears connector_status passed by all the tests below. Did you mean test_toggle_status by any chance?",
       "revId": "4ed548ea1335c27ab1ac22338f0316d0f5b45ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362b4df8_8b73a3ec",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-15T14:44:30Z",
+      "side": 1,
+      "message": "I don\u0027t think this line is needed.  We `memcpy` the connector_status on line 218 above.  I agree we shouldn\u0027t be clearing the connector_status as its populated from the tests.",
+      "parentUuid": "58c8c1eb_6b918846",
+      "revId": "4ed548ea1335c27ab1ac22338f0316d0f5b45ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
