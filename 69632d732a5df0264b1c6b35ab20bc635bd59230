@@ -204,6 +204,57 @@
       ],
       "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e808c78b_8eb6a1bf",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-15T16:08:33Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com Why do we have this function return two error codes with the same message `EGIS_OUT_OF_MEMORY` and `ET630_IPP_ERR_OTUOFMEMORY`? By the way `OTUOFMEMORY` has a typo: is it supposed to be `OUTOFMEMORY`?? Is this how it is added to the code? If I remember correctly, you mentioned that this error code will be removed. Let us remove from this header file everything which will be removed. Can you show me how the function returns those codes. I cannot see it by inspecting the function.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 68
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "62708085_0c3c69b7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 108,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_API_ERROR_PARAMETER : when there are incorrect parameters.\n * @return EGIS_API_ERROR_MEMORY : when allocation memory fails.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 119,
+                "startChar": 0,
+                "endLine": 121,
+                "endChar": 0
+              },
+              "replacement": " * @return EGIS_API_ERROR_PARAMETER : when there are incorrect parameters.\n * @return EGIS_API_ERROR_MEMORY : when allocation memory fails.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
