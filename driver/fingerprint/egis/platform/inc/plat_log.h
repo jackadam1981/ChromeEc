@@ -47,9 +47,30 @@ typedef enum {
 		   ##__VA_ARGS__)
 #endif
 
+/**
+ * @brief Formats and outputs a log message based on the provided level, tag,
+ * file information, and format string.
+ *
+ * @param level The log level of the message.
+ * @param tag [in] A tag or category for the message.
+ * @param file_name [in] The file path where the log message originates.
+ * @param func [in] The function name where the log message originates.
+ * @param line [in] The line number where the log message originates.
+ * @param format [in] A printf-style format string for the message.
+ * @param (...) Variable number of arguments to be formatted according to the
+ * format string.
+ *
+ */
 void output_log(LOG_LEVEL level, const char *tag, const char *file_name,
 		const char *func, int line, const char *format, ...);
 
+/**
+ * @brief Sets the global debug level, controlling which log messages are
+ * output.
+ *
+ * @param level The desired debug level.
+ *
+ */
 void set_debug_level(LOG_LEVEL level);
 #if defined(SDK_EVTOOL_DEBUG) || defined(SDK_ALGO_MODULE_MODE)
 #include "common_definition.h"
