@@ -635,6 +635,7 @@ class AllTests:
             TestConfig(
                 config_name="panic_data",
                 test_name="panic_data",
+                timeout_secs=30,
                 fail_regexes=[
                     SINGLE_CHECK_FAILED_REGEX,
                     ALL_TESTS_FAILED_REGEX,
@@ -761,6 +762,7 @@ class AllTests:
                 TestConfig(
                     config_name="panic_data_" + variant_name,
                     test_name="panic_data",
+                    timeout_secs=30,
                     fail_regexes=[
                         SINGLE_CHECK_FAILED_REGEX,
                         ALL_TESTS_FAILED_REGEX,
