@@ -26,14 +26,8 @@
 extern "C" {
 #endif
 
-/**
- * Extract the 16-bit VID or PID from the 32-bit container in
- * `struct pdc_info_t`
- */
-#define PDC_VIDPID_GET_VID(vidpid) (((vidpid) >> 16) & 0xFFFF)
-#define PDC_VIDPID_GET_PID(vidpid) ((vidpid) & 0xFFFF)
-
-#define PDC_VIDPID_INVALID (0x00000000)
+#define PDC_VID_INVALID (0x0000)
+#define PDC_PID_INVALID (0x0000)
 
 /**
  * Compare PDC versions
@@ -63,8 +57,10 @@ struct pdc_info_t {
 	uint16_t pd_revision;
 	/** Power Delivery Version supported by the PDC */
 	uint16_t pd_version;
-	/** VID:PID of the PDC (optional) */
-	uint32_t vid_pid;
+	/** VID of the PDC (optional) */
+	uint16_t vid;
+	/** PID of the PDC (optional) */
+	uint16_t pid;
 	/** Set to 1 if running from flash code (optional) */
 	uint8_t is_running_flash_code;
 	/** Set to the currently used flash bank (optional) */
@@ -186,6 +182,8 @@ typedef int (*pdc_ack_cc_ci_t)(const struct device *dev,
 typedef int (*pdc_get_lpm_ppm_info_t)(const struct device *dev,
 				      struct lpm_ppm_info_t *info);
 typedef int (*pdc_set_frs_t)(const struct device *dev, bool enable);
+typedef int (*pdc_get_attention_vdo_t)(const struct device *dev,
+				       union get_attention_vdo_t *vdo);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -231,6 +229,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_ack_cc_ci_t ack_cc_ci;
 	pdc_get_lpm_ppm_info_t get_lpm_ppm_info;
 	pdc_set_frs_t set_frs;
+	pdc_get_attention_vdo_t get_attention_vdo;
 };
 /**
  * @endcond
@@ -1308,6 +1307,26 @@ static inline int pdc_set_frs(const struct device *dev, bool enable)
 	}
 
 	return api->set_frs(dev, enable);
+}
+
+/**
+ * @brief UCSI command to request an Attention VDO received from the partner
+ * @param dev PDC device structure pointer
+ * @param get_attention_vdo_t pointer where the GET_ATTENTION_VDO response is
+ * stored.
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_get_attention_vdo(const struct device *dev,
+					union get_attention_vdo_t *vdo)
+{
+	const struct pdc_driver_api_t *api =
+		(const struct pdc_driver_api_t *)dev->api;
+
+	if (api->get_attention_vdo == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->get_attention_vdo(dev, vdo);
 }
 
 #ifdef __cplusplus

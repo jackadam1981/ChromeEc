@@ -2330,6 +2330,11 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			/* Calculate the delay from TX success to PE */
 			offset = time_since32(tx_success_ts);
 
+			int t_sender_response =
+				prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20 ?
+					PD2_T_SENDER_RESPONSE :
+					PD3_T_SENDER_RESPONSE;
+
 			/*
 			 * Initialize and run the SenderResponseTimer by
 			 * offsetting it with TX transmit success time.
@@ -2337,7 +2342,7 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			 * propagating the TX status.
 			 */
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
-					PD_T_SENDER_RESPONSE - offset);
+					t_sender_response - offset);
 			return PE_MSG_SEND_COMPLETED;
 		}
 		return PE_MSG_SEND_PENDING;
@@ -6050,9 +6055,19 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 					PE_T_DISCOVER_IDENTITY_NO_CONTRACT);
 	}
 
-	/* Do not attempt further discovery if identity discovery failed. */
+	/* Do not attempt further discovery if identity discovery failed or if
+	 * DiscoverIdentity ACK did not set Modal Operation.
+	 */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		pd_notify_event(port,
+				pe[port].tx_type == TCPCI_MSG_SOP ?
+					PD_STATUS_EVENT_SOP_DISC_DONE :
+					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+	} else if (!pd_get_identity_response(port, pe[port].tx_type)
+			    ->idh.modal_support) {
+		pd_set_svids_discovery(port, pe[port].tx_type,
+				       PD_DISC_COMPLETE);
 		pd_notify_event(port,
 				pe[port].tx_type == TCPCI_MSG_SOP ?
 					PD_STATUS_EVENT_SOP_DISC_DONE :
@@ -6138,9 +6153,19 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 	}
 
-	/* Do not attempt further discovery if identity discovery failed. */
+	/* Do not attempt further discovery if identity discovery failed or if
+	 * DiscoverIdentity ACK did not set Modal Operation.
+	 */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		pd_notify_event(port,
+				pe[port].tx_type == TCPCI_MSG_SOP ?
+					PD_STATUS_EVENT_SOP_DISC_DONE :
+					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+	} else if (!pd_get_identity_response(port, pe[port].tx_type)
+			    ->idh.modal_support) {
+		pd_set_svids_discovery(port, pe[port].tx_type,
+				       PD_DISC_COMPLETE);
 		pd_notify_event(port,
 				pe[port].tx_type == TCPCI_MSG_SOP ?
 					PD_STATUS_EVENT_SOP_DISC_DONE :
