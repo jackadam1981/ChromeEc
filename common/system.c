@@ -196,37 +196,7 @@ static uint32_t __attribute__((unused)) get_size(enum ec_image copy)
 
 test_mockable int system_is_locked(void)
 {
-	static int is_locked = -1;
-
-	if (force_locked)
-		return 1;
-	if (is_locked != -1)
-		return is_locked;
-
-#ifdef CONFIG_SYSTEM_UNLOCKED
-	/* System is explicitly unlocked */
-	is_locked = 0;
-	return 0;
-
-#elif defined(CONFIG_FLASH_CROS)
-	/*
-	 * Unlocked if write protect pin deasserted or read-only firmware
-	 * is not protected.
-	 */
-	if ((EC_FLASH_PROTECT_GPIO_ASSERTED | EC_FLASH_PROTECT_RO_NOW) &
-	    ~crec_flash_get_protect()) {
-		is_locked = 0;
-		return 0;
-	}
-
-	/* If WP pin is asserted and lock is applied, we're locked */
-	is_locked = 1;
 	return 1;
-#else
-	/* Other configs are locked by default */
-	is_locked = 1;
-	return 1;
-#endif
 }
 
 test_mockable uintptr_t system_usable_ram_end(void)

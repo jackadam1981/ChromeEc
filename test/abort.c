@@ -11,6 +11,15 @@
 
 #include <stdlib.h>
 
+int system_is_locked(void)
+{
+	/* return system_is_locked = 0 for the first run step i.e. state = 0
+	 * (test_system_is_not_locked) and system_is_locked = 1 for all the
+	 * other states.
+	 */
+	return test_get_state() != 0;
+}
+
 test_static int test_abort(void)
 {
 	ccprintf("Calling abort\n");
