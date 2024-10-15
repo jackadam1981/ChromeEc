@@ -420,7 +420,10 @@ class Renode(Platform):
                 "benchmark",
                 "fpsensor_hw",
                 "libcxx",
+                "otp_key",
                 "power_utilization",
+                "ram_lock",
+                "rtc_npcx9",
                 "std_vector",
                 "fpsensor_auth_crypto_stateless",  # TODO(b/372969110)
                 "unaligned_access_benchmark",  # TODO(372969629)
