@@ -2252,6 +2252,10 @@ def all_targets():
         board = "teliks",
     )
     ec_target(
+        name = "telith",
+        board = "telith",
+    )
+    ec_target(
         name = "tentacruel",
         board = "tentacruel",
     )
