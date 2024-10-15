@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "203ff64b_df561839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-10-15T07:00:19Z",
+      "side": 1,
+      "message": "firmware cq failures has been seen because of tests available for rex-ish to handle code coverage for notebook mode changes. I am looking into the failures and will update once resolved.",
+      "revId": "c230a0e5541aa113878050d87d277cb4c2d87ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
