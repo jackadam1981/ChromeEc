@@ -14,7 +14,22 @@
 extern "C" {
 #endif
 
+/**
+ * @brief Allocates a block of memory of a specified size and number of
+ * elements.
+ *
+ * @param count The number of elements to allocate.
+ * @param size The size of each element in bytes.
+ *
+ */
 void *sys_alloc(size_t count, size_t size);
+
+/**
+ * @brief Safely releases a block of shared memory.
+ *
+ * @param data A pointer to the memory block to be released.
+ *
+ */
 void sys_free(void *data);
 
 static inline void plat_free(void *x)
@@ -25,6 +40,14 @@ static inline void plat_free(void *x)
 // TODO (b/373446652): Change the return to an ASSERT to catch the free of a
 // pointer to NULL.
 // TODO (b/373435445): Combine PLAT_FREE and plat_free.
+/**
+ * @brief Deallocates memory and sets the provided pointer to NULL.
+ *
+ * @param x A pointer to a pointer to the memory block to be freed. This is a
+ * double pointer, meaning it points to a memory location that holds another
+ * pointer, which in turn points to the actual data.
+ *
+ */
 static inline void PLAT_FREE(void **x)
 {
 	if (x == NULL || *x == NULL) {
@@ -34,6 +57,12 @@ static inline void PLAT_FREE(void **x)
 	*x = NULL;
 }
 
+/**
+ * @brief Allocates a block of memory of the specified size.
+ *
+ * @param size The size of the memory block to allocate, in bytes.
+ *
+ */
 static inline void *plat_alloc(size_t size)
 {
 	return sys_alloc(1, size);
