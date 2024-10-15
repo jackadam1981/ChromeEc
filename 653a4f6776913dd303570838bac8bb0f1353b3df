@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba25c1c7_8c6bc3bd",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-15T17:55:20Z",
+      "side": 1,
+      "message": "@jacob.kung@egistec.corp-partner.google.com\nThis is the header for the [spi_transaction] (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/spi.h;l\u003d89#:~:text\u003d88-,89,-90) function. \n\nhow do you handle `SPI_READBACK_ALL`? \n\nwhere is [\u0026spi_devices[0]](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/egis/platform/src/plat_spi_mcu.c;l\u003d16?q\u003dspi_devices\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2Fdriver%2Ffingerprint%2Fegis%2F#:~:text\u003d15-,16,-17) defined?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b4c1cbba_1a035ab4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 17,
+                "endChar": 0
+              },
+              "replacement": " * @brief Issues a SPI transaction.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "653a4f6776913dd303570838bac8bb0f1353b3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
