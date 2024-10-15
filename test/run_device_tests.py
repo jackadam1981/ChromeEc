@@ -418,9 +418,16 @@ class Renode(Platform):
             if test_name in [
                 "production_app_test",
                 "benchmark",
+                "exception",
+                "exit",
+                "flash_physical",
                 "fpsensor_hw",
                 "libcxx",
+                "otp_key",
                 "power_utilization",
+                "ram_lock",
+                "rollback",
+                "rtc_npcx9",
                 "std_vector",
                 "fpsensor_auth_crypto_stateless",  # TODO(b/372969110)
                 "unaligned_access_benchmark",  # TODO(372969629)
