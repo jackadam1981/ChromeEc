@@ -135,6 +135,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
 	return ret;
 }
 
+extern uint8_t Select_5V_3A;
 void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		      uint32_t *mv, int port)
 {
@@ -174,6 +175,11 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		max_request_allowed = pd_is_max_request_allowed();
 	else
 		max_request_allowed = 1;
+
+	if (Select_5V_3A) {
+		/* Select 5V/3A */
+		max_request_allowed = 0;
+	}
 
 	if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled())
 		max_request_mv = MIN(max_request_mv, dps_get_dynamic_voltage());
@@ -261,6 +267,12 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		int mw = uw / 1000;
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
 	} else {
+		if (Select_5V_3A) {
+			/* Select first 5V/3A SRC_CAP and operate current fixed to 0 */
+			*ma = 0;
+			Select_5V_3A = 0;
+		}
+
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
 

@@ -3287,12 +3287,16 @@ static void pe_src_transition_to_default_run(int port)
 	}
 }
 
+uint8_t Select_5V_3A = 0;
+
 /**
  * PE_SNK_Startup State
  */
 static void pe_snk_startup_entry(int port)
 {
 	print_current_state(port);
+
+	Select_5V_3A = 1;
 
 	/* Reset the protocol layer */
 	prl_reset_soft(port);
