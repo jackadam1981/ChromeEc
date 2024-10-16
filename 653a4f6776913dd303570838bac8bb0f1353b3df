@@ -40,6 +40,30 @@
       ],
       "revId": "653a4f6776913dd303570838bac8bb0f1353b3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c02d9d_8abb7769",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T01:19:26Z",
+      "side": 1,
+      "message": "we did not use the option \"SPI_READBACK_ALL\"\n\n \u0026spi_devices[0]  may define in base_board_rw.c",
+      "parentUuid": "ba25c1c7_8c6bc3bd",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "653a4f6776913dd303570838bac8bb0f1353b3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
