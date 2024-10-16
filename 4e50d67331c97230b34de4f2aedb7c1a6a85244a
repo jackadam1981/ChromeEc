@@ -16,6 +16,24 @@
       "message": "Could this be added as part of zmake?\nhttp://cs/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/zephyr/zmake/zmake/toolchains.py?l\u003d132",
       "revId": "4e50d67331c97230b34de4f2aedb7c1a6a85244a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a56551_68c94d47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-16T14:48:40Z",
+      "side": 1,
+      "message": "I feel like there should be some environment variable we can set to handle this, I\u0027m not a fan of hard coding paths.",
+      "parentUuid": "ce6d5881_6705960d",
+      "revId": "4e50d67331c97230b34de4f2aedb7c1a6a85244a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
