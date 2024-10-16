@@ -34,6 +34,24 @@
       "parentUuid": "ce6d5881_6705960d",
       "revId": "4e50d67331c97230b34de4f2aedb7c1a6a85244a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bff7722_7820731e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-10-16T17:21:40Z",
+      "side": 1,
+      "message": "In our `llvm/target.cmake` we support only our toolchain, so hard coding paths are not that bad - we are not going to change that.\n\n\u003e Could this be added as part of zmake?\n\n\u003e I\u0027m not a fan of hard coding paths.\n\nI totally agree with you. It would be better to add it to zmake, but unfortunately zmake doesn\u0027t know which architecture will be used (we have one compiler, but 3 sysroots).",
+      "parentUuid": "42a56551_68c94d47",
+      "revId": "4e50d67331c97230b34de4f2aedb7c1a6a85244a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
