@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ce7765a_39fe8854",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T02:16:58Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nthis should be\n* @return EGIS_OUT_OF_MEMORY : when alloc memory fails.\nor \n* @return EGIS_OUT_OF_MEMORY : when memory allocation fails.",
+      "parentUuid": "75035063_36654d15",
+      "range": {
+        "startLine": 70,
+        "startChar": 37,
+        "endLine": 70,
+        "endChar": 43
+      },
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e166686_de9599a6",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 8
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283c882e_49ecae53",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T02:16:58Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nthis should be \"sensing\"",
+      "parentUuid": "8e166686_de9599a6",
+      "range": {
+        "startLine": 74,
+        "startChar": 59,
+        "endLine": 74,
+        "endChar": 66
+      },
       "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +174,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd81ff03_1ed9afd2",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T02:16:58Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nmaybe below can be better?\n * @return EGIS_CALIBRATION_SENSING_FAIL : when sensor do sensing mode\n * calibration fails.\n * @return EGIS_CALIBRATION_DETECT_FAIL : when sensor do detect mode\n * calibration fails.",
+      "parentUuid": "60b6d2e3_d2eae29a",
+      "range": {
+        "startLine": 76,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29075f63_57ae2368",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 8
@@ -167,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af7e09b5_865c3fae",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T02:16:58Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nyour statement is better. but maybe OTP can be descript to (One-Time Programmable memory)\n* @return EGIS_GET_OTP_FAIL : when the attempt to retrieve the sensor\u0027s OTP\n* (One-Time Programmable memory) data has failed.",
+      "parentUuid": "29075f63_57ae2368",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 62
+      },
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bbf84fa_4bc87bc6",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 8
@@ -202,6 +298,30 @@
           ]
         }
       ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01bf2f8_ac976c6f",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T02:16:58Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nyes, this should be \n@return EGIS_OUT_OF_MEMORY : when alloc memory fails.\nor\n@return EGIS_OUT_OF_MEMORY : when memory allocation fails.",
+      "parentUuid": "5bbf84fa_4bc87bc6",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 60
+      },
       "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -253,6 +373,30 @@
           ]
         }
       ],
+      "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3760ae_ba265252",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T02:16:58Z",
+      "side": 1,
+      "message": "\"ET630_IPP_ERR_OTUOFMEMORY\" was define in https://chrome-internal.googlesource.com/chromeos/vendor/fingerprint/egis/+/refs/heads/main/pure_sensor/ipp_ET630.h\n\nYes, we were in progress to convert the private code\u0027s return value as\n1. one return value match to one message\n2. negative value on error\n3. positive value with some info but not error",
+      "parentUuid": "e808c78b_8eb6a1bf",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 68
+      },
       "revId": "69632d732a5df0264b1c6b35ab20bc635bd59230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
