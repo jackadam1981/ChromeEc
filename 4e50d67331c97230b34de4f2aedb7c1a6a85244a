@@ -52,6 +52,23 @@
       "parentUuid": "42a56551_68c94d47",
       "revId": "4e50d67331c97230b34de4f2aedb7c1a6a85244a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4798a57_e2c48ea6",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-16T22:36:26Z",
+      "side": 1,
+      "message": "Could we use this outside the if/else checks?\n```\nset(LLVM_TOOLCHAIN_PATH \"/usr/${CROSS_COMPILE_TARGET}\")\n```",
+      "revId": "4e50d67331c97230b34de4f2aedb7c1a6a85244a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
