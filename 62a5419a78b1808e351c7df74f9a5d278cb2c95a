@@ -16,6 +16,29 @@
       "message": "This methodology seems OK +/- a count.  Is this covering up an underlying reliability issue?",
       "revId": "62a5419a78b1808e351c7df74f9a5d278cb2c95a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43c2940_7d073af0",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-16T18:30:02Z",
+      "side": 1,
+      "message": "doesn\u0027t this get you into an infinite loop during failures?",
+      "range": {
+        "startLine": 137,
+        "startChar": 24,
+        "endLine": 137,
+        "endChar": 26
+      },
+      "revId": "62a5419a78b1808e351c7df74f9a5d278cb2c95a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
