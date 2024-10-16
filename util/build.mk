@@ -27,7 +27,7 @@ endif
 -include private/util_flags.mk
 
 comm-objs=$(util-lock-objs:%=lock/%) comm-host.o comm-dev.o
-comm-objs+=comm-lpc.o comm-i2c.o misc_util.o comm-usb.o
+comm-objs+=comm-lpc.o comm-i2c.o misc_util.o comm-usb.o comm-renode.o
 
 iteflash-objs = iteflash.o usb_if.o
 itecomdbgr-objs = itecomdbgr.o

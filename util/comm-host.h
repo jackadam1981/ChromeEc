@@ -32,6 +32,7 @@ enum comm_interface {
 	COMM_I2C = BIT(2),
 	COMM_SERVO = BIT(3),
 	COMM_USB = BIT(4),
+	COMM_RENODE = BIT(5),
 	COMM_ALL = -1
 };
 
@@ -51,6 +52,14 @@ int comm_init_alt(int interfaces, const char *device_name, int i2c_bus);
  * @return 0 in case of success, or error code.
  */
 int comm_init_dev(const char *device_name);
+
+/**
+ * Initialize the Renode backend
+ *
+ * @param file_name Path to the PTY interface exported from Renode.
+ * @return 0 in case of success, or error code.
+ */
+int comm_init_renode(const char *file_name);
 
 /**
  * Get the file descriptor associated with the dev interface. comm_init_dev

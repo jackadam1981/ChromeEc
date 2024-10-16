@@ -104,6 +104,11 @@ int comm_init_alt(int interfaces, const char *device_name, int i2c_bus)
 	    comm_init_i2c && !comm_init_i2c(i2c_bus))
 		return 0;
 
+	/* Fallback to Renode */
+	if ((interfaces & COMM_RENODE) && !comm_init_renode(device_name)) {
+		return 0;
+	}
+
 	/* Give up */
 	fprintf(stderr, "Unable to establish host communication\n");
 	return 1;

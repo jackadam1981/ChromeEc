@@ -12677,7 +12677,7 @@ const command *commands_find(const char *name)
 void print_help(const char *prog, int print_cmds)
 {
 	printf("Usage: %s [--dev=n]"
-	       " [--interface=dev|i2c|lpc] [--i2c_bus=n] [--device=vid:pid]"
+	       " [--interface=dev|i2c|lpc|renode] [--i2c_bus=n] [--device=vid:pid]"
 	       " --verbose",
 	       prog);
 	printf(" [--name=cros_ec|cros_fp|cros_pd|cros_scp|cros_ish] [--ascii] ");
@@ -12743,6 +12743,8 @@ int main(int argc, char *argv[])
 				interfaces = COMM_I2C;
 			} else if (!strcasecmp(optarg, "servo")) {
 				interfaces = COMM_SERVO;
+			} else if (!strcasecmp(optarg, "renode")) {
+				interfaces = COMM_RENODE;
 			} else {
 				fprintf(stderr, "Invalid --interface\n");
 				parse_error = 1;
