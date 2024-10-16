@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639d1435_2c7227d7",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-16T00:57:13Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nplat_free had used free ** and * in \"ipp_ET630.c\". I am not sure this change to use to free **\n\nshort **img_buffer_ws_2d_s16 \u003d NULL;\nimg_buffer_ws_2d_s16 \u003d ipp_get_address_2d_s16(IMAGE_WIDTH, IMAGE_HEIGHT, img_buffer_ws_s16);\nplat_free(img_buffer_ws_2d_s16);",
+      "revId": "685f1d63332f613695154112e936caeecea19505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
