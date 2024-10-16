@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc342fa9_30e9dd85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-16T10:10:42Z",
+      "side": 1,
+      "message": "Changed",
+      "parentUuid": "cee18b5f_bbd96171",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "fb6af0fe757482e61304bb51e9390f35fbd5a580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e4370f_5d027345",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73391fd_a410018a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-16T10:10:42Z",
+      "side": 1,
+      "message": "Sure, changed",
+      "parentUuid": "87e4370f_5d027345",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "fb6af0fe757482e61304bb51e9390f35fbd5a580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44e01313_208f1db0",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-10-15T16:25:09Z",
       "side": 1,
       "message": "Can you also re-enable the `rtc_stm32f4` test in Renode by removing [this line](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d414;drc\u003dfcb9ee14620e4ba07753b2f2f675aee449f03a2b)?\n\nWe now have Renode running in the CQ, so if you re-enable the test as part of this CL, it will confirm that the test now passes when running in Renode.",
+      "revId": "fb6af0fe757482e61304bb51e9390f35fbd5a580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c503d66_072f4861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-16T10:10:42Z",
+      "side": 1,
+      "message": "Re-enabled the test",
+      "parentUuid": "44e01313_208f1db0",
       "revId": "fb6af0fe757482e61304bb51e9390f35fbd5a580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
