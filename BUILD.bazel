@@ -3,11 +3,11 @@
 # found in the LICENSE file.
 
 load(
-    "@cros_firmware//platform/ec/bazel:all_targets.generated.bzl",
+    "@cros//platform/ec/bazel:all_targets.generated.bzl",
     "all_targets",
 )
 load(
-    "@cros_firmware//platform/ec/bazel:legacy_ec.bzl",
+    "@cros//platform/ec/bazel:legacy_ec.bzl",
     "legacy_ec",
 )
 

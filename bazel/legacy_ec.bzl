@@ -75,14 +75,20 @@ def _impl(ctx):
     env = {
         "BOARD": ctx.attr.board,
         "BUILD_DIR": build_dir.path,
-        "COREBOOT_SDK_ROOT": ctx.file._coreboot_root.path,
+        "COREBOOT_SDK_ROOT_arm": ctx.file._coreboot_arm_root.path,
+        "COREBOOT_SDK_ROOT_nds32": ctx.file._coreboot_nds32_root.path,
+        "COREBOOT_SDK_ROOT_riscv": ctx.file._coreboot_riscv_root.path,
+        "COREBOOT_SDK_ROOT_x86": ctx.file._coreboot_x86_root.path,
         "EC_DIR": ctx.file._legacy_ec_makefile.dirname,
     }
 
     deps = (ctx.files._legacy_ec_makefile +
             ctx.files._legacy_ec_srcs +
             ctx.files.board_srcs +
-            ctx.files._coreboot_root)
+            ctx.files._coreboot_arm_root +
+            ctx.files._coreboot_x86_root +
+            ctx.files._coreboot_riscv_root +
+            ctx.files._coreboot_nds32_root)
 
     # Have to use shell as we need to realpath pretty much everything
     # (need to change directories for the Makefile).
@@ -93,10 +99,6 @@ def _impl(ctx):
     make_args = [
         "BOARD=${BOARD}",
         "CCACHE=",
-        'CROSS_COMPILE_arm=$(realpath "${COREBOOT_SDK_ROOT}")/bin/arm-eabi-',
-        'CROSS_COMPILE_nds32=$(realpath "${COREBOOT_SDK_ROOT}")/bin/nds32le-elf-',
-        'CROSS_COMPILE_riscv=$(realpath "${COREBOOT_SDK_ROOT}")/bin/riscv64-elf-',
-        'CROSS_COMPILE_x86=$(realpath "${COREBOOT_SDK_ROOT}")/bin/i386-elf-',
         'out=$(realpath "${BUILD_DIR}")',
         "SHELL=/bin/bash",
         "HOSTCC=/usr/bin/clang -Wno-unknown-warning-option",
@@ -126,8 +128,20 @@ _rule = rule(
     attrs = {
         "board": attr.string(),
         "board_srcs": attr.label(allow_files = True),
-        "_coreboot_root": attr.label(
-            default = "@coreboot_sdk//:coreboot_sdk_root",
+        "_coreboot_arm_root": attr.label(
+            default = "@ec-coreboot-sdk-arm-eabi//:get_path",
+            allow_single_file = True,
+        ),
+        "_coreboot_nds32_root": attr.label(
+            default = "@ec-coreboot-sdk-nds32le-elf//:get_path",
+            allow_single_file = True,
+        ),
+        "_coreboot_riscv_root": attr.label(
+            default = "@ec-coreboot-sdk-riscv-elf//:get_path",
+            allow_single_file = True,
+        ),
+        "_coreboot_x86_root": attr.label(
+            default = "@ec-coreboot-sdk-i386-elf//:get_path",
             allow_single_file = True,
         ),
         "_legacy_ec_makefile": attr.label(
