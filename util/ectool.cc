@@ -71,6 +71,7 @@ enum {
 	OPT_I2C_BUS,
 	OPT_DEVICE,
 	OPT_VERBOSE,
+	OPT_RENODE,
 };
 
 static struct option long_opts[] = { { "dev", 1, 0, OPT_DEV },
@@ -81,6 +82,7 @@ static struct option long_opts[] = { { "dev", 1, 0, OPT_DEV },
 				     { "device", 1, 0, OPT_DEVICE },
 				     { "verbose", no_argument, NULL,
 				       OPT_VERBOSE },
+				     { "renode", 1, 0, OPT_RENODE },
 				     { NULL, 0, 0, 0 } };
 
 #define GEC_LOCK_TIMEOUT_SECS 30 /* 30 secs */
@@ -12716,6 +12718,7 @@ int main(int argc, char *argv[])
 	int parse_error = 0;
 	char *e;
 	int i;
+	int renode_mode = 0;
 
 	BUILD_ASSERT(ARRAY_SIZE(lb_command_paramcount) == LIGHTBAR_NUM_CMDS);
 
@@ -12724,6 +12727,14 @@ int main(int argc, char *argv[])
 		case '?':
 			/* Unhandled option */
 			parse_error = 1;
+			break;
+
+		case OPT_RENODE:
+			if (comm_init_renode(optarg)) {
+				goto out;
+			} else {
+				renode_mode = 1;
+			}
 			break;
 
 		case OPT_DEV:
@@ -12776,6 +12787,12 @@ int main(int argc, char *argv[])
 			verbose = 1;
 			break;
 		}
+	}
+
+	if (renode_mode) {
+		/* Skip over device initialization if Renode mode was specified
+		 */
+		goto process_commands;
 	}
 
 	if (i2c_bus != -1) {
@@ -12840,6 +12857,7 @@ int main(int argc, char *argv[])
 		goto out;
 	}
 
+process_commands:
 	/* Handle commands */
 	cmd = commands_find(argv[optind]);
 	if (cmd == nullptr) {
