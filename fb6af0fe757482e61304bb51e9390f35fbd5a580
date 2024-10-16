@@ -151,6 +151,30 @@
       },
       "revId": "fb6af0fe757482e61304bb51e9390f35fbd5a580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e1312d_dcee2313",
+        "filename": "test/rtc_stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-16T10:12:38Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ab5f7608_019f5514",
+      "range": {
+        "startLine": 85,
+        "startChar": 35,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "fb6af0fe757482e61304bb51e9390f35fbd5a580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
