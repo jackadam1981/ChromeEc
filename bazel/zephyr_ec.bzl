@@ -4,7 +4,10 @@
 
 def _impl(ctx):
     envs = {
-        "COREBOOT_SDK_ROOT": ctx.file._coreboot_root.path,
+        "COREBOOT_SDK_arm": ctx.file._coreboot_arm_root.path,
+        "COREBOOT_SDK_nds32": ctx.file._coreboot_nds32_root.path,
+        "COREBOOT_SDK_riscv": ctx.file._coreboot_riscv_root.path,
+        "COREBOOT_SDK_x86": ctx.file._coreboot_x86_root.path,
         "TOOL_PATH_binman": ctx.file._binman_path.path,
     }
 
@@ -62,7 +65,22 @@ ec_binary = rule(
         ),
         "_binman_path": attr.label(default = "@u_boot//:binman_path", allow_single_file = True),
         "_cmsis": attr.label(default = "@cmsis//:src", allow_files = True),
-        "_coreboot_root": attr.label(default = "@coreboot_sdk//:coreboot_sdk_root", allow_single_file = True),
+        "_coreboot_arm_root": attr.label(
+            default = "@ec-coreboot-sdk-arm-eabi//:get_path",
+            allow_single_file = True,
+        ),
+        "_coreboot_nds32_root": attr.label(
+            default = "@ec-coreboot-sdk-nds32le-elf//:get_path",
+            allow_single_file = True,
+        ),
+        "_coreboot_riscv_root": attr.label(
+            default = "@ec-coreboot-sdk-riscv-elf//:get_path",
+            allow_single_file = True,
+        ),
+        "_coreboot_x86_root": attr.label(
+            default = "@ec-coreboot-sdk-i386-elf//:get_path",
+            allow_single_file = True,
+        ),
         "_ec": attr.label(default = "@ec//:src", allow_files = True),
         "_zmake": attr.label(default = "@zephyr//:src", allow_files = True),
         "_zmake_bin": attr.label(

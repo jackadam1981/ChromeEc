@@ -76,7 +76,7 @@ flash_ec = rule(
         "_flash_ec": attr.label(
             doc = "The flash_ec script to run.",
             allow_single_file = True,
-            default = Label("@cros_firmware//platform/ec:util/flash_ec"),
+            default = Label("@cros//platform/ec:util/flash_ec"),
         ),
         "_shflags": attr.label(
             doc = "The shflags bundle path.",
