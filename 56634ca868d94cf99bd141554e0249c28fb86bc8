@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60eff5a4_8b6a03a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-16T00:25:47Z",
+      "side": 1,
+      "message": "Can you help review this change to add the Brox VIF to the EC source? It is the VIF from b/319502241#comment73 but I\u0027ve changed the file name and model part number to be consistent with other VIFs in the zephyr source (for example: src/platform/ec/zephyr/program/nissa/pujjoga/pujjoga_vif.xml)",
+      "revId": "56634ca868d94cf99bd141554e0249c28fb86bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
