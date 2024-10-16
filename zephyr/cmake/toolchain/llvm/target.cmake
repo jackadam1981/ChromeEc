@@ -19,6 +19,7 @@ set(CROSS_COMPILE_TARGET_unit_testing x86_64-pc-linux-gnu)
 set(CROSS_COMPILE_TARGET_x86          x86_64-pc-linux-gnu)
 
 set(CROSS_COMPILE_TARGET          ${CROSS_COMPILE_TARGET_${ARCH}})
+set(LLVM_TOOLCHAIN_PATH           "/usr/x86_64-pc-linux-gnu")
 
 if("${ARCH}" STREQUAL "arm")
   if(DEFINED CONFIG_ARMV7_M_ARMV8_M_MAINLINE)
@@ -33,10 +34,12 @@ if("${ARCH}" STREQUAL "arm")
       message(FATAL_ERROR "The armv7m-cros-eabi toolchain requires enabled FPU")
     endif()
     set(CROSS_COMPILE_TARGET armv7m-cros-eabi)
+    set(LLVM_TOOLCHAIN_PATH "/usr/armv7m-cros-eabi")
   elseif(DEFINED CONFIG_ARMV6_M_ARMV8_M_BASELINE)
     # ARMV6_M_ARMV8_M_BASELINE means that ARMv6-M or ARMv8-M supporting the
     # Baseline implementation processor is used.
     set(CROSS_COMPILE_TARGET arm-none-eabi)
+    set(LLVM_TOOLCHAIN_PATH "/usr/arm-none-eabi")
   endif()
 
   # LLVM based toolchains for ARM use newlib as a libc.
