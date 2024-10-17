@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde43ae9_3fcd29f8",
+        "filename": "common/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T18:57:22Z",
+      "side": 0,
+      "message": "BTW, I am pretty sure that this comment is incorrect. I suspect that it mixed up the \"Transmitted Command Request\" and \"Received Command Request\" sections of Table 6-41 Applicability of Structured VDM Commands. PD 2.0 _does_ require that DFPs only REQ Discover Identity if Modal Operation is supported.",
+      "revId": "74478f03f5b515c27cedec8349405f503b1083db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e94eb27_adc3ef05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T18:57:22Z",
+      "side": 1,
+      "message": "Fix looks good. I have some questions about how the tests work.",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fbb0a7_f93d5594",
+        "filename": "common/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T18:57:22Z",
+      "side": 1,
+      "message": "Note that this CL will only fix Zephyr builds that did not override this in their board configs. For historical reasons, all ECOS boards that respond to discovery have this implemented in their board code. If we have more than one ECOS board to fix, it would probably be best to refactor them to use this code.",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5a70a6_db92a79b",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T18:57:22Z",
+      "side": 1,
+      "message": "If the partner is PD 3.0, why would we be operating in PD 2.0? If we\u0027re in PD 3.0, why would we NAK?",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3622f441_69a5d487",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T18:57:22Z",
+      "side": 1,
+      "message": "Is this something you also wanted to check?",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
