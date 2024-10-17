@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c9ef32_a0f1535c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T17:34:29Z",
+      "side": 1,
+      "message": "@honscheid@google.com FYI, the slightly odd PE logic introduced in this CL is required by some currently poorly understood behavior of the charge manager, outside of the TCPM. It may in some way also implicate the PDC stack.",
+      "revId": "159c9994ee7ce50fae6b80add79f6cfe8e313cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

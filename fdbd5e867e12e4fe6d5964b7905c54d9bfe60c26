@@ -377,6 +377,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1281075_345a9980",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T17:34:29Z",
+      "side": 1,
+      "message": "If this is what we need to do, I\u0027m also fine with it. Cleaning up the charge manager can be a separate effort.",
+      "parentUuid": "91742eb0_5e642f75",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59f13cbd_b8d951ad",
@@ -444,6 +462,24 @@
       "side": 1,
       "message": "Oh, yeah, it\u0027s typo, we don\u0027t need to call `tc_snk_power_off()`.",
       "parentUuid": "32f8bc3c_9850ff4e",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aa6ae0_28f16973",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3768,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T17:34:29Z",
+      "side": 1,
+      "message": "At least for now, it looks like we can\u0027t consolidate the code in the way that I was thinking.",
+      "parentUuid": "10907ecb_8f6de786",
       "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
