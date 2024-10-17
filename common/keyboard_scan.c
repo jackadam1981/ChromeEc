@@ -352,7 +352,9 @@ static int read_matrix(uint8_t *state, bool at_boot)
 
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
-		udelay(keyscan_config.output_settle_us);
+
+		if (IS_ENABLED(CONFIG_KEYBOARD_COL2_INVERTED) && (c == 2 || c == 3))
+			udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
