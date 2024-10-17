@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f635b3_0ba352dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-17T16:23:27Z",
+      "side": 1,
+      "message": "We are increasing the timeout on a lot of tests. Why we do not increase it globally? Are there any drawbacks to this approach?",
+      "revId": "a9da2af91d34da02fd71a090fdf1f892c00ca00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
