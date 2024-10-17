@@ -1199,6 +1199,17 @@ static void handle_connector_status(struct pdc_port_t *port)
 		}
 
 		if (status->power_direction) {
+			if (conn_status_change_bits.negotiated_power_level) {
+				/*
+				 * When we are a source, if the partner sends
+				 * a new Request, the PDC sets the negotiated
+				 * power level change. Request sink caps again.
+				 * This flow is atypical for most sin devices,
+				 * but it is behavior PD testers exercise.
+				 */
+				atomic_set_bit(port->src_policy.flags,
+					       SRC_POLICY_GET_SINK_CAPS);
+			}
 			/* Port partner is a sink device
 			 */
 			set_pdc_state(port, PDC_SRC_ATTACHED);
@@ -1555,6 +1566,35 @@ static void run_src_policies(struct pdc_port_t *port)
 					    port->src_policy.snk.pdos[0]);
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_GET_SINK_CAPS)) {
+		/* Request up to 4 pdos to honor USCI 6.5.15 Get PDOs - Number
+		 * of PDOs to return starting from the PDO Offset. The number of
+		 * PDOs to return is the value in this field plus 1.
+		 */
+		if (!port->get_pdo.updating) {
+			port->get_pdo.num_pdos = PDO_NUM;
+			port->get_pdo.pdo_offset = PDO_OFFSET_0;
+			port->get_pdo.updating = true;
+		}
+		if (port->get_pdo.num_pdos > GET_PDOS_MAX_NUM) {
+			/* More sink caps needed, rearm this path. */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_GET_SINK_CAPS);
+		} else {
+			/* All sink caps will be known following the next
+			 * queued GET_PDOS operation. Trigger source policy
+			 * evaluation.
+			 */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_EVAL_SNK_FIXED_PDO);
+			port->src_attached_local_state = SRC_ATTACHED_RUN;
+			port->get_pdo.updating = false;
+		}
+		port->get_pdo.pdo_type = SINK_PDO;
+		port->get_pdo.pdo_source = PARTNER_PDO;
+		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_UPDATE_SRC_CAPS)) {
 		/* Update the PDC SRC_CAP message */
 		port->set_pdos = (struct set_pdos_t){
@@ -1698,6 +1738,10 @@ static void pdc_src_attached_entry(void *obj)
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port, true);
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
+
+		/* We always want to evalulate sink caps when we a source. */
+		atomic_set_bit(port->src_policy.flags,
+			       SRC_POLICY_GET_SINK_CAPS);
 	}
 
 	/* Clear a piece of sink policy as it is no longer relevant in the
@@ -1782,7 +1826,7 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SRC_ATTACHED_GET_VDO:
-		port->src_attached_local_state = SRC_ATTACHED_GET_PDOS;
+		port->src_attached_local_state = SRC_ATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
 		return;
 	case SRC_ATTACHED_RUN:
