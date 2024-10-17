@@ -361,6 +361,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91742eb0_5e642f75",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3752,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-10-17T05:34:55Z",
+      "side": 1,
+      "message": "\u003e Charger select PD candidate power 0w (5V/0A) to be supplier, but drawing current is more than iSnkSusp (500mA), so fail the TEST.PD.PS.SNK.1.\n\nfix type, from iSnkSusp (500mA) to pSnkSusp (25mW)",
+      "parentUuid": "10081ae6_41fe2da1",
+      "revId": "fdbd5e867e12e4fe6d5964b7905c54d9bfe60c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59f13cbd_b8d951ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
