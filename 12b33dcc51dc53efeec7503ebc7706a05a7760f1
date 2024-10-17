@@ -22,6 +22,30 @@
       },
       "revId": "12b33dcc51dc53efeec7503ebc7706a05a7760f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90574918_d0b29115",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-17T17:20:48Z",
+      "side": 1,
+      "message": "thanks, adding to the things to improve here, along with the right Startup handling",
+      "parentUuid": "ee6ad02d_0b5969ee",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 55
+      },
+      "revId": "12b33dcc51dc53efeec7503ebc7706a05a7760f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
