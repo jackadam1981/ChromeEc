@@ -52,6 +52,24 @@
       "parentUuid": "639d1435_2c7227d7",
       "revId": "685f1d63332f613695154112e936caeecea19505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1947ff4d_a6be5ac1",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-17T01:08:35Z",
+      "side": 1,
+      "message": "Yes, it make sense for me.",
+      "parentUuid": "3848c859_a8eb8e09",
+      "revId": "685f1d63332f613695154112e936caeecea19505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
