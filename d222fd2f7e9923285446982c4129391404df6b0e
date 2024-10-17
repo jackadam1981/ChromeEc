@@ -51,6 +51,24 @@
       "parentUuid": "0b09775a_42ca0029",
       "revId": "d222fd2f7e9923285446982c4129391404df6b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63de133a_4f448dbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2024-10-17T16:37:50Z",
+      "side": 1,
+      "message": "I guess it is useful either way 😊\n\nWe might have some up with an alternative flow to get gsc_device in the bug, but landing this either way won\u0027t hurt anything",
+      "parentUuid": "5ea2424c_26bca42f",
+      "revId": "d222fd2f7e9923285446982c4129391404df6b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
