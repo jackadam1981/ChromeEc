@@ -52,6 +52,24 @@
       "parentUuid": "42bce73f_75a1c7dd",
       "revId": "53b876aa40b093d0588feacfa16c1691547912e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d556efd_cfc279c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-10-17T23:23:42Z",
+      "side": 1,
+      "message": "I did try to include ../trulo/project.overlay and also modified BUILD.py so that ./trulo/project.overlay could be included. In both of these cases the build didn\u0027t work. I don\u0027t think ./trulo/project.overlay can be used directly because the it has includes that are relative to its directory and those then don\u0027t work when the build is in trulo/trulo-ti/",
+      "parentUuid": "2d7246e5_d38b62c9",
+      "revId": "53b876aa40b093d0588feacfa16c1691547912e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
