@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5395ee1f_d8d0500c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T17:41:50Z",
+      "side": 1,
+      "message": "FYI, as of a few days ago, Gerrit will not let you CQ+2 if there are unresolved comments. You can resolve them by checking the \"resolved\" box when you reply. Clicking the \"Acknowledged\" or \"Done\" buttons will do this automatically.",
+      "revId": "31592608f2a4bdde7701ac9e77b9f8855fd71046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5647f05c_83aa3f32",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-17T17:41:50Z",
+      "side": 1,
+      "message": "Nit: This seems like it might be style error, which could be fixed by `cros format`. If not, feel free to just ack this comment.",
+      "fixSuggestions": [
+        {
+          "fixId": "63b97c09_40353471",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/driver/tcpm/tcpm.h",
+              "range": {
+                "startLine": 251,
+                "startChar": 0,
+                "endLine": 253,
+                "endChar": 0
+              },
+              "replacement": "\t    tcpc_config[port].flags \u0026 TCPC_FLAGS_CONTROL_VCONN) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "31592608f2a4bdde7701ac9e77b9f8855fd71046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
