@@ -1209,6 +1209,8 @@ static void handle_connector_status(struct pdc_port_t *port)
 				 */
 				atomic_set_bit(port->src_policy.flags,
 					       SRC_POLICY_GET_SINK_CAPS);
+				LOG_INF("C%d: negotiated power level change detected",
+					port_number);
 			}
 			/* Port partner is a sink device
 			 */
@@ -1561,6 +1563,7 @@ static void run_src_policies(struct pdc_port_t *port)
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_EVAL_SNK_FIXED_PDO)) {
+		LOG_INF("C%d: Evaluate partner sink PDO", port_num);
 		/* Adjust source current limits if necessary */
 		pdc_dpm_eval_sink_fixed_pdo(port_num,
 					    port->src_policy.snk.pdos[0]);
@@ -1590,12 +1593,16 @@ static void run_src_policies(struct pdc_port_t *port)
 			port->src_attached_local_state = SRC_ATTACHED_RUN;
 			port->get_pdo.updating = false;
 		}
+		LOG_INF("C%d: Get sink caps, offset %d count %d", port_num,
+			port->get_pdo.pdo_offset, port->get_pdo.num_pdos);
+
 		port->get_pdo.pdo_type = SINK_PDO;
 		port->get_pdo.pdo_source = PARTNER_PDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_UPDATE_SRC_CAPS)) {
+		LOG_INF("C%d: Send new Source Caps", port_num);
 		/* Update the PDC SRC_CAP message */
 		port->set_pdos = (struct set_pdos_t){
 			.count = 1,
