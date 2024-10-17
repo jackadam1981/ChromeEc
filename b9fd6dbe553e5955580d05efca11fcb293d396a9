@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41785b0_f9fcc891",
+        "filename": "zephyr/test/rex/tests/rex_ish/src/board_nb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-17T13:21:16Z",
+      "side": 1,
+      "message": "Is there a common test that checks notebook mode operation?  You\u0027ve removed the rex-ish board code, so a board specific test doesn\u0027t make sense.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "b9fd6dbe553e5955580d05efca11fcb293d396a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
