@@ -264,8 +264,6 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_READ_POWER_LEVEL,
 	/** SRC_ATTACHED_GET_VDO */
 	SRC_ATTACHED_GET_VDO,
-	/** SRC_ATTACHED_GET_PDOS */
-	SRC_ATTACHED_GET_PDOS,
 	/** SRC_ATTACHED_RUN */
 	SRC_ATTACHED_RUN,
 };
@@ -527,6 +525,8 @@ enum policy_src_attached_t {
 	SRC_POLICY_SET_RP,
 	/** Trigger a call into DPM source current balancing policy */
 	SRC_POLICY_EVAL_SNK_FIXED_PDO,
+	/** Triggers a Get_Sink_Cap message to the partner. */
+	SRC_POLICY_GET_SINK_CAPS,
 	/** Set new SRC CAP for PDC port in source power role */
 	SRC_POLICY_UPDATE_SRC_CAPS,
 	/**
@@ -1784,29 +1784,6 @@ static void pdc_src_attached_run(void *obj)
 	case SRC_ATTACHED_GET_VDO:
 		port->src_attached_local_state = SRC_ATTACHED_GET_PDOS;
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
-		return;
-	case SRC_ATTACHED_GET_PDOS:
-		/* Request up to 4 pdos to honor USCI 6.5.15 Get PDOs - Number
-		 * of PDOs to return starting from the PDO Offset. The number of
-		 * PDOs to return is the value in this field plus 1.
-		 */
-		if (!port->get_pdo.updating) {
-			port->get_pdo.num_pdos = PDO_NUM;
-			port->get_pdo.pdo_offset = PDO_OFFSET_0;
-			port->get_pdo.updating = true;
-		}
-		if (port->get_pdo.num_pdos > GET_PDOS_MAX_NUM) {
-			port->src_attached_local_state = SRC_ATTACHED_GET_PDOS;
-		} else {
-			port->src_attached_local_state = SRC_ATTACHED_RUN;
-			port->get_pdo.updating = false;
-		}
-		port->get_pdo.pdo_type = SINK_PDO;
-		port->get_pdo.pdo_source = PARTNER_PDO;
-		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
-		/* Evaluate SNK CAP after it's been retrieved from the PDC */
-		atomic_set_bit(port->src_policy.flags,
-			       SRC_POLICY_EVAL_SNK_FIXED_PDO);
 		return;
 	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
