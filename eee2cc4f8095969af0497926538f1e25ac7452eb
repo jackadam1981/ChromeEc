@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a653095_8f21b57b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-18T00:55:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is ever going to happen. IIRC, Get_Revision was added in PD 3.1. It\u0027d be really odd for devices to use a PD 3.1 message to tell us they don\u0027t support PD 3.1.\n\nIf this precaution is causing a compliance test failure, I think it\u0027s appropriate to just send to 7 byte status to any USB PD 3.X device",
+      "range": {
+        "startLine": 1160,
+        "startChar": 4,
+        "endLine": 1160,
+        "endChar": 50
+      },
+      "revId": "eee2cc4f8095969af0497926538f1e25ac7452eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
