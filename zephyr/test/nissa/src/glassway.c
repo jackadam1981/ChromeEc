@@ -4,7 +4,11 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "button.h"
+#include "common.h"
 #include "cros_cbi.h"
+#include "driver/accel_bma4xx.h"
+#include "driver/accelgyro_bmi323.h"
 #include "driver/charger/isl923x_public.h"
 #include "driver/tcpm/raa489000.h"
 #include "emul/tcpc/emul_tcpci.h"
@@ -12,12 +16,15 @@
 #include "fan.h"
 #include "glassway.h"
 #include "glassway_sub_board.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "led_onoff_states.h"
 #include "led_pwm.h"
 #include "mock/isl923x.h"
+#include "motion_sense.h"
 #include "pwm_mock.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "tcpm/tcpci.h"
 #include "usb_charge.h"
 
@@ -26,6 +33,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
+#include <dt-bindings/buttons.h>
 #include <dt-bindings/gpio_defines.h>
 #include <typec_control.h>
 
@@ -61,6 +69,8 @@ FAKE_VOID_FUNC(usb_charger_task_set_event_sync, int, uint8_t);
 FAKE_VOID_FUNC(usb_interrupt_c1, enum gpio_signal);
 FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
 FAKE_VALUE_FUNC(int, board_get_battery_soc);
+FAKE_VOID_FUNC(bmi3xx_interrupt, enum gpio_signal);
+FAKE_VOID_FUNC(bma4xx_interrupt, enum gpio_signal);
 
 void board_usb_pd_count_init(void);
 static uint32_t fw_config_value;
@@ -96,6 +106,8 @@ static void test_before(void *fixture)
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(cros_cbi_get_fw_config);
 	RESET_FAKE(fan_set_count);
+	RESET_FAKE(bmi3xx_interrupt);
+	RESET_FAKE(bma4xx_interrupt);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -478,4 +490,80 @@ ZTEST(glassway, test_led)
 
 	led_set_color_battery(EC_LED_COLOR_AMBER);
 	zassert_equal(led_set_color_battery_fake.arg0_val, EC_LED_COLOR_AMBER);
+}
+
+static int get_fake_sensor_fw_config_field(enum cbi_fw_config_field_id field_id,
+					   uint32_t *value)
+{
+	*value = fw_config_value;
+	return 0;
+}
+
+static bool tablet_present;
+
+static int cbi_get_tablet_fw_config(enum cbi_fw_config_field_id field,
+				    uint32_t *value)
+{
+	if (field != FORM_FACTOR)
+		return -EINVAL;
+
+	*value = tablet_present ? CONVERTIBLE : CLAMSHELL;
+	return 0;
+}
+
+ZTEST(glassway, test_bma422_bmi323)
+{
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+	const struct device *lid_accel_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_acc_int_l), gpios));
+	const gpio_port_pins_t lid_accel_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
+
+	cros_cbi_get_fw_config_fake.custom_fake =
+		get_fake_sensor_fw_config_field;
+
+	/* sensor_enable_irqs enable the interrupt int_imu */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	hook_notify(HOOK_INIT);
+
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	bma4xx_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 1);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
+
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_tablet_fw_config;
+
+	tablet_present = true;
+
+	hook_notify(HOOK_INIT);
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	bma4xx_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 1);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
 }
