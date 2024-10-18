@@ -33,6 +33,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "5e9cd7d5b9ae07ee6c4e47a1ae4e6dfc706a916e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef6e17d_8b46a9c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-18T21:10:29Z",
+      "side": 1,
+      "message": "This would be a reasonable thing to submit, although it probably needs to be fixed up/rebased, given the CQ results. But I think all of the action since yesterday was triggered by Auto Runner for some reason. I haven\u0027t thought about this in a year.",
+      "revId": "5e9cd7d5b9ae07ee6c4e47a1ae4e6dfc706a916e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
