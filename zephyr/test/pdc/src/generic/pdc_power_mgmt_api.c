@@ -842,12 +842,12 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 			 .configure = emul_pdc_configure_src },
 		  .e = { .uor = { .swap_to_dfp = 1,
 				  .swap_to_ufp = 0,
-				  .accept_dr_swap = 1 } } },
+				  .accept_dr_swap = 0 } } },
 		{ .s = { .conn_partner_type = DFP_ATTACHED,
 			 .configure = emul_pdc_configure_snk },
 		  .e = { .uor = { .swap_to_dfp = 1,
 				  .swap_to_ufp = 0,
-				  .accept_dr_swap = 1 } } },
+				  .accept_dr_swap = 0 } } },
 		{ .s = { .conn_partner_type = UFP_ATTACHED,
 			 .configure = emul_pdc_configure_src },
 		  .e = { .uor = { .swap_to_dfp = 0,
@@ -1509,8 +1509,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status)
 
 	emul_pdc_configure_snk(emul, &in);
 	emul_pdc_connect_partner(emul, &in);
-	zassert_true(TEST_WAIT_FOR(pdc_power_mgmt_is_pd_attached(TEST_PORT),
-				   PDC_TEST_TIMEOUT));
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 
 	zassert_ok(pdc_power_mgmt_get_connector_status(TEST_PORT, &out));
 	zassert_ok(pdc_power_mgmt_get_last_status_change(
@@ -1597,8 +1596,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_cable_prop)
 
 	emul_pdc_configure_snk(emul, &in_conn_status);
 	emul_pdc_connect_partner(emul, &in_conn_status);
-	zassert_true(TEST_WAIT_FOR(pdc_power_mgmt_is_pd_attached(TEST_PORT),
-				   PDC_TEST_TIMEOUT));
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 
 	zassert_ok(pdc_power_mgmt_get_connector_status(TEST_PORT,
 						       &out_conn_status));
@@ -1970,7 +1968,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	emul_pdc_connect_partner(emul, &connector_status);
 	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 
-	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+	zassert_ok(pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
 	/* Confirm 5v PDO selected */
 	zassert_equal(1, RDO_POS(rdo));
 	zassert_equal(source_mv, pdc_power_mgmt_get_max_voltage());
@@ -1982,7 +1980,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	pdc_power_mgmt_request_source_voltage(TEST_PORT, source_mv);
 	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 
-	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+	zassert_ok(pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
 	/* Confirm 12v PDO selected */
 	zassert_equal(2, RDO_POS(rdo));
 	zassert_equal(source_mv, pdc_power_mgmt_get_max_voltage());
@@ -2011,7 +2009,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	zassert_equal(source_mv, pdc_power_mgmt_get_max_voltage());
 
 	/* Confirm 5v PDO selected */
-	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+	zassert_ok(pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
 	zassert_equal(1, RDO_POS(rdo));
 
 	/* Confirm Power role is SINK */
@@ -2042,14 +2040,14 @@ ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_set_active_charge_port)
 	zassert_ok(board_set_active_charge_port(CHARGE_PORT_NONE));
 	emul_pdc_configure_snk(emul, &connector_status);
 	emul_pdc_connect_partner(emul, &connector_status);
-	zassert_true(
-		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 	/* Sink path should be disabled because it's not active charge port */
 	zassert_false(is_sink_path_enabled());
 
 	zassert_ok(board_set_active_charge_port(TEST_PORT));
 	/* Sink path should be enabled after activating TEST_PORT */
-	zassert_true(TEST_WAIT_FOR(is_sink_path_enabled(), PDC_TEST_TIMEOUT));
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
+	zassert_true(is_sink_path_enabled());
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_get_vconn_state)
@@ -2079,7 +2077,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_vconn_state)
 #ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
 {
-	uint32_t dp_status_vdo;
+	union get_attention_vdo_t attention_vdo;
 	union connector_status_t in_conn_status;
 	union conn_status_change_bits_t in_conn_status_change_bits;
 
@@ -2095,15 +2093,17 @@ ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
 	zassert_true(TEST_WAIT_FOR(pdc_power_mgmt_is_connected(TEST_PORT),
 				   PDC_TEST_TIMEOUT));
 
-	/* Configure PDC emulator to respond to GET_VDO with DP Status VDO with
-	 * HPD_LVL low.
+	/* Configure PDC emulator to respond to GET_ATTENTION_VDO with HPD_LVL
+	 * low.
 	 */
-	dp_status_vdo = 0x01;
-	emul_pdc_set_vdo(emul, 1, &dp_status_vdo);
+	attention_vdo.vdo = 0x01;
+	emul_pdc_set_attention_vdo(emul, attention_vdo);
 	k_msleep(TEST_WAIT_FOR_INTERVAL_MS);
 
-	/* Send an IRQ for the PDC power manager to update its DP Status. */
-	in_conn_status.raw_conn_status_change_bits = 0x0;
+	/* Send an attention IRQ for the PDC power manager to update its DP
+	 * Status.
+	 */
+	in_conn_status.raw_conn_status_change_bits = 0x8;
 	emul_pdc_set_connector_status(emul, &in_conn_status);
 	emul_pdc_pulse_irq(emul);
 	k_msleep(TEST_WAIT_FOR_INTERVAL_MS * 2);
@@ -2120,8 +2120,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
 	/* Configure PDC emulator to respond to GET_VDO with DP Status VDO with
 	 * HPD_LVL high.
 	 */
-	dp_status_vdo = 0x81;
-	emul_pdc_set_vdo(emul, 1, &dp_status_vdo);
+	attention_vdo.vdo = 0x81;
+	emul_pdc_set_attention_vdo(emul, attention_vdo);
 	k_msleep(TEST_WAIT_FOR_INTERVAL_MS);
 
 	/* Send an IRQ for the PDC power manager to update its DP Status. */
@@ -2135,6 +2135,18 @@ ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
 	 * event.
 	 */
 	zassert_true(host_is_event_set(EC_HOST_EVENT_USB_MUX));
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_get_rdo_errors)
+{
+	/* The normal code path for pdc_power_mgmt_get_rdo() is tested in
+	 * test_request_source_voltage. This test covers its error paths.
+	 */
+
+	uint32_t rdo;
+
+	zassert_equal(-EINVAL, pdc_power_mgmt_get_rdo(TEST_PORT, NULL));
+	zassert_equal(-ENODATA, pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
 }
 #endif
 

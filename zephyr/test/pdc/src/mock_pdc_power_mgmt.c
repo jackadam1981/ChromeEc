@@ -42,6 +42,10 @@ DEFINE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_lpm_ppm_info, int,
 		       struct lpm_ppm_info_t *);
 DEFINE_FAKE_VALUE_FUNC(bool, pdc_power_mgmt_check_hpd_wake, int);
 DEFINE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_pch_data_status, int, uint8_t *);
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
+=======
+DEFINE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_rdo, int, uint32_t *);
+>>>>>>> BRANCH (c48e57 navi: Add 2nd motionsense sensor devicetree)
 
 void helper_reset_pdc_power_mgmt_fakes(void)
 {
@@ -68,4 +72,8 @@ void helper_reset_pdc_power_mgmt_fakes(void)
 	RESET_FAKE(pdc_power_mgmt_get_lpm_ppm_info);
 	RESET_FAKE(pdc_power_mgmt_check_hpd_wake);
 	RESET_FAKE(pdc_power_mgmt_get_pch_data_status);
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
+=======
+	RESET_FAKE(pdc_power_mgmt_get_rdo);
+>>>>>>> BRANCH (c48e57 navi: Add 2nd motionsense sensor devicetree)
 }

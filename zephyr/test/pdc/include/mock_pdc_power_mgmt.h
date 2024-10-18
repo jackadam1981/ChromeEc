@@ -45,6 +45,10 @@ DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_lpm_ppm_info, int,
 DECLARE_FAKE_VALUE_FUNC(bool, pdc_power_mgmt_check_hpd_wake, int);
 DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_pch_data_status, int,
 			uint8_t *);
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
+=======
+DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_rdo, int, uint32_t *);
+>>>>>>> BRANCH (c48e57 navi: Add 2nd motionsense sensor devicetree)
 
 /**
  * @brief Reset the above set of fakes
