@@ -63,6 +63,30 @@
       },
       "revId": "62a5419a78b1808e351c7df74f9a5d278cb2c95a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a85caf_af6e7e46",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-10-18T01:45:20Z",
+      "side": 1,
+      "message": "Remvoe min macro, counting number by failed step.",
+      "parentUuid": "e31d0549_e85beecd",
+      "range": {
+        "startLine": 137,
+        "startChar": 24,
+        "endLine": 137,
+        "endChar": 26
+      },
+      "revId": "62a5419a78b1808e351c7df74f9a5d278cb2c95a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
