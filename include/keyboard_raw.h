@@ -53,6 +53,14 @@ void keyboard_raw_task_start(void);
 void keyboard_raw_drive_column(int col);
 
 /**
+ * Drive multiple specified column low through bitmask.
+ *
+ * Other columns are tristated.  See enum keyboard_column_index for special
+ * values for <col>.
+ */
+void keyboard_raw_drive_multi_columns(uint32_t mask);
+
+/**
  * Read raw row state.
  *
  * Bits are 1 if signal is present, 0 if not present.

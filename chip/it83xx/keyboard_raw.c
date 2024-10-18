@@ -85,22 +85,13 @@ void keyboard_raw_task_start(void)
 }
 
 /*
- * Drive the specified column low.
+ * Drive multiple specified columns low through bitmask.
  */
-test_mockable void keyboard_raw_drive_column(int col)
+test_mockable void keyboard_raw_drive_multi_columns(uint32_t mask)
 {
-	int mask;
 	uint32_t int_mask;
 
-	/* Tri-state all outputs */
-	if (col == KEYBOARD_COLUMN_NONE)
-		mask = 0x3ffff;
-	/* Assert all outputs */
-	else if (col == KEYBOARD_COLUMN_ALL)
-		mask = 0;
-	/* Assert a single output */
-	else
-		mask = 0x3ffff ^ BIT(col);
+	mask = 0x3ffff ^ mask;
 
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 	/* KSO[2] is inverted. */
@@ -123,6 +114,26 @@ test_mockable void keyboard_raw_drive_column(int col)
 	/* Set KSO[17:16] output data */
 	IT83XX_KBS_KSOH2 = (IT83XX_KBS_KSOH2 & ~KSOH2_PIN_MASK) |
 			   ((mask >> 16) & KSOH2_PIN_MASK);
+}
+
+/*
+ * Drive the specified column low.
+ */
+test_mockable void keyboard_raw_drive_column(int col)
+{
+	int mask;
+
+	/* Tri-state all outputs */
+	if (col == KEYBOARD_COLUMN_NONE)
+		mask = 0;
+	/* Assert all outputs */
+	else if (col == KEYBOARD_COLUMN_ALL)
+		mask = 0x3ffff;
+	/* Assert a single output */
+	else
+		mask = BIT(col);
+
+	keyboard_raw_drive_multi_columns(mask);
 }
 
 /*

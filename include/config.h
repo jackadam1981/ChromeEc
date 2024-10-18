@@ -3248,6 +3248,13 @@
 #undef CONFIG_KEYBOARD_STRAUSS
 
 /*
+ * Use a binary search to scan key. First drive the all (16) columns to scan,
+ * then halfing it to 8, 4, 2, and 1. It reduces the number of scans for the
+ * paths, which are clearly impossible.
+ */
+#undef CONFIG_KEYBOARD_BINARY_SCAN
+
+/*
  * Enable the 8042 AUX port. This is typically used for PS/2 mouse devices.
  * You will need to implement send_aux_data_to_device and lpc_aux_put_char.
  */

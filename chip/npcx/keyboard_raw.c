@@ -80,6 +80,26 @@ void keyboard_raw_task_start(void)
 }
 
 /**
+ * Drive multiple specified columns low through bitmask.
+ */
+test_mockable void keyboard_raw_drive_multi_columns(uint32_t mask)
+{
+#if defined(CONFIG_KEYBOARD_CUSTOMIZATION)
+	board_keyboard_drive_col_bitmask(col);
+#elif defined(CONFIG_KEYBOARD_COL2_INVERTED)
+	if (mask & BIT(2))
+		gpio_set_level(GPIO_KBD_KSO2, 1);
+	else
+		gpio_set_level(GPIO_KBD_KSO2, 0);
+#endif
+	mask = ~mask;
+
+	/* Set KBSOUT */
+	NPCX_KBSOUT0 = (mask & 0xFFFF);
+	NPCX_KBSOUT1 = ((mask >> 16) & 0x03);
+}
+
+/**
  * Drive the specified column low.
  */
 test_mockable void keyboard_raw_drive_column(int col)
@@ -95,7 +115,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 
 	/* Drive all lines to high */
 	if (col == KEYBOARD_COLUMN_NONE) {
-		mask = ~0;
+		mask = 0;
 #if defined(CONFIG_KEYBOARD_CUSTOMIZATION)
 		board_keyboard_drive_col(col);
 #elif defined(CONFIG_KEYBOARD_COL2_INVERTED)
@@ -104,7 +124,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 	}
 	/* Set KBSOUT to zero to detect key-press */
 	else if (col == KEYBOARD_COLUMN_ALL) {
-		mask = ~(BIT(keyboard_cols) - 1);
+		mask = (BIT(keyboard_cols) - 1);
 #if defined(CONFIG_KEYBOARD_CUSTOMIZATION)
 		board_keyboard_drive_col(col);
 #elif defined(CONFIG_KEYBOARD_COL2_INVERTED)
@@ -121,12 +141,10 @@ test_mockable void keyboard_raw_drive_column(int col)
 		else
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
-		mask = ~BIT(col_out);
+		mask = BIT(col_out);
 	}
 
-	/* Set KBSOUT */
-	NPCX_KBSOUT0 = (mask & 0xFFFF);
-	NPCX_KBSOUT1 = ((mask >> 16) & 0x03);
+	keyboard_raw_drive_multi_columns(mask);
 }
 
 /**

@@ -10,6 +10,8 @@
 
 #include "baseboard.h"
 
+#define CONFIG_KEYBOARD_BINARY_SCAN
+
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024) /* 512KB internal spi flash */
 
