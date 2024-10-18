@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "837e9c49_e59df6c3",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-18T19:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1067f08d_324b4164",
+      "range": {
+        "startLine": 395,
+        "startChar": 51,
+        "endLine": 395,
+        "endChar": 59
+      },
+      "revId": "3f9714cecb174b878d34760dbd90140ec4968d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad92081_0e79c254",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-18T17:39:13Z",
       "side": 1,
       "message": "Why are you checking the `dm_out` when pdc_get_drp_mode() returns an error?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 0
+      },
+      "revId": "3f9714cecb174b878d34760dbd90140ec4968d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1daf22_feda1047",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-18T19:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad92081_0e79c254",
       "range": {
         "startLine": 336,
         "startChar": 0,
