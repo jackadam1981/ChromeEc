@@ -333,36 +333,95 @@ static int read_matrix(uint8_t *state, bool at_boot)
 	int c;
 	int pressed = 0;
 	int pb_pressed;
-
 	pb_pressed = power_button_raw_pressed();
 
 	/* 1. Read input pins */
-	for (c = 0; c < keyboard_cols; c++) {
-		/*
-		 * Skip if scanning becomes disabled. Clear the state
-		 * to make sure we don't mix new and old states in the
-		 * same array.
-		 *
-		 * Note, scanning is enabled on boot by default.
-		 */
-		if (!keyboard_scan_is_enabled()) {
+	/*
+	 * Skip if scanning becomes disabled. Clear the state
+	 * to make sure we don't mix new and old states in the
+	 * same array.
+	 *
+	 * Note, scanning is enabled on boot by default.
+	 */
+	if (!keyboard_scan_is_enabled()) {
+		for (c = 0; c < keyboard_cols; c++)
 			state[c] = 0;
-			continue;
+	} else if (IS_ENABLED(CONFIG_KEYBOARD_BINARY_SCAN)) {
+		int nbit;
+		uint32_t mask;
+		bool hit;
+		uint8_t row;
+
+		/* Mark all keys as possible */
+		for (c = 0; c < keyboard_cols; c++)
+			state[c] = GENMASK(7, 0);
+
+		/*
+		 * Binary search: start driving all (16) columns, then halfing
+		 * it to 8, 4, 2, and 1.
+		 */
+		for (nbit = BIT(4); nbit > 0; nbit >>= 1) {
+			/* Iterate the columns decreasingly, until out-of-range */
+			for (mask = GENMASK(keyboard_cols - 1, keyboard_cols - nbit);
+			     !!mask;
+			     mask >>= nbit)
+			{
+				/*
+				 * Stop searching if no key is possible in the
+				 * given columns.
+				 */
+				hit = false;
+				for (c = 0; c < keyboard_cols; c++)
+					if ((mask & BIT(c)) && state[c]) {
+						hit = true;
+						break;
+					}
+				if (!hit)
+					continue;
+
+				/*
+				 * Drive multiple columns, then wait a bit for
+				 * it to settle.
+				 */
+				keyboard_raw_drive_multi_columns(mask);
+				udelay(keyscan_config.output_settle_us);
+
+				/* Read the row state */
+				row = keyboard_raw_read_rows();
+
+				/* Mark the keys which are impossible */
+				for (c = 0; c < keyboard_cols; c++)
+					if (mask & BIT(c))
+						state[c] &= row;
+
+				/*
+				 * Optimization: if this half has no hit, the
+				 * next half must hit (otherwise, we won't
+				 * scan these columns), so we can skip scanning
+				 * the next half.
+				 */
+				if (!row)
+					mask >>= nbit;
+			}
 		}
+	} else {
+		for (c = 0; c < keyboard_cols; c++) {
+			/* Select column, then wait a bit for it to settle */
+			keyboard_raw_drive_column(c);
+			udelay(keyscan_config.output_settle_us);
 
-		/* Select column, then wait a bit for it to settle */
-		keyboard_raw_drive_column(c);
-		udelay(keyscan_config.output_settle_us);
-
-		/* Read the row state */
+			/* Read the row state */
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
-		state[c] = keyboard_read_adc_rows();
+			state[c] = keyboard_read_adc_rows();
 #else
-		state[c] = keyboard_raw_read_rows();
+			state[c] = keyboard_raw_read_rows();
 #endif
+		}
+	}
 
-		/* Use simulated keyscan sequence instead if testing active */
-		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
+	/* Use simulated keyscan sequence instead if testing active */
+	if (IS_ENABLED(CONFIG_KEYBOARD_TEST)) {
+		for (c = 0; c < keyboard_cols; c++)
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
 
