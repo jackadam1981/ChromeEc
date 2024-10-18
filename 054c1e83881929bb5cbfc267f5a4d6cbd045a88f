@@ -34,6 +34,24 @@
       "parentUuid": "5e0e1c9c_5e789aa3",
       "revId": "054c1e83881929bb5cbfc267f5a4d6cbd045a88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7bd709_393939a5",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-18T09:57:10Z",
+      "side": 1,
+      "message": "(ignore the command above, that should be in CL:5802679)\n\nAdded more comment to explain what happened here.",
+      "parentUuid": "d1fc9be1_527e4eb8",
+      "revId": "054c1e83881929bb5cbfc267f5a4d6cbd045a88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
