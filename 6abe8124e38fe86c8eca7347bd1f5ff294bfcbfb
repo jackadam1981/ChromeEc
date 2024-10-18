@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf643a3_82cf1855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-18T17:42:41Z",
+      "side": 1,
+      "message": "Is there a test for this condition?  Currently the emulator is not changing the DRP mode based on receiving the SET_CCOM command.\nWe should also run this against the compliance tester to see if this corrects the behavior.  Can you post an EC image to the bug for testing?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "6abe8124e38fe86c8eca7347bd1f5ff294bfcbfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
