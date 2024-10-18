@@ -16,6 +16,24 @@
       "message": "We are increasing the timeout on a lot of tests. Why we do not increase it globally? Are there any drawbacks to this approach?",
       "revId": "a9da2af91d34da02fd71a090fdf1f892c00ca00d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74686082_5346c258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-18T18:09:40Z",
+      "side": 1,
+      "message": "That\u0027s a good point.\n\nThe only downside is that if a given test does timeout we\u0027ll have to wait 20 seconds instead of 10 seconds to see that it failed. This isn\u0027t too much of an issue for an individual test. If there are a lot of tests timing out for some reason, we\u0027ll have to wait that extra time for each one. We have \\~67 tests, so worst case that would be an additional 670 seconds (~11 minutes).\n\nWe don\u0027t generally see all of the tests timeout though, so I think increasing it globally is ok. I\u0027ll create a separate CL for that.",
+      "parentUuid": "d5f635b3_0ba352dc",
+      "revId": "a9da2af91d34da02fd71a090fdf1f892c00ca00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
