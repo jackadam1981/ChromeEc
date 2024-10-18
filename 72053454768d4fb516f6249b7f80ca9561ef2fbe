@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a97dd4_acb82c2a",
+        "filename": "common/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-18T10:11:14Z",
+      "side": 1,
+      "message": "For ECOS using TCPMv2:\nBrya\u0027s implementation seems correct.\nBraask didn\u0027t check the SVID (TEST.PD.VDM.SRC.2). It should pass TEST.PD.VDM.SNK.1.\n\nFor Zephyr:\nNo one uses CONFIG_SVDM_RSP_CUSTOM.\n(Why don\u0027t newer Intel devices need TBT response things like Brya and Braask?)",
+      "parentUuid": "35fbb0a7_f93d5594",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c5a70a6_db92a79b",
