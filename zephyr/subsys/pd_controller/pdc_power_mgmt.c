@@ -3006,6 +3006,8 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 		__fallthrough;
 	case CMD_PDC_GET_PCH_DATA_STATUS:
 		__fallthrough;
+	case CMD_PDC_SET_DRP:
+		__fallthrough;
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		return true;
 	default:
