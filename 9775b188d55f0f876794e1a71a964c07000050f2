@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f80f9c1_21a6aa98",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-18T20:15:40Z",
+      "side": 1,
+      "message": "This needs to live in ucsi_v3.c.  Otherwise this will create multiple local instances of the array in every file that includes this header.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "9775b188d55f0f876794e1a71a964c07000050f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
