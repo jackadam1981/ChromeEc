@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad1f539_1ea54f7e",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-18T09:59:36Z",
+      "side": 1,
+      "message": "This test verifies that SVDM responder should NAK when received a bad SVID (the if clause at svdm_rsp_dfp_only.c line 19)",
+      "parentUuid": "2c5a70a6_db92a79b",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3622f441_69a5d487",
@@ -65,6 +83,24 @@
       "writtenOn": "2024-10-17T18:57:22Z",
       "side": 1,
       "message": "Is this something you also wanted to check?",
+      "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b57ae13_ab696461",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-18T09:59:36Z",
+      "side": 1,
+      "message": "Done, added the missing line back",
+      "parentUuid": "3622f441_69a5d487",
       "revId": "72053454768d4fb516f6249b7f80ca9561ef2fbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
