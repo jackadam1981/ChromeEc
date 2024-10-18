@@ -2271,6 +2271,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 					   (bool *)port->public_api_buff);
 		break;
 	case CMD_PDC_SET_PDOS:
+		LOG_INF("C%d: Set PDOs %s, fixed %d mA", config->connector_num,
+			port->set_pdos.type == SINK_PDO ? "SINK" : "SOURCE",
+			PDO_FIXED_GET_CURR(port->set_pdos.pdos[0]));
 		rv = pdc_set_pdos(port->pdc, port->set_pdos.type,
 				  port->set_pdos.pdos, port->set_pdos.count);
 		break;
@@ -4226,6 +4229,9 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 				     enum usb_typec_current_t current)
 {
 	struct pdc_port_t *pdc;
+
+	LOG_INF("C%d: set current limit %d mA", port_num,
+		current == TC_CURRENT_3_0A ? 3000 : 1500);
 
 	if (!is_pdc_port_valid(port_num)) {
 		return -ERANGE;

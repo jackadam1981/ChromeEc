@@ -280,6 +280,8 @@ void pdc_dpm_remove_sink(int port)
 {
 	enum usb_typec_current_t rp;
 
+	LOG_INF("DPM: remove sink partner %d", port);
+
 	if (CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS == 0)
 		return;
 
@@ -299,6 +301,8 @@ void pdc_dpm_remove_sink(int port)
 void pdc_dpm_remove_source(int port)
 {
 	enum usb_typec_current_t rp;
+
+	LOG_INF("DPM: remove source partner %d", port);
 
 	if (CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS == 0)
 		return;
