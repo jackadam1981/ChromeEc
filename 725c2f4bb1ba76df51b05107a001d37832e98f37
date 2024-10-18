@@ -16,6 +16,24 @@
       "message": "Something about the new tests I added breaks an existing test. I\u0027m still debugging.",
       "revId": "725c2f4bb1ba76df51b05107a001d37832e98f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cbc1e86_524525fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-18T00:16:26Z",
+      "side": 1,
+      "message": "Ugh, it was just the message log not being cleared between tests.",
+      "parentUuid": "0e522c37_40cd8906",
+      "revId": "725c2f4bb1ba76df51b05107a001d37832e98f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
