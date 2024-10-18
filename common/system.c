@@ -338,7 +338,7 @@ void system_print_banner(void)
 	}
 }
 
-#ifdef CONFIG_RAM_SIZE
+#if defined(CONFIG_RAM_SIZE) && defined(CONFIG_COMMON_PANIC_OUTPUT)
 struct jump_data *get_jump_data(void)
 {
 	uintptr_t addr;
@@ -353,7 +353,7 @@ struct jump_data *get_jump_data(void)
 
 	return (struct jump_data *)(addr - sizeof(struct jump_data));
 }
-#endif
+#endif /* CONFIG_RAM_SIZE && CONFIG_COMMON_PANIC_OUTPUT */
 
 test_mockable int system_jumped_to_this_image(void)
 {
