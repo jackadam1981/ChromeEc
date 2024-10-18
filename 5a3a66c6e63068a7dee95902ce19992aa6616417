@@ -22,6 +22,30 @@
       },
       "revId": "5a3a66c6e63068a7dee95902ce19992aa6616417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cca96d1_3c336dd7",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-18T17:58:07Z",
+      "side": 1,
+      "message": "The length field in `SET_PDO` happens to be 3, but it counts subcommand+port_num+pdo_info, not command+len_byte+subcommand. I think this is conflating two different offset schemes and makes it more confusing to read.",
+      "parentUuid": "a9019a3e_75e6b42f",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "5a3a66c6e63068a7dee95902ce19992aa6616417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
