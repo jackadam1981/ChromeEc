@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed02deb_78e156b6",
+        "filename": "zephyr/program/fatcat/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-18T21:27:01Z",
+      "side": 1,
+      "message": "you\u0027re designing with the npcx9m3f and no MECC, right?",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "32da908dfabc135c16a3b5b606660c8c0bc29cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016d167f_be8e08cd",
+        "filename": "zephyr/program/fatcat/francka/adc.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-18T21:27:01Z",
+      "side": 1,
+      "message": "please remove these annotations (they are hints to the emacs editor).\n\ni added them initially, but we\u0027ve decided to not do this going forward.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "32da908dfabc135c16a3b5b606660c8c0bc29cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d071ba23_11f9e436",
+        "filename": "zephyr/program/fatcat/francka/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-18T21:27:01Z",
+      "side": 1,
+      "message": "might as well fix the board name now.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "32da908dfabc135c16a3b5b606660c8c0bc29cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
