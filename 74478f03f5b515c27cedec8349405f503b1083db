@@ -16,6 +16,24 @@
       "message": "A PD 3.0 recipient is supposed to respond Not_Supported if it does not support VDMs at all. AFAIK, all of our boards support at least some VDMs, so I think we can get away with removing this clause. However, if we were to support types of devices that we don\u0027t support now, it\u0027s possible that we\u0027d need to bring it back. You might want to leave a short comment to that effect here, for future maintainers.",
       "revId": "74478f03f5b515c27cedec8349405f503b1083db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaead226_6630e4c2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6677,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-18T09:55:23Z",
+      "side": 0,
+      "message": "Done, put a comment in SRC_Ready.\n(I think Not_Supported should happen before entering VDM_Response)",
+      "parentUuid": "54140fbd_df00a060",
+      "revId": "74478f03f5b515c27cedec8349405f503b1083db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
