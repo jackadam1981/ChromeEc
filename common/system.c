@@ -326,7 +326,8 @@ void system_print_banner(void)
 	}
 }
 
-#ifdef CONFIG_RAM_SIZE
+#if defined(CONFIG_RAM_SIZE) && \
+	(defined(CONFIG_COMMON_PANIC_OUTPUT) || defined(BOARD_HOST))
 static struct jump_data *get_jump_data(void)
 {
 	uintptr_t addr;
@@ -341,7 +342,7 @@ static struct jump_data *get_jump_data(void)
 
 	return (struct jump_data *)(addr - sizeof(struct jump_data));
 }
-#endif
+#endif /* CONFIG_RAM_SIZE && (CONFIG_COMMON_PANIC_OUTPUT || BOARD_HOST) */
 
 test_mockable int system_jumped_to_this_image(void)
 {
@@ -923,6 +924,9 @@ void system_common_pre_init(void)
 			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
 	}
 
+#if defined(CONFIG_RAM_SIZE) && \
+	(defined(CONFIG_COMMON_PANIC_OUTPUT) || defined(BOARD_HOST))
+
 	jdata = get_jump_data();
 
 	/*
@@ -989,6 +993,7 @@ void system_common_pre_init(void)
 		/* Clear the whole jump_data struct */
 		memset(jdata, 0, sizeof(struct jump_data));
 	}
+#endif /* CONFIG_RAM_SIZE && (CONFIG_COMMON_PANIC_OUTPUT || BOARD_HOST) */
 }
 
 void system_enter_manual_recovery(void)
