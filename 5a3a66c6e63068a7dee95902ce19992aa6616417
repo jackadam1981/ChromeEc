@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9019a3e_75e6b42f",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-18T15:27:05Z",
+      "side": 1,
+      "message": "Nit - create a macro for the base data length.\n```\n#define RTS54XX_SET_PDO_BASE_DATA_LENGTH 3\n#define RTS54XX_SET_PDO_CMD_BASE_LENGTH \\\n    RTS54XX_SET_PDO_BASE_DATA_LENGTH + 2\n```\n\nAlso update the `SET_PDO` definition to reference `RTS54XX_SET_PDO_BASE_DATA_LENGTH`",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "5a3a66c6e63068a7dee95902ce19992aa6616417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
