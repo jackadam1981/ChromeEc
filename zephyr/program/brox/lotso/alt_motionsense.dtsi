@@ -111,8 +111,28 @@
 			};
 		};
 	};
+
+	motionsense-sensor-info {
+		compatible = "cros-ec,motionsense-sensor-info";
+
+		/delete-property/ accel-force-mode-sensors;
+
+		/*
+		 * list of GPIO interrupts that have to
+		 * be enabled at initial stage
+		 */
+		sensor-irqs = <&int_lid_imu &int_base_imu>;
+	};
 };
 
 &int_lid_imu {
-	handler = "motion_interrupt";
+	handler = "lid_motion_interrupt";
+};
+
+&gpio_interrupts {
+	int_base_imu: int-base-imu {
+		irq-pin = <&gpio_ec_accel_mb_int_l>;
+		flags = <GPIO_INT_EDGE_FALLING>;
+		handler = "base_motion_interrupt";
+	};
 };

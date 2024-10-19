@@ -14,6 +14,9 @@
 		gpio_ec_accel_db_int_l: ec_accel_db_int_l {
 			gpios = <&gpioj 7 GPIO_INPUT>;
 		};
+		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
+			gpios = <&gpioj 0 GPIO_INPUT>;
+		};
 	};
 
 	gpio_interrupts: gpio-interrupts {
@@ -22,7 +25,12 @@
 		int_lid_imu: int-lid-imu {
 			irq-pin = <&gpio_ec_accel_db_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "motion_interrupt";
+			handler = "lid_motion_interrupt";
+		};
+		int_base_imu: int-base-imu {
+			irq-pin = <&gpio_ec_accel_mb_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "base_motion_interrupt";
 		};
 	};
 };
