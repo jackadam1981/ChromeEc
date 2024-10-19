@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85135011_d942df06",
+        "filename": "boot_param/BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2024-10-19T00:42:51Z",
+      "side": 1,
+      "message": "nit: These can go directly in the `cc_library` below.",
+      "revId": "4db3a268fc03185b42d414677bf13dace518a139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
