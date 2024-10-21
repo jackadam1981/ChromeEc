@@ -94,6 +94,30 @@
       },
       "revId": "92ca832195f4abfbb79ed9975c06f8b9fb5523f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3110d0ca_0d954efc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-21T22:44:21Z",
+      "side": 1,
+      "message": "I created this experimental CL to test RO variants: \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5950864 \n\nAll tests pass:\n```\nTest \"sram_mpu_protection_wp_on\": PASSED\n\nTest \"sram_mpu_protection_wp_off\": PASSED\n\nTest \"sram_mpu_protection_wp_on_helipilot_v2.0.24337\": PASSED\n\nTest \"sram_mpu_protection_wp_on_buccaneer_v2.0.26328\": PASSED\n\nTest \"sram_mpu_protection_wp_off_helipilot_v2.0.24337\": PASSED\n\nTest \"sram_mpu_protection_wp_off_buccaneer_v2.0.26328\": PASSED\n```\n\n\n@hesling@chromium.org IIUC, you have never locked an RO that has MPU protection, am I right?",
+      "parentUuid": "d9d24ce2_f4cd2d48",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "92ca832195f4abfbb79ed9975c06f8b9fb5523f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
