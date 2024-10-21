@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d787af2e_a29340c8",
+        "filename": "zephyr/program/rex/kanix/cbi.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2024-10-21T20:18:37Z",
+      "side": 1,
+      "message": "Can we review `src/project/rex/kanix/config.star` and have them in sync across AP/EC firmware?",
+      "parentUuid": "debf084b_544e1155",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "110ac15066a7e80b46225491a27e9c2d21d0569b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff24960c_a263a505",
         "filename": "zephyr/test/rex/tests/kanix/src/keyboard.c",
         "patchSetId": 2
