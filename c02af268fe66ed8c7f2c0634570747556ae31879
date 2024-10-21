@@ -22,6 +22,30 @@
       },
       "revId": "c02af268fe66ed8c7f2c0634570747556ae31879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "926342c4_e4fbbca1",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-10-21T18:24:55Z",
+      "side": 1,
+      "message": "`gpio_pin_get_dt` returns current pin level (positive value) upon successful pin access, otherwise it will return negative if ioexpander is not ready.",
+      "parentUuid": "8ecef00a_0d3e39c3",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "c02af268fe66ed8c7f2c0634570747556ae31879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
