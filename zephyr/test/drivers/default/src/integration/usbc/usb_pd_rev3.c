@@ -9,6 +9,7 @@
 #include "ec_commands.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
+#include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -483,4 +484,218 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_uvdm_not_supported)
 	zassert_true(
 		not_supported_seen,
 		"Sent unstructured VDM to TCPM; did not receive Not_Supported");
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_revision)
+{
+	const uint32_t expected_rev = 0x32100000;
+
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_REVISION, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_equal(fixture->source_5v_3a.rmdo, expected_rev,
+		      "Expected RMDO %x, got %x", expected_rev,
+		      fixture->source_5v_3a.rmdo);
+}
+
+uint8_t get_status_data_size(sys_slist_t *msg_log)
+{
+	struct tcpci_partner_log_msg *msg;
+	uint8_t data_size = 0;
+
+	SYS_SLIST_FOR_EACH_CONTAINER(msg_log, msg, node)
+	{
+		uint16_t header = sys_get_le16(msg->buf);
+		if (msg->sender != TCPCI_PARTNER_SENDER_TCPM ||
+		    !PD_HEADER_EXT(header) ||
+		    PD_HEADER_TYPE(header) != PD_EXT_STATUS) {
+			continue;
+		}
+
+		uint16_t ext_header = sys_get_le16(msg->buf + sizeof(uint16_t));
+		data_size = PD_EXT_HEADER_DATA_SIZE(ext_header);
+		break;
+	}
+
+	return data_size;
+}
+
+/* The TCPM should respond to Get_Status with a 7-byte Status as defined in PD
+ * r3.1 and newer, regardless of the partner's response (or non-response) to
+ * Get_Revision. Test two cases to verify this. See b/366241394 for details.
+ */
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_get_status_response_pd31)
+{
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, true);
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_STATUS, 0);
+	k_sleep(K_SECONDS(2));
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, false);
+
+	/* When a partner supplies a Revision of PD r3.1 or greater, the TCPM
+	 * should respond to Get_Status with a 7-byte Status Data Block, as
+	 * defined in PD r3.1.
+	 */
+	zassert_equal(get_status_data_size(&fixture->source_5v_3a.msg_log), 7);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
+	test_get_status_response_pd_no_revision)
+{
+	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+	/* Set the partner to respond to Get_Revision with Not_Supported */
+	fixture->source_5v_3a.rmdo = 0x0;
+	connect_source_to_port(&fixture->source_5v_3a, &fixture->src_ext, 1,
+			       fixture->tcpci_emul, fixture->charger_emul);
+
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, true);
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_STATUS, 0);
+	k_sleep(K_SECONDS(2));
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, false);
+
+	/* When a partner does not supply a Revision message, the TCPM should
+	 * respond to Get_Status with a 7-byte Status Data Block, as defined in
+	 * PD r3.1.
+	 */
+	zassert_equal(get_status_data_size(&fixture->source_5v_3a.msg_log), 7);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_sink_cap_ext)
+{
+	memset(&fixture->source_5v_3a.skedb, 0, sizeof(struct skedb));
+
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_SINK_CAP_EXT, 0);
+	k_sleep(K_SECONDS(2));
+	/* check some fields to verify that Sink_Capabilities_Extended is
+	 * received */
+	zassert_equal(fixture->source_5v_3a.skedb.vid, USB_VID_GOOGLE);
+	zassert_equal(fixture->source_5v_3a.skedb.pid, CONFIG_USB_PID);
+	zassert_equal(fixture->source_5v_3a.skedb.battery_info, 1);
+	zassert_equal(fixture->source_5v_3a.skedb.sink_modes,
+		      SKEDB_SINK_VBUS_POWERED | SKEDB_SINK_BATTERY_POWERED);
+	zassert_equal(fixture->source_5v_3a.skedb.sink_minimum_pdp, 15);
+	zassert_equal(fixture->source_5v_3a.skedb.sink_maximum_pdp, 60);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_source_info)
+{
+	const union sido expected_sido = {
+		.port_type = 0,
+		.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.port_present_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.port_reported_pdp = 7,
+	};
+
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_SOURCE_INFO, 0);
+	k_sleep(K_SECONDS(2));
+
+	const union sido *actual_sido = &fixture->source_5v_3a.tcpm_sido;
+	zexpect_equal(actual_sido->port_type, expected_sido.port_type,
+		      "Unexpected port type %u", actual_sido->port_type);
+	zexpect_equal(actual_sido->port_maximum_pdp,
+		      expected_sido.port_maximum_pdp,
+		      "Unexpected maximum PDP %u",
+		      actual_sido->port_maximum_pdp);
+	zexpect_equal(actual_sido->port_present_pdp,
+		      expected_sido.port_present_pdp,
+		      "Unexpected present PDP %u",
+		      actual_sido->port_present_pdp);
+	zexpect_equal(actual_sido->port_reported_pdp,
+		      expected_sido.port_reported_pdp,
+		      "Unexpected reported PDP %u",
+		      actual_sido->port_reported_pdp);
+}
+
+struct usb_attach_pd_sink_rev3_fixture {
+	struct tcpci_partner_data sink;
+	struct tcpci_snk_emul_data snk_ext;
+	const struct emul *tcpci_emul;
+	const struct emul *charger_emul;
+};
+
+static void *usb_attach_pd_sink_setup(void)
+{
+	static struct usb_attach_pd_sink_rev3_fixture test_fixture;
+
+	/* Get references for the emulators */
+	test_fixture.tcpci_emul = EMUL_GET_USBC_BINDING(0, tcpc);
+	test_fixture.charger_emul = EMUL_GET_USBC_BINDING(0, chg);
+
+	/* Initialized the charger to supply 5V and 3A */
+	tcpci_partner_init(&test_fixture.sink, PD_REV30);
+	test_fixture.sink.extensions = tcpci_snk_emul_init(
+		&test_fixture.snk_ext, &test_fixture.sink, NULL);
+	test_fixture.snk_ext.pdo[1] =
+		PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
+
+	return &test_fixture;
+}
+
+static void usb_attach_pd_sink_before(void *data)
+{
+	struct usb_attach_pd_sink_rev3_fixture *fixture = data;
+
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Set the partner's USB PD Revision to 3.1 */
+	fixture->sink.rmdo = 0x31000000;
+
+	connect_sink_to_port(&fixture->sink, fixture->tcpci_emul,
+			     fixture->charger_emul);
+
+	/* Clear Alert and Status receive checks; clear message log */
+	tcpci_snk_emul_clear_alert_received(&fixture->snk_ext);
+	zassert_false(fixture->snk_ext.alert_received);
+	tcpci_partner_common_clear_logged_msgs(&fixture->sink);
+
+	/* Initial check on power state */
+	zassert_true(chipset_in_state(CHIPSET_STATE_ON));
+}
+
+static void usb_attach_pd_sink_after(void *data)
+{
+	struct usb_attach_pd_sink_rev3_fixture *fixture = data;
+
+	disconnect_sink_from_port(fixture->tcpci_emul);
+}
+
+ZTEST_SUITE(usb_attach_pd_sink_rev3, drivers_predicate_post_main,
+	    usb_attach_pd_sink_setup, usb_attach_pd_sink_before,
+	    usb_attach_pd_sink_after, NULL);
+
+ZTEST_F(usb_attach_pd_sink_rev3, test_give_source_info)
+{
+	const union sido expected_sido = {
+		.port_type = 0,
+		.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.port_present_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.port_reported_pdp = 7,
+	};
+
+	tcpci_partner_send_control_msg(&fixture->sink, PD_CTRL_GET_SOURCE_INFO,
+				       0);
+	k_sleep(K_SECONDS(2));
+
+	const union sido *actual_sido = &fixture->sink.tcpm_sido;
+	zexpect_equal(actual_sido->port_type, expected_sido.port_type,
+		      "Unexpected port type %u", actual_sido->port_type);
+	zexpect_equal(actual_sido->port_maximum_pdp,
+		      expected_sido.port_maximum_pdp,
+		      "Unexpected maximum PDP %u",
+		      actual_sido->port_maximum_pdp);
+	zexpect_equal(actual_sido->port_present_pdp,
+		      expected_sido.port_present_pdp,
+		      "Unexpected present PDP %u",
+		      actual_sido->port_present_pdp);
+	zexpect_equal(actual_sido->port_reported_pdp,
+		      expected_sido.port_reported_pdp,
+		      "Unexpected reported PDP %u",
+		      actual_sido->port_reported_pdp);
 }
