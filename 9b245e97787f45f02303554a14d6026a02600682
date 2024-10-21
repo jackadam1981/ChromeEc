@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c661d4f0_f9f6d295",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T20:58:02Z",
+      "side": 1,
+      "message": "This sounds like a bug that may affect other tests or functionality. Can you create a small CL that demonstrates the issue and file a bug?",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "9b245e97787f45f02303554a14d6026a02600682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
