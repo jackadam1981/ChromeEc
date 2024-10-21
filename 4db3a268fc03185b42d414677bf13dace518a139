@@ -16,6 +16,24 @@
       "message": "nit: These can go directly in the `cc_library` below.",
       "revId": "4db3a268fc03185b42d414677bf13dace518a139",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "114f7420_c28dcccd",
+        "filename": "boot_param/BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-10-21T18:22:56Z",
+      "side": 1,
+      "message": "they are needed externally, see https://chrome-internal-review.googlesource.com/c/ti50/common/ti50/+/7761267/2/libs/tpm2/Platform/BUILD.bazel",
+      "parentUuid": "85135011_d942df06",
+      "revId": "4db3a268fc03185b42d414677bf13dace518a139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
