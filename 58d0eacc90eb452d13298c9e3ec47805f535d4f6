@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919a7e4e_99528a30",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:20:32Z",
+      "side": 1,
+      "message": "I think the right syntax for doxygen is `@p tx_len`\n\nhttps://www.doxygen.nl/manual/commands.html#cmdp\n\nSame for the other names in `\u003c\u003e`.",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de7d731_ec85749c",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:20:32Z",
+      "side": 1,
+      "message": "Can you add `[in]` or `[out]`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
