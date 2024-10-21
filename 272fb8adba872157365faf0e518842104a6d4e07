@@ -16,6 +16,24 @@
       "message": "I do not have permission to view fail messages.",
       "revId": "272fb8adba872157365faf0e518842104a6d4e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f1a29b_ac345914",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-21T17:07:22Z",
+      "side": 1,
+      "message": "Here it is:\n```\nld.lld: error: undefined symbol: pd_sink_stop_drawing_current\n\u003e\u003e\u003e referenced by usb_pe_drp_sm.c:3763 (/mnt/host/source/src/platform/ec/common/usbc/usb_pe_drp_sm.c:3763)\n\u003e\u003e\u003e               build/host/usb_pe_drp_old_noextended/RO/common/usbc/usb_pe_drp_sm.o:(pe_snk_transition_sink_run)\n  CC      RO/common/queue.o\n  CC      RO/common/hooks.o\n  EXE     version.exe\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\n  CC      RO/core/host/disabled.o\nmake[1]: *** [Makefile.rules:630: build/host/usb_pe_drp_old_noextended/usb_pe_drp_old_noextended.exe] Error 1\nmake: *** [Makefile.rules:367: host-usb_pe_drp_old_noextended] Error 2\nmake: *** Waiting for unfinished jobs....\n```\nYou may want to try \u0027make host-usb_pe_drp_old_noextended\u0027 to reproduce it (or your usual \u0027make buildall\u0027).\n\nYou may be able to run CQ checks locally by running:\n```\n/mnt/host/source/src/platform/ec/firmware_builder.py --metrics /tmp/tmp7n7z9qcw test\n```\n\nSorry for inconvenience.",
+      "parentUuid": "3137a31a_55215aaa",
+      "revId": "272fb8adba872157365faf0e518842104a6d4e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
