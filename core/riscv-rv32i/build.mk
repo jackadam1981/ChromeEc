@@ -10,8 +10,15 @@
 _FPU_EXTENSION=$(if $(CONFIG_FPU),f,)
 # Enable the 'M' extension if config option of RISCV_EXTENSION_M is enabled.
 _M_EXTENSION=$(if $(CONFIG_RISCV_EXTENSION_M),m,)
+# Enable the zifencei extension
+_ZIFENCEI_EXTENSION?=
 # CPU specific compilation flags
+<<<<<<< PATCH SET (ee992a Add zifencei extension to -march flag)
+CFLAGS_CPU+=-march=rv32i$(_M_EXTENSION)a$(_FPU_EXTENSION)c_zicsr$\
+	$(_ZIFENCEI_EXTENSION)
+=======
 CFLAGS_CPU+=-march=rv32i$(_M_EXTENSION)a$(_FPU_EXTENSION)c_zicsr
+>>>>>>> BASE      (638e04 ec: Add control and status register access ext)
 CFLAGS_CPU+=-mabi=ilp32$(_FPU_EXTENSION) -Os
 # RISC-V does not trap division by zero, enable the sanitizer to check those.
 # With `-fsanitize-undefined-trap-on-error`, we lose a bit of specificity on the
