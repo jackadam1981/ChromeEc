@@ -16,6 +16,23 @@
       "message": "tested 4 combinations, each ran AccelerometersGroup 1000 cycles, all PASSED.",
       "revId": "38a12ae726a702dc9d3e30aa67e882d6434c775f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a089cb_b1dde3cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-21T16:40:55Z",
+      "side": 1,
+      "message": "Unfortunately, when 2 identical sensors are used, one of them has to be in forced mode: the interrupt triggers only one event, for instance:\n```\ntest_mockable void lis2dw12_interrupt(enum gpio_signal signal)\n{\n  last_interrupt_timestamp \u003d __hw_clock_source_read();\n\n  task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_LIS2DW12_INT_EVENT);\n}\n```\n\nSo this code will work for configuration like:\nbase sensor: bma422 + lid sensor: lis2dw12\nbase sensor: lis2dw12 + lid sensor: bma422\n\nbut not:\nbase sensor: lis2dw12 + lid sensor: lis2dw12\nbase sensor: bma422 + lid sensor: bma422",
+      "revId": "38a12ae726a702dc9d3e30aa67e882d6434c775f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
