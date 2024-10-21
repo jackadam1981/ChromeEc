@@ -16,6 +16,24 @@
       "message": "This might be on the wrong branch.\n\nIs there anyone else we should add to this, or maybe include a different OWNERS file?",
       "revId": "e14a7bbea05a7ff2766b5304e01823294476ffed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d309f0_11053eb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-10-21T17:10:52Z",
+      "side": 1,
+      "message": "the branch is right, but why is a separate owners file is needed? Can the one from the root cr50 directory be used?",
+      "parentUuid": "50dd2dfd_9cca3a37",
+      "revId": "e14a7bbea05a7ff2766b5304e01823294476ffed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
