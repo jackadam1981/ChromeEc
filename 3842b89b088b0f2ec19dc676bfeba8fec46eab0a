@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1756828_a776d197",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-10-21T02:05:19Z",
+      "side": 1,
+      "message": "update PS8",
+      "parentUuid": "a6e5a2ee_e61b303c",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 16
+      },
+      "revId": "3842b89b088b0f2ec19dc676bfeba8fec46eab0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7f2a990_2a2760b0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "822fabf9_91a8abce",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-10-21T02:05:19Z",
+      "side": 1,
+      "message": "update PS8",
+      "parentUuid": "d7f2a990_2a2760b0",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "revId": "3842b89b088b0f2ec19dc676bfeba8fec46eab0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c26898a_d4ce1561",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-18T21:38:05Z",
       "side": 1,
       "message": "attempt_count + 1",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "3842b89b088b0f2ec19dc676bfeba8fec46eab0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb03466_80146d5b",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2024-10-21T02:05:19Z",
+      "side": 1,
+      "message": "update PS8",
+      "parentUuid": "6c26898a_d4ce1561",
       "range": {
         "startLine": 190,
         "startChar": 4,
