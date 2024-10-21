@@ -46,6 +46,30 @@
       },
       "revId": "c02af268fe66ed8c7f2c0634570747556ae31879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd9e147_621301a1",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-21T19:42:58Z",
+      "side": 1,
+      "message": "ACK, pls add a note at line 45",
+      "parentUuid": "926342c4_e4fbbca1",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "c02af268fe66ed8c7f2c0634570747556ae31879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
