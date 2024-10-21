@@ -39,6 +39,30 @@
       },
       "revId": "5eb01d33d493f3b1d37c91052b56beab34ee31e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a92d84_f3f25634",
+        "filename": "common/memory_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-21T19:57:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ba385f56_d3c2cc07",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 24
+      },
+      "revId": "5eb01d33d493f3b1d37c91052b56beab34ee31e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
