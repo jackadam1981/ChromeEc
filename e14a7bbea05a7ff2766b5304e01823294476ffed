@@ -34,6 +34,24 @@
       "parentUuid": "50dd2dfd_9cca3a37",
       "revId": "e14a7bbea05a7ff2766b5304e01823294476ffed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3766281c_a05bbac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2024-10-21T17:34:00Z",
+      "side": 1,
+      "message": "So at first I thought this was a typical OWNERS file, but then I read the comment and realized it has to be here and has to only contain emails.\n\nSee: https://www.chromium.org/chromium-os/developer-library/guides/testing/fuzzing/#build-a-fuzzer-for-a-platform-package\n\n\u003e Warning: The .owners file installed with the fuzzer must contain actual email addresses, not an include-link to another OWNERS file. If the OWNERS file in the fuzzer\u0027s directory is just an include-link, you should install the target OWNERS file instead, like `platform_fuzzer_install \"${S}\"/../target/OWNERS \"${OUT}\"/\u003cyour_fuzzer\u003e`\n\nWe could possibly include that one, but I think it would need to be in the ebuild\u0027s source tree and `src/platform/pinweaver/OWNERS` is in a different tree.",
+      "parentUuid": "87d309f0_11053eb6",
+      "revId": "e14a7bbea05a7ff2766b5304e01823294476ffed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
