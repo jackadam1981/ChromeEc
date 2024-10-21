@@ -70,6 +70,30 @@
       },
       "revId": "92ca832195f4abfbb79ed9975c06f8b9fb5523f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d24ce2_f4cd2d48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T22:10:08Z",
+      "side": 1,
+      "message": "There\u0027s a lot happening in this CL, so let\u0027s break it down into smaller pieces (go/small-cls):\n\n1. @hesling@chromium.org already locked down RO for `buccaneer` and it probably has RAM lock enabled. We should add a variant of the MPU test that uses the real RO, similar to `panic_data`. Based on the description of the bug, I think this is going to fail. We may have time to update RO, so it\u0027s probably highest priority to confirm this.\n\n1. The change to only enable RAM_LOCK in RW can be its own change.\n\n1. Since RAM lock and MPU provide some of the same functionality, it\u0027s probably good to make sure that RAM lock is disabled for the MPU test. Otherwise, we may actually be testing the behavior of the RAM lock feature, not the MPU.\n\n1. We probably want a separate test that is more of an integration test that makes sure that we cannot write or execute memory that we\u0027re not supposed to in both RO and RW (i.e., that RAM lock and MPU functionality is working when both are enabled).",
+      "parentUuid": "1a287d86_ef648dcc",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "92ca832195f4abfbb79ed9975c06f8b9fb5523f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
