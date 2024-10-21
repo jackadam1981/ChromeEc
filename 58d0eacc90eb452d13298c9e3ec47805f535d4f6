@@ -45,6 +45,29 @@
       },
       "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73e2cf1_fd4fd092",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:23:25Z",
+      "side": 1,
+      "message": "Looks like it\u0027s returning `enum ec_error_list`, which are never negative?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
