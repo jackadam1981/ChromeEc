@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4ab795_cf2ad90f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-10-21T18:59:04Z",
+      "side": 1,
+      "message": "It might be better to move coreboot_sdk.py under the zmake folder. The other users of the file would still be able to find it there.\n\nBut you could submit this first if you want.",
+      "revId": "97d5c336461b104470b9ad8c3b03572ead80ec67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
