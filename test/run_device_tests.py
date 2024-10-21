@@ -786,6 +786,34 @@ class AllTests:
                 )
             )
 
+        for variant_name, variant_info in board_config.variants.items():
+            tests.append(
+                TestConfig(
+                    config_name="sram_mpu_protection_wp_on_" + variant_name,
+                    test_name="sram_mpu_protection",
+                    ro_image=variant_info.get("ro_image_path"),
+                    build_board=variant_info.get("build_board"),
+                    exclude_boards=[BLOONCHIPPER, DARTMONKEY],
+                    test_args=["wp_on"],
+                    toggle_power=True,
+                    enable_hw_write_protect=True,
+                )
+            )
+
+        for variant_name, variant_info in board_config.variants.items():
+            tests.append(
+                TestConfig(
+                    config_name="sram_mpu_protection_wp_off_" + variant_name,
+                    test_name="sram_mpu_protection",
+                    ro_image=variant_info.get("ro_image_path"),
+                    build_board=variant_info.get("build_board"),
+                    exclude_boards=[BLOONCHIPPER, DARTMONKEY],
+                    test_args=["wp_off"],
+                    toggle_power=True,
+                    enable_hw_write_protect=False,
+                )
+            )
+
         return tests
 
     @staticmethod
