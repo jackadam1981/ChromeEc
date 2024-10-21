@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "8ac5c53219300ab5b5a636b8bce262285f21f8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea89b9c3_fe9fdad2",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-21T20:47:21Z",
+      "side": 1,
+      "message": "driver/retimer/kb800x.c:203:17: error: implicit declaration of function \u0027ASSERT\u0027 [-Werror\u003dimplicit-function-declaration]\n  203 |                 ASSERT(false);\n      |                 ^~~~~~\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:638: build/brask/RW/driver/retimer/kb800x.o] Error 1",
+      "revId": "8ac5c53219300ab5b5a636b8bce262285f21f8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
