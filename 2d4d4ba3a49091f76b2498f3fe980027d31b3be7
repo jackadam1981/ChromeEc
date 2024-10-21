@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c371df26_307e4dc0",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_time.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:27:55Z",
+      "side": 1,
+      "message": "begin",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "37860a27_89bd31ac",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_time.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": " * @param begin The starting time in milliseconds.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2d4d4ba3a49091f76b2498f3fe980027d31b3be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799f86de_bc2e75c5",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_time.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:27:55Z",
+      "side": 1,
+      "message": "Does it use busy-waiting or not? Is the behavior conditional?",
+      "range": {
+        "startLine": 33,
+        "startChar": 69,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2d4d4ba3a49091f76b2498f3fe980027d31b3be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a391fb26_3b20c80d",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_time.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:27:55Z",
+      "side": 1,
+      "message": "Can you specify `[in]`/`[out]` for all the parameters?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d579b9e8_5a085527",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_time.h",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": " * @param msecs [in] The delay time in milliseconds.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_time.h",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 47,
+                "endChar": 0
+              },
+              "replacement": " * @param timeInMs [in] The sleep time in milliseconds.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2d4d4ba3a49091f76b2498f3fe980027d31b3be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ce2401_bde91382",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_time.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:27:55Z",
+      "side": 1,
+      "message": "Is the behavior conditional?",
+      "range": {
+        "startLine": 42,
+        "startChar": 68,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "2d4d4ba3a49091f76b2498f3fe980027d31b3be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
