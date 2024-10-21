@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ecef00a_0d3e39c3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-21T17:51:48Z",
+      "side": 1,
+      "message": "should this be if (rv \u003d\u003d 0)\n\nif (rv) -\u003e should be true for both - \u0026 + numbers",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "c02af268fe66ed8c7f2c0634570747556ae31879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
