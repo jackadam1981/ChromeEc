@@ -1,0 +1,167 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f956af4a_f086c278",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:17:05Z",
+      "side": 1,
+      "message": "`@return Pointer to the allocated memory.`",
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057911ba_7cd9e08c",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:17:05Z",
+      "side": 1,
+      "message": "This is kind of redundant.",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fdf0b7cd_1b4c4760",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": " * @brief Safely releases a block of memory.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7451ddf_876c3a70",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:17:05Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and mark whether parameters are inputs or outputs with `[in]`/`[out]` while we\u0027re at it.\n\nhttps://www.doxygen.nl/manual/commands.html#cmdparam\n\nIn this case it\u0027s both so you can use `@param[in,out]`.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "33d80e61_0f5e4b94",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": " * @param[in] count The number of elements to allocate.\n * @param[in] size The size of each element in bytes.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": " * @param[in] data A pointer to the memory block to be released.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": " * @param[in,out] x A pointer to a pointer to the memory block to be freed. This\n * is a double pointer, meaning it points to a memory location that holds\n * another pointer, which in turn points to the actual data.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": " * @param[in] size The size of the memory block to allocate, in bytes.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5436235f_e5003f40",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:17:05Z",
+      "side": 1,
+      "message": "Mark as input parameter",
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7042d672_8507018d",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T18:17:05Z",
+      "side": 1,
+      "message": "`@return Pointer to the allocated memory.`",
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
