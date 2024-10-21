@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ed9ca5_58b297f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-21T21:16:57Z",
+      "side": 1,
+      "message": "I\u0027m trying to understand exactly what @hesling@chromium.org saw was broken that caused the revert in https://crrev.com/c/5879616 so I can verify that this change addresses it. The revert CL says:\n\n\u003e  This mechanism is broken. Once it enforces read-only on code RAM in RO, the code for RW can\u0027t be written to code RAM. This must silently fail and the system thinks it jumped to RW, but it is actually just RO still.\n\nWas Craig seeing the \"stuck in RO\" behavior in a unit test or was he seeing it when running the normal fingerprint firmware?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "92ca832195f4abfbb79ed9975c06f8b9fb5523f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
