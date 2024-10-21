@@ -51,6 +51,24 @@
       "parentUuid": "ea89b9c3_fe9fdad2",
       "revId": "8ac5c53219300ab5b5a636b8bce262285f21f8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6c9f55_080a09e5",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-10-21T21:07:49Z",
+      "side": 1,
+      "message": "Yeah, I made this change in cider, and did no testing at all.",
+      "parentUuid": "ac85100a_6a9c5eec",
+      "revId": "8ac5c53219300ab5b5a636b8bce262285f21f8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
