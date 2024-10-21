@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a99d3a_e9105332",
+        "filename": "zephyr/program/fatcat/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1369106
+      },
+      "writtenOn": "2024-10-21T02:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed02deb_78e156b6",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "32da908dfabc135c16a3b5b606660c8c0bc29cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016d167f_be8e08cd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d982f784_ecfa649b",
+        "filename": "zephyr/program/fatcat/francka/adc.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1369106
+      },
+      "writtenOn": "2024-10-21T02:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "016d167f_be8e08cd",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "32da908dfabc135c16a3b5b606660c8c0bc29cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d071ba23_11f9e436",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-18T21:27:01Z",
       "side": 1,
       "message": "might as well fix the board name now.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "32da908dfabc135c16a3b5b606660c8c0bc29cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84399ab5_67afc92a",
+        "filename": "zephyr/program/fatcat/francka/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1369106
+      },
+      "writtenOn": "2024-10-21T02:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d071ba23_11f9e436",
       "range": {
         "startLine": 12,
         "startChar": 3,
