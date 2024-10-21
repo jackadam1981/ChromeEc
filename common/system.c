@@ -338,7 +338,6 @@ void system_print_banner(void)
 	}
 }
 
-#ifdef CONFIG_RAM_SIZE
 struct jump_data *get_jump_data(void)
 {
 	uintptr_t addr;
@@ -348,12 +347,13 @@ struct jump_data *get_jump_data(void)
 	 * panic data is not present.
 	 */
 	addr = get_panic_data_start();
-	if (!addr)
+	if (!addr) {
+		BUILD_ASSERT(CONFIG_RAM_SIZE >= 0);
 		addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE;
+	}
 
 	return (struct jump_data *)(addr - sizeof(struct jump_data));
 }
-#endif
 
 test_mockable int system_jumped_to_this_image(void)
 {
