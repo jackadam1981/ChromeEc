@@ -232,8 +232,8 @@
 #define CONFIG_PANIC_STRIP_GPR
 #define CONFIG_PRINTF_LONG_IS_32BITS
 #define CONFIG_RNG
-#define CONFIG_RAM_LOCK
 #ifdef SECTION_IS_RW
+#define CONFIG_RAM_LOCK
 #define CONFIG_SPI
 #define CONFIG_CMD_SPI_XFER
 /* TODO(b/130249462): remove for release */
