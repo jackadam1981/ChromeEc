@@ -22,6 +22,30 @@
       },
       "revId": "b9fd6dbe553e5955580d05efca11fcb293d396a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d309d327_6a9dce2d",
+        "filename": "zephyr/test/rex/tests/rex_ish/src/board_nb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2024-10-22T16:10:58Z",
+      "side": 1,
+      "message": "This test was earlier added considering platform specific test for rex-ish, So here I tried to utilized the same test for common notebook mode changes and kept it platform specific as this test is dependent on gpio defined in rex-ish.\n\nPlease let me know if it can be handled any other way. I am also exploring the same.",
+      "parentUuid": "a41785b0_f9fcc891",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "b9fd6dbe553e5955580d05efca11fcb293d396a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
