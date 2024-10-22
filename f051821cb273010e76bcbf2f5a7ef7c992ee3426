@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2459e3d2_2f2eed9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-22T22:54:35Z",
+      "side": 1,
+      "message": "Based on build failure logs this looks like a timeout for `PDC_TEST_TIMEOUT` in TI. Proposing an extension of the timeout as an alternate workaround until we can investigate what regressed: https://crrev.com/c/5955589",
+      "revId": "f051821cb273010e76bcbf2f5a7ef7c992ee3426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
