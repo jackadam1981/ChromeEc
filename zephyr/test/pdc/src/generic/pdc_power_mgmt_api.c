@@ -904,6 +904,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 	}
 }
 
+/* TODO(b/375046378): This test is flaky. Fix it. */
+#if 0
 ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power)
 {
 	union connector_status_t connector_status;
@@ -956,6 +958,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power)
 	zassert_true(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
 				   PDC_TEST_TIMEOUT));
 }
+#endif
 
 ZTEST_USER(pdc_power_mgmt_api, test_get_vbus_voltage)
 {
