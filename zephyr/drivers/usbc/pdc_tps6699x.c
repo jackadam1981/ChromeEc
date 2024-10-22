@@ -1584,6 +1584,11 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 		return;
 	}
 
+	LOG_INF("UCSI task: %02x %02x %02x %02x %02x %02x",
+		cmd_data.data[0], cmd_data.data[1],
+		cmd_data.data[2], cmd_data.data[3],
+		cmd_data.data[4], cmd_data.data[5]);
+
 	/* Transition to wait state */
 	set_state(data, ST_TASK_WAIT);
 	return;
@@ -1667,9 +1672,9 @@ static void st_task_wait_run(void *o)
 	if (cmd.command || cmd_data.data[0] != 0) {
 		/* Command has completed with error */
 		if (cmd.command == COMMAND_TASK_NO_COMMAND) {
-			LOG_DBG("Command %d not supported", data->cmd);
+			LOG_ERR("Command %d not supported", data->cmd);
 		} else {
-			LOG_DBG("Command %d failed. Err : %d", data->cmd,
+			LOG_ERR("Command %d failed. Err : %d", data->cmd,
 				cmd_data.data[0]);
 		}
 		data->cci_event.error = 1;
@@ -2487,6 +2492,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 			data->events);
 
 		k_event_clear(&data->pdc_event, PDC_INTERNAL_EVENT);
+		k_msleep(70);
 	}
 }
 
