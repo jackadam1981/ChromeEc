@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075b0380_f8ccdc44",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-22T16:16:27Z",
+      "side": 1,
+      "message": "Are you assuming KEY_R is always on the same column as Vol-up? That\u0027s not always the case. If it\u0027s not, this line is masking an irrelevant key (which we want not to be pressed when a runtime combo is pressed).",
+      "range": {
+        "startLine": 470,
+        "startChar": 5,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "2ee74bb664229227fded9dffcc11dc5ec88ab100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
