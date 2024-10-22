@@ -199,6 +199,7 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 		if (CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS == 0)
 			return;
 
+		LOG_INF("sink cap: current = %d", PDO_FIXED_CURRENT(vsafe5v_pdo));
 		/* Valid PDO to process, so evaluate whether >1.5A is needed */
 		if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500)
 			return;

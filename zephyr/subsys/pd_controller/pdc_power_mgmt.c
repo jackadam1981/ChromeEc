@@ -1438,6 +1438,7 @@ static void run_snk_policies(struct pdc_port_t *port)
 
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
+		LOG_INF("run_snk_policies: SNK_POLICY_SET_ACTIVE_CHARGE_PORT flag set!!!");
 		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
@@ -1449,6 +1450,7 @@ static void run_snk_policies(struct pdc_port_t *port)
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_NEW_POWER_REQUEST)) {
+		LOG_INF("run_snk_policies: SNK_POLICY_NEW_POWER_REQUEST flag set!!!");
 		port->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
@@ -1902,6 +1904,7 @@ static void pdc_snk_attached_run(void *obj)
 	case SNK_ATTACHED_GET_CABLE_PROPERTY:
 		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
+		 k_msleep(500);
 		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
 		return;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
@@ -2092,6 +2095,7 @@ static void pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state = SNK_ATTACHED_RUN;
 		}
 
+		k_msleep(500);
 		/* Test if battery can be charged from this port */
 		port->sink_path_en = port->active_charge;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
@@ -2156,7 +2160,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
