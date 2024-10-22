@@ -1660,7 +1660,7 @@ def main():
 
     args = parser.parse_args()
     logging.basicConfig(
-        format="%(levelname)s:%(message)s", level=args.log_level
+        format="%(asctime)s - %(levelname)s:%(message)s", level=args.log_level
     )
     validate_args_combination(args)
 
