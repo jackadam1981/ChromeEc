@@ -38,4 +38,11 @@ config PLATFORM_EC_HOST_INTERFACE_ESPI_DEFAULT_VW_WIDTH_US
 	  The minimum pulse width of a eSPI/LPC virtual wire signals to the
 	  host. May vary by host chipset.
 
+config PLATFORM_EC_CHIPSET_PLTRST_VALUE_TO_RESET
+	int "Issue platform reset when PLTRST signal has this value"
+	default 0
+	help
+	  Platform reset will be triggered when Virtual Wire event with signal
+	  PLTRST# has this value.
+
 endif # PLATFORM_EC_HOST_INTERFACE_ESPI
