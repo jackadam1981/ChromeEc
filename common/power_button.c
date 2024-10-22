@@ -207,6 +207,17 @@ static void power_button_simulate_deferred(void)
 }
 DECLARE_DEFERRED(power_button_simulate_deferred);
 
+extern struct k_sem sem_thread1;
+
+#if 1
+void power_button_interrupt(enum gpio_signal signal)
+{
+	printk("button: k_current_get=%p\n",k_current_get());
+		//ECREG(EC_REG_BASE_ADDR + 0x1603) |= BIT(0);
+		//ECREG(EC_REG_BASE_ADDR + 0x1603) &= ~BIT(0);
+	k_sem_give(&sem_thread1);
+}
+#else
 void power_button_interrupt(enum gpio_signal signal)
 {
 	/*
@@ -222,7 +233,7 @@ void power_button_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&power_button_change_deferred_data,
 			   power_button.debounce_us);
 }
-
+#endif
 void power_button_simulate_press(unsigned int duration)
 {
 	ccprintf("Simulating %d ms %s press.\n", duration, power_button.name);

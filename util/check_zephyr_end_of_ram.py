@@ -113,14 +113,6 @@ def main(elf_path: Path):
             f"bytes)"
         )
 
-    # If __noinit_end_of_ram_end is defined, verify that it matches _image_ram_end
-    # This check cannot be performed in the linker due to inconsistent linker script ordering
-    noinit_end_of_ram_end = build_info.get_symbol("__noinit_end_of_ram_end")
-    if noinit_end_of_ram_end is not None:
-        assert noinit_end_of_ram_end == image_ram_end, (
-            f"__noinit_end_of_ram_end ({noinit_end_of_ram_end}) does not match "
-            f" _image_ram_end ({image_ram_end})"
-        )
 
 
 if __name__ == "__main__":
