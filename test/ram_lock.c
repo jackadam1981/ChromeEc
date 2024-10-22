@@ -267,7 +267,9 @@ void test_run_step(uint32_t state)
 
 int task_test(void *unused)
 {
-	test_run_multistep();
+	if (IS_ENABLED(SECTION_IS_RW)) {
+		test_run_multistep();
+	}
 	return EC_SUCCESS;
 }
 
