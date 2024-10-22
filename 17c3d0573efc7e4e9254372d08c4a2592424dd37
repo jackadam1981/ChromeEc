@@ -62,6 +62,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "165bcc8b_c4da2ed7",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23c42be_bc1f296c",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc6e5d4f_122365d0",
@@ -119,6 +143,30 @@
           ]
         }
       ],
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd16b4f9_476c34af",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc6e5d4f_122365d0",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 35
+      },
       "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "644743bf_2da7373c",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Added more documentation.",
+      "parentUuid": "5ba496c6_5af33ba4",
+      "range": {
+        "startLine": 120,
+        "startChar": 35,
+        "endLine": 120,
+        "endChar": 47
+      },
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93df1cfc_6244d8a9",
         "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
         "patchSetId": 11
@@ -221,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f445fb75_adec2bbe",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93df1cfc_6244d8a9",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5a756ca_dd2076c9",
@@ -238,6 +328,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9b8026_17c76b1f",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a756ca_dd2076c9",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33564cda_24a47246",
@@ -251,6 +359,30 @@
       "writtenOn": "2024-10-09T17:33:05Z",
       "side": 1,
       "message": "This type of function should no longer be necessary with class template argument deduction.\n\nSomething like this:\n```\ntemplate \u003ctypename State, size_t kNumTransitions\u003e\nFsmConfig(State starting_state, std::array\u003cTransition\u003cState\u003e, kNumTransitions\u003e transitions) -\u003e FsmConfig\u003cState, kNumTransitions\u003e;\n```\n\nThen, you can declare `FsmConfig` without template arguments, and it will deduce them.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 1
+      },
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3594a598_fd7bddac",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33564cda_24a47246",
       "range": {
         "startLine": 346,
         "startChar": 0,
@@ -296,6 +428,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb6b2e3_92ff0077",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a2a155d_e4455507",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da861d24_f1122ed5",
@@ -309,6 +459,24 @@
       "writtenOn": "2024-10-09T17:33:05Z",
       "side": 1,
       "message": "Should also define move assignment",
+      "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a9f05a_ae7360a2",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da861d24_f1122ed5",
       "revId": "17c3d0573efc7e4e9254372d08c4a2592424dd37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
