@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a60019_8ea8f8ff",
+        "filename": "zephyr/program/nissa/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-22T12:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26ead1b_0d56278f",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "f190d32ef895098324286281220c3da416f7c658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e48e2ceb_84b5942b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de06a84_517c3391",
+        "filename": "zephyr/program/nissa/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-22T12:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e48e2ceb_84b5942b",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "f190d32ef895098324286281220c3da416f7c658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60e94da9_14c92e5d",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-22T12:15:01Z",
       "side": 1,
       "message": "Rull?",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "f190d32ef895098324286281220c3da416f7c658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a210c2_0557be0b",
+        "filename": "zephyr/program/nissa/rull/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-22T12:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e94da9_14c92e5d",
       "range": {
         "startLine": 7,
         "startChar": 4,
