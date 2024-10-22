@@ -18,6 +18,9 @@
  */
 #if defined(CONFIG_VCMP_IT8XXX2)
 #include <zephyr/drivers/sensor/it8xxx2_vcmp.h>
+#elif defined(CONFIG_COMPARATOR_IT51XXX_VCMP)
+#include <zephyr/dt-bindings/comparator/it51xxx-vcmp.h>
+#include <zephyr/drivers/sensor/it8xxx2_vcmp.h>
 #elif defined(CONFIG_ADC_CMP_NPCX)
 #include <zephyr/drivers/sensor/adc_cmp_npcx.h>
 #elif defined(CONFIG_TEST)
