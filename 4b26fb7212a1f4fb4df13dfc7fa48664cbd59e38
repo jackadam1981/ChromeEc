@@ -34,6 +34,24 @@
       "parentUuid": "aceba0b0_4acbfd26",
       "revId": "4b26fb7212a1f4fb4df13dfc7fa48664cbd59e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628f453b_0eabe6ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-22T19:38:07Z",
+      "side": 1,
+      "message": "More interdependencies than I remembered:\n\nhttps://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/third_party/chromiumos-overlay/chromeos-base/chromeos-zephyr/chromeos-zephyr-9999.ebuild;l\u003d54",
+      "parentUuid": "fc4bf6f1_24304ead",
+      "revId": "4b26fb7212a1f4fb4df13dfc7fa48664cbd59e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
