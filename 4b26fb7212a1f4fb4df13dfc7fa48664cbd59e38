@@ -16,6 +16,24 @@
       "message": "```\nFAILED: zephyr/zephyr_pre0.elf zephyr/zephyr_pre0.map /build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/chromeos-zephyr-3.7.0/build/greenbayupoc/build-ro/zephyr/zephyr_pre0.map \n: \u0026\u0026 ccache /build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/coreboot-sdk/bin/riscv64-elf-gcc -DSECTION_IS_RO -gdwarf-4 -Wl,--no-warn-rwx-segments -gdwarf-4 -Wl,--no-warn-rwx-segments zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj -o zephyr/zephyr_pre0.elf  zephyr/CMakeFiles/offsets.dir/./arch/riscv/core/offsets/offsets.c.obj  -T  zephyr/linker_zephyr_pre0.cmd  -Wl,-Map\u003d/build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/chromeos-zephyr-3.7.0/build/greenbayupoc/build-ro/zephyr/zephyr_pre0.map  -Wl,--whole-archive  app/libapp.a  zephyr/libzephyr.a  zephyr/arch/common/libarch__common.a  zephyr/arch/arch/riscv/core/libarch__riscv__core.a  zephyr/lib/libc/minimal/liblib__libc__minimal.a  zephyr/lib/libc/common/liblib__libc__common.a  zephyr/lib/smf/liblib__smf.a  zephyr/subsys/input/libsubsys__input.a  zephyr/drivers/interrupt_controller/libdrivers__interrupt_controller.a  zephyr/drivers/adc/libdrivers__adc.a  zephyr/drivers/bbram/libdrivers__bbram.a  zephyr/drivers/console/libdrivers__console.a  zephyr/drivers/crypto/libdrivers__crypto.a  zephyr/drivers/espi/libdrivers__espi.a  zephyr/drivers/flash/libdrivers__flash.a  zephyr/drivers/gpio/libdrivers__gpio.a  zephyr/drivers/i2c/libdrivers__i2c.a  zephyr/drivers/input/libdrivers__input.a  zephyr/drivers/pinctrl/libdrivers__pinctrl.a  zephyr/drivers/pwm/libdrivers__pwm.a  zephyr/drivers/sensor/ite/ite_tach_it8xxx2/libdrivers__sensor__ite__ite_tach_it8xxx2.a  zephyr/drivers/sensor/ite/ite_vcmp_it8xxx2/libdrivers__sensor__ite__ite_vcmp_it8xxx2.a  zephyr/drivers/serial/libdrivers__serial.a  zephyr/drivers/timer/libdrivers__timer.a  zephyr/drivers/watchdog/libdrivers__watchdog.a  modules/ec/zephyr/libec_shim.a  -Wl,--no-whole-archive  zephyr/kernel/libkernel.a  -L/build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/chromeos-zephyr-3.7.0/build/greenbayupoc/build-ro/zephyr  zephyr/arch/common/libisr_tables.a  -Wl,--fatal-warnings  -mabi\u003dilp32  -march\u003drv32imac_zicsr_zifencei  -fuse-ld\u003dbfd  -Wl,--gc-sections  -Wl,--build-id\u003dnone  -Wl,--sort-common\u003ddescending  -Wl,--sort-section\u003dalignment  -Wl,-u,_OffsetAbsSyms  -Wl,-u,_ConfigAbsSyms  -nostdlib  -static  -Wl,-X  -Wl,-N  -Wl,--orphan-handling\u003dwarn  -Wl,-no-pie -L\"/build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/coreboot-sdk/bin/../lib/gcc/riscv64-elf/11.3.0/rv32imac/ilp32\"  -lgcc \u0026\u0026 cd /build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/chromeos-zephyr-3.7.0/build/greenbayupoc/build-ro/zephyr \u0026\u0026 /usr/bin/cmake -E true\n/build/brox/tmp/portage/chromeos-base/chromeos-zephyr-3.7.0-r10961/work/coreboot-sdk/bin/../lib/gcc/riscv64-elf/11.3.0/../../../../riscv64-elf/bin/ld.bfd: unrecognized option \u0027--no-warn-rwx-segments\u0027\n```\n\nI only see it in risc builds.",
       "revId": "4b26fb7212a1f4fb4df13dfc7fa48664cbd59e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4bf6f1_24304ead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-22T19:33:20Z",
+      "side": 1,
+      "message": "Just noticed it\u0027s grabbing 11.3?  That would be why, but I don\u0027t think I understand why we\u0027re getting 11.3 and not 14.2",
+      "parentUuid": "aceba0b0_4acbfd26",
+      "revId": "4b26fb7212a1f4fb4df13dfc7fa48664cbd59e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
