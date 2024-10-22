@@ -9,3 +9,6 @@ tests:
   system_shim.ish:
     extra_configs:
     - CONFIG_SYSTEM_SHIM_TEST_ISH=y
+  system_shim.powerbtn:
+    extra_configs:
+    - CONFIG_POWER_BUTTON_INIT_IDLE=y
