@@ -34,7 +34,7 @@ static const char *cros_system_it8xxx2_get_chip_vendor(const struct device *dev)
 
 static uint32_t system_get_chip_id(void)
 {
-	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
+	struct gctrl_it51xxx_regs *const gctrl_base = GCTRL_IT51XXX_REGS_BASE;
 
 	return (gctrl_base->GCTRL_ECHIPID1 << 16) |
 	       (gctrl_base->GCTRL_ECHIPID2 << 8) | gctrl_base->GCTRL_ECHIPID3;
@@ -42,7 +42,7 @@ static uint32_t system_get_chip_id(void)
 
 static uint8_t system_get_chip_version(void)
 {
-	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
+	struct gctrl_it51xxx_regs *const gctrl_base = GCTRL_IT51XXX_REGS_BASE;
 
 	/* bit[3-0], chip version */
 	return gctrl_base->GCTRL_ECHIPVER & 0x0F;
@@ -79,23 +79,23 @@ cros_system_it8xxx2_get_chip_revision(const struct device *dev)
 static int cros_system_it8xxx2_get_reset_cause(const struct device *dev)
 {
 	ARG_UNUSED(dev);
-	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
-	uint8_t last_reset_source = gctrl_base->GCTRL_RSTS & IT8XXX2_GCTRL_LRS;
+	struct gctrl_it51xxx_regs *const gctrl_base = GCTRL_IT51XXX_REGS_BASE;
+	uint8_t last_reset_source = gctrl_base->GCTRL_RSTS & IT51XXX_GCTRL_LRS;
 	uint8_t raw_reset_cause2 =
 		gctrl_base->GCTRL_SPCTRL4 &
-		(IT8XXX2_GCTRL_LRSIWR | IT8XXX2_GCTRL_LRSIPWRSWTR |
-		 IT8XXX2_GCTRL_LRSIPGWR);
+		(IT51XXX_GCTRL_LRSIWR | IT51XXX_GCTRL_LRSIPWRSWTR |
+		 IT51XXX_GCTRL_LRSIPGWR);
 
 	/* Clear reset cause. */
-	gctrl_base->GCTRL_RSTS |= IT8XXX2_GCTRL_LRS;
+	gctrl_base->GCTRL_RSTS |= IT51XXX_GCTRL_LRS;
 	gctrl_base->GCTRL_SPCTRL4 |=
-		(IT8XXX2_GCTRL_LRSIWR | IT8XXX2_GCTRL_LRSIPWRSWTR |
-		 IT8XXX2_GCTRL_LRSIPGWR);
+		(IT51XXX_GCTRL_LRSIWR | IT51XXX_GCTRL_LRSIPWRSWTR |
+		 IT51XXX_GCTRL_LRSIPGWR);
 
-	if (last_reset_source & IT8XXX2_GCTRL_IWDTR) {
+	if (last_reset_source & IT51XXX_GCTRL_IWDTR) {
 		return WATCHDOG_RST;
 	}
-	if (raw_reset_cause2 & IT8XXX2_GCTRL_LRSIWR) {
+	if (raw_reset_cause2 & IT51XXX_GCTRL_LRSIWR) {
 		/*
 		 * We can't differentiate between power-on and reset pin because
 		 * LRSIWR is set on both ~WRST assertion and power-on, and LRS
@@ -117,17 +117,17 @@ static int cros_system_it8xxx2_get_reset_cause(const struct device *dev)
 
 static int cros_system_it8xxx2_init(const struct device *dev)
 {
-	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
+	//struct gctrl_it51xxx_regs *const gctrl_base = GCTRL_IT51XXX_REGS_BASE;
 
 	/* System triggers a soft reset by default (command: reboot). */
-	gctrl_base->GCTRL_ETWDUARTCR &= ~IT8XXX2_GCTRL_ETWD_HW_RST_EN;
+	//gctrl_base->GCTRL_ETWDUARTCR &= ~IT8XXX2_GCTRL_ETWD_HW_RST_EN;
 
 	return 0;
 }
 
 static int cros_system_it8xxx2_soc_reset(const struct device *dev)
 {
-	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
+	//struct gctrl_it51xxx_regs *const gctrl_base = GCTRL_IT51XXX_REGS_BASE;
 	struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
 	uint32_t chip_reset_flags = chip_read_reset_flags();
 
@@ -135,7 +135,7 @@ static int cros_system_it8xxx2_soc_reset(const struct device *dev)
 	interrupt_disable_all();
 
 	if (chip_reset_flags & (EC_RESET_FLAG_HARD | EC_RESET_FLAG_HIBERNATE))
-		gctrl_base->GCTRL_ETWDUARTCR |= IT8XXX2_GCTRL_ETWD_HW_RST_EN;
+		//gctrl_base->GCTRL_ETWDUARTCR |= IT8XXX2_GCTRL_ETWD_HW_RST_EN;
 
 	/*
 	 * Writing invalid key to watchdog module triggers a soft or hardware
@@ -194,19 +194,19 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 		 * Convert milliseconds(or at least 1 ms) to 32 Hz
 		 * free run timer count for hibernate.
 		 */
-		uint32_t c =
-			(seconds * 1000 + microseconds / 1000 + 1) * 32 / 1000;
+		//uint32_t c =
+		//	(seconds * 1000 + microseconds / 1000 + 1) * 32 / 1000;
 
 		/* Enable a 32-bit timer and clock source is 32 Hz */
 		/* Disable external timer x */
-		IT8XXX2_EXT_CTRLX(FREE_RUN_TIMER) &= ~IT8XXX2_EXT_ETXEN;
-		irq_disable(FREE_RUN_TIMER_IRQ);
-		IT8XXX2_EXT_PSRX(FREE_RUN_TIMER) = EXT_PSR_32;
-		IT8XXX2_EXT_CNTX(FREE_RUN_TIMER) = c & FREE_RUN_TIMER_MAX_CNT;
+		//IT8XXX2_EXT_CTRLX(FREE_RUN_TIMER) &= ~IT8XXX2_EXT_ETXEN;
+		//irq_disable(FREE_RUN_TIMER_IRQ);
+		//IT8XXX2_EXT_PSRX(FREE_RUN_TIMER) = EXT_PSR_32;
+		//IT8XXX2_EXT_CNTX(FREE_RUN_TIMER) = c & FREE_RUN_TIMER_MAX_CNT;
 		/* Enable and re-start external timer x */
-		IT8XXX2_EXT_CTRLX(FREE_RUN_TIMER) |=
-			(IT8XXX2_EXT_ETXEN | IT8XXX2_EXT_ETXRST);
-		irq_enable(FREE_RUN_TIMER_IRQ);
+		//IT8XXX2_EXT_CTRLX(FREE_RUN_TIMER) |=
+		//	(IT8XXX2_EXT_ETXEN | IT8XXX2_EXT_ETXRST);
+		//irq_enable(FREE_RUN_TIMER_IRQ);
 	}
 
 #if DT_NODE_EXISTS(SYSTEM_DT_NODE_HIBERNATE_CONFIG)
