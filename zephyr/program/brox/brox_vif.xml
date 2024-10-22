@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--USB VIF file for Brox SKU1 (retimer-bypass), Lotso, and Jubilant-->
 <vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
   <vif:VIF_Specification>3.32</vif:VIF_Specification>
   <vif:VIF_App>
@@ -108,7 +107,7 @@
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
-    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
+    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
@@ -167,7 +166,7 @@
     <vif:Accepts_PR_Swap_As_Snk value="true" />
     <vif:Requests_PR_Swap_As_Src value="true" />
     <vif:Requests_PR_Swap_As_Snk value="false" />
-    <vif:FR_Swap_Supported_As_Initial_Sink value="true" />
+    <vif:FR_Swap_Supported_As_Initial_Sink value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;SOP Discover ID-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
