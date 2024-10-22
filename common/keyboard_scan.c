@@ -467,7 +467,11 @@ static int check_runtime_keys(const uint8_t *state)
 	 * All runtime key combos are (right or left ) alt + volume up + (some
 	 * key NOT on the same col as alt or volume up )
 	 */
-	if (state[key_vol_up_col] != KEYBOARD_ROW_TO_MASK(key_vol_up_row))
+	if ((state[key_vol_up_col]
+#if KEYBOARD_COL_KEY_R == KEYBOARD_DEFAULT_COL_VOL_UP
+	     & ~KEYBOARD_MASK_KEY_R
+#endif
+	     ) != KEYBOARD_ROW_TO_MASK(key_vol_up_row))
 		return 0;
 
 #ifndef CONFIG_KEYBOARD_MULTIPLE
@@ -490,12 +494,13 @@ static int check_runtime_keys(const uint8_t *state)
 			num_press++;
 	}
 
-	if (num_press != 3)
+	if (num_press > 3)
 		return 0;
 
 #ifndef CONFIG_KEYBOARD_MULTIPLE
 	/* Check individual keys */
-	if (state[KEYBOARD_COL_KEY_R] == KEYBOARD_MASK_KEY_R) {
+	if ((state[KEYBOARD_COL_KEY_R] &
+	     ~KEYBOARD_ROW_TO_MASK(key_vol_up_row)) == KEYBOARD_MASK_KEY_R) {
 		/* R = reboot */
 		CPRINTS("warm reboot");
 		keyboard_clear_buffer();
