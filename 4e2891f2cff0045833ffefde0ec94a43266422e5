@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd995ac_b1ddfae4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-22T23:55:06Z",
+      "side": 1,
+      "message": "i assume content is still WIP",
+      "revId": "4e2891f2cff0045833ffefde0ec94a43266422e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6e984d_683dcadc",
+        "filename": "zephyr/Kconfig.espi",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-22T23:55:06Z",
+      "side": 1,
+      "message": "how about PLATFORM_EC_CHIPSET_PLTRST_DEFAULT_VAL ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "4e2891f2cff0045833ffefde0ec94a43266422e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5262c2_87a5bc3b",
+        "filename": "zephyr/Kconfig.espi",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-22T23:55:06Z",
+      "side": 1,
+      "message": "add content like : this value can changes per EC vendor or SOC rev",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "4e2891f2cff0045833ffefde0ec94a43266422e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47435f87_ec6dc689",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-22T23:55:06Z",
+      "side": 1,
+      "message": "nit: add a new line or\nupdate_ap_boot_time(event.evt_data \u003d\u003d 0 ? PLTRST_LOW : PLTRST_HIGH);\n\nso that easy to understand change",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 3
+      },
+      "revId": "4e2891f2cff0045833ffefde0ec94a43266422e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
