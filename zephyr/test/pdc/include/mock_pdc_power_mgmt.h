@@ -46,6 +46,7 @@ DECLARE_FAKE_VALUE_FUNC(bool, pdc_power_mgmt_check_hpd_wake, int);
 DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_pch_data_status, int,
 			uint8_t *);
 DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_rdo, int, uint32_t *);
+DECLARE_FAKE_VALUE_FUNC(bool, pdc_power_mgmt_get_vconn_state, int);
 
 /**
  * @brief Reset the above set of fakes

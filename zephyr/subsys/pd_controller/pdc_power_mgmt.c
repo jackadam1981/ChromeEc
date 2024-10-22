@@ -3208,7 +3208,7 @@ int pdc_power_mgmt_comm_is_enabled(int port)
 	return false;
 }
 
-bool pdc_power_mgmt_get_vconn_state(int port)
+test_mockable bool pdc_power_mgmt_get_vconn_state(int port)
 {
 	bool vconn_sourcing;
 
