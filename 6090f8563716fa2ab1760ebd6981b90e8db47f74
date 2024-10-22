@@ -51,6 +51,24 @@
       ],
       "revId": "6090f8563716fa2ab1760ebd6981b90e8db47f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31059533_3a28a224",
+        "filename": "zephyr/drivers/dsp_comms/proto/ec_dsp.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-22T05:15:11Z",
+      "side": 1,
+      "message": "No each enum is a bit index. So flags[0] \u0026 BIT(GetStatusResponse_Flag_LID_OPEN) will be 1 if LID_OPEN is set. Later there is a use function:\n\n```c++\nbool IsBitSet(size_t bit) {\n  size_t byte_index \u003d bit / 8;\n  PW_ASSERT(byte_index \u003c kFlagByteCount);\n  return (status_.flags[byte_index] \u0026 (1 \u003c\u003c (bit % 8))) !\u003d 0;\n}\n```",
+      "parentUuid": "aa0a4253_8e2586e9",
+      "revId": "6090f8563716fa2ab1760ebd6981b90e8db47f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
