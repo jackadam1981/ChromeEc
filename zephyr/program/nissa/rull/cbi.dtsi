@@ -4,4 +4,45 @@
  */
 
 / {
+	/* ROLL-specific fw_config fields. */
+	nissa-fw-config {
+		/*
+		 * FW_CONFIG field to enable KB backlight or not.
+		 */
+		kb-bl {
+			enum-name = "FW_KB_BL";
+			start = <6>;
+			size = <1>;
+
+			no-kb-bl {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_NOT_PRESENT";
+				value = <0>;
+				default;
+			};
+			kb-bl-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_PRESENT";
+				value = <1>;
+			};
+		};
+
+		kb-type {
+			enum-name = "FW_KB_TYPE";
+			start = <7>;
+			size = <1>;
+
+			kb-type-default {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_TYPE_DEFAULT";
+				value = <0>;
+				default;
+			};
+			kb-type-ca-fr {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_TYPE_NUMPAD";
+				value = <1>;
+			};
+		};
+	};
 };
