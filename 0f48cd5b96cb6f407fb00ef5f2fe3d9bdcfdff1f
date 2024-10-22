@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f128b8f8_d6494ddd",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-10-22T23:56:16Z",
+      "side": 1,
+      "message": "if this is PTL specific may be come up with a plan to address base don the SOC we select for power sequence or so some other approach",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 50
+      },
+      "revId": "0f48cd5b96cb6f407fb00ef5f2fe3d9bdcfdff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
