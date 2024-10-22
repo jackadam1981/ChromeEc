@@ -16,6 +16,8 @@
 #include "adc.dtsi"
 #include "gpios.dtsi"
 #include "i2c.dtsi"
+#include "overlay.dtsi"
+#include "power_signals.dtsi"
 
 /* francka overrides follow... */
 
