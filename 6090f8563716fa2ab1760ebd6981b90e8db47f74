@@ -69,6 +69,24 @@
       "parentUuid": "aa0a4253_8e2586e9",
       "revId": "6090f8563716fa2ab1760ebd6981b90e8db47f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3834f989_e57048b3",
+        "filename": "zephyr/drivers/dsp_comms/proto/ec_dsp.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-22T15:26:13Z",
+      "side": 1,
+      "message": "Gotcha, maybe rename it to indicate its a mask, like `flags_mask` or something.",
+      "parentUuid": "31059533_3a28a224",
+      "revId": "6090f8563716fa2ab1760ebd6981b90e8db47f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
