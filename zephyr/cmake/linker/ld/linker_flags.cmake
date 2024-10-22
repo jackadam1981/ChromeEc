@@ -9,3 +9,5 @@ include("${ZEPHYR_BASE}/cmake/linker/ld/linker_flags.cmake")
 # There can also be compiler specific linker options, so try to include
 # our version of that also.
 include("${TOOLCHAIN_ROOT}/cmake/linker/${LINKER}/${COMPILER}/linker_flags.cmake" OPTIONAL)
+
+add_link_options("${LINKERFLAGPREFIX},--no-warn-rwx-segments")
