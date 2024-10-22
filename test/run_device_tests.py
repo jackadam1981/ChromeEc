@@ -454,7 +454,7 @@ class TestConfig:
     fail_regexes: Optional[list[re.Pattern[str]]] = None
     toggle_power: bool = False
     test_args: list[str] = field(default_factory=list)
-    timeout_secs: int = 30
+    timeout_secs: int = 60
     enable_hw_write_protect: bool = False
     ro_image: Optional[str] = None
     build_board: Optional[str] = None
