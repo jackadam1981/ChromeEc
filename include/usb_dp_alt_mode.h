@@ -114,9 +114,6 @@ union dp_mode_cfg {
 	uint32_t raw_value;
 };
 
-#define VDM_VERS_MINOR \
-	(IS_ENABLED(CONFIG_USB_PD_DP21_MODE) ? VDO_SVDM_VERS_MINOR(1) : 0)
-
 #ifdef CONFIG_USB_PD_DP_MODE
 /**
  * Resolves DPAM version
