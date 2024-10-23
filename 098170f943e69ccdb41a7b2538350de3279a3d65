@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ae03f7_57359c4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T18:16:46Z",
+      "side": 1,
+      "message": "CC Brandon to make sure we don\u0027t mess up the DPAM 2.1 SVDM version logic.",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb7b2ae_7bdfe399",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T18:16:46Z",
+      "side": 1,
+      "message": "This changes the behavior in the case that the received SVDM version is greater than 2.1, which I don\u0027t think was the intent for this CL.\n\nThe only use of this field that I see right now is to control DPAM VDM construction/parsing. IIRC, the intent of this logic is to store the highest SVDM version that we have in common with the partner/cable. If we saw, e.g. 3.0, we\u0027d want to store 2.1, because that\u0027s the highest version this code understands.\n\nI think the previous logic is also wrong. If we saw 3.1, we\u0027d store 2.1, but if we saw 3.0, we\u0027d store 2.0. That doesn\u0027t make any sense.\n\nI\u0027d suggest fixing the logic in a CL preceding this one, then changing to a `switch` statement as a no-op refactor.",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bcac2b_d9b075bd",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T18:16:46Z",
+      "side": 1,
+      "message": "Ideally, this refactor could remove this line.\n\nHowever, be aware that DPAM doesn\u0027t necessarily use the same SVDM version as discovery. The way this logic currently works is that `VDM_VERS_MINOR` is 0 or 1 based on `CONFIG_USB_PD_DP21_MODE`. It only makes sense in a DPAM context, and I still think the structure of this code is confusing.\n\nIt would be nice if we had a DPAM-specific version of `pd_get_vdo_ver` and `svdm_vers`. Or maybe `pd_get_vdo_ver` could take an SVID as a parameter. If it\u0027s not practical to clean this up in this CL, these lines should probably get a TODO and a later cleanup CL.",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
