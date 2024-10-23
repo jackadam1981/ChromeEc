@@ -22,6 +22,30 @@
       },
       "revId": "2ee74bb664229227fded9dffcc11dc5ec88ab100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60847ae5_2eecf71b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-23T13:32:47Z",
+      "side": 1,
+      "message": "I understood. The one of the idea is the following. Do you have another solution?\n\n    if(key_vol_up_col \u003d\u003d KEYBOARD_COL_KEY_R){\n        if ((state[key_vol_up_col] \u0026 ~KEYBOARD_MASK_KEY_R) !\u003d KEYBOARD_ROW_TO_MASK(key_vol_up_row))\n            return 0;\n    } else {\n        if (state[key_vol_up_col] !\u003d KEYBOARD_ROW_TO_MASK(key_vol_up_row))\n            return 0;\n    }",
+      "parentUuid": "075b0380_f8ccdc44",
+      "range": {
+        "startLine": 470,
+        "startChar": 5,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "2ee74bb664229227fded9dffcc11dc5ec88ab100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
