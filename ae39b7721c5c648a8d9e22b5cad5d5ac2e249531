@@ -51,6 +51,24 @@
       "parentUuid": "f8b68510_4e329fa7",
       "revId": "ae39b7721c5c648a8d9e22b5cad5d5ac2e249531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98da80a9_49f40b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T17:31:28Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion on how the whitespace should be. Whatever you decide is probably fine for now.\n\nIf you put it back through the USB-IF tool, does it change it back to the USB-IF formatting? If not, then the current formatting is probably the best, to minimize churn.\n\nIf each tool reformats the whole file on input, then the pathological case would be that the next change we make is to a USB field, then a DPAM field, then a USB field, etc. Each change would reformat the entire file.\n\nThe try-hard solution here would be to establish a canonical XML style for this repo, create a presubmit that enforces it, and provide a tool to fix up XML files. I don\u0027t think you need to go that far at this time, but if you want to do that, go for it.",
+      "parentUuid": "76112ed3_c2bc1112",
+      "revId": "ae39b7721c5c648a8d9e22b5cad5d5ac2e249531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
