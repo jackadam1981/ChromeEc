@@ -176,6 +176,7 @@ struct i2c_cmd_desc_t {
 /* Flags for i2c_xfer_unlocked() */
 #define I2C_XFER_START BIT(0) /* Start smbus session from idle state */
 #define I2C_XFER_STOP BIT(1) /* Terminate smbus session with stop bit */
+#define I2C_XFER_RESTART BIT(2) /* Generate restart condition on smbus */
 #define I2C_XFER_SINGLE (I2C_XFER_START | I2C_XFER_STOP) /* One transaction */
 
 /**
