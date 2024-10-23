@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#line 7
 #include "driver/retimer/bb_retimer.h"
 #include "emul/emul_bb_retimer.h"
 #include "emul/emul_common_i2c.h"
