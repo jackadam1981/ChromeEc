@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39cbb232_2e677256",
+        "filename": "zephyr/program/nissa/rull/cbi.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "There\u0027s only one lid accelerometer in [\\[Rull\\] Nirul Component Deviation List_202409_A.xlsx](http://docs/spreadsheets/d/1Tt4V7WqzoSMmqEssZxViqkwihYHoWuXl/edit?resourcekey\u003d0-nLAhz3ltwcNmWdfLVsaczQ\u0026gid\u003d1590596055#gid\u003d1590596055).\nPlease update it if you are going to use lis2dw12.",
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24498b4_cc675308",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "Move the right side of \u0027\u003d\u0027 to a new line.",
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a1dd41_1e3fc0fb",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "From [Rull TKN_NB7559A_EC\u0026CPU GPIO_Table_20240925.xlsx](http://docs/spreadsheets/d/1uWBB-bYNSMBj_LOdAcx_FlktqAEAVU5J/edit?gid\u003d408823393#gid\u003d408823393), gpioc 0 should be Touch panel pwr enable pin?",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e1abf9_58a525eb",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "gpioh 6 should be `ccd2_mode_odl`?\n[Rull TKN_NB7559A_EC\u0026CPU GPIO_Table_20240925.xlsx](http://docs/spreadsheets/d/1uWBB-bYNSMBj_LOdAcx_FlktqAEAVU5J/edit?gid\u003d408823393#gid\u003d408823393)",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49d5e71_ad753a63",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "gpioi 6 should be `EC_TCHSCR_REPORT_EN`?",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02d3ee7_13f1cd0e",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "gpioi 7 should be `SOC_EDP_BL_EN`?",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54e6302_8d483b3b",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "This should be `EC_SSD1_PWREN`?",
+      "range": {
+        "startLine": 77,
+        "startChar": 13,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa4f363_f6fb94c4",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:14:47Z",
+      "side": 1,
+      "message": "3 indents for these lines.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
