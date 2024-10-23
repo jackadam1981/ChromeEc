@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8c153f1_47d63e9f",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T20:14:33Z",
+      "side": 1,
+      "message": "\u003e I have to double check on the values here though cause I think before we were setting 0x10 with SVDM_VER_2_1 and now it\u0027s setting 0x0101 so the code should be updated just havent had a chance to go through the whole patch yet.\n\nThis CL changes the enum values of `SVDM_VER_2_1`, etc. to also contain the minor version. Before, they only had the major version, and the minor version was a separate field. So for 2.1, 0b01 \u003d\u003e 0b0101.\n\n\u003e This actually looks right to me as we were seeing Major 2 Minor 1 and Major 2 Minor 0 before.\n\nTBC, I think the happy path (partner has VDM version 2.1) is still correct and the same. I think it changes the behavior in the case where the version number is one we\u0027ve never seen before, from the future.",
+      "parentUuid": "5cf23af4_9600f073",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8bcac2b_d9b075bd",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 2
@@ -66,6 +84,23 @@
       "writtenOn": "2024-10-23T18:16:46Z",
       "side": 1,
       "message": "Ideally, this refactor could remove this line.\n\nHowever, be aware that DPAM doesn\u0027t necessarily use the same SVDM version as discovery. The way this logic currently works is that `VDM_VERS_MINOR` is 0 or 1 based on `CONFIG_USB_PD_DP21_MODE`. It only makes sense in a DPAM context, and I still think the structure of this code is confusing.\n\nIt would be nice if we had a DPAM-specific version of `pd_get_vdo_ver` and `svdm_vers`. Or maybe `pd_get_vdo_ver` could take an SVID as a parameter. If it\u0027s not practical to clean this up in this CL, these lines should probably get a TODO and a later cleanup CL.",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2fd1d0_7a345e00",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T20:14:33Z",
+      "side": 1,
+      "message": "You remove the `| VDM_VERS_MINOR` in the next CL. I\u0027m pretty sure it would be a no-op to remove it here. With your new `VDO_SVDM_VERS`, the minor version will end up as 1 regardless of the value of `VDM_VERS_MINOR`.",
       "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
