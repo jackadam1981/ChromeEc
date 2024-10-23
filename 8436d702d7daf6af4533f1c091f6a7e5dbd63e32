@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0832757_ee55d11f",
+        "filename": "zephyr/drivers/fingerprint/fpc1145.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-10-23T08:49:48Z",
+      "side": 1,
+      "message": "I was thinking about `__nocache` for a while.\n\nCan we invalidate/flush cache lines instead of putting variables in `__nocache` region? IIRC we have also a buffer for fingerprint image which is used as a buffer for SPI transactions. Placing it in the `__nocache` region will have negative performance impact on further buffer processing.",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8436d702d7daf6af4533f1c091f6a7e5dbd63e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
