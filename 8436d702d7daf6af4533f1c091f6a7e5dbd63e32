@@ -46,6 +46,30 @@
       },
       "revId": "8436d702d7daf6af4533f1c091f6a7e5dbd63e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66599ef7_c1d72d3c",
+        "filename": "zephyr/drivers/fingerprint/fpc1145.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-10-23T09:00:30Z",
+      "side": 1,
+      "message": "Do you know if this is a hardware limitation (DMA can\u0027t make transactions to/from cached memory)?",
+      "parentUuid": "cdff6e58_6e7c0892",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8436d702d7daf6af4533f1c091f6a7e5dbd63e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
