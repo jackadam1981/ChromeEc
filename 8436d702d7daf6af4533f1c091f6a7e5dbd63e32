@@ -94,6 +94,30 @@
       },
       "revId": "8436d702d7daf6af4533f1c091f6a7e5dbd63e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62223b5f_97b881a5",
+        "filename": "zephyr/drivers/fingerprint/fpc1145.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-10-23T10:27:27Z",
+      "side": 1,
+      "message": "Yeah. DMA works only with SRAM set up as non-cacheable. https://github.com/zephyrproject-rtos/zephyr/pull/57786",
+      "parentUuid": "0ff5d252_261b1b93",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "8436d702d7daf6af4533f1c091f6a7e5dbd63e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
