@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba47851_0e552bf8",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T20:14:14Z",
+      "side": 1,
+      "message": "Here be dragons.\n1. The PD spec states that the SVDM version should correspond to the PD revision and doesn\u0027t make any allowance for different behavior with different SVIDs. IMO, this doesn\u0027t make a lot of sense. To the extent that alt mode VDOs need versioning, there\u0027s no particular reason to expect the alt mode version to track the PD revision.\n2. In fact, DPAM defines its own, independent use of VDM version: 2.0 means DPAM 2.0 or earlier, 2.1 means DPAM 2.1. For DP 2.1 to work, there needs to be a notion of active VDM version for DPAM, independent of VDM version for the PD SID. Prior to this CL, `VDM_VERS_MINOR` performed this function, albeit a bit clunkily.\n3. If there is to be an independent VDM version for DPAM, that would imply that there should be a lowest-common-version negotiation for DPAM independent of the negotiation for the PD SID. AFAIK, we don\u0027t have any logic for that currently.",
+      "revId": "270fbc15c0457c15cb20b3c2d73aaa3167f9b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3782cfd_fceda2b8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-23T20:14:14Z",
+      "side": 1,
+      "message": "This change forces us to confront a gap in our logic. Per PD r3.2 v1.0 ss 6.4.4.2.3 Structured VDM Version,\n\u003e To ensure interoperability with existing USBPD Products, USBPD Products Shall support every Structured VDM Version number starting from Version 1.0.\n\u003e\n\u003e ... On receipt of a VDM Header with a lower Version number than it supports, a Port or Cable Plug Shall respond using the same Version number it received.\n\u003e\n\u003e The Structured VDM Version field of the Discover Identity Command sent and received during VDM discovery Shall be used to determine the lowest common Structured VDM Version supported by the Port Partners or Cable Plug and Shall continue to operate using this Specification Revision until they are Detached. After discovering the Structure VDM Version, the Structured VDM Version field Shall match the agreed common Structured VDM Version.\n\nRight now, we have no logic to explicitly perform VDM version negotiation, but we have logic to explicitly perform PD major revision negotiation, and there was a 1:1 relationship between VDM version and PD major revision. So it was fine that we were just sending the highest VDM version that the active revision would support.\n\nWith the introduction of VDM version 2.1 in PD r3.1 v1.6, this is no longer the case. We should have logic to drop to the highest VDM version supported by the partner (2.0 or 2.1). It should probably be specific to partner/cable and to each SVID (see other comments about DPAM).",
+      "revId": "270fbc15c0457c15cb20b3c2d73aaa3167f9b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
