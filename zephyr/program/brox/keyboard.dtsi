@@ -43,6 +43,7 @@
 		&ksi7_default
 		&kso0_default
 		&kso1_default
+		&kso2_default
 		&kso3_default
 		&kso4_default
 		&kso5_default
@@ -81,12 +82,6 @@
 	row-size = <8>;
 	col-size = <13>;
 	settle-time-us = <80>;
-
-	kso-gpio {
-		compatible = "cros-ec,col-gpio";
-		col-num = <2>;
-		col-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
-	};
 
 	boot-keys {
 		compatible = "cros-ec,boot-keys";
