@@ -69,6 +69,24 @@
       "parentUuid": "543e47bd_34d6d907",
       "revId": "6f3a891d889f1c144fe7f1ecf11f9c89ca9902e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99395e5_8b16de70",
+        "filename": "bazel/all_targets.generated.bzl",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-10-23T06:47:38Z",
+      "side": 1,
+      "message": "Got it ,seems someone didn\u0027t regen correct previously.",
+      "parentUuid": "1569606f_6fe0c8af",
+      "revId": "6f3a891d889f1c144fe7f1ecf11f9c89ca9902e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
