@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6afd67c7_7cd86c3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-10-23T16:44:58Z",
+      "side": 1,
+      "message": "Please run the test at least 10 times to be sure it\u0027s not flaky.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "5df08d15b3c592fc2a0322e4db0898f4ae6deb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26c17565_98ea9b96",
         "filename": "zephyr/test/pdc/boards/tps6699x.overlay",
         "patchSetId": 1
