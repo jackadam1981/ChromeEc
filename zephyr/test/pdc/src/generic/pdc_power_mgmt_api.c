@@ -1743,6 +1743,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_identity_discovery)
 		emul_pdc_set_cable_property(emul, in);
 
 		emul_pdc_connect_partner(emul, &in_conn_status);
+		zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
 		zassert_true(
 			TEST_WAIT_FOR(pdc_power_mgmt_is_pd_attached(TEST_PORT),
 				      PDC_TEST_TIMEOUT));
