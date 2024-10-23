@@ -22,6 +22,30 @@
       },
       "revId": "6abe8124e38fe86c8eca7347bd1f5ff294bfcbfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a461bd7_9ffd4f0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-23T02:33:02Z",
+      "side": 1,
+      "message": "Added a test to check DRP mode after toggling between connected and unattached states.",
+      "parentUuid": "ccf643a3_82cf1855",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "6abe8124e38fe86c8eca7347bd1f5ff294bfcbfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
