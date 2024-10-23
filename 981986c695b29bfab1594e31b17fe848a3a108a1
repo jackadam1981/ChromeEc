@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce02ab0_a9140dd4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-23T23:24:02Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed since `run_src_policies` is only called in  `SRC_ATTACHED_RUN`.",
+      "revId": "981986c695b29bfab1594e31b17fe848a3a108a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
