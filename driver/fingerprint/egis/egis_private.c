@@ -77,39 +77,23 @@ __overridable int fp_finger_match(void *templ, uint32_t templ_count,
 				  uint8_t *image, int32_t *match_index,
 				  uint32_t *update_bitmap)
 {
-	int ret = EGIS_API_OK;
-	ret = egis_finger_match(templ, templ_count, image, match_index,
-				update_bitmap);
-	egislog_i("ret %d", ret);
-
-	return ret;
+	return egis_finger_match(templ, templ_count, image, match_index,
+				 update_bitmap);
 }
 
 __overridable int fp_enrollment_begin(void)
 {
-	int ret = EGIS_API_OK;
-	ret = egis_enrollment_begin();
-	egislog_i("ret %d", ret);
-
-	return EC_SUCCESS;
+	return egis_enrollment_begin();
 }
 
 __overridable int fp_enrollment_finish(void *templ)
 {
-	int ret = EGIS_API_OK;
-	ret = egis_enrollment_finish(templ);
-	egislog_i("ret %d", ret);
-
-	return EC_SUCCESS;
+	return egis_enrollment_finish(templ);
 }
 
 __overridable int fp_finger_enroll(uint8_t *image, int *completion)
 {
-	int ret = EGIS_API_OK;
-	ret = egis_finger_enroll(image, completion);
-	egislog_i("ret %d", ret);
-
-	return ret;
+	return egis_finger_enroll(image, completion);
 }
 
 int fp_maintenance(void)
@@ -120,24 +104,17 @@ int fp_maintenance(void)
 
 int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
 {
-	int ret = EGIS_API_OK;
-	ret = egis_get_image_with_mode(image_data, mode);
-	egislog_i("ret %d", ret);
-
-	return EC_SUCCESS;
+	return egis_get_image_with_mode(image_data, mode);
 }
 
 int fp_acquire_image(uint8_t *image_data)
 {
-	int ret = EGIS_API_OK;
-	ret = egis_get_image(image_data);
-	egislog_i("ret %d", ret);
-	return ret;
+	return egis_get_image(image_data);
 }
 
 enum finger_state fp_finger_status(void)
 {
-	int rc = EGIS_API_FINGER_UNSTABLE;
+	int rc = FINGER_NONE;
 	egislog_i("");
 	rc = egis_check_int_status();
 
