@@ -249,6 +249,13 @@ ZTEST(teliks, test_alt_sensor)
 	const gpio_port_pins_t lid_accel_pin =
 		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
 
+	/* Clear base and lid sensor interrupt call count before test */
+	RESET_FAKE(bmi3xx_interrupt);
+	RESET_FAKE(lsm6dsm_interrupt);
+	RESET_FAKE(icm42607_interrupt);
+	RESET_FAKE(bma4xx_interrupt);
+	RESET_FAKE(lis2dw12_interrupt);
+
 	/* Initial ssfc data for LSM6DSM and LIS2DW. */
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = 0x12;
@@ -260,13 +267,6 @@ ZTEST(teliks, test_alt_sensor)
 
 	alt_sensor_init();
 
-	/* Clear base and lid sensor interrupt call count before test */
-	bmi3xx_interrupt_fake.call_count = 0;
-	lsm6dsm_interrupt_fake.call_count = 0;
-	icm42607_interrupt_fake.call_count = 0;
-	bma4xx_interrupt_fake.call_count = 0;
-	lis2dw12_interrupt_fake.call_count = 0;
-
 	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
 	k_sleep(K_MSEC(100));
 	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
@@ -276,7 +276,8 @@ ZTEST(teliks, test_alt_sensor)
 	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
 	k_sleep(K_MSEC(100));
 
-	zassert_equal(bmi3xx_interrupt_fake.call_count, 0);
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 0, "bmi3xx_intr=%d",
+		      bmi3xx_interrupt_fake.call_count);
 	zassert_equal(lsm6dsm_interrupt_fake.call_count, 1);
 	zassert_equal(icm42607_interrupt_fake.call_count, 0);
 	zassert_equal(bma4xx_interrupt_fake.call_count, 0);
@@ -294,6 +295,13 @@ ZTEST(teliks, test_alt_sensor_icm42607)
 	const gpio_port_pins_t lid_accel_pin =
 		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
 
+	/* Clear base and lid sensor interrupt call count before test */
+	RESET_FAKE(bmi3xx_interrupt);
+	RESET_FAKE(lsm6dsm_interrupt);
+	RESET_FAKE(icm42607_interrupt);
+	RESET_FAKE(bma4xx_interrupt);
+	RESET_FAKE(lis2dw12_interrupt);
+
 	/* Initial ssfc data for ICM42607 and LIS2DW. */
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = 0x13;
@@ -305,13 +313,6 @@ ZTEST(teliks, test_alt_sensor_icm42607)
 
 	alt_sensor_init();
 
-	/* Clear base and lid sensor interrupt call count before test */
-	bmi3xx_interrupt_fake.call_count = 0;
-	lsm6dsm_interrupt_fake.call_count = 0;
-	icm42607_interrupt_fake.call_count = 0;
-	bma4xx_interrupt_fake.call_count = 0;
-	lis2dw12_interrupt_fake.call_count = 0;
-
 	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
 	k_sleep(K_MSEC(100));
 	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
@@ -321,7 +322,8 @@ ZTEST(teliks, test_alt_sensor_icm42607)
 	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
 	k_sleep(K_MSEC(100));
 
-	zassert_equal(bmi3xx_interrupt_fake.call_count, 0);
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 0, "bmi3xx_intr=%d",
+		      bmi3xx_interrupt_fake.call_count);
 	zassert_equal(lsm6dsm_interrupt_fake.call_count, 0);
 	zassert_equal(icm42607_interrupt_fake.call_count, 1);
 	zassert_equal(bma4xx_interrupt_fake.call_count, 0);
