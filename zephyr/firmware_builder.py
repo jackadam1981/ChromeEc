@@ -9,10 +9,8 @@
 This is the entry point for the custom firmware builder workflow recipe.
 """
 
-import argparse
 import collections
 import json
-import multiprocessing
 import os
 import pathlib
 import re
@@ -24,12 +22,18 @@ import sys
 from google.protobuf import json_format  # pylint: disable=import-error
 
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
+import scripts.firmware_builder_lib
 
 
 # Add the zmake dir early in the python search path
 ZEPHYR_DIR = pathlib.Path(__file__).parent.resolve()
 sys.path.insert(1, str(ZEPHYR_DIR / "zmake"))
 
+# Add the util directory to the search path
+sys.path.append(str(ZEPHYR_DIR / "../util"))
+
+# pylint: disable=wrong-import-position, import-error
+from coreboot_sdk import init_toolchain
 import zmake.modules  # pylint: disable=wrong-import-position
 import zmake.project  # pylint: disable=wrong-import-position
 
@@ -88,37 +92,6 @@ def find_checkout():
         if (path / ".repo").is_dir():
             return path
     raise FileNotFoundError("Unable to locate the root of the checkout")
-
-
-def init_toolchain():
-    """Initialize coreboot-sdk.
-
-    Returns:
-        Environment variables to use for toolchain.
-    """
-    # (environment variable, bazel target)
-    toolchains = [
-        ("COREBOOT_SDK_ROOT_arm", "@coreboot-sdk-arm-eabi//:get_path"),
-        ("COREBOOT_SDK_ROOT_x86", "@coreboot-sdk-i386-elf//:get_path"),
-        ("COREBOOT_SDK_ROOT_riscv", "@coreboot-sdk-riscv-elf//:get_path"),
-        ("COREBOOT_SDK_ROOT_nds32", "@coreboot-sdk-nds32le-elf//:get_path"),
-    ]
-
-    subprocess.run(
-        ["bazel", "build", *(target for _, target in toolchains)],
-        check=True,
-    )
-
-    result = {}
-    for name, target in toolchains:
-        run_result = subprocess.run(
-            ["bazel", "run", target],
-            check=True,
-            stdout=subprocess.PIPE,
-        )
-        result[name] = run_result.stdout.strip()
-
-    return result
 
 
 def build(opts):
@@ -402,6 +375,8 @@ def test(opts):
     # Run tests from Makefile.cq because make knows how to run things
     # in parallel.
     cmd = ["make", "-f", "Makefile.cq", f"-j{opts.cpus}", "test"]
+    env = os.environ.copy()
+    env.update(init_toolchain())
     if opts.code_coverage:
         cmd.append("COVERAGE=1")
     if SPECIAL_BOARDS:
@@ -412,6 +387,7 @@ def test(opts):
         check=True,
         cwd=ZEPHYR_DIR,
         stdin=subprocess.DEVNULL,
+        env=env,
     )
 
     # Twister-based tests
@@ -561,6 +537,7 @@ def _extract_lcov_summary(name, metrics, filename):
 
 def main(args):
     """Builds and tests all of the Zephyr targets and reports build metrics"""
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
     opts = parse_args(args)
 
     # Convert the full version strings (R130-16032.8.0-1) to the short form (16032.8.0).
@@ -587,64 +564,11 @@ def parse_args(args):
         "--cpus",
         default=multiprocessing.cpu_count(),
         help="The number of cores to use.",
+=======
+    parser, sub_cmds = scripts.firmware_builder_lib.create_arg_parser(
+        build, bundle, test
+>>>>>>> BRANCH (65ba84 brox: Disable FRS in Brox VIF)
     )
-
-    parser.add_argument(
-        "--metrics",
-        dest="metrics",
-        required=False,
-        help="File to write the json-encoded MetricsList proto message.",
-    )
-
-    parser.add_argument(
-        "--metadata",
-        required=False,
-        help=(
-            "Full pathname for the file in which to write build artifact "
-            "metadata."
-        ),
-    )
-
-    parser.add_argument(
-        "--output-dir",
-        required=False,
-        help=(
-            "Full pathname for the directory in which to bundle build "
-            "artifacts."
-        ),
-    )
-
-    parser.add_argument(
-        "--code-coverage",
-        required=False,
-        action="store_true",
-        help="Build host-based unit tests for code coverage.",
-    )
-
-    parser.add_argument(
-        "--bcs-version",
-        dest="bcs_version",
-        default="",
-        required=False,
-        # TODO(b/180008931): make this required=True.
-        help="BCS version to include in metadata.",
-    )
-
-    # Would make this required=True, but not available until 3.7
-    sub_cmds = parser.add_subparsers()
-
-    build_cmd = sub_cmds.add_parser("build", help="Builds all firmware targets")
-    build_cmd.set_defaults(func=build)
-
-    build_cmd = sub_cmds.add_parser(
-        "bundle",
-        help="Creates a tarball containing build "
-        "artifacts from all firmware targets",
-    )
-    build_cmd.set_defaults(func=bundle)
-
-    test_cmd = sub_cmds.add_parser("test", help="Runs all firmware unit tests")
-    test_cmd.set_defaults(func=test)
 
     check_inherits_cmd = sub_cmds.add_parser(
         "check_inherits",
@@ -652,7 +576,22 @@ def parse_args(args):
     )
     check_inherits_cmd.set_defaults(func=check_inherits)
 
-    return parser.parse_args(args)
+    opts = parser.parse_args(args)
+
+    # Convert the full version strings (R130-16032.8.0-1) to the short form (16032.8.0).
+    if opts.bcs_version:
+        match = re.compile(r"R\d+-(\d+\.\d+\.\d+)(-\d+)?").fullmatch(
+            opts.bcs_version
+        )
+        if match:
+            opts.bcs_version = match[1]
+
+    if not hasattr(opts, "func"):
+        print("Must select a valid sub command!")
+        return -1
+
+    # Run selected sub command function
+    return opts.func(opts)
 
 
 if __name__ == "__main__":
