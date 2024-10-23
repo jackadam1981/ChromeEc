@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fecf6fa_c17759d3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 4737,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-23T07:47:01Z",
+      "side": 1,
+      "message": "Yeah, but need another small CL first: rename the Kconfig option `USB_PD_XID` to `PLATFORM_EC_USB_PD_XID` to prevent macro name confliction.",
+      "parentUuid": "ca3ffcef_a14daf26",
+      "revId": "1ebbbad413ac3e63614bb7e7a9a1213112019dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bd730bf_f849e96b",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-22T00:00:07Z",
       "side": 1,
       "message": "1. Can you define an enum for these bits next to `struct skedb`?\n2. If `CONFIG_BATTERY` is false, bit 3 should be 0.\n3. If we have a dedicated charger, bit 2 should be 1.",
+      "revId": "1ebbbad413ac3e63614bb7e7a9a1213112019dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1428afdd_f1edebff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 4748,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-23T07:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd730bf_f849e96b",
       "revId": "1ebbbad413ac3e63614bb7e7a9a1213112019dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,24 @@
       "writtenOn": "2024-10-22T00:00:07Z",
       "side": 1,
       "message": "Nit: I\u0027m OK with this test as-is, but for compliance purposes, it might be more interesting to check Battery Info or some of the PDP fields.",
+      "revId": "1ebbbad413ac3e63614bb7e7a9a1213112019dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "475d2b3b_03a29f66",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-23T07:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d0ef25_42a27aa8",
       "revId": "1ebbbad413ac3e63614bb7e7a9a1213112019dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
