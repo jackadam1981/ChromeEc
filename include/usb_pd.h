@@ -568,10 +568,6 @@ struct partner_active_modes {
 #define VDO_SVDM_TYPE BIT(15)
 #define VDO_SVDM_VERS_MASK (0xF << 11)
 #define VDO_SVDM_VERS(x) (((x) << 11) & VDO_SVDM_VERS_MASK)
-/* TODO: VDO_SVDM_VERS_MINOR and VDM_VERS_MINOR will be removed in
- * CL:5875304, after we correctly set the version field to 2.1
- */
-#define VDO_SVDM_VERS_MINOR(x) (x << 11)
 #define VDO_OPOS(x) (x << 8)
 #define VDO_CMDT(x) (x << 6)
 #define VDO_OPOS_MASK VDO_OPOS(0x7)
@@ -1624,6 +1620,7 @@ int pd_get_rev(int port, enum tcpci_msg_type type);
  * @param type USB-C port partner
  * @return SVDM_VER_1_0 for VDM Version 1.0
  *         SVDM_VER_2_0 for VDM Version 2.0
+ *         SVDM_VER_2_1 for VDM Version 2.1
  */
 int pd_get_vdo_ver(int port, enum tcpci_msg_type type);
 

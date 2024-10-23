@@ -701,12 +701,12 @@ static void pe_set_dpm_curr_request(const int port, const int request);
  * The spec. revision is used to index into this array.
  *  PD 1.0 (VDO 1.0) - return SVDM_VER_1_0
  *  PD 2.0 (VDO 1.0) - return SVDM_VER_1_0
- *  PD 3.0 (VDO 2.0) - return SVDM_VER_1_0
+ *  PD 3.0 (VDO 2.1) - return SVDM_VER_2_1
  */
 static const uint8_t vdo_ver[] = {
 	[PD_REV10] = SVDM_VER_1_0,
 	[PD_REV20] = SVDM_VER_1_0,
-	[PD_REV30] = SVDM_VER_2_0,
+	[PD_REV30] = SVDM_VER_2_1,
 };
 
 int pd_get_rev(int port, enum tcpci_msg_type type)
@@ -721,7 +721,7 @@ int pd_get_vdo_ver(int port, enum tcpci_msg_type type)
 	if (rev < PD_REV30)
 		return vdo_ver[rev];
 	else
-		return SVDM_VER_2_0;
+		return SVDM_VER_2_1;
 }
 
 static void pe_set_ready_state(int port)
@@ -5901,8 +5901,7 @@ uint32_t pd_compose_svdm_req_header(int port, enum tcpci_msg_type type,
 				    uint16_t svid, int cmd)
 {
 	return VDO(svid, 1,
-		   VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
-			   VDM_VERS_MINOR | cmd);
+		   VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) | cmd);
 }
 
 /**
@@ -6597,7 +6596,6 @@ static void pe_vdm_response_entry(int port)
 
 	/* Add SVDM structured version being used */
 	tx_payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
-	tx_payload[0] |= VDM_VERS_MINOR;
 
 	/* Use VDM command to select the response handler function */
 	switch (vdo_cmd) {
