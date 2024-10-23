@@ -645,6 +645,8 @@ struct pdc_port_t {
 	enum src_attached_local_state_t src_attached_local_state;
 	/** State machine run event */
 	struct k_event sm_event;
+	/* Deferred handler to trigger event when sm settles */
+	struct k_work_delayable sm_settle;
 
 	/** Transitioning from last_state */
 	enum pdc_state_t last_state;
@@ -869,6 +871,17 @@ static bool should_suspend(struct pdc_port_t *port)
 	__builtin_unreachable();
 }
 
+static void pdc_thread_settled(struct k_work *work)
+{
+	struct k_work_delayable *dwork = k_work_delayable_from_work(work);
+	struct pdc_port_t *port =
+		CONTAINER_OF(dwork, struct pdc_port_t, sm_settle);
+	const struct pdc_config_t *const config = port->dev->config;
+
+	LOG_INF("C%d: pdc_thread_settled", config->connector_num);
+	k_event_post(&port->sm_event, PDC_SM_SETTLED_EVENT);
+}
+
 /**
  * @brief PDC thread
  */
@@ -894,6 +907,9 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 		 */
 		if (rv != 0) {
 			k_event_clear(&port->sm_event, PDC_SM_EVENT);
+			k_work_reschedule(
+				&port->sm_settle,
+				K_MSEC(PDC_SM_SETTLED_TIMEOUT_MS / 2));
 		}
 
 		if (should_suspend(port)) {
@@ -3048,6 +3064,7 @@ static int pdc_subsys_init(const struct device *dev)
 
 	/* Initialize state machine run event */
 	k_event_init(&port->sm_event);
+	k_work_init_delayable(&port->sm_settle, pdc_thread_settled);
 
 	/* Initialize command mutex */
 	k_mutex_init(&port->mtx);

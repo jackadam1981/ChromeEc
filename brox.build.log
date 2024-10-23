@@ -1,0 +1,128 @@
+Clearing build directory /mnt/host/source/src/platform/ec/build/zephyr/brox due to --clobber
+Toolchain <zmake.toolchains.CorebootSdkToolchain object at 0x7f3e026597c0> selected by probe function.
+Building brox in /mnt/host/source/src/platform/ec/build/zephyr/brox.
+Configuring brox:rw.
+Configuring brox:ro.
+Loading Zephyr default modules (Zephyr base (cached)).
+Loading Zephyr default modules (Zephyr base (cached)).
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04380.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04480.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04500.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04580.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04380.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04480.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04500.
+'label' is marked as deprecated in 'properties:' in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/i2c/ite,enhance-i2c.yaml for node /soc/i2c@f04580.
+CMake Warning at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:405 (message):
+CMake Warning at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:405 (message):
+  dtc raised one or more warnings:
+  /mnt/host/source/src/platform/ec/build/zephyr/brox/build-ro/zephyr/zephyr.dts:978.27-1422.5:
+  Warning (avoid_unnecessary_addr_size): /soc/pin-controller: unnecessary
+  #address-cells/#size-cells without "ranges" or child "reg" property
+Call Stack (most recent call first):
+  /mnt/host/source/src/third_party/zephyr/main/cmake/modules/zephyr_default.cmake:133 (include)
+  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)
+  CMakeLists.txt:6 (find_package)
+  dtc raised one or more warnings:
+  /mnt/host/source/src/platform/ec/build/zephyr/brox/build-rw/zephyr/zephyr.dts:978.27-1422.5:
+  Warning (avoid_unnecessary_addr_size): /soc/pin-controller: unnecessary
+  #address-cells/#size-cells without "ranges" or child "reg" property
+Call Stack (most recent call first):
+  /mnt/host/source/src/third_party/zephyr/main/cmake/modules/zephyr_default.cmake:133 (include)
+  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)
+  CMakeLists.txt:6 (find_package)
+warning: Deprecated symbol I2C_ALLOW_NO_STOP_TRANSACTIONS is enabled.
+19:59:24.799: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Starting local Bazel server and connecting to it...
+warning: Deprecated symbol I2C_ALLOW_NO_STOP_TRANSACTIONS is enabled.
+19:59:24.907: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Another command holds the client lock: 
+Computing main repo mapping: 
+pid=1101
+owner=client
+cwd=/mnt/host/source/src/platform/ec
+Waiting for it to complete...
+Another command (pid=1101) is running. Waiting for it to complete on the server (server_pid=1106)...
+Loading: 
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+    currently loading: @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (1 packages loaded, 0 targets configured)
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (1 packages loaded, 0 targets configured)
+[0 / 1] checking cached actions
+INFO: Analyzed target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (5 packages loaded, 9 targets configured).
+INFO: Found 1 target...
+Target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path up-to-date:
+  bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-riscv-elf/get_path
+INFO: Elapsed time: 4.155s, Critical Path: 0.03s
+INFO: 5 processes: 5 internal.
+INFO: Build completed successfully, 5 total actions
+INFO: Running command line: bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-riscv-elf/get_path
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (0 packages loaded, 0 targets configured)
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (0 packages loaded, 0 targets configured)
+[0 / 1] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+INFO: Analyzed target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+Target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path up-to-date:
+  bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-riscv-elf/get_path
+INFO: Elapsed time: 4.221s, Critical Path: 0.01s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-riscv-elf/get_path
+INFO: Verified 46 GPIOs, no duplicates found
+INFO: Verified 52 '*-gpios' properties, all flags match.
+INFO: Verified 46 GPIOs, no duplicates found
+INFO: Verified 52 '*-gpios' properties, all flags match.
+INFO: Skipped 15 named-gpios children.
+INFO: Running CME, outputting to /mnt/host/source/src/platform/ec/build/zephyr/brox/build-rw/zephyr/component_manifest.json
+WARNING: Unknown or disabled I2C port: i2c@f04480(i2c_ec_pmc_pd)
+INFO: Project brox does not support SSFC
+INFO: No motionsense-sensor-alt node found
+INFO: Skipped 15 named-gpios children.
+INFO: Running CME, outputting to /mnt/host/source/src/platform/ec/build/zephyr/brox/build-ro/zephyr/component_manifest.json
+WARNING: Unknown or disabled I2C port: i2c@f04480(i2c_ec_pmc_pd)
+INFO: Project brox does not support SSFC
+INFO: No motionsense-sensor-alt node found
+The PW_ROOT environment variable is not set; using /mnt/host/source/src/platform/ec/build/zephyr/brox/modules/pigweed within CMake
+The PW_ROOT environment variable is not set; using /mnt/host/source/src/platform/ec/build/zephyr/brox/modules/pigweed within CMake
+CMake Warning:
+CMake Warning:
+  Manually-specified variables were not used by the project:
+    NANOPB_DIR
+    PW_ROOT
+  Manually-specified variables were not used by the project:
+    NANOPB_DIR
+    PW_ROOT
+Building brox:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/brox/build-ro
+Building brox:rw: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/brox/build-rw
+-- git describe warned: warning: tag 'upstream/v2.7.99' is externally known as 'v2.7.99'
+-- Zephyr version: 3.7.99 (/mnt/host/source/src/third_party/zephyr/main)
+-- git describe warned: warning: tag 'upstream/v2.7.99' is externally known as 'v2.7.99'
+-- Zephyr version: 3.7.99 (/mnt/host/source/src/third_party/zephyr/main)
+INFO:root:Version string: Zephyr-Kernel-0.0.0-9519e77
+INFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/brox/build-rw/modules/ec/zephyr/include/ec_version.h
+INFO:root:Version string: Zephyr-Kernel-0.0.0-9519e77
+INFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/brox/build-ro/modules/ec/zephyr/include/ec_version.h
+Memory region         Used Size  Region Size  %age Used
+             ROM:      244636 B         1 MB     23.33%
+             RAM:       84480 B       256 KB     32.23%
+        IDT_LIST:          0 GB         2 KB      0.00%
+Generating files from /mnt/host/source/src/platform/ec/build/zephyr/brox/build-rw/zephyr/zephyr.elf for board: it8xxx2
+19:59:58.477-INFO: Wrote database with 1052 entries to /mnt/host/source/src/platform/ec/build/zephyr/brox/build-rw/database.bin as binary
+Memory region         Used Size  Region Size  %age Used
+             ROM:      244636 B         1 MB     23.33%
+             RAM:       84480 B       256 KB     32.23%
+        IDT_LIST:          0 GB         2 KB      0.00%
+Generating files from /mnt/host/source/src/platform/ec/build/zephyr/brox/build-ro/zephyr/zephyr.elf for board: it8xxx2
+19:59:58.628-INFO: Wrote database with 1052 entries to /mnt/host/source/src/platform/ec/build/zephyr/brox/build-ro/database.bin as binary
+/mnt/host/source/src/platform/ec/build/zephyr/brox/packer/source.dts:977.27-1421.5: Warning (avoid_unnecessary_addr_size): /soc/pin-controller: unnecessary #address-cells/#size-cells without "ranges" or child "reg" property
+/mnt/host/source/src/platform/ec/build/zephyr/brox/packer/source.dts:853.19-915.5: Warning (unique_unit_address): /soc/kbd@f01d00: duplicate unit-address (also used in node /soc/gpio@f01d00)
+/mnt/host/source/src/platform/ec/build/zephyr/brox/packer/source.dts:853.19-915.5: Warning (unique_unit_address): /soc/kbd@f01d00: duplicate unit-address (also used in node /soc/cros-kb-raw@f01d00)
+/mnt/host/source/src/platform/ec/build/zephyr/brox/packer/source.dts:966.25-976.5: Warning (unique_unit_address): /soc/gpio@f01d00: duplicate unit-address (also used in node /soc/cros-kb-raw@f01d00)
+20:00:00.341-INFO: Wrote database with 1052 entries to /mnt/host/source/src/platform/ec/build/zephyr/brox/packer/database.bin as binary
+20:00:00.489-INFO: Wrote database with 1052 entries to /mnt/host/source/src/platform/ec/build/tokens.bin as binary
