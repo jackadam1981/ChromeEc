@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4f2e86_07d56bcf",
+        "filename": "zephyr/program/nissa/rull/cbi.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "It is not needed here, we only have Hall-sensor.",
+      "parentUuid": "39cbb232_2e677256",
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e24498b4_cc675308",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44df9f28_2cde330d",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e24498b4_cc675308",
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1a1dd41_1e3fc0fb",
@@ -48,6 +84,54 @@
       "writtenOn": "2024-10-23T08:14:47Z",
       "side": 1,
       "message": "From [Rull TKN_NB7559A_EC\u0026CPU GPIO_Table_20240925.xlsx](http://docs/spreadsheets/d/1uWBB-bYNSMBj_LOdAcx_FlktqAEAVU5J/edit?gid\u003d408823393#gid\u003d408823393), gpioc 0 should be Touch panel pwr enable pin?",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff982b20_ac8e1509",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "This pin is reserved by EE. I want to enable it in subsequent feature.",
+      "parentUuid": "c1a1dd41_1e3fc0fb",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0869493a_94de1806",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "This pin is reserved by EE. I want to enable it in subsequent features to avoid affecting bring up.",
+      "parentUuid": "c1a1dd41_1e3fc0fb",
       "range": {
         "startLine": 68,
         "startChar": 15,
@@ -128,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0bca536_21317c95",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "This pin is reserved by EE. I want to enable it in subsequent features to avoid affecting bring up.",
+      "parentUuid": "f49d5e71_ad753a63",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c02d3ee7_13f1cd0e",
@@ -141,6 +249,30 @@
       "writtenOn": "2024-10-23T08:14:47Z",
       "side": 1,
       "message": "gpioi 7 should be `SOC_EDP_BL_EN`?",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "527375d0_994250b4",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "This pin is reserved by EE. I want to enable it in subsequent features to avoid affecting bring up.",
+      "parentUuid": "c02d3ee7_13f1cd0e",
       "range": {
         "startLine": 75,
         "startChar": 5,
@@ -174,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c7d0a5_9e5cb899",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "This pin is reserved by EE. I want to enable it in subsequent features to avoid affecting bring up.",
+      "parentUuid": "d54e6302_8d483b3b",
+      "range": {
+        "startLine": 77,
+        "startChar": 13,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa4f363_f6fb94c4",
@@ -187,6 +343,54 @@
       "writtenOn": "2024-10-23T08:14:47Z",
       "side": 1,
       "message": "3 indents for these lines.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef40572_ad0e65f1",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa4f363_f6fb94c4",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c06cdcb_02f8fb02",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-23T11:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa4f363_f6fb94c4",
       "range": {
         "startLine": 67,
         "startChar": 5,
