@@ -46,6 +46,30 @@
       },
       "revId": "b9fd6dbe553e5955580d05efca11fcb293d396a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77947775_9484aa17",
+        "filename": "zephyr/test/rex/tests/rex_ish/src/board_nb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-23T15:15:26Z",
+      "side": 1,
+      "message": "I think what should be done is to move this test under zerphyr/test/ish.  This new directory can be a good place to collect tests specific to the ISH that apply to all boards.\n\nCan you move this as a follow up CL?",
+      "parentUuid": "d309d327_6a9dce2d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "b9fd6dbe553e5955580d05efca11fcb293d396a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
