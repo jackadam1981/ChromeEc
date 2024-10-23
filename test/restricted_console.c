@@ -65,6 +65,7 @@ test_static int test_command_read_write_word(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
 test_static int test_command_fpupload(void)
 {
 	/* System is unlocked. */
@@ -122,15 +123,20 @@ test_static int test_command_fpmatch(void)
 	return EC_SUCCESS;
 }
 
+=======
+>>>>>>> BRANCH (65ba84 brox: Disable FRS in Brox VIF)
 void run_test(int argc, const char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_command_mem_dump);
 	RUN_TEST(test_command_read_write_word);
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
 	RUN_TEST(test_command_fpupload);
 	RUN_TEST(test_command_fpdownload);
 	RUN_TEST(test_command_fpmatch);
+=======
+>>>>>>> BRANCH (65ba84 brox: Disable FRS in Brox VIF)
 
 	test_print_result();
 }
