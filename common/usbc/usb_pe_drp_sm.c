@@ -292,6 +292,7 @@ enum usb_pe_state {
 	PE_SNK_CHUNK_RECEIVED, /* pe-st76 */
 	PE_VCS_FORCE_VCONN, /* pe-st77 */
 	PE_GET_REVISION, /* pe-st78 */
+	PE_GIVE_REVISION, /* pe-st79 */
 
 	/* EPR states */
 	PE_SNK_SEND_EPR_MODE_ENTRY,
@@ -413,6 +414,7 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 #ifdef CONFIG_USB_PD_REV30
 	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
 	[PE_GET_REVISION] = "PE_Get_Revision",
+	[PE_GIVE_REVISION] = "PE_Give_Revision",
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
@@ -2330,6 +2332,11 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			/* Calculate the delay from TX success to PE */
 			offset = time_since32(tx_success_ts);
 
+			int t_sender_response =
+				prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20 ?
+					PD2_T_SENDER_RESPONSE :
+					PD3_T_SENDER_RESPONSE;
+
 			/*
 			 * Initialize and run the SenderResponseTimer by
 			 * offsetting it with TX transmit success time.
@@ -2337,7 +2344,7 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			 * propagating the TX status.
 			 */
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
-					PD_T_SENDER_RESPONSE - offset);
+					t_sender_response - offset);
 			return PE_MSG_SEND_COMPLETED;
 		}
 		return PE_MSG_SEND_PENDING;
@@ -2952,6 +2959,12 @@ static void pe_src_ready_run(int port)
 			case PD_DATA_SINK_CAP:
 				break;
 			case PD_DATA_VENDOR_DEF:
+				/* The code here assumes that the implementation
+				 * supports at least some SVDM.
+				 *
+				 * Send Not Supported here if we have a device
+				 * that does not support SVDM at all.
+				 */
 				if (PD_VDO_SVDM(*payload))
 					set_state_pe(port, PE_VDM_RESPONSE);
 				/* The TCPM does not support any unstructured
@@ -3044,6 +3057,11 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_GIVE_STATUS);
 				return;
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+#ifdef CONFIG_USB_PD_REV30
+			case PD_CTRL_GET_REVISION:
+				set_state_pe(port, PE_GIVE_REVISION);
+				return;
+#endif /* CONFIG_USB_PD_REV30 */
 				/*
 				 * Receiving an unknown or unsupported message
 				 * shall be responded to with a not supported
@@ -3979,6 +3997,11 @@ static void pe_snk_ready_run(int port)
 					port, PD_HEADER_GET_SOP(
 						      rx_emsg[port].header));
 				return;
+#ifdef CONFIG_USB_PD_REV30
+			case PD_CTRL_GET_REVISION:
+				set_state_pe(port, PE_GIVE_REVISION);
+				return;
+#endif /* CONFIG_USB_PD_REV30 */
 			/*
 			 * Receiving an unknown or unsupported message
 			 * shall be responded to with a not supported message.
@@ -6050,9 +6073,19 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 					PE_T_DISCOVER_IDENTITY_NO_CONTRACT);
 	}
 
-	/* Do not attempt further discovery if identity discovery failed. */
+	/* Do not attempt further discovery if identity discovery failed or if
+	 * DiscoverIdentity ACK did not set Modal Operation.
+	 */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		pd_notify_event(port,
+				pe[port].tx_type == TCPCI_MSG_SOP ?
+					PD_STATUS_EVENT_SOP_DISC_DONE :
+					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+	} else if (!pd_get_identity_response(port, pe[port].tx_type)
+			    ->idh.modal_support) {
+		pd_set_svids_discovery(port, pe[port].tx_type,
+				       PD_DISC_COMPLETE);
 		pd_notify_event(port,
 				pe[port].tx_type == TCPCI_MSG_SOP ?
 					PD_STATUS_EVENT_SOP_DISC_DONE :
@@ -6138,9 +6171,19 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 	}
 
-	/* Do not attempt further discovery if identity discovery failed. */
+	/* Do not attempt further discovery if identity discovery failed or if
+	 * DiscoverIdentity ACK did not set Modal Operation.
+	 */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL) {
 		pd_set_svids_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+		pd_notify_event(port,
+				pe[port].tx_type == TCPCI_MSG_SOP ?
+					PD_STATUS_EVENT_SOP_DISC_DONE :
+					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+	} else if (!pd_get_identity_response(port, pe[port].tx_type)
+			    ->idh.modal_support) {
+		pd_set_svids_discovery(port, pe[port].tx_type,
+				       PD_DISC_COMPLETE);
 		pd_notify_event(port,
 				pe[port].tx_type == TCPCI_MSG_SOP ?
 					PD_STATUS_EVENT_SOP_DISC_DONE :
@@ -6630,17 +6673,6 @@ static void pe_vdm_response_entry(int port)
 			vdo_len = 1;
 		}
 	} else {
-		/*
-		 * Received at VDM command which is not supported.  PD 2.0 may
-		 * NAK or ignore the message (see TD.PD.VNDI.E1. VDM Identity
-		 * steps), but PD 3.0 must send Not_Supported (PD 3.0 Ver 2.0 +
-		 * ECNs 2020-12-10 Table 6-64 Response to an incoming
-		 * VDM or TD.PD.VNDI3.E3 VDM Identity steps)
-		 */
-		if (prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV30) {
-			set_state_pe(port, PE_SEND_NOT_SUPPORTED);
-			return;
-		}
 		tx_payload[0] |= VDO_CMDT(CMDT_RSP_NAK);
 		vdo_len = 1;
 	}
@@ -8319,6 +8351,36 @@ static void pe_snk_epr_mode_exit_received_entry(int port)
 }
 #endif /* CONFIG_USB_PD_EPR */
 
+/**
+ * PE_Give_Revision
+ */
+__maybe_unused static void pe_give_revision_entry(int port)
+{
+	struct rmdo *rmdo = (void *)tx_emsg[port].buf;
+
+	tx_emsg[port].len = sizeof(struct rmdo);
+	rmdo->major_rev = 3;
+	rmdo->minor_rev = 2;
+	rmdo->major_ver = 1;
+	rmdo->minor_ver = 0;
+	rmdo->reserved = 0;
+
+	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_REVISION);
+}
+
+__maybe_unused static void pe_give_revision_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+		   PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
+	}
+}
+
 const uint32_t *const pd_get_src_caps(int port)
 {
 	return pe[port].src_caps;
@@ -8753,6 +8815,10 @@ static __const_data const struct usb_state pe_states[] = {
 		.entry = pe_get_revision_entry,
 		.run   = pe_get_revision_run,
 		.exit  = pe_get_revision_exit,
+	},
+	[PE_GIVE_REVISION] = {
+		.entry = pe_give_revision_entry,
+		.run   = pe_give_revision_run,
 	},
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = {

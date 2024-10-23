@@ -19,9 +19,12 @@
 #include "usb_pd.h"
 #include "util.h"
 
+#include <zephyr/logging/log.h>
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/sys/slist.h>
 #include <zephyr/ztest.h>
+
+LOG_MODULE_REGISTER(test_drivers_integration_usb_pd_rev3, LOG_LEVEL_INF);
 
 #define TEST_PORT 0
 
@@ -47,9 +50,6 @@ static void *usb_attach_5v_3a_pd_source_setup(void)
 	test_fixture.src_ext.pdo[1] =
 		PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
 
-	/* Set the partner's USB PD Revision to 3.1 */
-	test_fixture.source_5v_3a.rmdo = 0x31000000;
-
 	return &test_fixture;
 }
 
@@ -63,14 +63,18 @@ static void usb_attach_5v_3a_pd_source_before(void *data)
 	/* TODO(b/214401892): Check why need to give time TCPM to spin */
 	k_sleep(K_SECONDS(1));
 
+	/* Set the partner's USB PD Revision to 3.1 */
+	fixture->source_5v_3a.rmdo = 0x31000000;
+
 	connect_source_to_port(&fixture->source_5v_3a, &fixture->src_ext, 1,
 			       fixture->tcpci_emul, fixture->charger_emul);
 
-	/* Clear Alert and Status receive checks */
+	/* Clear Alert and Status receive checks; clear message log */
 	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
 	tcpci_src_emul_clear_status_received(&fixture->src_ext);
 	zassert_false(fixture->src_ext.alert_received);
 	zassert_false(fixture->src_ext.status_received);
+	tcpci_partner_common_clear_logged_msgs(&fixture->source_5v_3a);
 
 	/* Initial check on power state */
 	zassert_true(chipset_in_state(CHIPSET_STATE_ON));
@@ -176,7 +180,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_batt_cap_invalid)
 		"Invalid battery ref bit should be set");
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_typec_status_using_rmdo)
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_typec_status_using_rmdo)
 {
 	struct ec_params_typec_status params = { .port = TEST_PORT };
 	struct ec_response_typec_status response;
@@ -190,7 +194,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_typec_status_using_rmdo)
 	zassert_equal(response.sop_revision, fixture->source_5v_3a.rmdo >> 16);
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_alert_msg)
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_alert_msg)
 {
 	zassert_equal(pd_broadcast_alert_msg(ADO_OTP_EVENT), EC_SUCCESS);
 
@@ -198,8 +202,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_alert_msg)
 	zassert_true(fixture->src_ext.alert_received);
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
-	test_verify_alert_on_power_state_change)
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_alert_on_power_state_change)
 {
 	/* Suspend and check partner received Alert and Status messages */
 	hook_notify(HOOK_CHIPSET_SUSPEND);
@@ -239,7 +242,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
 }
 
 ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
-	test_verify_simultaneous_alert_status_resolution)
+	test_simultaneous_alert_status_resolution)
 {
 	zassert_false(fixture->src_ext.alert_received);
 	zassert_false(fixture->src_ext.status_received);
@@ -258,12 +261,13 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
 	 * This test only checks the first 3 messages.
 	 */
 	int i = 0;
-	bool header_mismatch = false;
 	enum tcpci_partner_msg_sender expected_senders[3] = {
 		TCPCI_PARTNER_SENDER_PARTNER, TCPCI_PARTNER_SENDER_TCPM,
 		TCPCI_PARTNER_SENDER_TCPM
 	};
 	uint16_t expected_headers[3] = { 0x0012, 0xb002, 0x1006 };
+	enum tcpci_partner_msg_sender actual_senders[3];
+	uint16_t actual_headers[3] = { 0, 0, 0 };
 	struct tcpci_partner_log_msg *msg;
 
 	SYS_SLIST_FOR_EACH_CONTAINER(&fixture->source_5v_3a.msg_log, msg, node)
@@ -273,27 +277,66 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
 		if (i >= 3)
 			break;
 
-		if (msg->sender != expected_senders[i] ||
-		    PD_HEADER_EXT(header) !=
-			    PD_HEADER_EXT(expected_headers[i]) ||
-		    PD_HEADER_CNT(header) !=
-			    PD_HEADER_CNT(expected_headers[i]) ||
-		    PD_HEADER_TYPE(header) !=
-			    PD_HEADER_TYPE(expected_headers[i])) {
-			header_mismatch = true;
-			break;
-		}
+		actual_senders[i] = msg->sender;
+		actual_headers[i] = header;
 
 		i++;
 	}
+	zassert_true(i >= 3, "Expected 3 messages but recorded only %i", i);
 
-	zassert_false(header_mismatch);
-	zassert_true(fixture->src_ext.alert_received);
-	zassert_true(fixture->src_ext.status_received);
+	LOG_DBG("Checking expected Get_Status message");
+	zexpect_equal(actual_senders[0], expected_senders[0],
+		      "Expected message 0 sent from partner, got %u",
+		      actual_senders[0]);
+	uint16_t header = actual_headers[0];
+	uint16_t exp_header = expected_headers[0];
+	zexpect_equal(PD_HEADER_EXT(header), PD_HEADER_EXT(exp_header),
+		      "Expected message 0 not extended, got header 0x%04x",
+		      header);
+	zexpect_equal(PD_HEADER_CNT(header), PD_HEADER_CNT(exp_header),
+		      "Expected message 0 count %u, got header 0x%04x",
+		      PD_HEADER_CNT(exp_header), header);
+	zexpect_equal(PD_HEADER_TYPE(header), PD_HEADER_TYPE(exp_header),
+		      "Expected message 0 type %u, got header 0x%04x",
+		      PD_HEADER_TYPE(exp_header), header);
+
+	LOG_DBG("Checking expected Status message");
+	zexpect_equal(actual_senders[1], expected_senders[1],
+		      "Expected message 1 sent from TCPM, got %u",
+		      actual_senders[1]);
+	header = actual_headers[1];
+	exp_header = expected_headers[1];
+	zexpect_equal(PD_HEADER_EXT(header), PD_HEADER_EXT(exp_header),
+		      "Expected message 1 extended, got header 0x%04x", header);
+	zexpect_equal(PD_HEADER_CNT(header), PD_HEADER_CNT(exp_header),
+		      "Expected message 1 count %u, got header 0x%04x",
+		      PD_HEADER_CNT(exp_header), header);
+	zexpect_equal(PD_HEADER_TYPE(header), PD_HEADER_TYPE(exp_header),
+		      "Expected message 1 type %u, got header 0x%04x",
+		      PD_HEADER_TYPE(exp_header), header);
+
+	LOG_DBG("Checking expected Alert message");
+	zexpect_equal(actual_senders[2], expected_senders[2],
+		      "Expected message 2 sent from TCPM, got %u",
+		      actual_senders[2]);
+	header = actual_headers[2];
+	exp_header = expected_headers[2];
+	zexpect_equal(PD_HEADER_EXT(header), PD_HEADER_EXT(exp_header),
+		      "Expected message 2 not extended, got header 0x%04x",
+		      header);
+	zexpect_equal(PD_HEADER_CNT(header), PD_HEADER_CNT(exp_header),
+		      "Expected message 2 count %u, got header 0x%04x",
+		      PD_HEADER_CNT(exp_header), header);
+	zexpect_equal(PD_HEADER_TYPE(header), PD_HEADER_TYPE(exp_header),
+		      "Expected message 2 type %u, got header 0x%04x",
+		      PD_HEADER_TYPE(exp_header), header);
+
+	zexpect_true(fixture->src_ext.alert_received);
+	zexpect_true(fixture->src_ext.status_received);
 }
 
 ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
-	test_verify_inaction_on_pd_button_press_while_awake)
+	test_inaction_on_pd_button_press_while_awake)
 {
 	uint32_t ado;
 
@@ -312,7 +355,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
 }
 
 ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
-	test_verify_inaction_on_invalid_pd_button_press)
+	test_inaction_on_invalid_pd_button_press)
 {
 	uint32_t ado;
 
@@ -345,7 +388,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
 	k_sleep(K_SECONDS(10));
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_startup_on_pd_button_press)
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_startup_on_pd_button_press)
 {
 	uint32_t ado;
 
@@ -377,8 +420,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_startup_on_pd_button_press)
 	zassert_true(chipset_in_state(CHIPSET_STATE_ON));
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
-	test_verify_chipset_on_pd_button_behavior)
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_chipset_on_pd_button_behavior)
 {
 	uint32_t ado;
 
@@ -445,7 +487,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
 	k_sleep(K_SECONDS(10));
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_uvdm_not_supported)
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_uvdm_not_supported)
 {
 	uint32_t vdm_header = VDO(USB_VID_GOOGLE, 0 /* unstructured */, 0);
 
@@ -483,4 +525,79 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_verify_uvdm_not_supported)
 	zassert_true(
 		not_supported_seen,
 		"Sent unstructured VDM to TCPM; did not receive Not_Supported");
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_revision)
+{
+	const uint32_t expected_rev = 0x32100000;
+
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_REVISION, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_equal(fixture->source_5v_3a.rmdo, expected_rev,
+		      "Expected RMDO %x, got %x", expected_rev,
+		      fixture->source_5v_3a.rmdo);
+}
+
+uint8_t get_status_data_size(sys_slist_t *msg_log)
+{
+	struct tcpci_partner_log_msg *msg;
+	uint8_t data_size = 0;
+
+	SYS_SLIST_FOR_EACH_CONTAINER(msg_log, msg, node)
+	{
+		uint16_t header = sys_get_le16(msg->buf);
+		if (msg->sender != TCPCI_PARTNER_SENDER_TCPM ||
+		    !PD_HEADER_EXT(header) ||
+		    PD_HEADER_TYPE(header) != PD_EXT_STATUS) {
+			continue;
+		}
+
+		uint16_t ext_header = sys_get_le16(msg->buf + sizeof(uint16_t));
+		data_size = PD_EXT_HEADER_DATA_SIZE(ext_header);
+		break;
+	}
+
+	return data_size;
+}
+
+/* The TCPM should respond to Get_Status with a 7-byte Status as defined in PD
+ * r3.1 and newer, regardless of the partner's response (or non-response) to
+ * Get_Revision. Test two cases to verify this. See b/366241394 for details.
+ */
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_get_status_response_pd31)
+{
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, true);
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_STATUS, 0);
+	k_sleep(K_SECONDS(2));
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, false);
+
+	/* When a partner supplies a Revision of PD r3.1 or greater, the TCPM
+	 * should respond to Get_Status with a 7-byte Status Data Block, as
+	 * defined in PD r3.1.
+	 */
+	zassert_equal(get_status_data_size(&fixture->source_5v_3a.msg_log), 7);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
+	test_get_status_response_pd_no_revision)
+{
+	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+	/* Set the partner to respond to Get_Revision with Not_Supported */
+	fixture->source_5v_3a.rmdo = 0x0;
+	connect_source_to_port(&fixture->source_5v_3a, &fixture->src_ext, 1,
+			       fixture->tcpci_emul, fixture->charger_emul);
+
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, true);
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_STATUS, 0);
+	k_sleep(K_SECONDS(2));
+	tcpci_partner_common_enable_pd_logging(&fixture->source_5v_3a, false);
+
+	/* When a partner does not supply a Revision message, the TCPM should
+	 * respond to Get_Status with a 7-byte Status Data Block, as defined in
+	 * PD r3.1.
+	 */
+	zassert_equal(get_status_data_size(&fixture->source_5v_3a.msg_log), 7);
 }
