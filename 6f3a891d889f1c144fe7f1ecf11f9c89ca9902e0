@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f60e41_f6160b95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2024-10-23T04:37:37Z",
+      "side": 1,
+      "message": "Yes, this CL can only build a EC version for Hylia, other features will be uploaded to the CL after the bring up is successful.",
+      "parentUuid": "0aa1c34f_e7442148",
+      "revId": "6f3a891d889f1c144fe7f1ecf11f9c89ca9902e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "543e47bd_34d6d907",
