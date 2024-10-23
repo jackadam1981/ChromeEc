@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cf23af4_9600f073",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-10-23T18:39:16Z",
+      "side": 1,
+      "message": "This actually looks right to me as we were seeing Major 2 Minor 1 and Major 2 Minor 0 before. Now that they are unified it seems correct to just always set version to passed in version if it exists. I have to double check on the values here though cause I think before we were setting 0x10 with SVDM_VER_2_1 and now it\u0027s setting 0x0101 so the code should be updated just havent had a chance to go through the whole patch yet.\n\nIf I\u0027m looking at this correctly even the default case could just be the same assignment (but if nothing is returned I can see the issue there). The main key here is that since the mask is now changed we just directly set the full value.",
+      "parentUuid": "4bb7b2ae_7bdfe399",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8bcac2b_d9b075bd",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 2
