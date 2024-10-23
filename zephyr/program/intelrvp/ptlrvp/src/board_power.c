@@ -24,6 +24,9 @@ void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_FORCE_SHUTDOWN_TO_MS;
 
+	printk("%s: call\n", __func__);
+
+
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 1);
 
@@ -44,6 +47,8 @@ void board_ap_power_force_shutdown(void)
 #ifdef CONFIG_AP_PWRSEQ_DRIVER
 int board_ap_power_action_g3_entry(void *data)
 {
+	printk("%s: call\n", __func__);
+
 	board_ap_power_force_shutdown();
 
 	return 0;
