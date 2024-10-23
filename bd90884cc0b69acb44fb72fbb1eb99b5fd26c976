@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f846ce_725a22a7",
+        "filename": "zephyr/program/nissa/rull/overlay.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-10-23T08:17:49Z",
+      "side": 1,
+      "message": "`ccd2_mode_odl` is not used. Keep `gpioh 6` as unused.",
+      "parentUuid": "63e1abf9_58a525eb",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "bd90884cc0b69acb44fb72fbb1eb99b5fd26c976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f49d5e71_ad753a63",
