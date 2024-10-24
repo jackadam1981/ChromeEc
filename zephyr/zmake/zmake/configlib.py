@@ -28,6 +28,19 @@ def register_host_project(**kwargs):
     kwargs.setdefault("zephyr_board", "native_sim")
     kwargs.setdefault("supported_toolchains", ["llvm", "host"])
     kwargs.setdefault("output_packer", zmake.output_packers.ElfPacker)
+    kwargs.setdefault(
+        "modules",
+        [
+            "picolibc",
+            "hal_stm32",
+            "cmsis",
+            "hal_intel_public",
+            "nanopb",
+            "pigweed",
+            "fpc",
+            "ec",
+        ],
+    )
     return _register_project(**kwargs)
 
 
@@ -35,6 +48,19 @@ def register_raw_project(**kwargs):
     """Register a project that uses RawBinPacker."""
     kwargs.setdefault("supported_toolchains", ["coreboot-sdk", "zephyr"])
     kwargs.setdefault("output_packer", zmake.output_packers.RawBinPacker)
+    kwargs.setdefault(
+        "modules",
+        [
+            "picolibc",
+            "hal_stm32",
+            "cmsis",
+            "hal_intel_public",
+            "nanopb",
+            "pigweed",
+            "fpc",
+            "ec",
+        ],
+    )
     return _register_project(**kwargs)
 
 
@@ -42,6 +68,19 @@ def register_raw_project(**kwargs):
 def register_binman_project(**kwargs):
     """Register a project that uses BinmanPacker."""
     kwargs.setdefault("output_packer", zmake.output_packers.BinmanPacker)
+    kwargs.setdefault(
+        "modules",
+        [
+            "picolibc",
+            "hal_stm32",
+            "cmsis",
+            "hal_intel_public",
+            "nanopb",
+            "pigweed",
+            "fpc",
+            "ec",
+        ],
+    )
     return register_raw_project(**kwargs)
 
 
