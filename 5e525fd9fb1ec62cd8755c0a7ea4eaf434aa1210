@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9add184d_c9a331b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-24T21:28:17Z",
+      "side": 1,
+      "message": "Some advice to assist writing unit tests for this CL:\n\n * The existing Zephyr unit tests for `driver/battery/smart.c` are located at `zephyr/test/drivers/smart_battery/src/smart.c`. This is the best place to add new tests for this source. You can run these unit tests locally by calling:\n\n```\n(inside_chroot) /mnt/host/source/src/platform/ec $ ./twister -civ -s drivers/drivers.smart_battery --coverage\n```\n\nThis will produce HTML coverage in the `twister_out/coverage` directory and you can see what lines are covered or uncovered.\n\n * This is an example of a different test that uses the I2C emulator to set a custom mocked read handler to test a similar retry mechanism. You can adapt this logic to your situation in one of several ways. Remember that ALL I2C reads will pass through the custom mocked read handler, so return 1 for registers reads that you are not testing.\n https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/test/drivers/default/src/bmi260.c#2256",
+      "revId": "5e525fd9fb1ec62cd8755c0a7ea4eaf434aa1210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
