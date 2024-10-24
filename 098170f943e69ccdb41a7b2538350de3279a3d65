@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "979fa457_d4e0b97e",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-24T18:10:02Z",
+      "side": 1,
+      "message": "Nit: The way the CLs are currently structured, this is not a no-op refactor. I\u0027m not sure if there\u0027s an easy way to restructure them, but ideally, we could separate bug fixes (or introductions) from this refactor. But I think it\u0027s very unlikely that a build of this particular CL will interact with an incoming SVMD version 3.0 or 2.2, so I\u0027m not overly fussed about the CL order.",
+      "parentUuid": "0fab105d_af08aa4c",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8bcac2b_d9b075bd",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 2
@@ -126,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d4dd5bd_3c9ea992",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-24T18:10:02Z",
+      "side": 1,
+      "message": "Yes. See DPAM v2.1, Table 5-5 DPAM Version Resolution. SVDM version 2.1 indicates DPAM version 2.1, which introduces new fields and VDM flows. It defines a mechanism for negotiating the active DPAM version, based on the active SVDM version.\n\nIMO, it would be accurate to say that the DPAM spec violates the PD spec by using the field this way. However, the way the PD spec uses it is almost useless and even more so in the context of DPAM. I can\u0027t really blame DPAM for doing what it does.",
+      "parentUuid": "e81de8c9_700a7d45",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2fd1d0_7a345e00",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 2
@@ -137,6 +173,24 @@
       "writtenOn": "2024-10-23T20:14:33Z",
       "side": 1,
       "message": "You remove the `| VDM_VERS_MINOR` in the next CL. I\u0027m pretty sure it would be a no-op to remove it here. With your new `VDO_SVDM_VERS`, the minor version will end up as 1 regardless of the value of `VDM_VERS_MINOR`.",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a89f80a_64ffb908",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-24T18:10:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2fd1d0_7a345e00",
       "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
