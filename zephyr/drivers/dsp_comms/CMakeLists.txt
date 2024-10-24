@@ -14,6 +14,7 @@ pw_proto_library(dsp_comms.proto
     pw_third_party.nanopb.proto
 )
 
+zephyr_include_directories("${PW_ROOT}/pigweed")
 zephyr_link_libraries(dsp_comms.proto.nanopb pw_transport.proto.nanopb)
 
 add_subdirectory(service)

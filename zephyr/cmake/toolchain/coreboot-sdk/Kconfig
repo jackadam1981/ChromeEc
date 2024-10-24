@@ -6,5 +6,5 @@ config TOOLCHAIN_COREBOOT_SDK_PICOLIBC_SUPPORTED
    def_bool y
    select PICOLIBC_SUPPORTED
 
-# set config ZEPHYR_PICOLIBC_MODULE to build from source
-#    def_bool y
+config ZEPHYR_PICOLIBC_MODULE
+   def_bool y

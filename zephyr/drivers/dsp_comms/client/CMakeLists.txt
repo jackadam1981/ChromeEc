@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+zephyr_include_directories("${PW_ROOT}/pigweed")
 include($ENV{PW_ROOT}/pw_build/pigweed.cmake)
 
 pw_add_library(dsp.client STATIC
