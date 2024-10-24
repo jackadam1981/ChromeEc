@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13099445_c55bcc3b",
+        "filename": "zephyr/test/nissa/src/teliks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-10-24T06:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef5a7abf_25869b22",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 41
+      },
+      "revId": "ba16dd2b4aded103cf5145da7400456d26f916c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55cad018_aceb8746",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-10-23T21:55:57Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 41
+      },
+      "revId": "ba16dd2b4aded103cf5145da7400456d26f916c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5975df_b86f2d60",
+        "filename": "zephyr/test/nissa/src/teliks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-10-24T06:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55cad018_aceb8746",
       "range": {
         "startLine": 314,
         "startChar": 0,
