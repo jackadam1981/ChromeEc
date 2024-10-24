@@ -1,0 +1,6 @@
+config TOOLCHAIN_COREBOOT_SDK_PICOLIBC_SUPPORTED
+   def_bool y
+   select PICOLIBC_SUPPORTED
+
+config ZEPHYR_PICOLIBC_MODULE
+    def_bool y

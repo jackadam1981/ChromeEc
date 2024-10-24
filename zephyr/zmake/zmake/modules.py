@@ -22,6 +22,7 @@ def third_party_module(name, checkout):
 
 
 known_modules = {
+    "picolibc": third_party_module,
     "hal_stm32": third_party_module,
     "cmsis": third_party_module,
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
@@ -31,7 +32,6 @@ known_modules = {
     "nanopb": third_party_module,
     "pigweed": lambda name, checkout: (checkout / "src" / "third_party" / name),
     "hal_intel_public": third_party_module,
-    "picolibc": third_party_module,
 }
 
 
