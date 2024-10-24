@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88573ca_0446b010",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-24T23:16:08Z",
+      "side": 1,
+      "message": "This should be other.status_",
+      "fixSuggestions": [
+        {
+          "fixId": "cd00fd40_c4bbaadd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+              "range": {
+                "startLine": 436,
+                "startChar": 0,
+                "endLine": 437,
+                "endChar": 0
+              },
+              "replacement": "      status_ \u003d other.status_;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6faf58d321aada551b022e10c004ca4d452b522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
