@@ -33,6 +33,29 @@
       "message": "Would this fix timeouts seen on the `timer_dos` test?  Failures on the `timer_dos` are currently blocking EC changes from merging.",
       "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9057213_74ca7e75",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-24T15:55:38Z",
+      "side": 1,
+      "message": "Could the performance regression cause the `timer_dos` test to take longer than 20 seconds?  Should this timeout also be increased?",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
