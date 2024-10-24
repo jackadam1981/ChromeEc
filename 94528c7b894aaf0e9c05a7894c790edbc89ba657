@@ -70,6 +70,24 @@
       "parentUuid": "6884ea25_d0961c46",
       "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b9813f_b7b8de60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-24T17:17:31Z",
+      "side": 1,
+      "message": "I think it should be fine to LCOV_EXCLUDE any code you add to `common/mock/`. But to be clear, you will need to actually add meaningful tests of your new code, probably to `zephyr/test`.",
+      "parentUuid": "b029de67_0e64bde6",
+      "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
