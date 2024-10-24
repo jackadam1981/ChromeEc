@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b92d03b_7b7d38ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-10-24T02:24:25Z",
+      "side": 1,
+      "message": "```\nchromeos-ec-0.0.2-r14541: ccache: error: execv of /bin/nds32le-elf-gcc failed: No such file or directory\nchromeos-ec-0.0.2-r14541: make: *** [Makefile.rules:535: build/adlrvpm_ite/firmware_image.lds] Error 1\nchromeos-ec-0.0.2-r14541: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.2-r14541:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r14541::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r14541:  *   emake failed\n```\n\nSuspect it\u0027s related to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5698365, we may need to cherrypick its cq-depend CLs as well.",
+      "revId": "b25e9f6feee8a9e607c2c4248dec49e63c51598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
