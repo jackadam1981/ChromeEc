@@ -607,10 +607,12 @@ int pdc_power_mgmt_get_lpm_ppm_info(int port, struct lpm_ppm_info_t *info);
  * state stays in sync.
  *
  * @param port USB-C port number
- *
+ * @param timeout_ms Timeout in milliseconds. A value of -1 uses configured
+ *                   timeout
+ * CONFIG_PDC_POWER_MGMT_STATE_MACHINE_SETTLED_TIMEOUT_MS
  * @retval 0 if successful or -ETIMEDOUT or error code
  */
-int pdc_power_mgmt_resync_port_state_for_ppm(int port);
+int pdc_power_mgmt_resync_port_state_for_ppm(int port, int timeout_ms);
 
 /**
  * @brief Register for notifications from PDM when connector interrupts occur.
