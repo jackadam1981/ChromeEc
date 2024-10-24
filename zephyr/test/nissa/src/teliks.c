@@ -276,7 +276,8 @@ ZTEST(teliks, test_alt_sensor)
 	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
 	k_sleep(K_MSEC(100));
 
-	zassert_equal(bmi3xx_interrupt_fake.call_count, 0);
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 0, "bmi3xx_intr=%d",
+		      bmi3xx_interrupt_fake.call_count);
 	zassert_equal(lsm6dsm_interrupt_fake.call_count, 1);
 	zassert_equal(icm42607_interrupt_fake.call_count, 0);
 	zassert_equal(bma4xx_interrupt_fake.call_count, 0);
