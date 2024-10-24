@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fab105d_af08aa4c",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-24T08:35:35Z",
+      "side": 1,
+      "message": "As Abe commented in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5875304/comment/f3782cfd_fceda2b8/ \n\nI\u0027m planning to implement the VDM version negotiation here.\nThis switch block will become something like `MIN(SVDM_VER_2_1, PD_VDO_SVDM_VERS(payload[0]))` in the next CL",
+      "parentUuid": "e8c153f1_47d63e9f",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8bcac2b_d9b075bd",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "writtenOn": "2024-10-23T18:16:46Z",
       "side": 1,
       "message": "Ideally, this refactor could remove this line.\n\nHowever, be aware that DPAM doesn\u0027t necessarily use the same SVDM version as discovery. The way this logic currently works is that `VDM_VERS_MINOR` is 0 or 1 based on `CONFIG_USB_PD_DP21_MODE`. It only makes sense in a DPAM context, and I still think the structure of this code is confusing.\n\nIt would be nice if we had a DPAM-specific version of `pd_get_vdo_ver` and `svdm_vers`. Or maybe `pd_get_vdo_ver` could take an SVID as a parameter. If it\u0027s not practical to clean this up in this CL, these lines should probably get a TODO and a later cleanup CL.",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81de8c9_700a7d45",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-24T08:35:35Z",
+      "side": 1,
+      "message": "From the wording in PD spec it looks like the SVDM version is identical across all SVIDs. (Discover ID always use `USB_SID_PD` and it\u0027s the only way to determine SVDM version)\n\nDoes DPAM has some sort of exception rule and not 100% following PD spec?\n\n\u003e The Structured VDM Version field of the Discover Identity Command sent and received during VDM discovery Shall\nbe used to determine the lowest common Structured VDM Version supported by the Port Partners or Cable Plug",
+      "parentUuid": "d8bcac2b_d9b075bd",
       "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
