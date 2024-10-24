@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ef9e83_ae9e7336",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 2233,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-24T18:09:47Z",
+      "side": 1,
+      "message": "Can you note that this will set the minimum of what\u0027s passed in and the highest version we support?",
+      "fixSuggestions": [
+        {
+          "fixId": "dd635a60_a3892c4f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/usb_pd.h",
+              "range": {
+                "startLine": 2242,
+                "startChar": 0,
+                "endLine": 2242,
+                "endChar": 0
+              },
+              "replacement": "/**\n * Set the SVDM version for this type and port\n *\n * @param port  USB-C port number\n * @param type  SOP* type to set\n * @param ver   Structured VDM Version to set\n *\n * Note: This will set the minimum of the version passed in and the highest version\n *       supported.\n */\nvoid pd_set_svdm_ver(int port, enum tcpci_msg_type type,\n\t\t     enum usb_pd_svdm_ver ver);\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dc5ed8a9c65deea0d558d0d36a28138aac1c05eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

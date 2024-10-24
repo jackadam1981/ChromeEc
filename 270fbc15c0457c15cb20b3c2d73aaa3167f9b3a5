@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a3a99c9_9d611746",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-24T18:09:47Z",
+      "side": 1,
+      "message": "This module already has logic for negotiating the DPAM version field, assuming that it\u0027s valid. I don\u0027t think that needs to change.\n\nBut it needs logic for negotiating a common SVDM version. I think that logic should be the same as for the PD SID, but it should use a separate data structure. So we probably want something like `dp_set_svdm_ver`.\n\nNit: It might be better to make the DPAM change a separate CL from the discovery change. They are effectively orthogonal.",
+      "parentUuid": "be59aeb8_1b091500",
+      "revId": "270fbc15c0457c15cb20b3c2d73aaa3167f9b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3782cfd_fceda2b8",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 31
