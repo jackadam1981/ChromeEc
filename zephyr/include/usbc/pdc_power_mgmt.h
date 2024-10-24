@@ -607,8 +607,19 @@ int pdc_power_mgmt_get_lpm_ppm_info(int port, struct lpm_ppm_info_t *info);
  * state stays in sync.
  *
  * @param port USB-C port number
+ * @param timeout_ms Timeout in milliseconds
  *
  * @retval 0 if successful or -ETIMEDOUT or error code
+ */
+int pdc_power_mgmt_resync_port_state_for_ppm_tmo(int port, int timeout_ms);
+
+/**
+ * @brief Same as pdc_power_mgmt_resync_port_state_for_ppm_tmo but uses
+ * 	  configured timeout
+ *        CONFIG_PDC_POWER_MGMT_STATE_MACHINE_SETTLED_TIMEOUT_MS
+ *
+ * @param port SB-C port number
+ * @return 0 if successful or -ETIMEDOUT or error code
  */
 int pdc_power_mgmt_resync_port_state_for_ppm(int port);
 
