@@ -4419,7 +4419,7 @@ test_mockable int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
 	return 0;
 }
 
-int pdc_power_mgmt_resync_port_state_for_ppm(int port)
+int pdc_power_mgmt_resync_port_state_for_ppm_tmo(int port, int timeout_ms)
 {
 	struct pdc_port_t *pdc;
 	int rv;
@@ -4438,7 +4438,7 @@ int pdc_power_mgmt_resync_port_state_for_ppm(int port)
 	k_event_post(&pdc->sm_event, PDC_SM_EVENT);
 
 	rv = k_event_wait(&pdc->sm_event, PDC_SM_SETTLED_EVENT, false,
-			  K_MSEC(PDC_SM_SETTLED_TIMEOUT_MS));
+			  K_MSEC(timeout_ms));
 
 	if (!rv) {
 		return -ETIMEDOUT;
@@ -4446,6 +4446,12 @@ int pdc_power_mgmt_resync_port_state_for_ppm(int port)
 
 	k_event_clear(&pdc->sm_event, rv);
 	return 0;
+}
+
+int pdc_power_mgmt_resync_port_state_for_ppm(int port)
+{
+	return pdc_power_mgmt_resync_port_state_for_ppm_tmo(
+		port, PDC_SM_SETTLED_TIMEOUT_MS);
 }
 
 int pdc_power_mgmt_ppm_ack_status_change(int port,
