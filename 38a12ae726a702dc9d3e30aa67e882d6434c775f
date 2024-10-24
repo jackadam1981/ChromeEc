@@ -51,6 +51,24 @@
       "parentUuid": "95a089cb_b1dde3cf",
       "revId": "38a12ae726a702dc9d3e30aa67e882d6434c775f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7c5953_f620e9f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-24T04:32:05Z",
+      "side": 1,
+      "message": "What is happening is the lid_ and base_ interrupt both set the same bit inside TASK_EVENT_MOTION_INTERRUPT_MASK. So when the bit is set, both sensors (lid and base) irq_handler is called. It means that the irq_handler() function is called 2x more than expected, since it is unlikely the sensors are perfectly in sync. \nSo it works in the sense the test pass, but this is not the intent of the code.\n\nIt would be interesting to see why the GPIO based approach (forced mode) is not working.",
+      "parentUuid": "eb3b5a6b_8e43a13e",
+      "revId": "38a12ae726a702dc9d3e30aa67e882d6434c775f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
