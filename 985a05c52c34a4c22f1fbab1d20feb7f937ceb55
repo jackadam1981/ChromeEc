@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee16c44_eac3491b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-24T15:48:28Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is needed.  The resync function does the following:\n* clear SETTLED_EVENT\n* Set CCI_EVENT in the cci_flags\n* wait for SETTLED_EVENT\n\nThe run state of all parent states (unattached, type-c only, sink, source) all check CCI_EVENT and queue up a GET_CONNECTOR_STATUS.  Once that command completes, the run_*_policies() function calls send_pending_public_commands() which posts SETTLED_EVENT.\n\nAre you certain the PDC thread was idle when the you saw settled event timeout?\n\nMy concern is that unconditionally posting SETTLED_EVENT on a timer may cause callers to resync to exit early.",
+      "range": {
+        "startLine": 912,
+        "startChar": 4,
+        "endLine": 912,
+        "endChar": 10
+      },
+      "revId": "985a05c52c34a4c22f1fbab1d20feb7f937ceb55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
