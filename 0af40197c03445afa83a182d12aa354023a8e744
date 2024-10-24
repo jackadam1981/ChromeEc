@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fabcb00_ed33d05b",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-24T21:21:09Z",
+      "side": 1,
+      "message": "Should also `Transaction\u0026 operator\u003d(const Transaction\u0026) \u003d delete`",
+      "revId": "0af40197c03445afa83a182d12aa354023a8e744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bcd3307_e5c4a0aa",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1589902
+      },
+      "writtenOn": "2024-10-24T21:21:09Z",
+      "side": 1,
+      "message": "Can often simplify the constructor by invoking the move assignment (`*this \u003d std::move(other)`)",
+      "revId": "0af40197c03445afa83a182d12aa354023a8e744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9827b06_90c0f982",
         "filename": "zephyr/drivers/pw_fsm/test_state_machine.cc",
         "patchSetId": 15
