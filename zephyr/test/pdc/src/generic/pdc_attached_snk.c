@@ -67,7 +67,7 @@ ZTEST_USER_F(pdc_attached_snk, test_new_pd_sink_contract)
 	emul_pdc_connect_partner(fixture->emul_pdc, &in);
 
 	/* Ensure we are connected */
-	pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT);
+	pdc_power_mgmt_wait_for_sync(TEST_PORT, -1);
 
 	/* Simulate the port partner changing its PDOs. The sink path is
 	 * disabled during this step */
@@ -78,7 +78,7 @@ ZTEST_USER_F(pdc_attached_snk, test_new_pd_sink_contract)
 	emul_pdc_connect_partner(fixture->emul_pdc, &in);
 
 	/* Pause to allow pdc_power_mgmt to process interrupt and re-settle */
-	pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT);
+	pdc_power_mgmt_wait_for_sync(TEST_PORT, -1);
 
 	/* Check that the sink path is on again */
 	zassert_ok(emul_pdc_get_sink_path(fixture->emul_pdc, &sink_path_en));
@@ -134,7 +134,7 @@ int connect_default_charger_then_0w(struct pdc_attached_snk_fixture *fixture,
 		 */
 		*done = true;
 		emul_pdc_disconnect(fixture->emul_pdc);
-		pdc_power_mgmt_resync_port_state_for_ppm(fixture->port);
+		pdc_power_mgmt_wait_for_sync(fixture->port, -1);
 		return 0;
 	} else {
 		*done = false;
@@ -183,7 +183,7 @@ int connect_default_charger_then_0w(struct pdc_attached_snk_fixture *fixture,
 	zassert_false(sink_path_en);
 
 	emul_pdc_disconnect(fixture->emul_pdc);
-	pdc_power_mgmt_resync_port_state_for_ppm(fixture->port);
+	pdc_power_mgmt_wait_for_sync(fixture->port, -1);
 
 	return 0;
 }
