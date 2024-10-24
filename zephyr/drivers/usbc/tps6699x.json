@@ -2,7 +2,8 @@
   "host interface registers": {
     "global registers": [
       {
-        "port number": 1,
+        "connectedDevice": "Device 1",
+        "device": "TPS66994_Host",
         "registers": [
           {
             "address": "0x27",
@@ -218,6 +219,13 @@
                 "value description": "False"
               },
               {
+                "end position": 87,
+                "name": "Enable Desktop SPM",
+                "start position": 87,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
                 "end position": 104,
                 "name": "Source Policy Mode",
                 "start position": 103,
@@ -244,10 +252,129 @@
                 "start position": 108,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
+              },
+              {
+                "end position": 112,
+                "name": "ConfigID1 P1GPIO1 Enabled",
+                "start position": 112,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 113,
+                "name": "ConfigID1 P1GPIO2 Enabled",
+                "start position": 113,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 114,
+                "name": "ConfigID1 P1GPIO5 Enabled",
+                "start position": 114,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 115,
+                "name": "ConfigID1 P1GPIO6 Enabled",
+                "start position": 115,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               }
             ],
-            "length in bytes": "14",
+            "length in bytes": "15",
             "name": "Global System Configuration"
+          },
+          {
+            "address": "0x2b",
+            "bitFields": [
+              {
+                "end position": 5,
+                "name": "Override Ufp Attention Spacing",
+                "start position": 5,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 7,
+                "name": "PE Port Priority",
+                "start position": 7,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 9,
+                "name": "DBST Enable",
+                "start position": 9,
+                "value (EDITABLE)": "0x1",
+                "value description": "True"
+              },
+              {
+                "end position": 10,
+                "name": "USB4EntryAfterCableDiscovery",
+                "start position": 10,
+                "value (EDITABLE)": "0x1",
+                "value description": "True"
+              },
+              {
+                "end position": 11,
+                "name": "Override Ufp Hardreset Sop On CableErr",
+                "start position": 11,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 12,
+                "name": "Override Ufp Wait On EnterUsb Timeout",
+                "start position": 12,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 13,
+                "name": "OverrideLrdDetect",
+                "start position": 13,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 15,
+                "name": "Number of Reattempts on No Response",
+                "start position": 14,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 23,
+                "name": "UART GPIO",
+                "start position": 16,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 31,
+                "name": "UART Divider",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 32,
+                "name": "Override DP Status Handling",
+                "start position": 32,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 33,
+                "name": "Disable Connected Sleep",
+                "start position": 33,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              }
+            ],
+            "length in bytes": "8",
+            "name": "Misc Control"
           },
           {
             "address": "0x42",
@@ -668,41 +795,6 @@
             ],
             "length in bytes": "22",
             "name": "TX Manufactrer Info SOP"
-          },
-          {
-            "address": "0x75",
-            "bitFields": [
-              {
-                "end position": 3,
-                "name": "Extended Alert Event Type",
-                "start position": 0,
-                "value (EDITABLE)": "0x0",
-                "value description": "0x0"
-              },
-              {
-                "end position": 19,
-                "name": "Hot Swappable Batteries",
-                "start position": 16,
-                "value (EDITABLE)": "0x0",
-                "value description": "0x0"
-              },
-              {
-                "end position": 23,
-                "name": "Fixed Batteries",
-                "start position": 20,
-                "value (EDITABLE)": "0x0",
-                "value description": "0x0"
-              },
-              {
-                "end position": 31,
-                "name": "Type of Alert",
-                "start position": 24,
-                "value (EDITABLE)": "0x0",
-                "value description": "0x0"
-              }
-            ],
-            "length in bytes": "4",
-            "name": "TX Alert Data Object"
           },
           {
             "address": "0x7b",
@@ -3124,7 +3216,9 @@
     ],
     "port specific registers": [
       {
-        "port number": 1,
+        "connectedDevice": "Device 1",
+        "device": "TPS66994_Host",
+        "port": 1,
         "registers": [
           {
             "address": "0x6",
@@ -3184,6 +3278,13 @@
                 "start position": 6,
                 "value (EDITABLE)": "0x1",
                 "value description": "True"
+              },
+              {
+                "end position": 7,
+                "name": "Source Cap Updated",
+                "start position": 7,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               },
               {
                 "end position": 8,
@@ -3266,13 +3367,6 @@
                 "end position": 23,
                 "name": "Power Path Switch Changed",
                 "start position": 23,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 24,
-                "name": "Power Status Updated",
-                "start position": 24,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -3669,6 +3763,13 @@
                 "value description": "False"
               },
               {
+                "end position": 7,
+                "name": "Source Cap Updated",
+                "start position": 7,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
                 "end position": 8,
                 "name": "Sink Ready",
                 "start position": 8,
@@ -3749,13 +3850,6 @@
                 "end position": 23,
                 "name": "Power Path Switch Changed",
                 "start position": 23,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 24,
-                "name": "Power Status Updated",
-                "start position": 24,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -4317,7 +4411,7 @@
                 "name": "OVP for PP5V",
                 "start position": 20,
                 "value (EDITABLE)": "0x2",
-                "value description": "Use setting 2: 5.8 V (typical)"
+                "value description": "Use setting 2: 6.45 V (typical)"
               },
               {
                 "end position": 22,
@@ -4440,22 +4534,29 @@
               },
               {
                 "end position": 138,
-                "name": "FlipCrossbarDBGSetting",
+                "name": "DisableSourcingInDBM",
                 "start position": 138,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
                 "end position": 139,
-                "name": "FlipCrossbarAUXSetting",
+                "name": "FlipCrossbarDBGSetting",
                 "start position": 139,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
                 "end position": 140,
-                "name": "FlipCrossbarSBTXSetting",
+                "name": "FlipCrossbarAUXSetting",
                 "start position": 140,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 141,
+                "name": "FlipCrossbarSBTXSetting",
+                "start position": 141,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               }
@@ -4584,13 +4685,6 @@
                 "start position": 19,
                 "value (EDITABLE)": "0x0",
                 "value description": "There is no external power besides VBUS (if present) for the system"
-              },
-              {
-                "end position": 20,
-                "name": "Enable Current Monitor",
-                "start position": 20,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
               },
               {
                 "end position": 21,
@@ -4789,6 +4883,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 65,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 56,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 71,
                 "name": "Minimum Voltage",
                 "start position": 64,
@@ -4815,6 +4916,13 @@
                 "start position": 66,
                 "value (EDITABLE)": "0xb4",
                 "value description": "9 V"
+              },
+              {
+                "end position": 75,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 66,
+                "value (EDITABLE)": "0xb4",
+                "value description": "1.8 A"
               },
               {
                 "end position": 80,
@@ -4846,6 +4954,13 @@
               },
               {
                 "end position": 83,
+                "name": "Peak Current",
+                "start position": 82,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 83,
                 "name": "PPS Power Limited",
                 "start position": 83,
                 "value (EDITABLE)": "0x0",
@@ -4853,10 +4968,10 @@
               },
               {
                 "end position": 85,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 84,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 87,
@@ -4894,6 +5009,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 97,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 88,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 103,
                 "name": "Minimum Voltage",
                 "start position": 96,
@@ -4920,6 +5042,13 @@
                 "start position": 98,
                 "value (EDITABLE)": "0x12c",
                 "value description": "15 V"
+              },
+              {
+                "end position": 107,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 98,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
               },
               {
                 "end position": 112,
@@ -4951,6 +5080,13 @@
               },
               {
                 "end position": 115,
+                "name": "Peak Current",
+                "start position": 114,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 115,
                 "name": "PPS Power Limited",
                 "start position": 115,
                 "value (EDITABLE)": "0x0",
@@ -4958,10 +5094,10 @@
               },
               {
                 "end position": 117,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 116,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 119,
@@ -4999,6 +5135,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 129,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 120,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 135,
                 "name": "Minimum Voltage",
                 "start position": 128,
@@ -5025,6 +5168,13 @@
                 "start position": 130,
                 "value (EDITABLE)": "0x190",
                 "value description": "20 V"
+              },
+              {
+                "end position": 139,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 130,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
               },
               {
                 "end position": 144,
@@ -5056,6 +5206,13 @@
               },
               {
                 "end position": 147,
+                "name": "Peak Current",
+                "start position": 146,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 147,
                 "name": "PPS Power Limited",
                 "start position": 147,
                 "value (EDITABLE)": "0x0",
@@ -5063,10 +5220,10 @@
               },
               {
                 "end position": 149,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 148,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 151,
@@ -5104,6 +5261,13 @@
                 "value description": "5.800000000000001 A"
               },
               {
+                "end position": 161,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 152,
+                "value (EDITABLE)": "0x1f4",
+                "value description": "5 A"
+              },
+              {
                 "end position": 167,
                 "name": "Minimum Voltage",
                 "start position": 160,
@@ -5130,6 +5294,13 @@
                 "start position": 162,
                 "value (EDITABLE)": "0x190",
                 "value description": "20 V"
+              },
+              {
+                "end position": 171,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 162,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
               },
               {
                 "end position": 176,
@@ -5161,6 +5332,13 @@
               },
               {
                 "end position": 179,
+                "name": "Peak Current",
+                "start position": 178,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 179,
                 "name": "PPS Power Limited",
                 "start position": 179,
                 "value (EDITABLE)": "0x0",
@@ -5168,10 +5346,10 @@
               },
               {
                 "end position": 181,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 180,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 183,
@@ -5209,6 +5387,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 193,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 184,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 199,
                 "name": "Minimum Voltage",
                 "start position": 192,
@@ -5235,6 +5420,13 @@
                 "start position": 194,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 203,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 194,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
               },
               {
                 "end position": 208,
@@ -5266,6 +5458,13 @@
               },
               {
                 "end position": 211,
+                "name": "Peak Current",
+                "start position": 210,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 211,
                 "name": "PPS Power Limited",
                 "start position": 211,
                 "value (EDITABLE)": "0x0",
@@ -5273,10 +5472,10 @@
               },
               {
                 "end position": 213,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 212,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 215,
@@ -5314,6 +5513,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 225,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 216,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 231,
                 "name": "Minimum Voltage",
                 "start position": 224,
@@ -5340,6 +5546,13 @@
                 "start position": 226,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 235,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 226,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
               },
               {
                 "end position": 240,
@@ -5371,6 +5584,13 @@
               },
               {
                 "end position": 243,
+                "name": "Peak Current",
+                "start position": 242,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 243,
                 "name": "PPS Power Limited",
                 "start position": 243,
                 "value (EDITABLE)": "0x0",
@@ -5378,10 +5598,10 @@
               },
               {
                 "end position": 245,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 244,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 247,
@@ -5482,6 +5702,13 @@
                 "value description": "3.45 A"
               },
               {
+                "end position": 49,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 40,
+                "value (EDITABLE)": "0x145",
+                "value description": "3.25 A"
+              },
+              {
                 "end position": 55,
                 "name": "Minimum Voltage",
                 "start position": 48,
@@ -5510,6 +5737,13 @@
                 "value description": "20 V"
               },
               {
+                "end position": 59,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 50,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
+              },
+              {
                 "end position": 64,
                 "name": "Maximum Voltage",
                 "start position": 57,
@@ -5536,6 +5770,20 @@
                 "start position": 60,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 67,
+                "name": "Peak Current",
+                "start position": 66,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 69,
+                "name": "APDO Type",
+                "start position": 68,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 71,
@@ -5573,6 +5821,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 81,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 72,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 87,
                 "name": "Minimum Voltage",
                 "start position": 80,
@@ -5601,6 +5856,13 @@
                 "value description": "12 V"
               },
               {
+                "end position": 91,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 82,
+                "value (EDITABLE)": "0xf0",
+                "value description": "2.4 A"
+              },
+              {
                 "end position": 96,
                 "name": "Maximum Voltage",
                 "start position": 89,
@@ -5627,6 +5889,20 @@
                 "start position": 92,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 99,
+                "name": "Peak Current",
+                "start position": 98,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 101,
+                "name": "APDO Type",
+                "start position": 100,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 103,
@@ -5664,6 +5940,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 113,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 104,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 119,
                 "name": "Minimum Voltage",
                 "start position": 112,
@@ -5692,6 +5975,13 @@
                 "value description": "15 V"
               },
               {
+                "end position": 123,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 114,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 128,
                 "name": "Maximum Voltage",
                 "start position": 121,
@@ -5718,6 +6008,20 @@
                 "start position": 124,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 131,
+                "name": "Peak Current",
+                "start position": 130,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 133,
+                "name": "APDO Type",
+                "start position": 132,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 135,
@@ -5755,6 +6059,13 @@
                 "value description": "3.45 A"
               },
               {
+                "end position": 145,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 136,
+                "value (EDITABLE)": "0x145",
+                "value description": "3.25 A"
+              },
+              {
                 "end position": 151,
                 "name": "Minimum Voltage",
                 "start position": 144,
@@ -5783,6 +6094,13 @@
                 "value description": "20 V"
               },
               {
+                "end position": 155,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 146,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
+              },
+              {
                 "end position": 160,
                 "name": "Maximum Voltage",
                 "start position": 153,
@@ -5809,6 +6127,20 @@
                 "start position": 156,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 163,
+                "name": "Peak Current",
+                "start position": 162,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 165,
+                "name": "APDO Type",
+                "start position": 164,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 167,
@@ -5846,6 +6178,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 177,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 168,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 183,
                 "name": "Minimum Voltage",
                 "start position": 176,
@@ -5874,6 +6213,13 @@
                 "value description": "0 V"
               },
               {
+                "end position": 187,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 178,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 192,
                 "name": "Maximum Voltage",
                 "start position": 185,
@@ -5900,6 +6246,20 @@
                 "start position": 188,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 195,
+                "name": "Peak Current",
+                "start position": 194,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 197,
+                "name": "APDO Type",
+                "start position": 196,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 199,
@@ -5937,6 +6297,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 209,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 200,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 215,
                 "name": "Minimum Voltage",
                 "start position": 208,
@@ -5965,6 +6332,13 @@
                 "value description": "0 V"
               },
               {
+                "end position": 219,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 210,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 224,
                 "name": "Maximum Voltage",
                 "start position": 217,
@@ -5991,6 +6365,20 @@
                 "start position": 220,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 227,
+                "name": "Peak Current",
+                "start position": 226,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 229,
+                "name": "APDO Type",
+                "start position": 228,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 231,
@@ -6469,6 +6857,13 @@
                 "value description": "True"
               },
               {
+                "end position": 10,
+                "name": "Auto Enable Input After SnkReady In DBM",
+                "start position": 10,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
                 "end position": 21,
                 "name": "Auto Neg Max Current",
                 "start position": 12,
@@ -6537,6 +6932,27 @@
                 "start position": 69,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
+              },
+              {
+                "end position": 83,
+                "name": "EnableSinkPathAbovePPSSinkVoltageThreshold",
+                "start position": 83,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 84,
+                "name": "DisableSinkIfNotInPPSContract",
+                "start position": 84,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 95,
+                "name": "PPSSinkVoltageThreshold",
+                "start position": 85,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
               },
               {
                 "end position": 102,
@@ -6794,8 +7210,8 @@
                 "end position": 105,
                 "name": "Product Type VDO 0 SOP",
                 "start position": 104,
-                "value (EDITABLE)": "0x0",
-                "value description": "UFP VDO1"
+                "value (EDITABLE)": "0x3",
+                "value description": "UNDEFINED"
               },
               {
                 "end position": 106,
@@ -6829,8 +7245,8 @@
                 "end position": 105,
                 "name": "Product Type VDO 0 SOP",
                 "start position": 104,
-                "value (EDITABLE)": "0x0",
-                "value description": "UFP VDO1"
+                "value (EDITABLE)": "0x3",
+                "value description": "UNDEFINED"
               },
               {
                 "end position": 106,
@@ -7046,8 +7462,8 @@
                 "end position": 169,
                 "name": "Product Type VDO 2 SOP",
                 "start position": 168,
-                "value (EDITABLE)": "0x2",
-                "value description": "DFP VDO"
+                "value (EDITABLE)": "0x0",
+                "value description": "UFP VDO1"
               },
               {
                 "end position": 170,
@@ -7081,8 +7497,8 @@
                 "end position": 169,
                 "name": "Product Type VDO 2 SOP",
                 "start position": 168,
-                "value (EDITABLE)": "0x2",
-                "value description": "DFP VDO"
+                "value (EDITABLE)": "0x0",
+                "value description": "UFP VDO1"
               },
               {
                 "end position": 170,
@@ -7575,11 +7991,53 @@
                 "value description": "True"
               },
               {
-                "end position": 79,
-                "name": "DPModeDataTXSOPP",
+                "end position": 49,
+                "name": "Port Capability",
                 "start position": 48,
                 "value (EDITABLE)": "0x0",
+                "value description": "Reserved"
+              },
+              {
+                "end position": 53,
+                "name": "TransportSignalling",
+                "start position": 50,
+                "value (EDITABLE)": "0x0",
                 "value description": "0x0"
+              },
+              {
+                "end position": 54,
+                "name": "Receptacle Indication",
+                "start position": 54,
+                "value (EDITABLE)": "0x0",
+                "value description": "Dp interface presented on USB-C plug"
+              },
+              {
+                "end position": 55,
+                "name": "Usb2SignallingNotUsed",
+                "start position": 55,
+                "value (EDITABLE)": "0x0",
+                "value description": "USB2 may be needed on A6-A7"
+              },
+              {
+                "end position": 63,
+                "name": "DP Source DevicePinAssignments Supported",
+                "start position": 56,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 71,
+                "name": "DP Sink DevicePinAssignments Supported",
+                "start position": 64,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 79,
+                "name": "DPAM Version",
+                "start position": 78,
+                "value (EDITABLE)": "0x0",
+                "value description": "Version2  or earlier"
               }
             ],
             "length in bytes": "10",
@@ -7690,6 +8148,13 @@
                 "end position": 49,
                 "name": "Thunderbolt Auto Entry Allowed",
                 "start position": 49,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 55,
+                "name": "LegacyOverrideDataStatus",
+                "start position": 55,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -8095,6 +8560,41 @@
             ],
             "length in bytes": "60",
             "name": "App Config Register"
+          },
+          {
+            "address": "0x75",
+            "bitFields": [
+              {
+                "end position": 3,
+                "name": "Extended Alert Event Type",
+                "start position": 0,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 19,
+                "name": "Hot Swappable Batteries",
+                "start position": 16,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 23,
+                "name": "Fixed Batteries",
+                "start position": 20,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 31,
+                "name": "Type of Alert",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              }
+            ],
+            "length in bytes": "4",
+            "name": "TX Alert Data Object"
           },
           {
             "address": "0x77",
@@ -8511,15 +9011,24 @@
                 "start position": 32,
                 "value (EDITABLE)": "0x80",
                 "value description": "100  %"
+              },
+              {
+                "end position": 47,
+                "name": "No Fet Used In Epr Circuit",
+                "start position": 40,
+                "value (EDITABLE)": "0x36",
+                "value description": "0x36"
               }
             ],
-            "length in bytes": "5",
+            "length in bytes": "6",
             "name": "EPR Config"
           }
         ]
       },
       {
-        "port number": 2,
+        "connectedDevice": "Device 1",
+        "device": "TPS66994_Host",
+        "port": 2,
         "registers": [
           {
             "address": "0x6",
@@ -8579,6 +9088,13 @@
                 "start position": 6,
                 "value (EDITABLE)": "0x1",
                 "value description": "True"
+              },
+              {
+                "end position": 7,
+                "name": "Source Cap Updated",
+                "start position": 7,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
               },
               {
                 "end position": 8,
@@ -8661,13 +9177,6 @@
                 "end position": 23,
                 "name": "Power Path Switch Changed",
                 "start position": 23,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 24,
-                "name": "Power Status Updated",
-                "start position": 24,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -9064,6 +9573,13 @@
                 "value description": "False"
               },
               {
+                "end position": 7,
+                "name": "Source Cap Updated",
+                "start position": 7,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
                 "end position": 8,
                 "name": "Sink Ready",
                 "start position": 8,
@@ -9144,13 +9660,6 @@
                 "end position": 23,
                 "name": "Power Path Switch Changed",
                 "start position": 23,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
-              },
-              {
-                "end position": 24,
-                "name": "Power Status Updated",
-                "start position": 24,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -9712,7 +10221,7 @@
                 "name": "OVP for PP5V",
                 "start position": 20,
                 "value (EDITABLE)": "0x2",
-                "value description": "Use setting 2: 5.8 V (typical)"
+                "value description": "Use setting 2: 6.45 V (typical)"
               },
               {
                 "end position": 22,
@@ -9835,22 +10344,29 @@
               },
               {
                 "end position": 138,
-                "name": "FlipCrossbarDBGSetting",
+                "name": "DisableSourcingInDBM",
                 "start position": 138,
                 "value (EDITABLE)": "0x1",
                 "value description": "True"
               },
               {
                 "end position": 139,
-                "name": "FlipCrossbarAUXSetting",
+                "name": "FlipCrossbarDBGSetting",
                 "start position": 139,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
               {
                 "end position": 140,
-                "name": "FlipCrossbarSBTXSetting",
+                "name": "FlipCrossbarAUXSetting",
                 "start position": 140,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 141,
+                "name": "FlipCrossbarSBTXSetting",
+                "start position": 141,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               }
@@ -9979,13 +10495,6 @@
                 "start position": 19,
                 "value (EDITABLE)": "0x0",
                 "value description": "There is no external power besides VBUS (if present) for the system"
-              },
-              {
-                "end position": 20,
-                "name": "Enable Current Monitor",
-                "start position": 20,
-                "value (EDITABLE)": "0x0",
-                "value description": "False"
               },
               {
                 "end position": 21,
@@ -10184,6 +10693,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 65,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 56,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 71,
                 "name": "Minimum Voltage",
                 "start position": 64,
@@ -10210,6 +10726,13 @@
                 "start position": 66,
                 "value (EDITABLE)": "0xb4",
                 "value description": "9 V"
+              },
+              {
+                "end position": 75,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 66,
+                "value (EDITABLE)": "0xb4",
+                "value description": "1.8 A"
               },
               {
                 "end position": 80,
@@ -10241,6 +10764,13 @@
               },
               {
                 "end position": 83,
+                "name": "Peak Current",
+                "start position": 82,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 83,
                 "name": "PPS Power Limited",
                 "start position": 83,
                 "value (EDITABLE)": "0x0",
@@ -10248,10 +10778,10 @@
               },
               {
                 "end position": 85,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 84,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 87,
@@ -10289,6 +10819,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 97,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 88,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 103,
                 "name": "Minimum Voltage",
                 "start position": 96,
@@ -10315,6 +10852,13 @@
                 "start position": 98,
                 "value (EDITABLE)": "0x12c",
                 "value description": "15 V"
+              },
+              {
+                "end position": 107,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 98,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
               },
               {
                 "end position": 112,
@@ -10346,6 +10890,13 @@
               },
               {
                 "end position": 115,
+                "name": "Peak Current",
+                "start position": 114,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 115,
                 "name": "PPS Power Limited",
                 "start position": 115,
                 "value (EDITABLE)": "0x0",
@@ -10353,10 +10904,10 @@
               },
               {
                 "end position": 117,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 116,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 119,
@@ -10394,6 +10945,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 129,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 120,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 135,
                 "name": "Minimum Voltage",
                 "start position": 128,
@@ -10420,6 +10978,13 @@
                 "start position": 130,
                 "value (EDITABLE)": "0x190",
                 "value description": "20 V"
+              },
+              {
+                "end position": 139,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 130,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
               },
               {
                 "end position": 144,
@@ -10451,6 +11016,13 @@
               },
               {
                 "end position": 147,
+                "name": "Peak Current",
+                "start position": 146,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 147,
                 "name": "PPS Power Limited",
                 "start position": 147,
                 "value (EDITABLE)": "0x0",
@@ -10458,10 +11030,10 @@
               },
               {
                 "end position": 149,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 148,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 151,
@@ -10499,6 +11071,13 @@
                 "value description": "5.800000000000001 A"
               },
               {
+                "end position": 161,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 152,
+                "value (EDITABLE)": "0x1f4",
+                "value description": "5 A"
+              },
+              {
                 "end position": 167,
                 "name": "Minimum Voltage",
                 "start position": 160,
@@ -10525,6 +11104,13 @@
                 "start position": 162,
                 "value (EDITABLE)": "0x190",
                 "value description": "20 V"
+              },
+              {
+                "end position": 171,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 162,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
               },
               {
                 "end position": 176,
@@ -10556,6 +11142,13 @@
               },
               {
                 "end position": 179,
+                "name": "Peak Current",
+                "start position": 178,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 179,
                 "name": "PPS Power Limited",
                 "start position": 179,
                 "value (EDITABLE)": "0x0",
@@ -10563,10 +11156,10 @@
               },
               {
                 "end position": 181,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 180,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 183,
@@ -10604,6 +11197,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 193,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 184,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 199,
                 "name": "Minimum Voltage",
                 "start position": 192,
@@ -10630,6 +11230,13 @@
                 "start position": 194,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 203,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 194,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
               },
               {
                 "end position": 208,
@@ -10661,6 +11268,13 @@
               },
               {
                 "end position": 211,
+                "name": "Peak Current",
+                "start position": 210,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 211,
                 "name": "PPS Power Limited",
                 "start position": 211,
                 "value (EDITABLE)": "0x0",
@@ -10668,10 +11282,10 @@
               },
               {
                 "end position": 213,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 212,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 215,
@@ -10709,6 +11323,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 225,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 216,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 231,
                 "name": "Minimum Voltage",
                 "start position": 224,
@@ -10735,6 +11356,13 @@
                 "start position": 226,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 235,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 226,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
               },
               {
                 "end position": 240,
@@ -10766,6 +11394,13 @@
               },
               {
                 "end position": 243,
+                "name": "Peak Current",
+                "start position": 242,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 243,
                 "name": "PPS Power Limited",
                 "start position": 243,
                 "value (EDITABLE)": "0x0",
@@ -10773,10 +11408,10 @@
               },
               {
                 "end position": 245,
-                "name": "SPR Programmable Power Supply",
+                "name": "APDO Type",
                 "start position": 244,
                 "value (EDITABLE)": "0x0",
-                "value description": "SPR Programmable Power Supply"
+                "value description": "SPR PPS"
               },
               {
                 "end position": 247,
@@ -10877,6 +11512,13 @@
                 "value description": "3.45 A"
               },
               {
+                "end position": 49,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 40,
+                "value (EDITABLE)": "0x145",
+                "value description": "3.25 A"
+              },
+              {
                 "end position": 55,
                 "name": "Minimum Voltage",
                 "start position": 48,
@@ -10905,6 +11547,13 @@
                 "value description": "20 V"
               },
               {
+                "end position": 59,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 50,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
+              },
+              {
                 "end position": 64,
                 "name": "Maximum Voltage",
                 "start position": 57,
@@ -10931,6 +11580,20 @@
                 "start position": 60,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 67,
+                "name": "Peak Current",
+                "start position": 66,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 69,
+                "name": "APDO Type",
+                "start position": 68,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 71,
@@ -10968,6 +11631,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 81,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 72,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 87,
                 "name": "Minimum Voltage",
                 "start position": 80,
@@ -10996,6 +11666,13 @@
                 "value description": "12 V"
               },
               {
+                "end position": 91,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 82,
+                "value (EDITABLE)": "0xf0",
+                "value description": "2.4 A"
+              },
+              {
                 "end position": 96,
                 "name": "Maximum Voltage",
                 "start position": 89,
@@ -11022,6 +11699,20 @@
                 "start position": 92,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 99,
+                "name": "Peak Current",
+                "start position": 98,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 101,
+                "name": "APDO Type",
+                "start position": 100,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 103,
@@ -11059,6 +11750,13 @@
                 "value description": "2.2 A"
               },
               {
+                "end position": 113,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 104,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 119,
                 "name": "Minimum Voltage",
                 "start position": 112,
@@ -11087,6 +11785,13 @@
                 "value description": "15 V"
               },
               {
+                "end position": 123,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 114,
+                "value (EDITABLE)": "0x12c",
+                "value description": "3 A"
+              },
+              {
                 "end position": 128,
                 "name": "Maximum Voltage",
                 "start position": 121,
@@ -11113,6 +11818,20 @@
                 "start position": 124,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 131,
+                "name": "Peak Current",
+                "start position": 130,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 133,
+                "name": "APDO Type",
+                "start position": 132,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 135,
@@ -11150,6 +11869,13 @@
                 "value description": "3.45 A"
               },
               {
+                "end position": 145,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 136,
+                "value (EDITABLE)": "0x145",
+                "value description": "3.25 A"
+              },
+              {
                 "end position": 151,
                 "name": "Minimum Voltage",
                 "start position": 144,
@@ -11178,6 +11904,13 @@
                 "value description": "20 V"
               },
               {
+                "end position": 155,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 146,
+                "value (EDITABLE)": "0x190",
+                "value description": "4 A"
+              },
+              {
                 "end position": 160,
                 "name": "Maximum Voltage",
                 "start position": 153,
@@ -11204,6 +11937,20 @@
                 "start position": 156,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 163,
+                "name": "Peak Current",
+                "start position": 162,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 165,
+                "name": "APDO Type",
+                "start position": 164,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 167,
@@ -11241,6 +11988,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 177,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 168,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 183,
                 "name": "Minimum Voltage",
                 "start position": 176,
@@ -11269,6 +12023,13 @@
                 "value description": "0 V"
               },
               {
+                "end position": 187,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 178,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 192,
                 "name": "Maximum Voltage",
                 "start position": 185,
@@ -11295,6 +12056,20 @@
                 "start position": 188,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 195,
+                "name": "Peak Current",
+                "start position": 194,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 197,
+                "name": "APDO Type",
+                "start position": 196,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 199,
@@ -11332,6 +12107,13 @@
                 "value description": "0 A"
               },
               {
+                "end position": 209,
+                "name": "Maximum Current for 15V-20V",
+                "start position": 200,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 215,
                 "name": "Minimum Voltage",
                 "start position": 208,
@@ -11360,6 +12142,13 @@
                 "value description": "0 V"
               },
               {
+                "end position": 219,
+                "name": "Maximum Current for 9V-15V",
+                "start position": 210,
+                "value (EDITABLE)": "0x0",
+                "value description": "0 A"
+              },
+              {
                 "end position": 224,
                 "name": "Maximum Voltage",
                 "start position": 217,
@@ -11386,6 +12175,20 @@
                 "start position": 220,
                 "value (EDITABLE)": "0x0",
                 "value description": "0 V"
+              },
+              {
+                "end position": 227,
+                "name": "Peak Current",
+                "start position": 226,
+                "value (EDITABLE)": "0x0",
+                "value description": "100%"
+              },
+              {
+                "end position": 229,
+                "name": "APDO Type",
+                "start position": 228,
+                "value (EDITABLE)": "0x0",
+                "value description": "SPR PPS"
               },
               {
                 "end position": 231,
@@ -11864,6 +12667,13 @@
                 "value description": "False"
               },
               {
+                "end position": 10,
+                "name": "Auto Enable Input After SnkReady In DBM",
+                "start position": 10,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
                 "end position": 21,
                 "name": "Auto Neg Max Current",
                 "start position": 12,
@@ -11932,6 +12742,27 @@
                 "start position": 69,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
+              },
+              {
+                "end position": 83,
+                "name": "EnableSinkPathAbovePPSSinkVoltageThreshold",
+                "start position": 83,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 84,
+                "name": "DisableSinkIfNotInPPSContract",
+                "start position": 84,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 95,
+                "name": "PPSSinkVoltageThreshold",
+                "start position": 85,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
               },
               {
                 "end position": 102,
@@ -12189,8 +13020,8 @@
                 "end position": 105,
                 "name": "Product Type VDO 0 SOP",
                 "start position": 104,
-                "value (EDITABLE)": "0x0",
-                "value description": "UFP VDO1"
+                "value (EDITABLE)": "0x3",
+                "value description": "UNDEFINED"
               },
               {
                 "end position": 106,
@@ -12224,8 +13055,8 @@
                 "end position": 105,
                 "name": "Product Type VDO 0 SOP",
                 "start position": 104,
-                "value (EDITABLE)": "0x0",
-                "value description": "UFP VDO1"
+                "value (EDITABLE)": "0x3",
+                "value description": "UNDEFINED"
               },
               {
                 "end position": 106,
@@ -12441,8 +13272,8 @@
                 "end position": 169,
                 "name": "Product Type VDO 2 SOP",
                 "start position": 168,
-                "value (EDITABLE)": "0x2",
-                "value description": "DFP VDO"
+                "value (EDITABLE)": "0x1",
+                "value description": "UFP VDO2"
               },
               {
                 "end position": 170,
@@ -12476,8 +13307,8 @@
                 "end position": 169,
                 "name": "Product Type VDO 2 SOP",
                 "start position": 168,
-                "value (EDITABLE)": "0x2",
-                "value description": "DFP VDO"
+                "value (EDITABLE)": "0x1",
+                "value description": "UFP VDO2"
               },
               {
                 "end position": 170,
@@ -12970,11 +13801,53 @@
                 "value description": "True"
               },
               {
-                "end position": 79,
-                "name": "DPModeDataTXSOPP",
+                "end position": 49,
+                "name": "Port Capability",
                 "start position": 48,
                 "value (EDITABLE)": "0x0",
+                "value description": "Reserved"
+              },
+              {
+                "end position": 53,
+                "name": "TransportSignalling",
+                "start position": 50,
+                "value (EDITABLE)": "0x0",
                 "value description": "0x0"
+              },
+              {
+                "end position": 54,
+                "name": "Receptacle Indication",
+                "start position": 54,
+                "value (EDITABLE)": "0x0",
+                "value description": "Dp interface presented on USB-C plug"
+              },
+              {
+                "end position": 55,
+                "name": "Usb2SignallingNotUsed",
+                "start position": 55,
+                "value (EDITABLE)": "0x0",
+                "value description": "USB2 may be needed on A6-A7"
+              },
+              {
+                "end position": 63,
+                "name": "DP Source DevicePinAssignments Supported",
+                "start position": 56,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 71,
+                "name": "DP Sink DevicePinAssignments Supported",
+                "start position": 64,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 79,
+                "name": "DPAM Version",
+                "start position": 78,
+                "value (EDITABLE)": "0x0",
+                "value description": "Version2  or earlier"
               }
             ],
             "length in bytes": "10",
@@ -13085,6 +13958,13 @@
                 "end position": 49,
                 "name": "Thunderbolt Auto Entry Allowed",
                 "start position": 49,
+                "value (EDITABLE)": "0x0",
+                "value description": "False"
+              },
+              {
+                "end position": 55,
+                "name": "LegacyOverrideDataStatus",
+                "start position": 55,
                 "value (EDITABLE)": "0x0",
                 "value description": "False"
               },
@@ -13490,6 +14370,41 @@
             ],
             "length in bytes": "60",
             "name": "App Config Register"
+          },
+          {
+            "address": "0x75",
+            "bitFields": [
+              {
+                "end position": 3,
+                "name": "Extended Alert Event Type",
+                "start position": 0,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 19,
+                "name": "Hot Swappable Batteries",
+                "start position": 16,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 23,
+                "name": "Fixed Batteries",
+                "start position": 20,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              },
+              {
+                "end position": 31,
+                "name": "Type of Alert",
+                "start position": 24,
+                "value (EDITABLE)": "0x0",
+                "value description": "0x0"
+              }
+            ],
+            "length in bytes": "4",
+            "name": "TX Alert Data Object"
           },
           {
             "address": "0x77",
@@ -13906,9 +14821,16 @@
                 "start position": 32,
                 "value (EDITABLE)": "0x80",
                 "value description": "100  %"
+              },
+              {
+                "end position": 47,
+                "name": "No Fet Used In Epr Circuit",
+                "start position": 40,
+                "value (EDITABLE)": "0x36",
+                "value description": "0x36"
               }
             ],
-            "length in bytes": "5",
+            "length in bytes": "6",
             "name": "EPR Config"
           }
         ]
@@ -13916,17 +14838,20 @@
     ]
   },
   "metadata": {
-    "device supported": "TPS66994_Host",
+    "device supported": [
+      {
+        "device": "Device 1",
+        "endEquipment": "Host",
+        "ports": 2,
+        "variant": "TPS66994"
+      }
+    ],
     "end equipment": "Host",
-    "header records": {
-      "code": 1,
-      "customer version": 0,
-      "usb id xid": 0
-    },
+    "header records": "TPS66994",
     "mode": "config",
-    "noOfConnectedDevices": "1",
     "sharedSettings": true,
-    "timeStamp": "10-3-2024_8-58-37"
+    "timeStamp": "10-24-2024_16-0-14",
+    "toolBuildVersion": "2.18"
   },
   "miscellaneous": {
     "configuration mapping": {
