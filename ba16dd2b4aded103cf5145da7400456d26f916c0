@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4224971d_21dc4a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-10-24T07:48:29Z",
+      "side": 1,
+      "message": "I created CL:5960996 to make sure the problem is reproducible. You can check logs of the failure.",
+      "revId": "ba16dd2b4aded103cf5145da7400456d26f916c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef5a7abf_25869b22",
@@ -61,6 +78,23 @@
         "endLine": 266,
         "endChar": 41
       },
+      "revId": "ba16dd2b4aded103cf5145da7400456d26f916c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e74977c_315274fe",
+        "filename": "zephyr/test/nissa/src/teliks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-10-24T07:48:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we use `RESET_FAKE` for thsese as well?",
       "revId": "ba16dd2b4aded103cf5145da7400456d26f916c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
