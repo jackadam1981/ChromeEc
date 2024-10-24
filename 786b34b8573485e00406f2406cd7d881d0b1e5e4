@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1497c863_d8829487",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-24T19:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e96884_fe097d99",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "786b34b8573485e00406f2406cd7d881d0b1e5e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbb48989_cce45bce",
