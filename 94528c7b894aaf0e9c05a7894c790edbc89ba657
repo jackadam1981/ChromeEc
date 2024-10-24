@@ -52,6 +52,24 @@
       "parentUuid": "0b1ae5c2_9e219b4b",
       "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b029de67_0e64bde6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-24T10:04:43Z",
+      "side": 1,
+      "message": "I believe that coverage report shouldn\u0027t count the code only used in legacy ECOS.\n(especially when it is a mock function)\n\nTry adding the following comment around that function\n```\n/* LCOV_EXCL_START */\n...\n/* LCOV_EXCL_STOP */\n```",
+      "parentUuid": "6884ea25_d0961c46",
+      "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
