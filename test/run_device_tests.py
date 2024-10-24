@@ -404,10 +404,6 @@ class Renode(Platform):
     ) -> bool:
         if board_config.name in [BLOONCHIPPER, DARTMONKEY]:
             if board_config.name == BLOONCHIPPER:
-                if test_name in [
-                    "timer",  # TODO(b/372968708)
-                ]:
-                    return True
                 if zephyr and test_name in [
                     "abort",
                     "assert_builtin",
@@ -723,13 +719,17 @@ class AllTests:
                 toggle_power=True,
                 enable_hw_write_protect=False,
             ),
-            TestConfig(test_name="timer"),
+            # TODO(b/372968708): Timeout is temporarily increased due to a
+            # performance regression in Renode.
+            TestConfig(test_name="timer", timeout_secs=15),
             # task_wait_event works only with the shimmed task list, which is
             # hardcoded. The task synchronization functions are covered by
             # Zephyr tests. task_wait_event is implemented based on k_poll_event
             # and it is verified by the kernel.poll test.
+            # TODO(b/372968708): Timeout is temporarily increased due to a
+            # performance regression in Renode.
             TestConfig(
-                test_name="timer_dos", timeout_secs=20, skip_for_zephyr=True
+                test_name="timer_dos", timeout_secs=35, skip_for_zephyr=True
             ),
             TestConfig(test_name="tpm_seed_clear"),
             # UART buffering is not used with Zephyr.
