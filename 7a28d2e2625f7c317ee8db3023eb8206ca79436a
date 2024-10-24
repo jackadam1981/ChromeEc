@@ -37,6 +37,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96d8a8e3_58a1e1d0",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-24T19:16:38Z",
+      "side": 1,
+      "message": "Can you add a `TODO(b/372968708): ` to reference the bug?",
+      "fixSuggestions": [
+        {
+          "fixId": "cf85fdf5_86787805",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 721,
+                "startChar": 0,
+                "endLine": 723,
+                "endChar": 0
+              },
+              "replacement": "            # TODO(b/372968708): Timeout is temporarily increased due to a\n            # performance regression in Renode.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9057213_74ca7e75",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
