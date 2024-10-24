@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d29e78_ac110942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-24T09:22:43Z",
+      "side": 1,
+      "message": "Hi. We investigated the problem with the `timer` test and we found that there is a performance regression in Renode, but the test seem to work fine aside from that. We will continue investigating this regression, but in the meantime the timeout of this test could be extended to allow for consistent behavior of the test. Please take a look",
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
