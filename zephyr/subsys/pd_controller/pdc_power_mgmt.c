@@ -2072,8 +2072,12 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_policy.pdo = port->snk_policy.src.pdos[selected_pdo];
 		port->snk_policy.pdo_index = selected_pdo + 1;
 
-		/* Extract Current, Voltage, and calculate Power */
-		max_ma = PDO_FIXED_GET_CURR(port->snk_policy.pdo);
+		/* Extract Current, Voltage, and calculate Power. Current is
+		 * clamped to the board maximum here so that the RDO and charge
+		 * manager are given the correct board operating current.
+		 */
+		max_ma = MIN(PDO_FIXED_GET_CURR(port->snk_policy.pdo),
+			     CONFIG_PLATFORM_EC_PD_MAX_CURRENT_MA);
 		max_mv = PDO_FIXED_GET_VOLT(port->snk_policy.pdo);
 		max_mw = max_ma * max_mv / 1000;
 
@@ -2099,7 +2103,8 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_RDO);
 		return;
 	case SNK_ATTACHED_START_CHARGING:
-		max_ma = PDO_FIXED_GET_CURR(port->snk_policy.pdo);
+		max_ma = MIN(PDO_FIXED_GET_CURR(port->snk_policy.pdo),
+			     CONFIG_PLATFORM_EC_PD_MAX_CURRENT_MA);
 		max_mv = PDO_FIXED_GET_VOLT(port->snk_policy.pdo);
 		max_mw = max_ma * max_mv / 1000;
 
