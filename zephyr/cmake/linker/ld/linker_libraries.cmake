@@ -11,3 +11,9 @@ if(NOT CONFIG_NATIVE_BUILD)
   message(WARNING "Disabling c_library")
   set_linker_property(PROPERTY c_library "")
 endif()
+
+if(CONFIG_PICOLIBC AND NOT CONFIG_PICOLIBC_USE_MODULE)
+  # Add picolibc
+  message(INFO "Setting c_library to picolibc install path")
+  set_linker_property(PROPERTY c_library "${COREBOOT_SDK_ROOT}/picolibc/lib/libc.a")
+endif()
