@@ -381,6 +381,7 @@ endif
 # Collect all includes.
 includes-y+=$(addprefix ../feature-x,$(feature-x-incs-y))
 includes-y+=$(addprefix ../,$(druid-incs-y))
+includes-y+=$(addprefix ../,$(vendor-fp-incs-y))
 includes+=$(includes-y)
 
 # Collect all build object output directories.
@@ -389,6 +390,7 @@ includes+=$(includes-y)
 dirs-y+=$(call objs_from_dir_p,feature-x,feature-x-dirs,y)
 dirs-y+=$(call objs_from_dir_p,third_party/druid,druid-dirs,y)
 dirs-y+=$(call objs_from_dir_p,test/third_party/druid,druid-dirs,y)
+dirs-y+=$(call objs_from_dir_p,third_party/egis,vendor-fp-dirs,y)
 
 # Wrapper for fetching all the sources relevant to this build
 # target.
@@ -430,6 +432,7 @@ all-obj-$(1)+= \
 all-obj-$(1)+= $(call objs_from_dir_p,crypto,crypto,$(1))
 endif
 all-obj-$(1)+= $(call objs_from_dir_p,third_party/druid,druid,$(1))
+all-obj-$(1)+= $(call objs_from_dir_p,third_party/egis,vendor-fp,$(1))
 endef
 
 # Get all sources to build
