@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ebb9670_4bf03b77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2024-10-25T11:05:00Z",
+      "side": 1,
+      "message": "I remove the AC power when the system is on, and reconnect the AC power, the device does not boot as expected.",
+      "revId": "9cfa97ca43218e16055c3ff273f6d1e7b769a877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
