@@ -1,0 +1,121 @@
+20:50:49.864: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+Loading: 0 packages loaded
+DEBUG: Rule '_main~ec_deps~ec-coreboot-sdk-i386-elf' indicated that a canonical reproducible form can be obtained by modifying arguments integrity = "sha256-BQTkDLsVNk6ZZX5bNI8NIBWpwyu7WYB56xcHIlkezc0="
+DEBUG: Repository _main~ec_deps~ec-coreboot-sdk-i386-elf instantiated at:
+  <builtin>: in <toplevel>
+Repository rule http_archive defined at:
+  /home/jpmurphy/.cache/bazel/_bazel_jpmurphy/e517ea39ecb43168812d1d21bda62f96/external/bazel_tools/tools/build_defs/repo/http.bzl:382:31: in <toplevel>
+Loading: 0 packages loaded
+    currently loading: @@_main~ec_deps~ec-coreboot-sdk-i386-elf//
+Loading: 1 packages loaded
+Loading: 1 packages loaded
+DEBUG: Rule '_main~ec_deps~ec-coreboot-sdk-arm-eabi' indicated that a canonical reproducible form can be obtained by modifying arguments integrity = "sha256-3BticiHMe7aPwTmbUHURlPZ0/MBJWHLA95a2TYpbZeM="
+DEBUG: Repository _main~ec_deps~ec-coreboot-sdk-arm-eabi instantiated at:
+  <builtin>: in <toplevel>
+Repository rule http_archive defined at:
+  /home/jpmurphy/.cache/bazel/_bazel_jpmurphy/e517ea39ecb43168812d1d21bda62f96/external/bazel_tools/tools/build_defs/repo/http.bzl:382:31: in <toplevel>
+Loading: 2 packages loaded
+DEBUG: Rule '_main~ec_deps~ec-coreboot-sdk-riscv-elf' indicated that a canonical reproducible form can be obtained by modifying arguments integrity = "sha256-8W/wjsibdc07at7HnTpkSwHXZOeBlcUGGoTFm8i3qhw="
+DEBUG: Repository _main~ec_deps~ec-coreboot-sdk-riscv-elf instantiated at:
+  <builtin>: in <toplevel>
+Repository rule http_archive defined at:
+  /home/jpmurphy/.cache/bazel/_bazel_jpmurphy/e517ea39ecb43168812d1d21bda62f96/external/bazel_tools/tools/build_defs/repo/http.bzl:382:31: in <toplevel>
+Loading: 2 packages loaded
+    currently loading: @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//
+Analyzing: 4 targets (3 packages loaded, 0 targets configured)
+Analyzing: 4 targets (3 packages loaded, 0 targets configured)
+[0 / 1] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+INFO: Analyzed 4 targets (3 packages loaded, 6 targets configured).
+INFO: Found 4 targets...
+INFO: Elapsed time: 15.942s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+20:51:06.941: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-arm-eabi//:get_path (0 packages loaded, 0 targets configured)
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-arm-eabi//:get_path (0 packages loaded, 0 targets configured)
+[0 / 1] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+INFO: Analyzed target @@_main~ec_deps~ec-coreboot-sdk-arm-eabi//:get_path (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+Target @@_main~ec_deps~ec-coreboot-sdk-arm-eabi//:get_path up-to-date:
+  bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-arm-eabi/get_path
+INFO: Elapsed time: 0.040s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-arm-eabi/get_path
+20:51:07.971: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-i386-elf//:get_path (0 packages loaded, 0 targets configured)
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-i386-elf//:get_path (0 packages loaded, 0 targets configured)
+[0 / 1] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+INFO: Analyzed target @@_main~ec_deps~ec-coreboot-sdk-i386-elf//:get_path (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+Target @@_main~ec_deps~ec-coreboot-sdk-i386-elf//:get_path up-to-date:
+  bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-i386-elf/get_path
+INFO: Elapsed time: 0.040s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-i386-elf/get_path
+20:51:09.041: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (0 packages loaded, 0 targets configured)
+INFO: Analyzed target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path (0 packages loaded, 0 targets configured).
+[0 / 1] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+INFO: Found 1 target...
+Target @@_main~ec_deps~ec-coreboot-sdk-riscv-elf//:get_path up-to-date:
+  bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-riscv-elf/get_path
+INFO: Elapsed time: 0.033s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-riscv-elf/get_path
+20:51:10.122: DEBUG: Ensure file: fuchsia/third_party/bazelisk/${os}-${arch} version:2@1.20.0
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-nds32le-elf//:get_path (0 packages loaded, 0 targets configured)
+Analyzing: target @@_main~ec_deps~ec-coreboot-sdk-nds32le-elf//:get_path (0 packages loaded, 0 targets configured)
+[0 / 1] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+INFO: Analyzed target @@_main~ec_deps~ec-coreboot-sdk-nds32le-elf//:get_path (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+Target @@_main~ec_deps~ec-coreboot-sdk-nds32le-elf//:get_path up-to-date:
+  bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-nds32le-elf/get_path
+INFO: Elapsed time: 0.036s, Critical Path: 0.00s
+INFO: 1 process: 1 internal.
+INFO: Build completed successfully, 1 total action
+INFO: Running command line: bazel-bin/external/_main~ec_deps~ec-coreboot-sdk-nds32le-elf/get_path
+Toolchain <zmake.toolchains.CorebootSdkToolchain object at 0x7f75ddf2b990> selected by probe function.
+Building orisa in /mnt/host/source/src/platform/ec/build/zephyr/orisa.
+Skip reconfiguring orisa:ro due to previous cmake run of equivalent configuration.  Run with --clobber if this optimization is undesired.
+Skip reconfiguring orisa:rw due to previous cmake run of equivalent configuration.  Run with --clobber if this optimization is undesired.
+Building orisa:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/orisa/build-ro
+Building orisa:rw: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/orisa/build-rw
+INFO:root:Version string: Zephyr-Kernel-0.0.0-6f82ccb
+INFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/orisa/build-rw/modules/ec/zephyr/include/ec_version.h
+INFO:root:Version string: Zephyr-Kernel-0.0.0-6f82ccb
+INFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/orisa/build-ro/modules/ec/zephyr/include/ec_version.h
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      212660 B       256 KB     81.12%
+             RAM:       33056 B        64 KB     50.44%
+        IDT_LIST:           0 B        32 KB      0.00%
+Generating files from /mnt/host/source/src/platform/ec/build/zephyr/orisa/build-rw/zephyr/zephyr.elf for board: npcx9
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      211796 B       256 KB     80.79%
+             RAM:       32968 B        64 KB     50.31%
+        IDT_LIST:           0 B        32 KB      0.00%
+Generating files from /mnt/host/source/src/platform/ec/build/zephyr/orisa/build-ro/zephyr/zephyr.elf for board: npcx9
+/mnt/host/source/src/platform/ec/build/zephyr/orisa/packer/source.dts:1970.21-1980.5: Warning (unique_unit_address): /soc/kbd@400a3000: duplicate unit-address (also used in node /soc/cros-kb-raw@400a3000)
