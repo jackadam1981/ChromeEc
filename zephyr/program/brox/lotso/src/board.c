@@ -12,11 +12,11 @@
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 
-static bool lid_uses_lis2dw12;
+static bool base_uses_lis2dw12;
 
 void motion_interrupt(enum gpio_signal signal)
 {
-	if (lid_uses_lis2dw12) {
+	if (base_uses_lis2dw12) {
 		lis2dw12_interrupt(signal);
 	} else {
 		bma4xx_interrupt(signal);
@@ -25,8 +25,8 @@ void motion_interrupt(enum gpio_signal signal)
 
 static void alt_sensor_init(void)
 {
-	lid_uses_lis2dw12 = cros_cbi_ssfc_check_match(
-		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_lis2dw12)));
+	base_uses_lis2dw12 = cros_cbi_ssfc_check_match(
+		CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_lis2dw12)));
 
 	motion_sensors_check_ssfc();
 }

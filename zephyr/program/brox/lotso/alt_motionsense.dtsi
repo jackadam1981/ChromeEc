@@ -10,7 +10,7 @@
 		/*
 		 * Interrupt bindings for sensor devices.
 		 */
-		lis2dw12-int = &lid_accel;
+		lis2dw12-int = &base_accel;
 	};
 
 	/*
@@ -113,6 +113,6 @@
 	};
 };
 
-&int_lid_imu {
+&int_base_imu {
 	handler = "motion_interrupt";
 };

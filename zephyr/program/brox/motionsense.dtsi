@@ -12,7 +12,7 @@
 		 * motion sense's <>_INT_EVENT is handled by alias. Using the
 		 * alias, each driver creates its own <>_INT_EVENT.
 		 */
-		 bma4xx-int = &lid_accel;
+		 bma4xx-int = &base_accel;
 	};
 
 	motionsense-mutex {
@@ -111,9 +111,9 @@
 		 * List of GPIO interrupts that have to be enabled at initial
 		 * stage.
 		 */
-		sensor-irqs = <&int_lid_imu>;
+		sensor-irqs = <&int_base_imu>;
 
 		/* List of sensors in force mode */
-		accel-force-mode-sensors = <&base_accel>;
+		accel-force-mode-sensors = <&lid_accel>;
 	};
 };
