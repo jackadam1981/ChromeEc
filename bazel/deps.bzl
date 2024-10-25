@@ -20,18 +20,18 @@ def _ec_deps_impl(module_ctx):
     )
     _coreboot_sdk_subtool(
         "i386-elf",
-        "14.2/5ba88fb0227c76584851bd9cbb24d785e3000000",
-        "c0b94b8c31f09691b17f7619bbc1a364789959281bd92ee9561617f7fc37c13f",
+        "14.2/5ba88fb0227c76584851bd9cbb24d785e300001e",
+        "",
     )
     _coreboot_sdk_subtool(
         "arm-eabi",
-        "14.2/8adade1392d87565482ea57bfafaf74223000001",
-        "ba271d83f4e167dd66b555314a505a35d54bbf52d7840c5c5b24599044599ba0",
+        "14.2/8adade1392d87565482ea57bfafaf7422300001e",
+        "",
     )
     _coreboot_sdk_subtool(
         "riscv-elf",
-        "14.2/c97eb9fef0cf77f9d58d890de4e3e67f51581671",
-        "788f275c67f1cf5f182fab1e2fe7ef4b73bb39157808fb0b9399ce3262787789",
+        "14.2/c97eb9fef0cf77f9d58d890de4e3e67f5100001e",
+        "",
     )
 
     return module_ctx.extension_metadata(
