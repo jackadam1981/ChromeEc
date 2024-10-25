@@ -1938,6 +1938,10 @@ static int get_obj_pos_from_rdo()
 	uint32_t rdo;
 
 	zassert_ok(emul_pdc_get_rdo(emul, &rdo));
+
+	/* RDO should always have the USB communication capable bit set */
+	zassert_true(rdo & RDO_COMM_CAP,
+		     "RDO (0x%08x) is missing RDO_COMM_CAP bit (bit 25)", rdo);
 	return RDO_POS(rdo);
 }
 
