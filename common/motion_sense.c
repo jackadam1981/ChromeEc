@@ -33,6 +33,8 @@
 #include "timer.h"
 #include "util.h"
 
+#define __soc_ram_code __attribute__((section(".__ram_code")))
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
@@ -113,7 +115,7 @@ enum sensor_config motion_sense_get_ec_config(void)
 #define CONFIG_ACCEL_FORCE_MODE_MASK 0
 #endif
 
-static bool motion_sensor_in_forced_mode(const struct motion_sensor_t *sensor)
+static bool __soc_ram_code motion_sensor_in_forced_mode(const struct motion_sensor_t *sensor)
 {
 	/* Sensor in force mode */
 	if ((CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors)))) {
@@ -137,7 +139,7 @@ static bool motion_sensor_in_forced_mode(const struct motion_sensor_t *sensor)
 
 /* Minimal amount of time since last collection before triggering a new one */
 static inline int
-motion_sensor_time_to_read(const timestamp_t *ts,
+__soc_ram_code motion_sensor_time_to_read(const timestamp_t *ts,
 			   const struct motion_sensor_t *sensor)
 {
 	if (sensor->collection_rate == 0)
@@ -193,7 +195,7 @@ motion_sense_handle_interrupt_change(struct motion_sensor_t *sensor,
  *
  * NOTE: Always run in TASK_ID_MOTIONSENSE task.
  */
-int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
+int __soc_ram_code motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 {
 	int roundup, ap_odr_mhz = 0, ec_odr_mhz, odr, ret;
 #ifdef CONFIG_SENSOR_EC_RATE_FORCE_MODE
@@ -332,7 +334,7 @@ int sensor_init_done(struct motion_sensor_t *s)
  * Mark them as uninitialized, they will lose power and
  * need to be initialized again.
  */
-static void motion_sense_switch_sensor_rate(void)
+static void __soc_ram_code motion_sense_switch_sensor_rate(void)
 {
 	int i, ret;
 	struct motion_sensor_t *sensor;
@@ -444,7 +446,7 @@ static void motion_sense_switch_sensor_rate(void)
 }
 DECLARE_DEFERRED(motion_sense_switch_sensor_rate);
 
-static void motion_sense_print_stats(const char *event)
+static void __soc_ram_code motion_sense_print_stats(const char *event)
 {
 	unsigned int active = 0;
 	unsigned int states = 0;
@@ -463,7 +465,7 @@ static void motion_sense_print_stats(const char *event)
 		active, states);
 }
 
-static void motion_sense_shutdown(void)
+static void __soc_ram_code motion_sense_shutdown(void)
 {
 	int i;
 	struct motion_sensor_t *sensor;
@@ -488,7 +490,7 @@ static void motion_sense_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
 	     MOTION_SENSE_HOOK_PRIO);
 
-static void motion_sense_suspend(void)
+static void __soc_ram_code motion_sense_suspend(void)
 {
 	motion_sense_print_stats("suspend");
 
@@ -519,7 +521,7 @@ static void motion_sense_suspend(void)
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 	     MOTION_SENSE_HOOK_PRIO);
 
-static void motion_sense_resume(void)
+static void __soc_ram_code motion_sense_resume(void)
 {
 	motion_sense_print_stats("resume");
 
@@ -529,7 +531,7 @@ static void motion_sense_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume, MOTION_SENSE_HOOK_PRIO);
 
-static void motion_sense_startup(void)
+static void __soc_ram_code motion_sense_startup(void)
 {
 	/*
 	 * If the AP is already in S0, call the resume hook now.
@@ -553,7 +555,7 @@ static inline void set_present(uint8_t *lpc_status)
 
 #ifdef CONFIG_MOTION_FILL_LPC_SENSE_DATA
 /* Update/Write LPC data */
-static void update_sense_data(uint8_t *lpc_status, int *psample_id)
+static void __soc_ram_code update_sense_data(uint8_t *lpc_status, int *psample_id)
 {
 	int s, d, i;
 	int16_t *lpc_data = (int16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
@@ -613,7 +615,7 @@ static void update_sense_data(uint8_t *lpc_status, int *psample_id)
 }
 #endif
 
-static int motion_sense_read(struct motion_sensor_t *sensor)
+static int __soc_ram_code motion_sense_read(struct motion_sensor_t *sensor)
 {
 	ASSERT(sensor->state == SENSOR_READY);
 	ASSERT(sensor->drv->get_data_rate(sensor) != 0);
@@ -630,7 +632,7 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 	return sensor->drv->read(sensor, sensor->raw_xyz);
 }
 
-static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
+static inline void __soc_ram_code increment_sensor_collection(struct motion_sensor_t *sensor,
 					       const timestamp_t *ts)
 {
 	sensor->next_collection += sensor->collection_rate;
@@ -666,7 +668,7 @@ static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
  *
  * @param s Pointer to the sensor.
  */
-void motion_sense_push_raw_xyz(struct motion_sensor_t *s)
+void __soc_ram_code motion_sense_push_raw_xyz(struct motion_sensor_t *s)
 {
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 		struct ec_response_motion_sensor_data vector;
@@ -694,7 +696,7 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s)
 	}
 }
 
-static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
+static int __soc_ram_code motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 				const timestamp_t *ts)
 {
 	int ret = EC_SUCCESS;
@@ -888,7 +890,7 @@ static void check_and_queue_gestures(uint32_t *event)
  *    1 in the A/B(lid, display) and 1 in the C/D(base, keyboard)
  * Gyro Sensor (optional)
  */
-void motion_sense_task(void *u)
+void __soc_ram_code motion_sense_task(void *u)
 {
 	int i, ret, sample_id = 0;
 	timestamp_t ts_end_task;
@@ -1036,7 +1038,7 @@ void motion_sense_task(void *u)
 /* Host commands */
 
 /* Function to map host sensor IDs to motion sensor. */
-static struct motion_sensor_t *host_sensor_id_to_real_sensor(int host_id)
+static struct motion_sensor_t __soc_ram_code *host_sensor_id_to_real_sensor(int host_id)
 {
 	struct motion_sensor_t *sensor;
 
@@ -1052,7 +1054,7 @@ static struct motion_sensor_t *host_sensor_id_to_real_sensor(int host_id)
 	return NULL;
 }
 
-static struct motion_sensor_t *host_sensor_id_to_motion_sensor(int host_id)
+static struct motion_sensor_t __soc_ram_code *host_sensor_id_to_motion_sensor(int host_id)
 {
 	/* Return the info for the first sensor that support some gestures. */
 	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
@@ -1062,7 +1064,7 @@ static struct motion_sensor_t *host_sensor_id_to_motion_sensor(int host_id)
 	return host_sensor_id_to_real_sensor(host_id);
 }
 
-static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
+static enum ec_status __soc_ram_code host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
 	struct ec_response_motion_sense *out = args->response;

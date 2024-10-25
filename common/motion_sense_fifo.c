@@ -15,6 +15,8 @@
 #include "task.h"
 #include "util.h"
 
+#define __soc_ram_code __attribute__((section(".__ram_code")))
+
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
 
 /**
@@ -46,7 +48,7 @@ struct timestamp_state {
 };
 
 /** Queue to hold the data to be sent to the AP. */
-static struct queue fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO_SIZE,
+static struct __soc_ram_code queue fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO_SIZE,
 				      struct ec_response_motion_sensor_data);
 /** Count of the number of entries lost due to a small queue. */
 static int fifo_lost;
@@ -57,13 +59,13 @@ static int fifo_lost;
 static uint16_t fifo_sensor_lost[MAX_MOTION_SENSORS];
 
 /** Metadata for the fifo, used for staging and spreading data. */
-static struct fifo_staged fifo_staged;
+static struct __soc_ram_code fifo_staged fifo_staged;
 
 /**
  * Cached expected timestamp per sensor. If a sensor's timestamp pre-dates this
  * timestamp it will be fast forwarded.
  */
-static struct timestamp_state next_timestamp[MAX_MOTION_SENSORS];
+static struct __soc_ram_code timestamp_state next_timestamp[MAX_MOTION_SENSORS];
 
 /**
  * Expected data periods:
@@ -75,7 +77,7 @@ static uint32_t expected_data_periods[MAX_MOTION_SENSORS];
  * Calculated data periods:
  * can be different from collection rate when spreading.
  */
-static uint32_t data_periods[MAX_MOTION_SENSORS];
+static uint32_t  data_periods[MAX_MOTION_SENSORS];
 
 /**
  * Bitmap telling which sensors have valid entries in the next_timestamp array.
@@ -103,7 +105,7 @@ uint32_t ts_last_int[MAX_MOTION_SENSORS];
  * @param data The data entry to check.
  * @return 1 if the entry is a timestamp, 0 otherwise.
  */
-static inline int
+static inline int __soc_ram_code
 is_timestamp(const struct ec_response_motion_sensor_data *data)
 {
 	return data->flags & MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
@@ -115,7 +117,7 @@ is_timestamp(const struct ec_response_motion_sensor_data *data)
  * @param data The data entry to check.
  * @return True if the entry contains data, false otherwise.
  */
-static inline bool is_data(const struct ec_response_motion_sensor_data *data)
+static inline bool __soc_ram_code is_data(const struct ec_response_motion_sensor_data *data)
 {
 	return (data->flags & (MOTIONSENSE_SENSOR_FLAG_TIMESTAMP |
 			       MOTIONSENSE_SENSOR_FLAG_ODR)) == 0;
@@ -127,7 +129,7 @@ static inline bool is_data(const struct ec_response_motion_sensor_data *data)
  *
  * @return Pointer to the head of the fifo.
  */
-static inline struct ec_response_motion_sensor_data *get_fifo_head(void)
+static inline struct __soc_ram_code ec_response_motion_sensor_data *get_fifo_head(void)
 {
 	return ((struct ec_response_motion_sensor_data *)fifo.buffer) +
 	       (fifo.state->head & fifo.buffer_units_mask);
@@ -145,7 +147,7 @@ static inline struct ec_response_motion_sensor_data *get_fifo_head(void)
  * WARNING: This function MUST be called from within a locked context of
  * g_sensor_mutex.
  */
-static void fifo_pop(void)
+static void __soc_ram_code fifo_pop(void)
 {
 	struct ec_response_motion_sensor_data *head = get_fifo_head();
 	const size_t initial_count = queue_count(&fifo);
@@ -211,7 +213,7 @@ static void fifo_pop(void)
 /**
  * Make sure that the fifo has at least 1 empty spot to stage data into.
  */
-static void fifo_ensure_space(void)
+static void __soc_ram_code fifo_ensure_space(void)
 {
 	/* If we already have space just bail. */
 	if (queue_space(&fifo) > fifo_staged.count)
@@ -242,7 +244,7 @@ static void fifo_ensure_space(void)
  * @param sensor_num the sensor index to test.
  * @return True if the given sensor index has not seen a timestamp yet.
  */
-static inline bool is_new_timestamp(uint8_t sensor_num)
+static inline bool __soc_ram_code is_new_timestamp(uint8_t sensor_num)
 {
 	return sensor_num < MAX_MOTION_SENSORS &&
 	       !(next_timestamp_initialized & BIT(sensor_num));
@@ -257,7 +259,7 @@ static inline bool is_new_timestamp(uint8_t sensor_num)
  * @param valid_data The number of readable data entries in the data.
  *   sensor can be NULL (for activity sensors). valid_data must be 0 then.
  */
-test_export_static void
+test_export_static void __soc_ram_code
 fifo_stage_unit(struct ec_response_motion_sensor_data *data,
 		struct motion_sensor_t *sensor, int valid_data)
 {
@@ -361,7 +363,7 @@ fifo_stage_unit(struct ec_response_motion_sensor_data *data,
  * @param sensor_num The sensor number that this timestamp came from (use 0xff
  *	  for unknown).
  */
-static void fifo_stage_timestamp(uint32_t timestamp, uint8_t sensor_num)
+static void __soc_ram_code fifo_stage_timestamp(uint32_t timestamp, uint8_t sensor_num)
 {
 	struct ec_response_motion_sensor_data vector;
 
@@ -378,7 +380,7 @@ static void fifo_stage_timestamp(uint32_t timestamp, uint8_t sensor_num)
  * @param offset The offset into the staged data to peek into.
  * @return Pointer to the entry at the given offset.
  */
-static inline struct ec_response_motion_sensor_data *
+static inline struct ec_response_motion_sensor_data __soc_ram_code *
 peek_fifo_staged(size_t offset)
 {
 	return (struct ec_response_motion_sensor_data *)queue_get_write_chunk(
@@ -386,28 +388,28 @@ peek_fifo_staged(size_t offset)
 		.buffer;
 }
 
-void motion_sense_fifo_init(void)
+void __soc_ram_code motion_sense_fifo_init(void)
 {
 	if (IS_ENABLED(CONFIG_ONLINE_CALIB))
 		online_calibration_init();
 }
 
-int motion_sense_fifo_interrupt_needed(void)
+int __soc_ram_code motion_sense_fifo_interrupt_needed(void)
 {
 	return ap_interrupt_needed;
 }
 
-int motion_sense_fifo_bypass_needed(void)
+int __soc_ram_code motion_sense_fifo_bypass_needed(void)
 {
 	return bypass_needed;
 }
 
-int motion_sense_fifo_wake_up_needed(void)
+int __soc_ram_code motion_sense_fifo_wake_up_needed(void)
 {
 	return wake_up_needed;
 }
 
-void motion_sense_fifo_reset_needed_flags(void)
+void __soc_ram_code motion_sense_fifo_reset_needed_flags(void)
 {
 	int i;
 
@@ -425,7 +427,7 @@ void motion_sense_fifo_reset_needed_flags(void)
 	bypass_needed = 0;
 }
 
-void motion_sense_fifo_insert_async_event(struct motion_sensor_t *sensor,
+void __soc_ram_code motion_sense_fifo_insert_async_event(struct motion_sensor_t *sensor,
 					  enum motion_sense_async_event event)
 {
 	struct ec_response_motion_sensor_data vector;
@@ -438,13 +440,13 @@ void motion_sense_fifo_insert_async_event(struct motion_sensor_t *sensor,
 	motion_sense_fifo_commit_data();
 }
 
-inline void motion_sense_fifo_add_timestamp(uint32_t timestamp)
+inline void __soc_ram_code motion_sense_fifo_add_timestamp(uint32_t timestamp)
 {
 	fifo_stage_timestamp(timestamp, 0xff);
 	motion_sense_fifo_commit_data();
 }
 
-void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
+void __soc_ram_code motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 				  struct motion_sensor_t *sensor,
 				  int valid_data, uint32_t time)
 {
@@ -491,7 +493,7 @@ void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 	fifo_stage_unit(data, sensor, valid_data);
 }
 
-void motion_sense_fifo_commit_data(void)
+void __soc_ram_code motion_sense_fifo_commit_data(void)
 {
 	struct ec_response_motion_sensor_data *data;
 	int i, window, sensor_num;
@@ -620,7 +622,7 @@ commit_data_end:
 	mutex_unlock(&g_sensor_mutex);
 }
 
-void motion_sense_fifo_get_info(
+void __soc_ram_code motion_sense_fifo_get_info(
 	struct ec_response_motion_sense_fifo_info *fifo_info, int reset)
 {
 	int i;
@@ -644,7 +646,7 @@ void motion_sense_fifo_get_info(
 }
 
 /* LCOV_EXCL_START - function cannot be tested due to limitations with mkbp */
-static int motion_sense_get_next_event(uint8_t *out)
+static int __soc_ram_code motion_sense_get_next_event(uint8_t *out)
 {
 	union ec_response_get_next_data *data =
 		(union ec_response_get_next_data *)out;
@@ -655,7 +657,7 @@ static int motion_sense_get_next_event(uint8_t *out)
 /* LCOV_EXCL_STOP */
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SENSOR_FIFO, motion_sense_get_next_event);
 
-inline int motion_sense_fifo_over_thres(void)
+inline int __soc_ram_code motion_sense_fifo_over_thres(void)
 {
 	int result;
 
@@ -666,7 +668,7 @@ inline int motion_sense_fifo_over_thres(void)
 	return result;
 }
 
-int motion_sense_fifo_read(int capacity_bytes, int max_count, void *out,
+int __soc_ram_code motion_sense_fifo_read(int capacity_bytes, int max_count, void *out,
 			   uint16_t *out_size)
 {
 	int count;
@@ -681,7 +683,7 @@ int motion_sense_fifo_read(int capacity_bytes, int max_count, void *out,
 	return count;
 }
 
-void motion_sense_fifo_reset(void)
+void __soc_ram_code motion_sense_fifo_reset(void)
 {
 	static uint8_t fifo_info_buffer
 		[sizeof(struct ec_response_motion_sense_fifo_info) +
@@ -696,7 +698,7 @@ void motion_sense_fifo_reset(void)
 	motion_sense_fifo_get_info(fifo_info, /*reset=*/true);
 }
 
-void motion_sense_set_data_period(int sensor_num, uint32_t data_period)
+void __soc_ram_code motion_sense_set_data_period(int sensor_num, uint32_t data_period)
 {
 	expected_data_periods[sensor_num] = data_period;
 	/*
@@ -712,7 +714,7 @@ void motion_sense_set_data_period(int sensor_num, uint32_t data_period)
 }
 
 #ifdef CONFIG_CMD_ACCEL_FIFO
-static int motion_sense_read_fifo(int argc, char **argv)
+static int __soc_ram_code motion_sense_read_fifo(int argc, char **argv)
 {
 	int count, i;
 	struct ec_response_motion_sensor_data v;
