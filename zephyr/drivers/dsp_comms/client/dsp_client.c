@@ -216,6 +216,8 @@ int dsp_client_get_cbi_flags(const struct device* dev,
 
   __ASSERT_NO_MSG(encode_status);
 
+  (void)encode_status;
+
   /* Write the message */
   LOG_DBG("Writing %zu bytes", stream.bytes_written);
   rc = i2c_write_dt(&cfg->i2c, data->request_buffer, stream.bytes_written);
