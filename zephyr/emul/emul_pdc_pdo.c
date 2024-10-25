@@ -76,6 +76,13 @@ int emul_pdc_pdo_reset(struct emul_pdc_pdo_t *pdos)
 	pdos->snk_pdos[1] = EMUL_PDO_BATT_SNK;
 	pdos->snk_pdos[2] = EMUL_PDO_VAR_SNK;
 
+	pdos->partner_src_pdos[0] = EMUL_PDO_FIXED1_SRC;
+	pdos->partner_src_pdos[1] = EMUL_PDO_FIXED2_SRC;
+
+	pdos->partner_snk_pdos[0] = EMUL_PDO_FIXED_SNK;
+	pdos->partner_snk_pdos[1] = EMUL_PDO_BATT_SNK;
+	pdos->partner_snk_pdos[2] = EMUL_PDO_VAR_SNK;
+
 	return 0;
 }
 

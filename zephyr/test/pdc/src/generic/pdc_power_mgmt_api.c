@@ -74,6 +74,7 @@ static void pdc_power_mgmt_setup(void)
 
 static void pdc_power_mgmt_before(void *fixture)
 {
+	emul_pdc_reset(emul);
 	emul_pdc_set_response_delay(emul, 0);
 	emul_pdc_disconnect(emul);
 
