@@ -119,19 +119,15 @@ static void board_connect_c0_sbu(enum gpio_signal s)
 
 /* Keyboard scan setting */
 __override struct keyboard_scan_config keyscan_config = {
-	/* Use 80 us, because KSO_02 passes through the H1. */
-	.output_settle_us = 80,
+	.output_settle_us = 50,
 	/*
 	 * 1. launcher key mapped to (KSI_3, KSO_0):
 	 *    change actual_key_mask[0] = 0x14 to 0x1c
 	 * 2. T11 key not in keyboard (KSI_0,KSO_1):
 	 *    change actual_key_mask[1] from 0xff to 0xfe
 	 */
-	 .actual_key_mask = {
-         0x1c, 0xfe, 0xff, 0xff, 0xff, 0xf5, 0xff,
-	 0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca
-	 },
-	/* Other values should be the same as the default configuration. */
+	.actual_key_mask = { 0x1c, 0xfe, 0xff, 0xff, 0xff, 0xf5, 0xff, 0xa4,
+			     0xff, 0xfe, 0x55, 0xfa, 0xca },
 	.debounce_down_us = 9 * MSEC,
 	.debounce_up_us = 30 * MSEC,
 	.scan_period_us = 3 * MSEC,
@@ -218,7 +214,7 @@ const struct adc_t adc_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_KBLIGHT] = { .channel = 3, .flags = 0, .freq = 10000 },	
+	[PWM_CH_KBLIGHT] = { .channel = 3, .flags = 0, .freq = 10000 },
 	[PWM_CH_DISPLIGHT] = { .channel = 5, .flags = 0, .freq = 20000 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
