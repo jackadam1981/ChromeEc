@@ -16,8 +16,13 @@ set(CROSS_COMPILE_TARGET        ${CROSS_COMPILE_TARGET_${ARCH}})
 
 if("${ARCH}" STREQUAL "arm" AND CONFIG_ARM64)
   set(CROSS_COMPILE_TARGET      aarch64-elf)
+  set(CONFIG_64BIT                        y)
+  set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -DCONFIG_64BIT=1")
 elseif("${ARCH}" STREQUAL "x86" AND CONFIG_X86_64)
   set(CROSS_COMPILE_TARGET      x86_64-elf)
+elseif("${ARCH}" STREQUAL "riscv")
+  set(CONFIG_64BIT                        y)
+  set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -DCONFIG_64BIT=1")
 endif()
 
 if(DEFINED COREBOOT_SDK_ROOT_${ARCH})
@@ -36,6 +41,16 @@ set(CMAKE_OBJDUMP    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}objdump")
 set(CMAKE_RANLIB     "${TOOLCHAIN_HOME}/${CROSS_COMPILE}ranlib")
 set(CMAKE_READELF    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}readelf")
 set(CMAKE_GCOV       "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcov")
+
+set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include")
+set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include/${CROSS_COMPILE_TARGET}")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include/${CROSS_COMPILE_TARGET}")
+set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/picolibc/include")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/picolibc/include")
+
+set(CONFIG_LINKER_ORPHAN_SECTION_WARN n)
+set(LINKER_ORPHAN_SECTION_PLACE y)
 
 # On ARM, we don't use libgcc: It's built against a fixed target (e.g.
 # used instruction set, ABI, ISA extensions) and doesn't adapt when
