@@ -94,6 +94,30 @@
       },
       "revId": "2ee74bb664229227fded9dffcc11dc5ec88ab100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3256d4e6_c8e6f771",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-25T15:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c4ceec_20c0f62f",
+      "range": {
+        "startLine": 470,
+        "startChar": 5,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "2ee74bb664229227fded9dffcc11dc5ec88ab100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
