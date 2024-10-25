@@ -141,7 +141,8 @@
 			gpios = <&gpioj 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_pm_pwrbtn_n_r: pm_pwrbtn_n_r {
-			gpios = <&gpioe 3 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+			/*gpios = <&gpioe 3 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;*/
+			gpios = <&gpioe 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_pm_rsmrst_n_r: pm_rsmrst_n_r {
