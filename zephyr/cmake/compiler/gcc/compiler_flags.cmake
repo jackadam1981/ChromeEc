@@ -7,4 +7,4 @@
 include("${ZEPHYR_BASE}/cmake/compiler/gcc/compiler_flags.cmake")
 
 # gcc flags for coverage generation
-set_compiler_property(PROPERTY coverage -fprofile-arcs -ftest-coverage -fno-inline)
+set_compiler_property(PROPERTY coverage -fprofile-arcs -ftest-coverage -fno-inline -ffunction-sections -fdata-sections)

@@ -36,6 +36,8 @@ set(CMAKE_OBJDUMP    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}objdump")
 set(CMAKE_RANLIB     "${TOOLCHAIN_HOME}/${CROSS_COMPILE}ranlib")
 set(CMAKE_READELF    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}readelf")
 set(CMAKE_GCOV       "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcov")
+set(CONFIG_LINKER_ORPHAN_SECTION_WARN n)
+set(LINKER_ORPHAN_SECTION_PLACE y)
 
 # On ARM, we don't use libgcc: It's built against a fixed target (e.g.
 # used instruction set, ABI, ISA extensions) and doesn't adapt when
