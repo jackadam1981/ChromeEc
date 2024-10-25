@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a668505_e7c64a6d",
+        "filename": "zephyr/test/nissa/src/teliks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-10-25T03:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a68f70_c2ec91de",
+      "revId": "2aa4a2bd272b0e6b4f4aa72ef656fc5654a19515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d146d320_a91e5730",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-24T12:39:56Z",
       "side": 1,
       "message": "Please add additional debug info to all asserts or remove this one.",
+      "revId": "2aa4a2bd272b0e6b4f4aa72ef656fc5654a19515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1197efd9_d6ecbda1",
+        "filename": "zephyr/test/nissa/src/teliks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2024-10-25T03:41:46Z",
+      "side": 1,
+      "message": "Remove the debug info.",
+      "parentUuid": "d146d320_a91e5730",
       "revId": "2aa4a2bd272b0e6b4f4aa72ef656fc5654a19515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
