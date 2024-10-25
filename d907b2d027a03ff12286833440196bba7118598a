@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8486137f_f2e9e063",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-25T20:02:22Z",
+      "side": 1,
+      "message": "Why not \u0027\u0026\u0026\u0027? With \u0027||\u0027, we\u0027ll make more boards define get_jump_data. Reading the CL description, I think you\u0027re trying to define get_jump_data only for those which need it?",
+      "range": {
+        "startLine": 341,
+        "startChar": 29,
+        "endLine": 341,
+        "endChar": 31
+      },
+      "revId": "d907b2d027a03ff12286833440196bba7118598a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
