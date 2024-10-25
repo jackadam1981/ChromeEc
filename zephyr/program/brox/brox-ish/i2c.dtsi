@@ -15,8 +15,18 @@
 			enum-names = "I2C_PORT_SENSOR";
 		};
 	};
+
+	i2c-dump-allowlist {
+		compatible = "zephyr,i2c-dump-allowlist";
+		devices = <&dsp_client>;
+	};
 };
 
 &i2c0 {
 	status = "okay";
+	dsp_client: dsp-client@20 {
+		compatible = "cros,dsp-client";
+		reg = <0x20>;
+		int-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
+	};
 };
