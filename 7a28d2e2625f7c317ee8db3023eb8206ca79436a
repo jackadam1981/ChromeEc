@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1aacf7_09755e38",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-25T07:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d8a8e3_58a1e1d0",
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9057213_74ca7e75",
@@ -83,6 +101,30 @@
       "writtenOn": "2024-10-24T15:55:38Z",
       "side": 1,
       "message": "Could the performance regression cause the `timer_dos` test to take longer than 20 seconds?  Should this timeout also be increased?",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965de9f3_71b529c6",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-10-25T07:54:36Z",
+      "side": 1,
+      "message": "I\u0027ve tested the performance of the `timer_dos` test and here are my results averaged over 3 runs (running on i7-9700):\n\n`Renode 1.15.1_p20240714`:\n`bloonchipper`: 6.97s\n`buccaneer`: 6.50s\n`dartmonkey`: 17.94s\n`helipilot`: 6.50s\n\n`Renode 1.15.3_p20241010`:\n`bloonchipper`: 7.00s\n`buccaneer`: 6.50s\n`dartmonkey`: 24.02s\n`helipilot`: 6.50s\n\nSo for the `timer_dos` only `dartmonkey` is noticeably slower, but in all cases the test finished successfully after adjusting the timeout. I\u0027ve also increased the timeout for the `timer_dos` test, could you verify on your end if everything now works as expected?",
+      "parentUuid": "c9057213_74ca7e75",
       "range": {
         "startLine": 729,
         "startChar": 39,
