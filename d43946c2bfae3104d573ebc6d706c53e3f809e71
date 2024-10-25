@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15eb8047_a15c502f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-25T21:38:20Z",
+      "side": 1,
+      "message": "This is a large CL, only made it through the client code.  Will provide additional feedback on the remainder of files next week.  Let me know if you think it makes more sense to schedule a meeting to review this in person?",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac47a34_5437eef6",
+        "filename": "include/system.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-25T21:38:20Z",
+      "side": 1,
+      "message": "`ARG_UNUSED(channel)`?",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a3ebaf_9a81c23c",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-25T21:38:20Z",
+      "side": 1,
+      "message": "How do we handle this when its NULL?",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81edd062_aa0dde6e",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-25T21:38:20Z",
+      "side": 1,
+      "message": "NIT: doxygen comments for functions",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd423a3d_7c367ec7",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-25T21:38:20Z",
+      "side": 1,
+      "message": "Why not follow Zephyr\u0027s driver model with a defined API structure to interact with the device?",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc9288e_e2aecdce",
+        "filename": "zephyr/drivers/dsp_comms/client/include/cros/dsp/client.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-25T21:38:20Z",
+      "side": 1,
+      "message": "Here\u0027s the API struct I was looking for.  Can we get the code for this?",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
