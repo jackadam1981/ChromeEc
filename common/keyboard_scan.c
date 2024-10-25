@@ -55,19 +55,23 @@
 #define CONFIG_KEYBOARD_POST_SCAN_CLOCKS 16000
 #endif
 
-__overridable struct keyboard_scan_config keyscan_config = {
+/*
+ * CONFIG_KEYBOARD_COL2_INVERTED is defined for passing the column 2
+ * to H1 which inverts the signal. The signal passing through H1
+ * adds more delay. Need a larger delay value. Otherwise, pressing
+ * Refresh key will also trigger T key, which is in the next scanning
+ * column line. See http://b/156007029.
+ */
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
-	/*
-	 * CONFIG_KEYBOARD_COL2_INVERTED is defined for passing the column 2
-	 * to H1 which inverts the signal. The signal passing through H1
-	 * adds more delay. Need a larger delay value. Otherwise, pressing
-	 * Refresh key will also trigger T key, which is in the next scanning
-	 * column line. See http://b/156007029.
-	 */
-	.output_settle_us = 80,
+#define COL2_DELAY_US 30
 #else
+#define COL2_DELAY_US 0
+#endif
+
+#define COL2 2
+
+__overridable struct keyboard_scan_config keyscan_config = {
 	.output_settle_us = 50,
-#endif /* CONFIG_KEYBOARD_COL2_INVERTED */
 	.debounce_down_us = 9 * MSEC,
 	.debounce_up_us = 30 * MSEC,
 	.scan_period_us = 3 * MSEC,
@@ -310,6 +314,12 @@ static int read_matrix(uint8_t *state)
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
 		udelay(keyscan_config.output_settle_us);
+
+		/* Only add the extre delay when selecting or deselecting COL2
+		 */
+		if (c == COL2 || c == (COL2 + 1)) {
+			udelay(COL2_DELAY_US);
+		}
 
 		/* Read the row state */
 #ifdef CONFIG_KEYBOARD_SCAN_ADC
@@ -650,8 +660,132 @@ static int check_keys_changed(uint8_t *state)
 static uint8_t keyboard_mask_refresh;
 __overridable uint8_t board_keyboard_row_refresh(void)
 {
+<<<<<<< HEAD   (836ac4 guybrush: Use default keyboard_scan_config)
 	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
 		return 3;
+||||||| BASE
+	uint8_t state;
+
+	keyboard_raw_drive_column(column);
+	udelay(keyscan_config.output_settle_us);
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+	state = keyboard_read_adc_rows();
+#else
+	state = keyboard_raw_read_rows();
+#endif
+	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+
+	return state;
+}
+
+/**
+ * A refresh key needs this late boot key detection because at the time of the
+ * pre-init scan, the GSC could have masked the refresh key because the power
+ * button was pressed. So, we detect a refresh key when the power button is
+ * released for the first time.
+ */
+static void power_button_change(void)
+{
+	struct boot_key_entry refresh;
+	uint8_t state;
+
+#ifdef CONFIG_KEYBOARD_MULTIPLE
+	refresh.col = key_typ.col_refresh;
+	refresh.row = key_typ.row_refresh;
+#else
+	refresh.col = KEYBOARD_COL_REFRESH;
+	refresh.row = KEYBOARD_ROW_REFRESH;
+#endif
+
+	/* Proceed only if the power button was initially pressed. */
+	if (!(keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_POWER)))
+		return;
+
+	/*
+	 *  Power button needs to be released for refresh key to be visible.
+	 *  Call power_button_is_pressed (not power_button_signal_asserted)
+	 *  because debounced_power_pressed is initialized to
+	 *  power_button_signal_asserted().
+	 */
+	if (power_button_is_pressed())
+		/* Power button is still pressed. */
+		return;
+
+	/*
+	 * Clear power button as a boot key. This prevents subsequent power
+	 * button releases from being seen.
+	 */
+	boot_key_clear(BOOT_KEY_POWER);
+
+	/*
+	 * keyboard_scan_task_started is set right before the task enters the
+	 * loop. Thus, before it's set, it's safe to directly read a column
+	 * without interfering with the scan task.
+	 */
+	if (keyboard_scan_task_started)
+		state = debounced_state[refresh.col];
+=======
+	uint8_t state;
+
+	keyboard_raw_drive_column(column);
+	udelay(keyscan_config.output_settle_us + COL2_DELAY_US);
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+	state = keyboard_read_adc_rows();
+#else
+	state = keyboard_raw_read_rows();
+#endif
+	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+
+	return state;
+}
+
+/**
+ * A refresh key needs this late boot key detection because at the time of the
+ * pre-init scan, the GSC could have masked the refresh key because the power
+ * button was pressed. So, we detect a refresh key when the power button is
+ * released for the first time.
+ */
+static void power_button_change(void)
+{
+	struct boot_key_entry refresh;
+	uint8_t state;
+
+#ifdef CONFIG_KEYBOARD_MULTIPLE
+	refresh.col = key_typ.col_refresh;
+	refresh.row = key_typ.row_refresh;
+#else
+	refresh.col = KEYBOARD_COL_REFRESH;
+	refresh.row = KEYBOARD_ROW_REFRESH;
+#endif
+
+	/* Proceed only if the power button was initially pressed. */
+	if (!(keyboard_scan_get_boot_keys() & BIT(BOOT_KEY_POWER)))
+		return;
+
+	/*
+	 *  Power button needs to be released for refresh key to be visible.
+	 *  Call power_button_is_pressed (not power_button_signal_asserted)
+	 *  because debounced_power_pressed is initialized to
+	 *  power_button_signal_asserted().
+	 */
+	if (power_button_is_pressed())
+		/* Power button is still pressed. */
+		return;
+
+	/*
+	 * Clear power button as a boot key. This prevents subsequent power
+	 * button releases from being seen.
+	 */
+	boot_key_clear(BOOT_KEY_POWER);
+
+	/*
+	 * keyboard_scan_task_started is set right before the task enters the
+	 * loop. Thus, before it's set, it's safe to directly read a column
+	 * without interfering with the scan task.
+	 */
+	if (keyboard_scan_task_started)
+		state = debounced_state[refresh.col];
+>>>>>>> CHANGE (4b8991 keyboard_scan: only do the extra col2 delay when changing co)
 	else
 		return 2;
 }
@@ -718,7 +852,7 @@ static void read_adc_boot_keys(uint8_t *state)
 
 		/* Select column, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
-		udelay(keyscan_config.output_settle_us);
+		udelay(keyscan_config.output_settle_us + COL2_DELAY_US);
 
 		if (adc_read_channel(ADC_KSI_00 + r) >
 				keyscan_config.ksi_threshold_mv)
@@ -887,6 +1021,13 @@ void keyboard_scan_task(void *u)
 			if (!new_disable_scanning) {
 				/* Enabled now */
 				keyboard_raw_drive_column(KEYBOARD_COLUMN_ALL);
+<<<<<<< HEAD   (836ac4 guybrush: Use default keyboard_scan_config)
+||||||| BASE
+				udelay(keyscan_config.output_settle_us);
+=======
+				udelay(keyscan_config.output_settle_us +
+				       COL2_DELAY_US);
+>>>>>>> CHANGE (4b8991 keyboard_scan: only do the extra col2 delay when changing co)
 			} else if (!local_disable_scanning) {
 				/*
 				 * Scanning isn't enabled but it was last time
