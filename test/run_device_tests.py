@@ -1381,6 +1381,11 @@ def run_test(
 
                 logging.debug("Calling post-test callback")
                 post_cb_passed = test.post_test_callback(board_config)
+                logging.debug(
+                    "test.num_fails: %d post_cb_passed: %s",
+                    test.num_fails,
+                    post_cb_passed,
+                )
                 return test.num_fails == 0 and post_cb_passed
 
 
@@ -1547,6 +1552,8 @@ def flash_and_run_test(
         )
 
         platform.cleanup()
+
+        logging.info('Finished test "%s" with ret: %s', test.config_name, ret)
 
         return ret
 
