@@ -19,7 +19,7 @@
 
 #include "gpio.dtsi"
 #include "../i2c.dtsi"
-#include "../interrupts.dtsi"
+#include "interrupts.dtsi"
 #include "../power_signals.dtsi"
 #include "../power_signals_gpios.dtsi"
 #include "../pwm.dtsi"

@@ -32,11 +32,6 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "lid_interrupt";
 		};
-		int_tablet_mode: tablet_mode {
-			irq-pin = <&gpio_tablet_mode_l>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "gmr_tablet_switch_isr";
-		};
 	};
 
 	hibernate-wake-pins {
@@ -47,4 +42,4 @@
 	};
 };
 
-#include "interrupts_motionsense.dtsi"
+#include "../interrupts_motionsense.dtsi"
