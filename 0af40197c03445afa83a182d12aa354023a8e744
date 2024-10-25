@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ff2a69a9_da07061f",
+        "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-25T06:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fabcb00_ed33d05b",
+      "revId": "0af40197c03445afa83a182d12aa354023a8e744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9bcd3307_e5c4a0aa",
         "filename": "zephyr/drivers/pw_fsm/public/pw_fsm/fsm.h",
         "patchSetId": 15
@@ -48,6 +66,24 @@
       "writtenOn": "2024-10-24T19:01:27Z",
       "side": 1,
       "message": "This is fine, as I understand its the default sub state. I\u0027m just thinking if the LED is off, does it really have a color?  Maybe only when we\u0027re in an `ON` state, this returns a valid color value, otherwise an error? I guess my question is, is it worthwhile to have the framework validate we\u0027re in the proper state for a function to be called?",
+      "revId": "0af40197c03445afa83a182d12aa354023a8e744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "473e8175_ae16306c",
+        "filename": "zephyr/drivers/pw_fsm/test_state_machine.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-25T06:23:20Z",
+      "side": 1,
+      "message": "Since hierarchical state machines aren\u0027t a hard requirement right now lets defer this so we can unblock updating Rex/Brox/Trulo with the transport layer and revisit any changes here before upstreaming to Pigweed.",
+      "parentUuid": "e9827b06_90c0f982",
       "revId": "0af40197c03445afa83a182d12aa354023a8e744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
