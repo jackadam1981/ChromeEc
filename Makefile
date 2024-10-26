@@ -163,8 +163,12 @@ ifneq (,$(COREBOOT_SDK_ROOT_$(COREBOOT_TOOLCHAIN)))
 CROSS_COMPILE:=$(COREBOOT_SDK_ROOT_$(COREBOOT_TOOLCHAIN))/bin/$(CROSS_COREBOOT)-
 else
 ifneq (,$(USE_COREBOOT_SDK))
+ifeq ($(shell bazel --project fwsdk >/dev/null 2>&1; echo $$?),0)
 CROSS_COMPILE:=$(shell bazel --project fwsdk run \
 	@ec-coreboot-sdk-$(CROSS_COMPILE_TOOLCHAIN)//:get_path)/bin/$(CROSS_COREBOOT)-
+else
+CROSS_COMPILE:=/opt/coreboot-sdk/bin/$(CROSS_COREBOOT)-
+endif
 endif
 endif
 
