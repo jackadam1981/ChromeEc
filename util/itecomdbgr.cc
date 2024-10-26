@@ -22,7 +22,6 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define VERSION "0.0.15"
 #define ITE_ERR 0xF0
 
 #define FW_UPDATE_START 0x00000
@@ -33,7 +32,7 @@
 #define SUCCESS 0
 #define FAIL 1
 
-#define msleep(msecs) usleep(msecs * 1000)
+#define msleep(msecs) usleep((msecs) * 1000)
 
 #define W_CMD_PORT 0xB4
 #define W_DATA_PORT 0x6A
@@ -85,7 +84,8 @@
 
 #define STEPS_EXIT 0x00
 #define STEPS_NORMAL 0x01
-#define STEPS_TEST 0xEE
+
+#define UART_APP_TRIES 1
 
 const static uint8_t enable_follow_mode[16] = {
 	W_CMD_PORT, DBUS_ADDR_3, W_DATA_PORT, 0x7F,
@@ -187,7 +187,6 @@ static int init_file(struct itecomdbgr_config *conf)
 	if (conf->read_start_addr != NO_READ)
 		return 0;
 
-	printf("\n\rOpen file: %s\n\r", conf->file_name);
 	conf->fi = fopen(conf->file_name, "rb");
 	if (conf->fi != NULL) {
 		if (fstat(fileno(conf->fi), &st) < 0) {
@@ -226,23 +225,12 @@ static void exit_file(struct itecomdbgr_config *conf)
 		fclose(conf->fi);
 }
 
-static void show_time(void)
-{
-	time_t current_time;
-	char *c_time_string;
-
-	/* Obtain current time. */
-	current_time = time(NULL);
-
-	/* Convert to local time format. */
-	c_time_string = ctime(&current_time);
-	(void)printf("Current time is %s", c_time_string);
-}
-
 static int read_com(struct itecomdbgr_config *conf, uint8_t *inbuff,
 		    int ReadBytes)
 {
 	int bReadStat;
+
+	tcdrain(conf->g_fd);
 
 	bReadStat = read(conf->g_fd, inbuff, ReadBytes);
 
@@ -264,7 +252,11 @@ static uint8_t debug_getc(struct itecomdbgr_config *conf)
 	uint8_t data[1];
 	int res;
 
-	res = read(conf->g_fd, data, 1);
+	//	fprintf(stderr, "DR\n");
+
+	res = read_com(conf, data, 1);
+
+	//	fprintf(stderr, "RR\n");
 
 	if (res > 0) {
 		return data[0];
@@ -314,7 +306,7 @@ static void wr_reg(struct itecomdbgr_config *conf, unsigned long Address,
 static uint8_t rd_reg(struct itecomdbgr_config *conf, unsigned long Address)
 {
 	rw_reg(conf, Address, REG_READ);
-	msleep(1);
+	//	msleep(1);
 	return debug_getc(conf);
 }
 
@@ -323,7 +315,7 @@ static int dbgr_disable_protect_path(struct itecomdbgr_config *conf)
 {
 	int ret = 0, i;
 
-	printf("Disabling protect path...\n");
+	//	printf("Disabling protect path...\n");
 
 	for (i = 0; i < 32; i++) {
 		wr_reg(conf, 0xF02060 + i, 0);
@@ -339,84 +331,18 @@ static int dbgr_disable_protect_path(struct itecomdbgr_config *conf)
 static void
 enter_uart_dbgr_mode_and_set_nack_mode(struct itecomdbgr_config *conf)
 {
-	uint8_t Data[1];
+	const uint8_t nak_seq[] = {
+		0x00, W_CMD_PORT,  0x00, W_DATA_PORT, 0x00, W_BURST_DATA_PORT,
+		0x00, W_CMD_PORT,  0x80, W_DATA_PORT, 0xF0, W_CMD_PORT,
+		0x2F, W_DATA_PORT, 0x40, W_CMD_PORT,  0x2E, W_DATA_PORT,
+		0x00, W_CMD_PORT,  0x30, W_DATA_PORT, 0x03,
+	};
 
-	Data[0] = 0x00;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
+	//	fprintf(stderr, "%s: call\n", __func__);
 
-	Data[0] = W_CMD_PORT;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = 0x00;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_DATA_PORT;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = 0x00;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_BURST_DATA_PORT;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = 0x00;
-	write_com(conf, Data, sizeof(Data));
-
-	msleep(5);
-
-	Data[0] = W_CMD_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x80;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_DATA_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0xF0;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_CMD_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x2F;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_DATA_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x40;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_CMD_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x2E;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_DATA_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x00;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_CMD_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x30;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
-
-	Data[0] = W_DATA_PORT;
-	write_com(conf, Data, sizeof(Data));
-	Data[0] = 0x03;
-	write_com(conf, Data, sizeof(Data));
-	msleep(1);
+	write_com(conf, nak_seq, sizeof(nak_seq));
+	tcdrain(conf->g_fd);
+	msleep(100);
 }
 
 /* Return 0 on success, non-zero on a timeout */
@@ -433,7 +359,15 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 	do {
 		write_com(conf, cs_low, sizeof(cs_low));
 		write_com(conf, read_status_buf, sizeof(read_status_buf));
+
+		// XXXdrain();
+		// tcdrain(conf->g_fd);
+
 		status = debug_getc(conf);
+
+		//		fprintf(stderr, "%s: S %02x\n", __func__,
+		// status);
+
 		write_com(conf, cs_high, sizeof(cs_high));
 		if (timeout++ > 200) {
 			printf("check_status timeout exit!\n\r");
@@ -441,8 +375,8 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 		}
 
 		/* Add a delay for 3M speed*/
-		if (conf->baudrate == 3000000)
-			msleep(1);
+		//		if (conf->baudrate == 3000000)
+		//			msleep(1);
 
 	} while ((status & wait_mask) == check_value);
 
@@ -452,26 +386,35 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 static void getchipid(struct itecomdbgr_config *conf)
 {
 	uint8_t chipid[3], chipver, eflash_size_flag;
-
 	uint8_t test[3] = { W_CMD_PORT, 0x00, R_DATA_PORT };
+
+	//	fprintf(stderr, "%s: call\n", __func__);
 
 	/* Get CHIPID_1 for dbgr command set */
 	write_com(conf, test, 3);
-	printf("\rgetchipid = %x", debug_getc(conf));
+
+	tcdrain(conf->g_fd);
+
+	printf("\rgetchipid = %x\n", debug_getc(conf));
+	fflush(stdout);
 
 	chipid[0] = rd_reg(conf, 0xF02085);
 	chipid[1] = rd_reg(conf, 0xF02086);
 	chipid[2] = rd_reg(conf, 0xF02087);
 	chipver = rd_reg(conf, 0xF02002);
-	printf("\rChip ID = %02x%02x%02x", chipid[0], chipid[1], chipid[2]);
-	printf(" , Chip Ver= %02x", chipver);
+
+	printf("Chip ID = %02x%02x%02x, ", chipid[0], chipid[1], chipid[2]);
+	printf("Chip Ver = %02x", chipver);
+
 	eflash_size_flag = chipver >> 4;
 	if (eflash_size_flag == 0xC)
 		conf->eflash_size_in_k = 1024;
 	if (eflash_size_flag == 0x8)
 		conf->eflash_size_in_k = 512;
-	printf(" , eflash size = %04d KB", conf->eflash_size_in_k);
-	printf(" , file size = %04d B\n", conf->file_size);
+
+	printf(", eflash size = %04d KB", conf->eflash_size_in_k);
+	printf(", file size = %04d B\n", conf->file_size);
+	fflush(stdout);
 
 	/* Get the real flash size , 64K for 1 Block*/
 	/* Reset the global flash value */
@@ -504,7 +447,7 @@ static int read_id_2(struct itecomdbgr_config *conf)
 
 	write_com(conf, cs_high, sizeof(cs_high));
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
-	printf(" Flash ID :%02x %02x %02x\n\r", FlashID[0], FlashID[1],
+	printf("Flash ID = %02x %02x %02x, ", FlashID[0], FlashID[1],
 	       FlashID[2]);
 	tcflush(conf->g_fd, TCIOFLUSH);
 
@@ -519,7 +462,7 @@ static int read_id_2(struct itecomdbgr_config *conf)
 		result = 0;
 		conf->g_steps = STEPS_EXIT;
 	} else {
-		printf("\rInvalid EFLASH TYPE");
+		printf("Invalid EFLASH TYPE\n");
 		conf->eflash_type = EFLASH_TYPE_NONE;
 		result = 1;
 	}
@@ -619,6 +562,8 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 	unsigned long end_addr = conf->update_end_addr;
 	FILE *pW = NULL;
 
+	//	fprintf(stderr, "%s: call\n", __func__);
+
 	int total_size = (end_addr - start_addr) / conf->page_size;
 
 	if ((end_addr - start_addr) % conf->page_size)
@@ -637,13 +582,14 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 	}
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
+
 	while (start_addr < end_addr) {
 		if ((end_addr - start_addr) >= conf->page_size)
 			read_count = conf->page_size;
 		else
 			read_count = end_addr - start_addr;
 
-		if (check_status(conf, 0x01, 0) < 0) {
+		if (check_status(conf, SPI_SR1_BUSY, 0) < 0) {
 			printf("fast_read_burst_cdata:check_status error 1\n\r");
 			result = FAIL;
 			goto out;
@@ -654,6 +600,8 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 		fastread_buf[11] = (start_addr >> 8) & 0xFF;
 		fastread_buf[15] = (start_addr) & 0xFF;
 		write_com(conf, fastread_buf, sizeof(fastread_buf));
+
+		//		fprintf(stderr, "%s: r64\n", __func__);
 
 		for (k = 0; k < 4; k++) {
 			read_com(conf, &DBG_BUF[0 + k * 64], 64);
@@ -835,20 +783,12 @@ static int read_flash(struct itecomdbgr_config *conf)
 	conf->update_start_addr = conf->read_start_addr;
 	conf->update_end_addr = conf->read_start_addr + conf->read_range;
 
-	if ((result = fast_read_burst_cdata(conf, NULL, 2)) != 0) {
+	if ((result = fast_read_burst_cdata(conf, NULL, true)) != 0) {
 		printf("read_flash : error\n\r");
 		result = FAIL;
 	}
 	printf("\n\r");
 	return result;
-}
-
-static void enter_uart_dbgr_mode(struct itecomdbgr_config *conf)
-{
-	uint8_t en_dbgr_buf[7] = { 0x00, W_CMD_PORT,	    0x00, W_DATA_PORT,
-				   0x00, W_BURST_DATA_PORT, 0x00 };
-	write_com(conf, en_dbgr_buf, sizeof(en_dbgr_buf));
-	msleep(5);
 }
 
 static int uart_app(struct itecomdbgr_config *conf)
@@ -896,7 +836,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 	tty.c_oflag &= ~ONLCR;
 
 	tty.c_cc[VTIME] = 10;
-	tty.c_cc[VMIN] = 255;
+	tty.c_cc[VMIN] = 0;
 
 	if (conf->baudrate != 3000000) {
 		/* set baud rate to 115200 */
@@ -906,20 +846,23 @@ static int uart_app(struct itecomdbgr_config *conf)
 		cfsetospeed(&tty, B3000000);
 		cfsetispeed(&tty, B3000000);
 	}
+
+	tcflush(conf->g_fd, TCIOFLUSH);
+	msleep(100);
+
 	/*  apply settings to serial port */
 	if (tcsetattr(conf->g_fd, TCSANOW, &tty) != 0) {
 		perror("tcsetattr");
 	}
+	msleep(100);
 	tcflush(conf->g_fd, TCIOFLUSH);
 
-	while (1) {
-		if (conf->g_steps == STEPS_TEST) {
-			enter_uart_dbgr_mode(conf);
-			read_id_2(conf);
-			conf->g_steps = STEPS_EXIT;
-		}
+	int tries = 0;
 
+	while (1) {
 		if (conf->g_steps == STEPS_NORMAL) {
+			++tries;
+
 			enter_uart_dbgr_mode_and_set_nack_mode(conf);
 
 			write_com(conf, cs_high, sizeof(cs_high));
@@ -939,20 +882,27 @@ static int uart_app(struct itecomdbgr_config *conf)
 			wr_reg(conf, 0xF01618, 0xFF);
 			wr_reg(conf, 0xF01619, 0xFF);
 
+			//			fprintf(stderr, "R2\n");
 			read_id_2(conf);
 
-			tcflush(conf->g_fd, TCIOFLUSH);
+			// tcflush(conf->g_fd, TCIOFLUSH);
 		}
 
 		if (conf->g_steps == STEPS_EXIT) {
-			tcflush(conf->g_fd, TCIOFLUSH);
 			break;
 		}
 
-		msleep(70);
-	}
+		if (tries >= UART_APP_TRIES) {
+			fprintf(stderr, "%s: STEPS_NORMAL failed on try #%d\n",
+				__func__, tries);
+			return_status = -1;
+			goto out;
+		}
 
-	dbgr_disable_protect_path(conf);
+		fprintf(stderr, "%s: retry STEPS_NORMAL\n", __func__);
+		msleep(70);
+		tcflush(conf->g_fd, TCIOFLUSH);
+	};
 
 	conf->eflash_type = EFLASH_TYPE_KGD;
 
@@ -973,10 +923,19 @@ static int uart_app(struct itecomdbgr_config *conf)
 		goto out;
 	}
 
+	//	tcdrain(conf->g_fd);
+	//	fprintf(stderr, "%s: read_flash\n", __func__);
+
 	if (conf->read_start_addr != NO_READ) {
 		read_flash(conf);
 		goto out;
 	}
+
+	dbgr_disable_protect_path(conf);
+	tcdrain(conf->g_fd);
+	msleep(100);
+
+	//	fprintf(stderr, "%s: erase_flash\n", __func__);
 
 	if (erase_flash(conf)) {
 		return_status = -1;
@@ -1086,7 +1045,6 @@ int main(int argc, char **argv)
 		case 'h':
 		default:
 			printf("\n\r");
-			printf("ITE COMDBGR Flash Tool:%s\n\r", VERSION);
 			printf("Usage:\n\r");
 			printf("	-f [fw filename]\n\r");
 			printf("	-d [device name]\n\r");
@@ -1103,8 +1061,6 @@ int main(int argc, char **argv)
 		}
 	}
 
-	printf("ITE COMDBGR Linux Flash Tool: Version %s\n\r", VERSION);
-	show_time();
 	if ((conf.baudrate != 115200) && (conf.baudrate != 3000000)) {
 		printf("UART Baudrate only support 115200  or 3M\n\r");
 		return 0;
@@ -1135,6 +1091,5 @@ int main(int argc, char **argv)
 
 	r = uart_app(&conf);
 	exit_file(&conf);
-	show_time();
 	return (r != 0) ? EXIT_FAILURE : EXIT_SUCCESS;
 }
