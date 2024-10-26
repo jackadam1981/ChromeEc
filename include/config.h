@@ -2308,6 +2308,7 @@
 #undef CONFIG_FP_SENSOR_ELAN80
 #undef CONFIG_FP_SENSOR_ELAN80SG
 #undef CONFIG_FP_SENSOR_ELAN515
+#undef CONFIG_FP_SENSOR_INT_ACTIVE_LOW
 
 /*****************************************************************************/
 
@@ -3241,6 +3242,11 @@
  * in the order the keys are pressed.
  */
 #undef CONFIG_KEYBOARD_STRICT_DEBOUNCE
+
+/*
+ * Enable Strauss keyboard.
+ */
+#undef CONFIG_KEYBOARD_STRAUSS
 
 /*
  * Enable the 8042 AUX port. This is typically used for PS/2 mouse devices.
