@@ -183,6 +183,8 @@ ZTEST_USER_F(src_policy, test_src_policy_pd_3a_rdo_1a5)
 	uint32_t lpm_src_pdo_actual_port0;
 	uint32_t lpm_src_pdo_actual_port1;
 	uint32_t partner_rdo = RDO_FIXED(1, 1500, 500, 0);
+	int expected_src_cap_mv = 5000;
+	int expected_src_cap_ma;
 
 	emul_pdc_configure_src(fixture->emul_pdc[TEST_USBC_PORT0],
 			       &connector_status_port0);
@@ -197,20 +199,33 @@ ZTEST_USER_F(src_policy, test_src_policy_pd_3a_rdo_1a5)
 
 	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_USBC_PORT0));
 
-	/* Verify that if the partner RDO only asked for 1.5A, that we
-	 * only offer 1.5A.
-	 */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_3A_NO_DOWNGRADE)) {
+		/* Downgrade based on partner RDO disabled.  Offered
+		 * contract should be 5V/3A.
+		 */
+		expected_src_cap_ma = 3000;
+	} else {
+		/* Verify that if the partner RDO only asked for 1.5A, that we
+		 * only offer 1.5A.
+		 */
+		expected_src_cap_ma = 1500;
+	}
+
 	zassert_ok(emul_pdc_get_pdos(fixture->emul_pdc[TEST_USBC_PORT0],
 				     SOURCE_PDO, PDO_OFFSET_0, 1, LPM_PDO,
 				     &lpm_src_pdo_actual_port0));
-	zassert_equal(PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port0), 5000,
+	zassert_equal(PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port0),
+		      expected_src_cap_mv,
 		      "LPM SOURCE_PDO voltage %d, but expected %d",
-		      PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port0), 5000);
-	zassert_equal(PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 1500,
+		      PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port0),
+		      expected_src_cap_mv);
+	zassert_equal(PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0),
+		      expected_src_cap_ma,
 		      "LPM SOURCE_PDO current %d, but expected %d",
-		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 1500);
+		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0),
+		      expected_src_cap_ma);
 
-	/* Validate that connecting another device gets 3A. */
+	/* Validate that connecting another device gets 3A or 1.5A. */
 	emul_pdc_configure_src(fixture->emul_pdc[TEST_USBC_PORT1],
 			       &connector_status_port1);
 	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT1],
@@ -220,15 +235,29 @@ ZTEST_USER_F(src_policy, test_src_policy_pd_3a_rdo_1a5)
 					    &connector_status_port1));
 	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_USBC_PORT1));
 
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_3A_NO_DOWNGRADE)) {
+		/* 2nd device connected should only get 1.5A */
+		expected_src_cap_ma = 1500;
+	} else {
+		/* 1st device was downgraed, 2nd device connected should get
+		 * 3A.
+		 */
+		expected_src_cap_ma = 3000;
+	}
+
 	zassert_ok(emul_pdc_get_pdos(fixture->emul_pdc[TEST_USBC_PORT1],
 				     SOURCE_PDO, PDO_OFFSET_0, 1, LPM_PDO,
 				     &lpm_src_pdo_actual_port1));
-	zassert_equal(PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port1), 5000,
+	zassert_equal(PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port1),
+		      expected_src_cap_mv,
 		      "LPM SOURCE_PDO voltage %d, but expected %d",
-		      PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port1), 5000);
-	zassert_equal(PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port1), 3000,
+		      PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port1),
+		      expected_src_cap_mv);
+	zassert_equal(PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port1),
+		      expected_src_cap_ma,
 		      "LPM SOURCE_PDO current %d, but expected %d",
-		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port1), 3000);
+		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port1),
+		      expected_src_cap_ma);
 }
 
 /* Verify 3A contract switches port when first port disconnected. */

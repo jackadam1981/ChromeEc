@@ -2516,7 +2516,8 @@ static void pdc_send_cmd_wait_exit(void *obj)
 		}
 		break;
 	case CMD_PDC_GET_RDO:
-		if (port->attached_state == SRC_ATTACHED_STATE) {
+		if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_3A_NO_DOWNGRADE) &&
+		    port->attached_state == SRC_ATTACHED_STATE) {
 			/* Inform DPM port partner's current request */
 			pdc_dpm_evaluate_request_rdo(config->connector_num,
 						     port->src_policy.rdo);

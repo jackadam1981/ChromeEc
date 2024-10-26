@@ -59,4 +59,22 @@ config PLATFORM_EC_USB_PD_3A_PORTS
 
 	  To turn off 3.0A currnet allocation, set this field to 0.
 
+config PLATFORM_EC_USB_PD_3A_NO_DOWNGRADE
+	bool "Disable downgrade sourcing 3A to 1.5A"
+	help
+	  The deafault USB sourcing policy automatically offers 3.0A to a
+	  PD capabable sink partner when the partner's sink capabilities
+	  request more than 1.5A current.  Once the chromebook offers a
+	  5V/3A source capability PDO to the partner, if the partner's
+	  subsequent Request RDO asks for 1.5A or less, the sourcing policy
+	  will downgrade the partner back to 5V/1.5A so that 3.0A can be offered
+	  to another port.
+
+	  Enable this option to disable the downgrade to 1.5A, regardless of
+	  the Request RDO sent by the partner.
+
+	  This setting should typically be enabled to pass USB PD compliance
+	  tests, as the PD compliance testers typically do not have the
+	  sophistication to handle the source current downgrade.
+
 endif # PLATFORM_EC_USB_POWER_DELIVERY || PLATFORM_EC_USB_PD_CONTROLLER

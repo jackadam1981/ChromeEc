@@ -243,6 +243,7 @@ void pdc_dpm_add_non_pd_sink(int port)
 	pdc_dpm_balance_source_ports(&dpm_work.work);
 }
 
+#ifndef CONFIG_PLATFORM_EC_USB_PD_3A_NO_DOWNGRADE
 void pdc_dpm_evaluate_request_rdo(int port, uint32_t rdo)
 {
 	int idx;
@@ -275,6 +276,7 @@ void pdc_dpm_evaluate_request_rdo(int port, uint32_t rdo)
 		pdc_dpm_balance_source_ports(&dpm_work.work);
 	}
 }
+#endif
 
 void pdc_dpm_remove_sink(int port)
 {
