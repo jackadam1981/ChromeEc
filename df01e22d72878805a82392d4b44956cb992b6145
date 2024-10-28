@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ab02db_7c21f6f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-28T23:16:09Z",
+      "side": 1,
+      "message": "Hey Tristan, can you take a look at this VIF update? I noticed that we have different FRS definitions across ports. This disables it on port 1 to match port 0.",
+      "revId": "df01e22d72878805a82392d4b44956cb992b6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
