@@ -35,6 +35,30 @@ static struct ec_response_fp_info egis_fp_sensor_info = {
 	.bpp = 16,
 };
 
+int convert_egis_get_image_error_code(egis_api_return_t code)
+{
+	int rc = EC_SUCCESS;
+	switch (code) {
+	case EGIS_API_IMAGE_QUALITY_GOOD:
+		break;
+	case EGIS_API_IMAGE_QUALITY_BAD:
+	case EGIS_API_IMAGE_QUALITY_WATER:
+		rc = FP_SENSOR_LOW_IMAGE_QUALITY;
+		break;
+	case EGIS_API_IMAGE_EMPTY:
+		rc = FP_SENSOR_TOO_FAST;
+		break;
+	case EGIS_API_IMAGE_QUALITY_PARTIAL:
+		rc = FP_SENSOR_LOW_SENSOR_COVERAGE;
+		break;
+	default:
+		assert(rc < 0);
+		rc = code;
+		break;
+	}
+	return rc;
+}
+
 void fp_sensor_lock(void)
 {
 	if (sensor_owner != task_get_current()) {
@@ -111,12 +135,13 @@ int fp_maintenance(void)
 
 int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
 {
-	return egis_get_image_with_mode(image_data, mode);
+	return convert_egis_get_image_error_code(
+		egis_get_image_with_mode(image_data, mode));
 }
 
 int fp_acquire_image(uint8_t *image_data)
 {
-	return egis_get_image(image_data);
+	return convert_egis_get_image_error_code(egis_get_image(image_data));
 }
 
 enum finger_state fp_finger_status(void)
