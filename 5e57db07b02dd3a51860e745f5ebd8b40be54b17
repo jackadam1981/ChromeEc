@@ -16,6 +16,24 @@
       "message": "This flag was added in binutils 2.41, I don\u0027t know if we are rolling back to a version before that, but if we were already on 2.41 or newer, then we could skip this rollback.",
       "revId": "5e57db07b02dd3a51860e745f5ebd8b40be54b17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c00d7a7_77aa85f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-10-28T23:35:40Z",
+      "side": 1,
+      "message": "Unfortunately, it\u0027s bundled with GCC and we didn\u0027t update to 2.41 until 13 crrev/c/5087534",
+      "parentUuid": "b09b0a73_f5b73fd8",
+      "revId": "5e57db07b02dd3a51860e745f5ebd8b40be54b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
