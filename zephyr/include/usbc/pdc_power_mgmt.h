@@ -10,6 +10,7 @@
 #ifndef __CROS_EC_PDC_POWER_MGMT_H
 #define __CROS_EC_PDC_POWER_MGMT_H
 
+#include "usb_mux.h"
 #include "usb_pd.h"
 
 #include <stdbool.h>
@@ -634,6 +635,21 @@ int pdc_power_mgmt_register_ppm_callback(const struct pdc_callback *callback);
  */
 int pdc_power_mgmt_ppm_ack_status_change(int port,
 					 union conn_status_change_bits_t ci);
+
+/**
+ * @brief Board hook for DP Attention event
+ *
+ * @param port USB-C port number
+ * @param port vdo_dp_status Attention VDO
+ */
+typedef void (*pdc_power_mgmt_board_dp_attention_cb)(int port,
+						     uint32_t vdo_dp_status);
+/**
+ * @brief Board hook for port unattached event
+ *
+ * @param port USB-C port number
+ */
+typedef void (*pdc_power_mgmt_board_unattached_cb)(int port);
 
 /**
  * @brief Get the latest DP Attention/Status VDO for the port.
