@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d7d5de_53bfbf68",
+        "filename": "zephyr/drivers/dsp_comms/client/remote_lid_switch.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "Can we avoid early return?\n```\nif (is_lid_switch_open !\u003d is_open) {\n  is_lid_switch_open \u003d is_open;\n  hook_notify(HOOK_LID_CHANGE);\n}\n```",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "260fcc5e_ffa1c1ec",
+        "filename": "zephyr/drivers/dsp_comms/client/remote_tablet_switch.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "Can we avoid early return? What is the benefit to this design pattern?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a472fa0_a54a0dca",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "missing `break;`",
+      "fixSuggestions": [
+        {
+          "fixId": "6774d526_5f682b16",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": "      break;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2018805f_8ef2efd0",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "At first pass it looks like the following switch case can over write the RC with invalid value. This may look better with both switch cases as their own function?\n\n```\nif (get_tag_and_flag(...)) { /* handle error */}\nelse if ( get_cbi_board_info(...)) { /* handle error */ }\n```",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175f379a_f43651d8",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "magic numbers, can we define a macro or const for these?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbddde3d_4bc38735",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "Can we hide the nested switch by making it a function?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ae05a9_085212b0",
+        "filename": "zephyr/drivers/dsp_comms/service/include/cros/dsp/service/cros_transport.hh",
+        "patchSetId": 24
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "`LOG_PRINTK` ?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c0855d_d742c0b1",
+        "filename": "zephyr/drivers/dsp_comms/test_comms.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "`size \u003d ARRAY_SIZE(out);`",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7899cb58_5d7b16ee",
+        "filename": "zephyr/test/dsp_comms/boards/native_sim.buffered_i2c.overlay",
+        "patchSetId": 24
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-28T19:43:17Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
