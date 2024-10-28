@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4def8a88_606c1f12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-28T17:34:18Z",
+      "side": 1,
+      "message": "I believe the changes in `egis_api.h` can be in a different CL from the ones in `egis_private.c`",
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df87baa_3eed73c4",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-28T17:34:18Z",
+      "side": 1,
+      "message": "why some of these error codes are positive, while others are negative?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "75677daf_6df2cc8f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": "enum egis_api_return_t {\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1661e9d_88166a7d",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-28T17:34:18Z",
+      "side": 1,
+      "message": "my understanding is that `fp_maintenance` has to be implemented. It is called in the state machine (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d341?q\u003dplatform%2Fec%20fp_maintenance\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d11#:~:text\u003d340-,341,-342)\n\nThis is the header for this function:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor.h;l\u003d146?q\u003dplatform%2Fec%20fp_maintenance\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d145-,146,-147",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
