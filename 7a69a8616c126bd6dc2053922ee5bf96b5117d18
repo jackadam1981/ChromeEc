@@ -3,6 +3,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c296d03d_d94a59fe",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-28T17:23:05Z",
+      "side": 1,
+      "message": "@hesling@chromium.org\n@tomhughes@chromium.org\n\nDo we usually expose the macro defining the number of maximum enrollment count per finger to the public repo?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3ff99a58_9fb580e9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "#define MAX_ENROLL_COUNT 15 @\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52ad1394_5d3abea3",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
