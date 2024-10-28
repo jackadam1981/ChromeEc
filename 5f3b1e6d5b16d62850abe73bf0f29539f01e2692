@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a95deed_1a76bebf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-28T18:13:56Z",
+      "side": 1,
+      "message": "It looks like CL:2346593 (downgrade after 3 attempts, reverted here) was made at the same time as CL:2171699 (downgrade after response timeout, retained here). I have a few questions.\n1. Is CL:2346593 redundant with CL:2171699? Is there a scenario where we get to the number-of-attempts check when we didn\u0027t already hit the timeout check?\n2. Does the timeout check also need to be fixed in some way?\n3. How do we hit this during a compliance test? I wouldn\u0027t have expected the tester to ignore 3 Discover Identity REQs.\n4. b:154653135 was for interop with a specific Naktek cable, but it sounds like the timeout check was more critical to the fix than the number-of-attempts check. Do we have any way at this point to check that we can still interop with this cable?",
+      "revId": "5f3b1e6d5b16d62850abe73bf0f29539f01e2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
