@@ -106,6 +106,24 @@
       "parentUuid": "d5b9813f_b7b8de60",
       "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb016bdb_f628a9c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-28T17:52:26Z",
+      "side": 1,
+      "message": "\u003e Honestly, I have no idea about adding a test to zephyr/test.\n\nYou can find guidance at https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/ztest.md. For some time now, we\u0027ve required CLs to be 90% covered to the extent practical. If coverage is below 90%, you\u0027ll probably need to add tests to submit this CL. I can answer your questions as you work through it.\n\n\u003e So how about patchset#10 changes for the lower coverage?\n\nI don\u0027t have a strong opinion on the changes between patchsets 10 and 11, if that\u0027s what you\u0027re asking. This change is going to look a bit weird no matter how it\u0027s structured, because we\u0027re working around weird behavior in charge manager.\n\nIf you want to see what the effect was on coverage, you\u0027ll need to set CQ+1 V+1 again and wait for the Zoss result. Once that finishes, you can see the individual lines covered/uncovered when viewing the diff. (You can also run/view coverage locally, as described in the above link, but it takes a long time to run.)",
+      "parentUuid": "3a5a12c7_cfbbcd12",
+      "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
