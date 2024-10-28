@@ -8,7 +8,7 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.121       | 0.23.112
+[ToT][ToT ebuild]   | 0.24.121       | 0.23.121
 [M131][131 release] | 0.24.121       | 0.23.112
 [M130][130 release] | 0.24.112       | 0.23.112
 [M129][129 release] | 0.24.112       | 0.23.112
@@ -826,6 +826,31 @@ Build:   ti50_common_mp-15980.B:v0.0.0-2b632158
 *   Print PCR0 in ccdstate output
     [b/329439532](https://b.corp.google.com/issues/329439532)
 *   Print AP RO verification latch state
+
+### 0.23.112 Released on 2024-10-28 in M...
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/5973937)
+
+Builder
+[firmware-ti50-mp-15980.B-branch/7](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/27/overview)
+
+Artifacts:
+[TODO](https://pantheon.corp.google.com/storage/browser/chromeos-image-archive/firmware-ti50-mp-15980.B-branch/R129-15980.24.0-1-8733266516965531265)
+
+**Features**
+
+*   MISC SPI host improvements
+    [b/319124176](https://b.corp.google.com/issues/319124176)
+*   Add misc debug prints for I2C and PMU
+
+```
+Build:   ti50_common_mp-15980.B:v0.0.95-e057d336
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9676-30e7fe57c
+         ms-tpm-20-ref:v0.0.320-19310e0
+         @chromeos-ci-firmware-us-east1-d-x32-0-05ll 2024-10-10 10:46:07
+```
 
 ## PrePVT images
 
