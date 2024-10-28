@@ -111,12 +111,51 @@ int fp_maintenance(void)
 
 int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
 {
-	return egis_get_image_with_mode(image_data, mode);
+	int rc = EC_SUCCESS;
+	rc = egis_get_image_with_mode(image_data, mode);
+	switch (rc) {
+	case EGIS_API_IMAGE_QUALITY_GOOD:
+		rc = EC_SUCCESS;
+		break;
+	case EGIS_API_IMAGE_QUALITY_BAD:
+	case EGIS_API_IMAGE_QUALITY_WATER:
+		rc = FP_SENSOR_LOW_IMAGE_QUALITY;
+		break;
+	case EGIS_API_IMAGE_EMPTY:
+		rc = FP_SENSOR_TOO_FAST;
+		break;
+	case EGIS_API_IMAGE_QUALITY_PARTIAL:
+		rc = FP_SENSOR_LOW_SENSOR_COVERAGE;
+		break;
+	default:
+		break;
+	}
+
+	return rc;
 }
 
 int fp_acquire_image(uint8_t *image_data)
 {
-	return egis_get_image(image_data);
+	int rc = EC_SUCCESS;
+	rc = egis_get_image(image_data);
+	switch (rc) {
+	case EGIS_API_IMAGE_QUALITY_GOOD:
+		rc = EC_SUCCESS;
+		break;
+	case EGIS_API_IMAGE_QUALITY_BAD:
+	case EGIS_API_IMAGE_QUALITY_WATER:
+		rc = FP_SENSOR_LOW_IMAGE_QUALITY;
+		break;
+	case EGIS_API_IMAGE_EMPTY:
+		rc = FP_SENSOR_TOO_FAST;
+		break;
+	case EGIS_API_IMAGE_QUALITY_PARTIAL:
+		rc = FP_SENSOR_LOW_SENSOR_COVERAGE;
+		break;
+	default:
+		break;
+	}
+	return rc;
 }
 
 enum finger_state fp_finger_status(void)
