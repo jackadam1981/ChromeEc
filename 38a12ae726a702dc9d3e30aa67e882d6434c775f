@@ -87,6 +87,24 @@
       "parentUuid": "6e7c5953_f620e9f6",
       "revId": "38a12ae726a702dc9d3e30aa67e882d6434c775f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0087d9_60bf58f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-10-28T08:00:19Z",
+      "side": 1,
+      "message": "\u003e It means that the irq_handler() function is called 2x more than expected, since it is unlikely the sensors are perfectly in sync.\n\nbut this is happening on `base sensor: bma422 + lid sensor: bma422` and `lis2dw12 + lid sensor: lis2dw12` even though without this CL.\n\nCall trace: lid sensor interrupt triggered -\u003e `motion_sense_task` run -\u003e `motion_sense_process` -\u003e `sensor-\u003edrv-\u003eirq_handler`(the `sensor-\u003edrv-\u003eirq_handler !\u003d NULL` for both lid and base sensor are true, because them used the same sensor driver. )",
+      "parentUuid": "1f946e74_2bbbf3a1",
+      "revId": "38a12ae726a702dc9d3e30aa67e882d6434c775f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
