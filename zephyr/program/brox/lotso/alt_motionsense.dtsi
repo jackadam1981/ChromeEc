@@ -6,13 +6,6 @@
 #include <dt-bindings/motionsense/utils.h>
 
 / {
-	aliases {
-		/*
-		 * Interrupt bindings for sensor devices.
-		 */
-		lis2dw12-int = &lid_accel;
-	};
-
 	/*
 	 * Declare mutexes used by sensor drivers.
 	 * A mutex node is used to create an instance of mutex_t.
@@ -111,8 +104,16 @@
 			};
 		};
 	};
+	motionsense-sensor-info {
+		compatible = "cros-ec,motionsense-sensor-info";
+
+		/*
+		 * List of GPIO interrupts that have to be enabled at initial
+		 * stage.
+		 */
+
+		/* List of sensors in force mode */
+		accel-force-mode-sensors = <&lid_accel &base_accel>;
+	};
 };
 
-&int_lid_imu {
-	handler = "motion_interrupt";
-};
