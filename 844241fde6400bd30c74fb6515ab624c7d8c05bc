@@ -34,6 +34,24 @@
       "parentUuid": "d43c32b9_753b3713",
       "revId": "844241fde6400bd30c74fb6515ab624c7d8c05bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25674055_d93789ae",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 3140340
+      },
+      "writtenOn": "2024-10-28T11:51:20Z",
+      "side": 1,
+      "message": "I created a Patchset 3.\nBTW, I used \"#if KEYBOARD_COL_KEY_R \u003d\u003d KEYBOARD_COL_VOL_UP\" in Patchset2.\nBut I notice the key_vol_up_col should be used instead of KEYBOARD_COL_VOL_UP.\nThis change was included in Patchset3 too.\nCould you please review it again?",
+      "parentUuid": "0749a1ff_f16e33f2",
+      "revId": "844241fde6400bd30c74fb6515ab624c7d8c05bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
