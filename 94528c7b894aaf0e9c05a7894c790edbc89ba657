@@ -88,6 +88,24 @@
       "parentUuid": "b029de67_0e64bde6",
       "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a5a12c7_cfbbcd12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-10-28T06:04:44Z",
+      "side": 1,
+      "message": "Honestly, I have no idea about adding a test to `zephyr/test`. So how about `patchset#10` changes for the lower coverage?",
+      "parentUuid": "d5b9813f_b7b8de60",
+      "revId": "94528c7b894aaf0e9c05a7894c790edbc89ba657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
