@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c19f8a_ffc8e7a5",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-28T21:08:04Z",
+      "side": 1,
+      "message": "can this function return something other than:\nEGIS_API_IMAGE_QUALITY_GOOD\nEGIS_API_IMAGE_QUALITY_BAD\nEGIS_API_IMAGE_QUALITY_WATER\nEGIS_API_IMAGE_EMPTY\nEGIS_API_IMAGE_QUALITY_PARTIAL\n??\nHow about the negative error codes including memory error codes?",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 32
+      },
+      "revId": "23d8b25d2e1f2a54ca4251f793460d779aeca687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
