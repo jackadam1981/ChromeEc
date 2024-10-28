@@ -38,3 +38,11 @@ properties:
       - "DRP_TRY_SRC"
       - "DRP_TRY_SNK"
     required: true
+  board_unattach_cb:
+    type: string
+    description: |
+      Name of function used as board_unattach_cb callback
+  board_dp_attention_cb:
+    type: string
+    description: |
+      Name of function used as board_dp_attention_cb callback
