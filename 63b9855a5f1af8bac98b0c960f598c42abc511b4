@@ -16,6 +16,24 @@
       "message": "You need (part of) this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5898827.",
       "revId": "63b9855a5f1af8bac98b0c960f598c42abc511b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e2cb84_e3b38099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-10-29T18:18:53Z",
+      "side": 1,
+      "message": "Please fix conflicts and finish the cherry-pick: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5976690.",
+      "parentUuid": "7ff257cf_523c847d",
+      "revId": "63b9855a5f1af8bac98b0c960f598c42abc511b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
