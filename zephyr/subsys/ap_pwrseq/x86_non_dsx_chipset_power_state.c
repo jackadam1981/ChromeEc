@@ -96,6 +96,10 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 					       const enum ap_pwrseq_state entry,
 					       const enum ap_pwrseq_state exit)
 {
+	printk("%s: entry %d"
+	       "================================================================\n",
+	       __func__, (int)entry);
+
 	switch (entry) {
 	case AP_POWER_STATE_G3:
 		if (exit == AP_POWER_STATE_S5) {
@@ -240,6 +244,10 @@ SYS_INIT(x86_non_dsx_chipset_init_events, APPLICATION,
 
 enum ap_pwrseq_state chipset_pwr_seq_get_state(void)
 {
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	/*
 	 * Chip is shut down, G3 state.
 	 */

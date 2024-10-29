@@ -324,10 +324,19 @@ int rsmrst_power_is_good(void)
 /* Handling RSMRST signal is mostly common across x86 chipsets */
 void rsmrst_pass_thru_handler(void)
 {
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
 	if (power_signal_get(PWR_RSMRST_PWRGD)) {
+
+		printk("%s: PWR_RSMRST_PWRGD is 1\n", __func__);
+
 		if (power_signal_get(PWR_EC_PCH_RSMRST)) {
+			printk("%s: PWR_EC_PCH_RSMRST is 1\n", __func__);
+
 			/*
 			 * Delay `PWR_EC_PCH_RSMRST` de-assertion for at least
 			 * `rsmrst_delay` after detecting that power wells are
@@ -339,6 +348,9 @@ void rsmrst_pass_thru_handler(void)
 			update_ap_boot_time(RSMRST);
 		}
 	} else {
+
+		printk("%s: set RSMRST 1\n", __func__);
+
 		power_signal_set(PWR_EC_PCH_RSMRST, 1);
 	}
 }
@@ -676,6 +688,10 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 	power_signal_mask_t last_in_signals = 0;
 	enum power_states_ndsx last_state = -1;
 
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	/*
 	 * Let clients know that the AP power state is now
 	 * initialized and ready.
@@ -829,6 +845,10 @@ AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_G3, x86_non_dsx_g3_entry,
 
 static int x86_non_dsx_s5_entry(void *data)
 {
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)) {
 		atomic_set_bit(flags, S5_INACTIVE_TIMER_RUNNING);
 		k_timer_start(
@@ -842,13 +862,23 @@ static int x86_non_dsx_s5_entry(void *data)
 
 static int x86_non_dsx_s5_run(void *data)
 {
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	/*
 	 * At this point, lower level action handlers of state machine should
 	 * have already checked that required power rails are OK.
 	 */
 	rsmrst_pass_thru_handler();
 	if (!power_signal_get(PWR_EC_PCH_RSMRST)) {
+
+		printk("%s: PWR_EC_PCH_RSMRST is 0\n", __func__);
+
 		if (signals_valid_and_off(IN_PCH_SLP_S5)) {
+
+			printk("%s: set state to S4\n", __func__);
+
 			return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S4);
 		}
 	}
@@ -872,6 +902,10 @@ static int x86_non_dsx_s5_run(void *data)
 
 static int x86_non_dsx_s5_exit(void *data)
 {
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	if (atomic_test_bit(flags, S5_INACTIVE_TIMER_RUNNING)) {
 		k_timer_stop(&x86_non_dsx_timer);
 		atomic_clear_bit(flags, S5_INACTIVE_TIMER_RUNNING);
