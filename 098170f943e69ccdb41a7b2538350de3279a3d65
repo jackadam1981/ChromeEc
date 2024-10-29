@@ -234,6 +234,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c451c331_2bf2b1f3",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-29T17:58:15Z",
+      "side": 1,
+      "message": "\u003e Table 5-5 only uses the DPAM version field. It\u0027s possible that a port supports SVDM2.1 + DPAM2.0.\n\nWell, I think the corollary is that if SVDM version is 2.0 or earlier, the recipient should not try to parse the DPAM version field.\n\nFootnote from table 5-5:\n\u003e a. If Initiator and Responder support SVDM Version 2.0 or earlier and if DisplayPort Alternate Mode is supported all DP\nCapabilities exchange shall follow DisplayPort Alt Mode on USB Type-C specification 2.0 or earlier.\n\nPulling in the thread from the next CL, because they\u0027re becoming intertwined anyway:\n\u003e I think we don\u0027t need to do SVDM version negociation in dp_alt_mode.c.\n\nIt is a DPAM requirement to at least act like we\u0027re doing this. Footnote from table 5-4:\n\u003e a. SVDM Version between an Initiator and Responder shall be resolved as per USB-PD.\n\nIIRC (no source handy), DPAM 2.1 bumped the SVDM version because there were pre-2.1 implementations that were setting the reserved field that would become DPAM Version to a non-zero value in violation of the pre-2.1 spec. I think this belt-and-suspenders check probably promotes interop.",
+      "parentUuid": "1b077848_f28dc050",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2fd1d0_7a345e00",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 2
