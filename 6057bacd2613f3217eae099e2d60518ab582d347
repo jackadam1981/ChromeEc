@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192f1778_2ba810ed",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:43:48Z",
+      "side": 1,
+      "message": "why do you have to initialize it as `int rc \u003d EC_SUCCESS`?\n\nThe value is going to change in the second line. Can you change the second line to:\n`int rc \u003d egis_get_image_with_mode(image_data, mode);`?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 20
+      },
+      "revId": "6057bacd2613f3217eae099e2d60518ab582d347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c657b7_1631a91b",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:43:48Z",
+      "side": 1,
+      "message": "same comment as above.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 33
+      },
+      "revId": "6057bacd2613f3217eae099e2d60518ab582d347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
