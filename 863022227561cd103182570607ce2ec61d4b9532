@@ -22,6 +22,30 @@
       },
       "revId": "863022227561cd103182570607ce2ec61d4b9532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02ba76f_ec8e6bd9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2102,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-29T21:38:37Z",
+      "side": 1,
+      "message": "Should we evaluate the mismatch bit before clamping?",
+      "parentUuid": "c6241b01_77815baa",
+      "range": {
+        "startLine": 2098,
+        "startChar": 0,
+        "endLine": 2102,
+        "endChar": 0
+      },
+      "revId": "863022227561cd103182570607ce2ec61d4b9532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
