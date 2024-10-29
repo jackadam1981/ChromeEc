@@ -5,6 +5,7 @@
 
 /* Watchdog driver */
 
+#include "atomic.h"
 #include "common.h"
 #include "cpu.h"
 #include "hooks.h"
@@ -15,7 +16,7 @@
 #include "watchdog.h"
 
 /* Enter critical period or not. */
-static int wdt_warning_fired;
+static atomic_t wdt_warning_fired;
 
 /*
  * We use WDT_EXT_TIMER to trigger an interrupt just before the watchdog timer
@@ -83,10 +84,16 @@ void watchdog_warning_irq(void)
 		     get_mepc(), ira, task_get_current());
 #endif
 
+<<<<<<< PATCH SET (25c3cd Merge remote-tracking branch cros/main into firmware-dedede-)
+	if (!atomic_add(&wdt_warning_fired, 1)) {
+		if (IS_ENABLED(CONFIG_PANIC_ON_WATCHDOG_WARNING))
+			software_panic(PANIC_SW_WATCHDOG, task_get_current());
+=======
 	if (IS_ENABLED(CONFIG_PANIC_ON_WATCHDOG_WARNING))
 		software_panic(PANIC_SW_WATCHDOG, task_get_current());
 
 	if (!wdt_warning_fired++)
+>>>>>>> BASE      (984fc2 Revert "it83xx: set wdt_warning_fired before PANIC_ON_WATCHD)
 		/*
 		 * Reduce interval of warning timer, so we can print more
 		 * warning messages during critical period.
@@ -102,8 +109,7 @@ void watchdog_reload(void)
 	/* Restart (tickle) watchdog timer. */
 	IT83XX_ETWD_EWDKEYR = ITE83XX_WATCHDOG_MAGIC_WORD;
 
-	if (wdt_warning_fired) {
-		wdt_warning_fired = 0;
+	if (atomic_clear(&wdt_warning_fired)) {
 		/* Reset warning timer to default if watchdog is touched. */
 		watchdog_set_warning_timer(ITE83XX_WATCHDOG_WARNING_MS, 0);
 	}
