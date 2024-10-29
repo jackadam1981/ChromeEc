@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61710f3_a6456356",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-10-29T00:57:14Z",
+      "side": 1,
+      "message": "Hi Ruibin： \nThis CL can pass the test in the old code base, but fails in the latest code base.  I found a related CL, and there may be other \ncrrev/c/5892440 that caused the problem.\nThis problem seems to be related to EC\u0027s processing power. can you help to check it? thanks",
+      "revId": "e5a4581a16213408dd8a611a2701d2b14330aa98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
