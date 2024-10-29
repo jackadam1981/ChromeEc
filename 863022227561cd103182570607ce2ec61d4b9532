@@ -46,6 +46,30 @@
       },
       "revId": "863022227561cd103182570607ce2ec61d4b9532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8300b338_2abef192",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-29T23:40:55Z",
+      "side": 1,
+      "message": "That makes sense, evaluate the mismatch first, then clamp the current before filling in the RDO.",
+      "parentUuid": "a02ba76f_ec8e6bd9",
+      "range": {
+        "startLine": 2098,
+        "startChar": 0,
+        "endLine": 2102,
+        "endChar": 0
+      },
+      "revId": "863022227561cd103182570607ce2ec61d4b9532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
