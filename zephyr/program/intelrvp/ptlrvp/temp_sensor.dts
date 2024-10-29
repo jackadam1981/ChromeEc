@@ -6,11 +6,11 @@
 #include <cros/thermistor/thermistor.dtsi>
 
 / {
-	temp_ambient: ambient {
+	/*temp_ambient: ambient {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V0_22K6_47K_4050B>;
 		adc = <&adc_ambient>;
-	};
+	};*/
 	temp_ddr: ddr {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V0_22K6_47K_4050B>;
@@ -29,14 +29,14 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		ambient {
+		/*ambient {
 			temp_fan_off = <15>;
 			temp_fan_max = <50>;
 			temp_host_high = <75>;
 			temp_host_halt = <80>;
 			temp_host_release_high = <65>;
 			sensor = <&temp_ambient>;
-		};
+		};*/
 
 		/*
 		 * TDB: battery temp read api is not using thermistor and

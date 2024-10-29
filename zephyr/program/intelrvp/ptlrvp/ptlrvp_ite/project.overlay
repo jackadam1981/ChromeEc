@@ -1,0 +1,107 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "include/board.h"
+
+#include <cros/integrated_fwid.dtsi>
+
+#include "adc.dtsi"
+#include "fan.dtsi"
+
+/* TODO(b/358612639)
+ * Arbitrage generates an incorrect node label when using alternate pins.
+ * Create a 2nd node label on I2C3 as a workaround.
+ */
+i2c3ALT: &i2c3 {
+};
+
+#include "gpio.dtsi"
+
+/ {
+	named-gpios {
+		/*
+		 * Aliases for power signal names
+		 */
+		en_pp3300_a: ec_ds3_r {
+			/*alias = "GPIO_TEMP_SENSOR_POWER";*/
+		};
+		en_pp5000_s5: bga_pinf4 {};
+		rsmrst_pwrgd: rsmrst_pwrgd_n_r {};
+		ec_pch_rsmrst_l: pm_rsmrst_n_r {};
+		pch_slp_s0_n: pch_slp_s0_n_r {};
+		ec_pch_pwrok_od: pch_pwrok_ec_r {};
+		all_sys_pwrgd: all_sys_pwrgd_r {};
+
+		bc_acok: bga_pine5 {
+			enum-name = "GPIO_AC_PRESENT";
+		};
+		std_adp_prsnt: std_adp_prsnt_r {};
+		ioex_kbd_intr_n: c_ioex_kbd_intr_r {};
+		smc_lid_n: smc_lid_r {};
+		pwrbtn: pm_pwrbtn_n_r {};
+		vol_up_ec: volume_up_r {};
+		vol_dn_ec: vol_dn_ec_r {};
+
+		bat_det_r {
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		c_ioex_kbd_intr_r {
+			enum-name = "GPIO_KB_DISCRETE_INT";
+		};
+		smc_lid_r {
+			enum-name = "GPIO_LID_OPEN";
+		};
+
+	};
+};
+
+/*
+ * Aliases to common names
+ */
+gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+cse_early_rec_sw: &gpio_x00085 {};
+
+#include "i2c.dts"
+#include "../battery.dtsi"
+#include "../i2c.dtsi"
+#include "../ioex.dtsi"
+#include "../ioex_gpio.dtsi"
+#include "../interrupts.dtsi"
+#include "../keyboard.dtsi"
+#include "../pd.dtsi"
+#include "../power_signals.dtsi"
+
+/ {
+	named-gpios {
+		/*
+		 * Aliases for power signal names
+		 */
+		/*en_pp3300_a: ec_ds3_r {
+			alias = "GPIO_TEMP_SENSOR_POWER";
+		};*/
+	};
+};
+
+#include "../temp_sensor.dts"
+#include "../usbc.dtsi"
+/*#include "../led_pins.dtsi"*/
+/*#include "../led_policy.dtsi"*/
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+};
+
+&sha0 {
+	status = "okay";
+};
+
+&gpio_volume_up_r {
+	enum-name = "GPIO_VOLUME_UP_L";
+};
+
+&gpio_vol_dn_ec_r {
+	enum-name = "GPIO_VOLUME_DOWN_L";
+};
