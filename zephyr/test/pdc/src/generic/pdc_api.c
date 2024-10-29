@@ -692,7 +692,7 @@ ZTEST_USER(pdc_api, test_get_cable_property)
 
 	memset(&read_property, 0, sizeof(union cable_property_t));
 	zassert_ok(pdc_get_cable_property(dev, &read_property));
-	k_sleep(K_MSEC(SLEEP_MS));
+	k_sleep(K_MSEC(SLEEP_MS * 6));
 	zassert_ok(memcmp(&read_property, &property,
 			  sizeof(union cable_property_t)));
 }

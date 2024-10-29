@@ -808,7 +808,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap)
 		emul_pdc_connect_partner(emul, &connector_status);
 		zassert_true(
 			TEST_WAIT_FOR(pdc_power_mgmt_is_pd_attached(TEST_PORT),
-				      PDC_TEST_TIMEOUT),
+				      PDC_TEST_TIMEOUT * 2),
 			"PD not connected in time (i=%d)", i);
 
 		pd_request_power_swap(TEST_PORT);
@@ -898,7 +898,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 		emul_pdc_connect_partner(emul, &connector_status);
 		zassert_true(
 			TEST_WAIT_FOR(pdc_power_mgmt_is_pd_attached(TEST_PORT),
-				      PDC_TEST_TIMEOUT));
+				      PDC_TEST_TIMEOUT * 2));
 
 		pd_request_data_swap(TEST_PORT);
 		start = k_cycle_get_32();
@@ -950,7 +950,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_src)
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_false(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
-				    PDC_TEST_TIMEOUT));
+				    PDC_TEST_TIMEOUT * 2));
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_no_up)
@@ -986,7 +986,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_up)
 	emul_pdc_configure_snk(emul, &connector_status);
 	emul_pdc_connect_partner(emul, &connector_status);
 	zassert_true(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
-				   PDC_TEST_TIMEOUT));
+				   PDC_TEST_TIMEOUT * 2));
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_get_vbus_voltage)
@@ -1195,7 +1195,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_set_dual_role)
 			emul_pdc_connect_partner(emul, &connector_status);
 			zassert_true(TEST_WAIT_FOR(
 				pdc_power_mgmt_is_pd_attached(TEST_PORT),
-				PDC_TEST_TIMEOUT));
+				PDC_TEST_TIMEOUT * 2));
 		}
 
 		pd_set_dual_role(TEST_PORT, test[i].s.state);
@@ -1745,7 +1745,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_identity_discovery)
 		emul_pdc_connect_partner(emul, &in_conn_status);
 		zassert_true(
 			TEST_WAIT_FOR(pdc_power_mgmt_is_pd_attached(TEST_PORT),
-				      PDC_TEST_TIMEOUT));
+				      PDC_TEST_TIMEOUT * 2));
 
 		actual_state = pdc_power_mgmt_get_identity_discovery(
 			TEST_PORT, test[i].s.type);

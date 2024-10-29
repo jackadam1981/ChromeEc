@@ -660,6 +660,7 @@ static void st_idle_run(void *o)
 			task_ucsi(data, UCSI_SET_RETIMER_MODE);
 			break;
 		case CMD_GET_CABLE_PROPERTY:
+			k_msleep(500);
 			task_ucsi(data, UCSI_GET_CABLE_PROPERTY);
 			break;
 		case CMD_GET_VDO:
