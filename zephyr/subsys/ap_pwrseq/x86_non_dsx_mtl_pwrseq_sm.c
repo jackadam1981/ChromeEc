@@ -30,6 +30,8 @@ bool chipset_is_all_power_good(void)
 }
 
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
+%%%
+
 static void ap_off(void)
 {
 	power_signal_set(PWR_PCH_PWROK, 0);
@@ -40,6 +42,8 @@ static void ap_off(void)
 static void generate_pwrok_handler(void)
 {
 	int all_sys_pwrgd_in;
+
+	LOG_DBG("%s: call", __func__);
 
 	if (power_signal_get(PWR_EC_PCH_SYS_PWROK) == 0) {
 		k_msleep(AP_PWRSEQ_DT_VALUE(sys_pwrok_delay));
@@ -56,6 +60,14 @@ static void generate_pwrok_handler(void)
 
 	power_signal_set(PWR_EC_PCH_SYS_PWROK, all_sys_pwrgd_in);
 	/* PCH_PWROK is set to combined result of ALL_SYS_PWRGD and SLP_S3 */
+
+	LOG_DBG("settig PWR_PCH_PWROK %d && %d",
+		all_sys_pwrgd_in, !power_signal_get(PWR_SLP_S3));
+
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	power_signal_set(PWR_PCH_PWROK,
 			 all_sys_pwrgd_in && !power_signal_get(PWR_SLP_S3));
 }
@@ -63,6 +75,10 @@ static void generate_pwrok_handler(void)
 /* Chipset specific power state machine handler */
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 {
+	printk("%s:"
+	       "================================================================\n",
+		__func__);
+
 	/* Add chipset specific state handling if any */
 	switch (curr_state) {
 	case SYS_POWER_STATE_G3S5:
@@ -101,6 +117,11 @@ AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL, x86_non_dsx_mtl_g3_run,
 
 static int x86_non_dsx_mtl_s3_entry(void *data)
 {
+	LOG_DBG("%s: call", __func__);
+	printk("%s: "
+	       "================================================================\n",
+		__func__);
+
 	power_signal_set(PWR_PCH_PWROK, 0);
 	power_signal_set(PWR_EC_PCH_SYS_PWROK, 0);
 
@@ -110,6 +131,11 @@ static int x86_non_dsx_mtl_s3_entry(void *data)
 static int x86_non_dsx_mtl_s3_run(void *data)
 {
 	int all_sys_pwrgd_in = power_signal_get(PWR_ALL_SYS_PWRGD);
+
+	LOG_DBG("%s: call", __func__);
+	printk("%s: "
+	       "================================================================\n",
+		__func__);
 
 	if (power_signal_get(PWR_RSMRST_PWRGD) == 0) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
@@ -125,6 +151,13 @@ static int x86_non_dsx_mtl_s3_run(void *data)
 
 	power_signal_set(PWR_EC_PCH_SYS_PWROK, all_sys_pwrgd_in);
 	/* PCH_PWROK is set to combined result of ALL_SYS_PWRGD and SLP_S3 */
+
+	LOG_DBG("%s: settig PWR_PCH_PWROK %d && %d", __func__,
+		all_sys_pwrgd_in, power_signal_get(PWR_SLP_S3));
+	printk("%s: "
+	       "================================================================\n",
+		__func__);
+
 	power_signal_set(PWR_PCH_PWROK,
 			 all_sys_pwrgd_in && !power_signal_get(PWR_SLP_S3));
 
@@ -132,6 +165,12 @@ static int x86_non_dsx_mtl_s3_run(void *data)
 	    !power_signal_get(PWR_PCH_PWROK) ||
 	    !power_signal_get(PWR_EC_PCH_SYS_PWROK)) {
 		/* Make sure these signals levels are stable */
+
+		LOG_DBG("%s: ret 1", __func__);
+		printk("%s: "
+		       "================================================================\n",
+		       __func__);
+
 		return 1;
 	}
 
@@ -153,6 +192,11 @@ static int x86_non_dsx_mtl_s0_run(void *data)
 static int x86_non_dsx_mtl_s0_exit(void *data)
 {
 	enum ap_pwrseq_state new_state = ap_pwrseq_sm_get_entry_state(data);
+
+	LOG_DBG("%s: call", __func__);
+	printk("%s: "
+	       "================================================================\n",
+		__func__);
 
 	if (new_state < AP_POWER_STATE_S3) {
 		power_signal_set(PWR_PCH_PWROK, 0);
