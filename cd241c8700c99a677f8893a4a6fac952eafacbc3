@@ -161,6 +161,30 @@
       },
       "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9964b4ca_ebe49e3d",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:52:07Z",
+      "side": 1,
+      "message": "yes, EC630 just had one zone to detect finger. So it would be return `FINGER_PARTIAL`",
+      "parentUuid": "ecd11dd4_d0dd1dfd",
+      "range": {
+        "startLine": 112,
+        "startChar": 18,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
