@@ -71,6 +71,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16752056_b8d8d259",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T14:57:35Z",
+      "side": 1,
+      "message": "positive values were not error. They are present the status.\nprefix EGIS_API_IMAGE relay will wrap to \nEC_SUCCESS\nFP_SENSOR_LOW_IMAGE_QUALITY\nFP_SENSOR_TOO_FAST\nFP_SENSOR_LOW_SENSOR_COVERAGE\n\nprefix EGIS_API_IMAGE relay will wrap to \nFINGER_PRESENT\nFINGER_NONE\n\nonly negative values are error code.",
+      "parentUuid": "2df87baa_3eed73c4",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1661e9d_88166a7d",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2024-10-28T17:34:18Z",
       "side": 1,
       "message": "my understanding is that `fp_maintenance` has to be implemented. It is called in the state machine (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d341?q\u003dplatform%2Fec%20fp_maintenance\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d11#:~:text\u003d340-,341,-342)\n\nThis is the header for this function:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor.h;l\u003d146?q\u003dplatform%2Fec%20fp_maintenance\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d145-,146,-147",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e3dbc2_22e6c9d2",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T14:57:35Z",
+      "side": 1,
+      "message": "Can I understand this function as being used to check whether the hardware is functioning properly? Are there any other error values besides EC_ERROR_HW_INTERNAL? \nThe description mention about \n1. defective pixels\n2. finger on sensor",
+      "parentUuid": "e1661e9d_88166a7d",
       "range": {
         "startLine": 97,
         "startChar": 4,
