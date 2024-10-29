@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "382d83f1_7ed3c8af",
+        "filename": "common/usb_pd_discovery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-29T09:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979fa457_d4e0b97e",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8bcac2b_d9b075bd",
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "Yes. See DPAM v2.1, Table 5-5 DPAM Version Resolution. SVDM version 2.1 indicates DPAM version 2.1, which introduces new fields and VDM flows. It defines a mechanism for negotiating the active DPAM version, based on the active SVDM version.\n\nIMO, it would be accurate to say that the DPAM spec violates the PD spec by using the field this way. However, the way the PD spec uses it is almost useless and even more so in the context of DPAM. I can\u0027t really blame DPAM for doing what it does.",
       "parentUuid": "e81de8c9_700a7d45",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17441063_a6f43545",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-29T09:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d4dd5bd_3c9ea992",
       "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
