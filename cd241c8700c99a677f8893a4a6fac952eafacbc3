@@ -185,6 +185,30 @@
       },
       "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98dfef7_2c03d1df",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:54:08Z",
+      "side": 1,
+      "message": "And i think `FINGER_NONE` was no finger on sensor.",
+      "parentUuid": "9964b4ca_ebe49e3d",
+      "range": {
+        "startLine": 112,
+        "startChar": 18,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
