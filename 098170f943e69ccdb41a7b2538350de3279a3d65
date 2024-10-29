@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c68fb307_788d008d",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-29T10:14:04Z",
+      "side": 1,
+      "message": "(not done yet...)\n\nTable 5-5 only uses the DPAM version field. It\u0027s possible that a port supports SVDM2.1 + DPAM2.0.\n\nThe footnotes below also mentions this scenario.\n\n\u003e b. If Initiator and Responder both support SVDM Version 2.1 or higher and if either Initiator or Responder supports DPAM\nVersion 2.0 or earlier, then all DP Capabilities exchange shall follow DisplayPort Alt Mode on USB Type-C specification 2.0\nor earlier.",
+      "parentUuid": "17441063_a6f43545",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2fd1d0_7a345e00",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 2
