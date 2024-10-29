@@ -213,6 +213,19 @@ register_intelrvp_project(
     ],
 )
 
+register_intelrvp_project(
+    project_name="ptlrvp_ite",
+    chip="it8xxx2/it82002aw",
+    extra_dts_overlays=[
+        here / "ptlrvp/ptlrvp_ite/project.overlay",
+    ],
+    extra_kconfig_files=[
+        here / "ptlrvp/ptlrvp_ite/project.conf",
+        here / "ptlrvp/pd.conf",
+        here / "zephyr_ap_pwrseq.conf",
+    ],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="adlrvp_mchp", addr=0x7FFE0)
@@ -223,3 +236,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="mtlrvpp_npcx", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="mtlrvpp_pd", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ptlrvp_mchp", addr=0x40318)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ptlrvp_npcx", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ptlrvp_ite", addr=0x60098)
