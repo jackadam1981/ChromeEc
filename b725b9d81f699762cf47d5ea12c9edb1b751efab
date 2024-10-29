@@ -16,6 +16,23 @@
       "message": "Hi Bob, please help review the CL, thanks.",
       "revId": "b725b9d81f699762cf47d5ea12c9edb1b751efab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc45f07_d9e8aa22",
+        "filename": "zephyr/program/brox/lotso/alt_motionsense.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-10-29T15:25:30Z",
+      "side": 1,
+      "message": "You want the lid accelerometer to be service by an interrupt. The name is confusing, shouldn\u0027t it be al_lid_accel?",
+      "revId": "b725b9d81f699762cf47d5ea12c9edb1b751efab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
