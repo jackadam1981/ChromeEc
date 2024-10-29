@@ -5,3 +5,8 @@
 zephyr_library_sources("src/led.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/dp_alt_mode.c")
 zephyr_library_sources("src/usb_mux.c")
+<<<<<<< HEAD   (43148c Revert "ec: Compile using coreboot-sdk from subtool")
+=======
+zephyr_library_sources("src/touch.c")
+zephyr_library_sources("src/power_config.c")
+>>>>>>> BRANCH (0c17fe brox: Disable FRS in Brox VIF on Port 1)
