@@ -34,7 +34,34 @@ extern "C" {
 /* --- functions provided by the sensor-specific driver --- */
 
 /**
- * Initialize the connected sensor hardware and put it in a low power mode.
+ * @brief Initialize the connected sensor hardware and put it in a low power
+ * mode.
+ *
+ * This function updates a static error variable with the below error codes
+ * (whenever detected), which is read using the `fp_sensor_get_info` function
+ * defined in the same source file. The errors are ultimately read by biod using
+ * the host command EC_CMD_FP_INFO:
+ *
+ * FP_ERROR_DEAD_PIXELS: Number of dead pixels detected on the sensor during
+ * maintenance. The count is stored in the 10 least significant bits (bits 0-9)
+ * of the error variable. Mask: 0x3FF (binary 1111111111) is used to extract
+ * these 10 bits.
+ *
+ * FP_ERROR_DEAD_PIXELS_UNKNOWN: An unknown number of dead pixels were detected.
+ * Uses the same 10 bits as FP_ERROR_DEAD_PIXELS, but sets all of them to 1
+ * (0x3FF) to indicate an unknown count.
+ *
+ * FP_ERROR_NO_IRQ: No interrupt signal received from the sensor. Bit 12 of the
+ * error variable.
+ *
+ * FP_ERROR_SPI_COMM: Error in SPI communication with the sensor. Bit 13 of the
+ * error variable.
+ *
+ * FP_ERROR_BAD_HWID: Invalid sensor hardware ID. Bit 14 of the error variable.
+ *
+ * FP_ERROR_INIT_FAIL: Sensor initialization failed. Bit 15 of the error
+ * variable.
+ *
  *
  * @return EC_SUCCESS always
  */
