@@ -70,6 +70,30 @@
       },
       "revId": "02856e260cc0af1517a2a65cca77244f68df2687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c574ed4e_269927a5",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:31:34Z",
+      "side": 1,
+      "message": "we actually read these errors from `fp_sensor_get_info` in biod. So I believe this is correct. What you are not using all the errors?\n```\nFP_ERROR_DEAD_PIXELS_UNKNOWN\nFP_ERROR_NO_IRQ\nFP_ERROR_SPI_COMM\nFP_ERROR_BAD_HWID\nFP_ERROR_INIT_FAIL\n```\n\nI believe you should assign the errors using `|\u003d`. We can read multiple errors:\n\n`errors |\u003d FP_ERROR_INIT_FAIL`\n\nsame for the above:\n\n`errors \u003d FP_ERROR_SPI_COMM`",
+      "parentUuid": "218b6f18_84e45924",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "02856e260cc0af1517a2a65cca77244f68df2687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
