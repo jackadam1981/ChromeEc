@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b933afa_a0ed2015",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-29T14:08:55Z",
+      "side": 1,
+      "message": "In practice, the PDOs at higher indexes have higher voltages.  Changing this to `mv \u003e\u003d highest_mw` will select the higher voltage PDO at the same wattage.\nAlternatively, we can just explicitly pick the higher voltage.\n\n```\nif (mw \u003e highest_mw ||\n    (mw \u003d\u003d highest_mw \u0026\u0026 mv \u003e selected_mv))\n```",
+      "range": {
+        "startLine": 1958,
+        "startChar": 0,
+        "endLine": 1958,
+        "endChar": 24
+      },
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5eea09_799479ff",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-29T14:08:55Z",
+      "side": 1,
+      "message": "Nit - you could have `evaluate_src_pdos` also return the wattage of the selected PDO since the function already has this data.  Saves you from calculating the wattage again below.",
+      "range": {
+        "startLine": 2084,
+        "startChar": 7,
+        "endLine": 2084,
+        "endChar": 24
+      },
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
