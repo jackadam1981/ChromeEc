@@ -16,6 +16,24 @@
       "message": "It looks like CL:2346593 (downgrade after 3 attempts, reverted here) was made at the same time as CL:2171699 (downgrade after response timeout, retained here). I have a few questions.\n1. Is CL:2346593 redundant with CL:2171699? Is there a scenario where we get to the number-of-attempts check when we didn\u0027t already hit the timeout check?\n2. Does the timeout check also need to be fixed in some way?\n3. How do we hit this during a compliance test? I wouldn\u0027t have expected the tester to ignore 3 Discover Identity REQs.\n4. b:154653135 was for interop with a specific Naktek cable, but it sounds like the timeout check was more critical to the fix than the number-of-attempts check. Do we have any way at this point to check that we can still interop with this cable?",
       "revId": "5f3b1e6d5b16d62850abe73bf0f29539f01e2692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ac2d5e_309175f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-29T09:14:00Z",
+      "side": 1,
+      "message": "1+3)\n  - Cable responds GoodCRC, but no ACK/NAK -\u003e timeout.\n  - Cable doesn\u0027t respond GoodCRC -\u003e number-of-attempts.\n\n  GRL don\u0027t GoodCRC to some SOP\u0027 DiscoverID, so we hit the number-of-attempts check.\n  (I guess this is a tester bug. In PD.PROT.SRC3.14, GRL ACK\u0027ed two DiscoverID requests, but dropped the third one)\n  But they checked the version field of the DiscoverID request and caught this bug.\n\n2) No, downgrade after timeout still exists in PD3.2 spec.\n\n4) From the commit message in CL:2346593 I think this scenario didn\u0027t happen at that time.\n\nBenson Do you know any cable that may need this workaround?",
+      "parentUuid": "9a95deed_1a76bebf",
+      "revId": "5f3b1e6d5b16d62850abe73bf0f29539f01e2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
