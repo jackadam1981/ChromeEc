@@ -642,20 +642,6 @@ static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
 		 * soon as possible. This should not happen and if it does it
 		 * means that the ec cannot handle the requested data rate.
 		 */
-		enum sensor_config cfg_index = motion_sense_get_ec_config();
-
-		if (cfg_index == SENSOR_CONFIG_EC_S0 ||
-		    sensor->config[cfg_index].ec_rate == 0) {
-			int missed_events =
-				time_until(sensor->next_collection, ts->le.lo) /
-				sensor->collection_rate;
-
-			CPRINTS("%s Missed %d data collections at %u"
-				" - rate: %d",
-				sensor->name, missed_events,
-				sensor->next_collection,
-				sensor->collection_rate);
-		}
 		sensor->next_collection = ts->le.lo + motion_min_interval;
 	}
 }
