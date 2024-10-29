@@ -77,6 +77,12 @@
 /* SPI Read ID command*/
 #define SPI_RDID 0x9F
 
+/* Retries to set SPI SR1 WEL */
+#define SPI_SR1_WEL_RETRIES 10
+/* Bits in SPI SR1 */
+#define SPI_SR1_BUSY 0x01 /* also WIP */
+#define SPI_SR1_WEL 0x02
+
 #define STEPS_EXIT 0x00
 #define STEPS_NORMAL 0x01
 #define STEPS_TEST 0xEE
@@ -520,13 +526,31 @@ static int read_id_2(struct itecomdbgr_config *conf)
 	return result;
 }
 
-static int erase_4k(struct itecomdbgr_config *conf)
+static int spi_sr1_wel(struct itecomdbgr_config *conf)
+{
+	for (int i = 0; i < SPI_SR1_WEL_RETRIES; ++i) {
+		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
+		if (check_status(conf, SPI_SR1_WEL, 1) == 0) {
+			if (i > 0) {
+				printf("%s: SUCCESS on try %d\n", __func__,
+				       i + 1);
+			}
+			return SUCCESS;
+		}
+	}
+
+	return FAIL;
+}
+
+static int erase_flash(struct itecomdbgr_config *conf)
 {
 	int i = 0;
 	int result = SUCCESS;
 	unsigned long start_addr = conf->update_start_addr;
 	unsigned long end_addr = conf->update_end_addr;
-	int total_size = (end_addr - start_addr) / conf->sector_size;
+	int total_sectors = (end_addr - start_addr) / conf->sector_size;
+	int prev_percent = -1;
+	int progress_percent;
 
 	/* [3] mapping to spi erase command ,*/
 	/* [7][11][15] mapping to Address A2 A1 A0 */
@@ -539,8 +563,7 @@ static int erase_4k(struct itecomdbgr_config *conf)
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 	while (start_addr < end_addr) {
-		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
-		if (check_status(conf, 0x02, 1) < 0) {
+		if (spi_sr1_wel(conf) != SUCCESS) {
 			printf("erase_4k:check_status error 1\n\r");
 			result = FAIL;
 			goto out;
@@ -556,26 +579,19 @@ static int erase_4k(struct itecomdbgr_config *conf)
 			result = FAIL;
 			goto out;
 		}
-
 		start_addr += conf->sector_size;
-		printf("\rEraseing...     : %d%%",
-		       (++i * 100) / (total_size - 1));
-		fflush(stdout);
+
+		progress_percent = (++i * 100) / total_sectors;
+		if (progress_percent != prev_percent) {
+			printf("\rErasing...       : %3d%%", progress_percent);
+			prev_percent = progress_percent;
+			fflush(stdout);
+		}
 	}
 out:
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
-	return result;
-}
-
-static int erase_flash(struct itecomdbgr_config *conf)
-{
-	int result = SUCCESS;
-
-	if (erase_4k(conf)) {
-		printf("check_flash : error\n\r");
-		result = FAIL;
-	}
-	printf("\n\r");
+	if (result == SUCCESS)
+		printf("\n");
 	return result;
 }
 
@@ -692,6 +708,53 @@ static void set_prog_addr(unsigned long addr, uint8_t *pp_buf)
 	pp_buf[15] = (addr) & 0xFF;
 }
 
+static int program_page(struct itecomdbgr_config *conf,
+			unsigned long flash_offset, const uint8_t *wr_data,
+			int wr_count)
+{
+	uint8_t pp_buf[20] = {
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       SPI_PP,
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
+		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
+		W_CMD_PORT, DBUS_256W_DATA, W_BURST_DATA_PORT, 0xFF
+	};
+	int i;
+
+	/*
+	 * We know the page has been erased to 0xff.
+	 * Can we skip this page?
+	 */
+	for (i = 0; i < wr_count; ++i) {
+		if (wr_data[i] != 0xff)
+			break;
+	}
+	if (i == wr_count)
+		return SUCCESS;
+
+	/* Need to program page after all. */
+
+	/* Check Write Enable Latch on */
+	if (spi_sr1_wel(conf) != SUCCESS) {
+		printf("%s: check_status WEL err\n", __func__);
+		return FAIL;
+	}
+
+	write_com(conf, cs_low, sizeof(cs_low));
+	set_prog_addr(flash_offset, pp_buf);
+	write_com(conf, pp_buf, sizeof(pp_buf));
+	write_com(conf, wr_data, wr_count);
+	write_com(conf, cs_high, sizeof(cs_high));
+
+	/* Check WIP bit off */
+	if (check_status(conf, SPI_SR1_BUSY, 0) < 0) {
+		printf("%s: check_status WIP err\n", __func__);
+		return FAIL;
+	}
+
+	return SUCCESS;
+}
+
 static int page_program_burst_v2(struct itecomdbgr_config *conf,
 				 uint8_t *wr_data)
 {
@@ -700,48 +763,32 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 	unsigned long start_addr = conf->update_start_addr;
 	unsigned long end_addr = conf->update_end_addr;
 	int write_count;
-	int total_size = (end_addr - start_addr) / conf->page_size;
-	uint8_t pp_buf[20] = {
-		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       SPI_PP,
-		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
-		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
-		W_CMD_PORT, DBUS_DATA,	    W_DATA_PORT,       0x00,
-		W_CMD_PORT, DBUS_256W_DATA, W_BURST_DATA_PORT, 0xFF
-	};
+	int total_pages = (end_addr - start_addr) / conf->page_size;
+	int prev_percent = -1;
+	int progress_percent;
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
+
 	while (start_addr < end_addr) {
 		if ((end_addr - start_addr) >= conf->page_size)
 			write_count = conf->page_size;
 		else
 			write_count = end_addr - start_addr;
 
-		write_com(conf, spi_write_enable, sizeof(spi_write_enable));
-
-		/* Check Write Enable Latch on */
-		if (check_status(conf, 0x02, 1) < 0) {
-			printf("page_program_burst_v2: check_status WEL err\n\r");
-			result = FAIL;
-			goto out;
-		}
-
-		write_com(conf, cs_low, sizeof(cs_low));
-		set_prog_addr(start_addr, pp_buf);
-		write_com(conf, pp_buf, sizeof(pp_buf));
-		write_com(conf, &wr_data[start_addr], write_count);
-		write_com(conf, cs_high, sizeof(cs_high));
-
-		/* Check WIP bit off */
-		if (check_status(conf, 0x01, 0) < 0) {
-			printf("page_program_burst_v2: check_status WIP err\n\r");
+		if (program_page(conf, start_addr, &wr_data[start_addr],
+				 write_count) != SUCCESS) {
 			result = FAIL;
 			goto out;
 		}
 
 		start_addr += conf->page_size;
-		printf("\rPrograming...   : %d%%",
-		       (++j * 100) / (total_size - 1));
-		fflush(stdout);
+
+		progress_percent = (++j * 100) / total_pages;
+		if (progress_percent != prev_percent) {
+			printf("\rProgramming...   : %3d%%", progress_percent);
+			prev_percent = progress_percent;
+			fflush(stdout);
+		}
 	}
 out:
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
