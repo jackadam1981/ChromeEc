@@ -42,15 +42,12 @@
 		memory {
 			temp_fan_off = <35>;
 			temp_fan_max = <70>;
-			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};
 		charger {
-			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger>;
 		};
 		ambient {
-			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_ambient>;
 		};
 	};
@@ -66,7 +63,7 @@
 		 * sub-boards that don't have USB-A so is safe to control
 		 * regardless of system configuration.
 		 */
-		enable-pins = <&gpio_en_usb_a0_vbus &gpio_en_sub_usb_a1_vbus>;
+		enable-pins = <&gpio_en_usb_a0_vbus>;
 		status = "okay";
 	};
 
@@ -82,6 +79,12 @@
 		};
 	};
 
+	kb_bl_pwm {
+		compatible = "cros-ec,kblight-pwm";
+		pwms = <&pwm3 0 PWM_HZ(324) PWM_POLARITY_NORMAL>;
+		status = "okay";
+	};
+
 	fans {
 		compatible = "cros-ec,fans";
 
@@ -91,7 +94,6 @@
 			rpm_start = <2200>;
 			rpm_max = <6900>;
 			tach = <&tach2>;
-			enable_gpio = <&gpio_fan_enable>;
 		};
 	};
 };
@@ -129,6 +131,11 @@
 
 &i2c1_0 {
 	label = "I2C_SENSOR";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c2_0 {
+	label = "I2C_THERMAL";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
@@ -192,6 +199,6 @@
  * after waking up automatically for better power consumption.
  */
 &power_leakage_io {
-	leak-gpios = <&gpioa 4 GPIO_OPEN_DRAIN
+	leak-gpios = <&gpioa 4 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)
 		      &gpiof 1 GPIO_OPEN_DRAIN>;
 };
