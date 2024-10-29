@@ -48,6 +48,9 @@ void board_ap_power_force_shutdown(void)
 int board_ap_power_action_g3_entry(void *data)
 {
 	printk("%s: call\n", __func__);
+	printk("%s"
+	       "================================================================\n",
+		__func__);
 
 	board_ap_power_force_shutdown();
 
