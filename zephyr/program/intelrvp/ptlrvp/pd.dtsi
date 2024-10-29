@@ -20,6 +20,11 @@
 	};
 };
 
-&gpio_pdc_pow_irq {
+/*&gpio_pdc_pow_irq {
+	no-auto-init;
+};*/
+
+
+&gpio_wc_usbc_pd_alrt_aic1_r {
 	no-auto-init;
 };
