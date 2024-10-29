@@ -113,6 +113,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b013a39_ad3b1dd2",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:21:18Z",
+      "side": 1,
+      "message": "some of these error codes are not used as return values for the interface functions. Is this expected?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b7a684e4_32472224",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 51,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": "\tEGIS_API_ERROR_GENERAL \u003d -100,\n\tEGIS_API_ERROR_COMMAND_FAIL \u003d -101,\n\tEGIS_API_ERROR_DEVICE_NOT_FOUND \u003d -102,\n\tEGIS_API_ERROR_MEMORY \u003d -103,\n\tEGIS_API_ERROR_PARAMETER \u003d -104,\n\tEGIS_API_ERROR_WRONG_STATE \u003d -105,\n\tEGIS_API_ERROR_IO_SPI \u003d -106,\n\tEGIS_API_ERROR_SENSOR_GENERAL \u003d -107,\n\tEGIS_API_ERROR_SENSOR_SENSING_MDOE_CALIBRATION \u003d -108,\n\tEGIS_API_ERROR_SENSOR_DETECT_MDOE_CALIBRATION \u003d -109,\n\tEGIS_API_ERROR_SENSOR_NEED_RESET \u003d -110,\n\tEGIS_API_ERROR_SENSOR_OCP_DETECT \u003d -111,\n\tEGIS_API_ERROR_FINGER_UNSTABLE \u003d -112,\n\tEGIS_API_ERROR_MATCHER_LIB_FAIL \u003d -113,\n\tEGIS_API_ERROR_EMFP_LIB_FAIL \u003d -114,\n\tEGIS_API_ERROR \u003d -115,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1661e9d_88166a7d",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 1
@@ -153,6 +194,29 @@
         "startChar": 4,
         "endLine": 97,
         "endChar": 18
+      },
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d710184_b396ef8a",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:21:18Z",
+      "side": 1,
+      "message": "is your implementation is do nothing, you might need to return SUCCESS, otherwise, this will crash.",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 30
       },
       "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
