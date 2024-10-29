@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc1900af_d907f08b",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "modify as\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_DEVICE_NOT_FOUND : on sensor cannot be detected\n * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail\n * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect\n * @return EGIS_API_ERROR_SENSOR_NEED_RESET : on sensor need reset\n * @return EGIS_API_ERROR_SENSOR_SENSING_MDOE_CALIBRATION : on sensor\n calibration sensing mdoe fail\n * @return EGIS_API_ERROR_SENSOR_DETECT_MDOE_CALIBRATION : on sensor calibration\n detect mdoe fail\n * @return EGIS_API_ERROR_MEMORY : on alloc memory fail\n * @return EGIS_API_ERROR_GENERAL : on other operation fail\n * @return EGIS_API_ERROR_SENSOR_GENERAL : on sensor operation fail\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter",
+      "parentUuid": "4f3542d6_f8c52537",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0b00a66_9fe49ab1",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4231af_2b9dcbcf",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "yes, this function did not had any operation. So it cannot fail",
+      "parentUuid": "c0b00a66_9fe49ab1",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 21
+      },
       "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +174,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1daa7f2_94cc8c66",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "eb869d54_6fffd08f",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86f0bb7d_8dc6821e",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
@@ -137,6 +209,30 @@
       "writtenOn": "2024-10-28T17:47:18Z",
       "side": 1,
       "message": "are there more errors?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21178a4_58555b3c",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "modify as\n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_MEMORY : on alloc memory fail\n * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect\n * @return EGIS_API_ERROR_SENSOR_NEED_RESET : on sensor need reset\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter\n * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail",
+      "parentUuid": "86f0bb7d_8dc6821e",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -190,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cf079ff_887ad6f0",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "modify as\n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_MEMORY : on alloc memory fail\n * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect\n * @return EGIS_API_ERROR_SENSOR_NEED_RESET : on sensor need reset\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter\n * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail",
+      "parentUuid": "9cf73a30_62e64b48",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b84a8e15_9f781205",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
@@ -201,6 +321,30 @@
       "writtenOn": "2024-10-28T17:47:18Z",
       "side": 1,
       "message": "what is the other value?",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 22
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef4e858_05650b55",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "modify as \n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter\n * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail",
+      "parentUuid": "b84a8e15_9f781205",
       "range": {
         "startLine": 144,
         "startChar": 10,
@@ -254,6 +398,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2720176d_f500c7cd",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "modify as\n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter\n * @return EGIS_API_ERROR_MATCHER_LIB_FAIL : on matcher lib fail\n * @return EGIS_API_ERROR_EMFP_LIB_FAIL : on emfp lib fail",
+      "parentUuid": "51682486_02a08a3f",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cf2b252_03668e1d",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
@@ -265,6 +433,30 @@
       "writtenOn": "2024-10-28T17:47:18Z",
       "side": 1,
       "message": "what are these errors?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8f3320_e981da50",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T16:46:44Z",
+      "side": 1,
+      "message": "modify as\n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_MATCHER_LIB_FAIL : on matcher lib fail",
+      "parentUuid": "3cf2b252_03668e1d",
       "range": {
         "startLine": 176,
         "startChar": 0,
