@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39cbab4c_90111aa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-29T17:16:20Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nthis CL was split to below two CL. please help to review\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5974720/1\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5974721/1",
+      "parentUuid": "4def8a88_606c1f12",
+      "revId": "cd241c8700c99a677f8893a4a6fac952eafacbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2df87baa_3eed73c4",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
