@@ -252,6 +252,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91259edd_0a4fe77b",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2024-10-29T18:25:31Z",
+      "side": 1,
+      "message": "Catching up on the discussion...the main weirdness is due to DPAM and SVDM not being consistent. Not sure why this choice was made to begin with but there will still need to be inherent checks of if DPAM 2.1 is supported at a platform level even if SVDM comes back as 2.1. Realistically just always setting SVDM 2.1 shouldn\u0027t cause any issues that I can see based on the way the Kernel will negotiate lanes anyway, but its better to follow the spec than just assume the Kernel will take care of it.\n\nThis is really only the first stop along the way and should essentially just be sending the max supported level. Can we make the assumption that DPAM 2.1 is just always supported and let Kernel decide if it actually is? The main reason I stuck with a major and minor version was due to this variance in PD and DPAM specs there just really wasn\u0027t a clean way to decide without verifying that DPAM 2.1 was supported.",
+      "parentUuid": "c451c331_2bf2b1f3",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2fd1d0_7a345e00",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 2
