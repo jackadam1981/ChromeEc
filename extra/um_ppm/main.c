@@ -5,6 +5,7 @@
 
 #include "include/platform.h"
 #include "rts5453.h"
+#include "i2c_aardvark.h"
 #include "smbus_usermode.h"
 #include "tps6699x.h"
 #include "um_ppm_chardev.h"
@@ -52,6 +53,7 @@ static const char *usage_str =
 	 "General options:\n"
 	 "\t-p        PD driver config to use. Valid values: ['rts5453', "
 	 "'tps6699x']\n"
+	 "\t-a        Aardvark port number (required if -b not given)\n"
 	 "\t-b        I2C Bus number (/dev/i2c-N) (required)\n"
 	 "\t-g        /dev/gpiochip[N] (required)\n"
 	 "\t-l        Gpio line for LPM alert (required)\n"
@@ -74,6 +76,7 @@ int main(int argc, char *argv[])
 	char *fwupdate_file = NULL;
 	int demo = 0;
 	int reset = 0;
+	int aardvark_bus = -1;
 	int i2c_bus = -1;
 	int i2c_chip_address = -1;
 	int gpio_chip = -1;
@@ -85,8 +88,11 @@ int main(int argc, char *argv[])
 	struct extra_driver_ops *ops;
 	uint8_t transport = 0;
 
-	while ((opt = getopt(argc, argv, ":f:k:dvrb:p:g:l:")) != -1) {
+	while ((opt = getopt(argc, argv, ":f:k:dvra:b:p:g:l:")) != -1) {
 		switch (opt) {
+		case 'a':
+			aardvark_bus = strtol(optarg, NULL, 10);
+			break;
 		case 'b':
 			i2c_bus = strtol(optarg, NULL, 10);
 			break;
@@ -131,8 +137,9 @@ int main(int argc, char *argv[])
 	struct smbus_driver *smbus = NULL;
 	struct ucsi_pd_driver *pd_driver = NULL;
 
-	if (i2c_bus == -1) {
-		ELOG("Invalid bus (%d) parameter", i2c_bus);
+	if (i2c_bus == -1 && aardvark_bus == -1) {
+		ELOG("Invalid bus parameters: i2c(%d), aardvark(%d)", i2c_bus,
+		     aardvark_bus);
 		return -1;
 	}
 
@@ -170,9 +177,15 @@ int main(int argc, char *argv[])
 		break;
 	}
 
-	/* Open usermode smbus. */
-	smbus = smbus_um_open(i2c_bus, i2c_chip_address, gpio_chip, gpio_line,
-			      transport);
+	if (i2c_bus != -1) {
+		/* Open usermode smbus. */
+		smbus = smbus_um_open(i2c_bus, i2c_chip_address, gpio_chip,
+				      gpio_line, transport);
+	} else if (aardvark_bus != -1) {
+		smbus = i2c_aardvark_open(aardvark_bus, i2c_chip_address,
+					  gpio_chip, gpio_line, transport);
+	}
+
 	if (!smbus) {
 		ELOG("Failed to open smbus");
 		goto handle_error;
