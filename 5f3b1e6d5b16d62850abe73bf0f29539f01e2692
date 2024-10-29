@@ -34,6 +34,24 @@
       "parentUuid": "9a95deed_1a76bebf",
       "revId": "5f3b1e6d5b16d62850abe73bf0f29539f01e2692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f0e03a_35332be9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-29T20:28:48Z",
+      "side": 1,
+      "message": "\u003e GRL don\u0027t GoodCRC to some SOP\u0027 DiscoverID, so we hit the number-of-attempts check.\n(I guess this is a tester bug. In PD.PROT.SRC3.14, GRL ACK\u0027ed two DiscoverID requests, but dropped the third one)\nBut they checked the version field of the DiscoverID request and caught this bug.\n\nGiven this unexpected tester behavior, I wouldn\u0027t necessarily consider this check/fail to be part of the compliance requirements. I think COMMON.CHECK.PD.9 presupposes that the tester\u0027s behavior up to this point has been normal (GoodCRC) and consistent with the test mode (PD 3.0 or PD 2.0).\n\nBut even if we consider this change in behavior to be an interop accommodation, there\u0027s at least as much argument to be made for interop with a compliance tester (this CL) as there is for interop with a hypothetical cable we\u0027ve never seen (the original feature).",
+      "parentUuid": "f3ac2d5e_309175f2",
+      "revId": "5f3b1e6d5b16d62850abe73bf0f29539f01e2692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
