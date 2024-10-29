@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bb087e_090b10a2",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-29T14:19:15Z",
+      "side": 1,
+      "message": "This is a little odd.  You call `emul_pdc_configure_src` which seeds the PDOs, but then set the partner type to a non-PD device.  How about calling `clear_partner_pdos` here instead?\nAlternately, you could add a parameter to `emul_pdc_configure_src` to set the partner type.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 0
+      },
+      "revId": "f52ea8197dc79098ac23f6840472adde9f3b237e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
