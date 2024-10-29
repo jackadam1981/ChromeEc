@@ -66,6 +66,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f57245c_9e96cd1d",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1900af_d907f08b",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b00a66_9fe49ab1",
@@ -121,6 +145,30 @@
       "side": 1,
       "message": "yes, this function did not had any operation. So it cannot fail",
       "parentUuid": "c0b00a66_9fe49ab1",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5153a99_43f35b88",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a4231af_2b9dcbcf",
       "range": {
         "startLine": 84,
         "startChar": 4,
@@ -196,6 +244,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "687f67ca_39dcfec1",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1daa7f2_94cc8c66",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86f0bb7d_8dc6821e",
@@ -233,6 +305,30 @@
       "side": 1,
       "message": "modify as\n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_MEMORY : on alloc memory fail\n * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect\n * @return EGIS_API_ERROR_SENSOR_NEED_RESET : on sensor need reset\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter\n * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail",
       "parentUuid": "86f0bb7d_8dc6821e",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1b3fc6_723fb47e",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a21178a4_58555b3c",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -308,6 +404,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae76e43a_6014c3db",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cf079ff_887ad6f0",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b84a8e15_9f781205",
@@ -345,6 +465,30 @@
       "side": 1,
       "message": "modify as \n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect\n * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter\n * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail",
       "parentUuid": "b84a8e15_9f781205",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 22
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d680d3e7_e446f9e6",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ef4e858_05650b55",
       "range": {
         "startLine": 144,
         "startChar": 10,
@@ -420,6 +564,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2922f3_f085b70a",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2720176d_f500c7cd",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cf2b252_03668e1d",
@@ -457,6 +625,30 @@
       "side": 1,
       "message": "modify as\n\n * @return negative value on error, list below\n * @return EGIS_API_ERROR_MATCHER_LIB_FAIL : on matcher lib fail",
       "parentUuid": "3cf2b252_03668e1d",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "d099c1a762811476161f7cd105d53c3f15ba5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e992b951_2cd2fc54",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-29T22:39:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c8f3320_e981da50",
       "range": {
         "startLine": 176,
         "startChar": 0,
