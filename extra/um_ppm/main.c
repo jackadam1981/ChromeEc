@@ -160,6 +160,7 @@ int main(int argc, char *argv[])
 		return ops->do_firmware_update(pd_driver, fwupdate_file,
 					       /*dry_run=*/0);
 	} else if (attach_to_kernel) {
+		ELOG("Attach to kernel functionality is broken.");
 		return cdev_prepare_um_ppm(ucsi_um_kernel_dev, pd_driver, smbus,
 					   &driver_config);
 	}

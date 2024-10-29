@@ -50,6 +50,10 @@ bool platform_debug_enabled();
 void platform_printf(const char *format, ...);
 void platform_eprintf(const char *format, ...);
 
+static inline void platform_hexdump(uint8_t *data, int length, char *separator) {
+  /* Do nothing for now */
+}
+
 void platform_usleep(uint32_t usec);
 
 /* Opaque task id type.*/
@@ -102,5 +106,17 @@ int platform_condvar_init(struct platform_condvar **cond);
 void platform_condvar_wait(struct platform_condvar *condvar,
 			   struct platform_mutex *mutex);
 void platform_condvar_signal(struct platform_condvar *condvar);
+
+#ifndef EBUSY
+#define EBUSY 16
+#endif
+
+#ifndef ENOTSUP
+#define ENOTSUP 134
+#endif
+
+#ifndef ETIMEDOUT
+#define ETIMEDOUT 116
+#endif
 
 #endif /* UM_PPM_INCLUDE_PLATFORM_H_ */
