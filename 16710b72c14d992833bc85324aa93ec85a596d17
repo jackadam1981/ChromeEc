@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e856c38_82f86062",
+        "filename": "zephyr/program/nissa/include/telith_sub_board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304794c1_bbdb189e",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e64dd3_a658ff39",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-29T03:32:00Z",
       "side": 1,
       "message": "Add a blank line.",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c826c363_faca2eab",
+        "filename": "zephyr/program/nissa/telith/fan.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e64dd3_a658ff39",
       "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce21c704_be2508ad",
+        "filename": "zephyr/program/nissa/telith/fan.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "512d852d_c9a83751",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "865e6373_47782c00",
@@ -65,6 +119,24 @@
       "writtenOn": "2024-10-29T03:32:00Z",
       "side": 1,
       "message": "Adjust i2c2 and i2c0 position.",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8e5447_89ccc48e",
+        "filename": "zephyr/program/nissa/telith/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865e6373_47782c00",
       "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34cb15c7_c89d85bf",
+        "filename": "zephyr/program/nissa/telith/generated.dtsi~Stashed changes",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14fe7e8_b18a6348",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f55aeeb_30133d64",
@@ -99,6 +189,24 @@
       "writtenOn": "2024-10-29T03:32:00Z",
       "side": 1,
       "message": "Remove the Stashed changes files.",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ca168e_3b34f6e5",
+        "filename": "zephyr/program/nissa/telith/keyboard.dtsi~Stashed changes",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f55aeeb_30133d64",
       "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f6aa1a_da585b4e",
+        "filename": "zephyr/program/nissa/telith/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bc3d169_7ba39be4",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29531108_fac779f0",
@@ -133,6 +259,24 @@
       "writtenOn": "2024-10-29T03:32:00Z",
       "side": 1,
       "message": "Remove the Stashed changes files.",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f860e290_a0276950",
+        "filename": "zephyr/program/nissa/telith/overlay.dtsi~Stashed changes",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29531108_fac779f0",
       "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "668b9f86_bb8ed51d",
+        "filename": "zephyr/program/nissa/telith/project.conf~Stashed changes",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "548008b3_179eb876",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae983b06_9c2f8649",
@@ -167,6 +329,24 @@
       "writtenOn": "2024-10-29T03:32:00Z",
       "side": 1,
       "message": "Remove the Stashed changes files.",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba02e866_f8ab83fe",
+        "filename": "zephyr/program/nissa/telith/src/keyboard_customization.c~Stashed changes",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-10-29T03:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae983b06_9c2f8649",
       "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
