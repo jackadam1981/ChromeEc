@@ -17,6 +17,7 @@
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "motion_sense.h"
 #include "spi.h"
 #include "task.h"
 #include "util.h"
@@ -651,6 +652,21 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	bool read_any_data = false;
 	int interrupt_status_reg, fifo_depth;
 
+<<<<<<< HEAD   (43669d epic: Initial Zephyr EC image)
+||||||| BASE
+	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
+	    (!(*event & CONFIG_ACCEL_BMA4XX_INT_EVENT))) {
+		return EC_ERROR_NOT_HANDLED;
+	}
+
+=======
+	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
+	    (!(*event & CONFIG_ACCEL_BMA4XX_INT_EVENT)) ||
+	    motion_sensor_in_forced_mode(s)) {
+		return EC_ERROR_NOT_HANDLED;
+	}
+
+>>>>>>> CHANGE (7a678f bma4xx: Limit irq_handler scope)
 	/* Read interrupt status, also clears pending IRQs */
 	RETURN_ERROR(bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
 	if ((interrupt_status_reg &
