@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0f4e625_6c68dcbf",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-29T10:18:04Z",
+      "side": 1,
+      "message": "See my comment in CL:5952673, I think we don\u0027t need to do SVDM version negociation in dp_alt_mode.c.",
+      "parentUuid": "5a3a99c9_9d611746",
+      "revId": "270fbc15c0457c15cb20b3c2d73aaa3167f9b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3782cfd_fceda2b8",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 31
