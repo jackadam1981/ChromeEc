@@ -2269,6 +2269,10 @@ def all_targets():
         board = "teliks",
     )
     ec_target(
+        name = "telith",
+        board = "telith",
+    )
+    ec_target(
         name = "tentacruel",
         board = "tentacruel",
     )
@@ -2399,13 +2403,6 @@ def all_targets():
         board = "volteer",
         chip = "npcx",
         core = "cortex-m",
-        zephyr = False,
-    )
-    ec_target(
-        name = "volteer_ish",
-        board = "volteer_ish",
-        chip = "ish",
-        core = "minute-ia",
         zephyr = False,
     )
     ec_target(
