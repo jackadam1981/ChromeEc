@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "926bfc93_dc37edda",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-10-29T15:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ba528d_ee3aa221",
+      "revId": "60e934864ba682cb4038670f6628a5d145090b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d2c837d_9eb1e0bf",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4e4bea_02f22b74",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-10-29T15:53:39Z",
+      "side": 1,
+      "message": "I see.  Again, I became confused as the path for the previous release 0.23.112 contains \"betty\", and this one does not.",
+      "parentUuid": "1d2c837d_9eb1e0bf",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 149
+      },
+      "revId": "60e934864ba682cb4038670f6628a5d145090b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfd24985_c13ea742",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-10-29T13:54:36Z",
       "side": 1,
       "message": "We should remove the MISC i2c print line as that was the think that was reverted in .121\n\n```suggestion\n*   MISC SPI host improvements\n    [b/319124176](https://b.corp.google.com/issues/319124176)\n```",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 41
+      },
+      "revId": "60e934864ba682cb4038670f6628a5d145090b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aeefbb1_d7ef7443",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-10-29T15:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd24985_c13ea742",
       "range": {
         "startLine": 843,
         "startChar": 0,
