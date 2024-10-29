@@ -18,6 +18,11 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+/* Currently, um_ppm is in a broken state. It is only being used for some
+ * firmware flashing on EVMs. Don't allow the path to talk to the kernel.
+ */
+static bool broken = true;
+
 /* Packed message skeleton for cdev communication. */
 struct um_message_skeleton {
 	uint8_t type;
@@ -365,6 +370,10 @@ int cdev_prepare_um_ppm(const char *um_test_devpath, struct ucsi_pd_driver *pd,
 	struct um_ppm_cdev *cdev =
 		um_ppm_cdev_open(um_test_devpath, pd, smbus, config);
 	struct sigaction act = { .sa_handler = um_ppm_handle_signal };
+
+	if (broken) {
+		return -1;
+	}
 
 	if (!cdev) {
 		ELOG("Failed to initialize PPM chardev. Exit early!");

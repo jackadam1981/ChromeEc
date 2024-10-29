@@ -376,7 +376,8 @@ struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
 	dev->chip_address = chip_address;
 
 	/* Initialize the gpio lines */
-	if (init_interrupt(dev, gpio_chip, gpio_line) == -1) {
+	if (gpio_chip >= 0 && gpio_line >= 0 &&
+	    init_interrupt(dev, gpio_chip, gpio_line) == -1) {
 		ELOG("Failed to initialize gpio for interrupt.");
 		goto handle_error;
 	}

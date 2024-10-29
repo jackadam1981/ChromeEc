@@ -11,8 +11,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include <zephyr/device.h>
-
 /* Internal data structure for pd_driver implementations. */
 struct ucsi_pd_device;
 
@@ -29,7 +27,7 @@ struct ucsi_ppm_driver;
  *
  * @return 0 if IRQ is configured (or already configured). -1 on error.
  */
-typedef int(ucsi_pd_configure_lpm_irq)(const struct device *dev);
+typedef int(ucsi_pd_configure_lpm_irq)(struct ucsi_pd_device *dev);
 
 /**
  * Initialize the PPM associated with this PD driver.
@@ -41,14 +39,14 @@ typedef int(ucsi_pd_configure_lpm_irq)(const struct device *dev);
  *
  * @return 0 on success, -1 on error.
  */
-typedef int(ucsi_pd_init_ppm)(const struct device *dev);
+typedef int(ucsi_pd_init_ppm)(struct ucsi_pd_device *dev);
 
 /**
  * Grab a pointer to the PPM.
  *
  * @param dev: Device object for this PD controller.
  */
-typedef struct ucsi_ppm_driver *(ucsi_pd_get_ppm)(const struct device *dev);
+typedef struct ucsi_ppm_driver *(ucsi_pd_get_ppm)(struct ucsi_pd_device *dev);
 
 /**
  * Execute a command in the PPM.
@@ -64,7 +62,7 @@ typedef struct ucsi_ppm_driver *(ucsi_pd_get_ppm)(const struct device *dev);
  *
  * @returns -1 on error or the number of bytes read on success.
  */
-typedef int(ucsi_pd_execute_command)(const struct device *dev,
+typedef int(ucsi_pd_execute_command)(struct ucsi_pd_device *dev,
 				     struct ucsi_control *control,
 				     uint8_t *lpm_data_out);
 
@@ -75,14 +73,14 @@ typedef int(ucsi_pd_execute_command)(const struct device *dev,
  *
  * @returns -1 on error or the number of active ports.
  */
-typedef int(ucsi_pd_get_active_port_count)(const struct device *dev);
+typedef int(ucsi_pd_get_active_port_count)(struct ucsi_pd_device *dev);
 
 /**
  * Clean up the given PD driver. Call before freeing.
  *
  * @param driver: Driver object to clean up.
  */
-typedef void(ucsi_pd_cleanup)(const struct device *dev);
+typedef void(ucsi_pd_cleanup)(struct ucsi_pd_driver *driver);
 
 /**
  * General driver for PD controllers.
@@ -90,6 +88,8 @@ typedef void(ucsi_pd_cleanup)(const struct device *dev);
  * When constructing, must be provided a PPM implementation.
  */
 struct ucsi_pd_driver {
+	struct ucsi_pd_device *dev;
+
 	ucsi_pd_configure_lpm_irq *configure_lpm_irq;
 	ucsi_pd_init_ppm *init_ppm;
 	ucsi_pd_get_ppm *get_ppm;

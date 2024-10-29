@@ -211,7 +211,7 @@ struct rts5453_ucsi_commands ucsi_commands[UCSI_CMD_MAX] = {
 };
 
 #define PING_DELAY_US 10000
-#define RETRY_COUNT 200
+#define RETRY_COUNT 1000
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
@@ -1263,7 +1263,7 @@ struct ucsi_pd_driver *rts5453_open(struct smbus_driver *smbus,
 	drv->cleanup = rts5453_ucsi_cleanup;
 
 	/* Initialize the PPM. */
-	dev->ppm = ppm_open(drv);
+	dev->ppm = ppm_open(drv, NULL);
 	if (!dev->ppm) {
 		ELOG("Failed to open PPM");
 		goto handle_error;

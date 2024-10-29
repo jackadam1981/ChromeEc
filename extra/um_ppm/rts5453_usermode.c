@@ -24,6 +24,7 @@ int rts5453_do_firmware_update(struct ucsi_pd_driver *pd, const char *filepath,
 	char fbuf[FW_BLOCK_CHUNK_SIZE];
 	ssize_t bytes_read = 0;
 	int offset = 0;
+	int last_write_print = 0;
 
 	struct rts5453_ic_status status;
 
@@ -64,7 +65,7 @@ int rts5453_do_firmware_update(struct ucsi_pd_driver *pd, const char *filepath,
 	}
 
 	/* Set the flash bank as the opposite of the one currently in-use */
-	flash_bank = status.flash_bank == 1 ? 0 : 1;
+	flash_bank = status.flash_bank != 0 ? 0 : 1;
 	printf("Writing to flash_bank %d\n", flash_bank);
 
 	if (rts5453_vendor_cmd_enable_smbus_flash_access(
@@ -83,11 +84,16 @@ int rts5453_do_firmware_update(struct ucsi_pd_driver *pd, const char *filepath,
 
 	/* Keep writing while there's data in the firmware image. */
 	while ((bytes_read = read(fd, fbuf, FW_BLOCK_CHUNK_SIZE)) > 0) {
+		if (last_write_print < (offset / 1000)) {
+			ELOG("Writing at offset=%d", offset);
+			last_write_print = offset / 1000;
+		}
+
 		if (rts5453_write_to_flash(dev, flash_bank, fbuf, bytes_read,
 					   offset) == -1) {
 			ELOG("Failed to write to flash at bank %d (bytes = %d, offset = %d)",
 			     flash_bank, (int)bytes_read, offset);
-			goto cleanup;
+			goto reset_cleanup;
 		}
 
 		offset += bytes_read;
@@ -100,17 +106,18 @@ int rts5453_do_firmware_update(struct ucsi_pd_driver *pd, const char *filepath,
 
 	if (rts5453_isp_validation(dev) == -1) {
 		ELOG("Failed ISP validation.");
-		goto cleanup;
+		goto reset_cleanup;
 	}
 
 #ifdef DO_FLASH_PROTECT
 	if (rts5453_set_flash_protection(dev, RTS5453_FLASH_PROTECT_ENABLE) ==
 	    -1) {
 		ELOG("Failed to enable flash protection");
-		goto cleanup;
+		goto reset_cleanup;
 	}
 #endif
 
+reset_cleanup:
 	/* Only commit changes if not dry run */
 	if (!dry_run) {
 		if (rts5453_reset_to_flash(dev) == -1) {
@@ -154,4 +161,15 @@ int rts5453_get_info(struct ucsi_pd_driver *pd)
 	printf("PID: %02x%02x\n", status.pid[1], status.pid[0]);
 
 	return 0;
+}
+
+int rts5453_reset_pdc(struct ucsi_pd_driver *pd)
+{
+	struct rts5453_device *dev = (struct rts5453_device *)pd->dev;
+	int ret = rts5453_reset_to_flash(dev);
+	if (ret == -1) {
+		ELOG("Reset to flash failed.");
+	}
+
+	return ret;
 }
