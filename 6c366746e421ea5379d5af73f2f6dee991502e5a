@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f84cc5f_5e02877a",
+        "filename": "zephyr/drivers/dsp_comms/client/remote_lid_switch.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Using go/tott/651 here, let me know if you still want to refactor",
+      "parentUuid": "94d7d5de_53bfbf68",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "260fcc5e_ffa1c1ec",
         "filename": "zephyr/drivers/dsp_comms/client/remote_tablet_switch.c",
         "patchSetId": 24
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-28T19:43:17Z",
       "side": 1,
       "message": "Can we avoid early return? What is the benefit to this design pattern?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95eb2f4f_d0ab5de0",
+        "filename": "zephyr/drivers/dsp_comms/client/remote_tablet_switch.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Same as above, resolving this comment to keep 1 thread on the topic",
+      "parentUuid": "260fcc5e_ffa1c1ec",
       "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +123,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34e545b_470bab96",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a472fa0_a54a0dca",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa563b4_baed06fe",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2018805f_8ef2efd0",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "175f379a_f43651d8",
@@ -100,6 +172,24 @@
       "writtenOn": "2024-10-28T19:43:17Z",
       "side": 1,
       "message": "magic numbers, can we define a macro or const for these?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a449a4_86e704e4",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "175f379a_f43651d8",
       "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc685ddb_a230b43d",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbddde3d_4bc38735",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13ae05a9_085212b0",
@@ -134,6 +242,24 @@
       "writtenOn": "2024-10-28T19:43:17Z",
       "side": 1,
       "message": "`LOG_PRINTK` ?",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6adfa2_cf3f6dce",
+        "filename": "zephyr/drivers/dsp_comms/service/include/cros/dsp/service/cros_transport.hh",
+        "patchSetId": 24
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Not needed, left over by accident.",
+      "parentUuid": "13ae05a9_085212b0",
       "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4693033_8824375e",
+        "filename": "zephyr/drivers/dsp_comms/test_comms.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c0855d_d742c0b1",
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7899cb58_5d7b16ee",
@@ -168,6 +312,30 @@
       "writtenOn": "2024-10-28T19:43:17Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "6c366746e421ea5379d5af73f2f6dee991502e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce74ff8b_07ea442c",
+        "filename": "zephyr/test/dsp_comms/boards/native_sim.buffered_i2c.overlay",
+        "patchSetId": 24
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7899cb58_5d7b16ee",
       "range": {
         "startLine": 9,
         "startChar": 0,

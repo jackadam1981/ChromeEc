@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c766119_f5d96adf",
+        "filename": "include/system.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "I think ARG_UNUSED is only available in Zephyr builds. Since this is in `//include` I don\u0027t think I can use it.",
+      "parentUuid": "8ac47a34_5437eef6",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7a3ebaf_9a81c23c",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26239fbc_92a22da3",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "We don\u0027t, I think this was old code. Removed `_OR_NULL`",
+      "parentUuid": "a7a3ebaf_9a81c23c",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81edd062_aa0dde6e",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-10-25T21:38:20Z",
       "side": 1,
       "message": "NIT: doxygen comments for functions",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794dc091_892c0cd6",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81edd062_aa0dde6e",
       "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "952f4d97_02476d0d",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "I started off with that, but Keith said that since there\u0027s only ever exactly 1 of these we should skip the API model in favor of just functions in a header.",
+      "parentUuid": "bd423a3d_7c367ec7",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffc9288e_e2aecdce",
         "filename": "zephyr/drivers/dsp_comms/client/include/cros/dsp/client.h",
         "patchSetId": 23
@@ -99,6 +171,24 @@
       "writtenOn": "2024-10-25T21:38:20Z",
       "side": 1,
       "message": "Here\u0027s the API struct I was looking for.  Can we get the code for this?",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1386ed_2741c17b",
+        "filename": "zephyr/drivers/dsp_comms/client/include/cros/dsp/client.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T15:52:12Z",
+      "side": 1,
+      "message": "This was removed as per keith\u0027s request. Lets discuss tomorrow.",
+      "parentUuid": "ffc9288e_e2aecdce",
       "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
