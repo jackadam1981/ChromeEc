@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e5588c5_944571b5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-30T22:29:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d697a8e7_04655976",
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40eabaa6_cd7a3aca",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-29T17:39:39Z",
       "side": 1,
       "message": "Nit: It might be nice to conform this log message to the PD spec by printing the PDO number as 1-indexed.",
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "363cba27_97032764",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-30T22:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40eabaa6_cd7a3aca",
       "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c170d5a5_161d8980",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-30T22:29:53Z",
+      "side": 1,
+      "message": "Add consideration for highest voltage.",
+      "parentUuid": "95f76ff7_3c01a612",
+      "range": {
+        "startLine": 1958,
+        "startChar": 0,
+        "endLine": 1958,
+        "endChar": 24
+      },
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d5eea09_799479ff",
@@ -95,6 +155,30 @@
       "writtenOn": "2024-10-29T14:08:55Z",
       "side": 1,
       "message": "Nit - you could have `evaluate_src_pdos` also return the wattage of the selected PDO since the function already has this data.  Saves you from calculating the wattage again below.",
+      "range": {
+        "startLine": 2084,
+        "startChar": 7,
+        "endLine": 2084,
+        "endChar": 24
+      },
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c0cf25_cae88a72",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-30T22:29:53Z",
+      "side": 1,
+      "message": "Not going to do this now",
+      "parentUuid": "3d5eea09_799479ff",
       "range": {
         "startLine": 2084,
         "startChar": 7,
@@ -122,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d3c217_428e6ecc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-30T22:29:53Z",
+      "side": 1,
+      "message": "Removed the assert. Will print an error message and proceed anyways.",
+      "parentUuid": "bd19de91_7421a625",
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f240895e_4a570f63",
@@ -135,6 +237,24 @@
       "writtenOn": "2024-10-29T17:39:39Z",
       "side": 1,
       "message": "Nit: IDK if this is worth it, but as long as you\u0027re refactoring, if `pdo` were a `uint32_t *`, that one value could be used to get both the PDO contents and their index. That would remove the possibility of these fields being inconsistent, at the possible expense of making accesses to the remaining field less direct. It might also make `pdo` not-to-be-trusted during the time between the Source sending new Source Caps and us sending a new Request, but I think that was probably already the case.",
+      "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc56a47c_03b8ee5d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-30T22:29:53Z",
+      "side": 1,
+      "message": "Not going to do this now",
+      "parentUuid": "f240895e_4a570f63",
       "revId": "a4221a059af5cf0d6696e74988a6baaa06d505dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
