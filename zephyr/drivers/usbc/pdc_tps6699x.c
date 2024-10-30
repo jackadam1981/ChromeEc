@@ -47,6 +47,10 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
 /** @brief Time between checking TI CMDx register for data ready */
 #define PDC_TI_DATA_READY_TIME_MS (10)
+#define PDC_TI_DATA_READY_TIMEOUT (2000)
+#define PDC_TI_DATA_READY_TIMEOUT_CNT                                  \
+	((PDC_TI_DATA_READY_TIMEOUT + PDC_TI_DATA_READY_TIME_MS - 1) / \
+	 PDC_TI_DATA_READY_TIME_MS)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -264,6 +268,8 @@ struct pdc_data_t {
 	uint32_t events;
 	/* Deferred handler to trigger event to check if data is ready */
 	struct k_work_delayable data_ready;
+	/* Timeout tracker for data ready */
+	uint8_t data_ready_cnt;
 	/* Should use cached connector status change bits */
 	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
@@ -1608,6 +1614,7 @@ static void st_task_wait_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
+	data->data_ready_cnt = 0;
 	print_current_state(data);
 }
 
@@ -1644,11 +1651,18 @@ static void st_task_wait_run(void *o)
 	 *  2) command is set to "!CMD" for unknown command
 	 */
 	if (cmd.command && cmd.command != COMMAND_TASK_NO_COMMAND) {
-		LOG_INF("Data not ready, check again in %d ms",
-			PDC_TI_DATA_READY_TIME_MS);
-		k_work_reschedule(&data->data_ready,
-				  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
-		return;
+		if (++data->data_ready_cnt < PDC_TI_DATA_READY_TIMEOUT_CNT) {
+			LOG_INF("CMD=%d  not ready, check again in %d ms",
+				data->running_ucsi_cmd,
+				PDC_TI_DATA_READY_TIME_MS);
+			k_work_reschedule(&data->data_ready,
+					  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
+			return;
+		} else {
+			LOG_INF("Timedout waiting for UCSI cmd=%d",
+				data->running_ucsi_cmd);
+			data->cci_event.error = 1;
+		}
 	}
 
 	/*
