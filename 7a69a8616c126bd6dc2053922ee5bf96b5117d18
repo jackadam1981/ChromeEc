@@ -116,6 +116,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af89def7_73a22aa8",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3639181
+      },
+      "writtenOn": "2024-10-30T02:51:54Z",
+      "side": 1,
+      "message": "No, this macro is defined for our egis_enroll parameter to specify the expected number of images needed for enrollment.",
+      "parentUuid": "352fbca6_fb3bf64d",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52ad1394_5d3abea3",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
@@ -161,6 +185,30 @@
           ]
         }
       ],
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95201bd3_3abaa902",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3639181
+      },
+      "writtenOn": "2024-10-30T02:51:54Z",
+      "side": 1,
+      "message": "this macro is for setting enable anti_spoof function.\ntypedef enum {\n\tFAKE_AS_FR \u003d 1,\n\tFAKE_DISABLE \u003d 2,\n\tNO_FAKE \u003d 3\n} fake_detect_behavior_t;\n\nFAKE_AS_FR: Enables anti-spoofing.\nFAKE_DISABLE: Disables anti-spoofing.\nNO_FAKE: Fully remove anti-spoofing.",
+      "parentUuid": "52ad1394_5d3abea3",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 29
+      },
       "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
