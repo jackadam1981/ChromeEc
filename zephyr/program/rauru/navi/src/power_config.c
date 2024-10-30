@@ -8,12 +8,16 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "dps.h"
 #include "extpower.h"
 #include "hooks.h"
+#include "math_util.h"
 #include "power.h"
 #include "temp_sensor/temp_sensor.h"
 #include "usb_pd.h"
 #include "util.h"
+
+#include <dt-bindings/battery.h>
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -177,3 +181,29 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 {
 	return EC_RES_INVALID_PARAM;
 }
+
+bool navi_is_more_efficient(int curr_mv, int prev_mv, int batt_mv, int batt_mw,
+			    int input_mw)
+{
+	int batt_state;
+
+	battery_status(&batt_state);
+
+	/* Choose 15V PDO or higher when battery is full. */
+	if ((batt_state & SB_STATUS_FULLY_CHARGED) && (curr_mv >= 15000) &&
+	    (prev_mv < 15000 || curr_mv <= prev_mv)) {
+		return true;
+	} else {
+		return ABS(curr_mv - batt_mv) < ABS(prev_mv - batt_mv);
+	}
+}
+
+__override struct dps_config_t dps_config = {
+	.k_less_pwr = 93,
+	.k_more_pwr = 96,
+	.k_sample = 1,
+	.k_window = 3,
+	.t_stable = 10 * SECOND,
+	.t_check = 5 * SECOND,
+	.is_more_efficient = &navi_is_more_efficient,
+};
