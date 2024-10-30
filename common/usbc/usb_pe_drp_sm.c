@@ -2818,8 +2818,8 @@ static void pe_src_transition_supply_run(int port)
 
 			/*
 			 * Set first message flag to trigger a wait and add
-			 * jitter delay when operating in PD2.0 mode. Skip
-			 * if we already have a contract.
+			 * jitter delay when operating in PD2.0 mode. Skip if
+			 * this is not the initial power contract in this role.
 			 */
 			if (!pe_is_explicit_contract(port)) {
 				PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
@@ -3743,10 +3743,14 @@ static void pe_snk_transition_sink_run(int port)
 		    (PD_HEADER_TYPE(rx_emsg[port].header) == PD_CTRL_PS_RDY)) {
 			/*
 			 * Set first message flag to trigger a wait and add
-			 * jitter delay when operating in PD2.0 mode.
+			 * jitter delay when operating in PD2.0 mode. Skip if
+			 * this is not the initial power contract in this role.
 			 */
-			PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
-			pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
+			if (!pe_is_explicit_contract(port)) {
+				PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
+				pd_timer_disable(port,
+						 PE_TIMER_WAIT_AND_ADD_JITTER);
+			}
 
 			/*
 			 * If we've successfully completed our new power
