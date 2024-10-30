@@ -34,6 +34,23 @@
       "parentUuid": "a66f4dc6_da384c9f",
       "revId": "60c0ce0294faa55ccf938c7693180afb7ddaceb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34664f0_e8220415",
+        "filename": "common/usb_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-30T05:23:45Z",
+      "side": 1,
+      "message": "this also affects one-wire uart variants (roach, kelpie).\nis it intended?",
+      "revId": "60c0ce0294faa55ccf938c7693180afb7ddaceb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
