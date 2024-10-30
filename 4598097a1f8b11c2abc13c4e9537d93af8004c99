@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcc39c0_2f7493f7",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-30T17:43:23Z",
+      "side": 1,
+      "message": "should these both return 0? Is this intentional?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "223e6888_c1a98d48",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 51,
+                "endChar": 0
+              },
+              "replacement": "\tEGIS_API_IMAGE_QUALITY_GOOD \u003d 1,\n\tEGIS_API_IMAGE_QUALITY_BAD \u003d 2,\n\tEGIS_API_IMAGE_QUALITY_WATER \u003d 3,\n\tEGIS_API_IMAGE_QUALITY_PARTIAL \u003d 4,\n\tEGIS_API_IMAGE_EMPTY \u003d 5,\n\tEGIS_API_FINGER_PRESENT \u003d 6,\n\tEGIS_API_FINGER_LOST \u003d 7,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4598097a1f8b11c2abc13c4e9537d93af8004c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
