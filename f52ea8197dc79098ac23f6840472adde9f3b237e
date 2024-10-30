@@ -22,6 +22,30 @@
       },
       "revId": "f52ea8197dc79098ac23f6840472adde9f3b237e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc77738_baf1a661",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-10-30T15:17:10Z",
+      "side": 1,
+      "message": "This may be a copy/paste error.  After removing this line, I\u0027m not seeing any errors from this test.  @honscheid@google.com - can you remove this?",
+      "parentUuid": "17bb087e_090b10a2",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 0
+      },
+      "revId": "f52ea8197dc79098ac23f6840472adde9f3b237e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
