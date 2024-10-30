@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86f833a_29b2f43c",
+        "filename": "common/keyboard_strauss.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-30T00:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bc56987_4475c49d",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "89a040f643e6e32fccfaa9079b9aaa24d6ef7dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28501068_388b6aa6",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-29T18:17:56Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Conflict Markers: Conflict resolution marker found.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.\n\nAnalyzer Description: Identifies when changes accidentally have leftover conflict markers.\nOwner: maennich@google.com\n\nConflict resolution marker found.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 2,
+        "startChar": 1,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "89a040f643e6e32fccfaa9079b9aaa24d6ef7dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b599840_7250a57c",
+        "filename": "common/keyboard_strauss.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-30T00:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28501068_388b6aa6",
       "range": {
         "startLine": 2,
         "startChar": 1,
@@ -88,6 +136,54 @@
         "startChar": 0,
         "endLine": 151,
         "endChar": 0
+      },
+      "revId": "89a040f643e6e32fccfaa9079b9aaa24d6ef7dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a984bb2_eff09bd9",
+        "filename": "common/keyboard_strauss.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-30T00:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af91e57_954f36a7",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "89a040f643e6e32fccfaa9079b9aaa24d6ef7dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1409494f_611b6c7d",
+        "filename": "common/keyboard_strauss.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-10-30T00:51:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19fef476_dc323214",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 7
       },
       "revId": "89a040f643e6e32fccfaa9079b9aaa24d6ef7dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
