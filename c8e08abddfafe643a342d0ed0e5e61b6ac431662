@@ -34,6 +34,24 @@
       "parentUuid": "72e92f0b_52fb3d0f",
       "revId": "c8e08abddfafe643a342d0ed0e5e61b6ac431662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e8e4f8_d5ccf69b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-30T22:01:23Z",
+      "side": 1,
+      "message": "Actually, I see a timeout in a `dartmonkey` (not `bloonchipper`) run, so it could be the same issue you are describing or just an issue with the test timeout being set too short as mentioned in https://crrev.com/c/5961816:\n\n```\nDEBUG:Task 8: Count\u003d52 Golden\u003d52\nDEBUG:5\nDEBUG:Task 5: Count\u003d45 Golden\u003d45\nDEBUG:6\nDEBUG:Task 6: Count\u003d53 Golden\u003d53\nDEBUG:7\nDEBUG:Task 7: Count\u003d42 Golden\u003d42\nDEBUG:Test timed out\n```\n\nI need to look at the other failures again to see if they\u0027re all on `dartmonkey`.",
+      "parentUuid": "901937ea_602aae37",
+      "revId": "c8e08abddfafe643a342d0ed0e5e61b6ac431662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
