@@ -140,6 +140,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2549a90_929cc943",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-30T03:14:32Z",
+      "side": 1,
+      "message": "we need to change it to either `FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS` or `FP_ALGORITHM_TEMPLATE_DEPTH_EGIS`. The macro name has to have `EGIS` to avoid any name collision in the future.\n\nis the template size related to the `MAX_ENROLL_COUNT`?",
+      "parentUuid": "af89def7_73a22aa8",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52ad1394_5d3abea3",
         "filename": "driver/fingerprint/egis/egis_api.h",
         "patchSetId": 1
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "this macro is for setting enable anti_spoof function.\ntypedef enum {\n\tFAKE_AS_FR \u003d 1,\n\tFAKE_DISABLE \u003d 2,\n\tNO_FAKE \u003d 3\n} fake_detect_behavior_t;\n\nFAKE_AS_FR: Enables anti-spoofing.\nFAKE_DISABLE: Disables anti-spoofing.\nNO_FAKE: Fully remove anti-spoofing.",
       "parentUuid": "52ad1394_5d3abea3",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4293251e_43e36a19",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-30T03:14:32Z",
+      "side": 1,
+      "message": "we might need to add these as a comment. Let us do this as a separate CL.",
+      "parentUuid": "95201bd3_3abaa902",
       "range": {
         "startLine": 26,
         "startChar": 8,
