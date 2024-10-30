@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551a7e4d_1bf9e6bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-30T15:21:09Z",
+      "side": 1,
+      "message": "Please rebase both changes in the stack and run the CQ+1 to check test coverage.",
+      "revId": "ee234f8412ac380460eaa5cfd3ef8ebb248acc3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2113c728_1bd3c3cc",
+        "filename": "zephyr/test/ish/src/board_nb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-30T15:21:09Z",
+      "side": 1,
+      "message": "Nit - name this file `nb_mode.c`.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "ee234f8412ac380460eaa5cfd3ef8ebb248acc3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
