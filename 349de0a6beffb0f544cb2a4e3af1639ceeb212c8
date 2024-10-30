@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250379e5_b6c519ab",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-30T09:51:04Z",
+      "side": 1,
+      "message": "Note: I\u0027m trying to keep the behavior unchanged here.\n\nThis line and the DP_PREPARE_EXIT case below should use the version negotiated by PD (`pd_get_vdo_ver`).",
+      "revId": "349de0a6beffb0f544cb2a4e3af1639ceeb212c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee9969f_a4e5d8a3",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-30T09:51:04Z",
+      "side": 1,
+      "message": "This seems wrong..?\n\nDP2.1 table 1-5: \n\n\u003e Structured VDMs (SVDMs) are used for entry to and exit from DisplayPort Alt Mode.\nAll other VDMs used in DisplayPort Alt Mode are Unstructured VDMs (UVDMs).",
+      "range": {
+        "startLine": 631,
+        "startChar": 27,
+        "endLine": 631,
+        "endChar": 28
+      },
+      "revId": "349de0a6beffb0f544cb2a4e3af1639ceeb212c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
