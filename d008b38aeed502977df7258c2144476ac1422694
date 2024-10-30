@@ -16,6 +16,23 @@
       "message": "Hi Bob, please help review the CL, thanks.",
       "revId": "d008b38aeed502977df7258c2144476ac1422694",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54fb39c6_0ead8b5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-10-30T08:34:36Z",
+      "side": 1,
+      "message": "Can not CQ, need `Code-Owners` approve",
+      "revId": "d008b38aeed502977df7258c2144476ac1422694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
