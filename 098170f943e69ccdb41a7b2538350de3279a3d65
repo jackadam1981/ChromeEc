@@ -270,6 +270,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "641cda25_2b0f5dbc",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-30T02:59:30Z",
+      "side": 1,
+      "message": "I think there are multiple distinct issues here:\n1. We need to agree on the active DPAM version. If the other side sets it to \u003c\u003d2.0, I think we\u0027re supposed to downgrade ourselves. I think we\u0027re already doing this, at least at a basic level. We might need to clean it up, but we don\u0027t need to do it here.\n2. We need to agree on the active SVDM version. If the partner has an SVDM version \u003c\u003d2.0, we\u0027re supposed to downgrade. This is important for DPAM, because if the active SVDM version is \u003c\u003d2.0, we\u0027re not supposed to set or parse the DPAM version field, because it didn\u0027t exist yet. That means that the active DPAM version is implicitly \u003c\u003d2.0. I don\u0027t think we\u0027re currently doing that, but we don\u0027t need to fix it in this CL stack _for DPAM_ if we don\u0027t want to.\n3. PD SID and DPAM have distinct notions of the active SVDM version. This CL stack fixes SVDM agreement for PD, but the current patchset has the effect of combining SVDM version for PD and DPAM. That would change the DPAM behavior, potentially affecting the logic described above.\n\nI think there are two basic ways forward WRT #3.\n1. Make sure that this CL stack doesn\u0027t change anything about DPAM behavior and retain the unique SVDM version for DPAM via some mechanism. Come back to this stuff later.\n2. Implement DPAM SVDM version agreement as a mechanism separate from but similar to PD. That would basically mean fixing problem #2 above as well as problem #3. I would imagine this would end up being its own CL.\n\n\u003e Can we make the assumption that DPAM 2.1 is just always supported and let Kernel decide if it actually is?\n\nI\u0027d need to review the DPAM version logic in the spec, but I think the answer is no. The kernel shouldn\u0027t really have any part in this. Keep in mind that the DPAM version and DP version are separate. AFAIK, you can set up DPAM 2.1 and still only support DP 1.4. The risk of having your DPAM version too high is not that DP will be set up wrong but that we\u0027ll set VDM fields that the partners aren\u0027t expecting or (maybe) parse invalid values out of their reserved VDM fields.\n\n\u003e The main reason I stuck with a major and minor version was due to this variance in PD and DPAM specs there just really wasn\u0027t a clean way to decide without verifying that DPAM 2.1 was supported.\n\nWhat I\u0027m proposing (not necessarily in this CL) is that we formalize the way that we handle the DPAM SVDM version as a separate value from the PD SVDM version, thereby making this easier to manage.",
+      "parentUuid": "91259edd_0a4fe77b",
+      "revId": "098170f943e69ccdb41a7b2538350de3279a3d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2fd1d0_7a345e00",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 2
