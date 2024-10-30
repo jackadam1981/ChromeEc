@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe02025_71e2c587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2024-10-30T08:49:51Z",
+      "side": 1,
+      "message": "Because ODM/OEM Pegatron will run FW uprev for FW qualification for board skitty on 10/30 and skitty needs this solution for IEC62680-1. I add a low coverage issue in commit message, the test will be added after this CL is merged.",
+      "revId": "5465f83890d641b1a4fc1191dac966a7d9382d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
