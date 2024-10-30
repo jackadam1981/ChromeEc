@@ -16,6 +16,24 @@
       "message": "For testing we where using this copy of `ectool`: https://gitlab.howett.net/DHowett/ectool, as we are not sure how to build the proper `ectool`, so help here would be appreciated.",
       "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d434fcc_67f8329e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-30T18:55:13Z",
+      "side": 1,
+      "message": "Can you tell us how you are currently trying to build it and provide logs from the failure?\n\nWe have some instructions [here](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#build-ectool).\n\nYou do need to build it inside the chroot. It\u0027s possible that you\u0027re missing dependencies when building using `make`, since the `make` build bypasses the normal portage build system that builds dependencies. You can try running `update_chroot` inside the chroot to make sure the SDK packages in the chroot are the latest.",
+      "parentUuid": "1e54a418_cd90c553",
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
