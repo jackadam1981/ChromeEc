@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2514c028_3ca48fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T16:09:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "15eb8047_a15c502f",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ac47a34_5437eef6",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "I started off with that, but Keith said that since there\u0027s only ever exactly 1 of these we should skip the API model in favor of just functions in a header.",
       "parentUuid": "bd423a3d_7c367ec7",
+      "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d82ac00_de0379c0",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-10-30T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "952f4d97_02476d0d",
       "revId": "d43946c2bfae3104d573ebc6d706c53e3f809e71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
