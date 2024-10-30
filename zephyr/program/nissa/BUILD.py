@@ -13,6 +13,7 @@ def register_nissa_project(
     project_name,
     chip="it8xxx2/it81302bx",
     kconfig_files=None,
+    modules=None,
 ):
     """Register a variant of nissa."""
     register_func = register_binman_project
@@ -36,6 +37,8 @@ def register_nissa_project(
         dts_overlays=[here / project_name / "project.overlay"],
         kconfig_files=kconfig_files,
         inherited_from=["nissa"],
+        modules=modules,
+        supported_toolchains=["coreboot-sdk", "zephyr"],
     )
 
 
@@ -156,6 +159,13 @@ craaskov = register_nissa_project(
 orisa = register_nissa_project(
     project_name="orisa",
     chip="npcx9/npcx9m3f",
+    kconfig_files=[
+        here / "program.conf",
+        here / "orisa" / "project.conf",
+        here / "npcx_program.conf",
+        here / "orisa.conf",
+    ],
+    modules=["ec", "cmsis", "pigweed", "nanopb"],
 )
 
 orisa_ti = register_nissa_project(
@@ -221,7 +231,11 @@ register_ish_project(
     ],
     kconfig_files=[
         here / "orisa-ish" / "prj.conf",
+        # Uncomment the following line for UART support
+        # here / "orisa-ish" / "debug.conf",
+        here / "orisa.conf",
     ],
+    modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 rull = register_nissa_project(
