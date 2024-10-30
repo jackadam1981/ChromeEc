@@ -80,7 +80,11 @@
 	pinctrl-names = "default", "sleep";
 	row-size = <8>;
 	col-size = <13>;
+<<<<<<< HEAD   (6af72f Rull/Roric/Ruke：Modify keyboard type)
 	settle-time-us = <80>;
+=======
+	kso-ignore-mask = <04>;
+>>>>>>> CHANGE (6294a9 keyboard_input: add a dedicated col2 settle delay)
 
 	kso-gpio {
 		compatible = "cros-ec,col-gpio";
