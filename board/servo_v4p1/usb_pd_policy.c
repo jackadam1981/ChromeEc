@@ -719,6 +719,32 @@ int board_select_rp_value(int port, int rp)
 	return EC_SUCCESS;
 }
 
+static int command_select_rp(int argc, const char **argv)
+{
+	if (argc < 2) {
+		return EC_ERROR_PARAM_COUNT;
+	}
+	pd_comm_enable(DUT, 0);
+	cc_pull_stored = TYPEC_CC_RP;
+
+	if (strcasecmp(argv[1], "usb")) {
+		rp_value_stored = TYPEC_RP_USB;
+	} else if (strcasecmp(argv[1], "1.5")) {
+		rp_value_stored = TYPEC_RP_1A5;
+	} else if (strcasecmp(argv[1], "3.0")) {
+		rp_value_stored = TYPEC_RP_3A0;
+	} else if (strcasecmp(argv[1], "none")) {
+		rp_value_stored = TYPEC_RP_RESERVED;
+	} else {
+		return EC_ERROR_PARAM2;
+	}
+
+	return pd_set_rp_rd(DUT, cc_pull_stored, rp_value_stored);
+}
+DECLARE_CONSOLE_COMMAND(
+	select_rp, command_select_rp, "[usb|1.5|3.0|none]",
+	"Manually select rp values and disables pd communication");
+
 int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
 	int pdo_cnt = 0;
