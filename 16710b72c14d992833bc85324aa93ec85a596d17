@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeb87f30_8b0e4e3e",
+        "filename": "zephyr/program/nissa/include/telith_sub_board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2024-10-30T06:15:04Z",
+      "side": 1,
+      "message": "Telith",
+      "parentUuid": "7e856c38_82f86062",
+      "revId": "16710b72c14d992833bc85324aa93ec85a596d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59e64dd3_a658ff39",
         "filename": "zephyr/program/nissa/telith/fan.dtsi",
         "patchSetId": 2
