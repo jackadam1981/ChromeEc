@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4e7188d_e43db593",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-30T01:59:25Z",
+      "side": 1,
+      "message": "modify as suggested",
+      "parentUuid": "192f1778_2ba810ed",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 20
+      },
+      "revId": "6057bacd2613f3217eae099e2d60518ab582d347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2c657b7_1631a91b",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-29T22:43:48Z",
       "side": 1,
       "message": "same comment as above.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 33
+      },
+      "revId": "6057bacd2613f3217eae099e2d60518ab582d347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3861abe_5dfa5a4e",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-30T01:59:25Z",
+      "side": 1,
+      "message": "modify as suggested",
+      "parentUuid": "f2c657b7_1631a91b",
       "range": {
         "startLine": 139,
         "startChar": 1,
