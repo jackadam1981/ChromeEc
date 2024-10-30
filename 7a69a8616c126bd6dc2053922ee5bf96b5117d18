@@ -307,6 +307,30 @@
       },
       "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f4b9ce_e482e47f",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-10-30T17:39:55Z",
+      "side": 1,
+      "message": "modify to `FAKE_STRATEGY_EGIS`\n\nby the way, where is `NO_FAKE` defined? I see only `plat_log.h` being included.",
+      "parentUuid": "4293251e_43e36a19",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
