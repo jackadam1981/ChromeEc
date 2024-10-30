@@ -22,6 +22,30 @@
       },
       "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d315f1_f5e6d2a4",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-10-30T02:04:52Z",
+      "side": 0,
+      "message": "yes, `EGIS_API_FINGER_LOST` mean finger remove. So it should wrap to `FINGER_NONE`",
+      "parentUuid": "ab5f3229_a67d4afa",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
