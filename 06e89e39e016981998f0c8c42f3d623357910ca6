@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e035c27_ee4a846c",
+        "filename": "zephyr/program/fatcat/francka/overlay.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-30T18:36:44Z",
+      "side": 1,
+      "message": "can you promote or separate these sections into their own files\nlike `battery.dtsi`. `overlay.dtsi` makes more sense for things that are different\nfrom a baseboard, but there\u0027s no baseboard here, right?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "06e89e39e016981998f0c8c42f3d623357910ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
