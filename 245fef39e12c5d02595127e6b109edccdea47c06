@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9827393_974b30ef",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-30T08:17:50Z",
+      "side": 1,
+      "message": "you might need to include the header file that defined these macros.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15096c1_17ba4bcd",
+        "filename": "zephyr/subsys/usbd_service/usbd_hid_kb.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-30T08:17:50Z",
+      "side": 1,
+      "message": "use `__fallthrough` instead",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 31
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
