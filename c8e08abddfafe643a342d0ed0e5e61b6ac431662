@@ -16,6 +16,24 @@
       "message": "Hi. I was able to observe a similar situation while running the `timer` test on `bloonchipper` with `stress -c $(nproc)` running in the background. The `run_device_test.py` script would report a timeout due to lack of the `Pass!`. To check if the message is send by Renode I\u0027ve dumped the UART output to an additional file and in that file the message was visible (see: https://renode.readthedocs.io/en/latest/host-integration/uart.html#redirecting-to-a-file on what to add to the `.resc` script to do that). This may suggest that with high loads on the host machine some messages from Renode are dropped. For me this was reproducible only with with `stress` running on all available cores.",
       "revId": "c8e08abddfafe643a342d0ed0e5e61b6ac431662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901937ea_602aae37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-30T21:44:06Z",
+      "side": 1,
+      "message": "Thanks for that test case. I\u0027ll try it out and see if it looks like the same issue.\n\n\u003e The run_device_test.py script would report a timeout due to lack of the `Pass!`\n\nThis sounds like it might be a little different because I do see the `Pass!` in the [failure case logs](https://partnerissuetracker.corp.google.com/issues/374798079#comment7).",
+      "parentUuid": "72e92f0b_52fb3d0f",
+      "revId": "c8e08abddfafe643a342d0ed0e5e61b6ac431662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
