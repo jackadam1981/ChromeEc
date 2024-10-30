@@ -455,6 +455,16 @@ void __ram_code clock_cpu_standby(void)
 {
 	/* standby instruction */
 	if (IS_ENABLED(CHIP_CORE_NDS32)) {
+		/*
+		 * Peripheral interrupts (EXT_IERx) must remain enabled before
+		 * CPU enters standby state otherwise pending interrupts will
+		 * not wake up CPU.
+		 *
+		 * TODO:
+		 * Since we enable IER19 interrupts unconditionally here,
+		 * peripheral interrupts for IER19 may be accidentally enabled?
+		 */
+		IT83XX_INTC_REG(IT83XX_INTC_EXT_IER19) |= GROUP19_TO_INT3_MASK;
 		asm("standby wake_grant");
 	} else if (IS_ENABLED(CHIP_CORE_RISCV)) {
 		if (!IS_ENABLED(IT83XX_RISCV_WAKEUP_CPU_WITHOUT_INT_ENABLED))

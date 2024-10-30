@@ -207,18 +207,23 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
  */
 void __ram_code interrupt_disable(void)
 {
-	/* Mask all interrupts, except division by zero and timer-related */
-	uint32_t val = IDIVZE | BIT(3);
+	/*
+	 * Mask all interrupts (except division by zero) to prevent race
+	 * condition during IER changes
+	 */
+	uint32_t val = IDIVZE;
 
-	/* Group 3: disable and clear interrupt */
-	IT83XX_INTC_REG(IT83XX_INTC_IER3) &= ~GROUP3_TO_INT3_MASK;
-	IT83XX_INTC_ISR3 |= GROUP3_TO_INT3_MASK;
+	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
+	asm volatile("dsb");
+
+	/* Group 3: No need to interrupt */
 	/* Group 7: unused */
 	/* Group 10: bit0 is pre-watchdog, keep it */
-	/* Group 19: disable and clear interrupts */
-	IT83XX_INTC_REG(IT83XX_INTC_IER19) &= ~GROUP19_TO_INT3_MASK;
-	IT83XX_INTC_ISR19 |= GROUP19_TO_INT3_MASK;
+	/* Group 19: disable interrupt without clear pending status */
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER19) &= ~GROUP19_TO_INT3_MASK;
 
+	/* Mask all interrupts, except division by zero and timer-related */
+	val = IDIVZE | BIT(3);
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 	asm volatile("dsb");
 }
@@ -227,13 +232,17 @@ void __ram_code interrupt_enable(void)
 {
 	/* Enable HW2 ~ HW15 and division by zero exception interrupts */
 	uint32_t val = (IDIVZE | 0xFFFC);
-	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 
+	/*
+	 * TODO:
+	 * Since we enable IER19 interrupts unconditionally here, peripheral
+	 * interrupts for IER19 may be accidentally enabled?
+	 */
 	/* Enable interrupt groups in reverse order, starting with group 19 */
-	IT83XX_INTC_REG(IT83XX_INTC_IER19) |= GROUP19_TO_INT3_MASK;
-	/* Skip group 10 and group 7, same as in interrupt_disable() */
-	/* Group 3 */
-	IT83XX_INTC_REG(IT83XX_INTC_IER3) |= GROUP3_TO_INT3_MASK;
+	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER19) |= GROUP19_TO_INT3_MASK;
+	/* Skip group 3, 10 and group 7, same as in interrupt_disable() */
+
+	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 }
 
 inline bool is_interrupt_enabled(void)
@@ -500,12 +509,14 @@ uint32_t __ram_code read_clear_int_mask(void)
 		     "dsb\n\t"
 		     : "=&r"(int_mask)
 		     : "r"(int_dis));
+	/* TODO: check me */
 
 	return int_mask;
 }
 
 void __ram_code set_int_mask(uint32_t val)
 {
+	/* TODO: check me */
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 }
 

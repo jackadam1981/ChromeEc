@@ -641,6 +641,8 @@
 #define IT83XX_INTC_IPOLR21 REG8(IT83XX_INTC_BASE + 0x5b)
 #define IT83XX_INTC_IPOLR22 REG8(IT83XX_INTC_BASE + 0x5f)
 
+#define IT83XX_INTC_EXT_IER19 REG8(IT83XX_INTC_BASE + 0x73)
+
 #define IT83XX_INTC_EXT_IER_OFF(n) (0x60 + (n))
 #define IT83XX_INTC_IVCT(i) REG8(IT83XX_INTC_BASE + 0x80 + (i))
 
@@ -653,7 +655,7 @@
 
 Group  Interrupt  Bit   Purpose
 
-  3	INT30	   6	Ext timer 1
+  3	INT30	   6	Ext timer 1 (No need to enable interrupt)
 
 	INT58	   2	Ext timer 2
 	INT60	   4	TMRINTA0
@@ -663,7 +665,7 @@ Group  Interrupt  Bit   Purpose
 
   10	INT80	   0	Ext timer 8
 
-	INT155	   3	Ext timer 3
+	INT155	   3	Ext timer 3 (No need to enable interrupt)
 	INT156	   4	Ext timer 4
   19	INT157	   5	Ext timer 5
 	INT158	   6	Ext timer 6
@@ -673,7 +675,7 @@ Group  Interrupt  Bit   Purpose
 #define GROUP3_TO_INT3_MASK BIT(6)
 #define GROUP7_TO_INT3_MASK (BIT(2) | BIT(4) | BIT(5) | BIT(6) | BIT(7))
 #define GROUP10_TO_INT3_MASK BIT(0)
-#define GROUP19_TO_INT3_MASK (BIT(3) | BIT(4) | BIT(5) | BIT(6) | BIT(7))
+#define GROUP19_TO_INT3_MASK (BIT(4) | BIT(5) | BIT(6) | BIT(7))
 
 /* --- EC Access to the Host Controlled Modules (EC2I Bridge) --- */
 #define IT83XX_EC2I_BASE 0x00F01200
