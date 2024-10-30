@@ -29,10 +29,6 @@
 	};
 };
 
-&i2c1_0 {
-	status = "disabled";
-};
-
 /* These GPIOS are initialized by the PDC driver */
 &gpio_usb_pd_int_odl {
 	no-auto-init;
