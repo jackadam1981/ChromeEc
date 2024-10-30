@@ -175,6 +175,30 @@
       },
       "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7139d3_3b91e189",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-30T21:59:02Z",
+      "side": 1,
+      "message": "Looks like we\u0027re still seeing a timeout on the `timeout` test after I ran it in the CQ:\n\n```bash\nDEBUG:Running command: \"make BOARD\u003dbloonchipper -j test-timer\"\n  BUILD   build/bloonchipper/timer\n  CHECK_ALLOWED build/bloonchipper/timer/.config\n  *** 72816 bytes in flash and 238720 bytes in RAM still available on bloonchipper RO ****\n  *** 399576 bytes in flash and 176384 bytes in RAM still available on bloonchipper RW ****\nDEBUG:image_path: /mnt/host/source/src/platform/ec/build/bloonchipper/timer/timer.bin\nINFO:Running test: \"timer\"\nDEBUG:Calling pre-test callback\nDEBUG:\nDEBUG:\nDEBUG:--- UART initialized after reboot ---\nDEBUG:[Image: RO, bloonchipper_v2.0.26654-84496d3 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16075.0.24_10_25 2024-10-25 10:59:46 chrome-bot@chromeos-cin2d-cq-us-east4-c-x32-21-h5jt]\nDEBUG:[Reset cause: reset-pin power-on]\nDEBUG:[0.000245 Inits done]\nDEBUG:[0.000278 TRANSPORT_SEL: UART]\nDEBUG:[0.000317 TRANSPORT_SEL: UART]\nDEBUG:Console is enabled; type HELP for help.\nDEBUG:\u003e [0.000390 event set 0x0000000000002000]\nDEBUG:[0.000435 hostcmd init 0x0000000000002000]\nDEBUG:[0.000490 Verifying RW image...]\nDEBUG:[0.121248 RW verify OK]\nDEBUG:[1.000440 MKBP not cleared within threshold, toggling.]\nDEBUG:[1.121390 Jumping to image RW (0x0000000a)]\nDEBUG:[1.122438 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\nDEBUG:\nDEBUG:[1.122566 UART initialized after sysjump]\nDEBUG:[Image: RW, bloonchipper_v2.0.26654-84496d3 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16075.0.24_10_25 2024-10-25 10:59:46 chrome-bot@chromeos-cin2d-cq-us-east4-c-x32-21-h5jt]\nDEBUG:[Reset cause: reset-pin power-on sysjump]\nDEBUG:[1.122826 Inits done]\nDEBUG:[1.122860 TRANSPORT_SEL: UART]\nDEBUG:[1.122899 TRANSPORT_SEL: UART]\nDEBUG:Console is enabled; type HELP for help.\nDEBUG:\u003e [1.122979 event set 0x0000000000002000]\nDEBUG:[1.123024 hostcmd init 0x0000000000002000]\nDEBUG:[1.123074 FP_SENSOR_SEL: ELAN]\nDEBUG:[1.123106 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\nDEBUG:[1.123155 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\nDEBUG:fp_sensor_open - Sensor init failed. Result\u003d-9\nDEBUG:[1.125273 Error: fp_sensor_open() failed, result\u003d-9]\nDEBUG:[1.125326 FPC unknown silicon 0x0000]\nDEBUG:bio_algorithm_init - Failed getting recommended parameters. Result\u003d-21\nDEBUG:[1.125424 Error: bio_algorithm_init() failed, result\u003d-21]\nDEBUG:[2.123028 MKBP not cleared within threshold, toggling.]\nDEBUG:[3.123084 MKBP: The AP is failing to respond because it is sleeping or off]\nDEBUG:\nDEBUG:\u003e runtest\nDEBUG:Running test_usleep...\nDEBUG:Pass: ABS((expected_duration) - (sleep_duration)) \u003c error_threshold\nDEBUG:OK\nDEBUG:Running test_timestamp_expired...\nDEBUG:OK\nDEBUG:Running test_timestamp_expired_null...\nDEBUG:OK\nDEBUG:Running test_usleep_warning...\nDEBUG:[7.081942 Sleeping not allowed]\nDEBUG:Pass: delta_buffer_used \u003e\u003d (int32_t)strlen(\"Sleeping not allowed\")\nDEBUG:Pass: delta_buffer_used \u003d\u003d 0\nDEBUG:Test timed out\n```",
+      "parentUuid": "66870a86_f9a2fe74",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
