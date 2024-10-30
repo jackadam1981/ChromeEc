@@ -1934,6 +1934,7 @@ static int evaluate_src_pdos(const uint32_t *pdos, size_t num_pdos,
 		return -EINVAL;
 	}
 
+	/* Note: PDO numbers in the function are 0-indexed. */
 	*selected = -1;
 
 	for (size_t i = 0; i < num_pdos; i++) {
@@ -1968,12 +1969,25 @@ static int evaluate_src_pdos(const uint32_t *pdos, size_t num_pdos,
 		}
 	}
 
-	if (*selected == -1) {
-		/* No PDO matched. */
-		return -ENOTSUP;
+	if (*selected >= 0) {
+		/* Found a good PDO */
+		return 0;
 	}
 
-	return 0;
+	/* Handle situations with malformed sets of PDOs:
+	 *
+	 * If a port partner sends only a zero-current PDO, select it anyways
+	 * as long as it does not exceed our maximum voltage (theoretically PDO
+	 * 0 will always be 5V)
+	 */
+	if (PDO_FIXED_GET_VOLT(pdos[0]) > 0 &&
+	    PDO_FIXED_GET_VOLT(pdos[0]) <= pdc_max_request_mv) {
+		*selected = 0;
+		return 0;
+	}
+
+	/* No PDO usable PDO found. */
+	return -ENOTSUP;
 }
 
 /**
