@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9f46a4_4bc2051f",
+        "filename": "zephyr/program/fatcat/francka/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-10-30T18:19:08Z",
+      "side": 1,
+      "message": "would like to confirm: you\u0027re building the initial boards with\nthe CBI EEPROM populated and pre-programmed?\n\nif the EEPROM is populated and not pre-programmed, you probably\nwill not be able to program it using the cbi command the\ncommand will update the internal EC flash only.\n\nhaving `CONFIG_PLATFORM_EC_CBI_TRANSFER_EEPROM_FLASH` enabled\nwithout valid CBI in EEPROM is not a valid configuration.\ni\u0027m pretty sure the behavior will not be good.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "bcb2db7c07f19f8cfa90aa7713b1b760063e03d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
