@@ -33,6 +33,23 @@
       "message": "Can not CQ, need `Code-Owners` approve",
       "revId": "d008b38aeed502977df7258c2144476ac1422694",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693078b3_e597870a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2024-10-30T09:16:20Z",
+      "side": 1,
+      "message": "Hi Bob, this CL needs Code-Owner approve, could you help give the CL CR+2, thanks.",
+      "revId": "d008b38aeed502977df7258c2144476ac1422694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
