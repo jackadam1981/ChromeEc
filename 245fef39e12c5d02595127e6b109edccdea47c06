@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "947b2711_2608fb5e",
+        "filename": "zephyr/subsys/usbd_service/Kconfig",
+        "patchSetId": 34
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-10-30T18:31:47Z",
+      "side": 1,
+      "message": "Why does RO have a different default config?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031d0c7e_bc67bdda",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-10-30T18:31:47Z",
+      "side": 1,
+      "message": "nit: please use parentheses for one-line if-statements to follow Zephyr\u0027s style guide.",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b89012e_63039cf6",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-10-30T18:31:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 75,
+        "startChar": 67,
+        "endLine": 75,
+        "endChar": 68
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd259bb_eca8668f",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-10-30T18:31:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 79,
+        "startChar": 44,
+        "endLine": 79,
+        "endChar": 45
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9827393_974b30ef",
         "filename": "zephyr/subsys/usbd_service/hid_vivaldi.h",
         "patchSetId": 34
@@ -42,6 +134,29 @@
         "startChar": 2,
         "endLine": 196,
         "endChar": 31
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90265b2e_1835ae15",
+        "filename": "zephyr/subsys/usbd_service/usbd_init.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-10-30T18:31:47Z",
+      "side": 1,
+      "message": "Split this to match 80c per line.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 66
       },
       "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
