@@ -27,9 +27,11 @@
 
 #define ALS_ENABLE BIT(0)
 #define FACTORY_CLEAR BIT(1)
+#define ALS_NORMAL_COUNT BIT(2)
 
 static int als_enable = 0;
 static int als_det_enable = 1;
+static bool als_not_count = false;
 
 static int als_eeprom_read(uint8_t offset, uint8_t *data, int len)
 {
@@ -90,6 +92,15 @@ static void check_als_status(void)
 		/* Enable als function */
 		if ((data[0] & ALS_ENABLE) || (data[1] != EEPROM_DATA_VERIFY)) {
 			als_enable = 1;
+
+			if ((data[0] & ALS_NORMAL_COUNT) &&
+			    !gpio_get_level(GPIO_DOOR_OPEN_EC)) {
+				als_not_count = true;
+			} else {
+				als_not_count = false;
+				data[0] &= ~ALS_NORMAL_COUNT;
+				als_eeprom_write(0x00, data, 1);
+			}
 		}
 	}
 }
@@ -103,16 +114,20 @@ int als_enable_status(void)
 static void als_change_deferred(void)
 {
 	static bool debouncing;
-	int out;
+	uint8_t data[1];
 
-	out = gpio_get_level(GPIO_DOOR_OPEN_EC);
-
-	if (out == 0) {
+	if (!gpio_get_level(GPIO_DOOR_OPEN_EC)) {
 		if (!debouncing)
 			debouncing = true;
 
 		debouncing = false;
-		als_data_handler();
+		if (!als_not_count)
+			als_data_handler();
+
+		als_eeprom_read(0x00, data, 1);
+		data[0] |= ALS_NORMAL_COUNT;
+		als_eeprom_write(0x00, data, 1);
+
 		chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
 		if (extpower_is_present()) {
 			CPRINTS("AC off!");
