@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f835a2b8_a025f45e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T16:34:48Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c649e8_a56a9f55",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1929,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T16:34:48Z",
+      "side": 1,
+      "message": "Nit: Given the usage of `selected`, it seems like it should be an `unsigned` or `size_t`.",
+      "range": {
+        "startLine": 1929,
+        "startChar": 8,
+        "endLine": 1929,
+        "endChar": 11
+      },
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f90a506_4f2b8c76",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T16:34:48Z",
+      "side": 1,
+      "message": "A valid Source Caps will always start with fixed 5V, and the PDOs of each supply type will be in ascending order of voltage. This function does not appear to make or check any assumptions about the validity of the Source Caps, i.e. it will keep reading if the first PDO is not fixed 5V, and if it gets to a too-high voltage or a non-fixed PDO, it will keep checking subsequent PDOs. This isn\u0027t necessarily a problem, as long as the individual PDOs are still valid. And it would be appropriate for a PDC to Hard Reset in response to invalid Source Caps, so maybe we\u0027ll never see invalid ones here. But we might want to at least document our assumptions about the PDOs.",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7757bc_c8787d1c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T16:34:48Z",
+      "side": 1,
+      "message": "Nit: It\u0027s a little bit weird that this function may _sometimes_ modify its output parameter despite returning an error code. It seems a little more natural to me that you would wait to set `*selected` until you\u0027d found something.",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c103017_3777c5ca",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T16:34:48Z",
+      "side": 1,
+      "message": "Nit: Line length?",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
