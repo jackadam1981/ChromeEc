@@ -63,6 +63,10 @@
 		/delete-node/ usb_c1_bc12_charger_int_odl;
 		/delete-node/ en_pp5000_usb_a0_vbus;
 		/delete-node/ usb_a0_fault_odl;
+		/delete-node/ gpio_ec_x_gpio1;
+		/delete-node/ gpio_ec_x_gpio2;
+		/delete-node/ gpio_ec_x_gpio3;
+		/delete-node/ dp_aux_path_sel;
 
 		gpio_hdmi_prsnt_odl: hdmi_prsnt_odl {
 			gpios = <&gpioj 3 GPIO_INPUT_PULL_UP>;
@@ -139,7 +143,23 @@
 			/* usb_a0_fault_odl */
 			<&gpioa 6 0>,
 			/* en_pp5000_usb_a0_vbus */
-			<&gpioa 7 0>;
+			<&gpioa 7 0>,
+			/* gpio-usb-c1-ppc-int-odl */
+			<&gpiob 2 0>,
+			/* i2c4_clk */
+			<&gpioe 0 0>,
+			/* i2c4_sda */
+			<&gpioe 7 0>,
+			/* ec_usb_c1_cc1 */
+			<&gpioh 1 0>,
+			/* ec_usb_c1_cc2 */
+			<&gpioh 2 0>,
+			/* gpio-usb-c1-frs-en */
+			<&gpioh 4 0>,
+			/* ec_usb_c1_vbus_sense */
+			<&gpioi 7 0>,
+			/* gpio-ps185-pwrdn-odl */
+			<&gpioj 1 0>;
 	};
 
 	/delete-node/ cros-keyscan;
@@ -322,6 +342,8 @@
 			enum-name = "ADC_BASE_DET";
 			io-channels = <&adc0 6>;
 		};
+
+		/delete-node/ adc_vbus_c1;
 	};
 
 	temp_sensor_1_thermistor: sensor-1-thermistor {
@@ -559,12 +581,12 @@
 			};
 		};
 
-		port1@1{
-			/delete-property/ bc12;
-			usb-mux-chain-1{
-				usb-muxes = <&ps8743_mux_1 &virtual_mux_1>;
-			};
-		};
+		/delete-node/ port1@1;
+		/delete-node/ port1-muxes;
+	};
+
+	named-i2c-ports {
+		/delete-node/ usb-c1;
 	};
 };
 
@@ -623,20 +645,19 @@
 };
 
 &i2c4 {
-	ps8743_mux_1: ps8743-mux-1@10 {
-		compatible = "parade,ps8743";
-		reg = <0x10>;
-	};
+	/* EC_I2C_USB_C1 */
+	status = "disabled";
+};
 
-	/delete-node/ tusb1064-mux-1@44;
+&usbpd1 {
+	status = "disabled";
 };
 
 &adc0 {
 	status = "okay";
 	pinctrl-0 = <&adc0_ch0_gpi0_default
 		     &adc0_ch5_gpi5_default
-		     &adc0_ch6_gpi6_default
-		     &adc0_ch7_gpi7_default>;
+		     &adc0_ch6_gpi6_default>;
 	pinctrl-names = "default";
 };
 
