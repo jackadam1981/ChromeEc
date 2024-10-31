@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83d1220_ed91f9e6",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-31T22:46:44Z",
+      "side": 1,
+      "message": "Nit - Use `zassert_ok` when checking for success instead of `zassert_equal(0, ...)`.\n\nPlease also fix the other cases below.",
+      "range": {
+        "startLine": 2291,
+        "startChar": 0,
+        "endLine": 2291,
+        "endChar": 72
+      },
+      "revId": "84ce6e0417a84f353657277818a63b9e96d1db96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
