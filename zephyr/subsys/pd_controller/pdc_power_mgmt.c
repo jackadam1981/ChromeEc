@@ -1925,12 +1925,12 @@ static void pdc_snk_attached_entry(void *obj)
  * @return -EINVAL if \p selected is NULL or \p num_pdos is 0
  * @return -ENOTSUP if no PDO in \p pdos meets criteria
  */
-static int evaluate_src_pdos(const uint32_t *pdos, size_t num_pdos,
-			     int *selected)
+STATIC_IF_NOT(CONFIG_ZTEST)
+int evaluate_src_pdos(const uint32_t *pdos, size_t num_pdos, int *selected)
 {
 	uint32_t highest_mw = 0, highest_mv = 0;
 
-	if (selected == NULL || num_pdos == 0) {
+	if (pdos == NULL || selected == NULL || num_pdos == 0) {
 		return -EINVAL;
 	}
 
