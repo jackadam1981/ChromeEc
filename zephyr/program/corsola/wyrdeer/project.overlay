@@ -136,6 +136,10 @@
 			<&gpiog 5 GPIO_OUTPUT_LOW>,
 			/* spi_cs_gpg7 */
 			<&gpiog 7 GPIO_OUTPUT_LOW>;
+			/* i2c4_clk */
+			<&gpiog 7 GPIO_INPUT>;
+			/* i2c4_sda */
+			<&gpiog 7 GPIO_INPUT>;
 	};
 
 	/delete-node/ cros-keyscan;
@@ -555,14 +559,14 @@
 			};
 		};
 
-		port1@1{
-			/delete-property/ bc12;
-			usb-mux-chain-1{
-				usb-muxes = <&ps8743_mux_1 &virtual_mux_1>;
-			};
-		};
+		/delete-node/ port1@1;
+		/delete-node/ port1-muxes;
 	};
 };
+
+named-i2c-ports {
+	/delete-node/ usb-c1;
+}
 
 /* LED1 */
 &pwm0 {
@@ -619,12 +623,8 @@
 };
 
 &i2c4 {
-	ps8743_mux_1: ps8743-mux-1@10 {
-		compatible = "parade,ps8743";
-		reg = <0x10>;
-	};
-
-	/delete-node/ tusb1064-mux-1@44;
+	/* EC_I2C_USB_C1 */
+	status = "disabled";
 };
 
 &adc0 {
