@@ -1120,7 +1120,7 @@ static int pe_in_spr_contract(int port)
 static bool pe_can_send_sop_prime(int port)
 {
 	if (IS_ENABLED(CONFIG_USBC_VCONN)) {
-		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+		if (pe_is_explicit_contract(port)) {
 			if (prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20)
 				return tc_is_vconn_src(port) &&
 				       pe[port].data_role == PD_ROLE_DFP;
@@ -1150,7 +1150,7 @@ static bool pe_can_send_sop_prime(int port)
  */
 static bool pe_can_send_sop_vdm(int port, int vdm_cmd)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+	if (pe_is_explicit_contract(port)) {
 		if (prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20) {
 			if (pe[port].data_role == PD_ROLE_UFP &&
 			    vdm_cmd != CMD_ATTENTION) {
@@ -1331,7 +1331,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpci_msg_type type)
 	if ((e != ERR_TCH_XMIT &&
 	     !PE_CHK_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS)) ||
 	    e == ERR_TCH_XMIT ||
-	    (!PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT) &&
+	    (!pe_is_explicit_contract(port) &&
 	     type == TCPCI_MSG_SOP)) {
 		pe_send_soft_reset(port, type);
 	}
@@ -1415,7 +1415,7 @@ void pd_resume_check_pr_swap_needed(int port)
 				       pd_get_src_caps(port)) &&
 	    (!IS_ENABLED(CONFIG_CHARGE_MANAGER) ||
 	     charge_manager_get_active_charge_port() != port))
-		pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
+		pd_request_power_swap(port);
 }
 
 void pd_dpm_request(int port, enum pd_dpm_request req)
@@ -1811,6 +1811,7 @@ static bool source_dpm_requests(int port)
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 
 	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP)) {
+		CPRINTS("Handling PRS: Source");
 		pe_set_dpm_curr_request(port, DPM_REQUEST_PR_SWAP);
 		set_state_pe(port, PE_PRS_SRC_SNK_SEND_SWAP);
 		return true;
@@ -1866,6 +1867,7 @@ static bool sink_dpm_requests(int port)
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 
 	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP)) {
+		CPRINTS("Handling PRS: Sink");
 		pe_set_dpm_curr_request(port, DPM_REQUEST_PR_SWAP);
 		set_state_pe(port, PE_PRS_SNK_SRC_SEND_SWAP);
 		return true;
@@ -2096,6 +2098,7 @@ void pd_request_power_swap(int port)
 	 * requested by policy.
 	 */
 	pe[port].src_snk_pr_swap_counter = 0;
+	CPRINTS("Requesting PRS");
 	pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
 }
 
@@ -2267,6 +2270,7 @@ static void pe_update_wait_and_add_jitter_timer(int port)
 		const uint32_t jitter_us = (get_time().le.lo & 0xf) * 11 * MSEC;
 		const uint32_t hold_off_us = base_us + jitter_us;
 
+		CPRINTS("Setting hold off to %ums", hold_off_us); 
 		pd_timer_enable(port, PE_TIMER_WAIT_AND_ADD_JITTER,
 				hold_off_us);
 	}
@@ -3101,11 +3105,13 @@ static void pe_src_ready_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_WAITING_PR_SWAP) &&
 	    pd_timer_is_expired(port, PE_TIMER_PR_SWAP_WAIT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_WAITING_PR_SWAP);
-		PE_SET_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
+		pd_request_power_swap(port);
 	}
 
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
 	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_FIRST_MSG))
+			CPRINTS("Hold off timer expired: Source ready");
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
@@ -3192,7 +3198,7 @@ static void pe_src_capability_response_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
-		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT))
+		if (pe_is_explicit_contract(port))
 			/*
 			 * NOTE: The src capabilities listed in
 			 *       board/xxx/usb_pd_policy.c will not
@@ -3646,6 +3652,19 @@ static void pe_snk_select_capability_run(int port)
 			 * Accept Message Received
 			 */
 			if (type == PD_CTRL_ACCEPT) {
+				/*
+				 * Set first message flag to trigger a wait and
+				 * add jitter delay when operating in PD2.0
+				 * mode. Skip if this is not the initial power
+				 * contract in this role.
+				 */
+				if (!pe_is_explicit_contract(port)) {
+					PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
+					pd_timer_disable(
+						port,
+						PE_TIMER_WAIT_AND_ADD_JITTER);
+				}
+
 				/* explicit contract is now in place */
 				pe_set_explicit_contract(port);
 
@@ -3670,8 +3689,7 @@ static void pe_snk_select_capability_run(int port)
 				 * We had a previous explicit contract, so
 				 * transition to PE_SNK_Ready
 				 */
-				if (PE_CHK_FLAG(port,
-						PE_FLAGS_EXPLICIT_CONTRACT))
+				if (pe_is_explicit_contract(port))
 					set_state_pe(port, PE_SNK_READY);
 				/*
 				 * No previous explicit contract, so transition
@@ -3741,17 +3759,6 @@ static void pe_snk_transition_sink_run(int port)
 		 */
 		if ((PD_HEADER_CNT(rx_emsg[port].header) == 0) &&
 		    (PD_HEADER_TYPE(rx_emsg[port].header) == PD_CTRL_PS_RDY)) {
-			/*
-			 * Set first message flag to trigger a wait and add
-			 * jitter delay when operating in PD2.0 mode. Skip if
-			 * this is not the initial power contract in this role.
-			 */
-			if (!pe_is_explicit_contract(port)) {
-				PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
-				pd_timer_disable(port,
-						 PE_TIMER_WAIT_AND_ADD_JITTER);
-			}
-
 			/*
 			 * If we've successfully completed our new power
 			 * contract, ensure SOP' communication is enabled before
@@ -4080,6 +4087,8 @@ static void pe_snk_ready_run(int port)
 
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
 	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_FIRST_MSG))
+			CPRINTS("Hold off timer expired: Source ready");
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
