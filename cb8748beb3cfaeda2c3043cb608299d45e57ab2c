@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd6080d_ec387d01",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T21:51:38Z",
+      "side": 1,
+      "message": "Is there a doxygen command that allows referencing the enum? e.g., `@return enum finger_state`?\n\nSince this enum is [defined in `fpsensor_types.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor_types.h;l\u003d33-37;drc\u003dcde9ea4d9bd6b0377510fe0a9a2ab3107a577609), it\u0027s a little more maintainable if we can just link to that with doxygen somehow, so that it stays in sync if things change.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 69
+      },
+      "revId": "cb8748beb3cfaeda2c3043cb608299d45e57ab2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
