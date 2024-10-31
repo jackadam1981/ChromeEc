@@ -103,6 +103,9 @@ void fp_configure_detect(void);
  * (assumes fp_configure_detect was called before)
  *
  * @return finger_state
+ *             FINGER_NONE (0)    - No finger present.
+ *             FINGER_PARTIAL (1) - Finger partially covering the sensor.
+ *             FINGER_PRESENT (2) - Finger fully covering the sensor.
  */
 enum finger_state fp_finger_status(void);
 
