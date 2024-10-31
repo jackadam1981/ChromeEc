@@ -16,6 +16,24 @@
       "message": "Nit: This should go in the previous CL.",
       "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f383a7c_e4f9763a",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-31T17:32:33Z",
+      "side": 0,
+      "message": "it\u0027s used in common/usbc/usb_pe_drp_sm.c line 6680",
+      "parentUuid": "8a3414d3_ebb83a6a",
+      "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
