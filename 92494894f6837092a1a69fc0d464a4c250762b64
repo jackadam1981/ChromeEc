@@ -38,6 +38,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a87737bf_7edf33c4",
+        "filename": "util/comm-renode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-31T18:02:38Z",
+      "side": 1,
+      "message": "Our compiler is a stickler for types.\n\n```suggestion\n\t\tfprintf(stderr, \"Invalid header size. Expected: %zu, got: %zu\\n\",\n```\n\n\n\n```\nutil/comm-renode.cc:60:37: error: format specifies type \u0027int\u0027 but the argument has type \u0027size_t\u0027 (aka \u0027unsigned long\u0027) [-Werror,-Wformat]\n   59 |                 fprintf(stderr, \"Invalid header size. Expected: %d, got: %d\\n\",\n      |                                                                          ~~\n      |                                                                          %zu\n   60 |                         sizeof(struct ec_host_response), result_size);\n      |                                                          ^~~~~~~~~~~\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 50,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a1f832_74084be4",
+        "filename": "util/comm-renode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-31T18:02:38Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tfprintf(stderr, \"Invalid data length. Expected: %d, got: %zu\",\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 59,
+        "endLine": 73,
+        "endChar": 61
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b76801ff_a4e85232",
         "filename": "util/ectool.cc",
         "patchSetId": 1
