@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fe6b3a_d127c4bb",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-31T17:44:41Z",
+      "side": 1,
+      "message": "How about adding a `timeout_ms` parameter to the existing call.  You could specify that timeout of 0, or maybe -1 uses the default timeout.",
+      "range": {
+        "startLine": 614,
+        "startChar": 4,
+        "endLine": 614,
+        "endChar": 48
+      },
+      "revId": "c65aee08a45e1fa756b8a299475143a62b749b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
