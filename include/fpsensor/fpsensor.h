@@ -168,9 +168,15 @@ int fp_acquire_image_with_mode(uint8_t *image_data, int mode);
  * Runs a test for defective pixels.
  *
  * Should be triggered periodically by the client. The maintenance command can
- * take several hundred milliseconds to run.
+ * take several hundred milliseconds to run. The function updates an
+ * `error_state`, which is a pointer to a uint16_t where the error state will be
+ * stored. The function will update this variable with information about dead
+ * pixels by setting bits in the FP_ERROR_DEAD_PIXELS field. This parameter
+ * cannot be NULL. The `error_state` can be allocated by the client or passed
+ * from the library implementing this function.
  *
  * @return EC_ERROR_HW_INTERNAL on error (such as finger on sensor)
+ * @return EC_ERROR_INVAL if error_state is NULL
  * @return EC_SUCCESS on success
  */
 int fp_maintenance(void);
