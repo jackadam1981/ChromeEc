@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536e7980_f9dae99a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3130632
+      },
+      "writtenOn": "2024-10-31T22:17:40Z",
+      "side": 1,
+      "message": "Would it be simpler to use `#define plat_free(x) do { sys_free(x); (x)\u003dNULL;} while(0)`, then there is no need for address-of operators and void** casts.",
+      "fixSuggestions": [
+        {
+          "fixId": "447b15a1_6c43b75d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "#define plat_free(x) do { sys_free(x); (x) \u003d NULL; } while (0)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "88a2c5c2b20e0e3f836945079ac6df9bd0e97818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
