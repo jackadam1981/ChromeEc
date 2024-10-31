@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cb52b41_81784f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-31T19:06:56Z",
+      "side": 1,
+      "message": "IIRC, building `ectool` requires libec and uses pkg-config.\n\n```bash\n(cr) $ pkg-config --path libec\n/usr/lib64/pkgconfig/libec.pc\n\n(cr) $ pkg-config --libs libec\n-lec -lbase -lpthread -labseil_dll -lusb-1.0 \n\n(cr) $ pkg-config --cflags libec\n-I/usr/include/libchrome -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/perfetto -I/usr/include/nss -I/usr/include/nspr -I/usr/include/libusb-1.0 -DUSE_RTTI_FOR_TYPE_TAGS\u003d1 -Wno-unused-local-typedefs -DBASE_VER\u003d1375601 -DBASE_USE_PERFETTO_CLIENT_LIBRARY -DPERFETTO_ENABLE_LEGACY_TRACE_EVENTS\u003d1 -I/usr/include/chromeos -DPROTOBUF_USE_DLLS -Wno-float-conversion -Wno-implicit-float-conversion -Wno-implicit-int-float-conversion -Wno-unknown-warning-option -DNOMINMAX -pthread \n\n(cr) $ equery b \"$(pkg-config --path libec)\"\n * Searching for /usr/lib64/pkgconfig/libec.pc ... \nchromeos-base/libec-0.0.1-r729 (/usr/lib64/pkgconfig/libec.pc)\n```\n\nLike Tom mentioned, update_chroot might work or you could try to directly build libec for host:\n\n```bash\n(cr) $ sudo emerge chromeos-base/libec\n```\n\nThen build ectool and other tools:\n```bash\n(cr) /mnt/host/source/src/platform/ec $ make BOARD\u003dhost utils -j\n```",
+      "parentUuid": "6d434fcc_67f8329e",
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a87737bf_7edf33c4",
         "filename": "util/comm-renode.cc",
         "patchSetId": 1
