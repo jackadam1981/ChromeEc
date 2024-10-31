@@ -34,6 +34,29 @@
       "parentUuid": "1e54a418_cd90c553",
       "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b76801ff_a4e85232",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12733,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-31T17:53:11Z",
+      "side": 1,
+      "message": "This needs a forward declaration somewhere.\n\n\n```gcc\n  HOSTCXX  util/ectool\nutil/ectool.cc:12733:8: error: use of undeclared identifier \u0027comm_init_renode\u0027; did you mean \u0027comm_init_dev\u0027?\n 12733 |                         if (comm_init_renode(optarg)) {\n       |                             ^~~~~~~~~~~~~~~~\n       |                             comm_init_dev\nutil/comm-host.h:53:5: note: \u0027comm_init_dev\u0027 declared here\n   53 | int comm_init_dev(const char *device_name);\n      |     ^\n1 error generated.\n```",
+      "range": {
+        "startLine": 12733,
+        "startChar": 7,
+        "endLine": 12733,
+        "endChar": 23
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
