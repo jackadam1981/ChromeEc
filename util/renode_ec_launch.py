@@ -126,6 +126,12 @@ def launch(opts: argparse.Namespace) -> int:
     # (gdb) target remote :3333
     renode_execute.append("machine StartGdbServer 3333;")
 
+    if os.path.exists("/tmp/renode-test-passed"):
+        os.remove("/tmp/renode-test-passed")
+
+    if os.path.exists("/tmp/renode-uart-log"):
+        os.remove("/tmp/renode-uart-log")
+
     if board in GPIO_WP_MAP:
         wp_state = GPIO_WP_ENABLE if enable_write_protect else GPIO_WP_DISABLE
         renode_execute.append(f"{GPIO_WP_MAP[board]} {wp_state};")
@@ -138,6 +144,13 @@ def launch(opts: argparse.Namespace) -> int:
         )
         renode_execute.append(
             "connector Connect " + CONSOLE_MAP[board] + " term;"
+        )
+        renode_execute.append(
+            f'{CONSOLE_MAP[board]} CreateFileBackend "/tmp/renode-uart-log" True;'
+        )
+        renode_execute.append(
+            f'{CONSOLE_MAP[board]} AddLineHook "Pass!" '
+            "\"with open('/tmp/renode-test-passed', 'w'): pass\";"
         )
 
     renode_execute.append("start;")
