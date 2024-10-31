@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7473cefe_6dcd8095",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T17:22:41Z",
+      "side": 1,
+      "message": "Resolved earlier in CL chain.",
+      "parentUuid": "d0f4e625_6c68dcbf",
+      "revId": "270fbc15c0457c15cb20b3c2d73aaa3167f9b3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3782cfd_fceda2b8",
