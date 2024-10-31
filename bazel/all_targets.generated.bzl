@@ -2406,13 +2406,6 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
-        name = "volteer_ish",
-        board = "volteer_ish",
-        chip = "ish",
-        core = "minute-ia",
-        zephyr = False,
-    )
-    ec_target(
         name = "volteer_npcx797fc",
         baseboard = "volteer",
         board = "volteer_npcx797fc",
@@ -2536,6 +2529,10 @@ def all_targets():
     ec_target(
         name = "wugtrio",
         board = "wugtrio",
+    )
+    ec_target(
+        name = "wyrdeer",
+        board = "wyrdeer",
     )
     ec_target(
         name = "xivu",
