@@ -127,9 +127,11 @@ enum adc_channel board_get_vbus_adc(int port)
 	if (port == 0) {
 		return ADC_VBUS_C0;
 	}
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	if (port == 1) {
 		return ADC_VBUS_C1;
 	}
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT > 1 */
 	CPRINTSUSB("Unknown vbus adc port id: %d", port);
 	return ADC_VBUS_C0;
 }
