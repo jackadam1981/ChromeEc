@@ -139,6 +139,9 @@ def launch(opts: argparse.Namespace) -> int:
         renode_execute.append(
             "connector Connect " + CONSOLE_MAP[board] + " term;"
         )
+        renode_execute.append(
+            f'{CONSOLE_MAP[board]} CreateFileBackend "/tmp/renode-uart-log" True;'
+        )
 
     renode_execute.append("start;")
 
