@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05aeb9ab_b3c11ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T17:19:49Z",
+      "side": 1,
+      "message": "LGTM as as no-op refactor. I think this is probably the right thing to do for now despite what follows.\n\nA topic for the TODO bug and not this CL: SVDM version parsing for DPAM 2.1 is most directly described in Figures 5-1, 5-3 (note 9), and 5-5 (note 3). These figures seem to make clear that\n1. The SVDM version for DPAM should be the same as for PD SID.\n2. DPAM 2.1 support directly tied to PD revision support. An implementation may support DPAM 2.1 if and only if it supports PD \u003e\u003d r3.1 v1.6 and thus SVDM version 2.1 or higher.\n3. As such, the SVDM version agreement that takes place during Discover Identity is the one that applies to DPAM. There should not be a second agreement process that occurs only within the DP SID.\n\nIt seems to me that the coupling of PD revision and DPAM version relies heavily on all DPAM 2.1 (or even 2.0) implementations doing SVDM version downgrade correctly to not break older implementations, but I\u0027m not sure exactly what the implications of that are yet. I think this may eventually require more cleanup than just tweaking the version bits we set.",
+      "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef70121_4a76392c",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T17:19:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the return type be `enum usb_pd_svdm_ver`? Even though the number can be different for alt modes, at least as far as we\u0027ve seen, the range of possible numbers is the same.",
+      "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

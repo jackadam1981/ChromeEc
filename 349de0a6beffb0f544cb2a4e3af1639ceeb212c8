@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb3aa81_ba709df2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T17:19:49Z",
+      "side": 1,
+      "message": "I agree that this keeps the behavior the same, and that\u0027s what this CL should do. Can you create a bug and add a TODO to fix the handling of this?\n\nI\u0027m pretty sure that the Exit Mode REQ _should_ be `dp_get_vdo_ver`. I\u0027m not sure about Enter Mode REQ. The case could be made that we should already have figured out the version by that time based on the Discover Modes ACK. The DPAM spec doesn\u0027t specifically say.",
+      "parentUuid": "250379e5_b6c519ab",
+      "revId": "349de0a6beffb0f544cb2a4e3af1639ceeb212c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bee9969f_a4e5d8a3",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-30T09:51:04Z",
       "side": 1,
       "message": "This seems wrong..?\n\nDP2.1 table 1-5: \n\n\u003e Structured VDMs (SVDMs) are used for entry to and exit from DisplayPort Alt Mode.\nAll other VDMs used in DisplayPort Alt Mode are Unstructured VDMs (UVDMs).",
+      "range": {
+        "startLine": 631,
+        "startChar": 27,
+        "endLine": 631,
+        "endChar": 28
+      },
+      "revId": "349de0a6beffb0f544cb2a4e3af1639ceeb212c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec53ecab_2c344503",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T17:19:49Z",
+      "side": 1,
+      "message": "Wow, I\u0027ve never seen that before. I\u0027m pretty confident that it\u0027s an error. In practice, Status, Config, etc. are SVDMs, and the bulk of the spec seems consistent with that.\n\nss 5.2.1 SVDM Header:\n\u003e The Structured Vendor Defined Message (SVDM) Header, as specified in USB PD, shall be used for the DP-specific commands (i.e., DisplayPort Status Update and DisplayPort Configure in conjunction with the DP_SID).\n\nThere\u0027s no such thing as SVDM version for UVDMs, so this entire feature and conversation are predicated on the idea that the DPAM VDMs are all SVDMs.",
+      "parentUuid": "bee9969f_a4e5d8a3",
       "range": {
         "startLine": 631,
         "startChar": 27,
