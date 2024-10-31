@@ -99,6 +99,8 @@
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
 
+#define CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
