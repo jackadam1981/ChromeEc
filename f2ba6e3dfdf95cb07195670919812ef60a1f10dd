@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96042af_59cf21bf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-31T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f835a2b8_a025f45e",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3c649e8_a56a9f55",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-10-31T16:34:48Z",
       "side": 1,
       "message": "Nit: Given the usage of `selected`, it seems like it should be an `unsigned` or `size_t`.",
+      "range": {
+        "startLine": 1929,
+        "startChar": 8,
+        "endLine": 1929,
+        "endChar": 11
+      },
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224e04a4_c85828b2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1929,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-31T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c649e8_a56a9f55",
       "range": {
         "startLine": 1929,
         "startChar": 8,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9604df7b_eb87336b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-31T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f90a506_4f2b8c76",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef7757bc_c8787d1c",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc324b36_a0fb1700",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-31T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7757bc_c8787d1c",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c103017_3777c5ca",
@@ -88,6 +166,24 @@
       "writtenOn": "2024-10-31T16:34:48Z",
       "side": 1,
       "message": "Nit: Line length?",
+      "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f90f92a_16fadc8a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-10-31T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c103017_3777c5ca",
       "revId": "f2ba6e3dfdf95cb07195670919812ef60a1f10dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
