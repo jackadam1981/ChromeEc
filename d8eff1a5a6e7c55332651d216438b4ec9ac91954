@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d650373e_6e0017bf",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "This could change if we change the macro, so let\u0027s not document the implementation details since it can get out of sync.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059f9f3d_5b269b23",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "IIRC, this is not an \"unknown number\", but rather \"the number of pixels is unknown\" (i.e., we have not done a check to see how many dead pixels there are, so we don\u0027t know yet).",
+      "range": {
+        "startLine": 50,
+        "startChar": 33,
+        "endLine": 50,
+        "endChar": 80
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9284c6_27df9d2b",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "This could change if we change the macro, so let\u0027s not document the implementation details since it can get out of sync.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979f55d2_781b878a",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "This could change if we change the macro, so let\u0027s not document the implementation details since it can get out of sync.",
+      "range": {
+        "startLine": 54,
+        "startChar": 66,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a97892_7050d467",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "This could change if we change the macro, so let\u0027s not document the implementation details since it can get out of sync.",
+      "range": {
+        "startLine": 57,
+        "startChar": 65,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3963349f_029a581c",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "This could change if we change the macro, so let\u0027s not document the implementation details since it can get out of sync.",
+      "range": {
+        "startLine": 60,
+        "startChar": 50,
+        "endLine": 60,
+        "endChar": 79
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa1ab51_f29a08af",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-10-31T20:31:02Z",
+      "side": 1,
+      "message": "This could change if we change the macro, so let\u0027s not document the implementation details since it can get out of sync.",
+      "range": {
+        "startLine": 62,
+        "startChar": 52,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "d8eff1a5a6e7c55332651d216438b4ec9ac91954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
