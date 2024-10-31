@@ -103,6 +103,52 @@
       },
       "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82df5e60_64a93534",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12756,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-31T18:47:28Z",
+      "side": 1,
+      "message": "I think it might make sense to add `COMM_RENODE` and use this interface flow?",
+      "range": {
+        "startLine": 12756,
+        "startChar": 17,
+        "endLine": 12756,
+        "endChar": 27
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e79f5d0e_0daf1b0d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12797,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-10-31T18:47:28Z",
+      "side": 1,
+      "message": "Do we need to skip the following code?\n\nI think this would ignore the `help` command.",
+      "range": {
+        "startLine": 12792,
+        "startChar": 0,
+        "endLine": 12797,
+        "endChar": 0
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
