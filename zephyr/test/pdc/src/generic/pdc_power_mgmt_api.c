@@ -2197,6 +2197,54 @@ ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
 	zassert_true(host_is_event_set(EC_HOST_EVENT_USB_MUX));
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_dp_mode)
+{
+	union get_attention_vdo_t attention_vdo;
+	union connector_status_t in_conn_status;
+	union conn_status_change_bits_t in_conn_status_change_bits;
+	uint32_t vdo[] = { 0x05 | (MODE_DP_PIN_D << 8) };
+
+	/* PIN_D and mux should be in DOCK mode*/
+	zassert_equal(0, pdc_power_mgmt_get_dp_pin_mode(TEST_PORT));
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
+
+	in_conn_status_change_bits.supported_cam = 1;
+	in_conn_status_change_bits.attention = 1;
+	in_conn_status.raw_conn_status_change_bits =
+		in_conn_status_change_bits.raw_value;
+	in_conn_status.power_operation_mode = PD_OPERATION;
+	in_conn_status.conn_partner_flags =
+		CONNECTOR_PARTNER_FLAG_ALTERNATE_MODE;
+	if (-ENOSYS == emul_pdc_set_vdo(emul, 1, vdo)) {
+		ztest_test_skip();
+	}
+	attention_vdo.vdo = VDO_DP_STATUS(0, 0, 0, 0, 1 /* mf */, 1, 0, 1);
+	emul_pdc_set_attention_vdo(emul, attention_vdo);
+
+	emul_pdc_configure_src(emul, &in_conn_status);
+	emul_pdc_connect_partner(emul, &in_conn_status);
+
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
+
+	zassert_equal(MODE_DP_PIN_D, pdc_power_mgmt_get_dp_pin_mode(TEST_PORT));
+	zassert_equal(USB_PD_MUX_DOCK,
+		      pdc_power_mgmt_get_dp_mux_mode(TEST_PORT));
+
+	/* PIN_C and mux should be in DP only mode */
+	vdo[0] = 0x05 | (MODE_DP_PIN_C << 8);
+	if (-ENOSYS == emul_pdc_set_vdo(emul, 1, vdo)) {
+		ztest_test_skip();
+	}
+	emul_pdc_configure_src(emul, &in_conn_status);
+	emul_pdc_connect_partner(emul, &in_conn_status);
+
+	zassert_ok(pdc_power_mgmt_resync_port_state_for_ppm(TEST_PORT));
+
+	zassert_equal(MODE_DP_PIN_C, pdc_power_mgmt_get_dp_pin_mode(TEST_PORT));
+	zassert_equal(USB_PD_MUX_DP_ENABLED,
+		      pdc_power_mgmt_get_dp_mux_mode(TEST_PORT));
+}
+
 ZTEST_USER(pdc_power_mgmt_api, test_get_rdo_errors)
 {
 	/* The normal code path for pdc_power_mgmt_get_rdo() is tested in
