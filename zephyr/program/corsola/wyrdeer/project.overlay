@@ -15,7 +15,6 @@
 #include "../ite_shi.dtsi"
 #include "./thermistor.dtsi"
 #include "../ite_keyboard.dtsi"
-#include "../usba.dtsi"
 #include <dt-bindings/battery.h>
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/motionsense/utils.h>
@@ -62,14 +61,8 @@
 		/delete-node/ entering_rw;
 		/delete-node/ tablet_mode_l;
 		/delete-node/ usb_c1_bc12_charger_int_odl;
-
-		usb_a0_fault_odl: usb_a0_fault_odl {
-			gpios = <&gpioa 6 GPIO_INPUT>;
-		};
-
-		en_pp5000_usb_a0_vbus: en_pp5000_usb_a0_vbus {
-			gpios = <&gpioa 7 GPIO_OUTPUT_LOW>;
-		};
+		/delete-node/ en_pp5000_usb_a0_vbus;
+		/delete-node/ usb_a0_fault_odl;
 
 		gpio_hdmi_prsnt_odl: hdmi_prsnt_odl {
 			gpios = <&gpioj 3 GPIO_INPUT_PULL_UP>;
@@ -142,7 +135,11 @@
 			/* spi_miso_gpg5 */
 			<&gpiog 5 GPIO_OUTPUT_LOW>,
 			/* spi_cs_gpg7 */
-			<&gpiog 7 GPIO_OUTPUT_LOW>;
+			<&gpiog 7 GPIO_OUTPUT_LOW>,
+			/* usb_a0_fault_odl */
+			<&gpioa 6 0>,
+			/* en_pp5000_usb_a0_vbus */
+			<&gpioa 7 0>;
 	};
 
 	/delete-node/ cros-keyscan;
