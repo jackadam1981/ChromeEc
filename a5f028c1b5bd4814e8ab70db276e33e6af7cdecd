@@ -39,6 +39,30 @@
       },
       "revId": "a5f028c1b5bd4814e8ab70db276e33e6af7cdecd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035b1bfa_a82d2edd",
+        "filename": "zephyr/program/brox/src/hibernate.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-10-31T17:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a51e8c_4e900f90",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "a5f028c1b5bd4814e8ab70db276e33e6af7cdecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
