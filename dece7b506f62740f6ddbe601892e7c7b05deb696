@@ -51,6 +51,24 @@
       "parentUuid": "fef70121_4a76392c",
       "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358091cc_1813c65a",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T17:52:44Z",
+      "side": 1,
+      "message": "Oh, I missed this. I\u0027d add another bug TODO here to note that 0b0001 is an invalid value, and we should fix this logic to not produce it.",
+      "parentUuid": "637bbcc6_216d5438",
+      "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
