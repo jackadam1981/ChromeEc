@@ -33,6 +33,24 @@
       "message": "Shouldn\u0027t the return type be `enum usb_pd_svdm_ver`? Even though the number can be different for alt modes, at least as far as we\u0027ve seen, the range of possible numbers is the same.",
       "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637bbcc6_216d5438",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-10-31T17:30:31Z",
+      "side": 1,
+      "message": "I use int because (major 0, minor 1) doesn\u0027t have an enum name.\nIf we can name it properly, yes",
+      "parentUuid": "fef70121_4a76392c",
+      "revId": "dece7b506f62740f6ddbe601892e7c7b05deb696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
