@@ -269,6 +269,11 @@
 	pinctrl-names = "default";
 	scl-gpios = <&gpiob 3 0>;
 	sda-gpios = <&gpiob 4 0>;
+	/*
+	* If the property of 'channel-switch-sel' is changed, the pinctrl
+	* setting and recovery pin in &i2c0 and &i2c2 nodes must also be
+	* modified accordingly.
+	*/
 	channel-switch-sel = <I2C_CHA_LOCATE>;
 	status = "okay";
 };
@@ -289,8 +294,13 @@
 	pinctrl-names = "default";
 	scl-gpios = <&gpiof 6 0>;
 	sda-gpios = <&gpiof 7 0>;
+	/*
+	* If the property of 'channel-switch-sel' is changed, the pinctrl
+	* setting and recovery pin in &i2c0 and &i2c2 nodes must also be
+	* modified accordingly.
+	*/
 	channel-switch-sel = <I2C_CHC_LOCATE>;
-	status = "disabled";
+	status = "okay";
 };
 
 &i2c4 {
