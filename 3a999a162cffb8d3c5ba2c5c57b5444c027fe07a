@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4530912c_1103d36b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-10-31T23:12:45Z",
+      "side": 1,
+      "message": "This CL breaks the ECOS testcase `td_pd_ll_e3` and a few similar ones. The underlying bug is that the PE sets us as being in an explicit contract in the sink case after receiving the Accept, unlike in the Source case where it starts after sending PS_RDY. As such, the explicit contract check after receiving PS_RDY would always be true, and the hold off timer would never start.\n\nThe WIP CL ahead of this one moves the check to before setting explicit contract (and cleans up some stuff). I\u0027m not sure whether that\u0027s the right solution, or whether I should move the explicit contract entry to the PS_RDY point. I\u0027ll need to check if it\u0027s supposed to be the same point for source and sink.",
+      "revId": "3a999a162cffb8d3c5ba2c5c57b5444c027fe07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
