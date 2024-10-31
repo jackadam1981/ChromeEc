@@ -1355,6 +1355,17 @@ def run_test(
             now = time.time()
             if now - start > test.timeout_secs:
                 logging.debug("Test timed out")
+                try:
+                    with open(
+                        "/tmp/renode-uart-log", "r", encoding="utf-8"
+                    ) as uart_log:
+                        logging.debug("=== START RENODE UART LOG===")
+                        for line in uart_log:
+                            logging.debug(line.strip())
+                        logging.debug("=== END   RENODE UART LOG===")
+                    os.remove("/tmp/renode-uart-log")
+                except OSError:
+                    pass
                 return False
             continue
 
