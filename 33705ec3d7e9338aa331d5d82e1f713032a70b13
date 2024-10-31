@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "33705ec3d7e9338aa331d5d82e1f713032a70b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "757679b8_892783c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-10-31T20:39:36Z",
+      "side": 1,
+      "message": "Hey, I\u0027m using an updated VIF for compliance testing with PDC FW 0.34.1. Can we update the brox_vif.xml in zephyr to be consistent with this?",
+      "revId": "33705ec3d7e9338aa331d5d82e1f713032a70b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
