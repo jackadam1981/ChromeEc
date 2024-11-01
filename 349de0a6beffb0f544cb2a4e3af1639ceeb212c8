@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a7f645_0a60b4ec",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-01T04:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcb3aa81_ba709df2",
+      "revId": "349de0a6beffb0f544cb2a4e3af1639ceeb212c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee9969f_a4e5d8a3",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Wow, I\u0027ve never seen that before. I\u0027m pretty confident that it\u0027s an error. In practice, Status, Config, etc. are SVDMs, and the bulk of the spec seems consistent with that.\n\nss 5.2.1 SVDM Header:\n\u003e The Structured Vendor Defined Message (SVDM) Header, as specified in USB PD, shall be used for the DP-specific commands (i.e., DisplayPort Status Update and DisplayPort Configure in conjunction with the DP_SID).\n\nThere\u0027s no such thing as SVDM version for UVDMs, so this entire feature and conversation are predicated on the idea that the DPAM VDMs are all SVDMs.",
       "parentUuid": "bee9969f_a4e5d8a3",
+      "range": {
+        "startLine": 631,
+        "startChar": 27,
+        "endLine": 631,
+        "endChar": 28
+      },
+      "revId": "349de0a6beffb0f544cb2a4e3af1639ceeb212c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "926062b2_a450d835",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-01T04:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec53ecab_2c344503",
       "range": {
         "startLine": 631,
         "startChar": 27,
