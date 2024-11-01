@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4a6d81_33954792",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2024-11-01T17:49:22Z",
+      "side": 1,
+      "message": "Do builds pass if this is made static (and forward-declare it for a call in system_usable_ram_end)?",
+      "range": {
+        "startLine": 331,
+        "startChar": 18,
+        "endLine": 331,
+        "endChar": 31
+      },
+      "revId": "d57f82703a48f8996a95097b43ee305048b825b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
