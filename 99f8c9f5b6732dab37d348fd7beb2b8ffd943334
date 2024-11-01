@@ -88,6 +88,30 @@
       },
       "revId": "99f8c9f5b6732dab37d348fd7beb2b8ffd943334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8639473e_50705fa4",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T16:19:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "77afdf6e_4fddd6a5",
+      "range": {
+        "startLine": 107,
+        "startChar": 25,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "revId": "99f8c9f5b6732dab37d348fd7beb2b8ffd943334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
