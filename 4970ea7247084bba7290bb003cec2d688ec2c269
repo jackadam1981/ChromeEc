@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e1a2047_bede5274",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-01T08:54:01Z",
+      "side": 1,
+      "message": "We don\u0027t have timer1 interrupt enabled.\nFor watchdog feature, we only need to enable timer 1 as clock source of watchdog.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/it83xx/watchdog.c#138",
+      "parentUuid": "6f434696_ed9c8000",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d61af0f6_bffa60a3",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2024-10-30T20:09:39Z",
       "side": 1,
       "message": "same question here, why do we need timer 3 interrupt to be always enabled?",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c305984c_4bef7455",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-01T08:54:01Z",
+      "side": 1,
+      "message": "In combinational mode, we don\u0027t have timer3 interrupt enabled.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/it83xx/hwtimer.c#25",
+      "parentUuid": "d61af0f6_bffa60a3",
       "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38b2a5d2_67858e8d",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-01T08:54:01Z",
+      "side": 1,
+      "message": "task_enable_irq()/task_disable_irq() will change EXT_IERx with or/and opration.",
+      "parentUuid": "4406a427_8d72b66a",
+      "range": {
+        "startLine": 211,
+        "startChar": 61,
+        "endLine": 212,
+        "endChar": 13
+      },
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02896a78_897d654d",
         "filename": "core/nds32/task.c",
         "patchSetId": 1
@@ -88,6 +148,30 @@
       "writtenOn": "2024-10-30T20:09:39Z",
       "side": 1,
       "message": "They should be enabled by `chip_init_irqs` on every boot if i understand correctly",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 4
+      },
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348c58af_a279b82b",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-01T08:54:01Z",
+      "side": 1,
+      "message": "We use task_enable_irq()/task_disable_irq() to enable/disable SOC\u0027s interrupt when needed.",
+      "parentUuid": "02896a78_897d654d",
       "range": {
         "startLine": 236,
         "startChar": 1,
