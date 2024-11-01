@@ -40,6 +40,30 @@
       ],
       "revId": "4598097a1f8b11c2abc13c4e9537d93af8004c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85423f5b_850d53e5",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-01T08:52:09Z",
+      "side": 1,
+      "message": "yes, `EGIS_API_IMAGE_QUALITY_GOOD` was set to 0 as intentional.",
+      "parentUuid": "ffcc39c0_2f7493f7",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "4598097a1f8b11c2abc13c4e9537d93af8004c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
