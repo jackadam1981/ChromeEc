@@ -16,6 +16,24 @@
       "message": "Thanks! This brings the Elan fpinfo handling on par with that of FPC. See [the same function in fpc_private.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/bep/fpc_private.c;l\u003d233-246;drc\u003d611356d2e1fd6e221aa01d32fe50dad6974c5d75).\n\nWe might want to revise this behavior in the future to not just abort here, since one of the functions of this host interface is to transport the `errors` bit field.\n\nThis also explains why I sometimes would see uninitialized garbage in the sensor ID field, when I would run the fpinfo command on buccaneer devices.",
       "revId": "5626d030b04dc85ab0a3fc1f161bfea2f0327654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9adc0260_bacb82ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T05:35:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "287868c5_b5c11736",
+      "revId": "5626d030b04dc85ab0a3fc1f161bfea2f0327654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
