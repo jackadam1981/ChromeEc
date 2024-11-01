@@ -16,6 +16,24 @@
       "message": "I run command \"zmake build glassway\", it is passed.\nBut run command \"./twister -T zephyr/test/nissa\", it is failed.\nThe error message as follow, but I have define config \"DYNAMIC_MOTION_SENSOR_COUNT\". Could you help check it? Thanks.\n\nError message:\n/mnt/host/source/src/platform/ec/zephyr/program/nissa/glassway/src/board.c:38:23: error: cannot assign to variable \u0027motion_sensor_count\u0027 with const-qualified type \u0027const unsigned int\u0027\n   38 |                 motion_sensor_count \u003d 0;\n      |                 ~~~~~~~~~~~~~~~~~~~ ^\n/mnt/host/source/src/platform/ec/include/motion_sense.h:289:27: note: variable \u0027motion_sensor_count\u0027 declared const here\n  289 | extern const unsigned int motion_sensor_count;\n      | ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~",
       "revId": "a2ffb0efe6c4114329eb2770c4f195b119426c73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a77f95d_d15b3be1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2024-11-01T03:09:08Z",
+      "side": 1,
+      "message": "I remove coverage code first.",
+      "parentUuid": "4bd7b4ca_5bbc84a9",
+      "revId": "a2ffb0efe6c4114329eb2770c4f195b119426c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
