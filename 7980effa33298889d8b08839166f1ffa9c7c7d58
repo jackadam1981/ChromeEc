@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586dc228_ef5407ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-11-01T02:20:29Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8732519748456626641) is being automatically retried for the following reasons:\n- Some child builders are now retryable:guybrush-cq, guybrush-incremental-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "7980effa33298889d8b08839166f1ffa9c7c7d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
