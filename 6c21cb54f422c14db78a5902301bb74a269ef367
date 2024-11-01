@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bc9517_d4f87a38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-11-01T23:37:05Z",
+      "side": 1,
+      "message": "Upper letter; make it a complete sentence.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "6c21cb54f422c14db78a5902301bb74a269ef367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "85377524_9efe249a",
@@ -14,6 +37,29 @@
       "writtenOn": "2024-10-30T19:55:04Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "6c21cb54f422c14db78a5902301bb74a269ef367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a39b23_9def7f95",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-11-01T23:37:05Z",
+      "side": 1,
+      "message": "I don\u0027t think the Type-C spec allows switching Rp in runtime, right? So it has to detach and attach, like calling `cc off`, `cc src`. Since `cc src` is PD-comm enabled, you may add a new one for power source but PD-comm disabled.",
+      "range": {
+        "startLine": 746,
+        "startChar": 28,
+        "endLine": 746,
+        "endChar": 57
+      },
       "revId": "6c21cb54f422c14db78a5902301bb74a269ef367",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
