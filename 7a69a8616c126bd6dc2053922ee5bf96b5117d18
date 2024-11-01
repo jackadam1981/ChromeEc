@@ -331,6 +331,57 @@
       },
       "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ee9bab_d22537a6",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T05:18:25Z",
+      "side": 1,
+      "message": "`FP_ALGORITHM_FAKE_STRATEGY_EGIS`?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a9e60f41_8a3b8da5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "#define FP_ALGORITHM_FAKE_STRATEGY_EGIS NO_FAKE\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "#define FP_ALGORITHM_FAKE_STRATEGY_EGIS NO_FAKE\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
