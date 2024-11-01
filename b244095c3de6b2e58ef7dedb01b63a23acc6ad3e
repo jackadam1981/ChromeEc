@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7661dab4_1116fe50",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-01T22:33:09Z",
+      "side": 1,
+      "message": "Is NULL a possible return value?",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d6bf1ba8_c6170183",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": " * @return Pointer to the allocated memory or NULL if the allocation failed.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b244095c3de6b2e58ef7dedb01b63a23acc6ad3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
