@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42be0d6_724cda2a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919a7e4e_99528a30",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4de7d731_ec85749c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a266d74b_055f9fc5",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4de7d731_ec85749c",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a73e2cf1_fd4fd092",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-21T18:23:25Z",
       "side": 1,
       "message": "Looks like it\u0027s returning `enum ec_error_list`, which are never negative?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "58d0eacc90eb452d13298c9e3ec47805f535d4f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419ca1c4_7a821c7b",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T17:28:53Z",
+      "side": 1,
+      "message": "I modified it.",
+      "parentUuid": "a73e2cf1_fd4fd092",
       "range": {
         "startLine": 30,
         "startChar": 2,
