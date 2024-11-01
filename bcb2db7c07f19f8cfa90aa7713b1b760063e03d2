@@ -22,6 +22,30 @@
       },
       "revId": "bcb2db7c07f19f8cfa90aa7713b1b760063e03d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6d10b3_43a52f3d",
+        "filename": "zephyr/program/fatcat/francka/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2024-11-01T05:30:04Z",
+      "side": 1,
+      "message": "The R02 SMT will have the EEPROM for CBI. And I have tried on the other Nissa project without enable the CBI_TRANSFER_EEPROM_FLAS config. It SUCCESSED. \nI removed the config at patch3.",
+      "parentUuid": "8e9f46a4_4bc2051f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "bcb2db7c07f19f8cfa90aa7713b1b760063e03d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
