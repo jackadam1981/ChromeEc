@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea15e3c_0a58b0ec",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T05:22:39Z",
+      "side": 1,
+      "message": "where is this defined?\n\nplease add mode options.",
+      "range": {
+        "startLine": 107,
+        "startChar": 25,
+        "endLine": 107,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fa82fc56_2a799b30",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 108,
+                "endChar": 0
+              },
+              "replacement": " * @param[in] mode options:\n * FP_CAPTURE_TYPE_NORMAL: normal capture mode\n * FP_CAPTURE_TYPE_ENROLL: enrollment capture mode\n * FP_CAPTURE_TYPE_ENROLL_IMMOBILE: enrollment capture mode with finger\n * immobile\n"
+            }
+          ]
+        }
+      ],
+      "revId": "99f8c9f5b6732dab37d348fd7beb2b8ffd943334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
