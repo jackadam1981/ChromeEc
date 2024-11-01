@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6d41798_ba52ffd0",
+        "filename": "zephyr/subsys/usbd_service/Kconfig",
+        "patchSetId": 34
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "When the HID function is enabled in both the RO and RW images, the UI interface appears twice when the keyboard dock is plugged in, which does not meet the criteria. Therefore, the HID function is enabled only in the RW region. For more details, refer to the following issue link.\n\nhttps://partnerissuetracker.corp.google.com/u/2/issues/340699222",
+      "parentUuid": "947b2711_2608fb5e",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "031d0c7e_bc67bdda",
         "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
         "patchSetId": 34
@@ -37,6 +61,30 @@
       "writtenOn": "2024-10-30T18:31:47Z",
       "side": 1,
       "message": "nit: please use parentheses for one-line if-statements to follow Zephyr\u0027s style guide.",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b7bf07_7b16315c",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031d0c7e_bc67bdda",
       "range": {
         "startLine": 67,
         "startChar": 39,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d68066_2c0f6609",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b89012e_63039cf6",
+      "range": {
+        "startLine": 75,
+        "startChar": 67,
+        "endLine": 75,
+        "endChar": 68
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bd259bb_eca8668f",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-10-30T18:31:47Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 79,
+        "startChar": 44,
+        "endLine": 79,
+        "endChar": 45
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd0c18c_25390892",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd259bb_eca8668f",
       "range": {
         "startLine": 79,
         "startChar": 44,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8282f3f_899ea156",
+        "filename": "zephyr/subsys/usbd_service/hid_vivaldi.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9827393_974b30ef",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f15096c1_17ba4bcd",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b9d531_96f42035",
+        "filename": "zephyr/subsys/usbd_service/usbd_hid_kb.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15096c1_17ba4bcd",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 31
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90265b2e_1835ae15",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-10-30T18:31:47Z",
       "side": 1,
       "message": "Split this to match 80c per line.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 66
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a18e71_1c6e95be",
+        "filename": "zephyr/subsys/usbd_service/usbd_init.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-01T02:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90265b2e_1835ae15",
       "range": {
         "startLine": 85,
         "startChar": 0,
