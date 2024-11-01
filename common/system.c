@@ -327,7 +327,7 @@ void system_print_banner(void)
 }
 
 #ifdef CONFIG_RAM_SIZE
-struct jump_data *get_jump_data(void)
+static struct jump_data *get_jump_data(void)
 {
 	uintptr_t addr;
 
