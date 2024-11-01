@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c301a962_e2c826e6",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f956af4a_f086c278",
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "057911ba_7cd9e08c",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8eb7ac0_10587a9e",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057911ba_7cd9e08c",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 16
+      },
       "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -130,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c73848_e1cc3a4a",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7451ddf_876c3a70",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5436235f_e5003f40",
@@ -147,6 +213,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaca1603_00c7b3e5",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5436235f_e5003f40",
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7042d672_8507018d",
@@ -160,6 +244,24 @@
       "writtenOn": "2024-10-21T18:17:05Z",
       "side": 1,
       "message": "`@return Pointer to the allocated memory.`",
+      "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc7d4a2_b974a7ef",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-01T16:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7042d672_8507018d",
       "revId": "ab0875768dcd720e7af4132db671caf41f24d085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
