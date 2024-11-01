@@ -16,6 +16,24 @@
       "message": "Has this been tested on a legacy board?",
       "revId": "24e7f075ed5c3eae4202a8bbae6d570ca57679ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91020227_2521ea43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-11-01T20:11:21Z",
+      "side": 1,
+      "message": "I\u0027ve now verified this against a brya base board.",
+      "parentUuid": "0a8f1412_621d0f27",
+      "revId": "24e7f075ed5c3eae4202a8bbae6d570ca57679ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
