@@ -546,6 +546,11 @@ static int force_set_power_switch(struct rts5453p_emul_pdc_data *data,
 
 	data->set_power_switch_data = req->force_set_power_switch.data;
 
+	/* Update connector status with new sink path state */
+	data->connector_status.sink_path_status =
+		req->force_set_power_switch.data.vbsin_en_control &&
+		req->force_set_power_switch.data.vbsin_en == 3;
+
 	memset(&data->response, 0, sizeof(data->response));
 	send_response(data);
 
