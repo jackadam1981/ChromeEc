@@ -6,7 +6,7 @@
 / {
 	chosen {
 		cros-ec,keyboard = &kbd;
-		};
+	};
 
 	kblight: kblight {
 		compatible = "cros-ec,kblight-pwm";
@@ -29,9 +29,35 @@
 		KBD_RC(0, 1)  /* T11 */
 		KBD_RC(1, 5)  /* T12 */
 		KBD_RC(3, 5)  /* T13 */
- 	>;
+		KBD_RC(0, 11) /* T14 */
+		KBD_RC(0, 12) /* T15 */
+	>;
 
-	kbd_config_0: kbd-config-0{
+	kbd_config_0: kbd-config-0 {
+		vivaldi-codes = <
+			VIVALDI_TK_BACK             	/* T1 */
+			VIVALDI_TK_REFRESH          	/* T2 */
+			VIVALDI_TK_FULLSCREEN       	/* T3 */
+			VIVALDI_TK_OVERVIEW         	/* T4 */
+			VIVALDI_TK_SNAPSHOT         	/* T5 */
+			VIVALDI_TK_BRIGHTNESS_DOWN  	/* T6 */
+			VIVALDI_TK_BRIGHTNESS_UP    	/* T7 */
+			VIVALDI_TK_KBD_BKLIGHT_TOGGLE 	/* T8 */
+			VIVALDI_TK_DICTATE         	 	/* T9 */
+			VIVALDI_TK_ACCESSIBILITY    	/* T10 */
+			VIVALDI_TK_PLAY_PAUSE       	/* T11 */
+			VIVALDI_TK_MICMUTE          	/* T12 */
+			VIVALDI_TK_VOL_MUTE         	/* T13 */
+			VIVALDI_TK_VOL_DOWN         	/* T14 */
+			VIVALDI_TK_VOL_UP           	/* T15 */
+		>;
+		capabilities = < (VIVALDI_KEYBD_CAP_FUNCTION_KEYS |
+						VIVALDI_KEYBD_CAP_SCRNLOCK_KEY |
+						VIVALDI_KEYBD_CAP_NUMERIC_KEYPAD |
+						VIVALDI_KEYBD_CAP_ASSISTANT_KEY) >;
+	};
+
+	kbd_config_1: kbd-config-1 {
 		vivaldi-codes = <
 			VIVALDI_TK_BACK              /* T1 */
 			VIVALDI_TK_REFRESH           /* T2 */
@@ -40,14 +66,15 @@
 			VIVALDI_TK_SNAPSHOT          /* T5 */
 			VIVALDI_TK_BRIGHTNESS_DOWN   /* T6 */
 			VIVALDI_TK_BRIGHTNESS_UP     /* T7 */
-			VIVALDI_TK_ACCESSIBILITY     /* T8 */
-			VIVALDI_TK_PLAY_PAUSE		/* T9 */
+			VIVALDI_TK_DICTATE           /* T8 */
+			VIVALDI_TK_PLAY_PAUSE		 /* T9 */
 			VIVALDI_TK_MICMUTE           /* T10 */
 			VIVALDI_TK_VOL_MUTE          /* T11 */
 			VIVALDI_TK_VOL_DOWN          /* T12 */
 			VIVALDI_TK_VOL_UP            /* T13 */
-			>;
+		>;
 		capabilities = < (VIVALDI_KEYBD_CAP_FUNCTION_KEYS |
+						VIVALDI_KEYBD_CAP_NUMERIC_KEYPAD |
 						VIVALDI_KEYBD_CAP_SCRNLOCK_KEY |
 						VIVALDI_KEYBD_CAP_ASSISTANT_KEY) >;
 	};
@@ -56,44 +83,68 @@
 &kbd {
 	status = "okay";
 	/* No KSO2 (it's inverted and implemented by GPIO) */
-	pinctrl-0 = <
-		&ksi0_default
-		&ksi1_default
-		&ksi2_default
-		&ksi3_default
-		&ksi4_default
-		&ksi5_default
-		&ksi6_default
-		&ksi7_default
-		&kso0_default
-		&kso1_default
-		&kso3_default
-		&kso4_default
-		&kso5_default
-		&kso6_default
-		&kso7_default
-		&kso8_default
-		&kso9_default
-		&kso10_default
-		&kso11_default
-		&kso12_default
-		&kso13_default
-		&kso14_default
-		&kso15_default
-		&kso16_gpc3_default
-		&kso17_gpc5_default
+	pinctrl-0 = <&ksi0_default
+			&ksi1_default
+			&ksi2_default
+			&ksi3_default
+			&ksi4_default
+			&ksi5_default
+			&ksi6_default
+			&ksi7_default
+			&kso0_default
+			&kso1_default
+			&kso3_default
+			&kso4_default
+			&kso5_default
+			&kso6_default
+			&kso7_default
+			&kso8_default
+			&kso9_default
+			&kso10_default
+			&kso11_default
+			&kso12_default
+			&kso13_default
+			&kso14_default
+			&kso15_default
+			&kso16_gpc3_default
+			&kso17_gpc5_default
 	>;
-
-	pinctrl-names = "default";
+	pinctrl-1 = <&ksi0_sleep
+			&ksi1_sleep
+			&ksi2_sleep
+			&ksi3_sleep
+			&ksi4_sleep
+			&ksi5_sleep
+			&ksi6_sleep
+			&ksi7_sleep
+			&kso0_sleep
+			&kso1_sleep
+			&kso2_sleep
+			&kso3_sleep
+			&kso4_sleep
+			&kso5_sleep
+			&kso6_sleep
+			&kso7_sleep
+			&kso8_sleep
+			&kso9_sleep
+			&kso10_sleep
+			&kso11_sleep
+			&kso12_sleep
+			&kso13_sleep
+			&kso14_sleep
+			&kso15_sleep
+			&kso16_gpc3_sleep
+			&kso17_gpc5_sleep
+	>;
+	pinctrl-names = "default", "sleep";
 	row-size = <8>;
 	col-size = <18>;
 	settle-time-us = <80>;
 	debounce-down-ms = <15>;
 	debounce-up-ms = <15>;
 	actual-key-mask = <0x08 0xff 0xff 0xff 0xff 0xf5 0xff 0xa4
-			   0xff 0xfe 0x55 0xff 0xca 0x40 0x0a 0x40
-			   0xff 0xff>;
-
+				0xff 0xfe 0x55 0xff 0xca 0x40 0x0a 0x40
+				0xff 0xff>;
 	kso-gpio {
 		compatible = "cros-ec,col-gpio";
 		col-num = <2>;
@@ -119,7 +170,7 @@
 };
 
 /* pwm for KB BL */
- &pwm2 {
+&pwm2 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C4>;
 	pinctrl-0 = <&pwm2_gpa2_default>;
