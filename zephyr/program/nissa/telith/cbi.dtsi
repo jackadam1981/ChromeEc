@@ -28,6 +28,49 @@
 				value = <1>;
 			};
 		};
+
+		/*
+		 * FW_CONFIG field to enable KB back light or not.
+		 */
+		kb-bl {
+			enum-name = "FW_KB_BL";
+			start = <17>;
+			size = <1>;
+
+			no-kb-bl {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_NOT_PRESENT";
+				value = <0>;
+				default;
+			};
+			kb-bl-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_PRESENT";
+				value = <1>;
+			};
+		};
+
+		/*
+		 * FW_CONFIG field to indicate which keyboard numeric
+		 * pad should be used.
+		 */
+		kb-numeric-pad {
+			enum-name = "FW_KB_NUMERIC_PAD";
+			start = <18>;
+			size = <1>;
+
+			no-kb-numpad {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_NUMERIC_PAD_ABSENT";
+				value = <0>;
+				default;
+			};
+			kb-numpad-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_NUMERIC_PAD_PRESENT";
+				value = <1>;
+			};
+		};
 	};
 
 	/* Telith-specific ssfc fields. */

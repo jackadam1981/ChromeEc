@@ -331,8 +331,10 @@ if(DEFINED CONFIG_BOARD_TELITH)
 	zephyr_include_directories("telith/include")
 	zephyr_library_sources(
 			"telith/src/board.c"
+			"telith/src/keyboard.c"
 			"telith/src/sub_board.c"
 			"telith/src/prochot.c"
+			"telith/src/thermal.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "telith/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "telith/src/charger.c")
