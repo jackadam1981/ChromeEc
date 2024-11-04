@@ -64,6 +64,30 @@
       },
       "revId": "b244095c3de6b2e58ef7dedb01b63a23acc6ad3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "237416be_3456af3c",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-04T15:50:42Z",
+      "side": 1,
+      "message": "modified comment to state that `@return Pointer to the allocated memory or NULL if the allocation failed.`",
+      "parentUuid": "dda4c686_9739a9fc",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "b244095c3de6b2e58ef7dedb01b63a23acc6ad3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
