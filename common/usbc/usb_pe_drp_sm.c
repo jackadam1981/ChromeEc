@@ -421,7 +421,7 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 #ifdef CONFIG_USBC_VCONN
 	[PE_VCS_FORCE_VCONN] = "PE_VCS_Force_Vconn",
 #endif
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_USB_PD_USB4
 	[PE_UDR_SEND_DATA_RESET] = "PE_UDR_Send_Data_Reset",
 	[PE_UDR_DATA_RESET_RECEIVED] = "PE_UDR_Data_Reset_Received",
 	[PE_UDR_TURN_OFF_VCONN] = "PE_UDR_Turn_Off_VCONN",
@@ -432,7 +432,7 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 	[PE_DDR_DATA_RESET_RECEIVED] = "PE_DDR_Data_Reset_Received",
 	[PE_DDR_WAIT_FOR_VCONN_OFF] = "PE_DDR_Wait_For_VCONN_Off",
 	[PE_DDR_PERFORM_DATA_RESET] = "PE_DDR_Perform_Data_Reset",
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+#endif /* CONFIG_USB_PD_USB4 */
 #ifdef CONFIG_USB_PD_EPR
 	[PE_SNK_SEND_EPR_MODE_ENTRY] = "PE_SNK_Send_EPR_Mode_Entry",
 	[PE_SNK_EPR_MODE_ENTRY_WAIT_FOR_RESPONSE] =
@@ -497,7 +497,7 @@ GEN_NOT_SUPPORTED(PE_SNK_CHUNK_RECEIVED);
 #define PE_SNK_CHUNK_RECEIVED PE_SNK_CHUNK_RECEIVED_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
-#ifndef CONFIG_USB_PD_DATA_RESET_MSG
+#ifndef CONFIG_USB_PD_USB4
 GEN_NOT_SUPPORTED(PE_UDR_SEND_DATA_RESET);
 #define PE_UDR_SEND_DATA_RESET PE_UDR_SEND_DATA_RESET_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_UDR_DATA_RESET_RECEIVED);
@@ -517,7 +517,7 @@ GEN_NOT_SUPPORTED(PE_DDR_WAIT_FOR_VCONN_OFF);
 #define PE_DDR_WAIT_FOR_VCONN_OFF PE_DDR_WAIT_FOR_VCONN_OFF_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_DDR_PERFORM_DATA_RESET);
 #define PE_DDR_PERFORM_DATA_RESET PE_DDR_PERFORM_DATA_RESET_NOT_SUPPORTED
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+#endif /* CONFIG_USB_PD_USB4 */
 
 static enum sm_local_state local_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -1293,7 +1293,7 @@ void pe_report_error(int port, enum pe_error e, enum tcpci_msg_type type)
 	     get_state_pe(port) == PE_SRC_DISCOVERY ||
 	     get_state_pe(port) == PE_VCS_CBL_SEND_SOFT_RESET ||
 	     get_state_pe(port) == PE_VDM_IDENTITY_REQUEST_CBL) ||
-	    (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
+	    (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	     (get_state_pe(port) == PE_UDR_SEND_DATA_RESET ||
 	      get_state_pe(port) == PE_UDR_DATA_RESET_RECEIVED ||
 	      get_state_pe(port) == PE_UDR_TURN_OFF_VCONN ||
@@ -1747,7 +1747,7 @@ static bool common_src_snk_dpm_requests(int port)
 		else
 			set_state_pe(port, PE_DRS_SEND_SWAP);
 		return true;
-	} else if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
+	} else if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 		   PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET)) {
 		if (!pe_should_send_data_reset(port)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET);
@@ -3028,7 +3028,7 @@ static void pe_src_ready_run(int port)
 					port, PD_HEADER_GET_SOP(
 						      rx_emsg[port].header));
 				return;
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_USB_PD_USB4
 			case PD_CTRL_DATA_RESET:
 				if (pe[port].data_role == PD_ROLE_DFP)
 					set_state_pe(
@@ -3039,7 +3039,7 @@ static void pe_src_ready_run(int port)
 						port,
 						PE_UDR_DATA_RESET_RECEIVED);
 				return;
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+#endif /* CONFIG_USB_PD_USB4 */
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 			case PD_CTRL_GET_STATUS:
 				set_state_pe(port, PE_GIVE_STATUS);
@@ -3987,7 +3987,7 @@ static void pe_snk_ready_run(int port)
 					set_state_pe(port,
 						     PE_SEND_NOT_SUPPORTED);
 				return;
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_USB_PD_USB4
 			case PD_CTRL_DATA_RESET:
 				if (pe[port].data_role == PD_ROLE_DFP)
 					set_state_pe(
@@ -3998,7 +3998,7 @@ static void pe_snk_ready_run(int port)
 						port,
 						PE_UDR_DATA_RESET_RECEIVED);
 				return;
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+#endif /* CONFIG_USB_PD_USB4 */
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 			case PD_CTRL_GET_STATUS:
 				set_state_pe(port, PE_GIVE_STATUS);
@@ -7693,7 +7693,7 @@ __maybe_unused static void pe_get_revision_exit(int port)
 	pe_sender_response_msg_exit(port);
 }
 
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_USB_PD_USB4
 /*
  * PE_UDR_Send_Data_Reset
  * See PD r. 3.1, v. 1.3, Figure 8-89.
@@ -8160,7 +8160,7 @@ static void pe_ddr_perform_data_reset_exit(int port)
 	pd_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
 	dpm_data_reset_complete(port);
 }
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+#endif /* CONFIG_USB_PD_USB4 */
 
 #ifdef CONFIG_USB_PD_EPR
 static void pe_enter_epr_mode(int port)
@@ -8981,7 +8981,7 @@ static __const_data const struct usb_state pe_states[] = {
 		.exit  = pe_vcs_force_vconn_exit,
 	},
 #endif /* CONFIG_USBC_VCONN */
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_USB_PD_USB4
 	[PE_UDR_SEND_DATA_RESET] = {
 		.entry = pe_udr_send_data_reset_entry,
 		.run   = pe_udr_send_data_reset_run,
@@ -9024,7 +9024,7 @@ static __const_data const struct usb_state pe_states[] = {
 		.run   = pe_ddr_perform_data_reset_run,
 		.exit  = pe_ddr_perform_data_reset_exit,
 	},
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
+#endif /* CONFIG_USB_PD_USB4 */
 #ifdef CONFIG_USB_PD_EPR
 	[PE_SNK_EPR_KEEP_ALIVE] = {
 		.entry = pe_snk_epr_keep_alive_entry,

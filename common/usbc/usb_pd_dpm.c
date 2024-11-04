@@ -1282,7 +1282,7 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	 * first request Data Reset prior to attempting to enter any modes.
 	 */
 	if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) &&
-	    IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
+	    IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	    DPM_CHK_FLAG(port, DPM_FLAG_ENTER_ANY) &&
 	    !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
 		set_state_dpm(port, DPM_DATA_RESET);
@@ -1394,7 +1394,7 @@ static bool dpm_dfp_exit_mode_msg(int port)
 	 * state checked below will reset to its inactive state. If Data Reset
 	 * is not supported, exit active modes individually.
 	 */
-	if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
+	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	    !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
 		set_state_dpm(port, DPM_DATA_RESET);
 		return true;
