@@ -3759,7 +3759,9 @@ static void pe_snk_transition_sink_run(int port)
 			 * sink to draw pSnkSusp (25mW).
 			 * This also can pass PD CTS TEST.PD.PS.SNK.1#11.
 			 */
+#if 0
 			if (pe[port].curr_limit == 0) {
+#endif
 				pd_set_input_current_limit(port, 0, 0);
 
 				if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
@@ -3769,6 +3771,7 @@ static void pe_snk_transition_sink_run(int port)
 						port, CEIL_REQUESTOR_PD,
 						CHARGE_CEIL_NONE);
 				}
+#if 0
 			} else {
 				/*
 				 * Per PD r3.1 v1.8 ss 8.3.3.3.6, the PE should
@@ -3797,6 +3800,7 @@ static void pe_snk_transition_sink_run(int port)
 						pe[port].curr_limit);
 				}
 			}
+#endif
 			set_state_pe(port, PE_SNK_READY);
 		} else {
 			/*
