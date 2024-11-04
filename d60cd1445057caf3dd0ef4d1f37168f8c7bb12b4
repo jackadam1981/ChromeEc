@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b43000_6275a464",
+        "filename": "include/fpsensor/fpsensor_types.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T22:46:36Z",
+      "side": 1,
+      "message": "Can you change it to the C-style doxygen format to be consistent with the rest of the code (this header is used by C and C++ code)? (The style you used is the C++ doxygen style)",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "55fb0439_6ed24098",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor_types.h",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": "\tFINGER_NONE \u003d 0, /* No finger detected. */\n\tFINGER_PARTIAL \u003d 1, /* Partial finger detected. */\n\tFINGER_PRESENT \u003d 2, /* Finger fully present on the sensor. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d60cd1445057caf3dd0ef4d1f37168f8c7bb12b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
