@@ -40,6 +40,30 @@
       ],
       "revId": "45c5c2ccddcf2f8c91ff5b39590479109021dea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ca059d_5f359f36",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-04T22:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f710190f_6c673981",
+      "range": {
+        "startLine": 46,
+        "startChar": 72,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "45c5c2ccddcf2f8c91ff5b39590479109021dea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
