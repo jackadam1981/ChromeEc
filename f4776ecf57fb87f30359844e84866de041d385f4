@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7875f3b_b4d5562d",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T23:39:42Z",
+      "side": 1,
+      "message": "I\u0027m assuming we never want to reach this. In that case, please put an `assert(false)` here.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "f4776ecf57fb87f30359844e84866de041d385f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0230c302_aadf00c3",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T23:39:42Z",
+      "side": 1,
+      "message": "Will `egis_get_image` and `egis_get_image_with_mode` always return the same error codes? If so, it would probably be best to create a function to convert the error codes, so that we don\u0027t have to remember to update two places if a new type of error code is introduced.\n\ne.g., \n\n```\nint convert_egis_get_image_error_code(int code) {\n   ...\n}\n```",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "f4776ecf57fb87f30359844e84866de041d385f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
