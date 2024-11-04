@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f710190f_6c673981",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T22:39:41Z",
+      "side": 1,
+      "message": "I think you can remove this, since the previous sentence already mentions the double pointer aspect.",
+      "range": {
+        "startLine": 46,
+        "startChar": 72,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bb0fbdf0_d5d16360",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/platform/inc/plat_mem.h",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": " * @param[in] x A pointer to a pointer to the memory block to be freed.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "45c5c2ccddcf2f8c91ff5b39590479109021dea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
