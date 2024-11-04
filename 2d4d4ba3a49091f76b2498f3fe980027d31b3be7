@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4d3ab5_074c8261",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_time.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T22:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d7fa538_9940490b",
+      "range": {
+        "startLine": 33,
+        "startChar": 69,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2d4d4ba3a49091f76b2498f3fe980027d31b3be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a391fb26_3b20c80d",
@@ -249,6 +273,30 @@
       "side": 1,
       "message": "it uses [crec_usleep(https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/driver/fingerprint/egis/platform/src/plat_time_mcu.c;l\u003d26#:~:text\u003d25-,26,-27).\n\nmodified accordingly:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/timer.h;l\u003d114?q\u003dplatform%2Fec%20udelay\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d113-,114,-115",
       "parentUuid": "b3ce2401_bde91382",
+      "range": {
+        "startLine": 42,
+        "startChar": 68,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "2d4d4ba3a49091f76b2498f3fe980027d31b3be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d0d7e5_6b894860",
+        "filename": "driver/fingerprint/egis/platform/inc/plat_time.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T22:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2f6106_6bfb0e7d",
       "range": {
         "startLine": 42,
         "startChar": 68,
