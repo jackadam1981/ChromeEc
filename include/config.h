@@ -4832,12 +4832,6 @@
 #undef CONFIG_USB_PD_RUNTIME_FLAGS
 
 /*
- * Define to enable the PD Data Reset Message. This is mandatory for
- * USB4 and optional for USB 3.2
- */
-#undef CONFIG_USB_PD_DATA_RESET_MSG
-
-/*
  * Define if this board can enable VBUS discharge (eg. through a GPIO-controlled
  * discharge circuit, or through port controller registers) to discharge VBUS
  * rapidly on disconnect. Will be defined automatically when one of the below
@@ -6182,6 +6176,14 @@
 #if !defined(CONFIG_ZEPHYR) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
 #error CONFIG_USB_PD_ALT_MODE_DFP must be enabled for USB4 mode support
 #endif
+#endif
+
+/*
+ * Define to enable the PD Data Reset Message. This is mandatory for
+ * USB4 and optional for USB 3.2
+ */
+#if (defined CONFIG_USB_PD_USB4) && !(defined CONFIG_NOT_INCLUDE_USB_PD_DATA_RESET_MSG)
+#define CONFIG_USB_PD_DATA_RESET_MSG
 #endif
 
 /******************************************************************************/

@@ -161,7 +161,6 @@
 
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
-#define CONFIG_USB_PD_DATA_RESET_MSG
 
 /*
  * TODO: Disable BBR firmware update temporally,
