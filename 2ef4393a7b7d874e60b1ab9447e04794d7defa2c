@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a23523_5acc6f5d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3093,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-04T17:25:40Z",
+      "side": 1,
+      "message": "Any reason to remove this? Is the cprints causing tester timeout?",
+      "revId": "2ef4393a7b7d874e60b1ab9447e04794d7defa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
