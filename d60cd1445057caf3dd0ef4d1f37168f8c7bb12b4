@@ -40,6 +40,30 @@
       ],
       "revId": "d60cd1445057caf3dd0ef4d1f37168f8c7bb12b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f66a192_8a35a345",
+        "filename": "include/fpsensor/fpsensor_types.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-04T22:47:30Z",
+      "side": 1,
+      "message": "The AI-suggested fix in the last comment is wrong. This is what I meant:\n\n```suggestion\n\tFINGER_NONE \u003d 0, /**\u003c No finger detected. */\n\tFINGER_PARTIAL \u003d 1, /**\u003c Partial finger detected. */\n\tFINGER_PRESENT \u003d 2, /**\u003c Finger fully present on the sensor. */\n```",
+      "parentUuid": "72b43000_6275a464",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "d60cd1445057caf3dd0ef4d1f37168f8c7bb12b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
