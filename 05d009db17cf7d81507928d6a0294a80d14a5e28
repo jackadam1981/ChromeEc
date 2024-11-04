@@ -34,6 +34,24 @@
       "message": "Please wait for the fast-forward the nissa firmware branch and abandon this cl.",
       "revId": "05d009db17cf7d81507928d6a0294a80d14a5e28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aedf8a7_3e30a327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2024-11-04T06:29:52Z",
+      "side": 1,
+      "message": "Currently the ec fast-forward method does not work, we will manually cherry-pick the needed cl until it was fixed.\nb:375290861",
+      "parentUuid": "59838e4b_8c682aa2",
+      "revId": "05d009db17cf7d81507928d6a0294a80d14a5e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
