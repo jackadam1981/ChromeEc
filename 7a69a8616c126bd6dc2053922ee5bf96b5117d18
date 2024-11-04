@@ -382,6 +382,30 @@
       ],
       "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eccba69e_d757c7b3",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-04T07:11:47Z",
+      "side": 1,
+      "message": "modify `MAX_ENROLL_COUNT` macro defining name  to `FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS`\n\nmove `FAKE_STRATEGY` to private",
+      "parentUuid": "b9ee9bab_d22537a6",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "7a69a8616c126bd6dc2053922ee5bf96b5117d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
