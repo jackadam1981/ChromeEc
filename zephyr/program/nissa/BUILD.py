@@ -198,7 +198,7 @@ teliks = register_nissa_project(
 )
 
 register_ish_project(
-    project_name="orisa-ish",
+    project_name="orisa-ish_5_4_1",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
         here / "orisa-ish" / "project.overlay",

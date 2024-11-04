@@ -84,7 +84,7 @@ brox_sku4.variant(
 )
 
 register_ish_project(
-    project_name="brox-ish",
+    project_name="brox-ish_5_4_1",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
         here / "brox-ish" / "project.overlay",

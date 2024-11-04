@@ -56,7 +56,7 @@ register_rex_project(
 )
 
 register_ish_project(
-    project_name="rex-ish",
+    project_name="rex-ish_5_6_0",
     zephyr_board="intel_ish_5_6_0",
     dts_overlays=[
         here / "rex-ish" / "project.overlay",
