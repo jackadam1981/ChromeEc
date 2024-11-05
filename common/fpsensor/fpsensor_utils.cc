@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "overflow.h"
@@ -11,6 +12,9 @@
 
 #include <cctype>
 #include <string>
+
+#define CPRINTF(format, args...) cprintf(CC_FP, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_FP, format, ##args)
 
 bool fp_match_success(int match_result)
 {
@@ -48,9 +52,16 @@ bool is_raw_capture(uint32_t mode)
 {
 	int capture_type = FP_CAPTURE_TYPE(mode);
 
-	return (mode & FP_MODE_CAPTURE) &&
-	       (capture_type == FP_CAPTURE_VENDOR_FORMAT ||
-		capture_type == FP_CAPTURE_QUALITY_TEST);
+	CPRINTS("is_raw_capture: mode = 0x%x", mode);
+	CPRINTS("is_raw_capture: mode&FP_MODE_CAPTURE = 0x%x",
+		mode & FP_MODE_CAPTURE);
+	CPRINTS("is_raw_capture: capture_type = 0x%x", capture_type);
+
+	bool ret = (capture_type == FP_CAPTURE_VENDOR_FORMAT ||
+		    capture_type == FP_CAPTURE_QUALITY_TEST);
+
+	CPRINTS("is_raw_capture: ret = %d", ret);
+	return ret;
 }
 
 const std::string fourcc_to_string(uint32_t value)
