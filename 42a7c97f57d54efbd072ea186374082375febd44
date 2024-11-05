@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c83a5b_78d2ccd8",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-05T23:33:30Z",
+      "side": 0,
+      "message": "This is kinda not obvious on first look:\n\n* When this function is called with mode 0x0, `capture_type` will be 0.\n* Since `FP_CAPTURE_VENDOR_FORMAT` is 0, the `capture_type \u003d\u003d FP_CAPTURE_VENDOR_FORMAT` part evaluates to true.",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "42a7c97f57d54efbd072ea186374082375febd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
