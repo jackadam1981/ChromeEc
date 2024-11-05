@@ -319,6 +319,30 @@
       },
       "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2088cc2_52739658",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-05T11:32:10Z",
+      "side": 1,
+      "message": "Rebased the changes.",
+      "parentUuid": "529bd277_7f3a2ec8",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
