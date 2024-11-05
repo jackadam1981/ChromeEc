@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01250651_30bfb376",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-05T22:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507b3c9c_8abedbc1",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f434696_ed9c8000",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "We don\u0027t have timer1 interrupt enabled.\nFor watchdog feature, we only need to enable timer 1 as clock source of watchdog.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/it83xx/watchdog.c#138",
       "parentUuid": "6f434696_ed9c8000",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa2639b_07443b39",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-05T22:00:00Z",
+      "side": 1,
+      "message": "sorry, I still don\u0027t understand. We do enable watchdog, so timer1 should be enabled, right?",
+      "parentUuid": "2e1a2047_bede5274",
       "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

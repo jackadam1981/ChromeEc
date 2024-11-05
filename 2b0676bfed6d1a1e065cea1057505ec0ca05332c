@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8134d63f_52c77d57",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-05T22:00:00Z",
+      "side": 1,
+      "message": "should this be `BIT(30) | BIT(3)` ?\nI.e. otherwise I don\u0027t see how unblocking group 19 has any effect...",
+      "range": {
+        "startLine": 460,
+        "startChar": 17,
+        "endLine": 460,
+        "endChar": 24
+      },
+      "revId": "2b0676bfed6d1a1e065cea1057505ec0ca05332c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
