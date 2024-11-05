@@ -33,6 +33,42 @@
       "message": "Looks like you\u0027ll also need to update the Zephyr unit test: `zephyr/test/fingerprint/task/src/fpsensor_utils.cc`",
       "revId": "934cb2e37fa9fd96a6245cac7bccf4b531eaa927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9773c67a_937e5d20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-05T23:54:24Z",
+      "side": 1,
+      "message": "Yep. Added a follow-up CL to change this demonstration of default behavior.",
+      "parentUuid": "77406009_bf46a313",
+      "revId": "934cb2e37fa9fd96a6245cac7bccf4b531eaa927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa536aa_f163514f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-05T23:54:24Z",
+      "side": 1,
+      "message": "Thank you! I included that revert in this change.",
+      "parentUuid": "da70984d_b8ffc7fc",
+      "revId": "934cb2e37fa9fd96a6245cac7bccf4b531eaa927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
