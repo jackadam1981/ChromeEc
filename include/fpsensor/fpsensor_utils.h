@@ -34,17 +34,6 @@ bool fp_match_success(int match_result);
 bool is_test_capture(uint32_t mode);
 
 /**
- * @param mode sensor mode
- * @return true if the mode is one that yields a frame in which all bytes should
- * be returned over EC_CMD_FRAME.
- * Other captures modes (simple, pattern0, pattern1, and reset_test) are
- * only interested in the height*width*bpp image bytes that are offset inside
- * the frame.
- * These modes correspond to using the ectool fpframe "raw" modifier.
- */
-bool is_raw_capture(uint32_t mode);
-
-/**
  * Format an unsigned int FOURCC value as a printable string.
  *
  * If the character is unprintable, we will print '.', instead.
