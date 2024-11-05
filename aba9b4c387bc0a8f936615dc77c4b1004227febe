@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e8359b_43746d26",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-05T00:02:49Z",
+      "side": 1,
+      "message": "If you want to have a config named `CONFIG_NOT_INCLUDE_USB_PD_DATA_RESET_MSG`, you\u0027ll need to have an `#undef CONFIG_NOT_INCLUDE_USB_PD_DATA_RESET_MSG` line in this file and a corresponding line in `config_chip.h`.\n\nHowever, I don\u0027t think you should define a config with the opposite meaning of an existing config. That\u0027s a bit confusing. If you make it enabled by default, then boards that don\u0027t want it can explicitly disable it.\n\nFurthermore, if it doesn\u0027t break the build to enable Data Reset for all USB4 boards, then I think you should just get rid of `CONFIG_USB_PD_DATA_RESET_MSG` entirely and change all of the code that checks it to check `CONFIG_USB_PD_USB4`.",
+      "revId": "aba9b4c387bc0a8f936615dc77c4b1004227febe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
