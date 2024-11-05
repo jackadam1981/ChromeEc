@@ -343,6 +343,30 @@
       },
       "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388a4e59_63c93076",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-05T19:57:29Z",
+      "side": 1,
+      "message": "Thanks. I was able to reproduce the failure with your additional log patch, but I don\u0027t see any additional logs from it:\n\n```\nDEBUG:image_path: /mnt/host/source/src/platform/ec/build/bloonchipper/timer/timer.bin\nINFO:Running test: \"timer\"\nDEBUG:Calling pre-test callback\nDEBUG:\nDEBUG:\nDEBUG:--- UART initialized after reboot ---\nDEBUG:[Image: RO, bloonchipper_v2.0.26765-78b19ca boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16087.0.24_11_05 2024-11-05 08:36:22 chrome-bot@chromeos-cin2d-cq-us-west1-b-x32-16-eglk]\nDEBUG:[Reset cause: reset-pin power-on]\nDEBUG:[0.000245 Inits done]\nDEBUG:[0.000278 TRANSPORT_SEL: UART]\nDEBUG:[0.000317 TRANSPORT_SEL: UART]\nDEBUG:Console is enabled; type HELP for help.\nDEBUG:\u003e [0.000390 event set 0x0000000000002000]\nDEBUG:[0.000435 hostcmd init 0x0000000000002000]\nDEBUG:[0.000490 Verifying RW image...]\nDEBUG:[0.121027 RW verify OK]\nDEBUG:[1.000440 MKBP not cleared within threshold, toggling.]\nDEBUG:[1.121168 Jumping to image RW (0x0000000a)]\nDEBUG:[1.122216 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\nDEBUG:\nDEBUG:[1.122344 UART initialized after sysjump]\nDEBUG:[Image: RW, bloonchipper_v2.0.26765-78b19ca boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a fpc:v0.0.221-6685656 bloonchipper_16087.0.24_11_05 2024-11-05 08:36:22 chrome-bot@chromeos-cin2d-cq-us-west1-b-x32-16-eglk]\nDEBUG:[Reset cause: reset-pin power-on sysjump]\nDEBUG:[1.122604 Inits done]\nDEBUG:[1.122638 TRANSPORT_SEL: UART]\nDEBUG:[1.122677 TRANSPORT_SEL: UART]\nDEBUG:Console is enabled; type HELP for help.\nDEBUG:\u003e [1.122757 event set 0x0000000000002000]\nDEBUG:[1.122802 hostcmd init 0x0000000000002000]\nDEBUG:[1.122852 FP_SENSOR_SEL: ELAN]\nDEBUG:[1.122884 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\nDEBUG:[1.122933 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\nDEBUG:fp_sensor_open - Sensor init failed. Result\u003d-9\nDEBUG:[1.125051 Error: fp_sensor_open() failed, result\u003d-9]\nDEBUG:[1.125104 FPC unknown silicon 0x0000]\nDEBUG:bio_algorithm_init - Failed getting recommended parameters. Result\u003d-21\nDEBUG:[1.125202 Error: bio_algorithm_init() failed, result\u003d-21]\nDEBUG:[2.122806 MKBP not cleared within threshold, toggling.]\nDEBUG:[3.122861 MKBP: The AP is failing to respond because it is sleeping or off]\nDEBUG:\nDEBUG:\u003e runtest\nDEBUG:Running test_usleep...\nDEBUG:Pass: ABS((expected_duration) - (sleep_duration)) \u003c error_threshold\nDEBUG:OK\nDEBUG:Running test_timestamp_expired...\nDEBUG:OK\nDEBUG:Running test_timestamp_expired_null...\nDEBUG:OK\nDEBUG:Running test_usleep_warning...\nDEBUG:[7.200783 Sleeping not allowed]\nDEBUG:Pass: delta_buffer_used \u003e\u003d (int32_t)strlen(\"Sleeping not allowed\")\nDEBUG:Pass: delta_buffer_used \u003d\u003d 0\nDEBUG:Test timed out\nDEBUG:\u003d\u003d\u003d START RENODE UART LOG\u003d\u003d\u003d\nDEBUG:\u003d\u003d\u003d END   RENODE UART LOG\u003d\u003d\u003d\n```",
+      "parentUuid": "f2088cc2_52739658",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
