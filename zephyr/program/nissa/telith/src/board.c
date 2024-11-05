@@ -28,6 +28,7 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 enum base_sensor_type {
 	base_none = 0,
@@ -153,3 +154,58 @@ test_export_static void fan_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
+
+static bool key_bl = FW_KB_BL_NOT_PRESENT;
+static bool key_numpad = FW_KB_NUMPAD_NOT_PRESENT;
+/*
+ * Keyboard function decided by FW config.
+ */
+test_export_static void kb_init(void)
+{
+	int ret;
+	uint32_t val;
+
+	ret = cros_cbi_get_fw_config(FW_KB_BL, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_KB_BL);
+		return;
+	}
+
+	CPRINTS("This is %s kb backlight.", val ? "with" : "without");
+	if (val == FW_KB_BL_PRESENT) {
+		key_bl = FW_KB_BL_PRESENT;
+	} else {
+		key_bl = FW_KB_BL_NOT_PRESENT;
+	}
+
+	ret = cros_cbi_get_fw_config(FW_KB_NUMPAD, &val);
+	if (val == FW_KB_NUMPAD_PRESENT) {
+		key_numpad = FW_KB_NUMPAD_PRESENT;
+	} else {
+		key_numpad = FW_KB_NUMPAD_NOT_PRESENT;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_FIRST);
+
+int8_t board_vivaldi_keybd_idx(void)
+{
+	int kb_status;
+
+	kb_status = (key_numpad << 1) | key_bl;
+
+	CPRINTS("idx:This is %s kb backlight.", key_bl ? "with" : "without");
+	CPRINTS("idx:This is %s kb numpad.", key_numpad ? "with" : "without");
+
+	switch (kb_status) {
+	case 0:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	case 1:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+	case 2:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_2));
+	case 3:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_3));
+	default:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	}
+}
