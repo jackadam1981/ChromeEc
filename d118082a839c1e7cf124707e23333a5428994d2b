@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b71eaca_b7f1e2ec",
+        "filename": "test/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-05T23:59:49Z",
+      "side": 1,
+      "message": "Looks like the zephyr version of this test is checking `is_raw_capture \u003d\u003d false` in this case, but this one is checking `is_raw_capture \u003d\u003d true`?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 40
+      },
+      "revId": "d118082a839c1e7cf124707e23333a5428994d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
