@@ -22,6 +22,30 @@
       },
       "revId": "d57f82703a48f8996a95097b43ee305048b825b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815c5dd0_74dd8184",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-05T00:40:17Z",
+      "side": 1,
+      "message": "It does, but only if we use `#define`s to disable things:\n\n* https://crrev.com/c/5980503\n* https://crrev.com/c/5980504\n* https://crrev.com/c/5980505\n\nIf we want to use the `IS_ENABLED` macro, then it looks like this:\n\n* https://crrev.com/c/5980502\n* https://crrev.com/c/5943776\n* https://crrev.com/c/5931845\n\nI think the `IS_ENABLED` chain is easier to read, but I\u0027ll defer to your preference.",
+      "parentUuid": "ea4a6d81_33954792",
+      "range": {
+        "startLine": 331,
+        "startChar": 18,
+        "endLine": 331,
+        "endChar": 31
+      },
+      "revId": "d57f82703a48f8996a95097b43ee305048b825b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
