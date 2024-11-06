@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220dc564_e50a9545",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-11-06T15:32:49Z",
+      "side": 1,
+      "message": "Hi Vijay/ Li,\nIn this CL, For identifier to be part of version, i have renamed the project name for build with identifier. Hence, these projects needs to be build, with these new project names as zmaake build new_Project_name(ie, zmake build brox-ish_5_4_1  , zmake build orisa-ish_5_4_1 , zmake build rex-ish_5_6_0 ).But, i have not changed the project\u0027s folder name here(ie, retained folder name zephyr/program/nissa/orisa_ish as it was and not  zephyr/program/nissa/orisa_ish_5_4_1, and hence dts_overlays \u0026 kconfig_files in BUILD.py is continuing to refer to \"orisa_ish\" itself. ) . With just Build\u0027s project name renamed , i am also able to build all zephyr projects with command - zephyr build --all, But cannot build with project\u0027s folder name - as \u0027zephyr build orisa_ish\u0027 . 1)Just wondering , if i need to rename the project\u0027s folder too along with Build\u0027s project_name?  Need your suggestion on this regard. \n  \n2)Also, another thing i noticed is for brox, project - brox-ish is defined under config - CONFIG_BOARD_INTEL_ISH_5_6_0 (line  num - 44 of /zephyr/program/brox/ CMakeLists.txt) , while , under line number -80 of BUILD.py, zephyr_board\u003d\"intel_ish_5_4_1\" . Considering this, for Brox, i renamed the Build\u0027s project name as Brox-ish_5_4_1.  Hope this is correct. or do we need to remae project_name and zephyr_board using 5_6_0 ?    \n\nThanks,",
+      "revId": "8112520c38e94bd698aec3a183ea5d8e985a7c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c764dbb_9f8e591d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2024-11-06T15:32:49Z",
+      "side": 1,
+      "message": "Hi Li /V",
+      "revId": "8112520c38e94bd698aec3a183ea5d8e985a7c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
