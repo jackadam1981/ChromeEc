@@ -62,6 +62,30 @@
       },
       "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85c1f78_f61cdf00",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-06T20:37:55Z",
+      "side": 1,
+      "message": "I tried that but was seeing the port getting stuck in `DRP_NORMAL`.  I can tinker around with this a little more for a cleaner result.",
+      "parentUuid": "049f209f_4e4bf254",
+      "range": {
+        "startLine": 1405,
+        "startChar": 3,
+        "endLine": 1405,
+        "endChar": 27
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
