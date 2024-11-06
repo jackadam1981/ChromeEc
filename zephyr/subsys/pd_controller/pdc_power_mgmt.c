@@ -1393,13 +1393,19 @@ static void run_unattached_policies(struct pdc_port_t *port)
 				      UNA_POLICY_CC_MODE)) {
 		/* Set CC PULL Resistor and TrySrc or TrySnk */
 		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
-		atomic_set_bit(port->una_policy.flags, UNA_POLICY_DRP_MODE);
 		return;
 	} else if (atomic_test_and_clear_bit(port->una_policy.flags,
 					     UNA_POLICY_DRP_MODE)) {
 		/* Set DRP current policy */
-		port->drp = port->una_policy.drp_mode;
-		queue_internal_cmd(port, CMD_PDC_SET_DRP);
+		if (port->dual_role_state == PD_DRP_FORCE_SINK) {
+			port->drp = DRP_NORMAL;
+			queue_internal_cmd(port, CMD_PDC_SET_DRP);
+			return;
+		} else if (port->dual_role_state == PD_DRP_TOGGLE_ON) {
+			port->drp = DRP_TRY_SRC;
+			queue_internal_cmd(port, CMD_PDC_SET_DRP);
+			return;
+		}
 		return;
 	} else if (atomic_test_and_clear_bit(port->una_policy.flags,
 					     UNA_POLICY_TCC)) {
@@ -2209,6 +2215,8 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_set_ccom(port->pdc, port->una_policy.cc_mode);
 		break;
 	case CMD_PDC_SET_DRP:
+		LOG_INF("C%d: SET_DRP_MODE=%s", config->connector_num,
+			get_drp_mode_name(port->drp));
 		rv = pdc_set_drp_mode(port->pdc, port->drp);
 		break;
 	case CMD_PDC_GET_DRP:
@@ -3641,6 +3649,8 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 
 		port_data->una_policy.cc_mode = CCOM_DRP;
 		atomic_set_bit(port_data->una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(port_data->una_policy.flags,
+			       UNA_POLICY_DRP_MODE);
 		break;
 	/* Stay in src until disconnect, then stay in sink forever */
 	case PD_DRP_TOGGLE_OFF:
@@ -3684,6 +3694,8 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 		 */
 		port_data->una_policy.cc_mode = CCOM_RD;
 		atomic_set_bit(port_data->una_policy.flags, UNA_POLICY_CC_MODE);
+		atomic_set_bit(port_data->una_policy.flags,
+			       UNA_POLICY_DRP_MODE);
 		atomic_set_bit(port_data->src_policy.flags,
 			       SRC_POLICY_FORCE_SNK);
 		break;

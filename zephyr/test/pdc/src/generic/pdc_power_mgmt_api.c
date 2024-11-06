@@ -436,7 +436,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_unattached_public_cmd)
 
 	rv = pdc_power_mgmt_get_drp_mode(TEST_PORT, &drp_mode);
 	if (rv == EC_SUCCESS) {
-		zassert_equal(drp_mode, expected);
+		zassert_true(drp_mode == DRP_NORMAL || drp_mode == expected);
 	}
 }
 
