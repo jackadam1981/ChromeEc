@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef67cc9b_8a123f82",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-06T05:54:36Z",
+      "side": 1,
+      "message": "is this needed? `rc` was initialized to `EC_SUCCESS`. Nothing change in the `rc` value",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "8b17b490480294eec4dac49158d851a1f86a81ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
