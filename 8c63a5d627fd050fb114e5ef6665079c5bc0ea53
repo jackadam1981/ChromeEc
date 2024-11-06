@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e2a928_dd7c80ce",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-11-06T11:44:28Z",
+      "side": 1,
+      "message": "```\nchromeos-ec-0.0.2-r8753: \u001b[01m\u001b[Kcc1:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kunrecognized command line option \u0027\u001b[01m\u001b[K-Wno-address-of-packed-member\u001b[m\u001b[K\u0027 [\u001b[01;31m\u001b[K-Werror\u001b[m\u001b[K]\nchromeos-ec-0.0.2-r8753: cc1: all warnings being treated as errors\nchromeos-ec-0.0.2-r8753: make: *** [Makefile.rules:638: build/awasuki/RW/baseboard/dedede/baseboard.o] Error 1\nchromeos-ec-0.0.2-r8753: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.2-r8753:   CC      RW/baseboard/dedede/cbi_fw_config.o\nchromeos-ec-0.0.2-r8753: \u001b[01m\u001b[Kcc1:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kinvalid --param name \u0027\u001b[01m\u001b[Kmin-pagesize\u001b[m\u001b[K\u0027\nchromeos-ec-0.0.2-r8753: \u001b[01m\u001b[Kcc1:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kunrecognized command line option \u0027\u001b[01m\u001b[K-Wno-address-of-packed-member\u001b[m\u001b[K\u0027 [\u001b[01;31m\u001b[K-Werror\u001b[m\u001b[K]\nchromeos-ec-0.0.2-r8753: cc1: all warnings being treated as errors\nchromeos-ec-0.0.2-r8753: make: *** [Makefile.rules:638: build/awasuki/RW/baseboard/dedede/cbi_fw_config.o] Error 1\nchromeos-ec-0.0.2-r8753:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r8753::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r8753:  *   emake failed\nchromeos-ec-0.0.2-r8753:  * \n```\n\nSeems like this breaks the fast-forward merge.",
+      "revId": "8c63a5d627fd050fb114e5ef6665079c5bc0ea53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
