@@ -65,18 +65,31 @@ typedef enum {
 } egis_api_return_t;
 
 /**
+ * @brief Get the fingerprint sensor HWID
+ *
+ * @param[out] id sensor id read from sensor.
+ *
+ * @return EGIS_OK : on success. and fill sensor id to param[out]
+ * @return negative value on error, list below. fill zero to param[out]
+ * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail
+ * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter
+ */
+int egis_get_hwid(uint16_t *id);
+
+/**
  * @brief Reset and initialize the sensor IC.
  *
  * @return EGIS_OK : on success
  * @return negative value on error, list below
- * @return EGIS_API_ERROR_DEVICE_NOT_FOUND : on sensor cannot be detected
+ * @return EGIS_API_ERROR_DEVICE_NOT_FOUND : on sensor cannot be
+ * detected
  * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail
  * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect
  * @return EGIS_API_ERROR_SENSOR_NEED_RESET : on sensor need reset
  * @return EGIS_API_ERROR_SENSOR_SENSING_MDOE_CALIBRATION : on sensor
  * calibration sensing mode fail
- * @return EGIS_API_ERROR_SENSOR_DETECT_MDOE_CALIBRATION : on sensor calibration
- * detect mode fail
+ * @return EGIS_API_ERROR_SENSOR_DETECT_MDOE_CALIBRATION : on sensor
+ * calibration detect mode fail
  * @return EGIS_API_ERROR_MEMORY : on alloc memory fail
  * @return EGIS_API_ERROR_GENERAL : on other operation fail
  * @return EGIS_API_ERROR_SENSOR_GENERAL : on sensor operation fail
