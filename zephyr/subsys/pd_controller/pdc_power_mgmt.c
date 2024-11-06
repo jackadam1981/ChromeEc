@@ -691,8 +691,6 @@ struct pdc_port_t {
 	union uor_t uor;
 	/** PDR variable used with CMD_PDC_SET_PDR command */
 	union pdr_t pdr;
-	/** True if battery can charge from this port */
-	bool active_charge;
 	/** Tracks current connection state */
 	enum attached_state_t attached_state;
 	/** GET_VDO temp variable used with CMD_GET_VDO */
@@ -1488,6 +1486,7 @@ static void run_snk_policies(struct pdc_port_t *port)
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_NEW_POWER_REQUEST)) {
+		port->get_pdo = (struct get_pdo_t){ 0 };
 		port->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
@@ -1558,7 +1557,9 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 	 */
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
-		port->sink_path_en = port->active_charge;
+		/* Check if we are the active charge port */
+		port->sink_path_en = charge_manager_get_active_charge_port() ==
+				     config->connector_num;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_SRC_CAPS)) {
@@ -1784,6 +1785,7 @@ static void pdc_src_attached_entry(void *obj)
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port, true);
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
+		port->get_pdo = (struct get_pdo_t){ 0 };
 
 		/* We always want to evalulate sink caps when we a source. */
 		atomic_set_bit(port->src_policy.flags,
@@ -1896,8 +1898,10 @@ static void pdc_snk_attached_entry(void *obj)
 		const struct pdc_config_t *config = port->dev->config;
 		int port_number = config->connector_num;
 
+		/* Reset local state */
 		port->snk_attached_local_state =
 			SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
+		port->get_pdo = (struct get_pdo_t){ 0 };
 
 		/* If we were just a SRC, tell the DPM that the
 		 * attached sink has been disconnected.
@@ -1907,16 +1911,85 @@ static void pdc_snk_attached_entry(void *obj)
 }
 
 /**
+ * @brief Evaluate a set of source PDOs and return the index of the best PDO.
+ *
+ * The rule used to choose a PDO is select the highest-wattage, highest-voltage
+ * PDO that does not exceed the board's maximum PD voltage.
+ *
+ * @param pdos Input list of PDOs to check
+ * @param num_pdos Number of PDOs in \p pdos
+ * @param selected[out] Output parameter for 0-based index of selected PDO
+ *
+ * @return 0 on success
+ * @return -EINVAL if \p selected is NULL or \p num_pdos is 0
+ * @return -ENOTSUP if no PDO in \p pdos meets criteria
+ */
+STATIC_IF_NOT(CONFIG_ZTEST)
+int evaluate_src_pdos(const uint32_t *pdos, size_t num_pdos, size_t *selected)
+{
+	uint32_t highest_mw = 0, highest_mv = 0;
+	int best_index = -1;
+
+	if (pdos == NULL || selected == NULL || num_pdos == 0) {
+		return -EINVAL;
+	}
+
+	for (size_t i = 0; i < num_pdos; i++) {
+		/* PD spec requires the first PDO to be a 5V fixed, so there
+		 * is expected to always be a usable PDO in this list.
+		 */
+
+		if ((pdos[i] & PDO_TYPE_MASK) != PDO_TYPE_FIXED) {
+			/* Only consider fixed PDOs */
+			continue;
+		}
+
+		/* Extract voltage and current from PDO, and compute wattage */
+		uint32_t mv = PDO_FIXED_GET_VOLT(pdos[i]);
+		uint32_t ma = PDO_FIXED_GET_CURR(pdos[i]);
+		uint32_t mw = (mv * ma) / 1000;
+
+		LOG_INF("PDO%d: %08x, %d %d %d", i + 1, pdos[i], mv, ma, mw);
+
+		/* Find highest-wattage PDO that does not exceed the board max
+		 * voltage.
+		 */
+
+		if (mv > pdc_max_request_mv) {
+			/* Voltage too high. Skip. */
+			continue;
+		}
+
+		if ((mw > highest_mw) ||
+		    (mw == highest_mw && mv > highest_mv)) {
+			/* Found a higher-wattage PDO, or an equivalent-wattage
+			 * PDO that is higher voltage. */
+			highest_mw = mw;
+			highest_mv = mv;
+			best_index = i;
+		}
+	}
+
+	if (best_index < 0) {
+		/* No PDO matched. */
+		return -ENOTSUP;
+	}
+
+	*selected = best_index;
+	return 0;
+}
+
+/**
  * @brief Run sink attached state.
  */
 static void pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
-	uint32_t max_ma, max_mv, max_mw;
-	uint32_t tmp_curr_ma, tmp_volt_mv, tmp_pwr_mw;
-	uint32_t pdo_pwr_mw, pdo_volt_mv;
+	uint32_t max_ma, max_mv, max_mw, max_mw_pdo;
 	uint32_t flags;
+	size_t selected_pdo = 0;
+	int rv;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2015,52 +2088,40 @@ static void pdc_snk_attached_run(void *obj)
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
 		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
-		pdo_pwr_mw = 0;
-		pdo_volt_mv = 0;
-		flags = 0;
+		flags = RDO_COMM_CAP;
 
-		for (int i = 0; i < PDO_NUM; i++) {
-			if ((port->snk_policy.src.pdos[i] & PDO_TYPE_MASK) !=
-			    PDO_TYPE_FIXED) {
-				continue;
-			}
-
-			tmp_volt_mv = PDO_FIXED_GET_VOLT(
-				port->snk_policy.src.pdos[i]);
-			tmp_curr_ma = PDO_FIXED_GET_CURR(
-				port->snk_policy.src.pdos[i]);
-			tmp_pwr_mw = (tmp_volt_mv * tmp_curr_ma) / 1000;
-
-			LOG_INF("PDO%d: %08x, %d %d %d", i,
-				port->snk_policy.src.pdos[i], tmp_volt_mv,
-				tmp_curr_ma, tmp_pwr_mw);
-
-			if ((tmp_pwr_mw >= pdo_pwr_mw) &&
-			    (tmp_pwr_mw <= pdc_max_operating_power) &&
-			    (tmp_volt_mv <= pdc_max_request_mv))
-				if ((tmp_pwr_mw > pdo_pwr_mw) ||
-				    (tmp_volt_mv > pdo_volt_mv)) {
-					pdo_pwr_mw = tmp_pwr_mw;
-					pdo_volt_mv = tmp_volt_mv;
-					port->snk_policy.pdo_index = i;
-					port->snk_policy.pdo =
-						port->snk_policy.src.pdos[i];
-				}
+		rv = evaluate_src_pdos(port->snk_policy.src.pdos, PDO_NUM,
+				       &selected_pdo);
+		if (rv) {
+			LOG_ERR("C%d: No suitable PDO found (%d)",
+				config->connector_num, rv);
 		}
 
-		/* Extract Current, Voltage, and calculate Power */
-		max_ma = PDO_FIXED_GET_CURR(port->snk_policy.pdo);
+		/* Store the selected PDO. Convert the PDO number to 1-based
+		 * indexing.
+		 */
+		port->snk_policy.pdo = port->snk_policy.src.pdos[selected_pdo];
+		port->snk_policy.pdo_index = selected_pdo + 1;
+
+		/* Extract Current, Voltage, and calculate Power. Current is
+		 * clamped to the board maximum here so that the RDO and charge
+		 * manager are given the correct board operating current.
+		 */
+		max_ma = MIN(PDO_FIXED_GET_CURR(port->snk_policy.pdo),
+			     CONFIG_PLATFORM_EC_PD_MAX_CURRENT_MA);
 		max_mv = PDO_FIXED_GET_VOLT(port->snk_policy.pdo);
 		max_mw = max_ma * max_mv / 1000;
 
-		/* Mismatch bit set if less power offered than the operating
-		 * power */
-		if (max_mw < pdc_max_operating_power) {
+		/* max_mw_pdo holds the raw PDO wattage without clamping. Use
+		 * this to set the mismatch bit if less power is offered than
+		 * our operating requirement.
+		 */
+		max_mw_pdo = PDO_FIXED_GET_CURR(port->snk_policy.pdo) *
+			     PDO_FIXED_GET_VOLT(port->snk_policy.pdo) / 1000;
+
+		if (max_mw_pdo < pdc_max_operating_power) {
 			flags |= RDO_CAP_MISMATCH;
 		}
-
-		/* Prepare PDO index for creation of RDO */
-		port->snk_policy.pdo_index += 1;
 
 		/* Set RDO to send */
 		if ((port->snk_policy.pdo & PDO_TYPE_MASK) ==
@@ -2078,7 +2139,8 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_RDO);
 		return;
 	case SNK_ATTACHED_START_CHARGING:
-		max_ma = PDO_FIXED_GET_CURR(port->snk_policy.pdo);
+		max_ma = MIN(PDO_FIXED_GET_CURR(port->snk_policy.pdo),
+			     CONFIG_PLATFORM_EC_PD_MAX_CURRENT_MA);
 		max_mv = PDO_FIXED_GET_VOLT(port->snk_policy.pdo);
 		max_mw = max_ma * max_mv / 1000;
 
@@ -2126,8 +2188,9 @@ static void pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state = SNK_ATTACHED_RUN;
 		}
 
-		/* Test if battery can be charged from this port */
-		port->sink_path_en = port->active_charge;
+		/* Test if battery should be charged from this port */
+		port->sink_path_en = charge_manager_get_active_charge_port() ==
+				     config->connector_num;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SNK_ATTACHED_GET_SINK_PDO:
@@ -2242,6 +2305,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_vbus_voltage(port->pdc, &port->vbus);
 		break;
 	case CMD_PDC_SET_SINK_PATH:
+		LOG_INF("C%d: sink_path_en=%d, chg_mgr_active_charge_port=%d",
+			config->connector_num, port->sink_path_en,
+			charge_manager_get_active_charge_port());
 		rv = pdc_set_sink_path(port->pdc, port->sink_path_en);
 		break;
 	case CMD_PDC_READ_POWER_LEVEL:
@@ -2533,6 +2599,7 @@ static void pdc_src_typec_only_entry(void *obj)
 	set_attached_pdc_state(port, SRC_ATTACHED_TYPEC_ONLY_STATE);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
+		invalidate_charger_settings(port, true);
 		port->src_typec_attached_local_state =
 			SRC_TYPEC_ATTACHED_SET_SINK_PATH_OFF;
 
@@ -3015,9 +3082,6 @@ static void init_port_variables(struct pdc_port_t *port,
 	port->port_event = ATOMIC_INIT(0);
 	port->get_pdo.updating = false;
 
-	/* Can charge from port by default */
-	port->active_charge = true;
-
 	port->last_state = PDC_INIT;
 	port->next_state = PDC_INIT;
 }
@@ -3205,23 +3269,24 @@ uint8_t pdc_power_mgmt_get_usb_pd_port_count(void)
 
 int pdc_power_mgmt_set_active_charge_port(int charge_port)
 {
-	if (charge_port == CHARGE_PORT_NONE) {
-		/* Disable all ports */
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			pdc_data[i]->port.active_charge = false;
-			atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
-				       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
-		}
-	} else if (is_pdc_port_valid(charge_port)) {
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			if (i == charge_port) {
-				pdc_data[i]->port.active_charge = true;
-			} else {
-				pdc_data[i]->port.active_charge = false;
-			}
-			atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
-				       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
-		}
+	/* Note: pdc_power_mgmt_set_active_charge_port() does not alter the
+	 * active charging port. It triggers all ports to ask charge_manager
+	 * for the currently active port and adjust their sink path states.
+	 *
+	 * Overriding the active charge port externally should be done through
+	 * charge manager's charge_manager_set_override() function.
+	 */
+
+	LOG_INF("%s: charge_port=%d", __func__, charge_port);
+
+	/* Contact all ports by raising a policy flag. The individual port
+	 * state machines will react by checking if they are now the active
+	 * charge port and adjust their sink paths accordingly.
+	 */
+
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
+			       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
 	}
 
 	return EC_SUCCESS;
