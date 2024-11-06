@@ -34,6 +34,8 @@ bool sop_prime_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static bool bist_mode_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #define TCPC_FLAGS_VSAFE0V(_flags)             \
 	((_flags & TCPC_FLAGS_TCPCI_REV2_0) && \
 	 !(_flags & TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V))
@@ -837,12 +839,48 @@ clear:
 	return rv;
 }
 
+enum ec_error_list tcpci_set_bist_test_mode(const int port, const bool enable)
+{
+	int rv;
+
+	rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+			  TCPC_REG_TCPC_CTRL_BIST_TEST_MODE,
+			  enable ? MASK_SET : MASK_CLR);
+	rv |= tcpc_update16(port, TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_RX_STATUS,
+			    enable ? MASK_CLR : MASK_SET);
+	return rv;
+}
+
+enum ec_error_list tcpci_get_bist_test_mode(const int port, bool *enable)
+{
+	*enable = bist_mode_status[port];
+
+	return EC_SUCCESS;
+}
+
 int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
+	int ret;
 	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0)
-		return tcpci_rev2_0_tcpm_get_message_raw(port, payload, head);
+		ret = tcpci_rev2_0_tcpm_get_message_raw(port, payload, head);
 
-	return tcpci_rev1_0_tcpm_get_message_raw(port, payload, head);
+	ret = tcpci_rev1_0_tcpm_get_message_raw(port, payload, head);
+
+	/*
+	 * Detect bist message here and enable bist mode
+	 * BIST message: number of data objects is not zero, ext number
+	 * of data object is zero, and message type is BIST
+	 */
+	const uint32_t hdr = *head;
+	if ((PD_HEADER_EXT(hdr) == 0) && (PD_HEADER_CNT(hdr) > 0) &&
+	    (PD_HEADER_TYPE(hdr) == PD_DATA_BIST) &&
+	    (BIST_MODE(payload[0]) == BIST_TEST_DATA) &&
+	    (bist_mode_status[port] != true)) {
+		ret |= tcpci_set_bist_test_mode(port, true);
+		bist_mode_status[port] = true;
+		CPRINTS("TCPCI(%d): BIST enable!!!!!!!", port);
+	}
+	return ret;
 }
 
 /* Cache depth needs to be power of 2 */
@@ -1091,29 +1129,6 @@ int tcpci_hard_reset_reinit(int port)
 
 	CPRINTS("C%d: Hard Reset re-initialize %s", port,
 		rv ? "failed" : "success");
-
-	return rv;
-}
-
-enum ec_error_list tcpci_set_bist_test_mode(const int port, const bool enable)
-{
-	int rv;
-
-	rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
-			  TCPC_REG_TCPC_CTRL_BIST_TEST_MODE,
-			  enable ? MASK_SET : MASK_CLR);
-	rv |= tcpc_update16(port, TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_RX_STATUS,
-			    enable ? MASK_CLR : MASK_SET);
-	return rv;
-}
-
-enum ec_error_list tcpci_get_bist_test_mode(const int port, bool *enable)
-{
-	int rv;
-	int val;
-
-	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &val);
-	*enable = !!(val & TCPC_REG_TCPC_CTRL_BIST_TEST_MODE);
 
 	return rv;
 }
