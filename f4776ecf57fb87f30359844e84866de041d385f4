@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0af58a76_62c2d4d7",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-06T02:31:00Z",
+      "side": 1,
+      "message": "`egis_get_image_with_mode` may fail with below negative return value. It was possible happen.\n\nEGIS_API_ERROR_MEMORY\nEGIS_API_ERROR_SENSOR_OCP_DETECT\nEGIS_API_ERROR_SENSOR_NEED_RESET\nEGIS_API_ERROR_PARAMETER\nEGIS_API_ERROR_IO_SPI",
+      "parentUuid": "f7875f3b_b4d5562d",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "f4776ecf57fb87f30359844e84866de041d385f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0230c302_aadf00c3",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-04T23:39:42Z",
       "side": 1,
       "message": "Will `egis_get_image` and `egis_get_image_with_mode` always return the same error codes? If so, it would probably be best to create a function to convert the error codes, so that we don\u0027t have to remember to update two places if a new type of error code is introduced.\n\ne.g., \n\n```\nint convert_egis_get_image_error_code(int code) {\n   ...\n}\n```",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "f4776ecf57fb87f30359844e84866de041d385f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f31440_fa5b0233",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-06T02:31:00Z",
+      "side": 1,
+      "message": "add `convert_egis_get_image_error_code`",
+      "parentUuid": "0230c302_aadf00c3",
       "range": {
         "startLine": 103,
         "startChar": 0,
