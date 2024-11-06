@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2d1460_6f73e049",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-11-06T20:35:49Z",
+      "side": 1,
+      "message": "Should we be applying `DRP_NORMAL` in all other dual role modes besides `PD_DRP_TOGGLE_ON`?",
+      "range": {
+        "startLine": 1401,
+        "startChar": 15,
+        "endLine": 1401,
+        "endChar": 25
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049f209f_4e4bf254",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-11-06T20:35:49Z",
+      "side": 1,
+      "message": "Is there a reason not to set this within set_dual_role() like the other settings?",
+      "range": {
+        "startLine": 1405,
+        "startChar": 3,
+        "endLine": 1405,
+        "endChar": 27
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
