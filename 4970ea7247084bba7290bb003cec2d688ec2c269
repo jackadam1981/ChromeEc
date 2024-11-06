@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1e12e20_a509f26f",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-06T03:41:31Z",
+      "side": 1,
+      "message": "Timer 1 is enabled without interrupt. (No ISR for Timer 1)",
+      "parentUuid": "4fa2639b_07443b39",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d61af0f6_bffa60a3",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 1

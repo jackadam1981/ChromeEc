@@ -22,6 +22,30 @@
       },
       "revId": "2b0676bfed6d1a1e065cea1057505ec0ca05332c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90276860_3475e5df",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-06T03:41:31Z",
+      "side": 1,
+      "message": "IT8320 allows a pending interrupt wake CPU up (the below standby instruction) without enabling INT_MASK interrupt. Under the wake up condition, CPU won\u0027t jump to ISR until INT_MASK interrupt is enabled.\nIt is used to prevent race condition between enable interrups and standby .\nEg. we only enable one interrupt where is able to wake CPU up from low power mode and the interrupt will be disabled in ISR. If the interrupt is fired in the race condition, CPU will stay at standby forever.",
+      "parentUuid": "8134d63f_52c77d57",
+      "range": {
+        "startLine": 460,
+        "startChar": 17,
+        "endLine": 460,
+        "endChar": 24
+      },
+      "revId": "2b0676bfed6d1a1e065cea1057505ec0ca05332c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
