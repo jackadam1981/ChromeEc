@@ -16,6 +16,24 @@
       "message": "Have you submitted CL to enable ACPI_FNKEY_GEN_SCANCODE? [Kconfig - Chromium Code Search](https://crsrc.org/o/src/third_party/coreboot/src/mainboard/google/brya/Kconfig;l\u003d4?q\u003dACPI_FNKEY_GEN_SCANCODE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch)\n\nRef. https://docs.google.com/document/d/1myTMpQmGPAU7Y4rEPtyam2P10E5VZjPyaI2Qmp_sK34/edit?resourcekey\u003d0-vZQi3c0Stc9ZD4ITiOmSZg\u0026tab\u003dt.0",
       "revId": "211ad8496f28970976412cd3d7307c5a69531d68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f44286_068479bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-11-06T06:01:09Z",
+      "side": 1,
+      "message": "We import it in this CL-https://review.coreboot.org/c/coreboot/+/85014 .",
+      "parentUuid": "5cea6c53_d34459c3",
+      "revId": "211ad8496f28970976412cd3d7307c5a69531d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
