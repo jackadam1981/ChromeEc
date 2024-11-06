@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8a90cf_6aa411d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-06T23:28:30Z",
+      "side": 1,
+      "message": "Should this be Elan?",
+      "range": {
+        "startLine": 10,
+        "startChar": 46,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "9f692a82e97eff0e2a899f76380e8d2b4d24d4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ee1eaf_331db45c",
+        "filename": "docs/fingerprint/fingerprint-factory-requirements.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-06T23:28:30Z",
+      "side": 1,
+      "message": "below",
+      "range": {
+        "startLine": 406,
+        "startChar": 42,
+        "endLine": 406,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9f818735_10ece672",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "docs/fingerprint/fingerprint-factory-requirements.md",
+              "range": {
+                "startLine": 406,
+                "startChar": 0,
+                "endLine": 407,
+                "endChar": 0
+              },
+              "replacement": "# mention ACCESS_DENIED, like the example below:\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9f692a82e97eff0e2a899f76380e8d2b4d24d4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
