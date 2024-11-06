@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "933a757a_6a421e04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-06T23:55:15Z",
+      "side": 1,
+      "message": "No, the error is actually only triggered on FPC. It doesn\u0027t occur on Elan, since their vendor capture size directly matches their pixel map frame size (checkout http://b/375982132#comment19 if you are curious).",
+      "parentUuid": "2f8a90cf_6aa411d9",
+      "range": {
+        "startLine": 10,
+        "startChar": 46,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "9f692a82e97eff0e2a899f76380e8d2b4d24d4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88ee1eaf_331db45c",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "9f692a82e97eff0e2a899f76380e8d2b4d24d4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabe8afd_0f89474b",
+        "filename": "docs/fingerprint/fingerprint-factory-requirements.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-06T23:55:15Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "88ee1eaf_331db45c",
+      "range": {
+        "startLine": 406,
+        "startChar": 42,
+        "endLine": 406,
+        "endChar": 48
+      },
       "revId": "9f692a82e97eff0e2a899f76380e8d2b4d24d4c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
