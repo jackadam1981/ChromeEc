@@ -86,6 +86,47 @@
       },
       "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763a218f_0f401c2a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-06T22:38:33Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f85c1f78_f61cdf00",
+      "range": {
+        "startLine": 1405,
+        "startChar": 3,
+        "endLine": 1405,
+        "endChar": 27
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad4a650_5ac1a4d9",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-06T22:38:33Z",
+      "side": 1,
+      "message": "This is an odd assertion. Can you describe at a high level what behavior this test is verifying?",
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
