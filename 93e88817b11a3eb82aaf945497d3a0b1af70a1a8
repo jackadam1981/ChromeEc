@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dac05a_2cce1e54",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/project.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-11-06T02:27:33Z",
+      "side": 1,
+      "message": "just replicate what we set up on rex for the 997 and fatcat_npcx9m7f:\n\n```\n\u0026cbi_flash {\n\t/*\n\t * CBI section size is 0x1000 bytes, the CBI portion lies at the end of\n\t * EC_RO section. EC_RO section ends at 0x50000 byte which is the offset\n\t */\n\toffset \u003d \u003c0x50000\u003e;\n\tsize \u003d \u003c0x1000\u003e;\n};\n\n```",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "93e88817b11a3eb82aaf945497d3a0b1af70a1a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
