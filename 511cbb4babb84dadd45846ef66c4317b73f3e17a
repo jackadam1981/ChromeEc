@@ -16,6 +16,24 @@
       "message": "This is a workaround for battery leakage with isl9238c charger.\n\nDoes Navi (using bq25710) really need this?",
       "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19041c23_301b9050",
+        "filename": "zephyr/program/rauru/navi/src/power_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-11-07T02:03:19Z",
+      "side": 1,
+      "message": "Checking BQ25710 datasheet. For 2S system, charging with 12V will be more efficient than 15V when battery near full, and 9V will be the most efficient if battery is not full. Please check section `8.7 Typical Characteristics`.",
+      "parentUuid": "b839c68c_df197e2a",
+      "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
