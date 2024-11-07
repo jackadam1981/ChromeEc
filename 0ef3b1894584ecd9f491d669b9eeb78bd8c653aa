@@ -70,6 +70,24 @@
       "parentUuid": "3df9c8a9_f61d6568",
       "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982db230_f21ff37b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-11-07T14:03:06Z",
+      "side": 1,
+      "message": "We are missing CONFIG_PM_DEVICE_RUNTIME and the compilation fails. In TOT branch, due to this CL, CONFIG_PM_DEVICE_RUNTIME will be added as long as CROS_EC_KEYBOARD_INPUT is defined. However, nissa\u0027s fw branch lacks this dependency and does not actively add CONFIG_PM_DEVICE_RUNTIME.\n\nI switched this CL to the fw branch because I want to continue using this dependency.",
+      "parentUuid": "07021083_f9fec8a2",
+      "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
