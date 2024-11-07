@@ -352,8 +352,8 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int round)
 	} else {
 		uint8_t odr_reg_val = bma5_odr_to_reg(rate);
 
-		zassert_equal(odr_reg_val,(odr_reg_val & BMA5_ACCEL_ODR_MSK));
-	        zassert_equal(odr_reg_val,0, NULL);
+		ASSERT((odr_reg_val & BMA4_ACCEL_ODR_MSK) == odr_reg_val &&
+		       odr_reg_val != 0);
 
 		if (data->odr == 0) {
 			/* Accel was disabled; enable it */
@@ -606,7 +606,7 @@ static void process_fifo_data(struct motion_sensor_t *s, uint8_t *data,
 		if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 			struct ec_response_motion_sensor_data response = {
 				.sensor_num = s - motion_sensors,
-				.data = { v[X], v[Y], v[Z] },
+				.data = {
 					[X] = v[X],
 					[Y] = v[Y],
 					[Z] = v[Z],
