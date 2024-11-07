@@ -371,18 +371,13 @@ static void motion_sense_switch_sensor_rate(void)
 					tablet_set_mode(0, TABLET_TRIGGER_LID);
 			}
 		} else {
-			/* The sensors are being powered off */
-			if ((sensor->state == SENSOR_INITIALIZED) ||
-			    (sensor->state == SENSOR_READY)) {
-				/*
-				 * Use mutex to be sure we are not changing the
-				 * ODR in MOTIONSENSE, in case it is running.
-				 */
-				mutex_lock(&g_sensor_mutex);
-				sensor->collection_rate = 0;
-				mutex_unlock(&g_sensor_mutex);
-				sensor->state = SENSOR_NOT_INITIALIZED;
-			}
+			/*
+			 * Use mutex to be sure we are not changing the
+			 * ODR in MOTIONSENSE, in case it is running.
+			 */
+			mutex_lock(&g_sensor_mutex);
+			sensor->collection_rate = 0;
+			mutex_unlock(&g_sensor_mutex);
 		}
 	}
 	if (sensor_setup_mask) {
@@ -473,6 +468,9 @@ static void motion_sense_shutdown(void)
 	sensor_active = SENSOR_ACTIVE_S5;
 	for (i = 0; i < motion_sensor_count; i++) {
 		sensor = &motion_sensors[i];
+		if (!SENSOR_ACTIVE(sensor)) {
+			sensor->state = SENSOR_NOT_INITIALIZED;
+		}
 		/* Forget about changes made by the AP */
 		sensor->config[SENSOR_CONFIG_AP].odr = 0;
 		sensor->config[SENSOR_CONFIG_AP].ec_rate = 0;
@@ -481,7 +479,7 @@ static void motion_sense_shutdown(void)
 
 	/*
 	 * Run motion_sense_switch_sensor_rate_data in the HOOK task,
-	 * To be sure no 2 rate changes happens in parralell.
+	 * To be sure no 2 rate changes happens in parrallel.
 	 */
 	hook_call_deferred(&motion_sense_switch_sensor_rate_data, 0);
 }
@@ -490,6 +488,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
 
 static void motion_sense_suspend(void)
 {
+	struct motion_sensor_t *sensor;
+	int i;
+
 	motion_sense_print_stats("suspend");
 
 	/*
@@ -500,7 +501,16 @@ static void motion_sense_suspend(void)
 		return;
 
 	sensor_active = SENSOR_ACTIVE_S3;
-
+	/*
+	 *  Disable the sensor as soon as possible if it is going to lose power.
+	 *  It does not prevent current sensor task to run, but next iteration
+	 *  will ignore work to do.
+	 */
+	for (i = 0; i < motion_sensor_count; ++i) {
+		sensor = &motion_sensors[i];
+		if (!SENSOR_ACTIVE(sensor))
+			sensor->state = SENSOR_NOT_INITIALIZED;
+	}
 	/*
 	 * During shutdown sequence sensor rails can be powered down
 	 * asynchronously to the EC hence EC cannot interlock the sensor
