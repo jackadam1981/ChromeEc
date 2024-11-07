@@ -17,6 +17,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_scan.h"
 #include "power/icelake.h"
 #include "power/intel_x86.h"
 #include "system.h"
@@ -327,3 +328,21 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 	else
 		return flags0;
 }
+
+static void baseboard_keyboard_init(void)
+{
+	/*
+	 * A short min_post_scan_delay_us or scan_period_us can cause the EC
+	 * to watchdog when a key is held. Enforce minimums for dedede boards.
+	 */
+	const uint16_t MIN_POST_SCAN_DELAY_US_MIN = 2 * MSEC;
+	const uint16_t MIN_SCAN_PERIOD_US = 6 * MSEC;
+
+	if (keyscan_config.min_post_scan_delay_us < MIN_POST_SCAN_DELAY_US_MIN)
+		keyscan_config.min_post_scan_delay_us =
+			MIN_POST_SCAN_DELAY_US_MIN;
+
+	if (keyscan_config.scan_period_us < MIN_SCAN_PERIOD_US)
+		keyscan_config.scan_period_us = MIN_SCAN_PERIOD_US;
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_keyboard_init, HOOK_PRIO_DEFAULT);
