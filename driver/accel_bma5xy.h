@@ -161,7 +161,7 @@
 
 #define BMA5_REG_TO_RANGE(_reg)                          \
 	((_reg) < BMA5_ACCEL_RANGE_8G ? 2 + (_reg) * 2 : \
-					8 + ((_reg) - BMA5_ACCEL_RANGE_8G) >> 3)
+					8 + ((_reg) - BMA5_ACCEL_RANGE_8G) * 8)
 
 extern const struct accelgyro_drv bma5_accel_drv;
 
