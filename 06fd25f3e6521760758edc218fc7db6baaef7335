@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7b6440_35cc690d",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-11-07T18:09:25Z",
+      "side": 1,
+      "message": "this line needs formatting, run this\ncros format zephyr/drivers/cros_system/cros_system_xec.c",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 2
+      },
+      "revId": "06fd25f3e6521760758edc218fc7db6baaef7335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
