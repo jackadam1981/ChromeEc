@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa78c28f_2dea448a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-11-07T20:51:09Z",
+      "side": 1,
+      "message": "do you still need this with the tweaked drivers? but even if you do, why not override the `keyscan_config` struct instead? seems a bit pointless doing an init hook to change it at runtime",
+      "revId": "58b136e0aeca5c48bee29e19587c1a7d52c522c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
