@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b839c68c_df197e2a",
+        "filename": "zephyr/program/rauru/navi/src/power_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-07T01:54:18Z",
+      "side": 1,
+      "message": "This is a workaround for battery leakage with isl9238c charger.\n\nDoes Navi (using bq25710) really need this?",
+      "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
