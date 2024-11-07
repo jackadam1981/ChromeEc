@@ -100,6 +100,8 @@ void board_ap_power_action_s0(void)
 	LOG_INF("Reaching S0");
 	power_signal_disable(PWR_DSW_PWROK);
 	s0_stable = true;
+
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_vr_on), 1);
 }
 
 int board_ap_power_assert_pch_power_ok(void)
@@ -116,7 +118,8 @@ int board_ap_power_assert_pch_power_ok(void)
 bool board_ap_power_check_power_rails_enabled(void)
 {
 	return power_signal_get(PWR_EN_PP3300_A) &&
-	       power_signal_get(PWR_EN_PP5000_A);
+	       power_signal_get(PWR_EN_PP5000_A) &&
+	       gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pwr_1p25v_pg));
 }
 #else
 #ifndef CONFIG_EMUL_AP_PWRSEQ_DRIVER
