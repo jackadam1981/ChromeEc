@@ -72,6 +72,7 @@ enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 		ap_off();
 		break;
 	case SYS_POWER_STATE_S0:
+		board_ap_power_action_s0();
 		/* Send SYS_PWROK->SoC if conditions met */
 		generate_pwrok_handler();
 		break;

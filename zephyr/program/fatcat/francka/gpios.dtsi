@@ -266,7 +266,7 @@
 			gpios = <&gpio6 1 GPIO_OUTPUT>;
 		};
 		gpio_vr_on: vr_on {
-			gpios =  <&gpio9 6 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8)>;
+			gpios =  <&gpio9 6 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_als_int_l: ec_als_int_l {
 			gpios =  <&gpio3 7 GPIO_INPUT>;
