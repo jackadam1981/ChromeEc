@@ -16,6 +16,24 @@
       "message": "Please add `if` to protect against invalid values. C is not great at enforcing this :(",
       "revId": "8b60f97269d363e92dd799932472f9e21072165d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74c0d5f_ed3085bc",
+        "filename": "zephyr/drivers/usbc/ucsi_v3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-07T19:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f60784b_74f7732c",
+      "revId": "8b60f97269d363e92dd799932472f9e21072165d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
