@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ec3f242_aae1870f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-07T21:37:10Z",
+      "side": 1,
+      "message": "As far as we\u0027re immediately concerned, `PD_DRP_TOGGLE_ON` directly corresponds to `SET_CCOM` with `CCOM_DRP`, and `DRP_NORMAL` gets set in `SET_TPC_CSD_OPERATION_MODE[DRP Mode]`, in the same way as `DRP_TRY_SRC` or `DRP_TRY_SNK`. Logically, setting \"DRP Mode\" should only be meaningful if `CCOM_DRP` is set. For other `SET_CCOM` values, I would expect \"DRP Mode\" to be a don\u0027t care, and I don\u0027t think there\u0027s a reasonable default value. As long as you update \"DRP Mode\" each time you set `CCOM_DRP`, I would think you can\u0027t leave it alone at other times.\n\nBut `SET_TPC_CSD_OPERATION_MODE` specifically says that \"DRP Mode\" only applies when `SET_TPC_CSD_OPERATION_MODE[CSD Mode]` is set to DRP, and we always set \"CSD Mode\" to DRP. It seems like \"CSD Mode\" is redundant with `SET_CCOM`, and I don\u0027t know which one takes precedence in the case of a conflict.\n\nMaybe I\u0027m missing something here, but it seems like we need to resolve the precedence of these two commands to control our dual-role state, and we may need to change how we set \"CSD Mode\" to be consistent with how we set `SET_CCOM`.",
+      "parentUuid": "83b24006_870c2f36",
+      "range": {
+        "startLine": 1401,
+        "startChar": 15,
+        "endLine": 1401,
+        "endChar": 25
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "049f209f_4e4bf254",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
