@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83b24006_870c2f36",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-07T18:28:30Z",
+      "side": 1,
+      "message": "@alevkoy@chromium.org - what are your thoughts on this?",
+      "parentUuid": "fa2d1460_6f73e049",
+      "range": {
+        "startLine": 1401,
+        "startChar": 15,
+        "endLine": 1401,
+        "endChar": 25
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "049f209f_4e4bf254",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 2
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82355c1c_664e1ffd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-07T18:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "763a218f_0f401c2a",
+      "range": {
+        "startLine": 1405,
+        "startChar": 3,
+        "endLine": 1405,
+        "endChar": 27
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dad4a650_5ac1a4d9",
@@ -125,6 +173,24 @@
       "writtenOn": "2024-11-06T22:38:33Z",
       "side": 1,
       "message": "This is an odd assertion. Can you describe at a high level what behavior this test is verifying?",
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1f4dd1_4540fbb2",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-07T18:28:30Z",
+      "side": 1,
+      "message": "With new behavior, I moved verification of drp mode to tests that change power modes.",
+      "parentUuid": "dad4a650_5ac1a4d9",
       "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
