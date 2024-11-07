@@ -35,6 +35,23 @@
       "parentUuid": "b5062eba_ee995bf3",
       "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df9c8a9_f61d6568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2024-11-07T02:39:04Z",
+      "side": 1,
+      "message": "Hi @fabiobaltieri@google.com,\nSince the ec fast-forward function is broken now on nissa firmware branch, so we have to manually cherry-pick the necessary cl,  is it OK for you?\nThe issue for the failure b:375290861",
+      "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
