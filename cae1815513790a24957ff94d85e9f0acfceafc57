@@ -16,6 +16,24 @@
       "message": "Waiting on approval of proposal in http://b/377616175#comment6.",
       "revId": "cae1815513790a24957ff94d85e9f0acfceafc57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7ef974_528a2b89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-07T18:39:28Z",
+      "side": 1,
+      "message": "Looks like split approval on the proposal. In order to not waste time, I will submit this. It won\u0027t reach a release for a while anyways and can be reverted if there is opposition.",
+      "parentUuid": "f67ee83f_a845d484",
+      "revId": "cae1815513790a24957ff94d85e9f0acfceafc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
