@@ -16,6 +16,24 @@
       "message": "Hi Forest,\n\nWith this patch, I can run suspend stress test on the drawcia board for over 8 hours without crashing.",
       "revId": "73f553dcec83d0ed5f7bd066bde19edb85589dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6560a8c_5a87d1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-07T23:50:34Z",
+      "side": 1,
+      "message": "could you please try faft-ec suite?\n\nWith this change on kracko I still see crashes, but those crashes are empty: ``` \u003d\u003d\u003d EXCEP: ITYPE\u003d0 \u003d\u003d\u003d\nR0  00000000 R1  00000000 R2  00000000 R3  00000000\nR4  00000000 R5  00000000 R6  dead6664 R7  00000000\nR8  00000000 R9  00000000 R10 00000000 R15 00000000\nFP  00000000 GP  00000000 LP  00000000 SP  00000000\nIPC 00000000 IPSW   00000``` - all registers are empty meaning that pre-watchdog timer was disabled at the moment when watchdog happened, which is exactly a scenario that we want to avoid",
+      "parentUuid": "461770ee_2570a63a",
+      "revId": "73f553dcec83d0ed5f7bd066bde19edb85589dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
