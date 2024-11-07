@@ -52,6 +52,24 @@
       "message": "Hi @fabiobaltieri@google.com,\nSince the ec fast-forward function is broken now on nissa firmware branch, so we have to manually cherry-pick the necessary cl,  is it OK for you?\nThe issue for the failure b:375290861",
       "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07021083_f9fec8a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-11-07T12:25:43Z",
+      "side": 1,
+      "message": "I\u0027m not quite familiar with the issue and the bug you linked does not clarify things to me too much, but go/ec-branch-merge-cop seems to be pretty explicit about this, @robbarnes@chromium.org @jbettis@chromium.org do you have more context about this?",
+      "parentUuid": "3df9c8a9_f61d6568",
+      "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
