@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba990fa_e2123759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-11-07T22:18:40Z",
+      "side": 1,
+      "message": "Seems an unrelated error, but see the same warning locally:\n```\n...\n  LD      aontaskfw/ish_aontask.elf\n  CC      RO/common/queue.o\n/home/chrome-bot/.cache/bazel/_bazel_chrome-bot/e517ea39ecb43168812d1d21bda62f96/external/_main~ec_deps~ec-coreboot-sdk-i386-elf/bin/../lib/gcc/i386-elf/14.2.0/../../../../i386-elf/bin/ld: warning: build/arcada_ish/aontaskfw/ish_aontask.elf has a LOAD segment with RWX permissions\n  CC      RO/core/cortex-m/cpu.o\n  CC      RO/common/usb_pd_console_cmd.o\n  CC      RO/common/led_common.o\n  OBJCOPY RO/ec.RO.flat\n  CC      RO/common/usbc/usb_pd_console.o\n  EXTBIN  aontaskfw/ish_aontask.bin\n  CC      RO/common/typec_control.o\n  CC      RO/common/usbc/usb_pd_dpm.o\n  CAT     ec.obj\n  CC      RW/common/i2c_controller_cros_ec.o\n  CC      RW/driver/ppc/sn5s330.o\n  CC      RO/core/cortex-m/debug.o\n  CC      RO/common/usb_pd_discovery.o\n  CC      RW/common/led_common.o\n  CC      RW/common/usbc/usb_prl_sm.o\n  CC      RO/chip/stm32/uart.o\n  CC      RW/driver/tcpm/nct38xx.o\n  CC      RO/common/uart_buffering.o\n  AS      RO/core/cortex-m/init.o\n/home/chrome-bot/.cache/bazel/_bazel_chrome-bot/e517ea39ecb43168812d1d21bda62f96/external/_main~ec_deps~ec-coreboot-sdk-i386-elf/bin/../lib/gcc/i386-elf/14.2.0/../../../../i386-elf/bin/ld: section .image.RW LMA [00119400,0013208f] overlaps section .image.RO LMA [00100c00,0011940f]\ncollect2: error: ld returned 1 exit status\n```",
+      "revId": "a0f6653dc849543830264b778b6210c56dfa3958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
