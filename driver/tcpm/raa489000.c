@@ -355,8 +355,11 @@ static bool raa489000_tcpm_should_enter_bist_mode(int port, uint32_t *payload,
 	return false;
 }
 
+extern uint64_t time_int;
 int raa489000_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
+	uint64_t time_enter_mode_done;
+	int time_delta;
 	int ret = tcpci_tcpm_get_message_raw(port, payload, head);
 
 	if (ret != EC_SUCCESS)
@@ -365,6 +368,9 @@ int raa489000_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 	if (raa489000_tcpm_should_enter_bist_mode(port, payload, head)) {
 		raa489000_bist_mode[port] = true;
 		ret = tcpci_set_bist_test_mode(port, true);
+		time_enter_mode_done = get_time().val;
+		time_delta = time_enter_mode_done - time_int;
+		ccprintf("RAA tcpc(%d): BIST enabled, time_delta %d(us)\n", port, time_delta); //ccprintf can print in chan 0
 	}
 	return ret;
 }

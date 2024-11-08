@@ -64,8 +64,10 @@ static void check_c0_line(void)
 	}
 }
 
+uint64_t time_int;
 static void usb_c0_interrupt(enum gpio_signal s)
 {
+	time_int = get_time().val;
 	/* Cancel any previous calls to check the interrupt line */
 	hook_call_deferred(&check_c0_line_data, -1);
 
