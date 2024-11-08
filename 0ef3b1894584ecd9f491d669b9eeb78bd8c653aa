@@ -157,6 +157,24 @@
       "message": "Hi Fabio, Jeremy,\n\nPlease consider the tight schedule in the Rull/Roric project and it will be helpful to apply W/A first and revert it once final solution are addressed.\n\nThanks",
       "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce26181_de616404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2024-11-08T01:27:26Z",
+      "side": 1,
+      "message": "Hi Fabio,\n\nCurrently the ec fastforward function are broken since a tool regression, we already cheery-pick ec cls manually since they would block partners for their factory, once the fast forward become normal, we would go back the original way for merge ec firmware branch.",
+      "parentUuid": "b90a1f18_6b4a97ad",
+      "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
