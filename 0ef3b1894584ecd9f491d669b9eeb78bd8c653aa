@@ -123,6 +123,23 @@
       "message": "Seems like fixing the fast forward is better than just cherry picking a few cls.",
       "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d94c66_f5f3d427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496893
+      },
+      "writtenOn": "2024-11-08T01:14:49Z",
+      "side": 1,
+      "message": "Hi Jeremy \u0026 Fabio: \nThe final solution is definitely like this, but currently this CL will block the compilation of the fw branch, which will affect our 11.11 release. Therefore, please help confirm if it is possible to manually Cheer Pick this CL first, so that fw can compile successfully and not block the projects of Rull and Telith ?",
+      "revId": "0ef3b1894584ecd9f491d669b9eeb78bd8c653aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
