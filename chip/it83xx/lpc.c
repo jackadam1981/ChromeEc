@@ -717,6 +717,8 @@ static void lpc_init(void)
 
 	/* Update host events now that we can copy them to memmap */
 	lpc_update_host_event_status();
+
+	task_enable_irq(IT83XX_IRQ_WKO92);
 }
 /*
  * Set prio to higher than default; this way LPC memory mapped data is ready
