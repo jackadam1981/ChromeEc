@@ -55,4 +55,6 @@ void lpc_kbc_obe_interrupt(void);
 uint32_t i2c_idle_not_allowed(void);
 #endif
 
+void test_gpa1_interrupt(enum gpio_signal signal);
+
 #endif /* __CROS_EC_INTC_H */
