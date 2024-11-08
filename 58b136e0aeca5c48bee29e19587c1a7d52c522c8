@@ -34,6 +34,24 @@
       "parentUuid": "fa78c28f_2dea448a",
       "revId": "58b136e0aeca5c48bee29e19587c1a7d52c522c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bdca57_36b918a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-11-08T12:04:59Z",
+      "side": 1,
+      "message": "Ok, yeah my concern is that it\u0027s really hard to track the mix of overrides between weak structures and runtime changes, adding the new stable scan option was bit of a nightmare to be honest and ultimately a big disincentive for changing driver defaults and introducing new options, given the high risk of landing an inconsistent configuration on some platforms.\n\nAnyway, happy with this if you think it\u0027s the right thing to do but I\u0027d rather switch to the tweaked driver.",
+      "parentUuid": "370772c4_d42ca276",
+      "revId": "58b136e0aeca5c48bee29e19587c1a7d52c522c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
