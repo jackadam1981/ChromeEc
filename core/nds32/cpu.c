@@ -7,6 +7,10 @@
 
 #include "cpu.h"
 #include "registers.h"
+#include "console.h"
+#include "system.h"
+#include "timer.h"
+#include "util.h"
 
 void cpu_init(void)
 {
@@ -14,3 +18,52 @@ void cpu_init(void)
 	/* Global interrupt enable */
 	asm volatile("setgie.e");
 }
+
+static void nop_16_cnt(void)
+{
+	/* Loop to execute nop instruction for 16 counts (each count equivalent Nds32 fetch 4 bytes instruction from flash and execute) */
+	asm volatile(".rept 0x10\n\t"
+		     "nop\n\t"
+		     ".endr\n\t");
+}
+
+static int cpu_execute_nop(int argc, const char **argv)
+{
+	int time_delta;
+	uint64_t time_start, time_stop;
+
+	if (argc > 1) {
+		if ((argv[1][0] == '.') && (strlen(argv[1]) == 2)) {
+			switch (argv[1][1]) {
+			case 'n':
+				/* disable all interrupts */
+				interrupt_disable();
+
+				time_start = get_time().val;
+
+				/* Loop to execute nop instruction for 256*16 = 4096 counts (total 4096 * 4 equivalent to 16 Kbytes instruction) */
+				for (int i = 0; i < 256; i++) {
+					nop_16_cnt();
+				}
+
+				time_stop = get_time().val;
+				time_delta = time_stop - time_start;
+
+				/* enable all interrupts */
+				interrupt_enable();
+
+				ccprintf("time_delta %d(us)\n", time_delta);
+				cflush();
+				return EC_SUCCESS;
+			default:
+				return EC_ERROR_PARAM1;
+			}
+		}
+	}
+
+	return EC_ERROR_PARAM1;
+}
+
+DECLARE_CONSOLE_COMMAND(
+	ex, cpu_execute_nop, "[.n]",
+	"Loop to execute nop instruction for 4096 counts");
