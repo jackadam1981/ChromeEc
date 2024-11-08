@@ -58,21 +58,23 @@
  *	};
  * };
  */
-#define ACCELGYRO_ALS_DRV_DATA(id)                         \
-	{                                                  \
-		ALS_CALIBRATION_SET(DT_CHILD(id, als_cal)) \
-	}
+#define ACCELGYRO_ALS_DRV_DATA(id) \
+	{ ALS_CALIBRATION_SET(DT_CHILD(id, als_cal)) }
 
 #define RGB_CAL_RGB_SET_SCALE(id) .scale = ACCELGYRO_ALS_CHANNEL_SCALE(id),
 
-#define RGB_CAL_RGB_SET_ONE(id, suffix)                                \
-	.rgb_cal[suffix] = {                                           \
-		.offset = DT_PROP(id, offset),                         \
-		.coeff[0] = FLOAT_TO_FP(DT_PROP_BY_IDX(id, coeff, 0)), \
-		.coeff[1] = FLOAT_TO_FP(DT_PROP_BY_IDX(id, coeff, 1)), \
-		.coeff[2] = FLOAT_TO_FP(DT_PROP_BY_IDX(id, coeff, 2)), \
-		.coeff[3] = FLOAT_TO_FP(DT_PROP_BY_IDX(id, coeff, 3)), \
-		RGB_CAL_RGB_SET_SCALE(DT_CHILD(id, als_channel_scale)) \
+#define RGB_CAL_RGB_SET_ONE(id, suffix)                                       \
+	.rgb_cal[suffix] = {                                                  \
+		.offset = DT_PROP(id, offset),                                \
+		.coeff[0] =                                                   \
+			FLOAT_TO_FP(DT_STRING_UNQUOTED_BY_IDX(id, coeff, 0)), \
+		.coeff[1] =                                                   \
+			FLOAT_TO_FP(DT_STRING_UNQUOTED_BY_IDX(id, coeff, 1)), \
+		.coeff[2] =                                                   \
+			FLOAT_TO_FP(DT_STRING_UNQUOTED_BY_IDX(id, coeff, 2)), \
+		.coeff[3] =                                                   \
+			FLOAT_TO_FP(DT_STRING_UNQUOTED_BY_IDX(id, coeff, 3)), \
+		RGB_CAL_RGB_SET_SCALE(DT_CHILD(id, als_channel_scale))        \
 	},
 
 /*
@@ -114,12 +116,13 @@
  *	};
  * };
  */
-#define ACCELGYRO_RGB_CALIBRATION(id)                                 \
-	{                                                             \
-		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_x), X)       \
-		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_y), Y)       \
-		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_z), Z).irt = \
-			INT_TO_FP(DT_PROP(id, irt)),                  \
+#define ACCELGYRO_RGB_CALIBRATION(id)                                        \
+	{                                                                    \
+		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_x), X)              \
+			RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_y), Y)      \
+				RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_z), \
+						    Z)                       \
+					.irt = INT_TO_FP(DT_PROP(id, irt)),  \
 	}
 
 #endif /* __ZEPHYR_SHIM_SRC_MOTIONSENSE_DRIVER_DRVDATA_ACCELGYRO_H */
