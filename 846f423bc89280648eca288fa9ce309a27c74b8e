@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ea8791_65eb3ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-11-08T02:26:06Z",
+      "side": 1,
+      "message": "I noticed a build error when `CONFIG_PLATFORM_EC_HIBERNATE_VCI` is not set, I will fix this in next patchset.",
+      "revId": "846f423bc89280648eca288fa9ce309a27c74b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
