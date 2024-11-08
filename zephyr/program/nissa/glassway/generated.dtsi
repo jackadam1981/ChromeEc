@@ -169,6 +169,9 @@
 		gpio_led_a_odl: led_a_odl {
 			gpios = <&gpioc 3 GPIO_OUTPUT_HIGH>;
 		};
+		gpio_ec_soc_hdmi_hpd: ec_soc_hdmi_hpd {
+			gpios = <&gpioe 4 GPIO_OUTPUT>;
+		};
 	};
 
 	named-i2c-ports {
@@ -207,6 +210,12 @@
 	pinctrl-names = "default";
 };
 
+&pinctrl {
+        /omit-if-no-ref/ i2c5_1_gpf4_f5: periph-i2c5-1-gpio {
+                pinmux = <&alt6_i2c5_1_sl>;
+                pinmux-gpio;
+        };
+};
 
 &i2c0_0 {
 	status = "okay";
@@ -229,7 +238,8 @@
 &i2c5_1 {
 	status = "okay";
 	pinctrl-0 = <&i2c5_1_sda_scl_gpf4_f5>;
-	pinctrl-names = "default";
+	pinctrl-1 = <&i2c5_1_gpf4_f5>;
+	pinctrl-names = "default", "sleep";
 };
 
 &i2c7_0 {

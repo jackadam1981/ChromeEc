@@ -83,6 +83,11 @@ enum glassway_sub_board_type glassway_get_sb_type(void)
 		glassway_cached_sub_board = GLASSWAY_SB_1C_LTE;
 		LOG_INF("SB: USB type C, LTE");
 		break;
+
+	case FW_SUB_BOARD_5:
+		glassway_cached_sub_board = GLASSWAY_SB_HDMI_LTE;
+		LOG_INF("SB: HDMI, LTE");
+		break;
 	}
 	return glassway_cached_sub_board;
 }
@@ -110,6 +115,93 @@ test_export_static void board_usb_pd_count_init(void)
  */
 DECLARE_HOOK(HOOK_INIT, board_usb_pd_count_init, HOOK_PRIO_INIT_I2C);
 
+// #if CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT
+#if 0
+static void hdmi_power_handler(struct ap_power_ev_callback *cb,
+                               struct ap_power_ev_data data)
+{
+        /* Enable VCC on the HDMI port. */
+        const struct gpio_dt_spec *s3_rail =
+                GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl);
+
+        switch (data.event) {
+        case AP_POWER_STARTUP:
+                LOG_DBG("Enabling HDMI VCC");
+                gpio_pin_set_dt(s3_rail, 1);
+                break;
+        case AP_POWER_SHUTDOWN:
+                LOG_DBG("Disabling HDMI VCC");
+                gpio_pin_set_dt(s3_rail, 0);
+                break;
+        default:
+                LOG_ERR("Unhandled HDMI power event %d", data.event);
+                break;
+        }
+}
+#endif
+
+static void hdmi_hpd_interrupt(const struct device *device,
+			       struct gpio_callback *callback,
+			       gpio_port_pins_t pins)
+{
+	int state = gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_hpd_odl));
+
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_hdmi_hpd), state);
+	LOG_DBG("HDMI HPD changed state to %d", state);
+}
+
+void nissa_configure_hdmi_rails(void)
+{
+	gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+			      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+				      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
+}
+
+/*
+void nissa_configure_hdmi_vcc(void)
+{
+	gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+			      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+				      GPIO_ACTIVE_LOW);
+}*/
+
+#define I2C5_1_NODE DT_NODELABEL(i2c5_1)
+#if DT_NODE_EXISTS(I2C5_1_NODE)
+#include <zephyr/drivers/pinctrl.h>
+PINCTRL_DT_DEFINE(DT_NODELABEL(i2c5_1));
+
+__override void nissa_configure_hdmi_power_gpios(void)
+{
+	const struct pinctrl_dev_config *pcfg =
+		PINCTRL_DT_DEV_CONFIG_GET(DT_NODELABEL(i2c5_1));
+
+	nissa_configure_hdmi_rails();
+
+	pinctrl_apply_state(pcfg, PINCTRL_STATE_SLEEP);
+}
+#endif /* DT_NODE_EXISTS(I2C5_1_NODE) */
+
+static void lte_power_handler(struct ap_power_ev_callback *cb,
+			      struct ap_power_ev_data data)
+{
+	/* Enable rails for S5 */
+	const struct gpio_dt_spec *s5_rail =
+		GPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails);
+	switch (data.event) {
+	case AP_POWER_PRE_INIT:
+		LOG_DBG("Enabling LTE sub-board power rails");
+		gpio_pin_set_dt(s5_rail, 1);
+		break;
+	case AP_POWER_HARD_OFF:
+		LOG_DBG("Disabling LTE sub-board power rails");
+		gpio_pin_set_dt(s5_rail, 0);
+		break;
+	default:
+		LOG_ERR("Unhandled LTE power event %d", data.event);
+		break;
+	}
+}
+
 /**
  * Configure GPIOs (and other pin functions) that vary with present sub-board.
  *
@@ -120,6 +212,7 @@ DECLARE_HOOK(HOOK_INIT, board_usb_pd_count_init, HOOK_PRIO_INIT_I2C);
 static void glassway_subboard_config(void)
 {
 	enum glassway_sub_board_type sb = glassway_get_sb_type();
+	static struct ap_power_ev_callback power_cb;
 
 #if USB_PORT_ENABLE_COUNT > 1
 	BUILD_ASSERT(USB_PORT_ENABLE_COUNT == 2,
@@ -163,6 +256,77 @@ static void glassway_subboard_config(void)
 		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_no_mux);
 	}
 #endif
+
+#if CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT
+	if (sb == GLASSWAY_SB_HDMI_LTE) {
+		/*
+		 * HDMI: two outputs control power which must be configured to
+		 * non-default settings, and HPD must be forwarded to the AP
+		 * on another output pin.
+		 */
+		const struct gpio_dt_spec *hpd_gpio =
+			GPIO_DT_FROM_ALIAS(gpio_hpd_odl);
+		static struct gpio_callback hdmi_hpd_cb;
+		int rv, irq_key;
+
+		nissa_configure_hdmi_power_gpios();
+
+/*
+ * Control HDMI power according to AP power state. Some events
+ * won't do anything if the corresponding pin isn't configured,
+ * but that's okay.
+ */
+#if 0
+                ap_power_ev_init_callback(
+                        &power_cb, hdmi_power_handler,
+                        AP_POWER_PRE_INIT | AP_POWER_HARD_OFF |
+                                AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
+                ap_power_ev_add_callback(&power_cb);
+#endif
+
+		/*
+		 * Configure HPD input from sub-board; it's inverted by a buffer
+		 * on the sub-board.
+		 */
+		gpio_pin_configure_dt(hpd_gpio, GPIO_INPUT | GPIO_ACTIVE_LOW);
+		/* Register interrupt handler for HPD changes */
+		gpio_init_callback(&hdmi_hpd_cb, hdmi_hpd_interrupt,
+				   BIT(hpd_gpio->pin));
+		gpio_add_callback(hpd_gpio->port, &hdmi_hpd_cb);
+		LOG_INF("SET HDMI HPD interrupt");
+		rv = gpio_pin_interrupt_configure_dt(hpd_gpio,
+						     GPIO_INT_EDGE_BOTH);
+		__ASSERT(rv == 0,
+			 "HPD interrupt configuration returned error %d", rv);
+		/*
+		 * Run the HPD handler once to ensure output is in sync.
+		 * Lock interrupts to ensure that we don't cause desync if an
+		 * HPD interrupt comes in between the internal read of the input
+		 * and write to the output.
+		 */
+		irq_key = irq_lock();
+		hdmi_hpd_interrupt(hpd_gpio->port, &hdmi_hpd_cb,
+				   BIT(hpd_gpio->pin));
+		irq_unlock(irq_key);
+	}
+#endif
+	if ((sb == GLASSWAY_SB_1C_LTE) || (sb == GLASSWAY_SB_HDMI_LTE)) {
+		/*
+		 * LTE: Set up callbacks for enabling/disabling
+		 * sub-board power on S5 state.
+		 */
+#if DT_NODE_EXISTS(DT_ALIAS(gpio_en_sub_s5_rails))
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_sub_s5_rails),
+				      GPIO_OUTPUT_INACTIVE);
+		/* Control LTE power when CPU entering or
+		 * exiting S5 state.
+		 */
+		ap_power_ev_init_callback(&power_cb, lte_power_handler,
+					  AP_POWER_HARD_OFF |
+						  AP_POWER_PRE_INIT);
+		ap_power_ev_add_callback(&power_cb);
+#endif
+	}
 }
 DECLARE_HOOK(HOOK_INIT, glassway_subboard_config, HOOK_PRIO_POST_FIRST);
 
