@@ -52,6 +52,24 @@
       "message": "CQ failed:\n```\nchromeos-zephyr-0.0.1-r5340: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5340/work/chromeos-zephyr-0.0.1/zephyr-base/drivers/input/input_ite_it8xxx2_kbd.c:261:1: error: static assertion failed: \"CONFIG_PM_DEVICE_RUNTIME must be enabled when using CONFIG_PM_DEVICE_SYSTEM_MANAGED\"\nchromeos-zephyr-0.0.1-r5340:   261 | BUILD_ASSERT(!IS_ENABLED(CONFIG_PM_DEVICE_SYSTEM_MANAGED) ||\n```",
       "revId": "4b85e1b1ebc7f77295daf281a87e6c912a201f71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443dbde1_2edc28f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-11-08T07:37:11Z",
+      "side": 1,
+      "message": "It look like need wait for https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6002231 to be merged.",
+      "parentUuid": "4052582d_1b5bff71",
+      "revId": "4b85e1b1ebc7f77295daf281a87e6c912a201f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
