@@ -34,6 +34,24 @@
       "parentUuid": "461770ee_2570a63a",
       "revId": "73f553dcec83d0ed5f7bd066bde19edb85589dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f41aa2_5c84d163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-08T06:03:41Z",
+      "side": 1,
+      "message": "I don\u0027t have hardware setup to run faft-ec.\n\nThere are two cases that can cause this scenario:\n1. SOC is stuck in an ISR.\n2. A high-priority interrupt (interrupt number greater than 80 which is interrupt number for pre-watchdog) is triggered but its ISR is not cleared correctlly.\nPatch 5 was created to capture case 2.",
+      "parentUuid": "b6560a8c_5a87d1d3",
+      "revId": "73f553dcec83d0ed5f7bd066bde19edb85589dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
