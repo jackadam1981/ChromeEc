@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9586bc2d_ede69a65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-08T23:59:57Z",
+      "side": 1,
+      "message": "nit: Markdown doesn\u0027t display in gerrit/git, so I would just remove the backticks around variables.",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dff434a3_180710fd",
@@ -14,6 +37,129 @@
       "writtenOn": "2024-11-08T20:04:31Z",
       "side": 1,
       "message": "I think this is an improvement.",
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea49349e_2610bfb9",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-08T23:59:57Z",
+      "side": 1,
+      "message": "following",
+      "range": {
+        "startLine": 40,
+        "startChar": 58,
+        "endLine": 40,
+        "endChar": 63
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e841be96_5d267d12",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": " * This function updates a static error variable with the following error codes\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8173354_7d8cf764",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-08T23:59:57Z",
+      "side": 1,
+      "message": "Can you see if the doxygen format (`@ref`?) works?",
+      "range": {
+        "startLine": 41,
+        "startChar": 48,
+        "endLine": 41,
+        "endChar": 68
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "443e0d78_9658a2af",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 41,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": " * (whenever detected), which is read using the @ref fp_sensor_get_info function\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e8cc85_105b7a08",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-08T23:59:57Z",
+      "side": 1,
+      "message": "from the application processor",
+      "range": {
+        "startLine": 42,
+        "startChar": 67,
+        "endLine": 42,
+        "endChar": 74
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "387fc1c0_ebefd77a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": " * defined in the same source file. The errors are ultimately read by biod from\n * the application processor using the host command EC_CMD_FP_INFO:\n"
+            }
+          ]
+        }
+      ],
       "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
