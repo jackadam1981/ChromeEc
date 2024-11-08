@@ -17,6 +17,7 @@ GPIO(WP_L,               PIN(I, 4), GPIO_INPUT | GPIO_PULL_UP)  /* Write protect
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
+GPIO_INT(TEST_A1_INT,   PIN(A, 1), GPIO_INT_RISING, test_gpa1_interrupt)
 
 GPIO(PCH_SMI_L,      PIN(D, 3), GPIO_OUT_HIGH)
 GPIO(PCH_SCI_L,      PIN(D, 4), GPIO_OUT_HIGH)
@@ -43,6 +44,7 @@ GPIO(I2C_E_SDA,      PIN(E, 7), GPIO_INPUT)
 GPIO(UART2_SIN1,     PIN(H, 1), GPIO_INPUT)
 GPIO(UART2_SOUT1,    PIN(H, 2), GPIO_INPUT)
 #endif
+GPIO(TEST_A0,           PIN(A, 0), GPIO_OUT_LOW) /* Measure timing, also can trigger GPA1 */
 
 /* KSO/KSI pins can be used as GPIO input. */
 GPIO(BOARD_VERSION1, PIN(KSO_H, 5), GPIO_INPUT)

@@ -5,6 +5,8 @@
 /* IT8xxx2 development board configuration */
 
 #include "adc_chip.h"
+#include "gpio.h"
+#include "intc.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 
@@ -77,3 +79,11 @@ const struct adc_t adc_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+void test_gpa1_interrupt(enum gpio_signal signal) {
+
+	/* GPA1 interrupt is rising triggered by GPA0 */
+	gpio_set_level(GPIO_TEST_A0, 0);
+
+	ccprintf("GPA1 INT\n");
+}
