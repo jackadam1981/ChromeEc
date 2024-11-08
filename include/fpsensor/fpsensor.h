@@ -53,7 +53,7 @@ int fp_sensor_deinit(void);
  * as required by the EC_CMD_FP_INFO host command.
  *
  * Fills both the static information and information read from the sensor at
- * runtime.
+ * runtime such as sensor_id, errors, etc.
  *
  * @param[out] resp sensor info
  *
@@ -82,7 +82,7 @@ void fp_configure_detect(void);
  * Returns the status of the finger on the sensor.
  * (assumes fp_configure_detect was called before)
  *
- * @return finger_state
+ * @return finger_state A value from @ref finger_state enum.
  */
 enum finger_state fp_finger_status(void);
 
