@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979d788f_57c3c58e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-08T16:24:34Z",
+      "side": 1,
+      "message": "Hi Abe - we discussed with RTK last night on the precedence of these commands. RTK says there shouldn\u0027t be any precedence on these.  I think when EC sends `SET_TPC_CSD_OPERATION_MODE` we always set `CCOM_DRP` may be causing unexpected behaviors.  I\u0027ve filed http://b/378091778 to evaluate consolidating these two commands, as there is some history of us only using `SET_TPC_CSD_OPERATION_MODE` earlier. I don\u0027t want to reintroduce those regressions (captured history in the bug).",
+      "parentUuid": "2ec3f242_aae1870f",
+      "range": {
+        "startLine": 1401,
+        "startChar": 15,
+        "endLine": 1401,
+        "endChar": 25
+      },
+      "revId": "9f2295ab2496a138a88f048fb360452e6043b3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "049f209f_4e4bf254",
