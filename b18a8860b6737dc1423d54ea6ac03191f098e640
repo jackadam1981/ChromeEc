@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7776cfdd_309a87ac",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-08T19:33:14Z",
+      "side": 1,
+      "message": "Nit: This just says what we\u0027re doing, not why we\u0027re doing it.",
+      "parentUuid": "040bdcaf_6be972f6",
+      "revId": "b18a8860b6737dc1423d54ea6ac03191f098e640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94cb1a3a_06de19e2",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
