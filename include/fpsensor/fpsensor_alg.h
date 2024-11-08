@@ -76,6 +76,9 @@ int fp_enrollment_finish(void *templ);
  * low image quality
  * @return EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image could not be used
  * due to finger covering too little area of the sensor
+ * @return a negative value on error. A negative return value indicates an
+ * internal error occurred during the fingerprint enrollment process. This may
+ * be caused by factors such as low quality fingerprint images.
  */
 int fp_finger_enroll(uint8_t *image, int *completion);
 
