@@ -20,7 +20,7 @@ child-binding:
       required: true
       description: Any offset to add to raw channel data
     coeff:
-      type: array
+      type: string-array
       required: true
       description: Clear, R, G, and B coefficients for this channel
 
