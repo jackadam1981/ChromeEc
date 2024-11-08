@@ -65,6 +65,7 @@ test_static int test_command_read_write_word(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (8fb6ae Riven: modify the led charge level 2 to match the LED SPEC)
 test_static int test_command_fpupload(void)
 {
 	/* System is unlocked. */
@@ -122,15 +123,20 @@ test_static int test_command_fpmatch(void)
 	return EC_SUCCESS;
 }
 
+=======
+>>>>>>> BRANCH (20a56a telith: Add keyboard type)
 void run_test(int argc, const char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_command_mem_dump);
 	RUN_TEST(test_command_read_write_word);
+<<<<<<< HEAD   (8fb6ae Riven: modify the led charge level 2 to match the LED SPEC)
 	RUN_TEST(test_command_fpupload);
 	RUN_TEST(test_command_fpdownload);
 	RUN_TEST(test_command_fpmatch);
+=======
+>>>>>>> BRANCH (20a56a telith: Add keyboard type)
 
 	test_print_result();
 }

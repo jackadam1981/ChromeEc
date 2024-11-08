@@ -330,6 +330,10 @@ if(DEFINED CONFIG_BOARD_TELITH)
 	project(telith)
 	zephyr_include_directories("telith/include")
 	zephyr_library_sources(
+<<<<<<< HEAD   (8fb6ae Riven: modify the led charge level 2 to match the LED SPEC)
+=======
+			"telith/src/board_als.c"
+>>>>>>> BRANCH (20a56a telith: Add keyboard type)
 			"telith/src/board.c"
 			"telith/src/sub_board.c"
 			"telith/src/prochot.c"

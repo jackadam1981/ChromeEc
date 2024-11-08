@@ -13,6 +13,7 @@
  * exact spaces for arrays. Actual keyboard scanning is done using
  * keyboard_cols, which holds a runtime column size.
  */
+<<<<<<< HEAD   (8fb6ae Riven: modify the led charge level 2 to match the LED SPEC)
 #ifdef CONFIG_KEYBOARD_CUSTOMIZATION
 #undef KEYBOARD_COLS_MAX
 #undef KEYBOARD_ROWS
@@ -50,5 +51,9 @@
 #define KEYBOARD_COL_LEFT_SHIFT 7
 #define KEYBOARD_ROW_LEFT_SHIFT 5
 #define KEYBOARD_MASK_LEFT_SHIFT KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_LEFT_SHIFT)
+=======
+#define KEYBOARD_COLS_MAX 18
+#define KEYBOARD_ROWS 8
+>>>>>>> BRANCH (20a56a telith: Add keyboard type)
 
 #endif /* __KEYBOARD_CUSTOMIZATION_H */

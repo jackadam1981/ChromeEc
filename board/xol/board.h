@@ -24,6 +24,10 @@
 
 #define CONFIG_MP2964
 #define CONFIG_KEYBOARD_STRAUSS
+<<<<<<< HEAD   (8fb6ae Riven: modify the led charge level 2 to match the LED SPEC)
+=======
+#define CONFIG_KEYBOARD_REFRESH_ROW3
+>>>>>>> BRANCH (20a56a telith: Add keyboard type)
 
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_ACCELS
