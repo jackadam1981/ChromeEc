@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0290ff_230ebdc3",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-08T23:55:26Z",
+      "side": 1,
+      "message": "It would be a little better to use the doxygen syntax. Does it work?",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "91121f92_b3d549c5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 72,
+                "startChar": 0,
+                "endLine": 73,
+                "endChar": 0
+              },
+              "replacement": " * @ref fp_reset_and_clear_context instead of calling this function directly to\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0320ecf0aeb59ea837917a2ef87ce9861bf6675b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bad94d4_2b199dba",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-08T23:55:26Z",
+      "side": 1,
+      "message": "It may be better to just leave this out, since it\u0027s not really relevant for vendors and is a quirk of our implementation.",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 73,
+        "endChar": 64
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0725a915_604061ec",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": " * by the matching algorithm including @p fp_buffer.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0320ecf0aeb59ea837917a2ef87ce9861bf6675b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
