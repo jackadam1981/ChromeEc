@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81486f6_311ff005",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T14:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0af58a76_62c2d4d7",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "f4776ecf57fb87f30359844e84866de041d385f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0230c302_aadf00c3",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "add `convert_egis_get_image_error_code`",
       "parentUuid": "0230c302_aadf00c3",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "f4776ecf57fb87f30359844e84866de041d385f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8081aa7e_f469d5ae",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T14:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1f31440_fa5b0233",
       "range": {
         "startLine": 103,
         "startChar": 0,
