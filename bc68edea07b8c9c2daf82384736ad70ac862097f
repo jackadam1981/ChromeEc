@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ea31a881_ff17e0e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-09T06:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9586bc2d_ede69a65",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dff434a3_180710fd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -249,6 +273,24 @@
       "writtenOn": "2024-11-08T20:04:31Z",
       "side": 1,
       "message": "Maybe add something about how we will init and deinit multiple times during the uptime of the FPMCU.\n\n```suggestion\n * the host command EC_CMD_FP_INFO:\n *\n * It is expected that fp_sensor_init and fp_sensor_deinit may be\n * called multiple times during runtime to clear the active user session.\n * For example, on user logout, fp_sensor_deinit is called and then\n * fp_sensor_init and called.\n```",
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c0ff61_0b8026b4",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-09T06:47:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1534cd0a_ea91cb39",
       "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
