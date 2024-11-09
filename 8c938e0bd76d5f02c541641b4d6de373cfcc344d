@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9837c3e2_55ed9d5a",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T17:45:18Z",
+      "side": 1,
+      "message": "understood, removed",
+      "parentUuid": "35a40232_894555e4",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "8c938e0bd76d5f02c541641b4d6de373cfcc344d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e78f81b_59d88eee",
@@ -88,6 +112,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2724620d_7c91f97a",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T17:45:18Z",
+      "side": 1,
+      "message": "understood, this line was removed",
+      "parentUuid": "1e78f81b_59d88eee",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "8c938e0bd76d5f02c541641b4d6de373cfcc344d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aae735c_6fee2ace",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T17:45:18Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1dfd6e92_3fbdd61e",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 73,
+        "endChar": 71
+      },
+      "revId": "8c938e0bd76d5f02c541641b4d6de373cfcc344d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0fcef0_9ee22085",
@@ -101,6 +173,30 @@
       "writtenOn": "2024-11-08T00:29:16Z",
       "side": 1,
       "message": "```suggestion\n * @return EGIS_API_ERROR_IO_SPI on SPI transfer failure, @p id filled with zeros\n```",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 63
+      },
+      "revId": "8c938e0bd76d5f02c541641b4d6de373cfcc344d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490f1920_8cea8583",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T17:45:18Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "4c0fcef0_9ee22085",
       "range": {
         "startLine": 74,
         "startChar": 33,
@@ -134,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdefdcc_5957e11d",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T17:45:18Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "db8838f0_aede3422",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "8c938e0bd76d5f02c541641b4d6de373cfcc344d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b74433_3b65fe04",
@@ -147,6 +267,30 @@
       "writtenOn": "2024-11-08T00:29:16Z",
       "side": 1,
       "message": "These changes appear to be unrelated to the CL description. Can you move them to their own CL?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "8c938e0bd76d5f02c541641b4d6de373cfcc344d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a355ec_acefcded",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-09T17:45:18Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "35b74433_3b65fe04",
       "range": {
         "startLine": 85,
         "startChar": 0,
