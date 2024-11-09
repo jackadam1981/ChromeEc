@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1308c043_40ec178b",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:07:12Z",
+      "side": 1,
+      "message": "`error_state` is  not a pointer, right? Just a `uint16_t` variable?",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a6e8ee_244266c2",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:07:12Z",
+      "side": 1,
+      "message": "As mentioned when we discussed this, we should refactor this API so that `error_state` is maintained by our code and we just pass a pointer to it. This is fine for now, but please add a `TODO(b/123)` for it.",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60413dfc_cbdaad5b",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:07:12Z",
+      "side": 1,
+      "message": "```suggestion\n * must update error_state about dead\n```",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 66
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdef434c_d2a45d48",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:07:12Z",
+      "side": 1,
+      "message": "```suggestion\n * cannot be NULL. `error_state` can be allocated by the client or passed\n```",
+      "range": {
+        "startLine": 165,
+        "startChar": 19,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328703d1_5ebfb45a",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:07:12Z",
+      "side": 1,
+      "message": "I think this is too much detail and is a bit confusing, so I would just remove it.",
+      "range": {
+        "startLine": 165,
+        "startChar": 19,
+        "endLine": 166,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "79ea8619_2d9ba868",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 165,
+                "startChar": 0,
+                "endLine": 167,
+                "endChar": 0
+              },
+              "replacement": " * cannot be NULL.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a019fc8_e5c02f6b",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:07:12Z",
+      "side": 1,
+      "message": "How does this work since we\u0027re not passing any arguments? Can you provide a link to where we currently return EC_ERROR_INVAL?",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
