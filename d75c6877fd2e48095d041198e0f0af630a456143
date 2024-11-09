@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ebaeda_3450c6f5",
+        "filename": "include/fpsensor/fpsensor_alg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-09T00:15:15Z",
+      "side": 1,
+      "message": "How is this different than the above errors such as `EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE`?\n\nOr are the return codes above incorrect?\n\nFor consistency with the other error codes, it would be nice if we could return `EC_MKBP_FP_ERR_ENROLL_INTERNAL` in the \"other\" error case. (And ideally we would return an `enum` of error conditions to make it very clear what all the errors are supposed to be.) That\u0027s an API change, but I think it would be good to do. Let\u0027s add a `TODO(b/123)` for it.",
+      "range": {
+        "startLine": 80,
+        "startChar": 70,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "d75c6877fd2e48095d041198e0f0af630a456143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
