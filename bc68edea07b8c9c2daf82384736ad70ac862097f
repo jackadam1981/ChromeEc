@@ -268,6 +268,24 @@
       "message": "```suggestion\n * FP_ERROR_DEAD_PIXELS_UNKNOWN: The number of dead pixels has not been tested yet.\n```",
       "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "992208e5_1342f7ed",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-09T06:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f66bf4de_3be03b88",
+      "revId": "bc68edea07b8c9c2daf82384736ad70ac862097f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
