@@ -22,6 +22,30 @@
       },
       "revId": "d75c6877fd2e48095d041198e0f0af630a456143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c608f5_c2e5e249",
+        "filename": "include/fpsensor/fpsensor_alg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T20:10:05Z",
+      "side": 1,
+      "message": "[EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d4257?q\u003dEC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d4256-,4257,-4258) is a positive error code. All the returned error codes are positive. This is how the code in called in the [state machine](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d97#:~:text\u003d96-,97,-98):\n```\nint res \u003d fp_finger_enroll(fp_buffer, \u0026percent);\n\tCPRINTS(\"[%d]Enroll \u003d\u003e%d (%d%%)\", global_context.templ_valid, res,\n\t\tpercent);\n\tif (res \u003c 0)\n\t\treturn EC_MKBP_FP_ENROLL |\n\t\t       EC_MKBP_FP_ERRCODE(EC_MKBP_FP_ERR_ENROLL_INTERNAL);\n```\n\nThe function has to return a negative error code to indicate that enrollment has ended with an internal error. If we return `EC_MKBP_FP_ERR_ENROLL_INTERNAL` which has a value of `5`, we should specifically check for that `res` error code in the state machine. I can add this as `TODO`. However, I am afraid that this might involve vendors to change the return error codes of their function. Please advise.",
+      "parentUuid": "b1ebaeda_3450c6f5",
+      "range": {
+        "startLine": 80,
+        "startChar": 70,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "d75c6877fd2e48095d041198e0f0af630a456143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
