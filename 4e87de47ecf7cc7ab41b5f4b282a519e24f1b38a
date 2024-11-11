@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4e87de47ecf7cc7ab41b5f4b282a519e24f1b38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bee16d6_f26d6714",
+        "filename": "zephyr/program/trulo/trulo-ti/trulo-ti_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-11T17:24:33Z",
+      "side": 1,
+      "message": "DPAM VIF spec 0.5 specifically indicates that 1 is the only acceptable value here. If the tool forces you to put 0, then I guess you should put 0 for now. But maybe add a comment here noting the discrepancy. I suspect this is a tool bug.",
+      "revId": "4e87de47ecf7cc7ab41b5f4b282a519e24f1b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
