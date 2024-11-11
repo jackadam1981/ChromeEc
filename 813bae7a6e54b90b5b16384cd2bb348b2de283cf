@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2efe362_44999467",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T22:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "701ab557_4488e68c",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60413dfc_cbdaad5b",
@@ -339,6 +363,30 @@
       "side": 1,
       "message": "It looks like you\u0027re mixing up the `fp_maintenance(void)` function and the [`int elan_fp_maintenance(uint16_t *error_state)`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d206;drc\u003d0e2ec3e7e7920f033e414885df85f1cbcc091f41) functions.\n\nThe `fp_maintenance(void)` function does not take any arguments. When building for elan, it calls the `int elan_fp_maintenance(uint16_t *error_state)`, which always passes a pointer to `static uint16_t errors;` (will never be `NULL`).",
       "parentUuid": "d5960a66_5f0f9fe9",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0225f0ed_213c42fc",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T22:31:33Z",
+      "side": 1,
+      "message": "I removed it. I agree. Why `elan_fp_maintenance` (the called function) checks for `error_state` being `NULL` if this is never the case? Couldn\u0027t there be error in the implementation and `error_state` is `NULL`?",
+      "parentUuid": "0cda26e3_91c001c0",
       "range": {
         "startLine": 169,
         "startChar": 3,
