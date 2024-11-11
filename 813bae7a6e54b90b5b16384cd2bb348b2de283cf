@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6429f2bc_7031761b",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T19:44:48Z",
+      "side": 1,
+      "message": "yes, `error_state` is not a pointer. It is declared as `static uint16_t errors;`\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d25#:~:text\u003d24-,25,-26",
+      "parentUuid": "1308c043_40ec178b",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60413dfc_cbdaad5b",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d21716_bf7e5e83",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T19:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60413dfc_cbdaad5b",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 66
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdef434c_d2a45d48",
@@ -83,6 +131,30 @@
       "writtenOn": "2024-11-09T00:07:12Z",
       "side": 1,
       "message": "```suggestion\n * cannot be NULL. `error_state` can be allocated by the client or passed\n```",
+      "range": {
+        "startLine": 165,
+        "startChar": 19,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bba7cae_6a20b84e",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T19:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdef434c_d2a45d48",
       "range": {
         "startLine": 165,
         "startChar": 19,
@@ -130,6 +202,30 @@
           ]
         }
       ],
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26b2db1_d9023b37",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T19:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328703d1_5ebfb45a",
+      "range": {
+        "startLine": 165,
+        "startChar": 19,
+        "endLine": 166,
+        "endChar": 47
+      },
       "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
