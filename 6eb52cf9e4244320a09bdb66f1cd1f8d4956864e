@@ -22,6 +22,30 @@
       },
       "revId": "6eb52cf9e4244320a09bdb66f1cd1f8d4956864e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29288d40_de7fbf68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-11T21:28:12Z",
+      "side": 1,
+      "message": "It can be submitted by itself as long as we don\u0027t try to call it until the private code change goes in.",
+      "parentUuid": "0fb2895d_dba9f47d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "6eb52cf9e4244320a09bdb66f1cd1f8d4956864e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
