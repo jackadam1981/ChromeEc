@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7834746_0bed4d5d",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T19:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a6e8ee_244266c2",
+      "range": {
+        "startLine": 162,
+        "startChar": 3,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60413dfc_cbdaad5b",
@@ -243,6 +267,30 @@
       "writtenOn": "2024-11-09T00:07:12Z",
       "side": 1,
       "message": "How does this work since we\u0027re not passing any arguments? Can you provide a link to where we currently return EC_ERROR_INVAL?",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5960a66_5f0f9fe9",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-11T19:57:49Z",
+      "side": 1,
+      "message": "this error code is returned by the internal function that `fp_maintenance` calls:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d292#:~:text\u003d291-,292,-293\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d213#:~:text\u003d212-,213,-214",
+      "parentUuid": "4a019fc8_e5c02f6b",
       "range": {
         "startLine": 169,
         "startChar": 3,
