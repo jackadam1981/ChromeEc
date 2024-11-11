@@ -46,6 +46,30 @@
       },
       "revId": "d75c6877fd2e48095d041198e0f0af630a456143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca2bf27_3d0d22e8",
+        "filename": "include/fpsensor/fpsensor_alg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-11T21:12:58Z",
+      "side": 1,
+      "message": "\u003e How is this different than the above errors such as EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE\n\nWhat I meant here was specifically for the highlighted text: \"This may be caused by factors such as low quality fingerprint images.\"\n\nThat case should be covered by returning `EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY`, right? In that case, we should give a different example here.\n\n\u003e we should specifically check for that res error code in the state machine. I can add this as TODO. However, I am afraid that this might involve vendors to change the return error codes of their function. Please advise.\n\nI do think it would be good to clean up this API in the future. At the very least it would be good to document the [\"negative\" error codes for each vendor](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d210;drc\u003d4b333abdad4259e7a1a0e010de39917c08043045), since they are not going to be the same across vendors.",
+      "parentUuid": "85c608f5_c2e5e249",
+      "range": {
+        "startLine": 80,
+        "startChar": 70,
+        "endLine": 81,
+        "endChar": 63
+      },
+      "revId": "d75c6877fd2e48095d041198e0f0af630a456143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
