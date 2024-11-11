@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "701ab557_4488e68c",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-11T21:20:28Z",
+      "side": 1,
+      "message": "Ok, but here you still say it is a pointer to uint16_t.",
+      "parentUuid": "6429f2bc_7031761b",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 50
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60413dfc_cbdaad5b",
         "filename": "include/fpsensor/fpsensor.h",
         "patchSetId": 8
@@ -291,6 +315,30 @@
       "side": 1,
       "message": "this error code is returned by the internal function that `fp_maintenance` calls:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d292#:~:text\u003d291-,292,-293\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d213#:~:text\u003d212-,213,-214",
       "parentUuid": "4a019fc8_e5c02f6b",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "813bae7a6e54b90b5b16384cd2bb348b2de283cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cda26e3_91c001c0",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-11T21:20:28Z",
+      "side": 1,
+      "message": "It looks like you\u0027re mixing up the `fp_maintenance(void)` function and the [`int elan_fp_maintenance(uint16_t *error_state)`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d206;drc\u003d0e2ec3e7e7920f033e414885df85f1cbcc091f41) functions.\n\nThe `fp_maintenance(void)` function does not take any arguments. When building for elan, it calls the `int elan_fp_maintenance(uint16_t *error_state)`, which always passes a pointer to `static uint16_t errors;` (will never be `NULL`).",
+      "parentUuid": "d5960a66_5f0f9fe9",
       "range": {
         "startLine": 169,
         "startChar": 3,
