@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3921a6_937fcc1c",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-12T23:11:13Z",
+      "side": 1,
+      "message": "Nit: I\u0027d suggest putting this down by `tcpm_sido`, so it\u0027s more visually obvious which members are for the partner\u0027s responses and which are for the TCPM\u0027s.",
+      "fixSuggestions": [
+        {
+          "fixId": "b6694f60_df54d773",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+              "range": {
+                "startLine": 201,
+                "startChar": 0,
+                "endLine": 203,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+              "range": {
+                "startLine": 208,
+                "startChar": 0,
+                "endLine": 208,
+                "endChar": 0
+              },
+              "replacement": "\t/* RMDO received from the TCPM. */\n\tuint32_t tcpm_rmdo;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "01004c3a033877dbead556a75cd51545b74c2b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94eb3ae0_46081495",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-12T23:11:13Z",
+      "side": 1,
+      "message": "Nit: These would be easier to read as `%04x` or `0x%04x`.",
+      "range": {
+        "startLine": 540,
+        "startChar": 31,
+        "endLine": 540,
+        "endChar": 33
+      },
+      "revId": "01004c3a033877dbead556a75cd51545b74c2b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
