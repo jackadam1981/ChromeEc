@@ -33,7 +33,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "RSMRST power good from regulator";
 		enum-name = "PWR_RSMRST_PWRGD";
-		gpios = <&gpiof 0 0>;
+		gpios = <&gpioc 0 0>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-ec-pch-rsmrst-odl {
@@ -68,7 +68,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PCH_PWROK output to PCH";
 		enum-name = "PWR_PCH_PWROK";
-		gpios = <&gpioa 3 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+		gpios = <&gpioa 3 (0 | GPIO_VOLTAGE_1P8)>;
 		output;
 	};
 	pwr-ec-pch-sys-pwrok {
