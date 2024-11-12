@@ -391,6 +391,30 @@
       },
       "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66a7e73_ec883fed",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-12T17:41:49Z",
+      "side": 1,
+      "message": "Thanks. I started a dry run and will check the logs when it finishes.",
+      "parentUuid": "127f9d35_21baf88b",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
