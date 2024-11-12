@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1959d8a2_6c8b99c5",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-12T20:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cdf38b1_cbcfb8a9",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 36
+      },
+      "revId": "91cfd4fa96baa3d80d5b2100c81228c8db316266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "266d6ead_221fc905",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4854ca05_93b00c8e",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-12T20:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266d6ead_221fc905",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 39
+      },
+      "revId": "91cfd4fa96baa3d80d5b2100c81228c8db316266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67711af6_180d9ead",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-11-12T17:31:50Z",
       "side": 1,
       "message": "please leave a commet why we don\u0027t call NvCommit / __plat_NvCommit / nvmem_commit after this. otherwise, we\u0027ll wonder and suspect a bug a couple years from now.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "91cfd4fa96baa3d80d5b2100c81228c8db316266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a17c096_3b9f60ae",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-12T20:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67711af6_180d9ead",
       "range": {
         "startLine": 166,
         "startChar": 1,
