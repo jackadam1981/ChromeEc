@@ -12,6 +12,8 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
+#undef CONFIG_LTO
+
 #undef GPIO_VOLUME_UP_L
 #define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL_HDMI_HPD
 
@@ -40,6 +42,7 @@
 /* I2C */
 #define CONFIG_I2C_BITBANG
 #define I2C_BITBANG_PORT_COUNT 1
+#define CONFIG_IT83XX_I2C_CMD_QUEUE
 
 /* PWM */
 #define CONFIG_PWM
