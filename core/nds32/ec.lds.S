@@ -50,6 +50,22 @@ SECTIONS
 		__flash_dma_size = . - __flash_dma_start;
 		ASSERT((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
 		       "__flash_dma_size < IT83XX_ILM_BLOCK_SIZE");
+
+		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
+		__nds32_flash_ilm_start = .;
+		OUTDIR/chip/it83xx/i2c.o (.text*)
+		OUTDIR/chip/it83xx/i2c.o (.rodata)
+		OUTDIR/chip/it83xx/hwtimer.o (.text*)
+		OUTDIR/chip/it83xx/hwtimer.o (.rodata)
+		OUTDIR/common/usbc_intr_task.o (.text*)
+		OUTDIR/common/usbc_intr_task.o (.rodata)
+		OUTDIR/common/usbc/usbc_task.o (.text*)
+		OUTDIR/common/usbc/usbc_task.o (.rodata)
+		OUTDIR/common/usbc/usb_tc_drp_acc_trysrc_sm.o (.text*)
+		OUTDIR/common/usbc/usb_tc_drp_acc_trysrc_sm.o (.rodata)
+		__nds32_flash_ilm_end = .;
+		__nds32_flash_ilm_size = . - __nds32_flash_ilm_start;
+
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 		__flash_text_start = .;
 		*(.text*)
@@ -275,6 +291,11 @@ SECTIONS
 
 		. = ALIGN(4);
 		__bss_end = .;
+
+		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
+		__nds32_flash_dlm_start = .;
+		. += __nds32_flash_ilm_end - __nds32_flash_ilm_start;
+		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 
 		/*
 		 * Shared memory buffer must be at the end of preallocated RAM,
