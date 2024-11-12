@@ -50,6 +50,15 @@ SECTIONS
 		__flash_dma_size = . - __flash_dma_start;
 		ASSERT((__flash_dma_size < IT83XX_ILM_BLOCK_SIZE),
 		       "__flash_dma_size < IT83XX_ILM_BLOCK_SIZE");
+
+		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
+		__nds32_ilm12_ram_code = .;
+		KEEP(*(.nds32_ram_code_ilm12))
+		KEEP(STRINGIFY(OUTDIR/chip/it83xx/i2c.o) (.text*))
+		KEEP(STRINGIFY(OUTDIR/chip/it83xx/i2c.o) (.rodata))
+		OUTDIR/chip/it83xx/hwtimer.o (.text*)
+		OUTDIR/chip/it83xx/hwtimer.o (.rodata)
+
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 		__flash_text_start = .;
 		*(.text*)

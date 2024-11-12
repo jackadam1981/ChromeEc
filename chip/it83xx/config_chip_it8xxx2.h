@@ -7,6 +7,7 @@
 #define __CROS_EC_CONFIG_CHIP_IT8XXX2_H
 
 #define __RAM_CODE_ILM0_SECTION_NAME ".ram_code_ilm0"
+#define __ilm12_ram_code
 
 /* CPU core BFD configuration */
 #include "core/riscv-rv32i/config_core.h"
