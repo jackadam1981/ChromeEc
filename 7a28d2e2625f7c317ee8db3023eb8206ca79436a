@@ -367,6 +367,30 @@
       },
       "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127f9d35_21baf88b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-12T14:19:03Z",
+      "side": 1,
+      "message": "Hi. I\u0027ve modified the patch to do two more things:\n* Flush the UART file backend immediately after each write. This should help with the missing logs.\n* Additionally I\u0027ve added an additional hook that will create a special file when the `Pass!` string is encountered on UART. `run_device_tests.py` later prints if this file exists or not in case of a test timeout.\n\nBoth of those changes should hopefully give us more information about what is causing the timeout. Please take a look.",
+      "parentUuid": "388a4e59_63c93076",
+      "range": {
+        "startLine": 729,
+        "startChar": 39,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "7a28d2e2625f7c317ee8db3023eb8206ca79436a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
