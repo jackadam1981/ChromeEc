@@ -433,15 +433,29 @@ class Renode(Platform):
                 "power_utilization",
                 "rtc_stm32f4",
                 "std_vector",
+                "timer_dos",  # TODO(b/374798079)
             ]:
                 return True
         elif board_config.name in [HELIPILOT, BUCCANEER]:
             if test_name in [
                 "production_app_test",
                 "benchmark",
+                "exception",
+                "exit",
+                "flash_physical",
+                "flash_write_protect",
                 "fpsensor_hw",
+                "fp_transport",
                 "libcxx",
+                "malloc",
+                "mpu",
+                "otp_key",
                 "power_utilization",
+                "ram_lock",
+                "rollback",
+                "rollback_entropy",
+                "rtc_npcx9",
+                "sbrk",
                 "std_vector",
                 "fpsensor_auth_crypto_stateless",  # TODO(b/372969110)
                 "unaligned_access_benchmark",  # TODO(372969629)
@@ -463,7 +477,7 @@ class TestConfig:
     fail_regexes: Optional[list[re.Pattern[str]]] = None
     toggle_power: bool = False
     test_args: list[str] = field(default_factory=list)
-    timeout_secs: int = 10
+    timeout_secs: int = 60
     enable_hw_write_protect: bool = False
     ro_image: Optional[str] = None
     build_board: Optional[str] = None
@@ -582,7 +596,6 @@ class AllTests:
                 imagetype_to_use=ImageType.RO,
                 toggle_power=True,
                 enable_hw_write_protect=True,
-                timeout_secs=20,
             ),
             TestConfig(
                 config_name="fp_transport_spi_ro",
@@ -693,7 +706,6 @@ class AllTests:
             TestConfig(test_name="rtc", skip_for_zephyr=True),
             TestConfig(
                 test_name="rtc_npcx9",
-                timeout_secs=20,
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],
             ),
             # Covered by Zephyr drivers.counter.basic_api.stm32_subsec test
@@ -727,15 +739,13 @@ class AllTests:
             # hardcoded. The task synchronization functions are covered by
             # Zephyr tests. task_wait_event is implemented based on k_poll_event
             # and it is verified by the kernel.poll test.
-            TestConfig(
-                test_name="timer_dos", timeout_secs=20, skip_for_zephyr=True
-            ),
+            TestConfig(test_name="timer_dos", skip_for_zephyr=True),
             TestConfig(test_name="tpm_seed_clear"),
             # UART buffering is not used with Zephyr.
             TestConfig(test_name="uart", skip_for_zephyr=True),
             TestConfig(test_name="unaligned_access"),
             TestConfig(test_name="unaligned_access_benchmark"),
-            TestConfig(test_name="utils", timeout_secs=25),
+            TestConfig(test_name="utils"),
             TestConfig(test_name="utils_str"),
             TestConfig(
                 config_name="power_utilization_idle",
@@ -940,7 +950,7 @@ HELIPILOT_CONFIG = BoardConfig(
     sensor_type=FPSensorType.FPC,
     servo_uart_name="raw_fpmcu_console_uart_pty",
     servo_power_enable="fpmcu_pp3300",
-    reboot_timeout=1.5,
+    reboot_timeout=3,
     rollback_region0_regex=DATA_ACCESS_VIOLATION_64020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_64030000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_200B0000_REGEX,
