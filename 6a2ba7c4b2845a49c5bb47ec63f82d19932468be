@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834671a0_3616cdcc",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-12T00:01:32Z",
+      "side": 1,
+      "message": "`error_state` is not a parameter to this function.",
+      "range": {
+        "startLine": 182,
+        "startChar": 43,
+        "endLine": 182,
+        "endChar": 73
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "65c21adf_60ce5c24",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 183,
+                "endChar": 0
+              },
+              "replacement": " * bits in the FP_ERROR_DEAD_PIXELS field.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6a2ba7c4b2845a49c5bb47ec63f82d19932468be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
