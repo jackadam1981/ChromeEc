@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2611702_09b7a291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-12T18:23:23Z",
+      "side": 1,
+      "message": "copying the build error here: ```chromeos-ec-0.0.2-r8754: \u001b[01m\u001b[Kboard/boten/board.c:483:3:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[K\u0027\u001b[01m\u001b[Kstruct keyboard_scan_config\u001b[m\u001b[K\u0027 has no member named \u0027\u001b[01m\u001b[Kstable_scan_period_us\u001b[m\u001b[K\u0027; did you mean \u0027\u001b[01m\u001b[Kscan_period_us\u001b[m\u001b[K\u0027?\nchromeos-ec-0.0.2-r8754:   .\u001b[01;31m\u001b[Kstable_scan_period_us\u001b[m\u001b[K \u003d 9 * MSEC,\nchromeos-ec-0.0.2-r8754:    \u001b[01;31m\u001b[K^~~~~~~~~~~~~~~~~~~~~\u001b[m\u001b[K\nchromeos-ec-0.0.2-r8754:    \u001b[32m\u001b[Kscan_period_us\u001b[m\u001b[K\nchromeos-ec-0.0.2-r8754: \u001b[01m\u001b[Kcc1:\u001b[m\u001b[K \u001b[01;31m\u001b[Kerror: \u001b[m\u001b[Kunrecognized command line option \u0027\u001b[01m\u001b[K-Wno-address-of-packed-member\u001b[m\u001b[K\u0027 [\u001b[01;31m\u001b[K-Werror\u001b[m\u001b[K]\nchromeos-ec-0.0.2-r8754: cc1: all warnings being treated as errors\nchromeos-ec-0.0.2-r8754: make: *** [Makefile.rules:636: build/boten/RO/board/boten/board.o] Error 1\nchromeos-ec-0.0.2-r8754: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.2-r8754:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r8754::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r8754:  *   emake failed```",
+      "revId": "23b8320ead31a83e7a4f997cd08d52e6f9f9e21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14ad40bc_d9b4a6c9",
         "filename": "board/boten/board.c",
         "patchSetId": 1
