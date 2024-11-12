@@ -33,6 +33,24 @@
       "message": "DPAM VIF spec 0.5 specifically indicates that 1 is the only acceptable value here. If the tool forces you to put 0, then I guess you should put 0 for now. But maybe add a comment here noting the discrepancy. I suspect this is a tool bug.",
       "revId": "4e87de47ecf7cc7ab41b5f4b282a519e24f1b38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b943ebf_a36d4571",
+        "filename": "zephyr/program/trulo/trulo-ti/trulo-ti_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-11-12T03:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bee16d6_f26d6714",
+      "revId": "4e87de47ecf7cc7ab41b5f4b282a519e24f1b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
