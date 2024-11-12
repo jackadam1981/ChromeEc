@@ -20,6 +20,7 @@
 #define FLASH_DMA_START ((uint32_t) & __flash_dma_start)
 #define FLASH_DMA_CODE __attribute__((section(".flash_direct_map")))
 #define FLASH_ILM0_ADDR ((uint32_t) & __ilm0_ram_code)
+#define NDS32_ILM1_ADDR_START ((uint32_t) & __nds32_ilm1_ram_code)
 
 /* erase size of sector is 1KB or 4KB */
 #define FLASH_SECTOR_ERASE_SIZE CONFIG_FLASH_ERASE_SIZE
@@ -89,7 +90,7 @@ enum flash_status_mask {
 
 enum dlm_address_view {
 	SCAR0_ILM0_DLM13 = 0x8D000, /* DLM ~ 0x8DFFF H2RAM map LPC I/O */
-	SCAR1_ILM1_DLM11 = 0x8B000, /* DLM ~ 0x8BFFF ram 44K ~ 48K */
+	SCAR1_ILM1_DLM11 = 0x8B000, /* DLM ~ 0x8BFFF ilm1 (ram 44K ~ 48K) */
 	SCAR2_ILM2_DLM14 = 0x8E000, /* DLM ~ 0x8EFFF RO/RW flash code DMA */
 	SCAR3_ILM3_DLM6 = 0x86000, /* DLM ~ 0x86FFF ram 24K ~ 28K */
 	SCAR4_ILM4_DLM7 = 0x87000, /* DLM ~ 0x87FFF ram 28K ~ 32K */
@@ -640,10 +641,9 @@ uint32_t crec_flash_physical_get_writable_flags(uint32_t cur_flags)
 
 static void flash_enable_second_ilm(void)
 {
-#ifdef CHIP_CORE_RISCV
 	/* Make sure no interrupt while enable static cache */
 	interrupt_disable();
-
+#ifdef CHIP_CORE_RISCV
 	/* Invalid ILM0 */
 	IT83XX_GCTRL_RVILMCR0 &= ~ILMCR_ILM0_ENABLE;
 	IT83XX_SMFI_SCAR0H = BIT(3);
@@ -663,9 +663,26 @@ static void flash_enable_second_ilm(void)
 		IT83XX_SMFI_SCAR0H &= ~BIT(7);
 	/* Enable ILM 0 */
 	IT83XX_GCTRL_RVILMCR0 |= ILMCR_ILM0_ENABLE;
-
-	interrupt_enable();
+#else
+	/* invalid static DMA first */
+	IT83XX_SMFI_SCAR1H = 0x08;
+	/* Enable DLM 44k~48k region and than copy data into it */
+	IT83XX_GCTRL_MCCR2 |= BIT(2);
+	memcpy((void *)CHIP_ILM1_RAM_BASE, (const void *)NDS32_ILM1_ADDR_START,
+	       IT83XX_ILM_BLOCK_SIZE);
+	/* Disable DLM 44k~48k region and be the ram code section */
+	IT83XX_GCTRL_MCCR2 &= ~BIT(2);
+	/* Enable ILM1 */
+	IT83XX_SMFI_SCAR1L = NDS32_ILM1_ADDR_START & 0xFF;
+	IT83XX_SMFI_SCAR1M = (NDS32_ILM1_ADDR_START >> 8) & 0xFF;
+	IT83XX_SMFI_SCAR1H = (NDS32_ILM1_ADDR_START >> 16) & 0x0F;
+	/*
+	 * Validate Direct-map SRAM function by programming
+	 * register SCARx bit20=0
+	 */
+	IT83XX_SMFI_SCAR1H &= ~0x10;
 #endif
+	interrupt_enable();
 }
 
 static void flash_code_static_dma(void)
