@@ -9,6 +9,8 @@
 /* CPU core BFD configuration */
 #include "core/nds32/config_core.h"
 
+#define __ilm12_ram_code  __attribute__((section(".nds32_ram_code_ilm12")))
+
 /* N8 core */
 #define CHIP_CORE_NDS32
 /* The base address of EC interrupt controller registers. */
@@ -19,6 +21,7 @@
 
 #define CHIP_H2RAM_BASE 0x0008D000 /* 0x0008D000~0x0008DFFF */
 #define CHIP_RAMCODE_BASE 0x0008E000 /* 0x0008E000~0x0008EFFF */
+#define CHIP_ILM12_RAM_BASE 0x0008C000 /* 0x0008C000~0x0008CFFF */
 #define CHIP_EXTRA_STACK_SPACE 0
 
 #define CONFIG_RAM_BASE 0x00080000
