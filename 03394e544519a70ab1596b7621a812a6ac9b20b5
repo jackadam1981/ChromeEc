@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "162263f1_5617b5ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-12T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e27f002_6598b04c",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "03394e544519a70ab1596b7621a812a6ac9b20b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d733458_409d6fa9",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-12T19:55:59Z",
       "side": 1,
       "message": "I would just leave this out since we already have a description of the behavior in the change made to `fpsensor.h`.",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "03394e544519a70ab1596b7621a812a6ac9b20b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf9edc1_dddabfe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-12T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d733458_409d6fa9",
       "range": {
         "startLine": 13,
         "startChar": 13,
