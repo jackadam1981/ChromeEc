@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cd6e96_d93e59ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2024-11-12T06:31:18Z",
+      "side": 1,
+      "message": "Currently the ec fast-forward method does not work, we will manually cherry-pick the needed cl until it was fixed.\nb:375290861",
+      "revId": "13f7b4aea1e971b045eabb7fd7364d3d190c666d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
