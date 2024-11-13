@@ -33,6 +33,24 @@
       "message": "Why are there two firmware blobs checked in? Can you delete `zephyr/drivers/usbc/TPS66994_Host_tps6699x.bin` and update `zephyr/drivers/usbc/tps6699x.bin` to be the intended version?",
       "revId": "96bd762e309c6c42fa9a4eff3384a501a3ea2609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acab6491_08a5094b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2024-11-13T23:50:42Z",
+      "side": 1,
+      "message": "The duplicated one is removed.",
+      "parentUuid": "9e0ae384_4759e5d0",
+      "revId": "96bd762e309c6c42fa9a4eff3384a501a3ea2609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
