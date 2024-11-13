@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12990e8_19171409",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-11-13T03:58:39Z",
+      "side": 1,
+      "message": "fits in same line\n\nuint8_t vci_node_en \u003d MCHP_VCI_INFO_NODE_EN(pvci-\u003evci_info);\nuint8_t vci_clear \u003d !MCHP_VCI_INFO_GET_PRESERVE(pvci-\u003evci_info);",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 47
+      },
+      "revId": "2c8031b3e696a86a5b3c403daba8ac1f145a3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7773bf88_2159e2bd",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pin.yaml",
+        "patchSetId": 34
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-11-13T03:58:39Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "2c8031b3e696a86a5b3c403daba8ac1f145a3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
