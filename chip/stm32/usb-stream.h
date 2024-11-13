@@ -27,7 +27,25 @@
  * by the BSS initialization leaves it in a valid and correctly initialized
  * state, so there is no need currently for a usb_stream_init style function.
  */
-struct usb_stream_state {};
+struct usb_stream_state {
+	usb_stream_state_flags_t flags;
+};
+
+enum usb_stream_state_flags_t {
+	/*
+	 * Set if the producer has ever made use of flush().  That is, if this
+	 * is not set, then any bytes in the TX queue should be sent via USB
+	 * without delay.  If on the contrary, this bit is set, then data should
+	 * only be sent via USB if there is enough to completely fill a USB
+	 * packet, or if the produced indicates a flush().
+	 */
+	USB_STREAM_TX_USES_FLUSH = 0x0001,
+	/*
+	 * Set if the producer has requested flush(), and we have not yet
+	 * completely emptied the TX queue.
+	 */
+	USB_STREAM_TX_FLUSH = 0x0002,
+};
 
 /*
  * Compile time Per-USB stream configuration stored in flash.  Instances of this

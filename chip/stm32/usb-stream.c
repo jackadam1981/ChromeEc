@@ -34,12 +34,30 @@ static size_t rx_read(struct usb_stream_config const *config)
 
 static size_t tx_write(struct usb_stream_config const *config)
 {
+	if ((config->state->flags &
+	     (USB_STREAM_TX_USES_FLUSH | USB_STREAM_TX_FLUSH)) ==
+		    USB_STREAM_TX_USES_FLUSH &&
+	    queue_count(config->consumer.queue) < config->tx_size) {
+		/*
+		 * Producer has declared that it uses flush(), but has not yet
+		 * requested flushing of the data in queue, and there is not
+		 * enough to fill a USB packet, so wait for either getting more
+		 * data or an explicit flush().
+		 */
+		btable_ep[config->endpoint].tx_count = 0;
+		return 0;
+	}
+
 	uintptr_t address = btable_ep[config->endpoint].tx_addr;
 	size_t count = queue_remove_memcpy(config->consumer.queue,
 					   (void *)address, config->tx_size,
 					   memcpy_to_usbram);
 
 	btable_ep[config->endpoint].tx_count = count;
+	if (count < config->tx_size) {
+		/* Queue is empty, we are done flushing. */
+		config->state->flags &= ~USB_STREAM_TX_FLUSH;
+	}
 
 	return count;
 }
@@ -66,7 +84,19 @@ static void usb_written(struct consumer const *consumer, size_t count)
 {
 	struct usb_stream_config const *config =
 		DOWNCAST(consumer, struct usb_stream_config, consumer);
-
+	if (count == 0) {
+		/*
+		 * This is how the producer requests flushing of the queue.  We
+		 * set TX_FLUSH, which will be cleared once the queue is empty,
+		 * and we also set the sticky TX_USES_FLUSH to record the fact
+		 * that the producer uses the flush convention.  That is, from
+		 * now on, we can start waiting indefinitely, if there is not
+		 * enough data in the queue to fill a USB packet, and we have
+		 * not been explicitly told to flush.
+		 */
+		config->state->flags |= USB_STREAM_TX_USES_FLUSH |
+					USB_STREAM_TX_FLUSH;
+	}
 	hook_call_deferred(config->deferred, 0);
 }
 
