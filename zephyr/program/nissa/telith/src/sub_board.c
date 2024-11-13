@@ -36,74 +36,23 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	return cached_usb_pd_port_count;
 }
 
-test_export_static enum telith_sub_board_type telith_cached_sub_board =
-	TELITH_SB_UNKNOWN;
-/*
- * Retrieve sub-board type from FW_CONFIG.
- */
-enum telith_sub_board_type telith_get_sb_type(void)
-{
-	int ret;
-	uint32_t val;
-
-	/*
-	 * Return cached value.
-	 */
-	if (telith_cached_sub_board != TELITH_SB_UNKNOWN)
-		return telith_cached_sub_board;
-
-	telith_cached_sub_board = TELITH_SB_NONE; /* Defaults to none */
-	ret = cros_cbi_get_fw_config(FW_SUB_BOARD, &val);
-	if (ret != 0) {
-		LOG_WRN("Error retrieving CBI FW_CONFIG field %d",
-			FW_SUB_BOARD);
-		return telith_cached_sub_board;
-	}
-
-	switch (val) {
-	case FW_SUB_BOARD_1:
-		telith_cached_sub_board = TELITH_SB_C;
-		LOG_INF("SB: USB type C");
-		break;
-	default:
-		break;
-	}
-	return telith_cached_sub_board;
-}
-
 /*
  * Initialise the USB PD port count, which
  * depends on which sub-board is attached.
  */
 test_export_static void board_usb_pd_count_init(void)
 {
-	switch (telith_get_sb_type()) {
-	case TELITH_SB_C:
-		cached_usb_pd_port_count = 2;
-		break;
-	default:
-		cached_usb_pd_port_count = 1;
-		break;
-	}
+	/*
+	 * Because telith has no sub board, but has
+	 * 2 type-C. Therefore, 2 type-C are
+	 * defined by default.
+	 */
+	cached_usb_pd_port_count = 2;
 }
 /*
  * Make sure setup is done after EEPROM is readable.
  */
 DECLARE_HOOK(HOOK_INIT, board_usb_pd_count_init, HOOK_PRIO_INIT_I2C);
-
-/**
- * Configure GPIOs (and other pin functions) that vary with present sub-board.
- */
-static void telith_subboard_config(void)
-{
-	enum telith_sub_board_type sb = telith_get_sb_type();
-
-	if (sb != TELITH_SB_C) {
-		/* Port doesn't exist, doesn't need muxing */
-		USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_no_mux);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, telith_subboard_config, HOOK_PRIO_POST_FIRST);
 
 /*
  * Enable interrupts
