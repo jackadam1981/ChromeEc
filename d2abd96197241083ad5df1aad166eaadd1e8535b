@@ -16,6 +16,24 @@
       "message": "This has been approved. Should it be submitted now?",
       "revId": "d2abd96197241083ad5df1aad166eaadd1e8535b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbee8a8c_9273b4d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 39
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-11-13T22:38:00Z",
+      "side": 1,
+      "message": "It depends on CL:5744457.",
+      "parentUuid": "2b9ebb85_6f39b4c9",
+      "revId": "d2abd96197241083ad5df1aad166eaadd1e8535b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
