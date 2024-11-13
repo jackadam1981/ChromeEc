@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "908c966f_3b6adc8f",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-11-13T05:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f12990e8_19171409",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 47
+      },
+      "revId": "2c8031b3e696a86a5b3c403daba8ac1f145a3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7773bf88_2159e2bd",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-13T03:58:39Z",
       "side": 1,
       "message": "remove this",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "2c8031b3e696a86a5b3c403daba8ac1f145a3c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86eee06e_b39f93fb",
+        "filename": "zephyr/dts/bindings/gpio/cros-ec,hibernate-vci-pin.yaml",
+        "patchSetId": 34
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-11-13T05:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7773bf88_2159e2bd",
       "range": {
         "startLine": 10,
         "startChar": 0,
