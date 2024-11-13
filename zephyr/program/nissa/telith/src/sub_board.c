@@ -61,6 +61,10 @@ enum telith_sub_board_type telith_get_sb_type(void)
 	}
 
 	switch (val) {
+	case TELITH_SB_NONE:
+		telith_cached_sub_board = TELITH_SB_C;
+		LOG_INF("SB: NONE");
+		break;
 	case FW_SUB_BOARD_1:
 		telith_cached_sub_board = TELITH_SB_C;
 		LOG_INF("SB: USB type C");
