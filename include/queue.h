@@ -213,6 +213,13 @@ size_t queue_add_units(struct queue const *q, const void *src, size_t count);
 size_t queue_add_memcpy(struct queue const *q, const void *src, size_t count,
 			void *(*memcpy)(void *dest, const void *src, size_t n));
 
+/*
+ * Signal that all previously added units should be processed by consumer
+ * without further delay.  Depending on queue policies and buffer space, the
+ * consumer may process data even in absence of calls to this.
+ */
+void queue_flush(struct queue const *q);
+
 /* Remove one unit from the begin of the queue. */
 size_t queue_remove_unit(struct queue const *q, void *dest);
 
