@@ -111,6 +111,14 @@ static void als_change_deferred(void)
 
 		debouncing = false;
 		als_eeprom_read(0x00, data, 1);
+
+		/* Detect the als enable status,used to disable als function in
+		 * debug status*/
+		if (!(data[0] & ALS_ENABLE)) {
+			als_enable = 0;
+			return;
+		}
+
 		if (!(data[0] & ALS_NORMAL_COUNT))
 			als_data_handler();
 
