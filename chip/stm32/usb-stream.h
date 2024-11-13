@@ -28,19 +28,24 @@
  * state, so there is no need currently for a usb_stream_init style function.
  */
 struct usb_stream_state {
+	/* Flags declared in usb_stream_state_flags_t below. */
+	int flags;
+};
+
+enum usb_stream_state_flags_t {
 	/*
-	 * Flag indicating that there is a full RX buffer in the USB packet RAM
-	 * that we were not able to move into the RX queue because there was
-	 * not enough room when the packet was initially received.  The
-	 * producer read operation checks this flag so that once there is
-	 * room in the queue it can copy the RX buffer into the queue and
-	 * restart USB reception by marking the RX buffer as VALID.
+	 * Set if the producer has declared that it makes use of flush().  That
+	 * is, if this is not set, then any bytes in the TX queue should be sent
+	 * via USB without delay.  If on the contrary, this bit is set, then
+	 * data should only be sent via USB if there is enough to completely
+	 * fill a USB packet, or if the produced indicates a flush().
 	 */
-	int rx_waiting;
+	USB_STREAM_TX_USES_FLUSH = 0x0001,
 	/*
-	 * Flag indicating that the incoming data on the USB link are discarded.
+	 * Set if the producer has requested flush(), and we have not yet
+	 * completely emptied the TX queue.
 	 */
-	int rx_disabled;
+	USB_STREAM_TX_FLUSH = 0x0002,
 };
 
 /*
