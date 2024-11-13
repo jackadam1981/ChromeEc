@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e39cf3_9e2c08e5",
+        "filename": "zephyr/program/rex/kanix/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-11-13T11:07:34Z",
+      "side": 1,
+      "message": "hey, rex based projects don\u0027t use this by default so this should be a no-op, you can do it like this instead: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/trogdor/lazor/keyboard.dts;l\u003d7-25?q\u003dactual-key-mask\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F",
+      "revId": "67bbe8911c86785a48a5e9c2e99106b55410040c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
