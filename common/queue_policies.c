@@ -18,6 +18,16 @@ void queue_add_direct(struct queue_policy const *policy, size_t count)
 		direct->consumer->ops->written(direct->consumer, count);
 }
 
+void queue_flush_direct(struct queue_policy const *policy)
+{
+	struct queue_policy_direct const *direct =
+		DOWNCAST(policy, struct queue_policy_direct, policy);
+
+	/* Flush is signalled by invoking written() with a count of zero */
+	if (direct->consumer->ops->written)
+		direct->consumer->ops->written(direct->consumer, 0);
+}
+
 void queue_remove_direct(struct queue_policy const *policy, size_t count)
 {
 	struct queue_policy_direct const *direct =

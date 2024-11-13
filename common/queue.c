@@ -165,6 +165,12 @@ size_t queue_add_memcpy(struct queue const *q, const void *src, size_t count,
 	return queue_advance_tail(q, transfer);
 }
 
+void queue_flush(struct queue const *q)
+{
+	if (q->policy->flush)
+		q->policy->flush(q->policy);
+}
+
 static void
 queue_read_safe(struct queue const *q, void *dest, size_t head, size_t transfer,
 		void *(*memcpy)(void *dest, const void *src, size_t n))
