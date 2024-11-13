@@ -29,12 +29,14 @@ struct queue_policy_direct {
 };
 
 void queue_add_direct(struct queue_policy const *policy, size_t count);
+void queue_flush_direct(struct queue_policy const *policy);
 void queue_remove_direct(struct queue_policy const *policy, size_t count);
 
 #define QUEUE_POLICY_DIRECT(PRODUCER, CONSUMER) \
 	((struct queue_policy_direct const) {			\
 		.policy = {					\
 			.add    = queue_add_direct,		\
+			.flush  = queue_flush_direct,		\
 			.remove = queue_remove_direct,		\
 		},						\
 		.producer = &PRODUCER,				\
