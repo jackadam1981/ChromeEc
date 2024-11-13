@@ -16,6 +16,24 @@
       "message": "are we OK to lock out BOARD_VERSION?",
       "revId": "6e00272be78beca27202731234679a4df3095be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "322c50f0_e716553a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-11-13T19:11:31Z",
+      "side": 1,
+      "message": "In PTL RVP, board version is not obtained from CBI, it is calculated from in-board resistors. Given that `CONFIG_BOARD_VERSION_CBI` is not defined.",
+      "parentUuid": "7190bc63_4b3ce4db",
+      "revId": "6e00272be78beca27202731234679a4df3095be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
