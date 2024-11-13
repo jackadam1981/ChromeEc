@@ -29,6 +29,12 @@ void queue_init(struct queue const *q)
 
 	q->state->head = 0;
 	q->state->tail = 0;
+	q->state->flags = 0;
+}
+
+void queue_enable_buffered_mode(struct queue const *q)
+{
+	q->state->flags |= QUEUE_BUFFERED_MODE;
 }
 
 int queue_is_empty(struct queue const *q)
@@ -121,9 +127,10 @@ size_t queue_advance_tail(struct queue const *q, size_t count)
 {
 	size_t transfer = MIN(count, queue_space(q));
 
-	q->state->tail += transfer;
-
-	q->policy->add(q->policy, transfer);
+	if (transfer > 0) {
+		q->state->tail += transfer;
+		q->policy->add(q->policy, transfer);
+	}
 
 	return transfer;
 }
@@ -163,6 +170,31 @@ size_t queue_add_memcpy(struct queue const *q, const void *src, size_t count,
 		       (transfer - first) * q->unit_bytes);
 
 	return queue_advance_tail(q, transfer);
+}
+
+void queue_flush(struct queue const *q)
+{
+	if (!(q->state->flags & QUEUE_BUFFERED_MODE)) {
+		/* Flushing of a non-buffered queue is a no-op. */
+		return;
+	}
+
+	/*
+	 * Consumers will be notified of a request to flush by getting a call
+	 * of consumer_ops.written() with a zero length.
+	 *
+	 * Some consumers will not know about the flushing semantics, but that
+	 * is fine, they will ignore a notification with zero length, and they
+	 * will eagerly process data, which is always allowed.
+	 *
+	 * Some producers will not make use of queue_flush(), and care has to be
+	 * taken that a consumer does not wait infinitely for a flush request
+	 * that never comes.  Consumers must check for QUEUE_BUFFERED_MODE in
+	 * q->state->flags, and eagerly process any data if not set.  Producers
+	 * can make a call to queue_enable_buffered_mode() as part of their
+	 * initialization, to have the flag set.
+	 */
+	q->policy->add(q->policy, 0);
 }
 
 static void
