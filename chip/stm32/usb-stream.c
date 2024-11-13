@@ -56,7 +56,7 @@ static int rx_valid(struct usb_stream_config const *config)
 
 static int rx_disabled(struct usb_stream_config const *config)
 {
-	return config->state->rx_disabled;
+	return false;
 }
 
 static void usb_read(struct producer const *producer, size_t count)
@@ -158,8 +158,6 @@ void usb_stream_event(struct usb_stream_config const *config,
 
 	btable_ep[i].rx_addr = usb_sram_addr(config->rx_ram);
 	btable_ep[i].rx_count = usb_ep_rx_size(config->rx_size);
-
-	config->state->rx_waiting = 0;
 
 	STM32_USB_EP(i) = ((i << 0) | /* Endpoint Addr*/
 			   (tx_write(config) ? EP_TX_VALID : EP_TX_NAK) |
