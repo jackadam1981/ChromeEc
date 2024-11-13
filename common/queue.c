@@ -123,7 +123,8 @@ size_t queue_advance_tail(struct queue const *q, size_t count)
 
 	q->state->tail += transfer;
 
-	q->policy->add(q->policy, transfer);
+	if (transfer > 0)
+		q->policy->add(q->policy, transfer);
 
 	return transfer;
 }
@@ -163,6 +164,11 @@ size_t queue_add_memcpy(struct queue const *q, const void *src, size_t count,
 		       (transfer - first) * q->unit_bytes);
 
 	return queue_advance_tail(q, transfer);
+}
+
+void queue_flush(struct queue const *q)
+{
+	q->policy->add(q->policy, 0);
 }
 
 static void
