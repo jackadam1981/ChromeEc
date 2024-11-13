@@ -127,7 +127,7 @@ def get_version_string(
     if not version:
         version = "0.0.0"
 
-    result = f"{project}-{version}"
+    result = f"{project}_{version}"
 
     if static:
         return result
