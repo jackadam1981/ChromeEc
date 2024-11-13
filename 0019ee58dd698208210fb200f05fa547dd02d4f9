@@ -22,6 +22,30 @@
       },
       "revId": "0019ee58dd698208210fb200f05fa547dd02d4f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91df4091_66678369",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-11-13T20:24:15Z",
+      "side": 0,
+      "message": "ya... i\u0027m not sure in what case that would make the output better.\n\nwe do get:\n```\nSaving...        : 100%\n...\nErasing...       : 100%\nProgramming...   : 100%\n```\nwithout artificially inflating/rounding up the percentage.",
+      "parentUuid": "85e04678_341bbf5a",
+      "range": {
+        "startLine": 671,
+        "startChar": 37,
+        "endLine": 671,
+        "endChar": 40
+      },
+      "revId": "0019ee58dd698208210fb200f05fa547dd02d4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
