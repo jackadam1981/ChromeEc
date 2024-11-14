@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a9a66d_0a61e3a6",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-11-14T16:48:17Z",
+      "side": 1,
+      "message": "combine into one line",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dd01d3dd_168bec0d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/BUILD.py",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 77,
+                "endChar": 0
+              },
+              "replacement": "        here / \"francka\" / \"project.conf\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a4286425939da0cc37bb30ee205a19e5d49ee06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
