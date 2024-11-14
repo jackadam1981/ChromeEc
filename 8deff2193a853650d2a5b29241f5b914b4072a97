@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a37c850_afc33529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-14T00:03:56Z",
+      "side": 1,
+      "message": "@waihong@google.com I wanted to see if changing this would cause any problems for any tools that you know about.\n\nOn the fingerprint side, we have a bunch of scripts that parse the version string based on the format that was used for the EC version. Instead of changing all of those, I wanted to see if it would cause problems to just change the Zephyr version string.\n\n(Right now this is just a proposal to get feedback from anyone who might be affected, so feel free to add anyone else relevant.)",
+      "revId": "8deff2193a853650d2a5b29241f5b914b4072a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
