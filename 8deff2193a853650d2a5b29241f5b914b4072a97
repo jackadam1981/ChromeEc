@@ -52,6 +52,24 @@
       "parentUuid": "f752225c_8c562166",
       "revId": "8deff2193a853650d2a5b29241f5b914b4072a97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458cc145_aef6de78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2024-11-14T22:25:28Z",
+      "side": 1,
+      "message": "Multiple devices have been shipped with the new zephyr format, like karis, screebo. It is too late.\n\nSince some EC board names contain \u0027_\u0027, not so simple that we use regex to match some non-trivial pattern.",
+      "parentUuid": "b081a2a2_72a87566",
+      "revId": "8deff2193a853650d2a5b29241f5b914b4072a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
