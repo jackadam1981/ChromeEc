@@ -34,6 +34,24 @@
       "parentUuid": "8a37c850_afc33529",
       "revId": "8deff2193a853650d2a5b29241f5b914b4072a97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b081a2a2_72a87566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-14T22:16:04Z",
+      "side": 1,
+      "message": "\u003e Changing \u0027-\u0027 to \u0027_\u0027 doesn\u0027t make it compatible with the cros ec format.\n\nIt depends on what part of the string you care about. It does make the format consistent for pulling out the board name, since it would always be `board_\u003csome other string\u003e`. On the fingerprint side that\u0027s pretty much all we do when parsing the version since the version string is just considered a \"blob\".\n\nHave you already shipped Zephyr devices with RO versions that are `board-\u003csome string\u003e`? If so, then I guess it\u0027s too late to change.",
+      "parentUuid": "f752225c_8c562166",
+      "revId": "8deff2193a853650d2a5b29241f5b914b4072a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
