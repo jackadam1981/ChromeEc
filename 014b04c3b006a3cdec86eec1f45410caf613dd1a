@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808118eb_81e10d83",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-14T22:25:52Z",
+      "side": 1,
+      "message": "Why is this check necessary?\n\nIs the implication that callers are incorrectly writing `0` bytes today already and we want to disable that?\n\nIt seems possible someone is \"flushing\" already by writing `0` bytes, and this CL is removing that behavior which may have unintended consequences.",
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1ce7d8_b210f6ed",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-14T22:25:52Z",
+      "side": 1,
+      "message": "This magic number should be a `#define` with a descriptive name (e.g., `QUEUE_FORCE_FLUSH`).\n\nThis function should also have a comment similar to the commit message explaining why it\u0027s doing a zero-byte write.",
+      "range": {
+        "startLine": 171,
+        "startChar": 27,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
