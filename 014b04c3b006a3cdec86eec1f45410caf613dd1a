@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b60deb_66ccd29b",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-14T23:25:49Z",
+      "side": 1,
+      "message": "In this same CL, I am modifying the \"default\" policy, that is, the code usually called by `q-\u003epolicy-\u003eadd()` below.  Previously, that function would silently ignore being called with a zero count.  So I made the change here for the case that some existing callers would occasionally call `queue_advance_tail()` with a zero count, while relying on the consumer NOT being notified about that no-op.\n\nThe only place a policy other than the default (or the null policy) is used is in `common/usb_console_stream.c`, in which `console_has_input()` is invoked to wake up the console task whether the count is zero or non-zero.  But since the console task simply consumes one byte at a time, and is still woken up any time a non-zero count of characters are enqued, then it cannot have any effect to stop notifying about \"zero characters added\".\n\nBy the above reasoning, adding this condition is safe.  And it is necessary in order to ensure that zero-byte `add()` will only be called when an flush is explicitly requested.",
+      "parentUuid": "808118eb_81e10d83",
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b1ce7d8_b210f6ed",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-14T22:25:52Z",
       "side": 1,
       "message": "This magic number should be a `#define` with a descriptive name (e.g., `QUEUE_FORCE_FLUSH`).\n\nThis function should also have a comment similar to the commit message explaining why it\u0027s doing a zero-byte write.",
+      "range": {
+        "startLine": 171,
+        "startChar": 27,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfeb635a_fafe514a",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-14T23:25:49Z",
+      "side": 1,
+      "message": "I have added a comment to this function, to explain the reasons and caveats.\n\nOrdinarily, I am all for descriptive names for contants.  But in this case, I wonder what I should do about code such as `if (transfer \u003e 0)`.  I am afraid that if people cannot immediately see that the value is zero, but just a constant name, that could cause confusion.  (Posix does not have a value for END_OF_STREAM that we check against the return value of `read()`, probably because having one would be confusing if readers cannot see that the named constant does not have a positive value.)\n\nLet me know if you still think that a constant is the best choice here.",
+      "parentUuid": "1b1ce7d8_b210f6ed",
       "range": {
         "startLine": 171,
         "startChar": 27,
