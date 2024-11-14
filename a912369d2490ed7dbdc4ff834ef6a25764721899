@@ -33,6 +33,24 @@
       "message": "The logic here was correct before. The calculations of variable `value` assumes that the value here will occupy only 14-bits, so it will be `0b00xxxxxxxxxxxxxx` (calculations in comment to `cmd_cc_dac` function). So it is changing from little endian to big endian and then moving 2 bits to left to make sure that 2 least significant bits in the register will be zeroes, as specified by datasheet (and comment).",
       "revId": "a912369d2490ed7dbdc4ff834ef6a25764721899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f52271_ce8726fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2024-11-14T17:46:28Z",
+      "side": 1,
+      "message": "Discussed internally, this CL is fixing the bits orientation as it should be. My bad.",
+      "parentUuid": "ae117436_9e5b4f94",
+      "revId": "a912369d2490ed7dbdc4ff834ef6a25764721899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
