@@ -3001,11 +3001,17 @@ static void tc_attached_src_entry(const int port)
 			tcpm_set_msg_header(port, tc[port].power_role,
 					    tc[port].data_role);
 
-			/* Enable VBUS */
-			tc_src_power_on(port);
-
+			/*
+			 * PD spec r3.1 v1.8, Figure 8-180,
+			 * Dual-role port in sink to source power role swap state diagram:
+			 * We shall change assert Rd to Rp first, then turn on Vbus.
+			 * Also pass TEST.PD.PROT.SRC.9#6 (not verify yet)
+			 */
 			/* Apply Rp */
 			typec_update_cc(port);
+
+			/* Enable VBUS */
+			tc_src_power_on(port);
 
 			/*
 			 * Maintain VCONN supply state, whether ON or OFF, and
