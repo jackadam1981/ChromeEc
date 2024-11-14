@@ -200,6 +200,33 @@ static void print_battery_params(void)
 	}
 }
 
+void print_battery_temp_current(void)
+{
+#if defined(HAS_TASK_CHARGER)
+	/* Ask charger so that we don't need to ask battery again. */
+	const struct batt_params *batt = charger_current_battery_params();
+#else
+	/* This is for test code, where doesn't have charger task. */
+	struct batt_params _batt;
+	const struct batt_params *batt = &_batt;
+
+	battery_get_params(&_batt);
+#endif
+	print_item_name("Temp:");
+	ccprintf("0x%04x = %d.%d K (%d.%d C)\n", batt->temperature,
+		 batt->temperature / 10, batt->temperature % 10,
+		 (batt->temperature - 2731) / 10,
+		 (batt->temperature - 2731) % 10);
+
+	print_item_name("I:");
+	ccprintf("0x%04x = %d mA", batt->current & 0xffff, batt->current);
+	if (batt->current > 0)
+		ccputs("(CHG)");
+	else if (batt->current < 0)
+		ccputs("(DISCHG)");
+	ccputs("\n");
+}
+
 static void print_battery_info(void)
 {
 	int value;

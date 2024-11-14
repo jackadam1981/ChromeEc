@@ -464,6 +464,7 @@ __override_proto int battery_set_vendor_param(uint32_t param, uint32_t value);
  */
 int battery_wait_for_stable(void);
 
+void print_battery_temp_current(void);
 /**
  * Print all battery info for debugging purposes
  */

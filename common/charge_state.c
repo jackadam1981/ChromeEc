@@ -375,6 +375,8 @@ static void show_charging_progress(bool is_full)
 			to_full ? "to full" : "to empty",
 			is_full ? ", not accepting current" : "");
 
+	print_battery_temp_current();
+
 	if (IS_ENABLED(CONFIG_EC_EC_COMM_BATTERY_CLIENT))
 		charger_base_show_charge();
 
