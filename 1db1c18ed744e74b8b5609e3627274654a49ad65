@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0da8c54b_d1455e84",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T17:03:46Z",
+      "side": 1,
+      "message": "The next patch sets a timer interrupt. However, if `STM32_USART_CR2_RTOEN` is not enabled, this data is stuck until the producer fills a packet, so this also needs to be within the same `#ifdef STM32_USART_CR2_RTOEN`.\n\nBased on that, I would change `STM32_USART_CR2_RTOEN` to something more descriptive of the feature itself, like `USB_BUFFER_TX_DATA_ENABLED`.",
+      "parentUuid": "24e2f6ad_bc74f37c",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f192dc7_c3c71abe",
         "filename": "chip/stm32/usb-stream.c",
         "patchSetId": 12
