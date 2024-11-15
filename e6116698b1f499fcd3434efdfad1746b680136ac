@@ -106,6 +106,24 @@
       "parentUuid": "b5ff9459_0964982b",
       "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f64d52_87bfba62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T23:01:32Z",
+      "side": 1,
+      "message": "I believe 0x3FF (UNKNOWN) should be an unknown state\n0x3FE should be the maximum number that the 10 bits reserved for the dead pixels can hold.\nDoes this make sense? just intuition?",
+      "parentUuid": "3a548754_f4e08ddf",
+      "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
