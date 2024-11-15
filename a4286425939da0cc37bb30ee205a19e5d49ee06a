@@ -40,6 +40,30 @@
       ],
       "revId": "a4286425939da0cc37bb30ee205a19e5d49ee06a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "626a87cb_9680b8e7",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2024-11-15T02:04:35Z",
+      "side": 1,
+      "message": "I write the `here / \"francka\" / \"project.conf\",` in one line. But the code formate checks `../../repohooks/pre-upload.py` will have the WARNING.\n\n```\n09:46:14: WARNING: zephyr/program/fatcat/BUILD.py: needs formatting\n09:46:14: NOTICE: You can fix formatting errors by running:\n  cros format zephyr/program/fatcat/BUILD.py\n```\n\nExecute `cros format zephyr/program/fatcat/BUILD.py` it will split into three lines.\n\nIf I remove the `# Parent project\u0027s config` and let `here / \"francka\" / \"project.conf\",` in one line. That  `../../repohooks/pre-upload.py` won\u0027t have the WARNING.\n\n---\n\nI have tried adding the `# Parent project\u0027s config` to before line62 ` here / \"..\" / \"intelrvp\" / \"zephyr_ap_pwrseq.conf\",` it has the same problem.",
+      "parentUuid": "f0a9a66d_0a61e3a6",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "a4286425939da0cc37bb30ee205a19e5d49ee06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
