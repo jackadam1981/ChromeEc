@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9781f3bb_2528c720",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-15T19:09:17Z",
+      "side": 1,
+      "message": "Since we don\u0027t have any unit tests for this code, it would be good to do some sort of manual testing for the Elan and FPC changes to make sure they behave as expected.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "767ebfd9d661a2126a343aeed95c6b187f594064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
