@@ -142,7 +142,7 @@ static void pb_chipset_startup(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pb_chipset_startup, HOOK_PRIO_DEFAULT);
 
-static void pb_chipset_shutdown(void)
+__overridable void pb_chipset_shutdown(void)
 {
 	/* Don't set AP_IDLE if shutting down due to power failure. */
 	if (chipset_get_shutdown_reason() == CHIPSET_SHUTDOWN_POWERFAIL)
