@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97abae9e_15edbbd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-11-15T21:04:50Z",
+      "side": 1,
+      "message": "Right now for this to build, you need to add `-t zephyr` to the `zmake build` command.",
+      "revId": "9fb61b4d382ef1fc76e3f7ffe6c539134fa4fc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
