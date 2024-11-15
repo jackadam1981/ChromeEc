@@ -13,7 +13,7 @@
 #include "../generated.dtsi"
 #include "../interrupts.dtsi"
 #include "../motionsense.dtsi"
-#include "../keyboard.dtsi"
+#include "./keyboard.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
 
