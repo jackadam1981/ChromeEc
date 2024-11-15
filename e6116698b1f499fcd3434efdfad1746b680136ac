@@ -142,6 +142,24 @@
       "parentUuid": "e1f64d52_87bfba62",
       "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e0622b_7a2e8fbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-15T23:30:52Z",
+      "side": 1,
+      "message": "No, that\u0027s because I identified the misuse of the UNKNOWN value as an issue in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6024129/comment/0336ba0a_84f3f074/), after taking the time to look through the code that will be impacted by your change. You, then, added the MAX value, in response.\n\nUnfortunately, no code lives in isolation, so you must look at other code that will be impacted by your change. It is your responsibility to make sure you are implementing correct code that doesn\u0027t create/mask issues, not the reviewer\u0027s responsibility.",
+      "parentUuid": "e1f64d52_87bfba62",
+      "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
