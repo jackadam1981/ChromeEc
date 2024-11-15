@@ -20,6 +20,16 @@
 #include "util.h"
 
 /*
+ * This flag requests that after the SPI transaction, HyperDebug should wait for
+ * a "ready pulse" on a particular pin, before reporting success.
+ *
+ * Care must be taken that this bit does not overlap with any of the "standard"
+ * bits declared in chip/stm32/usb_spi.h
+ */
+#define FLASH_FLAG_WAIT_FOR_READY_POS 27
+#define FLASH_FLAG_WAIT_FOR_READY (0x1U << FLASH_FLAG_WAIT_FOR_READY_POS)
+
+/*
  * List of SPI devices that can be controlled via USB.
  *
  * SPI1 and SPI2 use PCLK (27.5 MHz) as base frequency.
@@ -50,6 +60,7 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
 static int spi_device_default_gpio_cs[ARRAY_SIZE(spi_devices)];
 static int spi_device_default_div[ARRAY_SIZE(spi_devices)];
+static int spi_device_ready_pin[ARRAY_SIZE(spi_devices)];
 
 static const size_t NUM_MSI_FREQUENCIES = 12;
 
@@ -279,6 +290,26 @@ static int command_spi_set_cs(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
+static int command_spi_set_ready_pin(int argc, const char **argv)
+{
+	int index;
+	int desired_gpio;
+	if (argc < 5)
+		return EC_ERROR_PARAM_COUNT;
+
+	index = find_spi_by_name(argv[3]);
+	if (index < 0)
+		return EC_ERROR_PARAM3;
+
+	desired_gpio = gpio_find_by_name(argv[4]);
+	if (desired_gpio == GPIO_COUNT)
+		return EC_ERROR_PARAM4;
+
+	spi_device_ready_pin[index] = desired_gpio;
+
+	return EC_SUCCESS;
+}
+
 static int command_spi_set(int argc, const char **argv)
 {
 	if (argc < 3)
@@ -287,6 +318,8 @@ static int command_spi_set(int argc, const char **argv)
 		return command_spi_set_speed(argc, argv);
 	if (!strcasecmp(argv[2], "cs"))
 		return command_spi_set_cs(argc, argv);
+	if (!strcasecmp(argv[2], "ready"))
+		return command_spi_set_ready_pin(argc, argv);
 	return EC_ERROR_PARAM2;
 }
 
@@ -303,7 +336,8 @@ static int command_spi(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND_FLAGS(spi, command_spi,
 			      "info [PORT]"
 			      "\nset speed PORT BPS"
-			      "\nset cs PORT PIN",
+			      "\nset cs PORT PIN"
+			      "\nset ready PORT PIN",
 			      "SPI bus manipulation", CMD_FLAG_RESTRICTED);
 
 /******************************************************************************
@@ -636,6 +670,10 @@ int usb_spi_board_transaction_async(const struct spi_device_t *spi_device,
 				    uint32_t flash_flags, const uint8_t *txdata,
 				    int txlen, uint8_t *rxdata, int rxlen)
 {
+	if (flash_flags & FLASH_FLAG_WAIT_FOR_READY) {
+		/* Polling only supported in synchronous mode. */
+		return USB_SPI_UNSUPPORTED_FLASH_MODE;
+	}
 	if (spi_device->port == -1)
 		return qspi_transaction_async(spi_device, flash_flags, txdata,
 					      txlen, rxdata, rxlen);
@@ -667,10 +705,14 @@ int usb_spi_board_transaction(const struct spi_device_t *spi_device,
 			      uint32_t flash_flags, const uint8_t *txdata,
 			      int txlen, uint8_t *rxdata, int rxlen)
 {
-	int rv = usb_spi_board_transaction_async(spi_device, flash_flags,
-						 txdata, txlen, rxdata, rxlen);
+	int rv = usb_spi_board_transaction_async(
+		spi_device, flash_flags & ~FLASH_FLAG_WAIT_FOR_READY, txdata,
+		txlen, rxdata, rxlen);
 	if (rv == EC_SUCCESS) {
 		rv = usb_spi_board_transaction_flush(spi_device);
+	}
+	if (rv == EC_SUCCESS && flash_flags & FLASH_FLAG_WAIT_FOR_READY) {
+		/* TODO(jbk) busy-wait for ready pulse */
 	}
 	return rv;
 }
@@ -679,6 +721,7 @@ int usb_spi_board_transaction(const struct spi_device_t *spi_device,
 static void spi_reinit(void)
 {
 	for (unsigned int i = 0; i < spi_devices_used; i++) {
+		spi_device_ready_pin[i] = GPIO_COUNT;
 		if (spi_devices[i].usb_flags & USB_SPI_CUSTOM_SPI_DEVICE) {
 			/* Quad SPI controller */
 			spi_devices[i].gpio_cs = spi_device_default_gpio_cs[i];
@@ -702,6 +745,9 @@ DECLARE_HOOK(HOOK_REINIT, spi_reinit, HOOK_PRIO_DEFAULT);
 /* Initialize board for SPI. */
 static void spi_init(void)
 {
+	for (unsigned int i = 0; i < spi_devices_used; i++)
+		spi_device_ready_pin[i] = GPIO_COUNT;
+
 	/* Record initial values for use by `spi_reinit()` above. */
 	for (unsigned int i = 0; i < spi_devices_used; i++) {
 		spi_device_default_gpio_cs[i] = spi_devices[i].gpio_cs;
