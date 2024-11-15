@@ -22,6 +22,30 @@
       },
       "revId": "c5cd80afb22f559af32b5c445813d65683a4d382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677deebf_5c654e5d",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-15T21:56:31Z",
+      "side": 1,
+      "message": "We also have GENERIC_MIN and CLAMP macros in EC to simplify this entire conditional block.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/util.h;l\u003d71;drc\u003d424f5e280b03042de27a1916b2d572b43e4fc250",
+      "parentUuid": "ef8f5298_a2d87984",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "c5cd80afb22f559af32b5c445813d65683a4d382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
