@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c91351cd_a03cb3de",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T00:10:32Z",
+      "side": 1,
+      "message": "Ah, right the change in `common/queue_policies.c`.\n\nBack to that file specifically:\n\n```\nvoid queue_add_direct(struct queue_policy const *policy, size_t count)\n{\n...\n\tif (direct-\u003econsumer-\u003eops-\u003ewritten)  \u003c\u003c---- count check removed\n\t\tdirect-\u003econsumer-\u003eops-\u003ewritten(direct-\u003econsumer, count);\n}\n```\n\nFor my own sake, this portion of your commit message is referring to the implementations of `direct-\u003econsumer-\u003eops-\u003ewritten()`?\n\n\u003e Some consumers will not know about the flushing semantics, but that is\n\u003e fine, they will ignore a notification with zero length, and they will\n\u003e eagerly process data, which is always allowed.",
+      "parentUuid": "78b60deb_66ccd29b",
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b1ce7d8_b210f6ed",
         "filename": "common/queue.c",
         "patchSetId": 4
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "I have added a comment to this function, to explain the reasons and caveats.\n\nOrdinarily, I am all for descriptive names for contants.  But in this case, I wonder what I should do about code such as `if (transfer \u003e 0)`.  I am afraid that if people cannot immediately see that the value is zero, but just a constant name, that could cause confusion.  (Posix does not have a value for END_OF_STREAM that we check against the return value of `read()`, probably because having one would be confusing if readers cannot see that the named constant does not have a positive value.)\n\nLet me know if you still think that a constant is the best choice here.",
       "parentUuid": "1b1ce7d8_b210f6ed",
+      "range": {
+        "startLine": 171,
+        "startChar": 27,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0095b2d_b306ef2a",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T00:10:32Z",
+      "side": 1,
+      "message": "\u003e I have added a comment to this function, to explain the reasons and caveats.\n\nLooks good, thanks.\n\n\u003e Let me know if you still think that a constant is the best choice here.\n\nI think this version is fine with the comment explaining why `0` is used here directly.",
+      "parentUuid": "cfeb635a_fafe514a",
       "range": {
         "startLine": 171,
         "startChar": 27,
