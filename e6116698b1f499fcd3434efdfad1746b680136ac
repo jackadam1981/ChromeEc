@@ -160,6 +160,24 @@
       "parentUuid": "e1f64d52_87bfba62",
       "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2064a77a_bf104b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T23:46:38Z",
+      "side": 1,
+      "message": "the only place that dead pixels is called in `libec` is [fp_info_command(https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_info_command.cc?q\u003ddeadpixel\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform2%2Flibec%2Ffingerprint%2F)\nand [fp_sensor_errors](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_sensor_errors.h;l\u003d14;drc\u003dbb56545b56b38e5e7aa663bad5193bbe53fb08f6)\n\n[biod](https://source.chromium.org/search?q\u003ddeadpixel\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform2%2Fbiod%2F) usage is mainly on schedule maintenance routine, getting the number of dead pixels, and sending metrics to UMA.\n\nThe ec implemetation only impacts the static variable `errors`. Everything else is based on `EC_CMD_FP_INFO`, which reads the errors. As long as reading them is done properly, nothing should be impacted. As you pointed out, the errors are read as number of dead pixels, which is erroneous.",
+      "parentUuid": "60e0622b_7a2e8fbc",
+      "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
