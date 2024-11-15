@@ -32,7 +32,7 @@ struct spi_device_t spi_devices[] = {
 	  .port = 1,
 	  .div = 5,
 	  .gpio_cs = GPIO_CN9_25,
-	  .usb_flags = USB_SPI_ENABLED },
+	  .usb_flags = USB_SPI_ENABLED | USB_SPI_CUSTOM_SPI_DEVICE },
 	{ .name = "QSPI",
 	  .port = -1 /* OCTOSPI */,
 	  .div = 255,
@@ -44,7 +44,7 @@ struct spi_device_t spi_devices[] = {
 	  .port = 0,
 	  .div = 5,
 	  .gpio_cs = GPIO_CN7_4,
-	  .usb_flags = USB_SPI_ENABLED },
+	  .usb_flags = USB_SPI_ENABLED | USB_SPI_CUSTOM_SPI_DEVICE },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -355,9 +355,9 @@ static timestamp_t deadline;
  * we have seen this code being generally useful, it will live in
  * board/hyperdebug.
  */
-int usb_spi_board_transaction_async(const struct spi_device_t *spi_device,
-				    uint32_t flash_flags, const uint8_t *txdata,
-				    int txlen, uint8_t *rxdata, int rxlen)
+static int qspi_transaction_async(const struct spi_device_t *spi_device,
+				  uint32_t flash_flags, const uint8_t *txdata,
+				  int txlen, uint8_t *rxdata, int rxlen)
 {
 	uint32_t opcode = 0, address = 0;
 	const uint32_t mode = flash_flags & FLASH_FLAG_MODE_MSK;
@@ -598,13 +598,13 @@ int usb_spi_board_transaction_async(const struct spi_device_t *spi_device,
 	return EC_SUCCESS;
 }
 
-int usb_spi_board_transaction_is_complete(const struct spi_device_t *spi_device)
+static int qspi_transaction_is_complete(const struct spi_device_t *spi_device)
 {
 	/* Query the "transaction complete flag" of the status register. */
 	return STM32_OCTOSPI_SR & STM32_OCTOSPI_SR_TCF;
 }
 
-int usb_spi_board_transaction_flush(const struct spi_device_t *spi_device)
+static int qspi_transaction_flush(const struct spi_device_t *spi_device)
 {
 	/*
 	 * Wait until DMA transfer is complete (no-op if DMA not started because
@@ -630,6 +630,37 @@ int usb_spi_board_transaction_flush(const struct spi_device_t *spi_device)
 	 */
 	STM32_RCC_AHB3RSTR |= STM32_RCC_AHB3RSTR_QSPIRST;
 	return rv;
+}
+
+int usb_spi_board_transaction_async(const struct spi_device_t *spi_device,
+				    uint32_t flash_flags, const uint8_t *txdata,
+				    int txlen, uint8_t *rxdata, int rxlen)
+{
+	if (spi_device->port == -1)
+		return qspi_transaction_async(spi_device, flash_flags, txdata,
+					      txlen, rxdata, rxlen);
+	if (flash_flags & FLASH_FLAGS_REQUIRING_SUPPORT) {
+		/*
+		 * The standard spi_transaction() does not support
+		 * any multi-lane modes.
+		 */
+		return USB_SPI_UNSUPPORTED_FLASH_MODE;
+	}
+	return spi_transaction_async(spi_device, txdata, txlen, rxdata, rxlen);
+}
+
+int usb_spi_board_transaction_is_complete(const struct spi_device_t *spi_device)
+{
+	if (spi_device->port == -1)
+		return qspi_transaction_is_complete(spi_device);
+	return true;
+}
+
+int usb_spi_board_transaction_flush(const struct spi_device_t *spi_device)
+{
+	if (spi_device->port == -1)
+		return qspi_transaction_flush(spi_device);
+	return spi_transaction_flush(spi_device);
 }
 
 int usb_spi_board_transaction(const struct spi_device_t *spi_device,
