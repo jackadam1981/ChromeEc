@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69ef735_f18d63ec",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:39Z",
+      "side": 1,
+      "message": "The convention is that absent of explicit flush, the consumer is allowed to buffer data indefinitely.  (This is similar to e.g. the standard C library `fprintf()`.)\n\nAs the comment states the logic is to wait until more data arrives (and check if we can fill a USB packet then), or until the producer explicitly calls `queue_flush()`.  Both these will be signalled via `usb_written()` being called, which will use `hook_call_deferred()` to schedule a call that ends back here.",
+      "parentUuid": "24e2f6ad_bc74f37c",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f192dc7_c3c71abe",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4972048c_887b6ce4",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f192dc7_c3c71abe",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dfe077d_7fd602ff",
@@ -84,6 +132,30 @@
       "writtenOn": "2024-11-15T16:58:17Z",
       "side": 1,
       "message": "This comment is misleading, since producers can\u0027t declare they use `flush()`, they just use it. Meaning, either:\n\n1. The first \"packet\" will always be sent as single bytes until the producer triggers a `flush()` once they believe enough data has been \"buffered\" (quotes, because the first packet\u0027s data isn\u0027t being buffered).\n1. They issue a `flush()` during init to set the flag.\n    * I don\u0027t recommend this, since it\u0027s using hidden/undocumented behavior in this specific USB module. Rather, a \"set stream capabilities\"-type function should be exposed for producers to indicate they want to use the flush feature.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 66
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8393d56_3f486ba0",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:39Z",
+      "side": 1,
+      "message": "In the previous patch, I added the below comment inside `queue_flush()`, setting up such that this `flush()` during init would not be undocumented or specific to the USB consumer.  Should I rather move that comment to the header file, on the declaration of `queue_flush()`?\n```\n\t * Some producers will not make use of queue_flush(), and care has to\n\t * be taken that a consumer does not wait infinitely for a flush\n\t * request that never comes.  To handle this, consumers must eagerly\n\t * process data until the first time they get a notification with zero\n\t * length, which serves as indication that the producer uses the flush\n\t * semantics.  Producers can make a call to queue_flush() as part of\n\t * their initialization, to avoid any actual data being eagerly\n\t * processed.\n```\n\nThat being said, I agree that the potential performance hit from initial characters not being buffered before the first flush is completely negligible.",
+      "parentUuid": "3dfe077d_7fd602ff",
       "range": {
         "startLine": 37,
         "startChar": 4,

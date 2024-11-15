@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3318968_3c9f4546",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:39Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, not only was it magic, but wrong, as individual USB endpoints can be declared with smaller than 64 byte buffer.  `config-\u003etx_size` is the right value to compare against.",
+      "parentUuid": "8454aa76_46fc2851",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "d1b41a71abae6d42cb54b5d8726063828bdbff36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f13497aa_5cd08fde",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-15T16:58:17Z",
       "side": 1,
       "message": "This should be a `usb_stream_state_flags_t`, then the comment can be removed.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "d1b41a71abae6d42cb54b5d8726063828bdbff36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c169387d_ec28ec55",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f13497aa_5cd08fde",
       "range": {
         "startLine": 32,
         "startChar": 1,
