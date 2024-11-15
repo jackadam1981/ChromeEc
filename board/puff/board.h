@@ -21,6 +21,8 @@
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
 /* EC Defines */
+#define CONFIG_CMD_AP_RESET_LOG
+#define CONFIG_AP_HANG_DETECT
 #define CONFIG_ADC
 #define CONFIG_BOARD_HAS_RTC_RESET
 #define CONFIG_BOARD_VERSION_CBI
