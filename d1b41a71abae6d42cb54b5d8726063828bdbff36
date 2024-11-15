@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8454aa76_46fc2851",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T16:58:17Z",
+      "side": 1,
+      "message": "magic number",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "d1b41a71abae6d42cb54b5d8726063828bdbff36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13497aa_5cd08fde",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T16:58:17Z",
+      "side": 1,
+      "message": "This should be a `usb_stream_state_flags_t`, then the comment can be removed.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "d1b41a71abae6d42cb54b5d8726063828bdbff36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

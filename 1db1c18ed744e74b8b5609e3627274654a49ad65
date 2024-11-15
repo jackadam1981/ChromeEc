@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e2f6ad_bc74f37c",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T16:58:17Z",
+      "side": 1,
+      "message": "How do we get back here? Where is a timer started to send the buffered data, and how long are we waiting?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f192dc7_c3c71abe",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T16:58:17Z",
+      "side": 1,
+      "message": "nit: convention. That",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dfe077d_7fd602ff",
+        "filename": "chip/stm32/usb-stream.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T16:58:17Z",
+      "side": 1,
+      "message": "This comment is misleading, since producers can\u0027t declare they use `flush()`, they just use it. Meaning, either:\n\n1. The first \"packet\" will always be sent as single bytes until the producer triggers a `flush()` once they believe enough data has been \"buffered\" (quotes, because the first packet\u0027s data isn\u0027t being buffered).\n1. They issue a `flush()` during init to set the flag.\n    * I don\u0027t recommend this, since it\u0027s using hidden/undocumented behavior in this specific USB module. Rather, a \"set stream capabilities\"-type function should be exposed for producers to indicate they want to use the flush feature.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 66
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
