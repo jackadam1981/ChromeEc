@@ -64,6 +64,30 @@
       },
       "revId": "a4286425939da0cc37bb30ee205a19e5d49ee06a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "363ac4d2_1264fff1",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-11-15T20:20:16Z",
+      "side": 1,
+      "message": "sorry, i didn\u0027t realize we enforce a line length limit here.\njust use the output of `cros format ...` then.",
+      "parentUuid": "626a87cb_9680b8e7",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "a4286425939da0cc37bb30ee205a19e5d49ee06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
