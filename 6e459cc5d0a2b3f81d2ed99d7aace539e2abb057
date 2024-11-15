@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0336ba0a_84f3f074",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-15T21:18:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this makes sense, since UNKNOWN is supposed to be that we don\u0027t know how many dead pixels there are yet, because we don\u0027t have any maintenance reports yet. I do see that Elan implemented this incorrectly in their driver.\n\nIf we want a saturating maximum count, I think it should be (FP_ERROR_DEAD_PIXELS_UNKNOWN - 1).\n\n---\n\nIt looks like we already have provisions for this [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_sensor_errors.h;l\u003d14;drc\u003dbb56545b56b38e5e7aa663bad5193bbe53fb08f6).",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "6e459cc5d0a2b3f81d2ed99d7aace539e2abb057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
