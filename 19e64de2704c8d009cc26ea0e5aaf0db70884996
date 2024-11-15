@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde8700e_eabdd1ef",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32l.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:17Z",
+      "side": 1,
+      "message": "I have elaborated in the comment, explaining that it is the time it would take to transmit two full characters at the current baud rate.  I think it makes a lot of sense that the timeout adapts to the baud rate.",
+      "parentUuid": "aee97834_df0a8a2b",
+      "revId": "19e64de2704c8d009cc26ea0e5aaf0db70884996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbb53c31_d547c1ce",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-11-15T17:08:08Z",
       "side": 1,
       "message": "I\u0027m not entirely understanding the design here; why is this looking at the UART receive line?\n\nHow does this handle the case of the EC just being idle and no intending to send any data at all? We don\u0027t want this being called every \"20 bit-times idle\" always and forever, only when the USB is actually intending to send data.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "19e64de2704c8d009cc26ea0e5aaf0db70884996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ab024a_ec10944c",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32l.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T17:37:17Z",
+      "side": 1,
+      "message": "This optimization deals with how long to continue collecting data received via UART before sending it via USB.  The idea is that as long as UART data continues to come in, we should delay, but once the RX lins drops idle for a while after the last characters, then it is time to send the collected data via USB.\n\nThis \"timeout interrupt\" seems to be designed for exactly that.  From the initial state, the chip must first receive at least one character, and then have the number of contiguous bit-times of inactivity before firing.  Once it has fired like that, it is back to the state where at least one character must arrive, before it can fire again.\n\nThe above hardwired logic in the STM chip ensures that it will not fire repeatedly if the line remains idle.",
+      "parentUuid": "fbb53c31_d547c1ce",
       "range": {
         "startLine": 96,
         "startChar": 0,
