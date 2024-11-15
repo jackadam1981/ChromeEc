@@ -70,6 +70,30 @@
       },
       "revId": "6e459cc5d0a2b3f81d2ed99d7aace539e2abb057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73189d2_1e010965",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-15T21:37:44Z",
+      "side": 1,
+      "message": "Also, related bug b/379143410",
+      "parentUuid": "85598c88_8ab1fe24",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "6e459cc5d0a2b3f81d2ed99d7aace539e2abb057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
