@@ -21,7 +21,6 @@
 	aliases {
 		bmi3xx-int = &base_accel;
 		lis2dw12-int = &lid_accel;
-		gpio-en-hdmi-pwr = &gpio_en_hdmi_pwr;
 		tcs3400-int = &als_clear;
 	};
 
@@ -232,7 +231,7 @@
 		 * list of GPIO interrupts that have to
 		 * be enabled at initial stage
 		 */
-		sensor-irqs = <&int_imu &int_als_rgb>;
+		sensor-irqs = <&int_imu>;
 		/* list of sensors in force mode */
 		accel-force-mode-sensors = <&als_clear>;
 	};
@@ -241,6 +240,79 @@
 		default_battery: cosmx-3 {
 			compatible = "cosmx,ap20cbl-3", "battery-smart";
 		};
+	};
+
+	named-gpios {
+		/delete-node/ dp_path_usb_c1_en;
+		/delete-node/ en_hdmi_pwr;
+		/delete-node/ hdmi_ec_hpd;
+		/delete-node/ dp_path_hdmi_en;
+		/delete-node/ als_int_ec_odl;
+		/delete-node/ ec_voldn_btn_odl;
+		/delete-node/ ec_volup_btn_odl;
+		/delete-node/ usb_c1_frs_en;
+		/delete-node/ usb_c1_ppc_int_odl;
+		/delete-node/ usb_c0_frs_en;
+		/delete-node/ usb_c0_ppc_int_odl;
+
+		gpio_gsc_acok_od: gsc_acok_od {
+			gpios = <&gpioa 4 (GPIO_INPUT)>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
+			gpios = <&gpioa 5 (GPIO_INPUT)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
+			gpios = <&gpioi 0 (GPIO_INPUT)>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_ec_cbi_wp: ec_cbi_wp {
+			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_ec_i2c_pdc_sm_int_odl: ec_i2c_pdc_sm_int_odl {
+			gpios = <&gpiod 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_usb_c0_dp_hpd: usb_c0_dp_hpd {
+			gpios = <&gpiod 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_usb_c1_dp_hpd: usb_c1_dp_hpd {
+			gpios = <&gpiof 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_ec_i2c_pdc_s_int_odl: ec_i2c_pdc_s_int_odl {
+			gpios = <&gpiof 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+	};
+
+	gpio-interrupts {
+		/delete-node/ volume-up;
+		/delete-node/ volume-down;
+		/delete-node/ hdmi-ec-hpd;
+		/delete-node/ ec_als_rgb;
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+
+		unused-gpios =
+			/* Reserved for HOST_S0_1V8_EC_OD*/
+			<&gpioa 7 0>,
+			/* Reserved for HPD_INT_EC_L*/
+			<&gpiob 6 0>,
+			/* Reserved for EDP_BL_EN_1V8*/
+			<&gpioe 3 0>,
+			/* Reserved for EC_TCHSCR_REPORT_DISABLE*/
+			<&gpioe 4 0>,
+			<&gpiod 3 0>,
+			<&gpiod 7 0>,
+			<&gpiof 0 0>,
+			<&gpiof 4 0>,
+			<&gpiof 5 0>,
+			<&gpiog 0 0>,
+			<&gpioh 1 0>,
+			<&gpioh 2 0>,
+			/* USB_C1_FRS_EN */
+			<&gpiod 3 0>;
 	};
 
 	kb_bl_pwm {
