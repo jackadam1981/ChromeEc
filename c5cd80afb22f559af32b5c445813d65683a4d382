@@ -70,6 +70,30 @@
       },
       "revId": "c5cd80afb22f559af32b5c445813d65683a4d382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0574d8c1_9469d197",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T22:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557bf57b_690fdb48",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "c5cd80afb22f559af32b5c445813d65683a4d382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
