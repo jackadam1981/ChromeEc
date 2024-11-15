@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ebfcaf7_8320bff0",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-15T19:07:23Z",
+      "side": 1,
+      "message": "Looks like we\u0027re also missing logic to clamp the value like Elan has https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d230-231;drc\u003d0e2ec3e7e7920f033e414885df85f1cbcc091f41. You can put it in a different CL, since it\u0027s distinct from this change.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 72
+      },
+      "revId": "36d047a82b7c566ff792fbb52d7036afba8de83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
