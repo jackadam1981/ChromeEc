@@ -88,6 +88,24 @@
       "parentUuid": "ac5a2612_2d67c4e0",
       "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a548754_f4e08ddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-15T22:55:55Z",
+      "side": 1,
+      "message": "So, then how did we arrive on using a MAX value (unknown -1) rather than the UNKNOWN value? How did we know that that make sense?",
+      "parentUuid": "b5ff9459_0964982b",
+      "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
