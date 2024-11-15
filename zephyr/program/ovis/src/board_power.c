@@ -3,9 +3,13 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
+#include "console.h"
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
+#include "system.h"
 #include "system_boot_time.h"
+#include "zephyr_adc.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -22,6 +26,8 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 #if defined(CONFIG_X86_NON_DSX_PWRSEQ_MTL) || \
 	defined(CONFIG_TEST_X86_NON_DSX_PWRSEQ_MTL)
 #define X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS 50
+
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 void board_ap_power_force_shutdown(void)
 {
@@ -62,4 +68,34 @@ bool board_ap_power_check_power_rails_enabled(void)
 {
 	return power_signal_get(PWR_EN_PP3300_A);
 }
+
+#ifdef CONFIG_POWER_BUTTON_INIT_IDLE
+#define MINIMUM_POWER_IN_MV 1800
+/*
+ * The AP_IDLE flag is not expected to be set when power failure
+ * (e.g. disconnect AC power). The flag is set when CHIPSET_SHUTDOWN
+ * hook is called during AP power state S4 to S5 transition. On Deku,
+ * the voltage drops slowly when AC power is disconnected so taht
+ * PWR_RSMRST_PWRGD is still high when the chipset shutdown hook
+ * function is called. In this case, the AP_IDLE flag is set unexpectly.
+ * To address the issue, use the ADC to read the voltage of system
+ * power, consider it is power fail when the voltage is lower than
+ * certain level and bypass AP_IDLE flag.
+ */
+__override void pb_chipset_shutdown(void)
+{
+	if(adc_read_channel(ADC_PSYS) < MINIMUM_POWER_IN_MV) {
+		CPRINTS("Voltage of PPVAR_SYS is too low, power failure!");
+		return;
+	}
+
+	chip_save_reset_flags(chip_read_reset_flags() | EC_RESET_FLAG_AP_IDLE);
+	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
+	CPRINTS("Voltage of PPVAR_SYS is good");
+	CPRINTS("Saved AP_IDLE flag");
+
+	return;
+}
+
+#endif /* CONFIG_POWER_BUTTON_INIT_IDLE */
 #endif /* CONFIG_X86_NON_DSX_PWRSEQ_MTL */
