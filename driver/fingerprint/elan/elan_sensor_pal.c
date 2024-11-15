@@ -227,8 +227,9 @@ int elan_fp_maintenance(uint16_t *error_state)
 		LOGE_SA("Failed to run maintenance: %d", rv);
 		return EC_ERROR_HW_INTERNAL;
 	}
-	if (sensor_info.num_defective_pixels >= FP_ERROR_DEAD_PIXELS_UNKNOWN)
-		*error_state |= FP_ERROR_DEAD_PIXELS_UNKNOWN;
+	if (sensor_info.num_defective_pixels >=
+	    FP_ERROR_DEAD_PIXELS_UNKNOWN - 1)
+		*error_state |= FP_ERROR_DEAD_PIXELS_UNKNOWN - 1;
 	else {
 		/*
 		 * Reset the number of dead pixels before any update.
