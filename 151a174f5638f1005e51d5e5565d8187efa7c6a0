@@ -39,6 +39,30 @@
       },
       "revId": "151a174f5638f1005e51d5e5565d8187efa7c6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339805fd_283fa871",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T21:54:00Z",
+      "side": 1,
+      "message": "I added it into a separate CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6026693/1",
+      "parentUuid": "300722bb_0faa98c2",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 7
+      },
+      "revId": "151a174f5638f1005e51d5e5565d8187efa7c6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
