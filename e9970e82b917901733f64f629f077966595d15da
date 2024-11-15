@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee5a9bf_6b233a2e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8253,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-15T19:02:20Z",
+      "side": 1,
+      "message": "To be consistent with the rest of the macros below, let\u0027s call it `FP_ERROR_DEAD_PIXELS_MASK`.",
+      "range": {
+        "startLine": 8253,
+        "startChar": 8,
+        "endLine": 8253,
+        "endChar": 26
+      },
+      "revId": "e9970e82b917901733f64f629f077966595d15da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
