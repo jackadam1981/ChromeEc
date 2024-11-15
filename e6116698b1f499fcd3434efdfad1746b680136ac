@@ -124,6 +124,24 @@
       "parentUuid": "3a548754_f4e08ddf",
       "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b4635e_9487c438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T23:04:49Z",
+      "side": 1,
+      "message": "the number of dead pixels reported by vendors is `unit32_t`:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-dartmonkey/ec/driver/fingerprint/fpc/libfp/fpc_private.h;l\u003d131?q\u003dfp_sensor_info_t\u0026start\u003d11#:~:text\u003d130-,131,-132\n\nSo I believe we should be able to handle that. However, if we reach more than 1000 dead pixels, I am sure the sensor is useless.",
+      "parentUuid": "e1f64d52_87bfba62",
+      "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
