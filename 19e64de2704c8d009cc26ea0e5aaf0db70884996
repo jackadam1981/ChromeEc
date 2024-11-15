@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee97834_df0a8a2b",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32l.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T17:08:08Z",
+      "side": 1,
+      "message": "1. What does \"20 bit-times idle\" mean? How long is that in wall-clock time? There should likely be a microsecond -\u003e \"bit-times idle\" converter, so this value is understandable by anyone.\n\n2. How was 20 selected?",
+      "revId": "19e64de2704c8d009cc26ea0e5aaf0db70884996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb53c31_d547c1ce",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32l.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-15T17:08:08Z",
+      "side": 1,
+      "message": "I\u0027m not entirely understanding the design here; why is this looking at the UART receive line?\n\nHow does this handle the case of the EC just being idle and no intending to send any data at all? We don\u0027t want this being called every \"20 bit-times idle\" always and forever, only when the USB is actually intending to send data.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "19e64de2704c8d009cc26ea0e5aaf0db70884996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
