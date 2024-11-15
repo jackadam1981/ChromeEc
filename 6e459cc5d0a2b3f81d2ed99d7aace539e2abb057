@@ -46,6 +46,30 @@
       },
       "revId": "6e459cc5d0a2b3f81d2ed99d7aace539e2abb057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85598c88_8ab1fe24",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-15T21:27:31Z",
+      "side": 1,
+      "message": "Yep, exactly!\n\nI will admit, I have not looked at the rest of the code to confirm that this is 100% the correct behavior. Please inspect all other usages of this dead pixel counts + error flags (through to where we report these as metrics) to ensure that there is proper handling of these values.",
+      "parentUuid": "31765be1_411abf44",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "6e459cc5d0a2b3f81d2ed99d7aace539e2abb057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
