@@ -70,6 +70,24 @@
       "parentUuid": "d68c5a07_483d8b87",
       "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ff9459_0964982b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T22:53:27Z",
+      "side": 1,
+      "message": "not really, I am only looking at the elan and the fpc implementation in the ec code base. \nI believe I looked into biod. My understanding is that biod only schedule the maintenance routine daily and then uploaded the dead pixel count to UMA. \nI saw your reported an bug in the libec implementation.",
+      "parentUuid": "ac5a2612_2d67c4e0",
+      "revId": "e6116698b1f499fcd3434efdfad1746b680136ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
