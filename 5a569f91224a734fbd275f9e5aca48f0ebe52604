@@ -33,6 +33,24 @@
       "message": "Only Rauru/Navi use this header file. Take this chance to rename to mt8196.h ?",
       "revId": "5a569f91224a734fbd275f9e5aca48f0ebe52604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b4dcf8_7c3e1cc9",
+        "filename": "include/power/mt8186.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2024-11-15T14:13:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this would be confusing in the future though. People might think `mt8196.h` is a typo in `mt8186.c`. Or add a comment if we wnat to go for that.",
+      "parentUuid": "af085008_f18c2708",
+      "revId": "5a569f91224a734fbd275f9e5aca48f0ebe52604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
