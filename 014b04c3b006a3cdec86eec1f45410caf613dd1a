@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46f2c6d_29cf919c",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-15T15:39:44Z",
+      "side": 1,
+      "message": "Correct.  These existing implementations of `written()` will probably either unconditioinally wake up some task, which will then consume any bytes available in the queue, or they will run an iteration based on the `count` parameter.  It will be harmless if they should be woken up by the new `queue_flush()` function making a call with zero `count`.",
+      "parentUuid": "c91351cd_a03cb3de",
+      "revId": "014b04c3b006a3cdec86eec1f45410caf613dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b1ce7d8_b210f6ed",
