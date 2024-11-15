@@ -8,7 +8,6 @@
 
 #include "../arbitrage.dtsi"
 #include "../common.dtsi"
-#include "../usbc.dtsi"
 #include "../usba.dtsi"
 #include "../generated.dtsi"
 #include "../interrupts.dtsi"
@@ -16,12 +15,13 @@
 #include "../keyboard.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
+#include "./gpio.dtsi"
+#include "./usbc.dtsi"
 
 / {
 	aliases {
 		bmi3xx-int = &base_accel;
 		lis2dw12-int = &lid_accel;
-		gpio-en-hdmi-pwr = &gpio_en_hdmi_pwr;
 		tcs3400-int = &als_clear;
 	};
 
@@ -232,7 +232,7 @@
 		 * list of GPIO interrupts that have to
 		 * be enabled at initial stage
 		 */
-		sensor-irqs = <&int_imu &int_als_rgb>;
+		sensor-irqs = <&int_imu>;
 		/* list of sensors in force mode */
 		accel-force-mode-sensors = <&als_clear>;
 	};
