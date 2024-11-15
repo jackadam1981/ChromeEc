@@ -16,6 +16,24 @@
       "message": "Do you see anything wrong with this implementation?",
       "revId": "8ad08bb7ad43b4b0b5494aee1a2f3454a9ea560c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0daaf22_b2b27e05",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-15T22:33:48Z",
+      "side": 1,
+      "message": "I believe the reset has to be outside the if/else statement??",
+      "parentUuid": "bb263466_add3e19f",
+      "revId": "8ad08bb7ad43b4b0b5494aee1a2f3454a9ea560c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
