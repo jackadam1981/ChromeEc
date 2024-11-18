@@ -22,6 +22,30 @@
       },
       "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fd64ac_1e07f199",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-18T23:31:44Z",
+      "side": 1,
+      "message": "what happens for the case of `EGIS_API_ERROR_PARAMETER`?",
+      "parentUuid": "284962ee_76ce1c59",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
