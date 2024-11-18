@@ -16,8 +16,11 @@
 #include "../keyboard.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
+#include "cbi.dtsi"
 
 / {
+	/delete-node/ rauru-fw-config;
+
 	aliases {
 		bmi3xx-int = &base_accel;
 		lis2dw12-int = &lid_accel;
