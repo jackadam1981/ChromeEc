@@ -12,6 +12,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "keyboard_backlight.h"
+#include "keyboard_customization.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -49,14 +50,21 @@ test_export_static void fan_init(void)
 DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
 
 static bool key_bl = FW_KB_BL_NOT_PRESENT;
+static bool key_numeric_pad = FW_KB_NUMPAD_NOT_PRESENT;
 
 int8_t board_vivaldi_keybd_idx(void)
 {
 	CPRINTS("idx:This is %s kb backlight.", key_bl ? "with" : "without");
-	if (key_bl == FW_KB_BL_NOT_PRESENT) {
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	CPRINTS("idx:This is %s kb numericpad.",
+		key_numeric_pad ? "with" : "without");
+	if (key_numeric_pad == FW_KB_NUMPAD_PRESENT) {
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_2));
 	} else {
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+		if (key_bl == FW_KB_BL_NOT_PRESENT) {
+			return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+		} else {
+			return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+		}
 	}
 }
 
@@ -80,6 +88,20 @@ test_export_static void kb_init(void)
 	} else {
 		key_bl = FW_KB_BL_NOT_PRESENT;
 		kblight_enable(0);
+	}
+
+	ret = cros_cbi_get_fw_config(FW_KB_NUMPAD, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d, "
+			"assuming FW_KB_NUMERIC_PAD_PRESENT",
+			FW_KB_NUMPAD);
+		val = FW_KB_NUMPAD_NOT_PRESENT;
+	}
+
+	if (val == FW_KB_NUMPAD_PRESENT) {
+		key_numeric_pad = FW_KB_NUMPAD_PRESENT;
+	} else {
+		key_numeric_pad = FW_KB_NUMPAD_NOT_PRESENT;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_FIRST);
