@@ -81,7 +81,7 @@ void fp_sensor_low_power(void)
 
 int fp_sensor_init(void)
 {
-	int ret = egis_sensor_init();
+	egis_api_return_t ret = egis_sensor_init();
 	errors = 0;
 	if (ret == EGIS_API_ERROR_IO_SPI) {
 		errors |= FP_ERROR_SPI_COMM;
@@ -110,8 +110,36 @@ __overridable int fp_finger_match(void *templ, uint32_t templ_count,
 				  uint8_t *image, int32_t *match_index,
 				  uint32_t *update_bitmap)
 {
-	return egis_finger_match(templ, templ_count, image, match_index,
-				 update_bitmap);
+	int rc = EC_MKBP_FP_ERR_MATCH_YES;
+	egis_api_return_t ret = egis_finger_match(templ, templ_count, image,
+						  match_index, update_bitmap);
+
+	switch (ret) {
+	case EGIS_API_MATCH_MATCHED:
+		rc = EC_MKBP_FP_ERR_MATCH_YES;
+		break;
+	case EGIS_API_MATCH_MATCHED_UPDATED:
+		rc = EC_MKBP_FP_ERR_MATCH_YES_UPDATED;
+		break;
+	case EGIS_API_MATCH_MATCHED_UPDATED_FAILED:
+		rc = EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED;
+		break;
+	case EGIS_API_MATCH_NOT_MATCHED:
+		rc = EC_MKBP_FP_ERR_MATCH_NO;
+		break;
+	case EGIS_API_MATCH_LOW_QUALITY:
+		rc = EC_MKBP_FP_ERR_MATCH_NO_LOW_QUALITY;
+		break;
+	case EGIS_API_MATCH_LOW_COVERAGE:
+		rc = EC_MKBP_FP_ERR_MATCH_NO_LOW_COVERAGE;
+		break;
+	default:
+		assert(ret < 0);
+		rc = ret;
+		break;
+	}
+
+	return rc;
 }
 
 __overridable int fp_enrollment_begin(void)
@@ -126,7 +154,27 @@ __overridable int fp_enrollment_finish(void *templ)
 
 __overridable int fp_finger_enroll(uint8_t *image, int *completion)
 {
-	return egis_finger_enroll(image, completion);
+	int rc = EC_MKBP_FP_ERR_ENROLL_OK;
+	egis_api_return_t ret = egis_finger_enroll(image, completion);
+	switch (ret) {
+	case EGIS_API_ENROLL_FINISH:
+	case EGIS_API_ENROLL_IMAGE_OK:
+		break;
+	case EGIS_API_ENROLL_REDUNDANT_INPUT:
+		rc = EC_MKBP_FP_ERR_ENROLL_IMMOBILE;
+		break;
+	case EGIS_API_ENROLL_LOW_QUALITY:
+		rc = EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY;
+		break;
+	case EGIS_API_ENROLL_LOW_COVERAGE:
+		rc = EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE;
+		break;
+	default:
+		assert(ret < 0);
+		rc = ret;
+		break;
+	}
+	return rc;
 }
 
 int fp_maintenance(void)
@@ -149,9 +197,9 @@ enum finger_state fp_finger_status(void)
 {
 	int rc = FINGER_NONE;
 	egislog_i("");
-	rc = egis_check_int_status();
+	egis_api_return_t ret = egis_check_int_status();
 
-	switch (rc) {
+	switch (ret) {
 	case EGIS_API_FINGER_PRESENT:
 		rc = FINGER_PRESENT;
 		break;
