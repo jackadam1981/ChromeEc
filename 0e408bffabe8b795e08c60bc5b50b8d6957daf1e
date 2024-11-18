@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c039862f_a0da1f61",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-18T18:52:06Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "bb02a27f_77368938",
+      "range": {
+        "startLine": 38,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "0e408bffabe8b795e08c60bc5b50b8d6957daf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf92a23b_e3b4ee0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-11T23:50:32Z",
       "side": 1,
       "message": "This is for the error case, right?\n\nThe commit message says \"negative value on error\", so let\u0027s add `assert(rc \u003c 0);` here to make sure that holds.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "0e408bffabe8b795e08c60bc5b50b8d6957daf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e53fab5_f49e48f7",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-18T18:52:06Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "bf92a23b_e3b4ee0a",
       "range": {
         "startLine": 55,
         "startChar": 2,
