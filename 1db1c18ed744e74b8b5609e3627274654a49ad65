@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeeec86b_b7c81fe1",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-18T21:19:06Z",
+      "side": 1,
+      "message": "I meant to finish the above sentece: That is, there are possibly multiple producers in the same binary, some which use flush and some which do not.  And also some consumers like this one, which recognize and handle writes of zero length, and others which do not.  The code as is will correctly handle all four combinations.",
+      "parentUuid": "c006236a_1d94e4a9",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f192dc7_c3c71abe",
