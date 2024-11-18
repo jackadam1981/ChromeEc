@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284962ee_76ce1c59",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-18T21:36:29Z",
+      "side": 1,
+      "message": "my understanding is that error codes at this stage are negative. Am I right?",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
