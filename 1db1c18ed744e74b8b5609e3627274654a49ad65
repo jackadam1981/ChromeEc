@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c006236a_1d94e4a9",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-18T17:54:58Z",
+      "side": 1,
+      "message": "Another reason why this handling in usb-stream.c should not be compile-time dependent on UART capabilities is that I may want to merge the below patch independently of the UART driver enhancements.  That is, there are\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6032769",
+      "parentUuid": "e21bbd68_a1e8fa1e",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f192dc7_c3c71abe",
