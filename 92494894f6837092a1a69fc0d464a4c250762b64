@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaec74bf_2e189478",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-18T10:35:20Z",
+      "side": 1,
+      "message": "Not sure what was the problem before, but running `make BOARD\u003dhost utils -j` now works",
+      "parentUuid": "4cb52b41_81784f90",
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a87737bf_7edf33c4",
@@ -67,6 +85,30 @@
       "writtenOn": "2024-10-31T18:02:38Z",
       "side": 1,
       "message": "Our compiler is a stickler for types.\n\n```suggestion\n\t\tfprintf(stderr, \"Invalid header size. Expected: %zu, got: %zu\\n\",\n```\n\n\n\n```\nutil/comm-renode.cc:60:37: error: format specifies type \u0027int\u0027 but the argument has type \u0027size_t\u0027 (aka \u0027unsigned long\u0027) [-Werror,-Wformat]\n   59 |                 fprintf(stderr, \"Invalid header size. Expected: %d, got: %d\\n\",\n      |                                                                          ~~\n      |                                                                          %zu\n   60 |                         sizeof(struct ec_host_response), result_size);\n      |                                                          ^~~~~~~~~~~\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 50,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b605c2c_abb99a68",
+        "filename": "util/comm-renode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-18T10:35:20Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a87737bf_7edf33c4",
       "range": {
         "startLine": 59,
         "startChar": 50,
@@ -100,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0c5b71d_49ebfdc5",
+        "filename": "util/comm-renode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-18T10:35:20Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e1a1f832_74084be4",
+      "range": {
+        "startLine": 73,
+        "startChar": 59,
+        "endLine": 73,
+        "endChar": 61
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b76801ff_a4e85232",
@@ -113,6 +179,30 @@
       "writtenOn": "2024-10-31T17:53:11Z",
       "side": 1,
       "message": "This needs a forward declaration somewhere.\n\n\n```gcc\n  HOSTCXX  util/ectool\nutil/ectool.cc:12733:8: error: use of undeclared identifier \u0027comm_init_renode\u0027; did you mean \u0027comm_init_dev\u0027?\n 12733 |                         if (comm_init_renode(optarg)) {\n       |                             ^~~~~~~~~~~~~~~~\n       |                             comm_init_dev\nutil/comm-host.h:53:5: note: \u0027comm_init_dev\u0027 declared here\n   53 | int comm_init_dev(const char *device_name);\n      |     ^\n1 error generated.\n```",
+      "range": {
+        "startLine": 12733,
+        "startChar": 7,
+        "endLine": 12733,
+        "endChar": 23
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95dd405_a0c6cb75",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12733,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-18T10:35:20Z",
+      "side": 1,
+      "message": "Declared in `comm-host.h`",
+      "parentUuid": "b76801ff_a4e85232",
       "range": {
         "startLine": 12733,
         "startChar": 7,
@@ -148,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6e422d4_784280f0",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12756,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-18T10:35:20Z",
+      "side": 1,
+      "message": "Added `COMM_RENODE`. There are less changes this way.",
+      "parentUuid": "82df5e60_64a93534",
+      "range": {
+        "startLine": 12756,
+        "startChar": 17,
+        "endLine": 12756,
+        "endChar": 27
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e79f5d0e_0daf1b0d",
         "filename": "util/ectool.cc",
         "patchSetId": 1
@@ -159,6 +273,30 @@
       "writtenOn": "2024-10-31T18:47:28Z",
       "side": 1,
       "message": "Do we need to skip the following code?\n\nI think this would ignore the `help` command.",
+      "range": {
+        "startLine": 12792,
+        "startChar": 0,
+        "endLine": 12797,
+        "endChar": 0
+      },
+      "revId": "92494894f6837092a1a69fc0d464a4c250762b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd24ba24_c19b5988",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12797,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-11-18T10:35:20Z",
+      "side": 1,
+      "message": "No longer relevant as we now use different logic for handling communication with Renode.",
+      "parentUuid": "e79f5d0e_0daf1b0d",
       "range": {
         "startLine": 12792,
         "startChar": 0,
