@@ -12,12 +12,15 @@
 #include "fan.h"
 #include "glassway.h"
 #include "glassway_sub_board.h"
+#include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "led_onoff_states.h"
 #include "led_pwm.h"
 #include "mock/isl923x.h"
+#include "motionsense_sensors.h"
 #include "pwm_mock.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "tcpm/tcpci.h"
 #include "usb_charge.h"
 
@@ -61,6 +64,10 @@ FAKE_VOID_FUNC(usb_charger_task_set_event_sync, int, uint8_t);
 FAKE_VOID_FUNC(usb_interrupt_c1, enum gpio_signal);
 FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
 FAKE_VALUE_FUNC(int, board_get_battery_soc);
+FAKE_VALUE_FUNC(int, cbi_get_ssfc, uint32_t *);
+FAKE_VOID_FUNC(bmi3xx_interrupt, enum gpio_signal);
+FAKE_VOID_FUNC(bma4xx_interrupt, enum gpio_signal);
+FAKE_VOID_FUNC(icm42607_interrupt, enum gpio_signal);
 
 void board_usb_pd_count_init(void);
 static uint32_t fw_config_value;
@@ -96,6 +103,10 @@ static void test_before(void *fixture)
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(cros_cbi_get_fw_config);
 	RESET_FAKE(fan_set_count);
+	RESET_FAKE(bmi3xx_interrupt);
+	RESET_FAKE(bma4xx_interrupt);
+	RESET_FAKE(icm42607_interrupt);
+	RESET_FAKE(cbi_get_ssfc);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -485,4 +496,253 @@ ZTEST(glassway, test_led)
 
 	led_set_color_battery(EC_LED_COLOR_AMBER);
 	zassert_equal(led_set_color_battery_fake.arg0_val, EC_LED_COLOR_AMBER);
+}
+
+static bool clamshell_mode;
+
+static int cbi_get_form_factor_config(enum cbi_fw_config_field_id field,
+				      uint32_t *value)
+{
+	if (field == FORM_FACTOR)
+		*value = clamshell_mode ? CLAMSHELL : CONVERTIBLE;
+
+	return 0;
+}
+
+ZTEST(glassway, test_convertible)
+{
+	const struct device *tablet_mode_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_tablet_mode_l), gpios));
+	const gpio_port_pins_t tablet_mode_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_tablet_mode_l), gpios);
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+	int interrupt_count;
+
+	/* reset tablet mode for initialize status.
+	 * enable int_imu and int_tablet_mode before clashell_init
+	 * for the priorities of sensor_enable_irqs and
+	 * gmr_tablet_switch_init is earlier.
+	 */
+	tablet_reset();
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_tablet_mode));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
+
+	clamshell_mode = false;
+	board_setup_init();
+
+	/* Verify gmr_tablet_switch is enabled, by checking the side effects
+	 * of calling tablet_set_mode, and setting gpio_tablet_mode_l.
+	 */
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 0),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+	zassert_equal(1, tablet_get_mode(), NULL);
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 1),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(0, TABLET_TRIGGER_LID);
+	zassert_equal(0, tablet_get_mode(), NULL);
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 0),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+	zassert_equal(1, tablet_get_mode(), NULL);
+
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	icm42607_interrupt_fake.call_count = 0;
+
+	/* Verify base_imu_irq is enabled. Interrupt is configured
+	 * GPIO_INT_EDGE_FALLING, so set high, then set low.
+	 */
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+	interrupt_count = bmi3xx_interrupt_fake.call_count +
+			  icm42607_interrupt_fake.call_count;
+	zassert_equal(interrupt_count, 1);
+}
+
+ZTEST(glassway, test_clamshell)
+{
+	const struct device *tablet_mode_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_tablet_mode_l), gpios));
+	const gpio_port_pins_t tablet_mode_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_tablet_mode_l), gpios);
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+	int interrupt_count;
+
+	/* reset tablet mode for initialize status.
+	 * enable int_imu and int_tablet_mode before clashell_init
+	 * for the priorities of sensor_enable_irqs and
+	 * gmr_tablet_switch_init is earlier.
+	 */
+	tablet_reset();
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_tablet_mode));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
+
+	clamshell_mode = true;
+	board_setup_init();
+
+	/* Verify gmr_tablet_switch is disabled, by checking the side effects
+	 * of calling tablet_set_mode, and setting gpio_tablet_mode_l.
+	 */
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 0),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+	zassert_equal(0, tablet_get_mode(), NULL);
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 1),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(0, TABLET_TRIGGER_LID);
+	zassert_equal(0, tablet_get_mode(), NULL);
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 0),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+	zassert_equal(0, tablet_get_mode(), NULL);
+
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	icm42607_interrupt_fake.call_count = 0;
+
+	/* Verify base_imu_irq is disabled. */
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+	interrupt_count = bmi3xx_interrupt_fake.call_count +
+			  icm42607_interrupt_fake.call_count;
+	zassert_equal(interrupt_count, 0);
+}
+
+static int ssfc_data;
+
+static int cbi_get_ssfc_mock(uint32_t *ssfc)
+{
+	*ssfc = ssfc_data;
+
+	return 0;
+}
+
+ZTEST(glassway, test_board_setup_init_convertible)
+{
+	const struct device *tablet_mode_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_tablet_mode_l), gpios));
+	const gpio_port_pins_t tablet_mode_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_tablet_mode_l), gpios);
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+	const struct device *lid_accel_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_acc_int_l), gpios));
+	const gpio_port_pins_t lid_accel_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_acc_int_l), gpios);
+	int interrupt_count;
+
+	/* Initial ssfc data for BMA422 and BMI323. */
+	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
+	ssfc_data = 0x00;
+	cros_cbi_ssfc_init();
+
+	/* reset tablet mode for initialize status.
+	 * enable int_imu and int_tablet_mode before clashell_init
+	 * for the priorities of sensor_enable_irqs and
+	 * gmr_tablet_switch_init is earlier.
+	 */
+	tablet_reset();
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_tablet_mode));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
+
+	alt_sensor_init();
+
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
+	clamshell_mode = false;
+	board_setup_init();
+
+	/* Verify gmr_tablet_switch is disabled, by checking the side effects
+	 * of calling tablet_set_mode, and setting gpio_tablet_mode_l.
+	 */
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 0),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+	zassert_equal(1, tablet_get_mode(), NULL);
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 1),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(0, TABLET_TRIGGER_LID);
+	zassert_equal(0, tablet_get_mode(), NULL);
+	zassert_ok(gpio_emul_input_set(tablet_mode_gpio, tablet_mode_pin, 0),
+		   NULL);
+	k_sleep(K_MSEC(100));
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+	zassert_equal(1, tablet_get_mode(), NULL);
+
+	/* Clear base and lid sensor interrupt call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	icm42607_interrupt_fake.call_count = 0;
+	bma4xx_interrupt_fake.call_count = 0;
+
+	/* Verify base and lid sensor interrupt is disabled. */
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(lid_accel_gpio, lid_accel_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	interrupt_count = bmi3xx_interrupt_fake.call_count +
+			  icm42607_interrupt_fake.call_count +
+			  bma4xx_interrupt_fake.call_count;
+	zassert_equal(interrupt_count, 2);
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 1);
+	zassert_equal(icm42607_interrupt_fake.call_count, 0);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
+}
+
+ZTEST(glassway, test_alt_sensor)
+{
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+	/* Initial ssfc data for LSM6DSM and LIS2DW. */
+	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
+	ssfc_data = 0x8;
+	cros_cbi_ssfc_init();
+
+	/* Enable the interrupt int_imu */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	alt_sensor_init();
+
+	/* Clear base interrupt call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	icm42607_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 0);
+	zassert_equal(icm42607_interrupt_fake.call_count, 1);
 }
