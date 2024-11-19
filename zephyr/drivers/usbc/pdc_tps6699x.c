@@ -47,6 +47,10 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
 /** @brief Time between checking TI CMDx register for data ready */
 #define PDC_TI_DATA_READY_TIME_MS (10)
+/** @brief Delay after "New Contract as Consumer" interrupt bit set that the
+ * TPS6699x will accept SRDY to enable the sink path. See b/358274846.
+ */
+#define PDC_TI_NEW_POWER_CONTRACT_DELAY_MS (5)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -264,6 +268,12 @@ struct pdc_data_t {
 	uint32_t events;
 	/* Deferred handler to trigger event to check if data is ready */
 	struct k_work_delayable data_ready;
+	/* Deferred handler to trigger event when new contract has been stable
+	 * long enough that PDC should accept SRDY.
+	 */
+	struct k_work_delayable new_power_contract;
+	/* Set when SRDY may be used. */
+	atomic_t sink_enable_possible;
 	/* Should use cached connector status change bits */
 	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
@@ -403,6 +413,15 @@ static void st_irq_entry(void *o)
 	print_current_state(data);
 }
 
+static void tps_notify_new_contract(struct k_work *work)
+{
+	struct k_work_delayable *dwork = k_work_delayable_from_work(work);
+	struct pdc_data_t *data =
+		CONTAINER_OF(dwork, struct pdc_data_t, new_power_contract);
+
+	atomic_set(&data->sink_enable_possible, 1);
+}
+
 static void st_irq_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -449,6 +468,12 @@ static void st_irq_run(void *o)
 		 * status change bits and re-read from PDC. */
 		if (pdc_interrupt.ucsi_connector_status_change_notification) {
 			data->use_cached_conn_status_change = false;
+		}
+
+		if (pdc_interrupt.new_contract_as_consumer) {
+			k_work_reschedule(
+				&data->new_power_contract,
+				K_MSEC(PDC_TI_NEW_POWER_CONTRACT_DELAY_MS));
 		}
 
 		/* TODO(b/345783692): Handle other interrupt bits. */
@@ -1755,6 +1780,22 @@ static void st_task_wait_run(void *o)
 		len = 0;
 	}
 
+	/* TOOD(b/358274846):
+	 * In general, provide a mechanism to block after receiving the command
+	 * response, and handle non-UCSI commands.
+	 * More specifically, after receiving an ACK for ANeg, block from
+	 * indicating command completion until sink_enable_possible is set. A
+	 * reasonable overall timeout for this wait would be something like
+	 * tSenderResponse (30 ms) + tPSTransition (500 ms) + 5 ms +
+	 * small extra duration. That's the maximum amount of time that it
+	 * should take to go from Request to receiving PS_RDY and the PDC
+	 * subsequently being ready to enable the sink path in a successful
+	 * contract negotiation. If the "new contract" hasn't been asserted
+	 * by this point, it's not going to be. The small extra amount of time
+	 * is in case the PDC can't immediately send Request upon receiving the
+	 * ANeg.
+	 */
+
 	if (data->user_buf && len) {
 		if (data->cci_event.error) {
 			memset(data->user_buf, 0, len);
@@ -2411,6 +2452,8 @@ static int pdc_init(const struct device *dev)
 	k_event_init(&data->pdc_event);
 	k_mutex_init(&data->mtx);
 	k_work_init_delayable(&data->data_ready, tps_check_data_ready);
+	k_work_init_delayable(&data->new_power_contract,
+			      tps_notify_new_contract);
 
 	data->cmd = CMD_NONE;
 	data->dev = dev;
