@@ -320,6 +320,7 @@ if(DEFINED CONFIG_BOARD_RULL)
 	zephyr_library_sources(
 			"rull/src/board.c"
 			"rull/src/sub_board.c"
+			"rull/src/board_touchpanal.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "rull/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "rull/src/charger.c")
