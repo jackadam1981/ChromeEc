@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6766d005_fc88897c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-19T19:21:23Z",
+      "side": 1,
+      "message": "Confirmed fpsensor_hw with FPC sensor work:\n\n```bash\n./test/run_device_tests.py --board\u003dhelipilot --with_private\u003dno \\\n       --flasher\u003dservo_micro --tests fpsensor_hw\n\n# Test \"fpsensor_hw\": PASSED\n```",
+      "parentUuid": "fb8fe90a_ba529263",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 54
+      },
+      "revId": "c5074e9cc4b5afb94107a3777f45489a7fd4b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc524619_285b4625",
