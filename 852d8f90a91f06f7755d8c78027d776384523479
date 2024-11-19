@@ -16,6 +16,24 @@
       "message": "This CL is calling `queue_flush()` without `STM32_USART_CR2_RTOEN` being checked.\n\nAs noted in my other comment, it\u0027s possible for these bits to get stuck if they don\u0027t fill a packet and the timer is not enabled.",
       "revId": "852d8f90a91f06f7755d8c78027d776384523479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ad7d7b_55e4efee",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-19T19:30:42Z",
+      "side": 1,
+      "message": "I created this CL to demonstrate why it does not make sense to make the flushing support of generic queue interface (and particular USB consumer of that interface), to be dependent on whether the chip has timeout support in its UART circuitry.\n\nThis particular producer, and the USB consumer, could be instantiated by a board that does not instantiate any UART producers.  This particular producer just needs to \"remember\" to call `queue_flush()` each time after it is finished putting data into the queue.  There is no need for it to be aware of UART capapabilities of the chip it is running on.",
+      "parentUuid": "14b2dc40_34cee62f",
+      "revId": "852d8f90a91f06f7755d8c78027d776384523479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
