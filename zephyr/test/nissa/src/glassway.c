@@ -18,6 +18,7 @@
 #include "led_pwm.h"
 #include "mock/isl923x.h"
 #include "motionsense_sensors.h"
+#include "nissa_hdmi.h"
 #include "pwm_mock.h"
 #include "system.h"
 #include "tablet_mode.h"
@@ -85,6 +86,58 @@ get_fake_sub_board_fw_config_field(enum cbi_fw_config_field_id field_id,
 	*value = fw_config_value;
 	return 0;
 }
+
+static int get_gpio_output(const struct gpio_dt_spec *const spec)
+{
+	return gpio_emul_output_get(spec->port, spec->pin);
+}
+
+struct glassway_sub_board_fixture {
+	const struct gpio_dt_spec *sb_1;
+	const struct gpio_dt_spec *sb_2;
+	const struct gpio_dt_spec *sb_3;
+	const struct gpio_dt_spec *sb_4;
+};
+
+static void *suite_setup_fn()
+{
+	struct glassway_sub_board_fixture *fixture =
+		k_malloc(sizeof(struct glassway_sub_board_fixture));
+
+	zassume_not_null(fixture);
+	fixture->sb_1 = GPIO_DT_FROM_NODELABEL(gpio_sb_1);
+	fixture->sb_2 = GPIO_DT_FROM_NODELABEL(gpio_sb_2);
+	fixture->sb_3 = GPIO_DT_FROM_NODELABEL(gpio_sb_3);
+	fixture->sb_4 = GPIO_DT_FROM_NODELABEL(gpio_sb_4);
+
+	return fixture;
+}
+
+static void test_before_fn(void *fixture_)
+{
+	struct glassway_sub_board_fixture *fixture = fixture_;
+
+	/* Reset cached global state. */
+	glassway_cached_sub_board = GLASSWAY_SB_UNKNOWN;
+	fw_config_value = -1;
+
+	/* Return the fake fw_config value. */
+	RESET_FAKE(cros_cbi_get_fw_config);
+	cros_cbi_get_fw_config_fake.custom_fake =
+		get_fake_sub_board_fw_config_field;
+
+	/* Unconfigure sub-board GPIOs. */
+	gpio_pin_configure_dt(fixture->sb_1, GPIO_DISCONNECTED);
+	gpio_pin_configure_dt(fixture->sb_2, GPIO_DISCONNECTED);
+	gpio_pin_configure_dt(fixture->sb_3, GPIO_DISCONNECTED);
+	gpio_pin_configure_dt(fixture->sb_4, GPIO_DISCONNECTED);
+	/* Reset C1 interrupt to deasserted. */
+	gpio_emul_input_set(fixture->sb_1->port, fixture->sb_1->pin, 1);
+
+	RESET_FAKE(usb_interrupt_c1);
+}
+ZTEST_SUITE(glassway_sub_board, NULL, suite_setup_fn, test_before_fn, NULL,
+	    NULL);
 
 static void set_sb_config(uint32_t value)
 {
@@ -459,6 +512,17 @@ ZTEST(glassway, test_db_without_c)
 
 	ASSERT_GPIO_FLAGS(GPIO_DT_FROM_NODELABEL(gpio_sb_1),
 			  GPIO_PULL_UP | GPIO_INPUT | GPIO_INT_EDGE_FALLING);
+
+	/* Set the sub-board, reported configuration is correct. */
+	set_sb_config(FW_SUB_BOARD_5);
+	zassert_equal(glassway_get_sb_type(), GLASSWAY_SB_HDMI_LTE);
+	zassert_equal(board_get_usb_pd_port_count(), 1);
+
+	init_gpios(NULL);
+	hook_notify(HOOK_INIT);
+
+	ASSERT_GPIO_FLAGS(GPIO_DT_FROM_NODELABEL(gpio_sb_1),
+			  GPIO_PULL_UP | GPIO_INPUT | GPIO_INT_EDGE_FALLING);
 }
 
 ZTEST(glassway, test_db_with_c)
@@ -491,6 +555,54 @@ ZTEST(glassway, test_db_with_c)
 
 	ASSERT_GPIO_FLAGS(GPIO_DT_FROM_NODELABEL(gpio_sb_1),
 			  GPIO_PULL_UP | GPIO_INPUT | GPIO_INT_EDGE_FALLING);
+}
+
+ZTEST(glassway, test_db_with_hdmi)
+{
+	/* Set the sub-board, reported configuration is correct. */
+	set_sb_config(FW_SUB_BOARD_5);
+	zassert_equal(glassway_get_sb_type(), GLASSWAY_SB_HDMI_LTE);
+
+	init_gpios(NULL);
+	hook_notify(HOOK_INIT);
+}
+
+ZTEST_F(glassway_sub_board, test_db_with_lte)
+{
+	set_sb_config(FW_SUB_BOARD_4);
+	zassert_equal(glassway_get_sb_type(), GLASSWAY_SB_1C_LTE);
+
+	init_gpios(NULL);
+	hook_notify(HOOK_INIT);
+
+	/* GPIOs are configured as expected. */
+	ASSERT_GPIO_FLAGS(fixture->sb_2 /* Standby power enable */,
+			  GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW);
+
+	/* LTE power gets enabled on S5. */
+	ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
+	zassert_equal(get_gpio_output(fixture->sb_2), 1);
+	/* And disabled on G3. */
+	ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+	zassert_equal(get_gpio_output(fixture->sb_2), 0);
+
+	init_gpios(NULL);
+	hook_notify(HOOK_INIT);
+
+	set_sb_config(FW_SUB_BOARD_5);
+	zassert_equal(glassway_get_sb_type(), GLASSWAY_SB_HDMI_LTE);
+
+	/* GPIOs are configured as expected. */
+	ASSERT_GPIO_FLAGS(fixture->sb_2 /* Standby power enable */,
+			  GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW);
+
+	/* LTE power gets enabled on S5. */
+	ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
+	zassert_equal(get_gpio_output(fixture->sb_2), 1);
+	/* And disabled on G3. */
+	ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+	zassert_equal(get_gpio_output(fixture->sb_2), 0);
+	hook_notify(HOOK_INIT);
 }
 
 ZTEST(glassway, test_led)
