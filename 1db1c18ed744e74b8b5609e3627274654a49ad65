@@ -168,6 +168,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4702ea_eb3ff2a1",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-19T19:26:35Z",
+      "side": 1,
+      "message": "What I mean is any particular producer will either know about and use `queue_flush()` or it will not, and in the latter case, the code here will never buffer data, so nothing will become \"stuck\".\n\nIt is not sensible to prevent other producers from taking advantage of `queue_flush()` merely because the UART hardware on the particular chip does not have the timeout capability.  For any particular board, it could be that there are no instances of UART producers feeding into USB anyway, yet, there could be other producers that could have use for flush.\n\nBecause of the above, I intended to design this consumer such that it dynamically discovers if each particular instance (USB endpoint) is connected to a produces that uses flush().\n\nIf `STM32_USART_CR2_RTOEN` in the next patch is not defined (no UART hardware support), then the code here will never set `USB_STREAM_TX_USES_FLUSH` for instances connected to a UART, and hence no data will get stuck.  However, that will not prevent e.g. the CMSIS-DAP producer from taking advantage of buffering and explicit flushing.",
+      "parentUuid": "c175b1f6_0eb085d8",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1db1c18ed744e74b8b5609e3627274654a49ad65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f192dc7_c3c71abe",
