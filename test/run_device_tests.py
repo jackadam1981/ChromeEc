@@ -446,6 +446,7 @@ class Renode(Platform):
                 "flash_write_protect",
                 "fpsensor_hw",
                 "fp_transport",
+                "ftrapv",  # TODO(b/379880481)
                 "libcxx",
                 "malloc",
                 "mpu",
