@@ -1396,7 +1396,8 @@ static void run_unattached_policies(struct pdc_port_t *port)
 					     UNA_POLICY_CC_MODE)) {
 		/* Set CC PULL Resistor and TrySrc or TrySnk */
 		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
-		if (port->una_policy.cc_mode == CCOM_DRP) {
+		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+		    port->una_policy.cc_mode == CCOM_DRP) {
 			/* Apply DRP mode after setting CCOM_DRP
 			 * SET_CCOM doesn't specify what DRP mode we'll enter
 			 * so we should follow up by setting it ourselves.
