@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c33cc6_22a5a21b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-11-19T03:28:06Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "42d884613868cf92f4f355b82883109eedc83bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa234aa9_041a3740",
+        "filename": "zephyr/program/nissa/rull/src/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-11-19T03:28:06Z",
+      "side": 1,
+      "message": "Replacing project name with something more self-explanatory. Like `keyboard_without_numpad`.",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "42d884613868cf92f4f355b82883109eedc83bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7865ecf_8de98eb6",
+        "filename": "zephyr/program/nissa/rull/src/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-11-19T03:28:06Z",
+      "side": 1,
+      "message": "Again, replace the project name with `keyboard_with_numpad`.",
+      "revId": "42d884613868cf92f4f355b82883109eedc83bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b532ee44_0fca4e38",
+        "filename": "zephyr/program/nissa/rull/src/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-11-19T03:28:06Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to add `return` below?",
+      "revId": "42d884613868cf92f4f355b82883109eedc83bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dca5543_ef1ed083",
+        "filename": "zephyr/program/nissa/rull/src/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-11-19T03:28:06Z",
+      "side": 1,
+      "message": "I think it\u0027s better to replace project name with something more straightforward, like `numpad keyboard matrix`.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "42d884613868cf92f4f355b82883109eedc83bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b7bfde_a07c82f7",
+        "filename": "zephyr/program/nissa/rull/src/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-11-19T03:28:06Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "42d884613868cf92f4f355b82883109eedc83bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
