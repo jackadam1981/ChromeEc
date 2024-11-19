@@ -94,6 +94,30 @@
       },
       "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a6a421_02baeb6a",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-19T06:05:25Z",
+      "side": 1,
+      "message": "shall we add??\n```\ndefault:\n\t\tassert(rc \u003c 0);\n\t\trc \u003d code;\n\t\tbreak;\n```",
+      "parentUuid": "81f82106_28408210",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
