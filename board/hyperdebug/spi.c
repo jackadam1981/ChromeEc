@@ -733,7 +733,7 @@ int usb_spi_board_transaction_flush(const struct spi_device_t *spi_device)
 	return spi_transaction_flush(spi_device);
 }
 
-static int await_falling_edge(int gsc_ready_pin, timestamp_t deadline)
+int await_falling_edge(int gsc_ready_pin, timestamp_t deadline)
 {
 	while (!gpio_get_level(gsc_ready_pin)) {
 		timestamp_t now = get_time();
