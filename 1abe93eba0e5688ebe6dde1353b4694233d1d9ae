@@ -70,6 +70,30 @@
       },
       "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f82106_28408210",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-19T02:12:49Z",
+      "side": 1,
+      "message": "yes, the value would be negative at this stage.\n`EGIS_API_ERROR_PARAMETER` happened when input @para templ or image are null. It whill do nothing just return `EGIS_API_ERROR_PARAMETER`.\n\n\nYes, the brief description in `fp_finger_match` show `@return negative value on error`. So we just return egis_api_return_t enum.",
+      "parentUuid": "c0d71cf1_77f328eb",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
