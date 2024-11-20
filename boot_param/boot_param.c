@@ -8,7 +8,9 @@
 #include "cdi.h"
 #include "boot_param.h"
 #include "boot_param_platform.h"
-
+#include "console.h"
+extern void dump_blob(const char *, const void *, size_t);
+static int dump_generate_key = 0;
 /* Common structure to build Sig_structure or DICE Handover structure
  */
 
@@ -537,11 +539,15 @@ static bool generate_key(
 	const struct slice_mut_s drbg_seed_slice =
 		digest_as_slice_mut(drbg_seed);
 
+	if (dump_generate_key)
+		dump_blob("UDS keygen input", input, DIGEST_BYTES);
 	if (!__platform_hkdf_sha256(input_slice, kAsymSaltSlice,
 				    kKeyPairLabel, drbg_seed_slice)) {
 		__platform_log_str("ASYM_KDF failed");
 		return false;
 	}
+
+	dump_generate_key = 0;
 	return __platform_ecdsa_p256_keygen_hmac_drbg(drbg_seed, key);
 }
 
@@ -701,12 +707,16 @@ static inline bool fill_uds_details_with_key(
 		__platform_log_str("Failed to get UDS pubkey");
 		return false;
 	}
+
+	dump_blob("UDS pub key", &uds_pub_key, sizeof(uds_pub_key));
 	if (!generate_id_from_pub_key(&uds_pub_key, uds_id)) {
 		__platform_log_str("Failed to generate UDS_ID");
 		return false;
 	}
 	/* ISS = hex(UDS_ID) */
 	fill_dice_id_string(uds_id, cwt_claims->iss.value);
+	dump_blob("UDS ID", uds_id, sizeof(uds_id));
+
 	if (!fill_cdi_cert_signature(ctx, uds_key)) {
 		__platform_log_str("Failed to sign CDI cert");
 		return false;
@@ -734,10 +744,13 @@ static inline bool fill_uds_details(
 	const void *uds_key;
 	bool result;
 
+	dump_blob("in fill_uds_details:", &ctx->cfg.uds, sizeof(ctx->cfg.uds));
+	dump_generate_key = 1;
 	if (!generate_key(ctx->cfg.uds, &uds_key)) {
 		__platform_log_str("Failed to generate UDS key");
 		return false;
 	}
+	dump_blob("UDS priv key", uds_key, 32);
 	result = fill_uds_details_with_key(ctx, uds_key);
 	__platform_ecdsa_p256_free(uds_key);
 
@@ -895,6 +908,7 @@ size_t get_boot_param_bytes(
 	struct dice_ctx_s ctx;
 	uint8_t *src = (uint8_t *)&ctx.output;
 
+	ccprintf("%s:%d\n", __func__, __LINE__);
 	if (size == 0 || offset >= BOOT_PARAM_SIZE)
 		return 0;
 	if (size > BOOT_PARAM_SIZE - offset)
@@ -928,6 +942,7 @@ size_t get_dice_chain_bytes(
 	struct dice_ctx_s ctx;
 	uint8_t *src = (uint8_t *)&ctx.output.dice_handover.options;
 
+	ccprintf("%s:%d\n", __func__, __LINE__);
 	if (size == 0 || offset >= DICE_CHAIN_SIZE)
 		return 0;
 	if (size > DICE_CHAIN_SIZE - offset)
