@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b67709_59f13a88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:51:38Z",
+      "side": 1,
+      "message": "I don\u0027t see an easy way to write a unit test for this and the CQ tests are not going to exercise this behavior. You will probably need to do a manual test, which would involve something like manually setting `sensor_info.num_defective_pixels` to a value greater than `FP_ERROR_DEAD_PIXELS_MAX` and checking the log messages to make sure it gets clamped.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9436db6_8383311a",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:51:38Z",
+      "side": 1,
+      "message": "You could write this a little more concisely with:\n\n```\n*error_state |\u003d FP_ERROR_DEAD_PIXELS(MAX(sensor_info.num_defective_pixels, FP_ERROR_DEAD_PIXELS_MAX));\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
