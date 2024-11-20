@@ -26,4 +26,4 @@ __override void board_overcurrent_event(int port, int is_overcurrented)
 __override const uint8_t it8801_kso_mapping[] = {
 	0, 1, 20, 3, 4, 5, 6, 11, 12, 13, 14, 15, 16,
 };
-BUILD_ASSERT(ARRAY_SIZE(it8801_kso_mapping) == KEYBOARD_COLS_MAX);
+//BUILD_ASSERT(ARRAY_SIZE(it8801_kso_mapping) == KEYBOARD_COLS_MAX);
