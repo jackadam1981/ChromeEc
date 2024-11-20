@@ -85,6 +85,30 @@
       },
       "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b41e58f_6c6eb00c",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-20T23:45:10Z",
+      "side": 1,
+      "message": "Agreed. Both EC and Zephyr have the CLAMP macro. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6024129/comment/e00ae062_ac76c761/.",
+      "parentUuid": "e9436db6_8383311a",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
