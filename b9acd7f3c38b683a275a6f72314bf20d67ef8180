@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2373d274_39a83caf",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-20T22:59:41Z",
+      "side": 1,
+      "message": "```suggestion\n#include \"timer.h\"\n#include \"util.h\"\n```\n\nDoes this work?",
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9436db6_8383311a",
         "filename": "driver/fingerprint/fpc/fpc_sensor.c",
         "patchSetId": 5
@@ -39,6 +56,29 @@
       "message": "You could write this a little more concisely with:\n\n```\n*error_state |\u003d FP_ERROR_DEAD_PIXELS(MAX(sensor_info.num_defective_pixels, FP_ERROR_DEAD_PIXELS_MAX));\n```",
       "range": {
         "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00ae062_ac76c761",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-11-20T22:59:41Z",
+      "side": 1,
+      "message": "```suggestion\n\t*error_state \u0026\u003d ~FP_ERROR_DEAD_PIXELS_MASK;\n\t*error_state |\u003d CLAMP(sensor_info.num_defective_pixels, 0,\n\t\t\t      FP_ERROR_DEAD_PIXELS_MAX);\n```\n\nDoes this work?",
+      "range": {
+        "startLine": 53,
         "startChar": 0,
         "endLine": 59,
         "endChar": 2
