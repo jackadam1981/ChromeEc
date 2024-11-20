@@ -19,7 +19,11 @@
  */
 int keyboard_raw_is_input_low(int port, int id)
 {
+#if 0
 	const struct device *io_dev = mchp_xec_get_gpio_dev(port);
 
 	return gpio_pin_get_raw(io_dev, id) == 0;
+#else
+	return 0;
+#endif
 }
