@@ -12,6 +12,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <algorithm>
 #include <endian.h>
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -214,7 +215,7 @@ static size_t trace_to_pcap(uint8_t *pcap_buf, size_t pcap_buf_size,
 		.msg_type = e->msg_type,
 	};
 
-	count = MIN(e->pdc_data_size, pcap_buf_size - sizeof(th));
+	count = std::min<size_t>(e->pdc_data_size, pcap_buf_size - sizeof(th));
 
 	memcpy(pcap_buf, &th, sizeof(th));
 	memcpy(&pcap_buf[sizeof(th)], e->pdc_data, count);

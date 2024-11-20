@@ -29,7 +29,7 @@ int ec_flash_read(uint8_t *buf, int offset, int size)
 	/* Read data in chunks */
 	for (i = 0; i < size; i += ec_max_insize) {
 		p.offset = offset + i;
-		p.size = MIN(size - i, ec_max_insize);
+		p.size = std::min(size - i, ec_max_insize);
 		rv = ec_command(EC_CMD_FLASH_READ, 0, &p, sizeof(p), ec_inbuf,
 				p.size);
 		if (rv < 0) {
@@ -180,7 +180,7 @@ int ec_flash_write(const uint8_t *buf, int offset, int size)
 
 	for (i = 0; i < size; i += step) {
 		p->offset = offset + i;
-		p->size = MIN(size - i, step);
+		p->size = std::min(size - i, step);
 		memcpy(p + 1, buf + i, p->size);
 		rv = ec_command(EC_CMD_FLASH_WRITE, 0, p, sizeof(*p) + p->size,
 				NULL, 0);
