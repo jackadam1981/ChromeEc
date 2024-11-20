@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5850b8af_3059072c",
+        "filename": "board/drawcia/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-20T02:10:17Z",
+      "side": 1,
+      "message": "Please remove this, enabling will be in a separate CL",
+      "fixSuggestions": [
+        {
+          "fixId": "923836e7_35b31e8f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/drawcia/board.h",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 17,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "b113eac9a05bce0b80cdef8611fbefc06db7855f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

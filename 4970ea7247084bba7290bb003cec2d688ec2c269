@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fbc4af5_a94b390c",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-20T02:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e12e20_a509f26f",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61af0f6_bffa60a3",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "In combinational mode, we don\u0027t have timer3 interrupt enabled.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/it83xx/hwtimer.c#25",
       "parentUuid": "d61af0f6_bffa60a3",
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08485db3_2cf5cdd5",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-20T02:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c305984c_4bef7455",
       "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -226,6 +262,30 @@
       "side": 1,
       "message": "We use task_enable_irq()/task_disable_irq() to enable/disable SOC\u0027s interrupt when needed.",
       "parentUuid": "02896a78_897d654d",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 4
+      },
+      "revId": "4970ea7247084bba7290bb003cec2d688ec2c269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6808040_81c6b95e",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-20T02:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "348c58af_a279b82b",
       "range": {
         "startLine": 236,
         "startChar": 1,
