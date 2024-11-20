@@ -8,7 +8,6 @@
 
 #include "../arbitrage.dtsi"
 #include "../common.dtsi"
-#include "../usbc.dtsi"
 #include "../usba.dtsi"
 #include "../generated.dtsi"
 #include "../interrupts.dtsi"
@@ -16,6 +15,7 @@
 #include "../keyboard.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
+#include "usbc.dtsi"
 
 / {
 	aliases {
@@ -23,6 +23,46 @@
 		lis2dw12-int = &lid_accel;
 		gpio-en-hdmi-pwr = &gpio_en_hdmi_pwr;
 		tcs3400-int = &als_clear;
+	};
+
+	named-adc-channels {
+		/delete-node/ ec_usb_c0_vbus_sense;
+		/delete-node/ ec_usb_c1_vbus_sense;
+	};
+
+	named-gpios {
+		/delete-node/ usb_c0_frs_en;
+		/delete-node/ usb_c1_frs_en;
+		/delete-node/ usb_c0_ppc_int_odl;
+		/delete-node/ usb_c1_ppc_int_odl;
+
+		gpio_ec_i2c_pdc_sm_int_odl: ec_i2c_pdc_sm_int_odl {
+			gpios = <&gpiod 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_i2c_pdc_s_int_odl: ec_i2c_pdc_s_int_odl {
+			gpios = <&gpiof 1 GPIO_INPUT>;
+		};
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+
+		unused-gpios =
+			<&gpioa 7 GPIO_INPUT>,
+			<&gpiod 3 GPIO_INPUT>,
+			<&gpiof 0 GPIO_INPUT>,
+			/* pd1cc1 */
+			<&gpiof 4 GPIO_INPUT>,
+			/* pd1cc2 */
+			<&gpiof 5 GPIO_INPUT>,
+			/* pd2cc1 */
+			<&gpioh 1 GPIO_INPUT>,
+			/* pd2cc2 */
+			<&gpioh 2 GPIO_INPUT>,
+			/* adc0 */
+			<&gpioi 0 GPIO_INPUT>,
+			/* adc1 */
+			<&gpioi 1 GPIO_INPUT>;
 	};
 
 	/* Rotation matrix used by drivers. */
