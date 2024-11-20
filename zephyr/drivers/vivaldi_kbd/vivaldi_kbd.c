@@ -163,7 +163,7 @@ static void vivaldi_kbd_init(void)
 			DEVICE_DT_GET(CROS_EC_KEYBOARD_NODE), row, col, true);
 #endif
 
-		set_scancode_set2(row, col, action_scancodes[key]);
+		//set_scancode_set2(row, col, action_scancodes[key]);
 
 #if defined(CONFIG_PLATFORM_EC_KEYBOARD_CROS_EC_RAW_KB) || defined(CONFIG_ZTEST)
 		if (key == TK_VOL_UP) {
