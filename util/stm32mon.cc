@@ -29,6 +29,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <algorithm>
 #include <arpa/inet.h>
 #include <compile_time_macros.h>
 #include <fcntl.h>
@@ -346,8 +347,6 @@ command_erase_t command_erase_i2c;
 command_erase_t *erase;
 
 static void discard_input(int);
-
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 /* On user request save all data exchange with the target in this log file. */
 static FILE *log_file;
@@ -942,7 +941,7 @@ int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 	payload_t loads[2] = { { 4, (uint8_t *)&addr_be }, { 1, &cnt } };
 
 	while (remaining) {
-		uint32_t bytes = MIN(remaining, PAGE_SIZE);
+		uint32_t bytes = std::min<uint32_t>(remaining, PAGE_SIZE);
 
 		cnt = (uint8_t)(bytes - 1);
 		addr_be = htonl(address);
@@ -974,7 +973,7 @@ int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 			       { sizeof(outbuf), outbuf } };
 
 	while (remaining) {
-		cnt = MIN(remaining, PAGE_SIZE);
+		cnt = std::min<uint32_t>(remaining, PAGE_SIZE);
 		/* skip empty blocks to save time */
 		for (i = 0; i < cnt && buffer[i] == 0xff; i++)
 			;
@@ -1692,7 +1691,7 @@ int main(int argc, char **argv)
 			/* Mass erase is not supported on these chips*/
 			int i, page_count = chip->flash_size / chip->page_size;
 			for (i = 0; i < page_count; i += 128) {
-				int count = MIN(128, page_count - i);
+				int count = std::min(128, page_count - i);
 				ret = erase(ser, count, i);
 				if (IS_STM32_ERROR(ret))
 					goto terminate;

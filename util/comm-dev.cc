@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <algorithm>
 #include <fcntl.h>
 #include <poll.h>
 #include <sys/ioctl.h>
@@ -136,7 +137,7 @@ static int ec_command_dev_v2(int command, int version, const void *outdata,
 	assert(insize == 0 || indata != NULL);
 
 	s_cmd = (struct cros_ec_command_v2 *)(malloc(
-		sizeof(struct cros_ec_command_v2) + MAX(outsize, insize)));
+		sizeof(struct cros_ec_command_v2) + std::max(outsize, insize)));
 	if (s_cmd == NULL)
 		return -EC_RES_ERROR;
 
@@ -165,7 +166,7 @@ static int ec_command_dev_v2(int command, int version, const void *outdata,
 		}
 	}
 	if (r >= 0) {
-		memcpy(indata, s_cmd->data, MIN(r, insize));
+		memcpy(indata, s_cmd->data, std::min(r, insize));
 		if (s_cmd->result != EC_RES_SUCCESS) {
 			fprintf(stderr, "EC result %d (%s)\n", s_cmd->result,
 				strresult(s_cmd->result));

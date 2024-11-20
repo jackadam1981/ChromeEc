@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <algorithm>
 #include <getopt.h>
 #include <sys/stat.h>
 
@@ -388,7 +389,7 @@ int main(int argc, char *argv[])
 	param_parse_cmd_line(argc, argv);
 
 	/* Configure COM Port parameters */
-	port_cfg.baudrate = MAX(baudrate, BR_LOW_LIMIT);
+	port_cfg.baudrate = std::max<uint32_t>(baudrate, BR_LOW_LIMIT);
 	port_cfg.byte_size = CS8;
 	port_cfg.flow_control = 0;
 	port_cfg.parity = 0;

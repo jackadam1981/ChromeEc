@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include <algorithm>
 #include <sys/io.h>
 #include <sys/param.h>
 #include <unistd.h>
@@ -35,14 +36,14 @@ static int wait_for_ec(int status_addr, int timeout_usec)
 		 * busy flag is set by hardware.  Minor issue in any case,
 		 * since the initial delay is very short.
 		 */
-		usleep(MIN(delay, timeout_usec - i));
+		usleep(std::min(delay, timeout_usec - i));
 
 		if (!(inb(status_addr) & EC_LPC_STATUS_BUSY_MASK))
 			return 0;
 
 		/* Increase the delay interval after a few rapid checks */
 		if (i > 20)
-			delay = MIN(delay * 2, MAXIMUM_UDELAY);
+			delay = std::min(delay * 2, MAXIMUM_UDELAY);
 	}
 	return -1; /* Timeout */
 }
