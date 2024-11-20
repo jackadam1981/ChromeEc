@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1b41a9_5773449b",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-20T19:12:43Z",
+      "side": 1,
+      "message": "maybe we should create a variable equal to this value and use it in both places (this assumes that the key file and key object in Cloud KMS are named using the same string, which would be a good policy I think)\n\nup to you.",
+      "range": {
+        "startLine": 145,
+        "startChar": 33,
+        "endLine": 145,
+        "endChar": 64
+      },
+      "revId": "ad121d794e103732e26e621bba391b262d39b4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
