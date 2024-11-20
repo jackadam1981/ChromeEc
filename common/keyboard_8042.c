@@ -424,6 +424,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
+	CPRINTS("KB scancode %d:%d success", row, col);
 	scancode_bytes(make_code, pressed, code_set, scan_code, len);
 	return EC_SUCCESS;
 }

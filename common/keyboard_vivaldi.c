@@ -181,6 +181,7 @@ static void vivaldi_init(void)
 
 			/* Populate the scancode */
 			set_scancode_set2(row, col, action_scancodes[key]);
+			xx
 			CPRINTS("VIVALDI key-%u (r-%u, c-%u) = scancode-%X", i,
 				row, col, action_scancodes[key]);
 
