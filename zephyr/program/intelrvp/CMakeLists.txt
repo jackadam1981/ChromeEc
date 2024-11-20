@@ -37,3 +37,7 @@ if(DEFINED CONFIG_BOARD_PTLRVP_COMMON)
   add_subdirectory(ptlrvp)
   zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT "src/dc_jack.c")
 endif()
+
+if(DEFINED CONFIG_BOARD_PTLGCS)
+  zephyr_library_sources("src/kbd_gcs.c")
+endif()
