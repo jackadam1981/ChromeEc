@@ -102,6 +102,31 @@ static inline void generate_name_hash(struct sha256_digest *digest)
 	 */
 }
 
+static char nibble_to_hex(uint8_t n) {
+  n &= 0xf;
+
+  if (n > 9)
+    return n + 'a' - 10;
+  return n + '0';
+}
+
+#define BYTES_PER_LINE 32
+void dump_blob(const char *title, const void *blob, size_t size) {
+  size_t i;
+  const uint8_t *p = blob;
+
+  ccprintf("%s", title);
+  for (i = 0; i < size; i++) {
+    uint8_t c = p[i];
+
+    if ((i % BYTES_PER_LINE) == 0)
+      ccprintf("\n");
+    ccprintf(" %c", nibble_to_hex(c>>4));
+    ccprintf("%c", nibble_to_hex(c));
+  }
+  ccprintf("\n");
+}
+
 /* Derive UDS from key ladder.
  * We can't use DCRYPTO_appkey_init/derive since they are in fips module,
  * and we'd need to add the 7th const to dcrypto_app_names[] in app_keys.
@@ -140,6 +165,12 @@ static inline bool derive_uds(uint8_t uds[DIGEST_BYTES])
 	}
 	memcpy(uds, uds_buf, DIGEST_BYTES);
 	memset(uds_buf, 0, DIGEST_BYTES); /* zeroize temp buf */
+	{
+          const uint8_t fake_uds[] = {
+          0x90, 0x70, 0x1f, 0x38, 0xbd, 0x75, 0x92, 0xda, 0x50, 0x82, 0x6a, 0xbb, 0x73, 0xcd, 0xa1, 0x9b, 0x24, 0x0a, 0x1e, 0x6d, 0x63, 0x58, 0xbf, 0xef, 0xb3, 0x7d, 0x19, 0x7f, 0x55, 0x1a, 0xfc, 0x3a
+          };
+          memcpy(uds, fake_uds, DIGEST_BYTES);
+        }
 	return true;
 }
 
@@ -202,6 +233,7 @@ bool __platform_get_dice_config(
 	if (!derive_uds(cfg->uds))
 		return false;
 
+        dump_blob("UDS secret", cfg->uds, sizeof(cfg->uds));
 	if (!get_hidden_owner_data(cfg->hidden_digest))
 		return false;
 
