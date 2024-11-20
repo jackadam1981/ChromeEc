@@ -70,6 +70,24 @@
       "parentUuid": "02f41aa2_5c84d163",
       "revId": "73f553dcec83d0ed5f7bd066bde19edb85589dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e5829c_c3ceb17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2024-11-20T02:25:40Z",
+      "side": 1,
+      "message": "Dry run failed on formatting: \n```  18:17:05: WARNING: chip/it83xx/irq.c: needs formatting\n      18:17:11: WARNING: core/nds32/task.c: needs formatting\n      18:17:45: NOTICE: You can fix formatting errors by running:\n        cros format chip/it83xx/irq.c core/nds32/task.c\n```",
+      "parentUuid": "21140f8c_eab5a9cd",
+      "revId": "73f553dcec83d0ed5f7bd066bde19edb85589dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
