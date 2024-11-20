@@ -33,6 +33,24 @@
       "message": "After testing the fan in an Intrepid (based on constitution) device with `ectool pwmsetfanrpm` / `ectool pwmgetfanrpm all`, I found that the fan itself exhibits hysteresis: as we request it to spin faster, the actual fan speed is less than requested; as we request it to spin slower, the actual fan speed is higher than requested.  https://screenshot.googleplex.com/8fJaReQ5GMFAzjd\n\nDue to this hysteresis, I think the default `fan_percent_to_rpm` function will work just fine, and we should perhaps consider reverting the manually-specified fan tables in crrev.com/c/4060610.\n\nThe last time we changed the temp_fan_max was in crrev.com/c/4060610",
       "revId": "71c0e171a6893df911c1b510b953564330937612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e81f44_cdfa1b65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2024-11-20T21:48:42Z",
+      "side": 1,
+      "message": "Sorry, that should be \"The last time we changed the `temp_fan_max` for constitution was in crrev.com/c/4653513\"",
+      "parentUuid": "26ad89b8_6ec6231f",
+      "revId": "71c0e171a6893df911c1b510b953564330937612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
