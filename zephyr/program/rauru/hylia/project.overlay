@@ -5,17 +5,18 @@
 
 #include <cros/cbi_flash.dtsi>
 #include <dt-bindings/motionsense/utils.h>
-
 #include "../arbitrage.dtsi"
 #include "../common.dtsi"
-#include "../usbc.dtsi"
 #include "../usba.dtsi"
-#include "../generated.dtsi"
+#include "./generated.dtsi"
+#include "./i2c.dtsi"
 #include "../interrupts.dtsi"
 #include "../motionsense.dtsi"
 #include "../keyboard.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
+#include "./usbc.dtsi"
+#include "./fan.dtsi"
 
 / {
 	aliases {
