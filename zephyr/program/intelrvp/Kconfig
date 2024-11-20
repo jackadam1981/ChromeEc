@@ -74,6 +74,13 @@ config BOARD_PTLGCS
 	  Build Intel PTL Generic Chassis System (GCS). This board is Intel PTL
 	  GCS SOC with SOC_MEC172X_NSZ.
 
+config KEYBOARD_INTEL_GCS
+	bool "Intel Generic Chassis System keyboard"
+	select PLATFORM_EC_KEYBOARD
+	select PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+	help
+	  Use Intel Generic Chassis System keyboard for the platform.
+
 # Override the default USB-C stack choice baseed on the board type.
 # This must be done before including Kconfig.zephyr below.
 choice PLATFORM_EC_USBC_STACK

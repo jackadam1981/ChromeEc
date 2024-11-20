@@ -129,7 +129,14 @@
 		 * GPIO112: (Alternate function KSCAN) kbc-scanout-5
 		 * GPIO107: (Alternate function KSCAN) kbc-scanout-4
 		 * GPIO047: (Alternate function KSCAN) kbc-scanout-3
-		 * GPIO046: (Alternate function KSCAN) kbc-scanout-2
+		 */
+
+		/* KSO02 is inverted */
+		kso_02_ec: kbc-scanout-2 {
+			gpios = <MCHP_GPIO_DECODE_046 GPIO_OUTPUT_HIGH>;
+		};
+
+		/*
 		 * GPIO045: (Alternate function KSCAN) kbc-scanout-1
 		 * GPIO040: (Alternate function KSCAN) kbc-scanout-0
 		 */
