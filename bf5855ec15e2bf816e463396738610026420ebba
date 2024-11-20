@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13f73b3_87f8fe4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:47:28Z",
+      "side": 1,
+      "message": "In another CL, can you update [ec::kMaxDeadPixels](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_sensor_errors.h;l\u003d14;drc\u003dbb56545b56b38e5e7aa663bad5193bbe53fb08f6) to use the new `FP_ERROR_DEAD_PIXELS_MAX` you added for consistency?",
+      "revId": "bf5855ec15e2bf816e463396738610026420ebba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd061d52_c411212c",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:47:28Z",
+      "side": 1,
+      "message": "You could write this a little more concisely with:\n\n```\n*error_state |\u003d FP_ERROR_DEAD_PIXELS(MAX(sensor_info.num_defective_pixels, FP_ERROR_DEAD_PIXELS_MAX));\n```",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "bf5855ec15e2bf816e463396738610026420ebba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
