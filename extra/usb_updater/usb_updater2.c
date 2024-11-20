@@ -29,6 +29,8 @@
 #include "usb_descriptor.h"
 #include "vb21_struct.h"
 
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
 #ifdef DEBUG
 #define debug printf
 #else

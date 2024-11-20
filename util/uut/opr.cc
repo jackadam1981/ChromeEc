@@ -22,6 +22,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <algorithm>
 #include <unistd.h>
 
 /*----------------------------------------------------------------------------
@@ -316,7 +317,7 @@ void opr_read_mem(char *output, uint32_t addr, uint32_t size)
 	for (cur_addr = addr; cur_addr < (addr + size);
 	     cur_addr += MAX_RW_DATA_SIZE) {
 		bytes_left = (uint32_t)(addr + size - cur_addr);
-		read_size = MIN(bytes_left, MAX_RW_DATA_SIZE);
+		read_size = std::min<uint32_t>(bytes_left, MAX_RW_DATA_SIZE);
 
 		cmd_create_read(cur_addr, ((uint8_t)read_size - 1),
 				rd_cmd_buf.cmd, &rd_cmd_buf.cmd_size);

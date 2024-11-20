@@ -33,6 +33,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <algorithm>
 #include <getopt.h>
 #include <iomanip>
 #include <iostream>
@@ -2230,7 +2231,7 @@ int cmd_fp_template(int argc, char *argv[])
 	}
 	printf("sending template from: %s (%d bytes)\n", argv[1], size);
 	while (size) {
-		uint32_t tlen = MIN(max_chunk, size);
+		uint32_t tlen = std::min(max_chunk, size);
 
 		p->offset = offset;
 		p->size = tlen;
@@ -2487,7 +2488,7 @@ int cmd_flash_pd(int argc, char *argv[])
 	p->size = step;
 
 	for (i = 0; i < fsize; i += step) {
-		p->size = MIN(fsize - i, step);
+		p->size = std::min(fsize - i, step);
 		memcpy(data, buf + i, p->size);
 		rv = ec_command(EC_CMD_USB_PD_FW_UPDATE, 0, p,
 				p->size + sizeof(*p), NULL, 0);
@@ -5559,9 +5560,9 @@ static int cmd_motionsense(int argc, char **argv)
 		       print_data < max_data) {
 			struct ec_response_motion_sensor_data *vector;
 			param.cmd = MOTIONSENSE_CMD_FIFO_READ;
-			param.fifo_read.max_data_vector =
-				MIN(ARRAY_SIZE(fifo_read_buffer.data),
-				    max_data - print_data);
+			param.fifo_read.max_data_vector = std::min<uint32_t>(
+				ARRAY_SIZE(fifo_read_buffer.data),
+				max_data - print_data);
 
 			rv = ec_command(EC_CMD_MOTION_SENSE_CMD, 2, &param,
 					ms_command_sizes[param.cmd].outsize,
@@ -6805,7 +6806,7 @@ int cmd_pstore_read(int argc, char *argv[])
 	/* Read data in chunks */
 	for (i = 0; i < size; i += EC_PSTORE_SIZE_MAX) {
 		p.offset = offset + i;
-		p.size = MIN(size - i, EC_PSTORE_SIZE_MAX);
+		p.size = std::min(size - i, EC_PSTORE_SIZE_MAX);
 		rv = ec_command(EC_CMD_PSTORE_READ, 0, &p, sizeof(p), rdata,
 				sizeof(rdata));
 		if (rv < 0) {
@@ -6854,7 +6855,7 @@ int cmd_pstore_write(int argc, char *argv[])
 	/* Write data in chunks */
 	for (i = 0; i < size; i += EC_PSTORE_SIZE_MAX) {
 		p.offset = offset + i;
-		p.size = MIN(size - i, EC_PSTORE_SIZE_MAX);
+		p.size = std::min(size - i, EC_PSTORE_SIZE_MAX);
 		memcpy(p.data, buf + i, p.size);
 		rv = ec_command(EC_CMD_PSTORE_WRITE, 0, &p, sizeof(p), NULL, 0);
 		if (rv < 0) {
@@ -9186,7 +9187,7 @@ static int cmd_cbi_bin(int argc, char *argv[])
 		}
 
 		for (i = 0; i < size; i += packet_max_size) {
-			p.size = MIN(packet_max_size, size - i);
+			p.size = std::min(packet_max_size, size - i);
 			p.offset = i;
 
 			rv = ec_command(EC_CMD_CBI_BIN_READ, 0, &p, sizeof(p),
@@ -9229,7 +9230,7 @@ static int cmd_cbi_bin(int argc, char *argv[])
 		for (i = 0; i < size; i += packet_max_size) {
 			memset(p, 0, ec_max_outsize);
 
-			p->size = MIN(packet_max_size, size - i);
+			p->size = std::min(packet_max_size, size - i);
 			p->offset = i;
 			if (p->offset == 0) {
 				p->flags |= EC_CBI_BIN_BUFFER_CLEAR;
@@ -9855,9 +9856,9 @@ static int cmd_memory_dump(int argc, char *argv[])
 			return -1;
 		}
 		/* Cap max address at UINT32_MAX */
-		requested_address_end =
-			MIN((uint64_t)requested_address_start + requested_size,
-			    (uint64_t)UINT32_MAX);
+		requested_address_end = std::min(
+			(uint64_t)requested_address_start + requested_size,
+			(uint64_t)UINT32_MAX);
 	}
 
 	rv = ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0,
@@ -9921,9 +9922,10 @@ static int cmd_memory_dump(int argc, char *argv[])
 			continue;
 
 		/* Clip memory segment boundaries based on requested range */
-		seg->addr_start = MAX(entry_info_response.address,
-				      requested_address_start);
-		seg->addr_end = MIN(entry_address_end, requested_address_end);
+		seg->addr_start = std::max(entry_info_response.address,
+					   requested_address_start);
+		seg->addr_end =
+			std::min(entry_address_end, requested_address_end);
 		if (seg->addr_end - seg->addr_start <= 0)
 			continue;
 		seg->size = seg->addr_end - seg->addr_start;
@@ -11750,7 +11752,7 @@ int cmd_tp_frame_get(int argc, char *argv[])
 
 		while (remaining > 0) {
 			p.offset = offset;
-			p.size = MIN(remaining, ec_max_insize);
+			p.size = std::min<uint32_t>(remaining, ec_max_insize);
 
 			rv = ec_command(EC_CMD_TP_FRAME_GET, 0, &p, sizeof(p),
 					data, p.size);
