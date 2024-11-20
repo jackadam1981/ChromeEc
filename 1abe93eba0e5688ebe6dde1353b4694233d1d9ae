@@ -118,6 +118,30 @@
       },
       "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47761c69_a24fc606",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-20T02:55:27Z",
+      "side": 1,
+      "message": "yes, here should add `assert(ret \u003c 0);` for check unexpected value.",
+      "parentUuid": "83a6a421_02baeb6a",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "1abe93eba0e5688ebe6dde1353b4694233d1d9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
