@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bddfa1_10ca6cb5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2024-11-20T08:12:00Z",
+      "side": 1,
+      "message": "Probably too hacky and I don\u0027t know what is in this arg for renode, so just question. Isn\u0027t it possible to get info if it\u0027s Zephyr or not based on the `image_path`?",
+      "revId": "0240bd30c224bd0705f870d6b359a3496b5d86a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
