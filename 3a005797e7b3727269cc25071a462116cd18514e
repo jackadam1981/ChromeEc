@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f92063e4_eb315b5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:57:18Z",
+      "side": 1,
+      "message": "For consistency, just write out \"zero\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "3a005797e7b3727269cc25071a462116cd18514e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448dc20d_bfbc06e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:57:18Z",
+      "side": 1,
+      "message": "For consistency, just write out \"ones\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "3a005797e7b3727269cc25071a462116cd18514e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ee38e2_d9bb621a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:57:18Z",
+      "side": 1,
+      "message": "For consistency, just write out \"zeroes\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "3a005797e7b3727269cc25071a462116cd18514e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd4bb61_b2309115",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T22:57:18Z",
+      "side": 1,
+      "message": "I don\u0027t see an easy way to write a unit test for this and the CQ tests are not going to exercise this behavior. You will probably need to do a manual test, which would involve something like checking the value of `errors` on start to make sure that it\u0027s correct.\n\nIIRC the `fpinfo` console command shows the value of `errors`.\n\nPlease write a description of the manual test you perform here.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "3a005797e7b3727269cc25071a462116cd18514e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
