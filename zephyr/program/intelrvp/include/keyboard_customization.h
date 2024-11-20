@@ -9,6 +9,8 @@
 
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_STRAUSS
 #include "kbd_strauss.h"
+#elif defined(CONFIG_KEYBOARD_INTEL_GCS)
+#include "kbd_gcs.h"
 #endif
 
 #endif /* __KEYBOARD_CUSTOMIZATION_H */

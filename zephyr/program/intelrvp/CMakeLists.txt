@@ -15,6 +15,7 @@ cros_ec_library_include_directories("${PLATFORM_EC}/driver/usb_mux")
 zephyr_library_sources("src/intelrvp.c")
 zephyr_library_sources("src/intel_rvp_board_id.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_STRAUSS "src/kbd_strauss.c")
+zephyr_library_sources_ifdef(CONFIG_KEYBOARD_INTEL_GCS "src/kbd_gcs.c")
 
 if((DEFINED CONFIG_BOARD_ADLRVP_MCHP) OR (DEFINED CONFIG_BOARD_ADLRVP_NPCX))
   add_subdirectory(adlrvp)
