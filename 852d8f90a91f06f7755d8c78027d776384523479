@@ -34,6 +34,24 @@
       "parentUuid": "14b2dc40_34cee62f",
       "revId": "852d8f90a91f06f7755d8c78027d776384523479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ebbd6a_a8dc242d",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-20T22:04:49Z",
+      "side": 1,
+      "message": "\u003e This particular producer just needs to \"remember\" to call queue_flush() each time after it is finished putting data into the queue.\n\nThis is my concern with this relation chain; there is nothing that indicates `queue_flush()` needs to be called everywhere if it\u0027s ever called anywhere. This is essentially hidden behavior for the next developer that comes along in 4 years. Bugs related to this change will be difficult to chase down, since everything is \"working\", including buffering the queued data forever due to a missing flush.\n\nAt a high level, the EC FW should be defensive, since it\u0027s slow and expensive to fix any issues. In this specific case, the feature itself needs to make it clear when it\u0027s in use and/or surface when it knows it\u0027s being used incorrectly. For example, updating the API to make the flush an explicit parameter so developers and code reviewers can pair queue()+flush() in each new CLs, or adding a timeout that triggers an error/panic when queued data is pending for too long.\n\nHopefully that helps clarify where I\u0027m coming from with some of these questions/comments. The feature itself is a good idea, but I want to make sure it\u0027s usable and maintainable for everyone else.",
+      "parentUuid": "f7ad7d7b_55e4efee",
+      "revId": "852d8f90a91f06f7755d8c78027d776384523479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
