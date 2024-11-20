@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0796d813_c2b3db7a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5562,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 5562,
+        "startChar": 37,
+        "endLine": 5562,
+        "endChar": 55
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ee3cec_03fc920d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11754,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 11754,
+        "startChar": 12,
+        "endLine": 11754,
+        "endChar": 30
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5aca5f_2d99de05",
+        "filename": "util/ectool_pdc_trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 218,
+        "startChar": 9,
+        "endLine": 218,
+        "endChar": 25
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446d1151_2dcfd290",
+        "filename": "util/stm32mon.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 944,
+        "startChar": 19,
+        "endLine": 944,
+        "endChar": 37
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cfcb9a3_758da92c",
+        "filename": "util/stm32mon.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 976,
+        "startChar": 8,
+        "endLine": 976,
+        "endChar": 26
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e27fd9_fc39134b",
+        "filename": "util/uut/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 392,
+        "startChar": 21,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3708e9d_69260551",
+        "filename": "util/uut/opr.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-20T23:40:08Z",
+      "side": 1,
+      "message": "Put into a separate commit since it requires explicit types since the types of the arguments don\u0027t match.",
+      "range": {
+        "startLine": 320,
+        "startChar": 14,
+        "endLine": 320,
+        "endChar": 32
+      },
+      "revId": "5d7f64e647ab4cc3897fcb85fde0b18e35a01e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
