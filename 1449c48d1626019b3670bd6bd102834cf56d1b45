@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2110e588_14eb9d4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-20T21:48:10Z",
+      "side": 1,
+      "message": "I added a TODO for the main control-flow thing to be done here. Per our offline discussion, the PDM should probably do some sort of error handling in the case where the timeout expires without the new-contract bit being set. However, there\u0027s not too much that the PDM can do in this case, so that error handling is mostly window dressing.",
+      "revId": "1449c48d1626019b3670bd6bd102834cf56d1b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3fee6b_84c38988",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-11-20T21:48:10Z",
+      "side": 1,
+      "message": "As we discussed OOB, we could more-or-less equivalently block before sending the SRDY. The only difference in that case would be that we\u0027d need to block before sending the command, not after.",
+      "range": {
+        "startLine": 1784,
+        "startChar": 16,
+        "endLine": 1785,
+        "endChar": 12
+      },
+      "revId": "1449c48d1626019b3670bd6bd102834cf56d1b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
