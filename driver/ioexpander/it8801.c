@@ -17,7 +17,11 @@
 #include "task.h"
 #include "util.h"
 
+#ifdef CONFIG_KEYBOARD_DISCRETE
 #define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ##args)
+#else
+#define CPRINTS(format, args...) cprints(CC_GPIO, format, ##args)
+#endif
 
 static int it8801_ioex_set_level(int ioex, int port, int mask, int value);
 static void it8801_ioex_event_handler(void);
@@ -506,9 +510,10 @@ static void it8801_ioex_event_handler(void)
 		return;
 
 	/* Wake the keyboard scan task if KSI interrupts are triggered */
-	if (IS_ENABLED(CONFIG_KEYBOARD_DISCRETE) &&
-	    data & IT8801_REG_MASK_GISR_GKSIIS)
+#ifdef CONFIG_KEYBOARD_DISCRETE
+	    if (data & IT8801_REG_MASK_GISR_GKSIIS)
 		task_wake(TASK_ID_KEYSCAN);
+#endif
 
 	/*
 	 * Trigger the GPIO callback functions if the GPIO interrupts are
