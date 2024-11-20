@@ -92,7 +92,7 @@
 			      <&pca95xx 10 0>, <&pca95xx 9 0>, <&pca95xx 8 0>;
 	};
 
-	kb_discrete: ite-it8801@39 {
+	kb_1discrete: ite-it8801@39 {
 		compatible = "ite,it8801";
 		reg = <0x39>;
 	};

@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 zephyr_library_sources("src/board_id.c")
 zephyr_library_sources("src/common.c")
 zephyr_library_sources("src/board_power.c")
@@ -10,3 +11,6 @@ zephyr_library_sources_ifdef(CONFIG_BOARD_MTLRVP_PD "src/pd.c")
 if((DEFINED CONFIG_BOARD_MTLRVP_M1723) OR (DEFINED CONFIG_BOARD_MTLRVP_MCHP) OR (DEFINED CONFIG_BOARD_MTLRVP_NPCX))
   zephyr_library_sources("src/tcpc.c")
 endif()
+
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+			"mtlrvpp_npcx/keyboard_customization.c")
