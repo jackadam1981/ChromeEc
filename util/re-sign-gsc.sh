@@ -9,6 +9,7 @@
 # present in the respective ./build directory.
 #
 # Two command line parameters are required, the device IDs of the GSC.
+# The image to re-sign can be supplied as an optional third param.
 #
 # The generated binary is saved in {cr,ti}50.<sha>.<devid0>.<devid1>.bin where
 # <sha> is the git sha of the current source tree. The suffix '-dirty' is
@@ -106,7 +107,10 @@ main () {
   local tmp_file
   local xml
 
-  if [[ $# -ne 2 ]]; then
+  full_bin=""
+  if [[ $# -eq 3 ]]; then
+    full_bin="$3"
+  elif [[ $# -ne 2 ]]; then
     echo "${SCRIPT_NAME} error:" >&2
     echo " Two command line arguments are required, dev_id0 and dev_id1" >&2
     exit 1
@@ -115,14 +119,22 @@ main () {
   dev_id0="$1"
   dev_id1="$2"
 
-  full_bin=""
-  for f in  build/ti50/dauntless/dauntless/full_image.signed.bin \
-    build/cr50/ec.bin; do
-    if [[ -f ${f} ]]; then
-      full_bin="${f}"
-      break
+  if [[ -z "${full_bin}" ]] ; then
+    for f in  build/ti50/dauntless/dauntless/full_image.signed.bin \
+      build/cr50/ec.bin; do
+      if [[ -f ${f} ]]; then
+        full_bin="${f}"
+        break
+      fi
+    done
+  else
+    if [[ -f "${full_bin}" ]] ; then
+      echo "resigning supplied bin ${full_bin}"
+    else
+      echo "could not find ${full_bin}"
+      exit 1
     fi
-  done
+  fi
 
   if [[ -z ${full_bin} ]]; then
     echo "${SCRIPT_NAME} error: GSC binary not found" >&2
