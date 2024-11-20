@@ -16,6 +16,24 @@
       "message": "```suggestion\nstatic int convert_egis_get_image_error_code(egis_api_return_t code)\n```",
       "revId": "a011e7a57fe3f375e6da30d9d1f9c3063dab0b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1eec3db_a298b0bc",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-20T22:04:08Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1d5c84a8_fd358d9d",
+      "revId": "a011e7a57fe3f375e6da30d9d1f9c3063dab0b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
