@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d87939_a6de4c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-21T04:59:30Z",
+      "side": 1,
+      "message": "Ah one more thing, please remove the CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT line in util/config_allowed.txt",
+      "revId": "d6fc2346d882422030fde5397517ad2d09273a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
