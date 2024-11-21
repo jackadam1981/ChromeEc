@@ -70,6 +70,24 @@
       "parentUuid": "89ebbd6a_a8dc242d",
       "revId": "852d8f90a91f06f7755d8c78027d776384523479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0edac88a_8aa1dfa9",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-21T22:55:40Z",
+      "side": 1,
+      "message": "I have adapted the API as described above, adding a function `queue_enable_buffered_mode()`, to be called by producers during initalization, if they plan on using `queue_flush()`.  (Equivalent to opening a `FILE` in buffered mode with the C library.)\n\nThis means that the `queue_state` struct uses 12 bytes of SRAM instead of 8.  I do not think that EC boards typically have many dozen of queues, so the overall impact will be limited.",
+      "parentUuid": "75a064e7_3ee61d5f",
+      "revId": "852d8f90a91f06f7755d8c78027d776384523479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
