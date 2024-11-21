@@ -47,6 +47,8 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
 /** @brief Time between checking TI CMDx register for data ready */
 #define PDC_TI_DATA_READY_TIME_MS (10)
+/** @brief Timeout for TI CMDx register to complete a command */
+#define PDC_TI_DATA_READY_TIMEOUT_MS (1500)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -318,6 +320,8 @@ struct pdc_data_t {
 	uint32_t events;
 	/* Deferred handler to trigger event to check if data is ready */
 	struct k_work_delayable data_ready;
+	/* Wait timeout for data ready */
+	k_timepoint_t data_ready_timeout;
 	/* Should use cached connector status change bits */
 	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
@@ -1701,6 +1705,12 @@ static void st_task_wait_entry(void *o)
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	print_current_state(data);
+
+	/* Set timeout for wait. If we timeout for a command, we need to go into
+	 * error recovery.
+	 */
+	data->data_ready_timeout =
+		sys_timepoint_calc(K_MSEC(PDC_TI_DATA_READY_TIMEOUT_MS));
 }
 
 static void tps_check_data_ready(struct k_work *work)
@@ -1736,6 +1746,12 @@ static void st_task_wait_run(void *o)
 	 *  2) command is set to "!CMD" for unknown command
 	 */
 	if (cmd.command && cmd.command != COMMAND_TASK_NO_COMMAND) {
+		if (sys_timepoint_expired(data->data_ready_timeout)) {
+			LOG_ERR("Data is not ready after %d ms. Going to recovery...",
+				PDC_TI_DATA_READY_TIMEOUT_MS);
+			goto error_recovery;
+		}
+
 		LOG_INF("Data not ready, check again in %d ms",
 			PDC_TI_DATA_READY_TIME_MS);
 		k_work_reschedule(&data->data_ready,
