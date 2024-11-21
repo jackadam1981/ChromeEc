@@ -16,6 +16,24 @@
       "message": "I think the coverage alert is false. We have a test covering that function (`src/platform/ec/zephyr/test/drivers/default/src/panic.c:101`). The return inside the if statement is covered but the condition is not. Doesn\u0027t make sense.",
       "revId": "2e6957c910c29f2495447b2d1a91fea5bc6fed1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab39d7bc_b9f61f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-11-21T04:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c877f7_27094c0e",
+      "revId": "2e6957c910c29f2495447b2d1a91fea5bc6fed1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
