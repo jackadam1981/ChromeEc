@@ -34,6 +34,24 @@
       "parentUuid": "1d5c84a8_fd358d9d",
       "revId": "a011e7a57fe3f375e6da30d9d1f9c3063dab0b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "623e1553_91fe7d0c",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-21T03:05:35Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "c1eec3db_a298b0bc",
+      "revId": "a011e7a57fe3f375e6da30d9d1f9c3063dab0b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
