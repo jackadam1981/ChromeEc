@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f45218b_27a4c5ee",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-21T19:40:22Z",
+      "side": 1,
+      "message": "nit: It\u0027s easier to read as:\n\n\n```suggestion\n\tswitch (code) {\n\tcase EGIS_API_IMAGE_QUALITY_GOOD:\n\t\treturn EC_SUCCESS;\n\tcase EGIS_API_IMAGE_QUALITY_BAD:\n\tcase EGIS_API_IMAGE_QUALITY_WATER:\n\t\treturn FP_SENSOR_LOW_IMAGE_QUALITY;\n\tcase EGIS_API_IMAGE_EMPTY:\n\t\treturn FP_SENSOR_TOO_FAST;\n\tcase EGIS_API_IMAGE_QUALITY_PARTIAL:\n\t\treturn FP_SENSOR_LOW_SENSOR_COVERAGE;\n\tdefault:\n\t\tassert(rc \u003c 0);\n\t\treturn code;\n\t}\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "b57e8ace4c0775803cf3706cf11b1c2e67ed0b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
