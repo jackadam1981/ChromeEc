@@ -40,6 +40,7 @@
 /* I2C */
 #define CONFIG_I2C_BITBANG
 #define I2C_BITBANG_PORT_COUNT 1
+#define CONFIG_IT83XX_I2C_CMD_QUEUE
 
 /* PWM */
 #define CONFIG_PWM
