@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d9e576_ef3d7c6d",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-21T01:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2373d274_39a83caf",
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9436db6_8383311a",
@@ -103,6 +121,54 @@
       "parentUuid": "e9436db6_8383311a",
       "range": {
         "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a32892d_18d2b31d",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-21T01:50:12Z",
+      "side": 1,
+      "message": "It should be `MIN`",
+      "parentUuid": "3b41e58f_6c6eb00c",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b9acd7f3c38b683a275a6f72314bf20d67ef8180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993ff993_fd0d6104",
+        "filename": "driver/fingerprint/fpc/fpc_sensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-21T01:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00ae062_ac76c761",
+      "range": {
+        "startLine": 53,
         "startChar": 0,
         "endLine": 59,
         "endChar": 2
