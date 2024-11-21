@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d081a3_04238dc2",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-21T18:12:41Z",
+      "side": 1,
+      "message": "why change this to single bracket? We use double everywhere unless it is ran by `sh` as opposed to `bash`\n\nPlease use double brackets",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "843873254106bfb448bcf8a1ff29a5bb749d05ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
