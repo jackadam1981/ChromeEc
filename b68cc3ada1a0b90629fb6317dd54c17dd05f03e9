@@ -16,6 +16,24 @@
       "message": "```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      18:21:48: WARNING: zephyr/program/nissa/rull/src/keyboard_customization.c: needs formatting\n      18:22:04: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/program/nissa/rull/src/keyboard_customization.\n```",
       "revId": "b68cc3ada1a0b90629fb6317dd54c17dd05f03e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7d3e08_5cd24ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3685612
+      },
+      "writtenOn": "2024-11-21T07:10:06Z",
+      "side": 1,
+      "message": "Thank you very much.just execute the cros format zephyr/program/nissa/rull/src/keyboard_customization.c and resubmit.",
+      "parentUuid": "43952ef6_7e204065",
+      "revId": "b68cc3ada1a0b90629fb6317dd54c17dd05f03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
