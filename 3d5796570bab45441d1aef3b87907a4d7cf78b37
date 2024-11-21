@@ -46,6 +46,30 @@
       },
       "revId": "3d5796570bab45441d1aef3b87907a4d7cf78b37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e78eae_a71a8bc0",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-21T19:18:09Z",
+      "side": 1,
+      "message": "I guess I was looking for a trailing `+` or `-` but come to think of it the check below does not require it.",
+      "parentUuid": "a28d93dd_ae0ad60c",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 37
+      },
+      "revId": "3d5796570bab45441d1aef3b87907a4d7cf78b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
