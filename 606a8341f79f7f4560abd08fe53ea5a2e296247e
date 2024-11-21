@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9b8beb8_b7ff26d5",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-21T15:24:52Z",
+      "side": 1,
+      "message": "Sorry, i missing that return 0 mean `EC_MKBP_FP_ERR_MATCH_NO`. The correct way is add new return define mapping  to `EC_MKBP_FP_ERR_MATCH_LOW_QUALITY`",
+      "parentUuid": "0f4bb517_c6ebf102",
+      "revId": "606a8341f79f7f4560abd08fe53ea5a2e296247e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8287d9c4_670c91c7",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 4
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "because matcher will refuse sent image to enroll if the minutia feature of this image was too less. And it was return 0.",
       "parentUuid": "8287d9c4_670c91c7",
+      "revId": "606a8341f79f7f4560abd08fe53ea5a2e296247e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe0b3ec_ab625788",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-21T15:24:52Z",
+      "side": 1,
+      "message": "Sorry, i missing that return 0 mean EC_MKBP_FP_ERR_ENROLL_OK. The correct way is add new return define mapping to EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY",
+      "parentUuid": "be6c0b0a_af1583bd",
       "revId": "606a8341f79f7f4560abd08fe53ea5a2e296247e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
