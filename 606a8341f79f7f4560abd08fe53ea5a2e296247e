@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f4bb517_c6ebf102",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-21T03:03:45Z",
+      "side": 1,
+      "message": "because matcher will refuse sent image to match if the minutia feature of this image was too less. And it was return 0.",
+      "parentUuid": "ba7a9b13_160106dd",
+      "revId": "606a8341f79f7f4560abd08fe53ea5a2e296247e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8287d9c4_670c91c7",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 4
@@ -49,6 +67,24 @@
       "writtenOn": "2024-11-20T06:19:37Z",
       "side": 1,
       "message": "@fsammoura@google.com\n\nI think it should modify as `assert(ret \u003c\u003d 0);`",
+      "revId": "606a8341f79f7f4560abd08fe53ea5a2e296247e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6c0b0a_af1583bd",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-21T03:03:45Z",
+      "side": 1,
+      "message": "because matcher will refuse sent image to enroll if the minutia feature of this image was too less. And it was return 0.",
+      "parentUuid": "8287d9c4_670c91c7",
       "revId": "606a8341f79f7f4560abd08fe53ea5a2e296247e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
