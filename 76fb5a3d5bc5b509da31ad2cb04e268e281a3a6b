@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa77fd1_2ffa7f61",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-21T18:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7beaa9f_e70d2a89",
+      "range": {
+        "startLine": 187,
+        "startChar": 13,
+        "endLine": 187,
+        "endChar": 21
+      },
+      "revId": "76fb5a3d5bc5b509da31ad2cb04e268e281a3a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c491f68_d2c7009d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b742cb_4a8b2377",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-21T18:56:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1c491f68_d2c7009d",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 66
+      },
+      "revId": "76fb5a3d5bc5b509da31ad2cb04e268e281a3a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2850da99_5a45853a",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-11-21T18:09:15Z",
       "side": 1,
       "message": "this is a bit loose I think.\n\nBoth cr50 and ti50 full version strings include `tpm`, so how about:\n\nsha\u003d\"$(strings \"${full_bin}\" | grep -m 1 \"${prefix}_.*tpm\" | sed \u0027s/\\(^[^-+]\\+[+-]\\).*/\\1/\u0027)\"",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "76fb5a3d5bc5b509da31ad2cb04e268e281a3a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bc128c_dff005a1",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-21T18:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2850da99_5a45853a",
       "range": {
         "startLine": 231,
         "startChar": 1,
