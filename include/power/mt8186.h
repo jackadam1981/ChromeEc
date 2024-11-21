@@ -10,6 +10,7 @@
 #include "ec_commands.h"
 
 __override_proto void
-board_process_host_sleep_event(enum host_sleep_event state);
+board_handle_host_sleep_event(enum host_sleep_event state);
+__override_proto void board_handle_sleep_hang(enum sleep_hang_type hang_type);
 
 #endif /* __CROS_EC_POWER_MT8186_H_ */
