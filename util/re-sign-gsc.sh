@@ -47,6 +47,37 @@ if [[ -z ${CODESIGNER} ]]; then
   exit 1
 fi
 
+# Make sure there is a gsctool in the path.
+GSCTOOL=""
+for f in  gsctool \
+	    "${SCRIPT_DIR}/../extra/usb_updater/gsctool"; do
+  if command -v "${f}" > /dev/null 2>&1; then
+    GSCTOOL="${f}"
+    break
+  fi
+done
+if [[ -z ${GSCTOOL} ]]; then
+  echo "SCRIPT_NAME error: can't find gsctool" >&2
+  exit 1
+fi
+
+# Update the version information in the manifest.
+update_manifest_version() {
+  local full_bin="${1}"
+  local manifest="${2}"
+  local epoch=1
+  local major=2
+  local minor=3
+
+  RW_VER=$("${GSCTOOL}" "-M" "-b" "${full_bin}" | grep "IMAGE_RW_FW_VER" | \
+	  cut -d "=" -f 2)
+  IFS='.' read -r epoch major minor <<<"${RW_VER}"
+  echo "RW: ${RW_VER}"
+  sed "s/epoch\": [0-9]*/epoch\": ${epoch}/g" "${manifest}" -i
+  sed "s/major\": [0-9]*/major\": ${major}/g" "${manifest}" -i
+  sed "s/minor\": [0-9]*/minor\": ${minor}/g" "${manifest}" -i
+}
+
 # Re-sign a single RW section.
 re_sign_rw() {
   local tmp_file="$1"
@@ -224,6 +255,10 @@ main () {
 
   tmp_file="${TMPD}/full.bin"
   cp "${full_bin}" "${tmp_file}"
+
+  # Replace the version in the TOT manifest with the same version
+  # the original image is signed with.
+  update_manifest_version "${tmp_file}" "${TMPD}/manifest.json"
 
   codesigner_params+=(
       --json "${TMPD}/manifest.json"
