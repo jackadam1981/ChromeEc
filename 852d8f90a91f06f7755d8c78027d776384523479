@@ -52,6 +52,24 @@
       "parentUuid": "f7ad7d7b_55e4efee",
       "revId": "852d8f90a91f06f7755d8c78027d776384523479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a064e7_3ee61d5f",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-21T06:22:37Z",
+      "side": 1,
+      "message": "Thank you for sharing your thoughts.\n\nI would not say that `queue_flush()` needs to be used everywhere if it is used anywhere, only everywhere else that same particular producer instance is used.\n\nThe C-library allows you to open a `FILE` either unbuffered or buffered, and if you choose buffered, then any code that uses that particular `FILE` object needs to be aware that unless it calls `fflush()`, then data could be sitting indefinitely in the buffer.\n\nSimilarly, sockets on Linux have a TCP_CORK mode, which all users of that particular descriptor needs to be aware of.  (This one has a timeout auto-flush, unlike libc above.)\n\nWhat I am trying to say, is that I do not find it unreasonable that all users of a particular file/socket/EC-producer need to be aware of the \"mode\", agree to conform to the requirements imposed by that mode, such as calling `flush()`.\n\nIn some languages, you could surely have different types for each mode, and that could prevent calling `flush()` on a socket that did not have buffering enabled.  However, the compiler would not be able ot catch instances of failing to call `flush()` on a socket with buffering (as doing so equivalent to halting problem.)\n\nWhat I have currently effectively functions almost like the C-library `FILE`, in that the type is the same whether buffering is enabled or not.  So that means that when future engineers modify code in `usart_rx_interrupt-stm32l.c`, they must be aware that `queue_flush()` is used on that particular queue.  And code here in `cmsis-dap.c` must similarly be aware.  But there is no need to be globally aware what is enabled, each could make their own choice.\n\nIf we accept an extra couple of bytes of RAM usage for `queue_t`, then I could create a `queue_set_buffered_mode()`, which would be called in line 680 of this file, and only then would `queue_flush()` be allowed.  I thought about going further, and enhancing the `QUEUE()` macro, used for declaring the queue so that it specified the mode.  But I am not sure that is a good idea, because then generic code in `board.c` would need to declare whether `flush()` were to be used, rather than letting the producers decide based on their internal logic, such as whether the UART hardware has the required support.\n\nWhat do you say to such a convention?  `queue_set_buffered_mode()` serves as a warning that any other code that uses the same producer needs be aware of the convention to use `queue_flush()`?",
+      "parentUuid": "89ebbd6a_a8dc242d",
+      "revId": "852d8f90a91f06f7755d8c78027d776384523479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
