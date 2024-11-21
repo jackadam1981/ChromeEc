@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f3a567_66ea260d",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-21T19:48:37Z",
+      "side": 1,
+      "message": "nit: easier to read as:\n\n\n\n```suggestion\n\tegis_api_return_t ret \u003d egis_finger_match(templ, templ_count, image,\n\t\t\t\t\t\t  match_index, update_bitmap);\n\n\tswitch (ret) {\n\tcase EGIS_API_MATCH_MATCHED:\n\t\treturn EC_MKBP_FP_ERR_MATCH_YES;\n\tcase EGIS_API_MATCH_MATCHED_UPDATED:\n\t\treturn EC_MKBP_FP_ERR_MATCH_YES_UPDATED;\n\tcase EGIS_API_MATCH_MATCHED_UPDATED_FAILED:\n\t\treturn EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED;\n\tcase EGIS_API_MATCH_NOT_MATCHED:\n\t\treturn EC_MKBP_FP_ERR_MATCH_NO;\n\tcase EGIS_API_MATCH_LOW_QUALITY:\n\t\treturn EC_MKBP_FP_ERR_MATCH_NO_LOW_QUALITY;\n\tcase EGIS_API_MATCH_LOW_COVERAGE:\n\t\treturn EC_MKBP_FP_ERR_MATCH_NO_LOW_COVERAGE;\n\tdefault:\n\t\tassert(ret \u003c 0);\n\t\treturn ret;\n\t}\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "8b6879117439d199f4e50936cddc048bdb3bab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcc873e_5b4afc64",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-21T19:48:37Z",
+      "side": 1,
+      "message": "nit: easier to read as:\n\n\n\n```suggestion\n\tegis_api_return_t ret \u003d egis_finger_enroll(image, completion);\n\tswitch (ret) {\n\tcase EGIS_API_ENROLL_FINISH:\n\tcase EGIS_API_ENROLL_IMAGE_OK:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_OK;\n\tcase EGIS_API_ENROLL_REDUNDANT_INPUT:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_IMMOBILE;\n\tcase EGIS_API_ENROLL_LOW_QUALITY:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY;\n\tcase EGIS_API_ENROLL_LOW_COVERAGE:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE;\n\tdefault:\n\t\tassert(ret \u003c 0);\n\t\treturn ret;\n\t}\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 11
+      },
+      "revId": "8b6879117439d199f4e50936cddc048bdb3bab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
