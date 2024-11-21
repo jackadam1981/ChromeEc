@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a93e067_7dad53b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-21T21:25:07Z",
+      "side": 1,
+      "message": "Looks like we also may need to fix this for the [Zephyr-version of the driver](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fpc1025.c;l\u003d310-311;drc\u003deba2281de455cd9de29de2f09cf0dcbb66a48181).",
+      "revId": "f2fb36aebee9313c9154ca15afa28e768dcd9be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
