@@ -22,6 +22,30 @@
       },
       "revId": "3d5796570bab45441d1aef3b87907a4d7cf78b37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28d93dd_ae0ad60c",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2024-11-21T19:13:03Z",
+      "side": 1,
+      "message": "What is the result supposed to be?",
+      "parentUuid": "61250d9e_57387dc3",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 37
+      },
+      "revId": "3d5796570bab45441d1aef3b87907a4d7cf78b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
