@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a2c31b_1876ba19",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-21T04:49:45Z",
+      "side": 1,
+      "message": "PLATFORM_EC\n```suggestion\nconfig PLATFORM_EC_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT\n```",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "adbeb3e29a929a2184d9b95bd4e7cb5ad045d087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd4f452_641870cd",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-21T04:49:45Z",
+      "side": 1,
+      "message": "No need to write explicit default n\n\n\n\n```suggestion\n\tbool \"Charge manager external power limit\"\n```",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "adbeb3e29a929a2184d9b95bd4e7cb5ad045d087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af254aac_4246fcee",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-11-21T04:49:45Z",
+      "side": 1,
+      "message": "PLATFORM_EC\n```suggestion\n#ifdef CONFIG_PLATFORM_EC_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT\n```",
+      "range": {
+        "startLine": 1260,
+        "startChar": 14,
+        "endLine": 1260,
+        "endChar": 23
+      },
+      "revId": "adbeb3e29a929a2184d9b95bd4e7cb5ad045d087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
