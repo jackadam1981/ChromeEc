@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca8112e_ea8db4cc",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-21T17:53:06Z",
+      "side": 1,
+      "message": "this should be quoted, the filter could be just\n\n `awk -F\u003d \u0027/IMAGE_RW_FW_VER/ {print $2}\u0027`",
+      "range": {
+        "startLine": 72,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "8cc9d4210400ad604a31033abb0bd5ae142b3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e47502_ad436c04",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-21T17:53:06Z",
+      "side": 1,
+      "message": "`g` is not necessary in these expressions.",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "8cc9d4210400ad604a31033abb0bd5ae142b3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406ee27c_3f3ed79e",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-21T17:53:06Z",
+      "side": 1,
+      "message": "why not keep this in `update_manifest_version` which could be named just `update_manifest`",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 0
+      },
+      "revId": "8cc9d4210400ad604a31033abb0bd5ae142b3c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
