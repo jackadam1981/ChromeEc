@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61250d9e_57387dc3",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-21T19:04:40Z",
+      "side": 1,
+      "message": "this does not seem to do the right thing:\n\n```\n$ (export prefix\u003dcr50_; echo \u0027cr50_v2.0.3747+1e6bbb0727 tpm2...\u0027 |  sed -E \"s/.*(${prefix}\\S*).*/\\1/\")\ncr50_v2.0.3747+1e6bbb0727\n$\n```",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 37
+      },
+      "revId": "3d5796570bab45441d1aef3b87907a4d7cf78b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
