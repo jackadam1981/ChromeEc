@@ -16,3 +16,9 @@
 	pinctrl-names = "default";
 	port_sel = <6>;
 };
+
+&SENSOR_I2C {
+	pinctrl-0 = <&i2c05_scl_gpio142 &i2c05_sda_gpio141>;
+	pinctrl-names = "default";
+	port_sel = <5>;
+};
