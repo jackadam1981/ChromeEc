@@ -2149,8 +2149,7 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 		/* Check FW ver and VID/PID fields for valid values to ensure
 		 * we have a resident value.
 		 */
-		if (data->info.fw_version == PDC_FWVER_INVALID ||
-		    data->info.vid == PDC_VID_INVALID ||
+		if (data->info.vid == PDC_VID_INVALID ||
 		    data->info.pid == PDC_PID_INVALID) {
 			k_mutex_unlock(&data->mtx);
 
