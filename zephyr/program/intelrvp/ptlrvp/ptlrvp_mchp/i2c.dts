@@ -16,3 +16,10 @@ pd_pow_i2c: &i2c_smb_1 {
 	pinctrl-names = "default";
 	port-sel = <6>;
 };
+
+/* sensor-i2c */
+sensor_i2c: &i2c_smb_2 {
+	pinctrl-0 = <&i2c05_scl_gpio142 &i2c05_sda_gpio141>;
+	pinctrl-names = "default";
+	port-sel = <5>;
+};

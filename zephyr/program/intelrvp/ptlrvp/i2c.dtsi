@@ -86,3 +86,10 @@
 &pca95xx_0 {
 	zephyr,deferred-init;
 };
+
+/* sensor-i2c */
+&sensor_i2c {
+	label = "I2C_SENSOR";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	status = "okay";
+};
