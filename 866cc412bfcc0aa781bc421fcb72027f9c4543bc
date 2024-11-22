@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21634d2a_3844ee3f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-22T22:43:42Z",
+      "side": 0,
+      "message": "@patrykd\n@tomhughes@chromium.org\n\nI believe the simulation function was wrong the begin with. If I modify the above line to `data-\u003eerrors |\u003d FINGERPRINT_ERROR_DEAD_PIXELS(data-\u003estate.bad_pixels);` to accurately match the real fp_maintenance implementation, the test fails without any of my changes. This is expected because the simulation is assigning the error variable to the dead pixel count, while in reality there is a bit OR operation. If we add |\u003d, the number of dead pixels matches to the UNKNOWN, which is also expected.\n\nI modified the simulation function to accurately match the implementation. Now the test works. I expanded it to have a case where the number of dead pixels exceeds the maximum possible value. I can assert that the reported number is the maximum one.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 70
+      },
+      "revId": "866cc412bfcc0aa781bc421fcb72027f9c4543bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

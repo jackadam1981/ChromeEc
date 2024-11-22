@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72588dc_3142692a",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-22T22:43:42Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n@patrykd@google.com\n\nHere I am testing for the case where the number of `bad_pixels` exceeds the maximum possible value. I assert that the number of dead pixels is the maximum one 0x3FE.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "15e83afc_66b3aac5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+              "range": {
+                "startLine": 145,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "\t/*\n\t * Set the number of dead pixels to a value that exceeds the maximum\n\t * possible value.\n\t */\n"
+            },
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+              "range": {
+                "startLine": 159,
+                "startChar": 0,
+                "endLine": 160,
+                "endChar": 0
+              },
+              "replacement": "\t/*\n\t * Confirm that the number of dead pixels is the maximum possible value.\n\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cdea11162f45abd352d1360af194bb1b2158f4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
