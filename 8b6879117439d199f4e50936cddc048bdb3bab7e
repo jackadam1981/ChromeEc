@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d010863f_7f7d4412",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-22T09:08:42Z",
+      "side": 1,
+      "message": "modify as suggested edit",
+      "parentUuid": "c8f3a567_66ea260d",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "8b6879117439d199f4e50936cddc048bdb3bab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dcc873e_5b4afc64",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-21T19:48:37Z",
       "side": 1,
       "message": "nit: easier to read as:\n\n\n\n```suggestion\n\tegis_api_return_t ret \u003d egis_finger_enroll(image, completion);\n\tswitch (ret) {\n\tcase EGIS_API_ENROLL_FINISH:\n\tcase EGIS_API_ENROLL_IMAGE_OK:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_OK;\n\tcase EGIS_API_ENROLL_REDUNDANT_INPUT:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_IMMOBILE;\n\tcase EGIS_API_ENROLL_LOW_QUALITY:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY;\n\tcase EGIS_API_ENROLL_LOW_COVERAGE:\n\t\treturn EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE;\n\tdefault:\n\t\tassert(ret \u003c 0);\n\t\treturn ret;\n\t}\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 11
+      },
+      "revId": "8b6879117439d199f4e50936cddc048bdb3bab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fdc79e_5d5ff8df",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-22T09:08:42Z",
+      "side": 1,
+      "message": "modify as suggested edit",
+      "parentUuid": "3dcc873e_5b4afc64",
       "range": {
         "startLine": 157,
         "startChar": 0,
