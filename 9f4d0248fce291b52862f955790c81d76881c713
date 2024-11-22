@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf6a8e6_96429cce",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-22T18:39:02Z",
+      "side": 1,
+      "message": "What happens if the caller does:\n\n1. Enable buffering.\n1. Queue `config-\u003etx_size + 1` bytes.\n\nI think the caller would expect all the data to be queued so everything is sent together once `flush` is called, rather than the first packet being transferred immediately and the remaining data being buffered. Otherwise, the receiver may end up in a weird state where they\u0027ve received a full USB packet of data, but the user of the data up the stack hasn\u0027t received what they consider a full \"packet\" of data.\n\nCould this lead to strange timings in the receiver? Admittedly, this may be the same case as a \"slow\" data connection where packets arrive with long pauses between them, but that\u0027s unlikely to be expected behavior.\n\nSince the intent is that the caller is the master of their domain and knows best when to flush the data, I think it would be better to queue all the data until `flush` is called by removing the `queue_count(config-\u003econsumer.queue) \u003c config-\u003etx_size` check. This avoid stress-testing the receiver\u0027s ability to handle partial data (mimicking slow connections).\n\nThe first obvious concern with that is filling the buffer queue before `flush` is called, which never had to be handled before `flush` was introduced. Should the new data be dropped, should `flush` be forced, or should we panic? Probably `flush`.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
