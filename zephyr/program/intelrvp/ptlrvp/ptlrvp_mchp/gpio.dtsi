@@ -36,12 +36,6 @@
 		ec_wake: ec-gpio144-wake {
 			gpios = <MCHP_GPIO_DECODE_144 GPIO_INPUT>;
 		};
-		m2-ssd-ec-i2c05-data {
-			gpios = <MCHP_GPIO_DECODE_141 GPIO_INPUT>;
-		};
-		m2-ssd-ec-i2c05-clk {
-			gpios = <MCHP_GPIO_DECODE_142 GPIO_INPUT>;
-		};
 		ec-jtag-tdi {
 			gpios = <MCHP_GPIO_DECODE_145 GPIO_INPUT>;
 		};

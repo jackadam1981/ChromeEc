@@ -19,6 +19,7 @@
 #define CHARGER_I2C i2c_smb_0
 
 #define PD_POW_I2C i2c_smb_1
+#define SENSOR_I2C i2c_smb_2
 
 /* PD Interrupts */
 #define PD_POW_IRQ_GPIO MCHP_GPIO_DECODE_143
