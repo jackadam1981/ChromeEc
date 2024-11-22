@@ -22,6 +22,30 @@
       },
       "revId": "9f4d0248fce291b52862f955790c81d76881c713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa6a5734_da19b7d9",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-22T19:20:16Z",
+      "side": 1,
+      "message": "Thanks for considering all corner cases carefully.\n\nI have chosen the name `flush` in the hope that it makes engineers think of `fflush()` or similar methods.  The convention being that enqueued bytes are not guaranteed to go out until flushed, but may go out earlier (at any point between being enqueued and flushed).\n\nI think this is a beneficial convention, because the opposite, of guaranteeing that bytes are not dequeued until flushed, would mean that the producer would need to know and care about the capacity of the queue, properties of the consumer, and other tradeoffs.\n\nWith libc, if you have enabled buffering, but keep calling `fprintf()` and happen to produce more data than will fit in the memory buffer, it will start offloading via system calls, ahead of `fflush()` being called.  This is somewhat similar to your suggestion of automatic `flush` if the queue runs full.  Libc can wait until the queue is full without risk of overflow, because it could block the execution of the program, while the implicit flush takes place.  With incoming UART data, we are not that privileged, which is why I want the option of consuming data ahead of `flush` and ahead of the queue running full.\n\nI agree that the caller/producer is the master of the domain, and knows when to flush, that is, when data has to be sent, in order to guarantee correctness.  For instance when some logic has finished composing/enqueuing a response to be sent via USB.\n\nI do not agree that the above means that the caller/producer should alone make decisions on when the consumer should dequeue and process/transmit.  I think it is the perfect balance (in my humble opinion) that the consumer has some leeway.  For UART-via-USB for instance (and `usb-stream.c` in general), there is no high-level concept of packages/messages, so the choice of how many bytes to load into each USB packet is merely a question of optimization.  Because of that `usb-stream.c` can know, that if there is at least as many bytes in the queue as the maximum size of the USB packet that can be transmitted, then there is no benefit to waiting any longer, and a maximum-size packet should be transmitted without delay, to free up buffer space.\n\nSo under my proposal queue consumers has flexibility in when to dequeue, they just have to guarantee that after `queue_flush()` any queued data is dequeued in bounded time.\n\n\u003e  This avoid stress-testing the receiver\u0027s ability to handle partial data (mimicking slow connections).\nBefore this code change, he PC host will usually receive UART data in small packets of one or two bytes, even when uServo forwards kilobytes and kilobytes of EC and GSC output.  And this goes on in our nightly test on thousands of machines.  So I would say that the receivers ability to handle partial USB data is already pretty thoroughly stress tested.\n\nAnother thing, bulk data on the USB bus does not have any hard timing guarantees, so even if we make the code attempt to transmit the `tx_size + 1` bytes in two USB packets as close together as we can, the host PC could still receive them with some time in between.\n\n\u003e What happens if the caller [queues] `config-\u003etx_size + 1` bytes.\nIf some logic is in the process of composing a USB response, let\u0027s say that the code enqueues of 65 bytes, then enqueues 2 bytes, and then flushes.\nWith my proposed logic, the result on the USB bus would be:\n`64 bytes, pause, then 3 bytes`\nBefore my this patch, the result would have been:\n`64 bytes, 1 byte, pause, then 2 bytes`\n\nI see the new behavior as clearly better.",
+      "parentUuid": "4cf6a8e6_96429cce",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
