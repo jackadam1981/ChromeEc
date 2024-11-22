@@ -218,6 +218,11 @@ rull = register_nissa_project(
     chip="it8xxx2/it81302bx",
 )
 
+test0wy = register_nissa_project(
+    project_name="test0wy",
+    chip="it8xxx2/it81302bx",
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="anraggar", addr=0xBFFE0)
@@ -249,3 +254,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="domika", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="teliks", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="rull", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="telith", addr=0xBFFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="test0wy", addr=0xBFFE0)
