@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3d9cce_5a93cb17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-11-22T19:54:00Z",
+      "side": 1,
+      "message": "Thanks for doing a manual test. In the Zephyr code, it looks like there is a [unit test for dead pixels](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/fingerprint/task/src/fpsensor_init.cc;l\u003d110-152;drc\u003d2985cb7e82907e7160be0d5346e8ff535ae96338).\n\nHowever, that code is not executing the lines in this CL [according to the coverage report](https://screenshot.googleplex.com/8yBhNTKdBoSEwkA).\n\nIt looks like this is because that test is running the [simulator maintenance function](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_sensor_sim.c;l\u003d62-71;drc\u003d8b91946f2332c8566f9e2dffeab59f8adc33ed30), not the [real maintenance function](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fpc1025.c;l\u003d281-315;drc\u003deba2281de455cd9de29de2f09cf0dcbb66a48181) that you are changing in this CL.\n\n\nWhat you can do is create a common function that updates the error state that both the simulator and the real maintenance function can call, so that it gets executed when the test runs using the simulator.\n\nThen you can also create a new unit test similar to the [unit test for dead pixels](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/fingerprint/task/src/fpsensor_init.cc;l\u003d110-152;drc\u003d2985cb7e82907e7160be0d5346e8ff535ae96338) that tests too many dead pixels. The test should fail before you make the change below and should pass once you make the change.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "a102156c855f54c480aadba2fdddc17b74da4d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d9ad89f_8f83b6a9",
