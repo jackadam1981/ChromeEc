@@ -385,11 +385,21 @@ class Renode(Platform):
         enable_hw_write_protect: bool,
         zephyr: bool,
     ) -> bool:
+        print(f"board_config.name: {board_config.name}")
         cmd = [
             "./util/renode-ec-launch",
+            "--board",
             board_config.name,
-            "zephyr" if zephyr else test_name,
         ]
+        if zephyr:
+            # Upstream Zephyr tests start with "zephyr_".
+            if test_name.startswith("zephyr_"):
+                cmd.extend(["--zephyr-bin", image_path])
+            else:
+                cmd.append("--zephyr")
+        else:
+            cmd.extend(["--ec", test_name])
+
         if enable_hw_write_protect:
             cmd.append("--enable-write-protect")
 
@@ -407,10 +417,10 @@ class Renode(Platform):
         self, test_name: str, board_config: BoardConfig, zephyr: bool
     ) -> bool:
         # TODO(b/380468811): Re-enable upstream Zephyr tests when they work.
-        if test_name in [
-            test.test_name for test in AllTests.get_zephyr_tests()
-        ]:
-            return True
+        #        if test_name in [
+        #            test.test_name for test in AllTests.get_zephyr_tests()
+        #        ]:
+        #            return True
 
         if board_config.name in [BLOONCHIPPER, DARTMONKEY]:
             if board_config.name == BLOONCHIPPER:
