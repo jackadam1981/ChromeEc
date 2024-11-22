@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1216746f_961ceab2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-11-22T21:55:58Z",
+      "side": 1,
+      "message": "\u003e It looks like this is because that test is running the simulator maintenance function, not the real maintenance function that you are changing in this CL.\n\nYup. Real maintenance function requires a private library and the sensor. Note that there is also a test that checks if maintenance [is not supported without the private library](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/fingerprint/drivers/fpc1025/src/fpc1025.c;l\u003d135-142;drc\u003de4e7fda84b119c6fc8af37c399e87fb2350e1863). \n\n\u003e What you can do is create a common function that updates the error state that both the simulator and the real maintenance function can call, so that it gets executed when the test runs using the simulator.\n\nI think this is a sign of a bad sensor API. The idea that something should be common between drivers usually means that it should belong to the upper layer. How about changing the maintenance function to fill some structure passed by a pointer?",
+      "parentUuid": "5f3d9cce_5a93cb17",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "a102156c855f54c480aadba2fdddc17b74da4d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d9ad89f_8f83b6a9",
