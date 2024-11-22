@@ -3,6 +3,77 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c08b3eac_c1a1edbb",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-11-22T22:45:43Z",
+      "side": 1,
+      "message": "@patrykd@google.com\n@tomhughes@chromium.org\n\nThis seems weird to me. I assume the zephyr implementation is using the prefix `FINGERPRINT_`. Why here the variable are the ones from the ec code base i.e. starting with `FP_`??",
+      "range": {
+        "startLine": 161,
+        "startChar": 15,
+        "endLine": 161,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d9463452_f9af4d50",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(FINGERPRINT_ERROR_DEAD_PIXELS(info.errors),\n\t\t      FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN);\n"
+            },
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+              "range": {
+                "startLine": 143,
+                "startChar": 0,
+                "endLine": 144,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(FINGERPRINT_ERROR_DEAD_PIXELS(info.errors), dead_pixels);\n"
+            },
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+              "range": {
+                "startLine": 145,
+                "startChar": 0,
+                "endLine": 146,
+                "endChar": 0
+              },
+              "replacement": "\tstate.bad_pixels \u003d FINGERPRINT_ERROR_DEAD_PIXELS_MAX + 2;\n"
+            },
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+              "range": {
+                "startLine": 161,
+                "startChar": 0,
+                "endLine": 163,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(FINGERPRINT_ERROR_DEAD_PIXELS(info.errors),\n\t\t      FINGERPRINT_ERROR_DEAD_PIXELS_MAX);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cdea11162f45abd352d1360af194bb1b2158f4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a72588dc_3142692a",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
         "patchSetId": 2
