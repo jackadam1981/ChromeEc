@@ -382,7 +382,8 @@ def bundle_firmware(opts):
         )
         meta = info.objects.add()
         meta.tarball_info.board.append(board)
-        meta.file_name = tarball_name
+        # Just the directory, recipe will cp the contents
+        meta.file_name = board
         meta.tarball_info.type = (
             firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC  # pylint: disable=no-member
         )
