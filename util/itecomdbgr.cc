@@ -583,8 +583,8 @@ static int erase_flash(struct itecomdbgr_config *conf)
 		erase_buf[15] = 0;
 		write_com(conf, erase_buf, sizeof(erase_buf));
 		write_com(conf, cs_high, sizeof(cs_high));
-		if (check_status(conf, 0x01, 0) < 0) {
-			printf("erase_4k:check_status error 2\n\r");
+		if (check_status(conf, SPI_SR1_BUSY, 0) < 0) {
+			printf("%s: SPI_SR1_BUSY\n");
 			result = FAIL;
 			goto out;
 		}
