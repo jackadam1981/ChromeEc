@@ -81,21 +81,29 @@ def launch(opts: argparse.Namespace) -> int:
     script_path = pathlib.Path(__file__).parent.resolve()
     ec_dir = script_path.parent
 
-    if project == "zephyr":
-        out_dir = ec_dir / "build" / "zephyr" / board / "output"
-    else:
-        out_dir = ec_dir / "build" / board
-        if project != "ec":
-            out_dir /= project
-
-    if project == "zephyr":
-        bin_file = out_dir / "ec.bin"
-        elf_ro_file = out_dir / "zephyr.ro.elf"
-        elf_rw_file = out_dir / "zephyr.rw.elf"
-    else:
-        bin_file = out_dir / f"{project}.bin"
-        elf_ro_file = out_dir / "RO" / f"{project}.RO.elf"
-        elf_rw_file = out_dir / "RW" / f"{project}.RW.elf"
+    print(f"project: {project}")
+    bin_file = pathlib.Path(project)
+    elf_ro_file = pathlib.Path(os.path.dirname(project)) / "zephyr_pre0.elf"
+    elf_rw_file = pathlib.Path(os.path.dirname(project)) / "zephyr.elf"
+    #    if project == "zephyr":
+    #        # out_dir = ec_dir / "build" / "zephyr" / board / "output"
+    #        out_dir = (
+    #            ec_dir / "build" / "zephyr"
+    #            "/fpmcu-test/google_dragonclaw_stm32f412cx/tests/lib/cpp/cxx/cpp.main.cpp20/zephyr"
+    #        )
+    #    else:
+    #        out_dir = ec_dir / "build" / board
+    #        if project != "ec":
+    #            out_dir /= project
+    #
+    #    if project == "zephyr":
+    #        bin_file = out_dir / "zephyr.bin"
+    #        elf_ro_file = out_dir / "zephyr_pre0.elf"
+    #        elf_rw_file = out_dir / "zephyr.elf"
+    #    else:
+    #        bin_file = out_dir / f"{project}.bin"
+    #        elf_ro_file = out_dir / "RO" / f"{project}.RO.elf"
+    #        elf_rw_file = out_dir / "RW" / f"{project}.RW.elf"
 
     if not bin_file.exists():
         print(f"Error - The bin file '{bin_file}' does not exist.")
