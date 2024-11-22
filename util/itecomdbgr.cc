@@ -294,14 +294,20 @@ static int rw_reg(struct itecomdbgr_config *conf, unsigned long Address,
 	return SUCCESS;
 }
 
-static void wr_reg(struct itecomdbgr_config *conf, unsigned long Address,
-		   uint8_t WrD0)
+static int wr_reg(struct itecomdbgr_config *conf, unsigned long Address,
+		  uint8_t WrD0)
 {
 	uint8_t Data[1];
+	ssize_t cc;
 
 	Data[0] = WrD0;
-	rw_reg(conf, Address, REG_WRITE);
-	write_com(conf, Data, sizeof(Data));
+	if (rw_reg(conf, Address, REG_WRITE) != SUCCESS)
+		return FAIL;
+	cc = write_com(conf, Data, sizeof(Data));
+	if (cc != sizeof(Data))
+		return FAIL;
+
+	return SUCCESS;
 }
 
 static uint8_t rd_reg_or_ff(struct itecomdbgr_config *conf,
