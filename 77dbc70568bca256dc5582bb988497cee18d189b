@@ -16,6 +16,24 @@
       "message": "The new code is covered, but the tests currently treat this API as optional. Should they be changed?",
       "revId": "77dbc70568bca256dc5582bb988497cee18d189b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ceb90cf_eb014e0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-11-22T17:17:13Z",
+      "side": 1,
+      "message": "good call, added CL to stack to address this.",
+      "parentUuid": "3e50d976_786f7687",
+      "revId": "77dbc70568bca256dc5582bb988497cee18d189b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
