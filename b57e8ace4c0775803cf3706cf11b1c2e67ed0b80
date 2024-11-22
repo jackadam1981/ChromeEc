@@ -22,6 +22,30 @@
       },
       "revId": "b57e8ace4c0775803cf3706cf11b1c2e67ed0b80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69a7334_dd78ec52",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2024-11-22T09:04:16Z",
+      "side": 1,
+      "message": "modify as suggested edit and fix worn assert variables",
+      "parentUuid": "9f45218b_27a4c5ee",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "b57e8ace4c0775803cf3706cf11b1c2e67ed0b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
