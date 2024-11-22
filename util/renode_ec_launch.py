@@ -56,46 +56,44 @@ def msg_run(cmd: List[str]) -> None:
     subprocess.run(cmd, check=True)
 
 
-def launch(opts: argparse.Namespace) -> int:
+def launch(
+    board: str,
+    enable_write_protect: bool,
+    zephyr: bool,
+    zephyr_bin: str,
+    ec_project: str,
+) -> int:
     """Launches an EC image in Renode.
 
     This image can be the actual firmware image or an on-board test image.
 
-    Args:
-        opts: The argparse options provided to the program, described below.
-
-    Opts:
-        board: The name of the EC board.
-        project: The name of the EC project.
-
     Returns:
         0 on success, otherwise non-zero.
     """
-
-    board = opts.board
-    project = opts.project
-    enable_write_protect = opts.enable_write_protect
 
     # Since we are going to cd later, we need to determine the absolute path
     # of EC.
     script_path = pathlib.Path(__file__).parent.resolve()
     ec_dir = script_path.parent
 
-    if project == "zephyr":
+    if zephyr_bin:
+        print(f"opts.zephyr_bin: {zephyr_bin}")
+        bin_file = pathlib.Path(zephyr_bin)
+        elf_ro_file = pathlib.Path(os.path.dirname(zephyr_bin)) / "zephyr.elf"
+        elf_rw_file = elf_ro_file
+    elif zephyr:
         out_dir = ec_dir / "build" / "zephyr" / board / "output"
-    else:
-        out_dir = ec_dir / "build" / board
-        if project != "ec":
-            out_dir /= project
-
-    if project == "zephyr":
         bin_file = out_dir / "ec.bin"
         elf_ro_file = out_dir / "zephyr.ro.elf"
         elf_rw_file = out_dir / "zephyr.rw.elf"
     else:
-        bin_file = out_dir / f"{project}.bin"
-        elf_ro_file = out_dir / "RO" / f"{project}.RO.elf"
-        elf_rw_file = out_dir / "RW" / f"{project}.RW.elf"
+        out_dir = ec_dir / "build" / board
+        if ec_project != "ec":
+            out_dir /= ec_project
+
+        bin_file = out_dir / f"{ec_project}.bin"
+        elf_ro_file = out_dir / "RO" / f"{ec_project}.RO.elf"
+        elf_rw_file = out_dir / "RW" / f"{ec_project}.RW.elf"
 
     if not bin_file.exists():
         print(f"Error - The bin file '{bin_file}' does not exist.")
@@ -159,29 +157,50 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     """The mainest function."""
 
     parser = argparse.ArgumentParser(
-        description="""Launch an EC image in Renode.
-        This can be the actual firmware image or an on-board test image.
-        """,
+        description="Launch an EC/Zephyr image in Renode.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.epilog = """
-    Use the BOARD and PROJECT environment variables to set a default for one or
-    both equivalent arguments.
-    """
 
     parser.add_argument(
-        "board",
-        nargs="?",
+        "-b",
+        "--board",
+        choices=CONSOLE_MAP.keys(),
+        type=str,
         default=os.environ.get("BOARD", DEFAULT_BOARD),
-        help="Name of the EC board",
+        help="""
+        Name of the EC/Zephyr board.
+
+        The BOARD environment variable can be used instead of this flag.
+        """,
     )
-    parser.add_argument(
-        "project",
-        nargs="?",
+
+    group = parser.add_argument_group(
+        "Image Options", "Only one of the following arguments may be used."
+    )
+    exclusive_group = group.add_mutually_exclusive_group()
+    exclusive_group.add_argument(
+        "--ec",
+        type=str,
         default=os.environ.get("PROJECT", DEFAULT_PROJECT),
         help="""
-        Name of the EC project. This is normally just 'ec' or 'zephyr', but
+        Name of the EC project. This is normally just 'ec', but
         could be a test name for on-board test images.
+
+        The PROJECT environment variable can be used to specify a value.
+        """,
+    )
+
+    exclusive_group.add_argument(
+        "--zephyr", action="store_true", help="Run Zephyr."
+    )
+
+    exclusive_group.add_argument(
+        "--zephyr-bin",
+        type=str,
+        help="""
+        Full path to a Zephyr binary.
+
+        Used for running upstream Zephyr binaries.
         """,
     )
 
@@ -193,7 +212,13 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     )
 
     opts = parser.parse_args(argv)
-    return launch(opts)
+    return launch(
+        board=opts.board,
+        enable_write_protect=opts.enable_write_protect,
+        zephyr=opts.zephyr,
+        zephyr_bin=opts.zephyr_bin,
+        ec_project=opts.ec,
+    )
 
 
 if __name__ == "__main__":
