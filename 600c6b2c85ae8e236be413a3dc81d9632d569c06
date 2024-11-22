@@ -16,6 +16,24 @@
       "message": "This didn\u0027t work.",
       "revId": "600c6b2c85ae8e236be413a3dc81d9632d569c06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2701a3_ebb97d75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-11-22T23:46:44Z",
+      "side": 1,
+      "message": "https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8730534279260977873/+/u/upload_artifacts/call_chromite.api.FirmwareService_BundleFirmwareArtifacts/response",
+      "parentUuid": "c6ea8f40_26168fa6",
+      "revId": "600c6b2c85ae8e236be413a3dc81d9632d569c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
