@@ -1,0 +1,36 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	aliases {
+		gpio-wp = &gpio_ec_wp_odl;
+	};
+
+	named-gpios {
+		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
+			gpios = <&gpioe 3 GPIO_OUTPUT>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
+
+		sys_rst_odl: sys_rst_r_odl {
+			gpios = <&gpiog 0 GPIO_ODR_LOW>;
+		};
+
+		/* The legacy system code requires GPIO_ENTERING_RW symbol */
+		ec-entering-rw {
+			enum-name = "GPIO_ENTERING_RW";
+		};
+
+		gpio_ec_wp_odl: ec_wp_odl {
+			gpios = <&gpioj 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+	};
+};
+
+/*
+ * Aliases to common names
+ */
+gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+cse_early_rec_sw: &gpio_c_ec_wp_odl_r {};
