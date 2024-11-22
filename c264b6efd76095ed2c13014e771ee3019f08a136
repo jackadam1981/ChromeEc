@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269ce2f4_7940f811",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-11-22T18:29:38Z",
+      "side": 1,
+      "message": "maybe it is worth mentioning adding of boot_param implementation in tpm2",
+      "fixSuggestions": [
+        {
+          "fixId": "daa980f3_71dbac20",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "docs/ti50_firmware_releases.md",
+              "range": {
+                "startLine": 1917,
+                "startChar": 0,
+                "endLine": 1917,
+                "endChar": 0
+              },
+              "replacement": "*   Add boot\\_param implementation in tpm2\n    [b/376859171](https://b.corp.google.com/issues/376859171)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c264b6efd76095ed2c13014e771ee3019f08a136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
