@@ -22,6 +22,30 @@
       },
       "revId": "61f808bcec7f6922ddf40680c0b7d1eedcd0bfc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0be2c12_825c8219",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-11-22T19:36:32Z",
+      "side": 1,
+      "message": "By \"the complete response is sent\" I mean, \"no part of the response remains un-sent\".\n\nThese queues do not guarantee message boundaries, and `usb-stream.c` which connects a queue to a USB interface also cannot guarantee boundaries. (Prior to this patch, if you enqueue one byte, and in a separate call enquene anouther, then `usb-stream.c` may create one USB packet of two bytes, or two packets of one byte, depending on the timing of its \"deferred\" callback.\n\nSo the programs on PC hosts reading data from such a USB interface have to treat it similar to a TCP/IP socket, where you receive a stream of bytes, but never know how many arrive in a single `read()` call, nor if more are soon to arrive.  The receiving program will e.g. look at headers in the response, to see how many bytes to excpect and wait for.\n\nThere is no fixed maximum size of a response.  With the current code, it could probably be close to 64kB of data.  Several of the handler routines in `board/hyperdebug/gpio.c` will first enqueue a fixed size header 6-10 bytes, and then enqueue bulk data through several enqueue calls of odd sizes, composing data from internal structures.\n\nThe PC host already has to be prepared for delay between the 6-byte header arriving and chunks of the bulk data afterwards.  It counts bytes based on size field in the header, to know for how long to keep going.\n\nThis patch will serve to reduce the amount of fragmentation of USB packets, at least by ensuring that if header and bulk data together does not exceed 64 bytes, then it is transmitted as one packet.",
+      "parentUuid": "2967da55_a250b618",
+      "range": {
+        "startLine": 680,
+        "startChar": 19,
+        "endLine": 682,
+        "endChar": 42
+      },
+      "revId": "61f808bcec7f6922ddf40680c0b7d1eedcd0bfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
