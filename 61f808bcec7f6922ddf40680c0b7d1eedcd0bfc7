@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2967da55_a250b618",
+        "filename": "board/hyperdebug/cmsis-dap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-11-22T18:43:24Z",
+      "side": 1,
+      "message": "As noted in my other comment, this is only true if the data is always less than the packet size. Otherwise, the first USB-packet\u0027s worth of data will be sent immediately, with any remaining data buffered until `flush` is called.\n\nWhat\u0027s the maximum size of a response packet? Can it be a problem if there\u0027s some large pause between transfers if it is broken up, due to waiting for the final `flush`?",
+      "range": {
+        "startLine": 680,
+        "startChar": 19,
+        "endLine": 682,
+        "endChar": 42
+      },
+      "revId": "61f808bcec7f6922ddf40680c0b7d1eedcd0bfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
