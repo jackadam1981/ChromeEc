@@ -78,3 +78,10 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 	status = "okay";
 };
+
+/* typec-aic1-power */
+&SENSOR_I2C {
+	label = "I2C_SENSOR";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	status = "okay";
+};
