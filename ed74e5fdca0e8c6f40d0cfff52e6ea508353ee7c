@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8036a949_1c87c815",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-11-23T04:23:24Z",
+      "side": 1,
+      "message": "This needs to be looked into and addressed.  I was having issues with it when building for risc",
+      "revId": "ed74e5fdca0e8c6f40d0cfff52e6ea508353ee7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
