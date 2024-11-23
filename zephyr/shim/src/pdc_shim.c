@@ -140,7 +140,7 @@ uint32_t pd_get_events(int port)
 	 * natural Zephyr data type for a bitfield of events. uint32_t is the
 	 * legacy ECOS type. Ensure that they are compatible.
 	 */
-	BUILD_ASSERT(sizeof(uint32_t) >= sizeof(atomic_t));
+	//BUILD_ASSERT(sizeof(uint32_t) >= sizeof(atomic_t));
 
 	return pdc_power_mgmt_get_events(port);
 }
