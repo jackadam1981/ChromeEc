@@ -161,7 +161,7 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 #ifdef CONFIG_RISCV
 	exception_address = csr_read(mepc);
 	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
-	       (void *)exception_address, thread_name);
+	       (void *)(long)exception_address, thread_name);
 #else
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
