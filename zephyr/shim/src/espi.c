@@ -254,7 +254,7 @@ uint8_t *lpc_get_memmap_range(void)
 	if (result != EC_SUCCESS)
 		LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
 
-	return (uint8_t *)lpc_memmap;
+	return (uint8_t *)(long)lpc_memmap;
 }
 
 /**
@@ -502,13 +502,13 @@ static void handle_host_write(uint32_t data)
 	}
 	lpc_packet.send_response = lpc_send_response_packet;
 
-	lpc_packet.request = (const void *)shm_mem_host_cmd;
+	lpc_packet.request = (const void *)(long)shm_mem_host_cmd;
 	lpc_packet.request_temp = params_copy;
 	lpc_packet.request_max = sizeof(params_copy);
 	/* Don't know the request size so pass in the entire buffer */
 	lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
 
-	lpc_packet.response = (void *)shm_mem_host_cmd;
+	lpc_packet.response = (void *)(long)shm_mem_host_cmd;
 	lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
 	lpc_packet.response_size = 0;
 

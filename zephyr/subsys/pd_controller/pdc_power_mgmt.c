@@ -1955,7 +1955,7 @@ int evaluate_src_pdos(const uint32_t *pdos, size_t num_pdos, size_t *selected)
 		uint32_t ma = PDO_FIXED_GET_CURR(pdos[i]);
 		uint32_t mw = (mv * ma) / 1000;
 
-		LOG_INF("PDO%d: %08x, %d %d %d", i + 1, pdos[i], mv, ma, mw);
+		LOG_INF("PDO%zu: %08x, %d %d %d", i + 1, pdos[i], mv, ma, mw);
 
 		/* Find highest-wattage PDO that does not exceed the board max
 		 * voltage.
