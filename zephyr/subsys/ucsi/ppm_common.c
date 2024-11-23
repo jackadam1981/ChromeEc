@@ -855,7 +855,7 @@ int ucsi_ppm_read(struct ucsi_ppm_device *dev, unsigned int offset, void *buf,
 {
 	/* Validate memory to read and allow any offset for reading. */
 	if (offset + length >= sizeof(struct ucsi_memory_region)) {
-		LOG_ERR("UCSI read exceeds bounds of memory: offset(0x%x), length(0x%x)",
+		LOG_ERR("UCSI read exceeds bounds of memory: offset(0x%x), length(0x%zx)",
 			offset, length);
 		return -EINVAL;
 	}
@@ -947,7 +947,7 @@ int ucsi_ppm_write(struct ucsi_ppm_device *dev, unsigned int offset,
 	bool valid_fixed_offset;
 
 	if (!buf || length == 0) {
-		LOG_ERR("Invalid buffer (%p) or length (%x)", buf, length);
+		LOG_ERR("Invalid buffer (%p) or length (%zx)", buf, length);
 		return -EINVAL;
 	}
 
@@ -967,7 +967,7 @@ int ucsi_ppm_write(struct ucsi_ppm_device *dev, unsigned int offset,
 
 	if (offset >= UCSI_MESSAGE_OUT_OFFSET &&
 	    offset + length > UCSI_MESSAGE_OUT_OFFSET + MESSAGE_OUT_SIZE) {
-		LOG_ERR("UCSI write [0x%x ~ 0x%x] exceeds the "
+		LOG_ERR("UCSI write [0x%x ~ 0x%zx] exceeds the "
 			"MESSAGE_OUT range [0x%x ~ 0x%x]",
 			offset, offset + length - 1, UCSI_MESSAGE_OUT_OFFSET,
 			UCSI_MESSAGE_OUT_OFFSET + MESSAGE_OUT_SIZE - 1);
