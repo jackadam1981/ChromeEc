@@ -653,6 +653,8 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 	int progress_percent;
 
 	while (start_addr < end_addr) {
+		ssize_t cc;
+
 		if ((end_addr - start_addr) >= conf->page_size)
 			read_count = conf->page_size;
 		else
@@ -670,7 +672,12 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 		fastread_buf[15] = (start_addr) & 0xFF;
 		write_com(conf, fastread_buf, sizeof(fastread_buf));
 
-		read_com(conf, DBG_BUF, sizeof(DBG_BUF));
+		cc = read_com(conf, DBG_BUF, sizeof(DBG_BUF));
+		if (cc !=  sizeof(DBG_BUF)) {
+			fprintf(stderr, "%s: partial read %zd\n", __func__, cc);
+			result = FAIL;
+			goto out;
+		}
 
 		progress_percent = (++j * 100) / total_size;
 
