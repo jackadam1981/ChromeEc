@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d492db94_b3b160f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-11-23T16:55:32Z",
+      "side": 1,
+      "message": "@Vijay, can you please to check why EC tests are failing with this CL. Do we need to remove any Kconfig from Intek RVP code because U believe Fatcat is first RVP platform that will plan to enable UCSI_PPM driver. I\u0027m guessing some dummy redefinition issue.",
+      "revId": "5289229f3026dadb16e7a432095a21a5b2db0d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
