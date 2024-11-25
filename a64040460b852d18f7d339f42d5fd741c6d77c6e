@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb01ecf_529fa293",
+        "filename": "test/queue.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-11-25T20:19:11Z",
+      "side": 1,
+      "message": "Some syntax errors around here. You can run this unit test locally with `(inside) make run-queue`",
+      "range": {
+        "startLine": 454,
+        "startChar": 37,
+        "endLine": 454,
+        "endChar": 38
+      },
+      "revId": "a64040460b852d18f7d339f42d5fd741c6d77c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
