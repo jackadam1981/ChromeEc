@@ -3,12 +3,6 @@
  * found in the LICENSE file.
  */
 
-/*
- * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
- * #line marks the *next* line, so it is off by one.
- */
-#line 11
-
 #ifndef __CROS_EC_CHARGE_MANAGER_H
 #define __CROS_EC_CHARGE_MANAGER_H
 
@@ -248,6 +242,21 @@ int charge_manager_get_charger_voltage(void);
  * @return	enum charge_supplier
  */
 enum charge_supplier charge_manager_get_supplier(void);
+
+/**
+ * Set the initial charge port and supplier during initialization.
+ *
+ * This is used by the PDC support to indicate which port is currently
+ * supplying power to the system.  In a batteryless configuration, we can't
+ * switch the charge supplier.
+ *
+ * If the charge manager has already selected a port and supplier, this
+ * routine is a no-op.
+ *
+ * @param port - Port supplying power at boot.
+ * @param supplier - Supplier type at boot.
+ */
+void charge_manager_set_supplier(int port, enum charge_supplier supplier);
 
 /**
  * Get the current VBUS voltage.

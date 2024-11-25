@@ -3,12 +3,6 @@
  * found in the LICENSE file.
  */
 
-/*
- * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
- * #line marks the *next* line, so it is off by one.
- */
-#line 11
-
 #include "adc.h"
 #include "atomic.h"
 #include "battery.h"
@@ -39,8 +33,6 @@
 #ifdef HAS_MOCK_CHARGE_MANAGER
 #error Mock defined HAS_MOCK_CHARGE_MANAGER
 #endif
-
-#line 44
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 
@@ -783,6 +775,7 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 	 */
 	if (charge_port != CHARGE_PORT_NONE && charge_port != port &&
 	    (battery_is_present() == BP_NO ||
+	     battery_is_present() == BP_NOT_SURE ||
 	     (battery_is_present() == BP_YES &&
 	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL))) {
 		port = charge_port;
@@ -1297,7 +1290,6 @@ void charge_manager_leave_safe_mode(void)
 	 */
 	crec_msleep(board_get_leave_safe_mode_delay_ms());
 	CPRINTS("%s()", __func__);
-	cflush();
 	left_safe_mode = 1;
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
@@ -1421,6 +1413,20 @@ int charge_manager_get_charger_voltage(void)
 enum charge_supplier charge_manager_get_supplier(void)
 {
 	return charge_supplier;
+}
+
+void charge_manager_set_supplier(int port, enum charge_supplier supplier)
+{
+	if (charge_supplier != CHARGE_SUPPLIER_NONE ||
+	    charge_port != CHARGE_PORT_NONE) {
+		return;
+	}
+
+	CPRINTS("Seeding initial charge supplier, port %d, supplier %d", port,
+		supplier);
+
+	charge_port = port;
+	charge_supplier = supplier;
 }
 
 int charge_manager_get_power_limit_uw(void)

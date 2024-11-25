@@ -2308,6 +2308,7 @@
 #undef CONFIG_FP_SENSOR_ELAN80
 #undef CONFIG_FP_SENSOR_ELAN80SG
 #undef CONFIG_FP_SENSOR_ELAN515
+#undef CONFIG_FP_SENSOR_INT_ACTIVE_LOW
 
 /*****************************************************************************/
 
@@ -3071,6 +3072,13 @@
  * with using hardware multiplication and division and nop instructions.
  */
 #undef CONFIG_IT8XXX2_MUL_WORKAROUND
+
+/*
+ * Allows pre-watchdog timer interrupt to be unmasked even when all interrupts
+ * are disabled.
+ * NOTE: this config is only relevant for non-zephyr boards with NDS32 arch
+ */
+#undef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
 
 /*
  * Support the standard integer multiplication and division instruction
