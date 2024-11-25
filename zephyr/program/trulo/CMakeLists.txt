@@ -11,3 +11,16 @@ if(DEFINED CONFIG_BOARD_TRULO)
 	project(trulo)
 	add_subdirectory(trulo)
 endif()
+
+if(DEFINED CONFIG_BOARD_ULDRENITE)
+	project(uldrenite)
+	zephyr_include_directories("uldrenite/include")
+	zephyr_library_sources(
+			"uldrenite/src/usbc.c"
+			"uldrenite/src/sub_board.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+	"uldrenite/src/keyboard.c"
+	"uldrenite/src/keyboard_customization.c"
+	)
+endif()
