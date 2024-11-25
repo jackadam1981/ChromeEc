@@ -12,6 +12,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "keyboard_backlight.h"
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -83,3 +84,106 @@ test_export_static void kb_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_FIRST);
+=======
+#include "keyboard_customization.h"
+
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(board_init, LOG_LEVEL_INF);
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+
+enum battery_present battery_hw_present(void)
+{
+	const struct gpio_dt_spec *batt_pres;
+
+	batt_pres = GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl);
+
+	/* The GPIO is low when the battery is physically present */
+	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+
+test_export_static void fan_init(void)
+{
+	int ret;
+	uint32_t val;
+	/*
+	 * Retrieve the fan config.
+	 */
+	ret = cros_cbi_get_fw_config(FW_FAN, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_FAN);
+		return;
+	}
+	if (val != FW_FAN_PRESENT) {
+		/* Disable the fan */
+		fan_set_count(0);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
+
+static bool has_backlight = FW_KB_BL_NOT_PRESENT;
+static bool has_numeric_pad = FW_KB_NUMPAD_NOT_PRESENT;
+
+int8_t board_vivaldi_keybd_idx(void)
+{
+	int config_index;
+
+	CPRINTS("Keyboard configuration: %s backlight.",
+		has_backlight ? "with" : "without");
+	CPRINTS("Keyboard configuration: %s numeric pad.",
+		has_numeric_pad ? "with" : "without");
+
+	config_index = (has_backlight << 1) | has_numeric_pad;
+
+	switch (config_index) {
+	case 0: // No backlight, no numeric pad
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	case 1: // No backlight, with numeric pad
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+	case 2: // With backlight, no numeric pad
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_2));
+	case 3: // With backlight, with numeric pad
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_3));
+	default: // Default to configuration 0
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	}
+}
+
+/*
+ * Keyboard function decided by FW config.
+ */
+test_export_static void kb_init(void)
+{
+	int ret;
+	uint32_t val;
+
+	ret = cros_cbi_get_fw_config(FW_KB_BL, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_KB_BL);
+		return;
+	}
+
+	if (val == FW_KB_BL_PRESENT) {
+		has_backlight = FW_KB_BL_PRESENT;
+	} else {
+		has_backlight = FW_KB_BL_NOT_PRESENT;
+		kblight_enable(0);
+	}
+
+	ret = cros_cbi_get_fw_config(FW_KB_NUMPAD, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d, "
+			"assuming FW_KB_NUMERIC_PAD_PRESENT",
+			FW_KB_NUMPAD);
+		val = FW_KB_NUMPAD_NOT_PRESENT;
+	}
+
+	if (val == FW_KB_NUMPAD_PRESENT) {
+		has_numeric_pad = FW_KB_NUMPAD_PRESENT;
+	} else {
+		has_numeric_pad = FW_KB_NUMPAD_NOT_PRESENT;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_I2C);
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)

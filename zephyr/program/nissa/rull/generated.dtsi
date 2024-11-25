@@ -189,6 +189,18 @@
 		charger_vap_otg_en {
 			gpios = <&gpioh 4 GPIO_OUTPUT_LOW>;
 		};
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
+=======
+		gpio_ap_bl_en_odl: gpio_ap_bl_en_odl{
+			gpios = <&gpioi 7 GPIO_INPUT>;
+		};
+		gpio_tp_vcc_od: gpio_tp_vcc_od {
+			gpios = <&gpioc 0 GPIO_OUTPUT_HIGH>;
+		};
+		gpio_tp_en_od:gpio_tp_en_od {
+			gpios = <&gpioi 6 GPIO_OUTPUT_HIGH>;
+		};
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 	};
 
 	named-i2c-ports {

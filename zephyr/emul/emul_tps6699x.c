@@ -301,6 +301,9 @@ static void tps6699x_emul_handle_srdy(struct tps6699x_emul_pdc_data *data,
 			EXT_VBUS_SWITCH_ENABLED_INPUT;
 		power_path_status->pb_ext_vbus_sw =
 			EXT_VBUS_SWITCH_ENABLED_INPUT;
+
+		/* Update connector status with new sink path state */
+		data->connector_status.sink_path_status = 1;
 		break;
 	default:
 		break;
@@ -318,6 +321,9 @@ static void tps6699x_emul_handle_sryr(struct tps6699x_emul_pdc_data *data,
 	LOG_INF("SRYR TASK");
 	power_path_status->pa_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
 	power_path_status->pb_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
+
+	/* Update connector status with new sink path state */
+	data->connector_status.sink_path_status = 0;
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 }
 
@@ -421,6 +427,14 @@ static void tps6699x_emul_handle_write(struct tps6699x_emul_pdc_data *data,
 			data, (const union reg_port_control *)
 				      data->reg_val[REG_PORT_CONTROL]);
 		break;
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
+=======
+	case REG_INTERRUPT_CLEAR_FOR_I2C1:
+		/* Interrupts have been cleared */
+		gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin,
+				    1);
+		break;
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 	default:
 		/* No action on write */
 		break;

@@ -16,6 +16,11 @@
 #undef GPIO_VOLUME_DOWN_L
 #undef CONFIG_VOLUME_BUTTONS
 #undef CONFIG_USB_CHARGER
+#undef CONFIG_I2C_DEBUG
+#undef CONFIG_CMD_POWERINDEBUG
+
+/* Chipset config */
+#define CONFIG_CHIPSET_X86_RSMRST_AFTER_S5
 
 /* EC console commands */
 #define CONFIG_CMD_TCPC_DUMP
@@ -24,7 +29,6 @@
 /* Bring up function */
 #define CONFIG_CMD_I2C_SCAN
 #define CONFIG_CMD_I2C_XFER
-#define CONFIG_SYSTEM_UNLOCKED
 
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
@@ -63,8 +67,12 @@
 #define CONFIG_POWER_BUTTON_INIT_TIMEOUT 2
 
 /* TCPC */
+#define CONFIG_USB_PD_INITIAL_DEBUG_LEVEL 0
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_RAA489000
+
+#define CONFIG_USB_PD_XID 0
+#define CONFIG_USB_BCD_DEV 0
 
 /* USB defines specific to external TCPCs */
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE

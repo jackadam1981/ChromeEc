@@ -24,6 +24,10 @@
 
 #define CONFIG_MP2964
 #define CONFIG_KEYBOARD_STRAUSS
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
+=======
+#define CONFIG_KEYBOARD_REFRESH_ROW3
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_ACCELS

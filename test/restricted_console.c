@@ -65,6 +65,7 @@ test_static int test_command_read_write_word(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
 test_static int test_command_fpupload(void)
 {
 	/* System is unlocked. */
@@ -122,15 +123,20 @@ test_static int test_command_fpmatch(void)
 	return EC_SUCCESS;
 }
 
+=======
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 void run_test(int argc, const char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_command_mem_dump);
 	RUN_TEST(test_command_read_write_word);
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
 	RUN_TEST(test_command_fpupload);
 	RUN_TEST(test_command_fpdownload);
 	RUN_TEST(test_command_fpmatch);
+=======
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 
 	test_print_result();
 }

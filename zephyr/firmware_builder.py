@@ -9,10 +9,8 @@
 This is the entry point for the custom firmware builder workflow recipe.
 """
 
-import argparse
 import collections
 import json
-import multiprocessing
 import os
 import pathlib
 import re
@@ -24,12 +22,18 @@ import sys
 from google.protobuf import json_format  # pylint: disable=import-error
 
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
+import scripts.firmware_builder_lib
 
 
 # Add the zmake dir early in the python search path
 ZEPHYR_DIR = pathlib.Path(__file__).parent.resolve()
 sys.path.insert(1, str(ZEPHYR_DIR / "zmake"))
 
+# Add the util directory to the search path
+sys.path.append(str(ZEPHYR_DIR / "../util"))
+
+# pylint: disable=wrong-import-position, import-error
+from coreboot_sdk import init_toolchain
 import zmake.modules  # pylint: disable=wrong-import-position
 import zmake.project  # pylint: disable=wrong-import-position
 
@@ -53,6 +57,8 @@ SPECIAL_BOARDS = [
     # Nissa variants
     "nereid",
     "nivviks",
+    "orisa",
+    "orisa-ish",
     # Skyrim variants
     "winterhold",
     "frostflow",
@@ -70,8 +76,10 @@ BINARY_SIZE_REGIONS = [
 ]
 
 
-def log_cmd(cmd, env=None):
+def log_cmd(cmd, env=None, cwd=None):
     """Log subprocess command."""
+    if cwd:
+        print(f"cd {cwd};", end=" ")
     if env is not None:
         print("env", end=" ")
         [  # pylint:disable=expression-not-assigned
@@ -88,37 +96,6 @@ def find_checkout():
         if (path / ".repo").is_dir():
             return path
     raise FileNotFoundError("Unable to locate the root of the checkout")
-
-
-def init_toolchain():
-    """Initialize coreboot-sdk.
-
-    Returns:
-        Environment variables to use for toolchain.
-    """
-    # (environment variable, bazel target)
-    toolchains = [
-        ("COREBOOT_SDK_ROOT_arm", "@coreboot-sdk-arm-eabi//:get_path"),
-        ("COREBOOT_SDK_ROOT_x86", "@coreboot-sdk-i386-elf//:get_path"),
-        ("COREBOOT_SDK_ROOT_riscv", "@coreboot-sdk-riscv-elf//:get_path"),
-        ("COREBOOT_SDK_ROOT_nds32", "@coreboot-sdk-nds32le-elf//:get_path"),
-    ]
-
-    subprocess.run(
-        ["bazel", "build", *(target for _, target in toolchains)],
-        check=True,
-    )
-
-    result = {}
-    for name, target in toolchains:
-        run_result = subprocess.run(
-            ["bazel", "run", target],
-            check=True,
-            stdout=subprocess.PIPE,
-        )
-        result[name] = run_result.stdout.strip()
-
-    return result
 
 
 def build(opts):
@@ -345,6 +322,7 @@ def bundle_firmware(opts):
     modules = zmake.modules.locate_from_checkout(find_checkout())
     projects_path = zmake.modules.default_projects_dirs(modules)
     subprocesses = []
+    per_board_targets = collections.defaultdict(list)
     for project in zmake.project.find_projects(projects_path).values():
         build_dir = (
             platform_ec / "build" / "zephyr" / project.config.project_name
@@ -358,8 +336,15 @@ def bundle_firmware(opts):
         else:
             tarball_name = f"{project.config.project_name}.EC.tar.bz2"
         tarball_path = bundle_dir.joinpath(tarball_name)
-        cmd = ["tar", "cfj", tarball_path, "."]
-        log_cmd(cmd)
+        for board in set(project.config.inherited_from):
+            per_board_targets[board].append(
+                f"{project.config.project_name}/output"
+            )
+        cmd = ["tar", "cfj", tarball_path]
+        cmd.extend(
+            [x.relative_to(artifacts_dir) for x in artifacts_dir.glob("*")]
+        )
+        log_cmd(cmd, cwd=artifacts_dir)
         subprocesses.append(
             subprocess.Popen(  # pylint: disable=consider-using-with
                 cmd, cwd=artifacts_dir, stdin=subprocess.DEVNULL
@@ -373,6 +358,34 @@ def bundle_firmware(opts):
         )
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
+    # For each board, create a big tar file that contains all the models.
+    # TODO(b/358654822): Remove this once DLM can show the small tarfiles.
+    for board, dirs in per_board_targets.items():
+        tarball_name = f"{board}/firmware_from_source.tar.bz2"
+        (bundle_dir / board).mkdir(exist_ok=True)
+        cmd = [
+            "tar",
+            "--exclude=*.elf",
+            "--exclude=*.lst",
+            "-cjf",
+            str(bundle_dir / tarball_name),
+            "-C",
+            str(platform_ec / "build" / "zephyr"),
+            "--transform",
+            "s,/output,,",
+        ] + dirs
+        log_cmd(cmd)
+        subprocesses.append(
+            subprocess.Popen(  # pylint: disable=consider-using-with
+                cmd, stdin=subprocess.DEVNULL
+            )
+        )
+        meta = info.objects.add()
+        meta.tarball_info.board.append(board)
+        meta.file_name = tarball_name
+        meta.tarball_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC  # pylint: disable=no-member
+        )
     for proc in subprocesses:
         proc.wait()
         if proc.returncode != 0:
@@ -402,6 +415,8 @@ def test(opts):
     # Run tests from Makefile.cq because make knows how to run things
     # in parallel.
     cmd = ["make", "-f", "Makefile.cq", f"-j{opts.cpus}", "test"]
+    env = os.environ.copy()
+    env.update(init_toolchain())
     if opts.code_coverage:
         cmd.append("COVERAGE=1")
     if SPECIAL_BOARDS:
@@ -412,6 +427,7 @@ def test(opts):
         check=True,
         cwd=ZEPHYR_DIR,
         stdin=subprocess.DEVNULL,
+        env=env,
     )
 
     # Twister-based tests
@@ -561,6 +577,7 @@ def _extract_lcov_summary(name, metrics, filename):
 
 def main(args):
     """Builds and tests all of the Zephyr targets and reports build metrics"""
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
     opts = parse_args(args)
 
     # Convert the full version strings (R130-16032.8.0-1) to the short form (16032.8.0).
@@ -587,64 +604,11 @@ def parse_args(args):
         "--cpus",
         default=multiprocessing.cpu_count(),
         help="The number of cores to use.",
+=======
+    parser, sub_cmds = scripts.firmware_builder_lib.create_arg_parser(
+        build, bundle, test
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
     )
-
-    parser.add_argument(
-        "--metrics",
-        dest="metrics",
-        required=False,
-        help="File to write the json-encoded MetricsList proto message.",
-    )
-
-    parser.add_argument(
-        "--metadata",
-        required=False,
-        help=(
-            "Full pathname for the file in which to write build artifact "
-            "metadata."
-        ),
-    )
-
-    parser.add_argument(
-        "--output-dir",
-        required=False,
-        help=(
-            "Full pathname for the directory in which to bundle build "
-            "artifacts."
-        ),
-    )
-
-    parser.add_argument(
-        "--code-coverage",
-        required=False,
-        action="store_true",
-        help="Build host-based unit tests for code coverage.",
-    )
-
-    parser.add_argument(
-        "--bcs-version",
-        dest="bcs_version",
-        default="",
-        required=False,
-        # TODO(b/180008931): make this required=True.
-        help="BCS version to include in metadata.",
-    )
-
-    # Would make this required=True, but not available until 3.7
-    sub_cmds = parser.add_subparsers()
-
-    build_cmd = sub_cmds.add_parser("build", help="Builds all firmware targets")
-    build_cmd.set_defaults(func=build)
-
-    build_cmd = sub_cmds.add_parser(
-        "bundle",
-        help="Creates a tarball containing build "
-        "artifacts from all firmware targets",
-    )
-    build_cmd.set_defaults(func=bundle)
-
-    test_cmd = sub_cmds.add_parser("test", help="Runs all firmware unit tests")
-    test_cmd.set_defaults(func=test)
 
     check_inherits_cmd = sub_cmds.add_parser(
         "check_inherits",
@@ -652,7 +616,22 @@ def parse_args(args):
     )
     check_inherits_cmd.set_defaults(func=check_inherits)
 
-    return parser.parse_args(args)
+    opts = parser.parse_args(args)
+
+    # Convert the full version strings (R130-16032.8.0-1) to the short form (16032.8.0).
+    if opts.bcs_version:
+        match = re.compile(r"R\d+-(\d+\.\d+\.\d+)(-\d+)?").fullmatch(
+            opts.bcs_version
+        )
+        if match:
+            opts.bcs_version = match[1]
+
+    if not hasattr(opts, "func"):
+        print("Must select a valid sub command!")
+        return -1
+
+    # Run selected sub command function
+    return opts.func(opts)
 
 
 if __name__ == "__main__":

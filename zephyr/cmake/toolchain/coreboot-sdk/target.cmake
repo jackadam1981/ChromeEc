@@ -7,7 +7,7 @@ set(COMPILER gcc)
 set(LINKER ld)
 set(BINTOOLS gnu)
 
-# Mapping of Zephyr architecture -> coreboot-sdk toolchain
+# Mapping of Zephyr architecture -> ec-coreboot-sdk toolchain
 set(CROSS_COMPILE_TARGET_arm    arm-eabi)
 set(CROSS_COMPILE_TARGET_riscv  riscv64-elf)
 set(CROSS_COMPILE_TARGET_x86    i386-elf)
@@ -20,13 +20,18 @@ elseif("${ARCH}" STREQUAL "x86" AND CONFIG_X86_64)
   set(CROSS_COMPILE_TARGET      x86_64-elf)
 endif()
 
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
 if(NOT DEFINED COREBOOT_SDK_ROOT)
   set(COREBOOT_SDK_ROOT "$ENV{COREBOOT_SDK_ROOT}")
+=======
+if(DEFINED COREBOOT_SDK_ROOT_${ARCH})
+  set(COREBOOT_SDK_ROOT "${COREBOOT_SDK_ROOT_${ARCH}}")
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 endif()
 
 set(CC gcc)
 set(C++ g++)
-set(TOOLCHAIN_HOME "${COREBOOT_SDK_ROOT}/bin/")
+set(TOOLCHAIN_HOME "${COREBOOT_SDK_ROOT}/bin")
 set(CROSS_COMPILE "${CROSS_COMPILE_TARGET}-")
 
 set(CMAKE_AR         "${TOOLCHAIN_HOME}/${CROSS_COMPILE}ar")
@@ -35,6 +40,7 @@ set(CMAKE_OBJCOPY    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}objcopy")
 set(CMAKE_OBJDUMP    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}objdump")
 set(CMAKE_RANLIB     "${TOOLCHAIN_HOME}/${CROSS_COMPILE}ranlib")
 set(CMAKE_READELF    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}readelf")
+set(CMAKE_GCOV       "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcov")
 
 # On ARM, we don't use libgcc: It's built against a fixed target (e.g.
 # used instruction set, ABI, ISA extensions) and doesn't adapt when

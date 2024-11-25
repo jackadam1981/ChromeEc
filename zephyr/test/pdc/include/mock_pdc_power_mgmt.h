@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "drivers/ucsi_v3.h"
 #include "usbc/pdc_power_mgmt.h"
 
 #include <zephyr/fff.h>
@@ -45,6 +46,13 @@ DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_lpm_ppm_info, int,
 DECLARE_FAKE_VALUE_FUNC(bool, pdc_power_mgmt_check_hpd_wake, int);
 DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_pch_data_status, int,
 			uint8_t *);
+<<<<<<< HEAD   (e997d8 Rull/Roric/Ruke: Modify the redriver's EQ)
+=======
+DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_rdo, int, uint32_t *);
+DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_drp_mode, int,
+			enum drp_mode_t *);
+DECLARE_FAKE_VALUE_FUNC(bool, pdc_power_mgmt_get_vconn_state, int);
+>>>>>>> BRANCH (b5c9d8 Rull/Roric/Ruke: add touchpanel power sequence control)
 
 /**
  * @brief Reset the above set of fakes

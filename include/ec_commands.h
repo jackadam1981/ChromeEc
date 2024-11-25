@@ -5,12 +5,6 @@
 
 /* Host communication command constants for Chrome EC */
 
-/*
- * TODO(b/272518464): Work around coreboot GCC preprocessor bug.
- * #line marks the *next* line, so it is off by one.
- */
-#line 13
-
 #ifndef __CROS_EC_EC_COMMANDS_H
 #define __CROS_EC_EC_COMMANDS_H
 
@@ -8255,10 +8249,14 @@ struct ec_response_fp_mode {
 /* Retrieve Fingerprint sensor information */
 #define EC_CMD_FP_INFO 0x0403
 
+/* Mask for dead pixels */
+#define FP_ERROR_DEAD_PIXELS_MASK 0x3FF
+/* Maximum number of dead pixels */
+#define FP_ERROR_DEAD_PIXELS_MAX (FP_ERROR_DEAD_PIXELS_MASK - 1)
 /* Number of dead pixels detected on the last maintenance */
-#define FP_ERROR_DEAD_PIXELS(errors) ((errors) & 0x3FF)
+#define FP_ERROR_DEAD_PIXELS(errors) ((errors) & FP_ERROR_DEAD_PIXELS_MASK)
 /* Unknown number of dead pixels detected on the last maintenance */
-#define FP_ERROR_DEAD_PIXELS_UNKNOWN (0x3FF)
+#define FP_ERROR_DEAD_PIXELS_UNKNOWN (FP_ERROR_DEAD_PIXELS_MASK)
 /* No interrupt from the sensor */
 #define FP_ERROR_NO_IRQ BIT(12)
 /* SPI communication error */

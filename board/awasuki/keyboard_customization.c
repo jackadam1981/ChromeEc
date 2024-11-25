@@ -3,8 +3,11 @@
  * found in the LICENSE file.
  */
 
+#include "cbi_fw_config.h"
 #include "common.h"
+#include "cros_board_info.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_customization.h"
 #include "keyboard_protocol.h"
@@ -51,10 +54,11 @@ void set_scancode_set2(uint8_t row, uint8_t col, uint16_t val)
 }
 
 __override struct keyboard_scan_config keyscan_config = {
-	.output_settle_us = 80,
+	.output_settle_us = 50,
 	.debounce_down_us = 15 * MSEC,
 	.debounce_up_us = 15 * MSEC,
 	.scan_period_us = 3 * MSEC,
+	.stable_scan_period_us = 9 * MSEC,
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = { 0x08, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff, 0xa4,
@@ -83,10 +87,37 @@ static const struct ec_response_keybd_config awasuki_keybd = {
 			KEYBD_CAP_ASSISTANT_KEY,
 };
 
+static const struct ec_response_keybd_config awadoron_keybd = {
+	.num_top_row_keys = 15,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_DICTATE,		/* T8 */
+		TK_DONOTDISTURB,	/* T9 */
+		TK_ACCESSIBILITY,	/* T10 */
+		TK_PLAY_PAUSE,		/* T11 */
+		TK_MICMUTE,		/* T12 */
+		TK_VOL_MUTE,		/* T13 */
+		TK_VOL_DOWN,		/* T14 */
+		TK_VOL_UP,		/* T15 */
+	},
+	.capabilities = KEYBD_CAP_FUNCTION_KEYS | KEYBD_CAP_NUMERIC_KEYPAD |
+			KEYBD_CAP_ASSISTANT_KEY,
+};
+
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
-	return &awasuki_keybd;
+	if (get_cbi_fw_config_numeric_pad() == NUMERIC_PAD_PRESENT) {
+		return &awadoron_keybd;
+	} else {
+		return &awasuki_keybd;
+	}
 }
 
 __override struct key {
@@ -110,3 +141,15 @@ __override struct key {
 	{ .row = 0, .col = 12 }, /* T15 */
 };
 BUILD_ASSERT(ARRAY_SIZE(vivaldi_keys) == MAX_TOP_ROW_KEYS);
+
+static void board_update_keyboard_layout(void)
+{
+	if (get_cbi_fw_config_keyboard() == KB_LAYOUT_1) {
+		/*
+		 * If keyboard is KB_LAYOUT_1, we need translate right ctrl
+		 * to backslash(\|) key.
+		 */
+		set_scancode_set2(3, 14, get_scancode_set2(2, 7));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_update_keyboard_layout, HOOK_PRIO_DEFAULT);
