@@ -144,6 +144,58 @@ enum cmd_t {
 	CMD_RAW_UCSI,
 };
 
+static const char *const cmd_names[] = {
+	[CMD_NONE] = "",
+	[CMD_TRIGGER_PDC_RESET] = "CMD_TRIGGER_PDC_RESET",
+	[CMD_SET_NOTIFICATION_ENABLE] = "CMD_SET_NOTIFICATION_ENABLE",
+	[CMD_PPM_RESET] = "CMD_PPM_RESET",
+	[CMD_CONNECTOR_RESET] = "CMD_CONNECTOR_RESET",
+	[CMD_GET_CAPABILITY] = "CMD_GET_CAPABILITY",
+	[CMD_GET_CONNECTOR_CAPABILITY] = "CMD_GET_CONNECTOR_CAPABILITY",
+	[CMD_SET_UOR] = "CMD_SET_UOR",
+	[CMD_SET_PDR] = "CMD_SET_PDR",
+	[CMD_GET_PDOS] = "CMD_GET_PDOS",
+	[CMD_SET_PDOS] = "CMD_SET_PDOS",
+	[CMD_GET_CONNECTOR_STATUS] = "CMD_GET_CONNECTOR_STATUS",
+	[CMD_GET_ERROR_STATUS] = "CMD_GET_ERROR_STATUS",
+	[CMD_GET_VBUS_VOLTAGE] = "CMD_GET_VBUS_VOLTAGE",
+	[CMD_GET_IC_STATUS] = "CMD_GET_IC_STATUS",
+	[CMD_SET_CCOM] = "CMD_SET_CCOM",
+	[CMD_READ_POWER_LEVEL] = "CMD_READ_POWER_LEVEL",
+	[CMD_GET_RDO] = "CMD_GET_RDO",
+	[CMD_SET_RDO] = "CMD_SET_RDO",
+	[CMD_SET_SINK_PATH] = "CMD_SET_SINK_PATH",
+	[CMD_GET_CURRENT_PARTNER_SRC_PDO] = "CMD_GET_CURRENT_PARTNER_SRC_PDO",
+	[CMD_SET_TPC_RP] = "CMD_SET_TPC_RP",
+	[CMD_SET_FRS] = "CMD_SET_FRS",
+	[CMD_SET_RETIMER_FW_UPDATE_MODE] = "CMD_SET_RETIMER_FW_UPDATE_MODE",
+	[CMD_GET_CABLE_PROPERTY] = "CMD_GET_CABLE_PROPERTY",
+	[CMD_GET_VDO] = "CMD_GET_VDO",
+	[CMD_GET_IDENTITY_DISCOVERY] = "CMD_GET_IDENTITY_DISCOVERY",
+	[CMD_GET_PCH_DATA_STATUS] = "CMD_GET_PCH_DATA_STATUS",
+	[CMD_SET_DRP_MODE] = "CMD_SET_DRP_MODE",
+	[CMD_UPDATE_RETIMER] = "CMD_UPDATE_RETIMER",
+	[CMD_RECONNECT] = "CMD_RECONNECT",
+	[CMD_GET_CURRENT_PDO] = "CMD_GET_CURRENT_PDO",
+	[CMD_IS_VCONN_SOURCING] = "CMD_IS_VCONN_SOURCING",
+	[CMD_RAW_UCSI] = "CMD_RAW_UCSI",
+
+};
+
+BUILD_ASSERT(ARRAY_SIZE(cmd_names) == CMD_RAW_UCSI + 1);
+
+/**
+ * @brief Convert cmd to string for printing.
+ */
+const char *cmd_string(enum cmd_t cmd)
+{
+	if (cmd < CMD_NONE || cmd > CMD_RAW_UCSI) {
+		return "Invalid cmd";
+	}
+
+	return cmd_names[cmd];
+}
+
 /**
  * @brief States of the main state machine
  */
@@ -1678,10 +1730,11 @@ static void st_task_wait_run(void *o)
 	if (cmd.command || cmd_data.data[0] != 0) {
 		/* Command has completed with error */
 		if (cmd.command == COMMAND_TASK_NO_COMMAND) {
-			LOG_DBG("Command %d not supported", data->cmd);
+			LOG_DBG("Command %d (%s) not supported", data->cmd,
+				cmd_string(data->cmd));
 		} else {
-			LOG_DBG("Command %d failed. Err : %d", data->cmd,
-				cmd_data.data[0]);
+			LOG_DBG("Command %d (%s) failed. Err : %d", data->cmd,
+				cmd_string(data->cmd), cmd_data.data[0]);
 		}
 		data->cci_event.error = 1;
 	}
