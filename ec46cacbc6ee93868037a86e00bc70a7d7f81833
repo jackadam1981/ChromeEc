@@ -16,6 +16,23 @@
       "message": "Weird lint failure, restarting the dry run.. ```      09:33:31: ERROR: cros lint failed before completing.\n      09:33:31: ERROR: \u003cclass \u0027chromite.lib.cros_build_lib.RunCommandError\u0027\u003e: return code: None; command: /b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/shellcheck \u0027--source-path\u003dSCRIPTDIR\u0027 \u0027--enable\u003davoid-nullary-conditions,check-unassigned-uppercase,require-variable-braces,quote-safe-variables\u0027 -x \u0027--exclude\u003dSC3043\u0027 zephyr/hayato_get_cfg.sh\n      [Errno 2] No such file or directory: \u0027/b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/shellcheck\u0027\n      Traceback (most recent call last):\n        File \"/b/s/w/ir/x/w/rc/chromiumos_workspace/chromite/lib/cros_build_lib.py\", line 749, in run\n          proc \u003d _Popen(\n        File \"/b/s/w/ir/cipd_bin_packages/cpython3/lib/python3.8/subprocess.py\", line 858, in __init__\n          self._execute_child(args, executable, preexec_fn, close_fds,\n        File \"/b/s/w/ir/cipd_bin_packages/cpython3/lib/python3.8/subprocess.py\", line 1704, in _execute_child\n          raise child_exception_type(errno_num, err_msg, err_filename)\n      FileNotFoundError: [Errno 2] No such file or directory: \u0027/b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/shellcheck\u0027```",
       "revId": "ec46cacbc6ee93868037a86e00bc70a7d7f81833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dac03bd_fd74219a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2024-11-25T01:59:20Z",
+      "side": 1,
+      "message": "One vote short?",
+      "revId": "ec46cacbc6ee93868037a86e00bc70a7d7f81833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
