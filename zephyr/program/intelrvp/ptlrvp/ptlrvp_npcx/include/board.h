@@ -20,6 +20,9 @@
 
 #define PD_POW_I2C i2c0_0
 
+/* Discrete keyboard is used as IOEX only */
+#define KBD_IOEX kb_ioex
+
 /* PD Interrupts */
 #define PD_POW_IRQ_GPIO &gpiof 0
 
