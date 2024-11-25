@@ -28,5 +28,6 @@ cd util
 pytest check_zephyr_project_config_unittest.py
 
 # Run the Zephyr check_compliance wrapper test.
-# NOTE: this uses vpython so it does not run correctly through pytest.
+# NOTE: these use vpython so they do not run correctly through pytest.
 ./zephyr_check_compliance_unittest.py
+./util/kconfig_check_unittest.py
