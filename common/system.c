@@ -206,7 +206,7 @@ test_mockable int system_is_locked(void)
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.
 	 */
-	if ((EC_FLASH_PROTECT_GPIO_ASSERTED | EC_FLASH_PROTECT_RO_NOW) &
+	if ((EC_FLASH_PROTECT_GPIO_ASSERTED) &
 	    ~crec_flash_get_protect()) {
 		is_locked = 0;
 		return 0;
