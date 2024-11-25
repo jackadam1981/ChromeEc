@@ -63,6 +63,8 @@ static int command_mem_dump(int argc, const char **argv)
 	enum format fmt = FMT_WORD;
 
 #ifdef CONFIG_BOARD_FINGERPRINT
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 #endif /* CONFIG_BOARD_FINGERPRINT */
@@ -127,6 +129,8 @@ static int command_read_word(int argc, const char **argv)
 	char *e;
 
 #ifdef CONFIG_BOARD_FINGERPRINT
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 #endif /* CONFIG_BOARD_FINGERPRINT */

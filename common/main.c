@@ -189,6 +189,8 @@ test_mockable __keep int main(void)
 	 * the EC set the WP if appropriate.  Note that once the WP is set, the
 	 * EC must be reset via EC_RST_ODL in order for the WP to become unset.
 	 */
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (IS_ENABLED(CONFIG_EEPROM_CBI_WP) && system_is_locked())
 		cbi_latch_eeprom_wp();
 

@@ -189,16 +189,22 @@ static uint32_t __attribute__((unused)) get_size(enum ec_image copy)
 
 test_mockable int system_is_locked(void)
 {
+	ccprints("%s is being called.", __func__);
 	static int is_locked = -1;
+	ccprints("The value of is_locked @ line %d is %d", __LINE__, is_locked);
 
 	if (force_locked)
 		return 1;
-	if (is_locked != -1)
+	if (is_locked != -1) {
+		ccprints("I am at line %d", __LINE__);
+		ccprints("The value of is_locked: %d", is_locked);
 		return is_locked;
+	}
 
 #ifdef CONFIG_SYSTEM_UNLOCKED
 	/* System is explicitly unlocked */
 	is_locked = 0;
+	ccprints("I am at line %d", __LINE__);
 	return 0;
 
 #elif defined(CONFIG_FLASH_CROS)
@@ -209,15 +215,21 @@ test_mockable int system_is_locked(void)
 	if ((EC_FLASH_PROTECT_GPIO_ASSERTED | EC_FLASH_PROTECT_RO_NOW) &
 	    ~crec_flash_get_protect()) {
 		is_locked = 0;
+		ccprints("I am at line %d", __LINE__);
+		ccprints("The value of is_locked: %d", is_locked);
 		return 0;
 	}
 
 	/* If WP pin is asserted and lock is applied, we're locked */
 	is_locked = 1;
+	ccprints("I am at line %d", __LINE__);
+	ccprints("The value of is_locked: %d", is_locked);
 	return 1;
 #else
 	/* Other configs are locked by default */
 	is_locked = 1;
+	ccprints("I am at line %d", __LINE__);
+	ccprints("The value of is_locked: %d", is_locked);
 	return 1;
 #endif
 }
@@ -430,6 +442,8 @@ test_mockable void system_disable_jump(void)
 	disable_jump = 1;
 
 #ifdef CONFIG_MPU
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked()) {
 #ifndef CONFIG_ZEPHYR
 		int ret;
@@ -666,6 +680,8 @@ system_run_image_copy_with_flags(enum ec_image copy, uint32_t add_reset_flags)
 	if (system_get_image_copy() == copy)
 		return EC_SUCCESS;
 
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked()) {
 		/* System is locked, so disallow jumping between images unless
 		 * this is the initial jump from RO to RW code. */
@@ -1179,6 +1195,8 @@ static int sysinfo(struct ec_response_sysinfo *info)
 	if (system_jumped_to_this_image())
 		system_info_flags |= SYSTEM_JUMPED_TO_CURRENT_IMAGE;
 
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked()) {
 		system_info_flags |= SYSTEM_IS_LOCKED;
 		if (force_locked)
@@ -1448,9 +1466,12 @@ static int command_sysjump(int argc, const char **argv)
 		return EC_SUCCESS;
 	}
 
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	/* Arbitrary jumps are only allowed on an unlocked system */
-	if (system_is_locked())
+	if (system_is_locked()) {
 		return EC_ERROR_ACCESS_DENIED;
+	}
 
 	/* Check for arbitrary address */
 	addr = strtoi(argv[1], &e, 0);
