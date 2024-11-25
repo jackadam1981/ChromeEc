@@ -262,6 +262,18 @@
 			use_fast_start;
 		};
 	};
+
+	usbc{
+		port1@1 {
+			/delete-node/  usb-mux-chain-1;
+			/delete-node/ usb-mux-chain-1-tusb;
+
+			usb-mux-chain-1 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&it5205_mux_1 &virtual_mux_1>;
+			};
+		};
+	};
 };
 
 /*
@@ -298,5 +310,12 @@
 			offset = <(0x60000 - (0x1000 * 1))>;
 			size = <0x1000>;
 		};
+	};
+};
+
+&i2c2ALT {
+	it5205_mux_1: it5205-mux-1@48 {
+		compatible = "ite,it5205";
+		reg = <0x48>;
 	};
 };
