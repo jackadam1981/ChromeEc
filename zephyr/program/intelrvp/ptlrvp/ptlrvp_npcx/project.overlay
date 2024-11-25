@@ -13,6 +13,8 @@
 #include "gpio.dtsi"
 #include "i2c.dts"
 #include "psl.dtsi"
+#include "kbd.dtsi"
+#include "keyboard.dtsi"
 #include "../battery.dtsi"
 #include "../i2c.dtsi"
 #include "../ioex.dtsi"
