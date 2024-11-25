@@ -23,48 +23,19 @@
 	aliases {
 		bmi3xx-int = &base_accel;
 		lis2dw12-int = &lid_accel;
-		gpio-en-hdmi-pwr = &gpio_en_hdmi_pwr;
 		tcs3400-int = &als_clear;
 	};
 
-	named-adc-channels {
-		/delete-node/ ec_usb_c0_vbus_sense;
-		/delete-node/ ec_usb_c1_vbus_sense;
-	};
-
-	named-gpios {
-		/delete-node/ usb_c0_frs_en;
-		/delete-node/ usb_c1_frs_en;
-		/delete-node/ usb_c0_ppc_int_odl;
-		/delete-node/ usb_c1_ppc_int_odl;
-
-		gpio_ec_i2c_pdc_sm_int_odl: ec_i2c_pdc_sm_int_odl {
-			gpios = <&gpiod 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+	gpio-interrupts {
+		/delete-node/ volume-up;
+		/delete-node/ volume-down;
+		/delete-node/ hdmi-ec-hpd;
+		/delete-node/ ec_als_rgb;
+		/delete-node/ ec-imu;
+		int_lid_accel: lid-accel {
+				irq-pin = <&gpio_lid_accel_int_ec_l>;
+				flags = <GPIO_INT_EDGE_FALLING>;
 		};
-		gpio_ec_i2c_pdc_s_int_odl: ec_i2c_pdc_s_int_odl {
-			gpios = <&gpiof 1 GPIO_INPUT>;
-		};
-	};
-
-	unused-pins {
-		compatible = "unused-gpios";
-
-		unused-gpios =
-			<&gpioa 7 GPIO_INPUT>,
-			<&gpiod 3 GPIO_INPUT>,
-			<&gpiof 0 GPIO_INPUT>,
-			/* pd1cc1 */
-			<&gpiof 4 GPIO_INPUT>,
-			/* pd1cc2 */
-			<&gpiof 5 GPIO_INPUT>,
-			/* pd2cc1 */
-			<&gpioh 1 GPIO_INPUT>,
-			/* pd2cc2 */
-			<&gpioh 2 GPIO_INPUT>,
-			/* adc0 */
-			<&gpioi 0 GPIO_INPUT>,
-			/* adc1 */
-			<&gpioi 1 GPIO_INPUT>;
 	};
 
 	/* Rotation matrix used by drivers. */
@@ -274,9 +245,9 @@
 		 * list of GPIO interrupts that have to
 		 * be enabled at initial stage
 		 */
-		sensor-irqs = <&int_imu &int_als_rgb>;
+		sensor-irqs = <&int_lid_accel>;
 		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&als_clear>;
+		accel-force-mode-sensors = <&base_accel>;
 	};
 
 	batteries {
