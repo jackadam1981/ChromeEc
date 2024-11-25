@@ -17,7 +17,26 @@
 #include "task.h"
 #include "util.h"
 
-#define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ##args)
+#ifdef CONFIG_KEYBOARD_DISCRETE
+#define CC_IT8801 CC_KEYSCAN
+#define I2C_ADDR_FLAGS_IT8801 KB_DISCRETE_I2C_ADDR_FLAGS
+#else
+#define CC_IT8801 CC_GPIO
+/*
+ * In a standard production device, the IT8801 is typically used as both
+ * a discrete keyboard IC and an IOEX. However, in Test/Reference devices,
+ * the IT8801 can used as only an IOEX. Therefore, define I2C_ADDR_FLAGS_IT8801
+ * at the board level.
+ */
+#ifdef CONFIG_ZEPHYR
+#define DT_DRV_COMPAT ite_it8801
+#define I2C_ADDR_FLAGS_IT8801 DT_INST_REG_ADDR(0)
+#else
+#define I2C_ADDR_FLAGS_IT8801 KB_DISCRETE_I2C_ADDR_FLAGS
+#endif /* CONFIG_ZEPHYR */
+#endif /* CONFIG_KEYBOARD_DISCRETE */
+
+#define CPRINTS(format, args...) cprints(CC_IT8801, format, ##args)
 
 static int it8801_ioex_set_level(int ioex, int port, int mask, int value);
 static void it8801_ioex_event_handler(void);
@@ -25,13 +44,13 @@ DECLARE_DEFERRED(it8801_ioex_event_handler);
 
 static int it8801_read(int reg, int *data)
 {
-	return i2c_read8(I2C_PORT_KB_DISCRETE, KB_DISCRETE_I2C_ADDR_FLAGS, reg,
+	return i2c_read8(I2C_PORT_KB_DISCRETE, I2C_ADDR_FLAGS_IT8801, reg,
 			 data);
 }
 
 __maybe_unused static int it8801_write(int reg, int data)
 {
-	return i2c_write8(I2C_PORT_KB_DISCRETE, KB_DISCRETE_I2C_ADDR_FLAGS, reg,
+	return i2c_write8(I2C_PORT_KB_DISCRETE, I2C_ADDR_FLAGS_IT8801, reg,
 			  data);
 }
 
@@ -505,10 +524,11 @@ static void it8801_ioex_event_handler(void)
 	if (it8801_read(IT8801_REG_GISR, &data))
 		return;
 
+#ifdef CONFIG_KEYBOARD_DISCRETE
 	/* Wake the keyboard scan task if KSI interrupts are triggered */
-	if (IS_ENABLED(CONFIG_KEYBOARD_DISCRETE) &&
-	    data & IT8801_REG_MASK_GISR_GKSIIS)
+	if (data & IT8801_REG_MASK_GISR_GKSIIS)
 		task_wake(TASK_ID_KEYSCAN);
+#endif
 
 	/*
 	 * Trigger the GPIO callback functions if the GPIO interrupts are
