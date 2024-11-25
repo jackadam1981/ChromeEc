@@ -16,6 +16,23 @@
       "message": "This is to unblock https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6041410",
       "revId": "11d21ea91ad461d1314a2a697c70e784732f4aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7426476_35f4121d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-11-25T19:06:44Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8730274357280042641) is being automatically retried for the following reasons:\n- Some child builders are now retryable:cq-orchestrator\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "11d21ea91ad461d1314a2a697c70e784732f4aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
