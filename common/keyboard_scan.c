@@ -1051,6 +1051,7 @@ void keyboard_scan_task(void *u)
 	uint32_t local_disable_scanning = 0;
 
 	print_state(debounced_state, "init state");
+	ccprintf("******%d %s\n", __LINE__, __func__);
 	poll_deadline.val = 0;
 
 	keyboard_raw_task_start();
@@ -1062,6 +1063,7 @@ void keyboard_scan_task(void *u)
 	while (1) {
 		/* Enable all outputs */
 		CPRINTS5("wait");
+		ccprintf("******%d %s\n", __LINE__, __func__);
 
 		keyboard_raw_enable_interrupt(1);
 
@@ -1146,7 +1148,7 @@ void keyboard_scan_task(void *u)
 		/* Busy polling keyboard state. */
 		while (keyboard_scan_is_enabled()) {
 			start = get_time();
-
+			ccprintf("******%d %s\n", __LINE__, __func__);
 			/* Check for keys down */
 			if (check_keys_changed(debounced_state)) {
 				poll_deadline.val =
