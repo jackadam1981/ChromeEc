@@ -17,6 +17,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
+#line 21
 LOG_MODULE_REGISTER(ps8811_emul, CONFIG_RETIMER_EMUL_LOG_LEVEL);
 
 #define DT_DRV_COMPAT cros_ps8811_emul
