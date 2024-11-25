@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491dfc4b_bad1ef74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-11-25T03:01:23Z",
+      "side": 1,
+      "message": "a lot of effort went into having the ptlrvp unit tests exercise\na reasonable approximation of the real rvp configuration.\nthe commonality was intentional to increase the relevance of unit tests.\nenabling `CONFIG_UCSI_PPM\u003dy` on the ptlrvp should not need to trigger\nsuch a substantial separation of the emulated vs. real rvp.\n\nplease file a bug to resolve this divergence.",
+      "revId": "1b6096518d61b1714bc2b8a890db6aaa12119f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
