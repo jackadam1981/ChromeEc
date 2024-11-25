@@ -43,6 +43,8 @@ void rwsig_jump_now(void)
 	 * For chips that does not support EC_FLASH_PROTECT_ALL_NOW, use
 	 * EC_FLASH_PROTECT_ALL_AT_BOOT.
 	 */
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked() &&
 	    !(crec_flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)) {
 		crec_flash_set_protect(EC_FLASH_PROTECT_ALL_AT_BOOT, -1);
@@ -60,6 +62,12 @@ void rwsig_jump_now(void)
 	}
 
 	/* When system is locked, only boot to RW if all flash is protected. */
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
+	ccprints("The value of !system_is_locked(): %d ", !system_is_locked());
+	ccprints(
+		"The value of crec_flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW: %d",
+		crec_flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW);
 	if (!system_is_locked() ||
 	    crec_flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
 		system_run_image_copy(EC_IMAGE_RW);
@@ -216,6 +224,8 @@ int rwsig_check_signature(void)
 	 *
 	 * Otherwise, we immediately increment the rollback version.
 	 */
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (rw_rollback_version != min_rollback_version
 #ifdef CONFIG_FLASH_PROTECT_RW
 	    && ((!system_is_locked() ||
@@ -242,6 +252,8 @@ out:
 	if (!good) {
 		pd_log_event(PD_EVENT_ACC_RW_FAIL, 0, 0, NULL);
 		/* RW firmware is invalid : do not jump there */
+		ccprints("I am @ function: %s, line: %d, file: %s", __func__,
+			 __LINE__, __FILE__);
 		if (system_is_locked())
 			system_disable_jump();
 	}

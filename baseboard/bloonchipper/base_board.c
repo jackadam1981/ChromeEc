@@ -21,6 +21,8 @@
  */
 int console_is_restricted(void)
 {
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	return system_is_locked();
 }
 

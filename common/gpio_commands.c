@@ -160,6 +160,8 @@ static int command_gpio_set(int argc, const char **argv)
 	int af = -1;
 
 #ifdef CONFIG_BOARD_FINGERPRINT
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 #endif /* CONFIG_BOARD_FINGERPRINT */
@@ -284,6 +286,8 @@ static enum ec_status gpio_command_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_gpio_set *p = args->params;
 
+	ccprints("I am @ function: %s, line: %d, file: %s", __func__, __LINE__,
+		 __FILE__);
 	if (system_is_locked())
 		return EC_RES_ACCESS_DENIED;
 
