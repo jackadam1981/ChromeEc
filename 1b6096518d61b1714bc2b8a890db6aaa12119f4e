@@ -16,6 +16,24 @@
       "message": "a lot of effort went into having the ptlrvp unit tests exercise\na reasonable approximation of the real rvp configuration.\nthe commonality was intentional to increase the relevance of unit tests.\nenabling `CONFIG_UCSI_PPM\u003dy` on the ptlrvp should not need to trigger\nsuch a substantial separation of the emulated vs. real rvp.\n\nplease file a bug to resolve this divergence.",
       "revId": "1b6096518d61b1714bc2b8a890db6aaa12119f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9f22a1_28755630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-11-25T03:26:28Z",
+      "side": 1,
+      "message": "\u003e a lot of effort went into having the ptlrvp unit tests exercise\n\u003e a reasonable approximation of the real rvp configuration.\n\u003e the commonality was intentional to increase the relevance of unit tests.\n\u003e enabling `CONFIG_UCSI_PPM\u003dy` on the ptlrvp should not need to trigger\n\u003e such a substantial separation of the emulated vs. real rvp.\n\u003e \n\u003e please file a bug to resolve this divergence.\n\nideally coping progrm.conf and usbc.dtsi should have been enough to W/A this issue but I thought of decoupling it like what Brox did initially. I have filled b/380759724 and assign to you for further investigation.",
+      "parentUuid": "491dfc4b_bad1ef74",
+      "revId": "1b6096518d61b1714bc2b8a890db6aaa12119f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
