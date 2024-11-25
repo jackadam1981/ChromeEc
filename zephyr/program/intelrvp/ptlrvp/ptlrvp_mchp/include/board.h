@@ -20,6 +20,9 @@
 
 #define PD_POW_I2C i2c_smb_1
 
+/* Use discrete keyboard to avoid BOM stuffings on RVP */
+#define KBD_IOEX kb_discrete
+
 /* PD Interrupts */
 #define PD_POW_IRQ_GPIO MCHP_GPIO_DECODE_143
 
