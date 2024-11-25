@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "673ee20b_41069c0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-11-25T19:25:26Z",
+      "side": 1,
+      "message": "I see that CQ complains about cros lint error:\n\n```\n[FAILED] chromiumos/platform/ec: cros lint\n    Hook script \"cros lint --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n```\n\nBut when I run the same script in my local workspace, I don\u0027t see any error:\n\n```\n~/cros/src/platform/ec$ cros lint --commit HEAD\n~/cros/src/platform/ec$ \n```",
+      "revId": "7be0ca0b647bf69793bb5f59896587d50d56b6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
