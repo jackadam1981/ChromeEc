@@ -8,14 +8,16 @@
 
 #include "../arbitrage.dtsi"
 #include "../common.dtsi"
-#include "../usbc.dtsi"
 #include "../usba.dtsi"
-#include "../generated.dtsi"
 #include "../interrupts.dtsi"
 #include "../motionsense.dtsi"
 #include "../keyboard.dtsi"
-#include "../overlay.dtsi"
 #include "../power_signal.dtsi"
+#include "generated.dtsi"
+#include "i2c.dtsi"
+#include "cbi.dtsi"
+#include "fan.dtsi"
+#include "usbc.dtsi"
 
 / {
 	aliases {
