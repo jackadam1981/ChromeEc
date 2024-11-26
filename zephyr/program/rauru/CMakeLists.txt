@@ -15,6 +15,8 @@ target_sources(app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rauru/src/common.c
 
 if(DEFINED CONFIG_PLATFORM_EC_USB_PD_TCPMV2)
 target_sources(app PRIVATE ${PLATFORM_EC_PROGRAM_DIR}/rauru/src/usbc.c)
+endif()
+if(NOT DEFINED CONFIG_BOARD_RAURU_PDC)
 target_sources_ifndef(CONFIG_RAURU_DUAL_DP_PIPELINE app PRIVATE
 		${PLATFORM_EC_PROGRAM_DIR}/rauru/src/dp_alt_mode.c)
 target_sources_ifdef(CONFIG_RAURU_BOARD_HAS_HDMI_SUPPORT app PRIVATE
