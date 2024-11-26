@@ -12,11 +12,21 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_dp_hpd_gpio.h"
+#include "usbc/pdc_power_mgmt.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 
 static int active_dp_port = DP_PORT_NONE;
+
+static uint32_t rauru_get_dp_status(int port)
+{
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPMV2
+	return dp_status[port];
+#else
+	return pdc_power_mgmt_get_dp_status(port);
+#endif
+}
 
 bool rauru_is_hpd_high(enum rauru_dp_port port)
 {
@@ -27,7 +37,7 @@ bool rauru_is_hpd_high(enum rauru_dp_port port)
 	}
 #endif
 
-	return PD_VDO_DPSTS_HPD_LVL(dp_status[port]);
+	return PD_VDO_DPSTS_HPD_LVL(rauru_get_dp_status(port));
 }
 
 enum rauru_dp_port rauru_get_dp_path(void)
@@ -64,10 +74,12 @@ void rauru_detach_dp_path(enum rauru_dp_port port)
 
 void rauru_set_dp_path(enum rauru_dp_port port)
 {
+#if CONFIG_RAURU_BOARD_HAS_HDMI_SUPPORT
 	const struct gpio_dt_spec *c1_en =
 		GPIO_DT_FROM_NODELABEL(gpio_dp_path_usb_c1_en);
 	const struct gpio_dt_spec *hdmi_en =
 		GPIO_DT_FROM_NODELABEL(gpio_dp_path_hdmi_en);
+#endif
 	const struct gpio_dt_spec *dp_in_hpd[] = {
 		GPIO_DT_FROM_NODELABEL(gpio_usb_c0_dp_in_hpd),
 		GPIO_DT_FROM_NODELABEL(gpio_usb_c1_dp_in_hpd),
@@ -82,12 +94,13 @@ void rauru_set_dp_path(enum rauru_dp_port port)
 		gpio_pin_set_dt(dp_in_hpd[i], i == port);
 	}
 
-	/*
-	 * DP Pipe -> DPMux -> C1
-	 *              |----> DP Mux -> HDMI
-	 *                       |-----> C0
-	 * Also, set EN pin to LOW for power saving when unused.
-	 */
+/*
+ * DP Pipe -> DPMux -> C1
+ *              |----> DP Mux -> HDMI
+ *                       |-----> C0
+ * Also, set EN pin to LOW for power saving when unused.
+ */
+#if CONFIG_RAURU_BOARD_HAS_HDMI_SUPPORT
 	if (port == DP_PORT_C1) {
 		gpio_pin_set_dt(c1_en, 1);
 		gpio_pin_set_dt(hdmi_en, 0);
@@ -100,10 +113,13 @@ void rauru_set_dp_path(enum rauru_dp_port port)
 			gpio_pin_set_dt(hdmi_en, 0);
 		}
 	}
+#endif
+
 	active_dp_port = port;
 	CPRINTS("DP p%d", port);
 }
 
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPMV2
 int svdm_get_hpd_gpio(int port)
 {
 	/* HPD is low active, inverse the result */
@@ -117,7 +133,13 @@ void svdm_set_hpd_gpio(int port, int en)
 
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_ap_dp_hpd_l), !en);
 }
+#endif
+int rauru_is_dp_muxable(enum rauru_dp_port port)
+{
+	return port == active_dp_port || active_dp_port == DP_PORT_NONE;
+}
 
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPMV2
 __override void svdm_dp_post_config(int port)
 {
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
@@ -136,11 +158,6 @@ __override void svdm_dp_post_config(int port)
 			    USB_SWITCH_CONNECT,
 			    polarity_rm_dts(pd_get_polarity(port)));
 	}
-}
-
-int rauru_is_dp_muxable(enum rauru_dp_port port)
-{
-	return port == active_dp_port || active_dp_port == DP_PORT_NONE;
 }
 
 __override int svdm_dp_attention(int port, uint32_t *payload)
@@ -208,3 +225,4 @@ __override void svdm_exit_dp_mode(int port)
 					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 	rauru_detach_dp_path(port);
 }
+#endif /* PLATFORM_EC_USB_PD_TCPMV2 */
