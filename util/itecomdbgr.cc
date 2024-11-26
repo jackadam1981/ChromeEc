@@ -417,11 +417,10 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 	if (f)
 		check_value = 0;
 
+	write_com(conf, cs_low, sizeof(cs_low));
 	do {
-		write_com(conf, cs_low, sizeof(cs_low));
 		write_com(conf, read_status_buf, sizeof(read_status_buf));
 		status = debug_getc(conf);
-		write_com(conf, cs_high, sizeof(cs_high));
 		if (timeout++ > 200) {
 			printf("check_status timeout exit!\n\r");
 			return -1;
@@ -432,6 +431,7 @@ static int check_status(struct itecomdbgr_config *conf, uint8_t wait_mask,
 			msleep(1);
 
 	} while ((status & wait_mask) == check_value);
+	write_com(conf, cs_high, sizeof(cs_high));
 
 	return 0;
 }
