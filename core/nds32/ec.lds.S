@@ -62,6 +62,42 @@ SECTIONS
 		OUTDIR/chip/it83xx/hwtimer.o (.text*)
 		OUTDIR/chip/it83xx/hwtimer.o (.rodata)
 #endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_IRQ_DRIVER
+		OUTDIR/chip/it83xx/irq.o (.text*)
+		OUTDIR/chip/it83xx/irq.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_UART_DRIVER
+		OUTDIR/chip/it83xx/uart.o (.text*)
+		OUTDIR/chip/it83xx/uart.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_USBC_INTR_TASK
+		OUTDIR/common/usbc_intr_task.o (.text*)
+		OUTDIR/common/usbc_intr_task.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_USBC_TASK
+		OUTDIR/common/usbc/usbc_task.o (.text*)
+		OUTDIR/common/usbc/usbc_task.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_USBC_SM
+		OUTDIR/common/usbc/usb_sm.o (.text*)
+		OUTDIR/common/usbc/usb_sm.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_USBC_PD_TIMER
+		OUTDIR/common/usbc/usb_pd_timer.o (.text*)
+		OUTDIR/common/usbc/usb_pd_timer.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_TCPCI_DRIVER
+		OUTDIR/driver/tcpm/tcpci.o (.text*)
+		OUTDIR/driver/tcpm/tcpci.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_RAA489000_DRIVER
+		OUTDIR/driver/tcpm/raa489000.o (.text*)
+		OUTDIR/driver/tcpm/raa489000.o (.rodata)
+#endif
+#ifdef CONFIG_IT83XX_EXTENDED_ILM_AWASUKI_BOARD
+		OUTDIR/board/awasuki/board.o (.text*)
+		OUTDIR/board/awasuki/board.o (.rodata)
+#endif
 		__nds32_flash_ilm_end = .;
 		__nds32_flash_ilm_size = . - __nds32_flash_ilm_start;
 #endif
