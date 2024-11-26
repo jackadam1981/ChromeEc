@@ -5,6 +5,7 @@
  * Common battery command.
  */
 
+#line 9
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "button.h"
