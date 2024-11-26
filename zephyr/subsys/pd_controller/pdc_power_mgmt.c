@@ -35,7 +35,8 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
+/*LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);*/
+LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_INF);
 
 /**
  * @brief Event triggered by sending an internal command
@@ -221,8 +222,6 @@ struct send_cmd_t {
 enum snk_attached_local_state_t {
 	/** SNK_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SNK_ATTACHED_GET_CONNECTOR_CAPABILITY,
-	/** SNK_ATTACHED_GET_CABLE_PROPERTY */
-	SNK_ATTACHED_GET_CABLE_PROPERTY,
 	/** SNK_ATTACHED_SET_DR_SWAP_POLICY */
 	SNK_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SNK_ATTACHED_SET_PR_SWAP_POLICY */
@@ -256,8 +255,6 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_SET_SINK_PATH_OFF,
 	/** SRC_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SRC_ATTACHED_GET_CONNECTOR_CAPABILITY,
-	/** SRC_ATTACHED_GET_CABLE_PROPERTY */
-	SRC_ATTACHED_GET_CABLE_PROPERTY,
 	/** SRC_ATTACHED_SET_DR_SWAP_POLICY */
 	SRC_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SRC_ATTACHED_SET_PR_SWAP_POLICY */
@@ -1154,11 +1151,11 @@ static void handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+	LOG_INF("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
 	if (port->sink_path_en != status->sink_path_status) {
-		LOG_DBG("C%d: Sink path status change: %d", port_number,
+		LOG_INF("C%d: Sink path status change: %d", port_number,
 			status->sink_path_status);
 		port->sink_path_en = status->sink_path_status;
 	}
@@ -1845,13 +1842,8 @@ static void pdc_src_attached_run(void *obj)
 		return;
 	case SRC_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->src_attached_local_state =
-			SRC_ATTACHED_GET_CABLE_PROPERTY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
-	case SRC_ATTACHED_GET_CABLE_PROPERTY:
-		port->src_attached_local_state =
 			SRC_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SRC_ATTACHED_SET_DR_SWAP_POLICY:
 		port->src_attached_local_state =
@@ -2023,13 +2015,8 @@ static void pdc_snk_attached_run(void *obj)
 	switch (port->snk_attached_local_state) {
 	case SNK_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->snk_attached_local_state =
-			SNK_ATTACHED_GET_CABLE_PROPERTY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
-	case SNK_ATTACHED_GET_CABLE_PROPERTY:
-		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
 		port->snk_attached_local_state =
@@ -4369,6 +4356,12 @@ pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop)
 
 	if (cable_prop == NULL) {
 		return -EINVAL;
+	}
+
+	/* Block until command completes */
+	if (public_api_block(port, CMD_PDC_GET_CABLE_PROPERTY)) {
+		/* something went wrong */
+		return -EIO;
 	}
 
 	*cable_prop = pdc_data[port]->port.cable_prop;

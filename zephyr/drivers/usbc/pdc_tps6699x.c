@@ -340,8 +340,6 @@ struct pdc_data_t {
 	atomic_t set_rdo_possible;
 	/* Set when SRDY may be used. */
 	atomic_t sink_enable_possible;
-	/* Should use cached connector status change bits */
-	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
 	union connector_status_t cached_conn_status;
 	/* Raw UCSI data to send. */
@@ -516,6 +514,7 @@ static void st_irq_run(void *o)
 	int rv;
 	int i;
 	bool interrupt_pending = false;
+	union conn_status_change_bits_t fake_bits;
 
 	/* Read the pending interrupt events */
 	rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
@@ -537,6 +536,8 @@ static void st_irq_run(void *o)
 	LOG_DBG("\n");
 
 	if (interrupt_pending) {
+		fake_bits.raw_value = 0;
+
 		/* Set CCI EVENT for not supported */
 		data->cci_event.not_supported =
 			pdc_interrupt.not_supported_received;
@@ -550,28 +551,85 @@ static void st_irq_run(void *o)
 		 * connector change.
 		 */
 		if (pdc_interrupt.ucsi_connector_status_change_notification) {
-			data->use_cached_conn_status_change = false;
 			data->cci_event.connector_change =
 				cfg->connector_number + 1;
+			LOG_INF("C%d: Connector status change",
+				cfg->connector_number);
 		}
 
 		if (pdc_interrupt.plug_insert_or_removal) {
+			LOG_INF("C%d: Plug insert/removal",
+				cfg->connector_number);
 			atomic_set(&data->set_rdo_possible, 0);
 			atomic_set(&data->sink_enable_possible, 0);
+			fake_bits.connect_change = 1;
 		}
 
 		if (pdc_interrupt.sink_ready) {
+			LOG_INF("C%d: Sink ready",
+				cfg->connector_number);
 			atomic_set(&data->set_rdo_possible, 1);
+			/* TODO - make sure this workitem is correct*/
 			k_work_reschedule(
 				&data->new_power_contract,
 				K_MSEC(PDC_TI_NEW_POWER_CONTRACT_DELAY_MS));
+			fake_bits.pwr_operation_mode = 1;
 		}
 
 		if (pdc_interrupt.new_contract_as_consumer) {
+			LOG_INF("C%d: New contract as consumer seen",
+				cfg->connector_number);
 			atomic_set(&data->sink_enable_possible, 1);
 			k_work_reschedule(
 				&data->new_power_contract,
 				K_MSEC(PDC_TI_NEW_POWER_CONTRACT_DELAY_MS));
+			fake_bits.negotiated_power_level = 1;
+		}
+
+		if (pdc_interrupt.power_swap_complete |
+		    pdc_interrupt.fr_swap_complete) {
+			LOG_INF("C%d: Power/FR swap complete", cfg->connector_number);
+			fake_bits.pwr_direction = 1;
+		}
+
+		if (pdc_interrupt.data_swap_complete) {
+			LOG_INF("C%d: Data swap complete", cfg->connector_number);
+			fake_bits.connector_partner = 1;
+		}
+
+		if (pdc_interrupt.power_path_switch_changed) {
+			union reg_power_path_status pdc_power_path_status;
+			uint32_t ext_vbus_sw;
+			bool cur_sink_enabled;
+
+			rv = tps_rd_power_path_status(&cfg->i2c,
+						      &pdc_power_path_status);
+			if (rv) {
+				LOG_ERR("Failed to power path status");
+				goto error_recovery;
+			}
+
+			ext_vbus_sw =
+				(cfg->connector_number == 0 ?
+					 pdc_power_path_status.pa_ext_vbus_sw :
+					 pdc_power_path_status.pb_ext_vbus_sw);
+
+			cur_sink_enabled =
+				(ext_vbus_sw == EXT_VBUS_SWITCH_ENABLED_INPUT);
+
+			if (cur_sink_enabled !=
+			    data->cached_conn_status.sink_path_status) {
+				data->cached_conn_status.sink_path_status =
+					cur_sink_enabled;
+				fake_bits.sink_path_status_change = 1;
+			}
+		}
+
+		if (fake_bits.raw_value) {
+			data->cached_conn_status.raw_conn_status_change_bits |=
+				fake_bits.raw_value;
+			data->cci_event.connector_change =
+				cfg->connector_number + 1;
 		}
 
 		/* TODO(b/345783692): Handle other interrupt bits. */
@@ -1849,10 +1907,10 @@ static void st_task_wait_run(void *o)
 	if (cmd.command || cmd_data.data[0] != 0) {
 		/* Command has completed with error */
 		if (cmd.command == COMMAND_TASK_NO_COMMAND) {
-			LOG_DBG("Command %d (%s) not supported", data->cmd,
+			LOG_INF("Command %d (%s) not supported", data->cmd,
 				cmd_string(data->cmd));
 		} else {
-			LOG_DBG("Command %d (%s) failed. Err : %d", data->cmd,
+			LOG_INF("Command %d (%s) failed. Err : %d", data->cmd,
 				cmd_string(data->cmd), cmd_data.data[0]);
 		}
 		data->cci_event.error = 1;
@@ -1903,17 +1961,27 @@ static void st_task_wait_run(void *o)
 			 * The PDC clears these after the first read but we want
 			 * these to be visible until they are ACK-ed.
 			 */
-			if (data->use_cached_conn_status_change) {
-				cs->raw_conn_status_change_bits |=
-					data->cached_conn_status
-						.raw_conn_status_change_bits;
-			}
+			cs->raw_conn_status_change_bits |=
+				data->cached_conn_status
+					.raw_conn_status_change_bits;
+
+			/* HACK - Use cached sink path status which gets updated
+			 * by interrupts.
+			 */
+			cs->sink_path_status =
+				data->cached_conn_status.sink_path_status;
 
 			/* Cache result of GET_CONNECTOR_STATUS and use this for
 			 * subsequent calls.
 			 */
 			data->cached_conn_status = *cs;
-			data->use_cached_conn_status_change = true;
+
+			if (data->cached_conn_status.raw_conn_status_change_bits) {
+				LOG_INF("C%d: Conn change bits: 0x%04x",
+					cfg->connector_number,
+					data->cached_conn_status
+						.raw_conn_status_change_bits);
+			}
 		}
 		break;
 	}
@@ -2556,6 +2624,7 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.data_swap_complete = 1,
 		.sink_ready = 1,
 		.new_contract_as_consumer = 1,
+		.power_path_switch_changed = 1,
 		.ucsi_connector_status_change_notification = 1,
 		.power_event_occurred_error = 1,
 		.externl_dcdc_event_received = 1,
