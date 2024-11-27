@@ -148,8 +148,8 @@ class IshBinPacker(BasePacker):
 class BinmanPacker(BasePacker):
     """Packer for RO/RW image to generate a .bin build using FMAP."""
 
-    ro_file = "zephyr.bin"
-    rw_file = "zephyr.bin"
+    ro_file = "zephyr.rts5912.bin"
+    rw_file = "zephyr.rts5912.bin"
 
     def __init__(self, project):
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -388,6 +388,157 @@ class MchpPacker(BinmanPacker):
         yield ro_dir / self.second_loader, self.second_loader
 
 
+class RTKBinmanPacker(BasePacker):
+    """Packer for RO/RW image to generate a .bin build using FMAP."""
+
+    ro_file = "zephyr.rts5912.bin"
+    rw_file = "zephyr.rts5912.bin"
+
+    def __init__(self, project):
+        self.logger = logging.getLogger(self.__class__.__name__)
+        super().__init__(project)
+
+    def configs(self):
+        yield "ro", build_config.BuildConfig(
+            kconfig_defs={"CONFIG_CROS_EC_RO": "y"},
+            cmake_defs={"CMAKE_C_FLAGS": "-DSECTION_IS_RO"},
+        )
+        yield "rw", build_config.BuildConfig(
+            kconfig_defs={"CONFIG_CROS_EC_RW": "y"},
+            cmake_defs={"CMAKE_C_FLAGS": "-DSECTION_IS_RW"},
+        )
+
+    def pack_firmware(
+        self,
+        work_dir,
+        jobclient: zmake.jobserver.JobClient,
+        dir_map,
+        version_string="",
+    ):
+        """Pack RO and RW sections using Binman.
+
+        Binman configuration is expected to be found in the RO build
+        device-tree configuration.
+
+        Args:
+            work_dir: The directory used for packing.
+            jobclient: The client used to run subprocesses.
+            dir_map: A dict of build dirs such as {'ro': path_to_ro_dir}.
+            version_string: The version string to use in FRID/FWID.
+
+        Yields:
+            2-tuples of the path of each file in the work_dir that
+            should be copied into the output directory, and the output
+            filename.
+        """
+        ro_dir = dir_map["ro"]
+        rw_dir = dir_map["rw"]
+        dts_file_path = ro_dir / "zephyr" / "zephyr.dts"
+
+        # Copy the inputs into the work directory so that Binman can
+        # find them under a hard-coded name.
+        shutil.copy2(
+            ro_dir / "zephyr" / self.ro_file, work_dir / "zephyr_ro.bin"
+        )
+        shutil.copy2(
+            ro_dir / "zephyr" / "zephyr.elf", work_dir / "zephyr_ro.elf"
+        )
+        shutil.copy2(
+            rw_dir / "zephyr" / self.rw_file, work_dir / "zephyr_rw.bin"
+        )
+        shutil.copy2(
+            rw_dir / "zephyr" / "zephyr.elf", work_dir / "zephyr_rw.elf"
+        )
+
+        version_file_path = work_dir / "version.txt"
+        # Version in FRID/FWID can be at most 31 bytes long (32, minus
+        # one for null character).
+        with open(version_file_path, "w", encoding="utf-8") as version_file:
+            version_file.write(version_string[:31].ljust(32, "\0"))
+
+        proc = jobclient.popen(
+            [
+                sys.executable,
+                util.get_tool_path("binman"),
+                "-v",
+                "5",
+                "build",
+                "-d",
+                dts_file_path,
+                "-m",
+                "-O",
+                work_dir,
+            ],
+            cwd=work_dir,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            encoding="utf-8",
+        )
+
+        zmake.multiproc.LogWriter.log_output(
+            self.logger, logging.DEBUG, proc.stdout
+        )
+        zmake.multiproc.LogWriter.log_output(
+            self.logger, logging.ERROR, proc.stderr
+        )
+        if proc.wait(timeout=180):
+            raise OSError("Failed to run RTKbinman")
+
+        yield work_dir / "ec.bin", "ec.bin"
+        yield rw_dir / "zephyr" / ".config", "ec.config"
+        yield ro_dir / "zephyr" / "zephyr.elf", "zephyr.ro.elf"
+        yield ro_dir / "zephyr" / "zephyr.lst", "zephyr.ro.lst"
+        yield rw_dir / "zephyr" / "zephyr.elf", "zephyr.rw.elf"
+        yield rw_dir / "zephyr" / "zephyr.lst", "zephyr.rw.lst"
+        yield (
+            rw_dir / "zephyr" / "component_manifest.json",
+            "component_manifest.json",
+        )
+
+        token_db_name = "database.bin"
+        token_paths = [
+            ro_dir / token_db_name,
+            rw_dir / token_db_name,
+        ]
+        if os.path.exists(token_paths[0]):
+            util.merge_token_databases(token_paths, work_dir / token_db_name)
+            yield work_dir / token_db_name, token_db_name
+
+    def verify_rw_fwid(
+        self,
+        work_dir,
+    ):
+        """Verify the RW_FWID address matches what is expected.
+
+        Args:
+            work_dir: A directory to write outputs and temporary files
+            into.
+        """
+        actual_rw_fwid_addr = -1
+        with open(work_dir / "image.map", encoding="utf-8") as image_map:
+            for line in image_map:
+                addr, _, _, name = line.split(None, 4)
+                if name == "rw-fwid":
+                    actual_rw_fwid_addr = int(addr, 16)
+        if self.rw_fwid_addr != actual_rw_fwid_addr:
+            if self.rw_fwid_addr < 0:
+                raise RuntimeError(
+                    "Missing RW_FWID assertion. Add one to BUILD.py:\n"
+                    "assert_rw_fwid_DO_NOT_EDIT(project_name="
+                    f'"{self.project.config.project_name}", '
+                    f"addr={actual_rw_fwid_addr:#x})"
+                )
+            if actual_rw_fwid_addr < 0:
+                raise RuntimeError(
+                    "Unexpected RW_FWID assertion. Please remove "
+                    "assert_rw_fwid_DO_NOT_EDIT from BUILD.py for project_name "
+                    f"{self.project.config.project_name}"
+                )
+            raise RuntimeError(
+                f"{self.project.config.project_name}: Incorrect RW_FWID, "
+                f"expected {self.rw_fwid_addr:#x} got {actual_rw_fwid_addr:#x}"
+            )
+
 # A dictionary mapping packer config names to classes.
 packer_registry = {
     "binman": BinmanPacker,
@@ -395,4 +546,5 @@ packer_registry = {
     "npcx": NpcxPacker,
     "raw": RawBinPacker,
     "mchp": MchpPacker,
+    "realtek": RTKBinmanPacker,
 }

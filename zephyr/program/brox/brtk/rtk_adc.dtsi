@@ -1,0 +1,13 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+&adc0 {
+	compatible = "realtek,rts5912-adc";
+	pinctrl-0 = <&adc1_gpio075
+		&adc4_gpio078
+		&adc5_gpio079
+	>;
+	pinctrl-names = "default";
+};

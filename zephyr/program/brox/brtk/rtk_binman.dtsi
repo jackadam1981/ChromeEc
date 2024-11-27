@@ -1,0 +1,56 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+//#include <cros/integrated_fwid.dtsi>
+
+&binman {
+	/* The rollback entries are zero-length and can confuse binman
+	 * and cause entries to be nested under the CBI section.
+	 * Delete these unused entries.
+	 */
+	/delete-node/ rollback0;
+	/delete-node/ rollback1;
+	/* realtek put RO(0x80000) after RW (0x0). The binman pack bin by order,
+	 * so we need to delete and add again.
+	 */
+	/delete-node/ wp-ro;
+
+	/*
+	 * To accommodate CBI flash, shift the pstate and fmap entries
+	 * to a lower address by 4 KiB.
+	 *
+	 * Note, the offsets below assume the RO region size is
+	 * 0x60000 (384 KiB).
+	 *
+	 * Effective wp-ro map:
+	 *	0x00000 - 0x5DDFF: RO binary
+	 *	0x5DC00 - 0x5DFFF: FMAP
+	 *	0x5E000 - 0x5EFFF: CBI data
+	 *	0x5F000 - 0x5FFFF: Persistent state for flash flags
+	 */
+	wp-ro {
+			compatible = "cros-ec,flash-layout";
+			type = "section";
+			offset = <0x80000>;
+			size = <0x70000>;
+			pad-byte = <0xff>;
+			read-only;
+			ec-ro {
+				type = "section";
+				pad-byte = <0xff>;
+				ro-fw {
+					type = "blob";
+					filename = "zephyr_ro.bin";
+				};
+				ro-frid {
+					type = "blob";
+					size = <32>;
+					filename = "version.txt";
+				};
+				fmap {
+					offset = <(0x70000 - 0x1000 - 0x400)>;
+				};
+			};
+	};
+};

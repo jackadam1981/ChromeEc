@@ -14,6 +14,16 @@ if(DEFINED CONFIG_BOARD_BROX)
 	zephyr_library_sources("src/hibernate.c")
 	zephyr_library_sources("src/suspend_resume.c")
 	zephyr_library_sources("src/usbc.c")
+elseif(DEFINED CONFIG_BOARD_BRTK)
+	project(brtk)
+	add_subdirectory(brtk)
+
+#	RTK_NEED_IMP : ec hib, zstate
+#	zephyr_library_sources("src/hibernate.c")
+#	RTK_NEED_IMP : pwm, fan, temp sensor, pd, usb 
+	zephyr_library_sources("src/suspend_resume.c")
+#	RTK_NEED_IMP : power src, host cmd info
+	zephyr_library_sources("src/usbc.c")
 elseif(DEFINED CONFIG_BOARD_GREENBAYUPOC)
 	project(greenbayupoc)
 	add_subdirectory(greenbayupoc)

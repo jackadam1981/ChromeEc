@@ -732,10 +732,10 @@ static int zephyr_shim_setup_espi(void)
 	static struct espi_callback cb[ARRAY_SIZE(callbacks)];
 
 	struct espi_cfg cfg = {
-		.io_caps = ESPI_IO_MODE_QUAD_LINES,
+		.io_caps = ESPI_IO_MODE_SINGLE_LINE,
 		.channel_caps = ESPI_CHANNEL_VWIRE | ESPI_CHANNEL_PERIPHERAL |
 				ESPI_CHANNEL_OOB,
-		.max_freq = 50,
+		.max_freq = 20,
 	};
 
 	if (!device_is_ready(espi_dev))

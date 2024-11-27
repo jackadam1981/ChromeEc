@@ -1,0 +1,215 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * This file is auto-generated - do not edit!
+ */
+
+/ {
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_charger_amon: charger_amon {
+			enum-name = "ADC_AMON_BMON";
+			io-channels = <&adc0 1>;
+		};
+		adc_temp_sensor_1: temp_sensor_1 {
+			enum-name = "ADC_TEMP_SENSOR_DDR_SOC";
+			io-channels = <&adc0 4>;
+		};
+		adc_temp_sensor_2: temp_sensor_2 {
+			enum-name = "ADC_TEMP_SENSOR_FAN";
+			io-channels = <&adc0 5>;
+		};
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+		
+		gpio_acok_ec_od: acok_ec_od {
+			gpios = <&gpiof 12 GPIO_INPUT>;
+		};
+		gpio_all_sys_pg: all_sys_pg {
+			gpios = <&gpioh 0 GPIO_INPUT>;
+		};
+		// RTK_LATER_IMP : amp
+		gpio_amp_mute_l: amp_mute_l {
+			gpios = <&gpioi 2 GPIO_OUTPUT>;
+		};
+		// RTK_LATER_IMP : power src related
+		gpio_bat_disconnect_ec_odl: bat_disconnect_ec_odl {
+			gpios = <&gpioh 5 GPIO_ODR_LOW>;
+		};
+		// RTK_NEED_IMP : cr50 verify
+		gpio_ccd_mode_odl: ccd_mode_odl {
+			gpios = <&gpioa 15 GPIO_ODR_LOW>;
+		};
+		// RTK_LATER_IMP : gsensor
+		// gpio_ec_accel_db_int_l: ec_accel_db_int_l {
+		// 	gpios = <&gpioa 0 GPIO_INPUT>;
+		// };
+		// gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
+		// 	gpios = <&gpiof 3 GPIO_INPUT>;
+		// };
+		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
+			gpios = <&gpiof 1 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_ec_dsw_pwrok: ec_dsw_pwrok {
+			gpios = <&gpiob 5 GPIO_OUTPUT>;
+		};
+		gpio_ec_en_edp_bl: ec_en_edp_bl {
+			gpios = <&gpiog 3 GPIO_OUTPUT>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
+		};
+		gpio_ec_en_pp3300_wlan: ec_en_pp3300_wlan {
+			gpios = <&gpioe 13 GPIO_OUTPUT>;
+		};
+		// RTK_UNKNOW : (ite only?)
+		// gpio_ec_gpg2: ec_gpg2 {
+		// 	gpios = <&gpiog 10 GPIO_INPUT>;
+		// };
+		/* RTK_NEED_IMP : cr50 verify */
+		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
+		gpios = <&gpiof 11 GPIO_OUTPUT>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
+		gpio_ec_i2c_pmc_pd_int_odl: ec_i2c_pmc_pd_int_odl {
+			gpios = <&gpiof 4 GPIO_INPUT>;
+		};
+		gpio_ec_pch_pwrok: ec_pch_pwrok {
+			gpios = <&gpioi 0 GPIO_OUTPUT>;
+		};
+		gpio_ec_pch_pwr_btn_odl: ec_pch_pwr_btn_odl {
+			gpios = <&gpioh 13 GPIO_ODR_LOW>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+		gpio_ec_pch_sys_pwrok: ec_pch_sys_pwrok {
+			gpios = <&gpiob 14 GPIO_OUTPUT>;
+		};
+		gpio_ec_prochot_odl: ec_prochot_odl {
+			gpios = <&gpioe 10 GPIO_ODR_LOW>;
+		};
+		gpio_ec_rsmrst_l: ec_rsmrst_l {
+			gpios = <&gpiof 0 GPIO_OUTPUT>;
+		};
+		gpio_ec_slp_s3_l: ec_slp_s3_l {
+			gpios = <&gpioh 14 GPIO_INPUT>;
+		};
+		gpio_ec_slp_s4_l: ec_slp_s4_l {
+			gpios = <&gpioh 11 GPIO_INPUT>;
+		};
+		gpio_ec_slp_sus_l: ec_slp_sus_l {
+			gpios = <&gpioc 8 GPIO_INPUT>;
+		};
+		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+			gpios = <&gpioa 13 GPIO_INPUT>;
+		};
+		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+			gpios = <&gpiod 5 GPIO_INPUT>;
+		};
+		// RTK_UNKNOW : wp keep
+		gpio_ec_wp_odl: ec_wp_odl {
+			gpios = <&gpiof 6 GPIO_INPUT>;
+		};
+		gpio_en_pp5000_usba: en_pp5000_usba {
+			gpios = <&gpiog 0 GPIO_OUTPUT>;
+		};
+		gpio_en_s5_rails: en_s5_rails {
+			gpios = <&gpiof 9 GPIO_OUTPUT>;
+		};
+		gpio_en_slp_z: en_slp_z {
+			gpios = <&gpiob 6 GPIO_OUTPUT>;
+		};
+		gpio_en_z1_rails_r: en_z1_rails_r {
+			gpios = <&gpioi 3 GPIO_OUTPUT>;
+		};
+		// RTK_UNKNOW : (ite only?)
+		gpio_gsc_ec_flash_sel: gsc_ec_flash_sel {
+			gpios = <&gpioh 10 GPIO_INPUT>;
+		};
+		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
+			gpios = <&gpioh 3 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_imvp9_vrrdy_od: imvp9_vrrdy_od {
+			gpios = <&gpiog 6 GPIO_INPUT>;
+		};
+		// RTK_UNKNOW : (ite only?)
+		// gpio_ish_i2c_ec_scl: ish_i2c_ec_scl {
+		// 	gpios = <&gpioa 14 GPIO_INPUT>;
+		// };
+		// gpio_ish_i2c_ec_sda: ish_i2c_ec_sda {
+		// 	gpios = <&gpioh 9 GPIO_INPUT>;
+		// };
+		gpio_lid_open: lid_open {
+			gpios = <&gpiof 13 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		gpio_sen_mode1_ec_pch_wake_odl: sen_mode1_ec_pch_wake_odl {
+			gpios = <&gpioa 2 GPIO_ODR_LOW>;
+		};
+		gpio_sys_rst_r_odl: sys_rst_r_odl {
+			gpios = <&gpioh 15 GPIO_ODR_LOW>;
+		};
+		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
+			gpios = <&gpiof 8 GPIO_INPUT>;
+		};
+		// RTK_LATER_IMP : gsensor
+		// gpio_tablet_mode_l: tablet_mode_l {
+		// 	gpios = <&gpiob 3 GPIO_INPUT>;
+		// };
+		gpio_usb_pd_int_odl: usb_pd_int_odl {
+			gpios = <&gpiog 1 GPIO_INPUT>;
+		};
+		gpio_vccst_pwrgd_od: vccst_pwrgd_od {
+			gpios = <&gpiog 7 GPIO_ODR_LOW>;
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_pd_prog: ec_i2c_pd_prog {
+			i2c-port = <&i2c_1>;
+			enum-names = "I2C_PORT_PD";
+		};
+		i2c_i2c_ec_pmc_pd: i2c_ec_pmc_pd {
+			i2c-port = <&i2c_3>;
+			enum-names = "I2C_PORT_PMC_PD";
+		};
+		i2c_ec_i2c_charger: ec_i2c_charger {
+			i2c-port = <&i2c_4>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+		// i2c_ec_i2c_sensor: ec_i2c_sensor {
+		// 	i2c-port = <&i2c5>;
+		// 	enum-names = "I2C_PORT_SENSOR";
+		// };
+	};
+};
+
+&adc0 {
+	status = "okay";
+};
+
+&i2c_1 {
+	status = "okay";
+};
+
+&i2c_3 {
+	status = "disabled";
+};
+
+&i2c_4 {
+	status = "okay";
+};
+
+&wdog {
+	clk-divider = <1320>;
+};
+
+// RTK_LATER_IMP : gsensor
+// &i2c_0 {
+// 	status = "okay";
+// };

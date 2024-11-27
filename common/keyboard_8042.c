@@ -382,6 +382,12 @@ static void scancode_bytes(uint16_t make_code, int8_t pressed,
 	default:
 		break;
 	}
+	// RTK_LATER_IMP : kb, for test
+	printf("scancode_bytes: len=%d: ", *len);
+	for (int i = 0; i < *len; i++) {
+		printf("0x%02x ", scan_code[i]);
+	}
+	printf("\n");
 }
 
 static enum ec_error_list matrix_callback(int8_t row, int8_t col,

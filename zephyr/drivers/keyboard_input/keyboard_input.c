@@ -114,9 +114,38 @@ static int cmd_kbpress(const struct shell *sh, size_t argc, char **argv)
 		return err;
 	}
 
-	input_report_abs(kbd_dev, INPUT_ABS_X, col, false, K_FOREVER);
-	input_report_abs(kbd_dev, INPUT_ABS_Y, row, false, K_FOREVER);
-	input_report_key(kbd_dev, INPUT_BTN_TOUCH, val, true, K_FOREVER);
+	// RTK_LATER_IMP : kb, for test
+	if (val == 2) {
+		input_report_abs(kbd_dev, INPUT_ABS_X, col, false, K_FOREVER);
+		input_report_abs(kbd_dev, INPUT_ABS_Y, row, false, K_FOREVER);
+		input_report_key(kbd_dev, INPUT_BTN_TOUCH, 1, true, K_FOREVER);
+
+		input_report_abs(kbd_dev, INPUT_ABS_X, col, false, K_FOREVER);
+		input_report_abs(kbd_dev, INPUT_ABS_Y, row, false, K_FOREVER);
+		input_report_key(kbd_dev, INPUT_BTN_TOUCH, 0, true, K_FOREVER);
+	} else if (val == 3) {
+		for (int r = 0; r < 8; r++) {
+			for (int c = 0; c < 16; c++) {
+				row = r;
+				col = c;
+
+				input_report_abs(kbd_dev, INPUT_ABS_X, col, false, K_FOREVER);
+				input_report_abs(kbd_dev, INPUT_ABS_Y, row, false, K_FOREVER);
+				input_report_key(kbd_dev, INPUT_BTN_TOUCH, 1, true, K_FOREVER);
+
+				input_report_abs(kbd_dev, INPUT_ABS_X, col, false, K_FOREVER);
+				input_report_abs(kbd_dev, INPUT_ABS_Y, row, false, K_FOREVER);
+				input_report_key(kbd_dev, INPUT_BTN_TOUCH, 0, true, K_FOREVER);
+
+				LOG_INF("KBPRESS %d %d %d", row, col, 1);
+				k_sleep(K_MSEC(500));
+			}
+		}
+	} else {
+		input_report_abs(kbd_dev, INPUT_ABS_X, col, false, K_FOREVER);
+		input_report_abs(kbd_dev, INPUT_ABS_Y, row, false, K_FOREVER);
+		input_report_key(kbd_dev, INPUT_BTN_TOUCH, val, true, K_FOREVER);
+	}
 
 	return 0;
 }
