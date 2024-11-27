@@ -1,0 +1,50 @@
+/* Copyright 2021 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/realtek/realtek.dtsi>
+#include <dt-bindings/gpio_defines.h>
+#include <dt-bindings/gpio/realtek-gpio.h>
+#include <realtek/ec/rts5912-pinctrl.dtsi>
+
+/ {
+	model = "Google realtek Baseboard";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+	};
+
+	power-states {
+		idle: idle {
+			compatible = "zephyr,power-state";
+			power-state-name = "suspend-to-idle";
+			min-residency-us = <10000>;
+		};
+
+		suspend_to_ram: suspend_to_ram {
+			compatible = "zephyr,power-state";
+			power-state-name = "suspend-to-ram";
+			min-residency-us = <250000>;
+		};
+	};
+};
+
+&cpu0 {
+	cpu-power-states = <&idle &suspend_to_ram>;
+};
+
+&uart0 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart_rx_gpio113
+		     &uart_tx_gpio114>;
+	pinctrl-names = "default";
+};
+
+&bbram {
+	status = "okay";
+};
