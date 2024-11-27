@@ -193,7 +193,9 @@ static enum cr50_comm_err verify_hash(void)
 	crec_msleep(1);
 	board_enable_packet_mode(false);
 
-	rv = vboot_get_rw_hash(&hash);
+	// RTK_NEED_IMP : cr50 verify
+	// rv = vboot_get_rw_hash(&hash);
+	rv = 1;
 	if (rv)
 		return rv;
 

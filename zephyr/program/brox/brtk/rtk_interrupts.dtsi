@@ -6,7 +6,6 @@
 / {
 	gpio_interrupts: gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";
-
 		int_ac_present: ac_present {
 			irq-pin = <&gpio_acok_ec_od>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -17,16 +16,18 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "power_button_interrupt";
 		};
-		int_volume_up: volume_up {
-			irq-pin = <&gpio_ec_volup_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "button_interrupt";
-		};
-		int_volume_down: volume_down {
-			irq-pin = <&gpio_ec_voldn_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "button_interrupt";
-		};
+		// RTK_LATER_IMP : vol butt
+		// int_volume_up: volume_up {
+		// 	irq-pin = <&gpio_ec_volup_btn_odl>;
+		// 	flags = <GPIO_INT_EDGE_BOTH>;
+		// 	handler = "button_interrupt";
+		// };
+		// int_volume_down: volume_down {
+		// 	irq-pin = <&gpio_ec_voldn_btn_odl>;
+		// 	flags = <GPIO_INT_EDGE_BOTH>;
+		// 	handler = "button_interrupt";
+		// };
+		// RTK_NEED_IMP : wake
 		int_lid_open: lid_open {
 			irq-pin = <&gpio_lid_open>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -34,12 +35,15 @@
 		};
 	};
 
+	/* RTK_LATER_IMP : ec hib
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-irqs = <&int_ac_present
 			       &int_power_button
 			       &int_lid_open>;
 	};
+	*/
 };
-
+/* RTK_LATER_IMP : gsensor
 #include "interrupts_motionsense.dtsi"
+*/

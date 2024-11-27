@@ -3,39 +3,49 @@
  * found in the LICENSE file.
  */
 
-/* Brox program common DTS includes */
+/* Brtk program common DTS includes */
 
-/* Arbitrage generates an incorrect node label when using alternate pins.
- * Create a 2nd node label on I2C3 as a workaround.
- * TODO: b/310227384 - I2C alternate selection not detected automatically.
- */
-i2c3ALT: &i2c3 {
-};
+/* RTK_NEED_IMP : cbi */
+/* #include <cros/cbi_flash.dtsi> */
 
-#include <cros/cbi_flash.dtsi>
+/* RTK_NEED_IMP : adc, thermal sensor */
+/* #include "../adc.dtsi" */
 
-#include "../adc.dtsi"
-#include "../binman.dtsi"
-#include "../brox.dtsi"
-#include "../fan.dtsi"
-#include "../generated.dtsi"
-#include "../gpio.dtsi"
-#include "../i2c.dtsi"
-#include "../interrupts.dtsi"
-#include "../led_pins.dtsi"
-#include "../led_policy.dtsi"
-#include "../keyboard.dtsi"
-#include "../motionsense.dtsi"
-#include "../power_signals.dtsi"
+#include "rtk_binman.dtsi"
+
+#include "brtk.dtsi"
+
+/* RTK_NEED_IMP : fan, thermal sensor */
+/* #include "../fan.dtsi" */
+
+#include "rtk_generated.dtsi"
+#include "rtk_gpio.dtsi"
+#include "rtk_i2c.dtsi"
+#include "rtk_interrupts.dtsi"
+
+/* RTK_NEED_IMP : led */
+/* #include "../led_pins.dtsi" */
+/* #include "../led_policy.dtsi" */
+
+/* RTK_NEED_IMP : kb */
+/* #include "rtk_keyboard.dtsi" */
+
+/* RTK_NEED_IMP : i2c, gsensor */
+/* #include "../motionsense.dtsi" */
+
+#include "rtk_power_signals.dtsi"
 #include "../power_signals_gpios.dtsi"
-#include "../pwm.dtsi"
-#include "../temp_sensors.dtsi"
-#include "../usb_typec.dtsi"
+
+/* RTK_NEED_IMP : pwm, fan, temp sensor */
+/* #include "../pwm.dtsi" */
+/* #include "../temp_sensors.dtsi" */
+
+#include "rtk_usb_typec.dtsi"
 #include "../usba.dtsi"
 
-/* Brox project DTS includes*/
+/* Brtk project DTS includes*/
 
-/* Brox overrides follow... */
+/* Brtk overrides follow... */
 
 /{
         batteries {

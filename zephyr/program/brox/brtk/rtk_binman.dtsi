@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-#include <cros/integrated_fwid.dtsi>
+//#include <cros/integrated_fwid.dtsi>
 
 &binman {
 	/* The rollback entries are zero-length and can confuse binman
@@ -11,6 +11,10 @@
 	 */
 	/delete-node/ rollback0;
 	/delete-node/ rollback1;
+	/* realtek put RO(0x80000) after RW (0x0). The binman pack bin by order,
+	 * so we need to delete and add again.
+	 */
+	/delete-node/ wp-ro;
 
 	/*
 	 * To accommodate CBI flash, shift the pstate and fmap entries
@@ -26,30 +30,27 @@
 	 *	0x5F000 - 0x5FFFF: Persistent state for flash flags
 	 */
 	wp-ro {
-		/*
-		 * Delete the pstate node so that we can force it to be the
-		 * last sub-section. binman doesn't handle sub-sections with
-		 * out of order offsets.
-		 */
-		/delete-node/ pstate;
-
-		ec-ro {
-			fmap {
-				offset =  <(0x60000 - (0x1000 * 2) - 0x400)>;
-				/*
-				 * don't specify 'size = <0x400>' here so
-				 * it is auto-assigned to the fmap size.
-				 */
-			};
-		};
-		cbi {
-			offset = <(0x60000 - (0x1000 * 2))>;
-			size = <0x1000>;
-		};
-		pstate {
+			compatible = "cros-ec,flash-layout";
 			type = "section";
-			offset = <(0x60000 - (0x1000 * 1))>;
-			size = <0x1000>;
-		};
+			offset = <0x80000>;
+			size = <0x70000>;
+			pad-byte = <0xff>;
+			read-only;
+			ec-ro {
+				type = "section";
+				pad-byte = <0xff>;
+				ro-fw {
+					type = "blob";
+					filename = "zephyr_ro.bin";
+				};
+				ro-frid {
+					type = "blob";
+					size = <32>;
+					filename = "version.txt";
+				};
+				fmap {
+					offset = <(0x70000 - 0x400)>;
+				};
+			};
 	};
 };
