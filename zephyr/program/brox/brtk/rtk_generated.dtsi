@@ -6,7 +6,6 @@
  */
 
 / {
-/* RTK_NEED_IMP : adc, power src related
 	named-adc-channels {
 		compatible = "named-adc-channels";
 
@@ -23,7 +22,6 @@
 			io-channels = <&adc0 5>;
 		};
 	};
-*/
 
 	named-gpios {
 		compatible = "named-gpios";
@@ -192,11 +190,9 @@
 	};
 };
 
-/* RTK_LATER_IMP : RTK_LATER_IMP : power src related
 &adc0 {
 	status = "okay";
 };
-*/
 
 &i2c_1 {
 	status = "okay";

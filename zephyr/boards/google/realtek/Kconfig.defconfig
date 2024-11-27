@@ -60,4 +60,9 @@ config CROS_EC_RW_SIZE
 
 # end RTK_NEED_IMP 
 
+if ADC
+config PLATFORM_EC_ADC_RESOLUTION
+	default 12
+endif # ADC
+
 endif # BOARD_REALTEK
