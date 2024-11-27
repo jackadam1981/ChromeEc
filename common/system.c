@@ -776,6 +776,11 @@ uint32_t flash_get_rw_offset(enum ec_image copy)
 
 	return CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
 }
+#else
+uint32_t flash_get_rw_offset(enum ec_image copy)
+{
+	return 0;
+}
 #endif
 
 const struct image_data *system_get_image_data(enum ec_image copy)
@@ -804,6 +809,7 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 	 */
 	addr += flash_get_rw_offset(copy);
 
+#ifdef CONFIG_FLASH
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
 	crec_flash_lock_mapped_storage(1);
@@ -813,6 +819,7 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 	/* Read the version struct from flash into a buffer. */
 	if (crec_flash_read(addr, sizeof(data), (char *)&data))
 		return NULL;
+#endif
 #endif
 
 	/* Make sure the version struct cookies match before returning the
