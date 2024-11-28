@@ -17,6 +17,9 @@ config SYS_CLOCK_TICKS_PER_SEC
 
 endif # REALTEK_RTS5912_RTMR
 
+config CROS_EC_HOOK_TICK_INTERVAL
+	default 200000
+
 #
 # RTS5915:	384KB total SRAM: 
 #				From top 0x2000_0000: 

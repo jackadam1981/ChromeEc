@@ -206,6 +206,10 @@
 	status = "okay";
 };
 
+&wdog {
+	clk-divider = <330>;
+};
+
 // RTK_LATER_IMP : gsensor
 // &i2c5 {
 // 	status = "okay";
