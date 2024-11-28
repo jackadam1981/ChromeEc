@@ -145,8 +145,9 @@ gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
 // 	enum-name = "GPIO_VOLUME_UP_L";
 // };
 
+// RTK_NEED_IMP : gpio, input low active fail
 &gpio_ec_wp_odl {
-	gpios = <&gpiob 10 (GPIO_INPUT | GPIO_ACTIVE_LOW) >;
+	gpios = <&gpiob 10 (GPIO_INPUT) >;
 };
 
 &gpio_acok_ec_od {

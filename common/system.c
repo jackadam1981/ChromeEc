@@ -696,7 +696,8 @@ system_run_image_copy_with_flags(enum ec_image copy, uint32_t add_reset_flags)
 
 	if (IS_ENABLED(CONFIG_EXTERNAL_STORAGE)) {
 		/* Jump to loader */
-		init_addr = system_get_lfw_address();
+		// RTK_NEED_IMP : jump
+		init_addr = *((volatile uint32_t *)0x200060FCul); // system_get_lfw_address();
 		system_set_image_copy(copy);
 	} else if (IS_ENABLED(CONFIG_FW_RESET_VECTOR)) {
 		/* Get reset vector */

@@ -80,6 +80,17 @@ static const struct protect_range spi_flash_protect_ranges[] = {
 	{ 0, 0, 1, { 1, 0, 1 }, 0, 0x40000 }, /* Lower 1/4 */
 	{ 0, 0, 1, { 1, 1, 0 }, 0, 0x80000 }, /* Lower 1/2 */
 };
+
+#elif defined(CONFIG_SPI_FLASH_RTK59)
+static const struct protect_range spi_flash_protect_ranges[] = {
+	/* CMP = 0 */
+	{ 0, IGN, IGN, { 0, 0, 1 }, 0, 0 }, /* No protection */
+//	{ 0, 0, 0, { 0, 0, 1 }, 0xF0000, 0x10000 }, /* higher 1/16 */
+	{ 0, 0, 0, { 0, 1, 0 }, 0xE0000, 0x10000 }, /* higher 1/8 */
+	{ 0, 0, 0, { 0, 1, 1 }, 0xC0000, 0x30000 }, /* higher 1/4 */
+	{ 0, 0, 0, { 1, 0, 0 }, 0x80000, 0x70000 }, /* higher 1/2 */
+	{ 0, 0, IGN, { 1, 1, 1 }, 0, 0xF0000 }, /* ALL */
+};
 #endif
 
 /**
