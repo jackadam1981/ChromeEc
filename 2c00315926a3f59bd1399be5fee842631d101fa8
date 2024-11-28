@@ -16,6 +16,24 @@
       "message": "This seems not the cause. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6002865 might be the culprit.",
       "revId": "2c00315926a3f59bd1399be5fee842631d101fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e6777c_3242b63d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-11-28T08:31:31Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right, let\u0027s abandone this CL.",
+      "parentUuid": "733ebac6_ba23a2cc",
+      "revId": "2c00315926a3f59bd1399be5fee842631d101fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
