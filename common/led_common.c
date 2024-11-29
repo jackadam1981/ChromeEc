@@ -24,8 +24,9 @@ __overridable int led_is_supported(enum ec_led_id led_id)
 	if (supported_leds == -1) {
 		supported_leds = 0;
 
-		for (i = 0; i < supported_led_ids_count; i++)
+		for (i = 0; i < supported_led_ids_count; i++) {
 			supported_leds |= (1 << supported_led_ids[i]);
+		}
 	}
 
 	return ((1 << (int)led_id) & supported_leds);
