@@ -25,8 +25,7 @@
 #include "../led_policy.dtsi"
 #include "rtk_led_pins.dtsi"
 
-/* RTK_NEED_IMP : kb */
-/* #include "rtk_keyboard.dtsi" */
+#include "rtk_keyboard.dtsi"
 
 /* RTK_NEED_IMP : i2c, gsensor */
 /* #include "../motionsense.dtsi" */
