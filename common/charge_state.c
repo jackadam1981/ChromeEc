@@ -430,17 +430,11 @@ int charge_request(bool use_curr, bool is_full)
 #ifdef CONFIG_CHARGER_NARROW_VDC
 		current = 0;
 		/*
-		 * With NVDC charger, keep VSYS voltage higher than battery,
-		 * otherwise the BGATE FET body diode would conduct and
-		 * discharge the battery.
+		 * With NVDC charger, set VSYS to battery max voltage, keep VSYS
+		 * voltage always higher than battery,otherwise the BGATE FET
+		 * body diode would conduct and discharge the battery.
 		 */
-		voltage = charger_closest_voltage(
-			curr.batt.voltage + charger_get_info()->voltage_step);
-		/* If the battery is full, request the max voltage. */
-		if (is_full)
-			voltage = battery_get_info()->voltage_max;
-		/* And handle dead battery case */
-		voltage = MAX(voltage, battery_get_info()->voltage_normal);
+		voltage = battery_get_info()->voltage_max;
 #else
 		voltage = current = 0;
 #endif
