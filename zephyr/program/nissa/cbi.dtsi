@@ -57,5 +57,25 @@
 				default;
 			};
 		};
+
+		/*
+		 * FW_CONFIG field for tablet present or not.
+		 */
+		tablet {
+			enum-name = "FW_TABLET";
+			start = <15>;
+			size = <1>;
+
+			no-tablet {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_TABLET_NOT_PRESENT";
+				value = <0>;
+			};
+			tablet-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_TABLET_PRESENT";
+				value = <1>;
+			};
+		};
 	};
 };
