@@ -212,6 +212,9 @@ static int adc_temperature_func(const struct device *dev, unsigned int channel,
 	*result = volt_divider(s->v, s->r,
 			       resistance_47kohm_B4050(s->temp_expected));
 
+	/* scale the value to make up for the emulated reference */
+	*result = *result * adc_ref_internal(dev) / s->v;
+
 	return 0;
 }
 
