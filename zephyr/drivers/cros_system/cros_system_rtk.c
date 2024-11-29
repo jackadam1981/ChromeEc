@@ -179,6 +179,21 @@ static int cros_system_rtk_hibernate(const struct device *dev,
 	/* Stop the watchdog */
 	system_rtk_watchdog_stop();
 
+	/*
+	 * Give the board a chance to do any late stage hibernation work.  This
+	 * is likely going to configure GPIOs for hibernation.  On some boards,
+	 * it's possible that this may not return at all.  On those boards,
+	 * power to the EC is likely being turn off entirely.
+	 */
+	if (board_hibernate_late)
+		board_hibernate_late();
+	/*
+	 * Enter hibernate VCI mechanism if it is enabled per board design
+	 * otherwise, enter deepest sleep mode
+	 */
+#ifdef CONFIG_POWEROFF
+	sys_poweroff();
+#endif
 	return 0;
 }
 
@@ -194,7 +209,9 @@ static const struct cros_system_driver_api cros_system_driver_rtk_api = {
 	CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY
 #error "CROS_SYSTEM must initialize before the SYSTEM_PRE initialization"
 #endif
+
 static struct cros_system_rtk_data cros_system_rtk_data_0;
+
 DEVICE_DEFINE(cros_system_rtk_0, "CROS_SYSTEM", cros_system_rtk_init,
 	      NULL, &cros_system_rtk_data_0, NULL, PRE_KERNEL_1,
 	      CONFIG_CROS_SYSTEM_REALTEK_INIT_PRIORITY,
