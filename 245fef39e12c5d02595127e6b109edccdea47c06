@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50576f75_f6e9db34",
+        "filename": "zephyr/subsys/usbd_service/Kconfig",
+        "patchSetId": 34
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-29T00:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d41798_ba52ffd0",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "245fef39e12c5d02595127e6b109edccdea47c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "031d0c7e_bc67bdda",

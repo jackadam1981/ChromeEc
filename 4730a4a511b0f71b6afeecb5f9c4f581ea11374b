@@ -16,6 +16,24 @@
       "message": "@phoenixshen@chromium.org @yllin@google.com\nCould you please help review the following three commits?\n- https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5075835\n- https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5759032\n- https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5717111\n\nThese commits were introduced in preparation for the Zephyr upstream\u0027s plan to remove the old USB driver (usb_dc) in version 4.3.0.\nFor more details, please refer to the following link.\nhttps://github.com/zephyrproject-rtos/zephyr/issues/42066",
       "revId": "4730a4a511b0f71b6afeecb5f9c4f581ea11374b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4b3fbb_e1fc531b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2024-11-29T00:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031aea7d_2f095331",
+      "revId": "4730a4a511b0f71b6afeecb5f9c4f581ea11374b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
