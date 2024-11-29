@@ -22,9 +22,8 @@
 #include "rtk_i2c.dtsi"
 #include "rtk_interrupts.dtsi"
 
-/* RTK_NEED_IMP : led */
-/* #include "../led_pins.dtsi" */
-/* #include "../led_policy.dtsi" */
+#include "../led_policy.dtsi"
+#include "rtk_led_pins.dtsi"
 
 /* RTK_NEED_IMP : kb */
 /* #include "rtk_keyboard.dtsi" */
@@ -35,8 +34,8 @@
 #include "rtk_power_signals.dtsi"
 #include "../power_signals_gpios.dtsi"
 
-/* RTK_NEED_IMP : pwm, fan, temp sensor */
-/* #include "../pwm.dtsi" */
+#include "rtk_pwm.dtsi"
+#include "rtk_fan.dtsi"
 #include "../temp_sensors.dtsi"
 
 #include "rtk_usb_typec.dtsi"
