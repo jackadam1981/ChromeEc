@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba4777c6_445b0a51",
+        "filename": "common/queue.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-02T21:45:49Z",
+      "side": 1,
+      "message": "Nit - this duplicates the comments from consumer.h.  Document this detail in one place only and have the 2nd instance reference the source of truth.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 0
+      },
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74887fde_50940eba",
         "filename": "include/queue.h",
         "patchSetId": 13
@@ -55,6 +78,29 @@
           ]
         }
       ],
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c156061d_a4b23f5f",
+        "filename": "include/queue.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-02T21:45:49Z",
+      "side": 1,
+      "message": "Nit - add a comment block since this a public fuction.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 52
+      },
       "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
