@@ -22,6 +22,30 @@
       },
       "revId": "1295e714feb182633b91e844816c841b7e848a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf93bc1_79830e54",
+        "filename": "common/queue.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T19:16:29Z",
+      "side": 1,
+      "message": "I have significantly updated the comment in `consumer.h`, largely mirroring this comment.",
+      "parentUuid": "fba31066_92c97b33",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 4
+      },
+      "revId": "1295e714feb182633b91e844816c841b7e848a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
