@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba31066_92c97b33",
+        "filename": "common/queue.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-12-02T18:49:08Z",
+      "side": 1,
+      "message": "It seems that this level of documentation belong in the policy header not here. I would expect that a 0 size add would be a noop. If we\u0027re changing that semantic it should be very well documented.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 4
+      },
+      "revId": "1295e714feb182633b91e844816c841b7e848a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
