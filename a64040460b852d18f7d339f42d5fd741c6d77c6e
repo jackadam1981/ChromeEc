@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd4d83c_9ded0920",
+        "filename": "common/queue.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-12-02T17:46:23Z",
+      "side": 1,
+      "message": "nit: This can be moved inside the `if (transfer \u003e 0)` conditional block, so we only read-modify-write `q-\u003estate-\u003etail` when necessary.",
+      "revId": "a64040460b852d18f7d339f42d5fd741c6d77c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a9f5c1_ab694828",
+        "filename": "common/queue.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-12-02T17:46:23Z",
+      "side": 1,
+      "message": "Should this log to make it clear to developers that there\u0027s a bug?\n\nShould it crash so it\u0027s fixed before the FW is uprev\u0027ed?",
+      "revId": "a64040460b852d18f7d339f42d5fd741c6d77c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcb01ecf_529fa293",
         "filename": "test/queue.c",
         "patchSetId": 11
