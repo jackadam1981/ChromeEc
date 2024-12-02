@@ -51,6 +51,23 @@
       "parentUuid": "65f5743e_cf6c7767",
       "revId": "e37cfd97f92d398fe3609d95fe5e71ecf269b9ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "021e5715_80001257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-02T21:23:22Z",
+      "side": 1,
+      "message": "Blocking this temporarily.   The upstream change is close to landing and we should use the upstream Zephyr driver instead.",
+      "revId": "e37cfd97f92d398fe3609d95fe5e71ecf269b9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
