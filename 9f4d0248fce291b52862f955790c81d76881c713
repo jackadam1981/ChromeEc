@@ -46,6 +46,29 @@
       },
       "revId": "9f4d0248fce291b52862f955790c81d76881c713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150b6d28_3db2c73d",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-12-02T17:46:32Z",
+      "side": 1,
+      "message": "Is the queue actually empty? What if `count \u003e 0`; aren\u0027t we leaving bytes behind, even though it\u0027s not enough for a full packet?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
