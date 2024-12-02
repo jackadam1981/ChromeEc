@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "452ee840_12682864",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T18:26:53Z",
+      "side": 1,
+      "message": "Sorry, I messed up the quoting in the bottom part of my previous response, it was supposed to look like this:\n\n\u003eThis avoid stress-testing the receiver\u0027s ability to handle partial data (mimicking slow connections).\n\nBefore this code change, he PC host will usually receive UART data in small packets of one or two bytes, even when uServo forwards kilobytes and kilobytes of EC and GSC output. And this goes on in our nightly test on thousands of machines. So I would say that the receivers ability to handle partial USB data is already pretty thoroughly stress tested.\n\nAnother thing, bulk data on the USB bus does not have any hard timing guarantees, so even if we make the code attempt to transmit the tx_size + 1 bytes in two USB packets as close together as we can, the host PC could still receive them with some time in between.\n\n\u003eWhat happens if the caller [queues] config-\u003etx_size + 1 bytes.\n\nIf some logic is in the process of composing a USB response, let\u0027s say that the code enqueues of 65 bytes, then enqueues 2 bytes, and then flushes.\nWith my proposed logic, the result on the USB bus would be:\n64 bytes, pause, then 3 bytes\nBefore my this patch, the result would have been:\n64 bytes, 1 byte, pause, then 2 bytes\n\nI see the new behavior as clearly better.",
+      "parentUuid": "fa6a5734_da19b7d9",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "150b6d28_3db2c73d",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2d80ca_b1115515",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T18:26:53Z",
+      "side": 1,
+      "message": "`count` is the number of bytes that were just removed from the in-memory queue, and put into USB buffer.  This will cause this device to report to the USB host that some bytes are available to be retrieved, that is, this device is no longer buffering, but is actively pushing these bytes to the host.\n\nSince `queue_remove_memcpy()` was passed a value of `config-\u003etx_size` for the number of bytes to retrieve, if it returned fewer, it means that there were fewer in the queue, and all of the content has been returned, meaning that the queue is empty at this point, so it is safe to clear the flag, and revert to the default behavior of buffering data.",
+      "parentUuid": "150b6d28_3db2c73d",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "507785db_b6c99108",
@@ -84,6 +132,24 @@
       "writtenOn": "2024-12-02T18:16:11Z",
       "side": 1,
       "message": "Should this also check `queue_is_buffered()`, so we\u0027re only setting the flag for queues that have buffering enabled?\n\n`tx_write()` is checking it also, but it would help close an invalid state gap.",
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27e320a_d23f1cd7",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T18:26:53Z",
+      "side": 1,
+      "message": "This seem very reasonable.  Done.",
+      "parentUuid": "507785db_b6c99108",
       "revId": "9f4d0248fce291b52862f955790c81d76881c713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
