@@ -8,6 +8,17 @@
 		gpio-wp = &gpio_ec_wp_odl;
 	};
 
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_acok_ec_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+	};
+
+
 	named-gpios {
 		compatible = "named-gpios";
 
@@ -106,7 +117,7 @@
 			gpios = <&gpioh 4 GPIO_INPUT>;
 		};
 		gpio_typec_i2c_int_ec: typec_i2c_int_ec {
-			gpios = <&gpiof 5 GPIO_INPUT>;
+			gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
 		};
 		gpio_ec_edp_bklt_en: ec_edp_bklt_en {
 			gpios = <&gpiof 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
