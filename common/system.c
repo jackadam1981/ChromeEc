@@ -810,6 +810,7 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 #ifdef CONFIG_FLASH
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
+	addr += 0x20;
 	crec_flash_lock_mapped_storage(1);
 	memcpy(&data, (const void *)addr, sizeof(data));
 	crec_flash_lock_mapped_storage(0);
