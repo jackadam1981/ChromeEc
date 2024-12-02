@@ -69,6 +69,23 @@
       },
       "revId": "9f4d0248fce291b52862f955790c81d76881c713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507785db_b6c99108",
+        "filename": "chip/stm32/usb-stream.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-12-02T18:16:11Z",
+      "side": 1,
+      "message": "Should this also check `queue_is_buffered()`, so we\u0027re only setting the flag for queues that have buffering enabled?\n\n`tx_write()` is checking it also, but it would help close an invalid state gap.",
+      "revId": "9f4d0248fce291b52862f955790c81d76881c713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
