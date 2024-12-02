@@ -68,8 +68,10 @@ BINARY_SIZE_REGIONS = [
 ]
 
 
-def log_cmd(cmd, env=None):
+def log_cmd(cmd, env=None, cwd=None):
     """Log subprocess command."""
+    if cwd:
+        print(f"cd {cwd};", end=" ")
     if env is not None:
         print("env", end=" ")
         [  # pylint:disable=expression-not-assigned
@@ -289,6 +291,11 @@ def bundle_firmware(opts):
     platform_ec = ZEPHYR_DIR.parent
     modules = zmake.modules.locate_from_checkout(find_checkout())
     projects_path = zmake.modules.default_projects_dirs(modules)
+<<<<<<< HEAD   (f2a09f PPM: Don't clear CCI for connection indicator)
+=======
+    subprocesses = []
+    per_board_targets = collections.defaultdict(list)
+>>>>>>> CHANGE (b851e3 Reland "Create tar files that contain all the binaries")
     for project in zmake.project.find_projects(projects_path).values():
         build_dir = (
             platform_ec / "build" / "zephyr" / project.config.project_name
@@ -296,10 +303,26 @@ def bundle_firmware(opts):
         artifacts_dir = build_dir / "output"
         tarball_name = f"{project.config.project_name}.firmware.tbz2"
         tarball_path = bundle_dir.joinpath(tarball_name)
+<<<<<<< HEAD   (f2a09f PPM: Don't clear CCI for connection indicator)
         cmd = ["tar", "cvfj", tarball_path, "."]
         log_cmd(cmd)
         subprocess.run(
             cmd, cwd=artifacts_dir, check=True, stdin=subprocess.DEVNULL
+=======
+        for board in set(project.config.inherited_from):
+            per_board_targets[board].append(
+                f"{project.config.project_name}/output"
+            )
+        cmd = ["tar", "cfj", tarball_path]
+        cmd.extend(
+            [x.relative_to(artifacts_dir) for x in artifacts_dir.glob("*")]
+        )
+        log_cmd(cmd, cwd=artifacts_dir)
+        subprocesses.append(
+            subprocess.Popen(  # pylint: disable=consider-using-with
+                cmd, cwd=artifacts_dir, stdin=subprocess.DEVNULL
+            )
+>>>>>>> CHANGE (b851e3 Reland "Create tar files that contain all the binaries")
         )
         meta = info.objects.add()
         meta.file_name = tarball_name
@@ -308,6 +331,41 @@ def bundle_firmware(opts):
         )
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
+<<<<<<< HEAD   (f2a09f PPM: Don't clear CCI for connection indicator)
+=======
+    # For each board, create a big tar file that contains all the models.
+    # TODO(b/358654822): Remove this once DLM can show the small tarfiles.
+    for board, dirs in per_board_targets.items():
+        tarball_name = f"{board}/firmware_from_source.tar.bz2"
+        (bundle_dir / board).mkdir(exist_ok=True)
+        cmd = [
+            "tar",
+            "--exclude=*.elf",
+            "--exclude=*.lst",
+            "-cjf",
+            str(bundle_dir / tarball_name),
+            "-C",
+            str(platform_ec / "build" / "zephyr"),
+            "--transform",
+            "s,/output,,",
+        ] + dirs
+        log_cmd(cmd)
+        subprocesses.append(
+            subprocess.Popen(  # pylint: disable=consider-using-with
+                cmd, stdin=subprocess.DEVNULL
+            )
+        )
+        meta = info.objects.add()
+        meta.tarball_info.board.append(board)
+        meta.file_name = tarball_name
+        meta.tarball_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC  # pylint: disable=no-member
+        )
+    for proc in subprocesses:
+        proc.wait()
+        if proc.returncode != 0:
+            raise subprocess.CalledProcessError(proc.returncode, proc.args)
+>>>>>>> CHANGE (b851e3 Reland "Create tar files that contain all the binaries")
 
     tokens_file = "tokens.bin"
     tokens_path = platform_ec / "build" / tokens_file
