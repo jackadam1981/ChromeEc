@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07e7565_cae2fe07",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-02T21:58:45Z",
+      "side": 1,
+      "message": "Nit - Can you use the `chromeos_version.py` module here instead?  Seems like there\u0027s less change of a future chromeos_version.sh change preaking the firmware builder.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "ecef02c79b84721b93391b60a3f5b29a9880e7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
