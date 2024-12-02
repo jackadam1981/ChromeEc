@@ -315,9 +315,8 @@ static int cros_flash_rtk_write(const struct device *dev, int offset,
 	 * reload the watchdog normally.  Force a reload here to avoid the
 	 * watchdog triggering in the middle of flashing.
 	 */
-	// RTK_NEED_IMP : wp, wdt, do we need this?
-	// if (IS_ENABLED(CONFIG_WATCHDOG))
-	// 	watchdog_reload();
+	if (IS_ENABLED(CONFIG_WATCHDOG))
+		watchdog_reload();
 
 	/* Lock physical flash operations */
 	crec_flash_lock_mapped_storage(1);
@@ -371,9 +370,8 @@ static int cros_flash_rtk_erase(const struct device *dev, int offset,
 		 * Reload the watchdog timer, so that erasing many flash pages
 		 * doesn't cause a watchdog reset
 		 */
-		// RTK_NEED_IMP : wp, wdt, do we need this?
-		// if (IS_ENABLED(CONFIG_WATCHDOG))
-		// 	watchdog_reload();
+		if (IS_ENABLED(CONFIG_WATCHDOG))
+			watchdog_reload();
 
 		/* Start erase */
 		ret = flash_erase(data->flash_dev, offset,

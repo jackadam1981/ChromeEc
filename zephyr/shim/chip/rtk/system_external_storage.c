@@ -10,15 +10,26 @@
 //#include "system_chip.h"
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/bbram.h>
+#include <zephyr/drivers/watchdog.h>
 #include <soc.h>
 
 // RTK_NEED_IMP: jumping, OTP?
 #define DBGRAM_STUB ((volatile uint32_t *)0x200060FCul)
 #define DBGRAM_IMG ((volatile uint32_t *)0x200060F8ul)
+
 uint32_t system_get_lfw_address(void)
 {
-	uint32_t *const lfw_vector = (uint32_t *)*DBGRAM_STUB;
-	return *lfw_vector;
+	if (IS_ENABLED(CONFIG_WATCHDOG)) {
+		const struct device *wdt_dev =
+			DEVICE_DT_GET(DT_NODELABEL(wdog));
+		if (!device_is_ready(wdt_dev)) {
+			// LOG_ERR("device %s not ready", wdt_dev->name);
+			return 0;
+		}
+
+		wdt_disable(wdt_dev);
+	}
+	return *DBGRAM_STUB;
 }
 enum ec_image system_get_shrspi_image_copy(void)
 {
