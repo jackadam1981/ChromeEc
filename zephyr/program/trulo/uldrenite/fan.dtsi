@@ -3,29 +3,6 @@
  * found in the LICENSE file.
  */
 
-/ {
-	named-gpios {
-		gpio_fan_enable: fan-enable {
-			gpios = <&gpio6 3 GPIO_OUTPUT>;
-		};
-		gpio_fan_tach: fan-tach {
-			gpios = <&gpio7 3 GPIO_INPUT_PULL_UP>;
-		};
-	};
-
-	fans {
-		compatible = "cros-ec,fans";
-
-		fan_0 {
-			pwms = <&pwm5 5 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
-			rpm_min = <2200>;
-			rpm_start = <2200>;
-			rpm_max = <6900>;
-			tach = <&tach2>;
-			enable_gpio = <&gpio_fan_enable>;
-		};
-	};
-};
 
 &pwm5_gpb7 {
 	drive-open-drain;
