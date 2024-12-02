@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24024730_572d289b",
+        "filename": "common/queue.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T18:27:07Z",
+      "side": 1,
+      "message": "That is right, we might as well take that slight optimization.",
+      "parentUuid": "cbd4d83c_9ded0920",
+      "revId": "a64040460b852d18f7d339f42d5fd741c6d77c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a9f5c1_ab694828",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a6ff83_dcec4277",
+        "filename": "common/queue.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T18:27:07Z",
+      "side": 1,
+      "message": "In order to reduce the risk of surprises to engineers, I want to adhere to the usual semantics of `fopen()`, `fwrite()`, and `fflush()`, under which it is a no-op to call `fflush()` on a `FILE` opened in non-buffered mode.\n\nI agree that it is probably rare to have a helper method that uses `fprintf()` followed by `fflush()`, and to call that helper variously with files opened in buffered and un-buffered mode, but it could be done, and in such case it is desirable that the `fflush()` is a no-op in case it is unbuffered.",
+      "parentUuid": "32a9f5c1_ab694828",
+      "revId": "a64040460b852d18f7d339f42d5fd741c6d77c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcb01ecf_529fa293",
@@ -48,6 +84,30 @@
       "writtenOn": "2024-11-25T20:19:11Z",
       "side": 1,
       "message": "Some syntax errors around here. You can run this unit test locally with `(inside) make run-queue`",
+      "range": {
+        "startLine": 454,
+        "startChar": 37,
+        "endLine": 454,
+        "endChar": 38
+      },
+      "revId": "a64040460b852d18f7d339f42d5fd741c6d77c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de0e59e5_a1c9bf48",
+        "filename": "test/queue.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-02T18:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb01ecf_529fa293",
       "range": {
         "startLine": 454,
         "startChar": 37,
