@@ -16,6 +16,47 @@
       "message": "PTAL",
       "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74887fde_50940eba",
+        "filename": "include/queue.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-12-02T20:13:20Z",
+      "side": 1,
+      "message": "NIT - use `BIT(0)`",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b2a01cdf_f3e92e1b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/queue.h",
+              "range": {
+                "startLine": 62,
+                "startChar": 0,
+                "endLine": 63,
+                "endChar": 0
+              },
+              "replacement": "\tQUEUE_BUFFERED_MODE \u003d BIT(0),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
