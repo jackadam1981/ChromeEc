@@ -7,7 +7,7 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* fatcat_it82002aw project DTS includes */
+/* felino project DTS includes */
 
 #include "gpios.dtsi"
 #include "include/board.h"
@@ -34,6 +34,7 @@
 #include "console.dtsi"
 #include "i2c.dtsi"
 #include "interrupts.dtsi"
+#include "usb_typec.dtsi"
 
 /* these need to be promoted to program.conf */
 
@@ -48,6 +49,12 @@
 		/* override since arb does not support GPIO_VOLTAGE_1P8 */
 		gpio_rsmrst_pwrgd_n_r: rsmrst_pwrgd_n_r {
 			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+	};
+
+	batteries {
+		default_battery: cosmx_ap20cbl-4 {
+			compatible = "cosmx,ap20cbl-4", "battery-smart";
 		};
 	};
 };
