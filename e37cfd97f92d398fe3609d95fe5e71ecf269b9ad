@@ -33,6 +33,24 @@
       "message": "There is an upstream change to add the IT8801 device as proper Zephyr drivers, with the keyboard, IOEX, and PWM drivers separated.\n\nhttps://github.com/zephyrproject-rtos/zephyr/pull/79416\n\nI don\u0027t think this change is needed.",
       "revId": "e37cfd97f92d398fe3609d95fe5e71ecf269b9ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ffbd14_a9050e43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-02T21:22:07Z",
+      "side": 1,
+      "message": "Hi Keith, this is a temporary solution until we migrate the RVP usage code to the Zephyr driver.",
+      "parentUuid": "65f5743e_cf6c7767",
+      "revId": "e37cfd97f92d398fe3609d95fe5e71ecf269b9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
