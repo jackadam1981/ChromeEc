@@ -987,7 +987,9 @@ static void prl_tx_discard_message_entry(const int port)
 	    prl_tx[port].xmit_status == TCPC_TX_WAIT ||
 	    prl_tx[port].xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
 		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
-		increment_msgid_counter(port);
+		if (prl_tx[port].xmit_status == TCPC_TX_WAIT) {
+			increment_msgid_counter(port);
+		}
 		pe_report_discard(port);
 	}
 
