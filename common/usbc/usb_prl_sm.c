@@ -447,6 +447,12 @@ test_export_static enum usb_prl_tx_state prl_tx_get_state(const int port)
 	return prl_tx[port].ctx.current - &prl_tx_states[0];
 }
 
+/* Get the previous PRL TX state */
+static enum usb_prl_tx_state prl_tx_get_last_state(const int port)
+{
+	return prl_tx[port].ctx.previous - &prl_tx_states[0];
+}
+
 /* Print the protocol transmit statemachine's current state. */
 static void print_current_prl_tx_state(const int port)
 {
@@ -987,7 +993,10 @@ static void prl_tx_discard_message_entry(const int port)
 	    prl_tx[port].xmit_status == TCPC_TX_WAIT ||
 	    prl_tx[port].xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
 		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
-		increment_msgid_counter(port);
+		if (prl_tx_get_last_state(port) ==
+		    PRL_TX_WAIT_FOR_PHY_RESPONSE) {
+			increment_msgid_counter(port);
+		}
 		pe_report_discard(port);
 	}
 
