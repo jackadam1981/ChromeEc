@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1453685e_3c49c8f6",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-03T21:36:07Z",
+      "side": 1,
+      "message": "nit: scheduled",
+      "range": {
+        "startLine": 496,
+        "startChar": 19,
+        "endLine": 496,
+        "endChar": 27
+      },
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8779bad_e882c1fb",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-03T21:36:07Z",
+      "side": 1,
+      "message": "Is this redundant with the same setting in `tps_notify_new_power_contract`? Same question for `sink_enable_possible`.",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb0e2e9_c8978adf",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-03T21:36:07Z",
+      "side": 1,
+      "message": "You can remove this todo. You\u0027ve substantially done it.",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
