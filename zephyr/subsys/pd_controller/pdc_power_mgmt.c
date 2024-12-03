@@ -244,6 +244,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_START_CHARGING,
 	/** SNK_ATTACHED_GET_SINK_PDO */
 	SNK_ATTACHED_GET_SINK_PDO,
+	/** SNK_ATTACHED_SET_SRC_CAPS */
+	SNK_ATTACHED_SET_SRC_CAPS,
 	/** SNK_ATTACHED_RUN */
 	SNK_ATTACHED_RUN,
 };
@@ -1914,6 +1916,9 @@ static void pdc_snk_attached_entry(void *obj)
 		 * attached sink has been disconnected.
 		 */
 		pdc_dpm_remove_sink(port_number);
+
+		/* DRP sinks must advertise their max source caps */
+		pdc_dpm_add_pd_source(port_number);
 	}
 }
 
@@ -2028,9 +2033,20 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SNK_ATTACHED_GET_CABLE_PROPERTY:
+		port->snk_attached_local_state = SNK_ATTACHED_SET_SRC_CAPS;
+		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		return;
+	case SNK_ATTACHED_SET_SRC_CAPS:
 		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		port->set_pdos = (struct set_pdos_t){
+			.count = 1,
+			.type = SOURCE_PDO,
+			.pdos = { port->src_policy.lpm_src_pdo },
+		};
+		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
+		atomic_clear_bit(port->snk_policy.flags,
+				 SNK_POLICY_UPDATE_SRC_CAPS);
 		return;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
 		port->snk_attached_local_state =

@@ -269,8 +269,8 @@ ZTEST_USER_F(src_policy, test_src_policy_pr_swap)
 		      "LPM SOURCE_PDO current %d, but expected %d",
 		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 5000);
 
-	/* Following a PR swap, the LPM PDO should be configured for only
-	 * 1.5A.
+	/* Following a PR swap, the LPM PDO should be configured to advertise
+	 * the device's full capabilities. In this scenario, that is 3.0A.
 	 */
 	change_bits.raw_value = connector_status.raw_conn_status_change_bits;
 	change_bits.pwr_direction = 1;
@@ -289,9 +289,9 @@ ZTEST_USER_F(src_policy, test_src_policy_pr_swap)
 	zassert_equal(PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port0), 5000,
 		      "LPM SOURCE_PDO voltage %d, but expected %d",
 		      PDO_FIXED_GET_VOLT(lpm_src_pdo_actual_port0), 5000);
-	zassert_equal(PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 1500,
+	zassert_equal(PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 3000,
 		      "LPM SOURCE_PDO current %d, but expected %d",
-		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 1500);
+		      PDO_FIXED_GET_CURR(lpm_src_pdo_actual_port0), 3000);
 }
 
 ZTEST_USER_F(src_policy, test_src_policy_non_pd)
