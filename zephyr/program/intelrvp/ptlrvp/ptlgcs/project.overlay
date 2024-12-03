@@ -1,0 +1,39 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "include/board.h"
+
+#include <cros/cbi_flash.dtsi>
+#include <cros/integrated_fwid.dtsi>
+
+#include "adc.dtsi"
+#include "fan.dtsi"
+#include "gpio.dtsi"
+#include "i2c.dts"
+#include "interrupts.dtsi"
+#include "power_signals.dtsi"
+#include "../battery.dtsi"
+#include "../pd.dtsi"
+#include "../temp_sensor.dts"
+#include "../usbc.dtsi"
+#include "../led_pins.dtsi"
+#include "../led_policy.dtsi"
+
+/ {
+	rvp_board_id: rvp-board-id {
+		compatible = "intel,rvp-board-id";
+		board-gpios = <MCHP_GPIO_DECODE_007 0>,
+			      <MCHP_GPIO_DECODE_010 0>,
+			      <MCHP_GPIO_DECODE_114 0>,
+			      <MCHP_GPIO_DECODE_115 0>,
+			      <MCHP_GPIO_DECODE_202 0>,
+			      <MCHP_GPIO_DECODE_203 0>;
+	};
+};
+
+&cbi_flash {
+	offset = <0x3F000>;
+	size = <0x1000>;
+};
