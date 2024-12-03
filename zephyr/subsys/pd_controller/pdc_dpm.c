@@ -37,6 +37,8 @@ static atomic_t sink_max_pdo_requested;
 static atomic_t source_frs_max_requested;
 /* Ports with non-PD sinks, so current requirements are unknown */
 static atomic_t non_pd_sink_max_requested;
+/* Ports with a connected PD source */
+static atomic_t pd_source_advertise_max;
 
 static void pdc_dpm_balance_source_ports(struct k_work *work);
 static K_WORK_DELAYABLE_DEFINE(dpm_work, pdc_dpm_balance_source_ports);
@@ -181,6 +183,26 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 		}
 		new_ports &= ~BIT(new_max_port);
 	}
+
+	/* If 3.0 A is available, advertise it to PD sources. DRP sinks should
+	 * respond to Get_Source_Cap with full source capabilities. This does
+	 * not allocate 3.0 A.
+	 */
+	new_ports = pd_source_advertise_max & ~max_current_claimed;
+	while (new_ports) {
+		int adv_max_port = LOWEST_PORT(new_ports);
+
+		if (count_port_bits(max_current_claimed) <
+		    CONFIG_PLATFORM_EC_USB_PD_3A_PORTS) {
+			pdc_power_mgmt_set_current_limit(adv_max_port,
+							 TC_CURRENT_3_0A);
+		} else {
+			/* No lower priority ports to downgrade */
+			goto unlock;
+		}
+		new_ports &= ~BIT(adv_max_port);
+	}
+
 unlock:
 	k_mutex_unlock(&max_current_claimed_mtx);
 }
@@ -263,6 +285,15 @@ void pdc_dpm_remove_sink(int port)
 	pdc_dpm_balance_source_ports(&dpm_work.work);
 }
 
+void pdc_dpm_add_pd_source(int port)
+{
+	if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
+		return;
+
+	atomic_set_bit(&pd_source_advertise_max, port);
+	pdc_dpm_balance_source_ports(&dpm_work.work);
+}
+
 void pdc_dpm_remove_source(int port)
 {
 	enum usb_typec_current_t rp;
@@ -270,13 +301,12 @@ void pdc_dpm_remove_source(int port)
 	if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
 		return;
 
-	if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS))
-		return;
-
-	if (!(BIT(port) & (uint32_t)source_frs_max_requested))
+	if (!atomic_test_bit(&source_frs_max_requested, port) &&
+	    !atomic_test_bit(&pd_source_advertise_max, port))
 		return;
 
 	atomic_clear_bit(&source_frs_max_requested, port);
+	atomic_clear_bit(&pd_source_advertise_max, port);
 
 	/* Restore selected default Rp on the port */
 	rp = pdc_power_mgmt_get_default_current_limit(port);

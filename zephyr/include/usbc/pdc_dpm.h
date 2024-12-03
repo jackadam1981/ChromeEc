@@ -27,6 +27,13 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo);
 void pdc_dpm_add_non_pd_sink(int port);
 
 /**
+ * @brief Add port which may require the PDC to advertise max current
+ *
+ * @param port USBC port number
+ */
+void pdc_dpm_add_pd_source(int port);
+
+/**
  * @brief Remove port from max current request
  *
  * @param port USBC port number
