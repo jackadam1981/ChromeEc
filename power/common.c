@@ -5,6 +5,7 @@
 
 /* Common functionality across all chipsets */
 
+#line 9
 #include "battery.h"
 #include "charge_state.h"
 #include "chipset.h"
