@@ -8,6 +8,7 @@
 def register_trulo_project(
     project_name,
     kconfig_files=None,
+    modules=None,
     **kwargs,
 ):
     """Register a variant of Trulo."""
@@ -27,6 +28,8 @@ def register_trulo_project(
         ],
         kconfig_files=kconfig_files,
         inherited_from=["trulo"],
+        modules=modules,
+        supported_toolchains=["coreboot-sdk", "zephyr"],
         **kwargs,
     )
 
@@ -39,7 +42,22 @@ register_trulo_project(
         # Parent project's config
         here / "trulo" / "project.conf",
     ],
-    modules=["cmsis", "picolibc", "ec", "pigweed"],
+    modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
+)
+
+register_ish_project(
+    project_name="trulo-ish",
+    zephyr_board="intel_ish_5_4_1",
+    dts_overlays=[
+        here / "trulo-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "rpc.conf",
+        here / "trulo-ish" / "prj.conf",
+        # Uncomment the following line for UART support
+        # here / "trulo-ish" / "debug.conf",
+    ],
+    modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 register_trulo_project(
@@ -52,7 +70,7 @@ register_trulo_project(
         # Project-specific KConfig customization.
         here / "trulo-ti" / "project.conf",
     ],
-    modules=["cmsis", "picolibc", "ec", "pigweed"],
+    modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
