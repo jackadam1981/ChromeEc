@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb54474_8931b1ab",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-03T23:56:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1453685e_3c49c8f6",
+      "range": {
+        "startLine": 496,
+        "startChar": 19,
+        "endLine": 496,
+        "endChar": 27
+      },
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8779bad_e882c1fb",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2ae8329_b4b013ff",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-03T23:56:21Z",
+      "side": 1,
+      "message": "I think this code must be from abhishek. There is some possible redundancy. I see 2 differences though. First, the flag will be set right away, instead of 5 msec later when the deferred call happens. Second, the flags are set here independent of what the PDC command is set to. In the deferred callback, the flags are only set based on the current cmd.",
+      "parentUuid": "c8779bad_e882c1fb",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb0e2e9_c8978adf",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 5
@@ -54,6 +96,24 @@
       "writtenOn": "2024-12-03T21:36:07Z",
       "side": 1,
       "message": "You can remove this todo. You\u0027ve substantially done it.",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21162c97_e6812b3f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-03T23:56:21Z",
+      "side": 1,
+      "message": "Just to clarify. You mean this whole block comment can be removed now?",
+      "parentUuid": "beb0e2e9_c8978adf",
       "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
