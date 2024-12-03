@@ -167,6 +167,8 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_FRS,
 	/** CMD_PDC_GET_ATTENTION_VDO */
 	CMD_PDC_GET_ATTENTION_VDO,
+	/** CMD_PDC_RECONNECT */
+	CMD_PDC_RECONNECT,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -389,6 +391,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_LPM_PPM_INFO] = "PDC_GET_LPM_PPM_INFO",
 	[CMD_PDC_SET_FRS] = "PDC_SET_FRS",
 	[CMD_PDC_GET_ATTENTION_VDO] = "PDC_GET_ATTENTION_VDO",
+	[CMD_PDC_RECONNECT] = "PDC_RECONNECT",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -424,6 +427,8 @@ enum policy_unattached_t {
 	UNA_POLICY_DRP_MODE,
 	/** UNA_POLICY_UPDATE_SRC_CAPS */
 	UNA_POLICY_UPDATE_SRC_CAPS,
+	/** UNA_POLICY_RESET */
+	UNA_POLICY_RESET,
 	/** UNA_POLICY_COUNT */
 	UNA_POLICY_COUNT,
 };
@@ -1388,6 +1393,10 @@ static struct pdc_pdos_t *get_pdc_pdos_ptr(struct pdc_port_t *port,
 static void run_unattached_policies(struct pdc_port_t *port)
 {
 	if (atomic_test_and_clear_bit(port->una_policy.flags,
+				      UNA_POLICY_RESET)) {
+		queue_internal_cmd(port, CMD_PDC_RECONNECT);
+		return;
+	} else if (atomic_test_and_clear_bit(port->una_policy.flags,
 				      UNA_POLICY_DRP_MODE)) {
 		/* Set DRP current policy */
 		queue_internal_cmd(port, CMD_PDC_SET_DRP);
@@ -2393,6 +2402,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		rv = pdc_get_lpm_ppm_info(port->pdc, port->lpm_ppm_info);
 		break;
+	case CMD_PDC_RECONNECT:
+		rv = pdc_reconnect(port->pdc);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -2837,8 +2849,10 @@ static void enforce_pd_chipset_suspend_policy_1(int port)
  */
 static void enforce_pd_chipset_startup_policy_1(int port)
 {
+	struct pdc_port_t *port_data = &pdc_data[port]->port;
 	LOG_DBG("C%d: Chipset Startup Policy 1", port);
 
+	atomic_set_bit(port_data->una_policy.flags, UNA_POLICY_RESET);
 	pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
 }
 
