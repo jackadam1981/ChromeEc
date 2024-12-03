@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38bdf830_992158e7",
+        "filename": "common/queue.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-03T00:16:47Z",
+      "side": 1,
+      "message": "The CQ coverage check flags this line as \"not covered\" by tests.  Yet, it is clearly covered by line 466 of test/queue.c.  And if I replace this `return` with an `abort()`, I see the host tests failing.",
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba4777c6_445b0a51",
         "filename": "common/queue.c",
         "patchSetId": 13
@@ -31,6 +48,30 @@
       "writtenOn": "2024-12-02T21:45:49Z",
       "side": 1,
       "message": "Nit - this duplicates the comments from consumer.h.  Document this detail in one place only and have the 2nd instance reference the source of truth.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 0
+      },
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb7bab3_02f391d5",
+        "filename": "common/queue.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-03T00:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4777c6_445b0a51",
       "range": {
         "startLine": 183,
         "startChar": 0,
@@ -82,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e92ae5d_41ea70d3",
+        "filename": "include/queue.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-03T00:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74887fde_50940eba",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c156061d_a4b23f5f",
@@ -95,6 +160,30 @@
       "writtenOn": "2024-12-02T21:45:49Z",
       "side": 1,
       "message": "Nit - add a comment block since this a public fuction.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 52
+      },
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c78a477_9dee23de",
+        "filename": "include/queue.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-03T00:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c156061d_a4b23f5f",
       "range": {
         "startLine": 125,
         "startChar": 0,
