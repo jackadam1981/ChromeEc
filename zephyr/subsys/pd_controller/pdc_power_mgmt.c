@@ -4433,6 +4433,7 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 		 * so that the first PDO offered after a power role
 		 * swap is a safe value.
 		 */
+		pdc->src_policy.lpm_src_pdo = pdc_src_pdo_max;
 		atomic_set_bit(pdc->snk_policy.flags,
 			       SNK_POLICY_UPDATE_SRC_CAPS);
 		break;
