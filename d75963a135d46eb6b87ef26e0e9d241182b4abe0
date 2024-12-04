@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a79289be_9db4eaa7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-12-04T17:48:24Z",
+      "side": 1,
+      "message": "The atomic set here is correctly identifying that the event has occurred. The ones in `tps_notify_new_power_contract` are really a timeout indicator to prevent the functions from looping. I couldn\u0027t think of a simpler way to do it even though it looks redundant",
+      "parentUuid": "d2ae8329_b4b013ff",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb0e2e9_c8978adf",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 5
