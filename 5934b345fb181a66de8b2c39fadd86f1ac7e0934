@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d99f9c_3b40472b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-12-04T22:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2bc6c6_26c80bbb",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "5934b345fb181a66de8b2c39fadd86f1ac7e0934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2d166c_95f03e6d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "8c2d166c_95f03e6d",
+      "range": {
+        "startLine": 14,
+        "startChar": 42,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "5934b345fb181a66de8b2c39fadd86f1ac7e0934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35299ff3_3ba23f86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-12-04T22:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23269e6_5db4b29d",
       "range": {
         "startLine": 14,
         "startChar": 42,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d969e1ab_5b992ae9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-12-04T22:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4da1c72d_76f49c46",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 6
+      },
+      "revId": "5934b345fb181a66de8b2c39fadd86f1ac7e0934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94da5aa2_8e049b84",
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "Yes, I will move it",
       "parentUuid": "94da5aa2_8e049b84",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 72
+      },
+      "revId": "5934b345fb181a66de8b2c39fadd86f1ac7e0934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb153fd0_fae15289",
+        "filename": "zephyr/program/intelrvp/src/intel_rvp_board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-12-04T22:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b77c77_8d3ed660",
       "range": {
         "startLine": 21,
         "startChar": 0,
