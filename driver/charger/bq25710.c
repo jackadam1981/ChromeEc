@@ -739,6 +739,38 @@ static enum ec_error_list bq25710_get_input_current_limit(int chgnum,
 	return rv;
 }
 
+static int reg_adc_input_current_to_ma(int reg)
+{
+	/*
+	 * LSB => 50mA.
+	 */
+	return reg * BQ25710_IIN_DPM_CODE0_OFFSET;
+}
+
+static enum ec_error_list bq25710_get_input_current(int chgnum,
+						    int *input_current)
+{
+	int reg, rv;
+
+	rv = bq25710_adc_start(chgnum,
+			       BQ_FIELD_MASK(BQ257X0, ADC_OPTION, EN_ADC_IIN));
+	if (rv)
+		goto error;
+
+	/* Read ADC value */
+	rv = raw_read16(chgnum, BQ25710_REG_ADC_CMPIN_IIN, &reg);
+	if (rv)
+		goto error;
+
+	reg >>= BQ257X0_ADC_IIN_CMPIN_IIN_SHIFT;
+	*input_current = reg_adc_input_current_to_ma(reg);
+
+error:
+	if (rv)
+		CPRINTF("Could not read IIN ADC! Error: %d\n", rv);
+	return rv;
+}
+
 static enum ec_error_list bq25710_manufacturer_id(int chgnum, int *id)
 {
 	return raw_read16(chgnum, BQ25710_REG_MANUFACTURER_ID, id);
@@ -1028,6 +1060,7 @@ const struct charger_drv bq25710_drv = {
 #endif
 	.set_input_current_limit = &bq25710_set_input_current_limit,
 	.get_input_current_limit = &bq25710_get_input_current_limit,
+	.get_input_current = &bq25710_get_input_current,
 	.manufacturer_id = &bq25710_manufacturer_id,
 	.device_id = &bq25710_device_id,
 	.get_option = &bq25710_get_option,
