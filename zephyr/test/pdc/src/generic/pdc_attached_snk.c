@@ -24,6 +24,8 @@ LOG_MODULE_REGISTER(pdc_attached_snk);
 #define PDC_NODE_PORT0 DT_NODELABEL(pdc_emul1)
 #define TEST_USBC_PORT0 USBC_PORT_FROM_DRIVER_NODE(PDC_NODE_PORT0, pdc)
 
+extern bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port);
+
 struct pdc_attached_snk_fixture {
 	int port;
 	const struct emul *emul_pdc;
@@ -80,3 +82,107 @@ ZTEST_USER_F(pdc_attached_snk, test_new_pd_sink_contract)
 	zassert_ok(emul_pdc_get_sink_path(fixture->emul_pdc, &sink_path_en));
 	zassert_true(sink_path_en);
 }
+
+/* Helper function to connect a partner that initially advertises the
+ * default source caps, waits a configurable delay, and the offers
+ * a single fixed 5V/0A PDO.
+ */
+int connect_45w_then_0w(struct pdc_attached_snk_fixture *fixture, int delay_ms,
+			bool *done)
+{
+	union connector_status_t in = { 0 };
+	union conn_status_change_bits_t in_conn_status_change_bits;
+	bool sink_path_en;
+	int count;
+	const uint32_t pdo_0_amp[PDO_OFFSET_MAX] = {
+		PDO_FIXED(5000, 0, PDO_FIXED_DUAL_ROLE),
+	};
+	int ret;
+
+	LOG_INF("attach default charger");
+	/* Note - configure sink sets up a set of valid Source PDOs. */
+	emul_pdc_configure_snk(fixture->emul_pdc, &in);
+	ret = emul_pdc_connect_partner(fixture->emul_pdc, &in);
+	if (ret != 0) {
+		return ret;
+	}
+
+	/* TODO: loop needed? */
+
+	/* Allow the the PDC thread to run, but change the source caps
+	 * from the partner before the PDC thread reaches the idle state.
+	 */
+	LOG_INF("wait %d ms", delay_ms);
+	k_sleep(K_MSEC(delay_ms));
+
+	/* Sink path should be off. */
+	zassert_ok(emul_pdc_get_sink_path(fixture->emul_pdc, &sink_path_en));
+
+	if (sink_path_en) {
+		/* Once the delay is long enought for the PDC to enable the
+		 * sink path after receiving the first source caps, we can stop
+		 * the test.
+		 */
+		*done = true;
+		return 0;
+	}
+	*done = false;
+
+	LOG_INF("attach 0W charger");
+	emul_pdc_set_pdos(fixture->emul_pdc, SOURCE_PDO, PDO_OFFSET_0,
+			  ARRAY_SIZE(pdo_0_amp), PARTNER_PDO, pdo_0_amp);
+	in_conn_status_change_bits.battery_charging_status = 1;
+	in.raw_conn_status_change_bits = in_conn_status_change_bits.raw_value;
+	emul_pdc_connect_partner(fixture->emul_pdc, &in);
+
+	count = 1;
+	do {
+		k_sleep(K_MSEC(25));
+		zassert_ok(emul_pdc_get_sink_path(fixture->emul_pdc,
+						  &sink_path_en));
+		zassert_false(
+			sink_path_en,
+			"Unexpected sink path enabled: PDO change delay %d ms, time after 0W %d ms",
+			delay_ms, count * 25);
+
+		if (test_pdc_power_mgmt_is_snk_typec_attached_run(
+			    fixture->port)) {
+			break;
+		}
+
+	} while (count++ < (2000 / 25)); /* TODO - bound this check */
+
+	zassert_ok(emul_pdc_get_sink_path(fixture->emul_pdc, &sink_path_en));
+	zassert_false(sink_path_en);
+
+	emul_pdc_disconnect(fixture->emul_pdc);
+	pdc_power_mgmt_resync_port_state_for_ppm(fixture->port);
+
+	return 0;
+}
+
+#define MIN_DELAY_MS 250
+#define MAX_DELAY_MS 3000
+#define DELAY_INC_MS 50
+
+/* Verify the DUT doesn't enable the sink path if the partner
+ * sends new source caps rapidly. This test emulates behavior#
+ * seen from PD compliance testers during the TEST.PD.PS.SNK.01
+ * test.
+ */
+ZTEST_USER_F(pdc_attached_snk, test_0_amp_sink_contract)
+{
+	bool limit_reached;
+
+	for (int i = MIN_DELAY_MS; i < MAX_DELAY_MS; i += DELAY_INC_MS) {
+		zassert_ok(connect_45w_then_0w(fixture, i, &limit_reached));
+
+		if (limit_reached) {
+			break;
+		}
+	}
+
+	zassert_true(
+		limit_reached,
+		"DUT failed to enable sink after initial source caps sent");
+};
