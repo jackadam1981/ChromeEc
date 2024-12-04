@@ -16,6 +16,24 @@
       "message": "Are we moving forward with this change?",
       "revId": "3c24a8c796a19f403b96dec63b61c1286e94bfa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65479c2b_9a545b10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456082
+      },
+      "writtenOn": "2024-12-04T04:25:58Z",
+      "side": 1,
+      "message": "According to the bug, we are still waiting for the response from AMS",
+      "parentUuid": "9678a556_159adfb5",
+      "revId": "3c24a8c796a19f403b96dec63b61c1286e94bfa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
