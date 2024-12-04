@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "210f7e60_72c5fa92",
         "filename": "common/u2f.c",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "This won\u0027t allow us to enforce that the authSecret corresponds to the U2F keypair (determined by the keyhandle), just that it has the same appId and is owned by this device. \n\nI think we do want them to be linked right? \n\nI was imagining that we would derive something from the seed used for the keypair rather than a new random.",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "448223c4_ebd5aba5",
         "filename": "common/u2f.c",
@@ -32,10 +33,10 @@
       "message": "That was my assumption as well. Not sure these are equivalent in practice?",
       "parentUuid": "210f7e60_72c5fa92",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "311b866f_12f3b667",
         "filename": "include/u2f.h",
@@ -49,10 +50,10 @@
       "side": 1,
       "message": "Should we be passing the public key of the auth-time secrets keypair here? So that we can encrypt the auth time secret with it?",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e3c404b7_5bcc7e6d",
         "filename": "include/u2f.h",
@@ -67,10 +68,10 @@
       "message": "I don\u0027t think we need to concern Cr50 with that aspect, we can return the secret in clear and encrypt with the auth-time secrets pubkey in userspace.",
       "parentUuid": "311b866f_12f3b667",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e0158f2f_361b0fcc",
         "filename": "include/u2f.h",
@@ -84,10 +85,10 @@
       "side": 1,
       "message": "Sorry I wrote some shoddy code before which broke when adding a field to one of these structs, I think it\u0027s all fixed now but please keep an eye out for any other traps I left..",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5053c047_9e75a727",
         "filename": "include/u2f.h",
@@ -101,8 +102,182 @@
       "side": 1,
       "message": "The cr50 and CrOS (and therefore u2fd) releases are not tightly coupled, so we need to support both old and new APIs (on both sides) for at least one milestone release (could be more).",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Coverage",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Coverage\u003dMAX,user\u003dnon_uploader OR -label:Code-Coverage\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Coverage=MAX,user=non_uploader OR -label:Code-Coverage=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Coverage=MAX,user=non_uploader","label:Code-Coverage=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1","label:Code-Review=MIN"]}
+      },
+      "patchSetCommitId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "No-Unresolved-Comments",
+        "description": {
+          "value": "Changes that have unresolved comments are not submittable. Unless overridden with Unresolved-Comment-Reason: \u003creason\u003e line in change message."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "has:unresolved"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "-has:unresolved"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "message:\"^.*Unresolved-Comment-Reason:.*\""
+          }
+        },
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:unresolved"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-has:unresolved"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"message:\"^.*Unresolved-Comment-Reason:.*\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["message:\"^.*Unresolved-Comment-Reason:.*\""]}
+      },
+      "patchSetCommitId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval. Using a trusted device is required, see go/gerrit-onboarding#review-enforcement."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["is:review-enforced_gerrit"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforcement-satisfied_gerrit"]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Verified",
+        "description": {
+          "value": "CI or human verified the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Verified=MAX","label:Verified=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
