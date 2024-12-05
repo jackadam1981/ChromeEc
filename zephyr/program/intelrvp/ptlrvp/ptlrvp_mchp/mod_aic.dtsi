@@ -1,0 +1,107 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+
+/ {
+	/* Slots definition */
+	pd-aic-slot {
+		compatible = "intel,modular-aic-slot";
+		id = <0>;
+		detect-gpios = <&pca95xx_1 10 GPIO_ACTIVE_LOW>;
+		available-ports = <2>;
+		conn-type = "MODULAR_AIC_PORT_CONN_TYPE_TYPEC";
+		retimer-status = "MODULAR_AIC_PORT_RETIMER_DUAL";
+		pd-cntrl-type = "MODULAR_AIC_PORT_PD_CNTRL_REALTEK";
+		tbt-status = "MODULAR_AIC_PORT_TBT_CAPABLE";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_40GBPS";
+	};
+	mod-aic-slot1 {
+		compatible = "intel,modular-aic-slot";
+		id = <1>;
+		detect-gpios = <&pca95xx_1 0 GPIO_ACTIVE_LOW>;
+		sampling-power-state = "AP_POWER_STATE_S4";
+	};
+	mod-aic-slot2 {
+		compatible = "intel,modular-aic-slot";
+		id = <2>;
+		detect-gpios = <&pca95xx_1 1 GPIO_ACTIVE_LOW>;
+		sampling-power-state = "AP_POWER_STATE_S4";
+	};
+	/* Ports Definition */
+	realtek-dual-port0 {
+		compatible = "intel,modular-aic-port";
+		id = <0>;
+		devices = <&pd_pow_port0 &usb_port0>;
+		type = "MODULAR_AIC_PORT_TYPE_FIXED";
+		conn-type = "MODULAR_AIC_PORT_CONN_TYPE_TYPEC";
+		retimer-status = "MODULAR_AIC_PORT_RETIMER_DUAL";
+		pd-cntrl-type = "MODULAR_AIC_PORT_PD_CNTRL_REALTEK";
+		tbt-status = "MODULAR_AIC_PORT_TBT_CAPABLE";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_40GBPS";
+	};
+	realtek-dual-port1 {
+		compatible = "intel,modular-aic-port";
+		id = <1>;
+		devices = <&pd_pow_port1 &usb_port1>;
+		type = "MODULAR_AIC_PORT_TYPE_FIXED";
+		conn-type = "MODULAR_AIC_PORT_CONN_TYPE_TYPEC";
+		retimer-status = "MODULAR_AIC_PORT_RETIMER_DUAL";
+		pd-cntrl-type = "MODULAR_AIC_PORT_PD_CNTRL_REALTEK";
+		tbt-status = "MODULAR_AIC_PORT_TBT_CAPABLE";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_40GBPS";
+	};
+	realtek-single-port1 {
+		compatible = "intel,modular-aic-port";
+		devices = <&pd_pow_port2 &usb_port2>;
+		type = "MODULAR_AIC_PORT_TYPE_MODULAR";
+		conn-type = "MODULAR_AIC_PORT_CONN_TYPE_TYPEC";
+		retimer-status = "MODULAR_AIC_PORT_RETIMER_SINGLE";
+		pd-cntrl-type = "MODULAR_AIC_PORT_PD_CNTRL_REALTEK";
+		tbt-status = "MODULAR_AIC_PORT_TBT_CAPABLE";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_40GBPS";
+	};
+	hdmi-port {
+		compatible = "intel,modular-aic-port";
+		type = "MODULAR_AIC_PORT_TYPE_MODULAR";
+		conn-type = "MODULAR_AIC_PORT_CONN_TYPE_HDMI";
+		data-speed = "MODULAR_AIC_PORT_DATA_SPEED_6GBPS";
+	};
+};
+
+&mod_aic1_detect {
+	no-auto-init;
+};
+
+&mod_aic2_detect {
+	no-auto-init;
+};
+
+&pd_aic_detect_slot {
+	no-auto-init;
+};
+
+&pd_pow_port0 {
+	zephyr,deferred-init;
+};
+
+&pd_pow_port1 {
+	zephyr,deferred-init;
+};
+
+&pd_pow_port2 {
+	zephyr,deferred-init;
+};
+
+&usb_port0 {
+	zephyr,deferred-init;
+};
+
+&usb_port1 {
+	zephyr,deferred-init;
+};
+
+&usb_port2 {
+	zephyr,deferred-init;
+};
