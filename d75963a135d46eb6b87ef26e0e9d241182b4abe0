@@ -134,6 +134,24 @@
       "parentUuid": "beb0e2e9_c8978adf",
       "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83698499_9384c0c4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-05T17:07:42Z",
+      "side": 1,
+      "message": "Yeah. When I wrote this, it was a to do list for Abhishek, and he completed it.",
+      "parentUuid": "21162c97_e6812b3f",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
