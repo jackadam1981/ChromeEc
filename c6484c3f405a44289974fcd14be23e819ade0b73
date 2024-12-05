@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c87ea7_4d7215c4",
+        "filename": "zephyr/drivers/fingerprint/fpc1145.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-05T10:50:17Z",
+      "side": 1,
+      "message": "Should we make this `static`?",
+      "range": {
+        "startLine": 536,
+        "startChar": 1,
+        "endLine": 536,
+        "endChar": 67
+      },
+      "revId": "c6484c3f405a44289974fcd14be23e819ade0b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a40f5e_e17ee499",
+        "filename": "zephyr/drivers/fingerprint/fpc1145.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-05T10:50:17Z",
+      "side": 1,
+      "message": "For future readers:\n\nUnlike FPC1025 driver, the FPC1145 driver never need to hold CS between transactions, so `SPI_HOLD_ON_CS` is not enabled here. This means that we don\u0027t need to manually disable CS line.",
+      "range": {
+        "startLine": 541,
+        "startChar": 9,
+        "endLine": 541,
+        "endChar": 29
+      },
+      "revId": "c6484c3f405a44289974fcd14be23e819ade0b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
