@@ -1776,7 +1776,7 @@ static void st_task_wait_run(void *o)
 	union reg_command cmd;
 	union reg_data cmd_data;
 	uint8_t offset;
-	uint32_t len;
+	uint32_t len = 0;
 	int rv;
 
 	/* Read command register for the particular port */
@@ -1824,7 +1824,6 @@ static void st_task_wait_run(void *o)
 		data->cci_event.error = 1;
 		goto data_out;
 	}
-
 	switch (data->cmd) {
 	case CMD_SET_RDO:
 		/* Re-set sink enable until after aNEG completes. */
