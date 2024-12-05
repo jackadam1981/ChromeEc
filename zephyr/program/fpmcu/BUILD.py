@@ -48,3 +48,25 @@ bloonchipper = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="bloonchipper", addr=0x601C8)
+
+dartmonkey = register_fpmcu_variant(
+    project_name="dartmonkey",
+    zephyr_board="google_icetower",
+    variant_modules=["hal_stm32", "cmsis"],
+    variant_optional_modules=["fpc"],
+    variant_dts_overlays=[
+        here / "dartmonkey" / "dartmonkey.dts",
+        here / "dartmonkey" / "ec_quirks.dts",
+    ],
+    variant_kconfig_files=[
+        here / "dartmonkey" / "prj.conf",
+        here / "dartmonkey" / "ec_quirks.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "dartmonkey" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="dartmonkey", addr=0x10029C)

@@ -447,6 +447,7 @@ static void add_entropy_deferred(void)
 	uint8_t rand[CONFIG_ROLLBACK_SECRET_SIZE];
 	int repeat = 1;
 
+	printk("DN 1\n");
 	/*
 	 * If asked to reset the old secret, just add entropy multiple times,
 	 * which will ping-pong between the blocks.
@@ -454,14 +455,21 @@ static void add_entropy_deferred(void)
 	if (add_entropy_action == ADD_ENTROPY_RESET_ASYNC)
 		repeat = ROLLBACK_REGIONS;
 
+	printk("DN 2\n");
 	trng_init();
+	printk("DN 3\n");
 	do {
+		printk("DN 31\n");
 		trng_rand_bytes(rand, sizeof(rand));
+		printk("DN 32\n");
 		if (rollback_add_entropy(rand, sizeof(rand)) != EC_SUCCESS) {
 			add_entropy_rv = EC_RES_ERROR;
+			printk("DN 321\n");
 			goto out;
 		}
+		printk("DN 33\n");
 	} while (--repeat);
+	printk("DN 4\n");
 
 	add_entropy_rv = EC_RES_SUCCESS;
 out:
@@ -474,6 +482,7 @@ hc_rollback_add_entropy(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rollback_add_entropy *p = args->params;
 
+	return EC_RES_SUCCESS;
 	switch (p->action) {
 	case ADD_ENTROPY_ASYNC:
 	case ADD_ENTROPY_RESET_ASYNC:
@@ -487,6 +496,7 @@ hc_rollback_add_entropy(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 
 	case ADD_ENTROPY_GET_RESULT:
+		return EC_RES_SUCCESS;
 		return add_entropy_rv;
 	}
 
@@ -564,7 +574,8 @@ host_command_rollback_info(struct host_cmd_handler_args *args)
 
 failed:
 	clear_rollback(&data);
-	return ret;
+	return EC_RES_UNAVAILABLE;
+	// return ret;
 }
 DECLARE_HOST_COMMAND(EC_CMD_ROLLBACK_INFO, host_command_rollback_info,
 		     EC_VER_MASK(0));
