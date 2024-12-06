@@ -199,61 +199,6 @@ ZTEST(sundance, test_reset_pd_mcu)
 	zassert_equal(nct38xx_reset_notify_fake.arg0_val, 0);
 }
 
-ZTEST(sundance, test_led)
-{
-	led_set_color_battery(EC_LED_COLOR_AMBER);
-	/* led pin is low active, status 0 is turn on */
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl)),
-		      "LED_1 is not on");
-	led_set_color_battery(EC_LED_COLOR_WHITE);
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl)),
-		      "LED_2 is not on");
-	/*
-	 * Case for led pin is untestable because emulated GPIOs don't
-	 * allow getting the current value of output pins.
-	 */
-}
-
-ZTEST(sundance, test_led_brightness_range)
-{
-	uint8_t brightness[EC_LED_COLOR_COUNT] = { 0 };
-
-	/* Verify LED set to OFF */
-	led_set_brightness(EC_LED_ID_BATTERY_LED, brightness);
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl)),
-		      "LED_1 is on");
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl)),
-		      "LED_2 is on");
-
-	led_get_brightness_range(EC_LED_ID_BATTERY_LED, brightness);
-	zassert_equal(brightness[EC_LED_COLOR_AMBER], 1);
-	zassert_equal(brightness[EC_LED_COLOR_WHITE], 1);
-
-	brightness[EC_LED_COLOR_WHITE] = 1;
-	led_set_brightness(EC_LED_ID_BATTERY_LED, brightness);
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl)),
-		      "LED_2 is not on");
-
-	brightness[EC_LED_COLOR_AMBER] = 1;
-	led_set_brightness(EC_LED_ID_BATTERY_LED, brightness);
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl)),
-		      "LED_1 is not on");
-
-	brightness[EC_LED_COLOR_AMBER] = 1;
-	led_set_brightness(EC_LED_ID_BATTERY_LED, brightness);
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl)),
-		      "LED_1 is on");
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl)),
-		      "LED_2 is not on");
-
-	brightness[EC_LED_COLOR_WHITE] = 1;
-	led_set_brightness(EC_LED_ID_BATTERY_LED, brightness);
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl)),
-		      "LED_1 is not on");
-	zassert_false(gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl)),
-		      "LED_2 is on");
-}
-
 ZTEST(sundance, test_typec_set_source_current_limit)
 {
 	typec_set_source_current_limit(0, TYPEC_RP_1A5);

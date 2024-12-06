@@ -13,14 +13,28 @@
  * white LED will light up. In other case, the LED status is off.
  */
 
+
+#include "board_led.h"
 #include "chipset.h"
 #include "common.h"
 #include "ec_commands.h"
 #include "led_common.h"
 #include "led_onoff_states.h"
+#include "util.h"
 
-#define LED_OFF_LVL 1
-#define LED_ON_LVL 0
+#include <zephyr/drivers/pwm.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(board_led, LOG_LEVEL_ERR);
+
+#define BOARD_LED_PWM_PERIOD_NS BOARD_LED_HZ_TO_PERIOD_NS(100)
+
+static const struct board_led_pwm_dt_channel board_led_battery_red =
+	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(DT_NODELABEL(led_battery_red));
+static const struct board_led_pwm_dt_channel board_led_battery_green =
+	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(DT_NODELABEL(led_battery_green));
+static const struct board_led_pwm_dt_channel board_led_power_white =
+	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(DT_NODELABEL(led_power_white));
 
 __override const int led_charge_lvl_1 = 0;
 __override const int led_charge_lvl_2 = 100;
@@ -53,26 +67,43 @@ const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED };
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
+static void board_led_pwm_set_duty(const struct board_led_pwm_dt_channel *ch,
+				   int percent)
+{
+	uint32_t pulse_ns;
+	int rv;
+
+	if (!device_is_ready(ch->dev)) {
+		LOG_ERR("device %s not ready", ch->dev->name);
+		return;
+	}
+
+	pulse_ns = DIV_ROUND_NEAREST(BOARD_LED_PWM_PERIOD_NS * percent, 100);
+
+	LOG_DBG("Board LED PWM %s set percent (%d), pulse %d", ch->dev->name,
+		percent, pulse_ns);
+
+	rv = pwm_set(ch->dev, ch->channel, BOARD_LED_PWM_PERIOD_NS, pulse_ns,
+		     ch->flags);
+	if (rv) {
+		LOG_ERR("pwm_set() failed %s (%d)", ch->dev->name, rv);
+	}
+}
+
 __override void led_set_color_battery(enum ec_led_colors color)
 {
 	switch (color) {
 	case EC_LED_COLOR_AMBER:
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl),
-				LED_ON_LVL);
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl),
-				LED_OFF_LVL);
+		board_led_pwm_set_duty(&board_led_battery_red, 30);
+		board_led_pwm_set_duty(&board_led_battery_green, 100);
 		break;
 	case EC_LED_COLOR_WHITE:
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl),
-				LED_OFF_LVL);
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl),
-				LED_ON_LVL);
+		board_led_pwm_set_duty(&board_led_power_white, 100);
 		break;
 	default: /* LED_OFF and other unsupported colors */
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_led_1_odl),
-				LED_OFF_LVL);
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_led_2_odl),
-				LED_OFF_LVL);
+		board_led_pwm_set_duty(&board_led_battery_red, 0);
+		board_led_pwm_set_duty(&board_led_battery_green, 0);
+		board_led_pwm_set_duty(&board_led_power_white, 0);
 		break;
 	}
 }
@@ -82,18 +113,25 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	if (led_id == EC_LED_ID_BATTERY_LED) {
 		brightness_range[EC_LED_COLOR_WHITE] = 1;
 		brightness_range[EC_LED_COLOR_AMBER] = 1;
+		brightness_range[EC_LED_COLOR_RED] = 1;
+		brightness_range[EC_LED_COLOR_GREEN] = 1;
 	}
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	if (led_id == EC_LED_ID_BATTERY_LED) {
-		if (brightness[EC_LED_COLOR_WHITE] != 0)
-			led_set_color_battery(EC_LED_COLOR_WHITE);
-		else if (brightness[EC_LED_COLOR_AMBER] != 0)
+		if (brightness[EC_LED_COLOR_RED] != 0) {
+			led_set_color_battery(EC_LED_COLOR_RED);
+		} else if (brightness[EC_LED_COLOR_AMBER] != 0) {
 			led_set_color_battery(EC_LED_COLOR_AMBER);
-		else
+		} else if (brightness[EC_LED_COLOR_WHITE] != 0) {
+			led_set_color_battery(EC_LED_COLOR_WHITE);
+		} else if (brightness[EC_LED_COLOR_GREEN] != 0) {
+			led_set_color_battery(EC_LED_COLOR_GREEN);
+		} else {
 			led_set_color_battery(LED_OFF);
+		}
 	}
 	return EC_SUCCESS;
 }
@@ -105,4 +143,20 @@ __override enum led_states board_led_get_state(enum led_states desired_state)
 			desired_state = STATE_CHARGING_FULL_S5;
 	}
 	return desired_state;
+}
+
+__override void led_control(enum ec_led_id led_id, enum ec_led_state state)
+{
+	if ((led_id != EC_LED_ID_RECOVERY_HW_REINIT_LED) &&
+	    (led_id != EC_LED_ID_SYSRQ_DEBUG_LED))
+		return;
+
+	if (state == LED_STATE_RESET) {
+		led_auto_control(EC_LED_ID_BATTERY_LED, 1);
+		return;
+	}
+
+	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
+
+	led_set_color_battery(state ? EC_LED_COLOR_RED : EC_LED_COLOR_INVALID);
 }
