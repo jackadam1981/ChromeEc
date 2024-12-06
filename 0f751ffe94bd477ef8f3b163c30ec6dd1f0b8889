@@ -52,6 +52,24 @@
       "parentUuid": "1ebd0735_cd6a2784",
       "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9240f49c_2607885c",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-06T20:28:25Z",
+      "side": 1,
+      "message": "I added a TODO item here. This should be part of a larger scope change. Abhishek had highlighted that ideally setting of the interrupt status bits should be managed in set_connector_status. I had experimented with this change, but moving `plug_insert_or_removal` appeared to break some additional tests.",
+      "parentUuid": "12c4df70_cb37e5a3",
+      "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
