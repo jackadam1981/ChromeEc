@@ -1323,11 +1323,11 @@ def run_test_zephyr(test: TestConfig) -> str:
         return []
     if len(test.test_args) == 0:
         # If there are no args just run-all not to be limited by suite name
-        test_cmd = "ztest run-all\n"
+        test_cmd = "ztest\nztest run-all\n"
     else:
         # ZTEST console doesn't support passing test arguments
         # Assume a testsuite for every test + arg combination
-        test_cmd = "ztest run-testcase " + test.test_name
+        test_cmd = "ztest\nztest run-testcase " + test.test_name
         for test_arg in test.test_args:
             test_cmd = test_cmd + "_" + test_arg
         test_cmd = test_cmd + "\n"
