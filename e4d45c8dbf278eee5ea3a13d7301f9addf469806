@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2260c0d3_d7eb161f",
+        "filename": "zephyr/subsys/pd_controller/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "Nit \"PDC\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6578f3_7162f719",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "Do ARM platforms need this command?",
+      "range": {
+        "startLine": 132,
+        "startChar": 21,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25db7328_107d5f51",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "No c++ comments allowed.",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cf8785_70b5b533",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "The port is unattached.  The polarity value returned by the PDC is not meaningful.\nMight as well just always set `POLARITY_CC1`",
+      "range": {
+        "startLine": 1751,
+        "startChar": 0,
+        "endLine": 1751,
+        "endChar": 49
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf6d09c_80042b30",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "Are `usb_mux_set()` calls needed for non-PD devices?",
+      "range": {
+        "startLine": 1936,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 15
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d332547_71f42978",
+        "filename": "zephyr/test/pdc/src/generic/pdc_pmc_usb_mux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "I recommend using `pdc_power_mgmt_resync_port_state_for_ppm()` and then checking the final USB mux state.  This ensures that no additional PDC sub-states modifies the expected mux setting.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2730457e_99a46dc2",
+        "filename": "zephyr/test/pdc/src/generic/pdc_pmc_usb_mux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:22:21Z",
+      "side": 1,
+      "message": "Same here - use `pdc_power_mgmt_resync_port_state_for_ppm()` and then test the mux state.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 72
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
