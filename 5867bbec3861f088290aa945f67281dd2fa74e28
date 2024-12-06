@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb65ac5_860ed4e4",
+        "filename": "zephyr/dts/bindings/usbc/usbc-port-policy.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T16:45:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this belongs in the device tree.  The board code should register a callback directly.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "5867bbec3861f088290aa945f67281dd2fa74e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
