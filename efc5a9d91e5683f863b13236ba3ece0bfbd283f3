@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed837aa_96a9186e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-06T17:58:45Z",
+      "side": 1,
+      "message": "Thanks for the many reviews.  I just verified a final time that with this stack, I most often get 64-byte USB packets, instead of 1- or 2-byte USB packets, on the serial port USB endpoints of my debugger device.",
+      "revId": "efc5a9d91e5683f863b13236ba3ece0bfbd283f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
