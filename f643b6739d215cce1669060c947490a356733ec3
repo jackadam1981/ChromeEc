@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7dbeea_82b32b13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T15:21:58Z",
+      "side": 1,
+      "message": "Is this still needed or have the timeout issues been resolved?\nIf we move forward, I would also suggest a rename of the resync function to remove the \"for_ppm\" suffix since this function is used by tests too.",
+      "revId": "f643b6739d215cce1669060c947490a356733ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ffb216_e9d3f474",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T15:21:58Z",
+      "side": 1,
+      "message": "USB",
+      "range": {
+        "startLine": 609,
+        "startChar": 15,
+        "endLine": 609,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "54080702_4ee7a109",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/usbc/pdc_power_mgmt.h",
+              "range": {
+                "startLine": 609,
+                "startChar": 0,
+                "endLine": 610,
+                "endChar": 0
+              },
+              "replacement": " * @param port USB-C port number\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f643b6739d215cce1669060c947490a356733ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
