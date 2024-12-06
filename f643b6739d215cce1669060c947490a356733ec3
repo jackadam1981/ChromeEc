@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7c54d7_65214475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-12-06T15:29:33Z",
+      "side": 1,
+      "message": "I\u0027d say this would be nice to have.  Scott has a change for TI PDC, that is causing two tests to fail, to get them to pass he needs to extend the global timeout.",
+      "parentUuid": "bf7dbeea_82b32b13",
+      "revId": "f643b6739d215cce1669060c947490a356733ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ffb216_e9d3f474",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "f643b6739d215cce1669060c947490a356733ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab402523_a2c5c47d",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2024-12-06T15:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ffb216_e9d3f474",
+      "range": {
+        "startLine": 609,
+        "startChar": 15,
+        "endLine": 609,
+        "endChar": 17
+      },
       "revId": "f643b6739d215cce1669060c947490a356733ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
