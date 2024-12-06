@@ -16,6 +16,24 @@
       "message": "In the actual hardware, `sink_ready` is only set after the initial power contract completes. It is not set (or at least doesn\u0027t change) in response to a new power contract.",
       "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ebd0735_cd6a2784",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-06T19:38:59Z",
+      "side": 1,
+      "message": "Do you think that sink_ready should be removed here? I assume this would be set when a port partner is attached the port is in a sink power role.",
+      "parentUuid": "4806e82e_3affd7be",
+      "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
