@@ -16,6 +16,47 @@
       "message": "This seems bad, but I guess solving problems is good.",
       "revId": "bece6384553b855fac0d25bd9f121f86d47303b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f681c6fe_a4eab83d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-12-06T22:09:13Z",
+      "side": 1,
+      "message": "If you replace your preamble `ztest` with anything else, like `\\n\\n\\n\\n`, does that also solve the issue?",
+      "parentUuid": "d5b2b4a5_c6b6c226",
+      "revId": "bece6384553b855fac0d25bd9f121f86d47303b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26753206_9adc33d5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-12-06T22:09:13Z",
+      "side": 1,
+      "message": "@dawidn@google.com This is returning the wrong type, based on function type annotations. This should easily be identified by a correctly configured IDE.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 8,
+        "endLine": 1323,
+        "endChar": 17
+      },
+      "revId": "bece6384553b855fac0d25bd9f121f86d47303b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
