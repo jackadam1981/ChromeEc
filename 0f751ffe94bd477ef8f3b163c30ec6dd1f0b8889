@@ -70,6 +70,24 @@
       "parentUuid": "12c4df70_cb37e5a3",
       "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39324233_a891c7fa",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2024-12-06T21:11:39Z",
+      "side": 1,
+      "message": "I think you could probably replace `plug_insert_or_removal` with the UCSI interrupt to retain the same behavior for other tests. Setting that bit would cause us to call get_connector_status again but not update the connection status change bits.\n\nWRT/ sink_ready, I believe Alex said it would be emitted when PS_READY is sent as part of PD. So setting this as a result of set_connector_status where pwr_direction changes to SNK is probably a good enough approximation.",
+      "parentUuid": "9240f49c_2607885c",
+      "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
