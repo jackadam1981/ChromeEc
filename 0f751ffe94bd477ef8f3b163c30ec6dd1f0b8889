@@ -34,6 +34,24 @@
       "parentUuid": "4806e82e_3affd7be",
       "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c4df70_cb37e5a3",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-06T20:17:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure about the exact real behavior or what we should do in the emulator. Abhishek might have a better idea. If the difference between this and the real behavior doesn\u0027t affect the tests that we want to write, I\u0027m OK with leaving a TODO here.",
+      "parentUuid": "1ebd0735_cd6a2784",
+      "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
