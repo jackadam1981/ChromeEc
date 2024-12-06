@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b50798d_a5593c77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T17:09:37Z",
+      "side": 1,
+      "message": "Was this a problem only seen with the Microchip EC and it\u0027s I2C controller driver?",
+      "revId": "795627ccda390b343eaf48082d57750b533fbfe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bde044c_4b4fb7db",
+        "filename": "include/i2c.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-06T17:09:37Z",
+      "side": 1,
+      "message": "Nit - document that this bit is only supported by Zephyr I2C controllers.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 73
+      },
+      "revId": "795627ccda390b343eaf48082d57750b533fbfe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
