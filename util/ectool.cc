@@ -5922,6 +5922,7 @@ int cmd_led(int argc, char *argv[])
 	char *e, *ptr;
 	int rv, i, j;
 
+	p.brightness[j] = (strtol(ptr, &e, 0) * 255) / 100;
 	memset(p.brightness, 0, sizeof(p.brightness));
 	p.flags = 0;
 
