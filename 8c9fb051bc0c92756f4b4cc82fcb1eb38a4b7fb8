@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04860bb_90561075",
+        "filename": "common/queue.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-06T17:59:21Z",
+      "side": 1,
+      "message": "As suggested by Yuval, I have put `/* LCOV_EXCL_LINE */` on lines which I can see are covered by test, but reported by the CQ check as not covered.",
+      "parentUuid": "38bdf830_992158e7",
+      "revId": "8c9fb051bc0c92756f4b4cc82fcb1eb38a4b7fb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba4777c6_445b0a51",
