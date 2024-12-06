@@ -27,6 +27,7 @@
 #define ALS_ENABLE BIT(0)
 #define FACTORY_CLEAR BIT(1)
 #define ALS_NORMAL_COUNT BIT(2)
+#define ALS_CUTOFF_ENABLE BIT(3)
 
 static int als_enable = 0;
 static int als_det_enable = 1;
@@ -73,6 +74,28 @@ static void als_data_handler(void)
 	CPRINTS(" %d", als_data);
 }
 
+static void door_open_handler(void)
+{
+	uint8_t data[1];
+
+	if (!gpio_get_level(GPIO_DOOR_OPEN_EC)) {
+		als_eeprom_read(0x00, data, 1);
+		if (!(data[0] & ALS_ENABLE)) {
+			als_enable = 0;
+			CPRINTS(" function disable-%d", data[0]);
+			return;
+		}
+		CPRINTS(" cutoff function disable");
+		als_data_handler();
+	}
+}
+DECLARE_DEFERRED(door_open_handler);
+
+void door_open_interrupt(enum gpio_signal s)
+{
+	hook_call_deferred(&door_open_handler_data, 500 * MSEC);
+}
+
 static void check_als_status(void)
 {
 	uint8_t data[3];
@@ -91,13 +114,23 @@ static void check_als_status(void)
 			data[0] &= ~ALS_NORMAL_COUNT;
 			als_eeprom_write(0x00, data, 1);
 		}
+
+		if (data[0] & ALS_CUTOFF_ENABLE) {
+			als_det_enable = 1;
+			gpio_disable_interrupt(GPIO_DOOR_OPEN_EC);
+			gpio_set_flags(GPIO_DOOR_OPEN_EC, GPIO_INPUT);
+		} else {
+			als_det_enable = 0;
+			gpio_enable_interrupt(GPIO_DOOR_OPEN_EC);
+			hook_call_deferred(&door_open_handler_data, 500 * MSEC);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_INIT, check_als_status, HOOK_PRIO_DEFAULT);
 
 int als_enable_status(void)
 {
-	return als_enable;
+	return als_enable && als_det_enable;
 }
 
 static void als_change_deferred(void)
