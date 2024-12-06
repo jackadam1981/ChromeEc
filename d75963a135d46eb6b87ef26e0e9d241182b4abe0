@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68760c29_f0a6ba43",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-06T18:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79289be_9db4eaa7",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beb0e2e9_c8978adf",
@@ -150,6 +168,24 @@
       "side": 1,
       "message": "Yeah. When I wrote this, it was a to do list for Abhishek, and he completed it.",
       "parentUuid": "21162c97_e6812b3f",
+      "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13975e27_32bf2a9f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2024-12-06T18:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83698499_9384c0c4",
       "revId": "d75963a135d46eb6b87ef26e0e9d241182b4abe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
