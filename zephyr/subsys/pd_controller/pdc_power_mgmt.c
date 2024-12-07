@@ -224,8 +224,6 @@ struct send_cmd_t {
 enum snk_attached_local_state_t {
 	/** SNK_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SNK_ATTACHED_GET_CONNECTOR_CAPABILITY,
-	/** SNK_ATTACHED_GET_CABLE_PROPERTY */
-	SNK_ATTACHED_GET_CABLE_PROPERTY,
 	/** SNK_ATTACHED_SET_DR_SWAP_POLICY */
 	SNK_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SNK_ATTACHED_SET_PR_SWAP_POLICY */
@@ -259,8 +257,6 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_SET_SINK_PATH_OFF,
 	/** SRC_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SRC_ATTACHED_GET_CONNECTOR_CAPABILITY,
-	/** SRC_ATTACHED_GET_CABLE_PROPERTY */
-	SRC_ATTACHED_GET_CABLE_PROPERTY,
 	/** SRC_ATTACHED_SET_DR_SWAP_POLICY */
 	SRC_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SRC_ATTACHED_SET_PR_SWAP_POLICY */
@@ -755,6 +751,8 @@ struct pdc_port_t {
 	pdc_power_mgmt_board_unattached_cb board_unattach_cb;
 	/** board callback for DP Attention event */
 	pdc_power_mgmt_board_dp_attention_cb board_dp_attention_cb;
+	/** Used to track status of GET_CABLE_PROPERTY */
+	bool cable_property_attempted;
 };
 
 /**
@@ -1747,6 +1745,7 @@ static void pdc_unattached_entry(void *obj)
 	/* Clear any previously set cable property information */
 	port->cable_prop.raw_value[0] = 0;
 	port->cable_prop.raw_value[1] = 0;
+	port->cable_property_attempted = false;
 
 	/* Ensure VDOs aren't valid from previous connection */
 	discovery_info_init(port);
@@ -1890,13 +1889,8 @@ static void pdc_src_attached_run(void *obj)
 		return;
 	case SRC_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->src_attached_local_state =
-			SRC_ATTACHED_GET_CABLE_PROPERTY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
-	case SRC_ATTACHED_GET_CABLE_PROPERTY:
-		port->src_attached_local_state =
 			SRC_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SRC_ATTACHED_SET_DR_SWAP_POLICY:
 		port->src_attached_local_state =
@@ -2021,13 +2015,8 @@ static void pdc_snk_attached_run(void *obj)
 	switch (port->snk_attached_local_state) {
 	case SNK_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->snk_attached_local_state =
-			SNK_ATTACHED_GET_CABLE_PROPERTY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
-	case SNK_ATTACHED_GET_CABLE_PROPERTY:
-		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
 		port->snk_attached_local_state =
@@ -4009,7 +3998,8 @@ int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info)
 
 int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type)
 {
-	uint32_t rev;
+	uint32_t rev = 0;
+	union cable_property_t cable_prop;
 
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -4021,6 +4011,11 @@ int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type)
 		rev = pdc_data[port]->port.ccaps.partner_pd_revision;
 		break;
 	case TCPCI_MSG_SOP_PRIME:
+		if (!pdc_data[port]->port.cable_property_attempted) {
+			if (pdc_power_mgmt_get_cable_prop(port, &cable_prop)) {
+				return rev;
+			}
+		}
 		rev = pdc_data[port]->port.cable_prop.cable_pd_revision;
 		break;
 	default:
@@ -4065,6 +4060,7 @@ pdc_power_mgmt_get_identity_discovery(int port, enum tcpci_msg_type type)
 {
 	enum pdc_cmd_t cmd;
 	int ret;
+	union cable_property_t cable_prop;
 
 	/* Make sure port is Sink connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
@@ -4076,6 +4072,11 @@ pdc_power_mgmt_get_identity_discovery(int port, enum tcpci_msg_type type)
 		cmd = CMD_PDC_GET_IDENTITY_DISCOVERY;
 		break;
 	case TCPCI_MSG_SOP_PRIME:
+		if (!pdc_data[port]->port.cable_property_attempted) {
+			if (pdc_power_mgmt_get_cable_prop(port, &cable_prop)) {
+				return PD_DISC_NEEDED;
+			}
+		}
 		return (pdc_data[port]->port.cable_prop.cable_type &&
 			pdc_data[port]->port.cable_prop.mode_support) ?
 			       PD_DISC_COMPLETE :
@@ -4430,6 +4431,14 @@ pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop)
 		return -EINVAL;
 	}
 
+	if (!pdc_data[port]->port.cable_property_attempted) {
+		/* Block until command completes */
+		if (public_api_block(port, CMD_PDC_GET_CABLE_PROPERTY)) {
+			/* something went wrong */
+			return -EIO;
+		}
+		pdc_data[port]->port.cable_property_attempted = true;
+	}
 	*cable_prop = pdc_data[port]->port.cable_prop;
 
 	return 0;
