@@ -88,6 +88,24 @@
       "parentUuid": "9240f49c_2607885c",
       "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea21d052_eabfdaa2",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-07T00:12:48Z",
+      "side": 1,
+      "message": "Alex says in comment #99 that sink_ready will only be sent once per connection.",
+      "parentUuid": "39324233_a891c7fa",
+      "revId": "0f751ffe94bd477ef8f3b163c30ec6dd1f0b8889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
