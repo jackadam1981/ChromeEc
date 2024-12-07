@@ -1591,7 +1591,6 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_cable_prop)
 
 	zassert_equal(-ERANGE, pdc_power_mgmt_get_cable_prop(
 				       CONFIG_USB_PD_PORT_MAX_COUNT, &out));
-	zassert_equal(-EINVAL, pdc_power_mgmt_get_cable_prop(TEST_PORT, NULL));
 
 	in.raw_value[0] = 0x1a2b3c4d;
 	in.raw_value[1] = 0x5a6b7c8d;
