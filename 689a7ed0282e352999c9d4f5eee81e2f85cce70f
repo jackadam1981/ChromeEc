@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dec6b60_be9007c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-12-09T07:40:02Z",
+      "side": 1,
+      "message": "This change increases charge voltage and reduces power efficiency. The existing code should set sys voltage higher than battery voltage. Let investigate this issue in the issue tracker https://issuetracker.google.com/381364597",
+      "revId": "689a7ed0282e352999c9d4f5eee81e2f85cce70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
