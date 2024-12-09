@@ -16,6 +16,24 @@
       "message": "If it\u0027s default disabled, under which scenario do you plan to enable it?",
       "revId": "3019d23dfd218093719bdd3ea6913b840b58d98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd370ba2_68289a12",
+        "filename": "board/awasuki/board_als.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-09T08:32:05Z",
+      "side": 1,
+      "message": "It is not confirmed when it will be enabled yet, just to keep the function to meet the requirements of subsequent customers.",
+      "parentUuid": "054b4557_1efdbf00",
+      "revId": "3019d23dfd218093719bdd3ea6913b840b58d98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
