@@ -16,6 +16,46 @@
       "message": "Hi Keith, \n\npins associated with KSO0, SKO1, KS02 are not working, could you please share feedback if I am missing anything",
       "revId": "b87c2433e10cc4fc78b52904b98c27a37c6a3c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e9f3a4_d5f0606c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-09T23:45:42Z",
+      "side": 1,
+      "message": "This module is deprecated and should only be used with legacy EC builds.\nNew designs should be using the `CONFIG_CROS_EC_KEYBOARD_INPUT\u003dy` and define a `cros-ec,keyboard` chosen property.",
+      "revId": "b87c2433e10cc4fc78b52904b98c27a37c6a3c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61011bbc_6dbe2da8",
+        "filename": "zephyr/program/intelrvp/ptlrvp/include/keyboard_customization.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-09T23:45:42Z",
+      "side": 1,
+      "message": "All this gets defined in the devicetree now.\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/program/rex/keyboard.dtsi;l\u003d1",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "b87c2433e10cc4fc78b52904b98c27a37c6a3c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
