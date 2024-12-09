@@ -16,6 +16,24 @@
       "message": "Yuval, it seemed like you needed 20.  Can you confirm?",
       "revId": "06a0389a244a117c20c6c6a6482fa0489dd2b4c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e378ea_da982614",
+        "filename": "zephyr/program/trulo/trulo/project.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-12-09T17:36:21Z",
+      "side": 1,
+      "message": "Only need CPP17",
+      "parentUuid": "fccc2502_0c968ff7",
+      "revId": "06a0389a244a117c20c6c6a6482fa0489dd2b4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
