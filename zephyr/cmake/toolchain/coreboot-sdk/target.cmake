@@ -16,8 +16,14 @@ set(CROSS_COMPILE_TARGET        ${CROSS_COMPILE_TARGET_${ARCH}})
 
 if("${ARCH}" STREQUAL "arm" AND CONFIG_ARM64)
   set(CROSS_COMPILE_TARGET      aarch64-elf)
+  set(CONFIG_64BIT                        y)
+  set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -DCONFIG_64BIT=1")
 elseif("${ARCH}" STREQUAL "x86" AND CONFIG_X86_64)
+  # Omit 64-bit flags since we're building with i386
   set(CROSS_COMPILE_TARGET      x86_64-elf)
+elseif("${ARCH}" STREQUAL "riscv")
+  set(CONFIG_64BIT                        y)
+  set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -DCONFIG_64BIT=1")
 endif()
 
 if(DEFINED COREBOOT_SDK_ROOT_${ARCH})
