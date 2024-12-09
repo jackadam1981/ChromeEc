@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8354ca1b_c364d2e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-12-09T19:35:24Z",
+      "side": 1,
+      "message": "Yes, looks like I2C driver is not able to generate restart condition properly unless explicitly instructed in the interface.",
+      "parentUuid": "1b50798d_a5593c77",
+      "revId": "795627ccda390b343eaf48082d57750b533fbfe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bde044c_4b4fb7db",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-12-06T17:09:37Z",
       "side": 1,
       "message": "Nit - document that this bit is only supported by Zephyr I2C controllers.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 73
+      },
+      "revId": "795627ccda390b343eaf48082d57750b533fbfe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e90cd64_a5e66361",
+        "filename": "include/i2c.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2024-12-09T19:35:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1bde044c_4b4fb7db",
       "range": {
         "startLine": 179,
         "startChar": 0,
