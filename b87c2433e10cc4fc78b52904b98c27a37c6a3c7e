@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cee64c_559b6afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-09T23:46:27Z",
+      "side": 1,
+      "message": "The documentation is actually up to date on using the Zephyr input subsystem.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/zephyr/zephyr_keyboard.md;l\u003d2",
+      "revId": "b87c2433e10cc4fc78b52904b98c27a37c6a3c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e9f3a4_d5f0606c",
