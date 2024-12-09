@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532e9b00_98f9dfb3",
+        "filename": "util/renode/helipilot.repl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-09T17:48:25Z",
+      "side": 1,
+      "message": "Does this part of the change depend on the new version of Renode that has the NPCX9 timer fixes? It looks like maybe it\u0027s just a bug fix where we had the wrong frequency. If that\u0027s the case, can you split it into a separate CL so that there is more context for the change?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "419b129e7367caa60fe904558c895cc2f38735e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
