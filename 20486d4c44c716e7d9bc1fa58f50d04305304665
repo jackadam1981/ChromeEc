@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433f8528_14faa633",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-12-09T19:59:38Z",
+      "side": 1,
+      "message": "Ultra nit - random backtick at end of commit title",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "20486d4c44c716e7d9bc1fa58f50d04305304665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8217cf4_04a89141",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-12-09T19:59:38Z",
+      "side": 1,
+      "message": "Is this something we should be doing in `pdc_power_mgmt.c` too? Right now I believe we only set exactly 1 source PDO and exactly 3 sink PDOs, so there wouldn\u0027t be an issue with stale PDOs if a smaller quantity were set later, but this might be turn in to a source of bugs in the future.",
+      "range": {
+        "startLine": 606,
+        "startChar": 1,
+        "endLine": 606,
+        "endChar": 42
+      },
+      "revId": "20486d4c44c716e7d9bc1fa58f50d04305304665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
