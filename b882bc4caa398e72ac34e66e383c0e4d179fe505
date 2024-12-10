@@ -22,6 +22,30 @@
       },
       "revId": "b882bc4caa398e72ac34e66e383c0e4d179fe505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f063af_f42f652a",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-10T23:09:15Z",
+      "side": 1,
+      "message": "yes, only RVP has these GPIOs.\nThe Generic chassis system will not have these GPIOs hence the ifdef",
+      "parentUuid": "7506ca06_f0b70ac5",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "b882bc4caa398e72ac34e66e383c0e4d179fe505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
