@@ -144,6 +144,7 @@ PRINTF_CALLED_REGEX = re.compile(r"printf called(\r){1,2}\n")
 BLOONCHIPPER = "bloonchipper"
 BUCCANEER = "buccaneer"
 DARTMONKEY = "dartmonkey"
+GWENDOLIN = "gwendolin"
 HELIPILOT = "helipilot"
 
 JTRACE = "jtrace"
@@ -204,6 +205,7 @@ class FPSensorType(Enum):
 
     ELAN = 0
     FPC = 1
+    EGIS = 2
     UNKNOWN = -1
 
 
@@ -443,7 +445,7 @@ class Renode(Platform):
                 "timer_dos",  # TODO(b/374798079)
             ]:
                 return True
-        elif board_config.name in [HELIPILOT, BUCCANEER]:
+        elif board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]:
             if test_name in [
                 "abort",  # TODO(b/379897106)
                 "production_app_test",
@@ -721,7 +723,7 @@ class AllTests:
             # Covered by Zephyr drivers.counter.basic_api.stm32_subsec test
             TestConfig(
                 test_name="rtc_stm32f4",
-                exclude_boards=[DARTMONKEY, HELIPILOT, BUCCANEER],
+                exclude_boards=[DARTMONKEY, HELIPILOT, BUCCANEER, GWENDOLIN],
                 skip_for_zephyr=True,
             ),
             TestConfig(test_name="sbrk", imagetype_to_use=ImageType.RO),
@@ -1001,10 +1003,25 @@ BUCCANEER_CONFIG.expected_fp_power = PowerUtilization(
     idle=RangedValue(0.25, 0.3), sleep=RangedValue(0.25, 0.3)
 )
 
+GWENDOLIN_CONFIG = copy.deepcopy(HELIPILOT_CONFIG)
+GWENDOLIN_CONFIG.name = GWENDOLIN
+GWENDOLIN_CONFIG.sensor_type = FPSensorType.EGIS
+GWENDOLIN_CONFIG.mpu_regex = DATA_ACCESS_VIOLATION_200A8000_REGEX
+# The Elan 80SG is said to have the following power profile:
+# - power down mode current draw is less than 12 uA (0.0396 mW)
+# - finger detection with 40ms scan rate current draw less than 20 uA (0.066 mW)
+# - fingerprint sensing current draw less than 8.11 mA (26.763 mW)
+GWENDOLIN_CONFIG.fp_power_supply = "pp3300_fp_mw"
+# 0.25 mW is roughly 76 uA @ 3.3V.
+GWENDOLIN_CONFIG.expected_fp_power = PowerUtilization(
+    idle=RangedValue(0.25, 0.3), sleep=RangedValue(0.25, 0.3)
+)
+
 BOARD_CONFIGS = {
     "bloonchipper": BLOONCHIPPER_CONFIG,
     "buccaneer": BUCCANEER_CONFIG,
     "dartmonkey": DARTMONKEY_CONFIG,
+    "gwendolin": GWENDOLIN_CONFIG,
     "helipilot": HELIPILOT_CONFIG,
 }
 
