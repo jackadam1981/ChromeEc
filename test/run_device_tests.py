@@ -142,6 +142,7 @@ PRINTF_CALLED_REGEX = re.compile(r"printf called(\r){1,2}\n")
 BLOONCHIPPER = "bloonchipper"
 BUCCANEER = "buccaneer"
 DARTMONKEY = "dartmonkey"
+GWENDOLIN = "gwendolin"
 HELIPILOT = "helipilot"
 
 JTRACE = "jtrace"
@@ -202,6 +203,7 @@ class FPSensorType(Enum):
 
     ELAN = 0
     FPC = 1
+    EGIS = 1
     UNKNOWN = -1
 
 
@@ -454,7 +456,7 @@ class Renode(Platform):
                 "timer_dos",  # TODO(b/374798079)
             ]:
                 return True
-        elif board_config.name in [HELIPILOT, BUCCANEER]:
+        elif board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]:
             if test_name in [
                 "exception",  # TODO(b/384730599)
                 "libcxx",
@@ -723,7 +725,7 @@ class AllTests:
             # Covered by Zephyr drivers.counter.basic_api.stm32_subsec test
             TestConfig(
                 test_name="rtc_stm32f4",
-                exclude_boards=[DARTMONKEY, HELIPILOT, BUCCANEER],
+                exclude_boards=[DARTMONKEY, HELIPILOT, BUCCANEER, GWENDOLIN],
                 skip_for_zephyr=True,
             ),
             TestConfig(test_name="sbrk", imagetype_to_use=ImageType.RO),
@@ -1002,10 +1004,15 @@ BUCCANEER_CONFIG.expected_fp_power = PowerUtilization(
     idle=RangedValue(0.25, 0.3), sleep=RangedValue(0.25, 0.3)
 )
 
+GWENDOLIN_CONFIG = copy.deepcopy(HELIPILOT_CONFIG)
+GWENDOLIN_CONFIG.name = GWENDOLIN
+GWENDOLIN_CONFIG.sensor_type = FPSensorType.EGIS
+
 BOARD_CONFIGS = {
     "bloonchipper": BLOONCHIPPER_CONFIG,
     "buccaneer": BUCCANEER_CONFIG,
     "dartmonkey": DARTMONKEY_CONFIG,
+    "gwendolin": GWENDOLIN_CONFIG,
     "helipilot": HELIPILOT_CONFIG,
 }
 
