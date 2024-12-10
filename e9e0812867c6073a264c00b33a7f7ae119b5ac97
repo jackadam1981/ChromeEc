@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f080f42d_3471a989",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-10T07:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c18502_f4da6f50",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 11
+      },
+      "revId": "e9e0812867c6073a264c00b33a7f7ae119b5ac97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fd0faf9_f2ee5d89",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-06T16:41:53Z",
       "side": 1,
       "message": "This is effectively only triggering an interrupt.  You should directly trigger the interrupt instead.",
+      "range": {
+        "startLine": 2238,
+        "startChar": 0,
+        "endLine": 2240,
+        "endChar": 0
+      },
+      "revId": "e9e0812867c6073a264c00b33a7f7ae119b5ac97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe1e39b_0d7c6521",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2240,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-10T07:13:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd0faf9_f2ee5d89",
       "range": {
         "startLine": 2238,
         "startChar": 0,
