@@ -16,6 +16,30 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "37353b31752c32cc0a245e409bc4572966926d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfb9a04_9a088e3b",
+        "filename": "zephyr/program/rauru/navi/src/suspend_resume.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-10T21:35:21Z",
+      "side": 1,
+      "message": "\u003e \"resovled\" is a possible misspelling of \"resolved\".\n\nPlease fix.",
+      "parentUuid": "abc891db_20c4c177",
+      "range": {
+        "startLine": 99,
+        "startChar": 56,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "37353b31752c32cc0a245e409bc4572966926d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
