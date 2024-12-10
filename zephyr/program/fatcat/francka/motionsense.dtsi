@@ -64,6 +64,26 @@
 			compatible = "cros-ec,drvdata-bma4xx";
 			status = "okay";
 		};
+
+		cm36781_data: cm36781-drv-data {
+			compatible = "cros-ec,drvdata-cm36781";
+			status = "okay";
+
+			als-drv-data {
+				compatible = "cros-ec,accelgyro-als-drv-data";
+				als-cal {
+					scale = <1>;
+					uscale = <0>;
+					offset = <0>;
+					als-channel-scale {
+					compatible =
+					"cros-ec,accelgyro-als-channel-scale";
+						k-channel-scale = <1>;
+						cover-scale = "1.0f";
+					};
+				};
+			};
+		};
 	};
 
 	/*
@@ -124,10 +144,25 @@
 				};
 			};
 		};
+
+		lid_als: lid-als {
+			compatible = "cros-ec,cm36781";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0";
+			location = "MOTIONSENSE_LOC_LID";
+			port = <&i2c_ec_i2c_sensor>;
+			default-range = <0x10000>;
+			drv-data = <&cm36781_data>;
+			i2c-spi-addr-flags = "CM36781_I2C_ADDR_FLAGS";
+		};
 	};
 
 	motionsense-sensor-info {
 		compatible = "cros-ec,motionsense-sensor-info";
+
+		/* list of entries for motion_als_sensors */
+		als-sensors = <&lid_als>;
 
 		/*
 		 * list of GPIO interrupts that have to
@@ -135,6 +170,6 @@
 		 */
 		sensor-irqs = <&int_lid_accel>;
 		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&base_accel>;
+		accel-force-mode-sensors = <&base_accel &lid_als>;
 	};
 };
