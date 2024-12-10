@@ -22,6 +22,30 @@
       },
       "revId": "419b129e7367caa60fe904558c895cc2f38735e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ae2780_f1e9c88d",
+        "filename": "util/renode/helipilot.repl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3239408
+      },
+      "writtenOn": "2024-12-10T08:59:11Z",
+      "side": 1,
+      "message": "Wrong frequencies are a bug, that was hidden due by a bug in the timer model that prevented the divider from being set. I\u0027ve moved the frequency changes to: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6082512/",
+      "parentUuid": "532e9b00_98f9dfb3",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "419b129e7367caa60fe904558c895cc2f38735e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
