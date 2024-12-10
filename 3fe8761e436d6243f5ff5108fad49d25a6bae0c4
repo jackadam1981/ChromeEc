@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff36a3b7_09145b90",
+        "filename": "zephyr/program/intelrvp/ptlrvp/i2c.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-10T10:58:23Z",
+      "side": 1,
+      "message": "can you make this use the new upstream it8801 driver? see the example in `dts/bindings/mfd/ite,it8801-mfd.yaml`",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "3fe8761e436d6243f5ff5108fad49d25a6bae0c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
