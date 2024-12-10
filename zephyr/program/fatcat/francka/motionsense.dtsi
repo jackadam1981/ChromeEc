@@ -12,6 +12,7 @@
 		 * Interrupt bindings for sensor devices.
 		 */
 		 bma4xx-int = &lid_accel;
+		 cm36781-int = &als_clear;
 	};
 
 	/*
@@ -63,6 +64,26 @@
 		bma422_base_data: bma422-base-drv-data {
 			compatible = "cros-ec,drvdata-bma4xx";
 			status = "okay";
+		};
+
+		cm36781_data: cm36781-drv-data {
+			compatible = "cros-ec,drvdata-cm36781";
+			status = "okay";
+
+			als-drv-data {
+				compatible = "cros-ec,accelgyro-als-drv-data";
+				als-cal {
+					scale = <1>;
+					uscale = <0>;
+					offset = <0>;
+					als-channel-scale {
+					compatible =
+					"cros-ec,accelgyro-als-channel-scale";
+						k-channel-scale = <1>;
+						cover-scale = "1.0f";
+					};
+				};
+			};
 		};
 	};
 
@@ -124,10 +145,33 @@
 				};
 			};
 		};
+
+		als_clear: base-als {
+			compatible = "cros-ec,cm36781";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0";
+			location = "MOTIONSENSE_LOC_LID";
+			port = <&i2c_ec_i2c_sensor>;
+			default-range = <0x10000>;
+			drv-data = <&cm36781_data>;
+			i2c-spi-addr-flags = "CM36781_I2C_ADDR";
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					/* Run ALS sensor in S0 */
+					odr = <1000>;
+				};
+			};
+		};
 	};
 
 	motionsense-sensor-info {
 		compatible = "cros-ec,motionsense-sensor-info";
+
+		/* list of entries for motion_als_sensors */
+		als-sensors = <&als_clear>;
 
 		/*
 		 * list of GPIO interrupts that have to
@@ -135,6 +179,6 @@
 		 */
 		sensor-irqs = <&int_lid_accel>;
 		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&base_accel>;
+		accel-force-mode-sensors = <&base_accel &als_clear>;
 	};
 };
