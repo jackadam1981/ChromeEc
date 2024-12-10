@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7506ca06_f0b70ac5",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-10T22:59:24Z",
+      "side": 1,
+      "message": "this isn\u0027t clear from the patch description:\nwill some of the boards supported by this file (i.e. ptlrvp)\nnot have these GPIOs? so, do we need the #ifdefs here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "b882bc4caa398e72ac34e66e383c0e4d179fe505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
