@@ -1,0 +1,197 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62213979_da33e6b0",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "rate seems unused. Document the sensor is always in forced mode. You can leave rate as a constant.",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d044af_7c5ee660",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "Offset is never set? I assume it comes in another CL to set offset and scale.",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2eb9144_85253d8e",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "Call cm36781_read_lux() instead.",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720fd5a1_be768494",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "Presence Sensing is not enabled. Remove until the next CL.",
+      "fixSuggestions": [
+        {
+          "fixId": "91301151_0e9b1e33",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 43,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 83,
+                "startChar": 0,
+                "endLine": 85,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eb5d8b_1d9aec53",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "Remove, unused.",
+      "fixSuggestions": [
+        {
+          "fixId": "99a65498_b1e1f9ce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 82,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47715b57_6f12a512",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "Add min and max frequency. Since the integration time is fixed at 50ms, not faster than 20Hz. 1Hz to 10Hz?",
+      "fixSuggestions": [
+        {
+          "fixId": "d4d43616_8d2363a4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "// CM36781 minimum and maximum frequency\n#define CM36781_MIN_FREQ_HZ 1\n#define CM36781_MAX_FREQ_HZ 10\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fba6466_d892f27a",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-12-10T16:45:56Z",
+      "side": 1,
+      "message": "```suggestion\n    \"CM36781_I2C_ADDR_FLAGS\": \"0x51\",\n```\nReorder alphabetically.",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
