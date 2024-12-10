@@ -19,6 +19,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
@@ -127,4 +128,18 @@ enum battery_present battery_hw_present(void)
 
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+
+__override int board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
+{
+	/*
+	 * AP tunneling to I2C is default-forbidden, but allowed for
+	 * type-C and sensor ports because these can be used to update
+	 * retimer firmware or toolkit access such as probe ppc/mux/accel
+	 * parameter. AP firmware separately sends a command to block
+	 * tunneling to these ports after it's done updating chips.
+	 */
+	return false || (cmd_desc->port == I2C_PORT_USB_C0)
+		|| (cmd_desc->port == I2C_PORT_USB_C1)
+		|| (cmd_desc->port == I2C_PORT_SENSOR);
 }
