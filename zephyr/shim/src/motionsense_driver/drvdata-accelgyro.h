@@ -34,11 +34,14 @@
 #define ALS_CALIBRATION_CHANNEL_SCALE(id) \
 	.als_cal.channel_scale = ACCELGYRO_ALS_CHANNEL_SCALE(id),
 
-#define ALS_CALIBRATION_SET(id)                \
-	.als_cal.scale = DT_PROP(id, scale),   \
-	.als_cal.uscale = DT_PROP(id, uscale), \
-	.als_cal.offset = DT_PROP(id, offset), \
-	ALS_CALIBRATION_CHANNEL_SCALE(DT_CHILD(id, als_channel_scale))
+#define ALS_CALIBRATION_SET(id)                                \
+	.als_cal.scale = DT_PROP(id, scale),                   \
+	.als_cal.uscale = DT_PROP(id, uscale),                 \
+	.als_cal.offset = DT_PROP(id, offset),                 \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, als_channel_scale),   \
+		    (ALS_CALIBRATION_CHANNEL_SCALE(            \
+			    DT_CHILD(id, als_channel_scale))), \
+		    ())
 
 /*
  * compatible = "cros-ec,accelgyro-als-drv-data"
