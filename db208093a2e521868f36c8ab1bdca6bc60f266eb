@@ -39,6 +39,30 @@
       },
       "revId": "db208093a2e521868f36c8ab1bdca6bc60f266eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbdde41_1f8315f8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4436,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-12-10T18:24:39Z",
+      "side": 1,
+      "message": "This was just to check that if we force the advertised current to 3A when operating as Sink, we would pass the COMMON.CHECK.PD.7#1. I don\u0027t think forcing it here is really the correct way to do this. I\u0027ll upload a patchset 2 later today to set this policy from the PDC DPM.\n\nThe reason for advertising 3A Src Caps when the is to adhere to a line in Section 4.4 of the PD spec around Sinks advertising full capabilities\n\n\u003e Sinks with the Dual-Role Power bit set, Shall respond to a Get_Source_Cap Message by declaring their full Source Capabilities, without limiting them based on the cable\u0027s Capabilities.",
+      "parentUuid": "443926e7_d176a0f2",
+      "range": {
+        "startLine": 4436,
+        "startChar": 2,
+        "endLine": 4436,
+        "endChar": 48
+      },
+      "revId": "db208093a2e521868f36c8ab1bdca6bc60f266eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
