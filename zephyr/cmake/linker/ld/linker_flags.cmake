@@ -14,4 +14,5 @@ include("${TOOLCHAIN_ROOT}/cmake/linker/${LINKER}/${COMPILER}/linker_flags.cmake
 add_link_options("${LINKERFLAGPREFIX},--no-warn-rwx-segments")
 if("${ARCH}" STREQUAL "riscv")
   add_link_options("${LINKERFLAGPREFIX},--no-relax-gp")
+  add_link_options("${LINKERFLAGPREFIX},-m,elf32lriscv")
 endif()
