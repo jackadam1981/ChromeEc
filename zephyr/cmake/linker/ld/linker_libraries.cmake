@@ -11,3 +11,16 @@ if(NOT CONFIG_NATIVE_BUILD)
   message(WARNING "Disabling c_library")
   set_linker_property(PROPERTY c_library "")
 endif()
+
+if(CONFIG_PICOLIBC AND NOT CONFIG_PICOLIBC_USE_MODULE)
+  # Add picolibc
+  message(INFO "Setting c_library to picolibc install path")
+  # TODO JPM switch to picolibc.specs
+  set(QUALIFIER "")
+  if("${ARCH}" STREQUAL "arm")
+    set(QUALIFIER "/thumb")
+  endif()
+  set_linker_property(PROPERTY c_library "${COREBOOT_SDK_ROOT}/picolibc/lib${QUALIFIER}/libc.a")
+  set_linker_property(PROPERTY c_library APPEND "${COREBOOT_SDK_ROOT}/picolibc/${CROSS_COMPILE_TARGET}/lib${QUALIFIER}/libstdc++.a")
+  set_linker_property(PROPERTY c_library APPEND "${COREBOOT_SDK_ROOT}/lib/gcc/${CROSS_COMPILE_TARGET}/14.2.0${QUALIFIER}/libgcc.a")
+endif()
