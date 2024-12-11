@@ -7,6 +7,7 @@
  * Function: ITE COM DBGR Flash Utility
  */
 
+#include <errno.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -249,6 +250,44 @@ static ssize_t write_com(struct itecomdbgr_config *conf,
 	bWriteStat = write(conf->g_fd, lpOutBuffer, WriteBytes);
 
 	return bWriteStat;
+}
+
+/*
+ * Discards (flushes) any data received via UART, but not yet retrieved through
+ * `read_com()`.
+ */
+static void flush_com(struct itecomdbgr_config *conf)
+{
+	fd_set read_fds;
+	struct timeval timeout;
+	char buf[256];
+	int cc;
+
+	tcflush(conf->g_fd, TCIOFLUSH);
+
+	for (;;) {
+		FD_ZERO(&read_fds);
+		FD_SET(conf->g_fd, &read_fds);
+		timeout.tv_sec = 0;
+		timeout.tv_usec = 1000;
+		cc = select(conf->g_fd + 1, &read_fds, NULL, NULL, &timeout);
+		if (cc < 0)
+			fprintf(stderr, "Error from select(): %s\n",
+				strerror(errno));
+		if (!cc || !FD_ISSET(0, &read_fds)) {
+			/* No more data immediately available */
+			break;
+		}
+		/*
+		 * Select indicated that data is available to read, get whatever
+		 * we can, discard it, and then go back and ask if there is
+		 * more.
+		 */
+		cc = read(conf->g_fd, buf, sizeof(buf));
+		if (cc < 0)
+			fprintf(stderr, "Error reading serial data: %s\n",
+				strerror(errno));
+	}
 }
 
 static uint8_t debug_getc(struct itecomdbgr_config *conf)
@@ -513,7 +552,7 @@ static int read_id_2(struct itecomdbgr_config *conf)
 	write_com(conf, disable_follow_mode, sizeof(disable_follow_mode));
 	printf("Flash ID = %02x %02x %02x\n", FlashID[0], FlashID[1],
 	       FlashID[2]);
-	tcflush(conf->g_fd, TCIOFLUSH);
+	flush_com(conf);
 
 	if ((FlashID[0] == 0xFF) && (FlashID[1] == 0xFF) &&
 	    (FlashID[2] == 0xFE)) {
@@ -927,7 +966,7 @@ static int uart_app(struct itecomdbgr_config *conf)
 	if (tcsetattr(conf->g_fd, TCSANOW, &tty) != 0) {
 		perror("tcsetattr");
 	}
-	tcflush(conf->g_fd, TCIOFLUSH);
+	flush_com(conf);
 
 	int tries = 0;
 	while (++tries < 25) {
@@ -959,11 +998,11 @@ static int uart_app(struct itecomdbgr_config *conf)
 
 			read_id_2(conf);
 
-			tcflush(conf->g_fd, TCIOFLUSH);
+			flush_com(conf);
 		}
 
 		if (conf->g_steps == STEPS_EXIT) {
-			tcflush(conf->g_fd, TCIOFLUSH);
+			flush_com(conf);
 			break;
 		}
 
@@ -1022,7 +1061,7 @@ out:
 
 	/* dbgr reset */
 	write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
-	tcflush(conf->g_fd, TCIOFLUSH);
+	flush_com(conf);
 	tcsetattr(tty_saved_fd, TCSANOW, &tty_saved);
 	close(tty_saved_fd);
 	tty_saved_fd = -1;
