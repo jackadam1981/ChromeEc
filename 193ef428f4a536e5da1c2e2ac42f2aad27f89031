@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240e922f_3bd3a4d3",
+        "filename": "zephyr/program/nissa/BUILD.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-12-11T05:54:30Z",
+      "side": 1,
+      "message": "I think this is problematic.  When modules is None, zmake throws an error.",
+      "fixSuggestions": [
+        {
+          "fixId": "eb7b1c89_648430d3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/BUILD.py",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "    modules\u003d[],\n"
+            }
+          ]
+        }
+      ],
+      "revId": "193ef428f4a536e5da1c2e2ac42f2aad27f89031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
