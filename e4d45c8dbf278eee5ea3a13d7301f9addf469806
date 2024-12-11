@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b667aa86_a22436c1",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-11T22:41:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "89e7f66e_8df4ce5d",
+      "range": {
+        "startLine": 132,
+        "startChar": 21,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25db7328_107d5f51",
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Yes, we still connect the USB HS.",
       "parentUuid": "5bf6d09c_80042b30",
+      "range": {
+        "startLine": 1936,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 15
+      },
+      "revId": "e4d45c8dbf278eee5ea3a13d7301f9addf469806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67aa427_1f76bd53",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-11T22:41:28Z",
+      "side": 1,
+      "message": "Then should you call usb_mux_set() in the `pdc_src_typec_only_entry()` and `pdc_snk_typec_only_entry()` states?",
+      "parentUuid": "995a47c0_4b00ebe5",
       "range": {
         "startLine": 1936,
         "startChar": 0,
