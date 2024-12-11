@@ -15,5 +15,5 @@ endif()
 if(CONFIG_PICOLIBC AND NOT CONFIG_PICOLIBC_USE_MODULE)
   # Add picolibc
   message(INFO "Setting c_library to picolibc install path")
-  set_linker_property(PROPERTY c_library "${COREBOOT_SDK_ROOT}/picolibc/lib/libc.a")
+  set_linker_property(PROPERTY c_library "${COREBOOT_SDK_ROOT}/picolibc/lib/thumb/libc.a";"${COREBOOT_SDK_ROOT}/picolibc/arm-eabi/lib/thumb/libstdc++.a";"${COREBOOT_SDK_ROOT}/lib/gcc/arm-eabi/14.2.0/thumb/libgcc.a")
 endif()
