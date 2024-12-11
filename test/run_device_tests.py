@@ -1320,7 +1320,7 @@ def run_test_zephyr(test: TestConfig) -> str:
     # TODO(b/382705460): This extra command is to work around an issue where
     # sometimes there is a missing character in the test command: "zest"
     # instead of "ztest".
-    test_cmd = "ztest\n"
+    test_cmd = "\n\n\n\n\n\n"
 
     if len(test.test_args) == 0:
         # If there are no args just run-all not to be limited by suite name
