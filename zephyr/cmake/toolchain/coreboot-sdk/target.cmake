@@ -65,6 +65,6 @@ endif()
 # used instruction set, ABI, ISA extensions) and doesn't adapt when
 # compiler flags change any of these assumptions. Use our own mini-libgcc
 # instead.
-if("${ARCH}" STREQUAL "arm")
+if("${ARCH}" STREQUAL "arm" AND NOT CONFIG_PICOLIBC)
   set(no_libgcc True)
 endif()
