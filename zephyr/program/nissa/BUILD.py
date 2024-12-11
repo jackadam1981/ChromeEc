@@ -173,10 +173,12 @@ orisa_ti = register_nissa_project(
     chip="npcx9/npcx9m3f",
     kconfig_files=[
         here / "program.conf",
-        here / "npcx_program.conf",
         here / "orisa" / "project.conf",
         here / "orisa_ti" / "project.conf",
+        here / "npcx_program.conf",
+        here / "orisa.conf",
     ],
+    modules=["ec", "cmsis", "pigweed", "nanopb"],
 )
 pirrha = register_nissa_project(
     project_name="pirrha",
