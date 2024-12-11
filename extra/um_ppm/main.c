@@ -31,6 +31,7 @@ struct extra_driver_ops {
 };
 
 struct extra_driver_ops rts5453_ops = {
+	.reset_pdc = rts5453_reset_pdc,
 	.get_info = rts5453_get_info,
 	.do_firmware_update = rts5453_do_firmware_update,
 	.smbus_lpm_open = rts5453_open,

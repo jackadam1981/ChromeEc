@@ -85,4 +85,7 @@ struct ucsi_pd_driver *rts5453_open(struct smbus_driver *smbus,
  */
 struct pd_driver_config rts5453_get_driver_config();
 
+/* Reset the PDC. */
+int rts5453_reset_pdc(struct ucsi_pd_driver* pd);
+
 #endif /* UM_PPM_RTS5453_H_ */

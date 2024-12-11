@@ -178,6 +178,50 @@ unlock:
 	return ret;
 }
 
+static int smbus_um_write_large_block_nolock(struct smbus_usermode_device *dev,
+					     uint8_t chip_address,
+					     uint8_t address, void *buf,
+					     size_t length)
+{
+	struct i2c_rdwr_ioctl_data ioctl_data;
+	struct i2c_msg msg;
+	int ret = 0;
+
+	if (length > 0xffff) {
+		ELOG("[0x%02x]: large write length exceeds u16. Break it up into chunks.",
+		     chip_address);
+		return -1;
+	}
+
+	platform_memset(&ioctl_data, 0, sizeof(ioctl_data));
+	platform_memset(&msg, 0, sizeof(msg));
+
+	dev->read_buffer[0] = address;
+	dev->read_buffer[1] = length;
+	platform_memcpy(&dev->read_buffer[2], buf, length);
+	length = length + 2;
+
+
+	/* Set up i2c message to write. */
+	msg.addr = chip_address;
+	msg.flags = 0;
+	msg.len = length;
+	msg.buf = (uint8_t *)dev->read_buffer;
+
+	ioctl_data.msgs = &msg;
+	ioctl_data.nmsgs = 1;
+
+	/* Send message via ioctl. */
+	ret = ioctl(dev->fd, I2C_RDWR, &ioctl_data);
+	if (ret < 0) {
+		ELOG("[0x%02x] I2C_RDWR failed with len=%d. Ret = %d, errno=%d / %s",
+		     chip_address, length, ret, errno, strerror(errno));
+	}
+
+
+	return ret;
+}
+
 int smbus_um_write_block(struct smbus_device *device, uint8_t chip_address,
 			 uint8_t address, void *buf, size_t length)
 {
@@ -202,11 +246,16 @@ int smbus_um_write_block(struct smbus_device *device, uint8_t chip_address,
 	}
 
 	if (dev->transport == SMBUS_TRANSPORT_I2C) {
-		dev->read_buffer[0] = length;
-		platform_memcpy(&dev->read_buffer[1], buf, length);
-		length = length + 1;
-		ret = i2c_smbus_write_i2c_block_data(dev->fd, address, length,
-						     dev->read_buffer);
+		if (length >= 32) {
+			ret = smbus_um_write_large_block_nolock(
+				dev, chip_address, address, buf, length);
+		} else {
+			dev->read_buffer[0] = length;
+			platform_memcpy(&dev->read_buffer[1], buf, length);
+			length = length + 1;
+			ret = i2c_smbus_write_i2c_block_data(dev->fd, address, length,
+							dev->read_buffer);
+		}
 	} else {
 		ret = i2c_smbus_write_block_data(dev->fd, address, length, buf);
 	}
@@ -407,6 +456,7 @@ void smbus_um_cleanup(struct smbus_driver *driver)
 	}
 }
 
+# if 0
 static int init_interrupt(struct smbus_usermode_device *dev, int gpio_chip,
 			  int gpio_line)
 {
@@ -459,6 +509,7 @@ cleanup:
 
 	return -1;
 }
+#endif
 
 struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
 				   int gpio_chip, int gpio_line,
@@ -504,11 +555,13 @@ struct smbus_driver *smbus_um_open(int bus_num, uint8_t chip_address,
 	dev->chip_address = chip_address;
 	dev->transport = transport;
 
+#if 0
 	/* Initialize the gpio lines */
 	if (init_interrupt(dev, gpio_chip, gpio_line) == -1) {
 		ELOG("Failed to initialize gpio for interrupt.");
 		goto handle_error;
 	}
+#endif
 
 	drv = calloc(1, sizeof(struct smbus_driver));
 	if (!drv) {

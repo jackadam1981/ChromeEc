@@ -1037,7 +1037,7 @@ struct ucsi_ppm_driver *ppm_open(const struct ucsi_pd_driver *pd_driver,
 
 	dev = (struct ppm_common_device *)drv->dev;
 	dev->pd = pd_driver;
-	dev->num_ports = pd_driver->get_active_port_count(NULL);
+	dev->num_ports = pd_driver->get_active_port_count(pd_driver->dev);
 	dev->per_port_status = data;
 
 	drv->init_and_wait = ppm_common_init_and_wait;
