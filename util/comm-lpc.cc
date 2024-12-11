@@ -244,6 +244,12 @@ static int ec_readmem_lpc(int offset, int bytes, void *dest)
 	return cnt;
 }
 
+static int read_byte_indexed_io(char offset)
+{
+	outb(offset, EC_LPC_ADDR_MEMMAP_INDEXED_IO);
+	return inb(EC_LPC_ADDR_MEMMAP_INDEXED_IO + 1);
+}
+
 int comm_init_lpc(void)
 {
 	int i;
@@ -280,7 +286,9 @@ int comm_init_lpc(void)
 	 * in args when it responds.
 	 */
 	if (inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID) != 'E' ||
-	    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) != 'C') {
+	    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) != 'C' ||
+	    read_byte_indexed_io(EC_MEMMAP_ID) != 'E' ||
+	    read_byte_indexed_io(EC_MEMMAP_ID + 1) != 'C') {
 		fprintf(stderr, "Missing Chromium EC memory map.\n");
 		return -5;
 	}
