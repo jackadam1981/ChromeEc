@@ -68,6 +68,30 @@ static void disable_cs_interrupt(void)
 }
 
 /*
+ * b/354870788#comment88, SPM now unexpectedly toggles the CS pin for ~0.65ms
+ * from low to high, but there is actually no ap wakeup event. This workaround
+ * applies a debounce on the CS pin for 10ms, and only if we still observed CS
+ * pin in high state, we then wake the AP; otherwise, just re-enable the
+ * interrupt and leave everything as is. Once the SPM issue is fixed, we can
+ * remove this workaround.
+ */
+static void debounce_cs_ap_wakeup(void)
+{
+	const struct gpio_dt_spec *s3_indicator_l =
+		GPIO_DT_FROM_NODELABEL(gpio_ap_in_sleep_l);
+	int debounced_val = gpio_pin_get_dt(&cs_gpio);
+
+	if (debounced_val) {
+		gpio_pin_configure_dt(s3_indicator_l, GPIO_INPUT);
+		return;
+	}
+
+	LOG_WRN("Unexpected CS pin toggle, ignored");
+	enable_cs_interrupt();
+}
+DECLARE_DEFERRED(debounce_cs_ap_wakeup);
+
+/*
  * Interrupt handler for the CS_L pin. This function is called when the AP
  * enters or exits S3 sleep.
  */
@@ -80,7 +104,7 @@ static void ap_wakeup_isr(const struct device *port, struct gpio_callback *cb,
 
 	if (val) {
 		disable_cs_interrupt();
-		gpio_pin_configure_dt(s3_indicator_l, GPIO_INPUT);
+		hook_call_deferred(&debounce_cs_ap_wakeup_data, 10 * MSEC);
 	} else {
 		gpio_pin_configure_dt(s3_indicator_l, GPIO_OUTPUT_LOW);
 	}
