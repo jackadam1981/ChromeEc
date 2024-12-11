@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7962a125_59e67dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2024-12-11T00:55:13Z",
+      "side": 1,
+      "message": "Hey Tristan Keith and Scott,  \ncan you take a look at this change to when a 15W PDO is offered?\n\nWith this change, the PDC will offer a 15W PDO to USB PD partners when the port is a Snk and 15W haven\u0027t already been allocated to another port. This adheres to a portion of the PD spec which states Snk DRPs should offer full capabilities regardless of the cable. Even though offering 7.5W is not related to the cable, we may need to follow that requirement as it is defined.\n\nI am trying to get this requirement removed for managed capability ports in the CTS. If I\u0027m able to, we can abandon this change. So far, I have gotten some pushback on removing the requirement. Other members of the CTS working group think that sending full Src Caps while operating as a sink is important for partners to determine whether or not they want to attempt a power role swap.",
+      "revId": "d360fb1e3a7570a98e4f2a5bdbbad9ffa0f49925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
