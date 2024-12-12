@@ -50,6 +50,30 @@
       ],
       "revId": "398fbfff7e6a0a0d8ff9dd80bc5dc4ac398a8fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d74d329_7dd4b444",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2024-12-12T16:55:31Z",
+      "side": 1,
+      "message": "This is not only used for unexpected error handling.  It is my understanding that this is used before e.g. the host sending a query command to the ITE chip, expecting a response.  Without clearing out the receive buffer, the host could be receiving some old buffered data, rather than the response to the request just sent.\n\nThis means that we call this a lot, and we expect to hit the timeout every time, so increasing it very much will have negative impact on the speed of flashing.  I actually thought about making the timeout a zero, so that `select()` only returns if data is already available, but I do not know exactly how that works with USB devices.  In particular, I am afraid that uServo may send USB NAK for a short while after the host has retrieved one packet, before firmware interrupt handler makes the next one available (because uServo does not use double-buffering in its USB driver.)\n\nThat being said, I am not sure that 1ms is long enough to allow the uServo interrupt handler to make next data available, and then the PC host to discover that the endpoint no longer NAK\u0027s.",
+      "parentUuid": "7edf951c_2315ee2a",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 24
+      },
+      "revId": "398fbfff7e6a0a0d8ff9dd80bc5dc4ac398a8fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
