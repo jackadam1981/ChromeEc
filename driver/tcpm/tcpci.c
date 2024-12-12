@@ -937,7 +937,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 			const uint32_t *data)
 {
 	int reg = TCPC_REG_TX_DATA;
-	int rv, cnt = 4 * PD_HEADER_CNT(header);
+	int rv, alert, cnt = 4 * PD_HEADER_CNT(header);
 
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
@@ -1005,7 +1005,8 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 	 * PRL_TX state machines running.  In this case, mark the message
 	 * discarded and don't tell the TCPC to transmit.
 	 */
-	if (tcpm_has_pending_message(port)) {
+	alert = tcpm_alert_status(port, &alert);
+	if ((alert & TCPC_REG_ALERT_RX_STATUS) || tcpm_has_pending_message(port)) {
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED);
 		return EC_ERROR_BUSY;
 	}
