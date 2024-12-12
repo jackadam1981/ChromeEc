@@ -22,6 +22,7 @@
 #include "hooks.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
+#include "power.h"
 #include "tablet_mode.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -84,6 +85,48 @@ void lid_accel_interrupt(enum gpio_signal signal)
 		lis2dw12_interrupt(signal);
 	else
 		bma4xx_interrupt(signal);
+}
+
+#define INT_RECHECK_US 5000
+
+static void check_audio_jack(void);
+DECLARE_DEFERRED(check_audio_jack);
+
+static enum power_state state = POWER_G3;
+
+enum power_state power_get_state(void)
+{
+	return state;
+}
+
+static void check_audio_jack(void)
+{
+	enum power_state powerstate;
+
+	powerstate = power_get_state();
+
+	if (powerstate == POWER_S0 || powerstate == POWER_S3S0) {
+		if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_jack_detect_l)))
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_loading_enable_l),
+				0);
+		else
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_loading_enable_l),
+				1);
+	} else {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_loading_enable_l),
+				0);
+	}
+}
+
+DECLARE_HOOK(HOOK_INIT, check_audio_jack, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_audio_jack, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_audio_jack, HOOK_PRIO_DEFAULT);
+
+void audio_jack_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&check_audio_jack_data, INT_RECHECK_US);
 }
 
 test_export_static void alt_sensor_init(void)
