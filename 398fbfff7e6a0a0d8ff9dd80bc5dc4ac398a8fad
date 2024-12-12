@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edf951c_2315ee2a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-12T01:27:14Z",
+      "side": 1,
+      "message": "1 ms seems pretty quick. if we only use this for unexpected\nerror handling, we could probably use 1 sec as an extreme example.\nat 1 ms, i\u0027m concerned that when this runs on a busy host (i.e. compile\nrunning in the background), with the data path from the EC UART TX to\nthis read being very long, it will have high jitter.",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "263e73ef_ffdb60ce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 279,
+                "startChar": 0,
+                "endLine": 280,
+                "endChar": 0
+              },
+              "replacement": "\t\ttimeout.tv_usec \u003d 1000000;\n"
+            },
+            {
+              "path": "util/itecomdbgr.cc",
+              "range": {
+                "startLine": 281,
+                "startChar": 0,
+                "endLine": 282,
+                "endChar": 0
+              },
+              "replacement": "\t\t * Ask the operating system to wait up to 1s for data to become\n"
+            }
+          ]
+        }
+      ],
+      "revId": "398fbfff7e6a0a0d8ff9dd80bc5dc4ac398a8fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
