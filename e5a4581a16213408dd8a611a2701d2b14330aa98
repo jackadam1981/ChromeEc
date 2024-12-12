@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c43e162_024937cc",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-12T09:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16412fe2_8328398e",
+      "revId": "e5a4581a16213408dd8a611a2701d2b14330aa98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "608dfa72_d14f6630",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-10-29T21:25:05Z",
       "side": 1,
       "message": "`raa489000_bist_mode[port] !\u003d true` -\u003e `!raa489000_bist_mode[port]`\n\nSame below",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 39
+      },
+      "revId": "e5a4581a16213408dd8a611a2701d2b14330aa98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e07a0a_c8aa3589",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-12T09:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "608dfa72_d14f6630",
       "range": {
         "startLine": 352,
         "startChar": 6,
