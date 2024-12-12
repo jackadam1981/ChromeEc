@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5df686a7_5402db10",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-12T16:45:07Z",
+      "side": 1,
+      "message": "Can you do something like this?\n```\nint ret \u003d ...\n\nif (ret !\u003d EC_SUCCESS)\n    return ret;\n\nconst uint32_t hdr \u003d *head;\nif (PD_HEADER_EXT(hdr) \u003d\u003d 0 \u0026\u0026 ...\n```\n\nThis if condition is pretty long and multi-faceted. I\u0027d prefer to keep it from getting more complex by adding a `ret` check in patchset 14.",
+      "parentUuid": "9c43e162_024937cc",
+      "revId": "e5a4581a16213408dd8a611a2701d2b14330aa98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "608dfa72_d14f6630",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 12
