@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "fb0b5c1392461836fc0a39a66798226092f3eabc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4d1ebf_7abe7442",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-12T16:28:18Z",
+      "side": 1,
+      "message": "If we actually allocate 3.0A to another port, we should downgrade the pd_source_advertise_max ports and send new LPM source caps on the Attached.SNK port.\n\nThe scenario I envision here:\n1. DRP source attached to port 0\n1. EC sets LPM source caps on port 0 for 3A\n1. 3A PD sink attached to port 1\n1. EC allocates 3A to port 1, and generates new LPM source caps.\n1. PD sink on port 1 requests 5V/3A\n1. Power role swap happens on port 0\n1. PDC sends source cap 5V/3A on port 0\n1. Partner on port 0 requests 5V/3A\n\nAt this point we\u0027re oversubscribed our sourcing.\n\nTo avoid this, I think bits set in pd_source_advertise_max should actually allocate 3A.  Whenever a PD sink, non-PD sink, or FRS partner wants 3A, we can downgrade the pd_source_advertise_max port.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 23
+      },
+      "revId": "fb0b5c1392461836fc0a39a66798226092f3eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
