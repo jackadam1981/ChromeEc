@@ -45,6 +45,11 @@ set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include/${C
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include/${CROSS_COMPILE_TARGET}")
 set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/picolibc/include")
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/picolibc/include")
+
+if("${ARCH}" STREQUAL "arm")
+  set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -mthumb -mno-unaligned-access") # armv7e-m
+  set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -mthumb -mno-unaligned-access")
+endif()
 ##########################################################################################################
 
 # Place orphaned sections and disable the warning for them
@@ -65,6 +70,6 @@ endif()
 # used instruction set, ABI, ISA extensions) and doesn't adapt when
 # compiler flags change any of these assumptions. Use our own mini-libgcc
 # instead.
-if("${ARCH}" STREQUAL "arm" AND NOT CONFIG_PICOLIBC)
-  set(no_libgcc True)
+if("${ARCH}" STREQUAL "arm")
+#  set(no_libgcc True)
 endif()

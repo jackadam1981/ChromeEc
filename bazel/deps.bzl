@@ -25,7 +25,7 @@ def _ec_deps_impl(module_ctx):
     )
     _coreboot_sdk_subtool(
         "arm-eabi",
-        "14.2/8adade1392d87565482ea57bfafaf7422300001e",
+        "14.2/8adade1392d87565482ea57bfafaf74223000034",
         "",
     )
     _coreboot_sdk_subtool(

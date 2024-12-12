@@ -12,7 +12,10 @@ include("${TOOLCHAIN_ROOT}/cmake/linker/${LINKER}/${COMPILER}/linker_flags.cmake
 
 # TODO(b/374997019): Remove this and make the sections not RWX.
 add_link_options("${LINKERFLAGPREFIX},--no-warn-rwx-segments")
+
+message(INFO "\n\n\n\n*************************************************************************************************\nARCH ${ARCH}\n****************************************************************************************\n\n\n")
+
 if("${ARCH}" STREQUAL "riscv")
   add_link_options("${LINKERFLAGPREFIX},--no-relax-gp")
-  add_link_options("${LINKERFLAGPREFIX},-m,elf32lriscv")
+  add_link_options("${LINKERFLAGPREFIX},-melf32lriscv")
 endif()
