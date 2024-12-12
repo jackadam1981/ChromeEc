@@ -261,7 +261,10 @@ static int fpc1145_init(const struct device *dev)
 	int attempt;
 	int res;
 
-	data->errors = FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN;
+	data->errors &= ~FINGERPRINT_ERROR_DEAD_PIXELS_MASK;
+	data->errors |= FINGERPRINT_ERROR_DEAD_PIXELS(
+		MIN(sensor_info.num_defective_pixels,
+		    FINGERPRINT_ERROR_DEAD_PIXELS_MAX));
 
 	if (IS_ENABLED(CONFIG_HAVE_FPC1145_PRIVATE_DRIVER)) {
 		/* Print the binary libfpsensor.a library version. */
