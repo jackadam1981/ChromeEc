@@ -86,6 +86,37 @@ void lid_accel_interrupt(enum gpio_signal signal)
 		bma4xx_interrupt(signal);
 }
 
+#define INT_RECHECK_US 5000
+
+static void check_audio_jack(void);
+DECLARE_DEFERRED(check_audio_jack);
+
+static void check_audio_jack(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON) ||
+	    chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_jack_detect_l)))
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_loading_enable_l),
+				0);
+		else
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_loading_enable_l),
+				1);
+	} else {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_loading_enable_l),
+				0);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, check_audio_jack, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_audio_jack, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_audio_jack, HOOK_PRIO_DEFAULT);
+
+void audio_jack_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&check_audio_jack_data, INT_RECHECK_US);
+}
+
 test_export_static void alt_sensor_init(void)
 {
 	int ret;
