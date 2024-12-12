@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86115d3c_6290bc75",
+        "filename": "zephyr/program/rauru/hylia/cbi.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-12T08:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eabd1c40_d20ed9f9",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e43db08f_3a811a40",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-12-12T07:58:48Z",
       "side": 1,
       "message": "Adjust indentation.",
+      "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7ad8a2_680f0b79",
+        "filename": "zephyr/program/rauru/hylia/i2c.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-12T08:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43db08f_3a811a40",
       "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f07ef922_8420c120",
+        "filename": "zephyr/program/rauru/hylia/i2c.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-12T08:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3ba15c_05fb853f",
+      "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae44ecc0_1c3425bb",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a0dc944_534c5238",
+        "filename": "zephyr/program/rauru/hylia/i2c.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-12T08:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae44ecc0_1c3425bb",
+      "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26f13d24_27d04d08",
@@ -88,6 +166,24 @@
       "writtenOn": "2024-12-12T07:58:48Z",
       "side": 1,
       "message": "2024",
+      "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ce58ea_9c52f4af",
+        "filename": "zephyr/program/rauru/hylia/usbc.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-12T08:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26f13d24_27d04d08",
       "revId": "ae42de6adecc8121bc7328eeacd7320337465cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
