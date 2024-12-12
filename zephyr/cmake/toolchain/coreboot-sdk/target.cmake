@@ -45,6 +45,9 @@ set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include/${C
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/include/${CROSS_COMPILE_TARGET}")
 set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/picolibc/include")
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -isystem ${COREBOOT_SDK_ROOT}/picolibc/include")
+
+set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS} -mcpu=cortex-m4 -march=armv7e-m -mthumb") # armv7e-m
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -mcpu=cortex-m4 -march=armv7e-m -mthumb")
 ##########################################################################################################
 
 # Place orphaned sections and disable the warning for them
