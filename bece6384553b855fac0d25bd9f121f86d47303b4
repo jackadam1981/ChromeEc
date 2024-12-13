@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44138f9d_eaf4f9ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-13T22:16:02Z",
+      "side": 1,
+      "message": "Using newlines does work, so I\u0027ll submit that version for now. I\u0027ve also updated the version of Renode being used, so once this change lands I can test removing this workaround.",
+      "parentUuid": "fa4252ab_1df33b24",
+      "revId": "bece6384553b855fac0d25bd9f121f86d47303b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26753206_9adc33d5",
