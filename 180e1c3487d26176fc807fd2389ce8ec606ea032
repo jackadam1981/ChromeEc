@@ -46,6 +46,30 @@
       },
       "revId": "180e1c3487d26176fc807fd2389ce8ec606ea032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d48ec98_3cb1a4d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-13T17:59:12Z",
+      "side": 1,
+      "message": "I think restart is needed. For some reason things are working on NPCX/ITE without repeat start.",
+      "parentUuid": "5653d081_d97e3980",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "180e1c3487d26176fc807fd2389ce8ec606ea032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
