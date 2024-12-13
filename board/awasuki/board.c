@@ -82,12 +82,22 @@ static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
 	pd_handle_cc_overvoltage(0);
 }
 
-/* for G2176RB1U issue */
-static void backlight_interrupt(enum gpio_signal s)
+/* for G2176RB1U issue WA */
+static void bl_pg_handle(void)
 {
+	gpio_enable_interrupt(GPIO_VBL_PG_OD);
+}
+DECLARE_DEFERRED(bl_pg_handle);
+
+static void bl_pg_interrupt(enum gpio_signal s)
+{
+	/* G2176RB1U recovery action */
 	gpio_set_level(GPIO_EC_PPVAR_BLPWR, 0);
 	crec_usleep(10 * MSEC);
 	gpio_set_level(GPIO_EC_PPVAR_BLPWR, 1);
+
+	gpio_disable_interrupt(GPIO_VBL_PG_OD);
+	hook_call_deferred(&bl_pg_handle_data, 10 * SECOND);
 }
 
 static void check_audio_jack(void);
@@ -389,7 +399,7 @@ void board_init(void)
 		hook_call_deferred(&check_c0_line_data, 0);
 
 	gpio_enable_interrupt(GPIO_USB_C0_CCSBU_OVP_ODL);
-	gpio_enable_interrupt(GPIO_VBL_PD_OD);
+	gpio_enable_interrupt(GPIO_VBL_PG_OD);
 	gpio_enable_interrupt(GPIO_JACK_DETECT);
 
 	/* Turn on 5V if the system is on, otherwise turn it off */
