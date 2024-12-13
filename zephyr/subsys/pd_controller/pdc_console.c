@@ -557,6 +557,31 @@ static int cmd_pdc_comms_state(const struct shell *sh, size_t argc, char **argv)
 	return rv;
 }
 
+static int cmd_srccap_set(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	bool high_current;
+	uint8_t port;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strncmp(argv[2], "true", strlen("true"))) {
+		high_current = true;
+	} else if (!strncmp(argv[2], "false", strlen("false"))) {
+		high_current = false;
+	} else {
+		return EC_ERROR_PARAM2;
+	}
+
+	if (pdc_power_mgmt_set_source_pdos(port, high_current)) {
+		return -EIO;
+	}
+	return 0;
+}
+
 static int cmd_pdc_src_voltage(const struct shell *sh, size_t argc, char **argv)
 {
 	int rv;
@@ -769,6 +794,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Get Vconn state for a port\n"
 		      "Usage: pdc vconn <port>",
 		      cmd_vconn_state, 2, 0),
+	SHELL_CMD_ARG(srccap_set, NULL,
+		      "Set the advertised Source Cap when operating as a sink\n"
+		      "Usage: pdc srccap_set <port> <true|false>\n",
+		      cmd_srccap_set, 3, 0),
 #ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
 	SHELL_CMD_ARG(fwupdate, NULL,
 		      "Updates TPS6699x firmware\n"

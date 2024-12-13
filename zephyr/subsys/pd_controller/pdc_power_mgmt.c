@@ -4601,6 +4601,41 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 	return rv;
 }
 
+int pdc_power_mgmt_set_source_pdos(int port, bool high_current)
+{
+	struct pdc_port_t *pdc;
+
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	pdc = &pdc_data[port]->port;
+
+	/* Only permit this command when we are a sink. */
+	if (pdc->attached_state != SNK_ATTACHED_STATE) {
+		return -EINVAL;
+	}
+
+	pdc->set_pdos = (struct set_pdos_t){
+		.type = SOURCE_PDO,
+		.count = 1,
+	};
+
+	if (high_current) {
+		LOG_INF("C%d: set source cap for 3A", port);
+		pdc->set_pdos.pdos[0] = pdc_src_pdo_max;
+	} else {
+		LOG_INF("C%d: set source cap for 1.5A", port);
+		pdc->set_pdos.pdos[0] = pdc_src_pdo_nominal;
+	}
+
+	if (public_api_block(port, CMD_PDC_SET_PDOS)) {
+		return -EIO;
+	}
+
+	return 0;
+}
+
 #ifdef CONFIG_ZTEST
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)

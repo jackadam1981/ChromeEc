@@ -650,4 +650,6 @@ int pdc_power_mgmt_ppm_ack_status_change(int port,
 int pdc_power_mgmt_get_connector_status_for_ppm(
 	int port, union connector_status_t *connector_status);
 
+int pdc_power_mgmt_set_source_pdos(int port, bool high_current);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
