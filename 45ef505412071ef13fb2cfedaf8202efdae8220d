@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead4fa5f_b2542d4f",
+        "filename": "zephyr/program/nissa/gothrax/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-12-13T06:11:11Z",
+      "side": 1,
+      "message": "Nit: This is already enabled https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/Kconfig;l\u003d16?q\u003dNISSA_BOARD_HAS_HDMI_SUPPORT\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d31",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "45ef505412071ef13fb2cfedaf8202efdae8220d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
