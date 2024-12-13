@@ -46,6 +46,30 @@
       },
       "revId": "419b129e7367caa60fe904558c895cc2f38735e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c20a60_86df3ded",
+        "filename": "util/renode/helipilot.repl",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-13T18:36:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "83ae2780_f1e9c88d",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "419b129e7367caa60fe904558c895cc2f38735e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
