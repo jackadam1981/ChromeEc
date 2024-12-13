@@ -16,6 +16,24 @@
       "message": "I don\u0027t think you need these right ?\nSince you\u0027ve got dual external display abilities.",
       "revId": "95587ce64a8a511631915ba447231485e443e5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3fd964_fa471e57",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-13T08:16:11Z",
+      "side": 1,
+      "message": "Temporarily added to distinguish it from PDC and build pass.\n\nIt will be removed later when PDC imported.",
+      "parentUuid": "02bd51df_520d28e6",
+      "revId": "95587ce64a8a511631915ba447231485e443e5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
