@@ -191,6 +191,8 @@ static int user_limited_max_mv = 20000;
 static uint8_t allow_pr_swap = 1;
 static uint8_t allow_dr_swap = 1;
 
+static uint8_t unconstrained_pwr = 1;
+
 static uint32_t max_supported_voltage(void)
 {
 	return user_limited_max_mv;
@@ -250,7 +252,7 @@ static void board_manage_dut_port(void)
 	/*
 	 * This function is called by the CHG port whenever there has been a
 	 * change in its vbus voltage or current. That change may necessitate
-	 * that the DUT port present a different Rp value or renogiate its PD
+	 * that the DUT port present a different Rp value or renegotiate its PD
 	 * contract if it is connected.
 	 */
 
@@ -379,7 +381,9 @@ static void update_ports(void)
 					 */
 					pd_src_chg_pdo[src_index] |=
 						(DUT_PDO_FIXED_FLAGS |
-						 PDO_FIXED_UNCONSTRAINED);
+						 (unconstrained_pwr ?
+							  PDO_FIXED_UNCONSTRAINED :
+							  0));
 				}
 				src_index++;
 			}
@@ -389,7 +393,9 @@ static void update_ports(void)
 			pd_src_chg_pdo[0] = PDO_FIXED_VOLT(PD_MIN_MV) |
 					    PDO_FIXED_CURR(vbus[CHG].ma) |
 					    DUT_PDO_FIXED_FLAGS |
-					    PDO_FIXED_UNCONSTRAINED;
+					    (unconstrained_pwr ?
+						     PDO_FIXED_UNCONSTRAINED :
+						     0);
 			/*
 			 * TODO: Keep Unconstrained Power knobs
 			 * exposed and well-defined.
@@ -1584,6 +1590,18 @@ static int cmd_usbc_action(int argc, const char *argv[])
 		CPRINTF("DRP = %d, host_mode = %d\n",
 			!!(cc_config & CC_ENABLE_DRP),
 			!!(cc_config & CC_ALLOW_SRC));
+	} else if (!strcasecmp(argv[1], "unconstrained_pwr")) {
+		if (argc == 2) {
+			CPRINTF("unconstrained_pwr = %d\n", unconstrained_pwr);
+			return EC_SUCCESS;
+		}
+
+		if (argc != 3)
+			return EC_ERROR_PARAM2;
+
+		unconstrained_pwr = !!atoi(argv[2]);
+		do_cc(CONF_SRC(cc_config));
+		update_ports();
 	} else if (!strcasecmp(argv[1], "chg")) {
 		int sink_v;
 
@@ -1646,5 +1664,5 @@ static int cmd_usbc_action(int argc, const char *argv[])
 }
 DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
 			"5v|12v|20v|dev|pol0|pol1|drp|dp|chg x(x=voltage)|"
-			"drswap [1|0]|prswap [1|0]",
+			"drswap [1|0]|prswap [1|0]|unconstrained_pwr [0|1]",
 			"Set Servo v4 type-C port state");
