@@ -39,6 +39,30 @@
       },
       "revId": "9e4202fd70c6d7260fddc66c9f4867a255f4bce2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab2a261_008232ee",
+        "filename": "zephyr/test/pdc/src/generic/pdc_pmc_usb_mux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-13T18:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72759b10_6bb73dd5",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "9e4202fd70c6d7260fddc66c9f4867a255f4bce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
