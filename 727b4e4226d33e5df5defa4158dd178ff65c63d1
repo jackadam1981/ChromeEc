@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38515d74_74524fb0",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Yes, rate is not used.",
+      "parentUuid": "62213979_da33e6b0",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2d044af_7c5ee660",
         "filename": "driver/als_cm36781.c",
         "patchSetId": 2
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f622e51f_daff9cfb",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Yes, offset is never set. Only scale is needed for calibration.",
+      "parentUuid": "b2d044af_7c5ee660",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2eb9144_85253d8e",
         "filename": "driver/als_cm36781.c",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2024-12-10T16:45:56Z",
       "side": 1,
       "message": "Call cm36781_read_lux() instead.",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "808b0410_a39ca83a",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d2eb9144_85253d8e",
       "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -107,6 +161,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28680c5_71599c64",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720fd5a1_be768494",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97eb5d8b_1d9aec53",
@@ -138,6 +210,24 @@
           ]
         }
       ],
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19bc9b61_b1dde08c",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97eb5d8b_1d9aec53",
       "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +267,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "011881de_04bb0448",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47715b57_6f12a512",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fba6466_d892f27a",
@@ -190,6 +298,24 @@
       "writtenOn": "2024-12-10T16:45:56Z",
       "side": 1,
       "message": "```suggestion\n    \"CM36781_I2C_ADDR_FLAGS\": \"0x51\",\n```\nReorder alphabetically.",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3053192d_8d062454",
+        "filename": "zephyr/scripts/cme.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2024-12-13T03:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fba6466_d892f27a",
       "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
