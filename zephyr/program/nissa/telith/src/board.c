@@ -27,6 +27,8 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
+#include <ap_power/ap_power.h>
+
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
 enum base_sensor_type {
@@ -213,3 +215,61 @@ static void board_init(void)
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_pp5000_s5), 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* for G2176RB1U issue WA */
+static void bl_pg_handle(void)
+{
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_blpwr_pgd))) {
+		gpio_enable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_blpwr_pgd));
+	}
+}
+DECLARE_DEFERRED(bl_pg_handle);
+
+void bl_pg_interrupt(enum gpio_signal s)
+{
+	/* G2176RB1U recovery action */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_blpwr_en), 0);
+	crec_usleep(10 * MSEC);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_blpwr_en), 1);
+
+	gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_blpwr_pgd));
+	hook_call_deferred(&bl_pg_handle_data, 50 * MSEC);
+}
+
+static void board_backlight_handler(struct ap_power_ev_callback *cb,
+				    struct ap_power_ev_data data)
+{
+	switch (data.event) {
+	default:
+		return;
+
+	case AP_POWER_STARTUP:
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_blpwr_en), 1);
+		gpio_enable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_blpwr_pgd));
+		break;
+
+	case AP_POWER_HARD_OFF:
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_blpwr_pgd));
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_blpwr_en), 0);
+		break;
+	}
+}
+
+static int install_backlight_handler(void)
+{
+	static struct ap_power_ev_callback cb;
+	/*
+	 * Add a callback for start/hardoff to
+	 * control the backlight load swith.
+	 */
+	ap_power_ev_init_callback(&cb, board_backlight_handler,
+				  AP_POWER_STARTUP | AP_POWER_HARD_OFF);
+	ap_power_ev_add_callback(&cb);
+
+	return 0;
+}
+
+SYS_INIT(install_backlight_handler, APPLICATION, 1);
