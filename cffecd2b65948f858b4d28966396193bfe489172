@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a8d4b1_50124d6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-16T18:01:34Z",
+      "side": 1,
+      "message": "Ideally, this diagram would be embedded in our general PDC architecture documentation, but it looks like we don\u0027t really have any in this location. Can you stub out a `pdc.md` and embed this diagram in that, so people navigating the documentation can find it? We should probably have more information in that file, but we can add that later.",
+      "revId": "cffecd2b65948f858b4d28966396193bfe489172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
