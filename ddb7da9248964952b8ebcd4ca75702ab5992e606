@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ddb7da9248964952b8ebcd4ca75702ab5992e606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68157775_170bfe0e",
+        "filename": "power/mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-12-16T08:02:20Z",
+      "side": 1,
+      "message": "is this a temporary workaround or a long term fix for the \"some platform\"?",
+      "range": {
+        "startLine": 310,
+        "startChar": 21,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "ddb7da9248964952b8ebcd4ca75702ab5992e606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
