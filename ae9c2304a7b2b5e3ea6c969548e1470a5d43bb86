@@ -22,6 +22,30 @@
       },
       "revId": "ae9c2304a7b2b5e3ea6c969548e1470a5d43bb86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba5e9b9_3c4a692a",
+        "filename": "zephyr/program/rauru/hylia/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2024-12-16T05:57:57Z",
+      "side": 1,
+      "message": "Do we need to change the file name to gpio.dtsi?",
+      "parentUuid": "b5da33bc_e7d718a1",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "ae9c2304a7b2b5e3ea6c969548e1470a5d43bb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
