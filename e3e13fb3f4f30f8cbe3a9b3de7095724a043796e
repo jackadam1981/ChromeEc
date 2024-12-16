@@ -16,6 +16,30 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "e3e13fb3f4f30f8cbe3a9b3de7095724a043796e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de6e58d3_02bd15be",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-16T07:23:06Z",
+      "side": 1,
+      "message": "\u003e \"intermeidate\" is a possible misspelling of \"intermediate\".\n\nPlease fix.",
+      "parentUuid": "dfa7eae9_0ac07986",
+      "range": {
+        "startLine": 309,
+        "startChar": 16,
+        "endLine": 309,
+        "endChar": 28
+      },
+      "revId": "e3e13fb3f4f30f8cbe3a9b3de7095724a043796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
