@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89a0f2b_b411007b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-16T22:53:34Z",
+      "side": 1,
+      "message": "wanted to double check if this is an active-high signal by design.\nis the design for the CSE to stay in RO unless the EC \"permits\" the\nswitch to RW by pulling this signal low?\n\non rex, we used\n`(GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)`\nwhich seems to be applicable here given the `EC_SOC_REC_SWITCH_ODL`\nnet name on this EC board.",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
