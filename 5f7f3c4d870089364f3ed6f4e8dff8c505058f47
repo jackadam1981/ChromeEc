@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573d1b3e_228d6760",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-16T17:00:11Z",
+      "side": 1,
+      "message": "Nit - we don\u0027t usually document the non-GPIO pins in this file.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2e2380_56c8ef02",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-16T17:00:11Z",
+      "side": 1,
+      "message": "I would prefer the ptlgcs board just define its own power_signals.dtsi.  This just makes it harder to trace that power sequencing code is configured correctly.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c27b110_23010bf6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-16T17:00:11Z",
+      "side": 1,
+      "message": "Will EC software sync be supported on this board?  If yes, please open a bug and reference here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
