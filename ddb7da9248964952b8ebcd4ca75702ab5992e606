@@ -39,6 +39,30 @@
       },
       "revId": "ddb7da9248964952b8ebcd4ca75702ab5992e606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75177134_b383134b",
+        "filename": "power/mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-16T09:00:06Z",
+      "side": 1,
+      "message": "This is a long-term fix that should not have any side effects for all MTK platforms. S3 should be a state that can be transitioned to once the AP successfully boots.",
+      "parentUuid": "68157775_170bfe0e",
+      "range": {
+        "startLine": 310,
+        "startChar": 21,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "ddb7da9248964952b8ebcd4ca75702ab5992e606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
