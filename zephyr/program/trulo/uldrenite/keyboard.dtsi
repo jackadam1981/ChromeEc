@@ -1,4 +1,4 @@
-<<<<<<< HEAD   (6af72f Rull/Roric/Ruke：Modify keyboard type)
+<<<<<<< HEAD   (6aef9d Revert "zephyr: zmake: Set CC when calling binman")
 =======
 /* Copyright 2024 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
@@ -60,6 +60,7 @@
 	pinctrl-names = "default", "sleep";
 	row-size = <8>;
 	col-size = <13>;
+	settle-time-us = <80>;
 
 	kso-gpio {
 		compatible = "cros-ec,col-gpio";
@@ -118,4 +119,4 @@
 		pin30-gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
 	};
 };
->>>>>>> CHANGE (6294a9 keyboard_input: add a dedicated col2 settle delay)
+>>>>>>> CHANGE (23fc06 drivers: runtime_keys: get the volume up key from the vivald)
