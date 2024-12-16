@@ -22,6 +22,30 @@
       },
       "revId": "4010ff531935b14bb267712d603edcc2f899b4a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35304236_08657ec5",
+        "filename": "zephyr/program/rauru/hylia/cbi.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-12-16T03:50:09Z",
+      "side": 1,
+      "message": "Yes, and it seems we need this correction on Rauru series as well.\nb:341659416#comment27",
+      "parentUuid": "dd6e982c_14eed605",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "4010ff531935b14bb267712d603edcc2f899b4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
