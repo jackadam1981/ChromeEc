@@ -160,8 +160,8 @@ orisa = register_nissa_project(
     chip="npcx9/npcx9m3f",
     kconfig_files=[
         here / "program.conf",
-        here / "orisa" / "project.conf",
         here / "npcx_program.conf",
+        here / "orisa" / "project.conf",
         here / "orisa.conf",
     ],
     modules=["ec", "cmsis", "pigweed", "nanopb"],
@@ -228,7 +228,7 @@ register_ish_project(
     kconfig_files=[
         here / "orisa-ish" / "prj.conf",
         # Uncomment the following line for UART support
-        # here / "orisa-ish" / "debug.conf",
+        here / "orisa-ish" / "debug.conf",
         here / "orisa.conf",
     ],
     modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
