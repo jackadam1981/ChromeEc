@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453125f6_9786fd9e",
+        "filename": "zephyr/program/intelrvp/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2024-12-16T20:00:55Z",
+      "side": 1,
+      "message": "nit: Zephyr has a `add_subdirectory_ifdef()` cmake function you can use.",
+      "revId": "cfb401d1291096ac4ef8160e7f4cce3ef7de6ed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
