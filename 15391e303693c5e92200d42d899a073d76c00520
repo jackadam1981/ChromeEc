@@ -16,6 +16,24 @@
       "message": "This addresses:\n\n```\nwarning: orphan section `.tbss\u0027 from `/home/jpmurphy/.cache/bazel/_bazel_jpmurphy/e517ea39ecb43168812d1d21bda62f96/external/_main~ec_deps~ec-coreboot-sdk-arm-eabi/picolibc/lib/libc.a(libc_errno_errno.c.o)\u0027 being placed in section `.tbss\u0027\n```\n\nNeed a better long term fix",
       "revId": "15391e303693c5e92200d42d899a073d76c00520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a50acf_0d7e5d3d",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-12-16T23:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1444b6b8_19e7f113",
+      "revId": "15391e303693c5e92200d42d899a073d76c00520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
