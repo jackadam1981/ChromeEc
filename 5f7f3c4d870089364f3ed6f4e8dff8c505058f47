@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f824ff2_c8b0075b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-16T17:36:49Z",
+      "side": 1,
+      "message": "ACK. The GPIOs are listed in an anti-clockwise direction as they appear in the schematics. We believe this makes it easier to trace and configure the pins as the project progresses. Is it acceptable to keep this format, or would you prefer to change it?",
+      "parentUuid": "573d1b3e_228d6760",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d2e2380_56c8ef02",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b6e576f_a133ea8e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-16T17:36:49Z",
+      "side": 1,
+      "message": "ACK. The initial thought process was to avoid code duplication and apply any fixes to a single file. Is it acceptable to keep this format, or would you prefer to change it?",
+      "parentUuid": "7d2e2380_56c8ef02",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c27b110_23010bf6",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.conf",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2024-12-16T17:00:11Z",
       "side": 1,
       "message": "Will EC software sync be supported on this board?  If yes, please open a bug and reference here.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2174eede_9238a680",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-16T17:36:49Z",
+      "side": 1,
+      "message": "ACK. Yes, we plan to support S/W sync, I will refernce a bug",
+      "parentUuid": "8c27b110_23010bf6",
       "range": {
         "startLine": 23,
         "startChar": 0,
