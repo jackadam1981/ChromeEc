@@ -303,8 +303,19 @@ static enum power_state power_get_signal_state(void)
 			return POWER_G3;
 		return POWER_S5;
 	}
-	if (power_get_signals() & IN_SUSPEND_ASSERTED)
-		return POWER_S3;
+	if (power_get_signals() & IN_SUSPEND_ASSERTED) {
+		/*
+		 * (b:339210285#comment77) This is a cold boot from S5/G3. We
+		 * ignore the intermediate SUSPEND state, and treat it as S0.
+		 * This is because Some platform the signal is SW controlled,
+		 * and it takes time to release the pin.
+		 */
+		if (is_exiting_off) {
+			return POWER_S0;
+		} else {
+			return POWER_S3;
+		}
+	}
 	return POWER_S0;
 }
 
@@ -404,6 +415,8 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S0:
+		/* Off state exited. */
+		is_exiting_off = false;
 		if (next_state != POWER_S0)
 			return POWER_S0S3;
 		break;
