@@ -22,6 +22,30 @@
       },
       "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193aa62d_58ab9011",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-16T23:05:01Z",
+      "side": 1,
+      "message": "from CL:5856920 looks like the GPIO has to be low at init and high only in manual recovery mode.\nODL is added as SOC gpio is 1.8V (pull present on RVP) and EC gpio is 3.3V.",
+      "parentUuid": "a89a0f2b_b411007b",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
