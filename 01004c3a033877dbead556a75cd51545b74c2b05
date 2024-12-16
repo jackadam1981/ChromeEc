@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "944c5766_799acb4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-12-16T05:09:50Z",
+      "side": 1,
+      "message": "Ah... totally forgot this one",
+      "parentUuid": "11c8c266_b6441b0c",
+      "revId": "01004c3a033877dbead556a75cd51545b74c2b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d3921a6_937fcc1c",
@@ -63,6 +81,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "700b301b_75070f64",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-12-16T05:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d3921a6_937fcc1c",
+      "revId": "01004c3a033877dbead556a75cd51545b74c2b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94eb3ae0_46081495",
@@ -76,6 +112,30 @@
       "writtenOn": "2024-11-12T23:11:13Z",
       "side": 1,
       "message": "Nit: These would be easier to read as `%04x` or `0x%04x`.",
+      "range": {
+        "startLine": 540,
+        "startChar": 31,
+        "endLine": 540,
+        "endChar": 33
+      },
+      "revId": "01004c3a033877dbead556a75cd51545b74c2b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad78fe81_76b15637",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-12-16T05:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94eb3ae0_46081495",
       "range": {
         "startLine": 540,
         "startChar": 31,
