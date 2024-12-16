@@ -63,6 +63,30 @@
       },
       "revId": "ddb7da9248964952b8ebcd4ca75702ab5992e606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe49403_8f0d8c57",
+        "filename": "power/mt8186.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-16T09:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75177134_b383134b",
+      "range": {
+        "startLine": 310,
+        "startChar": 21,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "ddb7da9248964952b8ebcd4ca75702ab5992e606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
