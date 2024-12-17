@@ -441,6 +441,7 @@ class Renode(Platform):
             if board_config.name == BLOONCHIPPER:
                 if zephyr and test_name in [
                     "abort",  # TODO(b/384094781)
+                    "exception",  # TODO(b/388327673)
                     # TODO(b/382705460): We have seen this flake in the CQ.
                     # Re-enable when missing character bug is fixed.
                     "flash_physical",
@@ -455,7 +456,6 @@ class Renode(Platform):
                 ]:
                     return True
             if test_name in [
-                "exception",
                 "rtc_stm32f4",  # TODO(b/384991107)
             ]:
                 return True
