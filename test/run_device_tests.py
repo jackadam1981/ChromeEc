@@ -431,7 +431,6 @@ class Renode(Platform):
                 "benchmark",
                 "exception",
                 "fpsensor_hw",
-                "libcxx",
                 "power_utilization",
                 "rtc_stm32f4",
                 "timer_dos",  # TODO(b/374798079)
@@ -443,7 +442,6 @@ class Renode(Platform):
                 "benchmark",
                 "exception",
                 "fpsensor_hw",
-                "libcxx",
                 "otp_key",
                 "power_utilization",
                 "ram_lock",
