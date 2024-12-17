@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bc7e078_5a827d7b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-17T19:23:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree this makes it easier because the developer and reviewer have to make sure the comment gets updated with any signal changes in the future.\n\nI won\u0027t block this CL on this issue.",
+      "parentUuid": "19a08f2c_3b8b9b0a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d2e2380_56c8ef02",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
         "patchSetId": 4
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "ACK. The initial thought process was to avoid code duplication and apply any fixes to a single file. Is it acceptable to keep this format, or would you prefer to change it?",
       "parentUuid": "7d2e2380_56c8ef02",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc94ae94_0257e29b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-17T19:23:13Z",
+      "side": 1,
+      "message": "I prefer you create a separate power_signals.dtsi for each EC chip.\n\nCaveh and I have meeting setup to discuss this further.  I\u0027ll let you know what we decide.",
+      "parentUuid": "8b6e576f_a133ea8e",
       "range": {
         "startLine": 10,
         "startChar": 0,
