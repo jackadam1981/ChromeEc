@@ -65,6 +65,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "hammer",
     "hoho",
     "jewel",
+    "whitebeard",
     "kakadu",
     "kappa",
     "katsu",
