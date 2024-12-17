@@ -443,7 +443,6 @@ class Renode(Platform):
                 ]:
                     return True
             if test_name in [
-                "exception",
                 "rtc_stm32f4",  # TODO(b/384991107)
                 "timer_dos",  # TODO(b/374798079)
             ]:
