@@ -22,6 +22,29 @@
       },
       "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d7ef85_96f9a122",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-17T21:50:12Z",
+      "side": 1,
+      "message": "devicetree error: /mnt/host/source/src/platform/ec/zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts:109 (column 1): parse error: undefined node label \u0027kbd\u0027\ndevicetree error: /mnt/host/source/src/platform/ec/zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts:109 (column 1): parse error: undefined node label \u0027kbd\u0027\nCMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:303 (execute_process):\nCMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:303 (execute_process):",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
