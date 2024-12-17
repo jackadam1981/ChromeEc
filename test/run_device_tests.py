@@ -424,7 +424,6 @@ class Renode(Platform):
             # TODO(b/356476313): Remove these when Renode is fixed.
             if test_name in [
                 "production_app_test",
-                "benchmark",
                 "exception",
                 "fpsensor_hw",
                 "libcxx",
@@ -436,7 +435,6 @@ class Renode(Platform):
         elif board_config.name in [HELIPILOT, BUCCANEER]:
             if test_name in [
                 "production_app_test",
-                "benchmark",
                 "exception",
                 "fpsensor_hw",
                 "libcxx",
