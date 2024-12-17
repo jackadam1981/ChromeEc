@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d4a8ac_8c5409a4",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-17T22:24:35Z",
+      "side": 1,
+      "message": "Done\nRemoved the comments",
+      "parentUuid": "9bc7e078_5a827d7b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d2e2380_56c8ef02",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "For now, using a single `power_signals.dtsi` with the macros is okay.",
       "parentUuid": "cc94ae94_0257e29b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106844a2_2eeea981",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-17T22:24:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f4eab49f_fb7ba418",
       "range": {
         "startLine": 10,
         "startChar": 0,
