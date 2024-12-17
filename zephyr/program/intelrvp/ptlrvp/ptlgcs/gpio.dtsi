@@ -250,6 +250,7 @@
 		};
 		ec-h1-packet-mode-r {
 			gpios = <MCHP_GPIO_DECODE_101 GPIO_INPUT>;
+			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		wp_test: tp-bgp2 {
 			gpios = <MCHP_GPIO_DECODE_102 GPIO_INPUT>;
