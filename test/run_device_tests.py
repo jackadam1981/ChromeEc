@@ -414,6 +414,7 @@ class Renode(Platform):
 
         # Tests failures that are independent of the board.
         if test_name in [
+            "power_utilization",  # Can't measure power on Renode.
             "production_app_test",  # TODO(b/384740370)
         ]:
             return True
@@ -439,7 +440,6 @@ class Renode(Platform):
                 "exception",
                 "fpsensor_hw",
                 "libcxx",
-                "power_utilization",
                 "rtc_stm32f4",
                 "timer_dos",  # TODO(b/374798079)
             ]:
@@ -451,7 +451,6 @@ class Renode(Platform):
                 "fpsensor_hw",
                 "libcxx",
                 "otp_key",
-                "power_utilization",
                 "ram_lock",
                 "rtc_npcx9",
             ]:
