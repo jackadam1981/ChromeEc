@@ -85,6 +85,11 @@ register_corsola_project(
     chip="npcx9/npcx9m3f",
 )
 
+register_corsola_project(
+    project_name="ponyta360",
+    chip="npcx9/npcx9m3f",
+)
+
 register_corsola_project("chinchou")
 register_corsola_project("woobat")
 register_corsola_project(
@@ -117,6 +122,7 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="krabby", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="kyogre", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="magikarp", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ponyta", addr=0x7FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ponyta360", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="starmie", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="steelix", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="tentacruel", addr=0xBFFE0)
