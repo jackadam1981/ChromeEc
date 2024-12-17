@@ -410,6 +410,12 @@ class Renode(Platform):
         ]:
             return True
 
+        # Tests failures that are independent of the board.
+        if test_name in [
+            "production_app_test",  # TODO(b/384740370)
+        ]:
+            return True
+
         if board_config.name in [BLOONCHIPPER, DARTMONKEY]:
             if board_config.name == BLOONCHIPPER:
                 if test_name in [
@@ -427,7 +433,6 @@ class Renode(Platform):
                     return True
             # TODO(b/356476313): Remove these when Renode is fixed.
             if test_name in [
-                "production_app_test",
                 "benchmark",
                 "fpsensor_hw",
                 "libcxx",
@@ -438,7 +443,6 @@ class Renode(Platform):
                 return True
         elif board_config.name in [HELIPILOT, BUCCANEER]:
             if test_name in [
-                "production_app_test",
                 "benchmark",
                 "exception",  # TODO(b/384730599)
                 "fpsensor_hw",
