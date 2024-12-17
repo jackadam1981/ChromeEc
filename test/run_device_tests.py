@@ -429,7 +429,6 @@ class Renode(Platform):
             if test_name in [
                 "production_app_test",
                 "benchmark",
-                "exception",
                 "fpsensor_hw",
                 "libcxx",
                 "power_utilization",
@@ -441,7 +440,6 @@ class Renode(Platform):
             if test_name in [
                 "production_app_test",
                 "benchmark",
-                "exception",
                 "fpsensor_hw",
                 "libcxx",
                 "otp_key",
