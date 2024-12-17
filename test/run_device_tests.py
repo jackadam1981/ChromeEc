@@ -1024,6 +1024,13 @@ GWENDOLIN_CONFIG = copy.deepcopy(HELIPILOT_CONFIG)
 GWENDOLIN_CONFIG.name = GWENDOLIN
 GWENDOLIN_CONFIG.sensor_type = FPSensorType.EGIS
 GWENDOLIN_CONFIG.mpu_regex = DATA_ACCESS_VIOLATION_20098000_REGEX
+GWENDOLIN_CONFIG.fp_power_supply = "pp3300_fp_mw"
+GWENDOLIN_CONFIG.expected_fp_power = PowerUtilization(
+    idle=RangedValue(0.25, 0.3), sleep=RangedValue(0.25, 0.3)
+)
+GWENDOLIN_CONFIG.expected_mcu_power = PowerUtilization(
+    idle=RangedValue(27.0, 7.0), sleep=RangedValue(2.7, 2.5)
+)
 
 BOARD_CONFIGS = {
     "bloonchipper": BLOONCHIPPER_CONFIG,
