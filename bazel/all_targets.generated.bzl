@@ -821,6 +821,10 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "felino",
+        board = "felino",
+    )
+    ec_target(
         name = "felwinter",
         baseboard = "brya",
         board = "felwinter",
@@ -1931,6 +1935,11 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "ponyta360",
+        board = "ponyta360",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "poppy",
         board = "poppy",
         chip = "npcx",
@@ -2344,17 +2353,12 @@ def all_targets():
     ec_target(
         name = "trulo",
         board = "trulo",
-        extra_modules = ["cmsis"],
+        extra_modules = ["cmsis", "picolibc", "pigweed"],
     )
     ec_target(
         name = "trulo-ti",
         board = "trulo-ti",
-        extra_modules = ["cmsis"],
-    )
-    ec_target(
-        name = "uldrenite",
-        board = "uldrenite",
-        extra_modules = ["cmsis"],
+        extra_modules = ["cmsis", "picolibc", "pigweed"],
     )
     ec_target(
         name = "twinkie",
@@ -2366,6 +2370,11 @@ def all_targets():
     ec_target(
         name = "uldren",
         board = "uldren",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
+        name = "uldrenite",
+        board = "uldrenite",
         extra_modules = ["cmsis"],
     )
     ec_target(
@@ -2418,13 +2427,6 @@ def all_targets():
         board = "volteer",
         chip = "npcx",
         core = "cortex-m",
-        zephyr = False,
-    )
-    ec_target(
-        name = "volteer_ish",
-        board = "volteer_ish",
-        chip = "ish",
-        core = "minute-ia",
         zephyr = False,
     )
     ec_target(
