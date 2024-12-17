@@ -444,7 +444,6 @@ class Renode(Platform):
                     return True
             # TODO(b/356476313): Remove these when Renode is fixed.
             if test_name in [
-                "exception",
                 "rtc_stm32f4",
                 "timer_dos",  # TODO(b/374798079)
             ]:
