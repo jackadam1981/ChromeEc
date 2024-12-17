@@ -6,6 +6,7 @@
 #include "board_id.h"
 #include "board_space.h"
 #include "console.h"
+#include "endian.h"
 #include "extension.h"
 #include "flash_info.h"
 #include "util.h"
@@ -248,7 +249,9 @@ print_sn_data:
 				"RMA: %02x\n"
 				"SN: %08x %08x %08x\n",
 				sn.version, sn.rma_status,
-				sn.sn_hash[0], sn.sn_hash[1], sn.sn_hash[2]);
+				be32toh(sn.sn_hash[0]),
+				be32toh(sn.sn_hash[1]),
+				be32toh(sn.sn_hash[2]));
 
 		break;
 	default:
