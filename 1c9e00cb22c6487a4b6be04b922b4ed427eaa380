@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c127b226_32325610",
+        "filename": "zephyr/program/nissa/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-12-17T09:16:34Z",
+      "side": 1,
+      "message": "quandiso2",
+      "fixSuggestions": [
+        {
+          "fixId": "86bddd31_ba567891",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/BUILD.py",
+              "range": {
+                "startLine": 178,
+                "startChar": 0,
+                "endLine": 179,
+                "endChar": 0
+              },
+              "replacement": "quandiso2 \u003d register_nissa_project(\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1c9e00cb22c6487a4b6be04b922b4ed427eaa380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
