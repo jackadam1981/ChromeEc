@@ -13,7 +13,6 @@
 #include "zephyr_adc.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
-
 int board_set_active_charge_port(int port)
 {
 	int i;
