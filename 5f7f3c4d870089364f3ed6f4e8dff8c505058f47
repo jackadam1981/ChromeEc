@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4eab49f_fb7ba418",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-17T21:53:58Z",
+      "side": 1,
+      "message": "For now, using a single `power_signals.dtsi` with the macros is okay.",
+      "parentUuid": "cc94ae94_0257e29b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "5f7f3c4d870089364f3ed6f4e8dff8c505058f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c27b110_23010bf6",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.conf",
         "patchSetId": 4

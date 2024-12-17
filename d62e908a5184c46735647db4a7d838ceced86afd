@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64de5c5_1104b7ca",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-17T21:53:58Z",
+      "side": 1,
+      "message": "Should the PTLGCS have a servod overlay?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "d62e908a5184c46735647db4a7d838ceced86afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c95212_f2ac81a6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/include/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-17T21:53:58Z",
+      "side": 1,
+      "message": "The macros to find the correct I2C controller can be eliminated.  See b/384773566 for details.  But this can be done as a follow up CL.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "d62e908a5184c46735647db4a7d838ceced86afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
