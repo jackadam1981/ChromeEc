@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18d68d07_8b4a641c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-12-17T02:06:23Z",
+      "side": 1,
+      "message": "we might need to write a better commit msg as this feature is already enabled and this CL tries to configure the GPIO to active low signal.\n\nAlso, please test if the existing CSE RO to RW switch behaviour remains unchanged with this CL.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a89a0f2b_b411007b",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 1
