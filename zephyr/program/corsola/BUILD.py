@@ -109,6 +109,11 @@ register_corsola_project(
     inherited_from=["staryu"],
 )
 
+register_corsola_project(
+    project_name="ponyta360",
+    chip="npcx9/npcx9m3f",
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="chinchou", addr=0xBFFE0)
@@ -127,3 +132,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="skitty", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="veluza", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="squirtle", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="wyrdeer", addr=0xBFFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ponyta360", addr=0x7FFE0)

@@ -1931,6 +1931,11 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "ponyta360",
+        board = "ponyta360",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "poppy",
         board = "poppy",
         chip = "npcx",
