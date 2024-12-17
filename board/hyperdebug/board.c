@@ -5,6 +5,7 @@
 /* HyperDebug board configuration */
 
 #include "adc.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "ec_version.h"
 #include "queue_policies.h"
@@ -20,6 +21,10 @@
 
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
+
+int stm32_pllm = 4;
+int stm32_plln = 55;
+int stm32_pllr = 2;
 
 void board_config_pre_init(void)
 {
@@ -178,6 +183,46 @@ struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+static int command_clock_set(int argc, const char **argv)
+{
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	char *e;
+	int desired_clock_freq = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	if (desired_clock_freq > 110000000 || desired_clock_freq < 32000000 ||
+	    desired_clock_freq % 2000000 != 0)
+		return EC_ERROR_PARAM2;
+
+	/* Temporarily switch off the PLL as clock source. */
+	clock_set_osc(OSC_HSI, OSC_INIT);
+
+	/*
+	 * Update PLL divisors.
+	 */
+
+	/* HSI (16MHz) / M must stay within 4MHz - 16MHz. */
+	stm32_pllm = 4;
+
+	/* Above frequency * N must stay within 64MHz - 344MHz. */
+	stm32_plln = desired_clock_freq / 2000000;
+
+	/* Above frequency / R must not exceed 110MHz. */
+	stm32_pllr = 2;
+
+	/* Switch to PLL clock source, using newly updated divisors. */
+	clock_set_osc(OSC_PLL, OSC_HSI);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND_FLAGS(
+	clock_set, command_clock_set, "clock_set [Hz]",
+	"Valid range: 32,000,000 to 110,000,000 in increments of 2,000,000",
+	CMD_FLAG_RESTRICTED);
+
 /******************************************************************************
  * Initialize board.  (More initialization done by hooks in other files.)
  */
@@ -222,6 +267,17 @@ DECLARE_HOOK(HOOK_REINIT, usart_reinit_all, HOOK_PRIO_DEFAULT);
 
 static int command_reinit(int argc, const char **argv)
 {
+	/* Temporarily switch off the PLL as clock source. */
+	clock_set_osc(OSC_HSI, OSC_INIT);
+
+	/* Update PLL divisors to default ones, for maximum clock of 110MHz. */
+	stm32_pllm = 4;
+	stm32_plln = 55;
+	stm32_pllr = 2;
+
+	/* Switch to PLL clock source, using newly updated divisors. */
+	clock_set_osc(OSC_PLL, OSC_HSI);
+
 	/* Let every module know to re-initialize to power-on state. */
 	hook_notify(HOOK_REINIT);
 	return EC_SUCCESS;
