@@ -1466,7 +1466,9 @@ void tc_start_error_recovery(int port)
 	 *   The port should transition to the ErrorRecovery state
 	 *   from any other state when directed.
 	 */
+	pd_record_timestamp_start(port, PD_INTERVAL_TC_STATE_CHANGE);
 	set_state_tc(port, TC_ERROR_RECOVERY);
+	pd_record_timestamp_end(port, PD_INTERVAL_TC_STATE_CHANGE);
 }
 
 static void restart_tc_sm(int port, enum usb_tc_state start_state)
@@ -2738,6 +2740,7 @@ static void tc_attached_snk_run(const int port)
 
 static void tc_attached_snk_exit(const int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_ATTACHED_SNK_EXIT);
 	if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP)) {
 		/*
 		 * If supplying VCONN, the port shall cease to supply
@@ -2771,6 +2774,7 @@ static void tc_attached_snk_exit(const int port)
 	pd_timer_disable(port, TC_TIMER_CC_DEBOUNCE);
 	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 	pd_timer_disable(port, TC_TIMER_VBUS_DEBOUNCE);
+	pd_record_timestamp_end(port, PD_INTERVAL_ATTACHED_SNK_EXIT);
 }
 
 /**
@@ -3874,11 +3878,17 @@ static void tc_cc_rp_entry(const int port)
  */
 static void tc_cc_open_entry(const int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_CC_OPEN_ENTRY);
+	pd_record_timestamp_end(port, PD_INTERVAL_ERR_REC_FLAG);
+	pd_record_timestamp_start(port, PD_INTERVAL_VBUS_OFF);
 	/* Ensure we are not sourcing Vbus */
 	tc_src_power_off(port);
+	pd_record_timestamp_end(port, PD_INTERVAL_VBUS_OFF);
 
 	/* Disable VCONN */
+	pd_record_timestamp_start(port, PD_INTERVAL_VCONN_OFF);
 	set_vconn(port, 0);
+	pd_record_timestamp_end(port, PD_INTERVAL_VCONN_OFF);
 
 	/*
 	 * Ensure we disable discharging before setting CC lines to open.
@@ -3890,8 +3900,10 @@ static void tc_cc_open_entry(const int port)
 	 * sure the TCPC has managed its internal states for disconnecting
 	 * the only source of power it has.
 	 */
+	pd_record_timestamp_start(port, PD_INTERVAL_DISABLE_ADD);
 	if (battery_is_present())
 		tcpm_enable_auto_discharge_disconnect(port, 0);
+	pd_record_timestamp_end(port, PD_INTERVAL_DISABLE_ADD);
 
 	/*
 	 * We may brown out after applying CC open, so flush console first.
@@ -3899,13 +3911,19 @@ static void tc_cc_open_entry(const int port)
 	 * browning out, don't do it so we can meet certain compliance timing
 	 * requirements.
 	 */
+	pd_record_timestamp_start(port, PD_INTERVAL_PRINT);
 	CPRINTS_L1("C%d: Applying CC Open!", port);
+	pd_record_timestamp_end(port, PD_INTERVAL_PRINT);
 	if (!battery_is_present())
 		cflush();
 
 	/* Remove terminations from CC */
+	pd_record_timestamp_start(port, PD_INTERVAL_UPDATE_CC);
 	typec_select_pull(port, TYPEC_CC_OPEN);
 	typec_update_cc(port);
+	pd_record_timestamp_end(port, PD_INTERVAL_UPDATE_CC);
+	pd_record_timestamp_end(port, PD_INTERVAL_ERR_REC);
+	pd_record_timestamp_end(port, PD_INTERVAL_GOODCRC_TO_ERR_REC);
 
 	/*
 	 * While we've disconnected the partner, leave any OCP counts in place
@@ -3913,6 +3931,8 @@ static void tc_cc_open_entry(const int port)
 	 */
 	tc_set_partner_role(port, PPC_DEV_DISCONNECTED, OCP_NO_ACTION);
 	tc_detached(port);
+	pd_record_timestamp_start(port, PD_INTERVAL_CC_OPEN_ENTRY);
+	pd_print_timestamps(port);
 }
 
 void tc_set_debug_level(enum debug_level debug_level)
