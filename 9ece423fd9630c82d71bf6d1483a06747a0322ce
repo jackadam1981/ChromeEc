@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e7edf4_736ff221",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-18T19:01:50Z",
+      "side": 1,
+      "message": "how about adding a Kconfig default it to 2.\nlet board file select this number?\nalso refernce the bug in Kconfig.",
+      "range": {
+        "startLine": 152,
+        "startChar": 38,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "9ece423fd9630c82d71bf6d1483a06747a0322ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
