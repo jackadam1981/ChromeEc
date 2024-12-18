@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bfa234_8d19c73c",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2024-12-18T21:16:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9aa6f77c_a9670b1f",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 3
+      },
+      "revId": "e1c943b5c9264a892491fd80f9998d5f1fdfc540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c59735_99a09621",
@@ -89,6 +113,30 @@
       "writtenOn": "2024-12-18T09:37:21Z",
       "side": 1,
       "message": "Format the style via `cros format`.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 8
+      },
+      "revId": "e1c943b5c9264a892491fd80f9998d5f1fdfc540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0681b152_31edb724",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2024-12-18T21:16:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "10c59735_99a09621",
       "range": {
         "startLine": 290,
         "startChar": 0,
