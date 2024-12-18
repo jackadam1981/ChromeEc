@@ -5,8 +5,10 @@
  * IT83xx chip-specific part of the IRQ handling.
  */
 
+#include "builtin/assert.h"
 #include "common.h"
 #include "irq_chip.h"
+#include "panic.h"
 #include "registers.h"
 #include "util.h"
 
@@ -67,6 +69,10 @@ static const struct {
 int cpu_int_entry_number;
 #endif
 
+#ifdef CONFIG_IT83XX_INTERRUPT_STORM_DETECTION
+static int __latest_interrupt_number, __interrupt_count;
+#endif
+
 int chip_get_ec_int(void)
 {
 	extern volatile int ec_int;
@@ -97,6 +103,21 @@ int chip_get_ec_int(void)
 	if (chip_get_intc_group(ec_int) >= 16)
 		return -1;
 #endif
+
+#ifdef CONFIG_IT83XX_INTERRUPT_STORM_DETECTION
+	if (ec_int != __latest_interrupt_number) {
+		__latest_interrupt_number = ec_int;
+		__interrupt_count = 1;
+	} else {
+		if (++__interrupt_count > CONFIG_IT83XX_INTERRUPT_STORM_COUNT) {
+			panic_printf("INT %d is triggered (%d) continuously.",
+				     __latest_interrupt_number,
+				     __interrupt_count);
+			ASSERT(0);
+		}
+	}
+#endif
+
 	return ec_int;
 }
 

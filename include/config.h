@@ -3050,6 +3050,15 @@
 #undef CONFIG_IT83XX_I2C_CMD_QUEUE
 
 /*
+ * Assert failure if an interrupt is triggered over
+ * CONFIG_IT83XX_INTERRUPT_STORM_COUNT times continuously.
+ * This can be used to catch symptom where interrupt pending status is not
+ * cleared properly, causing interrupt to fire again and again.
+ */
+#undef CONFIG_IT83XX_INTERRUPT_STORM_DETECTION
+#define CONFIG_IT83XX_INTERRUPT_STORM_COUNT 30000
+
+/*
  * Enable it if EC's VBAT won't go low when system's power isn't
  * presented (no battery and no AC)
  * If EC's VSTBY and VBAT(power source of BRAM) aren't connected to the same
