@@ -1654,6 +1654,47 @@ enum cable_outlet {
 /* Maximum power consumption while in Sink Standby */
 #define PD_SNK_STDBY_MW 2500
 
+enum pd_debug_interval {
+	PD_INTERVAL_GOODCRC_TO_ERR_REC,
+	PD_INTERVAL_SENDER_RESPONSE,
+	PD_INTERVAL_INT_TO_INT_TASK,
+	PD_INTERVAL_ERR_REC,
+	PD_INTERVAL_ERR_REC_FLAG,
+	PD_INTERVAL_PE_STATE_CHANGE,
+	PD_INTERVAL_TC_STATE_CHANGE,
+	PD_INTERVAL_ATTACHED_SNK_EXIT,
+	PD_INTERVAL_VCONN_OFF_SNK_EXIT,
+	PD_INTERVAL_DISABLE_ADD_SNK_EXIT,
+	PD_INTERVAL_STOP_SNK,
+	PD_INTERVAL_CC_OPEN_ENTRY,
+	PD_INTERVAL_SRT_DISABLE,
+	PD_INTERVAL_VBUS_OFF,
+	PD_INTERVAL_VCONN_OFF_CC_OPEN,
+	PD_INTERVAL_DISABLE_ADD_CC_OPEN,
+	PD_INTERVAL_PRINT,
+	PD_INTERVAL_UPDATE_CC,
+	PD_INTERVAL_COUNT,
+};
+
+enum pd_interval_point {
+	PD_START,
+	PD_END,
+};
+
+struct pd_debug_timestamps {
+	timestamp_t start;
+	timestamp_t end;
+};
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts);
+
+void pd_record_timestamp_start(int port, enum pd_debug_interval interval);
+
+void pd_record_timestamp_end(int port, enum pd_debug_interval interval);
+
+void pd_print_timestamps(int port);
+
 /* --- Policy layer functions --- */
 
 /** Schedules the interrupt handler for the TCPC on a high priority task. */

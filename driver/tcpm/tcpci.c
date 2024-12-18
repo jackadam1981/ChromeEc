@@ -1208,6 +1208,10 @@ void tcpci_tcpc_alert(int port)
 	bool bist_mode;
 	timestamp_t alert_ts = get_time();
 
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
+		pd_record_timestamp(port, PD_INTERVAL_INT_TO_INT_TASK, PD_END,
+				    alert_ts);
+
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
 		CPRINTS("C%d: Failed to read alert register", port);
