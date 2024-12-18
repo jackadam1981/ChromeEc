@@ -2336,6 +2336,11 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			 */
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
 					t_sender_response - offset);
+			pd_record_timestamp(port, PD_INTERVAL_SENDER_RESPONSE,
+					    PD_START, tx_success_ts);
+			pd_record_timestamp(port,
+					    PD_INTERVAL_GOODCRC_TO_ERR_REC,
+					    PD_START, tx_success_ts);
 			return PE_MSG_SEND_COMPLETED;
 		}
 		return PE_MSG_SEND_PENDING;
@@ -5281,8 +5286,9 @@ static void pe_prs_src_snk_send_swap_run(int port)
 	 *   2) Message was discarded.
 	 */
 	if ((msg_check & PE_MSG_DISCARDED) ||
-	    pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE))
+	    pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
 		set_state_pe(port, PE_SRC_READY);
+	}
 }
 
 static void pe_prs_src_snk_send_swap_exit(int port)
@@ -5494,6 +5500,64 @@ static void pe_prs_snk_src_source_on_exit(int port)
 	tc_pr_swap_complete(port, PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
 }
 
+struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
+				[PD_INTERVAL_COUNT] = { 0 };
+const char *pd_ts_name[] = {
+	"GoodCRC to CC open",
+	"SenderResponseTimer",
+	"Error Recovery",
+	"Error Recovery flag",
+	"PE state change",
+	"TC state change",
+	"Attached.SNK exit",
+	"CC open entry",
+	"SenderResponseTimer disable",
+	"VBUS off",
+	"VCONN off",
+	"Disable ADD",
+	"Print",
+	"Update CC",
+};
+BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts)
+{
+	struct pd_debug_timestamps *debug_ts = &pd_ts[port][interval];
+
+	if (point == PD_START)
+		debug_ts->start = ts;
+	else
+		debug_ts->end = ts;
+}
+
+inline void pd_record_timestamp_start(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_START, get_time());
+}
+
+inline void pd_record_timestamp_end(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_END, get_time());
+}
+
+void pd_print_timestamps(int port)
+{
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
+		ccprintf("C%d timestamps:\n", port);
+
+		for (int i = 0; i < PD_INTERVAL_COUNT; ++i) {
+			uint32_t start = pd_ts[port][i].start.le.lo;
+			uint32_t end = pd_ts[port][i].end.le.lo;
+
+			ccprintf("%s: %u to %u = %d\n", pd_ts_name[i], start,
+				 end, time_until(start, end));
+		}
+	}
+
+	memset(pd_ts, 0, sizeof(pd_ts));
+}
+
 /**
  * PE_PRS_SNK_SRC_Send_Swap
  * PE_FRS_SNK_SRC_Send_Swap
@@ -5580,6 +5644,7 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 *   1) The SenderResponseTimer times out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
+		pd_record_timestamp_end(port, PD_INTERVAL_SENDER_RESPONSE);
 		set_state_pe(port, pe_in_frs_mode(port) ?
 					   PE_WAIT_FOR_ERROR_RECOVERY :
 					   PE_SNK_READY);
@@ -5594,12 +5659,16 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	if (pe_in_frs_mode(port) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		pd_record_timestamp_start(port, PD_INTERVAL_PE_STATE_CHANGE);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+		pd_record_timestamp_end(port, PD_INTERVAL_PE_STATE_CHANGE);
 	}
 }
 
 static void pe_prs_snk_src_send_swap_exit(int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_ERR_REC);
+	pd_record_timestamp_start(port, PD_INTERVAL_ERR_REC_FLAG);
 	pe_sender_response_msg_exit(port);
 }
 
