@@ -4,4 +4,4 @@
 
 target_sources(app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/usbc.c)
 
-zephyr_library_sources("src/kb_backlight.c")
+zephyr_library_sources("src/kb_backlight.c" "src/board.c")
