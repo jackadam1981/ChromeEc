@@ -198,26 +198,49 @@ static int command_clock_set(int argc, const char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	char *e;
-	int desired_clock_freq = strtoi(argv[1], &e, 0);
+	int req_freq = strtoi(argv[1], &e, 0);
+	int plln, pllr;
 	if (*e)
 		return EC_ERROR_PARAM1;
 
-	if (desired_clock_freq > 110000000 || desired_clock_freq < 32000000) {
+	/*
+	 * We restrict ourselves to a PLL input frequency of 4MHz, which is
+	 * then multiplied by a value N in the range 16 though 86 and divided
+	 * by R: 2, 4, or 8.  This allows producing any frequency between
+	 * 10MHz and 110MHz with no more than +/- 1.5% deviation.
+	 */
+	if (req_freq > 110000000 || req_freq < 10000000) {
 		ccprintf("Error: Clock frequency out of range\n");
 		return EC_ERROR_PARAM1;
 	}
-	if (desired_clock_freq % 2000000 != 0) {
-		ccprintf(
-			"Error: Clock frequency must be multiple of 2000000\n");
+	if (req_freq >= 32000000 && req_freq % 2000000 == 0) {
+		plln = req_freq / 2000000;
+		pllr = 2;
+	} else if (req_freq >= 16000000 && req_freq % 1000000 == 0) {
+		plln = req_freq / 1000000;
+		pllr = 4;
+	} else if (req_freq >= 8000000 && req_freq % 500000 == 0) {
+		plln = req_freq / 500000;
+		pllr = 8;
+	} else {
+		ccprintf("Error: Clock frequency not supported\n");
 		return EC_ERROR_PARAM1;
+	}
+
+	if (plln > 86) {
+		ccprintf("Error: Clock frequency not supported\n");
 	}
 
 	int peripheral_clock_div = strtoi(argv[2], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM2;
-	if (desired_clock_freq / peripheral_clock_div < 16000000) {
+	if (req_freq / peripheral_clock_div < 10000000) {
+		/*
+		 * The STM32L5 USB peripheral requires an APB1 clock frequency
+		 * of at least 10MHz for correct operation.
+		 */
 		ccprintf(
-			"Error: Peripheral frequency must be at least 16000000,"
+			"Error: Peripheral frequency must be at least 10000000,"
 			" reduce the divisor\n");
 		return EC_ERROR_PARAM2;
 	}
@@ -259,10 +282,10 @@ static int command_clock_set(int argc, const char **argv)
 	stm32_pllm = 4;
 
 	/* Above frequency * N must stay within 64MHz - 344MHz. */
-	stm32_plln = desired_clock_freq / 2000000;
+	stm32_plln = plln;
 
 	/* Above frequency / R must not exceed 110MHz. */
-	stm32_pllr = 2;
+	stm32_pllr = pllr;
 
 	/* Switch to PLL clock source, using newly updated divisors. */
 	clock_set_osc(OSC_PLL, OSC_HSI);
