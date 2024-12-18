@@ -16,6 +16,24 @@
       "message": "The sub board definition of Nissa is not exactly the same as Gothrax. Gothrax HDMI sub board has LTE. The LTE power rail control should be enabled. Why do you use the common Nissa sub board code?",
       "revId": "c4953086c519f9c7b09338c89a2b31b270f10ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d457c64_2fc1c3e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2024-12-18T02:11:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4454c7_2300374d",
+      "revId": "c4953086c519f9c7b09338c89a2b31b270f10ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
