@@ -46,6 +46,76 @@
       },
       "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607bde2c_118b4ec2",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-18T00:58:39Z",
+      "side": 1,
+      "message": "Putting the closing brace on the next line is fine.\n\nHowever, this nodelabel should be added to the `i2c.dtsi` file instead of this overlay.  The `fatcat_it82002aw/i2c.dtsi` already has a reference to i2c1 and i2c4.\n\nThis matches what you did for the ptlrvp boards.",
+      "parentUuid": "1ba62174_79f88711",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c235ddb_c098aeab",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-18T00:58:39Z",
+      "side": 1,
+      "message": "Move to `i2c.dtsi` in the same directory.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ca5d36_66338e7e",
+        "filename": "zephyr/program/fatcat/felino/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-18T00:58:39Z",
+      "side": 1,
+      "message": "Move to `i2c.dtsi` in this same directory.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
