@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b59fc9_3d49c0c5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-18T23:43:55Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nIf I modify this to 2, I get this error message:\n```\nINFO: Flashing done.\nINFO: Restoring servo settings...\nDEBUG:Running command: \"dut-control fw_wp_state:force_off\"\nDEBUG:Running command: \"dut-control fpmcu_pp3300:pp3300\"\nINFO:Running test: \"fpsensor_hw\"\nDEBUG:Calling pre-test callback\nDEBUG:Running command: \"dut-control fp_sensor_sel:2\"\nProblem with [\u0027fp_sensor_sel:2\u0027] :: format value asserts bits outside mask\nERROR:pre-test callback failed, aborting\nTest \"fpsensor_hw\": FAILED\n```",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "589a5cdf_5c672566",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 206,
+                "startChar": 0,
+                "endLine": 207,
+                "endChar": 0
+              },
+              "replacement": "    EGIS \u003d 2\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fea7941730cfed5987f6ebf07db15680a34a67e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
