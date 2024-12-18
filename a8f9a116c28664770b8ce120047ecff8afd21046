@@ -16,6 +16,67 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a8f9a116c28664770b8ce120047ecff8afd21046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c10ec23_b367ca8a",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-18T22:12:11Z",
+      "side": 1,
+      "message": "not convinced this needs to be a parameter.\nseems reasonable to assume `EC_LPC_ADDR_MEMMAP_INDEXED_IO`\nsince the function name implies this.",
+      "range": {
+        "startLine": 247,
+        "startChar": 36,
+        "endLine": 247,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "412f8189_c4bee829",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 247,
+                "startChar": 0,
+                "endLine": 248,
+                "endChar": 0
+              },
+              "replacement": "static int read_byte_indexed_io(char offset)\n"
+            },
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 249,
+                "startChar": 0,
+                "endLine": 251,
+                "endChar": 0
+              },
+              "replacement": "\toutb(offset, EC_LPC_ADDR_MEMMAP_INDEXED_IO);\n\treturn inb(EC_LPC_ADDR_MEMMAP_INDEXED_IO + 1);\n"
+            },
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 291,
+                "startChar": 0,
+                "endLine": 295,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (read_byte_indexed_io(EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t\t    read_byte_indexed_io(EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a8f9a116c28664770b8ce120047ecff8afd21046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
