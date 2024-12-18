@@ -1841,6 +1841,97 @@ static int command_gpio_dac_bang(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
+static bool setup_timer(int gpio, uint32_t prescaler, uint64_t divisor)
+{
+	const int timer_no = pwm_pins[gpio].timer_no;
+	timer_ctlr_t *const tim = pwm_pins[gpio].timer_regs;
+	if (timer_pwm_use[timer_no].num_channels_in_use == 0) {
+		/* We are first user of this timer. */
+
+		/* Enable timer clock. */
+		__hw_timer_enable_clock(timer_no, 1);
+
+		/* Disable counter during setup (should be already). */
+		tim->cr1 = 0x0000;
+
+		tim->psc = prescaler - 1;
+		tim->arr = DIV_ROUND_NEAREST(divisor, prescaler) - 1;
+
+		/* Output, PWM mode 1, preload enable. */
+		tim->ccmr1 = (6 << 12) | BIT(11) | (6 << 4) | BIT(3);
+		tim->ccmr2 = (6 << 12) | BIT(11) | (6 << 4) | BIT(3);
+		return false;
+	}
+	if (tim->psc == prescaler - 1 &&
+	    tim->arr == DIV_ROUND_NEAREST(divisor, prescaler) - 1) {
+		/* Timer happens to already run at the period we want. */
+		return false;
+	}
+
+	if (timer_pwm_use[timer_no].num_channels_in_use == 1) {
+		/*
+		 * As the pin we have been asked to set up is currently the only
+		 * user of this timer, we can switch timer frequency.
+		 */
+		tim->cr1 = 0x0000;
+		tim->psc = prescaler - 1;
+		tim->arr = DIV_ROUND_NEAREST(divisor, prescaler) - 1;
+		return false;
+	}
+
+	/*
+	 * This timer is already running at a different period (value of arr and
+	 * prescaler) used for PWM on another pin, we cannot set up what was
+	 * asked.
+	 */
+	return true;
+}
+
+static void enable_timer_output_channel(int gpio, uint32_t prescaler,
+					uint64_t high_count)
+{
+	const int timer_no = pwm_pins[gpio].timer_no;
+	timer_ctlr_t *const tim = pwm_pins[gpio].timer_regs;
+	tim->ccr[pwm_pins[gpio].channel] =
+		DIV_ROUND_NEAREST(high_count, prescaler);
+
+	/* Output enable. Set active high/low. */
+	tim->ccer |= 1 << ((pwm_pins[gpio].channel - 1) * 4);
+
+	if (tim->cr1 == 0) {
+		/*
+		 * Generate update event to force immediate loading of shadow
+		 * registers, (otherwise the counter might have to run to 16-bit
+		 * overflow before the new value of ARR took effect).
+		 */
+		tim->egr |= 1;
+
+		/* Not all timers have BDTR register. */
+		if (timer_no == 1 || timer_no >= 8)
+			tim->bdtr |= STM32_TIM_BDTR_MOE;
+
+		/* Enable auto-reload preload, start counting. */
+		tim->cr1 |= BIT(7) | BIT(0);
+	}
+}
+
+static void disable_timer_output_channel(int gpio)
+{
+	const int timer_no = pwm_pins[gpio].timer_no;
+	timer_ctlr_t *const tim = pwm_pins[gpio].timer_regs;
+	/* Clear output enable bit for this channel. */
+	tim->ccer &= ~(1U << ((pwm_pins[gpio].channel - 1) * 4));
+
+	if (--timer_pwm_use[timer_no].num_channels_in_use > 0)
+		return;
+
+	/* Last PWM user of this timer gone, stop the timer. */
+	tim->cr1 = 0x0000;
+
+	/* Disable timer clock. */
+	__hw_timer_enable_clock(timer_no, 0);
+}
+
 static int command_gpio_pwm(int argc, const char **argv)
 {
 	if (argc < 4)
@@ -1854,31 +1945,24 @@ static int command_gpio_pwm(int argc, const char **argv)
 		return EC_ERROR_PARAM2;
 	}
 
-	timer_ctlr_t *const tim = pwm_pins[gpio].timer_regs;
 	const int timer_no = pwm_pins[gpio].timer_no;
 	const int current_pin =
 		timer_pwm_use[timer_no]
 			.channel_pin[(pwm_pins[gpio].channel - 1)];
 
 	if (strcasecmp(argv[3], "off") == 0) {
-		if (current_pin != gpio)
-			return EC_SUCCESS;
-
-		timer_pwm_use[timer_no]
-			.channel_pin[(pwm_pins[gpio].channel - 1)] = GPIO_COUNT;
-
-		/* Clear output enable bit for this channel. */
-		tim->ccer &= ~(1U << ((pwm_pins[gpio].channel - 1) * 4));
-
-		if (--timer_pwm_use[timer_no].num_channels_in_use > 0)
-			return EC_SUCCESS;
-
-		/* Last PWM user of this timer gone, stop the timer. */
-		tim->cr1 = 0x0000;
-
-		/* Disable timer clock. */
-		__hw_timer_enable_clock(timer_no, 0);
+		if (current_pin == gpio) {
+			timer_pwm_use[timer_no]
+				.channel_pin[(pwm_pins[gpio].channel - 1)] =
+				GPIO_COUNT;
+			disable_timer_output_channel(gpio);
+		}
 		return EC_SUCCESS;
+	}
+	if (current_pin != GPIO_COUNT && current_pin != gpio) {
+		ccprintf("Error: PWM on %s conflicts with %s\n", argv[2],
+			 gpio_list[current_pin].name);
+		return EC_ERROR_PARAM2;
 	}
 
 	if (argc < 5)
@@ -1924,72 +2008,29 @@ static int command_gpio_pwm(int argc, const char **argv)
 		return EC_ERROR_PARAM2;
 	}
 
-	if (timer_pwm_use[timer_no].num_channels_in_use == 0) {
-		/* Enable timer clock. */
-		__hw_timer_enable_clock(timer_no, 1);
-
-		/* Disable counter during setup (should be already). */
-		tim->cr1 = 0x0000;
-
-		tim->psc = prescaler - 1;
-		tim->arr = DIV_ROUND_NEAREST(divisor, prescaler) - 1;
-
-		/* Output, PWM mode 1, preload enable. */
-		tim->ccmr1 = (6 << 12) | BIT(11) | (6 << 4) | BIT(3);
-		tim->ccmr2 = (6 << 12) | BIT(11) | (6 << 4) | BIT(3);
-
-	} else if (tim->psc != prescaler - 1 ||
-		   tim->arr != DIV_ROUND_NEAREST(divisor, prescaler) - 1) {
-		if (timer_pwm_use[timer_no].num_channels_in_use == 1 &&
-		    current_pin == gpio) {
-			/* We can switch timer frequency. */
-			tim->cr1 = 0x0000;
-			tim->psc = prescaler - 1;
-			tim->arr = DIV_ROUND_NEAREST(divisor, prescaler) - 1;
-		} else {
-			/*
-			 * Cannot change timer frequency without affecting
-			 * existing PWM on another channel of this same timer.
-			 */
-			for (int j = 0; j < 3; j++) {
-				int other_pin =
-					timer_pwm_use[timer_no].channel_pin[j];
-				if (other_pin == GPIO_COUNT)
-					continue;
-				ccprintf(
-					"Error: PWM frequency of %s conflicts with %s\n",
-					argv[2], gpio_list[other_pin].name);
-				return EC_ERROR_PARAM2;
-			}
-			/*
-			 * Loop above should have found at least one non-empty
-			 * entry, since num_channels_in_use is non-zero.
-			 */
-			panic("PWM invariant");
-		}
-	}
-
-	tim->ccr[pwm_pins[gpio].channel] =
-		DIV_ROUND_NEAREST(high_count, prescaler);
-
-	/* Output enable. Set active high/low. */
-	tim->ccer |= 1 << ((pwm_pins[gpio].channel - 1) * 4);
-
-	if (tim->cr1 == 0) {
+	if (setup_timer(gpio, prescaler, divisor)) {
 		/*
-		 * Generate update event to force immediate loading of shadow
-		 * registers, (otherwise the counter might have to run to 16-bit
-		 * overflow before the new value of ARR took effect).
+		 * Cannot change timer frequency without affecting
+		 * existing PWM on another channel of this same timer.
 		 */
-		tim->egr |= 1;
-
-		/* Not all timers have BDTR register. */
-		if (timer_no == 1 || timer_no >= 8)
-			tim->bdtr |= STM32_TIM_BDTR_MOE;
-
-		/* Enable auto-reload preload, start counting. */
-		tim->cr1 |= BIT(7) | BIT(0);
+		for (int j = 0; j < 3; j++) {
+			int other_pin = timer_pwm_use[timer_no].channel_pin[j];
+			if (other_pin == GPIO_COUNT)
+				continue;
+			ccprintf(
+				"Error: PWM frequency of %s conflicts with %s\n",
+				argv[2], gpio_list[other_pin].name);
+			return EC_ERROR_PARAM2;
+		}
+		/*
+		 * Loop above should have found at least one non-empty
+		 * entry, since num_channels_in_use is non-zero.
+		 */
+		panic("PWM invariant");
 	}
+
+	enable_timer_output_channel(gpio, prescaler, high_count);
+
 	if (current_pin == GPIO_COUNT) {
 		timer_pwm_use[timer_no]
 			.channel_pin[(pwm_pins[gpio].channel - 1)] = gpio;
