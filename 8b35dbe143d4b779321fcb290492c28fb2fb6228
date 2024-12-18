@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45044b6a_a7b501c6",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-18T01:22:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607bde2c_118b4ec2",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c235ddb_c098aeab",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef099679_95e82aa5",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-18T01:22:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c235ddb_c098aeab",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05ca5d36_66338e7e",
@@ -108,6 +156,30 @@
       "writtenOn": "2024-12-18T00:58:39Z",
       "side": 1,
       "message": "Move to `i2c.dtsi` in this same directory.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "8b35dbe143d4b779321fcb290492c28fb2fb6228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ea3cf2_c4abb835",
+        "filename": "zephyr/program/fatcat/felino/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-18T01:22:45Z",
+      "side": 1,
+      "message": "Done\nfelino is project is not using these macros hence deleted",
+      "parentUuid": "05ca5d36_66338e7e",
       "range": {
         "startLine": 15,
         "startChar": 0,
