@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9b5d0c_219773f5",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-12-19T03:03:14Z",
+      "side": 1,
+      "message": "maybe better to list in order.",
+      "fixSuggestions": [
+        {
+          "fixId": "3150e2db_2300d665",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/build_with_clang.py",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "util/build_with_clang.py",
+              "range": {
+                "startLine": 87,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": "    \"whitebeard\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdfad7d18f5fbf9b91e082d02ff675a2f501c4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
