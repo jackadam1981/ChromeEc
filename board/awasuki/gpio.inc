@@ -22,7 +22,7 @@ GPIO_INT(VCCIN_AUX_VID1,	PIN(K, 1), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PG_VCCIO_EXT_OD,	PIN(D, 7), GPIO_INT_BOTH, baseboard_all_sys_pgood_interrupt)
 GPIO_INT(ESPI_RESET_L, 	 	PIN(D, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V, espi_reset_pin_asserted_interrupt)
 GPIO_INT(H1_EC_PWR_BTN_ODL,	PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_UP, power_button_interrupt)
-GPIO_INT(DOOR_OPEN_EC,		PIN(L, 3), GPIO_INT_FALLING, door_open_interrupt)
+
 
 #ifdef CONFIG_LOW_POWER_IDLE
 /* Used to wake up the EC from Deep Doze mode when writing to console */
@@ -120,6 +120,7 @@ GPIO(GPIOI7_NC, PIN(I, 7), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOJ4_NC, PIN(J, 4), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOJ5_NC, PIN(J, 5), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOJ6_NC, PIN(J, 6), GPIO_INPUT | GPIO_PULL_DOWN)
+GPIO(GPIOL3_NC,	PIN(L, 3), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOM6_NC, PIN(M, 6), GPIO_INPUT | GPIO_PULL_DOWN)
 
 /* Alternate functions GPIO definitions */
