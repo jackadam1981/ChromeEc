@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ada0ee21_26f6ff71",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-19T18:36:00Z",
+      "side": 1,
+      "message": "\u003e about first question, I use the pe_src_ready_run condition to identified the BIST message. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d2911?q\u003dpe_src_ready_run\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch,\n\nThe [logic](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d2967;drc\u003d1903d805d7568b3bd5e150dcb7ddff2abd94c08b) in `pe_src_ready_run`, copied here, checks if a message is a BIST message. There is also logic in `pe_bist_tx_entry` to [check the message\u0027s BIST mode](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d5725;drc\u003d1903d805d7568b3bd5e150dcb7ddff2abd94c08b) (copied here) and to [check that VBUS is valid for entering BIST mode](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d5708;drc\u003d1903d805d7568b3bd5e150dcb7ddff2abd94c08b) (not copied here).\n\nWhat I\u0027m suggesting is that rather than try to replicate the VBUS check here to match the one in `pe_bist_tx_entry`, we should refactor the code to have a single function to check VBUS and call it here.\n\nIdeally, we could have a single function called at this location to identify a BIST test data message and check VBUS. Even more ideally, that function would be called here and in the PE. However, that would require a larger refactor and might make the surrounding PE code harder to read.\n\nI\u0027d say the code structures that seem the most maintainable to me are probably\n1. A single function to check that VBUS is valid for BIST, called both here and in the PE. This could be something like `bool pd_vbus_valid_for_bist(int port);`.\n2. The PE code stays otherwise the same, with `pe_src_ready_run` checking the message type and `pe_bist_tx_entry` checking the BIST mode.\n3. A function in this driver (for now) that checks the message type and BIST field directly and also checks `pd_vbus_valid_for_bist`. That could be something like `static bool raa489000_tcpm_should_enter_bist_mode(int port, uint32_t header, uint32_t bdo);`.\n4. `raa489000_tcpm_get_message_raw` calls `raa489000_tcpm_should_enter_bist_mode(port, hdr, payload[0])` here.",
+      "parentUuid": "a9659c43_e6d83533",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ab57de5_e70cbe56",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 11
@@ -130,6 +148,24 @@
       "writtenOn": "2024-09-20T22:14:41Z",
       "side": 1,
       "message": "IIUC, the effect of calling `tcpci_set_bist_test_mode` here is to do it in the PD interrupt task, rather than waiting for the PD interrupt task to signal the PD task, which will run the PE to process the message. This basically makes `pe_bist_tx_entry` a no-op.\n\nThere are some potential problems with this, and it\u0027s not my favorite way to do it (see above comment).\n\nWhat is the BIST entry latency with and without this function? Could you get a similar reduction by reducing downtime in the PD-interrupt-task to PD-task-event to PE-BIST-entry chain? The latter would be my preferred solution. For instance, could you check for BIST message type here, and then set a flag that triggers higher-priority event handling in the PE (a mechanism we\u0027d need to create)?",
+      "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e67602_b3424273",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-19T18:36:00Z",
+      "side": 1,
+      "message": "\u003e for the second question, we set bist mode at the first BIST message, but before at PE stage, EC will set the bist mode at the second BIST message.\n\nCan you elaborate on this? Before this change, the first message should have ultimately caused the PE to put the TCPC in BIST mode, although the second message may have arrived by the time that happened. IIUC, this change just decreases the latency of putting the TCPC in BIST mode in response to the first message.\n\nWhat I\u0027m asking is, did you measure the components of the latency between receiving the first BIST message and entering BIST test mode? If so, what were the components of that latency? How much time does the context switch from the PD interrupt task (this function) to the PD task (`pe_bist_tx_entry`) take?\n\nIf you didn\u0027t take those measurements, that\u0027s OK, but I\u0027ll need to solve this problem in general for other TCPCs, so I\u0027d be interested in any measurements you took.",
+      "parentUuid": "c59c39b3_dbca8b3b",
       "revId": "168d46c021c044d241f3b800dc871b55dd9e3e0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
