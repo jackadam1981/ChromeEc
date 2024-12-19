@@ -27,18 +27,6 @@
 
 #include <sys/stat.h>
 
-/**
- * Reboot the system.
- *
- * This function is called from libc functions such as abort() or exit().
- *
- * @param rc exit code
- */
-void _exit(int rc)
-{
-	panic_printf("%s called with rc: %d\n", __func__, rc);
-	software_panic(PANIC_SW_EXIT, task_get_current());
-}
 
 /**
  * Write to the UART.

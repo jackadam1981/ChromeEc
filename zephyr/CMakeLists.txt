@@ -513,6 +513,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ROLLBACK
                                                 "${PLATFORM_EC}/common/rollback.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SBRK
                                                 "${PLATFORM_EC}/libc/sbrk.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_EXIT
+                                                "${PLATFORM_EC}/libc/exit.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SHA256_SW
                                                 "${PLATFORM_EC}/common/sha256.c")
 if (NOT DEFINED CONFIG_PLATFORM_EC_SHA256_HW_ZEPHYR)
