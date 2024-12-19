@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3574553a_94440cc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2024-12-19T03:13:09Z",
+      "side": 1,
+      "message": "Seems pdc_power_mgmt_resync_port_state_for_ppm just rename to pdc_power_mgmt_wait_for_sync recently ([refer](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5958537)).",
+      "revId": "239a00af1924a31eeb0cba636cc68b4e941b6e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
