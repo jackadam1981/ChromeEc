@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2d6b0e_d8c6fd77",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-12-19T19:34:04Z",
+      "side": 1,
+      "message": "Can you be a bit more clear about what this value is suposed to be and what the TODO si requesting?\n\nLike Egis should be represented by `2` (0b10) using two binary select lines. Add an additional servo conntrolled gpio to represent the second bit...",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 3
+      },
+      "revId": "c94e967bee340a0b1bbbf348a6bc9ccf3e7aa54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
