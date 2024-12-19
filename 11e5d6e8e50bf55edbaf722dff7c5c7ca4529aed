@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f73ddce_11f76243",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-19T07:14:04Z",
+      "side": 1,
+      "message": "about first question, I use the pe_src_ready_run condition to identified the BIST message.  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d2911?q\u003dpe_src_ready_run\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch,  \nfor the second question, we set bist mode at the first BIST message, but before at PE stage, EC will set the bist mode at the second BIST message.",
+      "parentUuid": "1b04ed20_23649c2d",
+      "revId": "11e5d6e8e50bf55edbaf722dff7c5c7ca4529aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c3f4a49_78ccd3f0",
