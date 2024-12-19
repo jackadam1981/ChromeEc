@@ -22,6 +22,30 @@
       },
       "revId": "7110a7f246405869344fb95cdc670a73f3c39c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3579c5a_98032099",
+        "filename": "zephyr/program/nissa/gothrax/overlay.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2024-12-19T04:31:46Z",
+      "side": 0,
+      "message": "gpio-en-usb-a1-vbus \u003d \u0026gpio_sb_2;\n\ngpio-en-sub-s5-rails \u003d \u0026gpio_sb_2;\n\ngpio-en-usb-a1-vbus and gpio-en-sub-s5-rails are the same pin (gpio_sb_2), and we EE confirmed that our motherboard does not use gpio_sb_2 to control\nThe LTE module, if defined here, will cause a pin to be controlled by two positions at the same time, causing impact.\nI think the configuration is consistent with the actual situation and should be removed.",
+      "parentUuid": "6fa46bcc_11d09a51",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "7110a7f246405869344fb95cdc670a73f3c39c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
