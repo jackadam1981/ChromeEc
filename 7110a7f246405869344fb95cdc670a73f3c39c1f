@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa46bcc_11d09a51",
+        "filename": "zephyr/program/nissa/gothrax/overlay.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-12-19T03:46:10Z",
+      "side": 0,
+      "message": "Why did you remove this alias? It should be defined for sub_board.c.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "7110a7f246405869344fb95cdc670a73f3c39c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
