@@ -1,0 +1,66 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82dd2faf_42c35825",
+        "filename": "zephyr/program/corsola/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-12-19T07:45:50Z",
+      "side": 1,
+      "message": "can we sort this? e.q. move to below of ponyta",
+      "fixSuggestions": [
+        {
+          "fixId": "c79fde1d_aeed4615",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/corsola/BUILD.py",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "register_corsola_project(\n    project_name\u003d\"ponyta360\",\n    chip\u003d\"npcx9/npcx9m3f\",\n)\n\n"
+            },
+            {
+              "path": "zephyr/program/corsola/BUILD.py",
+              "range": {
+                "startLine": 112,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "d6f2fc89f1bdc656f3cc1483d641417eee4e0b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ef95aa_22493ee3",
+        "filename": "zephyr/program/corsola/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2024-12-19T07:45:50Z",
+      "side": 1,
+      "message": "move to",
+      "revId": "d6f2fc89f1bdc656f3cc1483d641417eee4e0b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
