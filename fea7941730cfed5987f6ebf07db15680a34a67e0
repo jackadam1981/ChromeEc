@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79f83fd_7ce33017",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-19T18:23:05Z",
+      "side": 1,
+      "message": "I added those",
+      "parentUuid": "5c93edc3_d5e60ce5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "fea7941730cfed5987f6ebf07db15680a34a67e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b59fc9_3d49c0c5",
@@ -79,6 +103,30 @@
       "side": 1,
       "message": "I\u0027m guessing it\u0027s because servo expects `fp_sensor_sel` to be a single GPIO, so it can only be `0` or `1`. We\u0027ll probably need to hook these up as `fp_sensor_sel0` and `fp_sensor_sel1` and toggle it, but I\u0027m not sure if those two signals are [available on all boards](http://go/cros-fingerprint-reference-designs#fingerprint-sensor-select).\n\nCan you file a bug and add a `TODO` here?",
       "parentUuid": "f4b59fc9_3d49c0c5",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 12
+      },
+      "revId": "fea7941730cfed5987f6ebf07db15680a34a67e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dbeed7_271939d9",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-19T18:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "753d0cec_7f065c9f",
       "range": {
         "startLine": 206,
         "startChar": 0,
