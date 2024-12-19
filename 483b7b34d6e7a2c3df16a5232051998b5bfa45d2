@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9a2fee_a410d0ae",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-19T01:17:36Z",
+      "side": 1,
+      "message": "would it make sense to chain the conditions instead of nesting them in `if`?",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "759744ce_85c2076d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 289,
+                "startChar": 0,
+                "endLine": 296,
+                "endChar": 0
+              },
+              "replacement": "\t    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027 ||\n\t    read_byte_indexed_io(EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t    read_byte_indexed_io(EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027) {\n\t\tfprintf(stderr, \"Missing Chromium EC memory map.\\n\");\n\t\treturn -5;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "483b7b34d6e7a2c3df16a5232051998b5bfa45d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
