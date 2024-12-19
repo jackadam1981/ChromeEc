@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9efede_47f8fb75",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2024-12-19T21:27:41Z",
+      "side": 1,
+      "message": "```suggestion\nclass FPSensorType(Enum):\n    \"\"\"Fingerprint sensor types.\n\n    This is used to specify the fingerprint sensor vendor and configure the\n    sensor select control lines on devboards, through servo. On Quincy V3,\n    these servo signals are ignored.\n    \"\"\"\n\n    ELAN \u003d 0\n    FPC \u003d 1\n    # TODO(b/385142008): On Quincy Rev3, Egis is represented by value 2, which\n    # utilizes two binary select lines. The current servod config only\n    # understands the first control line, so we can\u0027t use value 2.\n    # To fix this, we would need to add the additional control line to servod\n    # config.\n    EGIS \u003d 0\n    UNKNOWN \u003d -1\n```\n\nIn Python, comments go above the item being commented about, but docstrings, like `\"\"\"` or `\u0027\u0027\u0027` go bellow the item.\n\nAlso, using the value 0 means that at least one control line is correct for Egis.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "0e0065cfb99a588e7a4c15967381ed98644c3801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
