@@ -9,35 +9,20 @@
 		/*
 		 * FW_CONFIG field to defined for THERMAL SOLUTION.
 		 */
-		thermal-solution {
-			enum-name = "FW_THERMAL_SOLUTION";
-			start = <0>;
-			size = <1>;
-
-			thermal-solution-6w {
-				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_THERMAL_SOLUTION_6W";
-				value = <0>;
-			};
-			thermal-solution-15w {
-				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_THERMAL_SOLUTION_15W";
-				value = <1>;
-			};
-		};
-
-		/*
-		 * FW_CONFIG field to defined for KB TYPE.
-		 */
-		kb-type {
-			enum-name = "FW_KB_TYPE";
+		form-factor {
+			enum-name = "FW_FORM_FACTOR";
 			start = <1>;
 			size = <1>;
 
-			kb-type-default {
+			form-factor-clamshell {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_KB_TYPE_DEFAULT";
+				enum-name = "FW_FORM_FACTOR_CLAMSHELL";
 				value = <0>;
+			};
+			form-factor-convertible {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FORM_FACTOR_CONVERTIBLE";
+				value = <1>;
 			};
 		};
 	};
