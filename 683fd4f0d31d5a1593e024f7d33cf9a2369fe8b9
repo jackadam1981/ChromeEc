@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4a731b_9f0f8723",
+        "filename": "docs/zephyr/zephyr_keyboard.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-19T09:42:35Z",
+      "side": 1,
+      "message": "these should not be here, guess the tree was missing the documentation PR",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8650b3c6_a0b7b7ab",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "docs/zephyr/zephyr_keyboard.md",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 3,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "docs/zephyr/zephyr_keyboard.md",
+              "range": {
+                "startLine": 257,
+                "startChar": 0,
+                "endLine": 258,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "683fd4f0d31d5a1593e024f7d33cf9a2369fe8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
