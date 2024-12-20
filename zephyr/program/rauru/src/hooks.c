@@ -37,6 +37,7 @@ static void rauru_common_init(void)
 DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 
 /* USB-A */
+#ifdef CONFIG_RAURU_BOARD_HAS_HDMI_SUPPORT
 void xhci_interrupt(enum gpio_signal signal)
 {
 	const int xhci_stat = gpio_get_level(signal);
@@ -68,6 +69,7 @@ void xhci_interrupt(enum gpio_signal signal)
 		}
 	}
 }
+#endif
 
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 {
