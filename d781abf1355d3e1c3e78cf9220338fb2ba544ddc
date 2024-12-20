@@ -16,6 +16,29 @@
       "message": "Hi Dino/Tim,\n\nWe are trying to use IT8801 MFD GPIO driver.\nI see EC panics at\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/drivers/gpio.h:984\n\nDo you have an example sample code that I can refer in Chromium ?",
       "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4642eb8c_34470e1c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/mfd.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-20T23:52:46Z",
+      "side": 1,
+      "message": "looks like driver expects this GPIO to be defined, it is working now",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
