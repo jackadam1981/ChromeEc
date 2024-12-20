@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0bfd739_d9d07fbb",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-20T12:24:39Z",
+      "side": 1,
+      "message": "please add parenthesis to the if statements (even for one-line statement) to follow the zephyr style suggestion.",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "41ed410c035c72ae34335a82d687455eb49d25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
