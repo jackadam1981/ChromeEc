@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f44a34_7d076cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "This looks pretty good. I think the only things left are small cleanups and potentially unit testing.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ad2e6a_fe4eaee6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5683,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "This function will be called from outside the PD task in `get_message_raw`, so it needs to synchronize access to PE data structures. (Contrast to `pe_bist_tx_entry`, which calls this function from inside the PD task, so it can never be out of sync.)\n\nI\u0027m not that worried about evaluating VBUS based on stale state here. If the partner sent a BIST message during a power transition or something like that, the PE would do a Hard Reset anyway. I\u0027m more worried about being confident that the state seen by this function is internally consistent, and the code is obviously safe to call asynchronously.\n\nI _think_ all the individual operations you\u0027re doing here are safe, because 32-bit reads are atomic on our chips. By convention, `pd_` functions are safe to call from outside the PD task, and `pe_`, `dpm_`, etc. functions are not. The direct accesses and `dpm_` call each have a `pd_` function that wraps them, and we should use those to make this function more obviously safe.\n\nCan you also put a comment above this function noting that it may be called from interrupt context, because that\u0027s unusual in this file?",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fb2335_5ee93e6b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5689,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "Use `pd_get_power_role`.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4af9ff2_e679aab0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5693,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "Use `pd_get_source_pdo`.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d496a7_67f8417c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5697,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "Use `pd_get_requested_voltage`.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8775fb_a85eb31e",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "Nit: If this builds, you should just be able to take a `uint32_t` as a parameter and pass in `*head` from `get_msessage_raw`.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c3ca2a_ac200fcb",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-20T22:06:18Z",
+      "side": 1,
+      "message": "Presumably, you\u0027ll want to remove this before submitting.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
