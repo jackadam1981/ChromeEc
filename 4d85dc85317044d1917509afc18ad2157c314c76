@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c057b4c_29ac08b2",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-20T01:13:47Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n@patrykd@google.com\n@dawidn@google.com\n\nIf I do not comment out `software_panic` line and comment out `abort();`, I get this error:\n```\nld.lld: error: undefined symbol: software_panic\n\u003e\u003e\u003e referenced by exit.c:27 (/mnt/host/source/src/platform/ec/build/zephyr/bloonchipper/modules/ec/libc/exit.c:27)\n\u003e\u003e\u003e               app/zephyr_pre0.elf.lto.libapp.a(exit.c.obj at 2007486).o:(_exit)\nld.lld: warning: ignoring memory region assignment for non-allocatable section \u0027.last_section\u0027\nclang++: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nAll failed projects: [\u0027bloonchipper\u0027]\nERROR:failed to build exit: Command \u0027[\u0027zmake\u0027, \u0027build\u0027, \u0027bloonchipper\u0027, \u0027--clobber\u0027, \u0027-DOVERLAY_CONFIG\u003d/tmp/test.conf\u0027]\u0027 returned non-zero exit status 1.\nTest \"exit\": FAILED\n```\n\nIf I use abort, the zephyr test passes.\n\nNow the question, is why software_panic does not work in zephyr?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
