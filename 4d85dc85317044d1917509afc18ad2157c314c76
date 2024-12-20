@@ -118,6 +118,30 @@
       },
       "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc68c1ad_633cdbcd",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-20T22:33:30Z",
+      "side": 1,
+      "message": "Thank you Tom. This makes sense to me.",
+      "parentUuid": "69e7e82c_f750bcd1",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
