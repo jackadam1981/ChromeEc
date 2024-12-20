@@ -13,16 +13,6 @@
 	named-adc-channels {
 		compatible = "named-adc-channels";
 
-		adc_ec_usb_c0_vbus_sense: ec_usb_c0_vbus_sense {
-			enum-name = "ADC_VBUS_C0";
-			io-channels = <&adc0 0>;
-			mul = <10>;
-		};
-		adc_ec_usb_c1_vbus_sense: ec_usb_c1_vbus_sense {
-			enum-name = "ADC_VBUS_C1";
-			io-channels = <&adc0 1>;
-			mul = <10>;
-		};
 		adc_charger_amon_q: charger_amon_q {
 			enum-name = "ADC_AMON_BMON";
 			io-channels = <&adc0 2>;
@@ -50,9 +40,6 @@
 		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpioe 5 (GPIO_INPUT)>;
-		};
-		gpio_ec_ap_dp_hpd_l: ec_ap_dp_hpd_l {
-			gpios = <&gpiof 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		gpio_ec_ap_int_odl: ec_ap_int_odl {
 			gpios = <&gpiom 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
@@ -137,11 +124,11 @@
 		gpio_ec_i2c_pdc_sm_int_odl: ec_i2c_pdc_sm_int_odl {
 			gpios = <&gpiod 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
-		gpio_usb_c0_dp_in_hpd: usb_c0_dp_in_hpd {
-			gpios = <&gpiod 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		gpio_usb_c0_dp_in_hpd: usb_c0_dp_hpd_l {
+			gpios = <&gpiof 3 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
 		};
-		gpio_usb_c1_dp_in_hpd: usb_c1_dp_in_hpd {
-			gpios = <&gpiof 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		gpio_usb_c1_dp_in_hpd: usb_c1_dp_hpd_l {
+			gpios = <&gpiof 2 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		/* default output level */
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
