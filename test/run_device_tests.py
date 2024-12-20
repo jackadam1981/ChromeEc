@@ -611,6 +611,9 @@ class AllTests:
                 test_name="flash_physical",
                 imagetype_to_use=ImageType.RO,
                 toggle_power=True,
+                # TODO(b/382705460): We have seen this flake in the CQ.
+                # Re-enable when missing character bug is fixed.
+                skip_for_zephyr=True,
             ),
             TestConfig(
                 test_name="flash_write_protect",
