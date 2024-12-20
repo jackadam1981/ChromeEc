@@ -66,8 +66,7 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *max_mv,
 
 	if (*max_mv) {
 		/* Clamp current to board limits for non-zero-volt PDOs */
-		uint32_t board_limit_ma =
-			MIN(CONFIG_USB_PD_MAX_CURRENT_MA,
+		uint32_t board_limit_ma = MIN(CONFIG_USB_PD_MAX_CURRENT_MA,
 			    CONFIG_USB_PD_MAX_POWER_MW * 1000 /
 				    PROCESS_ZERO_DIVISOR(*min_mv));
 
