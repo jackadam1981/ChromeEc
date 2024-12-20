@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d97c265_79dc57a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-20T17:35:11Z",
+      "side": 1,
+      "message": "I\u0027ll create a new CL that disables the proper tests.",
+      "revId": "a9629731b4dd8506210205c71e6c29ae36de4e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0214f6d5_a94c6288",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-20T17:35:11Z",
+      "side": 1,
+      "message": "Only the Zephyr version of the test failed, so it only needs to be disabled for Zephyr.",
+      "range": {
+        "startLine": 610,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 16
+      },
+      "revId": "a9629731b4dd8506210205c71e6c29ae36de4e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2978fbf_cec3dd04",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-20T17:35:11Z",
+      "side": 1,
+      "message": "This is already fixed (see http://b/385329691#comment3), so not needed.",
+      "range": {
+        "startLine": 709,
+        "startChar": 11,
+        "endLine": 710,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1fa48a21_a4546922",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 709,
+                "startChar": 0,
+                "endLine": 711,
+                "endChar": 0
+              },
+              "replacement": "            TestConfig(test_name\u003d\"restricted_console\"),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a9629731b4dd8506210205c71e6c29ae36de4e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
