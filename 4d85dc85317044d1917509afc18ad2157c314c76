@@ -46,6 +46,30 @@
       },
       "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2224224_bc3cd7a8",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-20T18:47:45Z",
+      "side": 1,
+      "message": "this is what I thought. How are we going to have a definition for `_exit` that works for both ec and zephyr? In zephyr, is there no location where this definition can be made in isolation from the ec code? We can definitely use `abort()` to align both but I am not sure if this is the route Tom would like to pursue for the ec version.",
+      "parentUuid": "dcbbc31e_d3179b86",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
