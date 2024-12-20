@@ -94,6 +94,30 @@
       },
       "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e7e82c_f750bcd1",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2024-12-20T22:17:26Z",
+      "side": 1,
+      "message": "It looks like `syscalls.c` is only used by EC and both EC and Zephyr are using `sbrk.c`. If that\u0027s the case, then I think there are a couple options that would work:\n\n1. Create two different definitions of `_exit` in the `libc/exit.c` file and guard it with `CONFIG_ZEPHYR`, so the appropriate version is used for Zephyr or EC. (These are small functions, so it\u0027s not *too* bad.)\n2. Separate the Zephyr implementation of newlib syscalls from EC completely. i.e., everything in `libc/*` should only be for EC. Create a new `zephyr/libc` directory for Zephyr-specific versions. In the case of `sbrk.c` where the two are shared, you can create a symlink from `zephyr/libc/sbrk.c` to the `libc/sbrk.c` version. For `_exit`, you could keep it in `libc/syscalls.c` for EC and then implement the Zephyr version in `zephyr/libc/exit.c`.\n\nI think (2) makes it slightly clearer which pieces are used for EC and which are used for Zephyr. We just need to remember to check the other implementation if we\u0027re making some syscall changes that we want to be generic. (e.g., if we want to make [this type of change](https://crrev.com/c/5834608) for Zephyr -- don\u0027t think there is a mechanism currently available to specify `exit` vs `abort` [[1]](https://docs.zephyrproject.org/latest/kernel/services/other/fatal.html), [[2]](https://docs.zephyrproject.org/apidoc/latest/group__fatal__types.html#ga5b7e799fa19549ef9416a2d6cba29b52)).\n\nMaybe we could also update the [presubmit check like we did for the tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/migrated_files.sh;l\u003d12-14;drc\u003d8b820162ea9052d9f1d36db2dd411c15af93374b) to help guard against forgetting.",
+      "parentUuid": "e4ad00d8_eec6a69f",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
