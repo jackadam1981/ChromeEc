@@ -22,8 +22,10 @@ static void rauru_common_init(void)
 	gpio_enable_dt_interrupt(
 		GPIO_INT_FROM_NODELABEL(int_ap_xhci_init_done));
 
+#ifndef CONFIG_BOARD_HYLIA
 	/* TODO(yllin): move this to usb redriver/retimer configure place */
 	rauru_get_sb_type();
+#endif
 
 	/* b/353712228:
 	 * Rauru's HW sets external current limit (ILIM_HIZ) to 0.9A.
@@ -37,6 +39,7 @@ static void rauru_common_init(void)
 DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 
 /* USB-A */
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TCPMV2
 void xhci_interrupt(enum gpio_signal signal)
 {
 	const int xhci_stat = gpio_get_level(signal);
@@ -77,6 +80,7 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_FORCE_SINK;
 	}
 }
+#endif
 
 #if DT_NODE_EXISTS(DT_NODELABEL(fan0))
 static void fan_low_rpm(void)
