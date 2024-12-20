@@ -85,7 +85,7 @@
         },
         "overrideExpression": {
           "value": {
-            "expressionString": "uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com"
+            "expressionString": "uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"
           }
         },
         "allowOverrideInChildProjects": true
@@ -97,7 +97,7 @@
         "value": {"expression":{"expressionString":"label:Release-Owner=MAX"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
       },
       "overrideExpressionResult": {
-        "value": {"expression":{"expressionString":"uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+        "value": {"expression":{"expressionString":"uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
       },
       "patchSetCommitId": "047ee3f84554eaa5144381f56ba8e16e83e97cc8",
       "legacy": {
