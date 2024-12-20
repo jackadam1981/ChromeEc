@@ -22,6 +22,30 @@
       },
       "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcbbc31e_d3179b86",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-20T17:42:01Z",
+      "side": 1,
+      "message": "\u003e why software_panic does not work in zephyr?\n\nBecause `software_panic()` is EC specific.",
+      "parentUuid": "8c057b4c_29ac08b2",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
