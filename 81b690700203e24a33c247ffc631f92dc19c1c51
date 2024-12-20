@@ -74,6 +74,30 @@
       ],
       "revId": "81b690700203e24a33c247ffc631f92dc19c1c51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b69230_62133852",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2024-12-20T17:13:47Z",
+      "side": 1,
+      "message": "I do not believe this makes sense. The mask is very important. The errors could include other hardware errors in the higher bits that are not part of the dead pixel field",
+      "parentUuid": "9944724f_0be41d54",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "81b690700203e24a33c247ffc631f92dc19c1c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
