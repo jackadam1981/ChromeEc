@@ -16,6 +16,64 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "81b690700203e24a33c247ffc631f92dc19c1c51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5127ece_8ba76060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-20T16:22:29Z",
+      "side": 1,
+      "message": "Please move `state.bad_pixels \u003d FP_ERROR_DEAD_PIXELS_MAX + 2` and `state.bad_pixels \u003d FP_ERROR_DEAD_PIXELS_MAX - 1` to separate tests.",
+      "revId": "81b690700203e24a33c247ffc631f92dc19c1c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9944724f_0be41d54",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-20T16:22:29Z",
+      "side": 1,
+      "message": "How about changing this to:\n```\n#define FINGERPRINT_ERROR_DEAD_PIXELS(errors) \\\n\tMIN((errors), FINGERPRINT_ERROR_DEAD_PIXELS_MAX)\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2ba57aeb_fe389fc0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/fingerprint.h",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "\tMIN((errors), FINGERPRINT_ERROR_DEAD_PIXELS_MAX)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "81b690700203e24a33c247ffc631f92dc19c1c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

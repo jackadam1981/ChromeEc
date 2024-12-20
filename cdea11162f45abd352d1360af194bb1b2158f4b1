@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4485a3db_a6aee710",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-20T16:22:29Z",
+      "side": 1,
+      "message": "`FINGERPRINT_*` macros are defined [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/drivers/fingerprint.h) and should be used by fpsensor code (fingerprint shim layer).\n\n`FP_*` macros are defined in [ec_commands.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h?q\u003dFP_ERROR_DEAD_PIXELS\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch).\n\nSince the test calls host command, `FP_*` macros should be used.",
+      "parentUuid": "c08b3eac_c1a1edbb",
+      "range": {
+        "startLine": 161,
+        "startChar": 15,
+        "endLine": 161,
+        "endChar": 35
+      },
+      "revId": "cdea11162f45abd352d1360af194bb1b2158f4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a72588dc_3142692a",
