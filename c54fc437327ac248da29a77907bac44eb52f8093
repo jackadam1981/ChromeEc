@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a931dbb_dc9f3209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-20T05:01:13Z",
+      "side": 1,
+      "message": "ACK. We have a plan for test coverage for RVP in Q1 2025. Moving forward, we will incorporate these tests from the beginning of the initial development phase.",
+      "parentUuid": "628f4745_dbd99a06",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0fcee12_1682d802",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
         "patchSetId": 2
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "You need to pretty much redo this file from scratch.\n* delete cros_kb_raw node above\n* For Microchip, the keyboard driver used `\u0026kbd0` as the nodelabel for the keyboard controllerhttps://github.com/zephyrproject-rtos/zephyr/blob/b33b3b17f7f52ad7ad58ddf6b4baa9c9d4458745/dts/arm/microchip/mec172x_common.dtsi#L655\n* You need to augment the `\u0026kbd0` mode following the model from the [Rex platform](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/rex/keyboard.dtsi;l\u003d1?q\u003dkeyboard.dtsi%20f:rex\u0026sq\u003d\u0026ss\u003dchromiumos).  You need to set the pinctrl values, row and column size, and fill out the boot-key info.  You won\u0027t need the factory-test info",
       "parentUuid": "f0fcee12_1682d802",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0afae839_9b74f0cf",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-20T05:01:13Z",
+      "side": 1,
+      "message": "Thank you for the insigts Keith.\nI will work on this.",
+      "parentUuid": "7e6c7117_8b08f764",
       "range": {
         "startLine": 43,
         "startChar": 2,
