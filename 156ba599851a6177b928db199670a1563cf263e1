@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b36da6_01c224fb",
+        "filename": "zephyr/program/rauru/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-20T14:22:59Z",
+      "side": 1,
+      "message": "hooks.c is actually unrelated to `CONFIG_PLATFORM_EC_USB_PD_TCPMV2`, can you try to refactor this a bit? Maybe use CONFIG_PLATFORM_EC_USB_PD_TCPMV2 inside the hooks.c instead?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "156ba599851a6177b928db199670a1563cf263e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a70823_71a6614c",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-20T14:22:59Z",
+      "side": 1,
+      "message": "hmmm... I wonder if we really need this. I think we can drop this.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "156ba599851a6177b928db199670a1563cf263e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9851b409_0f1e5d61",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-20T14:22:59Z",
+      "side": 1,
+      "message": "This can be \n\n```\nsvdm_set_hpd_gpio(port, lvl);\nLOG_DBG(\"P%d DP HPD %d\", port, lvl);\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "156ba599851a6177b928db199670a1563cf263e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
