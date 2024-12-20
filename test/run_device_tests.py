@@ -457,7 +457,7 @@ class Renode(Platform):
             if test_name in [
                 "exception",  # TODO(b/384730599)
                 "libcxx",
-                "otp_key",
+                "otp_key",  # TODO(b/385216796)
                 "ram_lock",
                 "rtc_npcx9",
             ]:
