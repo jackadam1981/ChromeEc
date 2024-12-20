@@ -70,6 +70,30 @@
       },
       "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ad00d8_eec6a69f",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2024-12-20T18:50:23Z",
+      "side": 1,
+      "message": "\u003e  How are we going to have a definition for _exit that works for both ec and zephyr?\n\nDo we really need one definition of `_exit()`? Personally, I would leave EC\u0027s definition in `syscalls.c` and implement Zephyr\u0027s version in `exit.c`.",
+      "parentUuid": "f2224224_bc3cd7a8",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
