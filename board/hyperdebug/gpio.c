@@ -2108,6 +2108,10 @@ static int command_gpio_pwm(int argc, const char **argv)
 			.channel_pin[(pwm_pins[gpio].channel - 1)];
 
 	if (strcasecmp(argv[3], "off") == 0) {
+		if (gpio == GPIO_CN10_31) {
+			/* Disable MCO */
+			STM32_RCC_CFGR &= ~(0x07 << 28) & ~(0x0F << 24);
+		}
 		if (current_pin == gpio) {
 			timer_pwm_use[timer_no]
 				.channel_pin[(pwm_pins[gpio].channel - 1)] =
@@ -2145,6 +2149,30 @@ static int command_gpio_pwm(int argc, const char **argv)
 	if (desired_period_ns > 0xFFFFFFFFFFFFFFFFULL / timer_freq) {
 		/* Would overflow below. */
 		return EC_ERROR_PARAM3;
+	}
+
+	if (gpio == GPIO_CN10_31) {
+		const uint32_t core_freq = clock_get_freq();
+		uint64_t mco_divisor = DIV_ROUND_NEAREST(
+			desired_period_ns * core_freq, 1000000000);
+		uint64_t high_count = DIV_ROUND_NEAREST(
+			desired_high_ns * core_freq, 1000000000);
+		int halvings = 31 - __builtin_clz(mco_divisor);
+		if (halvings < 8 && mco_divisor == (1 << halvings) &&
+		    (mco_divisor == 1 || high_count == (1 << (halvings - 1)))) {
+			/* MCO functionality can be used instead of timer */
+			ccprintf("MCO divisor: %llu\n", mco_divisor);
+
+			STM32_RCC_CFGR |= (halvings << 28) | (1 << 24);
+
+			gpio_select_alternate_function(gpio, 0);
+			return;
+		} else {
+			ccprintf("No MCO\n");
+
+			gpio_select_alternate_function(
+				gpio, pwm_pins[gpio].pad_alternate_function);
+		}
 	}
 
 	/* Calculate number of hardware timer ticks for each full PWM period. */
