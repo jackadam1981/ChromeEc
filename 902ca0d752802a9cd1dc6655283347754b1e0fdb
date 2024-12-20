@@ -46,6 +46,30 @@
       },
       "revId": "902ca0d752802a9cd1dc6655283347754b1e0fdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b9e274_e5814083",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-20T13:36:37Z",
+      "side": 0,
+      "message": "But where is the HPD IRQ pulse? I didn\u0027t see the code.",
+      "parentUuid": "7a5048d0_0316a567",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "902ca0d752802a9cd1dc6655283347754b1e0fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
