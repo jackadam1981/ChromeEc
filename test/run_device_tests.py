@@ -607,11 +607,12 @@ class AllTests:
                 # TODO(b/365628799): Need to port to Zephyr.
                 skip_for_zephyr=True,
             ),
-            TestConfig(
-                test_name="flash_physical",
-                imagetype_to_use=ImageType.RO,
-                toggle_power=True,
-            ),
+            # TODO(b/385329691): Test is flaky.
+            # TestConfig(
+            #     test_name="flash_physical",
+            #     imagetype_to_use=ImageType.RO,
+            #     toggle_power=True,
+            # ),
             TestConfig(
                 test_name="flash_write_protect",
                 imagetype_to_use=ImageType.RO,
@@ -705,7 +706,8 @@ class AllTests:
                 test_name="ram_lock",
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],
             ),
-            TestConfig(test_name="restricted_console"),
+            # TODO(b/385329691): Test is flaky.
+            # TestConfig(test_name="restricted_console"),
             TestConfig(test_name="rng_benchmark"),
             TestConfig(
                 config_name="rollback_region0",
