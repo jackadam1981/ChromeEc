@@ -974,8 +974,7 @@ static uint32_t pdc_max_request_mv = CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV;
 /**
  * @brief As a sink, this is the max power (in milliwatts) needed to operate
  */
-static uint32_t pdc_max_operating_power =
-	CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW;
+static uint32_t pdc_max_operating_power = CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW;
 
 static enum pdc_state_t get_pdc_state(struct pdc_port_t *port)
 {

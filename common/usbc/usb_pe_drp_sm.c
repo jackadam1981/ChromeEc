@@ -4779,19 +4779,15 @@ __maybe_unused static void pe_give_sink_cap_ext_entry(int port)
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	skedb.sink_modes |= SKEDB_SINK_MAINS_POWERED;
 #endif
-	skedb.sink_minimum_pdp =
-		DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
-	skedb.sink_operational_pdp =
-		DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
+	skedb.sink_minimum_pdp = DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
+	skedb.sink_operational_pdp = DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
 	skedb.sink_maximum_pdp = DIV_ROUND_UP(CONFIG_USB_PD_MAX_POWER_MW, 1000);
 
 #ifdef CONFIG_USB_PD_EPR
-	skedb.epr_sink_minimum_pdp =
-		DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
+	skedb.epr_sink_minimum_pdp = DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
 	skedb.epr_sink_operational_pdp =
 		DIV_ROUND_UP(CONFIG_USB_PD_OPERATING_POWER_MW, 1000);
-	skedb.epr_sink_maximum_pdp =
-		DIV_ROUND_UP(CONFIG_USB_PD_MAX_POWER_MW, 1000);
+	skedb.epr_sink_maximum_pdp = DIV_ROUND_UP(CONFIG_USB_PD_MAX_POWER_MW, 1000);
 #endif
 
 	tx_emsg[port].len = sizeof(skedb);
