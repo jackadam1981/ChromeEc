@@ -15,14 +15,18 @@
 #include "psl.dtsi"
 #include "../battery.dtsi"
 #include "../i2c.dtsi"
-#include "../ioex.dtsi"
 #include "../ioex_gpio.dtsi"
 #include "../interrupts.dtsi"
-#include "../keyboard.dtsi"
+#include "../mfd.dtsi"
 #include "../pd.dtsi"
 #include "../power_signals.dtsi"
 #include "../temp_sensor.dts"
 #include "../usbc.dtsi"
+
+/delete-node/ &kb_discrete;
+/delete-node/ &int_ioex_kbd_intr_n;
+/delete-node/ &int_vol_up;
+/delete-node/ &int_vol_dn;
 
 &cbi_flash {
     /*
