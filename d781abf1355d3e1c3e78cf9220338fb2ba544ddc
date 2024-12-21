@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6bb87b5_e260c931",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-21T00:10:42Z",
+      "side": 1,
+      "message": "I wanted to unblock the Fatcat activity now, so I am adding logic to `ptlrvp_npcx` only. For `ptlrvp_mchp`, the plan is to use a discrete keyboard IC, and we will test it with the MFD driver at a lower priority.",
+      "parentUuid": "399e5336_40c47af4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "81a51673_1e10d9d2",
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f25c820b_2eac9745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-21T00:10:42Z",
+      "side": 1,
+      "message": "Sure, I will wait.",
+      "parentUuid": "dfc2776f_120e9f87",
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78342d68_e4cfc7f7",
         "filename": "zephyr/program/intelrvp/ptlrvp/mfd.dtsi",
         "patchSetId": 1
@@ -71,6 +113,24 @@
       "writtenOn": "2024-12-21T00:01:59Z",
       "side": 1,
       "message": "a bit of creative naming here:\non the fatcat side, we have `gsc_board.dtsi`, which seems more appropriate.\nideally, we would create something like that here\nthat describes the capabilities of this board and reuse it on all\napplicable platforms.",
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac00198_e4709ead",
+        "filename": "zephyr/program/intelrvp/ptlrvp/mfd.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-21T00:10:42Z",
+      "side": 1,
+      "message": "sure, I will change the name",
+      "parentUuid": "78342d68_e4cfc7f7",
       "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
