@@ -18,4 +18,7 @@
 /* PD Interrupts */
 #define PD_POW_IRQ_GPIO &gpiof 0
 
+/* MFD Keyboard IC Interrupt */
+#define MFD_KBD_IRQ_GPIO &gpio7 0
+
 #endif /* PTLRVP_NPCX_BOARD_H_ */
