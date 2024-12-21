@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "399e5336_40c47af4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-21T00:01:59Z",
+      "side": 1,
+      "message": "it\u0027s not just npcx, right? ideally all RVPs that use this board.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "81a51673_1e10d9d2",
@@ -14,6 +37,40 @@
       "writtenOn": "2024-12-20T23:31:14Z",
       "side": 1,
       "message": "Hi Dino/Tim,\n\nWe are trying to use IT8801 MFD GPIO driver.\nI see EC panics at\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/drivers/gpio.h:984\n\nDo you have an example sample code that I can refer in Chromium ?",
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc2776f_120e9f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-21T00:01:59Z",
+      "side": 1,
+      "message": "can this wait for\nhttps://github.com/zephyrproject-rtos/zephyr/pull/83153\nto land? this will be a lot smaller then.",
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78342d68_e4cfc7f7",
+        "filename": "zephyr/program/intelrvp/ptlrvp/mfd.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2024-12-21T00:01:59Z",
+      "side": 1,
+      "message": "a bit of creative naming here:\non the fatcat side, we have `gsc_board.dtsi`, which seems more appropriate.\nideally, we would create something like that here\nthat describes the capabilities of this board and reuse it on all\napplicable platforms.",
       "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
