@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277f44cc_ea4f8031",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-22T03:16:46Z",
+      "side": 1,
+      "message": "This needs to be protected by a #ifdef for boards do not need SB support.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "b3cae0915aee3407e9c87f96065b2777ef3b7a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
