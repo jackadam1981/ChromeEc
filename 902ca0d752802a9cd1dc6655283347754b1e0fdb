@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c6a91d_0f2cf74c",
+        "filename": "zephyr/program/rauru/hylia/generated.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-22T02:48:44Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c725d347_17f8306b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "902ca0d752802a9cd1dc6655283347754b1e0fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1fdcf0_e253a505",
@@ -85,6 +109,30 @@
       "side": 0,
       "message": "But where is the HPD IRQ pulse? I didn\u0027t see the code.",
       "parentUuid": "7a5048d0_0316a567",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "902ca0d752802a9cd1dc6655283347754b1e0fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354aca73_e717c218",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-22T02:48:44Z",
+      "side": 0,
+      "message": "Since hylia has two HPD pins, I think it is not necessary to\n```\nsvdm_set_hpd_gpio(port, 0);\nudelay(HPD_DSTREAM_DEBOUNCE_IRQ);\nsvdm_set_hpd_gpio(port, 1);\n```.\nJust need to set hpd high/low level.",
+      "parentUuid": "33b9e274_e5814083",
       "range": {
         "startLine": 133,
         "startChar": 5,

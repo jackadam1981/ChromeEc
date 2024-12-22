@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f326a7_55509caf",
+        "filename": "zephyr/program/rauru/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-22T02:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b36da6_01c224fb",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "156ba599851a6177b928db199670a1563cf263e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5a70823_71a6614c",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a195c7b7_f821c423",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-22T02:48:44Z",
+      "side": 1,
+      "message": "I want to keep it here to avoid triggering the mux setup multiple times.",
+      "parentUuid": "a5a70823_71a6614c",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "156ba599851a6177b928db199670a1563cf263e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9851b409_0f1e5d61",
         "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2024-12-20T14:22:59Z",
       "side": 1,
       "message": "This can be \n\n```\nsvdm_set_hpd_gpio(port, lvl);\nLOG_DBG(\"P%d DP HPD %d\", port, lvl);\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "156ba599851a6177b928db199670a1563cf263e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd17be1_150a1810",
+        "filename": "zephyr/program/rauru/hylia/src/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-22T02:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9851b409_0f1e5d61",
       "range": {
         "startLine": 56,
         "startChar": 0,
