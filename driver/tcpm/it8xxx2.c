@@ -48,6 +48,7 @@ bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];
 static uint8_t tx_error_status[IT83XX_USBPD_PHY_PORT_COUNT] = { 0 };
+static bool vconn_en[IT83XX_USBPD_PHY_PORT_COUNT];
 
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{ &IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0 },
@@ -260,6 +261,7 @@ static void it8xxx2_enable_vconn(enum usbpd_port port, int enabled)
 				 ~USBPD_REG_MASK_DISCONNECT_POWER_CC1) |
 				USBPD_REG_MASK_DISCONNECT_POWER_CC2;
 		}
+		vconn_en[port] = 1;
 	} else {
 		/* Connect cc analog module (ex.UP/RD/DET/TX/RX) */
 		IT83XX_USBPD_CCCSR(port) &= ~(USBPD_REG_MASK_CC2_DISCONNECT |
@@ -268,6 +270,7 @@ static void it8xxx2_enable_vconn(enum usbpd_port port, int enabled)
 		IT83XX_USBPD_CCPSR(port) |=
 			(USBPD_REG_MASK_DISCONNECT_POWER_CC1 |
 			 USBPD_REG_MASK_DISCONNECT_POWER_CC2);
+		vconn_en[port] = 0;
 	}
 }
 
@@ -489,12 +492,15 @@ static int it8xxx2_tcpm_set_vconn(int port, int enable)
 				it8xxx2_tcpm_decode_sop_prime_enable(port,
 								     false);
 			/*
-			 * Before disabling cc 5v tolerant, we need to make
+			 * When Vconn is on to off, we need to make
 			 * sure cc voltage detector is enabled and Vconn is
 			 * dropped below 3.3v (>500us) to avoid the potential
-			 * risk of voltage fed back into Vcore.
+			 * risk of voltage fed back into Vcore, then can safely
+			 * disable cc 5v tolerant.
 			 */
-			udelay(IT83XX_USBPD_T_VCONN_BELOW_3_3V);
+			if (vconn_en[port]) {
+				udelay(IT83XX_USBPD_T_VCONN_BELOW_3_3V);
+			}
 			/*
 			 * Since our cc are not Vconn SRC, enable cc analog
 			 * module (ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
