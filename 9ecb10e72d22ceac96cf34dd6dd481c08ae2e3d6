@@ -16,6 +16,57 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "9ecb10e72d22ceac96cf34dd6dd481c08ae2e3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08e8197_5def6ce4",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2024-12-23T14:41:26Z",
+      "side": 1,
+      "message": "I think this will make more sense. \n\n`memmap_iio_read_byte`",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3f1aa067_78036efb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 247,
+                "startChar": 0,
+                "endLine": 248,
+                "endChar": 0
+              },
+              "replacement": "static int memmap_iio_read_byte(char offset)\n"
+            },
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 290,
+                "startChar": 0,
+                "endLine": 292,
+                "endChar": 0
+              },
+              "replacement": "\t    (memmap_iio_read_byte(EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t     memmap_iio_read_byte(EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9ecb10e72d22ceac96cf34dd6dd481c08ae2e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
