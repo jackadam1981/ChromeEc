@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43937ed0_9e64a9e3",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-23T05:10:38Z",
+      "side": 1,
+      "message": "I was meaning this lines only, as hylia doen\u0027t have a SB (sub-board).",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "b3cae0915aee3407e9c87f96065b2777ef3b7a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "277f44cc_ea4f8031",
         "filename": "zephyr/program/rauru/src/hooks.c",
         "patchSetId": 6
@@ -43,6 +66,29 @@
         "startChar": 0,
         "endLine": 38,
         "endChar": 0
+      },
+      "revId": "b3cae0915aee3407e9c87f96065b2777ef3b7a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a7deb3_5d74261a",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2024-12-23T05:10:38Z",
+      "side": 1,
+      "message": "This interrupt should be shared by all rauru board.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 19
       },
       "revId": "b3cae0915aee3407e9c87f96065b2777ef3b7a1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
