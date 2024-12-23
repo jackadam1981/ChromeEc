@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c77d60_f54c1aa5",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-12-23T07:33:46Z",
+      "side": 1,
+      "message": "nit - \"byd,byd-1\" should be put after \"byd,byd\"",
+      "revId": "7aef35dd69d52d53c227dcf6a0ca76a02de290f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a0253d_0ee5cc6a",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2024-12-23T07:33:46Z",
+      "side": 1,
+      "message": "nit - same as above comment",
+      "revId": "7aef35dd69d52d53c227dcf6a0ca76a02de290f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
