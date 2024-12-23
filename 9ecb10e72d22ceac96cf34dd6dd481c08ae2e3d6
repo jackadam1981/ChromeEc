@@ -67,6 +67,30 @@
       ],
       "revId": "9ecb10e72d22ceac96cf34dd6dd481c08ae2e3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b57dcc4_6a442880",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2024-12-23T14:49:11Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "e08e8197_5def6ce4",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 31
+      },
+      "revId": "9ecb10e72d22ceac96cf34dd6dd481c08ae2e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
