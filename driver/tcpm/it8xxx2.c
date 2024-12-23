@@ -48,6 +48,7 @@ bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];
 static uint8_t tx_error_status[IT83XX_USBPD_PHY_PORT_COUNT] = { 0 };
+static bool vconn_en[IT83XX_USBPD_PHY_PORT_COUNT];
 
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{ &IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0 },
@@ -474,7 +475,11 @@ static int it8xxx2_tcpm_set_vconn(int port, int enable)
 						    USBPD_CC_PIN_2 :
 						    USBPD_CC_PIN_1,
 					    enable);
+			vconn_en[port] = 1;
 		} else {
+			if (!vconn_en[port]) {
+				return EC_SUCCESS;
+			}
 			/*
 			 * If the pd port has previous connection and supplies
 			 * Vconn, then RO jumping to RW reset the system,
@@ -495,11 +500,13 @@ static int it8xxx2_tcpm_set_vconn(int port, int enable)
 			 * risk of voltage fed back into Vcore.
 			 */
 			udelay(IT83XX_USBPD_T_VCONN_BELOW_3_3V);
+
 			/*
 			 * Since our cc are not Vconn SRC, enable cc analog
 			 * module (ex.UP/RD/DET/Tx/Rx) and disable 5v tolerant.
 			 */
 			it8xxx2_enable_vconn(port, enable);
+			vconn_en[port] = 0;
 		}
 	}
 
