@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56a51d5_dff3964e",
+        "filename": "zephyr/test/intelrvp/boards/ptlrvp/pd.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2024-12-23T16:08:23Z",
+      "side": 1,
+      "message": "This property should be omitted since this is a different PDC chip from the other two nodes.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "ee75c3c0b5134870d56c220e07e246707af5fd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
