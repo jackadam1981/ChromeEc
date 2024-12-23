@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c0cfef_f314a3a5",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-12-23T07:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34c77d60_f54c1aa5",
+      "revId": "7aef35dd69d52d53c227dcf6a0ca76a02de290f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a0253d_0ee5cc6a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-23T07:33:46Z",
       "side": 1,
       "message": "nit - same as above comment",
+      "revId": "7aef35dd69d52d53c227dcf6a0ca76a02de290f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15d2599_731a4fee",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2024-12-23T07:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a0253d_0ee5cc6a",
       "revId": "7aef35dd69d52d53c227dcf6a0ca76a02de290f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
