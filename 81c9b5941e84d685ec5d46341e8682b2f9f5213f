@@ -16,6 +16,24 @@
       "message": "1. Does this come from [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/trogdor/baseboard.h;l\u003d171;drc\u003d9f144199d418f54285471dc59df539a2a97c5f39), and can you now get rid of that definition?\n2. Are we even using this trogdor Zephyr build?",
       "revId": "81c9b5941e84d685ec5d46341e8682b2f9f5213f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9b6410_ef59dd92",
+        "filename": "zephyr/program/trogdor/lazor/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-23T16:45:25Z",
+      "side": 0,
+      "message": "1. Nevermind, I see that was already part of your plan.",
+      "parentUuid": "97669d4c_17129aa2",
+      "revId": "81c9b5941e84d685ec5d46341e8682b2f9f5213f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
