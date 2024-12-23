@@ -16,6 +16,47 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ef535ccb3a11e654b449395411c4c493a4a0446b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f518b117_03e4eed7",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2024-12-23T09:05:59Z",
+      "side": 1,
+      "message": "```suggest\n\tif ((inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027) \u0026\u0026\n\t    (read_byte_indexed_io(EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t    read_byte_indexed_io(EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027)) {\n```",
+      "range": {
+        "startLine": 289,
+        "startChar": 55,
+        "endLine": 289,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b7a8b8e5_4681001a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 288,
+                "startChar": 0,
+                "endLine": 292,
+                "endChar": 0
+              },
+              "replacement": "\tif ((inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t     inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027) \u0026\u0026\n\t    (read_byte_indexed_io(EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t     read_byte_indexed_io(EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ef535ccb3a11e654b449395411c4c493a4a0446b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
