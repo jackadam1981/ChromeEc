@@ -212,12 +212,14 @@ void board_process_pd_alert(int port)
 void usb_interrupt(enum gpio_signal signal)
 {
 	int port;
+	timestamp_t interrupt_time = get_time();
 
 	if (signal == GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_int_odl))) {
 		port = 0;
 	} else {
 		port = 1;
 	}
+	tcpci_tcpm_set_int_ts(port, interrupt_time);
 	/* Trigger polling of TCPC in USB-PD task */
 	schedule_deferred_pd_interrupt(port);
 }
