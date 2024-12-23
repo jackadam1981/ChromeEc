@@ -5505,6 +5505,7 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 const char *pd_ts_name[] = {
 	"GoodCRC to CC open",
 	"SenderResponseTimer",
+	"Interrupt to interrupt task",
 	"Error Recovery",
 	"Error Recovery flag",
 	"PE state change",
