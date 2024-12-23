@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f35de56_c3108cda",
+        "filename": "util/comm-lpc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2024-12-23T09:07:12Z",
+      "side": 1,
+      "message": "`read_byte_memmap_iio`",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5add8f37_22ab0f6b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 247,
+                "startChar": 0,
+                "endLine": 248,
+                "endChar": 0
+              },
+              "replacement": "static int read_byte_memmap_iio(char offset)\n"
+            },
+            {
+              "path": "util/comm-lpc.cc",
+              "range": {
+                "startLine": 290,
+                "startChar": 0,
+                "endLine": 292,
+                "endChar": 0
+              },
+              "replacement": "\t    read_byte_memmap_iio(EC_MEMMAP_ID) !\u003d \u0027E\u0027 ||\n\t    read_byte_memmap_iio(EC_MEMMAP_ID + 1) !\u003d \u0027C\u0027) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ef535ccb3a11e654b449395411c4c493a4a0446b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f518b117_03e4eed7",
         "filename": "util/comm-lpc.cc",
         "patchSetId": 7
