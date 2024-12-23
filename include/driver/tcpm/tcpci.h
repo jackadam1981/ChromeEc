@@ -11,6 +11,7 @@
 #include "config.h"
 #include "ec_commands.h"
 #include "tcpm/tcpm.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 
@@ -404,6 +405,8 @@ bool tcpci_tcpm_get_src_ctrl(int port);
 int tcpci_tcpm_set_src_ctrl(int port, int enable);
 
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable);
+
+void tcpci_tcpm_set_int_ts(int port, timestamp_t ts);
 
 #ifdef __cplusplus
 }
