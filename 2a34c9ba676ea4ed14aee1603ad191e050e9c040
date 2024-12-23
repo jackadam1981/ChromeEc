@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "007b08f7_a275fa8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-23T17:15:24Z",
+      "side": 1,
+      "message": "There are no C source files in this change.  Please don\u0027t add low coverage reason by default.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a89a0f2b_b411007b",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
         "patchSetId": 1
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "from CL:5856920 looks like the GPIO has to be low at init and high only in manual recovery mode.\nODL is added as SOC gpio is 1.8V (pull present on RVP) and EC gpio is 3.3V.",
       "parentUuid": "a89a0f2b_b411007b",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee545825_793ee161",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-23T17:15:24Z",
+      "side": 1,
+      "message": "Nit - we\u0027re trying to move away from using the compound macros.  It\u0027s clearer to specify this as `(GPIO_OPEN_DRAIN | GPIO_OUTPUT_LOW)`.",
+      "parentUuid": "193aa62d_58ab9011",
       "range": {
         "startLine": 91,
         "startChar": 21,
