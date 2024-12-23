@@ -204,11 +204,19 @@ config BOARD_PUJJONIRU
 	  Build Google PUJJONIRU reference board. PUJJONIRU has Intel TWL SoC
 	  with IT81302 EC.
 
+<<<<<<< HEAD   (f1e46f Guren: Initial zephyr config for guren project)
 config BOARD_GUREN
 	bool "Google GUREN Board"
 	help
 	  Build Google GUREN reference board. Nivviks has Intel TWL SoC
 	  with NPCX993FA0BX EC.
+=======
+config BOARD_DIRKS
+	bool "Google Dirks Board"
+	help
+	  Build Google Dirks reference board. Dirks has Intel TWL SoC
+	  with IT81302 EC.
+>>>>>>> CHANGE (53f75c Nissa: Initial Zephyr EC image for Dirks)
 
 module = NISSA
 module-str = Nissa board-specific code
