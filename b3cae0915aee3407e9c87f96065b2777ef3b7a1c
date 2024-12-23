@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a746e5d_ec1e176c",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-23T10:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43937ed0_9e64a9e3",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "b3cae0915aee3407e9c87f96065b2777ef3b7a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "277f44cc_ea4f8031",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "This xhci_interrupt only adapts to TCPMv2. It may still need to be refactored in hylia/src/dp_alt_mode.c later.",
       "parentUuid": "10a7deb3_5d74261a",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "b3cae0915aee3407e9c87f96065b2777ef3b7a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfce7fcc_f333f995",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2024-12-23T10:15:11Z",
+      "side": 1,
+      "message": "It may be updated on other cl later.",
+      "parentUuid": "12598a0a_1d7f5333",
       "range": {
         "startLine": 41,
         "startChar": 5,
