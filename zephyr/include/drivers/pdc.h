@@ -26,14 +26,8 @@
 extern "C" {
 #endif
 
-/**
- * Extract the 16-bit VID or PID from the 32-bit container in
- * `struct pdc_info_t`
- */
-#define PDC_VIDPID_GET_VID(vidpid) (((vidpid) >> 16) & 0xFFFF)
-#define PDC_VIDPID_GET_PID(vidpid) ((vidpid) & 0xFFFF)
-
-#define PDC_VIDPID_INVALID (0x00000000)
+#define PDC_VID_INVALID (0x0000)
+#define PDC_PID_INVALID (0x0000)
 
 /**
  * Compare PDC versions
@@ -51,7 +45,7 @@ extern "C" {
 #define PDC_FWVER_GET_MINOR(fwver) (((fwver) >> 8) & 0xFF)
 #define PDC_FWVER_GET_PATCH(fwver) ((fwver) & 0xFF)
 
-#define PDC_FWVER_INVALID (0x00000000)
+#define PDC_FWVER_INVALID (0xFFFFFFFF)
 
 /**
  * @brief Power Delivery Controller Information
@@ -59,20 +53,24 @@ extern "C" {
 struct pdc_info_t {
 	/** Firmware version running on the PDC */
 	uint32_t fw_version;
-	/** Config version of the firmware, specific to this firmware version */
-	uint8_t fw_config_version;
 	/** Power Delivery Revision supported by the PDC */
 	uint16_t pd_revision;
 	/** Power Delivery Version supported by the PDC */
 	uint16_t pd_version;
-	/** VID:PID of the PDC (optional) */
-	uint32_t vid_pid;
+	/** VID of the PDC (optional) */
+	uint16_t vid;
+	/** PID of the PDC (optional) */
+	uint16_t pid;
 	/** Set to 1 if running from flash code (optional) */
 	uint8_t is_running_flash_code;
 	/** Set to the currently used flash bank (optional) */
 	uint8_t running_in_flash_bank;
 	/** 12-byte program name string plus NUL terminator */
 	char project_name[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
+	/** Compat string of driver */
+	char driver_name[USB_PD_CHIP_INFO_DRIVER_NAME_LEN + 1];
+	/** If true, do not apply PDC FW updates to this port */
+	bool no_fw_update;
 	/** Extra information (optional) */
 	uint16_t extra;
 };
@@ -98,21 +96,15 @@ struct pdc_bus_info_t {
 };
 
 /**
- * @brief PDO Source: PDC or Port Partner
- */
-enum pdo_source_t {
-	/** LPM */
-	LPM_PDO,
-	/** Port Partner PDO */
-	PARTNER_PDO,
-};
-
-/**
  * @brief Used for building CMD_PDC_GET_PDOS
  */
 struct get_pdo_t {
 	enum pdo_type_t pdo_type;
 	enum pdo_source_t pdo_source;
+	uint8_t num_pdos;
+	enum pdo_offset_t pdo_offset;
+	/** flag to indicate retrieving pdo from PDC */
+	bool updating;
 };
 
 struct pdc_callback;
@@ -132,6 +124,8 @@ typedef int (*pdc_get_connector_capability_t)(
 	const struct device *dev, union connector_capability_t *caps);
 typedef int (*pdc_set_ccom_t)(const struct device *dev, enum ccom_t ccom);
 typedef int (*pdc_set_drp_mode_t)(const struct device *dev, enum drp_mode_t dm);
+typedef int (*pdc_get_drp_mode_t)(const struct device *dev,
+				  enum drp_mode_t *dm);
 typedef int (*pdc_set_uor_t)(const struct device *dev, union uor_t uor);
 typedef int (*pdc_set_pdr_t)(const struct device *dev, union pdr_t pdr);
 typedef int (*pdc_set_sink_path_t)(const struct device *dev, bool en);
@@ -148,7 +142,7 @@ typedef int (*pdc_get_vbus_t)(const struct device *dev, uint16_t *vbus);
 typedef int (*pdc_get_pdos_t)(const struct device *dev,
 			      enum pdo_type_t pdo_type,
 			      enum pdo_offset_t pdo_offset, uint8_t num_pdos,
-			      bool port_partner_pdo, uint32_t *pdos);
+			      enum pdo_source_t source, uint32_t *pdos);
 typedef int (*pdc_get_rdo_t)(const struct device *dev, uint32_t *rdo);
 typedef int (*pdc_set_rdo_t)(const struct device *dev, uint32_t rdo);
 typedef int (*pdc_get_info_t)(const struct device *dev, struct pdc_info_t *info,
@@ -189,13 +183,16 @@ typedef int (*pdc_ack_cc_ci_t)(const struct device *dev,
 			       uint16_t vendor_defined);
 typedef int (*pdc_get_lpm_ppm_info_t)(const struct device *dev,
 				      struct lpm_ppm_info_t *info);
+typedef int (*pdc_set_frs_t)(const struct device *dev, bool enable);
+typedef int (*pdc_get_attention_vdo_t)(const struct device *dev,
+				       union get_attention_vdo_t *vdo);
 
 /**
  * @cond INTERNAL_HIDDEN
  *
  * These are for internal use only, so skip these in public documentation.
  */
-__subsystem struct pdc_driver_api_t {
+__subsystem struct pdc_driver_api {
 	pdc_is_init_done_t is_init_done;
 	pdc_get_ucsi_version_t get_ucsi_version;
 	pdc_reset_t reset;
@@ -204,6 +201,7 @@ __subsystem struct pdc_driver_api_t {
 	pdc_get_connector_capability_t get_connector_capability;
 	pdc_set_ccom_t set_ccom;
 	pdc_set_drp_mode_t set_drp_mode;
+	pdc_get_drp_mode_t get_drp_mode;
 	pdc_set_uor_t set_uor;
 	pdc_set_pdr_t set_pdr;
 	pdc_set_sink_path_t set_sink_path;
@@ -233,6 +231,8 @@ __subsystem struct pdc_driver_api_t {
 	pdc_manage_callback_t manage_callback;
 	pdc_ack_cc_ci_t ack_cc_ci;
 	pdc_get_lpm_ppm_info_t get_lpm_ppm_info;
+	pdc_set_frs_t set_frs;
+	pdc_get_attention_vdo_t get_attention_vdo;
 };
 /**
  * @endcond
@@ -247,8 +247,8 @@ __subsystem struct pdc_driver_api_t {
  */
 static inline bool pdc_is_init_done(const struct device *dev)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->is_init_done != NULL, "IS_INIT_DONE is not optional");
 
@@ -269,8 +269,8 @@ static inline bool pdc_is_init_done(const struct device *dev)
  */
 static inline int pdc_read_power_level(const struct device *dev)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->read_power_level != NULL,
 		 "READ_POWER_LEVEL is not optional");
@@ -296,8 +296,8 @@ static inline int pdc_read_power_level(const struct device *dev)
 static inline int pdc_get_ucsi_version(const struct device *dev,
 				       uint16_t *version)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_ucsi_version != NULL,
 		 "GET_UCSI_VERSION is not optional");
@@ -317,8 +317,8 @@ static inline int pdc_get_ucsi_version(const struct device *dev,
  */
 static inline int pdc_reset(const struct device *dev)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->reset != NULL, "RESET is not optional");
 
@@ -340,8 +340,8 @@ static inline int pdc_reset(const struct device *dev)
 static inline int pdc_connector_reset(const struct device *dev,
 				      union connector_reset_t reset)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->connector_reset != NULL,
 		 "CONNECTOR_RESET is not optional");
@@ -364,8 +364,8 @@ static inline int pdc_connector_reset(const struct device *dev,
  */
 static inline int pdc_set_sink_path(const struct device *dev, bool en)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->set_sink_path != NULL, "SET_SINK_PATH is not optional");
 
@@ -389,8 +389,8 @@ static inline int pdc_set_sink_path(const struct device *dev, bool en)
 static inline int pdc_get_capability(const struct device *dev,
 				     struct capability_t *caps)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_capability != NULL, "GET_CAPABILITY is not optional");
 
@@ -419,8 +419,8 @@ static inline int
 pdc_get_connector_status(const struct device *dev,
 			 union connector_status_t *connector_status)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_connector_status != NULL,
 		 "GET_CONNECTOR_STATUS is not optional");
@@ -446,8 +446,8 @@ pdc_get_connector_status(const struct device *dev,
 static inline int pdc_get_error_status(const struct device *dev,
 				       union error_status_t *es)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_error_status != NULL,
 		 "GET_ERROR_STATUS is not optional");
@@ -473,8 +473,8 @@ static inline int
 pdc_get_connector_capability(const struct device *dev,
 			     union connector_capability_t *caps)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_connector_capability != NULL,
 		 "GET_CONNECTOR_CAPABILITY is not optional");
@@ -498,8 +498,8 @@ pdc_get_connector_capability(const struct device *dev,
  */
 static inline int pdc_set_ccom(const struct device *dev, enum ccom_t ccom)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->set_ccom == NULL) {
@@ -525,8 +525,8 @@ static inline int pdc_set_ccom(const struct device *dev, enum ccom_t ccom)
  */
 static inline int pdc_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->set_drp_mode == NULL) {
@@ -534,6 +534,20 @@ static inline int pdc_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
 	}
 
 	return api->set_drp_mode(dev, dm);
+}
+
+static inline int pdc_get_drp_mode(const struct device *dev,
+				   enum drp_mode_t *dm)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	/* This is an optional feature, so it might not be implemented */
+	if (api->get_drp_mode == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->get_drp_mode(dev, dm);
 }
 
 /**
@@ -551,8 +565,8 @@ static inline int pdc_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
  */
 static inline int pdc_set_uor(const struct device *dev, union uor_t uor)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->set_uor != NULL, "SET_UOR is not optional");
 
@@ -574,8 +588,8 @@ static inline int pdc_set_uor(const struct device *dev, union uor_t uor)
  */
 static inline int pdc_set_pdr(const struct device *dev, union pdr_t pdr)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->set_pdr != NULL, "SET_PDR is not optional");
 
@@ -594,8 +608,8 @@ static inline int pdc_set_pdr(const struct device *dev, union pdr_t pdr)
 static inline void pdc_set_cc_callback(const struct device *dev,
 				       struct pdc_callback *callback)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->set_handler_cb != NULL, "SET_HANDLER_CB is not optional");
 
@@ -619,8 +633,8 @@ static inline void pdc_set_cc_callback(const struct device *dev,
 static inline int pdc_get_vbus_voltage(const struct device *dev,
 				       uint16_t *voltage)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_vbus_voltage != NULL,
 		 "GET_VBUS_VOLTAGE is not optional");
@@ -656,18 +670,21 @@ static inline int pdc_get_vbus_voltage(const struct device *dev,
 static inline int pdc_get_pdos(const struct device *dev,
 			       enum pdo_type_t pdo_type,
 			       enum pdo_offset_t pdo_offset, uint8_t num_pdos,
-			       bool port_partner_pdo, uint32_t *pdos)
+			       enum pdo_source_t source, uint32_t *pdos)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->get_pdos == NULL) {
 		return -ENOSYS;
 	}
 
-	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos,
-			     port_partner_pdo, pdos);
+	__ASSERT(num_pdos <= GET_PDOS_MAX_NUM,
+		 "GET_PDOS supports a maximum count of " STRINGIFY(
+			 GET_PDOS_MAX_NUM) " PDOs");
+
+	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos, source, pdos);
 }
 
 /**
@@ -688,8 +705,8 @@ static inline int pdc_get_pdos(const struct device *dev,
 static inline int pdc_get_info(const struct device *dev,
 			       struct pdc_info_t *info, bool live)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_info != NULL, "GET_INFO is not optional");
 
@@ -708,8 +725,8 @@ static inline int pdc_get_info(const struct device *dev,
 static inline int pdc_get_bus_info(const struct device *dev,
 				   struct pdc_bus_info_t *info)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_bus_info != NULL, "GET_INFO is not optional");
 
@@ -732,8 +749,8 @@ static inline int pdc_get_bus_info(const struct device *dev,
  */
 static inline int pdc_get_rdo(const struct device *dev, uint32_t *rdo)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_rdo != NULL, "GET_RDO is not optional");
 
@@ -755,8 +772,8 @@ static inline int pdc_get_rdo(const struct device *dev, uint32_t *rdo)
  */
 static inline int pdc_set_rdo(const struct device *dev, uint32_t rdo)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->set_rdo != NULL, "SET_RDO is not optional");
 
@@ -780,8 +797,8 @@ static inline int pdc_set_rdo(const struct device *dev, uint32_t rdo)
  */
 static inline int pdc_get_current_pdo(const struct device *dev, uint32_t *pdo)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->get_current_pdo == NULL) {
@@ -807,8 +824,8 @@ static inline int pdc_get_current_pdo(const struct device *dev, uint32_t *pdo)
 static inline int pdc_set_power_level(const struct device *dev,
 				      enum usb_typec_current_t tcc)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->set_power_level == NULL) {
@@ -833,8 +850,8 @@ static inline int pdc_set_power_level(const struct device *dev,
  */
 static inline int pdc_reconnect(const struct device *dev)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->reconnect == NULL) {
@@ -857,8 +874,8 @@ static inline int pdc_reconnect(const struct device *dev)
 static inline int pdc_get_current_flash_bank(const struct device *dev,
 					     uint8_t *bank)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* This is an optional feature, so it might not be implemented */
 	if (api->get_current_flash_bank == NULL) {
@@ -879,8 +896,8 @@ static inline int pdc_get_current_flash_bank(const struct device *dev,
  */
 static inline int pdc_update_retimer_fw(const struct device *dev, bool enable)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* Temporarily optional feature, so it might not be implemented */
 	if (api->update_retimer == NULL) {
@@ -902,8 +919,8 @@ static inline int pdc_update_retimer_fw(const struct device *dev, bool enable)
 static inline int pdc_get_pch_data_status(const struct device *dev,
 					  uint8_t port_num, uint8_t *status_reg)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	/* Temporarily optional feature, so it might not be implemented */
 	if (api->get_pch_data_status == NULL) {
@@ -930,8 +947,8 @@ static inline int pdc_get_pch_data_status(const struct device *dev,
 static inline int pdc_get_cable_property(const struct device *dev,
 					 union cable_property_t *cable_prop)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_cable_property != NULL,
 		 "GET_CABLE_PROPERTY is not optional");
@@ -956,8 +973,8 @@ static inline int pdc_get_cable_property(const struct device *dev,
 static inline int pdc_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
 			      uint8_t *vdo_list, uint32_t *vdo)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->get_vdo != NULL, "GET_VDO is not optional");
 
@@ -978,8 +995,8 @@ static inline int pdc_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
 static inline int pdc_get_identity_discovery(const struct device *dev,
 					     bool *disc_state)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->get_identity_discovery == NULL) {
 		return -ENOSYS;
@@ -1000,8 +1017,8 @@ static inline int pdc_get_identity_discovery(const struct device *dev,
 static inline int pdc_set_comms_state(const struct device *dev,
 				      bool comms_active)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	__ASSERT(api->set_comms_state != NULL,
 		 "set_comms_state is not optional");
@@ -1022,12 +1039,14 @@ static inline int pdc_set_comms_state(const struct device *dev,
  *
  * @retval 0 on success
  * @retval -EBUSY if not ready to execute the command
+ * @retval -ERANGE if the count is not supported
+ * @retval -EINVAL if \p pdo is NULL
  */
 static inline int pdc_set_pdos(const struct device *dev, enum pdo_type_t type,
 			       uint32_t *pdo, int count)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->set_pdos == NULL) {
 		return -ENOSYS;
@@ -1049,8 +1068,8 @@ static inline int pdc_set_pdos(const struct device *dev, enum pdo_type_t type,
 static inline int pdc_is_vconn_sourcing(const struct device *dev,
 					bool *vconn_sourcing)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->is_vconn_sourcing == NULL) {
 		return -ENOSYS;
@@ -1078,8 +1097,8 @@ static inline int pdc_ack_cc_ci(const struct device *dev,
 				union conn_status_change_bits_t ci, bool cc,
 				uint16_t vendor_defined)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->ack_cc_ci == NULL) {
 		return -ENOSYS;
@@ -1145,8 +1164,8 @@ static inline int pdc_execute_ucsi_cmd(const struct device *dev,
 				       uint8_t *lpm_data_out,
 				       struct pdc_callback *callback)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->execute_ucsi_cmd == NULL) {
 		return -ENOSYS;
@@ -1169,8 +1188,8 @@ static inline int pdc_execute_ucsi_cmd(const struct device *dev,
 static inline int pdc_add_ci_callback(const struct device *dev,
 				      struct pdc_callback *callback)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->manage_callback == NULL) {
 		return -ENOSYS;
@@ -1192,8 +1211,8 @@ static inline int pdc_add_ci_callback(const struct device *dev,
 static inline int pdc_get_lpm_ppm_info(const struct device *dev,
 				       struct lpm_ppm_info_t *info)
 {
-	const struct pdc_driver_api_t *api =
-		(const struct pdc_driver_api_t *)dev->api;
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
 
 	if (api->get_lpm_ppm_info == NULL) {
 		return -ENOSYS;
@@ -1288,6 +1307,45 @@ static inline void pdc_fire_callbacks(sys_slist_t *list,
 		__ASSERT(cb->handler, "No callback handler!");
 		cb->handler(dev, cb, cci_event);
 	}
+}
+
+/**
+ * @brief Enable or disable fast role swap (FRS).
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param enable Set to true to enable FRS, set to false to disable FRS
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_frs(const struct device *dev, bool enable)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_frs == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_frs(dev, enable);
+}
+
+/**
+ * @brief UCSI command to request an Attention VDO received from the partner
+ * @param dev PDC device structure pointer
+ * @param get_attention_vdo_t pointer where the GET_ATTENTION_VDO response is
+ * stored.
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_get_attention_vdo(const struct device *dev,
+					union get_attention_vdo_t *vdo)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->get_attention_vdo == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->get_attention_vdo(dev, vdo);
 }
 
 #ifdef __cplusplus

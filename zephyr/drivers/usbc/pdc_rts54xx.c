@@ -7,6 +7,8 @@
  * Realtek RTS545x Power Delivery Controller Driver
  */
 
+#include "drivers/ucsi_v3.h"
+
 #include <assert.h>
 #include <string.h>
 
@@ -24,7 +26,6 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
-#include <usbc/ppm.h>
 
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
@@ -64,9 +65,9 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #define N_INIT_RETRY_ATTEMPT_MAX 2
 
 /**
- * @brief VBUS Voltage Scale Factor is 50mV
+ * @brief Connector Status VBUS Voltage Scale Factor is 5mV
  */
-#define VOLTAGE_SCALE_FACTOR 50
+#define VOLTAGE_SCALE_FACTOR 5
 
 /**
  * @brief FORCE_SET_POWER_SWITCH enable
@@ -82,8 +83,7 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 /**
  * @brief Offsets of data fields in the GET_IC_STATUS response
  *
- * Note that in the Realtek spec version 3.3.22, bit offsets and byte
- * numbers are inconsistent. Byte numbers appear to be accurate.
+ * These are based on the Realtek spec version 3.3.25.
  *
  * "Data Byte 0" is the first byte after "Byte Count" and is available
  * at .rd_buf[1].
@@ -103,6 +103,17 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #define RTS54XX_GET_IC_STATUS_PD_VER_MINOR_OFFSET 26
 #define RTS54XX_GET_IC_STATUS_PROG_NAME_STR 27
 #define RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN 12
+
+/*
+ * Constants for SET_PDO
+ */
+#define RTS54XX_SET_PDO_MAX_PDO_COUNT 7
+/* Length of command header and other fields up to the first PDO */
+#define RTS54XX_SET_PDO_CMD_BASE_LENGTH 5
+/* Maximum length of the SET_PDO command */
+#define RTS54XX_SET_PD_CMD_MAX_LENGTH      \
+	(RTS54XX_SET_PDO_CMD_BASE_LENGTH + \
+	 sizeof(uint32_t) * RTS54XX_SET_PDO_MAX_PDO_COUNT)
 
 /* FW project name length should not exceed the max length supported in struct
  * pdc_info_t
@@ -136,11 +147,6 @@ BUILD_ASSERT(RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN <=
  * @brief RTS54XX I2C block read command
  */
 #define RTS54XX_BLOCK_READ_CMD 0x80
-
-/* TODO: b/323371550 */
-BUILD_ASSERT(NUM_PDC_RTS54XX_PORTS <= 2,
-	     "rts54xx driver supports a maximum of 2 ports");
-
 /**
  * @brief SMbus Command struct for Realtek commands
  */
@@ -165,11 +171,13 @@ static const struct smbus_cmd_t SET_TPC_CSD_OPERATION_MODE = { 0x08, 0x03,
 							       0x1D };
 static const struct smbus_cmd_t SET_TPC_RECONNECT = { 0x08, 0x03, 0x1F };
 static const struct smbus_cmd_t FORCE_SET_POWER_SWITCH = { 0x08, 0x03, 0x21 };
-static const struct smbus_cmd_t GET_PDOS = { 0x08, 0x03, 0x83 };
 static const struct smbus_cmd_t GET_RDO = { 0x08, 0x02, 0x84 };
 static const struct smbus_cmd_t GET_VDO = { 0x08, 0x03, 0x9A };
 static const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02,
 								0xA7 };
+static const struct smbus_cmd_t RTS_SET_FRS_FUNCTION = { 0x08, 0x03, 0xE1 };
+static const struct smbus_cmd_t GET_TPC_CSD_OPERATION_MODE = { 0x08, 0x02,
+							       0x9D };
 static const struct smbus_cmd_t GET_RTK_STATUS = { 0x09, 0x03 };
 static const struct smbus_cmd_t RTS_UCSI_PPM_RESET = { 0x0E, 0x02, 0x01 };
 static const struct smbus_cmd_t RTS_UCSI_CONNECTOR_RESET = { 0x0E, 0x03, 0x03 };
@@ -179,6 +187,9 @@ static const struct smbus_cmd_t RTS_UCSI_GET_CONNECTOR_CAPABILITY = { 0x0E,
 								      0x07 };
 static const struct smbus_cmd_t RTS_UCSI_SET_UOR = { 0x0E, 0x04, 0x09 };
 static const struct smbus_cmd_t RTS_UCSI_SET_PDR = { 0x0E, 0x04, 0x0B };
+static const struct smbus_cmd_t RTS_UCSI_GET_PDOS = { .cmd = 0x0E,
+						      .len = 0x05,
+						      .sub = 0x10 };
 static const struct smbus_cmd_t RTS_UCSI_GET_CONNECTOR_STATUS = { 0x0E, 0x3,
 								  0x12 };
 static const struct smbus_cmd_t RTS_UCSI_GET_ERROR_STATUS = { 0x0E, 0x03,
@@ -195,6 +206,8 @@ static const struct smbus_cmd_t GET_PCH_DATA_STATUS = { 0x08, 0x02, 0xE0 };
 static const struct smbus_cmd_t ACK_CC_CI = { 0x0A, 0x07, 0x00 };
 static const struct smbus_cmd_t RTS_UCSI_GET_LPM_PPM_INFO = { 0x0E, 0x03,
 							      0x22 };
+static const struct smbus_cmd_t RTS_UCSI_GET_ATTENTION_VDO = { 0x0E, 0x03,
+							       0x16 };
 
 /**
  * @brief PDC Command states
@@ -303,6 +316,8 @@ enum cmd_t {
 	CMD_SET_CCOM,
 	/** Set DRP_MODE */
 	CMD_SET_DRP_MODE,
+	/** Get DRP_MODE */
+	CMD_GET_DRP_MODE,
 	/** Read Power Level */
 	CMD_READ_POWER_LEVEL,
 	/** Get RDO */
@@ -313,6 +328,8 @@ enum cmd_t {
 	CMD_SET_SINK_PATH,
 	/** Get current Partner SRC PDO */
 	CMD_GET_CURRENT_PARTNER_SRC_PDO,
+	/** Set the Fast Role Swap */
+	CMD_SET_FRS_FUNCTION,
 	/** Set the Rp TypeC current */
 	CMD_SET_TPC_RP,
 	/** TypeC reconnect */
@@ -338,6 +355,8 @@ enum cmd_t {
 	CMD_RAW_UCSI,
 	/** CMD_GET_LPM_PPM_INFO */
 	CMD_GET_LPM_PPM_INFO,
+	/** CMD_GET_ATTENTION_VDO */
+	CMD_GET_ATTENTION_VDO,
 };
 
 /**
@@ -354,6 +373,8 @@ struct pdc_config_t {
 	union notification_enable_t bits;
 	/** Create thread function */
 	void (*create_thread)(const struct device *dev);
+	/** If true, do not apply PDC FW updates to this port */
+	bool no_fw_update;
 };
 
 /**
@@ -422,12 +443,10 @@ struct pdc_data_t {
 	uint16_t error_recovery_counter;
 	/** Error Status used during initialization */
 	union error_status_t es;
-	/** Connector Status */
-	union connector_status_t conn_status;
-	/** Connector Status Cache State */
-	bool conn_status_cached;
 	/* Driver specific events to handle. */
 	struct k_event driver_event;
+	/* Currently running UCSI command. */
+	enum ucsi_command_t active_ucsi_cmd;
 };
 
 /**
@@ -451,6 +470,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_IC_STATUS] = "GET_IC_STATUS",
 	[CMD_SET_CCOM] = "SET_CCOM",
 	[CMD_SET_DRP_MODE] = "SET_DRP_MODE",
+	[CMD_GET_DRP_MODE] = "GET_DRP_MODE",
 	[CMD_SET_SINK_PATH] = "SET_SINK_PATH",
 	[CMD_READ_POWER_LEVEL] = "READ_POWER_LEVEL",
 	[CMD_GET_RDO] = "GET_RDO",
@@ -458,6 +478,7 @@ static const char *const cmd_names[] = {
 	[CMD_SET_TPC_RECONNECT] = "SET_TPC_RECONNECT",
 	[CMD_SET_RDO] = "SET_RDO",
 	[CMD_GET_CURRENT_PARTNER_SRC_PDO] = "GET_CURRENT_PARTNER_SRC_PDO",
+	[CMD_SET_FRS_FUNCTION] = "SET_FRS_FUNCTION",
 	[CMD_SET_RETIMER_FW_UPDATE_MODE] = "SET_RETIMER_FW_UPDATE_MODE",
 	[CMD_GET_CABLE_PROPERTY] = "GET_CABLE_PROPERTY",
 	[CMD_GET_VDO] = "GET VDO",
@@ -468,6 +489,7 @@ static const char *const cmd_names[] = {
 	[CMD_ACK_CC_CI] = "CMD_ACK_CC_CI",
 	[CMD_RAW_UCSI] = "CMD_RAW_UCSI",
 	[CMD_GET_LPM_PPM_INFO] = "CMD_GET_LPM_PPM_INFO",
+	[CMD_GET_ATTENTION_VDO] = "CMD_GET_ATTENTION_VDO",
 };
 
 /**
@@ -552,8 +574,14 @@ static void print_current_state(struct pdc_data_t *data)
 	int st = get_state(data);
 
 	if (st == ST_WRITE) {
-		LOG_INF("ST%d: %s %s", cfg->connector_number, state_names[st],
-			cmd_names[data->cmd]);
+		if (data->cmd == CMD_RAW_UCSI) {
+			LOG_INF("ST%d: %s RAW:%s", cfg->connector_number,
+				state_names[st],
+				get_ucsi_command_name(data->active_ucsi_cmd));
+		} else {
+			LOG_INF("ST%d: %s %s", cfg->connector_number,
+				state_names[st], cmd_names[data->cmd]);
+		}
 	} else if (st == ST_ERROR_RECOVERY) {
 		LOG_INF("ST%d: %s %s %d", cfg->connector_number,
 			state_names[st], cmd_names[data->cmd],
@@ -803,7 +831,7 @@ static void st_init_run(void *o)
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
 		return;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
-		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0);
+		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0x0);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_SET_NOTIFICATION_ENABLE)",
 				cnum);
@@ -942,7 +970,6 @@ static void handle_irqs(struct pdc_data_t *data)
 				/* Set the interrupt event */
 				pdc_int_data->cci_event
 					.vendor_defined_indicator = 1;
-				pdc_int_data->conn_status_cached = false;
 				/* Notify system of status change */
 				call_cci_event_cb(pdc_int_data);
 				/* done with this port */
@@ -959,6 +986,7 @@ static void st_idle_entry(void *o)
 	print_current_state(data);
 
 	data->cmd = CMD_NONE;
+	data->active_ucsi_cmd = 0;
 }
 
 static void st_idle_run(void *o)
@@ -1258,15 +1286,13 @@ static void st_read_run(void *o)
 				<< 8 |
 			data->rd_buf[RTS54XX_GET_IC_STATUS_FWVER_PATCH_OFFSET];
 
-		/* The Realtek PDC does not currently provide this. */
-		info->fw_config_version = 0;
+		/* Realtek VID: Data Byte9..10 (little-endian) */
+		info->vid = data->rd_buf[RTS54XX_GET_IC_STATUS_VID_H] << 8 |
+			    data->rd_buf[RTS54XX_GET_IC_STATUS_VID_L];
 
-		/* Realtek VID PID: Data Byte9..12 (little-endian) */
-		info->vid_pid =
-			data->rd_buf[RTS54XX_GET_IC_STATUS_VID_H] << 24 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_VID_L] << 16 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_PID_H] << 8 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_PID_L];
+		/* Realtek PID: Data Byte11..12 (little-endian) */
+		info->pid = data->rd_buf[RTS54XX_GET_IC_STATUS_PID_H] << 8 |
+			    data->rd_buf[RTS54XX_GET_IC_STATUS_PID_L];
 
 		/* Realtek Running flash bank offset: Data Byte14 */
 		info->running_in_flash_bank =
@@ -1304,22 +1330,26 @@ static void st_read_run(void *o)
 				info->pd_revision);
 		}
 
+		/* Fill in the chip type (driver compat string) */
+		strncpy(info->driver_name, STRINGIFY(DT_DRV_COMPAT),
+			sizeof(info->driver_name));
+		info->driver_name[sizeof(info->driver_name) - 1] = '\0';
+
+		info->no_fw_update = cfg->no_fw_update;
+
 		/* Retain a cached copy of this data */
 		data->info = *info;
 
 		break;
 	}
-	case CMD_GET_VBUS_VOLTAGE:
-		/*
-		 * Realtek Voltage reading is on Byte18 and Byte19, but
-		 * the READ_RTK_STATUS command was issued with reading
-		 * 2-bytes from offset 18, so the data is read from
-		 * rd_buf at Byte1 and Byte2.
-		 */
-		*(uint16_t *)data->user_buf =
-			((data->rd_buf[2] << 8) | data->rd_buf[1]) *
-			VOLTAGE_SCALE_FACTOR;
+	case CMD_GET_VBUS_VOLTAGE: {
+		union connector_status_t *status =
+			(union connector_status_t *)(data->rd_buf + offset);
+		*(uint16_t *)data->user_buf = status->voltage_reading *
+					      status->voltage_scale *
+					      VOLTAGE_SCALE_FACTOR;
 		break;
+	}
 	case CMD_GET_ERROR_STATUS: {
 		/* Map Realtek GET_ERROR_STATUS bits to UCSI GET_ERROR_STATUS */
 		union error_status_t *es =
@@ -1380,27 +1410,22 @@ static void st_read_run(void *o)
 		*vconn_sourcing = (data->rd_buf[11] & 0x20);
 		break;
 	}
-	case CMD_GET_CONNECTOR_STATUS:
-		memcpy(data->user_buf, data->rd_buf + offset, len);
-		/* Save connector status in cache. */
-		k_mutex_lock(&data->mtx, K_FOREVER);
-		memcpy(&data->conn_status, data->user_buf, len);
-		k_mutex_unlock(&data->mtx);
-		data->conn_status_cached = true;
-		break;
-	case CMD_RAW_UCSI:
-		memcpy(data->user_buf, data->rd_buf + offset, len);
+	case CMD_GET_DRP_MODE: {
+		enum drp_mode_t *drp_mode = (enum drp_mode_t *)data->user_buf;
 
-		/* TODO(b/331801899) - Set GET_PD_MESSAGE bit in
-		 * GET_CAPABILITIES so that we can Discover Identity Response.
-		 */
-		if (data->wr_buf[0] == REALTEK_PD_COMMAND &&
-		    data->wr_buf[2] == UCSI_GET_CAPABILITY) {
-			struct capability_t *caps =
-				(struct capability_t *)data->user_buf;
-			caps->bmOptionalFeatures.get_pd_message = 1;
+		switch ((data->rd_buf[1] & GENMASK(5, 3)) >> 3) {
+		case 0x0:
+			*drp_mode = DRP_NORMAL;
+			break;
+		case 0x1:
+			*drp_mode = DRP_TRY_SRC;
+			break;
+		case 0x2:
+			*drp_mode = DRP_TRY_SNK;
+			break;
 		}
 		break;
+	}
 	default:
 		/* No preprocessing needed for the user data */
 		memcpy(data->user_buf, data->rd_buf + offset, len);
@@ -1560,6 +1585,13 @@ static int rts54_post_command_with_callback(const struct device *dev,
 	data->user_buf = user_buf;
 	data->cmd = cmd;
 	data->cc_cb_tmp = callback;
+
+	/* If sending a raw UCSI command, byte[2] is the actual UCSI command
+	 * being executed.
+	 */
+	if (cmd == CMD_RAW_UCSI && buf) {
+		data->active_ucsi_cmd = data->wr_buf[2];
+	}
 
 	if (IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG)) {
 		const struct pdc_config_t *cfg = dev->config;
@@ -1784,6 +1816,7 @@ static int rts54_set_power_level(const struct device *dev,
 
 	/* Map UCSI USB Type-C current to Realtek format */
 	switch (tcc) {
+	default:
 	case TC_CURRENT_PPM_DEFINED:
 		/* Realtek does not support this */
 		return -EINVAL;
@@ -1861,7 +1894,8 @@ static int rts54_set_notification_enable(const struct device *dev,
 		0x00,
 		BYTE0(bits.raw_value),
 		BYTE1(bits.raw_value),
-		BYTE0(ext_bits),
+		/* Bit 16 of UCSI notification enable overlaps with RTK bits. */
+		(BYTE0(ext_bits) & 0xE) | (BYTE2(bits.raw_value) & 0x1),
 		BYTE1(ext_bits),
 	};
 
@@ -2042,10 +2076,11 @@ static int rts54_get_rdo(const struct device *dev, uint32_t *rdo)
 
 static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 			  enum pdo_offset_t pdo_offset, uint8_t num_pdos,
-			  bool port_partner_pdo, uint32_t *pdos)
+			  enum pdo_source_t source, uint32_t *pdos)
 {
+	const struct pdc_config_t *cfg = dev->config;
 	struct pdc_data_t *data = dev->data;
-	uint8_t byte4;
+	union get_pdos_t *get_pdo;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
@@ -2055,14 +2090,36 @@ static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 		return -EINVAL;
 	}
 
-	byte4 = (num_pdos << 5) | (pdo_offset << 2) | (port_partner_pdo << 1) |
-		pdo_type;
-
+	/* b/366470065 - The vendor specific GET_PDO command fails to generate
+	 * the appropriate PD message if the requested PDO type has not
+	 * been received.
+	 *
+	 * Use the UCSI version which has the correct behavior.
+	 */
 	memset((uint8_t *)pdos, 0, sizeof(uint32_t) * num_pdos);
 
 	uint8_t payload[] = {
-		GET_PDOS.cmd, GET_PDOS.len, GET_PDOS.sub, 0x00, byte4,
+		RTS_UCSI_GET_PDOS.cmd,
+		RTS_UCSI_GET_PDOS.len,
+		RTS_UCSI_GET_PDOS.sub,
+		0x00, /* data length - must be zero */
+		0x00,
+		0x00,
+		0x00,
 	};
+
+	BUILD_ASSERT(ARRAY_SIZE(payload) == sizeof(RTS_UCSI_GET_PDOS) +
+						    /* length byte */ 1 +
+						    sizeof(union get_pdos_t));
+
+	get_pdo = (union get_pdos_t *)&payload[4];
+	get_pdo->connector_number = cfg->connector_number + 1;
+	get_pdo->pdo_source = source;
+	get_pdo->pdo_offset = pdo_offset;
+	get_pdo->number_of_pdos = num_pdos - 1;
+	get_pdo->pdo_type = pdo_type;
+	get_pdo->source_caps = CURRENT_SUPPORTED_SOURCE_CAPS;
+	get_pdo->range = SPR_RANGE;
 
 	return rts54_post_command(dev, CMD_GET_PDOS, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)pdos);
@@ -2088,7 +2145,8 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 		 * we have a resident value.
 		 */
 		if (data->info.fw_version == PDC_FWVER_INVALID ||
-		    data->info.vid_pid == PDC_VIDPID_INVALID) {
+		    data->info.vid == PDC_VID_INVALID ||
+		    data->info.pid == PDC_PID_INVALID) {
 			k_mutex_unlock(&data->mtx);
 
 			/* No cached value. Caller should request a live read */
@@ -2151,8 +2209,16 @@ static int rts54_get_vbus_voltage(const struct device *dev, uint16_t *voltage)
 		return -EINVAL;
 	}
 
-	return rts54_get_rtk_status(dev, 17, 2, CMD_GET_VBUS_VOLTAGE,
-				    (uint8_t *)voltage);
+	uint8_t payload[] = {
+		RTS_UCSI_GET_CONNECTOR_STATUS.cmd,
+		RTS_UCSI_GET_CONNECTOR_STATUS.len,
+		RTS_UCSI_GET_CONNECTOR_STATUS.sub,
+		0x00, /* Data Length --> set to 0x00 */
+		0x00, /* Connector number --> don't care for Realtek */
+	};
+
+	return rts54_post_command(dev, CMD_GET_VBUS_VOLTAGE, payload,
+				  ARRAY_SIZE(payload), (uint8_t *)voltage);
 }
 
 static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom)
@@ -2235,6 +2301,24 @@ static int rts54_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
 				  ARRAY_SIZE(payload), NULL);
 }
 
+static int rts54_get_drp_mode(const struct device *dev, enum drp_mode_t *dm)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		GET_TPC_CSD_OPERATION_MODE.cmd,
+		GET_TPC_CSD_OPERATION_MODE.len,
+		GET_TPC_CSD_OPERATION_MODE.sub,
+		0x00,
+	};
+	return rts54_post_command(dev, CMD_GET_DRP_MODE, payload,
+				  ARRAY_SIZE(payload), (uint8_t *)dm);
+}
+
 static int rts54_set_uor(const struct device *dev, union uor_t uor)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2292,6 +2376,26 @@ static int rts54_get_current_pdo(const struct device *dev, uint32_t *pdo)
 
 	return rts54_post_command(dev, CMD_GET_CURRENT_PARTNER_SRC_PDO, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)pdo);
+}
+
+static int rts54_set_frs(const struct device *dev, bool enable)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		[0] = RTS_SET_FRS_FUNCTION.cmd,
+		[1] = RTS_SET_FRS_FUNCTION.len,
+		[2] = RTS_SET_FRS_FUNCTION.sub,
+		[3] = 0x00,
+		[4] = enable,
+	};
+
+	return rts54_post_command(dev, CMD_SET_FRS_FUNCTION, payload,
+				  ARRAY_SIZE(payload), NULL);
 }
 
 static int rts54_get_identity_discovery(const struct device *dev,
@@ -2441,31 +2545,37 @@ static int rts54_set_pdo(const struct device *dev, enum pdo_type_t type,
 	struct pdc_data_t *data = dev->data;
 	uint8_t pdo_info;
 
+	if (pdo == NULL) {
+		return -EINVAL;
+	}
+
+	if (count < 1 || count > RTS54XX_SET_PDO_MAX_PDO_COUNT) {
+		/* Count == 0 is reserved per RTK manual */
+		return -ERANGE;
+	}
+
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
 
-	/*
-	 * TODO(b/319643480): Current implementation only supports setting the
-	 * first SNK or SRC CAP.
-	 */
-	if (count != 1) {
-		count = 1;
-		LOG_WRN("rts54xx: set_pdos only sets the first PDO passed in");
-	}
-
 	pdo_info = (count & 0x7) | (type << 3);
 
-	uint8_t payload[] = {
-		SET_PDO.cmd,   SET_PDO.len + sizeof(uint32_t) * count,
-		SET_PDO.sub,   0x00,
-		pdo_info,      BYTE0(pdo[0]),
-		BYTE1(pdo[0]), BYTE2(pdo[0]),
-		BYTE3(pdo[0]),
+	/* Load command header and fields up to the first PDO field */
+	uint8_t payload[RTS54XX_SET_PD_CMD_MAX_LENGTH] = {
+		SET_PDO.cmd, SET_PDO.len + sizeof(uint32_t) * count,
+		SET_PDO.sub, 0x00,
+		pdo_info,
 	};
 
-	return rts54_post_command(dev, CMD_SET_PDO, payload,
-				  ARRAY_SIZE(payload), NULL);
+	/* Compute actual length given number of PDOs being set */
+	uint8_t payload_len =
+		RTS54XX_SET_PDO_CMD_BASE_LENGTH + sizeof(uint32_t) * count;
+
+	/* Copy PDOs into payload buffer */
+	memcpy(&payload[RTS54XX_SET_PDO_CMD_BASE_LENGTH], pdo,
+	       sizeof(uint32_t) * count);
+
+	return rts54_post_command(dev, CMD_SET_PDO, payload, payload_len, NULL);
 }
 
 #define SMBUS_MAX_BLOCK_SIZE 32
@@ -2477,26 +2587,7 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 				  struct pdc_callback *callback)
 {
 	struct pdc_data_t *data = dev->data;
-	const struct pdc_config_t *cfg = dev->config;
 	uint8_t cmd_buffer[SMBUS_MAX_BLOCK_SIZE];
-	enum cmd_t use_cmd = CMD_RAW_UCSI;
-
-	if (ucsi_command == UCSI_GET_CONNECTOR_STATUS &&
-	    data->conn_status_cached) {
-		LOG_INF("%s: Read conn status from cache", __func__);
-		k_mutex_lock(&data->mtx, K_FOREVER);
-		memcpy(lpm_data_out, &data->conn_status,
-		       sizeof(data->conn_status));
-		k_mutex_unlock(&data->mtx);
-		if (callback) {
-			union cci_event_t cci = {
-				.data_len = sizeof(data->conn_status),
-				.command_completed = 1,
-			};
-			callback->handler(dev, callback, cci);
-		}
-		return 0;
-	}
 
 	if (get_state(data) != ST_IDLE)
 		return -EBUSY;
@@ -2510,84 +2601,21 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 	/* Convert standard UCSI command to Realtek vendor specific formats. */
 	switch (ucsi_command) {
 	case UCSI_ACK_CC_CI: {
-		union ack_cc_ci_t *cmd = (union ack_cc_ci_t *)command_specific;
-
+		/* Note: Change acknowledgements should be intercepted by the
+		 * PPM and handled by the pdc_api instead.
+		 */
 		data_size = 5;
 		memset(cmd_buffer, 0, ACK_CC_CI.len + 2);
 		cmd_buffer[0] = ACK_CC_CI.cmd;
 		cmd_buffer[1] = ACK_CC_CI.len;
 
-		if (cmd->connector_change_ack) {
-			union conn_status_change_bits_t csc = {};
-
-			/* Note there is concurrency issue here: b/343733474. */
-			if (!data->conn_status_cached) {
-				LOG_ERR("C%d: Found no conn state cache for ACK CI",
-					cfg->connector_number);
-				return -ENODATA;
-			};
-
-			k_mutex_lock(&data->mtx, K_FOREVER);
-			csc.raw_value =
-				data->conn_status.raw_conn_status_change_bits;
-			k_mutex_unlock(&data->mtx);
-
-			cmd_buffer[4] = BYTE0(csc.raw_value);
-			cmd_buffer[5] = BYTE1(csc.raw_value);
-			cmd_buffer[6] = 0xff;
-			cmd_buffer[7] = 0xff;
-		}
 		break;
 	}
-	case UCSI_GET_PD_MESSAGE: {
-		/* The Realtek PDC does not support GET_PD_MESSAGE, but it can
-		 * return SOP/SOP' identity with GET_VDO. If the GET_PD_MESSAGE
-		 * request is for the discover identity response, map it to the
-		 * corresponding GET_VDO command.
-		 */
-		union get_pd_message_t *get_pd_message_cmd =
-			(union get_pd_message_t *)command_specific;
-
-		if (get_pd_message_cmd->response_message_type != 4) {
-			LOG_ERR("Unsupported Response Message type in GET_PD_MESSAGE: %d",
-				get_pd_message_cmd->response_message_type);
-			return -ENOTSUP;
-		}
-
-		data_size = 8; /* Everything after port num. */
-		memset(cmd_buffer, 0, data_size + 4);
-		cmd_buffer[0] = GET_VDO.cmd;
-		cmd_buffer[1] = data_size + 2;
-
-		/* GET_VDO sub command */
-		cmd_buffer[2] = GET_VDO.sub;
-		/* Fixed port-num = 0 */
-		cmd_buffer[3] = 0x00;
-		/* Recipient | Num VDOs (7) */
-		cmd_buffer[4] = (get_pd_message_cmd->recipient << 3) | 7;
-		/* VDOs in the Discover identity response. GET_PD_MESSAGE
-		 * also returns the VDM header, so cmd_buffer[5] requests a
-		 * reserved value as a placeholder. cmd_buffer[6] through
-		 * cmd_buffer[11] request the ID header VDO, Cert Stat VDO,
-		 * and Product VDO followed by Product Type VDOs 1-3.
-		 */
-		cmd_buffer[5] = 0x00;
-		cmd_buffer[6] = 0x01;
-		cmd_buffer[7] = 0x02;
-		cmd_buffer[8] = 0x03;
-		cmd_buffer[9] = 0x04;
-		cmd_buffer[10] = 0x05;
-		cmd_buffer[11] = 0x06;
-		break;
-	}
-	case UCSI_GET_CONNECTOR_STATUS:
-		use_cmd = CMD_GET_CONNECTOR_STATUS;
-		break;
 	default:
 		break;
 	}
 
-	return rts54_post_command_with_callback(dev, use_cmd, cmd_buffer,
+	return rts54_post_command_with_callback(dev, CMD_RAW_UCSI, cmd_buffer,
 						data_size + 4, lpm_data_out,
 						callback);
 }
@@ -2645,7 +2673,28 @@ static int rts54_get_lpm_ppm_info(const struct device *dev,
 				  ARRAY_SIZE(payload), (uint8_t *)info);
 }
 
-static const struct pdc_driver_api_t pdc_driver_api = {
+static int rts54_get_attention_vdo(const struct device *dev,
+				   union get_attention_vdo_t *vdo)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (vdo == NULL) {
+		return -EINVAL;
+	}
+
+	uint8_t payload[] = { RTS_UCSI_GET_ATTENTION_VDO.cmd,
+			      RTS_UCSI_GET_ATTENTION_VDO.len,
+			      RTS_UCSI_GET_ATTENTION_VDO.sub, 0x00, 0x00 };
+
+	return rts54_post_command(dev, CMD_GET_ATTENTION_VDO, payload,
+				  ARRAY_SIZE(payload), (uint8_t *)vdo);
+}
+
+static const struct pdc_driver_api pdc_driver_api = {
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
 	.reset = rts54_pdc_reset,
@@ -2654,6 +2703,7 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.get_connector_capability = rts54_get_connector_capability,
 	.set_ccom = rts54_set_ccom,
 	.set_drp_mode = rts54_set_drp_mode,
+	.get_drp_mode = rts54_get_drp_mode,
 	.set_uor = rts54_set_uor,
 	.set_pdr = rts54_set_pdr,
 	.set_sink_path = rts54_set_sink_path,
@@ -2682,6 +2732,8 @@ static const struct pdc_driver_api_t pdc_driver_api = {
 	.manage_callback = rts54_manage_callback,
 	.ack_cc_ci = rts54_ack_cc_ci,
 	.get_lpm_ppm_info = rts54_get_lpm_ppm_info,
+	.set_frs = rts54_set_frs,
+	.get_attention_vdo = rts54_get_attention_vdo,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
@@ -2755,6 +2807,7 @@ static int pdc_init(const struct device *dev)
 	data->cmd = CMD_NONE;
 	data->error_recovery_counter = 0;
 	data->init_retry_counter = 0;
+	data->info.fw_version = PDC_FWVER_INVALID;
 
 	pdc_data[cfg->connector_number] = data;
 
@@ -2831,7 +2884,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.bits.command_completed = 1,                                  \
 		.bits.external_supply_change = 1,                             \
 		.bits.power_operation_mode_change = 1,                        \
-		.bits.attention = 0,                                          \
+		.bits.attention = 1,                                          \
 		.bits.fw_update_request = 0,                                  \
 		.bits.provider_capability_change_supported = 1,               \
 		.bits.negotiated_power_level_change = 1,                      \
@@ -2844,7 +2897,9 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.bits.set_retimer_mode = 0,                                   \
 		.bits.connect_change = 1,                                     \
 		.bits.error = 1,                                              \
+		.bits.sink_path_status_change = 1,                            \
 		.create_thread = create_thread_##inst,                        \
+		.no_fw_update = DT_INST_PROP(inst, no_fw_update),             \
 	};                                                                    \
                                                                               \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,         \
