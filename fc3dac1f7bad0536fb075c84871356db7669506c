@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce895fad_8e690e0c",
+        "filename": "zephyr/scripts/chip_id.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2024-12-24T08:34:59Z",
+      "side": 1,
+      "message": "`runtime_probe` has already assume `mask` and `value` to contain exactly 1 byte of int.  Therefore, this kind of field schema change would break existing `runtiem_probe` in factory branches.\n\nHow about make the change backward compatible by adding new fields for multi-byte read:\n\n```\n                \"reg\": \"0x00\",\n                \"mask\": \"0x00\",\n                \"value\": \"0x00\",\n                \"multi_byte_mask\": \"0x0000ff00\",\n                \"multi_byte_value\": \"0x00004300\",\n```\n\nFor runtime probe built from old images, its behavior will not change.  For runtime probe built from ToT that read `multi_byte_*` fields, it can identify components better.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "94f859ca_51146e2f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/scripts/chip_id.py",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "                \"mask\": \"0xff\",\n                \"value\": \"0x43\",\n                \"bytes\": 1,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fc3dac1f7bad0536fb075c84871356db7669506c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
