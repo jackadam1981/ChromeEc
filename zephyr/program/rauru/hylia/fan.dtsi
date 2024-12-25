@@ -18,6 +18,45 @@
 			use_fast_start;
 		};
 	};
+
+	fan_steps: fan-steps {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <45>;
+			temp_off = <99>;
+			rpm_target = <0>;
+		};
+		level_1 {
+			temp_on = <48>;
+			temp_off = <43>;
+			rpm_target = <2200>;
+		};
+		level_2 {
+			temp_on = <51>;
+			temp_off = <45>;
+			rpm_target = <2500>;
+		};
+		level_3 {
+			temp_on = <54>;
+			temp_off = <48>;
+			rpm_target = <2700>;
+		};
+		level_4 {
+			temp_on = <57>;
+			temp_off = <51>;
+			rpm_target = <2900>;
+		};
+		level_5 {
+			temp_on = <62>;
+			temp_off = <54>;
+			rpm_target = <3100>;
+		};
+		level_6 {
+			temp_on = <100>;
+			temp_off = <57>;
+			rpm_target = <3500>;
+		};
+	};
 };
 
 &tach0 {

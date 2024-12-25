@@ -47,16 +47,16 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		temp_sensor_1 {
+		temp_sensor_1: temp_sensor_1 {
 			sensor = <&temp_sensor_1_thermistor>;
 		};
-		temp_sensor_2 {
+		temp_sensor_2: temp_sensor_2 {
 			sensor = <&temp_sensor_2_thermistor>;
 		};
-		temp_sensor_3 {
+		temp_sensor_3: temp_sensor_3 {
 			sensor = <&temp_sensor_3_thermistor>;
 		};
-		temp_sensor_4 {
+		temp_sensor_4: temp_sensor_4 {
 			sensor = <&temp_sensor_4_thermistor>;
 		};
 	};
