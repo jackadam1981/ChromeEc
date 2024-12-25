@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d394f657_38e8d5d7",
+        "filename": "zephyr/program/nissa/telith/src/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2024-12-25T08:56:58Z",
+      "side": 1,
+      "message": "What does the `disable_sleep(SLEEP_MASK_AP_RUN);` do? it seems to disable the sleep mode, if it will impact the power consumption of EC?",
+      "revId": "ca4cb80542b9d00d4d58636d178744b7f62a6dcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
