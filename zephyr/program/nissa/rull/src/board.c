@@ -68,7 +68,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	if (get_time().val < CONFIG_BATTERY_ACTIVATION_TIMEOUT &&
 	    (battery_hw_present() == BP_YES) &&
 	    curr->batt.voltage <= batt_info->voltage_min) {
-		int current = batt_info->precharge_current;
+		int current = 256;
 
 		curr->requested_current = MAX(curr->requested_current, current);
 
