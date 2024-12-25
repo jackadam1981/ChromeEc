@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b58eaa_bb218963",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5683,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-25T03:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77ad2e6a_fe4eaee6",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86fb2335_5ee93e6b",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-12-20T22:06:18Z",
       "side": 1,
       "message": "Use `pd_get_power_role`.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb729cce_12399d5a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5689,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-25T03:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fb2335_5ee93e6b",
       "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c61a5de_99490f25",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5693,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-25T03:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4af9ff2_e679aab0",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10d496a7_67f8417c",
@@ -82,6 +136,24 @@
       "writtenOn": "2024-12-20T22:06:18Z",
       "side": 1,
       "message": "Use `pd_get_requested_voltage`.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62a518d_645fca48",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5697,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-25T03:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d496a7_67f8417c",
       "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "417c6a2c_4ff29769",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-25T03:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8775fb_a85eb31e",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83c3ca2a_ac200fcb",
@@ -116,6 +206,24 @@
       "writtenOn": "2024-12-20T22:06:18Z",
       "side": 1,
       "message": "Presumably, you\u0027ll want to remove this before submitting.",
+      "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fdf5e41_f2473718",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-25T03:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c3ca2a_ac200fcb",
       "revId": "cd9bd812d7eef2ab268108cf1f4f2a3afccb3ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
