@@ -57,3 +57,18 @@ const int keyboard_factory_scan_pins[][2] = {
 };
 const int keyboard_factory_scan_pins_used =
 	ARRAY_SIZE(keyboard_factory_scan_pins);
+
+static void md_monitor(void)
+{
+
+	uint8_t *p;
+
+	p = (uint8_t *)(0x400c3019);
+
+	LOG_ERR("0x400c3019 = 0x%02x ", *p);
+
+	*p = 0x00;
+
+}
+DECLARE_HOOK(HOOK_SECOND, md_monitor, HOOK_PRIO_DEFAULT);
+
