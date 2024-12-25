@@ -34,28 +34,58 @@ enum battery_present battery_hw_present(void)
 
 	batt_pres = GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl);
 
+	CPRINTS("battery_hw_present:%d",
+		gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES);
+
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+
+bool board_battery_is_initialized(void)
+{
+	int batt_status;
+
+	return battery_status(&batt_status) != EC_SUCCESS ?
+		       false :
+		       !!(batt_status & STATUS_INITIALIZED);
 }
 
 enum battery_present battery_is_present(void)
 {
 	int state;
 
-	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl)))
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl))) {
+		CPRINTS("gpio_ec_battery_pres_odl is 1.");
 		return BP_NO;
+	}
+
+	/*
+	 * Check battery initialization. If the battery is not initialized,
+	 * then return BP_NOT_SURE. Battery could be in ship
+	 * mode and might require pre-charge current to wake it up. BP_NO is not
+	 * returned here because charger state machine will not provide
+	 * pre-charge current assuming that battery is not present.
+	 */
+	if (!board_battery_is_initialized()) {
+		CPRINTS("board_battery_is_initialized is false.");
+		return BP_NOT_SURE;
+	}
 
 	/*
 	 *  According to the battery manufacturer's reply:
 	 *  To detect a bad battery, need to read the 0x00 register.
 	 *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.
 	 */
-	if (sb_read(SB_MANUFACTURER_ACCESS, &state))
+	if (sb_read(SB_MANUFACTURER_ACCESS, &state)) {
+		CPRINTS("sb_read fails");
 		return BP_NO;
+	}
 
 	/* Detect the 12th bit value */
-	if (state & BIT(12))
+	if (state & BIT(12)) {
+		CPRINTS("BIT12 is 1");
 		return BP_NO;
+	}
 
 	return BP_YES;
 }
@@ -71,6 +101,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		int current = batt_info->precharge_current;
 
 		curr->requested_current = MAX(curr->requested_current, current);
+
+		curr->requested_voltage = batt_info->voltage_max;
+
+		CPRINTS("current:%d,curr->requested_current:%d.", current,
+			curr->requested_current);
 
 		return -1;
 	}
