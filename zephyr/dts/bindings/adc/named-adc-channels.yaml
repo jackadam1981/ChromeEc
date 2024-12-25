@@ -88,6 +88,7 @@ child-binding:
         - ADC_PP3300_S5
         - ADC_PSYS
         - ADC_SOC_IMON2
+        - ADC_SNS_PPVAR_PWR_IN
         - ADC_TEMP_SENSOR_1
         - ADC_TEMP_SENSOR_2
         - ADC_TEMP_SENSOR_3
@@ -113,4 +114,5 @@ child-binding:
         - ADC_EVB_CH_2
         - ADC_EVB_CH_3
         - ADC_EVB_CH_4
+        - ADC_PPVAR_PWR_IN_IMON
         - ADC_PROCHOT
