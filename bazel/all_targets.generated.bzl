@@ -1990,6 +1990,10 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "pujjoniru",
+        board = "pujjoniru",
+    )
+    ec_target(
         name = "quackingstick",
         baseboard = "trogdor",
         board = "quackingstick",
