@@ -512,7 +512,7 @@ void battery_get_params(struct batt_params *batt)
 	defined(CONFIG_BATTERY_PRESENT_GPIO)
 	/* Hardware can tell us for certain */
 	batt_new.is_present = battery_is_present();
-	if (batt_new.is_present != BP_YES) {
+	if (batt_new.is_present == BP_NO) {
 		batt->is_present = BP_NO;
 		batt->flags = BATT_FLAG_BAD_ANY;
 		return;
