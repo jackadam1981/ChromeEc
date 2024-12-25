@@ -17,5 +17,6 @@ enum led_color {
 };
 
 int command_led(int argc, const char **argv);
+void board_bj_init(void);
 
 #endif /* ZEPHYR_TEST_NISSA_INCLUDE_DIRKS_H_ */

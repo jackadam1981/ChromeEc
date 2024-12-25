@@ -36,7 +36,7 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-int extpower_is_present(void)
+__override int extpower_is_present(void)
 {
 	/*
 	 * There's no battery, so running this method implies we have power.
@@ -143,10 +143,4 @@ int pd_snk_is_vbus_provided(int port)
 		return 0;
 
 	return ppc_is_vbus_present(port);
-}
-
-void pd_set_input_current_limit(int port, uint32_t max_ma,
-				uint32_t supply_voltage)
-{
-	/* Need this to build */
 }
