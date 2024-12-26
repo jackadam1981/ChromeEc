@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf80495_b5d311a2",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-12-26T07:16:55Z",
+      "side": 1,
+      "message": "use `__maybe_unused` instead",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "6439557827716997c8f680fbef69cd7f719ef968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
