@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf6d341_31f0c421",
+        "filename": "zephyr/program/intelrvp/ptlrvp/gsc_board.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-26T22:44:51Z",
+      "side": 1,
+      "message": "it8801_i2c: \u0026charger_i2c{\n};\n\n#include \u003cite/it8801-common-cfg.dtsi\u003e\n\n\u0026it8801_mfd {\n        irq-gpios \u003d \u003c\u0026gpio7 0\u003e;\n};\n\n\u0026it8801_mfd {\n        /delete-property/ reg;\n        reg \u003d \u003c0x39\u003e;\n};\n\nHi Keith/Caveh\n\nreplacing this file with above logic doesn\u0027t update the I2C address.\nAny suggestion? that I can try? Or okay to keep this long file?",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
