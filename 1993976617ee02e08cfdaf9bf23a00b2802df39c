@@ -71,6 +71,43 @@
     },
     {
       "submitRequirement": {
+        "name": "MergeApprovedYolo",
+        "description": {
+          "value": "Submit requirement for Release-Owner (go/cros-merge-controls)"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "branch:\"^refs/heads/release-R13[1-2].*B\""
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Release-Owner\u003dMAX"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"branch:\"^refs/heads/release-R13[1-2].*B\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:\"^refs/heads/release-R13[1-2].*B\""]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Release-Owner=MAX"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "patchSetCommitId": "1993976617ee02e08cfdaf9bf23a00b2802df39c",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
         "name": "No-Unresolved-Comments",
         "description": {
           "value": "Changes that have unresolved comments are not submittable. Unless overridden with Unresolved-Comment-Reason: \u003creason\u003e line in change message."
