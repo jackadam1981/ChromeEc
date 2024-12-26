@@ -1981,7 +1981,7 @@ static void send_source_cap(int port)
 /*
  * Request desired charge voltage from source.
  */
-static void pe_send_request_msg(int port)
+static bool pe_send_request_msg(int port)
 {
 	uint32_t vpd_vdo = 0;
 	uint32_t rdo;
@@ -2010,6 +2010,13 @@ static void pe_send_request_msg(int port)
 		supply_voltage, curr_limit,
 		rdo & RDO_CAP_MISMATCH ? "Mismatch" : "");
 
+	if (curr_limit == pe[port].curr_limit &&
+	    supply_voltage == pe[port].supply_voltage) {
+		CPRINTS("C%d: %s: Duplicate Request %u mV, %u mA", port,
+			__func__, supply_voltage, curr_limit);
+		return false;
+	}
+
 	pe[port].curr_limit = curr_limit;
 	pe[port].supply_voltage = supply_voltage;
 
@@ -2029,6 +2036,8 @@ static void pe_send_request_msg(int port)
 	}
 
 	send_data_msg(port, TCPCI_MSG_SOP, msg);
+
+	return true;
 }
 
 static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
@@ -3542,7 +3551,10 @@ static void pe_snk_select_capability_entry(int port)
 	print_current_state(port);
 
 	/* Send Request */
-	pe_send_request_msg(port);
+	if (!pe_send_request_msg(port)) {
+		pe_set_ready_state(port);
+		return;
+	}
 	pe_sender_response_msg_entry(port);
 
 	/* We are PD Connected */
