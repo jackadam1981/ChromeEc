@@ -45,8 +45,10 @@
 #define BQ25710_ADC_OPTION_ADC_CONV_MS 25
 #elif defined(CONFIG_CHARGER_BQ25710)
 #define BQ25710_ADC_OPTION_ADC_CONV_MS 10
+#elif defined(CONFIG_CHARGER_BQ25770)
+#define BQ25710_ADC_OPTION_ADC_CONV_MS 25
 #else
-#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#error Only the BQ25720 and BQ25710 and BQ25770 are supported by bq25710 driver.
 #endif
 
 /* ADCVBUS/PSYS Register */
@@ -55,8 +57,10 @@
 #elif defined(CONFIG_CHARGER_BQ25710)
 #define BQ25710_ADC_VBUS_STEP_MV 64
 #define BQ25710_ADC_VBUS_BASE_MV 3200
+#elif defined(CONFIG_CHARGER_BQ25770)
+#define BQ25770_ADC_VBUS_STEP_MV 96
 #else
-#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#error Only the BQ25720 and BQ25710 and BQ25770 are supported by bq25710 driver.
 #endif
 
 /* Min System Voltage Register */
