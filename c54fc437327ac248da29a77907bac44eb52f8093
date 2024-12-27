@@ -164,6 +164,30 @@
       },
       "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c857165c_ac2acccc",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T20:12:37Z",
+      "side": 1,
+      "message": "Thank you Keith, yes errors ar eresolved.\nMost of the Keys are working except the pins on KSI0 (blue-wire I added to monitor the signal may be adding high impedence) \u0026 KSO2 (inverted logic needs to be verified)",
+      "parentUuid": "ba56a4e6_3b01c478",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

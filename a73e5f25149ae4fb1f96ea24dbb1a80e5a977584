@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac80d965_6214616b",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T20:12:37Z",
+      "side": 1,
+      "message": "ACK, I will remove this and modify makefile",
+      "parentUuid": "065f63fc_7f26777a",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a0e67d_cc808b44",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T20:12:37Z",
+      "side": 1,
+      "message": "add correct values",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bfe2924_34d465fa",
         "filename": "zephyr/program/intelrvp/src/kbd_gcs.c",
         "patchSetId": 3
@@ -37,6 +84,30 @@
       "writtenOn": "2024-12-27T15:52:27Z",
       "side": 1,
       "message": "You need to run clang-format on this file.  If you don\u0027t like the formatting generated, guard this block with `/* clang-format off */` and `/* clang-format on */`.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 67
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea0ce0f_1ead603c",
+        "filename": "zephyr/program/intelrvp/src/kbd_gcs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T20:12:37Z",
+      "side": 1,
+      "message": "ACK, I will cleup the code once all the keys are verified and submit for review",
+      "parentUuid": "7bfe2924_34d465fa",
       "range": {
         "startLine": 113,
         "startChar": 0,
