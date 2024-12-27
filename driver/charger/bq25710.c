@@ -22,8 +22,9 @@
 
 #include <stdbool.h>
 
-#if !defined(CONFIG_CHARGER_BQ25710) && !defined(CONFIG_CHARGER_BQ25720)
-#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#if !defined(CONFIG_CHARGER_BQ25710) && !defined(CONFIG_CHARGER_BQ25720) && \
+	!defined(CONFIG_CHARGER_BQ25770)
+#error Only the BQ25720 and BQ25710 and BQ25770 are supported by bq25710 driver.
 #endif
 
 #ifndef CONFIG_CHARGER_NARROW_VDC
@@ -779,8 +780,18 @@ static int reg_adc_vbus_to_mv(int reg)
 		     0;
 }
 
+#elif defined(CONFIG_CHARGER_BQ25770)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 96mV, no DC offset.
+	 */
+	return reg * BQ25770_ADC_VBUS_STEP_MV;
+}
+
 #else
-#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#error Only the BQ25720 and BQ25710 and BQ25770 are supported by bq25710 driver.
 #endif
 
 static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
