@@ -46,6 +46,29 @@
       },
       "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab012fd_36a980fa",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:38:05Z",
+      "side": 1,
+      "message": "Can you open a bug to switch the ptlrvp_mchp project to the upstream IT8801 driver?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
