@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "969cada8_0171b2a9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T19:59:27Z",
+      "side": 1,
+      "message": "Hi Keith \u0026 Fabio,\nIs it okay to directly add these keyvalues the scancode table? so that we can avoid the Vivaldi config?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6050920/3/zephyr/program/intelrvp/src/kbd_strauss.c#20",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9175fc1_f9b956fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 3
