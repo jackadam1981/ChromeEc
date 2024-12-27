@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfb1c913_1f74010f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/gsc_board.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-27T17:17:51Z",
+      "side": 1,
+      "message": "ah, that\u0027s a bit sad, I suggested that layout and went with the assumption that it was a fixed address device, which is clearly not the case.\n\nUnfortunately this needs a bit of a rework then, I say we can either have template per address and a common one with the devices, or (this may be better), having the template only for the subdevices and the main node on the parent. I\u0027ll send a PR with the proposal, easier to explain it that way. This could help long term: https://github.com/zephyrproject-rtos/zephyr/pull/82825 but it\u0027s still in early stages, can\u0027t rely on it to happen.",
+      "parentUuid": "e5a13841_14435a76",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ab012fd_36a980fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
         "patchSetId": 3
