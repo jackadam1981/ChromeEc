@@ -140,6 +140,30 @@
       },
       "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba56a4e6_3b01c478",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:52:27Z",
+      "side": 1,
+      "message": "Are these devicetree errors resovled?",
+      "parentUuid": "11d7ef85_96f9a122",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

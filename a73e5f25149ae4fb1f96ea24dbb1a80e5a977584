@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065f63fc_7f26777a",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:52:27Z",
+      "side": 1,
+      "message": "Is this config needed, or can you use CONFIG_BOARD_PTLGCS?",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bfe2924_34d465fa",
+        "filename": "zephyr/program/intelrvp/src/kbd_gcs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:52:27Z",
+      "side": 1,
+      "message": "You need to run clang-format on this file.  If you don\u0027t like the formatting generated, guard this block with `/* clang-format off */` and `/* clang-format on */`.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 67
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
