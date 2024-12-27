@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5de4a9bd_8da8eec6",
+        "filename": "zephyr/program/intelrvp/include/kbd_strauss.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-27T17:46:52Z",
+      "side": 1,
+      "message": "Yeah they definitely should, looks like it\u0027s the last bit in keyboard_customizatoin for these. Wouldn\u0027t block this CL for it but I should look into it. I think at the time I\u0027ve figured it would have been ideal to move the whole 8042 configuration in devicetree as well (similarly to the vivaldi one) but I got a bit burned by the vivaldi one and never got around to it, not a bad idea migrating these two though.",
+      "parentUuid": "ac968c62_341d9e7b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9175fc1_f9b956fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-27T15:43:41Z",
       "side": 1,
       "message": "Is this accurate?  Are all row/column combinations valid?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe0f74c_1cfd85d9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-27T17:46:52Z",
+      "side": 1,
+      "message": "can\u0027t be, some columns are reseved for modifiers so that basic combination (ctrl-something shift-something) don\u0027t ghost\n\nif you don\u0027t want to set they keymask for now just don\u0027t set the property at all",
+      "parentUuid": "e9175fc1_f9b956fa",
       "range": {
         "startLine": 124,
         "startChar": 0,
