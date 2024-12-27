@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d3bec7b_048a0386",
+        "filename": "zephyr/program/intelrvp/ptlrvp/gsc_board.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-27T17:35:41Z",
+      "side": 1,
+      "message": "https://github.com/zephyrproject-rtos/zephyr/pull/83424 I think should do the trick",
+      "parentUuid": "cfb1c913_1f74010f",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ab012fd_36a980fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
         "patchSetId": 3
