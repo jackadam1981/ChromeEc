@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac968c62_341d9e7b",
+        "filename": "zephyr/program/intelrvp/include/kbd_strauss.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:47:27Z",
+      "side": 1,
+      "message": "Fabio - I see the legacy 8042 driver needs these.  Could these macros be automatically created based on the devicetree?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9175fc1_f9b956fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 3
