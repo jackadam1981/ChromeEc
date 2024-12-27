@@ -22,8 +22,9 @@
 
 #include <stdbool.h>
 
-#if !defined(CONFIG_CHARGER_BQ25710) && !defined(CONFIG_CHARGER_BQ25720)
-#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#if !defined(CONFIG_CHARGER_BQ25710) && !defined(CONFIG_CHARGER_BQ25720) && \
+	!defined(CONFIG_CHARGER_BQ25770)
+#error Only the BQ25720 and BQ25710 and BQ25770 are supported by bq25710 driver.
 #endif
 
 #ifndef CONFIG_CHARGER_NARROW_VDC
@@ -66,8 +67,8 @@
  * Helper macros
  */
 
-#define SET_CO1_BY_NAME(_field, _c, _x) \
-	SET_BQ_FIELD_BY_NAME(BQ257X0, CHARGE_OPTION_1, _field, _c, (_x))
+#define SET_CO1_BY_NAME(_chip, _field, _c, _x) \
+	SET_BQ_FIELD_BY_NAME(_chip, CHARGE_OPTION_1, _field, _c, (_x))
 
 #define SET_CO2(_field, _v, _x) \
 	SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_2, _field, _v, (_x))
@@ -108,6 +109,7 @@
 #define BQ25710_VDDA_STARTUP_DELAY_MSEC 20
 
 /* Sense resistor configurations and macros */
+#if defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_BQ25720)
 #define DEFAULT_SENSE_RESISTOR 10
 
 #define REG_TO_CHARGING_CURRENT(REG) \
@@ -117,7 +119,28 @@
 	 CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC)
 #define CHARGING_CURRENT_TO_REG(CUR) \
 	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR / DEFAULT_SENSE_RESISTOR)
-#define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV)-32)
+#define CHARGING_CURRENT_TO_REG_AC(CUR)                     \
+	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC / \
+	 DEFAULT_SENSE_RESISTOR)
+#elif defined(CONFIG_CHARGER_BQ25770)
+#define CONFIG_CHARGER_BQ25770_SENSE_RESISTOR 5
+#define CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC 5
+
+#define DEFAULT_SENSE_RESISTOR 5
+#define DEFAULT_SENSE_RESISTOR_AC 10
+
+#define REG_TO_CHARGING_CURRENT(REG) \
+	((REG) * DEFAULT_SENSE_RESISTOR / CONFIG_CHARGER_BQ25770_SENSE_RESISTOR)
+#define REG_TO_CHARGING_CURRENT_AC(REG)      \
+	((REG) * DEFAULT_SENSE_RESISTOR_AC / \
+	 CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC)
+#define CHARGING_CURRENT_TO_REG(CUR) \
+	((CUR) * CONFIG_CHARGER_BQ25770_SENSE_RESISTOR / DEFAULT_SENSE_RESISTOR)
+#define CHARGING_CURRENT_TO_REG_AC(CUR)                     \
+	((CUR) * CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC / \
+	 DEFAULT_SENSE_RESISTOR_AC)
+#endif
+#define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV) - 32)
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
@@ -139,6 +162,7 @@ static struct mutex bq25710_perf_mode_mutex;
 #define BQ25710_IIN_DPM_CODE0_OFFSET REG_TO_CHARGING_CURRENT(50)
 
 /* Charger parameters */
+#if defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_BQ25720)
 static const struct charger_info bq25710_charger_info = {
 	.name = "bq25710",
 	.voltage_max = 19200,
@@ -151,6 +175,24 @@ static const struct charger_info bq25710_charger_info = {
 	.input_current_min = REG_TO_CHARGING_CURRENT_AC(50),
 	.input_current_step = REG_TO_CHARGING_CURRENT_AC(50),
 };
+#elif defined(CONFIG_CHARGER_BQ25770)
+static const struct charger_info bq25770_charger_info = {
+	.name = "bq25770",
+	.voltage_max = 23000,
+	.voltage_min = 5000,
+	.voltage_step = 4,
+#if CONFIG_CHARGER_BQ25770_SENSE_RESISTOR == 5
+	.current_max = 16320,
+#elif CONFIG_CHARGER_BQ25770_SENSE_RESISTOR == 2
+	.current_max = 30000,
+#endif
+	.current_min = REG_TO_CHARGING_CURRENT(128),
+	.current_step = REG_TO_CHARGING_CURRENT(8),
+	.input_current_max = REG_TO_CHARGING_CURRENT_AC(8200),
+	.input_current_min = REG_TO_CHARGING_CURRENT_AC(400),
+	.input_current_step = REG_TO_CHARGING_CURRENT_AC(25),
+};
+#endif
 
 static enum ec_error_list bq25710_get_option(int chgnum, int *option);
 static enum ec_error_list bq25710_set_option(int chgnum, int option);
@@ -173,7 +215,7 @@ static inline int iin_dpm_reg_to_current(int reg)
 
 static inline int iin_host_current_to_reg(int current)
 {
-	return (REG_TO_CHARGING_CURRENT_AC(current) /
+	return (CHARGING_CURRENT_TO_REG_AC(current) /
 		BQ257X0_IIN_HOST_CURRENT_STEP_MA);
 }
 
@@ -191,6 +233,9 @@ static inline int min_system_voltage_to_reg(int voltage_mv)
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25720)) {
 		steps = voltage_mv / BQ25720_VSYS_MIN_VOLTAGE_STEP_MV;
 		reg = SET_BQ_FIELD(BQ25720, VSYS_MIN, VOLTAGE, steps, 0);
+	} else if (IS_ENABLED(CONFIG_CHARGER_BQ25770)) {
+		steps = voltage_mv / BQ25770_VSYS_MIN_VOLTAGE_STEP_MV;
+		reg = SET_BQ_FIELD(BQ25770, VSYS_MIN, VOLTAGE, steps, 0);
 	} else {
 		steps = voltage_mv / BQ25710_MIN_SYSTEM_VOLTAGE_STEP_MV;
 		reg = SET_BQ_FIELD(BQ25710, MIN_SYSTEM, VOLTAGE, steps, 0);
@@ -328,6 +373,48 @@ static int bq257x0_init_charge_option_1(int chgnum)
 	int rv;
 	int reg;
 
+	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
+	if (rv)
+		return rv;
+
+#ifdef CONFIG_CHARGER_BQ25770
+	if (CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC == 10)
+		reg = SET_CO1_BY_NAME(BQ25770, RSNS_RAC, 10, reg);
+	else if (CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC == 5)
+		reg = SET_CO1_BY_NAME(BQ25770, RSNS_RAC, 5, reg);
+
+	if (CONFIG_CHARGER_BQ25770_SENSE_RESISTOR == 5)
+		reg = SET_CO1_BY_NAME(BQ25770, RSNS_RSR, 5, reg);
+	else if (CONFIG_CHARGER_BQ25770_SENSE_RESISTOR == 2)
+		reg = SET_CO1_BY_NAME(BQ25770, RSNS_RSR, 2, reg);
+#endif
+
+#ifdef CONFIG_CHARGER_BQ25710
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 10)
+		reg = SET_CO1_BY_NAME(BQ25710, RSNS_RAC, 10, reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 20)
+		reg = SET_CO1_BY_NAME(BQ25710, RSNS_RAC, 20, reg);
+
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 10)
+		reg = SET_CO1_BY_NAME(BQ25710, RSNS_RSR, 10, reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 20)
+		reg = SET_CO1_BY_NAME(BQ25710, RSNS_RSR, 20, reg);
+#elif defined(CONFIG_CHARGER_BQ25720)
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 10)
+		reg = SET_CO1_BY_NAME(BQ25720, RSNS_RAC, 10, reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 5)
+		reg = SET_CO1_BY_NAME(BQ25720, RSNS_RAC, 5, reg);
+
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 10)
+		reg = SET_CO1_BY_NAME(BQ25720, RSNS_RSR, 10, reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 5)
+		reg = SET_CO1_BY_NAME(BQ25720, RSNS_RSR, 5, reg);
+#endif
+
+	rv = raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
+	if (rv)
+		return rv;
+
 	if (!IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING) &&
 	    !IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
 		return EC_SUCCESS;
@@ -340,10 +427,10 @@ static int bq257x0_init_charge_option_1(int chgnum)
 		reg = co1_set_psys_sensing(reg, true);
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
-		reg = SET_CO1_BY_NAME(CMP_REF, 1P2, reg);
+		reg = SET_CO1_BY_NAME(BQ257X0, CMP_REF, 1P2, reg);
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_POL_EXTERNAL))
-		reg = SET_CO1_BY_NAME(CMP_POL, EXTERNAL, reg);
+		reg = SET_CO1_BY_NAME(BQ257X0, CMP_POL, EXTERNAL, reg);
 
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 }
@@ -462,7 +549,8 @@ static int bq257x0_init_charge_option_3(int chgnum)
 	int reg;
 	int rv;
 
-	if (!IS_ENABLED(CONFIG_CHARGER_BQ25720))
+	if ((!IS_ENABLED(CONFIG_CHARGER_BQ25720)) ||
+	    (!IS_ENABLED(CONFIG_CHARGER_BQ25770)))
 		return EC_SUCCESS;
 
 	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_3, &reg);
@@ -598,7 +686,11 @@ static void bq25710_init(int chgnum)
 /* Charger interfaces */
 static const struct charger_info *bq25710_get_info(int chgnum)
 {
+#ifdef CONFIG_CHARGER_BQ25770
+	return &bq25770_charger_info;
+#else
 	return &bq25710_charger_info;
+#endif
 }
 
 static enum ec_error_list bq25710_post_init(int chgnum)
@@ -741,6 +833,7 @@ static enum ec_error_list bq25710_get_input_current_limit(int chgnum,
 	return rv;
 }
 
+#if defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_BQ25720)
 static int reg_adc_input_current_to_ma(int reg)
 {
 	/*
@@ -748,6 +841,18 @@ static int reg_adc_input_current_to_ma(int reg)
 	 */
 	return reg * BQ25710_IIN_DPM_CODE0_OFFSET;
 }
+#elif defined(CONFIG_CHARGER_BQ25770)
+
+#define BQ25770_ADC_IIN_STEP_MA (REG_TO_CHARGING_CURRENT_AC(5) / 10)
+
+static int reg_adc_input_current_to_ma(int reg)
+{
+	/*
+	 * LSB => 0.5mA@10mΩ.
+	 */
+	return reg * BQ25770_ADC_IIN_STEP_MA;
+}
+#endif
 
 static enum ec_error_list bq25710_get_input_current(int chgnum,
 						    int *input_current)
@@ -808,8 +913,18 @@ static int reg_adc_vbus_to_mv(int reg)
 		     0;
 }
 
+#elif defined(CONFIG_CHARGER_BQ25770)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 2mV, no DC offset.
+	 */
+	return reg * BQ25770_ADC_VBUS_STEP_MV;
+}
+
 #else
-#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#error Only the BQ25720 and BQ25710 and BQ25770 are supported by bq25710 driver.
 #endif
 
 static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
@@ -1023,7 +1138,7 @@ static void console_bq25710_dump_regs(int chgnum)
 		BQ25710_REG_PROCHOT_OPTION_0,
 		BQ25710_REG_PROCHOT_OPTION_1,
 		BQ25710_REG_ADC_OPTION,
-#ifdef CONFIG_CHARGER_BQ25720
+#if defined(CONFIG_CHARGER_BQ25720) || defined(CONFIG_CHARGER_BQ25770)
 		BQ25720_REG_CHARGE_OPTION_4,
 		BQ25720_REG_VMIN_ACTIVE_PROTECTION,
 #endif
@@ -1034,12 +1149,27 @@ static void console_bq25710_dump_regs(int chgnum)
 		BQ25710_REG_IIN_HOST,
 		BQ25710_REG_MANUFACTURER_ID,
 		BQ25710_REG_DEVICE_ADDRESS,
+#ifdef CONFIG_CHARGER_BQ25770
+		BQ25770_REG_CHARGE_PROFILE,
+		BQ25770_REG_GATE_DRIVE,
+		BQ25770_REG_CHARGE_OPTION_5,
+		BQ25770_REG_AUTO_CHARGE,
+		BQ25770_REG_CHARGER_STATUS_0,
+		BQ25770_REG_CHARGER_STATUS_1,
+		BQ25770_REG_ADC_VBUS,
+		BQ25770_REG_ADC_IIN,
+		BQ25770_REG_ADC_VSYS,
+		BQ25770_REG_ADC_VBAT,
+		BQ25770_REG_ADC_PSYS,
+		BQ25770_REG_ADC_CMPIN_TR,
+		BQ25770_REG_VIRTUAL_CONTROL,
+#endif
 	};
 
 	for (i = 0; i < ARRAY_SIZE(regs); ++i) {
 		if (raw_read16(chgnum, regs[i], &val))
 			continue;
-		ccprintf("BQ25710 REG 0x%02x:  0x%04x\n", regs[i], val);
+		ccprintf("REG 0x%02x:  0x%04x\n", regs[i], val);
 	}
 }
 #endif /* CONFIG_CMD_CHARGER_DUMP */
