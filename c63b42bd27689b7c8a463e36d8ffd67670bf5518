@@ -22,6 +22,30 @@
       },
       "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a13841_14435a76",
+        "filename": "zephyr/program/intelrvp/ptlrvp/gsc_board.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:35:53Z",
+      "side": 1,
+      "message": "Hmmm, I\u0027m not sure it will be possible to override the I2C address from the it8801-common-cfg.dtsi\n\nThe issue is that the IT8801 node name \"it8801@38\" also needs to change or the devicetree compiler will throw an error.  I\u0027m not aware of anyway to change the node name, except for deleting the node and redefining it.\n\nI think we\u0027re stuck with copy/paste of all the IT8801 setup.\n\nFabio - do have any ideas here?",
+      "parentUuid": "ccf6d341_31f0c421",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
