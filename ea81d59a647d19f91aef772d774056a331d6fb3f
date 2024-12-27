@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdfcdac_43dd0c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2024-12-27T00:34:46Z",
+      "side": 1,
+      "message": "Failed at \"cros lint\" with following erros during presubmit. Re-trigger CQ+2 to see the result.\n```\n      /b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/shellcheck: 14: exec: /b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/../.cipd/pkgs/0/_current/bin/../lib/ld-linux-x86-64.so.2: not found\n```",
+      "revId": "ea81d59a647d19f91aef772d774056a331d6fb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
