@@ -201,9 +201,9 @@
 				 0 0 1>;
 		};
 		lid_rot_ref_lsm6dsm: lid-rotation-ref-lsm6dsm {
-			mat33 = <0 (-1) 0
-				 (-1) 0 0
-				 0 0 (-1)>;
+			mat33 = <1 0 0
+				 0 1 0
+				 0 0 1>;
 		};
 	};
 
