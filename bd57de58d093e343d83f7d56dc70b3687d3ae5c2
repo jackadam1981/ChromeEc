@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9175fc1_f9b956fa",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:43:41Z",
+      "side": 1,
+      "message": "Is this accurate?  Are all row/column combinations valid?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9860c57_ecab857b",
+        "filename": "zephyr/program/intelrvp/src/kbd_strauss.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2024-12-27T15:43:41Z",
+      "side": 1,
+      "message": "Nit - this bug points to a generic bug for MECC2.1 enablement.  It is preferred to create children bugs for the specific items that need to be done.",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
