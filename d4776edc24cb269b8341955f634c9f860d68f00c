@@ -16,6 +16,23 @@
       "message": "Starting a dry run to see what coverage looks like.",
       "revId": "d4776edc24cb269b8341955f634c9f860d68f00c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08def34a_ff288861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2024-12-27T22:05:17Z",
+      "side": 1,
+      "message": "You\u0027ll need to add Zephyr unit tests to cover the new functions and get your incremental coverage up to 90%:\n1. For the new function in `usb_pe_sm.h`, you can just make a new test case in [the USB common tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/usb_common/src/usb_common.c). This isn\u0027t the exact right place for it, but it\u0027s close enough for right now.\n1. The functions in raa489000.c might require a fair amount of test/emulator boilerplate, but conceptually, the tests should be pretty simple. If you look in `zephyr/test/drivers/rt1715/`, you\u0027ll see `src/rt1715.c`, which just instantiates an RT1715 TCPC emulator from the device tree and runs some tests on the driver for that emulator. The tests are just checks on the return values of driver calls.\n\n   For this CL, the tests should be as simple as constructing a BIST message, calling the driver\u0027s `get_message_raw` function, and then calling the `get_bist_mode` function and checking the return value.\n   \n   What you\u0027ll need to do is make a test directory in parallel to `rt1715` called `raa489000`, and everywhere that `rt1715` does something related to the RT1715 TCPC, you\u0027d do the analogous thing for the RAA489000 TCPC.\n\nThe Zephyr test framework is described in general [in the Zephyr docs](https://docs.zephyrproject.org/latest/develop/test/ztest.html).",
+      "revId": "d4776edc24cb269b8341955f634c9f860d68f00c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
