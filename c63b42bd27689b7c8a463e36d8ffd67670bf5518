@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a46e1d11_499124b0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/gsc_board.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T18:14:53Z",
+      "side": 1,
+      "message": "Thank you Fabio \u0026 Keith,\nwith PR:83424 , simplified logic works. This CL can wait till upstream code lands",
+      "parentUuid": "6d3bec7b_048a0386",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ab012fd_36a980fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
         "patchSetId": 3
@@ -109,6 +133,30 @@
       "writtenOn": "2024-12-27T15:38:05Z",
       "side": 1,
       "message": "Can you open a bug to switch the ptlrvp_mchp project to the upstream IT8801 driver?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "c63b42bd27689b7c8a463e36d8ffd67670bf5518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b2ea61_27613be6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-27T18:14:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ab012fd_36a980fa",
       "range": {
         "startLine": 25,
         "startChar": 0,
