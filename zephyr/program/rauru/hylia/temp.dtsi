@@ -51,6 +51,8 @@
 			sensor = <&temp_sensor_1_thermistor>;
 		};
 		temp_sensor_2: temp_sensor_2 {
+			temp_fan_off = <45>;
+			temp_fan_max = <62>;
 			sensor = <&temp_sensor_2_thermistor>;
 		};
 		temp_sensor_3: temp_sensor_3 {
