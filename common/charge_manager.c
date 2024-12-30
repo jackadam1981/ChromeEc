@@ -817,6 +817,7 @@ static void charge_manager_refresh(void)
 		if (active_charge_port_initialized && new_port == charge_port &&
 		    new_supplier == charge_supplier)
 			break;
+		CPRINTS("%s: Port or supplier change?", __func__);
 
 		/*
 		 * For OCPC systems, reset the OCPC state to prevent current
@@ -836,6 +837,8 @@ static void charge_manager_refresh(void)
 				board_check_extpower();
 			break;
 		}
+		CPRINTS("%s: Switch board charge port to %d failed", __func__,
+			new_port);
 
 		/* 'Dont charge' request must be accepted. */
 		ASSERT(new_port != CHARGE_PORT_NONE);
@@ -1001,8 +1004,10 @@ static void charge_manager_refresh(void)
 			if (pd_get_requested_voltage(updated_new_port) !=
 				    charge_voltage ||
 			    pd_get_requested_current(updated_new_port) !=
-				    charge_current_uncapped)
+				    charge_current_uncapped) {
+				CPRINTS("%s: New voltage/current", __func__);
 				new_req = true;
+			}
 
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled()) {
 				/* Fall-through. DPS control sink voltage */
@@ -1019,8 +1024,10 @@ static void charge_manager_refresh(void)
 						     &max_voltage, &unused);
 
 				if (charge_voltage != max_voltage ||
-				    charge_current_uncapped != max_current)
+				    charge_current_uncapped != max_current) {
+					CPRINTS("%s: Increasing PDO", __func__);
 					new_req = true;
+				}
 			}
 
 			if (new_req)
