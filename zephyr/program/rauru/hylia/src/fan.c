@@ -36,7 +36,7 @@ struct fan_step {
 	},
 
 static const struct fan_step fan_step_table[] = { DT_FOREACH_CHILD(
-	DT_INST(0, cros_ec_fan_steps), FAN_TABLE_ENTRY) };
+	DT_NODELABEL(fan_steps), FAN_TABLE_ENTRY) };
 
 int fan_table_to_rpm(int fan, int *temp)
 {
@@ -47,7 +47,7 @@ int fan_table_to_rpm(int fan, int *temp)
 	/* previous sensor temperature */
 	static int prev_tmp[TEMP_SENSOR_COUNT];
 	int i;
-
+	CPRINTS("---tmp : %d,prev_tmp : %d---",temp[TEMP_SENSOR], prev_tmp[TEMP_SENSOR]);
 	if (temp[TEMP_SENSOR] < prev_tmp[TEMP_SENSOR]) {
 		for (i = current_level; i > 0; i--) {
 			if (temp[TEMP_SENSOR] <
@@ -58,6 +58,7 @@ int fan_table_to_rpm(int fan, int *temp)
 		}
 	} else if (temp[TEMP_SENSOR] > prev_tmp[TEMP_SENSOR]) {
 		for (i = current_level; i < ARRAY_SIZE(fan_step_table); i++) {
+			CPRINTS("---on_temp:%d---",fan_step_table[i].on[TEMP_SENSOR]);
 			if (temp[TEMP_SENSOR] >=
 			    fan_step_table[i].on[TEMP_SENSOR]) {
 				current_level = i;
@@ -81,7 +82,7 @@ int fan_table_to_rpm(int fan, int *temp)
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i)
 		prev_tmp[i] = temp[i];
 	prev_current_level = current_level;
-
+	CPRINTS("---current_level : %d,rpm : %d---", current_level, fan_step_table[current_level].rpm[fan]);
 	return fan_step_table[current_level].rpm[fan];
 }
 
