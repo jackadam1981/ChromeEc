@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f768663_233de072",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-30T14:52:32Z",
+      "side": 1,
+      "message": "not sure I understand the question but both this and the scancode table needs to be populated, there\u0027s few things that use the vivaldi r,c directly",
+      "parentUuid": "969cada8_0171b2a9",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9175fc1_f9b956fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 3
