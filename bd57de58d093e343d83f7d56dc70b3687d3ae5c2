@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba187ba2_2a4a6960",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2024-12-30T17:11:32Z",
+      "side": 1,
+      "message": "I mean, set_scancode_set2() gets called from the vivaldi_kbd.c which can be avoided if we statically add these value in the scancode table and make it as const.",
+      "parentUuid": "0f768663_233de072",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "bd57de58d093e343d83f7d56dc70b3687d3ae5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9175fc1_f9b956fa",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 3
