@@ -16,6 +16,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 
+
 /*
  * As a sink, this is the max voltage (in millivolts) we can request
  * before getting source caps
@@ -53,6 +54,11 @@ static bool pd_get_usb_comm_capable(int port)
 
 	return !!(fixed_pdo & PDO_FIXED_COMM_CAP);
 }
+
+
+
+
+
 
 int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
 		      int max_mv, uint32_t *selected_pdo)
@@ -296,6 +302,7 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 		pd_set_input_current_limit(port, ma, mv);
 	}
 }
+
 
 bool pd_is_battery_capable(void)
 {
