@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a61d77_0fd53e4e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-12-30T06:55:22Z",
+      "side": 1,
+      "message": "This change may introduce side effect for other projects. Is it possible to return either BP_YES or BP_NO in custom `battery_is_present()`?",
+      "revId": "570ce53535a715c199f4950d43105672b7006ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a06692a_3ec7903f",
+        "filename": "zephyr/program/nissa/rull/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2024-12-30T06:55:22Z",
+      "side": 1,
+      "message": "Is is possible to return `BP_YES` when charging is allowed? Then the `smart.c` can remain untouched.",
+      "revId": "570ce53535a715c199f4950d43105672b7006ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
