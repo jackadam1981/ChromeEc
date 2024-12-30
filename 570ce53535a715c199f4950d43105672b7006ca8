@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba79d201_68700339",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2024-12-30T12:52:57Z",
+      "side": 1,
+      "message": "If batt_new.is_present !\u003d BP_YES is set here, it will return BP_NO, which is also unreasonable.\n\nI think we should change the settings of this place.",
+      "parentUuid": "c7a61d77_0fd53e4e",
+      "revId": "570ce53535a715c199f4950d43105672b7006ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a06692a_3ec7903f",
         "filename": "zephyr/program/nissa/rull/src/board.c",
         "patchSetId": 7
