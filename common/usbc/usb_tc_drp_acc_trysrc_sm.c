@@ -575,9 +575,10 @@ void pd_request_source_voltage(int port, int mv)
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		pd_set_max_voltage(mv);
 
-		if (IS_ATTACHED_SNK(port))
+		if (IS_ATTACHED_SNK(port)) {
+			CPRINTS("%s: Request new power level", __func__);
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
-		else
+		} else
 			pd_dpm_request(port, DPM_REQUEST_PR_SWAP);
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
@@ -590,8 +591,10 @@ void pd_set_external_voltage_limit(int port, int mv)
 		pd_set_max_voltage(mv);
 
 		/* Must be in Attached.SNK when this function is called */
-		if (get_state_tc(port) == TC_ATTACHED_SNK)
+		if (get_state_tc(port) == TC_ATTACHED_SNK) {
+			CPRINTS("%s: Request new power level", __func__);
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+		}
 
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
@@ -599,6 +602,7 @@ void pd_set_external_voltage_limit(int port, int mv)
 
 void pd_set_new_power_request(int port)
 {
+	CPRINTS("C%d: %s", port, __func__);
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		/* Must be in Attached.SNK when this function is called */
 		if (get_state_tc(port) == TC_ATTACHED_SNK)

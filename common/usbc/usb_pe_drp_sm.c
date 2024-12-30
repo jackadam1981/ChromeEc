@@ -1071,11 +1071,13 @@ uint8_t pd_get_snk_cap_cnt(int port)
 
 uint32_t pd_get_requested_voltage(int port)
 {
+	CPRINTS("C%d: %s: %u mV", port, __func__, pe[port].supply_voltage);
 	return pe[port].supply_voltage;
 }
 
 uint32_t pd_get_requested_current(int port)
 {
+	CPRINTS("C%d: %s: %u mA", port, __func__, pe[port].curr_limit);
 	return pe[port].curr_limit;
 }
 
@@ -1861,6 +1863,7 @@ static bool sink_dpm_requests(int port)
 		set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
 		return true;
 	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_NEW_POWER_LEVEL)) {
+		CPRINTS("%s: DPM_REQUEST_NEW_POWER_LEVEL", __func__);
 		pe_set_dpm_curr_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 		set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 		return true;
