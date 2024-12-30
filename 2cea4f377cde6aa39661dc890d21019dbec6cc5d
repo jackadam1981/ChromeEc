@@ -16,6 +16,24 @@
       "message": "Since the revert is for the non-touch tablet sku, will this also affect the normal tablet SKU?",
       "revId": "2cea4f377cde6aa39661dc890d21019dbec6cc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edfb9e8_fceda97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2024-12-30T02:34:27Z",
+      "side": 1,
+      "message": "Normal tablet SKU should keep normal tablet function.\nThis CL is just re-enable non-touch tablet sku.",
+      "parentUuid": "83e1f680_f981194d",
+      "revId": "2cea4f377cde6aa39661dc890d21019dbec6cc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
