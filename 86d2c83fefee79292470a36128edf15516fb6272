@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4ae41a_32dcc4aa",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2024-12-31T12:19:58Z",
+      "side": 1,
+      "message": "don\u0027t think there\u0027s much value in sleeping for 1us, I think you\u0027ll effectively get one tick, 1ms? 100us? anyway up to you but I\u0027d change this to 1us, seems to be a good value for spinning while letting other stuff run",
+      "revId": "86d2c83fefee79292470a36128edf15516fb6272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
