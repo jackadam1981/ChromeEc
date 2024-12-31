@@ -154,6 +154,10 @@ static int dsp_client_enable_interrupt(struct dsp_client_data* data,
     LOG_INF("Disabling interrupts!");
     return gpio_pin_interrupt_configure_dt(&config->interrupt,
                                            GPIO_INT_DISABLE);
+  } else if (data->interrupt_config == GPIO_INT_EDGE_TO_ACTIVE) {
+    // We're trying to enable the interrupt, but we're already configured to
+    // edge_to_active.
+    return 0;
   }
 
   // Try level active if we haven't tried before or if previous attempt was a
