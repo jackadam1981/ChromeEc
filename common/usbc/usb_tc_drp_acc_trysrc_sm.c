@@ -3179,9 +3179,10 @@ static void tc_attached_src_entry(const int port)
 static void tc_attached_src_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
+	int rv;
 
 	/* Check for connection */
-	tcpm_get_cc(port, &cc1, &cc2);
+	rv = tcpm_get_cc(port, &cc1, &cc2);
 
 	if (polarity_rm_dts(tc[port].polarity))
 		cc1 = cc2;
@@ -3201,7 +3202,7 @@ static void tc_attached_src_run(const int port)
 	 * AttachWait.SNK shall enter TryWait.SNK for a Sink detach from
 	 * Attached.SRC.
 	 */
-	if (tc[port].cc_state == PD_CC_NONE &&
+	if (!rv && tc[port].cc_state == PD_CC_NONE &&
 	    pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE)) {
 		bool tryWait;
 		enum usb_tc_state new_tc_state = TC_UNATTACHED_SNK;
