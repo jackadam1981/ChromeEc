@@ -63,3 +63,9 @@
         offset = <(0x70000 - 0x1000)>;
         size = <0x1000>;
 };
+
+/* preserve 512 bytes for ROM log info */
+&sram0 {
+	reg = < 0x20050000 (0x10000-0x200) >;
+};
+
