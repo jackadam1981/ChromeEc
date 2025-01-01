@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_PLAT_RESET_H_
 #define __CROS_EC_DRIVER_FINGERPRINT_EGIS_PLATFORM_INC_PLAT_RESET_H_
 
+#include "gpio.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
