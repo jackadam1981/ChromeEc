@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d24eec_65a73e32",
+        "filename": "zephyr/test/drivers/raa489000/raa489000.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9edb31f3_ced7ec3c",
+      "revId": "39f2c152b3dbd5d0c874d8801add77a83242a254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bde0e27_610cf268",
@@ -95,6 +113,24 @@
       "writtenOn": "2024-12-30T17:29:59Z",
       "side": 1,
       "message": "I think you should be able to get this from the `reg` property of the devicetree node.",
+      "revId": "39f2c152b3dbd5d0c874d8801add77a83242a254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e999e35c_7bc06bcd",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bde0e27_610cf268",
       "revId": "39f2c152b3dbd5d0c874d8801add77a83242a254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
