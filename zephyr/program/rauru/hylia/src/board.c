@@ -15,7 +15,9 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
+#include <drivers/pdc.h>
 #include <dt-bindings/battery.h>
+#include <usbc/pdc_power_mgmt.h>
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
@@ -76,3 +78,14 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 {
 	return EC_RES_INVALID_PARAM;
 }
+
+static int set_pdc_snk(void)
+{
+	enum pd_dual_role_states state = PD_DRP_FORCE_SINK;
+
+	for (int i = 0; i < board_get_usb_pd_port_count(); i++)
+		pdc_power_mgmt_set_dual_role(i, state);
+	return 0;
+}
+
+SYS_INIT(set_pdc_snk, POST_KERNEL, 61);
