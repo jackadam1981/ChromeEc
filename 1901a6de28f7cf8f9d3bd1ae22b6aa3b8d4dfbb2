@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3618109_59c82cf0",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T22:06:16Z",
+      "side": 1,
+      "message": "the `setup_timer` doesn\u0027t return `TIMER_SETUP_OUT_OF_RANGE` every. Is that intentional?\n\nActually it looks like `TIMER_SETUP_OUT_OF_RANGE` is never used. Remove?",
+      "range": {
+        "startLine": 2046,
+        "startChar": 1,
+        "endLine": 2049,
+        "endChar": 25
+      },
+      "revId": "1901a6de28f7cf8f9d3bd1ae22b6aa3b8d4dfbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
