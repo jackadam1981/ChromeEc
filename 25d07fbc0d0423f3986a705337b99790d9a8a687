@@ -1,0 +1,183 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b95e80_5e690fcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "nit: can you manually wrap lines around 75 or 80 (I can\u0027t remember which it is) so it doesn\u0027t create these longer wrapped line please?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 111
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20993ff_b5dd94db",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "why this second layer unnamed namespace? Also why is the `DefaultPublicArea` in it?\n\n(I am not saying it is wrong; I\u0027m more curious)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6670f041_6b9e665b",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "how do these pointer resources get cleaned up? Are they passed back into the FFI layer?",
+      "range": {
+        "startLine": 100,
+        "startChar": 39,
+        "endLine": 100,
+        "endChar": 55
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3564f58_ad92f2bd",
+        "filename": "tpm_generated/ffi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "Race condition!\n\n2025 😊",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e7847b54_10773664",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tpm_generated/ffi.h",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": "// Copyright 2025 The ChromiumOS Authors\n"
+            }
+          ]
+        }
+      ],
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad59113_de1f7079",
+        "filename": "tpm_generated/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "where is this type defined? I couldn\u0027t find it.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f291e339_1499d8f7",
+        "filename": "tpm_generated/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "should we also put `repr(tranparent)` on it for the FFI boundary conversion from `u32`?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8d83c2_68a67c0b",
+        "filename": "tpm_generated/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-02T16:15:42Z",
+      "side": 1,
+      "message": "The pretty modifer `#` for hex prints out the `0x` prefix\n```suggestion\n        write!(f, \"{:#x}\", self.return_code)\n```",
+      "range": {
+        "startLine": 133,
+        "startChar": 19,
+        "endLine": 133,
+        "endChar": 25
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
