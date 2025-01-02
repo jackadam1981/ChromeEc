@@ -148,7 +148,7 @@ static int cros_system_rtk_soc_reset(const struct device *dev)
 	 * RTK WDT can be set for lower value, but we are limited by
 	 * Zephyr API.
 	 */
-	struct wdt_timeout_cfg minimal_timeout = { .window.max = 10 };
+	struct wdt_timeout_cfg minimal_timeout = { .window.max = 200 };
 	/* Setup watchdog */
 	wdt_install_timeout(watchdog, &minimal_timeout);
 	/* Apply the changes (the driver will reload watchdog) */

@@ -207,7 +207,7 @@
 };
 
 &wdog {
-	clk-divider = <330>;
+	clk-divider = <1320>;
 };
 
 // RTK_LATER_IMP : gsensor
