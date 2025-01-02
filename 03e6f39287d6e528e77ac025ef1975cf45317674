@@ -16,6 +16,24 @@
       "message": "```suggestion\n\tirq-gpios \u003d \u003c\u0026gpio7 0 GPIO_ACTIVE_HIGH\u003e;\n```\n\nusually a good idea to use GPIO_ACTIVE_HIGH instead of 0 for gpio flags, makes it explicit",
       "revId": "03e6f39287d6e528e77ac025ef1975cf45317674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f2cd3f_f6298c4b",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-02T16:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25f8081_c8a2e663",
+      "revId": "03e6f39287d6e528e77ac025ef1975cf45317674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
