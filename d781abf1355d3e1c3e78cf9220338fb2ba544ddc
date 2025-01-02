@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7c3eaf_306ee187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-02T05:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f25c820b_2eac9745",
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78342d68_e4cfc7f7",
@@ -159,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a8882e_a3ee925a",
+        "filename": "zephyr/program/intelrvp/ptlrvp/mfd.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-02T05:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ac00198_e4709ead",
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4642eb8c_34470e1c",
@@ -172,6 +208,30 @@
       "writtenOn": "2024-12-20T23:52:46Z",
       "side": 1,
       "message": "looks like driver expects this GPIO to be defined, it is working now",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "d781abf1355d3e1c3e78cf9220338fb2ba544ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a926a8e4_11395f25",
+        "filename": "zephyr/program/intelrvp/ptlrvp/mfd.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-02T05:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4642eb8c_34470e1c",
       "range": {
         "startLine": 10,
         "startChar": 2,
