@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08624a89_257a1707",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-01-02T06:35:00Z",
+      "side": 1,
+      "message": "Let\u0027s keep the common code untouched. I\u0027ll mark this as resolved if no other concerns.",
+      "parentUuid": "b76b857c_335000fa",
+      "revId": "570ce53535a715c199f4950d43105672b7006ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a06692a_3ec7903f",
