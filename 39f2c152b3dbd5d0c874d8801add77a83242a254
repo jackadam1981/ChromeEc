@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3699509_77f65253",
+        "filename": "zephyr/emul/tcpc/emul_raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:30:58Z",
+      "side": 1,
+      "message": "I see other TCPC all use the same way to deal with the function, Like you said, this might not be a bad thing.",
+      "parentUuid": "6e8c16eb_04ab6287",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "39f2c152b3dbd5d0c874d8801add77a83242a254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9edb31f3_ced7ec3c",
         "filename": "zephyr/test/drivers/raa489000/raa489000.dts",
         "patchSetId": 1
