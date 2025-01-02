@@ -16,6 +16,24 @@
       "message": "isn\u0027t this what this CL is doing? if you use the upstream and this at the same time I think the two code path may end up stepping on each other, what is this needed for?",
       "revId": "61690aa87c09407ce1e5aba2cd38f7a55a6f5a51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc06926_b59cbd9e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-02T17:06:47Z",
+      "side": 1,
+      "message": "its little confusing, there are two boards with similar names\n1. ptlrvp_npcx - uses upstream code\n2. ptlrvp_mchp - uses chromium code (we plan to move it to upstream code eventually)",
+      "parentUuid": "f00c69f4_62ffc80e",
+      "revId": "61690aa87c09407ce1e5aba2cd38f7a55a6f5a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
