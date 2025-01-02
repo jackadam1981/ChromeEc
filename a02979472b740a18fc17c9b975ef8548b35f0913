@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8adcec9b_c9fd8ed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2025-01-02T07:19:59Z",
+      "side": 1,
+      "message": "Ting, EC reboot is fine. \nWhile PDC still toggles after EC: apshutdown\nSo setting PDC to SNK may not be the right logic, how does EC-TCPC do ?\n\nLinks to power state instead of EC init ?",
+      "revId": "a02979472b740a18fc17c9b975ef8548b35f0913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
