@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09780c75_7eb440ef",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7539444c_0d46645c",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6cb2b9f_25a681c8",
@@ -75,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8eb34d_f36526bb",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d71bcb2b_2b17b3b1",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 19
+      },
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52aa2af0_3e4e3868",
@@ -88,6 +130,24 @@
       "writtenOn": "2024-12-30T17:57:16Z",
       "side": 1,
       "message": "The return value here is `bool`, not an EC error code. You shouldn\u0027t be returning it from `get_message_raw`. That should always be the return value of `tcpci_tcpm_get_message_raw` the last TCPC operation.\n\nAs written, there\u0027s nothing to do with the return value of `should_enter_bist_mode` here. I\u0027d suggest changing the code like this:\n```suggestion\n\tif (raa489000_tcpm_should_enter_bist_mode(port, payload, head)) {\n\t        raa489000_bist_mode[port] \u003d true;\n\t        return tcpci_set_bist_test_mode(port, true);\n\t}\n```",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a680f8e_0853ce91",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52aa2af0_3e4e3868",
       "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a90a51_12b0bf45",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2acbcf26_225624e3",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98dafea1_2a39b3db",
@@ -126,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01fb8726_7ea3c16d",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98dafea1_2a39b3db",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "701e3ef2_f243df52",
@@ -139,6 +235,24 @@
       "writtenOn": "2024-12-30T17:57:16Z",
       "side": 1,
       "message": "This should be a `uint16_t`.",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdd5cf4f_098363f9",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "the build log show the type should be uint32_t.\nincompatible pointer types passing \u0027uint16_t[0]\u0027 (aka \u0027unsigned short[0]\u0027) to parameter of type \u0027uint32_t *\u0027 (aka \u0027unsigned int *\u0027)",
+      "parentUuid": "701e3ef2_f243df52",
       "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +297,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712afd3c_eb7ba921",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "156a7aaf_a6f6189b",
+      "range": {
+        "startLine": 54,
+        "startChar": 22,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da8aa12_3ae358d7",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca5294b_c51ced8a",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "301e95ac_289626b5",
@@ -217,6 +373,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfe0176_33241ece",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec71cbe_c9c26d29",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7b0f444_037c0d6d",
@@ -230,6 +404,24 @@
       "writtenOn": "2024-12-30T17:57:16Z",
       "side": 1,
       "message": "You can just do `zassert_true(bist_mode, \"...\")`.",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e7f928_f7de77da",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-02T15:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b0f444_037c0d6d",
       "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
