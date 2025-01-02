@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00c69f4_62ffc80e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-02T16:29:09Z",
+      "side": 1,
+      "message": "isn\u0027t this what this CL is doing? if you use the upstream and this at the same time I think the two code path may end up stepping on each other, what is this needed for?",
+      "revId": "61690aa87c09407ce1e5aba2cd38f7a55a6f5a51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
