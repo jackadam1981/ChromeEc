@@ -5,12 +5,11 @@
 
 /* Brtk program common DTS includes */
 
-/* RTK_NEED_IMP : cbi */
-/* #include <cros/cbi_flash.dtsi> */
-
 #include "rtk_adc.dtsi"
 
 #include "rtk_binman.dtsi"
+
+#include <cros/cbi_flash.dtsi>
 
 #include "brtk.dtsi"
 
@@ -58,4 +57,9 @@
 };
 &gpio_ec_i2c_pmc_pd_int_odl {
 	no-auto-init;
+};
+
+&cbi_flash {
+        offset = <(0x70000 - 0x1000)>;
+        size = <0x1000>;
 };

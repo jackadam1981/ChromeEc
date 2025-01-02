@@ -49,7 +49,7 @@
 					filename = "version.txt";
 				};
 				fmap {
-					offset = <(0x70000 - 0x400)>;
+					offset = <(0x70000 - 0x1000 - 0x400)>;
 				};
 			};
 	};

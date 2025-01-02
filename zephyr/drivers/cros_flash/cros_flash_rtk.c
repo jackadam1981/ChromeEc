@@ -336,7 +336,6 @@ static int cros_flash_rtk_erase(const struct device *dev, int offset,
 {
 	int ret = 0;
 	struct cros_flash_rtk_data *data = DRV_DATA(dev);
-	size_t reload_size = FLASH_WATCHDOG_RELOAD_SIZE;
 
 	/* check protection */
 	if (all_protected)
@@ -365,21 +364,21 @@ static int cros_flash_rtk_erase(const struct device *dev, int offset,
 	/* Lock physical flash operations */
 	crec_flash_lock_mapped_storage(1);
 
-	for (; size > 0; size -= reload_size) {
+	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE) {
+		/* Start erase */
+		ret = flash_erase(data->flash_dev, offset,
+				  CONFIG_FLASH_ERASE_SIZE);
+		if (ret)
+			break;
+
+		offset += CONFIG_FLASH_ERASE_SIZE;
+
 		/*
 		 * Reload the watchdog timer, so that erasing many flash pages
 		 * doesn't cause a watchdog reset
 		 */
 		if (IS_ENABLED(CONFIG_WATCHDOG))
 			watchdog_reload();
-
-		/* Start erase */
-		ret = flash_erase(data->flash_dev, offset,
-				  MIN(reload_size, size));
-		if (ret)
-			break;
-
-		offset += reload_size;
 	}
 
 	/* Unlock physical flash operations */
