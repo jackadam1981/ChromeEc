@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb087be_45319012",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of the convention to wrap git commit message bodies! Done, and I updated my vimrc to wrap commit messages in the future.\n\nOh, and it\u0027s 72 characters.",
+      "parentUuid": "b1b95e80_5e690fcb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 111
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e20993ff_b5dd94db",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b6e479_b6c88a40",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "The common trait between the `constexpr`s and `DefaultPublicArea` is that they\u0027re only used in this file.\n\nI was trying to avoid polluting the trunks namespace. This code is kinda odd in that it uses the trunks namespace but doesn\u0027t really own the trunks namespace.",
+      "parentUuid": "e20993ff_b5dd94db",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6670f041_6b9e665b",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-01-02T16:15:42Z",
       "side": 1,
       "message": "how do these pointer resources get cleaned up? Are they passed back into the FFI layer?",
+      "range": {
+        "startLine": 100,
+        "startChar": 39,
+        "endLine": 100,
+        "endChar": 55
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a009c7f7_b8bc4ad7",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "Yes. CXX handles that for us. A C++ `std::unique_ptr\u003cstd::string\u003e` is passed across the FFI boundary to become a Rust [`cxx::UniquePtr\u003ccxx::CxxString\u003e`](https://cxx.rs/binding/uniqueptr.html). `cxx::UniquePtr`\u0027s drop implementation calls back into a [C++ function](https://github.com/dtolnay/cxx/blob/e247ca05841d2669b39e07e084f1e0079b71fa2b/src/cxx.cc#L586) that performs the drop.",
+      "parentUuid": "6670f041_6b9e665b",
       "range": {
         "startLine": 100,
         "startChar": 39,
@@ -111,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3ed474_50229842",
+        "filename": "tpm_generated/ffi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "I believe that 2024 is correct. This code was first published when this code review was made public in 2024. See the policy at https://opensource.google/documentation/reference/copyright.",
+      "parentUuid": "d3564f58_ad92f2bd",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ad59113_de1f7079",
@@ -124,6 +220,30 @@
       "writtenOn": "2025-01-02T16:15:42Z",
       "side": 1,
       "message": "where is this type defined? I couldn\u0027t find it.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ddb08f1_e377138d",
+        "filename": "tpm_generated/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "It\u0027s an abstract base class declared in authorization_delegate.h.\n\nThis code should probably follow include-what-you-use principles, rather than relying on the fact that ffi.h includes authorization_delegate.h. I changed it to include! authorization_delegate.h and tpm_generated.h directly.",
+      "parentUuid": "7ad59113_de1f7079",
       "range": {
         "startLine": 18,
         "startChar": 8,
@@ -157,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6af9622_355c6ed2",
+        "filename": "tpm_generated/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "Most of the C++ code returns a `TPM_RC` that can represent either success or failure. `TpmError` only represents an error, so it doesn\u0027t really belong on both sides of the FFI boundary.\n\nIMO we can add `repr(transparent)` if we need it but at the moment it doesn\u0027t really make sense.\n\nWhile writing this, I did realize that `TpmError` would be a bit more clear if it wrapped a `NonZeroU32` rather than a `u32`, so I made that change.",
+      "parentUuid": "f291e339_1499d8f7",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8d83c2_68a67c0b",
@@ -170,6 +314,30 @@
       "writtenOn": "2025-01-02T16:15:42Z",
       "side": 1,
       "message": "The pretty modifer `#` for hex prints out the `0x` prefix\n```suggestion\n        write!(f, \"{:#x}\", self.return_code)\n```",
+      "range": {
+        "startLine": 133,
+        "startChar": 19,
+        "endLine": 133,
+        "endChar": 25
+      },
+      "revId": "25d07fbc0d0423f3986a705337b99790d9a8a687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6247737_6b14791e",
+        "filename": "tpm_generated/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-01-02T19:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c8d83c2_68a67c0b",
       "range": {
         "startLine": 133,
         "startChar": 19,
