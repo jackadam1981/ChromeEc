@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb14188_319142e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2025-01-02T07:24:24Z",
+      "side": 1,
+      "message": "typec 0 returns the virtual mux state, it\u0027s not the real mux status but still useful.",
+      "revId": "0761a860e0a7d1232949bf4aefbe55089a8e7f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
