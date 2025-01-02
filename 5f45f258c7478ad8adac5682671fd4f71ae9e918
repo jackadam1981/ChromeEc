@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b762855d_eec19499",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-02T19:40:48Z",
+      "side": 1,
+      "message": "Nit: This is never used (and getting rid of it will increase incremental coverage).",
+      "revId": "5f45f258c7478ad8adac5682671fd4f71ae9e918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

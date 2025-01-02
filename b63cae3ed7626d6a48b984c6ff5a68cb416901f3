@@ -119,6 +119,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7db119f7_956bc1d1",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-02T19:40:48Z",
+      "side": 1,
+      "message": "Writing your test in terms of `get_message_raw` will give you coverage of this function and the success case of `set_bist_test_mode`.",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52aa2af0_3e4e3868",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 21
@@ -257,6 +274,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76650de5_cc928c62",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-02T19:40:48Z",
+      "side": 1,
+      "message": "OK, I think I see what\u0027s going on here. `get_message_raw` takes an `int *hdr`. IMO, that should probably just be a `uint16_t`. But we can clean that up later. This is fine for now.",
+      "parentUuid": "bdd5cf4f_098363f9",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156a7aaf_a6f6189b",
@@ -352,6 +387,24 @@
       "writtenOn": "2024-12-30T17:57:16Z",
       "side": 1,
       "message": "Instead of exporting this function and calling it directly, you should call `tcpc_get_message_raw`, the public API for the driver.",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88c8aa5_8a744edc",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-02T19:40:48Z",
+      "side": 1,
+      "message": "You changed the tests to be written in terms of `raa489000_tcpm_should_enter_bist_mode` and `tcpc_set_bist_mode`, but but those are functions that the driver should be calling. There isn\u0027t a `tcpc_get_message_raw`, so I think you should write the test in terms of `tcpc_config[port].drv-\u003eget_message_raw`. That will get you coverage of most of the lines you\u0027re missing right now.\n\nYou can see an example of setting this up in the [generic TCPCI driver test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/tcpci_test_common.c;l\u003d523;drc\u003d665fbcfb1ea1378e5dafeaffa43fd809c961c0aa). You would replace the message header/contents in that test with the BIST message from this test.",
+      "parentUuid": "301e95ac_289626b5",
       "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
