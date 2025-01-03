@@ -301,6 +301,7 @@ ZTEST(uldren, test_pd_power_supply_reset)
 {
 	uint16_t reg;
 
+	pd_set_power_supply_ready(0);
 	/* Stops any active sourcing on the given port */
 	pd_power_supply_reset(0);
 	tcpci_emul_get_reg(TCPC0, TCPC_REG_COMMAND, &reg);
