@@ -22,6 +22,30 @@
       },
       "revId": "6cf1f01d30b528a6712e11b274cf6af4d2fa2023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78448cf_53a9683c",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-03T05:15:41Z",
+      "side": 1,
+      "message": "Sorry about this.  I self-reviewed the patch several times in Gerrit, but somehow still managed to miss my comment to myself.\n\nI have updated the code to skip this added code, in case the period is so long that the computations would overflow.",
+      "parentUuid": "9c6abd65_adffa679",
+      "range": {
+        "startLine": 2162,
+        "startChar": 2,
+        "endLine": 2162,
+        "endChar": 27
+      },
+      "revId": "6cf1f01d30b528a6712e11b274cf6af4d2fa2023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
