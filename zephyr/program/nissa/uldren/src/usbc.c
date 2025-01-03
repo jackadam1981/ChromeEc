@@ -13,9 +13,13 @@
 #include "system.h"
 #include "usb_mux.h"
 
+#include <stdint.h>
+
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+static bool sourcing_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 int board_is_sourcing_vbus(int port)
 {
@@ -82,6 +86,7 @@ int board_set_active_charge_port(int port)
 		charger_discharge_on_ac(0);
 		return EC_ERROR_UNKNOWN;
 	}
+	sourcing_vbus[port] = false;
 
 	/* Allow the charger IC to begin/continue switching. */
 	charger_discharge_on_ac(0);
@@ -133,8 +138,12 @@ DECLARE_DEFERRED(notify_power_change);
 
 void pd_power_supply_reset(int port)
 {
+	if (!sourcing_vbus[port])
+		return;
+
 	/* Disable VBUS */
 	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
+	sourcing_vbus[port] = false;
 
 	/* Notify host of power info change. Defer call to avoid delaying Error
 	 * Recovery path.
@@ -170,6 +179,7 @@ int pd_set_power_supply_ready(int port)
 	rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_HIGH);
 	if (rv)
 		return rv;
+	sourcing_vbus[port] = true;
 
 	rv = raa489000_enable_asgate(port, true);
 	if (rv)
