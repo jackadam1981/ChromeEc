@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb128fe_57a17dd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T06:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a931dbb_dc9f3209",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0fcee12_1682d802",
@@ -119,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec72a5d_795bc2ef",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T06:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0afae839_9b74f0cf",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11d7ef85_96f9a122",
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "Thank you Keith, yes errors ar eresolved.\nMost of the Keys are working except the pins on KSI0 (blue-wire I added to monitor the signal may be adding high impedence) \u0026 KSO2 (inverted logic needs to be verified)",
       "parentUuid": "ba56a4e6_3b01c478",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "c54fc437327ac248da29a77907bac44eb52f8093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c922918_85cf07be",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T06:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c857165c_ac2acccc",
       "range": {
         "startLine": 109,
         "startChar": 0,

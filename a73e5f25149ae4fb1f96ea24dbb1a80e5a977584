@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "542bd51a_168926ec",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T06:30:23Z",
+      "side": 1,
+      "message": "looks like needed for adding  in \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6093288/4/zephyr/program/intelrvp/include/keyboard_customization.h#12",
+      "parentUuid": "ac80d965_6214616b",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1a0e67d_cc808b44",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
         "patchSetId": 3
@@ -61,6 +85,30 @@
       "writtenOn": "2024-12-27T20:12:37Z",
       "side": 1,
       "message": "add correct values",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75bd2ae3_9a2d7e42",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T06:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a0e67d_cc808b44",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "ACK, I will cleup the code once all the keys are verified and submit for review",
       "parentUuid": "7bfe2924_34d465fa",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 67
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0181ed8_84ccabd8",
+        "filename": "zephyr/program/intelrvp/src/kbd_gcs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T06:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea0ce0f_1ead603c",
       "range": {
         "startLine": 113,
         "startChar": 0,
