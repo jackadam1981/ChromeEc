@@ -154,7 +154,7 @@
 			gpios = <&gpioh 15 GPIO_ODR_LOW>;
 		};
 		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
-			gpios = <&gpiob 12 GPIO_INPUT>;
+			gpios = <&gpiof 8 GPIO_INPUT>;
 		};
 		// RTK_LATER_IMP : gsensor
 		// gpio_tablet_mode_l: tablet_mode_l {
