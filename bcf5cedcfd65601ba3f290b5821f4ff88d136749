@@ -22,6 +22,30 @@
       },
       "revId": "bcf5cedcfd65601ba3f290b5821f4ff88d136749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d115d6c_b32b70fe",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T23:00:12Z",
+      "side": 1,
+      "message": "Done\nReferenced the b/386325459 filed for PTLRVP_MCHP",
+      "parentUuid": "ad8be456_1478fa96",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "bcf5cedcfd65601ba3f290b5821f4ff88d136749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
