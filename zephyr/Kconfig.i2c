@@ -85,4 +85,12 @@ config PLATFORM_EC_I2C_NACK_RETRY_COUNT
 	  Defines I2C operation retry count when transaction general input/output
 	  error (-EIO) and also when the I2C is busy.
 
+config PLATFORM_EC_I2C_UPDATE_IF_CHANGED
+	bool "Optimize read-modify-write operations"
+	default n
+	help
+	  If enabled, avoid unnecessary writes during read-modify-write
+	  operations in i2c_update8/16/32 functions. Do not write if the value
+	  to be written is the same as the value just read.
+
 endif # PLATFORM_EC_I2C
