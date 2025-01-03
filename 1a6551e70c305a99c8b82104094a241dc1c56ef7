@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "625cece2_a18466c9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-03T22:36:05Z",
+      "side": 1,
+      "message": "You don\u0027t need to delete the `ppm-driver` node.  You can just override the `lpm` property as needed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "1a6551e70c305a99c8b82104094a241dc1c56ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712f7626_e550e226",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-03T22:36:05Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "1a6551e70c305a99c8b82104094a241dc1c56ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
