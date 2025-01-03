@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4211d9e0_4ffb1876",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3558,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-03T18:37:54Z",
+      "side": 1,
+      "message": "Should this be `set_state_pe(port, PE_SNK_READY)`?  Isn\u0027t the power role state guaranteed to be PD_ROLE_SINK at this point?",
+      "range": {
+        "startLine": 3558,
+        "startChar": 0,
+        "endLine": 3558,
+        "endChar": 27
+      },
+      "revId": "ceaac9bbdf31d9b9c26347fe5a402f85a30c4378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
