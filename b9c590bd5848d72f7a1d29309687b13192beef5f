@@ -60,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f61fd01b_3220d784",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-03T18:51:07Z",
+      "side": 1,
+      "message": "It looks like you actually had it like this in patchset 25.",
+      "parentUuid": "73d991d8_7099e85e",
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0e84b10_18c06a71",
         "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
         "patchSetId": 26
