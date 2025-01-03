@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d4ae4e_51681304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-03T18:42:28Z",
+      "side": 1,
+      "message": "I think this is looking pretty good. Starting a dry run to see what coverage looks like.",
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dee6002_f6797c2a",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-03T18:42:28Z",
+      "side": 1,
+      "message": "Nit: `true`",
+      "range": {
+        "startLine": 47,
+        "startChar": 42,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d991d8_7099e85e",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-03T18:42:28Z",
+      "side": 1,
+      "message": "Nit: This might be a bit more maintainable if the message read fail, the BIST mode entry, and whatever other sequences you come up were each their own `ZTEST` test case instead of all being in one. But that\u0027s relatively easy to clean up later, and I\u0027m not worried about it now.",
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e84b10_18c06a71",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-03T18:42:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure I get this part. The only way to disable BIST test mode should be via Hard Reset, and that logic is in `tcpci.c`. I don\u0027t think you need to test it here.\n\nIt seems to me like it might make sense to test\n1. BIST mode disabled: getting a non-BIST message leaves BIST mode disabled\n2. BIST mode enabled: getting a non-BIST message leaves BIST mode enabled",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
