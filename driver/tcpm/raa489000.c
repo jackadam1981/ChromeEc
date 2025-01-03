@@ -338,7 +338,7 @@ int raa489000_debug_detach(int port)
 	return rv;
 }
 
-test_export_static bool
+static bool
 raa489000_tcpm_should_enter_bist_mode(int port, uint32_t *payload, int *head)
 {
 	uint32_t hdr = *head;
@@ -361,7 +361,6 @@ int raa489000_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 
 	if (ret != EC_SUCCESS)
 		return ret;
-
 	if (raa489000_tcpm_should_enter_bist_mode(port, payload, head)) {
 		raa489000_bist_mode[port] = true;
 		ret = tcpci_set_bist_test_mode(port, true);
