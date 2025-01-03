@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e44aab_40827b88",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T23:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "625cece2_a18466c9",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "1a6551e70c305a99c8b82104094a241dc1c56ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "712f7626_e550e226",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-03T22:36:05Z",
       "side": 1,
       "message": "Delete this line.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "1a6551e70c305a99c8b82104094a241dc1c56ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "495aa131_931985be",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-03T23:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712f7626_e550e226",
       "range": {
         "startLine": 44,
         "startChar": 0,
