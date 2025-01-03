@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f56b6ec9_b098b90c",
+        "filename": "zephyr/program/intelrvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-03T22:22:55Z",
+      "side": 1,
+      "message": "Currently CONFIG_KEYBOARD_INTEL_GCS has a 1:1 relationship with CONFIG_BOARD_PTLGCS, so this isn\u0027t needed.\n\nIf we need a \"Intl GCS\" keyboard type on a future platform, then you can add the Kconfig at that time.  But the definition should be done in Kconfig.keyboard and not a board specific file.",
+      "parentUuid": "542bd51a_168926ec",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "a73e5f25149ae4fb1f96ea24dbb1a80e5a977584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1a0e67d_cc808b44",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/keyboard.dts",
         "patchSetId": 3

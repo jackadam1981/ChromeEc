@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9617865_9997ca44",
+        "filename": "zephyr/program/intelrvp/include/keyboard_customization.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-03T22:22:55Z",
+      "side": 1,
+      "message": "Use `CONFIG_BOARD_PTLGCS` here.",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "26ff279de224a5672536cf797918ef2fc073cba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
