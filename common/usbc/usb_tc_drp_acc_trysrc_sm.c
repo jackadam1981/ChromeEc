@@ -3906,7 +3906,7 @@ static void tc_cc_open_entry(const int port)
 	 * browning out, don't do it so we can meet certain compliance timing
 	 * requirements.
 	 */
-	CPRINTS_L1("C%d: Applying CC Open!", port);
+	CPRINTS_L2("C%d: Applying CC Open!", port);
 	if (!battery_is_present())
 		cflush();
 
