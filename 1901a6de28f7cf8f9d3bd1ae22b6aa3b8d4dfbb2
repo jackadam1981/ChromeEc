@@ -22,6 +22,30 @@
       },
       "revId": "1901a6de28f7cf8f9d3bd1ae22b6aa3b8d4dfbb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5b0c74_ee69d989",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-03T05:08:12Z",
+      "side": 1,
+      "message": "`TIMER_SETUP_OUT_OF_RANGE` is used by the next patch, which introduces support for low-power timers with their more restricted prescaler support.\n\nHowever, as you pointed it out, I realized that the check for the maximum period of non-low power timers ought to be moved into the `setup_timer()` function.  That is done now, so that it may return `TIMER_SETUP_OUT_OF_RANGE`.",
+      "parentUuid": "a3618109_59c82cf0",
+      "range": {
+        "startLine": 2046,
+        "startChar": 1,
+        "endLine": 2049,
+        "endChar": 25
+      },
+      "revId": "1901a6de28f7cf8f9d3bd1ae22b6aa3b8d4dfbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
