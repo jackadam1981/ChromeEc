@@ -175,6 +175,24 @@
       "parentUuid": "e999e35c_7bc06bcd",
       "revId": "39f2c152b3dbd5d0c874d8801add77a83242a254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572b3fc3_05e7e833",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-03T01:11:21Z",
+      "side": 1,
+      "message": "I don\u0027t know why, according to your suggestion, the value of this port is finally output as 34",
+      "parentUuid": "ecd443ee_274aeae4",
+      "revId": "39f2c152b3dbd5d0c874d8801add77a83242a254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
