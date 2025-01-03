@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8be456_1478fa96",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-03T22:31:57Z",
+      "side": 1,
+      "message": "Nit - add a comment that these lines can be deleted after all PTL platforms support the MFD driver.  b/377409155",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "bcf5cedcfd65601ba3f290b5821f4ff88d136749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
