@@ -645,16 +645,19 @@ __maybe_unused int tcpci_tcpm_sop_prime_enable(int port, bool enable)
 
 int tcpci_tcpm_set_vconn(int port, int enable)
 {
-	int reg, rv;
+	int old_reg, new_reg, rv;
 
-	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &old_reg);
 	if (rv)
 		return rv;
 
-	reg &= ~TCPC_REG_POWER_CTRL_VCONN(1);
-	reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
+	new_reg = old_reg & ~TCPC_REG_POWER_CTRL_VCONN(1);
+	new_reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
 
-	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+	if (new_reg == old_reg)
+		return EC_SUCCESS;
+
+	return tcpc_write(port, TCPC_REG_POWER_CTRL, new_reg);
 }
 
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role)
