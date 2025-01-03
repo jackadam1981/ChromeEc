@@ -22,6 +22,30 @@
       },
       "revId": "a1808addaa0abe36efad7dff0be2aef1ef2df0f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f81bde7_0ab703f5",
+        "filename": "board/hyperdebug/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-03T19:14:16Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "3f2e8f07_d8eefd45",
+      "range": {
+        "startLine": 319,
+        "startChar": 42,
+        "endLine": 319,
+        "endChar": 57
+      },
+      "revId": "a1808addaa0abe36efad7dff0be2aef1ef2df0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
