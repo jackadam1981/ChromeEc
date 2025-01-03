@@ -47,7 +47,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SYS_SLP_S0IX_L input from PCH";
 		enum-name = "PWR_SLP_S0";
-		gpios = <&gpiof 13 GPIO_ACTIVE_LOW>;
+		gpios = <&gpiob 12 GPIO_ACTIVE_LOW>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-slp-s3-l {
