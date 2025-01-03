@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5f9d5a_05a78de4",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-03T12:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cb2b9f_25a681c8",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71bcb2b_2b17b3b1",
@@ -130,6 +148,24 @@
       "writtenOn": "2025-01-02T19:40:48Z",
       "side": 1,
       "message": "Writing your test in terms of `get_message_raw` will give you coverage of this function and the success case of `set_bist_test_mode`.",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbade17_f36cb711",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-03T12:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db119f7_956bc1d1",
       "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -405,6 +441,24 @@
       "side": 1,
       "message": "You changed the tests to be written in terms of `raa489000_tcpm_should_enter_bist_mode` and `tcpc_set_bist_mode`, but but those are functions that the driver should be calling. There isn\u0027t a `tcpc_get_message_raw`, so I think you should write the test in terms of `tcpc_config[port].drv-\u003eget_message_raw`. That will get you coverage of most of the lines you\u0027re missing right now.\n\nYou can see an example of setting this up in the [generic TCPCI driver test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/tcpci_test_common.c;l\u003d523;drc\u003d665fbcfb1ea1378e5dafeaffa43fd809c961c0aa). You would replace the message header/contents in that test with the BIST message from this test.",
       "parentUuid": "301e95ac_289626b5",
+      "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7403e785_c299c616",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-03T12:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88c8aa5_8a744edc",
       "revId": "b63cae3ed7626d6a48b984c6ff5a68cb416901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
