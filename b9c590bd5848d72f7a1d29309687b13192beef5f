@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d5bc02b_5f30e057",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-04T00:18:26Z",
+      "side": 1,
+      "message": "You\u0027re not wrong. There\u0027s a tradeoff between clearly delineated test cases and concise code.\n\nWe could avoid a fair bit of that redundant code by using a test fixture with common `_before` and `_after` functions with `ZTEST_F`. If you\u0027d like to do that here, I\u0027d be delighted, but it felt unfair to ask you to learn another new thing to get this CL submitted.\n\nStill just a nit.",
+      "parentUuid": "d1451c5b_91f3a36b",
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0e84b10_18c06a71",
         "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
         "patchSetId": 26
@@ -155,6 +173,30 @@
       "side": 1,
       "message": "This can increase the coverage of test code.",
       "parentUuid": "f0e84b10_18c06a71",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa1f1f0_d7b73297",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-04T00:18:26Z",
+      "side": 1,
+      "message": "OK, I misread this. The actual assertions in this bit of code make sense. This is the case where we\u0027re in BIST mode, and we receive another BIST message. We would expect to remain in BIST mode, and that\u0027s what the test is asserting.\n\nThe error message on the last assert seems wrong. It seems like it should say, \"BIST mode should be enabled\".",
+      "parentUuid": "cb912e9f_f9103487",
       "range": {
         "startLine": 85,
         "startChar": 0,

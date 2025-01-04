@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0220b1e_3c16c384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-04T00:18:26Z",
+      "side": 1,
+      "message": "The test case added in this CL is failing in CQ with the error message\n```\nINFO    - 268/506 native_sim/native         drivers/drivers.raa489000                          FAILED Failed (rc\u003d-11) (native 0.213s)\n```\nI\u0027m not exactly sure what\u0027s going on here. It kind of looks like the program crashed while the test was running.\n\nCan you reproduce this failure running locally?\n\n```cros_sdk ../platform/ec/twister -c --inline-logs -O ../platform/ec/twister-out -s drivers/drivers.raa489000```",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
