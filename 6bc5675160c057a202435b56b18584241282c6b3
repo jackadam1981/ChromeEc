@@ -16,6 +16,24 @@
       "message": "The test case added in this CL is failing in CQ with the error message\n```\nINFO    - 268/506 native_sim/native         drivers/drivers.raa489000                          FAILED Failed (rc\u003d-11) (native 0.213s)\n```\nI\u0027m not exactly sure what\u0027s going on here. It kind of looks like the program crashed while the test was running.\n\nCan you reproduce this failure running locally?\n\n```cros_sdk ../platform/ec/twister -c --inline-logs -O ../platform/ec/twister-out -s drivers/drivers.raa489000```",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8da0bbb_5ac93390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-04T08:46:06Z",
+      "side": 1,
+      "message": "liwu@liwu-ZhaoYang-K4e-ITL:~/ssd_tot/awasuki$ cros_sdk ../platform/ec/twister -c --inline-logs -O ../platform/ec/twister-out -s drivers/drivers.raa489000\n\n[sudo] password for liwu: \nZEPHYR_BASE unset, using \"/mnt/host/source/src/third_party/zephyr/main\"\nInstall tabulate python module with pip to use --device-testing option.\nDeleting output directory ../platform/ec/twister-out\nINFO    - Using Ninja..\nwarning: tag \u0027upstream/v2.7.99\u0027 is externally known as \u0027v2.7.99\u0027\nINFO    - Zephyr version: v2.7.99-50544-g4bd93dc5a741\nINFO    - Using \u0027llvm\u0027 toolchain.\nINFO    - Building initial testsuite list...\nINFO    - Writing JSON report ../platform/ec/twister-out/testplan.json\nINFO    - JOBS: 8\nINFO    - Adding tasks to the queue...\nINFO    - Added initial list of jobs to queue\nWARNING - Unexpected Ztest suite \u0027tcpc_raa489000\u0027 not present in: []\nWARNING - Unexpected Ztest suite \u0027tcpc_raa489000\u0027 not present in: []\nWARNING - Unexpected Ztest suite \u0027tcpc_raa489000\u0027\nWARNING - On TS_SUM: unexpected Ztest suite \u0027tcpc_raa489000\u0027 not present among: []\nWARNING - On TS_SUM: unexpected Ztest suite \u0027tcpc_raa489000\u0027 not present among: []\nINFO    - Total complete:    1/   1  100%  built (not run):    0, filtered:    0, failed:    0, error:    0\nINFO    - 1 test scenarios (1 configurations) selected, 0 configurations filtered (0 by static filter, 0 at runtime).\nINFO    - 1 of 1 executed test configurations passed (100.00%), 0 built (not run), 0 failed, 0 errored, with no warnings in 28.23 seconds.\nINFO    - 2 of 2 executed test cases passed (100.00%) on 1 out of total 880 platforms (0.11%).\nINFO    - 1 test configurations executed on platforms, 0 test configurations were only built.\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL",
+      "parentUuid": "d0220b1e_3c16c384",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

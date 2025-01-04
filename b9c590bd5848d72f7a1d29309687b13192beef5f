@@ -205,6 +205,30 @@
       },
       "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eaa053c_aa31f6b6",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-04T08:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa1f1f0_d7b73297",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "b9c590bd5848d72f7a1d29309687b13192beef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
