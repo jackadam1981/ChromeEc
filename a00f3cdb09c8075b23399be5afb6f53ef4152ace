@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d753b90_879dbaeb",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-01-05T23:00:14Z",
+      "side": 1,
+      "message": "Prefix the kconfig name with `PLATFORM_EC` for consistency with the other options.\n\n```suggestion\nconfig PLATFORM_EC_CHARGER_ILIM_PIN_DISABLED\n```",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "a00f3cdb09c8075b23399be5afb6f53ef4152ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
