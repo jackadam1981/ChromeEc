@@ -16,6 +16,24 @@
       "message": "don\u0027t think there\u0027s much value in sleeping for 1us, I think you\u0027ll effectively get one tick, 1ms? 100us? anyway up to you but I\u0027d change this to 1us, seems to be a good value for spinning while letting other stuff run",
       "revId": "86d2c83fefee79292470a36128edf15516fb6272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ede955_7ec5b6fb",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-06T03:48:41Z",
+      "side": 1,
+      "message": "I was aiming at basically one tick because this case would mean that the initialization thread is blocked and I wanted to wake up ASAP.",
+      "parentUuid": "bc4ae41a_32dcc4aa",
+      "revId": "86d2c83fefee79292470a36128edf15516fb6272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
