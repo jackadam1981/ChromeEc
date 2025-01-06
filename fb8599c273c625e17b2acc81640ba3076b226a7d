@@ -104,6 +104,30 @@
       },
       "revId": "fb8599c273c625e17b2acc81640ba3076b226a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8fac1a_a42edc60",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-06T16:07:17Z",
+      "side": 1,
+      "message": "I\u0027ll update today since this 1 if statement triggered the code coverage anyway I\u0027ll need to go in and add some tests. Might as well make this change too. So to recap:\n\n1. Move the logic for selecting level/edge to the `dsp_client_init()` function.\n2. Keep a simpler branching condition in this function.",
+      "parentUuid": "4d73601d_e2e0e9a5",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 36
+      },
+      "revId": "fb8599c273c625e17b2acc81640ba3076b226a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
