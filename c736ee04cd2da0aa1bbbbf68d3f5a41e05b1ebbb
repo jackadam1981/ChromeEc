@@ -117,6 +117,30 @@
       },
       "revId": "c736ee04cd2da0aa1bbbbf68d3f5a41e05b1ebbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e4d5ec_148e5924",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-06T22:28:03Z",
+      "side": 1,
+      "message": "I knew it and took it out when I was realigning the lines on accident fixed now",
+      "parentUuid": "ba67d706_44718429",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "c736ee04cd2da0aa1bbbbf68d3f5a41e05b1ebbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
