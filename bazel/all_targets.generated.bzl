@@ -2153,6 +2153,11 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "skywalker",
+        board = "skywalker",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "soraka",
         board = "soraka",
         chip = "npcx",
