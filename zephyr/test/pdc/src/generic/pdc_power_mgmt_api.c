@@ -1409,7 +1409,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_shutdown)
 		TEST_WAIT_FOR(pd_is_connected(TEST_PORT), PDC_TEST_TIMEOUT));
 
 	fake_chipset_state = CHIPSET_STATE_HARD_OFF;
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
 	TEST_WORKING_DELAY(PDC_POWER_STABLE_TIMEOUT);
 
 	emul_pdc_disconnect(emul);

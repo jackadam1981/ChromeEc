@@ -3971,7 +3971,8 @@ static void pd_chipset_shutdown(void)
 
 	LOG_INF("PD:S3->S5");
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, pd_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 test_mockable int pdc_power_mgmt_get_drp_mode(int port,
 					      enum drp_mode_t *drp_mode)
