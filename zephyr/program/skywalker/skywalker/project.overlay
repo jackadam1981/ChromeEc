@@ -1,0 +1,25 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/cbi_flash.dtsi>
+#include <dt-bindings/motionsense/utils.h>
+
+#include "../common.dtsi"
+#include "../generated.dtsi"
+#include "../usba.dtsi"
+#include "../interrupts.dtsi"
+#include "motionsense.dtsi"
+#include "../power_signal.dtsi"
+#include "../overlay.dtsi"
+#include "../keyboard.dtsi"
+#include "usbc.dtsi"
+
+/ {
+	batteries {
+		default_battery: placeholder {
+			compatible = "cosmx,ap20cbl-3", "battery-smart";
+		};
+	};
+};
