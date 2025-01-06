@@ -166,6 +166,30 @@
       },
       "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd4960b_17b44045",
+        "filename": "libc/exit.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-06T22:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7aee0fd_56ed03e9",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "4d85dc85317044d1917509afc18ad2157c314c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
