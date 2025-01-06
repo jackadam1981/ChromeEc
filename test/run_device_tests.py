@@ -607,8 +607,6 @@ class AllTests:
             TestConfig(test_name="exception"),
             TestConfig(
                 test_name="exit",
-                # TODO(b/365628799): Need to port to Zephyr.
-                skip_for_zephyr=True,
             ),
             TestConfig(
                 test_name="flash_physical",
