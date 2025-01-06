@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bce836c_606a09ab",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-06T22:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e82773d_0d6a6e1b",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "c736ee04cd2da0aa1bbbbf68d3f5a41e05b1ebbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7a333e_6a76edf1",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-06T21:39:33Z",
       "side": 1,
       "message": "indent",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "c736ee04cd2da0aa1bbbbf68d3f5a41e05b1ebbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e786dea1_a5a0dbc3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-06T22:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf7a333e_6a76edf1",
       "range": {
         "startLine": 17,
         "startChar": 16,
