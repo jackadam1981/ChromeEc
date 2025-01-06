@@ -821,6 +821,10 @@ def all_targets():
         extra_modules = ["cmsis"],
     )
     ec_target(
+        name = "felino",
+        board = "felino",
+    )
+    ec_target(
         name = "felwinter",
         baseboard = "brya",
         board = "felwinter",
@@ -1953,6 +1957,16 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "ptl-ish",
+        board = "ptl-ish",
+        extra_modules = ["cmsis", "hal_intel_public"],
+    )
+    ec_target(
+        name = "ptlgcs",
+        board = "ptlgcs",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
         name = "ptlrvp_mchp",
         board = "ptlrvp_mchp",
         extra_modules = ["cmsis"],
@@ -1960,11 +1974,6 @@ def all_targets():
     ec_target(
         name = "ptlrvp_npcx",
         board = "ptlrvp_npcx",
-        extra_modules = ["cmsis"],
-    )
-    ec_target(
-        name = "ptlgcs",
-        board = "ptlgcs",
         extra_modules = ["cmsis"],
     )
     ec_target(
@@ -2157,6 +2166,11 @@ def all_targets():
     ec_target(
         name = "skyrim",
         board = "skyrim",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
+        name = "skywalker",
+        board = "skywalker",
         extra_modules = ["cmsis"],
     )
     ec_target(
@@ -2353,17 +2367,12 @@ def all_targets():
     ec_target(
         name = "trulo",
         board = "trulo",
-        extra_modules = ["cmsis"],
+        extra_modules = ["cmsis", "picolibc", "pigweed"],
     )
     ec_target(
         name = "trulo-ti",
         board = "trulo-ti",
-        extra_modules = ["cmsis"],
-    )
-    ec_target(
-        name = "uldrenite",
-        board = "uldrenite",
-        extra_modules = ["cmsis"],
+        extra_modules = ["cmsis", "picolibc", "pigweed"],
     )
     ec_target(
         name = "twinkie",
@@ -2375,6 +2384,11 @@ def all_targets():
     ec_target(
         name = "uldren",
         board = "uldren",
+        extra_modules = ["cmsis"],
+    )
+    ec_target(
+        name = "uldrenite",
+        board = "uldrenite",
         extra_modules = ["cmsis"],
     )
     ec_target(
@@ -2427,13 +2441,6 @@ def all_targets():
         board = "volteer",
         chip = "npcx",
         core = "cortex-m",
-        zephyr = False,
-    )
-    ec_target(
-        name = "volteer_ish",
-        board = "volteer_ish",
-        chip = "ish",
-        core = "minute-ia",
         zephyr = False,
     )
     ec_target(
@@ -2519,6 +2526,14 @@ def all_targets():
     ec_target(
         name = "whiskers",
         board = "whiskers",
+        chip = "stm32",
+        core = "cortex-m0",
+        real_board = "hammer",
+        zephyr = False,
+    )
+    ec_target(
+        name = "whitebeard",
+        board = "whitebeard",
         chip = "stm32",
         core = "cortex-m0",
         real_board = "hammer",
