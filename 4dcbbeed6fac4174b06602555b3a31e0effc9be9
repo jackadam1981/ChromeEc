@@ -16,6 +16,24 @@
       "message": "I have no opinion on the merits of this change, but how is it related to lid interrupts?",
       "revId": "4dcbbeed6fac4174b06602555b3a31e0effc9be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e5746e_c1962641",
+        "filename": "zephyr/program/nissa/orisa-ish/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-06T03:56:32Z",
+      "side": 1,
+      "message": "It snuck in there, sorry. I\u0027ll remove and make a separate CL for this.",
+      "parentUuid": "637ffb01_3672f38f",
+      "revId": "4dcbbeed6fac4174b06602555b3a31e0effc9be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
