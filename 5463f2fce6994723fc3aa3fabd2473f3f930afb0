@@ -33,6 +33,98 @@
       "message": "Keith: Can I get a second review?",
       "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce5eae7_a81983f1",
+        "filename": "zephyr/dts/bindings/emul/cros,raa489000-emul.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-06T23:48:41Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a separate compatible for the emulator.  You can reuse the existing \"renesas,raa489000\" compatible.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db38bd6_3a3bf8d6",
+        "filename": "zephyr/emul/tcpc/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-06T23:48:41Z",
+      "side": 1,
+      "message": "You can use this instead\n```suggestion\n\tdepends on ZTEST \u0026\u0026 DT_HAS_RENESAS_RAA489000_ENABLED\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25ce580_f1d87642",
+        "filename": "zephyr/emul/tcpc/emul_raa489000.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-06T23:48:41Z",
+      "side": 1,
+      "message": "```suggestion\n#define DT_DRV_COMPAT renesas_raa489000\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8e8f86_f52eac50",
+        "filename": "zephyr/test/drivers/raa489000/raa489000.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-06T23:48:41Z",
+      "side": 1,
+      "message": "Delete - only the main driver compatible is needed.",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
