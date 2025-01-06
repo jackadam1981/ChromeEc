@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed06fa7_ebe5a4d0",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-06T23:23:50Z",
+      "side": 1,
+      "message": "are the keyboards generic enough such that they can be used\non different add-in cards and ideally the main board connector as well?\nin other words,\ncan we split this file into EC chip specific and keyboard\nspecific files? anything that looks like\n`ks*_gp*` is chip specific, but the rest should be sharable\namong different ECs.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
