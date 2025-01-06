@@ -47,6 +47,9 @@
 		default_battery: gfl_nb0299-485489 {
 			compatible = "gfl,nb0299-485489", "battery-smart";
 		};
+		ult_u485496phr {
+			compatible = "utl,u485496phr", "battery-smart";
+		};
 	};
 
 
