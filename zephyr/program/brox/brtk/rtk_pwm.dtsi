@@ -5,12 +5,11 @@
 
 /* Keyboard backlight and fan - use a prescaler for operation about 324 Hz */
 /* Keyboard */
-// &pwm1 {
-// 	status = "okay";
-// 	prescaler-cx = <PWM_PRESCALER_C6>;
-// 	pinctrl-0 = <&pwm1_gpa1_default>;
-// 	pinctrl-names = "default";
-// };
+&pwm1 {
+	status = "okay";
+	pinctrl-0 = <&pwm1_gpio023>;
+	pinctrl-names = "default";
+};
 /* Fan */
 &pwm6 {
 	status = "okay";

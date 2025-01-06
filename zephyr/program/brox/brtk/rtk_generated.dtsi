@@ -46,10 +46,10 @@
 		};
 		// RTK_LATER_IMP : gsensor
 		// gpio_ec_accel_db_int_l: ec_accel_db_int_l {
-		// 	gpios = <&gpioj 7 GPIO_INPUT>;
+		// 	gpios = <&gpioa 0 GPIO_INPUT>;
 		// };
 		// gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
-		// 	gpios = <&gpioj 0 GPIO_INPUT>;
+		// 	gpios = <&gpiof 3 GPIO_INPUT>;
 		// };
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpiof 1 GPIO_INPUT>;
@@ -67,7 +67,7 @@
 		};
 		// RTK_UNKNOW : (ite only?)
 		// gpio_ec_gpg2: ec_gpg2 {
-		// 	gpios = <&gpiog 2 GPIO_INPUT>;
+		// 	gpios = <&gpiog 10 GPIO_INPUT>;
 		// };
 		/* RTK_NEED_IMP : cr50 verify */
 		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
@@ -102,16 +102,15 @@
 		gpio_ec_slp_sus_l: ec_slp_sus_l {
 			gpios = <&gpioc 8 GPIO_INPUT>;
 		};
-		// RTK_LATER_IMP : vol butt
-		// gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
-		// 	gpios = <&gpiod 4 GPIO_INPUT>;
-		// };
-		// gpio_ec_volup_btn_odl: ec_volup_btn_odl {
-		// 	gpios = <&gpiod 7 GPIO_INPUT>;
-		// };
+		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+			gpios = <&gpioa 13 GPIO_INPUT>;
+		};
+		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+			gpios = <&gpiod 5 GPIO_INPUT>;
+		};
 		// RTK_UNKNOW : wp keep
 		gpio_ec_wp_odl: ec_wp_odl {
-			gpios = <&gpiob 10 GPIO_INPUT>;
+			gpios = <&gpiof 6 GPIO_INPUT>;
 		};
 		gpio_en_pp5000_usba: en_pp5000_usba {
 			gpios = <&gpiog 0 GPIO_OUTPUT>;
@@ -138,10 +137,10 @@
 		};
 		// RTK_UNKNOW : (ite only?)
 		// gpio_ish_i2c_ec_scl: ish_i2c_ec_scl {
-		// 	gpios = <&gpioc 7 GPIO_INPUT>;
+		// 	gpios = <&gpioa 14 GPIO_INPUT>;
 		// };
 		// gpio_ish_i2c_ec_sda: ish_i2c_ec_sda {
-		// 	gpios = <&gpiof 7 GPIO_INPUT>;
+		// 	gpios = <&gpioh 9 GPIO_INPUT>;
 		// };
 		gpio_lid_open: lid_open {
 			gpios = <&gpiof 13 GPIO_INPUT>;
@@ -158,7 +157,7 @@
 		};
 		// RTK_LATER_IMP : gsensor
 		// gpio_tablet_mode_l: tablet_mode_l {
-		// 	gpios = <&gpiod 1 GPIO_INPUT>;
+		// 	gpios = <&gpiob 3 GPIO_INPUT>;
 		// };
 		gpio_usb_pd_int_odl: usb_pd_int_odl {
 			gpios = <&gpiog 1 GPIO_INPUT>;
@@ -211,6 +210,6 @@
 };
 
 // RTK_LATER_IMP : gsensor
-// &i2c5 {
+// &i2c_0 {
 // 	status = "okay";
 // };

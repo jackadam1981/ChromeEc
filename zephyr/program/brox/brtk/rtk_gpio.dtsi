@@ -58,9 +58,9 @@
 			gpios = <&gpiof 10 GPIO_INPUT>;
 		};
 		// RTK_LATER_IMP : pwm, fan, temp sensor, pd, usb
-		// gpio_en_pp5000_fan: en_pp5000_fan {
-		// 	gpios = <&gpioj 4 GPIO_INPUT>;
-		// };
+		gpio_en_pp5000_fan: en_pp5000_fan {
+			gpios = <&gpiof 7 GPIO_INPUT>;
+		};
 		gpio_ec_pch_int_odl: ec_pch_int_odl {
 			gpios = <&gpioh 12 GPIO_ODR_LOW>;
 			enum-name = "GPIO_EC_INT_L";
@@ -71,7 +71,7 @@
 		};
 		// RTK_NEED_IMP : cr50 verify
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
-		 	gpios = <&gpiob 13 GPIO_OUTPUT_HIGH>;
+		 	gpios = <&gpioc 11 GPIO_OUTPUT_HIGH>;
 		};
 
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
@@ -121,7 +121,7 @@ gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
 };
 
 &gpio_ccd_mode_odl {
-	gpios = <&gpioe 6 GPIO_INPUT>;
+	gpios = <&gpioa 15 GPIO_INPUT>;
 };
 
 // RTK_LATER_IMP : amp
@@ -147,7 +147,7 @@ gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
 
 // RTK_NEED_IMP : gpio, input low active fail
 &gpio_ec_wp_odl {
-	gpios = <&gpiob 10 (GPIO_INPUT) >;
+	gpios = <&gpiof 6 (GPIO_INPUT | GPIO_ACTIVE_LOW) >;
 };
 
 &gpio_acok_ec_od {
