@@ -1,0 +1,11 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BOARD_SKYWALKER
+	bool "Google Skywalker Board"
+	help
+	  Build Google Skywalker reference board. Skywalker has MediaTek MT8189
+	  SoC with NPCX997FB0BX EC.
+
+source "Kconfig.zephyr"

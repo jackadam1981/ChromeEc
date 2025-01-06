@@ -1,0 +1,28 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../common.dtsi"
+#include "../power_signal.dtsi"
+#include "../usba.dtsi"
+#include "../adc.dtsi"
+#include "../host_interface.dtsi"
+#include "../i2c.dtsi"
+#include "../interrupts.dtsi"
+#include "../gpio.dtsi"
+#include "../keyboard.dtsi"
+#include "../usbc.dtsi"
+#include <dt-bindings/battery.h>
+
+/* board override */
+/ {
+	batteries {
+		default_battery: smp_l20m3pg2 {
+			compatible = "smp,l20m3pg2", "battery-smart";
+		};
+		lgc_l20l3pg2 {
+			compatible = "lgc,l20l3pg2", "battery-smart";
+		};
+	};
+};
