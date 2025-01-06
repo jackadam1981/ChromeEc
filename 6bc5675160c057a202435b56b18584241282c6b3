@@ -52,6 +52,24 @@
       "parentUuid": "d8da0bbb_5ac93390",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6735ab6_68af2bb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-01-06T18:31:36Z",
+      "side": 1,
+      "message": "I think your assumption is correct. You might have to pass --toolchain host to ./twister to repro.",
+      "parentUuid": "0115de95_dd413c45",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
