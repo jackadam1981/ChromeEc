@@ -93,6 +93,30 @@
       },
       "revId": "c736ee04cd2da0aa1bbbbf68d3f5a41e05b1ebbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba67d706_44718429",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlgcs/vci.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-06T22:17:14Z",
+      "side": 1,
+      "message": "need one more space in front of `*/`",
+      "parentUuid": "e786dea1_a5a0dbc3",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "c736ee04cd2da0aa1bbbbf68d3f5a41e05b1ebbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
