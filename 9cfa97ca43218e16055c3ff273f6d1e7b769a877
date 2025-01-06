@@ -16,6 +16,24 @@
       "message": "I remove the AC power when the system is on, and reconnect the AC power, the device does not boot as expected.",
       "revId": "9cfa97ca43218e16055c3ff273f6d1e7b769a877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c9bde6_54441e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-01-06T10:15:38Z",
+      "side": 1,
+      "message": "The AP_IDLE is wrongly set due to Deku board design. I have updated the patchset to fix the issue on Deku",
+      "parentUuid": "4ebb9670_4bf03b77",
+      "revId": "9cfa97ca43218e16055c3ff273f6d1e7b769a877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
