@@ -3,3 +3,4 @@
 # found in the LICENSE file.
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SBRK sbrk.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_EXIT exit.c)
