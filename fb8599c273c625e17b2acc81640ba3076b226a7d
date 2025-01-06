@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f5d0e7_2dd64e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-06T03:47:16Z",
+      "side": 1,
+      "message": "I\u0027m going to merge this just to unblock things. We can optimize the order of the level vs edge interrupt in a follow-up CL.",
+      "revId": "fb8599c273c625e17b2acc81640ba3076b226a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2218cb9_4d93b709",
@@ -14,6 +31,30 @@
       "writtenOn": "2025-01-03T21:49:07Z",
       "side": 1,
       "message": "Nit - you should set `data-\u003einterrupt_config` in the `dsp_client_init()` routine.  Then you don\u0027t need to check for the first attempt here.\n\nAlso, which GPIO controller doesn\u0027t support level sensitive interrupts?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 36
+      },
+      "revId": "fb8599c273c625e17b2acc81640ba3076b226a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd9a6e1_2e991b46",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-06T03:47:16Z",
+      "side": 1,
+      "message": "The ISH doesn\u0027t support level interrupts. I added this logic because I wanted this to be portable to future variances and I put in a feature request for future ISH versions to support level interrupts.\n\nRE setting the value in `dsp_client_init()` it\u0027s set to 0 when the static data structure is initialized. Then we set it here based on the return value of `gpio_pin_interrupt_configure_dt`. I\u0027m not sure what I would set it to in `dsp_client_init()` since it\u0027s calling this function and we need to chose which type of interrupt we need. Or are you saying we should split up the discovery and toggling into 2 functions?",
+      "parentUuid": "b2218cb9_4d93b709",
       "range": {
         "startLine": 165,
         "startChar": 0,
