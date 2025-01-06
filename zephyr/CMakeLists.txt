@@ -513,8 +513,6 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_RWSIG_VERIFY
                                                 "${PLATFORM_EC}/common/vboot/common.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ROLLBACK
                                                 "${PLATFORM_EC}/common/rollback.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SBRK
-                                                "${PLATFORM_EC}/libc/sbrk.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SHA256_SW
                                                 "${PLATFORM_EC}/common/sha256.c")
 if (NOT DEFINED CONFIG_PLATFORM_EC_SHA256_HW_ZEPHYR)
@@ -748,6 +746,7 @@ add_subdirectory("app")
 add_subdirectory("drivers")
 add_subdirectory("emul")
 add_subdirectory("fake")
+add_subdirectory("libc")
 add_subdirectory("mock")
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 add_subdirectory_ifdef(CONFIG_HW_TEST_ON "test/hwtest")
