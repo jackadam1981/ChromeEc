@@ -1,0 +1,11 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config LIBC_EXIT
+	bool "Use CrosEC implementation of the exit function"
+	default y if NEWLIB_LIBC
+	select NEWLIB_LIBC_CUSTOM_EXIT if NEWLIB_LIBC
+	help
+	  Enable using CrosEC version of the exit function. The function
+	  prevents from using the end of RAM, which stores jump data.
