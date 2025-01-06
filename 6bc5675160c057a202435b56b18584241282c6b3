@@ -34,6 +34,24 @@
       "parentUuid": "d0220b1e_3c16c384",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0115de95_dd413c45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-06T17:12:18Z",
+      "side": 1,
+      "message": "@jbettis@chromium.org can you tell what\u0027s going on here?\n\nIn the CQ run, it looks like this test gets marked as failed without failing any specific assertions. I\u0027m assuming it crashed.\n\nIn Mike\u0027s local run, it passes, but I see conflicting logs suggesing that it was \"built (not run)\" but also \"executed.\"\n\nIn both runs, I see a lot of these \"Unexpected Ztest suite\" logs that I haven\u0027t noticed before, but I see them for lots of tests that passed, so I\u0027ve been assuming they\u0027re a red herring.",
+      "parentUuid": "d8da0bbb_5ac93390",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
