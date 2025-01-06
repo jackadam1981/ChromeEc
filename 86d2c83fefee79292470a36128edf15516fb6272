@@ -34,6 +34,24 @@
       "parentUuid": "bc4ae41a_32dcc4aa",
       "revId": "86d2c83fefee79292470a36128edf15516fb6272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "112d1577_78c6b5b2",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-06T10:44:49Z",
+      "side": 1,
+      "message": "Ok, you could also use `k_yield()` then if you are confident that the thread that handle the device init is of higher or equal priority",
+      "parentUuid": "11ede955_7ec5b6fb",
+      "revId": "86d2c83fefee79292470a36128edf15516fb6272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
