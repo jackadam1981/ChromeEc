@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e1f086_a8526a85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-06T15:27:25Z",
+      "side": 1,
+      "message": "te",
+      "revId": "fb8599c273c625e17b2acc81640ba3076b226a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2218cb9_4d93b709",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "The ISH doesn\u0027t support level interrupts. I added this logic because I wanted this to be portable to future variances and I put in a feature request for future ISH versions to support level interrupts.\n\nRE setting the value in `dsp_client_init()` it\u0027s set to 0 when the static data structure is initialized. Then we set it here based on the return value of `gpio_pin_interrupt_configure_dt`. I\u0027m not sure what I would set it to in `dsp_client_init()` since it\u0027s calling this function and we need to chose which type of interrupt we need. Or are you saying we should split up the discovery and toggling into 2 functions?",
       "parentUuid": "b2218cb9_4d93b709",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 36
+      },
+      "revId": "fb8599c273c625e17b2acc81640ba3076b226a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d73601d_e2e0e9a5",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-06T15:27:25Z",
+      "side": 1,
+      "message": "The current implementation basically has 3 states for `interrupt_config`\n* 0 - initial state automatically set by BSS.\n* First call to dsp_client_enable_interrupt() implicitly sets `interrupt_config\u003dGPIO_INT_LEVEL_ACTIVE`.\n* If the GPIO controller doesn\u0027t support level interrupts, then `interrupt_config\u003dGPIO_INT_EDGE_TO_ACTIVE`.\n\nThe first state isn\u0027t really needed, and just makes the logic in the enable interrupt path more complicated.  If the initial state of `interrupt_config` is `GPIO_INT_LEVEL_ACTIVE`, I think you the log here becomes:\n\n```\nif (interrupt_config \u003d\u003d GPIO_INT_LEVEL_ACTIVE) {\n  dsp_client_enable_level_interrupt();\n} else {\n  dsp_client_enable_edge_interrupt();\n}\n```\n\nThen you can keep the interrupt toggling logic separate.",
+      "parentUuid": "6fd9a6e1_2e991b46",
       "range": {
         "startLine": 165,
         "startChar": 0,
