@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb3cfd6_fe3b1a40",
+        "filename": "zephyr/libc/sbrk.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-07T19:17:24Z",
+      "side": 1,
+      "message": "Let\u0027s think about `sbrk()` implementation for a while.\n\nIt uses memory that we know it\u0027s not statically allocated (all addresses after `__shared_mem_buf`) but is not reserved for jump data and panic data (which are stored at the end of SRAM). To determine size of that memory, we use `shared_mem_size()` which later calls `system_usable_ram_end()`.\n\nThe `system_usable_ram_end()` function is EC specific because it depends on jump data which is EC specific construct. Code in `zephyr` directory shouldn\u0027t depend on EC code. It means that either we should provide implementation that doesn\u0027t use EC code (not possible due to jump data) or we can\u0027t move `sbrk.c` here.\n\nI liked this idea, but it will eventually introduce more confusion, so I would just leave it as it is. Sorry for not mentioning about it earlier.\n\nOn the other hand, `exit()` can be implemented using Zephyr calls, so we can put it under `zephyr/libc/exit.c`.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "141c4e75a3eda68dbef267a8cd5a4e026316f472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
