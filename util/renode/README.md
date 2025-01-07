@@ -28,8 +28,15 @@ Note that the prebuilt version is not automatically in your `PATH`.
 
 ### Latest Version
 
-Outside of the chroot, on gLinux or Debian, please run the
-`util/renode-deb-install.sh` script.
+Before updating the [`renode` ebuild] to a new version or to test out a bug fix
+in Renode, you can download the latest nightly version of Renode:
+
+```bash
+(inside/outside) $ wget https://builds.renode.io/renode-latest.linux-portable.tar.gz
+```
+
+This version works both inside and outside the chroot, but is not automatically
+in your `PATH`.
 
 ## Launching Renode
 
