@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7062a81b_e2ae93be",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T18:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9327f15e_2195c2f9",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 84
+      },
+      "revId": "3c96510f536e5d4d7133619c75cce4d528fa6703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58bb6983_90de6cc7",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-07T16:01:01Z",
       "side": 1,
       "message": "Files under `zephyr` are not part of `PLATFORM_EC` so this name is wrong. Also this config should be moved to `zephyr/libc/Kconfig`.",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "3c96510f536e5d4d7133619c75cce4d528fa6703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95531e4f_f9b6492a",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T18:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bb6983_90de6cc7",
       "range": {
         "startLine": 151,
         "startChar": 7,
