@@ -496,7 +496,7 @@ def main(args):
             logging.critical(
                 "Timeout Error - Did not receive response from EC."
             )
-            sys.exit(1)
+            #sys.exit(1)
 
         second_loader_image_transfer(uart_handle, args.second_loader_file_path)
         uart_handle.reset_input_buffer()
