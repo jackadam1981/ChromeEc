@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19cbb49_7a497c68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-07T23:38:35Z",
+      "side": 1,
+      "message": "It looks like it\u0027s `CONFIG_LIBC_EXIT`?",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "97cfa7117b0c13f7a3bb5dc6bf7723afaa7a01ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1edb1f1_f474d2a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-07T23:38:35Z",
+      "side": 1,
+      "message": "I think this could be simplified as something like:\n\nzephyr/libc: Add custom _exit syscall for newlib\n\nOverride the default Zephyr exit() behavior when using newlib so that exit() reboots.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "97cfa7117b0c13f7a3bb5dc6bf7723afaa7a01ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f36d55cc_a7039b3e",
+        "filename": "zephyr/libc/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-07T23:38:35Z",
+      "side": 1,
+      "message": "Does this config exist? It looks like this may have been copied from [`NEWLIB_LIBC_CUSTOM_SBRK`](https://github.com/zephyrproject-rtos/zephyr/blob/2a04abafa0241e77956d11c5df0407e3b3fe7aec/lib/libc/newlib/Kconfig#L67-L71), but I don\u0027t think I see `NEWLIB_LIBC_CUSTOM_EXIT`.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 31
+      },
+      "revId": "97cfa7117b0c13f7a3bb5dc6bf7723afaa7a01ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c839dfb_95a990ee",
+        "filename": "zephyr/libc/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-07T23:38:35Z",
+      "side": 1,
+      "message": "This looks like it was copied from `sbrk`. Can you fix it for `exit`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "97cfa7117b0c13f7a3bb5dc6bf7723afaa7a01ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
