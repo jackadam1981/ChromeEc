@@ -80,8 +80,8 @@ static uint32_t system_get_chip_id(void)
 	uint16_t main_id = (raw_id >> 16) & 0xFFFF;
     // uint16_t sub_id = raw_id & 0xFFFF;
 
-	ccprintf("get raw_id is: %x\n", raw_id);
-	ccprintf("get main_id is: %x\n", main_id);
+	// ccprintf("get raw_id is: %x\n", raw_id);
+	// ccprintf("get main_id is: %x\n", main_id);
 
 	return main_id;	
 }
@@ -99,8 +99,8 @@ static uint8_t system_get_chip_version(void)
 
 	uint16_t sub_id = (raw_id >> 8) & 0xFF;
 
-	ccprintf("get raw_id is: %x\n", raw_id);
-	ccprintf("get sub_id is: %x\n", sub_id);
+	// ccprintf("get raw_id is: %x\n", raw_id);
+	// ccprintf("get sub_id is: %x\n", sub_id);
 
 	return sub_id;
 }
