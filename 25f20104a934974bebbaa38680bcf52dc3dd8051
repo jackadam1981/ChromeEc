@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fe2392_b90ff8c0",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T21:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204fac13_cbb1e64f",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "25f20104a934974bebbaa38680bcf52dc3dd8051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a119e77d_c66d71e8",
@@ -84,6 +108,30 @@
       "writtenOn": "2025-01-07T20:11:52Z",
       "side": 1,
       "message": "I would use `k_panic()` or `k_oops()` for rebooting the system. For terminating the process I would use `k_thread_abort(k_current_get())`.\n\nBy the way, I really recommend to dig into Zephyr codebase and find difference between these.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "25f20104a934974bebbaa38680bcf52dc3dd8051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65edcb0c_6a3b35c9",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T21:55:04Z",
+      "side": 1,
+      "message": "Thanks for sharing. I found valuable information about these 3 approaches:\n\n```\nThese functions all relate to handling fatal errors within the Zephyr RTOS, but they have distinct purposes and implications:\n\n1. k_panic()\n\nPurpose: This function signals a kernel panic, indicating that the Zephyr kernel itself has encountered an unrecoverable state. This is the most severe error condition.\nImplications: k_panic() is typically used when the system has reached a state where continued operation is impossible or undefined. It should lead to a complete system halt and reset. Implementations of the k_sys_fatal_error_handler() should not return after a k_panic().\nExample: A critical data structure corruption within the kernel, or a fundamental hardware failure.\n2. k_oops()\n\nPurpose: This function signals a kernel oops, which is a fatal error originating from application logic. This indicates a serious problem in the application code, but not necessarily a complete kernel failure.\nImplications: k_oops() allows for some degree of error handling before halting the system. It might be possible to log diagnostic information or attempt a controlled shutdown.\nExample: An application attempting an illegal memory access, or a null pointer dereference.\n3. k_thread_abort(k_current_get())\n\nPurpose: This function specifically aborts the currently executing thread. k_current_get() retrieves the ID of the current thread, and k_thread_abort() then terminates that thread.\nImplications: This is a more controlled way to handle a fatal error within a specific thread. It allows other threads to potentially continue execution. The aborted thread is removed from all kernel queues and its resources are released.\nExample: A thread encountering an unexpected error condition that prevents it from continuing its task, but doesn\u0027t necessitate a complete system halt.\nKey Differences:\n\nSeverity: k_panic() represents the most severe error, followed by k_oops(), with k_thread_abort() being the most localized.\nScope: k_panic() affects the entire system, k_oops() generally affects the application, and k_thread_abort() affects only the specified thread.\nRecovery: k_panic() typically implies no recovery, k_oops() might allow for some limited recovery actions, and k_thread_abort() allows other threads to potentially continue.\nIn summary, choosing the correct function depends on the nature and severity of the error. Use k_panic() only for true kernel-level failures, k_oops() for application-level fatal errors, and k_thread_abort() for terminating specific threads when encountering unrecoverable conditions.\n```",
+      "parentUuid": "6749a700_566bddd0",
       "range": {
         "startLine": 25,
         "startChar": 1,
