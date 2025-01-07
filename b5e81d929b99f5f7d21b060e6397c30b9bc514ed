@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7cd8e3c_9e1fce0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-01-07T03:31:38Z",
+      "side": 1,
+      "message": "The default maximum charger voltage setting in [project.conf](https://crsrc.org/o/src/platform/ec/zephyr/program/nissa/gothrax/project.conf;l\u003d60?q\u003dgothrax%20project.conf\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch) is 20V. Reducing it to 15V should be safer in case the CBI is corrupted.",
+      "revId": "b5e81d929b99f5f7d21b060e6397c30b9bc514ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
