@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209f36bb_0ac836f5",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-07T15:56:47Z",
+      "side": 0,
+      "message": "Your approach of adding source file under `zephyr` directory is not valid.\n\nYou should add `add_subdirectory(\"libc\")` here and create `CMakeLists.txt` under `zephyr/libc`.",
+      "range": {
+        "startLine": 750,
+        "startChar": 0,
+        "endLine": 750,
+        "endChar": 24
+      },
+      "revId": "8a66303ad1230f284eb2361113705067270bd0f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
