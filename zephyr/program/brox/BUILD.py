@@ -135,7 +135,7 @@ lotso = register_brox_project(
 # must not change after the first RO release. Not needed for brox-ish since it
 # doesn't use RO+RW
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="brtk", addr=0x7ffe0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brtk", addr=0x3ffe0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-ish-ec", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-tokenized", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="greenbayupoc", addr=0x60098)
