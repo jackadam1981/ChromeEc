@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5a3399_9c9e3d0e",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T21:35:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a119e77d_c66d71e8",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 55
+      },
+      "revId": "25f20104a934974bebbaa38680bcf52dc3dd8051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6749a700_566bddd0",
