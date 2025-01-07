@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef811ff9_e2025432",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-07T20:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d126415_83298ac1",
+      "range": {
+        "startLine": 149,
+        "startChar": 55,
+        "endLine": 149,
+        "endChar": 71
+      },
+      "revId": "bcf2e0488eccae848fca79dd94e6e35f3a10ee3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8ac2ff_f7223f2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-07T18:20:04Z",
       "side": 1,
       "message": "Nit - add a comment here explaining that the driver prefers level interrupts, but will fall back to edge interrupts if the GPIO controller lacks level interrupt support.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 26
+      },
+      "revId": "bcf2e0488eccae848fca79dd94e6e35f3a10ee3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d8addb5_cb82c165",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-07T20:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c8ac2ff_f7223f2d",
       "range": {
         "startLine": 340,
         "startChar": 0,
