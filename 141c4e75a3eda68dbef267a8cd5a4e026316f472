@@ -22,6 +22,30 @@
       },
       "revId": "141c4e75a3eda68dbef267a8cd5a4e026316f472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae041a2_0840dfaf",
+        "filename": "zephyr/libc/sbrk.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T19:53:01Z",
+      "side": 1,
+      "message": "removed that CL",
+      "parentUuid": "dfb3cfd6_fe3b1a40",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "141c4e75a3eda68dbef267a8cd5a4e026316f472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
