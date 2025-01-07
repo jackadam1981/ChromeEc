@@ -106,6 +106,24 @@
       "parentUuid": "ef9e3b82_0860446f",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92018443_1c017920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-07T22:57:53Z",
+      "side": 1,
+      "message": "Mike: This would probably look something like\n```\ncros_sdk gdb ../platform/ec/twister-out/native_sim/drivers/drivers.raa489000/zephyr/zephyr.exe\n```\n\noutside the chroot or\n\n```\ngdb twister-out/native_sim/drivers/drivers.raa489000/zephyr/zephyr.exe\n```\ninside the chroot.\n\nIn `gdb`, you will probably want to do\n```\nhandle SIGUSR1 nostop noprint\nhandle SIGTTOU nostop\n```\nto avoid some annoying interruptions.\n\nYou can tell `zephyr.exe` to run a particular test like `zephyr.exe --test\u003dtcpc_raa489000:test_raa489000_get_rx_message_raw`, and it may be interesting to see whether this crash still happens when you run only this test.",
+      "parentUuid": "5137d0bf_6a82e203",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
