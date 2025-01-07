@@ -16,6 +16,24 @@
       "message": "It looks like `firmware-ec-renode-cq` is failing.\n\nCan you run the test locally with renode to confirm whether it is failing (pass the `--renode` flag to `run_device_tests.py`)?\n\nIt might be the same as http://b/384095226 and http://b/384095271 (seems to be a bug in Renode).",
       "revId": "c882da820d6cb81c4bda760f35a2300f3b4b755e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f104100_49ce6c7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-07T21:51:53Z",
+      "side": 1,
+      "message": "I believe with the recent change in exit.c, the renode test passes",
+      "parentUuid": "4c6d5d2f_9646528b",
+      "revId": "c882da820d6cb81c4bda760f35a2300f3b4b755e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
