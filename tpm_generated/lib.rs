@@ -25,6 +25,7 @@ pub mod trunks {
         type TPM2B_DIGEST;
         type TPM2B_PUBLIC;
         type TPM2B_SENSITIVE_CREATE;
+        type TPMT_SIG_SCHEME;
         type TPML_PCR_SELECTION;
         type TPMT_TK_CREATION;
 
@@ -45,6 +46,17 @@ pub mod trunks {
             outside_info: &TPM2B_DATA,
             creation_pcr: &TPML_PCR_SELECTION,
             serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_Create for docs.
+        fn ParseResponse_Create(
+            response: &CxxString,
+            out_private: Pin<&mut CxxString>,
+            out_public: Pin<&mut CxxString>,
+            creation_data: Pin<&mut TPM2B_CREATION_DATA>,
+            creation_hash: Pin<&mut TPM2B_DIGEST>,
+            creation_ticket: Pin<&mut TPMT_TK_CREATION>,
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
@@ -72,10 +84,39 @@ pub mod trunks {
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
+        /// See Tpm::SerializeCommand_Load for docs.
+        fn SerializeCommand_Load(
+            parent_handle: &u32,
+            parent_handle_name: &CxxString,
+            in_private: &CxxString,
+            in_public: &CxxString,
+            serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_Load for docs.
+        fn ParseResponse_Load(
+            response: &CxxString,
+            object_handle: Pin<&mut u32>,
+            name: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
         /// See Tpm::SerializeCommand_NV_ReadPublic for docs.
         fn SerializeCommand_NV_ReadPublic(
             nv_index: &u32,
             nv_index_name: &CxxString,
+            serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::SerializeCommand_Quote for docs.
+        fn SerializeCommand_Quote(
+            sign_handle: &u32,
+            sign_handle_name: &CxxString,
+            qualifying_data: &TPM2B_DATA,
+            in_scheme: &TPMT_SIG_SCHEME,
+            pcrselect: &TPML_PCR_SELECTION,
             serialized_command: Pin<&mut CxxString>,
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
