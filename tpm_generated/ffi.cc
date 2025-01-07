@@ -56,6 +56,23 @@ TPM_RC SerializeCommand_Create(
       creation_pcr, &serialized_command, authorization_delegate.get());
 }
 
+TPM_RC ParseResponse_Create(
+    const std::string& response, std::string& out_private,
+    std::string& out_public, TPM2B_CREATION_DATA& creation_data,
+    TPM2B_DIGEST& creation_hash, TPMT_TK_CREATION& creation_ticket,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_PRIVATE typed_private;
+  TPM2B_PUBLIC typed_public;
+  TPM_RC rc = Tpm::ParseResponse_Create(
+      response, &typed_private, &typed_public, &creation_data, &creation_hash,
+      &creation_ticket, authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  out_private = StringFrom_TPM2B_PRIVATE(typed_private);
+  return Serialize_TPM2B_PUBLIC(typed_public, &out_public);
+}
+
 TPM_RC SerializeCommand_CreatePrimary(
     const TPMI_RH_HIERARCHY& primary_handle,
     const std::string& primary_handle_name,
@@ -85,6 +102,35 @@ TPM_RC ParseResponse_CreatePrimary(
   return Serialize_TPM2B_NAME(tpm2b_name, &name);
 }
 
+TPM_RC SerializeCommand_Load(
+    const TPMI_DH_OBJECT& parent_handle, const std::string& parent_handle_name,
+    const std::string& in_private, const std::string& in_public,
+    std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  std::string buffer_public = in_public;
+  TPM2B_PUBLIC typed_public;
+  TPM_RC rc = Parse_TPM2B_PUBLIC(&buffer_public, &typed_public, nullptr);
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  return Tpm::SerializeCommand_Load(
+      parent_handle, parent_handle_name, Make_TPM2B_PRIVATE(in_private),
+      typed_public, &serialized_command, authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_Load(
+    const std::string& response, TPM_HANDLE& object_handle, std::string& name,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_NAME typed_name;
+  TPM_RC rc = Tpm::ParseResponse_Load(response, &object_handle, &typed_name,
+                                      authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  name = StringFrom_TPM2B_NAME(typed_name);
+  return TPM_RC_SUCCESS;
+}
+
 TPM_RC SerializeCommand_NV_ReadPublic(
     const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
     std::string& serialized_command,
@@ -92,6 +138,16 @@ TPM_RC SerializeCommand_NV_ReadPublic(
   return Tpm::SerializeCommand_NV_ReadPublic(nv_index, nv_index_name,
                                              &serialized_command,
                                              authorization_delegate.get());
+}
+
+TPM_RC SerializeCommand_Quote(
+    const TPMI_DH_OBJECT& sign_handle, const std::string& sign_handle_name,
+    const TPM2B_DATA& qualifying_data, const TPMT_SIG_SCHEME& in_scheme,
+    const TPML_PCR_SELECTION& pcrselect, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  return Tpm::SerializeCommand_Quote(
+      sign_handle, sign_handle_name, qualifying_data, in_scheme, pcrselect,
+      &serialized_command, authorization_delegate.get());
 }
 
 std::unique_ptr<std::string> NameFromHandle(const TPM_HANDLE& handle) {
