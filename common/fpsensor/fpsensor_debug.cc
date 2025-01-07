@@ -63,18 +63,22 @@
  */
 static void upload_pgm_image(uint8_t *frame)
 {
-	uint8_t *ptr = frame;
+	// uint8_t *ptr_8 = (uint8_t *)frame;
+	uint16_t *ptr_16 = (uint16_t *)frame;
 
 	/* fake Z-modem ZRQINIT signature */
 	CPRINTF("#IGNORE for ZModem\r**\030B00");
 	crec_msleep(2000); /* let the download program start */
-	/* Print 8-bpp PGM ASCII header */
-	CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	// /* Print 8-bpp PGM ASCII header */
+	CPRINTF("P2\n%d %d\n65535\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	// CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
 
 	for (int y = 0; y < FP_SENSOR_RES_Y; y++) {
 		watchdog_reload();
-		for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr++)
-			CPRINTF("%d ", *ptr);
+		for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr_16++)
+			CPRINTF("%d ", *ptr_16);
+		// for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr_8++)
+		// CPRINTF("%d ", *ptr_8);
 		CPRINTF("\n");
 		cflush();
 	}
@@ -129,8 +133,10 @@ static int command_fpcapture(int argc, const char **argv)
 			       FP_MODE_CAPTURE_TYPE_MASK);
 
 	const enum ec_error_list rc = fp_console_action(mode);
+	// if (rc == EC_SUCCESS)
+	// upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
 	if (rc == EC_SUCCESS)
-		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+		upload_pgm_image(fp_buffer);
 
 	return rc;
 }
