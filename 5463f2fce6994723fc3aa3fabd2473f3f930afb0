@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8292bbe7_20f49681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-07T02:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e34a2f3_9a79f971",
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e0e8b5c2_b71bec53",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7e000b_e5a35a53",
+        "filename": "zephyr/dts/bindings/emul/cros,raa489000-emul.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-07T02:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce5eae7_a81983f1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5db38bd6_3a3bf8d6",
@@ -71,6 +113,30 @@
       "writtenOn": "2025-01-06T23:48:41Z",
       "side": 1,
       "message": "You can use this instead\n```suggestion\n\tdepends on ZTEST \u0026\u0026 DT_HAS_RENESAS_RAA489000_ENABLED\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f9936d_c2aa9468",
+        "filename": "zephyr/emul/tcpc/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-07T02:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db38bd6_3a3bf8d6",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3c86d3_de378a81",
+        "filename": "zephyr/emul/tcpc/emul_raa489000.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-07T02:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25ce580_f1d87642",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df8e8f86_f52eac50",
@@ -117,6 +207,30 @@
       "writtenOn": "2025-01-06T23:48:41Z",
       "side": 1,
       "message": "Delete - only the main driver compatible is needed.",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "5463f2fce6994723fc3aa3fabd2473f3f930afb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe1d901_224c6ef9",
+        "filename": "zephyr/test/drivers/raa489000/raa489000.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-07T02:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8e8f86_f52eac50",
       "range": {
         "startLine": 21,
         "startChar": 15,
