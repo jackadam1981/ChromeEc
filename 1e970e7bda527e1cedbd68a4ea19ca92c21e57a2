@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57c4abf_15dd3299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-01-07T00:13:12Z",
+      "side": 1,
+      "message": "hi Caveh,\n\nI\u0027m not sure how to update the bug - but to your question:\n\n\u003eare the keyboards generic enough such that they can be used \u003e on different add-in cards and ideally the main board connector as well? \u003e in other words, can we split this file into EC chip specific and keyboard\n\nWe have the same Acer straus keyboard connector on both ITE \u0026 Nuvoton and will ask other future creators to add the same keyboard connector for Google\u0027s convenience. The same Acer Strauss keyboard is not on the main RVP (with the down EC) - no special Chrome keystrokes are supported in the \u0027down\u0027 EC case.\n\nBest regards,\n\nMike Goodey\n\nHardware Engineer\n\nOn Mon, Jan 6, 2025 at 3:23 PM caveh jalali (Gerrit) \u003cnoreply-gerritcodereview-i-eUrBcZ95OlALirossRQQ\u003d\u003d@\u003e wrote: chromium.org",
+      "tag": "mailMessageId\u003d\u003cCACN7GgZiaJJz-J3hfN\u003d9cwpXQs+SHsJwOdF\u003dwQdYrfrutOH+NQ@mail.gmail.com\u003e",
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed06fa7_ebe5a4d0",
