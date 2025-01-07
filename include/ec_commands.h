@@ -8223,6 +8223,9 @@ struct ec_params_fp_passthru {
  * @FP_CAPTURE_PATTERN1: Self test pattern (e.g. inverted checkerboard)
  * @FP_CAPTURE_QUALITY_TEST: Capture for Quality test with fixed contrast
  * @FP_CAPTURE_RESET_TEST: Capture for pixel reset value test
+ * @FP_CAPTURE_DEFECT_PXL_TEST: Capture for check defect pixel test
+ * @FP_CAPTURE_ABNORMAL_TEST: Capture for check abnormal pixel test
+ * @FP_CAPTURE_NOISE_TEST: Capture for check noise test
  * @FP_CAPTURE_TYPE_MAX: End of enum
  *
  * @note This enum must remain ordered, if you add new values you must ensure
@@ -8230,6 +8233,9 @@ struct ec_params_fp_passthru {
  */
 enum fp_capture_type {
 	FP_CAPTURE_VENDOR_FORMAT = 0,
+	FP_CAPTURE_DEFECT_PXL_TEST = 1,
+	FP_CAPTURE_ABNORMAL_TEST = 2,
+	FP_CAPTURE_NOISE_TEST = 3,
 	FP_CAPTURE_SIMPLE_IMAGE = 4,
 	FP_CAPTURE_PATTERN0 = 8,
 	FP_CAPTURE_PATTERN1 = 12,

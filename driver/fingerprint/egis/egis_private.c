@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "egis_api.h"
 #include "fpsensor/fpsensor.h"
 #include "gpio.h"
@@ -54,6 +55,33 @@ static int convert_egis_get_image_error_code(egis_api_return_t code)
 		assert(code < 0);
 		return code;
 	}
+}
+static egis_capture_mode_t
+convert_fp_capture_mdoe_to_egis_get_image_type(int mode)
+{
+	switch (mode) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+		return EGIS_CAPTURE_NORMAL_FORMAT;
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FP_CAPTURE_PATTERN0:
+		return EGIS_CAPTURE_BLACK_PXL_TEST;
+	case FP_CAPTURE_PATTERN1:
+		return EGIS_CAPTURE_WHITE_PXL_TEST;
+	case FP_CAPTURE_QUALITY_TEST:
+		return EGIS_CAPTURE_RV_INT_TEST;
+	case FP_CAPTURE_DEFECT_PXL_TEST:
+		return EGIS_CAPTURE_DEFECT_PXL_TEST;
+	case FP_CAPTURE_ABNORMAL_TEST:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FP_CAPTURE_NOISE_TEST:
+		return EGIS_CAPTURE_NOISE_TEST;
+	case FP_CAPTURE_RESET_TEST:
+	default:
+		assert(false);
+		break;
+	}
+	return EGIS_CAPTURE_NORMAL_FORMAT;
 }
 
 void fp_sensor_lock(void)
@@ -177,8 +205,9 @@ int fp_maintenance(void)
 
 int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
 {
-	return convert_egis_get_image_error_code(
-		egis_get_image_with_mode(image_data, mode));
+	return convert_egis_get_image_error_code(egis_get_image_with_mode(
+		image_data,
+		convert_fp_capture_mdoe_to_egis_get_image_type(mode)));
 }
 
 int fp_acquire_image(uint8_t *image_data)

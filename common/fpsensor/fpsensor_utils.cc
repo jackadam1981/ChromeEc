@@ -41,7 +41,11 @@ bool is_test_capture(uint32_t mode)
 	return (mode & FP_MODE_CAPTURE) &&
 	       (capture_type == FP_CAPTURE_PATTERN0 ||
 		capture_type == FP_CAPTURE_PATTERN1 ||
-		capture_type == FP_CAPTURE_RESET_TEST);
+		capture_type == FP_CAPTURE_QUALITY_TEST ||
+		capture_type == FP_CAPTURE_RESET_TEST ||
+		capture_type == FP_CAPTURE_DEFECT_PXL_TEST ||
+		capture_type == FP_CAPTURE_ABNORMAL_TEST ||
+		capture_type == FP_CAPTURE_NOISE_TEST);
 }
 
 bool is_raw_capture(uint32_t mode)
