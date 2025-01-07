@@ -65,14 +65,44 @@ static const char *cros_system_rtk_get_chip_vendor(const struct device *dev)
 	return "rtk";
 }
 
+#define RTK_CHIP_INFO_BASE 0x40010B80
+#define CHIP_ID_OFFSET     0x70
 static uint32_t system_get_chip_id(void)
 {
-	return 0x5915;
+	/* CHIP_ID:,
+	 * [31:16] MAIN_ID
+	 * [15:0] SUB_ID
+	 */
+	volatile uint32_t *chip_info_address = (volatile uint32_t *)(RTK_CHIP_INFO_BASE + CHIP_ID_OFFSET);
+	//*chip_info_address = 0x59155500;
+	uint32_t raw_id = *chip_info_address;
+	 
+	uint16_t main_id = (raw_id >> 16) & 0xFFFF;
+    // uint16_t sub_id = raw_id & 0xFFFF;
+
+	ccprintf("get raw_id is: %x\n", raw_id);
+	ccprintf("get main_id is: %x\n", main_id);
+
+	return main_id;	
 }
 
+#define CHIP_VERSION_OFFSET     0x74
 static uint8_t system_get_chip_version(void)
 {
-	return 0xB;
+	/* CHIP_VERSION:,
+	 * [31:16] MAIN_VERSION
+	 * [15:0] RESERVE
+	 */
+	volatile uint32_t *chip_info_address = (volatile uint32_t *)(RTK_CHIP_INFO_BASE + CHIP_ID_OFFSET);
+	//*chip_version_address = 0x00050000;
+	uint32_t raw_id = *chip_info_address;
+
+	uint16_t sub_id = (raw_id >> 8) & 0xFF;
+
+	ccprintf("get raw_id is: %x\n", raw_id);
+	ccprintf("get sub_id is: %x\n", sub_id);
+
+	return sub_id;
 }
 
 static const char *cros_system_rtk_get_chip_name(const struct device *dev)
@@ -81,7 +111,7 @@ static const char *cros_system_rtk_get_chip_name(const struct device *dev)
 
 	static char buf[8] = { 'r', 't', 's' };
 	uint32_t chip_id = system_get_chip_id();
-	int num = 4;
+	int num = 3;
 
 	for (int n = 3; num >= 0; n++, num--)
 		snprintf(buf + n, (sizeof(buf) - n), "%x",
@@ -95,10 +125,10 @@ cros_system_rtk_get_chip_revision(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 
-	static char buf[3];
+	static char buf[5];
 	uint8_t rev = system_get_chip_version();
 
-	snprintf(buf, sizeof(buf), "%cx", rev + 'a');
+	snprintf(buf, sizeof(buf), "%c", rev);
 
 	return buf;
 }
