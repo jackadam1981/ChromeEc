@@ -48,6 +48,17 @@ TPM_RC SerializeCommand_Create(
     std::string& serialized_command,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
+// Wraps Tpm::ParseResponse_Create. Parses the response from a TPM2_Create
+// command.
+// out_public is in serialized form (because there is no
+// StringFrom_TPM2B_PUBLIC in tpm_generated).
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_Create(
+    const std::string& response, std::string& out_private,
+    std::string& out_public, TPM2B_CREATION_DATA& creation_data,
+    TPM2B_DIGEST& creation_hash, TPMT_TK_CREATION& creation_ticket,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
 // Wraps Tpm::SerializeCommand_CreatePrimary. Serializes the TPM2_CreatePrimary
 // command.
 // authorization_delegate is nullable.
@@ -69,12 +80,36 @@ TPM_RC ParseResponse_CreatePrimary(
     std::string& name,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
+// Wraps Tpm::SerializeCommand_Load. Serializes the TPM2_Load command.
+// in_public should be in serialized form (as there is no direct string ->
+// TPM2B_PUBLIC conversion in tpm_generated other than parsing).
+// authorization_delegate is nullable.
+TPM_RC SerializeCommand_Load(
+    const TPMI_DH_OBJECT& parent_handle, const std::string& parent_handle_name,
+    const std::string& in_private, const std::string& in_public,
+    std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_Load. Parses the response from a TPM2_Load command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_Load(
+    const std::string& response, TPM_HANDLE& object_handle, std::string& name,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
 // Wraps Tpm::SerializeCommand_NV_ReadPublic. Serializes the TPM2_NV_ReadPublic
 // command.
 // authorization_delegate is nullable.
 TPM_RC SerializeCommand_NV_ReadPublic(
     const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
     std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::SerializeCommand_Quote. Serializes the TPM2_Quote command.
+// authorization_delegate is nullable.
+TPM_RC SerializeCommand_Quote(
+    const TPMI_DH_OBJECT& sign_handle, const std::string& sign_handle_name,
+    const TPM2B_DATA& qualifying_data, const TPMT_SIG_SCHEME& in_scheme,
+    const TPML_PCR_SELECTION& pcrselect, std::string& serialized_command,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
 // -----------------------------------------------------------------------------
