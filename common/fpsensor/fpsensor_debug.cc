@@ -61,20 +61,31 @@
  * sudo screen -c ${HOME}/.screenrc /dev/pts/NN 115200
  *
  */
-static void upload_pgm_image(uint8_t *frame)
+static void upload_pgm_image(uint8_t *frame, uint32_t bytes_per_pixel)
 {
-	uint8_t *ptr = frame;
+	uint8_t *ptr_8 = (uint8_t *)frame;
+	uint16_t *ptr_16 = (uint16_t *)frame;
 
 	/* fake Z-modem ZRQINIT signature */
 	CPRINTF("#IGNORE for ZModem\r**\030B00");
 	crec_msleep(2000); /* let the download program start */
-	/* Print 8-bpp PGM ASCII header */
-	CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	// /* Print 8-bpp PGM ASCII header */
+	if (bytes_per_pixel == 1) {
+		CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	} else if (bytes_per_pixel == 2) {
+		CPRINTF("P2\n%d %d\n65535\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	}
 
 	for (int y = 0; y < FP_SENSOR_RES_Y; y++) {
 		watchdog_reload();
-		for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr++)
-			CPRINTF("%d ", *ptr);
+		if (bytes_per_pixel == 1) {
+			for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr_8++)
+				CPRINTF("%d ", *ptr_8);
+		} else if (bytes_per_pixel == 2) {
+			for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr_16++)
+				CPRINTF("%d ", *ptr_16);
+		}
+
 		CPRINTF("\n");
 		cflush();
 	}
@@ -129,8 +140,15 @@ static int command_fpcapture(int argc, const char **argv)
 			       FP_MODE_CAPTURE_TYPE_MASK);
 
 	const enum ec_error_list rc = fp_console_action(mode);
-	if (rc == EC_SUCCESS)
-		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	if (rc == EC_SUCCESS) {
+		bool is_raw_capture = (mode & FP_MODE_CAPTURE_TYPE_MASK) >>
+				      FP_MODE_CAPTURE_TYPE_SHIFT;
+		if (is_raw_capture) {
+			upload_pgm_image(fp_buffer, 2);
+		} else {
+			upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, 1);
+		}
+	}
 
 	return rc;
 }
@@ -185,7 +203,7 @@ static int command_fpdownload(int argc, const char **argv)
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 
-	upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, 1);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(fpdownload, command_fpdownload, nullptr,
