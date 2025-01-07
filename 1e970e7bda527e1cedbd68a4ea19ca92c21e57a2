@@ -21,6 +21,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d093acea_0b1d0b43",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-07T10:47:59Z",
+      "side": 1,
+      "message": "I think you can remove this, the Zephyr based driver does not use it and picks it from the cros-ec,col-gpio instead",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ed06fa7_ebe5a4d0",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 7
@@ -80,6 +103,30 @@
       "side": 1,
       "message": "Looks like lines 6 through 57 can be made common. The rest of the code needs to be duplicated because the keyboard scan label name is \"kbd\" for NPCX and ITE, and \"kbd0\" for MCHP.\n\nIs it acceptable to use a C-style macro for the kbd label, or do you have any alternative suggestions that I can try?",
       "parentUuid": "6ea700db_604fef3b",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86e72c0_3727c3df",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-07T10:47:59Z",
+      "side": 1,
+      "message": "yeah you can use the template in the same way as the https://github.com/zephyrproject-rtos/zephyr/blob/main/dts/riscv/ite/it8801-common-cfg.dtsi:\n\n- here you set the device specific properties and add a new \"well known\" alias, something like\n\n```\nkbd_strauss: \u0026kbd { /* or \u0026kbd0 on ite */\n  pinctrl-0 \u003d \u003c...\u003e;\n  pinctrl-1 \u003d \u003c...\u003e;\n  kso-gpio {\n  ...\n  }\n}\n\n#include \u003ccros/kbd_strauss_common.dtsi\u003e\n```\n\nand then you can make a `kbd_strauss_common.dtsi` somewhere (probably https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/) and in that file you put all the common stuff and extend the well known label\n\n```\n\u0026kbd_strauss {\n  row-size \u003c...\u003e;\n  etc etc\n```\n\nThe Vivaldi section is a bit tricky though, if you define more configuration they all get compiled in so it\u0027s a bit wasteful if the project doesn\u0027t need multiple configurations.\n\nThe other option to make this more compact is to have macros for the values, I started to do it myself on https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6142633 and initially I had some for capabilities and codes as well but the current ones in the tree are already all over the place unfortunately, but the keyboard configuration is something that it\u0027d be nice to simplify so if you have time to work on it feel free to try and move things around.",
+      "parentUuid": "5b6d077f_98614037",
       "range": {
         "startLine": 16,
         "startChar": 1,
