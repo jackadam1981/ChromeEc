@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "204fac13_cbb1e64f",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-07T20:11:52Z",
+      "side": 1,
+      "message": "Should `exit()` really reboot the system? `man exit` says `exit - cause normal process termination`.\n\nWhat should happen if `exit()` is called from dynamically spawned thread (Zephyr has support for them)?\n\nIf we want `exit()` to terminate non-essential threads, but panic on essential one, then `k_thread_abort()` looks like a perfect fit.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "25f20104a934974bebbaa38680bcf52dc3dd8051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a119e77d_c66d71e8",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-07T20:11:52Z",
+      "side": 1,
+      "message": "This is EC specific function. We shouldn\u0027t use it here. I think you can use `printk()` from `zephyr/sys/printk.h` or `LOG_ERR()` from `zephyr/logging/log.h`.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 55
+      },
+      "revId": "25f20104a934974bebbaa38680bcf52dc3dd8051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6749a700_566bddd0",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-07T20:11:52Z",
+      "side": 1,
+      "message": "I would use `k_panic()` or `k_oops()` for rebooting the system. For terminating the process I would use `k_thread_abort(k_current_get())`.\n\nBy the way, I really recommend to dig into Zephyr codebase and find difference between these.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "25f20104a934974bebbaa38680bcf52dc3dd8051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

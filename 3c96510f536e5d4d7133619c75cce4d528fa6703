@@ -93,6 +93,30 @@
       },
       "revId": "3c96510f536e5d4d7133619c75cce4d528fa6703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3685e272_64cead56",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-07T20:11:52Z",
+      "side": 1,
+      "message": "Could you change name to `LIBC_EXIT`?",
+      "parentUuid": "95531e4f_f9b6492a",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "3c96510f536e5d4d7133619c75cce4d528fa6703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
