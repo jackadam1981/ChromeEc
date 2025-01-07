@@ -39,7 +39,10 @@ bool is_finger_needed(uint32_t mode)
 	int capture_type = FP_CAPTURE_TYPE(mode);
 
 	return !((mode & FP_MODE_CAPTURE) &&
-		 (capture_type == FP_CAPTURE_PATTERN0 ||
+		 (capture_type == FP_CAPTURE_DEFECT_PXL_TEST ||
+		  capture_type == FP_CAPTURE_ABNORMAL_TEST ||
+		  capture_type == FP_CAPTURE_NOISE_TEST ||
+		  capture_type == FP_CAPTURE_PATTERN0 ||
 		  capture_type == FP_CAPTURE_PATTERN1 ||
 		  capture_type == FP_CAPTURE_RESET_TEST));
 }
