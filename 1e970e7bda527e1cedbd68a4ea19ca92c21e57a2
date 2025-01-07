@@ -64,6 +64,30 @@
       },
       "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6d077f_98614037",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-07T05:40:25Z",
+      "side": 1,
+      "message": "Looks like lines 6 through 57 can be made common. The rest of the code needs to be duplicated because the keyboard scan label name is \"kbd\" for NPCX and ITE, and \"kbd0\" for MCHP.\n\nIs it acceptable to use a C-style macro for the kbd label, or do you have any alternative suggestions that I can try?",
+      "parentUuid": "6ea700db_604fef3b",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
