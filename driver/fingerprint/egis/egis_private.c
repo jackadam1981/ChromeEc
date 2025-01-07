@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "egis_api.h"
 #include "fpsensor/fpsensor.h"
 #include "gpio.h"
@@ -54,6 +55,48 @@ static int convert_egis_get_image_error_code(egis_api_return_t code)
 		assert(code < 0);
 		return code;
 	}
+}
+static egis_capture_mode_t convert_fp_capture_mdoe_to_egis_get_image_type(
+	enum fp_capture_type capture_type)
+{
+	switch (capture_type) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return EGIS_CAPTURE_NORMAL_FORMAT;
+	case FP_CAPTURE_PATTERN0:
+		return EGIS_CAPTURE_BLACK_PXL_TEST;
+	case FP_CAPTURE_PATTERN1:
+		return EGIS_CAPTURE_WHITE_PXL_TEST;
+	case FP_CAPTURE_QUALITY_TEST:
+		return EGIS_CAPTURE_RV_INT_TEST;
+	case FP_CAPTURE_DEFECT_PXL_TEST:
+		return EGIS_CAPTURE_DEFECT_PXL_TEST;
+	case FP_CAPTURE_ABNORMAL_TEST:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FP_CAPTURE_NOISE_TEST:
+		return EGIS_CAPTURE_NOISE_TEST;
+	case FP_CAPTURE_RESET_TEST:
+	default:
+		assert(false);
+		break;
+	}
+	return EGIS_CAPTURE_NORMAL_FORMAT;
+}
+
+static bool is_capture_raw_image(uint32_t capture_mode)
+{
+	return ((capture_mode == FP_CAPTURE_PATTERN0) ||
+		(capture_mode == FP_CAPTURE_PATTERN1) ||
+		(capture_mode == FP_CAPTURE_QUALITY_TEST) ||
+		(capture_mode == FP_CAPTURE_DEFECT_PXL_TEST) ||
+		(capture_mode == FP_CAPTURE_ABNORMAL_TEST) ||
+		(capture_mode == FP_CAPTURE_NOISE_TEST));
+}
+
+static bool is_capture_normal_image(uint32_t capture_mode)
+{
+	return ((capture_mode == FP_CAPTURE_VENDOR_FORMAT) ||
+		(capture_mode == FP_CAPTURE_SIMPLE_IMAGE));
 }
 
 void fp_sensor_lock(void)
@@ -111,6 +154,18 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	uint16_t sensor_id;
 	memcpy(resp, &egis_fp_sensor_info, sizeof(struct ec_response_fp_info));
+
+	if (is_capture_raw_image(capture_type)) {
+		resp->bpp = FP_SENSOR_TEST_BPP_EGIS;
+		resp->frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+				   sizeof(uint16_t);
+	}
+
+	if (is_capture_normal_image(capture_type)) {
+		resp->bpp = FP_SENSOR_DEFAULT_BPP_EGIS;
+		resp->frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS;
+	}
+
 	if (egis_get_hwid(&sensor_id) != EGIS_API_OK)
 		return EC_RES_ERROR;
 
@@ -181,8 +236,9 @@ int fp_maintenance(void)
 
 int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type)
 {
-	return convert_egis_get_image_error_code(
-		egis_get_image_with_mode(image_data, capture_type));
+	return convert_egis_get_image_error_code(egis_get_image_with_mode(
+		image_data,
+		convert_fp_capture_mdoe_to_egis_get_image_type(capture_type)));
 }
 
 enum finger_state fp_finger_status(void)
