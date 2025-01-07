@@ -88,6 +88,24 @@
       "parentUuid": "a6735ab6_68af2bb4",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5137d0bf_6a82e203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-01-07T17:59:27Z",
+      "side": 1,
+      "message": "Now that you can reproduce the failure, try running the test under gdb to find out why it crashes.",
+      "parentUuid": "ef9e3b82_0860446f",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
