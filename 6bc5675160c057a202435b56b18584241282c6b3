@@ -70,6 +70,24 @@
       "parentUuid": "0115de95_dd413c45",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9e3b82_0860446f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-07T02:33:52Z",
+      "side": 1,
+      "message": "add --toolchain host, the handler.log show\nERROR   - drivers.raa489000.tcpc_raa489000.raa489000_get_rx_message_raw: Unknown status \u0027started\u0027,\n\n(cr) wu@wu /mnt/host/source/src/platform/ec $ ./twister -s drivers/drivers.raa489000 -c --coverage --toolchain host\nZEPHYR_BASE unset, using \"/mnt/host/source/src/third_party/zephyr/main\"\nInstall tabulate python module with pip to use --device-testing option.\nDeleting output directory /mnt/host/source/src/platform/ec/twister-out\nINFO    - Using Ninja..\nwarning: tag \u0027upstream/v2.7.99\u0027 is externally known as \u0027v2.7.99\u0027\nINFO    - Zephyr version: v2.7.99-50741-ga049a7f1e3d4\nINFO    - Using \u0027host\u0027 toolchain.\nINFO    - Building initial testsuite list...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/testplan.json\nINFO    - JOBS: 16\nINFO    - Adding tasks to the queue...\nINFO    - Added initial list of jobs to queue\nWARNING - Unexpected Ztest suite \u0027tcpc_raa489000\u0027 not present in: []\nWARNING - Unexpected Ztest suite \u0027tcpc_raa489000\u0027 not present in: []\nWARNING - Unexpected Ztest suite \u0027tcpc_raa489000\u0027\nWARNING - A started status detected in instance native_sim/native/drivers/drivers.raa489000, test case drivers.raa489000.tcpc_raa489000.raa489000_get_rx_message_raw.\nERROR   - native_sim/native         drivers/drivers.raa489000                          FAILED: Failed\nERROR   - see: /mnt/host/source/src/platform/ec/twister-out/native_sim_native/drivers/drivers.raa489000/handler.log\nINFO    - Total complete:    1/   1  100%  built (not run):    0, filtered:    0, failed:    1, error:    0\nINFO    - 1 test scenarios (1 configurations) selected, 0 configurations filtered (0 by static filter, 0 at runtime).\nINFO    - 0 of 1 executed test configurations passed (0.00%), 0 built (not run), 1 failed, 0 errored, with 1 warnings in 144.42 seconds.\nINFO    - 1 of 2 executed test cases passed (50.00%) on 1 out of total 880 platforms (0.11%).\nINFO    - 1 test configurations executed on platforms, 0 test configurations were only built.\nINFO    - Generating coverage files...\nINFO    - Using gcov tool: gcov\nlcov: ERROR: cannot read file /mnt/host/source/src/platform/ec/twister-out/coverage.info!\nlcov: ERROR: cannot read file /mnt/host/source/src/platform/ec/twister-out/coverage.info!\nlcov: ERROR: cannot read file /mnt/host/source/src/platform/ec/twister-out/coverage.info!\nlcov: ERROR: cannot read file /mnt/host/source/src/platform/ec/twister-out/coverage.info!\ngenhtml: ERROR: (missing) \u0027/mnt/host/source/src/platform/ec/twister-out/coverage.info\u0027 found from pattern \u0027/mnt/host/source/src/platform/ec/twister-out/coverage.info\u0027 is not a readable file\n\t(use \"genhtml --ignore-errors missing ...\" to bypass this error)\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...\nERROR   - drivers.raa489000.tcpc_raa489000.raa489000_get_rx_message_raw: Unknown status \u0027started\u0027\nERROR   - drivers.raa489000.tcpc_raa489000.raa489000_get_rx_message_raw: Unknown status \u0027started\u0027\nINFO    - -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\nINFO    - The following issues were found (showing the top 10 items):\nINFO    - 1) drivers/drivers.raa489000 on native_sim/native failed (Failed)\nINFO    - \nINFO    - To rerun the tests, call twister using the following commandline:\nINFO    - west twister -p \u003cPLATFORM\u003e -s \u003cTEST ID\u003e, for example:\nINFO    - \nINFO    - west twister -p native_sim/native -s drivers/drivers.raa489000\nINFO    - or with west:\nINFO    - west build -p -b native_sim/native zephyr/test/drivers -T drivers.raa489000\nINFO    - -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\nINFO    - Run completed\nTEST EXECUTION FAILED",
+      "parentUuid": "a6735ab6_68af2bb4",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
