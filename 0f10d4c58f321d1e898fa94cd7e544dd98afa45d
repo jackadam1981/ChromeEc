@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c896e96_b5b5caa1",
+        "filename": "zephyr/program/rauru/hylia/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-01-08T14:35:56Z",
+      "side": 1,
+      "message": "unsure if you could replace by\n```\ncurrent_level \u003d clamp(current_level, 0, ARRAY_SIZE(fan_step_table) - 1);\n```",
+      "revId": "0f10d4c58f321d1e898fa94cd7e544dd98afa45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
