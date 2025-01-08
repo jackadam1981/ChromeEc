@@ -6,7 +6,9 @@
 #include "battery.h"
 #include "charger.h"
 #include "console.h"
+#include "driver/charger/bq257x0_regs.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "usb_pd.h"
 
 #include <zephyr/logging/log.h>
@@ -27,3 +29,35 @@ __override void board_check_extpower(void)
 
 	last_extpower_present = extpower_present;
 }
+
+static void delay_bq25710(void)
+{
+	int reg;
+
+	i2c_read16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
+		   BQ25710_REG_CHARGE_OPTION_2, &reg);
+	reg = reg & (~BIT(7));
+	i2c_write16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
+		    BQ25710_REG_CHARGE_OPTION_2, reg);
+}
+DECLARE_DEFERRED(delay_bq25710);
+
+#define BQ25710_MIN_INPUT_VOLTAGE_MV 0xec0
+static void bq25710_min_input_voltage(void)
+{
+	if (extpower_is_present()) {
+		i2c_write16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
+			    BQ25710_REG_INPUT_VOLTAGE,
+			    BQ25710_MIN_INPUT_VOLTAGE_MV);
+		hook_call_deferred(&delay_bq25710_data, 2 * SECOND);
+	} else {
+		int reg;
+
+		i2c_read16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
+			   BQ25710_REG_CHARGE_OPTION_2, &reg);
+		reg = reg | BIT(7);
+		i2c_write16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
+			    BQ25710_REG_CHARGE_OPTION_2, reg);
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, bq25710_min_input_voltage, HOOK_PRIO_DEFAULT);
