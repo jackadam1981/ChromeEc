@@ -2,7 +2,6 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
 #include <zephyr/sys/atomic.h>
 #include <zephyr/toolchain/common.h>
 
@@ -10,6 +9,9 @@
 
 enum tcpc_cc_polarity pd_get_polarity(int port)
 {
+	if (port >= board_get_usb_pd_port_count()) {
+		return POLARITY_CC1;
+	}
 	return pdc_power_mgmt_pd_get_polarity(port);
 }
 
