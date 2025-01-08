@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe22a9d0_df676b8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-08T21:11:04Z",
+      "side": 1,
+      "message": "Reboots or terminates calling thread?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c83d2e2_50df61d3",
+        "filename": "zephyr/libc/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-08T21:11:04Z",
+      "side": 1,
+      "message": "It reboots or it terminates current thread? Could you paste a log from test run?",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde2ec69_23f3c57e",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-08T21:11:04Z",
+      "side": 1,
+      "message": "I think it terminates the thread, which could lead to system reboot.",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e90200_9c3531a6",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-08T21:11:04Z",
+      "side": 1,
+      "message": "It think it would be nice to print thread name here. Something like (I didn\u0027t check if it works):\n\n```suggestion\n\tk_tid_t thread \u003d k_current_get();\n\n#ifdef CONFIG_THREAD_NAME\n\tprintk(\"%s exited with rc: %d\\n\", k_thread_name_get(thread), rc);\n#else\n\tprintk(\"%p exited with rc: %d\\n\", thread, rc);\n#endif  /* CONFIG_THREAD_NAME */\n\n\tk_thread_abort(thread);\n```\n\n\nIf the support for thread names is disabled, we can print pointer to thread structure, which is enough to determine which thread exited (and it\u0027s also a common zephyr pattern)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
