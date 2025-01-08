@@ -135,6 +135,29 @@
       },
       "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54fdb941_75d05edf",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-08T16:44:00Z",
+      "side": 1,
+      "message": "you can now use `VIVALDI_KEYS_STRAUSS_T14` here",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
