@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc5493c_87314d9d",
+        "filename": "zephyr/libc/Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-08T22:08:22Z",
+      "side": 1,
+      "message": "```\nINFO: Flashing done.\nINFO: Restoring servo settings...\nDEBUG:Running command: \"dut-control fw_wp_state:force_off\"\nDEBUG:Running command: \"dut-control fpmcu_pp3300:pp3300\"\nINFO:Running test: \"exit\"\nDEBUG:Calling pre-test callback\nDEBUG:[3.173991 MKBP: The AP is failing to respond because it is sleeping or off]\nDEBUG:\nDEBUG:*** Booting Zephyr OS build 4.0.99 ***\nDEBUG:\nDEBUG:\nDEBUG:--- UART initialized after reboot ---\nDEBUG:[Image: RO, bloonchipper-0.0.0-ed85404 2025-01-08 14:04:21 root@fsammoura-glaptop]\nDEBUG:[Reset cause: soft]\nDEBUG:[0.027800 event set 0x0000000000002000]\nDEBUG:[0.032600 hostcmd init 0x0000000000002000]\nDEBUG:[0.037800 Inits done]\nDEBUG:[0.041300 Verifying RW image...]\nDEBUG:[0.406200 RW verify OK]\nDEBUG:[1.032700 MKBP not cleared within threshold, toggling.]\nDEBUG:[1.410300 Jumping to image RW (0x00000020)]\nDEBUG:fpmcu:~$\nDEBUG:*** Booting Zephyr OS build 4.0.99 ***\nDEBUG:\nDEBUG:[0.007900 UART initialized after sysjump]\nDEBUG:[Image: RW, bloonchipper-0.0.0-ed85404 2025-01-08 14:04:21 root@fsammoura-glaptop]\nDEBUG:[Reset cause: soft sysjump]\nDEBUG:[0.031300 event set 0x0000000000002000]\nDEBUG:[0.036200 hostcmd init 0x0000000000002000]\nDEBUG:[0.041400 Inits done]\nDEBUG:[0.045000 FP_SENSOR_SEL: FPC]\nDEBUG:[0.049000] \u003cerr\u003e cros_fingerprint: FPC unknown silicon 0x0000\nDEBUG:[1.036300 MKBP not cleared within threshold, toggling.]\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$\nDEBUG:fpmcu:~$ ztest run-all\nDEBUG:Running TESTSUITE exit\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_exit\nDEBUG:[1.207000] \u003cinf\u003e exit_hw_test: Calling exit\nDEBUG:\nDEBUG:test_exit exited with rc: 1\nDEBUG: PASS - test_exit in 0.007 seconds\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:TESTSUITE exit succeeded\nDEBUG:[b\u0027\\r\\n\u0027, b\u0027------ TESTSUITE SUMMARY START ------\\r\\n\u0027, b\u0027\\r\\n\u0027, b\u0027SUITE PASS - 100.00% [exit]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.007 seconds\\r\\n\u0027, b\u0027 - PASS - [exit.test_exit] duration \u003d 0.007 seconds\\r\\n\u0027, b\u0027\\r\\n\u0027, b\u0027------ TESTSUITE SUMMARY END ------\\r\\n\u0027, b\u0027\\r\\n\u0027, b\u0027\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\r\\n\u0027, b\u0027PROJECT EXECUTION SUCCESSFUL\\r\\n\u0027, b\u0027fpmcu:~$ \\x1b[9D\\x1b[J[2.042600 MKBP: The AP is failing to respond because it is sleeping or off]\\r\\n\u0027]\nDEBUG:Calling post-test callback\nTest \"exit\": PASSED\n\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ \n```",
+      "parentUuid": "8c83d2e2_50df61d3",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde2ec69_23f3c57e",
@@ -83,6 +107,30 @@
       "writtenOn": "2025-01-08T21:11:04Z",
       "side": 1,
       "message": "It think it would be nice to print thread name here. Something like (I didn\u0027t check if it works):\n\n```suggestion\n\tk_tid_t thread \u003d k_current_get();\n\n#ifdef CONFIG_THREAD_NAME\n\tprintk(\"%s exited with rc: %d\\n\", k_thread_name_get(thread), rc);\n#else\n\tprintk(\"%p exited with rc: %d\\n\", thread, rc);\n#endif  /* CONFIG_THREAD_NAME */\n\n\tk_thread_abort(thread);\n```\n\n\nIf the support for thread names is disabled, we can print pointer to thread structure, which is enough to determine which thread exited (and it\u0027s also a common zephyr pattern)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d922e951_8427aef5",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-08T22:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e90200_9c3531a6",
       "range": {
         "startLine": 22,
         "startChar": 0,
