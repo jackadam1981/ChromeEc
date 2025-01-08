@@ -514,6 +514,8 @@ board_vivaldi_keybd_config(void)
 	}
 }
 
+/* TODO(b/219051027): Add assert to check that key_typ.{row,col}_refresh == the row/col in the tables above. */
+
 static void board_update_no_keypad_by_fwconfig(void)
 {
 	if (!get_cbi_fw_config_numeric_pad()) {

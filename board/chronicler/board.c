@@ -33,6 +33,7 @@
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "keyboard_config.h"
 
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
@@ -276,6 +277,10 @@ static const struct ec_response_keybd_config main_kb = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
 
+/* TK_REFRESH is the 3rd above, vivaldi_keys are not overridden. */
+BUILD_ASSERT(KEYBOARD_ROW_REFRESH == 2 && KEYBOARD_COL_REFRESH == 2);
+
+BUILD_ASSERT(IS_ENABLED(CONFIG_KEYBOARD_VIVALDI));
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {

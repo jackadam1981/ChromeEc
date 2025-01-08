@@ -54,6 +54,10 @@ static const struct ec_response_keybd_config osiris_vivaldi_kb = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
 
+/* TK_REFRESH is always T2 above, vivaldi_keys are overridden. */
+BUILD_ASSERT(KEYBOARD_ROW_REFRESH == 3 && KEYBOARD_COL_REFRESH == 2);
+
+BUILD_ASSERT(IS_ENABLED(CONFIG_KEYBOARD_VIVALDI));
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
