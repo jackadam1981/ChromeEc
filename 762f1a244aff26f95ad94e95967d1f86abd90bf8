@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db59336a_3ac8f18a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-08T21:41:25Z",
+      "side": 1,
+      "message": "As mentioned in the attached bug I\u0027m still seeing failures sometimes even with this patch:\n\n```\n./test/run_device_tests.py -b bloonchipper --renode -t rtc_stm32f4\n```\n\n```\nDEBUG:\u003e runtest\nDEBUG:Running test_rtc_alarm...\nDEBUG:Pass: 1 \u003d\u003d atomic_clear(\u0026rtc_fired)\nDEBUG:Target delay was 500000us\nDEBUG:Actual delay was 499938us\nDEBUG:The delays are expected to be within +/- 500us\nDEBUG:Pass: delay_us - delay_tol_us \u003c rtc_diff_us\nDEBUG:Pass: rtc_diff_us \u003c delay_us + delay_tol_us\nDEBUG:OK\nDEBUG:Running test_rtc_match_delay...\nDEBUG:Expected number of RTC alarm interrupts 5000\nDEBUG:Actual number of RTC alarm interrupts 4999\nDEBUG:test/rtc_stm32f4.c:75: ASSERTION failed: rtc_match_delay_iterations \u003d\u003d atomic_clear(\u0026rtc_fired)\nDEBUG:          EVAL: 5000 \u003d\u003d 4999\nDEBUG:Fail\nDEBUG:Fail! (1 tests)\n```",
+      "revId": "762f1a244aff26f95ad94e95967d1f86abd90bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
