@@ -160,6 +160,24 @@
       "parentUuid": "dfa52123_23ef3c98",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e8beec_d3f2dfd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-08T20:33:50Z",
+      "side": 1,
+      "message": "Does the executable abort on a signal? Does it hang? You should be able to tell with `gdb`.",
+      "parentUuid": "a341d9cb_fe5d0fd1",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
