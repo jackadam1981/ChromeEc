@@ -34,6 +34,24 @@
       "parentUuid": "32c55553_1b9d279e",
       "revId": "eba4d91fbe2e6032b7ff5a7c165c41262ec9f175",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e08500_8b18efcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-08T00:38:23Z",
+      "side": 1,
+      "message": "That should be fine.  The FW branch won\u0027t triger the full CQ build.",
+      "parentUuid": "994fc25b_fade89d8",
+      "revId": "eba4d91fbe2e6032b7ff5a7c165c41262ec9f175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
