@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "282479eb_50f5a1c6",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-08T18:17:13Z",
+      "side": 1,
+      "message": "Ok. Can you add a comment here about that here?",
+      "parentUuid": "97963630_43e8e83a",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "ea06819e950f51faa537b7a5a631148b1dcfe579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90413818_3e0fb6e4",
         "filename": "driver/fingerprint/egis/platform/inc/plat_reset.h",
         "patchSetId": 1
