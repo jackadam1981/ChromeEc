@@ -142,6 +142,24 @@
       "parentUuid": "92018443_1c017920",
       "revId": "6bc5675160c057a202435b56b18584241282c6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a341d9cb_fe5d0fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-08T09:39:36Z",
+      "side": 1,
+      "message": "\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_raa489000_get_rx_message_raw\n[0.302900 BCFG Battery says Extremely long battery manufacr,Extremely long battery deviceid]\n[0.302900 BCFG Config not found in FW]\n[0.302900 CBI Reading board info]\n[0.302900 CBI Bad magic]\n[0.302900 CBI Reading board info]\n[0.302900 CBI Bad magic]\n[0.302900 BCFG Config not found in CBI]\n[0.302900 BCFG Fall back to config_fw[0]]\n[0.302900 Handle sleep: 0]\n[0.302900 power state 3 \u003d S3, in 0x0005]\n[0.302900 power state 7 \u003d S3-\u003eS0, in 0x0005]\n[0.302900 Motion pre-resume; loops 4; last 29 ms ago; a\u003d0x1ff, s\u003d0x3003]\n[0.302900 PD:S3-\u003eS0]\n[0.302900 power state 4 \u003d S0, in 0x0005]\n[0.328000 C1: Exit Low Power Mode]\n[00:00:00.328,000] \u003cerr\u003e ps8xxx_emul: Accessing hidden i2c address without enabling debug\n[0.328000 C1: TCPC init ready]\n[0.328000 C1: DRPAutoToggle]\n[0.368100 C1: LowPowerMode]\n[0.378200 C1: TCPC Enter Low Power Mode]\n[0.502900 charge_manager_leave_safe_mode()]\n[0.502900 Battery 50% (Display 49.5 %) / 1h:0 to full]\n[0.502900 Battery 75% (Display 76.3 %) / 1h:0 to full]\n[0.991400 ms-bmi260-accel: 1: init failed: 24]\n[0.992500 ms-bmi260-gyro: MS Done Init type:0x1 range:1000]\n[0.994700 ms-bmi160-gyro: MS Done Init type:0x1 range:1000]\n[0.999500 ms-bma4xx: MS Done Init type:0x0 range:4]\n[1.000600 ms-lis2dw12-accel: MS Done Init type:0x0 range:2]\n[1.000600 tcs3400-clear: MS Done Init type:0x4 range:65536]\n[1.000600 ms-bma255 ODR: 1000  - roundup 0 from config 1 [AP 0]: 0]\n[00:00:01.000,600] \u003cerr\u003e espi_shim: ESPI write failed: ECUSTOM_HOST_SUBS_INTERRUPT_EN \u003d -22\n[00:00:01.000,600] \u003cerr\u003e led: Node with matching prop not found\n[1.000600 Disabling all charging port]\n[1.007000 ms-bmi260-gyro ODR: 0  - roundup 0 from config 0 [AP 0]: 0]\n[1.012300 ms-bmi160-accel ODR: 0  - roundup 0 from config 0 [AP 0]: 0]\n[1.017600 ms-bmi160-gyro ODR: 0  - roundup 0 from config 0 [AP 0]: 0]\n[1.018200 ms-bma4xx ODR: 0  - roundup 0 from config 0 [AP 0]: 0]\n[1.018200 ms-lis2dw12-accel ODR: 0  - roundup 0 from config 0 [AP 0]: 0]\n[1.018200 tcs3400-clear ODR: 1000  - roundup 0 from config 1 [AP 0]: 0]\n[1.018200 tcs3400-rgb ODR: 0  - roundup 0 from config 0 [AP 0]: 0]\nWatchdog deadline is close! THREAD_NAME:idle  \n\nlooks the test case cannot excute",
+      "parentUuid": "dfa52123_23ef3c98",
+      "revId": "6bc5675160c057a202435b56b18584241282c6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
