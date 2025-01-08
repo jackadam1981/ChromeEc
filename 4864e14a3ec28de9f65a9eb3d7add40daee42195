@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7f4c1b3_6e438fd0",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-08T22:02:26Z",
+      "side": 1,
+      "message": "please make it static.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b307c6d6_1692983b",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-08T22:02:26Z",
+      "side": 1,
+      "message": "`average_temperature` is slightly misleading. The function does more than just calculate an average; it also implements the zone logic. A name like `update_thermal_state` might be more accurate.",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb7ddc4e_7b3b08a6",
         "filename": "zephyr/program/rauru/hylia/src/thermal.c",
         "patchSetId": 4
@@ -20,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb324834_e7949426",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-08T22:02:26Z",
+      "side": 1,
+      "message": "please define hardcoded thresholds and counters, e.g.:\n```\n#define TEMP_ZONE_1_THRESHOLD 75\n#define TEMP_ZONE_0_THRESHOLD 70\n#define INCREMENT_LEVEL_COUNT 3\n#define DECLINE_LEVEL_COUNT 1\n#define CPU_TEMP_THRESHOLD 55\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcc04e13_82f628bd",
         "filename": "zephyr/program/rauru/hylia/src/thermal.c",
         "patchSetId": 4
@@ -31,6 +100,70 @@
       "writtenOn": "2025-01-08T14:08:59Z",
       "side": 1,
       "message": "I\u0027m thinking of to add some comments here for easier understand what you\u0027d like to do here.\ne.g. `Activate charge limiting if a high temperature persists for 3 seconds.`\n\nOr define this \"3\" with a meaningful text.",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc964497_27552992",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-08T22:02:26Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bcc04e13_82f628bd",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2978a6_44dd60bd",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-08T22:02:26Z",
+      "side": 1,
+      "message": "please define this number, e.g.:\n\n#define TEMP_ZONE_1_CURRENT_LIMIT 3500 /* mA */",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9ecd83_6d05a619",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-08T22:02:26Z",
+      "side": 1,
+      "message": "Why not -1? This condition seems to be related to the condition in line104. Are these conditions mutually exclusive?",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 11
+      },
       "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
