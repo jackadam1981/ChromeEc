@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7ddc4e_7b3b08a6",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-01-08T14:08:59Z",
+      "side": 1,
+      "message": "```suggestion\n\tcpu_temp_c \u003d K_TO_C(cpu_temp);\n\tcharger_temp_c \u003d K_TO_C(charger_temp);\n```\nSuggest put these together for easier reading.",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc04e13_82f628bd",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-01-08T14:08:59Z",
+      "side": 1,
+      "message": "I\u0027m thinking of to add some comments here for easier understand what you\u0027d like to do here.\ne.g. `Activate charge limiting if a high temperature persists for 3 seconds.`\n\nOr define this \"3\" with a meaningful text.",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487de209_04bf84ce",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-01-08T14:08:59Z",
+      "side": 1,
+      "message": "```suggestion\n\t/* This policy only execute in state s0 */\n```",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
