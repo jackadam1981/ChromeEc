@@ -16,6 +16,24 @@
       "message": "note that this CL only prevents ec crash, we need kernel change to solve the original bug.",
       "revId": "60695b0f3c7c18834b89cb783ce8a982f72fe485",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2be430a_867aa2df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-01-08T06:35:59Z",
+      "side": 1,
+      "message": "Ack, thanks for explaination.",
+      "parentUuid": "c1beeb69_262d636d",
+      "revId": "60695b0f3c7c18834b89cb783ce8a982f72fe485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
