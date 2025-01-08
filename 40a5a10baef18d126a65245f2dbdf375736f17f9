@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2912f893_4da546de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-08T22:13:14Z",
+      "side": 1,
+      "message": "I reword it. I believe it will reboot if the thread is critical, based on the discussion with Tom. Do you agree?",
+      "parentUuid": "fe22a9d0_df676b8b",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c83d2e2_50df61d3",
@@ -84,6 +108,30 @@
       "writtenOn": "2025-01-08T21:11:04Z",
       "side": 1,
       "message": "I think it terminates the thread, which could lead to system reboot.",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125fc81b_d3e16e93",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-08T22:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde2ec69_23f3c57e",
       "range": {
         "startLine": 10,
         "startChar": 3,
