@@ -10,6 +10,9 @@
 
 enum tcpc_cc_polarity pd_get_polarity(int port)
 {
+	if (port >= board_get_usb_pd_port_count()) {
+		return POLARITY_CC1;
+	}
 	return pdc_power_mgmt_pd_get_polarity(port);
 }
 
