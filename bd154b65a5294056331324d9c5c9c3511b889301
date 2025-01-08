@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "089a6e70_624d1b6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-01-08T23:59:56Z",
+      "side": 1,
+      "message": "There was another CL uploaded separately earlier to address the same issue. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6157865 . This CL fixes trulo and rex platforms. And that one landed earlier today.",
+      "revId": "bd154b65a5294056331324d9c5c9c3511b889301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
