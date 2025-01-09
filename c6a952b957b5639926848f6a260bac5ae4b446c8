@@ -87,6 +87,24 @@
       "parentUuid": "7f4edeae_6234d257",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf7388d_f791a399",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-09T06:07:21Z",
+      "side": 1,
+      "message": "and if there is something that impacts the versioning of a command, should this be caught in the tast tests?",
+      "parentUuid": "2bf08225_c9d28649",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
