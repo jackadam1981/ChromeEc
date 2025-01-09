@@ -34,6 +34,23 @@
       "parentUuid": "d67c233f_4ac7c4fc",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4edeae_6234d257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-09T00:43:39Z",
+      "side": 1,
+      "message": "You\u0027ll need to provide some analysis to verify that this is backwards/forwards compatible. e.g., if the AP code uses 5 bits and the firmware is an old version that only supports 3 bits and vice-versa. (Otherwise, we will need to create a new version of the FP mode command.)",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
