@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1664683_634422b1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8224,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-01-09T16:09:11Z",
+      "side": 1,
+      "message": "No, we do not use.\n\nFP_CAPTURE_QUALITY_TEST  would equivalent to FP_CAPTURE_RV_INT_TEST.\nwe can map `FP_CAPTURE_RV_INT_TEST` to `FP_CAPTURE_QUALITY_TEST`",
+      "parentUuid": "1d807e12_9e58a786",
+      "range": {
+        "startLine": 8223,
+        "startChar": 0,
+        "endLine": 8224,
+        "endChar": 61
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de7e81b6_ab03e706",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "writtenOn": "2025-01-09T00:44:20Z",
       "side": 1,
       "message": "Are you using pattern0 and pattern1, already? Would it make sense to map these to pattern0 and pattern1?\n\nThe checkerboard and inverted checkerboard are just examples. We would then just document what pattern0 and pattern1 do for Egis.",
+      "range": {
+        "startLine": 8225,
+        "startChar": 0,
+        "endLine": 8226,
+        "endChar": 65
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df672c58_8a4b1648",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8226,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-01-09T16:09:11Z",
+      "side": 1,
+      "message": "No, we do not use pattern0 and pattern1. \nIt would make sense to map FP_CAPTURE_BLACK_PXL_TEST/FP_CAPTURE_WHITE_PXL_TEST to pattern0/pattern1",
+      "parentUuid": "de7e81b6_ab03e706",
       "range": {
         "startLine": 8225,
         "startChar": 0,
