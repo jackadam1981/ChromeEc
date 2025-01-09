@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4abc9c11_c4f1456b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8224,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2025-01-09T00:45:38Z",
+      "side": 1,
+      "message": "Are you using these values for Egis? If not, is there some logical equivalent for Egis? Maybe we could rename these to be genric enough to accomodate Egis and FPC?",
+      "range": {
+        "startLine": 8223,
+        "startChar": 0,
+        "endLine": 8224,
+        "endChar": 61
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de7e81b6_ab03e706",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
