@@ -16,6 +16,24 @@
       "message": "why is this cherry picked now? The description suggest this should not be cherry picked.",
       "revId": "f60b1a1396ade409b7a02aa8a9d2432f9405d019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c624fcb0_dc9cfea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-01-09T18:51:05Z",
+      "side": 1,
+      "message": "We\u0027re creating new cr50 branches. This sets the correct board id for the prepvt branch.",
+      "parentUuid": "4ccb0942_428df420",
+      "revId": "f60b1a1396ade409b7a02aa8a9d2432f9405d019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
