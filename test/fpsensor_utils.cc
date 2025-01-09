@@ -37,26 +37,26 @@ test_static int test_is_test_capture()
 {
 	TEST_ASSERT(!is_test_capture(FP_MODE_CAPTURE |
 				     FP_CAPTURE_VENDOR_FORMAT
-					     << FP_MODE_CAPTURE_TYPE_SHIFT));
+					     << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(!is_test_capture(FP_MODE_CAPTURE |
 				     FP_CAPTURE_SIMPLE_IMAGE
-					     << FP_MODE_CAPTURE_TYPE_SHIFT));
+					     << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(is_test_capture(FP_MODE_CAPTURE |
 				    FP_CAPTURE_PATTERN0
-					    << FP_MODE_CAPTURE_TYPE_SHIFT));
+					    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(is_test_capture(FP_MODE_CAPTURE |
 				    FP_CAPTURE_PATTERN1
-					    << FP_MODE_CAPTURE_TYPE_SHIFT));
+					    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(!is_test_capture(FP_MODE_CAPTURE |
 				     FP_CAPTURE_QUALITY_TEST
-					     << FP_MODE_CAPTURE_TYPE_SHIFT));
+					     << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(is_test_capture(FP_MODE_CAPTURE |
 				    FP_CAPTURE_RESET_TEST
-					    << FP_MODE_CAPTURE_TYPE_SHIFT));
+					    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 
 	/* Check the case where FP_MODE_CAPTURE is not set. */
 	TEST_ASSERT(!is_test_capture(FP_CAPTURE_PATTERN0
-				     << FP_MODE_CAPTURE_TYPE_SHIFT));
+				     << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 
 	return EC_SUCCESS;
 }
@@ -64,22 +64,22 @@ test_static int test_is_test_capture()
 test_static int test_is_raw_capture()
 {
 	TEST_ASSERT(is_raw_capture(FP_CAPTURE_VENDOR_FORMAT
-				   << FP_MODE_CAPTURE_TYPE_SHIFT));
+				   << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(!is_raw_capture(FP_CAPTURE_SIMPLE_IMAGE
-				    << FP_MODE_CAPTURE_TYPE_SHIFT));
+				    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(!is_raw_capture(FP_CAPTURE_PATTERN0
-				    << FP_MODE_CAPTURE_TYPE_SHIFT));
+				    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(!is_raw_capture(FP_CAPTURE_PATTERN1
-				    << FP_MODE_CAPTURE_TYPE_SHIFT));
+				    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(is_raw_capture(FP_CAPTURE_QUALITY_TEST
-				   << FP_MODE_CAPTURE_TYPE_SHIFT));
+				   << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 	TEST_ASSERT(!is_raw_capture(FP_CAPTURE_RESET_TEST
-				    << FP_MODE_CAPTURE_TYPE_SHIFT));
+				    << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 
 	/* Check the case when FP_MODE_CAPTURE is set. */
 	TEST_ASSERT(is_raw_capture(FP_MODE_CAPTURE |
 				   FP_CAPTURE_QUALITY_TEST
-					   << FP_MODE_CAPTURE_TYPE_SHIFT));
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1));
 
 	return EC_SUCCESS;
 }

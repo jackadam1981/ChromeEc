@@ -125,8 +125,8 @@ static int command_fpcapture(int argc, const char **argv)
 			return EC_ERROR_PARAM1;
 	}
 	const uint32_t mode = FP_MODE_CAPTURE |
-			      ((capture_type << FP_MODE_CAPTURE_TYPE_SHIFT) &
-			       FP_MODE_CAPTURE_TYPE_MASK);
+			      ((capture_type << FP_MODE_CAPTURE_TYPE_SHIFT_v1) &
+			       FP_MODE_CAPTURE_TYPE_MASK_v1);
 
 	const enum ec_error_list rc = fp_console_action(mode);
 	if (rc == EC_SUCCESS)
