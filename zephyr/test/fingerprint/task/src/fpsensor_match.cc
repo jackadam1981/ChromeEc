@@ -117,7 +117,7 @@ ZTEST_USER(fpsensor_match, test_match_no_templates_mkbp_event)
 	uint32_t fp_events;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -161,7 +161,7 @@ ZTEST_USER(fpsensor_match, test_match_no_templates_mode_cleared)
 	struct fingerprint_sensor_state state;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -180,7 +180,7 @@ ZTEST_USER(fpsensor_match, test_match_no_templates_mode_cleared)
 
 	/* Confirm that capture mode is not enabled. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_MATCH);
 }
 
@@ -218,7 +218,7 @@ ZTEST_USER(fpsensor_match, test_match_correct_template_and_image)
 	mock_alg_match_fake.custom_fake = match_compare;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -263,7 +263,7 @@ ZTEST_USER(fpsensor_match, test_match_no_match_mkbp_event)
 	mock_alg_match_fake.return_val = FP_MATCH_RESULT_NO_MATCH;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -332,7 +332,7 @@ ZTEST_USER(fpsensor_match, test_match_success_mkbp_event)
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -389,7 +389,7 @@ ZTEST_USER(fpsensor_match, test_match_success_template_updated_mkbp_event)
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -447,7 +447,7 @@ ZTEST_USER(fpsensor_match, test_match_success_template_update_failed_mkbp_event)
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -505,7 +505,7 @@ ZTEST_USER(fpsensor_match, test_match_success_template_updated_dirty_template)
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -552,7 +552,7 @@ ZTEST_USER(fpsensor_match,
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -598,7 +598,7 @@ ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -646,7 +646,7 @@ ZTEST_USER(fpsensor_match,
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -698,7 +698,7 @@ ZTEST_USER(fpsensor_match,
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -750,7 +750,7 @@ ZTEST_USER(fpsensor_match, test_match_success_read_positive_match_secret_twice)
 	mock_alg_match_fake.custom_fake = custom_match;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -804,7 +804,7 @@ ZTEST_USER(fpsensor_match,
 	mock_alg_match_fake.return_val = FP_MATCH_RESULT_NO_MATCH;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -851,7 +851,7 @@ ZTEST_USER(fpsensor_match, test_match_error_no_positive_match_secret)
 	mock_alg_match_fake.return_val = -1;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -897,7 +897,7 @@ ZTEST_USER(fpsensor_match, test_match_error_mkbp_event)
 	mock_alg_match_fake.return_val = -1;
 
 	/* Switch mode to match. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_MATCH);
 
 	/* Give opportunity for fpsensor task to change mode. */

@@ -128,7 +128,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_3)
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Change fingerprint mode to maintenance. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -147,7 +147,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_3)
 	 * operation is finished.
 	 */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 }
 
@@ -165,7 +165,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_max_plus_2)
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Change fingerprint mode to maintenance. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -185,7 +185,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_max_plus_2)
 	 * operation is finished.
 	 */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 }
 
@@ -203,7 +203,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_max)
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Change fingerprint mode to maintenance. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -223,7 +223,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_max)
 	 * operation is finished.
 	 */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 }
 
@@ -241,7 +241,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_max_minus_1)
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Change fingerprint mode to maintenance. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -261,7 +261,7 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_deal_pixel_max_minus_1)
 	 * operation is finished.
 	 */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_SENSOR_MAINTENANCE);
 }
 
@@ -294,7 +294,7 @@ static void fpsensor_before(void *f)
 	};
 	struct ec_response_fp_mode response;
 
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_equal(response.mode, 0);
 
 	/* Give opportunity for fpsensor task to change mode. */

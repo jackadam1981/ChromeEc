@@ -51,7 +51,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_start_stop)
 	struct ec_response_fp_mode response;
 
 	/* Start enroll session. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -63,7 +63,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_start_stop)
 
 	/* Stop enroll session. */
 	params.mode = 0;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode &
 		      (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -72,7 +72,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_start_stop)
 
 	/* Confirm that enroll session is not running. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_ENROLL_SESSION);
 
 	/* Make sure the 'enroll_finish' callback was called. */
@@ -90,7 +90,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_start_failure)
 	mock_alg_enroll_start_fake.return_val = -EINVAL;
 
 	/* Try to start enroll session. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -99,7 +99,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_start_failure)
 
 	/* Confirm that enroll session is not running. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_ENROLL_SESSION);
 
 	/* Make sure that 'enroll_finish' callback was NOT called. */
@@ -115,7 +115,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_configure_detect)
 	struct fingerprint_sensor_state state;
 
 	/* Start enroll session. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -128,7 +128,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_configure_detect)
 
 	/* Stop enroll session. */
 	params.mode = 0;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode &
 		      (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -150,7 +150,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step)
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -207,7 +207,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_failure)
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -246,7 +246,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_failure)
 
 	/* Confirm that enroll session is still running. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_ENROLL_SESSION);
 }
 
@@ -260,7 +260,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_low_quality_warning)
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -310,7 +310,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_low_quality_warning)
 
 	/* Confirm that enroll session is still running. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_ENROLL_SESSION);
 }
 
@@ -324,7 +324,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_failed)
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -376,7 +376,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_failed)
 
 	/* Confirm that enroll session is not running. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_ENROLL_SESSION);
 }
 
@@ -391,7 +391,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 
@@ -442,7 +442,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 
 	/* Confirm that enroll session is not running. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_ENROLL_SESSION);
 
 	/* Confirm that there is 1 valid template. */
@@ -482,7 +482,7 @@ static void fpsensor_before(void *f)
 	struct ec_response_fp_mode response;
 	uint32_t fp_events;
 
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_equal(response.mode, 0);
 
 	/* Give opportunity for fpsensor task to change mode. */

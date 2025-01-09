@@ -258,7 +258,7 @@ ZTEST_USER(fpsensor_template, test_fp_frame_get_encrypted_template_success)
 	struct ec_response_fp_read_match_secret secret_response;
 
 	/* Switch mode to enroll. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode &
 		     (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE));
 

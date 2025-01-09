@@ -40,7 +40,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_mode)
 	struct fingerprint_sensor_state state;
 
 	/* Detect finger on the sensor. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -48,7 +48,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_mode)
 
 	/* Confirm that fpsensor task is waiting for finger. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 
 	/* Confirm that detect mode was enabled. */
@@ -57,7 +57,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_mode)
 
 	/* Disable finger detection */
 	params.mode = 0;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_DOWN);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -78,7 +78,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_present)
 	uint32_t fp_events;
 
 	/* Detect finger on the sensor. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -103,7 +103,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_present)
 	 * detected.
 	 */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_DOWN);
 }
 
@@ -116,7 +116,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_partial)
 	struct fingerprint_sensor_state state;
 
 	/* Detect finger on the sensor. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -135,7 +135,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_partial)
 
 	/* Confirm that finger down flag is still set. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 }
 
@@ -147,7 +147,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_no_finger)
 	struct ec_response_fp_mode response;
 
 	/* Detect finger on the sensor. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -164,7 +164,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_down_no_finger)
 
 	/* Confirm that finger down flag is still set. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_DOWN);
 }
 
@@ -182,7 +182,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_up_mode)
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Detect finger up. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -190,7 +190,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_up_mode)
 
 	/* Confirm that fpsensor task is waiting for finger up. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Confirm that detect mode was enabled. */
@@ -199,7 +199,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_up_mode)
 
 	/* Disable finger up detection */
 	params.mode = 0;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -219,7 +219,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_up_no_finger_no_interrupt)
 	uint32_t fp_events;
 
 	/* Detect finger up. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -227,7 +227,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_up_no_finger_no_interrupt)
 
 	/* Confirm that fpsensor task is waiting for finger up. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Check that no MKBP event was triggered yet. */
@@ -244,7 +244,7 @@ ZTEST_USER(fpsensor_finger_presence, test_finger_up_no_finger_no_interrupt)
 
 	/* Confirm that finger up flag is not set. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_UP);
 }
 
@@ -264,7 +264,7 @@ ZTEST_USER(fpsensor_finger_presence,
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Detect finger up. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -286,7 +286,7 @@ ZTEST_USER(fpsensor_finger_presence,
 
 	/* Confirm that finger up flag is not set after the finger is up. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_UP);
 }
 
@@ -306,7 +306,7 @@ ZTEST_USER(fpsensor_finger_presence,
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Detect finger up. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -327,7 +327,7 @@ ZTEST_USER(fpsensor_finger_presence,
 
 	/* Confirm that finger up flag is not set after the finger is up. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_UP);
 }
 
@@ -346,7 +346,7 @@ ZTEST_USER(fpsensor_finger_presence,
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Detect finger up. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -364,7 +364,7 @@ ZTEST_USER(fpsensor_finger_presence,
 
 	/* Confirm that finger up flag is still set. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 }
 
@@ -384,7 +384,7 @@ ZTEST_USER(fpsensor_finger_presence,
 	fingerprint_set_state(fp_sim, &state);
 
 	/* Detect finger up. */
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_FINGER_UP);
 
 	/* Give opportunity for fpsensor task to change mode. */
@@ -405,7 +405,7 @@ ZTEST_USER(fpsensor_finger_presence,
 
 	/* Confirm that finger up flag is not set after the finger is up. */
 	params.mode = FP_MODE_DONT_CHANGE;
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_false(response.mode & FP_MODE_FINGER_UP);
 }
 
@@ -438,7 +438,7 @@ static void fpsensor_before(void *f)
 	};
 	struct ec_response_fp_mode response;
 
-	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_ok(ec_cmd_fp_mode_v1(NULL, &params, &response));
 	zassert_equal(response.mode, 0);
 
 	/* Give opportunity for fpsensor task to change mode. */
