@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ff3a4ee_763b95bf",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-09T05:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d093acea_0b1d0b43",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed06fa7_ebe5a4d0",
@@ -139,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2990f4a_0213534e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-09T05:03:50Z",
+      "side": 1,
+      "message": "thank you for the suggestions, is it okay if I file a bug and address these in a followup CLs?",
+      "parentUuid": "b86e72c0_3727c3df",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54fdb941_75d05edf",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
         "patchSetId": 7
@@ -150,6 +198,30 @@
       "writtenOn": "2025-01-08T16:44:00Z",
       "side": 1,
       "message": "you can now use `VIVALDI_KEYS_STRAUSS_T14` here",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "1e970e7bda527e1cedbd68a4ea19ca92c21e57a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ab0f28_0768c2fd",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-09T05:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fdb941_75d05edf",
       "range": {
         "startLine": 18,
         "startChar": 0,
