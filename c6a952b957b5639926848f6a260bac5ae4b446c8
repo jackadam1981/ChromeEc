@@ -51,6 +51,42 @@
       "message": "You\u0027ll need to provide some analysis to verify that this is backwards/forwards compatible. e.g., if the AP code uses 5 bits and the firmware is an old version that only supports 3 bits and vice-versa. (Otherwise, we will need to create a new version of the FP mode command.)",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9591d623_e64963ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-09T06:06:11Z",
+      "side": 1,
+      "message": "yes exactly, this is the CL.",
+      "parentUuid": "7baf4674_2edfc697",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf08225_c9d28649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-09T06:06:11Z",
+      "side": 1,
+      "message": "Is there any reading material to understand what AP code uses vs. firmware. My understanding is that the RO image of the firmware does not change; however, the RW image changes. I am not sure I understand how the AP comes into the play here (I assume through host commands? and how the command versions come into play)\n\nThe image capture mode is set in two situations:\n1) [fpcapture](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor_debug.cc;l\u003d137?q\u003dplatform%2Fec%20command_fpcapture\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d136-,137,-138), which is a console command\n2) [cmd_fp_mode](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/ectool.cc;l\u003d1922?q\u003dectool.cc\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d1921-,1922,-1923), which is an ectool command.\n\nSo it does not seem there is any host command that is used to set the capture image mode.",
+      "parentUuid": "7f4edeae_6234d257",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
