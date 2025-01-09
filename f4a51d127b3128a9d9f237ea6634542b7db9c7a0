@@ -34,6 +34,24 @@
       "parentUuid": "9df57bcd_1327971b",
       "revId": "f4a51d127b3128a9d9f237ea6634542b7db9c7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890b7a10_d2373648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-09T21:11:26Z",
+      "side": 1,
+      "message": "\u003e Is this the real renode latest or is this simply the latests version pinned on CIPD?\n\nThat\u0027s just the most recent version that is built by the [subtool builder](https://www.chromium.org/chromium-os/developer-library/guides/portage/subtools-builder/) using the Renode ebuild (our pinned version, not Renode nightly).\n\nI can leave the debian install script and just give people the option of the tarball or deb if they want to use the latest version.",
+      "parentUuid": "32e4d61f_718974c5",
+      "revId": "f4a51d127b3128a9d9f237ea6634542b7db9c7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
