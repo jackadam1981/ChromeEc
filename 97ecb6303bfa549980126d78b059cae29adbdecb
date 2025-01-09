@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba48c138_be39bb5e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3974,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-09T20:39:55Z",
+      "side": 1,
+      "message": "Based on my review of the x86 power implementations (`power/amd_x86.c` and `power/intel_x86.c`), the only difference from `SHUTDOWN` is that `SHUTDOWN_COMPLETE` comes after switching off some GPIOs controlling power to the wireless chipset(s). That ought to be immediate and not impact the timing of the power policy change on x86 boards.",
+      "range": {
+        "startLine": 3974,
+        "startChar": 13,
+        "endLine": 3974,
+        "endChar": 43
+      },
+      "revId": "97ecb6303bfa549980126d78b059cae29adbdecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
