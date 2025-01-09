@@ -34,6 +34,24 @@
       "parentUuid": "7c896e96_b5b5caa1",
       "revId": "0f10d4c58f321d1e898fa94cd7e544dd98afa45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e92c8aa4_57268ea7",
+        "filename": "zephyr/program/rauru/hylia/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-01-09T07:47:26Z",
+      "side": 1,
+      "message": "Yes it\u0027s the same, I\u0027m just seeking if we could replace below sector by single line : \n```\n\tif (current_level \u003c 0)\n\t\tcurrent_level \u003d 0;\n\n\tif (current_level \u003e\u003d ARRAY_SIZE(fan_step_table))\n\t\tcurrent_level \u003d ARRAY_SIZE(fan_step_table) - 1;\n```",
+      "parentUuid": "ec6ef45f_56c9889c",
+      "revId": "0f10d4c58f321d1e898fa94cd7e544dd98afa45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
