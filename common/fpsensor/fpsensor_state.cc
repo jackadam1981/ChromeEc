@@ -235,7 +235,8 @@ static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 
 	return ret;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 {
