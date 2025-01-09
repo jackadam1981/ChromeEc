@@ -3,6 +3,148 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7204813_d6963b68",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-09T22:21:46Z",
+      "side": 1,
+      "message": "I believe here you should check if the mode is `is_raw_capture` and then cast it into a uint16_t buffer??\n\nIf you look at the fingerprint image generated with this code, it is a large image with duplicate fingerprint images, did you observe this?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8bdaf640_b05ab040",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "static void upload_pgm_image(uint8_t *frame, bool is_raw_capture)\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 66,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t *ptr_8 \u003d (uint8_t *)frame;\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "\tif (is_raw_capture)\n\t\tptr_8 \u003d ptr_16;\n\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "\t\tfor (int x \u003d 0; x \u003c FP_SENSOR_RES_X; x++, ptr_8++)\n\t\t\tCPRINTF(\"%d \", *ptr_8);\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 136,
+                "startChar": 0,
+                "endLine": 140,
+                "endChar": 0
+              },
+              "replacement": "\tif (rc \u003d\u003d EC_SUCCESS) {\n\t\tbool is_raw_capture \u003d (mode \u0026 FP_MODE_CAPTURE_TYPE_MASK) \u003d\u003d\n\t\t\t\tFP_MODE_CAPTURE_TYPE_RAW;\n\t\tupload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, is_raw_capture);\n\t}\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 194,
+                "startChar": 0,
+                "endLine": 195,
+                "endChar": 0
+              },
+              "replacement": "\tupload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, false);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ddf6cc_3e00a9f2",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-09T22:21:46Z",
+      "side": 1,
+      "message": "I believe here, you should define whether the capture is a raw capture, and this will not add the offset:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d469?q\u003dplatform%2Fec%20is_test_capture\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d468-,469,-470",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "42e59e2b_3ea9ea34",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_utils.cc",
+              "range": {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "\t\tcapture_type \u003d\u003d FP_CAPTURE_QUALITY_TEST ||\n\t\tcapture_type \u003d\u003d FP_CAPTURE_VENDOR_RAW_FORMAT);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4abc9c11_c4f1456b",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
