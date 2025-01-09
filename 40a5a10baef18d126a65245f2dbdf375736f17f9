@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332dafd6_1775832e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-09T11:18:36Z",
+      "side": 1,
+      "message": "\u003e I believe it will reboot if the thread is critical, based on the discussion with Tom. Do you agree?\n\nWe need unit test for that, but let\u0027s discuss it in CL that adds test.",
+      "parentUuid": "2912f893_4da546de",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "40a5a10baef18d126a65245f2dbdf375736f17f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c83d2e2_50df61d3",
