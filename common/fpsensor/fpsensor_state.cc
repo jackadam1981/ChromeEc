@@ -176,7 +176,7 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_ENC_STATUS, fp_command_encryption_status,
 static int validate_fp_mode(const uint32_t mode)
 {
 	uint32_t capture_type = FP_CAPTURE_TYPE(mode);
-	uint32_t algo_mode = mode & ~FP_MODE_CAPTURE_TYPE_MASK;
+	uint32_t algo_mode = mode & ~FP_MODE_CAPTURE_TYPE_MASK_v1;
 	uint32_t cur_mode = global_context.sensor_mode;
 
 	if (capture_type >= FP_CAPTURE_TYPE_MAX)
@@ -235,7 +235,7 @@ static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 
 	return ret;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(1));
 
 static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 {
