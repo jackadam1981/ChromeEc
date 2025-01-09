@@ -22,6 +22,30 @@
       },
       "revId": "b32c228412477b63980fa700172968ddd89d27cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e772d13a_a5b1a3e3",
+        "filename": "zephyr/libc/Kconfig",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-09T17:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767b4663_d61d7daf",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "b32c228412477b63980fa700172968ddd89d27cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
