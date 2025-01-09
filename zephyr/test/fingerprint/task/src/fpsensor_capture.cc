@@ -33,8 +33,8 @@ static uint8_t frame_buffer[IMAGE_SIZE];
 ZTEST_USER(fpsensor_capture, test_finger_capture_simple_image_detection_enabled)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -67,8 +67,8 @@ ZTEST_USER(fpsensor_capture, test_finger_capture_simple_image_detection_enabled)
 ZTEST_USER(fpsensor_capture, test_finger_capture_simple_image_mode_is_correct)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -101,8 +101,8 @@ ZTEST_USER(fpsensor_capture, test_finger_capture_simple_image_mode_is_correct)
 ZTEST_USER(fpsensor_capture, test_finger_capture_finger_state_partial)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -139,8 +139,8 @@ ZTEST_USER(fpsensor_capture, test_finger_capture_finger_state_partial)
 ZTEST_USER(fpsensor_capture, test_finger_capture_finger_state_none)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -172,8 +172,8 @@ ZTEST_USER(fpsensor_capture, test_finger_capture_finger_state_none)
 ZTEST_USER(fpsensor_capture, test_finger_capture_simple_image_scan_too_fast)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -208,8 +208,8 @@ ZTEST_USER(fpsensor_capture,
 	   test_finger_capture_simple_image_scan_success_mode_cleared)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -243,8 +243,8 @@ ZTEST_USER(fpsensor_capture,
 	   test_finger_capture_simple_image_scan_success_mkbp_event)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
@@ -282,8 +282,8 @@ ZTEST_USER(fpsensor_capture,
 	   test_finger_capture_simple_image_scan_success_get_frame)
 {
 	struct ec_params_fp_mode params = {
-		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+		.mode = FP_MODE_CAPTURE | (FP_CAPTURE_SIMPLE_IMAGE
+					   << FP_MODE_CAPTURE_TYPE_SHIFT_v1),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;

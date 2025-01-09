@@ -8211,6 +8211,10 @@ struct ec_params_fp_passthru {
 /* Capture types defined in bits [30..28] */
 #define FP_MODE_CAPTURE_TYPE_SHIFT 28
 #define FP_MODE_CAPTURE_TYPE_MASK (0x7 << FP_MODE_CAPTURE_TYPE_SHIFT)
+
+/* Capture types defined in bits [30..26] */
+#define FP_MODE_CAPTURE_TYPE_SHIFT_v1 26
+#define FP_MODE_CAPTURE_TYPE_MASK_v1 (0x1F << FP_MODE_CAPTURE_TYPE_SHIFT_v1)
 /**
  * enum fp_capture_type - Specifies the "mode" when capturing images.
  *
@@ -8237,8 +8241,9 @@ enum fp_capture_type {
 	FP_CAPTURE_TYPE_MAX,
 };
 /* Extracts the capture type from the sensor 'mode' word */
-#define FP_CAPTURE_TYPE(mode) \
-	(((mode) & FP_MODE_CAPTURE_TYPE_MASK) >> FP_MODE_CAPTURE_TYPE_SHIFT)
+#define FP_CAPTURE_TYPE(mode)                       \
+	(((mode) & FP_MODE_CAPTURE_TYPE_MASK_v1) >> \
+	 FP_MODE_CAPTURE_TYPE_SHIFT_v1)
 
 struct ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
