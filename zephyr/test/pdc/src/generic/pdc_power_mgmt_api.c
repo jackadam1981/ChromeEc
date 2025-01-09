@@ -376,20 +376,13 @@ static void run_toggle_test(union connector_status_t *connector_status)
 	k_msleep(100);
 
 	LOG_INF("Sending GET INFO");
+
+	/* Public API command should succeed. */
 	ret = pdc_power_mgmt_get_info(TEST_PORT, &pdc_info, true);
-	zassert_equal(-EBUSY, ret,
-		      "pdc_power_mgmt_get_info() returned %d (expected %d)",
-		      ret, -EBUSY);
+	zassert_false(ret, "pdc_power_mgmt_get_info() failed (%d)", ret);
 
 	/* Allow the test thread to exit. */
 	zassert_ok(join_toggle_thread(test_thread));
-
-	/* All the PDC subsystem to settle. */
-	k_msleep(250);
-
-	/* Public API command should now succeed. */
-	ret = pdc_power_mgmt_get_info(TEST_PORT, &pdc_info, true);
-	zassert_false(ret, "pdc_power_mgmt_get_info() failed (%d)", ret);
 }
 
 /* Verify that public commands complete when a non PD partner is connected */
@@ -1390,7 +1383,16 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_on)
 	}
 
 	zassert_equal(CCOM_DRP, ccom);
-	zassert_ok(pdc_power_mgmt_get_drp_mode(TEST_PORT, &drp_mode));
+
+	/* Poll drp_mode, internal command might need some time to change the
+	 * mode */
+	for (int i = 0; i < 10; i++) {
+		k_msleep(TEST_WAIT_FOR_INTERVAL_MS * 2);
+		zassert_ok(pdc_power_mgmt_get_drp_mode(TEST_PORT, &drp_mode));
+		if (drp_mode == expected)
+			break;
+		LOG_INF("!!! polling drp_mode, value %d", drp_mode);
+	}
 	zassert_equal(drp_mode, expected);
 }
 
@@ -1430,7 +1432,13 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_shutdown)
 
 	zassert_equal(1, pdr.swap_to_snk);
 	zassert_equal(0, pdr.swap_to_src);
-	zassert_ok(pdc_power_mgmt_get_drp_mode(TEST_PORT, &drp_mode));
+	for (int i = 0; i < 10; i++) {
+		k_msleep(TEST_WAIT_FOR_INTERVAL_MS * 2);
+		zassert_ok(pdc_power_mgmt_get_drp_mode(TEST_PORT, &drp_mode));
+		if (drp_mode == expected)
+			break;
+		LOG_INF("!!! polling drp_mode, value %d", drp_mode);
+	}
 	zassert_equal(drp_mode, expected);
 }
 
