@@ -105,6 +105,24 @@
       "parentUuid": "2bf08225_c9d28649",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fa7d9a_f1eaa560",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-09T19:23:58Z",
+      "side": 1,
+      "message": "\u003e My understanding is that the RO image of the firmware does not change; however, the RW image changes.\n\nCorrect, and since these are in the fingerprint-related code these commands should only be included for RW (double-check).\n\n\u003e I assume through host commands? \n\nYes, the host commands are how the AP sends commands to the FPMCU. \n\nThis macro is part of the [`EC_CMD_FP_MODE`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8181-8182;drc\u003de6b852b94bb345cb981319aedaf6a7046fb137c4) command, so you\u0027ll want to do a codesearch to see where that command is referenced. (I would expect there to be a command in `libec` and then `biod` is probably using that `libec` command, but there may be other usages.)",
+      "parentUuid": "3bf7388d_f791a399",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
