@@ -1965,7 +1965,8 @@ int cmd_fp_mode(int argc, char *argv[])
 		mode |= capture_type << FP_MODE_CAPTURE_TYPE_SHIFT;
 
 	p.mode = mode;
-	rv = ec_command(EC_CMD_FP_MODE, 0, &p, sizeof(p), &r, sizeof(r));
+	int cmdver = ec_cmd_version_supported(EC_CMD_FP_MODE, 1) ? 1 : 0;
+	rv = ec_command(EC_CMD_FP_MODE, cmdver, &p, sizeof(p), &r, sizeof(r));
 	if (rv < 0)
 		return rv;
 
