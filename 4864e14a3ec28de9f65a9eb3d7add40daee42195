@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f89cd1_0f82c44f",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f4c1b3_6e438fd0",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b307c6d6_1692983b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-08T22:02:26Z",
       "side": 1,
       "message": "`average_temperature` is slightly misleading. The function does more than just calculate an average; it also implements the zone logic. A name like `update_thermal_state` might be more accurate.",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa3f7fc_34249a6b",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b307c6d6_1692983b",
       "range": {
         "startLine": 37,
         "startChar": 12,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5712a64_16a30a15",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb7ddc4e_7b3b08a6",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb324834_e7949426",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-01-08T22:02:26Z",
       "side": 1,
       "message": "please define hardcoded thresholds and counters, e.g.:\n```\n#define TEMP_ZONE_1_THRESHOLD 75\n#define TEMP_ZONE_0_THRESHOLD 70\n#define INCREMENT_LEVEL_COUNT 3\n#define DECLINE_LEVEL_COUNT 1\n#define CPU_TEMP_THRESHOLD 55\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3bd75fa_58e0d1be",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb324834_e7949426",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -122,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "428233d5_e0341945",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc964497_27552992",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be2978a6_44dd60bd",
@@ -135,6 +243,30 @@
       "writtenOn": "2025-01-08T22:02:26Z",
       "side": 1,
       "message": "please define this number, e.g.:\n\n#define TEMP_ZONE_1_CURRENT_LIMIT 3500 /* mA */",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "786a21b8_204fd406",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be2978a6_44dd60bd",
       "range": {
         "startLine": 94,
         "startChar": 12,
@@ -170,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e54cae2_beac1373",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "The 104th line was moved from this [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6096507).\n\nI discussed with GanXiang that the return of -1 in line 104 requires the execution of `charge_problem()` to print the log, but this does not seem to be necessary here.\n```\nif (IS_ENABLED(CONFIG_CHARGER_PROFILE_OVERRIDE) \u0026\u0026\n\t    get_chg_ctrl_mode() \u003d\u003d CHARGE_CONTROL_NORMAL) {\n\t\tsleep_usec \u003d charger_profile_override(\u0026curr);\n\t\tif (sleep_usec \u003c 0)\n\t\t\tcharge_problem(PR_CUSTOM, sleep_usec);\n\t}\n```",
+      "parentUuid": "3d9ecd83_6d05a619",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "487de209_04bf84ce",
         "filename": "zephyr/program/rauru/hylia/src/thermal.c",
         "patchSetId": 4
@@ -181,6 +337,24 @@
       "writtenOn": "2025-01-08T14:08:59Z",
       "side": 1,
       "message": "```suggestion\n\t/* This policy only execute in state s0 */\n```",
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e46413_551c0530",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-09T06:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487de209_04bf84ce",
       "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
