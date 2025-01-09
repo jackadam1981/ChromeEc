@@ -2324,7 +2324,13 @@ static void pdc_send_cmd_start_entry(void *obj)
 	port->send_cmd_return_state = port->last_state;
 	port->send_cmd.wait_counter = 0;
 
-	if (port->send_cmd.intern.pending) {
+	/* Alternating between handling public and internal commands.
+	 * If last command is internal, try public first.
+	 */
+	if (port->cmd == &port->send_cmd.intern &&
+	    port->send_cmd.public.pending) {
+		port->cmd = &port->send_cmd.public;
+	} else if (port->send_cmd.intern.pending) {
 		port->cmd = &port->send_cmd.intern;
 	} else {
 		port->cmd = &port->send_cmd.public;
