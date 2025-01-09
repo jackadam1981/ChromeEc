@@ -1023,20 +1023,16 @@ static void send_cmd_init(struct pdc_port_t *port)
 }
 
 /**
- * @brief Run a command started by a public api function call
+ * @brief Run a queued command
  */
-static void send_pending_public_commands(struct pdc_port_t *port)
+static void send_pending_commands(struct pdc_port_t *port)
 {
-	/* If we are running public commands, policy state machine must have
-	 * finished settling. Post if not already set.
-	 */
-	if (k_event_test(&port->settle_event, PDC_SM_SETTLED_EVENT) == 0) {
-		k_event_post(&port->settle_event, PDC_SM_SETTLED_EVENT);
-	}
-
 	/* Send a pending public command */
-	if (port->send_cmd.public.pending) {
+	if (port->send_cmd.public.pending || port->send_cmd.intern.pending) {
 		set_pdc_state(port, PDC_SEND_CMD_START);
+	} else if (k_event_test(&port->settle_event, PDC_SM_SETTLED_EVENT) ==
+		   0) {
+		k_event_post(&port->settle_event, PDC_SM_SETTLED_EVENT);
 	}
 }
 
@@ -1127,6 +1123,10 @@ static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd)
  */
 static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd)
 {
+	if (port->send_cmd.intern.pending)
+		LOG_ERR("\x1b[1;31mcmd %s pending\x1b[m",
+			pdc_cmd_names[pdc_cmd]);
+
 	k_mutex_lock(&port->mtx, K_FOREVER);
 	port->send_cmd.intern.cmd = pdc_cmd;
 	port->send_cmd.intern.error = 0;
@@ -1446,7 +1446,7 @@ static void run_unattached_policies(struct pdc_port_t *port)
 		return;
 	}
 
-	send_pending_public_commands(port);
+	send_pending_commands(port);
 }
 
 static bool should_swap_to_source(struct pdc_port_t *port)
@@ -1574,7 +1574,7 @@ static void run_snk_policies(struct pdc_port_t *port)
 		}
 	}
 
-	send_pending_public_commands(port);
+	send_pending_commands(port);
 }
 
 static void run_typec_snk_policies(struct pdc_port_t *port)
@@ -1617,7 +1617,7 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		charge_manager_update_dualrole(config->connector_num,
 					       CAP_DEDICATED);
 	} else {
-		send_pending_public_commands(port);
+		send_pending_commands(port);
 	}
 }
 
@@ -1700,7 +1700,7 @@ static void run_src_policies(struct pdc_port_t *port)
 		return;
 	}
 
-	send_pending_public_commands(port);
+	send_pending_commands(port);
 }
 
 static void run_typec_src_policies(struct pdc_port_t *port)
@@ -1725,7 +1725,7 @@ static void run_typec_src_policies(struct pdc_port_t *port)
 
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 	} else {
-		send_pending_public_commands(port);
+		send_pending_commands(port);
 	}
 }
 
@@ -1741,7 +1741,6 @@ static void pdc_unattached_entry(void *obj)
 	print_current_pdc_state(port);
 
 	set_attached_pdc_state(port, UNATTACHED_STATE);
-	port->send_cmd.intern.pending = false;
 
 	/* Clear any previously set cable property information */
 	port->cable_prop.raw_value[0] = 0;
@@ -1786,6 +1785,12 @@ static void pdc_unattached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
+	/* consume internal command before queuing new one */
+	if (port->send_cmd.intern.pending) {
+		send_pending_commands(port);
+		return;
+	}
+
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
 	 */
@@ -1823,8 +1828,6 @@ static void pdc_src_attached_entry(void *obj)
 	print_current_pdc_state(port);
 	set_attached_pdc_state(port, SRC_ATTACHED_STATE);
 
-	port->send_cmd.intern.pending = false;
-
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port, true);
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
@@ -1854,6 +1857,12 @@ static void pdc_src_attached_entry(void *obj)
 static void pdc_src_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+
+	/* consume internal command before queuing new one */
+	if (port->send_cmd.intern.pending) {
+		send_pending_commands(port);
+		return;
+	}
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -1943,7 +1952,6 @@ static void pdc_snk_attached_entry(void *obj)
 	print_current_pdc_state(port);
 	set_attached_pdc_state(port, SNK_ATTACHED_STATE);
 
-	port->send_cmd.intern.pending = false;
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		const struct pdc_config_t *config = port->dev->config;
 		int port_number = config->connector_num;
@@ -2047,6 +2055,12 @@ static void pdc_snk_attached_run(void *obj)
 	uint32_t flags;
 	size_t selected_pdo = 0;
 	int rv;
+
+	/* consume internal command before queuing new one */
+	if (port->send_cmd.intern.pending) {
+		send_pending_commands(port);
+		return;
+	}
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2324,7 +2338,13 @@ static void pdc_send_cmd_start_entry(void *obj)
 	port->send_cmd_return_state = port->last_state;
 	port->send_cmd.wait_counter = 0;
 
-	if (port->send_cmd.intern.pending) {
+	/* Alternating between handling public and internal commands.
+	 * If last command is internal, try public first.
+	 */
+	if (port->cmd == &port->send_cmd.intern &&
+	    port->send_cmd.public.pending) {
+		port->cmd = &port->send_cmd.public;
+	} else if (port->send_cmd.intern.pending) {
 		port->cmd = &port->send_cmd.intern;
 	} else {
 		port->cmd = &port->send_cmd.public;
