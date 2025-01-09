@@ -1823,7 +1823,8 @@ static void pdc_src_attached_entry(void *obj)
 	print_current_pdc_state(port);
 	set_attached_pdc_state(port, SRC_ATTACHED_STATE);
 
-	port->send_cmd.intern.pending = false;
+	if (port->send_cmd.intern.pending)
+		set_pdc_state(port, PDC_SEND_CMD_START);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port, true);
@@ -1943,7 +1944,9 @@ static void pdc_snk_attached_entry(void *obj)
 	print_current_pdc_state(port);
 	set_attached_pdc_state(port, SNK_ATTACHED_STATE);
 
-	port->send_cmd.intern.pending = false;
+	if (port->send_cmd.intern.pending)
+		set_pdc_state(port, PDC_SEND_CMD_START);
+
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		const struct pdc_config_t *config = port->dev->config;
 		int port_number = config->connector_num;
@@ -2324,7 +2327,13 @@ static void pdc_send_cmd_start_entry(void *obj)
 	port->send_cmd_return_state = port->last_state;
 	port->send_cmd.wait_counter = 0;
 
-	if (port->send_cmd.intern.pending) {
+	/* Alternating between handling public and internal commands.
+	 * If last command is internal, try public first.
+	 */
+	if (port->cmd == &port->send_cmd.intern &&
+	    port->send_cmd.public.pending) {
+		port->cmd = &port->send_cmd.public;
+	} else if (port->send_cmd.intern.pending) {
 		port->cmd = &port->send_cmd.intern;
 	} else {
 		port->cmd = &port->send_cmd.public;
