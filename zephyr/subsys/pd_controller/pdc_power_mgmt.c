@@ -3459,18 +3459,10 @@ test_mockable bool pdc_power_mgmt_get_vconn_state(int port)
 		return false;
 	}
 
-	pdc_data[port]->port.public_api_buff = (uint8_t *)&vconn_sourcing;
+	int rv = pdc_is_vconn_sourcing(pdc_data[port]->port.pdc,
+				   &vconn_sourcing);
 
-	/* Block until command completes */
-	if (public_api_block(port, CMD_PDC_IS_VCONN_SOURCING)) {
-		/* something went wrong */
-		pdc_data[port]->port.public_api_buff = NULL;
-		return false;
-	}
-
-	pdc_data[port]->port.public_api_buff = NULL;
-
-	return vconn_sourcing;
+	return rv == 0 && vconn_sourcing;
 }
 
 bool pdc_power_mgmt_get_partner_usb_comm_capable(int port)
