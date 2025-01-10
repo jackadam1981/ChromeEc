@@ -123,6 +123,24 @@
       "parentUuid": "3bf7388d_f791a399",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46dfaf10_0134ddd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-10T00:44:20Z",
+      "side": 1,
+      "message": "Hello Tom, Just to make sure we are on the same page:\n\nDoes creating the second version require create _v2 of the macros?\n\n```\n#define FP_MODE_CAPTURE_TYPE_SHIFT_v2 \n#define FP_MODE_CAPTURE_TYPE_MASK_v2\n#define FP_CAPTURE_TYPE_v2(mode)\n```\n`P_CAPTURE_TYPE` is used a lot in the state machine.",
+      "parentUuid": "46fa7d9a_f1eaa560",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
