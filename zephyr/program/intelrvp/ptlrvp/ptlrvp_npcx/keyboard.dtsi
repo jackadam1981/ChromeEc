@@ -50,7 +50,7 @@
 		&ksi7_gp22
 		&kso00_gp21
 		&kso01_gp20
-		/* KSO2 is inverted and implemented by GPIO */
+		&kso02_gp17
 		&kso03_gp16
 		&kso04_gp15
 		&kso05_gp14
@@ -77,7 +77,7 @@
 		&ksi7_gpio_gp22
 		&kso00_gpio_gp21
 		&kso01_gpio_gp20
-		/* KSO2 is inverted and implemented by GPIO */
+		&kso02_gpio_gp17
 		&kso03_gpio_gp16
 		&kso04_gpio_gp15
 		&kso05_gpio_gp14
@@ -94,10 +94,13 @@
 		&kso16_gpio_gp03
 	>;
 	pinctrl-names = "default", "sleep";
+
 	row-size = <8>;
 	col-size = <17>;
 	debounce-down-ms = <15>;
 	debounce-up-ms = <15>;
+	settle-time-us = <80>;
+
 	actual-key-mask = <
 		0x08 /* C0 */
 		0xff /* C1 */
@@ -121,7 +124,7 @@
 	kso-gpio {
 		compatible = "cros-ec,col-gpio";
 		col-num = <2>;
-		col-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+		col-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
 	};
 
 	boot-keys {

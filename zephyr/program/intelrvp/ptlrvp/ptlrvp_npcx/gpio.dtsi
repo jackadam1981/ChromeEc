@@ -343,11 +343,9 @@
 		 * Keyboard pins
 		 * KSO00
 		 * KSO01
+		 * KSO02
 		 * KSO03
 		 */
-		c-ec-kso-02-inv {
-			gpios = <&gpio1 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
-		};
 
 		/* eSPI pins */
 		/* GPIO54: MECC_ESPI_RST_N */
