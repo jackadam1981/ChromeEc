@@ -52,6 +52,24 @@
       "parentUuid": "089d65ae_56b4c391",
       "revId": "c9435d7d15270543c7923d0ef84143dde22fcaf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "053588f5_0a913eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-10T22:45:35Z",
+      "side": 1,
+      "message": "and I think that\u0027s for some cases while booting:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/keyboard_scan.c;l\u003d804",
+      "parentUuid": "35c6b913_371922b7",
+      "revId": "c9435d7d15270543c7923d0ef84143dde22fcaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
