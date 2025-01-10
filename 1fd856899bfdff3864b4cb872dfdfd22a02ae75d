@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b628d97_6c24036f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-10T15:49:52Z",
+      "side": 1,
+      "message": "Nit - can you add a comment noting that the nodelabel alias needs to be set before including the shared fan devicetree?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "1fd856899bfdff3864b4cb872dfdfd22a02ae75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352b9e8e_73799de2",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-10T15:49:52Z",
+      "side": 1,
+      "message": "Add a similar comment here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "1fd856899bfdff3864b4cb872dfdfd22a02ae75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
