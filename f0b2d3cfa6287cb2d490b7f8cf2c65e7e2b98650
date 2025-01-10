@@ -34,6 +34,24 @@
       "parentUuid": "7e4b7ef7_06acb214",
       "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b93819b_8c9f46d0",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-10T19:08:55Z",
+      "side": 1,
+      "message": "Slight correction: Per PD r3.2 v1.1 ss 5.9.2, the number of Data Objects in a BIST Test Data message should be 7. I don\u0027t think that actually matters at the TCPCI driver layer, but it would be nice to use a valid message. I htink your size was only off by 1.\n\nSo\n* The header should be `PD_HEADER(..., /*cnt\u003d*/7, ...)`\n* `buf` should be `uint8_t buf[sizeof(input_header) + sizeof(input_bdo) * 7] \u003d {0};`, which should end up being 32 like in the example I linked.\n* I guess you should initialize the rest of `buf` to 0 as above. The actual contents of the Data Objects 2-7 shouldn\u0027t matter for the test, but its probably best if they\u0027re initialized deterministically.",
+      "parentUuid": "bf6e34fa_28fbab03",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
