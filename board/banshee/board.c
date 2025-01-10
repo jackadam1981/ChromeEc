@@ -78,6 +78,17 @@ void battery_present_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&board_set_charger_current_limit_deferred_data, 0);
 }
 
+struct boot_key_entry boot_key_list[] = {
+	[BOOT_KEY_ESC] = { BANSHEE_KEYBOARD_COL_ESC, BANSHEE_KEYBOARD_ROW_ESC },
+	[BOOT_KEY_DOWN_ARROW] = { BANSHEE_KEYBOARD_COL_DOWN,
+				  BANSHEE_KEYBOARD_ROW_DOWN },
+	[BOOT_KEY_LEFT_SHIFT] = { BANSHEE_KEYBOARD_COL_LEFT_SHIFT,
+				  BANSHEE_KEYBOARD_ROW_LEFT_SHIFT },
+	[BOOT_KEY_REFRESH] = { BANSHEE_KEYBOARD_COL_REFRESH,
+			       BANSHEE_KEYBOARD_ROW_REFRESH },
+};
+BUILD_ASSERT(ARRAY_SIZE(boot_key_list) == BOOT_KEY_COUNT);
+
 static uint32_t board_id;
 static void configure_keyboard(void)
 {
