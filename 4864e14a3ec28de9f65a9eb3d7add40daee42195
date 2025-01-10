@@ -348,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b93ed9_30f9c802",
+        "filename": "zephyr/program/rauru/hylia/src/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-10T06:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c01ea7_86964234",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "4864e14a3ec28de9f65a9eb3d7add40daee42195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "487de209_04bf84ce",
