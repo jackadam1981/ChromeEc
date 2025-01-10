@@ -16,6 +16,24 @@
       "message": "yeah that works but timings may be off because the col2 has some extra propagation delay that is currently handled by the code on this node, can you try to either:\n\n- just change this line to `GPIO_ACTIVE_LOW`, or\n- add `settle-time-us \u003d \u003c80\u003e;`  to the parent node (aronud line 100 here)",
       "revId": "2a7d8e46dd598b83e38ec7becf5ad52211ba64e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c23d91c_8f8625cb",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2025-01-10T23:36:38Z",
+      "side": 0,
+      "message": "thank you Fabio, lots of keys are working now",
+      "parentUuid": "41db0c71_1a503e24",
+      "revId": "2a7d8e46dd598b83e38ec7becf5ad52211ba64e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
