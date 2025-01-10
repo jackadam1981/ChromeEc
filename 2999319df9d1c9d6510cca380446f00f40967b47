@@ -22,6 +22,30 @@
       },
       "revId": "2999319df9d1c9d6510cca380446f00f40967b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e899650_9dfa0fc1",
+        "filename": "zephyr/test/skyrim/tests/baseboard/src/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-01-10T19:56:48Z",
+      "side": 0,
+      "message": "crrev/c/4148773 - The author and reviewer are not at Google, so we will never know.",
+      "parentUuid": "ed53ae87_d88971b5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "2999319df9d1c9d6510cca380446f00f40967b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
