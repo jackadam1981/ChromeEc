@@ -1026,6 +1026,14 @@ void board_init(void)
 	/* Support Keyboard Pad */
 	board_update_no_keypad_by_fwconfig();
 #endif
+
+	if (gpio_get_level(GPIO_EC_VIVALDIKEYBOARD_ID)) {
+		key_typ.row_refresh = 3;
+		boot_key_list[BOOT_KEY_REFRESH].row = 3;
+	} else {
+		key_typ.row_refresh = 2;
+		boot_key_list[BOOT_KEY_REFRESH].row = 2;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
