@@ -110,10 +110,12 @@ static void configure_keyboard(void)
 		gpio_set_flags(GPIO_EC_KSO_04_INV, GPIO_ODR_HIGH);
 		gpio_set_alternate_function(GPIO_PORT_1, (BIT(5) | BIT(7)),
 					    GPIO_ALT_FUNC_DEFAULT);
-		key_typ.col_refresh = KEYBOARD_COL_ID2_REFRESH;
-		key_typ.row_refresh = KEYBOARD_ROW_ID2_REFRESH;
-		boot_key_list[BOOT_KEY_REFRESH].col = KEYBOARD_COL_ID2_REFRESH;
-		boot_key_list[BOOT_KEY_REFRESH].row = KEYBOARD_ROW_ID2_REFRESH;
+		key_typ.col_refresh = BANSHEE_KEYBOARD_COL_ID2_REFRESH;
+		key_typ.row_refresh = BANSHEE_KEYBOARD_ROW_ID2_REFRESH;
+		boot_key_list[BOOT_KEY_REFRESH].col =
+			BANSHEE_KEYBOARD_COL_ID2_REFRESH;
+		boot_key_list[BOOT_KEY_REFRESH].row =
+			BANSHEE_KEYBOARD_ROW_ID2_REFRESH;
 	}
 
 	board_id_keyboard_col_inverted((int)board_id);
