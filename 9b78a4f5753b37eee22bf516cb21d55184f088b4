@@ -16,6 +16,24 @@
       "message": "It might be work waiting to see if https://chrome-internal-review.googlesource.com/c/chromeos/infra/config/+/7946113 needs more time to propogate",
       "revId": "9b78a4f5753b37eee22bf516cb21d55184f088b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b7101b_dd954d24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-01-10T20:37:44Z",
+      "side": 1,
+      "message": "It already propogated. I think this would need to use the supplied output-dir instead of always using ec_dir. I\u0027m going to just use the old firmware recipe for now.",
+      "parentUuid": "581e1b52_7a009baa",
+      "revId": "9b78a4f5753b37eee22bf516cb21d55184f088b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
