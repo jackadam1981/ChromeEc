@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20469023_c26a54c7",
+        "filename": "zephyr/drivers/vivaldi_kbd/vivaldi_kbd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-10T10:52:52Z",
+      "side": 1,
+      "message": "this should be easy to get rid of with a patch similar to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6097452, that said this fixed the problem now and I don\u0027t have time to work on this right now and there\u0027s no point rushing it so let\u0027s go with it, thanks for writing this",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "7581088b3e0bee09852dd0ad79fd816659b08665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
