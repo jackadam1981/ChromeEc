@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c144e0_7bca5068",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2025-01-10T20:48:45Z",
+      "side": 1,
+      "message": "Is this the correct bug? It seems to be about a keyboard config.\n\nLooks like this should actually point to b/271290734.",
+      "revId": "b0e6674da6c3a22af384f374f032172f3d57d9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230467fc_aa8cdbca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2025-01-10T20:48:45Z",
+      "side": 1,
+      "message": "These are the additional references to \"mrbland\" outside of `src/platform/ec/board/mrbland/`:\n\nhttps://source.corp.google.com/search?q\u003dmrbland%20-src%2Fplatform%2Fec%2Fboard%2Fmrbland%2F\u0026ss\u003dh%2Fchrome-internal%2Fchromeos%2Fsuperproject%2F%2B%2Frefs%2Fheads%2Fmain:src%2Fplatform%2Fec%2F\n\nOf those, `src/platform/ec/bazel/all_targets.generated.bzl` is probably the only one that needs to be added to this CL with both `bland` and `mrbland` removed.",
+      "revId": "b0e6674da6c3a22af384f374f032172f3d57d9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
