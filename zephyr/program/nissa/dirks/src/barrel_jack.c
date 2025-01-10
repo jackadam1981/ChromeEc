@@ -392,3 +392,10 @@ static void power_monitor(void)
 
 /* Start power monitoring after ADCs have been initialised. */
 DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
+
+static int command_adc_imon(const struct shell *shell, size_t argc, char **argv)
+{
+	LOG_INF("imon=%d", adc_read_ppvar_pwr_in_imon());
+	return EC_SUCCESS;
+}
+SHELL_CMD_ARG_REGISTER(imon, NULL, NULL, command_adc_imon, 1, 1);

@@ -21,4 +21,7 @@ struct pwrseq_context {
 };
 #endif
 
+void all_sys_pwrgd_pass_thru(void);
+void board_after_rsmrst(int rsmrst);
+
 #endif /* __X86_COMMON_PWRSEQ_H__ */
