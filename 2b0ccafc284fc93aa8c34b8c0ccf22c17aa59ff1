@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d40f325_c14aa000",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-01-10T01:28:06Z",
+      "side": 1,
+      "message": "Nit: While the name is describing exactly what it is, how do you feel about `ec-simulator` or `ec-sim` for short?",
+      "revId": "2b0ccafc284fc93aa8c34b8c0ccf22c17aa59ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed1e12f_e0a5f614",
+        "filename": "zephyr/program/ec-aic/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-01-10T01:28:06Z",
+      "side": 1,
+      "message": "`CONFIG_BOARD_ITE_AIC`?",
+      "revId": "2b0ccafc284fc93aa8c34b8c0ccf22c17aa59ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657aaa32_101e422b",
+        "filename": "zephyr/program/ec-aic/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-01-10T01:28:06Z",
+      "side": 1,
+      "message": "`ite-aic`?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "2b0ccafc284fc93aa8c34b8c0ccf22c17aa59ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5a0a35_f59a9594",
+        "filename": "zephyr/program/ec-aic/ite-aic/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-01-10T01:28:06Z",
+      "side": 1,
+      "message": "2025",
+      "revId": "2b0ccafc284fc93aa8c34b8c0ccf22c17aa59ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
