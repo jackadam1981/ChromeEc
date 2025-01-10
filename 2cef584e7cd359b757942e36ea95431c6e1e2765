@@ -34,6 +34,24 @@
       "parentUuid": "30bd335c_86e4a565",
       "revId": "2cef584e7cd359b757942e36ea95431c6e1e2765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db89b26c_d830ac5d",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-10T18:52:36Z",
+      "side": 1,
+      "message": "`payload` is an output parameter in this call, and it should end up with the contents from `buf` that were passed into `tcpci_emul_add_rx_msg` above, but that depends on what happens in `tccpi_emul_add_rx_msg`. As Mike has noted, this behavior varies based on `msg.cnt`.",
+      "parentUuid": "6198cda6_64296b64",
+      "revId": "2cef584e7cd359b757942e36ea95431c6e1e2765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

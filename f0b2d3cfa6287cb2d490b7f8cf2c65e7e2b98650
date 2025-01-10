@@ -16,6 +16,24 @@
       "message": "When using size\u003d28, the --toolchain llvm test passes. However, with size\u003d29, --toolchain host does not encounter exceptions, but the payload value in get_message_raw is not the expected value.",
       "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6e34fa_28fbab03",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-10T18:52:36Z",
+      "side": 1,
+      "message": "The [example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/tcpci_test_common.c;l\u003d523;drc\u003d665fbcfb1ea1378e5dafeaffa43fd809c961c0aa) I linked to doesn\u0027t make this super obvious, but the appropriate value of `msg.cnt` is the size `*msg.buf`, and the size of `*msg.buf` should be the size of a PD message header (16 bits) plus the size of the message body (32 bits * Number of Data Objects). The linked example has a bogus message with 7 data objects. `msg.cnt` \u003d 7 * 4 + 2 \u003d 30. You have 1 BIST Data Object, so the total size here should be 16 + 32 bits \u003d 6 bytes.\n\n\n\nI think the math error would be eliminated and the code more obviously correct if you did something like this:\n```\n#include \"usb_pd.h\"\n#include \"ec_commands.h\"\nuint16_t input_header \u003d PD_HEADER(PD_DATA_BIST, PD_ROLE_SINK,\n\tPD_ROLE_UFP, /*msg_id\u003d*/0, /*cnt\u003d*/1, /*rev\u003d*/PD_REV30,\n\t/*ext\u003d*/false);\nuint32_t input_bdo \u003d BDO(BDO_MODE_TEST_DATA, 0);\nuint8_t buf[sizeof(input_header) + sizeof(input_bdo)];\n*(uint16_t *) buf \u003d input_header;\n*(uint32_t *) (buf + sizeof(input_header)) \u003d input_bdo;\ntcpci_emul_add_rx_msg(emul, \u0026msg, true);\n```\n\nThere\u0027s no need for an intermediate `size` variable. You might need to change the power and data roles in the message if there\u0027s some kind of check on those in the TCPC emulator. I can\u0027t remember.",
+      "parentUuid": "7e4b7ef7_06acb214",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
