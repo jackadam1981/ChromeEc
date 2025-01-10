@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bd335c_86e4a565",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-10T05:08:07Z",
+      "side": 1,
+      "message": "don\u0027t know why use --toolchain llvm, the *payload\u003d0x80000000, but use --toolchain host the *payload\u003d0xF0C9E0A8",
+      "revId": "2cef584e7cd359b757942e36ea95431c6e1e2765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

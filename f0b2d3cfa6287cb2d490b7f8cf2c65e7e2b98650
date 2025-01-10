@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4b7ef7_06acb214",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-10T05:08:07Z",
+      "side": 1,
+      "message": "When using size\u003d28, the --toolchain llvm test passes. However, with size\u003d29, --toolchain host does not encounter exceptions, but the payload value in get_message_raw is not the expected value.",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
