@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09cbe2b6_ecd2936b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8224,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2025-01-10T21:31:51Z",
+      "side": 1,
+      "message": "Perfect. That mapping sounds good to me. @fsammoura@google.com, does this seem reasonable to you?\n\nPlease make sure to document what the FP_CAPTURE_QUALITY_TEST/FP_CAPTURE_RV_INT_TEST does in the Egis context. This should be in public code.",
+      "parentUuid": "c1664683_634422b1",
+      "range": {
+        "startLine": 8223,
+        "startChar": 0,
+        "endLine": 8224,
+        "endChar": 61
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de7e81b6_ab03e706",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "No, we do not use pattern0 and pattern1. \nIt would make sense to map FP_CAPTURE_BLACK_PXL_TEST/FP_CAPTURE_WHITE_PXL_TEST to pattern0/pattern1",
       "parentUuid": "de7e81b6_ab03e706",
+      "range": {
+        "startLine": 8225,
+        "startChar": 0,
+        "endLine": 8226,
+        "endChar": 65
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e610866_1fb7155b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8226,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2025-01-10T21:31:51Z",
+      "side": 1,
+      "message": "Yep, we do want to try to reuse the existing capture types, since it will require a lot of software churn, every time we add new types. Your proposed  mapping sounds fine to me. @fsammoura@google.com, does this seem resonable?\n\nPlease just document what the pattern0/pattern1 do in the Egis context. This should be in public code.",
+      "parentUuid": "df672c58_8a4b1648",
       "range": {
         "startLine": 8225,
         "startChar": 0,
