@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "kbd_strauss.h"
 #include "keyboard_8042_sharedlib.h"
 
@@ -124,6 +125,7 @@ uint16_t get_scancode_set2(uint8_t row, uint8_t col)
 		ret_val = scancode_set2[col][row];
 
 	LOG_DBG("Scancode get R%d:C%d=0x%x", row, col, ret_val);
+	ccprintf("Scancode get R%d:C%d=0x%x\n", row, col, ret_val);
 
 	return ret_val;
 }
@@ -134,4 +136,5 @@ void set_scancode_set2(uint8_t row, uint8_t col, uint16_t val)
 		scancode_set2[col][row] = val;
 
 	LOG_DBG("Scancode set R%d:C%d=0x%x", row, col, val);
+	ccprintf("Scancode set R%d:C%d=0x%x\n", row, col, val);
 }
