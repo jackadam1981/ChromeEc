@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e377d245_126b330d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-10T17:52:16Z",
+      "side": 1,
+      "message": "Minor nits that I would like but nothing wrong here. Feel free to ignore and merge as is if you don\u0027t like the suggestions.",
+      "revId": "0911acbfe7328b8266aba4f2dfceb1999d5a6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774c4b67_7484a03e",
+        "filename": "util/check_hostcommands.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-10T17:52:16Z",
+      "side": 1,
+      "message": "Generally prefer early bail instead of deeply nested ifs, your call though. I would change to\n\n```\nif not mmm:\n    continue\nordinal \u003d int(mmm.group(2), 0)\n```",
+      "fixSuggestions": [
+        {
+          "fixId": "d4dbcc5f_5b2bbf38",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/check_hostcommands.py",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": "                if not mmm:\n                    continue\n                ordinal \u003d int(mmm.group(2), 0)\n                if ordinal in ec_commands:\n                    if (\n                        mmm.group(1) \u003d\u003d \"EC_CMD_PORT80_READ\"\n                        and ec_commands[ordinal]\n                        \u003d\u003d \"EC_CMD_PORT80_LAST_BOOT\"\n                    ):\n                        continue\n                    print(\n                        f\"{filename}:{linenum} - Duplicate host command: \"\n                        f\"{mmm.group(1)} set to {ordinal}, conflicts with \"\n                        f\"{ec_commands[ordinal]}\"\n                    )\n                    return_code \u003d 1\n                ec_commands[ordinal] \u003d mmm.group(1)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0911acbfe7328b8266aba4f2dfceb1999d5a6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2da604c_447dceb0",
+        "filename": "util/check_hostcommands.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-10T17:52:16Z",
+      "side": 1,
+      "message": "print to stderr?",
+      "fixSuggestions": [
+        {
+          "fixId": "068c6a40_474a5ddb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/check_hostcommands.py",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "                        sys.stderr.write(\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0911acbfe7328b8266aba4f2dfceb1999d5a6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
