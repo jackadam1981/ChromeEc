@@ -12,7 +12,7 @@
 		compatible = "intel,ap-pwrseq";
 
 		sys-pwrok-delay = <10>;
-		all-sys-pwrgd-timeout = <20>;
+		all-sys-pwrgd-timeout = <10>;
 	};
 
 	pwr-en-pp5000-s5 {
@@ -52,11 +52,9 @@
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-slp-s3-l {
-		compatible = "intel,ap-pwrseq-gpio";
+		compatible = "intel,ap-pwrseq-external";
 		dbg-label = "SLP_S3_L input from PCH";
 		enum-name = "PWR_SLP_S3";
-		gpios = <&gpioh 3 GPIO_ACTIVE_LOW>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-slp-sus-l {
 		compatible = "intel,ap-pwrseq-gpio";
@@ -79,12 +77,6 @@
 		gpios = <&gpioe 5 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
 		output;
 	};
-	pwr-imvp9-vrrdy-od {
-		compatible = "intel,ap-pwrseq-gpio";
-		dbg-label = "VRRDY input from IMVP9";
-		enum-name = "PWR_IMVP9_VRRDY";
-		gpios = <&gpioj 4 0>;
-	};
 	pwr-pch-pwrok {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PCH_PWROK output to PCH";
@@ -105,6 +97,13 @@
 		enum-name = "PWR_SYS_RST";
 		gpios = <&gpiod 1 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
 		output;
+	};
+	pwr-pg-pp1050-od {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "PG_PP1050_OD input from PCH";
+		enum-name = "PWR_PG_PP1P05";
+		gpios = <&gpiol 1 GPIO_ACTIVE_HIGH>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-slp-s4 {
 		compatible = "intel,ap-pwrseq-vw";
@@ -138,14 +137,6 @@
 		trigger-high = <&vcmp0>;
 		trigger-low = <&vcmp1>;
 	};
-	pwr-adc-pp1p05 {
-		compatible = "intel,ap-pwrseq-adc";
-		dbg-label = "PP1P05_PROC";
-		enum-name = "PWR_PG_PP1P05";
-		trigger-high = <&vcmp2>;
-		trigger-low = <&vcmp3>;
-	};
-
 };
 
 /*
@@ -173,9 +164,6 @@
 &gpio_en_pp5000_s5 {
 	no-auto-init;
 };
-&gpio_imvp91_vrrdy_od {
-	no-auto-init;
-};
 &gpio_rsmrst_pwrgd_l {
 	no-auto-init;
 };
@@ -199,28 +187,13 @@
 	 * This is 90% of nominal voltage considering voltage
 	 * divider on ADC input.
 	 */
-	threshold-mv = <2448>;
+	threshold-mv = <2700>;
 	io-channels = <&adc0 0>;
 };
 &vcmp1 {
 	status = "okay";
 	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
 	comparison = <IT8XXX2_VCMP_LESS_OR_EQUAL>;
-	threshold-mv = <2448>;
+	threshold-mv = <2700>;
 	io-channels = <&adc0 0>;
-};
-&vcmp2 {
-	status = "okay";
-	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
-	comparison = <IT8XXX2_VCMP_GREATER>;
-	/* Setting at 90% of nominal voltage */
-	threshold-mv = <945>;
-	io-channels = <&adc0 14>;
-};
-&vcmp3 {
-	status = "okay";
-	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_600US>;
-	comparison = <IT8XXX2_VCMP_LESS_OR_EQUAL>;
-	threshold-mv = <945>;
-	io-channels = <&adc0 14>;
 };
