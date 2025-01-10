@@ -235,6 +235,11 @@ pujjoniru = register_nissa_project(
 dirks = register_nissa_project(
     project_name="dirks",
     chip="it8xxx2/it81302bx",
+    kconfig_files=[
+        here / "dirks" / "program.conf",
+        here / "dirks" / "it8xxx2_program.conf",
+        here / "dirks" / "project.conf",
+    ],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
