@@ -99,11 +99,12 @@ extern "C" {
  * Keyscan will clear the corresponding rows.
  */
 #ifdef CONFIG_KSI0_NOT_MASKED_BY_GSC
-#define KEYBOARD_MASKED_BY_POWERBTN KEYBOARD_MASK_REFRESH
+#define KEYBOARD_MASKED_BY_POWERBTN(row_refresh) \
+	KEYBOARD_ROW_TO_MASK(row_refresh)
 #else
-#define KEYBOARD_MASKED_BY_POWERBTN \
-	(KEYBOARD_MASK_REFRESH | KEYBOARD_ROW_TO_MASK(0))
-#endif
+#define KEYBOARD_MASKED_BY_POWERBTN(row_refresh) \
+	(KEYBOARD_ROW_TO_MASK(row_refresh) | KEYBOARD_ROW_TO_MASK(0))
+#endif /* CONFIG_KSI0_NOT_MASKED_BY_GSC */
 
 #ifdef __cplusplus
 }
