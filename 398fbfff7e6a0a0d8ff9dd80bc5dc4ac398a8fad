@@ -74,6 +74,30 @@
       },
       "revId": "398fbfff7e6a0a0d8ff9dd80bc5dc4ac398a8fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbbd5894_0af9a988",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-11T00:18:16Z",
+      "side": 1,
+      "message": "Further experiments have revealed that in practice, a timeout of 1ms is sufficient, we have see no data arriving later.",
+      "parentUuid": "6d74d329_7dd4b444",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 24
+      },
+      "revId": "398fbfff7e6a0a0d8ff9dd80bc5dc4ac398a8fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
