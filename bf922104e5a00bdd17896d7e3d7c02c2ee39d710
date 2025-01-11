@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7061e6c9_6eb6158c",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-11T00:56:03Z",
+      "side": 1,
+      "message": "add extra indent?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c0fc3b94_eb83bc1d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/usb_common.h",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": " *\t\t\t(output)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bf922104e5a00bdd17896d7e3d7c02c2ee39d710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
