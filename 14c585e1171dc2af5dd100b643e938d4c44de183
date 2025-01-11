@@ -16,6 +16,24 @@
       "message": "Hmm... there\u0027s a cros lint error but the score is 10/10. Also passed the cros lint check locally. Retry.",
       "revId": "14c585e1171dc2af5dd100b643e938d4c44de183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e99ad9_90a43349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-11T04:30:22Z",
+      "side": 1,
+      "message": "It seems an infra issue:\n\n      /b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/shellcheck: 14: exec: /b/s/w/ir/x/w/rc/chromiumos_workspace/.cache/cipd/packages/chromiumos/infra/tools/shellcheck/bin/../.cipd/pkgs/0/_current/bin/../lib/ld-linux-x86-64.so.2: not found",
+      "parentUuid": "1c43816c_e0a2f930",
+      "revId": "14c585e1171dc2af5dd100b643e938d4c44de183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
