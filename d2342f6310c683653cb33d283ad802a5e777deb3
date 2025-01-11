@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7ff083_032f21ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2025-01-11T05:29:09Z",
+      "side": 1,
+      "message": "Did you confirm the battery configuration with UTL and verify on Proto unit already? Thanks.",
+      "revId": "d2342f6310c683653cb33d283ad802a5e777deb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897e0a48_afd9f5f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2025-01-11T05:29:09Z",
+      "side": 1,
+      "message": "Did you confirm the battery configuration with UTL and verify on Proto unit already? Thanks.",
+      "revId": "d2342f6310c683653cb33d283ad802a5e777deb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b519129f_ce3eece7",
+        "filename": "zephyr/program/corsola/wyrdeer/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2025-01-11T05:29:09Z",
+      "side": 1,
+      "message": "May I know why we need to disable smbus pec feature? We can\u0027t make sure the accuracy and stability of data transmission over smbus w/o pec.",
+      "revId": "d2342f6310c683653cb33d283ad802a5e777deb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
