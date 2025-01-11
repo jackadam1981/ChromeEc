@@ -116,7 +116,7 @@
 			gpios = <&gpio3 2 (GPIO_INPUT)>;
 		};
 		gpio_ec_wp_odl: ec_wp_odl {
-			gpios = <&gpioa 1 (GPIO_INPUT)>;
+			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_en_kb_bl: en_kb_bl {
 			gpios = <&gpioa 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
