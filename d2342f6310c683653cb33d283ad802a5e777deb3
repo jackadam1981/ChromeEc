@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c7236c_d8e537a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-01-13T07:30:15Z",
+      "side": 1,
+      "message": "The manufacturer provides new parameters and we verify the PASS.",
+      "parentUuid": "be7ff083_032f21ec",
+      "revId": "d2342f6310c683653cb33d283ad802a5e777deb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b519129f_ce3eece7",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-01-11T05:29:09Z",
       "side": 1,
       "message": "May I know why we need to disable smbus pec feature? We can\u0027t make sure the accuracy and stability of data transmission over smbus w/o pec.",
+      "revId": "d2342f6310c683653cb33d283ad802a5e777deb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf2dd65_7f94620f",
+        "filename": "zephyr/program/corsola/wyrdeer/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-01-13T07:30:15Z",
+      "side": 1,
+      "message": "pec should be configured based on whether the battery spec supports it or not. UTL does not support it, so we remove it.",
+      "parentUuid": "b519129f_ce3eece7",
       "revId": "d2342f6310c683653cb33d283ad802a5e777deb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
