@@ -225,6 +225,45 @@ struct timer_pwm_use_t {
 
 struct timer_pwm_use_t timer_pwm_use[18];
 
+enum sai_channelid_t {
+	SAI_CHANNEL_A,
+	SAI_CHANNEL_B,
+};
+
+enum sai_signal_t {
+	SAI_SIGNAL_MCLK,
+	SAI_SIGNAL_SCK,
+};
+
+struct freq_pin_t {
+	struct sai_registers_t *sai_regs;
+	enum sai_channelid_t sai_channel;
+	enum sai_signal_t sai_signal;
+};
+
+struct sai_registers_t *const sai1 = (struct sai_registers_t *)STM32_SAI1_BASE;
+struct sai_registers_t *const sai2 = (struct sai_registers_t *)STM32_SAI2_BASE;
+
+/* Sparse array of frequency generation capabilities for GPIO pins. */
+const struct freq_pin_t freq_pins[GPIO_COUNT] = {
+	[GPIO_CN7_1] = { sai2, SAI_CHANNEL_A, SAI_SIGNAL_MCLK }, /* PC6 */
+	[GPIO_CN7_5] = { sai2, SAI_CHANNEL_A, SAI_SIGNAL_SCK }, /* PB13 */
+	[GPIO_CN7_11] = { sai1, SAI_CHANNEL_B, SAI_SIGNAL_MCLK }, /* PB4 */
+	[GPIO_CN9_1] = { sai1, SAI_CHANNEL_A, SAI_SIGNAL_MCLK }, /* PA3 */
+	[GPIO_CN9_14] = { sai1, SAI_CHANNEL_A, SAI_SIGNAL_MCLK }, /* PE2 */
+	[GPIO_CN9_18] = { sai1, SAI_CHANNEL_A, SAI_SIGNAL_SCK }, /* PE5 */
+	[GPIO_CN9_24] = { sai1, SAI_CHANNEL_B, SAI_SIGNAL_SCK }, /* PF8 */
+	[GPIO_CN9_26] = { sai1, SAI_CHANNEL_B, SAI_SIGNAL_MCLK }, /* PF7 */
+	[GPIO_CN10_15] = { sai1, SAI_CHANNEL_A, SAI_SIGNAL_SCK }, /* PB10 */
+	[GPIO_CN10_18] = { sai1, SAI_CHANNEL_B, SAI_SIGNAL_SCK }, /* PE8 */
+	[GPIO_CN10_31] = { sai1, SAI_CHANNEL_A, SAI_SIGNAL_SCK }, /* PA8 */
+	[GPIO_CN11_42] = { sai2, SAI_CHANNEL_B, SAI_SIGNAL_SCK }, /* PG2 */
+	[GPIO_CN11_63] = { sai2, SAI_CHANNEL_A, SAI_SIGNAL_SCK }, /* PG9 */
+	[GPIO_CN12_28] = { sai2, SAI_CHANNEL_A, SAI_SIGNAL_MCLK }, /* PB14 */
+	[GPIO_CN12_65] = { sai2, SAI_CHANNEL_A, SAI_SIGNAL_SCK }, /* PD10 */
+	[GPIO_CN12_69] = { sai2, SAI_CHANNEL_B, SAI_SIGNAL_MCLK }, /* PG4 */
+};
+
 struct dac_t {
 	uint8_t channel_no;
 	uint32_t enable_mask;
@@ -716,6 +755,16 @@ static void board_gpio_init(void)
 
 	/* Enable DAC */
 	STM32_RCC_APB1ENR |= STM32_RCC_APB1ENR1_DAC1EN;
+
+	/* Select PLLSAI1CLK for SAI1 and PLLSAI2CLK for SAI2. */
+	STM32_RCC_CCIPR2 = (STM32_RCC_CCIPR2 & ~STM32_RCC_CCIPR2_SAI1SEL_MSK &
+			    ~STM32_RCC_CCIPR2_SAI2SEL_MSK) |
+			   STM32_RCC_CCIPR2_SAI1SEL_PLLSAI1CLK |
+			   STM32_RCC_CCIPR2_SAI2SEL_PLLSAI2CLK;
+
+	/* Enable clocks for SAI1 and SAI2 */
+	STM32_RCC_APB2ENR |= STM32_RCC_APB2ENR_SAI1EN |
+			     STM32_RCC_APB2ENR_SAI2EN;
 }
 DECLARE_HOOK(HOOK_INIT, board_gpio_init, HOOK_PRIO_DEFAULT);
 
@@ -2253,6 +2302,198 @@ static int command_gpio_pwm(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 
+/* Return a value for one of the STM32_RCC_PLLxCFGR registers. */
+static uint32_t pll_cfgr(bool external_clock, int m, int n, int p)
+{
+	uint32_t val = 0;
+	if (external_clock)
+		val |= STM32_RCC_PLLCFGR_PLLSRC_HSE;
+	else
+		val |= STM32_RCC_PLLCFGR_PLLSRC_HSI;
+	val |= (m - 1) << STM32_RCC_PLLCFGR_PLLM_POS;
+	val |= n << STM32_RCC_PLLCFGR_PLLN_POS;
+	val |= p << STM32_RCC_PLLCFGR_PLLPDIV_POS;
+	return val;
+}
+
+static int command_gpio_freq(int argc, const char **argv)
+{
+	if (argc < 4)
+		return EC_ERROR_PARAM_COUNT;
+
+	int gpio = gpio_find_by_name(argv[2]);
+	if (gpio == GPIO_COUNT)
+		return EC_ERROR_PARAM2;
+	if (!freq_pins[gpio].sai_regs) {
+		ccprintf("Error: Pin does not support frequency generation\n");
+		return EC_ERROR_PARAM2;
+	}
+
+	char *e;
+	uint64_t desired_freq = strtoull(argv[3], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM3;
+
+	/*
+	 * The logic below tries to calculate the set of PLL configuration
+	 * parameters which gets the closest to the desired frequency.
+	 *
+	 * The parameters at play are:
+	 *
+	 * M: Source frequency is divided by a value in the range 1 - 15 to
+	 * become the input to the PLL block, this intermediate frequency must
+	 * be in the range 2.66MHz - 8MHz.
+	 *
+	 * N: In the PLL, the frequency is multiplied by a value in the range
+	 * 8 - 127, the output frequency must be in the range 64MHz - 344MHz.
+	 *
+	 * P: In PLL output stage, the frequency is divided by a value in the
+	 * range 2 - 31.  Odd numbers result in uneven duty cycle, unless
+	 * MCKDIV > 1.
+	 *
+	 * MCKDIV: In the SAI the frequency can be divided by a value in the
+	 * range 1 - 63.  Odd numbers other than 1 result in uneven duty
+	 * cycle.
+	 *
+	 */
+
+	/*
+	 * Source is either internal 16MHz RC oscillator (suffers from jitter)
+	 * and poor precision, or an external crystal.
+	 */
+	uint64_t source_frequency = external_clock_frequency ?: 16000000;
+
+	/*
+	 * As we try various sets of parameters, we keep track of the set that
+	 * resulted in a frequency closest to the requested frequency.  By
+	 * initializing `best_deviation` to indicate 5% deviation, any
+	 * combination that deviates by more than 5% is discarded, and the
+	 * logic will reject the request altogether, if the request cannot be
+	 * approximated at least to 5%.
+	 */
+	uint32_t best_deviation = DIV_ROUND_UP(desired_freq, 100 / 5);
+	int best_m = 0, best_n = 0, best_p = 0, best_mckdiv = 0;
+
+	/* PLL divisor M */
+	for (int m = 1; m <= 15; m++) {
+		/* Input to PLL must be in range 2.66Mhz - 8MHz */
+		if (source_frequency * 3 < 8000000 * m ||
+		    source_frequency > 8000000 * m)
+			continue;
+
+		/* PLL multiplier N */
+		for (int n = 8; n <= 127; n++) {
+			/* Output of PLL must be in range 64Mhz - 344MHz */
+			if (source_frequency * n < 64000000ULL * m ||
+			    source_frequency * n > 344000000ULL * m)
+				continue;
+
+			/* PLL divisor P */
+			for (int p = 2; p <= 31; p++) {
+				/*
+				 * Compute the value of the final parameter
+				 * MCKDIV that would get closest to desired
+				 * frequency.
+				 */
+				int mckdiv =
+					DIV_ROUND_NEAREST(source_frequency * n,
+							  desired_freq * m * p);
+				if (mckdiv == 0 || mckdiv > 63) {
+					/* Outside range */
+					continue;
+				} else if (mckdiv == 1) {
+					if (p != 1 && p % 2 == 1 && p < 10) {
+						/* Uneven duty cycle */
+						continue;
+					}
+				} else if (mckdiv % 2 == 1 && mckdiv < 10) {
+					/* Uneven duty cycle */
+					mckdiv = DIV_ROUND_NEAREST(
+							 source_frequency * n,
+							 desired_freq * m * p *
+								 2) *
+						 2;
+				}
+
+				uint32_t actual_freq = DIV_ROUND_NEAREST(
+					source_frequency * n, m * p * mckdiv);
+				uint32_t deviation =
+					actual_freq > desired_freq ?
+						actual_freq - desired_freq :
+						desired_freq - actual_freq;
+				if (deviation > best_deviation)
+					continue;
+
+				/* Best approximation, yet. */
+				best_deviation = deviation;
+				best_m = m;
+				best_n = n;
+				best_p = p;
+				best_mckdiv = mckdiv;
+			}
+		}
+	}
+
+	if (best_deviation == 0xFFFFFFFF) {
+		ccprintf("Error: Frequency not supported\n");
+		return EC_ERROR_PARAM2;
+	}
+
+	ccprintf("Choosing: M:%d N:%d P:%d MCKDIV:%d\n", best_m, best_n, best_p,
+		 best_mckdiv);
+
+	struct sai_registers_t *const sai = freq_pins[gpio].sai_regs;
+	struct sai_channel_registers_t *const sai_channel =
+		freq_pins[gpio].sai_channel == SAI_CHANNEL_A ? &sai->a :
+							       &sai->b;
+
+	/* Disable SAI clock output. */
+	sai_channel->cr1 &= ~STM32_SAI_CR1_MCEN & ~STM32_SAI_CR1_SAIEN;
+
+	/* Disable PLL, wait for it to stop. */
+	if (sai == sai1) {
+		STM32_RCC_CR &= ~STM32_RCC_CR_PLLSAI1ON;
+		while (STM32_RCC_CR & STM32_RCC_CR_PLLSAI1RDY)
+			;
+	} else {
+		STM32_RCC_CR &= ~STM32_RCC_CR_PLLSAI2ON;
+		while (STM32_RCC_CR & STM32_RCC_CR_PLLSAI2RDY)
+			;
+	}
+
+	if (sai == sai1)
+		STM32_RCC_PLLSAI1CFGR = pll_cfgr(!!external_clock_frequency,
+						 best_m, best_n, best_p);
+	else
+		STM32_RCC_PLLSAI2CFGR = pll_cfgr(!!external_clock_frequency,
+						 best_m, best_n, best_p);
+
+	/* Enable PLL and wait for it to be ready */
+	if (sai == sai1)
+		wait_for_ready(&STM32_RCC_CR, STM32_RCC_CR_PLLSAI1ON,
+			       STM32_RCC_CR_PLLSAI1RDY);
+	else
+		wait_for_ready(&STM32_RCC_CR, STM32_RCC_CR_PLLSAI2ON,
+			       STM32_RCC_CR_PLLSAI2RDY);
+
+	/* Enable PLL output P */
+	if (sai == sai1)
+		STM32_RCC_PLLSAI1CFGR |= STM32_RCC_PLLCFGR_PLLPEN;
+	else
+		STM32_RCC_PLLSAI2CFGR |= STM32_RCC_PLLCFGR_PLLPEN;
+
+	/* No further division of SCK */
+	sai_channel->frcr = 0xFF;
+
+	/* Set MCKDIV and enable SAI clock */
+	sai_channel->cr1 = STM32_SAI_CR1_MCEN |
+			   (best_mckdiv << STM32_SAI_CR1_MCKDEV_POS) |
+			   STM32_SAI_CR1_SAIEN;
+
+	gpio_select_alternate_function(gpio, 13);
+	return EC_SUCCESS;
+}
+
 static int command_gpio(int argc, const char **argv)
 {
 	if (argc < 2)
@@ -2273,6 +2514,8 @@ static int command_gpio(int argc, const char **argv)
 		return command_gpio_dac_bang(argc, argv);
 	if (!strcasecmp(argv[1], "pwm"))
 		return command_gpio_pwm(argc, argv);
+	if (!strcasecmp(argv[1], "freq"))
+		return command_gpio_freq(argc, argv);
 	return EC_ERROR_PARAM1;
 }
 DECLARE_CONSOLE_COMMAND_FLAGS(
