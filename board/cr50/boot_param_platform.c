@@ -22,6 +22,7 @@
 #define MAX_ECDSA_KEYGEN_ATTEMPTS 16
 
 const char *g_owner_data_var_name = "BPOD";
+const char *g_auth_seed_var_name = "AUTH";
 
 /* Per-AP-boot configuration parameters */
 struct ap_boot_config_s {
@@ -38,6 +39,10 @@ static bool g_ap_boot_config_valid = { 0 };
 static inline void invalidate_ap_boot_config(void)
 {
 	memset(&g_ap_boot_config, 0, sizeof(struct ap_boot_config_s));
+	if (setvar(g_auth_seed_var_name, sizeof(g_auth_seed_var_name),
+		   NULL, 0) != 0) {
+		verbose_log("erasing auth seed failed");
+	}
 	g_ap_boot_config_valid = false;
 }
 
@@ -148,8 +153,7 @@ static inline bool get_hidden_owner_data(uint8_t owner_data[DIGEST_BYTES])
 {
 	const struct tuple *var;
 
-	var = getvar(g_owner_data_var_name,
-		     sizeof(g_owner_data_var_name) - 1);
+	var = getvar(g_owner_data_var_name, sizeof(g_owner_data_var_name));
 	if (var) {
 		/* Variable exists, let's get owner data. */
 		if (var->val_len != DIGEST_BYTES) {
@@ -167,8 +171,7 @@ static inline bool get_hidden_owner_data(uint8_t owner_data[DIGEST_BYTES])
 		verbose_log("generating boot_param owner data failed");
 		return false;
 	}
-	if (setvar(g_owner_data_var_name,
-		   sizeof(g_owner_data_var_name) - 1,
+	if (setvar(g_owner_data_var_name, sizeof(g_owner_data_var_name),
 		   owner_data, DIGEST_BYTES) != 0) {
 		verbose_log("setting boot_param var failed");
 		return false;
@@ -221,13 +224,37 @@ bool __platform_get_dice_config(
 /* Generate per-AP boot configuration */
 static inline bool ensure_ap_boot_config(void)
 {
+	const struct tuple *var;
+
 	if (g_ap_boot_config_valid)
 		return true;
 
-	if (!fips_trng_bytes(&g_ap_boot_config,
-			     sizeof(struct ap_boot_config_s))) {
-		verbose_log("generating boot config failed");
-		return false;
+	var = getvar(g_auth_seed_var_name, strlen(g_auth_seed_var_name));
+	if (!var) {
+		/*
+		 * There must have been a hard reset, let's generate new
+		 * entropy.
+		 */
+		if (!fips_trng_bytes(&g_ap_boot_config,
+				     sizeof(struct ap_boot_config_s))) {
+			verbose_log("generating boot config failed");
+			return false;
+		}
+		if (setvar(g_auth_seed_var_name, sizeof(g_auth_seed_var_name),
+			   (const uint8_t *)&g_ap_boot_config,
+			   sizeof(g_ap_boot_config))) {
+			verbose_log("storing boot config failed");
+			return false;
+		}
+	} else {
+		if (var->val_len != sizeof(g_ap_boot_config)) {
+			ccprintf("unexpected boot config size %d\n",
+				 var->val_len);
+			return false;
+		}
+		memcpy(&g_ap_boot_config, tuple_val(var),
+		       sizeof(g_ap_boot_config));
+		freevar(var);
 	}
 
 	g_ap_boot_config_valid = true;
