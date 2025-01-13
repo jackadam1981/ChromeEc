@@ -52,6 +52,24 @@
       "parentUuid": "8c23d91c_8f8625cb",
       "revId": "2a7d8e46dd598b83e38ec7becf5ad52211ba64e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e07263_8aab7f2f",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-13T23:08:31Z",
+      "side": 0,
+      "message": "Sorry I see now you did both the settle time change AND the kso-gpio change, either one should make it work, I\u0027d suggest removing the `kso-gpio` block and leaving the adjusted timing there, could you see if that works? Right now it\u0027s a bit incoherent because you are both setting `kso02_gpio_gp17` as function specific AND telling the col-gpio driver to use it as gpio",
+      "parentUuid": "d476e795_5e0de464",
+      "revId": "2a7d8e46dd598b83e38ec7becf5ad52211ba64e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
