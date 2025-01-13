@@ -34,6 +34,24 @@
       ],
       "revId": "193ef428f4a536e5da1c2e2ac42f2aad27f89031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9744aa22_a82c7df7",
+        "filename": "zephyr/program/nissa/BUILD.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-01-13T17:19:30Z",
+      "side": 1,
+      "message": "Python is strange about using [] as a default value because of the way default values are resolved (https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments has a pretty good explentation). I fixed the handling of `None` instead.",
+      "parentUuid": "240e922f_3bd3a4d3",
+      "revId": "193ef428f4a536e5da1c2e2ac42f2aad27f89031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
