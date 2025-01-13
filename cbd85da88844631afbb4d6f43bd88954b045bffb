@@ -22,6 +22,30 @@
       },
       "revId": "cbd85da88844631afbb4d6f43bd88954b045bffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "428774d4_39175d61",
+        "filename": "board/volmar/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-01-13T18:38:50Z",
+      "side": 1,
+      "message": "I could for BUILD_ASSERT_REFRESH_RC, but I want the vivaldi assert to be right next to board_vivaldi_keybd_config.",
+      "parentUuid": "74f78b24_fb81d7c4",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "cbd85da88844631afbb4d6f43bd88954b045bffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
