@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b402e3_b235b4a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-01-13T19:38:51Z",
+      "side": 1,
+      "message": "This is not necessary, I was just trying to make it harder to define board_vivaldi_keybd_config() if the proper CONFIG is not set.",
+      "revId": "3df0409a5615cab00aced10573ce61a6d62d40d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
