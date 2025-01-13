@@ -51,6 +51,24 @@
       "message": "fallback to HOOK_CHIPSET_SHUTDOWN if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK not defined",
       "revId": "14c585e1171dc2af5dd100b643e938d4c44de183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef112b41_3e8740e1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3974,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-13T19:12:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6859693_23bb8618",
+      "revId": "14c585e1171dc2af5dd100b643e938d4c44de183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
