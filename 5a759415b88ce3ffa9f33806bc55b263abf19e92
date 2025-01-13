@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd4c52f_25c863dd",
+        "filename": "zephyr/program/corsola/wyrdeer/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-13T05:57:21Z",
+      "side": 1,
+      "message": "please make it static.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "5a759415b88ce3ffa9f33806bc55b263abf19e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff6b053_f58ca1eb",
+        "filename": "zephyr/program/corsola/wyrdeer/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-13T05:57:21Z",
+      "side": 1,
+      "message": "Please help add comments, such as the purpose of 3.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "5a759415b88ce3ffa9f33806bc55b263abf19e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
