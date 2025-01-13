@@ -52,6 +52,24 @@
       "parentUuid": "fab5e50e_15bd8e23",
       "revId": "b5e81d929b99f5f7d21b060e6397c30b9bc514ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "167ff941_5b7fb675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2025-01-13T03:15:08Z",
+      "side": 1,
+      "message": "Dear Kyle:\n     The CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV should keep the value:20000\n     If change the value to 15000 ,  the function pd_find_pdo_index will get the \n     max voltage is 15000 always:\nthe int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,\n\t\t      int max_mv, uint32_t *selected_pdo) \n\t\t      {\n...\t\t      \n\t\t      \t/* max voltage is always limited by this boards max request */\n\tmax_mv \u003d MIN(max_mv, CONFIG_USB_PD_MAX_VOLTAGE_MV);\n...\n\t\t      }",
+      "parentUuid": "77b12af8_6581e7fe",
+      "revId": "b5e81d929b99f5f7d21b060e6397c30b9bc514ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
