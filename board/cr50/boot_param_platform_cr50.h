@@ -6,6 +6,8 @@
 #ifndef __EC_BOARD_CR50_BOOT_PARAM_PLATFORM_CR50_H
 #define __EC_BOARD_CR50_BOOT_PARAM_PLATFORM_CR50_H
 
+#include <stdbool.h>
+
 /* Handler for Owner Clear event.
  * Called by _plat__OwnerClearCallback.
  */
@@ -14,6 +16,6 @@ void boot_param_handle_owner_clear(void);
 /* Handler for TPM Startup event.
  * Called by _plat__StartupCallback.
  */
-void boot_param_handle_tpm_startup(void);
+void boot_param_handle_tpm_startup(bool shall_reset_state);
 
 #endif /* __EC_BOARD_CR50_BOOT_PARAM_PLATFORM_CR50_H */
