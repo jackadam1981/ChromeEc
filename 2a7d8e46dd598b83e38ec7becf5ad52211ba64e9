@@ -34,6 +34,24 @@
       "parentUuid": "41db0c71_1a503e24",
       "revId": "2a7d8e46dd598b83e38ec7becf5ad52211ba64e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d476e795_5e0de464",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-13T15:03:47Z",
+      "side": 0,
+      "message": "ok... I hope all the keys are working really :-) not a great soultion, ends up wasting a ton of cpu cycles but good enough for now, easy enough to replace the previous gpio drive col 2 node with one that just adds the delay, that said, newer GSC should get rid of this delay entirely so let\u0027s just go with it for the RVP",
+      "parentUuid": "8c23d91c_8f8625cb",
+      "revId": "2a7d8e46dd598b83e38ec7becf5ad52211ba64e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
