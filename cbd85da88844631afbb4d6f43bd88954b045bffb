@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f78b24_fb81d7c4",
+        "filename": "board/volmar/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-13T14:55:07Z",
+      "side": 1,
+      "message": "how about making a pair of more compact macros in `keyboard_config.h` that takes the row and column as argument? something like `BUILD_ASSERT_REFRESH_RC(3, 2)` and `BUILD_ASSERT_VIVALDI_REFRESH_RC(3, 2)`",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "cbd85da88844631afbb4d6f43bd88954b045bffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
