@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4037d32_c2d64b2b",
+        "filename": "zephyr/program/trulo/uldrenite/usb_typec.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-01-13T10:05:21Z",
+      "side": 1,
+      "message": "Do you have a pd-retimer at port1 ?",
+      "revId": "f3b210eec4fdc213059fbc6bafcc8477da766700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e74c82_a9d1dbaa",
+        "filename": "zephyr/program/trulo/uldrenite/usb_typec.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-01-13T10:05:21Z",
+      "side": 1,
+      "message": "tps6699-pdc@24",
+      "revId": "f3b210eec4fdc213059fbc6bafcc8477da766700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
