@@ -45,6 +45,29 @@
       },
       "revId": "5a759415b88ce3ffa9f33806bc55b263abf19e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd8d00e_d02a8e4a",
+        "filename": "zephyr/program/corsola/wyrdeer/src/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-01-13T05:58:56Z",
+      "side": 1,
+      "message": "missing spaces",
+      "range": {
+        "startLine": 155,
+        "startChar": 38,
+        "endLine": 155,
+        "endChar": 42
+      },
+      "revId": "5a759415b88ce3ffa9f33806bc55b263abf19e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
