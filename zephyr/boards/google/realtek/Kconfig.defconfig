@@ -17,8 +17,8 @@ config SYS_CLOCK_TICKS_PER_SEC
 
 endif # REALTEK_RTS5912_RTMR
 
-config CROS_EC_HOOK_TICK_INTERVAL
-	default 200000
+#config CROS_EC_HOOK_TICK_INTERVAL
+#	default 200000
 
 #
 # RTS5915:	384KB total SRAM: 
@@ -70,9 +70,13 @@ endif # ADC
 
 if WATCHDOG
 config PLATFORM_EC_WATCHDOG_PERIOD_MS
-	default 10000
+	default 1600
 config PLATFORM_EC_WATCHDOG_WARNING_LEADING_TIME_MS
-	default 5000
+	default 500
+config PLATFORM_EC_WATCHDOG_HELPER
+	default y
+config WDT_COUNTER
+	default y
 endif # WATCHDOG
 
 endif # BOARD_REALTEK

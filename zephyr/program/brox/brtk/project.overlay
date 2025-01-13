@@ -69,3 +69,17 @@
 	reg = < 0x20050000 (0x10000-0x200) >;
 };
 
+&timer5 {
+        status = "okay";
+};
+
+/ {
+        chosen {
+		cros-ec,watchdog-helper = &wdt_counter;
+	};
+	wdt_counter: wdt-counter {
+		compatible = "zephyr,counter-watchdog";
+		status = "okay";
+		counter = <&timer5>;
+	};
+};
