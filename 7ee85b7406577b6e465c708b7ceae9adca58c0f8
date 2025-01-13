@@ -16,6 +16,24 @@
       "message": "Are you able to build FW locally ?",
       "revId": "7ee85b7406577b6e465c708b7ceae9adca58c0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18767e13_7c0b8a13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2025-01-13T11:36:54Z",
+      "side": 1,
+      "message": "Yes, it can be compiled successfully locally  both of the following methods:\n1). zmake build --clobber gothrax\n2). cros workon --board nissa start coreboot chromeos-zephyr chromeos-bootimage\n    emerge-nissa coreboot chromeos-zephyr chromeos-bootimage",
+      "parentUuid": "a8791151_d32830c5",
+      "revId": "7ee85b7406577b6e465c708b7ceae9adca58c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
