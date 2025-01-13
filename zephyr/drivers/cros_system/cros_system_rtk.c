@@ -168,8 +168,6 @@ static int cros_system_rtk_soc_reset(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 
-	WDT_Type *wdt_reg = RTK_WDT_REG_BASE;
-
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable_all();
 
@@ -178,13 +176,15 @@ static int cros_system_rtk_soc_reset(const struct device *dev)
 	 * RTK WDT can be set for lower value, but we are limited by
 	 * Zephyr API.
 	 */
-	struct wdt_timeout_cfg minimal_timeout = { .window.max = 200 };
+	struct wdt_timeout_cfg minimal_timeout = {
+		.window.max = 200,
+		.flags = WDT_FLAG_RESET_SOC };
+	/* stop watchdog */
+	wdt_disable(watchdog);
 	/* Setup watchdog */
 	wdt_install_timeout(watchdog, &minimal_timeout);
 	/* Apply the changes (the driver will reload watchdog) */
-	// wdt_setup(watchdog, 0);
-	wdt_reg->CTRL = (WDT_CTRL_RSTEN_Msk);
-	wdt_reg->CTRL |= WDT_CTRL_EN_Msk;
+	wdt_setup(watchdog, 0);
 	/* Spin and wait for reboot */
 	while (1)
 		;
