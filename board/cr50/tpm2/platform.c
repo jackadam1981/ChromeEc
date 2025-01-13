@@ -209,11 +209,12 @@ static void board_update_fwmp_attributes(void)
 	NvWriteIndexInfo(handle, &nvIndex);
 }
 
-void _plat__StartupCallback(void)
+void _plat__StartupCallback(int shall_reset_state)
 {
 	pinweaver_init();
 	board_update_fwmp_attributes();
-	boot_param_handle_tpm_startup();
+	if (!shall_reset_state)
+		boot_param_handle_tpm_startup();
 
 	/*
 	 * Eventually, we'll want to allow CCD unlock with no password, so
