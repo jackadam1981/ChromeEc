@@ -131,6 +131,73 @@
 			handler = "soc_edp_bl_interrupt";
 		};
 	};
+
+	fans {
+		compatible = "cros-ec,fans";
+
+		fan0: fan_0 {
+			pwms = <&pwm5 0 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
+			rpm_min = <2200>;
+			rpm_start = <2200>;
+			rpm_max = <4200>;
+			tach = <&tach1>;
+			enable_gpio = <&gpio_en_pp5000_fan>;
+		};
+	};
+
+	fan_steps: fan-steps {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <25>;
+			temp_off = <99>;
+			rpm_target = <0>;
+		};
+		level_1 {
+			temp_on = <40>;
+			temp_off = <35>;
+			rpm_target = <2500>;
+		};
+		level_2 {
+			temp_on = <44>;
+			temp_off = <41>;
+			rpm_target = <2800>;
+		};
+		level_3 {
+			temp_on = <48>;
+			temp_off = <45>;
+			rpm_target = <3000>;
+		};
+		level_4 {
+			temp_on = <52>;
+			temp_off = <49>;
+			rpm_target = <3200>;
+		};
+		level_5 {
+			temp_on = <60>;
+			temp_off = <54>;
+			rpm_target = <3600>;
+		};
+		level_6 {
+			temp_on = <64>;
+			temp_off = <58>;
+			rpm_target = <4000>;
+		};
+		level_7 {
+			temp_on = <67>;
+			temp_off = <62>;
+			rpm_target = <4600>;
+		};
+		level_8 {
+			temp_on = <71>;
+			temp_off = <66>;
+			rpm_target = <5000>;
+		};
+		level_9 {
+			temp_on = <74>;
+			temp_off = <70>;
+			rpm_target = <5500>;
+		};
+	};
 };
 
 &i2c1_0 {
