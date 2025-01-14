@@ -141,6 +141,24 @@
       "parentUuid": "46fa7d9a_f1eaa560",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc711685_04673276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-14T00:19:28Z",
+      "side": 1,
+      "message": "\u003e Does creating the second version require create _v2 of the macros?\n\nNo, you don\u0027t need to create a second version of the macros. The issue that you\u0027ll want to analyze is binary compatability: using the updated `FP_MODE_CAPTURE_TYPE_SHIFT` to compile the host command code that is running against an already compiled version of the firmware that was using the old version of `FP_MODE_CAPTURE_TYPE_SHIFT`.",
+      "parentUuid": "46dfaf10_0134ddd2",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
