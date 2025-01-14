@@ -223,6 +223,7 @@ ifeq ($(USE_BUILTIN_STDLIB), 1)
 CPPFLAGS+=-DUSE_BUILTIN_STDLIB
 endif
 
+ifneq ($(NOT_A_BUILD),y)
 ifeq ($(LIBFTDI_NAME),)
 FTDIVERSION:=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
 ifneq ($(FTDIVERSION),)
@@ -240,6 +241,7 @@ LIBFTDIUSB_BUILD_LDLIBS:=$(shell $(BUILD_PKG_CONFIG) --libs   lib${LIBFTDI_NAME}
 
 LIBEC_HOST_CFLAGS:=$(shell $(HOST_PKG_CONFIG) --cflags libec)
 LIBEC_HOST_LDLIBS:=$(shell $(HOST_PKG_CONFIG) --libs libec)
+endif
 
 ifeq ($(TEST_FUZZ),y)
 LIBPROTOBUF_CFLAGS:=$(shell $(PKG_CONFIG) --cflags protobuf)

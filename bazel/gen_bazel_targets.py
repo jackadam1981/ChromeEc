@@ -7,6 +7,7 @@
 
 import argparse
 from concurrent import futures
+import difflib
 from pathlib import Path
 import site
 import subprocess
@@ -58,7 +59,13 @@ def _find_zephyr_ec_projects():
 def _get_legacy_ec_make_vars(board):
     """Get the make variables for a Legacy EC board."""
     make_cmd = subprocess.run(
-        ["make", f"BOARD={board}", "SHELL=/bin/bash", "print-make-vars"],
+        [
+            "make",
+            f"BOARD={board}",
+            "SHELL=/bin/bash",
+            "print-make-vars",
+            "NOT_A_BUILD=y",
+        ],
         check=True,
         encoding="utf-8",
         stdout=subprocess.PIPE,
@@ -141,7 +148,7 @@ def gen_bazel():
     return formatters.star.Data(unformatted_code, DEFAULT_OUTPUT)
 
 
-def main(argv: Optional[List[str]] = None) -> Optional[int]:
+def main(argv: Optional[List[str]] = None) -> int:
     """The main function."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -151,9 +158,37 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
         default=DEFAULT_OUTPUT,
         help="The targets Bazel output path.",
     )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Don't generate the file, just fail if it is wrong.",
+    )
     opts = parser.parse_args(argv)
 
+    if opts.check:
+        with opts.output_file.open(encoding="utf-8") as existing:
+            diff = difflib.context_diff(
+                existing.readlines(),
+                gen_bazel().splitlines(keepends=True),
+                fromfile=str(opts.output_file),
+                tofile="Expected",
+            )
+            has_diff = False
+            for line in diff:
+                if not has_diff:
+                    print(
+                        f"{opts.output_file} needs regenerated:",
+                        file=sys.stderr,
+                    )
+                    has_diff = True
+                sys.stderr.write(line)
+            if has_diff:
+                print("Run bazel/gen_bazel_targets.py", file=sys.stderr)
+                return 1
+            return 0
+
     opts.output_file.write_text(gen_bazel())
+    return 0
 
 
 if __name__ == "__main__":
