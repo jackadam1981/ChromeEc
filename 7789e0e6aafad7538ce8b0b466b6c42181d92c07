@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3e73557f_95c7009e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-14T05:01:34Z",
+      "side": 1,
+      "message": "I ran it on the most recent generation of proprietary GSC, and it did cause the test to start succeeding, after having failed without this patch.",
+      "parentUuid": "10cc0bfe_0c95cc29",
+      "revId": "7789e0e6aafad7538ce8b0b466b6c42181d92c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "49738a8a_d818cf3e",
         "filename": "board/hyperdebug/spi.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-14T00:44:04Z",
       "side": 1,
       "message": "not related to this patch, but I am curious, how reliable this is, how likely it is to miss the pulse. On chromebooks this is an edge triggered interrup, so the pulse width does not matter",
+      "range": {
+        "startLine": 802,
+        "startChar": 2,
+        "endLine": 802,
+        "endChar": 48
+      },
+      "revId": "7789e0e6aafad7538ce8b0b466b6c42181d92c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ddce75_983b4922",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-14T05:01:34Z",
+      "side": 1,
+      "message": "The code in this file (SPI) seems to reliably detect pulses, even from the first generation GSC, which does ~10us pulses instead of ~100us.  However, the corresponding I2C code has issues, since the blocking I2C functions only return control a while after the I2C transaction has finished on the bus.  For the short pulses, that will mean that the pulse is over before `await_low_level()` is called.\n\nThe next patch in this chain changes the way that the polling is done, to overcome the above issue.\n\nAnd by the way, the pulse width does matter on Chromebooks.  Modern SoC can enter partial low power modes, in which their edge detection are not guaranteed to notice pulses narrower than 100us.  Because of that, the first generation GSCs provide a way of requesting wider pulses, which newer Chromebooks will do.",
+      "parentUuid": "49738a8a_d818cf3e",
       "range": {
         "startLine": 802,
         "startChar": 2,
