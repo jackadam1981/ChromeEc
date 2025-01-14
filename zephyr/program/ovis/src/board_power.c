@@ -6,6 +6,7 @@
 #include "adc.h"
 #include "gpio/gpio.h"
 #include "gpio_signal.h"
+#include "system.h"
 #include "system_boot_time.h"
 #include "zephyr_adc.h"
 
@@ -28,6 +29,20 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS;
+
+	/*
+	 * Currently there's chance that vw PWL_SLP_S5 and PWL_SLP_S4
+	 * failed to be cleared through eSPI when AP do global reset,
+	 * which confuses EC that AP is still in S5 and then set it back to
+	 * G3. When the issue occurs, real pin PWL_SLP_S3 will be cleared.
+	 * Therefore, check for this state before setting the system to G3 and
+	 * reset EC in such condition. See b:384085356 for more details.
+	 */
+	if (power_signal_get(PWR_SLP_S5) && power_signal_get(PWR_SLP_S4) &&
+	    !power_signal_get(PWR_SLP_S3)) {
+		LOG_WRN("VW PWR_SLP_S5 and PWR_SLP_S4 failed to cleared! Rebooting...");
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+	}
 
 	/* Assert PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 1);
