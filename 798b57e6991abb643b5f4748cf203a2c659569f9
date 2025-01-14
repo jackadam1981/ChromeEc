@@ -1,0 +1,120 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb9b2f7_150f7917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-14T15:42:59Z",
+      "side": 1,
+      "message": "\u003e \"finised\" is a possible misspelling of \"finished\".\n\nPlease fix.",
+      "parentUuid": "e1336a85_befbc628",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "798b57e6991abb643b5f4748cf203a2c659569f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea8fd06_58f826d3",
+        "filename": "board/hyperdebug/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-14T15:42:59Z",
+      "side": 1,
+      "message": "let\u0027s add more function comments detailing how we can call these functions, e.g. you can call start multile times and it will just restart on the new pin. You can call stop multiple times. wait_for_failing_edge will also cancel monitoring (see later comment), etc.",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 44
+      },
+      "revId": "798b57e6991abb643b5f4748cf203a2c659569f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb176b7_4239eb87",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2855,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-14T15:42:59Z",
+      "side": 1,
+      "message": "```suggestion\n} gsc_gpio_monitor_state;\n```",
+      "range": {
+        "startLine": 2855,
+        "startChar": 2,
+        "endLine": 2855,
+        "endChar": 17
+      },
+      "revId": "798b57e6991abb643b5f4748cf203a2c659569f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e7153c6_50d81ffd",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2881,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-14T15:42:59Z",
+      "side": 1,
+      "message": "is there a define or regsiter we can use instead of hardcoding 110 in the below line?",
+      "range": {
+        "startLine": 2881,
+        "startChar": 43,
+        "endLine": 2881,
+        "endChar": 60
+      },
+      "revId": "798b57e6991abb643b5f4748cf203a2c659569f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f66f4e4_c89a0aae",
+        "filename": "board/hyperdebug/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2892,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-14T15:42:59Z",
+      "side": 1,
+      "message": "should this cancel the monitor if the wait failed?",
+      "range": {
+        "startLine": 2892,
+        "startChar": 3,
+        "endLine": 2892,
+        "endChar": 27
+      },
+      "revId": "798b57e6991abb643b5f4748cf203a2c659569f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
