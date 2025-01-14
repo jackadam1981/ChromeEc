@@ -95,4 +95,10 @@ config PLATFORM_EC_USB_MUX_TUSB1064
 	  This is a USB Type-C Alt Mode redriver. This supports USB 3.1
 	  Gen 2 and DisplayPort 1.4.
 
+config PLATFORM_EC_USB_MUX_ANX7688
+       bool "ANX7688"
+       default y
+       help
+         ANX7688
+
 endif # PLATFORM_EC_USB_MUX
