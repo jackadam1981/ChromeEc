@@ -51,6 +51,24 @@
       "message": "Please ensure that test isl923x.extpower.nissa.gothrax also pass with this change.",
       "revId": "7ee85b7406577b6e465c708b7ceae9adca58c0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44403d3a_52b8d003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2025-01-14T02:55:09Z",
+      "side": 1,
+      "message": "sudo  ./twister -T zephyr/test/charger\ntest pass",
+      "parentUuid": "80707f9e_ab611566",
+      "revId": "7ee85b7406577b6e465c708b7ceae9adca58c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
