@@ -88,13 +88,19 @@ def build(opts):
                    cwd=os.path.dirname(__file__),
                    check=True,
                    env=env)
-    cmd = ['make', 'BOARD=cr50', 'CR50_DEV=1', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'out=build/dbg_test', 'BOARD=cr50', 'CR50_DEV=1', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
                    check=True,
                    env=env)
-    cmd = ['make', 'BOARD=cr50', 'CRYPTO_TEST=1', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'out=build/crypto_test', 'BOARD=cr50', 'CRYPTO_TEST=1', '-j{}'.format(opts.cpus)]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd,
+                   cwd=os.path.dirname(__file__),
+                   check=True,
+                   env=env)
+    cmd = ['make', 'out=build/crypto_test_rb', 'BOARD=cr50', 'CRYPTO_TEST=1', 'H1_RED_BOARD=1', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
