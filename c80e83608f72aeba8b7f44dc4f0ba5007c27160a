@@ -69,6 +69,30 @@
       },
       "revId": "c80e83608f72aeba8b7f44dc4f0ba5007c27160a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760ed984_d9b21e72",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-14T22:46:39Z",
+      "side": 1,
+      "message": "yes, ti50 approach will work",
+      "parentUuid": "fdd8a009_b7693968",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 0
+      },
+      "revId": "c80e83608f72aeba8b7f44dc4f0ba5007c27160a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
