@@ -70,6 +70,24 @@
       "parentUuid": "6b93819b_8c9f46d0",
       "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c708ad_609f60b7",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-14T17:11:19Z",
+      "side": 1,
+      "message": "If you want to change to `cnt\u003d7`, you also need to change to\n```\nuint8_t buf[sizeof(input_header) + sizeof(input_bdo) * 7];\n```\n\nIf you just changed to `cnt\u003d7`, I\u0027d expect `tcpci_emul_add_rx_msg` to overflow `buf`.\n\nThat being said, if the test passes and achieves the desired coverage as of patchset 32, I\u0027m inclined to just have you submit and fix up the message in another CL. As I noted above, the test as written doesn\u0027t depend on the message contents being completely valid.",
+      "parentUuid": "2b193c73_26b44a9f",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
