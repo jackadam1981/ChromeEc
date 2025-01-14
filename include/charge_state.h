@@ -377,6 +377,8 @@ __test_only bool charging_progress_displayed(void);
  */
 int board_should_charger_bypass(void);
 
+int get_battery_critical(void);
+
 #ifdef __cplusplus
 }
 #endif

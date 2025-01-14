@@ -123,6 +123,8 @@ static int battery_seems_disconnected;
 
 static int problems_exist;
 
+static int battery_critical;
+
 static const char *const prob_text[] = {
 	"static update",     "set voltage",	 "set current", "set mode",
 	"set input current", "post init",	 "chg params",	"batt params",
@@ -1523,7 +1525,6 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 void charger_task(void *u)
 {
 	int sleep_usec;
-	int battery_critical;
 	int need_static = 0;
 	const struct charger_info *const info = charger_get_info();
 	int chgnum = 0;
@@ -1976,6 +1977,11 @@ void trigger_ocpc_reset(void)
 	ocpc_reset(&curr.ocpc);
 }
 #endif
+
+int get_battery_critical(void)
+{
+	return battery_critical;
+}
 
 /*****************************************************************************/
 /* Host commands */

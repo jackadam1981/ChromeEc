@@ -321,6 +321,8 @@ bool pd_is_battery_capable(void)
 	capable &= (battery_is_present() == BP_YES);
 #endif /* CONFIG_BATTERY_PRESENT_[CUSTOM|GPIO] */
 
+	capable &= (get_battery_critical() == 0);
+
 	return capable;
 }
 
