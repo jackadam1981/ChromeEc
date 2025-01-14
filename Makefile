@@ -13,7 +13,7 @@
 # This is used to exclude build targets that depend on sanitizers such as
 # fuzzers on architectures that don't support sanitizers yet (e.g. arm).
 ARCH?=amd64
-BOARD ?= elm
+BOARD ?=
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
@@ -26,9 +26,14 @@ BDIR:=$(wildcard board/$(BOARD))
 # right thing to do.
 PBDIR:=$(wildcard ../private-*/board/$(BOARD))
 
+ifneq ($(BOARD),)
 # We need either public, or private board directory, or both.
 ifeq (,$(BDIR)$(PBDIR))
 $(error unable to locate BOARD $(BOARD))
+endif
+NOT_A_BUILD?=n
+else
+NOT_A_BUILD=y
 endif
 
 # Setup PDIR (private directory root).
@@ -115,7 +120,9 @@ endif
 
 # The board makefile sets $CHIP and the chip makefile sets $CORE.
 # Include those now, since they must be defined for _flag_cfg below.
+ifneq ($(BOARD),)
 include $(BDIR)/build.mk
+endif
 
 ifneq ($(ENV_VARS),)
 # Let's make sure $(out)/env_config.h changes if value any of the above
@@ -137,13 +144,17 @@ else
 BASEDIR:=$(BDIR)
 CFLAGS_BASEBOARD=
 endif
+ifneq ($(CHIP),)
 include chip/$(CHIP)/build.mk
+endif
 
 # The toolchain must be set before referencing any toolchain-related variables
 # (CC, CPP, CXX, etc.) so that the correct toolchain is used. The CORE variable
 # is set in the CHIP build file, so this include must come after including the
 # CHIP build file.
+ifneq ($(CORE),)
 include core/$(CORE)/toolchain.mk
+endif
 
 -include build/Makefile.sdk
 
@@ -209,6 +220,7 @@ _tsk_lst_flags+=-I$(BDIR) -DBOARD_$(UC_BOARD)=$(EMPTY) -I$(BASEDIR) \
 		-D_MAKEFILE=$(EMPTY) -imacros $(_tsk_lst_file)
 -include $(ec-private)/task_list_flags.mk
 
+ifneq ($(NOT_A_BUILD),y)
 _tsk_lst_ro:=$(call shell_echo,$(CPP) -P -DSECTION_IS_RO=$(EMPTY) \
 	$(_tsk_lst_flags) include/task_filter.h)
 _tsk_lst_rw:=$(call shell_echo,$(CPP) -P -DSECTION_IS_RW=$(EMPTY) \
@@ -226,10 +238,13 @@ CPPFLAGS_RO+=$(foreach t,$(_tsk_cfg_ro),-D$(t)=$(EMPTY)) \
 CPPFLAGS_RW+=$(foreach t,$(_tsk_cfg_rw),-D$(t)=$(EMPTY)) \
 		$(foreach t,$(_tsk_cfg_ro),-D$(t)_RO=$(EMPTY))
 CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t)=$(EMPTY))
+endif
 ifneq ($(ENV_VARS),)
 CPPFLAGS += -DINCLUDE_ENV_CONFIG=$(EMPTY)
 CFLAGS += -I$(realpath $(out))
 endif
+
+ifneq ($(NOT_A_BUILD),y)
 # Get the CONFIG_ and VARIANT_ options that are defined for this target and make
 # them into variables available to this build script
 # Usage: $(shell $(call cmd_get_configs,<RO|RW>))
@@ -247,6 +262,7 @@ _flag_cfg_rw:= $(filter-out $(_flag_cfg), $(_flag_cfg_rw))
 $(foreach c,$(_tsk_cfg_rw) $(_flag_cfg_rw),$(eval $(c)=rw))
 $(foreach c,$(_tsk_cfg_ro) $(_flag_cfg_ro),$(eval $(c)=ro))
 $(foreach c,$(_tsk_cfg) $(_flag_cfg),$(eval $(c)=y))
+endif
 
 # Fetch list of mocks from .mocklist files for tests and fuzzers.
 # The following will transform the the list of mocks into
@@ -271,6 +287,7 @@ _mock_cfg := $(foreach t,$(_mock_lst) ,HAS_MOCK_$(t))
 CPPFLAGS += $(foreach t,$(_mock_cfg),-D$(t)=$(EMPTY))
 $(foreach c,$(_mock_cfg),$(eval $(c)=y))
 
+ifneq ($(NOT_A_BUILD),y)
 ifneq ($(CONFIG_COMMON_RUNTIME),y)
 ifneq ($(CONFIG_DFU_BOOTMANAGER_MAIN),ro)
 	_irq_list:=$(call shell_echo,$(CPP) $(CPPFLAGS) -P -Ichip/$(CHIP) \
@@ -282,7 +299,9 @@ ifneq ($(CONFIG_DFU_BOOTMANAGER_MAIN),ro)
 		    -D"irq_$(irq)_handler_optional=irq_$(irq)_handler")
 endif
 endif
+endif
 
+ifneq ($(NOT_A_BUILD),y)
 # Compute RW firmware size and offset
 # Usage: $(shell $(call cmd_config_eval,<CONFIG_*>))
 cmd_config_eval = echo "$(1)" | $(CPP) $(CPPFLAGS) -P \
@@ -295,6 +314,7 @@ _rw_size:=$(shell echo "$$(($(_rw_size_str)))")
 _program_memory_base_str:=\
 $(call shell_echo,$(call cmd_config_eval,CONFIG_PROGRAM_MEMORY_BASE))
 _program_memory_base=$(shell echo "$$(($(_program_memory_base_str)))")
+endif
 
 $(eval BASEBOARD_$(UC_BASEBOARD)=y)
 $(eval BOARD_$(UC_BOARD)=y)
@@ -346,9 +366,11 @@ include $(feature-x-builds)
 ifdef CTS_MODULE
 include cts/build.mk
 endif
+ifneq ($(BOARD),)
 include $(BASEDIR)/build.mk
 ifneq ($(BASEDIR),$(BDIR))
 include $(BDIR)/build.mk
+endif
 endif
 ifneq ($(BOARD),host)
 ifeq ($(USE_BUILTIN_STDLIB), 1)
@@ -357,9 +379,13 @@ else
 include libc/build.mk
 endif
 endif
+ifneq ($(CHIP),)
 include chip/$(CHIP)/build.mk
+endif
 include core/build.mk
+ifneq ($(CORE),)
 include core/$(CORE)/build.mk
+endif
 include common/build.mk
 include driver/build.mk
 include fuzz/build.mk

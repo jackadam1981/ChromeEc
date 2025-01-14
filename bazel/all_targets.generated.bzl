@@ -1167,6 +1167,10 @@ def all_targets():
         zephyr = False,
     )
     ec_target(
+        name = "ite-aic",
+        board = "ite-aic",
+    )
+    ec_target(
         name = "jacuzzi",
         baseboard = "kukui",
         board = "jacuzzi",
@@ -1742,6 +1746,11 @@ def all_targets():
         chip = "npcx",
         core = "cortex-m",
         zephyr = False,
+    )
+    ec_target(
+        name = "npcx_monitor",
+        board = "npcx_monitor",
+        extra_modules = ["cmsis"],
     )
     ec_target(
         name = "nucleo-dartmonkey",
