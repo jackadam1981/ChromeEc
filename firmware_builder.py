@@ -82,12 +82,13 @@ def build(opts):
               "Run 'test' with --code-coverage instead.")
         return
 
-    cmd = ['make', 'buildall_only', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'BOARD=cr50', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
                    check=True,
                    env=env)
+
     cmd = ['make', 'out=build/dbg_test', 'BOARD=cr50', 'CR50_DEV=1', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
