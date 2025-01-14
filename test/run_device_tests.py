@@ -464,10 +464,13 @@ class Renode(Platform):
                     "timer",
                 ]:
                     return True
-            if test_name in [
-                "rtc_stm32f4",  # TODO(b/384991107)
-            ]:
-                return True
+
+                if test_name in [
+                    "rtc_stm32f4",  # TODO(b/384991107)
+                    "watchdog",  # TODO(b/390021699)
+                ]:
+                    return True
+
         elif board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]:
             if test_name in [
                 "exception",  # TODO(b/384730599)
@@ -770,6 +773,11 @@ class AllTests:
             TestConfig(test_name="unaligned_access_benchmark"),
             TestConfig(test_name="utils"),
             TestConfig(test_name="utils_str"),
+            TestConfig(
+                test_name="watchdog",
+                # Increase timeout since this executes more slowly in Renode.
+                timeout_secs=120,
+            ),
             TestConfig(
                 config_name="power_utilization_idle",
                 test_name="power_utilization",
