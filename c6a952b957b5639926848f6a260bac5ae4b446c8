@@ -159,6 +159,24 @@
       "parentUuid": "46dfaf10_0134ddd2",
       "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab505d5_73786954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-14T23:46:33Z",
+      "side": 1,
+      "message": "assume capture type is 6, \nThe mode is `0110 0000 0000 0000 0000 0000 0000 0000` in the old code.\nThe mask is `0111 1100 0000 0000 0000 0000 0000 0000` in the new mode\nThe \u0026 op is `0110 0000 0000 0000 0000 0000 0000 0000`\nshift by 26 bits: 0110 00, which is 12\n\nso there is no compatibility between the old version and the new version.",
+      "parentUuid": "fc711685_04673276",
+      "revId": "c6a952b957b5639926848f6a260bac5ae4b446c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
