@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10cc0bfe_0c95cc29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-14T00:44:04Z",
+      "side": 1,
+      "message": "what platform did this test run on? Was the test failing before this change and started succeeding?",
+      "revId": "7789e0e6aafad7538ce8b0b466b6c42181d92c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49738a8a_d818cf3e",
+        "filename": "board/hyperdebug/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-14T00:44:04Z",
+      "side": 1,
+      "message": "not related to this patch, but I am curious, how reliable this is, how likely it is to miss the pulse. On chromebooks this is an edge triggered interrup, so the pulse width does not matter",
+      "range": {
+        "startLine": 802,
+        "startChar": 2,
+        "endLine": 802,
+        "endChar": 48
+      },
+      "revId": "7789e0e6aafad7538ce8b0b466b6c42181d92c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
