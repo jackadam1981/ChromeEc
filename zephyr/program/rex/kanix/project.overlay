@@ -142,6 +142,7 @@
 			rpm_max = <6000>;
 			tach = <&tach1>;
 			enable_gpio = <&gpio_en_pp5000_fan>;
+			rpm_deviation = <1>;
 		};
 	};
 
