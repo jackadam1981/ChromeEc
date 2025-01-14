@@ -866,9 +866,16 @@ static int command_typec(int argc, const char **argv)
 		    polarity_rm_dts(pd_get_polarity(port)));
 	return EC_SUCCESS;
 }
+#ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_PDC_TYPEC
+/* Rename to typec_legacy to prevent from conflict. */
+DECLARE_CONSOLE_COMMAND(typec_legacy, command_typec,
+			"[port|debug] [none|usb|dp|dock]",
+			"Control type-C connector muxing");
+#else
 DECLARE_CONSOLE_COMMAND(typec, command_typec, "[port|debug] [none|usb|dp|dock]",
 			"Control type-C connector muxing");
-#endif
+#endif /* CONFIG_PLATFORM_EC_CONSOLE_CMD_PDC_TYPEC */
+#endif /* CONFIG_CMD_TYPEC */
 
 static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
