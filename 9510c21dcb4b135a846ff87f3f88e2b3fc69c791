@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce243603_4b018c13",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T17:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37353cf8_6c8e7c1d",
+      "range": {
+        "startLine": 329,
+        "startChar": 58,
+        "endLine": 329,
+        "endChar": 63
+      },
+      "revId": "9510c21dcb4b135a846ff87f3f88e2b3fc69c791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0148a1ec_2bbb8ce7",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-11T01:01:50Z",
       "side": 1,
       "message": "highest?",
+      "range": {
+        "startLine": 335,
+        "startChar": 58,
+        "endLine": 335,
+        "endChar": 64
+      },
+      "revId": "9510c21dcb4b135a846ff87f3f88e2b3fc69c791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "747ec701_ed8ddad1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T17:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0148a1ec_2bbb8ce7",
       "range": {
         "startLine": 335,
         "startChar": 58,
