@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455000ec_5c7f774b",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T14:54:01Z",
+      "side": 1,
+      "message": "Is this needed in this file?  Are you still including the ptlrvp file that defines this?",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "34ee86426125074f8bd7fb5ee546c6fabf9ab2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fce5f2_cc560e64",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T14:54:01Z",
+      "side": 1,
+      "message": "Same here - is this still needed?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "34ee86426125074f8bd7fb5ee546c6fabf9ab2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
