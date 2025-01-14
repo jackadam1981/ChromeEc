@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ecf9e0_d1c611ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T16:00:52Z",
+      "side": 1,
+      "message": "You need to add a longer description describing the change.",
+      "revId": "80c7b353411c0f5a83f56479918bcbd789026001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816d31d8_4ebe7885",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T16:00:52Z",
+      "side": 1,
+      "message": "Did your run any tests on this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "80c7b353411c0f5a83f56479918bcbd789026001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374c7c06_a390d9bc",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T16:00:52Z",
+      "side": 1,
+      "message": "Nit - no need to create a local variable.  Just return the value directly.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 22
+      },
+      "revId": "80c7b353411c0f5a83f56479918bcbd789026001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a451da_b7d4936c",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T16:00:52Z",
+      "side": 1,
+      "message": "```suggestion\n\t\treturn FAIL;\n```",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 0
+      },
+      "revId": "80c7b353411c0f5a83f56479918bcbd789026001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b90371_d93c3fd8",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-14T16:00:52Z",
+      "side": 1,
+      "message": "```suggestion\n\treturn SUCCESS;\n```",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 15
+      },
+      "revId": "80c7b353411c0f5a83f56479918bcbd789026001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
