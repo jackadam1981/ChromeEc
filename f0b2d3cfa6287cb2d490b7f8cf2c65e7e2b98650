@@ -52,6 +52,24 @@
       "parentUuid": "bf6e34fa_28fbab03",
       "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b193c73_26b44a9f",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-14T03:21:53Z",
+      "side": 1,
+      "message": "cnt \u003d7 would has below error, but cnt \u003d1 can pass the test.\n\nThread 20 \"test_raa489000_\" received signal SIGSEGV, Segmentation fault.\n[Switching to Thread 0xef9f3b40 (LWP 3956581)]\n0x08154823 in tcpci_emul_handle_rx_buf (emul\u003d0x81ce834 \u003c__emulreg_DT_N_S_i2c_500_S_raa489000_22\u003e, reg\u003d48, val\u003d0xef9f322b \"\\357\\036\", \n    bytes\u003d11) at /mnt/host/source/src/platform/ec/zephyr/emul/tcpc/emul_tcpci.c:933\n933                             *val \u003d ctx-\u003erx_msg-\u003ebuf[ctx-\u003erx_msg-\u003eidx];",
+      "parentUuid": "6b93819b_8c9f46d0",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
