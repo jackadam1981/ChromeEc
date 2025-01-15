@@ -34,6 +34,24 @@
       "parentUuid": "786f2239_aca8ba7c",
       "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb86d464_80371ba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2025-01-15T20:53:29Z",
+      "side": 1,
+      "message": "It seems that `pwrseq_loop_thread()` should be calling it but it is not even compiled because we have `CONFIG_AP_PWRSEQ_DRIVER` set. It is not set on rex which probably explain the difference in behavior.",
+      "parentUuid": "8c11eafa_efea0289",
+      "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
