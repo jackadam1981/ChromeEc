@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07759980_d0378e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-01-15T18:53:35Z",
+      "side": 1,
+      "message": "Reading through the issue description, it looks to me that this is a MTL specific issue and not just a deku specific issue. Is the motivation here to land a work-around while the root cause fix is still being investigated. Should this fix be moved to the AP power sequencing instead of a board specific fix as is implemented here?",
+      "revId": "bacd5a66573fb721d3f540d91af76e4e6d3164f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4f828f_ddb51a04",
+        "filename": "zephyr/program/ovis/deku/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-01-15T18:53:35Z",
+      "side": 1,
+      "message": "What is a global reset? How does the AP trigger this reset?",
+      "range": {
+        "startLine": 21,
+        "startChar": 43,
+        "endLine": 21,
+        "endChar": 62
+      },
+      "revId": "bacd5a66573fb721d3f540d91af76e4e6d3164f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf709415_856c0bc9",
+        "filename": "zephyr/program/ovis/deku/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-01-15T18:53:35Z",
+      "side": 1,
+      "message": "Does this issue only occur if the AP triggers a reset while it is in the S5 power state?",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "bacd5a66573fb721d3f540d91af76e4e6d3164f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
