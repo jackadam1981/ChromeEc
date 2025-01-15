@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3295001d_421e8c91",
+        "filename": "zephyr/program/corsola/wyrdeer/src/lcd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-15T19:03:30Z",
+      "side": 1,
+      "message": "You can use:\n```\ngpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ac_lcd), !!extpower_is_present());\n```",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "6997a722ee7cbc87592ce355107d94a64f7bd299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
