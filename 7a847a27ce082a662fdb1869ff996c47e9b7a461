@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45e8dd6a_052c8acf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-15T23:52:48Z",
+      "side": 1,
+      "message": "How about bitshifting these to keep it compatible?",
+      "range": {
+        "startLine": 8232,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 27
+      },
+      "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
