@@ -34,6 +34,24 @@
       "parentUuid": "98151189_35720474",
       "revId": "fdc277c164219acefc008c9beba7b17659874b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c79ed5_d7d2ff4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-01-15T20:02:33Z",
+      "side": 1,
+      "message": "Looking b:79159777, b:35550738, we would add this define when the sensors are not found by the EC, especially booting from S5. This is not what we see in b/384504235.",
+      "parentUuid": "a00ea38e_47cb32ec",
+      "revId": "fdc277c164219acefc008c9beba7b17659874b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
