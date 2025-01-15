@@ -136,9 +136,6 @@
 		gpio_en_pp5000_z1: en_pp5000_z1 {
 			gpios = <&gpio3 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
-		gpio_en_pwr_z1: en_pwr_z1 {
-			gpios = <&gpio8 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
-		};
 		gpio_en_usb_c0_dev_mode: en_usb_c0_dev_mode {
 			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
