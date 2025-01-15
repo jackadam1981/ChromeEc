@@ -16,6 +16,24 @@
       "message": "It seems like this just brings back the issue that was fixed by https://crrev.com/c/3161320 in the case where we do a battery-protection shutdown: active cables will be incorrectly detected when the system powers back up.\n\nI think in this case it would be better to avoid hibernating, because leaving the system in G3 will still allow the battery to cool if possible and the system can then automatically boot back up when it cools enough without leaving the charger in an inconsistent state (it\u0027s never expected that the system is receiving power from a charge port while in hibernate).\n\nAlso adding Abe, since he commented on the change that added this hard reset and might have opinions.",
       "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1b1397_4cdabfb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-15T19:01:11Z",
+      "side": 1,
+      "message": "I have a few broad comments on this:\n1. The root cause of this problem is in the battery, and the ultimate side effect that this CL is trying to adress is the EC booting on AC on. It seems inappropriate for the fix to be in PD policy. My first idea would be that `shutdown_on_critical_battery` should temporarily disable AC as a wake source. I\u0027m a bit hazy on how we set up wake sources and how we\u0027re actually expected to clear a critical-battery condition, so it\u0027s possible this isn\u0027t the best idea.\n2. Supposing that what we wanted to do was prevent a Hard Reset, the CL as currently constructed makes it clear that our code structure could still be improved. The implementation of `pd_is_battery_capable` has nothing to do with PD, and that code should probably be defined and declared in charge manager files with some kind of `charge_` prefix.\n3. There is room for improvement on the specific decision to Hard Reset on entry into S5. See https://issuetracker.google.com/188578923#comment4. As an easy workaround, there are a fair number of boards that _can_ source VCONN in shutdown and consequently don\u0027t need to do anything here. However, we\u0027ve blindly copy-pasted the implementation of `pd_check_vconn_swap` that doesn\u0027t allow VCONN in shutdown. If it\u0027s possible to update the nissa implementation of `pd_check_vconn_swap` to be more correct in this way, then we should do that.\n4. In principle, we should be able to avoid this Hard Reset even for boards that can\u0027t source VCONN in shutdown by performing a VCONN Swap before getting to the shutdown power state. This would be a bit more of a project, and I discuss it a bit in the linked bug.",
+      "parentUuid": "29f5750a_2979ccca",
+      "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
