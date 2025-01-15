@@ -20,6 +20,8 @@
 
 #include "../fatcat_it82002aw/interrupts.dtsi"
 
+#include "../../intelrvp/ptlrvp/battery.dtsi"
+
 /* Power Signals */
 #define PWR_EN_PP3300_S5 &gpio4 1
 #define PWR_EN_PP5000_S5 &gpio7 6
@@ -38,6 +40,26 @@
 
 #include "../../intelrvp/ptlrvp/i2c.dtsi"
 
+#define PD_POW_IRQ_GPIO &gpiof 0
+gpio_pdc_pow_irq: &gpio_usb_pd_int_ls_odl {};
+
+#include "../../intelrvp/ptlrvp/pd.dtsi"
+
+&pd_pow_i2c {
+	/delete-node/ rts54-pdc@68;
+};
+
+#include "../../intelrvp/ptlrvp/usbc.dtsi"
+
+/ {
+	usbc-ports {
+		/delete-node/ port2@2;
+		ppm-driver {
+			lpm = <&pd_pow_port0 &pd_pow_port1>;
+		};
+	};
+};
+
 /*
  * Using IT8801 MFD driver
  * These lines can be deleted after all PTL platforms support the MFD driver.
@@ -46,7 +68,6 @@
 /delete-node/ &kb_discrete;
 
 #include "../../intelrvp/ptlrvp/ioex_gpio.dtsi"
-#include "../../intelrvp/ptlrvp/keyboard.dtsi"
 #include "../../intelrvp/ptlrvp/ptlrvp_npcx/psl.dtsi"
 
 /* fatcat_npcx9m7f overrides follow... */
