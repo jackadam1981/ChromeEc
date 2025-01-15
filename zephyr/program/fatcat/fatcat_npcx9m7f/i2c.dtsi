@@ -67,4 +67,4 @@ charger_i2c: &i2c2_0 {
 /*
  * Aliases to common names
  */
-i2c_smb_bs: &i2c_ec_i2c_mi {};
+/* i2c_smb_bs: &i2c_ec_i2c_mi {}; */
