@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "786f2239_aca8ba7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-15T19:43:50Z",
+      "side": 1,
+      "message": "Is PTL using a different method of setting this mask? This change will effect all platforms already using this logic. While I don\u0027t think that is necessarily an issue we would need to verify this does not cause negative effects on Rex platforms as well as Brox platforms",
+      "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
