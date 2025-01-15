@@ -106,6 +106,24 @@
       "parentUuid": "d5c708ad_609f60b7",
       "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194397cd_04e8153a",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-15T17:34:23Z",
+      "side": 1,
+      "message": "OK, let\u0027s just leave it at `cnt\u003d1` and come back to this in a later CL. Can you put a comment in the code like\n```\n/* TODO(b/359666332): A BIST Test Data message should have 7 data objects, although\n * this should not affect the results of this test.\n */",
+      "parentUuid": "3033d630_ea9e96cc",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
