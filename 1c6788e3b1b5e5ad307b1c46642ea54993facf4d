@@ -52,6 +52,24 @@
       "parentUuid": "8c11eafa_efea0289",
       "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397c9e09_2fbf71e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-01-15T21:01:40Z",
+      "side": 1,
+      "message": "there are two pathes in ap pwrseq, CONFIG_AP_PWRSEQ_DRIVER newly developed. this call could be missed. So ap_power_set_active_wake_mask() is never being called in ptl EC flow?",
+      "parentUuid": "fb86d464_80371ba4",
+      "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
