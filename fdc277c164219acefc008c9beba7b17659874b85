@@ -16,6 +16,24 @@
       "message": "How do we know that 5ms is good enough?",
       "revId": "fdc277c164219acefc008c9beba7b17659874b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00ea38e_47cb32ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-01-15T19:40:31Z",
+      "side": 1,
+      "message": "Slew rate of the corresponding switch is typically 1.5ms, max 2ms",
+      "parentUuid": "98151189_35720474",
+      "revId": "fdc277c164219acefc008c9beba7b17659874b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
