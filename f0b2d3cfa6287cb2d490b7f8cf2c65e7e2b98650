@@ -88,6 +88,24 @@
       "parentUuid": "2b193c73_26b44a9f",
       "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3033d630_ea9e96cc",
+        "filename": "zephyr/test/drivers/raa489000/src/raa489000.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-01-15T02:02:20Z",
+      "side": 1,
+      "message": "yes, i also change the uint8_t buf[sizeof(input_header) + sizeof(input_bdo) * 7]; it would reply the above fail.",
+      "parentUuid": "d5c708ad_609f60b7",
+      "revId": "f0b2d3cfa6287cb2d490b7f8cf2c65e7e2b98650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
