@@ -52,6 +52,24 @@
       "parentUuid": "a00ea38e_47cb32ec",
       "revId": "fdc277c164219acefc008c9beba7b17659874b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99bc14b3_f04fb135",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-01-15T22:06:56Z",
+      "side": 1,
+      "message": "The suspicion here is that EC fails on S3-\u003eS0 transition. The failure is not reproducible locally, so the only way we could test it is by releaseing and getting crash rate from beta channel",
+      "parentUuid": "a2c79ed5_d7d2ff4a",
+      "revId": "fdc277c164219acefc008c9beba7b17659874b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
