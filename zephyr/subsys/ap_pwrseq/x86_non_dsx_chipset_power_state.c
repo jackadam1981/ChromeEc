@@ -144,6 +144,13 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 		 * HC already set sleep suspend state.
 		 */
 		ap_power_sleep_notify_transition(AP_POWER_SLEEP_SUSPEND);
+
+		/*
+		 * Update the active wake mask allowing wake up on configured
+		 * events.
+		 */
+		ap_power_set_active_wake_mask();
+
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
 		 * to go into deep sleep in S0ix.
