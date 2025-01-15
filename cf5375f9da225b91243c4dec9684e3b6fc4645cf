@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9748a6_e551acf4",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-01-15T18:26:53Z",
+      "side": 1,
+      "message": "Nit: better to use an abbreviated term, similar to the above, as developers may type these commands manually.",
+      "range": {
+        "startLine": 1577,
+        "startChar": 34,
+        "endLine": 1577,
+        "endChar": 47
+      },
+      "revId": "cf5375f9da225b91243c4dec9684e3b6fc4645cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
