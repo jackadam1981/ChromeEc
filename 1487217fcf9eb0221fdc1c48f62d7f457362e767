@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd54642_f60aa5ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-01-15T13:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c525e2_c0baa40f",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "1487217fcf9eb0221fdc1c48f62d7f457362e767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8c9f9d4_c03d467b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-14T21:15:47Z",
       "side": 1,
       "message": "wanted to double check:\nis this within the PWM frequency range spec of your fan?\n25 KHz is common.",
+      "range": {
+        "startLine": 139,
+        "startChar": 19,
+        "endLine": 139,
+        "endChar": 29
+      },
+      "revId": "1487217fcf9eb0221fdc1c48f62d7f457362e767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1634b91c_a2166cf5",
+        "filename": "zephyr/program/rex/kanix/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-01-15T13:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c9f9d4_c03d467b",
       "range": {
         "startLine": 139,
         "startChar": 19,
