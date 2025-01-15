@@ -16,6 +16,98 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4295b424238e489345b1f12620a23f57aa72239f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13215dd8_2629d750",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-15T18:48:41Z",
+      "side": 1,
+      "message": "15000 mW?",
+      "range": {
+        "startLine": 90,
+        "startChar": 53,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ff4bde_984b61f7",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-15T18:48:41Z",
+      "side": 1,
+      "message": "Should we revisit this for C0?\n\nvalid options are:\n\n```\nValid options are:\n0 - USB 2\n1 - USB 3.2 Gen 1x1\n2 - USB 3.2 Gen 2x1\n3 - USB 3.2 Gen 1x2\n4 - USB 3.2 Gen 2x2\n```",
+      "range": {
+        "startLine": 98,
+        "startChar": 27,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcdc31a_0c11d9f1",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-15T18:48:41Z",
+      "side": 1,
+      "message": "Should we revisit this for C1?\n\nShould we revisit this for C0?\n\nvalid options are:\n\n```\nValid options are:\n0 - USB 2\n1 - USB 3.2 Gen 1x1\n2 - USB 3.2 Gen 2x1\n3 - USB 3.2 Gen 1x2\n4 - USB 3.2 Gen 2x2\n```",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 63
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6331d18_1f0f23b5",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-15T18:48:41Z",
+      "side": 1,
+      "message": "Do we still use 0x5065 on hylia?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
