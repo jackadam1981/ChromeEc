@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f5750a_2979ccca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-01-15T05:06:58Z",
+      "side": 1,
+      "message": "It seems like this just brings back the issue that was fixed by https://crrev.com/c/3161320 in the case where we do a battery-protection shutdown: active cables will be incorrectly detected when the system powers back up.\n\nI think in this case it would be better to avoid hibernating, because leaving the system in G3 will still allow the battery to cool if possible and the system can then automatically boot back up when it cools enough without leaving the charger in an inconsistent state (it\u0027s never expected that the system is receiving power from a charge port while in hibernate).\n\nAlso adding Abe, since he commented on the change that added this hard reset and might have opinions.",
+      "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
