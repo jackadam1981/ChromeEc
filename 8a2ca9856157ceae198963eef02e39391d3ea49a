@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ffb2f2_e1f2c169",
+        "filename": "zephyr/program/fatcat/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-01-15T22:56:14Z",
+      "side": 1,
+      "message": "nit: seems like this config is not part of power sequerncing, maybe add an extra line above?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "8a2ca9856157ceae198963eef02e39391d3ea49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
