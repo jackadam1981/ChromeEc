@@ -3,3 +3,6 @@
 # found in the LICENSE file.
 
 zephyr_library_sources("../../intelrvp/ptlrvp/src/board_power.c")
+
+zephyr_include_directories("../../intelrvp/include")
+zephyr_library_sources("../../intelrvp/src/dc_jack.c")
