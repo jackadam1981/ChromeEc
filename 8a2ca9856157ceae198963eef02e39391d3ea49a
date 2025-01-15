@@ -22,6 +22,30 @@
       },
       "revId": "8a2ca9856157ceae198963eef02e39391d3ea49a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38859651_3936cdf5",
+        "filename": "zephyr/program/fatcat/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-15T23:24:18Z",
+      "side": 1,
+      "message": "it actually is. this determines how the sleep state virtual wire messages\nsent by the AP are interpreted:\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6012659",
+      "parentUuid": "65ffb2f2_e1f2c169",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "8a2ca9856157ceae198963eef02e39391d3ea49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
