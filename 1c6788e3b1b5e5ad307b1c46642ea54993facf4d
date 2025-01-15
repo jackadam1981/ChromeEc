@@ -16,6 +16,24 @@
       "message": "Is PTL using a different method of setting this mask? This change will effect all platforms already using this logic. While I don\u0027t think that is necessarily an issue we would need to verify this does not cause negative effects on Rex platforms as well as Brox platforms",
       "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c11eafa_efea0289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2025-01-15T19:57:09Z",
+      "side": 1,
+      "message": "To my understanding, coreboot is not using any special method to set this mask. Your question is valid: how does it work on rex ?",
+      "parentUuid": "786f2239_aca8ba7c",
+      "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
