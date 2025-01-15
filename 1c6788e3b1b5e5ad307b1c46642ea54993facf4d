@@ -88,6 +88,24 @@
       "parentUuid": "397c9e09_2fbf71e4",
       "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85416c9a_27302dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-01-15T23:05:21Z",
+      "side": 1,
+      "message": "wake mask has to be updated when there is state change. I think around here is the right place.https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/subsys/ap_pwrseq/ap_pwrseq.c#188",
+      "parentUuid": "9df3082c_10389cf3",
+      "revId": "1c6788e3b1b5e5ad307b1c46642ea54993facf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
