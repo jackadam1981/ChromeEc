@@ -32,16 +32,19 @@ GE_BOARD = "reef"
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
 # List of files to bundle each element is a tuple with the source and dest
-# filenames.
+# filenames. If the dest filename is empty, it'll keep the same basename.
 # This is the same list of files the ebuild bundles.
 BUNDLE_FILES = [
-        ('ec.bin', 'ec.bin'),
+        ('ec.bin', ''),
         ('RW/ec.RW_B.elf.fips', 'ec.RW_B.elf'),
-        ('RW/ec.RW_B.map', 'ec.RW_B.map'),
-        ('RW/ec.RW.dis', 'ec.RW.dis'),
+        ('RW/ec.RW_B.map', ''),
+        ('RW/ec.RW.dis', ''),
         ('RW/ec.RW.elf.fips', 'ec.RW.elf'),
-        ('RW/ec.RW.map', 'ec.RW.map'),
-        ('RW/board/cr50/dcrypto/fips_module.o', 'fips_module.o'),
+        ('RW/ec.RW.map', ''),
+        ('RW/board/cr50/dcrypto/fips_module.o', ''),
+        ('../board/cr50/rma_key_blob.x25519*', ''),
+        ('../board/cr50/rma_key_blob.p256*', ''),
+        ('../util/signer/fuses.xml', ''),
 ]
 
 def init_toolchain():
