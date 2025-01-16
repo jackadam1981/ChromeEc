@@ -22,6 +22,29 @@
       },
       "revId": "5c6d80d48f77873a4931f0cc1cb8fc3e7e67f5d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b1379f_df7a745a",
+        "filename": "zephyr/dts/bindings/battery/panasonic,ap23a5l-2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-16T19:06:26Z",
+      "side": 1,
+      "message": "Table 5, Row 5.12, Discharge mode of the datasheet (linked in bug) states a range of -20C to +60C. Is there a reason for the difference?",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "5c6d80d48f77873a4931f0cc1cb8fc3e7e67f5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
