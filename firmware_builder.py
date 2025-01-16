@@ -31,6 +31,18 @@ PUBLISH_TO_GOLDENEYE = False
 GE_BOARD = "reef"
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
+# List of files to bundle each element is a tuple with the source and dest
+# filenames.
+# This is the same list of files the ebuild bundles.
+BUNDLE_FILES = [
+        ('ec.bin', 'ec.bin'),
+        ('RW/ec.RW_B.elf.fips', 'ec.RW_B.elf'),
+        ('RW/ec.RW_B.map', 'ec.RW_B.map'),
+        ('RW/ec.RW.dis', 'ec.RW.dis'),
+        ('RW/ec.RW.elf.fips', 'ec.RW.elf'),
+        ('RW/ec.RW.map', 'ec.RW.map'),
+        ('dcrypto/fips_module.o', 'fips_module.o'),
+]
 
 def init_toolchain():
     """Initialize coreboot-sdk.
@@ -82,25 +94,25 @@ def build(opts):
               "Run 'test' with --code-coverage instead.")
         return
 
-    cmd = ['make', 'BOARD=cr50', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'BOARD=cr50', 'dis', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
                    check=True,
                    env=env)
-    cmd = ['make', 'out=build/dbg_test', 'BOARD=cr50', 'CR50_DEV=1', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'out=build/dbg_test', 'BOARD=cr50', 'dis', 'CR50_DEV=1', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
                    check=True,
                    env=env)
-    cmd = ['make', 'out=build/crypto_test', 'BOARD=cr50', 'CRYPTO_TEST=1', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'out=build/crypto_test', 'BOARD=cr50', 'dis', 'CRYPTO_TEST=1', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
                    check=True,
                    env=env)
-    cmd = ['make', 'out=build/crypto_test_rb', 'BOARD=cr50', 'CRYPTO_TEST=1', 'H1_RED_BOARD=1', '-j{}'.format(opts.cpus)]
+    cmd = ['make', 'out=build/crypto_test_rb', 'BOARD=cr50', 'dis', 'CRYPTO_TEST=1', 'H1_RED_BOARD=1', '-j{}'.format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd,
                    cwd=os.path.dirname(__file__),
@@ -151,6 +163,29 @@ def bundle_coverage(opts):
 
     write_metadata(opts, info)
 
+def create_artifact_dir(ec_dir, build_target):
+    """Copy artifacts into a build_target directory that can be bundled.
+
+    The signer expects the artifacts to be in a build_target directory in the
+    tarball. Create the directory and copy all of the artifact files into it.
+    """
+    # Nothing needs to be done to the host artifacts
+    if build_target == 'host':
+        return [ '--exclude=*.o.d', '--exclude=*.o', '.' ]
+
+    cmd = [ 'mkdir', build_target ]
+    subprocess.run(
+        cmd, cwd=os.path.join(ec_dir, 'build', build_target), check=True)
+    for src, dest in BUNDLE_FILES:
+        dest = os.path.join(build_target, dest)
+        # The non-cr50 builds are DBG and crypto test images. Rename their elf
+        # files, so it's not possible for the signer to sign them.
+        if dest.endswith('.elf') and build_target != 'cr50':
+            dest += '.test'
+        cmd = [ 'cp', src, dest ]
+        subprocess.run(
+            cmd, cwd=os.path.join(ec_dir, 'build', build_target), check=True)
+    return [ build_target ]
 
 def bundle_firmware(opts):
     """Bundles the artifacts from each target into its own tarball."""
@@ -161,9 +196,10 @@ def bundle_firmware(opts):
     for build_target in sorted(os.listdir(os.path.join(ec_dir, 'build'))):
         tarball_name = ''.join([build_target, '.firmware.tbz2'])
         tarball_path = os.path.join(bundle_dir, tarball_name)
-        cmd = [
-            'tar', 'cvfj', tarball_path, '--exclude=*.o.d', '--exclude=*.o', '.'
-        ]
+
+        artifact_dir = create_artifact_dir(ec_dir, build_target)
+        cmd = [ 'tar', 'cvfj', tarball_path ]
+        cmd.extend(artifact_dir)
         subprocess.run(
             cmd, cwd=os.path.join(ec_dir, 'build', build_target), check=True)
         meta = info.objects.add()
