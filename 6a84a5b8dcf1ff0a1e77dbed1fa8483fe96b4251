@@ -16,6 +16,40 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "6a84a5b8dcf1ff0a1e77dbed1fa8483fe96b4251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e164fea7_cafa153b",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-01-16T13:53:28Z",
+      "side": 1,
+      "message": "please try to briefly adjust comment to new features if possible",
+      "revId": "6a84a5b8dcf1ff0a1e77dbed1fa8483fe96b4251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bd9ca7_5d07d2b5",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-01-16T13:53:28Z",
+      "side": 1,
+      "message": "as discussed offline, you need to use dualrole \u003d\u003d PD_DRP_TOGGLE_ON (as its enum eqal 0)",
+      "revId": "6a84a5b8dcf1ff0a1e77dbed1fa8483fe96b4251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
