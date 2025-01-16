@@ -31,17 +31,23 @@ PUBLISH_TO_GOLDENEYE = True
 GE_BOARD = "reef"
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
+SCRIPT_DIR = os.path.dirname(__file__)
 # List of files to bundle each element is a tuple with the source and dest
-# filenames.
+# filenames. If the dest filename is empty, it'll keep the same basename.
 # This is the same list of files the ebuild bundles.
 BUNDLE_FILES = [
-        ('ec.bin', 'ec.bin'),
+        ('ec.bin', ''),
         ('RW/ec.RW_B.elf.fips', 'ec.RW_B.elf'),
-        ('RW/ec.RW_B.map', 'ec.RW_B.map'),
-        ('RW/ec.RW.dis', 'ec.RW.dis'),
+        ('RW/ec.RW_B.map', ''),
+        ('RW/ec.RW.dis', ''),
         ('RW/ec.RW.elf.fips', 'ec.RW.elf'),
-        ('RW/ec.RW.map', 'ec.RW.map'),
-        ('RW/board/cr50/dcrypto/fips_module.o', 'fips_module.o'),
+        ('RW/ec.RW.map', ''),
+        ('RW/board/cr50/dcrypto/fips_module.o', ''),
+        ('../../util/signer/fuses.xml', ''),
+        ('../../board/cr50/rma_key_blob.x25519.prod', ''),
+        ('../../board/cr50/rma_key_blob.x25519.test', ''),
+        ('../../board/cr50/rma_key_blob.p256.prod', ''),
+        ('../../board/cr50/rma_key_blob.p256.test', ''),
 ]
 
 def init_toolchain():
