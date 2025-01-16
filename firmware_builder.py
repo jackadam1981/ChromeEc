@@ -51,6 +51,7 @@ BUNDLE_FILES = [
         ('../../board/cr50/rma_key_blob.p256.test', ''),
         ('../../board/cr50/ROs/cr50.prod.ro.%s.%s.hex' % ('A', RO_VER), 'prod.ro.A'),
         ('../../board/cr50/ROs/cr50.prod.ro.%s.%s.hex' % ('B', RO_VER), 'prod.ro.B'),
+        ('prod.json', ''),
 ]
 
 def init_toolchain():
