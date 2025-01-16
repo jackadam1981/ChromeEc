@@ -86,6 +86,24 @@
       "parentUuid": "f4dacfad_3b162d7b",
       "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a7b588_5f984530",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-01-16T23:15:09Z",
+      "side": 1,
+      "message": "Should be less risk. The servo hardware doesn\u0027t really sink any current from the DUT; the servo is powered by its dedicated power source. So changing this servo SNK PDO from 0.5A to 3A affects the protocol negotiation between the DUT and the servo, that results setting a higher current limit. As there is no current flows from the DUT to the servo, the current never reaches the limit.\n\nAgree to pick several platforms to test the protocol negotiation, like a device using TCPMv1, one using TCPMv2, and one using PDC.",
+      "parentUuid": "614a47cb_db3c0f1d",
+      "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
