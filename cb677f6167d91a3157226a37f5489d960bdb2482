@@ -34,6 +34,24 @@
       "parentUuid": "29f5750a_2979ccca",
       "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44e5a3e_eae072c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-01-16T05:25:44Z",
+      "side": 1,
+      "message": "\u003e My first idea would be that shutdown_on_critical_battery should temporarily disable AC as a wake source.\n\nFor wake from hibernate, the sources aren\u0027t always (might never be) configurable since the logic that powers the EC back on is hard-wired (because it needs to function when the EC is unpowered). I don\u0027t think this is feasible.\n\n\u003e If it\u0027s possible to update the nissa implementation of pd_check_vconn_swap to be more correct in this way, then we should do that.\n\nThat would be reasonable, if nissa can source VCONN in S5. I\u0027m not sure. It doesn\u0027t solve the more general issue (on other platforms) though.\n\n---\n\nI think a good general solution might be to ensure the battery temperature is checked before the AP is booted. We already have checks that the battery is sufficiently charged (or there is sufficient external power) before booting the AP, but it seems like the temperature should also be checked if that\u0027s another factor that could cause a forced shutdown.",
+      "parentUuid": "ee1b1397_4cdabfb2",
+      "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
