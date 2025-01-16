@@ -70,6 +70,24 @@
       "parentUuid": "ee1b1397_4cdabfb2",
       "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5941a72_a9821300",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-16T17:34:07Z",
+      "side": 1,
+      "message": "\u003e I think a good general solution might be to ensure the battery temperature is checked before the AP is booted. We already have checks that the battery is sufficiently charged (or there is sufficient external power) before booting the AP, but it seems like the temperature should also be checked if that\u0027s another factor that could cause a forced shutdown.\n\nThat\u0027s a good point. I had taken the bug to suggest that it was directly a problem that the EC was coming out of hibernate, but if we just want to prevent the AP from booting, we probably have a lot more options.\n\n\u003e I can\u0027t access this issue, is it possiable to add me into this bug?\n\nI CCed you.",
+      "parentUuid": "d201088d_ec267b9b",
+      "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
