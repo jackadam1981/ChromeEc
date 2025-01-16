@@ -46,9 +46,20 @@
 #define CONF_PDSNK(c)                                      \
 	CONF_SET_CLEAR(c, CC_DISABLE_DTS | CC_SNK_WITH_PD, \
 		       CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SRC_WITHOUT_PD)
-#define CONF_DRP(c)                                                      \
-	CONF_SET_CLEAR(c, CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP, \
-		       CC_SNK_WITH_PD | CC_SRC_WITHOUT_PD)
+#define CONF_DRP(c)                                                           \
+	CONF_SET_CLEAR(c, CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP,      \
+		       CC_SNK_WITH_PD | CC_SRC_WITHOUT_PD | CC_START_AS_SNK | \
+			       CC_START_AS_SRC)
+#define CONF_DRPSRC(c)                                                 \
+	CONF_SET_CLEAR(c,                                              \
+		       CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP | \
+			       CC_START_AS_SRC,                        \
+		       CC_SNK_WITH_PD | CC_SRC_WITHOUT_PD | CC_START_AS_SNK)
+#define CONF_DRPSNK(c)                                                 \
+	CONF_SET_CLEAR(c,                                              \
+		       CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP | \
+			       CC_START_AS_SNK,                        \
+		       CC_SNK_WITH_PD | CC_SRC_WITHOUT_PD | CC_START_AS_SRC)
 #define CONF_SRCDTS(c)                                                   \
 	CONF_SET_CLEAR(c, CC_ALLOW_SRC,                                  \
 		       CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SNK_WITH_PD | \
@@ -1244,9 +1255,11 @@ static void do_cc(int cc_config_new)
 			dualrole = chargeable ? get_dual_role_of_src() :
 						PD_DRP_FORCE_SINK;
 			pd_set_dual_role(DUT, dualrole);
+
 			/*
-			 * If force_source or force_sink role, explicitly set
-			 * the Rp or Rd resistors on CC lines.
+			 * If force_source, force_sink role or DRP with initial
+			 * role, explicitly set the Rp or Rd resistors on CC
+			 * lines.
 			 *
 			 * If DRP role, don't set any CC pull resistor, the PD
 			 * state machine will toggle and set the pull resistors
@@ -1254,6 +1267,12 @@ static void do_cc(int cc_config_new)
 			 */
 			if (dualrole != PD_DRP_TOGGLE_ON)
 				pd_set_host_mode(DUT, chargeable);
+			else if (dualrole != PD_DRP_TOGGLE_ON &&
+				 cc_config & CC_START_AS_SNK)
+				pd_set_host_mode(DUT, 0);
+			else if (dualrole != PD_DRP_TOGGLE_ON &&
+				 cc_config & CC_START_AS_SRC)
+				pd_set_host_mode(DUT, 1);
 
 			/*
 			 * For the normal lab use, emulating a sink has no PD
@@ -1314,6 +1333,10 @@ static int command_cc(int argc, const char **argv)
 			cc_config_new = CONF_PDSNK(cc_config_new);
 		else if (!strcasecmp(argv[1], "drp"))
 			cc_config_new = CONF_DRP(cc_config_new);
+		else if (!strcasecmp(argv[1], "drpsrc"))
+			cc_config_new = CONF_DRPSRC(cc_config_new);
+		else if (!strcasecmp(argv[1], "drpsnk"))
+			cc_config_new = CONF_DRPSNK(cc_config_new);
 		else if (!strcasecmp(argv[1], "srcdts"))
 			cc_config_new = CONF_SRCDTS(cc_config_new);
 		else if (!strcasecmp(argv[1], "snkdts"))
@@ -1362,8 +1385,8 @@ static int command_cc(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(cc, command_cc,
-			"[off|on|src|snk|pdsnk|drp|srcdts|snkdts|pdsnkdts|"
-			"drpdts|dtsoff|dtson|emca|nonemca] [cc1|cc2]",
+			"[off|on|src|snk|pdsnk|drp|drpsrc|drpsnk|srcdts|snkdts|"
+			"pdsnkdts|drpdts|dtsoff|dtson|emca|nonemca] [cc1|cc2]",
 			"Servo_v4 DTS and CHG mode");
 
 static void fake_disconnect_end(void)
