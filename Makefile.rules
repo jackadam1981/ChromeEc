@@ -70,6 +70,7 @@ cmd_elf_to_signed ?= $(SIGNER) --key=util/signer/$(3) \
 	&& sudo chown $(shell whoami) $@.signed && mv $@.signed $@
 cmd_elf_to_elf_fips = ./util/inject_fips_fingerprint.sh $(OBJCOPY) $(OBJDUMP) \
 	$^ $(silent)
+cmd_sanitize_manifest = ../gsc-utils/util/convert_signing_json.sh $(2) $@
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
 cmd_elf_to_bin = $(OBJCOPY) -O binary $< $@
 cmd_elf_to_hex = $(OBJCOPY) -O ihex $< $@
@@ -457,7 +458,7 @@ $(out)/RO/%.flat: $(out)/RO/%.elf $(out)/RO/%.smap | $(SIGNER)
 $(out)/RW/%.flat: $(out)/RW/%.elf$(rw_elf_ext) $(out)/RW/%.smap | $(SIGNER)
 	$(call quiet,elf_to_signed,RW_SIGN,$(CR50_RW_KEY))
 
-$(out)/RO/%.hex: $(out)/RO/%.flat
+$(out)/RO/%.hex: $(out)/RO/%.flat $(out)/prod.json
 	$(call quiet,bin_to_hex,OBJCOPY)
 endif
 $(out)/$(PROJECT).hex: $(out)/$(PROJECT).bin
@@ -466,7 +467,10 @@ $(out)/$(PROJECT).hex: $(out)/$(PROJECT).bin
 $(out)/%.vbprik2 $(out)/%.vbpubk2: $(PEM)
 	$(call quiet,key_extract,KEY    )
 
-$(out)/RW/%.flat.sig: $(out)/RW/%.flat $(out)/key.vbprik2
+$(out)/prod.json:
+	$(call quiet,sanitize_manifest, util/signer/ec_RW-manifest-prod.json)
+
+$(out)/RW/%.flat.sig: $(out)/RW/%.flat $(out)/key.vbprik2 $(out)/prod.json
 	$(call quiet,rsasign_rwsig,SIGN   )
 
 $(out)/RW/%.elf: override BLD:=RW

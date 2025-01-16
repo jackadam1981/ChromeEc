@@ -51,6 +51,7 @@ BUNDLE_FILES = [
         ('../../board/cr50/rma_key_blob.p256.test', ''),
         ('../../board/cr50/ROs/cr50.prod.ro.%s.%s.hex' % ('A', RO_VER), 'prod.ro.A'),
         ('../../board/cr50/ROs/cr50.prod.ro.%s.%s.hex' % ('B', RO_VER), 'prod.ro.B'),
+        ('prod.json', ''),
 ]
 
 def init_toolchain():
@@ -202,6 +203,11 @@ def bundle_firmware(opts):
     info.bcs_version_info.version_string = opts.bcs_version
     bundle_dir = get_bundle_dir(opts)
     ec_dir = os.path.dirname(__file__)
+
+    cmd = ['ls', '>', os.path.join(build_target, 'ls.out')]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(
+            cmd, cwd=os.path.join(ec_dir, 'build'), check=True)
     for build_target in sorted(os.listdir(os.path.join(ec_dir, 'build'))):
         tarball_name = ''.join([build_target, '.firmware.tbz2'])
         tarball_path = os.path.join(bundle_dir, tarball_name)
