@@ -16,6 +16,24 @@
       "message": "please add fields:\n    BUG\u003db:xxx\n    TEST\u003dxxx",
       "revId": "dfaff77b308d7494ed4fdbb6ac0c0f515255d5c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a61e02_35239703",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2025-01-16T01:36:52Z",
+      "side": 1,
+      "message": "I added `TEST` but I skipped `BUG` as there is partner for this.",
+      "parentUuid": "479552c7_9d3ac713",
+      "revId": "dfaff77b308d7494ed4fdbb6ac0c0f515255d5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
