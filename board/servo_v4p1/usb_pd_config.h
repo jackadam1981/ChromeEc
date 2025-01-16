@@ -62,6 +62,10 @@
 #define CC_SRC_WITHOUT_PD BIT(8) /* Force disable PD comm for source role */
 #define CC_SRC_1A5 BIT(9) /* Use 1A5 Rp when PD comm is disabled */
 #define CC_SRC_3A0 BIT(10) /* Use 3A0 Rp when PD comm is disabled */
+#define CC_START_AS_SRC \
+	BIT(11) /* When DRP enabled, connect in SRC power role */
+#define CC_START_AS_SNK \
+	BIT(12) /* When DRP enabled, connect in SNK power role */
 
 /* Servo v4 DP alt-mode configuration */
 #define ALT_DP_ENABLE BIT(0) /* Enable DP alt-mode or not */
