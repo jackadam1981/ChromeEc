@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3452292f_210bf1d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-01-16T23:29:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand the purpose of adding the new modes. If you want the servo to be a sink (or a source), configure it to be a sink (or a source). A DRP should toggle, resulting in a sink 50% of the time and a source 50%.\n\nNote that the ChromeOS side always enables TrySrc. So even the servo is a DRP, the ChromeOS results in a source 100%.",
+      "revId": "eb17e346afa8f6d39735b3fbb00909e9dd280fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
