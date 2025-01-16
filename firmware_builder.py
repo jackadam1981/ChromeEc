@@ -32,6 +32,10 @@ GE_BOARD = "reef"
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
 SCRIPT_DIR = os.path.dirname(__file__)
+MANIFEST = os.path.join(SCRIPT_DIR,
+                        'util/signer/ec_RW-manifest-prod.json')
+SANITIZE_MANIFEST = os.path.join(SCRIPT_DIR,
+                                 '../gsc-utils/util/convert_signing_json.sh')
 RO_VER = '0.0.14'
 # List of files to bundle each element is a tuple with the source and dest
 # filenames. If the dest filename is empty, it'll keep the same basename.
@@ -183,6 +187,13 @@ def create_artifact_dir(ec_dir, build_target):
         return [ '--exclude=*.o.d', '--exclude=*.o', '.' ]
 
     cmd = [ 'mkdir', build_target ]
+    subprocess.run(
+        cmd, cwd=os.path.join(ec_dir, 'build', build_target), check=True)
+    cmd = [
+            SANITIZE_MANIFEST,
+            MANIFEST,
+            os.path.join(build_target, 'prod.json')
+    ]
     subprocess.run(
         cmd, cwd=os.path.join(ec_dir, 'build', build_target), check=True)
     for src, dest in BUNDLE_FILES:
