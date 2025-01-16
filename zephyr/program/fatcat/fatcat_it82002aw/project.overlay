@@ -17,6 +17,10 @@ i2c3ALT: &i2c3 {
 };
 
 #include "generated.dtsi"
+
+
+
+
 #include "include/board.h"
 
 / {
@@ -35,6 +39,10 @@ i2c3ALT: &i2c3 {
 		ec_pch_pwrok_od: pch_pwrok_ec_r {};
 		all_sys_pwrgd: all_sys_pwrgd_r {};
 		pwrbtn: bga_pinb4 {};
+
+		bat_det_r {
+			enum-name = "GPIO_BATT_PRES_ODL";			  
+		};
 	};
 };
 
@@ -45,6 +53,9 @@ i2c3ALT: &i2c3 {
 #include "interrupts.dtsi"
 #include "keyboard.dtsi"
 #include "pwm.dtsi"
+#include "temp_sensors.dtsi"
+
+#include "../../intelrvp/ptlrvp/battery.dtsi"
 
 #include "../../intelrvp/ptlrvp/gsc_board.dtsi"
 
@@ -53,6 +64,26 @@ i2c3ALT: &i2c3 {
 };
 
 #include "../../intelrvp/ptlrvp/i2c.dtsi"
+
+#define PD_POW_IRQ_GPIO &gpiof 5
+gpio_pdc_pow_irq: &gpio_wc_usbc_pd_alrt_aic1_r {};
+
+#include "../../intelrvp/ptlrvp/pd.dtsi"
+
+&pd_pow_i2c {
+	/delete-node/ rts54-pdc@68;
+};
+
+#include "../../intelrvp/ptlrvp/usbc.dtsi"
+
+/ {
+	usbc-ports {
+		/delete-node/ port2@2;
+		ppm-driver {
+			lpm = <&pd_pow_port0 &pd_pow_port1>;
+		};
+	};
+};
 
 /*
  * Using IT8801 MFD driver
