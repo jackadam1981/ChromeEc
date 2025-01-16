@@ -50,6 +50,23 @@
       "message": "as discussed offline, you need to use dualrole \u003d\u003d PD_DRP_TOGGLE_ON (as its enum eqal 0)",
       "revId": "6a84a5b8dcf1ff0a1e77dbed1fa8483fe96b4251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c05d7b5_024d109a",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-01-16T14:00:13Z",
+      "side": 1,
+      "message": "So I see we have something like DRP and DRPDTS now, dont you need something like DRP SRC DTS \u0026 DRP SNK DTS? If possibly needed in future it would be better to do it with that CL then later introduce another needing another servo FW release.\n\n@waihong@google.com",
+      "revId": "6a84a5b8dcf1ff0a1e77dbed1fa8483fe96b4251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
