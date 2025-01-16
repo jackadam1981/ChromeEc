@@ -70,6 +70,7 @@ cmd_elf_to_signed ?= $(SIGNER) --key=util/signer/$(3) \
 	&& sudo chown $(shell whoami) $@.signed && mv $@.signed $@
 cmd_elf_to_elf_fips = ./util/inject_fips_fingerprint.sh $(OBJCOPY) $(OBJDUMP) \
 	$^ $(silent)
+cmd_sanitize_manifest ?= $(SIGNER) -i $(2) -o $@ --convert-json
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
 cmd_elf_to_bin = $(OBJCOPY) -O binary $< $@
 cmd_elf_to_hex = $(OBJCOPY) -O ihex $< $@
@@ -451,7 +452,10 @@ $(out)/%.flat: $(out)/%.elf $(out)/%.smap $(build-utils)
 $(out)/RO/%.hex: $(out)/RO/%.elf $(out)/RO/%.smap
 	$(call quiet,elf_to_hex,OBJCOPY)
 else
-$(out)/RO/%.flat: $(out)/RO/%.elf $(out)/RO/%.smap | $(SIGNER)
+$(out)/prod.json:
+	$(call quiet,sanitize_manifest, util/signer/ec_RW-manifest-prod.json)
+
+$(out)/RO/%.flat: $(out)/RO/%.elf $(out)/RO/%.smap | $(SIGNER) $(out)/prod.json
 	$(call quiet,elf_to_signed,RO_SIGN,$(CR50_RO_KEY))
 
 $(out)/RW/%.flat: $(out)/RW/%.elf$(rw_elf_ext) $(out)/RW/%.smap | $(SIGNER)
