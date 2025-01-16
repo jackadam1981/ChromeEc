@@ -33,8 +33,12 @@ PUBLISH_TO_GOLDENEYE = True
 GE_BOARD = "reef"
 DEFAULT_BUNDLE_DIRECTORY = "/tmp/artifact_bundles"
 DEFAULT_BUNDLE_METADATA_FILE = "/tmp/artifact_bundle_metadata"
-SCRIPT_DIR = os.path.dirname(__file__)
 RO_VER = "0.0.14"
+# The file paths are relative to the build/PROJECT dir
+MANIFEST = "../../util/signer/ec_RW-manifest-prod.json"
+SANITIZE_MANIFEST_SCRIPT = os.path.join(
+    "../../../gsc-utils/util/convert_signing_json.sh"
+)
 # List of files to bundle each element is a tuple with the source and dest
 # filenames. If the dest filename is empty, it'll keep the same basename.
 # This is the same list of files the ebuild bundles.
@@ -217,10 +221,15 @@ def create_artifact_dir(ec_dir, build_target):
     if build_target == "host":
         return ["--exclude=*.o.d", "--exclude=*.o", "."]
 
+    build_dir = os.path.join(ec_dir, "build", build_target)
     cmd = ["mkdir", build_target]
-    subprocess.run(
-        cmd, cwd=os.path.join(ec_dir, "build", build_target), check=True
-    )
+    subprocess.run(cmd, cwd=build_dir, check=True)
+    cmd = [
+        SANITIZE_MANIFEST_SCRIPT,
+        MANIFEST,
+        os.path.join(build_target, "prod.json"),
+    ]
+    subprocess.run(cmd, cwd=build_dir, check=True)
     for src, dest in BUNDLE_FILES:
         dest = os.path.join(build_target, dest)
         # The non-cr50 builds are DBG and crypto test images. Rename their elf
@@ -228,9 +237,7 @@ def create_artifact_dir(ec_dir, build_target):
         if dest.endswith(".elf") and build_target != "cr50":
             dest += ".test"
         cmd = ["cp", src, dest]
-        subprocess.run(
-            cmd, cwd=os.path.join(ec_dir, "build", build_target), check=True
-        )
+        subprocess.run(cmd, cwd=build_dir, check=True)
     return [build_target]
 
 
