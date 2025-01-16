@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c19b59_2cdc75c6",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-16T22:56:14Z",
+      "side": 1,
+      "message": "nit: maybe call this `SANATIZE_MANIFEST_SCRIPT`?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "0b2f24af23a56d7446019b7205a73a1706192895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f0da4a_63b55194",
+        "filename": "firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-16T22:56:14Z",
+      "side": 1,
+      "message": "probably time to pull this out into another variable, thoughts?",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 60
+      },
+      "revId": "0b2f24af23a56d7446019b7205a73a1706192895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
