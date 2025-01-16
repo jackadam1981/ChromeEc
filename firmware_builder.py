@@ -32,6 +32,7 @@ GE_BOARD = "reef"
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
 SCRIPT_DIR = os.path.dirname(__file__)
+RO_VER = '0.0.14'
 # List of files to bundle each element is a tuple with the source and dest
 # filenames. If the dest filename is empty, it'll keep the same basename.
 # This is the same list of files the ebuild bundles.
@@ -48,6 +49,9 @@ BUNDLE_FILES = [
         ('../../board/cr50/rma_key_blob.x25519.test', ''),
         ('../../board/cr50/rma_key_blob.p256.prod', ''),
         ('../../board/cr50/rma_key_blob.p256.test', ''),
+        ('../../board/cr50/ROs/cr50.prod.ro.%s.%s.hex' % ('A', RO_VER), 'prod.ro.A'),
+        ('../../board/cr50/ROs/cr50.prod.ro.%s.%s.hex' % ('B', RO_VER), 'prod.ro.B'),
+
 ]
 
 def init_toolchain():
