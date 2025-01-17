@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3b5d4c_176dc871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-01-17T08:17:21Z",
+      "side": 1,
+      "message": "Check with\n```\n grep -rA3 I2C_PORT_SENSOR board/ baseboard/ | grep \"kbps \u003d 100\"\n```\nthat is was the only useful [base-]board where the sensor i2c bus speed is 100kHz.",
+      "revId": "08d8da7d1a2ef47580dd137c174a9d03ba40e8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
