@@ -74,7 +74,7 @@ static uint8_t battery_level_shutdown;
  * State for charger_task(). Here so we can reset it on a HOOK_INIT, and
  * because stack space is more limited than .bss
  */
-static const struct battery_info *batt_info;
+test_export_static const struct battery_info *batt_info;
 static struct charge_state_data curr;
 static enum charge_state prev_state;
 static int prev_ac, prev_charge, prev_disp_charge;
@@ -1647,6 +1647,29 @@ bool charge_prevent_power_on(bool power_button_pressed)
 		    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
+	/*
+	 * Factory override: Always allow power on if WP is disabled,
+	 * except when auto-power-on at EC startup and the battery
+	 * is physically present.
+	 */
+	prevent_power_on &= (system_is_locked() ||
+			     (charge_prevent_power_on_automatic_power_on
+#ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
+
+			      && battery_hw_present() == BP_YES
+#endif
+			      ));
+
+	/*
+	 * If the battery is too cold, is_battery_critical() would
+	 * shut us down again if not on AC.
+	 */
+	int batt_temp_c =
+		DECI_KELVIN_TO_CELSIUS(current_batt_params->temperature);
+	if (battery_too_cold_for_discharge(batt_temp_c)) {
+		prevent_power_on = 1;
+	}
+
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
 	/* However, we can power on if a sufficient charger is present. */
@@ -1669,20 +1692,15 @@ bool charge_prevent_power_on(bool power_button_pressed)
 #endif
 	}
 #endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
+#endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
 
 	/*
-	 * Factory override: Always allow power on if WP is disabled,
-	 * except when auto-power-on at EC startup and the battery
-	 * is physically present.
+	 * If the battery is too hot then refuse to power on, even on AC.
+	 * Otherwise is_battery_critical() would shut us down again.
 	 */
-	prevent_power_on &= (system_is_locked() ||
-			     (charge_prevent_power_on_automatic_power_on
-#ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
-
-			      && battery_hw_present() == BP_YES
-#endif
-			      ));
-#endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
+	if (battery_too_hot(batt_temp_c)) {
+		prevent_power_on = 1;
+	}
 
 #if defined(CONFIG_CHARGE_MANAGER) && !defined(CONFIG_USB_PD_CONTROLLER)
 	/* Always prevent power on until charge current is initialized */
