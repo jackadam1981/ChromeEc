@@ -54,7 +54,7 @@ const struct i2c_port_t i2c_ports[] = {
 #ifdef CONFIG_ACCEL_FIFO
 	{ .name = "sensor",
 	  .port = I2C_PORT_SENSOR,
-	  .kbps = 100,
+	  .kbps = 400,
 	  .scl = GPIO_I2C0_SCL,
 	  .sda = GPIO_I2C0_SDA },
 #endif
