@@ -104,6 +104,24 @@
       "parentUuid": "614a47cb_db3c0f1d",
       "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c217eb56_97d30198",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-01-17T01:15:47Z",
+      "side": 1,
+      "message": "I\u0027ve ran the test on a Rex, Hatch, and Brox. Don\u0027t have any other DUTs around me at the moment.",
+      "parentUuid": "16a7b588_5f984530",
+      "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
