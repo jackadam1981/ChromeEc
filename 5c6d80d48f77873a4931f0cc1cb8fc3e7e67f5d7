@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "996dea60_d5cabbb2",
+        "filename": "zephyr/dts/bindings/battery/panasonic,ap23a5l-2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-01-17T02:04:55Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "46b1379f_df7a745a",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "5c6d80d48f77873a4931f0cc1cb8fc3e7e67f5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5afadf2a_838d2ae4",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-01-16T19:08:32Z",
       "side": 1,
       "message": "The battery specification indicates the discharge operating range is -20C to 60C.  Refer to specification \"5.12 Operating Temperature\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "5c6d80d48f77873a4931f0cc1cb8fc3e7e67f5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74541a3_d4018801",
+        "filename": "zephyr/dts/bindings/battery/panasonic,ap23a5l-2.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-01-17T02:04:55Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "5afadf2a_838d2ae4",
       "range": {
         "startLine": 54,
         "startChar": 0,
