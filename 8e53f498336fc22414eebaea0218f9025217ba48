@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aead202f_8d725fe0",
+        "filename": "zephyr/program/ec-aic/npcx-aic/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-17T20:28:24Z",
+      "side": 1,
+      "message": "keeping these here for now, enabling i2c on the whole program causes a fail in the ite project",
+      "revId": "8e53f498336fc22414eebaea0218f9025217ba48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
