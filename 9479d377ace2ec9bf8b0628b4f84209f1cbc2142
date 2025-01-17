@@ -140,6 +140,24 @@
       "parentUuid": "c217eb56_97d30198",
       "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a94dba_ddb0c97d",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-01-17T21:50:08Z",
+      "side": 1,
+      "message": "if the DUT has a servo micro or c2d2 connected, you can just run the TAST test: crrev.com/c/5868792.\n\nIf not you can run `pd 1 swap power` on the servo console and confirm it is able to alternate between `Attached.SRC` and `Attached.SNK` states, and run the `dut_srccaps` command to make sure it\u0027s selected 3A.\n\nNote that either method the servo will also need to have this CL: crrev.com/c/5858735",
+      "parentUuid": "f3d1b27e_686fa402",
+      "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
