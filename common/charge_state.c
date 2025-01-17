@@ -1647,6 +1647,16 @@ bool charge_prevent_power_on(bool power_button_pressed)
 		    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
+	/*
+	 * If the battery is too cold, is_battery_critical() would
+	 * shut us down again if not on AC.
+	 */
+	int batt_temp_c =
+		DECI_KELVIN_TO_CELSIUS(current_batt_params->temperature);
+	if (battery_too_cold_for_discharge(batt_temp_c)) {
+		prevent_power_on = 1;
+	}
+
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
 	/* However, we can power on if a sufficient charger is present. */
@@ -1669,6 +1679,14 @@ bool charge_prevent_power_on(bool power_button_pressed)
 #endif
 	}
 #endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
+
+	/*
+	 * If the battery is too hot then refuse to power on, even on AC.
+	 * Otherwise is_battery_critical() would shut us down again.
+	 */
+	if (battery_too_hot(batt_temp_c)) {
+		prevent_power_on = 1;
+	}
 
 	/*
 	 * Factory override: Always allow power on if WP is disabled,
