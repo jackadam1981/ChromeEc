@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand the purpose of adding the new modes. If you want the servo to be a sink (or a source), configure it to be a sink (or a source). A DRP should toggle, resulting in a sink 50% of the time and a source 50%.\n\nNote that the ChromeOS side always enables TrySrc. So even the servo is a DRP, the ChromeOS results in a source 100%.",
       "revId": "eb17e346afa8f6d39735b3fbb00909e9dd280fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a0a2bd_e620d32d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-01-17T11:07:56Z",
+      "side": 1,
+      "message": "These are for the tests where we want to check if DUT executes correct policy in the given role - like switch from src to snk if connected device has unconstrained power or can provide 27W or more. \n\nCurrent servo behavior doesn\u0027t allow for precise testing of how DUT will act in particular role - especially that pure DRP mode doesn\u0027t guarantee what role we start with and timing issues might not always make it possible to check initial power role before the swap occures",
+      "parentUuid": "3452292f_210bf1d2",
+      "revId": "eb17e346afa8f6d39735b3fbb00909e9dd280fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
