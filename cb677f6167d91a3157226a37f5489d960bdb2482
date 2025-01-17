@@ -88,6 +88,24 @@
       "parentUuid": "d201088d_ec267b9b",
       "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc7b68c_d310fe6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-01-17T05:16:17Z",
+      "side": 1,
+      "message": "https://crrev.com/c/6170427 avoids booting the AP if battery temperature is bad.",
+      "parentUuid": "c5941a72_a9821300",
+      "revId": "cb677f6167d91a3157226a37f5489d960bdb2482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
