@@ -122,6 +122,24 @@
       "parentUuid": "16a7b588_5f984530",
       "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d1b27e_686fa402",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-01-17T10:17:24Z",
+      "side": 1,
+      "message": "What test do you do? I can try on platforms I have nerby and then on some other platforms leased via crosfleet",
+      "parentUuid": "c217eb56_97d30198",
+      "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
