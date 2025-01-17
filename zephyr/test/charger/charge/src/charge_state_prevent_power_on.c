@@ -10,10 +10,17 @@
 
 /* Test external variable defined in charge_state_v2 */
 extern int charge_prevent_power_on_automatic_power_on;
+extern const struct battery_info *batt_info;
 
 struct charge_state_prevent_power_on_fixture {
 	struct charge_state_data charge_state_backup;
+	const struct battery_info *batt_info;
 	int automatic_power_on;
+};
+
+static const struct battery_info BATT_INFO = {
+	.discharging_max_c = 50,
+	.discharging_min_c = 5,
 };
 
 static void *setup(void)
@@ -31,9 +38,17 @@ static void before(void *f)
 	fixture->charge_state_backup = *charge_get_status();
 	fixture->automatic_power_on =
 		charge_prevent_power_on_automatic_power_on;
+	fixture->batt_info = batt_info;
 
 	/* Reset the automatic_power_on global */
 	charge_prevent_power_on_automatic_power_on = 1;
+
+	/*
+	 * Set the battery temperature to a comfortable 20C,
+	 * it tolerates 5 to 50 degrees.
+	 */
+	batt_info = &BATT_INFO;
+	charge_get_status()->batt.temperature = 2931;
 }
 
 static void after(void *f)
@@ -44,6 +59,7 @@ static void after(void *f)
 	*charge_get_status() = fixture->charge_state_backup;
 	charge_prevent_power_on_automatic_power_on =
 		fixture->automatic_power_on;
+	batt_info = fixture->batt_info;
 }
 
 ZTEST_SUITE(charge_state_prevent_power_on, charger_predicate_post_main, setup,
@@ -87,4 +103,20 @@ ZTEST(charge_state_prevent_power_on, test_consuming_full_input_current)
 
 	params->state_of_charge = 100;
 	zassert_false(charge_is_consuming_full_input_current());
+}
+
+ZTEST(charge_state_prevent_power_on, test_extreme_temperature)
+{
+	struct batt_params *params = &charge_get_status()->batt;
+
+	/* Very hot, not safe to use. */
+	params->temperature = 3500;
+	/* Automatic and user-requested power-on are both blocked. */
+	zassert_true(charge_prevent_power_on(true));
+	zassert_true(charge_prevent_power_on(false));
+
+	/* Below freezing, the battery won't operate well. */
+	params->temperature = 2700;
+	zassert_true(charge_prevent_power_on(true));
+	zassert_true(charge_prevent_power_on(false));
 }
