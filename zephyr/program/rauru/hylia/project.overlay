@@ -21,6 +21,7 @@
 #include "motionsense.dtsi"
 #include "temp.dtsi"
 #include "usbc.dtsi"
+#include "ite_shi.dtsi"
 
 / {
 	gpio-interrupts {

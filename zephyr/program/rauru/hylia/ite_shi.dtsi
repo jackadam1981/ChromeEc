@@ -1,0 +1,31 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <ite/it8xxx2-pinctrl-map.dtsi>
+
+&shi0 {
+	status = "okay";
+	pinctrl-0 = <&shi_mosi_gpm0_default &shi_miso_gpm1_default
+		     &shi_clk_gpm4_default &shi_cs_gpm5_default>;
+	pinctrl-names = "default";
+	/* unused but needed by dt binding */
+	cs-gpios = <&gpiom 5 GPIO_VOLTAGE_1P8>;
+};
+
+/ {
+	named-gpios {
+		spi0_cs: spi0_cs {
+			gpios = <&gpiom 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+	};
+
+	gpio-interrupts {
+		int_spi0_cs: spi0_cs {
+			irq-pin = <&spi0_cs>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "spi_event";
+		};
+	};
+};
