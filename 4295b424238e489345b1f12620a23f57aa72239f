@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60d7f4e0_6b0c6473",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2025-01-17T01:40:05Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s 0x1",
+      "parentUuid": "a7ff4bde_984b61f7",
+      "range": {
+        "startLine": 98,
+        "startChar": 27,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dcdc31a_0c11d9f1",
         "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
         "patchSetId": 1
@@ -106,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0b3ef86_fc03c903",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2025-01-17T01:40:05Z",
+      "side": 1,
+      "message": "Host speed is 1 - USB 3.2 Gen 1x1",
+      "parentUuid": "5dcdc31a_0c11d9f1",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 63
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6331d18_1f0f23b5",
         "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
         "patchSetId": 1
@@ -117,6 +165,30 @@
       "writtenOn": "2025-01-15T18:48:41Z",
       "side": 1,
       "message": "Do we still use 0x5065 on hylia?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "4295b424238e489345b1f12620a23f57aa72239f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be55bdc_afeffefe",
+        "filename": "zephyr/program/rauru/hylia/hylia_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2025-01-17T01:40:05Z",
+      "side": 1,
+      "message": "Yes, unless b/384435133 being resolved.",
+      "parentUuid": "c6331d18_1f0f23b5",
       "range": {
         "startLine": 349,
         "startChar": 0,
