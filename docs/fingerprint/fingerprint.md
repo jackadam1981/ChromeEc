@@ -441,6 +441,11 @@ measuring power.
 @@   ppvar_mcu_mw   1032     4.4560  0.2319     5.4980     2.5824
 ```
 
+### Other boards
+Expected power measurements for Helipilot, Buccaneer, Gwendolin can be found in [run_device_tests.py].
+
+
+
 ## ChromeOS Build (portage / ebuild)
 
 In order to use the fingerprint sensor with a given [ChromeOS board], a few
@@ -635,3 +640,4 @@ that are connected via UART use [`cros_ec_uart.c`].
 [`cros_ec_spi.c`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/cros_ec_spi.c
 [`cros_ec_uart.c`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/cros_ec_uart.c
 [Fuzz Testing in ChromeOS]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/testing/fuzzing.md
+[run_device_tests.py]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py
