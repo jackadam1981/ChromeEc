@@ -104,9 +104,9 @@
  * @param prop named-usbc-port property to check
  * @returns USB-C port number
  */
-#define USBC_PORT_FROM_DRIVER_NODE(nodeid, prop) \
-	DT_FOREACH_STATUS_OKAY_VARGS(            \
-		named_usbc_port, GET_USBC_PORT_IF_MATCHES_PROP, nodeid, prop)
+#define USBC_PORT_FROM_PDC_DRIVER_NODE(nodeid)        \
+	DT_FOREACH_STATUS_OKAY_VARGS(named_usbc_port, \
+				     GET_USBC_PORT_IF_MATCHES_PROP, nodeid, pdc)
 
 /*
  * Check that the TCPC interrupt flag defined in the devicetree is the same as
