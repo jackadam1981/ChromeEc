@@ -6,6 +6,8 @@ zephyr_library_sources_ifdef(CONFIG_USBC_INTEL_ALTMODE intel_altmode.c)
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_CCG8 pdc_ccg8.c)
 zephyr_library_sources_ifdef(CONFIG_USBC_PDC_RTS54XX pdc_rts54xx.c ucsi_v3.c)
 zephyr_library_sources_ifdef(CONFIG_USB_PDC_POWER_MGMT ucsi_v3.c)
+zephyr_library_sources_ifdef(CONFIG_USBC_PDC_RTS54XX_FW_UPDATER rts54xx_fwup.c)
+zephyr_library_compile_definitions("RTS54XX_FW_ROOT=${PLATFORM_EC}/zephyr/drivers/usbc")
 
 if (CONFIG_USBC_PDC_TPS6699X)
 zephyr_library_compile_definitions("TPS6699X_FW_ROOT=${PLATFORM_EC}/zephyr/drivers/usbc")

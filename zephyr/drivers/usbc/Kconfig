@@ -84,6 +84,14 @@ config USBC_PDC_RTS54XX_THREAD_PRIORITY
         help
           Set thread priority of the USB-C PDC
 
+config USBC_PDC_RTS54XX_FW_UPDATER
+	bool "USB-C RTS54xx PDC FW update support"
+	depends on USBC_PDC_RTS54XX
+	help
+	  If enabled, bundle a realtek FW binary blob into the EC image and add code
+	  to perform an EC-based firmware update of the PDC for development
+	  purposes. Enables the `pdc fwupdate` console command.
+
 config USBC_PDC_TRACE_MSG
 	bool "USB-C PDC message tracing"
 	depends on USBC_PDC_RTS54XX
