@@ -914,6 +914,12 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 	}
 }
 
+/* Helper macro that is true if multiple PDC phandles are specified for
+ * this USB-C port, which is used in conjunction with runtime selection of
+ * the PDC driver (deferred initialization)
+ */
+#define PORT_HAS_MULTIPLE_PDC_HANDLES(inst) DT_INST_PROP_HAS_IDX(inst, pdc, 1)
+
 #define PDC_SUBSYS_INIT(inst)                                                \
 	K_THREAD_STACK_DEFINE(my_stack_area_##inst,                          \
 			      CONFIG_PDC_POWER_MGMT_STACK_SIZE);             \
@@ -935,7 +941,12 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 	static struct pdc_data_t data_##inst = {                             \
 		.port.dev = DEVICE_DT_INST_GET(inst), /* Initial policy read \
 							 from device tree */ \
-		.port.pdc = DEVICE_DT_GET(DT_INST_PROP(inst, pdc)),          \
+		.port.pdc = COND_CODE_1(                                     \
+			PORT_HAS_MULTIPLE_PDC_HANDLES(inst), (NULL),         \
+			(DEVICE_DT_GET(DT_INST_PROP_BY_IDX(                  \
+				inst, pdc, 0)))), /* If multiple PDCs        \
+						     options specified,      \
+						     leave NULL. */          \
 		.port.una_policy.tcc = DT_STRING_TOKEN(                      \
 			DT_INST_PROP(inst, policy), unattached_rp_value),    \
 		.port.una_policy.cc_mode = DT_STRING_TOKEN(                  \
