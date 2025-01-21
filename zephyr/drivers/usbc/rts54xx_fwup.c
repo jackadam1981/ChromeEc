@@ -13,7 +13,11 @@ LOG_MODULE_DECLARE(rts5453, CONFIG_USBC_LOG_LEVEL);
 /* TPS6699X_FW_ROOT is defined in this directory's CMakeLists.txt and points to()
  * ${PLATFORM_EC}/zephyr/drivers/usbc
  */
+#ifdef CONFIG_CROS_EC_RO
 INCBIN(rts54xx_fw, STRINGIFY(RTS54XX_FW_ROOT) "/rts54xx.bin");
+#else
+INCBIN(rts54xx_fw, STRINGIFY(RTS54XX_FW_ROOT) "/zero.bin");
+#endif
 
 #define RTS_I2C_WINDOW_SPEED_KHZ 400
 #define FW_MAJOR_VERSION_SHIFT 16

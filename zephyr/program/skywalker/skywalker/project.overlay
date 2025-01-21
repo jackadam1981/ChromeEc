@@ -3,17 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include <cros/cbi_flash.dtsi>
-
 #include "../common.dtsi"
 #include "../power_signal.dtsi"
 #include "../usba.dtsi"
-#include "../adc.dtsi"
+//#include "../adc.dtsi"
 #include "../host_interface.dtsi"
 #include "../i2c.dtsi"
 #include "../interrupts.dtsi"
 #include "../gpio.dtsi"
-#include "../keyboard.dtsi"
+//#include "../keyboard.dtsi"
 #include "../usbc.dtsi"
 
 /* board override */
@@ -66,12 +64,12 @@
 	pinctrl-0 = <&i2c5_0_sda_scl_gp33_36>;
 };
 
-&cbi_flash {
-	/*
-	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
-	 * EC_RO section. EC_RO section ends at 0x40000 byte which is the offset
-	 */
-	offset = <0x3e000>;
-	size = <0x1000>;
+&binman {
+	wp-ro {
+		size = <0x50000>;
+	};
+	ec-rw {
+		offset = <0x50000>;
+		size = <0x30000>;
+	};
 };
-
