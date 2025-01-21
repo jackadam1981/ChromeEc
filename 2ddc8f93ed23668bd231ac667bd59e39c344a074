@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86aa3b6d_e17ca55e",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-01-21T06:17:16Z",
+      "side": 1,
+      "message": "We will also need that for Buccaneer and Gwendolin. Can you also list the boards here or and an argument something like `is_npcx` to the `register_fpmcu_variant` function?",
+      "fixSuggestions": [
+        {
+          "fixId": "d6ee8cfd_c646a09c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/BUILD.py",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "    is_npcx\u003dFalse,\n"
+            },
+            {
+              "path": "zephyr/program/fpmcu/BUILD.py",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "    if is_npcx:\n"
+            },
+            {
+              "path": "zephyr/program/fpmcu/BUILD.py",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "    is_npcx\u003dTrue,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2ddc8f93ed23668bd231ac667bd59e39c344a074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
