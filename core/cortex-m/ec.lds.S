@@ -110,10 +110,6 @@ SECTIONS
     /* The rest of .text sections. */
     .text.__main : {
         . = ALIGN(4);
-        __ap_ro_root_key_hash_start = . ;
-        *(.rodata.root_key_hash)
-        __ap_ro_root_key_hash_end = . ;
-        . = ALIGN(4);
         STRINGIFY(OUTDIR/core/CORE/init.o) (.text)
         *(.text*)
 #ifdef CONFIG_EXTERNAL_STORAGE
