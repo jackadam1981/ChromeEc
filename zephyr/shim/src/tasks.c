@@ -154,6 +154,11 @@ k_tid_t task_id_to_thread_id(task_id_t task_id)
 
 		case TASK_ID_SHELL:
 			return get_shell_thread();
+#ifdef CONFIG_ZTEST
+		case TASK_ID_ZTEST:
+			/* Ephemeral test runner thread. Not part of the EC. */
+			return NULL;
+#endif /* CONFIG_ZTEST */
 		}
 	}
 	__ASSERT(false, "Failed to map task %d to thread", task_id);
@@ -196,6 +201,15 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 			return i;
 		}
 	}
+
+#ifdef CONFIG_ZTEST
+	const char *thread_name = k_thread_name_get(thread_id);
+
+	if (thread_name && !strncmp(thread_name, "test_", strlen("test_"))) {
+		/* Thread is a ztest test function */
+		return TASK_ID_ZTEST;
+	}
+#endif /* defined(CONFIG_ZTEST) */
 
 	__ASSERT(false, "Failed to map thread to task");
 	return TASK_ID_INVALID;
