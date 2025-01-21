@@ -920,50 +920,78 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
  */
 #define PORT_HAS_MULTIPLE_PDC_HANDLES(inst) DT_INST_PROP_HAS_IDX(inst, pdc, 1)
 
-#define PDC_SUBSYS_INIT(inst)                                                \
-	K_THREAD_STACK_DEFINE(my_stack_area_##inst,                          \
-			      CONFIG_PDC_POWER_MGMT_STACK_SIZE);             \
-                                                                             \
-	static void create_thread_##inst(const struct device *dev)           \
-	{                                                                    \
-		struct pdc_data_t *data = dev->data;                         \
-                                                                             \
-		data->thread = k_thread_create(                              \
-			&data->thread_data, my_stack_area_##inst,            \
-			K_THREAD_STACK_SIZEOF(my_stack_area_##inst),         \
-			pdc_thread, (void *)dev, 0, 0,                       \
-			CONFIG_PDC_POWER_MGMT_THREAD_PRIORTY, K_ESSENTIAL,   \
-			K_NO_WAIT);                                          \
-		k_thread_name_set(data->thread,                              \
-				  "PDC Power Mgmt" STRINGIFY(inst));         \
-	}                                                                    \
-                                                                             \
-	static struct pdc_data_t data_##inst = {                             \
-		.port.dev = DEVICE_DT_INST_GET(inst), /* Initial policy read \
-							 from device tree */ \
-		.port.pdc = COND_CODE_1(                                     \
-			PORT_HAS_MULTIPLE_PDC_HANDLES(inst), (NULL),         \
-			(DEVICE_DT_GET(DT_INST_PROP_BY_IDX(                  \
-				inst, pdc, 0)))), /* If multiple PDCs        \
-						     options specified,      \
-						     leave NULL. */          \
-		.port.una_policy.tcc = DT_STRING_TOKEN(                      \
-			DT_INST_PROP(inst, policy), unattached_rp_value),    \
-		.port.una_policy.cc_mode = DT_STRING_TOKEN(                  \
-			DT_INST_PROP(inst, policy), unattached_cc_mode),     \
-		.port.una_policy.drp_mode = DT_STRING_TOKEN(                 \
-			DT_INST_PROP(inst, policy), unattached_try),         \
-		.port.suspend = ATOMIC_INIT(0),                              \
-		.port.dual_role_state = PD_DRP_TOGGLE_ON,                    \
-	};                                                                   \
-                                                                             \
-	static struct pdc_config_t config_##inst = {                         \
-		.connector_num = USBC_PORT_NEW(DT_DRV_INST(inst)),           \
-		.create_thread = create_thread_##inst,                       \
-	};                                                                   \
-                                                                             \
-	DEVICE_DT_INST_DEFINE(inst, &pdc_subsys_init, NULL, &data_##inst,    \
-			      &config_##inst, POST_KERNEL,                   \
+#define PDC_ENSURE_DEFERRED_INIT(node_id, prop, idx)                 \
+	BUILD_ASSERT(DT_PROP(DT_PROP_BY_IDX(node_id, prop, idx),     \
+			     zephyr_deferred_init) == 1,             \
+		     "When using multiple PDC phandles, each child " \
+		     "must have zephyr,deferred-init set");
+
+#define PDC_ENSURE_NO_DEFERRED_INIT(node_id, prop, idx)                 \
+	BUILD_ASSERT(DT_PROP(DT_PROP_BY_IDX(node_id, prop, idx),        \
+			     zephyr_deferred_init) == 0,                \
+		     "Cannot mark a PDC driver as zephyr,deferred-init" \
+		     "if it is the only option for this USBC port");
+
+#define PDC_SUBSYS_INIT(inst)                                                 \
+	K_THREAD_STACK_DEFINE(my_stack_area_##inst,                           \
+			      CONFIG_PDC_POWER_MGMT_STACK_SIZE);              \
+                                                                              \
+	static void create_thread_##inst(const struct device *dev)            \
+	{                                                                     \
+		struct pdc_data_t *data = dev->data;                          \
+                                                                              \
+		data->thread = k_thread_create(                               \
+			&data->thread_data, my_stack_area_##inst,             \
+			K_THREAD_STACK_SIZEOF(my_stack_area_##inst),          \
+			pdc_thread, (void *)dev, 0, 0,                        \
+			CONFIG_PDC_POWER_MGMT_THREAD_PRIORTY, K_ESSENTIAL,    \
+			K_NO_WAIT);                                           \
+		k_thread_name_set(data->thread,                               \
+				  "PDC Power Mgmt" STRINGIFY(inst));          \
+	}                                                                     \
+                                                                              \
+	/* Check for proper zephyr,deferred-init usage based on whether       \
+	 * one or more PDC drivers are specified. If one, it cannot be        \
+	 * deferred. If multiple, all must be deferred.                       \
+	 */                                                                   \
+	COND_CODE_1(PORT_HAS_MULTIPLE_PDC_HANDLES(inst),                      \
+		    (DT_INST_FOREACH_PROP_ELEM(inst, pdc,                     \
+					       PDC_ENSURE_DEFERRED_INIT)),    \
+		    (DT_INST_FOREACH_PROP_ELEM(inst, pdc,                     \
+					       PDC_ENSURE_NO_DEFERRED_INIT))) \
+                                                                              \
+	static struct pdc_data_t data_##inst = {                              \
+		.port.dev = DEVICE_DT_INST_GET(inst), /* Initial              \
+							 policy read          \
+							 from device          \
+							 tree */              \
+		.port.pdc = COND_CODE_1(                                      \
+			PORT_HAS_MULTIPLE_PDC_HANDLES(inst), (NULL),          \
+			(DEVICE_DT_GET(DT_INST_PROP_BY_IDX(                   \
+				inst, pdc, 0)))), /* If                       \
+						     multiple                 \
+						     PDCs                     \
+						     options                  \
+						     specified,               \
+						     leave                    \
+						     NULL. */                 \
+		.port.una_policy.tcc = DT_STRING_TOKEN(                       \
+			DT_INST_PROP(inst, policy), unattached_rp_value),     \
+		.port.una_policy.cc_mode = DT_STRING_TOKEN(                   \
+			DT_INST_PROP(inst, policy), unattached_cc_mode),      \
+		.port.una_policy.drp_mode = DT_STRING_TOKEN(                  \
+			DT_INST_PROP(inst, policy), unattached_try),          \
+		.port.suspend = ATOMIC_INIT(0),                               \
+		.port.dual_role_state = PD_DRP_TOGGLE_ON,                     \
+	};                                                                    \
+                                                                              \
+	static struct pdc_config_t config_##inst = {                          \
+		.connector_num = USBC_PORT_NEW(DT_DRV_INST(inst)),            \
+		.create_thread = create_thread_##inst,                        \
+	};                                                                    \
+                                                                              \
+	DEVICE_DT_INST_DEFINE(inst, &pdc_subsys_init, NULL, &data_##inst,     \
+			      &config_##inst, POST_KERNEL,                    \
 			      CONFIG_PDC_POWER_MGMT_INIT_PRIORITY, NULL);
 
 DT_INST_FOREACH_STATUS_OKAY(PDC_SUBSYS_INIT)
@@ -3153,6 +3181,22 @@ static int pdc_subsys_init(const struct device *dev)
 	struct pdc_port_t *port = &data->port;
 	const struct pdc_config_t *const config = dev->config;
 	int rv;
+
+	/* Initialize the underlying PDC driver.
+	 *
+	 * The PDC subsystem supports deferred initialization of PDC drivers to
+	 * support runtime-selection of a PDC. If multiple PDC references are
+	 * specified, `port->pdc` will be left NULL, and board code will be
+	 * called to choose the correct PDC device handle to initialize.
+	 *
+	 * If only one PDC phandle is specified in the DT, it has already been
+	 * loaded to `port->pdc` and initialized by Zephyr, so there is nothing
+	 * to do in this case.
+	 */
+
+	if (port->pdc == NULL) {
+		// TODO: call board code here to decide which to init.
+	}
 
 	/* Make sure PD Controller is ready */
 	if (!device_is_ready(port->pdc)) {
