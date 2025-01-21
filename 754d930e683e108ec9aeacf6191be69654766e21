@@ -104,6 +104,24 @@
       "parentUuid": "f57ed3ba_e64a2102",
       "revId": "754d930e683e108ec9aeacf6191be69654766e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bffc239_d73b384d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-01-21T21:21:56Z",
+      "side": 1,
+      "message": "Actually `ap_power_set_active_wake_mask` function stack checks for \u0027S5`, `S3`, `S0` `S0ix`, so we can probably drop support for `S4`.\n\nI have the patch ready, I have not tested it yet, I will share results once is done.",
+      "parentUuid": "6f32e7dd_b7da8ecc",
+      "revId": "754d930e683e108ec9aeacf6191be69654766e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
