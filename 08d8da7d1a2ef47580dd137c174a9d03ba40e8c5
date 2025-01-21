@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bc95c1_d7f1643b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-01-21T18:05:24Z",
+      "side": 1,
+      "message": "I\u0027m a bit concerned about signal integrity when changing 100kHz to 400kHz for all hatch devices. It would be great to check the SI on all hatch boards (or at least one board, if all designs use same pull-up resistors and have similar line capacitance)",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "08d8da7d1a2ef47580dd137c174a9d03ba40e8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd3b5d4c_176dc871",
