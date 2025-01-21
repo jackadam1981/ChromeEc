@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f4b74d_8b82c395",
+        "filename": "zephyr/program/fpmcu/helipilot/CMakeLists.txt",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-01-21T06:41:08Z",
+      "side": 1,
+      "message": "Please update for every file.",
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6312c348_6164b4b4",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 40
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-01-21T06:41:08Z",
+      "side": 1,
+      "message": "IIRC, helipilot always uses SHI. UART is a case only for Bloonchipper, right?",
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30398e8_b7350b0e",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 40
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-01-21T06:41:08Z",
+      "side": 1,
+      "message": "Even here you are disabling the UART backend, but the UART backend chosen is selected.",
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
