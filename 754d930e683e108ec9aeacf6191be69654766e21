@@ -69,6 +69,23 @@
       "parentUuid": "6be9f99b_f43c35cd",
       "revId": "754d930e683e108ec9aeacf6191be69654766e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57ed3ba_e64a2102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-01-21T20:27:17Z",
+      "side": 1,
+      "message": "Could we try a different approach to this solution? I would like handle this outside of driver core.\n\nHow about:\n```\n--- a/zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c\n+++ b/zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c\n@@ -96,6 +96,8 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,\n                                               const enum ap_pwrseq_state entry,\n                                               const enum ap_pwrseq_state exit)\n {\n+       ap_power_set_active_wake_mask();\n+\n        switch (entry) {\n        case AP_POWER_STATE_G3:\n                if (exit \u003d\u003d AP_POWER_STATE_S5) {\n@@ -210,8 +212,9 @@ static int x86_non_dsx_chipset_init_events(void)\n\n        ap_pwrseq_entry_cb.cb \u003d x86_non_dsx_chipset_state_entry_cb;\n        ap_pwrseq_entry_cb.states_bit_mask \u003d\n-               (BIT(AP_POWER_STATE_G3) | BIT(AP_POWER_STATE_S3) |\n-                BIT(AP_POWER_STATE_S0) | BIT(AP_POWER_STATE_S5)\n+               (BIT(AP_POWER_STATE_G3) | BIT(AP_POWER_STATE_S5) |\n+                BIT(AP_POWER_STATE_S4) | BIT(AP_POWER_STATE_S3) |\n+                BIT(AP_POWER_STATE_S0)\n\n```\nThis way we use the already registered callback to invoke `ap_power_set_active_wake_mask` and enabling the callback for `S4`.",
+      "revId": "754d930e683e108ec9aeacf6191be69654766e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
