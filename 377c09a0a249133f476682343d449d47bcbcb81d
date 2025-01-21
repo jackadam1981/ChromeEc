@@ -16,6 +16,24 @@
       "message": "Alvis, can you verify this patch?",
       "revId": "377c09a0a249133f476682343d449d47bcbcb81d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176b14a3_3102a600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-01-21T12:47:33Z",
+      "side": 1,
+      "message": "Hi eric：\n\nI tested it and found it didn\u0027t work.\n\n25-01-21 20:18:40.098 ec:~\u003e typec_legacy\n25-01-21 20:18:40.572 typec_legacy: command not found",
+      "parentUuid": "e5b53c53_d37da2fd",
+      "revId": "377c09a0a249133f476682343d449d47bcbcb81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
