@@ -270,6 +270,7 @@ enum {
 	COND_CODE_1(CONFIG_SHELL_BACKEND_SERIAL, (fn(SHELL)),           \
 		(COND_CODE_1(CONFIG_SHELL_BACKEND_DUMMY, (fn(SHELL)),   \
 		())))							\
+	COND_CODE_1(CONFIG_ZTEST, (fn(ZTEST)), ())                      \
 	fn(SYSWORKQ)                                                    \
 	fn(IDLE)
 /* clang-format on */

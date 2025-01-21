@@ -146,7 +146,13 @@ ZTEST_USER(extra_tasks, test_invalid_thread_id)
 	EXPECT_ASSERT(task_id = thread_id_to_task_id(NULL));
 	zassert_equal(task_id, TASK_ID_INVALID);
 
-	EXPECT_ASSERT(task_id = thread_id_to_task_id((k_tid_t)0x1234));
+	/* Mystery thread. Declare a thread struct so we can dereference it
+	 * and access the thread name, however, this thread is otherwise not
+	 * known to the EC (has no mapped task ID) and will assert.
+	 */
+	struct k_thread thread;
+
+	EXPECT_ASSERT(task_id = thread_id_to_task_id((k_tid_t)&thread));
 	zassert_equal(task_id, TASK_ID_INVALID);
 }
 
@@ -154,7 +160,15 @@ ZTEST_USER(extra_tasks, test_extra_task_enumeration)
 {
 	for (task_id_t task_id = 0; task_id < TASK_ID_COUNT + EXTRA_TASK_COUNT;
 	     task_id++) {
-		zassert_not_null(task_id_to_thread_id(task_id));
+		if (task_id == TASK_ID_ZTEST) {
+			/* This task has no permanently mapped thread. (The
+			 * currently running ztest thread maps back to it
+			 * in the reverse lookup)
+			 */
+			continue;
+		}
+		zassert_not_null(task_id_to_thread_id(task_id),
+				 "Cannot look up task %d", task_id);
 	}
 }
 
