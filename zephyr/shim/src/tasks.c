@@ -197,6 +197,15 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		}
 	}
 
+#ifdef CONFIG_ZTEST
+	const char *thread_name = k_thread_name_get(thread_id);
+
+	if (thread_name && !strncmp(thread_name, "test_", strlen("test_"))) {
+		/* Thread is a ztest test function */
+		return TASK_ID_ZTEST;
+	}
+#endif /* defined(CONFIG_ZTEST) */
+
 	__ASSERT(false, "Failed to map thread to task");
 	return TASK_ID_INVALID;
 }
