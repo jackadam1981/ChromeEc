@@ -984,7 +984,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_vbus_voltage)
 /* Keep in line with |pdc_power_mgmt_api.c|. */
 #define VBUS_READ_CACHE_MS 500
 
-	union connector_status_t connector_status;
+	union connector_status_t connector_status = {};
 	union conn_status_change_bits_t change_bits;
 	uint32_t mv_units = 50;
 	const uint32_t expected_voltage_mv = 5000;
