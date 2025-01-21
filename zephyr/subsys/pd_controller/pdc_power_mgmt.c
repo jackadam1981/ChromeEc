@@ -1240,8 +1240,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 			LOG_INF("C%d: Attention", port_number);
 		}
 
-		if (conn_status_change_bits.battery_charging_status &&
-		    status->sink_path_status == 0 &&
+		if (conn_status_change_bits.supported_provider_caps &&
 		    port->attached_state == SNK_ATTACHED_STATE &&
 		    port->snk_attached_local_state >= SNK_ATTACHED_GET_PDOS) {
 			/* Source caps have changed. Set the sink-
@@ -1251,7 +1250,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 			 * again. */
 			atomic_set_bit(port->snk_policy.flags,
 				       SNK_POLICY_NEW_SRC_CAPS_AVAILABLE);
-			LOG_INF("C%d: Sink path disconnected", port_number);
+			LOG_INF("C%d: New SRC CAPs available", port_number);
 		}
 
 		if (status->power_direction) {
