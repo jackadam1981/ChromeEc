@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c226d6c6_b4d1a806",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-01-22T19:57:11Z",
+      "side": 1,
+      "message": "My understanding is that PD_DISC_FAIL would inform the AP that cable discovery has been attempted but there was no response (eg non-emark cable). But, PD_DISC_NEEDED informs that cable discovery just hasn\u0027t been attempted yet. This then allows this API call to return, rather than",
+      "parentUuid": "2c1853e3_e2ad660a",
+      "range": {
+        "startLine": 4077,
+        "startChar": 4,
+        "endLine": 4077,
+        "endChar": 26
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d48a6dc4_be1e51d0",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2025-01-22T19:28:29Z",
       "side": 1,
       "message": "Can these expressions reference the the local `cable_prop`. I\u0027d like to try moving towards getting the state from our API functions rather than reaching into the struct.",
+      "range": {
+        "startLine": 4080,
+        "startChar": 10,
+        "endLine": 4083,
+        "endChar": 23
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be39ac93_6f91e73f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4083,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-01-22T19:57:11Z",
+      "side": 1,
+      "message": "Currently, pdc_power_mgmt_get_cable_prop only fails if the port is invalid, or a null pointer is passed into the function. Because it\u0027s assumed that cable discovery was has always been attempted as it\u0027s built into the PDM state flow. \n\nBut, after removing that there is a possibility that the pdc_power_mgmt_get_cable_prop could fail because the public cmd interface is blocked for too long and not becuase there is no cable to discover. I\u0027m not sure how to differentiate the case where get_cable_property command is sent but the PDC returns an error status, vs the command simply wasn\u0027t attempted.\n\nI am pretty certain that pdc_power_mgmt_get_cable_prop is now only called from this function now other than the  pdc console command with the UCSI driver enabled.",
+      "parentUuid": "d48a6dc4_be1e51d0",
       "range": {
         "startLine": 4080,
         "startChar": 10,
