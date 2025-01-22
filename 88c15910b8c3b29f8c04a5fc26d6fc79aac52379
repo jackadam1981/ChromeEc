@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3068b2_8cb4ebe8",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-22T00:12:08Z",
+      "side": 0,
+      "message": "was/is there any code using these variables? Or has it been removed already?",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 36
+      },
+      "revId": "88c15910b8c3b29f8c04a5fc26d6fc79aac52379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
