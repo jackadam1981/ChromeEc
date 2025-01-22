@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05648be6_92c743f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-22T19:42:24Z",
+      "side": 1,
+      "message": "Are we still proceeding with this CL?",
+      "revId": "fb0b5c1392461836fc0a39a66798226092f3eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da4d1ebf_7abe7442",
         "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
         "patchSetId": 3
