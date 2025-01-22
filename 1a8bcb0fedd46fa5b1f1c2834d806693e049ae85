@@ -16,6 +16,24 @@
       "message": "Peter: This didn\u0027t end up in the same stack as the preceding CL. Do you know how to make that happen?",
       "revId": "1a8bcb0fedd46fa5b1f1c2834d806693e049ae85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90511e6_78ac86a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-01-22T22:34:14Z",
+      "side": 1,
+      "message": "The preceding CL being https://crrev.com/c/6189065? Whichever comes second would need to be rebased onto the other.",
+      "parentUuid": "48b33011_3b76c56d",
+      "revId": "1a8bcb0fedd46fa5b1f1c2834d806693e049ae85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
