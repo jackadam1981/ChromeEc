@@ -22,6 +22,30 @@
       },
       "revId": "88c15910b8c3b29f8c04a5fc26d6fc79aac52379",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d344059e_409d3d9c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-01-22T00:37:16Z",
+      "side": 0,
+      "message": "Nothing uses it anymore. The code that used it was removed in 0.{5,6}.140.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4027366/2/common/ap_ro_integrity_check.c",
+      "parentUuid": "0c3068b2_8cb4ebe8",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 36
+      },
+      "revId": "88c15910b8c3b29f8c04a5fc26d6fc79aac52379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
