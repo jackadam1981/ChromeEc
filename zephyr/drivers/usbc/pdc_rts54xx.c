@@ -2760,6 +2760,7 @@ static int pdc_init(const struct device *dev)
 		return -ENODEV;
 	}
 
+	k_msleep(300000);
 	k_event_init(&data->driver_event);
 
 	if (!irq_init_done) {
@@ -2953,12 +2954,18 @@ bool pdc_rts54xx_test_idle_wait(void)
 /* See rts54xx_fwup.c */
 extern int rts54xx_do_firmware_update_internal(const struct i2c_dt_spec *dev);
 
-int rts_pdc_do_firmware_update(void)
+int rts_pdc_do_firmware_update(int port)
 {
 	/* Get DT node for first PDC port */
 	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
 	const struct pdc_config_t *cfg = dev->config;
-
-	return rts54xx_do_firmware_update_internal(&cfg->i2c);
+        struct i2c_dt_spec i2c = {0};
+        
+        memcpy(&i2c, (void*)&cfg->i2c, sizeof(i2c));
+        if(port == 0)
+            i2c.addr = 0x66;
+        else
+            i2c.addr = 0x67;
+	return rts54xx_do_firmware_update_internal(&i2c);
 }
 #endif /* CONFIG_USBC_PDC_RTS54XX_FW_UPDATER */
