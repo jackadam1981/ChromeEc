@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c61949a_6d7b03aa",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-22T19:28:29Z",
+      "side": 1,
+      "message": "Is it possible to use an in-band value in the cable_prop response that identifies it as invalid rather than use an external flag?",
+      "range": {
+        "startLine": 754,
+        "startChar": 1,
+        "endLine": 755,
+        "endChar": 31
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1853e3_e2ad660a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-22T19:28:29Z",
+      "side": 1,
+      "message": "What does/should the PD subsystem do next in this case? I\u0027m not completly clear on when we want to use `PD_DISC_NEEDED` vs `PD_DISC_FAIL` since this feels like a failure scenario. Will `PD_DISC_NEEDED` eventually cause a re-try?",
+      "range": {
+        "startLine": 4077,
+        "startChar": 4,
+        "endLine": 4077,
+        "endChar": 26
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48a6dc4_be1e51d0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4083,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-22T19:28:29Z",
+      "side": 1,
+      "message": "Can these expressions reference the the local `cable_prop`. I\u0027d like to try moving towards getting the state from our API functions rather than reaching into the struct.",
+      "range": {
+        "startLine": 4080,
+        "startChar": 10,
+        "endLine": 4083,
+        "endChar": 23
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
