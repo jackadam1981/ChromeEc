@@ -52,6 +52,24 @@
       "parentUuid": "f9a0a2bd_e620d32d",
       "revId": "eb17e346afa8f6d39735b3fbb00909e9dd280fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8c8dc2_6bc8d7b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-01-22T14:42:20Z",
+      "side": 1,
+      "message": "I reimplemented the test with multiple iterations of each scenario - it looks like without trySrc both power roles are initialy entered. I\u0027m abandoning this change",
+      "parentUuid": "636acf95_2913752c",
+      "revId": "eb17e346afa8f6d39735b3fbb00909e9dd280fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
