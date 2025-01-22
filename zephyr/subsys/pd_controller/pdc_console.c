@@ -671,7 +671,7 @@ static int cmd_pdc_srccaps(const struct shell *sh, size_t argc, char **argv)
 
 #ifdef CONFIG_USBC_PDC_RTS54XX_FW_UPDATER
 /* LCOV_EXCL_START - non-shipping code */
-extern int rts_pdc_do_firmware_update(void);
+extern int rts_pdc_do_firmware_update();
 
 static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
 {
@@ -682,7 +682,7 @@ static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
 	if (rv) {
 		shell_fprintf(sh, SHELL_ERROR, "Could not suspend PDC: %d\n",
 			      rv);
-		return rv;
+//		return rv;
 	}
 
 	rv = rts_pdc_do_firmware_update();
@@ -773,7 +773,7 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 	SHELL_CMD_ARG(fwupdate, NULL,
 		      "Updates TPS6699x firmware\n"
 		      "Usage pdc fwupdate",
-		      cmd_pdc_fwupdate, 1, 0),
+		      cmd_pdc_fwupdate, 2, 0),
 #endif /* defined(CONFIG_USBC_PDC_RTS54XXX_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,

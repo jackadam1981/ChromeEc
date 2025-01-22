@@ -8,13 +8,15 @@ LOG_MODULE_DECLARE(rts5453, CONFIG_USBC_LOG_LEVEL);
 
 #define INCBIN_PREFIX g_
 #define INCBIN_STYLE INCBIN_STYLE_SNAKE
+#include "lzav.h"
 #include "third_party/incbin/incbin.h"
 
-/* TPS6699X_FW_ROOT is defined in this directory's CMakeLists.txt and points to()
+/* TPS6699X_FW_ROOT is defined in this directory's CMakeLists.txt and points
+ * to()
  * ${PLATFORM_EC}/zephyr/drivers/usbc
  */
 #ifdef CONFIG_CROS_EC_RO
-INCBIN(rts54xx_fw, STRINGIFY(RTS54XX_FW_ROOT) "/rts54xx.bin");
+INCBIN(rts54xx_fw, STRINGIFY(RTS54XX_FW_ROOT) "/rts54xx_comp.bin");
 #else
 INCBIN(rts54xx_fw, STRINGIFY(RTS54XX_FW_ROOT) "/zero.bin");
 #endif
@@ -48,6 +50,7 @@ INCBIN(rts54xx_fw, STRINGIFY(RTS54XX_FW_ROOT) "/zero.bin");
 #define RTS54XX_BLOCK_READ_CMD 0x80
 
 struct i2c_dt_spec *i2c;
+uint8_t fw_bin[64 * 1024];
 
 enum flash_write_cmd_off {
 	ADDR_L_OFF,
@@ -98,9 +101,9 @@ static int rts54xx_i2c_read(uint8_t *buf, uint8_t len)
 	msg[1].flags = I2C_MSG_RESTART | I2C_MSG_READ | I2C_MSG_STOP;
 
 	rv = i2c_transfer_dt(i2c, msg, 2);
-	
-	if(rv < 0)
-	    LOG_INF(" rv: 0x%x\n", rv);
+
+	if (rv < 0)
+		LOG_INF(" rv: 0x%x\n", rv);
 
 	return rv;
 }
@@ -116,16 +119,16 @@ static int rts54xx_i2c_write(uint8_t *buf, uint8_t len)
 	return i2c_transfer_dt(i2c, &msg, 1);
 }
 
-
 static int rts545x_ping_status(uint8_t *status_byte)
 {
 	int ret;
-        int retry = 3;
+	int retry = 3;
 
 	while (retry) {
 		ret = get_ping_status(status_byte);
 		if (ret < 0) {
-			LOG_INF("%s: Error %d reading ping_status\n", __func__, ret);
+			LOG_INF("%s: Error %d reading ping_status\n", __func__,
+				ret);
 			return ret;
 		}
 
@@ -134,7 +137,8 @@ static int rts545x_ping_status(uint8_t *status_byte)
 			return 0;
 
 		/* Invalid command format */
-		if ((*status_byte & PING_STATUS_MASK) == PING_STATUS_INVALID_FMT)
+		if ((*status_byte & PING_STATUS_MASK) ==
+		    PING_STATUS_INVALID_FMT)
 			return -EINVAL;
 
 		k_msleep(PING_STATUS_DELAY_MS);
@@ -143,7 +147,8 @@ static int rts545x_ping_status(uint8_t *status_byte)
 }
 
 static int rts545x_block_out_transfer(uint8_t cmd_code, size_t len,
-				      const uint8_t *write_data, uint8_t *status_byte)
+				      const uint8_t *write_data,
+				      uint8_t *status_byte)
 {
 	int ret;
 	/* Command byte + Byte Count + Data[0..31] */
@@ -158,7 +163,8 @@ static int rts545x_block_out_transfer(uint8_t cmd_code, size_t len,
 
 	ret = rts54xx_i2c_write(write_buf, len + 2);
 	if (ret < 0) {
-		LOG_INF("%s: Error %d sending command %#02x\n", __func__, ret, cmd_code);
+		LOG_INF("%s: Error %d sending command %#02x\n", __func__, ret,
+			cmd_code);
 		return ret;
 	}
 
@@ -175,11 +181,12 @@ static int rts545x_block_in_transfer(size_t len, uint8_t *read_data)
 
 static int rts545x_vendor_cmd_enable()
 {
-	uint8_t vendor_cmd_enable[] = {0xDA, 0x0B, 0x01};
+	uint8_t vendor_cmd_enable[] = { 0xDA, 0x0B, 0x01 };
 	uint8_t ping_status;
 	int ret;
 
-	ret = rts545x_block_out_transfer(RTS545X_VENDOR_CMD, ARRAY_SIZE(vendor_cmd_enable),
+	ret = rts545x_block_out_transfer(RTS545X_VENDOR_CMD,
+					 ARRAY_SIZE(vendor_cmd_enable),
 					 vendor_cmd_enable, &ping_status);
 	if (ret)
 		LOG_INF("%s failed: %d\n", __func__, ret);
@@ -188,13 +195,13 @@ static int rts545x_vendor_cmd_enable()
 
 static int rts545x_get_ic_status(struct rts5453_ic_status *ic_sts)
 {
-	uint8_t get_ic_status[] = {0x00, 0x00, sizeof(*ic_sts) - 1};
+	uint8_t get_ic_status[] = { 0x00, 0x00, sizeof(*ic_sts) - 1 };
 	uint8_t ping_status;
 	int ret;
 
 	ret = rts545x_block_out_transfer(RTS545X_GET_IC_STATUS_CMD,
-					 ARRAY_SIZE(get_ic_status), get_ic_status,
-					 &ping_status);
+					 ARRAY_SIZE(get_ic_status),
+					 get_ic_status, &ping_status);
 	if (ret) {
 		LOG_INF("%s failed: %d\n", __func__, ret);
 		return ret;
@@ -206,35 +213,43 @@ static int rts545x_get_ic_status(struct rts5453_ic_status *ic_sts)
 		return ret;
 	}
 
-	LOG_INF("%s: VID:PID %x%x:%x%x, FW_Ver %u.%u.%u, %s Bank:%d\n", __func__,
-	       ic_sts->vid_pid[1], ic_sts->vid_pid[0], ic_sts->vid_pid[3], ic_sts->vid_pid[2],
-	       ic_sts->major_version, ic_sts->minor_version, ic_sts->patch_version,
-	       ic_sts->code_location ? "Flash" : "ROM", ic_sts->flash_bank ? 1 : 0);
+	LOG_INF("%s: VID:PID %x%x:%x%x, FW_Ver %u.%u.%u, %s Bank:%d\n",
+		__func__, ic_sts->vid_pid[1], ic_sts->vid_pid[0],
+		ic_sts->vid_pid[3], ic_sts->vid_pid[2], ic_sts->major_version,
+		ic_sts->minor_version, ic_sts->patch_version,
+		ic_sts->code_location ? "Flash" : "ROM",
+		ic_sts->flash_bank ? 1 : 0);
 	return 0;
 }
 
 static int rts545x_flash_access_enable()
 {
-	uint8_t flash_access_enable[] = {0xDA, 0x0B, 0x03};
+	uint8_t flash_access_enable[] = { 0xDA, 0x0B, 0x03 };
 	uint8_t ping_status;
 	int ret;
 
 	ret = rts545x_block_out_transfer(RTS545X_VENDOR_CMD,
-					 ARRAY_SIZE(flash_access_enable), flash_access_enable,
-					 &ping_status);
+					 ARRAY_SIZE(flash_access_enable),
+					 flash_access_enable, &ping_status);
 	if (ret)
 		LOG_INF("%s failed: %d\n", __func__, ret);
 
 	return ret;
 }
 
-static int rts545x_flash_write(const uint8_t *image, size_t image_size)
+static int decompress_fw()
 {
-	uint8_t flash_write[MAX_COMMAND_SIZE] = {0};
-	uint8_t bank0_write_cmds[] = {RTS545X_FLASH_WRITE_0_64K_CMD,
-				      RTS545X_FLASH_WRITE_64K_128K_CMD};
-	uint8_t bank1_write_cmds[] = {RTS545X_FLASH_WRITE_128K_192K_CMD,
-				      RTS545X_FLASH_WRITE_192K_256K_CMD};
+	return lzav_decompress(g_rts54xx_fw_data, fw_bin,
+				       g_rts54xx_fw_size, 128 * 1024);
+}
+
+static int rts545x_flash_write(/*const uint8_t *image, size_t image_size*/)
+{
+	uint8_t flash_write[MAX_COMMAND_SIZE] = { 0 };
+	uint8_t bank0_write_cmds[] = { RTS545X_FLASH_WRITE_0_64K_CMD,
+				       RTS545X_FLASH_WRITE_64K_128K_CMD };
+	uint8_t bank1_write_cmds[] = { RTS545X_FLASH_WRITE_128K_192K_CMD,
+				       RTS545X_FLASH_WRITE_192K_256K_CMD };
 	uint8_t *flash_write_cmds;
 	uint32_t seg_boundary = FLASH_SEGMENT_SIZE;
 	uint8_t cmd, ping_status, segment, size = 0;
@@ -247,31 +262,39 @@ static int rts545x_flash_write(const uint8_t *image, size_t image_size)
 		flash_write_cmds = bank0_write_cmds;
 	else
 		flash_write_cmds = bank1_write_cmds;
-
+	size_t image_size = sizeof(fw_bin);
+	LOG_INF("Decompressed FW size: %d", decompress_fw());
 	while (offset < image_size) {
 		segment = offset < FLASH_SEGMENT_SIZE ? 0 : 1;
 		seg_boundary = (segment + 1) * FLASH_SEGMENT_SIZE;
 		cmd = flash_write_cmds[segment];
 
-		size = MIN(FW_CHUNK_SIZE, MIN(seg_boundary, image_size) - offset);
+		size = MIN(FW_CHUNK_SIZE,
+			   MIN(seg_boundary, image_size) -
+				   offset);
 		flash_write[ADDR_L_OFF] = (uint8_t)(offset & 0xff);
-		flash_write[ADDR_H_OFF] = (uint8_t)((offset >> 8) & 0xff);
+		flash_write[ADDR_H_OFF] =
+			(uint8_t)((offset >> 8) & 0xff);
 		flash_write[DATA_COUNT_OFF] = size;
-		memcpy(&flash_write[DATA_OFF], &image[offset], size);
+		memcpy(&flash_write[DATA_OFF],
+		       &fw_bin[offset], size);
 
 		/* Account for ADDR_L, ADDR_H, Write Data Count */
-		ret = rts545x_block_out_transfer(cmd, size + 3, flash_write, &ping_status);
+		ret = rts545x_block_out_transfer(
+			cmd, size + 3, flash_write, &ping_status);
 		if (ret) {
-			LOG_INF("%s: failed(%d) @off:0x%x\n", __func__, ret, offset);
+			LOG_INF("%s: failed(%d) @off:0x%x\n", __func__,
+				ret, offset);
 			break;
 		}
 		offset += size;
 		progress_counter += size;
 
 		if (progress_counter >= 4000) {
-			/* Prints an update every 4000 bytes transferred */
-			LOG_INF("%s: Progress: %u / %zu\n", __func__, offset,
-			       image_size);
+			/* Prints an update every 4000 bytes transferred
+			 */
+			LOG_INF("%s: Progress: %u / %zu\n", __func__,
+				offset, image_size);
 			progress_counter = 0;
 		}
 	}
@@ -286,7 +309,7 @@ static int rts545x_flash_access_disable()
 
 static int rts545x_validate_firmware()
 {
-	uint8_t validate_isp[] = {0x01};
+	uint8_t validate_isp[] = { 0x01 };
 	uint8_t ping_status;
 	int ret;
 
@@ -294,8 +317,9 @@ static int rts545x_validate_firmware()
 	if (!ic_status.code_location)
 		return 0;
 
-	ret = rts545x_block_out_transfer(RTS545X_VALIDATE_ISP_CMD, ARRAY_SIZE(validate_isp),
-					 validate_isp, &ping_status);
+	ret = rts545x_block_out_transfer(RTS545X_VALIDATE_ISP_CMD,
+					 ARRAY_SIZE(validate_isp), validate_isp,
+					 &ping_status);
 	if (ret)
 		LOG_INF("%s: failed: %d", __func__, ret);
 	return ret;
@@ -303,13 +327,13 @@ static int rts545x_validate_firmware()
 
 static int rts545x_reset_to_flash()
 {
-	uint8_t reset_to_flash[] = {0xDA, 0x0B, 0x01};
+	uint8_t reset_to_flash[] = { 0xDA, 0x0B, 0x01 };
 	uint8_t ping_status;
 	int ret;
 
 	ret = rts545x_block_out_transfer(RTS545X_RESET_TO_FLASH_CMD,
-					 ARRAY_SIZE(reset_to_flash), reset_to_flash,
-					 &ping_status);
+					 ARRAY_SIZE(reset_to_flash),
+					 reset_to_flash, &ping_status);
 	if (ret)
 		LOG_INF("%s failed: %d\n", __func__, ret);
 
@@ -322,8 +346,9 @@ static int rts545x_confirm_flash_update()
 {
 	int ret;
 	struct rts5453_ic_status new_ic_status;
-	uint8_t exp_flash_bank =
-		ic_status.code_location == 0 ? 0x00 : (ic_status.flash_bank ^ 0x10);
+	uint8_t exp_flash_bank = ic_status.code_location == 0 ?
+					 0x00 :
+					 (ic_status.flash_bank ^ 0x10);
 
 	ret = rts545x_vendor_cmd_enable();
 	if (ret)
@@ -334,8 +359,8 @@ static int rts545x_confirm_flash_update()
 		return ret;
 
 	if (new_ic_status.flash_bank != exp_flash_bank) {
-		LOG_INF("%s: failed. Exp %#02x != Actual %#02x\n", __func__, exp_flash_bank,
-		       new_ic_status.flash_bank);
+		LOG_INF("%s: failed. Exp %#02x != Actual %#02x\n", __func__,
+			exp_flash_bank, new_ic_status.flash_bank);
 		return -1;
 	}
 	return 0;
@@ -360,7 +385,7 @@ static int rts545x_update_flash()
 	ret = rts545x_get_ic_status(&ic_status);
 	if (ret) {
 		LOG_INF("%s: IC status failed (%d)\n", __func__, ret);
-		return ret;
+		//		return ret;
 	}
 	LOG_INF("%s: Got IC status\n", __func__);
 
@@ -375,7 +400,8 @@ static int rts545x_update_flash()
 	/* TODO(b/323608798): Add flash unlock step support */
 
 	LOG_INF("%s: Starting flash write\n", __func__);
-	ret = rts545x_flash_write(g_rts54xx_fw_data, g_rts54xx_fw_size);
+	//	ret = rts545x_flash_write(g_rts54xx_fw_data, g_rts54xx_fw_size);
+	ret = rts545x_flash_write();
 	if (ret) {
 		LOG_INF("%s: Failed during flash write", __func__);
 		rts545x_flash_access_disable();
@@ -425,8 +451,8 @@ static int rts545x_update_flash()
  */
 int rts54xx_do_firmware_update_internal(const struct i2c_dt_spec *_i2c)
 {
-    LOG_INF("rts54xx_do_firmware_update_internal\n");
-    i2c = (struct i2c_dt_spec *)_i2c;
-    
-    return rts545x_update_flash();
+	LOG_INF("rts54xx_do_firmware_update_internal\n");
+	i2c = (struct i2c_dt_spec *)_i2c;
+
+	return rts545x_update_flash();
 }
