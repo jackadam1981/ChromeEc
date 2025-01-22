@@ -176,6 +176,24 @@
       "parentUuid": "36a94dba_ddb0c97d",
       "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78e1056_e230fe41",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-01-22T14:30:23Z",
+      "side": 1,
+      "message": "So I used manual testing instructions and below platforms passed the test on my desk:\n- omnigul/brya \n- pujjoteen/nissa (generally some issues with and without CL, but imo no regression)\n- xol/brya (also this platform has issues, e.g disconects CCD when SRC?, but also seems like no regressions)\n- morphius/zork (also this platform has issues, e.g disconects CCD when SRC?, but also seems like no regressions)\n- jinlon\n\n\non regression rack:\n- bluebird/octopus (only able to get 1,5A but no other issues and seems like previous FW works the same)\n- gimble/brya\n- kracko360/dedede\n- collis/volteer \n\nHopefully that is enough, but will also monitor during rollout on other platforms",
+      "parentUuid": "7cc55e8d_d66db7aa",
+      "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
