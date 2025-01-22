@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a2654a_4e0dab1f",
+        "filename": "zephyr/test/pdc/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-01-22T00:08:40Z",
+      "side": 1,
+      "message": "Can we remove this?",
+      "revId": "0720780210cb1c77d1618031c8370c3dd1f3d569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c426248_da77f75c",
+        "filename": "zephyr/test/pdc/src/generic/ppm_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-01-22T00:08:40Z",
+      "side": 1,
+      "message": "For invalid arguments such port number out of range or not matching on the recipient, should we be using `EINVAL`?",
+      "revId": "0720780210cb1c77d1618031c8370c3dd1f3d569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
