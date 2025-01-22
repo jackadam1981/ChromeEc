@@ -52,6 +52,24 @@
       "parentUuid": "19041c23_301b9050",
       "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386c099e_4f15ca0a",
+        "filename": "zephyr/program/rauru/navi/src/power_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-22T23:53:47Z",
+      "side": 1,
+      "message": "I think it should change to 12V if the battery is full. The charging power is very small if the battery is full. There won\u0027t have power difference at the state comparing to 15V. In that case, you should switch to 12V.  Please let me know if I miss anything.",
+      "parentUuid": "aa6f82d0_b2dc9a4b",
+      "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
