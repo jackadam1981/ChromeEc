@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c43972_a4959202",
+        "filename": "zephyr/test/drivers/anx7447/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-01-22T06:30:33Z",
+      "side": 1,
+      "message": "you might also need to check the actual register state too, something like\n\n```\nreg \u003d anx7447_emul_peek_tcpci_extra_reg(emul, ANX7447_REG_TCPC_CTRL_1);\nzassert_true(reg \u0026 CC_DEBOUNCE_MS);\n```",
+      "revId": "1baed252f15cf7d708696dee660a96add6801c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfe38f1_8a740d38",
+        "filename": "zephyr/test/drivers/anx7447/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-01-22T06:30:33Z",
+      "side": 1,
+      "message": "remove the `\u003d\u003d true`, use `TEST_PORT` instead of `0`\n```suggestion\n\tzassert_true(anx7447_bist_test_mode[TEST_PORT],\n```",
+      "range": {
+        "startLine": 282,
+        "startChar": 39,
+        "endLine": 282,
+        "endChar": 47
+      },
+      "revId": "1baed252f15cf7d708696dee660a96add6801c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6756a841_4cae91a5",
+        "filename": "zephyr/test/drivers/anx7447/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-01-22T06:30:33Z",
+      "side": 1,
+      "message": "```suggestion\n\tzassert_false(anx7447_bist_test_mode[TEST_PORT],\n```",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "1baed252f15cf7d708696dee660a96add6801c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8a22ca_4ee48953",
+        "filename": "zephyr/test/drivers/anx7447/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-01-22T06:30:33Z",
+      "side": 1,
+      "message": "```suggestion\n\tzassert_true(anx7447_bist_test_mode[TEST_PORT],\n```",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 48
+      },
+      "revId": "1baed252f15cf7d708696dee660a96add6801c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece523f2_59b365aa",
+        "filename": "zephyr/test/drivers/anx7447/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-01-22T06:30:33Z",
+      "side": 1,
+      "message": "```suggestion\n\tzassert_false(anx7447_bist_test_mode[TEST_PORT],\n```",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 49
+      },
+      "revId": "1baed252f15cf7d708696dee660a96add6801c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
