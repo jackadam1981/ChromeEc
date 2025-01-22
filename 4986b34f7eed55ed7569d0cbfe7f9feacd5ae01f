@@ -16,6 +16,24 @@
       "message": "Is it worthwhile to add a guard in keyboard_customization.h?\n\nkeyboard_config.h could do this:\n```\n#ifdef CONFIG_KEYBOARD_CUSTOMIZATION\n/* include the board layer keyboard header file */\n#define IN_KEYBOARD_CONFIG\n#include \"keyboard_customization.h\"\n#undef IN_KEYBOARD_CONFIG\n#define KEYBOARD_COLS KEYBOARD_COLS_MAX\n#else /* CONFIG_KEYBOARD_CUSTOMIZATION */\n```",
       "revId": "4986b34f7eed55ed7569d0cbfe7f9feacd5ae01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7517e123_8f2da9e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-01-22T00:00:54Z",
+      "side": 1,
+      "message": "I assume you mean something like https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/include/config.h;l\u003d6146;drc\u003ded8dd77a9b34e01806ee016f762caf4e057f79a3\n\nBut that would have to be added to every keyboard_customization.h, and there would be nothing to force new copies of that file to have the guard.",
+      "parentUuid": "7529d1e8_3221df86",
+      "revId": "4986b34f7eed55ed7569d0cbfe7f9feacd5ae01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
