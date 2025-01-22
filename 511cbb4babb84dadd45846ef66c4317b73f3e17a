@@ -34,6 +34,24 @@
       "parentUuid": "b839c68c_df197e2a",
       "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6f82d0_b2dc9a4b",
+        "filename": "zephyr/program/rauru/navi/src/power_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-01-22T03:29:19Z",
+      "side": 1,
+      "message": "Because 45W can pass, we would like to use 15V first.\nAnd we only need change to 15V when battery is full for meet battery charge time.",
+      "parentUuid": "19041c23_301b9050",
+      "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
