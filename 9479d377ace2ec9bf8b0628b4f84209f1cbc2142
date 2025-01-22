@@ -158,6 +158,24 @@
       "parentUuid": "f3d1b27e_686fa402",
       "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc55e8d_d66db7aa",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-01-22T09:21:49Z",
+      "side": 1,
+      "message": "thanks, I will try to find some time to test it this week",
+      "parentUuid": "36a94dba_ddb0c97d",
+      "revId": "9479d377ace2ec9bf8b0628b4f84209f1cbc2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
