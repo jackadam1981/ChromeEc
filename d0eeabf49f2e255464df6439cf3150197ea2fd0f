@@ -50,6 +50,29 @@
       "message": "Even here you are disabling the UART backend, but the UART backend chosen is selected.",
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b896548a_548f4cfa",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-22T17:22:23Z",
+      "side": 1,
+      "message": "Does EC re-enable the MPU? If so, maybe add a comment about that since it wasn\u0027t clear to me.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
