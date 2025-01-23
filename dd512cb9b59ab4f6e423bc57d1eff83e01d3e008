@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91a3a25_5530add9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-23T16:04:49Z",
+      "side": 1,
+      "message": "This needs a Kconfig guard.",
+      "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534bfd7a_761a8fe4",
+        "filename": "zephyr/subsys/ucsi/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-23T16:04:49Z",
+      "side": 1,
+      "message": "This needs a Kconfig guard.  This is a developer feature only, so it\u0027s a good candidate to remove in shipping images or just to save space.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
