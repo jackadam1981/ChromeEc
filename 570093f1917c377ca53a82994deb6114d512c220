@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d65b862_787d48b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-01-23T17:32:03Z",
+      "side": 1,
+      "message": "Mike: This CL is a no-op for dedede. There\u0027s no problem with it being in the dedede branch, but what we really need to do is develop a canonical VIF for awasuki, put that in `board/awasuki/` on ToT, and then cherry pick _that CL_ to the dedede branch.",
+      "revId": "570093f1917c377ca53a82994deb6114d512c220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
