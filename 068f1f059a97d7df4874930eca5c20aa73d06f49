@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40809204_c6b8d95d",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-23T16:10:56Z",
+      "side": 1,
+      "message": "How about adding a tip to run `get_cam_supported` to list the available alt modes?",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 19
+      },
+      "revId": "068f1f059a97d7df4874930eca5c20aa73d06f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
