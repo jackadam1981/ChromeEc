@@ -39,6 +39,29 @@
       },
       "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26debe8a_fb7b99d0",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-23T16:06:48Z",
+      "side": 1,
+      "message": "How about just returning an error instead of a runtime assert?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
