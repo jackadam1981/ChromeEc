@@ -62,6 +62,30 @@
       },
       "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b46003d_6b502808",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-23T17:26:54Z",
+      "side": 1,
+      "message": "It shouldn\u0027t happen in real life and is a difficult case to add UT coverage for.",
+      "parentUuid": "26debe8a_fb7b99d0",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
