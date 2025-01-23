@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9275fc06_34c9c739",
+        "filename": "zephyr/program/fpmcu/bloonchipper/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-23T17:09:06Z",
+      "side": 1,
+      "message": "```suggestion\n# The NULL pointer exception page size must be a power of two\n# and have size greater or equal ARM_MPU_REGION_MIN_ALIGN_AND_SIZE\nCONFIG_CORTEX_M_NULL_POINTER_EXCEPTION_PAGE_SIZE\u003d0x80\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "f4c3aa875c2ffa349e1bd4c5624ce24e47d86a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
