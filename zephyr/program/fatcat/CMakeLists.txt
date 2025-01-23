@@ -24,6 +24,10 @@ if(DEFINED CONFIG_BOARD_FRANCKA)
 			"francka/src/board_power.c"
 			"francka/src/alt_charger.c"
 	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+	"francka/src/keyboard.c"
+	"francka/src/keyboard_customization.c"
+	)
 endif()
 
 if(DEFINED CONFIG_BOARD_FELINO)
