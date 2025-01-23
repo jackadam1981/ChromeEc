@@ -234,6 +234,13 @@ config PLATFORM_EC_POWERSEQ_MT8196
 	  Use the MT8196 code for power sequencing. Re-use MT8186 common
 	  code.
 
+config PLATFORM_EC_POWERSEQ_MTK_SUPPORT_SUSPEND_WDT
+	bool "Use common MT8196 code for power sequencing"
+	default y
+	depends on PLATFORM_EC_POWERSEQ_MT8196
+	help
+	  Invoke AP watchdog reset when AP requested in a suspend state.
+
 config PLATFORM_EC_POWERSEQ_MTK_S5_EN_RAIL
 	bool "Control MTK S5 rails enablement"
 	default y
