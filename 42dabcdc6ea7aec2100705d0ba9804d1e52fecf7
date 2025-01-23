@@ -16,6 +16,24 @@
       "message": "Add `Cq-Depend: chromium:6194668",
       "revId": "42dabcdc6ea7aec2100705d0ba9804d1e52fecf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3192098f_91f2a09a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-23T23:46:44Z",
+      "side": 1,
+      "message": "The upstream change has been merged.  The Cq-Depend is no longer needed.",
+      "parentUuid": "6613ef26_7f6ef5c9",
+      "revId": "42dabcdc6ea7aec2100705d0ba9804d1e52fecf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
