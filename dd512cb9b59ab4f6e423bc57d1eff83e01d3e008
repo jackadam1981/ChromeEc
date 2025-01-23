@@ -86,6 +86,30 @@
       },
       "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bcd08dc_61f69b4e",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-23T18:45:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9b46003d_6b502808",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "dd512cb9b59ab4f6e423bc57d1eff83e01d3e008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
