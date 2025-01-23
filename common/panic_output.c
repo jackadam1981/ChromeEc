@@ -79,6 +79,21 @@ static int panic_txchar(void *context, int c)
 
 void panic_puts(const char *outstr)
 {
+<<<<<<< HEAD   (e3fb4b TCPMv2: Reduce PD 2.0 hold-off time)
+=======
+#if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
+	/*
+	 * Send the message to the USB console
+	 * on platforms which support it.
+	 */
+	usb_puts(outstr);
+#endif
+
+	/* Don't write to uart before it's initialized */
+	if (!uart_init_done())
+		return;
+
+>>>>>>> CHANGE (b26ab9 panic_output: guard panic_printf behind uart_init_done())
 	/* Flush the output buffer */
 	uart_flush_output();
 
@@ -103,6 +118,10 @@ void panic_puts(const char *outstr)
 void panic_printf(const char *format, ...)
 {
 	va_list args;
+
+	/* Don't write to uart before it's initialized */
+	if (!uart_init_done())
+		return;
 
 	/* Flush the output buffer */
 	uart_flush_output();
