@@ -16,6 +16,24 @@
       "message": "there\u0027s been a fair amount of simplification of how to support keyboards.\ncould you have a look at\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6142633\nand similar patches? you should be able to use additional common code.",
       "revId": "72081d2e4c8766f88977933ee347b90a5fe7a47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce349be8_5a477a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-01-24T09:19:19Z",
+      "side": 1,
+      "message": "Hi Caveh,\nFrancka cannot use the VIVALDI_KEYS_STRAUSS_T15 define, because Francka does not use the Strauss keyboard. And I think it does not need to override the vivaldi-keys it can use the common vivaldi_keys.",
+      "parentUuid": "1da18f92_c3549b22",
+      "revId": "72081d2e4c8766f88977933ee347b90a5fe7a47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
