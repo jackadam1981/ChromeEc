@@ -123,6 +123,7 @@ static int x86_non_dsx_mtl_s3_run(void *data)
 		k_msleep(AP_PWRSEQ_DT_VALUE(sys_pwrok_delay));
 	}
 
+
 	power_signal_set(PWR_EC_PCH_SYS_PWROK, all_sys_pwrgd_in);
 	/* PCH_PWROK is set to combined result of ALL_SYS_PWRGD and SLP_S3 */
 	power_signal_set(PWR_PCH_PWROK,

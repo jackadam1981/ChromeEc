@@ -7,7 +7,6 @@
 #include "gpio_signal.h"
 #include "include/system.h"
 #include "system_boot_time.h"
-#include "timer.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -87,7 +86,6 @@ static int board_ap_power_action_g3_run(void *data)
 
 		update_ap_boot_time(ARAIL);
 	}
-	printk("\n%s %d\n", __func__, __LINE__);
 	printk("---PWR_EN_PP3300_A %d\n",power_signal_get(PWR_EN_PP3300_A));
 
 	/* Return 0 only if power rails have been enabled  */
