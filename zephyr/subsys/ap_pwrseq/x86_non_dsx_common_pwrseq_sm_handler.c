@@ -6,6 +6,7 @@
 #include "ap_reset_log.h"
 #include "system_boot_time.h"
 #include "zephyr_console_shim.h"
+#include "timer.h"
 
 #include <zephyr/init.h>
 
@@ -779,6 +780,7 @@ SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
 #else
 static int x86_non_dsx_g3_entry(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	if (!atomic_test_bit(flags, START_FROM_G3)) {
 		return 0;
 	}
@@ -797,6 +799,7 @@ static int x86_non_dsx_g3_entry(void *data)
 
 static int x86_non_dsx_g3_run(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	/*
 	 * If the START_FROM_G3 flag is set, begin starting
 	 * the AP. There may be a delay set, so only start
@@ -819,6 +822,7 @@ static int x86_non_dsx_g3_run(void *data)
 
 static int x86_non_dsx_g3_exit(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	atomic_clear_bit(flags, START_FROM_G3);
 
 	return 0;
@@ -829,6 +833,7 @@ AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_G3, x86_non_dsx_g3_entry,
 
 static int x86_non_dsx_s5_entry(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)) {
 		atomic_set_bit(flags, S5_INACTIVE_TIMER_RUNNING);
 		k_timer_start(
@@ -846,9 +851,15 @@ static int x86_non_dsx_s5_run(void *data)
 	 * At this point, lower level action handlers of state machine should
 	 * have already checked that required power rails are OK.
 	 */
+	printk("\n%s %d\n", __func__, __LINE__);
 	rsmrst_pass_thru_handler();
+	printk("---PWR_EC_PCH_RSMRST %d\n",power_signal_get(PWR_EC_PCH_RSMRST));
 	if (!power_signal_get(PWR_EC_PCH_RSMRST)) {
+		printk("---SLP_S5 %s\n",signals_valid_and_off(IN_PCH_SLP_S5) ? "off" : "on");
+		printk("---SLP_S4 %s\n",signals_valid_and_off(IN_PCH_SLP_S4) ? "off" : "on");
+		printk("---SLP_S3 %s\n",signals_valid_and_off(IN_PCH_SLP_S3) ? "off" : "on");
 		if (signals_valid_and_off(IN_PCH_SLP_S5)) {
+			printk("---%s %d\n", __func__, __LINE__);
 			return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S4);
 		}
 	}
@@ -861,9 +872,11 @@ static int x86_non_dsx_s5_run(void *data)
 #endif /* CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND */
 	/* S5 inactivity timeout, go to G3 */
 	if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) == 0) {
+		printk("\n%s %d\n", __func__, __LINE__);
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
 	} else if (k_timer_remaining_get(&x86_non_dsx_timer) == 0) {
 		/* Timer is expired */
+		printk("\n%s %d\n", __func__, __LINE__);
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
 	}
 
@@ -872,6 +885,7 @@ static int x86_non_dsx_s5_run(void *data)
 
 static int x86_non_dsx_s5_exit(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	if (atomic_test_bit(flags, S5_INACTIVE_TIMER_RUNNING)) {
 		k_timer_stop(&x86_non_dsx_timer);
 		atomic_clear_bit(flags, S5_INACTIVE_TIMER_RUNNING);
@@ -885,11 +899,15 @@ AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S5, x86_non_dsx_s5_entry,
 
 static int x86_non_dsx_s4_run(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
+	printk("---PWR_RSMRST_PWRGD %d\n",power_signal_get(PWR_RSMRST_PWRGD));
+	printk("---SLP_S5 %s, want off\n",signals_valid_and_on(IN_PCH_SLP_S5) ? "on" : "off");
 	if (power_signal_get(PWR_RSMRST_PWRGD) == 0 ||
 	    signals_valid_and_on(IN_PCH_SLP_S5)) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S5);
 	}
 
+	printk("---SLP_S4 %s, want off\n",signals_valid_and_off(IN_PCH_SLP_S4) ? "off" : "on");
 	if (signals_valid_and_off(IN_PCH_SLP_S4)) {
 #if CONFIG_AP_PWRSEQ_S0IX
 		/*
@@ -908,6 +926,10 @@ AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S4, NULL, x86_non_dsx_s4_run, NULL);
 
 static int x86_non_dsx_s3_run(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
+	printk("---PWR_RSMRST_PWRGD %d\n",power_signal_get(PWR_RSMRST_PWRGD));
+	printk("---SLP_S4 %s, want off\n",signals_valid_and_on(IN_PCH_SLP_S4) ? "on" : "off");
+	printk("---SLP_S3 %s, want off\n",signals_valid_and_on(IN_PCH_SLP_S3) ? "on" : "off");
 	if (power_signal_get(PWR_RSMRST_PWRGD) == 0 ||
 	    signals_valid_and_on(IN_PCH_SLP_S4)) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S4);
@@ -918,6 +940,7 @@ static int x86_non_dsx_s3_run(void *data)
 	}
 
 	/* All the power rails must be stable */
+	printk("---PWR_ALL_SYS_PWRGD %d\n",power_signal_get(PWR_ALL_SYS_PWRGD));
 	if (power_signal_get(PWR_ALL_SYS_PWRGD)) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0);
 	}
@@ -929,6 +952,8 @@ AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S3, NULL, x86_non_dsx_s3_run, NULL);
 
 static int x86_non_dsx_s0_run(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
+	printk("---SLP_S3 %s, want off\n",signals_valid_and_on(IN_PCH_SLP_S3) ? "on" : "off");
 	if (signals_valid_and_on(IN_PCH_SLP_S3)) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S3);
 	}

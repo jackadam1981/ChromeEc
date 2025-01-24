@@ -171,6 +171,7 @@ void power_button_pch_release(void)
 void power_button_pch_pulse(void)
 {
 	CPRINTS("PB PCH pulse");
+	printk("\n%s %d\n", __func__, __LINE__);
 
 	chipset_exit_hard_off();
 	set_pwrbtn_to_pch(0, 0);
@@ -178,6 +179,15 @@ void power_button_pch_pulse(void)
 	tnext_state = get_time().val + PWRBTN_INITIAL_US;
 	task_wake(TASK_ID_POWERBTN);
 }
+
+static int command_pwrbtn(int argc, const char **argv)
+{
+	power_button_pch_pulse();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pwrbtn, command_pwrbtn, "[msec]",
+			"111111");
+
 
 /**
  * Handle debounced power button down.

@@ -157,12 +157,15 @@ void ap_power_exit_hardoff(void)
 	const struct device *dev = ap_pwrseq_get_instance();
 	enum ap_pwrseq_state power_state;
 
+	printk("\n%s %d\n", __func__, __LINE__);
+
 	ap_pwrseq_state_lock(dev);
 	/*
 	 * If not in the soft-off state, hard-off state, or headed there,
 	 * nothing to do.
 	 */
 	power_state = ap_pwrseq_get_current_state(dev);
+	printk("---power_state %d\n",power_state);
 	if (power_state == AP_POWER_STATE_G3 ||
 	    power_state == AP_POWER_STATE_S5) {
 		request_start_from_g3();

@@ -7,6 +7,7 @@
 #include "gpio_signal.h"
 #include "include/system.h"
 #include "system_boot_time.h"
+#include "timer.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
@@ -27,6 +28,12 @@ void board_ap_power_force_shutdown(void)
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 1);
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_edp_bklt_en), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_cpu_vr_en), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_slp_sx_n), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_vddq_en), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_v1p8a_en), 0);
+
 	/* Turn off PRIM load switch. */
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
@@ -44,6 +51,7 @@ void board_ap_power_force_shutdown(void)
 #ifdef CONFIG_AP_PWRSEQ_DRIVER
 int board_ap_power_action_g3_entry(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	board_ap_power_force_shutdown();
 
 	return 0;
@@ -51,10 +59,22 @@ int board_ap_power_action_g3_entry(void *data)
 
 static int board_ap_power_action_g3_run(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	if (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
 		power_signal_set(PWR_EN_PP5000_A, 1);
 		/* Turn on the PP3300_PRIM rail. */
 		power_signal_set(PWR_EN_PP3300_A, 1);
+
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_v1p8a_en), 1);
+		crec_msleep(20);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_vddq_en), 1);
+		crec_msleep(20);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_slp_sx_n), 1);
+		crec_msleep(20);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_cpu_vr_en), 1);
+		crec_msleep(20);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_edp_bklt_en), 1);
+		crec_msleep(20);
 
 		/* Indication to soc on recovery boot */
 		if (system_is_manual_recovery()) {
@@ -67,6 +87,8 @@ static int board_ap_power_action_g3_run(void *data)
 
 		update_ap_boot_time(ARAIL);
 	}
+	printk("\n%s %d\n", __func__, __LINE__);
+	printk("---PWR_EN_PP3300_A %d\n",power_signal_get(PWR_EN_PP3300_A));
 
 	/* Return 0 only if power rails have been enabled  */
 	return !power_signal_get(PWR_EN_PP3300_A);
