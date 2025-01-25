@@ -54,3 +54,13 @@ charger_i2c: &i2c4 {
  * b/386325459
  */
 /delete-node/ &kb_discrete;
+
+/*
+ * b/392207109
+ * This chip is not powered when the EC boots
+ */
+&charger_i2c {
+	pca95xx@22 {
+		status = "disabled";
+	};
+};
