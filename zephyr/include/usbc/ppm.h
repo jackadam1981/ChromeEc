@@ -46,8 +46,6 @@ enum ppm_states {
 	PPM_STATE_WAITING_CC_ACK,
 	/* PPM_STATE_PROCESS_CC_ACK, */
 
-	/* Waiting for async event acknowledgment from OPM. */
-	PPM_STATE_WAITING_ASYNC_EV_ACK,
 	/* PPM_STATE_PROCESS_ASYNC_EV_ACK, */
 
 	/* PPM_STATE_CANCELLING_COMMAND, */

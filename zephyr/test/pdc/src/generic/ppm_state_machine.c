@@ -812,11 +812,11 @@ ZTEST_USER_F(ppm_test, test_CCACK_ignore_async_event_processing)
 	zassert_true(wait_for_cmd_to_process(fixture));
 
 	/* After handling the command loop, we will see the pending command and
-	 * go into the WAITING_ASYNC_EV_ACK state.
+	 * go into the IDLE_NOTIFY state.
 	 */
 	notified_count++;
 	zassert_true(wait_for_notification(fixture, notified_count));
-	zassert_equal(get_ppm_state(fixture), PPM_STATE_WAITING_ASYNC_EV_ACK);
+	zassert_equal(get_ppm_state(fixture), PPM_STATE_IDLE_NOTIFY);
 }
 
 /*
@@ -997,7 +997,7 @@ ZTEST_USER_F(ppm_test, test_lpm_error_requires_ack)
 }
 
 /* Make sure we can call PPM_RESET in all states. We already test the IDLE state
- * but we should also test IDLE_NOTIFY, WAITING_CC_ACK and WAITING_ASYNC_EV_ACK.
+ * but we should also test IDLE_NOTIFY and WAITING_CC_ACK.
  */
 ZTEST_USER_F(ppm_test, test_ppm_reset_works_in_all_states)
 {
@@ -1031,7 +1031,7 @@ ZTEST_USER_F(ppm_test, test_ppm_reset_works_in_all_states)
 	trigger_expected_connector_change(fixture, PDC_DEFAULT_CONNECTOR);
 	zassert_true(wait_for_async_event_to_process(fixture));
 	zassert_true(wait_for_notification(fixture, ++notified_count));
-	zassert_equal(get_ppm_state(fixture), PPM_STATE_WAITING_ASYNC_EV_ACK);
+	zassert_equal(get_ppm_state(fixture), PPM_STATE_IDLE_NOTIFY);
 
 	zassert_false(write_ppm_reset(fixture) < 0);
 	zassert_true(wait_for_cmd_to_process(fixture));

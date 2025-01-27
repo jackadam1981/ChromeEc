@@ -90,7 +90,6 @@ const char *ppm_state_strings[] = {
 	[PPM_STATE_IDLE_NOTIFY] = "PPM_STATE_IDLE_NOTIFY",
 	[PPM_STATE_PROCESSING_COMMAND] = "PPM_STATE_PROCESSING_COMMAND",
 	[PPM_STATE_WAITING_CC_ACK] = "PPM_STATE_WAITING_CC_ACK",
-	[PPM_STATE_WAITING_ASYNC_EV_ACK] = "PPM_STATE_WAITING_ASYNC_EV_ACK",
 };
 
 BUILD_ASSERT(ARRAY_SIZE(ppm_state_strings) == PPM_STATE_MAX,
@@ -301,8 +300,10 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 		dev->ucsi_data.cci.connector_change = port + 1;
 		ppm_common_opm_notify(dev);
 
-		/* Set PPM state to waiting for async event ack */
-		dev->ppm_state = PPM_STATE_WAITING_ASYNC_EV_ACK;
+		/* ECR: Wait for Asynch Event Ack removed, transition to
+		 * PPM Idle Notification enabled)
+		 */
+		dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
 	}
 
 	/* Clear the pending bit. */
@@ -595,7 +596,6 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 		}
 		break;
 	case PPM_STATE_WAITING_CC_ACK:
-	case PPM_STATE_WAITING_ASYNC_EV_ACK:
 		/* If we successfully ACK, update CCI and notify. On
 		 * error, the CCI will already be set by
 		 * |ppm_common_execute_pending_cmd|.
@@ -673,14 +673,8 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 
 	/* Idle and waiting for a command or event. */
 	case PPM_STATE_IDLE_NOTIFY:
-		/* Check if you're acking in the right state for
-		 * ACK_CC_CI. Only CI acks are allowed here. i.e. we are
-		 * still waiting for a CI ack after a command loop was
-		 * completed.
-		 */
-		if (is_pending_command(dev) &&
-		    match_pending_command(dev, UCSI_ACK_CC_CI) &&
-		    is_invalid_ack(dev)) {
+		/* Both ACK_CC_CI and ACK_CI commands expected here. */
+		if (is_pending_command(dev) && is_invalid_ack(dev)) {
 			invalid_ack_notify(dev);
 			break;
 		}
@@ -708,32 +702,6 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 			     is_invalid_ack(dev))) {
 				invalid_ack_notify(dev);
 				break;
-			}
-			ppm_common_handle_pending_command(dev);
-		}
-		break;
-
-	/* Waiting for async event ack. */
-	case PPM_STATE_WAITING_ASYNC_EV_ACK:
-		if (is_pending_command(dev)) {
-			bool is_ack =
-				match_pending_command(dev, UCSI_ACK_CC_CI);
-			if (!is_ppm_reset && is_ack && is_invalid_ack(dev)) {
-				invalid_ack_notify(dev);
-				break;
-			}
-			/* Waiting ASYNC_EV_ACK is a weird state. It can
-			 * directly ACK the CI or it can go into a
-			 * PROCESSING_COMMAND state (in which case it
-			 * should be treated as a IDLE_NOTIFY).
-			 *
-			 * Thus, if we don't get UCSI_ACK_CC_CI
-			 * here, we just treat this as IDLE_NOTIFY
-			 * state.
-			 */
-			if (!is_ack) {
-				LOG_DBG("ASYNC EV ACK state turned into IDLE_NOTIFY state");
-				dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
 			}
 			ppm_common_handle_pending_command(dev);
 		}
