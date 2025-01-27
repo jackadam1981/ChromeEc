@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f37eb55_a54f2d52",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-27T21:53:42Z",
+      "side": 1,
+      "message": "before this change only `BPO` was saved as the key, I\u0027m not sure if we care about backwards compatibility and want to change this value to `BPO`, probalby not.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89afc7c_18eb539c",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-27T21:53:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to explain it, but `sizeof(g_owner_data_var_name)`  returns 4, not 5. Maybe the compiler is smart enough and uses the same value which would be returned by `strlen()`. I verified that with this update the created tuples have key size of 4. Wihtout this touch the key sizes were 3",
+      "range": {
+        "startLine": 156,
+        "startChar": 37,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652302f3_fd90e548",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-27T21:53:42Z",
+      "side": 1,
+      "message": "turns out I misread the source code when I said that max var space is 300 bytes. Max var space is 1k, 300 is the size limit of a single tuple, so we have plenty of room for storing the full entropy here.",
+      "range": {
+        "startLine": 243,
+        "startChar": 6,
+        "endLine": 243,
+        "endChar": 63
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
