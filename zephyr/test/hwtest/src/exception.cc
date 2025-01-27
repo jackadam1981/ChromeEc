@@ -4,49 +4,39 @@
  */
 
 #include "common.h"
-#include "multistep_test.h"
-#include "panic.h"
+#include "system.h"
 
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
+#include <zephyr/ztest_error_hook.h>
 
 #include <exception>
 
 LOG_MODULE_REGISTER(exception_hw_test, LOG_LEVEL_INF);
 
+ZTEST_SUITE(exception_hw_test, NULL, NULL, NULL, NULL, NULL);
+
 void exception_lib_throw(void);
 
-static void test_panic_data()
+void ztest_post_fatal_error_hook(unsigned int reason,
+				 const struct arch_esf *pEsf)
 {
-	/* The abort function is provided by Zephyr and causes kernel panic.
-	 * All we can check is PC register, because a panic reason is not set.
-	 */
-#ifdef CONFIG_ARM
-	struct panic_data *const pdata = panic_get_data();
-	uint32_t abort_addr = (uint32_t)abort;
-	/* Estimated end of the abort function, which is short. */
-	uint32_t abort_end = (uint32_t)abort + 0x40;
-	uint32_t pc = pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_PC];
-
-	/* Make sure Program Counter is stored correctly and points at the abort
-	 * function.
-	 */
-	zassert_true((abort_addr <= pc) && (abort_end >= pc));
-#endif
+	LOG_INF("Caught system error -- reason %d\n", reason);
+	cflush();
+	zassert_equal(reason, K_ERR_KERNEL_PANIC);
+	ztest_test_pass();
 }
 
-static void test_exception(void)
+ZTEST(exception_hw_test, test_exception)
 {
-	LOG_INF("Throwing an exception");
+	LOG_INF("Throwing an exception\n");
+	cflush();
+	ztest_set_fault_valid(true);
 	exception_lib_throw();
 
 	/*
 	 * Since we have exceptions disabled, we should not reach this.
 	 * Instead, the exception should cause a reboot.
 	 */
-	zassert_unreachable();
+	ztest_test_fail();
 }
-
-static void (*test_steps[])(void) = { test_exception, test_panic_data };
-
-MULTISTEP_TEST(exception, test_steps)
