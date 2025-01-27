@@ -116,6 +116,29 @@
       },
       "revId": "74472901455365ae87c671c510b82a580a390305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c56b261_71b6d3a1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4424,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-27T19:34:11Z",
+      "side": 1,
+      "message": "You should make the `cable_prop` parameter optional.  Your local callers are passing in a `cable_prop` allocated on the stack, but then never used.\n\nIt would be clearer if the local callers pass in NULL.",
+      "range": {
+        "startLine": 4424,
+        "startChar": 0,
+        "endLine": 4424,
+        "endChar": 75
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
