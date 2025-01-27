@@ -22,6 +22,30 @@
       },
       "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c271e692_802f5c25",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-27T22:18:28Z",
+      "side": 1,
+      "message": "Hello Patryk,\nCan you please elaborate on your comment? What were you thinking of? I created a version 1 of this command. I want to make sure that what you were suggesting would simplify the solution.",
+      "parentUuid": "45e8dd6a_052c8acf",
+      "range": {
+        "startLine": 8232,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 27
+      },
+      "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
