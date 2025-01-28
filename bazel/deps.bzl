@@ -29,7 +29,7 @@ def _ec_deps_impl(module_ctx):
         "d2e4f86a37f8674bb172ccb52a0fe8d1364564f9e37e1464fc7303fb50adb0f3",
     )
     _coreboot_sdk_subtool(
-        "riscv-elf",
+        "riscv64-elf",
         "14.2.0-r3/f86d8c0ebc8e5d03f4193a7c6b9732a52a2778c1",
         "4fcde5976454537569dd07e62c47f35fc2f4db745a4ad269cfb153d27da8d0b1",
     )
@@ -39,7 +39,7 @@ def _ec_deps_impl(module_ctx):
             "ec-coreboot-sdk-arm-eabi",
             "ec-coreboot-sdk-i386-elf",
             "ec-coreboot-sdk-nds32le-elf",
-            "ec-coreboot-sdk-riscv-elf",
+            "ec-coreboot-sdk-riscv64-elf",
         ],
         root_module_direct_dev_deps = [],
         reproducible = True,

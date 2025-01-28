@@ -28,7 +28,10 @@ def init_toolchain():
     toolchains = [
         ("COREBOOT_SDK_ROOT_arm", "@ec-coreboot-sdk-arm-eabi//:get_path"),
         ("COREBOOT_SDK_ROOT_x86", "@ec-coreboot-sdk-i386-elf//:get_path"),
-        ("COREBOOT_SDK_ROOT_riscv", "@ec-coreboot-sdk-riscv-elf//:get_path"),
+        (
+            "COREBOOT_SDK_ROOT_riscv64",
+            "@ec-coreboot-sdk-riscv64-elf//:get_path",
+        ),
         ("COREBOOT_SDK_ROOT_nds32", "@ec-coreboot-sdk-nds32le-elf//:get_path"),
     ]
     try:
