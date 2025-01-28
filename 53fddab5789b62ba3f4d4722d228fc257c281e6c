@@ -62,6 +62,30 @@
       },
       "revId": "53fddab5789b62ba3f4d4722d228fc257c281e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ad2665_d3d1aa77",
+        "filename": "zephyr/include/emul/tcpc/emul_rt1718s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-28T21:04:33Z",
+      "side": 1,
+      "message": "Oops, yes, you\u0027re right.",
+      "parentUuid": "4739bb56_ce2d84fb",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "53fddab5789b62ba3f4d4722d228fc257c281e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
