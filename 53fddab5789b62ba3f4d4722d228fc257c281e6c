@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab26453a_655112bd",
+        "filename": "zephyr/include/emul/tcpc/emul_rt1718s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-01-28T21:27:45Z",
+      "side": 1,
+      "message": "SG, and replace the usage part at `emul_rt1718s.c`.",
+      "parentUuid": "2bea59ed_6abf43d7",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "53fddab5789b62ba3f4d4722d228fc257c281e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4739bb56_ce2d84fb",
         "filename": "zephyr/include/emul/tcpc/emul_rt1718s.h",
         "patchSetId": 1
