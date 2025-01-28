@@ -166,6 +166,30 @@
       },
       "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "030b5ab0_10232942",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-28T18:10:14Z",
+      "side": 1,
+      "message": "Let us say we modify the following in a CL:\n\n```\n#define FP_MODE_CAPTURE_TYPE_SHIFT 26\n#define FP_MODE_CAPTURE_TYPE_MASK (0x1F \u003c\u003c FP_MODE_CAPTURE_TYPE_SHIFT)\n\nenum fp_capture_type {\n    FP_CAPTURE_VENDOR_FORMAT \u003d 0,\n    FP_CAPTURE_SIMPLE_IMAGE \u003d 4\n    FP_CAPTURE_PATTERN0 \u003d 8,\n    FP_CAPTURE_PATTERN1 \u003d 12,\n    FP_CAPTURE_QUALITY_TEST \u003d 16,\n    FP_CAPTURE_RESET_TEST \u003d 20,\n    FP_CAPTURE_TYPE_MAX,\n};\n```\nThe changes will propagate to libec immediately. \n\nLet us say we are captuing a [simple image](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_mode.cc;l\u003d95#:~:text\u003d94-,95,-96): \n\nthe mode is:\n```\n(FP_MODE_CAPTURE | FP_CAPTURE_SIMPLE_IMAGE\n                                    \u003c\u003c FP_MODE_CAPTURE_TYPE_SHIFT)\n```                                \nThe mode as calculated from `libec` is as below:\n```\nFP_MODE_CAPTURE \u003d 8\nFP_CAPTURE_SIMPLE_IMAGE \u003d 4\nas such, mode \u003d 0x10000008\n```\nNow the firmwarwe is going to use the old values:\n```\n#define FP_MODE_CAPTURE_TYPE_SHIFT 28\n#define FP_MODE_CAPTURE_TYPE_MASK (0x7 \u003c\u003c FP_MODE_CAPTURE_TYPE_SHIFT)\n#define FP_CAPTURE_TYPE(mode)                       \\\n\t(((mode) \u0026 FP_MODE_CAPTURE_TYPE_MASK) \u003e\u003e \\\n\t FP_MODE_CAPTURE_TYPE_SHIFT)\n```\n\nmode:           0b00010000000000000000000000001000\nmask:           0b01110000000000000000000000000000\n--------------------------------------------------\nresult of \u0026:    0b00010000000000000000000000000000\n\nas such, FP_CAPTURE_TYPE(mode) \u003d 1, which is the original value\n\n\n---------------\nNow let us say we released a new firmware:\n\n```\nFP_MODE_CAPTURE \u003d 8\nFP_CAPTURE_SIMPLE_IMAGE \u003d 4\nas such, mode \u003d 0x10000008\n```\nNow the firmwarwe is going to use the new values:\n```\n#define FP_MODE_CAPTURE_TYPE_SHIFT 26\n#define FP_MODE_CAPTURE_TYPE_MASK (0x1E \u003c\u003c FP_MODE_CAPTURE_TYPE_SHIFT)\n#define FP_CAPTURE_TYPE(mode)                       \\\n\t(((mode) \u0026 FP_MODE_CAPTURE_TYPE_MASK) \u003e\u003e \\\n\t FP_MODE_CAPTURE_TYPE_SHIFT)\n```\n```\nmode:           0b00010000000000000000000000001000\nmask:           0b01111100000000000000000000000000\n--------------------------------------------------\nresult of \u0026:    0b00010000000000000000000000000000\n```\nfinal result is 4 in decimal.",
+      "parentUuid": "44267f8a_ea2cc298",
+      "range": {
+        "startLine": 8232,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 27
+      },
+      "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
