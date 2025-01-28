@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bd337e_52914fd2",
+        "filename": "zephyr/test/input_keyboard/src/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-28T20:47:31Z",
+      "side": 1,
+      "message": "Where is this defined?  Is the CL missing a file?",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "b38d40f0ca599518e594805c354f7db9144ab52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
