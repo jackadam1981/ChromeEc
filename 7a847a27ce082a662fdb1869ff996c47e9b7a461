@@ -46,6 +46,30 @@
       },
       "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a99616_58369fe9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-28T10:47:39Z",
+      "side": 1,
+      "message": "Let\u0027s compare how capture type bits will look like, I\u0027ll use `FP_CAPTURE_PATTERN1` (3) as an example.\n\nCurrently [30..28] it will be `0b011`. If you add 2 more bits on right side the number will be `0b00011`.\n\nI suggest that you can shift left all values (except 0) by 2 bits, so it will be `0b01100` -\u003e `FP_CAPTURE_PATTERN` will set the same bits in a `mode`. As a result of that, you will be able to prepare support for new bits in `libec` (where necessary) and `biod` and then release new firmware that uses new bits. Everything without introducing new version of the command.",
+      "parentUuid": "c271e692_802f5c25",
+      "range": {
+        "startLine": 8232,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 27
+      },
+      "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
