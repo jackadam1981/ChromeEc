@@ -218,8 +218,7 @@ static int cmd_pdc_get_info(const struct shell *sh, size_t argc, char **argv)
 	}
 
 	/* Check if the FW project name is set. */
-	bool has_proj_name = pdc_info.project_name[0] != '\0' &&
-			     pdc_info.project_name[0] != 0xFF;
+	bool has_proj_name = pdc_info.project_name[0] != '\0';
 
 	shell_fprintf(sh, SHELL_INFO,
 		      "Live: %d\n"

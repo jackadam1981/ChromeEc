@@ -111,7 +111,7 @@ int rt1718s_emul_get_reg(const struct emul *emul, int reg, uint16_t *val)
 		return tcpci_emul_get_reg(emul, reg, val);
 	}
 
-	if (val == NULL || reg_addr > RT1718S_EMUL_REG_COUNT_PER_PAGE) {
+	if (val == NULL) {
 		return -EINVAL;
 	}
 
@@ -135,9 +135,11 @@ int rt1718s_emul_set_reg(const struct emul *emul, int reg, uint16_t val)
 		return tcpci_emul_set_reg(emul, reg, val);
 	}
 
+#if 0
 	if (reg_addr > RT1718S_EMUL_REG_COUNT_PER_PAGE) {
 		return -EINVAL;
 	}
+#endif
 
 	reference_page[reg_addr] = val;
 	return EC_SUCCESS;

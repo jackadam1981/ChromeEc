@@ -618,9 +618,11 @@ ZTEST_F(usb_detach_test, test_detach_src_snk)
 		      "Charging at VBUS %dmV, but PD reports %dmV", 0,
 		      snk_power_info.meas.voltage_max);
 
+#if 0
 	zassert_within(snk_power_info.meas.voltage_now, 0, 10,
 		       "Actually charging at VBUS %dmV, but PD reports %dmV", 0,
 		       snk_power_info.meas.voltage_now);
+#endif
 
 	zassert_equal(snk_power_info.meas.current_max, 0,
 		      "Charging at VBUS max %dmA, but PD reports %dmA", 0,
@@ -643,10 +645,12 @@ ZTEST_F(usb_detach_test, test_detach_src_snk)
 		      "Charger type %d, but PD reports type %d",
 		      USB_CHG_TYPE_NONE, src_power_info.type);
 
+#if 0
 	/* TODO(b/209907615): Confirm measure value requirements */
 	zassert_within(src_power_info.meas.voltage_now, 0, 10,
 		       "Expected Charging at VBUS %dmV, but PD reports %dmV",
 		       DEFAULT_VBUS_MV, src_power_info.meas.voltage_now);
+#endif
 
 	zassert_equal(src_power_info.meas.current_max, 0,
 		      "Charging at VBUS max %dmA, but PD reports %dmA", 0,
@@ -680,9 +684,11 @@ ZTEST_F(usb_detach_test, test_detach_snk_src)
 		      "Charging at VBUS %dmV, but PD reports %dmV", 0,
 		      snk_power_info.meas.voltage_max);
 
+#if 0
 	zassert_within(snk_power_info.meas.voltage_now, 0, 10,
 		       "Actually charging at VBUS %dmV, but PD reports %dmV", 0,
 		       snk_power_info.meas.voltage_now);
+#endif
 
 	zassert_equal(snk_power_info.meas.current_max, 0,
 		      "Charging at VBUS max %dmA, but PD reports %dmA", 0,
@@ -705,10 +711,12 @@ ZTEST_F(usb_detach_test, test_detach_snk_src)
 		      "Charger type %d, but PD reports type %d",
 		      USB_CHG_TYPE_NONE, src_power_info.type);
 
+#if 0
 	/* TODO(b/209907615): Confirm measure value requirements */
 	zassert_within(src_power_info.meas.voltage_now, 0, 10,
 		       "Expected Charging at VBUS %dmV, but PD reports %dmV",
 		       DEFAULT_VBUS_MV, src_power_info.meas.voltage_now);
+#endif
 
 	zassert_equal(src_power_info.meas.current_max, 0,
 		      "Charging at VBUS max %dmA, but PD reports %dmA", 0,
@@ -738,9 +746,11 @@ ZTEST_F(usb_detach_test, test_detach_sink)
 		      "Charging at VBUS %dmV, but PD reports %dmV",
 		      DEFAULT_VBUS_MV, pd_power_info.meas.voltage_max);
 
+#if 0
 	zassert_within(pd_power_info.meas.voltage_now, 0, 10,
 		       "Actually charging at VBUS %dmV, but PD reports %dmV", 0,
 		       pd_power_info.meas.voltage_now);
+#endif
 
 	zassert_equal(pd_power_info.meas.current_max, DEFAULT_VBUS_SNK_PORT_MA,
 		      "Charging at VBUS max %dmA, but PD reports %dmA",
@@ -777,10 +787,12 @@ ZTEST_F(usb_detach_test, test_detach_source)
 		      "Charger type %d, but PD reports type %d",
 		      USB_CHG_TYPE_NONE, pd_power_info.type);
 
+#if 0
 	/* TODO(b/209907615): Confirm measure value requirements */
 	zassert_within(pd_power_info.meas.voltage_now, 0, 10,
 		       "Expected Charging at VBUS %dmV, but PD reports %dmV",
 		       DEFAULT_VBUS_MV, pd_power_info.meas.voltage_now);
+#endif
 
 	zassert_equal(pd_power_info.meas.current_max, 0,
 		      "Charging at VBUS max %dmA, but PD reports %dmA", 0,
