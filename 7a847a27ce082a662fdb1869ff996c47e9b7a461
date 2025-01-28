@@ -70,6 +70,30 @@
       },
       "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0100a30_b5ef7277",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-28T15:05:40Z",
+      "side": 1,
+      "message": "Hello Patryk,\nOne issue I see with this approach is that we are losing 2 bits that we just allocated to the special image capture mode.\n\nCan you be more specific about what will be included in this CL such that a new command version is not necessary? There is a lot of intricacy between libec, biod, and ec and I want to make sure that all corners are covered.\n\nBest",
+      "parentUuid": "e6a99616_58369fe9",
+      "range": {
+        "startLine": 8232,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 27
+      },
+      "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
