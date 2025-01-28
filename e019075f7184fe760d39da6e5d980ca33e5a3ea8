@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b19a620_acac486d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-01-28T23:10:43Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8724468882325182209) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.taeko.hw.fingerprint-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "e019075f7184fe760d39da6e5d980ca33e5a3ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
