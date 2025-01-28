@@ -94,6 +94,30 @@
       },
       "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef811cbb_e896c5cb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8236,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-28T15:43:51Z",
+      "side": 1,
+      "message": "Hello Firas,\n\n\u003e One issue I see with this approach is that we are losing 2 bits that we just allocated to the special image capture mode.\n\nYou will not lose anything. With my approach `fp_capture_type` enum will be the following:\n```\nenum fp_capture_type {\n\tFP_CAPTURE_VENDOR_FORMAT \u003d 0,\n\tFP_CAPTURE_SIMPLE_IMAGE \u003d 4, // old 0b001, new 0b00100\n\tFP_CAPTURE_PATTERN0 \u003d 8,     // old 0b010, new 0b01000\n\tFP_CAPTURE_PATTERN1 \u003d 12,    // old 0b011, new 0b01100\n\tFP_CAPTURE_QUALITY_TEST \u003d 16,// old 0b100, new 0b10000\n\tFP_CAPTURE_RESET_TEST \u003d 20,  // old 0b101, new 0b10100\n\tFP_CAPTURE_TYPE_MAX,\n};\n```\n\nYou can still add new capture types between `VENDOR_FORMAT` and `SIMPLE_IMAGE`, `SIMPLE_IMAGE` and `PATTERN0`, above `RESET_TEST`, etc. Current capture types will still use the old bits only, so old firmware will understand them correctly.\n\nHope that this explains everything.\n\nBest",
+      "parentUuid": "e0100a30_b5ef7277",
+      "range": {
+        "startLine": 8232,
+        "startChar": 0,
+        "endLine": 8236,
+        "endChar": 27
+      },
+      "revId": "7a847a27ce082a662fdb1869ff996c47e9b7a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
