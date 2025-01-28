@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ff2611_75bb8d09",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-28T22:01:53Z",
+      "side": 1,
+      "message": "Actually @keithshort@chromium.org, isn\u0027t there a bug in the code?\n\nWe\u0027re using `memcpy`, so we expect `len` to be the size of the data to copy. The [`wr_buf` member has a size of `PDC_MAX_DATA_LENGTH` (256)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/usbc/pdc_rts54xx.c;l\u003d412-413;drc\u003d35c41340bc2e4992cf543b0d5dedff6cd14e11d6), so we\u0027ll never be able to fill the entire buffer, since we\u0027re using `uint8_t` for the `len` to copy.",
+      "range": {
+        "startLine": 1582,
+        "startChar": 2,
+        "endLine": 1582,
+        "endChar": 33
+      },
+      "revId": "7bdf37ed67257db57e1bcfa94336e8fe4780b8bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
