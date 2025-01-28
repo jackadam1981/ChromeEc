@@ -11,7 +11,7 @@
 #include <zephyr/drivers/emul.h>
 #include <zephyr/sys/slist.h>
 
-#define RT1718S_EMUL_REG_COUNT_PER_PAGE 0x100
+#define RT1718S_EMUL_REG_COUNT_PER_PAGE 0xFF
 
 struct set_reg_entry_t {
 	struct _snode node;
