@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2f760f_88da2dcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-28T21:28:51Z",
+      "side": 1,
+      "message": "No that\u0027s all a wonderful cascade effect of having to instantiate the common data to have the thread to run the test, had to initialize all the structure as a side effect of that and the initializers have some build check to limit the size of the matrix to stay within the limitations of the internal data structure, specifically the row data are stored on an uint8_t so row has to be limited to 8.\n\nI should have mentioned it in the commit message, I\u0027ll mention it in the commit message.",
+      "parentUuid": "6f509b93_6fc8260a",
+      "revId": "b38d40f0ca599518e594805c354f7db9144ab52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07bd337e_52914fd2",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-28T20:47:31Z",
       "side": 1,
       "message": "Where is this defined?  Is the CL missing a file?",
+      "range": {
+        "startLine": 55,
+        "startChar": 36,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "b38d40f0ca599518e594805c354f7db9144ab52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "542f8aee_01970c15",
+        "filename": "zephyr/test/input_keyboard/src/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-01-28T21:28:51Z",
+      "side": 1,
+      "message": "`input_kbd_matrix_common_init` is the initializer for the common keyboard data, it\u0027s in `zephyr/input/input_kbd_matrix.h`, normally the driver init is meant to call it as the last thing but in this case that\u0027s all it\u0027s needed since the common data is the only data",
+      "parentUuid": "07bd337e_52914fd2",
       "range": {
         "startLine": 55,
         "startChar": 36,
