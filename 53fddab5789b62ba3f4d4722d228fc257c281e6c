@@ -16,6 +16,52 @@
       "message": "Let me know if my interpretation in the commit message is correct since I don\u0027t have docs for this part.",
       "revId": "53fddab5789b62ba3f4d4722d228fc257c281e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bea59ed_6abf43d7",
+        "filename": "zephyr/include/emul/tcpc/emul_rt1718s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-28T20:35:30Z",
+      "side": 1,
+      "message": "How about adding a new macro to represent the last valid index?\n```\n#define RT1718S_EMUL_REG_COUNT_PER_PAGE 0x100\n#define RT1718S_EMUL_MAX_REG_INDEX (RT1718S_EMUL_REG_COUNT_PER_PAGE - 1)\n```\n\nThe replace any checks of RT1718S_EMUL_REG_COUNT_PER_PAGE with RT1718S_EMUL_MAX_REG_INDEX.",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "53fddab5789b62ba3f4d4722d228fc257c281e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4739bb56_ce2d84fb",
+        "filename": "zephyr/include/emul/tcpc/emul_rt1718s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-28T20:35:30Z",
+      "side": 1,
+      "message": "With your change, these arrays are getting truncated to only 255 entries.  Creating the RT1718S_EMUL_MAX_REG_INDEX macro allows these arrays to remain at 256 entries.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "53fddab5789b62ba3f4d4722d228fc257c281e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
