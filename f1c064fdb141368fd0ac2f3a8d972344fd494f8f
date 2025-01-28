@@ -16,6 +16,24 @@
       "message": "I have 3 problems with that:\n- We still use EC functions and headers, after aligning with zephyr implementation\n- Your implementation doesn\u0027t check where panic occurred (logic of the test was changed).\n- Your implementation doesn\u0027t check if EC data contains correct information.\n\nDon\u0027t get me wrong. I like the idea of cutting any ties with EC, but I prefer more planned, methodical approach, not hidden logical changes under \"aligning test implementation\".\n\nSome of the questions that came into my mind:\n- Maybe some tests need to be added in order to avoid coverage regression (EC panic data part)?\n- Maybe we should upstream the test once we remove EC dependencies?\n- Is it a good idea to touch stable tests now? We have much more important work to do.\n\nIn my opinon, you should focus on `exit` test. I know you are blocked on a Zephyr bug, but maybe you could help in debugging that? You have a opportunity to learn Zephyr internals - very valuable knowledge.",
       "revId": "f1c064fdb141368fd0ac2f3a8d972344fd494f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27a641d_6a30aaa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-28T15:08:46Z",
+      "side": 1,
+      "message": "The abort test will align with the exit test:\n\n\u003e\u003e Your implementation doesn\u0027t check where panic occurred (logic of the test was changed).\n[FS] It checks the panic reason\n\n\u003e\u003eYour implementation doesn\u0027t check if EC data contains correct information.\n[FS] can you point me to where is that read in the test?",
+      "parentUuid": "114bc37b_48151c23",
+      "revId": "f1c064fdb141368fd0ac2f3a8d972344fd494f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
