@@ -46,6 +46,30 @@
       },
       "revId": "7bdf37ed67257db57e1bcfa94336e8fe4780b8bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b748b1fa_7178689e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-28T23:23:43Z",
+      "side": 1,
+      "message": "You\u0027re correct.  However I checked all callers, and the largest `len` passed in is from `rts54_execute_ucsi_cmd()` which uses a maximum length of 32 bytes.\n\n`rts54_post_command()` also calls `rts54_post_command_with_callback()`, but the maximum length is 13 bytes.\n\n`wr_buf` probably only needs to be 32 bytes long and save some RAM, but that should be fixed separately.",
+      "parentUuid": "80ff2611_75bb8d09",
+      "range": {
+        "startLine": 1582,
+        "startChar": 2,
+        "endLine": 1582,
+        "endChar": 33
+      },
+      "revId": "7bdf37ed67257db57e1bcfa94336e8fe4780b8bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
