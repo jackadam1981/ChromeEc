@@ -8208,9 +8208,9 @@ struct ec_params_fp_passthru {
 	 FP_MODE_MATCH | FP_MODE_RESET_SENSOR | FP_MODE_SENSOR_MAINTENANCE | \
 	 FP_MODE_DONT_CHANGE)
 
-/* Capture types defined in bits [30..28] */
-#define FP_MODE_CAPTURE_TYPE_SHIFT 28
-#define FP_MODE_CAPTURE_TYPE_MASK (0x7 << FP_MODE_CAPTURE_TYPE_SHIFT)
+/* Capture types defined in bits [30..26] */
+#define FP_MODE_CAPTURE_TYPE_SHIFT 26
+#define FP_MODE_CAPTURE_TYPE_MASK (0x1F << FP_MODE_CAPTURE_TYPE_SHIFT)
 /**
  * enum fp_capture_type - Specifies the "mode" when capturing images.
  *
@@ -8229,12 +8229,12 @@ struct ec_params_fp_passthru {
  */
 enum fp_capture_type {
 	FP_CAPTURE_VENDOR_FORMAT = 0,
-	FP_CAPTURE_SIMPLE_IMAGE = 1,
-	FP_CAPTURE_PATTERN0 = 2,
-	FP_CAPTURE_PATTERN1 = 3,
-	FP_CAPTURE_QUALITY_TEST = 4,
-	FP_CAPTURE_RESET_TEST = 5,
-	FP_CAPTURE_TYPE_MAX,
+	FP_CAPTURE_SIMPLE_IMAGE = 4, /* old 0b001, new 0b00100 */
+	FP_CAPTURE_PATTERN0 = 8, /* old 0b001, new 0b00100 */
+	FP_CAPTURE_PATTERN1 = 12, /* old 0b011, new 0b01100 */
+	FP_CAPTURE_QUALITY_TEST = 16, /* old 0b100, new 0b10000 */
+	FP_CAPTURE_RESET_TEST = 20, /* old 0b101, new 0b10100 */
+	FP_CAPTURE_TYPE_MAX = 31,
 };
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode) \
