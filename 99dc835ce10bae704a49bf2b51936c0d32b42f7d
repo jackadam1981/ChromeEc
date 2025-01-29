@@ -16,6 +16,70 @@
       "message": "do we want to move this to `ptlrvp/i2c.dtsi`?",
       "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55171d2b_1a977a3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-29T00:22:35Z",
+      "side": 1,
+      "message": "That probably makes more sense.  Does the issue impact the Microchip version of the board too?",
+      "parentUuid": "294bdba1_c9f0ceba",
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3ba29c_da91e2f0",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-29T00:22:35Z",
+      "side": 1,
+      "message": "Nit - you can use the nodelabel and avoid nesting under the I2C bus\n\n```suggestion\n\u0026pca95xx_0 {\n\tzephyr,deferred-init;\n};\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd2f2b1_5a2d92c9",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-29T00:22:35Z",
+      "side": 1,
+      "message": "You need to add a call to `device_init(DEVICE_DT_GET(DT_NODELABEL(@pca95xx_0)));` in a board initialization routine.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
