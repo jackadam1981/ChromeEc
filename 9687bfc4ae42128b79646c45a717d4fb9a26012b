@@ -22,6 +22,30 @@
       },
       "revId": "9687bfc4ae42128b79646c45a717d4fb9a26012b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcb021c_891de270",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-01-29T03:25:04Z",
+      "side": 1,
+      "message": "In much of the \"ordinary\" EC codebase, I would agree.  But this clock_set_osc() is called in early initialization, before the console UART is initialized, so there is not a lot of ways of getting an error message out.  You can see that line 210 in this file has a similar unbounded loop, waiting for hardware to finish setting up.  So I guess that if either the oscillator or voltage regulator is defective, of if there is a bug in the driver for either, we have to accept the possibility of not getting any meaningful output.",
+      "parentUuid": "09d85cb1_6fec3220",
+      "range": {
+        "startLine": 458,
+        "startChar": 3,
+        "endLine": 458,
+        "endChar": 45
+      },
+      "revId": "9687bfc4ae42128b79646c45a717d4fb9a26012b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
