@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbaa5f59_702dd6aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-29T23:06:18Z",
+      "side": 1,
+      "message": "yes, intel confirmed the ptlrvp_mchp is also affected.",
+      "parentUuid": "55171d2b_1a977a3f",
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df3ba29c_da91e2f0",
@@ -168,6 +186,30 @@
       "side": 1,
       "message": "all the GPIOs behind this IOEX are immutable,\nso once we have a cached copy of them,\nthere should be no need for further direct access requests.",
       "parentUuid": "fffcea70_fdbbb851",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7282a080_9ff17156",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-29T23:06:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6422f463_0af0d20f",
       "range": {
         "startLine": 82,
         "startChar": 0,
