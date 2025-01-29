@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b02ca94_c2ff94f7",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "oh I know why, because g_owner_data_var_name is char *, not char[], so sizeof() of it is sizeof(char *) \u003d 4 bytes (for a pointer). so actually shall not use sizeof with const char *.\n\nso need to do one of the three\n\n1) \n```\nconst char g_owner_data_var_name[] \u003d \"BPOD\";\n\n...\n\n// -1 is still needed then\nvar \u003d getvar(g_owner_data_var_name, sizeof(g_owner_data_var_name) - 1);\n```\n\n2)\n```\nconst char *g_owner_data_var_name \u003d \"BPOD\";\n\n...\n\nvar \u003d getvar(g_owner_data_var_name, strlen(g_owner_data_var_name));\n```\nnot sure if we will be calling strlen every single time.\n\n3)\n```\nconst char *g_owner_data_var_name \u003d \"BPOD\";\nconst size_t g_owner_data_var_name_len \u003d strlen(g_owner_data_var_name); // or just 4\n\n...\n\nvar \u003d getvar(g_owner_data_var_name, g_owner_data_var_name_len);\n```\n\nany approach is probably ok, even (2), even if we waste time on calling streln every time, it doesn\u0027t happen that often. codesize-wise, (1) or (3) might be slightly better if strlen on a const-string is not pre-calc\u0027ed at compile time.\n\nsame for g_auth_seed_var_name.",
+      "parentUuid": "4f37eb55_a54f2d52",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b89afc7c_18eb539c",
         "filename": "board/cr50/boot_param_platform.c",
         "patchSetId": 4
@@ -49,6 +73,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ec9d9af_b2a14101",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "yeah as discussed above, either strlen, or put it into an array instead of char *.\nclassic C trap, I need more practice :)",
+      "parentUuid": "b89afc7c_18eb539c",
+      "range": {
+        "startLine": 156,
+        "startChar": 37,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effbb255_4f1ed197",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "here we already use approach (2) from the 1st comment. seems to be the only place with stren() instead of sizeof() for those names",
+      "range": {
+        "startLine": 232,
+        "startChar": 36,
+        "endLine": 232,
+        "endChar": 42
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "652302f3_fd90e548",
         "filename": "board/cr50/boot_param_platform.c",
         "patchSetId": 4
@@ -65,6 +136,122 @@
         "startChar": 6,
         "endLine": 243,
         "endChar": 63
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b6afbf_3c380892",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "652302f3_fd90e548",
+      "range": {
+        "startLine": 243,
+        "startChar": 6,
+        "endLine": 243,
+        "endChar": 63
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f29ef68_e22b3685",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "let\u0027s add a comment why don\u0027t we immediately not fix the situation and generate the value of the right size. doing so might hide a problem. it\u0027s better to return an error to whoever tries to get GSC boto param. this variable will be deleted in invalidate_ap_boot_config during boot_param_handle_tpm_startup on the next TPM reset.",
+      "range": {
+        "startLine": 253,
+        "startChar": 10,
+        "endLine": 253,
+        "endChar": 15
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267880f1_7bb6c768",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "this shall also be modified as we fix how e pass var name sizes to setvar/getvar",
+      "range": {
+        "startLine": 524,
+        "startChar": 5,
+        "endLine": 524,
+        "endChar": 38
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6ac6a8_f4c6ea27",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "typo: shall",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 36
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0666668e_edbd9c71",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:00:17Z",
+      "side": 1,
+      "message": "1) isn\u0027t it the opposite?\n```\n   if (shall_reset_state)\n       /* reset the state */\n```\nunlike the other case we don\u0027t restore it from persistent memory, but instead clear the variable in flash in boot_param_handle_tpm_startup()\n\n2) I realized we shall actually do\n```\n\tinvalidate_g_key_seed();\n\tif (shall_reset_state)\n\t    invalidate_ap_boot_config();\n```\neither directly here or pass shall_reset_state to boot_param_handle_tpm_startup(). g_key_seed is just a global variable that shall be cleared every time startup is called since g_key_seed is always created only temporarily while building boot params. so, if somehow we fail to delete the generated key, after deep sleep we shall make sure this variable is cleared and doesn\u0027t contain garbage.",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 34
       },
       "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
