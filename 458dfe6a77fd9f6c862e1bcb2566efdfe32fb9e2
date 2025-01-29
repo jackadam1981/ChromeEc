@@ -16,6 +16,46 @@
       "message": "I still have not tested this fully, need a cr50 based device with UART cnosole provisioned to verifu deep sleep behavior",
       "revId": "458dfe6a77fd9f6c862e1bcb2566efdfe32fb9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d18ddda_f762f11a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T19:24:48Z",
+      "side": 1,
+      "message": "LGTM after dropping the unrelated change (see CIL)",
+      "revId": "458dfe6a77fd9f6c862e1bcb2566efdfe32fb9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20fc55c7_b793262c",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T19:24:48Z",
+      "side": 1,
+      "message": "unrelated change for this CL",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "458dfe6a77fd9f6c862e1bcb2566efdfe32fb9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
