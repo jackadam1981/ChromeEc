@@ -16,6 +16,24 @@
       "message": "Does this need a Cq-Depend on the kernel counterpart?",
       "revId": "6d41ff06c0009e142a33033e85fe0385e20493f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39f3742_fa5915b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-01-29T23:23:21Z",
+      "side": 1,
+      "message": "No, this can go in independently.",
+      "parentUuid": "a5011c98_2f0e0870",
+      "revId": "6d41ff06c0009e142a33033e85fe0385e20493f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
