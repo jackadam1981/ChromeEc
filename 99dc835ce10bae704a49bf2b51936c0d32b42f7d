@@ -152,6 +152,30 @@
       },
       "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6422f463_0af0d20f",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-29T01:25:45Z",
+      "side": 1,
+      "message": "all the GPIOs behind this IOEX are immutable,\nso once we have a cached copy of them,\nthere should be no need for further direct access requests.",
+      "parentUuid": "fffcea70_fdbbb851",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
