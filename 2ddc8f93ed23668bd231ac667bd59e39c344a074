@@ -54,6 +54,24 @@
       ],
       "revId": "2ddc8f93ed23668bd231ac667bd59e39c344a074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc78ca0_0000cac5",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-01-29T18:13:32Z",
+      "side": 1,
+      "message": "Good suggestion, I\u0027ve updated with a chip argument using this code as a reference:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/BUILD.py;l\u003d19",
+      "parentUuid": "86aa3b6d_e17ca55e",
+      "revId": "2ddc8f93ed23668bd231ac667bd59e39c344a074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
