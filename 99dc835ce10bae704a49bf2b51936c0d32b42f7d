@@ -104,6 +104,30 @@
       },
       "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e390b9_06af9d7b",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-29T01:05:49Z",
+      "side": 1,
+      "message": "You can use `ap_power_ev_init_callback()` and `ap_power_ev_add_callback()` to register a callback for the `AP_POWER_PRE_INIT` event (G3 to S5) or `AP_POWER_STARTUP` event (S5 to S3).",
+      "parentUuid": "d2cb22c1_8809abe6",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
