@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b6f908c_83357730",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "ah, of course! I even thought about the pointer size for a moment, but for some reason I thought pointer is 8 bytes long - too much Rust thinking about slices and stuff :P\n\nTo minimize the amount of ` - 1` just defined the arrays as group of bytes, after all nobody looks at these strings.",
+      "parentUuid": "3b02ca94_c2ff94f7",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b89afc7c_18eb539c",
         "filename": "board/cr50/boot_param_platform.c",
         "patchSetId": 4
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a9091a_aa782d0f",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4ec9d9af_b2a14101",
+      "range": {
+        "startLine": 156,
+        "startChar": 37,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "effbb255_4f1ed197",
@@ -108,6 +156,30 @@
       "writtenOn": "2025-01-29T01:00:17Z",
       "side": 1,
       "message": "here we already use approach (2) from the 1st comment. seems to be the only place with stren() instead of sizeof() for those names",
+      "range": {
+        "startLine": 232,
+        "startChar": 36,
+        "endLine": 232,
+        "endChar": 42
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8908b00_2aec96b8",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "effbb255_4f1ed197",
       "range": {
         "startLine": 232,
         "startChar": 36,
@@ -188,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b179104e_ca7fb619",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f29ef68_e22b3685",
+      "range": {
+        "startLine": 253,
+        "startChar": 10,
+        "endLine": 253,
+        "endChar": 15
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "267880f1_7bb6c768",
@@ -201,6 +297,30 @@
       "writtenOn": "2025-01-29T01:00:17Z",
       "side": 1,
       "message": "this shall also be modified as we fix how e pass var name sizes to setvar/getvar",
+      "range": {
+        "startLine": 524,
+        "startChar": 5,
+        "endLine": 524,
+        "endChar": 38
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7e6ccd_51ead7a5",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "267880f1_7bb6c768",
       "range": {
         "startLine": 524,
         "startChar": 5,
@@ -234,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8685912a_ea2ca27c",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6ac6a8_f4c6ea27",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 36
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0666668e_edbd9c71",
@@ -247,6 +391,30 @@
       "writtenOn": "2025-01-29T01:00:17Z",
       "side": 1,
       "message": "1) isn\u0027t it the opposite?\n```\n   if (shall_reset_state)\n       /* reset the state */\n```\nunlike the other case we don\u0027t restore it from persistent memory, but instead clear the variable in flash in boot_param_handle_tpm_startup()\n\n2) I realized we shall actually do\n```\n\tinvalidate_g_key_seed();\n\tif (shall_reset_state)\n\t    invalidate_ap_boot_config();\n```\neither directly here or pass shall_reset_state to boot_param_handle_tpm_startup(). g_key_seed is just a global variable that shall be cleared every time startup is called since g_key_seed is always created only temporarily while building boot params. so, if somehow we fail to delete the generated key, after deep sleep we shall make sure this variable is cleared and doesn\u0027t contain garbage.",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ece3237_49ec0aa1",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-29T03:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0666668e_edbd9c71",
       "range": {
         "startLine": 216,
         "startChar": 1,
