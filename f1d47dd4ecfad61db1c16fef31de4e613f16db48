@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38f3f2a_f7e8ea4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-01-29T03:04:19Z",
+      "side": 1,
+      "message": "Couple of nits, but a straight cherry-pick is OK.",
+      "revId": "f1d47dd4ecfad61db1c16fef31de4e613f16db48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a3b245_5d8fde8d",
+        "filename": "zephyr/program/nissa/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-01-29T03:04:19Z",
+      "side": 1,
+      "message": "Capitalization?",
+      "range": {
+        "startLine": 70,
+        "startChar": 14,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "f1d47dd4ecfad61db1c16fef31de4e613f16db48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
