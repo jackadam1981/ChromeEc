@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d85cb1_6fec3220",
+        "filename": "chip/stm32/clock-stm32l5.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-01-29T01:06:41Z",
+      "side": 1,
+      "message": "idk the EC coding guidleines. in ti50/cr50 i\u0027d say, we need to set some limit (can be quite high) on how long we can spin in this loop, and error out if the registers don\u0027t show the right values before reaching that timeout limit. but for HYP we are less concerned with bricking the device and/or inability to extract any debug info from GSC if we are stuck in an endless loop, so maybe ok here?",
+      "range": {
+        "startLine": 458,
+        "startChar": 3,
+        "endLine": 458,
+        "endChar": 45
+      },
+      "revId": "9687bfc4ae42128b79646c45a717d4fb9a26012b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
