@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b17279_32271b97",
+        "filename": "zephyr/program/fpmcu/helipilot/CMakeLists.txt",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-01-29T19:00:00Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "97f4b74d_8b82c395",
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6312c348_6164b4b4",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb08540_aca12eee",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 40
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-01-29T19:00:00Z",
+      "side": 1,
+      "message": "UART is also used as an AP interface for helipilot on CrosEC and is planned for support on Zephyr.",
+      "parentUuid": "6312c348_6164b4b4",
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b30398e8_b7350b0e",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-01-21T06:41:08Z",
       "side": 1,
       "message": "Even here you are disabling the UART backend, but the UART backend chosen is selected.",
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c5044d_1b639b88",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 40
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-01-29T19:00:00Z",
+      "side": 1,
+      "message": "That is a good point, I\u0027ve re-enabled the UART backed in the prj.conf file",
+      "parentUuid": "b30398e8_b7350b0e",
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +143,30 @@
       "side": 1,
       "message": "From RW we can only jump to RO. Do you think that MPU may not be enabled in RO?",
       "parentUuid": "b896548a_548f4cfa",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1f7fbb_20341f14",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-01-29T19:00:00Z",
+      "side": 1,
+      "message": "\"Does EC re-enable the MPU?\"\nNot sure I understand the question correctly, but it looks like MPU is re-enabled during initialization [here]( https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d500). Note that this code is borrowed from zephyr [bloonchipper](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/src/ec_quirks.c;l\u003d43) but happy to add a comment both places if helpful. How about adding \"EC will re-enable the MPU on boot\" after the existing comment \"after sysjump to EC.\"?",
+      "parentUuid": "a8062b17_e3a67eb7",
       "range": {
         "startLine": 28,
         "startChar": 4,
