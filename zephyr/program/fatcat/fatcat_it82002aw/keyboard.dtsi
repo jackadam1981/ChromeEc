@@ -3,10 +3,68 @@
  * found in the LICENSE file.
  */
 
-/* Drop the gpio properties from the kbd node to avoid confusing the named_gpios
- * script.
- */
+#include "../../intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi"
+
 &kbd {
-       /delete-property/ kso16-gpios;
-       /delete-property/ kso17-gpios;
+	pinctrl-0 = <
+		&ksi0_default
+		&ksi1_default
+		&ksi2_default
+		&ksi3_default
+		&ksi4_default
+		&ksi5_default
+		&ksi6_default
+		&ksi7_default
+		&kso0_default
+		&kso1_default
+		&kso3_default
+		&kso4_default
+		&kso5_default
+		&kso6_default
+		&kso7_default
+		&kso8_default
+		&kso9_default
+		&kso10_default
+		&kso11_default
+		&kso12_default
+
+		&kso13_default
+		&kso14_default
+		&kso15_default
+		&kso16_default
+	>;
+	pinctrl-1 = <
+		&ksi0_sleep
+		&ksi1_sleep
+		&ksi2_sleep
+		&ksi3_sleep
+		&ksi4_sleep
+		&ksi5_sleep
+		&ksi6_sleep
+		&ksi7_sleep
+		&kso0_sleep
+		&kso1_sleep
+		&kso2_sleep
+		&kso3_sleep
+		&kso4_sleep
+		&kso5_sleep
+		&kso6_sleep
+		&kso7_sleep
+		&kso8_sleep
+		&kso9_sleep
+		&kso10_sleep
+		&kso11_sleep
+		&kso12_sleep
+
+		&kso13_sleep
+		&kso14_sleep
+		&kso15_sleep
+		&kso16_gpc3_sleep
+	>;
+
+	kso-ignore-mask = <04>;
+
+	kso-gpio {
+		col-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
+	};
 };
