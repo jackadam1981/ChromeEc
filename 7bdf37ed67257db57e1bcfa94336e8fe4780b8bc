@@ -70,6 +70,30 @@
       },
       "revId": "7bdf37ed67257db57e1bcfa94336e8fe4780b8bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "089864b8_4adffbec",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-29T21:39:57Z",
+      "side": 1,
+      "message": "\u003e `wr_buf` probably only needs to be 32 bytes long and save some RAM, but that should be fixed separately.\n\nAgreed. Filed http://b/393179660.",
+      "parentUuid": "b748b1fa_7178689e",
+      "range": {
+        "startLine": 1582,
+        "startChar": 2,
+        "endLine": 1582,
+        "endChar": 33
+      },
+      "revId": "7bdf37ed67257db57e1bcfa94336e8fe4780b8bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
