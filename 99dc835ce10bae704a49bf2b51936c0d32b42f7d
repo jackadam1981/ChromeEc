@@ -128,6 +128,30 @@
       },
       "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffcea70_fdbbb851",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-29T01:08:19Z",
+      "side": 1,
+      "message": "When the system goes back to G3, I guess we\u0027ll have to live with I2C errors when accessing the I/O expander.  Zephyr doesn\u0027t provide a \"de-initialization\" mechanism today.",
+      "parentUuid": "65e390b9_06af9d7b",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "99dc835ce10bae704a49bf2b51936c0d32b42f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
