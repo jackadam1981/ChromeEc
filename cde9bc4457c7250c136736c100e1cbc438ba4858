@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcba4f9_555b7e1b",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-30T01:55:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7b6f908c_83357730",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "cde9bc4457c7250c136736c100e1cbc438ba4858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89afc7c_18eb539c",

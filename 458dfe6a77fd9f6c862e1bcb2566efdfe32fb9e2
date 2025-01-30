@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "153f39b5_44b5065f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-30T01:55:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1288b706_6d976df8",
+      "revId": "458dfe6a77fd9f6c862e1bcb2566efdfe32fb9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20fc55c7_b793262c",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-01-29T19:24:48Z",
       "side": 1,
       "message": "unrelated change for this CL",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "458dfe6a77fd9f6c862e1bcb2566efdfe32fb9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a195ca_061dfa43",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-30T01:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20fc55c7_b793262c",
       "range": {
         "startLine": 68,
         "startChar": 21,
