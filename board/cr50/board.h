@@ -8,6 +8,39 @@
 
 #define CONFIG_LTO
 
+/* MP branch config options */
+#ifdef BRANCH_MP
+/* MP: Restrict the spihash console command. */
+#define CONFIG_SPI_HASH_RESTRICTED
+/* MP: Restrict CCD open requirements. */
+#undef CONFIG_CCD_OPEN_PREPVT
+/* MP: Remove chargen command. */
+#undef CONFIG_CMD_CHARGEN
+
+/* PrePVT branch config options. */
+#elif defined(BRANCH_PREPVT)
+/* PrePVT: The spihash console command is available when ccd is locked. */
+#undef CONFIG_SPI_HASH_RESTRICTED
+/* PrePVT: Loosen CCD open requirements Only allowed in prePVT and TOT images */
+#define CONFIG_CCD_OPEN_PREPVT
+/* PrePVT: Remove chargen command. */
+#undef CONFIG_CMD_CHARGEN
+
+/* TOT branch config options. */
+#elif defined(BRANCH_TOT)
+/* TOT: The spihash console command is available when ccd is locked. */
+#undef CONFIG_SPI_HASH_RESTRICTED
+/* TOT: Loosen CCD open requirements. Only allowed in prePVT and TOT images. */
+#define CONFIG_CCD_OPEN_PREPVT
+/* TOT: DBG: The DBG image doesn't have enough room chargen. */
+#ifndef CR50_DEV
+#define CONFIG_CMD_CHARGEN
+#endif
+
+#else
+/* Raise an error if a valid branch isn't set */
+#error Set BRANCH to TOT, MP, or PREPVT
+#endif
 /*
  * The default watchdog timeout is 1.6 seconds, but there are some legitimate
  * flash-intensive TPM operations that actually take close to that long to
