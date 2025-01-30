@@ -423,6 +423,16 @@ test_export_static int ppm_init(const struct device *device)
 	struct ppm_data *data = (struct ppm_data *)device->data;
 	const struct ucsi_pd_driver *drv = device->api;
 
+	/* Ensure the referenced PDC (LPM) drivers are ready */
+	for (int i = 0; i < NUM_PORTS; i++) {
+		if (!device_is_ready(cfg->lpm[i])) {
+			LOG_ERR("Cannot init PPM: Port %d PDC driver not ready.",
+				i);
+
+			return -ENODEV;
+		}
+	}
+
 	/* Initialize the PPM. */
 	data->ppm_dev = ppm_data_init(drv, device, data->port_status,
 				      cfg->active_port_count);

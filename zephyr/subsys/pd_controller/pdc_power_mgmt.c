@@ -3183,10 +3183,13 @@ static int pdc_subsys_init(const struct device *dev)
 	int rv;
 
 	/* Make sure PD Controller is ready */
-	if (!device_is_ready(port->pdc)) {
-		LOG_ERR("PDC not ready");
-		k_oops();
-		/* Unreachable */
+	if (port->pdc == NULL || !device_is_ready(port->pdc)) {
+		LOG_ERR("PDC not ready. Cannot init pdc_power_mgmt for port %d",
+			config->connector_num);
+
+		/* Prevent sending public API commands */
+		smf_set_initial(&port->ctx, &pdc_states[PDC_SUSPENDED]);
+
 		return -ENODEV;
 	}
 
