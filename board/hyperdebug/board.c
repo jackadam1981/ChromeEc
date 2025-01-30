@@ -8,10 +8,12 @@
 #include "clock_chip.h"
 #include "common.h"
 #include "ec_version.h"
+#include "irq_handler.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
 #include "stm32-dma.h"
+#include "task.h"
 #include "timer.h"
 #include "usart-stm32l5.h"
 #include "usb-stream.h"
@@ -327,8 +329,23 @@ DECLARE_CONSOLE_COMMAND_FLAGS(
  * Initialize board.  (More initialization done by hooks in other files.)
  */
 
+#define STM32_WWDG_CR REG32(STM32_WWDG_BASE + 0x00)
+#define STM32_WWDG_CFR REG32(STM32_WWDG_BASE + 0x04)
+#define STM32_WWDG_SR REG32(STM32_WWDG_BASE + 0x08)
+
 static void board_init(void)
 {
+	task_enable_irq(STM32_IRQ_WWDG);
+
+	// STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR1_WWDGEN;
+
+	// udelay(1);
+
+	// STM32_WWDG_CFR = 0x03FF;
+	// STM32_WWDG_CR = 0x00FF;
+
+	gpio_set_level(GPIO_CN12_70, !gpio_get_level(GPIO_CN12_70));
+
 	/* USB to serial queues */
 	queue_init(&usart2_to_usb);
 	queue_init(&usb_to_usart2);
@@ -364,6 +381,22 @@ static void usart_reinit_all(void)
 	usart_reinit(&usart5_usb, &usart5);
 }
 DECLARE_HOOK(HOOK_REINIT, usart_reinit_all, HOOK_PRIO_DEFAULT);
+
+void exception_panic(void);
+
+void IRQ_HANDLER(STM32_IRQ_WWDG)(void)
+{
+	exception_panic();
+}
+
+extern void (*sram_vectors[125])(void);
+
+void board_more_init(void)
+{
+	sram_vectors[16 + IRQ_TIM(TIM_WATCHDOG)] =
+		sram_vectors[16 + STM32_IRQ_WWDG];
+}
+DECLARE_HOOK(HOOK_INIT, board_more_init, HOOK_PRIO_POST_DEFAULT);
 
 static int command_reinit(int argc, const char **argv)
 {

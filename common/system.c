@@ -913,6 +913,7 @@ void system_common_pre_init(void)
 	 * was not already logged. This must happen before calculating
 	 * jump_data address because it might change panic pointer.
 	 */
+#if 0
 	if (system_get_reset_flags() & EC_RESET_FLAG_WATCHDOG) {
 		uint32_t reason;
 		uint32_t info;
@@ -937,6 +938,7 @@ void system_common_pre_init(void)
 			 pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD)
 			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
 	}
+#endif
 
 	/*
 	 * get_jump_data() is only available if one of the following are

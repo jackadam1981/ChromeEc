@@ -187,7 +187,7 @@
 #endif /* SECTION_IS_RO */
 
 /* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
+#define CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_FLASH_PSTATE
 
@@ -210,7 +210,8 @@ extern int stm32_pllr;
 #define PWM_TIMER_4 4
 #define PWM_TIMER_5 5
 #define BITBANG_TIMER 6
-#define JTAG_TIMER 7
+/*#define JTAG_TIMER 7*/
+#define TIM_WATCHDOG 7
 #define PWM_TIMER_8 8
 #define PWM_TIMER_15 15
 #define PWM_TIMER_16 16

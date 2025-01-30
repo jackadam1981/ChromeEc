@@ -320,22 +320,20 @@ void hwtimer_setup_watchdog(void)
 	 */
 	freq = clock_get_timer_freq();
 
-	if (freq <= 64000000 || !IS_ENABLED(CHIP_FAMILY_STM32L4)) {
+	if (freq <= 64000000) {
 		/* AUto-reload value */
 		STM32_TIM_ARR(TIM_WATCHDOG) = CONFIG_AUX_TIMER_PERIOD_MS;
 
 		/* Update prescaler: watchdog timer runs at 1KHz */
 		STM32_TIM_PSC(TIM_WATCHDOG) = (freq / SECOND * MSEC) - 1;
-	}
-#ifdef CHIP_FAMILY_STM32L4
-	else {
+	} else {
 		/* 10 times ARR value with 10KHz timer */
 		STM32_TIM_ARR(TIM_WATCHDOG) = CONFIG_AUX_TIMER_PERIOD_MS * 10;
 
 		/* Update prescaler: watchdog timer runs at 10KHz */
 		STM32_TIM_PSC(TIM_WATCHDOG) = (freq / SECOND / 10 * MSEC) - 1;
 	}
-#endif
+
 	/* Reload the pre-scaler */
 	STM32_TIM_EGR(TIM_WATCHDOG) = 0x0001;
 

@@ -679,8 +679,8 @@ static void board_gpio_init(void)
 	/*
 	 * Enable TIMER7 for precise JTAG bit-banging.
 	 */
-	__hw_timer_enable_clock(JTAG_TIMER, 1);
-	STM32_TIM_CR1(JTAG_TIMER) = STM32_TIM_CR1_CEN;
+	//__hw_timer_enable_clock(JTAG_TIMER, 1);
+	// STM32_TIM_CR1(JTAG_TIMER) = STM32_TIM_CR1_CEN;
 
 	/* Prepare timer for use in GPIO bit-banging. */
 	__hw_timer_enable_clock(BITBANG_TIMER, 1);

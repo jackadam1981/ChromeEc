@@ -434,14 +434,14 @@ static void dap_swj_clock(size_t peek_c)
 static inline __attribute__((always_inline)) void half_clock_delay(void)
 {
 	/* Calculate the future timer value, that we want to wait for. */
-	uint16_t until = STM32_TIM_CNT(JTAG_TIMER) + jtag_half_period_count;
+	// uint16_t until = STM32_TIM_CNT(JTAG_TIMER) + jtag_half_period_count;
 
 	/*
 	 * Busy-wait until counter is past the value (taking care around
 	 * wrapping).
 	 */
-	while (((int16_t)(STM32_TIM_CNT(JTAG_TIMER) - until)) < 0)
-		;
+	// while (((int16_t)(STM32_TIM_CNT(JTAG_TIMER) - until)) < 0)
+	//	;
 }
 
 /* Clock data out on TMS. */
