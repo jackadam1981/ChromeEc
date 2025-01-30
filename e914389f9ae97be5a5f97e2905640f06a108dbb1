@@ -3,6 +3,67 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "154e2aa0_1fe080e3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-30T19:20:21Z",
+      "side": 1,
+      "message": "can we add Renode in the comment to make it clearer. I was not aware that this refers to Renode while looking at the change without looking at the whole function/",
+      "range": {
+        "startLine": 441,
+        "startChar": 16,
+        "endLine": 441,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7e663ac1_c83bfa47",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 441,
+                "startChar": 0,
+                "endLine": 442,
+                "endChar": 0
+              },
+              "replacement": "                # bloonchipper Zephyr tests to skip on Renode.\n"
+            },
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 462,
+                "startChar": 0,
+                "endLine": 463,
+                "endChar": 0
+              },
+              "replacement": "                # bloonchipper EC tests to skip on Renode.\n"
+            },
+            {
+              "path": "test/run_device_tests.py",
+              "range": {
+                "startLine": 468,
+                "startChar": 0,
+                "endLine": 468,
+                "endChar": 0
+              },
+              "replacement": "            # Zephyr tests to skip on Renode.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e914389f9ae97be5a5f97e2905640f06a108dbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8e1e975_97393ecb",
         "filename": "test/run_device_tests.py",
         "patchSetId": 1
