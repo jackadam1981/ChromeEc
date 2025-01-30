@@ -34,6 +34,24 @@
       "parentUuid": "4dc0c4b2_c875c6af",
       "revId": "0cdb766e1c5505c48a0f19c5fd73e082d806c739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b8658a_78a89bf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-01-30T19:27:56Z",
+      "side": 1,
+      "message": "I\u0027d be fine keeping diffs in the board.h file. I just think we should keep the signing manifest selection part of this CL.",
+      "parentUuid": "c719921d_b034afff",
+      "revId": "0cdb766e1c5505c48a0f19c5fd73e082d806c739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
