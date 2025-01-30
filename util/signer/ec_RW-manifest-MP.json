@@ -2,7 +2,7 @@
 // List of fuses and their expected values.
 "fuses": {
         "FLASH_PERSO_PAGE_LOCK": 5,  // individualized
-        "FW_DEFINED_DATA_BLK0": 2,  // kevin EVT 1
+        "FW_DEFINED_DATA_BLK0": 2,  // cros SKU
         "FW_DEFINED_DATA_EXTRA_BLK6": 0  // escape hatch
 },
 // Rollback state.
@@ -39,7 +39,7 @@
 
   "timestamp": 0,
   "epoch": 0,  // FWR diversification contributor, 32 bits.
-  "major": 6,  // FW2_HIK_CHAIN counter.
+  "major": 5,  // FW2_HIK_CHAIN counter.
   "minor": 280,  // Mostly harmless version field.
   "applysec": -1,  // Mask to and with fuse BROM_APPLYSEC.
   "config1": 13,  // Which BROM_CONFIG1 actions to take before launching.
