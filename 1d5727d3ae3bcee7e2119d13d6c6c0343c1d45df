@@ -16,6 +16,24 @@
       "message": "There is really no better way to get the size? E.g. from dts node property?",
       "revId": "1d5727d3ae3bcee7e2119d13d6c6c0343c1d45df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898c8981_0a37e929",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 3503,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-01-30T18:16:22Z",
+      "side": 1,
+      "message": "Without this definition included, RW sig verification fails since the CONFIG_RW_SIZE defaults to 0x68000 (416kB). Reviewing other [projects](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/nissa/yaviks/project.conf;l\u003d16) another option is removing the definitions here and adding:\nCONFIG_CROS_EC_RW_SIZE\u003d0x50000\n\nto helipilot [prj.conf](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5018794/42/zephyr/program/fpmcu/helipilot/prj.conf#6). I\u0027ve tested that this change works on HW, happy to update the two CLs to incorporate if that solution works for you? If not, do you have alternate suggestions on how to address? Thanks",
+      "parentUuid": "504d4f72_5bc8885a",
+      "revId": "1d5727d3ae3bcee7e2119d13d6c6c0343c1d45df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
