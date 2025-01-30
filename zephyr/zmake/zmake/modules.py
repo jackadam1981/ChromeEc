@@ -22,6 +22,9 @@ def third_party_module(name, checkout):
 
 
 known_modules = {
+    "boringssl": lambda name, checkout: (
+        checkout / "src" / "third_party" / name
+    ),
     "hal_stm32": third_party_module,
     "cmsis": third_party_module,
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
