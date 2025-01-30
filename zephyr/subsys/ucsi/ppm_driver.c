@@ -458,4 +458,8 @@ test_export_static int ppm_init(const struct device *device)
 	return 0;
 }
 DEVICE_DT_INST_DEFINE(0, &ppm_init, NULL, &ppm_data, &ppm_config, POST_KERNEL,
-		      CONFIG_PDC_POWER_MGMT_INIT_PRIORITY, &ppm_drv);
+		      CONFIG_UCSI_PPM_INIT_PRIORITY, &ppm_drv);
+
+BUILD_ASSERT(CONFIG_UCSI_PPM_INIT_PRIORITY >
+		     CONFIG_PDC_POWER_MGMT_INIT_PRIORITY,
+	     "PPM must init after PDC Power Mgmt");
