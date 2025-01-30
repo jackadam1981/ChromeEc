@@ -16,6 +16,24 @@
       "message": "i think this is now failing in the rvp tests:\n\ndevicetree error: /gpio-interrupts/ioex_kbd_intr_n: undefined node label \u0027ioex_kbd_intr_n\u0027\n\nINFO    - 267/516 native_sim/native         intelrvp/intelrvp.ptlrvp.board_id                  ERROR CMake build failure",
       "revId": "00f250235bf24c1effaaeaadcb74e852ae0c5fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d202a092_f9095f33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-30T16:22:37Z",
+      "side": 1,
+      "message": "I\u0027ll check out the tests today...so much for a quick change over XD",
+      "parentUuid": "98d75d6f_0a182319",
+      "revId": "00f250235bf24c1effaaeaadcb74e852ae0c5fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
