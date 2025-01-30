@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1a2363_77fe4242",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-30T21:04:24Z",
+      "side": 1,
+      "message": "I think the PCA95xx was powered by the S5 rail.  Is it gauranteed that the system is in S5 or above at this point?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
