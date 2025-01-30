@@ -16,6 +16,24 @@
       "message": "I never understood the benefit of this with Ti50, and don\u0027t see why we need to change this for Cr50, to be honest.\n\nWhat does it buy us, we still have to have branches, right?\n\nAdding @apronin@chromium.org just in case he has an opinion.",
       "revId": "0cdb766e1c5505c48a0f19c5fd73e082d806c739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c719921d_b034afff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-01-30T19:27:18Z",
+      "side": 1,
+      "message": "I think it would just help us start using merge commits and make it easier to setup branches. \nRight now we have to resolve signing manifest merge conflicts every time we pick the version bump patch from the prepvt branch to the mp branch.\nWhenever we setup branches we have to pick a couple of patches. It\u0027s not that hard. It\u0027s just possible we could miss a patch.",
+      "parentUuid": "4dc0c4b2_c875c6af",
+      "revId": "0cdb766e1c5505c48a0f19c5fd73e082d806c739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
