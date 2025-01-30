@@ -16,6 +16,7 @@ def register_npcx9_project(
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
+        modules=["cmsis", "ec", "intel_module_private"],
         kconfig_files=[
             # Common to all projects.
             here / "program.conf",
