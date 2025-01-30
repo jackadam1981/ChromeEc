@@ -22,6 +22,30 @@
       },
       "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d70cf9_dd0178eb",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-30T21:08:03Z",
+      "side": 1,
+      "message": "I am verifying but it should only be executed in S0. 1 problem I have seen so far is even in S0 PCA95xx is throwing the same error at init",
+      "parentUuid": "ec1a2363_77fe4242",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
