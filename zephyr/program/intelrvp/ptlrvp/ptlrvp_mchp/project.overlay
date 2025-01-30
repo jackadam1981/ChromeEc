@@ -14,8 +14,8 @@
 #include "i2c.dts"
 #include "vci.dtsi"
 #include "../battery.dtsi"
+#include "../gsc_board.dtsi"
 #include "../i2c.dtsi"
-#include "../ioex.dtsi"
 #include "../ioex_gpio.dtsi"
 #include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
@@ -30,3 +30,10 @@
 	offset = <0x3F000>;
 	size = <0x1000>;
 };
+
+&it8801_mfd {
+	irq-gpios = <MCHP_GPIO_DECODE_000 GPIO_ACTIVE_HIGH>;
+};
+
+/delete-node/ &int_vol_up;
+/delete-node/ &int_vol_dn;
