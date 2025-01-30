@@ -7,6 +7,7 @@
 #include "intel_rvp_board_id.h"
 #include "intelrvp.h"
 
+#include <zephyr/device.h>
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(board_id, LOG_LEVEL_INF);
@@ -33,6 +34,8 @@ __override int board_get_version(void)
 	/* Board ID is already read */
 	if (ptl_board_id)
 		return ptl_board_id;
+
+	device_init(DEVICE_DT_GET(DT_NODELABEL(pca95xx_0)));
 
 	/*
 	 * IOExpander that has Board ID information is on PRIM_VR rail on
