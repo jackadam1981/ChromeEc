@@ -3002,6 +3002,8 @@
 
 /* Add support for hashing AP RO */
 #undef CONFIG_SPI_HASH
+/* Restirct the spihash console command, so it's available when ccd is open */
+#undef CONFIG_SPI_HASH_RESTRICTED
 
 /* Support testing SPI periph interface driver. */
 #undef CONFIG_SPP_TEST
