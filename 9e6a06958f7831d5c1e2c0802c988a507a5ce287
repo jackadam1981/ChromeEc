@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f115cf1_d5216e74",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-30T00:15:01Z",
+      "side": 1,
+      "message": "Why are you including the NPCX keybaord file for the ITE variant?",
+      "range": {
+        "startLine": 6,
+        "startChar": 32,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "9e6a06958f7831d5c1e2c0802c988a507a5ce287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eb3594_9fc36e13",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-30T00:15:01Z",
+      "side": 1,
+      "message": "This property is already set by generated.dtsi.  I don\u0027t think you need this here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9e6a06958f7831d5c1e2c0802c988a507a5ce287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
