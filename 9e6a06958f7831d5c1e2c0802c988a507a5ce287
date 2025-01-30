@@ -117,6 +117,30 @@
       },
       "revId": "9e6a06958f7831d5c1e2c0802c988a507a5ce287",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4a224f_d6b848f2",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-30T20:08:21Z",
+      "side": 1,
+      "message": "You\u0027re correct. I forgot that arbitrage is generating the legacy cros_kb_raw node and not the upstream keyboard matrix driver.",
+      "parentUuid": "22044264_654efca1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9e6a06958f7831d5c1e2c0802c988a507a5ce287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
