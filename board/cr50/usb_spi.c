@@ -983,7 +983,13 @@ static int hash_command_wrapper(int argc, char *argv[])
 
 	return rv;
 }
+#ifdef CONFIG_SPI_HASH_RESTRICTED
+DECLARE_CONSOLE_COMMAND(spihash, hash_command_wrapper,
+		     "ap | ec [gang] | disable | [dump] <offset> <size>",
+		     "Hash SPI flash via TPM vendor command");
+#else
 DECLARE_SAFE_CONSOLE_COMMAND(spihash, hash_command_wrapper,
 		     "ap | ec [gang] | disable | [dump] <offset> <size>",
 		     "Hash SPI flash via TPM vendor command");
+#endif /* CONFIG_SPI_HASH_RESTRICTED */
 #endif /* CONFIG_SPI_HASH */
