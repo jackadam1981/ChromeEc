@@ -1,0 +1,31 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Not for check-in.  Demonstrate how to enable the "intel,gbr-pdc"
+ * driver provided by an external module.
+ */
+
+ / {
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			pdc = <&pdc_gbr_0>;
+		};
+	};
+};
+
+&i2c0_0 {
+	label = "I2C_PORT_PD";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+
+	pdc_gbr_0: gbr-pdc@66 {
+		compatible = "intel,gbr-pdc";
+		reg = <0x66>;
+		irq-gpios = <&gpiof 2 GPIO_ACTIVE_LOW>;
+	};
+};
