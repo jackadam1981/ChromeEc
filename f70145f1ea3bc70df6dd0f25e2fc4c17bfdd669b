@@ -22,6 +22,30 @@
       },
       "revId": "f70145f1ea3bc70df6dd0f25e2fc4c17bfdd669b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7519d27d_56323033",
+        "filename": "board/nucleo-f412zg/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-30T19:19:52Z",
+      "side": 1,
+      "message": "The nucleo boards are using the same MCU as `dartmonkey`/`bloonchipper`, so we try to keep all the tests in sync so that you can run it on those boards if you want to use them for debugging.",
+      "parentUuid": "dd3dac70_12f4fa84",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "f70145f1ea3bc70df6dd0f25e2fc4c17bfdd669b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
