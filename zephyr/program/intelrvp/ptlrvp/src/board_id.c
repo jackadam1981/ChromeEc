@@ -7,6 +7,7 @@
 #include "intel_rvp_board_id.h"
 #include "intelrvp.h"
 
+#include <zephyr/device.h>
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(board_id, LOG_LEVEL_INF);
@@ -19,6 +20,7 @@ __override int board_get_version(void)
 {
 	/* Cache the board ID */
 	static int ptl_board_id;
+	const struct device *pca95xx_dev;
 
 	int i;
 	int rv = EC_ERROR_UNKNOWN;
@@ -34,6 +36,10 @@ __override int board_get_version(void)
 	if (ptl_board_id)
 		return ptl_board_id;
 
+	/* Init PCA95XX device if it has not been initialized */
+	pca95xx_dev = DEVICE_DT_GET(DT_NODELABEL(pca95xx_0));
+	if (!device_is_ready(pca95xx_dev))
+		device_init(pca95xx_dev);
 	/*
 	 * IOExpander that has Board ID information is on PRIM_VR rail on
 	 * PTL RVP. On cold boot cycles, PRIM_VR rail is taking time to settle.
