@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4553ce00_2cd50435",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-30T19:10:40Z",
+      "side": 1,
+      "message": "Yes, these are the tests to skip on Renode. See linked bug.",
+      "parentUuid": "f8e1e975_97393ecb",
+      "range": {
+        "startLine": 443,
+        "startChar": 20,
+        "endLine": 443,
+        "endChar": 49
+      },
+      "revId": "e914389f9ae97be5a5f97e2905640f06a108dbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4aaa782_cd7666d5",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "e914389f9ae97be5a5f97e2905640f06a108dbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0be169_e07397e2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-30T19:10:40Z",
+      "side": 1,
+      "message": "Yes, these are the tests to skip on Renode. See linked bug.",
+      "parentUuid": "f4aaa782_cd7666d5",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 53
+      },
       "revId": "e914389f9ae97be5a5f97e2905640f06a108dbb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
