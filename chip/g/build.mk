@@ -136,7 +136,11 @@ ifneq ($(CR50_DEV),)
 CPPFLAGS += -DCR50_DEV=$(CR50_DEV)
 endif
 
-MANIFEST := util/signer/ec_RW-manifest-dev.json
+ifneq ($(BRANCH),)
+MANIFEST := util/signer/ec_RW-manifest-$(BRANCH).json
+else
+MANIFEST := util/signer/ec_RW-manifest-TOT.json
+endif
 CR50_RO_KEY ?= rom-testkey-A.pem
 
 ifeq ($(CHIP_MK_INCLUDED_ONCE),)
@@ -243,6 +247,8 @@ HEX_NAME := $(shell printf "$(BOARD)" | /usr/bin/awk -F_ ' \
 HEX_LEN  := $(shell printf $(HEX_NAME) | wc -c)
 $(shell sed -i "s/tag\": \"0\{$(HEX_LEN)\}/tag\": \"$(HEX_NAME)/" \
        ${SIGNER_MANIFEST})
+
+SANITIZE_MANIFEST:=$(abspath ../gsc-utils/util/convert_signing_json.sh)
 
 # This file is included twice by the Makefile, once to determine the CHIP info
 # # and then again after defining all the CONFIG_ and HAS_TASK variables. We use
