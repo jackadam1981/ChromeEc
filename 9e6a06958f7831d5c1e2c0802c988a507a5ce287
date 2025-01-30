@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f15d74c9_6fe87cca",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-30T19:55:42Z",
+      "side": 1,
+      "message": "ok, we can separating the definitions.\nultimately, the keyboard definitions for whatever\nwe plug into the EC add-in-cards should be substantially\nthe same.",
+      "parentUuid": "3f115cf1_d5216e74",
+      "range": {
+        "startLine": 6,
+        "startChar": 32,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "9e6a06958f7831d5c1e2c0802c988a507a5ce287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97eb3594_9fc36e13",
         "filename": "zephyr/program/fatcat/fatcat_it82002aw/keyboard.dtsi",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-30T00:15:01Z",
       "side": 1,
       "message": "This property is already set by generated.dtsi.  I don\u0027t think you need this here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9e6a06958f7831d5c1e2c0802c988a507a5ce287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22044264_654efca1",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-01-30T19:55:42Z",
+      "side": 1,
+      "message": "is there a way to reference `cros_kb_raw.pinctl-0` here?\ni didn\u0027t see an example in other keyboard definitions.",
+      "parentUuid": "97eb3594_9fc36e13",
       "range": {
         "startLine": 9,
         "startChar": 0,
