@@ -16,6 +16,24 @@
       "message": "devicetree error: /mnt/host/source/src/platform/ec/zephyr/program/fatcat/fatcat_it82002aw/i2c.dtsi:56 (column 15): parse error: undefined node label \u0027kb_discrete\u0027\n\nwe\u0027ll need to remove `/delete-node/ \u0026kb_discrete` from fatcat_n* and fatcat_i* boards as well.",
       "revId": "9087d304619b7c7117624add7e8d25cc9b5b9226",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41e6391_2924c15a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-30T03:52:02Z",
+      "side": 1,
+      "message": "done didn\u0027t check fatcat for hanging deletes",
+      "parentUuid": "44317808_fdfd7c56",
+      "revId": "9087d304619b7c7117624add7e8d25cc9b5b9226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
