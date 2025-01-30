@@ -10,6 +10,7 @@
 /* ocelot_nuvoton project DTS includes */
 #include "generated.dtsi"
 #include "i2c.dtsi"
+#include "module_example.dtsi"
 
 /* ocelot_nuvoton overrides follow... */
 / {
