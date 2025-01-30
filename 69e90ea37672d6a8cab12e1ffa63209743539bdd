@@ -46,6 +46,30 @@
       },
       "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c0e53c_95f1e792",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-01-30T23:21:25Z",
+      "side": 1,
+      "message": "After looking some more this is realistically the latest we can call the init. Since the Loop following this is waiting for the ioexpander to be initialized before copying values into the ptl_board_id. On a side note it appears the error is not every time now so it still leads me to believe the power rails on the ioexpander and just taking a lot of time to settle",
+      "parentUuid": "34d70cf9_dd0178eb",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
