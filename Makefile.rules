@@ -68,6 +68,7 @@ cmd_ec_elf_to_flat ?= $(OBJCOPY) --set-section-flags .roshared=share \
 cmd_elf_to_signed ?= $(SIGNER) --key=util/signer/$(3) \
 	--b --input=$< --format=bin --output=$@.signed $(SIGNER_EXTRAS) \
 	&& sudo chown $(shell whoami) $@.signed && mv $@.signed $@
+cmd_copy_manifest ?= $(SANITIZE_MANIFEST) $(MANIFEST) $(out)/prod.json
 cmd_elf_to_elf_fips = ./util/inject_fips_fingerprint.sh $(OBJCOPY) $(OBJDUMP) \
 	$^ $(silent)
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
@@ -456,6 +457,7 @@ $(out)/RO/%.flat: $(out)/RO/%.elf $(out)/RO/%.smap | $(SIGNER)
 
 $(out)/RW/%.flat: $(out)/RW/%.elf$(rw_elf_ext) $(out)/RW/%.smap | $(SIGNER)
 	$(call quiet,elf_to_signed,RW_SIGN,$(CR50_RW_KEY))
+	$(call quiet,copy_manifest)
 
 $(out)/RO/%.hex: $(out)/RO/%.flat
 	$(call quiet,bin_to_hex,OBJCOPY)
