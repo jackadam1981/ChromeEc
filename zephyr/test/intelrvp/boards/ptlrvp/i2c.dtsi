@@ -62,10 +62,6 @@
 		address-width = <8>;
 		timeout = <5>;
 	};
-	kb_discrete: ite-it8801@39 {
-		compatible = "ite,it8801","cros,i2c-mock";
-		reg = <0x39>;
-	};
 	seven_seg_display: max695x-seven-seg-display@38 {
 		compatible = "maxim,max695x","cros,i2c-mock";
 		reg = <0x38>;
