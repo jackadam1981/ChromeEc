@@ -15,6 +15,9 @@ import preupload.lib
 
 EC_FUNCTIONS: Dict[str, str] = {
     "udelay": "k_busy_wait",
+    "crec_usleep": "k_usleep",
+    "crec_msleep": "k_msleep",
+    "crec_sleep": "k_sleep(K_SECONDS(sec))",
 }
 
 EC_MACROS: Dict[str, str] = {
