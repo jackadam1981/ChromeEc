@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac2ce69_b3f48c01",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-01-31T16:35:05Z",
+      "side": 1,
+      "message": "Here you default to ToT if branch is empty, but in the header file you throw an error if there isn\u0027t a branch define. Was this different intentional?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 5
+      },
+      "revId": "c69dcb72ee2bf1f90d1efbad883884108bc0919f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
