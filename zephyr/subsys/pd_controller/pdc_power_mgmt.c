@@ -4700,6 +4700,24 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 	return rv;
 }
 
+/* Builds an array of `[connector_number] = &pdc_device_driver members` */
+#define PDC_DRIVER_DEV_PTR(inst)             \
+	[USBC_PORT_NEW(DT_DRV_INST(inst))] = \
+		DEVICE_DT_GET(DT_PROP_BY_IDX(DT_DRV_INST(inst), pdc, 0)),
+
+__overridable const struct device *board_get_pdc_for_port(uint8_t port_num)
+{
+	static const struct device *port_num_to_pdc_driver[] = {
+		DT_INST_FOREACH_STATUS_OKAY(PDC_DRIVER_DEV_PTR)
+	};
+
+	if (!is_pdc_port_valid(port_num)) {
+		return NULL;
+	}
+
+	return port_num_to_pdc_driver[port_num];
+}
+
 #ifdef CONFIG_ZTEST
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)

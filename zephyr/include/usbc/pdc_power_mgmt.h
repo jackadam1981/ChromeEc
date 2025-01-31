@@ -709,4 +709,19 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port);
 int pdc_power_mgmt_get_connector_status_for_ppm(
 	int port, union connector_status_t *connector_status);
 
+/**
+ * @brief Maps a port/connector number to device struct pointer for the PDC
+ *        serving that port.
+ *
+ *        The default implementation returns the first PDC associated with that
+ *        named-usbc-port. If runtime driver selection (deferred initialization)
+ *        is used, this function should be overriden in board code to make a
+ *        specific driver selection based on product configuration data.
+ *
+ * @param port_num Connector (aka port) number to query
+ * @return PDC device driver struct pointer if successful
+ * @return NULL if \p port_num is invalid
+ */
+const struct device *board_get_pdc_for_port(uint8_t port_num);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

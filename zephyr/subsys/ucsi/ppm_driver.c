@@ -11,6 +11,7 @@
 #include "ppm_common.h"
 #include "usb_pd.h"
 #include "usbc/pdc_power_mgmt.h"
+#include "usbc/utils.h"
 #include "util.h"
 
 #include <zephyr/devicetree.h>
@@ -26,7 +27,7 @@ LOG_MODULE_REGISTER(ppm, LOG_LEVEL_INF);
 #define DT_DRV_COMPAT ucsi_ppm
 #define UCSI_7BIT_PORTMASK(p) ((p) & 0x7F)
 #define DT_PPM_DRV DT_INST(0, DT_DRV_COMPAT)
-#define NUM_PORTS DT_PROP_LEN(DT_PPM_DRV, lpm)
+#define NUM_PORTS DT_PROP_LEN(DT_PPM_DRV, ports)
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Exactly one instance of ucsi-ppm should be defined.");
@@ -85,20 +86,17 @@ struct ucsi_commands_t ucsi_commands[] = {
 BUILD_ASSERT(ARRAY_SIZE(ucsi_commands) == UCSI_CMD_MAX,
 	     "Not all UCSI commands are handled.");
 
-#define PHANDLE_TO_DEV(node_id, prop, idx) \
-	[idx] = DEVICE_DT_GET(DT_PHANDLE_BY_IDX(node_id, prop, idx)),
-
 struct ppm_config {
-	const struct device *lpm[NUM_PORTS];
 	uint8_t active_port_count;
 };
 static const struct ppm_config ppm_config = {
-	.lpm = { DT_FOREACH_PROP_ELEM(DT_PPM_DRV, lpm, PHANDLE_TO_DEV) },
 	.active_port_count = NUM_PORTS,
 };
 
 struct ppm_data {
 	struct ucsi_ppm_device *ppm_dev;
+	/** Reference to the PDC (LPM) driver for each port index */
+	const struct device *lpms[NUM_PORTS];
 	union connector_status_t port_status[NUM_PORTS] __aligned(4);
 	struct pdc_callback cc_cb;
 	struct pdc_callback ci_cb;
@@ -214,8 +212,6 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 				     struct ucsi_control_t *control,
 				     uint8_t *lpm_data_out)
 {
-	const struct ppm_config *cfg =
-		(const struct ppm_config *)device->config;
 	struct ppm_data *data = (struct ppm_data *)device->data;
 	uint8_t ucsi_command = control->command;
 	uint8_t conn; /* 1:port=0, 2:port=1, ... */
@@ -291,7 +287,7 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 	timeout = sys_timepoint_calc(K_MSEC(SYNC_CMD_TIMEOUT_MSEC));
 	k_event_clear(&ppm_event, PPM_EVENT_ALL);
 	do {
-		rv = pdc_execute_ucsi_cmd(cfg->lpm[conn - 1], ucsi_command,
+		rv = pdc_execute_ucsi_cmd(data->lpms[conn - 1], ucsi_command,
 					  data_size, control->command_specific,
 					  lpm_data_out, &data->cc_cb);
 
@@ -416,6 +412,9 @@ static struct ucsi_pd_driver ppm_drv = {
 	.get_active_port_count = ucsi_get_active_port_count,
 };
 
+#define PHANDLE_TO_PORT_NUM(node_id, prop, idx) \
+	USBC_PORT_NEW(DT_PHANDLE_BY_IDX(node_id, prop, idx)),
+
 test_export_static int ppm_init(const struct device *device)
 {
 	const struct ppm_config *cfg =
@@ -423,14 +422,26 @@ test_export_static int ppm_init(const struct device *device)
 	struct ppm_data *data = (struct ppm_data *)device->data;
 	const struct ucsi_pd_driver *drv = device->api;
 
-	/* Ensure the referenced PDC (LPM) drivers are ready */
-	for (int i = 0; i < NUM_PORTS; i++) {
-		if (!device_is_ready(cfg->lpm[i])) {
-			LOG_ERR("Cannot init PPM: Port %d PDC driver not ready.",
-				i);
+	/* Array of USB-C port numbers this PPM interfaces to */
+	const static uint8_t port_nums[] = {
+		DT_FOREACH_PROP_ELEM(DT_PPM_DRV, ports, PHANDLE_TO_PORT_NUM)
+	};
+
+	/* Ensure each port has a PDC driver servicing it, and that the PDC is
+	 * ready. Store a reference to the PDC driver in the PPM data struct.
+	 */
+	for (int i = 0; i < NUM_PORTS; i++)
+	{
+		const struct device *pdc = board_get_pdc_for_port(port_nums[i]);
+
+		if (pdc == NULL || !device_is_ready(pdc)) {
+			LOG_ERR("Cannot init PPM: Port %u has no PDC or PDC is not ready.",
+				port_nums[i]);
 
 			return -ENODEV;
 		}
+
+		data->lpms[i] = pdc;
 	}
 
 	/* Initialize the PPM. */
