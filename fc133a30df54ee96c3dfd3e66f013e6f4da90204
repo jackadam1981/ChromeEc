@@ -16,6 +16,24 @@
       "message": "missed this one, fixed.",
       "revId": "fc133a30df54ee96c3dfd3e66f013e6f4da90204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87413a68_6122fb96",
+        "filename": "board/cr50/boot_param_platform.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-01-31T16:19:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "510acca9_0bd0ec33",
+      "revId": "fc133a30df54ee96c3dfd3e66f013e6f4da90204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
