@@ -110,7 +110,7 @@
 			gpios = <&gpioa 4 (GPIO_INPUT)>;
 		};
 		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
-			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_ec_tris_l: ec_tris_l {
 			gpios = <&gpio3 2 (GPIO_INPUT)>;
