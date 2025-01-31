@@ -16,6 +16,24 @@
       "message": "```\n2025-01-31T02:30:16.864191Z INFO biod[2:2]: [cros_fp_device.cc(450)]   Vendor ID  : FPC \n2025-01-31T02:30:16.864197Z INFO biod[2:2]: [cros_fp_device.cc(452)]   Product ID : 9\n2025-01-31T02:30:16.864202Z INFO biod[2:2]: [cros_fp_device.cc(453)]   Model ID   : 0x21f\n2025-01-31T02:30:16.864206Z INFO biod[2:2]: [cros_fp_device.cc(454)]   Version    : 1\n2025-01-31T02:30:16.864210Z INFO biod[2:2]: [cros_fp_device.cc(455)] FP_MODE_CAPTURE_TYPE_SHIFT: 26\n2025-01-31T02:30:16.864215Z INFO biod[2:2]: [cros_fp_device.cc(456)] FP_MODE_CAPTURE_TYPE_MASK: 2080374784\n```",
       "revId": "dd893522432b248f234252fc5949d90cb7ad587e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f02781_9aab6b33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-01-31T02:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec7ae2a_5c5616f0",
+      "revId": "dd893522432b248f234252fc5949d90cb7ad587e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
