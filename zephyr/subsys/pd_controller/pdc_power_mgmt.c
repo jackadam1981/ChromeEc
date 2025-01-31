@@ -3182,8 +3182,21 @@ static int pdc_subsys_init(const struct device *dev)
 	const struct pdc_config_t *const config = dev->config;
 	int rv;
 
+	/* If the PDC driver handle is NULL, invoke board code to select a
+	 * particular PDC driver and then initialize it.
+	 */
+	if (port->pdc == NULL) {
+		port->pdc = board_get_pdc_for_port(config->connector_num);
+
+		rv = device_init(port->pdc);
+		if (rv) {
+			LOG_ERR("Cannot initialize PDC: %d (port C%d, PDC %p)",
+				rv, config->connector_num, port->pdc);
+		}
+	}
+
 	/* Make sure PD Controller is ready */
-	if (port->pdc == NULL || !device_is_ready(port->pdc)) {
+	if (!device_is_ready(port->pdc)) {
 		LOG_ERR("PDC not ready. Cannot init pdc_power_mgmt for port %d",
 			config->connector_num);
 
@@ -3192,6 +3205,9 @@ static int pdc_subsys_init(const struct device *dev)
 
 		return -ENODEV;
 	}
+
+	LOG_INF("Port C%u using PDC %s", config->connector_num,
+		port->pdc->name ? port->pdc->name : "<no name>");
 
 	init_port_variables(port, false);
 	port->drp = port->una_policy.drp_mode;
