@@ -51,6 +51,24 @@
       "parentUuid": "e394c55b_c699da47",
       "revId": "dd5390c93ceaf1f6852df8848c148d451ad35990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2793b953_53ca0489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-31T10:21:38Z",
+      "side": 1,
+      "message": "Sounds good. Please add a comment that BoringSSL will not be recognized as a Zephyr module, because it doesn\u0027t have `zephyr/module.yml` file, but we add it to the list of known modules, so compare-builds works.",
+      "parentUuid": "0cb5b601_b7999b51",
+      "revId": "dd5390c93ceaf1f6852df8848c148d451ad35990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
