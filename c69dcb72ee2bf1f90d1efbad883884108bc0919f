@@ -22,6 +22,30 @@
       },
       "revId": "c69dcb72ee2bf1f90d1efbad883884108bc0919f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61569003_5c2ede7a",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-01-31T16:39:17Z",
+      "side": 1,
+      "message": "It was intentional. \nThe private-cr50 projects don\u0027t define a BRANCH, and I don\u0027t think they need to. I don\u0027t want to enforce having a branch in the common chip/g files. \nOn Cr50 we must have a branch. If we don\u0027t we could just silently compile in the wrong code. That\u0027s why I enforce it in the board/cr50/board.h file.",
+      "parentUuid": "aac2ce69_b3f48c01",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 5
+      },
+      "revId": "c69dcb72ee2bf1f90d1efbad883884108bc0919f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
