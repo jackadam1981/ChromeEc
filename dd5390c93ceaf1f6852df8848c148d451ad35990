@@ -87,6 +87,24 @@
       "parentUuid": "2793b953_53ca0489",
       "revId": "dd5390c93ceaf1f6852df8848c148d451ad35990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a704ff1d_e05a354f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-31T16:54:36Z",
+      "side": 1,
+      "message": "I tried. It was rejected by the maintainers with recomendation that I should integrate BoringSSL into my build system using tools they provide.\n\nhttps://boringssl-review.googlesource.com/c/boringssl/+/59725",
+      "parentUuid": "3afdc83c_41abdeb6",
+      "revId": "dd5390c93ceaf1f6852df8848c148d451ad35990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
