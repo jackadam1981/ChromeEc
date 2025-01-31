@@ -175,6 +175,30 @@
       },
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6af0a191_b6402ede",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-31T18:09:04Z",
+      "side": 1,
+      "message": "I didn\u0027t realize this was copied code. Can we pull [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/src/ec_quirks.c;l\u003d31-43;drc\u003d59e76bb9ee95eb1b7d0ec901371f5d008154149f) out into a common function (e.g., `prepare_for_sysjump_to_ec_common`) that is shared between all FPMCUs?\n\nThen we can add a clarifying in one place.",
+      "parentUuid": "4b1f7fbb_20341f14",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

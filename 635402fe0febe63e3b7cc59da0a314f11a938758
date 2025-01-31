@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2b4a09_7180f176",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-31T18:09:04Z",
+      "side": 1,
+      "message": "I think this is the same as the [bloonchipper version](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/src/fp_transport.c;l\u003d18-40;drc\u003d8b5cbe4ec9073f6e65156e6aff31e2ecb9d4bdfb)? If so, can we pull it out into a separate file that is shared by all FPMCUs? (We\u0027ll use it for `dartmonkey` too.)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5ba1ca_6c33d757",
+        "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-31T18:09:04Z",
+      "side": 1,
+      "message": "This is very similar to the bloonchipper version, so I think we can pull out some pieces into a shared version, which we can then also use for dartmonkey. For now, can you file a bug and a `TODO(b/123)` comment?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
