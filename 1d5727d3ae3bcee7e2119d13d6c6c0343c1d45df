@@ -34,6 +34,24 @@
       "parentUuid": "504d4f72_5bc8885a",
       "revId": "1d5727d3ae3bcee7e2119d13d6c6c0343c1d45df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824e1949_eb19c925",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 3503,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-01-31T17:37:06Z",
+      "side": 1,
+      "message": "I think what @dawidn@google.com means is that you should be able to get it from the `helipilot.dts` file using the [Devicetree API](https://docs.zephyrproject.org/latest/build/dts/api-usage.html#property-access).\n\nFor example, on bloonchipper the size is [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/bloonchipper.dts;l\u003d76;drc\u003d0c483a5f44efaa40b417b86b42a71ddf933ff755). Looks like you also have the `0x50000` size in the `helipilot.dts` size you added in the next commit.",
+      "parentUuid": "898c8981_0a37e929",
+      "revId": "1d5727d3ae3bcee7e2119d13d6c6c0343c1d45df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
