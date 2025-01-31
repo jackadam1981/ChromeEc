@@ -69,6 +69,24 @@
       "parentUuid": "0cb5b601_b7999b51",
       "revId": "dd5390c93ceaf1f6852df8848c148d451ad35990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afdc83c_41abdeb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-01-31T16:19:02Z",
+      "side": 1,
+      "message": "Because the chromium boringssl is a fork for Google use only, does it make sense to add the files needed to make it a proper Zehpyr module?",
+      "parentUuid": "2793b953_53ca0489",
+      "revId": "dd5390c93ceaf1f6852df8848c148d451ad35990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
