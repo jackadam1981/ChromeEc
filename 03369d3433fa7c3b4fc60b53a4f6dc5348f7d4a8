@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d99428e_831a582d",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-01-31T23:27:02Z",
+      "side": 1,
+      "message": "Can we glob instead of using the gcc version?",
+      "revId": "03369d3433fa7c3b4fc60b53a4f6dc5348f7d4a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
