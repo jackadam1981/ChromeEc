@@ -10,7 +10,7 @@ compatible: "ucsi-ppm"
 include: base.yaml
 
 properties:
-  lpm:
+  ports:
     type: phandles
     description: |
-      List of LPMs connected to the PPM driver.
+      List of named-usbc-port refs connected to the PPM driver.

@@ -4,6 +4,7 @@
 
 config UCSI_PPM
 	bool "UCSI Platform Policy Manager"
+	depends on USB_PDC_POWER_MGMT
 	default n
 	help
 	  Enable this to support UCSI platform policy manager (PPM).

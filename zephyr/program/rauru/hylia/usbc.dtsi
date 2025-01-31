@@ -46,7 +46,7 @@
 		};
 		ppm-driver {
 			compatible = "ucsi-ppm";
-			lpm = <&pdc_power_p0 &pdc_power_p1>;
+			ports = <&usbc_port0 &usbc_port1>;
 		};
 	};
 };
