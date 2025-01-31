@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a6eae7_0dd52248",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 8237,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-01-31T10:14:01Z",
+      "side": 1,
+      "message": "`FP_CAPTURE_TYPE_MAX` should be the next number after the last entry, not the highest possible number.",
+      "range": {
+        "startLine": 8237,
+        "startChar": 21,
+        "endLine": 8237,
+        "endChar": 25
+      },
+      "revId": "2f4a772b4bfa3410fe199e1fe69e15c84ac3fd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
