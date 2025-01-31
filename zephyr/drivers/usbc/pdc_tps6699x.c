@@ -2650,7 +2650,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 }
 
 #define PDC_DEFINE(inst)                                                       \
-	K_THREAD_STACK_DEFINE(thread_stack_area_##inst,                        \
+	K_THREAD_STACK_DEFINE(static thread_stack_area_##inst,                        \
 			      CONFIG_USBC_PDC_TPS6699X_STACK_SIZE);            \
                                                                                \
 	static void create_thread_##inst(const struct device *dev)             \
