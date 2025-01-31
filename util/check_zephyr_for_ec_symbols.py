@@ -14,6 +14,9 @@ import preupload.lib
 
 
 EC_FUNCTIONS: Dict[str, str] = {
+    "crec_msleep": "k_msleep",
+    "crec_sleep": "k_sleep(K_SECONDS(sec))",
+    "crec_usleep": "k_usleep",
     "force_time": "",
     "time_after": "",
     "time_until": "",
