@@ -178,6 +178,7 @@
 		};
 		gpio_virtual_battery_r: virtual_battery_r {
 			gpios = <&gpiod 7 (GPIO_INPUT)>;
+			enum-name = "GPIO_BATT_PRES_ODL";
 		};
 		gpio_volume_up_r: volume_up_r {
 			gpios = <&gpioa 4 (GPIO_INPUT)>;
@@ -185,7 +186,7 @@
 		gpio_vol_dn_ec_r: vol_dn_ec_r {
 			gpios = <&gpioa 0 (GPIO_INPUT)>;
 		};
-		gpio_wc_usbc_pd_alrt_aic1_r: wc_usbc_pd_alrt_aic1_r {
+		gpio_pdc_pow_irq: wc_usbc_pd_alrt_aic1_r {
 			gpios = <&gpiof 5 (GPIO_INPUT)>;
 		};
 		gpio_wc_usbc_pd_alrt_aic2_r: wc_usbc_pd_alrt_aic2_r {
