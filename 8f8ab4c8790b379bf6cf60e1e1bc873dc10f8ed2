@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae282eb_943a7eb0",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3501,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T17:28:25Z",
+      "side": 1,
+      "message": "`#ifdef CONFIG_BOARD_HELIPILOT` is not acceptable here. In this file, we translate defines produced by Kconfig to defines accepted by EC code. That\u0027s the purpose of the shim layer.",
+      "range": {
+        "startLine": 3501,
+        "startChar": 7,
+        "endLine": 3501,
+        "endChar": 29
+      },
+      "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f7ab5b_b1f3e89b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3511,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T17:28:25Z",
+      "side": 1,
+      "message": "This is not a correct way of adding new defines.\n\nInstead you should do the following:\n- Add `PLATFORM_EC_RO_PUBKEY_READ_ADDR` (for `CONFIG_RO_PUBKEY_READ_ADDR`) to the [`zephyr/Kconfig.rsa`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.rsa;drc\u003d2b9b5b5af0e75e2f8ac19ae1e70b854f882d0887)\n- Add `PLATFORM_EC_RWSIG_READ_ADDR` (for `CONFIG_RWSIG_READ_ADDR`) to the [`zephyr/Kconfig.rsa`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.rsa;drc\u003d2b9b5b5af0e75e2f8ac19ae1e70b854f882d0887)\n- Don\u0027t forget about exhausting description of these.\n- Remove `CONFIG_RO_PUBKEY_READ_ADDR` and `CONFIG_RWSIG_READ_ADDR` from [`util/config_allowed.txt`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/config_allowed.txt;l\u003d658;drc\u003d39b02ce014fb629ef11352cf4a6f4a9ab6223bb2) since these defines now have a Zephyr counterpart.\n- Create a proper default for newly added configs basing on DTS and other configs (this is the hardest part)\n- Add the following to `zephyr/shim/include/config_chip.h`\n```\n#undef CONFIG_RO_PUBKEY_READ_ADDR\n#ifdef CONFIG_PLATFORM_EC_RO_PUBKEY_READ_ADDR\n#define CONFIG_RO_PUBKEY_READ_ADDR CONFIG_PLATFORM_EC_RO_PUBKEY_READ_ADDR\n#endif /* CONFIG_RO_PUBKEY_READ_ADDR */\n```\n```\n#undef CONFIG_RWSIG_READ_ADDR\n#ifdef CONFIG_PLATFORM_EC_RWSIG_READ_ADDR\n#define CONFIG_RWSIG_READ_ADDR CONFIG_PLATFORM_EC_RWSIG_READ_ADDR\n#endif /* CONFIG_RWSIG_READ_ADDR */\n```\n\nI know it will be painful, especially calculating address properly in Kconfig, but the result is worth that effort.",
+      "range": {
+        "startLine": 3505,
+        "startChar": 0,
+        "endLine": 3511,
+        "endChar": 42
+      },
+      "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
