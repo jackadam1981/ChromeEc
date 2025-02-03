@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4cf4ef_2c1c72f8",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-03T15:39:15Z",
+      "side": 1,
+      "message": "I tried compiling Trulo tokenized logging with `STD_CPP20`, I get the following error\n```\nFAILED: modules/pigweed/pw_log_tokenized/CMakeFiles/pw_log_tokenized.dir/log_tokenized.cc.obj \nIn file included from /mnt/host/source/src/third_party/pigweed/third_party/fuchsia/repo/sdk/lib/stdcompat/include/lib/stdcompat/internal/../type_traits.h:12,\n                 from /mnt/host/source/src/third_party/pigweed/third_party/fuchsia/repo/sdk/lib/stdcompat/include/lib/stdcompat/internal/bit.h:11,\n                 from /mnt/host/source/src/third_party/pigweed/third_party/fuchsia/repo/sdk/lib/stdcompat/include/lib/stdcompat/bit.h:11,\n                 from /mnt/host/source/src/third_party/pigweed/pw_varint/public/pw_varint/varint.h:176,\n                 from /mnt/host/source/src/third_party/pigweed/pw_tokenizer/public/pw_tokenizer/encode_args.h:23,\n                 from /mnt/host/source/src/third_party/pigweed/pw_log_tokenized/log_tokenized.cc:21:\n/mnt/host/source/src/third_party/pigweed/third_party/fuchsia/repo/sdk/lib/stdcompat/include/lib/stdcompat/internal/../version.h:14:2: error: #error \"cpp\u003dstd20 must provide a \u0027\u003cversion\u003e\u0027 header.\"\n   14 | #error \"cpp\u003dstd20 must provide a \u0027\u003cversion\u003e\u0027 header.\"\n```\nAm I missing any updates to the SDK?",
+      "revId": "50822f37bc5c5ca626c01f1bf1dd825da548abf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
