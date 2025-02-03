@@ -102,6 +102,28 @@ pub mod trunks {
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
+        /// See Tpm::SerializeCommand_NV_Certify for docs.
+        fn SerializeCommand_NV_Certify(
+            sign_handle: &u32,
+            sign_handle_name: &CxxString,
+            auth_handle: &u32,
+            auth_handle_name: &CxxString,
+            nv_index: &u32,
+            nv_index_name: &CxxString,
+            qualifying_data: &TPM2B_DATA,
+            in_scheme: &TPMT_SIG_SCHEME,
+            size: &u16,
+            offset: &u16,
+            serialized_command: Pin<&mut CxxString>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_NV_Certify for docs.
+        fn ParseResponse_NV_Certify(
+            response: &CxxString,
+            certify_info: Pin<&mut CxxString>,
+            signature: Pin<&mut CxxString>,
+        ) -> u32;
+
         /// See Tpm::SerializeCommand_NV_ReadPublic for docs.
         fn SerializeCommand_NV_ReadPublic(
             nv_index: &u32,
@@ -118,6 +140,30 @@ pub mod trunks {
             in_scheme: &TPMT_SIG_SCHEME,
             pcrselect: &TPML_PCR_SELECTION,
             serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_Quote for docs.
+        fn ParseResponse_Quote(
+            response: &CxxString,
+            quoted: Pin<&mut CxxString>,
+            signature: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::SerializeCommand_PCR_Read for docs.
+        fn SerializeCommand_PCR_Read(
+            pcr_selection_id: &TPML_PCR_SELECTION,
+            serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_PCR_Read for docs.
+        fn ParseResponse_PCR_Read(
+            response: &CxxString,
+            pcr_update_counter: &mut u32,
+            pcr_selection_out: Pin<&mut TPML_PCR_SELECTION>,
+            pcr_values: Pin<&mut CxxString>,
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
@@ -151,6 +197,13 @@ pub mod trunks {
 
         /// Returns an empty PCR selection list.
         fn EmptyPcrSelection() -> UniquePtr<TPML_PCR_SELECTION>;
+
+        /// Returns a PCR selection list that selects a single PCR.
+        fn SinglePcrSelection(pcr: u8) -> UniquePtr<TPML_PCR_SELECTION>;
+
+        /// Creates a TPMT_SIGN_SCHEME with hash algorithm SHA-256 and signature
+        /// algorithm ECDSA.
+        fn Sha256EcdsaSigScheme() -> UniquePtr<TPMT_SIG_SCHEME>;
 
         /// Makes an empty TPMT_TK_CREATION;
         fn TPMT_TK_CREATION_New() -> UniquePtr<TPMT_TK_CREATION>;
