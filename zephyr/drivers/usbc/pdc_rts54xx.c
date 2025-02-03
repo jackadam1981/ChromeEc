@@ -2759,7 +2759,7 @@ static int pdc_init(const struct device *dev)
 		LOG_ERR("device %s not ready", cfg->irq_gpios.port->name);
 		return -ENODEV;
 	}
-
+	k_msleep(3000000);
 	k_event_init(&data->driver_event);
 
 	if (!irq_init_done) {

@@ -682,7 +682,7 @@ static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
 	if (rv) {
 		shell_fprintf(sh, SHELL_ERROR, "Could not suspend PDC: %d\n",
 			      rv);
-		return rv;
+	//	return rv;
 	}
 
 	rv = rts_pdc_do_firmware_update();

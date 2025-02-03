@@ -15,4 +15,6 @@
 #define PWR_PCH_PWROK &gpioj 1
 #define PWR_ALL_SYS_PWRGD &gpiod 5
 
+#define PD_POW_IRQ_GPIO &gpiof 5
+
 #endif /* FATCAT_IT82002AW_BOARD_H_ */
