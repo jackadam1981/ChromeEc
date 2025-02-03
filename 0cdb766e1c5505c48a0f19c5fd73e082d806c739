@@ -88,6 +88,24 @@
       "parentUuid": "40f98299_827f1243",
       "revId": "0cdb766e1c5505c48a0f19c5fd73e082d806c739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4d76fa_5311caf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-02-03T21:25:49Z",
+      "side": 1,
+      "message": "I prefer being able to merge everyting (except for some very narrow branch-specific config files) from ToT to prepvt/prod. this way no need to worry about resolving conflicts around the places where prod \u0026 ToT behaviors differ. so, having BRANCH variables sgtm. need to guard against human mistakes who can set BRANCH\u003d outside of branch-specific parts (can also happen if branhes different), so would be great to have a guard header with an ssert if BRANCH doesn\u0027t match the branch (or is unfilled).",
+      "parentUuid": "92d81dc9_c8428a08",
+      "revId": "0cdb766e1c5505c48a0f19c5fd73e082d806c739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
