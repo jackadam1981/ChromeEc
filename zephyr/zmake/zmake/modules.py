@@ -25,21 +25,79 @@ known_modules = {
     # TODO(b/384581513): boringssl is not officially recognized by Zephyr,
     # since it doesn't have a zephyr/module.yaml. That doesn't prevent us from
     # using it with zmake.
-    "boringssl": lambda name, checkout: (
-        checkout / "src" / "third_party" / name
+    "boringssl": (
+        lambda name, checkout: (checkout / "src" / "third_party" / name),
+        "public",
     ),
-    "hal_stm32": third_party_module,
-    "cmsis": third_party_module,
-    "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
-    "fpc": lambda name, checkout: (
-        checkout / "src" / "platform" / "fingerprint" / "fpc"
+    "hal_stm32": (
+        third_party_module,
+        "public",
     ),
-    "nanopb": third_party_module,
-    "pigweed": lambda name, checkout: (checkout / "src" / "third_party" / name),
-    "hal_intel_public": third_party_module,
-    "picolibc": third_party_module,
-    "intel_module_private": third_party_module,
+    "cmsis": (
+        third_party_module,
+        "public",
+    ),
+    "ec": (
+        lambda name, checkout: (checkout / "src" / "platform" / "ec"),
+        "public",
+    ),
+    "fpc": (
+        lambda name, checkout: (
+            checkout / "src" / "platform" / "fingerprint" / "fpc"
+        ),
+        "public",
+    ),
+    "nanopb": (
+        third_party_module,
+        "public",
+    ),
+    "pigweed": (
+        lambda name, checkout: (checkout / "src" / "third_party" / name),
+        "public",
+    ),
+    "hal_intel_public": (
+        third_party_module,
+        "public",
+    ),
+    "picolibc": (
+        third_party_module,
+        "public",
+    ),
+    "intel_module_private": (
+        third_party_module,
+        "private",
+    ),
 }
+
+
+def is_private(module_name):
+    """Indicate if module is private.
+
+    Public modules are required and zmake will raise an exception if a public
+    module cannot be found.  Private modules are not available in the public
+    manifest, so projects that require a private module are skipped instead
+    of throwing an error.
+
+    Args:
+        module_name: Name of the module.
+
+    Returns:
+        True: the specified module_name is private.
+        False: the specified module_name is public.
+
+
+    Raises:
+        A KeyError, if the module_name is not known.
+    """
+    try:
+        module_info = known_modules[module_name]
+    except KeyError as e:
+        raise KeyError(f"The {module_name} module is not a known module") from e
+
+    if module_info[1] == "private":
+        return True
+
+    return False
 
 
 def locate_from_checkout(checkout_dir):
@@ -57,7 +115,8 @@ def locate_from_checkout(checkout_dir):
         A dictionary mapping module names to paths.
     """
     result = {}
-    for name, locator in known_modules.items():
+    for name, locator_type in known_modules.items():
+        locator = locator_type[0]
         path = locator(name, checkout_dir)
         if path.exists():
             result[name] = path
