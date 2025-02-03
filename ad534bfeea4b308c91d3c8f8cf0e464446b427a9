@@ -39,6 +39,87 @@
       "message": "does it still make sense to use the \n`create_initial_ec_image.sh` script?",
       "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a5c8b4_b8d947b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-02-03T19:21:53Z",
+      "side": 1,
+      "message": "Couple of name verifications (baseboard vs. model?).\n\nDeferring to EC folks for technical approval on the board customizations.",
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94338e29_89fbcbff",
+        "filename": "board/moxie/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-02-03T19:21:53Z",
+      "side": 1,
+      "message": "Moxie?",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5b04201c_1a44d511",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/moxie/board.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 7,
+                "endChar": 0
+              },
+              "replacement": "/* Moxie board configuration */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a042965_4a837afd",
+        "filename": "board/moxie/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-02-03T19:21:53Z",
+      "side": 1,
+      "message": "MOXIE?",
+      "range": {
+        "startLine": 6,
+        "startChar": 16,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
