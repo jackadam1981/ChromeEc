@@ -4,6 +4,12 @@
 
 #include "ffi.h"
 
+#include <android-base/logging.h>
+#include <openssl/bn.h>
+#include <openssl/ecdsa.h>
+#include <openssl/mem.h>
+
+#include "multiple_authorization_delegate.h"
 #include "password_authorization_delegate.h"
 
 namespace trunks {
@@ -36,6 +42,41 @@ TPMT_PUBLIC DefaultPublicArea() {
   public_area.unique.ecc.x = Make_TPM2B_ECC_PARAMETER("");
   public_area.unique.ecc.y = Make_TPM2B_ECC_PARAMETER("");
   return public_area;
+}
+
+// Converts a TPMT_SIGNATURE into a DER-encoded ECDSA signature.
+TPM_RC TpmSignatureToString(TPMT_SIGNATURE signature, std::string* encoded) {
+  std::string r =
+      StringFrom_TPM2B_ECC_PARAMETER(signature.signature.ecdsa.signature_r);
+  std::string s =
+      StringFrom_TPM2B_ECC_PARAMETER(signature.signature.ecdsa.signature_s);
+  BIGNUM* r_bn =
+      BN_bin2bn(reinterpret_cast<const uint8_t*>(r.data()), r.length(), NULL);
+  BIGNUM* s_bn =
+      BN_bin2bn(reinterpret_cast<const uint8_t*>(s.data()), s.length(), NULL);
+  ECDSA_SIG* sig = ECDSA_SIG_new();
+  if (r_bn == NULL || s_bn == NULL || sig == NULL) {
+    LOG(ERROR) << "BoringSSL allocation failure";
+    return TPM_RC_FAILURE;
+  }
+  // Note: if successful, this transfers ownership of r_bn and s_bin to sig.
+  if (ECDSA_SIG_set0(sig, r_bn, s_bn) != 1) {
+    LOG(ERROR) << "ECDSA_SIG_set0 failed";
+    ECDSA_SIG_free(sig);
+    BN_free(r_bn);
+    BN_free(s_bn);
+    return TPM_RC_FAILURE;
+  }
+  unsigned char* openssl_buffer = nullptr;
+  int size = i2d_ECDSA_SIG(sig, &openssl_buffer);
+  ECDSA_SIG_free(sig);
+  if (size < 0 || openssl_buffer == nullptr) {
+    LOG(ERROR) << "i2d_ECDSA_SIG failed";
+    return TPM_RC_FAILURE;
+  }
+  encoded->assign(reinterpret_cast<const char*>(openssl_buffer), size);
+  OPENSSL_free(openssl_buffer);
+  return TPM_RC_SUCCESS;
 }
 
 }  // namespace
@@ -131,6 +172,40 @@ TPM_RC ParseResponse_Load(
   return TPM_RC_SUCCESS;
 }
 
+TPM_RC SerializeCommand_NV_Certify(
+    const TPMI_DH_OBJECT& sign_handle, const std::string& sign_handle_name,
+    const TPMI_RH_NV_AUTH& auth_handle, const std::string& auth_handle_name,
+    const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
+    const TPM2B_DATA& qualifying_data, const TPMT_SIG_SCHEME& in_scheme,
+    const UINT16& size, const UINT16& offset, std::string& serialized_command) {
+  PasswordAuthorizationDelegate password("");
+  MultipleAuthorizations authorizations;
+  authorizations.AddAuthorizationDelegate(&password);
+  authorizations.AddAuthorizationDelegate(&password);
+  return Tpm::SerializeCommand_NV_Certify(
+      sign_handle, sign_handle_name, auth_handle, auth_handle_name, nv_index,
+      nv_index_name, qualifying_data, in_scheme, size, offset,
+      &serialized_command, &authorizations);
+}
+
+TPM_RC ParseResponse_NV_Certify(const std::string& response,
+                                std::string& certify_info,
+                                std::string& signature) {
+  TPM2B_ATTEST certify_info_typed;
+  TPMT_SIGNATURE signature_typed;
+  PasswordAuthorizationDelegate password("");
+  MultipleAuthorizations authorizations;
+  authorizations.AddAuthorizationDelegate(&password);
+  authorizations.AddAuthorizationDelegate(&password);
+  TPM_RC rc = Tpm::ParseResponse_NV_Certify(response, &certify_info_typed,
+                                            &signature_typed, &authorizations);
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  certify_info = StringFrom_TPM2B_ATTEST(certify_info_typed);
+  return TpmSignatureToString(signature_typed, &signature);
+}
+
 TPM_RC SerializeCommand_NV_ReadPublic(
     const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
     std::string& serialized_command,
@@ -148,6 +223,47 @@ TPM_RC SerializeCommand_Quote(
   return Tpm::SerializeCommand_Quote(
       sign_handle, sign_handle_name, qualifying_data, in_scheme, pcrselect,
       &serialized_command, authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_Quote(
+    const std::string& response, std::string& quoted, std::string& signature,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_ATTEST quoted_typed;
+  TPMT_SIGNATURE signature_typed;
+  TPM_RC rc = Tpm::ParseResponse_Quote(
+      response, &quoted_typed, &signature_typed, authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  quoted = StringFrom_TPM2B_ATTEST(quoted_typed);
+  return TpmSignatureToString(signature_typed, &signature);
+}
+
+TPM_RC SerializeCommand_PCR_Read(
+    const TPML_PCR_SELECTION& pcr_selection_in, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  return Tpm::SerializeCommand_PCR_Read(pcr_selection_in, &serialized_command,
+                                        authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_PCR_Read(
+    const std::string& response, UINT32& pcr_update_counter,
+    TPML_PCR_SELECTION& pcr_selection_out, std::string& pcr_values,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPML_DIGEST pcr_values_typed;
+  TPM_RC rc = Tpm::ParseResponse_PCR_Read(response, &pcr_update_counter,
+                                          &pcr_selection_out, &pcr_values_typed,
+                                          authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  if (pcr_values_typed.count != 1) {
+    LOG(ERROR) << "Unexpected PCR count " << pcr_values_typed.count
+               << " in TPM2_PCR_Read reply.";
+    return TPM_RC_FAILURE;
+  }
+  pcr_values = StringFrom_TPM2B_DIGEST(pcr_values_typed.digests[0]);
+  return TPM_RC_SUCCESS;
 }
 
 std::unique_ptr<std::string> NameFromHandle(const TPM_HANDLE& handle) {
@@ -201,6 +317,27 @@ std::unique_ptr<TPML_PCR_SELECTION> EmptyPcrSelection() {
   TPML_PCR_SELECTION creation_pcrs = {};
   creation_pcrs.count = 0;
   return std::make_unique<TPML_PCR_SELECTION>(creation_pcrs);
+}
+
+std::unique_ptr<TPML_PCR_SELECTION> SinglePcrSelection(uint8_t pcr) {
+  TPML_PCR_SELECTION pcr_select;
+  pcr_select.count = 1;
+  pcr_select.pcr_selections[0].hash = TPM_ALG_SHA256;
+  pcr_select.pcr_selections[0].sizeof_select = PCR_SELECT_MIN;
+  memset(pcr_select.pcr_selections[0].pcr_select, 0, PCR_SELECT_MIN);
+  if (pcr / 8 >= PCR_SELECT_MIN) {
+    LOG(ERROR) << "Invalid PCR number " << pcr;
+    return nullptr;
+  }
+  pcr_select.pcr_selections[0].pcr_select[pcr / 8] = 1u << (pcr % 8);
+  return std::make_unique<TPML_PCR_SELECTION>(pcr_select);
+}
+
+std::unique_ptr<TPMT_SIG_SCHEME> Sha256EcdsaSigScheme() {
+  TPMT_SIG_SCHEME scheme;
+  scheme.details.any.hash_alg = TPM_ALG_SHA256;
+  scheme.scheme = TPM_ALG_ECDSA;
+  return std::make_unique<TPMT_SIG_SCHEME>(scheme);
 }
 
 std::unique_ptr<TPMT_TK_CREATION> TPMT_TK_CREATION_New() {
