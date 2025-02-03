@@ -16,6 +16,24 @@
       "message": "I agree that GPIO_ACTIVE_LOW causes an issue given the inversion of the wake_event, but instead of modifying the properties in generated.dtsi, we should have an override in gpio.dtsi.",
       "revId": "a53ca60b91766e4f824f7a952131ceab48bdf822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deeba74e_6814b081",
+        "filename": "zephyr/program/trulo/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2025-02-03T12:52:13Z",
+      "side": 1,
+      "message": "Acknowledged. Updated the patch.",
+      "parentUuid": "82652ed2_05815e7d",
+      "revId": "a53ca60b91766e4f824f7a952131ceab48bdf822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
