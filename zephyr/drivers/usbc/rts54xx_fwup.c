@@ -356,7 +356,7 @@ static int rts545x_update_flash()
 	ret = rts545x_get_ic_status(&ic_status);
 	if (ret) {
 		LOG_INF("%s: IC status failed (%d)\n", __func__, ret);
-		return ret;
+//		return ret;
 	}
 	LOG_INF("%s: Got IC status\n", __func__);
 
