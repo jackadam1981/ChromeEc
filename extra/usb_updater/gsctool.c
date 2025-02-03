@@ -4402,7 +4402,7 @@ static int get_crashlog(struct transfer_descriptor *td)
 	return 0;
 }
 
-static int get_console_logs(struct transfer_descriptor *td)
+static int get_console_logs(struct transfer_descriptor *td, bool *empty)
 {
 	uint32_t rv;
 	uint8_t response[2048] = { 0 };
@@ -4415,8 +4415,12 @@ static int get_console_logs(struct transfer_descriptor *td)
 		return 1;
 	}
 
+	if (empty)
+		*empty = response_size == 0;
+
 	printf("%s", response);
-	printf("\n");
+	if (empty && *empty)
+		printf("\n");
 	return 0;
 }
 
@@ -5394,8 +5398,15 @@ int main(int argc, char *argv[])
 	if (get_clog)
 		exit(get_crashlog(&td));
 
-	if (get_console)
-		exit(get_console_logs(&td));
+	if (get_console) {
+		int rv = 0;
+		bool empty = false;
+
+		while (!empty && !rv)
+			rv = get_console_logs(&td, &empty);
+
+		exit(rv);
+	}
 
 	if (factory_config) {
 		if (set_factory_config)
