@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706079a2_3887fe20",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T16:52:25Z",
+      "side": 1,
+      "message": "I see that this is a pattern used in other zephyr projects (e.g corsola). They are using `chip` to determine which configuration file should be included in the build.\n\nThis is not our case.\n\nHow about passing `register_func` to `register_fpmcu_variant`? That way we would be able to remove this `if`.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "eff81d4717335020b92eed5ab6ede98c1947bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
