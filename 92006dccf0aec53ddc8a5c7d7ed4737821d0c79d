@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d6a3c10_d67f8eb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2025-02-03T23:25:07Z",
+      "side": 1,
+      "message": "Do you know why there are no header file changes required to get access to `USEC_PER_MSEC`?\n\nAlso, is there a way to find out if any source files no longer need access to the header containing `MSEC` (`src/platform/ec/include/timer.h`, generally)?",
+      "revId": "92006dccf0aec53ddc8a5c7d7ed4737821d0c79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a5a399f_924b9e54",
         "filename": "zephyr/shim/src/espi.c",
         "patchSetId": 5
