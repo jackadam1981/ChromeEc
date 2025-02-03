@@ -3,6 +3,190 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddd3b71b_a39273fc",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "I don\u0027t believe Winbond W25Q80 have the same sector sizes as STM32F4. Please fix these comments. For `bloonchipper` it is important because this explains flash layout. If all sectors of W25Q80 have the same size, just provide that value here and use kilobytes in comments below.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149fee79_1ca588d5",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "Please move this part to `helipilot/soc.dtsi`, so we won\u0027t need to copy this for `buccaneer` and `gwendolin`. Helipilot based boards will reuse `soc.dtsi` file",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe24cce_307b5202",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "Please move this to `helipilot/soc.dtsi`.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bec34d_6ee70b7f",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "Is this really a sixth sector?",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 10
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad298c0e_0b0bba7d",
+        "filename": "zephyr/program/fpmcu/helipilot/rwsig.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "In CrosEC, RW_FWID FMAP section is pointing to the data of the EC_RW section. For some time, binman was not able to create such FMAP, because overlapping was not supported. But after support was added, Wai-Hong Tam preapred [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4961894) that introduces one `rw-fwid` node (+ necessary linker magic) that works in EC style. All you need to do is including `cros/integrated_fwid.dtsi` in `helipilot.dts`, see my [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5273515). It should just work.\n\nYou can check if the address is correct using `dump_fmap -h build/zephyr/helipilot/output/ec.bin`",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7dc0eb0_e64e234a",
+        "filename": "zephyr/program/fpmcu/helipilot/rwsig.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "This doesn\u0027t point to the end of RW firmware. Please fix it.\n\nI\u0027m really curious why RW firmware works. Current offset is just 63kB from RW beginning. Could you explain that?",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9174db_2e6533a7",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "Have you tested that on some real board? I believe the speed should be a bit higher.",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd7904a_21bdcb6f",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "This is not used, please remove it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d2b4a09_7180f176",
         "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
         "patchSetId": 42
@@ -14,6 +198,30 @@
       "writtenOn": "2025-01-31T18:09:04Z",
       "side": 1,
       "message": "I think this is the same as the [bloonchipper version](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/src/fp_transport.c;l\u003d18-40;drc\u003d8b5cbe4ec9073f6e65156e6aff31e2ecb9d4bdfb)? If so, can we pull it out into a separate file that is shared by all FPMCUs? (We\u0027ll use it for `dartmonkey` too.)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932a1e92_6743f64b",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-03T19:19:55Z",
+      "side": 1,
+      "message": "Looks like it could be shared only with `bloonchipper`, because `dartmonkey` supports `SPI` only, and in future we will use USB only.\n\nI\u0027m not opposite of making it common, but I\u0027m in favor of having less complicated code, even if it is repeated.",
+      "parentUuid": "2d2b4a09_7180f176",
       "range": {
         "startLine": 18,
         "startChar": 0,
