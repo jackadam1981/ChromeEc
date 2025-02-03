@@ -83,6 +83,10 @@
 		gpio_ec_soc_hdmi_hpd: ec_soc_hdmi_hpd {
 			gpios = <&gpioe 4 GPIO_OUTPUT>;
 		};
+<<<<<<< PATCH SET (9f4c02 program/trulo: Fix gpio configuration for ec_soc_wake_odl)
+		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
+			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
+=======
 		me_en {
 			/* workaround for b/333336079, reserved */
 			gpios = <&gpioc 0 GPIO_INPUT>;
@@ -95,6 +99,7 @@
 		};
 		ec-i2c-sensor-sda {
 			gpios = <&gpio8 7 GPIO_INPUT>;
+>>>>>>> BASE      (43e081 zephyr: bloonchipper: set HC UART timeout to 30ms)
 		};
 	};
 
