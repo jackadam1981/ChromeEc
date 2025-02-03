@@ -175,7 +175,11 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "moli",
     "moonbuggy",
     "morphius",
+<<<<<<< HEAD   (7b48dd kinox: bump stack sizes)
     "mrbland",
+=======
+    "moxie",
+>>>>>>> CHANGE (056185 moxie: Initial EC image)
     "nami",
     "nautilus",
     "nightfury",
