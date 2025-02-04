@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af710297_f1e9aaaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-02-04T15:00:04Z",
+      "side": 1,
+      "message": "There might be a better domain expert reviewer, but with my limited knowledge LGTM",
+      "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359f65f9_b30070e5",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-02-04T15:00:04Z",
+      "side": 1,
+      "message": "is the error number worth reporting?",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "69ee4ca1_b85cb935",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "    LOG(ERROR) \u003c\u003c \"ECDSA_SIG_set0 failed with error code \"\n               \u003c\u003c ERR_get_error();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
