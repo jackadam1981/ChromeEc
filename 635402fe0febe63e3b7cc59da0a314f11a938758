@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a63e64_757bfa42",
+        "filename": "zephyr/program/fpmcu/helipilot/rwsig.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T19:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad298c0e_0b0bba7d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7dc0eb0_e64e234a",
@@ -522,6 +546,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "856f78fa_1df994df",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T19:47:09Z",
+      "side": 1,
+      "message": "Can we track this suggestion in b/394346384 and resolve this comment?",
+      "parentUuid": "94de5add_7a3fbab3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5ba1ca_6c33d757",
         "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
         "patchSetId": 42
@@ -581,6 +629,30 @@
       "side": 1,
       "message": "Go ahead and a `TODO(b/123)` and we can see if there is a way to have common code that\u0027s simple in the future.",
       "parentUuid": "85b17d1c_a26091e9",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506cd622_bf10d7d4",
+        "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T19:47:09Z",
+      "side": 1,
+      "message": "added b/394346384 and appropriate TODO",
+      "parentUuid": "b493f560_cb0e54fb",
       "range": {
         "startLine": 17,
         "startChar": 0,
