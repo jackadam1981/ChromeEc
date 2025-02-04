@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "867271e7_cdd69a71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-04T20:45:14Z",
+      "side": 1,
+      "message": "Can we try to land this as is or with changes? without this mchp cpfe builds are broken",
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec1a2363_77fe4242",
@@ -110,6 +127,30 @@
       "side": 1,
       "message": "Do we need to check if pca95xx was initialized? This code will only ever hit that line once cause after the initial call the cached values will be used see line 35. I have no problem adding the check it just seems a little redundant to me.\n\nI can see about adding a check for power state but seeing as this code is only called by host command the AP would have to be up to call into this code unless a future change causes this to be called for some EC configs.",
       "parentUuid": "f1746300_98a19ed1",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b707102_8bbde8ea",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-04T20:45:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bf84b341_e180cb78",
       "range": {
         "startLine": 38,
         "startChar": 0,
