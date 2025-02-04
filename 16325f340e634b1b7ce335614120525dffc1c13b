@@ -46,6 +46,30 @@
       },
       "revId": "16325f340e634b1b7ce335614120525dffc1c13b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90699159_a39efc01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-02-04T17:25:59Z",
+      "side": 1,
+      "message": "upstart scripts collect the gsc logs. Will they timeout on their own? IMO we shouldn\u0027t trust other things to build in a timeout. If ti50 is still printing stuff after 3 seconds, then I think you can just rerun the command or maybe you can pass in an arg that sets the timeout? Default it to something reasonable. Let someone set 60s if they want.",
+      "parentUuid": "e7b9862e_1a5c2180",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "16325f340e634b1b7ce335614120525dffc1c13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
