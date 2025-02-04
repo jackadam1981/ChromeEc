@@ -81,6 +81,139 @@
       },
       "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5d3dfa_4f72369a",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-02-04T23:14:44Z",
+      "side": 1,
+      "message": "don\u0027t we need the following here (and before return SUCCESS at the end) as well?\n```\nECDSA_SIG_free(sig);\nBN_free(r_bn);\nBN_free(s_bn);\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 10
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "18c65328_8a8206eb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 73,
+                "endChar": 0
+              },
+              "replacement": "    ECDSA_SIG_free(sig);\n    BN_free(r_bn);\n    BN_free(s_bn);\n"
+            },
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 77,
+                "startChar": 0,
+                "endLine": 77,
+                "endChar": 0
+              },
+              "replacement": "  ECDSA_SIG_free(sig);\n  BN_free(r_bn);\n  BN_free(s_bn);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63dec25_ec4f41d3",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-02-04T23:14:44Z",
+      "side": 1,
+      "message": "question, not necessarily a call to fix: if we ever want to use it with a single PCR (and that\u0027s an \"if\"), do we want to pass `TPML_PCR_SELECTION` here, or `uint8_t` and call SinglePcrSelection() internally?\n\nsame for returning  `TPML_PCR_SELECTION\u0026 pcr_selection_out` from `ParseResponse_PCR_Read` below - do we ever want to check it? if not can allocate it localy on on stack and avoid returning to Rust.",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d9cf4d65_5f3e73b4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 267,
+                "startChar": 0,
+                "endLine": 268,
+                "endChar": 0
+              },
+              "replacement": "std::unique_ptr\u003cstd::string\u003e NameFromHandle_New(const TPM_HANDLE\u0026 handle) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8ef443_45eb5be9",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-02-04T23:14:44Z",
+      "side": 1,
+      "message": "nit: to avoid OOB access here, can we add a check that pcr \u003c PCR_SELECT_MIN*8, and probably return nullptr to indicate an error?",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 69
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "91e1e6b1_4c768b02",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 326,
+                "startChar": 0,
+                "endLine": 326,
+                "endChar": 0
+              },
+              "replacement": "  if (pcr \u003e\u003d PCR_SELECT_MIN * 8) {\n    LOG(ERROR) \u003c\u003c \"Invalid PCR number \" \u003c\u003c pcr;\n    return nullptr;\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
