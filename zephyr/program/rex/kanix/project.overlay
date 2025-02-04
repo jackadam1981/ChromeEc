@@ -136,6 +136,8 @@
 &i2c1_0 {
 	/delete-node/ nct38xx@70;
 
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+
 	tcpc_rt1716_port0: rt1716@4e {
 		compatible = "richtek,rt1715-tcpc";
 		reg = <0x4e>;
@@ -156,9 +158,11 @@
 
 &i2c2_0 {
 	/delete-node/ pi3usb9201@5f;
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 };
 
 &i2c3_0 {
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 	usb_c1_hb_retimer: jhl9040r-c1@55 {
 		compatible = "intel,jhl9040r";
 		reg = <0x55>;
@@ -172,9 +176,14 @@
 	reset-pin = <&gpio_usb_c0_rt_rst_odl>;
 };
 
+&i2c4_1 {
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+};
+
 &i2c6_1 {
 	/delete-node/ pi3usb9201@5f;
 	/delete-node/ usb-c1-hb-retimer@56;
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 };
 
 &usbc_port0 {
