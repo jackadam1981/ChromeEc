@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2e74f5_9eee7738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:19:24Z",
+      "side": 1,
+      "message": "```suggestion\n32 enum members can be safely used as image capture modes. Shift the\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "496b03f93af0444e0738c46733a622aad81e96fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e99f65_120c8fde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:19:24Z",
+      "side": 1,
+      "message": "```suggestion\ncompatibility between tools (biod, ectool) built with new values running against firmware built with the old values.\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "496b03f93af0444e0738c46733a622aad81e96fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "71623d33_1c23b11d",
