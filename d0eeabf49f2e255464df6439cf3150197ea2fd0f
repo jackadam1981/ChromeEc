@@ -223,6 +223,30 @@
       },
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1101e2_22cdc5e2",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:31:59Z",
+      "side": 1,
+      "message": "Please also note that a common implementation with bloonchipper would require adding #ifdef BLOONCHIPPER compile time options to the function as well",
+      "parentUuid": "caf96034_debf4863",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
