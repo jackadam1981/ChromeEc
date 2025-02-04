@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ce6822907df3132c9d0ae48670a13ae3f2106044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703822ec_9e92e184",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-04T20:32:56Z",
+      "side": 1,
+      "message": "suggest adding a TODO",
+      "revId": "ce6822907df3132c9d0ae48670a13ae3f2106044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
