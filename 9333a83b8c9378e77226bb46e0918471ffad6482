@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75632eed_60ae6148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:11:49Z",
+      "side": 1,
+      "message": "```suggestion\ndriver/fingerprint: add egis_capture_mode_t for get various image\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "9333a83b8c9378e77226bb46e0918471ffad6482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1938e774_39c36b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:11:49Z",
+      "side": 1,
+      "message": "@fsammoura@google.com Can you review this? I can\u0027t remember what your plans were for having the vendors specify the mode.",
+      "revId": "9333a83b8c9378e77226bb46e0918471ffad6482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f744f2_d8ccf9d0",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:11:49Z",
+      "side": 1,
+      "message": "capture",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5a342d1a_64872a84",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": " * enum egis_capture_mode_t - Specifies the \"mode\" when capturing images.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "} egis_capture_mode_t;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9333a83b8c9378e77226bb46e0918471ffad6482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
