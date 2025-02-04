@@ -247,6 +247,30 @@
       },
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05dbeedf_6e9e0e2b",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "\u003e but wonder if it wouldn\u0027t be more appropriate in a separate CL\n\nYes. Changes that affects bloonchipper should be done in separate CL.",
+      "parentUuid": "5b1101e2_22cdc5e2",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

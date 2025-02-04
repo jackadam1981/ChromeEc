@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f974625_a41761b0",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 43
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "RW_FWID address must be set to `0x40144`, because that address is hardcoded in RO. This is related to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5018794/comment/ad298c0e_0b0bba7d)\n\n```\ndump_fmap -h helipilot_v2.0.24337-2726e9f149-RO_v2.0.26878-c9a5670643-RW.bin \n# name                     start       end         size\nEC_RW                      00040000    00090000    00050000\n  SIG_RW                     0008fc00    00090000    00000400\n  RW_RBVER                   00040168    0004016c    00000004\n  RW_FWID                    00040144    00040164    00000020\nWP_RO                      00000000    00020000    00020000\n  EC_RO                      00000000    0001f040    0001f040\n    FR_MAIN                    00000040    0001f040    0001f000\n      KEY_RO                     0001ec40    0001f040    00000400\n      FMAP                       0000d500    0000d6dc    000001dc\n      RO_FRID                    00000184    000001a4    00000020\n```",
+      "range": {
+        "startLine": 74,
+        "startChar": 58,
+        "endLine": 74,
+        "endChar": 65
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f309f32_0113adec",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 43
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "TL;DR\n\nRemove `named-bbram-regions` node. We should use [the default nuvoton bbram layout](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/nuvoton/npcx_cros.dtsi;l\u003d19-66;drc\u003d8b078f0a9b96f6aa192aef4b690990a0f08d7dc7), because it\u0027s compatible with RO.\n\nLonger version below:\n\nThese must be compatible with RO, so we must check enum which describes layout at commit `2726e9f149`\n\nchip/npcx/system_chip.h @ `2726e9f149`\n```\n/* Indices for battery-backed ram (BBRAM) data position */\nenum bbram_data_index {\n        BBRM_DATA_INDEX_SCRATCHPAD \u003d 0, /* General-purpose scratchpad */\n        BBRM_DATA_INDEX_SAVED_RESET_FLAGS \u003d 4, /* Saved reset flags */\n        BBRM_DATA_INDEX_WAKE \u003d 8, /* Wake reasons for hibernate */\n        BBRM_DATA_INDEX_PD0 \u003d 12, /* USB-PD saved port0 state */\n        BBRM_DATA_INDEX_PD1 \u003d 13, /* USB-PD saved port1 state */\n        BBRM_DATA_INDEX_TRY_SLOT \u003d 14, /* Vboot EC try slot */\n        BBRM_DATA_INDEX_PD2 \u003d 15, /* USB-PD saved port2 state */\n        /* Index 16-31 available for future use */\n        BBRM_DATA_INDEX_RAMLOG \u003d 32, /* RAM log for Booter */\n        BBRM_DATA_INDEX_PANIC_FLAGS \u003d 35, /* Flag to indicate validity of\n                                           * panic data starting at index\n                                           * 36.\n                                           */\n        BBRM_DATA_INDEX_PANIC_BKUP \u003d 36, /* Panic data (index 35-63)*/\n        BBRM_DATA_INDEX_LCT_TIME \u003d 64, /* The start time of LCT(4 bytes)\n                                        */\n};\n```\n\nLooks like it\u0027s the same layout that is used by [all NPCX ECs](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/nuvoton/npcx_cros.dtsi;l\u003d19-66;drc\u003d8b078f0a9b96f6aa192aef4b690990a0f08d7dc7), so we should remove this node.\n\nFor more interested reader, below you can find mapping between panic data and actual registers:\n\nchip/npcx/system.c @ `2726e9f149`\n```\n#ifdef CONFIG_CHIP_PANIC_BACKUP\n/*\n * Following information from panic data is stored in BBRAM:\n *\n * index     |       data\n * \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d|\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n *   36      |       CFSR\n *   40      |       HFSR\n *   44      |       BFAR\n *   48      |      LREG1\n *   52      |      LREG3\n *   56      |      LREG4\n *   60      |     reserved\n *\n * Above registers are chosen to be saved in case of panic because:\n * 1. CFSR, HFSR and BFAR seem to provide more information about the fault.\n * 2. LREG1, LREG3 and LREG4 store exception, reason and info in case of\n * software panic.\n */\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0096fceb_fa480108",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 43
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "It\u0027s not used by `cros-system` driver for NPCX, so you can remove it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4769a8a8_94921c0f",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "Why we need to change these?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90908f17_7ce5c20d",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "In other comment I meant that `spip0` node could be splitted into two parts: One part that defines SPI pins and the other part with definition of the sensor.\n\nSPI pins should be in `soc.dtsi` file, sensor definitions (highlited code by this comment) should be moved to `helipilot.dts` file.\n\nSensor definition alone will look like this:\n```\n\u0026spip0 {\n\tfp_sensor: fpc1025@0 {\n\t\tcompatible \u003d \"fpc,fpc1025\";\n\t\treg \u003d \u003c0\u003e;\n\t\tspi-max-frequency \u003d \u003c4000000\u003e;\n\n\t\twidth \u003d \u003c160\u003e;\n\t\theight \u003d \u003c160\u003e;\n\t\tbits-per-pixel \u003d \u003c8\u003e;\n\t\tv4l2-pixel-format \u003d \"V4L2_PIX_FMT_GREY\";\n\n\t\tirq-gpios \u003d \u003c\u0026gpiob 0 GPIO_ACTIVE_HIGH\u003e;\n\t\treset-gpios \u003d \u003c\u0026gpio9 6 GPIO_ACTIVE_LOW\u003e;\n\t};\n};\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b850956d_06360f02",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "This is a copy of a [node definition from Zephyr](https://github.com/zephyrproject-rtos/zephyr/blob/52b8e3d3706f7503d6e4e36413c2f78a2ac95480/dts/arm/nuvoton/npcx9mfp.dtsi#L49-L60). I think it could be removed.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbae9eb2_f616572a",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "Similar to comment with sensor node above. Please move `partitions` node to `helipilot.dts` file.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 3
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

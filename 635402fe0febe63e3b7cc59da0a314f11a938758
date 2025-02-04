@@ -259,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93569bb_b69b4f78",
+        "filename": "zephyr/program/fpmcu/helipilot/rwsig.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "Ah, the offset is relative (parent node offset is a beginning), so absolute offset is 0x8fc00. It matches what we have in EC firmware:\n```\ndump_fmap -h helipilot_v2.0.24337-2726e9f149-RO_v2.0.26878-c9a5670643-RW.bin \n# name                     start       end         size\nEC_RW                      00040000    00090000    00050000\n  SIG_RW                     0008fc00    00090000    00000400\n  RW_RBVER                   00040168    0004016c    00000004\n  RW_FWID                    00040144    00040164    00000020\nWP_RO                      00000000    00020000    00020000\n  EC_RO                      00000000    0001f040    0001f040\n    FR_MAIN                    00000040    0001f040    0001f000\n      KEY_RO                     0001ec40    0001f040    00000400\n      FMAP                       0000d500    0000d6dc    000001dc\n      RO_FRID                    00000184    000001a4    00000020\n```\n\nI was wrong. Sorry about that.",
+      "parentUuid": "6cabd46e_d0b7a97c",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad9174db_2e6533a7",
@@ -462,6 +486,30 @@
       "side": 1,
       "message": "Tom, it won\u0027t be the same. First difference is `shi` vs `spi` functions/configs. This code is handling a case for 2 possible Host Interfaces, which is not a case for `dartmonkey`.",
       "parentUuid": "2d2b4a09_7180f176",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94de5add_7a3fbab3",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T13:55:42Z",
+      "side": 1,
+      "message": "Looking at this once again. I think, it could be possible make whole file common using some DTS + Kconfig macro magic. As a bonus, we will have Kconfig and DTS as a source of truth. But it should be done in a separate CL definitely.",
+      "parentUuid": "eb7a87b3_82ea0393",
       "range": {
         "startLine": 18,
         "startChar": 0,
