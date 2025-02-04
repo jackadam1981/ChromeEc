@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9c9cf1_2b7694d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-04T01:44:03Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "ef77ab08_4ad0c59f",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428e1b06_43b58d6b",
@@ -54,6 +78,24 @@
       "writtenOn": "2025-02-03T19:21:53Z",
       "side": 1,
       "message": "Couple of name verifications (baseboard vs. model?).\n\nDeferring to EC folks for technical approval on the board customizations.",
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bdfea3_c6f3126a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-04T01:44:03Z",
+      "side": 1,
+      "message": "no, copy froem kuldax borad.",
+      "parentUuid": "428e1b06_43b58d6b",
       "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6bd14b2_f2983d6c",
+        "filename": "board/moxie/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-04T01:44:03Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "94338e29_89fbcbff",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a042965_4a837afd",
@@ -112,6 +178,30 @@
       "writtenOn": "2025-02-03T19:21:53Z",
       "side": 1,
       "message": "MOXIE?",
+      "range": {
+        "startLine": 6,
+        "startChar": 16,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "ad534bfeea4b308c91d3c8f8cf0e464446b427a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee500bf_be495f24",
+        "filename": "board/moxie/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-04T01:44:03Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "7a042965_4a837afd",
       "range": {
         "startLine": 6,
         "startChar": 16,
