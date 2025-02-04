@@ -57,6 +57,30 @@
       ],
       "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95525745_694fd380",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-04T20:25:24Z",
+      "side": 1,
+      "message": "The return value of `ECDSA_SIG_set0` doesn\u0027t have any meaning beyond success/failure:\n\n```\n// ECDSA_SIG_set0 sets |sig|\u0027s components to |r| and |s|, neither of which may\n// be NULL. On success, it takes ownership of each argument and returns one.\n// Otherwise, it returns zero.\n```\n\nThe implementation of ECDSA_SIG_set0 does not push any errors to the queue:\n\n```\nint ECDSA_SIG_set0(ECDSA_SIG *sig, BIGNUM *r, BIGNUM *s) {\n  if (r \u003d\u003d NULL || s \u003d\u003d NULL) {\n    return 0;\n  }\n  BN_free(sig-\u003er);\n  BN_free(sig-\u003es);\n  sig-\u003er \u003d r;\n  sig-\u003es \u003d s;\n  return 1;\n}\n```\n\nSo IMO trying to report the error number is not worth it.",
+      "parentUuid": "359f65f9_b30070e5",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "9a9ad545a25a9cf7c181c25750d5c5e98d2dc557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
