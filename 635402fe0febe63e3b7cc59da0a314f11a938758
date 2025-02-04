@@ -570,6 +570,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b2b4e91_b7afc2fd",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:08:49Z",
+      "side": 1,
+      "message": "SGTM. Add a link in the bug to this thread and a `TODO(b/394346384): De-duplicate with bloonchipper.` as a comment in this file and `bloonchipper`\u0027s `fp_transport.c`.",
+      "parentUuid": "856f78fa_1df994df",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5ba1ca_6c33d757",
         "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
         "patchSetId": 42
