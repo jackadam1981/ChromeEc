@@ -450,6 +450,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb7a87b3_82ea0393",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-04T06:09:03Z",
+      "side": 1,
+      "message": "Tom, it won\u0027t be the same. First difference is `shi` vs `spi` functions/configs. This code is handling a case for 2 possible Host Interfaces, which is not a case for `dartmonkey`.",
+      "parentUuid": "2d2b4a09_7180f176",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5ba1ca_6c33d757",
         "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
         "patchSetId": 42
