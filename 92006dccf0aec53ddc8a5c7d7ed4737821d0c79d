@@ -57,6 +57,30 @@
       },
       "revId": "92006dccf0aec53ddc8a5c7d7ed4737821d0c79d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f662a8d_902876f0",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T00:51:10Z",
+      "side": 1,
+      "message": "https://crrev.com/c/6228102",
+      "parentUuid": "9a5a399f_924b9e54",
+      "range": {
+        "startLine": 196,
+        "startChar": 47,
+        "endLine": 196,
+        "endChar": 60
+      },
+      "revId": "92006dccf0aec53ddc8a5c7d7ed4737821d0c79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
