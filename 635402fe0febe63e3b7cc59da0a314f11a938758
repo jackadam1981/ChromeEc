@@ -426,6 +426,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "858941e8_2e043896",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T01:16:47Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not opposite of making it common, but I\u0027m in favor of having less complicated code, even if it is repeated.\n\nYes, I agree it can be hard to read if there are a lot of `#ifdefs`, etc. In this case, it looks like it could be exactly the same so it seems worthwhile to put it in a common place.\n\n\u003e  As questions in another comment, would it make sense to do so in a separate CL to keep the commit size as small as possible?\n\nYes, you can pull it out in a separate commit that comes before this one and use `zmake compare-builds -a` to verify that the generated firmware is exactly the same.",
+      "parentUuid": "2703ce70_7543aae1",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5ba1ca_6c33d757",
         "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
         "patchSetId": 42
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "Happy to file the bug to create a common implementation for at least bloonchipper and helipilot. Please confirm whether or not Patryk\u0027s recent comments impact the direction you\u0027d like to take here on the level of commonality",
       "parentUuid": "9b5ba1ca_6c33d757",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b493f560_cb0e54fb",
+        "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T01:16:47Z",
+      "side": 1,
+      "message": "Go ahead and a `TODO(b/123)` and we can see if there is a way to have common code that\u0027s simple in the future.",
+      "parentUuid": "85b17d1c_a26091e9",
       "range": {
         "startLine": 17,
         "startChar": 0,
