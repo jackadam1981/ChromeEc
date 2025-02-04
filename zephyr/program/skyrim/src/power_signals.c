@@ -143,19 +143,16 @@ DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_POST_I2C);
 #define EDS_PWR_BTN_RSMRST_T1A_DELAY 16
 void board_pwrbtn_to_pch(int level)
 {
-	timestamp_t start;
-
 	/* Add delay for G3 exit if asserting PWRBTN_L and RSMRST_L is low. */
 	if (!level &&
 	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_rsmrst_l))) {
-		start = get_time();
+		int64_t start = k_uptime_get();
 		do {
 			crec_usleep(500);
 			if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
 				    gpio_ec_soc_rsmrst_l)))
 				break;
-		} while (time_since32(start) <
-			 (RSMRST_WAIT_DELAY * USEC_PER_MSEC));
+		} while (k_uptime_get() - start < RSMRST_WAIT_DELAY);
 
 		if (!gpio_pin_get_dt(
 			    GPIO_DT_FROM_NODELABEL(gpio_ec_soc_rsmrst_l)))
