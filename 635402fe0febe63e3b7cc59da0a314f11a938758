@@ -237,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cabd46e_d0b7a97c",
+        "filename": "zephyr/program/fpmcu/helipilot/rwsig.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:35:44Z",
+      "side": 1,
+      "message": "I\u0027m confused, this does point to the end of RW firmware. RW Size \u003d 0x50000 (320 kB) and the offset is 1 kB (0x400) before that, 0x50000 - 0x400 \u003d 0x4fc00. Also, I\u0027ve validated that ECOS RO can boot Zephyr RW, indicating the signature location has to be correct/consistent",
+      "parentUuid": "f7dc0eb0_e64e234a",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad9174db_2e6533a7",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 42
