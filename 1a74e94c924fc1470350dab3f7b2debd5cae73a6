@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f564282_ab6a0214",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-04T23:03:55Z",
+      "side": 1,
+      "message": "Does `zmake compare-builds bloonchipper` succeed? If so, can you add it to the test line?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f496ba19_3c975943",
         "filename": "zephyr/program/fpmcu/bloonchipper/CMakeLists.txt",
         "patchSetId": 3
