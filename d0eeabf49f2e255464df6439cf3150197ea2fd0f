@@ -295,6 +295,30 @@
       },
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0867f721_a9bd1df3",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-04T22:56:14Z",
+      "side": 1,
+      "message": "Actually CL:6227984 deduplicates `get_fp_transport_type()` and has nothing to do with `ec_quirks.c`. If the decision is to deduplicate that, please create `ec_quirks.c` file under `fpmcu/src/` and move that one function call to separate function. You can also install a hook in that file, so the board\u0027s `ec_quirks.c` doesn\u0027t even need to call any function from `fpmcu/src/ec_quirks.c`.\n\nPersonally, I\u0027m not convinced if deduplicating call to one function is a good idea.",
+      "parentUuid": "d95db08d_03b7ab0c",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
