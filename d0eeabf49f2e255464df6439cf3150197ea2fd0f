@@ -199,6 +199,30 @@
       },
       "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf96034_debf4863",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "I\u0027ve done some testing with a common (common.c) function in the fpmcu directory and could add this function there if we decide to go that route (see other comment from Patryk). If we do, I\u0027m OK to make the change here but wonder if it wouldn\u0027t be more appropriate in a separate CL in the name of making small commits?",
+      "parentUuid": "6af0a191_b6402ede",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "d0eeabf49f2e255464df6439cf3150197ea2fd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

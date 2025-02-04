@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "281b4247_da8703a7",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "Good catch, fixed",
+      "parentUuid": "ddd3b71b_a39273fc",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "149fee79_1ca588d5",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-03T19:19:55Z",
       "side": 1,
       "message": "Please move this part to `helipilot/soc.dtsi`, so we won\u0027t need to copy this for `buccaneer` and `gwendolin`. Helipilot based boards will reuse `soc.dtsi` file",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23b35c7_ea40dc29",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "149fee79_1ca588d5",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ad4d46_47376bc1",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fe24cce_307b5202",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95bec34d_6ee70b7f",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-02-03T19:19:55Z",
       "side": 1,
       "message": "Is this really a sixth sector?",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 10
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf90553_25065848",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 42
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "No, fixed, thanks",
+      "parentUuid": "95bec34d_6ee70b7f",
       "range": {
         "startLine": 137,
         "startChar": 5,
@@ -162,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1e6bee_4ce4ef77",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 42
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "AP (tast) testing not yet done, but 3M was used in ECOS Helipilot and I\u0027ve updated to the same value here. Good catch, thanks",
+      "parentUuid": "ad9174db_2e6533a7",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd7904a_21bdcb6f",
@@ -175,6 +295,30 @@
       "writtenOn": "2025-02-03T19:19:55Z",
       "side": 1,
       "message": "This is not used, please remove it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b5cdec_faa98426",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd7904a_21bdcb6f",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -234,6 +378,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2703ce70_7543aae1",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "I tested moving this function to a common.c file in the fpmcu root directory and OK to make this change if we\u0027d like to go that route. As questions in another comment, would it make sense to do so in a separate CL to keep the commit size as small as possible?",
+      "parentUuid": "932a1e92_6743f64b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5ba1ca_6c33d757",
         "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
         "patchSetId": 42
@@ -245,6 +413,30 @@
       "writtenOn": "2025-01-31T18:09:04Z",
       "side": 1,
       "message": "This is very similar to the bloonchipper version, so I think we can pull out some pieces into a shared version, which we can then also use for dartmonkey. For now, can you file a bug and a `TODO(b/123)` comment?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 67
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b17d1c_a26091e9",
+        "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-04T00:30:01Z",
+      "side": 1,
+      "message": "Happy to file the bug to create a common implementation for at least bloonchipper and helipilot. Please confirm whether or not Patryk\u0027s recent comments impact the direction you\u0027d like to take here on the level of commonality",
+      "parentUuid": "9b5ba1ca_6c33d757",
       "range": {
         "startLine": 17,
         "startChar": 0,
