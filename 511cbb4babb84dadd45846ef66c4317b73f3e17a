@@ -70,6 +70,24 @@
       "parentUuid": "aa6f82d0_b2dc9a4b",
       "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d0e1f2_1eb8da69",
+        "filename": "zephyr/program/rauru/navi/src/power_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-02-04T06:35:44Z",
+      "side": 1,
+      "message": "Confirm with power team that we can pass in 15V to meet ErP Lot 6 requirement.\nIs it necessary to change to 12V?",
+      "parentUuid": "386c099e_4f15ca0a",
+      "revId": "511cbb4babb84dadd45846ef66c4317b73f3e17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
