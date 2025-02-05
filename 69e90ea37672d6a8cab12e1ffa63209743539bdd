@@ -183,6 +183,30 @@
       },
       "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d7b085_1af15954",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-05T17:18:05Z",
+      "side": 1,
+      "message": "Done also makes sense to cover any edge cases so we don\u0027t hit issues.",
+      "parentUuid": "566842b1_299ab41e",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
