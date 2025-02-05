@@ -33,6 +33,7 @@ if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY)
 	target_sources(app PRIVATE src/pdc_policy/src_policy.c)
 	target_sources(app PRIVATE src/pdc_policy/non_pd_policy.c)
 	target_sources(app PRIVATE src/pdc_policy/select_best_pdo.c)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_policy.c)
 endif()
 
 if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY_CLAMPED)
