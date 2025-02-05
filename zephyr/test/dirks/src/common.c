@@ -49,20 +49,6 @@ ZTEST(dirks_common, test_pen_power_control)
 		      "Pen power should be off after AP shutdown");
 }
 
-ZTEST(dirks_common, test_hibernate)
-{
-	const struct gpio_dt_spec *const hibernate_enable =
-		GPIO_DT_FROM_NODELABEL(gpio_en_slp_z);
-
-	zassert_false(gpio_emul_output_get(hibernate_enable->port,
-					   hibernate_enable->pin),
-		      "Hibernate pin should be low by default");
-	board_hibernate_late();
-	zassert_true(gpio_emul_output_get(hibernate_enable->port,
-					  hibernate_enable->pin),
-		     "Hibernate pin should go high to hibernate");
-}
-
 ZTEST(dirks_common, test_vconn_swap)
 {
 	const struct gpio_dt_spec *const dsw_pwrok =
