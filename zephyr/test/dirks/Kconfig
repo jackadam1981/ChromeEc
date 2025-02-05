@@ -26,6 +26,7 @@ choice TEST_TARGET
 
 	config TEST_DIRKS_DIRKS
 	  bool "Tests for Dirks-specific code"
+	  select TEST_DISABLE_INLINE_CHIPSET_IN_STATE
 	  help
 		The test target that exercises dirks/dirks/*.c
 endchoice

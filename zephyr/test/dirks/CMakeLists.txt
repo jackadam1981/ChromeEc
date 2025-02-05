@@ -43,6 +43,7 @@ if(CONFIG_TEST_DIRKS_DIRKS)
     target_sources(
             app PRIVATE
             src/dirks.c
+            ${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/src/led.c
             ${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/src/hdmi.c
             ${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/src/usbc.c
     )
