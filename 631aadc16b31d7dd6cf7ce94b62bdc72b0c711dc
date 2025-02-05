@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6118b295_d5655fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-05T18:56:15Z",
+      "side": 1,
+      "message": "```\n/mnt/host/source/src/platform/ec/zephyr/program/intelrvp/ptlrvp/src/board_id.c: In function \u0027board_get_version\u0027:\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/device.h:96:41: error: \u0027__device_dts_ord_DT_N_NODELABEL_pca95xx_0_ORD\u0027 undeclared (first use in this function)\n   96 | #define DEVICE_NAME_GET(dev_id) _CONCAT(__device_, dev_id)\n      |                                         ^~~~~~~~~\n```",
+      "revId": "631aadc16b31d7dd6cf7ce94b62bdc72b0c711dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
