@@ -17,6 +17,9 @@ config TEST_SUITE_PDC_DEVICE_NOT_READY
 config TEST_SUITE_PDC_POLICY
 	bool "Enable PDC policy tests"
 
+config TEST_SUITE_PDC_POLICY_DEAD_BATTERY
+	bool "Enable PDC Dead Battery policy tests"
+
 config TEST_SUITE_PDC_POLICY_CLAMPED
 	bool "Enable PDC policy tests with clamped power"
 
@@ -152,5 +155,11 @@ config TEST_PDC_RUNTIME_CONFIG_SCENARIO_TWO_PDCS
 	  Activate both ports from `board_get_pdc_for_port()`
 
 endchoice
+
+config TEST_SNIFF_POWER_MGMT_PDC_APIS
+	bool "Enable PDC sniffing APIs in pdc_power_mgmt for tests"
+	help
+	  This is used to allow tests to create sniffing PDC APIs in
+	  pdc_power_mgmt.c that can be mocked in tests.
 
 source "Kconfig.zephyr"
