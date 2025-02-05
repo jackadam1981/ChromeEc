@@ -33,6 +33,42 @@
       "message": "can you make this CL not above another CL. Please rebase it on the main branch. Otherwise, it need to merge the preceding CL.",
       "revId": "8bea570ef82b80ac012d0b41209e5d151bec837f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d2bba7_191c7865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-05T18:16:55Z",
+      "side": 1,
+      "message": "rebse this CL on the main branch",
+      "parentUuid": "aaf9304d_32002f2e",
+      "revId": "8bea570ef82b80ac012d0b41209e5d151bec837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95e2f30_d8ba7d90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-05T18:16:55Z",
+      "side": 1,
+      "message": "I had make this CL dependend on CL:https://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/egis/+/8007048",
+      "parentUuid": "324ee888_89eb021b",
+      "revId": "8bea570ef82b80ac012d0b41209e5d151bec837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
