@@ -159,6 +159,30 @@
       },
       "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "566842b1_299ab41e",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-05T16:57:08Z",
+      "side": 1,
+      "message": "Please add the device_is_ready() check.  While we don\u0027t expect this scenario to happen, the device initialization routine expects to be called only once, so it\u0027s better to guard against this.\n\nThe upstream design pattern for deferred init is to always check `!device_is_ready()` prior to calling `device_init()`.",
+      "parentUuid": "5b707102_8bbde8ea",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "69e90ea37672d6a8cab12e1ffa63209743539bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
