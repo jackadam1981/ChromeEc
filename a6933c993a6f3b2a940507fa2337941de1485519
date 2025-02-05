@@ -22,6 +22,30 @@
       },
       "revId": "a6933c993a6f3b2a940507fa2337941de1485519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e54f34c_b6a4f388",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-05T23:05:33Z",
+      "side": 0,
+      "message": "The capture types that are bpp 16 are the test images.\n\nLooking at [fp_download_frame](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/ectool.cc;l\u003d1878;bpv\u003d0#:~:text\u003d1877-,1878,-1879):\n\n```\nif (index \u003d\u003d FP_FRAME_INDEX_SIMPLE_IMAGE) {\n\t\tsize \u003d (size_t)info-\u003ewidth * info-\u003ebpp / 8 * info-\u003eheight;\n\t\tindex \u003d FP_FRAME_INDEX_RAW_IMAGE;\n\t} else if (index \u003d\u003d FP_FRAME_INDEX_RAW_IMAGE) {\n\t\tsize \u003d info-\u003eframe_size;\n```\n\nso `FP_FRAME_INDEX_SIMPLE_IMAGE` should have `info-\u003ebpp` of `8` to get half of the buffer, while `FP_FRAME_INDEX_RAW_IMAGE` should have an `info-\u003eframe_size` of `FP_SENSOR_IMAGE_SIZE_EGIS` (full buffer)",
+      "parentUuid": "009ab817_8100388a",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "a6933c993a6f3b2a940507fa2337941de1485519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
