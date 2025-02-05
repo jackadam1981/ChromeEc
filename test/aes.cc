@@ -489,6 +489,8 @@ static int test_aes_raw(const uint8_t *key, int key_size,
 	AES_decrypt(block, block, &aes_key);
 	TEST_ASSERT_ARRAY_EQ(plaintext, block, AES_BLOCK_SIZE);
 
+	ccprints("This is Firas: %d\n", NPCX_RAM_SIZE);
+
 	return EC_SUCCESS;
 }
 
