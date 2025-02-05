@@ -1,0 +1,54 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+common:
+  platform_allow:
+    - native_sim
+tests:
+  dirks.board_power:
+    extra_dtc_overlay_files:
+      - "boards/generic_npcx.dts"
+      - "boards/generic_power_signals.dts"
+    extra_configs:
+      - CONFIG_TEST_DIRKS_BOARD_POWER=y
+      - CONFIG_AP_X86_INTEL_ADL=y
+      - CONFIG_TEST_DISABLE_AP_PWRSEQ=y
+      - CONFIG_AP_POWER_EVENTS_MOCK=y
+      - CONFIG_POWER_SIGNALS_MOCK=y
+      - CONFIG_AP_EVENTS=n
+  dirks.board_power.ap_pwrseq_drv:
+    extra_configs:
+      - CONFIG_TEST_DIRKS_BOARD_POWER=y
+      - CONFIG_PLATFORM_EC_VBOOT_HASH=n
+      - CONFIG_AP_X86_INTEL_ADL=y
+      - CONFIG_AP_PWRSEQ=y
+      - CONFIG_EMUL_AP_PWRSEQ_DRIVER=y
+      - CONFIG_EMUL_POWER_SIGNALS=y
+      - CONFIG_AP_PWRSEQ_DRIVER=y
+      - CONFIG_PLATFORM_EC_HOSTCMD=y
+      - CONFIG_PLATFORM_EC_BACKLIGHT_LID=n
+    extra_dtc_overlay_files:
+      - "boards/generic_npcx.dts"
+      - "boards/ap_pwrseq_drv_power_signals.dts"
+  dirks.sub_board:
+    extra_dtc_overlay_files:
+      - "boards/generic_npcx.dts"
+    extra_configs:
+      - CONFIG_TEST_DIRKS_SUB_BOARD=y
+      - CONFIG_DIRKS_BOARD_HAS_HDMI_SUPPORT=y
+  dirks.common:
+    extra_dtc_overlay_files:
+      - "boards/generic_npcx.dts"
+      - "boards/chargers.dts"
+    extra_conf_files:
+      - "prj.conf"
+      - "charger.conf"
+    extra_configs:
+      - CONFIG_TEST_DIRKS_COMMON=y
+  dirks.dirks:
+    extra_configs:
+      - CONFIG_TEST_DIRKS_DIRKS=y
+      - CONFIG_PLATFORM_EC_TCPC_INTERRUPT=n
+    extra_dtc_overlay_files:
+      - "boards/dirks.dts"

@@ -1,0 +1,31 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config DIRKS_SUB_BOARD
+	bool "Dirks sub-board support"
+	default y
+	help
+	  Enable the sub-board support for Dirks boards.
+	  This uses a common fw_config bitfield to select
+	  one of a number of option sub-boards with different
+	  hardware configurations.
+
+config DIRKS_BOARD_HAS_HDMI_SUPPORT
+	bool "Board supports HDMI sub-boards"
+	default $(dt_nodelabel_enabled,gpio_hdmi_sel)
+	help
+	  Enable board code for managing the state of HDMI connections
+	  on a sub-board.
+
+config BOARD_DIRKS
+	bool "Google Dirks Board"
+	help
+	  Build Google Dirks reference board. Dirks has Intel TWL SoC
+	  with IT81302 EC.
+
+module = DIRKS
+module-str = Dirks board-specific code
+source "subsys/logging/Kconfig.template.log_config"
+
+source "Kconfig.zephyr"
