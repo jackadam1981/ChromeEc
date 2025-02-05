@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe66c449_671d0785",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-05T00:53:13Z",
+      "side": 1,
+      "message": "It doesn\u0027t, when I tried to run it, it failed with:\n\"Project bloonchipper not supported by compare-builds, skipping.\"\n\nThat\u0027s why I replaced it in the commitmsg (it was listed as the original test)",
+      "parentUuid": "1f564282_ab6a0214",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f496ba19_3c975943",
         "filename": "zephyr/program/fpmcu/bloonchipper/CMakeLists.txt",
         "patchSetId": 3
