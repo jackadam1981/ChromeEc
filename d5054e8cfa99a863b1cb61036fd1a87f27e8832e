@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64878db1_6e9216d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-05T04:59:54Z",
+      "side": 1,
+      "message": "before this CL: `fpinfo`:\n```\n\u003e fpinfo\n Vendor ID: 0x53494745 (EGIS)\n     Product ID: 0x9\n       Model ID: 0x1\n        Version: 0x1\n Sensor (w x h): 80 x 64 16bpp\n     Frame Size: 5120\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x0\n   Sensor Strap: ELAN\n```\n\nwith this CL patched:\n```\n\u003e fpinfo\n      Vendor ID: 0x53494745 (EGIS)\n     Product ID: 0x9\n       Model ID: 0x276\n        Version: 0x1\n Sensor (w x h): 80 x 64 16bpp\n     Frame Size: 5120\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x0\n   Sensor Strap: ELAN\n```\n\nThe correct Model ID is displayed: 0x276 \u003c\u003d\u003d\u003e 630",
+      "revId": "d5054e8cfa99a863b1cb61036fd1a87f27e8832e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
