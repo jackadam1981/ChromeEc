@@ -70,6 +70,30 @@
       ],
       "revId": "0439d2aa87c670e26b5b0db46bf5182dd82aaf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85d22fd_2503f0d1",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-05T14:53:09Z",
+      "side": 1,
+      "message": "separate this change to CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6234393/1",
+      "parentUuid": "71991767_04b4b96c",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "0439d2aa87c670e26b5b0db46bf5182dd82aaf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
