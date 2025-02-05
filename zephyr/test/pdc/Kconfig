@@ -17,6 +17,9 @@ config TEST_SUITE_PDC_DEVICE_NOT_READY
 config TEST_SUITE_PDC_POLICY
 	bool "Enable PDC policy tests"
 
+config TEST_SUITE_PDC_POLICY_DEAD_BATTERY
+	bool "Enable PDC Dead Battery policy tests"
+
 config TEST_SUITE_PDC_POLICY_CLAMPED
 	bool "Enable PDC policy tests with clamped power"
 
@@ -120,5 +123,11 @@ config TEST_SKIP_EC_APP_MAIN
 	  Some tests intentionally create errors, like incorrect
 	  initialization order, and verify the error handling paths.
 	  The ec_app_main() is broken in these cases.
+
+config TEST_SNIFF_POWER_MGMT_PDC_APIS
+	bool "Enable PDC sniffing APIs in pdc_power_mgmt for tests"
+	help
+	  This is used to allow tests to create sniffing PDC APIs in
+	  pdc_power_mgmt.c that can be mocked in tests.
 
 source "Kconfig.zephyr"
