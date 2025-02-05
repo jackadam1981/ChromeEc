@@ -210,7 +210,16 @@ uintptr_t get_panic_data_start(void)
 
 static uint32_t get_panic_data_size(void)
 {
+	BUILD_ASSERT(CONFIG_PANIC_DATA_SIZE <= CONFIG_PANIC_DATA_MAX_SIZE);
+
 	if (pdata_ptr->magic != PANIC_DATA_MAGIC)
+		return 0;
+
+	/*
+	 * If the struct_size exceeds CONFIG_PANIC_DATA_MAX_SIZE,
+	 * panic_data is likely corrupted and should be ignored.
+	 */
+	if (pdata_ptr->struct_size > CONFIG_PANIC_DATA_MAX_SIZE)
 		return 0;
 
 	return pdata_ptr->struct_size;
