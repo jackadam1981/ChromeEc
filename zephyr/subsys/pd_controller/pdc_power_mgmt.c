@@ -40,6 +40,17 @@
 
 LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
 
+#ifdef CONFIG_ZTEST
+/* Faking PDC APIs directly causes compilation errors of the function being
+ * redefined.  For testing only create a wrapper function that can be faked.
+ */
+test_mockable_static_inline int mock_pdc_set_sink_path(const struct device *d,
+						       bool b)
+{
+	return pdc_set_sink_path(d, b);
+}
+#define pdc_set_sink_path mock_pdc_set_sink_path
+#endif
 /**
  * @brief Event triggered by sending an internal command
  */
