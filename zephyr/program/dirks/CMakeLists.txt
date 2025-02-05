@@ -13,10 +13,10 @@ zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
 if(DEFINED CONFIG_BOARD_DIRKS)
 	project(dirks)
+	zephyr_include_directories("dirks/include")
 	zephyr_library_sources(
 			"src/led.c"
 			"dirks/src/hdmi.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "dirks/src/usbc.c")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "dirks/src/charger.c")
 endif()

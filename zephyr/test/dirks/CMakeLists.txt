@@ -39,11 +39,10 @@ target_sources_ifdef(
         ${PLATFORM_EC_PROGRAM_DIR}/dirks/src/common.c)
 
 if(CONFIG_TEST_DIRKS_DIRKS)
-    target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0 CHARGER_SECONDARY=1)
+    zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/include")
     target_sources(
             app PRIVATE
             src/dirks.c
-            ${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/src/charger.c
             ${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/src/hdmi.c
             ${PLATFORM_EC_PROGRAM_DIR}/dirks/dirks/src/usbc.c
     )
