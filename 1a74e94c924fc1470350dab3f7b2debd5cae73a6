@@ -92,6 +92,23 @@
       },
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9d2e96_dc61b0a5",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-05T06:53:54Z",
+      "side": 1,
+      "message": "Is that really common for all boards? Dartmonkey always [returns](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/nocturne_fp/fpsensor_detect.c) SPI and even there is no `FP_SENSOR_SEL` defined in the dartmonkey [gpio file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/nocturne_fp/gpio_rw.inc). Or I\u0027m missing something?",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
