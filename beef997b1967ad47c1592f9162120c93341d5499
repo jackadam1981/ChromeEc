@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ae358a_1a0171f2",
+        "filename": "zephyr/program/intelrvp/ptlrvp/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-05T22:53:55Z",
+      "side": 1,
+      "message": "2 questions:\n1. do all the usb-c charging paths support 6 A?\n2. do the PDCs support EPR or are we limited to 5 A anyway?",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "beef997b1967ad47c1592f9162120c93341d5499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
