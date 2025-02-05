@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324ee888_89eb021b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-05T17:41:20Z",
+      "side": 1,
+      "message": "I believe this change requires simultaneous changes from this CL:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/egis/+/7934948/6/egis_api/egis_api.c#b169\n\nCan you please fix and make them dependend on each other?",
+      "revId": "8bea570ef82b80ac012d0b41209e5d151bec837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
