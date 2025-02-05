@@ -6410,6 +6410,17 @@
 	(CONFIG_RAM_BASE + CONFIG_RAM_SIZE - CONFIG_PANIC_DATA_SIZE)
 #endif
 
+/*
+ * Max size panic data is allowed to be. If the stored panic data exceeds this
+ * size, it should be assumed to be corrupt. This value limits the max panic
+ * data size of future firmware as well, since RO firmware using this check
+ * may overwrite stored panic data.
+ */
+#define CONFIG_PANIC_DATA_MAX_SIZE 1024
+#if CONFIG_PANIC_DATA_MAX_SIZE > CONFIG_PRESERVED_END_OF_RAM_SIZE
+#error PANIC_DATA_MAX_SIZE cannot be larger than PRESERVED_END_OF_RAM_SIZE
+#endif
+
 /******************************************************************************/
 /*
  * Set minimum shared memory size, unless it is defined in board file.
