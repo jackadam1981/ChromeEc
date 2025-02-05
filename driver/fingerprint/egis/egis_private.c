@@ -35,7 +35,7 @@ static struct ec_response_fp_info egis_fp_sensor_info = {
 	.pixel_format = V4L2_PIX_FMT_GREY,
 	.width = FP_SENSOR_RES_X_EGIS,
 	.height = FP_SENSOR_RES_Y_EGIS,
-	.bpp = 16,
+	.bpp = FP_SENSOR_RES_BPP_EGIS,
 };
 
 static int convert_egis_get_image_error_code(egis_api_return_t code)
