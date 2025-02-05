@@ -60,6 +60,30 @@
       ],
       "revId": "49423346a7c20bab6df730de10ae444f64cb5ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c54f5d_c6d58450",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-05T22:53:58Z",
+      "side": 1,
+      "message": "I created a new parent CL to do this cleanup.",
+      "parentUuid": "e74bc273_cafd2483",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "49423346a7c20bab6df730de10ae444f64cb5ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
