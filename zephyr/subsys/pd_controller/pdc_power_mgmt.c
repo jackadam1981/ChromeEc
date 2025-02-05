@@ -7,6 +7,7 @@
  * PD Controller subsystem
  */
 
+#include "zephyr/device.h"
 #include "zephyr/toolchain.h"
 #define DT_DRV_COMPAT named_usbc_port
 
@@ -39,6 +40,33 @@
 #include <usbc/utils.h>
 
 LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
+
+#ifdef CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS
+/* Faking PDC APIs directly causes compilation errors of the function being
+ * redefined.  For testing only create a wrapper function that can be faked.
+ * These are used to sniff function arguments like in dead battery testing
+ * we are able to FAKE these functions in the test to check the arguments to
+ * validate we are not changing the RDO when more than one sink path is enabled
+ * as its happening during driver initialization.
+ * As these are intended to be FAKED in a test, we won't be able to get coverage
+ * on these functions.
+ */
+/* LCOV_EXCL_START */
+test_mockable_static_inline int
+sniff_pdc_set_sink_path(const struct device *dev, bool en)
+{
+	return pdc_set_sink_path(dev, en);
+}
+#define pdc_set_sink_path sniff_pdc_set_sink_path
+
+test_mockable_static_inline int sniff_pdc_set_rdo(const struct device *dev,
+						  uint32_t rdo)
+{
+	return pdc_set_rdo(dev, rdo);
+}
+#define pdc_set_rdo sniff_pdc_set_rdo
+/* LCOV_EXCL_STOP */
+#endif /* CONFIG_ZTEST */
 
 /**
  * @brief Event triggered by sending an internal command
@@ -3310,10 +3338,14 @@ void pdc_subsys_start(void)
 		}
 
 		/* Start the PDC driver threads */
-		pdc_start_thread(pdc_data[port]->port.pdc);
+		if (device_is_ready(pdc_data[port]->port.pdc)) {
+			pdc_start_thread(pdc_data[port]->port.pdc);
+		}
 
 		/* Start the PDC power management threads */
-		k_thread_start(pdc_data[port]->thread);
+		if (device_is_ready(pdc_data[port]->port.dev)) {
+			k_thread_start(pdc_data[port]->thread);
+		}
 	}
 }
 

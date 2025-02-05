@@ -48,6 +48,7 @@ typedef int (*emul_pdc_get_supported_drp_modes_t)(const struct emul *target,
 typedef int (*emul_pdc_get_uor_t)(const struct emul *target, union uor_t *uor);
 typedef int (*emul_pdc_get_pdr_t)(const struct emul *target, union pdr_t *pdr);
 typedef int (*emul_pdc_get_rdo_t)(const struct emul *target, uint32_t *rdo);
+typedef int (*emul_pdc_set_rdo_t)(const struct emul *target, uint32_t rdo);
 typedef int (*emul_pdc_set_partner_rdo_t)(const struct emul *target,
 					  uint32_t rdo);
 typedef int (*emul_pdc_get_sink_path_t)(const struct emul *target, bool *en);
@@ -117,6 +118,9 @@ typedef int (*emul_pdc_set_feature_flag_t)(const struct emul *target,
 typedef int (*emul_pdc_clear_feature_flag_t)(
 	const struct emul *target, enum emul_pdc_feature_flag feature);
 typedef void (*emul_pdc_reset_feature_flags_t)(const struct emul *target);
+typedef int (*emul_pdc_set_dead_battery_t)(const struct emul *target,
+					   int dead_battery);
+typedef int (*emul_pdc_get_dead_battery_t)(const struct emul *target);
 
 __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_response_delay_t set_response_delay;
@@ -130,6 +134,7 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_get_supported_drp_modes_t get_supported_drp_modes;
 	emul_pdc_get_uor_t get_uor;
 	emul_pdc_get_pdr_t get_pdr;
+	emul_pdc_set_rdo_t set_rdo;
 	emul_pdc_get_rdo_t get_rdo;
 	emul_pdc_set_partner_rdo_t set_partner_rdo;
 	emul_pdc_get_sink_path_t get_sink_path;
@@ -158,6 +163,8 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_feature_flag_t set_feature_flag;
 	emul_pdc_clear_feature_flag_t clear_feature_flag;
 	emul_pdc_reset_feature_flags_t reset_feature_flags;
+	emul_pdc_set_dead_battery_t set_dead_battery;
+	emul_pdc_get_dead_battery_t get_dead_battery;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -305,6 +312,22 @@ static inline int emul_pdc_get_pdr(const struct emul *target, union pdr_t *pdr)
 
 	if (api->get_pdr) {
 		return api->get_pdr(target, pdr);
+	}
+	return -ENOSYS;
+}
+
+/* This is needed when PDC driver is not initialized yet, such as configuring
+ * the PDC for dead battery mode. */
+static inline int emul_pdc_set_rdo(const struct emul *target, uint32_t rdo)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+
+	if (api->set_rdo) {
+		return api->set_rdo(target, rdo);
 	}
 	return -ENOSYS;
 }
@@ -822,5 +845,32 @@ static inline int emul_pdc_reset_feature_flags(const struct emul *target)
 	return -ENOSYS;
 }
 /* LCOV_EXCL_STOP - Internal emulator feature */
+
+static inline int emul_pdc_set_dead_battery(const struct emul *target,
+					    int dead_battery)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->set_dead_battery) {
+		return api->set_dead_battery(target, dead_battery);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_get_dead_battery(const struct emul *target)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->get_dead_battery) {
+		return api->get_dead_battery(target);
+	}
+	return -ENOSYS;
+}
 
 #endif /* ZEPHYR_INCLUDE_EMUL_PDC_H_ */

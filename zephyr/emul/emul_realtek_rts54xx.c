@@ -230,6 +230,9 @@ static int ppm_reset(struct rts5453p_emul_pdc_data *data,
 {
 	LOG_INF("PPM_RESET port=%d", req->ppm_reset.port_num);
 
+	/* PPM reset exits dead battery mode -- b/314824581#comment53  */
+	data->dead_battery = 0;
+
 	memset(&data->response, 0, sizeof(union rts54_response));
 	send_response(data);
 
@@ -1162,7 +1165,7 @@ static void emul_realtek_rts54xx_reset_feature_flags(const struct emul *target)
 	atomic_clear(data->features);
 }
 
-static int emul_realtek_rts54xx_reset(const struct emul *target)
+static int emul_realtek_rts54xx_init_data(const struct emul *target)
 {
 	struct rts5453p_emul_pdc_data *data =
 		rts5453p_emul_get_pdc_data(target);
@@ -1176,6 +1179,18 @@ static int emul_realtek_rts54xx_reset(const struct emul *target)
 
 	/* Clear any feature flags */
 	emul_realtek_rts54xx_reset_feature_flags(target);
+
+	return 0;
+}
+
+static int emul_realtek_rts54xx_reset(const struct emul *target)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	emul_realtek_rts54xx_init_data(target);
+
+	data->dead_battery = 0;
 
 	return 0;
 }
@@ -1221,7 +1236,7 @@ static int rts5453p_emul_init(const struct emul *emul,
 
 	data->pdc_data.set_tpc_reconnect_param = 0xAA;
 
-	emul_realtek_rts54xx_reset(emul);
+	emul_realtek_rts54xx_init_data(emul);
 
 	k_work_init_delayable(&data->pdc_data.delay_work,
 			      delayable_work_handler);
@@ -1325,6 +1340,16 @@ static int emul_realtek_rts54xx_get_pdr(const struct emul *target,
 		rts5453p_emul_get_pdc_data(target);
 
 	*pdr = data->pdr;
+
+	return 0;
+}
+
+static int emul_realtek_rts54xx_set_rdo(const struct emul *target, uint32_t rdo)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	data->pdo.rdo = rdo;
 
 	return 0;
 }
@@ -1658,6 +1683,25 @@ emul_realtek_rts54xx_clear_feature_flag(const struct emul *target,
 }
 /* LCOV_EXCL_STOP */
 
+static int emul_realtek_rts54xx_set_dead_battery(const struct emul *target,
+						 int dead_battery)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	data->dead_battery = dead_battery;
+
+	return 0;
+}
+
+static int emul_realtek_rts54xx_get_dead_battery(const struct emul *target)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	return data->dead_battery;
+}
+
 static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.reset = emul_realtek_rts54xx_reset,
 	.set_response_delay = emul_realtek_rts54xx_set_response_delay,
@@ -1669,6 +1713,7 @@ static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.set_connector_status = emul_realtek_rts54xx_set_connector_status,
 	.get_uor = emul_realtek_rts54xx_get_uor,
 	.get_pdr = emul_realtek_rts54xx_get_pdr,
+	.set_rdo = emul_realtek_rts54xx_set_rdo,
 	.get_rdo = emul_realtek_rts54xx_get_rdo,
 	.set_partner_rdo = emul_realtek_rts54xx_set_partner_rdo,
 	.get_requested_power_level =
@@ -1692,6 +1737,8 @@ static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.set_feature_flag = emul_realtek_rts54xx_set_feature_flag,
 	.clear_feature_flag = emul_realtek_rts54xx_clear_feature_flag,
 	.reset_feature_flags = emul_realtek_rts54xx_reset_feature_flags,
+	.set_dead_battery = emul_realtek_rts54xx_set_dead_battery,
+	.get_dead_battery = emul_realtek_rts54xx_get_dead_battery,
 };
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \
