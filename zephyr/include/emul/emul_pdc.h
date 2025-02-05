@@ -35,6 +35,7 @@ typedef int (*emul_pdc_get_supported_drp_modes_t)(const struct emul *target,
 typedef int (*emul_pdc_get_uor_t)(const struct emul *target, union uor_t *uor);
 typedef int (*emul_pdc_get_pdr_t)(const struct emul *target, union pdr_t *pdr);
 typedef int (*emul_pdc_get_rdo_t)(const struct emul *target, uint32_t *rdo);
+typedef int (*emul_pdc_set_rdo_t)(const struct emul *target, uint32_t rdo);
 typedef int (*emul_pdc_set_partner_rdo_t)(const struct emul *target,
 					  uint32_t rdo);
 typedef int (*emul_pdc_get_sink_path_t)(const struct emul *target, bool *en);
@@ -96,6 +97,9 @@ typedef int (*emul_pdc_set_cmd_error_t)(const struct emul *target,
 					bool enabled);
 typedef int (*emul_pdc_set_attention_vdo_t)(const struct emul *target,
 					    union get_attention_vdo_t);
+typedef int (*emul_pdc_set_dead_battery_t)(const struct emul *target,
+					   int dead_battery);
+typedef int (*emul_pdc_get_dead_battery_t)(const struct emul *target);
 
 __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_response_delay_t set_response_delay;
@@ -109,6 +113,7 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_get_supported_drp_modes_t get_supported_drp_modes;
 	emul_pdc_get_uor_t get_uor;
 	emul_pdc_get_pdr_t get_pdr;
+	emul_pdc_set_rdo_t set_rdo;
 	emul_pdc_get_rdo_t get_rdo;
 	emul_pdc_set_partner_rdo_t set_partner_rdo;
 	emul_pdc_get_sink_path_t get_sink_path;
@@ -133,6 +138,8 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_vconn_sourcing_t set_vconn_sourcing;
 	emul_pdc_set_cmd_error_t set_cmd_error;
 	emul_pdc_set_attention_vdo_t set_attention_vdo;
+	emul_pdc_set_dead_battery_t set_dead_battery;
+	emul_pdc_get_dead_battery_t get_dead_battery;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -280,6 +287,20 @@ static inline int emul_pdc_get_pdr(const struct emul *target, union pdr_t *pdr)
 
 	if (api->get_pdr) {
 		return api->get_pdr(target, pdr);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_rdo(const struct emul *target, uint32_t rdo)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+
+	if (api->set_rdo) {
+		return api->set_rdo(target, rdo);
 	}
 	return -ENOSYS;
 }
@@ -731,6 +752,33 @@ emul_pdc_set_attention_vdo(const struct emul *target,
 	const struct emul_pdc_driver_api *api = target->backend_api;
 	if (api->set_attention_vdo) {
 		return api->set_attention_vdo(target, attention_vdo);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_dead_battery(const struct emul *target,
+					    int dead_battery)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->set_dead_battery) {
+		return api->set_dead_battery(target, dead_battery);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_get_dead_battery(const struct emul *target)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->get_dead_battery) {
+		return api->get_dead_battery(target);
 	}
 	return -ENOSYS;
 }
