@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d784eb7e_2a23e0bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-02-05T23:06:56Z",
+      "side": 1,
+      "message": "Looks good, can we run the gitlab CI on this too? I thought the reason for the lambdas was because of building outside the chroot.",
+      "revId": "4f439cd77bb7ecf732a5b04d11490e6d30d3634e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
