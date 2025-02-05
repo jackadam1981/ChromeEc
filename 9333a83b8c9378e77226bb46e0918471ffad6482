@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7bf698_b7558d7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-05T01:09:09Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "75632eed_60ae6148",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "9333a83b8c9378e77226bb46e0918471ffad6482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1938e774_39c36b3b",
@@ -88,6 +112,30 @@
           ]
         }
       ],
+      "revId": "9333a83b8c9378e77226bb46e0918471ffad6482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fb9385_f17a1da0",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-05T01:09:09Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "79f744f2_d8ccf9d0",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 20
+      },
       "revId": "9333a83b8c9378e77226bb46e0918471ffad6482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
