@@ -16,6 +16,23 @@
       "message": "I believe this change requires simultaneous changes from this CL:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/egis/+/7934948/6/egis_api/egis_api.c#b169\n\nCan you please fix and make them dependend on each other?",
       "revId": "8bea570ef82b80ac012d0b41209e5d151bec837f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf9304d_32002f2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-05T17:43:52Z",
+      "side": 1,
+      "message": "can you make this CL not above another CL. Please rebase it on the main branch. Otherwise, it need to merge the preceding CL.",
+      "revId": "8bea570ef82b80ac012d0b41209e5d151bec837f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
