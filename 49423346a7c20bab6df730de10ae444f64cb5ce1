@@ -1,0 +1,65 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74bc273_cafd2483",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-02-05T17:16:40Z",
+      "side": 1,
+      "message": "This will work but I\u0027m wondering if since we already know the location of the module, can we not just check if the directory exists?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "31985d2b_cbdc4d29",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/modules.py",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/zmake/zmake/modules.py",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 76,
+                "endChar": 0
+              },
+              "replacement": "    \"boringssl\": \"src/third_party/boringssl\",\n    \"hal_stm32\": \"src/third_party/zephyr/hal_stm32\",\n    \"cmsis\": \"src/third_party/zephyr/cmsis\",\n    \"ec\": \"src/platform/ec\",\n    \"fpc\": \"src/platform/fingerprint/fpc\",\n    \"nanopb\": \"src/third_party/zephyr/nanopb\",\n    \"pigweed\": \"src/third_party/pigweed\",\n    \"hal_intel_public\": \"src/third_party/zephyr/hal_intel_public\",\n    \"picolibc\": \"src/third_party/zephyr/picolibc\",\n    \"intel_module_private\": \"src/third_party/zephyr/intel_module_private\",\n"
+            },
+            {
+              "path": "zephyr/zmake/zmake/modules.py",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "        path \u003d checkout_dir / module_info\n"
+            }
+          ]
+        }
+      ],
+      "revId": "49423346a7c20bab6df730de10ae444f64cb5ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
