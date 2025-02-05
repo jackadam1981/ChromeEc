@@ -528,6 +528,7 @@ struct rts5453p_emul_pdc_data {
 	bool frs_enabled;
 	bool vconn_sourcing;
 	union get_attention_vdo_t attention_vdo;
+	int dead_battery;
 };
 
 /**
