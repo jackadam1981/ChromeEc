@@ -207,6 +207,9 @@
 		gpio_ack_ppvar_bj_adp_odl: ack_ppvar_bj_adp_odl {
 			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
+		/* unimplemented GPIOs */
+		gpio_hdmi2_cec_pull_up: hdmi2_cec_pull_up {
+		};
 	};
 
 	named-i2c-ports {
