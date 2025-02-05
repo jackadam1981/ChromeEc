@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/** @brief Test functions defined in timer.h, like crec_usleep().
+/** @brief Test functions defined in timer.h, like k_usleep().
  *
  * This test only validates the functionality of code in timer.h and is not
  * expected to accurately measure/check the timing.
@@ -21,7 +21,7 @@ ZTEST(timer, test_usleep)
 	const int expected_duration = 12345;
 
 	uint64_t start_time = sys_clock_cycle_get_64();
-	crec_usleep(expected_duration);
+	k_usleep(expected_duration);
 	uint64_t sleep_duration =
 		((sys_clock_cycle_get_64() - start_time) * USEC_PER_SEC) /
 		sys_clock_hw_cycles_per_sec();
