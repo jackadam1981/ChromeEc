@@ -16,6 +16,24 @@
       "message": "Can we also check panic data? Or there is no panic data for watchdog? I don\u0027t remeber.",
       "revId": "f1422f8ae8cafd7d84b46af08b321867d1ee8f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38994083_e1e6415e",
+        "filename": "test/watchdog.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-05T20:06:37Z",
+      "side": 1,
+      "message": "[`panic_get_reason()` is implemented with a call to `panic_get_data()`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-dartmonkey/ec/core/cortex-m/panic.c;l\u003d509-522;drc\u003d022c5e9e85bf73a0dbbb16d62710d49650feda1c).\n\nThere is some additional information that can be [stored in panic_data like file name, line number and flags](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/panic_data.c;l\u003d23-61;drc\u003d91a867ceb8a290476d29e60f9a21cc22cc765195), but [file name and line number are only set for `software_panic`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/panic_output.c;l\u003d135-149;drc\u003d86c39f0b42d4d919583b59c1e44d7f5aa50e147d), and not in the [watchdog handler](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/watchdog.c;l\u003d37-48;drc\u003d72b89b499b7b785709f35518b1192ee9d71d05f9).",
+      "parentUuid": "bc9ac7bf_a6d47f21",
+      "revId": "f1422f8ae8cafd7d84b46af08b321867d1ee8f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
