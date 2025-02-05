@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1b5f05a_cc6290b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-05T18:25:03Z",
+      "side": 1,
+      "message": "\u003e \"Project bloonchipper not supported by compare-builds, skipping.\"\n\nI submitted a fix a few days ago: https://crrev.com/c/6220099. You may need to rebase.",
+      "parentUuid": "fe66c449_671d0785",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f496ba19_3c975943",
         "filename": "zephyr/program/fpmcu/bloonchipper/CMakeLists.txt",
         "patchSetId": 3
