@@ -32,6 +32,14 @@
 			enum-name = "ADC_VBUS";
 			io-channels = <&adc0 4>;
 		};
+		adc_ppvar_pwr_in_imon: ppvar_pwr_in_imon {
+			enum-name = "ADC_PPVAR_PWR_IN_IMON";
+			io-channels = <&adc0 15>;
+		};
+		adc_sns_ppvar_pwr_in: ppvar_sns_pwr_in {
+			enum-name = "ADC_SNS_PPVAR_PWR_IN";
+			io-channels = <&adc0 16>;
+		};
 	};
 
 	named-gpios {
