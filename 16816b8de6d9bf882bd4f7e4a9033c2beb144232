@@ -1,0 +1,166 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f8c84c_ea8e0424",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-05T04:31:11Z",
+      "side": 1,
+      "message": "is used for enroll and verify. It is offset to end of buffer. It also uses uint8_t.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b567d92e_40874f52",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": "#define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024 * 2)\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 37,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0
+              },
+              "replacement": "#define FP_SENSOR_IMAGE_OFFSET_EGIS (FP_SENSOR_IMAGE_SIZE_EGIS)\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 83,
+                "endChar": 0
+              },
+              "replacement": " * @EGIS_CAPTURE_NORMAL_FORMAT: Capture normal images with 8-bits per pixel\n * output. It is offset to end of buffer. It also uses uint8_t.\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 175,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "16816b8de6d9bf882bd4f7e4a9033c2beb144232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc71f84_06ac782b",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-05T04:31:11Z",
+      "side": 1,
+      "message": "all of these are using uint16_t. All of these use the full buffer.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5cabbe06_3f9ab85d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": "#define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024 * sizeof(uint16_t))\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "\t(FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS)\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 175,
+                "startChar": 0,
+                "endLine": 179,
+                "endChar": 0
+              },
+              "replacement": "egis_api_return_t egis_get_image_with_mode(uint16_t *image_data, int mode);\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 200,
+                "startChar": 0,
+                "endLine": 201,
+                "endChar": 0
+              },
+              "replacement": "egis_api_return_t egis_get_image(uint16_t *image_data);\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 253,
+                "startChar": 0,
+                "endLine": 254,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t    uint16_t *image, int32_t *match_index,\n"
+            },
+            {
+              "path": "driver/fingerprint/egis/egis_api.h",
+              "range": {
+                "startLine": 299,
+                "startChar": 0,
+                "endLine": 300,
+                "endChar": 0
+              },
+              "replacement": "egis_api_return_t egis_finger_enroll(uint16_t *image, int *completion);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "16816b8de6d9bf882bd4f7e4a9033c2beb144232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
