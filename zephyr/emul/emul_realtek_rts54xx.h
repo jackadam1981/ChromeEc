@@ -538,6 +538,7 @@ struct rts5453p_emul_pdc_data {
 	uint8_t sbu_mux_mode;
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
+	int dead_battery;
 };
 
 /**
