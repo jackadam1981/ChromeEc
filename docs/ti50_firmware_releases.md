@@ -1991,12 +1991,6 @@ Builder
 Artifacts:
 [15974.37.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch/R129-15974.37.0-1-8728006437754332961/dt-ti50.tar.bz2/)
 
-**Bug Fixes**
-
-*   Fix crypto interrupt handling bug that resulted in a
-    "Console is Busy!" error
-    [b/375956711](https://b.corp.google.com/issues/375956711)
-
 **Features**
 
 *   Block PCR0 double extend
