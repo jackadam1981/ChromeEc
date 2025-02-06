@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "panic_log.h"
 #include "printf.h"
 #include "uart.h"
 
@@ -11,6 +12,7 @@
 
 static int __tx_char(void *context, int c)
 {
+	panic_log_write_char(c);
 	/*
 	 * Translate '\n' to '\r\n'.
 	 */

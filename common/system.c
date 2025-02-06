@@ -30,6 +30,7 @@
 #endif
 #include "cros_version.h"
 #include "panic.h"
+#include "panic_log.h"
 #include "sysjump.h"
 #include "system.h"
 #include "system_boot_time.h"
