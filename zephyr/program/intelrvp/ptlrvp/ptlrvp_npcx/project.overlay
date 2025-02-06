@@ -24,6 +24,16 @@
 #include "../temp_sensor.dts"
 #include "../usbc.dtsi"
 
+&pd_pow_i2c {
+	/delete-node/ rts54-pdc@68;
+};
+
+/ {
+	usbc-ports {
+		/delete-node/ port2@2;
+	};
+};
+
 /*
  * Using IT8801 MFD driver
  * These lines can be deleted after all PTL platforms support the MFD driver.
