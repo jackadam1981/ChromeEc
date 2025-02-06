@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "panic_log.h"
 #include "printf.h"
 #include "uart.h"
 
@@ -14,6 +15,8 @@ static int __tx_char(void *context, int c)
 	/*
 	 * Translate '\n' to '\r\n'.
 	 */
+	if (IS_ENABLED(CONFIG_PANIC_LOG))
+		panic_log_write_char(c);
 	if (c == '\n' && uart_tx_char_raw(context, '\r'))
 		return 1;
 	return uart_tx_char_raw(context, c);
