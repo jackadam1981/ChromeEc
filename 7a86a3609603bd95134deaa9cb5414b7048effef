@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274c23aa_d54dafdd",
+        "filename": "zephyr/dts/bindings/adc/named-adc-channels.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-02-06T23:39:14Z",
+      "side": 1,
+      "message": "No legacy code needs to access these ADC channels, so I don\u0027t think you need to add enum values for them. Instead directly use the zephyr API (`adc_read`). If console support for reading these channels is desired (for debugging), enabled `CONFIG_ADC_SHELL` and use the `adc` console command.",
+      "revId": "7a86a3609603bd95134deaa9cb5414b7048effef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313ea17e_82ffe4ee",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-02-06T23:39:14Z",
+      "side": 1,
+      "message": "dirks is not fizz.",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "7a86a3609603bd95134deaa9cb5414b7048effef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
