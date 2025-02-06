@@ -22,6 +22,30 @@
       },
       "revId": "5992b7014398762604803eccadd8b7bca0296915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8934a12_3114cda5",
+        "filename": "util/check_zephyr_for_ec_symbols.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-06T18:22:36Z",
+      "side": 1,
+      "message": "@keithshort@chromium.org and @patrykd@google.com\n\nThe [docs for `k_usleep()`](https://docs.zephyrproject.org/apidoc/latest/group__thread__apis.html#gaeac56bb072ce295b9fdc372ab8cee67e) say that it will return non-zero if the thread was woken up, so it sounds like it\u0027s not guaranteed to sleep as long as requested.\n\nI don\u0027t see examples of the return value being checked in our Zephyr code (other than our [Zephyr implementation of `crec_usleep`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/timer.c;l\u003d190-195;drc\u003d39b02ce014fb629ef11352cf4a6f4a9ab6223bb2)) or in upstream Zephyr code.\n\nI guess people just assume `k_usleep`/`k_msleep`/`k_sleep` will sleep for the amount of time requested?\n\nThe context is that I\u0027m trying to determine what to suggest as a replacement for `crec_usleep`/`crec_msleep`/`crec_sleep` in our Zephyr code. See https://crrev.com/c/6237676, https://crrev.com/c/6237675, https://crrev.com/c/6237674.",
+      "parentUuid": "f40df9ba_c954ce2c",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "5992b7014398762604803eccadd8b7bca0296915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
