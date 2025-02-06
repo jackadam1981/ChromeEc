@@ -480,14 +480,24 @@ SECTIONS
 #endif
 		__data_end = .;
 
-		/*
-		 * Shared memory buffer must be at the end of preallocated
-		 * RAM, so it can expand to use all the remaining RAM.
-		 */
-		__shared_mem_buf = .;
-
-		/* NOTHING MAY GO AFTER THIS! */
 	} > IRAM AT > DATA_LMA_MEM_REGION
+
+	.noinit_ram(NOLOAD) : {
+		. = ALIGN(4);
+		__noinit_ram_start = .;
+		*(SORT(.noinit_ram.*))
+		__noinit_ram_end = .;
+		. = ALIGN(4);
+	} > IRAM
+
+	/*
+	 * Shared memory buffer must be at the end of preallocated
+	 * RAM, so it can expand to use all the remaining RAM.
+	 */
+	__shared_mem_buf = .;
+
+	/* NOTHING MAY GO AFTER THIS! */
+
 
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
