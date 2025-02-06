@@ -6617,6 +6617,125 @@ int cmd_keyboard_get_config(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_panic_log(int argc, char *argv[])
+{
+	int rv;
+	struct ec_params_panic_log_info info_params = { 0 };
+	struct ec_response_panic_log_info info_response;
+
+	if (argc != 2)
+		goto usage;
+
+	if (!ec_cmd_version_supported(EC_CMD_PANIC_LOG_INFO, 0)) {
+		printf("Panic log not supported\n");
+		return -EINVAL;
+	}
+
+	if (!strcmp(argv[1], "info")) {
+		rv = ec_command(EC_CMD_PANIC_LOG_INFO, 0, &info_params,
+				sizeof(info_params), &info_response,
+				sizeof(info_response));
+		if (rv < 0) {
+			printf("Error getting panic log info\n");
+			return rv;
+		}
+		printf("Version:\t\t%d\n", info_response.version);
+		printf("Frozen:\t\t%d\n", info_response.frozen);
+		printf("Valid:\t\t%d\n", info_response.valid);
+		printf("Length:\t\t%d\n", info_response.length);
+		printf("Capacity:\t%d\n", info_response.capacity);
+		return 0;
+	} else if (!strcmp(argv[1], "freeze")) {
+		info_params.freeze = 1;
+		rv = ec_command(EC_CMD_PANIC_LOG_INFO, 0, &info_params,
+				sizeof(info_params), &info_response,
+				sizeof(info_response));
+		if (rv < 0) {
+			printf("Error getting panic log info\n");
+			return rv;
+		}
+		if (info_response.frozen)
+			printf("Panic log already frozen\n");
+		else
+			printf("Panic log frozen\n");
+	} else if (!strcmp(argv[1], "unfreeze")) {
+		info_params.unfreeze = 1;
+		rv = ec_command(EC_CMD_PANIC_LOG_INFO, 0, &info_params,
+				sizeof(info_params), &info_response,
+				sizeof(info_response));
+		if (rv < 0) {
+			printf("Error getting panic log info\n");
+			return rv;
+		}
+		if (!info_response.frozen)
+			printf("Panic log already unfrozen\n");
+		else
+			printf("Panic log unfrozen\n");
+	} else if (!strcmp(argv[1], "reset")) {
+		info_params.reset = 1;
+		rv = ec_command(EC_CMD_PANIC_LOG_INFO, 0, &info_params,
+				sizeof(info_params), &info_response,
+				sizeof(info_response));
+		if (rv < 0) {
+			ccprintf("Panic log reset, and is currently %s\n",
+				 info_response.frozen ? "frozen" : "unfrozen");
+			return rv;
+		}
+		printf("Panic log reset\n");
+	} else if (!strcmp(argv[1], "dump")) {
+		char *out = (char *)ec_inbuf;
+		struct ec_params_panic_log_read read_params;
+		/* Freeze while dumping */
+		info_params.freeze = 1;
+		rv = ec_command(EC_CMD_PANIC_LOG_INFO, 0, &info_params,
+				sizeof(info_params), &info_response,
+				sizeof(info_response));
+		if (rv < 0) {
+			printf("Error getting panic log info\n");
+			return rv;
+		}
+		while (read_params.offset < info_response.length) {
+			/* Limit inbuf size by one byte for null terminator */
+			rv = ec_command(EC_CMD_PANIC_LOG_READ, 0, &read_params,
+					sizeof(read_params), ec_inbuf,
+					ec_max_insize - 1);
+			if (rv < 0) {
+				printf("Error reading panic log\n");
+				return rv;
+				break;
+			}
+			if (rv == 0)
+				break;
+			/* Ensure null terminated */
+			out[ec_max_insize - 1] = '\0';
+			fputs(out, stdout);
+			read_params.offset += rv;
+		}
+		printf("\n");
+		/* Restore frozen state */
+		if (!info_response.frozen) {
+			info_params = { 0 };
+			info_params.unfreeze = 1;
+			rv = ec_command(EC_CMD_PANIC_LOG_INFO, 0, &info_params,
+					sizeof(info_params), &info_response,
+					sizeof(info_response));
+			if (rv < 0) {
+				printf("Error unfreezing panic log after dumping\n");
+				return rv;
+			}
+		}
+	} else {
+		goto usage;
+	}
+
+	return 0;
+
+usage:
+	printf("Usage: %s [info | dump | freeze | unfreeze | reset]\n",
+	       argv[0]);
+	return -1;
+}
+
 int cmd_panic_info(int argc, char *argv[])
 {
 	int rv;
@@ -12476,6 +12595,7 @@ const struct command commands[] = {
 	  "[CMDS]\n"
 	  "\tVarious motion sense control commands." },
 	{ "nextevent", cmd_next_event, "\n\tGet the next pending MKBP event." },
+	{ "paniclog", cmd_panic_log, "\n\tPrints saved panic log." },
 	{ "panicinfo", cmd_panic_info, "\n\tPrints saved panic info." },
 	{ "pause_in_s5", cmd_s5,
 	  "[on|off]\n"
