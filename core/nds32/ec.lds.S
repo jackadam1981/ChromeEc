@@ -327,13 +327,24 @@ SECTIONS
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 #endif
 
-		/*
-		 * Shared memory buffer must be at the end of preallocated RAM,
-		 * so it can expand to use all the remaining RAM.
-		 */
-		__shared_mem_buf = .;
-
 	} > IRAM
+
+#if defined(CONFIG_SECTION_IS_RW)
+	.noinit_end_of_ram(NOLOAD) : {
+		. = ALIGN(4);
+        __noinit_end_of_ram_start = .;
+        *(.noinit_end_of_ram)
+        *(".noinit_end_of_ram.*")
+        __noinit_end_of_ram_end = .;
+		. = ALIGN(4);
+	} > IRAM
+#endif /* CONFIG_SECTION_IS_RW */
+
+	/*
+	 * Shared memory buffer must be at the end of preallocated
+	 * RAM, so it can expand to use all the remaining RAM.
+	 */
+	__shared_mem_buf = .;
 
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),

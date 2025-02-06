@@ -172,6 +172,13 @@ extern const char __preserved_logs_size[];
 #define __preserved_logs(name)
 #endif
 
+#if defined(CONFIG_SECTION_IS_RW)
+#define __noinit_end_of_ram(name) \
+	__attribute__((section(".noinit_end_of_ram." STRINGIFY(name))))
+extern const char __noinit_end_of_ram_start[];
+extern const char __noinit_end_of_ram_end[];
+#endif /* CONFIG_SECTION_IS_RW */
+
 #ifdef __cplusplus
 }
 #endif
