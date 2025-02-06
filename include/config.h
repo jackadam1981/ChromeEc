@@ -1842,6 +1842,17 @@
 /* Size of panic log in bytes. Must be a power of 2. */
 #define CONFIG_PANIC_LOG_LEN 2048
 
+/**
+ * Panic trace captures a sequential events in uninitialized
+ * preserved ram. After a panic, the panic_trace is frozen until it is
+ * dumped by the OS. Preserving the trace is best effort. Integrity checks
+ * ensure corruption is detected and the trace is discarded. The implementation
+ * is designed to be low overhead and reentrant.
+ */
+#undef CONFIG_PANIC_TRACE
+/* Size of panic trace in 2 byte words. Must be a power of 2. */
+#define CONFIG_PANIC_TRACE_LEN 1024
+
 /*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.

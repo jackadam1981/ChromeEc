@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "link_defs.h"
 #include "lpc.h"
+#include "panic_trace.h"
 #include "power.h"
 #include "printf.h"
 #include "shared_mem.h"
@@ -502,6 +503,10 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		hc_prev_time = t;
 		hc_prev_cmd = args->command;
 	}
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_uint16_t(PANIC_TRACE_TAG_HOST_CMD,
+					 args->command);
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->params_size) {
 		char str_buf[hex_str_buf_size(args->params_size)];
