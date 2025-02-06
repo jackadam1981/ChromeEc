@@ -59,4 +59,21 @@ config PLATFORM_EC_PANIC_STRIP_GPR
 	help
 	  Don't save General Purpose Registers during panic.
 
+config PLATFORM_EC_PANIC_LOG
+	bool "Enable EC panic log"
+	default n
+	depends on PLATFORM_EC_NOINIT_END_OF_RAM_SECTION
+	help
+	  When enabled, a copy of the console log is kept in
+	  preserved uninitialized ram. The log can be dumped
+	  after a panic for debugging.
+
+config PLATFORM_EC_PANIC_LOG_LEN
+	int "Length of EC panic log in bytes"
+	default 2048
+	depends on PLATFORM_EC_PANIC_LOG
+	help
+	  Length of the EC panic log in bytes.
+	  Must be a power of 2.
+
 endif # PLATFORM_EC_PANIC
