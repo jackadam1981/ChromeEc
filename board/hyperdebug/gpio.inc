@@ -173,9 +173,9 @@ GPIO_INT(CN11_25,		PIN(C, 14), GPIO_INPUT | ANY_EDGE, gpio_edge)
 /* CN11_26 is NC */
 GPIO_INT(CN11_27,		PIN(C, 15), GPIO_INPUT | ANY_EDGE, gpio_edge)
 /*GPIO_INT(CN11_28,		PIN(A, 0), GPIO_INPUT | ANY_EDGE, gpio_edge)*/
-GPIO_INT(CN11_29,		PIN(H, 0), GPIO_INPUT | ANY_EDGE, gpio_edge)
+GPIO_INT(CN11_29,		PIN(H, 0), GPIO_INPUT | ANY_EDGE, gpio_edge) /* OSC_IN */
 /*GPIO_INT(CN11_30,		PIN(A, 1), GPIO_INPUT | ANY_EDGE, gpio_edge)*/
-GPIO_INT(CN11_31,		PIN(H, 1), GPIO_INPUT | ANY_EDGE, gpio_edge)
+GPIO_INT(CN11_31,		PIN(H, 1), GPIO_INPUT | ANY_EDGE, gpio_edge) /* OSC_OUT */
 /*GPIO_INT(CN11_32,		PIN(A, 4), GPIO_INPUT | ANY_EDGE, gpio_edge)*/
 /* CN11_33 is VBAT */
 /*GPIO_INT(CN11_34,		PIN(B, 0), GPIO_INPUT | ANY_EDGE, gpio_edge)*/

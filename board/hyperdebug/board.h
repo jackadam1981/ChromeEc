@@ -52,6 +52,7 @@
 #define STM32_PLLM stm32_pllm
 #define STM32_PLLN stm32_plln
 #define STM32_PLLR stm32_pllr
+#define CONFIG_STM32_CLOCK_HSE_HZ external_clock_frequency
 
 #define STM32_USE_PLL
 #define STM32_INITIAL_PLL_INPUT OSC_INIT
@@ -204,6 +205,8 @@ extern int stm32_pllm;
 extern int stm32_plln;
 extern int stm32_pllr;
 
+extern int external_clock_frequency;
+
 /* Timer selection */
 #define PWM_TIMER_1 1
 #define TIM_CLOCK32 2
@@ -216,6 +219,7 @@ extern int stm32_pllr;
 #define PWM_TIMER_15 15
 #define PWM_TIMER_16 16
 #define PWM_TIMER_17 17
+#define HSE_TIMER 17
 
 #include "gpio_signal.h"
 #include "timer.h"
