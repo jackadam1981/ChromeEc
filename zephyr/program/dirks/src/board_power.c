@@ -4,7 +4,9 @@
  */
 
 #include "gpio/gpio.h"
+#include "gpio/gpio_int.h"
 #include "gpio_signal.h"
+#include "hooks.h"
 #include "system_boot_time.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -24,6 +26,123 @@
 #include <x86_power_signals.h>
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
+
+/******************************************************************************/
+/*
+ * PWROK signal configuration, see the PWROK Generation Flow Diagram in the
+ * Jasper Lake Platform Design Guide for the list of potential signals.
+ *
+ * Dedede boards use this PWROK sequence:
+ *	GPIO_ALL_SYS_PWRGD - turns on VCCIN rail
+ *	GPIO_EC_AP_VCCST_PWRGD_OD - asserts VCCST_PWRGD to AP, requires 2ms
+ *		delay from VCCST stable to meet the tCPU00 platform sequencing
+ *		timing
+ *	GPIO_EC_AP_PCH_PWROK_OD - asserts PMC_PCH_PWROK to the AP. Note that
+ *		PMC_PCH_PWROK is also gated by the IMVP9_VRRDY_OD output from
+ *		the VCCIN voltage rail controller.
+ *	GPIO_EC_AP_SYS_PWROK - asserts PMC_SYS_PWROK to the AP
+ *
+ * Both PMC_PCH_PWROK and PMC_SYS_PWROK signals must both be asserted before
+ * the Jasper Lake SoC deasserts PMC_RLTRST_N. The platform may deassert
+ * PMC_PCH_PWROK and PMC_SYS_PWROK in any order to optimize overall boot
+ * latency.
+ */
+
+/*
+ * Pass through the state of the ALL_SYS_PWRGD input to all the PWROK outputs
+ * defined by the board.
+ */
+void all_sys_pwrgd_pass_thru(void)
+{
+	int all_sys_pwrgd_in = !!(power_signal_get(PWR_ALL_SYS_PWRGD));
+
+	if (all_sys_pwrgd_in) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_all_sys_pwrgd),
+				all_sys_pwrgd_in);
+		k_msleep(2);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_soc_vccst_pwrgd_od),
+			all_sys_pwrgd_in);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_soc_pch_pwrok_od),
+			all_sys_pwrgd_in);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_sys_pwrok),
+				all_sys_pwrgd_in);
+	} else {
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_soc_vccst_pwrgd_od),
+			all_sys_pwrgd_in);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_soc_pch_pwrok_od),
+			all_sys_pwrgd_in);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_sys_pwrok),
+				all_sys_pwrgd_in);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_all_sys_pwrgd),
+				all_sys_pwrgd_in);
+	}
+}
+
+void baseboard_all_sys_pgood_interrupt(enum gpio_signal signal)
+{
+	int slp_s3_lvl = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_slp_s3_l));
+	/*
+	 * We need to deassert ALL_SYS_PGOOD within 200us of SLP_S3_L asserting.
+	 * that is why we do this here instead of waiting for the chipset
+	 * driver to.
+	 * Early protos do not pull VCCST_PWRGD below Vil in hardware logic,
+	 * so we need to do the same for this signal.
+	 * Pull EN_VCCIO_EXT to LOW, which ensures VCCST_PWRGD remains LOW
+	 * during SLP_S3_L assertion.
+	 */
+	/* dedede power sequence in baseboard_all_sys_pgood_interrupt */
+	if (slp_s3_lvl == 0) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_all_sys_pwrgd), 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_vccio_ext), 0);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_soc_vccst_pwrgd_od), 0);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_soc_pch_pwrok_od), 0);
+	}
+	/* Now chain off to the normal power signal interrupt handler. */
+	LOG_INF("slp_s3_l=%d", slp_s3_lvl);
+	power_signal_set(PWR_SLP_S3, !slp_s3_lvl);
+	//	power_signal_interrupt(signal);
+}
+
+void board_after_rsmrst(int rsmrst)
+{
+	/*
+	 * b:148688874: If RSMRST# is de-asserted, enable the pull-up on
+	 * PG_PP1050_ST_OD.  It won't be enabled prior to this signal going high
+	 * because the load switch for PP1050_ST cannot pull the PG low.  Once
+	 * it's asserted, disable the pull up so we don't indicate that the
+	 * power is good before the rail is actually ready.
+	 */
+	int flags = rsmrst ? GPIO_PULL_UP : 0;
+
+	flags |= GPIO_INT_EDGE_BOTH;
+
+	gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_pg_pp1050_st_od),
+			      flags);
+}
+
+static void baseboard_prepare_power_signals(void)
+{
+	//	const int *stored;
+	//	int version, size;
+
+	//	stored = (const int *)system_get_jump_tag(BASEBOARD_SYSJUMP_TAG,
+	//						  &version, &size);
+	//	if (stored && (version == BASEBOARD_HOOK_VERSION) &&
+	//	    (size == sizeof(pp3300_a_pgood)))
+	/* Valid PP3300 status found, restore before CHIPSET init */
+	//		pp3300_a_pgood = *stored;
+
+	/* Restore pull-up on PG_PP1050_ST_OD */
+	if (system_jumped_to_this_image() && power_signal_get(PWR_RSMRST_PWRGD))
+		board_after_rsmrst(1);
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_prepare_power_signals, HOOK_PRIO_FIRST);
 
 #define X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS 5
 
@@ -50,7 +169,6 @@ void board_ap_power_force_shutdown(void)
 	if (s0_stable) {
 		/* Enable these power signals in case of sudden shutdown */
 		power_signal_enable(PWR_DSW_PWROK);
-		power_signal_enable(PWR_PG_PP1P05);
 	}
 #endif
 
@@ -88,7 +206,6 @@ void board_ap_power_force_shutdown(void)
 	/* LCOV_EXCL_STOP */
 
 	power_signal_disable(PWR_DSW_PWROK);
-	power_signal_disable(PWR_PG_PP1P05);
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 	s0_stable = false;
 #endif
@@ -98,7 +215,6 @@ void board_ap_power_force_shutdown(void)
 void board_ap_power_action_g3_s5(void)
 {
 	power_signal_enable(PWR_DSW_PWROK);
-	power_signal_enable(PWR_PG_PP1P05);
 
 	LOG_DBG("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
 	power_signal_set(PWR_EN_PP5000_A, 1);
@@ -114,13 +230,14 @@ void board_ap_power_action_g3_s5(void)
 
 void board_ap_power_action_s3_s0(void)
 {
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_vccio_ext), 1);
 	s0_stable = false;
 }
 
 void board_ap_power_action_s0_s3(void)
 {
 	power_signal_enable(PWR_DSW_PWROK);
-	power_signal_enable(PWR_PG_PP1P05);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_vccio_ext), 0);
 	s0_stable = false;
 }
 
@@ -131,7 +248,6 @@ void board_ap_power_action_s0(void)
 	}
 	LOG_INF("Reaching S0");
 	power_signal_disable(PWR_DSW_PWROK);
-	power_signal_disable(PWR_PG_PP1P05);
 	s0_stable = true;
 }
 
@@ -164,7 +280,6 @@ static void board_ap_power_cb(const struct device *dev,
 		return;
 	}
 	power_signal_enable(PWR_DSW_PWROK);
-	power_signal_enable(PWR_PG_PP1P05);
 }
 
 static int board_ap_power_init(void)
@@ -194,7 +309,6 @@ static int board_ap_power_g3_run(void *data)
 {
 	if (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
 		power_signal_enable(PWR_DSW_PWROK);
-		power_signal_enable(PWR_PG_PP1P05);
 
 		LOG_INF("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
 
@@ -231,7 +345,6 @@ static int board_ap_power_s0_run(void *data)
 		 * asserted before disabling these two power signals.
 		 */
 		power_signal_disable(PWR_DSW_PWROK);
-		power_signal_disable(PWR_PG_PP1P05);
 	}
 
 	return 0;
@@ -247,6 +360,9 @@ int board_power_signal_get(enum power_signal signal)
 		LOG_ERR("Unknown signal for board get: %d", signal);
 		return -EINVAL;
 
+	case PWR_SLP_S3:
+		return !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_slp_s3_l));
+
 	case PWR_ALL_SYS_PWRGD:
 		/*
 		 * All system power is good.
@@ -258,15 +374,29 @@ int board_power_signal_get(enum power_signal signal)
 			return 0;
 		}
 		if (!gpio_pin_get_dt(
-			    GPIO_DT_FROM_NODELABEL(gpio_all_sys_pwrgd))) {
+			    GPIO_DT_FROM_NODELABEL(gpio_pg_pp1050_st_od))) {
 			return 0;
 		}
-		if (!power_signal_get(PWR_PG_PP1P05)) {
+		if (!gpio_pin_get_dt(
+			    GPIO_DT_FROM_NODELABEL(gpio_pg_pp1050_mem_s3_od))) {
+			return 0;
+		}
+		if (!gpio_pin_get_dt(
+			    GPIO_DT_FROM_NODELABEL(gpio_pg_vccio_ext_od))) {
 			return 0;
 		}
 		return 1;
 	}
 }
+
+static void board_init(void)
+{
+	/*
+	 * Enable USB-C interrupts.
+	 */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_slp_s3_l));
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_CHIPSET);
 
 int board_power_signal_set(enum power_signal signal, int value)
 {
