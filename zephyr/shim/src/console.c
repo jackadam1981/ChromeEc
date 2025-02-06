@@ -10,6 +10,7 @@
  */
 #include "builtin/stdio.h"
 #include "console.h"
+#include "panic_log.h"
 #include "printf.h"
 #include "task.h"
 #include "uart.h"
@@ -415,6 +416,8 @@ int uart_tx_char_raw(void *context, int c)
 
 void uart_write_char(char c)
 {
+	panic_log_write_char(c);
+
 	uart_poll_out(uart_shell_dev, c);
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr())
@@ -482,6 +485,8 @@ static void handle_sprintf_rv(int rv, size_t *len)
 
 static void zephyr_print(const char *buff, size_t size)
 {
+	panic_log_write_str(buff, size);
+
 	/*
 	 * shell_* functions can not be used in ISRs so optionally use
 	 * printk instead.
