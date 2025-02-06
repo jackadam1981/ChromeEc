@@ -193,8 +193,142 @@ int stm32_pllm = 4;
 int stm32_plln = 55;
 int stm32_pllr = 2;
 
+/* Frequency of external oscillator in Hz.  0 if not present. */
+int external_clock_frequency = 0;
+
+/*
+ * Determines if clock signal is present on CN11_29, either through external
+ * crystal between CN11_29 and CN11_31, or direct external feed.  If so, measure
+ * the frequency, which must be a multiple of 4MHz, and use it as reference for
+ * all internal clocks.  Having an external crystal greatly improves the
+ * HyperDebug clock jitter and precision of timing measurements or bit-banging.
+ */
+static void probe_external_clock(void)
+{
+	STM32_RCC_CR |= STM32_RCC_CR_HSEON;
+
+	/* Wait up to 10ms for external oscillator to stabilize. */
+	timestamp_t deadline;
+	deadline.val = get_time().val + 10000;
+	while (!(STM32_RCC_CR & STM32_RCC_CR_HSERDY)) {
+		timestamp_t now = get_time();
+		if (timestamp_expired(deadline, &now)) {
+			cprints(CC_SYSTEM, "External clock: not detected");
+			STM32_RCC_CR &= ~STM32_RCC_CR_HSEON &
+					~STM32_RCC_CR_HSEBYP;
+			return;
+		}
+	}
+
+	/*
+	 * Measure the external frequency, using timer 17, which can be
+	 * configured to trigger a capture event on every 32nd clock pulse of
+	 * the external clock.
+	 */
+
+	__hw_timer_enable_clock(HSE_TIMER, 1);
+	STM32_TIM_CR1(HSE_TIMER) = 0;
+
+	/* Full 16-bit counter range. */
+	STM32_TIM_ARR(HSE_TIMER) = 0xFFFF;
+
+	/* No prescaler. */
+	STM32_TIM_PSC(HSE_TIMER) = 0;
+
+	/* Select HSE/32 as TI1 input. */
+	STM32_TIM_OR(HSE_TIMER) = 0x02;
+
+	/*
+	 * Enable input capture on every 8th trigger edge, that is every 256th
+	 * external clock pulse.
+	 */
+	STM32_TIM_CCER(HSE_TIMER) = 0x00;
+	STM32_TIM_CCMR1(HSE_TIMER) = 0x0D;
+	STM32_TIM_CCER(HSE_TIMER) = 0x01;
+
+	/* No interrupts. */
+	STM32_TIM_DIER(HSE_TIMER) = 0;
+
+	/* Enable timer. */
+	STM32_TIM_CR2(HSE_TIMER) = 0;
+	STM32_TIM_CR1(HSE_TIMER) = STM32_TIM_CR1_CEN;
+
+	/* Clear any latched status bits. */
+	STM32_TIM_SR(HSE_TIMER) = 0;
+
+	/* Wait for first capture event */
+	uint32_t status;
+	do {
+		status = STM32_TIM_SR(HSE_TIMER);
+	} while (!(status & 0x0002));
+
+	if (status & 0x0200) {
+		cprints(CC_SYSTEM, "Problem detecting external clock");
+		STM32_RCC_CR &= ~STM32_RCC_CR_HSEON & ~STM32_RCC_CR_HSEBYP;
+		return;
+	}
+
+	uint16_t first_capture = STM32_TIM_CCR1(HSE_TIMER);
+	uint16_t last_capture = first_capture;
+
+	/*
+	 * Now wait for further capture events, until at least 5000 cycles have
+	 * passed, which should give us plenty of precision for calculating the
+	 * frequency of the external clock.
+	 */
+	int intervals = 0;
+	do {
+		uint32_t status;
+		do {
+			status = STM32_TIM_SR(HSE_TIMER);
+		} while (!(status & 0x0002));
+
+		if (status & 0x0200) {
+			cprints(CC_SYSTEM, "Problem detecting external clock");
+			STM32_RCC_CR &= ~STM32_RCC_CR_HSEON &
+					~STM32_RCC_CR_HSEBYP;
+			return;
+		}
+
+		uint16_t capture = STM32_TIM_CCR1(HSE_TIMER);
+
+		intervals++;
+		last_capture = capture;
+	} while (last_capture - first_capture < 5000);
+
+	STM32_TIM_CR1(HSE_TIMER) = 0;
+
+	int hse_freq = DIV_ROUND_NEAREST(clock_get_timer_freq(),
+					 last_capture - first_capture) *
+		       (intervals * 8 * 32);
+
+	int hse_freq_mhz = DIV_ROUND_NEAREST(hse_freq, 4000000) * 4;
+
+	if (!hse_freq_mhz) {
+		cprints(CC_SYSTEM,
+			"External clock measured at %d Hz, not within 2%% of a multiple of 4MHz",
+			hse_freq);
+		STM32_RCC_CR &= ~STM32_RCC_CR_HSEON & ~STM32_RCC_CR_HSEBYP;
+		return;
+	}
+
+	int deviation_ppm = DIV_ROUND_NEAREST(hse_freq - hse_freq_mhz * 1000000,
+					      hse_freq_mhz);
+
+	if (deviation_ppm > 20000 || deviation_ppm < -20000) {
+		cprints(CC_SYSTEM,
+			"External clock measured at %d Hz, not within 2%% of a multiple of 4MHz",
+			hse_freq);
+		STM32_RCC_CR &= ~STM32_RCC_CR_HSEON & ~STM32_RCC_CR_HSEBYP;
+		return;
+	}
+
+	cprints(CC_SYSTEM, "External clock: %dMHz", hse_freq_mhz);
+	external_clock_frequency = hse_freq_mhz * 1000000;
+}
+
 /* Change system/core clock frequency and peripheral clock frequency. */
-static void change_frequencies(int m, int n, int r, uint32_t rcc_cfgr_prescaler)
+static void change_frequencies(int n, int r, uint32_t rcc_cfgr_prescaler)
 {
 	/*
 	 * There are a few concerns: We must not use the PLL as source of
@@ -215,8 +349,19 @@ static void change_frequencies(int m, int n, int r, uint32_t rcc_cfgr_prescaler)
 	 * Now we are free to modify PLL parameters.
 	 */
 
-	/* HSI (16MHz) / M must stay within 4MHz - 16MHz. */
-	stm32_pllm = m;
+	/*
+	 * PLL input must stay within 4MHz - 16MHz, we always use 4MHz, which is
+	 * obtained either by dividing HSI (16MHz) by 4, or by dividing the
+	 * external clock by some value.
+	 */
+	enum clock_osc pll_osc;
+	if (!external_clock_frequency) {
+		pll_osc = OSC_HSI;
+		stm32_pllm = 4;
+	} else {
+		pll_osc = OSC_HSE;
+		stm32_pllm = external_clock_frequency / 4000000;
+	}
 
 	/* Above frequency * N must stay within 64MHz - 344MHz. */
 	stm32_plln = n;
@@ -228,7 +373,7 @@ static void change_frequencies(int m, int n, int r, uint32_t rcc_cfgr_prescaler)
 	 * Switch to PLL clock source, using newly updated parameters, waiting
 	 * for the new source to stabilize.
 	 */
-	clock_set_osc(OSC_PLL, OSC_HSI);
+	clock_set_osc(OSC_PLL, pll_osc);
 
 	/* Now apply the desired divisor to peripheral clock. */
 	hook_notify(HOOK_PRE_FREQ_CHANGE);
@@ -318,7 +463,7 @@ static int command_clock_set(int argc, const char **argv)
 		return EC_ERROR_PARAM2;
 	}
 
-	change_frequencies(4, plln, pllr, rcc_cfgr);
+	change_frequencies(plln, pllr, rcc_cfgr);
 	return EC_SUCCESS;
 }
 
@@ -334,6 +479,9 @@ DECLARE_CONSOLE_COMMAND_FLAGS(
 
 static void board_init(void)
 {
+	/* Measure frequency of external oscillator, if any. */
+	probe_external_clock();
+
 	/* USB to serial queues */
 	queue_init(&usart2_to_usb);
 	queue_init(&usb_to_usart2);
@@ -373,9 +521,8 @@ DECLARE_HOOK(HOOK_REINIT, usart_reinit_all, HOOK_PRIO_DEFAULT);
 static int command_reinit(int argc, const char **argv)
 {
 	/* Switch back to power-on clock configuration. */
-	change_frequencies(4, 55, 2,
-			   STM32_RCC_CFGR_PPRE1_DIV4 |
-				   STM32_RCC_CFGR_PPRE2_DIV4);
+	change_frequencies(
+		55, 2, STM32_RCC_CFGR_PPRE1_DIV4 | STM32_RCC_CFGR_PPRE2_DIV4);
 
 	/* Let every module know to re-initialize to power-on state. */
 	hook_notify(HOOK_REINIT);
