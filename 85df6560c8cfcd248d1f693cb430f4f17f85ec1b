@@ -401,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca0fdf9_f9ed3bcd",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-06T01:43:48Z",
+      "side": 1,
+      "message": "egis_definition.h should be in private。\n\nI had remove this header file cause it is not unnecessary.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5872442/1",
+      "parentUuid": "8e6e7ee0_b5981a19",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8daec65e_b264a209",
@@ -480,6 +504,30 @@
       "side": 1,
       "message": "@jacob.kung@egistec.corp-partner.google.com",
       "parentUuid": "f12b1206_6019a536",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "85df6560c8cfcd248d1f693cb430f4f17f85ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b40b6ff8_6af8ff0b",
+        "filename": "driver/fingerprint/egis/platform/inc/egis_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-06T01:43:48Z",
+      "side": 1,
+      "message": "egis_definition.h should be in private。\nI had remove this header file cause it is not unnecessary.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5872442/1",
+      "parentUuid": "5f64f6ac_0c532f38",
       "range": {
         "startLine": 33,
         "startChar": 0,
