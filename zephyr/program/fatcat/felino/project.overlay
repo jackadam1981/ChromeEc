@@ -50,6 +50,15 @@
 			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 	};
+
+	batteries {
+		default_battery: smp-ap23b7q {
+			compatible = "smp,ap23b7q", "battery-smart";
+		};
+		lges-ap22a8n {
+			compatible = "lges,ap22a8n", "battery-smart";
+		};
+	};
 };
 
 /* AP interface */
