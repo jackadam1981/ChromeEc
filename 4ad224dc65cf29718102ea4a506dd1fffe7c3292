@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51ab3cca_506e5abe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-06T21:50:46Z",
+      "side": 1,
+      "message": "What error is returned in that case? You could make it obvious with the code by creating one CL that just adds the test with the current behavior. Then the followup CL that changes the behavior and the test.",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "4ad224dc65cf29718102ea4a506dd1fffe7c3292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "519cfe96_5c1e3ef3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
