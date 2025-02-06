@@ -10,6 +10,7 @@
  */
 #include "builtin/stdio.h"
 #include "console.h"
+#include "panic_log.h"
 #include "printf.h"
 #include "task.h"
 #include "uart.h"
@@ -318,6 +319,8 @@ SYS_INIT(init_ec_console, PRE_KERNEL_1,
  */
 static int zephyr_shim_console_out(int c)
 {
+	panic_log_write_char(c);
+
 	/* Always capture EC output into the AP console buffer. */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr()) {
 		char console_char = c;
@@ -415,6 +418,8 @@ int uart_tx_char_raw(void *context, int c)
 
 void uart_write_char(char c)
 {
+	panic_log_write_char(c);
+
 	uart_poll_out(uart_shell_dev, c);
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr())
@@ -488,6 +493,8 @@ static bool shell_is_active(void)
 
 static void zephyr_print(const char *buff, size_t size)
 {
+	panic_log_write_str(buff, size);
+
 	/*
 	 * shell_* functions can not be used in ISRs so optionally use
 	 * printk instead.
