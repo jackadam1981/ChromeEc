@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d8363e_ff1e07d2",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-06T18:52:04Z",
+      "side": 1,
+      "message": "this should be `EGIS_API_OK`. The CQ is failing because `EGIS_OK` is not defined:\n\n```\ndriver/fingerprint/egis/egis_private.c:114:35: error: use of undeclared identifier \u0027EGIS_OK\u0027\n  114 |         if (egis_get_hwid(\u0026sensor_id) !\u003d EGIS_OK)\n      |                                          ^\n1 error generated.\nmake[2]: *** [Makefile.rules:636: build/gwendolin/RW/driver/fingerprint/egis/egis_private.o] Error 1\nmake[1]: *** [Makefile.rules:298: proj-gwendolin] Error 2\n```",
+      "range": {
+        "startLine": 114,
+        "startChar": 34,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "305be414d19d8a9e2ddba4c7328c5564f42f240c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
