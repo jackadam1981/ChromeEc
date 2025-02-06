@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b491625_f60247cb",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-06T20:28:41Z",
+      "side": 1,
+      "message": "```suggestion\n\tCPRINTF(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d%s\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\", __func__);\n\n\terrors \u003d FP_ERROR_DEAD_PIXELS_UNKNOWN;\n\telan_execute_reset();\n\telan_alg_param_setting();\n\tif (IC_SELECTION \u003d\u003d EFSA80SG)\n\t\telan_set_hv_chip(1);\n\n\tint rc \u003d elan_check_hwid();\n\tif (rc !\u003d EC_SUCCESS) {\n\t\terrors |\u003d rc;\n\t\treturn EC_SUCCESS;\n\t}\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "3db6e2e30bcbd8e8da73e078ab3b88f188fd5193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
