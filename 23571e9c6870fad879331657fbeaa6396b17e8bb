@@ -16,6 +16,24 @@
       "message": "should mark didn\u0027t use SLP S3/S4 virtual wire input in comments or add TBD in here",
       "revId": "23571e9c6870fad879331657fbeaa6396b17e8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad87bf1_9609f068",
+        "filename": "zephyr/program/fatcat/felino/power_signals.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-02-06T06:39:27Z",
+      "side": 1,
+      "message": "The commit is updated.",
+      "parentUuid": "9fb6989e_60671aa8",
+      "revId": "23571e9c6870fad879331657fbeaa6396b17e8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
