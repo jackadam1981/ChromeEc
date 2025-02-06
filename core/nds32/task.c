@@ -14,6 +14,8 @@
 #include "intc.h"
 #include "irq_chip.h"
 #include "link_defs.h"
+#include "panic_log.h"
+#include "panic_trace.h"
 #include "panic.h"
 #include "registers.h"
 #include "task.h"
@@ -328,6 +330,8 @@ task_ *next_sched_task(void)
 		current_task->runtime +=
 			(exc_start_time - exc_end_time - exc_sub_time);
 		task_will_switch = 1;
+		if (IS_ENABLED(CONFIG_PANIC_TRACE))
+			panic_trace_add_1(PANIC_TRACE_TAG_TASK_SWITCH, (new_task - tasks));
 	}
 #endif
 
@@ -386,6 +390,8 @@ void __ram_code start_irq_handler(void)
 	 */
 	if ((ec_int > 0) && (ec_int < ARRAY_SIZE(irq_dist)))
 		irq_dist[ec_int]++;
+	if(IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_1(PANIC_TRACE_TAG_IRQ, ec_int);
 #endif
 	/* restore r0, r1, and r2 */
 	asm volatile("lmw.bim $r0, [$sp], $r2, 0");
@@ -453,6 +459,9 @@ void __ram_code task_set_event(task_id_t tskid, uint32_t event)
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_2(PANIC_TRACE_TAG_TASK_SET_EVENT, tskid, __builtin_ctz(event));
 
 	/* Re-schedule if priorities have changed */
 	if (in_interrupt_context()) {
@@ -635,6 +644,8 @@ void __ram_code mutex_lock(struct mutex *mtx)
 
 	/* critical section with interrupts off */
 	interrupt_disable();
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_1(PANIC_TRACE_TAG_MUTEX_LOCK, task_get_current());
 	mtx->waiters |= id;
 	while (1) {
 		if (!mtx->lock) { /* we got it ! */
@@ -659,6 +670,8 @@ void __ram_code mutex_unlock(struct mutex *mtx)
 	uint32_t waiters;
 	task_ *tsk = current_task;
 
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_1(PANIC_TRACE_TAG_MUTEX_UNLOCK, task_get_current());
 	/*
 	 * we need to read to waiters after giving the lock back
 	 * otherwise we might miss a waiter between the two calls.

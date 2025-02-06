@@ -16,6 +16,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "panic_log.h"
+#include "panic_trace.h"
 
 typedef union {
 	struct {
@@ -348,6 +350,8 @@ void svc_handler(int desched, task_id_t resched)
 		/* Switch to new task */
 #ifdef CONFIG_TASK_PROFILING
 	task_switches++;
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_1(PANIC_TRACE_TAG_TASK_SWITCH, next - tasks);
 #endif
 	current_task = next;
 	__switchto(current, next);
@@ -370,6 +374,9 @@ void __keep task_start_irq_handler(void *excep_return)
 	 */
 	uint32_t t = get_time().le.lo;
 	int irq = get_interrupt_context() - 16;
+
+	if(IS_ENABLED(CONFIG_PANIC_TRACE))	
+		panic_trace_add_1(PANIC_TRACE_TAG_IRQ, irq);
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
@@ -450,6 +457,9 @@ void task_set_event(task_id_t tskid, uint32_t event)
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_2(PANIC_TRACE_TAG_TASK_SET_EVENT, tskid, __builtin_ctz(event));
 
 	/* Re-schedule if priorities have changed */
 	if (in_interrupt_context() || !is_interrupt_enabled()) {
@@ -943,6 +953,9 @@ int mutex_try_lock(struct mutex *mtx)
 		}
 	} while (value);
 
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_1(PANIC_TRACE_TAG_MUTEX_LOCK, task_get_current());
+
 	return 1;
 }
 
@@ -959,6 +972,9 @@ void mutex_unlock(struct mutex *mtx)
 	waiters = mtx->waiters;
 	mtx->lock = 0;
 	interrupt_enable();
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_add_1(PANIC_TRACE_TAG_MUTEX_UNLOCK, task_get_current());
 
 	while (waiters) {
 		task_id_t id = __fls(waiters);
