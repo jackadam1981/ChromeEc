@@ -88,8 +88,8 @@ test_static int test_command_fpcapture_system_is_locked(void)
 	is_locked = 1;
 
 	/* Test for the case when access is denied. */
-	char console_input[] = "fpcapture";
-	res = test_send_console_command(console_input);
+	char console_input1[] = "fpcapture";
+	res = test_send_console_command(console_input1);
 	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
@@ -124,7 +124,7 @@ test_static int test_command_fpcapture_mode_is_too_large(void)
 	snprintf(console_input3, sizeof(console_input3), "fpcapture %d",
 		 FP_CAPTURE_TYPE_MAX);
 	res = test_send_console_command(console_input3);
-	TEST_EQ(res, EC_ERROR_UNKNOWN, "%d");
+	TEST_EQ(res, EC_ERROR_PARAM1, "%d");
 
 	return EC_SUCCESS;
 }
