@@ -130,10 +130,11 @@ void s0_action_handler(void)
 
 	/* Check ALL_SYS_PWRGD and take action */
 	ret = all_sys_pwrgd_handler();
-	if (ret) {
-		LOG_DBG("ALL_SYS_PWRGD handling failed err= %d", ret);
-		return;
-	}
+	//	ret = all_sys_pwrgd_handler();
+	//	if (ret) {
+	//		LOG_DBG("ALL_SYS_PWRGD handling failed err= %d", ret);
+	//		return;
+	//	}
 
 	/* Send PCH_PWROK->SoC if conditions met */
 	/* TODO: There is possibility of EC not needing to generate
@@ -154,6 +155,14 @@ void s0_action_handler(void)
 
 void s3s0_action_handler(void)
 {
+	int ret;
+
+	/* Check ALL_SYS_PWRGD and take action */
+	ret = all_sys_pwrgd_handler();
+	if (ret) {
+		LOG_DBG("ALL_SYS_PWRGD handling failed err= %d", ret);
+		return;
+	}
 }
 
 void s0s3_action_handler(void)
@@ -176,6 +185,7 @@ enum power_states_ndsx g3s5_action_handler(void)
 
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
 {
+	all_sys_pwrgd_pass_thru();
 	/* Add chipset specific state handling if any */
 	switch (curr_state) {
 	case SYS_POWER_STATE_G3S5:
