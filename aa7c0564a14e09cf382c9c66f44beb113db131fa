@@ -40,6 +40,30 @@
       ],
       "revId": "aa7c0564a14e09cf382c9c66f44beb113db131fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825ef29a_fd15a9e2",
+        "filename": "driver/fingerprint/fpsensor_driver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-02-06T01:54:12Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nthis CL may not needed, because below CLs were merged\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5872407/2\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5872408/2",
+      "parentUuid": "df8f5046_9a0afa6f",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "aa7c0564a14e09cf382c9c66f44beb113db131fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
