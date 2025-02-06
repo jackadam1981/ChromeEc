@@ -202,6 +202,10 @@ tests:
     tags:
       common
       mkbp
+  drivers.preserved_ring_buf:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_PRESERVED_RING_BUF=y
+    - CONFIG_PLATFORM_EC_PRESERVED_RING_BUF=y
   drivers.panic_output:
     extra_configs:
       - CONFIG_LINK_TEST_SUITE_PANIC_OUTPUT=y
