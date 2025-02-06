@@ -172,6 +172,12 @@ extern const char __preserved_logs_size[];
 #define __preserved_logs(name)
 #endif
 
+#define __noinit_ram(name) \
+	__attribute__((section(".noinit_ram." STRINGIFY(name))))
+extern const char __noinit_ram_start[];
+extern const char __noinit_ram_end[];
+extern const char __noinit_ram_size[];
+
 #ifdef __cplusplus
 }
 #endif
