@@ -10,6 +10,7 @@
  */
 #include "builtin/stdio.h"
 #include "console.h"
+#include "panic_log.h"
 #include "printf.h"
 #include "task.h"
 #include "uart.h"
@@ -391,6 +392,10 @@ static void handle_sprintf_rv(int rv, size_t *len)
 
 static void zephyr_print(const char *buff, size_t size)
 {
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_LOG)) {
+		panic_log_write_str(buff, size);
+	}
+
 	/*
 	 * shell_* functions can not be used in ISRs so optionally use
 	 * printk instead.
