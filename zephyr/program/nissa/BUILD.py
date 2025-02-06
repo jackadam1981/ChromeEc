@@ -211,6 +211,11 @@ telith = register_nissa_project(
     chip="it8xxx2/it81302bx",
 )
 
+gruen = register_nissa_project(
+    project_name="guren",
+    chip="npcx9/npcx9m3f",
+)
+
 register_ish_project(
     project_name="orisa-ish",
     zephyr_board="intel_ish_5_4_1",
@@ -266,3 +271,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="teliks", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="rull", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="telith", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="pujjoniru", addr=0xBFFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="guren", addr=0x7FFE0)
