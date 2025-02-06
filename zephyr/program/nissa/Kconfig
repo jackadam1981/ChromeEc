@@ -204,6 +204,21 @@ config BOARD_PUJJONIRU
 	  Build Google PUJJONIRU reference board. PUJJONIRU has Intel TWL SoC
 	  with IT81302 EC.
 
+<<<<<<< HEAD   (bd4d0d gothrax: Implement charging power control based on SKU ID or)
+=======
+config BOARD_DIRKS
+	bool "Google Dirks Board"
+	help
+	  Build Google Dirks reference board. Dirks has Intel TWL SoC
+	  with IT81302 EC.
+
+config BOARD_GUREN
+	bool "Google GUREN Board"
+	help
+	  Build Google GUREN reference board. Nivviks has Intel TWL SoC
+	  with NPCX993FA0BX EC.
+
+>>>>>>> CHANGE (fa0dc1 Guren: Initial zephyr config for guren project)
 module = NISSA
 module-str = Nissa board-specific code
 source "subsys/logging/Kconfig.template.log_config"
