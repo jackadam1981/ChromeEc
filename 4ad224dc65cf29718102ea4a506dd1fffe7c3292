@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9220ae2_05b50804",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-06T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ab3cca_506e5abe",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "4ad224dc65cf29718102ea4a506dd1fffe7c3292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "519cfe96_5c1e3ef3",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9982fad8_e45e66ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-06T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519cfe96_5c1e3ef3",
+      "revId": "4ad224dc65cf29718102ea4a506dd1fffe7c3292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b5606b2_15c05619",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-02-06T21:48:25Z",
       "side": 1,
       "message": "Let\u0027s split these out into separate test cases to make it a little easier to read and make it easier to understand exactly what failed when there is a failure.\n\nSomething like:\n\n* `test_command_fpcapture_system_is_locked`\n* `test_command_fpcapture_mode_is_negative`\n* `test_command_fpcapture_mode_is_too_large`",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "4ad224dc65cf29718102ea4a506dd1fffe7c3292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d88082e4_a73ebf16",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-06T23:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b5606b2_15c05619",
       "range": {
         "startLine": 97,
         "startChar": 0,
