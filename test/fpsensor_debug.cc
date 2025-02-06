@@ -112,12 +112,30 @@ test_static int test_command_fpcapture_mode_is_negative(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_fpcapture_mode_is_too_large(void)
+{
+	enum ec_error_list res;
+
+	/* System is not locked. */
+	is_locked = 0;
+
+	/* Test for the case when capture mode is larger than
+	 * FP_CAPTURE_TYPE_MAX. 
+	 */
+	char console_input3[] = "fpcapture 56";
+	snprintf(console_input3, sizeof(console_input3), "fpcapture %d",
+		 FP_CAPTURE_TYPE_MAX);
+	res = test_send_console_command(console_input3);
+	TEST_EQ(res, EC_ERROR_PARAM1, "%d");
+
+	return EC_SUCCESS;
+}
 
 test_static int test_command_fpenroll(void)
 {
 	enum ec_error_list res;
 
-	/* System is locked. */
+	/* System is unlocked. */
 	is_locked = 1;
 
 	/* Test for the case when access is denied. */
@@ -138,6 +156,7 @@ void run_test(int argc, const char **argv)
 		RUN_TEST(test_command_fpdownload);
 		RUN_TEST(test_command_fpmatch);
 		RUN_TEST(test_command_fpcapture_system_is_locked);
+		RUN_TEST(test_command_fpcapture_mode_is_too_large);
 		RUN_TEST(test_command_fpenroll);
 	}
 
