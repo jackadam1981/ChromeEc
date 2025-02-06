@@ -52,6 +52,24 @@
       "parentUuid": "240e922f_3bd3a4d3",
       "revId": "193ef428f4a536e5da1c2e2ac42f2aad27f89031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323f5977_b163373b",
+        "filename": "zephyr/program/nissa/BUILD.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-06T04:49:47Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s true in this case we actually do want a new empty list, and I don\u0027t think you\u0027ve actually handled the None case for all paths.  It\u0027s possible that I didn\u0027t revert completely to your original fix, so please keep me honest, but the following error is observed in CQ.\n\n```\n\u0027NoneType\u0027 object is not iterable\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 379, in _run_fn\n    result \u003d func()\n             ^^^^^^\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 591, in _configure\n    module_paths \u003d project.prune_modules(self.module_paths)\n```",
+      "parentUuid": "9744aa22_a82c7df7",
+      "revId": "193ef428f4a536e5da1c2e2ac42f2aad27f89031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
