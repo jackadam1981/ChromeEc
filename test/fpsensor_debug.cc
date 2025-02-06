@@ -3,8 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
+#include "ec_commands.h"
 #include "system.h"
 #include "test_util.h"
+
+#include <stdio.h>
 
 static int is_locked;
 
@@ -86,8 +90,8 @@ test_static int test_command_fpcapture(void)
 	is_locked = 1;
 
 	/* Test for the case when access is denied. */
-	char console_input[] = "fpcapture";
-	res = test_send_console_command(console_input);
+	char console_input1[] = "fpcapture";
+	res = test_send_console_command(console_input1);
 	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
