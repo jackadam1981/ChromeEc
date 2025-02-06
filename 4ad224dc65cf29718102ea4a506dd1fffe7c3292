@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519cfe96_5c1e3ef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-06T21:45:20Z",
+      "side": 1,
+      "message": "We\u0027ll need to make the same change in the Zephyr version of the test. Did `repo upload` warn? (It looks like it [should have](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/migrated_files.sh;l\u003d27;drc\u003d801380cb4f2bf12b13181b7d3d9930f74c7e524f)).",
+      "revId": "4ad224dc65cf29718102ea4a506dd1fffe7c3292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
