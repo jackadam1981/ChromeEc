@@ -84,6 +84,7 @@ void fp_sensor_low_power(void)
  */
 int fp_sensor_init(void)
 {
+	int rc;
 	CPRINTF("========%s=======\n", __func__);
 
 	errors = FP_ERROR_DEAD_PIXELS_UNKNOWN;
@@ -92,8 +93,9 @@ int fp_sensor_init(void)
 	if (IC_SELECTION == EFSA80SG)
 		elan_set_hv_chip(1);
 
-	errors |= elan_check_hwid();
-	if (errors) {
+	rc = elan_check_hwid();
+	if (rc != EC_SUCCESS) {
+		errors |= rc;
 		return EC_SUCCESS;
 	}
 
