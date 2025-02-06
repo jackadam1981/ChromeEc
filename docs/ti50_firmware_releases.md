@@ -8,7 +8,9 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.140       | 0.23.122
+[ToT][ToT ebuild]   | 0.24.140       | 0.23.140
+[M134][134 release] | 0.24.140       | 0.23.140
+[M133][133 release] | 0.24.140       | 0.23.122
 [M132][132 release] | 0.24.132       | 0.23.122
 [M131][131 release] | 0.24.121       | 0.23.112
 [M130][130 release] | 0.24.112       | 0.23.112
@@ -57,7 +59,9 @@ AP RO WP Sense                       | 0.22.6        |                  | M107
 AP RO Verification (without reset)   | 0.24.0        | 0.23.0           | M108
 Fix updates after PoR and deep sleep | 0.24.14       | 0.23.14          | M113
 AP RO Verification Enforcement       | 0.24.61       | 0.23.71          | M122
-Build uses Bazel artifacts           | 0.24.140      |                  | M133
+Reporting external WP assertion fix  | 0.24.131      | 0.23.140         | M133/M134
+Build uses Bazel artifacts           | 0.24.140      | 0.23.140         | M133/M134
+Support for NonInverted KSO          | 0.24.140      | 0.23.140         | M133/M134
 
 # RO revisions
 
@@ -880,6 +884,48 @@ Build:   ti50_common_mp-15980.B:v0.0.97-837bb529
          chrome-bot@chromeos-ci-firmware-us-east1-d-x32-0-okli 2024-12-13 13:30:38
 ```
 
+### 0.23.140 Released on 2025-01-17 in M134
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6182216)
+
+Builder
+[firmware-ti50-mp-15980.B-branch/39](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/39/overview)
+
+Artifacts:
+[15980.36.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch/R129-15980.36.0-1-8726835257518688593/dt-ti50.tar.bz2)
+
+**Bug Fixes**
+
+*   Fix AP boot issues resulting in 0x63 error
+    [b/372507391](https://b.corp.google.com/issues/372507391)
+*   Ensure WP_SENSE_L gpio polarity is correct after GSC FW updated
+    [b/254309086](https://b.corp.google.com/issues/254309086)
+
+**Features**
+
+*   Do not honor chassis open signal for 5 minutes for select models
+    [b/361060424](https://b.corp.google.com/issues/361060424)
+*   Update sysinfo rollback print format to match cr50, e.g. `info/a/b`
+*   Erase rollback bits to match active GSC FW on successful OS boot
+    [b/376859171](https://b.corp.google.com/issues/376859171)
+*   Add boot\_param implementation in tpm2
+    [b/376859171](https://b.corp.google.com/issues/376859171)
+*   Block PCR0 double extend
+    [b/385129891](https://b.corp.google.com/issues/385129891)
+*   Add RBOX 4th form factor for Non-Inverted KSO
+    [b/151064221](https://b.corp.google.com/issues/151064221)
+*   Fixes to improve pinweaver hardening
+    [b/325666144](https://b.corp.google.com/issues/325666144)
+*   First build to use bazel artifacts
+
+```
+Build:   ti50_common_mp-15980.B:v0.0.245-247cf69f
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9681-0d36270c8
+         ms-tpm-20-ref:v0.0.323-969d20e
+         chrome-bot@chromeos-ci-firmware-us-central2-d-x32-1-5qj0 2025-01-02 08:45:08
+```
 
 ## PrePVT images
 
@@ -1991,12 +2037,6 @@ Builder
 Artifacts:
 [15974.37.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch/R129-15974.37.0-1-8728006437754332961/dt-ti50.tar.bz2/)
 
-**Bug Fixes**
-
-*   Fix crypto interrupt handling bug that resulted in a
-    "Console is Busy!" error
-    [b/375956711](https://b.corp.google.com/issues/375956711)
-
 **Features**
 
 *   Block PCR0 double extend
@@ -2045,4 +2085,6 @@ Build:   ti50_common_prepvt-15974.B:v0.0.246-c837ddc5
 [130 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R130-16033.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [131 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R131-16063.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [132 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R132-16093.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[133 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R133-16151.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[134 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R134-16181.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
