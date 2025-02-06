@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a804855d_75f168ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-06T20:32:44Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. @fsammoura@google.com aren\u0027t we initializing `errors` to `FP_ERROR_DEAD_PIXELS_UNKNOWN` in all code?\n\nYou made the change in https://crrev.com/c/6031931\n\nMaybe this comment is supposed to be something like \"Only update \"errors\" if \"elan_check_hwid()\" fails\"?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "3db6e2e30bcbd8e8da73e078ab3b88f188fd5193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b491625_f60247cb",
         "filename": "driver/fingerprint/elan/elan_private.c",
         "patchSetId": 4
