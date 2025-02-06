@@ -338,8 +338,10 @@ void rsmrst_pass_thru_handler(void)
 			power_signal_set(PWR_EC_PCH_RSMRST, 0);
 			update_ap_boot_time(RSMRST);
 		}
+		board_after_rsmrst(1);
 	} else {
 		power_signal_set(PWR_EC_PCH_RSMRST, 1);
+		board_after_rsmrst(0);
 	}
 }
 
