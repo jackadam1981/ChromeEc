@@ -16,7 +16,6 @@
 		cros-ec,flash-controller = &fiu0;
 		cros-ec,raw-kb = &cros_kb_raw;
 		cros-ec,watchdog = &wdog;
-		cros,rtc = &crtc;
 	};
 
 	named-bbram-regions {

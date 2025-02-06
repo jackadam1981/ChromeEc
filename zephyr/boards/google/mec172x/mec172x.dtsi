@@ -54,15 +54,7 @@
 
 	soc {
 		/* Upstream nodes that would clash with the downstream ones. */
-		/delete-node/ rtc@400f5000;
 		/delete-node/ kscan@40009c00;
-
-		crtc: cros-rtc@400f5000 {
-			compatible = "microchip,xec-cros-rtc";
-			reg = <0x400f5000 0x100>;
-			interrupts = <119 0>, <120 0>;
-			label = "CRTC";
-		};
 
 		cros_kb_raw: cros-kb-raw@40009c00 {
 			compatible = "microchip,xec-cros-kb-raw";
@@ -120,10 +112,6 @@
 };
 
 &p80bd0 {
-	status = "okay";
-};
-
-&crtc {
 	status = "okay";
 };
 
