@@ -46,6 +46,30 @@
       },
       "revId": "5992b7014398762604803eccadd8b7bca0296915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057ca1c7_4b297835",
+        "filename": "util/check_zephyr_for_ec_symbols.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-06T21:37:31Z",
+      "side": 1,
+      "message": "It looks `k_sleep()` and others are only woken up by `k_wakeup()`.  Our Zephyr code has no references to `k_wakeup()`, and upstream I only see this called from some tests and one driver.\n\nSo I think we\u0027re safe to use `k_sleep()` as a direct replacement for `crec_sleep()`",
+      "parentUuid": "c8934a12_3114cda5",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "5992b7014398762604803eccadd8b7bca0296915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
