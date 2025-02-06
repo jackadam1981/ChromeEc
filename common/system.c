@@ -30,6 +30,7 @@
 #endif
 #include "cros_version.h"
 #include "panic.h"
+#include "panic_log.h"
 #include "sysjump.h"
 #include "system.h"
 #include "system_boot_time.h"
@@ -1012,6 +1013,10 @@ void system_common_pre_init(void)
 	} else {
 		/* Clear the whole jump_data struct */
 		memset(jdata, 0, sizeof(struct jump_data));
+	}
+
+	if (IS_ENABLED(CONFIG_PANIC_LOG)) {
+		panic_log_init();
 	}
 }
 
