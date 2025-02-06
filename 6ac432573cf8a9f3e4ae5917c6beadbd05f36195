@@ -34,6 +34,24 @@
       "parentUuid": "7bebc939_33460273",
       "revId": "6ac432573cf8a9f3e4ae5917c6beadbd05f36195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb5c45f_3191107d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-06T19:04:04Z",
+      "side": 1,
+      "message": "```The following boards are missing and must be added to BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG or BOARDS_THAT_FAIL_WITH_CLANG:\nmoxie```",
+      "parentUuid": "e91eda49_0afd817f",
+      "revId": "6ac432573cf8a9f3e4ae5917c6beadbd05f36195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
