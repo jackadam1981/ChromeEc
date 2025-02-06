@@ -871,6 +871,7 @@ static bool should_suspend(struct pdc_port_t *port)
 	case PDC_SUSPENDED:
 		return false;
 
+	case PDC_INVALID:
 	case PDC_STATE_COUNT:
 		__ASSERT(0, "Invalid state");
 	}
@@ -3130,6 +3131,7 @@ static void init_port_variables(struct pdc_port_t *port,
 
 	port->last_state = PDC_INIT;
 	port->next_state = PDC_INIT;
+	port->send_cmd_return_state = PDC_INVALID;
 }
 
 /**
