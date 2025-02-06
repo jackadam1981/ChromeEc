@@ -22,6 +22,30 @@
       },
       "revId": "594a7c09c7116a925a56b323a499004db27b3080",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b20d4d9_9e5b54b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-06T21:46:07Z",
+      "side": 1,
+      "message": "Done. I also did a diff between this version and the version from the CrOS repository; the only differences are the Go package name and a specifier to use the lite runtime in C++.",
+      "parentUuid": "600b0769_a80ac253",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 124
+      },
+      "revId": "594a7c09c7116a925a56b323a499004db27b3080",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
