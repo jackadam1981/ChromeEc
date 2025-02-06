@@ -16,6 +16,24 @@
       "message": "shoouldn\u0027t we enable MKBP for all fatcat variants ?",
       "revId": "b0e566cdc60d2a89c2e53a5ef8ce8de9f9f62c49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360970a2_465a584a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-06T17:56:16Z",
+      "side": 1,
+      "message": "no, MKBP is still a problem with the ITE EC b/391742450.",
+      "parentUuid": "80553216_e2607b58",
+      "revId": "b0e566cdc60d2a89c2e53a5ef8ce8de9f9f62c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
