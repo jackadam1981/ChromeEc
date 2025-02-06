@@ -14,6 +14,7 @@ import preupload.lib
 
 
 EC_FUNCTIONS: Dict[str, str] = {
+    "clock": "k_uptime_get_32",
     "udelay": "k_busy_wait",
     "crec_usleep": "k_usleep",
     "crec_msleep": "k_msleep",
