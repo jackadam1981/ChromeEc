@@ -29,6 +29,8 @@ extern const int pdc_cmd_types;
  * @brief State Machine States
  */
 enum pdc_state_t {
+	/** Initial value, a placeholder state before entering init state */
+	PDC_INVALID = -1,
 	/** PDC_INIT */
 	PDC_INIT,
 	/** PDC_UNATTACHED */
