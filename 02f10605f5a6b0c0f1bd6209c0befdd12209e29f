@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc9ce05f_4a8270be",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-07T21:55:55Z",
+      "side": 1,
+      "message": "I take that back, I guess no, but it\u0027s just like a path variable, in that you have multiple paths as they\u0027re normally defined, and separated by colons.  So in this case, since the python path was explicitly set to the zmake path within the chroot, we append a relative path to it.  If it isn\u0027t found it returns anyway.",
+      "parentUuid": "d2505199_fbf69165",
+      "range": {
+        "startLine": 377,
+        "startChar": 34,
+        "endLine": 377,
+        "endChar": 44
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d4ac2aa_14d13fad",
         "filename": "zephyr/zmake/zmake/__main__.py",
         "patchSetId": 2
