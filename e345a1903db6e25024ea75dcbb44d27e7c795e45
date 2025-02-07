@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546079fd_bef2272d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-07T17:05:14Z",
+      "side": 1,
+      "message": "Per OOB discussion, I agree that our existing behavior more closely matches the PD spec than the new behavior in this CL, and the existing behavior should be consistent with COMMON.CHECK.PD.2#1.5. If the compliance testers disagree with that, I\u0027m OK with this as a workaround.",
+      "revId": "e345a1903db6e25024ea75dcbb44d27e7c795e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
