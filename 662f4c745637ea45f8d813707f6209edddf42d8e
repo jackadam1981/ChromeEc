@@ -70,6 +70,24 @@
       "parentUuid": "8e758c1d_f73bede6",
       "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fdc8e9_b67935e6",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-07T07:09:33Z",
+      "side": 1,
+      "message": "I believe Tom in his comment was asking to create a test before the change and modify it after the change",
+      "parentUuid": "a029a431_99a4c936",
+      "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
