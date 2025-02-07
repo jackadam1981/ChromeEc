@@ -616,6 +616,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a86cd5_6db00016",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-07T06:39:40Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org does it really make sense to make it common? We would need to add a lot ifdefs - check if `transport_sel` defined, if it is do the detection (we can assume spi vs uart), if not (dartmonkey and future elan/egis usb board) do the #ifdef ladder to check which backend is configured.",
+      "parentUuid": "6a08a5e9_b5ab50fb",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "635402fe0febe63e3b7cc59da0a314f11a938758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5ba1ca_6c33d757",
