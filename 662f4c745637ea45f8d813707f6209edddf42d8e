@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db15616_6ccc0243",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-07T06:53:41Z",
+      "side": 1,
+      "message": "I think we should add a check in the `command_fpcapture` if the `capture_type` variable is correct (`capture_type` \u003e\u003d0 \u0026\u0026 `capture_type` \u003c `FP_CAPTURE_TYPE_MAX`), then return `EC_ERROR_PARAM1`.",
+      "fixSuggestions": [
+        {
+          "fixId": "843c933a_a10d9c9d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/fpsensor_debug.cc",
+              "range": {
+                "startLine": 127,
+                "startChar": 0,
+                "endLine": 128,
+                "endChar": 0
+              },
+              "replacement": "\tTEST_EQ(res, EC_ERROR_PARAM1, \"%d\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
