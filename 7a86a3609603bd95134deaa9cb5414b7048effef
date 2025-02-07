@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f68efbf_f26144ec",
+        "filename": "zephyr/dts/bindings/adc/named-adc-channels.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-02-07T09:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "274c23aa_d54dafdd",
+      "revId": "7a86a3609603bd95134deaa9cb5414b7048effef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "313ea17e_82ffe4ee",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-06T23:39:14Z",
       "side": 1,
       "message": "dirks is not fizz.",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "7a86a3609603bd95134deaa9cb5414b7048effef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca5d78f_b6539bd6",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-02-07T09:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "313ea17e_82ffe4ee",
       "range": {
         "startLine": 41,
         "startChar": 41,
