@@ -42,6 +42,88 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3beebff0_163415bd",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-02-07T23:43:17Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c7981e3e_57cb9194",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "    * Find the instruction that fetches the NPCX monitor from GSC\n"
+            }
+          ]
+        }
+      ],
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d97749c_c324e67c",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-02-07T23:43:17Z",
+      "side": 1,
+      "message": "GCS",
+      "range": {
+        "startLine": 27,
+        "startChar": 62,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "59c7ec4d_8de43ca3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "    * Find the instruction that fetches the NPCX monitor from GCS\n"
+            }
+          ]
+        }
+      ],
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19c40191_0b64bb86",
@@ -61,6 +143,47 @@
         "endLine": 62,
         "endChar": 45
       },
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ea1803_532b6e82",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-02-07T23:43:17Z",
+      "side": 1,
+      "message": "This is",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fe00db85_b7dd2385",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+              "range": {
+                "startLine": 94,
+                "startChar": 0,
+                "endLine": 95,
+                "endChar": 0
+              },
+              "replacement": "This is the workflow to program a new firmware image over the UART interface.\n"
+            }
+          ]
+        }
+      ],
       "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
