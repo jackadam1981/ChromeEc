@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f57531_85b63e97",
+        "filename": "zephyr/dts/bindings/cros_rtc/microchip,xec-cros-rtc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-07T22:32:32Z",
+      "side": 0,
+      "message": "You also need to delete devicetree references to this compat string.\n[Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-bloonchipper/ec/zephyr/boards/google/mec172x/mec172x.dtsi;l\u003d62;drc\u003d83c4dbdb7b81f38f310bdecbc249d46906e938db)",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "c13abff014e1f5f6ec43a46e8b1ea8ed91dc16e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
