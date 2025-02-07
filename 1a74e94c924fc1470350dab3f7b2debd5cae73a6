@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18b4ebf1_92a41c3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-07T05:26:09Z",
+      "side": 1,
+      "message": "Thanks, after re-base, this patch fails \"zmake compare-builds bloonchipper\" with the below, not sure why yet\n\u003eFailed projects by diff in binary: bloonchipper\nAll failed projects: [\u0027bloonchipper\u0027]",
+      "parentUuid": "f1b5f05a_cc6290b8",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f496ba19_3c975943",
         "filename": "zephyr/program/fpmcu/bloonchipper/CMakeLists.txt",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "writtenOn": "2025-02-04T22:34:22Z",
       "side": 1,
       "message": "This should be moved to `zephyr/program/fpmcu/CMakeLists.txt`. You should also rename it to `fp_transport.c`, because \"common\" files is a magnet for some unrelated code 😊 Instead of `zephyr_library_sources()`, please use `zephyr_library_sources_ifdef(CONFIG_EC_HOST_CMD \"src/fp_transport.c\")`, because we don\u0027t need that code if we are compiling without host command support.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a31b5b_881b71fa",
+        "filename": "zephyr/program/fpmcu/bloonchipper/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-07T05:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f496ba19_3c975943",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2287790b_eee72a03",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-07T05:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075c7eb4_a5379cff",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e9d2e96_dc61b0a5",
@@ -131,6 +203,24 @@
       "writtenOn": "2025-02-05T06:53:54Z",
       "side": 1,
       "message": "Is that really common for all boards? Dartmonkey always [returns](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/nocturne_fp/fpsensor_detect.c) SPI and even there is no `FP_SENSOR_SEL` defined in the dartmonkey [gpio file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/nocturne_fp/gpio_rw.inc). Or I\u0027m missing something?",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1b2a3ba_d70442aa",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-07T05:26:09Z",
+      "side": 1,
+      "message": "This is a fair question. Note that the implementation follows @tomhughes code review suggestion [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5018794/comment/2d2b4a09_7180f176/). I don\u0027t have a strong opinion on making this common vs not, happy to implement either way. If there is debate here, maybe we move the discussion to the TODO in b/394346384?",
+      "parentUuid": "6e9d2e96_dc61b0a5",
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
