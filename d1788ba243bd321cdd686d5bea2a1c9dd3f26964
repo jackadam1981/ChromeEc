@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362e858a_edf787f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-07T10:05:17Z",
+      "side": 1,
+      "message": "Isn\u0027t power_config.c removed in CL:6072650?\n\nYou probably need to stack this one and CL:6072650 together, and resolve merge conflict first.",
+      "revId": "d1788ba243bd321cdd686d5bea2a1c9dd3f26964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
