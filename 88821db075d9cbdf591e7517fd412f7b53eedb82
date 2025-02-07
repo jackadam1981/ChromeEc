@@ -16,6 +16,24 @@
       "message": "You could consider making a change so that changes to the `zephyr/zmake` path trigger a full CQ run, since changes to `zmake` are somewhat likely to affect the ebuild. See [this](http://shortn/_ftmHarflgu) for an example.",
       "revId": "88821db075d9cbdf591e7517fd412f7b53eedb82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "285e5b28_f17d886f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-07T01:40:24Z",
+      "side": 1,
+      "message": "i\u0027m gonna ACK this for now so we can get builder back online",
+      "parentUuid": "382bf10e_3a4677fd",
+      "revId": "88821db075d9cbdf591e7517fd412f7b53eedb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
