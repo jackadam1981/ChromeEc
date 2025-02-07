@@ -70,6 +70,24 @@
       "parentUuid": "824e1949_eb19c925",
       "revId": "1d5727d3ae3bcee7e2119d13d6c6c0343c1d45df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e43d76b_496dbcda",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 3503,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-07T06:01:49Z",
+      "side": 1,
+      "message": "I understand the what, but the how is tougher. Trying to set this using the DeviceTree API in [prj.conf](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5018794/45/zephyr/program/fpmcu/helipilot/prj.conf#49) yielded compile errors. If I should set through the DT API, is there a better place than prj.conf to set that?",
+      "parentUuid": "fcf2f2ea_64913b36",
+      "revId": "1d5727d3ae3bcee7e2119d13d6c6c0343c1d45df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
