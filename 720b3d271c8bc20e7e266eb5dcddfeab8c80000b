@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7e43e9_b4ea8b80",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-02-07T22:39:34Z",
+      "side": 1,
+      "message": "Using gsutil cp would be more convient.\n\n`gsutil cp -n -a public-read npcx_monitor.bin gs://chromeos-localmirror/distfiles/cros_ec/npcx_monitor/npcx_monitor.bin-2025.02.07.bin`",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 119
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "12ee734b_d6734368",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "    * Use the `gsutil` command to upload the file.\n    * Note that the name of the file must be unique.  The `-n` option\n      prevents overwriting an existing file.\n    * The `-a public-read` option makes the file publicly readable.\n\n    ```bash\n    gsutil cp -n -a public-read npcx_monitor.bin-2025.02.07.bin gs://chromeos-localmirror/distfiles/cros_ec/npcx_monitor/\n    ```\n"
+            }
+          ]
+        }
+      ],
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c40191_0b64bb86",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-02-07T22:39:34Z",
+      "side": 1,
+      "message": "I wish this was copied to output also.",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
