@@ -16,6 +16,24 @@
       "message": "I think if you set `PLATFORM_EC_HIBERNATE\u003dn` you won\u0027t need this, and don\u0027t need to change `nissa/src/common.c`.",
       "revId": "e5dc8272cc0805e4aa85eeb2d789a5b4c4a3c529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffea97e5_0851e2dc",
+        "filename": "zephyr/program/nissa/dirks/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-02-07T02:51:56Z",
+      "side": 1,
+      "message": "I undefined `PLATFORM_EC_HIBERNATE` but I still need to change nissa/src/common.c for Dirks doesn\u0027t define `gpio_en_slp_z`.",
+      "parentUuid": "3f682851_bb1c93e7",
+      "revId": "e5dc8272cc0805e4aa85eeb2d789a5b4c4a3c529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
