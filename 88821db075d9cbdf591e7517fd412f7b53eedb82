@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382bf10e_3a4677fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-07T01:13:55Z",
+      "side": 1,
+      "message": "You could consider making a change so that changes to the `zephyr/zmake` path trigger a full CQ run, since changes to `zmake` are somewhat likely to affect the ebuild. See [this](http://shortn/_ftmHarflgu) for an example.",
+      "revId": "88821db075d9cbdf591e7517fd412f7b53eedb82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
