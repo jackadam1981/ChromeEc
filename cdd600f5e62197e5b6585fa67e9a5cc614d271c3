@@ -39,6 +39,30 @@
       },
       "revId": "cdd600f5e62197e5b6585fa67e9a5cc614d271c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63dbf163_6555ff1d",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-02-07T23:00:14Z",
+      "side": 1,
+      "message": "check\u003dTrue will throw if return code is bad.",
+      "parentUuid": "55904067_1fb4b18d",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 18
+      },
+      "revId": "cdd600f5e62197e5b6585fa67e9a5cc614d271c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

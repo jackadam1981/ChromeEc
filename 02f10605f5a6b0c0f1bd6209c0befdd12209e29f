@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67d53bc8_63cd3bf2",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-02-07T23:00:14Z",
+      "side": 1,
+      "message": "Alternatively, you could loop over sys.path, and try looking for ../../util/coreboot_sdk.py on each one until you find it.",
+      "parentUuid": "89a32665_d53abf50",
+      "range": {
+        "startLine": 377,
+        "startChar": 34,
+        "endLine": 377,
+        "endChar": 44
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d4ac2aa_14d13fad",
         "filename": "zephyr/zmake/zmake/__main__.py",
         "patchSetId": 2
