@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89a32665_d53abf50",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-07T21:59:59Z",
+      "side": 1,
+      "message": "Hrmm, so this will only work if the reexec logic is executed.\n\nIs running zmake outside the chroot supported? Outside the chroot we can\u0027t rely on PYTHONPATH being anything sane.\n\ni.e., we can call `(outside) $ PYTHONPATH\u003d/tmp/foo zmake ....` and we will fail to lookup the toolchains.\n\nPYTHONPATH normally gets appended to the search path:\n```\n$ PYTHONPATH\u003d/foo:/bar python3 -c \u0027import sys; print(sys.path)\u0027\n[\u0027\u0027, \u0027/foo\u0027, \u0027/bar\u0027, \u0027/usr/lib/python311.zip\u0027, \u0027/usr/lib/python3.11\u0027, \u0027/usr/lib/python3.11/lib-dynload\u0027, \u0027/usr/local/lib/python3.11/dist-packages\u0027, \u0027/usr/lib/python3/dist-packages\u0027, \u0027/usr/lib/python3.11/dist-packages\u0027]\n```\n\nIf anything I would put a comment here explaining what the expectation for PYTHONPATH is and why this works.",
+      "parentUuid": "d2505199_fbf69165",
+      "range": {
+        "startLine": 377,
+        "startChar": 34,
+        "endLine": 377,
+        "endChar": 44
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d4ac2aa_14d13fad",
         "filename": "zephyr/zmake/zmake/__main__.py",
         "patchSetId": 2
