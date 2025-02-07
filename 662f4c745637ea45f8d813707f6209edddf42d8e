@@ -34,6 +34,24 @@
       ],
       "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e758c1d_f73bede6",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-07T06:56:35Z",
+      "side": 1,
+      "message": "Oh, I just saw the next commit. I think you should switch the order. Please move CL:6240656 before this one and use `EC_ERROR_PARAM1`.",
+      "parentUuid": "9db15616_6ccc0243",
+      "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
