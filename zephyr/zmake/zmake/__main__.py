@@ -16,13 +16,6 @@ from zmake import multiproc
 import zmake.zmake as zm
 
 
-# Add the util directory to the search path
-sys.path.append(str("/mnt/host/source/src/platform/ec/util"))
-
-# pylint: disable=import-error, wrong-import-position
-from coreboot_sdk import init_toolchain
-
-
 def maybe_reexec(argv):
     """Re-exec zmake from the EC source tree, if possible and desired.
 
@@ -385,9 +378,22 @@ def main(argv=None):
     parser, _ = get_argparser()
     opts = parser.parse_args(argv)
 
-    env_vars = init_toolchain()
-    if env_vars:
-        os.environ.update({k: v.decode("utf-8") for k, v in env_vars.items()})
+    if os.environ.get("COREBOOT_SDK_ROOT") is None:
+        # Backup the path
+        backup_path = sys.path.copy()
+        # Add the util directory to the search path
+        sys.path.append(str("/mnt/host/source/src/platform/ec/util"))
+
+        # pylint: disable=import-error, wrong-import-position, import-outside-toplevel
+        from coreboot_sdk import init_toolchain
+
+        sys.path = backup_path
+
+        env_vars = init_toolchain()
+        if env_vars:
+            os.environ.update(
+                {k: v.decode("utf-8") for k, v in env_vars.items()}
+            )
 
     # Default logging
     log_label = False
