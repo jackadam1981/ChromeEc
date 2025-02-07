@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9f96c4_a20749f4",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-07T16:15:23Z",
+      "side": 1,
+      "message": "I suggest at least starting with 30W and getting clarification from the HW team on the correct value.",
+      "range": {
+        "startLine": 62,
+        "startChar": 53,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "fb962f3f626908f1abbf610edf34e290709cf27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49c07f3_2f7678b0",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-07T16:15:23Z",
+      "side": 1,
+      "message": "Wrong PID, allocate a new one.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "fb962f3f626908f1abbf610edf34e290709cf27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
