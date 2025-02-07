@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54fb96a9_5547e2be",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-07T21:02:18Z",
+      "side": 1,
+      "message": "PYTHONPATH is defined by the outer invocation, the script sets up and invokes itself from within the chroot.  This is using PYTHONPATH to get the version from within the chroot if available.  It should be a slash separated list and testing passed.  I think this is how we should keep it, and I\"M not sure that getting the directory that the file in is cleaner.",
+      "parentUuid": "2e445a05_90bc29fa",
+      "range": {
+        "startLine": 377,
+        "startChar": 34,
+        "endLine": 377,
+        "endChar": 44
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d4ac2aa_14d13fad",
         "filename": "zephyr/zmake/zmake/__main__.py",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-07T19:07:50Z",
       "side": 1,
       "message": "Maybe add a `#!` to `coreboot_sdk.py` so you can directly invoke it?",
+      "range": {
+        "startLine": 383,
+        "startChar": 13,
+        "endLine": 383,
+        "endChar": 24
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082310c3_28e56daf",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-07T21:02:18Z",
+      "side": 1,
+      "message": "It\u0027s already there, updated to invoke directly",
+      "parentUuid": "9d4ac2aa_14d13fad",
       "range": {
         "startLine": 383,
         "startChar": 13,
