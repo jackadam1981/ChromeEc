@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c88ccf_9bbe7db5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-02-07T05:48:12Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8723634126628172865) is being automatically retried for the following reasons:\n- Some child builders are now retryable:brox-cq, corsola-cq, geralt-cq, nissa-cq, rauru-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "ffb86c9216a201a7f7a2680ebf8bb29d242a0bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
