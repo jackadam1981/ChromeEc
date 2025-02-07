@@ -88,6 +88,24 @@
       "parentUuid": "a029a431_99a4c936",
       "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f2b83d_05e6c00b",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-07T08:21:32Z",
+      "side": 1,
+      "message": "Ok, that also works",
+      "parentUuid": "67fdc8e9_b67935e6",
+      "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

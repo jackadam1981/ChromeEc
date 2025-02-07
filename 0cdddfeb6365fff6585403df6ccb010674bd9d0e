@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1c3836_27bbcfee",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-07T08:21:32Z",
+      "side": 1,
+      "message": "Maybe rename it to `test_command_fpcapture_incorrect_mode`? Up to you.",
+      "range": {
+        "startLine": 113,
+        "startChar": 16,
+        "endLine": 113,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3d4ec395_0c7ab8e3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/fpsensor_debug.cc",
+              "range": {
+                "startLine": 113,
+                "startChar": 0,
+                "endLine": 114,
+                "endChar": 0
+              },
+              "replacement": "test_static int test_command_fpcapture_incorrect_mode(void)\n"
+            },
+            {
+              "path": "test/fpsensor_debug.cc",
+              "range": {
+                "startLine": 158,
+                "startChar": 0,
+                "endLine": 159,
+                "endChar": 0
+              },
+              "replacement": "\t\tRUN_TEST(test_command_fpcapture_incorrect_mode);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0cdddfeb6365fff6585403df6ccb010674bd9d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
