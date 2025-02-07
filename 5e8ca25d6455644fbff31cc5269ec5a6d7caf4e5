@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abef16f8_0fc5f595",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3178,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-07T21:52:31Z",
+      "side": 1,
+      "message": "These policy functions don\u0027t have very instructive names. That\u0027s been tolerable up to this point, because the power-state hook just calls them in numerical order.\n\nIf we\u0027re going to call them outside of the power state hooks, it\u0027s probably a good time to give them more useful names.",
+      "range": {
+        "startLine": 3178,
+        "startChar": 1,
+        "endLine": 3178,
+        "endChar": 37
+      },
+      "revId": "5e8ca25d6455644fbff31cc5269ec5a6d7caf4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
