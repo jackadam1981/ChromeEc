@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ba4be01_9cf9c1c5",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-07T06:05:40Z",
+      "side": 1,
+      "message": "Yes, the change from EC is intended to allocate memory towards data RAM and away from code RAM. Compared to EC, this is needed to accomate the large image buffers needed by FPS",
+      "parentUuid": "b41514a6_53a814b9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90908f17_7ce5c20d",
