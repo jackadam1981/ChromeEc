@@ -16,6 +16,24 @@
       "message": "Is there anything extra that needs to be done get this chnage deployed to lab stations?",
       "revId": "8343c64df73fcfd689b98ccae3cfe830eeeafe5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2995af41_c45593c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-02-07T17:14:32Z",
+      "side": 1,
+      "message": "Labstations, no, but servod, yes. See https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/third_party/hdctools/servo/dockerfiles/Dockerfile;l\u003d398;drc\u003dcf1440d2869bad59431b647f86115fcf77eeee34\n\nThat should probably be in a README in this directory as a big scary message.",
+      "parentUuid": "512afba0_63aa7a0c",
+      "revId": "8343c64df73fcfd689b98ccae3cfe830eeeafe5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
