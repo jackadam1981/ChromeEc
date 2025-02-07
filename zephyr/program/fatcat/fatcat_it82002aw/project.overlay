@@ -62,6 +62,22 @@ i2c3ALT: &i2c3 {
 #include "../../intelrvp/ptlrvp/pd.dtsi"
 #include "../../intelrvp/ptlrvp/usbc.dtsi"
 
+/*
+ * TODO: Remove this when b/393403088 is resolved.
+ */
+&pd_pow_i2c {
+	/delete-node/ rts54-pdc@68;
+};
+
+/ {
+	usbc-ports {
+		/delete-node/ port2@2;
+		ppm-driver {
+			lpm = <&pd_pow_port0 &pd_pow_port1>;
+		};
+	};
+};
+
 /* these need to be promoted to program.conf */
 
 #include "binman.dtsi"
