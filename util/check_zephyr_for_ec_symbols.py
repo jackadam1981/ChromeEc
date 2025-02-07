@@ -19,6 +19,9 @@ EC_FUNCTIONS: Dict[str, str] = {
     "crec_usleep": "k_usleep",
     "crec_msleep": "k_msleep",
     "crec_sleep": "k_sleep(K_SECONDS(sec))",
+    "force_time": "",
+    "time_after": "",
+    "time_until": "",
 }
 
 EC_MACROS: Dict[str, str] = {
