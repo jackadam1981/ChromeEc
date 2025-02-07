@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8784af11_f131e449",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-07T16:13:11Z",
+      "side": 1,
+      "message": "This seems much too low.  For ADL-N we set this to 30W.  For PTL I suspect this needs to be even higher than 30W.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 58
+      },
+      "revId": "5147715ba1d98b80377149a89e2fae6e082de7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7bf3342_9850aa45",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-07T16:13:11Z",
+      "side": 1,
+      "message": "This is Intel\u0027s VID, and shouldn\u0027t be used as a PID since it\u0027s not  in our chromeos product ID list. \nYou should allocate a PID for fatcat.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "5147715ba1d98b80377149a89e2fae6e082de7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
