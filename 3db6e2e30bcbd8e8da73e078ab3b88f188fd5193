@@ -93,6 +93,30 @@
       },
       "revId": "3db6e2e30bcbd8e8da73e078ab3b88f188fd5193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0fcfb92_2251d029",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-02-07T02:58:35Z",
+      "side": 1,
+      "message": "Fixed in PS6",
+      "parentUuid": "1b491625_f60247cb",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "3db6e2e30bcbd8e8da73e078ab3b88f188fd5193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
