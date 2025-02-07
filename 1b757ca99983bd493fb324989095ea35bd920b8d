@@ -1,0 +1,65 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0420c154_ebb62763",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-07T06:58:27Z",
+      "side": 1,
+      "message": "Why is that needed?",
+      "range": {
+        "startLine": 91,
+        "startChar": 19,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d09ea40a_8e7a5999",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/fpsensor_debug.cc",
+              "range": {
+                "startLine": 91,
+                "startChar": 0,
+                "endLine": 93,
+                "endChar": 0
+              },
+              "replacement": "\tchar console_input[] \u003d \"fpcapture\";\n\tres \u003d test_send_console_command(console_input);\n"
+            },
+            {
+              "path": "test/fpsensor_debug.cc",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\tchar console_input[] \u003d \"fpcapture 56\";\n\tsnprintf(console_input, sizeof(console_input), \"fpcapture %d\",\n"
+            },
+            {
+              "path": "test/fpsensor_debug.cc",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "\tres \u003d test_send_console_command(console_input);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1b757ca99983bd493fb324989095ea35bd920b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
