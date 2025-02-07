@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "190401ea_9cd29e66",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-07T20:17:54Z",
+      "side": 1,
+      "message": "ok, 30 W it is for now.\nfiled b/395130929. let\u0027s tune this consistently for all ptlrvp/fatcat cases.",
+      "parentUuid": "8f9f96c4_a20749f4",
+      "range": {
+        "startLine": 62,
+        "startChar": 53,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "fb962f3f626908f1abbf610edf34e290709cf27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e49c07f3_2f7678b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-07T16:15:23Z",
       "side": 1,
       "message": "Wrong PID, allocate a new one.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "fb962f3f626908f1abbf610edf34e290709cf27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e87028_d8bbd84a",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-07T20:17:54Z",
+      "side": 1,
+      "message": "turns out, we already have one allocted:\n```\nproduct {\n  id: 0x5070\n  name: \"Intel PTL-RVP\"\n  project: \"Chrome OS\"\n  comments: \"Realtek RTS5453 PDC on Intel Panther Lake RVP\"\n}\n```",
+      "parentUuid": "e49c07f3_2f7678b0",
       "range": {
         "startLine": 67,
         "startChar": 27,
