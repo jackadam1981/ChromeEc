@@ -52,6 +52,24 @@
       "parentUuid": "2995af41_c45593c9",
       "revId": "8343c64df73fcfd689b98ccae3cfe830eeeafe5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ab6077_21d0a88e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-02-07T18:41:43Z",
+      "side": 1,
+      "message": "How about in CMakeList.txt calling a script to check if the hash of the generated `npcx_monitor.bin` equals to a pre-defined hash? Any change to the file will fail the build, leading people to the script, which shows the instructions to upload the GS file and update the new hash.",
+      "parentUuid": "0410d49c_c449fb15",
+      "revId": "8343c64df73fcfd689b98ccae3cfe830eeeafe5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
