@@ -52,6 +52,24 @@
       "parentUuid": "9db15616_6ccc0243",
       "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a029a431_99a4c936",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-07T07:00:30Z",
+      "side": 1,
+      "message": "I added this check in the following CL. In this CL, I introduced this test and tested for the baseline. Here it will fail because the mode cannot be validated so it will return `EC_ERROR_UNKNOWN`",
+      "parentUuid": "8e758c1d_f73bede6",
+      "revId": "662f4c745637ea45f8d813707f6209edddf42d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
