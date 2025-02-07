@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e445a05_90bc29fa",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-07T19:07:50Z",
+      "side": 1,
+      "message": "Isn\u0027t this a `:` separated list?\n\nWould using `os.path.dirname(__file__)` be cleaner?",
+      "range": {
+        "startLine": 377,
+        "startChar": 34,
+        "endLine": 377,
+        "endChar": 44
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d4ac2aa_14d13fad",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-07T19:07:50Z",
+      "side": 1,
+      "message": "Maybe add a `#!` to `coreboot_sdk.py` so you can directly invoke it?",
+      "range": {
+        "startLine": 383,
+        "startChar": 13,
+        "endLine": 383,
+        "endChar": 24
+      },
+      "revId": "02f10605f5a6b0c0f1bd6209c0befdd12209e29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
