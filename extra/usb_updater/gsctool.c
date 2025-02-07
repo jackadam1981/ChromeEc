@@ -1743,7 +1743,7 @@ static int transfer_image(struct transfer_descriptor *td, struct image *image)
 
 	/* Now that we have an active connection and an image, pick sections */
 	pick_sections(td, image);
-	for (i = 0; i < ARRAY_SIZE(update_order); i++) {
+	for (i = 2; i < ARRAY_SIZE(update_order); i++) {
 		const enum section sect = update_order[i];
 
 		if (!sections[sect].update_needed)
