@@ -93,6 +93,30 @@
       },
       "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fa51ce_914d73b4",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3511,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-07T13:19:59Z",
+      "side": 1,
+      "message": "I think we need to take a broader look at it.\n\nAfter [this CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5759499) `CONFIG_RWSIG_READ_ADDR` and `CONFIG_RO_PUBKEY_READ_ADDR` are used only if `CONFIG_MAPPED_STORAGE` is defined, which is resonable because otherwise we would need to use `crec_flash_read()` function. I assume that `CONFIG_MAPPED_STORAGE_BASE` is defined if `CONFIG_MAPPED_STORAGE` is.\n\nIn Zephyr, `CONFIG_MAPPED_STORAGE_BASE` points to the correct address, see [1](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.flash;l\u003d115;drc\u003d8d523b29fe48ef8c06e9ed23c12a06628010937d), [2](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/nuvoton/npcx_cros.dtsi;l\u003d13;drc\u003d8b078f0a9b96f6aa192aef4b690990a0f08d7dc7), [3](https://github.com/zephyrproject-rtos/zephyr/blob/95179b24c7e553a1f5fd2398be7d04d96d7cc12a/dts/arm/nuvoton/npcx9mfp.dtsi#L20) same for STM32 (`CONFIG_MAPPED_STORAGE_BASE` and `CONFIG_PROGRAM_MEMORY_BASE` are equal actually).\n\nWhat I mean is that all addresses used by RWSIG should be based on address of mapped storage, not program base address (`CONFIG_PROGRAM_MEMORY_BASE` is an address of program that is currently running! There is no need to check anything there). It doesn\u0027t make any difference on chips that execude code from flash (STM32 chips), but it makes a difference on chips that execute code from RAM. To be precise, all macros from [`include/rwsig.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/rwsig.h;l\u003d91-132;drc\u003d6757ebe2dce2a23e2cd3149eb82b32faa4f16908) that use `CONFIG_PROGRAM_MEMORY_BASE`, should be converted to `CONFIG_MAPPED_STORAGE_BASE`. After converting these macros, you should run `compare-builds` for existing EC and Zephyr boards. Please send it as a separate CL.\n\nThis change would allow us to get rid of `CONFIG_RO_PUBKEY_READ_ADDR` and `CONFIG_RWSIG_READ_ADDR` (and this CL as a result) which is just a quick and dirty way to provide correct address while not introducing any risk of breaking anything 😊.",
+      "parentUuid": "2e260dc0_e3dc4025",
+      "range": {
+        "startLine": 3505,
+        "startChar": 0,
+        "endLine": 3511,
+        "endChar": 42
+      },
+      "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
