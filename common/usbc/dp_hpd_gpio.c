@@ -51,10 +51,14 @@ int svdm_get_hpd_gpio(int port)
 
 void svdm_set_hpd_gpio_irq(int port)
 {
+	const uint64_t ts = get_time().val;
+
 	svdm_set_hpd_gpio(port, 0);
 
 	if (IS_ENABLED(CONFIG_USB_PD_DP_HPD_GPIO_IRQ_ACCURATE)) {
-		udelay(HPD_DSTREAM_DEBOUNCE_IRQ);
+		while (get_time().val < ts + HPD_DSTREAM_DEBOUNCE_IRQ) {
+			udelay(10);
+		}
 	} else {
 		crec_usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
 	}
