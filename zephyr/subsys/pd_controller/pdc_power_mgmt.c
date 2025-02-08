@@ -2819,13 +2819,13 @@ static void pdc_init_entry(void *obj)
 }
 
 /**
- * @brief Chipset Resume (S3->S0) Policy 1: Set a flag to perform a one-time
- *        test if we should swap to a source role. (applicable only if we are
+ * @brief Chipset Resume (S3->S0) Policy: Set a flag to perform a one-time test
+ *        if we should swap to a source role. (applicable only if we are
  *        currently a sink)
  */
-static void enforce_pd_chipset_resume_policy_1(int port)
+static void enforce_pd_chipset_resume_policy(int port)
 {
-	LOG_DBG("C%d: Chipset Resume Policy 1", port);
+	LOG_DBG("C%d: Chipset Resume Policy", port);
 
 	/* If we're in a sink role, run a check to determine if we'd prefer a
 	 * source role.
@@ -2846,45 +2846,34 @@ static void enforce_pd_chipset_resume_policy_1(int port)
  */
 
 /**
- * @brief Chipset Resume (S3->S0) Policy 2:
+ * @brief Chipset On State (S3->S0) Policy:
  *	a) Set DRP role based on platform
  */
-static void enforce_pd_chipset_resume_policy_2(int port)
+static void enforce_pd_chipset_on_state_policy(int port)
 {
-	LOG_DBG("C%d: Chipset Resume Policy 2", port);
+	LOG_DBG("C%d: Chipset On State Policy", port);
 
 	pdc_power_mgmt_set_dual_role(port, pd_get_drp_state_in_s0());
 }
 
 /**
- * @brief Chipset Suspend (S0->S3) Policy 1:
- *	a) DRP TOGGLE OFF
- */
-static void enforce_pd_chipset_suspend_policy_1(int port)
-{
-	LOG_DBG("C%d: Chipset Suspend Policy 1", port);
-
-	pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
-}
-
-/**
- * @brief Chipset Startup (S5->S3) Policy 1:
+ * @brief Chipset Suspend State (S5->S3 or S0->S3) Policy:
  *	a) DRP Toggle OFF
  */
-static void enforce_pd_chipset_startup_policy_1(int port)
+static void enforce_pd_chipset_suspend_state_policy(int port)
 {
-	LOG_DBG("C%d: Chipset Startup Policy 1", port);
+	LOG_DBG("C%d: Chipset Suspend State Policy", port);
 
 	pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
 }
 
 /**
- * Chipset Shutdown (S3->S5) Policy 1:
+ * Chipset Off State (S5) Policy:
  *	a) DRP Force SINK
  */
-static void enforce_pd_chipset_shutdown_policy_1(int port)
+static void enforce_pd_chipset_off_state_policy(int port)
 {
-	LOG_DBG("C%d: Chipset Shutdown Policy 1", port);
+	LOG_DBG("C%d: Chipset Off State Policy", port);
 
 	pdc_power_mgmt_set_dual_role(port, PD_DRP_FORCE_SINK);
 }
@@ -2911,28 +2900,28 @@ static void pdc_apply_power_state_policy(struct k_work *work)
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
 		LOG_INF("PD: AP is ON: apply 'startup' followed by 'resume'");
 		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			enforce_pd_chipset_startup_policy_1(i);
+			enforce_pd_chipset_suspend_state_policy(i);
 			/*
 			 * Setting the dual role state clears the policy flag
 			 * SNK_POLICY_SWAP_TO_SRC which may get set in
-			 * enforce_pd_chipset_resume_policy_1() so this policy
-			 * function needs to be called after resume_policy_2()
+			 * enforce_pd_chipset_resume_policy() so this policy
+			 * function needs to be called after on_state_policy()
 			 * which sets DRP mode on.
 			 */
-			enforce_pd_chipset_resume_policy_2(i);
-			enforce_pd_chipset_resume_policy_1(i);
+			enforce_pd_chipset_on_state_policy(i);
+			enforce_pd_chipset_resume_policy(i);
 			clear_hpd_wake_watch(i);
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
 		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
 		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			enforce_pd_chipset_suspend_policy_1(i);
+			enforce_pd_chipset_suspend_state_policy(i);
 			set_hpd_wake_watch(i);
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		LOG_INF("PD: AP is OFF: apply 'shutdown' policy");
 		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-			enforce_pd_chipset_shutdown_policy_1(i);
+			enforce_pd_chipset_off_state_policy(i);
 		}
 	}
 }
@@ -3175,7 +3164,7 @@ static int pdc_subsys_init(const struct device *dev)
 	k_timer_init(&port->typec_only_timer, NULL, NULL);
 
 	/* Initialize platform policy */
-	enforce_pd_chipset_shutdown_policy_1(config->connector_num);
+	enforce_pd_chipset_off_state_policy(config->connector_num);
 
 	/* Create the thread for this port */
 	config->create_thread(dev);
