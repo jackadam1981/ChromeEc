@@ -22,6 +22,30 @@
       },
       "revId": "5e8ca25d6455644fbff31cc5269ec5a6d7caf4e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8491167_224cd5cc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3178,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-02-08T02:04:13Z",
+      "side": 1,
+      "message": "That sounds good. I rename them in this [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6245552/1). Because Hylia is in a tight schedule, I would to first merge the fix, so please take your time for reviewing the renaming CL, thank you.",
+      "parentUuid": "abef16f8_0fc5f595",
+      "range": {
+        "startLine": 3178,
+        "startChar": 1,
+        "endLine": 3178,
+        "endChar": 37
+      },
+      "revId": "5e8ca25d6455644fbff31cc5269ec5a6d7caf4e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
