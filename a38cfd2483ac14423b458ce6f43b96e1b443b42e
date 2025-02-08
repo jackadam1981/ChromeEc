@@ -16,6 +16,24 @@
       "message": "is it applicable to any other dedede boards besides awasuke?",
       "revId": "a38cfd2483ac14423b458ce6f43b96e1b443b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa3c41f_ece7ba31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-02-08T01:16:47Z",
+      "side": 1,
+      "message": "From the current changes, other dedede boards can add these changes if they need to support PD3.1 testing.",
+      "parentUuid": "536abb2d_560b1640",
+      "revId": "a38cfd2483ac14423b458ce6f43b96e1b443b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
