@@ -136,7 +136,7 @@ GPIO(USB_FS_DP,			PIN(A, 12), GPIO_ALTERNATE)
 /* Signals for hardware on the Nucleo board itself */
 GPIO_INT(NUCLEO_LED1,		PIN(C, 7),  GPIO_OUT_HIGH | ANY_EDGE, gpio_edge) /* Green, TIM8_CH3 */
 GPIO_INT(NUCLEO_LED2,		PIN(B, 7),  GPIO_OUT_LOW | ANY_EDGE, gpio_edge) /* Blue, TIM4_CH2 */
-GPIO_INT(NUCLEO_LED3,		PIN(A, 9),  GPIO_OUT_LOW | ANY_EDGE, gpio_edge) /* Red, TIM1_CH2 */
+GPIO_INT(NUCLEO_LED3,		PIN(A, 9),  GPIO_OUT_HIGH | ANY_EDGE, gpio_edge) /* Red, TIM1_CH2 */
 GPIO_INT(NUCLEO_USER_BTN,	PIN(C, 13), GPIO_INPUT | ANY_EDGE, user_button_edge)
 
 /*
