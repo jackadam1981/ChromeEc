@@ -18,6 +18,7 @@
 #include "flash.h"
 #include "registers.h"
 #include "task.h"
+#include "watchdog.h"
 
 #ifdef CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT
 #if CONFIG_DFU_BOOTMANAGER_MAX_REBOOT_COUNT <= 0 || \
@@ -94,6 +95,9 @@ static bool backup_boot_checks(void)
  */
 static void dfu_bootmanager_init(void)
 {
+#ifdef CONFIG_WATCHDOG
+	watchdog_init();
+#endif
 	/* enable clock on Power module */
 #ifndef CHIP_FAMILY_STM32H7
 #if defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32L5)
