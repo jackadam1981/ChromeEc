@@ -10,6 +10,7 @@
 		i2c_ec_i2c_pwr_cbi_scl_3v3: ec_i2c_pwr_cbi_scl_3v3 {
 			i2c-port = <&i2c0>;
 			enum-names = "I2C_PORT_POWER", "I2C_PORT_EEPROM";
+			remote-port = <9>;
 		};
 		i2c_ec_smb_batt_scl_3v3: ec_smb_batt_scl_3v3 {
 			i2c-port = <&i2c1>;
