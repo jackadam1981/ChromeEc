@@ -34,6 +34,24 @@
       "parentUuid": "536abb2d_560b1640",
       "revId": "a38cfd2483ac14423b458ce6f43b96e1b443b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4bdb3d_ad995165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-02-10T02:12:26Z",
+      "side": 1,
+      "message": "Just a reminder, chip level changes for projects with ITE EC it8320dx, and board level changes here are only for Awasuki. Other boars need to be based on the remaining ram space to enable the CONFIG_ by itself.",
+      "parentUuid": "7fa3c41f_ece7ba31",
+      "revId": "a38cfd2483ac14423b458ce6f43b96e1b443b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
