@@ -223,6 +223,24 @@
       "parentUuid": "6e9d2e96_dc61b0a5",
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3acbfc00_62dbc233",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-10T23:38:08Z",
+      "side": 1,
+      "message": "Yes, technically `dartmonkey` doesn\u0027t have it. But since `bloonchipper` and `helipilot` do have it, I think it makes sense to share it for those boards. When we add `dartmonkey`, we probably just need to conditionally select the version of `get_fp_transport_type` that we use. One way to do it would be something like:\n\n```\nzephyr_library_sources_ifdef(CONFIG_EC_HOST_CMD \"fp_transport.c\")\n```\n\n```\nzephyr_library_sources_ifdef(CONFIG_HAS_UART_SPI_TRANSPORT \"fp_transport_uart_spi.c\")\nzephyr_library_sources_ifdef(CONFIG_HAS_SPI_TRANSPORT_ONLY \"fp_transport_spi.c\")\n```\n\nwhere `CONFIG_HAS_UART_SPI_TRANSPORT` is set for `bloonchipper`/`helipilot` and `CONFIG_HAS_SPI_TRANSPORT_ONLY` is set for `dartmonkey`.",
+      "parentUuid": "c1b2a3ba_d70442aa",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
