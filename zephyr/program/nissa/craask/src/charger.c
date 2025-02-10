@@ -18,7 +18,7 @@
 
 #include <cros_board_info.h>
 
-LOG_MODULE_REGISTER(charger, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(charger, LOG_LEVEL_WRN);
 
 int extpower_is_present(void)
 {
