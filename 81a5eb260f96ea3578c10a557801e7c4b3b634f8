@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "962bda72_c8eb47d2",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-10T19:44:39Z",
+      "side": 1,
+      "message": "how about `BOARD_PTL_RVP_MINIMUM_POWER_DOWN_DELAY_MS`",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "81a5eb260f96ea3578c10a557801e7c4b3b634f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
