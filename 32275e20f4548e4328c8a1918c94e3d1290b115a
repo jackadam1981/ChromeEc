@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c61c556_aae366ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-10T21:35:58Z",
+      "side": 1,
+      "message": "I don\u0027t understand this distinction well. The only function with this convention is `enforce_pd_chipset_resume_policy`, and it is only called when the power state is \"on.\" I think the main important thing about this function is that it needs to be called before `enforce_pd_chipset_on_state_policy`, but at least at the call site, nothing indicates that we are actually resuming at this time.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "32275e20f4548e4328c8a1918c94e3d1290b115a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc068f40_82e25c24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-10T21:35:58Z",
+      "side": 1,
+      "message": "I think this is a step in the right direction. Since we haven\u0027t thought deeply about this before, I don\u0027t necessarily know the answers to the questions I\u0027ve thought of. I\u0027ll add a few people to this to try to tease out a coherent way of thinking about this.",
+      "revId": "32275e20f4548e4328c8a1918c94e3d1290b115a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1058995b_7b0dd538",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2903,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-10T21:35:58Z",
+      "side": 1,
+      "message": "The names seem a little unintuitive in this case. The power state is \"on,\" so we\u0027re calling the suspend  policy, then the on policy, then the resume policy? That seems surprising to me. In the previous code, there were two functions that did the same thing, but their names expressed their different purpose, albeit vaguely.\n\n@asemjonovs@google.com @honscheid@google.com @keithshort@chromium.org Do you have any ideas for how to most clearly describe the power-state transition policies? This is something we\u0027ve punted on up to this point.",
+      "revId": "32275e20f4548e4328c8a1918c94e3d1290b115a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
