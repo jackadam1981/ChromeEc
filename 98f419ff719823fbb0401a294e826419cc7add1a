@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ab8078_bffa09d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-10T21:17:34Z",
+      "side": 1,
+      "message": "Nit: It is the C language that guarantees that all static objects will be initialized to 0.",
+      "range": {
+        "startLine": 11,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ec754c_2dd09baa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-10T21:17:34Z",
+      "side": 1,
+      "message": "Is there a bug with more context? I\u0027m having a hard time reasoning about this change.",
+      "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
