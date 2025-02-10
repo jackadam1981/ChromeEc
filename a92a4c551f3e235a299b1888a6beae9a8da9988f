@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff12b183_6d35cebf",
+        "filename": "zephyr/test/nissa/boards/dirks.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-02-10T23:46:52Z",
+      "side": 1,
+      "message": "For clarity, add a name too.\n\n```suggestion\n\t\tio-channels \u003d \u003c\u0026adc0 15\u003e;\n\t\tio-channel-names \u003d \"PPVAR_PWR_IN_IMON\";\n```\n\nThen you can use `ADC_DT_SPEC_GET_BY_NAME` instead of `ADC_DT_SPEC_GET_BY_IDX` to make channel selection less error-prone.",
+      "revId": "a92a4c551f3e235a299b1888a6beae9a8da9988f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
