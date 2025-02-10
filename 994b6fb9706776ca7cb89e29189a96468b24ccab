@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1c1cd4_3050fb19",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-02-10T00:56:20Z",
+      "side": 1,
+      "message": "Channels must be configured before use with either `adc_channel_setup` or `adc_channel_setup_dt`. I would prefer to put the channel information in the device tree and use the `_dt` version.",
+      "revId": "994b6fb9706776ca7cb89e29189a96468b24ccab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
