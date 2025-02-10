@@ -11,7 +11,12 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
+#include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
+
+#include <ap_power/ap_pwrseq.h>
+#include <ap_power/ap_pwrseq_sm.h>
+LOG_MODULE_REGISTER(dumb, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
 #define NUM_BOM_GPIOS DT_PROP_LEN(DT_INST(0, intel_rvp_board_id), bom_gpios)
 #define NUM_FAB_GPIOS DT_PROP_LEN(DT_INST(0, intel_rvp_board_id), fab_gpios)
@@ -31,6 +36,14 @@ static void configure_board_id_gpios_input(void)
 		gpio_pin_configure(board_id_config[i].port,
 				   board_id_config[i].pin,
 				   (GPIO_INPUT | GPIO_ACTIVE_HIGH));
+}
+
+static void send_ap_pwr_callback(void)
+{
+	const struct device *dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_start(dev, AP_POWER_STATE_G3);
+	ap_pwrseq_post_event(dev, AP_PWRSEQ_EVENT_POWER_STARTUP);
 }
 
 static void test_set_board_id_gpios(void)
@@ -58,11 +71,10 @@ static void test_set_board_id_gpios(void)
 	return;
 }
 
-/* Board ID gpios need to be initialized before other applications */
-SYS_INIT(test_set_board_id_gpios, POST_KERNEL, 99);
-
 ZTEST(board_version_tests, test_board_get_version)
 {
+	/* PTL requires AP callback to enable PCA95XX */
+	send_ap_pwr_callback();
 	/* Set up fake return values for successful GPIO pin reading */
 	int expected_board_id = CONFIG_TEST_PROJECT_INTELRVP_BOARD_ID_VAL;
 
@@ -75,5 +87,27 @@ ZTEST(board_version_tests, test_board_get_version)
 		expected_board_id, version);
 }
 
+/* Board ID gpios need to be initialized before other applications */
+SYS_INIT(test_set_board_id_gpios, POST_KERNEL, 99);
+#ifdef CONFIG_TEST_PROJECT_PTLRVP_MCHP
+ZTEST(board_version_tests, pca95xx_not_init_test)
+{
+	int expected_board_id = CONFIG_TEST_PROJECT_INTELRVP_BOARD_ID_VAL;
+	int version = board_get_version();
+
+	zassert_not_equal(
+		expected_board_id, version,
+		"Expected versions match PCA95XX shouldn't be initialized");
+}
+#endif
+
 /* Test Suite Setup */
 ZTEST_SUITE(board_version_tests, NULL, NULL, NULL, NULL, NULL);
+
+static int board_ap_power_action_g3_run(void *data)
+{
+	LOG_INF("SETTING POWER STATE TO S5");
+	return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S5);
+}
+AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL,
+			      board_ap_power_action_g3_run, NULL);
