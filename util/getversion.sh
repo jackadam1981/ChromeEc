@@ -145,6 +145,12 @@ main() {
         dir_list+=( ../fingerprint/elan )
       fi
       ;;
+    corsair*)
+      dir_list+=( "${fp_common_dir_list[@]}" )
+      if [[ -d ../fingerprint/elan ]]; then
+        dir_list+=( ../fingerprint/elan )
+      fi
+      ;;
     gwendolin*)
       dir_list+=( "${fp_common_dir_list[@]}" )
       if [[ -d ../fingerprint/egis ]]; then
