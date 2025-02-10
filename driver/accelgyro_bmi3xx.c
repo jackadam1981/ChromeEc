@@ -224,6 +224,69 @@ err_unlock:
 	return ret;
 }
 
+static int bmi3xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	int ret;
+	uint8_t reg_data[6] = { 0 };
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	if (enable)
+		return config_interrupt(s);
+
+	mutex_lock(s->mutex);
+
+	CPRINTS("%s:enable=%d", __func__, enable);
+	/* Clear the FIFO using Flush command */
+/*	reg_data[0] = BMI3_ENABLE;
+	reg_data[1] = 0;
+	ret = bmi3_write_n(s, BMI3_REG_FIFO_CTRL, reg_data, 2);
+	if (ret) {
+		CPRINTS("fifo flush BMI3_REG_FIFO_CTRL failed ret=%d", ret);
+	}
+*/
+	/* disable INT1_OUTPUT_EN */
+	/*ret = bmi3_read_n(s, BMI3_REG_IO_INT_CTRL, reg_data, 4);
+		reg_data[2] = BMI3_SET_BITS(reg_data[2], BMI3_INT1_OUTPUT_EN,
+			    BMI3_INT_OUTPUT_DISABLE);
+		ret = bmi3_write_n(s, BMI3_REG_IO_INT_CTRL, &reg_data[2], 2);*/
+
+	/* Map FIFO water-mark and FIFO full to INT1 pin */
+	/*ret = bmi3_read_n(s, BMI3_REG_INT_MAP1, reg_data, 6);
+	reg_data[5] = BMI3_SET_BITS(reg_data[5], BMI3_FWM_INT, BMI3_INT_NONE);
+	reg_data[5] = BMI3_SET_BITS(reg_data[5], BMI3_FFULL_INT, BMI3_INT_NONE);
+	ret = bmi3_write_n(s, BMI3_REG_INT_MAP1, &reg_data[2], 4);*/
+
+	/* reset FIFO water-mark to read data whenever available */
+	reg_data[0] = 0;
+	reg_data[1] = 0;
+
+	ret = bmi3_write_n(s, BMI3_REG_FIFO_WATERMARK, reg_data, 2);
+
+	/* Clear the FIFO using Flush command */
+	reg_data[0] = BMI3_ENABLE;
+	reg_data[1] = 0;
+	ret = bmi3_write_n(s, BMI3_REG_FIFO_CTRL, reg_data, 2);
+	if (ret) {
+		CPRINTS("fifo flush BMI3_REG_FIFO_CTRL failed ret=%d", ret);
+	}
+	/* disable INT1_OUTPUT_EN */
+	/*ret = bmi3_read_n(s, BMI3_REG_IO_INT_CTRL, reg_data, 4);
+	reg_data[2] = BMI3_SET_BITS(reg_data[2], BMI3_INT1_OUTPUT_EN,
+			    BMI3_INT_OUTPUT_DISABLE);
+	ret = bmi3_write_n(s, BMI3_REG_IO_INT_CTRL, &reg_data[2], 2);*/
+
+	/* Map FIFO water-mark and FIFO full to INT1 pin */
+	ret = bmi3_read_n(s, BMI3_REG_INT_MAP1, reg_data, 6);
+	reg_data[5] = BMI3_SET_BITS(reg_data[5], BMI3_FWM_INT, BMI3_INT_NONE);
+	reg_data[5] = BMI3_SET_BITS(reg_data[5], BMI3_FFULL_INT, BMI3_INT_NONE);
+	ret = bmi3_write_n(s, BMI3_REG_INT_MAP1, &reg_data[2], 4);	
+	mutex_unlock(s->mutex);
+	return ret;
+
+}
+
 static void bmi3_parse_fifo_data(struct motion_sensor_t *s,
 				 struct bmi3_fifo_frame *fifo_frame,
 				 uint32_t last_ts)
@@ -332,8 +395,10 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	int i;
 
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
-	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
+	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)) ||
+	    motion_sensor_in_forced_mode(s)) {
 		return EC_ERROR_NOT_HANDLED;
+	}
 
 	/*
 	 * We have to loop until we see the interrupt status as 0 to avoid
@@ -824,9 +889,10 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		if (rate == 0) {
 			/* FIFO stop collecting events */
-			if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE))
+#ifdef ACCELGYRO_BMI3XX_INT_ENABLE
+			//if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE))
 				ret = enable_fifo(s, 0);
-
+#endif
 			/*
 			 * Disable accel to set rate equal to zero.
 			 * Accel does not have suspend mode.
@@ -848,9 +914,10 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	} else if (s->type == MOTIONSENSE_TYPE_GYRO) {
 		if (rate == 0) {
 			/* FIFO stop collecting events */
-			if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE))
+#ifdef ACCELGYRO_BMI3XX_INT_ENABLE
+			//if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE))
 				ret = enable_fifo(s, 0);
-
+#endif
 			/*
 			 * Set gyro to suspend mode to disable gyro
 			 * however keep internal driver enabled
@@ -886,9 +953,11 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	 * If rate is non zero, FIFO start collecting events.
 	 * They will be discarded if AP does not want them.
 	 */
+
+#ifdef ACCELGYRO_BMI3XX_INT_ENABLE
 	if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE) && (rate > 0))
 		ret = enable_fifo(s, 1);
-
+#endif
 	mutex_unlock(s->mutex);
 	return ret;
 }
@@ -1023,6 +1092,7 @@ static int init(struct motion_sensor_t *s)
 	/* Status of communication result */
 	uint8_t i;
 	uint8_t reg_data[4] = { 0 };
+	//int ret;
 
 	/* Store the sensor configurations */
 	struct accelgyro_saved_data_t *saved_data = BMI_GET_SAVED_DATA(s);
@@ -1064,9 +1134,10 @@ static int init(struct motion_sensor_t *s)
 
 		RETURN_ERROR(bmi3_write_n(s, BMI3_REG_FEATURE_ENGINE_GLOB_CTRL,
 					  reg_data, 2));
-
-		if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE))
+#ifdef ACCELGYRO_BMI3XX_INT_ENABLE
+		//if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE))
 			RETURN_ERROR(config_interrupt(s));
+#endif
 	}
 
 	for (i = X; i <= Z; i++)
@@ -1079,6 +1150,14 @@ static int init(struct motion_sensor_t *s)
 	data->flags &= ~(BMI_FLAG_SEC_I2C_ENABLED |
 			 (BMI_FIFO_ALL_MASK << BMI_FIFO_FLAG_OFFSET));
 
+	/* Li: Get the previous configuration data */
+	/*ret = bmi3_read_n(s, BMI3_REG_IO_INT_CTRL, reg_data, 4);
+	reg_data[2] = BMI3_SET_BIT_POS0(reg_data[2], BMI3_INT1_LVL, BMI3_INT_ACTIVE_LOW);
+	reg_data[2] = BMI3_SET_BITS(reg_data[2], BMI3_INT1_OD, BMI3_INT_PUSH_PULL);
+	reg_data[2] = BMI3_SET_BITS(reg_data[2], BMI3_INT1_OUTPUT_EN, eMI3_INT_OUTPUT_ENABLE);
+
+	ret = bmi3_write_n(s, BMI3_REG_IO_INT_CTRL, &reg_data[2], 2);
+	*/
 	return sensor_init_done(s);
 }
 
@@ -1097,6 +1176,8 @@ const struct accelgyro_drv bmi3xx_drv = {
 	.perform_calib = perform_calib,
 	.read_temp = read_temp,
 #ifdef ACCELGYRO_BMI3XX_INT_ENABLE
+	.enable_interrupt = bmi3xx_enable_interrupt,
+	.interrupt = bmi3xx_interrupt,
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
