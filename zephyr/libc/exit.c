@@ -14,7 +14,11 @@
  *
  * @param rc exit code
  */
+#ifndef CONFIG_ARCH_POSIX
 void _exit(int rc)
+#else
+void exit(int rc)
+#endif
 {
 	k_tid_t thread = k_current_get();
 
