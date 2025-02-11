@@ -112,6 +112,30 @@
       },
       "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bb49c2_7179e3c2",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-11T17:59:24Z",
+      "side": 1,
+      "message": "There are a few things to clean up here:\n1. `switch` statements on `pdc_state_t` variables that are now incomplete, e.g in `should_suspend`, should have an additional or defualt case.\n2. Arrays indexed by `pdc_state_t` should have another element, e.g. `pdc_state_names`.",
+      "parentUuid": "cac42990_3c8eb972",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

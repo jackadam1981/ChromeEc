@@ -81,6 +81,24 @@
       "parentUuid": "e4ec754c_2dd09baa",
       "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6048a01_c5de6236",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-11T17:59:24Z",
+      "side": 1,
+      "message": "Thanks. As a nit, I\u0027d suggest linking this CL to the bug. I think it\u0027s still relevant, even if it isn\u0027t the ultimate fix.",
+      "parentUuid": "1bb0743b_609b0773",
+      "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
