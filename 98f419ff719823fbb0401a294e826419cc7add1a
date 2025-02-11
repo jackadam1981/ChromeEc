@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5492229d_ca101b51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-02-11T06:52:16Z",
+      "side": 1,
+      "message": "Thank you, I missed this key knowledge here. Updated to C language.",
+      "parentUuid": "85ab8078_bffa09d2",
+      "range": {
+        "startLine": 11,
+        "startChar": 65,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4ec754c_2dd09baa",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-02-10T21:17:34Z",
       "side": 1,
       "message": "Is there a bug with more context? I\u0027m having a hard time reasoning about this change.",
+      "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb0743b_609b0773",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-02-11T06:52:16Z",
+      "side": 1,
+      "message": "Originally I was cooking the [bug](https://b.corp.google.com/issues/386277572), and there is a misbehavior that USB mux init call is not performed when machine boot from Z1 -\u003e Z5. Though in the end, there will be another fix in the [config file in Realtek\u0027s PDC firmware](https://b.corp.google.com/issues/322898841), I found this misbehavior that EC did not initialize some variables for running the PDC power management state machine, so I submit this CL without any bug linked to this CL.",
+      "parentUuid": "e4ec754c_2dd09baa",
       "revId": "98f419ff719823fbb0401a294e826419cc7add1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
