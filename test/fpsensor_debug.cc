@@ -60,6 +60,18 @@ test_static int test_command_fpupload_one_argument(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_fpupload_input_parameters_more_than_two(void)
+{
+	/* System is unlocked. */
+	is_locked = 0;
+
+	char console_input[] = "fpupload 52 image 76";
+	enum ec_error_list res = test_send_console_command(console_input);
+	TEST_EQ(res, EC_ERROR_PARAM_COUNT, "%d");
+
+	return EC_SUCCESS;
+}
+
 test_static int test_command_fpdownload(void)
 {
 	enum ec_error_list res;
@@ -170,6 +182,7 @@ void run_test(int argc, const char **argv)
 		RUN_TEST(test_command_fpupload_success);
 		RUN_TEST(test_command_fpupload_system_is_locked);
 		RUN_TEST(test_command_fpupload_one_argument);
+		RUN_TEST(test_command_fpupload_input_parameters_more_than_two);
 		RUN_TEST(test_command_fpdownload);
 		RUN_TEST(test_command_fpmatch);
 		RUN_TEST(test_command_fpcapture_system_is_locked);
