@@ -60,6 +60,16 @@ ZTEST(fpsensor_debug, test_command_fpupload_system_is_locked)
 	zassert_equal(rv, EC_ERROR_ACCESS_DENIED);
 }
 
+ZTEST(fpsensor_debug, test_command_fpupload_input_parameters_less_than_two)
+{
+	/* System is unlocked. */
+	is_locked = 0;
+
+	char console_input[] = "fpupload 52";
+	int rv = shell_execute_cmd(get_ec_shell(), console_input);
+	zassert_equal(rv, EC_ERROR_PARAM_COUNT);
+}
+
 /* TODO(b/371647536): Add other tests of commands in fpsensor_debug to verify
  * entire handlers.
  */
