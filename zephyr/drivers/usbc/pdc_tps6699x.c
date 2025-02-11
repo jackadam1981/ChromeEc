@@ -315,8 +315,8 @@ static void cmd_set_tpc_rp(struct pdc_data_t *data);
 static void cmd_set_frs(struct pdc_data_t *data);
 static void cmd_get_rdo(struct pdc_data_t *data);
 static void cmd_set_rdo(struct pdc_data_t *data);
-static void cmd_set_src_pdos(struct pdc_data_t *data);
-static void cmd_set_snk_pdos(struct pdc_data_t *data);
+/* static void cmd_set_src_pdos(struct pdc_data_t *data); */
+/* static void cmd_set_snk_pdos(struct pdc_data_t *data); */
 static void cmd_get_ic_status(struct pdc_data_t *data);
 static int cmd_get_ic_status_sync_internal(struct pdc_config_t const *cfg,
 					   struct pdc_info_t *info);
@@ -702,10 +702,11 @@ static void st_idle_run(void *o)
 			task_ucsi(data, UCSI_GET_PDOS);
 			break;
 		case CMD_SET_PDOS:
-			if (data->pdo_type == SOURCE_PDO)
-				cmd_set_src_pdos(data);
-			else
-				cmd_set_snk_pdos(data);
+			task_ucsi(data, UCSI_SET_PDOS);
+			/* if (data->pdo_type == SOURCE_PDO) */
+			/* 	cmd_set_src_pdos(data); */
+			/* else */
+			/* 	cmd_set_snk_pdos(data); */
 			break;
 		case CMD_GET_CONNECTOR_STATUS:
 		case CMD_GET_VBUS_VOLTAGE:
@@ -988,7 +989,7 @@ error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
 }
 
-static void cmd_set_src_pdos(struct pdc_data_t *data)
+void cmd_set_src_pdos(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_transmit_source_capabilities pdc_tx_src_capabilities;
@@ -1031,7 +1032,7 @@ error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
 }
 
-static void cmd_set_snk_pdos(struct pdc_data_t *data)
+void cmd_set_snk_pdos(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_transmit_sink_capabilities pdc_tx_snk_capabilities;
@@ -1662,7 +1663,9 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_data cmd_data;
+	union ucsi_set_pdos_t *ucsi_pdos;
 	int rv;
+	int i;
 
 	/* Set the currently running UCSI command. */
 	data->running_ucsi_cmd = ucsi_command;
@@ -1712,6 +1715,26 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 		cmd_data.data[2] |= (data->uor.swap_to_dfp << 7);
 		cmd_data.data[3] = (data->uor.swap_to_ufp |
 				    (data->uor.accept_dr_swap << 1));
+		break;
+	case CMD_SET_PDOS:
+		/* ucsi_set_pdos starts with connector number */
+		ucsi_pdos = (union ucsi_set_pdos_t *)&cmd_data.data[2];
+		/* SRC or SNK PDO */
+		ucsi_pdos->pdo_type = data->pdo_type;
+		/* Number of PDOs being set */
+		ucsi_pdos->number_of_pdos = data->num_pdos;
+		/* No chunking, so index is always 0 */
+		ucsi_pdos->data_index = 0;
+		/* No chunking, so always end of message */
+		ucsi_pdos->end_of_message = 1;
+		/* PDOs to send start at cmd_data[8] */
+		memcpy(&cmd_data.data[8], data->pdos, data->num_pdos *
+		       sizeof(uint32_t));
+		/* Update Data Length to reflect number of PDOs */
+		cmd_data.data[1] = data->num_pdos * sizeof(uint32_t);
+		for (i = 0; i < 8 + cmd_data.data[1]; i++) {
+			LOG_INF("cmd_data[%d]: 0x%02x", i, cmd_data.data[i]);
+		}
 		break;
 	case CMD_SET_PDR:
 		cmd_data.data[2] |= (data->pdr.swap_to_src << 7);
@@ -2172,6 +2195,9 @@ static int tps_set_pdos(const struct device *dev, enum pdo_type_t type,
 	data->pdo_type = type;
 	data->pdos = pdo;
 	data->num_pdos = count;
+
+	LOG_INF("tps_set_pdos: type = %x, count = %d, pdo0 = %08x",
+		data->pdo_type, data->num_pdos, data->pdos[0]);
 
 	return tps_post_command(dev, CMD_SET_PDOS, NULL);
 }
