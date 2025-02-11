@@ -109,6 +109,8 @@ void ec_app_main(void)
 	}
 #endif
 
+	cprints(CC_SYSTEM, "HOOK_INIT_start");
+
 	/* Call init hooks before main tasks start */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOOKS)) {
 		hook_notify(HOOK_INIT);
