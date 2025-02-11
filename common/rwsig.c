@@ -152,7 +152,11 @@ int rwsig_check_signature(void)
 	vb21_key = vb21_get_packed_key();
 
 #ifdef CONFIG_MAPPED_STORAGE
-	vb21_sig = (const struct vb21_signature *)CONFIG_RWSIG_READ_ADDR;
+	vb21_sig =
+		(const struct vb21_signature *)(CONFIG_MAPPED_STORAGE_BASE +
+						CONFIG_EC_WRITABLE_STORAGE_OFF +
+						CONFIG_RW_STORAGE_OFF +
+						RW_SIG_OFFSET);
 #elif defined(CONFIG_ZTEST)
 	vb21_sig = (const struct vb21_signature *)(rwdata + RW_SIG_OFFSET);
 #endif
