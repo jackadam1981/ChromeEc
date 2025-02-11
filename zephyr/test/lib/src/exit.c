@@ -22,6 +22,8 @@ static ZTEST_BMEM int execute_flag;
 
 ZTEST_SUITE(libc_exit, NULL, NULL, NULL, NULL, NULL);
 
+extern void exit(int rc);
+
 static void thread_call_exit(void *p1, void *p2, void *p3)
 {
 	execute_flag = 1;
