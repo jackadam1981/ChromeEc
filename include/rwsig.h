@@ -88,7 +88,7 @@ void rwsig_jump_now(void);
 
 /* The pubkey resides at the end of the RO image */
 #define CONFIG_RO_PUBKEY_ADDR                                           \
-	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_EC_PROTECTED_STORAGE_OFF + \
+	(CONFIG_MAPPED_STORAGE_BASE + CONFIG_EC_PROTECTED_STORAGE_OFF + \
 	 CONFIG_RO_PUBKEY_STORAGE_OFF)
 #else
 /*
@@ -96,7 +96,7 @@ void rwsig_jump_now(void);
  * which might actually be in the PSTATE region.
  */
 #define CONFIG_RO_PUBKEY_ADDR                                         \
-	(CONFIG_PROGRAM_MEMORY_BASE + (CONFIG_FLASH_SIZE_BYTES / 2) - \
+	(CONFIG_MAPPED_STORAGE_BASE + (CONFIG_FLASH_SIZE_BYTES / 2) - \
 	 CONFIG_RO_PUBKEY_SIZE)
 #endif
 #endif /* CONFIG_RO_PUBKEY_ADDR */
