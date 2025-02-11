@@ -277,6 +277,24 @@
       "parentUuid": "0be76eb8_a83fd5fb",
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd71e828_3b915ec1",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-11T22:18:08Z",
+      "side": 1,
+      "message": "\u003e For me this is less readable than having fp_transport.c file per board\n\nI wonder if this is because when browsing the code you\u0027re unsure which implementation is used unless you go through all the configs, defines, etc. I agree that is a huge pain.\n\nI avoid this by using an IDE that has been configured to understand the full compilation settings, so it just navigates correctly to the right symbol (and hides `defines` that aren\u0027t defined, etc.) I set up EC in CLion as described [here](http://shortn/_E92w8jmuGP). I need to update it to work correctly with the Zephyr code. Zephyr has some docs on [CLion](https://docs.zephyrproject.org/latest/develop/tools/clion.html) and [VSCode](https://docs.zephyrproject.org/latest/develop/tools/vscode.html), but I haven\u0027t tried it yet. \n\n\u003e That\u0027s the advantages I expect from deduplication.\n\nI think the other important part of deduplication is making sure that changes or bug fixes are propogated correctly. `fp_transport.c` is trivial, so it\u0027s less of an issue, but in general we don\u0027t want to fix a function for one board, but forget to make the same change in other boards. You can solve this in other ways, such as writing scripts like [`migrated_files.sh`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/migrated_files.sh), but then you have to remember to update that script for new files, make sure that the script doesn\u0027t have bugs, etc. One potential downside of deduplication is that making a change for one board could break another, but the goal is for our unit tests to be robust enough to catch that.\n\n\u003e For me this is less readable than having fp_transport.c file per board. Also CONFIG_HAS_UART_SPI_TRANSPORT and CONFIG_HAS_SPI_TRANSPORT_ONLY are configs that must be automatically enabled/disabled and we must guarantee that both are not enabled at the same time. Of course, it is possible, but it\u0027s more complicated to understand and maintain.\n\nThis may have been a bad example. In our trivial case you could put it in a single file and do:\n\n```\n#if defined(BOARD_DARMONKEY)\nenum fp_transport_type get_fp_transport_type(void)\n...\n#else\nenum fp_transport_type get_fp_transport_type(void)\n...\n#endif\n```\n\nor there\u0027s probably a way to split it in separate files in a more straightforward way (pseudocode)\n\n```\nif (CONFIG_BOARD_DARTMONKEY)\n  zephyr_library_sources(\"fp_transport_spi.c\")\nelse()\n  zephyr_library_sources(\"fp_transport_uart_spi.c\")\nendif()\n```\n\nWould the single-file `#ifdef` approach be readable to you?",
+      "parentUuid": "2cc313a3_b9e910f0",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
