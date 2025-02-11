@@ -259,6 +259,24 @@
       "parentUuid": "3acbfc00_62dbc233",
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc313a3_b9e910f0",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T13:55:50Z",
+      "side": 1,
+      "message": "My 3 cents on that:\n\n```\nzephyr_library_sources_ifdef(CONFIG_HAS_UART_SPI_TRANSPORT \"fp_transport_uart_spi.c\")\nzephyr_library_sources_ifdef(CONFIG_HAS_SPI_TRANSPORT_ONLY \"fp_transport_spi.c\")\n```\n\nFor me this is **less** readable than having `fp_transport.c` file per board. Also `CONFIG_HAS_UART_SPI_TRANSPORT` and `CONFIG_HAS_SPI_TRANSPORT_ONLY` are configs that must be automatically enabled/disabled and we must guarantee that both are not enabled at the same time. Of course, it is possible, but it\u0027s more complicated to understand and maintain.\n\nI think, deduplication should give us clear advantages and improve maintainability. For example, let say we are going to build helipilot without UART or SPI HC backend, we could just disable the backend and our `fp_transport.c` will handle that automatically. Another example, bloonchipper or dartmonkey with HC over USB, just disable SPI, UART backends and enable USB backend and it\u0027s ready to go. Or some future chip that will have USB and SPI backends. That\u0027s the advantages I expect from deduplication.\n\nI agreed on splitting `fp_transport.c` into board part and common part (which is IMO less readable) only because we planned to make the board part common, but I just don\u0027t agree with having separate `fp_transport` for each backend combination, just because two boards have the same interfaces.",
+      "parentUuid": "0be76eb8_a83fd5fb",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
