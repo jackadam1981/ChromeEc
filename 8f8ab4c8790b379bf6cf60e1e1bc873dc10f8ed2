@@ -117,6 +117,30 @@
       },
       "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2465da50_29e93f94",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3511,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-11T21:17:58Z",
+      "side": 1,
+      "message": "I submitted a CL which takes this suggested (new) approach (crrev/c/6253994). This caused the image size for ECOS helipilot to go to 0x64000000. I wasn\u0027t able to find my previous notes to confirm, but IIRC, @tomhughes made a similar suggestion during ECOS development and the same issue (blown up image size for helipilot) was the reason it wasn\u0027t adopted.",
+      "parentUuid": "88fa51ce_914d73b4",
+      "range": {
+        "startLine": 3505,
+        "startChar": 0,
+        "endLine": 3511,
+        "endChar": 42
+      },
+      "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
