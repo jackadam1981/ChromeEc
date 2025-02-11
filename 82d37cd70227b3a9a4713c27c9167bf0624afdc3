@@ -16,6 +16,23 @@
       "message": "This patch causes the helipilot image size to increase to the MAPPED_STORAGE_OFFSET (0x64######), making it unusable",
       "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c39ad3_f00481da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T22:06:29Z",
+      "side": 1,
+      "message": "Continuing discussion from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5838354/comment/e5f7ab5b_b1f3e89b/\n\nI think you should replace it [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fmap.c;l\u003d179;drc\u003d599c438e80c634a580c33bfb431472cf36c1cad5https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fmap.c;l\u003d179;drc\u003d599c438e80c634a580c33bfb431472cf36c1cad5) also",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
