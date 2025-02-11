@@ -88,7 +88,7 @@ void rwsig_jump_now(void);
 
 /* The pubkey resides at the end of the RO image */
 #define CONFIG_RO_PUBKEY_ADDR                                           \
-	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_EC_PROTECTED_STORAGE_OFF + \
+	(CONFIG_MAPPED_STORAGE_BASE + CONFIG_EC_PROTECTED_STORAGE_OFF + \
 	 CONFIG_RO_PUBKEY_STORAGE_OFF)
 #else
 /*
@@ -96,7 +96,7 @@ void rwsig_jump_now(void);
  * which might actually be in the PSTATE region.
  */
 #define CONFIG_RO_PUBKEY_ADDR                                         \
-	(CONFIG_PROGRAM_MEMORY_BASE + (CONFIG_FLASH_SIZE_BYTES / 2) - \
+	(CONFIG_MAPPED_STORAGE_BASE + (CONFIG_FLASH_SIZE_BYTES / 2) - \
 	 CONFIG_RO_PUBKEY_SIZE)
 #endif
 #endif /* CONFIG_RO_PUBKEY_ADDR */
@@ -125,11 +125,11 @@ void rwsig_jump_now(void);
 /* The signature resides at the end of each RW copy */
 #define RW_SIG_OFFSET (CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
 #define RW_A_ADDR                                                      \
-	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF + \
+	(CONFIG_MAPPED_STORAGE_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF + \
 	 CONFIG_RW_STORAGE_OFF)
 /* Assume the layout is same as RW_A and it sits right after RW_A */
 #define RW_B_ADDR                                                      \
-	(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF + \
+	(CONFIG_MAPPED_STORAGE_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF + \
 	 CONFIG_RW_B_STORAGE_OFF)
 #ifndef CONFIG_RW_SIG_ADDR
 #define CONFIG_RW_SIG_ADDR (RW_A_ADDR + RW_SIG_OFFSET)
