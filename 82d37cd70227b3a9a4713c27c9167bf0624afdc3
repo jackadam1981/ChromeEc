@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b863ec_334baf67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-11T21:15:32Z",
+      "side": 1,
+      "message": "This patch causes the helipilot image size to increase to the MAPPED_STORAGE_OFFSET (0x64######), making it unusable",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
