@@ -162,6 +162,7 @@
 			chg = <&chg_port0>;
 			tcpc = <&usbpd0>;
 			ppc = <&ppc_port0>;
+			ppc_alt = <&ppc_port0_alt>;
 			usb-mux-chain-0 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_0>;
@@ -177,6 +178,7 @@
 			reg = <1>;
 			tcpc = <&usbpd1>;
 			ppc = <&ppc_port1>;
+			ppc_alt = <&ppc_port1_alt>;
 			usb-mux-chain-1 {
 				compatible = "cros-ec,usb-mux-chain";
 				usb-muxes = <&virtual_mux_1>;
@@ -318,6 +320,14 @@
 		frs_en_gpio = <&gpio_usb_c1_frs_en>;
 		irq-gpios = <&gpiok 7 GPIO_ACTIVE_LOW>;
 	};
+
+	ppc_port1_alt: rt1739@70{
+		compatible = "richtek,rt1739-ppc";
+		status = "okay";
+		reg = <0x70>;
+		irq-gpios = <&gpiok 7 GPIO_ACTIVE_LOW>;
+		is-alt;
+	};
 };
 
 &i2c5 {
@@ -339,6 +349,14 @@
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_usb_c0_frs_en>;
 		irq-gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
+	};
+
+	ppc_port0_alt: rt1739@70{
+		compatible = "richtek,rt1739-ppc";
+		status = "okay";
+		reg = <0x70>;
+		irq-gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
+		is-alt;
 	};
 };
 
