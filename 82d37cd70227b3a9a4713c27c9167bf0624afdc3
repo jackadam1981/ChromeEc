@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac9864c_5f38853c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T22:16:37Z",
+      "side": 1,
+      "message": "s/SIZE/BASE/g\n\nPlease also change `replace` to `Replace`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd1d7ee_5ae60cd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T22:16:37Z",
+      "side": 1,
+      "message": "Please also run `compare-builds` for EC and Zephyr.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c4b863ec_334baf67",
@@ -31,6 +77,70 @@
       "writtenOn": "2025-02-11T22:06:29Z",
       "side": 1,
       "message": "Continuing discussion from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5838354/comment/e5f7ab5b_b1f3e89b/\n\nI think you should replace it [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fmap.c;l\u003d179;drc\u003d599c438e80c634a580c33bfb431472cf36c1cad5https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fmap.c;l\u003d179;drc\u003d599c438e80c634a580c33bfb431472cf36c1cad5) also",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfc557c_b043ffb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T22:16:37Z",
+      "side": 1,
+      "message": "Making comment as not resolved, so we can continue discussion here.",
+      "parentUuid": "c1c39ad3_f00481da",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d58da2_858cb87d",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T22:16:37Z",
+      "side": 1,
+      "message": "Prepare follow-up CL that removes these.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0bfc16b_ae3a4c44",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-11T22:16:37Z",
+      "side": 1,
+      "message": "Don\u0027t forget about replacing `CONFIG_PROGRAM_MEMORY_BASE` here.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 28
+      },
       "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
