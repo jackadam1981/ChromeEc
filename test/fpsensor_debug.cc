@@ -28,8 +28,8 @@ test_static int test_command_fpupload_success(void)
 	/* System is unlocked. */
 	is_locked = 0;
 
-	char console_input1[] = "fpupload 52 image";
-	enum ec_error_list res = test_send_console_command(console_input1);
+	char console_input[] = "fpupload 52 image";
+	enum ec_error_list res = test_send_console_command(console_input);
 	TEST_EQ(res, EC_SUCCESS, "%d");
 
 	return EC_SUCCESS;
