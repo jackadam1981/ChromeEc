@@ -197,7 +197,8 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		}
 	}
 
-	__ASSERT(false, "Failed to map thread to task");
+	/* TODO(b/395866318): Infinite assert loop when thread not found */
+	/* __ASSERT(false, "Failed to map thread to task"); */
 	return TASK_ID_INVALID;
 }
 
