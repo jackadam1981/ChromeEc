@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8c71b4_af9ba25c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-11T22:20:26Z",
+      "side": 1,
+      "message": "Interesting. The change is simple enough that I can manually verify that the function hasn\u0027t changed, so it\u0027s ok I guess.",
+      "parentUuid": "18b4ebf1_92a41c3a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f496ba19_3c975943",
