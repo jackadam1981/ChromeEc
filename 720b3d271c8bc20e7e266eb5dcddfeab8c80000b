@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4349d7db_ac9e644f",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-11T00:10:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7e43e9_b4ea8b80",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 119
+      },
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3beebff0_163415bd",
@@ -120,6 +144,54 @@
           ]
         }
       ],
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b214172_0d7e6274",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-11T00:10:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d97749c_c324e67c",
+      "range": {
+        "startLine": 27,
+        "startChar": 62,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57899a6_ee308962",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-11T00:10:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3beebff0_163415bd",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 43
+      },
       "revId": "720b3d271c8bc20e7e266eb5dcddfeab8c80000b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
