@@ -7,6 +7,7 @@
  * PD Controller subsystem
  */
 
+#include "zephyr/sys/util_macro.h"
 #include "zephyr/toolchain.h"
 #define DT_DRV_COMPAT named_usbc_port
 
@@ -1987,6 +1988,21 @@ static void pdc_snk_attached_entry(void *obj)
 	}
 }
 
+uint8_t pdc_get_snk_path_en_mask()
+{
+	uint8_t snk_path_en_mask = 0;
+
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		WRITE_BIT(snk_path_en_mask, port,
+			  pdc_data[port]->port.sink_path_en);
+	}
+
+	return snk_path_en_mask;
+}
+
+/* Array of best PDOs per port */
+static int port_selected_pdo[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /**
  * @brief Run sink attached state.
  */
@@ -1997,7 +2013,7 @@ static void pdc_snk_attached_run(void *obj)
 	uint32_t max_ma, max_mv, max_mw, max_mw_pdo, unused;
 	uint32_t flags;
 	int pdo_index = 0;
-	uint32_t selected_pdo;
+	uint32_t selected_pdo, selected_port, snk_path_en_mask, tmp;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2112,7 +2128,6 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
-		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
 		flags = RDO_COMM_CAP;
 
 		for (int i = 0; i < PDO_NUM; i++) {
@@ -2129,8 +2144,19 @@ static void pdc_snk_attached_run(void *obj)
 			pd_select_best_pdo(PDO_NUM, port->snk_policy.src.pdos,
 					   pdc_max_request_mv, &selected_pdo);
 
-		if (port->snk_policy.pdo == selected_pdo &&
+		/* Update best pdo per port */
+		port_selected_pdo[config->connector_num] = selected_pdo;
+
+		/* Identify port with best PDO */
+		selected_port = pd_select_best_pdo(CONFIG_USB_PD_PORT_MAX_COUNT,
+						   port_selected_pdo,
+						   pdc_max_request_mv, &tmp);
+
+		if (selected_port == config->connector_num &&
+		    port->snk_policy.pdo == selected_pdo &&
 		    port->snk_policy.pdo_index == (pdo_index + 1)) {
+			port->snk_attached_local_state =
+				SNK_ATTACHED_START_CHARGING;
 			/* Selected PDO didn't change - no need to send RDO */
 			LOG_INF("C%d: Retaining PDO[%d]=0x%08X",
 				config->connector_num, pdo_index, selected_pdo);
@@ -2174,8 +2200,29 @@ static void pdc_snk_attached_run(void *obj)
 					  max_ma, flags);
 		}
 
-		LOG_INF("Send RDO: %d", RDO_POS(port->snk_policy.rdo_to_send));
-		queue_internal_cmd(port, CMD_PDC_SET_RDO);
+		snk_path_en_mask = pdc_get_snk_path_en_mask();
+		LOG_INF("C%d: snk_path_en_mask=0x%x, selected_port=%d",
+			config->connector_num, snk_path_en_mask, selected_port);
+
+		/* Set RDO when snk_path at most is enabled on one port,
+		 * otherwise disable if we're not the selected port */
+		if (snk_path_en_mask == 0 ||
+		    IS_POWER_OF_TWO(snk_path_en_mask)) {
+			port->snk_attached_local_state =
+				SNK_ATTACHED_START_CHARGING;
+			LOG_INF("Send RDO: %d, snk_path_mask=0x%X, selected_port=%d",
+				RDO_POS(port->snk_policy.rdo_to_send),
+				snk_path_en_mask, selected_port);
+			queue_internal_cmd(port, CMD_PDC_SET_RDO);
+		} else {
+			if (selected_port != config->connector_num &&
+			    port->sink_path_en) {
+				port->sink_path_en = false;
+				queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+			} else {
+				k_event_post(&port->sm_event, PDC_SM_EVENT);
+			}
+		}
 		return;
 	case SNK_ATTACHED_START_CHARGING:
 		max_ma = MIN(PDO_FIXED_CURRENT(port->snk_policy.pdo),
