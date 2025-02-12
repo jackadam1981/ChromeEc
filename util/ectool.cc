@@ -6468,7 +6468,7 @@ int cmd_usb_pd_power(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 	num_ports = ((struct ec_response_usb_pd_ports *)r)->num_ports;
-
+	ccprints("num_ports = %d", num_ports);
 	if (argc < 2) {
 		for (i = 0; i < num_ports; i++) {
 			p.port = i;
