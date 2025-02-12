@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "955c889947f5691f592c9e7d5d680c4edd295a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "835c2ce5_337b65cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-12T17:59:01Z",
+      "side": 1,
+      "message": "I\u0027ll pull https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6257594 out of the CQ.",
+      "revId": "955c889947f5691f592c9e7d5d680c4edd295a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
