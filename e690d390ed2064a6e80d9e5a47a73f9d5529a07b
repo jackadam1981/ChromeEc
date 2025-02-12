@@ -160,6 +160,30 @@
       },
       "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eea6823_61f92af7",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-12T21:33:38Z",
+      "side": 1,
+      "message": "874 is `case PDC_STATE_COUNT:`, a different value than `PDC_INVALID`. You could make the case that each value would ultimately result in an assertion failure, but they\u0027re different assertion failures. I don\u0027t think there\u0027s any advantage to leaving this behavior implicit.\n\nI think it would suffice to replace the `case PDC_STATE_COUNT:` with `default:`, which would cover both of the values under discussion.",
+      "parentUuid": "afd6baae_da0c3b54",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
