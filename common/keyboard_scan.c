@@ -74,7 +74,7 @@
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 #define COL2_DELAY_US 30
 #else
-#define COL2_DELAY_US 0
+#define COL2_DELAY_US 30
 #endif
 
 #define COL2 2
