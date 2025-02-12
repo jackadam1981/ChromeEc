@@ -26,6 +26,12 @@ config BOARD_LOTSO
 	  Build Google Lotso variant board. This board uses an Intel RPL SoC
 	  and ITE EC
 
+config BOARD_BRTK
+	bool "Google Brtk Board"
+	help
+	  Build Google Brtk reference board.  This board uses an Intel RPL SoC
+	  and RTK EC
+
 module = Brox
 module-str = Brox board-specific code
 source "subsys/logging/Kconfig.template.log_config"

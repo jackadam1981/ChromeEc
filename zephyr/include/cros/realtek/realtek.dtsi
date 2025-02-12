@@ -1,0 +1,104 @@
+/* Copyright 2021 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/binman.dtsi>
+
+/ {
+    chosen {
+		cros-ec,bbram = &bbram;
+		cros-ec,espi = &espi0;
+		cros-ec,flash = &eflash;
+		cros-ec,flash-controller = &fiu0;
+		cros-ec,watchdog = &wdog;
+	};
+
+	soc {
+		fiu0: cros-flash {
+			compatible = "realtek,rtk-cros-flash";
+		};
+	};
+
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x08>;
+			size = <0x04>;
+		};
+		saved-reset-flags {
+			offset = <0x00>;
+			size = <0x04>;
+		};
+		wake {
+			offset = <0x08>;
+			size = <0x04>;
+		};
+		pd0 {
+			offset = <0x04>;
+			size = <0x01>;
+		};
+		pd1 {
+			offset = <0x05>;
+			size = <0x01>;
+		};
+		try_slot {
+			offset = <0x0e>;
+			size = <0x01>;
+		};
+		pd2 {
+			offset = <0x06>;
+			size = <0x01>;
+		};
+		unlock-flash-at-boot {
+			offset = <0x07>;
+			size = <0x01>;
+		};
+		key {
+			offset = <0x80>;
+			size = <0x01>;
+		};
+	};
+};
+
+/* realtek has 1MB eflash, and 0xF0000~0x100000 is for chrome_bootloader.
+ * 0x0000_0000 : RW start 
+ * 0x0008_0000 : RO start
+ * 0x000F_0000 : chrome_bootloader start
+ * 0x0010_0000 : eflash end
+ */
+&binman {
+
+	ec-rw {
+		offset = <0x0>;
+		size = <0x40000>;
+		rw-fw {
+			rw-fwid {
+				/* Fix the lcoation of the FWID to the
+				 * last 32 bytes of the flash. This
+				 * ensures the RW entries in the FMAP
+				 * stored in the RO section of flash
+				 * are always correct.
+				 */
+				offset = <(0x40000 - 32)>;
+			};
+		};
+	};
+	wp-ro {
+		offset = <0x80000>;
+		size = <0x70000>;
+
+		ec-ro {
+			fmap {
+				offset = <(0x70000 - 0x400)>;
+				/*
+				 * don't specify 'size = <0x400>' here so
+				 * it is auto-assigned to the fmap size.
+				 */
+			};
+		};
+	};
+	pad-byte = <0xff>;
+
+};

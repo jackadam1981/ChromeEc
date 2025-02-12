@@ -1,0 +1,84 @@
+/* Copyright 2023 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Brtk program common DTS includes */
+
+#include "rtk_adc.dtsi"
+
+#include "rtk_binman.dtsi"
+
+#include <cros/cbi_flash.dtsi>
+
+#include "brtk.dtsi"
+
+/* RTK_NEED_IMP : fan, thermal sensor */
+/* #include "../fan.dtsi" */
+
+#include "rtk_generated.dtsi"
+#include "rtk_gpio.dtsi"
+#include "rtk_i2c.dtsi"
+#include "rtk_interrupts.dtsi"
+
+#include "../led_policy.dtsi"
+#include "rtk_led_pins.dtsi"
+
+#include "rtk_keyboard.dtsi"
+
+#include "motionsense.dtsi"
+
+#include "rtk_power_signals.dtsi"
+#include "../power_signals_gpios.dtsi"
+
+#include "rtk_pwm.dtsi"
+#include "rtk_fan.dtsi"
+#include "../temp_sensors.dtsi"
+
+#include "rtk_usb_typec.dtsi"
+#include "../usba.dtsi"
+
+/* Brtk project DTS includes*/
+
+/* Brtk overrides follow... */
+
+/{
+        batteries {
+                default_battery: lgc_ap18c8k {
+                        compatible = "lgc,ap18c8k", "battery-smart";
+                };
+        };
+};
+
+/* These GPIOS are initialized by the PDC driver */
+&gpio_usb_pd_int_odl {
+	no-auto-init;
+};
+&gpio_ec_i2c_pmc_pd_int_odl {
+	no-auto-init;
+};
+
+&cbi_flash {
+        offset = <(0x70000 - 0x1000)>;
+        size = <0x1000>;
+};
+
+/* preserve 512 bytes for ROM log info */
+&sram0 {
+	reg = < 0x20050000 (0x10000-0x200) >;
+};
+
+&timer5 {
+        status = "okay";
+};
+
+/ {
+        chosen {
+		cros-ec,watchdog-helper = &wdt_counter;
+	};
+	wdt_counter: wdt-counter {
+		compatible = "zephyr,counter-watchdog";
+		status = "okay";
+		counter = <&timer5>;
+	};
+};
