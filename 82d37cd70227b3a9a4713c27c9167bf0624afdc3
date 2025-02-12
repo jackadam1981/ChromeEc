@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9c7508_f3ff5433",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-12T04:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac9864c_5f38853c",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dd1d7ee_5ae60cd1",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-11T22:16:37Z",
       "side": 1,
       "message": "Please also run `compare-builds` for EC and Zephyr.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ec6d07_1fc7e666",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-12T04:45:54Z",
+      "side": 1,
+      "message": "It would fail, please see this [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5838354/comment/e5f7ab5b_b1f3e89b/). The helipilot image size (1.6 GB based on 0x64000000) generated when this CL is used exceeds the 1 MB of flash memory on the device.",
+      "parentUuid": "3dd1d7ee_5ae60cd1",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -99,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "078b24ee_f7a9bcf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-12T04:45:54Z",
+      "side": 1,
+      "message": "Added change in suggested location to fmap.c",
+      "parentUuid": "bdfc557c_b043ffb4",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d58da2_858cb87d",
@@ -124,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1220213c_ab4ca469",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-12T04:45:54Z",
+      "side": 1,
+      "message": "Happy to if/when this CL evolves into a workable solution",
+      "parentUuid": "60d58da2_858cb87d",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0bfc16b_ae3a4c44",
         "filename": "include/rwsig.h",
         "patchSetId": 1
@@ -135,6 +225,30 @@
       "writtenOn": "2025-02-11T22:16:37Z",
       "side": 1,
       "message": "Don\u0027t forget about replacing `CONFIG_PROGRAM_MEMORY_BASE` here.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe555198_1b43a886",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-12T04:45:54Z",
+      "side": 1,
+      "message": "I actually didn\u0027t forget, the initial CL included these, but I wanted to confirm that (only) changes to CONFIG_RO_PUBKEY_READ_ADDR would generate an unreasonably large (1.6 GB) helipilot image size since that define was the most pressing one to change. I\u0027ve re-included these for completeness",
+      "parentUuid": "d0bfc16b_ae3a4c44",
       "range": {
         "startLine": 128,
         "startChar": 0,
