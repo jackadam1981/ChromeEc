@@ -265,6 +265,9 @@ class Zmake:
         """
         found_projects = zmake.project.find_projects(self.projects_dirs)
         if all_projects:
+            zmake.project.prune_projects(
+                projects=found_projects, module_paths=self.module_paths
+            )
             projects = set(found_projects.values())
         else:
             projects = set()
@@ -1034,7 +1037,11 @@ class Zmake:
         Args:
             fmt: The formatting string to print projects with.
         """
-        for project in zmake.project.find_projects(self.projects_dirs).values():
+        projects = zmake.project.find_projects(self.projects_dirs)
+        zmake.project.prune_projects(
+            projects=projects, module_paths=self.module_paths
+        )
+        for project in projects.values():
             print(fmt.format(config=project.config), end="")
 
         return 0
