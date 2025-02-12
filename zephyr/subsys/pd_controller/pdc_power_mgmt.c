@@ -520,6 +520,9 @@ static const char *const attached_state_names[] = {
 	[SNK_ATTACHED_TYPEC_ONLY_STATE] = "TypeCSnkAttached",
 };
 
+/* Array of best PDOs per port */
+static int port_selected_pdo[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /**
  * @brief Common struct for PDOs
  */
@@ -1772,6 +1775,8 @@ static void pdc_unattached_entry(void *obj)
 	/* Clear VBUS cache timeout. */
 	port->vbus_expired = sys_timepoint_calc(K_NO_WAIT);
 
+	port_selected_pdo[port_number] = 0;
+
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		invalidate_charger_settings(port, true);
 		port->unattached_local_state = UNATTACHED_SET_SINK_PATH_OFF;
@@ -1986,6 +1991,18 @@ static void pdc_snk_attached_entry(void *obj)
 	}
 }
 
+uint8_t pdc_get_snk_path_en_mask(void)
+{
+	uint8_t snk_path_en_mask = 0;
+
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		WRITE_BIT(snk_path_en_mask, port,
+			  pdc_data[port]->port.sink_path_en);
+	}
+
+	return snk_path_en_mask;
+}
+
 /**
  * @brief Run sink attached state.
  */
@@ -1996,7 +2013,7 @@ static void pdc_snk_attached_run(void *obj)
 	uint32_t max_ma, max_mv, max_mw, max_mw_pdo, unused;
 	uint32_t flags;
 	int pdo_index = 0;
-	uint32_t selected_pdo;
+	uint32_t selected_pdo, selected_port, snk_path_en_mask, tmp;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2111,7 +2128,6 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
-		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
 		flags = RDO_COMM_CAP;
 
 		for (int i = 0; i < PDO_NUM; i++) {
@@ -2128,53 +2144,93 @@ static void pdc_snk_attached_run(void *obj)
 			pd_select_best_pdo(PDO_NUM, port->snk_policy.src.pdos,
 					   pdc_max_request_mv, &selected_pdo);
 
-		if (port->snk_policy.pdo == selected_pdo &&
+		/* Update best pdo per port */
+		port_selected_pdo[config->connector_num] = selected_pdo;
+
+		/* Identify port with best PDO */
+		selected_port = pd_select_best_pdo(CONFIG_USB_PD_PORT_MAX_COUNT,
+						   port_selected_pdo,
+						   pdc_max_request_mv, &tmp);
+
+		if (selected_port == config->connector_num &&
+		    port->snk_policy.pdo == selected_pdo &&
 		    port->snk_policy.pdo_index == (pdo_index + 1)) {
+			port->snk_attached_local_state =
+				SNK_ATTACHED_START_CHARGING;
 			/* Selected PDO didn't change - no need to send RDO */
 			LOG_INF("C%d: Retaining PDO[%d]=0x%08X",
 				config->connector_num, pdo_index, selected_pdo);
 			return;
 		}
 
-		/* Store the selected PDO. Convert the PDO number to 1-based
-		 * indexing.
-		 */
-		port->snk_policy.pdo = port->snk_policy.src.pdos[pdo_index];
-		port->snk_policy.pdo_index = pdo_index + 1;
+		snk_path_en_mask = pdc_get_snk_path_en_mask();
+		LOG_INF("C%d: snk_path_en_mask=0x%x, selected_port=%d",
+			config->connector_num, snk_path_en_mask, selected_port);
+		/* Set RDO when snk_path at most is enabled on one port,
+		 * otherwise disable if we're not the selected port */
+		if ((snk_path_en_mask == 0 ||
+		     IS_POWER_OF_TWO(snk_path_en_mask)) &&
+		    (selected_port == config->connector_num ||
+		     selected_port == -1)) {
+			/* Store the selected PDO. Convert the PDO number to
+			 * 1-based indexing.
+			 */
+			port->snk_policy.pdo =
+				port->snk_policy.src.pdos[pdo_index];
+			port->snk_policy.pdo_index = pdo_index + 1;
 
-		/* Get the unclamped PDO voltage and current to determine
-		 * whether we need to set the capability mismatch bit if
-		 * less power is offered than our operating requirement.
-		 */
-		pd_extract_pdo_power_unclamped(selected_pdo, &max_ma, &max_mv,
-					       &unused);
-		max_mw_pdo = max_ma * max_mv / 1000;
-		if (max_mw_pdo < pdc_max_operating_power) {
-			flags |= RDO_CAP_MISMATCH;
-		}
+			/* Get the unclamped PDO voltage and current to
+			 * determine whether we need to set the capability
+			 * mismatch bit if less power is offered than our
+			 * operating requirement.
+			 */
+			pd_extract_pdo_power_unclamped(selected_pdo, &max_ma,
+						       &max_mv, &unused);
+			max_mw_pdo = max_ma * max_mv / 1000;
+			if (max_mw_pdo < pdc_max_operating_power) {
+				flags |= RDO_CAP_MISMATCH;
+			}
 
-		/* Extract Current, Voltage, and calculate Power. Current is
-		 * clamped to the board maximum here so that the RDO and charge
-		 * manager are given the correct board operating current.
-		 */
-		pd_extract_pdo_power(selected_pdo, &max_ma, &max_mv, &unused);
-		max_mw = max_ma * max_mv / 1000;
+			/* Extract Current, Voltage, and calculate Power.
+			 * Current is clamped to the board maximum here so that
+			 * the RDO and charge manager are given the correct
+			 * board operating current.
+			 */
+			pd_extract_pdo_power(selected_pdo, &max_ma, &max_mv,
+					     &unused);
+			max_mw = max_ma * max_mv / 1000;
 
-		/* Set RDO to send */
-		if ((port->snk_policy.pdo & PDO_TYPE_MASK) ==
-		    PDO_TYPE_BATTERY) {
-			port->snk_policy.rdo_to_send =
-				RDO_BATT(port->snk_policy.pdo_index, max_mw,
-					 max_mw, flags);
+			/* Set RDO to send */
+			if ((port->snk_policy.pdo & PDO_TYPE_MASK) ==
+			    PDO_TYPE_BATTERY) {
+				port->snk_policy.rdo_to_send =
+					RDO_BATT(port->snk_policy.pdo_index,
+						 max_mw, max_mw, flags);
+			} else {
+				/* Fixed or variable RDO. */
+				port->snk_policy.rdo_to_send =
+					RDO_FIXED(port->snk_policy.pdo_index,
+						  max_ma, max_ma, flags);
+			}
+			port->snk_attached_local_state =
+				SNK_ATTACHED_START_CHARGING;
+			LOG_INF("Send RDO: %d, snk_path_mask=0x%X, selected_port=%d",
+				RDO_POS(port->snk_policy.rdo_to_send),
+				snk_path_en_mask, selected_port);
+			queue_internal_cmd(port, CMD_PDC_SET_RDO);
 		} else {
-			/* Fixed or variable RDO. */
-			port->snk_policy.rdo_to_send =
-				RDO_FIXED(port->snk_policy.pdo_index, max_ma,
-					  max_ma, flags);
+			if (port->sink_path_en && selected_port >= 0 &&
+			    selected_port != config->connector_num) {
+				port->sink_path_en = false;
+				queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+			} else if (port->sink_path_en == false) {
+				port->snk_attached_local_state =
+					SNK_ATTACHED_START_CHARGING;
+			} else {
+				k_msleep(1);
+				k_event_post(&port->sm_event, PDC_SM_EVENT);
+			}
 		}
-
-		LOG_INF("Send RDO: %d", RDO_POS(port->snk_policy.rdo_to_send));
-		queue_internal_cmd(port, CMD_PDC_SET_RDO);
 		return;
 	case SNK_ATTACHED_START_CHARGING:
 		max_ma = MIN(PDO_FIXED_CURRENT(port->snk_policy.pdo),
