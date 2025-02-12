@@ -40,6 +40,30 @@
       ],
       "revId": "ac1ab0efb80bb71a9c0adcd6c1e518bd3e58aa12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ace77c_3f5ca094",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-02-12T19:04:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ce1937d9_c19a9e8a",
+      "range": {
+        "startLine": 199,
+        "startChar": 19,
+        "endLine": 199,
+        "endChar": 23
+      },
+      "revId": "ac1ab0efb80bb71a9c0adcd6c1e518bd3e58aa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
