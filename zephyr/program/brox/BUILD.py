@@ -8,6 +8,7 @@
 def register_brox_project(
     project_name,
     kconfig_files=None,
+    modules=None,
 ):
     """Register a variant of brox."""
     if kconfig_files is None:
@@ -18,6 +19,9 @@ def register_brox_project(
             here / project_name / "project.conf",
         ]
 
+    if modules is None:
+        modules = ["ec"]
+
     return register_binman_project(
         project_name=project_name,
         zephyr_board="it8xxx2/it82002aw",
@@ -26,6 +30,7 @@ def register_brox_project(
         ],
         kconfig_files=kconfig_files,
         inherited_from=["brox"],
+        modules=modules,
     )
 
 
@@ -36,9 +41,11 @@ brox = register_brox_project(
         here / "program.conf",
         # Parent project's config
         here / "brox" / "project.conf",
+        here / "brox" / "brox_only.conf",
         # Common sensor configs
         here / "motionsense.conf",
     ],
+    modules=["ec", "intel_module_private"],
 )
 
 register_brox_project(

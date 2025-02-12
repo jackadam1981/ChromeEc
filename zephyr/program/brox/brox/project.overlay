@@ -52,3 +52,23 @@ i2c3ALT: &i2c3 {
 &gpio_ec_i2c_pmc_pd_int_odl {
 	no-auto-init;
 };
+
+&i2c1 {
+	pdc_gbr_0: gbr-pdc@69 {
+		compatible = "intel,gbr-pdc";
+		reg = <0x69>;
+		irq-gpios = <&gpiof 2 GPIO_ACTIVE_LOW>;
+	};
+};
+
+/{
+	usbc {
+		usbc_port2: port2@2 {
+			compatible = "named-usbc-port";
+			reg = <2>;
+			pdc = <&pdc_gbr_0>;
+			policy = <&cros_policy>;
+			pd-retimer;
+		};
+	};
+};
