@@ -209,6 +209,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ebf575c_3b809845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-12T15:28:13Z",
+      "side": 1,
+      "message": "I cherry-picked this CL and the size is still big.\n\nI think this is caused by [`firmware_image.lds.S`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/firmware_image.lds.S?q\u003dcommon%2Ffirmware_image.lds.S%20RWSIG) which is used to assembly RO + RW and others into one binary.\n\nI think that `CONFIG_RO_PUBKEY_ADDR`, `CONFIG_RW_SIG_ADDR` and `CONFIG_RW_B_SIG_ADDR` should be relative from the beginning of the flash (just don\u0027t add `CONFIG_MAPPED_STORAGE_BASE` into that). As a result we wouldn\u0027t need to subtract that value in `fmap.c`.\n\nRegarding `firmware_image.lds.S`. After we make these defines relative, we will just add `CONFIG_PROGRAM_MEMORY_BASE` (no mismatch here), see [this line](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/firmware_image.lds.S;l\u003d99;drc\u003df37804a6bdb895e60c484902a91aae79e64f2e25) as an example.",
+      "parentUuid": "876faaf9_a98604b9",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60d58da2_858cb87d",
         "filename": "include/rwsig.h",
         "patchSetId": 1
