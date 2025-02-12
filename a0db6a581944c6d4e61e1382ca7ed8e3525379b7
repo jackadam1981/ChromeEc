@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dca4270_fa0c41e9",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-12T07:56:29Z",
+      "side": 1,
+      "message": "This also needs to be changed after you changed `RW_A_ADDR`, `RW_B_ADDR`",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 37
+      },
+      "revId": "a0db6a581944c6d4e61e1382ca7ed8e3525379b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
