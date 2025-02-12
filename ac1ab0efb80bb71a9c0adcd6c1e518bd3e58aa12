@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1937d9_c19a9e8a",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-02-12T17:45:53Z",
+      "side": 1,
+      "message": "This pretty much matches what ti50 uses. Ti50 uses cjf instead of cvfj. \"v\" just lists the files though.",
+      "range": {
+        "startLine": 199,
+        "startChar": 19,
+        "endLine": 199,
+        "endChar": 23
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "820b6733_cbfb66fb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware_builder.py",
+              "range": {
+                "startLine": 199,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "    cmd \u003d [\"tar\", \"cjf\", tarball_path, \"lcov.info\"]\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ac1ab0efb80bb71a9c0adcd6c1e518bd3e58aa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
