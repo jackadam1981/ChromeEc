@@ -2029,6 +2029,9 @@ static uint8_t pdc_get_snk_path_en_mask(void)
 	return snk_path_en_mask;
 }
 
+/* TODO(b/396453548) - Handle scenario with barrel jack charger, where sink path
+ * is disabled on all PDC ports.  This will require interacting with
+ * charge_manager module. */
 static int pdc_eval_pdo_port(int port, struct pdc_pdos_t *pdo,
 			     uint32_t *selected_pdo, uint32_t *selected_port)
 {
