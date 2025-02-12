@@ -2012,10 +2012,26 @@ static void pdc_print_pdo_info(int port, struct pdc_pdos_t *pdo)
 	}
 }
 
+static uint8_t pdc_get_snk_path_en_mask(void)
+{
+	uint8_t snk_path_en_mask = 0;
+
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		WRITE_BIT(snk_path_en_mask, port,
+			  pdc_data[port]->port.sink_path_en);
+	}
+
+	return snk_path_en_mask;
+}
+
 static bool pdc_snk_policy_is_pdo_same(struct pdc_port_t *port,
+				       uint32_t selected_port,
 				       uint32_t selected_pdo, int pdo_index)
 {
-	return (port->snk_policy.pdo == selected_pdo &&
+	const struct pdc_config_t *const config = port->dev->config;
+
+	return (config->connector_num == selected_port &&
+		port->snk_policy.pdo == selected_pdo &&
 		port->snk_policy.pdo_index == (pdo_index + 1));
 }
 
@@ -2058,10 +2074,56 @@ pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
 	queue_internal_cmd(port, CMD_PDC_SET_RDO);
 }
 
-static void pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
+static bool pdc_is_one_or_fewer_snk_path_en(void)
+{
+	uint32_t snk_path_en_mask = pdc_get_snk_path_en_mask();
+
+	return (snk_path_en_mask == 0 || IS_POWER_OF_TWO(snk_path_en_mask));
+}
+
+static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 {
 	const struct pdc_config_t *const config = port->dev->config;
-	int pdo_index = 0;
+	uint32_t max_ma, max_mv, max_mw;
+
+	max_ma = MIN(PDO_FIXED_CURRENT(pdo),
+		     CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA);
+	max_mv = PDO_FIXED_VOLTAGE(pdo);
+	max_mw = max_ma * max_mv / 1000;
+
+	LOG_INF("Available charging on C%d", config->connector_num);
+	LOG_INF("  PDO: %08x", pdo);
+	LOG_INF("  V: %d", max_mv);
+	LOG_INF("  C: %d", max_ma);
+	LOG_INF("  P: %d", max_mw);
+
+	if (port->sink_path_en) {
+		charge_manager_set_supplier(config->connector_num,
+					    CHARGE_SUPPLIER_PD);
+	}
+
+	typec_set_input_current_limit(config->connector_num, 0, 0);
+	pd_set_input_current_limit(config->connector_num, max_ma, max_mv);
+	charge_manager_set_ceil(config->connector_num, CEIL_REQUESTOR_PD,
+				max_ma);
+
+	if (((PDO_GET_TYPE(pdo) == PDO_TYPE_FIXED) &&
+	     (!(pdo & PDO_FIXED_GET_DRP) ||
+	      (pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
+	    (max_mw >= PD_DRP_CHARGE_POWER_MIN)) {
+		charge_manager_update_dualrole(config->connector_num,
+					       CAP_DEDICATED);
+	} else {
+		charge_manager_update_dualrole(config->connector_num,
+					       CAP_DUALROLE);
+	}
+}
+
+static enum snk_attached_local_state_t
+pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
+{
+	const struct pdc_config_t *const config = port->dev->config;
+	int pdo_index = 0, selected_port;
 	uint32_t selected_pdo;
 
 	pdc_print_pdo_info(config->connector_num, &port->snk_policy.src);
@@ -2069,20 +2131,60 @@ static void pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	pdo_index = pd_select_best_pdo(PDO_NUM, port->snk_policy.src.pdos,
 				       pdc_max_request_mv, &selected_pdo);
 
-	if (pdc_snk_policy_is_pdo_same(port, selected_pdo, pdo_index)) {
-		/* Selected PDO didn't change - no need to send RDO */
-		LOG_INF("C%d: Retaining PDO[%d]=0x%08X", config->connector_num,
-			pdo_index, selected_pdo);
-		return;
+	/* No valid PDOs found, move to next state */
+	if (pdo_index == -1) {
+		return SNK_ATTACHED_START_CHARGING;
 	}
 
-	/* Store the selected PDO. Convert the PDO number to 1-based
-	 * indexing.
-	 */
-	port->snk_policy.pdo = port->snk_policy.src.pdos[pdo_index];
-	port->snk_policy.pdo_index = pdo_index + 1;
+	pdc_snk_seed_charge_manager(port, selected_pdo);
+	selected_port = charge_manager_get_active_charge_port();
 
-	pdc_snk_attached_send_set_rdo(port, &port->snk_policy);
+	if (pdc_snk_policy_is_pdo_same(port, selected_port, selected_pdo,
+				       pdo_index)) {
+		LOG_INF("C%d: Retaining PDO[%d]=0x%08X", config->connector_num,
+			pdo_index, selected_pdo);
+		return SNK_ATTACHED_START_CHARGING;
+	} else if ((pdc_is_one_or_fewer_snk_path_en() &&
+		    (selected_port == config->connector_num ||
+		     selected_port == CHARGE_PORT_NONE)) ||
+		   port->sink_path_en == false) {
+		/* Set RDO when snk_path at most is enabled on one port,
+		 * and we're either the selected port or no port is selected. */
+
+		/* Store the selected PDO. Convert the PDO number to 1-based
+		 * indexing. */
+		port->snk_policy.pdo = port->snk_policy.src.pdos[pdo_index];
+		port->snk_policy.pdo_index = pdo_index + 1;
+
+		pdc_snk_attached_send_set_rdo(port, &port->snk_policy);
+		return SNK_ATTACHED_START_CHARGING;
+	} else if (port->sink_path_en && selected_port >= 0 &&
+		   selected_port != config->connector_num) {
+		/* Disable sink path when we're not the selected port */
+		port->sink_path_en = false;
+		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		return SNK_ATTACHED_EVALUATE_PDOS;
+	} else {
+		/* More than one sink path is enabled, notify other ports
+		 * to evaluate their PDOs and if they should turn off their
+		 * sink path */
+		uint32_t snk_path_en_mask = pdc_get_snk_path_en_mask();
+		LOG_INF("C%d: snk_path_en_mask=0x%x, selected_port=%d",
+			config->connector_num, snk_path_en_mask, selected_port);
+
+		/* Trigger other ports to evaluate PDOs to determine if sink
+		 * path needs to be disabled */
+		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+			if (selected_port != CHARGE_PORT_NONE &&
+			    selected_port != i &&
+			    IS_BIT_SET(snk_path_en_mask, i)) {
+				(void)pdc_power_mgmt_set_new_power_request(i);
+			}
+		}
+		k_msleep(1);
+		k_event_post(&port->sm_event, PDC_SM_EVENT);
+		return SNK_ATTACHED_EVALUATE_PDOS;
+	}
 }
 
 /**
@@ -2092,7 +2194,6 @@ static void pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
-	uint32_t max_ma, max_mv, max_mw;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2207,44 +2308,11 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
-		pdc_snk_attached_evaluate_pdos(port);
-		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
+		port->snk_attached_local_state =
+			pdc_snk_attached_evaluate_pdos(port);
 		return;
 	case SNK_ATTACHED_START_CHARGING:
-		max_ma = MIN(PDO_FIXED_CURRENT(port->snk_policy.pdo),
-			     CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA);
-		max_mv = PDO_FIXED_VOLTAGE(port->snk_policy.pdo);
-		max_mw = max_ma * max_mv / 1000;
-
-		LOG_INF("Available charging on C%d", config->connector_num);
-		LOG_INF("PDO: %08x", port->snk_policy.pdo);
-		LOG_INF("V: %d", max_mv);
-		LOG_INF("C: %d", max_ma);
-		LOG_INF("P: %d", max_mw);
-
-		if (port->sink_path_en) {
-			charge_manager_set_supplier(config->connector_num,
-						    CHARGE_SUPPLIER_PD);
-		}
-
-		typec_set_input_current_limit(config->connector_num, 0, 0);
-		pd_set_input_current_limit(config->connector_num, max_ma,
-					   max_mv);
-		charge_manager_set_ceil(config->connector_num,
-					CEIL_REQUESTOR_PD, max_ma);
-
-		if (((PDO_GET_TYPE(port->snk_policy.pdo) == PDO_TYPE_FIXED) &&
-		     (!(port->snk_policy.pdo & PDO_FIXED_GET_DRP) ||
-		      (port->snk_policy.pdo &
-		       PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
-		    (max_mw >= PD_DRP_CHARGE_POWER_MIN)) {
-			charge_manager_update_dualrole(config->connector_num,
-						       CAP_DEDICATED);
-		} else {
-			charge_manager_update_dualrole(config->connector_num,
-						       CAP_DUALROLE);
-		}
-
+		pdc_snk_seed_charge_manager(port, port->snk_policy.pdo);
 		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
 		break;
 	case SNK_ATTACHED_GET_RDO:
@@ -3406,6 +3474,8 @@ int pdc_power_mgmt_set_new_power_request(int port)
 
 	atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
 		       SNK_POLICY_NEW_POWER_REQUEST);
+
+	k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
 
 	return EC_SUCCESS;
 }
