@@ -257,6 +257,30 @@ class Zmake:
         Returns a list of projects.
         """
         found_projects = zmake.project.find_projects(self.projects_dirs)
+<<<<<<< PATCH SET (8bd68f7528ac76484dbf45b5fc6e8c09db1942ad zmake: filter projects that require private modules)
+        if all_projects:
+            zmake.project.prune_projects(
+                projects=found_projects, module_paths=self.module_paths
+            )
+            projects = set(found_projects.values())
+        else:
+            projects = set()
+            for project_name in project_names:
+                try:
+                    projects.add(found_projects[project_name])
+                except KeyError as e:
+                    raise KeyError(f"No project named {project_name}") from e
+||||||| BASE      (64b2d6533b314ae3c04f3dda6d97ff5ea2b79d26 zephyr: console: Fix NULL shell_zephyr de-reference)
+        if all_projects:
+            projects = set(found_projects.values())
+        else:
+            projects = set()
+            for project_name in project_names:
+                try:
+                    projects.add(found_projects[project_name])
+                except KeyError as e:
+                    raise KeyError(f"No project named {project_name}") from e
+=======
         if select_all_projects:
             return set(
                 {
@@ -292,6 +316,7 @@ class Zmake:
                 raise KeyError(f"No project(s) matching '{project_expr}'")
             projects |= matches
 
+>>>>>>> BASE      (acc5eee26d36ba11aa159964a9ba56f14ea6f301 Quartz: Changing BL_OFF_ODL to OD and INIT_LOW)
         return projects
 
     def configure(
@@ -1062,6 +1087,15 @@ class Zmake:
             project_expresison_list: user-provided list of project names or
                 wildcard expressions. If empty or None, list all projects.
         """
+<<<<<<< PATCH SET (8bd68f7528ac76484dbf45b5fc6e8c09db1942ad zmake: filter projects that require private modules)
+        projects = zmake.project.find_projects(self.projects_dirs)
+        zmake.project.prune_projects(
+            projects=projects, module_paths=self.module_paths
+        )
+        for project in projects.values():
+||||||| BASE      (64b2d6533b314ae3c04f3dda6d97ff5ea2b79d26 zephyr: console: Fix NULL shell_zephyr de-reference)
+        for project in zmake.project.find_projects(self.projects_dirs).values():
+=======
 
         projects = self._resolve_projects(
             project_names,
@@ -1069,6 +1103,7 @@ class Zmake:
         )
 
         for project in sorted(projects, key=lambda p: p.config.project_name):
+>>>>>>> BASE      (acc5eee26d36ba11aa159964a9ba56f14ea6f301 Quartz: Changing BL_OFF_ODL to OD and INIT_LOW)
             print(fmt.format(config=project.config), end="")
 
         return 0

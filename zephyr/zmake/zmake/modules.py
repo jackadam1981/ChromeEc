@@ -54,6 +54,71 @@ known_modules = {
     # TODO(b/384581513): boringssl is not officially recognized by Zephyr,
     # since it doesn't have a zephyr/module.yaml. That doesn't prevent us from
     # using it with zmake.
+<<<<<<< PATCH SET (8bd68f7528ac76484dbf45b5fc6e8c09db1942ad zmake: filter projects that require private modules)
+    "boringssl": {
+        "locator": lambda name, checkout: (
+            checkout / "src" / "third_party" / name
+        ),
+        "type": "public",
+    },
+    "hal_stm32": {
+        "locator": third_party_module,
+        "type": "public",
+    },
+    "cmsis": {
+        "locator": third_party_module,
+        "type": "public",
+    },
+    "ec": {
+        "locator": lambda name, checkout: (
+            checkout / "src" / "platform" / "ec"
+        ),
+        "type": "public",
+    },
+    "fpc": {
+        "locator": lambda name, checkout: (
+            checkout / "src" / "platform" / "fingerprint" / "fpc"
+        ),
+        "type": "public",
+    },
+    "nanopb": {
+        "locator": third_party_module,
+        "type": "public",
+    },
+    "pigweed": {
+        "locator": lambda name, checkout: (
+            checkout / "src" / "third_party" / name
+        ),
+        "type": "public",
+    },
+    "hal_intel_public": {
+        "locator": third_party_module,
+        "type": "public",
+    },
+    "picolibc": {
+        "locator": third_party_module,
+        "type": "public",
+    },
+    "intel_module_private": {
+        "locator": third_party_module,
+        "type": "private",
+    },
+||||||| BASE      (64b2d6533b314ae3c04f3dda6d97ff5ea2b79d26 zephyr: console: Fix NULL shell_zephyr de-reference)
+    "boringssl": lambda name, checkout: (
+        checkout / "src" / "third_party" / name
+    ),
+    "hal_stm32": third_party_module,
+    "cmsis": third_party_module,
+    "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
+    "fpc": lambda name, checkout: (
+        checkout / "src" / "platform" / "fingerprint" / "fpc"
+    ),
+    "nanopb": third_party_module,
+    "pigweed": lambda name, checkout: (checkout / "src" / "third_party" / name),
+    "hal_intel_public": third_party_module,
+    "picolibc": third_party_module,
+    "intel_module_private": third_party_module,
+=======
     "boringssl": lambda name, checkout: (
         checkout / "src" / "third_party" / name
     ),
@@ -80,7 +145,38 @@ known_modules = {
     "focaltech_fp": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "focaltech"
     ),
+>>>>>>> BASE      (acc5eee26d36ba11aa159964a9ba56f14ea6f301 Quartz: Changing BL_OFF_ODL to OD and INIT_LOW)
 }
+
+
+def is_private(module_name):
+    """Indicate if module is private.
+
+    Public modules are required and zmake will raise an exception if a public
+    module cannot be found.  Private modules are not available in the public
+    manifest, so projects that require a private module are skipped instead
+    of throwing an error.
+
+    Args:
+        module_name: Name of the module.
+
+    Returns:
+        True: the specified module_name is private.
+        False: the specified module_name is public.
+
+
+    Raises:
+        A KeyError, if the module_name is not known.
+    """
+    try:
+        module_info = known_modules[module_name]
+    except KeyError as e:
+        raise KeyError(f"The {module_name} module is not a known module") from e
+
+    if module_info["type"] == "private":
+        return True
+
+    return False
 
 
 def locate_from_checkout(checkout_dir):
@@ -98,7 +194,8 @@ def locate_from_checkout(checkout_dir):
         A dictionary mapping module names to paths.
     """
     result = {}
-    for name, locator in known_modules.items():
+    for name, module_info in known_modules.items():
+        locator = module_info["locator"]
         path = locator(name, checkout_dir)
         if path.exists():
             result[name] = path
