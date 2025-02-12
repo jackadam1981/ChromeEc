@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c01e447_3e2bd978",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-12T21:41:22Z",
+      "side": 1,
+      "message": "Move this rename to previous CL.",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "cb0a45a726fdacb06acb4f468184a0f268621505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d2e47f7_60860b12",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
         "patchSetId": 1
@@ -20,6 +43,47 @@
         "endLine": 37,
         "endChar": 1
       },
+      "revId": "cb0a45a726fdacb06acb4f468184a0f268621505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a4da96_fee4e813",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-12T21:41:22Z",
+      "side": 1,
+      "message": "`console_input`",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "08a26d22_06b7ce03",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": "\tchar console_input[] \u003d \"fpupload 52 image\";\n\tint rv \u003d shell_execute_cmd(get_ec_shell(), console_input);\n"
+            }
+          ]
+        }
+      ],
       "revId": "cb0a45a726fdacb06acb4f468184a0f268621505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
