@@ -1268,6 +1268,7 @@ static int emul_realtek_rts54xx_set_rdo(const struct emul *target, uint32_t rdo)
 		rts5453p_emul_get_pdc_data(target);
 
 	data->pdo.rdo = rdo;
+	data->connector_status.rdo = rdo;
 
 	return 0;
 }
