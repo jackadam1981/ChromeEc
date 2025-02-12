@@ -136,6 +136,30 @@
       },
       "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd6baae_da0c3b54",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-02-12T03:20:03Z",
+      "side": 1,
+      "message": "For 1., I think line 874 in `pdc_power_mgmt.c` should meet our need? Supposedly, the `PDC_INVALID` is only used for `send_cmd_return_state`, so in that switch statment, we would like to treat the `PDC_INVALID` as an invalid state if that value appears in `current_state`.\nFor 2., updated.",
+      "parentUuid": "c0bb49c2_7179e3c2",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
