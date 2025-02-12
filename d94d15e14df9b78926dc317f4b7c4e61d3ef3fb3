@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa039bf_3da00873",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-12T22:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e183158a_d88dbc3d",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "d94d15e14df9b78926dc317f4b7c4e61d3ef3fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a3bdabe_1e7450ba",
@@ -61,6 +85,30 @@
       "writtenOn": "2025-02-12T21:40:24Z",
       "side": 1,
       "message": "Looks like you renamed to `console_input` in the followup CL. Go ahead and rename it here instead.",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "d94d15e14df9b78926dc317f4b7c4e61d3ef3fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44322da_9f407e39",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-12T22:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3bdabe_1e7450ba",
       "range": {
         "startLine": 31,
         "startChar": 6,
