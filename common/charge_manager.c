@@ -674,6 +674,30 @@ static int charge_manager_get_ceil(int port)
 	return ceil;
 }
 
+static int get_pd_port_max_power(int port)
+{
+	uint32_t pdo, max_voltage, max_current, unused;
+
+	pd_select_best_pdo(pd_get_src_cap_cnt(port), pd_get_src_caps(port),
+			   pd_get_max_voltage(), &pdo);
+	pd_extract_pdo_power(pdo, &max_current, &max_voltage, &unused);
+
+	return max_current * max_voltage;
+}
+
+static int get_candidate_port_power(int supplier, int port)
+{
+	int candidate_port_power = POWER(available_charge[supplier][port]);
+
+	/* Check if PD port can provide more than negotiated PDC port.
+	 * This can happen in dead battery scenarios. */
+	if (IS_ENABLED(CONFIG_USB_PDC_POWER_MGMT) && is_pd_port(port)) {
+		candidate_port_power =
+			MAX(get_pd_port_max_power(port), candidate_port_power);
+	}
+
+	return candidate_port_power;
+}
 /**
  * Select the best charge port or the override port, as defined by the supplier
  * hierarchy and the available power.
@@ -737,7 +761,7 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 				continue;
 #endif
 
-			candidate_port_power = POWER(available_charge[i][j]);
+			candidate_port_power = get_candidate_port_power(i, j);
 
 			/* Select DPS port if provided. */
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) &&
