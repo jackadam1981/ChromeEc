@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0300eb6_bcc04cf4",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-02-12T14:53:51Z",
+      "side": 1,
+      "message": "do you need both `rv` and `ret`? just use one",
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8929f53_880a5a7e",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-02-12T14:53:51Z",
+      "side": 1,
+      "message": "is there a define for 3? also add braces, all code under `zephyr/` should have them",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
