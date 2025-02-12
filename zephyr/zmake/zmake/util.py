@@ -48,9 +48,12 @@ def locate_cros_checkout():
         and finally from a known set of common paths.
     """
 
-    def propose_checkouts():
-        yield os.getenv("CROS_WORKON_SRCROOT")
+    src_root = os.getenv("CROS_WORKON_SRCROOT")
+    if src_root:
+        path = pathlib.Path(src_root)
+        return path.resolve()
 
+    def propose_checkouts():
         path = pathlib.Path.cwd()
         while path.resolve() != pathlib.Path("/"):
             yield path
