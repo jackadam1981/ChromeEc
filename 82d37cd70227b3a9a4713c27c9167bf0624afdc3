@@ -227,6 +227,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1fe556e_04d4523a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-12T21:32:53Z",
+      "side": 1,
+      "message": "\u003e I think that CONFIG_RO_PUBKEY_ADDR, CONFIG_RW_SIG_ADDR and CONFIG_RW_B_SIG_ADDR should be relative from the beginning of the flash (just don\u0027t add CONFIG_MAPPED_STORAGE_BASE into that)\n\nOf course, you will need to add `CONFIG_MAPPED_STORAGE_BASE` into these in `rwsig.c`",
+      "parentUuid": "3ebf575c_3b809845",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60d58da2_858cb87d",
         "filename": "include/rwsig.h",
         "patchSetId": 1
