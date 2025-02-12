@@ -33,6 +33,24 @@
       "message": "This looks like a better fix then what I\u0027m proposing. It broke the unit tests though.",
       "revId": "03eced3376c16d54516310db7cd39ab75ffab172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2413887f_0294a44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-02-12T17:55:38Z",
+      "side": 1,
+      "message": "The new patchset fixes the unit tests.",
+      "parentUuid": "667cb479_305da3c9",
+      "revId": "03eced3376c16d54516310db7cd39ab75ffab172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
