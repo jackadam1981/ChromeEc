@@ -79,7 +79,7 @@ bool pdc_power_mgmt_is_connected(int port);
  *
  * @retval CONFIG_USB_PD_PORT_MAX_COUNT
  */
-uint8_t pdc_power_mgmt_get_usb_pd_port_count(void);
+__override_proto uint8_t pdc_power_mgmt_get_usb_pd_port_count(void);
 
 /**
  * @brief Set the passed charge port as active.
