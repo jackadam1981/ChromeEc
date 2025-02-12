@@ -258,6 +258,9 @@ class Zmake:
         """
         found_projects = zmake.project.find_projects(self.projects_dirs)
         if select_all_projects:
+            zmake.project.prune_projects(
+                projects=found_projects, module_paths=self.module_paths
+            )
             return set(
                 {
                     p
@@ -1062,12 +1065,13 @@ class Zmake:
             project_expresison_list: user-provided list of project names or
                 wildcard expressions. If empty or None, list all projects.
         """
-
         projects = self._resolve_projects(
             project_names,
             select_all_projects=not bool(project_names),
         )
-
+        zmake.project.prune_projects(
+            projects=projects, module_paths=self.module_paths
+        )
         for project in sorted(projects, key=lambda p: p.config.project_name):
             print(fmt.format(config=project.config), end="")
 
