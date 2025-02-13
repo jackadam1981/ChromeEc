@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9a0b2b_f0f2b371",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T20:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69532a0d_8817a8b4",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1f5f204_a12800df",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-13T16:51:43Z",
       "side": 1,
       "message": "Needs void parameter. Should this be static?",
+      "range": {
+        "startLine": 1995,
+        "startChar": 0,
+        "endLine": 1995,
+        "endChar": 34
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b59d813_38dfa86d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T20:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1f5f204_a12800df",
       "range": {
         "startLine": 1995,
         "startChar": 0,
