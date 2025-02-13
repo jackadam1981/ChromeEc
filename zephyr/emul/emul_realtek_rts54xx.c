@@ -1173,6 +1173,7 @@ static int emul_realtek_rts54xx_init_data(const struct emul *target)
 	/* Reset PDOs. */
 	emul_pdc_pdo_reset(&data->pdo);
 
+	memset(&data->connector_status, 0, sizeof(data->connector_status));
 	data->set_ccom_mode.ccom = BIT(2); /* Realtek DRP bit 2 */
 	data->frs_configured = false;
 	data->sbu_mux_mode = 0;
