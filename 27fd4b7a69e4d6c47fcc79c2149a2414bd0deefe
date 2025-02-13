@@ -140,6 +140,30 @@
       },
       "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c8cec3_50cd9c82",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-13T22:06:25Z",
+      "side": 1,
+      "message": "[CONFIG_THREAD_NAME](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/kernel/Kconfig;drc\u003da9835ea8ae69267fa5d053bc45bee45db15e7ee3;l\u003d485) is enabled by default if `ZTEST` is enabled. The [THREAD_MAX_NAME_LEN](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/kernel/Kconfig;drc\u003da9835ea8ae69267fa5d053bc45bee45db15e7ee3;l\u003d490) is enabled when `ZTEST` is enabled and that requires CONFIG_THREAD_NAME to be enabled.",
+      "parentUuid": "744fc4c2_4f15a2b5",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
