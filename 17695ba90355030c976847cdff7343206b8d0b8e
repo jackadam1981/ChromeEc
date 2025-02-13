@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e6cf07_b6b8b5fb",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T02:33:08Z",
+      "side": 1,
+      "message": "I encountered a similar issue http://b/395866318, but I\u0027m faking a function in `PDC Power Mgmt0` thread, adding an assert to catch when an RDO is sent when sink path is enabled on more than one port.  Since this isn\u0027t running in the `test` thread, I don\u0027t think this will solve my issue.  We may need to add all the new PDC threads to this list as well.  \n\nI don\u0027t think this is a maintainable solution though as we might not always remember to update this list when a new thread is created.",
+      "revId": "17695ba90355030c976847cdff7343206b8d0b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
