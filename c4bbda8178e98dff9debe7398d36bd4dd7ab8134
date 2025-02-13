@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83297103_c8a98c7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-02-13T04:58:41Z",
+      "side": 1,
+      "message": "It juts struck me that I am enabling the watchdog not only before jumping to RW, but also before jumping to the ST DFU bootrom, which it might not be prepared for.\n\nIt seems to work with the DFU bootrom on STM32L5 at least, so I suppose that one enables and regularly resets the watchdog itself.  And in any case, this feature is off by default, and anyone using the DFU functionalty will immediately discover, if their DFU bootrom does not reset the watchdog.",
+      "revId": "c4bbda8178e98dff9debe7398d36bd4dd7ab8134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
