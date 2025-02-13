@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20dddbff_67748260",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-13T05:36:24Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "611ffc9b_464806c1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd8a1b92_02273ada",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-02-13T00:11:43Z",
       "side": 1,
       "message": "Use `k_work_schedule(touch_disable_work, K_NO_WAIT)` instead of `hook_call_deferred`",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7684c472_7634de0c",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-13T05:36:24Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "cd8a1b92_02273ada",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fc7823_a5b8ef0f",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-13T05:36:24Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "ecf6cd8d_7a03b93b",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 78
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0300eb6_bcc04cf4",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47dd685_b535449d",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-13T05:36:24Z",
+      "side": 1,
+      "message": "update, use rv",
+      "parentUuid": "d0300eb6_bcc04cf4",
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8929f53_880a5a7e",
@@ -117,6 +207,30 @@
       "writtenOn": "2025-02-12T14:53:51Z",
       "side": 1,
       "message": "is there a define for 3? also add braces, all code under `zephyr/` should have them",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fab86fa_bf6b3714",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-13T05:36:24Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "f8929f53_880a5a7e",
       "range": {
         "startLine": 78,
         "startChar": 0,
