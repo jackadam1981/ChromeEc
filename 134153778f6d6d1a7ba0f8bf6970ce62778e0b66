@@ -1,6 +1,92 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfb4c7a_67e1e21e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T00:11:43Z",
+      "side": 1,
+      "message": "This will also need a unit test written.",
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611ffc9b_464806c1",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T00:11:43Z",
+      "side": 1,
+      "message": "Inside the platform/ec/zephyr director, use Zephyr APIs whenever possible.\n\nInstead of `DECLARE_DEFERRED()` define a `struct k_work_delayable` item and then use `k_work_schedule()` to invoke the callback.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8a1b92_02273ada",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T00:11:43Z",
+      "side": 1,
+      "message": "Use `k_work_schedule(touch_disable_work, K_NO_WAIT)` instead of `hook_call_deferred`",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf6cd8d_7a03b93b",
+        "filename": "zephyr/program/brox/jubilant/src/touch_panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T00:11:43Z",
+      "side": 1,
+      "message": "Here you should use `ap_pwrseq_state_callback()` to register a callback. [Example usage](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/brox/src/suspend_resume.c;l\u003d65;drc\u003d1e9240e728ae9b641417fc818c090897eca6f257)\n\nIn your case, you want to register for the `AP_POWER_SHUTDOWN` event.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 78
+      },
+      "revId": "134153778f6d6d1a7ba0f8bf6970ce62778e0b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0300eb6_bcc04cf4",
