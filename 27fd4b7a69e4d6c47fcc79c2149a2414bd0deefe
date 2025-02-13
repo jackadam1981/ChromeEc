@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b2ef2c2_6fa17ebf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-13T00:16:27Z",
+      "side": 1,
+      "message": "Can you add a comment here (and in the `Kconfig`) about what the default Zephyr `exit()` behavior does?\n\nThat will make it clearer to someone why they may want to use this version.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db6e30f_e7c021e3",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-13T00:16:27Z",
+      "side": 1,
+      "message": "I think you can remove this for now and add it back in the CL where you add the test for `native_sim`: https://crrev.com/c/6252122",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaf4347_46141763",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-13T00:16:27Z",
+      "side": 1,
+      "message": "If `CONFIG_THREAD_NAME` is only used for the `native_sim` version, you can move this into https://crrev.com/c/6252122. (Not sure what controls that config.)",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
