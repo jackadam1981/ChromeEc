@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f303705_a8ffa6ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-02-13T16:31:34Z",
+      "side": 1,
+      "message": "At one point, an old bug in EC codebase suddenly surfaced, and resulted in boot looping on one of my HyperDebug boards, while another worked fine.  (The issue was that the EC code allowed insufficient time for a voltage regulator to stabilize.)\n\nThe OpenTitan consortium operates a test lab in the UK, and it would be highly inconvenient to have to manually re-flash devices there, in case a similar bug slips through.\n\nThis patch enables a feature to have the 4kB RO bootloader keep a counter of how many times the board has re-booted (the counter starts over on power loss, or on \"transport init\").  And if it reaches 10 times, the RO will transfer control to the ST DFU bootloader, rather than the RW.\n\nAlso, this patch makes the RO enable the watchdog timer, such that if RW hangs in early setup (as opposed to crash), it will also be caught, and eventually cause the DFU bootloader to gain control.\n\nThese change should allow \"transport update-firmware\" to install a corrected firmware at the start of the next test run in the lab.",
+      "revId": "e1484b94b44ab74ab80b1e06dcf604302fe9eb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
