@@ -31,6 +31,7 @@
 #include "cros_version.h"
 #include "panic.h"
 #include "panic_log.h"
+#include "panic_state.h"
 #include "sysjump.h"
 #include "system.h"
 #include "system_boot_time.h"
@@ -1018,6 +1019,7 @@ void system_common_pre_init(void)
 	if (IS_ENABLED(CONFIG_PANIC_LOG)) {
 		panic_log_init();
 	}
+	panic_state_init();
 }
 
 void system_enter_manual_recovery(void)
