@@ -206,6 +206,29 @@ TPM_RC ParseResponse_NV_Certify(const std::string& response,
   return TpmSignatureToString(signature_typed, &signature);
 }
 
+TPM_RC SerializeCommand_NV_Read(
+    const TPMI_RH_NV_AUTH& auth_handle, const std::string& auth_handle_name,
+    const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
+    const UINT16& size, const UINT16& offset, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  return Tpm::SerializeCommand_NV_Read(
+      auth_handle, auth_handle_name, nv_index, nv_index_name, size, offset,
+      &serialized_command, authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_NV_Read(
+    const std::string& response, std::string& data,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_MAX_NV_BUFFER buffer;
+  TPM_RC rc = Tpm::ParseResponse_NV_Read(response, &buffer,
+                                         authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  data = StringFrom_TPM2B_MAX_NV_BUFFER(buffer);
+  return TPM_RC_SUCCESS;
+}
+
 TPM_RC SerializeCommand_NV_ReadPublic(
     const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
     std::string& serialized_command,
@@ -213,6 +236,22 @@ TPM_RC SerializeCommand_NV_ReadPublic(
   return Tpm::SerializeCommand_NV_ReadPublic(nv_index, nv_index_name,
                                              &serialized_command,
                                              authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_NV_ReadPublic(
+    const std::string& response, uint16_t& nv_public_data_size,
+    std::string& nv_name,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_NV_PUBLIC nv_public;
+  TPM2B_NAME nv_name_typed;
+  TPM_RC rc = Tpm::ParseResponse_NV_ReadPublic(
+      response, &nv_public, &nv_name_typed, authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  nv_public_data_size = nv_public.nv_public.data_size;
+  nv_name = StringFrom_TPM2B_NAME(nv_name_typed);
+  return TPM_RC_SUCCESS;
 }
 
 TPM_RC SerializeCommand_Quote(

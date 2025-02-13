@@ -118,12 +118,35 @@ TPM_RC ParseResponse_NV_Certify(const std::string& response,
                                 std::string& certify_info,
                                 std::string& signature);
 
+// Wraps Tpm::SerializeCommand_NV_Read. Serializes the TPM2_NV_Read command.
+// authorization_delegate is nullable.
+TPM_RC SerializeCommand_NV_Read(
+    const TPMI_RH_NV_AUTH& auth_handle, const std::string& auth_handle_name,
+    const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
+    const UINT16& size, const UINT16& offset, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_NV_Read. Parses the response of a TPM2_NV_Read
+// command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_NV_Read(
+    const std::string& response, std::string& data,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
 // Wraps Tpm::SerializeCommand_NV_ReadPublic. Serializes the TPM2_NV_ReadPublic
 // command.
 // authorization_delegate is nullable.
 TPM_RC SerializeCommand_NV_ReadPublic(
     const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
     std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_NV_ReadPublic. Parses the response from a
+// TPM2_NV_ReadPublic command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_NV_ReadPublic(
+    const std::string& response, uint16_t& nv_public_data_size,
+    std::string& nv_name,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
 // Wraps Tpm::SerializeCommand_Quote. Serializes the TPM2_Quote command.
