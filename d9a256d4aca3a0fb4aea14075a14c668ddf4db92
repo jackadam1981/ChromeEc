@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69532a0d_8817a8b4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T16:51:43Z",
+      "side": 1,
+      "message": "Needs to use `\u003c\u003e` style include.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f5f204_a12800df",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T16:51:43Z",
+      "side": 1,
+      "message": "Needs void parameter. Should this be static?",
+      "range": {
+        "startLine": 1995,
+        "startChar": 0,
+        "endLine": 1995,
+        "endChar": 34
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce539adb_a256d31e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T16:51:43Z",
+      "side": 1,
+      "message": "This state has gotten quite large, move into a sub-routine to improve readability.",
+      "range": {
+        "startLine": 2132,
+        "startChar": 0,
+        "endLine": 2132,
+        "endChar": 23
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751d1439_c234b84a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-13T16:51:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is the correct place for this.  If the system provides a barrel-jack, the PDC subsystem shouldn\u0027t enable the sink path if the dedciated charger is connected.  I think we need the charge manager handling the \"break before make\" when changing the charging port.",
+      "range": {
+        "startLine": 2167,
+        "startChar": 0,
+        "endLine": 2167,
+        "endChar": 48
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
