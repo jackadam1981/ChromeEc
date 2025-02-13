@@ -184,6 +184,30 @@
       },
       "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed55c38_82633a74",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-02-13T05:38:40Z",
+      "side": 1,
+      "message": "Hmm, I think it is a good thing to be explicit, but I do not support using `default:` here. I actually benefit from not having the `default:`, because the compiller explicitly pointed out that I missed handling that case here. If someone in the future found they need to add more enum here, the `default:` case would siliently include that case, leaving a pit hole for them.\n\nAs such, I prefer not to use the `default:` here, but use another assertion with a more clean and explicit reason here.",
+      "parentUuid": "0eea6823_61f92af7",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "e690d390ed2064a6e80d9e5a47a73f9d5529a07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
