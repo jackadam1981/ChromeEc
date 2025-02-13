@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39c7d66_02104b9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-13T19:43:10Z",
+      "side": 1,
+      "message": "ok, this is the default zephyr [exit](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/lib/libc/newlib/libc-hooks.c;drc\u003d333cc60a1476c4aa0c3ddbe383c6d5a7d6b3e02c;l\u003d295) function behavior:\n\n```\n\twhile (1) {\n\t\t;\n\t}\n```\nIt represents an infinite loop or a busy-wait loop.",
+      "parentUuid": "9b2ef2c2_6fa17ebf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3db6e30f_e7c021e3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6db6647_a2487b3f",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-13T19:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db6e30f_e7c021e3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eaf4347_46141763",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-02-13T00:16:27Z",
       "side": 1,
       "message": "If `CONFIG_THREAD_NAME` is only used for the `native_sim` version, you can move this into https://crrev.com/c/6252122. (Not sure what controls that config.)",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "27fd4b7a69e4d6c47fcc79c2149a2414bd0deefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744fc4c2_4f15a2b5",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-13T19:43:10Z",
+      "side": 1,
+      "message": "I believe `CONFIG_THREAD_NAME` is enabled based on the testing results.",
+      "parentUuid": "2eaf4347_46141763",
       "range": {
         "startLine": 23,
         "startChar": 0,
