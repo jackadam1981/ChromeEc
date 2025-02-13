@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed4da8d_f3d57b9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-13T00:08:26Z",
+      "side": 1,
+      "message": "Can you also add a line showing the renode version:\n\n```\nTEST\u003d./test/run_device_tests.py -b bloonchipper -t exit --zephyr --renode\n```\n\n(assuming it passes)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "dc0318b4f04e1c65b8a6559a6794695d15d431bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
