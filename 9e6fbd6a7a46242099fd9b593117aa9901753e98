@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68c94a7_0f80bc67",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e106190_273dcc16",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2b4d30a_af6ac6f2",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-13T16:39:49Z",
       "side": 1,
       "message": "Why is a backend API to set the RDO needed?  There is already a `set_rdo` handler through the I2C frontend.",
+      "range": {
+        "startLine": 1263,
+        "startChar": 11,
+        "endLine": 1263,
+        "endChar": 39
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0475ec03_b9a93a12",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "For dead battery mode, I need to configure the PDC before we initialize the driver, so normal PDC driver APIs are not available. As discussed offlline, I\u0027ll add a comment here to explain this.",
+      "parentUuid": "a2b4d30a_af6ac6f2",
       "range": {
         "startLine": 1263,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b58a50_339efc91",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "As discussed offline, I\u0027ll create a config like CHIPSET for this so we only include these \"sniffing\" APIs when needed.",
+      "parentUuid": "f998d76d_d04b6b34",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37b20420_6bf74149",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-02-13T16:39:49Z",
       "side": 1,
       "message": "Fix the header comment.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 74
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f10fff_92b6ed2f",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37b20420_6bf74149",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e713c9_91b95cba",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17672d57_64c0be51",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70aded65_f526a6f0",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-02-13T16:39:49Z",
       "side": 1,
       "message": "Nit - I don\u0027t think this macro adds to readability. But this is not a strong opinion.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda6cd3d_4b46cb08",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "70aded65_f526a6f0",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc33cb6e_a16783f1",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72bba73_403f1d4f",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1037ad_ad9cd007",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-02-13T16:39:49Z",
       "side": 1,
       "message": "Nit - use CONFIG_USB_PD_PORT_MAX_COUNT or your helper macro for consistency.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 45
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aadd65_caea5e31",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Discussed offline.",
+      "parentUuid": "be1037ad_ad9cd007",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eade62a_deb3ee6f",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bcf5de2_fbd7d683",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9051189_27f6f200",
@@ -221,6 +437,24 @@
       "writtenOn": "2025-02-13T16:39:49Z",
       "side": 1,
       "message": "Save the port number for each driver here using `USBC_PORT_FROM_DRIVER_NODE`.",
+      "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb4123c_fbd7e2a6",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T19:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9051189_27f6f200",
       "revId": "9e6fbd6a7a46242099fd9b593117aa9901753e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
