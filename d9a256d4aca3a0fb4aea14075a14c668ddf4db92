@@ -115,6 +115,30 @@
       },
       "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9f5647_07821da3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-13T17:13:20Z",
+      "side": 1,
+      "message": "We may have a bug in our current implementation when EC comes up with PDC sink paths enabled.  We don\u0027t inform charge_manager a PD port has charging capability until next state `SNK_ATTACHED_START_CHARGING` (line 2254).  Scott has a similar concern that we start charging before we interact with charge manager.  I\u0027ll look into this further.",
+      "parentUuid": "751d1439_c234b84a",
+      "range": {
+        "startLine": 2167,
+        "startChar": 0,
+        "endLine": 2167,
+        "endChar": 48
+      },
+      "revId": "d9a256d4aca3a0fb4aea14075a14c668ddf4db92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
