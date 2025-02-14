@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "244b965f_5612bcfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-14T23:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a67ae4_927ac513",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dcb9a35_1662e12d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9b4f0d_5fec7534",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-14T23:58:45Z",
+      "side": 1,
+      "message": "yes for fp_buffer",
+      "parentUuid": "6dcb9a35_1662e12d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cce913d_9cae0b9c",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-02-14T23:12:23Z",
       "side": 1,
       "message": "Same as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6265232/comment/caa3e2a9_79b7e7c0/",
+      "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2b7910_896632a2",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-14T23:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cce913d_9cae0b9c",
       "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
