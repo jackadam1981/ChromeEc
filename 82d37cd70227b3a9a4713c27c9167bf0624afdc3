@@ -145,6 +145,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cb14dd82_2f504b8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T06:09:35Z",
+      "side": 1,
+      "message": "Passing with the current patch, other than the boards mentioned in the commitmsg",
+      "parentUuid": "e0ec6d07_1fc7e666",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c4b863ec_334baf67",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
