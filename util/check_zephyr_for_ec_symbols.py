@@ -14,6 +14,7 @@ import preupload.lib
 
 
 EC_FUNCTIONS: Dict[str, str] = {
+    # go/keep-sorted start
     "clock": "k_uptime_get_32",
     "crec_msleep": "k_msleep",
     "crec_sleep": "k_sleep(K_SECONDS(sec))",
@@ -24,14 +25,17 @@ EC_FUNCTIONS: Dict[str, str] = {
     "udelay": "k_busy_wait",
     "sec_to_date": "gmtime_r",
     "date_to_sec": "timeutil_timegm or timeutil_timegm64",
+    # go/keep-sorted end
 }
 
 EC_MACROS: Dict[str, str] = {
+    # go/keep-sorted start
     "MSEC": "USEC_PER_MSEC",
     "SECOND": "USEC_PER_SEC",
     "SEC_UL": "USEC_PER_SEC",
     "MINUTE": "USEC_PER_SEC * SEC_PER_MIN",
     "HOUR": "USEC_PER_SEC * SEC_PER_HOUR",
+    # go/keep-sorted start
 }
 
 EC_FUNCTION_REGEXES: Dict[str, re.Pattern] = {
