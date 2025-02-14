@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "1fb058b4f672ca53ea99323edbe75507fd4e8c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d299a12a_50ab4fce",
+        "filename": "include/rwsig.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-14T07:44:19Z",
+      "side": 1,
+      "message": "What if `CONFIG_RO_PUBKEY_ADDR` is defined like this?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "1fb058b4f672ca53ea99323edbe75507fd4e8c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
