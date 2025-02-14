@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ff9957_fb843653",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-14T23:45:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c767ff46_e82a6d36",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f10b3a6_7cb90e46",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3054744b_04edd3d5",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-14T23:45:38Z",
+      "side": 1,
+      "message": "this is required for `fp_buffer`. If I remove it, I will get the below errors:\n\n```\nest/fpsensor_debug.cc:121:42: error: use of undeclared identifier \u0027fp_buffer\u0027; did you mean \u0027setbuffer\u0027?\n  121 |         std::fill(fp_buffer, fp_buffer + sizeof(fp_buffer), 0);\n      |                                                 ^~~~~~~~~\n      |                                                 setbuffer\n/usr/armv7m-cros-eabi/include/stdio.h:349:9: note: \u0027setbuffer\u0027 declared here\n  349 | void    setbuffer (FILE *, char *, int);\n      |         ^\ntest/fpsensor_debug.cc:121:41: error: invalid application of \u0027sizeof\u0027 to a function type\n  121 |         std::fill(fp_buffer, fp_buffer + sizeof(fp_buffer), 0);\n```",
+      "parentUuid": "8f10b3a6_7cb90e46",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "caa3e2a9_79b7e7c0",
         "filename": "test/fpsensor_debug.cc",
         "patchSetId": 1
@@ -60,6 +108,24 @@
       "writtenOn": "2025-02-14T23:08:45Z",
       "side": 1,
       "message": "Probably good to clear `fp_buffer` to make sure that we\u0027re not accidentally matching garbage values (or values from a previous run):\n\n```\nstd::ranges::fill(fp_buffer, 0);\n```",
+      "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f9e114_dda4e9db",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-14T23:45:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caa3e2a9_79b7e7c0",
       "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
