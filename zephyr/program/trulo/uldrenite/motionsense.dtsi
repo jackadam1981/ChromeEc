@@ -13,6 +13,9 @@
 		 */
 		lsm6dsm-int = &base_accel;
 		bma4xx-int = &lid_accel;
+		lis2dw12-int = &base_accel;
+		/* Use base accelerometer for on-body sensor */
+		on-body-sensor = &base_accel;
 	};
 
 	/*
@@ -30,6 +33,9 @@
 
 		base_mutex: base-mutex {
 		};
+
+		mutex_lis2dw12: lis2dw12-mutex {
+		};
 	};
 
 	/* Rotation matrix used by drivers. */
@@ -45,6 +51,11 @@
 		lid_rot_bma422: lid-rotation-bma {
 			mat33 = <0 1 0
 				(-1) 0 0
+				 0 0 1>;
+		};
+		base_rot_ref_lis2dw12: base-rotation-ref-lis2dw12 {
+			mat33 = <0 1 0
+				 (-1) 0 0
 				 0 0 1>;
 		};
 	};
@@ -73,7 +84,10 @@
 			compatible = "cros-ec,drvdata-bma4xx";
 			status = "okay";
 		};
-
+		lis2dw12_data: lis2dw12-drv-data {
+			compatible = "cros-ec,drvdata-lis2dw12";
+			status = "okay";
+		};
 	};
 
 	/*
@@ -145,11 +159,42 @@
 		};
 	};
 
+	motionsense-sensor-alt {
+		alt_base_accel: alt-base-accel {
+			compatible = "cros-ec,lis2dw12";
+			status = "okay";
+
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_lis2dw12>;
+			port = <&i2c_ec_i2c_sensor_r>;
+			rot-standard-ref = <&base_rot_ref_lis2dw12>;
+			drv-data = <&lis2dw12_data>;
+			alternate-for = <&base_accel>;
+			bodydetect {
+				compatible = "cros-ec,motionsense-bodydetect";
+				status = "okay";
+				var_noise_factor = <150>;
+				var_threshold = <3000>;
+				confidence_delta = <2900>;
+			};
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				/* 50 Hz to support body detection. */
+				ec-s0 {
+					odr = <(50000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					odr = <(50000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+	};
+
 	motionsense-sensor-info {
 		compatible = "cros-ec,motionsense-sensor-info";
 
-		sensor-irqs = <&int_imu>;
-		/* list of sensors in force mode */
-		accel-force-mode-sensors = <&lid_accel>;
+		sensor-irqs = <&int_imu &int_lid_imu>;
 	};
 };
