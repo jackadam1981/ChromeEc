@@ -319,6 +319,24 @@
       "parentUuid": "2cc313a3_b9e910f0",
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76261705_33de8ec5",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T05:37:10Z",
+      "side": 1,
+      "message": "@patrykduda, thoughts here? I remain neutral on the implementation, if there is outstanding debate here, can we move to a bug to avoid block the merge of helipilot on Zephyr?",
+      "parentUuid": "bd71e828_3b915ec1",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
