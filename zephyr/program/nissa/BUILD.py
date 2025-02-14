@@ -237,9 +237,16 @@ guren = register_nissa_project(
     chip="npcx9/npcx9m3f",
 )
 
+<<<<<<< HEAD   (dbf299 Telith: Tuning CC Eye Testing)
 dirks = register_nissa_project(
     project_name="dirks",
     chip="it8xxx2/it81302bx",
+||||||| BASE
+=======
+meliks = register_nissa_project(
+    project_name="meliks",
+    chip="npcx9/npcx9m3f",
+>>>>>>> CHANGE (233854 Meliks: Default setting)
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
@@ -278,3 +285,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="rull", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="telith", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="pujjoniru", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="guren", addr=0x7FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="meliks", addr=0x7FFE0)
