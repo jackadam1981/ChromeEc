@@ -180,6 +180,12 @@ config BOARD_RULL
 	  Build Google RULL reference board. RULL has Intel TWL SoC
 	  with IT81302 EC.
 
+config BOARD_MELIKS
+	bool "Google Meliks Board"
+	help
+	  Build Google Meliks board. Meliks has Intel TWL SoC
+	  with NPCX993FA0BX EC.
+
 module = NISSA
 module-str = Nissa board-specific code
 source "subsys/logging/Kconfig.template.log_config"
