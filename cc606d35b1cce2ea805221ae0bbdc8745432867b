@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c767ff46_e82a6d36",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-14T23:08:45Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f10b3a6_7cb90e46",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-14T23:08:45Z",
+      "side": 1,
+      "message": "Is this needed? Looks like `FP_SENSOR_IMAGE_OFFSET` already used in this file.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa3e2a9_79b7e7c0",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-14T23:08:45Z",
+      "side": 1,
+      "message": "Probably good to clear `fp_buffer` to make sure that we\u0027re not accidentally matching garbage values (or values from a previous run):\n\n```\nstd::ranges::fill(fp_buffer, 0);\n```",
+      "revId": "cc606d35b1cce2ea805221ae0bbdc8745432867b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
