@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8936b0c_8fae24c4",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "Don\u0027t change the copyright date for existing files.  Only new files should have a copyright date of 2025 (or later).",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73c6419_357df365",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "Use FW_PANEL_PWRSEQ_EC_CONTROL to match the config.star definition.",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8dfed66_ba9fbcf8",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "FW_PANEL_PWRSEQ_EC_CONTROL_DISABLE",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 36
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5e422c_95ce886f",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbeb2234_5ea64134",
+        "filename": "zephyr/program/brox/jubilant/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "Don\u0027t change copyright dates",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09612de1_ecea896d",
+        "filename": "zephyr/test/brox/boards/jubilant/touch.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "Delete this line. It\u0027s not needed.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83fc1e80_f12aeccf",
+        "filename": "zephyr/test/brox/boards/jubilant/touch.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-14T16:38:37Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
