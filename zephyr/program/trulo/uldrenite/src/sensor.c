@@ -34,6 +34,8 @@ void lid_accel_interrupt(enum gpio_signal signal)
 {
 	if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE)
 		bma4xx_interrupt(signal);
+	else
+		lis2dw12_interrupt(signal);
 }
 
 static void motionsense_init(void)
@@ -48,6 +50,7 @@ static void motionsense_init(void)
 
 	if (sensor_fwconfig == FORM_FACTOR_CLAMSHELL) {
 		ccprints("Board is Clamshell");
+		MOTIONSENSE_ENABLE_ALTERNATE(alt_base_accel);
 		gmr_tablet_switch_disable();
 		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),

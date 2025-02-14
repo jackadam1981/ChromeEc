@@ -698,6 +698,8 @@ void motion_sense_fifo_reset(void)
 
 void motion_sense_set_data_period(int sensor_num, uint32_t data_period)
 {
+	if (sensor_num < 0)
+		return;
 	expected_data_periods[sensor_num] = data_period;
 	/*
 	 * Reset the timestamp:
