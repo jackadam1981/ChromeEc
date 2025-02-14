@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a67ae4_927ac513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-14T23:12:23Z",
+      "side": 1,
+      "message": "This is implied in the code, so I don\u0027t think it\u0027s needed here. (And if it was needed here, it should be included in https://crrev.com/c/6265232.)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dcb9a35_1662e12d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-14T23:12:23Z",
+      "side": 1,
+      "message": "Needed?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cce913d_9cae0b9c",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-14T23:12:23Z",
+      "side": 1,
+      "message": "Same as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6265232/comment/caa3e2a9_79b7e7c0/",
+      "revId": "3d715ceac0145b60750c7d5cce0579d178a56e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
