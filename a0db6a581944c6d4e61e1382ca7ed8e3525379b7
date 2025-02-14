@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc234eda_a414a784",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T03:54:42Z",
+      "side": 1,
+      "message": "N/A on latest",
+      "parentUuid": "2dca4270_fa0c41e9",
+      "range": {
+        "startLine": 236,
+        "startChar": 11,
+        "endLine": 236,
+        "endChar": 37
+      },
+      "revId": "a0db6a581944c6d4e61e1382ca7ed8e3525379b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36b733ba_bac77523",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-12T15:28:13Z",
       "side": 1,
       "message": "This also needs to be changed.",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "a0db6a581944c6d4e61e1382ca7ed8e3525379b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c9d5212_63ec52ad",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T03:54:42Z",
+      "side": 1,
+      "message": "N/A with latest feedback",
+      "parentUuid": "36b733ba_bac77523",
       "range": {
         "startLine": 259,
         "startChar": 11,

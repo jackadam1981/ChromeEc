@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82fc06fe_6e65c217",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T03:54:42Z",
+      "side": 1,
+      "message": "obsolete with recent change to CL and commitmsg",
+      "parentUuid": "89218755_42b9f08a",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dd1d7ee_5ae60cd1",
@@ -243,6 +267,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a34951_74115076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T03:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1fe556e_04d4523a",
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d58da2_858cb87d",
@@ -280,6 +322,30 @@
       "side": 1,
       "message": "Happy to if/when this CL evolves into a workable solution",
       "parentUuid": "60d58da2_858cb87d",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "82d37cd70227b3a9a4713c27c9167bf0624afdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac34ce6c_9a171406",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-14T03:54:42Z",
+      "side": 1,
+      "message": "Done, added to this CL",
+      "parentUuid": "1220213c_ab4ca469",
       "range": {
         "startLine": 104,
         "startChar": 0,
