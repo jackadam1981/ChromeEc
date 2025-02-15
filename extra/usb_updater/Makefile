@@ -43,7 +43,7 @@ all: $(PROGRAMS)
 	$(CC) $(CFLAGS) -c -MMD -MF $(basename $@).d -o $@ $<
 
 # common EC code USB updater
-usb_updater2: usb_updater2.c Makefile
+usb_updater2: usb_updater2.o Makefile
 	$(CC) $(CFLAGS) $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
 
 .PHONY: clean
