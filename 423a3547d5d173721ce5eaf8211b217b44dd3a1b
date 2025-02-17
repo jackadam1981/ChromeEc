@@ -16,6 +16,24 @@
       "message": "At least incrementally, this makes sense as a follow-on to CL:5875459. Zooming out, I think the need to jump through so many hoops here suggests that the charge manager APIs aren\u0027t letting us express what we want to express: When we\u0027ve chosen a 0A PDO, we still prefer PD to any other charge source. We may need to revisit this, but it\u0027s OK for now.",
       "revId": "423a3547d5d173721ce5eaf8211b217b44dd3a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d545c5_9d122dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-02-17T01:43:45Z",
+      "side": 1,
+      "message": "Thank you @Abe @Ting, since CL:5875459 doesn\u0027t have test code now. I added LOW_COVERAGE_REASON to here as well.",
+      "parentUuid": "b5a837a6_b2873a14",
+      "revId": "423a3547d5d173721ce5eaf8211b217b44dd3a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
