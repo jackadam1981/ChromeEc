@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693ab77d_8686fa2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-17T10:42:22Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nI found that Fizz and Karma boards are using `CONFIG_PROGRAM_MEMORY_BASE` as a base for public key and signature addresses. These boards are NPCX based with execute from SRAM, so they should be using `CONFIG_MAPPED_STORAGE_BASE` instead. Do you know why `CONFIG_PROGRAM_MEMORY_BASE` is used and why it\u0027s working?",
+      "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
