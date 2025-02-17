@@ -13,6 +13,8 @@
 #include "../power_signal.dtsi"
 #include "../usba.dtsi"
 #include "motionsense.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
 
 / {
 	batteries {
