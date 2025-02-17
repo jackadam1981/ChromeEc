@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "913dc496_723564f3",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "updaate",
+      "parentUuid": "b8936b0c_8fae24c4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d73c6419_357df365",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-14T16:38:37Z",
       "side": 1,
       "message": "Use FW_PANEL_PWRSEQ_EC_CONTROL to match the config.star definition.",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0915bd9b_9823ec46",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "d73c6419_357df365",
       "range": {
         "startLine": 74,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1653fe53_faeb0773",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "e8dfed66_ba9fbcf8",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 36
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e5e422c_95ce886f",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-02-14T16:38:37Z",
       "side": 1,
       "message": "FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7000ed2_1bb3093e",
+        "filename": "zephyr/program/brox/jubilant/cbi.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "3e5e422c_95ce886f",
       "range": {
         "startLine": 85,
         "startChar": 17,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfee4090_0c9f3100",
+        "filename": "zephyr/program/brox/jubilant/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "bbeb2234_5ea64134",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09612de1_ecea896d",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3583157b_0d2294b5",
+        "filename": "zephyr/test/brox/boards/jubilant/touch.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "i try this, but has a error message\nrror: use of undeclared identifier \u0027gpio_interrupt_DT_N_S_gpio_interrupts_S_soc_edp_bl_en\u0027\n   77 |         gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_edp_bl_en));",
+      "parentUuid": "09612de1_ecea896d",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83fc1e80_f12aeccf",
@@ -152,6 +296,30 @@
       "writtenOn": "2025-02-14T16:38:37Z",
       "side": 1,
       "message": "Delete this line.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "b50986c797c91801ad0bceb059da111186220e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9cf32e_72cccf0b",
+        "filename": "zephyr/test/brox/boards/jubilant/touch.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-02-17T03:26:48Z",
+      "side": 1,
+      "message": "update",
+      "parentUuid": "83fc1e80_f12aeccf",
       "range": {
         "startLine": 20,
         "startChar": 0,
