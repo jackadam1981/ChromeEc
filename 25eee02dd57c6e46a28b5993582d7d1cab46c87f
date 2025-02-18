@@ -16,6 +16,24 @@
       "message": "about brox.jubilant.touch_panel.jubilant_touch_panel.touch_enable\n Can\u0027t check detail content failed reason, please help show this faile message.",
       "revId": "25eee02dd57c6e46a28b5993582d7d1cab46c87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf883a4_a5f788fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-02-18T01:44:24Z",
+      "side": 1,
+      "message": "You may reproduce locally with twister -p native_sim/native -s brox/brox.jubilant.touch_panel.",
+      "parentUuid": "267fb63f_0f24ad34",
+      "revId": "25eee02dd57c6e46a28b5993582d7d1cab46c87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
