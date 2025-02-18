@@ -26,6 +26,7 @@
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "zephyr/include/usbc/pdc_dpm.h"
 #ifdef CONFIG_ZEPHYR
 #include "zephyr/include/usbc/pdc_power_mgmt.h"
 #endif
@@ -482,13 +483,19 @@ charge_manager_fill_power_info(int port,
 			r->meas.voltage_max = 0;
 			r->meas.voltage_now =
 				r->role == USB_PD_PORT_POWER_SOURCE ? 5000 : 0;
-			/* TCPMv2 tracks source-out current in the DPM */
-			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
+			/* TCPMv2 and PDC tracks source-out current in their
+			 * respective DPM implementations.
+			 */
+			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
 				r->meas.current_max =
 					dpm_get_source_current(port);
-			else
+			} else if (IS_ENABLED(CONFIG_USB_PDC_POWER_MGMT)) {
+				r->meas.current_max =
+					pdc_dpm_get_source_current(port);
+			} else {
 				r->meas.current_max =
 					charge_manager_get_source_current(port);
+			}
 			r->max_power = 0;
 		} else {
 			r->type = USB_CHG_TYPE_NONE;
