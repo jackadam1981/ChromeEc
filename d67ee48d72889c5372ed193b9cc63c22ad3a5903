@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f2a28d_13a276d9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/mod_aic.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-18T19:07:36Z",
+      "side": 1,
+      "message": "we should move this up to the `ptlrvp` level.\nwill need to make sure this compiles with the nuvoton and ite ECs as well.",
+      "revId": "d67ee48d72889c5372ed193b9cc63c22ad3a5903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f4ebd6_f87f6ad5",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/mod_aic.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-18T19:07:36Z",
+      "side": 1,
+      "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d67ee48d72889c5372ed193b9cc63c22ad3a5903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
