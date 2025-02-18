@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ee49ee_aa177b0a",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-18T17:21:09Z",
+      "side": 1,
+      "message": "I think you may need to include `\u003calgorithm\u003e` like in https://crrev.com/c/6265232.",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "38be80de_3ecd7c85",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 11,
+                "endChar": 0
+              },
+              "replacement": "#include \u003calgorithm\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "335cb98b642fff82c379169f38c5d43b073c27d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
