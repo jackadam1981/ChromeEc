@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a12829a0_40c081eb",
+        "filename": "zephyr/include/drivers/modular_aic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-18T19:03:40Z",
+      "side": 1,
+      "message": "I think intel_aic would work a lot of the enums would get very long with intel_modular_aic",
+      "parentUuid": "05df35d9_7c896a23",
+      "revId": "8df7a129331d8b1a160ed06122b2afcfa0a2f667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64c1d24f_2a790e4d",
         "filename": "zephyr/include/drivers/modular_aic.h",
         "patchSetId": 3
