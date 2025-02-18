@@ -528,6 +528,7 @@ static int common_pwr_sm_run(int state)
 			/* TODO: Make sure ap reset handling is done
 			 * before leaving S0ix.
 			 */
+			LOG_INF("ap_pwrseq: power_signals_off(IN_PCH_SLP_S0) = %d, signals_valid_and_off(IN_PCH_SLP_S3) = %d", power_signals_off(IN_PCH_SLP_S0), signals_valid_and_off(IN_PCH_SLP_S3));
 			return SYS_POWER_STATE_S0ixS0;
 		} else if (!chipset_is_all_power_good())
 			return SYS_POWER_STATE_S0;
@@ -694,9 +695,9 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 
 		if (this_in_signals != last_in_signals ||
 		    curr_state != last_state) {
-			LOG_INF("power state %d = %s, in 0x%04x", curr_state,
+			LOG_INF("power state %d = %s, in_new 0x%04x, in_prev 0x%04x", curr_state,
 				pwr_sm_get_state_name(curr_state),
-				this_in_signals);
+				this_in_signals, last_in_signals);
 			last_in_signals = this_in_signals;
 			last_state = curr_state;
 		}
