@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "682090ae_eac74684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-18T21:19:09Z",
+      "side": 1,
+      "message": "It escaped me that CL:5875459 had used `LOW_COVERAGE_REASON`. I think that CL could have been covered, and I think this one can be covered too.\n\nThe `else` branch (non-zero current) is already covered. Presumably, a permutation on an existing test with 0A in the PDO would cover the zero-current branch).",
+      "revId": "1ae27d86aaa1aca9808a6807dc7957ca601a0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
