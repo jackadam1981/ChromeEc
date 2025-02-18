@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c0c462_906c6574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-18T23:58:51Z",
+      "side": 1,
+      "message": "Looks good could also potentially just override the TCPMv2 version for PDC and change the comments but the way its done now is probably the cleaner way to go about the change",
+      "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65725a3c_d90faf32",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-18T23:58:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this also be blocked behind CONFIG_ZEPHYR?",
+      "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
