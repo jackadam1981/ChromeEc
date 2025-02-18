@@ -16,6 +16,24 @@
       "message": "It is something to block the CQ. I am not sure what error for this.",
       "revId": "cf78f2771533925588ad53a59bf024b41a3bbc84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67dd4ac_ab985f7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-18T03:56:09Z",
+      "side": 1,
+      "message": "build fail on shotzo, adlrvpp_mchp1727, panqueque, dooly\n\n```\ncommon/usbc/usb_pe_drp_sm.c: In function \u0027pe_snk_transition_sink_run\u0027:\ncommon/usbc/usb_pe_drp_sm.c:3797:57: error: \u0027CHARGE_SUPPLIER_VBUS\u0027 undeclared (first use in this function); did you mean \u0027CHARGE_SUPPLIER_COUNT\u0027?\n 3797 |                                                         CHARGE_SUPPLIER_VBUS,\n      |                                                         ^~~~~~~~~~~~~~~~~~~~\n      |                                                         CHARGE_SUPPLIER_COUNT\ncommon/usbc/usb_pe_drp_sm.c:3797:57: note: each undeclared identifier is reported only once for each function it appears in\nmake[2]: *** [Makefile.rules:636: build/shotzo/RW/common/usbc/usb_pe_drp_sm.o] Error 1\nmake[1]: *** [Makefile.rules:300: proj-shotzo] Error 2\n```",
+      "parentUuid": "ddc304d8_bac6aeca",
+      "revId": "cf78f2771533925588ad53a59bf024b41a3bbc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
