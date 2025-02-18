@@ -52,6 +52,24 @@
       "parentUuid": "3cee8d57_72542f81",
       "revId": "b55d9cf5d104e07af44dc2d16d61cee7d8da759b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e345bd_3ce4053a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-02-18T09:32:57Z",
+      "side": 1,
+      "message": "\u003e Thanks for clarification, @weijiahong@huaqin.corp-partner.google.com, please update the pin mux table if you\u0027ve got one.\n\nHi knox, we don\u0027t have pin mux table, generated.dtsi is copied from rauru.",
+      "parentUuid": "2c08287a_d044999c",
+      "revId": "b55d9cf5d104e07af44dc2d16d61cee7d8da759b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
