@@ -16,6 +16,24 @@
       "message": "Not sure about the prescaler part.\nDino, can you help review this change?",
       "revId": "b55d9cf5d104e07af44dc2d16d61cee7d8da759b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cee8d57_72542f81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-02-18T07:13:59Z",
+      "side": 1,
+      "message": "Eight PWM channels share three prescaler clock source selection registers (PWM_PRESCALER_C4, PWM_PRESCALER_C6, and PWM_PRESCALER_C7). So use the same frequency and prescaler register setting is required if number of pwm channel greater than three, otherwis not.",
+      "parentUuid": "96bef45a_a9b06fa1",
+      "revId": "b55d9cf5d104e07af44dc2d16d61cee7d8da759b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
