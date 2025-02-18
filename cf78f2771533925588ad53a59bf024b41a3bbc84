@@ -34,6 +34,24 @@
       "parentUuid": "ddc304d8_bac6aeca",
       "revId": "cf78f2771533925588ad53a59bf024b41a3bbc84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d782d30a_0fd64bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-02-18T05:37:28Z",
+      "side": 1,
+      "message": "Look likes we can\u0027t use IS_ENABLED() here. I changed to #ifdef",
+      "parentUuid": "f67dd4ac_ab985f7f",
+      "revId": "cf78f2771533925588ad53a59bf024b41a3bbc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
