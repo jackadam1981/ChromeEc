@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05df35d9_7c896a23",
+        "filename": "zephyr/include/drivers/modular_aic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-18T18:58:45Z",
+      "side": 1,
+      "message": "can we continue with the `intel_modular_aic` naming theme\nfor file names here and under subsys?\n\nif the names are getting too long, i think `intel_aic`\nor similar would be more meaningful than `modular_aic`.",
+      "revId": "8df7a129331d8b1a160ed06122b2afcfa0a2f667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c1d24f_2a790e4d",
+        "filename": "zephyr/include/drivers/modular_aic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-18T18:58:45Z",
+      "side": 1,
+      "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c7371963_d7b10858",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/modular_aic.h",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": "/* Copyright 2025 The ChromiumOS Authors\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8df7a129331d8b1a160ed06122b2afcfa0a2f667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
