@@ -16,6 +16,52 @@
       "message": "Tristan has been making some changes related to PDC topologies.",
       "revId": "f9c874c52fda2ed91fe57f25de6a19621a47b3e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93536c53_9f5cc142",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-18T13:41:17Z",
+      "side": 1,
+      "message": "Store the pin reference in the `struct pdc_config_t` instead.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 16
+      },
+      "revId": "f9c874c52fda2ed91fe57f25de6a19621a47b3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8132d34_e7c00f3d",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-18T13:41:17Z",
+      "side": 1,
+      "message": "Rename to `rts54xx_device_list` to better reflect it\u0027s purpose once you move the pin reference.",
+      "range": {
+        "startLine": 515,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 10
+      },
+      "revId": "f9c874c52fda2ed91fe57f25de6a19621a47b3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
