@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d050a843_1317970a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-19T17:56:45Z",
+      "side": 1,
+      "message": "```\n(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ ./twister -v -i -T zephyr/test/fingerprint/drivers/fpc1025 --test fingerprint.drivers.fpc1025 -c\n```\n\nhttps://paste.googleplex.com/4850692957929472\n\n```\n/mnt/host/source/src/platform/ec/zephyr/drivers/fingerprint/fingerprint_fpc1025.c:20:10: fatal error: \u0027ec_commands.h\u0027 file not found\n   20 | #include \u003cec_commands.h\u003e\n      |          ^~~~~~~~~~~~~~~\n1 error generated.\n```\n@patrykd@google.com, do I need to add a specific config?",
+      "revId": "257634988b9d01fa0dbbeb884e427c8ee69c5ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
