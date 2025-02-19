@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826ca53b_792ad87e",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-02-19T20:29:45Z",
+      "side": 1,
+      "message": "I\u0027m trying to understand how this helps fixing the problem, and why setting buffer[0] to USB_I2C_DISABLED is not enough to ignore this buffer",
+      "revId": "984f0fe8cab27a1922f1229cc309f383ac8938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
