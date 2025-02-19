@@ -8,6 +8,8 @@
 #include "fingerprint_fpc1025.h"
 #include "fingerprint_fpc1025_private.h"
 
+#include <assert.h>
+
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/spi.h>
 #include <zephyr/logging/log.h>
@@ -30,6 +32,26 @@ enum fpc1025_cmd {
 	FPC1025_CMD_DEEPSLEEP = 0x2C,
 	FPC1025_CMD_HW_ID = 0xFC,
 };
+
+static int convert_fp_capture_mode_to_fpc_get_image_type(int mode)
+{
+	switch (mode) {
+	case FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT:
+		return FPC_CAPTURE_VENDOR_FORMAT;
+	case FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE:
+		return FPC_CAPTURE_SIMPLE_IMAGE;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN0:
+		return FPC_CAPTURE_PATTERN0;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN1:
+		return FPC_CAPTURE_PATTERN1;
+	case FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST:
+		return FPC_CAPTURE_QUALITY_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_RESET_TEST:
+		return FPC_CAPTURE_RESET_TEST;
+	default:
+		return FPC_BEP_RESULT_INVALID_ARGUMENT;
+	}
+}
 
 /* The 16-bit hardware ID is 0x021y */
 #define FP_SENSOR_HWID_FPC 0x021
@@ -335,7 +357,14 @@ static int fpc1025_acquire_image(const struct device *dev, int mode,
 	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
 		return -EINVAL;
 
-	rc = fp_sensor_acquire_image_with_mode(image_buf, mode);
+	rc = convert_fp_capture_mode_to_fpc_get_image_type(mode);
+
+	if (rc < 0) {
+		LOG_ERR("Failed to acquire image with mode %d: %d", mode, rc);
+		return rc;
+	}
+
+	rc = fp_sensor_acquire_image_with_mode(image_buf, rc);
 	if (rc < 0) {
 		LOG_ERR("Failed to acquire image with mode %d: %d", mode, rc);
 		return rc;
@@ -439,16 +468,18 @@ static int fpc1025_init_driver(const struct device *dev)
 	return 0;
 }
 
-#define FPC1025_SENSOR_INFO(inst)                                         \
-	{                                                                 \
-		.vendor_id = FOURCC('F', 'P', 'C', ' '), .product_id = 9, \
-		.model_id = 1, .version = 1,                              \
-		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,       \
-		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(     \
-			DT_DRV_INST(inst)),                               \
-		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),     \
-		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)),    \
-		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),     \
+#define FPC1025_SENSOR_INFO(inst)                                      \
+	{                                                              \
+		.vendor_id = FOURCC('F', 'P', 'C', ' '),               \
+		.product_id = 9,                                       \
+		.model_id = 1,                                         \
+		.version = 1,                                          \
+		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,    \
+		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(  \
+			DT_DRV_INST(inst)),                            \
+		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),  \
+		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)), \
+		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),  \
 	}
 
 #define FPC1025_DEFINE(inst)                                                   \
