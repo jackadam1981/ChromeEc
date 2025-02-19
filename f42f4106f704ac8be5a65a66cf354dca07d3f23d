@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd00b06_6bcf486b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:34:35Z",
+      "side": 1,
+      "message": "Store this in the `struct pdc_data_t` structure instead.  The `pdc_data[]` arrary is already setup to iterate across all PDC instances.",
+      "range": {
+        "startLine": 525,
+        "startChar": 11,
+        "endLine": 525,
+        "endChar": 28
+      },
+      "revId": "f42f4106f704ac8be5a65a66cf354dca07d3f23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d87dd4_0bc6fe4c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:34:35Z",
+      "side": 1,
+      "message": "Can you move the `SNK_ATTACHED_EVALUATE_PDOS` body into a separate routine as a separate CL that is a parent to this one?\n\nI know the next CL does some cleanup, but the nesting done here is hard to follow.",
+      "range": {
+        "startLine": 2135,
+        "startChar": 6,
+        "endLine": 2135,
+        "endChar": 32
+      },
+      "revId": "f42f4106f704ac8be5a65a66cf354dca07d3f23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
