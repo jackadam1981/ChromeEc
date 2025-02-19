@@ -125,6 +125,10 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 		return;
 
 	if (!usb_i2c_board_is_enabled()) {
+		uint32_t zero_count = MIN(read_count + 4,
+			USB_I2C_BUFFER_SIZE / 2);
+
+		memset(config->buffer, 0, zero_count);
 		config->buffer[0] = USB_I2C_DISABLED;
 	} else if (write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT ||
 		write_count != (count - 4 - offset)) {
