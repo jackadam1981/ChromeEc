@@ -96,6 +96,28 @@ TPM_RC ParseResponse_Load(
     const std::string& response, TPM_HANDLE& object_handle, std::string& name,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
+// Wraps Tpm::SerializeCommand_NV_Certify. Serializes the TPM2_NV_Certify
+// command.
+// The authorization_delegate argument was removed because NV_Certify requires
+// two authorizations, and adding MultipleAuthorizations to the CXX bridge would
+// require putting a lifetime argument on AuthorizationDelegate, which would
+// propagate everywhere. Instead, this is hardcoded to use empty password
+// authorization.
+TPM_RC SerializeCommand_NV_Certify(
+    const TPMI_DH_OBJECT& sign_handle, const std::string& sign_handle_name,
+    const TPMI_RH_NV_AUTH& auth_handle, const std::string& auth_handle_name,
+    const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
+    const TPM2B_DATA& qualifying_data, const TPMT_SIG_SCHEME& in_scheme,
+    const UINT16& size, const UINT16& offset, std::string& serialized_command);
+
+// Wraps Tpm::ParseResponse_NV_Certify. Parses the response from a
+// TPM2_NV_Certify command.
+// authorization_delegate was omitted for the same reason as
+// SerializeCommand_NV_Certify.
+TPM_RC ParseResponse_NV_Certify(const std::string& response,
+                                std::string& certify_info,
+                                std::string& signature);
+
 // Wraps Tpm::SerializeCommand_NV_ReadPublic. Serializes the TPM2_NV_ReadPublic
 // command.
 // authorization_delegate is nullable.
@@ -110,6 +132,27 @@ TPM_RC SerializeCommand_Quote(
     const TPMI_DH_OBJECT& sign_handle, const std::string& sign_handle_name,
     const TPM2B_DATA& qualifying_data, const TPMT_SIG_SCHEME& in_scheme,
     const TPML_PCR_SELECTION& pcrselect, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_Quote. Parses the response from a TPM2_Quote
+// command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_Quote(
+    const std::string& response, std::string& quoted, std::string& signature,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::SerializeCommand_PCR_Read. Serializes the TPM2_PCR_Read command.
+// authorization_delegate is nullable.
+TPM_RC SerializeCommand_PCR_Read(
+    const TPML_PCR_SELECTION& pcr_selection_in, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_PCR_Read. Parses the response from a TPM2_PCR_Read
+// command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_PCR_Read(
+    const std::string& response, UINT32& pcr_update_counter,
+    TPML_PCR_SELECTION& pcr_selection_out, std::string& pcr_values,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
 // -----------------------------------------------------------------------------
@@ -167,6 +210,18 @@ std::unique_ptr<TPM2B_SENSITIVE_CREATE> TPM2B_SENSITIVE_CREATE_New(
 
 // Returns an empty PCR selection list.
 std::unique_ptr<TPML_PCR_SELECTION> EmptyPcrSelection();
+
+// Returns a PCR selection list that selects a single PCR, or nullptr if the pcr
+// number is too large.
+std::unique_ptr<TPML_PCR_SELECTION> SinglePcrSelection(uint8_t pcr);
+
+// -----------------------------------------------------------------------------
+// TPMT_SIG_SCHEME
+// -----------------------------------------------------------------------------
+
+// Creates a TPMT_SIGN_SCHEME with hash algorithm SHA-256 and signature
+// algorithm ECDSA.
+std::unique_ptr<TPMT_SIG_SCHEME> Sha256EcdsaSigScheme();
 
 // -----------------------------------------------------------------------------
 // TPMT_TK_CREATION
