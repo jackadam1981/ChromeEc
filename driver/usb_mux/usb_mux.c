@@ -171,7 +171,11 @@ mux_task_enqueue(int port, int index, enum mux_config_type type,
 #ifdef HAS_TASK_USB_MUX
 static void init_queue_structs(void)
 {
+	static bool init_done = false;
 	int i;
+
+	if (init_done)
+		return;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		mux_queue[i].state = &queue_states[i];
@@ -181,6 +185,8 @@ static void init_queue_structs(void)
 		mux_queue[i].unit_bytes = sizeof(struct mux_queue_entry);
 		mux_queue[i].buffer = (uint8_t *)&queue_buffers[i][0];
 	}
+
+	init_done = true;
 }
 DECLARE_HOOK(HOOK_INIT, init_queue_structs, HOOK_PRIO_FIRST);
 #endif
@@ -496,6 +502,10 @@ void usb_mux_init(int port)
 {
 	if (port >= board_get_usb_pd_port_count())
 		return;
+
+#ifdef HAS_TASK_USB_MUX
+	init_queue_structs();
+#endif
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
 	if (IS_ENABLED(HAS_TASK_USB_MUX)) {
