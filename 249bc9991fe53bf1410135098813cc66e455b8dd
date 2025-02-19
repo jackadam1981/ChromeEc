@@ -16,6 +16,24 @@
       "message": "Let\u0027s confirm that we need this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6096994/comment/7e25741a_7b89795f/",
       "revId": "249bc9991fe53bf1410135098813cc66e455b8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c27ca16_2534e94f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-19T21:07:44Z",
+      "side": 1,
+      "message": "I added an exit to the `command_fpcapture`:\n\n```\nstatic int command_fpcapture(int argc, const char **argv)\n{\n\tif (system_is_locked())\n\t\treturn EC_ERROR_ACCESS_DENIED;\n\n\tint capture_type \u003d FP_CAPTURE_SIMPLE_IMAGE;\n\texit(1);\n```\nusing POR exit definition:\n```\nfpmcu:~$ fpcapture\nFIRASexit\nWatchdog deadline is close! THREAD_NAME:shell_uart\n\n*** Booting Zephyr OS build 4.0.99 ***\n\n\n--- UART initialized after reboot ---\n[Image: RO, bloonchipper-0.0.0-978b31f+ 2025-02-19 11:31:15 root@fsammoura-glaptop]\n[Reset cause: watchdog]\n[0.028300 event set 0x0000000000002000]\n[0.033200 hostcmd init 0x0000000000002000]\n[0.038400 event set 0x0000000000800000]\n[0.043400 Inits done]\n[0.046800 Verifying RW image...]\n[0.411500 RW verify OK]\n[1.033300 MKBP not cleared within threshold, toggling.]\n[1.415600 Jumping to image RW (0x00000010)]\nfpmcu:~$ \n*** Booting Zephyr OS build 4.0.99 ***\n\n[0.008000 UART initialized after sysjump]\n[Image: RW, bloonchipper-0.0.0-978b31f+ 2025-02-19 11:31:15 root@fsammoura-glaptop]\n[Reset cause: watchdog sysjump]\n[0.031900 event set 0x0000000000002000]\n[0.036800 hostcmd init 0x0000000000002000]\n[0.042000 Inits done]\n[0.045600 FP_SENSOR_SEL: FPC]\nFPC libfpbep.a fpc_bep_chromebook_2.0.0.016\nBuild information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)\nFPC1025 id 0x021b\n[1.036900 MKBP not cleared within threshold, toggling.]\n[2.043200 MKBP: The AP is failing to respond because it is sleeping or off]\n```\n\nwith exit definition per this CL:\n```\nfpmcu:~$ fpcapture\nshell_uart exited with rc: 1\n```",
+      "parentUuid": "d63bdeb9_4a0ad342",
+      "revId": "249bc9991fe53bf1410135098813cc66e455b8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
