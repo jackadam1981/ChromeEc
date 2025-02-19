@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6d81f6_78b9229d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-19T15:42:23Z",
+      "side": 1,
+      "message": "will do once this CL is approved. I wanted to make sure we agree on the approach.",
+      "parentUuid": "53f30774_7bebf099",
+      "revId": "eb23c437bd7f5044a2d4e9d504b7babb6a0afb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a177c9_1d91cc40",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-19T11:37:07Z",
       "side": 1,
       "message": "Typo",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "eb23c437bd7f5044a2d4e9d504b7babb6a0afb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5eb7ad_33286169",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-19T15:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71a177c9_1d91cc40",
       "range": {
         "startLine": 59,
         "startChar": 30,
