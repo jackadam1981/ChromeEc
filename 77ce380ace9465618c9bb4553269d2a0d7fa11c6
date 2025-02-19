@@ -33,6 +33,41 @@
       "message": "Shouldn\u0027t this also be blocked behind CONFIG_ZEPHYR?",
       "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5c6a5d_c2ff849c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-02-19T03:56:34Z",
+      "side": 1,
+      "message": "Generally yes, but since zephyr/include/usbc/pdc_dpm.h doesn\u0027t include any Zephyr headers itself and is in the include search path for all boards (legacy too) this works.",
+      "parentUuid": "65725a3c_d90faf32",
+      "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499c1370_0ad6f3a6",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-02-19T03:56:34Z",
+      "side": 1,
+      "message": "nit: should wrap with `{` / `}`",
+      "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
