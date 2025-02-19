@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f30774_7bebf099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-19T11:37:07Z",
+      "side": 1,
+      "message": "Don\u0027t forget applying this change in Zephyr driver.",
+      "revId": "eb23c437bd7f5044a2d4e9d504b7babb6a0afb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a177c9_1d91cc40",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-19T11:37:07Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "eb23c437bd7f5044a2d4e9d504b7babb6a0afb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
