@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bccabd9e_a3631d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-19T15:42:59Z",
+      "side": 1,
+      "message": "will do shortly",
+      "parentUuid": "21ece123_be82d125",
+      "revId": "d5d6c5ff3c587c2ec15c93bdc2d892c73fb5d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faff33df_c57bb1ce",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-02-19T11:38:21Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "d5d6c5ff3c587c2ec15c93bdc2d892c73fb5d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d67f0fb_9cab5823",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-19T15:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faff33df_c57bb1ce",
       "range": {
         "startLine": 81,
         "startChar": 30,
