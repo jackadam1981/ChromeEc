@@ -5,8 +5,11 @@
 
 #define DT_DRV_COMPAT fpc_fpc1025
 
+#include "ec_commands.h"
 #include "fingerprint_fpc1025.h"
 #include "fingerprint_fpc1025_private.h"
+
+#include <assert.h>
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/spi.h>
@@ -30,6 +33,28 @@ enum fpc1025_cmd {
 	FPC1025_CMD_DEEPSLEEP = 0x2C,
 	FPC1025_CMD_HW_ID = 0xFC,
 };
+
+static int convert_fp_capture_mode_to_fpc_get_image_type(int mode)
+{
+	switch (mode) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+		return FPC_CAPTURE_VENDOR_FORMAT;
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return FPC_CAPTURE_SIMPLE_IMAGE;
+	case FP_CAPTURE_PATTERN0:
+		return FPC_CAPTURE_PATTERN0;
+	case FP_CAPTURE_PATTERN1:
+		return FPC_CAPTURE_PATTERN1;
+	case FP_CAPTURE_QUALITY_TEST:
+		return FPC_CAPTURE_QUALITY_TEST;
+	case FP_CAPTURE_RESET_TEST:
+		return FPC_CAPTURE_RESET_TEST;
+	default:
+		assert(false);
+		break;
+	}
+	return FPC_CAPTURE_SIMPLE_IMAGE;
+}
 
 /* The 16-bit hardware ID is 0x021y */
 #define FP_SENSOR_HWID_FPC 0x021
@@ -335,7 +360,8 @@ static int fpc1025_acquire_image(const struct device *dev, int mode,
 	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
 		return -EINVAL;
 
-	rc = fp_sensor_acquire_image_with_mode(image_buf, mode);
+	rc = fp_sensor_acquire_image_with_mode(
+		image_buf, convert_fp_capture_mode_to_fpc_get_image_type(mode));
 	if (rc < 0) {
 		LOG_ERR("Failed to acquire image with mode %d: %d", mode, rc);
 		return rc;
