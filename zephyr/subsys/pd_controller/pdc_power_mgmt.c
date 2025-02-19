@@ -3340,7 +3340,7 @@ test_mockable bool pdc_power_mgmt_is_connected(int port)
 	return pdc_data[port]->port.attached_state != UNATTACHED_STATE;
 }
 
-uint8_t pdc_power_mgmt_get_usb_pd_port_count(void)
+__overridable uint8_t pdc_power_mgmt_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
