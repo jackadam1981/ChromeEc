@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f8d424_053296bb",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:26:53Z",
+      "side": 1,
+      "message": "Nit - this comment should be added to emul_pdc.h instead since that is the public API.",
+      "range": {
+        "startLine": 1264,
+        "startChar": 0,
+        "endLine": 1266,
+        "endChar": 0
+      },
+      "revId": "42c1f3e9f012d56da8a7f3d8a1657b5d3414a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f338c52_d6e88267",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:26:53Z",
+      "side": 1,
+      "message": "Nit - add more detail about how these sniff routines are used.  Specifically noting that that test creates fakes to verify that only sink path is enabled at a time.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "42c1f3e9f012d56da8a7f3d8a1657b5d3414a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284b6e32_a8f06e4b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:26:53Z",
+      "side": 1,
+      "message": "You\u0027ll never be able to provide coverage these lines of code becuase CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS always overrides these functions.\n\nI think it\u0027s reasonable to wrap with this the lcov tags to exclude this block.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "42c1f3e9f012d56da8a7f3d8a1657b5d3414a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329761a7_7e361c55",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:26:53Z",
+      "side": 1,
+      "message": "Why is this checked here and not in `pdc_set_sink_path` above?\nThe PDC state machine calls SET_RDO before calling SET_SINK_PATH.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 13
+      },
+      "revId": "42c1f3e9f012d56da8a7f3d8a1657b5d3414a7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
