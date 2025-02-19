@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e53335_ad2940e7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-19T23:43:14Z",
+      "side": 1,
+      "message": "Calling `pd_select_best_pdo()` in this fashion violates the implied API contract.  `pd_select_best_pdo()` expects that the list of PDOs comes from a single charger and that the first PDO is always fixed 5V.\nThere are also checks to validate that PDOs 1-7 only use the SPR voltage range.\n\nMaking the decision about the best port here also splits the charging port decision across the charge manager and the PDC.  You need to have the charge_manager make this decision.",
+      "range": {
+        "startLine": 2038,
+        "startChar": 18,
+        "endLine": 2038,
+        "endChar": 36
+      },
+      "revId": "05587bdbc2a79f69a6286c980cf2f52a27719222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
