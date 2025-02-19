@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d0893f_fee15414",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-19T12:11:50Z",
+      "side": 1,
+      "message": "I don\u0027t think that all includes are necessary. Could you remove includes that are not necessary?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50397863_3cbce24d",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-19T12:11:50Z",
+      "side": 1,
+      "message": "Why we need this? I already made a comment about that https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6227984/comment/075c7eb4_a5379cff/ and it\u0027s now back.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 58
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

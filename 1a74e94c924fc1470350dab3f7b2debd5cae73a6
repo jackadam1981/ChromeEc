@@ -337,6 +337,24 @@
       "parentUuid": "bd71e828_3b915ec1",
       "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59be35af_02c562db",
+        "filename": "zephyr/program/fpmcu/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-19T12:11:50Z",
+      "side": 1,
+      "message": "\u003e Would the single-file #ifdef approach be readable to you?\n\nYes with a caveat that we will not use `CONFIG_BOARD_*` defines, but only defines that provides information which backend is enabled.",
+      "parentUuid": "76261705_33de8ec5",
+      "revId": "1a74e94c924fc1470350dab3f7b2debd5cae73a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
