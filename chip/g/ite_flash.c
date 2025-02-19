@@ -113,7 +113,7 @@ static int ite_sync_preparer(void *data_in, size_t in_size,
 
 	board_start_ite_sync();
 
-	return 0;
+	return USB_I2C_SUCCESS;
 }
 
 static void register_ite_sync(void)

@@ -161,6 +161,12 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 			       read_count);
 		config->buffer[0] = usb_i2c_map_error(ret);
 	}
+
+	if (config->buffer[0] != USB_I2C_SUCCESS) {
+		uint32_t zero_count = MIN(read_count, USB_I2C_BUFFER_SIZE - 2);
+
+		memset(config->buffer + 2, 0, zero_count);
+	}
 	usb_i2c_write_packet(config, read_count + 4);
 }
 
