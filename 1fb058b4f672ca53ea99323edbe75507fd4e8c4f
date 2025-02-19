@@ -39,6 +39,30 @@
       },
       "revId": "1fb058b4f672ca53ea99323edbe75507fd4e8c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a34a06e5_eb5a88ce",
+        "filename": "include/rwsig.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-19T04:38:18Z",
+      "side": 1,
+      "message": "Your solution in crrev/c/6276564 LGTM. IIUC, that CL is a superset of this one and meant to replace it? If so, I can abandon this one. I\u0027ve already verified yours works on ECOS helipilot and can fix up Zephyr helipilot to use it as well.",
+      "parentUuid": "d299a12a_50ab4fce",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "1fb058b4f672ca53ea99323edbe75507fd4e8c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
