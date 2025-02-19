@@ -16,6 +16,24 @@
       "message": "I\u0027m trying to understand how this helps fixing the problem, and why setting buffer[0] to USB_I2C_DISABLED is not enough to ignore this buffer",
       "revId": "984f0fe8cab27a1922f1229cc309f383ac8938d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96eb2f4_a0cd7c20",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-02-19T21:32:16Z",
+      "side": 1,
+      "message": "If there\u0027s an error, the read data isn\u0027t valid. Ti50 zeroes it out. This just updates cr50 to match ti50.",
+      "parentUuid": "826ca53b_792ad87e",
+      "revId": "984f0fe8cab27a1922f1229cc309f383ac8938d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
