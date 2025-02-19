@@ -63,6 +63,30 @@
       },
       "revId": "1fb058b4f672ca53ea99323edbe75507fd4e8c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a41219_b677c54b",
+        "filename": "include/rwsig.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-19T11:45:04Z",
+      "side": 1,
+      "message": "\u003e IIUC, that CL is a superset of this one and meant to replace it?\n\nThat CL is an implementation of what I was talking about here. It\u0027s meant to replace this CL.",
+      "parentUuid": "a34a06e5_eb5a88ce",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "1fb058b4f672ca53ea99323edbe75507fd4e8c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
