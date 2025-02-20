@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a724d8_4c905683",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T22:00:12Z",
+      "side": 1,
+      "message": "In this case, becaues the call to `pdc_dpm_get_source_current()` is only guarded by `IS_ENABLED`, the header needs to always be included to find the prototype during compilation.  The function only gets omitted during the final link step.",
+      "parentUuid": "fd5c6a5d_c2ff849c",
+      "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ea01ff_d2cdca6c",
@@ -66,6 +84,24 @@
       "writtenOn": "2025-02-19T16:09:35Z",
       "side": 1,
       "message": "Nit: Can we hide the `IS_ENABLED` logic within a helper function, so this easier to read.  So it looks something like\n```\nr-\u003emeas.current_max \u003d get_source_current(port);\n```",
+      "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6efd93_307774a0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T22:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6ea01ff_d2cdca6c",
       "revId": "77ce380ace9465618c9bb4553269d2a0d7fa11c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
