@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e018641_8c2e3b84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-20T23:57:46Z",
+      "side": 1,
+      "message": "Add that this fails without dead battery changes.",
+      "revId": "6bf9d2235fc338b7d7e177aac71f4f63d219fba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5839a0_144564c3",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-20T23:57:46Z",
+      "side": 1,
+      "message": "ASSERT that we don\u0027t enable two sink paths here.",
+      "revId": "6bf9d2235fc338b7d7e177aac71f4f63d219fba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
