@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b1e1ac_2b498105",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "powered",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e018c6e6_df9304bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "All",
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738ada1f_d4072e27",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "You should include `base.yaml` to get the reg property instead.  You can keep the `required` and `description` fields here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c0f9db_330b9dc5",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "Some odd line lengths.  Did you run clang-format on this file?  You might need to use `clang-format off` around this block.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 81
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e165a92_7e105aa8",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "Is this really an error?  Can this be checked at build time instead?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf682653_2ef44d2e",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "Are any of these properties used to actually control the behavior of the EC and/or AP?  This seems like a lot of extra complication to track properties only to display them on the shell.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 71
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b993fae_d8f81c41",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T19:00:23Z",
+      "side": 1,
+      "message": "You should use Zephyr\u0027s APIs and not the legacy EC defines.",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 23
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
