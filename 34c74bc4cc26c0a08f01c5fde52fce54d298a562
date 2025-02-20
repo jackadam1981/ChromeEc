@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35733bac_92430564",
+        "filename": "test/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2025-02-20T22:56:10Z",
+      "side": 1,
+      "message": "Will this address work or do we need to point to `/firmware/OWNERS.cros_fp`? If so, how do we point to the shared fp file?",
+      "range": {
+        "startLine": 1,
+        "startChar": 29,
+        "endLine": 1,
+        "endChar": 60
+      },
+      "revId": "34c74bc4cc26c0a08f01c5fde52fce54d298a562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
