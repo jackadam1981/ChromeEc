@@ -23,7 +23,6 @@
 		ec_pch_rsmrst_l: ec_rsmrst_l {};
 		pch_slp_s0_n: sys_slp_s0ix_l {};
 		ec_pch_pwrok_od: ec_pch_pwrok {};
-		all_sys_pwrgd: vcc_ddr_pwrok {};
 		pwrbtn: gsc_ec_pwr_btn_odl {};
 	};
 };
