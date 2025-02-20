@@ -16,6 +16,24 @@
       "message": "should this remain the same? just change name to vci_wakeup_en?",
       "revId": "3c418b545d2cbd46e130e35c0f17c4b9e4f9ed50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43965958_90476b1b",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-02-20T20:48:01Z",
+      "side": 0,
+      "message": "This configuration should take place regardless of `wakeup` flag.\n\nDuring initialization we should enable all listed VCI pins, and keep them as long as the system is not in hibernation, that way any system reset will prevent EC from deasserting VCI_OUT and putting system accidently in hibernation when only battery is connected.\n\nI should probably move `polarity` and `latch_en` handling here for consistency.",
+      "parentUuid": "12f0cc6c_7cd7bc2b",
+      "revId": "3c418b545d2cbd46e130e35c0f17c4b9e4f9ed50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
