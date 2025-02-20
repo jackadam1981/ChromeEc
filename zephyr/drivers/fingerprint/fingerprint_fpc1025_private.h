@@ -31,6 +31,10 @@ enum fpc_capture_type {
 	FPC_CAPTURE_RESET_TEST = 5,
 };
 
+int convert_fp_capture_mode_to_fpc_get_image_type(int mode);
+
+
+
 /** @brief Common results returned by BEP functions.
  *
  * BEP config/usage errors:

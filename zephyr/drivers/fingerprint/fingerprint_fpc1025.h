@@ -27,4 +27,6 @@ struct fpc1025_data {
 	uint16_t errors;
 };
 
+
+
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_FPC1025_H_ */
