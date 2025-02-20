@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a00d86_fc4d93bf",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T16:18:59Z",
+      "side": 1,
+      "message": "I think that returning error from this function and handling that error in `fp_acquire_image_with_mode()` would be better option.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
