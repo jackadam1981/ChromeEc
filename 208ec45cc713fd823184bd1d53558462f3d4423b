@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d617b9_5254bd8e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-20T00:15:15Z",
+      "side": 0,
+      "message": "if I do not remove this, I get:\n```\nIn file included from /mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/list_gen.h:12:\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/sys/util.h:79:9: error: \u0027GENMASK\u0027 macro redefined [-Werror,-Wmacro-redefined]\n   79 | #define GENMASK(h, l) \\\n      |         ^\n/mnt/host/source/src/platform/ec/include/ec_commands.h:62:9: note: previous definition is here\n   62 | #define GENMASK(h, l) (((BIT(h) \u003c\u003c 1) - 1) ^ (BIT(l) - 1))\n      |         ^\n1 error generated.\n[111/116] Building C object zephyr/subsys/testsuite/ztest/CMakeFiles/subsys__testsuite__ztest.dir/src/ztest.c.obj\nninja: build stopped: subcommand failed.\n\nINFO    - /mnt/host/source/src/platform/ec/twister-out/native_sim_native/llvm/fingerprint.drivers.fpc1025/build.log\n\nINFO    - 1 test scenarios (1 configurations) selected, 0 configurations filtered (0 by static filter, 0 at runtime).\n```",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
