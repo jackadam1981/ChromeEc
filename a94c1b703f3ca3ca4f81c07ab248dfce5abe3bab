@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "083e30b9_42440b56",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-20T05:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3d0893f_fee15414",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50397863_3cbce24d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-19T12:11:50Z",
       "side": 1,
       "message": "Why we need this? I already made a comment about that https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6227984/comment/075c7eb4_a5379cff/ and it\u0027s now back.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 58
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b09f1d_5cf5fa96",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-20T05:53:08Z",
+      "side": 1,
+      "message": "There is a CQ [failure](https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8722533113879482705/+/u/test_firmware/call_build_API_script/stdout?format\u003drawhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8722533113879482705/+/u/test_firmware/call_build_API_script/stdout?format\u003draw) that I don\u0027t understand which errors out with this:\n\nld.lld: error: undefined symbol: get_fp_transport_type\n\nI added this back in and kicked off a CQ+1 dry run to see if it would resolve the issue. It did not. Took it back out again, suggestions on the CQ failure welcome",
+      "parentUuid": "50397863_3cbce24d",
       "range": {
         "startLine": 23,
         "startChar": 0,
