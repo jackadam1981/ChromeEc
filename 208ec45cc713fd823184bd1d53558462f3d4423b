@@ -22,6 +22,30 @@
       },
       "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a01fe2_052b88af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-20T03:11:23Z",
+      "side": 0,
+      "message": "@patrykd@google.com\n@dawidn@google.com\n\nWhy the GENMASK from ec_commands.h getting included here although it is guarded by #ifndef CONFIG_ZEPHYR?",
+      "parentUuid": "f8d617b9_5254bd8e",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
