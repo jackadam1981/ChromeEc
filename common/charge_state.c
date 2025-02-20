@@ -1189,6 +1189,8 @@ void check_battery_change_soc(bool is_full, bool prev_full)
 		if (IS_ENABLED(CONFIG_EC_EC_COMM_BATTERY_CLIENT))
 			charger_base_charge_update();
 		hook_notify(HOOK_BATTERY_SOC_CHANGE);
+		if (is_full != prev_full)
+			hook_notify(HOOK_BATTERY_FULL);
 	}
 }
 

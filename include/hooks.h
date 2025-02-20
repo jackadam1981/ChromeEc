@@ -282,6 +282,11 @@ enum hook_type {
 	 */
 	HOOK_POWER_SUPPLY_CHANGE,
 
+	/*
+	 * Battery full change event.
+	 */
+	HOOK_BATTERY_FULL,
+
 #ifdef TEST_BUILD
 	/*
 	 * Special hook types to be used by unit tests of the hooks

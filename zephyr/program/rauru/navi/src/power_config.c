@@ -7,7 +7,6 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
-#include "dps.h"
 #include "hooks.h"
 #include "math_util.h"
 #include "power.h"
@@ -19,28 +18,25 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
-bool navi_is_more_efficient(int curr_mv, int prev_mv, int batt_mv, int batt_mw,
-			    int input_mw)
+static int charge_voltage_backup = 0;
+
+void navi_batt_full(void)
 {
 	int batt_state;
+	int active_port = charge_manager_get_active_charge_port();
 
 	battery_status(&batt_state);
 
-	/* Choose 15V PDO or higher when battery is full. */
-	if ((batt_state & SB_STATUS_FULLY_CHARGED) && (curr_mv >= 15000) &&
-	    (prev_mv < 15000 || curr_mv <= prev_mv)) {
-		return true;
+	if (charge_voltage_backup == 0)
+		charge_voltage_backup = charge_manager_get_charger_voltage();
+	CPRINTS("charge_voltage_backup = %d", charge_voltage_backup);
+
+	if (batt_state & SB_STATUS_FULLY_CHARGED) {
+		pd_request_source_voltage(active_port, 15000);
+		pd_dpm_request(active_port, DPM_REQUEST_NEW_POWER_LEVEL);
 	} else {
-		return ABS(curr_mv - batt_mv) < ABS(prev_mv - batt_mv);
+		pd_request_source_voltage(active_port, charge_voltage_backup);
+		pd_dpm_request(active_port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 }
-
-__override struct dps_config_t dps_config = {
-	.k_less_pwr = 93,
-	.k_more_pwr = 96,
-	.k_sample = 1,
-	.k_window = 3,
-	.t_stable = 10 * USEC_PER_SEC,
-	.t_check = 5 * USEC_PER_SEC,
-	.is_more_efficient = &navi_is_more_efficient,
-};
+DECLARE_HOOK(HOOK_BATTERY_FULL, navi_batt_full, HOOK_PRIO_DEFAULT);
