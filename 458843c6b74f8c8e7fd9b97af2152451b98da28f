@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88523e5c_8fa1d31d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-20T16:36:41Z",
+      "side": 1,
+      "message": "For all of these, can you change so that we\u0027re not using `!`? It\u0027s easier to read if you just do `zassert_true(skip_image_offset` or `zassert_false(skip_image_offset`.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "458843c6b74f8c8e7fd9b97af2152451b98da28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
