@@ -63,7 +63,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SYS_PWROK output to PCH";
 		enum-name = "PWR_EC_PCH_SYS_PWROK";
-		gpios = <&gpiod 5 GPIO_ACTIVE_HIGH>;
+		gpios = <&gpiod 5 GPIO_OPEN_DRAIN>;
 		output;
 	};
 	pwr-slp-s3 {
@@ -89,11 +89,13 @@
 		vw-invert;
 	};
 	pwr-all-sys-pwrgd {
-		compatible = "intel,ap-pwrseq-gpio";
-		dbg-label = "all power good";
+		/*
+		 * This is a board level signal, since this
+		 * signal needs some special processing.
+		 */
+		compatible = "intel,ap-pwrseq-external";
+		dbg-label = "Combined all power good";
 		enum-name = "PWR_ALL_SYS_PWRGD";
-		gpios = <PWR_ALL_SYS_PWRGD GPIO_ACTIVE_HIGH>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-sys-rst-l {
 		compatible = "intel,ap-pwrseq-external";
@@ -128,6 +130,6 @@
 &ec_pch_pwrok_od {
 	no-auto-init;
 };
-&all_sys_pwrgd {
+&ec_pch_sys_pwrok_od {
 	no-auto-init;
 };
