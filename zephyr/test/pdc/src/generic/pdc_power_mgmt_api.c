@@ -2166,7 +2166,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_hpd_wake)
 	zassert_true(host_is_event_set(EC_HOST_EVENT_USB_MUX));
 }
 
-ZTEST_USER(pdc_power_mgmt_api, test_dp_mode)
+static void test_dp_mode_helper(enum pd_power_role role)
 {
 	union get_attention_vdo_t attention_vdo;
 	union connector_status_t in_conn_status = {};
@@ -2190,7 +2190,18 @@ ZTEST_USER(pdc_power_mgmt_api, test_dp_mode)
 	attention_vdo.vdo = VDO_DP_STATUS(0, 0, 0, 0, 1 /* mf */, 1, 0, 1);
 	emul_pdc_set_attention_vdo(emul, attention_vdo);
 
-	emul_pdc_configure_src(emul, &in_conn_status);
+	switch (role) {
+	case PD_ROLE_SINK:
+		emul_pdc_configure_snk(emul, &in_conn_status);
+		break;
+	case PD_ROLE_SOURCE:
+		emul_pdc_configure_src(emul, &in_conn_status);
+		break;
+	default:
+		zassert_true(0, "Invalid PD role");
+		__builtin_unreachable();
+	}
+
 	emul_pdc_connect_partner(emul, &in_conn_status);
 
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
@@ -2213,6 +2224,16 @@ ZTEST_USER(pdc_power_mgmt_api, test_dp_mode)
 	zassert_equal(MODE_DP_PIN_C, pdc_power_mgmt_get_dp_pin_mode(TEST_PORT));
 	zassert_equal(USB_PD_MUX_DP_ENABLED,
 		      pdc_power_mgmt_get_dp_mux_mode(TEST_PORT));
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_dp_mode_src)
+{
+	test_dp_mode_helper(PD_ROLE_SOURCE);
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_dp_mode_snk)
+{
+	test_dp_mode_helper(PD_ROLE_SINK);
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_board_callback)
