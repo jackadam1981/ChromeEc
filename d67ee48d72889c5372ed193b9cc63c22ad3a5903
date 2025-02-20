@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bca50437_6fd30e06",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T18:34:30Z",
+      "side": 1,
+      "message": "Note - you\u0027re not using the `mod_aic2_detect` node label.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "d67ee48d72889c5372ed193b9cc63c22ad3a5903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3f2a28d_13a276d9",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/mod_aic.dtsi",
         "patchSetId": 4
