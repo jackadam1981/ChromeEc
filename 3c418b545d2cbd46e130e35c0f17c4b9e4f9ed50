@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f0cc6c_7cd7bc2b",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-20T17:50:27Z",
+      "side": 0,
+      "message": "should this remain the same? just change name to vci_wakeup_en?",
+      "revId": "3c418b545d2cbd46e130e35c0f17c4b9e4f9ed50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76d0fdb_ea747a3c",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-20T17:50:27Z",
+      "side": 1,
+      "message": "This probably needs a case to uint32_t",
+      "revId": "373ef48fa75684578ee64a2ec4ea6789cd80f363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
