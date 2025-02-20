@@ -33,6 +33,24 @@
       "message": "@patrykd@google.com I was able to create a firmware, flash it, and successful test fpcapture 0, 4, 8, 12, 16, and 20\n\nThe issue is in the twister test",
       "revId": "257634988b9d01fa0dbbeb884e427c8ee69c5ccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa022e4_96c27337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-20T03:09:40Z",
+      "side": 1,
+      "message": "I was able to resolve this issue by adding\n```\ntarget_include_directories(ec_shim  PUBLIC ${PLATFORM_EC}/include)\n```",
+      "parentUuid": "d050a843_1317970a",
+      "revId": "257634988b9d01fa0dbbeb884e427c8ee69c5ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
