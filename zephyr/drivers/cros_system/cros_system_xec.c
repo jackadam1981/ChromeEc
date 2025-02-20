@@ -142,13 +142,13 @@ struct app_vci_pin {
 #define MCHP_VCI_INFO_GET_PRESERVE(v) (((v) >> 0) & 0x1u)
 #define MCHP_VCI_INFO_GET_POLARITY(v) (((v) >> 1) & 0x1u)
 #define MCHP_VCI_INFO_GET_LATCH_EN(v) (((v) >> 2) & 0x1u)
-#define MCHP_VCI_INFO_NODE_EN(v) (((v) >> 3) & 0x1u)
+#define MCHP_VCI_INFO_WAKEUP_EN(v) (((v) >> 3) & 0x1u)
 
 #define MCHP_DT_VCI_INFO(nid)                                           \
 	((uint8_t)((DT_PROP(nid, preserve) & 0x1) << 0) |               \
 	 (uint8_t)((DT_ENUM_IDX(nid, vci_polarity) & 0x1) << 1) |       \
 	 (uint8_t)((DT_PROP_OR(nid, vci_latch_enable, 0) & 0x1) << 2) | \
-	 (uint8_t)(1 << 3))
+	 (uint8_t)((DT_PROP(nid, wakeup) & 0x1) << 3))
 
 #define HIB_VCI_ENTRY(nid)                         \
 	[DT_REG_ADDR(nid)] = {                     \
@@ -350,13 +350,15 @@ static void cros_system_xec_vci_init(void)
 	vci->CONFIG |= MCHP_VCI_FW_EXT_SEL;
 
 	for (size_t id = 0; id < ARRAY_SIZE(app_vci_table); id++) {
-		struct vci_regs *vci = STRUCT_VCI_REG_BASE_ADDR;
 		const struct app_vci_pin *pvci = &app_vci_table[id];
-		uint8_t vci_node_en = MCHP_VCI_INFO_NODE_EN(pvci->vci_info);
 		uint8_t vci_clear = !MCHP_VCI_INFO_GET_PRESERVE(pvci->vci_info);
 
-		if (vci_node_en && vci_clear) {
+		if (vci_clear) {
 			vci->LATCH_RST |= BIT(id);
+		}
+
+		if (id > 0) {
+			vci->INPUT_EN |= BIT(id);
 		}
 	}
 }
@@ -372,9 +374,9 @@ static void cros_system_xec_configure_vci_in(void)
 			MCHP_VCI_INFO_GET_POLARITY(pvci->vci_info);
 		uint8_t vci_latch_en =
 			MCHP_VCI_INFO_GET_LATCH_EN(pvci->vci_info);
-		uint8_t vci_node_en = MCHP_VCI_INFO_NODE_EN(pvci->vci_info);
+		uint8_t vci_wakeup_en = MCHP_VCI_INFO_WAKEUP_EN(pvci->vci_info);
 
-		if (vci_node_en) {
+		if (vci_wakeup_en) {
 			/* configure VCI register per board design */
 			if (vci_polarity) {
 				vci->POLARITY |= BIT(id);
@@ -389,6 +391,8 @@ static void cros_system_xec_configure_vci_in(void)
 			if (id > 0) {
 				vci->INPUT_EN |= BIT(id);
 			}
+		} else if (id > 0) {
+			vci->INPUT_EN &= ~BIT(id);
 		}
 	}
 }
