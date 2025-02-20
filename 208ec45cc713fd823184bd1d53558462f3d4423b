@@ -46,6 +46,30 @@
       },
       "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f322ffa7_da17ebd1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-20T04:24:11Z",
+      "side": 0,
+      "message": "nevermind, I do not need to include ec_commands.h. The enum is redefined in zephyr",
+      "parentUuid": "95a01fe2_052b88af",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 6
+      },
+      "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
