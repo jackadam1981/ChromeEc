@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc07bfc6_4fa8ab73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-02-20T11:28:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "11c17048_5dbee80d",
+      "revId": "55f85ec2585d4846a34c776ac7b663d2cc3bd5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0154b609_177e4b9b",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-19T19:10:50Z",
       "side": 1,
       "message": "This is unreachable. The previous line needs to be `rv \u003d pdc_autonegotiate_sink_reset(date);`.",
+      "revId": "55f85ec2585d4846a34c776ac7b663d2cc3bd5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c8054e_9f7f48a5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2636,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-02-20T11:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0154b609_177e4b9b",
       "revId": "55f85ec2585d4846a34c776ac7b663d2cc3bd5af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
