@@ -34,6 +34,24 @@
       "parentUuid": "d63bdeb9_4a0ad342",
       "revId": "249bc9991fe53bf1410135098813cc66e455b8dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21aff341_32a53093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-20T16:41:04Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n@patrykd@google.com\nbased on these findings, and per Tom\u0027s comment that a reboot should happen when exit is called, shall we keep the `exit` definition as is i.e. using an infinite while loop or modify it to use `k_panic`?",
+      "parentUuid": "9c27ca16_2534e94f",
+      "revId": "249bc9991fe53bf1410135098813cc66e455b8dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
