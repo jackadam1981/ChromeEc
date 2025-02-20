@@ -19,14 +19,6 @@ void _exit(int rc)
 void exit(int rc)
 #endif
 {
-	k_tid_t thread = k_current_get();
-
-#ifdef CONFIG_THREAD_NAME
-	printk("%s exited with rc: %d\n", k_thread_name_get(thread), rc);
-#else
-	printk("%p exited with rc: %d\n", thread, rc);
-#endif /* CONFIG_THREAD_NAME */
-
-	k_thread_abort(thread);
+	k_panic();
 	CODE_UNREACHABLE;
 }
