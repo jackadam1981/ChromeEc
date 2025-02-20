@@ -34,7 +34,7 @@ struct ec_host_cmd_backend hc_backend = {
 static const struct ec_response_get_protocol_info expected_info[] = {
 	[FP_TRANSPORT_TYPE_SPI] = {
 		.flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED,
-		.max_response_packet_size = 544,
+		.max_response_packet_size = 256,
 		.max_request_packet_size = 544,
 		.protocol_versions = BIT(3),
 	},
