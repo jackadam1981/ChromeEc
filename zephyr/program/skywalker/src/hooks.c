@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "charge_manager.h"
 #include "charger.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
@@ -65,3 +66,17 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_FORCE_SINK;
 	}
 }
+
+enum ec_error_list bq_write16(int chgnum, int offset, int value);
+
+#ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720
+void update_bq25720_input_voltage(void)
+{
+	/* b:397587463 set input voltage to 3.2V to prevent charger entering
+	 * VINDPM mode */
+	i2c_write16(chg_chips[CHARGER_SOLO].i2c_port,
+		    chg_chips[CHARGER_SOLO].i2c_addr_flags,
+		    BQ25710_REG_INPUT_VOLTAGE, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
+#endif
