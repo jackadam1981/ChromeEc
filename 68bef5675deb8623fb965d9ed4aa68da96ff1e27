@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347d2a93_19fbedf4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T20:38:36Z",
+      "side": 1,
+      "message": "I would prefer `rc \u003c 0`, just in case somebody changes the error code in future.",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 18
+      },
+      "revId": "68bef5675deb8623fb965d9ed4aa68da96ff1e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167224ac_59408145",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T20:38:36Z",
+      "side": 1,
+      "message": "Can we make this more precise? For example, `Unsupported mode %d provided`.",
+      "range": {
+        "startLine": 361,
+        "startChar": 11,
+        "endLine": 361,
+        "endChar": 51
+      },
+      "revId": "68bef5675deb8623fb965d9ed4aa68da96ff1e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
