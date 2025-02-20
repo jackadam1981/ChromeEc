@@ -13,6 +13,5 @@
 #define PWR_EC_PCH_RSMRST &gpioi 6
 #define PWR_SLP_S0 &gpioj 5
 #define PWR_PCH_PWROK &gpiob 5
-#define PWR_ALL_SYS_PWRGD &gpioe 2
 
 #endif /* FELINO_BOARD_H_ */
