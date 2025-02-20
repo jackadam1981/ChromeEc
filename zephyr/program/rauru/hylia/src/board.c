@@ -6,9 +6,11 @@
 #include "battery.h"
 #include "charge_state.h"
 #include "common.h"
+#include "driver/charger/bq257x0_regs.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "math_util.h"
 #include "util.h"
 
@@ -43,3 +45,13 @@ enum battery_present battery_is_present(void)
 
 	return BP_YES;
 }
+
+void update_bq25720_input_voltage(void)
+{
+	/* b:397587463 set input voltage to 3.2V to prevent charger entering
+	 * VINDPM mode */
+	i2c_write16(chg_chips[CHARGER_SOLO].i2c_port,
+		    chg_chips[CHARGER_SOLO].i2c_addr_flags,
+		    BQ25710_REG_INPUT_VOLTAGE, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
