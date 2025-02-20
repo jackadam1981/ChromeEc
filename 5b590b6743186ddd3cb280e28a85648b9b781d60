@@ -16,6 +16,23 @@
       "message": "Waiting for partner charging test verification.",
       "revId": "5b590b6743186ddd3cb280e28a85648b9b781d60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6b2bad_64b930f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-02-20T10:11:20Z",
+      "side": 1,
+      "message": "DPS will choose more efficient pdo for system.\nAnd it might choose voltage lower than 15V.\n\nCan I use pd_request_source_voltage to switch to 15V only?\nPlease refer to this CL(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6285527)",
+      "revId": "5b590b6743186ddd3cb280e28a85648b9b781d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
