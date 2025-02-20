@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dbd4b96_cd7fa0cd",
+        "filename": "zephyr/shim/include/usbc/utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T23:27:13Z",
+      "side": 1,
+      "message": "I haven\u0027t reviewed the full CL stack, but can this be moved to a different header?  Preferably a header under zephyr/include/usbc or maybe in zephyr/include/drivers/pdc.h",
+      "revId": "f07617c75a455f4c456e51bf59f97046335e51fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
