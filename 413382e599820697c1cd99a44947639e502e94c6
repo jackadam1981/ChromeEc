@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb4779d_5547afe7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1145.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T16:14:54Z",
+      "side": 1,
+      "message": "I think that returning error from this function and handling that error in `fpc1145_acquire_image()` would be better option.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "413382e599820697c1cd99a44947639e502e94c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
