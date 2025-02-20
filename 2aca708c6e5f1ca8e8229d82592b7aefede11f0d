@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e0ffa0_d5cda63a",
+        "filename": "zephyr/program/fpmcu/fp_transport.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T20:48:50Z",
+      "side": 1,
+      "message": "Could you move this file to a `fpmcu/src/` directory?",
+      "revId": "2aca708c6e5f1ca8e8229d82592b7aefede11f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

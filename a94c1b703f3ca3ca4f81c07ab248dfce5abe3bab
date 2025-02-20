@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05c77ad2_1730f35d",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T20:48:50Z",
+      "side": 1,
+      "message": "I think that `device.h`, `devicetree.h`, `init.h`, `ec_host_cmd.h` are also necessary.",
+      "parentUuid": "083e30b9_42440b56",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50397863_3cbce24d",
         "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
         "patchSetId": 6
