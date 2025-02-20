@@ -22,6 +22,30 @@
       },
       "revId": "b5bcd72de8356de6d432333a22919d716e0d6b0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd21abf_6ccf12f2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-20T19:14:51Z",
+      "side": 1,
+      "message": "check my change in this CL. If this is ok, will apply  fix to the rest of the CLs.",
+      "parentUuid": "e6d00b63_77d49886",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "b5bcd72de8356de6d432333a22919d716e0d6b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
