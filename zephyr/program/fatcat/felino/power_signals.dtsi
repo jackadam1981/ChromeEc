@@ -89,11 +89,13 @@
 		vw-invert;
 	};
 	pwr-all-sys-pwrgd {
-		compatible = "intel,ap-pwrseq-gpio";
-		dbg-label = "all power good";
+		/*
+		 * This is a board level signal, since this
+		 * signal needs some special processing.
+		 */
+		compatible = "intel,ap-pwrseq-external";
+		dbg-label = "Combined all power good";
 		enum-name = "PWR_ALL_SYS_PWRGD";
-		gpios = <PWR_ALL_SYS_PWRGD GPIO_ACTIVE_HIGH>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-sys-rst-l {
 		compatible = "intel,ap-pwrseq-external";
@@ -126,8 +128,5 @@
 	no-auto-init;
 };
 &ec_pch_pwrok_od {
-	no-auto-init;
-};
-&all_sys_pwrgd {
 	no-auto-init;
 };
