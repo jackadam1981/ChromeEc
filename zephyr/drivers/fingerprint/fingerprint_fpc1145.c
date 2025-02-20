@@ -8,6 +8,8 @@
 #include "fingerprint_fpc1145.h"
 #include "fingerprint_fpc1145_private.h"
 
+#include <assert.h>
+
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/spi.h>
 #include <zephyr/linker/section_tags.h>
@@ -31,6 +33,28 @@ enum fpc1145_cmd {
 	FPC1145_CMD_SOFT_RESET = 0xF8,
 	FPC1145_CMD_HW_ID = 0xFC,
 };
+
+static int convert_fp_capture_mode_to_fpc_get_image_type(int mode)
+{
+	switch (mode) {
+	case FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT:
+		return FPC_CAPTURE_VENDOR_FORMAT;
+	case FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE:
+		return FPC_CAPTURE_SIMPLE_IMAGE;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN0:
+		return FPC_CAPTURE_PATTERN0;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN1:
+		return FPC_CAPTURE_PATTERN1;
+	case FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST:
+		return FPC_CAPTURE_QUALITY_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_RESET_TEST:
+		return FPC_CAPTURE_RESET_TEST;
+	default:
+		assert(false);
+		break;
+	}
+	return FPC_CAPTURE_SIMPLE_IMAGE;
+}
 
 /* Minimum reset duration */
 #define FP_SENSOR_RESET_DURATION_US (10 * USEC_PER_MSEC)
@@ -415,7 +439,8 @@ static int fpc1145_acquire_image(const struct device *dev, int mode,
 	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
 		return -EINVAL;
 
-	rc = fp_sensor_acquire_image_with_mode(image_buf, mode);
+	rc = fp_sensor_acquire_image_with_mode(
+		image_buf, convert_fp_capture_mode_to_fpc_get_image_type(mode));
 	if (rc < 0) {
 		LOG_ERR("Failed to acquire image with mode %d: %d", mode, rc);
 		return rc;
