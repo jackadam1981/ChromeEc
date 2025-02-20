@@ -204,6 +204,11 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 			   chg_chips[chgnum].i2c_addr_flags, offset, value);
 }
 
+enum ec_error_list bq_write16(int chgnum, int offset, int value)
+{
+	return raw_write16(chgnum, offset, value);
+}
+
 static int bq25710_set_low_power_mode(int chgnum, int enable)
 {
 	int rv;
