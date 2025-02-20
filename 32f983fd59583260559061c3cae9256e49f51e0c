@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2423e5ec_39fa9f5f",
+        "filename": "zephyr/test/pdc/src/pdc_policy/sink_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-20T17:45:18Z",
+      "side": 1,
+      "message": "Add scenario where we disconnect better charger.",
+      "revId": "32f983fd59583260559061c3cae9256e49f51e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e023622_ac9634f6",
+        "filename": "zephyr/test/pdc/src/pdc_policy/sink_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-20T17:45:18Z",
+      "side": 1,
+      "message": "Also check RDO of worst charger is correctly chosen.",
+      "revId": "32f983fd59583260559061c3cae9256e49f51e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
