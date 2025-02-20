@@ -4,6 +4,7 @@
  */
 
 #include "charger.h"
+#include "charge_manager.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -65,3 +66,11 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_FORCE_SINK;
 	}
 }
+
+enum ec_error_list bq_write16(int chgnum, int offset, int value);
+
+void update_bq25720_input_voltage(void)
+{
+	bq_write16(0, 0x3d, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
