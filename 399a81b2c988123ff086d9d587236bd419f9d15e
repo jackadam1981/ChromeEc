@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6d29fe_e105954e",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T23:45:11Z",
+      "side": 1,
+      "message": "Generally, I don\u0027t like using overrides.  These are hard to discover and hard to test.\n\nConsider using a callback mechanism for this.",
+      "range": {
+        "startLine": 727,
+        "startChar": 21,
+        "endLine": 727,
+        "endChar": 43
+      },
+      "revId": "399a81b2c988123ff086d9d587236bd419f9d15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35228db8_df94ab66",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T23:45:11Z",
+      "side": 1,
+      "message": "Should the ppm-driver be the parent node?\n```\nppm-driver {\n    compatible \u003d \"ucsi-ppm\";\n    #adress-cells \u003d \u003c1\u003e;\n    #size-cells \u003d \u003c0\u003e;\n    port0@0 { ... };\n    port1@1 { ... };\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "399a81b2c988123ff086d9d587236bd419f9d15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
