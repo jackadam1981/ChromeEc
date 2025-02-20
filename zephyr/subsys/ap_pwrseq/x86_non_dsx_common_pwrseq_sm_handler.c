@@ -326,6 +326,7 @@ void rsmrst_pass_thru_handler(void)
 {
 	/* Handle RSMRST passthrough */
 	/* TODO: Add additional conditions for RSMRST handling */
+	printk("--PWR_RSMRST_PWRGD %d\n", power_signal_get(PWR_RSMRST_PWRGD));
 	if (power_signal_get(PWR_RSMRST_PWRGD)) {
 		if (power_signal_get(PWR_EC_PCH_RSMRST)) {
 			/*
@@ -829,6 +830,7 @@ AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_G3, x86_non_dsx_g3_entry,
 
 static int x86_non_dsx_s5_entry(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)) {
 		atomic_set_bit(flags, S5_INACTIVE_TIMER_RUNNING);
 		k_timer_start(
@@ -842,12 +844,15 @@ static int x86_non_dsx_s5_entry(void *data)
 
 static int x86_non_dsx_s5_run(void *data)
 {
+	printk("\n%s %d\n", __func__, __LINE__);
 	/*
 	 * At this point, lower level action handlers of state machine should
 	 * have already checked that required power rails are OK.
 	 */
 	rsmrst_pass_thru_handler();
 	if (!power_signal_get(PWR_EC_PCH_RSMRST)) {
+		printk("--PWR_EC_PCH_RSMRST %d\n",
+		       power_signal_get(PWR_EC_PCH_RSMRST));
 		if (signals_valid_and_off(IN_PCH_SLP_S5)) {
 			return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S4);
 		}
@@ -867,15 +872,20 @@ static int x86_non_dsx_s5_run(void *data)
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
 	}
 
+	printk("--%s ret0\n", __func__);
+
 	return 0;
 }
 
 static int x86_non_dsx_s5_exit(void *data)
 {
 	if (atomic_test_bit(flags, S5_INACTIVE_TIMER_RUNNING)) {
+		printk("--stop s5 timer\n");
 		k_timer_stop(&x86_non_dsx_timer);
 		atomic_clear_bit(flags, S5_INACTIVE_TIMER_RUNNING);
 	}
+
+	printk("--%s ret0\n", __func__);
 
 	return 0;
 }
