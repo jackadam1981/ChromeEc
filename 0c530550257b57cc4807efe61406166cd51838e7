@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596df971_c9e72b78",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T23:35:43Z",
+      "side": 1,
+      "message": "Some funky formating done by clang-format.  Maybe try moving the comment to it\u0027s own line.",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 0
+      },
+      "revId": "0c530550257b57cc4807efe61406166cd51838e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe699af_2e61e140",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-20T23:35:43Z",
+      "side": 1,
+      "message": "Same here - try moving to it\u0027s own line.",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 0
+      },
+      "revId": "0c530550257b57cc4807efe61406166cd51838e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
