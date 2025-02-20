@@ -141,6 +141,30 @@
       },
       "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a69a4c_55ec38e5",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3511,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T18:03:58Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6276564 was merged. Please rebase and abandon redundant patches.",
+      "parentUuid": "2465da50_29e93f94",
+      "range": {
+        "startLine": 3505,
+        "startChar": 0,
+        "endLine": 3511,
+        "endChar": 42
+      },
+      "revId": "8f8ab4c8790b379bf6cf60e1e1bc873dc10f8ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
