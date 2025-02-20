@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa00334b_8d337d9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-20T12:11:38Z",
+      "side": 1,
+      "message": "To fully understand the change, I would recommend adding an info that a jump to RW on such platforms means calling a ROM function that loads flash content (RW image) into SRAM and jump into passed address.",
+      "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f092c558_d60ed2ea",
@@ -49,6 +66,23 @@
       "side": 1,
       "message": "Unresolving",
       "parentUuid": "693ab77d_8686fa2c",
+      "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3244bcca_e7c1701b",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-20T12:11:38Z",
+      "side": 1,
+      "message": "Please rename all changed configs to *_OFF indicating that it is now an offset, not an absolute address.",
       "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
