@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9e8a927d_01e64df1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T15:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa00334b_8d337d9a",
+      "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f092c558_d60ed2ea",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "413f7fe4_ac796eb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T15:28:56Z",
+      "side": 1,
+      "message": "Described how it works on fizz and karma in commit message.",
+      "parentUuid": "375b33c2_806a48a6",
+      "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3244bcca_e7c1701b",
@@ -83,6 +119,24 @@
       "writtenOn": "2025-02-20T12:11:38Z",
       "side": 1,
       "message": "Please rename all changed configs to *_OFF indicating that it is now an offset, not an absolute address.",
+      "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997f8a00_e4fdb065",
+        "filename": "include/rwsig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-20T15:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3244bcca_e7c1701b",
       "revId": "7712c12b58adfbd87979e8a88a06f7efcdb1444e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
