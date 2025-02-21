@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c42b698_5932aaf2",
+        "filename": "zephyr/program/rex/kanix/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-21T17:52:47Z",
+      "side": 1,
+      "message": "\u003e [FAILED] chromiumos/platform/ec: check_zephyr_for_ec_symbols\n\u003e    Hook script \"util/check_zephyr_for_ec_symbols.py --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n\u003e      error: Function \u0027crec_usleep\u0027 should not be used in Zephyr code. Use \u0027k_usleep\u0027.\n\u003e      zephyr/program/rex/kanix/src/usbc_config.c:290: \t\t\tcrec_usleep(PD_T_VDM_E_MODE / 2);",
+      "revId": "a199919b58141dad89fb68412aec33c66fcf3489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
