@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71af0870_04b31805",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-21T12:19:08Z",
+      "side": 1,
+      "message": "Instead of making it print only once, how about completely remove the CPRINTS line?",
+      "range": {
+        "startLine": 823,
+        "startChar": 6,
+        "endLine": 823,
+        "endChar": 22
+      },
+      "revId": "da47a625326caf5cae6976517f37bd7ca3cbc2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
