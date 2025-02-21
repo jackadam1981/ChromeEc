@@ -31,6 +31,21 @@ pub mod trunks {
 
         include!("ffi.h");
 
+        /// Encrypts data for an attestation CA. The CA's public key is passed
+        /// in as an input. The output values correspond to the EncryptedData
+        /// protobuf in attestation_ca.proto. Returns true on success and false
+        /// on failure.
+        fn EncryptDataForCa(
+            data: &CxxString,
+            public_key_hex: &CxxString,
+            key_id: &CxxString,
+            wrapped_key: Pin<&mut CxxString>,
+            iv: Pin<&mut CxxString>,
+            mac: Pin<&mut CxxString>,
+            encrypted_data: Pin<&mut CxxString>,
+            wrapping_key_id: Pin<&mut CxxString>,
+        ) -> bool;
+
         /// Constructs a new PasswordAuthorizationDelegate with the given
         /// password.
         fn PasswordAuthorizationDelegate_New(
@@ -214,6 +229,14 @@ pub mod trunks {
 
         /// Returns the public area template for the Storage Root Key.
         fn StorageRootKeyTemplate() -> UniquePtr<TPM2B_PUBLIC>;
+
+        /// Converts a serialized TPM2B_PUBLIC (as returned by
+        /// ParseResponse_Create) into a serialized TPMT_PUBLIC (as required by
+        /// the attestation CA).
+        fn Tpm2bPublicToTpmtPublic(
+            tpm2b_public: &CxxString,
+            tpmt_public: Pin<&mut CxxString>,
+        ) -> u32;
 
         /// Creates a new TPM2B_SENSITIVE_CREATE with the given auth and data
         /// values.
