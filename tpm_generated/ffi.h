@@ -25,6 +25,20 @@ namespace trunks {
 // Organization: each subsection is a type, ordered alphabetically.
 
 // -----------------------------------------------------------------------------
+// EncryptedData (referring to the CA protobuf's EncryptedData message type)
+// -----------------------------------------------------------------------------
+
+// Encrypts data for an attestation CA. The CA's public key is passed in as an
+// input. The output values correspond to the EncryptedData protobuf in
+// attestation_ca.proto. Returns true on success and false on failure.
+bool EncryptDataForCa(const std::string& data,
+                      const std::string& public_key_hex,
+                      const std::string& key_id, std::string& wrapped_key,
+                      std::string& iv, std::string& mac,
+                      std::string& encrypted_data,
+                      std::string& wrapping_key_id);
+
+// -----------------------------------------------------------------------------
 // PasswordAuthorizationDelegate
 // -----------------------------------------------------------------------------
 
@@ -218,6 +232,11 @@ std::unique_ptr<TPM2B_PUBLIC> AttestationIdentityKeyTemplate();
 
 // Returns the public area template for the Storage Root Key.
 std::unique_ptr<TPM2B_PUBLIC> StorageRootKeyTemplate();
+
+// Converts a serialized TPM2B_PUBLIC (as returned by ParseResponse_Create) into
+// a serialized TPMT_PUBLIC (as required by the attestation CA).
+TPM_RC Tpm2bPublicToTpmtPublic(const std::string& tpm2b_public,
+                               std::string& tpmt_public);
 
 // -----------------------------------------------------------------------------
 // TPM2B_SENSITIVE_CREATE
