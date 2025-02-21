@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b4aff93_3b110b1d",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-21T15:30:32Z",
+      "side": 1,
+      "message": "\u003e this is needed to accomate the large image buffers needed by FPS\n\nSounds like this argument also applies to EC, doesn\u0027t it?\n\nI have two problems with that:\n- We are loosing 16KB because 352+156\u003d508 and 320+172\u003d492\n- Is that compatible with EC RO (which has the old code/data split)? This was already discussed e.g. [here](https://buganizer.corp.google.com/issues/357963254#comment2) or [here](https://buganizer.corp.google.com/issues/329487464#comment2) and changing the split is not safe. I\u0027m not even sure if current implementation of jumping to RW applies new code/data split. @chlin56@nuvoton.com, do you know if code/data split could be changed after reset?\n\nPlease do not resolve this comment after you respond, because it makes harder for to see if that was solved (I have no questions) and increases risk of adding bugs.",
+      "parentUuid": "7ba4be01_9cf9c1c5",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
