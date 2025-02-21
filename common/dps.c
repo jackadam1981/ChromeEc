@@ -297,6 +297,13 @@ test_mockable_static int get_batt_charge_power(void)
 	return batt->current * batt->voltage / 1000;
 }
 
+test_mockable_static int get_batt_requested_charge_power(void)
+{
+	struct charge_state_data *curr = charge_get_status();
+
+	return curr->requested_current * curr->requested_voltage / 1000;
+}
+
 /*
  * Evaluate the system power if a new PD power request is needed.
  *
@@ -308,6 +315,7 @@ test_mockable_static bool has_new_power_request(struct pdo_candidate *cand)
 	int vbus, input_curr, input_pwr;
 	int input_pwr_avg = 0, input_curr_avg = 0;
 	int batt_pwr, batt_mv;
+	int batt_req_pwr;
 	int max_mv = pd_get_max_voltage();
 	int req_pwr, req_ma, req_mv;
 	int input_curr_limit;
@@ -342,6 +350,7 @@ test_mockable_static bool has_new_power_request(struct pdo_candidate *cand)
 
 	req_pwr = req_mv * req_ma / 1000;
 	batt_pwr = get_batt_charge_power();
+	batt_req_pwr = get_batt_requested_charge_power();
 	input_pwr = get_desired_input_power(&vbus, &input_curr);
 
 	if (!input_pwr)
@@ -371,7 +380,8 @@ test_mockable_static bool has_new_power_request(struct pdo_candidate *cand)
 	 * powerful PDO.
 	 */
 	if (is_near_limit(input_pwr_avg, req_pwr) ||
-	    is_near_limit(input_curr_avg, MIN(req_ma, input_curr_limit))) {
+	    is_near_limit(input_curr_avg, MIN(req_ma, input_curr_limit)) ||
+	    is_near_limit(batt_req_pwr, input_pwr_avg)) {
 		atomic_or(&flag, DPS_FLAG_NEED_MORE_PWR);
 		if (!fake_enabled)
 			input_pwr_avg = req_pwr + 1;
@@ -381,9 +391,10 @@ test_mockable_static bool has_new_power_request(struct pdo_candidate *cand)
 
 	if (debug_level)
 		CPRINTS("C%d 0x%x last (%dmW %dmV) input (%dmW %dmV %dmA) "
-			"avg (%dmW, %dmA)",
+			"avg (%dmW, %dmA) batt_req(%dmW)",
 			active_port, (int)flag, req_pwr, req_mv, input_pwr,
-			vbus, input_curr, input_pwr_avg, input_curr_avg);
+			vbus, input_curr, input_pwr_avg, input_curr_avg,
+			batt_req_pwr);
 
 	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
 		const uint32_t *const src_caps = pd_get_src_caps(i);
