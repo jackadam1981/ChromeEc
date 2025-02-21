@@ -39,6 +39,29 @@
       "message": "Runtime selection of the number PDC ports needs more analysis.",
       "revId": "28e20ddf91c4473acc8d18169e5e6b2fc28af63a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2508c37a_1fce5ada",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3345,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-21T22:34:22Z",
+      "side": 1,
+      "message": "There are many places in the PD code that access CONFIG_USB_PD_PORT_MAX_COUNT and would bypass your override. For some cases that is proper (we need the true maximum), but some of these cases assume maximum \u003d\u003d actual and need to be updated to reference `pdc_power_mgmt_get_usb_pd_port_count()` instead.\n\nThis plan needs more evaluation to ensure the PD subsystem behaves properly with a variable port count.",
+      "range": {
+        "startLine": 3345,
+        "startChar": 8,
+        "endLine": 3345,
+        "endChar": 36
+      },
+      "revId": "28e20ddf91c4473acc8d18169e5e6b2fc28af63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
