@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26324030_cd3c116a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-21T04:01:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7dd00b06_6bcf486b",
+      "range": {
+        "startLine": 525,
+        "startChar": 11,
+        "endLine": 525,
+        "endChar": 28
+      },
+      "revId": "f42f4106f704ac8be5a65a66cf354dca07d3f23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3d87dd4_0bc6fe4c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-19T23:34:35Z",
       "side": 1,
       "message": "Can you move the `SNK_ATTACHED_EVALUATE_PDOS` body into a separate routine as a separate CL that is a parent to this one?\n\nI know the next CL does some cleanup, but the nesting done here is hard to follow.",
+      "range": {
+        "startLine": 2135,
+        "startChar": 6,
+        "endLine": 2135,
+        "endChar": 32
+      },
+      "revId": "f42f4106f704ac8be5a65a66cf354dca07d3f23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e194faf2_87e47d21",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2135,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-21T04:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d87dd4_0bc6fe4c",
       "range": {
         "startLine": 2135,
         "startChar": 6,
