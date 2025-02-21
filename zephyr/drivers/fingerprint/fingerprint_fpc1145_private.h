@@ -23,6 +23,9 @@ enum fpc_capture_type {
 	FPC_CAPTURE_RESET_TEST = 5,
 };
 
+/* Converts capture type modes from the ec domain to the fpc domain. */
+int convert_fp_capture_mode_to_fpc_get_image_type(int mode);
+
 /* External error codes from FPC's sensor library */
 enum fpc_error_code_external {
 	FPC_ERROR_NONE = 0,
