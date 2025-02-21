@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab6d754_6bc11169",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-21T11:51:01Z",
+      "side": 1,
+      "message": "- `device.h` is needed for `struct device`\n- `init.h` is needed for `SYS_INIT()`\n- `devicetree.h` is needed for `DT_CHOSEN()`, `DEVICE_DT_GET()`, etc.\n- `ec_host_cmd.h` is needed for `ec_host_cmd_init()`.",
+      "parentUuid": "41e40140_2f7bbac2",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50397863_3cbce24d",
