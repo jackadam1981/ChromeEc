@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fe3d4fc_40c0760e",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-21T16:52:41Z",
+      "side": 1,
+      "message": "\u003eSounds like this argument also applies to EC, doesn\u0027t it?\n\nI don\u0027t think so, the EC doesn\u0027t store FP images AFAIK, so not sure where larger buffers would be used by the EC\n\n\u003eWe are loosing 16KB\n\nYes, this is discussed [here](b/309557100#comment91). We lose the memory because of a rounding error now baked into ECOS RO. \n\n\u003eIs that compatible with EC RO\n\nYes, I\u0027ve verified that ECOS RO successfully verifies and boots Zephyr RW images",
+      "parentUuid": "2b4aff93_3b110b1d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
