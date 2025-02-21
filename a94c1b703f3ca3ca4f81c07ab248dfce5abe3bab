@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e40140_2f7bbac2",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-21T03:51:21Z",
+      "side": 1,
+      "message": "At least ec_host_cmd.h was necessary to pass CQ, added all 4 back in. Thanks",
+      "parentUuid": "6b3148e6_3e326c06",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50397863_3cbce24d",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "Thanks a lot, I saw that those tests were failing but was really struggling to reproduce the error or run locally. I\u0027ve added the new file there and running CQ+1, will resolve if it passes",
       "parentUuid": "17ae64dd_d3882d21",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 58
+      },
+      "revId": "a94c1b703f3ca3ca4f81c07ab248dfce5abe3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b07ca80_bae6f3fb",
+        "filename": "zephyr/program/fpmcu/bloonchipper/src/fp_transport.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-21T03:51:21Z",
+      "side": 1,
+      "message": "With this change and adding some headers back in, this CL is now passing the dry run",
+      "parentUuid": "9bf81db4_6b902528",
       "range": {
         "startLine": 23,
         "startChar": 0,
