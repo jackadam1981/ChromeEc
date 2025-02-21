@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a0a11b1fbfe7d4ade4ca4a0631bcfa7fb65d46de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d8757f_a94246c1",
+        "filename": "zephyr/test/hwtest/src/fp_transport.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-21T17:48:48Z",
+      "side": 1,
+      "message": "@dawidn@google.com Are we configuring Zephyr differently than EC? Looks like it\u0027s [544 in EC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fp_transport.c;l\u003d17;drc\u003d61fe899f8bd26726391b6c4061832022f3eeb31f).",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "a0a11b1fbfe7d4ade4ca4a0631bcfa7fb65d46de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
