@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8e70912_6ff68e87",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-21T17:00:04Z",
+      "side": 1,
+      "message": "On my first comment, it seems by \"EC\" you are talking about ECOS helipilot and not an actual EC implementation. If so, my response doesn\u0027t apply. Yes, both ECOS helipilot and zephyr helipilot store FP images",
+      "parentUuid": "3fe3d4fc_40c0760e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
