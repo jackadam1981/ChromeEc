@@ -804,6 +804,7 @@ struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
 
 int rt9490_get_thermistor_val(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
+	static bool last_adc_enabled = true;
 	uint16_t mv;
 	int idx = sensor->idx;
 	int val;
@@ -819,9 +820,13 @@ int rt9490_get_thermistor_val(const struct temp_sensor_t *sensor, int *temp_ptr)
 	/* Check ADC is enable before read temps */
 	RETURN_ERROR(rt9490_read8(idx, RT9490_REG_ADC_CTRL, &val));
 	if ((val & RT9490_ADC_EN) != RT9490_ADC_EN) {
-		CPRINTS(" RT9490 ADC do not enable yet ");
+		if (last_adc_enabled) {
+			CPRINTS(" RT9490 ADC do not enable yet ");
+		}
+		last_adc_enabled = false;
 		return EC_ERROR_UNAVAILABLE;
 	}
+	last_adc_enabled = true;
 
 	RETURN_ERROR(rt9490_read16(idx, RT9490_REG_TS_ADC, &mv));
 	*temp_ptr = thermistor_linear_interpolate(mv, info);
