@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "568d3d09_0b93d3bd",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-21T17:52:16Z",
+      "side": 1,
+      "message": "This is here in case we decide to allow for \"hot\" swapping AICs right now they are hardcoded for PTL but in future projects we might want to have them identified at runtime",
+      "parentUuid": "0e165a92_7e105aa8",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf682653_2ef44d2e",
         "filename": "zephyr/subsys/modular_aic/modular_aic.c",
         "patchSetId": 4
@@ -123,6 +147,30 @@
       "writtenOn": "2025-02-20T19:00:23Z",
       "side": 1,
       "message": "Are any of these properties used to actually control the behavior of the EC and/or AP?  This seems like a lot of extra complication to track properties only to display them on the shell.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 71
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75136c1d_63c2208f",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-21T17:52:16Z",
+      "side": 1,
+      "message": "I can remove this as it\u0027s currently not really used for anything aside from tracking properties. In the future these properties can be used if hot swapping cards",
+      "parentUuid": "cf682653_2ef44d2e",
       "range": {
         "startLine": 329,
         "startChar": 0,
