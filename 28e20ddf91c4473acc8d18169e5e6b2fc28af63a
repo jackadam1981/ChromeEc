@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0371f71_8e88ccaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T21:28:29Z",
+      "side": 1,
+      "message": "The changes in this CL should be testable without writing an uldrenite specific test.\n\nPlease delete LOW_COVERAGE reason on this CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "28e20ddf91c4473acc8d18169e5e6b2fc28af63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad65037d_1cc1b266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T21:28:29Z",
+      "side": 1,
+      "message": "Runtime selection of the number PDC ports needs more analysis.",
+      "revId": "28e20ddf91c4473acc8d18169e5e6b2fc28af63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
