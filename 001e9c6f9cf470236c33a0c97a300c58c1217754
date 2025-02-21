@@ -359,6 +359,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe0a0b17_a7aecb32",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-21T19:24:58Z",
+      "side": 1,
+      "message": "\u003e The rounding error that I mentioned in ECOS RO actually impacts the size of RW in flash and pegs it at 320 kB.\n\nThat sounds resonable. I checked FMAP of current helipilot firmware and the size of `EC_RW` section is set to 327680 bytes (320kB), which means that RO will not verify or load more than that.\n\nI was thinking about `0x200AC000` address. In EC it\u0027s calculated as\n\n```\n#define CONFIG_RAM_BASE \\\n        (0x200C0000 -   \\\n         (__TOTAL_DATA_RAM_SIZE_BYTES - __DEFAULT_TOTAL_DATA_RAM_SIZE_BYTES))\n```\nwhere\n```\n/**\n * RAM reserved for data.\n *\n * Can be increased/decreased in conjunction with HELIPILOT_CODE_RAM_SIZE_BYTES\n * to adjust the split between code and data RAM.\n */\n#define HELIPILOT_DATA_RAM_SIZE_BYTES (156 * 1024)\n\n/**\n * RAM reserved for ROM functions.\n *\n * Cannot be adjusted.\n */\n#define __ROM_DATA_RAM_SIZE_BYTES (4 * 1024)\n\n/**\n * All data RAM (data RAM that can be used by our code and data RAM reserved for\n * ROM functions).\n */\n#define __TOTAL_DATA_RAM_SIZE_BYTES \\\n        (HELIPILOT_DATA_RAM_SIZE_BYTES + __ROM_DATA_RAM_SIZE_BYTES)\n\n/**\n * By default, the memory map expects 96K of data RAM (92K for data RAM used by\n * our code and 4K for data used by ROM functions).\n */\n#define __DEFAULT_TOTAL_DATA_RAM_SIZE_BYTES (96 * 1024)\n```\n\nThe data RAM size is increased by changing the beginning of the data RAM...which means that the jump data and panic data should remain at the same address (they are calculated from the end of data RAM) regardless of data RAM size.\n\nMaybe we are safe to change the code/data split to 320/172 which will allow us to use more memory for data?",
+      "parentUuid": "6733b408_673c2548",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
