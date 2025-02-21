@@ -46,6 +46,30 @@
       },
       "revId": "54edb63e7835dfa215e165f67379aec3efb8d8d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e713ac7_deb34032",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-21T21:26:38Z",
+      "side": 1,
+      "message": "the cast should be a no-op here.\na cast might be \"useful\" if going from 64-\u003e32bit value\nand you want to convince the compiler that loosing 32 bits is OK.",
+      "parentUuid": "80136895_10ea2dc9",
+      "range": {
+        "startLine": 368,
+        "startChar": 21,
+        "endLine": 368,
+        "endChar": 29
+      },
+      "revId": "54edb63e7835dfa215e165f67379aec3efb8d8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
