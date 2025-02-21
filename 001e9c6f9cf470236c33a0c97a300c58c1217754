@@ -311,6 +311,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baf309a9_106aae7e",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-21T17:47:41Z",
+      "side": 1,
+      "message": "Yeah, by saying EC, I was thinking about EC RO for helipilot.\n\n\u003e Yes, this is discussed here. We lose the memory because of a rounding error now baked into ECOS RO.\n\nOkay, so basically EC RO has some rounding bug and here we set code/data sizes to what RO is using actually. As a result, there is no effective change between EC RO and Zephyr RW. Is this correct?\n\nCould you add a comment with information that EC RO has a rounding bug and we are changing the code/data split here to be compatible with EC RO? Please include everything that is necessary to calculate the current code/data split in EC RO (#comment91 doesn\u0027t provide details!).\n\nLooks like this is another EC quirk that we need to continue to keep RO and RW compatible. In future, we may want to release Zephyr RO for helipilot-based design and it would be good to not repeat the bug. My idea is to set code/data split correctly (in `soc.dtsi` file) and then override that in `ec_quirks.dts` file. What do you think?\n\nWhat about other helipilot-based boards? Do they have different code/data split?",
+      "parentUuid": "c8e70912_6ff68e87",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
