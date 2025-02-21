@@ -21,6 +21,9 @@ struct fpc_sensor_info {
 	uint32_t image_buffer_size;
 };
 
+/* Converts capture type modes from the ec domain to the fpc domain. */
+int convert_fp_capture_mode_to_fpc_get_image_type(int mode);
+
 /* External capture types from FPC's sensor library */
 enum fpc_capture_type {
 	FPC_CAPTURE_VENDOR_FORMAT = 0,
