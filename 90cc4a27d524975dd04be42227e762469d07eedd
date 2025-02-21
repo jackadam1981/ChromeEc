@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3fdfac8_94b5b590",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-21T22:23:08Z",
+      "side": 1,
+      "message": "I would like to see the test code in this CL or on this CL stack before approving. Because you are proposing changes to common PDC code shared among other devices, we must make sure this doesn\u0027t cause a regression.",
+      "parentUuid": "ac57345f_5773ed18",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 48
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdaf022e_53c6ee06",
         "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
         "patchSetId": 6
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "uldrenite have the EEPROM for CBI currently, or maybe I change the EEPROM to CBI?",
       "parentUuid": "61891658_2b254dec",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea38a44_ce3c70a4",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-21T22:23:08Z",
+      "side": 1,
+      "message": "Either way, an accurate port count must be available before any of the PD-related drivers (PDC, pdc_power_mgmt, and PPM) get initialized since they rely on port counts to initialize the correct chips and set up various data structures. I don\u0027t think HOOK_INIT runs before that happens.",
+      "parentUuid": "517cd278_1fd58835",
       "range": {
         "startLine": 111,
         "startChar": 0,

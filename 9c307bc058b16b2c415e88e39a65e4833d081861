@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0056338_df824ba3",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-21T22:23:08Z",
+      "side": 1,
+      "message": "This does not seem like a safe assumption to me. The default behavior is to assume two ports, but what if the second doesn\u0027t actually exist and we try accessing it somehow?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "9c307bc058b16b2c415e88e39a65e4833d081861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
