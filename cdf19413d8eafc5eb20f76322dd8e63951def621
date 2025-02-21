@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee6df3c_fb870969",
+        "filename": "zephyr/program/rex/kanix/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-02-21T01:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af230784_0a2920f1",
+      "revId": "cdf19413d8eafc5eb20f76322dd8e63951def621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a4cc1b_e605aa94",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-20T17:43:10Z",
       "side": 1,
       "message": "You can remove this comment. This bug has been closed without implementing Enter_USB as UFP.",
+      "revId": "cdf19413d8eafc5eb20f76322dd8e63951def621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "467eef46_2d256809",
+        "filename": "zephyr/program/rex/kanix/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-02-21T01:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a4cc1b_e605aa94",
       "revId": "cdf19413d8eafc5eb20f76322dd8e63951def621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
