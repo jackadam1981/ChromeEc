@@ -235,6 +235,30 @@
       },
       "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e416a9_c06a363c",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T23:00:00Z",
+      "side": 1,
+      "message": "My mistake - I saw that the binman layout allocates space for the CBI in flash but this is not used on uldrenite.",
+      "parentUuid": "517cd278_1fd58835",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
