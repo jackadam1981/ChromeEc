@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2700e6f6_f856b339",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1145_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-21T14:57:19Z",
+      "side": 1,
+      "message": "`fingerprint_fpc1145_private.h` was meant to keep only things that are needed to work with FPC library properly.\n\nAlso, this test suite was meant to perform testing using fingerprint API and sensor emulator. Unfortunately, your change can\u0027t be tested using that way, so you need to declare `convert_fp_capture_mode_to_fpc_get_image_type()`. I think it should be declared in test you added.\n\nSame applies to FPC1025.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "ecdbec7ea39f8ae0012a229c238c2c869f03729a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
