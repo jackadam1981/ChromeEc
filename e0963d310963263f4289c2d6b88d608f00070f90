@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a43b64_47de9dd3",
+        "filename": "zephyr/program/skywalker/src/hooks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-02-21T02:05:58Z",
+      "side": 1,
+      "message": "Add `HOOK_INIT` together to cover EC booting with AC plugged?",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "e0963d310963263f4289c2d6b88d608f00070f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
