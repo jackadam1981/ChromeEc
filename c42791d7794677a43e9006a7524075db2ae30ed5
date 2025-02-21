@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e33057e_d3d50072",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T01:23:59Z",
+      "side": 1,
+      "message": "Replace all references to `pdc_power_mgmt_get_usb_pd_port_count` with `board_get_usb_pd_port_count` and then you can delete the definition of `pdc_power_mgmt_get_usb_pd_port_count()`.\n\n`pdc_power_mgmt_get_usb_pd_port_count()` does the exact same thing as the default implementation of `board_get_usb_pd_port_count()`.",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 61
+      },
+      "revId": "c42791d7794677a43e9006a7524075db2ae30ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe888da6_1fad96ad",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T01:23:59Z",
+      "side": 1,
+      "message": "You can just delete this function.  The file `common/usb_common.c` already defines the default implementation.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "c42791d7794677a43e9006a7524075db2ae30ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
