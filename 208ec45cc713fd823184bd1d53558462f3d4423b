@@ -22,6 +22,30 @@
       },
       "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c88f1c_9b5d8c31",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-21T09:09:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a00d86_fc4d93bf",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "208ec45cc713fd823184bd1d53558462f3d4423b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
