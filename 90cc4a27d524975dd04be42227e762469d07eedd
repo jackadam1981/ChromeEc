@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8afc316_05d98f18",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T01:49:09Z",
+      "side": 1,
+      "message": "You need to add tests for this file.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 48
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaf022e_53c6ee06",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T01:49:09Z",
+      "side": 1,
+      "message": "Lines 46 and 47 will never run because of the __ASSERT on line 44.   I recommend dropping the __ASSERT.\n\nIn the error path, I recommend returning the default setting of 2 ports.\n\nYou should also add `{}` around every if statement, even if it\u0027s one line.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6319ebc_507f007c",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T01:49:09Z",
+      "side": 1,
+      "message": "Use `LOG_INF` instead `ccprints` throughout this file.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61891658_2b254dec",
+        "filename": "zephyr/program/trulo/uldrenite/src/variant_pd_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-21T01:49:09Z",
+      "side": 1,
+      "message": "The CBI data is store in the EC\u0027s flash.  This comment is not accurate.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "90cc4a27d524975dd04be42227e762469d07eedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
