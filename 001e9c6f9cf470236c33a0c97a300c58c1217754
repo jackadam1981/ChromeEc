@@ -383,6 +383,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb0719cd_8ebfd6c8",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-22T00:13:20Z",
+      "side": 1,
+      "message": "\u003eI was thinking about 0x200AC000 address\n\nThanks for catching that, I\u0027ve corrected to 0x200B0000\n\n\u003eMaybe we are safe to change the code/data split to 320/172 which will allow us to use more memory for data?\n\nI think so, but now that the code/data split is consistent with ECOS helipilot, this sems like an optimization that could be done in a subsequent CL",
+      "parentUuid": "fe0a0b17_a7aecb32",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
