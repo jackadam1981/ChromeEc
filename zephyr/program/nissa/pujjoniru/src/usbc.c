@@ -22,6 +22,21 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+static uint32_t board_id;
+
+/* Compatible with current and previous phases of ppc addresses */
+static void check_ppc_address(void)
+{
+	cbi_get_board_version(&board_id);
+
+	if (board_id <= 1)
+	{
+		ppc_chips[0].i2c_addr_flags = 0x40;
+		ppc_chips[1].i2c_addr_flags = 0x40;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, check_ppc_address, HOOK_PRIO_POST_I2C);
+
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {

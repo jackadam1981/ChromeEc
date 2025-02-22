@@ -326,10 +326,10 @@
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
 
-	ppc_port1: ppc_syv@40 {
+	ppc_port1: ppc_syv@43 {
 		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x40>;
+		reg = <0x43>;
 		frs_en_gpio = <&gpio_usb_c1_frs_en>;
 		irq-gpios = <&gpiok 7 GPIO_ACTIVE_LOW>;
 	};
@@ -348,10 +348,10 @@
 		reg = <0x9>;
 	};
 
-	ppc_port0: ppc_syv@40 {
+	ppc_port0: ppc_syv@43 {
 		compatible = "silergy,syv682x";
 		status = "okay";
-		reg = <0x40>;
+		reg = <0x43>;
 		frs_en_gpio = <&gpio_usb_c0_frs_en>;
 		irq-gpios = <&gpiok 0 GPIO_ACTIVE_LOW>;
 	};
