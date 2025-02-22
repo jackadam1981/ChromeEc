@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08a787c_12ad100e",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-22T01:52:54Z",
+      "side": 1,
+      "message": "might as well add felino, francka, francka-ti while we\u0027re at it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8e920c41_2ea1f6ef",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/firmware_builder.py",
+              "range": {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "    # Fatcat/Felino variants\n"
+            },
+            {
+              "path": "zephyr/firmware_builder.py",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 61,
+                "endChar": 0
+              },
+              "replacement": "    \"felino\",\n    \"francka\",\n    \"francka-ti\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b49bf24a8bb11ae412ae572d58e88e2de64f8199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
