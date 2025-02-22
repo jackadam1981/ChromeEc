@@ -6,6 +6,7 @@
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
+#include "cros_board_info.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
@@ -21,6 +22,23 @@
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+/* Compatible with current and previous phases of ppc addresses */
+static void check_ppc_address(void)
+{
+	uint32_t board_id;
+
+	if (cbi_get_board_version(&board_id) != EC_SUCCESS) {
+		LOG_ERR("Failed to get board version.");
+		return;
+	}
+
+	if (board_id <= 1) {
+		ppc_chips[0].i2c_addr_flags = 0x40;
+		ppc_chips[1].i2c_addr_flags = 0x40;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, check_ppc_address, HOOK_PRIO_POST_I2C);
 
 /* Vconn control for integrated ITE TCPC */
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
