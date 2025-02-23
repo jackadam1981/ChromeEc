@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e960026e_002e8457",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-02-23T23:46:19Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8722113051458245297) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.redrix.hw.fingerprint-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "b731a15833a3aba22ef26c13ac1ed1ebebfb1079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
