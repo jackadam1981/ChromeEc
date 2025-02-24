@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cd5701_94362ba2",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-02-24T19:20:55Z",
+      "side": 1,
+      "message": "When are these functions getting called? Originally they are called inside driver thread, in this case I would suggest them to be called inside `ap_pwrseq_post_event` whenever there is a state transition.\n\nFor consistency, please also replace parameters `new` \u0026 `cur` with `entry` \u0026 `exit`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bc6029_78c3a03a",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-02-24T19:20:55Z",
+      "side": 1,
+      "message": "```\nif (cur_state !\u003d new_state) {\n        ap_pwrseq_emul_entry_callback(dev, new_state, cur_state);\n\n        ap_pwrseq_emul_exit_callback(dev, new_state, cur_state);\n} else {\n        return;\n}\n```",
+      "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
