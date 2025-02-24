@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8be93c9_00a8510d",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-24T19:26:32Z",
+      "side": 1,
+      "message": "These are to emulate callbacks they are called by tests to simulate a ap power callback with the specific states. I will update naming to entry and exit",
+      "parentUuid": "01cd5701_94362ba2",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6bc6029_78c3a03a",
         "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2025-02-24T19:20:55Z",
       "side": 1,
       "message": "```\nif (cur_state !\u003d new_state) {\n        ap_pwrseq_emul_entry_callback(dev, new_state, cur_state);\n\n        ap_pwrseq_emul_exit_callback(dev, new_state, cur_state);\n} else {\n        return;\n}\n```",
+      "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bfda00_50fbc0c0",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-24T19:26:32Z",
+      "side": 1,
+      "message": "I can add the call here but the point of them being exposed is so a test can just call them to simulate a callback instead of implementing the entire AP flow",
+      "parentUuid": "f6bc6029_78c3a03a",
       "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
