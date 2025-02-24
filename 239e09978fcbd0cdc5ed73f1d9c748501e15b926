@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab59627_9a7b10ff",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-24T20:54:36Z",
+      "side": 1,
+      "message": "I left these as new and curr since that is what the caller has them as",
+      "parentUuid": "d8be93c9_00a8510d",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6bc6029_78c3a03a",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I can add the call here but the point of them being exposed is so a test can just call them to simulate a callback instead of implementing the entire AP flow",
       "parentUuid": "f6bc6029_78c3a03a",
+      "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a0b87e1_e6217836",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-24T20:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34bfda00_50fbc0c0",
       "revId": "239e09978fcbd0cdc5ed73f1d9c748501e15b926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
