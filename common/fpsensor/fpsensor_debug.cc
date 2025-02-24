@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_detect.h"
@@ -112,10 +113,22 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 
 static int command_fpcapture(int argc, const char **argv)
 {
+	ccprints(
+		"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+		__LINE__, __func__, global_context.sensor_mode,
+		FP_CAPTURE_TYPE(global_context.sensor_mode));
+	cflush();
+
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 
 	int capture_type = FP_CAPTURE_SIMPLE_IMAGE;
+
+	ccprints(
+		"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+		__LINE__, __func__, global_context.sensor_mode,
+		FP_CAPTURE_TYPE(global_context.sensor_mode));
+	cflush();
 
 	if (argc >= 2) {
 		char *e;
@@ -130,9 +143,20 @@ static int command_fpcapture(int argc, const char **argv)
 			       FP_MODE_CAPTURE_TYPE_MASK);
 
 	const enum ec_error_list rc = fp_console_action(mode);
+	ccprints(
+		"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+		__LINE__, __func__, global_context.sensor_mode,
+		FP_CAPTURE_TYPE(global_context.sensor_mode));
+	cflush();
+
 	if (rc == EC_SUCCESS)
 		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
 
+	ccprints(
+		"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+		__LINE__, __func__, global_context.sensor_mode,
+		FP_CAPTURE_TYPE(global_context.sensor_mode));
+	cflush();
 	return rc;
 }
 DECLARE_CONSOLE_COMMAND(fpcapture, command_fpcapture, nullptr,

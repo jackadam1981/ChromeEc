@@ -227,6 +227,11 @@ static void fp_process_finger(void)
 	timestamp_t t0 = get_time();
 
 	CPRINTS("Capturing ...");
+	ccprints(
+		"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+		__LINE__, __func__, global_context.sensor_mode,
+		FP_CAPTURE_TYPE(global_context.sensor_mode));
+	cflush();
 	int res = fp_acquire_image_with_mode(
 		fp_buffer, FP_CAPTURE_TYPE(global_context.sensor_mode));
 	capture_time_us = time_since32(t0);
@@ -251,7 +256,17 @@ static void fp_process_finger(void)
 		else if (global_context.sensor_mode & FP_MODE_MATCH)
 			evt = fp_process_match();
 
+		ccprints(
+			"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+			__LINE__, __func__, global_context.sensor_mode,
+			FP_CAPTURE_TYPE(global_context.sensor_mode));
+		cflush();
 		global_context.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
+		ccprints(
+			"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+			__LINE__, __func__, global_context.sensor_mode,
+			FP_CAPTURE_TYPE(global_context.sensor_mode));
+		cflush();
 		overall_time_us = time_since32(overall_t0);
 		send_mkbp_event(evt);
 	} else {
@@ -304,9 +319,23 @@ extern "C" void fp_task(void)
 						 FP_MODE_ENROLL_SESSION;
 			}
 			if (!is_finger_needed(mode)) {
+				ccprints(
+					"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+					__LINE__, __func__,
+					global_context.sensor_mode,
+					FP_CAPTURE_TYPE(
+						global_context.sensor_mode));
+				cflush();
 				fp_acquire_image_with_mode(
 					fp_buffer, FP_CAPTURE_TYPE(mode));
 				global_context.sensor_mode &= ~FP_MODE_CAPTURE;
+				ccprints(
+					"The mode @ line %d in func %s is: %d.\n The capture type is: %d",
+					__LINE__, __func__,
+					global_context.sensor_mode,
+					FP_CAPTURE_TYPE(
+						global_context.sensor_mode));
+				cflush();
 				send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
 				continue;
 			} else if (global_context.sensor_mode &
