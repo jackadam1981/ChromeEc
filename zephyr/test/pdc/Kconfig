@@ -20,6 +20,14 @@ config TEST_SUITE_PDC_POLICY
 config TEST_SUITE_PDC_POLICY_DEAD_BATTERY
 	bool "Enable PDC Dead Battery policy tests"
 
+config TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS
+	select TEST_SUITE_PDC_POLICY_DEAD_BATTERY
+	bool "Validate dead battery with two connected chargers"
+
+config TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY
+	select TEST_SUITE_PDC_POLICY_DEAD_BATTERY
+	bool "Validate dead battery with AC connected only, no battery present"
+
 config TEST_SUITE_PDC_POLICY_CLAMPED
 	bool "Enable PDC policy tests with clamped power"
 
