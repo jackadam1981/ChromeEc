@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "447062f2_132db198",
+        "filename": "zephyr/include/drivers/modular_aic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-24T18:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a12829a0_40c081eb",
+      "revId": "8df7a129331d8b1a160ed06122b2afcfa0a2f667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c1d24f_2a790e4d",
@@ -73,6 +91,30 @@
           ]
         }
       ],
+      "revId": "8df7a129331d8b1a160ed06122b2afcfa0a2f667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fc9af1_b7e2d2da",
+        "filename": "zephyr/include/drivers/modular_aic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-24T18:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c1d24f_2a790e4d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
       "revId": "8df7a129331d8b1a160ed06122b2afcfa0a2f667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
