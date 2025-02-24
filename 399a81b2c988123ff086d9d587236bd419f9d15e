@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f0a20a5_f5cf1833",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-24T21:59:46Z",
+      "side": 1,
+      "message": "From where would we register the callback? Is there a hook call we can do from board code that would run before any of this PD initialization?",
+      "parentUuid": "3d6d29fe_e105954e",
+      "range": {
+        "startLine": 727,
+        "startChar": 21,
+        "endLine": 727,
+        "endChar": 43
+      },
+      "revId": "399a81b2c988123ff086d9d587236bd419f9d15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35228db8_df94ab66",
         "filename": "zephyr/program/brox/usb_typec.dtsi",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-20T23:45:11Z",
       "side": 1,
       "message": "Should the ppm-driver be the parent node?\n```\nppm-driver {\n    compatible \u003d \"ucsi-ppm\";\n    #adress-cells \u003d \u003c1\u003e;\n    #size-cells \u003d \u003c0\u003e;\n    port0@0 { ... };\n    port1@1 { ... };\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "399a81b2c988123ff086d9d587236bd419f9d15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f785c0_d66d5ef6",
+        "filename": "zephyr/program/brox/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-24T21:59:46Z",
+      "side": 1,
+      "message": "Possibly, but I\u0027d like to save thatthought until we do PDC devicetree refactoring.",
+      "parentUuid": "35228db8_df94ab66",
       "range": {
         "startLine": 28,
         "startChar": 0,
