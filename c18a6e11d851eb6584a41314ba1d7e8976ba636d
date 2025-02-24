@@ -34,6 +34,24 @@
       "parentUuid": "fb1a33ad_4615b0bb",
       "revId": "c18a6e11d851eb6584a41314ba1d7e8976ba636d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce25bb70_0aa79cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-24T22:10:47Z",
+      "side": 1,
+      "message": "\u003e This should be fine as long as biod using the new constants against a version with the old constants remain compatible. (IIRC that\u0027s how it was set up, but just double-checking.)\n\nI\u0027ve checked that and it works. I\u0027ll double check the signed binary with latest ChromeOS tomorrow.\n\n\u003e I believe this will be resolved with a translation to the elan domain.\n\nPlease keep in mind that ELAN is using our enum. There is no \"ELAN domain\", but I agree ELAN should provide true API to their library (functions and types the functions accept) and *never* use our types, variables or functions.",
+      "parentUuid": "854e9485_5cb95da0",
+      "revId": "c18a6e11d851eb6584a41314ba1d7e8976ba636d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
