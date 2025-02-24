@@ -16,6 +16,24 @@
       "message": "```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      13:43:40: WARNING: zephyr/drivers/usbc/pdc_tps6699x.c: needs formatting\n      13:43:51: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/drivers/usbc/pdc_tps6699x.c\n```",
       "revId": "ce8d01dabe8b84529186b34975c8ccc57a857fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d1d4b9_a4413ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2025-02-24T22:13:37Z",
+      "side": 1,
+      "message": "Its corrected with latest patch uploaded.",
+      "parentUuid": "78fc77c3_a07ce08c",
+      "revId": "ce8d01dabe8b84529186b34975c8ccc57a857fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
