@@ -48,6 +48,10 @@
 #error "fpsensor code should not be in RO image."
 #endif
 
+uint32_t get_capture_type(){
+	return FP_CAPTURE_TYPE(global_context.sensor_mode);
+}
+
 /* Ready to encrypt a template. */
 static timestamp_t encryption_deadline;
 

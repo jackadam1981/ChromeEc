@@ -19,6 +19,8 @@
 extern "C" {
 #endif
 
+uint32_t get_capture_type(void);
+
 #ifndef SPI_FP_DEVICE
 #define SPI_FP_DEVICE (&spi_devices[0])
 #endif
