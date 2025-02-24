@@ -4,9 +4,7 @@
  */
 
 #include "common.h"
-#include "fpc_bep_matcher.h"
 #include "fpc_bep_sensor.h"
-#include "fpc_bio_algorithm.h"
 #include "fpc_private.h"
 #include "fpc_sensor.h"
 #include "fpsensor/fpsensor.h"
@@ -22,6 +20,14 @@
 #include <stddef.h>
 #include <stdint.h>
 
+extern "C" {
+#include "fpc_bep_matcher.h"
+#include "fpc_bio_algorithm.h"
+}
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 static uint8_t
 	enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4) = { 0 };
 
@@ -382,3 +388,7 @@ void fp_configure_detect(void)
 {
 	return fp_sensor_configure_detect();
 }
+
+#ifdef __cplusplus
+}
+#endif

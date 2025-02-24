@@ -10,6 +10,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * An opaque pointer representing an image (scan).
  */
@@ -139,5 +143,9 @@ bio_enrollment_get_percent_complete(bio_enrollment_t enrollment);
  */
 __staticlib int bio_enrollment_finish(bio_enrollment_t enrollment,
 				      bio_template_t *templ);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPC_BIO_ALGORITHM_H */
