@@ -42,8 +42,14 @@ if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY)
 	target_sources(app PRIVATE src/pdc_policy/sink_policy.c)
 endif()
 
-if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY_DEAD_BATTERY)
+if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS)
 	target_sources(app PRIVATE src/pdc_policy/dead_battery_policy.c)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_two_chargers.c)
+endif()
+
+if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_policy.c)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_ac_only.c)
 endif()
 
 if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY_CLAMPED)
