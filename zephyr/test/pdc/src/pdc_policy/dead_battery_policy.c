@@ -202,8 +202,11 @@ static void *dead_battery_policy_setup(void)
 
 static void dead_battery_policy_before(void *f)
 {
-	struct dead_battery_policy_fixture *fixture = f;
-
+	/* Drivers cannot be deinitialized, so we can only have one test per
+	 * binary to validate the driver initialization flow for dead battery.*/
+	zassert_equal(
+		ZTEST_TEST_COUNT, 1,
+		"Only one test allowed per binary due to validating driver initialization");
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(sniff_pdc_set_sink_path);
 	RESET_FAKE(sniff_pdc_set_rdo);
@@ -214,18 +217,20 @@ static void dead_battery_policy_before(void *f)
 	sniff_pdc_set_rdo_fake.custom_fake = custom_fake_pdc_set_rdo;
 
 	sink_path_en_mask = BIT_MASK(CONFIG_USB_PD_PORT_MAX_COUNT);
-	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		configure_dead_battery(&fixture->pdc[port]);
-	}
 }
 
 ZTEST_SUITE(dead_battery_policy, NULL, dead_battery_policy_setup,
 	    dead_battery_policy_before, NULL, NULL);
 
-ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy)
+#ifdef CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS
+ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy_two_chargers)
 {
 	union connector_status_t connector_status;
 	uint32_t rdo;
+
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		configure_dead_battery(&fixture->pdc[port]);
+	}
 
 	/* PDC APIs provide unexpected behavior before driver init */
 	pdc_driver_init();
@@ -265,3 +270,23 @@ ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy)
 		emul_pdc_get_rdo(fixture->pdc[TEST_USBC_PORT1].emul_pdc, &rdo));
 	zassert_equal(RDO_POS(rdo), 3);
 }
+#endif /* CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS */
+
+#ifdef CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY
+/* Validate scenario where no battery is present and running on AC
+ * only. */
+ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy_ac_only)
+{
+	const struct pdc_fixture *pdc = &fixture->pdc[0];
+
+	configure_dead_battery(pdc);
+
+	verify_dead_battery_config(pdc->emul_pdc);
+
+	/* PDC APIs provide unexpected behavior before driver init */
+	pdc_driver_init();
+
+	/* TODO(b/397148920) - do not call SET_RDO on PDC if currently
+	 * sinking from that port and no battery is present */
+}
+#endif /* CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY */
