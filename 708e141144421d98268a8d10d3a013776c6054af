@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f1b949_11e2766f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "Review still in progress.",
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e9d4d77_c1018976",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "This updates the shared `snk_path_en_mask` evertime this is called.  What about making `snk_path_en_mask` atomic and always modifying it everytime `port.sink_path-en` changes?\n\nAlso, in keeping with some other cleanup you should add a new variable `sink_path_status` that tracks the `status-\u003esink_path_status` returned by the PDC in the connector status message.\n\n`sink_path_en` should only be used as temporary storage when queueing the SET_SINK_PATH command.\n\nThis should be done as a separate CL.",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2023,
+        "endChar": 0
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52be261d_0dab071f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "This wrapper no longer seems necessary.",
+      "range": {
+        "startLine": 2027,
+        "startChar": 0,
+        "endLine": 2027,
+        "endChar": 62
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6652265_07aca62f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "Nit - `pdc_is_one_or_fewer_snk_path_en` or `pdc_is_at_most_one_snk_path_en`",
+      "range": {
+        "startLine": 2086,
+        "startChar": 12,
+        "endLine": 2086,
+        "endChar": 42
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91bac0dd_5eb20f1d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2136,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "This should only be called from the `SNK_ATTACHED_EVALUATE_PDOS` sub-state.  It\u0027s clearer to use that label directly instead of reading from `snk_attached_local_state`.",
+      "range": {
+        "startLine": 2134,
+        "startChar": 0,
+        "endLine": 2136,
+        "endChar": 0
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4096f72b_3b241d27",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "Non-blocking comment for now - if the PDC is in dead battery mode, the selected \"best\" PDO is likely not the same as the PDO that was negotiated by the PDC.\n\nsee b/397148920\n\nThere could be implications here where negotiated PDO isn\u0027t sufficient to boot the AP, but we\u0027ve told the charger manager this port is operating with the \"best\" PDO.",
+      "range": {
+        "startLine": 2151,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 49
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed61a80_0a62a418",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "Should be `charge_manager_get_active_charge_port()`.  `charge_manager_get_selected_charge_port()` does a new evaluation of the \"best port\".",
+      "range": {
+        "startLine": 2152,
+        "startChar": 17,
+        "endLine": 2152,
+        "endChar": 56
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fec8ec3_a97bbd58",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "Reflow these if\u0027s with direct returns to simplify the logic.",
+      "range": {
+        "startLine": 2154,
+        "startChar": 0,
+        "endLine": 2154,
+        "endChar": 66
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d4dcc8_e66169ec",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "See above - just set `next_state \u003d SNK_ATTACHED_EVALUATE_PDOS;` directly with a comment as to why we\u0027re staying in the same state.",
+      "range": {
+        "startLine": 2178,
+        "startChar": 0,
+        "endLine": 2178,
+        "endChar": 26
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7efb7f02_dc86e40d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T16:59:43Z",
+      "side": 1,
+      "message": "`next_state \u003d SNK_ATTACHED_EVALUATE_PDOS;`",
+      "range": {
+        "startLine": 2198,
+        "startChar": 2,
+        "endLine": 2198,
+        "endChar": 25
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
