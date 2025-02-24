@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb2ee73_23bdad21",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-24T23:31:18Z",
+      "side": 1,
+      "message": "Don\u0027t use the global variables in this file. Instead, pass the `sensor_mode` as an argument to this function.",
+      "range": {
+        "startLine": 276,
+        "startChar": 36,
+        "endLine": 276,
+        "endChar": 61
+      },
+      "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
