@@ -26,7 +26,6 @@ def _ec_deps_impl(module_ctx):
 
     return module_ctx.extension_metadata(
         root_module_direct_deps = direct_deps,
-        root_module_direct_dev_deps = [],
         reproducible = True,
     )
 
