@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cee9dfa_6a5e111f",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-24T21:53:07Z",
+      "side": 1,
+      "message": "These static routines appear to be exact duplicates of the real implementation.  This file doesn\u0027t really seem like an emulator.  \n\nIf someone makes a change to the real `ap_pwrseq.c` API contract, but doesn\u0027t change API signature, this emulator becomes out of date and verifies the wrong behavior.\n\nWhy can\u0027t the actual `ap_pwrseq.c` be compiled into the test?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 75
+      },
+      "revId": "99858c0d344d542bd93f54e8fa192a2547332e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
