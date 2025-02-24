@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+
 #if defined(CONFIG_FP_SENSOR_FPC1025)
 #include "fpc1025_private.h"
 #elif defined(CONFIG_FP_SENSOR_FPC1035)

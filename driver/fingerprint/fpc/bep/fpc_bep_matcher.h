@@ -8,6 +8,11 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*
  * Constant value for the enrollment data size
  *
@@ -32,4 +37,7 @@
 /* Max number of templates stored / matched against */
 #define FP_MAX_FINGER_COUNT_FPC (5)
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPC_BEP_FPC_BEP_MATCHER_H_ */

@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "fpsensor/fpsensor_state.h"
+
+
+extern "C" {
 #include "common.h"
 #include "fpc_bep_matcher.h"
 #include "fpc_bep_sensor.h"
@@ -11,7 +15,6 @@
 #include "fpc_sensor.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"
-#include "fpsensor/fpsensor_state.h"
 #include "gpio.h"
 #include "spi.h"
 #include "system.h"
@@ -21,7 +24,12 @@
 #include <errno.h>
 #include <stddef.h>
 #include <stdint.h>
+}
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 static uint8_t
 	enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE_FPC] __aligned(4) = { 0 };
 
@@ -382,3 +390,7 @@ void fp_configure_detect(void)
 {
 	return fp_sensor_configure_detect();
 }
+
+#ifdef __cplusplus
+}
+#endif
