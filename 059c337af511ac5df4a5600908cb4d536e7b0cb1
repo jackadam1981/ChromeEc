@@ -33,6 +33,23 @@
       "message": "Duplicate of https://crrev.com/c/6219541 but we can go with this CL to get it in faster.\n\nThe PDC_DEFINE macro doesn\u0027t collide, only the stack symbol",
       "revId": "059c337af511ac5df4a5600908cb4d536e7b0cb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4679ed6b_a39ae0c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-24T18:38:21Z",
+      "side": 1,
+      "message": "Please properly format your commits. Do not skip the `repo` pre-upload checks.\n\n```\ncros format zephyr/drivers/usbc/pdc_rts54xx.c zephyr/drivers/usbc/pdc_tps6699x.c\n```",
+      "revId": "059c337af511ac5df4a5600908cb4d536e7b0cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
