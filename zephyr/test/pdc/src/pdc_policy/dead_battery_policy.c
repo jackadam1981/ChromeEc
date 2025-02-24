@@ -6,17 +6,15 @@
  */
 
 #include "chipset.h"
+#include "dead_battery_policy.h"
 #include "emul/emul_pdc.h"
 #include "test/util.h"
 #include "timer.h"
-#include "usbc/pdc_power_mgmt.h"
-#include "usbc/utils.h"
 #include "zephyr/sys/util.h"
 #include "zephyr/sys/util_macro.h"
 
 #include <stdbool.h>
 
-#include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/init.h>
@@ -35,41 +33,13 @@ BUILD_ASSERT(
 	CONFIG_USB_PD_PORT_MAX_COUNT == 2,
 	"PDC dead battery policy test suite must supply exactly 2 PDC ports");
 
-#define PDC_TEST_TIMEOUT 2000
-
-/* TODO: b/343760437 - Once the emulator can detect the PDC threads are idle,
- * remove the sleep delay to let the policy code run.
- */
-#define PDC_POLICY_DELAY_MS 500
-#define PDC_NODE_PORT0 DT_NODELABEL(pdc_emul1)
-#define PDC_NODE_PORT1 DT_NODELABEL(pdc_emul2)
-
-#define USBC_NODE0 DT_NODELABEL(usbc0)
-#define USBC_NODE1 DT_NODELABEL(usbc1)
-
-#define TEST_USBC_PORT0 USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_NODE_PORT0)
-#define TEST_USBC_PORT1 USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_NODE_PORT1)
-
-#define IS_ONE_BIT_SET IS_POWER_OF_TWO
-
-static void clear_partner_pdos(const struct emul *e, enum pdo_type_t type)
+void clear_partner_pdos(const struct emul *e, enum pdo_type_t type)
 {
 	uint32_t clear_pdos[PDO_MAX_OBJECTS] = { 0 };
 
 	emul_pdc_set_pdos(e, type, PDO_OFFSET_0, ARRAY_SIZE(clear_pdos),
 			  PARTNER_PDO, clear_pdos);
 }
-
-struct pdc_fixture {
-	const struct device *dev;
-	const struct emul *emul_pdc;
-	uint32_t pdos[PDO_MAX_OBJECTS];
-	uint8_t port;
-};
-
-struct dead_battery_policy_fixture {
-	struct pdc_fixture pdc[CONFIG_USB_PD_PORT_MAX_COUNT];
-};
 
 static enum chipset_state_mask fake_chipset_state = CHIPSET_STATE_ON;
 
@@ -146,7 +116,7 @@ static int custom_fake_pdc_set_rdo(const struct device *dev, uint32_t rdo)
 	return pdc_set_rdo(dev, rdo);
 }
 
-static void pdc_driver_init(void)
+void pdc_driver_init(void)
 {
 	const struct device *devs[] = {
 		DEVICE_DT_GET(PDC_NODE_PORT0), /* PDC Drivers */
@@ -163,7 +133,7 @@ static void pdc_driver_init(void)
 	pdc_subsys_start();
 }
 
-static int configure_dead_battery(const struct pdc_fixture *pdc)
+int configure_dead_battery(const struct pdc_fixture *pdc)
 {
 	union connector_status_t cs = { 0 };
 
@@ -182,7 +152,7 @@ static int configure_dead_battery(const struct pdc_fixture *pdc)
 }
 
 /* Verify port is capped to 5v. */
-static void verify_dead_battery_config(const struct emul *e)
+void verify_dead_battery_config(const struct emul *e)
 {
 	uint32_t rdo, pdo;
 
@@ -204,8 +174,11 @@ static void *dead_battery_policy_setup(void)
 
 static void dead_battery_policy_before(void *f)
 {
-	struct dead_battery_policy_fixture *fixture = f;
-
+	/* Drivers cannot be deinitialized, so we can only have one test per
+	 * binary to validate the driver initialization flow for dead battery.*/
+	zassert_equal(
+		ZTEST_TEST_COUNT, 1,
+		"Only one test allowed per binary due to validating driver initialization");
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(sniff_pdc_set_sink_path);
 	RESET_FAKE(sniff_pdc_set_rdo);
@@ -216,54 +189,7 @@ static void dead_battery_policy_before(void *f)
 	sniff_pdc_set_rdo_fake.custom_fake = custom_fake_pdc_set_rdo;
 
 	sink_path_en_mask = BIT_MASK(CONFIG_USB_PD_PORT_MAX_COUNT);
-	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		configure_dead_battery(&fixture->pdc[port]);
-	}
 }
 
 ZTEST_SUITE(dead_battery_policy, NULL, dead_battery_policy_setup,
 	    dead_battery_policy_before, NULL, NULL);
-
-ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy)
-{
-	union connector_status_t connector_status;
-	uint32_t rdo;
-
-	/* PDC APIs provide unexpected behavior before driver init */
-	pdc_driver_init();
-
-	/* Verify each port is configured as dead battery */
-	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		verify_dead_battery_config(fixture->pdc[port].emul_pdc);
-	}
-
-	/* Allow initialization to occur, verification of dead battery RDO
-	 * selection comes from custom_fake_pdc_set_rdo */
-	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		pdc_power_mgmt_wait_for_sync(port, -1);
-	}
-
-	/* Verify after initialization both ports are connected as sink but
-	 * only one has sink path enabled */
-	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		zassert_ok(pdc_power_mgmt_get_connector_status(
-			port, &connector_status));
-
-		zassert_equal(connector_status.connect_status, 1, "port=%d",
-			      port);
-		zassert_equal(connector_status.power_direction, 0, "port=%d",
-			      port);
-		zassert_equal(connector_status.sink_path_status,
-			      (port ? 1 : 0));
-
-		/* Verify dead battery is cleared */
-		zassert_false(
-			emul_pdc_get_dead_battery(fixture->pdc[port].emul_pdc),
-			"port=%d", port);
-	}
-
-	/* Verify correct RDO is selected on PORT1 */
-	zassert_ok(
-		emul_pdc_get_rdo(fixture->pdc[TEST_USBC_PORT1].emul_pdc, &rdo));
-	zassert_equal(RDO_POS(rdo), 3);
-}
