@@ -103,15 +103,15 @@ enum fingerprint_capture_type {
 	 */
 	FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT = 0,
 	/** Simple raw image capture (produces width x height x bpp bits). */
-	FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE = 4,
+	FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE = 1,
 	/** Self test pattern (e.g. checkerboard). */
-	FINGERPRINT_CAPTURE_TYPE_PATTERN0 = 8,
+	FINGERPRINT_CAPTURE_TYPE_PATTERN0 = 2,
 	/** Self test pattern (e.g. inverted checkerboard). */
-	FINGERPRINT_CAPTURE_TYPE_PATTERN1 = 12,
+	FINGERPRINT_CAPTURE_TYPE_PATTERN1 = 3,
 	/** Capture for quality test with fixed contrast. */
-	FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST = 16,
+	FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST = 4,
 	/** Capture for pixel reset value test. */
-	FINGERPRINT_CAPTURE_TYPE_RESET_TEST = 20,
+	FINGERPRINT_CAPTURE_TYPE_RESET_TEST = 5,
 	/** End of enum. */
 	FINGERPRINT_CAPTURE_TYPE_MAX,
 };
