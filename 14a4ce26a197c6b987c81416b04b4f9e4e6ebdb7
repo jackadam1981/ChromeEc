@@ -16,6 +16,46 @@
       "message": "@rcy@google.com would you mind taking a look here? This is the re-tuned fan table for endeavour devices",
       "revId": "14a4ce26a197c6b987c81416b04b4f9e4e6ebdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c3a2a8_3525529a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2025-02-25T16:24:08Z",
+      "side": 1,
+      "message": "The practical effect of this change will be to increase fanning at a lower temperature. We previously spun the fans slower at lower temperatures to avoid generating as much fan noise, but given that the endeavour board overheats at a higher rate than other boards, it makes sense to do this.",
+      "revId": "14a4ce26a197c6b987c81416b04b4f9e4e6ebdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572616bf_6c3a713d",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2025-02-25T16:24:08Z",
+      "side": 1,
+      "message": "Since this board uses `temp_ratio_to_rpm_hysteresis`, there is no need for the `.rpm \u003d 0` entry. You can delete these lines.\n```suggestion\n```",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 14
+      },
+      "revId": "14a4ce26a197c6b987c81416b04b4f9e4e6ebdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
