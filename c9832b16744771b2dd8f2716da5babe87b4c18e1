@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466d5028_ae43f3dd",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 52
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "Here I would override `flash0` and `sram0` nodes with 320/172 (or 188?) code/data split.\n\nThe comment should include the information that we change the split for helipilot because the size of EC_RW section was set to 320kB in RO due to a rounding bug.",
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40efd394_c3168048",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "`CONFIG_WATCHDOG` is enabled in `zephyr/program/fpmcu/prj.conf`, no need to enable it here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9700fdc_c7fc31a5",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "This is not neccessary because it\u0027s automatically enabled if the node that `zephyr,shell-uart` points to is enabled.\n\n```\nDT_CHOSEN_Z_SHELL_UART :\u003d zephyr,shell-uart\n\nconfig SHELL_BACKEND_SERIAL\n        bool \"Serial backend\"\n        default \"$(dt_chosen_enabled,$(DT_CHOSEN_Z_SHELL_UART))\"\n        select SERIAL\n        select RING_BUFFER\n        help\n          Enable serial backend.\n```\n\n`CONFIG_SHELL_BACKEND_SERIAL` requires dedicated serial, so enabling that without enabled uart node doesn\u0027t make sense really.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fd7dca_e7ce5239",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "Why is that necessary?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e776c5e2_12a5deb9",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "What about\n- `CONFIG_CROS_EC_RAM_BASE`\n- `CONFIG_CROS_EC_DATA_RAM_SIZE`\n- `CONFIG_CROS_EC_RAM_SIZE`\n- `CONFIG_CROS_EC_RO_SIZE`\n\nI think these also need to be set, because we changed the defaults from `zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9`\n\nPlease add a comment that these values must be kept in sync with `flash0` and `sram0` nodes.\n\nIdeally we should fix `zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9` to take values from `sram0` and `flash0` nodes, but that\u0027s a different story, not for this CL.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf08efd7_94757745",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "Is this necessary to avoid double initialization when `CONFIG_EC_HOST_CMD_INITIALIZE_AT_BOOT` is enabled? If that\u0027s the case I would put `fp_transport_init()` and `SYS_INIT` from line 60 under one `#ifndef CONFIG_EC_HOST_CMD_INITIALIZE_AT_BOOT`\n\n@dawidn@google.com what do you think about it?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 48
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

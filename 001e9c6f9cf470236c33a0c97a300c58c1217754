@@ -407,6 +407,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "354fc144_2c914f76",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-25T17:11:36Z",
+      "side": 1,
+      "message": "\u003e I think so, but now that the code/data split is consistent with ECOS helipilot\n\nNot really. Now we tell zephyr that it has 352kB for code.\n\nSince the 352/156 split was the initial choice for helipilot, I would leave the split here and override it once again in `helipilot.dts`.\n\nI would also change the `Update program/data memory size` comments to the following\n\n```\n           ┌──────────────┐           \n           │   Reserved   │           \n           │     4KB      │           \n           ├──────────────┤0x200D7000 \n           │              │           \n           │              │           \n           │   Data RAM   │           \n           │     156KB    │           \n           │              │           \n           │              │           \n 0x100B0000├──────────────┤0x200B0000 \n           │              │           \n           │              │           \n           │              │           \n           │              │           \n           │   Code RAM   │           \n           │     352KB    │           \n           │              │           \n           │              │           \n           │              │           \n           │              │           \n           │              │           \n 0x10058000└──────────────┘           \n\n```",
+      "parentUuid": "bb0719cd_8ebfd6c8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
