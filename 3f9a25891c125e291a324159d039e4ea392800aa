@@ -34,6 +34,24 @@
       "parentUuid": "da1eff2c_0356f55e",
       "revId": "3f9a25891c125e291a324159d039e4ea392800aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3619b0_393d487d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-02-25T19:27:29Z",
+      "side": 1,
+      "message": "We prefer not to set `LOW_COVERAGE_REASON` unless testing is technically infeasible.\n\nStructurally, I think the test will probably be similar to our [basic PD charging tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c;l\u003d123;drc\u003dc1b39d008cf6aa8ed53780c5b4ff1bd55951d1b4). (That link happens to be to a test specific to current limits, but the setup, before, and after functions apply to all the test cases in that file.)\n\nTo exercise this branch, you\u0027ll need to attach a source with a 5V/0A PDO, and the easiest way to do that might be to add a new test fixture with new setup/before/after, but those functions would be very similar to the existing functions. You may also need to add `CONFIG_USB_CHARGER` to a test build config, if it isn\u0027t there already. Regardless, I suspect that whatever new test you come up with will be almost entirely copy-pasted from other tests with a few new lines to check that the current limit is 0.\n\nThere more info on the test structure generally at https://docs.zephyrproject.org/latest/develop/test/ztest.html.",
+      "parentUuid": "e6b46f12_615468d3",
+      "revId": "3f9a25891c125e291a324159d039e4ea392800aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
