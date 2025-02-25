@@ -38,6 +38,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cde291f9_cdf5bfe1",
+        "filename": "zephyr/program/corsola/include/ite_hook.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-25T03:29:54Z",
+      "side": 1,
+      "message": "Remove this line\nAnd you need to include common.h for `__override_proto`",
+      "fixSuggestions": [
+        {
+          "fixId": "326d5a91_1fd5672d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/corsola/include/ite_hook.h",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 12,
+                "endChar": 0
+              },
+              "replacement": "#include \"common.h\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bb644fc_da8481aa",
         "filename": "zephyr/program/corsola/veluza/src/temp.c",
         "patchSetId": 1
