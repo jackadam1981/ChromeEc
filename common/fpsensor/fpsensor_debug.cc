@@ -63,13 +63,13 @@
  */
 static void upload_pgm_image(uint8_t *frame)
 {
-	uint8_t *ptr = frame;
+	uint16_t *ptr = (uint16_t *)frame;
 
 	/* fake Z-modem ZRQINIT signature */
 	CPRINTF("#IGNORE for ZModem\r**\030B00");
 	crec_msleep(2000); /* let the download program start */
-	/* Print 8-bpp PGM ASCII header */
-	CPRINTF("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	/* Print 16-bpp PGM ASCII header */
+	CPRINTF("P2\n%d %d\n65535\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
 
 	for (int y = 0; y < FP_SENSOR_RES_Y; y++) {
 		watchdog_reload();
