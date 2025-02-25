@@ -129,3 +129,7 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 {
 	return EC_RES_INVALID_PARAM;
 }
+
+__override void board_rt9490_enable_adc(void)
+{
+}
