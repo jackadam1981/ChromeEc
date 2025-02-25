@@ -425,7 +425,7 @@ static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 	auto *r = static_cast<ec_response_fp_info *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info(r) < 0)
+	if (fp_sensor_get_info(r, global_context.sensor_mode) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
 
