@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42df8c40_d5470b88",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Ideally, I\u0027d like one source of truth of this. The `sink_path_en` is modified in 7 places within this file, with queuing the command in 6 of these instances.  I can create a helper function to update the `snk_path_en_mask` and `sink_path_en`.  \n\nI can also opt to not use the mask and return a count, I found the mask mainly helpful for debug logging purposes.",
+      "parentUuid": "9e9d4d77_c1018976",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2023,
+        "endChar": 0
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52be261d_0dab071f",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 10
@@ -54,6 +78,30 @@
       "writtenOn": "2025-02-24T16:59:43Z",
       "side": 1,
       "message": "This wrapper no longer seems necessary.",
+      "range": {
+        "startLine": 2027,
+        "startChar": 0,
+        "endLine": 2027,
+        "endChar": 62
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3867514_fd387614",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52be261d_0dab071f",
       "range": {
         "startLine": 2027,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f12285d_50f829d5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6652265_07aca62f",
+      "range": {
+        "startLine": 2086,
+        "startChar": 12,
+        "endLine": 2086,
+        "endChar": 42
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91bac0dd_5eb20f1d",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-02-24T16:59:43Z",
       "side": 1,
       "message": "This should only be called from the `SNK_ATTACHED_EVALUATE_PDOS` sub-state.  It\u0027s clearer to use that label directly instead of reading from `snk_attached_local_state`.",
+      "range": {
+        "startLine": 2134,
+        "startChar": 0,
+        "endLine": 2136,
+        "endChar": 0
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfdd2be_e754c0de",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2136,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91bac0dd_5eb20f1d",
       "range": {
         "startLine": 2134,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54771ea_e0502ae7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4096f72b_3b241d27",
+      "range": {
+        "startLine": 2151,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 49
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ed61a80_0a62a418",
@@ -146,6 +266,30 @@
       "writtenOn": "2025-02-24T16:59:43Z",
       "side": 1,
       "message": "Should be `charge_manager_get_active_charge_port()`.  `charge_manager_get_selected_charge_port()` does a new evaluation of the \"best port\".",
+      "range": {
+        "startLine": 2152,
+        "startChar": 17,
+        "endLine": 2152,
+        "endChar": 56
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561891f3_b729c7ce",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed61a80_0a62a418",
       "range": {
         "startLine": 2152,
         "startChar": 17,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ff5bf4_32c69440",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2154,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fec8ec3_a97bbd58",
+      "range": {
+        "startLine": 2154,
+        "startChar": 0,
+        "endLine": 2154,
+        "endChar": 66
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13d4dcc8_e66169ec",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61be363d_c26a495d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d4dcc8_e66169ec",
+      "range": {
+        "startLine": 2178,
+        "startChar": 0,
+        "endLine": 2178,
+        "endChar": 26
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7efb7f02_dc86e40d",
@@ -215,6 +407,30 @@
       "writtenOn": "2025-02-24T16:59:43Z",
       "side": 1,
       "message": "`next_state \u003d SNK_ATTACHED_EVALUATE_PDOS;`",
+      "range": {
+        "startLine": 2198,
+        "startChar": 2,
+        "endLine": 2198,
+        "endChar": 25
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ee3597_5d18a4aa",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-25T03:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7efb7f02_dc86e40d",
       "range": {
         "startLine": 2198,
         "startChar": 2,
