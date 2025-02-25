@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ddd7850_318d8957",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-25T20:41:34Z",
+      "side": 1,
+      "message": "That\u0027s not available in AOSP, no. I\u0027m trying to minimize the amount of code I copy from CrOS into gsc-utils because this stuff just snowballs into larger-and-larger imports.",
+      "parentUuid": "e4dba24d_029e4a62",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0d6b090_0dac50b5",
@@ -75,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff54c1f_b4b01c92",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-25T20:41:34Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e0d6b090_0dac50b5",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55250179_8c06690e",
@@ -98,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1163648_c5b1577c",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-25T20:41:34Z",
+      "side": 1,
+      "message": "I removed the extra wasted space. I kept the resize on line 183 though because it is consistent with the abstraction layering here (we should believe EVP_Encrypt* on how much data they returned).",
+      "parentUuid": "55250179_8c06690e",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 55
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d036a94c_e4cdfa6a",
@@ -111,6 +183,30 @@
       "writtenOn": "2025-02-25T19:56:15Z",
       "side": 1,
       "message": "it may be possible to construct this in place: allocate enough space for iv in `encryption_data` (copy `iv` and then resize to large size including `iv`, so `iv` will be in place), point output_buffer to after `iv` part,",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 48
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f2d96e_02ceb82a",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-25T20:41:34Z",
+      "side": 1,
+      "message": "That would make things quite a bit more complex, and it\u0027s not 100% clear that it would be a gain. If we add the IV into encrypted_data, then at the end of this function we would need to remove the iv, which would be a memmove call (as the source and destination would overlap). It\u0027s not obvious that\u0027s better.\n\nGiven impending deadlines, I don\u0027t think this is worth micro-optimizing.",
+      "parentUuid": "d036a94c_e4cdfa6a",
       "range": {
         "startLine": 185,
         "startChar": 4,
@@ -146,6 +242,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08f5db2e_3440925a",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-25T20:41:34Z",
+      "side": 1,
+      "message": "Did you mean to highlight a different line? The HMAC() statement does not resize anything.",
+      "parentUuid": "185e1173_06e8fe64",
+      "range": {
+        "startLine": 187,
+        "startChar": 44,
+        "endLine": 187,
+        "endChar": 60
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fe1c653_351e9f7d",
         "filename": "tpm_generated/ffi.cc",
         "patchSetId": 2
@@ -157,6 +277,30 @@
       "writtenOn": "2025-02-25T19:56:15Z",
       "side": 1,
       "message": "As far as I remember BN_free and others handle NULL correctly, so no check is needed. Also, if scoped types are available,  the lambda use may be not needed.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 12
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091fc0e1_283cd5a3",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-02-25T20:41:34Z",
+      "side": 1,
+      "message": "When I wrote this, I checked the docs on RSA_free, BN_free, and EVP_CIPHER_CTX_free, and none of the docs state what happens when you pass in a NULL ptr. I didn\u0027t check the implementation, but if the public documentation doesn\u0027t say anything about its behavior with a NULL parameter then I don\u0027t want to rely on it.",
+      "parentUuid": "5fe1c653_351e9f7d",
       "range": {
         "startLine": 200,
         "startChar": 1,
