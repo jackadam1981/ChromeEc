@@ -39,6 +39,30 @@
       },
       "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5bf9c9_0a9e905a",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-25T00:05:29Z",
+      "side": 1,
+      "message": "ok. done. This is the output log:\n```\n\u003e fpinfo\n      Vendor ID: 0x20435046 (FPC )\n     Product ID: 0x9\n       Model ID: 0x21B\n        Version: 0x1\n Sensor (w x h): 160 x 160 8bpp\n     Frame Size: 50\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x3FF\n   Sensor Strap: FPC\n\u003e fpcapture 12                                                              \n[139.747226 Waiting for finger ...]                                         \n[139.847282 done (events:80000000)]                                         \n**B00fpinor ZModem                                                          \n      Vendor ID: 0x20435046 (FPC )                                          \n     Product ID: 0x9                                                        \n       Model ID: 0x21B                                                      \n        Version: 0x1                                                        \n Sensor (w x h): 160 x 160 16bpp                                            \n     Frame Size: 100\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x3FF\n   Sensor Strap: FPC\n\u003e \n\u003e fpinfo                                                                    \n      Vendor ID: 0x20435046 (FPC )                                          \n     Product ID: 0x9                                                        \n       Model ID: 0x21B                                                      \n        Version: 0x1                                                        \n Sensor (w x h): 160 x 160 16bpp                                            \n     Frame Size: 100                                                        \n   Pixel Format: 0x59455247 (GREY)                                          \n    Error State: 0x3FF                                                      \n   Sensor Strap: FPC\n\u003e fpcapture 0\n[173.224668 Waiting for finger ...]\n[176.080297 Capturing ...]\n[176.224957 done (events:80000000)]\n**B00RE for ZModem\n\u003e fpinfo                                                                    \n      Vendor ID: 0x20435046 (FPC )                                          \n     Product ID: 0x9                                                        \n       Model ID: 0x21B                                                      \n        Version: 0x1                                                        \n Sensor (w x h): 160 x 160 8bpp                                             \n     Frame Size: 50                                                         \n   Pixel Format: 0x59455247 (GREY)                                          \n    Error State: 0x3FF                                                      \n   Sensor Strap: FPC\n\u003e fpcapture 8\n[208.719831 Waiting for finger ...]\n[208.819887 done (events:80000000)]\n**B00RE for ZModem\n\u003e fpinfo\n      Vendor ID: 0x20435046 (FPC )                                          \n     Product ID: 0x9                                                        \n       Model ID: 0x21B                                                      \n        Version: 0x1                                                        \n Sensor (w x h): 160 x 160 16bpp                                            \n     Frame Size: 100                                                        \n   Pixel Format: 0x59455247 (GREY)                                          \n    Error State: 0x3FF                                                      \n   Sensor Strap: FPC                                                        \n\u003e fpcapture 0\n[313.442061 Waiting for finger ...]\n[325.577330 Capturing ...]\n[325.743094 done (events:80000000)]\n**B00RE for ZModem\n\u003e fpinfo\n      Vendor ID: 0x20435046 (FPC )\n     Product ID: 0x9\n       Model ID: 0x21B\n        Version: 0x1\n Sensor (w x h): 160 x 160 8bpp\n     Frame Size: 50\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x3FF\n   Sensor Strap: FPC\n\u003e fpcapture 4\n[346.646239 Waiting for finger ...]\n[348.658547 Capturing ...]\n[348.846462 done (events:80000000)]\n**B00RE for ZModem\n\u003e fpinfo\n      Vendor ID: 0x20435046 (FPC )\n     Product ID: 0x9\n       Model ID: 0x21B\n        Version: 0x1\n Sensor (w x h): 160 x 160 8bpp\n     Frame Size: 50\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x3FF\n   Sensor Strap: FPC\n\u003e \n```\n\nThe global_context will always have the correct capture type. However, the capture mode itself was deactivated. This is based on reading the code and this experiment CL and the output log:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6298453\nhttps://paste.googleplex.com/6005458081677312#l\u003d25",
+      "parentUuid": "edb2ee73_23bdad21",
+      "range": {
+        "startLine": 276,
+        "startChar": 36,
+        "endLine": 276,
+        "endChar": 61
+      },
+      "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
