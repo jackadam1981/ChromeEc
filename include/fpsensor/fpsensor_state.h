@@ -77,6 +77,7 @@ struct fpsensor_context {
 	uint32_t fp_encryption_status;
 	atomic_t fp_events;
 	uint32_t sensor_mode;
+	uint32_t last_sensor_mode;
 	/** Part of the IKM used to derive encryption keys received from the
 	 * TPM.
 	 */
