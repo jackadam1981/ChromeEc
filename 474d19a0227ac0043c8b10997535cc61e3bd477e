@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c1ddd1_cd90a8a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-25T03:19:04Z",
+      "side": 1,
+      "message": "CL:3583742 disabled charger ADC to save G3 power.\n\nDoes G3 power still meet the Chromebook requirement if you turn it on?",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
