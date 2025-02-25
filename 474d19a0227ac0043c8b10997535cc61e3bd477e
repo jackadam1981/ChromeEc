@@ -34,6 +34,23 @@
       "parentUuid": "25c1ddd1_cd90a8a2",
       "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb644fc_da8481aa",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-25T03:26:52Z",
+      "side": 1,
+      "message": "maybe you can turn adc off when system is in S3 or below...?",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
