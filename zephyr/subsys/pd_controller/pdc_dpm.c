@@ -110,6 +110,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 				rem_non_pd);
 			pdc_power_mgmt_set_current_limit(rem_non_pd, rp);
 			max_current_claimed &= ~BIT(rem_non_pd);
+			max_current_claimed |= BIT(new_max_port);
 
 			/* Wait tSinkAdj before using current */
 			k_work_reschedule(&dpm_work, K_MSEC(75));
@@ -123,6 +124,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 			rp = pdc_power_mgmt_get_default_current_limit(rem_frs);
 			pdc_power_mgmt_set_current_limit(rem_frs, rp);
 			max_current_claimed &= ~BIT(rem_frs);
+			max_current_claimed |= BIT(new_max_port);
 
 			/* Give 50 ms for the PD task to process DPM flag */
 			k_work_reschedule(&dpm_work, K_MSEC(50));
@@ -154,6 +156,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 				rem_non_pd);
 			pdc_power_mgmt_set_current_limit(rem_non_pd, rp);
 			max_current_claimed &= ~BIT(rem_non_pd);
+			max_current_claimed |= BIT(new_frs_port);
 
 			/* Wait tSinkAdj before using current */
 			k_work_reschedule(&dpm_work, K_MSEC(75));
