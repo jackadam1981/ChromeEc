@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88cab99_647ce892",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-hdmi-port.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ec5fef_93aab7f1",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "6a75e8447103e962a833f6979b9ba98fadff4025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61765116_cb1a235c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-24T21:18:54Z",
       "side": 1,
       "message": "dynamically",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "6a75e8447103e962a833f6979b9ba98fadff4025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93eaa46e_a8b0c1a4",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61765116_cb1a235c",
       "range": {
         "startLine": 44,
         "startChar": 32,

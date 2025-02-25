@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac60b22_d86b85e4",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "738ada1f_d4072e27",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c0f9db_330b9dc5",
@@ -101,6 +125,30 @@
       "writtenOn": "2025-02-20T19:00:23Z",
       "side": 1,
       "message": "Some odd line lengths.  Did you run clang-format on this file?  You might need to use `clang-format off` around this block.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 81
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedf43ff_88afd392",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "ran clang and it didn\u0027t seem to have any issue so doesn\u0027t need the format off",
+      "parentUuid": "93c0f9db_330b9dc5",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -182,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01da4043_14aa6e9c",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a8f52e_82658f15",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf682653_2ef44d2e",
@@ -253,6 +325,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd03f5b_0154a253",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df765223_38af3ff5",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 71
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b993fae_d8f81c41",
@@ -266,6 +362,30 @@
       "writtenOn": "2025-02-20T19:00:23Z",
       "side": 1,
       "message": "You should use Zephyr\u0027s APIs and not the legacy EC defines.",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 23
+      },
+      "revId": "6f0bfc60f49cdb11a915e2554684e1ca57975bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113568be_3eaff7e2",
+        "filename": "zephyr/subsys/modular_aic/modular_aic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:26Z",
+      "side": 1,
+      "message": "Removed this console command for now",
+      "parentUuid": "4b993fae_d8f81c41",
       "range": {
         "startLine": 429,
         "startChar": 0,
