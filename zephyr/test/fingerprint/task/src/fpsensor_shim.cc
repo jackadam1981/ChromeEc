@@ -113,7 +113,7 @@ ZTEST_USER(fpsensor_shim, test_shim_get_info_success)
 
 	/* We need to initialize driver first to initialize 'error' field */
 	zassert_ok(fp_sensor_init());
-	zassert_ok(fp_sensor_get_info(&info));
+	zassert_ok(fp_sensor_get_info(&info, FP_CAPTURE_PATTERN0));
 
 	zassert_equal(info.vendor_id, FOURCC('C', 'r', 'O', 'S'));
 	zassert_equal(info.product_id, 0);
@@ -145,7 +145,7 @@ ZTEST_USER(fpsensor_shim, test_shim_get_info_failed)
 	state.get_info_result = -EINVAL;
 	fingerprint_set_state(fp_sim, &state);
 
-	zassert_equal(fp_sensor_get_info(&info), -EINVAL);
+	zassert_equal(fp_sensor_get_info(&info, FP_CAPTURE_PATTERN0), -EINVAL);
 }
 
 ZTEST_USER(fpsensor_shim, test_shim_finger_status_present)

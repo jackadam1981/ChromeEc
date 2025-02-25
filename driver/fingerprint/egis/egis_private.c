@@ -107,7 +107,7 @@ int fp_sensor_deinit(void)
 	return egis_sensor_deinit();
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+int fp_sensor_get_info(struct ec_response_fp_info *resp, uint32_t capture_type)
 {
 	uint16_t sensor_id;
 	memcpy(resp, &egis_fp_sensor_info, sizeof(struct ec_response_fp_info));

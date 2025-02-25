@@ -234,7 +234,8 @@ static int command_fpinfo(int argc, const char **argv)
 	ec_response_fp_info info;
 
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	if (fp_sensor_get_info(&info) < 0)
+	if (fp_sensor_get_info(&info,
+			       FP_CAPTURE_TYPE(global_context.sensor_mode)) < 0)
 		return EC_ERROR_UNKNOWN;
 #else
 	return EC_ERROR_UNKNOWN;
