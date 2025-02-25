@@ -3921,6 +3921,45 @@ test_mockable int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo)
 	return 0;
 }
 
+static void pdc_power_mgmt_get_selected_pdo(int port, uint32_t *pdo,
+					    uint32_t *max_ma, uint32_t *max_mv)
+{
+	uint32_t pos = RDO_POS(pdc_data[port]->port.connector_status.rdo) - 1;
+	uint32_t *pdos = pdc_data[port]->port.snk_policy.src.pdos;
+	uint32_t tmp;
+
+	*pdo = pdos[pos];
+	pd_extract_pdo_power(*pdo, max_ma, max_mv, &tmp);
+}
+
+uint32_t pdc_power_mgmt_get_requested_voltage(int port)
+{
+	uint32_t pdo, max_ma, max_mv;
+
+	/* Make sure port is Sink connected */
+	if (!pdc_power_mgmt_is_sink_connected(port)) {
+		return 0;
+	}
+
+	pdc_power_mgmt_get_selected_pdo(port, &pdo, &max_ma, &max_mv);
+
+	return max_mv;
+}
+
+uint32_t pdc_power_mgmt_get_requested_current(int port)
+{
+	uint32_t pdo, max_ma, max_mv;
+
+	/* Make sure port is Sink connected */
+	if (!pdc_power_mgmt_is_sink_connected(port)) {
+		return 0;
+	}
+
+	pdc_power_mgmt_get_selected_pdo(port, &pdo, &max_ma, &max_mv);
+
+	return max_ma;
+}
+
 test_mockable const char *pdc_power_mgmt_get_task_state_name(int port)
 {
 	enum pdc_state_t state = pdc_power_mgmt_get_task_state(port);
