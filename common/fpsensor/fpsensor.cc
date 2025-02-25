@@ -251,6 +251,7 @@ static void fp_process_finger(void)
 		else if (global_context.sensor_mode & FP_MODE_MATCH)
 			evt = fp_process_match();
 
+		global_context.last_sensor_mode = global_context.sensor_mode;
 		global_context.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
 		overall_time_us = time_since32(overall_t0);
 		send_mkbp_event(evt);
@@ -306,6 +307,8 @@ extern "C" void fp_task(void)
 			if (!is_finger_needed(mode)) {
 				fp_acquire_image_with_mode(
 					fp_buffer, FP_CAPTURE_TYPE(mode));
+				global_context.last_sensor_mode =
+					global_context.sensor_mode;
 				global_context.sensor_mode &= ~FP_MODE_CAPTURE;
 				send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
 				continue;
@@ -422,7 +425,7 @@ static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 	auto *r = static_cast<ec_response_fp_info *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info(r) < 0)
+	if (fp_sensor_get_info(r, global_context.last_sensor_mode) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
 
