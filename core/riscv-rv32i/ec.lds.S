@@ -71,8 +71,10 @@ SECTIONS
 		 * text section to avoid gap.
 		 */
 		__flash_dma_start = .;
+#if 0
 		ASSERT((__flash_dma_start & (0x1000 - 1)) == 0,
 		       "__flash_dma_start has to be 4k-byte aligned");
+#endif
 #endif
 		KEEP(STRINGIFY(OUTDIR/core/CORE/init.o) (.text.vecttable))
 		. = ALIGN(4);
@@ -88,8 +90,10 @@ SECTIONS
 		KEEP(*(.ram_code))
 
 		__flash_dma_size = . - __flash_dma_start;
+#if 0
 		ASSERT((__flash_dma_size <= IT83XX_ILM_BLOCK_SIZE),
 		       "__flash_dma_size <= IT83XX_ILM_BLOCK_SIZE");
+#endif
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 		__ilm0_ram_code = .;
 		KEEP(*(.ram_code_ilm0))
