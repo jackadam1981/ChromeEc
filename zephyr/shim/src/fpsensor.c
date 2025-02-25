@@ -96,7 +96,7 @@ int fp_sensor_deinit(void)
 	return 0;
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+int fp_sensor_get_info(struct ec_response_fp_info *resp, uint32_t capture_type)
 {
 	struct fingerprint_info info;
 	int rc;
