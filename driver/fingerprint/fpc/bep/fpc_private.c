@@ -252,11 +252,39 @@ int fp_sensor_deinit(void)
 	return rc;
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+static bool is_raw_capture(uint32_t capture_type)
+{
+	return (capture_type == FP_CAPTURE_PATTERN0 ||
+		capture_type == FP_CAPTURE_PATTERN1 ||
+		capture_type == FP_CAPTURE_RESET_TEST);
+}
+
+static bool is_simple_capture(uint32_t capture_type)
+{
+	return (capture_type == FP_CAPTURE_SIMPLE_IMAGE ||
+		capture_type == FP_CAPTURE_VENDOR_FORMAT ||
+		capture_type == FP_CAPTURE_QUALITY_TEST);
+}
+
+int fp_sensor_get_info(struct ec_response_fp_info *resp, uint32_t sensor_mode)
 {
 	uint16_t sensor_id;
 
 	memcpy(resp, &ec_fp_sensor_info, sizeof(struct ec_response_fp_info));
+
+	if (sensor_mode &
+	    ((FP_MODE_CAPTURE | FP_MODE_ENROLL_IMAGE | FP_MODE_MATCH))) {
+		int capture_type = FP_CAPTURE_TYPE(sensor_mode);
+
+		if (is_raw_capture(capture_type)) {
+			resp->bpp = 16;
+			resp->frame_size = 100;
+		}
+		if (is_simple_capture(capture_type)) {
+			resp->bpp = 8;
+			resp->frame_size = 50;
+		}
+	}
 
 	if (fpc_get_hwid(&sensor_id))
 		return EC_RES_ERROR;
