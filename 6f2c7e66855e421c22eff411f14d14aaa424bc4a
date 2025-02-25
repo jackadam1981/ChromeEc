@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483fab07_3f4b512e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-25T17:56:17Z",
+      "side": 1,
+      "message": "Change all `else if` to `if` since each branch returns directly.",
+      "range": {
+        "startLine": 2147,
+        "startChar": 0,
+        "endLine": 2147,
+        "endChar": 49
+      },
+      "revId": "6f2c7e66855e421c22eff411f14d14aaa424bc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d97c99_3f6dc053",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-25T17:56:17Z",
+      "side": 1,
+      "message": "The logic for this path is difficult to follow.  I think we might need a check to verify the charge manager is seeded before we make decisions about sending an RDO.",
+      "range": {
+        "startLine": 2151,
+        "startChar": 0,
+        "endLine": 2151,
+        "endChar": 58
+      },
+      "revId": "6f2c7e66855e421c22eff411f14d14aaa424bc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4fec2a4_d0b5ecae",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-25T17:56:17Z",
+      "side": 1,
+      "message": "It seems like we should be evaluating this condition first.  If we know mlutiple sink paths are enabled, we should be turning off the unwanted PDCs as the first order of business.\n\nI also think we should be waiting until the charge manager is seeded before doing any of these checks.\n\n`charge_manager_is_seeded` is currently static, so if this logic can move into the charge manager that is going to be better.",
+      "range": {
+        "startLine": 2168,
+        "startChar": 0,
+        "endLine": 2168,
+        "endChar": 59
+      },
+      "revId": "6f2c7e66855e421c22eff411f14d14aaa424bc4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

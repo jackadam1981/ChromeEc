@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfc0a3ef_ff00f8fa",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-25T17:56:17Z",
+      "side": 1,
+      "message": "To clarify my earlier comment - can you add a new field to `struct pdc_port_t` to track the `sink_path_status`.  This field should reflect what we believe the current sink path state as setup by the PDC.  The field `sink_path_en` should only represent what we want to send to the PDC as part of `CMD_PDC_SET_SINK_PATH`.\n\nI believe there is a potential hole in the current implementation. the SNK ATTACHED state queries the charge manager to set `sink_path_en`, but if the PDC sends us a new connector status message before we process the `SET_SINK_PATH` command, we might overwrite `sink_path_en`.",
+      "parentUuid": "42df8c40_d5470b88",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2023,
+        "endChar": 0
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52be261d_0dab071f",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 10
