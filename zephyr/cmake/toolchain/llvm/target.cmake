@@ -43,6 +43,10 @@ if("${ARCH}" STREQUAL "arm")
   # This variable is set AFTER all Kconfig files were processed, so it doesn't
   # affect them, but it's still useful for filtering tests.
   set(TOOLCHAIN_HAS_NEWLIB ON CACHE BOOL "True if toolchain supports newlib")
+else ()
+  #message(FATAL_ERROR "Unrecognized architecture: ${ARCH}")
+  set(CROSS_COMPILE_TARGET riscv32-cros-elf)
+  set(TOOLCHAIN_HAS_NEWLIB ON CACHE BOOL "True if toolchain supports newlib")
 endif()
 
 # LLVM_TOOLCHAIN_PATH is used as a base path to look for 'newlib.cfg' or
