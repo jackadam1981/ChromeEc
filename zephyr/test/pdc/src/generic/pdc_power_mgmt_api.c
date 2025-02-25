@@ -2051,6 +2051,31 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 }
 #endif /* CONFIG_TODO_B_345292002 */
 
+ZTEST_USER(pdc_power_mgmt_api, test_get_requested_voltage_current)
+{
+	/* PLATFORM_EC_USB_PD_MAX_CURRENT_MA defaults to 3000, make sure current
+	 * is less than this so expected value is returned */
+	uint32_t partner_src_pdos[] = {
+		PDO_FIXED(5000, 1000, 0),
+		PDO_FIXED(12000, 1500, 0),
+		PDO_FIXED(20000, 2000, 0),
+	};
+	union connector_status_t connector_status = { 0 };
+
+	emul_pdc_configure_snk(emul, &connector_status);
+	zassert_ok(emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0,
+				     ARRAY_SIZE(partner_src_pdos), PARTNER_PDO,
+				     partner_src_pdos));
+	emul_pdc_connect_partner(emul, &connector_status);
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	uint32_t mv = pdc_power_mgmt_get_requested_voltage(TEST_PORT);
+	zassert_equal(mv, 20000, "Expected=20000, returned=%d", mv);
+
+	uint32_t ma = pdc_power_mgmt_get_requested_current(TEST_PORT);
+	zassert_equal(ma, 2000, "Expected=2000, returned=%d", ma);
+}
+
 /**
  * @brief Helper function for polling sink path status
  */
