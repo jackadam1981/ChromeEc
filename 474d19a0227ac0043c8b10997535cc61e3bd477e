@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7e50a3_35c24522",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-02-25T08:45:43Z",
+      "side": 1,
+      "message": "I add behavior that disable ADC without AC when entering G3",
+      "parentUuid": "bf5864f7_7049519e",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cde291f9_cdf5bfe1",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41547689_569beaa4",
+        "filename": "zephyr/program/corsola/include/ite_hook.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-02-25T08:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cde291f9_cdf5bfe1",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a634ccc8_74bd7eb8",
@@ -84,6 +120,24 @@
       "writtenOn": "2025-02-25T03:31:11Z",
       "side": 1,
       "message": "include \"ite_hook.h\"",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55511a79_18f1de25",
+        "filename": "zephyr/program/corsola/src/ite_hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-02-25T08:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a634ccc8_74bd7eb8",
       "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af3ff72_fd2e82aa",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-02-25T08:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1f991f_0dbf21e0",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bb644fc_da8481aa",
@@ -118,6 +190,24 @@
       "writtenOn": "2025-02-25T03:26:52Z",
       "side": 1,
       "message": "maybe you can turn adc off when system is in S3 or below...?",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ab7f52_29d71469",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-02-25T08:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb644fc_da8481aa",
       "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
