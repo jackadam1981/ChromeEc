@@ -16,6 +16,29 @@
       "message": "LGTM - but I want to analyze the PD trace and understand the PDC\u0027s response to sending the SET_TPC_RP command.",
       "revId": "104b8e9e67cde8dc92a6aadfe54383f35918f870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ff3999_a8d37be3",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-25T22:35:01Z",
+      "side": 1,
+      "message": "Does this pass the unit tests?\n\nWhen the rebalance code runs again, `new_ports` will end up as zero, which means `pdc_power_mgmt_set_current_limit()` won\u0027t ever be called for the PD capable port that we want to upgrade to 3.0A",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "104b8e9e67cde8dc92a6aadfe54383f35918f870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
