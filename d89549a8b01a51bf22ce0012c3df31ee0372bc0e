@@ -111,6 +111,30 @@
       },
       "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89617d4b_766da6e3",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-25T17:31:05Z",
+      "side": 1,
+      "message": "\u003e Yes, this is correct. we\u0027re clearing the capture mode\n\nOk. You\u0027ll have to either cache the value and pass it (e.g., `last_sensor_mode`) or refactor the calls so it\u0027s not cleared until after `fp_sensor_get_info` is called.",
+      "parentUuid": "131f506b_47debd7f",
+      "range": {
+        "startLine": 276,
+        "startChar": 36,
+        "endLine": 276,
+        "endChar": 61
+      },
+      "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
