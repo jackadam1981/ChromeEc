@@ -2662,7 +2662,7 @@ static void pdc_src_typec_only_entry(void *obj)
 		 * k_timer_start call always resets the timer status.
 		 */
 		k_timer_start(&port->typec_only_timer,
-			      K_USEC(PD_T_SINK_WAIT_CAP), K_NO_WAIT);
+			      K_USEC(PD_T_SINK_WAIT_CAP + 75 * MSEC), K_NO_WAIT);
 
 		if (IS_ENABLED(CONFIG_PDC_POWER_MGMT_USB_MUX)) {
 			usb_mux_set(
