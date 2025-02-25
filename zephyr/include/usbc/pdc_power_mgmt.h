@@ -301,6 +301,22 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port);
 int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo);
 
 /**
+ * @brief Get the voltage requested from the charger while in sink mode
+ *
+ * @param port USB-C port number
+ * @return uint32_t voltage in millivolts
+ */
+uint32_t pdc_power_mgmt_get_requested_voltage(int port);
+
+/**
+ * @brief Get the current requested from the charger while in sink mode
+ *
+ * @param port USB-C port number
+ * @return uint32_t current in milliamps
+ */
+uint32_t pdc_power_mgmt_get_requested_current(int port);
+
+/**
  * @brief Set dual role state, from among enum pd_dual_role_states
  *
  * @param port USB-C port number
