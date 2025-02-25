@@ -35,7 +35,12 @@
 #error Mock defined HAS_MOCK_CHARGE_MANAGER
 #endif
 
+#ifdef CONFIG_ZTEST
+LOG_MODULE_REGISTER(charge_manager, CONFIG_USB_PDC_LOG_LEVEL);
+#define CPRINTS(format, args...) LOG_INF(format, ##args)
+#else
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#endif
 
 #define POWER(charge_port) ((charge_port.current) * (charge_port.voltage))
 
@@ -994,7 +999,8 @@ static void charge_manager_refresh(void)
 		if ((IS_ENABLED(CONFIG_USB_PD_TCPMV1) &&
 		     IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE)) ||
 		    (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
-		     IS_ENABLED(CONFIG_USB_PE_SM))) {
+		     IS_ENABLED(CONFIG_USB_PE_SM)) ||
+		    IS_ENABLED(CONFIG_USB_PDC_POWER_MGMT)) {
 			uint32_t pdo;
 			uint32_t max_voltage;
 			uint32_t max_current;
