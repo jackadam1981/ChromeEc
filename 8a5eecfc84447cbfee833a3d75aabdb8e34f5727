@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4dba24d_029e4a62",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-25T19:56:15Z",
+      "side": 1,
+      "message": "I thought we have some RAII wrappers in https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/libchrome/crypto/scoped_openssl_types.h - is it available in Android?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d6b090_0dac50b5",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-25T19:56:15Z",
+      "side": 1,
+      "message": "How about using a different string to distinguish errors? E.g. add `key` and `iv`",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d1765728_4279df4f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 147,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "      LOG(ERROR) \u003c\u003c \"RAND_bytes failed for key\";\n"
+            },
+            {
+              "path": "tpm_generated/ffi.cc",
+              "range": {
+                "startLine": 152,
+                "startChar": 0,
+                "endLine": 153,
+                "endChar": 0
+              },
+              "replacement": "      LOG(ERROR) \u003c\u003c \"RAND_bytes failed for iv\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55250179_8c06690e",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-25T19:56:15Z",
+      "side": 1,
+      "message": "padded size would be be rounding up to kAesBlockSize if data.size() % kAesBlockSize is not zero or data.size() + kAesBlockSize otherwise (extra block added). \n\nTechnically your computation allocates a little more than needed, and then you resize again in line 183",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 55
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d036a94c_e4cdfa6a",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-25T19:56:15Z",
+      "side": 1,
+      "message": "it may be possible to construct this in place: allocate enough space for iv in `encryption_data` (copy `iv` and then resize to large size including `iv`, so `iv` will be in place), point output_buffer to after `iv` part,",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 48
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185e1173_06e8fe64",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-25T19:56:15Z",
+      "side": 1,
+      "message": "you can just provide the correct size here instead of resizing. it is not critical though - I\u0027m just trying to reduce dynamic memory allocations :)",
+      "range": {
+        "startLine": 187,
+        "startChar": 44,
+        "endLine": 187,
+        "endChar": 60
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe1c653_351e9f7d",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-25T19:56:15Z",
+      "side": 1,
+      "message": "As far as I remember BN_free and others handle NULL correctly, so no check is needed. Also, if scoped types are available,  the lambda use may be not needed.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 12
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
