@@ -73,6 +73,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a634ccc8_74bd7eb8",
+        "filename": "zephyr/program/corsola/src/ite_hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-25T03:31:11Z",
+      "side": 1,
+      "message": "include \"ite_hook.h\"",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1f991f_0dbf21e0",
+        "filename": "zephyr/program/corsola/veluza/src/temp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-25T03:31:11Z",
+      "side": 1,
+      "message": "include \"ite_hook.h\"",
+      "revId": "474d19a0227ac0043c8b10997535cc61e3bd477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bb644fc_da8481aa",
         "filename": "zephyr/program/corsola/veluza/src/temp.c",
         "patchSetId": 1
