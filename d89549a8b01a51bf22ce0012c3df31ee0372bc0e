@@ -63,6 +63,30 @@
       },
       "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5f4934_89446c8e",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-02-25T17:24:53Z",
+      "side": 1,
+      "message": "\u003e The global_context will always have the correct capture type. However, the capture mode itself was deactivated.\n\nI don\u0027t think I understand. Writing it this way or with using `global_context.sensor_mode` in `fp_sensor_get_info` should be equivalent. You never got it to compile with `global_context.sensor_mode` in `fp_sensor_get_info`, so I don\u0027t think you can directly compare the output between the two to verify.\n\nDo you mean that we\u0027re clearing the capture mode (`global_context.sensor_mode \u0026\u003d ~FP_MODE_CAPTURE;`) before `fp_sensor_get_info` is called?",
+      "parentUuid": "ce5bf9c9_0a9e905a",
+      "range": {
+        "startLine": 276,
+        "startChar": 36,
+        "endLine": 276,
+        "endChar": 61
+      },
+      "revId": "d89549a8b01a51bf22ce0012c3df31ee0372bc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
