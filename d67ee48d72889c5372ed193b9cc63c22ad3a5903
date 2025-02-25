@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d0ec48_4ec39897",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bca50437_6fd30e06",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "d67ee48d72889c5372ed193b9cc63c22ad3a5903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3f2a28d_13a276d9",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3844421c_9743ced9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/mod_aic.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f2a28d_13a276d9",
+      "revId": "d67ee48d72889c5372ed193b9cc63c22ad3a5903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f4ebd6_f87f6ad5",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-02-18T19:07:36Z",
       "side": 1,
       "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d67ee48d72889c5372ed193b9cc63c22ad3a5903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00495574_d6b95ef7",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/mod_aic.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-25T18:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f4ebd6_f87f6ad5",
       "range": {
         "startLine": 1,
         "startChar": 13,
