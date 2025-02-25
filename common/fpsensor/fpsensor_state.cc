@@ -55,6 +55,7 @@ struct fpsensor_context global_context = {
 	.templ_dirty = 0,
 	.fp_events = 0,
 	.sensor_mode = 0,
+	.last_sensor_mode = 0,
 	.tpm_seed = { 0 },
 	.user_id = { 0 },
 	.positive_match_secret_state = {

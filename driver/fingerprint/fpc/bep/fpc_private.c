@@ -252,6 +252,20 @@ int fp_sensor_deinit(void)
 	return rc;
 }
 
+static bool is_raw_capture(uint32_t capture_type)
+{
+	return (capture_type == FP_CAPTURE_PATTERN0 ||
+		capture_type == FP_CAPTURE_PATTERN1 ||
+		capture_type == FP_CAPTURE_RESET_TEST);
+}
+
+static bool is_simple_capture(uint32_t capture_type)
+{
+	return (capture_type == FP_CAPTURE_SIMPLE_IMAGE ||
+		capture_type == FP_CAPTURE_VENDOR_FORMAT ||
+		capture_type == FP_CAPTURE_QUALITY_TEST);
+}
+
 int fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	uint16_t sensor_id;
