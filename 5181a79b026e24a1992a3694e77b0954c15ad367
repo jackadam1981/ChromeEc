@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ca856c_729e6620",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T23:02:08Z",
+      "side": 1,
+      "message": "Can you use the `connetor_status-\u003erdo` field here instead of sending a new command?",
+      "range": {
+        "startLine": 2264,
+        "startChar": 0,
+        "endLine": 2264,
+        "endChar": 44
+      },
+      "revId": "5181a79b026e24a1992a3694e77b0954c15ad367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a9cbd1_54e2de26",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T23:02:08Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t/* Update Charge Manager with PDO/RDO the PDC has negotiated. */\n```",
+      "range": {
+        "startLine": 2267,
+        "startChar": 0,
+        "endLine": 2267,
+        "endChar": 65
+      },
+      "revId": "5181a79b026e24a1992a3694e77b0954c15ad367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354c5070_4294bf21",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T23:02:08Z",
+      "side": 1,
+      "message": "Need to document this state transition.  Why are you skipping eval PDOs, start, charging, etc?",
+      "range": {
+        "startLine": 2268,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 52
+      },
+      "revId": "5181a79b026e24a1992a3694e77b0954c15ad367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc60422_df5f56ec",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T23:02:08Z",
+      "side": 1,
+      "message": "If you switch to the connector_status-\u003erdo, this should be called if `negotiated_power_level_change` is set.",
+      "range": {
+        "startLine": 2278,
+        "startChar": 2,
+        "endLine": 2278,
+        "endChar": 29
+      },
+      "revId": "5181a79b026e24a1992a3694e77b0954c15ad367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
