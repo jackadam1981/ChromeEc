@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92ace1b_7ab39b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-02-26T09:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b75ccc_7ca65ee1",
+      "revId": "14a4ce26a197c6b987c81416b04b4f9e4e6ebdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "572616bf_6c3a713d",
@@ -65,6 +83,30 @@
       "writtenOn": "2025-02-25T16:24:08Z",
       "side": 1,
       "message": "Since this board uses `temp_ratio_to_rpm_hysteresis`, there is no need for the `.rpm \u003d 0` entry. You can delete these lines.\n```suggestion\n```",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 14
+      },
+      "revId": "14a4ce26a197c6b987c81416b04b4f9e4e6ebdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f19ed3_cf5c517f",
+        "filename": "board/endeavour/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-02-26T09:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "572616bf_6c3a713d",
       "range": {
         "startLine": 326,
         "startChar": 0,
