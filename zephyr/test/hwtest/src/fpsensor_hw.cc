@@ -29,7 +29,9 @@ ZTEST(fpsernsor_hw, test_fp_check_hwid)
 	if (IS_ENABLED(CONFIG_CROS_EC_RW)) {
 		struct fingerprint_info info;
 
-		zassert_ok(fingerprint_get_info(fp_sensor_dev, &info));
+		zassert_ok(fingerprint_get_info(
+			fp_sensor_dev, &info,
+			FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 		/* The lower 4-bits of the sensor hardware id are a
 		 * manufacturing ID that is ok to vary.
 		 */
