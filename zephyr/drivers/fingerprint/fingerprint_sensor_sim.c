@@ -36,7 +36,8 @@ static int fp_simulator_deinit(const struct device *dev)
 }
 
 static int fp_simulator_get_info(const struct device *dev,
-				 struct fingerprint_info *info)
+				 struct fingerprint_info *info,
+				 uint32_t capture_type)
 {
 	const struct fp_simulator_cfg *cfg = dev->config;
 	struct fp_simulator_data *data = dev->data;

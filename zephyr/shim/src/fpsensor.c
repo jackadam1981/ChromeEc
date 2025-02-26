@@ -101,7 +101,7 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp, uint32_t capture_type)
 	struct fingerprint_info info;
 	int rc;
 
-	rc = fingerprint_get_info(fp_sensor_dev, &info);
+	rc = fingerprint_get_info(fp_sensor_dev, &info, capture_type);
 	if (rc) {
 		return rc;
 	}

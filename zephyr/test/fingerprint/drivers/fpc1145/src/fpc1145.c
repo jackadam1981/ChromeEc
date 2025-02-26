@@ -60,7 +60,8 @@ ZTEST_F(fpc1145, test_init_failure_bad_hwid)
 
 	fpc1145_set_hwid(fixture->target, 0x0);
 	zassert_equal(fingerprint_init(fixture->dev), -EINVAL);
-	zassert_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_ok(fingerprint_get_info(
+		fixture->dev, &info, FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 	zassert_equal(info.errors, (FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN |
 				    FINGERPRINT_ERROR_BAD_HWID |
 				    FINGERPRINT_ERROR_INIT_FAIL));
@@ -72,7 +73,8 @@ ZTEST_F(fpc1145, test_init_failure_no_irq)
 
 	fpc1145_stop_irq(fixture->target);
 	zassert_equal(fingerprint_init(fixture->dev), -EINVAL);
-	zassert_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_ok(fingerprint_get_info(
+		fixture->dev, &info, FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 	zassert_equal(info.errors,
 		      (FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN |
 		       FINGERPRINT_ERROR_NO_IRQ | FINGERPRINT_ERROR_INIT_FAIL));
@@ -84,9 +86,11 @@ ZTEST_F(fpc1145, test_init_failure_spi)
 
 	fpc1145_stop_spi(fixture->target);
 	zassert_equal(fingerprint_init(fixture->dev), -EINVAL);
-	zassert_not_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_not_ok(fingerprint_get_info(
+		fixture->dev, &info, FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 	fpc1145_start_spi(fixture->target);
-	zassert_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_ok(fingerprint_get_info(
+		fixture->dev, &info, FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 	zassert_equal(info.errors, (FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN |
 				    FINGERPRINT_ERROR_SPI_COMM |
 				    FINGERPRINT_ERROR_INIT_FAIL));
@@ -103,7 +107,8 @@ ZTEST_F(fpc1145, test_get_info)
 
 	/* We need to initialize driver first to initialize 'error' field */
 	zassert_ok(fingerprint_init(fixture->dev));
-	zassert_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_ok(fingerprint_get_info(
+		fixture->dev, &info, FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 
 	zassert_equal(info.vendor_id, FOURCC('F', 'P', 'C', ' '));
 	zassert_equal(info.product_id, 9);

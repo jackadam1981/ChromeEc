@@ -267,7 +267,8 @@ static int fpc1025_deinit(const struct device *dev)
 }
 
 static int fpc1025_get_info(const struct device *dev,
-			    struct fingerprint_info *info)
+			    struct fingerprint_info *info,
+			    uint32_t capture_type)
 {
 	const struct fpc1025_cfg *cfg = dev->config;
 	struct fpc1025_data *data = dev->data;
