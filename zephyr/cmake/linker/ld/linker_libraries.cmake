@@ -15,6 +15,7 @@ endif()
 if(CONFIG_REQUIRES_FULL_LIBCPP)
   message(INFO "Setting c++_library to libstdc++ install path")
   set_linker_property(PROPERTY c++_library "${COREBOOT_SDK_ROOT_LIBSTDCXX}/${CROSS_COMPILE_TARGET}/lib/${CROSS_COMPILE_QUALIFIER}libstdc++.a")
+  set_linker_property(PROPERTY c++_library APPEND "${COREBOOT_SDK_ROOT_LIBSTDCXX}/${CROSS_COMPILE_TARGET}/lib/gcc/${CROSS_COMPILE_TARGET}/${GCC_VERSION}/${CROSS_COMPILE_QUALIFIER}libgcc.a")
 endif()
 
 if(CONFIG_PICOLIBC AND NOT CONFIG_PICOLIBC_USE_MODULE)

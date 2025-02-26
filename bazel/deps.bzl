@@ -27,13 +27,16 @@ def _ec_deps_impl(module_ctx):
     )
     _coreboot_sdk_subtool(
         "picolibc-i386-elf",
-        "14.2.0-r1/432177501fd9307fd8d2a42cad50f5a391431342",
-        "a11105e6b95e941a77abe7df0b70aee76acf18004747031128fe976be99408c6",
+        "14.2.0-r1/e9e494e7d72a4fe44ed6030f68e9435dacd23afa",
+        "",
+        "chromeos-throw-away-bucket"
     )
     _coreboot_sdk_subtool(
         "libstdcxx-i386-elf",
-        "14.2.0-r1/7669d6b5d20c58db775ae136aa17e46e74b2765d",
-        "1901d9bef995685bef0293d099b55b90fb694fa3af180c74e91acf539c94647a",
+        "14.2.0-r1/6dcea353fb5318bef993091c5aed0c84ebc5b45a",
+        "",
+        "chromeos-throw-away-bucket"
+
     )
     _coreboot_sdk_subtool(
         "arm-eabi",
