@@ -33,6 +33,24 @@
       "message": "Update to use paths relative to the script to be able to use outside the chroot.",
       "revId": "92386857f1d046bd44edd4d0295f491384cd22c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391364d2_1ec13046",
+        "filename": "util/coreboot_sdk_portage_deps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T06:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea86674_2c424748",
+      "revId": "92386857f1d046bd44edd4d0295f491384cd22c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
