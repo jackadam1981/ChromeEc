@@ -16,6 +16,46 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ec3902a927db85fb7eea81295f2c293df596b1e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7b5d15_8b5a2f9c",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-02-26T16:57:23Z",
+      "side": 1,
+      "message": "The x86 task_id field will be 0. x86 is the only arch that has this field, so there isn\u0027t really a way to set it with these macros. For software panics, the task id is placed in the info field. This will certinley cause some confusion down the road when debugging a software panic. The task id will be 0, and the actual task id will be in the error_code field (using host/panic.c mapping). \n\nFixing this is beyond the scope of this CL. It will require a revision of the panic data struct.",
+      "revId": "ec3902a927db85fb7eea81295f2c293df596b1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19175370_a880db38",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-02-26T16:57:23Z",
+      "side": 1,
+      "message": "The mapping for exception, reason and info does not match what\u0027s in host/panic.c and minute-ia: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/host/panic.c;l\u003d40\n```\n\tpdata-\u003ex86.vector \u003d reason;\n\tpdata-\u003ex86.error_code \u003d info;\n\tpdata-\u003ex86.eflags \u003d exception;\n```",
+      "range": {
+        "startLine": 111,
+        "startChar": 42,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "ec3902a927db85fb7eea81295f2c293df596b1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
