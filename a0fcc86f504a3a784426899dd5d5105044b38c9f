@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "785b13eb_70830af8",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767f6d37_6898ed6d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "a0fcc86f504a3a784426899dd5d5105044b38c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4347716_1892aea4",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-26T22:03:10Z",
       "side": 1,
       "message": "Maybe print something easier to parse like space separted string?\n\nThen you can do\n\n```\nname, version, hash, sha512 \u003d item.split(\" \")\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "a0fcc86f504a3a784426899dd5d5105044b38c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a56704_a2f4ede8",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:17:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4347716_1892aea4",
       "range": {
         "startLine": 28,
         "startChar": 12,
