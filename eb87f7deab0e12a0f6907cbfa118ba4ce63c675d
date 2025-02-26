@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "eb87f7deab0e12a0f6907cbfa118ba4ce63c675d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff07fea_d651d92b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-26T22:20:41Z",
+      "side": 1,
+      "message": "Removed Code-Coverage-1 since we do not count minor emulator coverage issues per Keith and Jeremy. Added LOW_COVERAGE_REASON",
+      "revId": "eb87f7deab0e12a0f6907cbfa118ba4ce63c675d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
