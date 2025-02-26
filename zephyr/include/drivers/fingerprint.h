@@ -18,6 +18,8 @@
  * @{
  */
 
+#include <stdint.h>
+
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
 
@@ -180,7 +182,8 @@ typedef int (*fingerprint_api_config_t)(const struct device *dev,
  * @param info Pointer to fingerprint_info structure where data will be stored.
  */
 typedef int (*fingerprint_api_get_info_t)(const struct device *dev,
-					  struct fingerprint_info *info);
+					  struct fingerprint_info *info,
+					  uint32_t capture_type);
 
 /**
  * @typedef fingerprint_api_maintenance_t
@@ -323,10 +326,12 @@ static inline int z_impl_fingerprint_config(const struct device *dev,
  * @retval other negative values indicates driver specific error.
  */
 __syscall int fingerprint_get_info(const struct device *dev,
-				   struct fingerprint_info *info);
+				   struct fingerprint_info *info,
+				   uint32_t capture_type);
 
 static inline int z_impl_fingerprint_get_info(const struct device *dev,
-					      struct fingerprint_info *info)
+					      struct fingerprint_info *info,
+					      uint32_t capture_type)
 {
 	const struct fingerprint_driver_api *api =
 		(const struct fingerprint_driver_api *)dev->api;
@@ -335,7 +340,7 @@ static inline int z_impl_fingerprint_get_info(const struct device *dev,
 		return -ENOTSUP;
 	}
 
-	return api->get_info(dev, info);
+	return api->get_info(dev, info, capture_type);
 }
 
 /**

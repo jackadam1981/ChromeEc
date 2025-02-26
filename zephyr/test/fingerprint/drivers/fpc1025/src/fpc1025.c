@@ -67,7 +67,8 @@ ZTEST_F(fpc1025, test_get_info)
 
 	/* We need to initialize driver first to initialize 'error' field */
 	zassert_ok(fingerprint_init(fixture->dev));
-	zassert_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_ok(fingerprint_get_info(
+		fixture->dev, &info, FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT));
 
 	zassert_equal(info.vendor_id, FOURCC('F', 'P', 'C', ' '));
 	zassert_equal(info.product_id, 9);

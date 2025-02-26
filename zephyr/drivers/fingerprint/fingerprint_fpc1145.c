@@ -347,7 +347,8 @@ static int fpc1145_deinit(const struct device *dev)
 }
 
 static int fpc1145_get_info(const struct device *dev,
-			    struct fingerprint_info *info)
+			    struct fingerprint_info *info,
+			    uint32_t capture_type)
 {
 	const struct fpc1145_cfg *cfg = dev->config;
 	struct fpc1145_data *data = dev->data;
