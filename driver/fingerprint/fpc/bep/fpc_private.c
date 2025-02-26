@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "fpc_bep_matcher.h"
 #include "fpc_bep_sensor.h"
 #include "fpc_bio_algorithm.h"
@@ -257,6 +258,29 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	uint16_t sensor_id;
 
 	memcpy(resp, &ec_fp_sensor_info, sizeof(struct ec_response_fp_info));
+
+	uint32_t fpc_capture_mode =
+		convert_fp_capture_mode_to_fpc_get_image_type(capture_type);
+
+	switch (fpc_capture_mode) {
+	case FPC_CAPTURE_PATTERN0:
+	case FPC_CAPTURE_PATTERN1:
+		resp->bpp = 8;
+		resp->frame_size = 88888;
+		break;
+	case FPC_CAPTURE_SIMPLE_IMAGE:
+	case FPC_CAPTURE_VENDOR_FORMAT:
+		resp->bpp = 16;
+		resp->frame_size = 161616;
+		break;
+	case FPC_CAPTURE_RESET_TEST:
+	case FPC_CAPTURE_QUALITY_TEST:
+		resp->bpp = 32;
+		resp->frame_size = 323232;
+		break;
+	default:
+		break;
+	}
 
 	if (fpc_get_hwid(&sensor_id))
 		return EC_RES_ERROR;
