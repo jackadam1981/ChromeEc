@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d97aaee2_eb995dc0",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:28:47Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:chromite/lib/subtool_lib.py;l\u003d271",
+      "parentUuid": "03020047_9ffd3a0b",
+      "range": {
+        "startLine": 21,
+        "startChar": 63,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "936c5c58_657d3e78",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 7
@@ -119,6 +143,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b3163379_9ec28f76",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0fcda3b_a8970d5e",
+      "range": {
+        "startLine": 85,
+        "startChar": 53,
+        "endLine": 85,
+        "endChar": 59
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bd294a78_2384db3f",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 7
@@ -163,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d60300c_21a0e65f",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd5bf18_195606b8",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fabeb5cc_898cd589",
@@ -176,6 +248,30 @@
       "writtenOn": "2025-02-26T16:25:39Z",
       "side": 1,
       "message": "Why not always use the command line tool? I imagine it\u0027s faster and more battle tested (especially w/ sparse files).",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "940a0949_5db395a3",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabeb5cc_898cd589",
       "range": {
         "startLine": 130,
         "startChar": 0,
