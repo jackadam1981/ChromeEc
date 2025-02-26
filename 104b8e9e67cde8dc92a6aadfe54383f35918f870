@@ -63,6 +63,30 @@
       },
       "revId": "104b8e9e67cde8dc92a6aadfe54383f35918f870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d30d0673_b9e8eb4f",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-26T20:12:53Z",
+      "side": 1,
+      "message": "I\u0027m changing this patch to adjust the T_SINK_WAIT_CAP to account for the 75ms of added wait in this function before unlocking",
+      "parentUuid": "3fae2bd5_b5f3d72f",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "104b8e9e67cde8dc92a6aadfe54383f35918f870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
