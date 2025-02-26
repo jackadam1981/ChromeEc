@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768ff89e_ce868937",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-26T01:40:18Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"Verfiy\" is a possible misspelling of \"Verify\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"Verfiy\" is a possible misspelling of \"Verify\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 250,
+        "startChar": 4,
+        "endLine": 250,
+        "endChar": 10
+      },
+      "revId": "5ed40aeadb5cb7e1ba21ab6dc8220195c6d5c182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
