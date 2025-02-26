@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e3693d_4f469c63",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca777af_9029facf",
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1137f11e_a6479959",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2a16f8_9f1fdcdc",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1137f11e_a6479959",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0cc5978_769742e2",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-02-26T22:29:16Z",
       "side": 1,
       "message": "No longer built in.",
+      "range": {
+        "startLine": 112,
+        "startChar": 29,
+        "endLine": 112,
+        "endChar": 37
+      },
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db1d90a_e80742de",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0cc5978_769742e2",
       "range": {
         "startLine": 112,
         "startChar": 29,
@@ -95,6 +161,24 @@
           ]
         }
       ],
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5a19f0_1b48fbc8",
+        "filename": "util/coreboot_sdk_portage_deps.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab16a3e9_9e7f1092",
       "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
