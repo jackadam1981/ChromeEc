@@ -32,8 +32,10 @@ def _ec_deps_impl(module_ctx):
     )
     _coreboot_sdk_subtool(
         "libstdcxx-i386-elf",
-        "14.2.0-r1/7669d6b5d20c58db775ae136aa17e46e74b2765d",
-        "1901d9bef995685bef0293d099b55b90fb694fa3af180c74e91acf539c94647a",
+        "14.2.0-r1/6293df09379108ce439762141f244bbae7035b6b",
+        "",
+        "chromeos-throw-away-bucket"
+
     )
     _coreboot_sdk_subtool(
         "arm-eabi",
