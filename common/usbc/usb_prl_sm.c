@@ -1351,8 +1351,8 @@ static void prl_hr_reset_layer_entry(const int port)
 	/* Disable RX */
 	if (IS_ENABLED(CONFIG_USB_CTVPD) || IS_ENABLED(CONFIG_USB_VPD))
 		vpd_rx_enable(0);
-	else
-		tcpm_set_rx_enable(port, 0);
+	//else
+	//	tcpm_set_rx_enable(port, 0);
 
 	/*
 	 * PD r3.0 v2.0, ss6.2.1.1.5:
