@@ -16,6 +16,24 @@
       "message": "Please pass the test by \"twister -p native_sim/native -s krabby/krabby.veluza\"",
       "revId": "e8f4178e5f93cc2620b31f895f994714a92b85bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b6dd53_9b553119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-02-26T05:47:03Z",
+      "side": 1,
+      "message": "Test twister -p native_sim/native -s krabby/krabby.veluza\" success",
+      "parentUuid": "c5c4ce5f_47ec3d8e",
+      "revId": "e8f4178e5f93cc2620b31f895f994714a92b85bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
