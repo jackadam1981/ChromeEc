@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af59c3b_16818ce5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2665,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-26T20:38:17Z",
+      "side": 1,
+      "message": "Let\u0027s make a new macro in this source file for this timeout so we don\u0027t need to pad this one with a magic number. We can call it something like `PDC_PD_DETECTION_TIMEOUT_MS`. It can still be derived from `PD_T_SINK_WAIT_CAP` but add a comment explaining that we needed to extend it to account for internal processing and PDC communciation delays.",
+      "range": {
+        "startLine": 2665,
+        "startChar": 9,
+        "endLine": 2665,
+        "endChar": 47
+      },
+      "revId": "a5a4c2b9fc8daf2d866482fec1896f00903fd564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bb407e_5f217a3e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2666,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-26T20:38:17Z",
+      "side": 1,
+      "message": "Is the same adjustment needed in `pdc_snk_typec_only_entry()`? It also triggers the Type-C-only timer.",
+      "range": {
+        "startLine": 2664,
+        "startChar": 2,
+        "endLine": 2666,
+        "endChar": 20
+      },
+      "revId": "a5a4c2b9fc8daf2d866482fec1896f00903fd564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
