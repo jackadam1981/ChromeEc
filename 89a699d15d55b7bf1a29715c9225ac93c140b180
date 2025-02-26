@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9164278c_5c4ab672",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-hdmi-port.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T18:11:24Z",
+      "side": 1,
+      "message": "Because you\u0027re not using the `data-speed` property, is this file needed?  Can you just use the `intel,modular-aic-port` node for now?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2dc032_894802c3",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-port.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T18:11:24Z",
+      "side": 1,
+      "message": "This file doesn\u0027t exist?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2ca54d_351a126b",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-port.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T18:11:24Z",
+      "side": 1,
+      "message": "You\u0027re fetching this property, but otherwise aren\u0027t using it.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb6b289_c413d4e2",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T18:11:24Z",
+      "side": 1,
+      "message": "Same here - can you use `intel,modular-aic-port` for the initial implementation?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
