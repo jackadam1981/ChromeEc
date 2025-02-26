@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca777af_9029facf",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:18:23Z",
+      "side": 1,
+      "message": "Handle workspace path",
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab16a3e9_9e7f1092",
+        "filename": "util/coreboot_sdk_portage_deps.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T22:18:23Z",
+      "side": 1,
+      "message": "Handle workspace path",
+      "fixSuggestions": [
+        {
+          "fixId": "a0c87f7b_8d6be957",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/coreboot_sdk_portage_deps.py",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "workspace \u003d pathlib.Path(__file__).resolve().parent.parent.parent\n"
+            }
+          ]
+        }
+      ],
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
