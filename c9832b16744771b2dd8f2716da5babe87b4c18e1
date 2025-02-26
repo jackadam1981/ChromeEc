@@ -131,6 +131,30 @@
       },
       "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13681d14_7cda1d97",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-02-26T07:07:38Z",
+      "side": 1,
+      "message": "It is neccassary to avoid double initialization in every case. `CONFIG_EC_HOST_CMD_INITIALIZE_AT_BOOT` is handled by backends in upstream. That means we can not set `CONFIG_EC_HOST_CMD_INITIALIZE_AT_BOOT\u003dy` when 2 backends are enabled. \n\nFYI there is [protection](https://github.com/zephyrproject-rtos/zephyr/blob/main/subsys/mgmt/ec_host_cmd/ec_host_cmd_handler.c#L30) in upstream that more than one backends can not be enabled with auto init.",
+      "parentUuid": "cf08efd7_94757745",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 48
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
