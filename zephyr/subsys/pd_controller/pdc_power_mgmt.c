@@ -726,9 +726,11 @@ struct pdc_port_t {
 	/** CONNECTOR_STATUS temp variable used with CONNECTOR_GET_STATUS
 	 * command */
 	union connector_status_t connector_status;
+	/* Sink path status of the port */
+	bool sink_path_status;
 	/** SINK_PATH_EN temp variable used with CMD_PDC_SET_SINK_PATH command
 	 */
-	bool sink_path_en;
+	bool sink_path_to_send;
 	/**
 	 * Time at which the current vbus value is expired and should be
 	 * re-queried.
@@ -1236,10 +1238,10 @@ static void handle_connector_status(struct pdc_port_t *port)
 	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
-	if (port->sink_path_en != status->sink_path_status) {
+	if (port->sink_path_status != status->sink_path_status) {
 		LOG_DBG("C%d: Sink path status change: %d", port_number,
 			status->sink_path_status);
-		port->sink_path_en = status->sink_path_status;
+		port->sink_path_status = status->sink_path_status;
 	}
 
 	/*
@@ -1313,6 +1315,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 			atomic_set_bit(port->snk_policy.flags,
 				       SNK_POLICY_NEW_SRC_CAPS_AVAILABLE);
 			LOG_INF("C%d: New SRC CAPs available", port_number);
+			k_event_post(&port->sm_event, PDC_SM_EVENT);
 		}
 
 		if (status->power_direction) {
@@ -1648,8 +1651,9 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
 		/* Check if we are the active charge port */
-		port->sink_path_en = charge_manager_get_active_charge_port() ==
-				     config->connector_num;
+		port->sink_path_to_send =
+			charge_manager_get_active_charge_port() ==
+			config->connector_num;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_SRC_CAPS)) {
@@ -1665,7 +1669,7 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_TYPEC_CURRENT)) {
-		if (port->sink_path_en) {
+		if (port->sink_path_status) {
 			charge_manager_set_supplier(config->connector_num,
 						    CHARGE_SUPPLIER_TYPEC);
 		}
@@ -1861,7 +1865,7 @@ static void pdc_unattached_run(void *obj)
 
 	switch (port->unattached_local_state) {
 	case UNATTACHED_SET_SINK_PATH_OFF:
-		port->sink_path_en = false;
+		port->sink_path_to_send = false;
 		port->unattached_local_state = UNATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
@@ -1942,7 +1946,7 @@ static void pdc_src_attached_run(void *obj)
 
 	switch (port->src_attached_local_state) {
 	case SRC_ATTACHED_SET_SINK_PATH_OFF:
-		port->sink_path_en = false;
+		port->sink_path_to_send = false;
 		port->src_attached_local_state =
 			SRC_ATTACHED_GET_CONNECTOR_CAPABILITY;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
@@ -2245,7 +2249,7 @@ static void pdc_snk_attached_run(void *obj)
 		LOG_INF("C: %d", max_ma);
 		LOG_INF("P: %d", max_mw);
 
-		if (port->sink_path_en) {
+		if (port->sink_path_status) {
 			charge_manager_set_supplier(config->connector_num,
 						    CHARGE_SUPPLIER_PD);
 		}
@@ -2285,8 +2289,9 @@ static void pdc_snk_attached_run(void *obj)
 		}
 
 		/* Test if battery should be charged from this port */
-		port->sink_path_en = charge_manager_get_active_charge_port() ==
-				     config->connector_num;
+		port->sink_path_to_send =
+			charge_manager_get_active_charge_port() ==
+			config->connector_num;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SNK_ATTACHED_GET_SINK_PDO:
@@ -2409,10 +2414,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_get_vbus_voltage(port->pdc, &port->vbus);
 		break;
 	case CMD_PDC_SET_SINK_PATH:
-		LOG_INF("C%d: sink_path_en=%d, chg_mgr_active_charge_port=%d",
-			config->connector_num, port->sink_path_en,
+		LOG_INF("C%d: sink_path_to_send=%d, chg_mgr_active_charge_port=%d",
+			config->connector_num, port->sink_path_to_send,
 			charge_manager_get_active_charge_port());
-		rv = pdc_set_sink_path(port->pdc, port->sink_path_en);
+		rv = pdc_set_sink_path(port->pdc, port->sink_path_to_send);
 		break;
 	case CMD_PDC_READ_POWER_LEVEL:
 		rv = pdc_read_power_level(port->pdc);
@@ -2617,17 +2622,20 @@ static void pdc_send_cmd_wait_run(void *obj)
 	} else if (atomic_test_and_clear_bit(port->cci_flags,
 					     CCI_CMD_COMPLETED)) {
 		LOG_DBG("CCI_CMD_COMPLETED");
-		if (port->cmd->cmd == CMD_PDC_GET_CONNECTOR_STATUS) {
+
+		switch (port->cmd->cmd) {
+		case CMD_PDC_GET_CONNECTOR_STATUS:
 			handle_connector_status(port);
 			return;
-		} else {
-			if (port->cmd->cmd == CMD_PDC_GET_ATTENTION_VDO) {
-				handle_attention_vdo(port);
-			}
-
-			set_pdc_state(port, port->send_cmd_return_state);
-			return;
+		case CMD_PDC_GET_ATTENTION_VDO:
+			handle_attention_vdo(port);
+			break;
+		default:
+			break;
 		}
+
+		set_pdc_state(port, port->send_cmd_return_state);
+		return;
 		/*
 		 * Note: If the command was CONNECTOR_RESET, and the type of
 		 * reset was a Hard Reset, then it would also make sense to
@@ -2760,7 +2768,7 @@ static void pdc_src_typec_only_run(void *obj)
 		port->src_typec_attached_local_state =
 			SRC_TYPEC_ATTACHED_DEBOUNCE;
 
-		port->sink_path_en = false;
+		port->sink_path_to_send = false;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SRC_TYPEC_ATTACHED_DEBOUNCE:
@@ -2857,7 +2865,7 @@ static void pdc_snk_typec_only_run(void *obj)
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_UPDATE_TYPEC_CURRENT);
 
-		if (port->sink_path_en) {
+		if (port->sink_path_status) {
 			charge_manager_set_supplier(config->connector_num,
 						    CHARGE_SUPPLIER_TYPEC);
 		}
@@ -3533,6 +3541,7 @@ int pdc_power_mgmt_set_active_charge_port(int charge_port)
 	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
 			       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
+		k_event_post(&pdc_data[i]->port.sm_event, PDC_SM_EVENT);
 	}
 
 	return EC_SUCCESS;

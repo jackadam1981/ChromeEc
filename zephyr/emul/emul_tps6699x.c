@@ -722,6 +722,7 @@ static int emul_tps6699x_set_connector_status(
 
 	union reg_received_identity_data_object *received_identity_data_object;
 	uint16_t voltage;
+	union conn_status_change_bits_t change_bits;
 
 	data->connector_status = *connector_status;
 
@@ -753,6 +754,17 @@ static int emul_tps6699x_set_connector_status(
 			(union reg_received_identity_data_object *)data->reg_val
 				[REG_RECEIVED_SOP_PRIME_IDENTITY_DATA_OBJECT];
 		received_identity_data_object->response_type = 0;
+	}
+
+	change_bits.raw_value = connector_status->raw_conn_status_change_bits;
+	if (change_bits.supported_provider_caps ||
+	    data->connector_status.connect_status == 0) {
+		union reg_power_path_status *power_path_status =
+			(union reg_power_path_status *)
+				data->reg_val[REG_POWER_PATH_STATUS];
+		/* Turn off the sink path */
+		power_path_status->pa_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
+		power_path_status->pb_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
 	}
 	return 0;
 }
