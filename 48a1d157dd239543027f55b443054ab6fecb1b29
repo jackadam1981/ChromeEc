@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1137f11e_a6479959",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T22:29:16Z",
+      "side": 1,
+      "message": "Hrmm, this will probably be a cross filesystem move which isn\u0027t atomic. Make the tmp_dir inside the local_filepath.",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0cc5978_769742e2",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T22:29:16Z",
+      "side": 1,
+      "message": "No longer built in.",
+      "range": {
+        "startLine": 112,
+        "startChar": 29,
+        "endLine": 112,
+        "endChar": 37
+      },
+      "revId": "48a1d157dd239543027f55b443054ab6fecb1b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab16a3e9_9e7f1092",
         "filename": "util/coreboot_sdk_portage_deps.py",
         "patchSetId": 12
