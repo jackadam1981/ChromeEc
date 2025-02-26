@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "347bea57_0bfec12d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-26T17:43:12Z",
+      "side": 1,
+      "message": "See next CL in stack.",
+      "parentUuid": "bfc0a3ef_ff00f8fa",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2023,
+        "endChar": 0
+      },
+      "revId": "708e141144421d98268a8d10d3a013776c6054af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52be261d_0dab071f",
