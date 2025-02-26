@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "20f15bcb_368142dc",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I like the idea of having more confidence in our maximum stack usage than just running for a while and checking how much we used, but I\u0027m really just not a fan of how this tool works.  It feels really brittle.  Someone adding just a single comment to one of the files will totally break everyone\u0027s yaml!  :(  You add that to the fact that boards running similar code all have to have their own copies of the annotations and it feels like it\u0027s more work than it\u0027s worth to maintain this.  Specifically without the annotations being correct (and they will always be breaking) you can still get a dangerous \"you have plenty of stack space!\" result that gives you a warm happy feeling even when things are broken.\n\nIt feels like annotations need to be moved inline to the code itself somehow.  This would make them less brittle and also allow everyone compiling the same code to get the same annotations.  Then if one board notices a bug and fixes it then everyone\u0027s annotations get better.\n\nIn any case, I know this isn\u0027t something you invented and that\u0027s just how this tool works.  I just still am not convinced of its value.\n\nIf you feel like this is really providing value to you, I won\u0027t stand in the way of you checking it in.  As I said, I\u0027m just not convinced it\u0027s worthwhile.\n\nI haven\u0027t personally gone and checked your annotations.  If you want to check this in and want someone to double-check your work I can.  Let me know.\n\nNOTE: see also my comments in the CL:2318374 about how the exception stack frame is probably over-estimating in most cases (we don\u0027t use floating point in most tasks).",
       "revId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f434ffd1_8e81c822",
         "filename": "/PATCHSET_LEVEL",
@@ -32,8 +33,219 @@
       "message": "Agree. The tool is easy to be broken. One example is some code change may make the annotation invalid and lose the call path and result a smaller stack usage, that will mislead the users.\n\nAnd adding all the annotations takes time. Even they are all added, the result is correct just this build snapshot. In the following builds that have code change, the annotation will become out-of-dated and the result is no longer correct. This process does not scale. The time spent on it seems to be wasted.\n\nI think I will just keep this annotation file for my private use and not submit it, to prevent any misleading info.",
       "parentUuid": "20f15bcb_368142dc",
       "revId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Coverage",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Coverage\u003dMAX,user\u003dnon_uploader OR -label:Code-Coverage\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Coverage=MAX,user=non_uploader OR -label:Code-Coverage=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Coverage=MAX,user=non_uploader","label:Code-Coverage=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1","label:Code-Review=MIN"]}
+      },
+      "patchSetCommitId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "MergeApprovedYolo",
+        "description": {
+          "value": "Submit requirement for Release-Owner (go/cros-merge-controls)"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Release-Owner\u003dMAX"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Release-Owner=MAX"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "patchSetCommitId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "No-Unresolved-Comments",
+        "description": {
+          "value": "Changes that have unresolved comments are not submittable. Unless overridden with Unresolved-Comment-Reason: \u003creason\u003e line in change message."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "has:unresolved"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "-has:unresolved"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "message:\"^.*Unresolved-Comment-Reason:.*\""
+          }
+        },
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:unresolved"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-has:unresolved"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"message:\"^.*Unresolved-Comment-Reason:.*\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["message:\"^.*Unresolved-Comment-Reason:.*\""]}
+      },
+      "patchSetCommitId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval. Using a trusted device is required, see go/gerrit-onboarding#review-enforcement."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["is:review-enforced_gerrit"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforcement-satisfied_gerrit"]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Verified",
+        "description": {
+          "value": "CI or human verified the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Verified=MAX","label:Verified=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
