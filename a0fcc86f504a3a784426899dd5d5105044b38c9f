@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767f6d37_6898ed6d",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T22:03:10Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "a0fcc86f504a3a784426899dd5d5105044b38c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4347716_1892aea4",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T22:03:10Z",
+      "side": 1,
+      "message": "Maybe print something easier to parse like space separted string?\n\nThen you can do\n\n```\nname, version, hash, sha512 \u003d item.split(\" \")\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "a0fcc86f504a3a784426899dd5d5105044b38c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1ff317_6967d631",
+        "filename": "util/coreboot_sdk_portage_deps.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T22:03:10Z",
+      "side": 1,
+      "message": "Only if you wanted, you could source a Manifest file and get the SHA512 of the files so you could pass those to bazel. Though I guess that gets tricky since each Manifest file only has the toolchains they use.\n\nIgnore this suggestion.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "a0fcc86f504a3a784426899dd5d5105044b38c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

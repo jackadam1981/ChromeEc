@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac380f13_ab99fd7a",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T22:03:10Z",
+      "side": 1,
+      "message": "Maybe set a variable if one fails, and then raise an error if any failed to download? We shoudl ensure the script doesn\u0027t exit w/ 0 if there were any failures.",
+      "parentUuid": "5c461d5d_bfefc4a5",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "0618506cf0a0bacb18385ce7c747bbee118bde08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c951c8f0_cbcac56b",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 9
