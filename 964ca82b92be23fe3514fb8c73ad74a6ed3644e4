@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2020102_1c035bd9",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1145/src/fpc1145.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-26T18:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64acc50b_4d015c2c",
+      "range": {
+        "startLine": 286,
+        "startChar": 16,
+        "endLine": 286,
+        "endChar": 17
+      },
+      "revId": "964ca82b92be23fe3514fb8c73ad74a6ed3644e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9db0328a_eb012464",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-26T14:00:05Z",
       "side": 1,
       "message": "This is tested by `test_acquire_image_not_supported`",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 1
+      },
+      "revId": "964ca82b92be23fe3514fb8c73ad74a6ed3644e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94de5a1b_b360baa3",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1145/src/fpc1145.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-26T18:36:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db0328a_eb012464",
       "range": {
         "startLine": 306,
         "startChar": 0,
