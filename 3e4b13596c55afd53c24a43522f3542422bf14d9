@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28c9312_4c30b7b6",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T20:50:17Z",
+      "side": 1,
+      "message": "Ah, the build id... I wonder which one it chooses.",
+      "parentUuid": "d97aaee2_eb995dc0",
+      "range": {
+        "startLine": 21,
+        "startChar": 63,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "936c5c58_657d3e78",
