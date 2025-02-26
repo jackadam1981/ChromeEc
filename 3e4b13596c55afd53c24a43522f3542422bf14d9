@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a517f84b_e5a31dda",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:29:12Z",
+      "side": 1,
+      "message": "I think this is OBE, feel free to re-open if you disagree",
+      "parentUuid": "6d215c3f_2d3e4d5b",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0fcda3b_a8970d5e",
