@@ -699,6 +699,7 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 		status = TCPC_TX_COMPLETE_SUCCESS;
 		break;
 	case TCPCI_MSG_TX_HARD_RESET:
+		ccprints("p%d tx hardreset", port);
 		status = it8xxx2_send_hw_reset(port);
 		break;
 	case TCPCI_MSG_CABLE_RESET:
