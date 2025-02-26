@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d37dd23_ab49c12c",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "You should be able to source this by using:\n\n```\nmodule_ctx.execute(\"util/coreboot_sdk_portage_deps.py\")\n```\nhttps://bazel.build/rules/lib/builtins/module_ctx#execute\n\nThen you can split the lines.",
+      "range": {
+        "startLine": 20,
+        "startChar": 33,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03020047_9ffd3a0b",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "Pass in the hash? Oh, you can\u0027t since the hashes are different... What kind of hash is the filename?",
+      "range": {
+        "startLine": 21,
+        "startChar": 63,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936c5c58_657d3e78",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "Hrmm, are we guaranteed to have this installed outside the chroot?",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0fcda3b_a8970d5e",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "How about `~/.cache/coreboot-sdk`?",
+      "range": {
+        "startLine": 85,
+        "startChar": 53,
+        "endLine": 85,
+        "endChar": 59
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd294a78_2384db3f",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "Feel free to ignore since this is a personal preference.\n\nCan we invoke curl and tar and avoid using the python libs alltogether?\n\n```\ncurl https://storage.googleapis.com/chromiumos-sdk/toolchains/coreboot-sdk-arm-eabi/14.2.0-r3/a9e789245bfa4b88b07da734c4bcdcf8eb5348eb.tar.zst | tar -I pzstd -x -C /tmp/arm-eabi.tmp/\nmv /tmp/arm-eabi.tmp/ /tmp/arm-eabi/\n```\n\nOr an even crazier idea, just write this script in bash 😊\n\nBut again, feel free to ignore this suggestion entirely.",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 57
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd5bf18_195606b8",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "https://stackoverflow.com/questions/16694907/download-large-file-in-python-with-requests says using `shutil.copyfileobj` is faster.",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fabeb5cc_898cd589",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "Why not always use the command line tool? I imagine it\u0027s faster and more battle tested (especially w/ sparse files).",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99e032b_b058590a",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0a41f0_7296ca98",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T16:25:39Z",
+      "side": 1,
+      "message": "It\u0027s strange that a `get_portage_deps()` function writes to the default output file. Maybe split the function into two, one that gets and one that writes? You shouldn\u0027t need to write here right?",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
