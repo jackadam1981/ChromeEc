@@ -355,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d13d1f3e_bb78f598",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T18:32:40Z",
+      "side": 1,
+      "message": "I guess, why do you want to keep the bazel flow in this script?",
+      "parentUuid": "e1fe8100_0b450eda",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c0a41f0_7296ca98",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 7
@@ -390,6 +414,30 @@
       "side": 1,
       "message": "Having it write the bazel deps file by default guarantees that it will be updated when you run bazel since this function gets called by coreboot_sdk.py in init_toolchains.  Open to suggestion, but that was why it was done this way",
       "parentUuid": "9c0a41f0_7296ca98",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd81d3d_35f13518",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T18:32:40Z",
+      "side": 1,
+      "message": "Is that only required for the --shell\u003dfalse flow?",
+      "parentUuid": "85261767_93fea7c2",
       "range": {
         "startLine": 186,
         "startChar": 25,

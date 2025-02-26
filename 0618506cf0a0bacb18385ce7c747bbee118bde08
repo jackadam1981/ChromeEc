@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "0618506cf0a0bacb18385ce7c747bbee118bde08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0caacb_2669b76a",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T18:32:40Z",
+      "side": 1,
+      "message": "Why the continues? Are the toolchains optional?",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "0618506cf0a0bacb18385ce7c747bbee118bde08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c951c8f0_cbcac56b",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-26T18:32:40Z",
+      "side": 1,
+      "message": "Use a .tmp path and rename once the extraction completes. This way you don\u0027t end up with a corrupt directory if this crashes for some reason.",
+      "range": {
+        "startLine": 145,
+        "startChar": 54,
+        "endLine": 145,
+        "endChar": 65
+      },
+      "revId": "0618506cf0a0bacb18385ce7c747bbee118bde08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
