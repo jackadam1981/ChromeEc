@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c461d5d_bfefc4a5",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T21:15:57Z",
+      "side": 1,
+      "message": "They shouldn\u0027t be optional, but it prints the full list of downloaded toolchains at the end, and the errors will be in the log, so my thought was you run once and see all of the errors.",
+      "parentUuid": "8a0caacb_2669b76a",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "0618506cf0a0bacb18385ce7c747bbee118bde08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c951c8f0_cbcac56b",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 9
