@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c4538d_2e9418fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T16:27:42Z",
+      "side": 1,
+      "message": "Nit - Use b/370072796 as the low coverage reason. We don\u0027t have any unit test for memory mapped peripherals.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "9c1c07eee04d95207d1492281d592e016029cfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
