@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe240d6_a84f0c62",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T23:14:49Z",
+      "side": 1,
+      "message": "I think bump this to 1000ms, as your empirical testing shows 750ms might be on the edge.  Also this rename to better reflect the purpose.\n\nEither the PDC will \"upgrade\" to a PD capability device and we\u0027ll cancel the timer, or we wait an extra 250 ms before we potentially offer the non-PD device 3A.\n\nI opened b/399462849 to get clarification from the vendor on this.\n\n```suggestion\n#define TYPEC_ONLY_SINK_DEBOUNCE_TIME_MS (1000 * MSEC)\n```",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "95c22f43450a6a0a70cbf56722c504a49c40bfe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
