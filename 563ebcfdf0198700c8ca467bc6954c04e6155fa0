@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76f82d8_5c851fa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-26T20:11:31Z",
+      "side": 1,
+      "message": "Please run the pre-submit checks using `repo upload` or manually run `~/chromiumos/src/repohooks/pre-upload.py`",
+      "revId": "563ebcfdf0198700c8ca467bc6954c04e6155fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
