@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d215c3f_2d3e4d5b",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:01:52Z",
+      "side": 1,
+      "message": "Likely no, but it also doesn\u0027t run outside the chroot without this.  We could look into using a wheel",
+      "parentUuid": "936c5c58_657d3e78",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0fcda3b_a8970d5e",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 7
@@ -187,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1fe8100_0b450eda",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:01:52Z",
+      "side": 1,
+      "message": "This checks if you\u0027re using the \"right\" version of bazel and switches to using the shell if you\u0027re not, the previous behavior was to exit if not",
+      "parentUuid": "d99e032b_b058590a",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c0a41f0_7296ca98",
         "filename": "util/coreboot_sdk.py",
         "patchSetId": 7
@@ -198,6 +246,30 @@
       "writtenOn": "2025-02-26T16:25:39Z",
       "side": 1,
       "message": "It\u0027s strange that a `get_portage_deps()` function writes to the default output file. Maybe split the function into two, one that gets and one that writes? You shouldn\u0027t need to write here right?",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "3e4b13596c55afd53c24a43522f3542422bf14d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85261767_93fea7c2",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-26T17:01:52Z",
+      "side": 1,
+      "message": "Having it write the bazel deps file by default guarantees that it will be updated when you run bazel since this function gets called by coreboot_sdk.py in init_toolchains.  Open to suggestion, but that was why it was done this way",
+      "parentUuid": "9c0a41f0_7296ca98",
       "range": {
         "startLine": 186,
         "startChar": 25,
