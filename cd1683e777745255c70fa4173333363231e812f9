@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d0d247_50d8fdcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-02-26T07:47:35Z",
+      "side": 1,
+      "message": "krabby board tests broken\n`ld.lld: error: undefined symbol: extpower_interrupt` \n\nplease try `twister -T zephyr/test/krabby`",
+      "revId": "cd1683e777745255c70fa4173333363231e812f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
