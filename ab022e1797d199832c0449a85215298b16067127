@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "d2c5abef_339b80c2",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Sorry, Yicheng, this slipped through the cracks: someone who is more involved with host and nucleo boards should review this.",
       "revId": "ab022e1797d199832c0449a85215298b16067127",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "dfe84866_50d8ff0a",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "No problem! I\u0027ll assign to someone else then.",
       "parentUuid": "d2c5abef_339b80c2",
       "revId": "ab022e1797d199832c0449a85215298b16067127",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "233c43cb_9ce8704c",
         "filename": "baseboard/nucleo-f412zg/base-board.h",
@@ -49,10 +50,10 @@
       "side": 1,
       "message": "Why are we enabling this in baseboard?\n\nThis throws off the RO rwsig assumption.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/board/nucleo-dartmonkey/board.h;l\u003d46-50?ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec\n\nWe already enable this in RW where we need it for FP stuff.",
       "revId": "ab022e1797d199832c0449a85215298b16067127",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ec5cd9de_c36f9e0c",
         "filename": "baseboard/nucleo-f412zg/base-board.h",
@@ -67,10 +68,10 @@
       "message": "This was for testing on-device tests that use the new shared_mem (malloc), see http://crrev/c/2242354. Since we actually use it in RW, tests should also use this new shared_mem (malloc). Maybe we should not run the utils test on nucleo-f412zg and nucleo-h743zi, but only run utils test on fingerprint boards.\n\nAlternatively, if we still run utils test on these nucleo boards, we disable CONFIG_MALLOC like you said, and the tests will use the old common/share_mem.c. We may want to add a comment in that case, it took me one afternoon to figure out there are two implementations of shared_mem!",
       "parentUuid": "233c43cb_9ce8704c",
       "revId": "ab022e1797d199832c0449a85215298b16067127",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "bb524197_001abff0",
         "filename": "baseboard/nucleo-f412zg/base-board.h",
@@ -85,8 +86,219 @@
       "message": "I think both implementations should be tested, but that utils test that you mention in http://crrev/c/2242354 looks pretty specific to the classic shared_mem single-shot allocator. The shmalloc seems to be tested in https://github.com/coreboot/chrome-ec/blob/master/test/shmalloc.c and is enabled specifically in https://github.com/coreboot/chrome-ec/blob/master/test/test_config.h#L233 .\n\nYou can enable test specific configs in the following file, but again, I don\u0027t think you want to enable CONFIG_MALLOC for that util test:\nhttps://github.com/coreboot/chrome-ec/blob/master/test/test_config.h",
       "parentUuid": "ec5cd9de_c36f9e0c",
       "revId": "ab022e1797d199832c0449a85215298b16067127",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Code-Coverage",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Coverage\u003dMAX,user\u003dnon_uploader OR -label:Code-Coverage\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Coverage=MAX,user=non_uploader OR -label:Code-Coverage=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Coverage=MAX,user=non_uploader","label:Code-Coverage=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "ab022e1797d199832c0449a85215298b16067127",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Review=MAX,user=non_uploader","label:Code-Review=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1","label:Code-Review=MIN"]}
+      },
+      "patchSetCommitId": "ab022e1797d199832c0449a85215298b16067127",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "MergeApprovedYolo",
+        "description": {
+          "value": "Submit requirement for Release-Owner (go/cros-merge-controls)"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Release-Owner\u003dMAX"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Release-Owner=MAX"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:mobiletc-prebuild@google.com"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[]}
+      },
+      "patchSetCommitId": "ab022e1797d199832c0449a85215298b16067127",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "No-Unresolved-Comments",
+        "description": {
+          "value": "Changes that have unresolved comments are not submittable. Unless overridden with Unresolved-Comment-Reason: \u003creason\u003e line in change message."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "has:unresolved"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "-has:unresolved"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "message:\"^.*Unresolved-Comment-Reason:.*\""
+          }
+        },
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:unresolved"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-has:unresolved"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"message:\"^.*Unresolved-Comment-Reason:.*\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["message:\"^.*Unresolved-Comment-Reason:.*\""]}
+      },
+      "patchSetCommitId": "ab022e1797d199832c0449a85215298b16067127",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two Google employees must approve the change. Uploading the change or voting positively on Code-Review count as approval. Using a trusted device is required, see go/gerrit-onboarding#review-enforcement."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["is:review-enforced_gerrit"],"failingAtoms":[]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforcement-satisfied_gerrit"]}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "ab022e1797d199832c0449a85215298b16067127",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Verified",
+        "description": {
+          "value": "CI or human verified the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"]}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Verified=MAX"],"failingAtoms":["label:Verified=MIN"]}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"]}
+      },
+      "patchSetCommitId": "ab022e1797d199832c0449a85215298b16067127",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
