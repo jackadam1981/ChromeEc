@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8f6e71_88c066e6",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-26T18:24:35Z",
+      "side": 1,
+      "message": "Is it possible to reach this point with `bytes` less than `1`? If so, that might be the one case where we want to return `-EIO` due to an empty I2C write, but not sure that can actually happen.",
+      "range": {
+        "startLine": 974,
+        "startChar": 1,
+        "endLine": 974,
+        "endChar": 44
+      },
+      "revId": "66cc30c6251487444e983b5f00e3bb209eb76f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
