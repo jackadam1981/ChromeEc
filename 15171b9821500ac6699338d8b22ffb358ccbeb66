@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5831c797_04fcf157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-02-26T23:37:45Z",
+      "side": 1,
+      "message": "Passing capture type to the `fingerprint_get_info` command is not a good idea. Instead, the command could return array of capture type and their parameters.",
+      "revId": "15171b9821500ac6699338d8b22ffb358ccbeb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
