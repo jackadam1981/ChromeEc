@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e87ad32_c7d2da04",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2665,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-26T22:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4af59c3b_16818ce5",
+      "range": {
+        "startLine": 2665,
+        "startChar": 9,
+        "endLine": 2665,
+        "endChar": 47
+      },
+      "revId": "a5a4c2b9fc8daf2d866482fec1896f00903fd564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8bb407e_5f217a3e",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "`tSinkWaitCap` isn\u0027t the correct timeout to be using as this timer is for use by the SINK to determine when to send a Hard Reset to the SOURCE.\n\nFor the moment, we should create a custom timeout field to debouce the non-PD source state.  The PD spec says a SOURCE can send as many as 50 SourceCaps messages with an interval of 200ms.  This could mean as long as 10 seconds to wait for the SINK partner to start responding to PD messages.  But I don\u0027t think we should increase the debounce from 575 ms to 10s just yet.  Based on Brandon\u0027s testing - we could use 750ms or 1000ms.\n\nThis new debounce timer should only be used for the non-PD source states at the moment.\n\nI\u0027ll start a conversation with the PDC vendor, as based on the PD trace Brandon captured, the PDC should have indicated the partner was PD capable almost immediately.",
       "parentUuid": "d8bb407e_5f217a3e",
+      "range": {
+        "startLine": 2664,
+        "startChar": 2,
+        "endLine": 2666,
+        "endChar": 20
+      },
+      "revId": "a5a4c2b9fc8daf2d866482fec1896f00903fd564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd02098_9ea3fa5c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2666,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-26T22:39:09Z",
+      "side": 1,
+      "message": "I set the value to 750 as its a more round number should I change it back to (T_SINK_WAIT_CAP + 75 MSEC)? I can adjust the commit message as needed to clarify why it is needed for TYPEC SRC only and not SINK.",
+      "parentUuid": "97b97cee_0bfcbe4e",
       "range": {
         "startLine": 2664,
         "startChar": 2,
