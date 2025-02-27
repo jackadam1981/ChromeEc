@@ -102,6 +102,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab51020b_e97a813b",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7204813_d6963b68",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85ddf6cc_3e00a9f2",
@@ -139,6 +163,30 @@
           ]
         }
       ],
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32f2160_3fe18508",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ddf6cc_3e00a9f2",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 43
+      },
       "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -238,6 +286,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea553c40_94a4067d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8224,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09cbe2b6_ecd2936b",
+      "range": {
+        "startLine": 8223,
+        "startChar": 0,
+        "endLine": 8224,
+        "endChar": 61
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de7e81b6_ab03e706",
@@ -299,6 +371,30 @@
       "side": 1,
       "message": "Yep, we do want to try to reuse the existing capture types, since it will require a lot of software churn, every time we add new types. Your proposed  mapping sounds fine to me. @fsammoura@google.com, does this seem resonable?\n\nPlease just document what the pattern0/pattern1 do in the Egis context. This should be in public code.",
       "parentUuid": "df672c58_8a4b1648",
+      "range": {
+        "startLine": 8225,
+        "startChar": 0,
+        "endLine": 8226,
+        "endChar": 65
+      },
+      "revId": "939291806b1c1a8445e18d45fcdba901ae5ff7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf8208b_d9db4d5a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8226,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e610866_1fb7155b",
       "range": {
         "startLine": 8225,
         "startChar": 0,
