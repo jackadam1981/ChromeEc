@@ -142,6 +142,30 @@
       },
       "revId": "a33ef7b2adffae044a5798583f702061e1573054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d28638_79f689af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-27T18:55:16Z",
+      "side": 1,
+      "message": "Ack, I added the comment and deleted the definition of the array.",
+      "parentUuid": "7b2f7530_00d1acb0",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a33ef7b2adffae044a5798583f702061e1573054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
