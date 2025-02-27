@@ -20,6 +20,87 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba371f9b_bd8c7f23",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T23:46:44Z",
+      "side": 1,
+      "message": "we should rename this to `upload_8_bit_pgm_image`",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "de5b1726_75128b48",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "static void upload_8_bit_pgm_image(uint8_t *frame)\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": " * Send the current Fingerprint buffer to the host as \u0027upload_8_bit_pgm_image\u0027\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 166,
+                "startChar": 0,
+                "endLine": 167,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tupload_8_bit_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": " * upload_8_bit_pgm_image().\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 228,
+                "startChar": 0,
+                "endLine": 229,
+                "endChar": 0
+              },
+              "replacement": "\t\tupload_8_bit_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1b85068db999b97e6e875719776859e301fa0d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef24834a_82f2bd70",
         "filename": "common/fpsensor/fpsensor_debug.cc",
         "patchSetId": 7
