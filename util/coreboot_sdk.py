@@ -41,6 +41,7 @@ toolchain_name_map = {
 
 def get_toolchains_shell(
     portage_toolchains: Dict[str, Tuple],
+    portage_overrides: Dict[str, Tuple],
     local_filepath: Union[str, "os.PathLike[str]"] = os.path.expanduser(
         "~/.cache/coreboot-sdk"
     ),
@@ -49,6 +50,7 @@ def get_toolchains_shell(
 
     Args:
         portage_toolchains: Dict of architectures to download
+        portage_overrides: Dict of GCS bucket overrides
         local_filepath: Path to download the toolchains to
 
     Returns:
@@ -57,7 +59,7 @@ def get_toolchains_shell(
     result = {}
     success = True
     for target, (version, toolchain_hash) in portage_toolchains.items():
-        # TODO JPM support overrides
+        gcs_bucket = portage_overrides.get(target) or "chromiumos-sdk"
         output_path = local_filepath + "/" + target
         output_toolchain = output_path + "/" + toolchain_hash
         tempfile.tempdir = output_path
@@ -70,9 +72,13 @@ def get_toolchains_shell(
                 print(
                     f"Skipping {downloaded_file} because the output dir exists"
                 )
+                result[
+                    toolchain_name_map.get(target)
+                    or f"COREBOOT_SDK_ROOT_{target}"
+                ] = output_toolchain
                 continue
             src_uri = (
-                "https://storage.googleapis.com/chromiumos-sdk/toolchains/coreboot-sdk"
+                f"https://storage.googleapis.com/{gcs_bucket}/toolchains/coreboot-sdk"
                 f"-{target}/{version}/{toolchain_hash}.tar.zst"
             )
 
@@ -145,9 +151,9 @@ def init_toolchain() -> Dict[str, str]:
         print("COREBOOT_SDK_ROOT already set by environment, returning")
         return {}
 
-    portage_toolchains = get_portage_deps()
+    portage_toolchains, portage_overrides = get_portage_deps()
 
-    return get_toolchains_shell(portage_toolchains)
+    return get_toolchains_shell(portage_toolchains, portage_overrides)
 
 
 def main():
