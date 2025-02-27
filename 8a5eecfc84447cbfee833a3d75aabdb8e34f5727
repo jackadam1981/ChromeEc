@@ -264,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1cc52f_0f66f356",
+        "filename": "tpm_generated/ffi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-02-27T00:36:15Z",
+      "side": 1,
+      "message": "i meant that  hmac_data.size() is constant iv size plus update_size + final_size and no resize in line 183 is needed.\n\nif combined with more complex construct of hmac_data it can reduce code a bit. but again, it probably doesn\u0027t matter here.",
+      "parentUuid": "08f5db2e_3440925a",
+      "range": {
+        "startLine": 187,
+        "startChar": 44,
+        "endLine": 187,
+        "endChar": 60
+      },
+      "revId": "8a5eecfc84447cbfee833a3d75aabdb8e34f5727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fe1c653_351e9f7d",
