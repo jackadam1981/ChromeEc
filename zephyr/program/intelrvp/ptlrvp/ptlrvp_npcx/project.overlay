@@ -24,14 +24,6 @@
 #include "../temp_sensor.dts"
 #include "../usbc.dtsi"
 
-/*
- * Using IT8801 MFD driver
- * These lines can be deleted after all PTL platforms support the MFD driver.
- * b/386325459
- */
-/delete-node/ &kb_discrete;
-/delete-node/ &int_ioex_kbd_intr_n;
-
 &it8801_mfd {
 	irq-gpios = <&gpio7 0 GPIO_ACTIVE_HIGH>;
 };

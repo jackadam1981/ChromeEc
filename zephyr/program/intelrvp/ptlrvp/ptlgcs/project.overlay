@@ -25,14 +25,12 @@
 #include "../led_policy.dtsi"
 
 /* I2C_CHARGER */
-/delete-node/ &kb_discrete;
 /delete-node/ &pca95xx_0;
 /delete-node/ &pca95xx_1;
 /delete-node/ &rvp_board_id;
 /delete-node/ &seven_seg_display;
 
 /* gpio-interrupts */
-/delete-node/ &int_ioex_kbd_intr_n;
 /delete-node/ &int_vol_up;
 /delete-node/ &int_vol_dn;
 
