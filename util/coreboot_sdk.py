@@ -56,8 +56,11 @@ def get_toolchains_shell(
     """
     result = {}
     success = True
-    for target, (version, toolchain_hash) in portage_toolchains.items():
-        # TODO JPM support overrides
+    for target, (
+        gcs_bucket,
+        version,
+        toolchain_hash,
+    ) in portage_toolchains.items():
         output_path = local_filepath + "/" + target
         output_toolchain = output_path + "/" + toolchain_hash
         tempfile.tempdir = output_path
@@ -70,9 +73,13 @@ def get_toolchains_shell(
                 print(
                     f"Skipping {downloaded_file} because the output dir exists"
                 )
+                result[
+                    toolchain_name_map.get(target)
+                    or f"COREBOOT_SDK_ROOT_{target}"
+                ] = output_toolchain
                 continue
             src_uri = (
-                "https://storage.googleapis.com/chromiumos-sdk/toolchains/coreboot-sdk"
+                f"https://storage.googleapis.com/{gcs_bucket}/toolchains/coreboot-sdk"
                 f"-{target}/{version}/{toolchain_hash}.tar.zst"
             )
 
@@ -82,7 +89,7 @@ def get_toolchains_shell(
                 ) as dest_file:
                     shutil.copyfileobj(source_file, dest_file)
             except urllib.error.HTTPError as e:
-                print(f"HTTP Error: {e.code} - {e.reason}")
+                print(f"HTTP Error: {e.code} - {e.reason}: {src_uri}")
                 success = False
                 continue
             except TimeoutError as e:
