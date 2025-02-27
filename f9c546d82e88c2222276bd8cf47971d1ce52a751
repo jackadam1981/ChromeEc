@@ -16,6 +16,24 @@
       "message": "i\u0027m delaying submission until we\u0027ve confirmed in-use units have\nthe required charger in place.",
       "revId": "f9c546d82e88c2222276bd8cf47971d1ce52a751",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b312778_608571c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-02-27T05:13:33Z",
+      "side": 1,
+      "message": "intel confirmed this will be OK.\nhttps://b.corp.google.com/issues/395130929#comment34",
+      "parentUuid": "97ce5018_761a3fb2",
+      "revId": "f9c546d82e88c2222276bd8cf47971d1ce52a751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
