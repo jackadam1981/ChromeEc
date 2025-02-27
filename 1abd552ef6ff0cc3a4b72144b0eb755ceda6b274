@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69f7db2_f1f8f329",
+        "filename": "bazel/deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-27T20:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79bd36c_691b4844",
+      "range": {
+        "startLine": 23,
+        "startChar": 56,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "1abd552ef6ff0cc3a4b72144b0eb755ceda6b274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cadfa30_2ac3880b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-27T19:04:33Z",
       "side": 1,
       "message": "How about returning the bucket as part of the original tuple? Then `portage_overrides` doesn\u0027t need to know about the overrides.",
+      "range": {
+        "startLine": 64,
+        "startChar": 39,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "1abd552ef6ff0cc3a4b72144b0eb755ceda6b274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b18cb00_b3f4a74b",
+        "filename": "util/coreboot_sdk_portage_deps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-27T20:20:05Z",
+      "side": 1,
+      "message": "I dont\u0027 think I understand what this means:\n\n\"Then portage_overrides doesn\u0027t need to know about the overrides.\"",
+      "parentUuid": "3cadfa30_2ac3880b",
       "range": {
         "startLine": 64,
         "startChar": 39,
