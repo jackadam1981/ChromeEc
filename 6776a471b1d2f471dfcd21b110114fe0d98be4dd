@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d20e9712_edd83fd7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:20:23Z",
+      "side": 1,
+      "message": "I\u0027m concerned about advancing past this state before all PDC ports have seeded the charge manager.",
+      "range": {
+        "startLine": 2260,
+        "startChar": 0,
+        "endLine": 2260,
+        "endChar": 35
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08bc5d02_01b7d84a",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 15
@@ -157,6 +180,29 @@
         "startChar": 2,
         "endLine": 2276,
         "endChar": 29
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de03e214_0124027d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:20:23Z",
+      "side": 1,
+      "message": "Is this state still needed?",
+      "range": {
+        "startLine": 2279,
+        "startChar": 0,
+        "endLine": 2279,
+        "endChar": 27
       },
       "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
