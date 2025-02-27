@@ -29,15 +29,17 @@ test_export_static void kb_init(void)
 	}
 
 	if (val == FW_KB_CA_FR) {
+
+		LOG_INF("KB is CA-FR");
 		/*
 		 * Canadian French ANSI keyboard (US type),
 		 *   \|:     0x0061->0x61->0x56
 		 *   r-ctrl: 0xe014->0x14->0x1d
 		 */
-		uint16_t tmp = get_scancode_set2(4, 0);
+		uint16_t tmp = get_scancode_set2(3, 14);
 
-		set_scancode_set2(4, 0, get_scancode_set2(2, 7));
-		set_scancode_set2(2, 7, tmp);
+		set_scancode_set2(3, 14, get_scancode_set2(7, 17));
+		set_scancode_set2(7, 17, tmp);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_FIRST);

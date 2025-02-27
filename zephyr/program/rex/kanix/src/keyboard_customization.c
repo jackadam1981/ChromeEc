@@ -96,3 +96,18 @@ void set_keycap_label(uint8_t row, uint8_t col, uint8_t val)
 		keycap_label[col][row] = val;
 }
 #endif
+
+static int command_scancode(int argc, const char **argv)
+{
+	int i,j;
+	for (i = 0; i < KEYBOARD_COLS_MAX; i++)
+	{
+		for (j = 0; j < KEYBOARD_ROWS; j++)
+			ccprintf(" 0x%02x", get_scancode_set2(j,i));
+		ccprintf("\n");
+
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sc, command_scancode, "", "dump scancode");
