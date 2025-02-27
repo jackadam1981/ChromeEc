@@ -393,9 +393,8 @@
 		tp-bgp2 {
 			gpios = <MCHP_GPIO_DECODE_102 GPIO_INPUT>;
 		};
-		ioex_kbd_intr_n: home-btn-ec-rvp-aep-id {
+		home-btn-ec-rvp-aep-id {
 			gpios = <MCHP_GPIO_DECODE_000 GPIO_INPUT>;
-			enum-name = "GPIO_KB_DISCRETE_INT";
 		};
 		/**
 		NOTE: Used for espi_rst, do not define.
