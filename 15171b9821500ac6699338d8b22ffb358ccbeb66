@@ -16,6 +16,24 @@
       "message": "Passing capture type to the `fingerprint_get_info` command is not a good idea. Instead, the command could return array of capture type and their parameters.",
       "revId": "15171b9821500ac6699338d8b22ffb358ccbeb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb99a98_eb7ca10d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T00:56:10Z",
+      "side": 1,
+      "message": "Your suggestion requires a new `FpInfoCommand` version. I debated this with Tom, mainly adding `frame_size_raw`, `bpp_raw`, `bpp_simple`, `frame_size_simple`, etc. I believe the proposed solution is the easiest and most straightforward.\n\nThe `frame_size` and `bpp` returned by fpinfo, which we use in `ectool.cc` and `fpsensor_debug.cc` are no longer unified per a fingerprint sensor product with what Egis is proposing to do. So I believe the fpinfo should have the `capture_type` as input to return the correct sensor info.\n\nWe can keep the struct as it with the `bpp` and `frame_size` fields. We can just modify them for different capture types.",
+      "parentUuid": "5831c797_04fcf157",
+      "revId": "15171b9821500ac6699338d8b22ffb358ccbeb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
