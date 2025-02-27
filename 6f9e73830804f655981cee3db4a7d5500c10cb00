@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c7fd64_01310509",
+        "filename": "util/coreboot_sdk_portage_deps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-27T18:37:09Z",
+      "side": 1,
+      "message": "Why not just have this return the bucket as the 4th value?\n\nThen your parsing code just becomes `arch, version, name, bucket \u003d toolchain.split(\" \")`",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 52
+      },
+      "revId": "6f9e73830804f655981cee3db4a7d5500c10cb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

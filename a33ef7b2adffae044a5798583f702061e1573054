@@ -118,6 +118,30 @@
       },
       "revId": "a33ef7b2adffae044a5798583f702061e1573054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2f7530_00d1acb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-27T18:37:09Z",
+      "side": 1,
+      "message": "It\u0027s essentially productionaizing https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6103665\n\nIf we didn\u0027t have `RESTRICT\u003dmirror` set, I would feel more comfortable w/ it since it\u0027s an added layer of security and raises questions for the reviewer if someone tries to set it.\n\nHonstly I\u0027m on the fence. Maybe in the eclass throw a giant warning saying \"DO NOT EVER APPROVE or COMMIT CHANGES TO THIS VARIABLE.\"?",
+      "parentUuid": "76d1f422_ba1c71b0",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a33ef7b2adffae044a5798583f702061e1573054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
