@@ -46,6 +46,30 @@
       },
       "revId": "a33ef7b2adffae044a5798583f702061e1573054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ead76b_bd377762",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-02-27T17:55:37Z",
+      "side": 1,
+      "message": "lol.\n\nOn the portage side, if you wanted to test different versions you can always copy the files to `/var/cache/distfiles`. I\u0027m inclined to say drop this feature from the ebuild/portage side.\n\nFor the raw zmake/bazel invocations can you use an ENV variable? That way you can drop the `COREBOOT_SDK_BUCKET_OVERRIDES` from the eclass. Or maybe just have coreboot_sdk.py take in a --bucket flag. and people can call it manually to setup the compilers sourced from a different bucket.\n\nAre the name/version going to be identical between the different buckets? Since we don\u0027t specify the hash, bazel (I think) is going to think the files are identical since it will just use the file name.\n\nThe ~/.cache/coreboot-sdk directory structure also doesn\u0027t have the bucket in the name, so we it won\u0027t download the new versions.",
+      "parentUuid": "eb989268_cb8f4892",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a33ef7b2adffae044a5798583f702061e1573054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
