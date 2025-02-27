@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97109e03_0a8face3",
+        "filename": "util/coreboot_sdk.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-27T23:00:24Z",
+      "side": 1,
+      "message": "This resolves a bug with the early return from the initial implementation.  Without it, if the toolchain is found, the download will be skip, but the toolchain environment variable and path will not be recorded/returned.",
+      "revId": "ef7b931a5e1f0c94d94db9501ec2523e5119e032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
