@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae6e580_1b25a5d4",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "Move all this logic into the helper routine.  That will help with indentation levels and allow for clearer documentation.  Maybe `get_candidate_port_power(supplier, port)`\n\nFor PDC implementations, you should document that it\u0027s possible that the negotiated available power can be less than the maximum power available on the port in dead battery scenarios.",
+      "range": {
+        "startLine": 748,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 0
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c012a6_b9f37754",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "Should this be in the previous CL?",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 34
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c800fe7_f99f086d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "Move the call to `charge_manager_get_active_charge_port()` into this routine and you can drop `selected_port` param.  This makes this routine self-contained.",
+      "range": {
+        "startLine": 2018,
+        "startChar": 0,
+        "endLine": 2018,
+        "endChar": 34
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6af64bf2_ef1344f1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "This routine only returns `SNK_ATTACHED_START_CHARGING`.",
+      "range": {
+        "startLine": 2106,
+        "startChar": 0,
+        "endLine": 2106,
+        "endChar": 30
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce42d8f_a572bd3b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "Nit - prefer that you reorder the CLs to fix the `sink_path_en` usage first.",
+      "range": {
+        "startLine": 2251,
+        "startChar": 0,
+        "endLine": 2251,
+        "endChar": 25
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08bc5d02_01b7d84a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "UCSI defines criteria when the RDO field is valid.  We probably should have some checks for that and invalidate this field when unattached or a non-PD device is attached.",
+      "range": {
+        "startLine": 2269,
+        "startChar": 41,
+        "endLine": 2269,
+        "endChar": 44
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cfe5e5_a7646329",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T17:10:02Z",
+      "side": 1,
+      "message": "Document how this seed of the charge manager differs from the one above.  Here you\u0027re seeding with the \"best\" PDO, and above you\u0027re seeing with the negotiated PDO.",
+      "range": {
+        "startLine": 2276,
+        "startChar": 2,
+        "endLine": 2276,
+        "endChar": 29
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
