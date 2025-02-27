@@ -21,9 +21,17 @@ def _ec_deps_impl(module_ctx):
     deps = {}
     direct_deps = []
     for toolchain in script_output.stdout.splitlines():
-        arch, version, name = toolchain.split(" ")
-        _coreboot_sdk_subtool(arch, "%s/%s" % (version, name), "")
-        direct_deps.append("ec-coreboot-sdk-" + arch)
+        if "Toolchain: " in toolchain:
+            arch, version, name = toolchain.replace("Toolchain: ", "").split(" ")
+            deps[arch] = ("chromiumos-sdk", version, name)
+            direct_deps.append("ec-coreboot-sdk-" + arch)
+        elif "Override: " in toolchain:
+            arch, override = toolchain.replace("Override: ", "").split(" ")
+            _, version, name = deps[arch]
+            deps[arch] = (override, version, name)
+
+    for arch, (bucket, version, name) in deps.items():
+        _coreboot_sdk_subtool(arch, "%s/%s" % (version, name), "", bucket)
 
     return module_ctx.extension_metadata(
         root_module_direct_deps = direct_deps,
