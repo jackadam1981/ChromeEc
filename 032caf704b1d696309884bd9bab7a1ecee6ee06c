@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c3fb9b_202fd8e8",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-02-27T12:52:50Z",
+      "side": 1,
+      "message": "I mean, there is *something* after this already :-) maybe specifiy that no other ram data should go after this?",
+      "revId": "032caf704b1d696309884bd9bab7a1ecee6ee06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
