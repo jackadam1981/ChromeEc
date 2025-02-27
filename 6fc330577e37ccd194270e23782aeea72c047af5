@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9664607_b44eba05",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3789,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-27T16:44:10Z",
+      "side": 1,
+      "message": "You should add unit tests for the new public APIs.",
+      "range": {
+        "startLine": 3789,
+        "startChar": 9,
+        "endLine": 3789,
+        "endChar": 45
+      },
+      "revId": "6fc330577e37ccd194270e23782aeea72c047af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
