@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f091a206_64ed6ba7",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T17:31:35Z",
+      "side": 1,
+      "message": "@herman.lin@elan.corp-partner.google.com\nWe can convert the type and pass it to your library. As such, we are decoupled from your library.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 63
+      },
+      "revId": "526c3a75a055d4587981e3ae3826d5f49073c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffb9a1c_7b674170",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-02-27T17:31:35Z",
+      "side": 1,
+      "message": "@herman.lin@emc.com.tw\nI believe Elan needs to specify the names that make most sense for your capture types.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c574d1ff_8a2abdbb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/elan/elan_sensor.h",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": "\tELAN_CAPTURE_VENDOR_FORMAT \u003d 0, /* Full blown vendor-defined capture */\n\tELAN_CAPTURE_SIMPLE_IMAGE \u003d 1, /* Simple raw image capture */\n\tELAN_CAPTURE_PATTERN0 \u003d 2, /* Self test pattern */\n\tELAN_CAPTURE_PATTERN1 \u003d 3, /* Self test pattern */\n\tELAN_CAPTURE_QUALITY_TEST \u003d 4, /* Quality test */\n\tELAN_CAPTURE_RESET_TEST \u003d 5, /* Reset test */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "526c3a75a055d4587981e3ae3826d5f49073c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
