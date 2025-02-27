@@ -94,6 +94,30 @@
       },
       "revId": "a33ef7b2adffae044a5798583f702061e1573054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d1f422_ba1c71b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-27T17:59:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand how/why copying things into /var/cache/distfiles would be better.  It seems like declaring the override and updating the hash would be easier.  These can also be shared with other engineers, so it feels more straightforward to have the hash and override defined in a WIP CL and pass it to someone than to say update this file with this hash, go pull this binary from this URI and place it in this local path, etc.\n\nWDYT?",
+      "parentUuid": "5aa23b6f_8b5380bc",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a33ef7b2adffae044a5798583f702061e1573054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
