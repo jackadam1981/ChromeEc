@@ -1555,7 +1555,6 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status)
 
 	in.conn_partner_flags = 1;
 	in.conn_partner_type = UFP_ATTACHED;
-	in.rdo = 0x01234567;
 
 	emul_pdc_configure_snk(emul, &in);
 	emul_pdc_connect_partner(emul, &in);
@@ -1578,7 +1577,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status)
 		      "out=0x%X != in=0x%X", out.conn_partner_flags,
 		      in.conn_partner_flags);
 	zassert_equal(out.conn_partner_type, in.conn_partner_type);
-	zassert_equal(out.rdo, in.rdo);
+	/* Skip validating RDO as its set based on provided PDOs.  This is
+	 * validated thoroughly in other tests. */
 
 	emul_pdc_disconnect(emul);
 	zassert_true(TEST_WAIT_FOR(!pdc_power_mgmt_is_connected(TEST_PORT),
