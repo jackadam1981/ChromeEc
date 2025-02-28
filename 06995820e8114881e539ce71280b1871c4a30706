@@ -22,6 +22,30 @@
       },
       "revId": "06995820e8114881e539ce71280b1871c4a30706",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84958355_978bee72",
+        "filename": "zephyr/shim/include/usbc/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-28T17:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50db8239_483bc8ce",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "06995820e8114881e539ce71280b1871c4a30706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
