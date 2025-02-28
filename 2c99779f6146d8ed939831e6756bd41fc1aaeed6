@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eaf5621_6544030a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2025-02-28T17:20:37Z",
+      "side": 1,
+      "message": "can you test these by running the command on a dut?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "2c99779f6146d8ed939831e6756bd41fc1aaeed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2233a10_62574442",
