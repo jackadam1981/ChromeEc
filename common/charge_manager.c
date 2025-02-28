@@ -268,7 +268,7 @@ SYS_INIT(charge_manager_sys_init, POST_KERNEL,
  * @return	1 if all ports/suppliers have reported
  *		with some initial charge, 0 otherwise.
  */
-static int charge_manager_is_seeded(void)
+int charge_manager_is_seeded(void)
 {
 	/* Once we're seeded, we don't need to check again. */
 	static int is_seeded;
