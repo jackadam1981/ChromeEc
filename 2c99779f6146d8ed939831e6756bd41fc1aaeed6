@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "364bb857_bbe413df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-02-28T18:28:08Z",
+      "side": 1,
+      "message": "+1 to this, flash_ec can be run using Quincy and flash_fp_mcu could be executed in system on any DUT with helipilot or buccaneer to test that the image loads and boots successfully. The other CLs in the chain LGTM and I\u0027ve verified Rosalia builds on my end.",
+      "parentUuid": "0eaf5621_6544030a",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "2c99779f6146d8ed939831e6756bd41fc1aaeed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2233a10_62574442",
