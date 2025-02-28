@@ -89,6 +89,14 @@ struct charge_port_info {
 };
 
 /**
+ * Check if the charge manager is seeded.
+ *
+ * @return	true if all ports/suppliers have reported
+ *		with some initial charge, false otherwise.
+ */
+bool charge_manager_is_seeded(void);
+
+/**
  * Called by charging tasks to update their available charge.
  *
  * @param supplier	Charge supplier to update.
