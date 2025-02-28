@@ -285,6 +285,23 @@ int i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 	return rv;
 }
 
+#ifdef CONFIG_ZEPHYR
+int i2c_transfer_dt_ec(const struct i2c_dt_spec *i2c, struct i2c_msg *msgs,
+		       uint8_t num_msgs)
+{
+	int rv;
+	int port = i2c_get_port_from_device(i2c->bus);
+
+	i2c_lock(port, 1);
+
+	rv = i2c_transfer_dt(i2c, msgs, num_msgs);
+
+	i2c_lock(port, 0);
+
+	return rv;
+}
+#endif /* CONFIG_ZEPHYR */
+
 void i2c_lock(int port, int lock)
 {
 #ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
@@ -897,7 +914,6 @@ enum i2c_freq i2c_get_freq(int port)
 {
 	return chip_i2c_get_freq(port);
 }
-
 /*****************************************************************************/
 /* Host commands */
 
