@@ -690,7 +690,7 @@ static int get_ping_status(const struct device *dev)
 	msg.len = 1;
 	msg.flags = I2C_MSG_READ | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	return i2c_transfer_dt_lock(&cfg->i2c, &msg, 1);
 }
 
 static int rts54_i2c_read(const struct device *dev)
@@ -709,7 +709,7 @@ static int rts54_i2c_read(const struct device *dev)
 	msg[1].len = data->ping_status.data_len + 1;
 	msg[1].flags = I2C_MSG_RESTART | I2C_MSG_READ | I2C_MSG_STOP;
 
-	rv = i2c_transfer_dt(&cfg->i2c, msg, 2);
+	rv = i2c_transfer_dt_lock(&cfg->i2c, msg, 2);
 	if (rv < 0) {
 		return rv;
 	}
@@ -735,7 +735,7 @@ static int rts54_i2c_write(const struct device *dev)
 	msg.len = data->wr_buf_len;
 	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	return i2c_transfer_dt_lock(&cfg->i2c, &msg, 1);
 }
 
 static void st_init_entry(void *o)
@@ -2881,7 +2881,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.i2c = I2C_DT_SPEC_INST_GET(inst),                            \
 		.irq_gpios = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),          \
 		.connector_number =                                           \
-			USBC_PORT_FROM_PDC_DRIVER_NODE(DT_DRV_INST(inst)),    \
+			USBC_PORT_FROM_DRIVER_NODE(DT_DRV_INST(inst), pdc),   \
 		.bits.command_completed = 1,                                  \
 		.bits.external_supply_change = 1,                             \
 		.bits.power_operation_mode_change = 1,                        \
@@ -2906,7 +2906,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
                                                                               \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,         \
 			      &pdc_config##inst, POST_KERNEL,                 \
-			      CONFIG_PDC_DRIVER_INIT_PRIORITY,                \
+			      CONFIG_APPLICATION_INIT_PRIORITY,               \
 			      &pdc_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(RTS54xx_PDC_DEFINE)

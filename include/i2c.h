@@ -13,6 +13,10 @@
 #include "host_command.h"
 #include "stddef.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/drivers/i2c.h>
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -207,6 +211,12 @@ int i2c_xfer(const int port, const uint16_t addr_flags, const uint8_t *out,
 int i2c_xfer_unlocked(const int port, const uint16_t addr_flags,
 		      const uint8_t *out, int out_size, uint8_t *in,
 		      int in_size, int flags);
+
+#ifdef CONFIG_ZEPHYR
+/* Wrapper for I2C transfers for Zephyr to handle locking */
+int i2c_transfer_dt_lock(const struct i2c_dt_spec *i2c, struct i2c_msg *msgs,
+			 uint8_t num_msgs);
+#endif
 
 #define I2C_LINE_SCL_HIGH BIT(0)
 #define I2C_LINE_SDA_HIGH BIT(1)

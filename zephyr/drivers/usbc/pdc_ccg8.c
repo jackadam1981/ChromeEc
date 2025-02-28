@@ -74,7 +74,7 @@ static int ccg_write(const struct device *dev, uint16_t reg, uint8_t len,
 	msg.len = len + 2;
 	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	return i2c_transfer_dt_lock(&cfg->i2c, &msg, 1);
 }
 
 static int ccg_read(const struct device *dev, uint16_t reg, uint8_t len,
