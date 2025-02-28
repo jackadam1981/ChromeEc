@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f562b540_abe6669f",
+        "filename": "zephyr/dts/bindings/usbc/ucsi-ppm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-28T20:15:33Z",
+      "side": 1,
+      "message": "While you\u0027re in here - the ppm_driver isn\u0027t following proper Zephyr driver convention.  Compilation of ppm_driver.c should be guarded with a Kconfig that is set according to the `DT_HAS_UCSI_PPM_ENABLED` property.\n\nThis can be done as follow up CL.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "dfc8c6c22bfb173593f860d441091486cfab6703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
