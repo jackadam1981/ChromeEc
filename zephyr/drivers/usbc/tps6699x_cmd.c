@@ -52,7 +52,7 @@ static int tps_read_reg(const struct i2c_dt_spec *i2c, enum tps6699x_reg reg,
 		},
 	};
 
-	return i2c_transfer_dt(i2c, msg, ARRAY_SIZE(msg));
+	return i2c_transfer_dt_lock(i2c, msg, ARRAY_SIZE(msg));
 }
 
 static int tps_write_reg(const struct i2c_dt_spec *i2c, enum tps6699x_reg reg,
@@ -81,7 +81,7 @@ static int tps_write_reg(const struct i2c_dt_spec *i2c, enum tps6699x_reg reg,
 		},
 	};
 
-	return i2c_transfer_dt(i2c, msg, ARRAY_SIZE(msg));
+	return i2c_transfer_dt_lock(i2c, msg, ARRAY_SIZE(msg));
 }
 
 static int tps_xfer_reg(const struct i2c_dt_spec *i2c, enum tps6699x_reg reg,

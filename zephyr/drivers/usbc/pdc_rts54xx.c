@@ -690,7 +690,7 @@ static int get_ping_status(const struct device *dev)
 	msg.len = 1;
 	msg.flags = I2C_MSG_READ | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	return i2c_transfer_dt_lock(&cfg->i2c, &msg, 1);
 }
 
 static int rts54_i2c_read(const struct device *dev)
@@ -709,7 +709,7 @@ static int rts54_i2c_read(const struct device *dev)
 	msg[1].len = data->ping_status.data_len + 1;
 	msg[1].flags = I2C_MSG_RESTART | I2C_MSG_READ | I2C_MSG_STOP;
 
-	rv = i2c_transfer_dt(&cfg->i2c, msg, 2);
+	rv = i2c_transfer_dt_lock(&cfg->i2c, msg, 2);
 	if (rv < 0) {
 		return rv;
 	}
@@ -735,7 +735,7 @@ static int rts54_i2c_write(const struct device *dev)
 	msg.len = data->wr_buf_len;
 	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	return i2c_transfer_dt_lock(&cfg->i2c, &msg, 1);
 }
 
 static void st_init_entry(void *o)

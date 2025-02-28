@@ -87,7 +87,7 @@ static int intel_altmode_write_control(const struct device *dev,
 	msg.len = INTEL_ALTMODE_DATA_CONTROL_REG_LEN + 2;
 	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	return i2c_transfer_dt_lock(&cfg->i2c, &msg, 1);
 }
 
 static bool intel_altmode_is_interrupted(const struct device *dev)
