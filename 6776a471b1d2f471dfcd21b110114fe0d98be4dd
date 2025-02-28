@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bff6d48_85921fe2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eae6e580_1b25a5d4",
+      "range": {
+        "startLine": 748,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 0
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c012a6_b9f37754",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-27T17:10:02Z",
       "side": 1,
       "message": "Should this be in the previous CL?",
+      "range": {
+        "startLine": 1271,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 34
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b2f92c_2590fc15",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c012a6_b9f37754",
       "range": {
         "startLine": 1271,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "422200b3_0695dd81",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "In latest patch set, the `selected_port` is used elsewhere in evaluating PDOs.",
+      "parentUuid": "6c800fe7_f99f086d",
+      "range": {
+        "startLine": 2018,
+        "startChar": 0,
+        "endLine": 2018,
+        "endChar": 34
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6af64bf2_ef1344f1",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-02-27T17:10:02Z",
       "side": 1,
       "message": "This routine only returns `SNK_ATTACHED_START_CHARGING`.",
+      "range": {
+        "startLine": 2106,
+        "startChar": 0,
+        "endLine": 2106,
+        "endChar": 30
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07699fb6_0701313e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "I added a check for the sink paths to disable when we\u0027re not the selected port, we\u0027ll then remain in this state.",
+      "parentUuid": "6af64bf2_ef1344f1",
       "range": {
         "startLine": 2106,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5ce9bc_1f8b5f20",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2251,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce42d8f_a572bd3b",
+      "range": {
+        "startLine": 2251,
+        "startChar": 0,
+        "endLine": 2251,
+        "endChar": 25
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d20e9712_edd83fd7",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-02-27T17:20:23Z",
       "side": 1,
       "message": "I\u0027m concerned about advancing past this state before all PDC ports have seeded the charge manager.",
+      "range": {
+        "startLine": 2260,
+        "startChar": 0,
+        "endLine": 2260,
+        "endChar": 35
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cdc2ce_b0bc8174",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d20e9712_edd83fd7",
       "range": {
         "startLine": 2260,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30125216_55ac3e3a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08bc5d02_01b7d84a",
+      "range": {
+        "startLine": 2269,
+        "startChar": 41,
+        "endLine": 2269,
+        "endChar": 44
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4cfe5e5_a7646329",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c5d30c_ac908fea",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "The RDO clean-up in previous CL makes this state no longer needed.",
+      "parentUuid": "e4cfe5e5_a7646329",
+      "range": {
+        "startLine": 2276,
+        "startChar": 2,
+        "endLine": 2276,
+        "endChar": 29
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de03e214_0124027d",
@@ -198,6 +390,30 @@
       "writtenOn": "2025-02-27T17:20:23Z",
       "side": 1,
       "message": "Is this state still needed?",
+      "range": {
+        "startLine": 2279,
+        "startChar": 0,
+        "endLine": 2279,
+        "endChar": 27
+      },
+      "revId": "6776a471b1d2f471dfcd21b110114fe0d98be4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93622e60_c5341413",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-02-28T22:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de03e214_0124027d",
       "range": {
         "startLine": 2279,
         "startChar": 0,
