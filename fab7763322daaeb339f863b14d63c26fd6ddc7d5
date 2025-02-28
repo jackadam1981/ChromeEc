@@ -16,6 +16,24 @@
       "message": "I\u0027m looking into the twister failures...I didn\u0027t rerun after adjusting the time to 1000 from 650 so it\u0027s possible some of these tests rely on timing as well",
       "revId": "fab7763322daaeb339f863b14d63c26fd6ddc7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a289ecb1_9e0210f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-28T21:25:27Z",
+      "side": 1,
+      "message": "Yeah probably. I see `TEST_WORKING_DELAY(PD_T_SINK_WAIT_CAP / USEC_PER_MSEC);` in several of these tests (zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c) so they probably don\u0027t wait long enough for the newer longer timeout to expire.",
+      "parentUuid": "84e229db_2b8e93bb",
+      "revId": "fab7763322daaeb339f863b14d63c26fd6ddc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
