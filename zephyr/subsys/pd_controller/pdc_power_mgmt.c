@@ -264,8 +264,6 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_GET_PDOS,
 	/** SNK_ATTACHED_GET_VDO */
 	SNK_ATTACHED_GET_VDO,
-	/** SNK_ATTACHED_GET_RDO */
-	SNK_ATTACHED_GET_RDO,
 	/** SNK_ATTACHED_SET_SINK_PATH */
 	SNK_ATTACHED_SET_SINK_PATH,
 	/** SNK_ATTACHED_EVALUATE_PDOS */
@@ -2097,6 +2095,15 @@ static void pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	pdc_snk_attached_send_set_rdo(port, &port->snk_policy);
 }
 
+bool pdc_is_rdo_valid(const union connector_status_t *cs)
+{
+	LOG_INF("IS_RDO_VALID: status=%d, power_op_mode=%d, RDO_POS=%d",
+		cs->connect_status, cs->power_operation_mode, RDO_POS(cs->rdo));
+
+	return (cs->connect_status == 1 &&
+		cs->power_operation_mode == PD_OPERATION);
+}
+
 /**
  * @brief Run sink attached state.
  */
@@ -2257,12 +2264,8 @@ static void pdc_snk_attached_run(void *obj)
 						       CAP_DUALROLE);
 		}
 
-		port->snk_attached_local_state = SNK_ATTACHED_GET_RDO;
-		break;
-	case SNK_ATTACHED_GET_RDO:
 		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
-		queue_internal_cmd(port, CMD_PDC_GET_RDO);
-		return;
+		break;
 	case SNK_ATTACHED_SET_SINK_PATH:
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS) &&
 		    port->ccaps.op_mode_drp) {
@@ -2606,6 +2609,10 @@ static void pdc_send_cmd_wait_run(void *obj)
 			break;
 		case CMD_PDC_SET_SINK_PATH:
 			port->sink_path_status = port->sink_path_to_send;
+			break;
+		case CMD_PDC_SET_RDO:
+			port->connector_status.rdo =
+				port->snk_policy.rdo_to_send;
 			break;
 		default:
 			break;
@@ -3793,13 +3800,13 @@ test_mockable int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo)
 		return -ENODATA;
 	}
 
-	*rdo = pdc_data[port]->port.snk_policy.rdo;
+	*rdo = pdc_data[port]->port.connector_status.rdo;
 	return 0;
 }
 
 static uint32_t pdc_power_mgmt_get_selected_pdo(int port)
 {
-	uint32_t pos = RDO_POS(pdc_data[port]->port.connector_status.rdo);
+	uint32_t pos = RDO_POS(pdc_data[port]->port.connector_status.rdo) - 1;
 	uint32_t *pdos = pdc_data[port]->port.snk_policy.src.pdos;
 
 	return pdos[pos];
