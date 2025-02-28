@@ -34,6 +34,24 @@
       "parentUuid": "84e229db_2b8e93bb",
       "revId": "fab7763322daaeb339f863b14d63c26fd6ddc7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "821bbbcc_7da1ec3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-02-28T21:28:57Z",
+      "side": 1,
+      "message": "Yeah the test that was failing was specifically for typec_source device so makes sense it failed. Updated the timing accordingly and all tests are passing again",
+      "parentUuid": "a289ecb1_9e0210f9",
+      "revId": "fab7763322daaeb339f863b14d63c26fd6ddc7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
