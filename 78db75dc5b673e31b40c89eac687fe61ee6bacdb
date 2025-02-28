@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166e1ff1_ab605ce9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-02-28T17:31:13Z",
+      "side": 1,
+      "message": "Should be `_US` for microseconds, or drop the multiplier and use `K_MSEC` with the timer API call(s)",
+      "range": {
+        "startLine": 76,
+        "startChar": 38,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "78db75dc5b673e31b40c89eac687fe61ee6bacdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
