@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66ac68a_0014a343",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-02-28T23:17:38Z",
+      "side": 1,
+      "message": "This would be cleaner if organized as a shared helper file and separate files for each test variant.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 55
+      },
+      "revId": "3433dec9a36f31b9477e6667a585dd122bda8b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
