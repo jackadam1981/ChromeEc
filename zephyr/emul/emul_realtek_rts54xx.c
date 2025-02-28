@@ -345,6 +345,7 @@ static int get_connector_status(struct rts5453p_emul_pdc_data *data,
 	LOG_INF("GET_CONNECTOR_STATUS port=%d",
 		req->get_connector_status.port_num);
 
+	data->connector_status.rdo = data->pdo.rdo;
 	data->response.connector_status.byte_count =
 		sizeof(union connector_status_t);
 	data->response.connector_status.status = data->connector_status;
@@ -408,8 +409,8 @@ static int get_rtk_status(struct rts5453p_emul_pdc_data *data,
 	data->response.rtk_status.port_partner_flags =
 		data->connector_status.conn_partner_flags;
 	/* BYTE 7-10 */
-	data->response.rtk_status.request_data_object =
-		data->connector_status.rdo;
+	data->response.rtk_status.request_data_object = data->pdo.rdo;
+
 	/* BYTE 11 */
 	data->response.rtk_status.port_partner_type =
 		data->connector_status.conn_partner_type & BIT_MASK(3);
@@ -1351,6 +1352,7 @@ static int emul_realtek_rts54xx_set_rdo(const struct emul *target, uint32_t rdo)
 		rts5453p_emul_get_pdc_data(target);
 
 	data->pdo.rdo = rdo;
+	data->connector_status.rdo = rdo;
 
 	return 0;
 }

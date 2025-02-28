@@ -9,6 +9,7 @@
 #include "emul/emul_pdc_pdo.h"
 #include "emul/emul_tps6699x.h"
 #include "tps6699x_reg.h"
+#include "usb_common.h"
 #include "usbc/utils.h"
 
 #include <stdbool.h>
@@ -131,6 +132,7 @@ static void tps699x_emul_get_error_status(struct tps6699x_emul_pdc_data *data)
 static void
 tps699x_emul_get_connector_status(struct tps6699x_emul_pdc_data *data)
 {
+	data->connector_status.rdo = data->pdo.rdo;
 	data->response.result = TASK_COMPLETED_SUCCESSFULLY;
 	data->response.data.connector_status = data->connector_status;
 
@@ -383,7 +385,30 @@ static void aneg_delayable_work_handler(struct k_work *w)
 static void tps6699x_emul_handle_aneg(struct tps6699x_emul_pdc_data *data,
 				      uint8_t *data_reg)
 {
-	LOG_INF("ANEg TASK");
+	uint32_t pdo, ma, max_mv, min_mv;
+	union reg_autonegotiate_sink *an_snk =
+		(union reg_autonegotiate_sink *)
+			data->reg_val[REG_AUTONEGOTIATE_SINK];
+
+	union reg_active_rdo_contract *active_rdo_contract =
+		(union reg_active_rdo_contract *)
+			data->reg_val[REG_ACTIVE_RDO_CONTRACT];
+	LOG_INF("ANEg TASK, voltage=[%d:%d]", an_snk->auto_neg_min_voltage,
+		an_snk->auto_neg_max_voltage);
+
+	/* Find the PDO used to set ANeg values to set active RDO */
+	for (int i = 0; i < PDO_OFFSET_MAX; i++) {
+		pdo = data->pdo.partner_src_pdos[i];
+		pd_extract_pdo_power_unclamped(pdo, &ma, &max_mv, &min_mv);
+
+		if ((min_mv / 50) == an_snk->auto_neg_min_voltage &&
+		    (max_mv / 50) == an_snk->auto_neg_max_voltage) {
+			LOG_INF("ANEg Found PDO pos=%d", i + 1);
+			active_rdo_contract->rdo = RDO_FIXED(i + 1, ma, ma, 0);
+			data->pdo.rdo = active_rdo_contract->rdo;
+			break;
+		}
+	}
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 	k_work_schedule(&data->aneg_delay_work, K_MSEC(1));
 }
@@ -766,6 +791,17 @@ static int emul_tps6699x_set_connector_status(
 		power_path_status->pa_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
 		power_path_status->pb_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
 	}
+	return 0;
+}
+
+static int emul_tps6699x_set_rdo(const struct emul *target, uint32_t rdo)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	data->pdo.rdo = rdo;
+	data->connector_status.rdo = rdo;
+
 	return 0;
 }
 
@@ -1229,6 +1265,7 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.set_connector_status = emul_tps6699x_set_connector_status,
 	.get_uor = emul_tps6699x_get_uor,
 	.get_pdr = emul_tps6699x_get_pdr,
+	.set_rdo = emul_tps6699x_set_rdo,
 	.get_requested_power_level = emul_tps6699x_get_requested_power_level,
 	.get_ccom = emul_tps6699x_get_ccom,
 	.get_drp_mode = emul_tps6699x_get_drp_mode,

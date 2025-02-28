@@ -171,6 +171,7 @@ ZTEST_USER(pdc_api, test_get_connector_status)
 	in.rdo = 0x01234567;
 
 	zassert_ok(emul_pdc_set_connector_status(emul, &in));
+	zassert_ok(emul_pdc_set_rdo(emul, in.rdo));
 
 	zassert_ok(pdc_get_connector_status(dev, &out),
 		   "Failed to get connector capability");
