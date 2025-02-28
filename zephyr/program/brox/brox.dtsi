@@ -3,6 +3,18 @@
  * found in the LICENSE file.
  */
 
+&pinctrl {
+	/* ADC0 pinctrl for GPIO function. Note:
+	 *   - IT8XXX2_ALT_DEFAULT: configures pin for default mode (GPIO)
+	 *   - IT8XXX2_ALT_FUNC_1: configures pin alt function 1 (ADC)
+	 * The node names unfortunately are backwards because ITE used
+	 * adc0_ch0_gpi0_default to set ADC mode.
+	 */
+	adc0_ch0_gpi0_gpio: adc0_ch0_gpi0_gpio {
+		pinmuxs = <&pinctrli 0 IT8XXX2_ALT_DEFAULT>;
+	};
+};
+
 / {
 	aliases {
 		gpio-wp = &gpio_ec_wp_odl;
@@ -16,6 +28,12 @@
 		compatible = "cros-ec,prochot-vcmp";
 		vcmp = <&vcmp0>;
 		high-level-mv = <1050>;
+		prochot {
+			gpios = <&gpioi 0 (GPIO_ACTIVE_LOW | GPIO_LINE_OPEN_DRAIN)>;
+			pinctrl-0 = <&adc0_ch0_gpi0_default>;
+			pinctrl-1 = <&adc0_ch0_gpi0_gpio>;
+			pinctrl-names = "default", "gpio";
+		};
 	};
 };
 
