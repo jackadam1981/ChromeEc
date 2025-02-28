@@ -13,6 +13,12 @@ description: |
       compatible = "cros-ec,prochot-vcmp";
       vcmp = <&vcmp0>;
       high-level-mv = <1050>;
+      prochot {
+          gpios = <&gpioi 0 (GPIO_ACTIVE_LOW | GPIO_LINE_OPEN_DRAIN)>;
+          pinctrl-0 = <&adc0_ch0_gpi0_default>;
+          pinctrl-1 = <&adc0_ch0_gpi0_gpio>;
+          pinctrl-names = "default", "gpio";
+      };
   };
 
   &vcmp0 {
@@ -43,7 +49,43 @@ properties:
 
   high-level-mv:
     description: |
-      Signal voltage for the high level, in millivolts, detection thresholds will
-      be set to 10% and 90% of this value.
+      Signal voltage for the high level, in millivolts, detection thresholds
+      will be set to 10% and 90% of this value.
     type: int
     required: true
+
+child-binding:
+  description: |
+    Optional PROCHOT GPIO settings.
+
+    If a child node named "prochot" is present, then the prochot-vcmp driver
+    supports both monitoring PROCHOT and asserting PROCHOT using the same
+    pin on the EC.
+
+    On initialization, the driver defaults to monitoring mode. If the EC
+    application calls chipset_throttle_cpu(), then the driver reconfigures
+    the PROCHOT pin as an output and asserts the pin.
+
+  include:
+    - name: pinctrl-device.yaml
+
+  properties:
+    gpios:
+      type: phandle-array
+      description: |
+        The EC will assert this GPIO when an internal PROCHOT condition is
+        triggered. This pin is typically an open-drain signal that is active
+        low.
+
+    pinctrl-0:
+      required: true
+      description: |
+        Defines the pinctrl to configure the PROCHOT pin as an ADC input.
+
+    pinctrl-1:
+      required: true
+      description: |
+        Defines the pinctrl to configure the PROCHOT pin as GPIO output.
+
+    pinctrl-names:
+      required: true

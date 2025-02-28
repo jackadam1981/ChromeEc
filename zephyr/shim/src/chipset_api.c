@@ -38,8 +38,10 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 
 /* TODO: b/214509787
  * To be added later when this functionality is implemented in ap_pwrseq.
+ *
+ * Note - the prochot-vcmp has an optional implementation of this function.
  */
-void chipset_throttle_cpu(int throttle)
+__overridable void chipset_throttle_cpu(int throttle)
 {
 }
 
