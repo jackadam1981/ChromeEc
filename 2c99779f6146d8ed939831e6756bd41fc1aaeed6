@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7025ced4_790b99c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-01T05:00:52Z",
+      "side": 1,
+      "message": "Not necessarily: to test just the flash_fp_mcu functionality, it is possible to use local [hacks](crrev/c/4861007). The ebuilds and device additions are the proper channel for rosalia enablement, but need not necessarily block the testing of this CL",
+      "parentUuid": "ee4f56aa_b759d3c6",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "2c99779f6146d8ed939831e6756bd41fc1aaeed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2233a10_62574442",
