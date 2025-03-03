@@ -94,6 +94,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6340afbc_fff18e2e",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-03T19:18:13Z",
+      "side": 1,
+      "message": "This AI-suggested example is not quite right, but the idea is what I want. Let\u0027s change `int bpp` to `uint8_t bpp` and `void *ptr \u003d frame` back to `uint8_t *ptr \u003d frame`. The `ptr +\u003d bpp` should be something like `ptr +\u003d DIV_ROUND_UP(bpp, 8)` too.",
+      "parentUuid": "af33ddd0_e6095934",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "e20bca65cea6b8a15939bce49710282370bdeced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9a2de9e_0a6683d6",
         "filename": "common/fpsensor/fpsensor_debug.cc",
         "patchSetId": 1
