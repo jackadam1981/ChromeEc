@@ -38,10 +38,12 @@ void cache_init(void)
 #pragma GCC unroll 16
 	for (i = 0; i < NR_MPU_ENTRIES; ++i) {
 		if (mpu_entries[i].end_addr - mpu_entries[i].start_addr) {
+#if 0
 			write_csr(CSR_MPU_L(i),
 				  mpu_entries[i].start_addr |
 					  mpu_entries[i].attribute);
 			write_csr(CSR_MPU_H(i), mpu_entries[i].end_addr);
+#endif
 			mpu_en |= BIT(i);
 		}
 	}
