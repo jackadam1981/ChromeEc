@@ -31,6 +31,7 @@
  * s0-s11, fs0-fs11, and mepc
  *
  */
+ .text
 .global __switch_task
 __switch_task:
 	/* get the (new) highest priority task pointer in a0 */
