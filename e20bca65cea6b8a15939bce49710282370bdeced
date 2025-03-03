@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af33ddd0_e6095934",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-03T19:12:24Z",
+      "side": 1,
+      "message": "It looks like the only difference between this function and `upload_8_bit_pgm_image` is line 99 and tracking the pointer increment.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "44787f95_4d3a5fc6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "static void upload_pgm_image(uint8_t *frame, int bpp)\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 66,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": "\tvoid *ptr \u003d frame;\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 73,
+                "endChar": 0
+              },
+              "replacement": "\tCPRINTF(\"P2\\n%d %d\\n%d\\n\", FP_SENSOR_RES_X, FP_SENSOR_RES_Y,\n\t\t(bpp \u003d\u003d 8) ? 255 : 65535);\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": "\t\tfor (int x \u003d 0; x \u003c FP_SENSOR_RES_X; x++) {\n\t\t\tif (bpp \u003d\u003d 8)\n\t\t\t\tCPRINTF(\"%d \", *(uint8_t *)ptr);\n\t\t\telse\n\t\t\t\tCPRINTF(\"%d \", *(uint16_t *)ptr);\n\t\t\tptr +\u003d bpp;\n\t\t}\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 162,
+                "startChar": 0,
+                "endLine": 169,
+                "endChar": 0
+              },
+              "replacement": "\t\tupload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, info.bpp);\n"
+            },
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 226,
+                "startChar": 0,
+                "endLine": 231,
+                "endChar": 0
+              },
+              "replacement": "\tupload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, info.bpp);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e20bca65cea6b8a15939bce49710282370bdeced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a2de9e_0a6683d6",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-03T19:12:24Z",
+      "side": 1,
+      "message": "Let\u0027s create a helper function to get the bpp.\n\nSomething like:\n\n```\nstatic uint8_t get_sensor_bpp(void)\n{\n\tec_response_fp_info info;\n\tfp_sensor_get_info(\u0026info, FP_CAPTURE_TYPE(global_context.sensor_mode));\n\treturn info.bpp;\n}\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 52
+      },
+      "revId": "e20bca65cea6b8a15939bce49710282370bdeced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
