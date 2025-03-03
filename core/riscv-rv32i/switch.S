@@ -8,8 +8,10 @@
 #include "config.h"
 #include "cpu.h"
 
-#ifdef __RAM_CODE_ILM0_SECTION_NAME
+#if defined(__RAM_CODE_ILM0_SECTION_NAME) && !defined(__clang__)
 .section __RAM_CODE_ILM0_SECTION_NAME
+#else
+.section .text
 #endif
 
 /**
