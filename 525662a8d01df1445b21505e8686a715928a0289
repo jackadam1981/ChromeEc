@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98154ee7_a8fb925f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T16:58:25Z",
+      "side": 1,
+      "message": "This needs a comment describing what\u0027s happening here.",
+      "range": {
+        "startLine": 2153,
+        "startChar": 0,
+        "endLine": 2153,
+        "endChar": 63
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e49159_31b068c3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T16:58:25Z",
+      "side": 1,
+      "message": "Why are you loopbing back into evaluate PDOs here?",
+      "range": {
+        "startLine": 2160,
+        "startChar": 0,
+        "endLine": 2160,
+        "endChar": 36
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f171acb0_4e8f47ba",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T16:58:25Z",
+      "side": 1,
+      "message": "Coming out of dead battery, the sink path is on so you seed the charge manager with the negotiated RDO.  When do you actually read all the available source PDOs from the partner so that the charge manager can pick the best one?",
+      "range": {
+        "startLine": 2293,
+        "startChar": 0,
+        "endLine": 2293,
+        "endChar": 36
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ccb614_26b28009",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T16:58:25Z",
+      "side": 1,
+      "message": "This comment seems out of date.  The 2 possible states after this one are SET_SINK_PATH or SYNC_CHARGE_MGR.",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2310,
+        "endChar": 0
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
