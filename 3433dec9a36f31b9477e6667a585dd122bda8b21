@@ -22,6 +22,30 @@
       },
       "revId": "3433dec9a36f31b9477e6667a585dd122bda8b21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf29b387_27d7b771",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:45:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66ac68a_0014a343",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 55
+      },
+      "revId": "3433dec9a36f31b9477e6667a585dd122bda8b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
