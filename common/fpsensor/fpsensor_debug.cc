@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_detect.h"
@@ -108,6 +109,20 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 		crec_usleep(100 * MSEC);
 	}
 	return EC_ERROR_TIMEOUT;
+}
+
+static uint8_t get_sensor_bpp(void)
+{
+	ec_response_fp_info info;
+
+#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
+	if (fp_sensor_get_info(&info) < 0)
+		return EC_ERROR_UNKNOWN;
+#else
+	return EC_ERROR_UNKNOWN;
+#endif
+
+	return info.bpp;
 }
 
 static int command_fpcapture(int argc, const char **argv)
