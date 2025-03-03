@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66706a1_3037a0b8",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-03T19:13:44Z",
+      "side": 1,
+      "message": "Ack. That seems to be the way this host command works. IMO, that\u0027s a little confusing, but changing it would be out of scope here and probably impractical.",
+      "parentUuid": "59293bb5_15606401",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8080d58_d07b93d3",
@@ -136,6 +154,24 @@
       "writtenOn": "2025-02-27T20:41:43Z",
       "side": 1,
       "message": "Update error message (or just remove it).",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f56743d6_d77b3679",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-03T19:13:44Z",
+      "side": 1,
+      "message": "Actually, this is correct as is.",
+      "parentUuid": "36b6f2ac_78f96c48",
       "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +254,24 @@
       "side": 1,
       "message": "I think this should return to the defualt, For bc12 case, the current limit is 400mA. Same as `test_disconnect_power_info` as well.",
       "parentUuid": "048d17fe_70c609eb",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf8cadc_73860299",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-03T19:13:44Z",
+      "side": 1,
+      "message": "1. I don\u0027t think the BC1.2 current limit should enter into it. The effect of this CL is to disable BC1.2 when the PD current limit is 0A.\n1. The PD requirement that this CL is supposed to satisfy is that the overall power draw should be \u003c\u003d 25mW, which in this case would mean current \u003c\u003d5mA.\n1. Our implementation of this requirement is to set the current limit to 0mA.\n\nI think it would be reasonable to phrase this check as `zassert_between_inclusive(info.meas.current_max, 0, 5, ...)`.\n\nDoes the test fail with an assertion like that? If the actual current limit is 400mA in this case, I think I\u0027m misunderstanding how this CL works.",
+      "parentUuid": "1e5495c8_09774b18",
       "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
