@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bf0126_b5571377",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98154ee7_a8fb925f",
+      "range": {
+        "startLine": 2153,
+        "startChar": 0,
+        "endLine": 2153,
+        "endChar": 63
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e49159_31b068c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-03T16:58:25Z",
       "side": 1,
       "message": "Why are you loopbing back into evaluate PDOs here?",
+      "range": {
+        "startLine": 2160,
+        "startChar": 0,
+        "endLine": 2160,
+        "endChar": 36
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e38059c_62993434",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2160,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:47:16Z",
+      "side": 1,
+      "message": "Added comment",
+      "parentUuid": "b5e49159_31b068c3",
       "range": {
         "startLine": 2160,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcf64a7d_91f412cf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:47:16Z",
+      "side": 1,
+      "message": "Once charge_manager becomes seeded, a `charge_manager_refresh` occurs which will invoke `charge_manager_get_best_port` which evaluates the partner source PDOS. charge_manager then calls `board_set_active_charge_port` disabling sink paths followed by `pd_set_new_power_request` which will update the RDOs.",
+      "parentUuid": "f171acb0_4e8f47ba",
+      "range": {
+        "startLine": 2293,
+        "startChar": 0,
+        "endLine": 2293,
+        "endChar": 36
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08ccb614_26b28009",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 16
@@ -83,6 +155,30 @@
       "writtenOn": "2025-03-03T16:58:25Z",
       "side": 1,
       "message": "This comment seems out of date.  The 2 possible states after this one are SET_SINK_PATH or SYNC_CHARGE_MGR.",
+      "range": {
+        "startLine": 2306,
+        "startChar": 0,
+        "endLine": 2310,
+        "endChar": 0
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aacca2b9_55a3720c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ccb614_26b28009",
       "range": {
         "startLine": 2306,
         "startChar": 0,
