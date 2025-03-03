@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab9a058_8b2d18b2",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T22:12:19Z",
+      "side": 1,
+      "message": "I see my error - `SNK_ATTACHED_GET_PDOS` always sends `CMD_PDC_GET_PDOS`, regardless of what the next sub-state is set to.\n\nI was thinking in terms of the SMF, where once you set a new state, you are required to return.",
+      "parentUuid": "fcf64a7d_91f412cf",
+      "range": {
+        "startLine": 2293,
+        "startChar": 0,
+        "endLine": 2293,
+        "endChar": 36
+      },
+      "revId": "525662a8d01df1445b21505e8686a715928a0289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ccb614_26b28009",
