@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38ace11c_05a105e3",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "Should we move this to `google_quincy_defconfig` in Zephyr repository?",
+      "parentUuid": "65967dc1_038617d3",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e776c5e2_12a5deb9",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 52

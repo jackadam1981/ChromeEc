@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01f7598_ee488e06",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 55
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "updates",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cf3939_0a2cb842",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 55
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "```suggestion\n/delete-node/ \u0026sram0;\n\n/ {\n\tsram0: memory@200a8000 {\n\t\tcompatible \u003d \"mmio-sram\";\n\t\treg \u003d \u003c0x200A8000 DT_SIZE_K(188)\u003e;\n\t};\n};\n```\n\nThis should fix the following build warning:\n```\nunit address and first address in \u0027reg\u0027 (0x200a8000) don\u0027t match for /memory@200c0000\n```\n\nRemoving the comment was intended.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756d837a_8c5b8142",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "This options generates the following warning:\n```\nwarning: PLATFORM_EC_WATCHDOG_WARNING_LEADING_TIME_MS (defined at\n/mnt/host/source/src/platform/ec/zephyr/Kconfig.watchdog:14) was assigned the value \u00273000\u0027 but got\nthe value \u0027\u0027. Check these unsatisfied dependencies: (!WDT_NPCX) (\u003dn).\n```\n\nThe documentation clearly states that `CONFIG_WDT_NPCX_WARNING_LEADING_TIME_MS` should be used for NPCX:\n```\n          For the NPCX chip, use WDT_NPCX_WARNING_LEADING_TIME_MS instead\n          of this config.\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f54fb39_913bfc5c",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "This should be enabled, because UART backend requires it:\n```\nwarning: EC_HOST_CMD_BACKEND_UART (defined at subsys/mgmt/ec_host_cmd/backends/Kconfig:33) was\nassigned the value \u0027y\u0027 but got the value \u0027n\u0027. Check these unsatisfied dependencies: UART_ASYNC_API (\u003dn).\n```\n\nThe implementation of UART async API in NPCX driver requires DMA to be enabled. Looks like enabling [`CONFIG_UART_NPCX_USE_MDMA`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/serial/Kconfig.npcx;l\u003d20-27;drc\u003decd97058047cfed37a51c641bb6eb58e614f5de0) should be sufficient.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d1cb0c_9cd4fb6f",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "Unnecessary newline",
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a6e664_98180b81",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 55
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-03T12:20:11Z",
+      "side": 1,
+      "message": "```suggestion\n/delete-node/ \u0026sram0;\n\n/ {\n\tsram0: memory@200b0000 {\n\t\tcompatible \u003d \"mmio-sram\";\n\t\treg \u003d \u003c0x200B0000 DT_SIZE_K(156)\u003e;\n\t};\n};\n```\n\nThis should fix the following build warning:\n```\nunit address and first address in \u0027reg\u0027 (0x200a8000) don\u0027t match for /memory@200c0000\n```\n\nRemoving the comment was intended.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
