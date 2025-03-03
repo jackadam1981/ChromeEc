@@ -16,6 +16,46 @@
       "message": "I still need to create a test for this, but wanted your feedback while I work on coverage.",
       "revId": "30daac22597938338434df1e426dc4cbf333544a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0180db69_da6a4b48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-03T10:27:22Z",
+      "side": 1,
+      "message": "yeah looks good",
+      "revId": "30daac22597938338434df1e426dc4cbf333544a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f97e9d_4afcf204",
+        "filename": "zephyr/drivers/prochot_vcmp/prochot_vcmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-03T10:27:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this and the other apply state below are strictly necessary, they make sense logically so fine to keep them if you want but I don\u0027t think there\u0027s any issues switching the GPIO to a known state even if the corresponding pin is in function specific mode, the two blocks should be completely independent.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "30daac22597938338434df1e426dc4cbf333544a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
