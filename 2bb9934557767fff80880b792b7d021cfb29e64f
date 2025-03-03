@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7ce94ecb_bb28b894",
+        "filename": "zephyr/test/drivers/default/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-03T06:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec11553d_0e7f178b",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0df72850_fa119c52",
         "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
         "patchSetId": 5
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59293bb5_15606401",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-03T06:41:40Z",
+      "side": 1,
+      "message": "Since the power role is in the disconnected state, so I assume this should be 0V that same as `test_disconnect_power_info`. I changed to 5V that will cause test failed.",
+      "parentUuid": "f1c2f66a_703ec3c3",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8080d58_d07b93d3",
@@ -65,6 +101,24 @@
       "writtenOn": "2025-02-27T20:41:43Z",
       "side": 1,
       "message": "I think this should be something like `zassert_within(info.meas.voltage_now, 5000, 500, ...);`. `voltage_now` is in mV, and VBUS at vSafe5V can vary I think about 10%. This is a test, so it will probably be exactly 5000, but keeping `zassert_within` would let us add variable VBUS to the framework without breaking the test, so it\u0027s probably fine.",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e288d736_cb187a79",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-03T06:41:40Z",
+      "side": 1,
+      "message": "Same with above comment.",
+      "parentUuid": "f8080d58_d07b93d3",
       "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa88a4a5_17853157",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-03T06:41:40Z",
+      "side": 1,
+      "message": "Same with above comment.",
+      "parentUuid": "c3385776_434d5d4b",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "048d17fe_70c609eb",
@@ -126,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5495c8_09774b18",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-03T06:41:40Z",
+      "side": 1,
+      "message": "I think this should return to the defualt, For bc12 case, the current limit is 400mA. Same as `test_disconnect_power_info` as well.",
+      "parentUuid": "048d17fe_70c609eb",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c0b2b6_6cf2f6a4",
@@ -139,6 +235,30 @@
       "writtenOn": "2025-02-27T20:41:43Z",
       "side": 1,
       "message": "I don\u0027t think you need to copy the disconnected tests. For these tests, the offered PDOs aren\u0027t even meaningful, and the behavior in this test should be exactly the same as in the 5V/3A version.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 1
+      },
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefb1c79_9a4e895b",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-03T06:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c0b2b6_6cf2f6a4",
       "range": {
         "startLine": 102,
         "startChar": 0,
