@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec945a46_114c69dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-03-03T04:21:41Z",
+      "side": 1,
+      "message": "eparate common/fpsensor/fpsensor_debug.cc to CL\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6312380/1",
+      "parentUuid": "bd06c7ea_e91a65eb",
+      "revId": "1b85068db999b97e6e875719776859e301fa0d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba371f9b_bd8c7f23",
@@ -99,6 +117,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b074e7b_ea0e7ca7",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-03-03T04:21:41Z",
+      "side": 1,
+      "message": "change upload_pgm_image to upload_8_bit_pgm_image and separate common/fpsensor/fpsensor_debug.cc to CL\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6312380/1",
+      "parentUuid": "ba371f9b_bd8c7f23",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "1b85068db999b97e6e875719776859e301fa0d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef24834a_82f2bd70",
@@ -146,6 +188,30 @@
           ]
         }
       ],
+      "revId": "1b85068db999b97e6e875719776859e301fa0d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7840232a_ebe41361",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-03-03T04:21:41Z",
+      "side": 1,
+      "message": "change to \u0027ceil(info.bpp / 8.) \u003d\u003d 2\u0027 and separate common/fpsensor/fpsensor_debug.cc to CL\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6312380/1",
+      "parentUuid": "ef24834a_82f2bd70",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 14
+      },
       "revId": "1b85068db999b97e6e875719776859e301fa0d52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
