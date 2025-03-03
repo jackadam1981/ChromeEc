@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65d3b9ba_bbc68ab6",
+        "filename": "zephyr/program/rauru/hylia/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-03-03T08:14:02Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "revId": "b28af32a26f46f6c8da0980116eb56204240b01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b95c475_316c71c0",
         "filename": "zephyr/program/rauru/hylia/project.overlay",
         "patchSetId": 3
