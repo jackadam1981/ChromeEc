@@ -61,10 +61,10 @@
  * sudo screen -c ${HOME}/.screenrc /dev/pts/NN 115200
  *
  */
-static void upload_pgm_image(uint8_t *frame)
+static void upload_8_bit_pgm_image(uint8_t *frame)
 {
 	uint8_t *ptr = frame;
-
+	CPRINTF("%s \r\n", __func__);
 	/* fake Z-modem ZRQINIT signature */
 	CPRINTF("#IGNORE for ZModem\r**\030B00");
 	crec_msleep(2000); /* let the download program start */
@@ -79,6 +79,31 @@ static void upload_pgm_image(uint8_t *frame)
 		cflush();
 	}
 
+	CPRINTF("\x04"); /* End Of Transmission */
+}
+
+/*
+ * Send the current Fingerprint buffer to the host as 'upload_8_bit_pgm_image'
+ * it is formatted as an 16-bpp PGM ASCII file.
+ *
+ */
+
+static void upload_16_bit_pgm_image(uint8_t *frame)
+{
+	uint16_t *ptr = (uint16_t *)frame;
+	CPRINTF("%s \r\n", __func__);
+	/* fake Z-modem ZRQINIT signature */
+	CPRINTF("#IGNORE for ZModem\r**\030B00");
+	crec_msleep(2000); /* let the download program start */
+	// /* Print 16-bpp PGM ASCII header */
+	CPRINTF("P2\n%d %d\n65535\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
+	for (int y = 0; y < FP_SENSOR_RES_Y; y++) {
+		watchdog_reload();
+		for (int x = 0; x < FP_SENSOR_RES_X; x++, ptr++)
+			CPRINTF("%d ", *ptr);
+		CPRINTF("\n");
+		cflush();
+	}
 	CPRINTF("\x04"); /* End Of Transmission */
 }
 
@@ -130,8 +155,18 @@ static int command_fpcapture(int argc, const char **argv)
 			       FP_MODE_CAPTURE_TYPE_MASK);
 
 	const enum ec_error_list rc = fp_console_action(mode);
-	if (rc == EC_SUCCESS)
-		upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	if (rc == EC_SUCCESS) {
+		ec_response_fp_info info;
+		fp_sensor_get_info(&info,
+				   FP_CAPTURE_TYPE(global_context.sensor_mode));
+		if (ceil(info.bpp / 8.) == 2) {
+			upload_16_bit_pgm_image(fp_buffer +
+						FP_SENSOR_IMAGE_OFFSET);
+		} else {
+			upload_8_bit_pgm_image(fp_buffer +
+					       FP_SENSOR_IMAGE_OFFSET);
+		}
+	}
 
 	return rc;
 }
@@ -179,14 +214,20 @@ DECLARE_CONSOLE_COMMAND(fpupload, command_fpupload, nullptr,
  *
  * This is useful to verify the data was transferred correctly. Note that it
  * requires the terminal to be configured as explained in the comment above
- * upload_pgm_image().
+ * upload_8_bit_pgm_image().
  */
 static int command_fpdownload(int argc, const char **argv)
 {
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 
-	upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	ec_response_fp_info info;
+	fp_sensor_get_info(&info, FP_CAPTURE_TYPE(global_context.sensor_mode));
+	if (ceil(info.bpp / 8.) == 2) {
+		upload_16_bit_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	} else {
+		upload_8_bit_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+	}
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(fpdownload, command_fpdownload, nullptr,
