@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64128ff_4fdf35f5",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a48472_8c5c7fe9",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "87cb0818ab3798b9ea4761a0bdd4e42599662830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "393cdecf_0d196bfb",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-03T16:43:23Z",
       "side": 1,
       "message": "```suggestion\n * @brief Get the current requested from the charger while in sink mode\n```",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 50
+      },
+      "revId": "87cb0818ab3798b9ea4761a0bdd4e42599662830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd20f3e_fb82661c",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-03T19:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "393cdecf_0d196bfb",
       "range": {
         "startLine": 304,
         "startChar": 0,
