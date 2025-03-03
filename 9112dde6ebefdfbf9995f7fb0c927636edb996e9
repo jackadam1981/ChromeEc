@@ -40,6 +40,29 @@
       ],
       "revId": "9112dde6ebefdfbf9995f7fb0c927636edb996e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1615a901_112853c8",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-03T19:14:25Z",
+      "side": 1,
+      "message": "can you use something other than `FP_CAPTURE_SIMPLE_IMAGE`. This is the default for `fpcapture` and should capture a fingerprint image.",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "9112dde6ebefdfbf9995f7fb0c927636edb996e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
