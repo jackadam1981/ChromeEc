@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c55d2c_9ee9f39e",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-03T19:24:00Z",
+      "side": 1,
+      "message": "I just noticed that we have this configuration. Are we using it? If not, can we remove it in a separate CL?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "4c820ed54dd656fcb3b694150b9edf296119b092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55ff377_2a05bd18",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-03T19:24:00Z",
+      "side": 1,
+      "message": "Can you add a doxygen comment for these two to make it clear when an image is 8 bpp vs 16 bpp?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "4c820ed54dd656fcb3b694150b9edf296119b092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
