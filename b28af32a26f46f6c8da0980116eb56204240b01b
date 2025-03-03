@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e89f17_e9f0c334",
+        "filename": "zephyr/program/rauru/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-03T08:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4258b69_605118db",
+      "revId": "b28af32a26f46f6c8da0980116eb56204240b01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65d3b9ba_bbc68ab6",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3dec09_a6a31e11",
+        "filename": "zephyr/program/rauru/hylia/generated.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-03T08:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65d3b9ba_bbc68ab6",
+      "revId": "b28af32a26f46f6c8da0980116eb56204240b01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b95c475_316c71c0",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-03-03T08:09:44Z",
       "side": 1,
       "message": "```suggestion\n\t\tint_ap_bl_en: int_ap_bl_en{\n```",
+      "revId": "b28af32a26f46f6c8da0980116eb56204240b01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2edf8227_1383fe4e",
+        "filename": "zephyr/program/rauru/hylia/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-03T08:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b95c475_316c71c0",
       "revId": "b28af32a26f46f6c8da0980116eb56204240b01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
