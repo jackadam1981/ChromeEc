@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cb0505_0d804bfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T16:36:45Z",
+      "side": 1,
+      "message": "We should fix `lpc_update_wake` to honor the active high/low setting as a follow up.",
+      "revId": "d1b6ca6b3d75a04de5c94eba6002b50aff3e04d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
