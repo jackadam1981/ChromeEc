@@ -116,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a774c8_b99f4e95",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-03T20:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6340afbc_fff18e2e",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 1
+      },
+      "revId": "e20bca65cea6b8a15939bce49710282370bdeced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9a2de9e_0a6683d6",
@@ -129,6 +153,30 @@
       "writtenOn": "2025-03-03T19:12:24Z",
       "side": 1,
       "message": "Let\u0027s create a helper function to get the bpp.\n\nSomething like:\n\n```\nstatic uint8_t get_sensor_bpp(void)\n{\n\tec_response_fp_info info;\n\tfp_sensor_get_info(\u0026info, FP_CAPTURE_TYPE(global_context.sensor_mode));\n\treturn info.bpp;\n}\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 52
+      },
+      "revId": "e20bca65cea6b8a15939bce49710282370bdeced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a36631_d35ebbcd",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-03T20:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9a2de9e_0a6683d6",
       "range": {
         "startLine": 159,
         "startChar": 2,
