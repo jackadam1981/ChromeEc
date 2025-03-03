@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7bbc71_0cbcd9df",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-03T21:55:03Z",
+      "side": 1,
+      "message": "Non-blocking: For `sink_path_status` we\u0027re caching the value separate from `port-\u003econnector_status`.  This is what we should be doing with all `connector_status` fields that we care about so that `port-\u003econnector_status` is just temporary storage.",
+      "range": {
+        "startLine": 1215,
+        "startChar": 11,
+        "endLine": 1215,
+        "endChar": 27
+      },
+      "revId": "fb2c109599ed418eda9905f2f8e1e743adcaa20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
