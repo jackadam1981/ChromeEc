@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102ef79d_362bd3a7",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-03T19:13:00Z",
+      "side": 1,
+      "message": "why you are adding this here? This will break other code. `Quality` tests should not require a finger and this function should return `false` If you want you RV test to capture an image with IRQ, you should not use `FP_CAPTURE_QUALITY_TEST`",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e85d9188_3e748b05",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_utils.cc",
+              "range": {
+                "startLine": 48,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9112dde6ebefdfbf9995f7fb0c927636edb996e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
