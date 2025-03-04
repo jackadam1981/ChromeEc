@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2c0775_85638b3a",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-03-04T11:22:28Z",
+      "side": 1,
+      "message": "No, we don\u0027t use these. I remove it in CL\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6321071",
+      "parentUuid": "44c55d2c_9ee9f39e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "4c820ed54dd656fcb3b694150b9edf296119b092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b55ff377_2a05bd18",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-03T19:24:00Z",
       "side": 1,
       "message": "Can you add a doxygen comment for these two to make it clear when an image is 8 bpp vs 16 bpp?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "4c820ed54dd656fcb3b694150b9edf296119b092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7991ba6_6d304cdf",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-03-04T11:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b55ff377_2a05bd18",
       "range": {
         "startLine": 39,
         "startChar": 0,
