@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8e2faf2_3eb61db4",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-03-04T09:44:14Z",
+      "side": 1,
+      "message": "If you need the EC host commad communication throgh the UART, yes, you need `CONFIG_UART_ASYNC_API\u003dy` and `CONFIG_UART_NPCX_USE_MDMA\u003dy`",
+      "parentUuid": "b895a521_b9af23f4",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6d1cb0c_9cd4fb6f",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 55
