@@ -5,6 +5,7 @@
  * This file tests the dead battery policies on type-C ports.
  */
 
+#include "chipset.h"
 #include "usbc/pdc_power_mgmt.h"
 #include "usbc/utils.h"
 
@@ -45,3 +46,5 @@ void pdc_driver_init(void);
 int configure_dead_battery(const struct pdc_fixture *pdc);
 
 void verify_dead_battery_config(const struct emul *e);
+
+void set_chipset_state(enum chipset_state_mask state);
