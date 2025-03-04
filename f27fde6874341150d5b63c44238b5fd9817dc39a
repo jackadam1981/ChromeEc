@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15800406_913a5aa7",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:45:44Z",
+      "side": 1,
+      "message": "CONFIG_UART_ASYNC_API is now enabled. However, adding CONFIG_UART_NPCX_USE_MDMA causes the memory RW image to overflow the available space by 864 bytes. For ECOS helipilot, Nuvoton implemented the UART async API without DMA since there is no hardware support for DMA on the chip we are using. I\u0027d like confirmation from the NPCX team on whether we need this config since the associated comments (\"expose this option when the reg porperty has two register base address\") don\u0027t make this clear",
+      "parentUuid": "4f54fb39_913bfc5c",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6d1cb0c_9cd4fb6f",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 55
