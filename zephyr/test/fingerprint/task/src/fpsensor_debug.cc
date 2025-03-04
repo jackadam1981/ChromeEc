@@ -172,3 +172,14 @@ ZTEST(fpsensor_debug, test_command_fpenroll)
 	int rv = shell_execute_cmd(get_ec_shell(), console_input);
 	zassert_equal(rv, EC_ERROR_ACCESS_DENIED);
 }
+
+enum ec_error_list upload_pgm_image(uint8_t *frame, uint8_t bpp);
+
+ZTEST(fpsensor_debug, test_upload_pgm_image_wrong_bpp)
+
+{
+	uint8_t frame[100] = { 0 };
+	enum ec_error_list res = upload_pgm_image(frame, 3);
+
+	zassert_equal(res, EC_ERROR_UNKNOWN);
+}
