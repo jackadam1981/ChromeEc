@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f6e932_c29033d4",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T22:56:17Z",
+      "side": 0,
+      "message": "I think you can use `test_export_static` to keep the `static` in non-test builds:\n\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/common.h;l\u003d305;drc\u003dc4c64c80b0a83f646515629312cc67ffa59b4daa\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/common.h;l\u003d313;drc\u003dc4c64c80b0a83f646515629312cc67ffa59b4daa",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "f3aa0f86df97b00043b523d6aef37f46b5695c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
