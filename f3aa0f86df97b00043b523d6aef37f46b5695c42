@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755db81b_208570f6",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T22:52:46Z",
+      "side": 1,
+      "message": "Can you test a few different cases? For example, `0`, `17`, `24`.\n\nAlso, `3` bpp will require one byte, so the current test case should pass.",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 53
+      },
+      "revId": "f3aa0f86df97b00043b523d6aef37f46b5695c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
