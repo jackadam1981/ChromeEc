@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9292e0_e8e9d567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-04T22:19:21Z",
+      "side": 1,
+      "message": "i updated the commit message to better describe this change.",
+      "parentUuid": "e1fa9340_55b593e2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "2edbba5fde034f1f59cfb470252dcedd1bd6593d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "126b9f00_ebf43020",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "834676de_ea514fb2",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-04T22:19:21Z",
+      "side": 1,
+      "message": "needed to track ACOK",
+      "parentUuid": "126b9f00_ebf43020",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "2edbba5fde034f1f59cfb470252dcedd1bd6593d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81142d42_c01e7cec",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-03-04T21:04:14Z",
       "side": 1,
       "message": "Move to the next CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "2edbba5fde034f1f59cfb470252dcedd1bd6593d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a480d668_e237f4dc",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/interrupts.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-04T22:19:21Z",
+      "side": 1,
+      "message": "this is needed for both ECs to correctly track the ACOK signal from the charger.",
+      "parentUuid": "81142d42_c01e7cec",
       "range": {
         "startLine": 10,
         "startChar": 0,
