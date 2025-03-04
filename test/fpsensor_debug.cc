@@ -232,11 +232,26 @@ test_static int test_command_fpenroll(void)
 	return EC_SUCCESS;
 }
 
+#if defined(SECTION_IS_RW)
+enum ec_error_list upload_pgm_image(uint8_t *frame, uint8_t bpp);
+
+test_static int test_upload_pgm_image_wrong_bpp(void)
+{
+	uint8_t frame[100] = { 0 };
+	enum ec_error_list res = upload_pgm_image(frame, 3);
+
+	TEST_EQ(res, EC_ERROR_UNKNOWN, "%d");
+
+	return EC_SUCCESS;
+}
+#endif
+
 void run_test(int argc, const char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_console_fpinfo);
+#if defined(SECTION_IS_RW)
 	if (!IS_ENABLED(BOARD_HOST)) {
 		RUN_TEST(test_command_fpupload_success);
 		RUN_TEST(test_command_fpupload_system_is_locked);
@@ -252,6 +267,8 @@ void run_test(int argc, const char **argv)
 		RUN_TEST(test_command_fpcapture_mode_is_negative);
 		RUN_TEST(test_command_fpcapture_mode_is_too_large);
 		RUN_TEST(test_command_fpenroll);
+		RUN_TEST(test_upload_pgm_image_wrong_bpp);
 	}
 	test_print_result();
+#endif
 }
