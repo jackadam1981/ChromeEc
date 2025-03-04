@@ -448,6 +448,7 @@ static inline void GetNvIndexConfig(
 		*cfg = index_config[index - VIRTUAL_NV_INDEX_START];
 	} else {
 		cfg->size = 0;
+		cfg->attributes = TPMA_NV_REGULAR;
 		cfg->get_data_fn = 0;
 	}
 }
