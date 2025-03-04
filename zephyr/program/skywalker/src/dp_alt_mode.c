@@ -149,11 +149,27 @@ static void skywalker_set_unattached(int port)
 	svdm_set_hpd_gpio(port, 0);
 }
 
+static void skywalker_conn_status(int port,
+				  const union connector_status_t *conn_status)
+{
+	if (port != 0) {
+		return;
+	}
+
+	bool is_attached = conn_status->connect_status;
+	bool is_ufp = conn_status->conn_partner_type == DFP_ATTACHED;
+
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_usb_c0_dev_mode),
+			is_attached && is_ufp);
+}
+
 static void skywalker_pdc_cb_init(void)
 {
 	pdc_power_mgmt_register_board_callback(PDC_BOARD_CB_UNATTACH,
 					       skywalker_set_unattached);
 	pdc_power_mgmt_register_board_callback(PDC_BOARD_CB_DP_ATTENTION,
 					       skywalker_dp_attention);
+	pdc_power_mgmt_register_board_callback(PDC_BOARD_CB_CONN_STATUS,
+					       skywalker_conn_status);
 }
 DECLARE_HOOK(HOOK_INIT, skywalker_pdc_cb_init, HOOK_PRIO_LAST);
