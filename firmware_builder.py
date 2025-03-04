@@ -238,7 +238,13 @@ def bundle_firmware(opts):
     bundle_dir = get_bundle_dir(opts)
     ec_dir = os.path.dirname(__file__)
     for build_target in sorted(os.listdir(os.path.join(ec_dir, "build"))):
+<<<<<<< HEAD   (b73a5f cr50: setup MP branch)
         tarball_name = "".join([build_target, ".firmware.tbz2"])
+||||||| BASE
+        tarball_name = ''.join([build_target, '.firmware.tbz2'])
+=======
+        tarball_name = "".join([build_target, ".firmware.tar.bz2"])
+>>>>>>> BRANCH (2bb0eb cr50: prepare to release 0.{5,6}.282)
         tarball_path = os.path.join(bundle_dir, tarball_name)
 
         artifact_dir = create_artifact_dir(ec_dir, build_target)
@@ -254,7 +260,12 @@ def bundle_firmware(opts):
             meta.tarball_info.board.extend([GE_BOARD])
             meta.tarball_info.publish_to_goldeneye = True
         meta.tarball_info.type = (
+<<<<<<< HEAD   (b73a5f cr50: setup MP branch)
             firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC
+||||||| BASE
+=======
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.GSC
+>>>>>>> BRANCH (2bb0eb cr50: prepare to release 0.{5,6}.282)
         )
         # TODO(kmshelton): Populate the rest of metadata contents as it gets
         # defined in infra/proto/src/chromite/api/firmware.proto.
