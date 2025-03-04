@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc9cc27_00503494",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-04T17:25:40Z",
+      "side": 1,
+      "message": "why are you adding this here. Chosing this option should cause the MCU to reboot. Is this needed",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "695a5b10b5117cafffa5a96708f09360858b813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
