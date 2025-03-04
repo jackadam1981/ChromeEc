@@ -124,11 +124,38 @@ pub mod trunks {
             signature: Pin<&mut CxxString>,
         ) -> u32;
 
+        /// See Tpm::SerializeCommand_NV_Read for docs.
+        fn SerializeCommand_NV_Read(
+            auth_handle: &u32,
+            auth_handle_name: &CxxString,
+            nv_index: &u32,
+            nv_index_name: &CxxString,
+            size: &u16,
+            offset: &u16,
+            serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_NV_Read for docs.
+        fn ParseResponse_NV_Read(
+            response: &CxxString,
+            data: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
         /// See Tpm::SerializeCommand_NV_ReadPublic for docs.
         fn SerializeCommand_NV_ReadPublic(
             nv_index: &u32,
             nv_index_name: &CxxString,
             serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: &UniquePtr<AuthorizationDelegate>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_NV_ReadPublic for docs.
+        fn ParseResponse_NV_ReadPublic(
+            response: &CxxString,
+            nv_public_data_size: &mut u16,
+            nv_name: Pin<&mut CxxString>,
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
