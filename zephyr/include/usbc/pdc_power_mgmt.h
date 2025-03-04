@@ -62,6 +62,8 @@ enum pdc_power_mgmt_board_cb_t {
 	PDC_BOARD_CB_UNATTACH,
 	/** DP Attention */
 	PDC_BOARD_CB_DP_ATTENTION,
+	/** Connector status */
+	PDC_BOARD_CB_CONN_STATUS,
 
 	/** State count. Always leave as last item. */
 	PDC_BOARD_CB_COUNT,
@@ -676,6 +678,12 @@ typedef void (*pdc_power_mgmt_board_dp_attention_cb)(int port,
  * @param port USB-C port number
  */
 typedef void (*pdc_power_mgmt_board_unattached_cb)(int port);
+
+/**
+ * WIP
+ */
+typedef void (*pdc_power_mgmt_board_conn_status_cb)(
+	int port, const union connector_status_t *conn_status);
 
 /**
  * @brief Get the latest DP Attention/Status VDO for the port.
