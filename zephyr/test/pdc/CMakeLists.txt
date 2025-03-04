@@ -47,9 +47,14 @@ if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS)
 	target_sources(app PRIVATE src/pdc_policy/dead_battery_two_chargers.c)
 endif()
 
-if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY)
+if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY_AP_ON)
 	target_sources(app PRIVATE src/pdc_policy/dead_battery_policy.c)
-	target_sources(app PRIVATE src/pdc_policy/dead_battery_ac_only.c)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_ac_only_ap_on.c)
+endif()
+
+if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY_AP_OFF)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_policy.c)
+	target_sources(app PRIVATE src/pdc_policy/dead_battery_ac_only_ap_off.c)
 endif()
 
 if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY_CLAMPED)

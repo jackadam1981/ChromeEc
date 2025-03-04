@@ -118,10 +118,25 @@ tests:
     - "./boards/pdc_deferred.overlay"
     - "./boards/pdc_power_mgmt_deferred.overlay"
 
-  pdc.policy.dead_battery.ac_only:
+  pdc.policy.dead_battery.ac_only.ap_on:
     timeout: 300
     extra_configs:
-    - CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY=y
+    - CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY_AP_ON=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_PLATFORM_EC_USB_PD_FRS=y
+    - CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS=y
+    - CONFIG_PLATFORM_EC_CONSOLE_DEBUG=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+    - "./boards/pdc_deferred.overlay"
+    - "./boards/pdc_power_mgmt_deferred.overlay"
+
+  pdc.policy.dead_battery.ac_only.ap_off:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY_AP_OFF=y
     - CONFIG_USBC_PDC_TRACE_MSG=y
     - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
     - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
