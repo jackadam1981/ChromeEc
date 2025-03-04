@@ -1,4 +1,4 @@
-logFile $ORIGIN/shell_module-renode.log True
+#logFile $ORIGIN/shell_module-renode.log True
 
 using sysbus
 $name?="adp_xc7k_ae350"
@@ -9,11 +9,12 @@ machine LoadPlatformDescription $ORIGIN/shell_module.repl
 
 showAnalyzer uart1
 
-uart1 RecordToAsciinema $ORIGIN/shell_module-asciinema
+#uart1 RecordToAsciinema $ORIGIN/shell_module-asciinema
 
 macro reset
 """
-    sysbus LoadELF @https://zephyr-dashboard.renode.io/zephyr/70f55bccf8af2866331f6fd84e05c600f4457704/adp_xc7k_ae350/shell_module/shell_module.elf
+    sysbus LoadELF $ORIGIN/zephyr-adp_xc7k_shell.elf
+    #sysbus LoadELF @https://zephyr-dashboard.renode.io/zephyr/70f55bccf8af2866331f6fd84e05c600f4457704/adp_xc7k_ae350/shell_module/shell_module.elf
     cpu0 EnableZephyrMode
     cpu1 IsHalted true
     cpu2 IsHalted true
@@ -22,7 +23,7 @@ macro reset
     cpu5 IsHalted true
     cpu6 IsHalted true
     cpu7 IsHalted true
-    cpu0 EnableProfilerCollapsedStack $ORIGIN/shell_module-profile true
+    #cpu0 EnableProfilerCollapsedStack $ORIGIN/shell_module-profile true
 """
 
 runMacro $reset
