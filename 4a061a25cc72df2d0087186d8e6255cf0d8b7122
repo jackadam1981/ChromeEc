@@ -22,6 +22,30 @@
       },
       "revId": "4a061a25cc72df2d0087186d8e6255cf0d8b7122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae4d16b_c7c12c58",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2613,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-04T02:57:01Z",
+      "side": 1,
+      "message": "There\u0027s ~30ms of time in unit test logs before this gets updated with `GET_CONNECTOR_STATUS`.  The tests still pass if I remove this.",
+      "parentUuid": "f76d1637_f1e68add",
+      "range": {
+        "startLine": 2613,
+        "startChar": 0,
+        "endLine": 2613,
+        "endChar": 52
+      },
+      "revId": "4a061a25cc72df2d0087186d8e6255cf0d8b7122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
