@@ -16,10 +16,18 @@ config FP_FPC_LIBFP_ALGORITHM
 	  Enable FPC LIBFP matching algorithm. To work properly, FPC private
 	  library is required.
 
+config FP_EGIS_EGIS630_ALGORITHM
+	bool "EGIS EGIS630 matching algorithm"
+	default y if FINGERPRINT_SENSOR_EGIS630
+	help
+	  Enable EGIS EGIS630 matching algorithm. To work properly, EGIS private
+	  library is required.
+
 config FP_ALGORITHM_TEMPLATE_SIZE
 	int "Size of template size"
 	default 5092 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	default 47552 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
+	default 16384 if FINGERPRINT_SENSOR_EGIS630 && FP_EGIS_EGIS630_ALGORITHM
 	default 0
 	help
 	  Constant value corresponding to the maximum template size.
@@ -34,6 +42,7 @@ config FP_MAX_FINGER_COUNT
 	  int "Maximum number of loaded finger templates"
 	  default 5 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	  default 5 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
+	  default 2 if FINGERPRINT_SENSOR_EGIS630 && FP_EGIS_EGIS630_ALGORITHM
 	  default 5
 	  help
 		Max number of templates stored / matched against. This limit comes
@@ -50,6 +59,12 @@ config HAVE_LIBFP_PRIVATE_DRIVER
 	default n
 	help
 	  If enabled, it indicates that LIBFP private driver is present.
+
+config HAVE_EGIS630_PRIVATE_ALGORITHM
+	bool
+	default n
+	help
+	  If enabled, it indicates that EGIS630 private algorithm is present.
 
 config LIBFP_PRIVATE_DRIVER_HEAP_SIZE
 	int "Size of heap for FPC1145 driver"
