@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45e59f92_cdb882f1",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T22:51:22Z",
+      "side": 1,
+      "message": "I think this should be `DIV_ROUND_UP`, not `NEAREST`. See comment in test case.",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3b68298c_5165fc6e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t bytes_per_pixel \u003d DIV_ROUND_UP(bpp, 8);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9a3defb2b19631c7f500e33965e3ee869c4b44bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
