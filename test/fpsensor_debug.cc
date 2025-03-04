@@ -253,6 +253,5 @@ void run_test(int argc, const char **argv)
 		RUN_TEST(test_command_fpcapture_mode_is_too_large);
 		RUN_TEST(test_command_fpenroll);
 	}
-
 	test_print_result();
 }
