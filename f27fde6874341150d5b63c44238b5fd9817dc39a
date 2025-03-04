@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b895a521_b9af23f4",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:48:45Z",
+      "side": 1,
+      "message": "My previous comment actually refers to SPI async API (not UART), but I\u0027d still like confirmation from Nuvoton on whether this CONFIG is needed",
+      "parentUuid": "15800406_913a5aa7",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6d1cb0c_9cd4fb6f",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 55
