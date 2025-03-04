@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fe329e2_f98c5aa8",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:37:41Z",
+      "side": 1,
+      "message": "I\u0027m OK with that, but would prefer for that upstream effort not to block this CL, can I file a bug for this and add a TODO to the code?",
+      "parentUuid": "38ace11c_05a105e3",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e776c5e2_12a5deb9",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 52

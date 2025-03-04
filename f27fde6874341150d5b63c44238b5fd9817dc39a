@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3328c1_3f4787d4",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 55
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01f7598_ee488e06",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8cf3939_0a2cb842",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9982ab_c0e20858",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 55
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8cf3939_0a2cb842",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "756d837a_8c5b8142",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-03-03T12:20:11Z",
       "side": 1,
       "message": "This options generates the following warning:\n```\nwarning: PLATFORM_EC_WATCHDOG_WARNING_LEADING_TIME_MS (defined at\n/mnt/host/source/src/platform/ec/zephyr/Kconfig.watchdog:14) was assigned the value \u00273000\u0027 but got\nthe value \u0027\u0027. Check these unsatisfied dependencies: (!WDT_NPCX) (\u003dn).\n```\n\nThe documentation clearly states that `CONFIG_WDT_NPCX_WARNING_LEADING_TIME_MS` should be used for NPCX:\n```\n          For the NPCX chip, use WDT_NPCX_WARNING_LEADING_TIME_MS instead\n          of this config.\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71536d1d_ca5bc610",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756d837a_8c5b8142",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -110,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69dcdf45_03869664",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 55
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d1cb0c_9cd4fb6f",
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a6e664_98180b81",
@@ -123,6 +213,30 @@
       "writtenOn": "2025-03-03T12:20:11Z",
       "side": 1,
       "message": "```suggestion\n/delete-node/ \u0026sram0;\n\n/ {\n\tsram0: memory@200b0000 {\n\t\tcompatible \u003d \"mmio-sram\";\n\t\treg \u003d \u003c0x200B0000 DT_SIZE_K(156)\u003e;\n\t};\n};\n```\n\nThis should fix the following build warning:\n```\nunit address and first address in \u0027reg\u0027 (0x200a8000) don\u0027t match for /memory@200c0000\n```\n\nRemoving the comment was intended.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "f27fde6874341150d5b63c44238b5fd9817dc39a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7950cb05_3f024e48",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 55
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a6e664_98180b81",
       "range": {
         "startLine": 45,
         "startChar": 0,
