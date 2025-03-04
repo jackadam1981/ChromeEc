@@ -5,6 +5,7 @@
  * This file tests the dead battery policies on type-C ports.
  */
 
+#include "battery.h"
 #include "chipset.h"
 #include "dead_battery_policy.h"
 #include "emul/emul_pdc.h"
@@ -26,6 +27,7 @@
 LOG_MODULE_REGISTER(pdc_dead_battery_policy);
 
 FAKE_VALUE_FUNC(int, chipset_in_state, int);
+FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
 FAKE_VALUE_FUNC(int, sniff_pdc_set_sink_path, const struct device *, bool);
 FAKE_VALUE_FUNC(int, sniff_pdc_set_rdo, const struct device *, uint32_t);
 
@@ -46,6 +48,17 @@ static enum chipset_state_mask fake_chipset_state = CHIPSET_STATE_ON;
 static int custom_fake_chipset_in_state(int mask)
 {
 	return !!(fake_chipset_state & mask);
+}
+
+static enum battery_present bp_val = BP_YES;
+void set_battery_present(enum battery_present bp)
+{
+	bp_val = bp;
+}
+
+static enum battery_present custom_fake_battery_is_present(void)
+{
+	return bp_val;
 }
 
 static uint8_t sink_path_en_mask;
@@ -113,6 +126,12 @@ static int custom_fake_pdc_set_rdo(const struct device *dev, uint32_t rdo)
 	zassert_true(IS_ONE_BIT_SET(sink_path_en_mask) ||
 		     sink_path_en_mask == 0);
 
+	/* RDO should not be sent when we're sinking from this port and battery
+	 * is not present */
+	if (IS_BIT_SET(sink_path_en_mask, port)) {
+		zassert_equal(bp_val, BP_YES);
+	}
+
 	return pdc_set_rdo(dev, rdo);
 }
 
@@ -178,6 +197,7 @@ static void dead_battery_policy_before(void *f)
 		ZTEST_TEST_COUNT, 1,
 		"Only one test allowed per binary due to validating driver initialization");
 	RESET_FAKE(chipset_in_state);
+	RESET_FAKE(battery_is_present);
 	RESET_FAKE(sniff_pdc_set_sink_path);
 	RESET_FAKE(sniff_pdc_set_rdo);
 
@@ -185,6 +205,7 @@ static void dead_battery_policy_before(void *f)
 	sniff_pdc_set_sink_path_fake.custom_fake =
 		custom_fake_pdc_set_sink_path;
 	sniff_pdc_set_rdo_fake.custom_fake = custom_fake_pdc_set_rdo;
+	battery_is_present_fake.custom_fake = custom_fake_battery_is_present;
 
 	sink_path_en_mask = BIT_MASK(CONFIG_USB_PD_PORT_MAX_COUNT);
 }
