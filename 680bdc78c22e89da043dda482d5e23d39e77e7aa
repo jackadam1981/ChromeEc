@@ -16,6 +16,24 @@
       "message": "Would you be able to add a comment why helipilot needs more time for reboot? Do we know that?",
       "revId": "680bdc78c22e89da043dda482d5e23d39e77e7aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3494b3_f0b4c1bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-04T03:54:19Z",
+      "side": 1,
+      "message": "I agree that it needs to be investigated but haven\u0027t looked into it yet. We might want to add that as a TODO to this CL since it is currently necessary to run any unit tests. Alternately, we can cherry pick this CL for development until we root cause the additional boot time required by Zephyr helipilot firmware",
+      "parentUuid": "68dbacb6_4688a167",
+      "revId": "680bdc78c22e89da043dda482d5e23d39e77e7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
