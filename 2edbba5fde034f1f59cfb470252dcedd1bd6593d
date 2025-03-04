@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fa9340_55b593e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T21:04:14Z",
+      "side": 1,
+      "message": "Nit - hibernate is already enabled on fatcat_npcx9m7f.  This change appears to just be fixing wake from the power button.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "2edbba5fde034f1f59cfb470252dcedd1bd6593d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126b9f00_ebf43020",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T21:04:14Z",
+      "side": 1,
+      "message": "Move to the next CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "2edbba5fde034f1f59cfb470252dcedd1bd6593d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81142d42_c01e7cec",
+        "filename": "zephyr/program/fatcat/fatcat_it82002aw/interrupts.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T21:04:14Z",
+      "side": 1,
+      "message": "Move to the next CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "2edbba5fde034f1f59cfb470252dcedd1bd6593d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
