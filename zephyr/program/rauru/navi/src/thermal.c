@@ -11,6 +11,7 @@
 #include "extpower.h"
 #include "hooks.h"
 #include "power.h"
+#include "rauru_common.h"
 #include "temp_sensor/temp_sensor.h"
 #include "util.h"
 
@@ -52,6 +53,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		return 0;
 
 	current = curr->requested_current;
+	current = rauru_charge_soft_slew(current);
 
 	temp_sensor_read(
 		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_sensor_pwr_thermistor)),

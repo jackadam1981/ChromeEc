@@ -13,6 +13,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "power.h"
+#include "rauru_common.h"
 #include "temp_sensor/temp_sensor.h"
 #include "util.h"
 
@@ -140,6 +141,8 @@ int charger_profile_override(struct charge_state_data *curr)
 		if (curr->state != ST_DISCHARGE)
 			curr->state = ST_IDLE;
 	}
+
+	current = rauru_charge_soft_slew(current);
 
 	/* This policy only execute in state s0 */
 	chipset_state = power_get_state();
