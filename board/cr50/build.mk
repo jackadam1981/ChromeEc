@@ -27,8 +27,14 @@ CHIP_VARIANT ?= cr50_fpga
 #   - spihash command is available when ccd is locked
 #   - added chargen command for testing uart
 #
+<<<<<<< HEAD   (b73a5f cr50: setup MP branch)
 # This is the MP branch.
 BRANCH:=MP
+||||||| BASE
+=======
+# This is the TOT branch.
+BRANCH:=TOT
+>>>>>>> BRANCH (2bb0eb cr50: prepare to release 0.{5,6}.282)
 
 # Additional / overriding warnings for common rules and chip
 # (TODO) enable after https://crrev.com/c/3198155
