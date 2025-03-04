@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8406175_9ef3eba8",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:20:56Z",
+      "side": 1,
+      "message": "We only handle the cases below where `bytes_per_pixel` is `2` or `1`. We should return an error in the case where there is some other value (and handle the error in the caller).",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "7be882c095990b26e239c9b763db0ff1d0675bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c707a1f_1e177dd8",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:20:56Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (rc \u003d\u003d EC_SUCCESS)\n\t\tupload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, get_sensor_bpp());\n```",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "7be882c095990b26e239c9b763db0ff1d0675bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5f26fc_b1acc649",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:20:56Z",
+      "side": 1,
+      "message": "```suggestion\n\tupload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET, get_sensor_bpp());\n```",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 59
+      },
+      "revId": "7be882c095990b26e239c9b763db0ff1d0675bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
