@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "251bf84a_ebb15a64",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-04T19:18:40Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6320013/comment/46480613_bae7568b/",
+      "parentUuid": "f98675fe_39e31d6f",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46480613_bae7568b",
         "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
         "patchSetId": 5
