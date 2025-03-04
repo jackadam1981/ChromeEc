@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "688d0991_9a50ed89",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2080,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T18:52:17Z",
+      "side": 1,
+      "message": "I see it now - `pdc_snk_attached_evaluate_pdos` can set the sub-state to `SNK_ATTACHED_SYNC_CHARGE_MGR`, which calls `pdc_snk_seed_charge_manager`.",
+      "parentUuid": "e6f219fe_0ba9fb07",
+      "range": {
+        "startLine": 2080,
+        "startChar": 0,
+        "endLine": 2080,
+        "endChar": 78
+      },
+      "revId": "a875f5a4a71e6ca481f33cd5a568e0f7a4973922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06154ca9_3b7503ba",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 18

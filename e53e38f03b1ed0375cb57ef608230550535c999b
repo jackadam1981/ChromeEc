@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5ffdad_95f477b0",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T18:52:17Z",
+      "side": 1,
+      "message": "Because this routine only returns 2 values, switch to a bool so that the caller can set the sub-state directly.  This will make the code easier to follow.",
+      "range": {
+        "startLine": 2131,
+        "startChar": 0,
+        "endLine": 2131,
+        "endChar": 55
+      },
+      "revId": "e53e38f03b1ed0375cb57ef608230550535c999b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd93c95_c5994afd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2315,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T18:52:17Z",
+      "side": 1,
+      "message": "See above - it\u0027s easy to lose track of the sub-state when it\u0027s set by the helper.  Try to keep all sub-state assignment done within this function.\n\n```\n/* Remain in EVAL PDOs if more than one PDC has the sink path\n * enabled. Once the charge manager is seeded, it will select the\n * best port and disable the sink path on all but the best port.\n */\nif (pdc_snk_attached_evaluate_pdos_ready(port)) {\n    port-\u003esnk_attached_local_state \u003d SNK_ATTACHED_SYNC_CHARGE_MGR;\n}\n```",
+      "range": {
+        "startLine": 2313,
+        "startChar": 0,
+        "endLine": 2315,
+        "endChar": 0
+      },
+      "revId": "e53e38f03b1ed0375cb57ef608230550535c999b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
