@@ -5,6 +5,7 @@
  * This file tests the dead battery policies on type-C ports.
  */
 
+#include "battery.h"
 #include "chipset.h"
 #include "dead_battery_policy.h"
 #include "emul/emul_pdc.h"
@@ -42,6 +43,11 @@ void clear_partner_pdos(const struct emul *e, enum pdo_type_t type)
 }
 
 static enum chipset_state_mask fake_chipset_state = CHIPSET_STATE_ON;
+
+void set_chipset_state(enum chipset_state_mask state)
+{
+	fake_chipset_state = state;
+}
 
 static int custom_fake_chipset_in_state(int mask)
 {
@@ -112,6 +118,13 @@ static int custom_fake_pdc_set_rdo(const struct device *dev, uint32_t rdo)
 	/* Assert only one sink path is enabled before changing RDOs */
 	zassert_true(IS_ONE_BIT_SET(sink_path_en_mask) ||
 		     sink_path_en_mask == 0);
+
+	/* RDO should not be sent when we're sinking from this port with AP on
+	 * and battery is not present */
+	if (IS_BIT_SET(sink_path_en_mask, port) &&
+	    chipset_in_state(CHIPSET_STATE_ON)) {
+		zassert_equal(battery_is_present(), BP_YES);
+	}
 
 	return pdc_set_rdo(dev, rdo);
 }
