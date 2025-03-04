@@ -175,6 +175,30 @@
       },
       "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177a2c97_d5d5a862",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-04T20:48:40Z",
+      "side": 1,
+      "message": "You are right. When writing the comment I was thinking about removing `assert`, because crashing makes debugging harder, and user experience is bad if some other positive value is returned but it\u0027s recoverable situation.\n\nI think we should also convert EGIS error codes to zephyr errno https://docs.zephyrproject.org/apidoc/latest/errno_8h.html",
+      "parentUuid": "d05a066d_6970075c",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
