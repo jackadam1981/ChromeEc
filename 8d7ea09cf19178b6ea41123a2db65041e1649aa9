@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5160f0d_0bf02e9a",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-04T19:18:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8d818c_14f15743",
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5adb3481_96ef6c22",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-04T11:45:44Z",
       "side": 1,
       "message": "Could you move this below `FP_FPC_LIBFP_ALGORITHM`?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44637f28_bf8653ff",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-04T19:18:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5adb3481_96ef6c22",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -77,6 +119,30 @@
       "writtenOn": "2025-03-04T11:45:44Z",
       "side": 1,
       "message": "How about returning `EC_MKBP_FP_ERR_MATCH_NO_INTERNAL` ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05a066d_6970075c",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-04T19:18:15Z",
+      "side": 1,
+      "message": "I believe it is our [state machine](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d199?q\u003dfpsensor.cc\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d198-,199,-200) that will modify the negative returned error into \n`EC_MKBP_FP_ERR_MATCH_NO_INTERNAL` in order to abort enrollment. \n\n[EC_MKBP_FP_ERR_MATCH_NO_INTERNAL](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d4260?q\u003dEC_MKBP_FP_ERR_ENROLL_INTERNAL\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d4259-,4260,-4261) is a positive value.\n\n\nThe header of the [fp_finger_match](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor_alg.h;l\u003d18#:~:text\u003d17-,18,-19) states that the function returns negative error on failure.",
+      "parentUuid": "46480613_bae7568b",
       "range": {
         "startLine": 111,
         "startChar": 0,
