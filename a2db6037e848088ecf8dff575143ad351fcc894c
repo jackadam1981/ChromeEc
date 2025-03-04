@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9264e528_b55e685d",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:22:54Z",
+      "side": 1,
+      "message": "```suggestion\n/**\n * @brief 8-bpp image for enroll/verify\n */\n#define FP_SENSOR_DEFAULT_BPP_EGIS (8)\n/**\n * @brief 16-bpp raw image for factory test\n */\n#define FP_SENSOR_TEST_BPP_EGIS (16)\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "a2db6037e848088ecf8dff575143ad351fcc894c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
