@@ -761,6 +761,8 @@ struct pdc_port_t {
 	pdc_power_mgmt_board_unattached_cb board_unattach_cb;
 	/** board callback for DP Attention event */
 	pdc_power_mgmt_board_dp_attention_cb board_dp_attention_cb;
+	/** board callback for Connector Status event */
+	pdc_power_mgmt_board_conn_status_cb board_conn_status_cb;
 };
 
 /**
@@ -1234,6 +1236,10 @@ static void handle_connector_status(struct pdc_port_t *port)
 	    conn_status_change_bits.connector_partner ||
 	    conn_status_change_bits.pwr_direction) {
 		port->vbus_expired = sys_timepoint_calc(K_NO_WAIT);
+	}
+
+	if (port->board_conn_status_cb) {
+		port->board_conn_status_cb(port_number, status);
 	}
 
 	if (!status->connect_status) {
@@ -4668,6 +4674,8 @@ int pdc_power_mgmt_register_board_callback(enum pdc_power_mgmt_board_cb_t type,
 			pdc->board_dp_attention_cb =
 				(pdc_power_mgmt_board_dp_attention_cb)callback;
 			break;
+		case PDC_BOARD_CB_CONN_STATUS:
+			pdc->board_conn_status_cb = (pdc_power_mgmt_board_conn_status_cb)callback;
 		default:
 			break;
 		};
