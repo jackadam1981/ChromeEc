@@ -947,7 +947,7 @@ static void handle_irqs(struct pdc_data_t *data)
 	 * This assumes that this driver is valid for all PD controllers on the
 	 * system.
 	 */
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
 		/*
 		 * Read the Alert Response Address to determine
 		 * which port generated the interrupt.
@@ -958,7 +958,7 @@ static void handle_irqs(struct pdc_data_t *data)
 		}
 
 		/* Search for port with matching I2C address */
-		for (int j = 0; j < CONFIG_USB_PD_PORT_MAX_COUNT; j++) {
+		for (int j = 0; j < board_get_usb_pd_port_count(); j++) {
 			struct pdc_data_t *pdc_int_data = pdc_data[j];
 			const struct pdc_config_t *cfg =
 				pdc_int_data->dev->config;
