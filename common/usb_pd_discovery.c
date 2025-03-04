@@ -315,16 +315,22 @@ enum pd_discovery_state pd_get_modes_discovery(int port,
 	 * If SVIDs discovery is incomplete, modes discovery is trivially
 	 * incomplete.
 	 */
-	if (svids_disc != PD_DISC_COMPLETE)
+	if (svids_disc != PD_DISC_COMPLETE) {
+		CPRINTS("C%d: Modes discovery: SVIDs incomplete", port);
 		return svids_disc;
+	}
 
 	/*
 	 * If there are no SVIDs for which to discover modes, mode discovery is
 	 * trivially complete.
 	 */
-	if (!mode_data)
+	if (!mode_data) {
+		CPRINTS("C%d: Modes discovery: Trivially complete", port);
 		return PD_DISC_COMPLETE;
+	}
 
+	CPRINTS("C%d: Modes discovery: SVID 0x%04x is %u", port,
+		mode_data->svid, mode_data->discovery);
 	return mode_data->discovery;
 }
 
@@ -362,25 +368,34 @@ const struct svid_mode_data *pd_get_next_mode(int port,
 		const struct svid_mode_data *mode_data = &disc->svids[svid_idx];
 
 		/* Discovery is needed, so send this one back now */
-		if (mode_data->discovery == PD_DISC_NEEDED)
+		if (mode_data->discovery == PD_DISC_NEEDED) {
+			CPRINTS("C%d: Mode 0x%04x needed", port,
+				mode_data->svid);
 			return mode_data;
+		}
 
 		/* Discovery already succeeded, save that it was seen */
 		if (mode_data->discovery == PD_DISC_COMPLETE)
 			svid_good_discovery = true;
 		/* Discovery already failed, save first failure */
-		else if (!failed_mode_data)
+		else if (!failed_mode_data) {
+			CPRINTS("C%d: Mode 0x%04x failed", port,
+				mode_data->svid);
 			failed_mode_data = mode_data;
+		}
 	}
 
 	/* If no good entries were located, then return last failed */
-	if (!svid_good_discovery)
+	if (!svid_good_discovery) {
+		CPRINTS("C%d: No complete modes", port);
 		return failed_mode_data;
+	}
 
 	/*
 	 * Mode discovery has been attempted for every discovered SVID (if
 	 * any exist)
 	 */
+	CPRINTS("C%d: All modes complete", port);
 	return NULL;
 }
 

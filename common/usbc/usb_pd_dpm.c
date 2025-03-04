@@ -1240,14 +1240,17 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	 * to alt mode.
 	 */
 	if (pd_get_svids_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE ||
-	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE)
+	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE) {
+		CPRINTS("C%d: Mode entry: Discovery incomplete", port);
 		return false;
+	}
 
 	if (dp_entry_is_done(port) ||
 	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	     tbt_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
 		dpm_set_mode_entry_done(port);
+		CPRINTS("C%d: Mode entry: Already done", port);
 		return false;
 	}
 
@@ -1260,6 +1263,7 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    DPM_CHK_FLAG(port, DPM_FLAG_ENTER_ANY) &&
 	    !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
 		set_state_dpm(port, DPM_DATA_RESET);
+		CPRINTS("C%d: Mode entry: Requesting Data Reset", port);
 		return true;
 	}
 
@@ -1272,12 +1276,15 @@ static bool dpm_dfp_enter_mode_msg(int port)
 		 * For certain cables, enter Thunderbolt alt mode with the
 		 * cable and USB4 mode with the port partner.
 		 */
+		CPRINTS("C%d: Mode entry: USB4 supported", port);
 		if (tbt_cable_entry_required_for_usb4(port)) {
 			vdo_count = ARRAY_SIZE(vdm);
 			status = tbt_setup_next_vdm(port, &vdo_count, vdm,
 						    &tx_type);
+			CPRINTS("C%d: Mode entry: TBT cable entry", port);
 		} else {
 			pd_dpm_request(port, DPM_REQUEST_ENTER_USB);
+			CPRINTS("C%d: Mode entry: Requesting Enter USB", port);
 			return false;
 		}
 	}

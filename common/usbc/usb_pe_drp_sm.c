@@ -1741,8 +1741,10 @@ static bool common_src_snk_dpm_requests(int port)
 		if (!pe_should_send_data_reset(port)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET);
 			dpm_data_reset_complete(port);
+			CPRINTS("C%d: Skipping Data Reset", port);
 			return false;
 		}
+		CPRINTS("C%d: Initiating Data Reset", port);
 
 		pe_set_dpm_curr_request(port, DPM_REQUEST_DATA_RESET);
 		if (pe[port].data_role == PD_ROLE_DFP)
