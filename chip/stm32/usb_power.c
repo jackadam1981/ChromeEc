@@ -339,6 +339,23 @@ static int usb_power_read(struct usb_power_config const *config)
 		}
 		break;
 
+	case USB_POWER_CMD_SETOUTPUT:
+ 		CPRINTS("USB set output command received!");
+ 		
+ 		ccprintf("Setting ADC to: %d\n", cmd->setoutput.val);
+
+		if(cmd->setoutput.en) {
+			ccprintf("Enabling quad converter\n");
+			gpio_set_level(GPIO_QUAD_EN, 1);
+		} else {
+			ccprintf("Disabling quad converter\n");
+			gpio_set_level(GPIO_QUAD_EN, 0);
+		}
+
+		STM32_DAC_DHR12R1 = cmd->setoutput.val;
+
+ 		break;
+
 	case USB_POWER_CMD_ADDINA:
 		result = usb_power_state_addina(config, cmd, count);
 		break;

@@ -111,6 +111,7 @@ enum usb_power_command {
 	USB_POWER_CMD_START	= 0x0003,
 	USB_POWER_CMD_NEXT	= 0x0004,
 	USB_POWER_CMD_SETTIME	= 0x0005,
+	USB_POWER_CMD_SETOUTPUT = 0x0006,
 };
 
 /* Addina "INA Type" field. */
@@ -248,6 +249,12 @@ struct __attribute__ ((__packed__)) usb_power_command_addina {
 	uint32_t rs;
 };
 
+struct __attribute__((__packed__)) usb_power_command_setoutput {
+ 	uint16_t command;
+ 	uint8_t en;
+ 	uint16_t val;
+};
+
 struct __attribute__ ((__packed__)) usb_power_command_settime {
 	uint16_t command;
 	uint64_t time;
@@ -258,6 +265,7 @@ union usb_power_command_data {
 	struct usb_power_command_start start;
 	struct usb_power_command_addina addina;
 	struct usb_power_command_settime settime;
+	struct usb_power_command_setoutput setoutput;
 };
 
 
