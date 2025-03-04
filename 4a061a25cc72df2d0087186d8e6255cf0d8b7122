@@ -46,6 +46,30 @@
       },
       "revId": "4a061a25cc72df2d0087186d8e6255cf0d8b7122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be19534_d09fa2a5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2613,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-04T18:38:17Z",
+      "side": 1,
+      "message": "Waiting GET_CONNECTOR_STATUS is better.  In theory the PDC get accept the SET_SINK_PATH command, but fail to enable the sink path.",
+      "parentUuid": "4ae4d16b_c7c12c58",
+      "range": {
+        "startLine": 2613,
+        "startChar": 0,
+        "endLine": 2613,
+        "endChar": 52
+      },
+      "revId": "4a061a25cc72df2d0087186d8e6255cf0d8b7122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
