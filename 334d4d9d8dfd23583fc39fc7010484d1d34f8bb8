@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c895ae_b1197637",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:40:55Z",
+      "side": 1,
+      "message": "Let\u0027s make return type `enum ec_error_list` since we\u0027re returning enums.",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "334d4d9d8dfd23583fc39fc7010484d1d34f8bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6923fd91_4808d1c9",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:40:55Z",
+      "side": 1,
+      "message": "Extra new line here.",
+      "fixSuggestions": [
+        {
+          "fixId": "802e6800_68d82ed4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 160,
+                "startChar": 0,
+                "endLine": 161,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "334d4d9d8dfd23583fc39fc7010484d1d34f8bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

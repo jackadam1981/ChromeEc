@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "794471dc_419e90d3",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:40:55Z",
+      "side": 1,
+      "message": "Extra",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ce51157e_cee8aeb0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor_debug.cc",
+              "range": {
+                "startLine": 95,
+                "startChar": 0,
+                "endLine": 96,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "62613fa5b7d19a65c64ca837b7df09370ec15b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
