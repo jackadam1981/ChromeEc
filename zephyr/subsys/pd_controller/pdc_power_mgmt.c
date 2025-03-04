@@ -2968,9 +2968,11 @@ static void clear_hpd_wake_watch(int port);
  */
 static void pdc_apply_power_state_policy(struct k_work *work)
 {
+	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
 		LOG_INF("PD: AP is ON: apply 'startup' followed by 'resume'");
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_startup_policy_1(i);
 			/*
 			 * Setting the dual role state clears the policy flag
@@ -2985,13 +2987,13 @@ static void pdc_apply_power_state_policy(struct k_work *work)
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
 		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_suspend_policy_1(i);
 			set_hpd_wake_watch(i);
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		LOG_INF("PD: AP is OFF: apply 'shutdown' policy");
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_shutdown_policy_1(i);
 		}
 	}
@@ -3007,7 +3009,14 @@ static K_WORK_DELAYABLE_DEFINE(pdc_apply_power_state_policy_work,
  */
 static bool pdc_all_ports_ready(void)
 {
-	for (uint8_t i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+	int num_ports = pdc_power_mgmt_get_usb_pd_port_count();
+
+	if (num_ports < 0) {
+		/* Port count is not known yet */
+		return false;
+	}
+
+	for (uint8_t i = 0; i < num_ports; i++) {
 		if (!pdc_is_init_done(pdc_data[i]->port.pdc)) {
 			return false;
 		}
@@ -3363,9 +3372,16 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	return 0;
 }
 
-bool is_pdc_port_valid(int port)
+/**
+ * @brief Used to validate port numbers passed into the public API functions
+ *
+ *        Do not use for internal checks since port counts are not known until
+ *        all pdc_power_mgmt devices initialize.
+ */
+static bool is_pdc_port_valid(int port)
 {
-	return (port >= 0) && (port < CONFIG_USB_PD_PORT_MAX_COUNT);
+	return (port >= 0) && (port < pdc_power_mgmt_get_usb_pd_port_count()) &&
+	       (get_pdc_state(&pdc_data[port]->port) != PDC_DISABLED);
 }
 
 /**
@@ -3420,7 +3436,7 @@ int pdc_power_mgmt_set_active_charge_port(int charge_port)
 	 * charge port and adjust their sink paths accordingly.
 	 */
 
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
 			       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
 	}
@@ -3819,6 +3835,11 @@ test_mockable const char *pdc_power_mgmt_get_task_state_name(int port)
 test_mockable void pdc_power_mgmt_set_dual_role(int port,
 						enum pd_dual_role_states state)
 {
+	if (!is_pdc_port_valid(port)) {
+		LOG_ERR("%s called with bad port C%d.", __func__, port);
+		return;
+	}
+
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
 
 	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: set role to %d", port,
@@ -4324,6 +4345,8 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 	int status = 0;
 	static bool current_comms_status = true;
 
+	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
 	if (enable_comms) {
 		if (current_comms_status == true) {
 			/* Comms are already enabled */
@@ -4331,7 +4354,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		}
 
 		/* Resume and reset the driver layer */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
 				/* Ignore disabled ports */
 				continue;
@@ -4348,7 +4371,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		/* Release each PDC state machine. A reset is performed when
 		 * exiting the suspended state.
 		 */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			atomic_set(&pdc_data[p]->port.suspend, 0);
 		}
 
@@ -4367,12 +4390,12 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		/* Request each port's PDC state machine to enter the suspend
 		 * state.
 		 */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			atomic_set(&pdc_data[p]->port.suspend, 1);
 		}
 
 		/* Wait for each PDC state machine to enter suspended state */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
 				/* Ignore disabled ports */
 				continue;
@@ -4391,7 +4414,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		}
 
 		/* Suspend the driver layer */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
 				/* Ignore disabled ports */
 				continue;
@@ -4701,7 +4724,11 @@ int pdc_power_mgmt_register_ppm_callback(const struct pdc_callback *callback)
 	struct pdc_port_t *pdc;
 	int port;
 
-	for (port = 0; port < pdc_power_mgmt_get_usb_pd_port_count(); ++port) {
+	/* The callback can safely be applied to all port structs, even inactive
+	 * ones. Use the CONFIG_USB_PD_PORT_MAX_COUNT constant instead of
+	 * pdc_power_mgmt_get_usb_pd_port_count() to make this function safe to
+	 * call before initialization is complete. */
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
 		pdc = &pdc_data[port]->port;
 		pdc->ppm_ci_cb = callback;
 	}
@@ -4715,7 +4742,11 @@ int pdc_power_mgmt_register_board_callback(enum pdc_power_mgmt_board_cb_t type,
 	struct pdc_port_t *pdc;
 	int port;
 
-	for (port = 0; port < pdc_power_mgmt_get_usb_pd_port_count(); ++port) {
+	/* The callback can safely be applied to all port structs, even inactive
+	 * ones. Use the CONFIG_USB_PD_PORT_MAX_COUNT constant instead of
+	 * pdc_power_mgmt_get_usb_pd_port_count() to make this function safe to
+	 * call before initialization is complete. */
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
 		pdc = &pdc_data[port]->port;
 		switch (type) {
 		case PDC_BOARD_CB_UNATTACH:
