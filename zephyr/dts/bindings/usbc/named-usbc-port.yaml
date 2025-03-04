@@ -36,6 +36,11 @@ properties:
     type: phandle
     description: |
       TCPC chip for the USB-C port.
+  ccd:
+    type: boolean
+    description: |
+      If present, this USB-C port has hardware support for closed-case
+      debugging (CCD). Used only on boards with PDC-driven CCD.
   chg:
     type: phandle
     description: |
