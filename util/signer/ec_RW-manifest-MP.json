@@ -47,7 +47,12 @@
   "timestamp": 1,
   "epoch": 0,  // FWR diversification contributor, 32 bits.
   "major": 5,  // FW2_HIK_CHAIN counter.
+<<<<<<< HEAD   (b73a5f cr50: setup MP branch)
   "minor": 280,  // Mostly harmless version field.
+||||||| BASE
+=======
+  "minor": 282,  // Mostly harmless version field.
+>>>>>>> BRANCH (2bb0eb cr50: prepare to release 0.{5,6}.282)
   "applysec": -1,  // Mask to and with fuse BROM_APPLYSEC.
   "config1": 13,  // Which BROM_CONFIG1 actions to take before launching.
   "err_response": 0,  // Mask to or with fuse BROM_ERR_RESPONSE.
