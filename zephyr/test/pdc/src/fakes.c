@@ -3,7 +3,9 @@
  * found in the LICENSE file.
  */
 
-int battery_is_present(void)
+#include "common.h"
+
+test_mockable int battery_is_present(void)
 {
 	return 1;
 }

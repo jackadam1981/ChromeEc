@@ -16,6 +16,10 @@
 ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy_ac_only)
 {
 	const struct pdc_fixture *pdc = &fixture->pdc[0];
+	uint32_t rdo;
+	union connector_status_t connector_status;
+
+	set_battery_present(BP_NO);
 
 	configure_dead_battery(pdc);
 
@@ -24,6 +28,16 @@ ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy_ac_only)
 	/* PDC APIs provide unexpected behavior before driver init */
 	pdc_driver_init();
 
-	/* TODO(b/397148920) - do not call SET_RDO on PDC if currently
-	 * sinking from that port and no battery is present */
+	pdc_power_mgmt_wait_for_sync(pdc->port, -1);
+
+	/* Make sure RDO is the same as before init */
+	zassert_ok(pdc_power_mgmt_get_connector_status(pdc->port,
+						       &connector_status));
+
+	zassert_equal(connector_status.connect_status, 1, "port=%d", pdc->port);
+	zassert_equal(connector_status.power_direction, 0, "port=%d",
+		      pdc->port);
+	zassert_equal(connector_status.sink_path_status, 1);
+	zassert_ok(emul_pdc_get_rdo(pdc->emul_pdc, &rdo));
+	zassert_equal(RDO_POS(rdo), 1);
 }
