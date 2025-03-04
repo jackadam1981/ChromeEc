@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3eea728_549ec043",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-04T04:53:46Z",
+      "side": 1,
+      "message": "```\nomniknight-rev3 ~ # flash_fp_mcu /mnt/stateful_partition/ec.bin\n/usr/local/bin/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is brya (brya).\nUsing config for brya.\n# Stopping biod\nbiod stop/waiting\n# Stopping timberslide\ntimberslide stop/waiting\nDetected chip NPCX.\n# Flashing \u0027NPCX\u0027 with \u0027/mnt/stateful_partition/ec.bin\u0027 over SPI\nFlashing SPI device ID: spi-PRP0001:00\n# Flashing \u0027/mnt/stateful_partition/ec.bin\u0027 over SPI\n# cmd flags\u003d \u0027 -p linux_spi:dev\u003d/dev/spidev0.0,spispeed\u003d250k -w /mnt/stateful_partition/ec.bin\u0027\n# flashrom  -p linux_spi:dev\u003d/dev/spidev0.0,spispeed\u003d250k -w /mnt/stateful_partition/ec.bin\nflashrom v1.6.0-devel on Linux 6.6.73-g069ce02d20ad (x86_64)\nflashrom is free software, get the source code at https://flashrom.org\n\nFound Winbond flash chip \"W25Q80.V\" (1024 kB, SPI) on linux_spi.\n\u003d\u003d\u003d\nThis flash part has status UNTESTED for operations: WP\nThe test status of this chip may have been updated in the latest development\nversion of flashrom. If you are running the latest development version,\nplease email a report to flashrom@flashrom.org if any of the above operations\nwork correctly for you with this flash chip. Please include the flashrom log\nfile for all operations you tested (see the man page for details), and mention\nwhich mainboard or programmer you tested in the subject line.\nYou can also try to follow the instructions here:\nhttps://www.flashrom.org/contrib_howtos/how_to_mark_chip_tested.html\nThanks for your help!\nReading old flash chip contents... done.\nErasing and writing flash chip... SUCCESS.\nVerifying flash... VERIFIED.\nSUCCESS\nPower cycling the FPMCU.\n# ectool --name\u003dcros_fp flashprotect disable\nFlash protect flags: 0x00000000\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\nFailed to disable WP after flashing NPCX.\nRO version:    rosalia_v2.0.27658-d68c1ead11\nRO cros fwid:  rosalia_16209.0.25_03_04\nRW version:    rosalia_v2.0.27658-d68c1ead11\nRW cros fwid:  rosalia_16209.0.25_03_04\nFirmware copy: RW\nBuild info:    rosalia_v2.0.27658-d68c1ead11 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a elan:v0.0.50-9ae3242 rosalia_16209.0.25_03_04 2025-03-04 04:22:12 fsammoura@fsammoura1.c.googlers.com\nTool version:  v2.0.27645-a1bf329ec3 2025-02-28 14:06:02 @chromeos-releasempa-builder-us-east1-d-x32-26-lc9e\nEC uptime: 2.148 seconds\nAP resets since EC boot: 0\nMost recent AP reset causes:\nEC reset flags at last EC boot: power-on | sysjump\n# Restarting timberslide\ntimberslide (/sys/kernel/debug/cros_fp/console_log) start/running, process 108709\n# Restarting biod\nbiod start/running, process 108715\n```",
+      "parentUuid": "7025ced4_790b99c2",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "2c99779f6146d8ed939831e6756bd41fc1aaeed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2233a10_62574442",
