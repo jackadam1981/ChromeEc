@@ -88,6 +88,16 @@ enum guren_sub_board_type guren_get_sb_type(void)
 		guren_cached_sub_board = GUREN_SB_HDMI_LTE;
 		LOG_INF("SB: HDMI, LTE");
 		break;
+
+	case FW_SUB_BOARD_6:
+		guren_cached_sub_board = GUREN_SB_HDMI;
+		LOG_INF("SB: HDMI");
+		break;
+
+	case FW_SUB_BOARD_7:
+		guren_cached_sub_board = GUREN_SB_HDMI_1A;
+		LOG_INF("SB: HDMI, USB type A");
+		break;
 	}
 	return guren_cached_sub_board;
 }
@@ -190,7 +200,8 @@ static void guren_subboard_config(void)
 	 * if this port is not present. VBUS enable must be configured if
 	 * needed and is controlled by the usba-port-enable-pins driver.
 	 */
-	if (sb == GUREN_SB_1C_1A || sb == GUREN_SB_1A) {
+	if (sb == GUREN_SB_1C_1A || sb == GUREN_SB_1A ||
+	    sb == GUREN_SB_HDMI_1A) {
 		/*
 		 * Configure VBUS enable, retaining current value.
 		 * SB_NONE indicates missing fw_config; it's safe to enable VBUS
@@ -224,7 +235,8 @@ static void guren_subboard_config(void)
 	}
 #endif
 
-	if (sb == GUREN_SB_HDMI_LTE) {
+	if (sb == GUREN_SB_HDMI_LTE || sb == GUREN_SB_HDMI ||
+	    sb == GUREN_SB_HDMI_1A) {
 		/*
 		 * HDMI: two outputs control power which must be configured to
 		 * non-default settings, and HPD must be forwarded to the AP
