@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6f219fe_0ba9fb07",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2080,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-04T02:57:19Z",
+      "side": 1,
+      "message": "\u003e\u003e Is this ever called for a port that isn\u0027t currently sinking? \n\nyes, in the sink policy test `attach_worse_charger` the worse charger PDOs are evaluated and RDO is sent, charge manager is then seeded with the selected PDO of the worse charger.  charge manager will evaluate the the active port is the previously attached charger, leaving the sink paths as is. I can run this against FAFT-PD to verify on device behavior.",
+      "parentUuid": "f9de88b7_c036850f",
+      "range": {
+        "startLine": 2080,
+        "startChar": 0,
+        "endLine": 2080,
+        "endChar": 78
+      },
+      "revId": "a875f5a4a71e6ca481f33cd5a568e0f7a4973922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06154ca9_3b7503ba",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 18
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-03T22:12:19Z",
       "side": 1,
       "message": "For the no-battery case, the list of manual tests is shown in\nb/354836076#comment71\n\nPlease run through these tests and note in the commit message \"TEST: ran no-battery test configurations from b/354836076#comment71\"",
+      "range": {
+        "startLine": 2097,
+        "startChar": 0,
+        "endLine": 2097,
+        "endChar": 52
+      },
+      "revId": "a875f5a4a71e6ca481f33cd5a568e0f7a4973922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73156d23_d5cceed9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-04T02:57:19Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "06154ca9_3b7503ba",
       "range": {
         "startLine": 2097,
         "startChar": 0,
