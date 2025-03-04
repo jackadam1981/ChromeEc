@@ -276,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48828d44_367e5c19",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_0a_pd_source.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-03-04T07:34:29Z",
+      "side": 1,
+      "message": "Sorry, cause the confuse. I changed to `zassert_equal(info.meas.current_lim, 0,...)`. the test passed. So I think `zassert_between_inclusive(info.meas.current_max, 0, 5, ...)` is reasonable, thank you.",
+      "parentUuid": "6bf8cadc_73860299",
+      "revId": "2bb9934557767fff80880b792b7d021cfb29e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c0b2b6_6cf2f6a4",
