@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d048506_738e72b7",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-04T19:43:33Z",
+      "side": 1,
+      "message": "We should at least be able to add unit tests for the error case. (More refactoring would probably need to be done to check the success case, so we can skip that for this CL.)",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "62613fa5b7d19a65c64ca837b7df09370ec15b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "794471dc_419e90d3",
         "filename": "common/fpsensor/fpsensor_debug.cc",
         "patchSetId": 7
