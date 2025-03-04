@@ -30,6 +30,7 @@ CONSOLE_MAP: dict[str, str] = {
     "nami_fp": DARTMONKEY_CONSOLE,
     "nocturne_fp": DARTMONKEY_CONSOLE,
     "rosalia": "sysbus.cr_uart1",
+    "minimal-npcx9": "sysbus.cr_uart1",
 }
 
 DARTMONKEY_GPIO_WP = "sysbus.gpioPortB.GPIO_WP"
@@ -44,6 +45,7 @@ GPIO_WP_MAP: dict[str, str] = {
     "nami_fp": DARTMONKEY_GPIO_WP,
     "nocturne_fp": DARTMONKEY_GPIO_WP,
     "rosalia": HELIPILOT_GPIO_WP,
+    "minimal-npcx9": HELIPILOT_GPIO_WP,
 }
 
 GPIO_WP_ENABLE = "Release"
