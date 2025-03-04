@@ -49,3 +49,16 @@ config LIBFP_PRIVATE_DRIVER_HEAP_SIZE
 	help
 	  Size of heap to be used by FPC private library. The default vaule has
 	  been established experimentally.
+
+config FP_EGIS_EC630_ALGORITHM
+	bool "EGIS EC630 matching algorithm"
+	default y if FINGERPRINT_SENSOR_EGIS630
+	help
+	  Enable EGIS EC630 matching algorithm. To work properly, EGIS private
+	  library is required.
+
+config HAVE_EC630_PRIVATE_DRIVER
+	bool
+	default n
+	help
+	  If enabled, it indicates that EC630 private driver is present.
