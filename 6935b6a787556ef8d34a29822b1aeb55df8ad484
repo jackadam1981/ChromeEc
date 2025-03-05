@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795a411a_27d08d8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-05T19:36:23Z",
+      "side": 1,
+      "message": "I am onboard with change, but it is also a pretty significant one that I don\u0027t want to rush in. Considerations:\n\n 1. I\u0027d like to see unit tests passing w/ coverage before merging this. Please run `./twister -civ -T zephyr/test/pdc` locally.\n 2. Need to make sure charge manager is happy. It has interdependencies on pdc_power_mgmt where they rely on each other for port info and seeding.\n 3. Need to be sure this doesn\u0027t cause glitches from the AP perspective due to PD host commands  erroring or returning bad info due to the PD stack not being up yet",
+      "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
