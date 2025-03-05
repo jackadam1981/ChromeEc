@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a09cb7f9_40f5a56e",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-hdmi-port.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-03-05T22:54:59Z",
+      "side": 1,
+      "message": "I\u0027ll remove this file for the initial implementation",
+      "parentUuid": "9164278c_5c4ab672",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a2dc032_894802c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-26T18:11:24Z",
       "side": 1,
       "message": "This file doesn\u0027t exist?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e081f27a_812e6791",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-port.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-03-05T22:54:59Z",
+      "side": 1,
+      "message": "leftover from initial implementation removing",
+      "parentUuid": "6a2dc032_894802c3",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f050578e_18534092",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-port.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-03-05T22:54:59Z",
+      "side": 1,
+      "message": "Removing as not needed",
+      "parentUuid": "da2ca54d_351a126b",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb6b289_c413d4e2",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-02-26T18:11:24Z",
       "side": 1,
       "message": "Same here - can you use `intel,modular-aic-port` for the initial implementation?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ba510f_ade0248d",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-03-05T22:54:59Z",
+      "side": 1,
+      "message": "I prefer to keep at least slot and port in the initial implementation to at least differentiate that the 2 can change (even in current implementation)",
+      "parentUuid": "4cb6b289_c413d4e2",
       "range": {
         "startLine": 7,
         "startChar": 0,
