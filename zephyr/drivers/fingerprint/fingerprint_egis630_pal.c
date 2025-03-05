@@ -24,6 +24,8 @@ LOG_MODULE_REGISTER(egis630_pal, LOG_LEVEL_INF);
 #define fp_sensor_dev DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
 #endif
 
+K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_EGIS630_HEAP_SIZE);
+
 #define LOG_TAG "PLAT-SPI"
 
 int __unused periphery_spi_write_read(uint8_t *tx_buf, uint32_t tx_len,
@@ -115,4 +117,26 @@ void __unused output_log(LOG_LEVEL level, const char *tag,
 	default:
 		break;
 	}
+}
+
+void __unused *sys_alloc(size_t count, size_t size)
+{
+	char *addr = NULL;
+	int rc;
+
+	void *p = k_heap_aligned_alloc(&fp_driver_heap, sizeof(void *), size,
+				       K_NO_WAIT);
+
+	if (p == NULL) {
+		LOG_ERR("Error - %s of size %u failed.", __func__, size);
+		k_oops();
+		CODE_UNREACHABLE;
+	}
+
+	return p;
+}
+
+void __unused sys_free(void *data)
+{
+	k_heap_free(&fp_driver_heap, data);
 }
