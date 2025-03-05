@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d24041b_0774f78e",
+        "filename": "include/preserved_ring_buf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-05T03:09:07Z",
+      "side": 1,
+      "message": "nit: how about changing the name to preserved_ring_buf_`properties`_t to avoid using preserved twice?",
+      "range": {
+        "startLine": 52,
+        "startChar": 21,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffb3c97_02394d98",
+        "filename": "include/preserved_ring_buf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-05T03:09:07Z",
+      "side": 1,
+      "message": "I would move `constants` up to the beginning of the `preserved_ring_buf_t` struct, so the memory allocated for the buffer starts with constants as a \"header\" and has the length (capacity) before the data. It would also make checksum to serve as a canary, in case the beginning of `preserved_ring_buf_t` is damaged for some reason - the checksum (the very first field in the struct) will be invalid.",
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d013c8_d9f9c5ab",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-05T03:09:07Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "range": {
+        "startLine": 752,
+        "startChar": 8,
+        "endLine": 753,
+        "endChar": 6
+      },
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
