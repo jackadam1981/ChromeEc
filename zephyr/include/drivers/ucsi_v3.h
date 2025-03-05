@@ -1060,7 +1060,7 @@ union bmOptionalFeatures_t {
 		uint16_t reserved : 1;
 	};
 	uint16_t raw_value;
-};
+} __packed;
 
 /**
  * @brief bmAttributes of the connector
