@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe0d6b5_14cb3e36",
+        "filename": "zephyr/include/drivers/ucsi_v3.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-05T19:06:04Z",
+      "side": 1,
+      "message": "Other UCSI unions in this file are marking the inner struct as packed as opposed to the union itself. The packed attribute doesn\u0027t propogate to inner members.",
+      "range": {
+        "startLine": 1063,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 11
+      },
+      "revId": "8ddba63ade6bc407b003f67ab2c9947261b9f4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
