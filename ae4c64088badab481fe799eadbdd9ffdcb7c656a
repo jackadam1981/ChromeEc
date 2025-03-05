@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32fdd638_994de861",
+        "filename": "include/preserved_ring_buf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-05T18:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d24041b_0774f78e",
+      "range": {
+        "startLine": 52,
+        "startChar": 21,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ffb3c97_02394d98",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25719f5e_108de129",
+        "filename": "include/preserved_ring_buf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-05T18:16:39Z",
+      "side": 1,
+      "message": "I made this change, but I\u0027m not sure it will make a difference. This particular structure is allocated in the regular data section, no more vunerable to corruption than any other data structure. It has pointers to _preserved_ring_buf_##name##_buffer and _preserved_ring_buf_##name##_proprerties which are vunerable to corruption.",
+      "parentUuid": "5ffb3c97_02394d98",
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d013c8_d9f9c5ab",
@@ -71,6 +113,30 @@
       "writtenOn": "2025-03-05T03:09:07Z",
       "side": 1,
       "message": "nit: extra line",
+      "range": {
+        "startLine": 752,
+        "startChar": 8,
+        "endLine": 753,
+        "endChar": 6
+      },
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c13504_c0e031f1",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-05T18:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d013c8_d9f9c5ab",
       "range": {
         "startLine": 752,
         "startChar": 8,
