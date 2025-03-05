@@ -22,6 +22,30 @@
       },
       "revId": "695a5b10b5117cafffa5a96708f09360858b813d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3179641f_a542f0a8",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-03-05T01:53:05Z",
+      "side": 1,
+      "message": "@fsammoura@google.com no, \u0027FP_CAPTURE_RESET_TEST\u0027 was no needed. But i am not sure what \u0027FP_CAPTURE_RESET_TEST\u0027 test for. And egis need support this option?",
+      "parentUuid": "8fc9cc27_00503494",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "695a5b10b5117cafffa5a96708f09360858b813d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
