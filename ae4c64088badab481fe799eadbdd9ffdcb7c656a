@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1f1bcc_145b939d",
+        "filename": "include/preserved_ring_buf.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-05T19:22:35Z",
+      "side": 1,
+      "message": "Ahh, I havent realized that this structure is not allocated in the preserved area",
+      "parentUuid": "25719f5e_108de129",
+      "revId": "ae4c64088badab481fe799eadbdd9ffdcb7c656a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d013c8_d9f9c5ab",
