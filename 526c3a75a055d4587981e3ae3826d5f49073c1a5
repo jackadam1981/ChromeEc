@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99400799_2f97e965",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-03-05T07:53:21Z",
+      "side": 1,
+      "message": "I have created CL:https://crrev.com/i/8080608 to specify the name of the capture type from fpc_capture_type.",
+      "parentUuid": "f091a206_64ed6ba7",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 63
+      },
+      "revId": "526c3a75a055d4587981e3ae3826d5f49073c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fffb9a1c_7b674170",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "526c3a75a055d4587981e3ae3826d5f49073c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17287baf_b0a90127",
+        "filename": "driver/fingerprint/elan/elan_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-03-05T07:53:21Z",
+      "side": 1,
+      "message": "I have created CL:https://crrev.com/i/8080608 to specify the name of the capture type from fpc_capture_type.",
+      "parentUuid": "fffb9a1c_7b674170",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 29
+      },
       "revId": "526c3a75a055d4587981e3ae3826d5f49073c1a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
