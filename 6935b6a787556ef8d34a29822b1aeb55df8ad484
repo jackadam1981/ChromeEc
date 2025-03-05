@@ -80,6 +80,30 @@
       },
       "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f210e414_4acc78f6",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-05T22:01:31Z",
+      "side": 1,
+      "message": "This is the long term solution I mentioned in the bug. The newly introduced threads don\u0027t follow the convention of the shimmed tasks in this `ec_app_main()` function; this is not wrong, just more like Zephyr, but it breaks some EC-EFS2 assumptions. Moving forward, I think we needs to eliminate the shimmed tasks and this `ec_app_main()`. You can see that the above init functions EC-EFS2 depending on need to be moved to `SYS_INIT()` or integrated with the device driver in a more Zephyr-compliant way. This effort is not trivial.",
+      "parentUuid": "e922a218_2daf5079",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
