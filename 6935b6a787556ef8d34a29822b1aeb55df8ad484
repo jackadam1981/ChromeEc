@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e09d074_5a539aaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-03-05T23:38:07Z",
+      "side": 1,
+      "message": "I didn\u0027t see any issues in my testing. I also ran the pd-faft suite on my device and those tests all passed.",
+      "parentUuid": "795a411a_27d08d8f",
+      "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b019492f_b6b2e793",
         "filename": "zephyr/app/ec/ec_app_main.c",
         "patchSetId": 3
