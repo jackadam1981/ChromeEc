@@ -14,6 +14,13 @@ config TEST_SUITE_PDC_API_NULL_CHECK
 config TEST_SUITE_PDC_DEVICE_NOT_READY
 	bool "Enable PDC subsystem tests for device-not-ready"
 
+config TEST_SKIP_EC_APP_MAIN
+	bool "Skip running ec_app_main()"
+	help
+	  Some tests intentionally create errors, like incorrect
+	  initialization order, and verify the error handling paths.
+	  The ec_app_main() is broken in these cases.
+
 config TEST_SUITE_PDC_POLICY
 	bool "Enable PDC policy tests"
 
