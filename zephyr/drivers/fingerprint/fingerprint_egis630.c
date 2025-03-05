@@ -15,6 +15,7 @@
 #include <zephyr/sys/byteorder.h>
 
 #include <drivers/fingerprint.h>
+#include <fingerprint/v4l2_types.h>
 
 LOG_MODULE_REGISTER(cros_fingerprint, LOG_LEVEL_INF);
 
@@ -307,3 +308,15 @@ static int egis630_init_driver(const struct device *dev)
 
 	return 0;
 }
+
+#define EGIS630_SENSOR_INFO(inst)                                         \
+	{                                                                 \
+		.vendor_id = FOURCC('E', 'G', 'I', 'S'), .product_id = 9, \
+		.model_id = 1, .version = 1,                              \
+		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,       \
+		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(     \
+			DT_DRV_INST(inst)),                               \
+		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),     \
+		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)),    \
+		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),     \
+	}
