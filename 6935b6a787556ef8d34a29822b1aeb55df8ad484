@@ -33,6 +33,29 @@
       "message": "I just pulled in the 2 CLs and will do some testing on my Trulo device.",
       "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b019492f_b6b2e793",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-05T21:15:35Z",
+      "side": 1,
+      "message": "Because we\u0027re allowing PD communication during RO (we don\u0027t actually have anyway to disable PD communication with PDCs), what about creating a new `SYS_INIT()` hook specifically for enabling EFS2 when PDCs are present.\n\nLooking at `vboot_main()`, I think we only need to check if we\u0027re in RO and then call `verify_and_jump()`.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
