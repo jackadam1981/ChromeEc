@@ -281,3 +281,45 @@ static const struct fingerprint_driver_api cros_fp_egis630_driver_api = {
 		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)),    \
 		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),     \
 	}
+
+static int egis630_init_driver(const struct device *dev)
+{
+	const struct egis630_cfg *cfg = dev->config;
+	struct egis630_data *data = dev->data;
+	int ret;
+
+	if (!spi_is_ready_dt(&cfg->spi)) {
+		LOG_ERR("SPI bus is not ready");
+		return -EINVAL;
+	}
+
+	if (!gpio_is_ready_dt(&cfg->reset_pin)) {
+		LOG_ERR("Port for sensor reset GPIO is not ready");
+		return -EINVAL;
+	}
+
+	ret = gpio_pin_configure_dt(&cfg->reset_pin, GPIO_OUTPUT_INACTIVE);
+	if (ret < 0) {
+		LOG_ERR("Can't configure sensor reset pin");
+		return ret;
+	}
+
+	if (!gpio_is_ready_dt(&cfg->interrupt)) {
+		LOG_ERR("Port for interrupt GPIO is not ready");
+		return -EINVAL;
+	}
+
+	ret = gpio_pin_configure_dt(&cfg->interrupt, GPIO_INPUT);
+	if (ret < 0) {
+		LOG_ERR("Can't configure interrupt pin");
+		return ret;
+	}
+
+	k_sem_init(&data->sensor_lock, 1, 1);
+
+	data->dev = dev;
+	gpio_init_callback(&data->irq_cb, egis630_irq, BIT(cfg->interrupt.pin));
+	gpio_add_callback_dt(&cfg->interrupt, &data->irq_cb);
+
+	return 0;
+}
