@@ -44,6 +44,47 @@ void fp_configure_detect(void)
 	egis_set_detect_mode();
 }
 
+void fp_sensor_lock(const struct device *dev)
+{
+	__maybe_unused const struct egis630_cfg *cfg = dev->config;
+	struct egis630_data *data = dev->data;
+
+	/* Lock SPI access only if we are not already the owner. */
+	if (!((k_sem_count_get(&data->sensor_lock) == 0) &&
+	      (data->sensor_owner == k_current_get()))) {
+		k_sem_take(&data->sensor_lock, K_FOREVER);
+		data->sensor_owner = k_current_get();
+
+#ifdef CONFIG_PM_DEVICE
+		/* Enable clock gating for SPI module and configure SPI pins
+		 * into an alternate mode.
+		 */
+		pm_device_action_run(cfg->spi.bus, PM_DEVICE_ACTION_RESUME);
+#endif /* CONFIG_PM_DEVICE */
+	}
+}
+
+void fp_sensor_unlock(const struct device *dev)
+{
+	__maybe_unused const struct egis630_cfg *cfg = dev->config;
+	struct egis630_data *data = dev->data;
+
+#ifdef CONFIG_PM_DEVICE
+	/* Disable SPI mainly to reconfigure SPI pins to sleep state
+	 * (CLK, MISO, MOSI set to output low) to reduce power
+	 * consumption by the sensor.
+	 *
+	 * The SPI drivers disable the SPI module after a transaction,
+	 * which puts the pins into floating state.
+	 */
+	pm_device_action_run(cfg->spi.bus, PM_DEVICE_ACTION_SUSPEND);
+#endif /* CONFIG_PM_DEVICE */
+
+	/* Clear the owner and return the access. */
+	data->sensor_owner = NULL;
+	k_sem_give(&data->sensor_lock);
+}
+
 static int egis630_init(const struct device *dev)
 {
 	struct egis630_data *data = dev->data;
