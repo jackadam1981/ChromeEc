@@ -9,6 +9,7 @@
 #include <zephyr/drivers/spi.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/sys_clock.h>
 
 #include <drivers/fingerprint.h>
 
@@ -46,4 +47,28 @@ int __unused periphery_spi_write_read(uint8_t *tx_buf, uint32_t tx_len,
 	}
 
 	return err;
+}
+
+unsigned long long __unused plat_get_time(void)
+{
+	return k_ticks_to_us_near64(k_uptime_ticks());
+}
+
+unsigned long __unused plat_get_diff_time(unsigned long long begin)
+{
+	unsigned long long nowTime = plat_get_time();
+
+	return (unsigned long)(nowTime - begin);
+}
+
+void __unused plat_wait_time(unsigned long msecs)
+{
+	k_busy_wait(msecs);
+	return;
+}
+
+void __unused plat_sleep_time(unsigned long timeInMs)
+{
+	k_usleep(timeInMs * USEC_PER_MSEC);
+	return;
 }
