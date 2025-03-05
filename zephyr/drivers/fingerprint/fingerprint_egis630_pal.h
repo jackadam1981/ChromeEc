@@ -31,4 +31,42 @@
 int __unused periphery_spi_write_read(uint8_t *tx_addr, uint32_t tx_len,
 				      uint8_t *rx_buf, uint32_t rx_len);
 
+/**
+ * @brief Gets the current time in milliseconds.
+ *
+ * @return The current time in milliseconds.
+ *
+ */
+unsigned long long __unused plat_get_time(void);
+
+/**
+ * @brief Calculates the time difference in milliseconds between the current
+ * time and a given starting time.
+ *
+ * @param[in] begin The starting time in milliseconds.
+ *
+ * @return The time difference in milliseconds.
+ *
+ */
+unsigned long __unused plat_get_diff_time(unsigned long long begin);
+
+/**
+ * @brief Busy-wait.
+ *
+ * @param[in] msecs The delay time in milliseconds.
+ *
+ */
+void __unused plat_wait_time(unsigned long msecs);
+
+/**
+ * @brief Sleep.
+ *
+ * The current task will be de-scheduled for at least the specified delay (and
+ * perhaps longer, if a higher-priority task is running when the delay expires).
+ *
+ * @param[in] timeInMs The sleep time in milliseconds.
+ *
+ */
+void __unused plat_sleep_time(unsigned long timeInMs);
+
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_EGIS630_PAL_SENSOR_H_ */
