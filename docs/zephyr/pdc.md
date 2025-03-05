@@ -36,3 +36,8 @@ A generic call flow for when console or host requests are made to PDC Power Mana
 
 *Note: Public requests are handled after policies have been applied and completed!*
 ![PDC Public Request](pdc_public_req.png)
+
+### PDC Dead Battery Two Ports
+This illustrates how the the preferred port is selected and number of enabled sink
+paths are reduced to 1 before RDOs are sent to the PDC.
+![PDC Dead Battery Two Ports](pdc_dead_battery_two_ports.png)
