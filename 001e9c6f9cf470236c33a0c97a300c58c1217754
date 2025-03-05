@@ -479,6 +479,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34e8d663_1242027e",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 43
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-05T10:48:29Z",
+      "side": 1,
+      "message": "Is panic data passed correctly between EC RO and Zephyr RW? You can check that by crashing in RW and reading panic data in RO, or crashing in RO and reading data in RW. Please share logs that confirms that.",
+      "parentUuid": "2b3cd15a_5eedff97",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "001e9c6f9cf470236c33a0c97a300c58c1217754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90908f17_7ce5c20d",
         "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
         "patchSetId": 43
