@@ -932,7 +932,7 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 			K_THREAD_STACK_SIZEOF(my_stack_area_##inst),         \
 			pdc_thread, (void *)dev, 0, 0,                       \
 			CONFIG_PDC_POWER_MGMT_THREAD_PRIORTY, K_ESSENTIAL,   \
-			K_NO_WAIT);                                          \
+			K_FOREVER);                                          \
 		k_thread_name_set(data->thread,                              \
 				  "PDC Power Mgmt" STRINGIFY(inst));         \
 	}                                                                    \
@@ -3217,6 +3217,14 @@ static int pdc_subsys_init(const struct device *dev)
 	config->create_thread(dev);
 
 	return 0;
+}
+
+void pdc_subsys_start(void)
+{
+	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+		pdc_thread_start(pdc_data[port]->port.pdc);
+		k_thread_start(pdc_data[port]->thread);
+	}
 }
 
 /**

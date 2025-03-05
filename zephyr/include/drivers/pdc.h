@@ -113,6 +113,7 @@ struct pdc_callback;
  * @typedef
  * @brief These are the API function types
  */
+typedef void (*pdc_thread_start_t)(const struct device *dev);
 typedef int (*pdc_get_ucsi_version_t)(const struct device *dev,
 				      uint16_t *version);
 typedef int (*pdc_reset_t)(const struct device *dev);
@@ -193,6 +194,7 @@ typedef int (*pdc_get_attention_vdo_t)(const struct device *dev,
  * These are for internal use only, so skip these in public documentation.
  */
 __subsystem struct pdc_driver_api {
+	pdc_thread_start_t thread_start;
 	pdc_is_init_done_t is_init_done;
 	pdc_get_ucsi_version_t get_ucsi_version;
 	pdc_reset_t reset;
@@ -237,6 +239,24 @@ __subsystem struct pdc_driver_api {
 /**
  * @endcond
  */
+
+/**
+ * @brief Starts the PDC driver thread
+ *
+ * @param dev PDC device structure pointer
+ */
+static inline void pdc_thread_start(const struct device *dev)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	/* This is an optional feature, so it might not be implemented */
+	if (api->thread_start == NULL) {
+		return;
+	}
+
+	return api->thread_start(dev);
+}
 
 /**
  * @brief Tests if the PDC driver init process is complete
