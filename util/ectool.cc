@@ -2179,13 +2179,21 @@ int cmd_fp_frame(int argc, char *argv[])
 		return 0;
 	}
 
-	/* Print 8-bpp PGM ASCII header */
-	printf("P2\n%d %d\n%d\n", r.width, r.height, (1 << r.bpp) - 1);
+	uint8_t bytes_per_pixel = DIV_ROUND_UP(r.bpp, 8);
+	if (bytes_per_pixel != 1 && bytes_per_pixel != 2) {
+		return -1;
+	}
+
+	/* Print 8-bpp or 16-bpp PGM ASCII header */
+	printf("P2\n%d %d\n%d\n", r.width, r.height,
+	       (bytes_per_pixel == 2) ? 65535 : 255);
 
 	uint8_t *ptr = fp_frame->data();
 	for (int y = 0; y < r.height; y++) {
-		for (int x = 0; x < r.width; x++, ptr++)
-			printf("%d ", *ptr);
+		for (int x = 0; x < r.width; x++, ptr + bytes_per_pixel)
+			printf("%d ", (bytes_per_pixel == 2) ?
+					      *(uint16_t *)ptr :
+					      *ptr);
 		printf("\n");
 	}
 	printf("# END OF FILE\n");
