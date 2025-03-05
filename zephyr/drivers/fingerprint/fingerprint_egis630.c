@@ -246,6 +246,74 @@ static const struct fingerprint_driver_api cros_fp_egis630_driver_api = {
 	.finger_status = egis630_finger_status,
 };
 
+static inline int egis630_disable_irq(const struct device *dev)
+{
+	const struct ec630_cfg *cfg = dev->config;
+	int rc;
+
+	rc = gpio_pin_interrupt_configure_dt(&cfg->interrupt, GPIO_INT_DISABLE);
+	if (rc < 0) {
+		LOG_ERR("Can't disable interrupt: %d", rc);
+	}
+
+	return rc;
+}
+
+static void egis630_irq(const struct device *dev, struct gpio_callback *cb,
+			uint32_t pins)
+{
+	struct egis630_data *data =
+		CONTAINER_OF(cb, struct egis630_data, irq_cb);
+
+	egis630_disable_irq(data->dev);
+
+	if (data->callback != NULL) {
+		data->callback(dev);
+	}
+}
+
+static int egis630_init_driver(const struct device *dev)
+{
+	const struct egis630_cfg *cfg = dev->config;
+	struct egis630_data *data = dev->data;
+	int ret;
+
+	if (!spi_is_ready_dt(&cfg->spi)) {
+		LOG_ERR("SPI bus is not ready");
+		return -EINVAL;
+	}
+
+	if (!gpio_is_ready_dt(&cfg->reset_pin)) {
+		LOG_ERR("Port for sensor reset GPIO is not ready");
+		return -EINVAL;
+	}
+
+	ret = gpio_pin_configure_dt(&cfg->reset_pin, GPIO_OUTPUT_INACTIVE);
+	if (ret < 0) {
+		LOG_ERR("Can't configure sensor reset pin");
+		return ret;
+	}
+
+	if (!gpio_is_ready_dt(&cfg->interrupt)) {
+		LOG_ERR("Port for interrupt GPIO is not ready");
+		return -EINVAL;
+	}
+
+	ret = gpio_pin_configure_dt(&cfg->interrupt, GPIO_INPUT);
+	if (ret < 0) {
+		LOG_ERR("Can't configure interrupt pin");
+		return ret;
+	}
+
+	k_sem_init(&data->sensor_lock, 1, 1);
+
+	data->dev = dev;
+	gpio_init_callback(&data->irq_cb, egis630_irq, BIT(cfg->interrupt.pin));
+	gpio_add_callback_dt(&cfg->interrupt, &data->irq_cb);
+
+	return 0;
+}
+
 #define EGIS630_SENSOR_INFO(inst)                                         \
 	{                                                                 \
 		.vendor_id = FOURCC('E', 'G', 'I', 'S'), .product_id = 9, \
