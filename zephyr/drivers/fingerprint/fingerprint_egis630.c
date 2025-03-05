@@ -340,3 +340,24 @@ static int egis630_init_driver(const struct device *dev)
 		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)),    \
 		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),     \
 	}
+
+#define EGIS630_DEFINE(inst)                                                   \
+	static struct egis630_data egis630_data_##inst = {};                   \
+	static const struct egis630_cfg egis630_cfg_##inst = {                 \
+		.spi = SPI_DT_SPEC_INST_GET(                                   \
+			inst, SPI_OP_MODE_MASTER | SPI_WORD_SET(8), 0),        \
+		.interrupt = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),           \
+		.reset_pin = GPIO_DT_SPEC_INST_GET(inst, reset_gpios),         \
+		.info = EGIS630_SENSOR_INFO(inst),                             \
+	};                                                                     \
+	BUILD_ASSERT(                                                          \
+		CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE >=                        \
+			FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(DT_DRV_INST(inst)), \
+		"FP image buffer size is smaller than raw image size");        \
+	DEVICE_DT_INST_DEFINE(inst, egis630_init_driver, NULL,                 \
+			      &egis630_data_##inst, &egis630_cfg_##inst,       \
+			      POST_KERNEL,                                     \
+			      CONFIG_FINGERPRINT_SENSOR_INIT_PRIORITY,         \
+			      &cros_fp_egis630_driver_api)
+
+DT_INST_FOREACH_STATUS_OKAY(EGIS_DEFINE);
