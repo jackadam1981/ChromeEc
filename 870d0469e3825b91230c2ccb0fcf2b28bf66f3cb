@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee85fe08_42844481",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"pring\" is a possible misspelling of \"print\", \"bring\", \"ping\", or \"spring\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"pring\" is a possible misspelling of \"print\", \"bring\", \"ping\", or \"spring\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1d9839_e270ca6f",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "Do we need any mutex locking in these APIs?  How do we handle when thread1 logs \"hello world\" and thread2 logs \"foobar\" at the same time?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96714d4a_ce76ad6d",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "`panic_log_reset` sets `panic_log_frozen\u003dtrue`, do we want override what reset does and set it back to `orig_frozen` here?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb557acb_f00d240b",
+        "filename": "common/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3075e1_1fe3f21e",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "Probably need to add your hooks here too.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/shim/src/pw_log_zephyr_tokenized.cc#63",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11b6af8_79665766",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "Should this have an `if(IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_LOG))` check?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50b5cb6_47d2ce2d",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-05T16:48:34Z",
+      "side": 1,
+      "message": "Do we want to update the panic log if we\u0027re in an ISR?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
