@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398f400b_0ca94151",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:09:17Z",
+      "side": 1,
+      "message": "Smae comment as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6323410/comment/00dbd414_b196fe69/",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 28
+      },
+      "revId": "a1f514ea31e97e3c9e255ce848c742f72d5d94cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff9ea41_1c143543",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:09:17Z",
+      "side": 1,
+      "message": "Let\u0027s test the same values that you put in the Zephyr version: https://crrev.com/c/6323410",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 53
+      },
+      "revId": "a1f514ea31e97e3c9e255ce848c742f72d5d94cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f11f2c_d672a27b",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:09:17Z",
+      "side": 1,
+      "message": "Is there a reason this is over all the tests now?\n\nLet\u0027s keep this around the newly added test for now to be symmetric with the newly added code. If we should be limiting all the tests to only RW, let\u0027s do it in a followup CL with explanation.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 26
+      },
+      "revId": "a1f514ea31e97e3c9e255ce848c742f72d5d94cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
