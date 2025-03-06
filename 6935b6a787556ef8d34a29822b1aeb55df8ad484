@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d72ab3f_316ee9ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-06T19:13:01Z",
+      "side": 1,
+      "message": "Fixing the unit tests took me some time. The new patchset should now have them passed.\n\nYou second and third questions make me cursior. I found that we have strict init order requirement for the charge manager, PDC driver, PDC power management, and UCSI/PPM. Is this init order required becuase of these threads starting immediately? If we start these threads in the main() (charge manager already does, and this CL, and PPM follows similarly), would the strict init order be necessary? You have more knowledge on these kinds of bugs, and you may help me to understand where these dependencies are.\n\nIn general, an init hood is short and only fills its own data structures and may creates its thread (which is also some data structures filling). An init hood does not modify other module\u0027s data structure in order to minimize interdependencies. Examples are like waiting for another module\u0027s state, waiting for a local state which is modified by another module. These module interdependencies are better deferred to the threads, that have better tools, like events, state machine, to handle complicated scenarios.",
+      "parentUuid": "8e09d074_5a539aaf",
+      "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b019492f_b6b2e793",
         "filename": "zephyr/app/ec/ec_app_main.c",
         "patchSetId": 3
