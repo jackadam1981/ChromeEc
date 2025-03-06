@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdae913_0bbac6eb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T16:41:23Z",
+      "side": 0,
+      "message": "Let\u0027s stage this into a few CLs to make it easier to write a unit test for it.\n\n1. Move this code to a `static` function in `FpFrameCommand`.\n2. Make the change to support 8bpp or 16bpp in that new function. Since it\u0027s in `libec` we can write unit tests for it like we did for the version in the firmware code.",
+      "range": {
+        "startLine": 2182,
+        "startChar": 1,
+        "endLine": 2191,
+        "endChar": 27
+      },
+      "revId": "970b0b2da922cbf67936af196d5f2c483eef3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
