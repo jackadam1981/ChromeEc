@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08cb9e2a_8dec857e",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-06T23:51:24Z",
+      "side": 1,
+      "message": "driver/fingerprint/elan/elan_sensor.h\n\nIn the other file in the same CL.",
+      "parentUuid": "f24aaac4_7b402572",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 35
+      },
+      "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bb3f866_c16ce85f",
