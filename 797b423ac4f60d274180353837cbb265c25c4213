@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00dbd414_b196fe69",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:00:42Z",
+      "side": 1,
+      "message": "nit: Since it\u0027s C++ you can use `std::array\u003cuint8_t, 100\u003e frame{};` and then `frame.data()`",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "87ed4d12_40373970",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+              "range": {
+                "startLine": 180,
+                "startChar": 0,
+                "endLine": 181,
+                "endChar": 0
+              },
+              "replacement": "\tstd::array\u003cuint8_t, 100\u003e frame{};\n"
+            },
+            {
+              "path": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 185,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(upload_pgm_image(frame.data(), 0), EC_ERROR_UNKNOWN);\n\tzassert_equal(upload_pgm_image(frame.data(), 17), EC_ERROR_UNKNOWN);\n\tzassert_equal(upload_pgm_image(frame.data(), 24), EC_ERROR_UNKNOWN);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "797b423ac4f60d274180353837cbb265c25c4213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
