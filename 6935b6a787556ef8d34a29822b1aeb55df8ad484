@@ -122,6 +122,30 @@
       },
       "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d593b87a_e66014a8",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-06T00:13:56Z",
+      "side": 1,
+      "message": "That\u0027s a good point.  Reworking only vboot_main() at this point isn\u0027t probably the best approach.\n\nBut to echo Tristan\u0027s concern - this CL needs a new unit test that validates that the PDC threads stall until after EFS2 runs.",
+      "parentUuid": "f210e414_4acc78f6",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "6935b6a787556ef8d34a29822b1aeb55df8ad484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
