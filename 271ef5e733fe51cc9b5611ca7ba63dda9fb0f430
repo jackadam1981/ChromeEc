@@ -33,6 +33,24 @@
       "message": "Are you expecting to be able to use the same VIF for RTK and TI, or will you need a separate one for TI? If you\u0027ll need a separate one, I guess this file should be called `trule_rtk_vif.xml`.",
       "revId": "271ef5e733fe51cc9b5611ca7ba63dda9fb0f430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d94e8cb_584d741b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-03-06T18:26:01Z",
+      "side": 1,
+      "message": "Hey Abe, we have a seperate TI VIF here:  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/trulo/trulo-ti/trulo-ti_vif.xml\n\nFWIW, the FW versions are named trulo-* for the rtk PDC and trulo-ti-* for the TI PDC.",
+      "parentUuid": "4997cf38_280a831c",
+      "revId": "271ef5e733fe51cc9b5611ca7ba63dda9fb0f430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
