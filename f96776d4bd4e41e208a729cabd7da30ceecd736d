@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422b8e42_a1444678",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:39:17Z",
+      "side": 1,
+      "message": "I can\u0027t seem to find where these are defined. Can you help?\n\nIdeally, we these should be an `enum` type and we should return that `enum` type from this function instead of an `int` to make it clearer which types are involved. Similarly `int mode`, should be an `enum` of the input type that our API provides.",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 35
+      },
+      "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb3f866_c16ce85f",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:39:17Z",
+      "side": 1,
+      "message": "Can you create a separate CL (before this one) that changes this API from an `int` to the `enum` type that represents *our* capture mode? That will make it clearer when we\u0027re working with \"our\" capture type versus the vendor capture type.",
+      "range": {
+        "startLine": 282,
+        "startChar": 52,
+        "endLine": 282,
+        "endChar": 60
+      },
+      "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
