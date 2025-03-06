@@ -223,6 +223,30 @@
       },
       "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ec72ed_8f1d2db6",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-06T23:16:02Z",
+      "side": 1,
+      "message": "have we used zephyr errno in fpc1025 and fpc1145?",
+      "parentUuid": "096d5fca_88faa314",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
