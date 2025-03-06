@@ -40,6 +40,8 @@ static constexpr const struct i2c_target_callbacks dsp_service_callbacks = {
     .stop = dsp_service_stop,
 };
 
+static struct k_mutex gpio_interrupt_mutex;
+
 namespace cros::dsp::service {
 
 Driver driver(DT_INST_REG_ADDR(0),
@@ -243,6 +245,7 @@ bool cros::dsp::service::Driver::HandleDecodedRequest() {
 pw::Status cros::dsp::service::Driver::Init() {
   int rc;
   k_work_init(&get_cbi_flags_work_, dsp_service_handle_get_cbi_flags_request);
+  k_mutex_init(&gpio_interrupt_mutex);
 
   rc = k_sem_init(&data_processing_semaphore_, 1, 1);
   PW_CHECK_INT_EQ(rc, 0);
@@ -264,10 +267,12 @@ pw::Status cros::dsp::service::Driver::Init() {
     LOG_DBG("NotifyClientCallback(%d)", has_data);
     if (has_data) {
       k_sem_give(&this->data_processing_semaphore_);
+      k_mutex_lock(&gpio_interrupt_mutex, K_FOREVER);
       int rc = gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_ON);
-      LOG_DBG("asserting GPIO (%d)", rc);
-    } else {
+      k_msleep(1);
       gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_OFF);
+      k_mutex_unlock(&gpio_interrupt_mutex);
+      LOG_DBG("asserting GPIO (%d)", rc);
     }
   });
 

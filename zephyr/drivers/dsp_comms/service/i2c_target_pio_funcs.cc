@@ -125,10 +125,6 @@ extern "C" int dsp_service_stop(struct i2c_target_config*) {
 
   cros::dsp::service::driver.request_buffer_size_ = 0;
 
-  LOG_DBG("deasserting GPIO...");
-  int rc = gpio_pin_set_dt(&cros::dsp::service::driver.interrupt_,
-                           CROS_DSP_GPIO_OFF);
-  LOG_DBG("deasserting GPIO (%d)", rc);
   if (!cros::dsp::service::driver.HandleDecodedRequest()) {
     // We did not scheduled a work item, release the semaphore
     k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
