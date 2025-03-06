@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea7f2c0_916ffdbf",
+        "filename": "zephyr/test/pdc/src/fakes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-06T23:07:21Z",
+      "side": 1,
+      "message": "You shouldn\u0027t include this file in your test executable to then just override it.\n\nI see some other tests define their own local `battery_is_present()`.  You could also just test with the real `battery_is_present()` by using CONFIG_BATTERY_PRESENT_GPIO config and the GPIO emulator to drive the correct battery state.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 42
+      },
+      "revId": "433beb8e18bd68e348fd55bbe102946bc707b4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8194a9_9e07bf9f",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-06T23:07:21Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tzassert_equal(battery_is_present(), BP_YES);\n```",
+      "range": {
+        "startLine": 132,
+        "startChar": 16,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "433beb8e18bd68e348fd55bbe102946bc707b4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
