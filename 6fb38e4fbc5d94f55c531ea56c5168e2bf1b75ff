@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da7d89d_7f0ebe3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-06T21:38:18Z",
+      "side": 1,
+      "message": "@mike5@huaqin.corp-partner.google.com I added some comments here, but go ahead and submit this as-is and then submit the changes as a follow-up CL with explanations in the commit message, so it\u0027s easier to track the changes.\n\n@phoenixshen@chromium.org can you give second review?",
+      "revId": "6fb38e4fbc5d94f55c531ea56c5168e2bf1b75ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec4e28d_51ebfa93",
+        "filename": "board/awasuki/awasuki_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-06T21:38:18Z",
+      "side": 1,
+      "message": "I think this should be \"End Platform.\"",
+      "revId": "6fb38e4fbc5d94f55c531ea56c5168e2bf1b75ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c50063c_09db7b3f",
+        "filename": "board/awasuki/awasuki_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-06T21:38:18Z",
+      "side": 1,
+      "message": "I think this should be \"No interruption possible.\" It has an internal battery.",
+      "revId": "6fb38e4fbc5d94f55c531ea56c5168e2bf1b75ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335bf34a_6e8b5c0f",
+        "filename": "board/awasuki/awasuki_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-06T21:38:18Z",
+      "side": 1,
+      "message": "This should be false. The port can offer 1.5A or 3A.",
+      "revId": "6fb38e4fbc5d94f55c531ea56c5168e2bf1b75ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75653ec_8b0da4e3",
+        "filename": "board/awasuki/awasuki_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-06T21:38:18Z",
+      "side": 1,
+      "message": "This should be 3000 mA.",
+      "revId": "6fb38e4fbc5d94f55c531ea56c5168e2bf1b75ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
