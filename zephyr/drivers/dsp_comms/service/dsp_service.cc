@@ -49,11 +49,14 @@ Driver driver(DT_INST_REG_ADDR(0),
 
 }  // namespace cros::dsp::service
 
-int init_driver() { return cros::dsp::service::driver.Init().ok() ? 0 : -1; }
+LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
+
+int init_driver() {
+  LOG_DBG("Initializing DSP service");
+  return cros::dsp::service::driver.Init().ok() ? 0 : -1;
+}
 
 SYS_INIT(init_driver, APPLICATION, 50);
-
-LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
 
 static inline int ParseGetCbiFlagsRequest(
     const cros_dsp_comms_GetCbiFlagsRequest& request,
@@ -232,6 +235,11 @@ bool cros::dsp::service::Driver::HandleDecodedRequest() {
       LOG_DBG("Scheduling get_cbi_flags_work");
       k_work_submit(&get_cbi_flags_work_);
       return true;
+    case cros_dsp_comms_EcService_reset_connection_tag:
+      LOG_DBG("Resetting connection");
+      while (transport_.ReadNextMessage().status().ok()) {
+      }
+      return false;
     default:
       LOG_WRN("Unsupported request type");
       cros::dsp::service::driver.transport_.SetStatusBit(
@@ -267,7 +275,8 @@ pw::Status cros::dsp::service::Driver::Init() {
       int rc = gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_ON);
       LOG_DBG("asserting GPIO (%d)", rc);
     } else {
-      gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_OFF);
+      int rc = gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_OFF);
+      LOG_DBG("deasserting GPIO (%d)", rc);
     }
   });
 

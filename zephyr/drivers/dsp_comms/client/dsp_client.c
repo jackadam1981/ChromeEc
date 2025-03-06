@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <stdlib.h>
 #include <string.h>
 
 #define DT_DRV_COMPAT cros_dsp_client
@@ -39,58 +40,58 @@ int cbi_remote_get_board_info(enum cbi_data_tag tag,
 
   switch (tag) {
     case CBI_TAG_BOARD_VERSION:
-      LOG_DBG("Getting BOARD_VERSION");
+      printk("Getting BOARD_VERSION\n");
       flag = cros_dsp_comms_CbiFlag_VERSION;
       break;
     case CBI_TAG_OEM_ID:
-      LOG_DBG("Getting OEM_ID");
+      printk("Getting OEM_ID\n");
       flag = cros_dsp_comms_CbiFlag_OEM;
       break;
     case CBI_TAG_SKU_ID:
-      LOG_DBG("Getting SKU_ID");
+      printk("Getting SKU_ID\n");
       flag = cros_dsp_comms_CbiFlag_SKU;
       break;
     case CBI_TAG_MODEL_ID:
-      LOG_DBG("Getting MODEL_ID");
+      printk("Getting MODEL_ID\n");
       flag = cros_dsp_comms_CbiFlag_MODEL;
       break;
     case CBI_TAG_FW_CONFIG:
-      LOG_DBG("Getting FW_CONFIG");
+      printk("Getting FW_CONFIG\n");
       flag = cros_dsp_comms_CbiFlag_FW_CONFIG;
       break;
     case CBI_TAG_PCB_SUPPLIER:
-      LOG_DBG("Getting PCB_SUPPLIER");
+      printk("Getting PCB_SUPPLIER\n");
       flag = cros_dsp_comms_CbiFlag_PCB_SUPPLIER;
       break;
     case CBI_TAG_SSFC:
-      LOG_DBG("Getting SSFC");
+      printk("Getting SSFC\n");
       flag = cros_dsp_comms_CbiFlag_SSFC;
       break;
     case CBI_TAG_REWORK_ID:
-      LOG_DBG("Getting REWORK_ID");
+      printk("Getting REWORK_ID\n");
       flag = cros_dsp_comms_CbiFlag_REWORK;
       break;
     case CBI_TAG_FACTORY_CALIBRATION_DATA:
-      LOG_DBG("Getting FACTORY_CALIBRATION_DATA");
+      printk("Getting FACTORY_CALIBRATION_DATA\n");
       flag = cros_dsp_comms_CbiFlag_FACTORY_CALIBRATION_DATA;
       break;
     case CBI_TAG_DRAM_PART_NUM:
-      LOG_DBG("Getting DRAM_PART_NUM");
+      printk("Getting DRAM_PART_NUM\n");
       flag = cros_dsp_comms_CbiFlag_DRAM_PART_NUM;
       break;
     case CBI_TAG_OEM_NAME:
-      LOG_DBG("Getting OEM_NAME");
+      printk("Getting OEM_NAME\n");
       flag = cros_dsp_comms_CbiFlag_OEM_NAME;
       break;
     default:
-      LOG_ERR("TAG not supported");
+      printk("TAG not supported\n");
       return -EINVAL;
   }
 
   rc = dsp_client_get_cbi_flags(default_client_device, flag, &response);
 
   if (rc != 0) {
-    LOG_ERR("Failed to get CBI flags");
+    printk("Failed to get CBI flags\n");
     return rc;
   }
 
@@ -98,7 +99,7 @@ int cbi_remote_get_board_info(enum cbi_data_tag tag,
   switch (response.which_flags) {
     case cros_dsp_comms_GetCbiFlagsResponse_flags_32_tag:
       if (*buffer_size < 4) {
-        LOG_ERR("Not enough memory");
+        printk("Not enough memory\n");
         return -ENOMEM;
       }
       memcpy(buffer, &response.flags.flags_32, 4);
@@ -106,7 +107,7 @@ int cbi_remote_get_board_info(enum cbi_data_tag tag,
       break;
     case cros_dsp_comms_GetCbiFlagsResponse_flags_64_tag:
       if (*buffer_size < 8) {
-        LOG_ERR("Not enough memory");
+        printk("Not enough memory\n");
         return -ENOMEM;
       }
       memcpy(buffer, &response.flags.flags_64, 8);
@@ -114,7 +115,7 @@ int cbi_remote_get_board_info(enum cbi_data_tag tag,
       break;
     case cros_dsp_comms_GetCbiFlagsResponse_flags_string_tag:
       if (*buffer_size < strlen(response.flags.flags_string)) {
-        LOG_ERR("Not enough memory");
+        printk("Not enough memory\n");
         return -ENOMEM;
       }
       memcpy(buffer,
@@ -154,11 +155,11 @@ static int dsp_client_enable_interrupt(struct dsp_client_data* data,
   // This function only does anything for level interrupts to avoid getting
   // repeated interrupts while we're servicing the first
   if (enable) {
-    LOG_INF("Enabling level interrupts!");
+    printk("Enabling level interrupts!\n");
     return gpio_pin_interrupt_configure_dt(&config->interrupt,
                                            GPIO_INT_LEVEL_ACTIVE);
   } else {
-    LOG_INF("Disabling interrupts!");
+    printk("Disabling interrupts!\n");
     return gpio_pin_interrupt_configure_dt(&config->interrupt,
                                            GPIO_INT_DISABLE);
   }
@@ -192,7 +193,7 @@ int dsp_client_get_cbi_flags(const struct device* dev,
   __ASSERT_NO_MSG(encode_status);
 
   /* Write the message */
-  LOG_DBG("Writing %zu bytes", stream.bytes_written);
+  printk("Writing %zu bytes\n", stream.bytes_written);
   rc = i2c_write_dt(&cfg->i2c, data->request_buffer, stream.bytes_written);
 
   if (rc != 0) {
@@ -201,7 +202,8 @@ int dsp_client_get_cbi_flags(const struct device* dev,
   }
 
   /* Wait for the EC to process the request */
-  LOG_DBG("Waiting...");
+  printk("GPIO level: %d\n", gpio_pin_get_dt(&cfg->interrupt));
+  printk("Waiting...\n");
   uint32_t events =
       k_event_wait(&data->response_ready_event,
                    UINT32_MAX,
@@ -209,16 +211,16 @@ int dsp_client_get_cbi_flags(const struct device* dev,
                    K_MSEC(CONFIG_PLATFORM_EC_DSP_CLIENT_TIMEOUT_MS));
 
   if (events == 0) {
-    LOG_ERR("Timed out waiting for response");
+    printk("Timed out waiting for response\n");
     k_mutex_unlock(&data->mutex);
     dsp_client_enable_interrupt(data, true);
     return -EAGAIN;
   }
-  LOG_DBG("events = 0x%08x", events);
+  printk("events = 0x%08x\n", events);
 
-  LOG_DBG("Expecting response of %u bytes", data->pending_response_length);
+  printk("Expecting response of %u bytes\n", data->pending_response_length);
   if (data->pending_response_length == PENDING_RESPONSE_LENGTH_ERROR) {
-    LOG_ERR("Remote failed to get value");
+    printk("Remote failed to get value\n");
     k_mutex_unlock(&data->mutex);
     return -EINVAL;
   }
@@ -236,7 +238,7 @@ int dsp_client_get_cbi_flags(const struct device* dev,
       pb_decode(&istream, cros_dsp_comms_GetCbiFlagsResponse_fields, mem);
 
   if (!decode_status) {
-    LOG_ERR("Failed to decode response");
+    printk("Failed to decode response\n");
     k_mutex_unlock(&data->mutex);
     return -EINTR;
   }
@@ -253,7 +255,7 @@ static void dsp_client_gpio_callback(const struct device* port,
   ARG_UNUSED(port);
   ARG_UNUSED(pin);
 
-  LOG_DBG("***** DSP SERVICE FIRED INTERRUPT *****");
+  printk("***** DSP SERVICE FIRED INTERRUPT *****\n");
   dsp_client_enable_interrupt(data, false);
   k_work_submit(&data->read_status_work);
 }
@@ -269,7 +271,7 @@ static void dsp_client_read_status(struct k_work* item) {
   /* Read the status */
   uint8_t status_buffer[pw_transport_Status_size + 4] = {0};
   pw_transport_Status status;
-  LOG_DBG("Reading Status bytes");
+  printk("Reading Status bytes\n");
   rc = i2c_read_dt(&cfg->i2c, status_buffer, ARRAY_SIZE(status_buffer));
   dsp_client_enable_interrupt(data, true);
   if (rc != 0) {
@@ -283,7 +285,7 @@ static void dsp_client_read_status(struct k_work* item) {
       pb_decode_delimited(&istream, pw_transport_Status_fields, &status);
 
   if (!decode_status) {
-    LOG_ERR("Failed to decode Status");
+    printk("Failed to decode Status\n");
     return;
   }
   bool is_response_ready = is_status_bit_set(
@@ -294,10 +296,10 @@ static void dsp_client_read_status(struct k_work* item) {
       cros_dsp_comms_StatusFlag_STATUS_FLAG_LID_OPEN, &status);
   bool is_360 = is_status_bit_set(
       cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE, &status);
-  LOG_DBG("response_ready? %d, response_length=%u",
-          is_response_ready,
-          status.response_length);
-  LOG_DBG("processing error? %d", is_processing_error);
+  printk("response_ready? %d, response_length=%u\n",
+         is_response_ready,
+         status.response_length);
+  printk("processing error? %d\n", is_processing_error);
   if (is_response_ready) {
     data->pending_response_length = status.response_length;
     k_event_post(&data->response_ready_event, 1);
@@ -306,7 +308,7 @@ static void dsp_client_read_status(struct k_work* item) {
     k_event_post(&data->response_ready_event, 2);
   }
 
-  LOG_DBG("is_lid_open=%d, is_360=%d", is_lid_open, is_360);
+  printk("is_lid_open=%d, is_360=%d\n", is_lid_open, is_360);
   if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_SWITCH)) {
     remote_lid_switch_set(is_lid_open);
   }
@@ -322,10 +324,10 @@ static int dsp_client_gpio_init(const struct device* dev) {
   int interrupt_rc;
 
   __ASSERT_NO_MSG(gpio_is_ready_dt(&config->interrupt));
-  LOG_INF("Initializing %s::%u with flags 0x%04x",
-          config->interrupt.port->name,
-          config->interrupt.pin,
-          config->interrupt.dt_flags);
+  printk("Initializing %s::%u with flags 0x%04x\n",
+         config->interrupt.port->name,
+         config->interrupt.pin,
+         config->interrupt.dt_flags);
 
   rc = gpio_pin_configure_dt(&config->interrupt, GPIO_INPUT);
   __ASSERT_NO_MSG(rc == 0);
@@ -353,11 +355,11 @@ static int dsp_client_gpio_init(const struct device* dev) {
   __ASSERT_NO_MSG(rc == 0);
 
   if (data->interrupt_config == GPIO_INT_LEVEL_ACTIVE) {
-    LOG_INF("Interrupt configured to LEVEL_ACTIVE");
+    printk("Interrupt configured to LEVEL_ACTIVE\n");
   } else if (data->interrupt_config == GPIO_INT_EDGE_TO_ACTIVE) {
-    LOG_INF("Interrupt configured to EDGE_TO_ACTIVE");
+    printk("Interrupt configured to EDGE_TO_ACTIVE\n");
   } else {
-    LOG_INF("Interrupt configured to %d", data->interrupt_config);
+    printk("Interrupt configured to %d\n", data->interrupt_config);
   }
 
   return rc;
@@ -377,14 +379,25 @@ static int dsp_client_init(const struct device* dev) {
     return rc;
   }
 
-  if (data->interrupt_config == GPIO_INT_EDGE_TO_ACTIVE &&
-      gpio_pin_get_dt(&config->interrupt)) {
-    LOG_DBG(
-        "Using edge to active but GPIO is already high, simulating interrupt");
-    dsp_client_gpio_callback(
-        config->interrupt.port, &data->gpio_cb, config->interrupt.pin);
+  cros_dsp_comms_EcService service = {
+      .which_request = cros_dsp_comms_EcService_reset_connection_tag,
+      .request = {},
+  };
+  pb_ostream_t stream = pb_ostream_from_buffer(data->request_buffer,
+                                               cros_dsp_comms_EcService_size);
+  bool encode_status =
+      pb_encode(&stream, cros_dsp_comms_EcService_fields, &service);
+
+  ARG_UNUSED(encode_status);
+  __ASSERT_NO_MSG(encode_status);
+  printk("Writing DSP reset request\n");
+  rc = i2c_write_dt(&config->i2c, data->request_buffer, stream.bytes_written);
+
+  if (rc != 0) {
+    printk("Failed to write reset message\n");
   }
-  return 0;
+
+  return rc;
 }
 
 #define DSP_CLIENT_DEFINE(inst)                                \
