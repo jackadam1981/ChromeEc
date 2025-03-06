@@ -52,6 +52,24 @@
       "parentUuid": "bdb99a98_eb7ca10d",
       "revId": "15171b9821500ac6699338d8b22ffb358ccbeb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ec489b_7308d264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-06T23:23:30Z",
+      "side": 1,
+      "message": "I agree with Patryk. Can you prototype a version that works like he describes?\n\n(Egis should not be blocked since they can use the current patches for their local testing.)",
+      "parentUuid": "1ca42a5e_a63d13e7",
+      "revId": "15171b9821500ac6699338d8b22ffb358ccbeb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
