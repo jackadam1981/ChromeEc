@@ -140,3 +140,23 @@ void __unused sys_free(void *data)
 {
 	k_heap_free(&fp_driver_heap, data);
 }
+
+/* Minimum reset duration */
+#define FP_SENSOR_RESET_DURATION_MS (20)
+
+void __unused egis_fp_reset_sensor(void)
+{
+	ret = gpio_pin_set_dt(&cfg->reset_pin, 1);
+	if (ret < 0) {
+		LOG_ERR("Failed to set FP reset pin, status: %d", ret);
+		return;
+	}
+	plat_sleep_time(FP_SENSOR_RESET_DURATION_MS);
+	ret = gpio_pin_set_dt(&cfg->reset_pin, 0);
+	if (ret < 0) {
+		LOG_ERR("Failed to set FP reset pin, status: %d", ret);
+		return;
+	}
+	plat_sleep_time(FP_SENSOR_RESET_DURATION_MS);
+	return;
+}

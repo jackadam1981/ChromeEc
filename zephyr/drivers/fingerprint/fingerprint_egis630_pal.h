@@ -228,4 +228,10 @@ static inline void *plat_alloc(size_t size)
 	return sys_alloc(1, size);
 }
 
+/**
+ * @brief Reset the sensor IC.
+ *
+ */
+void __unused egis_fp_reset_sensor(void);
+
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_EGIS630_PAL_SENSOR_H_ */
