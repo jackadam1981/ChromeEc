@@ -33,8 +33,8 @@ extern "C" {
 #define FP_SENSOR_IMAGE_OFFSET_ELAN (0)
 #define FP_SENSOR_RES_BPP_ELAN (14)
 
-/* External capture types from FPC's sensor library */
-enum fpc_capture_type {
+/* External capture types from ELAN's sensor library */
+enum elan_capture_type {
 	ELAN_CAPTURE_VENDOR_FORMAT = 0,
 	ELAN_CAPTURE_SIMPLE_IMAGE = 1,
 	ELAN_CAPTURE_PATTERN0 = 2,
