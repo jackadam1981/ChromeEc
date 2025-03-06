@@ -18,7 +18,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/util_macro.h>
 
-LOG_MODULE_REGISTER(fan_shim, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(fan_shim, LOG_LEVEL_DBG);
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Exactly one instance of cros-ec,fans should be defined.");
