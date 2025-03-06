@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf4fcb3_169ff73d",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-06T16:05:41Z",
+      "side": 1,
+      "message": "Nit: Add a comment here on why we\u0027re reading the next message until failure.",
+      "revId": "4148b18db166997b3936f9e727a92cf4495b63e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be6a909_bdbb2210",
+        "filename": "zephyr/program/trulo/trulo-ish/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-06T16:05:41Z",
+      "side": 1,
+      "message": "Are we dropping logs? Maybe this should be a separate CL?",
+      "revId": "4148b18db166997b3936f9e727a92cf4495b63e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67655cca_e75e20f9",
+        "filename": "zephyr/test/dsp_comms/boards/native_sim.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-06T16:05:41Z",
+      "side": 1,
+      "message": "Extra label?",
+      "revId": "4148b18db166997b3936f9e727a92cf4495b63e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
