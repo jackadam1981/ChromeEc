@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa163608_cef9142e",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-06T18:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee85fe08_42844481",
+      "range": {
+        "startLine": 23,
+        "startChar": 21,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a1d9839_e270ca6f",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-03-05T16:48:34Z",
       "side": 1,
       "message": "Do we need any mutex locking in these APIs?  How do we handle when thread1 logs \"hello world\" and thread2 logs \"foobar\" at the same time?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97757a08_9618139e",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-06T18:19:14Z",
+      "side": 1,
+      "message": "Maybe. Conflicting writes will result in the checksum failing and the panic log being discarded. Locking doubles the execution time of preserved_ring_buf_write. I think the trade off favors not locking in favor of improved performance and accepting that the panic log may be corrupted in rare cases. I could add locking as an option if desired.",
+      "parentUuid": "7a1d9839_e270ca6f",
       "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "197797fd_7aba54aa",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-06T18:19:14Z",
+      "side": 1,
+      "message": "Correct. This is a difference in the code API and human CLI. The ectool and console API maintain the current frozen state, since I think this feels like the expected behavior. The code API just freezes to keep the API simpler.",
+      "parentUuid": "96714d4a_ce76ad6d",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb557acb_f00d240b",
@@ -71,6 +131,24 @@
       "writtenOn": "2025-03-05T16:48:34Z",
       "side": 1,
       "message": "Is this needed?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcf6353_9b26d614",
+        "filename": "common/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-06T18:19:14Z",
+      "side": 1,
+      "message": "Good catch. No.",
+      "parentUuid": "eb557acb_f00d240b",
       "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8154c1b4_b2543cc6",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-06T18:19:14Z",
+      "side": 1,
+      "message": "This is handled in panic_log.h instead. panic_log_write_char is stubbed to a no-op if CONFIG_PLATFORM_EC_PANIC_LOG is not enabled. Effectivley the same result, just a different style. I\u0027ll switch to `if(IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_LOG))` if you think it\u0027s more readable/maintainable.",
+      "parentUuid": "e11b6af8_79665766",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50b5cb6_47d2ce2d",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 13
@@ -122,6 +218,24 @@
       "writtenOn": "2025-03-05T16:48:34Z",
       "side": 1,
       "message": "Do we want to update the panic log if we\u0027re in an ISR?",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf425379_4538e9ce",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-06T18:19:14Z",
+      "side": 1,
+      "message": "The panic_log is safe to call from an ISR. It is a goal to capture as much of the critical log as possible. As discussed in the other comment, there is a chance of a conflicting write, which will result in the panic log being discarded.",
+      "parentUuid": "f50b5cb6_47d2ce2d",
       "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
