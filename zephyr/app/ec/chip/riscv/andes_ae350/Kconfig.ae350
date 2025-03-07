@@ -1,0 +1,32 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if SOC_SERIES_ANDES_AE350
+
+config CROS_EC_PROGRAM_MEMORY_BASE
+	default FLASH_BASE_ADDRESS
+
+config CROS_EC_RAM_BASE
+	default 0x0
+
+config CROS_EC_DATA_RAM_SIZE
+  # 1 GB
+	default 0x40000000
+
+config CROS_EC_RAM_SIZE
+  # 1 GB
+	default 0x40000000
+
+# Image size is configured with binman's property.
+# (CROS_EC_RO_SIZE and CROS_EC_RW_SIZE)
+config CROS_EC_RO_MEM_OFF
+	default 0x0
+
+config CROS_EC_RW_MEM_OFF
+	default $(dt_node_int_prop_hex,/binman/ec-rw,offset)
+
+config FLASH_LOAD_OFFSET
+	default CROS_EC_RW_MEM_OFF if CROS_EC_RW
+
+endif # SOC_SERIES_ANDES_AE350
