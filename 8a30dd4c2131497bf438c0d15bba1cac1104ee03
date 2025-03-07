@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebecb27d_741ed49d",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-07T17:37:17Z",
+      "side": 1,
+      "message": "Why is this optional?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 66
+      },
+      "revId": "8a30dd4c2131497bf438c0d15bba1cac1104ee03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60197e56_068a8f39",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-07T17:37:17Z",
+      "side": 1,
+      "message": "Nit - move this after all the `TEST_SUITE` defitions. \n\nCan you also create a new test that validates the PDC subsys and driver threads do not run until after `ec_app_main()` is called?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "8a30dd4c2131497bf438c0d15bba1cac1104ee03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
