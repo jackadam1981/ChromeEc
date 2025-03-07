@@ -29,6 +29,13 @@ register_rtk_project(
     kconfig_files=[here / "realtek.conf"],
 )
 
+register_binman_project(
+    project_name="minimal-ae350",
+    zephyr_board="adp_xc7k/ae350",
+    dts_overlays=[here / "ae350.dts"],
+    # supported_toolchains=["llvm", "zephyr"],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="minimal-it8xxx2", addr=0xBFFE0)
