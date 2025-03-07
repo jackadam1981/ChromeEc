@@ -229,6 +229,6 @@ etc.) return an error if `EC_FLASH_PROTECT_ALL_NOW` is set.
 [Servo]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/README.md
 [`OverrideWP`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_gsc.md
 [`system_is_locked()`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/aaba1d5efd51082d143ce2ac64e6caf9cb14d5e5/common/system.c#195
-[wp_screw]: https://www.chromium.org/chromium-os/firmware-porting-guide/firmware-ec-write-protection
+[wp_screw]: https://www.chromium.org/chromium-os/developer-library/guides/firmware/firmware-porting-guide/firmware-ec-write-protection
 [write_protect_gpio]: https://chromium.googlesource.com/chromiumos/platform/ec/+/aaba1d5efd51082d143ce2ac64e6caf9cb14d5e5/include/ec_commands.h#1599
 [SuzyQ]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/ccd.md#SuzyQ-SuzyQable
