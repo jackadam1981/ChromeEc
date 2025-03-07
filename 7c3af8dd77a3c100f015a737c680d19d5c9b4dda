@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "7c3af8dd77a3c100f015a737c680d19d5c9b4dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8211568_dd706627",
+        "filename": "docs/zephyr/pdc.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-07T17:20:40Z",
+      "side": 1,
+      "message": "Expand on this description.  For instance detail that the PDC only negotiates 5V when in dead battery mode and note how this protects the system if multiple charges connected.\n\nIt would be good to enumerate the specific dead battery scenarios the EC needs to handle here and the expected outcome:\n* Only one PDC port is sinking, battery is present\n* Only one PDC port is sinking, battery is not present\n* Multiple PDC ports are sinking, battery present\n* Multiple PDC ports are sinking, battery not present",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "7c3af8dd77a3c100f015a737c680d19d5c9b4dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
