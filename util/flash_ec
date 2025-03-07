@@ -174,6 +174,8 @@ DEFINE_string image "" \
 	"Full pathname of the EC firmware image to flash."
 DEFINE_string mchp_loader "" \
 	"Full pathname of the Microchip loader firmware image to SRAM."
+DEFINE_string mchp_cbi "" \
+	"Full pathname of the CBI binary for Microchip chips."
 DEFINE_string logfile "" \
 	"Stm32 only: pathname of the file to store communications log."
 DEFINE_string offset "0" \
@@ -907,6 +909,40 @@ function mchp_loader_image() {
 
 	info "using MCHP loader: ${LOADER}"
 	echo "${LOADER}"
+}
+
+# Find the Loader image to use
+function mchp_load_cbi() {
+	# Use the image specified on the command line
+	if [[ -n "${FLAGS_mchp_cbi}" ]] ; then
+		if [ -e "${FLAGS_mchp_cbi}" ] || \
+		   [ "${FLAGS_mchp_cbi}" == "-" ]; then
+			CBI=${FLAGS_mchp_cbi}
+		fi
+	# Try default one
+	else
+		for dir in \
+			"$(dirname "${IMG}")" \
+			"${EC_DIR}/build/${BOARD}/output" \
+			"${EC_DIR}/build/zephyr/${BOARD}/output" \
+			"$(dirname "${LOCAL_BUILD}")" \
+			"$(dirname "${EMERGE_BUILD}")" ;
+		do
+			if [ -f "${dir}/mchp_cbi.bin" ] ; then
+				CBI="${dir}/mchp_cbi.bin"
+				break
+			fi
+		done
+	fi
+
+	if [ -z "${CBI}" ] ; then
+		warn "No CBI file found..."
+		echo ""
+		return
+	fi
+
+	info "using MCHP CBI: ${CBI}"
+	echo "${CBI}"
 }
 
 # Get the correct UART for flashing. The resulting string is concatenated with
@@ -1923,6 +1959,16 @@ function flash_mchp_int_uart() {
 	# Gather the image information before changing the UART settings
 	MCHP_LOADER=$(mchp_loader_image)
 	EC_IMAGE=$(ec_image)
+	CBI=$(mchp_load_cbi)
+
+	if [ -n "${CBI}" ]; then
+		# Create backup file
+		cp "${EC_IMAGE}" "${EC_IMAGE}".cbi
+		EC_IMAGE="${EC_IMAGE}".cbi
+		# Include CBI file in backup file
+		dd if="${CBI}" of="${EC_IMAGE}" bs=1 count=256 seek=258048 \
+			skip=0 conv=notrunc > /dev/null 2>&1
+	fi
 
 	# Store the EC UART interpreter status
 	ec_ec3po_interp="$(dut_control_get ec_ec3po_interp_connect)"
@@ -1982,6 +2028,10 @@ function flash_mchp_int_uart() {
 
 	# Restore the EC UART interpreter back
 	dut_control ec_ec3po_interp_connect:"${ec_ec3po_interp}"
+	if [ -n "${CBI}" ]; then
+		# Remove CBI backup file
+		rm "${EC_IMAGE}"
+	fi
 }
 
 info "Using ${SERVO_TYPE}."
