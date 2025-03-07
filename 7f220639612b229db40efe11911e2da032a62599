@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed3a192_fd19da99",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2184,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-07T17:07:29Z",
+      "side": 1,
+      "message": "Actually, if the AP isn\u0027t powered on, we can send the RDO to negotiate more power.\n\nDuring the power renogiation, the sink limits its power draw to pSnkStby (2.5W) but this should be enought to keep the PDC,GSC, and EC up.",
+      "range": {
+        "startLine": 2184,
+        "startChar": 0,
+        "endLine": 2184,
+        "endChar": 63
+      },
+      "revId": "7f220639612b229db40efe11911e2da032a62599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
