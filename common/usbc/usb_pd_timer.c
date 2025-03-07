@@ -279,4 +279,5 @@ test_mockable_static void pd_timer_dump(int port)
 		}
 	}
 }
+/* just checking git commit */
 #endif /* CONFIG_CMD_PD_TIMER */
