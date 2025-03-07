@@ -249,8 +249,20 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 			LOG_ERR("Failed to read port %d status. No recovery.",
 				port + 1);
 		} else {
-			LOG_DBG("Port status change on %d: 0x%x", port + 1,
-				port_status->raw_conn_status_change_bits);
+			union conn_status_change_bits_t conn_status_change_bits;
+			conn_status_change_bits.raw_value =
+				port_status->raw_conn_status_change_bits;
+			LOG_INF("PPM: Port status change on %d: %s", port + 1,
+				get_conn_status_change_bits(
+					port_status
+						->raw_conn_status_change_bits));
+
+			if (IS_ENABLED(CONFIG_UCSI_PPM_EC_MODE_ENTRY) &&
+			    conn_status_change_bits.supported_cam) {
+				if (ppm_am_policy_run(port) != 0) {
+					LOG_ERR("Failed to run PPM altnernate mode checks");
+				}
+			}
 		}
 
 		/* We got alerted with a change for a port we already

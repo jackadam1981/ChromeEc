@@ -56,7 +56,7 @@ test_export_static int eppm_init(void)
 
 	return 0;
 }
-SYS_INIT(eppm_init, APPLICATION, 99);
+SYS_INIT(eppm_init, APPLICATION, 98);
 
 static enum ec_status hc_ucsi_ppm_set(struct host_cmd_handler_args *args)
 {

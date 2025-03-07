@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include <stdio.h>
+#include <string.h>
+
 #include <drivers/ucsi_v3.h>
 
 const char *const ucsi_invalid_name = "OUTSIDE_VALID_RANGE";
@@ -52,6 +55,80 @@ const char *const get_ucsi_command_name(enum ucsi_command_t cmd)
 	} else {
 		return ucsi_command_names[cmd];
 	}
+}
+
+#define CONN_CHANGE_BUF_SIZE 120
+char *get_conn_status_change_bits(uint16_t raw_conn_status_change_bits)
+{
+	static char change_bits_buf[CONN_CHANGE_BUF_SIZE];
+	unsigned int offset;
+	union conn_status_change_bits_t conn_status_change_bits;
+	conn_status_change_bits.raw_value = raw_conn_status_change_bits;
+
+	memset(change_bits_buf, 0, CONN_CHANGE_BUF_SIZE);
+	offset = 0;
+	offset += snprintf(&change_bits_buf[offset],
+			   CONN_CHANGE_BUF_SIZE - offset,
+			   "(0x%04x): ", raw_conn_status_change_bits);
+
+	if (conn_status_change_bits.external_supply_change) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "ext_supply, ");
+	}
+	if (conn_status_change_bits.pwr_operation_mode) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "pwr_op_mode, ");
+	}
+	if (conn_status_change_bits.attention) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset, "attn, ");
+	}
+	if (conn_status_change_bits.supported_provider_caps) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "supp_prov_caps, ");
+	}
+	if (conn_status_change_bits.negotiated_power_level) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "neg_pwr_lvl, ");
+	}
+	if (conn_status_change_bits.supported_cam) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset, "supp_cam, ");
+	}
+	if (conn_status_change_bits.battery_charging_status) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "batt_charging, ");
+	}
+	if (conn_status_change_bits.connector_partner) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "conn_partner, ");
+	}
+	if (conn_status_change_bits.pwr_direction) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset, "pwr_dir, ");
+	}
+	if (conn_status_change_bits.sink_path_status_change) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "sink_path, ");
+	}
+	if (conn_status_change_bits.connect_change) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset,
+				   "conn_change, ");
+	}
+	if (conn_status_change_bits.error) {
+		offset += snprintf(&change_bits_buf[offset],
+				   CONN_CHANGE_BUF_SIZE - offset, "error");
+	}
+
+	return change_bits_buf;
 }
 
 static const char *drp_mode_names[] = {
