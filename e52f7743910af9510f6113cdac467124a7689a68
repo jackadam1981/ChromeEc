@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b1b85e_ed91fc2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-07T00:22:00Z",
+      "side": 1,
+      "message": "@dawidn@google.com\nwhere do we include:\n```\n#if (defined(CONFIG_FP_SENSOR_EGIS630))\n#define FP_SENSOR_HWID_EGIS 630\n#define FP_SENSOR_RES_X_EGIS 80\n#define FP_SENSOR_RES_Y_EGIS 64\n#define FP_SENSOR_IMAGE_SIZE_EGIS (FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS)\n#define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024)\n#define FP_MAX_FINGER_COUNT_EGIS 3\n#define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 15\n#endif\n\n#define FP_SENSOR_IMAGE_OFFSET_EGIS (0)\n#define FP_SENSOR_RES_BPP_EGIS (8)\n```\n\nI did not see those included for FPC1145 and FPC1024",
+      "revId": "e52f7743910af9510f6113cdac467124a7689a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
