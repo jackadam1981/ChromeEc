@@ -40,6 +40,30 @@
       ],
       "revId": "b80699f1af877d096d91e41b38123ca9117c9641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d7119d_23eab012",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-07T07:14:56Z",
+      "side": 1,
+      "message": "I don\u0027t think it should be neccessary here. You don\u0027t need to add the [unused](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-unused-function-attribute) function attribute for static inline functions.",
+      "parentUuid": "4138ec03_67d0a1d8",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 15
+      },
+      "revId": "b80699f1af877d096d91e41b38123ca9117c9641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
