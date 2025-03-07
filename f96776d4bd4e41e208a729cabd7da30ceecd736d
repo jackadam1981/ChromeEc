@@ -93,6 +93,30 @@
       },
       "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958fd829_728f247f",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-07T00:02:48Z",
+      "side": 1,
+      "message": "I cannot make this locally. This will conflict with:\n[int fp_acquire_image_with_mode(uint8_t *image_data, int mode);](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor.h;l\u003d169?q\u003dfp_acquire_image_with_mode\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2F#:~:text\u003d168-,169,-170)\n\nI can try to make this change globally",
+      "parentUuid": "9bb3f866_c16ce85f",
+      "range": {
+        "startLine": 282,
+        "startChar": 52,
+        "endLine": 282,
+        "endChar": 60
+      },
+      "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
