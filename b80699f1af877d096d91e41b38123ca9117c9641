@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4138ec03_67d0a1d8",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-07T00:29:10Z",
+      "side": 1,
+      "message": "@dawidn@google.com\nwhy we are adding this. Egis did not add this",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ab3f32f3_950b00b4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+              "range": {
+                "startLine": 213,
+                "startChar": 0,
+                "endLine": 214,
+                "endChar": 0
+              },
+              "replacement": "static inline void PLAT_FREE(void **x)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b80699f1af877d096d91e41b38123ca9117c9641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
