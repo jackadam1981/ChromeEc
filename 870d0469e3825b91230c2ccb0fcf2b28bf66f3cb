@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e708d1_47c555ae",
+        "filename": "common/panic_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-07T01:22:56Z",
+      "side": 1,
+      "message": "Can we add a comment to the header on this decision/trade-off?",
+      "parentUuid": "97757a08_9618139e",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96714d4a_ce76ad6d",
@@ -225,6 +243,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1bd2fde_37e4ab07",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-07T01:22:56Z",
+      "side": 1,
+      "message": "I don\u0027t know if EC has a preferred style for this. In general I\u0027d be fine either way, but I think we should keep the style consistent throughout the file as its used below.",
+      "parentUuid": "8154c1b4_b2543cc6",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50b5cb6_47d2ce2d",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 13
@@ -254,6 +290,24 @@
       "side": 1,
       "message": "The panic_log is safe to call from an ISR. It is a goal to capture as much of the critical log as possible. As discussed in the other comment, there is a chance of a conflicting write, which will result in the panic log being discarded.",
       "parentUuid": "f50b5cb6_47d2ce2d",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e351a0ff_9c8d511f",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-07T01:22:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cf425379_4538e9ce",
       "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
