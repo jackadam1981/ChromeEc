@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da6112d_99f77dcf",
+        "filename": "zephyr/test/pdc/src/fakes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-07T03:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea7f2c0_916ffdbf",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 42
+      },
+      "revId": "433beb8e18bd68e348fd55bbe102946bc707b4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8194a9_9e07bf9f",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-06T23:07:21Z",
       "side": 1,
       "message": "```suggestion\n\t\tzassert_equal(battery_is_present(), BP_YES);\n```",
+      "range": {
+        "startLine": 132,
+        "startChar": 16,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "433beb8e18bd68e348fd55bbe102946bc707b4a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa539a1_27b26094",
+        "filename": "zephyr/test/pdc/src/pdc_policy/dead_battery_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-07T03:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8194a9_9e07bf9f",
       "range": {
         "startLine": 132,
         "startChar": 16,
