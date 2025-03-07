@@ -279,4 +279,6 @@ test_mockable_static void pd_timer_dump(int port)
 		}
 	}
 }
+/* repo branch testing 3 */
 #endif /* CONFIG_CMD_PD_TIMER */
+
