@@ -117,6 +117,30 @@
       },
       "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc831f7_e98b799f",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-07T01:09:35Z",
+      "side": 1,
+      "message": "Yes, you need to change it everywhere",
+      "parentUuid": "958fd829_728f247f",
+      "range": {
+        "startLine": 282,
+        "startChar": 52,
+        "endLine": 282,
+        "endChar": 60
+      },
+      "revId": "f96776d4bd4e41e208a729cabd7da30ceecd736d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
