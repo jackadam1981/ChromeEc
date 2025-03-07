@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca87452_58a350e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-03-07T01:59:45Z",
+      "side": 1,
+      "message": "Hi ting.\n\nI found that `CONFIG_PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL` has been set to 0. Do we still need to set `CONFIG_PLATFORM_EC_USB_PD_DEBUG_FIXED_LEVEL` to n?",
+      "revId": "9ab83eb00ff4ea933bf6a7d70c072c9a6098d8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
