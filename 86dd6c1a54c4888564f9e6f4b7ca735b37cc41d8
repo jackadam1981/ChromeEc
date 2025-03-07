@@ -33,6 +33,23 @@
       "message": "It\u0027s passing these flags to `gen_app_partitions.py`, which then complains about them.",
       "revId": "86dd6c1a54c4888564f9e6f4b7ca735b37cc41d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c6b8fd_371ef49e",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-07T14:57:25Z",
+      "side": 1,
+      "message": "Can you try replacing this with `check_set_compiler_property(APPEND PROPERTY warning_base`? Bit of a guess really not super familiar with the internals but Zephyr often uses its own functions to control where flag ends in the vaious phases of the build and this seems how other compilers add flags",
+      "revId": "86dd6c1a54c4888564f9e6f4b7ca735b37cc41d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
