@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "519542e12adb597eb93f1323210f2f9ec9f68e8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df46cd89_d2f45c18",
+        "filename": "test/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-07T17:14:04Z",
+      "side": 1,
+      "message": "Let\u0027s try setting `noparent` so we\u0027re the exclusive `OWNER`: https://gerrit.googlesource.com/plugins/find-owners/+/HEAD/src/main/resources/Documentation/syntax.md#examples\n\n```suggestion\n# Only CrOS FP team is owner of this file.\nper-file run_device_tests.py \u003d set noparent\nper-file run_device_tests.py \u003d file:chromiumos/owners:v1:/firmware/OWNERS.cros_fp\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 79
+      },
+      "revId": "519542e12adb597eb93f1323210f2f9ec9f68e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
