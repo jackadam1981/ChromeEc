@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81df654d_1c7d45bc",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-07T18:31:54Z",
+      "side": 1,
+      "message": "The ccg8 driver looks like a stub driver only.  I think our expectation is that all new PDC drivers will need a thread.  \nFor ccg8, you can just add another stub driver to the API list.",
+      "parentUuid": "3e28ae3f_2a99ff05",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 66
+      },
+      "revId": "8a30dd4c2131497bf438c0d15bba1cac1104ee03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60197e56_068a8f39",
