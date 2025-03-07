@@ -16,6 +16,23 @@
       "message": "```\nINFO    - The following issues were found (showing the top 10 items):\nINFO    - 1) tests/kernel/poll/kernel.poll on google_dragonclaw/stm32f412cx error (Build failure - error: unrecognized arguments: -Wno-main -Wno-unknown-warning-option -Wno-arm-interrupt-vfp-clobber -Wno-extra)\n```\n\nSo it doesn\u0027t like the command line flags we\u0027re adding here.",
       "revId": "86dd6c1a54c4888564f9e6f4b7ca735b37cc41d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "873ab518_edf58120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222289
+      },
+      "writtenOn": "2025-03-07T13:18:51Z",
+      "side": 1,
+      "message": "It\u0027s passing these flags to `gen_app_partitions.py`, which then complains about them.",
+      "revId": "86dd6c1a54c4888564f9e6f4b7ca735b37cc41d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
