@@ -108,6 +108,32 @@ static int set_notification_enable(struct rts5453p_emul_pdc_data *data,
 	return 0;
 }
 
+static int set_sbu_mux_mode(struct rts5453p_emul_pdc_data *data,
+			    const union rts54_request *req)
+{
+	uint8_t mode = req->req_subcmd.sub_cmd;
+
+	LOG_INF("SET_SBU_MUX_MODE mode=0x%02x", mode);
+
+	if (req->req_subcmd.data_len != 1) {
+		LOG_ERR("SET_SBU_MUX_MODE: expecting data_length of 1");
+		return -EINVAL;
+	}
+
+	if (!(mode == 0x00 || mode == 0x01)) {
+		LOG_ERR("SET_SBU_MUX_MODE: invalid mode 0x%02x", mode);
+		return -EINVAL;
+	}
+
+	data->sbu_mux_mode = mode;
+
+	/* Empty response */
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
 static int get_ic_status(struct rts5453p_emul_pdc_data *data,
 			 const union rts54_request *req)
 {
@@ -142,6 +168,10 @@ static int get_ic_status(struct rts5453p_emul_pdc_data *data,
 
 	memcpy(data->response.ic_status.project_name, data->info.project_name,
 	       sizeof(data->response.ic_status.project_name));
+
+	if (req->get_ic_status.sts_len >= 39) {
+		data->response.ic_status.sbu_mux_mode = data->sbu_mux_mode;
+	}
 
 	send_response(data);
 
@@ -875,6 +905,7 @@ const struct commands rts54_commands[] = {
 	{ .code = 0x0E, SUBCMD_DEF(sub_cmd_x0E) },
 	{ .code = 0x12, SUBCMD_DEF(sub_cmd_x12) },
 	{ .code = 0x20, SUBCMD_DEF(sub_cmd_x20) },
+	{ .code = 0x30, HANDLER_DEF(set_sbu_mux_mode) },
 	{ .code = 0x3A, HANDLER_DEF(get_ic_status) },
 	{ .code = 0x80, HANDLER_DEF(block_read) },
 };
@@ -1107,6 +1138,7 @@ static int emul_realtek_rts54xx_reset(const struct emul *target)
 
 	data->set_ccom_mode.ccom = BIT(2); /* Realtek DRP bit 2 */
 	data->frs_configured = false;
+	data->sbu_mux_mode = 0;
 
 	return 0;
 }
