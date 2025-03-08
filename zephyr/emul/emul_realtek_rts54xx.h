@@ -25,6 +25,7 @@
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
+#include <zephyr/sys/atomic.h>
 
 union pd_status_t {
 	uint32_t raw_value;
@@ -323,6 +324,7 @@ union rts54_response {
 		uint8_t pd_revision[2];
 		uint8_t pd_version[2];
 		uint8_t project_name[12];
+		uint8_t sbu_mux_mode;
 	} __packed ic_status;
 
 	struct rts54_ucsi_get_lpm_ppm_info {
@@ -528,6 +530,9 @@ struct rts5453p_emul_pdc_data {
 	bool frs_enabled;
 	bool vconn_sourcing;
 	union get_attention_vdo_t attention_vdo;
+	uint8_t sbu_mux_mode;
+	/** PDC feature flags */
+	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
 };
 
 /**
