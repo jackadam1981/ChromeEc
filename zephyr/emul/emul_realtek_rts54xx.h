@@ -323,6 +323,7 @@ union rts54_response {
 		uint8_t pd_revision[2];
 		uint8_t pd_version[2];
 		uint8_t project_name[12];
+		uint8_t sbu_mux_mode;
 	} __packed ic_status;
 
 	struct rts54_ucsi_get_lpm_ppm_info {
@@ -528,6 +529,7 @@ struct rts5453p_emul_pdc_data {
 	bool frs_enabled;
 	bool vconn_sourcing;
 	union get_attention_vdo_t attention_vdo;
+	uint8_t sbu_mux_mode;
 };
 
 /**
