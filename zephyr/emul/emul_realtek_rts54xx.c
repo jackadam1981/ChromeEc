@@ -108,13 +108,66 @@ static int set_notification_enable(struct rts5453p_emul_pdc_data *data,
 	return 0;
 }
 
+static int set_sbu_mux_mode(struct rts5453p_emul_pdc_data *data,
+			    const union rts54_request *req)
+{
+	if (!atomic_test_bit(data->features,
+			     EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE)) {
+		/* Command does not exist. */
+		LOG_ERR("This commands requires EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE");
+		return -EINVAL;
+	}
+
+	uint8_t mode = req->req_subcmd.sub_cmd;
+
+	LOG_INF("SET_SBU_MUX_MODE mode=0x%02x", mode);
+
+	/* LCOV_EXCL_START - Internal emul error checking */
+	if (req->req_subcmd.data_len != 1) {
+		LOG_ERR("SET_SBU_MUX_MODE: expecting data_length of 1");
+		return -EINVAL;
+	}
+
+	if (!(mode == 0x00 || mode == 0x01)) {
+		LOG_ERR("SET_SBU_MUX_MODE: invalid mode 0x%02x", mode);
+		return -EINVAL;
+	}
+	/* LCOV_EXCL_STOP */
+
+	data->sbu_mux_mode = mode;
+
+	/* Empty response */
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
 static int get_ic_status(struct rts5453p_emul_pdc_data *data,
 			 const union rts54_request *req)
 {
 	LOG_INF("GET_IC_STATUS");
 
-	data->response.ic_status.byte_count = MIN(
-		sizeof(struct rts54_ic_status) - 1, req->get_ic_status.sts_len);
+	size_t max_response_len;
+
+	/* SBU mux mode is an additional byte in the GET_IC_STATUS response,
+	 * when supported by PDC firmware. */
+	if (atomic_test_bit(data->features,
+			    EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE)) {
+		/* SBU Mux override feature exists. Allow the full response
+		 * (minus 1 to account for the length byte) */
+		max_response_len = sizeof(struct rts54_ic_status) - 1;
+
+		data->response.ic_status.sbu_mux_mode = data->sbu_mux_mode;
+	} else {
+		/* Skip length byte and extra SBU mux mode byte */
+		max_response_len = sizeof(struct rts54_ic_status) - 2;
+	}
+
+	/* Clamp max length to the number of bytes requested by user */
+	data->response.ic_status.byte_count =
+		MIN(max_response_len, req->get_ic_status.sts_len);
+
 	data->response.ic_status.fw_main_version = data->info.fw_version >> 16 &
 						   BIT_MASK(8);
 	data->response.ic_status.fw_sub_version[0] =
@@ -875,6 +928,7 @@ const struct commands rts54_commands[] = {
 	{ .code = 0x0E, SUBCMD_DEF(sub_cmd_x0E) },
 	{ .code = 0x12, SUBCMD_DEF(sub_cmd_x12) },
 	{ .code = 0x20, SUBCMD_DEF(sub_cmd_x20) },
+	{ .code = 0x30, HANDLER_DEF(set_sbu_mux_mode) },
 	{ .code = 0x3A, HANDLER_DEF(get_ic_status) },
 	{ .code = 0x80, HANDLER_DEF(block_read) },
 };
@@ -1097,6 +1151,14 @@ static int rts5453p_emul_access_reg(const struct emul *emul, int reg, int bytes,
 	return reg;
 }
 
+static void emul_realtek_rts54xx_reset_feature_flags(const struct emul *target)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	atomic_clear(data->features);
+}
+
 static int emul_realtek_rts54xx_reset(const struct emul *target)
 {
 	struct rts5453p_emul_pdc_data *data =
@@ -1107,6 +1169,10 @@ static int emul_realtek_rts54xx_reset(const struct emul *target)
 
 	data->set_ccom_mode.ccom = BIT(2); /* Realtek DRP bit 2 */
 	data->frs_configured = false;
+	data->sbu_mux_mode = 0;
+
+	/* Clear any feature flags */
+	emul_realtek_rts54xx_reset_feature_flags(target);
 
 	return 0;
 }
@@ -1543,6 +1609,52 @@ emul_realtek_rts54xx_set_attention_vdo(const struct emul *target,
 	return 0;
 }
 
+/* LCOV_EXCL_START - Emulator backend functionality only */
+static bool is_feature_flag_supported(enum emul_pdc_feature_flag feature)
+{
+	switch (feature) {
+	case EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE:
+		return true;
+	default:
+		return false;
+	}
+}
+
+static int
+emul_realtek_rts54xx_set_feature_flag(const struct emul *target,
+				      enum emul_pdc_feature_flag feature)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	if (!is_feature_flag_supported(feature)) {
+		LOG_ERR("Setting invalid feature flag %d", feature);
+		return -ENOTSUP;
+	}
+
+	LOG_INF("Setting feature flag %d", feature);
+	atomic_set_bit(data->features, feature);
+	return 0;
+}
+
+static int
+emul_realtek_rts54xx_clear_feature_flag(const struct emul *target,
+					enum emul_pdc_feature_flag feature)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	if (!is_feature_flag_supported(feature)) {
+		LOG_ERR("Clearing invalid feature flag %d", feature);
+		return -ENOTSUP;
+	}
+
+	LOG_INF("Clearing feature flag %d", feature);
+	atomic_clear_bit(data->features, feature);
+	return 0;
+}
+/* LCOV_EXCL_STOP */
+
 static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.reset = emul_realtek_rts54xx_reset,
 	.set_response_delay = emul_realtek_rts54xx_set_response_delay,
@@ -1574,6 +1686,9 @@ static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.idle_wait = emul_realtek_rts54xx_idle_wait,
 	.set_vconn_sourcing = emul_realtek_rts54xx_set_vconn_sourcing,
 	.set_attention_vdo = emul_realtek_rts54xx_set_attention_vdo,
+	.set_feature_flag = emul_realtek_rts54xx_set_feature_flag,
+	.clear_feature_flag = emul_realtek_rts54xx_clear_feature_flag,
+	.reset_feature_flags = emul_realtek_rts54xx_reset_feature_flags,
 };
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \
