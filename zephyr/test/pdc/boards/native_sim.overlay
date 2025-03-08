@@ -36,6 +36,7 @@
 
 		usbc1: port1@1 {
 			compatible = "named-usbc-port";
+			ccd;
 			reg = <1>;
 			pdc = <&pdc_emul2>;
 			policy = <&cros_policy>;

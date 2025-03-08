@@ -2054,6 +2054,29 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	pdc_power_mgmt_request_source_voltage(TEST_PORT, prev_mv);
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 }
+
+/* Get / set SBU mux mode is only supported on RTK currently */
+ZTEST(pdc_power_mgmt_api, test_pdc_power_mgmt_sbu_mux_mode)
+{
+	enum pdc_sbu_mux_mode mode;
+	int ccd_port;
+	int rv;
+
+	rv = pdc_power_mgmt_set_sbu_mux_mode(PDC_SBU_MUX_MODE_FORCE_DBG);
+	zassert_ok(rv, "Setting SBU mux mode failed: %d", rv);
+
+	/* Null pointer */
+	rv = pdc_power_mgmt_get_sbu_mux_mode(NULL, NULL);
+	zassert_equal(-EINVAL, rv);
+
+	/* Success */
+	rv = pdc_power_mgmt_get_sbu_mux_mode(&mode, &ccd_port);
+	zassert_ok(rv, "Getting SBU mux mode failed: %d", rv);
+
+	zassert_equal(PDC_SBU_MUX_MODE_FORCE_DBG, mode);
+	zassert_equal(1, ccd_port);
+}
+
 #endif /* CONFIG_TODO_B_345292002 */
 
 /**
