@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4eb6e57_1a2e5fc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-03-08T07:23:56Z",
+      "side": 1,
+      "message": "```\nskywalker-rev1 /usr/local # ./flash_fp_mcu buccaneer_v2.0.26328-821504380b-RO_v2..0.27609-ac26a0796b-RW.bin\n/usr/local/flash_fp_mcu\nGetting platform name from /etc/lsb-release.\nPlatform name is skywalker (skywalker).\nUsing config for skywalker.\nFallback to WPSW_BOOT (0), which may be invalid\n# Stopping biod\nstop: Unknown job: biod\n# Stopping timberslide\nstop: Unknown instance: /sys/kernel/debug/cros_fp/console_log\nDetected chip NPCX.\n# Flashing \u0027NPCX\u0027 with \u0027buccaneer_v2.0.26328-821504380b-RO_v2.0.27609-ac26a0796b-RW.bin\u0027 over SPI\nFlashing SPI device ID: spi1.0\n# Flashing \u0027buccaneer_v2.0.26328-821504380b-RO_v2.0.27609-ac26a0796b-RW.bin\u0027 over SPI\n# cmd flags\u003d \u0027 -p linux_spi:dev\u003d/dev/spidev1.0,spispeed\u003d250k -w buccaneer_v2.0.26328-821504380b-RO_v2.0.27609-ac26a0796b-RW.bin\u0027\n# flashrom  -p linux_spi:dev\u003d/dev/spidev1.0,spispeed\u003d250k -w buccaneer_v2.0.26328-821504380b-RO_v2.0.27609-ac26a0796b-RW.bin\nflashrom v1.6.0-devel on Linux 6.6.72-gbaeb777b07b5 (aarch64)\nflashrom is free software, get the source code at https://flashrom.org\n\nFound Winbond flash chip \"W25Q80.V\" (1024 kB, SPI) on linux_spi.\n\u003d\u003d\u003d\nThis flash part has status UNTESTED for operations: WP\nThe test status of this chip may have been updated in the latest development\nversion of flashrom. If you are running the latest development version,\nplease email a report to flashrom@flashrom.org if any of the above operations\nwork correctly for you with this flash chip. Please include the flashrom log\nfile for all operations you tested (see the man page for details), and mention\nwhich mainboard or programmer you tested in the subject line.\nYou can also try to follow the instructions here:\nhttps://www.flashrom.org/contrib_howtos/how_to_mark_chip_tested.html\nThanks for your help!\nReading old flash chip contents... done.\nErasing and writing flash chip... SUCCESS.\nSUCCESS\nPower cycling the FPMCU.\n# ectool --name\u003dcros_fp flashprotect disable\nFlash protect flags: 0x00000000\nValid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR\nWritable flags:      0x00000001 ro_at_boot\nFailed to disable WP after flashing NPCX.\nRO version:    buccaneer_v2.0.26328-821504380b\nRO cros fwid:  buccaneer_16043.0.0\nRW version:    buccaneer_v2.0.27609-ac26a0796b\nRW cros fwid:  buccaneer_16203.0.0\nFirmware copy: RW\nBuild info:    buccaneer_v2.0.27609-ac26a0796b boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v2.1.9999-ac26a079 el6\nTool version:  v2.0.27594-f2e8923cd5 2025-02-21 18:16:53 @chromeos-releasempa-builder-us-central1-c-x32-43-rnxy\nEC uptime: 2.760 seconds\nAP resets since EC boot: 0\nMost recent AP reset causes:\nEC reset flags at last EC boot: power-on | sysjump\n# Restarting timberslide\ntimberslide (/sys/kernel/debug/cros_fp/console_log) start/running, process 128371\n# Restarting biod\nstart: Unknown job: biod\n```",
+      "revId": "86a1862d9e21a523a408af0644305625b36174a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
