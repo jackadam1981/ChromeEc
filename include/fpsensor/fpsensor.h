@@ -94,7 +94,7 @@ int fp_sensor_deinit(void);
  * @return EC_SUCCESS on success
  * @return EC_RES_ERROR on error
  */
-int fp_sensor_get_info(struct ec_response_fp_info *resp);
+int fp_sensor_get_info(struct ec_response_fp_info_v2 *resp);
 
 /**
  * Put the sensor in its lowest power state.

@@ -123,14 +123,14 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 	return EC_ERROR_TIMEOUT;
 }
 
-test_export_static uint8_t get_sensor_bpp(void)
+test_export_static uint8_t get_sensor_bpp(int capture_type)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	ec_response_fp_info info;
+	ec_response_fp_info_v2 info;
 	if (fp_sensor_get_info(&info) < 0) {
 		return EC_ERROR_UNKNOWN;
 	}
-	return info.bpp;
+	return info.image_frame[capture_type].bpp;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
@@ -158,7 +158,7 @@ static int command_fpcapture(int argc, const char **argv)
 	const enum ec_error_list rc = fp_console_action(mode);
 	if (rc == EC_SUCCESS)
 		return upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET,
-					get_sensor_bpp());
+					get_sensor_bpp(mode));
 
 	return rc;
 }
@@ -258,7 +258,7 @@ DECLARE_CONSOLE_COMMAND(fpenroll, command_fpenroll, nullptr,
 
 static int command_fpinfo(int argc, const char **argv)
 {
-	ec_response_fp_info info;
+	ec_response_fp_info_v2 info;
 
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
 	if (fp_sensor_get_info(&info) < 0)
@@ -275,11 +275,18 @@ static int command_fpinfo(int argc, const char **argv)
 	ccprintf("%*s: 0x%X\n", align, "Model ID", info.model_id);
 	ccprintf("%*s: 0x%X\n", align, "Version", info.version);
 
-	ccprintf("%*s: %u x %u %ubpp\n", align, "Sensor (w x h)", info.width,
-		 info.height, info.bpp);
-	ccprintf("%*s: %u\n", align, "Frame Size", info.frame_size);
-	ccprintf("%*s: 0x%X (%s)\n", align, "Pixel Format", info.pixel_format,
-		 fourcc_to_string(info.pixel_format).c_str());
+	for (uint16_t i = 0; i < info.num_capture_types; ++i) {
+		ccprintf("Capture Type: %d\n", i);
+		ccprintf("  %*s: %u x %u %ubpp\n", align, "Sensor (w x h)",
+			 info.image_frame[i].width, info.image_frame[i].height,
+			 info.image_frame[i].bpp);
+		ccprintf("  %*s: %u\n", align, "Frame Size",
+			 info.image_frame[i].frame_size);
+		ccprintf("  %*s: 0x%X (%s)\n", align, "Pixel Format",
+			 info.image_frame[i].pixel_format,
+			 fourcc_to_string(info.image_frame[i].pixel_format)
+				 .c_str());
+	}
 
 	ccprintf("%*s: 0x%X\n", align, "Error State", info.errors);
 
