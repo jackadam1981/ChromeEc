@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "egis_api.h"
 #include "fpsensor/fpsensor.h"
 #include "gpio.h"
@@ -23,8 +24,52 @@ static task_id_t sensor_owner;
 /* recorded error flags */
 static uint16_t errors;
 
+static const struct capture_type_params egis_capture_types_array[] = {
+	/* EGIS_CAPTURE_NORMAL_FORMAT */
+	{
+		.bpp = FP_SENSOR_DEFAULT_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS,
+	},
+	/* EGIS_CAPTURE_BLACK_PXL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+	},
+	/* EGIS_CAPTURE_WHITE_PXL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+	},
+	/* EGIS_CAPTURE_DEFECT_PXL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+	},
+	/* EGIS_CAPTURE_NOISE_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+	},
+	/* EGIS_CAPTURE_ABNORMAL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+	},
+	/* EGIS_CAPTURE_RV_INT_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+	},
+};
+
 /* Sensor description */
-static struct ec_response_fp_info egis_fp_sensor_info = {
+static struct ec_response_fp_info_v2 egis_fp_sensor_info = {
 	/* Sensor identification */
 	.vendor_id = FOURCC('E', 'G', 'I', 'S'),
 	.product_id = 9,
@@ -36,6 +81,8 @@ static struct ec_response_fp_info egis_fp_sensor_info = {
 	.width = FP_SENSOR_RES_X_EGIS,
 	.height = FP_SENSOR_RES_Y_EGIS,
 	.bpp = 16,
+	.num_capture_types = 7,
+	.capture_types = egis_capture_types_array,
 };
 
 static int convert_egis_get_image_error_code(egis_api_return_t code)
@@ -56,12 +103,31 @@ static int convert_egis_get_image_error_code(egis_api_return_t code)
 	}
 }
 
-void fp_sensor_lock(void)
+static egis_capture_mode_t
+convert_fp_capture_mdoe_to_egis_get_image_type(int mode)
 {
-	if (sensor_owner != task_get_current()) {
-		mutex_lock(&sensor_lock);
-		sensor_owner = task_get_current();
+	switch (mode) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return EGIS_CAPTURE_NORMAL_FORMAT;
+	case FP_CAPTURE_PATTERN0:
+		return EGIS_CAPTURE_BLACK_PXL_TEST;
+	case FP_CAPTURE_PATTERN1:
+		return EGIS_CAPTURE_WHITE_PXL_TEST;
+	case FP_CAPTURE_QUALITY_TEST:
+		return EGIS_CAPTURE_RV_INT_TEST;
+	case FP_CAPTURE_DEFECT_PXL_TEST:
+		return EGIS_CAPTURE_DEFECT_PXL_TEST;
+	case FP_CAPTURE_ABNORMAL_TEST:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FP_CAPTURE_NOISE_TEST:
+		return EGIS_CAPTURE_NOISE_TEST;
+	case FP_CAPTURE_RESET_TEST:
+	default:
+		assert(false);
+		break;
 	}
+	return EGIS_CAPTURE_NORMAL_FORMAT;
 }
 
 void fp_sensor_unlock(void)
@@ -79,9 +145,9 @@ int fp_sensor_init(void)
 {
 	egis_fp_reset_sensor();
 	/*
-	 * Sensor has two INT pads (INT and INTB), and the polarities of INT and
-	 * INTB are opposite, Not sure about the final wiring configuration,
-	 * so we use a comparison approach.
+	 * Sensor has two INT pads (INT and INTB), and the polarities of
+	 * INT and INTB are opposite, Not sure about the final wiring
+	 * configuration, so we use a comparison approach.
 	 */
 	int int_pin_value = gpio_get_level(GPIO_FPS_INT);
 	egis_api_return_t ret = egis_sensor_init();
@@ -107,10 +173,12 @@ int fp_sensor_deinit(void)
 	return egis_sensor_deinit();
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+int fp_sensor_get_info(struct ec_response_fp_info_v2 *resp)
 {
 	uint16_t sensor_id;
-	memcpy(resp, &egis_fp_sensor_info, sizeof(struct ec_response_fp_info));
+	memcpy(resp, &egis_fp_sensor_info,
+	       sizeof(struct ec_response_fp_info_v2));
+
 	if (egis_get_hwid(&sensor_id) != EGIS_API_OK)
 		return EC_RES_ERROR;
 
