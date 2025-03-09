@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a718d825_01d33413",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-09T22:51:23Z",
+      "side": 1,
+      "message": "```\nstatic int command_fpinfo(int argc, const char **argv)\n{\n\tec_response_fp_info_v2 info;\n\n#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)\n\tif (fp_sensor_get_info(\u0026info) \u003c 0)\n\t\treturn EC_ERROR_UNKNOWN;\n#else\n\treturn EC_ERROR_UNKNOWN;\n#endif\n\n\tconstexpr int align \u003d 15;\n\n\tccprintf(\"%*s: 0x%X (%s)\\n\", align, \"Vendor ID\", info.vendor_id,\n\t\t fourcc_to_string(info.vendor_id).c_str());\n\tccprintf(\"%*s: 0x%X\\n\", align, \"Product ID\", info.product_id);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"Model ID\", info.model_id);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"Version\", info.version);\n\n\tccprintf(\"%*s: %u x %u %ubpp\\n\", align, \"Sensor (w x h)\", info.width,\n\t\t info.height, info.bpp);\n\tccprintf(\"%*s: %u\\n\", align, \"Frame Size\", info.frame_size);\n\tccprintf(\"%*s: 0x%X (%s)\\n\", align, \"Pixel Format\", info.pixel_format,\n\t\t fourcc_to_string(info.pixel_format).c_str());\n\n\tccprintf(\"%*s: 0x%X\\n\", align, \"Error State\", info.errors);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"CT0-bpp\", info.capture_types[0].bpp);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"CT0-frame_size\", info.capture_types[0].frame_size);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"CT1-bpp\", info.capture_types[1].bpp);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"CT1-frame_size\", info.capture_types[1].frame_size);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"CT2-bpp\", info.capture_types[2].bpp);\n\tccprintf(\"%*s: 0x%X\\n\", align, \"CT2-frame_size\", info.capture_types[2].frame_size);\n\n\n\tccprintf(\"%*s: %s\\n\", align, \"Sensor Strap\",\n\t\t fp_sensor_type_to_str(fpsensor_detect_get_type()));\n\n\treturn EC_SUCCESS;\n}\nDECLARE_SAFE_CONSOLE_COMMAND(fpinfo, command_fpinfo, nullptr,\n\t\t\t     \"Print fingerprint system info\");```\n```\n\u003e fpinfo\n      Vendor ID: 0x53494745 (EGIS)\n     Product ID: 0x9\n       Model ID: 0x276\n        Version: 0x1\n Sensor (w x h): 80 x 64 16bpp\n     Frame Size: 10240\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x0\n        CT0-bpp: 0x8\n CT0-frame_size: 0x1400\n        CT1-bpp: 0x10\n CT1-frame_size: 0x2800\n        CT2-bpp: 0x10\n CT2-frame_size: 0x2800\n```",
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
