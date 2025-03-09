@@ -125,7 +125,7 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 static uint8_t get_sensor_bpp(void)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	ec_response_fp_info info;
+	ec_response_fp_info_v2 info;
 	if (fp_sensor_get_info(&info) < 0) {
 		return EC_ERROR_UNKNOWN;
 	}
@@ -257,7 +257,7 @@ DECLARE_CONSOLE_COMMAND(fpenroll, command_fpenroll, nullptr,
 
 static int command_fpinfo(int argc, const char **argv)
 {
-	ec_response_fp_info info;
+	ec_response_fp_info_v2 info;
 
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
 	if (fp_sensor_get_info(&info) < 0)

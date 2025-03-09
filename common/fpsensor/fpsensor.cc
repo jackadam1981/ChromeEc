@@ -419,7 +419,7 @@ extern "C" void fp_task(void)
 
 static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
-	auto *r = static_cast<ec_response_fp_info *>(args->response);
+	auto *r = static_cast<ec_response_fp_info_v2 *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	if (fp_sensor_get_info(r) < 0)
