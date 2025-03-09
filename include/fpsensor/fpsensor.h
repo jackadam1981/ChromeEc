@@ -94,7 +94,7 @@ int fp_sensor_deinit(void);
  * @return EC_SUCCESS on success
  * @return EC_RES_ERROR on error
  */
-int fp_sensor_get_info(struct ec_response_fp_info *resp);
+int fp_sensor_get_info(struct ec_response_fp_info_v2 *resp);
 
 /**
  * Put the sensor in its lowest power state.
@@ -185,6 +185,9 @@ int fp_acquire_image_with_mode(uint8_t *image_data, int mode);
  * @return EC_SUCCESS on success
  */
 int fp_maintenance(void);
+
+enum fp_capture_type
+convert_vendor_capture_type_to_fp_capture_type(int vendor_capture_type);
 
 #ifdef CONFIG_ZEPHYR
 /**
