@@ -8250,6 +8250,9 @@ struct ec_params_fp_passthru {
  * @FP_CAPTURE_PATTERN1: Self test pattern (e.g. inverted checkerboard)
  * @FP_CAPTURE_QUALITY_TEST: Capture for Quality test with fixed contrast
  * @FP_CAPTURE_RESET_TEST: Capture for pixel reset value test
+ * @FP_CAPTURE_DEFECT_PXL_TEST: Capture for check defect pixel test
+ * @FP_CAPTURE_ABNORMAL_TEST: Capture for check abnormal pixel test
+ * @FP_CAPTURE_NOISE_TEST: Capture for check noise test
  * @FP_CAPTURE_TYPE_MAX: End of enum
  *
  * @note This enum must remain ordered, if you add new values you must ensure
@@ -8257,6 +8260,9 @@ struct ec_params_fp_passthru {
  */
 enum fp_capture_type {
 	FP_CAPTURE_VENDOR_FORMAT = 0,
+	FP_CAPTURE_DEFECT_PXL_TEST = 1,
+	FP_CAPTURE_ABNORMAL_TEST = 2,
+	FP_CAPTURE_NOISE_TEST = 3,
 	FP_CAPTURE_SIMPLE_IMAGE = 4,
 	FP_CAPTURE_PATTERN0 = 8,
 	FP_CAPTURE_PATTERN1 = 12,
@@ -8330,6 +8336,34 @@ struct ec_response_fp_info {
 	uint16_t template_valid; /* number of valid fingers/templates */
 	uint32_t template_dirty; /* bitmap of templates with MCU side changes */
 	uint32_t template_version; /* version of the template format */
+} __ec_align4;
+
+struct capture_type_params {
+	uint16_t bpp;
+	uint32_t frame_size;
+} __ec_align4;
+
+struct ec_response_fp_info_v2 {
+	/* Sensor identification */
+	uint32_t vendor_id;
+	uint32_t product_id;
+	uint32_t model_id;
+	uint32_t version;
+	/* Image frame characteristics */
+	uint32_t frame_size;
+	uint32_t pixel_format; /* using V4L2_PIX_FMT_ */
+	uint16_t width;
+	uint16_t height;
+	uint16_t bpp;
+	uint16_t errors; /* see FP_ERROR_ flags above */
+	/* Template/finger current information */
+	uint32_t template_size; /* max template size in bytes */
+	uint16_t template_max; /* maximum number of fingers/templates */
+	uint16_t template_valid; /* number of valid fingers/templates */
+	uint32_t template_dirty; /* bitmap of templates with MCU side changes */
+	uint32_t template_version; /* version of the template format */
+	/* fingerprint capture type parameters */
+	const struct capture_type_params *capture_types;
 } __ec_align4;
 
 /* Get the last captured finger frame or a template content */
