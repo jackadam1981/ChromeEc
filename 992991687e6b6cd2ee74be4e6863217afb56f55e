@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750cafed_7bd2bd0e",
+        "filename": "zephyr/program/rauru/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-10T08:21:12Z",
+      "side": 1,
+      "message": "nit: As this is not USB-C related, maybe we can move it outside this block?",
+      "revId": "992991687e6b6cd2ee74be4e6863217afb56f55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
