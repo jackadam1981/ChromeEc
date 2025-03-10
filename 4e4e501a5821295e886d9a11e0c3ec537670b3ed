@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab1701f_9ce86a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T21:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255c774f_ad9ccddc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "4e4e501a5821295e886d9a11e0c3ec537670b3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "525bed65_7034e8b2",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-10T20:59:02Z",
       "side": 1,
       "message": "Now that we\u0027ve renamed the argument, we should probably also rename this function (separate CL). We could just call it `fp_acquire_image` now. We can also change the `fp_acquire_image_with_mode` functions in the \"private\" files (but we can\u0027t remame `fp_sensor_acquire_image_with_mode` unless the vendors recompile their binaries).",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 30
+      },
+      "revId": "4e4e501a5821295e886d9a11e0c3ec537670b3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede6e4de_2dde6e75",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T21:25:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "525bed65_7034e8b2",
       "range": {
         "startLine": 157,
         "startChar": 4,
