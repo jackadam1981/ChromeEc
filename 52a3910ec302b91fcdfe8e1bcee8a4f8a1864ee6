@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ad48c0_2eb8415d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-10T16:15:44Z",
+      "side": 1,
+      "message": "This should be like\n```\nBUG\u003db:\u003cnum\u003e\nTEST\u003dHow you know it works\n\nChange-Id: Iabc123\n```\n\nMake sure you\u0027re uploading with `repo upload` and passing the pre-upload checks.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "52a3910ec302b91fcdfe8e1bcee8a4f8a1864ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
