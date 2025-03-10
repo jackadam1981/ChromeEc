@@ -1,0 +1,111 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501f199a_c7e2424c",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T18:44:48Z",
+      "side": 1,
+      "message": "Does it fail to compile without this cast? If so, it\u0027s probably cleaner to move that cast into the `FP_CAPTURE_TYPE` macro.",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 27
+      },
+      "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b4b6750_38c7a899",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T18:44:48Z",
+      "side": 1,
+      "message": "The other day you asked about this function. If it\u0027s not actually used anywhere, let\u0027s just remove it from the API to avoid confusion. (separate CL)",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62db984d_3430ef5b",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T18:44:48Z",
+      "side": 1,
+      "message": "Can you also create a separate CL to rename `mode`, since it\u0027s really the capture type, not mode? (IIRC, we use `mode` to refer to the sensor mode in other places.)",
+      "range": {
+        "startLine": 169,
+        "startChar": 73,
+        "endLine": 169,
+        "endChar": 77
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "38b53fde_c1b06a89",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 159,
+                "startChar": 0,
+                "endLine": 160,
+                "endChar": 0
+              },
+              "replacement": " * except @p capture_type can be set to one of the fp_capture_type constants\n"
+            },
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 164,
+                "startChar": 0,
+                "endLine": 165,
+                "endChar": 0
+              },
+              "replacement": " * @param capture_type  enum fp_capture_type\n"
+            },
+            {
+              "path": "include/fpsensor/fpsensor.h",
+              "range": {
+                "startLine": 169,
+                "startChar": 0,
+                "endLine": 170,
+                "endChar": 0
+              },
+              "replacement": "int fp_acquire_image_with_mode(uint8_t *image_data,\n                               enum fp_capture_type capture_type);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
