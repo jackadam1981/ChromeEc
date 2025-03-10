@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be1ee6b_7f84c66f",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T17:54:27Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "251bf84a_ebb15a64",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46480613_bae7568b",
@@ -263,6 +287,30 @@
       "side": 1,
       "message": "[Yes](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/fingerprint/alg/fpc_bep_bio_alg.c;l\u003d172-175;drc\u003d3ae02a1c0a91ca9d2619abb9153da9ac89e75c2)",
       "parentUuid": "61ec72ed_8f1d2db6",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "8d7ea09cf19178b6ea41123a2db65041e1649aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71722299_f74fe1e4",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_ec630_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T17:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbae6e41_e65c1675",
       "range": {
         "startLine": 111,
         "startChar": 0,
