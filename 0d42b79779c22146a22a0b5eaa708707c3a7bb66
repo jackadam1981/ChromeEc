@@ -50,6 +50,52 @@
       "message": "@tomhughes@chromium.org\n@patrykd@google.com\n\nI created this version. Please let me know your thoughts. I tested it on gwendolin.\n\nWe need to create a function that translate from vendor mode to ec mode:\n\n```\nint convert_vendor_to_ec_mode (int mode)\n```",
       "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b3146b_e506cff1",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T18:39:53Z",
+      "side": 1,
+      "message": "I think you can write it as \n\n```\n[EGIS_CAPTURE_NORMAL_FORMAT] \u003d {\n  .bpp \u003d ...,\n  .frame_size \u003d ...\n}\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99ca8d4b_8b69e109",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 8357,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T18:39:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we move all of these into `capture_type_params`? It\u0027s possible that each of those values could change based on the capture type and it\u0027s confusing if we have `bpp` and `frame_size` in `capture_type_params` and `ec_response_fp_info_v2`.",
+      "range": {
+        "startLine": 8353,
+        "startChar": 1,
+        "endLine": 8357,
+        "endChar": 14
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
