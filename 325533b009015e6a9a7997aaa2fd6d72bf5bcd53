@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6681a1e0_659857e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-10T19:51:14Z",
+      "side": 1,
+      "message": "We might also want to delay initialization of `ppm_driver.c`. I don\u0027t think it has its own thread, but it depends on `pdc_power_mgmt` and the PDC drivers, so it probably should not be active until after those are started. I think the PPM driver device is a client of this component, `ucsi_host_cmd.c`\n\n@Jameson: this CL is part of an effort to shift the start-up of the PD stack later in the EC boot process, to the application phase rather than immediately post-kernel like most devcie drivers. This gives a chance for EFS2 to run and elect to perform a sysjump/reboot before starting any PD logic. We think this will make things more reliable since we will no longer boot once, get msot of the way through PD init, and then reboot again into RW.",
+      "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
