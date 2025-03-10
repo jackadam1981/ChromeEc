@@ -15,6 +15,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/ztest.h>
 
 LOG_MODULE_REGISTER(tcpci_drp_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 
@@ -64,6 +65,7 @@ tcpci_drp_emul_handle_sop_msg(struct tcpci_partner_extension *ext,
 		/* Handle control message */
 		switch (PD_HEADER_TYPE(header)) {
 		case PD_CTRL_PR_SWAP:
+		case PD_CTRL_FR_SWAP:
 			tcpci_partner_send_control_msg(common_data,
 						       PD_CTRL_ACCEPT, 0);
 			data->in_pwr_swap = true;
@@ -127,6 +129,18 @@ static void tcpci_drp_emul_hard_reset(struct tcpci_partner_extension *ext,
 
 	tcpci_partner_common_hard_reset_as_role(common_data,
 						data->initial_power_role);
+}
+
+void tcpci_drp_emul_signal_frs(struct tcpci_partner_data *data)
+{
+	const struct emul *tcpci_emul = data->tcpci_emul;
+	uint16_t alert_ext;
+
+	zassert_ok(
+		tcpci_emul_get_reg(tcpci_emul, TCPC_REG_ALERT_EXT, &alert_ext));
+	alert_ext |= TCPC_REG_ALERT_EXT_SNK_FRS;
+	zassert_ok(
+		tcpci_emul_set_reg(tcpci_emul, TCPC_REG_ALERT_EXT, alert_ext));
 }
 
 /** USB-C DRP device extension callbacks */
