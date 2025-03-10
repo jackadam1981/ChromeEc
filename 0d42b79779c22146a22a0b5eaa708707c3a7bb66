@@ -173,6 +173,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e07bee2_5857412a",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T23:03:49Z",
+      "side": 1,
+      "message": "Putting this in this format causes `cros format` not to format the struct.",
+      "parentUuid": "c94e5b33_59f6ee52",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99ca8d4b_8b69e109",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -184,6 +208,30 @@
       "writtenOn": "2025-03-10T18:39:53Z",
       "side": 1,
       "message": "Shouldn\u0027t we move all of these into `capture_type_params`? It\u0027s possible that each of those values could change based on the capture type and it\u0027s confusing if we have `bpp` and `frame_size` in `capture_type_params` and `ec_response_fp_info_v2`.",
+      "range": {
+        "startLine": 8353,
+        "startChar": 1,
+        "endLine": 8357,
+        "endChar": 14
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5e3b18_df6240f8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 8357,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T23:03:49Z",
+      "side": 1,
+      "message": "Done.\n\nI have also verified that things work on gwendolin using fpinfo and fpcapture\n\n```\n\u003e fpinfo\n      Vendor ID: 0x53494745 (EGIS)\n     Product ID: 0x9\n       Model ID: 0x276\n        Version: 0x1\n    Error State: 0x0\n   Sensor Strap: ELAN\nCapture Type: 0\n   Sensor (w x h): 80 x 64 8bpp\n       Frame Size: 5120\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 1\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 2\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 3\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 4\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 5\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 6\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\n\u003e \n```\n\nI can continue working on this if the concept is acceptable",
+      "parentUuid": "99ca8d4b_8b69e109",
       "range": {
         "startLine": 8353,
         "startChar": 1,
