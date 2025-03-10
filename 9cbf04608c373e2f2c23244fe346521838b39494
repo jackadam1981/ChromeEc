@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a394263d_7baee751",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T18:24:19Z",
+      "side": 1,
+      "message": "@dawidn@google.com\ngwendolin uses `GPIO_INT_FALLING` for interrupt. Shall I be concerned about that here?",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "9cbf04608c373e2f2c23244fe346521838b39494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
