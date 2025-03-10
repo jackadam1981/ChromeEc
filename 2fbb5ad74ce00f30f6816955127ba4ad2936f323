@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "620e462f_d23994a9",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T20:35:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ecb34ca3_7bbd5e5c",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 39
+      },
+      "revId": "2fbb5ad74ce00f30f6816955127ba4ad2936f323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a74fb7f_67fa689d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-10T20:16:06Z",
       "side": 0,
       "message": "We should copy this over to `fp_acquire_image_with_mode`. Double-check that the `_mode` function actually returns those values.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 78
+      },
+      "revId": "2fbb5ad74ce00f30f6816955127ba4ad2936f323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f9cbd9_b729a26d",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T20:35:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1a74fb7f_67fa689d",
       "range": {
         "startLine": 149,
         "startChar": 0,
