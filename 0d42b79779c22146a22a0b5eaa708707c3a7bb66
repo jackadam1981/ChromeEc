@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9f88559_7481b465",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T18:57:31Z",
+      "side": 1,
+      "message": "Is there a reason you were trying to compile for google3 or were you just trying to test it there?\n\nThis is a difference in C vs C++.",
+      "parentUuid": "02f36fc4_299435eb",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99ca8d4b_8b69e109",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
