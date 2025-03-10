@@ -1,0 +1,106 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "soc.dtsi"
+#include "gpio.dtsi"
+#include "rwsig.dtsi"
+
+#include <cros/integrated_fwid.dtsi>
+
+/ {
+	chosen {
+	};
+
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x00>;
+			size = <0x02>;
+		};
+		saved-reset-flags {
+			offset = <0x02>;
+			size = <0x04>;
+		};
+		saved-panic-reason {
+			offset = <0x06>;
+			size = <0x02>;
+		};
+		saved-panic-info {
+			offset = <0x08>;
+			size = <0x02>;
+		};
+		saved-panic-exception {
+			offset = <0x0a>;
+			size = <0x02>;
+		};
+		saved-panic-flags {
+			offset = <0x0c>;
+			size = <0x02>;
+		};
+	};
+
+
+	binman {
+		/* SDCP flash header */
+		flash-header {
+			offset = <0x0>;
+			type = "blob";
+			filename = "../build-ro/flash_header.bin";
+		};
+
+		/* 1MB? of flash with 4KB sectors */
+		wp-ro {
+			// TODO adjustement for MPU, verify that
+			offset = <0x20000>;
+			size = <0x5e000>;
+			ec-ro {
+				offset = <0x0>;
+				size = <0x5e000>;
+				pad-byte = <0xff>;
+			};
+		};
+
+		/* Two sectors used for rollback (4KB each) */
+		rollback0 {
+			offset = <0x7e000>;
+			size = <0x1000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		rollback1 {
+			offset = <0x7f000>;
+			size = <0x1000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		ec-rw {
+			offset = <0x80000>;
+			size = <0x80000>;
+		};
+		pad-byte = <0xff>;
+	};
+};
+
+&p25q80sh {
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		rollback0: partition@5e000 {
+			label = "rollback0";
+			reg = <0x5e000 DT_SIZE_K(4)>;
+		};
+
+		/* Seventh sector is used as second rollback sector. */
+		rollback1: partition@5f000 {
+			label = "rollback1";
+			reg = <0x5f000 DT_SIZE_K(4)>;
+		};
+	};
+};
