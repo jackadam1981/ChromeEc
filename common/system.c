@@ -510,9 +510,14 @@ test_mockable enum ec_image system_get_image_copy(void)
 	/* Return which region is used in program memory */
 	return system_get_shrspi_image_copy();
 #else
+
+#ifdef CONFIG_XIP
 	uintptr_t my_addr =
 		(uintptr_t)system_get_image_copy - CONFIG_PROGRAM_MEMORY_BASE;
-
+#else
+	uintptr_t my_addr = (uintptr_t)system_get_image_copy;
+#endif
+	
 	if (my_addr >= CONFIG_RO_MEM_OFF &&
 	    my_addr < (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE))
 		return EC_IMAGE_RO;
@@ -790,13 +795,16 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 		return &current_image_data;
 	if (active_copy == EC_IMAGE_UNKNOWN)
 		return NULL;
-
+#ifdef CONFIG_XIP
 	/*
 	 * The version string is always located after the reset vectors, so
 	 * it's the same offset as in the current image.  Find that offset.
 	 */
 	addr = ((uintptr_t)&current_image_data -
 		get_program_memory_addr(active_copy));
+#else
+	addr = (uintptr_t)&current_image_data;
+#endif
 
 	/*
 	 * Read the version information from the proper location
