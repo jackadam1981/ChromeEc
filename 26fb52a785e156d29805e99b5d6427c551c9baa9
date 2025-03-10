@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e89d71_39e6612c",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T19:15:59Z",
+      "side": 1,
+      "message": "yes, it fails without that cast:\n\n```\ncommon/fpsensor/fpsensor.cc:230:12: error: no matching function for call to \u0027fp_acquire_image_with_mode\u0027\n  230 |         int res \u003d fp_acquire_image_with_mode(\n      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~\ninclude/fpsensor/fpsensor.h:169:5: note: candidate function not viable: no known conversion from \u0027uint32_t\u0027 (aka \u0027unsigned int\u0027) to \u0027enum fp_capture_type\u0027 for 2nd argument\n  169 | int fp_acquire_image_with_mode(uint8_t *image_data, enum fp_capture_type mode);\n      |     ^                                               ~~~~~~~~~~~~~~~~~~~~~~~~~\ncommon/fpsensor/fpsensor.cc:307:5: error: no matching function for call to \u0027fp_acquire_image_with_mode\u0027\n  307 |                                 fp_acquire_image_with_mode(\n      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~\ninclude/fpsensor/fpsensor.h:169:5: note: candidate function not viable: no known conversion from \u0027uint32_t\u0027 (aka \u0027unsigned int\u0027) to \u0027enum fp_capture_type\u0027 for 2nd argument\n  169 | int fp_acquire_image_with_mode(uint8_t *image_data, enum fp_capture_type mode);\n      |     ^                                               ~~~~~~~~~~~~~~~~~~~~~~~~~\n2 errors generated.\n```",
+      "parentUuid": "501f199a_c7e2424c",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 27
+      },
+      "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b4b6750_38c7a899",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-10T18:44:48Z",
       "side": 1,
       "message": "The other day you asked about this function. If it\u0027s not actually used anywhere, let\u0027s just remove it from the API to avoid confusion. (separate CL)",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f2ffe5_3a41492c",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T19:15:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1b4b6750_38c7a899",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -104,6 +152,30 @@
           ]
         }
       ],
+      "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea5db3b_41a8bdfb",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T19:15:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "62db984d_3430ef5b",
+      "range": {
+        "startLine": 169,
+        "startChar": 73,
+        "endLine": 169,
+        "endChar": 77
+      },
       "revId": "26fb52a785e156d29805e99b5d6427c551c9baa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
