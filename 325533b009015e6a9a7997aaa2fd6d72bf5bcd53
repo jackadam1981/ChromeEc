@@ -34,6 +34,24 @@
       "parentUuid": "6681a1e0_659857e5",
       "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60cfbca_ec75e6ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-03-10T21:13:26Z",
+      "side": 1,
+      "message": "Thanks for the heads up. There may be a risk here if the PPM does not intialize before the OPM. Currently we assume that the PPM will be ready by the time the OPM inits. The OPM can react to the PPM initializing late due to a sysump. But, all the OPM does in this case is re-enable notifications. It assumes the OPM has already initialize.\n\nIf the PPM isn\u0027t ready when the kernel starts up, it could cause the OPM to fail during initilization. If that happens, we\u0027ll need to update cros_ec_ucsi to re-initialize the OPM in response to \u0027PD_EVENT_INIT\u0027 events.",
+      "parentUuid": "f90812de_8b9ffe07",
+      "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
