@@ -21,7 +21,7 @@ def register_fpmcu_variant(
         zephyr_board=zephyr_board,
         modules=["ec", *variant_modules],
         optional_modules=[*variant_optional_modules],
-        supported_toolchains=["llvm", "zephyr"],
+        supported_toolchains=["coreboot-sdk", "zephyr"],
         dts_overlays=[*variant_dts_overlays],
         kconfig_files=[here / "prj.conf", *variant_kconfig_files],
         signer=signer,
@@ -50,3 +50,22 @@ bloonchipper = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="bloonchipper", addr=0x601C8)
+
+et171 = register_fpmcu_variant(
+    project_name="et171",
+    zephyr_board="egis_et171",
+    register_func=register_binman_project,
+    variant_dts_overlays=[
+        here / "et171" / "et171.dts",
+    ],
+    variant_kconfig_files=[
+        here / "et171" / "prj.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "et171" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+#assert_rw_fwid_DO_NOT_EDIT(project_name="et171", addr=0x60064)

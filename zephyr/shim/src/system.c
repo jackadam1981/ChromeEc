@@ -207,7 +207,7 @@ const char *system_get_chip_revision(void)
 test_mockable void system_reset(int flags)
 {
 	int err;
-	uint32_t save_flags;
+	// uint32_t save_flags;
 
 	if (!sys_dev)
 		LOG_ERR("sys_dev get binding failed");
@@ -215,11 +215,11 @@ test_mockable void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable_all();
 
-	/*  Get flags to be saved in BBRAM */
-	system_encode_save_flags(flags, &save_flags);
+	// /*  Get flags to be saved in BBRAM */
+	// system_encode_save_flags(flags, &save_flags);
 
-	/* Store flags to battery backed RAM. */
-	chip_save_reset_flags(save_flags);
+	// /* Store flags to battery backed RAM. */
+	// chip_save_reset_flags(save_flags);
 
 	/* If WAIT_EXT is set, then allow 10 seconds for external reset */
 	if (flags & SYSTEM_RESET_WAIT_EXT) {

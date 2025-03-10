@@ -17,8 +17,14 @@
 			pad-byte = <0xff>;
 			read-only;
 			ec-ro {
+				compatible = "cros-ec,flash-layout";
 				type = "section";
 				pad-byte = <0xff>;
+				/* Flash header for bootloader . TODO: inside ec-ro? */ 
+				flash-header {
+					type = "null";
+					size = <0x0>;
+				};
 				ro-fw {
 					type = "blob";
 					filename = "zephyr_ro.bin";

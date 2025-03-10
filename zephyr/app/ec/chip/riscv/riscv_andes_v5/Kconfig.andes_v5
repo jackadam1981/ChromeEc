@@ -1,0 +1,39 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if SOC_FAMILY_ANDES_V5
+
+DT_CHOSEN_Z_SRAM := zephyr,sram
+
+# TODO - flash + header_size?
+config CROS_EC_PROGRAM_MEMORY_BASE
+	default FLASH_BASE_ADDRESS
+
+config CROS_EC_RAM_BASE
+	default SRAM_BASE_ADDRESS
+
+config CROS_EC_DATA_RAM_SIZE
+	default $(dt_chosen_reg_size_hex,$(DT_CHOSEN_Z_SRAM))
+
+config CROS_EC_RAM_SIZE
+	default $(dt_chosen_reg_size_hex,$(DT_CHOSEN_Z_SRAM))
+
+
+# Use ec-ro instead of wp-ro, because of flash header
+# TODO double check after finding a proper image layout
+config CROS_EC_RO_MEM_OFF
+	default $(dt_node_int_prop_hex,/binman/wp-ro,offset)
+
+config CROS_EC_RO_SIZE
+	default $(dt_node_int_prop_hex,/binman/wp-ro,size)
+
+config CROS_EC_RW_MEM_OFF
+	default $(dt_node_int_prop_hex,/binman/ec-rw,offset)
+
+# Tell the linker where the RO/RW part is.
+config FLASH_LOAD_OFFSET
+	default 0x1c if CROS_EC_RO
+	default CROS_EC_RW_MEM_OFF if CROS_EC_RW
+
+endif # SOC_FAMILY_ANDES_V5

@@ -1,0 +1,21 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/binman.dtsi>
+
+/ {
+	chosen {
+		// TODO fix that
+		// cros-ec,bbram = &p25q80sh;
+		cros-ec,flash = &p25q80sh;
+		cros-ec,flash-controller = &flash_controller;
+	};
+
+	soc {
+		flash_controller: cros-ec-flash {
+			compatible = "jedec,spi-nor-cros-flash";
+		};
+	};
+};

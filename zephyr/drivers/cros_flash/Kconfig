@@ -142,3 +142,17 @@ config CROS_FLASH_STM32_EC_JUMP_STRUCTURE
 	  between old and new formats.
 
 endif # CROS_FLASH
+
+config CROS_FLASH_SPI_NOR
+	bool "SPI NOR/Andes"
+	default y
+	depends on SPI_NOR || FLASH_ANDES_QSPI
+	select PLATFORM_EC_FLASH_CROS
+	help
+	  Jedec spi nor cros flash driver
+
+config CROS_FLASH_SPI_NOR_INIT_PRIORITY
+	int "Init piro"
+	default 85
+	help
+	  Init prio

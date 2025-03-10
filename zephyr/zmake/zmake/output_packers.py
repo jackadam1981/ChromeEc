@@ -295,6 +295,7 @@ class BinmanPacker(BasePacker):
             into.
         """
         actual_rw_fwid_addr = -1
+        return
         with open(work_dir / "image.map", encoding="utf-8") as image_map:
             for line in image_map:
                 addr, _, _, name = line.split(None, 4)

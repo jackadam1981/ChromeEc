@@ -12,3 +12,7 @@ zephyr_library_sources_ifdef(CONFIG_CROS_FLASH_BACKEND_STM32
 zephyr_library_link_libraries_ifdef(CONFIG_PLATFORM_EC_SPI_FLASH_REGS
     spi_flash_reg
 )
+
+zephyr_library_sources_ifdef(CONFIG_CROS_FLASH_SPI_NOR
+	                                                cros_flash_spi_nor.c)
+
