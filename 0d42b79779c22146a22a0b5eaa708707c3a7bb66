@@ -125,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c94e5b33_59f6ee52",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T18:58:44Z",
+      "side": 1,
+      "message": "I was just testing things out.",
+      "parentUuid": "c9f88559_7481b465",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99ca8d4b_8b69e109",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
