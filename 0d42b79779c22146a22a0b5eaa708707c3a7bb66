@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02f36fc4_299435eb",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T18:51:37Z",
+      "side": 1,
+      "message": "I was using this format at the beginning. I compiles properly using the ec build system. However, I was seeing this error in google3, so I decided to move away fro this approach. Please advise.\n\n```\nthird_party/fingerprintauth/alignment_orderedgmsac_test.cc:56:7: error: array designators are a C99 extension [-Werror,-Wc99-designator]\n   56 |       [EGIS_CAPTURE_NORMAL_FORMAT] \u003d\n      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n1 error generated.\n```",
+      "parentUuid": "a4b3146b_e506cff1",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "0d42b79779c22146a22a0b5eaa708707c3a7bb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99ca8d4b_8b69e109",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
