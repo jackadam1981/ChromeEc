@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4a0777_dc8cc809",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T20:19:39Z",
+      "side": 1,
+      "message": "capture_type",
+      "range": {
+        "startLine": 339,
+        "startChar": 23,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "644face1f9560ba0825ccf04184d0bc605bcd28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d05884_98866028",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-10T20:19:39Z",
+      "side": 1,
+      "message": "capture_type",
+      "range": {
+        "startLine": 371,
+        "startChar": 23,
+        "endLine": 371,
+        "endChar": 27
+      },
+      "revId": "644face1f9560ba0825ccf04184d0bc605bcd28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
