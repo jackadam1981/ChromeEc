@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04557943_2c6a250a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-10T21:26:30Z",
+      "side": 1,
+      "message": "I ended up not having to extract the port number from the emulator after all. (I also did not figure out how to do that.) These three CLs are essentailly a refactor that will allow me to write a test for the following CL.",
+      "revId": "995159bc7370514c8792b585bd227822920832f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
