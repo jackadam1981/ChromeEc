@@ -1,0 +1,31 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/andes/andes.dtsi>
+
+/delete-node/ &dram;
+
+/ {
+	sdcp: memory@0 {
+		device_type = "memory";
+		compatible = "mmio-sram";
+		reg = <0x00000000 256>;
+	};
+	// Just a mock. Won't work correctly, because dram is not retained across reboots
+	bbram: memory@100 {
+		device_type = "memory";
+		compatible = "mmio-sram", "egis-bbram";
+		reg = <0x00000100 256>;
+	};
+	dram: memory@400 {
+		device_type = "memory";
+		compatible = "mmio-sram";
+		reg = <0x00000400 DT_SIZE_K(383)>;
+	};
+};
+
+&spi2 {
+	status = "okay";
+};

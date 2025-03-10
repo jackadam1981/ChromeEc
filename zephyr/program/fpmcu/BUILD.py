@@ -27,7 +27,6 @@ def register_fpmcu_variant(
         signer=signer,
     )
 
-
 bloonchipper = register_fpmcu_variant(
     project_name="bloonchipper",
     zephyr_board="google_dragonclaw",
@@ -72,3 +71,23 @@ helipilot = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x40144)
+
+et171 = register_fpmcu_variant(
+    project_name="et171",
+    zephyr_board="egis_et171",
+    register_func=register_binman_project,
+    variant_optional_modules=["egis"],
+    variant_dts_overlays=[
+        here / "et171" / "et171.dts",
+    ],
+    variant_kconfig_files=[
+        here / "et171" / "prj.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "et171" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="et171", addr=0x8007e)
