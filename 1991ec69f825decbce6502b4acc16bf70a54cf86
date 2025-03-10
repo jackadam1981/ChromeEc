@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9871d9aa_def60c97",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-10T17:54:54Z",
+      "side": 1,
+      "message": "@dawidn@google.com\nThis is something Egis did not define. Do we need these functions for our internal implemetation?",
+      "range": {
+        "startLine": 21,
+        "startChar": 18,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "1991ec69f825decbce6502b4acc16bf70a54cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
