@@ -83,7 +83,7 @@ LOG_LEVEL g_log_level = LOG_DEBUG;
 LOG_LEVEL g_log_level = LOG_INFO;
 #endif
 
-static char printf_buffer[256];
+STATIC_VAR char printf_buffer[256];
 
 void __unused set_debug_level(LOG_LEVEL level)
 {
