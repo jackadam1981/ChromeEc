@@ -1,0 +1,37 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef ZEPHYR_INCLUDE_EMUL_EMUL_EGIS630_H_
+#define ZEPHYR_INCLUDE_EMUL_EMUL_EGIS630_H_
+
+/**
+ * Get low power mode status
+ *
+ * @param target The target emulator to get status
+ */
+uint8_t egis630_get_low_power_mode(const struct emul *target);
+
+/**
+ * Stop handling IRQ gpio
+ *
+ * @param target The target emulator
+ */
+void egis630_stop_irq(const struct emul *target);
+
+/**
+ * Stop SPI transactions
+ *
+ * @param target The target emulator
+ */
+void egis630_stop_spi(const struct emul *target);
+
+/**
+ * Start SPI transactions
+ *
+ * @param target The target emulator
+ */
+void egis630_start_spi(const struct emul *target);
+
+#endif /* ZEPHYR_INCLUDE_EMUL_EMUL_EGIS630_H_ */
