@@ -259,6 +259,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc516ca_ba69f984",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-03-11T15:33:39Z",
+      "side": 1,
+      "message": "Good point. Switched to IS_ENABLED style.",
+      "parentUuid": "f1bd2fde_37e4ab07",
+      "revId": "870d0469e3825b91230c2ccb0fcf2b28bf66f3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f50b5cb6_47d2ce2d",
