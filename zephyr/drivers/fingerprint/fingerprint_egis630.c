@@ -71,7 +71,8 @@ void egis_fp_reset_sensor(const struct egis630_cfg *cfg)
 	return;
 }
 
-static int convert_egis_get_image_error_code(egis_api_return_t code)
+COND_CODE_1(CONFIG_ZTEST, (), (static))
+int convert_egis_get_image_error_code(egis_api_return_t code)
 {
 	switch (code) {
 	case EGIS_API_IMAGE_QUALITY_GOOD:
@@ -89,7 +90,8 @@ static int convert_egis_get_image_error_code(egis_api_return_t code)
 	}
 }
 
-static uint16_t convert_egis_sensor_init_error_code(egis_api_return_t code)
+COND_CODE_1(CONFIG_ZTEST, (), (static))
+uint16_t convert_egis_sensor_init_error_code(egis_api_return_t code)
 {
 	if (code == EGIS_API_ERROR_IO_SPI) {
 		return FINGERPRINT_ERROR_SPI_COMM;
