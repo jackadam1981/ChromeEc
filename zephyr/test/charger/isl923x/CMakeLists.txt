@@ -5,3 +5,7 @@
 if (DEFINED CONFIG_TEST_EXTPOWER)
 	target_sources(app PRIVATE src/extpower.c)
 endif()
+
+if (DEFINED CONFIG_TEST_VOLTAGE_LIMIT)
+	target_sources(app PRIVATE src/voltage_limit.c)
+endif()

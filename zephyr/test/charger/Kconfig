@@ -103,6 +103,9 @@ choice TEST_TARGET
 
 	config TEST_EXTPOWER
 		bool "Run external power tests"
+
+	config TEST_VOLTAGE_LIMIT
+		bool "Run voltage limit tests"
 endchoice # TEST_TARGET
 
 config TEST_SRC
