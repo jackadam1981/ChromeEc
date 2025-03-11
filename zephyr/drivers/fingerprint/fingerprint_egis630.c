@@ -71,7 +71,7 @@ void egis_fp_reset_sensor(const struct egis630_cfg *cfg)
 	return;
 }
 
-static int convert_egis_get_image_error_code(egis_api_return_t code)
+int convert_egis_get_image_error_code(egis_api_return_t code)
 {
 	switch (code) {
 	case EGIS_API_IMAGE_QUALITY_GOOD:
