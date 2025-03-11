@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f733f8_478b1ec6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T06:33:07Z",
+      "side": 1,
+      "message": "@patrykd@google.com\nshall we keep this as `int mode`. My understanding is that this is the header for the fpc version. Please confirm",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "88f648dc_c80599b1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 196,
+                "startChar": 0,
+                "endLine": 197,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t      int mode);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d98b2e1bd486993ef10f819f8e13cde9aeebfe80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
