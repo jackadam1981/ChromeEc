@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5f81ef_1c3c22ac",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2183,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-11T16:50:27Z",
+      "side": 1,
+      "message": "I think you can remove the comment. Now that we have a function called `FrameToPgm`, it\u0027s clear from the code what it\u0027s doing.",
+      "range": {
+        "startLine": 2183,
+        "startChar": 1,
+        "endLine": 2183,
+        "endChar": 46
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2ab41961_4f769837",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 2183,
+                "startChar": 0,
+                "endLine": 2184,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec348f72_b57f137a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-11T16:50:27Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need the `base::as_bytes` or `base::make_span` here. Just pass `*fp_frame`.",
+      "range": {
+        "startLine": 2185,
+        "startChar": 2,
+        "endLine": 2186,
+        "endChar": 35
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3683f202_3712b086",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-11T16:50:27Z",
+      "side": 1,
+      "message": "Hmm, this probably isn\u0027t safe. The second argument to `fprintf` will be interpreted as a format string. If the string accidentally has format characters in it we\u0027ll read out-of-bounds memory.\n\nYou can do:\n\n```\nfprintf(stdout, \"%s\", frame_to_pgm-\u003ec_str());\n```",
+      "range": {
+        "startLine": 2193,
+        "startChar": 1,
+        "endLine": 2193,
+        "endChar": 47
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
