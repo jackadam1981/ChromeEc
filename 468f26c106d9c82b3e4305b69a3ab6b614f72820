@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f051b1_d2f22be6",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-11T16:59:07Z",
+      "side": 1,
+      "message": "Let\u0027s preserve the `enum` type here instead of casting it to an `int`.\n\nWe may need to add an `ELAN_CAPTURE_TYPE_INVALID` to the enum to handle the case where there\u0027s no match.",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "468f26c106d9c82b3e4305b69a3ab6b614f72820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08a8a52_1fe8630a",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-11T16:59:07Z",
+      "side": 1,
+      "message": "Preserve the `enum` type and check for `ELAN_CAPTURE_TYPE_INVALID`.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 288,
+        "endChar": 14
+      },
+      "revId": "468f26c106d9c82b3e4305b69a3ab6b614f72820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
