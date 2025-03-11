@@ -42,6 +42,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "218fcf62_03f11162",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2183,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T17:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5f81ef_1c3c22ac",
+      "range": {
+        "startLine": 2183,
+        "startChar": 1,
+        "endLine": 2183,
+        "endChar": 46
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee0a322_f2df8812",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2183,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T17:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5f81ef_1c3c22ac",
+      "range": {
+        "startLine": 2183,
+        "startChar": 1,
+        "endLine": 2183,
+        "endChar": 46
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec348f72_b57f137a",
@@ -65,6 +113,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed5d231_b9df6d12",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T17:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec348f72_b57f137a",
+      "range": {
+        "startLine": 2185,
+        "startChar": 2,
+        "endLine": 2186,
+        "endChar": 35
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "017339b0_51b3ce38",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T17:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec348f72_b57f137a",
+      "range": {
+        "startLine": 2185,
+        "startChar": 2,
+        "endLine": 2186,
+        "endChar": 35
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3683f202_3712b086",
@@ -78,6 +174,30 @@
       "writtenOn": "2025-03-11T16:50:27Z",
       "side": 1,
       "message": "Hmm, this probably isn\u0027t safe. The second argument to `fprintf` will be interpreted as a format string. If the string accidentally has format characters in it we\u0027ll read out-of-bounds memory.\n\nYou can do:\n\n```\nfprintf(stdout, \"%s\", frame_to_pgm-\u003ec_str());\n```",
+      "range": {
+        "startLine": 2193,
+        "startChar": 1,
+        "endLine": 2193,
+        "endChar": 47
+      },
+      "revId": "ac8c17c50982b3b5d5b78c5e13a81b949cd3207b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afec3f02_dab1e1e2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T17:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3683f202_3712b086",
       "range": {
         "startLine": 2193,
         "startChar": 1,
