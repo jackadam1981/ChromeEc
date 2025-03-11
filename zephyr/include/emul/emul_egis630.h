@@ -45,4 +45,6 @@ void egis630_stop_spi(const struct emul *target);
  */
 void egis630_start_spi(const struct emul *target);
 
+void egis630_emul_gpio_flip_irq(const struct emul *target);
+
 #endif /* ZEPHYR_INCLUDE_EMUL_EMUL_EGIS630_H_ */

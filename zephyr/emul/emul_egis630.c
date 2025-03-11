@@ -151,6 +151,15 @@ static void egis630_emul_gpio_irq(const struct device *dev,
 	}
 }
 
+void egis630_emul_gpio_flip_irq(const struct emul *target)
+{
+	const struct egis630_emul_cfg *cfg = target->cfg;
+	int interrupt_value = gpio_pin_get_dt(&cfg->interrupt_pin);
+
+	gpio_emul_input_set(cfg->interrupt_pin.port, cfg->interrupt_pin.pin,
+			    !interrupt_value);
+}
+
 static int egis630_emul_init(const struct emul *target,
 			     const struct device *parent)
 {
