@@ -16,6 +16,207 @@
       "message": "@patrykd@google.com\nPlease let me know in case I missed changes in other required files that I was not aware of.",
       "revId": "7cd2caa60393ec16b8daf5b5dda58ee032fcdc34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbf8f34_8d4eda6b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-11T06:37:22Z",
+      "side": 1,
+      "message": "@patrykd@google.com\n@tomhughes@chromium.org\n\nI believe this change to the function description should be a seaprate CL. I do not believe the current description is accurate. There is no `fp_sensor_acquire_image`",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "431e006c_71bc08fc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 36,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 113,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_INVALID_PARAMETER \u003d -16,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 118,
+                "startChar": 0,
+                "endLine": 119,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_MISSING_TEMPLATE \u003d -17,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 121,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_INVALID_CALIBRATION \u003d -18,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 122,
+                "startChar": 0,
+                "endLine": 123,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_STORAGE_NOT_FORMATTED \u003d -19,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_SENSOR_NOT_INITIALIZED \u003d -20,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_TOO_MANY_BAD_IMAGES \u003d -21,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 128,
+                "startChar": 0,
+                "endLine": 129,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_CRYPTO_ERROR \u003d -22,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 130,
+                "startChar": 0,
+                "endLine": 131,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_NOT_SUPPORTED \u003d -23,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_FINGER_NOT_STABLE \u003d -24,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 134,
+                "startChar": 0,
+                "endLine": 135,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_BEP_RESULT_NOT_INITIALIZED \u003d -25,\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 183,
+                "endChar": 0
+              },
+              "replacement": " * Acquires a fingerprint image.\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 184,
+                "startChar": 0,
+                "endLine": 190,
+                "endChar": 0
+              },
+              "replacement": " * This function captures a fingerprint image.\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 193,
+                "startChar": 0,
+                "endLine": 194,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+              "range": {
+                "startLine": 198,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "int fp_sensor_acquire_image(uint8_t *image_data);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7cd2caa60393ec16b8daf5b5dda58ee032fcdc34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
