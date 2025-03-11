@@ -22,6 +22,30 @@
       },
       "revId": "9cbf04608c373e2f2c23244fe346521838b39494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7ea792_4d586328",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-11T06:47:20Z",
+      "side": 1,
+      "message": "If the egis630 sensor signals an interrupt by a falling edge, we need to change that.",
+      "parentUuid": "a394263d_7baee751",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "9cbf04608c373e2f2c23244fe346521838b39494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

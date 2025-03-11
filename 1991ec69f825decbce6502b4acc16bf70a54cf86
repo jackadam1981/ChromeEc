@@ -22,6 +22,30 @@
       },
       "revId": "1991ec69f825decbce6502b4acc16bf70a54cf86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778ab19b_70b5ee22",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-11T06:47:20Z",
+      "side": 1,
+      "message": "It depends on a driver, if we need that or not. It is not a Zephyr hard requirement. It can be just a helper function to implement API functions. If I see entire driver, I can say more.",
+      "parentUuid": "9871d9aa_def60c97",
+      "range": {
+        "startLine": 21,
+        "startChar": 18,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "1991ec69f825decbce6502b4acc16bf70a54cf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
