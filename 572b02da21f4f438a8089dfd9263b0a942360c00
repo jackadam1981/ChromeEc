@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "572b02da21f4f438a8089dfd9263b0a942360c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d4dd96_813f43ab",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-03-11T00:05:40Z",
+      "side": 1,
+      "message": "nit: there is a similar pattern in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4805385/9/zephyr/program/nissa/joxer/src/sub_board.c, using the reverse logic: `#if CONFIG_USB_PD_PORT_MAX_COUNT \u003e 1`",
+      "revId": "572b02da21f4f438a8089dfd9263b0a942360c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
