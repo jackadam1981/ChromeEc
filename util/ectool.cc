@@ -2179,16 +2179,16 @@ int cmd_fp_frame(int argc, char *argv[])
 		return 0;
 	}
 
-	/* Print 8-bpp PGM ASCII header */
-	printf("P2\n%d %d\n%d\n", r.width, r.height, (1 << r.bpp) - 1);
+	// Generate 8-bit or 16-bit PGM ASCII output.
+	auto frame_to_pgm = ec::FpFrameCommand::FrameToPgm(
+		fp_frame->data(),
+		{ .bpp = r.bpp, .width = r.width, .height = r.height });
 
-	uint8_t *ptr = fp_frame->data();
-	for (int y = 0; y < r.height; y++) {
-		for (int x = 0; x < r.width; x++, ptr++)
-			printf("%d ", *ptr);
-		printf("\n");
+	if (!frame_to_pgm.has_value()) {
+		fprintf(stderr, "Error: Failed to convert frame to PGM.\n");
+		return -1;
 	}
-	printf("# END OF FILE\n");
+	fprintf(stdout, frame_to_pgm.value());
 	return 0;
 }
 
