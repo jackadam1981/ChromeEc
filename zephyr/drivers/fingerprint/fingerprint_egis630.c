@@ -101,11 +101,8 @@ static int egis630_init(const struct device *dev)
 
 	int int_pin_value = gpio_pin_get_dt(&cfg->interrupt);
 
-	if (IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {
-		ret = egis_sensor_init();
-	} else {
-		ret = -ENOTSUP;
-	}
+	ret = egis_sensor_init();
+
 	if (ret == EGIS_API_ERROR_IO_SPI) {
 		data->errors |= FINGERPRINT_ERROR_SPI_COMM;
 	} else if (ret == EGIS_API_ERROR_DEVICE_NOT_FOUND) {
@@ -156,11 +153,7 @@ static int egis630_get_info(const struct device *dev,
 
 	memcpy(info, &cfg->info, sizeof(struct fingerprint_info));
 
-	if (IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {
-		res = egis_get_hwid(&sensor_id);
-	} else {
-		res = -ENOTSUP;
-	}
+	res = egis_get_hwid(&sensor_id);
 
 	if (res != EGIS_API_OK) {
 		LOG_ERR("Failed to get EGIS HWID: %d", res);
