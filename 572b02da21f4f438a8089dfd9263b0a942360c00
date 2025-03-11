@@ -33,6 +33,24 @@
       "message": "nit: there is a similar pattern in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4805385/9/zephyr/program/nissa/joxer/src/sub_board.c, using the reverse logic: `#if CONFIG_USB_PD_PORT_MAX_COUNT \u003e 1`",
       "revId": "572b02da21f4f438a8089dfd9263b0a942360c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d548b9a_dad16234",
+        "filename": "zephyr/program/nissa/src/sub_board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-11T04:21:43Z",
+      "side": 1,
+      "message": "Ack. I would have changed it to match, but I don\u0027t have my dev laptop on me and I\u0027d rather get this in urgently.",
+      "parentUuid": "f7d4dd96_813f43ab",
+      "revId": "572b02da21f4f438a8089dfd9263b0a942360c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
