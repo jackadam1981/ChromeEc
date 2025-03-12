@@ -2865,13 +2865,10 @@ void sys_tick_handler(void)
 			/* Low level after above, we detected falling edge. */
 			gsc_ready_state = GSC_DETECTED_FALLING_EDGE;
 			/* No need for further timer interrupts */
-			CPU_NVIC_ST_CTRL = 0;
+			CPU_SYST_CSR = 0;
 		}
 	}
 }
-
-#define CPU_NVIC_ST_RVR CPUREG(0xE000E014)
-#define CPU_NVIC_ST_CVR CPUREG(0xE000E018)
 
 void start_monitoring_for_falling_edge(int pin)
 {
@@ -2882,9 +2879,10 @@ void start_monitoring_for_falling_edge(int pin)
 	 * SysTick interrupt every 5 us.  Should be able to detect pulses as
 	 * narrow as 10us.
 	 */
-	CPU_NVIC_ST_RVR = 5 * clock_get_freq() / 1000000 - 1;
+	CPU_SYST_RVR = 5 * clock_get_freq() / 1000000 - 1;
 	/* Enable SysTick countdown, internal CPU clock source, interrupt. */
-	CPU_NVIC_ST_CTRL = ST_CLKSOURCE | ST_TICKINT | ST_ENABLE;
+	CPU_SYST_CSR = CPU_SYST_CSR_CLKSOURCE | CPU_SYST_CSR_TICKINT |
+		       CPU_SYST_CSR_ENABLE;
 }
 
 int wait_for_falling_edge(timestamp_t deadline)
@@ -2893,7 +2891,7 @@ int wait_for_falling_edge(timestamp_t deadline)
 		timestamp_t now = get_time();
 		if (timestamp_expired(deadline, &now)) {
 			/* Stop SysTick */
-			CPU_NVIC_ST_CTRL = 0;
+			CPU_SYST_CSR = 0;
 			return EC_ERROR_TIMEOUT;
 		}
 	}
@@ -2903,5 +2901,5 @@ int wait_for_falling_edge(timestamp_t deadline)
 void stop_monitoring_for_falling_edge(void)
 {
 	/* Stop SysTick */
-	CPU_NVIC_ST_CTRL = 0;
+	CPU_SYST_CSR = 0;
 }

@@ -16,6 +16,15 @@
 /* Macro to access 32-bit registers */
 #define CPUREG(addr) (*(volatile uint32_t *)(addr))
 
+/* SysTick registers */
+#define CPU_SYST_CSR CPUREG(0xE000E010)
+#define CPU_SYST_CSR_ENABLE BIT(0)
+#define CPU_SYST_CSR_TICKINT BIT(1)
+#define CPU_SYST_CSR_CLKSOURCE BIT(2)
+#define CPU_SYST_CSR_COUNTFLAG BIT(16)
+#define CPU_SYST_RVR CPUREG(0xE000E014)
+#define CPU_SYST_CVR CPUREG(0xE000E018)
+
 /* Nested Vectored Interrupt Controller */
 #define CPU_NVIC_EN(x) CPUREG(0xe000e100)
 #define CPU_NVIC_DIS(x) CPUREG(0xe000e180)
