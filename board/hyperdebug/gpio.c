@@ -2413,7 +2413,7 @@ const uint16_t MON_GPIO_MISSING = 4;
 /* Buffer overrun, returned data is incomplete */
 const uint16_t MON_BUFFER_OVERRUN = 5;
 
-static void dap_goog_gpio_monitoring_read(size_t peek_c)
+static void cmsis_dap_goog_gpio_monitoring_read(size_t peek_c)
 {
 	/*
 	 * Essentially the same as console command `gpio monitoring read`, but
@@ -2630,7 +2630,7 @@ static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
  * Receive more bitbanging data to be inserted at bitbang.tail, then offload
  * data between bitbang.head and bitbang.irq.
  */
-void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
+void cmsis_dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 {
 	if (peek_c < 4)
 		return;
@@ -2807,7 +2807,7 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
  * normal priority REINIT hook in this file will then be called, which resets
  * the state, such that it will be in a consistent and known initial state.
  */
-void dap_goog_gpio(size_t peek_c)
+void cmsis_dap_goog_gpio(size_t peek_c)
 {
 	/*
 	 * We need to inspect sub-command on second byte below, in order to
@@ -2822,14 +2822,14 @@ void dap_goog_gpio(size_t peek_c)
 		 * Hand off all available GPIO monitoring data so far,
 		 * suitable for streaming.
 		 */
-		dap_goog_gpio_monitoring_read(peek_c);
+		cmsis_dap_goog_gpio_monitoring_read(peek_c);
 		break;
 	case GPIO_REQ_BITBANG:
 		/*
 		 * Accept data for bitbanging, wait for waveform to be
 		 * complete, and then hand back data polled during.
 		 */
-		dap_goog_gpio_bitbang(peek_c, false);
+		cmsis_dap_goog_gpio_bitbang(peek_c, false);
 		break;
 	case GPIO_REQ_BITBANG_STREAMING:
 		/*
@@ -2837,7 +2837,7 @@ void dap_goog_gpio(size_t peek_c)
 		 * waveform still in process, suitable for streaming if
 		 * invoked again before data runs out.
 		 */
-		dap_goog_gpio_bitbang(peek_c, true);
+		cmsis_dap_goog_gpio_bitbang(peek_c, true);
 		break;
 	}
 }

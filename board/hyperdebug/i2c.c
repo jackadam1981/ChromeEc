@@ -361,7 +361,7 @@ static void usb_i2c_execute(unsigned int expected_size)
 /*
  * Entry point for CMSIS-DAP vendor command for I2C forwarding.
  */
-void dap_goog_i2c(size_t peek_c)
+void cmsis_dap_goog_i2c(size_t peek_c)
 {
 	unsigned int expected_size;
 
@@ -388,7 +388,7 @@ void dap_goog_i2c(size_t peek_c)
 /*
  * Entry point for CMSIS-DAP vendor command for I2C device control.
  */
-void dap_goog_i2c_device(size_t peek_c)
+void cmsis_dap_goog_i2c_device(size_t peek_c)
 {
 	if (peek_c < 3)
 		return;
