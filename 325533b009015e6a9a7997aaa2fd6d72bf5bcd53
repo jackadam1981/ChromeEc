@@ -106,6 +106,24 @@
       "parentUuid": "8524bef1_c69cb856",
       "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9a66d9_95869fb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-12T18:36:15Z",
+      "side": 1,
+      "message": "Thanks.\n\nMoving the PPM start to the EC `main()` instead of init hooks won\u0027t affect the OPM. The power sequence thread also starts in the `main()`. These threads are executed in parallel and they don\u0027t block each other. The AP power sequence starting from G3 to S0 takes ~600ms (the Brox number). The AP firmware takes another 1s to the kernel. The PPM init takes much less time than the above numbers.\n\nIn recent devices using EC EFS2, the EC sysjump from RO to RW happens very early, before the AP boot up. We don\u0027t need to consider any potential race conditions with the sysjump.",
+      "parentUuid": "d3b833d7_329ae7ea",
+      "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
