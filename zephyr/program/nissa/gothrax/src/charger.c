@@ -57,7 +57,7 @@ __override void board_hibernate(void)
 	cflush();
 }
 
-#ifndef CONFIG_ZTEST
+#ifndef CONFIG_TEST_EXTPOWER
 #define MAX_POWER_65W 20000
 #define DEFAULT_POWER 15000
 #define IS_SKU_ID_IN_RANGE(sku_id) \
