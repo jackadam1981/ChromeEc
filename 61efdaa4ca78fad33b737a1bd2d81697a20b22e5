@@ -16,6 +16,24 @@
       "message": "@dawidn@google.com\nI mainly copied those. What are you trying to emulate? These functions are not part of the FPC code",
       "revId": "61efdaa4ca78fad33b737a1bd2d81697a20b22e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a210c29_e6af0f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-12T06:17:50Z",
+      "side": 1,
+      "message": "It emulates a figerprint sensor on SPI bus. It is used by tests on NATIVE_SIM platform (tests on host).",
+      "parentUuid": "699c2b39_2db7d8d6",
+      "revId": "61efdaa4ca78fad33b737a1bd2d81697a20b22e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
