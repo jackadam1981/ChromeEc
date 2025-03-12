@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4b94021_fd16d604",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-12T20:40:23Z",
+      "side": 1,
+      "message": "If this fails, it\u0027s a programming error in the emulator, and ideally that would be out of scope for the tests. In other cases like this, I see uses of `__ASSERT` (and one file that uses `zassert`). Is it ok to use `__ASSERT` here?",
+      "parentUuid": "318c71a1_ae24b398",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "995159bc7370514c8792b585bd227822920832f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d538de6_8ba16a80",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_faulty_ext.c",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2025-03-10T23:27:38Z",
       "side": 1,
       "message": "Is this check needed or could you just check the PD_HEADER_TYPE() directly with a single switch statement?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "995159bc7370514c8792b585bd227822920832f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4670070d_3888f818",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_faulty_ext.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-12T20:40:23Z",
+      "side": 1,
+      "message": "The type field is overloaded. If the count (\"Number of Data Objects\") is 0, then type is interpreted as one of the types of Data Messages. If count is \u003e0, type is interpreted as one of the types of Control Messages. (There are also Extended Message types, which this extension doesn\u0027t currently check for or do anything with.)",
+      "parentUuid": "1d538de6_8ba16a80",
       "range": {
         "startLine": 90,
         "startChar": 0,
