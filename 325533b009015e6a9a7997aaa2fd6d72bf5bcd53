@@ -88,6 +88,24 @@
       "parentUuid": "e60cfbca_ec75e6ff",
       "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b833d7_329ae7ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-03-12T18:11:39Z",
+      "side": 1,
+      "message": "Yes, the kernel UCSI drivers functionally serve as the OPM. If the PPM isn\u0027t up when the kernel runs this init function, the OS wouldn\u0027t be able to define initial port information (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/v6.6/drivers/usb/typec/ucsi/ucsi.c;drc\u003dff24570e20652b6525bc1b988e43dcdd0b153e48;l\u003d180).",
+      "parentUuid": "8524bef1_c69cb856",
+      "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
