@@ -2150,7 +2150,7 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SNK_ATTACHED_SET_PR_SWAP_POLICY:
-		port->snk_attached_local_state = SNK_ATTACHED_READ_POWER_LEVEL;
+		port->snk_attached_local_state = SNK_ATTACHED_DISABLE_FRS;
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){
 			.accept_pr_swap =
@@ -2161,10 +2161,6 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_UPDATE_ALLOW_PR_SWAP);
-		return;
-	case SNK_ATTACHED_READ_POWER_LEVEL:
-		port->snk_attached_local_state = SNK_ATTACHED_DISABLE_FRS;
-		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SNK_ATTACHED_DISABLE_FRS:
 		/* Always disable FRS by default. The source policy manager
@@ -2249,6 +2245,14 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_RDO);
 		return;
 	case SNK_ATTACHED_SET_SINK_PATH:
+		port->snk_attached_local_state = SNK_ATTACHED_READ_POWER_LEVEL;
+
+		/* Test if battery should be charged from this port */
+		port->sink_path_en = charge_manager_get_active_charge_port() ==
+				     config->connector_num;
+		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		return;
+	case SNK_ATTACHED_READ_POWER_LEVEL:
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS) &&
 		    port->ccaps.op_mode_drp) {
 			port->snk_attached_local_state =
@@ -2257,11 +2261,7 @@ static void pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state =
 				SNK_ATTACHED_GET_CABLE_PROPERTY;
 		}
-
-		/* Test if battery should be charged from this port */
-		port->sink_path_en = charge_manager_get_active_charge_port() ==
-				     config->connector_num;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SNK_ATTACHED_GET_SINK_PDO:
 		port->snk_attached_local_state =
@@ -2288,7 +2288,6 @@ static void pdc_snk_attached_run(void *obj)
 		}
 		/* If !CONFIG_PLATFORM_EC_USB_PD_FRS, fallthrough */
 		__fallthrough;
-
 	case SNK_ATTACHED_GET_CABLE_PROPERTY:
 		port->snk_attached_local_state = SNK_ATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
