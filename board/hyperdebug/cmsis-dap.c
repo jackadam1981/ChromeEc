@@ -158,16 +158,7 @@ uint8_t tx_buffer[256];
 /*
  * JTAG state
  */
-enum jtag_signal_t {
-	JTAG_TCLK = 0,
-	JTAG_TMS,
-	JTAG_TDI,
-	JTAG_TDO,
-	JTAG_TRSTn,
-	JTAG_INVALID
-};
-
-static int jtag_pins[JTAG_INVALID] = {
+int jtag_pins[JTAG_INVALID] = {
 	GPIO_CN7_1, /* TCLK */
 	GPIO_CN7_7, /* TMS */
 	GPIO_CN7_3, /* TDI */
@@ -273,18 +264,7 @@ static void dap_connect(size_t peek_c)
 		tx_buffer[1] = CONN_RESP_Jtag;
 		if (!jtag_enabled) {
 			jtag_enabled = true;
-			for (size_t i = 0; i < JTAG_INVALID; i++) {
-				saved_pin_flags[i] =
-					gpio_get_flags(jtag_pins[i]);
-			}
-
-			gpio_set_flags(jtag_pins[JTAG_TMS], GPIO_OUT_LOW);
-			gpio_set_flags(jtag_pins[JTAG_TDI], GPIO_OUT_LOW);
-			gpio_set_flags(jtag_pins[JTAG_TCLK], GPIO_OUT_LOW);
-			gpio_set_flags(jtag_pins[JTAG_TRSTn],
-				       GPIO_ODR_HIGH | GPIO_PULL_UP);
-			gpio_set_flags(jtag_pins[JTAG_TDO],
-				       GPIO_INPUT | GPIO_PULL_UP);
+			cmsis_dap_enable_jtag_pins();
 		}
 		break;
 	default:
@@ -300,9 +280,7 @@ static void dap_disconnect(size_t peek_c)
 
 	if (jtag_enabled) {
 		jtag_enabled = false;
-		for (size_t i = 0; i < JTAG_INVALID; i++) {
-			gpio_set_flags(jtag_pins[i], saved_pin_flags[i]);
-		}
+		cmsis_dap_disable_jtag_pins();
 	}
 
 	tx_buffer[1] = STATUS_Ok;
@@ -335,10 +313,10 @@ static void dap_reset_target(size_t peek_c)
 {
 	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 1);
 
-	if (shield_reset_pin != GPIO_COUNT) {
-		gpio_set_level(shield_reset_pin, false);
+	if (GPIO_JTAG_RESET != GPIO_COUNT) {
+		gpio_set_level(GPIO_JTAG_RESET, false);
 		crec_usleep(100000);
-		gpio_set_level(shield_reset_pin, true);
+		gpio_set_level(GPIO_JTAG_RESET, true);
 		tx_buffer[2] = 1;
 	} else {
 		tx_buffer[2] = 0;
@@ -360,21 +338,33 @@ static void dap_swj_pins(size_t peek_c)
 	memcpy(&wait_us, rx_buffer + 3, sizeof(wait_us));
 
 	if ((pin_mask & PIN_SwClk_Tck))
-		gpio_set_level(jtag_pins[JTAG_TCLK],
-			       !!(pin_value & PIN_SwClk_Tck));
+		gpio_set_level(GPIO_JTAG_TCLK, !!(pin_value & PIN_SwClk_Tck));
 	if ((pin_mask & PIN_SwDio_Tms))
-		gpio_set_level(jtag_pins[JTAG_TMS],
-			       !!(pin_value & PIN_SwDio_Tms));
-	if ((pin_mask & PIN_Tdi))
-		gpio_set_level(jtag_pins[JTAG_TDI], !!(pin_value & PIN_Tdi));
-	if ((pin_mask & PIN_Trst))
-		gpio_set_level(jtag_pins[JTAG_TRSTn], !!(pin_value & PIN_Trst));
-	if ((pin_mask & PIN_Reset) && shield_reset_pin != GPIO_COUNT)
-		gpio_set_level(shield_reset_pin, !!(pin_value & PIN_Reset));
+		gpio_set_level(GPIO_JTAG_TMS, !!(pin_value & PIN_SwDio_Tms));
+	if ((pin_mask & PIN_Tdi) && GPIO_JTAG_TDI != GPIO_COUNT)
+		gpio_set_level(GPIO_JTAG_TDI, !!(pin_value & PIN_Tdi));
+	if ((pin_mask & PIN_Trst) && GPIO_JTAG_TRST != GPIO_COUNT)
+		gpio_set_level(GPIO_JTAG_TRST, !!(pin_value & PIN_Trst));
+	if ((pin_mask & PIN_Reset) && GPIO_JTAG_RESET != GPIO_COUNT)
+		gpio_set_level(GPIO_JTAG_RESET, !!(pin_value & PIN_Reset));
 
 	crec_usleep(wait_us);
 
-	tx_buffer[1] = 0;
+	tx_buffer[1] =
+		(gpio_get_level(GPIO_JTAG_TCLK) ? PIN_SwClk_Tck : 0) |
+		(gpio_get_level(GPIO_JTAG_TMS) ? PIN_SwDio_Tms : 0) |
+		(GPIO_JTAG_TDI == GPIO_COUNT ?
+			 0 :
+			 (gpio_get_level(GPIO_JTAG_TDI) ? PIN_Tdi : 0)) |
+		(GPIO_JTAG_TDO == GPIO_COUNT ?
+			 0 :
+			 (gpio_get_level(GPIO_JTAG_TDO) ? PIN_Tdo : 0)) |
+		(GPIO_JTAG_TRST == GPIO_COUNT ?
+			 PIN_Trst :
+			 (gpio_get_level(GPIO_JTAG_TRST) ? PIN_Trst : 0)) |
+		(GPIO_JTAG_RESET == GPIO_COUNT ?
+			 PIN_Reset :
+			 (gpio_get_level(GPIO_JTAG_RESET) ? PIN_Reset : 0));
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
 }
 
@@ -444,6 +434,26 @@ static inline __attribute__((always_inline)) void half_clock_delay(void)
 		;
 }
 
+void cmsis_dap_enable_jtag_pins(void)
+{
+	for (size_t i = 0; i < JTAG_INVALID; i++) {
+		saved_pin_flags[i] = gpio_get_flags(jtag_pins[i]);
+	}
+
+	gpio_set_flags(jtag_pins[JTAG_TMS], GPIO_OUT_LOW);
+	gpio_set_flags(jtag_pins[JTAG_TDI], GPIO_OUT_LOW);
+	gpio_set_flags(jtag_pins[JTAG_TCLK], GPIO_OUT_HIGH);
+	gpio_set_flags(jtag_pins[JTAG_TRSTn], GPIO_ODR_HIGH | GPIO_PULL_UP);
+	gpio_set_flags(jtag_pins[JTAG_TDO], GPIO_INPUT | GPIO_PULL_UP);
+}
+
+void cmsis_dap_disable_jtag_pins(void)
+{
+	for (size_t i = 0; i < JTAG_INVALID; i++) {
+		gpio_set_flags(jtag_pins[i], saved_pin_flags[i]);
+	}
+}
+
 /* Clock data out on TMS. */
 static void dap_swj_sequence(size_t peek_c)
 {
@@ -455,11 +465,11 @@ static void dap_swj_sequence(size_t peek_c)
 		return;
 	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, c);
 	for (unsigned int i = 0; i < bit_count; i++) {
-		gpio_set_level(jtag_pins[JTAG_TMS],
+		gpio_set_level(GPIO_JTAG_TMS,
 			       !!(rx_buffer[2 + i / 8] & (1 << (i % 8))));
-		gpio_set_level(jtag_pins[JTAG_TCLK], false);
+		gpio_set_level(GPIO_JTAG_TCLK, false);
 		half_clock_delay();
-		gpio_set_level(jtag_pins[JTAG_TCLK], true);
+		gpio_set_level(GPIO_JTAG_TCLK, true);
 		half_clock_delay();
 	}
 	tx_buffer[1] = STATUS_Ok;
@@ -508,7 +518,7 @@ static void dap_jtag_sequence(size_t peek_c)
 	while (ptr < end) {
 		/* Consume and decode header byte for this one "sequence". */
 		uint8_t header = *ptr++;
-		gpio_set_level(jtag_pins[JTAG_TMS], header & SEQ_Tms);
+		gpio_set_level(GPIO_JTAG_TMS, header & SEQ_Tms);
 		bool capture_tdo = !!(header & SEQ_CaptureTdo);
 		unsigned int bit_count = (((header - 1) & SEQ_NumBits) + 1);
 
@@ -517,14 +527,14 @@ static void dap_jtag_sequence(size_t peek_c)
 		 * TDI/TDO.
 		 */
 		for (unsigned int i = 0; i < bit_count; i++) {
-			gpio_set_level(jtag_pins[JTAG_TDI],
+			gpio_set_level(GPIO_JTAG_TDI,
 				       ptr[i / 8] & (1 << (i % 8)));
-			gpio_set_level(jtag_pins[JTAG_TCLK], false);
+			gpio_set_level(GPIO_JTAG_TCLK, false);
 			half_clock_delay();
-			uint32_t tdo_val = gpio_get_level(jtag_pins[JTAG_TDO]);
+			uint32_t tdo_val = gpio_get_level(GPIO_JTAG_TDO);
 			if (capture_tdo)
 				tx_ptr[i / 8] |= tdo_val << (i % 8);
-			gpio_set_level(jtag_pins[JTAG_TCLK], true);
+			gpio_set_level(GPIO_JTAG_TCLK, true);
 			half_clock_delay();
 		}
 		/* Consume the data bytes of this one "sequence". */
@@ -692,9 +702,7 @@ static int command_jtag_set_pins(int argc, const char **argv)
 		 * input/output as appropriate for JTAG.
 		 */
 		jtag_enabled = false;
-		for (size_t i = 0; i < JTAG_INVALID; i++) {
-			gpio_set_flags(jtag_pins[i], saved_pin_flags[i]);
-		}
+		cmsis_dap_disable_jtag_pins();
 	}
 
 	for (int i = 0; i < JTAG_INVALID; i++)
