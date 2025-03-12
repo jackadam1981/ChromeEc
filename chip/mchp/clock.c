@@ -361,10 +361,10 @@ static __maybe_unused void print_saved_regs(void)
 static void prepare_for_deep_sleep(void)
 {
 	/* sysTick timer */
-	CPU_NVIC_ST_CTRL &= ~ST_ENABLE;
-	CPU_NVIC_ST_CTRL &= ~ST_COUNTFLAG;
+	CPU_SYST_CSR &= ~CPU_SYST_CSR_ENABLE;
+	CPU_SYST_CSR &= ~CPU_SYST_CSR_COUNTFLAG;
 
-	CPU_NVIC_ST_CTRL &= ~ST_TICKINT; /* SYS_TICK_INT_DISABLE */
+	CPU_SYST_CSR &= ~CPU_SYST_CSR_TICKINT; /* SYS_TICK_INT_DISABLE */
 
 	/* Enable assertion of DeepSleep signals
 	 * from the core when core enters sleep.
