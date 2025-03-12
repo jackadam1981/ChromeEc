@@ -34,6 +34,24 @@
       "parentUuid": "e5b53c53_d37da2fd",
       "revId": "377c09a0a249133f476682343d449d47bcbcb81d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9259361_8c79d508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-12T05:58:22Z",
+      "side": 1,
+      "message": "Hi, I fixed some issues (what kconfig is selected/not selected), please help verify again.",
+      "parentUuid": "176b14a3_3102a600",
+      "revId": "377c09a0a249133f476682343d449d47bcbcb81d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
