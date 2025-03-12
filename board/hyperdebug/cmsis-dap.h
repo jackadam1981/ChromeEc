@@ -1,7 +1,32 @@
-#ifndef _HYPERDEBUG_BOARD_UTIL__H_
-#define _HYPERDEBUG_BOARD_UTIL__H_
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef _HYPERDEBUG_BOARD_CMSIS_DAP__H_
+#define _HYPERDEBUG_BOARD_CMSIS_DAP__H_
 
 #include "queue.h"
+
+/*****************************************************************************
+ * Methods to be implemented by board code:
+ */
+
+/* Enable output on pins, including any level-shifters or buffers. */
+void cmsis_dap_enable_jtag_pins(void);
+/* Restore pins to state prior to JTAG connection. */
+void cmsis_dap_disable_jtag_pins(void);
+
+/*
+ * Declaration of handlers of Google vendor extensions to CMSIS-DAP.
+ */
+void cmsis_dap_goog_i2c(size_t peek_c);
+void cmsis_dap_goog_i2c_device(size_t peek_c);
+void cmsis_dap_goog_gpio(size_t peek_c);
+
+/*****************************************************************************
+ * Methods and variables provided by common code:
+ */
 
 extern struct queue const cmsis_dap_tx_queue;
 extern struct queue const cmsis_dap_rx_queue;
@@ -10,8 +35,9 @@ extern uint8_t rx_buffer[256];
 extern uint8_t tx_buffer[256];
 
 /*
- * If this function returns true, it means that the currently executing handler
- * method must abort and return as soon as possible.
+ * If this function returns true, it means that the currently executing
+ * handler function on the CMSIS-DAP task must abort and return as soon as
+ * possible.
  */
 bool cmsis_dap_unwind_requested(void);
 
@@ -21,15 +47,7 @@ bool cmsis_dap_unwind_requested(void);
  * the host computer, and will not return until the given number of bytes has
  * been transferred, except if cmsis_dap_unwind_requested() returns true.
  */
-void queue_blocking_add(struct queue const *q, const void *src, size_t count);
-void queue_blocking_remove(struct queue const *q, void *dest, size_t count);
-
-/*
- * Declaration of handlers of CMSIS-DAP vendor extension commands, implemented
- * in other files besides cmsis-dap.c .
- */
-void dap_goog_i2c(size_t peek_c);
-void dap_goog_i2c_device(size_t peek_c);
-void dap_goog_gpio(size_t peek_c);
+void cmsis_dap_queue_blocking_add(const void *src, size_t count);
+void cmsis_dap_queue_blocking_remove(void *dest, size_t count);
 
 #endif

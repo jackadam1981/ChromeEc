@@ -361,7 +361,7 @@ static void usb_i2c_execute(unsigned int expected_size)
 /*
  * Entry point for CMSIS-DAP vendor command for I2C forwarding.
  */
-void dap_goog_i2c(size_t peek_c)
+void cmsis_dap_goog_i2c(size_t peek_c)
 {
 	unsigned int expected_size;
 
@@ -388,7 +388,7 @@ void dap_goog_i2c(size_t peek_c)
 /*
  * Entry point for CMSIS-DAP vendor command for I2C device control.
  */
-void dap_goog_i2c_device(size_t peek_c)
+void cmsis_dap_goog_i2c_device(size_t peek_c)
 {
 	if (peek_c < 3)
 		return;
@@ -442,23 +442,24 @@ void dap_goog_i2c_device(size_t peek_c)
 		if (state->tail <= head) {
 			/* One contiguous range */
 			status->transcript_size = head - state->tail;
-			queue_add_units(&cmsis_dap_tx_queue, rx_buffer,
-					1 + sizeof(*status));
-			queue_blocking_add(&cmsis_dap_tx_queue, state->tail,
-					   status->transcript_size);
+			cmsis_dap_queue_blocking_add(rx_buffer,
+						     1 + sizeof(*status));
+			cmsis_dap_queue_blocking_add(state->tail,
+						     status->transcript_size);
 		} else {
 			/* Data wraps around */
 			status->transcript_size =
 				head - state->tail + sizeof(state->data_buffer);
-			queue_add_units(&cmsis_dap_tx_queue, rx_buffer,
-					1 + sizeof(*status));
-			queue_blocking_add(&cmsis_dap_tx_queue, state->tail,
-					   state->data_buffer +
-						   sizeof(state->data_buffer) -
-						   state->tail);
-			queue_blocking_add(&cmsis_dap_tx_queue,
-					   state->data_buffer,
-					   state->head - state->data_buffer);
+			cmsis_dap_queue_blocking_add(rx_buffer,
+						     1 + sizeof(*status));
+			cmsis_dap_queue_blocking_add(
+				state->tail,
+				state->data_buffer +
+					sizeof(state->data_buffer) -
+					state->tail);
+			cmsis_dap_queue_blocking_add(
+				state->data_buffer,
+				state->head - state->data_buffer);
 		}
 		state->tail = head;
 		return;
@@ -470,9 +471,8 @@ void dap_goog_i2c_device(size_t peek_c)
 		uint16_t len = rx_buffer[3] + (rx_buffer[4] << 8);
 		/* TODO Check that len does not exceed size of
 		 * prepared_data_data */
-		queue_blocking_remove(&cmsis_dap_rx_queue, rx_buffer, 5);
-		queue_blocking_remove(&cmsis_dap_rx_queue,
-				      state->prepared_read_data, len);
+		cmsis_dap_queue_blocking_remove(rx_buffer, 5);
+		cmsis_dap_queue_blocking_remove(state->prepared_read_data, len);
 		if (cmsis_dap_unwind_requested())
 			return;
 
