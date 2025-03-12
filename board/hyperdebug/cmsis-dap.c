@@ -457,10 +457,10 @@ static void dap_swj_sequence(size_t peek_c)
 	for (unsigned int i = 0; i < bit_count; i++) {
 		gpio_set_level(jtag_pins[JTAG_TMS],
 			       !!(rx_buffer[2 + i / 8] & (1 << (i % 8))));
+		gpio_set_level(jtag_pins[JTAG_TCLK], false);
 		half_clock_delay();
 		gpio_set_level(jtag_pins[JTAG_TCLK], true);
 		half_clock_delay();
-		gpio_set_level(jtag_pins[JTAG_TCLK], false);
 	}
 	tx_buffer[1] = STATUS_Ok;
 	queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 2);
@@ -497,9 +497,6 @@ static void dap_jtag_sequence(size_t peek_c)
 	/* Prepare output buffer for being populated one bit at a time. */
 	memset(tx_buffer + 1, 0, sizeof(tx_buffer) - 1);
 
-	/* Clock should be low already, but make sure. */
-	gpio_set_level(jtag_pins[JTAG_TCLK], false);
-
 	/*
 	 * Iterate over the list of "sequences", each having a one-byte header
 	 * specifying how many bits in the sequence, what the value of TMS
@@ -522,13 +519,13 @@ static void dap_jtag_sequence(size_t peek_c)
 		for (unsigned int i = 0; i < bit_count; i++) {
 			gpio_set_level(jtag_pins[JTAG_TDI],
 				       ptr[i / 8] & (1 << (i % 8)));
+			gpio_set_level(jtag_pins[JTAG_TCLK], false);
 			half_clock_delay();
 			uint32_t tdo_val = gpio_get_level(jtag_pins[JTAG_TDO]);
 			if (capture_tdo)
 				tx_ptr[i / 8] |= tdo_val << (i % 8);
 			gpio_set_level(jtag_pins[JTAG_TCLK], true);
 			half_clock_delay();
-			gpio_set_level(jtag_pins[JTAG_TCLK], false);
 		}
 		/* Consume the data bytes of this one "sequence". */
 		ptr += (bit_count + 7) / 8;
