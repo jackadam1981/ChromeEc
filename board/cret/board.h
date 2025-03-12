@@ -15,6 +15,12 @@
 #define CONFIG_CHIP_INIT_ROM_REGION
 #define CONFIG_DEBUG_ASSERT_BRIEF
 
+/* Override the default setting */
+#ifdef CONFIG_RW_SIZE
+#undef CONFIG_RW_SIZE
+#define CONFIG_RW_SIZE (0x30000 + 0x8000)
+#endif
+
 /* EC console commands */
 #define CONFIG_CMD_TCPC_DUMP
 #define CONFIG_CMD_CHARGER_DUMP
