@@ -188,7 +188,7 @@ int connect_default_charger_then_0w(struct pdc_attached_snk_fixture *fixture,
 
 #define MIN_DELAY_MS 250
 #define MAX_DELAY_MS 3000
-#define DELAY_INC_MS 50
+#define DELAY_INC_MS 55
 
 /* Verify the DUT doesn't enable the sink path if the partner
  * sends new source caps rapidly. This test emulates behavior#
