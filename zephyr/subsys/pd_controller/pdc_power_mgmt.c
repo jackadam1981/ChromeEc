@@ -479,6 +479,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_UPDATE_FRS,
 	/** TypeC sink only */
 	SNK_POLICY_UPDATE_TYPEC_CURRENT,
+	/** UPDATE_POWER_LEVEL */
+	SNK_POLICY_UPDATE_POWER_LEVEL,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -1565,6 +1567,10 @@ static void run_snk_policies(struct pdc_port_t *port)
 
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_POWER_LEVEL)) {
+		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
+		return;
 	}
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS)) {
@@ -2195,6 +2201,8 @@ static void pdc_snk_attached_run(void *obj)
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
 		pdc_snk_attached_evaluate_pdos(port);
+		atomic_set_bit(port->snk_policy.flags,
+			       SNK_POLICY_UPDATE_POWER_LEVEL);
 		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
 		return;
 	case SNK_ATTACHED_START_CHARGING:
