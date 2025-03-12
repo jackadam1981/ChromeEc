@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6ebf5d1_dd5ad509",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-12T21:08:49Z",
+      "side": 1,
+      "message": "The reason this failed to compile is because the zmake board target `dev-posix` links in `emul_tcpci.c`, and the `ztest.h` header isn\u0027t included outside of unit test builds. We probably should not be putting zasserts inside emulator code, anyways, though. If the intent is to fail a test due to some unexpected situation, you can just do a regular `__ASSERT()`\n\nFWIW this isn\u0027t a toolchain issue like we discussed in person just now. Twister hasn\u0027t run, this is from `zmake build dev-posix`.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "995159bc7370514c8792b585bd227822920832f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "318c71a1_ae24b398",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
         "patchSetId": 1
