@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af2edf3_a98da585",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-12T21:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6ebf5d1_dd5ad509",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "995159bc7370514c8792b585bd227822920832f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "318c71a1_ae24b398",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Yes, several emulators do this. FYI that asserting will cause the test to fail (if not caught) and proceed to the next test, not abort the entire test executable.",
       "parentUuid": "e4b94021_fd16d604",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "995159bc7370514c8792b585bd227822920832f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1a3bfb_54056f14",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-12T21:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9297509_3de39bb0",
       "range": {
         "startLine": 139,
         "startChar": 1,
