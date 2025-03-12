@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f179d96_bd50c68a",
+        "filename": "docs/zephyr/pdc.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-12T15:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8bcd904_187dfe03",
+      "range": {
+        "startLine": 53,
+        "startChar": 42,
+        "endLine": 53,
+        "endChar": 70
+      },
+      "revId": "a55a44b2e8afc6c97b9d977bbebf06e95663153d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "395bc146_d6046220",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-11T22:43:01Z",
       "side": 1,
       "message": "This doesn\u0027t make sense.  Selecting the best PDO and preventing changing RDO are mutually exclusive actions.",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "a55a44b2e8afc6c97b9d977bbebf06e95663153d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8899356d_979b38d7",
+        "filename": "docs/zephyr/pdc.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-12T15:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "395bc146_d6046220",
       "range": {
         "startLine": 56,
         "startChar": 42,
