@@ -70,6 +70,30 @@
       },
       "revId": "9cbf04608c373e2f2c23244fe346521838b39494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c942d1dd_41dc2710",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-12T06:11:50Z",
+      "side": 1,
+      "message": "Firas, you will bump into many problems like that during Zephyr development. You need to get more familiar with Zephyr APIs. General approach is that you check a description of a used function in a [header file](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/gpio.h) and see what argument it takes. You can also check a previous argument  - [GPIO_INT_EDGE_TO_ACTIVE](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/gpio.h#L203) and see what are other alternatives. In this case, you probably want to use `GPIO_INT_EDGE_TO_INACTIVE` to enable interrupt, edge to inactive, if it is what CrosEC driver does.",
+      "parentUuid": "4d1cfb04_64972d71",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "9cbf04608c373e2f2c23244fe346521838b39494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
