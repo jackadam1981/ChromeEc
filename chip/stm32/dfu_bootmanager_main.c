@@ -145,7 +145,7 @@ static void jump_to_arm_reset_vector(uint32_t addr)
 	 */
 	asm("mov r1, %0\n"
 	    /* Load stack pointer */
-	    "ldr r0, [r1, 0]\n"
+	    "ldr r0, [r1, #0]\n"
 	    "msr msp, r0\n"
 	    /*
 	     * Memory barrier to ensure subsequent instructions uses modified
@@ -153,7 +153,7 @@ static void jump_to_arm_reset_vector(uint32_t addr)
 	     */
 	    "isb\n"
 	    /* Load reset vector */
-	    "ldr r0, [r1, 4]\n"
+	    "ldr r0, [r1, #4]\n"
 	    /* Jump without saving return address (would modify msp) */
 	    "bx r0\n"
 	    : /* no outputs */
