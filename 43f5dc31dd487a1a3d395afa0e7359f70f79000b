@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aec1380_7703f161",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-12T16:55:28Z",
+      "side": 1,
+      "message": "Zephyr RW crashes after 9 seconds due to unhandled IRQn: 44\n\nI suspect that this could be an initialized timer, but it needs to be confirmed first. For bloonchipper, we disable the timer [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/src/ec_quirks.c;l\u003d53-70;drc\u003d59e76bb9ee95eb1b7d0ec901371f5d008154149f) \n\n```\n--- UART initialized after reboot ---\n[Image: RO, helipilot_v2.0.24337-2726e9f149 helipilot_15829.0.0 2024-03-22 01:34:51 @chromeos-release-builder-us-central1-b-x32-118-18hu]\n[Reset cause: soft]\n[0.000331 Inits done]\n[0.000385 TRANSPORT_SEL: SPI]\n[0.000438 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [0.258375 event set 0x0000000000002000]\n[0.258439 hostcmd init 0x0000000000002000]\n[0.258584 Verifying RW image...]\n[0.397536 RW verify OK]\n[1.258561 MKBP not cleared within threshold, toggling.]\n[1.398048 Jumping to image RW (0x00000020)]\n[1.402029 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n\n[0.001000] \u003cwrn\u003e host_cmd_handler: Host Command handler provided unused buffer\n*** Booting Zephyr OS build 4.1.0-rc2 ***\n\n[0.017600 UART initialized after sysjump]\n[Image: RW, helipilot-0.0.0-b624fc0+ 2025-03-06 16:31:23 patrykd@patrykd0]\n[Reset cause: soft sysjump]\n[0.098300 event set 0x0000000000002000]\n[0.102300 hostcmd init 0x0000000000002000]\n[0.107300 Inits done]\n[0.111200 FP_SENSOR_SEL: FPC]\nFPC libfpbep.a fpc_bep_chromebook_2.0.0.016\nBuild information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)\nFPC1025 id 0x021b\n[0.111000] \u003cinf\u003e shim_cros_shi: shi_enable\n[1.102600 MKBP not cleared within threshold, toggling.]\n[2.108200 MKBP: The AP is failing to respond because it is sleeping or off]\n[9.059000] \u003cerr\u003e os: Unhandled IRQn: 44\n[9.064000] \u003cerr\u003e os: \u003e\u003e\u003e ZEPHYR FATAL ERROR 1: Unhandled interrupt on CPU 0\n[9.072000] \u003cerr\u003e os: Current thread: 0x200aa498 (idle)\nfpmcu:~$ \n\nRebooting..\n```",
+      "revId": "43f5dc31dd487a1a3d395afa0e7359f70f79000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

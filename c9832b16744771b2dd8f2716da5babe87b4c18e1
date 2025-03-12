@@ -273,6 +273,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a2905a_a68d8040",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 52
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-12T16:55:28Z",
+      "side": 1,
+      "message": "\u003e Would it still make sense to add these to google_quincy_defconfig in the Zephyr repository?\n\nI think so, but it\u0027s unlikely that we will use standard Zephyr tools, so let\u0027s leave it as it is.",
+      "parentUuid": "08634551_c8318050",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "c9832b16744771b2dd8f2716da5babe87b4c18e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e776c5e2_12a5deb9",
