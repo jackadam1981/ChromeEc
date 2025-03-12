@@ -497,34 +497,8 @@ static void dap_jtag_sequence(size_t peek_c)
 	/* Prepare output buffer for being populated one bit at a time. */
 	memset(tx_buffer + 1, 0, sizeof(tx_buffer) - 1);
 
-	/*
-	 * As an optimization, resolve the IO port addresses and masks of
-	 * frequently used GPIOs.
-	 */
-	volatile uint32_t *const jtag_clk_bsrr =
-		&STM32_GPIO_BSRR(gpio_list[jtag_pins[JTAG_TCLK]].port);
-	const uint32_t jtag_clk_mask_set = gpio_list[jtag_pins[JTAG_TCLK]].mask;
-	const uint32_t jtag_clk_mask_clear =
-		gpio_list[jtag_pins[JTAG_TCLK]].mask << 16;
-
-	volatile uint32_t *const jtag_tms_bsrr =
-		&STM32_GPIO_BSRR(gpio_list[jtag_pins[JTAG_TMS]].port);
-	const uint32_t jtag_tms_mask_set = gpio_list[jtag_pins[JTAG_TMS]].mask;
-	const uint32_t jtag_tms_mask_clear = gpio_list[jtag_pins[JTAG_TMS]].mask
-					     << 16;
-
-	volatile uint32_t *const jtag_tdi_bsrr =
-		&STM32_GPIO_BSRR(gpio_list[jtag_pins[JTAG_TDI]].port);
-	const uint32_t jtag_tdi_mask_set = gpio_list[jtag_pins[JTAG_TDI]].mask;
-	const uint32_t jtag_tdi_mask_clear = gpio_list[jtag_pins[JTAG_TDI]].mask
-					     << 16;
-
-	volatile uint16_t *const jtag_tdo_idr =
-		&STM32_GPIO_IDR(gpio_list[jtag_pins[JTAG_TDO]].port);
-	const uint16_t jtag_tdo_mask = gpio_list[jtag_pins[JTAG_TDO]].mask;
-
 	/* Clock should be low already, but make sure. */
-	*jtag_clk_bsrr = jtag_clk_mask_clear;
+	gpio_set_level(jtag_pins[JTAG_TCLK], false);
 
 	/*
 	 * Iterate over the list of "sequences", each having a one-byte header
@@ -537,8 +511,7 @@ static void dap_jtag_sequence(size_t peek_c)
 	while (ptr < end) {
 		/* Consume and decode header byte for this one "sequence". */
 		uint8_t header = *ptr++;
-		*jtag_tms_bsrr = header & SEQ_Tms ? jtag_tms_mask_set :
-						    jtag_tms_mask_clear;
+		gpio_set_level(jtag_pins[JTAG_TMS], header & SEQ_Tms);
 		bool capture_tdo = !!(header & SEQ_CaptureTdo);
 		unsigned int bit_count = (((header - 1) & SEQ_NumBits) + 1);
 
@@ -547,28 +520,15 @@ static void dap_jtag_sequence(size_t peek_c)
 		 * TDI/TDO.
 		 */
 		for (unsigned int i = 0; i < bit_count; i++) {
-			*jtag_tdi_bsrr = ptr[i / 8] & (1 << (i % 8)) ?
-						 jtag_tdi_mask_set :
-						 jtag_tdi_mask_clear;
+			gpio_set_level(jtag_pins[JTAG_TDI],
+				       ptr[i / 8] & (1 << (i % 8)));
 			half_clock_delay();
-			*jtag_clk_bsrr = jtag_clk_mask_set;
-			uint32_t tdo_val = !!(*jtag_tdo_idr & jtag_tdo_mask);
-			if (capture_tdo) {
+			uint32_t tdo_val = gpio_get_level(jtag_pins[JTAG_TDO]);
+			if (capture_tdo)
 				tx_ptr[i / 8] |= tdo_val << (i % 8);
-			} else {
-				/*
-				 * Spend time comparable to memory access above.
-				 *
-				 * Statement below clears all the bits in the
-				 * current output byte which are "ahead" of
-				 * where we would be placing the next sampled
-				 * bits, that is, into the bit range that was
-				 * already zero'ed by memset().
-				 */
-				tx_ptr[i / 8] &= ~(0xFF << (i % 8));
-			}
+			gpio_set_level(jtag_pins[JTAG_TCLK], true);
 			half_clock_delay();
-			*jtag_clk_bsrr = jtag_clk_mask_clear;
+			gpio_set_level(jtag_pins[JTAG_TCLK], false);
 		}
 		/* Consume the data bytes of this one "sequence". */
 		ptr += (bit_count + 7) / 8;
