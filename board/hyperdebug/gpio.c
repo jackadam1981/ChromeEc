@@ -2413,7 +2413,7 @@ const uint16_t MON_GPIO_MISSING = 4;
 /* Buffer overrun, returned data is incomplete */
 const uint16_t MON_BUFFER_OVERRUN = 5;
 
-static void dap_goog_gpio_monitoring_read(size_t peek_c)
+static void cmsis_dap_goog_gpio_monitoring_read(size_t peek_c)
 {
 	/*
 	 * Essentially the same as console command `gpio monitoring read`, but
@@ -2428,8 +2428,8 @@ static void dap_goog_gpio_monitoring_read(size_t peek_c)
 	queue_remove_units(&cmsis_dap_rx_queue, rx_buffer, 3);
 	for (int i = 0; i < gpio_num; i++) {
 		uint8_t str_len;
-		queue_blocking_remove(&cmsis_dap_rx_queue, &str_len, 1);
-		queue_blocking_remove(&cmsis_dap_rx_queue, rx_buffer, str_len);
+		cmsis_dap_queue_blocking_remove(&str_len, 1);
+		cmsis_dap_queue_blocking_remove(rx_buffer, str_len);
 		rx_buffer[str_len] = '\0';
 		gpios[i] = gpio_find_by_name(rx_buffer);
 	}
@@ -2512,20 +2512,18 @@ static void dap_goog_gpio_monitoring_read(size_t peek_c)
 	if (buf->head <= head) {
 		/* One contiguous range */
 		header->transcript_size = head - buf->head;
-		queue_add_units(&cmsis_dap_tx_queue, encapsulated_header,
-				encapsulated_header_size);
-		queue_blocking_add(&cmsis_dap_tx_queue, buf->head,
-				   header->transcript_size);
+		cmsis_dap_queue_blocking_add(encapsulated_header,
+					     encapsulated_header_size);
+		cmsis_dap_queue_blocking_add(buf->head,
+					     header->transcript_size);
 	} else {
 		/* Data wraps around */
 		header->transcript_size =
 			head - buf->data + buf->end - buf->head;
-		queue_add_units(&cmsis_dap_tx_queue, encapsulated_header,
-				encapsulated_header_size);
-		queue_blocking_add(&cmsis_dap_tx_queue, buf->head,
-				   buf->end - buf->head);
-		queue_blocking_add(&cmsis_dap_tx_queue, buf->data,
-				   head - buf->data);
+		cmsis_dap_queue_blocking_add(encapsulated_header,
+					     encapsulated_header_size);
+		cmsis_dap_queue_blocking_add(buf->head, buf->end - buf->head);
+		cmsis_dap_queue_blocking_add(buf->data, head - buf->data);
 	}
 
 	buf->head = head;
@@ -2630,7 +2628,7 @@ static uint8_t validate_received_waveform(uint16_t data_len, bool streaming)
  * Receive more bitbanging data to be inserted at bitbang.tail, then offload
  * data between bitbang.head and bitbang.irq.
  */
-void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
+void cmsis_dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 {
 	if (peek_c < 4)
 		return;
@@ -2640,14 +2638,13 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 
 	uint8_t *tail_ptr = bitbang_data_ptr(bitbang.tail);
 	if (tail_ptr + data_len <= bitbang.data + sizeof(bitbang.data)) {
-		queue_blocking_remove(&cmsis_dap_rx_queue, tail_ptr, data_len);
+		cmsis_dap_queue_blocking_remove(tail_ptr, data_len);
 	} else {
 		uint16_t remaining_space =
 			bitbang.data + sizeof(bitbang.data) - tail_ptr;
-		queue_blocking_remove(&cmsis_dap_rx_queue, tail_ptr,
-				      remaining_space);
-		queue_blocking_remove(&cmsis_dap_rx_queue, bitbang.data,
-				      data_len - remaining_space);
+		cmsis_dap_queue_blocking_remove(tail_ptr, remaining_space);
+		cmsis_dap_queue_blocking_remove(bitbang.data,
+						data_len - remaining_space);
 	}
 	if (cmsis_dap_unwind_requested())
 		return;
@@ -2769,16 +2766,15 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
 
 	uint8_t *head_ptr = bitbang_data_ptr(bitbang.head);
 	if (head_ptr + data_len <= bitbang.data + sizeof(bitbang.data)) {
-		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 6);
-		queue_blocking_add(&cmsis_dap_tx_queue, head_ptr, data_len);
+		cmsis_dap_queue_blocking_add(tx_buffer, 6);
+		cmsis_dap_queue_blocking_add(head_ptr, data_len);
 	} else {
 		uint16_t remaining_space =
 			bitbang.data + sizeof(bitbang.data) - head_ptr;
-		queue_add_units(&cmsis_dap_tx_queue, tx_buffer, 6);
-		queue_blocking_add(&cmsis_dap_tx_queue, head_ptr,
-				   remaining_space);
-		queue_blocking_add(&cmsis_dap_tx_queue, bitbang.data,
-				   data_len - remaining_space);
+		cmsis_dap_queue_blocking_add(tx_buffer, 6);
+		cmsis_dap_queue_blocking_add(head_ptr, remaining_space);
+		cmsis_dap_queue_blocking_add(bitbang.data,
+					     data_len - remaining_space);
 	}
 	bitbang.head = idx;
 }
@@ -2807,7 +2803,7 @@ void dap_goog_gpio_bitbang(size_t peek_c, bool streaming)
  * normal priority REINIT hook in this file will then be called, which resets
  * the state, such that it will be in a consistent and known initial state.
  */
-void dap_goog_gpio(size_t peek_c)
+void cmsis_dap_goog_gpio(size_t peek_c)
 {
 	/*
 	 * We need to inspect sub-command on second byte below, in order to
@@ -2822,14 +2818,14 @@ void dap_goog_gpio(size_t peek_c)
 		 * Hand off all available GPIO monitoring data so far,
 		 * suitable for streaming.
 		 */
-		dap_goog_gpio_monitoring_read(peek_c);
+		cmsis_dap_goog_gpio_monitoring_read(peek_c);
 		break;
 	case GPIO_REQ_BITBANG:
 		/*
 		 * Accept data for bitbanging, wait for waveform to be
 		 * complete, and then hand back data polled during.
 		 */
-		dap_goog_gpio_bitbang(peek_c, false);
+		cmsis_dap_goog_gpio_bitbang(peek_c, false);
 		break;
 	case GPIO_REQ_BITBANG_STREAMING:
 		/*
@@ -2837,7 +2833,7 @@ void dap_goog_gpio(size_t peek_c)
 		 * waveform still in process, suitable for streaming if
 		 * invoked again before data runs out.
 		 */
-		dap_goog_gpio_bitbang(peek_c, true);
+		cmsis_dap_goog_gpio_bitbang(peek_c, true);
 		break;
 	}
 }

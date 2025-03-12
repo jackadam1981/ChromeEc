@@ -289,7 +289,23 @@ void user_button_edge(enum gpio_signal signal);
 /* Utility method */
 enum gpio_signal gpio_find_by_name(const char *name);
 
+/* CMSIS-DAP declarations */
+enum jtag_signal_t {
+	JTAG_TCLK = 0,
+	JTAG_TMS,
+	JTAG_TDI,
+	JTAG_TDO,
+	JTAG_TRSTn,
+	JTAG_INVALID
+};
+extern int jtag_pins[JTAG_INVALID];
 extern int shield_reset_pin;
+#define GPIO_JTAG_TCLK (jtag_pins[JTAG_TCLK])
+#define GPIO_JTAG_TMS (jtag_pins[JTAG_TMS])
+#define GPIO_JTAG_TDI (jtag_pins[JTAG_TDI])
+#define GPIO_JTAG_TDO (jtag_pins[JTAG_TDO])
+#define GPIO_JTAG_TRST (jtag_pins[JTAG_TRSTn])
+#define GPIO_JTAG_RESET shield_reset_pin
 
 /*
  * Utility methods shared by SPI and I2C TPM code.
