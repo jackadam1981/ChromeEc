@@ -11,6 +11,7 @@
 #include <zephyr/ztest.h>
 
 FAKE_VALUE_FUNC(enum ec_error_list, raa489000_is_acok, int, bool *);
+FAKE_VOID_FUNC(pd_set_external_voltage_limit, int, int);
 
 static void test_before(void *fixture)
 {
