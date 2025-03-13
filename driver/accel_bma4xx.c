@@ -672,8 +672,8 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	RETURN_ERROR(bma4_read16(s, BMA4_FIFO_LENGTH_0_ADDR, &fifo_depth));
 	while (fifo_depth > 0) {
-		/* large enough buffer for 4 samples */
-		uint8_t fifo_data[24];
+		/* large enough buffer for 10 samples */
+		uint8_t fifo_data[6 * 10];
 		int fifo_read = MIN(ARRAY_SIZE(fifo_data), fifo_depth);
 		int ret;
 
