@@ -1,0 +1,150 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b70480_64bc8943",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T18:25:44Z",
+      "side": 1,
+      "message": "@dawidn@google.com For the other debug modes, I do not get any printout. I am wondering if this has to do with the fact the level of logging for the pal was INF??",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 210,
+        "endChar": 28
+      },
+      "revId": "36c866aa2386816682fdb973468eaea0cb776ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc4439d_33bc20d6",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630_pal_test_helpers.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T18:25:44Z",
+      "side": 1,
+      "message": "@dawidn@google.com why are you defining these functions as __syscall?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b751dcf0_8c1feb93",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/drivers/egis630/src/egis630_pal_test_helpers.h",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": "uint64_t egis630_plat_get_time(void);\nvoid egis630_plat_wait_time(uint32_t mecs);\nvoid egis630_plat_sleep_time(uint32_t timeInMs);\nuint32_t egis630_plat_get_diff_time(uint64_t begin);\nvoid *egis630_sys_alloc(size_t count, size_t size);\nint egis630_periphery_spi_write_read(uint8_t *write, uint32_t size,\n\t\t\t\t     uint8_t *read, uint32_t rx_len);\nvoid egis630_output_log(LOG_LEVEL level, const char *tag,\n\t\t\t  const char *file_path, const char *func,\n\t\t\t  int line, const char *format);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36c866aa2386816682fdb973468eaea0cb776ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bc3af5_79bfeaed",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630_pal_test_helpers.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T18:25:44Z",
+      "side": 1,
+      "message": "@dawidn@google.com when I add the ... at the end of the function, I get a compilation error. Why is this the case? How do I get the helper for the original function.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "916f07b7_2b562354",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/drivers/egis630/src/egis630_pal_test_helpers.h",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": "__syscall void egis630_output_log(LOG_LEVEL level, const char *tag, ...);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "36c866aa2386816682fdb973468eaea0cb776ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4daea9f_a07ab6b3",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630_pal_test_helpers.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T18:25:44Z",
+      "side": 1,
+      "message": "@dawidn@google.com\nwhy is this included?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "75cc4f37_dfd1ed3d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/fingerprint/drivers/egis630/src/egis630_pal_test_helpers.h",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "36c866aa2386816682fdb973468eaea0cb776ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
