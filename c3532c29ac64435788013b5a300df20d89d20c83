@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dfc75bb_7393566e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-13T20:16:13Z",
+      "side": 1,
+      "message": "Can you remind me how the memory allocation for this works? (It\u0027s been a while since I\u0027ve looked at that code.)\n\nUltimately this needs to be \"sent over the wire\" (to the AP), so when the response is sent it needs to copy the entire `image_frame` array. Where does that happen?\n\nThere should be some other commands that have dynamically sized responses. Take a look at [responses that end with `[0]`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d6217-6223;drc\u003d03d368f3ed92a27a38d909059c8543a0d4024f6f). (We should also probably use `image_frame[0]` instead of `*image_frame` for consistency and clarity.)",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
