@@ -39,6 +39,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ea5363_f49eca6f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-13T20:26:39Z",
+      "side": 1,
+      "message": "Or responses that end with `[]`. (flexible array)\n\nLooks like I added [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d76-88;drc\u003d03d368f3ed92a27a38d909059c8543a0d4024f6f), so let\u0027s use that.\n\nAs a cleanup, you can create a separate CL to convert the existing `[]` and `[0]` into `[FLEXIBLE_ARRAY_MEMBER_SIZE]`. Run `compare-builds` to make sure nothing changed.",
+      "parentUuid": "4dfc75bb_7393566e",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
