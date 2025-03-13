@@ -24,6 +24,7 @@ enum fpc_capture_type {
 	FPC_CAPTURE_PATTERN1 = 3,
 	FPC_CAPTURE_QUALITY_TEST = 4,
 	FPC_CAPTURE_RESET_TEST = 5,
+	FPC_CAPTURE_TYPE_INVALID = -1,
 };
 
 /** @brief Common results returned by BEP functions.
