@@ -16,6 +16,57 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "26f9220d5f7e4f3e5b9cd24cbfc040256c407aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17099256_e438d597",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-13T20:03:59Z",
+      "side": 1,
+      "message": "Please update the commit message with any other field changes you make from rauru to navi. The goal is to make it obvious which fields we changed for navi.",
+      "revId": "26f9220d5f7e4f3e5b9cd24cbfc040256c407aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6c66b1_807c79ff",
+        "filename": "zephyr/program/rauru/navi/navi_vif.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-13T20:03:59Z",
+      "side": 1,
+      "message": "Should this say navi?",
+      "revId": "26f9220d5f7e4f3e5b9cd24cbfc040256c407aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad31247d_4dd59cca",
+        "filename": "zephyr/program/rauru/navi/navi_vif.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-13T20:03:59Z",
+      "side": 1,
+      "message": "Should this be \"end product\"?",
+      "revId": "26f9220d5f7e4f3e5b9cd24cbfc040256c407aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
