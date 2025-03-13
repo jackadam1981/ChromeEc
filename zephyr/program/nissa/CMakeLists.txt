@@ -61,6 +61,7 @@ if(DEFINED CONFIG_BOARD_CRAASK)
 			"craask/src/led.c"
 			"craask/src/thermal.c"
 			"craask/src/touch_panel.c"
+			"craask/src/mp2964_update.c"
 	)
 	project(craask)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "craask/src/usbc.c")
