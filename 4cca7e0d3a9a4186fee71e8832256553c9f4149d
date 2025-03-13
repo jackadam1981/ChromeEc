@@ -69,6 +69,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97a48e3_53db9957",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T18:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c29522_0ee4ae9c",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "4cca7e0d3a9a4186fee71e8832256553c9f4149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d7efea_4b29d635",
@@ -116,6 +140,30 @@
           ]
         }
       ],
+      "revId": "4cca7e0d3a9a4186fee71e8832256553c9f4149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed9a731_86ec13a5",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T18:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d7efea_4b29d635",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 31
+      },
       "revId": "4cca7e0d3a9a4186fee71e8832256553c9f4149d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
