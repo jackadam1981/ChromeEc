@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e55ae9_826c2ac7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-13T19:48:25Z",
+      "side": 1,
+      "message": "@dawidn@google.com\nIf there something in the zephyr mainstream? I cannot find any.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e783594d_0103dad7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "72e012f54a063fd2f6f8c6d488aaaba4739eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
