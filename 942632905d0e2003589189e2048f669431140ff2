@@ -22,6 +22,30 @@
       },
       "revId": "942632905d0e2003589189e2048f669431140ff2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2cb1182_92c654e5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-13T21:23:39Z",
+      "side": 1,
+      "message": "Oops. Done. I wonder why this one didn\u0027t cause a build failure.",
+      "parentUuid": "65dd5ec2_cdf93fa7",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "942632905d0e2003589189e2048f669431140ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
