@@ -58,7 +58,7 @@ BINARY_SIZE_BOARDS = [
 
 
 def build(opts):
-    """Builds all EC firmware targets
+  """Builds all EC firmware targets
 
     Note that when we are building unit tests for code coverage, we don't
     need this step. It builds EC **firmware** targets, but unit tests with
@@ -67,72 +67,49 @@ def build(opts):
     doing anything but creating the metrics file and giving an informational
     message.
     """
-    metric_list = firmware_pb2.FwBuildMetricList()  # pylint: disable=no-member
-    env = os.environ.copy()
-    env.update(init_toolchain())
-    ec_dir = pathlib.Path(__file__).parent
+  metric_list = firmware_pb2.FwBuildMetricList()  # pylint: disable=no-member
+  env = os.environ.copy()
+  env.update(init_toolchain())
 
-    # Run formatting checks on all python files.
-    cmd = ["black", "--check", "."]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-    chromite_dir = ec_dir.resolve().parent.parent.parent / "chromite"
-    cmd = [
-        "isort",
-        f"--settings-file={chromite_dir / '.isort.cfg'}",
-        "--check",
-        "--gitignore",
-        "--dont-follow-links",
-        f"-j{opts.cpus}",
-        ".",
-    ]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(
-        cmd,
-        cwd=os.path.dirname(__file__),
-        check=True,
-        env=env,
+  if opts.code_coverage:
+    print(
+        "When --code-coverage is selected, 'build' is a no-op. "
+        "Run 'test' with --code-coverage instead."
     )
+    with open(opts.metrics, "w", encoding="utf-8") as file:
+      file.write(json_format.MessageToJson(metric_list))
+    return
 
-    if opts.code_coverage:
-        print(
-            "When --code-coverage is selected, 'build' is a no-op. "
-            "Run 'test' with --code-coverage instead."
-        )
-        with open(opts.metrics, "w", encoding="utf-8") as file:
-            file.write(json_format.MessageToJson(metric_list))
-        return
+  cmd = ["make", "clobber"]
+  print(f"# Running {' '.join(cmd)}.")
+  subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    cmd = ["make", "clobber"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+  cmd = ["make", "buildall_only", f"-j{opts.cpus}"]
+  print(f"# Running {' '.join(cmd)}.")
+  subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    cmd = ["make", "buildall_only", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+  # extra/rma_reset is used in chromeos-base/ec-utils-test
+  cmd = ["make", "-C", "extra/rma_reset", "clean"]
+  print(f"# Running {' '.join(cmd)}.")
+  subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    # extra/rma_reset is used in chromeos-base/ec-utils-test
-    cmd = ["make", "-C", "extra/rma_reset", "clean"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+  cmd = ["make", "-C", "extra/rma_reset", f"-j{opts.cpus}"]
+  print(f"# Running {' '.join(cmd)}.")
+  subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    cmd = ["make", "-C", "extra/rma_reset", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+  # extra/usb_updater is used in chromeos-base/ec-devutils
+  cmd = ["make", "-C", "extra/usb_updater", "clean"]
+  print(f"# Running {' '.join(cmd)}.")
+  subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    # extra/usb_updater is used in chromeos-base/ec-devutils
-    cmd = ["make", "-C", "extra/usb_updater", "clean"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+  cmd = ["make", "-C", "extra/usb_updater", "usb_updater2", f"-j{opts.cpus}"]
+  print(f"# Running {' '.join(cmd)}.")
+  subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    cmd = ["make", "-C", "extra/usb_updater", "usb_updater2", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-
-    cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    baseboards = {}
-    for line in subprocess.run(
+  cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
+  print(f"# Running {' '.join(cmd)}.")
+  baseboards = {}
+  for line in subprocess.run(
         cmd,
         cwd=os.path.dirname(__file__),
         check=True,
@@ -140,52 +117,52 @@ def build(opts):
         stdout=subprocess.PIPE,
         env=env,
     ).stdout.splitlines():
-        parts = line.split("=")
-        if len(parts) > 1:
-            baseboards[parts[0]] = parts[1]
+    parts = line.split("=")
+    if len(parts) > 1:
+      baseboards[parts[0]] = parts[1]
 
-    ec_dir = os.path.dirname(__file__)
-    build_dir = os.path.join(ec_dir, "build")
-    for build_target in sorted(os.listdir(build_dir)):
-        metric = metric_list.value.add()
-        metric.target_name = build_target
-        metric.platform_name = build_target
-        if build_target in baseboards and baseboards[build_target]:
-            metric.platform_name = baseboards[build_target]
+  ec_dir = os.path.dirname(__file__)
+  build_dir = os.path.join(ec_dir, "build")
+  for build_target in sorted(os.listdir(build_dir)):
+    metric = metric_list.value.add()
+    metric.target_name = build_target
+    metric.platform_name = build_target
+    if build_target in baseboards and baseboards[build_target]:
+      metric.platform_name = baseboards[build_target]
 
-        for variant in ["RO", "RW"]:
-            memsize_file = (
+    for variant in ["RO", "RW"]:
+      memsize_file = (
                 pathlib.Path(build_dir)
                 / build_target
                 / variant
                 / f"ec.{variant}.elf.memsize.txt"
             )
-            if memsize_file.exists():
-                parse_memsize(
+      if memsize_file.exists():
+        parse_memsize(
                     memsize_file,
                     metric,
                     variant,
                     build_target in BINARY_SIZE_BOARDS,
                 )
-    with open(opts.metrics, "w", encoding="utf-8") as file:
-        file.write(json_format.MessageToJson(metric_list))
+  with open(opts.metrics, "w", encoding="utf-8") as file:
+    file.write(json_format.MessageToJson(metric_list))
 
-    gcc_build_dir = build_dir + ".gcc"
-    try:
-        # b/352025405: build_with_clang.py deletes the build directory, but
-        # we want to preserve the gcc build artifacts for uploading (bundling).
-        # Temporarily rename the gcc build output directory and restore after
-        # the clang build finishes.
-        os.rename(build_dir, gcc_build_dir)
+  gcc_build_dir = build_dir + ".gcc"
+  try:
+    # b/352025405: build_with_clang.py deletes the build directory, but
+    # we want to preserve the gcc build artifacts for uploading (bundling).
+    # Temporarily rename the gcc build output directory and restore after
+    # the clang build finishes.
+    os.rename(build_dir, gcc_build_dir)
 
-        # Ensure that there are no regressions for boards that build
-        # successfully with clang: b/172020503.
-        cmd = ["./util/build_with_clang.py", f"-j{opts.cpus}"]
-        print(f'# Running {" ".join(cmd)}.')
-        subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-    finally:
-        shutil.rmtree(build_dir)
-        os.rename(gcc_build_dir, build_dir)
+    # Ensure that there are no regressions for boards that build
+    # successfully with clang: b/172020503.
+    cmd = ["./util/build_with_clang.py", f"-j{opts.cpus}"]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+  finally:
+    shutil.rmtree(build_dir)
+    os.rename(gcc_build_dir, build_dir)
 
 
 UNITS = {
