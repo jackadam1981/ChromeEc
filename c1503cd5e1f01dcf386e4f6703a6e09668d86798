@@ -22,6 +22,30 @@
       },
       "revId": "c1503cd5e1f01dcf386e4f6703a6e09668d86798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f43ee3_1740e45b",
+        "filename": "test/genvif/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-13T21:41:42Z",
+      "side": 1,
+      "message": "Done. This actually made me notice that I had typoed the commands themselves.",
+      "parentUuid": "911741a9_191acffa",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "c1503cd5e1f01dcf386e4f6703a6e09668d86798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
