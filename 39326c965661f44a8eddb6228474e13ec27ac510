@@ -16,6 +16,24 @@
       "message": "It looks like this came from the Ellisys VIF editor.\n1. This will cause problems if we try to use this VIF with a different brand of tester. (In particular, I think it changed the XML namespace for all of the elements, which will break a lot of tooling.)\n2. It looks like this made a lot of formatting changes, which make the substantive changes less obvious. (Ths is also true of the namespace change, which is somewhere between formatting and content.)\n\nCan you make the changes you want to make in the USB IF VIF editor, so that the file retains its essential structure and formatting?\n\nAnd can you describe the substantive changes at a high level in the commit message?",
       "revId": "39326c965661f44a8eddb6228474e13ec27ac510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba0a5f09_970e8322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-03-13T07:27:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "58fcfeb3_9636bc9f",
+      "revId": "39326c965661f44a8eddb6228474e13ec27ac510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

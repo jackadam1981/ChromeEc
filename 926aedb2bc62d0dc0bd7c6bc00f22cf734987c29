@@ -16,6 +16,24 @@
       "message": "@pranavayn@google.com noted in OOB discussion that pujjo and pujjo1e have different numbers of ports. To accommodate this, you can just make separate files here, like `pujjo_vif.xml` and `pujjo1e_vif.xml`, where each of them has the appropriate number of Components.",
       "revId": "926aedb2bc62d0dc0bd7c6bc00f22cf734987c29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e97f16e_1043a1f2",
+        "filename": "zephyr/program/nissa/pujjo/pujjo_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-03-13T07:27:28Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "3a389fb3_48953017",
+      "revId": "926aedb2bc62d0dc0bd7c6bc00f22cf734987c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
