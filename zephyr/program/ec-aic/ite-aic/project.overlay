@@ -4,6 +4,7 @@
  */
 
  #include <cros/cbi_flash.dtsi>
+ #include <usbc-policy.dtsi>
  #include "binman.dtsi"
 
 / {
@@ -21,9 +22,96 @@
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+
+		gpio_acok_ec_od: ac_present {
+			/* AC_IN_SW/STD_ADPT_CNTL_GPIO_R */
+			gpios = <&gpioe 5 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
 	};
+
+	gpio_interrupts: gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_acok_ec_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_charger: ec_i2c_charger {
+			i2c-port = <&i2c0>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+
+		i2c_ec_i2c_pd_prog: ec_i2c_pd_prog {
+			i2c-port = <&i2c1>;
+			enum-names = "I2C_PORT_PD";
+		};
+	};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger>;
+			pdc = <&pdc_power_p0>;
+			policy = <&cros_policy>;
+		};
+		usbc_port1: port1@1 {
+			compatible = "named-usbc-port";
+			reg = <1>;
+			pdc = <&pdc_power_p1>;
+			policy = <&cros_policy>;
+		};
+	};
+
+        batteries {
+                default_battery: lgc_ap18c8k {
+                        compatible = "lgc,ap18c8k", "battery-smart";
+                };
+        };
 };
 
 &sha0 {
 	status = "okay";
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	pinctrl-0 = < &i2c1_clk_gpc1_default &i2c1_data_gpc2_default >;
+	pinctrl-names = "default";
+	label = "pd_port";
+
+	pdc_power_p0: rts54-pdc@66 {
+		compatible = "realtek,rts54-pdc";
+		reg = <0x66>;
+		/* GPI7 = BAT_DET pin also available on header J11 pin 1 */
+		irq-gpios = <&gpioi 7 GPIO_ACTIVE_LOW>;
+	};
+	pdc_power_p1: rts54-pdc@67 {
+		compatible = "realtek,rts54-pdc";
+		reg = <0x67>;
+		irq-gpios = <&gpioi 7 GPIO_ACTIVE_LOW>;
+		no-fw-update;
+	};
+};
+
+&i2c0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	pinctrl-0 = < &i2c0_clk_gpb3_default &i2c0_data_gpb4_default >;
+	pinctrl-names = "default";
+	charger: isl9238@9 {
+		compatible = "intersil,isl923x";
+		status = "okay";
+		reg = <0x9>;
+	};
 };
