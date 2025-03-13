@@ -16,6 +16,108 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4cca7e0d3a9a4186fee71e8832256553c9f4149d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c29522_0ee4ae9c",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-13T17:25:42Z",
+      "side": 1,
+      "message": "nit: put this one first",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bc81e726_21d38bfc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/fpc/bep/fpc_private.h",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_CAPTURE_TYPE_INVALID \u003d -1,\n"
+            },
+            {
+              "path": "driver/fingerprint/fpc/bep/fpc_private.h",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4cca7e0d3a9a4186fee71e8832256553c9f4149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d7efea_4b29d635",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-13T17:25:42Z",
+      "side": 1,
+      "message": "nit: put this one first",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c0e9dbf6_df188db4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/fingerprint/fpc/libfp/fpc_private.h",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": "\tFPC_CAPTURE_TYPE_INVALID \u003d -1,\n"
+            },
+            {
+              "path": "driver/fingerprint/fpc/libfp/fpc_private.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4cca7e0d3a9a4186fee71e8832256553c9f4149d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
