@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43568f66_1fadc542",
+        "filename": "zephyr/program/nissa/pujjo/pujjo1e_vif.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-13T12:33:01Z",
+      "side": 1,
+      "message": "This must be 15000mW IMO as we have only one port",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 62
+      },
+      "revId": "78f5f4e9384472a552d1e2b1e9ea74195f257cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
