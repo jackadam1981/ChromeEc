@@ -16,6 +16,24 @@
       "message": "do we have a device where we can verify software sync still works with this?\nlooks like depthcharge indirectly uses `CONFIG_EC_WRITABLE_STORAGE_SIZE`,\nso looks OK.",
       "revId": "e5235ae3b7d7d301e9ea236365fedc56ae629cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002394a1_c12e072f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-13T20:37:24Z",
+      "side": 1,
+      "message": "Yes, YH is verifying on a real cret device now",
+      "parentUuid": "a72416db_5813eeb1",
+      "revId": "e5235ae3b7d7d301e9ea236365fedc56ae629cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
