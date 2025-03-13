@@ -184,8 +184,21 @@ const struct _ec_fmap {
 			 /* The range of RW firmware to be auto-updated. */
 			.area_name = "EC_RW",
 			.area_offset = CONFIG_EC_WRITABLE_STORAGE_OFF -
+<<<<<<< HEAD   (9d69ee driver: bmi: Avoid infinite loops in the irq_handler)
 				FMAP_REGION_START + CONFIG_RW_STORAGE_OFF,
+||||||| BASE
+				       FMAP_REGION_START +
+				       CONFIG_RW_STORAGE_OFF,
+=======
+				       FMAP_REGION_START +
+				       CONFIG_RW_STORAGE_OFF,
+#ifdef CONFIG_CHIP_INIT_ROM_REGION
+			.area_size =
+				CONFIG_RW_SIZE + CONFIG_RW_ROM_RESIDENT_SIZE,
+#else
+>>>>>>> CHANGE (059e0d fmap: account for rom_resident area)
 			.area_size = CONFIG_RW_SIZE,
+#endif
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 		{
