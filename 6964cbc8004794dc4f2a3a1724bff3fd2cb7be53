@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55fee76_6f566b9f",
+        "filename": "docs/zephyr/pdc.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-13T16:06:24Z",
+      "side": 1,
+      "message": "This will be easier to follow if the Expectation is expressed in term of the externally visible result.\n* 1 port, battery: Select the best PDO available from the charger.  Depedning on the battery level, the AP may boot before or after picking the best PDO.\n* 1 port, no battery:  The end result is effectively the same as the first case because the charge manager should prevent the AP from booting with the 5V PDO.  This allows the PDC subsys to still select the best PDO and then we can boot the AP.  But it might be worth noting that the AP can\u0027t boot until after the best PDO is selected.\n* \u003e1 port, battery: You should also not that the charging is disabled on all but 1 port first, then the PDC subsys selects the best PDO for the selected port.  The AP is permitted to boot immediately while the best PDO logic runs.\n* 1\u003e pory, no battery: Similar to the previous case, but AP boot delayed.",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "6964cbc8004794dc4f2a3a1724bff3fd2cb7be53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
