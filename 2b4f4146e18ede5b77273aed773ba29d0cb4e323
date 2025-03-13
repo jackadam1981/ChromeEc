@@ -33,6 +33,23 @@
       "message": "This change is in a specific accel driver. Do we need to make a similar change for the OEM design.",
       "revId": "2b4f4146e18ede5b77273aed773ba29d0cb4e323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27e796d_f6797faa",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-13T15:05:10Z",
+      "side": 1,
+      "message": "Nit: probably should turn this into a macro",
+      "revId": "2b4f4146e18ede5b77273aed773ba29d0cb4e323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
