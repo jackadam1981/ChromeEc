@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6620f237_78170b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-14T17:39:37Z",
+      "side": 1,
+      "message": "I think this is correct now. I think the CQ failure is from an in-progress upgrade of python formatter, unrelated to this change. IDK when that will resolve.",
+      "revId": "583b7625b5fbd0d240d1d84e71837b2aab6b4912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
