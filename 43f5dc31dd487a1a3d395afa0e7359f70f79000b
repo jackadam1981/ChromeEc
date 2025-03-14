@@ -34,6 +34,24 @@
       "parentUuid": "1aec1380_7703f161",
       "revId": "43f5dc31dd487a1a3d395afa0e7359f70f79000b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7480007b_c0e9f710",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-14T04:59:44Z",
+      "side": 1,
+      "message": "Update: I\u0027m able to reproduce (only) with ECOS RO: \"helipilot_v2.0.24337-2726e9f149\" when combined with Zephyr RW. The problem does not occur with Zephyr RO",
+      "parentUuid": "e6f57c41_577fae19",
+      "revId": "43f5dc31dd487a1a3d395afa0e7359f70f79000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
