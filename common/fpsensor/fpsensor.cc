@@ -417,8 +417,44 @@ extern "C" void fp_task(void)
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
 }
 
+static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
+{
+	struct ec_response_fp_info_v2 *r =
+		static_cast<ec_response_fp_info_v2 *>(args->response);
+
+#ifdef HAVE_FP_PRIVATE_DRIVER
+	if (fp_sensor_get_info_v2(r, args->response_max) < 0)
+#endif
+		return EC_RES_UNAVAILABLE;
+
+	r->template_info.template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
+	r->template_info.template_max = FP_MAX_FINGER_COUNT;
+	r->template_info.template_valid = global_context.templ_valid;
+	r->template_info.template_dirty = global_context.templ_dirty;
+	r->template_info.template_version = FP_TEMPLATE_FORMAT_VERSION;
+
+	return EC_RES_SUCCESS;
+}
+
+__overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp,
+					size_t resp_size)
+{
+	*resp = {
+		.sensor_info = { .vendor_id = 0,
+				 .product_id = 0,
+				 .model_id = 0,
+				 .version = 0,
+				 .num_capture_types = 0,
+				 .errors = 0 },
+	};
+	return EC_SUCCESS;
+}
+
 static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
+	if (args->version == 2) {
+		return fp_command_info_v2(args);
+	}
 	auto *r = static_cast<ec_response_fp_info *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
