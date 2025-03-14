@@ -119,6 +119,7 @@ test_export_static void thermal_init(void)
 DECLARE_HOOK(HOOK_INIT, thermal_init, HOOK_PRIO_POST_FIRST);
 
 static bool lid_uses_lis2dw12;
+static bool base_uses_bma422;
 
 void motion_interrupt(enum gpio_signal signal)
 {
@@ -129,11 +130,25 @@ void motion_interrupt(enum gpio_signal signal)
 	}
 }
 
+void base_accel_interrupt(enum gpio_signal signal)
+{
+	if (base_uses_bma422) {
+		bma4xx_interrupt(signal);
+	} else {
+		lis2dw12_interrupt(signal);
+	}
+}
+
 static void alt_sensor_init(void)
 {
 	lid_uses_lis2dw12 = cros_cbi_ssfc_check_match(
 		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_lis2dw12)));
 
+	if (lid_uses_lis2dw12) {
+		base_uses_bma422 = true;
+	} else {
+		base_uses_bma422 = false;
+	}
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);

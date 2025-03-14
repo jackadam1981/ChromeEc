@@ -202,7 +202,7 @@
 		 * List of GPIO interrupts that have to be enabled at initial
 		 * stage.sensor_alt_id
 		 */
-		sensor-irqs = <&int_lid_imu>;
+		sensor-irqs = <&int_lid_imu &int_base_imu>;
 
 		/* List of sensors in force mode */
 		accel-force-mode-sensors = <&base_accel>;
