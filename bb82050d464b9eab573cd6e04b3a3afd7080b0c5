@@ -16,6 +16,24 @@
       "message": "It is a fpmcu board; we can skip runnig the `cme` script for fpmcu boards.",
       "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cba9af3_9fae59fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-14T21:25:58Z",
+      "side": 1,
+      "message": "Can we add some block list for the error message, e.g. fpmcu, ISH, detachable base? For a normal EC board, we want it to be an error message.",
+      "parentUuid": "b8f8f788_9ff50848",
+      "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
