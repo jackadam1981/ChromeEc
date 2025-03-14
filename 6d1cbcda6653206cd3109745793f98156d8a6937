@@ -34,6 +34,24 @@
       "parentUuid": "b8cb9114_a75883ea",
       "revId": "6d1cbcda6653206cd3109745793f98156d8a6937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4095887e_128171e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2025-03-14T17:34:20Z",
+      "side": 1,
+      "message": "OK, Puff is not utilizing CONFIG_CHIP_INIT_ROM_REGION.",
+      "parentUuid": "77c0a2a8_9f23bea1",
+      "revId": "6d1cbcda6653206cd3109745793f98156d8a6937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
