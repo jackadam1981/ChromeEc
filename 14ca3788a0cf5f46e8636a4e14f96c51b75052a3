@@ -16,6 +16,207 @@
       "message": "Sorry for the churn. Found some issues in the ectool implementation.",
       "revId": "14ca3788a0cf5f46e8636a4e14f96c51b75052a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a0dd93_3b615653",
+        "filename": "common/panic_log.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-14T21:45:09Z",
+      "side": 1,
+      "message": "Optimization suggestion: instead of calling it for every char in the log, it might be better to call this function once and use the returned value. i.e. \n```\nuint32_t panic_log_length \u003d panic_log_len();\n\nif (offset \u003e\u003d panic_log_length)\n\t\treturn EC_RES_INVALID_PARAM;\n\n\twhile (offset \u003c panic_log_length \u0026\u0026\n... \n```",
+      "range": {
+        "startLine": 165,
+        "startChar": 17,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "14ca3788a0cf5f46e8636a4e14f96c51b75052a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c052c173_38ecb26a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 6654,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-14T21:45:09Z",
+      "side": 1,
+      "message": "Error setting panic log freeze",
+      "range": {
+        "startLine": 6654,
+        "startChar": 26,
+        "endLine": 6654,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c7d33641_1aebab97",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6654,
+                "startChar": 0,
+                "endLine": 6655,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Error setting panic log freeze\\n\");\n"
+            },
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6667,
+                "startChar": 0,
+                "endLine": 6668,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Error setting panic log unfreeze\\n\");\n"
+            },
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6680,
+                "startChar": 0,
+                "endLine": 6681,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Error setting panic log reset\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "14ca3788a0cf5f46e8636a4e14f96c51b75052a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2994b972_8157afc2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 6667,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-14T21:45:09Z",
+      "side": 1,
+      "message": "Error setting panic log unfreeze",
+      "fixSuggestions": [
+        {
+          "fixId": "1ca4f294_d4412fc5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6654,
+                "startChar": 0,
+                "endLine": 6655,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Error setting panic log freeze\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "14ca3788a0cf5f46e8636a4e14f96c51b75052a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e92902_aa48ca65",
+        "filename": "util/ectool.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 6680,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-14T21:45:09Z",
+      "side": 1,
+      "message": "Error resetting panic log",
+      "range": {
+        "startLine": 6680,
+        "startChar": 26,
+        "endLine": 6680,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f275262a_72a1bf3d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6680,
+                "startChar": 0,
+                "endLine": 6681,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Error resetting panic log\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "14ca3788a0cf5f46e8636a4e14f96c51b75052a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8babae_9402d034",
+        "filename": "util/ectool.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 6695,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-14T21:45:09Z",
+      "side": 1,
+      "message": "protocol",
+      "range": {
+        "startLine": 6695,
+        "startChar": 34,
+        "endLine": 6695,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "99fb168b_537456f0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6695,
+                "startChar": 0,
+                "endLine": 6696,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Error getting protocol info\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "14ca3788a0cf5f46e8636a4e14f96c51b75052a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
