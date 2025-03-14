@@ -1,0 +1,121 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef9ce9c_75569e3b",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-14T20:41:58Z",
+      "side": 1,
+      "message": "Please remove the unused properties.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "6b5cd8fb27af4c81fdebc24c121b782c7ef9840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3620fe39_ef7eedd5",
+        "filename": "zephyr/include/drivers/intel_modular_aic.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-14T20:41:58Z",
+      "side": 1,
+      "message": "Are any of these public routines defined?  Please remove until the implementation is needed.",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2c8a69e1_a7db9e62",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/intel_modular_aic.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "\t/* Pointer to slot this port is connected to */\n\tstruct intel_modular_aic_slot_data *slot;\n"
+            },
+            {
+              "path": "zephyr/include/drivers/intel_modular_aic.h",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 52,
+                "endChar": 0
+              },
+              "replacement": "\tstruct intel_modular_aic_port **ports;\n"
+            },
+            {
+              "path": "zephyr/include/drivers/intel_modular_aic.h",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "int intel_modular_aic_slot_get_avail_ports(\n\tconst struct intel_modular_aic_slot_data *slot);\n"
+            },
+            {
+              "path": "zephyr/include/drivers/intel_modular_aic.h",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "intel_modular_aic_slot_get_port(const struct intel_modular_aic_slot_data *slot,\n\t\t\t\tuint8_t port_id);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6b5cd8fb27af4c81fdebc24c121b782c7ef9840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7dac582_49ee3265",
+        "filename": "zephyr/subsys/intel_modular_aic/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-14T20:41:58Z",
+      "side": 1,
+      "message": "This help duplicates the help from INTEL_MODULAR_AIC above.  Can you expand the description?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "6b5cd8fb27af4c81fdebc24c121b782c7ef9840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
