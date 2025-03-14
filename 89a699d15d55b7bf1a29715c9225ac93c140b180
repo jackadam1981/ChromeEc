@@ -187,6 +187,30 @@
       },
       "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cdd6728_6202c2ae",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-14T20:36:07Z",
+      "side": 1,
+      "message": "I put my comment on the wrong file - I meant to tag the usbc-port file.",
+      "parentUuid": "f7ba510f_ade0248d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
