@@ -87,6 +87,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a897d4e_3535ddb0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-14T18:33:56Z",
+      "side": 1,
+      "message": "Still need answers to these questions:\n\n\u003e Can you remind me how the memory allocation for this works? (It\u0027s been a while since I\u0027ve looked at that code.)\n\n\u003e Ultimately this needs to be \"sent over the wire\" (to the AP), so when the response is sent it needs to copy the entire image_frame array. Where does that happen?",
+      "parentUuid": "89f7f011_1c2599ea",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
