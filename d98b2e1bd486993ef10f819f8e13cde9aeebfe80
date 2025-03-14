@@ -40,6 +40,30 @@
       ],
       "revId": "d98b2e1bd486993ef10f819f8e13cde9aeebfe80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8970f38a_ccdf0c47",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025_private.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-14T10:12:28Z",
+      "side": 1,
+      "message": "We shouldn\u0027t change the library header, so it should be `int mode`.",
+      "parentUuid": "29f733f8_478b1ec6",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "revId": "d98b2e1bd486993ef10f819f8e13cde9aeebfe80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
