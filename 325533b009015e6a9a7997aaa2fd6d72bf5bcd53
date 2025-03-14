@@ -124,6 +124,24 @@
       "parentUuid": "d3b833d7_329ae7ea",
       "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2072a175_8b45d5fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-14T17:14:19Z",
+      "side": 1,
+      "message": "I will drop this refactoring change. The entire function is moved by crrev.com/c/6353879 instead.",
+      "parentUuid": "8e9a66d9_95869fb2",
+      "revId": "325533b009015e6a9a7997aaa2fd6d72bf5bcd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
