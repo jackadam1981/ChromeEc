@@ -174,6 +174,22 @@ int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type);
  */
 int fp_maintenance(void);
 
+/**
+ * Converts a standardized fingerprint capture type to a vendor-specific capture
+ * type (integer).
+ *
+ * This function maps an integer representing a standardize fingerprint image
+ * capture type @p capture_type in `fp_capture_type` enumeration value, to a
+ * corresponding capture type defined by specific fingerprint sensor vendor.
+ * This allows for abstraction and portability across different fingerprint
+ * sensor implementations.
+ *
+ * @param capture_type The `fp_capture_type` enumeration value.
+ * @return The vendor-specific integer representing the capture mode.
+ *
+ */
+int fp_convert_to_vendor_capture_type(enum fp_capture_type capture_type);
+
 #ifdef CONFIG_ZEPHYR
 /**
  * Put the sensor into idle state
