@@ -631,9 +631,88 @@ static void cmsis_dap_goog_info(void)
 }
 
 #ifdef CONFIG_USB_CMSIS_DAP_I2C
+#include "i2c.h"
+#include "shared_mem.h"
+#include "usb_i2c.h"
+
+/* Duplicated from usb_i2c.c */
+static int16_t usb_i2c_map_error(int error)
+{
+	switch (error) {
+	case EC_SUCCESS:
+		return USB_I2C_SUCCESS;
+	case EC_ERROR_TIMEOUT:
+		return USB_I2C_TIMEOUT;
+	case EC_ERROR_BUSY:
+		return USB_I2C_BUSY;
+	default:
+		return USB_I2C_UNKNOWN_ERROR | (error & 0x7fff);
+	}
+}
+
 void cmsis_dap_goog_i2c(void)
 {
-	// TODO
+	uint8_t header[7];
+
+	/* One byte CMSIS-DAP request header, 4 bytes of I2C header. */
+	cmsis_dap_queue_blocking_remove(header, 5);
+	if (cmsis_dap_unwind_requested())
+		return;
+
+	/* Decode 4 bytes of I2C header. */
+	int portindex = header[1] & 0xf;
+	uint16_t addr_flags = header[2] & 0x7f;
+	int write_count = ((header[1] << 4) & 0xf00) | header[3];
+	int read_count = header[4];
+
+	if (read_count & 0x80) {
+		/* 2 more bytes of I2C header. */
+		cmsis_dap_queue_blocking_remove(header + 5, 2);
+		if (cmsis_dap_unwind_requested())
+			return;
+		read_count = (header[5] << 7) | (read_count & 0x7f);
+	}
+
+	/* Clear area for response header */
+	header[1] = 0;
+	header[2] = 0;
+	header[3] = 0;
+	header[4] = 0;
+
+	uint16_t i2c_status = 0;
+	char *data = NULL;
+	if (!usb_i2c_board_is_enabled()) {
+		i2c_status = USB_I2C_DISABLED;
+	} else if (!read_count && !write_count) {
+		/* No-op, report as success */
+		i2c_status = USB_I2C_SUCCESS;
+	} else if (write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT) {
+		i2c_status = USB_I2C_WRITE_COUNT_INVALID;
+	} else if (read_count > CONFIG_USB_I2C_MAX_READ_COUNT) {
+		i2c_status = USB_I2C_READ_COUNT_INVALID;
+	} else if (portindex >= i2c_ports_used) {
+		i2c_status = USB_I2C_PORT_INVALID;
+	} else {
+		int rv =
+			shared_mem_acquire(MAX(write_count, read_count), &data);
+		if (rv != EC_SUCCESS)
+			panic("No mem");
+		cmsis_dap_queue_blocking_remove(data, write_count);
+		int ret = i2c_xfer(i2c_ports[portindex].port, addr_flags, data,
+				   write_count, data, read_count);
+		i2c_status = usb_i2c_map_error(ret);
+	}
+	header[1] = i2c_status & 0xFF;
+	header[2] = i2c_status >> 8;
+	/*
+	 * Send one byte of CMSIS-DAP header, four bytes of Google I2C header,
+	 * followed by any data received via I2C.
+	 */
+	queue_add_units(&cmsis_dap_tx_queue, header, 1 + 4);
+	if (data) {
+		cmsis_dap_queue_blocking_add(data, read_count);
+		shared_mem_release(data);
+	}
 }
 #endif
 
