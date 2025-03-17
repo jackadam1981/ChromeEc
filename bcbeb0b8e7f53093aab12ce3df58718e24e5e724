@@ -16,6 +16,24 @@
       "message": "Agree with this, but can you file a go/fw-toolchain-bug for us to follow up on multilib support",
       "revId": "bcbeb0b8e7f53093aab12ce3df58718e24e5e724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef30a2f7_9a628868",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-03-17T21:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df653a3_4470c745",
+      "revId": "bcbeb0b8e7f53093aab12ce3df58718e24e5e724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
