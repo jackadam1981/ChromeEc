@@ -70,6 +70,10 @@
 			offset = <0x44>;
 			size = <0x01>;
 		};
+		ec_img_jmp {
+			offset = <0x48>;
+			size = <0x01>;
+		};
 	};
 
 	fiu0: cros-flash {
