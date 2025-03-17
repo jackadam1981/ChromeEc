@@ -34,6 +34,24 @@
       "parentUuid": "b8f8f788_9ff50848",
       "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57f5a19_1dbeee19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-17T16:48:59Z",
+      "side": 1,
+      "message": "The script does not treat a lack of `named-i2c-port`\u0027s as an error, though. It continues executing looking for other components and then returns success if no further issues are found. If this is truly an error, it should fail the build, or it will be ignored; if not a fatal error, this introduces noise to the build logs and is misleading.\n\nIs this script intended to convert a devicetree into a JSON description of key components, or is it intended to validate a devicetree? If it is the latter, I think we need a better source of truth of what is expected. For instance we have real EC boards in early bring-up that compile fine but don\u0027t have a `named-i2c-port` [yet] and we also have pure-Zephyr boards that wouldn\u0027t use it because `named-i2c-port` isn\u0027t mandatory unless you\u0027re shimming in legacy CrOS EC drivers.\n\nSomething like comitting a copy of the component manfiest for each board and alerting on changes would do a better job of catching devicetree msitakes/regressions in my opinion, if that is one of the goals here. (if a developer modifies the DT intentionally by adding/removing a device, they regenerate the component manifest, commit it, and it\u0027ll be easy to see in code review)\n\nI took the output of `zmake configure -a --clobber` and the list of Zephyr targets that shows the `No named-i2c-ports node found` error are `axii`, `bloonchipper`, `ite-aic`, `minimal-it8xx2`, `minimal-posix`, `ocelot_ite` for reference",
+      "parentUuid": "9cba9af3_9fae59fb",
+      "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
