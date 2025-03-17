@@ -407,6 +407,7 @@ if(DEFINED CONFIG_BOARD_DIRKS)
 			"dirks/src/barrel_jack.c"
 			"dirks/src/led.c"
 			"dirks/src/hdmi.c"
+			"dirks/src/power.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "dirks/src/usbc.c")
 endif()

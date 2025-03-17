@@ -37,6 +37,12 @@ config PLATFORM_EC_POWER_BUTTON_INIT_TIMEOUT
 	  the system. If the timeout is reached, the AP is
 	  not started, and the power task's state is set to idle.
 
+config PLATFORM_EC_DELAY_DSW_PWROK_TO_PWRBTN
+	bool "Enable delay between DSW_PWROK and PWRBTN assertion."
+	help
+	  If enabled, DSW_PWROK_TO_PWRBTN_US and get_time_dsw_pwrok must be
+	  defined as well.
+
 config PLATFORM_EC_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 	int "Minimal battery level to boot AP without AC"
 	depends on PLATFORM_EC_BATTERY
