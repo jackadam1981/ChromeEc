@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4f09b56_6cf49271",
+        "filename": "zephyr/program/rauru/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-17T08:53:27Z",
+      "side": 1,
+      "message": "Can we use `target_sources_ifndef`?",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ddba5c_75b02c19",
+        "filename": "zephyr/program/rauru/hylia/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-17T08:53:27Z",
+      "side": 1,
+      "message": "I think you can just put the \"src/backlight.c\" into the previous `zephyr_library_sources`.",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd8cd3a0_153bbda4",
         "filename": "zephyr/program/rauru/hylia/src/backlight.c",
         "patchSetId": 7
@@ -48,6 +82,29 @@
       "writtenOn": "2025-03-17T08:52:31Z",
       "side": 1,
       "message": "```suggestion\n\t\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_tp_en_od), value_en);\n```",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359aa576_5fe7381c",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-17T08:53:27Z",
+      "side": 1,
+      "message": "Is this needed for the functionality to work? Or is it a placeholder for writing future test?",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 70
+      },
       "revId": "08caf12a9115252e849b993741b18c2c47b40294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
