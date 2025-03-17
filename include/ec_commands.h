@@ -3319,7 +3319,8 @@ struct ec_response_motion_sense {
 			 * Sensor data is truncated if response_max is too small
 			 * for holding all the data.
 			 */
-			struct ec_response_motion_sensor_data sensor[0];
+			struct ec_response_motion_sensor_data
+				sensor[FLEXIBLE_ARRAY_MEMBER_SIZE];
 		} dump;
 
 		/* Used for MOTIONSENSE_CMD_INFO. */
