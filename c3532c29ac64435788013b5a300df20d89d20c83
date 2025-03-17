@@ -111,6 +111,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce0437b_aaf300bb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-17T23:00:41Z",
+      "side": 1,
+      "message": "what do you mean by `the memory allocation for this works`. Shouldn\u0027t this be similar to how we handle the `rand` command?",
+      "parentUuid": "6a897d4e_3535ddb0",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
