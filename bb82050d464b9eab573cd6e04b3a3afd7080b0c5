@@ -52,6 +52,24 @@
       "parentUuid": "9cba9af3_9fae59fb",
       "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4e4851_74bbc565",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-17T18:02:02Z",
+      "side": 1,
+      "message": "We should fail the build, including the lack of `named-i2c-port`. We need to reprioritize this old known task: b/310998625.\n\nThe script is for the former. It doesn\u0027t care about the correctness of the device tree but it cares the generated component manifest. We don\u0027t know any missing components in the manifest until the factory process, that is usually too late and we have to requal the a new EC image for its updated manifest. We need to have some heuristic to detect earlier.\n\nHaving a copy of the component manifest is also a good idea. We can do so for a few of already-shipped projects.\n\n`axii` is a detachable base. `bloonchipper` is a fingerprint MCU project. The other projects are for experimental. For these experiemental, we may use `CONFIG_PLATFORM_EC_BRINGUP` to skip them.\n\nWe can use `CONFIG_FINGERPRINT_SENSOR` and `CONFIG_DETACHABLE_BASE` as a blocklist to skip running `cme.py`. And use `CONFIG_PLATFORM_EC_BRINGUP` to forgive the `cme.py` failure (not fail the build but still print the error messages and a final message indicating the errors are forgiven).",
+      "parentUuid": "e57f5a19_1dbeee19",
+      "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
