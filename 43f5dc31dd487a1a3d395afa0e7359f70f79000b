@@ -52,6 +52,24 @@
       "parentUuid": "e6f57c41_577fae19",
       "revId": "43f5dc31dd487a1a3d395afa0e7359f70f79000b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dccfbc1_d8f69e1c",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-17T23:40:39Z",
+      "side": 1,
+      "message": "The watchdog crash is fixed in the latest patchset, log below\n\n```\n--- UART initialized after reboot ---\n[Image: RO, helipilot_v2.0.24337-2726e9f149 helipilot_15829.0.0 2024-03-22 01:34:51 @chromeos-release-builder-us-central1-b-x32-118-18hu]\n[Reset cause: reset-pin]\n[0.000333 Inits done]\n[0.000387 TRANSPORT_SEL: SPI]\n[0.000441 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [0.258382 event set 0x0000000000002000]\n[0.258446 hostcmd init 0x0000000000002000]\n[0.258602 Verifying RW image...]\n[0.397442 RW verify OK]\n[1.259379 MKBP not cleared within threshold, toggling.]\n[1.398512 Jumping to image RW (0x00000002)]\n[1.402489 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n\n[0.001000] \u003cwrn\u003e host_cmd_handler: Host Command handler provided unused buffer\n*** Booting Zephyr OS build 4.1.0-rc1 ***\n\n[0.016100 UART initialized after sysjump]\n[Image: RW, helipilot-0.0.0-774063f+ 2025-03-17 16:35:43 davidmcross@davidmcross-glaptop]\n[Reset cause: reset-pin sysjump]\n[0.098200 event set 0x0000000000002000]\n[0.102100 hostcmd init 0x0000000000002000]\n[0.107100 Inits done]\n[0.111000 FP_SENSOR_SEL: FPC]\nFPC1025 id 0x021b\n[0.117000] \u003cwrn\u003e fpc_bep_alg: Initializing BEP algorithm without private library\n[0.110000] \u003cinf\u003e shim_cros_shi: shi_enable\n[1.102700 MKBP not cleared within threshold, toggling.]\n[2.108500 MKBP: The AP is failing to respond because it is sleeping or off]\nfpmcu:~$ fpenroll\n[35.029900 Waiting for finger ...]\n```",
+      "parentUuid": "7480007b_c0e9f710",
+      "revId": "43f5dc31dd487a1a3d395afa0e7359f70f79000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
