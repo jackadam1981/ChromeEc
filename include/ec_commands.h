@@ -3024,12 +3024,12 @@ struct ec_response_motion_sense_fifo_info {
 	/* Total amount of vector lost */
 	uint16_t total_lost;
 	/* Lost events since the last fifo_info, per sensors */
-	uint16_t lost[0];
+	uint16_t lost[FLEXIBLE_ARRAY_MEMBER_SIZE];
 } __ec_todo_packed;
 
 struct ec_response_motion_sense_fifo_data {
 	uint32_t number_data;
-	struct ec_response_motion_sensor_data data[0];
+	struct ec_response_motion_sensor_data data[FLEXIBLE_ARRAY_MEMBER_SIZE];
 } __ec_todo_packed;
 
 /* List supported activity recognition */
@@ -3319,7 +3319,8 @@ struct ec_response_motion_sense {
 			 * Sensor data is truncated if response_max is too small
 			 * for holding all the data.
 			 */
-			struct ec_response_motion_sensor_data sensor[0];
+			struct ec_response_motion_sensor_data
+				sensor[FLEXIBLE_ARRAY_MEMBER_SIZE];
 		} dump;
 
 		/* Used for MOTIONSENSE_CMD_INFO. */
