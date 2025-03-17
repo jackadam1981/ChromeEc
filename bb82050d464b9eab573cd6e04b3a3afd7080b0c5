@@ -70,6 +70,24 @@
       "parentUuid": "e57f5a19_1dbeee19",
       "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0680663_fcef42c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-17T18:55:27Z",
+      "side": 1,
+      "message": "We should merge this CL as is.  b/310998625 is already open to fix cme.py to generate a build failure for fatal errors.\n\nThat effort likely needs to fix the false positives and correct any boards that truly are missing `named-i2c-port`.\n\nBut right now, the \"error\" message from cme.py is just adding noise to the logs.",
+      "parentUuid": "5d4e4851_74bbc565",
+      "revId": "bb82050d464b9eab573cd6e04b3a3afd7080b0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
