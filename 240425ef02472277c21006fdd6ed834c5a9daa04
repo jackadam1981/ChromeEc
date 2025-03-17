@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff436079_bd6ec107",
+        "filename": "docs/zephyr/pdc.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-17T16:19:35Z",
+      "side": 1,
+      "message": "Nit - \"PDC Dead Battery Handling\".  The document is now generic for 1 to many ports.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "16f649c1_88d91590",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "docs/zephyr/pdc.md",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": "### PDC Dead Battery Handling\n"
+            }
+          ]
+        }
+      ],
+      "revId": "240425ef02472277c21006fdd6ed834c5a9daa04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
