@@ -82,36 +82,7 @@ uint32_t system_get_lfw_address(void)
 	return jump_addr;
 }
 
-enum ec_image system_get_shrspi_image_copy(void)
-{
-	enum ec_image img = EC_IMAGE_UNKNOWN;
-	uint32_t value = 0u;
-
-	if (bbram_dev) {
-		if (!bbram_read(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
-				BBRAM_REGION_SIZE(ec_img_load),
-				(uint8_t *)&value)) {
-			img = (enum ec_image)(value & 0x7fu);
-		}
-	}
-
-	if (img == EC_IMAGE_UNKNOWN) {
-		img = EC_IMAGE_RO;
-		if (mchp_image_type == MCHP_ECRW_WORD) {
-			img = EC_IMAGE_RW;
-		}
-		system_set_image_copy(img);
-	}
-
-	return img;
-}
-
-/* Flash is not memory mapped. Store a flag indicating the image.
- * ECS WDT_CNT is register available to applications. It implements bits[3:0]
- * which are not reset by a watch dog event only by VTR/chip reset.
- * VBAT memory is safer only if the board has a stable VBAT power rail.
- */
-void system_set_image_copy(enum ec_image copy)
+void system_set_image_copy_jump(enum ec_image copy, bool jump)
 {
 	uint32_t value = (uint32_t)copy;
 
@@ -132,4 +103,46 @@ void system_set_image_copy(enum ec_image copy)
 
 	bbram_write(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
 		    BBRAM_REGION_SIZE(ec_img_load), (uint8_t *)&value);
+	value = jump;
+	bbram_write(bbram_dev, BBRAM_REGION_OFFSET(ec_img_jmp),
+		    BBRAM_REGION_SIZE(ec_img_jmp), (uint8_t *)&value);
+}
+
+enum ec_image system_get_shrspi_image_copy(void)
+{
+	enum ec_image img = EC_IMAGE_UNKNOWN;
+	uint32_t value = 0u;
+
+	if (bbram_dev) {
+		/* Check if we have done a jump first */
+		bbram_read(bbram_dev, BBRAM_REGION_OFFSET(ec_img_jmp),
+			   BBRAM_REGION_SIZE(ec_img_jmp), (uint8_t *)&value);
+		/* Read only if jump was made, otherwise mark as unknown */
+		if (value &&
+		    !bbram_read(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
+				BBRAM_REGION_SIZE(ec_img_load),
+				(uint8_t *)&value)) {
+			img = (enum ec_image)(value & 0x7fu);
+		}
+	}
+
+	if (img == EC_IMAGE_UNKNOWN) {
+		img = EC_IMAGE_RO;
+		if (mchp_image_type == MCHP_ECRW_WORD) {
+			img = EC_IMAGE_RW;
+		}
+	}
+	system_set_image_copy_jump(img, false);
+
+	return img;
+}
+
+/* Flash is not memory mapped. Store a flag indicating the image.
+ * ECS WDT_CNT is register available to applications. It implements bits[3:0]
+ * which are not reset by a watch dog event only by VTR/chip reset.
+ * VBAT memory is safer only if the board has a stable VBAT power rail.
+ */
+void system_set_image_copy(enum ec_image copy)
+{
+	system_set_image_copy_jump(copy, true);
 }
