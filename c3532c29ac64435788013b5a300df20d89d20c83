@@ -135,6 +135,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3deb479_dfeedf54",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-17T23:07:12Z",
+      "side": 1,
+      "message": "\u003e Shouldn\u0027t this be similar to how we handle the rand command?\n\nYes, but it\u0027s been a while since I\u0027ve looked at the code, so I don\u0027t remember offhand how it behaves.\n\nHow are you copying the data into the response struct and making sure that there\u0027s enough space in the response for it?\n\n(I don\u0027t see anything related to that in this change.)",
+      "parentUuid": "dce0437b_aaf300bb",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
