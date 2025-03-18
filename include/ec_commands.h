@@ -8325,6 +8325,9 @@ struct ec_params_fp_passthru {
  *
  * @FP_CAPTURE_VENDOR_FORMAT: Capture 1-3 images and choose the best quality
  * image (produces 'frame_size' bytes)
+ * @FP_CAPTURE_DEFECT_PXL_TEST: Capture for check defect pixel test
+ * @FP_CAPTURE_ABNORMAL_TEST: Capture for check abnormal pixel test
+ * @FP_CAPTURE_NOISE_TEST: Capture for check noise test
  * @FP_CAPTURE_SIMPLE_IMAGE: Simple raw image capture (produces width x height x
  * bpp bits)
  * @FP_CAPTURE_PATTERN0: Self test pattern (e.g. checkerboard)
@@ -8338,6 +8341,9 @@ struct ec_params_fp_passthru {
  */
 enum fp_capture_type {
 	FP_CAPTURE_VENDOR_FORMAT = 0,
+	FP_CAPTURE_DEFECT_PXL_TEST = 1,
+	FP_CAPTURE_ABNORMAL_TEST = 2,
+	FP_CAPTURE_NOISE_TEST = 3,
 	FP_CAPTURE_SIMPLE_IMAGE = 4,
 	FP_CAPTURE_PATTERN0 = 8,
 	FP_CAPTURE_PATTERN1 = 12,
