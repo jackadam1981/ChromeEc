@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "695b58d6_fbc1dd79",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87aea968_d1bae776",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "4288f23a68fe676e8842b7c5cece7f9ad49618e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd14ed2_a229ad7d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-18T19:45:42Z",
       "side": 1,
       "message": "Non-blocking - it would be nice to display the CCD port in this path.  You could make `find_ccd_port` public to facilitate this.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 0
+      },
+      "revId": "4288f23a68fe676e8842b7c5cece7f9ad49618e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c59503_8f4853a3",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd14ed2_a229ad7d",
       "range": {
         "startLine": 760,
         "startChar": 0,
