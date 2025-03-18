@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b64b8664_2b0aed58",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-18T23:38:37Z",
+      "side": 1,
+      "message": "It looks like there\u0027s no check that the response struct (`r`) is big enough to hold the values filled in by `fp_sensor_get_info_v2`.",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "81392d5e_2dda9aaa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fpsensor/fpsensor.cc",
+              "range": {
+                "startLine": 426,
+                "startChar": 0,
+                "endLine": 427,
+                "endChar": 0
+              },
+              "replacement": "\tif (fp_sensor_get_info_v2(r) \u003c 0 ||\n\t    args-\u003eresponse_size \u003c sizeof(*r))\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c878eb6169df868c5811f452049e55010789ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
