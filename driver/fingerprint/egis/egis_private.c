@@ -23,6 +23,66 @@
 static uint16_t errors;
 
 /* Sensor description */
+static struct fp_sensor_info egis_sensor_info = {
+	/* Sensor identification */
+	.vendor_id = FOURCC('E', 'G', 'I', 'S'),
+	.product_id = 9,
+	.model_id = 1,
+	.version = 1,
+};
+
+#define EGIS_DEFAULT_IMAGE_PARAMS                                         \
+	.bpp = FP_SENSOR_DEFAULT_BPP_EGIS,                                \
+	.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS,        \
+	.pixel_format = V4L2_PIX_FMT_GREY, .width = FP_SENSOR_RES_X_EGIS, \
+	.height = FP_SENSOR_RES_Y_EGIS
+
+#define EGIS_TEST_IMAGE_PARAMS                                            \
+	.bpp = FP_SENSOR_TEST_BPP_EGIS,                                   \
+	.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *       \
+		      sizeof(uint16_t),                                   \
+	.pixel_format = V4L2_PIX_FMT_GREY, .width = FP_SENSOR_RES_X_EGIS, \
+	.height = FP_SENSOR_RES_Y_EGIS
+
+static const struct fp_image_frame_params egis_image_frame_params[] = {
+	[EGIS_CAPTURE_NORMAL_FORMAT] =
+	{
+		EGIS_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE,
+	},
+	[EGIS_CAPTURE_BLACK_PXL_TEST] =
+	{
+		EGIS_TEST_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_PATTERN0,
+	},
+	[EGIS_CAPTURE_WHITE_PXL_TEST] =
+	{
+		EGIS_TEST_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_PATTERN1,
+	},
+	[EGIS_CAPTURE_DEFECT_PXL_TEST] =
+	{
+		EGIS_TEST_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_DEFECT_PXL_TEST,
+	},
+	[EGIS_CAPTURE_NOISE_TEST] =
+	{
+		EGIS_TEST_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_NOISE_TEST,
+	},
+	[EGIS_CAPTURE_ABNORMAL_TEST] =
+	{
+		EGIS_TEST_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_ABNORMAL_TEST,
+	},
+	[EGIS_CAPTURE_RV_INT_TEST] =
+	{
+		EGIS_TEST_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_QUALITY_TEST,
+	},
+};
+
+/* Sensor description */
 static struct ec_response_fp_info egis_fp_sensor_info = {
 	/* Sensor identification */
 	.vendor_id = FOURCC('E', 'G', 'I', 'S'),
@@ -127,6 +187,32 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 
 	resp->model_id = sensor_id;
 	resp->errors = errors;
+	return EC_SUCCESS;
+}
+
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size)
+{
+	if (sizeof(struct ec_response_fp_info_v2) +
+		    sizeof(egis_image_frame_params) >
+	    resp_size) {
+		return EC_RES_OVERFLOW;
+	}
+
+	uint16_t sensor_id;
+	if (egis_get_hwid(&sensor_id) != EGIS_API_OK)
+		return EC_RES_ERROR;
+
+	memcpy(&resp->sensor_info, &egis_sensor_info,
+	       sizeof(struct fp_sensor_info));
+
+	memcpy(&resp->image_frame_params, &egis_image_frame_params,
+	       sizeof(egis_image_frame_params));
+
+	resp->sensor_info.model_id = sensor_id;
+	resp->sensor_info.errors = errors;
+	resp->sensor_info.num_capture_types =
+		ARRAY_SIZE(egis_image_frame_params);
+
 	return EC_SUCCESS;
 }
 
