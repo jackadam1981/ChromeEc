@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "egis_api.h"
 #include "fpsensor/fpsensor.h"
 #include "gpio.h"
@@ -13,12 +14,103 @@
 #include "util.h"
 
 #include <assert.h>
+#include <errno.h>
 #include <stddef.h>
 #include <stdint.h>
 #define LOG_TAG "RBS-rapwer"
 
 /* recorded error flags */
 static uint16_t errors;
+
+static const struct fp_image_frame_params egis_image_frame_params[8] = {
+	/* EGIS_CAPTURE_NORMAL_FORMAT */
+	{
+		.bpp = FP_SENSOR_DEFAULT_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_VENDOR_FORMAT,
+	},
+	/* EGIS_CAPTURE_NORMAL_FORMAT */
+	{
+		.bpp = FP_SENSOR_DEFAULT_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE,
+	},
+	/* EGIS_CAPTURE_BLACK_PXL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_PATTERN0,
+	},
+	/* EGIS_CAPTURE_WHITE_PXL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_PATTERN1,
+	},
+	/* EGIS_CAPTURE_DEFECT_PXL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_DEFECT_PXL_TEST,
+	},
+	/* EGIS_CAPTURE_NOISE_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_NOISE_TEST,
+	},
+	/* EGIS_CAPTURE_ABNORMAL_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_ABNORMAL_TEST,
+	},
+	/* EGIS_CAPTURE_RV_INT_TEST */
+	{
+		.bpp = FP_SENSOR_TEST_BPP_EGIS,
+		.frame_size = FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *
+			      sizeof(uint16_t),
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_EGIS,
+		.height = FP_SENSOR_RES_Y_EGIS,
+		.fp_capture_type = FP_CAPTURE_QUALITY_TEST,
+	},
+};
+
+/* Sensor description */
+static struct fp_sensor_info egis_sensor_info = {
+	/* Sensor identification */
+	.vendor_id = FOURCC('E', 'G', 'I', 'S'),
+	.product_id = 9,
+	.model_id = 1,
+	.version = 1,
+};
 
 /* Sensor description */
 static struct ec_response_fp_info egis_fp_sensor_info = {
@@ -50,6 +142,31 @@ static int convert_egis_get_image_error_code(egis_api_return_t code)
 	default:
 		assert(code < 0);
 		return code;
+	}
+}
+
+static egis_capture_mode_t
+convert_fp_capture_type_to_egis_capture_type(enum fp_capture_type capture_type)
+{
+	switch (capture_type) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return EGIS_CAPTURE_NORMAL_FORMAT;
+	case FP_CAPTURE_PATTERN0:
+		return EGIS_CAPTURE_BLACK_PXL_TEST;
+	case FP_CAPTURE_PATTERN1:
+		return EGIS_CAPTURE_WHITE_PXL_TEST;
+	case FP_CAPTURE_QUALITY_TEST:
+		return EGIS_CAPTURE_RV_INT_TEST;
+	case FP_CAPTURE_DEFECT_PXL_TEST:
+		return EGIS_CAPTURE_DEFECT_PXL_TEST;
+	case FP_CAPTURE_ABNORMAL_TEST:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FP_CAPTURE_NOISE_TEST:
+		return EGIS_CAPTURE_NOISE_TEST;
+	case FP_CAPTURE_RESET_TEST:
+	default:
+		return EGIS_CAPTURE_TYPE_INVALID;
 	}
 }
 
@@ -99,6 +216,27 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 
 	resp->model_id = sensor_id;
 	resp->errors = errors;
+	return EC_SUCCESS;
+}
+
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)
+{
+	uint16_t sensor_id;
+	memcpy(&resp->sensor_info, &egis_sensor_info,
+	       sizeof(struct fp_sensor_info));
+
+	memcpy(&resp->image_frame_params, &egis_image_frame_params,
+	       sizeof(egis_image_frame_params));
+
+	if (egis_get_hwid(&sensor_id) != EGIS_API_OK)
+		return EC_RES_ERROR;
+
+	resp->sensor_info.model_id = sensor_id;
+	resp->sensor_info.errors = errors;
+	resp->sensor_info.num_capture_types =
+		sizeof(egis_image_frame_params) /
+		sizeof(struct fp_image_frame_params);
+
 	return EC_SUCCESS;
 }
 
@@ -164,8 +302,15 @@ int fp_maintenance(void)
 
 int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type)
 {
+	egis_capture_mode_t rc =
+		convert_fp_capture_type_to_egis_capture_type(capture_type);
+
+	if (rc == EGIS_CAPTURE_TYPE_INVALID) {
+		CPRINTS("Unsupported capture_type %d provided", capture_type);
+		return -EINVAL;
+	}
 	return convert_egis_get_image_error_code(
-		egis_get_image_with_mode(image_data, capture_type));
+		egis_get_image_with_mode(image_data, rc));
 }
 
 enum finger_state fp_finger_status(void)
