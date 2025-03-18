@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940ab0cf_ed61f05e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-18T20:05:29Z",
+      "side": 1,
+      "message": "If you changed the GET_IC_STATUS command to set the offset to RTS54XX_GET_IC_STATUS_SBU_MUX_MODE_OFFSET and the data length to 1, does the RTK generate an error?\n\nYou could then let the common code do this check above at line 1248.\n\nCurrently, this duplicates all the error handling from above except for the specific `error_status` bit.  The `null_buffer_error` isn\u0027t actually checked anywhere so the common error path could just use `invalid_command_specific_param`.",
+      "range": {
+        "startLine": 1442,
+        "startChar": 0,
+        "endLine": 1442,
+        "endChar": 56
+      },
+      "revId": "42d12df32545bd82977dabf1ec8464c16d519494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
