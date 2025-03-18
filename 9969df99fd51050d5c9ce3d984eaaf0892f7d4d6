@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742cfbc4_88e782ae",
+        "filename": "zephyr/test/pdc/src/tps6699x/tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-18T16:11:18Z",
+      "side": 1,
+      "message": "Add the following here to reset the fake values before each test.  This helps if any future test using the fake starts in a known state.\n```\nRESET_FAKE(...);\naccess \u003d ACCESS_OK;\n```",
+      "revId": "9969df99fd51050d5c9ce3d984eaaf0892f7d4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
