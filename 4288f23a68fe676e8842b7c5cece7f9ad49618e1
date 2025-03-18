@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87aea968_d1bae776",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-18T20:24:33Z",
+      "side": 1,
+      "message": "If you drop this case, you might get the coverage about 90%.  I don\u0027t think there is enough value in distinguishing INVALID vs a bad value to keep both paths.",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "4288f23a68fe676e8842b7c5cece7f9ad49618e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cd14ed2_a229ad7d",
         "filename": "zephyr/subsys/pd_controller/pdc_console.c",
         "patchSetId": 2
