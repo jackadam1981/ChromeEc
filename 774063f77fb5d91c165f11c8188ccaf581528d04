@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1324dbbb_117748b0",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 59
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-18T22:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfeef0db_ac641b3e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "774063f77fb5d91c165f11c8188ccaf581528d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faac7b48_5231ea47",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-18T07:20:31Z",
       "side": 1,
       "message": "According to https://b.corp.google.com/issues/309557100#comment105 ITIM5 is used as watchdog warning, not as a system timer. Could you fix the comment?",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 35,
+        "endChar": 74
+      },
+      "revId": "774063f77fb5d91c165f11c8188ccaf581528d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5121bb1d_ad09980b",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-18T22:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faac7b48_5231ea47",
       "range": {
         "startLine": 34,
         "startChar": 44,
