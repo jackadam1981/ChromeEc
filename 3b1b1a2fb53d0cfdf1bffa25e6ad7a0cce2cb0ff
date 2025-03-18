@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b856023_b607537e",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-18T20:17:26Z",
+      "side": 1,
+      "message": "Non-blocking - how about using `offsetof` here instead of the hard-coded value?",
+      "range": {
+        "startLine": 172,
+        "startChar": 35,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "3b1b1a2fb53d0cfdf1bffa25e6ad7a0cce2cb0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
