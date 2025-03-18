@@ -231,6 +231,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4c474b_ab9dc87f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-18T23:39:21Z",
+      "side": 1,
+      "message": "I\u0027m still confused. I\u0027m looking for the implementation of this command in the firmware since I want to make sure that we have all the necessary pieces in place in the struct definition to implement the command. https://crrev.com/c/6354365 is the implementation, right? If so, please address the comments in that CL so that we can make sure we have the necessary things in the definition in this CL.",
+      "parentUuid": "e2c556cf_2a230be9",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
