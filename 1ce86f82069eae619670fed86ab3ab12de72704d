@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31538a93_861788a1",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058e5695_6daa24a3",
+      "revId": "1ce86f82069eae619670fed86ab3ab12de72704d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e64dc6_1233c216",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-18T06:17:15Z",
       "side": 1,
       "message": "add whitespace after *\n\n\n```suggestion\n\t * Check board version to enable older power sequence.\n\t * Only when the board ID is not greater than 1, the old sequence needs\n\t * to be enabled.\n```",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "1ce86f82069eae619670fed86ab3ab12de72704d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f672a29f_f765c33b",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e64dc6_1233c216",
       "range": {
         "startLine": 74,
         "startChar": 0,
