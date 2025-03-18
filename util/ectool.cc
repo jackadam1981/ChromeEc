@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "crc.h"
 #include "cros_ec_dev.h"
+#include "ec_commands.h"
 #include "ec_flash.h"
 #include "ec_version.h"
 #include "ectool.h"
@@ -2088,6 +2089,49 @@ int cmd_fp_info(int argc, char *argv[])
 		       r.template_version, r.template_size, r.template_valid,
 		       r.template_max, r.template_dirty);
 	}
+
+	return 0;
+}
+
+int cmd_fp_info_v2(int argc, char *argv[])
+{
+	struct ec_response_fp_info_v2 *r;
+	int rv;
+	uint16_t dead;
+
+	r = (struct ec_response_fp_info_v2 *)(ec_inbuf);
+
+	rv = ec_command(EC_CMD_FP_INFO, 2, NULL, 0, r, ec_max_insize);
+	if (rv < 0)
+		return rv;
+
+	printf("Fingerprint sensor: vendor %x product %x model %x version %x\n",
+	       r->sensor_info.vendor_id, r->sensor_info.product_id,
+	       r->sensor_info.model_id, r->sensor_info.version);
+
+	for (uint16_t i = 0; i < r->sensor_info.num_capture_types; ++i) {
+		printf("Image: size %dx%d %d bpp\n",
+		       r->image_frame_params[i].width,
+		       r->image_frame_params[i].height,
+		       r->image_frame_params[i].bpp);
+	}
+	printf("Error flags: %s%s%s%s\n",
+	       r->sensor_info.errors & FP_ERROR_NO_IRQ ? "NO_IRQ " : "",
+	       r->sensor_info.errors & FP_ERROR_SPI_COMM ? "SPI_COMM " : "",
+	       r->sensor_info.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
+	       r->sensor_info.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "");
+	dead = FP_ERROR_DEAD_PIXELS(r->sensor_info.errors);
+	if (dead == FP_ERROR_DEAD_PIXELS_UNKNOWN) {
+		printf("Dead pixels: UNKNOWN\n");
+	} else {
+		printf("Dead pixels: %u\n", dead);
+	}
+
+	printf("Templates: version %d size %d count %d/%d"
+	       " dirty bitmap %x\n",
+	       r->template_info.template_version,
+	       r->template_info.template_size, r->template_info.template_valid,
+	       r->template_info.template_max, r->template_info.template_dirty);
 
 	return 0;
 }
@@ -4941,7 +4985,10 @@ static int cmd_lightbar(int argc, char **argv)
 #define ST_PRM_SIZE(SUBCMD) \
 	(ST_CMD_SIZE + ST_FLD_SIZE(ec_params_motion_sense, SUBCMD))
 #define ST_RSP_SIZE(SUBCMD) ST_FLD_SIZE(ec_response_motion_sense, SUBCMD)
-#define ST_BOTH_SIZES(SUBCMD) { ST_PRM_SIZE(SUBCMD), ST_RSP_SIZE(SUBCMD) }
+#define ST_BOTH_SIZES(SUBCMD)                            \
+	{                                                \
+		ST_PRM_SIZE(SUBCMD), ST_RSP_SIZE(SUBCMD) \
+	}
 
 /*
  * For ectool only, assume no more than 16 sensors.  More advanced
@@ -8327,7 +8374,7 @@ static int get_battery_command_v2(uint8_t index)
 
 static int get_battery_command_v1(uint8_t index)
 {
-	struct ec_params_battery_static_info static_p{
+	struct ec_params_battery_static_info static_p {
 		.index = index,
 	};
 	struct ec_response_battery_static_info_v1 static_r;
@@ -9966,8 +10013,7 @@ struct param_info {
 
 #define FIELD(fname, field, help_str)                                       \
 	{                                                                   \
-		.name = fname,                                              \
-		.help = help_str,                                           \
+		.name = fname, .help = help_str,                            \
 		.size = sizeof(((struct ec_mkbp_config *)NULL)->field),     \
 		.offset = __builtin_offsetof(struct ec_mkbp_config, field), \
 	}
@@ -12724,6 +12770,8 @@ const struct command commands[] = {
 	{ "fpframe", cmd_fp_frame,
 	  "\n\tRetrieve the finger image as a PGM image." },
 	{ "fpinfo", cmd_fp_info,
+	  "\n\tPrints information about the Fingerprint sensor." },
+	{ "fpinfo2", cmd_fp_info_v2,
 	  "\n\tPrints information about the Fingerprint sensor." },
 	{ "fpmode", cmd_fp_mode,
 	  "[mode... [capture_type]]\n"
