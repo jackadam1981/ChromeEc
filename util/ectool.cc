@@ -2081,6 +2081,47 @@ int cmd_fp_info(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_fp_info_v2(int argc, char *argv[])
+{
+	struct ec_response_fp_info_v2 r;
+	int rv;
+	uint16_t dead;
+
+	printf("I am inside cmd_fp_info_v2 @ line: , %d\n", __LINE__);
+
+	rv = ec_command(EC_CMD_FP_INFO, 2, NULL, 0, &r, ec_max_insize);
+	if (rv < 0)
+		return rv;
+
+	printf("I am inside cmd_fp_info_v2 @ line: , %d\n", __LINE__);
+
+	printf("Fingerprint sensor: vendor %x product %x model %x version %x\n",
+	       r.vendor_id, r.product_id, r.model_id, r.version);
+
+	for (uint16_t i = 0; i < r.num_capture_types; ++i) {
+		printf("Image: size %dx%d %d bpp\n", r.image_frame[i].width,
+		       r.image_frame[i].height, r.image_frame[i].bpp);
+	}
+	printf("Error flags: %s%s%s%s\n",
+	       r.errors & FP_ERROR_NO_IRQ ? "NO_IRQ " : "",
+	       r.errors & FP_ERROR_SPI_COMM ? "SPI_COMM " : "",
+	       r.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
+	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "");
+	dead = FP_ERROR_DEAD_PIXELS(r.errors);
+	if (dead == FP_ERROR_DEAD_PIXELS_UNKNOWN) {
+		printf("Dead pixels: UNKNOWN\n");
+	} else {
+		printf("Dead pixels: %u\n", dead);
+	}
+
+	printf("Templates: version %d size %d count %d/%d"
+	       " dirty bitmap %x\n",
+	       r.template_version, r.template_size, r.template_valid,
+	       r.template_max, r.template_dirty);
+
+	return 0;
+}
+
 static int cmd_fp_context(int argc, char *argv[])
 {
 	struct ec_params_fp_context_v1 p;
@@ -12529,6 +12570,8 @@ const struct command commands[] = {
 	{ "fpframe", cmd_fp_frame,
 	  "\n\tRetrieve the finger image as a PGM image." },
 	{ "fpinfo", cmd_fp_info,
+	  "\n\tPrints information about the Fingerprint sensor." },
+	{ "fpinfo2", cmd_fp_info_v2,
 	  "\n\tPrints information about the Fingerprint sensor." },
 	{ "fpmode", cmd_fp_mode,
 	  "[mode... [capture_type]]\n"
