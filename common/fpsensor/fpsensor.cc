@@ -419,13 +419,17 @@ extern "C" void fp_task(void)
 
 static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 {
+	CPRINTS("I am inside fp_command_info_v2 @ line: %d\n", __LINE__);
+
 	struct ec_response_fp_info_v2 *r =
 		static_cast<ec_response_fp_info_v2 *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info_v2(r))
+	if (fp_sensor_get_info_v2(r) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
+
+	CPRINTS("I am inside fp_command_info_v2 @ line: %d\n", __LINE__);
 
 	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
 	r->template_max = FP_MAX_FINGER_COUNT;

@@ -198,6 +198,7 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)
 {
 	uint16_t sensor_id;
+	CPRINTS("I am inside fp_sensor_get_info_v2 @ line: %d\n", __LINE__);
 	memcpy(resp, &egis_fp_sensor_info_v2,
 	       sizeof(struct ec_response_fp_info_v2));
 
@@ -210,9 +211,12 @@ int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)
 		resp->image_frame[i].pixel_format =
 			egis_image_frame_params[i].pixel_format;
 	}
+	CPRINTS("I am inside fp_sensor_get_info_v2 @ line: %d\n", __LINE__);
 
 	if (egis_get_hwid(&sensor_id) != EGIS_API_OK)
 		return EC_RES_ERROR;
+
+	CPRINTS("I am inside fp_sensor_get_info_v2 @ line: %d\n", __LINE__);
 
 	resp->model_id = sensor_id;
 	resp->errors = errors;
