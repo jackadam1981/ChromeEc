@@ -16,6 +16,47 @@
       "message": "Please push only the necessary delta compared to existing VIF. Also specify the same in the commit message.",
       "revId": "5ddeb85c778c7e2bb09979c08f7dc0415dddeaa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b8dc71_6d0266ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:12:48Z",
+      "side": 1,
+      "message": "marking as unresolved",
+      "parentUuid": "135cc6d6_e8fe29e8",
+      "revId": "5ddeb85c778c7e2bb09979c08f7dc0415dddeaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1eaf8e_50a90f79",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:12:48Z",
+      "side": 1,
+      "message": "Make sure the versions are correct  3.2.1.0",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "5ddeb85c778c7e2bb09979c08f7dc0415dddeaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
