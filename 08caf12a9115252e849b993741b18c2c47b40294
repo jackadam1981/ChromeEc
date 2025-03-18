@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "660fda81_7b217f06",
+        "filename": "zephyr/program/rauru/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f09b56_6cf49271",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32ddba5c_75b02c19",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-17T08:53:27Z",
       "side": 1,
       "message": "I think you can just put the \"src/backlight.c\" into the previous `zephyr_library_sources`.",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1337702f_b1866ccd",
+        "filename": "zephyr/program/rauru/hylia/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32ddba5c_75b02c19",
       "revId": "08caf12a9115252e849b993741b18c2c47b40294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c9d4a9_37b5ea9f",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8cd3a0_153bbda4",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec839155_1382df03",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-03-17T08:52:31Z",
       "side": 1,
       "message": "you can set gpio directly.\n\n```suggestion\n\t\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_tp_en_od), value_en);\n```",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a07d4b_9ec348e5",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec839155_1382df03",
       "revId": "08caf12a9115252e849b993741b18c2c47b40294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddceea84_ef201e8b",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6744917e_98569422",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77446c5_3b0de30c",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-03-17T08:56:45Z",
       "side": 1,
       "message": "I assume you may refine to something like below : \n\ncase AP_POWER_RESUME:\ncase AP_POWER_SUSPEND:\n        int value \u003d data.event \u003d\u003d AP_POWER_RESUME ? 1 : 0;\n        gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_en_od), value);\n        break;",
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d67bb7a_235809a1",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77446c5_3b0de30c",
       "revId": "08caf12a9115252e849b993741b18c2c47b40294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54484b9_f6edf0c5",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "This is for subsequent ztest. It is not required for the function.",
+      "parentUuid": "359aa576_5fe7381c",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 70
+      },
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8950d755_841b3686",
@@ -139,6 +271,30 @@
       "writtenOn": "2025-03-17T08:52:31Z",
       "side": 1,
       "message": "This function will only be called once, no need to cache the board_version variable.\n\n```suggestion\n\tuint32_t board_version;\n\n\tif (cbi_get_board_version(\u0026board_version) !\u003d EC_SUCCESS) {\n\t\tLOG_ERR(\"Failed to get board version.\");\n\t\tboard_version \u003d 0;\n\t}\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "08caf12a9115252e849b993741b18c2c47b40294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38eb53e_72ca54cf",
+        "filename": "zephyr/program/rauru/hylia/src/backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-18T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8950d755_841b3686",
       "range": {
         "startLine": 84,
         "startChar": 0,
