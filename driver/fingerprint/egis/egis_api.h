@@ -19,14 +19,23 @@ extern "C" {
 #define FP_SENSOR_HWID_EGIS 630
 #define FP_SENSOR_RES_X_EGIS 80
 #define FP_SENSOR_RES_Y_EGIS 64
-#define FP_SENSOR_IMAGE_SIZE_EGIS (FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS)
+#define FP_SENSOR_IMAGE_SIZE_EGIS \
+	(FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS * sizeof(uint16_t))
 #define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024)
 #define FP_MAX_FINGER_COUNT_EGIS 3
 #define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 15
 #endif
 
 #define FP_SENSOR_IMAGE_OFFSET_EGIS (0)
-#define FP_SENSOR_RES_BPP_EGIS (8)
+
+/**
+ * @brief 8-bpp image for enroll/verify
+ */
+#define FP_SENSOR_DEFAULT_BPP_EGIS (8)
+/**
+ * @brief 16-bpp raw image for factory test
+ */
+#define FP_SENSOR_TEST_BPP_EGIS (16)
 
 typedef enum {
 	EGIS_API_OK = 0,
@@ -86,6 +95,7 @@ typedef enum {
  *
  */
 typedef enum {
+	EGIS_CAPTURE_TYPE_INVALID = -1,
 	EGIS_CAPTURE_NORMAL_FORMAT = 0,
 	EGIS_CAPTURE_BLACK_PXL_TEST = 1,
 	EGIS_CAPTURE_WHITE_PXL_TEST = 2,
