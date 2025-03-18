@@ -419,15 +419,17 @@ extern "C" void fp_task(void)
 
 static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_fp_info *p = args->params;
-	struct ec_response_fp_info_v2 *r = args->response;
+	const struct ec_params_fp_info *p =
+		static_cast<const ec_params_fp_info *>(args->params);
+	struct ec_response_fp_info_v2 *r =
+		static_cast<ec_response_fp_info_v2 *>(args->response);
 	uint16_t num_capture_types = p->num_capture_types;
 
-	if (num_capture_bytes > args->response_max)
+	if (num_capture_types > args->response_max)
 		return EC_RES_OVERFLOW;
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info_v2(r, num_capture_types))
+	if (fp_sensor_get_info_v2(r))
 #endif
 		return EC_RES_UNAVAILABLE;
 

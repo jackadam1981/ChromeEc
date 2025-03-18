@@ -108,8 +108,7 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp);
  * @return EC_SUCCESS on success
  * @return EC_RES_ERROR on error
  */
-int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp,
-			  uint16_t num_capture_types);
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp);
 
 /**
  * Put the sensor in its lowest power state.
