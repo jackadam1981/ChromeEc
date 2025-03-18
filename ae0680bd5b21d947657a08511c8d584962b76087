@@ -16,6 +16,121 @@
       "message": "Push only the required delta.Mention the changes in the commit message",
       "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e780bd5_6c3b3dc0",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:16:41Z",
+      "side": 1,
+      "message": "Check if this is correct",
+      "range": {
+        "startLine": 30,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd2a5d7_2e63be4b",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:16:41Z",
+      "side": 1,
+      "message": "PD version should be v3.2.1.0",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d0184f_385f3fb5",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:16:41Z",
+      "side": 1,
+      "message": "cross check that this is \"false\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 46,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0637444_07a2ddec",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:16:41Z",
+      "side": 1,
+      "message": "Lets not change this until we know",
+      "range": {
+        "startLine": 114,
+        "startChar": 29,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ad77f6_0405c4c7",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-03-18T10:16:41Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 200,
+        "startChar": 38,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
