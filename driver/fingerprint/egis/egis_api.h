@@ -24,7 +24,15 @@ extern "C" {
 #define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 15
 
 #define FP_SENSOR_IMAGE_OFFSET_EGIS (0)
-#define FP_SENSOR_RES_BPP_EGIS (8)
+
+/**
+ * @brief 8-bpp image for enroll/verify
+ */
+#define FP_SENSOR_DEFAULT_BPP_EGIS (8)
+/**
+ * @brief 16-bpp raw image for factory test
+ */
+#define FP_SENSOR_TEST_BPP_EGIS (16)
 
 typedef enum {
 	EGIS_API_OK = 0,
