@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ecb7b1_94a0336a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 8398,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-18T23:43:46Z",
+      "side": 1,
+      "message": "Since we\u0027re making changes to this, let\u0027s make it a bit more organized than it was before by putting the sensor stuff in a `fp_sensor_info` struct and the template-related stuff in a `fp_template_info` struct.",
+      "range": {
+        "startLine": 8388,
+        "startChar": 1,
+        "endLine": 8398,
+        "endChar": 64
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f8aba097_f4b81c58",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/ec_commands.h",
+              "range": {
+                "startLine": 8386,
+                "startChar": 0,
+                "endLine": 8387,
+                "endChar": 0
+              },
+              "replacement": "struct ec_response_fp_info_common {\n"
+            },
+            {
+              "path": "include/ec_commands.h",
+              "range": {
+                "startLine": 8399,
+                "startChar": 0,
+                "endLine": 8399,
+                "endChar": 0
+              },
+              "replacement": "} __ec_align4;\n\nstruct ec_response_fp_info_v2 {\n\tstruct ec_response_fp_info_common common;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "53692e52b452352839e1f090b1ce30599476a35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e65df99_6391b289",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 8402,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-18T23:43:46Z",
+      "side": 1,
+      "message": "To make sure we\u0027re not accidentally inserting extra padding due to alignment issues, can you add a `BUILD_ASSERT` to check the size of the struct to make sure it matches the size of the individual fields added together? There should be some examples in this file.",
+      "range": {
+        "startLine": 8402,
+        "startChar": 0,
+        "endLine": 8402,
+        "endChar": 14
+      },
+      "revId": "53692e52b452352839e1f090b1ce30599476a35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
