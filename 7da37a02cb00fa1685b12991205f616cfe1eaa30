@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ecda6f_e7a94607",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-18T20:20:44Z",
+      "side": 1,
+      "message": "Nit - line length",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 76
+      },
+      "revId": "7da37a02cb00fa1685b12991205f616cfe1eaa30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ea3448_c283d283",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api_no_ccd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-18T20:20:44Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s needed to check output parameters when the function fails.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "7da37a02cb00fa1685b12991205f616cfe1eaa30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
