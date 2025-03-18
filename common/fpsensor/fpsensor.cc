@@ -31,6 +31,7 @@
 #include "task.h"
 #include "trng.h"
 #include "util.h"
+#include "util/comm-host.h"
 #include "watchdog.h"
 
 #include <array>
@@ -419,6 +420,8 @@ extern "C" void fp_task(void)
 
 static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 {
+	CPRINTS("I am inside fp_command_info_v2 @ line: %d", __LINE__);
+
 	struct ec_response_fp_info_v2 *r =
 		static_cast<ec_response_fp_info_v2 *>(args->response);
 
@@ -427,13 +430,48 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 #endif
 		return EC_RES_UNAVAILABLE;
 
+	CPRINTS("I am inside fp_command_info_v2 @ line: %d", __LINE__);
+	CPRINTS("I am inside fp_command_info_v2; r->num_capture_types: %d",
+		r->num_capture_types);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[0].bpp: %d",
+		r->image_frame[0].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[1].bpp: %d",
+		r->image_frame[1].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[2].bpp: %d",
+		r->image_frame[2].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[3].bpp: %d",
+		r->image_frame[3].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[4].bpp: %d",
+		r->image_frame[4].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[5].bpp: %d",
+		r->image_frame[5].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[6].bpp: %d",
+		r->image_frame[6].bpp);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[0].frame_size: %d",
+		r->image_frame[0].frame_size);
+	CPRINTS("I am inside fp_command_info_v2; r->image_frame[6].frame_size: %d",
+		r->image_frame[6].frame_size);
+
 	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
 	r->template_max = FP_MAX_FINGER_COUNT;
 	r->template_valid = global_context.templ_valid;
 	r->template_dirty = global_context.templ_dirty;
 	r->template_version = FP_TEMPLATE_FORMAT_VERSION;
 
-	args->response_size = sizeof(*r);
+	CPRINTS("I am inside fp_command_info_v2; sizeof(struct ec_response_fp_info_v2): %d",
+		sizeof(struct ec_response_fp_info_v2));
+	CPRINTS("I am inside fp_command_info_v2; sizeof(struct image_frame_params): %d",
+		sizeof(struct image_frame_params));
+	CPRINTS("I am inside fp_command_info_v2; sizeof*r): %d", sizeof(*r));
+	CPRINTS("I am inside fp_command_info_v2; args->response_max: %d",
+		args->response_max);
+
+	args->response_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		(r->num_capture_types) * sizeof(struct image_frame_params);
+	CPRINTS("I am inside fp_command_info_v2; args->response_size : %d",
+		args->response_size);
+
 	return EC_RES_SUCCESS;
 }
 
