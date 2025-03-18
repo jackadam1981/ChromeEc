@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b778fe4_d2ced72c",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6290410f_6f748679",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 58
+      },
+      "revId": "3b1b1a2fb53d0cfdf1bffa25e6ad7a0cce2cb0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b856023_b607537e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-18T20:17:26Z",
       "side": 1,
       "message": "Non-blocking - how about using `offsetof` here instead of the hard-coded value?",
+      "range": {
+        "startLine": 172,
+        "startChar": 35,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "3b1b1a2fb53d0cfdf1bffa25e6ad7a0cce2cb0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d10b717_f57c3b19",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:15:16Z",
+      "side": 1,
+      "message": "This code no longer present after adding the feature flag check",
+      "parentUuid": "3b856023_b607537e",
       "range": {
         "startLine": 172,
         "startChar": 35,
