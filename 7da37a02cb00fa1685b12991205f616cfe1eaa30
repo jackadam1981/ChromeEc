@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cfc513_d9c2e866",
+        "filename": "zephyr/test/pdc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ecda6f_e7a94607",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 76
+      },
+      "revId": "7da37a02cb00fa1685b12991205f616cfe1eaa30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ea3448_c283d283",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-18T20:20:44Z",
       "side": 1,
       "message": "I don\u0027t think it\u0027s needed to check output parameters when the function fails.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "7da37a02cb00fa1685b12991205f616cfe1eaa30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78fed3a_d08afc1f",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api_no_ccd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ea3448_c283d283",
       "range": {
         "startLine": 28,
         "startChar": 0,
