@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb2c7432_1bd98916",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-18T23:09:32Z",
+      "side": 1,
+      "message": "I don\u0027t think it will hurt in this case since it\u0027s a single value. The issue we had with PDOs was conflating multiple types (src vs snk or lpm vs partner) and continuing to reference the shared buffer long after completing a command.",
+      "parentUuid": "085aa0e5_6ab85625",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 36
+      },
+      "revId": "0e7091aa1a0342ea07f1aaadd04cdfca116e1db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33c6f272_4ee78587",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 3
