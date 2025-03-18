@@ -1895,7 +1895,7 @@ struct ec_response_flash_info_2 {
 	uint16_t num_banks_total;
 	/* Number of banks described in banks array. */
 	uint16_t num_banks_desc;
-	struct ec_flash_bank banks[FLEXIBLE_ARRAY_MEMBER_SIZE];
+	struct ec_flash_bank banks[];
 } __ec_align4;
 
 /*
@@ -8298,6 +8298,9 @@ struct ec_params_fp_passthru {
  */
 enum fp_capture_type {
 	FP_CAPTURE_VENDOR_FORMAT = 0,
+	FP_CAPTURE_DEFECT_PXL_TEST = 1,
+	FP_CAPTURE_ABNORMAL_TEST = 2,
+	FP_CAPTURE_NOISE_TEST = 3,
 	FP_CAPTURE_SIMPLE_IMAGE = 4,
 	FP_CAPTURE_PATTERN0 = 8,
 	FP_CAPTURE_PATTERN1 = 12,
