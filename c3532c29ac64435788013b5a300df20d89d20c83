@@ -159,6 +159,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a685c911_a067ffc1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-18T06:03:05Z",
+      "side": 1,
+      "message": "I tested this with gwendolin. see `fpsensor:test implementation` CL.\n\nThe commit uses malloc similar to what I used for the fp_command_info",
+      "parentUuid": "b3deb479_dfeedf54",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
