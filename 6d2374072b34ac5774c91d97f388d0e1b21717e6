@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061f7eaf_d4789372",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-19T12:48:53Z",
+      "side": 1,
+      "message": "Typo",
+      "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50511ef7_8797ccee",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-19T12:48:53Z",
+      "side": 1,
+      "message": "NULL if not needed.",
+      "range": {
+        "startLine": 139,
+        "startChar": 54,
+        "endLine": 139,
+        "endChar": 71
+      },
+      "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
