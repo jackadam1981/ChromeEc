@@ -33,6 +33,23 @@
       "message": "Hi Knox, this CL needs `Code-Owners` approve, could you help review the CL? Thanks,",
       "revId": "75c147f35c48b0fb0376cf57fd3322c191853319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec00303_c18e5129",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-03-19T09:20:04Z",
+      "side": 1,
+      "message": "The failed cq `brya-cq.redrix.hw.fingerprint-cq` `rauru-cq.navi.hw.fingerprint-cq` `volteer-cq.volet.hw.fingerprint-cq` seems not relate to skywalker, try again.",
+      "revId": "75c147f35c48b0fb0376cf57fd3322c191853319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
