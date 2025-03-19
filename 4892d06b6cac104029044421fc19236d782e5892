@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c1fb19_f16987cc",
+        "filename": "extra/usb_updater/presubmit_hook.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-19T17:22:14Z",
+      "side": 1,
+      "message": "I just hit this preupload check. What directory is this make command supposed to be invoked from? What test setup it expects?\n\n@jettrink@google.com @mruthven@chromium.org",
+      "revId": "4892d06b6cac104029044421fc19236d782e5892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
