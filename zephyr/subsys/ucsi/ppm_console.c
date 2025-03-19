@@ -4,12 +4,15 @@
  */
 
 #include "ppm_common.h"
+#include "ppm_utils.h"
 
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include <zephyr/devicetree.h>
 #include <zephyr/shell/shell.h>
+#include <zephyr/sys/util.h>
 
 #include <drivers/ucsi_v3.h>
 
@@ -63,16 +66,13 @@ static int cmd_get_pd_port(const struct shell *sh, const struct device *ppm_dev,
 static int cmd_get_alt_modes(const struct shell *sh, int argc, char **argv)
 {
 	const struct device *dev = get_ppm_dev();
-	const struct ucsi_pd_driver *ppm_api;
 	uint8_t port;
 	uint8_t recipient = 1; /* Default to SOP as recipient */
-	struct ucsi_get_alternate_modes_t ucsi_response[4] = { 0 };
+	struct ucsi_altmode_field altmodes[16] = { 0 };
 	int num_alt_modes = 0;
 	int rv;
 
 	__ASSERT(dev, "PPM device is not ready");
-
-	ppm_api = dev->api;
 
 	if (cmd_get_pd_port(sh, dev, argv[1], &port)) {
 		shell_error(sh, "Invalid port");
@@ -95,39 +95,11 @@ static int cmd_get_alt_modes(const struct shell *sh, int argc, char **argv)
 		}
 	}
 
-	struct ucsi_control_t get_am_cmd = {
-                .command = UCSI_GET_ALTERNATE_MODES,
-                .data_length = 0,
-                .command_specific = {
-                        recipient & 0x07,
-                        /* Convert to 1-indexed port number */
-                        (port + 1) & 0x7F,
-                        0, /* Starting offset of 0 */
-                        1, /* Read 2 (1+1) alternate modes fields */
-                },
-        };
-
-	for (int i = 0; i < ARRAY_SIZE(ucsi_response); i++) {
-		/* We receive two fields per command call. Set the offset */
-		get_am_cmd.command_specific[2] = i * 2;
-
-		rv = ppm_api->execute_cmd(dev, &get_am_cmd,
-					  (uint8_t *)&ucsi_response[i]);
-		if (rv < 0) {
-			shell_error(sh,
-				    "Failed to execute UCSI command: %d (i=%d)",
-				    rv, i);
-			return 1;
-		}
-
-		if (ucsi_response[i].altmode_fields[0].svid == 0) {
-			num_alt_modes = 2 * i;
-			break;
-		}
-		if (ucsi_response[i].altmode_fields[1].svid == 0) {
-			num_alt_modes = 2 * i + 1;
-			break;
-		}
+	rv = ppm_get_alternate_modes(dev, port + 1, recipient,
+				     ARRAY_SIZE(altmodes), altmodes,
+				     &num_alt_modes);
+	if (rv != 0) {
+		return rv;
 	}
 
 	/* Print alternate mode info in a table */
@@ -145,8 +117,7 @@ static int cmd_get_alt_modes(const struct shell *sh, int argc, char **argv)
 
 	for (int i = 0; i < num_alt_modes; i++) {
 		shell_info(sh, "%03d    | SVID=0x%04x MID=0x%08x", i,
-			   ucsi_response[i / 2].altmode_fields[i % 2].svid,
-			   ucsi_response[i / 2].altmode_fields[i % 2].mid);
+			   altmodes[i].svid, altmodes[i].mid);
 	}
 
 	return 0;
@@ -161,6 +132,7 @@ static int cmd_get_cam_supported(const struct shell *sh, int argc, char **argv)
 	const struct ucsi_pd_driver *ppm_api;
 	uint8_t port;
 	uint8_t resp[8] = { 0 };
+	size_t resp_size;
 	int rv;
 
 	__ASSERT(dev, "PPM device is not ready");
@@ -172,26 +144,23 @@ static int cmd_get_cam_supported(const struct shell *sh, int argc, char **argv)
 		return -ERANGE;
 	}
 
-	struct ucsi_control_t get_cam_supported = {
-                .command = UCSI_GET_CAM_SUPPORTED,
-                .data_length = 0,
-                .command_specific = {
-                        /* Convert to 1-indexed port number */
-                        (port + 1) & 0x7F,
-                },
-        };
+	rv = ppm_get_cam_supported(dev, port + 1, ARRAY_SIZE(resp), resp,
+				   &resp_size);
 
-	rv = ppm_api->execute_cmd(dev, &get_cam_supported, (uint8_t *)&resp);
-	if (rv < 0) {
-		shell_error(sh, "Failed to execute UCSI command: %d", rv);
-		return 1;
+	if (rv != 0) {
+		return rv;
 	}
 
 	shell_info(sh, "Port: C%u (UCSI port %u), Supported:", port, port + 1);
-	shell_hexdump(sh, resp, rv);
 
+	if (resp_size == 0) {
+		shell_fprintf(sh, SHELL_INFO, " none");
+		return 0;
+	}
+
+	shell_hexdump(sh, resp, resp_size);
 	shell_fprintf(sh, SHELL_INFO, "\nSupported indexes: ");
-	for (int i = 0; i < MIN(rv, ARRAY_SIZE(resp)); i++) {
+	for (int i = 0; i < resp_size; i++) {
 		for (int j = 0; j < 8; j++) {
 			if (resp[i] & BIT(j)) {
 				shell_fprintf(sh, SHELL_INFO, "%02d ",
@@ -210,40 +179,43 @@ static int cmd_get_cam_supported(const struct shell *sh, int argc, char **argv)
 static int cmd_get_current_cam(const struct shell *sh, int argc, char **argv)
 {
 	const struct device *dev = get_ppm_dev();
-	const struct ucsi_pd_driver *ppm_api;
 	uint8_t port;
 	uint8_t resp[8] = { 0 };
+	size_t num_altmodes;
 	int rv;
 
 	__ASSERT(dev, "PPM device is not ready");
-
-	ppm_api = dev->api;
 
 	if (cmd_get_pd_port(sh, dev, argv[1], &port)) {
 		shell_error(sh, "Invalid port");
 		return -ERANGE;
 	}
 
-	struct ucsi_control_t get_current_cam = {
-                .command = UCSI_GET_CURRENT_CAM,
-                .data_length = 0,
-                .command_specific = {
-                        /* Convert to 1-indexed port number */
-                        (port + 1) & 0x7F,
-                },
-        };
+	rv = ppm_get_current_cam(dev, port + 1, sizeof(resp), resp,
+				 &num_altmodes);
 
-	rv = ppm_api->execute_cmd(dev, &get_current_cam, (uint8_t *)&resp);
-	if (rv < 0) {
-		shell_error(sh, "Failed to execute UCSI command: %d", rv);
-		return 1;
+	if (rv != 0) {
+		return rv;
 	}
 
 	shell_info(sh, "Port: C%u (UCSI port %u), CAM:", port, port + 1);
-	shell_hexdump(sh, resp, rv);
 
+	/* UCSI is ambiguous as to whether data is returned when there
+	 * are no active alternate modes. Check for no data returned.
+	 */
+	if (num_altmodes == 0) {
+		shell_info(sh, "No active alternate modes");
+		return 0;
+	}
+
+	shell_hexdump(sh, resp, num_altmodes);
+
+	/* UCSI returned one mode, but the encoding means that no modes
+	 * are active.
+	 */
 	if (resp[0] == 0xFF) {
 		shell_info(sh, "No active alternate modes");
+		return 0;
 	}
 
 	return 0;

@@ -1507,15 +1507,29 @@ struct ucsi_memory_region {
 	uint8_t reserved_1;
 } __packed __aligned(4);
 
+/* Values for the Recipient field of the GET_ALTERNATE_MODES command. */
+enum alt_modes_recipient {
+	RECIPIENT_CONNECTOR = 0,
+	RECIPIENT_SOP = 1,
+	RECIPIENT_SOP_PRIME = 2,
+	RECIPIENT_SOP_PRIME_PRIME = 3,
+	/* Values 4-7 reserved. */
+	RECIPIENT_MAX,
+};
+
 /* Response to UCSI GET_ALTERNATE_MODES command */
-struct ucsi_get_alternate_modes_t {
-	struct altmode_field {
-		/* Standard or Vendor ID */
-		uint16_t svid;
-		/* Mode ID for above SVID */
-		uint32_t mid;
-	} __packed altmode_fields[2];
+struct ucsi_altmode_field {
+	/* Standard or Vendor ID */
+	uint16_t svid;
+	/* Mode ID for above SVID */
+	uint32_t mid;
 } __packed;
+
+struct ucsi_get_alternate_modes_t {
+	struct ucsi_altmode_field altmode_fields[2];
+} __packed;
+
+BUILD_ASSERT(sizeof(struct ucsi_get_alternate_modes_t) == 12);
 
 BUILD_ASSERT(offsetof(struct ucsi_memory_region, version) ==
 		     UCSI_VERSION_OFFSET,

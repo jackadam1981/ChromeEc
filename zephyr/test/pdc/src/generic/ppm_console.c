@@ -8,6 +8,7 @@
 #include "emul/emul_ppm_driver.h"
 #include "usbc/ppm.h"
 #include "usbc/utils.h"
+#include "zephyr/sys/util.h"
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -74,7 +75,7 @@ ZTEST(ucsi_ppm_console, test_ppm_get_alt_modes__ucsi_fail)
 	ppm_driver_mock_execute_cmd_sync_fake.return_val = -1;
 
 	rv = shell_execute_cmd(get_ec_shell(), "ppm get_alt_modes 0 conn");
-	zassert_equal(rv, 1, "Expected %d, but got %d", 1, rv);
+	zassert_equal(rv, -1, "Expected %d, but got %d", -1, rv);
 	shell_backend_dummy_clear_output(get_ec_shell());
 }
 
@@ -92,12 +93,19 @@ static const struct {
 static uint8_t altmode_expected_port = 0;
 static uint8_t altmode_expected_recipient = 0;
 
+/* Local control to allow test to alter the number of alternate
+ * modes returned.
+ */
+static uint8_t alt_mode_count = ARRAY_SIZE(altmodes);
+
 /**
  * @brief Custom fake to return a UCSI GET_ALTERNATE_MODES response
  */
 static int execute_ucsi_alt_mode(const struct device *dev,
 				 struct ucsi_control_t *cmd, uint8_t *out)
 {
+	int resp_bytes = 0;
+
 	zassert_equal(0, cmd->data_length,
 		      "GET_ALTERNATE_MODES length must be 0");
 	zassert_equal(UCSI_GET_ALTERNATE_MODES, cmd->command,
@@ -121,24 +129,25 @@ static int execute_ucsi_alt_mode(const struct device *dev,
 
 	memset(resp, 0, sizeof(*resp));
 
-	if (offset >= ARRAY_SIZE(altmodes)) {
-		/* Out of bounds. Return zeroes */
-		return sizeof(*resp);
+	/* Per UCSI v3.0, data length is 6 bytes per alternate mode returned. */
+	if (offset >= alt_mode_count) {
+		/* Out of bounds. Return no data. */
+		return resp_bytes;
 	}
 
 	resp->altmode_fields[0].svid = altmodes[offset].svid;
 	resp->altmode_fields[0].mid = altmodes[offset].mid;
 
-	if (length > 0 && (offset + length) < ARRAY_SIZE(altmodes)) {
+	resp_bytes += sizeof(struct ucsi_altmode_field);
+
+	if (length > 0 && (offset + length) < alt_mode_count) {
 		/* Requested two objects AND we have another to return */
 		resp->altmode_fields[1].svid = altmodes[offset + length].svid;
 		resp->altmode_fields[1].mid = altmodes[offset + length].mid;
+		resp_bytes += sizeof(struct ucsi_altmode_field);
 	}
 
-	/* Always return the full response length, even if some fields are
-	 * zero.
-	 */
-	return sizeof(*resp);
+	return resp_bytes;
 }
 
 /**
@@ -183,12 +192,19 @@ static void get_alt_mode_helper(const char *cmd, uint8_t expected_port,
 	zassert_true(rv < sizeof(header_line));
 
 	zassert_not_null(strstr(outbuffer, header_line));
-	zassert_not_null(
-		strstr(outbuffer, "000    | SVID=0x1a2b MID=0x12345678"));
-	zassert_not_null(
-		strstr(outbuffer, "001    | SVID=0x3c4d MID=0x90abcdef"));
-	zassert_not_null(
-		strstr(outbuffer, "002    | SVID=0x5e6f MID=0xa1b2c3d4"));
+
+	if (alt_mode_count >= 1) {
+		zassert_not_null(strstr(outbuffer,
+					"000    | SVID=0x1a2b MID=0x12345678"));
+	}
+	if (alt_mode_count >= 2) {
+		zassert_not_null(strstr(outbuffer,
+					"001    | SVID=0x3c4d MID=0x90abcdef"));
+	}
+	if (alt_mode_count >= 3) {
+		zassert_not_null(strstr(outbuffer,
+					"002    | SVID=0x5e6f MID=0xa1b2c3d4"));
+	}
 }
 
 ZTEST(ucsi_ppm_console, test_ppm_get_alt_modes__none)
@@ -215,8 +231,10 @@ ZTEST(ucsi_ppm_console, test_ppm_get_alt_modes__success)
 {
 	/* No 3rd arg implies `sop` (== 1) as recipient */
 
+	alt_mode_count = 2;
 	get_alt_mode_helper("ppm get_alt_modes 0", /* port= */ 0,
 			    /* recipient= */ 1);
+	alt_mode_count = ARRAY_SIZE(altmodes);
 }
 
 ZTEST(ucsi_ppm_console, test_ppm_get_alt_modes__success_conn)
@@ -266,13 +284,15 @@ ZTEST(ucsi_ppm_console, test_ppm_get_cam_supported__ucsi_fail)
 {
 	int rv;
 
-	/* Report an error running the UCSI command */
-	ppm_driver_mock_execute_cmd_sync_fake.return_val = -1;
+	/* Report an error running the UCSI command. */
+	ppm_driver_mock_execute_cmd_sync_fake.return_val = -2;
 
 	rv = shell_execute_cmd(get_ec_shell(), "ppm get_cam_supported 0");
-	zassert_equal(rv, 1, "Expected %d, but got %d", 1, rv);
+	zassert_equal(rv, -2, "Expected %d, but got %d", -2, rv);
 	shell_backend_dummy_clear_output(get_ec_shell());
 }
+
+static bool get_cam_supported_no_modes;
 
 /**
  * @brief Custom fake to return a UCSI GET_CAM_SUPPORTED response
@@ -289,6 +309,12 @@ static int execute_ucsi_get_cam_supported(const struct device *dev,
 	/* UCSI ports are 1-indexed */
 	zassert_equal(1, cmd->command_specific[0] & 0x7F,
 		      "Incorrect port sent");
+
+	if (get_cam_supported_no_modes) {
+		get_cam_supported_no_modes = false;
+		/* No modes supported, return no data. */
+		return 0;
+	}
 
 	/* Has bits 0, 7, 8, 10, 12, 14 set (arbitrary) */
 	out[0] = 0x81;
@@ -327,6 +353,35 @@ ZTEST(ucsi_ppm_console, test_ppm_get_cam_supported__success)
 		strstr(outbuffer, "Supported indexes: 00 07 08 10 12 14"));
 }
 
+/* Verify behavior if the PDC returns no alternate modes. */
+ZTEST(ucsi_ppm_console, test_ppm_get_cam_supported__none)
+{
+	int rv;
+	const char *outbuffer;
+	size_t buffer_size;
+
+	ppm_driver_mock_execute_cmd_sync_fake.custom_fake =
+		execute_ucsi_get_cam_supported;
+
+	get_cam_supported_no_modes = true;
+	rv = shell_execute_cmd(get_ec_shell(), "ppm get_cam_supported 0");
+	zassert_ok(rv, "Expected success (0), but got %d", rv);
+
+	/* Inspect shell output. Expected output:
+	 *
+	 *    Port: C0 (UCSI port 1), Supported:
+	 *    none
+	 */
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(
+		strstr(outbuffer, "Port: C0 (UCSI port 1), Supported:"));
+	zassert_not_null(strstr(outbuffer, "none"));
+}
+
 ZTEST(ucsi_ppm_console, test_ppm_get_current_cam__bad_port)
 {
 	int rv;
@@ -351,12 +406,19 @@ ZTEST(ucsi_ppm_console, test_ppm_get_current_cam__ucsi_fail)
 	int rv;
 
 	/* Report an error running the UCSI command */
-	ppm_driver_mock_execute_cmd_sync_fake.return_val = -1;
+	ppm_driver_mock_execute_cmd_sync_fake.return_val = -3;
 
 	rv = shell_execute_cmd(get_ec_shell(), "ppm get_current_cam 0");
-	zassert_equal(rv, 1, "Expected %d, but got %d", 1, rv);
+	zassert_equal(rv, -3, "Expected %d, but got %d", -3, rv);
 	shell_backend_dummy_clear_output(get_ec_shell());
 }
+
+/*
+ * Local controls for how the execute_ucsi_get_current_cam() processes
+ * the GET_CURRENT_CAM message.
+ */
+static bool get_current_cam_no_modes;
+static bool get_current_cam_no_data;
 
 /**
  * @brief Custom fake to return a UCSI GET_CURRENT_CAM response
@@ -373,11 +435,86 @@ static int execute_ucsi_get_current_cam(const struct device *dev,
 	zassert_equal(1, cmd->command_specific[0] & 0x7F,
 		      "Incorrect port sent");
 
-	/* Report no active alt modes */
-	out[0] = 0xFF;
+	if (get_current_cam_no_modes) {
+		/* Report no active alt modes by setting the first
+		 * alternate mode to 0xff.
+		 */
+		out[0] = 0xFF;
+		get_current_cam_no_modes = false;
+		return 1;
+	}
 
-	/* 1 byte written out */
-	return 1;
+	if (get_current_cam_no_data) {
+		/* Return no data to indicate there are no active
+		 * altnernate modes.
+		 */
+		get_current_cam_no_data = false;
+		return 0;
+	}
+
+	/* Current modes are reported as indexes into the list of Altnernate
+	 * modes supported.
+	 */
+	out[0] = 1;
+	out[1] = 3;
+
+	/* Return 2 active alternate modes. */
+	return 2;
+}
+
+ZTEST(ucsi_ppm_console, test_ppm_get_current_cam__success_no_mode)
+{
+	int rv;
+	const char *outbuffer;
+	size_t buffer_size;
+
+	get_current_cam_no_modes = true;
+	ppm_driver_mock_execute_cmd_sync_fake.custom_fake =
+		execute_ucsi_get_current_cam;
+
+	rv = shell_execute_cmd(get_ec_shell(), "ppm get_current_cam 0");
+	zassert_ok(rv, "Expected success (0), but got %d", rv);
+
+	/* Inspect shell output. Expected output:
+	 *
+	 *    Port: C0 (UCSI port 1), CAM:
+	 *    00000000: <hexdump>
+	 */
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Port: C0 (UCSI port 1), CAM:"));
+	zassert_not_null(strstr(outbuffer, "00000000: ff  "));
+	zassert_not_null(strstr(outbuffer, "No active alternate modes"));
+}
+
+ZTEST(ucsi_ppm_console, test_ppm_get_current_cam__success_no_data)
+{
+	int rv;
+	const char *outbuffer;
+	size_t buffer_size;
+
+	get_current_cam_no_data = true;
+	ppm_driver_mock_execute_cmd_sync_fake.custom_fake =
+		execute_ucsi_get_current_cam;
+
+	rv = shell_execute_cmd(get_ec_shell(), "ppm get_current_cam 0");
+	zassert_ok(rv, "Expected success (0), but got %d", rv);
+
+	/* Inspect shell output. Expected output:
+	 *
+	 *    Port: C0 (UCSI port 1), CAM:
+	 *    00000000: <hexdump>
+	 */
+
+	outbuffer =
+		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_true(buffer_size > 0, NULL);
+
+	zassert_not_null(strstr(outbuffer, "Port: C0 (UCSI port 1), CAM:"));
+	zassert_not_null(strstr(outbuffer, "No active alternate modes"));
 }
 
 ZTEST(ucsi_ppm_console, test_ppm_get_current_cam__success)
@@ -403,8 +540,7 @@ ZTEST(ucsi_ppm_console, test_ppm_get_current_cam__success)
 	zassert_true(buffer_size > 0, NULL);
 
 	zassert_not_null(strstr(outbuffer, "Port: C0 (UCSI port 1), CAM:"));
-	zassert_not_null(strstr(outbuffer, "00000000: ff  "));
-	zassert_not_null(strstr(outbuffer, "No active alternate modes"));
+	zassert_not_null(strstr(outbuffer, "00000000: 01 03"));
 }
 
 ZTEST(ucsi_ppm_console, test_ppm_set_new_cam__bad_port)
