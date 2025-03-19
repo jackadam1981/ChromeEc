@@ -18,8 +18,8 @@
 #include "hooks.h"
 #include "keyboard_backlight.h"
 #include "keyboard_customization.h"
-#include "motion_sense.h"
-#include "motionsense_sensors.h"
+// #include "motion_sense.h"
+//#include "motionsense_sensors.h"
 #include "temp_sensor/temp_sensor.h"
 #include "thermal.h"
 #include "util.h"
@@ -118,22 +118,22 @@ test_export_static void thermal_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, thermal_init, HOOK_PRIO_POST_FIRST);
 
-static bool lid_uses_lis2dw12;
+// static bool lid_uses_lis2dw12;
 
-void motion_interrupt(enum gpio_signal signal)
-{
-	if (lid_uses_lis2dw12) {
-		lis2dw12_interrupt(signal);
-	} else {
-		bma4xx_interrupt(signal);
-	}
-}
+// void motion_interrupt(enum gpio_signal signal)
+// {
+// 	if (lid_uses_lis2dw12) {
+// 		lis2dw12_interrupt(signal);
+// 	} else {
+// 		bma4xx_interrupt(signal);
+// 	}
+// }
 
-static void alt_sensor_init(void)
-{
-	lid_uses_lis2dw12 = cros_cbi_ssfc_check_match(
-		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_lis2dw12)));
+// static void alt_sensor_init(void)
+// {
+// 	lid_uses_lis2dw12 = cros_cbi_ssfc_check_match(
+// 		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_lis2dw12)));
 
-	motion_sensors_check_ssfc();
-}
-DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
+// 	motion_sensors_check_ssfc();
+// }
+// DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
