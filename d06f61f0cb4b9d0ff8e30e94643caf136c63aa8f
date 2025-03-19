@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0e9582_d081c844",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-19T15:08:51Z",
+      "side": 1,
+      "message": "This seems redundant with the PDC tracing `CONFIG_USBC_PDC_TRACE_MSG`",
+      "range": {
+        "startLine": 748,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 71
+      },
+      "revId": "d06f61f0cb4b9d0ff8e30e94643caf136c63aa8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
