@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe4c0f3_96372604",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-19T15:20:04Z",
+      "side": 1,
+      "message": "Nit - create a macro for this size.  If the GET_IC_STATUS expands in the future, it will be easier to maintain if the the possible sizes are defined beside the structure defintion.",
+      "range": {
+        "startLine": 159,
+        "startChar": 21,
+        "endLine": 159,
+        "endChar": 56
+      },
+      "revId": "ea8c37551bf31531c77e41df1536750dfd8d569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947ef752_54bff22d",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-19T15:20:04Z",
+      "side": 1,
+      "message": "Create a macro for this.",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "ea8c37551bf31531c77e41df1536750dfd8d569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
