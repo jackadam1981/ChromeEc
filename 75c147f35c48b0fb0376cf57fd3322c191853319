@@ -50,6 +50,23 @@
       "message": "The failed cq `brya-cq.redrix.hw.fingerprint-cq` `rauru-cq.navi.hw.fingerprint-cq` `volteer-cq.volet.hw.fingerprint-cq` seems not relate to skywalker, try again.",
       "revId": "75c147f35c48b0fb0376cf57fd3322c191853319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb64294_c0fbd571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-03-19T13:27:57Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8719979737469892689) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.redrix.hw.fingerprint-cq, rauru-cq.navi.hw.fingerprint-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "75c147f35c48b0fb0376cf57fd3322c191853319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
