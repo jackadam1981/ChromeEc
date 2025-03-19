@@ -315,7 +315,8 @@ static int cut_off_battery_block_write(const struct ship_mode_info *ship_mode)
 static int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode)
 {
 	int rv;
-
+	CPRINTS("%s: reg:0x%04x, data:0x%04x", __func__, ship_mode->reg_addr,
+		ship_mode->reg_data[0]);
 	/* Ship mode command requires writing 2 data values */
 	rv = sb_write(ship_mode->reg_addr, ship_mode->reg_data[0]);
 	if (rv)
