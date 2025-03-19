@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397b9cd2_93572c50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 62
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-19T08:26:36Z",
+      "side": 1,
+      "message": "Let\u0027s add `LOW_COVERAGE_REASON` to bypass `Code-Coverage -1`\n\n```suggestion\nTEST\u003dfpenroll fpmatch\nLOW_COVERAGE_REASON\u003dCL contains platform code that\n    can\u0027t be tested with unit tests. The code is\n    tested using hardware unit test, tracked in\n    b:399892179\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "e3df9ce5a74c5f22f4e27ec1cb12d1a1a2086b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07e5566_3691d913",
+        "filename": "zephyr/program/fpmcu/helipilot/src/ec_quirks.c",
+        "patchSetId": 62
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-19T08:26:36Z",
+      "side": 1,
+      "message": "NIT: This suggests that some other general purpose timer is used for that, which is not true because Zephyr doesn\u0027t use general purpose timer for that. Instead, Zephyr relies on watchdog module and it\u0027s capability to trigger warning, which is also some kind of timer, so this found this sentence imprecise.\n\nYou can remove this comment, update it or leave it as it is.",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "e3df9ce5a74c5f22f4e27ec1cb12d1a1a2086b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
