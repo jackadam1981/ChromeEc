@@ -832,7 +832,7 @@ def get_updater(opts):
     """Get the updater object."""
     if 'brescue' in opts.updater_cmd:
         return BrescueUpdater(opts.updater_cmd, opts.port, opts.reset_type)
-    if 'cr50-rescue' in opts.updater_cmd:
+    elif 'rescue' in opts.updater_cmd:
         return Cr50RescueUpdater(opts.updater_cmd, opts.port, opts.reset_type)
     if 'gsctool' in opts.updater_cmd:
         return GsctoolUpdater(opts.updater_cmd, opts.serial)
