@@ -2088,8 +2088,9 @@ int cmd_fp_info_v2(int argc, char *argv[])
 	uint16_t dead;
 
 	printf("I am inside cmd_fp_info_v2 @ line: , %d\n", __LINE__);
+	printf("The size of ec_max_insize is: %d\n", ec_max_insize);
 
-	rv = ec_command(EC_CMD_FP_INFO, 2, NULL, 0, &r, ec_max_insize);
+	rv = ec_command(EC_CMD_FP_INFO, 2, NULL, 0, &r, sizeof(struct ec_response_fp_info_v2 ));
 	if (rv < 0)
 		return rv;
 

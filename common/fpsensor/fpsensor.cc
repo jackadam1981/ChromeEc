@@ -467,8 +467,7 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 		args->response_max);
 
 	args->response_size =
-		sizeof(struct ec_response_fp_info_v2) +
-		(r->num_capture_types) * sizeof(struct image_frame_params);
+		sizeof(struct ec_response_fp_info_v2);
 	CPRINTS("I am inside fp_command_info_v2; args->response_size : %d",
 		args->response_size);
 

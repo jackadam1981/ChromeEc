@@ -8398,7 +8398,7 @@ struct ec_response_fp_info_v2 {
 	uint32_t template_version; /* version of the template format */
 	/* fingerprint image frame parameters */
 	uint16_t num_capture_types; /* number of image capture types */
-	struct image_frame_params image_frame[FLEXIBLE_ARRAY_MEMBER_SIZE];
+	struct image_frame_params image_frame[10];
 } __ec_align4;
 
 /* Get the last captured finger frame or a template content */
