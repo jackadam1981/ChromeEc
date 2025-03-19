@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1c7ddf_ffe1d319",
+        "filename": "zephyr/program/nissa/gothrax/src/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-03-19T08:32:55Z",
+      "side": 1,
+      "message": "The following code should be include regardlgess of CONFIG_TEST_EXTPPOWER. Please remove it and the #endif below",
+      "revId": "a8d5e6b0034c0b308b0103db571232497a2104b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
