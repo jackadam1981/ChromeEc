@@ -1,0 +1,94 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c1d1a3_feab073a",
+        "filename": "zephyr/test/charger/isl923x/src/extpower.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-03-20T18:44:24Z",
+      "side": 1,
+      "message": "I think you should RESET_FAKE",
+      "fixSuggestions": [
+        {
+          "fixId": "ba7278a6_6309a89b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/charger/isl923x/src/extpower.c",
+              "range": {
+                "startLine": 18,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": "\tRESET_FAKE(pd_set_external_voltage_limit);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a4b8e6e0c5e6a7da11dc59b6ee6064c6a2474f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a96c1cb_52186e15",
+        "filename": "zephyr/test/nissa/src/gothrax.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-03-20T18:44:24Z",
+      "side": 1,
+      "message": "ARG_UNUSED(field);\n\nsame below",
+      "fixSuggestions": [
+        {
+          "fixId": "e6c531c1_581c5ab3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/nissa/src/gothrax.c",
+              "range": {
+                "startLine": 168,
+                "startChar": 0,
+                "endLine": 168,
+                "endChar": 0
+              },
+              "replacement": "\tARG_UNUSED(field);\n"
+            },
+            {
+              "path": "zephyr/test/nissa/src/gothrax.c",
+              "range": {
+                "startLine": 175,
+                "startChar": 0,
+                "endLine": 175,
+                "endChar": 0
+              },
+              "replacement": "\tARG_UNUSED(field);\n"
+            },
+            {
+              "path": "zephyr/test/nissa/src/gothrax.c",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 182,
+                "endChar": 0
+              },
+              "replacement": "\tARG_UNUSED(field);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a4b8e6e0c5e6a7da11dc59b6ee6064c6a2474f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
