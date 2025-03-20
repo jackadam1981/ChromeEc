@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c5b0813_6ef9f57e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-03-20T20:28:41Z",
+      "side": 1,
+      "message": "See my comment below. I\u0027m not sure how an in-band value can be used to differentiate the case where get_cable_property was rejected (failed) by the PDC vs it not being attempted yet.",
+      "parentUuid": "3c61949a_6d7b03aa",
+      "range": {
+        "startLine": 754,
+        "startChar": 1,
+        "endLine": 755,
+        "endChar": 31
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c1853e3_e2ad660a",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "writtenOn": "2025-01-27T19:34:11Z",
       "side": 1,
       "message": "You should make the `cable_prop` parameter optional.  Your local callers are passing in a `cable_prop` allocated on the stack, but then never used.\n\nIt would be clearer if the local callers pass in NULL.",
+      "range": {
+        "startLine": 4424,
+        "startChar": 0,
+        "endLine": 4424,
+        "endChar": 75
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46abe4f6_e62b4cc6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4424,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-03-20T20:28:41Z",
+      "side": 1,
+      "message": "I modified this function as suggested so cable_prop is only copied if the pointer passed in is not NULL.",
+      "parentUuid": "5c56b261_71b6d3a1",
       "range": {
         "startLine": 4424,
         "startChar": 0,
