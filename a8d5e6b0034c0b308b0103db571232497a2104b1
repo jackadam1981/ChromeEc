@@ -16,6 +16,24 @@
       "message": "The following code should be include regardlgess of CONFIG_TEST_EXTPPOWER. Please remove it and the #endif below",
       "revId": "a8d5e6b0034c0b308b0103db571232497a2104b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ca99eb_046a166f",
+        "filename": "zephyr/program/nissa/gothrax/src/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3797437
+      },
+      "writtenOn": "2025-03-20T06:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e1c7ddf_ffe1d319",
+      "revId": "a8d5e6b0034c0b308b0103db571232497a2104b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
