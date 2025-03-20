@@ -16,6 +16,24 @@
       "message": "@dawidn@google.com\n\nWhat is this error that I am getting in the zephyr CQ?\n\n```\nERROR   - Loading Zephyr default modules (Zephyr base (cached)).\n-- Application: /mnt/host/source/src/platform/ec/zephyr/test/fingerprint/drivers/egis630\n-- CMake version: 3.26.4\n-- Found Python3: /home/chrome-bot/.cache/.vpython-root/store/python_venv-ornptmv92fve3n7nsa0jmgr6dg/contents/bin/python3 (found suitable version \"3.11.9\", minimum required is \"3.10\") found components: Interpreter \n-- Cache files will be written to: /home/chrome-bot/.cache/zephyr\n-- Zephyr version: 4.1.99 (/mnt/host/source/src/third_party/zephyr/main)\n-- Found west (found suitable version \"0.14.0\", minimum required is \"0.14.0\")\n-- Board: native_sim, qualifiers: native\n-- Found Dtc: /usr/bin/dtc (found suitable version \"1.6.0\", minimum required is \"1.4.6\") \n-- Found BOARD.dts: /mnt/host/source/src/third_party/zephyr/main/boards/native/native_sim/native_sim.dts\n-- Found devicetree overlay: /mnt/host/source/src/platform/ec/zephyr/test/fingerprint/drivers/egis630/boards/native_sim.overlay\ndevicetree error: node \u0027/spi@200/egis630@0\u0027 compatible \u0027egis,egis630\u0027 has unknown vendor prefix \u0027egis\u0027\nCMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:303 (execute_process):\n  execute_process failed command indexes:\n\n    1: \"Child return code: 1\"\n\nCall Stack (most recent call first):\n  /mnt/host/source/src/third_party/zephyr/main/cmake/modules/zephyr_default.cmake:131 (include)\n  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)\n  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)\n  CMakeLists.txt:6 (find_package)\n\n\n-- Configuring incomplete, errors occurred!\n```",
       "revId": "b0b89fd35f34b74c027dc62c58f10575c5f9bacf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9771f4_8704eec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T21:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94159668_af3cb63d",
+      "revId": "b0b89fd35f34b74c027dc62c58f10575c5f9bacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
