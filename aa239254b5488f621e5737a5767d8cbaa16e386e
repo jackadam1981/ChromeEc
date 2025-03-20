@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c2ff5b_d63a8500",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T20:21:57Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nAll boards pass the `BUILD_ASSERT` without this element and size 14, except for BOARD elm. I had to add the padding to ensure I pass buildall",
+      "range": {
+        "startLine": 8405,
+        "startChar": 0,
+        "endLine": 8405,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d43e7c0e_471c0a60",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/ec_commands.h",
+              "range": {
+                "startLine": 8405,
+                "startChar": 0,
+                "endLine": 8406,
+                "endChar": 0
+              },
+              "replacement": "\tuint16_t reserved;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
