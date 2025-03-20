@@ -98,5 +98,7 @@
 };
 
 &mdc {
+	/delete-property/ reg;
+	reg = <0x4000c000 0x80>;
 	status = "okay";
 };
