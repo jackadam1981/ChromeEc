@@ -93,6 +93,8 @@ struct ppm_data {
 	const struct device *lpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 	/** Number of active USB-C ports on this system. */
 	uint8_t active_port_count;
+
+	struct k_sem execute_cmd_sem;
 };
 static struct ppm_data ppm_data;
 
@@ -119,6 +121,8 @@ static int ucsi_get_active_port_count(const struct device *dev)
 
 #define SYNC_CMD_TIMEOUT_MSEC 2000
 #define RETRY_INTERVAL_MS 20
+
+#define SYNC_CMD_MUTEX_TIMEMOUT_MSEC (SYNC_CMD_TIMEOUT_MSEC + 100)
 
 static int execute_cmd_with_pdc_power_mgmt(const struct device *device,
 					   struct ucsi_control_t *control,
@@ -284,9 +288,17 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 		goto done;
 	}
 
+	rv = k_sem_take(&data->execute_cmd_sem,
+			K_MSEC(SYNC_CMD_MUTEX_TIMEMOUT_MSEC));
+	if (rv != 0) {
+		LOG_ERR("PPM%d: cmd 0x%02x failed due to semaphore timeout",
+			conn, ucsi_command);
+		return -ETIMEDOUT;
+	}
+
 	data_size = ucsi_commands[ucsi_command].command_copy_length;
-	LOG_DBG("%s: Executing conn=%u cmd=0x%02x data_size=%d", __func__, conn,
-		ucsi_command, data_size);
+	LOG_INF("PPM%d: Execute %s data_size=%d", conn,
+		get_ucsi_command_name(ucsi_command), data_size);
 
 	timeout = sys_timepoint_calc(K_MSEC(SYNC_CMD_TIMEOUT_MSEC));
 	k_event_clear(&ppm_event, PPM_EVENT_ALL);
@@ -296,6 +308,8 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 					  lpm_data_out, &data->cc_cb);
 
 		if (rv == 0) {
+			LOG_INF("PPM%d: cmd %s complete", conn,
+				get_ucsi_command_name(ucsi_command));
 			/* Command posted but not finished. */
 			break;
 		}
@@ -304,9 +318,12 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 			return rv;
 		}
 
+		LOG_INF("PPM%d: cmd 0x%02x busy", conn, ucsi_command);
+
 		/* Command can't be posted due to contention. Wait and retry. */
 		if (sys_timepoint_expired(timeout)) {
-			LOG_DBG("%s: Timed out before posting cmd", __func__);
+			LOG_ERR("PPM%d: %s timed out before posting", conn,
+				get_ucsi_command_name(ucsi_command));
 			return -ETIMEDOUT;
 		}
 		k_sleep(K_MSEC(RETRY_INTERVAL_MS));
@@ -316,6 +333,8 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 	/* Wait for command completion, error, or timeout. */
 	events = k_event_wait(&ppm_event, PPM_EVENT_ALL, false,
 			      sys_timepoint_timeout(timeout));
+
+	k_sem_give(&data->execute_cmd_sem);
 
 	if (events == 0) {
 		rv = -ETIMEDOUT;
@@ -465,6 +484,7 @@ test_export_static int ppm_init(const struct device *device)
 	data->cc_cb.handler = ppm_cc_cb;
 
 	k_event_init(&ppm_event);
+	k_sem_init(&data->execute_cmd_sem, 1, 1);
 
 	return 0;
 }

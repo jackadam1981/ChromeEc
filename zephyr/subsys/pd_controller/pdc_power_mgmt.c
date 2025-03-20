@@ -2310,7 +2310,7 @@ static void pdc_send_cmd_start_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
-	print_current_pdc_state(port);
+	// print_current_pdc_state(port);
 
 	port->send_cmd_return_state = port->last_state;
 	port->send_cmd.wait_counter = 0;
@@ -2328,7 +2328,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
@@ -2534,7 +2534,7 @@ static void pdc_send_cmd_wait_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
-	print_current_pdc_state(port);
+	// print_current_pdc_state(port);
 	port->send_cmd.wait_counter = 0;
 	port->send_cmd.resend_counter = 0;
 }

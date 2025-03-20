@@ -217,12 +217,19 @@ struct ucsi_pd_driver {
 	ucsi_pd_cleanup *cleanup;
 };
 
-/*
- * Main function of ePPM, which creates the thread and waits for it to be
+/**
+ * @brief Main function of ePPM, which creates the thread and waits for it to be
  * initialized and ready for use.
  *
  * @return 0 on success and -1 on error.
  */
 int eppm_init(void);
+
+/**
+ * @brief Initialize the EC driver altenernate mode policy handler.
+ *
+ * @returns 0 on success, negative values on errors.
+ */
+int ppm_am_policy_handler_init(void);
 
 #endif /* ZEPHYR_SUBSYS_UCSI_INCLUDE_PPM_H_ */

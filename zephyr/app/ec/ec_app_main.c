@@ -144,6 +144,10 @@ void ec_app_main(void)
 		eppm_init();
 	}
 
+	if (IS_ENABLED(CONFIG_UCSI_PPM_EC_MODE_ENTRY)) {
+		ppm_am_policy_handler_init();
+	}
+
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
 		ap_pwrseq_task_start();

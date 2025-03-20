@@ -22,7 +22,7 @@ int ppm_get_alternate_modes(const struct device *ppm_dev, uint8_t connector_num,
 {
 	const struct ucsi_pd_driver *ppm_api = ppm_dev->api;
 	uint8_t resp[PDC_MAX_DATA_LENGTH] = { 0 };
-	size_t found_alt_modes;
+	size_t found_alt_modes = 0;
 	int offset;
 	int rv;
 
@@ -41,7 +41,6 @@ int ppm_get_alternate_modes(const struct device *ppm_dev, uint8_t connector_num,
 		},
 	};
 
-	found_alt_modes = 0;
 	for (int i = 0; i < max_modes; i += 2) {
 		/* We receive two fields per command call. Set the offset */
 		get_am_cmd.command_specific[2] = i;

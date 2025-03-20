@@ -126,6 +126,16 @@ enum ucsi_command_t {
 const char *const get_ucsi_command_name(enum ucsi_command_t cmd);
 
 /**
+ * @brief Returns a pointer to a string of connector status change bits
+ * This function is not re-entrant safe.
+ *
+ * @param raw_conn_status_change_bits Raw bit mask of the connector status
+ * change bits.
+ * @returns A pointer to a buffer displaying all set bits on single line.
+ */
+char *get_conn_status_change_bits(uint16_t raw_conn_status_change_bits);
+
+/**
  * @brief PDO Offset to start reading PDOs
  */
 enum pdo_offset_t {

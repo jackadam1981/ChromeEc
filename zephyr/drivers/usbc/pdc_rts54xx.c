@@ -22,7 +22,7 @@
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/sys_clock.h>
-LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
+LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_ERR);
 #include "usbc/pdc_power_mgmt.h"
 #include "usbc/utils.h"
 

@@ -26,6 +26,14 @@ config UCSI_PPM_CONSOLE
 	  Enable the `ppm` console command, which supports calling various
 	  UCSI commands through the PPM subsystem to the PDCs.
 
+config UCSI_PPM_EC_MODE_ENTRY
+	bool "Enable automatic entry into USB4 and TBT Modes"
+	depends on PLATFORM_EC_SYSTEM_UNLOCKED
+	help
+	  Enable automatic entry into USB4 and TBT modes by the EC. This is
+	  is only for testing during board bringup and cannot be used on
+	  shipping device.
+
 config UCSI_PPM_INIT_PRIORITY
 	int "USCI PPM init priority"
 	default 92

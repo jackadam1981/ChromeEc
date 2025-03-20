@@ -39,4 +39,13 @@ struct ucsi_ppm_device *ppm_data_init(const struct ucsi_pd_driver *pd_driver,
 				      union connector_status_t *data,
 				      int num_ports);
 
+/**
+ * @brief Trigger the EC driven alternate mode policy handler.
+ *
+ * @param port Port number to run alternate mode policies.  0 based.
+ * @returns 0 on success.
+ */
+int ppm_am_policy_run(unsigned int port);
+
+
 #endif /* UM_PPM_PPM_COMMON_H_ */
