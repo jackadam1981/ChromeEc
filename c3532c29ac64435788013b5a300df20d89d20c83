@@ -255,6 +255,30 @@
       },
       "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23adabf2_bfa3b143",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8365,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T20:20:11Z",
+      "side": 1,
+      "message": "The malloc has to be in ectool.cc\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6367719/7/util/ectool.cc\n\nThe command properly run on a chromebook device:\n\n```\nomniknight-rev3 ~ # ectool --name\u003dcros_fp fpinfo2\nFingerprint sensor: vendor 53494745 product 9 model 0 version 1\nImage: size 80x64 8 bpp\nImage: size 80x64 16 bpp\nImage: size 80x64 16 bpp\nImage: size 80x64 16 bpp\nImage: size 80x64 16 bpp\nImage: size 80x64 16 bpp\nImage: size 80x64 16 bpp\nError flags: NO_IRQ BAD_HWID \nDead pixels: 0\nTemplates: version 4 size 16448 count 0/3 dirty bitmap 0\nomniknight-rev3 ~ #\n```",
+      "parentUuid": "aa4c474b_ab9dc87f",
+      "range": {
+        "startLine": 8363,
+        "startChar": 1,
+        "endLine": 8365,
+        "endChar": 46
+      },
+      "revId": "c3532c29ac64435788013b5a300df20d89d20c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

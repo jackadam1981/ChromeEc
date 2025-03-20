@@ -52,6 +52,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a670735f_d2c99362",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 8398,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T20:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7ecb7b1_94a0336a",
+      "range": {
+        "startLine": 8388,
+        "startChar": 1,
+        "endLine": 8398,
+        "endChar": 64
+      },
+      "revId": "53692e52b452352839e1f090b1ce30599476a35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e65df99_6391b289",
@@ -65,6 +89,30 @@
       "writtenOn": "2025-03-18T23:43:46Z",
       "side": 1,
       "message": "To make sure we\u0027re not accidentally inserting extra padding due to alignment issues, can you add a `BUILD_ASSERT` to check the size of the struct to make sure it matches the size of the individual fields added together? There should be some examples in this file.",
+      "range": {
+        "startLine": 8402,
+        "startChar": 0,
+        "endLine": 8402,
+        "endChar": 14
+      },
+      "revId": "53692e52b452352839e1f090b1ce30599476a35c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4edcff_ea7356eb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 8402,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T20:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e65df99_6391b289",
       "range": {
         "startLine": 8402,
         "startChar": 0,
