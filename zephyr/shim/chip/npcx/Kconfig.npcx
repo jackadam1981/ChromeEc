@@ -63,4 +63,11 @@ config PLATFORM_EC_CONSOLE_CMD_GPIODBG
 	     12 |* | io52 | unused pin
 	     13 |* | io54 | unused pin
 
+config NPCX_RAM_LOCK
+	bool "Enable NPCX RAM lock function"
+	depends on ARM_MPU
+	default y if "$(dt_nodelabel_enabled,ramlock0)"
+	help
+	  Enable the RAM lock function.
+
 endif # PLATFORM_EC
