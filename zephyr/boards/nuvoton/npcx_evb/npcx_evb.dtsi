@@ -165,3 +165,8 @@
 		     >;
 	pinctrl-names = "default";
 };
+
+&mdc {
+	/delete-property/ reg;
+	reg = <0x4000c000 0x80>;
+};
