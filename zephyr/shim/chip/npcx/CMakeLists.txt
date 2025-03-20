@@ -25,3 +25,4 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_EXTERNAL_STORAGE
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_WORKAROUND_FLASH_DOWNLOAD_API
         system_download_from_flash.c)
 zephyr_library_sources_ifdef(CONFIG_PM_POLICY_CUSTOM  power_policy.c)
+zephyr_library_sources_ifdef(CONFIG_NPCX_RAM_LOCK  ram_lock.c)
