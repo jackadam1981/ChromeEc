@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a86a39_ccdd3c62",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-20T08:00:39Z",
+      "side": 1,
+      "message": "You just created a loopback here. Emulator has to react to received data e.g. toogle INT pin in case on initialization. Then a sensor response should be placed in the `rx_bufs` variable.\n\nThe FPC emulator [reacts](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/emul_fpc1145.c;l\u003d118) to specific commands",
+      "revId": "31bfae030d8c6ae4c6c4388ab1697a6bd11ff081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
