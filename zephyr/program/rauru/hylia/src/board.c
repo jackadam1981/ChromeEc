@@ -29,13 +29,15 @@ static void board_setup_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
-enum battery_present battery_is_present(void)
+static enum battery_present cached_batt_state = BP_YES;
+
+/*
+ * I2C read register to detect battery
+ */
+static void update_battery_state_cache(void)
 {
 	int state;
-
-	if (gpio_get_level(GPIO_BATT_PRES_ODL)) {
-		return BP_NO;
-	}
+	cached_batt_state = BP_YES;
 
 	/*
 	 *  According to the battery manufacturer's reply:
@@ -43,13 +45,26 @@ enum battery_present battery_is_present(void)
 	 *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.
 	 */
 	if (sb_read(SB_MANUFACTURER_ACCESS, &state)) {
-		return BP_NO;
+		cached_batt_state = BP_NO;
 	}
 
 	/* Detect the 12th bit value */
 	if (state & BIT(12)) {
-		return BP_NO;
+		cached_batt_state = BP_NO;
+	}
+}
+/*
+ *  The battery_check function is called every second.
+ *  It checks the 12th bit of the battery register to see if the battery is bad.
+ *  If the battery is bad, the battery_is_present function will return BP_NO.
+ */
+DECLARE_HOOK(HOOK_SECOND, update_battery_state_cache, HOOK_PRIO_DEFAULT);
+
+enum battery_present battery_is_present(void)
+{
+	if ((!gpio_get_level(GPIO_BATT_PRES_ODL)) && cached_batt_state) {
+		return BP_YES;
 	}
 
-	return BP_YES;
+	return BP_NO;
 }
