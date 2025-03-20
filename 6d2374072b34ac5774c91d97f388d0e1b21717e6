@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72ef069_505ed3a6",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T23:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1e78f0a_1fff71e6",
+      "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9980fe39_12228885",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-03-20T07:21:08Z",
       "side": 1,
       "message": "You should use `fp_enrollment_result` enum here. You should threat that as Zephyr code, without access to EC repo internal defines.",
+      "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c96775_fd2e891d",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T23:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9980fe39_12228885",
       "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff348cb3_bb893686",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T23:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a357a74_f3332671",
+      "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50511ef7_8797ccee",
@@ -82,6 +136,30 @@
       "writtenOn": "2025-03-19T12:48:53Z",
       "side": 1,
       "message": "NULL if not needed.",
+      "range": {
+        "startLine": 139,
+        "startChar": 54,
+        "endLine": 139,
+        "endChar": 71
+      },
+      "revId": "6d2374072b34ac5774c91d97f388d0e1b21717e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3838a07c_d0b93ca1",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T23:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50511ef7_8797ccee",
       "range": {
         "startLine": 139,
         "startChar": 54,
