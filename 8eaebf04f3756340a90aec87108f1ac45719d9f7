@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "717a4e49_f25f47cd",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T20:53:21Z",
+      "side": 1,
+      "message": "I removed it as a parameter",
+      "parentUuid": "86a391de_f5d87df7",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 424,
+        "endChar": 51
+      },
+      "revId": "8eaebf04f3756340a90aec87108f1ac45719d9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "879b5ca4_7cf096f4",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-18T18:35:51Z",
       "side": 1,
       "message": "Is this check correct? I think `response_max` may be the size in bytes, while `num_capture_types` is a count.",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 44
+      },
+      "revId": "8eaebf04f3756340a90aec87108f1ac45719d9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b953bd_de16dab5",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-20T20:53:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879b5ca4_7cf096f4",
       "range": {
         "startLine": 434,
         "startChar": 1,
