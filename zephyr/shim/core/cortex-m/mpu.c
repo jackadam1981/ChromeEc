@@ -5,6 +5,9 @@
 
 #include "config.h"
 #include "mpu.h"
+#if defined(CONFIG_NPCX_RAM_LOCK)
+#include "ram_lock.h"
+#endif
 
 #include <zephyr/arch/cpu.h>
 #include <zephyr/init.h>
@@ -19,6 +22,26 @@ LOG_MODULE_REGISTER(shim_mpu, LOG_LEVEL_ERR);
 void mpu_enable(void)
 {
 	for (int index = 0; index < mpu_config.num_regions; index++) {
+#if defined(CONFIG_NPCX_RAM_LOCK)
+		/*
+		 * Use the settings of mpu_regions to set RAM lock. Thus,
+		 * CONFIG_FLASH_BASE_ADDRESS is used as the code RAM base, and
+		 * CONFIG_SRAM_BASE_ADDRESS is used as the data RAM base.
+		 */
+		if (mpu_config.mpu_regions[index].base ==
+		    CONFIG_FLASH_BASE_ADDRESS) {
+			/* Apply the write lock to code RAM */
+			ram_lock_config_lock_region(REGION_STORAGE,
+						    CONFIG_FLASH_BASE_ADDRESS,
+						    (CONFIG_FLASH_SIZE << 10));
+		} else if (mpu_config.mpu_regions[index].base ==
+			   CONFIG_SRAM_BASE_ADDRESS) {
+			/* Apply the fetch lock to data RAM */
+			ram_lock_config_lock_region(REGION_DATA_RAM,
+						    CONFIG_SRAM_BASE_ADDRESS,
+						    (CONFIG_SRAM_SIZE << 10));
+		}
+#endif
 		MPU->RNR = index;
 		MPU->RASR |= MPU_RASR_ENABLE_Msk;
 		LOG_DBG("[%d] %08x %08x", index, MPU->RBAR, MPU->RASR);
