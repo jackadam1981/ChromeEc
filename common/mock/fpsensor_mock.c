@@ -31,7 +31,7 @@ int fp_sensor_deinit(void)
 	return mock_ctrl_fp_sensor.fp_sensor_deinit_return;
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+enum ec_status fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	memset(resp, 0, sizeof(*resp));
 

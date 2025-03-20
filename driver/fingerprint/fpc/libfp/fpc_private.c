@@ -306,7 +306,7 @@ int fp_sensor_deinit(void)
 	return EC_SUCCESS;
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+enum ec_status fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	uint16_t sensor_id;
 
@@ -318,7 +318,7 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	resp->model_id = sensor_id;
 	resp->errors = errors;
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 
 __overridable int fp_finger_match(void *templ, uint32_t templ_count,
