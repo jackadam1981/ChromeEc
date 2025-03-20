@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c427e9_618707e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-20T22:46:57Z",
+      "side": 1,
+      "message": "pdc.generic.device_not_ready still fails because port 1 state is not PDC_DISABLED.\n\nThese changes also need to be rebased into the 2 previous CLs for a clean commit history.",
+      "revId": "633a6311f5c18c15a9dd5585a3258ea3b9adf90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
