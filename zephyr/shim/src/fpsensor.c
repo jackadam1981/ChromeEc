@@ -96,14 +96,14 @@ int fp_sensor_deinit(void)
 	return 0;
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+enum ec_status fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	struct fingerprint_info info;
 	int rc;
 
 	rc = fingerprint_get_info(fp_sensor_dev, &info);
 	if (rc) {
-		return rc;
+		return EC_RES_ERROR;
 	}
 
 	resp->vendor_id = info.vendor_id;
@@ -117,7 +117,7 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	resp->bpp = info.bpp;
 	resp->errors = info.errors;
 
-	return 0;
+	return EC_RES_SUCCESS;
 }
 
 void fp_configure_detect(void)
