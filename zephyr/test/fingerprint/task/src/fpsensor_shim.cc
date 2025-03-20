@@ -145,7 +145,7 @@ ZTEST_USER(fpsensor_shim, test_shim_get_info_failed)
 	state.get_info_result = -EINVAL;
 	fingerprint_set_state(fp_sim, &state);
 
-	zassert_equal(fp_sensor_get_info(&info), -EINVAL);
+	zassert_equal(fp_sensor_get_info(&info), EC_RES_ERROR);
 }
 
 ZTEST_USER(fpsensor_shim, test_shim_finger_status_present)
