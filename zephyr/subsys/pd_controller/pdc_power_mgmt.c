@@ -3129,6 +3129,18 @@ static const struct smf_state pdc_states[] = {
 };
 
 /**
+ * @brief Used to validate port numbers passed into the public API functions
+ *
+ *        Do not use for internal checks since port counts are not known until
+ *        all pdc_power_mgmt devices initialize.
+ */
+static bool is_pdc_port_valid(int port)
+{
+	return (port >= 0) && (port < pdc_power_mgmt_get_usb_pd_port_count()) &&
+	       (get_pdc_state(&pdc_data[port]->port) != PDC_DISABLED);
+}
+
+/**
  * @brief CCI event handler call back
  */
 static void pdc_cc_handler_cb(const struct device *dev,
@@ -3265,6 +3277,10 @@ static int pdc_subsys_init(const struct device *dev)
 void pdc_subsys_start(void)
 {
 	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+		if (!is_pdc_port_valid(port)) {
+			continue;
+		}
+
 		/* Start the PDC driver threads */
 		pdc_start_thread(pdc_data[port]->port.pdc);
 
@@ -3373,18 +3389,6 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 }
 
 /**
- * @brief Used to validate port numbers passed into the public API functions
- *
- *        Do not use for internal checks since port counts are not known until
- *        all pdc_power_mgmt devices initialize.
- */
-static bool is_pdc_port_valid(int port)
-{
-	return (port >= 0) && (port < pdc_power_mgmt_get_usb_pd_port_count()) &&
-	       (get_pdc_state(&pdc_data[port]->port) != PDC_DISABLED);
-}
-
-/**
  * PDC Power Management Public API
  */
 static bool pdc_power_mgmt_is_sink_connected(int port)
@@ -3461,7 +3465,10 @@ uint8_t pdc_power_mgmt_get_task_state(int port)
 {
 	enum pdc_state_t indicated_state, actual_state;
 
-	if (!is_pdc_port_valid(port)) {
+	/* Don't use is_pdc_port_valid() so this function can distinguish
+	 * between an unattached port and a disabled port.
+	 */
+	if ((port >= 0) && (port < pdc_power_mgmt_get_usb_pd_port_count())) {
 		return PDC_UNATTACHED;
 	}
 

@@ -26,6 +26,7 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
+#include <usbc/pdc_power_mgmt.h>
 
 #define DT_DRV_COMPAT realtek_rts54_pdc
 
@@ -383,8 +384,10 @@ struct pdc_config_t {
  * @brief PDC Data object
  */
 struct pdc_data_t {
-	/** State machine context */
+	/** State machine context. Must be first in the structure. */
 	struct smf_ctx ctx;
+	/** Indicates if the driver has been initialized. */
+	bool initialized;
 	/** Init's local state variable */
 	enum init_state_t init_local_state;
 	/** Init's current state */
@@ -936,7 +939,7 @@ static void handle_irqs(struct pdc_data_t *data)
 	 * This assumes that this driver is valid for all PD controllers on the
 	 * system.
 	 */
-	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		/*
 		 * Read the Alert Response Address to determine
 		 * which port generated the interrupt.
@@ -947,8 +950,14 @@ static void handle_irqs(struct pdc_data_t *data)
 		}
 
 		/* Search for port with matching I2C address */
-		for (int j = 0; j < board_get_usb_pd_port_count(); j++) {
+		for (int j = 0; j < pdc_power_mgmt_get_usb_pd_port_count();
+		     j++) {
 			struct pdc_data_t *pdc_int_data = pdc_data[j];
+
+			if (!pdc_int_data->initialized) {
+				continue;
+			}
+
 			const struct pdc_config_t *cfg =
 				pdc_int_data->dev->config;
 
@@ -2817,6 +2826,8 @@ static int pdc_init(const struct device *dev)
 
 	/* Create the thread for this port */
 	cfg->create_thread(dev);
+
+	data->initialized = true;
 
 	LOG_INF("C%d: Realtek RTS545x PDC DRIVER", cfg->connector_number);
 
