@@ -35,6 +35,7 @@ test/panic_data.c
 test/panic.c
 test/printf.c
 test/queue.c
+test/ram_lock.c
 test/restricted_console.c
 test/rng_benchmark.cc
 test/rollback.c

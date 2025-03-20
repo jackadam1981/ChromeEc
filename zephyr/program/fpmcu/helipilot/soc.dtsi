@@ -116,3 +116,7 @@
        pinctrl-1 = <&shi_gpio_gp46_47_53_55>;
        pinctrl-names = "default", "sleep";
 };
+
+&ramlock0 {
+    status = "okay";
+};
