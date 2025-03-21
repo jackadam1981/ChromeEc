@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d58a90_e34c2a9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-21T07:01:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b1b8dc71_6d0266ab",
+      "revId": "5ddeb85c778c7e2bb09979c08f7dc0415dddeaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1eaf8e_50a90f79",
@@ -49,6 +67,30 @@
       "writtenOn": "2025-03-18T10:12:48Z",
       "side": 1,
       "message": "Make sure the versions are correct  3.2.1.0",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "5ddeb85c778c7e2bb09979c08f7dc0415dddeaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11a0703_99996d87",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-21T07:01:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2d1eaf8e_50a90f79",
       "range": {
         "startLine": 35,
         "startChar": 38,
