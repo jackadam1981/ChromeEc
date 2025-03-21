@@ -22,6 +22,30 @@
       },
       "revId": "1bbbb597b1a537dfd0406f34c99ddd490109309a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9475b87_7991a56e",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T17:03:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "22b61fc6_5558ef18",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "1bbbb597b1a537dfd0406f34c99ddd490109309a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
