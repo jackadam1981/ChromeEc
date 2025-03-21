@@ -1,6 +1,5 @@
 name: "Linux Kernel Overflow Macros"
-description:
-    "Macros for checking arithmetic overflow."
+description: "Macros for checking arithmetic overflow."
 
 third_party {
   url {
@@ -11,4 +10,3 @@ third_party {
   last_upgrade_date { year: 2020 month: 9 day: 18 }
   license_type: NOTICE
 }
-

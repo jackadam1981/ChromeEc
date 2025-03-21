@@ -1,6 +1,5 @@
 name: "libaeabi-cortexm0"
-description:
-    "ARM Run-Time ABI for the Cortex-M0 processor"
+description: "ARM Run-Time ABI for the Cortex-M0 processor"
 
 third_party {
   url {
@@ -11,7 +10,8 @@ third_party {
   version: "<as of 2014>"
   last_upgrade_date { year: 2014 month: 04 day: 01 }
   license_type: NOTICE
-  local_modifications: "cortex-m0: See git log. "
+  local_modifications:
+    "cortex-m0: See git log. "
     "cortex-m: Adapted from cortex-m0 code. "
     "Created LICENSE file."
 }

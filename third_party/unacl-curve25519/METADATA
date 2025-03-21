@@ -1,8 +1,8 @@
 name: "uNaCl - Curve25519 for ARM Cortex-M0"
 description:
-    "μNaCl – The Networking and Cryptography library for microcontrollers"
-    "Standalone Curve25519 implementation for ARM Cortex-M0, optimized for"
-    "speed. About 3 times faster than compiled code from C."
+  "μNaCl – The Networking and Cryptography library for microcontrollers"
+  "Standalone Curve25519 implementation for ARM Cortex-M0, optimized for"
+  "speed. About 3 times faster than compiled code from C."
 
 third_party {
   url {
@@ -22,4 +22,3 @@ third_party {
     "the code being public domain."
     "2. Adapted the code for the EC codebase, see git log."
 }
-
