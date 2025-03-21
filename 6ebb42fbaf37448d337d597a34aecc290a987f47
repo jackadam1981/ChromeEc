@@ -16,6 +16,23 @@
       "message": "Before submitting, let\u0027s finish discussing on the other CL if we actually want to add this to MP images or not (I don\u0027t think we will need it).",
       "revId": "6ebb42fbaf37448d337d597a34aecc290a987f47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6861c4c1_9957aa90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-21T17:08:48Z",
+      "side": 1,
+      "message": "We do need a means of updating owner\u0027s configuration in the field, how else whould we do it?",
+      "revId": "6ebb42fbaf37448d337d597a34aecc290a987f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
