@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c02ec3_66305520",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 4092,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T23:22:41Z",
+      "side": 1,
+      "message": "Do we still need to wrap calls to `pdc_power_mgmt_get_cable_prop()` in this condition? It\u0027s repeated inside the function implemnetation itself.",
+      "range": {
+        "startLine": 4092,
+        "startChar": 2,
+        "endLine": 4092,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a43041c1_111c074d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+              "range": {
+                "startLine": 4092,
+                "startChar": 0,
+                "endLine": 4096,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (pdc_power_mgmt_get_cable_prop(port, NULL)) {\n\t\t\treturn rev;\n"
+            },
+            {
+              "path": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+              "range": {
+                "startLine": 4152,
+                "startChar": 0,
+                "endLine": 4156,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (pdc_power_mgmt_get_cable_prop(port, NULL)) {\n\t\t\treturn PD_DISC_NEEDED;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9b2a6be059ca77b3beffd8afd5b548663584be6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed2302a_ba68bd59",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 4095,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T23:22:41Z",
+      "side": 1,
+      "message": "Is this intended to return `0` when `pdc_power_mgmt_get_cable_prop()` fails?\n\nCan we use `enum pd_rev_type` symbols instead of int literals where possible? Like `return PD_REV10;`",
+      "range": {
+        "startLine": 4093,
+        "startChar": 3,
+        "endLine": 4095,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "196c6d59_0ce99538",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+              "range": {
+                "startLine": 4093,
+                "startChar": 0,
+                "endLine": 4096,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn pdc_power_mgmt_get_cable_prop(port, NULL);\n"
+            },
+            {
+              "path": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+              "range": {
+                "startLine": 4153,
+                "startChar": 0,
+                "endLine": 4156,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn pdc_power_mgmt_get_cable_prop(port, NULL);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9b2a6be059ca77b3beffd8afd5b548663584be6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f604128c_06757e07",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 4512,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T23:22:41Z",
+      "side": 1,
+      "message": "Please pass the return value from `public_api_block` through",
+      "range": {
+        "startLine": 4512,
+        "startChar": 3,
+        "endLine": 4512,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5de02d1c_f7fa1b65",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+              "range": {
+                "startLine": 4512,
+                "startChar": 0,
+                "endLine": 4513,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn ret;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9b2a6be059ca77b3beffd8afd5b548663584be6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

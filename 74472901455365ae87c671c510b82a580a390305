@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c461bdb_4bb83602",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T23:22:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c226d6c6_b4d1a806",
+      "range": {
+        "startLine": 4077,
+        "startChar": 4,
+        "endLine": 4077,
+        "endChar": 26
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d48a6dc4_be1e51d0",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dadc2c2_f995b1e3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4083,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T23:22:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "be39ac93_6f91e73f",
+      "range": {
+        "startLine": 4080,
+        "startChar": 10,
+        "endLine": 4083,
+        "endChar": 23
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c56b261_71b6d3a1",
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "I modified this function as suggested so cable_prop is only copied if the pointer passed in is not NULL.",
       "parentUuid": "5c56b261_71b6d3a1",
+      "range": {
+        "startLine": 4424,
+        "startChar": 0,
+        "endLine": 4424,
+        "endChar": 75
+      },
+      "revId": "74472901455365ae87c671c510b82a580a390305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a9e6b1_b5a8a342",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4424,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-21T23:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46abe4f6_e62b4cc6",
       "range": {
         "startLine": 4424,
         "startChar": 0,
