@@ -1,0 +1,109 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6af7293e_d9087e4f",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-21T16:55:36Z",
+      "side": 1,
+      "message": "I guess you could add an emulator backend API to force this condition and generate coverage.",
+      "range": {
+        "startLine": 1452,
+        "startChar": 0,
+        "endLine": 1457,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2ea2c63e_1c7ec886",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/pdc_rts54xx.c",
+              "range": {
+                "startLine": 1451,
+                "startChar": 0,
+                "endLine": 1451,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/*\n\t\t\t * TODO(b/326276531): The implementation of this command is not yet\n\t\t\t * complete. The fields \u0027time to read power` and `time interval between\n\t\t\t * readings` are not being set and need to be both passed into this\n\t\t\t * function from the PDC subsys API and set below.\n\t\t\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "760b3f4b6858136b80510aab0c8cf78a0f300505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50d4c5c_f3b80718",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-21T16:55:36Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"extention\" is a possible misspelling of \"extension\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"extention\" is a possible misspelling of \"extension\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 2747,
+        "startChar": 34,
+        "endLine": 2747,
+        "endChar": 43
+      },
+      "revId": "760b3f4b6858136b80510aab0c8cf78a0f300505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e46fa7_f7d377f8",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2788,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-21T16:55:36Z",
+      "side": 1,
+      "message": "Coverage lines seem to be off.  Probably okay to just +1 coverage in this case.",
+      "range": {
+        "startLine": 2785,
+        "startChar": 0,
+        "endLine": 2788,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "91d5bbd0_9a937533",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/pdc_rts54xx.c",
+              "range": {
+                "startLine": 2785,
+                "startChar": 0,
+                "endLine": 2787,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t payload[] \u003d {\n\t\tRTS_SET_SBU_MUX_MODE.cmd,\n\t\tRTS_SET_SBU_MUX_MODE.len,\n\t\tsetting\n\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "760b3f4b6858136b80510aab0c8cf78a0f300505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
