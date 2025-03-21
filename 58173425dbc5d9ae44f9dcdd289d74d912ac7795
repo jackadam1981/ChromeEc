@@ -104,6 +104,24 @@
       "parentUuid": "1795eb6d_0a49c99c",
       "revId": "58173425dbc5d9ae44f9dcdd289d74d912ac7795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e486fdce_be151995",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-21T06:10:50Z",
+      "side": 1,
+      "message": "You can not just copy paste code from other drivers without knowing what it actually does. So I\u0027m asking why you think it is needed here 😊",
+      "parentUuid": "bcd2d103_0fd870f2",
+      "revId": "58173425dbc5d9ae44f9dcdd289d74d912ac7795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
