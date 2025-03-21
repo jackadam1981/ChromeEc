@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "019d7d66_ce2d3a25",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-21T03:35:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22a87a5_11b015d8",
+      "revId": "58173425dbc5d9ae44f9dcdd289d74d912ac7795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ef86668_22c36a2e",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50af5b7_0cb18812",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-21T03:35:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef86668_22c36a2e",
+      "revId": "58173425dbc5d9ae44f9dcdd289d74d912ac7795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1795eb6d_0a49c99c",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-03-20T07:46:47Z",
       "side": 1,
       "message": "Why is it necessary here?",
+      "revId": "58173425dbc5d9ae44f9dcdd289d74d912ac7795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd2d103_0fd870f2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-21T03:35:39Z",
+      "side": 1,
+      "message": "it was in the fpc1025 code:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_fpc1025_pal.c;l\u003d41?q\u003dfingerprint_fpc1025_pal.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d40-,41,-42\nI do not see it though in the 1045 code. Any reason?",
+      "parentUuid": "1795eb6d_0a49c99c",
       "revId": "58173425dbc5d9ae44f9dcdd289d74d912ac7795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
