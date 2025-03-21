@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5d2971_583e49cd",
+        "filename": "zephyr/test/charger/isl923x/src/extpower.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3797437
+      },
+      "writtenOn": "2025-03-21T01:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c1d1a3_feab073a",
+      "revId": "a4b8e6e0c5e6a7da11dc59b6ee6064c6a2474f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a96c1cb_52186e15",
@@ -87,6 +105,24 @@
           ]
         }
       ],
+      "revId": "a4b8e6e0c5e6a7da11dc59b6ee6064c6a2474f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8b7b2f_bd2b7dd2",
+        "filename": "zephyr/test/nissa/src/gothrax.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 3797437
+      },
+      "writtenOn": "2025-03-21T01:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a96c1cb_52186e15",
       "revId": "a4b8e6e0c5e6a7da11dc59b6ee6064c6a2474f19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
