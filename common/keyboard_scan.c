@@ -1184,7 +1184,7 @@ void keyboard_scan_task(void *u)
 		keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
 
 		/* Busy polling keyboard state. */
-		while (keyboard_scan_is_enabled()) {
+		while (1) {
 			start = get_time();
 
 			/* Check for keys down */
