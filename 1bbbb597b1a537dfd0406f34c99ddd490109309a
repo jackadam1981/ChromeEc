@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b61fc6_5558ef18",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-21T17:00:03Z",
+      "side": 1,
+      "message": "As a follow-up, you could make this depends on the chosen node being set.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "1bbbb597b1a537dfd0406f34c99ddd490109309a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
