@@ -94,6 +94,30 @@
       },
       "revId": "1fd2b98fffd22bab893c73fd24bb9c7b4e6ca527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61718d08_a1b53763",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-24T21:45:57Z",
+      "side": 1,
+      "message": "The intended code was just `DEVICE_DT_GET(DT_INST_PROP_BY_IDX(inst, pdc, 0)))`. I copied in too much while refactoring. But it didn\u0027t hurt that `CONFIG_PDC_RUNTIME_PORT_CONFIG` was absent; the condition is just false. Every point in the relationship builds and passes tests.",
+      "parentUuid": "e888e292_3860e031",
+      "range": {
+        "startLine": 961,
+        "startChar": 3,
+        "endLine": 961,
+        "endChar": 33
+      },
+      "revId": "1fd2b98fffd22bab893c73fd24bb9c7b4e6ca527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
