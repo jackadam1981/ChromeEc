@@ -1,0 +1,131 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b1fb4a_fc9c19da",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T07:28:04Z",
+      "side": 1,
+      "message": "You should not set the `cached_batt_state` value here, as `sb_read` takes lot of time, and before you complete the `sb_read` logic in line 47, if any one is asking for the `battery_present`, the battery resent status is wrong.\n\nPlease update the `cached_batt_state` after you finish the `sb_read` call.",
+      "fixSuggestions": [
+        {
+          "fixId": "d5a0b8e5_53315a21",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "\telse {\n\t\tcached_batt_state \u003d BP_YES;\n\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67217c40_fba42059",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T07:28:04Z",
+      "side": 1,
+      "message": "I think you missed the most import comments to add: why we uses a separate hook to update the cache (you need to write down the root cause, which is the sb_read takes too much time, and slows down other EC reporting works, etc), and I think it is not needed to explain what you did in the function.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3e1545d3_258ac6af",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": "\tif ((!gpio_get_level(GPIO_BATT_PRES_ODL)) \u0026\u0026 (cached_batt_state \u003d\u003d BP_YES)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd95ad6_94c512c0",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T07:28:04Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (gpio_get_level(GPIO_BATT_PRES_ODL)) {\n\t\treturn BP_NO;\n\t}\n\treturn cached_batt_state;\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d1014e9f_691dfdf4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": "\tif (gpio_get_level(GPIO_BATT_PRES_ODL) \u0026\u0026 cached_batt_state) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
