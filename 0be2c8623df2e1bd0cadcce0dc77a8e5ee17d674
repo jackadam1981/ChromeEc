@@ -46,6 +46,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e945bc9_a2301dba",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-24T07:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99b1fb4a_fc9c19da",
+      "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67217c40_fba42059",
@@ -87,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6989c4_abcb78e8",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-24T07:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67217c40_fba42059",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abd95ad6_94c512c0",
@@ -124,6 +166,30 @@
           ]
         }
       ],
+      "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3dd9bdd_f837da6a",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-24T07:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abd95ad6_94c512c0",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 14
+      },
       "revId": "0be2c8623df2e1bd0cadcce0dc77a8e5ee17d674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
