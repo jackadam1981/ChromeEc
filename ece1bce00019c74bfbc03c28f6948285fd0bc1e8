@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af087504_811df609",
+        "filename": "zephyr/program/trulo/pujjolo/battery.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-03-24T16:07:16Z",
+      "side": 1,
+      "message": "Should be 2025 for all pujjolo project.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddbfcec_d7746145",
+        "filename": "zephyr/program/trulo/pujjolo/led_pins.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-03-24T16:07:16Z",
+      "side": 1,
+      "message": "Please remove these.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8872a4ac_125ba726",
+        "filename": "zephyr/program/trulo/pujjolo/led_policy.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-03-24T16:07:16Z",
+      "side": 1,
+      "message": "S3 behavior suggest followed pujjoga.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5effa78_327dd57b",
+        "filename": "zephyr/program/trulo/pujjolo/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-03-24T16:07:16Z",
+      "side": 1,
+      "message": "Pujjolo doesn\u0027t support EEPROM, please remove EEPROM related.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23da40b4_db72cdaf",
+        "filename": "zephyr/program/trulo/pujjolo/src/touch_panel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-03-24T16:07:16Z",
+      "side": 1,
+      "message": "I think we need to add bkon_off too.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f716855_830d9ee5",
+        "filename": "zephyr/program/trulo/pujjolo/trulo_vif.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-03-24T16:07:16Z",
+      "side": 1,
+      "message": "Please rename it to pujjolo, include the file name.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
