@@ -151,6 +151,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2df39e3_1831b9a7",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:19:48Z",
+      "side": 1,
+      "message": "Please ignore the AI-suggested fix here, the suggested fix is wrong.",
+      "parentUuid": "ba8ed26f_daaf62f2",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7626d844_2d288c86",
         "filename": "zephyr/program/rauru/hylia/src/board.c",
         "patchSetId": 1
@@ -180,6 +204,24 @@
           ]
         }
       ],
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80679f53_9432182b",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:19:48Z",
+      "side": 1,
+      "message": "Please ignore the AI-suggested fix here, the suggested fix is wrong.",
+      "parentUuid": "7626d844_2d288c86",
       "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
