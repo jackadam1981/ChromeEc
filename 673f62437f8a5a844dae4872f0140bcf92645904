@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07320316_97842f2c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-24T15:10:49Z",
+      "side": 1,
+      "message": "Is there any reason we can\u0027t move this state after `EVALUATE_PDOS`?",
+      "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
