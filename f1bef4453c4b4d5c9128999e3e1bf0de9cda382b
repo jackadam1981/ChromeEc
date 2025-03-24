@@ -34,6 +34,24 @@
       "message": "I would have preferred using `ztest_test_skip` if function is not implemented.  See https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/test/pdc/src/generic/pdc_api.c#589",
       "revId": "f1bef4453c4b4d5c9128999e3e1bf0de9cda382b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68ea36b_f0734c5c",
+        "filename": "zephyr/test/pdc/src/generic/pdc_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-24T16:57:18Z",
+      "side": 1,
+      "message": "Agreed. There have been some issues with skipped tests confusing the downstream results reporting system. But upon further investigation it seems like these have been resolved and using ztest_test_skip is no longer discouraged. This particular test will get implemented for TI shortly, though.",
+      "parentUuid": "b1bd6de7_4e33f5eb",
+      "revId": "f1bef4453c4b4d5c9128999e3e1bf0de9cda382b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
