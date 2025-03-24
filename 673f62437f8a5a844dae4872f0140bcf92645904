@@ -52,6 +52,24 @@
       "parentUuid": "1e4a0beb_6eaeb023",
       "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f425e5_de1cdb2c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-03-24T16:34:23Z",
+      "side": 1,
+      "message": "I could try if it works by moving SNK_ATTACHED_READ_POWER_LEVEL before the SNK_ATTACHED_RUN.",
+      "parentUuid": "4917b63b_ec69e003",
+      "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
