@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b9eded_14e58b13",
+        "filename": "zephyr/program/fatcat/felino/keyboard.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-24T12:27:09Z",
+      "side": 1,
+      "message": "is this right? refresh on a random key that is not in the top row?",
+      "revId": "865ef15e7b5de788a90b240cb3fb3bb6e2d436a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43e3aec_edaa007b",
+        "filename": "zephyr/program/fatcat/felino/src/keyboard_customization.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-24T12:27:09Z",
+      "side": 1,
+      "message": "can you add braces here? we normally require it for code under zephyr/\n\nsame below",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "865ef15e7b5de788a90b240cb3fb3bb6e2d436a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
