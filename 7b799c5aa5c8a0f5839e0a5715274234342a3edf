@@ -16,6 +16,172 @@
       "message": "+Kyle to check and see if there\u0027s any suggestion.",
       "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb896b0_3bfdbe10",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:18:23Z",
+      "side": 1,
+      "message": "Add a blank line after.",
+      "fixSuggestions": [
+        {
+          "fixId": "7925b055_ec9cd346",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83244ce_19feb6a6",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:18:23Z",
+      "side": 1,
+      "message": "Can we give it a more meaningful name, like `update_battery_state_cache`?",
+      "fixSuggestions": [
+        {
+          "fixId": "63e712b9_e030f9c2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "static void update_battery_state_cache(void)\n"
+            },
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": "DECLARE_HOOK(HOOK_SECOND, update_battery_state_cache, HOOK_PRIO_DEFAULT);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8ed26f_daaf62f2",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:18:23Z",
+      "side": 1,
+      "message": "Just update the battery state cache in this hook, so do not set the `batt_state` here.\n\nAs a result, please move the comment into the `battery_is-prevent` function.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c240304b_bd7ff6cb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 41,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": "\t\t/*\n\t\t *  According to the battery manufacturer\u0027s reply:\n\t\t *  To detect a bad battery, need to read the 0x00 register.\n\t\t *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.\n\t\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7626d844_2d288c86",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:18:23Z",
+      "side": 1,
+      "message": "Also please add comments for explaining why we have this updating battery state cache behavior.",
+      "fixSuggestions": [
+        {
+          "fixId": "13bc6882_1219af33",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": "/*\n *  The battery_check function is called every second.\n *  It checks the 12th bit of the battery register to see if the battery is bad.\n *  If the battery is bad, the battery_is_present function will return BP_NO.\n */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
