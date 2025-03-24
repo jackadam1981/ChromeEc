@@ -16,6 +16,24 @@
       "message": "Is there any reason we can\u0027t move this state after `EVALUATE_PDOS`?",
       "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e4a0beb_6eaeb023",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-03-24T15:32:45Z",
+      "side": 1,
+      "message": "Do you mean read power level right after EVALUATE_PDOS or in a later state such as SET_SINK_PATH ? I try to read it right after EVALUATE_PDOS as patchset 1 but the ztest won\u0027t pass. Thus, I move the command after SET_SINK_PATH done which also works.",
+      "parentUuid": "07320316_97842f2c",
+      "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
