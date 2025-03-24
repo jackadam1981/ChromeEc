@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7b58d4_4cbebafb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-24T20:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18d68d07_8b4a641c",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "007b08f7_a275fa8f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-23T17:15:24Z",
       "side": 1,
       "message": "There are no C source files in this change.  Please don\u0027t add low coverage reason by default.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "2a34c9ba676ea4ed14aee1603ad191e050e9c040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688db99d_326ca0b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-24T20:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007b08f7_a275fa8f",
       "range": {
         "startLine": 12,
         "startChar": 0,
