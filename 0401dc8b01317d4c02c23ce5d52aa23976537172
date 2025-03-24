@@ -45,6 +45,30 @@
       },
       "revId": "0401dc8b01317d4c02c23ce5d52aa23976537172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75be7fa_a26fea59",
+        "filename": "zephyr/subsys/pd_controller/pdc_runtime_port_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-24T17:59:39Z",
+      "side": 1,
+      "message": "Do you have a suggestion of where to put it? I buried it here in a source file to avoid others from calling it instead of `pdc_power_mgmt_get_port_pdc_driver()`",
+      "parentUuid": "7cc1613a_954cb348",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 64
+      },
+      "revId": "0401dc8b01317d4c02c23ce5d52aa23976537172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
