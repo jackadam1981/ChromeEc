@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1650d11_6f6d8934",
+        "filename": "common/panic_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-24T15:28:35Z",
+      "side": 1,
+      "message": "Nit: `#ifdef CONFIG_PANIC_LOG_DEBUG`",
+      "fixSuggestions": [
+        {
+          "fixId": "54e1bc3f_b90b7a72",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/panic_log.c",
+              "range": {
+                "startLine": 176,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "#ifdef CONFIG_PANIC_LOG_DEBUG\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7015e966cb79a7fde8e9851fc7aa6e5d8bae34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
