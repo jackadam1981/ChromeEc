@@ -175,6 +175,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d30faa5_707e321e",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T03:36:16Z",
+      "side": 1,
+      "message": "Oh we also need to take care the `sb_read` failure. As a result, please choose one of the approach:\n\n1. add another static int variable `sb_read_ret` for recording the last sb_read result, and this hook will be:\n```\nstatic void update_battery_state_cache(void)\n{\n\tsb_read_ret \u003d sb_read(sb_read(SB_MANUFACTURER_ACCESS, \u0026batt_state));\n}\n```\n2. or, we run the whole battery check task, cache the return value for battery present state, and return it in `battery_is_present`.",
+      "parentUuid": "c2df39e3_1831b9a7",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7626d844_2d288c86",
         "filename": "zephyr/program/rauru/hylia/src/board.c",
         "patchSetId": 1
