@@ -34,6 +34,24 @@
       ],
       "revId": "5769f0bd7e502be8df9c5037825c280789bff67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3ea428_b80977eb",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-03-24T08:24:26Z",
+      "side": 1,
+      "message": "I also realized this problem, I imported HOOK_INIT.",
+      "parentUuid": "2372bce3_646d505f",
+      "revId": "5769f0bd7e502be8df9c5037825c280789bff67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
