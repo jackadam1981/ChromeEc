@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabead30_0c47ed30",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3482,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-24T21:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8da719f_f0d6901d",
+      "range": {
+        "startLine": 3482,
+        "startChar": 0,
+        "endLine": 3482,
+        "endChar": 53
+      },
+      "revId": "0401dc8b01317d4c02c23ce5d52aa23976537172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cc1613a_954cb348",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "How about creating a header pdc_runtime_port_config.h?\n\nThat keeps it separate from the general purpose `pdc_power_mgmt_*` routines and your comment explicitly explains that external callers shouldn\u0027t use it.",
       "parentUuid": "a75be7fa_a26fea59",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 64
+      },
+      "revId": "0401dc8b01317d4c02c23ce5d52aa23976537172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27cea918_8176ff2a",
+        "filename": "zephyr/subsys/pd_controller/pdc_runtime_port_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-24T21:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de0754e0_5f9f21b7",
       "range": {
         "startLine": 29,
         "startChar": 0,
