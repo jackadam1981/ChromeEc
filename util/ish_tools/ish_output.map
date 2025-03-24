@@ -1,0 +1,6 @@
+Start (hex)    End (hex)    Length (hex)    Area Name
+-----------    ---------    ------------    ---------
+
+00000000       00027FFF     00028000        Full Flash Image
+00000000       00027FFF     00028000        ISHM Sub-Partition
+00000600       000275FF     00027000            ish_main (CPDataModule)
