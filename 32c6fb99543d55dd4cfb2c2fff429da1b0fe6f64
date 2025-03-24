@@ -16,6 +16,24 @@
       "message": "I think this should still be \"Managed.\" The port will initially offer 1.5A and then offer 3A based on Capability Mismatch. I\u0027d have to double check, but this might even be true of our single-port devices. It\u0027s certainly true of our multi-port devices.",
       "revId": "32c6fb99543d55dd4cfb2c2fff429da1b0fe6f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab82083_2ee728c6",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-24T18:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b09457c4_5ab0a20f",
+      "revId": "32c6fb99543d55dd4cfb2c2fff429da1b0fe6f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
