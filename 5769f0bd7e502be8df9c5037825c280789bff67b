@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2372bce3_646d505f",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-03-24T08:17:09Z",
+      "side": 1,
+      "message": "Add `update_battery_state_cache` to update `cached_batt_state` right after init.",
+      "fixSuggestions": [
+        {
+          "fixId": "de0aea29_a4806bd0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/hylia/src/board.c",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "\tupdate_battery_state_cache();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5769f0bd7e502be8df9c5037825c280789bff67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
