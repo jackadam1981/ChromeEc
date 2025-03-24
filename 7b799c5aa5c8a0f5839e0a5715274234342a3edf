@@ -259,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55748a33_6cdca6d0",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T06:25:09Z",
+      "side": 1,
+      "message": "Yes, the final effect is the same, but for readibility, it obscures what really happened. We do not know if it is the i2c read battery failed, or is the battery chip is still working, but reports it is a bad battery.",
+      "parentUuid": "3b377633_cc84471e",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7626d844_2d288c86",
         "filename": "zephyr/program/rauru/hylia/src/board.c",
         "patchSetId": 1
@@ -324,6 +348,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "80679f53_9432182b",
+      "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e27cec2_45a9b028",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-24T06:25:09Z",
+      "side": 1,
+      "message": "Remember to add comments for why we need to cache the battery states.",
+      "parentUuid": "c29c0720_0b3e94a2",
       "revId": "7b799c5aa5c8a0f5839e0a5715274234342a3edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
