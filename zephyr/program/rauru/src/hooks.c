@@ -70,6 +70,7 @@ void xhci_interrupt(enum gpio_signal signal)
 		 */
 		if (xhci_stat) {
 			pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
+			pd_resume_check_pr_swap_needed(i);
 		} else if (tc_is_attached_src(i)) {
 			/*
 			 * This is a AP reset S0->S0 transition.
