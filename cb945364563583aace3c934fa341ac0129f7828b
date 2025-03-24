@@ -16,6 +16,24 @@
       "message": "Have you tried disabling asserts for your tests? PLATFORM_EC_DEBUG_ASSERT should disable it.",
       "revId": "cb945364563583aace3c934fa341ac0129f7828b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b36637e_01a5b0fa",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-24T18:55:00Z",
+      "side": 1,
+      "message": "This is disabled by default, changing this doesn\u0027t affect the end result.",
+      "parentUuid": "14f0e00d_e238c912",
+      "revId": "cb945364563583aace3c934fa341ac0129f7828b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
