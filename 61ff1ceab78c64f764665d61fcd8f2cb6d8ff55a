@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb0c2f67_29fd3655",
+        "filename": "zephyr/program/ocelot/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-24T20:59:18Z",
+      "side": 1,
+      "message": "Spell out \"microchip\" to be consistent with the other project names.",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6c1ca9f5_af084d7c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/Kconfig",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "config BOARD_OCELOT_MICROCHIP\n"
+            }
+          ]
+        }
+      ],
+      "revId": "61ff1ceab78c64f764665d61fcd8f2cb6d8ff55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe22f19e_573db002",
+        "filename": "zephyr/program/ocelot/ocelot_mchp/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-24T20:59:18Z",
+      "side": 1,
+      "message": "Is this really un-implemetned?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "61ff1ceab78c64f764665d61fcd8f2cb6d8ff55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
