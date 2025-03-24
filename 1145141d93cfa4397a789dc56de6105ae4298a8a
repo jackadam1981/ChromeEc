@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b285f1f5_ebd2f668",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-03-24T15:20:52Z",
+      "side": 1,
+      "message": "Would this force Navi to source a powered-hub?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a5a2c947_289b8ee5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/rauru/src/hooks.c",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "\thook_call_deferred(\u0026swap_to_src, 0);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
