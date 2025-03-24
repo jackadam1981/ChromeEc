@@ -34,6 +34,24 @@
       "parentUuid": "07320316_97842f2c",
       "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4917b63b_ec69e003",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-24T16:08:53Z",
+      "side": 1,
+      "message": "I think after `SET_SINK_PATH` makes sense as that should enable the PDC to start charging.  I\u0027m just trying to avoid to add more policy flags for something the state machine already handles, it just might not be in the right order.",
+      "parentUuid": "1e4a0beb_6eaeb023",
+      "revId": "673f62437f8a5a844dae4872f0140bcf92645904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
