@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "884142a3_6f602661",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-03-25T06:29:15Z",
+      "side": 1,
+      "message": "Yes if the hub accepts PR swap.\n\nTested all hubs on my hand, they all reject PR swap when externally powered.\nHaven\u0027t tried power banks, maybe power banks may accept ...?",
+      "parentUuid": "b285f1f5_ebd2f668",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b59355b5_4707251e",
         "filename": "zephyr/program/rauru/src/hooks.c",
         "patchSetId": 3
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "Sorry, my mind is messy and wrong about the last sentence. Should this call be in the if statement in line 72?\nFrom the comment message, we know that external device can be charged. Does the device itself accept current from chargers (can we charge the device)?",
       "parentUuid": "b59355b5_4707251e",
+      "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a29c82b_36864ed3",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-03-25T06:29:15Z",
+      "side": 1,
+      "message": "Added a if guard here.\n\nPR swap in S5/G3 makes the port enter unattached state. This is not expected.",
+      "parentUuid": "48faf62e_7f6bbbfa",
       "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
