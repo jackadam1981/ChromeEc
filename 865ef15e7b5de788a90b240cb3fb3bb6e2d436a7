@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8523e9cc_231a929c",
+        "filename": "zephyr/program/fatcat/felino/keyboard.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-25T06:21:44Z",
+      "side": 1,
+      "message": "how do you plan to support the chromebook keyboard?\nwill you have a single firmware build that can enable the\nappropriate keyboard for the hardware connected or will\nyou have separate/incompatible firmware build for the\nnext build?",
+      "parentUuid": "72c1cbd6_5e9590e8",
+      "revId": "865ef15e7b5de788a90b240cb3fb3bb6e2d436a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b43e3aec_edaa007b",
         "filename": "zephyr/program/fatcat/felino/src/keyboard_customization.c",
         "patchSetId": 14
