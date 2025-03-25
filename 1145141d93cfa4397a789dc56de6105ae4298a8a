@@ -40,6 +40,23 @@
       ],
       "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59355b5_4707251e",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-25T02:06:59Z",
+      "side": 1,
+      "message": "Do we call this only when `xhci_state` is true? If so, I think we should not set port to source when `xhci_state` is false. As such, should this be an else statement at line 75?",
+      "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
