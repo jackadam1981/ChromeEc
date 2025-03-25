@@ -66,6 +66,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86adc54_b03b6d9b",
+        "filename": "zephyr/program/rauru/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-03-25T06:43:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "884142a3_6f602661",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "1145141d93cfa4397a789dc56de6105ae4298a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b59355b5_4707251e",
