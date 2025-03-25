@@ -1,0 +1,14 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC_CEC_BITBANG
+
+config CROS_CEC_BITBANG_ITE
+	bool "ITE cec-bitbang driver for the Zephyr shim"
+	depends on SOC_FAMILY_ITE_EC
+	default y
+	help
+	  This option enables a driver for providing cec bitbang driver.
+
+endif # PLATFORM_EC_CEC_BITBANG
