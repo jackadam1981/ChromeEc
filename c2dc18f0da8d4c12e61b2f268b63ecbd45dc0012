@@ -34,6 +34,24 @@
       ],
       "revId": "c2dc18f0da8d4c12e61b2f268b63ecbd45dc0012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410eed76_3e50fe5a",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-25T17:50:04Z",
+      "side": 1,
+      "message": "added a comment. Let me know if it makes sense to you.",
+      "parentUuid": "558efed7_d2006829",
+      "revId": "c2dc18f0da8d4c12e61b2f268b63ecbd45dc0012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
