@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bbbb4a7_49d55ebf",
+        "filename": "zephyr/program/trulo/pujjolo/battery.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-03-25T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af087504_811df609",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ddbfcec_d7746145",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-24T16:07:16Z",
       "side": 1,
       "message": "Please remove these.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0227d16e_5da5df75",
+        "filename": "zephyr/program/trulo/pujjolo/led_pins.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-03-25T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ddbfcec_d7746145",
       "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b9e918c_3eb718a8",
+        "filename": "zephyr/program/trulo/pujjolo/led_policy.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-03-25T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8872a4ac_125ba726",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5effa78_327dd57b",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-03-24T16:07:16Z",
       "side": 1,
       "message": "Pujjolo doesn\u0027t support EEPROM, please remove EEPROM related.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857d40a7_35e0fbec",
+        "filename": "zephyr/program/trulo/pujjolo/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-03-25T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5effa78_327dd57b",
       "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db976de_dfe71c93",
+        "filename": "zephyr/program/trulo/pujjolo/src/touch_panel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-03-25T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23da40b4_db72cdaf",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f716855_830d9ee5",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-03-24T16:07:16Z",
       "side": 1,
       "message": "Please rename it to pujjolo, include the file name.",
+      "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f3c97b_f3b9cc26",
+        "filename": "zephyr/program/trulo/pujjolo/trulo_vif.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-03-25T07:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f716855_830d9ee5",
       "revId": "ece1bce00019c74bfbc03c28f6948285fd0bc1e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
