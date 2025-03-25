@@ -81,6 +81,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "508d47d2_af4053c9",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-03-25T10:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6b25fb5c_625066a1",
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8ce1e9b_ebcd4a38",
@@ -184,6 +202,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15981ee7_e23688c8",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-03-25T10:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "285fbaa3_51d88040",
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb9a315f_774f706b",
@@ -239,6 +275,30 @@
       "side": 1,
       "message": "Same as above.",
       "parentUuid": "eb9a315f_774f706b",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82092070_515ba4a7",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-03-25T10:30:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "58af3cb3_04be6272",
       "range": {
         "startLine": 82,
         "startChar": 0,
