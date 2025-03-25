@@ -16,6 +16,177 @@
       "message": "I forgot to rebase to new patchset...",
       "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab56f314_77bd8e83",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-25T10:17:32Z",
+      "side": 1,
+      "message": "can you try adding a local vaiable for `fan_step_table[i].off[TEMP_IMVP_SOC]`? I think it could save the indentation and make this a bit more readable",
+      "fixSuggestions": [
+        {
+          "fixId": "f399d5f7_b7e5b58e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tint off_temp \u003d fan_step_table[i].off[TEMP_IMVP_SOC];\n\t\t\tif (temp[TEMP_IMVP_SOC] \u003c off_temp)\n"
+            },
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 75,
+                "startChar": 0,
+                "endLine": 77,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tint on_temp \u003d fan_step_table[i].on[TEMP_IMVP_SOC];\n\t\t\tif (temp[TEMP_IMVP_SOC] \u003e on_temp)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ce1e9b_ebcd4a38",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-25T10:17:32Z",
+      "side": 1,
+      "message": "can you add braces here as well? we normally ask that for code under `zephyr/`",
+      "fixSuggestions": [
+        {
+          "fixId": "c10a6819_cc6b3a85",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t    fan_step_table[i].off[TEMP_IMVP_SOC]) {\n"
+            },
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t} else {\n"
+            },
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 72,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t}\n"
+            },
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 77,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t    fan_step_table[i].on[TEMP_IMVP_SOC]) {\n"
+            },
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 79,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t} else {\n"
+            },
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 80,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9a315f_774f706b",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-25T10:17:32Z",
+      "side": 1,
+      "message": "there\u0027s a `CLAMP` macro in `sys/util.h` I think could be used here (https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/sys/util.h#L417)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "243d0155_25544631",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ovis/deku/src/thermal.c",
+              "range": {
+                "startLine": 83,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "\tcurrent_level \u003d CLAMP(current_level, 0, NUM_FAN_LEVELS - 1);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
