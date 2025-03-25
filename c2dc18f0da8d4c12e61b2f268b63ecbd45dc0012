@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558efed7_d2006829",
+        "filename": "zephyr/libc/exit.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-25T08:46:48Z",
+      "side": 1,
+      "message": "Can you add a comment describing why we need this `ifndef`?",
+      "fixSuggestions": [
+        {
+          "fixId": "478a2a95_91f3e822",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/libc/exit.c",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "\n// Zephyr does not have a POSIX implementation of exit(), so we need to\n// define it ourselves.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c2dc18f0da8d4c12e61b2f268b63ecbd45dc0012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
