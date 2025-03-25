@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c1cbd6_5e9590e8",
+        "filename": "zephyr/program/fatcat/felino/keyboard.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-03-25T02:56:01Z",
+      "side": 1,
+      "message": "It\u0027s right, because we use Windows keyboard in this phase, the keyboard matrix is ​​completely different from the Chromebook standard matrix. This comment offers some tips https://partnerissuetracker.corp.google.com/issues/395822961#comment6.\nNext build we will change to Chromebook standard keyboard.",
+      "parentUuid": "79b9eded_14e58b13",
+      "revId": "865ef15e7b5de788a90b240cb3fb3bb6e2d436a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b43e3aec_edaa007b",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-24T12:27:09Z",
       "side": 1,
       "message": "can you add braces here? we normally require it for code under zephyr/\n\nsame below",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "865ef15e7b5de788a90b240cb3fb3bb6e2d436a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094a6155_1cbb5834",
+        "filename": "zephyr/program/fatcat/felino/src/keyboard_customization.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-03-25T02:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b43e3aec_edaa007b",
       "range": {
         "startLine": 33,
         "startChar": 0,
