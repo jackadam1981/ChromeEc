@@ -65,6 +65,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b25fb5c_625066a1",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-03-25T10:26:33Z",
+      "side": 1,
+      "message": "Hi Fabio,\n\nThanks for your suggestion! While this is CL:6192672 cherry-picking to `firmware-ec-R132-16093.3.B-main` and we have schedule concerns (b/406144269) for deku, I will submit another CL to optimize for this.",
+      "parentUuid": "ab56f314_77bd8e83",
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8ce1e9b_ebcd4a38",
         "filename": "zephyr/program/ovis/deku/src/thermal.c",
         "patchSetId": 2
@@ -150,6 +168,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "285fbaa3_51d88040",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-03-25T10:26:33Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "b8ce1e9b_ebcd4a38",
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb9a315f_774f706b",
         "filename": "zephyr/program/ovis/deku/src/thermal.c",
         "patchSetId": 2
@@ -185,6 +221,30 @@
           ]
         }
       ],
+      "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58af3cb3_04be6272",
+        "filename": "zephyr/program/ovis/deku/src/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-03-25T10:26:33Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "eb9a315f_774f706b",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 37
+      },
       "revId": "d1ec9c7e65985d35314a6686b805c298057194a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
