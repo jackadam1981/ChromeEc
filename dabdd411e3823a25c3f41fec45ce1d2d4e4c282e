@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c7f17a2_dd9f1f83",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-25T16:46:14Z",
+      "side": 1,
+      "message": "Use `microchip` instead of `mchp` throughout this change.",
+      "range": {
+        "startLine": 93,
+        "startChar": 18,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "dabdd411e3823a25c3f41fec45ce1d2d4e4c282e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
