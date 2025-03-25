@@ -16,6 +16,24 @@
       "message": "I agree that the ordering requirement here is non-obvious. Sorry for creating an awkward multi-layer policy check in my previous CL. As it stands, maybe this line should have a comment saying it needs to happen after the dual-role state is updated.",
       "revId": "84b33f4ea01f90a7c0b6fe6bb474af2ac2b9d0eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1361d5c_2757b56b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3983,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-03-25T06:24:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a07d7e_cc1923e4",
+      "revId": "84b33f4ea01f90a7c0b6fe6bb474af2ac2b9d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
