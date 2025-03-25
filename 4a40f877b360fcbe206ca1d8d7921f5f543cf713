@@ -34,6 +34,24 @@
       "parentUuid": "6d20be1b_63826c68",
       "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b8f3b9_4d07f218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-25T17:27:35Z",
+      "side": 1,
+      "message": "First, add the test to this [CMakelists.txt](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/CMakeLists.txt) and [`Kconfig`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/Kconfig).\n\nSince the [`ram_lock` test is already in `run_device_tests.py` for EC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d703-706;drc\u003dbabc8dc42ebe637f0f3b4578cd06c05d2515889f), you can just add the `--zephyr` flag when running `run_device_tests.py`:\n\n```\n./test/run_device_tests.py --board\u003dhelipilot --flasher\u003dservo_micro --tests ram_lock --zephyr\n```\n\nThat should build and run the Zephyr version of the test.",
+      "parentUuid": "9db9219c_3df97e9b",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
