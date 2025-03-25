@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee62f6e_64052a22",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-25T22:24:28Z",
+      "side": 1,
+      "message": "I know we had talked about doing this unconditionally, but the `CONFIG_EEPROM_AT2X_INIT_PRIORITY` symbol doesn\u0027t appear unless EEPROM is enabled.",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "9e59b0acc2236e63234bc6d25d01e743fff3dbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
