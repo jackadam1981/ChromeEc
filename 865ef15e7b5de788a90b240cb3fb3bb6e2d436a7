@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b980021b_4187105e",
+        "filename": "zephyr/program/fatcat/felino/keyboard.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-03-25T07:40:18Z",
+      "side": 1,
+      "message": "I prefer to make an incompatible firmware for the next build, that means the machines with different keyboards need to use corresponding FW. But this is still under discussion now.",
+      "parentUuid": "8523e9cc_231a929c",
+      "revId": "865ef15e7b5de788a90b240cb3fb3bb6e2d436a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b43e3aec_edaa007b",
