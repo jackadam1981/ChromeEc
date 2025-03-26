@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f0b337_662a03c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:22:58Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think it\u0027s really necessary to say that the VIF is used for compliance testing. But if we suppose that the reader might not know that, then it seems reasonable to specify that it\u0027s a _USB_ VIF used for _USB_ compliance testing.",
+      "revId": "ca8b919abb96f64d4177e3bced8ed2e876d08081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e7501b_3c4d1468",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:22:58Z",
+      "side": 1,
+      "message": "This appears at first glance to be a valid VIF, which is good enough for this CL. I flagged a few fields that I think will need to change, and there are a few more related ones, but that can happen in a follow-up CL.",
+      "revId": "ca8b919abb96f64d4177e3bced8ed2e876d08081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d345ec4f_3874770b",
+        "filename": "zephyr/program/corsola/steelix/steelix_vif.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:22:58Z",
+      "side": 1,
+      "message": "This should ultimately be \"Managed,\" but that can go in a future CL.",
+      "revId": "ca8b919abb96f64d4177e3bced8ed2e876d08081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18b7aa2_520011a0",
+        "filename": "zephyr/program/corsola/steelix/steelix_vif.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:22:58Z",
+      "side": 1,
+      "message": "This should be 1500 mW, but that can go in a future CL.",
+      "revId": "ca8b919abb96f64d4177e3bced8ed2e876d08081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
