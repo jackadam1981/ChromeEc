@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caa43651_0f0cb38a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-26T15:45:21Z",
+      "side": 1,
+      "message": "Oops, you also need to add the test to the [`testcase.yaml`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/testcase.yaml;bpv\u003d1) as mentioned in the error.\n\nHere is an example of a recent test: https://crrev.com/c/6096994\n\nYou can build and run other unit tests for Zephyr in the exact same way; just change the name of the test to one of the ones listed in `run_device_tests.py`:\n\n```\n./test/run_device_tests.py --board\u003dhelipilot --flasher\u003dservo_micro --tests sha256 --zephyr\n```",
+      "parentUuid": "35344d85_94910fb3",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac2ba43_4f5bd700",
         "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
         "patchSetId": 1
