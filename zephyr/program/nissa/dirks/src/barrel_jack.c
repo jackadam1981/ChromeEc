@@ -392,3 +392,20 @@ static void power_monitor(void)
 
 /* Start power monitoring after ADCs have been initialised. */
 DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
+
+/*
+ * The system supply specification is 17.1 to 21V. 17.1V less 20% is 13.68V.
+ * use 13.5V as the minimum power voltage. Report power failure when system
+ * supply voltage is less than 13.5V.
+ */
+#define MINIMUM_POWER_IN_MV 13500
+
+__override bool board_is_power_good(void)
+{
+	/* ADC read = System supply voltage * (R3526 / (R3526 + R3520)) */
+	if (adc_read_channel(ADC_PSYS) <
+	    (MINIMUM_POWER_IN_MV * 100 / (100 + 680)))
+		return false;
+
+	return true;
+}
