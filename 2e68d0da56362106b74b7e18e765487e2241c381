@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4620284_87afa91f",
+        "filename": "zephyr/test/charger/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-26T19:44:39Z",
+      "side": 1,
+      "message": "still investigating?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "31fd37dd_cd913056",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/charger/CMakeLists.txt",
+              "range": {
+                "startLine": 17,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "if (DEFINED CONFIG_TEST_CHARGER_SOLO_DEF)\n\ttarget_compile_definitions(app PRIVATE CHARGER_SOLO\u003d0)\nendif()\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2e68d0da56362106b74b7e18e765487e2241c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5791265_8874776b",
+        "filename": "zephyr/test/charger/charge/src/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-26T19:44:39Z",
+      "side": 1,
+      "message": "are you still investigating this?",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e149d0ac_474b7539",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/charger/charge/src/charge_ramp.c",
+              "range": {
+                "startLine": 10,
+                "startChar": 0,
+                "endLine": 11,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2e68d0da56362106b74b7e18e765487e2241c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
