@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5eb2f2_b6c8138d",
+        "filename": "zephyr/include/cros/microchip/mec172x.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-26T22:05:12Z",
+      "side": 1,
+      "message": "can the existing EC_RESET_FLAG_SYSJUMP state flag we already track be used instead?\n\nare there seme subtle chip specific interactions happening here that\nprecudle its use?",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f607b52a_55604a2d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/cros/microchip/mec172x.dtsi",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 77,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "23c27873e749b23a0cae847224010b138de81319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a5d6de_3c24bd28",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-26T22:05:12Z",
+      "side": 1,
+      "message": "uint8_t, then remove the casts on bbram_* calls.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1255eb99_99b5d759",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "const uint8_t mchp_image_type \u003d MCHP_ECRO_WORD;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "const uint8_t mchp_image_type \u003d MCHP_ECRW_WORD;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": "\tstatic uint8_t flash_offset;\n\tstatic uint8_t flash_used;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "uint8_t system_get_lfw_address(void)\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t jump_addr \u003d (uint8_t)system_jump_to_booter;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 87,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t value \u003d (uint8_t)copy;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": "\t\t    BBRAM_REGION_SIZE(ec_img_load), \u0026value);\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "\t\t    BBRAM_REGION_SIZE(ec_img_jmp), \u0026value);\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 114,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t value \u003d 0u;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 119,
+                "startChar": 0,
+                "endLine": 120,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t   BBRAM_REGION_SIZE(ec_img_jmp), \u0026value);\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t\u0026value)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "23c27873e749b23a0cae847224010b138de81319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
