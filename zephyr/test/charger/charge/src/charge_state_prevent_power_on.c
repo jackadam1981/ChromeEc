@@ -4,7 +4,7 @@
  */
 
 #include "charge_state.h"
-#include "test/drivers/test_state.h"
+#include "test_state.h"
 
 #include <zephyr/ztest.h>
 
