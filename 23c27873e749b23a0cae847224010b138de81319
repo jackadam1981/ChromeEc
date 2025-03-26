@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9458f426_dd1de6bd",
+        "filename": "zephyr/include/cros/microchip/mec172x.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-03-26T22:29:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4f5eb2f2_b6c8138d",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "23c27873e749b23a0cae847224010b138de81319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00a5d6de_3c24bd28",
         "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
         "patchSetId": 3
@@ -179,6 +203,30 @@
           ]
         }
       ],
+      "revId": "23c27873e749b23a0cae847224010b138de81319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acb3787_73e86748",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-03-26T22:29:12Z",
+      "side": 1,
+      "message": "Sounds good, I will do it in a separate commit and put this fix on top of it.",
+      "parentUuid": "00a5d6de_3c24bd28",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 9
+      },
       "revId": "23c27873e749b23a0cae847224010b138de81319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
