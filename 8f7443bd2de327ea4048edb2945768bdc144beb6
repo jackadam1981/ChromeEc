@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2c8bc8_a58da67b",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-26T17:17:40Z",
+      "side": 1,
+      "message": "Edited comment, added corresponding flash check. They aren\u0027t mutually exclusive so I run both",
+      "parentUuid": "1c1d21d7_e369d8ca",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "8f7443bd2de327ea4048edb2945768bdc144beb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47bd9a8e_e3e839c5",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-03-26T15:26:39Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "8f7443bd2de327ea4048edb2945768bdc144beb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e874ddf4_09c26a1a",
+        "filename": "zephyr/test/krabby/src/board_chinchou.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-03-26T17:17:40Z",
+      "side": 1,
+      "message": "removed the unused custom fakes too",
+      "parentUuid": "47bd9a8e_e3e839c5",
       "range": {
         "startLine": 124,
         "startChar": 0,
