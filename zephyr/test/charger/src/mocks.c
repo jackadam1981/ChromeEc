@@ -13,3 +13,15 @@ __weak enum ec_error_list charger_set_frequency(int freq_khz)
 {
 	return 0;
 }
+
+int battery_is_present(void)
+{
+	return 1;
+}
+
+#ifdef CONFIG_LINK_TEST_SUITE_CHARGE
+int extpower_is_present(void)
+{
+	return 0;
+}
+#endif
