@@ -22,6 +22,30 @@
       },
       "revId": "845d740c31f852621700b28d29e791f8fb37fdb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f000005b_c1e4cbfe",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-26T22:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c20c474_63925b9f",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "845d740c31f852621700b28d29e791f8fb37fdb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
