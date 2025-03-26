@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35344d85_94910fb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-03-26T09:48:39Z",
+      "side": 1,
+      "message": "Following the steps you mentioned. Run the command `./test/run_device_tests.py --board\u003dhelipilot --flasher\u003dservo_micro --tests ram_lock --zephyr` and it says that ram_lock not present in testcase.yaml.\n```\nDEBUG:test: ram_lock\nDEBUG:Running tests: [\u0027ram_lock\u0027]\nERROR:failed to build ram_lock: ram_lock not present in testcase.yaml\nTest \"ram_lock\": FAILED\n\nTests failed for helipilot Zephyr\n``` \nCould you share more details on how to build it? Alternatively, could you provide the command to build other Zephyr unit tests for Helipilot?\nThank you.",
+      "parentUuid": "65b8f3b9_4d07f218",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac2ba43_4f5bd700",
         "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
         "patchSetId": 1
