@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c20c474_63925b9f",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-26T21:44:26Z",
+      "side": 1,
+      "message": "How about writing it this way to make it a little clearer?\n\n```\nif (status !\u003d EC_SUCCESS) {\n  assert(status \u003d\u003d EC_ERROR_HW_INTERNAL);\n  errors |\u003d FP_ERROR_SPI_COMM;\n}\n\nif (id !\u003d FP_SENSOR_HWID_ELAN) {\n\tCPRINTS(\"ELAN unknown silicon 0x%04x\", id);\n\terrors |\u003d FP_ERROR_BAD_HWID;\n\treturn EC_ERROR_HW_INTERNAL;\n}\n\nCPRINTS(\"ELAN HWID 0x%04x\", id);\nreturn EC_SUCCESS;\n\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "845d740c31f852621700b28d29e791f8fb37fdb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
