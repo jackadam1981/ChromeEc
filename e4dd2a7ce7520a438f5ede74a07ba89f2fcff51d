@@ -22,6 +22,30 @@
       },
       "revId": "e4dd2a7ce7520a438f5ede74a07ba89f2fcff51d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8641f4c5_b56f037b",
+        "filename": "zephyr/program/trulo/trulo-ti/trulo-ti_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-03-26T00:36:44Z",
+      "side": 1,
+      "message": "This bit really only applies to responses from UFPs and cables. For DisplayPort DFPs like Chromebook ports, this should be set to 0 in the ID header.\n\nFrom Section 6.4.4.3.1.1.5 of the PD Spec (Modal Operation Supported)\n\u003e The Modal Operation Supported bit is used to indicate whether or not the Product (either a Cable Plug or a device that can operate in the UFP role) is capable of supporting Modes. The Modal Operation Supported bit does not describe a DFP\u0027s Alternate Mode Controller functionality",
+      "parentUuid": "2d3c0a4f_79b7b7ad",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 55
+      },
+      "revId": "e4dd2a7ce7520a438f5ede74a07ba89f2fcff51d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
