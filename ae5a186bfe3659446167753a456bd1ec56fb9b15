@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e1e476_e0449610",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6ebd00a4_4849dafa",
+      "revId": "ae5a186bfe3659446167753a456bd1ec56fb9b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62b3554c_beb7c6ae",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e09a19f_a5cff187",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:04Z",
+      "side": 1,
+      "message": "Yes sure...Abe will follow it.",
+      "parentUuid": "690a54aa_cab04b72",
+      "revId": "ae5a186bfe3659446167753a456bd1ec56fb9b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a6f7f49_74148672",
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a1102a_1b51b294",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:04Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3a6f7f49_74148672",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "ae5a186bfe3659446167753a456bd1ec56fb9b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f6645dc_615350a8",
@@ -88,6 +148,24 @@
       "writtenOn": "2025-03-24T18:46:52Z",
       "side": 1,
       "message": "Why is this changing?",
+      "revId": "ae5a186bfe3659446167753a456bd1ec56fb9b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68586ee_47ec189d",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:04Z",
+      "side": 1,
+      "message": "Product Revision is Reverted to 0.",
+      "parentUuid": "0f6645dc_615350a8",
       "revId": "ae5a186bfe3659446167753a456bd1ec56fb9b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
