@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "681e4f14_29c1942c",
+        "filename": "zephyr/test/charger/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-26T19:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4620284_87afa91f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 1
+      },
+      "revId": "2e68d0da56362106b74b7e18e765487e2241c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5791265_8874776b",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "2e68d0da56362106b74b7e18e765487e2241c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a889c82_6c472501",
+        "filename": "zephyr/test/charger/charge/src/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-26T19:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5791265_8874776b",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 2
+      },
       "revId": "2e68d0da56362106b74b7e18e765487e2241c381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
