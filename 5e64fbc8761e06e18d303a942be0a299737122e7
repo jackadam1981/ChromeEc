@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b67f37_5e3bb41a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:36:02Z",
+      "side": 1,
+      "message": "This CL also adds an entire port/component.",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80950ca2_3b0037be",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:36:02Z",
+      "side": 1,
+      "message": "It\u0027s fine the pencil this in for now, but it seems implausible that the OC threshold could be exactly 3000 mA. There has to be a small margin of error at the top, or else normal usage would trigger OC.",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc32116_0575a4ed",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:36:02Z",
+      "side": 1,
+      "message": "I don\u0027t th9nk this is true. ciri should have a battery, so it shouldn\u0027t be interruptible.",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddeb290_dab801e7",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:36:02Z",
+      "side": 1,
+      "message": "I don\u0027t think ciri supports Enter_USB/USB4, but if it does, it also needs to support Data_Reset. I\u0027m surprised the VIF editor didn\u0027t flag this combo as an error.",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 44
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4d8b42f4_d04ccd2d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/geralt/ciri/ciri_vif.xml",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": "    \u003cvif:Data_Reset_Supported value\u003d\"true\" /\u003e\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/ciri_vif.xml",
+              "range": {
+                "startLine": 229,
+                "startChar": 0,
+                "endLine": 230,
+                "endChar": 0
+              },
+              "replacement": "    \u003cvif:Data_Reset_Supported value\u003d\"true\" /\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629450b9_3a35ae15",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:36:02Z",
+      "side": 1,
+      "message": "I think this should be 3A.",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dfda12b_779fc417",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:36:02Z",
+      "side": 1,
+      "message": "As noted in another CL, this is fine for a first pass, but 3000 mA on the nose seems implausible for an OCP threshold.",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
