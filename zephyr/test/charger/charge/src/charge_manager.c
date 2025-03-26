@@ -5,7 +5,7 @@
 
 #include "charge_manager.h"
 #include "ec_commands.h"
-#include "test/drivers/test_state.h"
+#include "test_state.h"
 
 #include <zephyr/ztest.h>
 
