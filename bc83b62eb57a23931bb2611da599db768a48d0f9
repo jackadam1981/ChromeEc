@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f4ee21_133bdf81",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-03-26T12:29:42Z",
+      "side": 1,
+      "message": "can you add braces here?",
+      "fixSuggestions": [
+        {
+          "fixId": "d0fa3959_c073569e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+              "range": {
+                "startLine": 406,
+                "startChar": 0,
+                "endLine": 408,
+                "endChar": 0
+              },
+              "replacement": "\tif ((adc_read_channel(ADC_PSYS) \u003c\n\t     (MINIMUM_POWER_IN_MV * 100 / (100 + 680)))) {\n"
+            },
+            {
+              "path": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+              "range": {
+                "startLine": 409,
+                "startChar": 0,
+                "endLine": 409,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bc83b62eb57a23931bb2611da599db768a48d0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
