@@ -1307,7 +1307,8 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	if (!is_valid_port(port))
 		return;
 
-	if (charge_ceil[port][requestor] != ceil) {
+	if (charge_ceil[port][requestor] != ceil &&
+	    charge_port != CHARGE_PORT_NONE) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
 			hook_call_deferred(&charge_manager_refresh_data, 0);
