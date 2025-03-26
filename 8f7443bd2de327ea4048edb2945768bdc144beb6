@@ -16,6 +16,52 @@
       "message": "ODM reported success with this patch applied.",
       "revId": "8f7443bd2de327ea4048edb2945768bdc144beb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1d21d7_e369d8ca",
+        "filename": "zephyr/shim/src/cbi/cros_cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-26T15:26:39Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t match the #ifdef guard.\n\nFor completeness you could also check that the CBI priority is also lower than CONFIG_FLASH_INIT_PRIORITY.\n\nI don\u0027t see any uses of `CONFIG_PLATFORM_EC_CBI_GPIO` so no need to check GPIO init priority at this point.",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "8f7443bd2de327ea4048edb2945768bdc144beb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bd9a8e_e3e839c5",
+        "filename": "zephyr/test/krabby/src/board_chinchou.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-03-26T15:26:39Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "8f7443bd2de327ea4048edb2945768bdc144beb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
