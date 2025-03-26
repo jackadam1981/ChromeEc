@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd893f4e_7a34af95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:17:16Z",
+      "side": 1,
+      "message": "This commit does not add this file. The headline should say something like, `domika: Update VIF revision and source capabilities`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "466e95d14bd8e8551954084cf3df07e5b2bb878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343506ab_e44d2ac1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-26T20:17:16Z",
+      "side": 1,
+      "message": "From what I can see, these values did not change in this CL. Meanwhile, the source port type changed from guaranteed to managed.\n\nThe bulk of this delta appears to be just changing from VIF spec 3.19 formatting to 3.33 formatting. I\u0027d mention that briefly in the commit message.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "466e95d14bd8e8551954084cf3df07e5b2bb878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b44616f6_16309b4e",
