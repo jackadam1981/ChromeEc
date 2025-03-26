@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7afde0_962387d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6e3aa833_e39bb70f",
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e780bd5_6c3b3dc0",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-18T10:16:41Z",
       "side": 1,
       "message": "Check if this is correct",
+      "range": {
+        "startLine": 30,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0444cffa_0b503096",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5e780bd5_6c3b3dc0",
       "range": {
         "startLine": 30,
         "startChar": 29,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a96921_40d9cc96",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0fd2a5d7_2e63be4b",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8d0184f_385f3fb5",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-03-18T10:16:41Z",
       "side": 1,
       "message": "cross check that this is \"false\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 46,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b04d33_d16a463f",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a8d0184f_385f3fb5",
       "range": {
         "startLine": 45,
         "startChar": 46,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca8a3ab_ecf1552f",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a0637444_07a2ddec",
+      "range": {
+        "startLine": 114,
+        "startChar": 29,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ad77f6_0405c4c7",
@@ -123,6 +237,30 @@
       "writtenOn": "2025-03-18T10:16:41Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 200,
+        "startChar": 38,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f87e4c_9c7ba8c2",
+        "filename": "zephyr/program/nissa/domika/domika_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-26T04:22:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "24ad77f6_0405c4c7",
       "range": {
         "startLine": 200,
         "startChar": 38,
