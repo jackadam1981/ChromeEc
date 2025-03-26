@@ -52,6 +52,164 @@
       "parentUuid": "9db9219c_3df97e9b",
       "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac2ba43_4f5bd700",
+        "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-26T01:20:09Z",
+      "side": 1,
+      "message": "Update Copyright Year to 2025 in this and other files (ram_lock.c)",
+      "fixSuggestions": [
+        {
+          "fixId": "2ec9b7e5_97b29210",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/npcx/include/ram_lock.h",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": "/* Copyright 2025 The ChromiumOS Authors\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfb3e54_1a65e64b",
+        "filename": "zephyr/shim/chip/npcx/ram_lock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-26T01:20:09Z",
+      "side": 1,
+      "message": "if this variable is only ever used to store the value of NPCX_LK_CTL, wouldn\u0027t a better name be npcx_lk_ctl_value or similar? data_cached seems too generic",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d5c16286_318ea78b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/npcx/ram_lock.c",
+              "range": {
+                "startLine": 43,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": "\tuint32_t npcx_lk_ctl_value \u003d 0x0;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/npcx/ram_lock.c",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 47,
+                "endChar": 0
+              },
+              "replacement": "\tret \u003d syscon_read_reg(mdc_dev, NPCX_RAM_LK_CTL, \u0026npcx_lk_ctl_value);\n"
+            },
+            {
+              "path": "zephyr/shim/chip/npcx/ram_lock.c",
+              "range": {
+                "startLine": 52,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "\tif ((npcx_lk_ctl_value \u0026 BIT(NPCX_RAM_LK_FETCH_BF)) \u003d\u003d 0) {\n\t\tnpcx_lk_ctl_value |\u003d BIT(NPCX_RAM_LK_FETCH_BF);\n\t\tret \u003d syscon_write_reg(mdc_dev, NPCX_RAM_LK_CTL, npcx_lk_ctl_value);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae3927a_9e8162d4",
+        "filename": "zephyr/shim/chip/npcx/ram_lock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-26T01:20:09Z",
+      "side": 1,
+      "message": "Can you please explain why this is different from the CrosEC [implementation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/ram_lock.c;l\u003d74)?",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138e3c9e_73470358",
+        "filename": "zephyr/shim/core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-03-26T01:20:09Z",
+      "side": 1,
+      "message": "If we are applying a write lock to code RAM, why are we referencing this via CONFIG_FLASH_BASE_ADDRESS rather than a code RAM specific #define like CONFIG_RW_MEM_OFF? FLASH and STORAGE defines are confusing if we are really locking RAM. It seems we should adjust the implementation or fix the comment to explain",
+      "fixSuggestions": [
+        {
+          "fixId": "d0e061a7_98dc90dc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/core/cortex-m/mpu.c",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (mpu_config.mpu_regions[index].base \u003d\u003d CONFIG_RW_MEM_OFF) {\n"
+            },
+            {
+              "path": "zephyr/shim/core/cortex-m/mpu.c",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tram_lock_config_lock_region(REGION_STORAGE, CONFIG_RW_MEM_OFF,\n\t\t\t\t\t\t    (CONFIG_RW_MEM_SIZE \u003c\u003c 10));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
