@@ -516,3 +516,23 @@ ZTEST(dirks, test_power_monitor)
 	zassert_equal(ppc_set_vbus_source_current_limit_fake.arg1_val,
 		      TYPEC_RP_3A0);
 }
+
+static int ppvar_pwr_in;
+
+static int adc_read_channel_mock(enum adc_channel ch)
+{
+	return ppvar_pwr_in;
+}
+
+ZTEST(dirks, test_board_is_power_good)
+{
+	/* If PSYS=20V, ppvar_pwr_in=20000mV*(100/(100+680)) ~= 2564 */
+	ppvar_pwr_in = 2564;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	zassert_true(board_is_power_good());
+
+	/* If PSYS=13.5V, ppvar_pwr_in=13500mV*(100/(100+680)) ~= 1730 */
+	ppvar_pwr_in = 1729;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	zassert_false(board_is_power_good());
+}

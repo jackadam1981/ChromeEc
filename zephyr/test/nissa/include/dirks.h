@@ -17,5 +17,6 @@ enum led_color {
 };
 
 void board_bj_init(void);
+bool board_is_power_good(void);
 
 #endif /* ZEPHYR_TEST_NISSA_INCLUDE_DIRKS_H_ */
