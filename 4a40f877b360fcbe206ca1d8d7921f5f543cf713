@@ -210,6 +210,24 @@
       ],
       "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef764c71_4fcee197",
+        "filename": "zephyr/shim/core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-03-26T03:34:00Z",
+      "side": 1,
+      "message": "Here, follow the settings of [mpu_regions](https://github.com/zephyrproject-rtos/zephyr/blob/9628d97ad97ecb8ef668188a2da43e206c1bac66/arch/arm/core/mpu/arm_mpu_regions.c#L12) in zephyr to set RAM lock. Thus, CONFIG_FLASH_BASE_ADDRESS is used as the code RAM base and CONFIG_SRAM_BASE_ADDRESS as the data RAM base.",
+      "parentUuid": "138e3c9e_73470358",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
