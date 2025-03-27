@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "534b90b4_e2bbdaa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-03-27T07:12:11Z",
+      "side": 1,
+      "message": "It looks to me that EC checks `PWR_SLP_SUS` and `PWR_DSW_PWROK` to determine whereher the power failure happens, it is worth to understand why EC fails to detect the power failure.",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cea4e5c_9f4ef702",
         "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
         "patchSetId": 3
