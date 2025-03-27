@@ -16,6 +16,24 @@
       "message": "Does dirks needs `board_is_power_good`? Usually EC can detect power faulire without this function, this function is implemented for the board which fails to do so and need to rely on ADC? Did you test without this function?",
       "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d213130_549e5907",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-03-27T05:18:12Z",
+      "side": 1,
+      "message": "Yes, I found the dut won\u0027t auto boot up without this CL when I tried local build EC from the branch firmware-nissa-15217.B.\n\nEC log shows !ap-idle! when reconnect AC.\n```\n25-03-27 05:08:58.567 I: power state 6 \u003d S0, in 0x38d87\n25-03-27 05:09:03.479 \n25-03-27 05:09:03.481 ec:~\u003e \n25-03-27 05:09:03.865 ec:~\u003e \n25-03-27 05:09:04.099 ec:~\u003e \n25-03-27 05:09:04.288 ec:~\u003e [21.314880 System unlocked, TCPC I2C tunnels may be unprotected]\n25-03-27 05:09:12.332 ec:~\u003e I: power state 6 \u003d S0, in 0x30de3\n25-03-27 05:09:12.985 ð*** Booting Zephyr OS build 3.7.99 ***\n25-03-27 05:09:16.264 I: Pwrseq Init\n25-03-27 05:09:16.267 !\n25-03-27 05:09:16.267 !\n25-03-27 05:09:16.268 --- UART initialized after reboot ---\n25-03-27 05:09:16.271 ![Image: RO, dirks-0.0.0-8abaabc+ 2025-03-27 13:03:53 sue@sue-Predator-PH517-52]\n25-03-27 05:09:16.278 ![Reset cause: !reset-pin! !power-on! !ap-idle!]\n```",
+      "parentUuid": "29daf7a4_6b8fb1aa",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
