@@ -32,6 +32,8 @@ const uint32_t mchp_image_type = MCHP_ECRW_WORD;
 #error "Unsupported image type!"
 #endif
 
+/* Holds next image to jump */
+static enum ec_image next_image_copy = EC_IMAGE_UNKNOWN;
 /*
  * Make sure CONFIG_XXX flash offsets are correct for MEC172x 512KB SPI flash.
  */
@@ -67,6 +69,10 @@ void system_jump_to_booter(void)
 	 */
 	clock_turbo();
 
+	/* Before jumping, invalidate `next_image_copy` to let `mchp_image_type`
+	 * figure out current image type.  */
+	system_set_image_copy(EC_IMAGE_UNKNOWN);
+
 	/* MCHP Read selected image from SPI flash into SRAM
 	 * Need a jump to little-fw (LFW).
 	 */
@@ -84,23 +90,13 @@ uint32_t system_get_lfw_address(void)
 
 enum ec_image system_get_shrspi_image_copy(void)
 {
-	enum ec_image img = EC_IMAGE_UNKNOWN;
-	uint32_t value = 0u;
+	enum ec_image img = next_image_copy;
 
-	if (bbram_dev) {
-		if (!bbram_read(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
-				BBRAM_REGION_SIZE(ec_img_load),
-				(uint8_t *)&value)) {
-			img = (enum ec_image)(value & 0x7fu);
-		}
-	}
-
-	if (img == EC_IMAGE_UNKNOWN) {
+	if (next_image_copy == EC_IMAGE_UNKNOWN) {
 		img = EC_IMAGE_RO;
 		if (mchp_image_type == MCHP_ECRW_WORD) {
 			img = EC_IMAGE_RW;
 		}
-		system_set_image_copy(img);
 	}
 
 	return img;
@@ -113,7 +109,7 @@ enum ec_image system_get_shrspi_image_copy(void)
  */
 void system_set_image_copy(enum ec_image copy)
 {
-	uint32_t value = (uint32_t)copy;
+	uint8_t value = (uint8_t)copy;
 
 	if (!bbram_dev) {
 		return;
@@ -125,11 +121,11 @@ void system_set_image_copy(enum ec_image copy)
 		value = EC_IMAGE_RW;
 		break;
 	case EC_IMAGE_RO:
-	default:
 		value = EC_IMAGE_RO;
 		break;
+	default:
+		value = EC_IMAGE_UNKNOWN;
 	}
 
-	bbram_write(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
-		    BBRAM_REGION_SIZE(ec_img_load), (uint8_t *)&value);
+	next_image_copy = copy;
 }
