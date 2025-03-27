@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fb589e7_936cdd69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-03-27T03:02:45Z",
+      "side": 1,
+      "message": "Thanks for your information.\nWhen running this command, it says that no project named helipilot.\nCommand\n```\n./test/run_device_tests.py --board\u003dhelipilot --flasher\u003dservo_micro --tests sha256 --zephyr\n```\nBuild message\n```\nKeyError: \u0027No project named helipilot\u0027\nERROR:failed to build sha256: Command \u0027[\u0027zmake\u0027, \u0027build\u0027, \u0027helipilot\u0027, \u0027--clobber\u0027, \u0027-DOVERLAY_CONFIG\u003d/tmp/test.conf\u0027]\u0027 returned non-zero exit status 1.\nTest \"sha256\": FAILED\n\nTests failed for helipilot Zephyr\n```\nHave any comment for this? Thank you.",
+      "parentUuid": "caa43651_0f0cb38a",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac2ba43_4f5bd700",
         "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
         "patchSetId": 1
