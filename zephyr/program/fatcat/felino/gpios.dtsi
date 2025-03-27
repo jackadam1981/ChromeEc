@@ -114,6 +114,7 @@
 		};
 		gpio_ec_edp_bklt_en: ec_edp_bklt_en {
 			gpios = <&gpioh 0 GPIO_OUTPUT>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
 		gpio_ec_vddq_en: ec_vddq_en {
 			gpios = <&gpioj 1 GPIO_OUTPUT>;
