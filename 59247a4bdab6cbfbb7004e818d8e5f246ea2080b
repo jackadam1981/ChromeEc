@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29daf7a4_6b8fb1aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-03-27T04:05:10Z",
+      "side": 1,
+      "message": "Does dirks needs `board_is_power_good`? Usually EC can detect power faulire without this function, this function is implemented for the board which fails to do so and need to rely on ADC? Did you test without this function?",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
