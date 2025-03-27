@@ -86,6 +86,40 @@ void set_scancode_set2(uint8_t row, uint8_t col, uint16_t val)
 }
 
 /*
+ * Keyboard layout decided by FW config.
+ */
+test_export_static void kb_layout_init(void)
+{
+	int ret;
+	uint32_t val_kb_layout, val_kb_numpad;
+
+	ret = cros_cbi_get_fw_config(FW_KB_LAYOUT, &val_kb_layout);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_KB_LAYOUT field %d",
+			FW_KB_LAYOUT);
+		return;
+	}
+
+	ret = cros_cbi_get_fw_config(FW_KB_NUMPAD, &val_kb_numpad);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_KB_NUMPAD field %d",
+			FW_KB_NUMPAD);
+		return;
+	}
+	/*
+	 * If keyboard is US2(FW_KB_LAYOUT_US2), we need translate right ctrl
+	 * to backslash(\|) key.
+	 */
+	if (val_kb_layout == FW_KB_LAYOUT_US2) {
+		if (val_kb_numpad == FW_KB_NUMPAD_PRESENT)
+			set_scancode_set2(3, 14, get_scancode_set2(2, 7));
+		else
+			set_scancode_set2(3, 14, get_scancode_set2(7, 17));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, kb_layout_init, HOOK_PRIO_POST_FIRST);
+
+/*
  * Keyboard function decided by FW config.
  */
 test_export_static void keyboard_matrix_init(void)
