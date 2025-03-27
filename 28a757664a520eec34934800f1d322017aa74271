@@ -1,0 +1,336 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d246f8_73ba16eb",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be output?",
+      "fixSuggestions": [
+        {
+          "fixId": "7d8e4b59_f57680c5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003cMCHP_GPIO_DECODE_154 GPIO_OUTPUT_LOW\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96be1532_fb409b82",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "output",
+      "range": {
+        "startLine": 32,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "572dbd6c_737c1af0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003cMCHP_GPIO_DECODE_007 GPIO_OUTPUT\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeee764e_701ed30b",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "output",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef14f1a_944d0994",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "in my table those 2 are unused, could you please check again?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be46dc6c_a94f862b",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "pca9555-1-r-int",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f3e3c834_9b8f2027",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "\t\tpca9555-1-r-int {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574db3c4_7c711fe4",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "n/a",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e567c142_b11a7d88",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "output",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b9f366e7_75430e51",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003cMCHP_GPIO_DECODE_153 GPIO_OUTPUT\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4583073a_d152886e",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "output",
+      "range": {
+        "startLine": 129,
+        "startChar": 33,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8be679f8_5753bc80",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003cMCHP_GPIO_DECODE_171 GPIO_OUTPUT\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df36387_d4231682",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "I\u0027m going to stop here. Seems like this GPIO map doesn\u0027t match the spreadsheet referenced in b:396318819. Let me know if you want to push it as-is and then fix definitions in follow-up CLs. Otherwise, let\u0027s fix the naming and input/output to match the WCL_EC_Microchip_GPIO_Mapping_Chrome_Rev0P65 first.",
+      "range": {
+        "startLine": 133,
+        "startChar": 44,
+        "endLine": 133,
+        "endChar": 45
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42117e25_44b82b74",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-03-27T00:23:42Z",
+      "side": 1,
+      "message": "output",
+      "range": {
+        "startLine": 133,
+        "startChar": 33,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "659bc67c_e647243b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+              "range": {
+                "startLine": 133,
+                "startChar": 0,
+                "endLine": 134,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003cMCHP_GPIO_DECODE_127 GPIO_OUTPUT\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
