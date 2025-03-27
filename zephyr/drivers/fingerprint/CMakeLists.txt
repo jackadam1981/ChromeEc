@@ -2,6 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_ELAN80SG	fingerprint_elan80sg.c)
+zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_ELAN80SG_PAL
+			     fingerprint_elan80sg_pal.c)
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_FPC1025	fingerprint_fpc1025.c)
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_FPC1025_PAL
 			     fingerprint_fpc1025_pal.c)
