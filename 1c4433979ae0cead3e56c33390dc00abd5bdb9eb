@@ -33,6 +33,24 @@
       "message": "This casting is not pretty, but I undestand that we need that. I think we need to add `BUILD_ASSERT`s to make sure enums vaules in `fp_capture_type` and in `fingerprint_capture_type` have the same values, e.g. `FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT` \u003d `FP_CAPTURE_VENDOR_FORMAT`.",
       "revId": "1c4433979ae0cead3e56c33390dc00abd5bdb9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc99995_8ddf3025",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-27T16:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d53d2977_c64fedb0",
+      "revId": "1c4433979ae0cead3e56c33390dc00abd5bdb9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
