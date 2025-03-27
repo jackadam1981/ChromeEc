@@ -1610,18 +1610,25 @@ int charge_want_shutdown(void)
 test_export_static int charge_prevent_power_on_automatic_power_on = 1;
 #endif
 
-bool charge_prevent_power_on(bool power_button_pressed)
+static bool check_imbalanced_cell(const struct batt_params *current_batt_params)
+{
+	return (IS_ENABLED(CONFIG_BATTERY_MEASURE_IMBALANCE) &&
+		(current_batt_params->flags & BATT_FLAG_IMBALANCED_CELL &&
+		 current_batt_params->state_of_charge <
+			 CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON));
+}
+
+static bool check_revive_disconnect(void)
+{
+	return (IS_ENABLED(CONFIG_BATTERY_REVIVE_DISCONNECT) &&
+		battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED);
+}
+
+static int
+min_bat_pct_for_power_on(bool power_button_pressed,
+			 const struct batt_params *current_batt_params)
 {
 	int prevent_power_on = 0;
-	struct batt_params params;
-	struct batt_params *current_batt_params = &curr.batt;
-
-	/* If battery params seem uninitialized then retrieve them */
-	if (current_batt_params->is_present == BP_NOT_SURE) {
-		battery_get_params(&params);
-		current_batt_params = &params;
-	}
-
 #ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 
 	/*
@@ -1635,28 +1642,24 @@ bool charge_prevent_power_on(bool power_button_pressed)
 	 * battery can provide power to the system.
 	 */
 	if (current_batt_params->is_present != BP_YES ||
-#ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
-	    (current_batt_params->flags & BATT_FLAG_IMBALANCED_CELL &&
-	     current_batt_params->state_of_charge <
-		     CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON) ||
-#endif
-#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
-	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED ||
-#endif
+	    check_imbalanced_cell(current_batt_params) ||
+	    check_revive_disconnect() ||
 	    current_batt_params->state_of_charge <
-		    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+		    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
 		prevent_power_on = 1;
+	}
 
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
 	/* However, we can power on if a sufficient charger is present. */
 	if (prevent_power_on) {
-		if (charge_manager_get_power_limit_uw() >=
+		int power_limit_uw = charge_manager_get_power_limit_uw();
+		if (power_limit_uw >=
 		    CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000)
 			prevent_power_on = 0;
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT) && \
 	defined(CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC)
-		else if (charge_manager_get_power_limit_uw() >=
+		else if (power_limit_uw >=
 				 CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT *
 					 1000
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
@@ -1683,6 +1686,23 @@ bool charge_prevent_power_on(bool power_button_pressed)
 #endif
 			      ));
 #endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
+	return prevent_power_on;
+}
+
+bool charge_prevent_power_on(bool power_button_pressed)
+{
+	int prevent_power_on = 0;
+	struct batt_params params;
+	struct batt_params *current_batt_params = &curr.batt;
+
+	/* If battery params seem uninitialized then retrieve them */
+	if (current_batt_params->is_present == BP_NOT_SURE) {
+		battery_get_params(&params);
+		current_batt_params = &params;
+	}
+
+	prevent_power_on = min_bat_pct_for_power_on(power_button_pressed,
+						    current_batt_params);
 
 #if defined(CONFIG_CHARGE_MANAGER) && !defined(CONFIG_USB_PD_CONTROLLER)
 	/* Always prevent power on until charge current is initialized */
