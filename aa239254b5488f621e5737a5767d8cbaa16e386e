@@ -40,6 +40,30 @@
       ],
       "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d47b8ef_5599988d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-27T20:44:02Z",
+      "side": 1,
+      "message": "Can you double-check to see if only `elm` is failing as we discussed?\n\nI suspect not; IIRC, `elm` is usually the first board to be built.\n\nYou are adding `__ec_align4` to this struct, which looks like it\u0027s forcing 4 byte alignment that would apply to all boards (assuming `CONFIG_HOSTCMD_ALIGNED` is set). See [this comment](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d615-641;drc\u003d269d738bf7a8fb02eec4479aa52ce92651e18f0e).\n\n(Separately, if you want to do some more cleanup, it looks like the [`todo` macros](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d669-678;drc\u003d269d738bf7a8fb02eec4479aa52ce92651e18f0e) have been needing replacement for nine years. Now that we have `compare_builds` and `BULID_ASSERT`, we can verify that updating them does not change anything.)",
+      "parentUuid": "c4c2ff5b_d63a8500",
+      "range": {
+        "startLine": 8405,
+        "startChar": 0,
+        "endLine": 8405,
+        "endChar": 19
+      },
+      "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

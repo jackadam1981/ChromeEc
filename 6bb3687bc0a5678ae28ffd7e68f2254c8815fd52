@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e687534_2c1bbe7e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-27T20:44:02Z",
+      "side": 1,
+      "message": "Since we\u0027re using this for padding purposes, let\u0027s change the comment to `/**\u003c padding for alignment */",
+      "range": {
+        "startLine": 8405,
+        "startChar": 1,
+        "endLine": 8405,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4d421fcf_8b37a79e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/ec_commands.h",
+              "range": {
+                "startLine": 8405,
+                "startChar": 0,
+                "endLine": 8406,
+                "endChar": 0
+              },
+              "replacement": "\tuint16_t reserved; /**\u003c padding for alignment */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6bb3687bc0a5678ae28ffd7e68f2254c8815fd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
