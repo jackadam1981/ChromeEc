@@ -85,12 +85,11 @@ uint32_t system_get_lfw_address(void)
 enum ec_image system_get_shrspi_image_copy(void)
 {
 	enum ec_image img = EC_IMAGE_UNKNOWN;
-	uint32_t value = 0u;
+	uint8_t value = 0u;
 
 	if (bbram_dev) {
 		if (!bbram_read(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
-				BBRAM_REGION_SIZE(ec_img_load),
-				(uint8_t *)&value)) {
+				BBRAM_REGION_SIZE(ec_img_load), &value)) {
 			img = (enum ec_image)(value & 0x7fu);
 		}
 	}
@@ -113,7 +112,7 @@ enum ec_image system_get_shrspi_image_copy(void)
  */
 void system_set_image_copy(enum ec_image copy)
 {
-	uint32_t value = (uint32_t)copy;
+	uint8_t value = (uint8_t)copy;
 
 	if (!bbram_dev) {
 		return;
@@ -131,5 +130,5 @@ void system_set_image_copy(enum ec_image copy)
 	}
 
 	bbram_write(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
-		    BBRAM_REGION_SIZE(ec_img_load), (uint8_t *)&value);
+		    BBRAM_REGION_SIZE(ec_img_load), &value);
 }
