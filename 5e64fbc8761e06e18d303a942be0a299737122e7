@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c522d60_58ea2018",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-27T15:03:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7fc32116_0575a4ed",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddeb290_dab801e7",
@@ -103,6 +121,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756ede53_a4eb2095",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-27T15:03:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0ddeb290_dab801e7",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 44
+      },
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "629450b9_3a35ae15",
@@ -116,6 +158,24 @@
       "writtenOn": "2025-03-26T20:36:02Z",
       "side": 1,
       "message": "I think this should be 3A.",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee8843c_c85d77f5",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-27T15:03:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "629450b9_3a35ae15",
       "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
