@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9120294a_37b1eefd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-27T11:13:39Z",
+      "side": 1,
+      "message": "I think, it is a good approach to use enum instead of int. I don\u0027t know why it wasn\u0027t done this way from the beginning. @patrykd@google.com is there any reason we don\u0027t pass enum now?",
+      "revId": "1c4433979ae0cead3e56c33390dc00abd5bdb9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53d2977_c64fedb0",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-27T11:13:39Z",
+      "side": 1,
+      "message": "This casting is not pretty, but I undestand that we need that. I think we need to add `BUILD_ASSERT`s to make sure enums vaules in `fp_capture_type` and in `fingerprint_capture_type` have the same values, e.g. `FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT` \u003d `FP_CAPTURE_VENDOR_FORMAT`.",
+      "revId": "1c4433979ae0cead3e56c33390dc00abd5bdb9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
