@@ -34,6 +34,29 @@
       "parentUuid": "29daf7a4_6b8fb1aa",
       "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cea4e5c_9f4ef702",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-03-27T06:31:37Z",
+      "side": 1,
+      "message": "Is this from Dirks hardware and power supply spec?",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 56
+      },
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
