@@ -67,6 +67,10 @@ void system_jump_to_booter(void)
 	 */
 	clock_turbo();
 
+	/* Before jumping, invalidate VBAT RAM section to let `mchp_image_type`
+	 * figure out current image type.  */
+	system_set_image_copy(EC_IMAGE_UNKNOWN);
+
 	/* MCHP Read selected image from SPI flash into SRAM
 	 * Need a jump to little-fw (LFW).
 	 */
@@ -99,7 +103,6 @@ enum ec_image system_get_shrspi_image_copy(void)
 		if (mchp_image_type == MCHP_ECRW_WORD) {
 			img = EC_IMAGE_RW;
 		}
-		system_set_image_copy(img);
 	}
 
 	return img;
@@ -124,9 +127,10 @@ void system_set_image_copy(enum ec_image copy)
 		value = EC_IMAGE_RW;
 		break;
 	case EC_IMAGE_RO:
-	default:
 		value = EC_IMAGE_RO;
 		break;
+	default:
+		value = EC_IMAGE_UNKNOWN;
 	}
 
 	bbram_write(bbram_dev, BBRAM_REGION_OFFSET(ec_img_load),
