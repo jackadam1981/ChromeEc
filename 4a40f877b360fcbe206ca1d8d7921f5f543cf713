@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "961837ab_23349e83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-27T18:01:10Z",
+      "side": 1,
+      "message": "It looks like the `helipilot` change was just recently merged in: https://crrev.com/c/5018794. Can you try updating and rebasing on the latest changes?",
+      "parentUuid": "5fb589e7_936cdd69",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac2ba43_4f5bd700",
         "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
         "patchSetId": 1
