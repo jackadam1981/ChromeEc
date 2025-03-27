@@ -81,6 +81,30 @@
       },
       "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fedc00fc_3681796c",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-03-27T07:05:10Z",
+      "side": 1,
+      "message": "Thanks, you may also need to consider the USB-C power adapder case, the voltage may be different depends on USB-C power apadter.",
+      "parentUuid": "e8cd21a7_8e3251fa",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 56
+      },
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
