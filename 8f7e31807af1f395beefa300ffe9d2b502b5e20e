@@ -16,6 +16,24 @@
       "message": "I think this looks good, but can you point me to a CL where it\u0027s used so I can double-check?",
       "revId": "8f7e31807af1f395beefa300ffe9d2b502b5e20e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d28b6e_e2a7ec84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-28T06:16:33Z",
+      "side": 1,
+      "message": "I added the implementation in CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6363759/22\n\nmainly you need a way to conver the capture_type to vendor_capture_type to read the correct array values. This will be also needed in ectool.cc",
+      "parentUuid": "ec75c669_f2510201",
+      "revId": "8f7e31807af1f395beefa300ffe9d2b502b5e20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
