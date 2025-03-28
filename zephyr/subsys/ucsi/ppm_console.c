@@ -255,37 +255,24 @@ static int cmd_set_new_cam(const struct shell *sh, int argc, char **argv)
 		return -EINVAL;
 	}
 
-	uint8_t enter;
+	bool enter;
 	if (!strncmp(argv[4], "enter", strlen("enter"))) {
-		enter = 1;
+		enter = true;
 	} else if (!strncmp(argv[4], "exit", strlen("exit"))) {
-		enter = 0;
+		enter = false;
 	} else {
 		shell_error(sh, "Invalid enter/exit action");
 		return -EINVAL;
 	}
 
-	struct ucsi_control_t set_new_cam = {
-                .command = UCSI_SET_NEW_CAM,
-                .data_length = 0,
-                .command_specific = {
-                        /* Convert to 1-indexed port number */
-                        ((port + 1) & 0x7F) | (enter << 7),
-			new_cam,
-			am_specific & 0xFF,
-			(am_specific >> 8) & 0xFF,
-			(am_specific >> 16) & 0xFF,
-			(am_specific >> 24) & 0xFF,
-                },
-        };
+	rv = ppm_set_new_cam(dev, port + 1, enter, new_cam, am_specific);
 
-	rv = ppm_api->execute_cmd(dev, &set_new_cam, NULL);
-	if (rv < 0) {
-		shell_error(sh, "Failed to execute UCSI command: %d", rv);
-		return 1;
+	if (rv == 0) {
+		shell_info(sh, "Port C%d: SET_NEW_CAM %d %d 0x%08x successful",
+			   port, new_cam, enter, am_specific);
 	}
 
-	return 0;
+	return rv;
 }
 
 /* LCOV_EXCL_START */

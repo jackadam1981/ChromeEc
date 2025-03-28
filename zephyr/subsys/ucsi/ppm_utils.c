@@ -171,7 +171,7 @@ int ppm_get_current_cam(const struct device *ppm_dev, uint8_t connector_num,
 	 */
 	rv = ppm_api->execute_cmd(ppm_dev, &get_current_cam, (uint8_t *)&resp);
 	if (rv < 0) {
-		LOG_INF("PPM%d: Failed to execute UCSI_GET_CURRENT_CAM: %d",
+		LOG_ERR("PPM%d: Failed to execute UCSI_GET_CURRENT_CAM: %d",
 			connector_num, rv);
 		return rv;
 	}
@@ -179,6 +179,44 @@ int ppm_get_current_cam(const struct device *ppm_dev, uint8_t connector_num,
 	*num_altmodes = MIN(rv, altmodes_size);
 
 	memcpy(altmodes, resp, *num_altmodes);
+
+	return 0;
+}
+
+int ppm_set_new_cam(const struct device *ppm_dev, uint8_t connector_num,
+		    bool enter_mode, uint8_t new_cam, uint32_t am_specific)
+{
+	const struct ucsi_pd_driver *ppm_api = ppm_dev->api;
+	int rv;
+
+	if (connector_num > ppm_api->get_active_port_count(ppm_dev)) {
+		return -EINVAL;
+	}
+
+	struct ucsi_control_t set_new_cam = {
+                .command = UCSI_SET_NEW_CAM,
+                .data_length = 0,
+                .command_specific = {
+                        /* Convert to 1-indexed port number */
+                        connector_num & 0x7F,
+			new_cam,
+			am_specific & 0xFF,
+			(am_specific >> 8) & 0xFF,
+			(am_specific >> 16) & 0xFF,
+			(am_specific >> 24) & 0xFF,
+                },
+        };
+
+	if (enter_mode) {
+		set_new_cam.command_specific[0] |= BIT(7);
+	}
+
+	rv = ppm_api->execute_cmd(ppm_dev, &set_new_cam, NULL);
+	if (rv < 0) {
+		LOG_ERR("PPM%d: Failed to execute UCSI_SET_NEW_CAM: %d",
+			connector_num, rv);
+		return rv;
+	}
 
 	return 0;
 }

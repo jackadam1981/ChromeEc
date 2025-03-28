@@ -63,4 +63,19 @@ int ppm_get_current_cam(const struct device *ppm_dev, uint8_t connector_num,
 			size_t altmodes_size, uint8_t *altmodes,
 			size_t *num_altmodes);
 
+/**
+ * @brief Issue SET_NEW_CAM to the LPM
+ *
+ * @param ppm_dev: PPM driver instance
+ * @param connector_num: LPM connector number to issue the GET_ALTERNATES_MODES
+ * @param enter_mode: Set to true to enter the new mode, set to false to exit
+ * the specified alternate mode.
+ * @param new_cam: Offset int the Alternate Modes list to enter or exit.
+ * @param am_specific: Vendor specific options sent with the enter mode command.
+ * @returns 0 on success, <0 on error.
+ */
+int ppm_set_new_cam(const struct device *ppm_dev, uint8_t connector_num,
+			   bool enter_mode, uint8_t new_cam,
+			   uint32_t am_specific);
+
 #endif /* UM_PPM_PPM_UTILS_H */
