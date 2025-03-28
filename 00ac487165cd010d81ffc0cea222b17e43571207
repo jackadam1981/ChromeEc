@@ -52,6 +52,24 @@
       "parentUuid": "60761aa5_f676f0a8",
       "revId": "00ac487165cd010d81ffc0cea222b17e43571207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434c3095_e0728680",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-03-28T07:20:15Z",
+      "side": 1,
+      "message": "Interesting, do you know why this doesn\u0027t fail https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_fpc1025.c;l\u003d339 ?",
+      "parentUuid": "d02970d0_5c4b628d",
+      "revId": "00ac487165cd010d81ffc0cea222b17e43571207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
