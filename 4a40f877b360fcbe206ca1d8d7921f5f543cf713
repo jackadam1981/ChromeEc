@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40318ee1_f8b2674e",
+        "filename": "zephyr/shim/chip/npcx/ram_lock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-28T16:02:06Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I remember that now. Let\u0027s work on landing this in our shim layer, but then we should figure out how to make a proposal to add upstream support for this type of functionality.",
+      "parentUuid": "f59bd2ae_cfb976ec",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bfb3e54_1a65e64b",
         "filename": "zephyr/shim/chip/npcx/ram_lock.c",
         "patchSetId": 1
