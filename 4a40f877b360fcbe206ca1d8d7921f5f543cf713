@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f3ac91d_f069871a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-03-28T06:59:36Z",
+      "side": 1,
+      "message": "It can be built successfully after the update. Thanks for your help. Additionally, I would like to ask whether the test runs automatically or if some commands need to be executed.",
+      "parentUuid": "961837ab_23349e83",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac2ba43_4f5bd700",
         "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
         "patchSetId": 1
@@ -174,6 +192,24 @@
       "writtenOn": "2025-03-27T18:02:52Z",
       "side": 1,
       "message": "Is there a reason that this file and the associated header are not being upstreamed  to Zephyr?",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59bd2ae_cfb976ec",
+        "filename": "zephyr/shim/chip/npcx/ram_lock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-03-28T06:59:36Z",
+      "side": 1,
+      "message": "There is no existing driver API for the chip-specific RAM lock feature. Thus, we implement it in the EC\u0027s zephyr SHIM layer. Here is the [discussion](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5370066/comment/cd837fb3_e030d317/) in before.",
+      "parentUuid": "b650c2b5_0a717612",
       "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
