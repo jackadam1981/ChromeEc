@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd753347_93400a92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-28T16:13:49Z",
+      "side": 1,
+      "message": "We run most of the unit tests automatically as part of the CQ process using the Renode emulator. However, Renode does not have support for the RAM lock feature, so we had to [disable the test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d476;drc\u003d7cc7f4fb7b362eaf60d3928e754751dfdc21adfa) when running on Renode. It would be great if you worked with Antmicro (creators of Renode) to [add support for RAM lock](https://issuetracker.google.com/385216805).\n\nWe do run the tests on hardware while doing development and also when creating new releases (all tests must pass on hardware for a new release).",
+      "parentUuid": "1f3ac91d_f069871a",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fac2ba43_4f5bd700",
         "filename": "zephyr/shim/chip/npcx/include/ram_lock.h",
         "patchSetId": 1
