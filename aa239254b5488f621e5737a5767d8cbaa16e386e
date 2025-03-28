@@ -112,6 +112,30 @@
       },
       "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f29c947_c31d8c89",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-03-28T22:15:40Z",
+      "side": 1,
+      "message": "Can you file a bug to evaluate whether we should just remove `CONFIG_HOSTCMD_ALIGNED`? (Or make all boards use it.)\n\n`git grep CONFIG_HOSTCMD_ALIGNED` only shows these boards using it:\n\n```\nboard/elm/board.h:#define CONFIG_HOSTCMD_ALIGNED\nboard/kukui_scp/board.h:#define CONFIG_HOSTCMD_ALIGNED\nchip/max32660/config_chip.h:#define CONFIG_HOSTCMD_ALIGNED\n```",
+      "parentUuid": "a4207562_11bb97cb",
+      "range": {
+        "startLine": 8405,
+        "startChar": 0,
+        "endLine": 8405,
+        "endChar": 19
+      },
+      "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
