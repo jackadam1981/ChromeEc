@@ -531,7 +531,8 @@ static void st_irq_run(void *o)
 		 * status change bits and re-read from PDC and set CCI_EVENT for
 		 * connector change.
 		 */
-		if (pdc_interrupt.ucsi_connector_status_change_notification) {
+		if (pdc_interrupt.ucsi_connector_status_change_notification |
+		    pdc_interrupt.plug_insert_or_removal) {
 			data->use_cached_conn_status_change = false;
 			data->cci_event.connector_change =
 				cfg->connector_number + 1;
