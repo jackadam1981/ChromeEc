@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd71e5cb_6c0e6c6d",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-28T00:22:39Z",
+      "side": 1,
+      "message": "Nit: Put it in a variable.",
+      "range": {
+        "startLine": 281,
+        "startChar": 26,
+        "endLine": 281,
+        "endChar": 71
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "33d765fd_b83ce3f1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/output_packers.py",
+              "range": {
+                "startLine": 281,
+                "startChar": 0,
+                "endLine": 286,
+                "endChar": 0
+              },
+              "replacement": "        component_manifest_path \u003d rw_dir / \"zephyr\" / \"component_manifest.json\"\n        if os.path.exists(component_manifest_path):\n            yield component_manifest_path, \"component_manifest.json\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "325bb6dcc7cfe28a6e9702eefa4feb75b932801a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
