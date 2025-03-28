@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3699887_b1f74543",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-03-28T09:15:51Z",
+      "side": 1,
+      "message": "Dirks\u0027 EC doesn\u0027t use power/intel_x86.c so it hasn\u0027t set shutdown reasen `CHIPSET_SHUTDOWN_POWERFAIL`. It doesn\u0027t check `IN_PGOOD_ALL_CORE` which is defined as `PWR_DSW_PWROD` for ADL to set `CHIPSET_SHUTDOWN_POWERFAIL`. I think Dirks probably can\u0027t stop to set AP_IDLE in pb_chipset_shutdown(). board_is_power_good() would be needed for Dirks.\n```\nstatic void pb_chipset_shutdown(void)\n{\n\t/* Don\u0027t set AP_IDLE if shutting down due to power failure. */\n\tif (chipset_get_shutdown_reason() \u003d\u003d CHIPSET_SHUTDOWN_POWERFAIL ||\n\t    !board_is_power_good())\n\t\treturn;\n```",
+      "parentUuid": "534b90b4_e2bbdaa6",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cea4e5c_9f4ef702",
         "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
         "patchSetId": 3
