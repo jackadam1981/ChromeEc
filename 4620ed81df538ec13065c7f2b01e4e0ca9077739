@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040b8ddd_3a7cad49",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-03-28T14:16:22Z",
+      "side": 1,
+      "message": "I think its valid to set a ceiling on a port, even though we haven\u0027t chosen an active charge port yet.  \n\nTCPM is negotiating a contract so it force sets the ceil to `pSnkStdby`. Once the contract is negotiated, TCPM should set a new ceil based on the contract.  I don\u0027t think this is happening from what I can see in the logs.  \n\nThis change is avoiding ceiling `pSnkStdby` during contract negotiations, which I think is not correct.",
+      "revId": "4620ed81df538ec13065c7f2b01e4e0ca9077739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
