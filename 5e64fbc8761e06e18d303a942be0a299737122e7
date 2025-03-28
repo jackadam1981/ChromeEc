@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0762843_6a625d37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-03-28T20:43:05Z",
+      "side": 1,
+      "message": "I meant that you should add that to the list of high-level changes in the commit message. As of patchset 12, I think an appropriate commit body would be something like,\n```\n1. Correct FRS config (3A as initial sink, not supported as initial source)\n2. Correct PDO values\n3. Add a second port/component\n4. Update formatting with VIF Editor 3.11.0.0\n```\n\nI don\u0027t think you need to mention the specific VIF fields. That\u0027s obvious from the delta. You also shouldn\u0027t mention Product_Revision. It changed back and forth between patchsets, but as of the current patchset, this CL does not change it overall.",
+      "parentUuid": "5a77ab49_f99f3881",
+      "revId": "5e64fbc8761e06e18d303a942be0a299737122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80950ca2_3b0037be",
