@@ -64,6 +64,30 @@
       },
       "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73ad391_c2af7c29",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-28T00:22:01Z",
+      "side": 1,
+      "message": "`elm` is the first board to fail. I cannot see the boards that fail because it exits after the first failure. I confirmed you statement.\n\nI confirmed that [board/elm/board.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/elm/board.h;drc\u003ded8dd77a9b34e01806ee016f762caf4e057f79a3;l\u003d122)\nIf I add `#define CONFIG_HOSTCMD_ALIGNED` to `platform/ec/basebaord/bloonchipper/board.h`, it starts failing for the same reason\n\n```\n(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ make BOARD\u003dbloonchipper\n  LDS     firmware_image.lds\n  LDS     RW/ec.RW.lds\n  VERSION ec_version.h\n  CC      RW/baseboard/bloonchipper/base_board.o\nIn file included from baseboard/bloonchipper/base_board.c:12:\nIn file included from include/spi.h:11:\nIn file included from include/host_command.h:13:\ninclude/ec_commands.h:8407:14: error: static assertion failed due to requirement \u0027sizeof(struct fp_image_frame_params) \u003d\u003d 14\u0027: include/ec_commands.h:8407: \n 8407 | BUILD_ASSERT(sizeof(struct fp_image_frame_params) \u003d\u003d 14);\n      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ninclude/compile_time_macros.h:33:39: note: expanded from macro \u0027BUILD_ASSERT\u0027\n   33 | #define BUILD_ASSERT(cond, ...) _BA0_(cond, __FILE__, __LINE__, __VA_ARGS__)\n      |                                       ^~~~\ninclude/compile_time_macros.h:29:35: note: expanded from macro \u0027_BA0_\u0027\n   29 | #define _BA0_(c, f, l, msg) _BA1_(c, f, l, msg)\n      |                                   ^\ninclude/compile_time_macros.h:28:17: note: expanded from macro \u0027_BA1_\u0027\n   28 |         _STATIC_ASSERT(cond, file \":\" #line \": \" msg)\n      |                        ^~~~\ninclude/ec_commands.h:8407:51: note: expression evaluates to \u002716 \u003d\u003d 14\u0027\n 8407 | BUILD_ASSERT(sizeof(struct fp_image_frame_params) \u003d\u003d 14);\n      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~\ninclude/compile_time_macros.h:33:39: note: expanded from macro \u0027BUILD_ASSERT\u0027\n   33 | #define BUILD_ASSERT(cond, ...) _BA0_(cond, __FILE__, __LINE__, __VA_ARGS__)\n      |                                       ^~~~\ninclude/compile_time_macros.h:29:35: note: expanded from macro \u0027_BA0_\u0027\n   29 | #define _BA0_(c, f, l, msg) _BA1_(c, f, l, msg)\n      |                                   ^\ninclude/compile_time_macros.h:28:17: note: expanded from macro \u0027_BA1_\u0027\n   28 |         _STATIC_ASSERT(cond, file \":\" #line \": \" msg)\n      |                        ^~~~\n1 error generated.\nmake: *** [Makefile.rules:636: build/bloonchipper/RW/baseboard/bloonchipper/base_board.o] Error 1\n(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ \n```",
+      "parentUuid": "6d47b8ef_5599988d",
+      "range": {
+        "startLine": 8405,
+        "startChar": 0,
+        "endLine": 8405,
+        "endChar": 19
+      },
+      "revId": "aa239254b5488f621e5737a5767d8cbaa16e386e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
