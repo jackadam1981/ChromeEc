@@ -16,6 +16,24 @@
       "message": "Do you really need casting here?",
       "revId": "00ac487165cd010d81ffc0cea222b17e43571207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60761aa5_f676f0a8",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-28T06:25:20Z",
+      "side": 1,
+      "message": "actually you are right. I was getting this error in the morning, asking me to cast. Maybe it was a warning that I was seeing when another error was present in the `fingerprint_sensor_sim.c`. I fixed this error later with the change in this file:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6330706/18/zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+      "parentUuid": "4f3ff7fa_5011b236",
+      "revId": "00ac487165cd010d81ffc0cea222b17e43571207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
