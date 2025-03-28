@@ -70,6 +70,24 @@
       "parentUuid": "d02970d0_5c4b628d",
       "revId": "00ac487165cd010d81ffc0cea222b17e43571207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89294f25_2095db62",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-28T07:21:57Z",
+      "side": 1,
+      "message": "because you are not comparing 2 enums. one is enum and the other is define:\n\n```\n/** Image captured. */\n#define FPC_SENSOR_GOOD_IMAGE_QUALITY 0\n/** Image captured but quality is too low. */\n#define FPC_SENSOR_LOW_IMAGE_QUALITY 1\n/** Finger removed before image was captured. */\n#define FPC_SENSOR_TOO_FAST 2\n/** Sensor not fully covered by finger. */\n#define FPC_SENSOR_LOW_COVERAGE 3\n```",
+      "parentUuid": "434c3095_e0728680",
+      "revId": "00ac487165cd010d81ffc0cea222b17e43571207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
