@@ -44,6 +44,10 @@
 			compatible = "smp,c31n2005", "battery-smart";
 		};
 
+		b300049 {
+			compatible = "celxpert,b300049", "battery-smart";
+		};
+
 		dynapack_b140435 {
 			compatible = "dynapack,b140435","battery-smart";
 		};
