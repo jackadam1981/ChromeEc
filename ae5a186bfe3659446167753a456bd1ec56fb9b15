@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05c184f6_f21d8c34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3921856
+      },
+      "writtenOn": "2025-03-28T05:15:44Z",
+      "side": 1,
+      "message": "TEST.PD.PROT.SRC3.14 Source Info - Testing Downstream Port -\u003e Port Type declared as 0, actual 1, This testcase failed when Port_Source_Power_Type changed from Assured to Shared.",
+      "parentUuid": "62b3554c_beb7c6ae",
+      "revId": "ae5a186bfe3659446167753a456bd1ec56fb9b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "690a54aa_cab04b72",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
