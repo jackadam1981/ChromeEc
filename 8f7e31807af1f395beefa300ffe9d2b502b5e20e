@@ -70,6 +70,24 @@
       "parentUuid": "04270330_b624593b",
       "revId": "8f7e31807af1f395beefa300ffe9d2b502b5e20e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835c51b7_069d7568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-29T01:51:02Z",
+      "side": 1,
+      "message": "thinking about this more, this change does not need to be in zephyr. We need this function in `ectool.cc` and `fpsensor_debug.cc`.",
+      "parentUuid": "c4c38c45_feea7125",
+      "revId": "8f7e31807af1f395beefa300ffe9d2b502b5e20e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
