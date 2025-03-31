@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a852dc80_9ec2fc78",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-03-31T22:19:59Z",
+      "side": 1,
+      "message": "Better to do a straight cherry-pick, I think. It would be good to fix the things Fabio has pointed out, but that should happen on the main branch.",
+      "parentUuid": "cfe1131d_8d5c15b9",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 4
+      },
+      "revId": "7308d8e6989a1dc90ec50a912ad3190c66283868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51308528_e97b2843",
         "filename": "zephyr/shim/src/system.c",
         "patchSetId": 1
