@@ -22,6 +22,30 @@
       },
       "revId": "1ffb770f1438d2b1a05aed975496a2a72de40ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef90e2b6_af224a36",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-03-31T16:46:48Z",
+      "side": 1,
+      "message": "Done. I casted both to `int`. I believe those 2 enums should always remain equivalent so the previous case should have been safe IMO.",
+      "parentUuid": "2507a973_007aac77",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "1ffb770f1438d2b1a05aed975496a2a72de40ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
