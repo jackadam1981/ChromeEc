@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfdecd1e_7275fd6a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-31T11:21:53Z",
+      "side": 1,
+      "message": "I tried to mimic what we had in our fpsensor code. I think this is a good improvement.",
+      "parentUuid": "9120294a_37b1eefd",
+      "revId": "1c4433979ae0cead3e56c33390dc00abd5bdb9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d53d2977_c64fedb0",

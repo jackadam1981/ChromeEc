@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2507a973_007aac77",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-03-31T11:21:53Z",
+      "side": 1,
+      "message": "You cast `fp_capture_type` enum to `fingerprint_capture_type` enum here.\n\nTheoretically some values (raw values, integers) from `fp_capture_type` may not have representation in `fingerprint_capture_type`, so for me it\u0027s undefined behavior really (the comparison result if one of the operands can\u0027t be represented by any enum variant is undefined IMO).\n\nSince we want to compare raw values really, what do you think about casting both enums to `int`?",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "1ffb770f1438d2b1a05aed975496a2a72de40ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
