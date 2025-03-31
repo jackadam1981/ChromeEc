@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2a39719_1518d8c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-03-31T05:59:54Z",
+      "side": 1,
+      "message": "Sorry! I found I misunderstand. Dirks is use zephyr/subsys/ap_pwr. I\u0027m not sure why it doesn\u0027t sent shutdown reaseon AP_POWER_SHUTDOWN_POWERFAIL. The EC log shows \"power state 6 \u003d S0, in 0x30de3\" that PWR_SLP_SUS (0x00040) should be already asserted.",
+      "parentUuid": "e3699887_b1f74543",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cea4e5c_9f4ef702",
         "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
         "patchSetId": 3
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "Thanks, you may also need to consider the USB-C power adapder case, the voltage may be different depends on USB-C power apadter.",
       "parentUuid": "e8cd21a7_8e3251fa",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 56
+      },
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da3e815_f655bd11",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-03-31T05:59:54Z",
+      "side": 1,
+      "message": "The power supply spec for BJ adapter is the same. (The minimum is 17V.) However, there is a present pin of BJ adapter.\nInstead of ADC_PSYS, I use gpio_bj_adp_present and ADC_VBUS now. I\u0027ve tested 5 times for each adapters (BJ, 45W USBC and 65W USBC). It looks fine.",
+      "parentUuid": "fedc00fc_3681796c",
       "range": {
         "startLine": 397,
         "startChar": 3,
