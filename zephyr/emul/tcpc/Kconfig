@@ -32,6 +32,13 @@ config EMUL_ANX7447
 	  TCPCI emulator. ANX7447 specific API is available in
 	  zephyr/include/emul/tcpc/emul_anx7447.h
 
+config EMUL_FUSB302
+	bool "Fairchild FUSB302 emulator"
+	default y
+	depends on DT_HAS_FAIRCHILD_FUSB302_ENABLED
+	help
+	  Enable emulator for the FUSB302 TCPC. This emulator is an extension of
+	  the TCPCI emulator.
 
 config EMUL_NCT38XX
 	bool "Nuvoton NCT38xx emulator"
