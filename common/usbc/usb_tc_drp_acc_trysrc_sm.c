@@ -491,7 +491,12 @@ __maybe_unused static bool is_try_src_enabled(int port)
  *       Functions prefixed with tc_ are defined int usb_tc_sm.h
  */
 
-#ifndef CONFIG_USB_PRL_SM
+/* The Zephyr shim does not currently support building TCPMv2 without the PRL or
+ * PE, i.e. a type-C-only TCPM. These stubs are therefore difficult to cover
+ * with tests, and the value of doing so is low.
+ * LCOV_EXCL_START
+ */
+#if !defined(CONFIG_ZEPHYR) && !defined(CONFIG_USB_PRL_SM)
 
 /*
  * These pd_ functions are implemented in common/usb_prl_sm.c
@@ -512,9 +517,9 @@ __overridable void pd_set_vbus_discharge(int port, int enable)
 	/* DO NOTHING */
 }
 
-#endif /* !CONFIG_USB_PRL_SM */
+#endif /* !CONFIG_ZEPHYR && !CONFIG_USB_PRL_SM */
 
-#ifndef CONFIG_USB_PE_SM
+#if !defined(CONFIG_ZEPHYR) && !defined(CONFIG_USB_PE_SM)
 
 /*
  * These pd_ functions are implemented in the PE layer
@@ -548,7 +553,9 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 	return PD_REV30;
 }
 
-#endif /* !CONFIG_USB_PR_SM */
+/* LCOV_EXCL_STOP */
+
+#endif /* !CONFIG_ZEPHYR && !CONFIG_USB_PRL_SM */
 
 #ifndef CONFIG_AP_POWER_CONTROL
 __overridable enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
