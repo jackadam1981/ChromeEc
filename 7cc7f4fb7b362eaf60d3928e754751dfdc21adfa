@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7600ca5d_7405105a",
+        "filename": "zephyr/program/fatcat/felino/project.conf",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-31T18:08:45Z",
+      "side": 0,
+      "message": "use a separate patch.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "7cc7f4fb7b362eaf60d3928e754751dfdc21adfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae434236_6d8bb4dc",
+        "filename": "zephyr/program/fatcat/felino/project.conf",
+        "patchSetId": 20
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-31T18:08:45Z",
+      "side": 0,
+      "message": "these should go in a separate patch.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "7cc7f4fb7b362eaf60d3928e754751dfdc21adfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

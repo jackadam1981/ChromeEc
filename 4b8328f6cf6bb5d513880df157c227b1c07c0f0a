@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7b9270_d81c22d2",
+        "filename": "zephyr/program/fatcat/felino/gpios.dtsi",
+        "patchSetId": 20
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-31T18:08:45Z",
+      "side": 1,
+      "message": "please use the expanded from:\n`GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH`\nhere and below",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "632e826b_8371fe7d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 53,
+                "startChar": 0,
+                "endLine": 54,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiob 2 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH | GPIO_VOLTAGE_1P8)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiob 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH | GPIO_VOLTAGE_1P8)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 83,
+                "startChar": 0,
+                "endLine": 84,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiod 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH | GPIO_VOLTAGE_1P8)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 98,
+                "startChar": 0,
+                "endLine": 99,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiof 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 126,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiog 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH | GPIO_VOLTAGE_1P8)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 131,
+                "startChar": 0,
+                "endLine": 132,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpioc 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_LOW)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 146,
+                "startChar": 0,
+                "endLine": 147,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiob 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 161,
+                "startChar": 0,
+                "endLine": 162,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiod 1 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_LOW | GPIO_VOLTAGE_1P8)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 170,
+                "startChar": 0,
+                "endLine": 171,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpioe 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 176,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiod 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4b8328f6cf6bb5d513880df157c227b1c07c0f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf0f25d_d29cc65c",
+        "filename": "zephyr/program/fatcat/felino/project.conf",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-03-31T18:08:45Z",
+      "side": 1,
+      "message": "please enable EFS2 in a separate patch.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a80fc8bc_685a968c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/felino/project.conf",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4b8328f6cf6bb5d513880df157c227b1c07c0f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
