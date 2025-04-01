@@ -743,6 +743,30 @@ config PLATFORM_EC_BUTTON_DEBOUNCE
 	help
 	  Configure the button debounce time in us per project requirement.
 
+config PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	bool "Power button debounce"
+	help
+	  Configure the debounce of the power button separate from the
+	  the other buttons in the system.  When this is enable, you must
+	  also configure the debounce time used when the AP is
+	  powered on and when the AP is powered off.
+
+config PLATFORM_EC_POWER_BUTTON_DEBOUNCE_AP_ON
+	depends on PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	int "button debounce in us when S0 or s0ix"
+	default 300000
+	help
+	  Configure the button debounce time in us per project requirement when
+	  the AP is on (S0ix or S0).
+
+config PLATFORM_EC_POWER_BUTTON_DEBOUNCE_AP_OFF
+	depends on PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	int "button debounce in us when S5"
+	default 500000
+	help
+	  Configure the button debounce time in us per project requirement when
+	  the AP is off (S5 and below).
+
 config PLATFORM_EC_PRESERVED_RING_BUF
 	bool "Preserved ring buffer"
 	default n
