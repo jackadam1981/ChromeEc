@@ -211,6 +211,30 @@
       },
       "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8dcddc7_2bc82df9",
+        "filename": "zephyr/dts/bindings/intel/intel,modular-aic-slot.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-04-01T19:14:04Z",
+      "side": 1,
+      "message": "Ahh ok that makes more sense",
+      "parentUuid": "5cdd6728_6202c2ae",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "89a699d15d55b7bf1a29715c9225ac93c140b180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
