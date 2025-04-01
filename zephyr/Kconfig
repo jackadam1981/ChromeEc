@@ -743,6 +743,25 @@ config PLATFORM_EC_BUTTON_DEBOUNCE
 	help
 	  Configure the button debounce time in us per project requirement.
 
+config PLATFORM_EC_BUTTON_DEBOUNCE_CUSTOMER
+	bool "button debounce customer"
+	help
+	  Configure the button debounce time in us per project requirement.
+
+config PLATFORM_EC_BUTTON_DEBOUNCE_S0S0IX
+	depends on PLATFORM_EC_BUTTON_DEBOUNCE_CUSTOMER
+	int "button debounce in us when S0 or s0ix"
+	help
+	  Configure the button debounce time in us per project requirement when
+	  S0ix or S0.
+
+config PLATFORM_EC_BUTTON_DEBOUNCE_S5
+	depends on PLATFORM_EC_BUTTON_DEBOUNCE_CUSTOMER
+	int "button debounce in us when S5"
+	help
+	  Configure the button debounce time in us per project requirement when
+	  S5.
+
 config PLATFORM_EC_PRESERVED_RING_BUF
 	bool "Preserved ring buffer"
 	default n

@@ -38,6 +38,10 @@ static const struct button_config power_button = {
 	.name = "power button",
 	.gpio = GPIO_POWER_BUTTON_L,
 	.debounce_us = BUTTON_DEBOUNCE_US,
+#ifdef CONFIG_BUTTON_DEBOUNCE_CUSTOMER
+	.debounce_us_s0s0ix = BUTTON_DEBOUNCE_US_S0S0IX,
+	.debounce_us_s5 = BUTTON_DEBOUNCE_US_S5,
+#endif
 	.flags = CONFIG_POWER_BUTTON_FLAGS,
 };
 
@@ -219,8 +223,23 @@ void power_button_interrupt(enum gpio_signal signal)
 
 	/* Reset power button debounce time */
 	power_button_is_stable = 0;
+
+#ifdef CONFIG_BUTTON_DEBOUNCE_CUSTOMER
+#ifdef BUTTON_DEBOUNCE_US_S0S0IX
+	if (chipset_in_state(CHIPSET_STATE_ON) ||
+	    chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		hook_call_deferred(&power_button_change_deferred_data,
+				   power_button.debounce_us_s0s0ix);
+#endif /* BUTTON_DEBOUNCE_US_S0S0IX */
+#ifdef BUTTON_DEBOUNCE_US_S5
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		hook_call_deferred(&power_button_change_deferred_data,
+				   power_button.debounce_us_s5);
+#endif /* BUTTON_DEBOUNCE_US_S5 */
+#else
 	hook_call_deferred(&power_button_change_deferred_data,
 			   power_button.debounce_us);
+#endif /* CONFIG_BUTTON_DEBOUNCE_CUSTOMER */
 }
 
 void power_button_simulate_press(unsigned int duration)
