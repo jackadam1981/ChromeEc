@@ -10,5 +10,10 @@
 /* ocelot_mchp project DTS includes */
 
 #include "gpio.dtsi"
+#include "power_signals.dtsi"
+
+/* ocelot program DTS includes */
+
+#include "../interrupts.dtsi"
 
 /* ocelot_mchp overrides follow... */
