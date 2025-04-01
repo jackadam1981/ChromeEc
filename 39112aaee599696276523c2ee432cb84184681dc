@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fad2b38_54734104",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-04-01T17:05:10Z",
+      "side": 1,
+      "message": "Could you remove this whitespace change?",
+      "revId": "39112aaee599696276523c2ee432cb84184681dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c395f042_e8b06c8c",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-04-01T17:05:10Z",
+      "side": 1,
+      "message": "Could you change spaces to tabs in highlighted code, so the comment and `apb4-prescaler` are aligned properly?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c487c88c_dfab1860",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+              "range": {
+                "startLine": 104,
+                "startChar": 0,
+                "endLine": 108,
+                "endChar": 0
+              },
+              "replacement": "\t * APB4_CLK runs at 48 MHz, required to support\n\t * UART2 Baudrate\u003d3 MHz\n\t */\n\tapb4-prescaler \u003d \u003c2\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "39112aaee599696276523c2ee432cb84184681dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
