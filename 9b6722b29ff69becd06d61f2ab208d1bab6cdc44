@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "296c233f_3c454183",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-04-01T21:16:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eb389b5f_3a124408",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "9b6722b29ff69becd06d61f2ab208d1bab6cdc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e70fbb7_bd34fde2",
         "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
         "patchSetId": 1
@@ -118,6 +142,30 @@
           ]
         }
       ],
+      "revId": "9b6722b29ff69becd06d61f2ab208d1bab6cdc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "085e19fd_810b698b",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-04-01T21:16:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2e70fbb7_bd34fde2",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 14
+      },
       "revId": "9b6722b29ff69becd06d61f2ab208d1bab6cdc44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
