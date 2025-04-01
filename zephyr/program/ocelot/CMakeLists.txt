@@ -16,6 +16,7 @@ endif()
 
 if(DEFINED CONFIG_BOARD_OCELOT_MICROCHIP)
 	project(ocelot_microchip)
+	zephyr_library_sources("src/rvp_board_power.c")
 endif()
 
 add_subdirectory(${PROJECT_NAME})
