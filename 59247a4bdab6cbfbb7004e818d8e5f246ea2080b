@@ -206,6 +206,30 @@
       },
       "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac1160e3_45d3050d",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-04-01T14:12:54Z",
+      "side": 1,
+      "message": "The latest patch takes care of the case of USB-C adapter as well.",
+      "parentUuid": "1b1c5e7f_0be53d4b",
+      "range": {
+        "startLine": 397,
+        "startChar": 3,
+        "endLine": 397,
+        "endChar": 56
+      },
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
