@@ -19,6 +19,7 @@ register_binman_project(
     project_name="minimal-it8xxx2",
     zephyr_board="it8xxx2/it81302bx",
     dts_overlays=[here / "it8xxx2.dts"],
+    supported_toolchains=["llvm", "zephyr"],
 )
 
 register_rtk_project(
