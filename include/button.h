@@ -27,6 +27,10 @@ struct button_config {
 	enum keyboard_button_type type;
 	enum gpio_signal gpio;
 	uint32_t debounce_us;
+#ifdef CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	uint32_t debounce_us_ap_on;
+	uint32_t debounce_us_ap_off;
+#endif
 	int flags;
 };
 

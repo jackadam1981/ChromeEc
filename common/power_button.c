@@ -38,6 +38,10 @@ static const struct button_config power_button = {
 	.name = "power button",
 	.gpio = GPIO_POWER_BUTTON_L,
 	.debounce_us = BUTTON_DEBOUNCE_US,
+#ifdef CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	.debounce_us_ap_on = CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE_AP_ON,
+	.debounce_us_ap_off = CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE_AP_OFF,
+#endif
 	.flags = CONFIG_POWER_BUTTON_FLAGS,
 };
 
@@ -219,8 +223,19 @@ void power_button_interrupt(enum gpio_signal signal)
 
 	/* Reset power button debounce time */
 	power_button_is_stable = 0;
+
+#ifdef CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		hook_call_deferred(&power_button_change_deferred_data,
+				   power_button.debounce_us_ap_off);
+	} else {
+		hook_call_deferred(&power_button_change_deferred_data,
+				   power_button.debounce_us_ap_on);
+	}
+#else
 	hook_call_deferred(&power_button_change_deferred_data,
 			   power_button.debounce_us);
+#endif /* CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE */
 }
 
 void power_button_simulate_press(unsigned int duration)
