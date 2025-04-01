@@ -34,6 +34,24 @@
       ],
       "revId": "ea43fdf2073606f319da107a4e74babd75e858f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5902790b_eca2fdef",
+        "filename": "zephyr/program/fatcat/francka/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-01T16:27:56Z",
+      "side": 1,
+      "message": "Yes. If `pdc_power_p0_ti` and `pdc_power_p1_ti` represent two halves of a dual-port PDC, `pdc_power_p1_ti` should be marked with `no-fw-update;`",
+      "parentUuid": "7c81bbdb_bf41748a",
+      "revId": "ea43fdf2073606f319da107a4e74babd75e858f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
