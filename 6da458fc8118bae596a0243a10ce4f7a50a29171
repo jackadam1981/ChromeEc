@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure why I\u0027m not considered an owner here, when I was for https://crrev.com/c/6221869. Granted, that was Feb. 3, but I\u0027m still listed in [google3/chrome/crosinfra/gwsq/ec_reviewers](https://source.corp.google.com/piper///depot/google3/chrome/crosinfra/gwsq/ec_reviewers).",
       "revId": "6da458fc8118bae596a0243a10ce4f7a50a29171",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2706c45c_5874cb92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-04-01T21:52:36Z",
+      "side": 1,
+      "message": "Huh, interesting. I\u0027ll use the code-owners plugin to find someone; if being an OWNER is important to you, could be good to ask them how they got the bit :)\n\nThanks for the review in any case!",
+      "parentUuid": "2945d55a_61539893",
+      "revId": "6da458fc8118bae596a0243a10ce4f7a50a29171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
