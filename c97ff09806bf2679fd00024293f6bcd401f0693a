@@ -52,6 +52,24 @@
       "parentUuid": "c0187831_1e22f994",
       "revId": "c97ff09806bf2679fd00024293f6bcd401f0693a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5461f2a_7595676c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-01T16:38:00Z",
+      "side": 1,
+      "message": "Done,both CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH and CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED are needed to get the unaligned_access test image to compile.",
+      "parentUuid": "50cb45de_b73a2b29",
+      "revId": "c97ff09806bf2679fd00024293f6bcd401f0693a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
