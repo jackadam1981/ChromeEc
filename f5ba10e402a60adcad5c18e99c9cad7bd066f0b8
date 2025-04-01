@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fecd427_e56f5d54",
+        "filename": "util/comm-host.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-04-01T18:31:53Z",
+      "side": 0,
+      "message": "(problematic `size_t` here)",
+      "range": {
+        "startLine": 112,
+        "startChar": 61,
+        "endLine": 112,
+        "endChar": 67
+      },
+      "revId": "f5ba10e402a60adcad5c18e99c9cad7bd066f0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
