@@ -132,6 +132,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7492a902_841185c9",
+        "filename": "zephyr/program/fatcat/felino/gpios.dtsi",
+        "patchSetId": 20
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-04-01T13:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7b9270_d81c22d2",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "4b8328f6cf6bb5d513880df157c227b1c07c0f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf0f25d_d29cc65c",
@@ -169,6 +193,30 @@
           ]
         }
       ],
+      "revId": "4b8328f6cf6bb5d513880df157c227b1c07c0f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b47c8d_fcc5a90e",
+        "filename": "zephyr/program/fatcat/felino/project.conf",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-04-01T13:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdf0f25d_d29cc65c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 29
+      },
       "revId": "4b8328f6cf6bb5d513880df157c227b1c07c0f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
