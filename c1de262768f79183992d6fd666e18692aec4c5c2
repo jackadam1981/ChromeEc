@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd7804f_2b3c7869",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-01T16:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43446178_920928cc",
+      "revId": "c1de262768f79183992d6fd666e18692aec4c5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e56ec16_4380e97d",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-04-01T11:44:29Z",
       "side": 1,
       "message": "Could you move this to `helipilot/soc.dtsi`? I believe these clock settings should be applied to other helipilot-based projects.\n\nIdeally these should be moved to quincy board DTS, but I\u0027m okay with keeping them in `soc.dtsi`.\n\nPlease also keep max 80 columns per line (line 152)",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 0
+      },
+      "revId": "c1de262768f79183992d6fd666e18692aec4c5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c4cfc9_958a2f58",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-01T16:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e56ec16_4380e97d",
       "range": {
         "startLine": 146,
         "startChar": 0,
