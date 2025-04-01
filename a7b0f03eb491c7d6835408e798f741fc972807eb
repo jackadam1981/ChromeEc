@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ad428c_46153453",
+        "filename": "zephyr/program/fatcat/felino/gpios.dtsi",
+        "patchSetId": 21
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-01T19:48:39Z",
+      "side": 1,
+      "message": "i want to double check `GPIO_VOLTAGE_1P8` on ODR pins.\nthe voltage doesn\u0027t matter because it\u0027s determined by an external\npull up resistor, right?\nsome ODR pins here specify `GPIO_VOLTAGE_1P8` while others do not.\nthat seems inconsistent - what is the preference here?\nare you using `GPIO_VOLTAGE_1P8` to mark pins that go to 1.8 V nets\neven though there may be no functional difference?",
+      "range": {
+        "startLine": 162,
+        "startChar": 77,
+        "endLine": 162,
+        "endChar": 93
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b4452ca3_d8f0e466",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 162,
+                "startChar": 0,
+                "endLine": 163,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiod 1 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/felino/gpios.dtsi",
+              "range": {
+                "startLine": 177,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpiod 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH | GPIO_VOLTAGE_1P8)\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a7b0f03eb491c7d6835408e798f741fc972807eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
