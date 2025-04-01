@@ -22,11 +22,20 @@ extern "C" {
 
 #define BUTTON_DEBOUNCE_US CONFIG_BUTTON_DEBOUNCE
 
+#ifdef CONFIG_BUTTON_DEBOUNCE_CUSTOMER
+#define BUTTON_DEBOUNCE_US_S0S0IX CONFIG_BUTTON_DEBOUNCE_S0S0IX
+#define BUTTON_DEBOUNCE_US_S5 CONFIG_BUTTON_DEBOUNCE_S5
+#endif
+
 struct button_config {
 	const char *name;
 	enum keyboard_button_type type;
 	enum gpio_signal gpio;
 	uint32_t debounce_us;
+#ifdef CONFIG_PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	uint32_t debounce_us_ap_on;
+	uint32_t debounce_us_ap_off;
+#endif
 	int flags;
 };
 
