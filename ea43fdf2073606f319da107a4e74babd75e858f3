@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c81bbdb_bf41748a",
+        "filename": "zephyr/program/fatcat/francka/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-04-01T10:15:34Z",
+      "side": 1,
+      "message": "I think we may need no-fw-update for the C1 to avoid redundant FW update in depthcharge.",
+      "fixSuggestions": [
+        {
+          "fixId": "6ac2b7f6_95eb43fa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/francka/overlay.dtsi",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "\t\tno-fw-update;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ea43fdf2073606f319da107a4e74babd75e858f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
