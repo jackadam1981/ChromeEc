@@ -1,0 +1,30 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../power_signals.dtsi"
+
+/ {
+	pwr-en-pp3300-s5 {
+		gpios = <MCHP_GPIO_DECODE_226 GPIO_ACTIVE_HIGH>;
+	};
+	pwr-en-pp5000-s5 {
+		gpios = <MCHP_GPIO_DECODE_244 GPIO_ACTIVE_HIGH>;
+	};
+	pwr-pg-ec-rsmrst-od {
+		gpios = <MCHP_GPIO_DECODE_012 GPIO_ACTIVE_HIGH>;
+	};
+	pwr-ec-pch-rsmrst-odl {
+		gpios = <MCHP_GPIO_DECODE_054 GPIO_ACTIVE_LOW>;
+	};
+	pwr-slp-s0-l {
+		gpios = <MCHP_GPIO_DECODE_052 GPIO_ACTIVE_LOW>;
+	};
+	pwr-pch-pwrok {
+		gpios = <MCHP_GPIO_DECODE_100 GPIO_OPEN_DRAIN>;
+	};
+	pwr-all-sys-pwrgd {
+		gpios = <MCHP_GPIO_DECODE_057 GPIO_ACTIVE_HIGH>;
+	};
+};
