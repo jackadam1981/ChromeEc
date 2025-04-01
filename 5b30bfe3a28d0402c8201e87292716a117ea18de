@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043f3e24_e39bd4cb",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-04-01T14:09:14Z",
+      "side": 1,
+      "message": "adapter",
+      "range": {
+        "startLine": 397,
+        "startChar": 30,
+        "endLine": 397,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "81763799_f8f53186",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+              "range": {
+                "startLine": 397,
+                "startChar": 0,
+                "endLine": 398,
+                "endChar": 0
+              },
+              "replacement": " * Dirks can be powered by BJ adapter and USBC adapter. We\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5b30bfe3a28d0402c8201e87292716a117ea18de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
