@@ -16,6 +16,24 @@
       "message": "maybe rename to edp_power.c?\ndo you plan to add more board specific support here?",
       "revId": "47a06f74228b0b038ed42901910161025f779666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0ada78_c2f69f74",
+        "filename": "zephyr/program/fatcat/felino/src/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-04-01T13:30:05Z",
+      "side": 1,
+      "message": "Yes, maybe the touchpad_en, codec_amp_en or charger will add specific config.",
+      "parentUuid": "55258a9a_0b56264a",
+      "revId": "47a06f74228b0b038ed42901910161025f779666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
