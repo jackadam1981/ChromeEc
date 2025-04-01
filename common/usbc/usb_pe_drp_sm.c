@@ -3798,11 +3798,13 @@ static void pe_snk_transition_sink_run(int port)
 				pd_set_input_current_limit(
 					port, pe[port].curr_limit,
 					pe[port].supply_voltage);
+
 				if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 					/*
 					 * Set ceiling based on what's
 					 * negotiated
 					 */
+					ccprintf("Chgmg#2:");
 					charge_manager_set_ceil(
 						port, CEIL_REQUESTOR_PD,
 						pe[port].curr_limit);

@@ -967,6 +967,8 @@ static void charge_manager_refresh(void)
 	charge_supplier = new_supplier;
 	charge_port = new_port;
 
+	CPRINTS("chg: p%d, i%d\n", charge_port, new_charge_current);
+
 #ifdef CONFIG_USB_PD_LOGGING
 	/*
 	 * Write a log under the following conditions:
@@ -1310,7 +1312,9 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 		return;
 
 	if (charge_ceil[port][requestor] != ceil) {
+		ccprintf("!%d, %d, %d, %d, %d\n", charge_ceil[port][requestor], ceil, charge_manager_is_seeded(), port, charge_port);
 		charge_ceil[port][requestor] = ceil;
+
 		if (port == charge_port && charge_manager_is_seeded())
 			hook_call_deferred(&charge_manager_refresh_data, 0);
 	}
@@ -1343,6 +1347,7 @@ void charge_manager_force_ceil(int port, int ceil)
 		 * Inform charge_manager so it stays in sync with the state
 		 * of the world.
 		 */
+		ccprintf("Chgmg#1:");
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD, ceil);
 	}
 }
