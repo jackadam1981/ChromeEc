@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3684697_bfa660b5",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-01T17:15:16Z",
+      "side": 1,
+      "message": "Sure, I\u0027d actually left it in intentionally since I saw the device tree files in bloonchipper all had newlines at the end and some were missing from helipilot. Removed for now.",
+      "parentUuid": "3fad2b38_54734104",
+      "revId": "39112aaee599696276523c2ee432cb84184681dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c395f042_e8b06c8c",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "39112aaee599696276523c2ee432cb84184681dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0583ae2_f0af721b",
+        "filename": "zephyr/program/fpmcu/helipilot/soc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-01T17:15:16Z",
+      "side": 1,
+      "message": "Done, good catch",
+      "parentUuid": "c395f042_e8b06c8c",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 28
+      },
       "revId": "39112aaee599696276523c2ee432cb84184681dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
