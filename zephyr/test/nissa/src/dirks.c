@@ -9,6 +9,7 @@
 #include "charge_manager.h"
 #include "chipset.h"
 #include "dirks.h"
+#include "driver/retimer/ps8811.h"
 #include "emul/tcpc/emul_tcpci.h"
 #include "extpower.h"
 #include "gpio/gpio_int.h"
@@ -57,6 +58,8 @@ FAKE_VALUE_FUNC(int, charge_manager_get_charger_voltage);
 FAKE_VALUE_FUNC(int, ppc_set_vbus_source_current_limit, int,
 		enum tcpc_rp_value);
 FAKE_VALUE_FUNC(int, adc_read_ppvar_pwr_in_imon);
+FAKE_VALUE_FUNC(int, ps8811_i2c_read, const struct usb_mux *, int, int, int *);
+FAKE_VALUE_FUNC(int, ps8811_i2c_write, const struct usb_mux *, int, int, int);
 
 uint8_t board_get_charger_chip_count(void)
 {
@@ -88,6 +91,8 @@ static void test_before(void *fixture)
 	RESET_FAKE(charge_manager_get_charger_voltage);
 	RESET_FAKE(ppc_set_vbus_source_current_limit);
 	RESET_FAKE(adc_read_ppvar_pwr_in_imon);
+	RESET_FAKE(ps8811_i2c_read);
+	RESET_FAKE(ps8811_i2c_write);
 }
 
 ZTEST_SUITE(dirks, NULL, NULL, test_before, NULL, NULL);
@@ -515,4 +520,25 @@ ZTEST(dirks, test_power_monitor)
 	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 2);
 	zassert_equal(ppc_set_vbus_source_current_limit_fake.arg1_val,
 		      TYPEC_RP_3A0);
+}
+
+ZTEST(dirks, test_usba_retimer_init)
+{
+	/* PS8811 is responsible. */
+	ps8811_i2c_read_fake.return_val = EC_SUCCESS;
+	hook_notify(HOOK_CHIPSET_STARTUP);
+
+	zassert_equal(ps8811_i2c_write_fake.call_count, 1);
+	zassert_equal(ps8811_i2c_write_fake.arg1_val, PS8811_REG_PAGE1);
+	zassert_equal(ps8811_i2c_write_fake.arg2_val,
+		      PS8811_REG1_USB_CHAN_A_SWING);
+	zassert_equal(ps8811_i2c_write_fake.arg3_val, 0x20);
+
+	/* clear call count for next test. */
+	ps8811_i2c_write_fake.call_count = 0;
+
+	/* PS8811 is irresponsible. */
+	ps8811_i2c_read_fake.return_val = EC_ERROR_UNKNOWN;
+	hook_notify(HOOK_CHIPSET_STARTUP);
+	zassert_equal(ps8811_i2c_write_fake.call_count, 0);
 }
