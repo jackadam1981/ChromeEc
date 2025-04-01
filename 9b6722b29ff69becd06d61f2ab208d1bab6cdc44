@@ -16,6 +16,110 @@
       "message": "Will this complain about code coverage? Will probably need to file a bug on it if it does",
       "revId": "9b6722b29ff69becd06d61f2ab208d1bab6cdc44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb389b5f_3a124408",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-01T19:16:44Z",
+      "side": 1,
+      "message": "obsolete?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "9b6722b29ff69becd06d61f2ab208d1bab6cdc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e70fbb7_bd34fde2",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-01T19:16:44Z",
+      "side": 1,
+      "message": "this is obsolete, too, right?",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7da1dd0b_1c03292f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 112,
+                "startChar": 0,
+                "endLine": 114,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 122,
+                "endChar": 0
+              },
+              "replacement": "\tcase EC_IMAGE_RW_B: /* Fall through */\n\t\tnext_image_copy \u003d EC_IMAGE_RW;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 124,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\t\tnext_image_copy \u003d EC_IMAGE_RO;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 127,
+                "startChar": 0,
+                "endLine": 128,
+                "endChar": 0
+              },
+              "replacement": "\t\tnext_image_copy \u003d EC_IMAGE_UNKNOWN;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/mchp/system_external_storage.c",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 131,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9b6722b29ff69becd06d61f2ab208d1bab6cdc44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
