@@ -50,6 +50,30 @@
       ],
       "revId": "a7b0f03eb491c7d6835408e798f741fc972807eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfcdf84_8dd1aa3a",
+        "filename": "zephyr/program/fatcat/felino/gpios.dtsi",
+        "patchSetId": 21
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-04-02T14:01:47Z",
+      "side": 1,
+      "message": "Yes, this flag is used to mark 1.8V PIN in bringup phase, now it can be removed. New patch is uploaded.",
+      "parentUuid": "b2ad428c_46153453",
+      "range": {
+        "startLine": 162,
+        "startChar": 77,
+        "endLine": 162,
+        "endChar": 93
+      },
+      "revId": "a7b0f03eb491c7d6835408e798f741fc972807eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
