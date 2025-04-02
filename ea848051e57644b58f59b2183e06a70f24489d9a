@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eadfb5be_7a87ffa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-02T23:35:03Z",
+      "side": 1,
+      "message": "The build failure is happening for the `francka-ti` board because that build inherits plain francka\u0027s devicetree and is getting confused by the different PDC nodes. We no longer need `francka-ti` thanks to your change, so you can delete `zephyr/program/fatcat/francka-ti` and remove `francka-ti` from `BUILD.py`",
+      "revId": "ea848051e57644b58f59b2183e06a70f24489d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d69f25_b7551535",
+        "filename": "zephyr/program/fatcat/francka/usbc.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-02T23:35:03Z",
+      "side": 1,
+      "message": "You could move the PDC properties into the named-usbc-port nodes above directly",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7ce668f3_b4cd3746",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/francka/usbc.dtsi",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/* Set up runtime driver selection of TI and RTK PDCs */\n\t\t\tpdc \u003d \u003c\u0026pdc_power_p0 \u0026pdc_power_p0_ti\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/francka/usbc.dtsi",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/* Set up runtime driver selection of TI and RTK PDCs */\n\t\t\tpdc \u003d \u003c\u0026pdc_power_p1 \u0026pdc_power_p1_ti\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/francka/usbc.dtsi",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": " };"
+            }
+          ]
+        }
+      ],
+      "revId": "ea848051e57644b58f59b2183e06a70f24489d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
