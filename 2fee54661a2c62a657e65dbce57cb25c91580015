@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5958364e_2d7aa618",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-02T17:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf0ee8b3_ed449c92",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 8
+      },
+      "revId": "2fee54661a2c62a657e65dbce57cb25c91580015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7c10ccd_c458f385",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-02T16:11:45Z",
       "side": 1,
       "message": "```suggestion\n * @param capture_type One of the capture types from fingerprint_capture_type\n *                     enum.\n```",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 7
+      },
+      "revId": "2fee54661a2c62a657e65dbce57cb25c91580015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade536ee_0c748944",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-02T17:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c10ccd_c458f385",
       "range": {
         "startLine": 401,
         "startChar": 0,
