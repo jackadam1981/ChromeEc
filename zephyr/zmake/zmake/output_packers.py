@@ -137,10 +137,6 @@ class IshBinPacker(BasePacker):
         del version_string
         single_dir = dir_map["singleimage"]
         yield single_dir / "zephyr" / "ish_fw.bin", "ish_fw.bin"
-        yield (
-            single_dir / "zephyr" / "component_manifest.json",
-            "component_manifest.json",
-        )
 
 
 class BinmanPacker(BasePacker):
