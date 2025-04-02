@@ -2056,6 +2056,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	pdc_power_mgmt_request_source_voltage(TEST_PORT, prev_mv);
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 }
+#endif /* CONFIG_TODO_B_345292002 */
 
 /* Get / set SBU mux mode is only supported on RTK currently */
 ZTEST(pdc_power_mgmt_api, test_pdc_power_mgmt_sbu_mux_mode)
@@ -2117,8 +2118,6 @@ ZTEST(pdc_power_mgmt_api, test_pdc_power_mgmt_sbu_mux_mode_not_supported_get)
 		      "Expected PDC_SBU_MUX_MODE_INVALID (%d) but got %d",
 		      PDC_SBU_MUX_MODE_INVALID, mode);
 }
-
-#endif /* CONFIG_TODO_B_345292002 */
 
 /**
  * @brief Helper function for polling sink path status
