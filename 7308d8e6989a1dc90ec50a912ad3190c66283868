@@ -87,6 +87,24 @@
       "message": "The way it\u0027s written right now somewhat hints that chip_flags could be used as initialzed between the declaration and here, which is not. I think it\u0027d better if you remove the initializer on the declaration and instead change this to a direct assignment, then it\u0027d be clear that either this or the one below is the initial value and the compiler would warn if one tries to use it before.",
       "revId": "7308d8e6989a1dc90ec50a912ad3190c66283868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1dcf74_f20a81cb",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-02T07:33:02Z",
+      "side": 1,
+      "message": "I upload a CL:6419329. I\u0027m not sure. Is the CL what you want?",
+      "parentUuid": "51308528_e97b2843",
+      "revId": "7308d8e6989a1dc90ec50a912ad3190c66283868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
