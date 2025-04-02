@@ -52,6 +52,24 @@
       "parentUuid": "7c81bbdb_bf41748a",
       "revId": "ea43fdf2073606f319da107a4e74babd75e858f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192cc934_033b45d9",
+        "filename": "zephyr/program/fatcat/francka/overlay.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-02T05:32:01Z",
+      "side": 1,
+      "message": "Add the no-fw-update for the TI C1.",
+      "parentUuid": "5902790b_eca2fdef",
+      "revId": "ea43fdf2073606f319da107a4e74babd75e858f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
