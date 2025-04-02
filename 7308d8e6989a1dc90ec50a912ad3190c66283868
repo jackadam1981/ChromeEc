@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59854be2_00c2d39f",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-02T07:37:47Z",
+      "side": 1,
+      "message": "I upload CL:6419329 to remove it.",
+      "parentUuid": "a852dc80_9ec2fc78",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 4
+      },
+      "revId": "7308d8e6989a1dc90ec50a912ad3190c66283868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51308528_e97b2843",
