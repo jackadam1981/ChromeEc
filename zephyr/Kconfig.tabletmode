@@ -44,6 +44,15 @@ config PLATFORM_EC_TABLET_MODE_SKIP_LID_CLOSE
       when devices are stacked, this configuration skips lid close event when
       the system is in tablet mode
 
+config PLATFORM_EC_TABLET_MODE_DISABLE_POWERBTN
+    bool "disable power button"
+    help
+      For 360° machines with the power button on the keyboard, if need to disable
+      the power button after switching to tablet mode. Adding this macro can prevent
+      the situation where holding down the power button to switch to tablet mode
+      does not prevent the long press power button function from taking effect.
+
+
 config PLATFORM_EC_GMR_SENSOR_DEBOUNCE_US
 	int "GMR tablet mode sensor debounce delay (microseconds)"
 	default 40000

@@ -603,6 +603,13 @@ static void power_button_changed(void)
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
 
+#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN
+void disable_chipset_force_shutdown_button(void)
+{
+	hook_call_deferred(&chipset_force_shutdown_button_data, -1);
+}
+#endif
+
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 __overridable void board_handle_host_sleep_event(enum host_sleep_event state)
 {
