@@ -70,7 +70,6 @@ static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
-static int syv682x_dump(int port);
 static int syv682x_vbus_sink_enable(int port, int enable);
 
 static int syv682x_init(int port);
@@ -94,15 +93,6 @@ __overridable int syv682x_board_is_syv682c(int port)
 	return true;
 }
 #endif
-
-static int ppc_prints_and_dump(const char *string, int port)
-{
-	int rv;
-
-	rv = ppc_prints(string, port);
-	rv |= syv682x_dump(port);
-	return rv;
-}
 
 /*
  * During channel transition or discharge, the SYV682X silently ignores I2C
@@ -367,14 +357,14 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	 */
 	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_TSD,
 				     SYV682X_FLAGS_TSD)) {
-		ppc_prints_and_dump("TSD!", port);
+		ppc_prints("TSD!", port);
 		atomic_clear_bits(&flags[port],
 				  SYV682X_FLAGS_SOURCE_ENABLED |
 					  SYV682X_FLAGS_SINK_ENABLED);
 	}
 	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_OVP,
 				     SYV682X_FLAGS_OVP)) {
-		ppc_prints_and_dump("VBUS OVP!", port);
+		ppc_prints("VBUS OVP!", port);
 		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
 	}
 
@@ -385,7 +375,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	 * the sink path being explicitly disabled or on a PPC init.
 	 */
 	if (regval & SYV682X_STATUS_OC_HV) {
-		ppc_prints_and_dump("Sink OCP!", port);
+		ppc_prints("Sink OCP!", port);
 		atomic_add(&sink_ocp_count[port], 1);
 		if ((sink_ocp_count[port] < OCP_COUNT_LIMIT) &&
 		    (flags[port] & SYV682X_FLAGS_SINK_ENABLED)) {
@@ -423,7 +413,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 			~(SYV682X_CONTROL_4_VCONN2 | SYV682X_CONTROL_4_VCONN1);
 		write_reg(port, SYV682X_CONTROL_4_REG, regval);
 
-		ppc_prints_and_dump("VCONN OC!", port);
+		ppc_prints("VCONN OC!", port);
 	}
 
 	/*
@@ -434,7 +424,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 	 * recoverable.
 	 */
 	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
-		ppc_prints_and_dump("VBAT or CC OVP!", port);
+		ppc_prints("VBAT or CC OVP!", port);
 		syv682x_init(port);
 		pd_handle_cc_overvoltage(port);
 		return EC_ERROR_UNKNOWN;
@@ -610,6 +600,7 @@ static int syv682x_set_vconn(int port, int enable)
 }
 #endif
 
+#ifdef CONFIG_CMD_PPC_DUMP
 static int syv682x_dump(int port)
 {
 	int reg_addr;
@@ -633,6 +624,7 @@ static int syv682x_dump(int port)
 
 	return EC_SUCCESS;
 }
+#endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
 static void syv682x_handle_interrupt(int port)
 {
