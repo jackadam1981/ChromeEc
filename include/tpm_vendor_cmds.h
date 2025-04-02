@@ -221,6 +221,9 @@ enum vendor_cmd_cc {
 	/* Returns info to identify the specific GSC chip type. */
 	VENDOR_CC_GET_CHIP_ID = 75,
 
+	/* Loads and stores superblock macs for the Trusty storage application. */
+	VENDOR_CC_TRUSTY_STORAGE_MAC = 77,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
