@@ -16,4 +16,8 @@ board_handle_host_sleep_event(enum host_sleep_event state);
 __override_proto void board_handle_sleep_hang(enum sleep_hang_type hang_type);
 #endif
 
+#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN
+void disable_chipset_force_shutdown_button(void);
+#endif
+
 #endif /* __CROS_EC_POWER_MT8186_H_ */

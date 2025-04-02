@@ -16,6 +16,7 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -71,6 +72,12 @@ static int raw_power_button_pressed(void)
 	 * press the power button through the closed lid.
 	 */
 	if (!lid_is_open())
+		return 0;
+#endif
+
+#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN
+	if (tablet_get_mode() &&
+	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON))
 		return 0;
 #endif
 
