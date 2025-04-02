@@ -426,6 +426,7 @@ ZTEST_USER(pdc_api, test_is_vconn_sourcing)
 
 /* TODO(b/345292002): TPS6699x set_frs not implemented */
 #ifndef CONFIG_TODO_B_345292002
+
 ZTEST_USER(pdc_api, test_set_frs)
 {
 	bool frs_state[] = { true, false }, out;
@@ -730,9 +731,6 @@ ZTEST_USER(pdc_api, test_execute_ucsi_cmd)
 	zassert_equal(out->raw_value, in.raw_value);
 }
 
-/* TODO(b/345292002): Not supported by TI driver currently. */
-#ifndef CONFIG_TODO_B_345292002
-
 ZTEST_USER(pdc_api, test_get_sbu_mux_mode)
 {
 	/* Null pointer error */
@@ -745,8 +743,6 @@ ZTEST_USER(pdc_api, test_set_sbu_mux_mode)
 	zassert_equal(-EINVAL,
 		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_INVALID));
 }
-
-#endif /* !defined(CONFIG_TODO_B_345292002) */
 
 /*
  * Suspended tests - ensure API calls behave correctly when PDC communication
@@ -821,8 +817,6 @@ ZTEST_USER(pdc_api_suspended, test_get_lpm_ppm_info)
 	zassert_equal(-EBUSY, pdc_get_lpm_ppm_info(dev, &out));
 }
 
-/* TODO(b/345292002): Not supported by TI driver currently. */
-#ifndef CONFIG_TODO_B_345292002
 ZTEST_USER(pdc_api_suspended, test_get_sbu_mux_mode)
 {
 	enum pdc_sbu_mux_mode mode;
@@ -837,4 +831,3 @@ ZTEST_USER(pdc_api_suspended, test_set_sbu_mux_mode)
 	zassert_equal(-EBUSY,
 		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_FORCE_DBG));
 }
-#endif /* !defined(CONFIG_TODO_B_345292002) */
