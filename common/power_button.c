@@ -16,6 +16,7 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -201,6 +202,21 @@ static void power_button_change_deferred(void)
 		host_set_single_event(EC_HOST_EVENT_POWER_BUTTON);
 }
 DECLARE_DEFERRED(power_button_change_deferred);
+
+#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN
+/*
+ * If press and hold the power button to switch to tablet mode and
+ * then release it, we need to clear the flag bit.
+ */
+static void tablet_mode_disable_power_button(void)
+{
+	if (tablet_get_mode() && power_button_is_pressed()) {
+		debounced_power_pressed = 0;
+	}
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, tablet_mode_disable_power_button,
+	     HOOK_PRIO_DEFAULT);
+#endif
 
 static void power_button_simulate_deferred(void)
 {
