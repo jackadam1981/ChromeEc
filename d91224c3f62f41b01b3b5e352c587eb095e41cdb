@@ -16,6 +16,29 @@
       "message": "Friendly ping",
       "revId": "d91224c3f62f41b01b3b5e352c587eb095e41cdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fe3dbb_f49294ef",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-04-03T17:17:37Z",
+      "side": 1,
+      "message": "Should it be `toolchain_uses_newlib`?",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "d91224c3f62f41b01b3b5e352c587eb095e41cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
