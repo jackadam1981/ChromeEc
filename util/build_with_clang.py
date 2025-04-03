@@ -236,6 +236,8 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "arcada_ish",
     "drallion_ish",
     "tglrvp_ish",
+    # Boards that use CORE:=riscv-rv32i
+    "geralt_scp_core1",
 ]
 
 NDS32_BOARDS = [
@@ -277,7 +279,6 @@ RISCV_BOARDS = [
     "cozmo",
     "dojo",
     "geralt_scp",
-    "geralt_scp_core1",
     "goroh",
     "hayato",
     "icarus",
