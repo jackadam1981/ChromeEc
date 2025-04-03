@@ -82,15 +82,15 @@ void panic_data_print(const struct panic_data *pdata)
 {
 	const uint32_t *lregs = pdata->cm.regs;
 	const uint32_t *sregs = NULL;
-	const int32_t in_handler =
-		is_frame_in_handler_stack(pdata->cm.regs[11]);
+	const uint32_t excep_lr = lregs[11];
 	int i;
 
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
 		sregs = pdata->cm.frame;
 
 	panic_printf("\n=== %s EXCEPTION: %02x ====== xPSR: %08x ===\n",
-		     in_handler ? "HANDLER" : "PROCESS",
+		     is_exception_from_handler_mode(excep_lr) ? "HANDLER" :
+								"PROCESS",
 		     lregs[1] & 0xff, sregs ? sregs[7] : -1);
 	for (i = 0; i < 4; i++)
 		print_reg(i, sregs, i);
@@ -99,7 +99,8 @@ void panic_data_print(const struct panic_data *pdata)
 	print_reg(10, lregs, 9);
 	print_reg(11, lregs, 10);
 	print_reg(12, sregs, 4);
-	print_reg(13, lregs, in_handler ? 2 : 0);
+	print_reg(13, lregs,
+		  is_frame_in_handler_stack(excep_lr) ? 2 : 0);
 	print_reg(14, sregs, 5);
 	print_reg(15, sregs, 6);
 }
