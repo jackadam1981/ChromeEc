@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362c9678_d8301f23",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-03T17:34:01Z",
+      "side": 1,
+      "message": "nit: If you use `/**` it will be recognized by doxygen",
+      "range": {
+        "startLine": 8405,
+        "startChar": 1,
+        "endLine": 8405,
+        "endChar": 55
+      },
+      "revId": "33ca1bedf94132f9e3e4bfa90f0f4a8e220cecd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
