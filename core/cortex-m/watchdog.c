@@ -26,7 +26,7 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	uint32_t *stack;
 
 	asm("mrs %0, psp" : "=r"(psp));
-	if ((excep_lr & 0xf) == 1) {
+	if (is_frame_in_handler_stack(excep_lr)) {
 		/* we were already in exception context */
 		stack = (uint32_t *)excep_sp;
 	} else {
