@@ -264,7 +264,7 @@ HOST_CXXFLAGS+=$(LIBEC_HOST_CFLAGS)
 ifneq (${SYSROOT},)
   LDFLAGS_EXTRA+=--sysroot=${SYSROOT}
 endif
-LDFLAGS=-g -no-pie -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
+LDFLAGS=-g -no-pie -Wl,-X -Wl,--gc-sections -Wl,--build-id=none --unwindlib=none \
 	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 LDFLAGS+=-nostdlib

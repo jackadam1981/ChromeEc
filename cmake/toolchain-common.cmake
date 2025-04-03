@@ -46,6 +46,7 @@ add_link_options(-flto)
 add_compile_options(-fno-exceptions)
 add_compile_options(-fno-unwind-tables)
 add_compile_options(-fno-asynchronous-unwind-tables)
+add_link_options(--unwindlib=none)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
 
