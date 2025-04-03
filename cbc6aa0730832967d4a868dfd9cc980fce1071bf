@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "cbc6aa0730832967d4a868dfd9cc980fce1071bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0bb214_07c0b6ec",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-03T16:46:15Z",
+      "side": 1,
+      "message": "We reserved 5 bits for capture type, right? (`FP_MODE_CAPTURE_TYPE_SHIFT`)\n\nIn that case we can only have 32 types, so let\u0027s only use `uint8_t` for `fp_capture_type` and leave a `uint8_t` for padding. That will give us some flexibility if we need something else in the future.",
+      "range": {
+        "startLine": 8405,
+        "startChar": 1,
+        "endLine": 8405,
+        "endChar": 26
+      },
+      "revId": "cbc6aa0730832967d4a868dfd9cc980fce1071bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
