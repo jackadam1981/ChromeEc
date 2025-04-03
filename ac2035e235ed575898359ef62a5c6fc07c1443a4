@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ac2035e235ed575898359ef62a5c6fc07c1443a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25fbe6d_3d751d77",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-04-03T08:06:33Z",
+      "side": 1,
+      "message": "should this be Logical OR operation (||)\nI have checked this by using Logical OR.",
+      "revId": "ac2035e235ed575898359ef62a5c6fc07c1443a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
