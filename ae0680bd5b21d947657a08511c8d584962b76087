@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cfe73dd_4da3c42b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-04-03T12:27:02Z",
+      "side": 1,
+      "message": "This is still not addressed. The Changes are not mentioned in the commit message. Please mention them similar to the Ciri CL.",
+      "parentUuid": "eb7afde0_962387d9",
+      "revId": "ae0680bd5b21d947657a08511c8d584962b76087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e780bd5_6c3b3dc0",
         "filename": "zephyr/program/nissa/domika/domika_vif.xml",
         "patchSetId": 1
