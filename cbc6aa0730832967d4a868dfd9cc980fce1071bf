@@ -39,6 +39,30 @@
       },
       "revId": "cbc6aa0730832967d4a868dfd9cc980fce1071bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8f78d7_a9617aca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8405,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-03T16:48:15Z",
+      "side": 1,
+      "message": "Also add a comment that the type maps to `enum fp_capture_type`.",
+      "parentUuid": "3b0bb214_07c0b6ec",
+      "range": {
+        "startLine": 8405,
+        "startChar": 1,
+        "endLine": 8405,
+        "endChar": 26
+      },
+      "revId": "cbc6aa0730832967d4a868dfd9cc980fce1071bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
