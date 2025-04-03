@@ -43,6 +43,8 @@
 #define POWER_SWAP_TIMEOUT \
 	(PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + PD_T_SAFE_0V + 500 * MSEC)
 
+K_MUTEX_DEFINE(cm_refresh);
+
 /*
  * Default charge supplier priority
  *
@@ -809,12 +811,16 @@ static void charge_manager_refresh(void)
 	int ceil;
 	int power_changed = 0;
 
+	mutex_lock(&cm_refresh);
+
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_port(&new_port, &new_supplier);
 
-		if (!left_safe_mode && new_port == CHARGE_PORT_NONE)
+		if (!left_safe_mode && new_port == CHARGE_PORT_NONE) {
+			mutex_unlock(&cm_refresh);
 			return;
+		}
 
 		/*
 		 * If the port and the supplier are the same, don't (attempt to)
@@ -1047,6 +1053,8 @@ static void charge_manager_refresh(void)
 		/* notify host of power info change */
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
+
+	mutex_unlock(&cm_refresh);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1307,11 +1315,13 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	if (!is_valid_port(port))
 		return;
 
+	mutex_lock(&cm_refresh);
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
 			hook_call_deferred(&charge_manager_refresh_data, 0);
 	}
+	mutex_unlock(&cm_refresh);
 }
 
 void charge_manager_force_ceil(int port, int ceil)
