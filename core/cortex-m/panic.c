@@ -68,22 +68,6 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
 }
 
 /*
- * Returns non-zero if the exception frame was created on the main stack, or
- * zero if it's on the process stack.
- *
- * See B1.5.8 "Exception return behavior" of ARM DDI 0403D for details.
- */
-static int32_t is_frame_in_handler_stack(const uint32_t exc_return)
-{
-#ifdef CONFIG_FPU
-	return exc_return == 0xfffffff1 || exc_return == 0xfffffff9 ||
-	       exc_return == 0xffffffe1 || exc_return == 0xffffffe9;
-#else
-	return exc_return == 0xfffffff1 || exc_return == 0xfffffff9;
-#endif /* CONFIG_FPU */
-}
-
-/*
  * Returns the size of the exception frame.
  *
  * See B1.5.7 "Stack alignment on exception entry" of ARM DDI 0403D for details.

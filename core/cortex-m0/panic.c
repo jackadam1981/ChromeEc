@@ -60,17 +60,6 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
 }
 
 /*
- * Returns non-zero if the exception frame was created on the main stack, or
- * zero if it's on the process stack.
- *
- * See B1.5.8 "Exception return behavior" of ARM DDI 0403D for details.
- */
-static int32_t is_frame_in_handler_stack(const uint32_t exc_return)
-{
-	return exc_return == 0xfffffff1 || exc_return == 0xfffffff9;
-}
-
-/*
  * Print panic data
  */
 void panic_data_print(const struct panic_data *pdata)

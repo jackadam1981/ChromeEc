@@ -71,4 +71,15 @@ static inline void cpu_enter_suspend_mode(void)
 	}
 }
 
+/*
+ * Returns true if the exception frame was created on the main stack, or
+ * false if it's on the process stack.
+ *
+ * See B1.5.8 "Exception return behavior" of ARM DDI 0403D for details.
+ */
+static inline bool is_frame_in_handler_stack(const uint32_t exc_return)
+{
+	return exc_return == 0xfffffff1 || exc_return == 0xfffffff9;
+}
+
 #endif /* __CROS_EC_CPU_H */
