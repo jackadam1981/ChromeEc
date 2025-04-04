@@ -99,7 +99,7 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:PD_Power_As_Source value="15000">15000 mW</vif:PD_Power_As_Source>
+    <vif:PD_Power_As_Source value="7500">7500 mW</vif:PD_Power_As_Source>
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
@@ -117,7 +117,7 @@
         <vif:Src_PDO_Supply_Type value="0">Fixed</vif:Src_PDO_Supply_Type>
         <vif:Src_PDO_Peak_Current value="0">100% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
-        <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
+        <vif:Src_PDO_Max_Current value="150">1500 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_UV_Debounce value="1">1 msec</vif:Src_PD_OCP_UV_Debounce>
         <vif:Src_PD_OCP_UV_Threshold_Type value="0">Value</vif:Src_PD_OCP_UV_Threshold_Type>
         <vif:Src_PD_OCP_UV_Threshold value="475">4750 mV (Factor = 10)</vif:Src_PD_OCP_UV_Threshold>
