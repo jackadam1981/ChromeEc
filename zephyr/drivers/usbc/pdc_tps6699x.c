@@ -635,18 +635,6 @@ static void st_init_run(void *o)
 	return;
 }
 
-static void st_init_exit(void *o)
-{
-	struct pdc_data_t *data = (struct pdc_data_t *)o;
-
-	/* Inform the driver that the init process is complete */
-	/* TODO: Make sure this makes sense if the next state is suspend. It may
-	 * be possible to remove ST_INIT entirely by doing this in the init
-	 * function.
-	 */
-	data->init_done = true;
-}
-
 static void st_idle_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -1852,6 +1840,9 @@ static void st_task_wait_run(void *o)
 		       &cmd_data.data[offset], len);
 		break;
 	}
+	case UCSI_SET_NOTIFICATION_ENABLE:
+		data->init_done = true;
+		break;
 	default:
 		/* No data for this command */
 		len = 0;
@@ -1885,8 +1876,8 @@ error_recovery:
 /* Populate state table */
 static const struct smf_state states[] = {
 	[ST_IRQ] = SMF_CREATE_STATE(st_irq_entry, st_irq_run, NULL, NULL, NULL),
-	[ST_INIT] = SMF_CREATE_STATE(st_init_entry, st_init_run, st_init_exit,
-				     NULL, NULL),
+	[ST_INIT] =
+		SMF_CREATE_STATE(st_init_entry, st_init_run, NULL, NULL, NULL),
 	[ST_IDLE] = SMF_CREATE_STATE(st_idle_entry, st_idle_run, st_idle_exit,
 				     NULL, NULL),
 	[ST_ERROR_RECOVERY] = SMF_CREATE_STATE(st_error_recovery_entry,
