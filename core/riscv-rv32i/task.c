@@ -355,7 +355,7 @@ int __ram_code start_irq_handler(void)
 	return EC_SUCCESS;
 }
 
-void __ram_code end_irq_handler(void)
+void __ram_code_ilm0 end_irq_handler(void)
 {
 #ifdef CONFIG_TASK_PROFILING
 	uint32_t t, p;
@@ -403,7 +403,7 @@ static uint32_t __ram_code __wait_evt(int timeout_us, task_id_t resched)
 	return evt;
 }
 
-void __ram_code task_set_event(task_id_t tskid, uint32_t event)
+void __ram_code_ilm0 task_set_event(task_id_t tskid, uint32_t event)
 {
 	task_ *receiver = __task_id_to_ptr(tskid);
 
@@ -428,7 +428,7 @@ uint32_t __ram_code task_wait_event(int timeout_us)
 	return __wait_evt(timeout_us, TASK_ID_IDLE);
 }
 
-uint32_t __ram_code task_wait_event_mask(uint32_t event_mask, int timeout_us)
+uint32_t __ram_code_ilm0 task_wait_event_mask(uint32_t event_mask, int timeout_us)
 {
 	uint64_t deadline = get_time().val + timeout_us;
 	uint32_t events = 0;
@@ -544,7 +544,7 @@ static void ivic_init_irqs(void)
 	interrupt_enable();
 }
 
-void __ram_code mutex_lock(struct mutex_nr *mtx)
+void __ram_code_ilm0 mutex_lock(struct mutex_nr *mtx)
 {
 	uint32_t locked;
 	uint32_t id = 1 << task_get_current();
@@ -570,7 +570,7 @@ void __ram_code mutex_lock(struct mutex_nr *mtx)
 	atomic_clear_bits(&mtx->waiters, id);
 }
 
-void __ram_code mutex_unlock(struct mutex_nr *mtx)
+void __ram_code_ilm0 mutex_unlock(struct mutex_nr *mtx)
 {
 	uint32_t waiters;
 	task_ *tsk = current_task;
