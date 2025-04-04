@@ -94,6 +94,30 @@
       },
       "revId": "8a55577c24a0b8431275a76bfe10140226c77119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b6a73d_36139345",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-04-04T00:52:24Z",
+      "side": 1,
+      "message": "I did a few more testing, I can see some improvement:\nSW SHA: 250 ms\nHW SHA: 75 ms\nReducing SHA calculation time to 30%.",
+      "parentUuid": "3bab4a79_a15fd801",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "8a55577c24a0b8431275a76bfe10140226c77119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
