@@ -16,7 +16,7 @@
 #define __ram_code
 #else
 #define __ram_code __attribute__((section(__RAM_CODE_SECTION_NAME)))
-#endif
+#define __ram_code_ilm0  __attribute__((section(__RAM_CODE_ILM0_SECTION_NAME)))
 
 /* IRQ numbers */
 /* Group 0 */
