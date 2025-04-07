@@ -16,6 +16,24 @@
       "message": "francka-ti may need to be removed from src/platform/ec/zephyr/firmware_builder.py\nIn addition, src/project/fatcat/francka/config.star may also need the corresponding changes or the build would still fail.",
       "revId": "18d7866ac53d92bdd782d0687d088591ac5fce31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a09b9a8_13df8e83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-07T03:45:20Z",
+      "side": 1,
+      "message": "sorry for miss firmware_builder.py.\nsrc/project/fatcat/francka/config.star amanda will help it.",
+      "parentUuid": "e1a9a3c0_f0fafcc3",
+      "revId": "18d7866ac53d92bdd782d0687d088591ac5fce31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
