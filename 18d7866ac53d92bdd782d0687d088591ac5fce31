@@ -34,6 +34,24 @@
       "parentUuid": "e1a9a3c0_f0fafcc3",
       "revId": "18d7866ac53d92bdd782d0687d088591ac5fce31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c64890b_c865f921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-04-07T11:27:19Z",
+      "side": 1,
+      "message": "Please add cq-depend once src/project/fatcat/francka/config.star is ready.",
+      "parentUuid": "2a09b9a8_13df8e83",
+      "revId": "18d7866ac53d92bdd782d0687d088591ac5fce31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
