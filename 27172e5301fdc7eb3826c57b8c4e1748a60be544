@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cecec98_efd01291",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-04-07T06:01:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "be7d7f2a_3ee467b2",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "27172e5301fdc7eb3826c57b8c4e1748a60be544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5de4f74c_715bf0cb",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-07T05:02:37Z",
       "side": 1,
       "message": "Please specify what test case failure is eliminated by this change.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "27172e5301fdc7eb3826c57b8c4e1748a60be544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad6d260_4d36d146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-04-07T06:01:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5de4f74c_715bf0cb",
       "range": {
         "startLine": 15,
         "startChar": 0,
