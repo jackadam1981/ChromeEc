@@ -60,6 +60,30 @@
       ],
       "revId": "21882a754ee655792ab26eed0f2b9c89ea47390f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61974c00_43857f7e",
+        "filename": "zephyr/program/nissa/dirks/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-07T06:55:44Z",
+      "side": 1,
+      "message": "Done. I reserved LOG_WRN for write fail.",
+      "parentUuid": "e4a473c6_3c2d8f56",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 14
+      },
+      "revId": "21882a754ee655792ab26eed0f2b9c89ea47390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
