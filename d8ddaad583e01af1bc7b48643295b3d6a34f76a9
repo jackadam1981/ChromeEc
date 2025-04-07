@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6af936_7be6ba5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-07T15:58:48Z",
+      "side": 1,
+      "message": "Good news, unit tests for this already exist. Just need to update the TI emulator with the new task and status bit, then take away the #ifndef guard around `test_{set|get}_sbu_mux_mode` in `pdc_api.c` and also `test_pdc_power_mgmt_sbu_mux_mode*` in `pdc_power_mgmt_api.c`.",
+      "revId": "d8ddaad583e01af1bc7b48643295b3d6a34f76a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
