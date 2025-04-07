@@ -1,0 +1,65 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a473c6_3c2d8f56",
+        "filename": "zephyr/program/nissa/dirks/src/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-07T06:21:24Z",
+      "side": 1,
+      "message": "You never use this value, so it seems like you shouldn\u0027t need to use this read at all? The write will fail if the device isn\u0027t responsive.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2a99713b_53e175ce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/dirks/src/usbc.c",
+              "range": {
+                "startLine": 168,
+                "startChar": 0,
+                "endLine": 169,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/nissa/dirks/src/usbc.c",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 174,
+                "endChar": 0
+              },
+              "replacement": "\t/* Set offset 0x66 value 0x20 */\n\trv \u003d ps8811_i2c_write(me, PS8811_REG_PAGE1,\n\t\t\t      PS8811_REG1_USB_CHAN_A_SWING, 0x20);\n"
+            },
+            {
+              "path": "zephyr/program/nissa/dirks/src/usbc.c",
+              "range": {
+                "startLine": 179,
+                "startChar": 0,
+                "endLine": 183,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "21882a754ee655792ab26eed0f2b9c89ea47390f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
