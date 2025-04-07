@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d4f1506_42298ba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-07T02:24:37Z",
+      "side": 1,
+      "message": "Hi Derek,\n\nCould I use this CL as a workaround?",
+      "parentUuid": "d2a39719_1518d8c9",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cea4e5c_9f4ef702",
         "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
         "patchSetId": 3
