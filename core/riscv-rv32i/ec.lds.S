@@ -323,7 +323,7 @@ SECTIONS
 #endif
 #endif /* CONFIG_PRESERVE_LOGS */
 
-	.data : {
+	.data : AT(ALIGN(LOADADDR(.rodata) + SIZEOF(.rodata), 4)) {
 		. = ALIGN(4);
 		__data_start = .;
 #if SCP_CORE_SN == 1
@@ -335,9 +335,9 @@ SECTIONS
 		. = ALIGN(4);
 		__data_end = .;
 #if defined(CONFIG_FLASH_PHYSICAL)
-	} > IRAM AT > FLASH
+	} > IRAM
 #else
-	} > IRAM AT > IROM
+	} > IRAM
 #endif
 
 	.bss : {
