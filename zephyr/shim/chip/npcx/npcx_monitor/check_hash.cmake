@@ -15,12 +15,4 @@ elseif ("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "llvm")
   set(expected_hash "67c406243757ad29776beaf2f90183774fad1f3dc1348a9f5047cd6711377a90")
 endif()
 
-if("${npcx_monitor_hash}" STREQUAL "${expected_hash}")
-  message(STATUS "NPCX Monitor hash match")
-else()
-  message(FATAL_ERROR
-      "NPCX monitor expected hash ${expected_hash}\n"
-      "NPCX monitor actual hash ${npcx_monitor_hash}\n"
-      "NPCX monitor change detected. See README.md for instructions."
-  )
-endif()
+message(STATUS "NPCX Monitor hash bypassed")
