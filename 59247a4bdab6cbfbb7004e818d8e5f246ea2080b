@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec94753_f9392d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-04-07T03:32:25Z",
+      "side": 1,
+      "message": "SGTM, in the meantime we can investigate why EC does not set AP_POWER_SHUTDOWN_POWERFAIL",
+      "parentUuid": "4d4f1506_42298ba6",
+      "revId": "59247a4bdab6cbfbb7004e818d8e5f246ea2080b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cea4e5c_9f4ef702",
