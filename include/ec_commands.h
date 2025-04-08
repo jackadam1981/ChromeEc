@@ -8351,6 +8351,10 @@ enum fp_capture_type {
 	FP_CAPTURE_RESET_TEST = 20,
 	FP_CAPTURE_TYPE_MAX,
 };
+
+/* The maximum number of capture types in enum fp_capture_type */
+#define FP_MAX_CAPTURE_TYPES 9
+
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode)                                          \
 	(enum fp_capture_type)(((mode) & FP_MODE_CAPTURE_TYPE_MASK) >> \
