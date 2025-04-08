@@ -30,6 +30,8 @@ static void board_setup_init(void)
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
 static enum battery_present cached_batt_state = BP_NO;
+static int battery_retry = 0;
+#define bad_battery_retry 4
 
 /*
  * I2C read register to detect battery
@@ -44,12 +46,25 @@ static void update_battery_state_cache(void)
 	 *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.
 	 */
 	if (sb_read(SB_MANUFACTURER_ACCESS, &state)) {
-		cached_batt_state = BP_NO;
-		return;
+		if (battery_retry < bad_battery_retry) {
+			battery_retry++;
+		}
 	}
 
 	/* Detect the 12th bit value */
 	if (state & BIT(12)) {
+		if (battery_retry < 4) {
+			battery_retry++;
+		}
+	} else {
+		battery_retry = 0;
+	}
+
+	/**
+	 * Increase the number of bad battery retry times. Avoid battery
+	 * disconnection when I2C is abnormal.
+	 */
+	if (battery_retry == bad_battery_retry) {
 		cached_batt_state = BP_NO;
 	} else {
 		cached_batt_state = BP_YES;
