@@ -8,6 +8,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_scan.h"
 #include "lid_angle.h"
 #include "lid_switch.h"
 #include "tablet_mode.h"
@@ -408,5 +409,30 @@ static void notify_ec_for_nb_mode_change(void)
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_nb_mode), !tablet_get_mode());
 }
 DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, notify_ec_for_nb_mode_change,
+	     HOOK_PRIO_DEFAULT);
+#endif
+
+#if defined(CONFIG_PLATFORM_EC_DSP_SERVICE) && \
+	!defined(CONFIG_CROS_TABLETMODE_INTERRUPT)
+void tabletmode_enable_peripherals(void)
+{
+	/*
+	 * Enable keyboard when AP is running.
+	 */
+	keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, tabletmode_enable_peripherals,
+	     HOOK_PRIO_DEFAULT);
+
+void tabletmode_suspend_peripherals(void)
+{
+	/*
+	 * Disable keyboard in tablet mode when AP is suspended
+	 */
+	if (tablet_get_mode()) {
+		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, tabletmode_suspend_peripherals,
 	     HOOK_PRIO_DEFAULT);
 #endif
