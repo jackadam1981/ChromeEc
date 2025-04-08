@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332bbc97_3db4087a",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-08T22:40:45Z",
+      "side": 1,
+      "message": "Document the script name here.",
+      "range": {
+        "startLine": 93,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "51edc7626095791c59825be2f1e5b6012527383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da71558a_425a9ffa",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-08T22:40:45Z",
+      "side": 1,
+      "message": "I think it would be cleaner if you didn\u0027t nest `fwup_rtk` under the existing `pdc` command.  Then you don\u0027t need the #ifdef block or LCOV tags in this file.",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 0
+      },
+      "revId": "51edc7626095791c59825be2f1e5b6012527383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
