@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_detect.h"
@@ -126,11 +127,27 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 test_export_static uint8_t get_sensor_bpp(void)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	ec_response_fp_info info;
-	if (fp_sensor_get_info(&info) < 0) {
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * sizeof(uint32_t) * 8;
+	auto info = std::unique_ptr<ec_response_fp_info_v2>(
+		reinterpret_cast<ec_response_fp_info_v2 *>(
+			new char[fp_sensor_get_info_v2_size]));
+	uint8_t bpp = 0;
+
+	if (fp_sensor_get_info_v2(info.get()) < 0) {
 		return EC_ERROR_UNKNOWN;
 	}
-	return info.bpp;
+
+	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
+		if (info->image_frame_params[i].fp_capture_type ==
+		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
+			bpp = info->image_frame_params[i].bpp;
+			break;
+		}
+	}
+
+	return bpp;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
@@ -294,6 +311,58 @@ static int command_fpinfo(int argc, const char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(fpinfo, command_fpinfo, nullptr,
 			     "Print fingerprint system info");
 
+static int command_fpinfo_v2(int argc, const char **argv)
+{
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * sizeof(uint32_t) * 8;
+	auto info = std::unique_ptr<ec_response_fp_info_v2>(
+		reinterpret_cast<ec_response_fp_info_v2 *>(
+			new char[fp_sensor_get_info_v2_size]));
+
+#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
+	if (fp_sensor_get_info_v2(info.get()) < 0)
+		return EC_ERROR_UNKNOWN;
+#else
+	return EC_ERROR_UNKNOWN;
+#endif
+
+	constexpr int align = 15;
+
+	ccprintf("%*s: 0x%X (%s)\n", align, "Vendor ID",
+		 info->sensor_info.vendor_id,
+		 fourcc_to_string(info->sensor_info.vendor_id).c_str());
+	ccprintf("%*s: 0x%X\n", align, "Product ID",
+		 info->sensor_info.product_id);
+	ccprintf("%*s: 0x%X\n", align, "Model ID", info->sensor_info.model_id);
+	ccprintf("%*s: 0x%X\n", align, "Version", info->sensor_info.version);
+
+	ccprintf("%*s: 0x%X\n", align, "Error State", info->sensor_info.errors);
+
+	ccprintf("%*s: %s\n", align, "Sensor Strap",
+		 fp_sensor_type_to_str(fpsensor_detect_get_type()));
+
+	for (uint16_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
+		ccprintf("FP Capture Type: %d\n",
+			 info->image_frame_params[i].fp_capture_type);
+		ccprintf("  %*s: %u x %u %ubpp\n", align, "Sensor (w x h)",
+			 info->image_frame_params[i].width,
+			 info->image_frame_params[i].height,
+			 info->image_frame_params[i].bpp);
+		ccprintf("  %*s: %u\n", align, "Frame Size",
+			 info->image_frame_params[i].frame_size);
+		ccprintf("  %*s: 0x%X (%s)\n", align, "Pixel Format",
+			 info->image_frame_params[i].pixel_format,
+			 fourcc_to_string(
+				 info->image_frame_params[i].pixel_format)
+				 .c_str());
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(fpinfo2, command_fpinfo_v2, nullptr,
+			     "Print fingerprint system info");
+
 static int command_fpmatch(int argc, const char **argv)
 {
 	if (system_is_locked())
@@ -342,8 +411,8 @@ static int command_fpmaintenance(int argc, const char **argv)
 
 	if (rc != EC_RES_SUCCESS) {
 		/*
-		 * EC host command errors do not directly map to console command
-		 * errors.
+		 * EC host command errors do not directly map to console
+		 * command errors.
 		 */
 		return EC_ERROR_UNKNOWN;
 	}
