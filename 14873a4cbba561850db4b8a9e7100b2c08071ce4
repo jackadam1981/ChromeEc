@@ -16,6 +16,24 @@
       "message": "I think this is too strict, because 4923 mV is in-spec for a charger supplying 5V and a charger running at higher voltage but lower current still might not be treated as a power failure. I think you should get the requested VBUS voltage and check if the actual voltage is more than 5% less.",
       "revId": "14873a4cbba561850db4b8a9e7100b2c08071ce4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8ee5c5_0bfb8917",
+        "filename": "zephyr/program/nissa/dirks/src/barrel_jack.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-08T02:35:51Z",
+      "side": 1,
+      "message": "Done. I verified 5 times for each adapters (45W and 65W USBC adapters) on Dirks DUT.",
+      "parentUuid": "f7165300_dd0e22d7",
+      "revId": "14873a4cbba561850db4b8a9e7100b2c08071ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
