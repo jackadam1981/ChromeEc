@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fe9b6d_33ba0861",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "This platform supports discrete keyboard connected through IOEX, Hence this pin is unused.",
+      "parentUuid": "21d246f8_73ba16eb",
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96be1532_fb409b82",
@@ -94,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c0fbab_962e0c7c",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "This platform supports discrete keyboard connected through IOEX, Hence this pin is unused.",
+      "parentUuid": "96be1532_fb409b82",
+      "range": {
+        "startLine": 32,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeee764e_701ed30b",
@@ -117,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34493a8_2e463fea",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "This pin is unused on this platform. Hence I have defined as part of unused pins.",
+      "parentUuid": "eeee764e_701ed30b",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ef14f1a_944d0994",
@@ -130,6 +196,30 @@
       "writtenOn": "2025-03-27T00:23:42Z",
       "side": 1,
       "message": "in my table those 2 are unused, could you please check again?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0cf50b_232eb4bf",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "Currently all unused pins are defined as Input.",
+      "parentUuid": "7ef14f1a_944d0994",
       "range": {
         "startLine": 61,
         "startChar": 2,
@@ -181,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8446714_7bbb9b3d",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "be46dc6c_a94f862b",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574db3c4_7c711fe4",
@@ -194,6 +308,30 @@
       "writtenOn": "2025-03-27T00:23:42Z",
       "side": 1,
       "message": "n/a",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8aff16d_d131e2f6",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "574db3c4_7c711fe4",
       "range": {
         "startLine": 70,
         "startChar": 2,
@@ -245,6 +383,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ce1c5e_591ff85c",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "This platform supports discrete keyboard connected through IOEX, Hence this pin is unused.",
+      "parentUuid": "e567c142_b11a7d88",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4583073a_d152886e",
@@ -282,6 +444,30 @@
           ]
         }
       ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3eb547_7ca21a41",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "Currently this functionality is not enabled on this platform. Hence defined it as input.",
+      "parentUuid": "4583073a_d152886e",
+      "range": {
+        "startLine": 129,
+        "startChar": 33,
+        "endLine": 129,
+        "endChar": 43
+      },
       "revId": "28a757664a520eec34934800f1d322017aa74271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -346,6 +532,54 @@
           ]
         }
       ],
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4099a3b1_78680576",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "This platform supports discrete keyboard connected through IOEX, Hence this pin is unused.",
+      "parentUuid": "42117e25_44b82b74",
+      "range": {
+        "startLine": 133,
+        "startChar": 33,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "28a757664a520eec34934800f1d322017aa74271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0b3721_4d79c49f",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-08T17:31:57Z",
+      "side": 1,
+      "message": "Hi Boris, Few pins provided in the spreadsheet are not connected to EC in the schematic or functionality is not enabled yet. Hence I have defined those pins as part of unused pins and marked them as input to EC.",
+      "parentUuid": "2df36387_d4231682",
+      "range": {
+        "startLine": 133,
+        "startChar": 44,
+        "endLine": 133,
+        "endChar": 45
+      },
       "revId": "28a757664a520eec34934800f1d322017aa74271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
