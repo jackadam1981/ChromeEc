@@ -31,12 +31,31 @@ DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
 static enum battery_present cached_batt_state = BP_NO;
 
+bool board_battery_is_initialized(void)
+{
+	int batt_status;
+
+	return battery_status(&batt_status) != EC_SUCCESS ?
+		       false :
+		       !!(batt_status & STATUS_INITIALIZED);
+}
+
 /*
  * I2C read register to detect battery
  */
 static void update_battery_state_cache(void)
 {
 	int state;
+
+	/**
+	 * Only when the complete battery information is read, the DUT will
+	 * perform bad battery detection. If there is a communication
+	 * abnormality, it will be judged as BP_YES.
+	 */
+	if (!board_battery_is_initialized()) {
+		cached_batt_state = BP_YES;
+		return;
+	}
 
 	/*
 	 *  According to the battery manufacturer's reply:
