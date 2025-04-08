@@ -109,6 +109,8 @@
 
 /* watchdog warning always on */
 #define CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+#undef CONFIG_SYSTEM_SAFE_MODE
+#undef CONFIG_PANIC_ON_WATCHDOG_WARNING
 
 #ifndef __ASSEMBLER__
 
