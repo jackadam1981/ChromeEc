@@ -767,7 +767,7 @@ static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
 /* LCOV_EXCL_START - non-shipping code */
 extern int tps_pdc_do_firmware_update(void);
 
-static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
+static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
 {
 	int rv;
 
@@ -874,7 +874,7 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 	SHELL_CMD_ARG(fwupdate, NULL,
 		      "Updates TPS6699x firmware\n"
 		      "Usage pdc fwupdate",
-		      cmd_pdc_fwupdate, 1, 0),
+		      cmd_pdc_ti_fwupdate, 1, 0),
 #endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,
