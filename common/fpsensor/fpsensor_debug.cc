@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_detect.h"
@@ -14,6 +15,8 @@
 #include "system.h"
 #include "util.h"
 #include "watchdog.h"
+
+#include <memory>
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/shell/shell.h>
@@ -126,11 +129,27 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 test_export_static uint8_t get_sensor_bpp(void)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	ec_response_fp_info info;
-	if (fp_sensor_get_info(&info) < 0) {
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * 8;
+	auto info = std::unique_ptr<ec_response_fp_info_v2>(
+		reinterpret_cast<ec_response_fp_info_v2 *>(
+			new char[fp_sensor_get_info_v2_size]));
+	uint8_t bpp = 0;
+
+	if (fp_sensor_get_info_v2(info.get()) < 0) {
 		return EC_ERROR_UNKNOWN;
 	}
-	return info.bpp;
+
+	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
+		if (info->image_frame_params[i].fp_capture_type ==
+		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
+			bpp = info->image_frame_params[i].bpp;
+			break;
+		}
+	}
+
+	return bpp;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
