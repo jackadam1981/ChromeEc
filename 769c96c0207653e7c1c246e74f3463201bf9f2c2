@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c22805_72f104ee",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-08T22:53:49Z",
+      "side": 1,
+      "message": "Google style is to import the full module.\ngo/pystyle#imports",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a8d3a9_cfb26126",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-08T22:53:49Z",
+      "side": 1,
+      "message": "Should this skip the FW update if the current version matches the passed in firmware binary?",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 78
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0c53a0_b40a17b5",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-08T22:53:49Z",
+      "side": 1,
+      "message": "Call `get_pdc_fw_ver` again so the user sees the new version information.",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 38
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c3b17a_4dc14a02",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-08T22:53:49Z",
+      "side": 1,
+      "message": "Nit - why not move this into `def main():`?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 0
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
