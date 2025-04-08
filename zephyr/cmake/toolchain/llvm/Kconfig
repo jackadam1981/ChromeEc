@@ -26,7 +26,7 @@ config FPU
 # supported here.
 config NEWLIB_LIBC_SUPPORTED
         bool
-        default y if ARM
+        default y if ARM || RISCV
         select FULL_LIBC_SUPPORTED
 
 # Include LLVM Kconfig from Zephyr
