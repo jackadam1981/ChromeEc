@@ -244,6 +244,13 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "it8xxx2_evb",
     "it8xxx2_pdevb",
     "pico",
+    "asurada",
+    "cherry",
+    "dojo",
+    "hayato",
+    "spherion",
+    "tomato",
+    "goroh",
 ]
 
 NDS32_BOARDS = [
@@ -277,16 +284,9 @@ NDS32_BOARDS = [
 ]
 
 RISCV_BOARDS = [
-    "asurada",
     "asurada_scp",
-    "cherry",
     "cherry_scp",
-    "dojo",
     "geralt_scp",
-    "goroh",
-    "hayato",
-    "spherion",
-    "tomato",
 ]
 
 BOARDS_THAT_FAIL_WITH_CLANG = [
