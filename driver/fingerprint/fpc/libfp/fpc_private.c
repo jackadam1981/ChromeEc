@@ -66,6 +66,72 @@ static struct ec_response_fp_info fpc1145_info = {
 	.bpp = FP_SENSOR_RES_BPP_FPC,
 };
 
+/* Sensor description */
+static struct fp_sensor_info fpc1145_sensor_info = {
+	/* Sensor identification */
+	.vendor_id = FOURCC('F', 'P', 'C', ' '),
+	.product_id = 9,
+	.model_id = 1,
+	.version = 1,
+};
+
+static const struct fp_image_frame_params fpc1145_image_frame_params[6] = {
+	/* FPC_CAPTURE_VENDOR_FORMAT */
+	{
+		.bpp = FP_SENSOR_RES_BPP_FPC,
+		.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_FPC,
+		.height = FP_SENSOR_RES_Y_FPC,
+		.fp_capture_type = FP_CAPTURE_VENDOR_FORMAT,
+	},
+	/* FPC_CAPTURE_SIMPLE_IMAGE */
+	{
+		.bpp = FP_SENSOR_RES_BPP_FPC,
+		.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_FPC,
+		.height = FP_SENSOR_RES_Y_FPC,
+		.fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE,
+	},
+	/* FPC_CAPTURE_PATTERN0 */
+	{
+		.bpp = FP_SENSOR_RES_BPP_FPC,
+		.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_FPC,
+		.height = FP_SENSOR_RES_Y_FPC,
+		.fp_capture_type = FP_CAPTURE_PATTERN0,
+	},
+	/* FPC_CAPTURE_PATTERN1 */
+	{
+		.bpp = FP_SENSOR_RES_BPP_FPC,
+		.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_FPC,
+		.height = FP_SENSOR_RES_Y_FPC,
+		.fp_capture_type = FP_CAPTURE_PATTERN1,
+	},
+	/* FPC_CAPTURE_QUALITY_TEST */
+	{
+		.bpp = FP_SENSOR_RES_BPP_FPC,
+		.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_FPC,
+		.height = FP_SENSOR_RES_Y_FPC,
+		.fp_capture_type = FP_CAPTURE_QUALITY_TEST,
+	},
+	/* FPC_CAPTURE_RESET_TEST */
+	{
+		.bpp = FP_SENSOR_RES_BPP_FPC,
+		.frame_size = FP_SENSOR_IMAGE_SIZE_FPC,
+		.pixel_format = V4L2_PIX_FMT_GREY,
+		.width = FP_SENSOR_RES_X_FPC,
+		.height = FP_SENSOR_RES_Y_FPC,
+		.fp_capture_type = FP_CAPTURE_RESET_TEST,
+	},
+};
+
 /* Sensor IC commands */
 enum fpc_cmd {
 	FPC_CMD_STATUS = 0x14,
@@ -317,6 +383,27 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 
 	resp->model_id = sensor_id;
 	resp->errors = errors;
+
+	return EC_SUCCESS;
+}
+
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)
+{
+	uint16_t sensor_id;
+	memcpy(&resp->sensor_info, &fpc1145_sensor_info,
+	       sizeof(struct fp_sensor_info));
+
+	memcpy(&resp->image_frame_params, &fpc1145_image_frame_params,
+	       sizeof(fpc1145_image_frame_params));
+
+	if (fpc_get_hwid(&sensor_id))
+		return EC_RES_ERROR;
+
+	resp->sensor_info.model_id = sensor_id;
+	resp->sensor_info.errors = errors;
+	resp->sensor_info.num_capture_types =
+		sizeof(fpc1145_image_frame_params) /
+		sizeof(struct fp_image_frame_params);
 
 	return EC_SUCCESS;
 }
