@@ -5,3 +5,4 @@
 zephyr_library_sources("src/touch_panel.c")
 zephyr_library_sources("src/hibernate.c")
 zephyr_library_sources("src/hdmi.c")
+zephyr_library_sources("src/suspend_resume.c")
