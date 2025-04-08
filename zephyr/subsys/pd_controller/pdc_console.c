@@ -767,7 +767,7 @@ static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
 /* LCOV_EXCL_START - non-shipping code */
 extern int tps_pdc_do_firmware_update(void);
 
-static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
+static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
 {
 	int rv;
 
@@ -793,6 +793,117 @@ static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
 }
 /* LCOV_EXCL_STOP - non-shipping code */
 #endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
+
+#ifdef CONFIG_USBC_PDC_RTS54XX_CONSOLE_FW_UPDATER
+/* LCOV_EXCL_START - non-shipping code */
+
+#include <zephyr/sys/base64.h>
+
+/* Defined in `pdc_rts54xx_fwup.c` */
+extern int pdc_rts54xx_fwup_start(const struct device *dev);
+extern int pdc_rts54xx_fwup_write(uint8_t *buffer, size_t buffer_len);
+extern int pdc_rts54xx_fwup_finish(void);
+extern int pdc_rts54xx_fwup_abort(void);
+
+static int cmd_pdc_rtk_fwup_start(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	int rv;
+	uint8_t port;
+	const struct device *dev;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv) {
+		shell_error(sh, "RTK_FWUP: Invalid port");
+		return rv;
+	}
+
+	dev = pdc_power_mgmt_get_port_pdc_driver(port);
+	if (dev == NULL) {
+		shell_error(sh,
+			    "RTK_FWUP: Cannot locate PDC driver for port C%u",
+			    port);
+		return rv;
+	}
+
+	rv = pdc_rts54xx_fwup_start(dev);
+	if (rv) {
+		shell_error(sh, "RTK_FWUP: Cannot start: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "RTK_FWUP: Started");
+	return 0;
+}
+
+static int cmd_pdc_rtk_fwup_write(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	uint8_t decode_buffer[66];
+	size_t decoded_byte_count = 0;
+	int rv;
+
+	rv = base64_decode(decode_buffer, sizeof(decode_buffer),
+			   &decoded_byte_count, argv[1], strlen(argv[1]));
+
+	if (rv) {
+		shell_error(sh, "RTK_FWUP: Base64 format error: %d", rv);
+		return rv;
+	}
+
+	rv = pdc_rts54xx_fwup_write(decode_buffer, decoded_byte_count);
+	if (rv < 0) {
+		shell_error(sh, "RTK_FWUP: flash write error: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "RTK_FWUP: bytes written: %d", rv);
+	return 0;
+}
+
+static int cmd_pdc_rtk_fwup_finish(const struct shell *sh, size_t argc,
+				   char **argv)
+{
+	int rv;
+
+	rv = pdc_rts54xx_fwup_finish();
+	if (rv) {
+		shell_error(sh, "RTK_FWUP: Cannot finish update: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "RTK_FWUP: Success");
+	return 0;
+}
+
+static int cmd_pdc_rtk_fwup_abort(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	return pdc_rts54xx_fwup_abort();
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(
+	sub_pdc_rtk_fwup_cmds,
+	SHELL_CMD_ARG(start, NULL,
+		      "Prepare the PDC for a firmware download\n"
+		      "Usage: pdc fwup_rtk start <port>",
+		      cmd_pdc_rtk_fwup_start, 2, 0),
+	SHELL_CMD_ARG(write, NULL,
+		      "Write a packet of 29 FW payload bytes to the PDC\n"
+		      "Usage: pdc fwup_rtk write <base64>",
+		      cmd_pdc_rtk_fwup_write, 2, 0),
+	SHELL_CMD_ARG(finish, NULL,
+		      "Finalize the FW update and restart PD subsystem\n"
+		      "Usage: pdc fwup_rtk finish",
+		      cmd_pdc_rtk_fwup_finish, 1, 0),
+	SHELL_CMD_ARG(abort, NULL,
+		      "Recover from a failed or interrupted update session",
+		      cmd_pdc_rtk_fwup_abort, 1, 0),
+	SHELL_SUBCMD_SET_END);
+
+/* LCOV_EXCL_STOP - non-shipping code */
+#endif /* defined(CONFIG_USBC_PDC_RTS54XX_CONSOLE_FW_UPDATER) */
 
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
@@ -874,7 +985,13 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 	SHELL_CMD_ARG(fwupdate, NULL,
 		      "Updates TPS6699x firmware\n"
 		      "Usage pdc fwupdate",
-		      cmd_pdc_fwupdate, 1, 0),
+		      cmd_pdc_ti_fwupdate, 1, 0),
+#endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
+#ifdef CONFIG_USBC_PDC_RTS54XX_CONSOLE_FW_UPDATER
+	SHELL_CMD_ARG(fwup_rtk, &sub_pdc_rtk_fwup_cmds,
+		      "Updates RTS54xx firmware\n"
+		      "Usage: pdc fwup_rtk [start|write|finish]",
+		      NULL, 0, 0),
 #endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,
