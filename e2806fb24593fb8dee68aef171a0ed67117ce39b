@@ -16,6 +16,24 @@
       "message": "```\n\u003e [3.666632 MKBP: The AP is failing to respond because it is sleeping or off]\nfpinfo\n      Vendor ID: 0x53494745 (EGIS)\n     Product ID: 0x9\n       Model ID: 0x276\n        Version: 0x1\n    Error State: 0x0\n   Sensor Strap: ELAN\nCapture Type: 0\n   Sensor (w x h): 80 x 64 8bpp\n       Frame Size: 5120\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 1\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 2\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 3\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 4\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 5\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\nCapture Type: 6\n   Sensor (w x h): 80 x 64 16bpp\n       Frame Size: 10240\n     Pixel Format: 0x59455247 (GREY)\n```",
       "revId": "e2806fb24593fb8dee68aef171a0ed67117ce39b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023c9626_9e70c238",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-08T16:24:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c4fc9cfd_09e77589",
+      "revId": "e2806fb24593fb8dee68aef171a0ed67117ce39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
