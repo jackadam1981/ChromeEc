@@ -41,6 +41,72 @@ static struct ec_response_fp_info ec_fp_sensor_info = {
 	.bpp = FP_SENSOR_RES_BPP_ELAN,
 };
 
+/* Sensor description */
+static struct fp_sensor_info elan_sensor_info = {
+	/* Sensor identification */
+	.vendor_id = FOURCC('E', 'L', 'A', 'N'),
+	.product_id = PID,
+	.model_id = MID,
+	.version = VERSION,
+};
+
+static const struct fp_image_frame_params elan_image_frame_params[6] = {
+	/* ELAN_CAPTURE_VENDOR_FORMAT */
+	{
+		.bpp = FP_SENSOR_RES_BPP_ELAN,
+		.frame_size = FP_SENSOR_RES_X_ELAN * FP_SENSOR_RES_Y_ELAN * 2,
+		.pixel_format = FP_SENSOR_RES_BPP_ELAN,
+		.width = FP_SENSOR_RES_X_ELAN,
+		.height = FP_SENSOR_RES_Y_ELAN,
+		.fp_capture_type = FP_CAPTURE_VENDOR_FORMAT,
+	},
+	/* ELAN_CAPTURE_SIMPLE_IMAGE */
+	{
+		.bpp = FP_SENSOR_RES_BPP_ELAN,
+		.frame_size = FP_SENSOR_RES_X_ELAN * FP_SENSOR_RES_Y_ELAN * 2,
+		.pixel_format = FP_SENSOR_RES_BPP_ELAN,
+		.width = FP_SENSOR_RES_X_ELAN,
+		.height = FP_SENSOR_RES_Y_ELAN,
+		.fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE,
+	},
+	/* ELAN_CAPTURE_PATTERN0 */
+	{
+		.bpp = FP_SENSOR_RES_BPP_ELAN,
+		.frame_size = FP_SENSOR_RES_X_ELAN * FP_SENSOR_RES_Y_ELAN * 2,
+		.pixel_format = FP_SENSOR_RES_BPP_ELAN,
+		.width = FP_SENSOR_RES_X_ELAN,
+		.height = FP_SENSOR_RES_Y_ELAN,
+		.fp_capture_type = FP_CAPTURE_PATTERN0,
+	},
+	/* ELAN_CAPTURE_PATTERN1 */
+	{
+		.bpp = FP_SENSOR_RES_BPP_ELAN,
+		.frame_size = FP_SENSOR_RES_X_ELAN * FP_SENSOR_RES_Y_ELAN * 2,
+		.pixel_format = FP_SENSOR_RES_BPP_ELAN,
+		.width = FP_SENSOR_RES_X_ELAN,
+		.height = FP_SENSOR_RES_Y_ELAN,
+		.fp_capture_type = FP_CAPTURE_PATTERN1,
+	},
+	/* ELAN_CAPTURE_QUALITY_TEST */
+	{
+		.bpp = FP_SENSOR_RES_BPP_ELAN,
+		.frame_size = FP_SENSOR_RES_X_ELAN * FP_SENSOR_RES_Y_ELAN * 2,
+		.pixel_format = FP_SENSOR_RES_BPP_ELAN,
+		.width = FP_SENSOR_RES_X_ELAN,
+		.height = FP_SENSOR_RES_Y_ELAN,
+		.fp_capture_type = FP_CAPTURE_QUALITY_TEST,
+	},
+	/* ELAN_CAPTURE_RESET_TEST */
+	{
+		.bpp = FP_SENSOR_RES_BPP_ELAN,
+		.frame_size = FP_SENSOR_RES_X_ELAN * FP_SENSOR_RES_Y_ELAN * 2,
+		.pixel_format = FP_SENSOR_RES_BPP_ELAN,
+		.width = FP_SENSOR_RES_X_ELAN,
+		.height = FP_SENSOR_RES_Y_ELAN,
+		.fp_capture_type = FP_CAPTURE_RESET_TEST,
+	},
+};
+
 static enum elan_capture_type
 convert_fp_capture_type_to_elan_capture_type(enum fp_capture_type mode)
 {
@@ -164,6 +230,30 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 
 	resp->model_id = id;
 	resp->errors = errors;
+
+	return EC_SUCCESS;
+}
+
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)
+{
+	uint16_t id = 0;
+
+	CPRINTF("========%s=======\n", __func__);
+	memcpy(&resp->sensor_info, &elan_sensor_info,
+	       sizeof(struct fp_sensor_info));
+
+	memcpy(&resp->image_frame_params, &elan_image_frame_params,
+	       sizeof(elan_image_frame_params));
+
+	if (elan_get_hwid(&id)) {
+		return EC_RES_ERROR;
+	}
+
+	resp->sensor_info.model_id = id;
+	resp->sensor_info.errors = errors;
+	resp->sensor_info.num_capture_types =
+		sizeof(elan_image_frame_params) /
+		sizeof(struct fp_image_frame_params);
 
 	return EC_SUCCESS;
 }
