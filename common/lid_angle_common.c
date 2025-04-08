@@ -5,6 +5,7 @@
 
 #include "chipset.h"
 #include "common.h"
+#include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_angle.h"
 #include "tablet_mode.h"
@@ -36,3 +37,24 @@ __overridable void lid_angle_peripheral_enable(int enable)
 		}
 	}
 }
+
+static void enable_peripherals(void)
+{
+	/*
+	 * Make sure lid angle is not disabling peripherals when AP is running.
+	 */
+	lid_angle_peripheral_enable(1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_peripherals, HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_TABLET_MODE
+static void suspend_peripherals(void)
+{
+	/*
+	 * Make sure peripherals are disabled in S3 in tablet mode.
+	 */
+	if (tablet_get_mode())
+		lid_angle_peripheral_enable(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, suspend_peripherals, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_TABLET_MODE */
