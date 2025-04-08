@@ -107,6 +107,16 @@
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 #define CONFIG_BUTTONS_RUNTIME_CONFIG
 
+<<<<<<< HEAD   (1cccbe nds32: Handle debug exception (DEX) mode)
+||||||| BASE
+/* watchdog warning always on */
+#define CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+
+=======
+#undef CONFIG_SYSTEM_SAFE_MODE
+#undef CONFIG_PANIC_ON_WATCHDOG_WARNING
+
+>>>>>>> CHANGE (0391c4 boten/bookem: disable debug features to improve stability)
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
