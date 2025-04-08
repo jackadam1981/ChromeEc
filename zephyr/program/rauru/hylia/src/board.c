@@ -30,6 +30,8 @@ static void board_setup_init(void)
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
 static enum battery_present cached_batt_state = BP_NO;
+static int battery_retry = 0;
+#define BAD_BATTERY_RETRY 4
 
 /*
  * I2C read register to detect battery
@@ -38,18 +40,42 @@ static void update_battery_state_cache(void)
 {
 	int state;
 
+	if (gpio_get_level(GPIO_BATT_PRES_ODL))
+		return;
 	/*
 	 *  According to the battery manufacturer's reply:
 	 *  To detect a bad battery, need to read the 0x00 register.
 	 *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.
 	 */
 	if (sb_read(SB_MANUFACTURER_ACCESS, &state)) {
-		cached_batt_state = BP_NO;
+		if (battery_retry < BAD_BATTERY_RETRY) {
+			battery_retry++;
+		}
+
+		if (battery_retry == BAD_BATTERY_RETRY) {
+			cached_batt_state = BP_NO;
+		} else {
+			cached_batt_state = BP_YES;
+		}
+		LOG_ERR("Battery I2C communication abnormality");
 		return;
 	}
 
 	/* Detect the 12th bit value */
 	if (state & BIT(12)) {
+		if (battery_retry < BAD_BATTERY_RETRY) {
+			battery_retry++;
+		}
+		LOG_ERR("Battery Permanently Failure register abnormality");
+	} else {
+		battery_retry = 0;
+	}
+
+	/**
+	 * Increase the number of bad battery retry times. Avoid battery
+	 * disconnection when I2C is abnormal.
+	 */
+	if (battery_retry >= BAD_BATTERY_RETRY) {
 		cached_batt_state = BP_NO;
 	} else {
 		cached_batt_state = BP_YES;
