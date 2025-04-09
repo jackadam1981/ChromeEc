@@ -81,6 +81,98 @@
       },
       "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3183025d_ae965c18",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-09T18:01:32Z",
+      "side": 1,
+      "message": "prefer to do this after reading the register and only manipulate\nthe value to be written back so we don\u0027t read/write the same\nregister multiple times during init.\n\nalso note that this needs to be different for the bq25710 vs. bq25720.",
+      "range": {
+        "startLine": 356,
+        "startChar": 1,
+        "endLine": 356,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e2632fe5_7b00f6c9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/charger/bq25710.c",
+              "range": {
+                "startLine": 356,
+                "startChar": 0,
+                "endLine": 357,
+                "endChar": 0
+              },
+              "replacement": "\trv \u003d bq257x0_init_input_charge_current_senesing(chgnum);\n\tif (rv)\n\t\treturn rv;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927b00da_98c94663",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-09T18:01:32Z",
+      "side": 1,
+      "message": "this is specific to the bq25720. the bq25710 uses bit value 1 for 20 ohm.\n\nthese macros probably need to be split between the BQ25710_... and BQ25720_...",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "042ba6f7_c76dac8d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/charger/bq257x0_regs.h",
+              "range": {
+                "startLine": 52,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "#define BQ25710_CHARGE_OPTION_1_RSNS_RAC_SHIFT 11\n#define BQ25710_CHARGE_OPTION_1_RSNS_RAC_BITS 1\n#define BQ25710_CHARGE_OPTION_1_RSNS_RAC__10 0\n#define BQ25710_CHARGE_OPTION_1_RSNS_RAC__20 1\n"
+            },
+            {
+              "path": "driver/charger/bq257x0_regs.h",
+              "range": {
+                "startLine": 57,
+                "startChar": 0,
+                "endLine": 61,
+                "endChar": 0
+              },
+              "replacement": "#define BQ25720_CHARGE_OPTION_1_RSNS_RAC_SHIFT 11\n#define BQ25720_CHARGE_OPTION_1_RSNS_RAC_BITS 1\n#define BQ25720_CHARGE_OPTION_1_RSNS_RAC__10 0\n#define BQ25720_CHARGE_OPTION_1_RSNS_RAC__5 1\n\n#define BQ25710_CHARGE_OPTION_1_RSNS_RSR_SHIFT 10\n#define BQ25710_CHARGE_OPTION_1_RSNS_RSR_BITS 1\n#define BQ25710_CHARGE_OPTION_1_RSNS_RSR__10 0\n#define BQ25710_CHARGE_OPTION_1_RSNS_RSR__20 1\n\n#define BQ25720_CHARGE_OPTION_1_RSNS_RSR_SHIFT 10\n#define BQ25720_CHARGE_OPTION_1_RSNS_RSR_BITS 1\n#define BQ25720_CHARGE_OPTION_1_RSNS_RSR__10 0\n#define BQ25720_CHARGE_OPTION_1_RSNS_RSR__5 1\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
