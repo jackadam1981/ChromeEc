@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80848be2_0ecd8431",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2025-04-09T11:48:09Z",
+      "side": 1,
+      "message": "\u003e Yes, rate is not used. get_data_rate and set_data_rate function can just return EC_SUCCESS.",
+      "parentUuid": "38515d74_74524fb0",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2d044af_7c5ee660",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Yes, offset is never set. Only scale is needed for calibration.",
       "parentUuid": "b2d044af_7c5ee660",
+      "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc173ab_ffb0f312",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2025-04-09T11:48:09Z",
+      "side": 1,
+      "message": "get_offset and set_offset function can just return EC_SUCCESS.",
+      "parentUuid": "f622e51f_daff9cfb",
       "revId": "727b4e4226d33e5df5defa4158dd178ff65c63d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
