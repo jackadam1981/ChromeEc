@@ -45,6 +45,30 @@
       },
       "revId": "51edc7626095791c59825be2f1e5b6012527383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4307e30c_2c2a8e96",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-09T17:00:33Z",
+      "side": 1,
+      "message": "You mean make it an independent console command, and define it within `pdc_rts54xx_fwup.c`? Yeah I think that would work",
+      "parentUuid": "da71558a_425a9ffa",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 0
+      },
+      "revId": "51edc7626095791c59825be2f1e5b6012527383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
