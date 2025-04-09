@@ -22,6 +22,30 @@
       },
       "revId": "a51871c5441f63413f20e41350fd12392400c617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5216408_1b2c7113",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-04-09T19:19:09Z",
+      "side": 1,
+      "message": "Not only `charge_ceil` but mainly protecting the usage of `charge_port`.  There are other static variables that need protection as well, I just didn\u0027t want to introduce too much change and potentially cause a deadlock to occur.  I\u0027d say any API that invokes `hook_call_deferred(\u0026charge_manager_refresh_data, 0)` would need protection.  I can add this in a follow-up CL",
+      "parentUuid": "daf98bb9_330f8d3f",
+      "range": {
+        "startLine": 1323,
+        "startChar": 3,
+        "endLine": 1323,
+        "endChar": 21
+      },
+      "revId": "a51871c5441f63413f20e41350fd12392400c617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
