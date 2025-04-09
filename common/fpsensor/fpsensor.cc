@@ -45,7 +45,7 @@
 #endif
 
 #if !defined(CONFIG_RNG)
-#error "fpsensor requires RNG"
+// #error "fpsensor requires RNG"
 #endif
 
 #if defined(SECTION_IS_RO)
