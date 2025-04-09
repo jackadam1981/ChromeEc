@@ -48,7 +48,6 @@
 			rpm_start = <2200>;
 			rpm_max = <6900>;
 			tach = <&tach2>;
-			enable_gpio = <&gpio_slp_s3_l>;
 		};
 	};
  };
