@@ -17,6 +17,7 @@ if(DEFINED CONFIG_COMPILER_WARNINGS_AS_ERRORS)
     -Werror=unused-variable -Werror=missing-braces
     -Werror=sometimes-uninitialized -Werror=unused-function
     -Werror=array-bounds -Werror=implicit-function-declaration
+          -Wno-extern-c-compat
   )
 endif()
 
