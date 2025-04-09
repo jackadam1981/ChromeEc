@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "606a2ab5_b6fcb032",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-09T17:28:51Z",
+      "side": 1,
+      "message": "It\u0027s the same situation for `typing`. `Path` and the typing types are well known and so frequently used that they aren\u0027t typically qualified by module as it would clutter function signatures",
+      "parentUuid": "7839d20b_8d97e47f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61a8d3a9_cfb26126",
         "filename": "extra/pdc/pdc_fwup.py",
         "patchSetId": 2
