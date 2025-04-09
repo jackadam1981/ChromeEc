@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d99ecb_788b4ab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-04-09T07:31:31Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8718092965399417105) is being automatically retried for the following reasons:\n- Some child builders are now retryable:amd64-generic-sdknext-cq, betty-arc-t-cq, brya-bazel-lite-cq, brya-kernelnext-cq, corsola-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "754d94591d0bd36c0e8648f29d9a33119d3b5124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
