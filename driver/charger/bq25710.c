@@ -117,6 +117,9 @@
 	 CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC)
 #define CHARGING_CURRENT_TO_REG(CUR) \
 	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR / DEFAULT_SENSE_RESISTOR)
+#define CHARGING_CURRENT_TO_REG_AC(CUR)                     \
+	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC / \
+	 DEFAULT_SENSE_RESISTOR)
 #define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV)-32)
 
 /* Console output macros */
@@ -144,12 +147,12 @@ static const struct charger_info bq25710_charger_info = {
 	.voltage_max = 19200,
 	.voltage_min = 1024,
 	.voltage_step = 8,
-	.current_max = REG_TO_CHARGING_CURRENT(8128),
-	.current_min = REG_TO_CHARGING_CURRENT(64),
-	.current_step = REG_TO_CHARGING_CURRENT(64),
-	.input_current_max = REG_TO_CHARGING_CURRENT_AC(6400),
-	.input_current_min = REG_TO_CHARGING_CURRENT_AC(50),
-	.input_current_step = REG_TO_CHARGING_CURRENT_AC(50),
+	.current_max = CHARGING_CURRENT_TO_REG(8128),
+	.current_min = CHARGING_CURRENT_TO_REG(64),
+	.current_step = CHARGING_CURRENT_TO_REG(64),
+	.input_current_max = CHARGING_CURRENT_TO_REG_AC(6400),
+	.input_current_min = CHARGING_CURRENT_TO_REG_AC(50),
+	.input_current_step = CHARGING_CURRENT_TO_REG_AC(50),
 };
 
 static enum ec_error_list bq25710_get_option(int chgnum, int *option);
@@ -173,7 +176,7 @@ static inline int iin_dpm_reg_to_current(int reg)
 
 static inline int iin_host_current_to_reg(int current)
 {
-	return (REG_TO_CHARGING_CURRENT_AC(current) /
+	return (CHARGING_CURRENT_TO_REG_AC(current) /
 		BQ257X0_IIN_HOST_CURRENT_STEP_MA);
 }
 
@@ -328,13 +331,23 @@ static int bq257x0_init_charge_option_1(int chgnum)
 	int rv;
 	int reg;
 
-	if (!IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING) &&
-	    !IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
-		return EC_SUCCESS;
-
 	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
 	if (rv)
 		return rv;
+
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 10)
+		reg = SET_CO1_BY_NAME(RSNS_RAC, 10, reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 5)
+		reg = SET_CO1_BY_NAME(RSNS_RAC, 5, reg);
+
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 10)
+		reg = SET_CO1_BY_NAME(RSNS_RSR, 10, reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 5)
+		reg = SET_CO1_BY_NAME(RSNS_RSR, 5, reg);
+
+	if (!IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING) &&
+	    !IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
+		return EC_SUCCESS;
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING))
 		reg = co1_set_psys_sensing(reg, true);
