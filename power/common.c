@@ -26,10 +26,17 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/logging/log.h>
+#endif
+
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
+#ifdef CONFIG_ZEPHYR
+LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
+#define CPRINTS(format, args...) LOG_INF(format, ##args)
+#else
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
-#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
+#endif /* CONFIG_ZEPHYR */
 
 /*
  * Default timeout in us; if we've been waiting this long for an input
@@ -807,19 +814,19 @@ static void siglog_deferred(void)
 	const unsigned int tmp_siglog_truncated = siglog_truncated;
 	const unsigned int tmp_siglog_entries = (tmp_siglog_tail - siglog_head);
 
-	CPRINTF("%d signal changes:\n", tmp_siglog_entries);
+	CPRINTS("%d signal changes:", tmp_siglog_entries);
 	for (; siglog_head < tmp_siglog_tail; siglog_head++) {
 		if (siglog_head != tmp_siglog_head)
 			tdiff.val = siglog[PTR2IDX(siglog_head)].time.val -
 				    siglog[PTR2IDX(siglog_head - 1)].time.val;
-		CPRINTF("  %.6lld  +%.6lld  %s => %d\n",
+		CPRINTS("  %.6lld  +%.6lld  %s => %d",
 			siglog[PTR2IDX(siglog_head)].time.val, tdiff.val,
 			power_signal_get_name(
 				siglog[PTR2IDX(siglog_head)].signal),
 			siglog[PTR2IDX(siglog_head)].level);
 	}
 	if (tmp_siglog_truncated)
-		CPRINTF("  SIGNAL LOG TRUNCATED...\n");
+		CPRINTS("  SIGNAL LOG TRUNCATED...");
 
 	siglog_truncated = 0;
 }
