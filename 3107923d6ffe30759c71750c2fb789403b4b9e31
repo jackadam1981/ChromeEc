@@ -16,6 +16,47 @@
       "message": "Could you vote V+1 if validated ?",
       "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7e7a07_d6b7364e",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-09T17:38:37Z",
+      "side": 1,
+      "message": "i think the original macros are correct based on my\nreading of the datasheet.\nfor example, the ChargeCurrent reg (14h) can have\na maximum value of 8128. with a 10 ohm resistor, that\u0027s\n8.128 A. if you use a 5 ohm sense resistor, that\u0027s\n16.256 A (see section 9.3.6).",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52222f69_ff998078",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/charger/bq25710.c",
+              "range": {
+                "startLine": 150,
+                "startChar": 0,
+                "endLine": 156,
+                "endChar": 0
+              },
+              "replacement": "\t.current_max \u003d 8128,\n\t.current_min \u003d 64,\n\t.current_step \u003d 64,\n\t.input_current_max \u003d 6400,\n\t.input_current_min \u003d 50,\n\t.input_current_step \u003d 50,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
