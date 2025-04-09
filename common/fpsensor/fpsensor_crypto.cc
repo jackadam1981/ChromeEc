@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#if defined(CONFIG_NEWLIB_LIBC) || defined(CONFIG_EXTERNAL_LIBC)
+#define _GNU_SOURCE
+#endif /* CONFIG_NEWLIB_LIBC */
+
 #include "crypto/cleanse_wrapper.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
