@@ -5,9 +5,15 @@
 #include "ffi.h"
 
 #include <android-base/logging.h>
+#include <openssl/bio.h>
 #include <openssl/bn.h>
+#include <openssl/cipher.h>
 #include <openssl/ecdsa.h>
+#include <openssl/hmac.h>
 #include <openssl/mem.h>
+#include <openssl/rand.h>
+#include <openssl/rsa.h>
+#include <openssl/sha.h>
 
 #include "multiple_authorization_delegate.h"
 #include "password_authorization_delegate.h"
@@ -42,6 +48,20 @@ TPMT_PUBLIC DefaultPublicArea() {
   public_area.unique.ecc.x = Make_TPM2B_ECC_PARAMETER("");
   public_area.unique.ecc.y = Make_TPM2B_ECC_PARAMETER("");
   return public_area;
+}
+
+std::string GetOpenSSLError() {
+  BIO* bio = BIO_new(BIO_s_mem());
+  ERR_print_errors(bio);
+  char* data = nullptr;
+  int data_len = BIO_get_mem_data(bio, &data);
+  std::string error_string(data, data_len);
+  BIO_free(bio);
+  return error_string;
+}
+
+unsigned char* StringAsOpenSSLBuffer(std::string* s) {
+  return reinterpret_cast<unsigned char*>(std::data(*s));
 }
 
 // Converts a TPMT_SIGNATURE into a DER-encoded ECDSA signature.
@@ -80,6 +100,118 @@ TPM_RC TpmSignatureToString(TPMT_SIGNATURE signature, std::string* encoded) {
 }
 
 }  // namespace
+
+bool EncryptDataForCa(const std::string& data,
+                      const std::string& public_key_hex,
+                      const std::string& key_id, std::string& wrapped_key,
+                      std::string& iv, std::string& mac,
+                      std::string& encrypted_data,
+                      std::string& wrapping_key_id) {
+  const size_t kAesKeySize = 32;
+  const size_t kAesBlockSize = 16;
+  // The exponent of the attestation CA key pairs.
+  const unsigned int kWellKnownExponent = 65537;
+  RSA* rsa = nullptr;
+  BIGNUM* e = nullptr;
+  BIGNUM* n = nullptr;
+  EVP_CIPHER_CTX* encryption_context = nullptr;
+  // This lambda returns early in case of error. The values it allocates are
+  // cleaned up after it returns regardless of outcome.
+  bool out = [&]() {
+    rsa = RSA_new();
+    e = BN_new();
+    n = BN_new();
+    if (!rsa || !e || !n) {
+      LOG(ERROR) << "Failed to allocate RSA or BIGNUMs";
+      return false;
+    }
+    if (!BN_set_word(e, kWellKnownExponent)) {
+      LOG(ERROR) << "Failed to generate exponent";
+      return false;
+    }
+    if (!BN_hex2bn(&n, public_key_hex.c_str())) {
+      LOG(ERROR) << "Failed to generate modulus";
+      return false;
+    }
+    if (!RSA_set0_key(rsa, n, e, nullptr)) {
+      LOG(ERROR) << "Failed to set exponent or modulus";
+      return false;
+    }
+    // RSA_set0_key succeeded, so ownership of n and e are transferred into rsa.
+    // Reset e and n to avoid double-BN_free.
+    e = nullptr;
+    n = nullptr;
+    std::string key;
+    key.resize(kAesKeySize);
+    if (RAND_bytes(StringAsOpenSSLBuffer(&key), kAesKeySize) != 1) {
+      LOG(ERROR) << "RAND_bytes for key failed";
+      return false;
+    }
+    iv.resize(kAesBlockSize);
+    if (RAND_bytes(StringAsOpenSSLBuffer(&iv), kAesBlockSize) != 1) {
+      LOG(ERROR) << "RAND_bytes for iv failed";
+      return false;
+    }
+    // Allocate enough space for the output including padding.
+    encrypted_data.resize(data.size() + kAesBlockSize -
+                          (data.size() % kAesBlockSize));
+    encryption_context = EVP_CIPHER_CTX_new();
+    if (!encryption_context) {
+      LOG(ERROR) << "Failed to allocate EVP_CIPHER_CTX: " << GetOpenSSLError();
+      return false;
+    }
+    if (!EVP_EncryptInit_ex(encryption_context, EVP_aes_256_cbc(), nullptr,
+                            StringAsOpenSSLBuffer(&key),
+                            StringAsOpenSSLBuffer(&iv))) {
+      LOG(ERROR) << "EVP_EncryptInit_ex failed: " << GetOpenSSLError();
+      return false;
+    }
+    unsigned char* output_buffer = StringAsOpenSSLBuffer(&encrypted_data);
+    int update_size = 0;
+    const uint8_t* input_buffer =
+        reinterpret_cast<const uint8_t*>(std::data(data));
+    if (!EVP_EncryptUpdate(encryption_context, output_buffer, &update_size,
+                           input_buffer, data.size())) {
+      LOG(ERROR) << "EVP_EncryptUpdate failed: " << GetOpenSSLError();
+      return false;
+    }
+    output_buffer += update_size;
+    int final_size = 0;
+    if (!EVP_EncryptFinal_ex(encryption_context, output_buffer, &final_size)) {
+      LOG(ERROR) << "EVP_EncryptFinal_ex failed: " << GetOpenSSLError();
+      return false;
+    }
+    encrypted_data.resize(update_size + final_size);
+    mac.resize(SHA512_DIGEST_LENGTH);
+    std::string hmac_data = iv + encrypted_data;
+    HMAC(EVP_sha512(), key.data(), key.size(),
+         StringAsOpenSSLBuffer(&hmac_data), hmac_data.size(),
+         StringAsOpenSSLBuffer(&mac), nullptr);
+    wrapped_key.resize(RSA_size(rsa));
+    int length = RSA_public_encrypt(
+        key.size(), reinterpret_cast<const unsigned char*>(key.data()),
+        StringAsOpenSSLBuffer(&wrapped_key), rsa, RSA_PKCS1_OAEP_PADDING);
+    if (length < 0) {
+      LOG(ERROR) << "RSA_public_encrypt failed: " << GetOpenSSLError();
+      return false;
+    }
+    wrapping_key_id = key_id;
+    return true;
+  }();
+  if (rsa) {
+    RSA_free(rsa);
+  }
+  if (e) {
+    BN_free(e);
+  }
+  if (n) {
+    BN_free(n);
+  }
+  if (encryption_context) {
+    EVP_CIPHER_CTX_free(encryption_context);
+  }
+  return out;
+}
 
 std::unique_ptr<AuthorizationDelegate> PasswordAuthorizationDelegate_New(
     const std::string& password) {
@@ -206,6 +338,29 @@ TPM_RC ParseResponse_NV_Certify(const std::string& response,
   return TpmSignatureToString(signature_typed, &signature);
 }
 
+TPM_RC SerializeCommand_NV_Read(
+    const TPMI_RH_NV_AUTH& auth_handle, const std::string& auth_handle_name,
+    const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
+    const UINT16& size, const UINT16& offset, std::string& serialized_command,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  return Tpm::SerializeCommand_NV_Read(
+      auth_handle, auth_handle_name, nv_index, nv_index_name, size, offset,
+      &serialized_command, authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_NV_Read(
+    const std::string& response, std::string& data,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_MAX_NV_BUFFER buffer;
+  TPM_RC rc = Tpm::ParseResponse_NV_Read(response, &buffer,
+                                         authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  data = StringFrom_TPM2B_MAX_NV_BUFFER(buffer);
+  return TPM_RC_SUCCESS;
+}
+
 TPM_RC SerializeCommand_NV_ReadPublic(
     const TPMI_RH_NV_INDEX& nv_index, const std::string& nv_index_name,
     std::string& serialized_command,
@@ -213,6 +368,22 @@ TPM_RC SerializeCommand_NV_ReadPublic(
   return Tpm::SerializeCommand_NV_ReadPublic(nv_index, nv_index_name,
                                              &serialized_command,
                                              authorization_delegate.get());
+}
+
+TPM_RC ParseResponse_NV_ReadPublic(
+    const std::string& response, uint16_t& nv_public_data_size,
+    std::string& nv_name,
+    const std::unique_ptr<AuthorizationDelegate>& authorization_delegate) {
+  TPM2B_NV_PUBLIC nv_public;
+  TPM2B_NAME nv_name_typed;
+  TPM_RC rc = Tpm::ParseResponse_NV_ReadPublic(
+      response, &nv_public, &nv_name_typed, authorization_delegate.get());
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  nv_public_data_size = nv_public.nv_public.data_size;
+  nv_name = StringFrom_TPM2B_NAME(nv_name_typed);
+  return TPM_RC_SUCCESS;
 }
 
 TPM_RC SerializeCommand_Quote(
@@ -302,6 +473,17 @@ std::unique_ptr<TPM2B_PUBLIC> StorageRootKeyTemplate() {
   public_area.parameters.asym_detail.symmetric.key_bits.aes = 128;
   public_area.parameters.asym_detail.symmetric.mode.aes = TPM_ALG_CFB;
   return std::make_unique<TPM2B_PUBLIC>(Make_TPM2B_PUBLIC(public_area));
+}
+
+TPM_RC Tpm2bPublicToTpmtPublic(const std::string& tpm2b_public,
+                               std::string& tpmt_public) {
+  std::string buffer_public = tpm2b_public;
+  TPM2B_PUBLIC typed_public;
+  TPM_RC rc = Parse_TPM2B_PUBLIC(&buffer_public, &typed_public, nullptr);
+  if (rc != TPM_RC_SUCCESS) {
+    return rc;
+  }
+  return Serialize_TPMT_PUBLIC(typed_public.public_area, &tpmt_public);
 }
 
 std::unique_ptr<TPM2B_SENSITIVE_CREATE> TPM2B_SENSITIVE_CREATE_New(
