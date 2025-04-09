@@ -12,6 +12,9 @@ if(DEFINED CONFIG_ZTEST AND DEFINED CONFIG_ARCH_POSIX)
 add_compile_options(-fstack-protector-all)
 endif()
 
+add_compile_options(-nostdinc++)
+add_compile_options(-I/usr/riscv32-cros-elf/usr/include/c++/v1/)
+
 if(DEFINED CONFIG_COMPILER_WARNINGS_AS_ERRORS)
   check_set_compiler_property(APPEND PROPERTY warning_extended -Wunused-variable
     -Werror=unused-variable -Werror=missing-braces
