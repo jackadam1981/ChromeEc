@@ -69,6 +69,30 @@
       },
       "revId": "51edc7626095791c59825be2f1e5b6012527383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2772b79f_169ef69b",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-09T17:21:43Z",
+      "side": 1,
+      "message": "Yes - create a new console command separate from `pdc`.  `fwup_rtk` is fine, but I\u0027m open to other ideas that more clearly identify this as a Realtek PDC specific command.  `rtk_pdc_fwup`, `rtk_pdc` are possibilities.",
+      "parentUuid": "4307e30c_2c2a8e96",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 0
+      },
+      "revId": "51edc7626095791c59825be2f1e5b6012527383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
