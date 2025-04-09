@@ -517,6 +517,9 @@ static const struct option_container cmd_line_options[] = {
 	{ { "boot_trace", optional_argument, NULL, 'J' },
 	  "[erase]%Retrieve boot trace from the chip, optionally erasing "
 	  "the trace buffer" },
+	{ { "owner_config", no_argument, NULL, 'j' },
+	  "<binary image> is a 2kB blob containing new owners configuration,"
+	  " OpenTitan only" },
 	{ { "get_value", required_argument, NULL, 'K' },
 	  "[chassis_open|dev_ids]%Get properties values" },
 	{ { "ccd_lock", no_argument, NULL, 'k' }, "Lock CCD" },
@@ -1724,6 +1727,69 @@ static int supports_reordered_section_updates(struct signed_header_version *rw)
 	default:
 		return false;
 	}
+}
+
+/*
+ * Owner configuration updates on the NT chip can be triggered by placing a
+ * properly signed ownership config blob into a certain INFO page on the
+ * device.
+ *
+ * The signed config blob is expected to be stored in the passed in file. This
+ * function always terminates the program with exit code indicating
+ * success/failure.
+ */
+static void send_owner_config(struct transfer_descriptor *td,
+				const char *file_name)
+{
+	struct stat st;
+	const size_t config_size = 2048;
+	uint8_t config[config_size];
+	FILE *f;
+	uint32_t fake_addr;
+
+	/* Make sure the file is there and passes basic sаnity test. */
+	if (stat(file_name, &st) != 0) {
+		fprintf(stderr, "File %s not found\n", file_name);
+		exit(1);
+	}
+
+	if (st.st_size != config_size) {
+		fprintf(stderr, "Unexpected size %zd of %s\n",
+			st.st_size, file_name);
+		exit(1);
+	}
+
+	f = fopen(file_name, "rb");
+	if (!f) {
+		fprintf(stderr, "Failed to open  %s\n", file_name);
+		exit(1);
+	}
+	if (fread(config, 1, config_size, f) != config_size) {
+		fclose(f);
+		fprintf(stderr, "Failed to read  %s\n", file_name);
+		exit(1);
+	}
+	fclose(f);
+
+	setup_connection(td);
+
+	/*
+	 * Encode the destination Info page into the flat 32 bit value passed
+	 * as the address in the PDU header.
+	 *
+	 * The encoding is as follows:
+	 * Bit 31 set to 1 means that this is an Info page address
+	 * Bit 30 indicates the flash bank, 0 or 1
+	 * Bits 26..29 indicate the page number in the bank
+	 * Bits 0..25 are used for offset in the page, 11 bits is enough to
+	 *     cover the entire page address range (2k)
+	 *
+	 * The info page used for storing owners config updates is Page 3 in
+	 * Bank 1
+	 */
+	fake_addr = (1 << 31) + (1 << 30) + (3 << 26);
+	transfer_section(td, config, fake_addr, config_size);
+	exit(0);
 }
 
 /* Returns number of successfully transmitted image sections. */
@@ -4879,6 +4945,7 @@ int main(int argc, char *argv[])
 	bool get_chassis_open = false;
 	bool get_dev_ids = false;
 	bool get_aprov_reset_counts = false;
+	int upload_owner_config = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -4890,6 +4957,7 @@ int main(int argc, char *argv[])
 		{ 'f', &show_fw_ver },
 		{ 'g', &get_boot_mode },
 		{ 'H', &erase_ap_ro_hash },
+		{ 'j', &upload_owner_config },
 		{ 'k', &ccd_lock },
 		{ 'o', &ccd_open },
 		{ 'P', &password },
@@ -5222,7 +5290,8 @@ int main(int argc, char *argv[])
 	    !password && !reboot_gsc && !rma && !set_capability &&
 	    !show_fw_ver && !sn_bits && !sn_inc_rma && !start_apro_verify &&
 	    !openbox_desc_file && !tstamp && !tpm_mode && (wp == WP_NONE) &&
-	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts) {
+	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts &&
+	    !upload_owner_config) {
 		num_images = argc - optind;
 		if (num_images <= 0) {
 			fprintf(stderr,
@@ -5266,10 +5335,11 @@ int main(int argc, char *argv[])
 	     !!ccd_unlock + !!ccd_lock + !!ccd_info + !!get_flog +
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
 	     (wp != WP_NONE) + !!get_endorsement_seed + !!erase_ap_ro_hash +
-	     !!set_capability + !!get_clog + !!get_console) > 1) {
+	     !!set_capability + !!get_clog + !!get_console +
+	     !!upload_owner_config) > 1) {
 		fprintf(stderr,
 			"Error: options "
-			"-e, -F, -g, -H, -I, -i, -k, -L, -l, -O, -o, -P, -r,"
+			"-e, -F, -g, -H, -I, -i, -j -k, -L, -l, -O, -o, -P, -r,"
 			"-U, -x and -w are mutually exclusive\n");
 		exit(update_error);
 	}
@@ -5311,6 +5381,22 @@ int main(int argc, char *argv[])
 
 	/* Perform run selection of GSC device now that we have a connection */
 	gsc_dev = determine_gsc_type(&td);
+
+	if (upload_owner_config) {
+		if (gsc_dev != GSC_DEVICE_NT) {
+			fprintf(stderr, "Owner's config can be uploaded only "
+				"on opentitan devices\n");
+			exit(1);
+		}
+
+		if ((argc - optind) != 1) {
+			fprintf(stderr,
+				"A single owner's config file is required\n");
+			exit(1);
+		}
+
+		send_owner_config(&td, argv[optind]);
+	}
 
 	if (openbox_desc_file)
 		return verify_ro(&td, openbox_desc_file, show_machine_output);
