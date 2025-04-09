@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10fb862_65f70218",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-09T22:38:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "606a2ab5_b6fcb032",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61a8d3a9_cfb26126",
