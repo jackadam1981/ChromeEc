@@ -22,6 +22,30 @@
       },
       "revId": "659aae3bb15e75e384fe328e9254b79802ecbd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c87443_771db117",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-09T23:28:58Z",
+      "side": 0,
+      "message": "I don\u0027t like the piecemeal approach here.\n\nFundamentally, the boottime test should be fixed it is relying on parsing power signal changes logged to the console.  These prints already occur in a deferred context, so they don\u0027t provide very precise timing.",
+      "parentUuid": "7197c657_9827f97b",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "659aae3bb15e75e384fe328e9254b79802ecbd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
