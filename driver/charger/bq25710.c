@@ -66,8 +66,8 @@
  * Helper macros
  */
 
-#define SET_CO1_BY_NAME(_field, _c, _x) \
-	SET_BQ_FIELD_BY_NAME(BQ257X0, CHARGE_OPTION_1, _field, _c, (_x))
+#define SET_CO1_BY_NAME(_chip, _field, _c, _x) \
+	SET_BQ_FIELD_BY_NAME(_chip, CHARGE_OPTION_1, _field, _c, (_x))
 
 #define SET_CO2(_field, _v, _x) \
 	SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_2, _field, _v, (_x))
@@ -117,6 +117,9 @@
 	 CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC)
 #define CHARGING_CURRENT_TO_REG(CUR) \
 	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR / DEFAULT_SENSE_RESISTOR)
+#define CHARGING_CURRENT_TO_REG_AC(CUR)                     \
+	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC / \
+	 DEFAULT_SENSE_RESISTOR)
 #define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV) - 32)
 
 /* Console output macros */
@@ -144,7 +147,7 @@ static const struct charger_info bq25710_charger_info = {
 	.voltage_max = 19200,
 	.voltage_min = 1024,
 	.voltage_step = 8,
-	.current_max = REG_TO_CHARGING_CURRENT(8128),
+	.current_max = REG_TO_CHARGING_CURRENT(8128), /* mA */
 	.current_min = REG_TO_CHARGING_CURRENT(64),
 	.current_step = REG_TO_CHARGING_CURRENT(64),
 	.input_current_max = REG_TO_CHARGING_CURRENT_AC(6400),
@@ -173,7 +176,7 @@ static inline int iin_dpm_reg_to_current(int reg)
 
 static inline int iin_host_current_to_reg(int current)
 {
-	return (REG_TO_CHARGING_CURRENT_AC(current) /
+	return (CHARGING_CURRENT_TO_REG_AC(current) /
 		BQ257X0_IIN_HOST_CURRENT_STEP_MA);
 }
 
@@ -323,27 +326,50 @@ static int co1_set_psys_sensing(int reg, bool enable)
 	return reg;
 }
 
+static void bq257x0_init_input_charge_current_senesing(int *reg)
+{
+#ifdef CONFIG_CHARGER_BQ25710
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 10)
+		*reg = SET_CO1_BY_NAME(BQ25710, RSNS_RAC, 10, *reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 20)
+		*reg = SET_CO1_BY_NAME(BQ25710, RSNS_RAC, 20, *reg);
+
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 10)
+		*reg = SET_CO1_BY_NAME(BQ25710, RSNS_RSR, 10, *reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 20)
+		*reg = SET_CO1_BY_NAME(BQ25710, RSNS_RSR, 20, *reg);
+#elif defined(CONFIG_CHARGER_BQ25720)
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 10)
+		*reg = SET_CO1_BY_NAME(BQ25720, RSNS_RAC, 10, *reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC == 5)
+		*reg = SET_CO1_BY_NAME(BQ25720, RSNS_RAC, 5, *reg);
+
+	if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 10)
+		*reg = SET_CO1_BY_NAME(BQ25720, RSNS_RSR, 10, *reg);
+	else if (CONFIG_CHARGER_BQ25710_SENSE_RESISTOR == 5)
+		*reg = SET_CO1_BY_NAME(BQ25720, RSNS_RSR, 5, *reg);
+#endif
+}
+
 static int bq257x0_init_charge_option_1(int chgnum)
 {
 	int rv;
 	int reg;
 
-	if (!IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING) &&
-	    !IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
-		return EC_SUCCESS;
-
 	rv = raw_read16(chgnum, BQ25710_REG_CHARGE_OPTION_1, &reg);
 	if (rv)
 		return rv;
+
+	bq257x0_init_input_charge_current_senesing(&reg);
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_PSYS_SENSING))
 		reg = co1_set_psys_sensing(reg, true);
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_REF_1P2))
-		reg = SET_CO1_BY_NAME(CMP_REF, 1P2, reg);
+		reg = SET_CO1_BY_NAME(BQ257X0, CMP_REF, 1P2, reg);
 
 	if (IS_ENABLED(CONFIG_CHARGER_BQ25710_CMP_POL_EXTERNAL))
-		reg = SET_CO1_BY_NAME(CMP_POL, EXTERNAL, reg);
+		reg = SET_CO1_BY_NAME(BQ257X0, CMP_POL, EXTERNAL, reg);
 
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_1, reg);
 }
