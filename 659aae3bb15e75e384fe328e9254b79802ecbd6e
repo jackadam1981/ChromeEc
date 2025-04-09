@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7197c657_9827f97b",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-04-09T17:56:41Z",
+      "side": 0,
+      "message": "This change may impact the tests that disable the console channels for better log parsing. However, IMHO this isn\u0027t specific to this CL and should be discussed more widely...\n\n@keithshort@chromium.org",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "659aae3bb15e75e384fe328e9254b79802ecbd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
