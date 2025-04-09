@@ -129,6 +129,24 @@
       "parentUuid": "51308528_e97b2843",
       "revId": "7308d8e6989a1dc90ec50a912ad3190c66283868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32352de_794f4375",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-09T01:01:48Z",
+      "side": 1,
+      "message": "It needs to be resolved by another new CL in TOT first. Therefore, I marked this comment to \"Resolved\" for merge this branch CL.",
+      "parentUuid": "fc1dcf74_f20a81cb",
+      "revId": "7308d8e6989a1dc90ec50a912ad3190c66283868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
