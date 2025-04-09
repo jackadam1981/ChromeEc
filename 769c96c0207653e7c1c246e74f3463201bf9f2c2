@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ecd305d_37462476",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-09T17:14:49Z",
+      "side": 1,
+      "message": "I can change it, but `from pathlib import Path` is used extensively in the Chrome OS tree, including in `cros_format.py`",
+      "parentUuid": "a8c22805_72f104ee",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61a8d3a9_cfb26126",
         "filename": "extra/pdc/pdc_fwup.py",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-08T22:53:49Z",
       "side": 1,
       "message": "Should this skip the FW update if the current version matches the passed in firmware binary?",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 78
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ca3243_28e1931a",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-09T17:14:49Z",
+      "side": 1,
+      "message": "I think that makes sense for Depthcharge so updates don\u0027t happen unnecessarily, but for a developer-oriented flashing tool I\u0027d rather just do whatever is requested, limited only by the PDC\u0027s internal validation step. We do also sometimes get re-releases of the same version or need to make config tweaks that might not result in a version or proj_name change.",
+      "parentUuid": "61a8d3a9_cfb26126",
       "range": {
         "startLine": 307,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2025-04-08T22:53:49Z",
       "side": 1,
       "message": "Nit - why not move this into `def main():`?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 0
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ac901a_fc6307f0",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-09T17:14:49Z",
+      "side": 1,
+      "message": "This is to make this Python module scriptable in the future. The CLI interface code under `if __name__ \u003d\u003d \"__main__\":` is executed only when this module is run standalone (`python pdc_fwup.py ...`), in which case the user needs a CLI. However, if this script is ever imported by another module, you don\u0027t want this CLI interface and the other code would be calling directly into `pdc_fwup.main()`",
+      "parentUuid": "53c3b17a_4dc14a02",
       "range": {
         "startLine": 336,
         "startChar": 0,
