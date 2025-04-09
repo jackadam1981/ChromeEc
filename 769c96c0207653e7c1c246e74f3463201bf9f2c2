@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7839d20b_8d97e47f",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-09T17:24:37Z",
+      "side": 1,
+      "message": "Ack - you can keep `from pathlib import Path` for consistency, but maybe fix the import of `typing` below.  I don\u0027t have strong feelings on this so I\u0027m okay either way.",
+      "parentUuid": "6ecd305d_37462476",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "769c96c0207653e7c1c246e74f3463201bf9f2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61a8d3a9_cfb26126",
         "filename": "extra/pdc/pdc_fwup.py",
         "patchSetId": 2
