@@ -57,6 +57,30 @@
       ],
       "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f01c1a9_f1d4d0e0",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-04-09T17:45:23Z",
+      "side": 1,
+      "message": "I am confused after reading the datasheet as it does not clearly explain what would be the expected formula after swapping the 5ohm resister so asking compal to get clarification from TI and the feedback saying that it should be divided by 2 per b/404456703#comment15 for both 14h and 3Fh. Compal team could you give a more clear confirmation from vendor, or maybe ask TI to leave comment on bug if we still have concern for the unclear message ?",
+      "parentUuid": "1e7e7a07_d6b7364e",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 39
+      },
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
