@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#if defined(CONFIG_NEWLIB_LIBC) || defined(CONFIG_EXTERNAL_LIBC)
+#define _GNU_SOURCE
+#endif /* CONFIG_NEWLIB_LIBC */
+
 #include "atomic.h"
 #include "common.h"
 #include "compile_time_macros.h"
