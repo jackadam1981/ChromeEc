@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8d16fb_e1634b6f",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 3597216
+      },
+      "writtenOn": "2025-04-10T10:38:49Z",
+      "side": 1,
+      "message": "Does \"cfg-\u003ereset_pin\" need to be replaced with \"cfg-\u003einterrupt_pin\"?",
+      "revId": "553f089a7167bfb9770b7722113f6fe2a9bf0c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
