@@ -46,6 +46,30 @@
       },
       "revId": "659aae3bb15e75e384fe328e9254b79802ecbd6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fe5e93_5d63909c",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-04-10T00:21:11Z",
+      "side": 0,
+      "message": "Right, I think the timestamp here does not provide useful info.",
+      "parentUuid": "24c87443_771db117",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "659aae3bb15e75e384fe328e9254b79802ecbd6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
