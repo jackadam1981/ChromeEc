@@ -22,6 +22,30 @@
       },
       "revId": "a8a12a612b815e43fcb6c910906e3e3c425f5f4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a885c02_cdaa48cf",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-10T16:49:48Z",
+      "side": 1,
+      "message": "I believe the reason is that for FPC we are only using the .a archive from the vendor.\n\nFor Egis, we have source files in the private repo that we are compiling and they need those definitions.\n\nIf I use only .o files, I do not need any change. I tried it in patchset 7:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/egis/+/8165163/7/CMakeLists.txt\n\nI used the .o files compiled from `make BOARD\u003dgwendolin` moved them in the private repo and included them just as I included the .o files that Egis provided for their private matching library.",
+      "parentUuid": "e1a5a8e0_3d4d0186",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "a8a12a612b815e43fcb6c910906e3e3c425f5f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
