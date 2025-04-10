@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure I follow, if we resume but are still in tablet mode the keyboard scanning should still be off. This doesn\u0027t seem right to me. Can you add more details about how you tested this change?",
       "revId": "378bec1c864948b8674674e5218c58a7ca98a302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51d7a89_91fe0f97",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1185629
+      },
+      "writtenOn": "2025-04-10T21:31:15Z",
+      "side": 1,
+      "message": "During S0, AP will decide ignore/accept  keyboard input. So we won\u0027t see keyboard working after resume. but to avoid confusion, maybe we can handle like this:https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/lid_angle_common.c",
+      "parentUuid": "69c7d058_468ce102",
+      "revId": "378bec1c864948b8674674e5218c58a7ca98a302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
