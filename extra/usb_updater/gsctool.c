@@ -1492,6 +1492,18 @@ static void pick_sections(struct transfer_descriptor *td, struct image *image)
 						sections[RO_B].offset;
 			if ((i == RW_B) == active_rw_slot_b)
 				continue;
+
+			/*
+			 * Block NT (Z1 -> A1) FW update by looking at version
+			 * numbers. We can remove this check after Q3 2025.
+			 */
+			if (targ.shv[1].major == 36 &&
+			    targ.shv[1].minor < 20 &&
+			    sections[i].shv.minor >= 20) {
+				printf("NT Z1 -> A1 transition blocked\n");
+				continue;
+			}
+
 			/*
 			 * Ok, this would be the RW section to transfer to the
 			 * device. Is it newer in the new image than the
