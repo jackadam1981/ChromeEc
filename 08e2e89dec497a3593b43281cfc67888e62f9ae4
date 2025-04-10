@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702bceed_34528bf1",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-10T23:32:48Z",
+      "side": 1,
+      "message": "We should only set these when compiling C++ files.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "08e2e89dec497a3593b43281cfc67888e62f9ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
