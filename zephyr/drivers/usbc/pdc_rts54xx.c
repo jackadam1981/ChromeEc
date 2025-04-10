@@ -519,19 +519,19 @@ static void print_current_state(struct pdc_data_t *data)
 
 	if (st == ST_WRITE) {
 		if (data->cmd == CMD_RAW_UCSI) {
-			LOG_INF("ST%d: %s RAW:%s", cfg->connector_number,
+			LOG_DBG("ST%d: %s RAW:%s", cfg->connector_number,
 				state_names[st],
 				get_ucsi_command_name(data->active_ucsi_cmd));
 		} else {
-			LOG_INF("ST%d: %s %s", cfg->connector_number,
+			LOG_DBG("ST%d: %s %s", cfg->connector_number,
 				state_names[st], cmd_names[data->cmd]);
 		}
 	} else if (st == ST_ERROR_RECOVERY) {
-		LOG_INF("ST%d: %s %s %d", cfg->connector_number,
+		LOG_DBG("ST%d: %s %s %d", cfg->connector_number,
 			state_names[st], cmd_names[data->cmd],
 			data->error_recovery_counter);
 	} else {
-		LOG_INF("ST%d: %s", cfg->connector_number,
+		LOG_DBG("ST%d: %s", cfg->connector_number,
 			state_names[get_state(data)]);
 	}
 }
@@ -818,7 +818,7 @@ static void st_init_run(void *o)
 			/* I2C read Error. No way to recover, so disable the PDC
 			 */
 			if (data->error_status.i2c_read_error) {
-				LOG_INF("C%d: PDC I2C problem",
+				LOG_ERR("C%d: PDC I2C problem",
 					cfg->connector_number);
 				set_state(data, ST_DISABLE);
 				return;
@@ -827,7 +827,7 @@ static void st_init_run(void *o)
 			/* PDC not responding to Ping Status reads. Try error
 			 * recovery */
 			if (data->error_status.pdc_internal_error) {
-				LOG_INF("C%d: PDC not responding",
+				LOG_ERR("C%d: PDC not responding",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
 				return;
@@ -836,7 +836,7 @@ static void st_init_run(void *o)
 			/* PDC not responding to Error Status reads. Try error
 			 * recovery */
 			if (data->init_local_current_state == INIT_ERROR) {
-				LOG_INF("C%d: PDC error status read fail ",
+				LOG_ERR("C%d: PDC error status read fail ",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
 				return;
@@ -909,7 +909,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				pdc_int_data->dev->config;
 
 			if ((ara >> 1) == cfg->i2c.addr) {
-				LOG_INF("C%d: IRQ", cfg->connector_number);
+				LOG_DBG("C%d: IRQ", cfg->connector_number);
 
 				/* Found pending interrupt, handle it */
 				/* Inform subsystem of the interrupt */
