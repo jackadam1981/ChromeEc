@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a5a8e0_3d4d0186",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-10T16:40:00Z",
+      "side": 1,
+      "message": "It looks like we\u0027re [not doing this for FPC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/fpc_sensor.h;l\u003d11-19;drc\u003df108d67192739dd055089d397a771c484db91524), which we also build in Zephyr.\n\nCan you check to see what is different?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "a8a12a612b815e43fcb6c910906e3e3c425f5f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
