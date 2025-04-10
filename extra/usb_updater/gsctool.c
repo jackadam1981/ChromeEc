@@ -1739,7 +1739,7 @@ static int supports_reordered_section_updates(struct signed_header_version *rw)
  * success/failure.
  */
 static void send_owner_config(struct transfer_descriptor *td,
-				const char *file_name)
+			      const char *file_name)
 {
 	struct stat st;
 	const size_t config_size = 2048;
@@ -1754,8 +1754,8 @@ static void send_owner_config(struct transfer_descriptor *td,
 	}
 
 	if (st.st_size != config_size) {
-		fprintf(stderr, "Unexpected size %zd of %s\n",
-			st.st_size, file_name);
+		fprintf(stderr, "Unexpected size %zd of %s\n", st.st_size,
+			file_name);
 		exit(1);
 	}
 
@@ -4952,20 +4952,13 @@ int main(int argc, char *argv[])
 	 * with addresses of the flags. Terminated by a zeroed entry.
 	 */
 	const struct options_map omap[] = {
-		{ 'b', &binary_vers },
-		{ 'c', &corrupt_inactive_rw },
-		{ 'f', &show_fw_ver },
-		{ 'g', &get_boot_mode },
-		{ 'H', &erase_ap_ro_hash },
-		{ 'j', &upload_owner_config },
-		{ 'k', &ccd_lock },
-		{ 'o', &ccd_open },
-		{ 'P', &password },
-		{ 'p', &td.post_reset },
-		{ 'U', &ccd_unlock },
-		{ 'u', &td.upstart_mode },
-		{ 'V', &verbose_mode },
-		{},
+		{ 'b', &binary_vers },	    { 'c', &corrupt_inactive_rw },
+		{ 'f', &show_fw_ver },	    { 'g', &get_boot_mode },
+		{ 'H', &erase_ap_ro_hash }, { 'j', &upload_owner_config },
+		{ 'k', &ccd_lock },	    { 'o', &ccd_open },
+		{ 'P', &password },	    { 'p', &td.post_reset },
+		{ 'U', &ccd_unlock },	    { 'u', &td.upstart_mode },
+		{ 'V', &verbose_mode },	    {},
 	};
 
 	/*
@@ -5385,7 +5378,7 @@ int main(int argc, char *argv[])
 	if (upload_owner_config) {
 		if (gsc_dev != GSC_DEVICE_NT) {
 			fprintf(stderr, "Owner's config can be uploaded only "
-				"on opentitan devices\n");
+					"on opentitan devices\n");
 			exit(1);
 		}
 
