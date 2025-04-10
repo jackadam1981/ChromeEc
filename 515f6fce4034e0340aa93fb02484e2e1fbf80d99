@@ -1,0 +1,284 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6ee4be_f137bbb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "Remove new and code",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42896d8e_cd77f0b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "Are more test possible? Can you see the sensor on the EC console, gather data from it, observe changes when a light source is facing it.",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a3e1b7_b99b5527",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "where is this used?",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4b9a75_fcb54133",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "How to you used the rate? Do you assume the sensor will always be in forced mode?",
+      "fixSuggestions": [
+        {
+          "fixId": "ee40890c_435b3eb1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.c",
+              "range": {
+                "startLine": 89,
+                "startChar": 0,
+                "endLine": 89,
+                "endChar": 0
+              },
+              "replacement": "\t/*\n\t * The CM36781 is a simple sensor, it doesn\u0027t have a data rate\n\t * register. The rate is only used to check if the sensor is\n\t * enabled or not.\n\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce33c75_af52deb1",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "Link TODO() to a bug. The calibration will be done in user space, this function just writes the offset/scale parameter.",
+      "fixSuggestions": [
+        {
+          "fixId": "38885c9a_3e1c8601",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.c",
+              "range": {
+                "startLine": 101,
+                "startChar": 0,
+                "endLine": 102,
+                "endChar": 0
+              },
+              "replacement": "\tCM36781_GET_DATA(s)-\u003eoffset \u003d offset[0];\n"
+            }
+          ]
+        }
+      ],
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f253ef4e_cabf3309",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "Remove, we already have a print for units.",
+      "fixSuggestions": [
+        {
+          "fixId": "1f74d31b_a4e37d9b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.c",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 122,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4617eea1_d821f4f3",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "Remove debug prints.",
+      "fixSuggestions": [
+        {
+          "fixId": "4e332e7b_baec208e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.c",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 122,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "driver/als_cm36781.c",
+              "range": {
+                "startLine": 142,
+                "startChar": 0,
+                "endLine": 144,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e347c75_ff445f5c",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "setting scale is missing.",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cda6dea_42cefd54",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "why PERS_2 if we don\u0027t enable interrupts?",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fcaf8df_9f2f38f0",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:05Z",
+      "side": 1,
+      "message": "Don\u0027t we need to enable force mode for the presence sensor to disable that function (PS_CONF3).",
+      "fixSuggestions": [
+        {
+          "fixId": "ff128249_a02fbfce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "#define CM36781_PS_CONF3 0x0D\n"
+            },
+            {
+              "path": "driver/als_cm36781.h",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": "// CM36781 PS_CONF3 register bits\n#define CM36781_PS_FORCE_MODE 0x01\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
