@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d20cd5_c7c0a9da",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:09Z",
+      "side": 1,
+      "message": "Remove, no interrupt is used for this sensor.",
+      "fixSuggestions": [
+        {
+          "fixId": "ce965237_f7eb0e3e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/francka/motionsense.dtsi",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1c7be7_58f00b2f",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:09Z",
+      "side": 1,
+      "message": "I am not familiar with this code: how is it used? Isn\u0027t it redundant with scale/uscale?",
+      "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfed2733_1c7487ad",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-10T04:05:09Z",
+      "side": 1,
+      "message": "If only the host use the sensor, remove. The host will enable it.",
+      "fixSuggestions": [
+        {
+          "fixId": "c9d5f3b4_6b52570c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/francka/motionsense.dtsi",
+              "range": {
+                "startLine": 162,
+                "startChar": 0,
+                "endLine": 166,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
