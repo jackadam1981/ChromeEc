@@ -8,7 +8,10 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.140       | 0.23.140
+[ToT][ToT ebuild]   | 0.24.160       | 0.23.160
+[M137][137 release] | 0.24.160       | 0.23.160
+[M136][136 release] | 0.24.160       | 0.23.160
+[M135][135 release] | 0.24.160       | 0.23.140
 [M134][134 release] | 0.24.140       | 0.23.140
 [M133][133 release] | 0.24.140       | 0.23.122
 [M132][132 release] | 0.24.132       | 0.23.122
@@ -62,6 +65,7 @@ AP RO Verification Enforcement       | 0.24.61       | 0.23.71          | M122
 Reporting external WP assertion fix  | 0.24.131      | 0.23.140         | M133/M134
 Build uses Bazel artifacts           | 0.24.140      | 0.23.140         | M133/M134
 Support for NonInverted KSO          | 0.24.140      | 0.23.140         | M133/M134
+Boot param support                   | 0.24.160      | 0.23.160         | M135/M136
 
 # RO revisions
 
@@ -926,6 +930,40 @@ Build:   ti50_common_mp-15980.B:v0.0.245-247cf69f
          ms-tpm-20-ref:v0.0.323-969d20e
          chrome-bot@chromeos-ci-firmware-us-central2-d-x32-1-5qj0 2025-01-02 08:45:08
 ```
+
+### 0.23.160 Released on 2025-03-13 in M136
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6324650)
+
+Builder
+[firmware-ti50-mp-15980.B-branch/49](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/49/overview)
+
+Artifacts:
+[15980.46.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware/firmware-ti50-mp-15980.B-branch/R129-15980.46.0-1-8722404580531733729/)
+
+**Bug Fixes**
+
+*   Fix "Console Busy!" error
+    [b/375956711](https://b.corp.google.com/issues/375956711)
+
+**Features**
+
+*   Switch to ufmt for Ti50 console prints.
+    [b/286213031](https://b.corp.google.com/issues/286213031)
+*   Add TMPV monotonic counter
+    [b/376271752](https://b.corp.google.com/issues/376271752)
+*   Add DICE support
+    [b/365780607](https://b.corp.google.com/issues/365780607)
+
+```
+Build:   ti50_common_mp-15980.B:v0.0.328-7c83fd38
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9683-365e099a2
+         ms-tpm-20-ref:v0.0.325-f4283c6
+         chrome-bot@chromeos-ci-firmware-us-central1-b-x32-0-440b 2025-02-19 16:31:35
+```
+
 
 ## PrePVT images
 
@@ -2026,7 +2064,7 @@ Build:   ti50_common_prepvt-15974.B:v0.0.207-e79f9ffc
          chrome-bot@chromeos-ci-firmware-us-east1-d-x32-1-9dga 2024-12-13 15:07:37
 ```
 
-### 0.24.140 Released on 2024-01-02 in M133
+### 0.24.140 Released on 2025-01-02 in M133
 
 Release
 [CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6136105)
@@ -2053,6 +2091,39 @@ Build:   ti50_common_prepvt-15974.B:v0.0.246-c837ddc5
          tock:v0.0.9681-d514a6986
          ms-tpm-20-ref:v0.0.324-e325e3d
          chrome-bot@chromeos-ci-firmware-us-central2-d-x32-1-41m2 2024-12-20 10:45:40
+```
+
+### 0.24.160 Released on 2025-02-19 in M135
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6281713)
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/50](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/50/overview)
+
+Artifacts:
+[15974.50.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch/R129-15974.50.0-1-8723197558197525585/)
+
+**Bug Fixes**
+
+*   Fix "Console Busy!" error
+    [b/375956711](https://b.corp.google.com/issues/375956711)
+
+**Features**
+
+*   Switch to ufmt for Ti50 console prints.
+    [b/286213031](https://b.corp.google.com/issues/286213031)
+*   Add TMPV monotonic counter
+    [b/376271752](https://b.corp.google.com/issues/376271752)
+*   Add DICE support
+    [b/365780607](https://b.corp.google.com/issues/365780607)
+
+```
+Build:   ti50_common_prepvt-15974.B:v0.0.331-0cceb66e
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9683-a16ba4f3b
+         ms-tpm-20-ref:v0.0.326-45d67aa
+         chrome-bot@chromeos-ci-firmware-us-central1-b-x32-0-be1m 2025-02-10 10:15:30
 ```
 
 <!-- Links -->
@@ -2087,4 +2158,6 @@ Build:   ti50_common_prepvt-15974.B:v0.0.246-c837ddc5
 [132 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R132-16093.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [133 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R133-16151.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [134 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R134-16181.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[135 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R135-16209.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[136 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
