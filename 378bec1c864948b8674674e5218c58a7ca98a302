@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c7d058_468ce102",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-10T16:21:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow, if we resume but are still in tablet mode the keyboard scanning should still be off. This doesn\u0027t seem right to me. Can you add more details about how you tested this change?",
+      "revId": "378bec1c864948b8674674e5218c58a7ca98a302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
