@@ -34,6 +34,24 @@
       "parentUuid": "a9caf634_0b11a26a",
       "revId": "3a7946568a99889b4a7caabb9eed1c2ef3d9677c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a9c52b_54d96ef4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-10T17:04:34Z",
+      "side": 1,
+      "message": "This is only enabled for the brox.brox board and not reference platform as a whole. Lotso/Jubilant won\u0027t be affected, if that is your concern?",
+      "parentUuid": "c099fc79_04ed1c39",
+      "revId": "3a7946568a99889b4a7caabb9eed1c2ef3d9677c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
