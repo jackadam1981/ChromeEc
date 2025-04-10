@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f400a7a0_ea02501e",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-10T20:47:19Z",
+      "side": 1,
+      "message": "Do `test_pdc_power_mgmt_sbu_mux_mode_not_supported_set` and `_get` still not work with TI?",
+      "range": {
+        "startLine": 2097,
+        "startChar": 0,
+        "endLine": 2097,
+        "endChar": 77
+      },
+      "revId": "4a85295d1860318d22b2e2a49dea0c019d241354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
