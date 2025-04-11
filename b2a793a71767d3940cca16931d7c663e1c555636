@@ -26,6 +26,72 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7ccff2d8_ae0ac4c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2025-04-11T20:33:55Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "034de900_39466f3f",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "b2a793a71767d3940cca16931d7c663e1c555636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "212488f8_8e821fe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2025-04-11T20:33:55Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "034de900_39466f3f",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "37694ddb_2581c223",
+          "description": "User suggestion",
+          "replacements": [
+            {
+              "path": "/COMMIT_MSG",
+              "range": {
+                "startLine": 9,
+                "startChar": 0,
+                "endLine": 9,
+                "endChar": 60
+              },
+              "replacement": "Utils test was skipped due to b/394642587 which has a workaround."
+            }
+          ]
+        }
+      ],
+      "revId": "b2a793a71767d3940cca16931d7c663e1c555636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5abd4bcc_a3569556",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
