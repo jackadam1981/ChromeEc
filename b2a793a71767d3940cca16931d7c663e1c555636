@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "034de900_39466f3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-11T20:33:24Z",
+      "side": 1,
+      "message": "```suggestion\nUtils test was skipped due to b/394642587 which has a workaround.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "b2a793a71767d3940cca16931d7c663e1c555636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5abd4bcc_a3569556",
