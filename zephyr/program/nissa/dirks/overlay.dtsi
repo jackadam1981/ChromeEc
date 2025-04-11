@@ -13,6 +13,9 @@
 		int-wp = &int_wp_l;
 	};
 
+	chosen {
+		cros-ec,cec-bitbang-tmr = &counter0;
+	};
 
 	ec-console {
 		compatible = "ec-console";
@@ -46,6 +49,11 @@
 			irq-pin = <&gpio_bj_adp_present>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "adp_connect_interrupt";
+		};
+		int_cec_bitbang: cec_bitbang {
+			irq-pin = <&gpio_hdmi2_cec_in>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "cec_gpio_interrupt";
 		};
 	};
 
@@ -247,5 +255,9 @@
 };
 
 &usbpd0 {
+	status = "okay";
+};
+
+&counter0 {
 	status = "okay";
 };
