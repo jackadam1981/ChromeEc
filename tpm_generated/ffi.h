@@ -39,6 +39,18 @@ bool EncryptDataForCa(const std::string& data,
                       std::string& wrapping_key_id);
 
 // -----------------------------------------------------------------------------
+// HmacAuthorizationDelegate
+// -----------------------------------------------------------------------------
+
+// Creates a new HmacAuthorizationDelegate. On error, logs an error message and
+// returns a null unique_ptr. See PasswordAuthorizationDelegate for why this
+// returns an AuthorizationDelegate rather than a HmacAuthorizationDelegate.
+std::unique_ptr<AuthorizationDelegate> HmacAuthorizationDelegate_New(
+    TPM_HANDLE session_handle, const std::string& tpm_nonce,
+    const std::string& caller_nonce, const std::string& salt,
+    const std::string& bind_auth_value, bool enable_parameter_encryption);
+
+// -----------------------------------------------------------------------------
 // PasswordAuthorizationDelegate
 // -----------------------------------------------------------------------------
 
@@ -52,6 +64,21 @@ std::unique_ptr<AuthorizationDelegate> PasswordAuthorizationDelegate_New(
 // -----------------------------------------------------------------------------
 // Tpm
 // -----------------------------------------------------------------------------
+
+// Wraps Tpm::SerializeCommand_ActivateCredential. Serializes the
+// TPM2_ActivateCredential command.
+TPM_RC SerializeCommand_ActivateCredential(
+    const TPMI_DH_OBJECT& activate_handle,
+    const std::string& activate_handle_name, const TPMI_DH_OBJECT& key_handle,
+    const std::string& key_handle_name, const std::string& credential_mac,
+    const std::string& wrapped_key, const std::string& secret,
+    std::string& serialized_command, AuthorizationDelegate& key_authorization);
+
+// Wraps Tpm::ParseResponse_ActivateCredential. Parses the response of a
+// TPM2_ActivateCredential command.
+TPM_RC ParseResponse_ActivateCredential(
+    const std::string& response, std::string& cert_info,
+    AuthorizationDelegate& key_authorization);
 
 // Wraps Tpm::SerializeCommand_Create. Serializes the TPM2_Create command.
 // authorization_delegate is nullable.
@@ -163,6 +190,26 @@ TPM_RC ParseResponse_NV_ReadPublic(
     std::string& nv_name,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
+// Wraps Tpm::SerializeCommand_PolicySecret. Serializes a TPM2_PolicySecret
+// command.
+// authorization_delegate is nullable.
+TPM_RC SerializeCommand_PolicySecret(
+    const TPMI_DH_ENTITY& auth_handle, const std::string& auth_handle_name,
+    const TPMI_SH_POLICY& policy_session,
+    const std::string& policy_session_name, const std::string& nonce_tpm,
+    const std::string& cp_hash_a, const std::string& policy_ref,
+    const uint32_t& expiration, std::string& serialized_command,
+    std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_PolicySecret. Parses the response from a
+// TPM2_PolicySecret command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_PolicySecret(
+    const std::string& response, std::string& timeout,
+    uint16_t& policy_ticket_tag, uint32_t& policy_ticket_hierarchy,
+    std::string& policy_ticket_digest,
+    std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
 // Wraps Tpm::SerializeCommand_Quote. Serializes the TPM2_Quote command.
 // authorization_delegate is nullable.
 TPM_RC SerializeCommand_Quote(
@@ -191,6 +238,25 @@ TPM_RC ParseResponse_PCR_Read(
     const std::string& response, UINT32& pcr_update_counter,
     TPML_PCR_SELECTION& pcr_selection_out, std::string& pcr_values,
     const std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::SerializeCommand_StartAuthSession. Serializes the
+// TPM2_StartAuthSession command.
+// authorization_delegate is nullable.
+TPM_RC SerializeCommand_StartAuthSession(
+    const TPMI_DH_OBJECT& tpm_key, const std::string& tpm_key_name,
+    const TPMI_DH_ENTITY& bind, const std::string& bind_name,
+    const std::string& nonce_caller, const std::string& encrypted_salt,
+    const uint8_t& session_type, const uint16_t& auth_hash,
+    std::string& serialized_command,
+    std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
+
+// Wraps Tpm::ParseResponse_StartAuthSession. Parses the response from a
+// TPM2_StartAuthSession command.
+// authorization_delegate is nullable.
+TPM_RC ParseResponse_StartAuthSession(
+    const std::string& response, TPMI_SH_AUTH_SESSION& session_handle,
+    std::string& nonce_tpm,
+    std::unique_ptr<AuthorizationDelegate>& authorization_delegate);
 
 // -----------------------------------------------------------------------------
 // TPM_HANDLE
@@ -229,6 +295,9 @@ std::unique_ptr<TPM2B_DIGEST> TPM2B_DIGEST_New();
 
 // Returns the public area template for the Attestation Identity Key.
 std::unique_ptr<TPM2B_PUBLIC> AttestationIdentityKeyTemplate();
+
+// Returns the public area template for the Endorsement Key.
+std::unique_ptr<TPM2B_PUBLIC> EndorsementKeyTemplate();
 
 // Returns the public area template for the Storage Root Key.
 std::unique_ptr<TPM2B_PUBLIC> StorageRootKeyTemplate();

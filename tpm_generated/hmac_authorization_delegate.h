@@ -7,13 +7,9 @@
 
 #include <string>
 
-#include <base/gtest_prod_util.h>
-#include <crypto/secure_hash.h>
-#include <gtest/gtest_prod.h>
-
-#include "trunks/authorization_delegate.h"
-#include "trunks/tpm_generated.h"
-#include "trunks/trunks_export.h"
+#include "authorization_delegate.h"
+#include "tpm_generated.h"
+#include "trunks_export.h"
 
 namespace trunks {
 
@@ -72,10 +68,8 @@ class TRUNKS_EXPORT HmacAuthorizationDelegate : public AuthorizationDelegate {
   // specifies if parameter encryption should be enabled for this delegate.
   // |salt| and |bind_auth_value| specify the injected auth values into this
   // delegate.
-  bool InitSession(TPM_HANDLE session_handle,
-                   const TPM2B_NONCE& tpm_nonce,
-                   const TPM2B_NONCE& caller_nonce,
-                   const std::string& salt,
+  bool InitSession(TPM_HANDLE session_handle, const TPM2B_NONCE& tpm_nonce,
+                   const TPM2B_NONCE& caller_nonce, const std::string& salt,
                    const std::string& bind_auth_value,
                    bool enable_parameter_encryption);
 
@@ -104,16 +98,10 @@ class TRUNKS_EXPORT HmacAuthorizationDelegate : public AuthorizationDelegate {
     use_entity_authorization_for_encryption_only_ = value;
   }
 
- protected:
-  FRIEND_TEST(HmacAuthorizationDelegateFixture, NonceRegenerationTest);
-  FRIEND_TEST(HmacAuthorizationDelegateTest, EncryptDecryptTest);
-  FRIEND_TEST(HmacAuthorizationDelegateTest, SessionKeyTest);
-
  private:
   // This method implements the key derivation function used in the TPM.
   // NOTE: It only returns 32 byte keys.
-  std::string CreateKey(const std::string& hmac_key,
-                        const std::string& label,
+  std::string CreateKey(const std::string& hmac_key, const std::string& label,
                         const TPM2B_NONCE& nonce_newer,
                         const TPM2B_NONCE& nonce_older);
   // This method performs a FIPS198 HMAC operation on |data| using |key|
@@ -121,10 +109,8 @@ class TRUNKS_EXPORT HmacAuthorizationDelegate : public AuthorizationDelegate {
   // This method performs an AES operation using a 128 bit key.
   // |operation_type| can be either AES_ENCRYPT or AES_DECRYPT and it
   // determines if the operation is an encryption or decryption.
-  void AesOperation(std::string* parameter,
-                    const TPM2B_NONCE& nonce_newer,
-                    const TPM2B_NONCE& nonce_older,
-                    int operation_type);
+  void AesOperation(std::string* parameter, const TPM2B_NONCE& nonce_newer,
+                    const TPM2B_NONCE& nonce_older, int operation_type);
   // This method regenerates the caller nonce. The new nonce is the same
   // length as the previous nonce. The buffer is filled with random data using
   // openssl's |RAND_bytes| function.
