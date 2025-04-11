@@ -254,6 +254,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0229db50_4318d20b",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2025-04-11T06:30:56Z",
+      "side": 1,
+      "message": "\u003e why PERS_2 if we don\u0027t enable interrupts?\n#define CM36781_ALS_CONF_DEFAULT (CM36781_ALS_IT_50MS)",
+      "parentUuid": "8cda6dea_42cefd54",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fcaf8df_9f2f38f0",
@@ -295,6 +313,24 @@
           ]
         }
       ],
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ed17e8_3c1305fc",
+        "filename": "driver/als_cm36781.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2025-04-11T06:30:56Z",
+      "side": 1,
+      "message": "\u003e Don\u0027t we need to enable force mode for the presence sensor to disable that function (PS_CONF3).\nAll PS related #define can be removed.",
+      "parentUuid": "8fcaf8df_9f2f38f0",
       "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
