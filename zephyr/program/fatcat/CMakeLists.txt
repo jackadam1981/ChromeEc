@@ -37,3 +37,13 @@ if(DEFINED CONFIG_BOARD_FELINO)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"felino/src/keyboard_customization.c")
 endif()
+
+if(DEFINED CONFIG_BOARD_KINMEN)
+	project(kinmen)
+	add_subdirectory(kinmen)
+	zephyr_include_directories("kinmen/include")
+	zephyr_library_sources("src/board_power.c")
+	zephyr_library_sources("src/hibernate.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"felino/src/keyboard_customization.c")
+endif()
