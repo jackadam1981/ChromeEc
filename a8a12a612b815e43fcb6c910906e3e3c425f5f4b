@@ -46,6 +46,30 @@
       },
       "revId": "a8a12a612b815e43fcb6c910906e3e3c425f5f4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40967b50_334b9b85",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-04-11T05:28:19Z",
+      "side": 1,
+      "message": "Firas is right, Egis is a different case because we need to compile sources based on defines in EC repo. \n\nHowever, I don\u0027t think it is a correct solution. The main, high level reason for me it that we combine driver files/sources/headers from `driver/fingerprint/egis` and `zephyr/drivers/fingerprint/`. My expectation is that if we merge the Zephyr driver, we can just delete the `driver/fingerprint` dir.\n\nAdditionally, there are unneeded, duplicated defines here e.g. the X and Y should be only get from dts. Other properties are also determined by Kconfigs. There should be only one source of such information.\n\nI think my preferred solution would be add additional Kconfigs needed by the Egis lib sources e.g. `FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS` would be a new Kconfig added with the algorithm driver (it is a part of algorithm, right?). Including the `egis_api.h` in the lib sources would be guarded with `#ifndef CONFIG_ZEPHYR`.\n\nAnother option would be to create Zephyr version of the `egis_api.h` file.",
+      "parentUuid": "4a885c02_cdaa48cf",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "a8a12a612b815e43fcb6c910906e3e3c425f5f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
