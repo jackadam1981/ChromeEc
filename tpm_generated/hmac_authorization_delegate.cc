@@ -2,16 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include "trunks/hmac_authorization_delegate.h"
+#include "hmac_authorization_delegate.h"
 
-#include <iterator>
-
-#include <base/check.h>
-#include <base/check_op.h>
-#include <base/logging.h>
-#include <crypto/secure_util.h>
+#include <android-base/logging.h>
 #include <openssl/aes.h>
 #include <openssl/hmac.h>
+#include <openssl/mem.h>
 #include <openssl/rand.h>
 
 namespace trunks {
@@ -158,8 +154,7 @@ bool HmacAuthorizationDelegate::CheckResponseAuthorization(
   hmac_data.append(attributes_bytes);
   std::string digest = HmacSha256(hmac_key, hmac_data);
   CHECK_EQ(digest.size(), auth_response.hmac.size);
-  if (!crypto::SecureMemEqual(digest.data(), auth_response.hmac.buffer,
-                              digest.size())) {
+  if (CRYPTO_memcmp(digest.data(), auth_response.hmac.buffer, digest.size())) {
     LOG(ERROR) << "Authorization response hash did not match expected value.";
     return false;
   }
@@ -248,10 +243,8 @@ void HmacAuthorizationDelegate::set_future_authorization_value(
 }
 
 std::string HmacAuthorizationDelegate::CreateKey(
-    const std::string& hmac_key,
-    const std::string& label,
-    const TPM2B_NONCE& nonce_newer,
-    const TPM2B_NONCE& nonce_older) {
+    const std::string& hmac_key, const std::string& label,
+    const TPM2B_NONCE& nonce_newer, const TPM2B_NONCE& nonce_older) {
   std::string counter;
   std::string digest_size_bits;
   if (Serialize_uint32_t(1, &counter) != TPM_RC_SUCCESS ||
