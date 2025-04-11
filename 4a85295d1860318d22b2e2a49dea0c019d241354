@@ -22,6 +22,30 @@
       },
       "revId": "4a85295d1860318d22b2e2a49dea0c019d241354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6724e98_d632c7c4",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-04-11T02:02:35Z",
+      "side": 1,
+      "message": "TI defined SBU_MUX state with 1 bit in status register so the return value would be either NORMAL or FORCE_DEBUG, not INVALID. Thus, I think it\u0027s not compatible with TI unless we want TI to change the behavior in PDC FW so decide to disable the _set and _get together.",
+      "parentUuid": "f400a7a0_ea02501e",
+      "range": {
+        "startLine": 2097,
+        "startChar": 0,
+        "endLine": 2097,
+        "endChar": 77
+      },
+      "revId": "4a85295d1860318d22b2e2a49dea0c019d241354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
