@@ -431,6 +431,7 @@ void board_fwmp_update_policies(void);
 int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);
 void board_reboot_ec(void);
+int board_id_fwmp_resets_ec_in_rec_dev(void);
 /**
  * Reboot the EC
  * @param usec_delay  microseconds to delay in rebooting EC.
