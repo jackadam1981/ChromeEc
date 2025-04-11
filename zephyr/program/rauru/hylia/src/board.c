@@ -6,11 +6,16 @@
 #include "battery.h"
 #include "charge_state.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "math_util.h"
+#include "mkbp_input_devices.h"
+#include "power/mt8186.h"
+#include "power_button.h"
+#include "tablet_mode.h"
 #include "util.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -22,6 +27,8 @@
 #define VOL_UP_KEY_COL 11
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
+
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 static void board_setup_init(void)
 {
@@ -72,3 +79,55 @@ enum battery_present battery_is_present(void)
 	}
 	return cached_batt_state;
 }
+
+static bool powerbtn_is_enable;
+
+static void board_tablet_mode_change(void)
+{
+	if (tablet_get_mode()) {
+		/* avoid pressing the power button when switching to tablet mode
+		 */
+		if (power_button_is_pressed()) {
+			mkbp_button_update(KEYBOARD_BUTTON_POWER, 0);
+			disable_chipset_force_shutdown_button();
+		}
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_power_button));
+		powerbtn_is_enable = 0;
+		CPRINTS("powerbtn is disable!");
+	} else {
+		gpio_enable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_power_button));
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_POWER_BUTTON);
+		powerbtn_is_enable = 1;
+		CPRINTS("powerbtn is enable!");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_tablet_mode_change, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_tablet_mode_change,
+	     HOOK_PRIO_DEFAULT);
+
+static void enable_powerbtn_interrupt(void)
+{
+	if (!powerbtn_is_enable) {
+		gpio_enable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_power_button));
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_POWER_BUTTON);
+		powerbtn_is_enable = 1;
+		CPRINTS("powerbtn is enable!");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, enable_powerbtn_interrupt,
+	     HOOK_PRIO_DEFAULT);
+
+static void disbale_powerbtn_interrupt(void)
+{
+	if (tablet_get_mode()) {
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_power_button));
+		powerbtn_is_enable = 0;
+		CPRINTS("powerbtn is disable!");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME_INIT, disbale_powerbtn_interrupt,
+	     HOOK_PRIO_DEFAULT);
