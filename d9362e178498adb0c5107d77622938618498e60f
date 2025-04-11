@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3074bc40_991ef002",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-04-11T05:56:44Z",
+      "side": 1,
+      "message": "If it\u0027s under board level, I\u0027m a bit wondering whether we still need this flag or not.",
+      "revId": "d9362e178498adb0c5107d77622938618498e60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ca9c00_fd441a4f",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-04-11T05:56:44Z",
+      "side": 1,
+      "message": "You might want to leverage powerbtn_is_enabale status to determine whether you shall renable or not.",
+      "revId": "d9362e178498adb0c5107d77622938618498e60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
