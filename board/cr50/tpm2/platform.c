@@ -25,14 +25,19 @@
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 
 /* Used to control access to NVMEM spaces with different PCR states */
-#define PCR_UPDATE_BOOT_POLICY		BIT(0) /* FWMP/antirollback */
-#define PCR_UPDATE_ENCSTATEFUL		BIT(1) /* EncStateful */
+#define PCR_UPDATE_BOOT_POLICY			BIT(0) /* FWMP/antirollback */
+#define PCR_UPDATE_ENCSTATEFUL			BIT(1) /* EncStateful */
+/*
+ * Block rec+dev mode by triggering an EC reset immediately
+ * Only enabled on certain board ids.
+ */
+#define PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST	BIT(2)
 
 struct pcr_config {
 	/* The PCR digest */
 	uint8_t digest[SHA256_DIGEST_SIZE];
 	/* Define what spaces are allowed to be updated in the given state */
-	uint32_t update_allowed;
+	uint32_t config;
 };
 
 /*
@@ -50,7 +55,7 @@ static const struct pcr_config pcr_configs[] = {
 			0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 			0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 		},
-		.update_allowed = PCR_UPDATE_BOOT_POLICY,
+		.config = PCR_UPDATE_BOOT_POLICY,
 	},
 	{
 		/* normal mode (rec=0, dev=0) */
@@ -60,7 +65,7 @@ static const struct pcr_config pcr_configs[] = {
 			0xAB, 0x8B, 0xB3, 0x4E, 0xE8, 0x3C, 0xC7, 0xA6,
 			0x83, 0xC4, 0xE5, 0x3D, 0x15, 0x81, 0xC8, 0xC7
 		},
-		.update_allowed = PCR_UPDATE_BOOT_POLICY |
+		.config = PCR_UPDATE_BOOT_POLICY |
 			PCR_UPDATE_ENCSTATEFUL,
 	},
 	{
@@ -71,8 +76,18 @@ static const struct pcr_config pcr_configs[] = {
 			0xAF, 0x0B, 0x17, 0x13, 0x4D, 0xC7, 0x39, 0xC5,
 			0x65, 0x36, 0x07, 0xA1, 0xEC, 0x8D, 0xD3, 0x7A
 		},
-		.update_allowed = PCR_UPDATE_BOOT_POLICY |
+		.config = PCR_UPDATE_BOOT_POLICY |
 			PCR_UPDATE_ENCSTATEFUL,
+	},
+	{
+		/* recovery + dev mode (rec=1, dev=1) */
+		.digest = {
+			0x2A, 0x75, 0x80, 0xE5, 0xDA, 0x28, 0x95, 0x46,
+			0xF4, 0xD2, 0xE0, 0x50, 0x9C, 0xC6, 0xDE, 0x15,
+			0x5E, 0xA1, 0x31, 0x81, 0x89, 0x54, 0xD3, 0x6D,
+			0x49, 0xE0, 0x27, 0xFD, 0x42, 0xB8, 0xC8, 0xF8
+		},
+		.config = PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST,
 	},
 	{
 		/* recovery mode (rec=1, dev=0) */
@@ -82,7 +97,7 @@ static const struct pcr_config pcr_configs[] = {
 			0x6F, 0xFE, 0x8C, 0xD2, 0x61, 0xD4, 0x24, 0x93,
 			0xBC, 0x68, 0x42, 0xA9, 0xE4, 0xF9, 0x3B, 0x3D
 		},
-		.update_allowed = PCR_UPDATE_BOOT_POLICY,
+		.config = PCR_UPDATE_BOOT_POLICY,
 	},
 };
 
@@ -282,7 +297,8 @@ void print_pcr0(void)
 	ccprintf("%ph\n", HEX_BUF(&pcr0_value, SHA256_DIGEST_SIZE));
 }
 
-static BOOL pcr_allows_update(uint32_t space)
+/* Returns True if the PCR config has the given space attribute set */
+static BOOL pcr_config_enabled(uint32_t space)
 {
 	uint8_t pcr0_value[SHA256_DIGEST_SIZE];
 	int i;
@@ -294,7 +310,7 @@ static BOOL pcr_allows_update(uint32_t space)
 		if (memcmp(pcr0_value,
 				pcr_configs[i].digest,
 				SHA256_DIGEST_SIZE) == 0) {
-			if (pcr_configs[i].update_allowed & space)
+			if (pcr_configs[i].config & space)
 				return TRUE;
 			return FALSE;
 		}
@@ -306,12 +322,12 @@ BOOL _plat__NvUpdateAllowed(uint32_t handle)
 {
 	switch (handle) {
 	case HR_NV_INDEX + NV_INDEX_ENCSTATEFUL:
-		return pcr_allows_update(PCR_UPDATE_ENCSTATEFUL);
+		return pcr_config_enabled(PCR_UPDATE_ENCSTATEFUL);
 	case HR_NV_INDEX + NV_INDEX_FWMP:
-		return pcr_allows_update(PCR_UPDATE_BOOT_POLICY);
+		return pcr_config_enabled(PCR_UPDATE_BOOT_POLICY);
 	case HR_NV_INDEX + NV_INDEX_FIRMWARE:
 	case HR_NV_INDEX + NV_INDEX_KERNEL:
-		return pcr_allows_update(PCR_UPDATE_BOOT_POLICY)
+		return pcr_config_enabled(PCR_UPDATE_BOOT_POLICY)
 			|| board_fwmp_allows_boot_policy_update();
 	}
 
@@ -323,4 +339,17 @@ void _plat__PCRUpdated(uint32_t index)
 	if (index != 0)
 		return;
 	CPRINTS("PCR0 updated");
+#ifdef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC
+	/*
+	 * Some boards want to reset the EC when the FWMP is blocking dev mode
+	 * and the device tries to enter dev mode.
+	 * Reset the EC on boards that have the feature enabled.
+	 */
+	if (board_id_fwmp_resets_ec_in_rec_dev() &&
+	    !board_fwmp_allows_boot_policy_update() &&
+	    pcr_config_enabled(PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST)) {
+		CPRINTS("pcr: block rec+dev");
+		board_reboot_ec();
+	}
+#endif
 }
