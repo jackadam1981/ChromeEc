@@ -22,10 +22,16 @@
 #include "version.h"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 
 /* Used to control access to NVMEM spaces with different PCR states */
-#define PCR_UPDATE_BOOT_POLICY		BIT(0) /* FWMP/antirollback */
-#define PCR_UPDATE_ENCSTATEFUL		BIT(1) /* EncStateful */
+#define PCR_UPDATE_BOOT_POLICY			BIT(0) /* FWMP/antirollback */
+#define PCR_UPDATE_ENCSTATEFUL			BIT(1) /* EncStateful */
+/*
+ * Block rec+dev mode by triggering an EC reset immediately
+ * Only enabled on certain board ids.
+ */
+#define PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST	BIT(2)
 
 struct pcr_config {
 	/* The PCR digest */
@@ -72,6 +78,16 @@ static const struct pcr_config pcr_configs[] = {
 		},
 		.update_allowed = PCR_UPDATE_BOOT_POLICY |
 			PCR_UPDATE_ENCSTATEFUL,
+	},
+	{
+		/* recovery + dev mode (rec=1, dev=1) */
+		.digest = {
+			0x2A, 0x75, 0x80, 0xE5, 0xDA, 0x28, 0x95, 0x46,
+			0xF4, 0xD2, 0xE0, 0x50, 0x9C, 0xC6, 0xDE, 0x15,
+			0x5E, 0xA1, 0x31, 0x81, 0x89, 0x54, 0xD3, 0x6D,
+			0x49, 0xE0, 0x27, 0xFD, 0x42, 0xB8, 0xC8, 0xF8
+		},
+		.update_allowed = PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST,
 	},
 	{
 		/* recovery mode (rec=1, dev=0) */
@@ -281,7 +297,8 @@ void print_pcr0(void)
 	ccprintf("%ph\n", HEX_BUF(&pcr0_value, SHA256_DIGEST_SIZE));
 }
 
-static BOOL pcr_allows_update(uint32_t space)
+/* Returns True if the PCR config has the given space attribute set */
+static BOOL pcr_config_enabled(uint32_t space)
 {
 	uint8_t pcr0_value[SHA256_DIGEST_SIZE];
 	int i;
@@ -305,12 +322,12 @@ BOOL _plat__NvUpdateAllowed(uint32_t handle)
 {
 	switch (handle) {
 	case HR_NV_INDEX + NV_INDEX_ENCSTATEFUL:
-		return pcr_allows_update(PCR_UPDATE_ENCSTATEFUL);
+		return pcr_config_enabled(PCR_UPDATE_ENCSTATEFUL);
 	case HR_NV_INDEX + NV_INDEX_FWMP:
-		return pcr_allows_update(PCR_UPDATE_BOOT_POLICY);
+		return pcr_config_enabled(PCR_UPDATE_BOOT_POLICY);
 	case HR_NV_INDEX + NV_INDEX_FIRMWARE:
 	case HR_NV_INDEX + NV_INDEX_KERNEL:
-		return pcr_allows_update(PCR_UPDATE_BOOT_POLICY)
+		return pcr_config_enabled(PCR_UPDATE_BOOT_POLICY)
 			|| board_fwmp_allows_boot_policy_update();
 	}
 
@@ -322,4 +339,16 @@ void _plat__PCRUpdated(uint32_t index)
 	if (index != 0)
 		return;
 	CPRINTS("PCR0 updated");
+#ifdef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC
+	/* Nothing if blocking rec+dev is not enabled with this board id */
+	if (!board_id_fwmp_resets_ec_in_rec_dev())
+		return;
+	/* Nothing to do if the FWMP doesn't block dev mode */
+	if (board_fwmp_allows_boot_policy_update())
+		return;
+	if (pcr_config_enabled(PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST)) {
+		CPRINTS("pcr: block rec+dev");
+		board_reboot_ec();
+	}
+#endif
 }
