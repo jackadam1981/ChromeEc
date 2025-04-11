@@ -52,6 +52,24 @@
       "parentUuid": "c099fc79_04ed1c39",
       "revId": "3a7946568a99889b4a7caabb9eed1c2ef3d9677c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91db7021_c1748c73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-11T21:19:09Z",
+      "side": 1,
+      "message": "This feature should be guarded with CONFIG_PLATFORM_EC_SYSTEM_UNLOCKED because we explicitly bypassed test coverage for this feature.\nThe firmware qualification tests verify that `CONFIG_PLATFORM_EC_SYSTEM_UNLOCKED\u003dn`, so we can\u0027t turn this on by default or we\u0027ll see failures.  Because this CL modifies brox files, it could be accidentally cherry-picked to the FW branch.\n\nI confirmed we have brox models in the lab, so I think it\u0027s best that developers turn this feature on with a local build only.\n\nIt makes sense to enable this for fatcat, as that project is still in the early stages and needs to do experiments with PDC firmware.",
+      "parentUuid": "84a9c52b_54d96ef4",
+      "revId": "3a7946568a99889b4a7caabb9eed1c2ef3d9677c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
