@@ -1,0 +1,57 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* kinmen program common DTS includes */
+
+#include <cros/integrated_fwid.dtsi>
+
+/* kinmen project DTS includes */
+#include "adc.dtsi"
+#include "binman.dtsi"
+#include "console.dtsi"
+#include "fan.dtsi"
+#include "gpios.dtsi"
+#include "i2c.dtsi"
+#include "interrupts.dtsi"
+#include "keyboard.dtsi"
+#include "power_signals.dtsi"
+#include "pwm.dtsi"
+#include "usb_typec.dtsi"
+
+/{
+	batteries {
+		default_battery: smp_ap23a7l {
+				compatible = "smp,ap23a7l", "battery-smart";
+		};
+		smp_ap23a7l_2 {
+				compatible = "smp,ap23a7l-2", "battery-smart";
+		};
+		panasonic_ap23a5l {
+				compatible = "panasonic,ap23a5l", "battery-smart";
+		};
+		panasonic_ap23a5l_2 {
+				compatible = "panasonic,ap23a5l-2", "battery-smart";
+		};
+		lges-ap23a8l {
+				compatible = "lges,ap23a8l", "battery-smart";
+		};
+		cosmx_ap23abl {
+				compatible = "cosmx,ap23abl", "battery-smart";
+		};
+	};
+	usba-port-enable-list {
+		compatible = "cros-ec,usba-port-enable-pins";
+		enable-pins = <&gpio_en_pp5000_usba>;
+	};
+};
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+};
+
+&sha0 {
+	status = "okay";
+};
