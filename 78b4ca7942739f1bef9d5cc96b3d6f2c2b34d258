@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e4ec21_5ed839a2",
+        "filename": "power/mt8186.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-04-11T08:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6033e01_29c8b8b7",
+      "range": {
+        "startLine": 607,
+        "startChar": 5,
+        "endLine": 607,
+        "endChar": 42
+      },
+      "revId": "78b4ca7942739f1bef9d5cc96b3d6f2c2b34d258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b99b684_1c034362",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-11T07:22:21Z",
       "side": 1,
       "message": "enable spell error",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "78b4ca7942739f1bef9d5cc96b3d6f2c2b34d258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f77ac6_5957bb63",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-04-11T08:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b99b684_1c034362",
       "range": {
         "startLine": 83,
         "startChar": 12,
