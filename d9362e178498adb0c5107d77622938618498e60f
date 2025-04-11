@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddd21957_8b5b01cb",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-04-11T06:28:36Z",
+      "side": 1,
+      "message": "It seems that you don\u0027t need to define this macro. Can try to change `disable_chipset_force_shutdown_botton` to a weak function.\n```\n#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN\nvoid disable_chipset_force_shutdown_botton(void)\n{\n\thook_call_deferred(\u0026chipset_force_shutdown_button_data, -1);\n}\n#endif\n```",
+      "parentUuid": "3074bc40_991ef002",
+      "revId": "d9362e178498adb0c5107d77622938618498e60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02ca9c00_fd441a4f",
         "filename": "zephyr/program/rauru/hylia/src/board.c",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2025-04-11T05:56:44Z",
       "side": 1,
       "message": "You might want to leverage powerbtn_is_enabale status to determine whether you shall renable or not.",
+      "revId": "d9362e178498adb0c5107d77622938618498e60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c627cc_dc362eda",
+        "filename": "zephyr/program/rauru/hylia/src/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-04-11T06:28:36Z",
+      "side": 1,
+      "message": "Yes, we need to enable the button function when shutting down the machine to prevent repeated enabling. Although I am not sure whether repeated enable will cause other problems.",
+      "parentUuid": "02ca9c00_fd441a4f",
       "revId": "d9362e178498adb0c5107d77622938618498e60f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
