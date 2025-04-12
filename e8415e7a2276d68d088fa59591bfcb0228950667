@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df407ce8_90f669fc",
+        "filename": "zephyr/drivers/usbc/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-12T00:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b880615_72c817ad",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "e8415e7a2276d68d088fa59591bfcb0228950667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc1b7769_5c6bfa92",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-04-09T22:35:42Z",
       "side": 1,
       "message": "Nit - move to a separate CL",
+      "range": {
+        "startLine": 770,
+        "startChar": 11,
+        "endLine": 770,
+        "endChar": 30
+      },
+      "revId": "e8415e7a2276d68d088fa59591bfcb0228950667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6093a2bd_cdd1f85a",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-12T00:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc1b7769_5c6bfa92",
       "range": {
         "startLine": 770,
         "startChar": 11,
