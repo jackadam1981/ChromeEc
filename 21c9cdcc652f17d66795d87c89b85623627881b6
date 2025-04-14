@@ -22,6 +22,23 @@
       },
       "revId": "21c9cdcc652f17d66795d87c89b85623627881b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac6f8cc_6cfc315a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-14T22:07:56Z",
+      "side": 1,
+      "message": "The WP interrupt handler only updates the memmap switch `EC_SWITCH_WRITE_PROTECT_DISABLED`. I don\u0027t see any coreboot driver or kernel driver use this bit, except the `ectool` for a debug purpose. We expect the WP state not changing after boot. Many decisions like the futility updater rely the WP state at the boot time. Since there is no real use case of this WP switch, please don\u0027t add this interrupt handler. And we may deprecate the relevant code of the WP switch update.",
+      "revId": "21c9cdcc652f17d66795d87c89b85623627881b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
