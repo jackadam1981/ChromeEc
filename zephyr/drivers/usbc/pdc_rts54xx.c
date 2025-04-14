@@ -321,6 +321,8 @@ struct pdc_config_t {
 	void (*create_thread)(const struct device *dev);
 	/** If true, do not apply PDC FW updates to this port */
 	bool no_fw_update;
+	/** Whether or not this port supports CCD */
+	bool ccd;
 	/** Pointer to the device-specific callback function */
 	gpio_callback_handler_t callback_handler;
 };
@@ -1254,6 +1256,7 @@ static void st_read_run(void *o)
 		info->driver_name[sizeof(info->driver_name) - 1] = '\0';
 
 		info->no_fw_update = cfg->no_fw_update;
+		info->ccd = cfg->ccd;
 
 		/* Retain a cached copy of this data */
 		data->info = *info;
@@ -2920,6 +2923,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.bits.sink_path_status_change = 1,                            \
 		.create_thread = create_thread_##inst,                        \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),             \
+		.ccd = DT_INST_PROP(inst, ccd),                               \
 		.callback_handler = pdc_interrupt_callback##inst,             \
 	};                                                                    \
                                                                               \
