@@ -35,5 +35,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "edp_bklt_interrupt";
 		};
+		int_wp_l: wp_l {
+			irq-pin = <&gpio_ec_wp_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "switch_interrupt";
+		};
 	};
 };

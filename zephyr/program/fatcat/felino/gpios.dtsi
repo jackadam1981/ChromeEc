@@ -6,6 +6,7 @@
 / {
 	aliases {
 		gpio-wp = &gpio_ec_wp_odl;
+		int-wp = &int_wp_l;
 	};
 
 	named-gpios {
