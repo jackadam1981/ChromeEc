@@ -135,6 +135,7 @@ struct pdc_bus_info_t {
 	union {
 		struct i2c_dt_spec i2c;
 	};
+	bool ccd;
 };
 
 /**
