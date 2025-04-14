@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b57fff_e75e29c5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-04-14T11:33:42Z",
+      "side": 1,
+      "message": "Need to return cfg-\u003eccd in info as well.",
+      "fixSuggestions": [
+        {
+          "fixId": "552602dc_08d49796",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/pdc_tps6699x.c",
+              "range": {
+                "startLine": 1408,
+                "startChar": 0,
+                "endLine": 1408,
+                "endChar": 0
+              },
+              "replacement": "\tinfo-\u003eccd \u003d cfg-\u003eccd;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fc96aa12c0b1dad99243ae9173826ffa290227a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
