@@ -197,6 +197,8 @@ struct pdc_config_t {
 	void (*create_thread)(const struct device *dev);
 	/** If true, do not apply PDC FW updates to this port */
 	bool no_fw_update;
+	/** Whether or not this port supports CCD */
+	bool ccd;
 };
 
 /**
@@ -2273,6 +2275,7 @@ static int tps_get_bus_info(const struct device *dev,
 
 	info->bus_type = PDC_BUS_TYPE_I2C;
 	info->i2c = cfg->i2c;
+	info->ccd = cfg->ccd;
 
 	return 0;
 }
@@ -2807,6 +2810,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.bits.sink_path_status_change = 1,                             \
 		.create_thread = create_thread_##inst,                         \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),              \
+		.ccd = DT_INST_PROP(inst, ccd),                                \
 	};                                                                     \
                                                                                \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,          \
