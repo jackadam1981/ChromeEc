@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf8cc40_8bc3654e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-14T18:31:58Z",
+      "side": 1,
+      "message": "this is a pretty large patch. is this mostly based on another device?\nif this is mostly new stuff, it would be better to split this\ninto a simpler base patch and stack new functionality on top of it.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "3b73aa4251c1f3188ad2511a25b33f3063e17f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
