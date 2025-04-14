@@ -162,6 +162,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07dce6c0_16053c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-14T01:59:02Z",
+      "side": 1,
+      "message": "Thanks for your information.",
+      "parentUuid": "cd753347_93400a92",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fac2ba43_4f5bd700",
@@ -264,6 +282,24 @@
       "side": 1,
       "message": "Thanks for the pointer. I remember that now. Let\u0027s work on landing this in our shim layer, but then we should figure out how to make a proposal to add upstream support for this type of functionality.",
       "parentUuid": "f59bd2ae_cfb976ec",
+      "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b8998a_acdda182",
+        "filename": "zephyr/shim/chip/npcx/ram_lock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-14T01:59:02Z",
+      "side": 1,
+      "message": "Got it thanks.",
+      "parentUuid": "40318ee1_f8b2674e",
       "revId": "4a40f877b360fcbe206ca1d8d7921f5f543cf713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
