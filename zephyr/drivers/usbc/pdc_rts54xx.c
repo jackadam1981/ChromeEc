@@ -1088,11 +1088,10 @@ static void st_ping_status_run(void *o)
 			 * and all other fields to zero.
 			 */
 			if (data->cci_event.busy == 0) {
-				/* Only notify subsystem of busy event once */
-				data->cci_event.busy = 1;
-
 				/* Notify system of status change */
 				call_cci_event_cb(data);
+				/* Only notify subsystem of busy event once */
+				data->cci_event.busy = 1;
 			}
 		}
 		break;
