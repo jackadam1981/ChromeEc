@@ -1882,6 +1882,9 @@ struct ec_flash_bank {
 	uint8_t protect_size_exp;
 	/* Reserved; set 0; ignore on read */
 	uint8_t reserved[2];
+
+	friend bool operator==(const struct ec_flash_bank &lhs,
+			       const struct ec_flash_bank &rhs) = default;
 };
 
 struct ec_response_flash_info_2 {
