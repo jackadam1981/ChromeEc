@@ -1492,6 +1492,19 @@ static void pick_sections(struct transfer_descriptor *td, struct image *image)
 						sections[RO_B].offset;
 			if ((i == RW_B) == active_rw_slot_b)
 				continue;
+
+			/*
+			 * Block NT (Z1 -> A1) FW update by looking at version
+			 * numbers.
+			 * TODO(b/409779012): Remove this check after Q3 2025.
+			 */
+			if (targ.shv[1].major == 36 &&
+			    targ.shv[1].minor < 20 &&
+			    sections[i].shv.minor >= 20) {
+				printf("NT Z1 -> A1 transition blocked\n");
+				continue;
+			}
+
 			/*
 			 * Ok, this would be the RW section to transfer to the
 			 * device. Is it newer in the new image than the
@@ -1739,7 +1752,7 @@ static int supports_reordered_section_updates(struct signed_header_version *rw)
  * success/failure.
  */
 static void send_owner_config(struct transfer_descriptor *td,
-				const char *file_name)
+			      const char *file_name)
 {
 	struct stat st;
 	const size_t config_size = 2048;
@@ -1754,8 +1767,8 @@ static void send_owner_config(struct transfer_descriptor *td,
 	}
 
 	if (st.st_size != config_size) {
-		fprintf(stderr, "Unexpected size %zd of %s\n",
-			st.st_size, file_name);
+		fprintf(stderr, "Unexpected size %zd of %s\n", st.st_size,
+			file_name);
 		exit(1);
 	}
 
@@ -4952,20 +4965,13 @@ int main(int argc, char *argv[])
 	 * with addresses of the flags. Terminated by a zeroed entry.
 	 */
 	const struct options_map omap[] = {
-		{ 'b', &binary_vers },
-		{ 'c', &corrupt_inactive_rw },
-		{ 'f', &show_fw_ver },
-		{ 'g', &get_boot_mode },
-		{ 'H', &erase_ap_ro_hash },
-		{ 'j', &upload_owner_config },
-		{ 'k', &ccd_lock },
-		{ 'o', &ccd_open },
-		{ 'P', &password },
-		{ 'p', &td.post_reset },
-		{ 'U', &ccd_unlock },
-		{ 'u', &td.upstart_mode },
-		{ 'V', &verbose_mode },
-		{},
+		{ 'b', &binary_vers },	    { 'c', &corrupt_inactive_rw },
+		{ 'f', &show_fw_ver },	    { 'g', &get_boot_mode },
+		{ 'H', &erase_ap_ro_hash }, { 'j', &upload_owner_config },
+		{ 'k', &ccd_lock },	    { 'o', &ccd_open },
+		{ 'P', &password },	    { 'p', &td.post_reset },
+		{ 'U', &ccd_unlock },	    { 'u', &td.upstart_mode },
+		{ 'V', &verbose_mode },	    {},
 	};
 
 	/*
@@ -5385,7 +5391,7 @@ int main(int argc, char *argv[])
 	if (upload_owner_config) {
 		if (gsc_dev != GSC_DEVICE_NT) {
 			fprintf(stderr, "Owner's config can be uploaded only "
-				"on opentitan devices\n");
+					"on opentitan devices\n");
 			exit(1);
 		}
 
