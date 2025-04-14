@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e9a262_0da6eb88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-14T20:10:18Z",
+      "side": 1,
+      "message": "does this fix the `For the software write protect, it will fail at \"futility flash --wp-disable\".` mentioned in the bug?\n\ni didn\u0027t see an interrupt handler for this on brox or rex.\ni wonder what the difference is.",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "21c9cdcc652f17d66795d87c89b85623627881b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
