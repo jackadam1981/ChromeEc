@@ -34,6 +34,24 @@
       "parentUuid": "69c7d058_468ce102",
       "revId": "378bec1c864948b8674674e5218c58a7ca98a302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0029f366_0eeb11f2",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-04-14T15:35:36Z",
+      "side": 1,
+      "message": "it was a typo in TEST details earlier, corrected this in commit message now.\n\nHere is the verification details\n\nIn tablet mode suspend the DUT.\nWhile DUT is in suspend mode, press any key on the onboard\nkeyboard. The DUT does not waking up which indicates Keyboard suspension.",
+      "parentUuid": "c51d7a89_91fe0f97",
+      "revId": "378bec1c864948b8674674e5218c58a7ca98a302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
