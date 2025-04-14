@@ -16,6 +16,24 @@
       "message": "There\u0027s a failed CI item that I think is unrelated to the contents of this CL, but when I try to access the error message I get permission denied. Jett, can you see the error message?",
       "revId": "88ec48554dd051e93e3e38d6df777885159bc983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246dc093_35ed694e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3617594
+      },
+      "writtenOn": "2025-04-14T17:19:01Z",
+      "side": 1,
+      "message": "Oh, and in case it disappears the failed step is `firmware-ec-gsc-utils-cq` and the error message I can see is:\n\nStep(\u0027uprev packages.call chromite.api.PackageService/Uprev.call build API script\u0027) (retcode: 1)\n\nI can\u0027t see the rest of the build output though.",
+      "parentUuid": "0ae85d3a_0914f000",
+      "revId": "88ec48554dd051e93e3e38d6df777885159bc983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
