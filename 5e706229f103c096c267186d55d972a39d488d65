@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6585ee2f_0096416f",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-14T23:18:55Z",
+      "side": 1,
+      "message": "Moving this here means that the handlers registered with the callback never see the busy status set.  [For example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/pd_controller/pdc_power_mgmt.c;l\u003d3153;drc\u003d202e8f0423d001721dbc5e82dd3367ba7b1ff25a)\n\nA better fix is to check the retry counter and only send the notification on the first retry.\n\n```\nif (data-\u003eping_retry_counter \u003d\u003d 1) {\n    data-\u003ecci_event.busy \u003d 1;\n    call_cci_event_cb(data);\n}\n```",
+      "range": {
+        "startLine": 1094,
+        "startChar": 0,
+        "endLine": 1094,
+        "endChar": 29
+      },
+      "revId": "5e706229f103c096c267186d55d972a39d488d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
