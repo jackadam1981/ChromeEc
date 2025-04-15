@@ -52,7 +52,7 @@ register_trulo_project(
         here / "program.conf",
         # Parent project's config
         here / "pujjolo" / "project.conf",
-        # Support DSP comms (split off to avoid conflicts with uldrenite)
+        # Support DSP comms
         here / "dsp_comms.conf",
     ],
     modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
@@ -67,7 +67,7 @@ register_trulo_project(
         here / "trulo" / "project.conf",
         # Project-specific KConfig customization.
         here / "trulo-ti" / "project.conf",
-        # Support DSP comms (split off to avoid conflicts with uldrenite)
+        # Support DSP comms
         here / "dsp_comms.conf",
     ],
     modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
@@ -81,7 +81,10 @@ register_trulo_project(
         here / "program.conf",
         # Parent project's config
         here / "uldrenite" / "project.conf",
+        # Support DSP comms
+        here / "dsp_comms.conf",
     ],
+    modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
 
 register_ish_project(
