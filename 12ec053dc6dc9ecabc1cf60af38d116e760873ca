@@ -40,6 +40,30 @@
       ],
       "revId": "12ec053dc6dc9ecabc1cf60af38d116e760873ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46915bbf_e8fd3272",
+        "filename": "zephyr/program/fpmcu/gwendolin/gwendolin.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-15T23:16:58Z",
+      "side": 1,
+      "message": "@davidmcross\n\nIs this the correct spi for gwendolin? My understanding is that this is the connection between the fingerprint sensor and the MCU, am I correct?",
+      "parentUuid": "b2484a7a_d03f4aed",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 6
+      },
+      "revId": "12ec053dc6dc9ecabc1cf60af38d116e760873ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
