@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06389f24_d1e2cdf2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-15T18:59:09Z",
+      "side": 1,
+      "message": "@dawidn@google.com can we discuss this further?",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3e64967c_2618880c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 337,
+                "startChar": 0,
+                "endLine": 339,
+                "endChar": 0
+              },
+              "replacement": "\t\t.spi \u003d SPI_DT_GET_BY_COMPAT(DT_DRV_COMPAT, inst),        \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fc2ab29a682173efb57d5620465735242a9010e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
