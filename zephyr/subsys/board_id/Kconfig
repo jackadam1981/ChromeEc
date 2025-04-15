@@ -1,0 +1,4 @@
+menuconfig INTEL_BOARD_ID
+	bool "Intel board ID support"
+	default y
+	depends on DT_HAS_INTEL_BOARD_ID_ENABLED
