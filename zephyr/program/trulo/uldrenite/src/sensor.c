@@ -21,7 +21,7 @@
 
 #define I2C_PORT_SENSOR 1
 
-LOG_MODULE_DECLARE(trulo, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(trulo_sensor, LOG_LEVEL_INF);
 
 enum base_sensor_type {
 	base_lis2dw12 = 0,
@@ -48,7 +48,8 @@ void lid_accel_interrupt(enum gpio_signal signal)
 		bma4xx_interrupt(signal);
 }
 
-static void motionsense_init(void)
+#ifndef CONFIG_SOC_FAMILY_INTEL_ISH
+static void conditionally_disable_motionsense(void)
 {
 	int ish_enabled;
 	int ret = cros_cbi_get_fw_config(ISH, &ish_enabled);
@@ -58,19 +59,25 @@ static void motionsense_init(void)
 		return;
 	}
 
-	if (ish_enabled == ISH_ENABLED) {
-		motion_sensor_count = 0;
-		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
-		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
-		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
-				      GPIO_DISCONNECTED);
-		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
-				      GPIO_DISCONNECTED);
-		LOG_INF("No motionsense");
+	if (ish_enabled == ISH_DISABLED) {
 		return;
 	}
 
-	ret = cros_cbi_get_fw_config(FORM_FACTOR, &sensor_fwconfig);
+	motion_sensor_count = 0;
+	gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+	gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
+	gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
+			      GPIO_DISCONNECTED);
+	gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
+			      GPIO_DISCONNECTED);
+	LOG_INF("No motionsense");
+}
+
+static void motionsense_init(void)
+{
+	conditionally_disable_motionsense();
+
+	int ret = cros_cbi_get_fw_config(FORM_FACTOR, &sensor_fwconfig);
 	if (ret < 0) {
 		LOG_ERR("error retriving CBI config: %d", ret);
 		return;
@@ -87,6 +94,7 @@ static void motionsense_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, motionsense_init, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_SOC_FAMILY_INTEL_ISH */
 
 static void alt_sensor_init(void)
 {
