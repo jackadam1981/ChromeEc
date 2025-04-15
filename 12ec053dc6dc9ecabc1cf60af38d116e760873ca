@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2484a7a_d03f4aed",
+        "filename": "zephyr/program/fpmcu/gwendolin/gwendolin.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-15T23:15:20Z",
+      "side": 1,
+      "message": "@david",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6db8b57e_f0859acd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/gwendolin/gwendolin.dts",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "\u0026spi0 {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "12ec053dc6dc9ecabc1cf60af38d116e760873ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
