@@ -1,0 +1,44 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+    This binds drivers with specific board ID obtained from CBI. The list
+    for `devices` initialization will be performed only if current board id
+    matches with `board-version`.
+
+    For instance:
+    ````
+    board-id0 {
+        compatible = "intel,board-id";
+        board-version = <257>;
+        devices = <&pca95xx_0 &pca95xx_1>;
+    };
+    board-id1 {
+        compatible = "intel,board-id";
+        board-version = <258>;
+        devices = <&ioex_it8801_port0 &ioex_it8801_port1 &ioex_it8801_port2>;
+    };
+    ````
+    During system initialization board version will be obtained from CBI and
+    drivers `pca95xx_0` & `pca95xx_1` will be initialized only if board id matches
+    with value `257`.
+
+    Please note that each driver listed on any `intel,board-id` node must have
+    property `zephyr,deferred-init` set.
+
+compatible: "intel,board-id"
+
+properties:
+  board-version:
+    type: int
+    required: true
+    description: ID of board associated to these devices.
+  devices:
+    required: false
+    type: phandles
+    description: Devices to be initialized.
+  variant-gpios:
+    required: false
+    type: phandles
+    description: Variant gpios that correspond to this board id.

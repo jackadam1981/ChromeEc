@@ -1,0 +1,11 @@
+menuconfig INTEL_BOARD_ID
+	bool "Intel board ID support"
+	default y
+	depends on DT_HAS_INTEL_BOARD_ID_ENABLED
+
+if INTEL_BOARD_ID
+config INTEL_VARIANT_GPIO
+	bool "Intel board ID support"
+	default y
+	depends on DT_HAS_INTEL_VARIANT_GPIO_ENABLED
+endif

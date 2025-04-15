@@ -1,0 +1,13 @@
+description: Named GPIOs parent node
+
+compatible: "intel,variant-gpio"
+
+properties:
+  #
+  # Must name this property [..-]gpios which
+  # is treated specially (looks for #gpio-cells
+  # in referenced node so that cell properties can
+  # be specified). If this property does not exist, treat
+  # this GPIO as unimplemented.
+  gpios:
+    type: phandles

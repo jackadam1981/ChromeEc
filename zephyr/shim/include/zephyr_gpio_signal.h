@@ -8,6 +8,7 @@
 #endif
 #define __CROS_EC_ZEPHYR_GPIO_SIGNAL_H
 
+#include <zephyr/device.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/toolchain.h>
 
@@ -146,10 +147,28 @@ BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
 
 #define GPIO_DT_FROM_NODE(id) GPIO_DT_NAME(GPIO_SIGNAL(id))
 
+#ifdef CONFIG_INTEL_VARIANT_GPIO
+
+const struct gpio_dt_spec *intel_variant_gpio_get_dt(const struct device *dev);
+
+#define INTEL_VARIANT_DT_FROM_NODE(node) DEVICE_DT_GET(node)
+
+#define INTEL_VARIANT_GPIO_DT_FROM_NODE(node)                                 \
+	COND_CODE_1(                                                          \
+		DT_NODE_HAS_COMPAT(node, intel_variant_gpio),                 \
+		(intel_variant_gpio_get_dt(INTEL_VARIANT_DT_FROM_NODE(node))), \
+		(GPIO_DT_FROM_NODE(node)))
+
+#define GPIO_DT_FROM_NODELABEL(label) \
+	INTEL_VARIANT_GPIO_DT_FROM_NODE(DT_NODELABEL(label))
+
+#define GPIO_DT_FROM_ALIAS(id) INTEL_VARIANT_GPIO_DT_FROM_NODE(DT_ALIAS(id))
+
+#else
 #define GPIO_DT_FROM_ALIAS(id) GPIO_DT_FROM_NODE(DT_ALIAS(id))
 
 #define GPIO_DT_FROM_NODELABEL(label) GPIO_DT_FROM_NODE(DT_NODELABEL(label))
-
+#endif
 #if DT_NODE_EXISTS(NAMED_GPIOS_NODE)
 /*
  * Declare the pointers that refer to the gpio_dt_spec entries
