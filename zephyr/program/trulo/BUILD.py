@@ -103,6 +103,21 @@ register_ish_project(
     modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
 )
 
+register_ish_project(
+    project_name="uldrenite-ish",
+    zephyr_board="intel_ish_5_4_1",
+    dts_overlays=[
+        here / "uldrenite-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "uldrenite-ish" / "project.conf",
+        # Uncomment the following line for UART support
+        # here / "trulo-ish" / "debug.conf",
+        here / "dsp_comms.conf",
+    ],
+    modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="trulo", addr=0x40144)
