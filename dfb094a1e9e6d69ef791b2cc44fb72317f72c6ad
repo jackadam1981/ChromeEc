@@ -16,6 +16,24 @@
       "message": "Why can\u0027t a bitmask be used on an enum?  The max value assigned to the enum is `BIT(15)`.",
       "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e093fbfb_6f0dd446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-15T22:40:00Z",
+      "side": 1,
+      "message": "There are a couple of issues with it related to type safety. For example `AP_POWER_PRE_INIT | AP_POWER_STARTUP` is not of type `enum ap_power_events`. So the naive approach would be to cast the `events` argument. But we\u0027re expecting the user to `|` the arguments already so technically the inbound argument is likely not `enum ap_power_events` anyway. Overall, if we\u0027re going to use it as a bit mask, it makes sense to use a uint32_t or uint16_t.",
+      "parentUuid": "d7ecf99c_12a9a925",
+      "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
