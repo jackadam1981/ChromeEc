@@ -14,8 +14,7 @@
 
 		i2c_ec_i2c_sensor_r: ec_i2c_sensor_r {
 			i2c-port = <&i2c1_0>;
-			enum-names = "I2C_PORT_SENSOR",
-						 "I2C_PORT_MP2964";
+			enum-names = "I2C_PORT_MP2964";
 		};
 	};
 };
@@ -45,6 +44,12 @@
 			compatible = "mps,mp2964";
 			reg = <0x20>;
 			label = "I2C_ADDR_MP2964_FLAGS";
+	};
+	dsp_service: dsp-service@21 {
+		compatible = "cros,dsp-service";
+		reg = <0x21>;
+		/* TODO update gpio, this is a place holder*/
+		int-gpios = <&gpiob 7 (GPIO_ACTIVE_LOW)>;
 	};
 };
 
