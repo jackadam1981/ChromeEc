@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2562ec13_a59693cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-15T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5cc2d00_cf1db43b",
+      "revId": "bff9edd9ce503b2146a8e1c8887f7fde9957a888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0080adca_40cf90c5",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "862bd82a_2a6354e2",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-15T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0080adca_40cf90c5",
+      "revId": "bff9edd9ce503b2146a8e1c8887f7fde9957a888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93786cb_90035f45",
@@ -84,6 +120,24 @@
           ]
         }
       ],
+      "revId": "bff9edd9ce503b2146a8e1c8887f7fde9957a888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddbd4a01_16162766",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-15T10:01:17Z",
+      "side": 1,
+      "message": "Yes, the assignment `info-\u003eccd \u003d cfg-\u003eccd` comes from `pdc_bus_info_t *info`.\nTherefore, we need to add the `bool ccd` field to the `struct pdc_info_t` definition.",
+      "parentUuid": "e93786cb_90035f45",
       "revId": "bff9edd9ce503b2146a8e1c8887f7fde9957a888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

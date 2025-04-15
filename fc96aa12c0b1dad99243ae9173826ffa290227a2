@@ -77,6 +77,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3676cf4d_bb3400b8",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-15T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "063402b6_1edeead7",
+      "revId": "fc96aa12c0b1dad99243ae9173826ffa290227a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf6c05b5_9ff4c299",
@@ -90,6 +108,30 @@
       "writtenOn": "2025-04-14T12:13:17Z",
       "side": 1,
       "message": "Don\u0027t make this a live read. This makes an unnecessary GET_IC_STATUS command call (RTK) or register read (TI) to the PDC when the CCD property is already cached and static.",
+      "range": {
+        "startLine": 4862,
+        "startChar": 40,
+        "endLine": 4862,
+        "endChar": 41
+      },
+      "revId": "fc96aa12c0b1dad99243ae9173826ffa290227a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e638e8db_835af4b1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4862,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-15T10:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf6c05b5_9ff4c299",
       "range": {
         "startLine": 4862,
         "startChar": 40,
