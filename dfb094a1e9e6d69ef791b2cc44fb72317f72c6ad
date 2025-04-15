@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c669317_46c614d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-15T22:49:22Z",
+      "side": 1,
+      "message": "```suggestion\nap_power: convert AP events to bitmask\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b50c57_c53cf878",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-15T22:49:22Z",
+      "side": 1,
+      "message": "Nit - line length.\n\nAlso change the description to note that callers are allowed to OR together multiple events, so this shouldn\u0027t be managed as an enum.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 165
+      },
+      "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7ecf99c_12a9a925",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -32,6 +78,24 @@
       "side": 1,
       "message": "There are a couple of issues with it related to type safety. For example `AP_POWER_PRE_INIT | AP_POWER_STARTUP` is not of type `enum ap_power_events`. So the naive approach would be to cast the `events` argument. But we\u0027re expecting the user to `|` the arguments already so technically the inbound argument is likely not `enum ap_power_events` anyway. Overall, if we\u0027re going to use it as a bit mask, it makes sense to use a uint32_t or uint16_t.",
       "parentUuid": "d7ecf99c_12a9a925",
+      "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "595c5778_0d20b12c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-15T22:49:22Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I agree this shouldn\u0027t be an enum and this change is needed even without C++ support.",
+      "parentUuid": "e093fbfb_6f0dd446",
       "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
