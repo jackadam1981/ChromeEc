@@ -26,7 +26,7 @@ def register_trulo_project(
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
-        kconfig_files=kconfig_files,
+        kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
         inherited_from=["trulo"],
         **kwargs,
     )
@@ -39,8 +39,6 @@ register_trulo_project(
         here / "program.conf",
         # Parent project's config
         here / "trulo" / "project.conf",
-        # Support DSP comms (split off to avoid conflicts with uldrenite)
-        here / "dsp_comms.conf",
     ],
     modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
@@ -52,8 +50,6 @@ register_trulo_project(
         here / "program.conf",
         # Parent project's config
         here / "pujjolo" / "project.conf",
-        # Support DSP comms (split off to avoid conflicts with uldrenite)
-        here / "dsp_comms.conf",
     ],
     modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
@@ -67,8 +63,6 @@ register_trulo_project(
         here / "trulo" / "project.conf",
         # Project-specific KConfig customization.
         here / "trulo-ti" / "project.conf",
-        # Support DSP comms (split off to avoid conflicts with uldrenite)
-        here / "dsp_comms.conf",
     ],
     modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
@@ -82,6 +76,7 @@ register_trulo_project(
         # Parent project's config
         here / "uldrenite" / "project.conf",
     ],
+    modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
 
 register_ish_project(
