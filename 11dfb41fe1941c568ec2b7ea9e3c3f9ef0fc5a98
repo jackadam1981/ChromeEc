@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df0c328_ee6bf0bb",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-15T22:33:21Z",
+      "side": 1,
+      "message": "Non-blocking, this would be better designed using a helper symbol.\n\n```\nconfig HAS_BODY_DETECTION_HOOK\n    bool\n    help\n      This platform can generate on body notifications.\n      \nconfig PLATFORM_EC_DSP_REMOTE_BODY_DETECTION\n    select HAS_BODY_DETECTION_HOOK\n```\n\nHowever, the legacy EC configs don\u0027t allow this kind of dependency.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 39
+      },
+      "revId": "11dfb41fe1941c568ec2b7ea9e3c3f9ef0fc5a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443fc1a1_6e92b6b4",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-15T22:33:21Z",
+      "side": 1,
+      "message": "Wrong formatting.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a4ea4b63_676fb1fa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/dsp_comms/Kconfig",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "\t  Use the body detection hooks, but the source of truth is on another\n\t  MCU. DSP will broadcast events, while the server will receive them.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "11dfb41fe1941c568ec2b7ea9e3c3f9ef0fc5a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
