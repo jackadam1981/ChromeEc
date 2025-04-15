@@ -1,0 +1,137 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82590113_de33c8e8",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-15T18:21:29Z",
+      "side": 1,
+      "message": "@dawidn@google.com Hello Dawid, where does this number come from? What does the key-ro do here?",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "89674122_2322bfb7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t/* This offset is the start of the key-ro section in the\n\t\t\t\t * flash layout.\n\t\t\t\t */\n"
+            },
+            {
+              "path": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t/* This offset is the start of the sig-rw section in the\n\t\t\t\t * flash layout.\n\t\t\t\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9292b941_80ad7f34",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-15T18:21:29Z",
+      "side": 1,
+      "message": "@dawidn@google.com What is this node and what is its role?\nhow about `offset-from-elf `?",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f702a041_213f39f8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\toffset-from-elf \u003d \u003c\u0026rw_data\u003e,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0584a5a2_a484258a",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-15T18:21:29Z",
+      "side": 1,
+      "message": "@dawidn@google.com Where is this number coming from? What does it mean",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5066e106_feb88dd7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t/* This offset is the end of the RW image,\n\t\t\t\t * which is 0x4fc00.\n\t\t\t\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
