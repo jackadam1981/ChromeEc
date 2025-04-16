@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a8beb1d_cb9aa1a3",
+        "filename": "zephyr/include/ap_power/ap_power_events.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-16T21:55:01Z",
+      "side": 1,
+      "message": "Nit, move ap_power changes to separate CL for cleaner commit history.",
+      "revId": "23bb8c7f3c2080686efdf876c88dc0acdd151026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
