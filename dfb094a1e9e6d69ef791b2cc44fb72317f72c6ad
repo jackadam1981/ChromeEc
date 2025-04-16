@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8f39d3_a05c12f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-16T01:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c669317_46c614d6",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b50c57_c53cf878",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-15T22:49:22Z",
       "side": 1,
       "message": "Nit - line length.\n\nAlso change the description to note that callers are allowed to OR together multiple events, so this shouldn\u0027t be managed as an enum.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 165
+      },
+      "revId": "dfb094a1e9e6d69ef791b2cc44fb72317f72c6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4172a6c8_f555aaca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-16T01:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b50c57_c53cf878",
       "range": {
         "startLine": 9,
         "startChar": 0,
