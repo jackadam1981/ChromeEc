@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f2abdc_d804efe7",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged. All the GPIOs which are supporting different functions, are mentioned in comment.",
+      "parentUuid": "a6184d9b_65d1b18b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a4d39e_251763ae",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-11T17:07:33Z",
       "side": 1,
       "message": "Probably not needed - this will be defined by the PDC driver node.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6a1dbe_7c3a6944",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged. Currently added as part of unused pins. This pin will be configured as part of USB support in further CL.",
+      "parentUuid": "11a4d39e_251763ae",
       "range": {
         "startLine": 28,
         "startChar": 2,
@@ -98,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70bbfd4_8f51564c",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged and moved these pins as part of unused pins. This will be configured as part of led support in further CL.",
+      "parentUuid": "b8a364c1_81ee689f",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b8ce6b8_b32a4cc9",
@@ -111,6 +183,30 @@
       "writtenOn": "2025-04-11T17:07:33Z",
       "side": 1,
       "message": "Delete - this legacy enum name is not used by the Zephyr AP power sequence driver.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8680a325_a425de04",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "1b8ce6b8_b32a4cc9",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -144,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b694771_cea9cb66",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Hi Keith, reference node name for power signals is used to refer these pins as part of different device nodes.\n \nSimilar reference for this pwrgd signal:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fatcat/felino/fan.dtsi;drc\u003d1210af214f2dfb7f67edf5225227e07545ce69dc;l\u003d17\n\nHence, I have considered to keep all the power signals defined in named-gpios. Please let me know if you have any further suggestion on this.",
+      "parentUuid": "31adf2ba_792b6313",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9c5e85_de3227df",
@@ -157,6 +277,30 @@
       "writtenOn": "2025-04-11T17:07:33Z",
       "side": 1,
       "message": "This is deprecated.  Temperature sensors use the `cros-ec,temp-sensors-\u003epower-good-pin` to configure the GPIO used to guard access to the temperature sensor.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99cdb368_071865fa",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "0e9c5e85_de3227df",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -208,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95be8683_b63d5ea8",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "b9b5bdd9_c7cdb406",
+      "range": {
+        "startLine": 108,
+        "startChar": 17,
+        "endLine": 108,
+        "endChar": 22
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e835990f_dfc34eda",
@@ -231,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82ac071_fe4408dd",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Acknowledged. This will be configured in further CL when keyboard and IOEX support added.",
+      "parentUuid": "e835990f_dfc34eda",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a122914_03ecdd61",
@@ -244,6 +436,30 @@
       "writtenOn": "2025-04-11T17:07:33Z",
       "side": 1,
       "message": "Power sequencing signals shouldn\u0027t be included in the `named-gpios` node.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3f0406_78b51307",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-16T15:08:12Z",
+      "side": 1,
+      "message": "Not removed this signal based on the understanding shared in comment https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6381519/comment/31adf2ba_792b6313/ \n\nPlease let me know if you have any further suggestion.",
+      "parentUuid": "4a122914_03ecdd61",
       "range": {
         "startLine": 129,
         "startChar": 0,
