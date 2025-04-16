@@ -30,6 +30,7 @@ EC_BOARDS = [
 
 ZEPHYR_BOARDS = [
     "bloonchipper",
+    "helipilot",
 ]
 
 
