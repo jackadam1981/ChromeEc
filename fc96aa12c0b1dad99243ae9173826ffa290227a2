@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e1d012a_e9ce9df1",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-04-16T03:29:38Z",
+      "side": 1,
+      "message": "Agree to rename to pdc_hw_info_t to make it more generic rather than just i2c bus if there are more info inside.",
+      "parentUuid": "50ed38ff_fdc11b73",
+      "range": {
+        "startLine": 2131,
+        "startChar": 0,
+        "endLine": 2132,
+        "endChar": 37
+      },
+      "revId": "fc96aa12c0b1dad99243ae9173826ffa290227a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9b57fff_e75e29c5",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 1
