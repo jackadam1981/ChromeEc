@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e537552a_a942c0ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-16T04:33:40Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be the same as what\u0027s in `bq25710_charger_info`?",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "40e943b6a2cd293e5ff0b717fb46f738e87fed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275d93a8_65fd78fa",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-16T04:33:40Z",
+      "side": 1,
+      "message": "the unit here is milliamps. does this mean the value\nin ChargeCurrent register 14h is independent of the\nsense resistor value?\nsection 9.3.6 says \"range is doubled to 16.256 A\" for 5 ohm sensing.",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "788ea45d_fcd0d696",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/charger/bq25710.c",
+              "range": {
+                "startLine": 150,
+                "startChar": 0,
+                "endLine": 151,
+                "endChar": 0
+              },
+              "replacement": "\t.current_max \u003d 8128, /* mA */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "40e943b6a2cd293e5ff0b717fb46f738e87fed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
