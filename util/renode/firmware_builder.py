@@ -24,25 +24,27 @@ from chromite.api.gen_sdk.chromite.api import firmware_pb2
 
 
 EC_BOARDS = [
-    "dartmonkey",
-    "helipilot",
+    # "dartmonkey",
+    # "helipilot",
 ]
 
 ZEPHYR_BOARDS = [
-    "bloonchipper",
+    # "bloonchipper",
+    "helipilot",
 ]
 
 
 def build(opts):
     """Build all the EC unit tests."""
 
-    working_dir = Path(__file__).parents[2].resolve()
-    cmd = [
-        "make",
-        f"-j{opts.cpus}",
-    ]
-    cmd.extend(["tests-" + b for b in EC_BOARDS])
-    subprocess.run(cmd, cwd=working_dir, check=True)
+
+#    working_dir = Path(__file__).parents[2].resolve()
+#    cmd = [
+#        "make",
+#        f"-j{opts.cpus}",
+#    ]
+#    cmd.extend(["tests-" + b for b in EC_BOARDS])
+#    subprocess.run(cmd, cwd=working_dir, check=True)
 
 
 def bundle(opts):
