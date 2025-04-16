@@ -40,6 +40,30 @@
       ],
       "revId": "485358e1fa909073076505e9a2c81b9941a29249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0124a7e3_607f733c",
+        "filename": "board/redrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2025-04-16T23:29:42Z",
+      "side": 1,
+      "message": "6V was suggested in b/399429151#comment117. I don\u0027t have any preference for either.",
+      "parentUuid": "5535764e_04d4dd9d",
+      "range": {
+        "startLine": 205,
+        "startChar": 51,
+        "endLine": 205,
+        "endChar": 55
+      },
+      "revId": "485358e1fa909073076505e9a2c81b9941a29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
