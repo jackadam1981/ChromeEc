@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4b3910_19e950c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-16T03:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614325df_85999d75",
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e7e7a07_d6b7364e",
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da1f150_1a5e6715",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-16T03:54:28Z",
+      "side": 1,
+      "message": "Modified. And Leo has helped commit it in the bug.",
+      "parentUuid": "0f01c1a9_f1d4d0e0",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 39
+      },
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3183025d_ae965c18",
@@ -120,6 +162,30 @@
           ]
         }
       ],
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ad8395_24783ed9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-16T03:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3183025d_ae965c18",
+      "range": {
+        "startLine": 356,
+        "startChar": 1,
+        "endLine": 356,
+        "endChar": 43
+      },
       "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +237,30 @@
           ]
         }
       ],
+      "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35c1d95_189f21fe",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-16T03:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927b00da_98c94663",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 45
+      },
       "revId": "3107923d6ffe30759c71750c2fb789403b4b9e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
