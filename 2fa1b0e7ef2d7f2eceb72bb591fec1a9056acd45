@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888a9d10_6dd3fa7a",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:04:54Z",
+      "side": 1,
+      "message": "Use `EC_RES_INVALID_PARAM` instead.",
+      "range": {
+        "startLine": 493,
+        "startChar": 9,
+        "endLine": 493,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0eae529c_7fbb208b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fan.c",
+              "range": {
+                "startLine": 493,
+                "startChar": 0,
+                "endLine": 494,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_RES_INVALID_PARAM;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2fa1b0e7ef2d7f2eceb72bb591fec1a9056acd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
