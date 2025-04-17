@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fa77af_94d51f46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-04-17T12:22:03Z",
+      "side": 1,
+      "message": "Good work Kamil, I think that\u0027s what we should aim at with unification of handling of svdm version in pd module.\n\nI\u0027m wondering if there is a possibility to ran more extensive tests with devices supporting SVDM version 2.0, as well as devices supporting only usb PD 2.0 - so SVDM version 1.0 and see if these changes lead to any issues.\n\nOne thing to note is that the change does not incorporate handling of SVDM 2.0 and 1.0 objects - it fills them like version 2.1. It theoretically should not lead to any issues, but I think we should test that before merging this CL.",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
