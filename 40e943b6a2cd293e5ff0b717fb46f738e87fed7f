@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a785d14_6303c84c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-17T03:32:04Z",
+      "side": 1,
+      "message": "Modified.",
+      "parentUuid": "e537552a_a942c0ad",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "40e943b6a2cd293e5ff0b717fb46f738e87fed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "275d93a8_65fd78fa",
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "40e943b6a2cd293e5ff0b717fb46f738e87fed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caff0130_c96f6104",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-17T03:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275d93a8_65fd78fa",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 20
+      },
       "revId": "40e943b6a2cd293e5ff0b717fb46f738e87fed7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
