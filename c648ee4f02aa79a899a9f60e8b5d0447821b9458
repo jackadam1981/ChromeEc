@@ -54,6 +54,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd1257ac_7145cd97",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-04-17T07:22:05Z",
+      "side": 1,
+      "message": "You declare in the Gwendolin dts file:\n```\n\t\t/* First 128 kB (uniform 4 kB sectors) used for RO */\n\t\twp-ro {\n\t\t\toffset \u003d \u003c0x0\u003e;\n\t\t\tsize \u003d \u003c0x20000\u003e;\n\t\t\tec-ro {\n\t\t\t\tpad-byte \u003d \u003c0xff\u003e;\n\t\t\t};\n\t\t};\n```\n`key-ro` is a public key for RWSIG and it is placed at the end of RO so 0x20000 - 0x400(key size) \u003d 0x1fc00. I don\u0027t know why it is `0x1ec40`. @davidmcross@google.com can you share some explanation?",
+      "parentUuid": "82590113_de33c8e8",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9292b941_80ad7f34",
         "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
         "patchSetId": 6
@@ -95,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f13daa73_becfddf1",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-04-17T07:22:05Z",
+      "side": 1,
+      "message": "[zephyr_rw](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/binman.dtsi;l\u003d55) node is a RW firmware binary blob.\n\n[offset-from-elf](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml;l\u003d29) is described in the binding file.",
+      "parentUuid": "9292b941_80ad7f34",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0584a5a2_a484258a",
         "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
         "patchSetId": 6
@@ -130,6 +178,30 @@
           ]
         }
       ],
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c61619_987b8c83",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-04-17T07:22:05Z",
+      "side": 1,
+      "message": "It is a signature of RW, at the end of the firmware. It is offset __within__ `rw-fw` node so size of the RW 0x50000 - 0x400 (size of the sig) \u003d 0x4fc00",
+      "parentUuid": "0584a5a2_a484258a",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 21
+      },
       "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
