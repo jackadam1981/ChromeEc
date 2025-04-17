@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c19a2ba_9e27f982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:44:44Z",
+      "side": 1,
+      "message": "Jut a nit.",
+      "revId": "0da82d2a3d38499e1dd18dfa412dbbeecb7b2dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97abbb6d_c08ac3f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3789,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:44:44Z",
+      "side": 1,
+      "message": "Add a comment to indicate Version 2.",
+      "range": {
+        "startLine": 3788,
+        "startChar": 0,
+        "endLine": 3789,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f584efcb_62c35e57",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/ec_commands.h",
+              "range": {
+                "startLine": 3789,
+                "startChar": 0,
+                "endLine": 3789,
+                "endChar": 0
+              },
+              "replacement": "/* Version 2 of input params */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0da82d2a3d38499e1dd18dfa412dbbeecb7b2dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
