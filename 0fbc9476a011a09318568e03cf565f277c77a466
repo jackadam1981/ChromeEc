@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec80a46_cb9734e9",
+        "filename": "zephyr/program/fatcat/fatcat_npcx9m7f/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-17T21:58:17Z",
+      "side": 1,
+      "message": "Its more consistent if the init state also follows the logical level.\n\nUse `GPIO_ACTIVE_LOW | GPIO_OUTPUT_ACTIVE)` or `GPIO_ACIVE_LOW | GPIO_OUTPUT_INIT_LOGICAL | GPIO_OUTPUT_INIT_HIGH)`",
+      "range": {
+        "startLine": 64,
+        "startChar": 54,
+        "endLine": 64,
+        "endChar": 92
+      },
+      "revId": "0fbc9476a011a09318568e03cf565f277c77a466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
