@@ -26,6 +26,11 @@
 /* ciri board override */
 
 / {
+	ec-console {
+		compatible = "ec-console";
+		disabled = "events", "lpc", "hostcmd";
+	};
+
 	named-gpios {
 		/delete-node/ als-rgb-int-odl;
 		/delete-node/ lid-360-l;
