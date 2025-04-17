@@ -1109,11 +1109,11 @@ static void isl9241_init(int chgnum)
 	 * [15:13]: Trickle Charging Current (battery pre-charge current)
 	 * [10:9] : Prochot# Debounce time (1000us)
 	 */
-	if (isl9241_update(
-		    chgnum, ISL9241_REG_CONTROL2,
-		    (ISL9241_CONTROL2_TRICKLE_CHG_CURR(bi->precharge_current) |
-		     ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000),
-		    MASK_SET))
+	if (isl9241_update(chgnum, ISL9241_REG_CONTROL2,
+			   (ISL9241_CONTROL2_TRICKLE_CHG_CURR(
+				    BC_CURRENT_TO_REG(bi->precharge_current)) |
+			    ISL9241_CONTROL2_PROCHOT_DEBOUNCE_1000),
+			   MASK_SET))
 		goto init_fail;
 
 	/*
@@ -1168,6 +1168,18 @@ init_fail:
 	mutex_unlock(&control3_mutex_isl9241);
 	CPRINTS("Init failed!");
 }
+
+static void isl9241_debug(void)
+{
+	int rv, config;
+
+	rv = isl9241_read(0, ISL9241_REG_CONTROL2, &config);
+	if (rv)
+		return;
+
+	CPRINTS("[DBG] 0x3d config=0x%04x", config);
+}
+DECLARE_HOOK(HOOK_SECOND, isl9241_debug, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Hardware current ramping */
