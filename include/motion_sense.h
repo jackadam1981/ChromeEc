@@ -330,6 +330,14 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s);
  */
 bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 
+/**
+ * Disable the sensor stack at runtime.
+ *
+ * This operation cannot be undone. Once called the motion_sense loop will exit
+ * and the MCU will need to be restarted to recover sensor functionality.
+ */
+void sensor_stack_runtime_disable(void);
+
 /*
  * There are 4 variables that represent the number of sensors:
  * SENSOR_COUNT: The number of available motion sensors in board.
