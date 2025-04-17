@@ -1,0 +1,178 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae19c5d4_e7132431",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:45:00Z",
+      "side": 1,
+      "message": "Use /* */",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0a138817_118fff8d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fan.c",
+              "range": {
+                "startLine": 516,
+                "startChar": 0,
+                "endLine": 517,
+                "endChar": 0
+              },
+              "replacement": "\t/* v1 and v2 share the same fan_idx at same byte location. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "12d98f5cebcaa8af03630e5257b5d02de7725de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6327c5_e93ca811",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:45:00Z",
+      "side": 1,
+      "message": "Return `EC_RES_INVALID_PARAM` instead.",
+      "range": {
+        "startLine": 519,
+        "startChar": 9,
+        "endLine": 519,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d4cb71e9_4163e5d0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fan.c",
+              "range": {
+                "startLine": 519,
+                "startChar": 0,
+                "endLine": 520,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_RES_INVALID_PARAM;\n"
+            },
+            {
+              "path": "common/fan.c",
+              "range": {
+                "startLine": 531,
+                "startChar": 0,
+                "endLine": 532,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_RES_INVALID_PARAM;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "12d98f5cebcaa8af03630e5257b5d02de7725de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ae35d2_3bf162d3",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:45:00Z",
+      "side": 1,
+      "message": "Use `EC_RES_INVALID_PARAM` instead.",
+      "range": {
+        "startLine": 531,
+        "startChar": 9,
+        "endLine": 531,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e9bea789_bae25b90",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/fan.c",
+              "range": {
+                "startLine": 531,
+                "startChar": 0,
+                "endLine": 532,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn EC_RES_INVALID_PARAM;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "12d98f5cebcaa8af03630e5257b5d02de7725de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66db2846_b21f3ae9",
+        "filename": "zephyr/test/drivers/fan/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-17T21:45:00Z",
+      "side": 1,
+      "message": "Use a valid number, like 0. The invalid case has been tested above.",
+      "range": {
+        "startLine": 409,
+        "startChar": 13,
+        "endLine": 409,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7b86a2f5_dcc03e11",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/fan/src/fan.c",
+              "range": {
+                "startLine": 409,
+                "startChar": 0,
+                "endLine": 410,
+                "endChar": 0
+              },
+              "replacement": "\t\t.fan_idx \u003d 0,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "12d98f5cebcaa8af03630e5257b5d02de7725de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
