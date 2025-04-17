@@ -1739,3 +1739,6 @@ tests:
     extra_dtc_overlay_files:
     - ./boards/native_sim.overlay
     - ./tabletmode_interrupt/boards/native_sim.overlay
+  drivers.disable_motion_sense:
+    extra_configs:
+    - CONFIG_LINK_TEST_DISABLE_MOTION_SENSE=y

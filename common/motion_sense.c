@@ -44,11 +44,16 @@ static atomic_t motion_sense_task_loops;
 /* When we started the task the last time */
 static timestamp_t ts_begin_task;
 
-/* motion_sense_task status flag
- * motion_sense_task is running : true
- * motion_sense_task is not running : false
+enum motion_sense_task_status {
+	MOTION_SENSE_TASK_STATUS_RUNNING = BIT(0),
+	MOTION_SENSE_TASK_STATUS_CANCELED = BIT(1),
+};
+
+/* motion_sense_task status flags
+ * motion_sense_task is running : BIT(0)
+ * motion_sense_task is canceled: BIT(1)
  */
-static bool motion_sense_task_status;
+static atomic_t motion_sense_task_current_status;
 
 /* Minimum time in between running motion sense task loop. */
 unsigned int motion_min_interval = CONFIG_MOTION_MIN_SENSE_WAIT_TIME * MSEC;
@@ -470,6 +475,11 @@ static void motion_sense_shutdown(void)
 	int i;
 	struct motion_sensor_t *sensor;
 
+	if (motion_sense_task_current_status &
+	    MOTION_SENSE_TASK_STATUS_CANCELED) {
+		return;
+	}
+
 	motion_sense_print_stats("shutdown");
 
 	sensor_active = SENSOR_ACTIVE_S5;
@@ -497,6 +507,11 @@ static void motion_sense_suspend(void)
 {
 	struct motion_sensor_t *sensor;
 	int i;
+
+	if (motion_sense_task_current_status &
+	    MOTION_SENSE_TASK_STATUS_CANCELED) {
+		return;
+	}
 
 	motion_sense_print_stats("suspend");
 
@@ -538,6 +553,11 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 
 static void motion_sense_resume(void)
 {
+	if (motion_sense_task_current_status &
+	    MOTION_SENSE_TASK_STATUS_CANCELED) {
+		return;
+	}
+
 	motion_sense_print_stats("resume");
 
 	sensor_active = SENSOR_ACTIVE_S0;
@@ -548,6 +568,11 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume, MOTION_SENSE_HOOK_PRIO);
 
 static void motion_sense_startup(void)
 {
+	if (motion_sense_task_current_status &
+	    MOTION_SENSE_TASK_STATUS_CANCELED) {
+		return;
+	}
+
 	/*
 	 * If the AP is already in S0, call the resume hook now.
 	 * We may initialize the sensor 2 times (once in RO, another time in
@@ -895,6 +920,14 @@ static void check_and_queue_gestures(uint32_t *event)
 }
 #endif
 
+void sensor_stack_runtime_disable(void)
+{
+	motion_sense_shutdown();
+
+	atomic_or(&motion_sense_task_current_status,
+		  MOTION_SENSE_TASK_STATUS_CANCELED);
+}
+
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -915,15 +948,19 @@ void motion_sense_task(void *u)
 	if (IS_ENABLED(CONFIG_MOTION_FILL_LPC_SENSE_DATA)) {
 		lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 		set_present(lpc_status);
-	} else if (IS_ENABLED(CONFIG_HOST_INTERFACE_HECI)) {
-		motion_sense_task_status = true;
+	}
+	if (motion_sense_task_current_status &
+	    MOTION_SENSE_TASK_STATUS_CANCELED) {
+		atomic_or(&motion_sense_task_current_status,
+			  MOTION_SENSE_TASK_STATUS_RUNNING);
 	}
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 		motion_sense_fifo_init();
 	}
 
-	while (1) {
+	while (motion_sense_task_current_status &
+	       MOTION_SENSE_TASK_STATUS_RUNNING) {
 		ts_begin_task = get_time();
 		atomic_add(&motion_sense_task_loops, 1);
 		for (i = 0; i < motion_sensor_count; ++i) {
@@ -1046,6 +1083,8 @@ void motion_sense_task(void *u)
 
 		event = task_wait_event(wait_us);
 	}
+	atomic_clear_bits(&motion_sense_task_current_status,
+			  MOTION_SENSE_TASK_STATUS_RUNNING);
 }
 
 /*****************************************************************************/
@@ -1100,7 +1139,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 					MOTIONSENSE_MODULE_FLAG_ACTIVE :
 					0;
 		} else if (IS_ENABLED(CONFIG_HOST_INTERFACE_HECI)) {
-			out->dump.module_flags = motion_sense_task_status;
+			out->dump.module_flags =
+				(motion_sense_task_current_status &
+				 MOTION_SENSE_TASK_STATUS_RUNNING) ==
+				MOTION_SENSE_TASK_STATUS_RUNNING;
 		}
 		out->dump.sensor_count = ALL_MOTION_SENSORS;
 		args->response_size = sizeof(out->dump);

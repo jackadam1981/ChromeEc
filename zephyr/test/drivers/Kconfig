@@ -399,4 +399,9 @@ config LINK_TEST_SUITE_TABLETMODE_INTERRUPT
 	  Verifies a singleton driver which handles an external interrupt
 	  signaling to the EC when to switch in or out of tablet mode.
 
+config LINK_TEST_DISABLE_MOTION_SENSE
+	bool "Link and test the disable_motion_sense test"
+	help
+	  Verifies that the motionsense loop can be terminated at runtime.
+
 source "Kconfig.zephyr"
