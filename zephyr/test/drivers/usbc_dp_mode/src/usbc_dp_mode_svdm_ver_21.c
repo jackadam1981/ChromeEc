@@ -18,6 +18,7 @@
 #include "usb_dp_alt_mode.h"
 #include "usb_pd_vdo.h"
 #include "usb_prl_sm.h"
+#include "usbc_dp_mode.h"
 
 #include <stdint.h>
 
@@ -26,13 +27,7 @@
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/ztest.h>
 
-#define TEST_PORT USBC_PORT_C0
-
-/* Remove polarity for any mux checks */
-#define USB_MUX_CHECK_MASK ~USB_PD_MUX_POLARITY_INVERTED
-#define DPAM_VER_VDO(x) (x << 30)
-
-struct usbc_dp_mode_fixture {
+struct usbc_dp_mode_svdm_ver_21_fixture {
 	const struct emul *tcpci_emul;
 	const struct emul *charger_emul;
 	struct tcpci_partner_data partner;
@@ -47,24 +42,6 @@ static struct tcpci_cable_data undef_cable_ptype = {
 		VDO_SVDM_VERS(SVDM_VER_2_1),
 	.identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
 		/* USB host */ false, /* USB device */ false, IDH_PTYPE_UNDEF,
-		/* modal operation */ false, USB_VID_GOOGLE),
-	.identity_vdm[VDO_INDEX_CSTAT] = 0,
-	.identity_vdm[VDO_INDEX_PRODUCT] = VDO_PRODUCT(0x1234, 0xABCD),
-	.identity_vdm[VDO_INDEX_PTYPE_CABLE1] =
-		VDO_REV30_PASSIVE(USB_R30_SS_U32_U40_GEN2, USB_VBUS_CUR_3A,
-				  USB_REV30_LATENCY_1m, USB_REV30_TYPE_C),
-	.identity_vdos = VDO_INDEX_PTYPE_CABLE1 + 1,
-
-};
-
-/* Passive cable with USB3 gen 2 speed */
-static struct tcpci_cable_data passive_usb3_32 = {
-	.identity_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_PD, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_IDENT) |
-		VDO_SVDM_VERS(SVDM_VER_2_1),
-	.identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
-		/* USB host */ false, /* USB device */ false, IDH_PTYPE_PCABLE,
 		/* modal operation */ false, USB_VID_GOOGLE),
 	.identity_vdm[VDO_INDEX_CSTAT] = 0,
 	.identity_vdm[VDO_INDEX_PRODUCT] = VDO_PRODUCT(0x1234, 0xABCD),
@@ -161,103 +138,39 @@ static struct tcpci_cable_data no_modal_active_cable = {
 	.identity_vdos = VDO_INDEX_PTYPE_CABLE2 + 1,
 };
 
-static void add_dp_21_discovery(struct tcpci_partner_data *partner)
+static void add_dp_discovery_svdm_ver_21(struct tcpci_partner_data *partner)
 {
-	/* Add Discover Identity response */
-	partner->identity_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_PD, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_IDENT) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	partner->identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
-		/* USB host */ false, /* USB device */ true, IDH_PTYPE_HUB,
-		/* modal operation */ true, USB_VID_GOOGLE);
-	partner->identity_vdm[VDO_INDEX_CSTAT] = 0;
-	partner->identity_vdm[VDO_INDEX_PRODUCT] = VDO_PRODUCT(0x1234, 0x5678);
-	/* Hardware version 1, firmware version 2 */
-	partner->identity_vdm[VDO_INDEX_PTYPE_UFP1_VDO] = VDO_UFP1(
-		(VDO_UFP1_CAPABILITY_USB20 | VDO_UFP1_CAPABILITY_USB32),
-		USB_TYPEC_RECEPTACLE, VDO_UFP1_ALT_MODE_RECONFIGURE,
-		USB_R30_SS_U32_U40_GEN2);
-	partner->identity_vdos = VDO_INDEX_PTYPE_UFP1_VDO + 1;
-
-	/* Add Discover Modes response */
-	/* Support one mode for DisplayPort VID.*/
-	partner->modes_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_MODES) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	partner->modes_vdm[VDO_INDEX_HDR + 1] =
-		VDO_MODE_DP(MODE_DP_PIN_C | MODE_DP_PIN_D, 0, 1,
-			    CABLE_RECEPTACLE, MODE_DP_GEN2, MODE_DP_SNK) |
-		DPAM_VER_VDO(0x1);
-	partner->modes_vdos = VDO_INDEX_HDR + 2;
-
-	/* Add Discover SVIDs response */
-	/* Support DisplayPort VID. */
-	partner->svids_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_PD, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_SVID) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	partner->svids_vdm[VDO_INDEX_HDR + 1] =
-		VDO_SVID(USB_SID_DISPLAYPORT, 0);
-	partner->svids_vdos = VDO_INDEX_HDR + 2;
+	add_dp_discovery(partner, SVDM_VER_2_1);
 }
 
-static void add_displayport_mode_responses(struct tcpci_partner_data *partner)
+static void
+add_displayport_mode_responses_svdm_ver_21(struct tcpci_partner_data *partner)
 {
-	/* Add DisplayPort EnterMode response */
-	partner->enter_mode_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_ENTER_MODE) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	partner->enter_mode_vdos = VDO_INDEX_HDR + 1;
-
-	/* Add DisplayPort StatusUpdate response */
-	partner->dp_status_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DP_STATUS) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	partner->dp_status_vdm[VDO_INDEX_HDR + 1] =
-		VDO_DP_STATUS(0, /* IRQ_HPD */
-			      false, /* HPD_HI|LOW - Changed*/
-			      0, /* request exit DP */
-			      0, /* request exit USB */
-			      1, /* MF pref */
-			      true, /* DP Enabled */
-			      0, /* power low e.g. normal */
-			      0x2 /* Connected as Sink */);
-	partner->dp_status_vdos = VDO_INDEX_HDR + 2;
-
-	/* Add DisplayPort Configure Response */
-	partner->dp_config_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DP_CONFIG) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	partner->dp_config_vdos = VDO_INDEX_HDR + 1;
+	add_displayport_mode_responses(partner, SVDM_VER_2_1);
 }
 
 static void setup_passive_cable(struct tcpci_partner_data *partner)
 {
 	/* Set up the partner as DP-capable with a passive cable */
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &passive_usb3_32;
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_passive_cable_u40(struct tcpci_partner_data *partner)
 {
 	/* Set up the partner as DP-capable with a passive cable */
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &passive_usb3_4;
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_passive_cable_u40_modal(struct tcpci_partner_data *partner)
 {
 	/* Set up the partner as DP-capable with a passive cable */
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &passive_usb3_4_modal;
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_active_tbt_base_cable(struct tcpci_partner_data *partner)
@@ -291,7 +204,7 @@ static void setup_active_tbt_base_cable(struct tcpci_partner_data *partner)
 		.max_operating_temp = 0xff, /* Max temp cause we don't care */
 	};
 
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &active_cable;
 
 	union tbt_mode_resp_cable cable_resp;
@@ -321,7 +234,7 @@ static void setup_active_tbt_base_cable(struct tcpci_partner_data *partner)
 	partner->cable->svids_vdm[VDO_INDEX_HDR + 1] =
 		VDO_SVID(USB_VID_INTEL, 0);
 
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_active_tbt_no_modal_cable(struct tcpci_partner_data *partner)
@@ -355,7 +268,7 @@ static void setup_active_tbt_no_modal_cable(struct tcpci_partner_data *partner)
 		.max_operating_temp = 0xff, /* Max temp cause we don't care */
 	};
 
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &no_modal_active_cable;
 
 	partner->cable->identity_vdm[VDO_INDEX_PTYPE_CABLE1] =
@@ -363,7 +276,7 @@ static void setup_active_tbt_no_modal_cable(struct tcpci_partner_data *partner)
 	partner->cable->identity_vdm[VDO_INDEX_PTYPE_CABLE2] =
 		optical_redriver_vdo2.raw_value;
 
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_active_dp_base_cable(struct tcpci_partner_data *partner)
@@ -397,7 +310,7 @@ static void setup_active_dp_base_cable(struct tcpci_partner_data *partner)
 		.max_operating_temp = 0xff, /* Max temp cause we don't care */
 	};
 
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &active_cable;
 
 	union dp_mode_resp_cable cable_resp;
@@ -425,7 +338,7 @@ static void setup_active_dp_base_cable(struct tcpci_partner_data *partner)
 	partner->cable->svids_vdm[VDO_INDEX_HDR + 1] =
 		VDO_SVID(USB_SID_DISPLAYPORT, 0);
 
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_usb2_cable(struct tcpci_partner_data *partner)
@@ -443,22 +356,23 @@ static void setup_usb2_cable(struct tcpci_partner_data *partner)
 		rev20_cable_info.raw_value;
 
 	/* Set up the partner as DP-capable with a passive cable */
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &passive_usb2_cable;
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void setup_undef_cable(struct tcpci_partner_data *partner)
 {
 	/* Set up the partner as DP-capable with a passive cable */
-	add_dp_21_discovery(partner);
+	add_dp_discovery_svdm_ver_21(partner);
 	partner->cable = &undef_cable_ptype;
-	add_displayport_mode_responses(partner);
+	add_displayport_mode_responses_svdm_ver_21(partner);
 }
 
 static void *usbc_dp_mode_setup(void)
 {
-	static struct usbc_dp_mode_fixture fixture;
+	set_passive_usb3_32(&passive_usb3_32, SVDM_VER_2_1);
+	static struct usbc_dp_mode_svdm_ver_21_fixture fixture;
 	struct tcpci_partner_data *partner = &fixture.partner;
 	struct tcpci_snk_emul_data *snk_ext = &fixture.snk_ext;
 
@@ -472,15 +386,9 @@ static void *usbc_dp_mode_setup(void)
 	return &fixture;
 }
 
-static void usbc_dp_mode_before(void *data)
-{
-	/* Set chipset on so the "AP" is on to give us commands */
-	test_set_chipset_to_s0();
-}
-
 static void usbc_dp_mode_after(void *data)
 {
-	struct usbc_dp_mode_fixture *fix = data;
+	struct usbc_dp_mode_svdm_ver_21_fixture *fix = data;
 
 	/* return PD rev to 3.0 in case a test changed it */
 	prl_set_rev(TEST_PORT, TCPCI_MSG_SOP_PRIME, PD_REV30);
@@ -490,10 +398,10 @@ static void usbc_dp_mode_after(void *data)
 	tcpci_partner_common_clear_logged_msgs(&fix->partner);
 }
 
-ZTEST_SUITE(usbc_dp_mode, drivers_predicate_post_main, usbc_dp_mode_setup,
-	    usbc_dp_mode_before, usbc_dp_mode_after, NULL);
+ZTEST_SUITE(usbc_dp_mode_svdm_ver_21, drivers_predicate_post_main,
+	    usbc_dp_mode_setup, usbc_dp_mode_before, usbc_dp_mode_after, NULL);
 
-ZTEST_F(usbc_dp_mode, test_discovery)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery)
 {
 	setup_passive_cable(&fixture->partner);
 	/* But with DP mode response and modal operation set to true */
@@ -576,7 +484,7 @@ ZTEST_F(usbc_dp_mode, test_discovery)
 		      "DP mode VDOs did not match");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_entry_passive_32)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_passive_32)
 {
 	setup_passive_cable(&fixture->partner);
 	connect_sink_to_port(&fixture->partner, fixture->tcpci_emul,
@@ -599,7 +507,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_entry_passive_32)
 		      "Failed to see DP set");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_entry_passive_u40)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_passive_u40)
 {
 	setup_passive_cable_u40(&fixture->partner);
 	connect_sink_to_port(&fixture->partner, fixture->tcpci_emul,
@@ -622,7 +530,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_entry_passive_u40)
 		      "Failed to see DP set");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_entry_passive_u40_modal)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_passive_u40_modal)
 {
 	setup_passive_cable_u40_modal(&fixture->partner);
 	connect_sink_to_port(&fixture->partner, fixture->tcpci_emul,
@@ -645,7 +553,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_entry_passive_u40_modal)
 		      "Failed to see DP set");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_entry_tbt_optical_redriver)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_tbt_optical_redriver)
 {
 	struct ec_response_typec_status status;
 
@@ -668,7 +576,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_entry_tbt_optical_redriver)
 		      "DP mode entered correctly with tbt optical redriver");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_entry_active_retimer)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_active_retimer)
 {
 	union tbt_mode_resp_cable cable_resp;
 	struct ec_response_typec_status status;
@@ -694,7 +602,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_entry_active_retimer)
 			  "Entered DP mode with tbt retimer incorrectly");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_empty_tbt_mode)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_empty_tbt_mode)
 {
 	struct ec_response_typec_status status;
 
@@ -711,12 +619,17 @@ ZTEST_F(usbc_dp_mode, test_dp21_empty_tbt_mode)
 
 	/* Should not enter DP mode when no TBT mode data */
 	status = host_cmd_typec_status(TEST_PORT);
+	printk("status.mux_state: %u & USB_MUX_CHECK_MASK: %u = %u",
+	       status.mux_state, USB_MUX_CHECK_MASK,
+	       status.mux_state & USB_MUX_CHECK_MASK);
+	printk("not expected: %u",
+	       USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED);
 	zassert_not_equal((status.mux_state & USB_MUX_CHECK_MASK),
 			  USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED,
 			  "Entered DP mode with no cable info incorrectly");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_entry_no_modal_active_cable)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_no_modal_active_cable)
 {
 	union tbt_mode_resp_cable cable_resp;
 	struct ec_response_typec_status status;
@@ -742,7 +655,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_entry_no_modal_active_cable)
 			  "Entered DP mode with no modal support");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_dp_cable)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_dp_cable)
 {
 	struct ec_response_typec_status status;
 
@@ -760,7 +673,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_dp_cable)
 		      "Failed to see DP set with DP2.1 cable");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_cable_console)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_cable_console)
 {
 	static int status;
 
@@ -775,7 +688,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_cable_console)
 	zassert_ok(status, "Expected %d, but got %d", EC_SUCCESS, status);
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_undef_cable)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_undef_cable)
 {
 	struct ec_response_typec_status status;
 
@@ -801,7 +714,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_undef_cable)
 		      USB_PD_MUX_USB_ENABLED, "Failed to return to USB mode");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_usb20)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_usb20)
 {
 	struct ec_response_typec_status status;
 
@@ -821,7 +734,7 @@ ZTEST_F(usbc_dp_mode, test_dp21_usb20)
 			  "Entered DP mode with usb 2 only");
 }
 
-ZTEST_F(usbc_dp_mode, test_dp21_usb20_usb3_speed)
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_usb20_usb3_speed)
 {
 	struct ec_response_typec_status status;
 
