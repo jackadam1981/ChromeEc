@@ -47,15 +47,13 @@ register_trulo_project(
 
 register_trulo_project(
     project_name="pujjolo",
+    chip="npcx9/npcx9m7fb",
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
         # Parent project's config
         here / "pujjolo" / "project.conf",
-        # Support DSP comms (split off to avoid conflicts with uldrenite)
-        here / "dsp_comms.conf",
     ],
-    modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
 )
 
 register_trulo_project(
