@@ -9,27 +9,27 @@
 
 		int_ac_present: ac_present {
 			irq-pin = <&gpio_acok_ec_od>;
-			flags = <GPIO_INT_EDGE_BOTH>;
+			flags = <GPIO_INT_EDGE_RISING>;
 			handler = "extpower_interrupt";
 		};
 		int_power_button: power_button {
 			irq-pin = <&gpio_gsc_ec_pwr_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
+			flags = <GPIO_INT_EDGE_RISING>;
 			handler = "power_button_interrupt";
 		};
 		int_volume_up: volume_up {
 			irq-pin = <&gpio_ec_volup_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
+			flags = <GPIO_INT_EDGE_RISING>;
 			handler = "button_interrupt";
 		};
 		int_volume_down: volume_down {
 			irq-pin = <&gpio_ec_voldn_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
+			flags = <GPIO_INT_EDGE_RISING>;
 			handler = "button_interrupt";
 		};
 		int_lid_open: lid_open {
 			irq-pin = <&gpio_lid_open>;
-			flags = <GPIO_INT_EDGE_BOTH>;
+			flags = <GPIO_INT_EDGE_RISING>;
 			handler = "lid_interrupt";
 		};
 	};

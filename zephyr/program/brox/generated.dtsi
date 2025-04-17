@@ -80,7 +80,7 @@
 			gpios = <&gpiob 5 GPIO_OUTPUT>;
 		};
 		gpio_ec_pch_pwr_btn_odl: ec_pch_pwr_btn_odl {
-			gpios = <&gpiob 2 GPIO_ODR_LOW>;
+			#gpios = <&gpiob 2 GPIO_ODR_LOW>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_ec_pch_sys_pwrok: ec_pch_sys_pwrok {
