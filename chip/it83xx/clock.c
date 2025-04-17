@@ -465,6 +465,7 @@ void __ram_code clock_cpu_standby(void)
 		 * point to interrupt_enable() which is called later.
 		 */
 		uint32_t val = BIT(30);
+		volatile uint8_t _ext_ier19 __unused;
 
 		asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 		asm volatile("dsb");
@@ -474,6 +475,7 @@ void __ram_code clock_cpu_standby(void)
 		 * not wake up CPU.
 		 */
 		IT83XX_INTC_EXT_IER19 = BRAM_EC_EXT_REG19;
+		_ext_ier19 = IT83XX_INTC_EXT_IER19;
 #endif
 		asm("standby wake_grant");
 	} else if (IS_ENABLED(CHIP_CORE_RISCV)) {
@@ -683,6 +685,9 @@ void __ram_code __idle(void)
 		/* Set flag before entering low power mode. */
 		if (IS_ENABLED(CHIP_CORE_RISCV))
 			wait_interrupt_fired = 1;
+#ifdef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+		task_enable_irq(IT83XX_IRQ_EXT_TIMER6);
+#endif
 		clock_cpu_standby();
 		interrupt_enable();
 		/*
