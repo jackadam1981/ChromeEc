@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de9f44a_bcbd238e",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-17T04:05:41Z",
+      "side": 1,
+      "message": "isn\u0027t this equivalent to the original\nREG_TO_CHARGING_CURRENT()?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e9ae5c68_0765d1f8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/charger/bq25710.c",
+              "range": {
+                "startLine": 150,
+                "startChar": 0,
+                "endLine": 155,
+                "endChar": 0
+              },
+              "replacement": "\t.current_max \u003d REG_TO_CHARGING_CURRENT(0xFF),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "718c9c6dd70b5aa1811f930258a2de355dfa659a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
