@@ -214,11 +214,17 @@ void __ram_code interrupt_disable(void)
 	asm volatile("dsb");
 
 #ifdef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+	volatile uint8_t _ext_ier19 __unused;
 	/* Group 3: No need to interrupt */
 	/* Group 7: unused */
 	/* Group 10: bit0 is pre-watchdog, keep it */
 	/* Group 19: disable interrupt without clear pending status */
 	IT83XX_INTC_EXT_IER19 &= ~GROUP19_TO_INT3_MASK;
+	/*
+	 * This load operation will guarantee the above modification of
+	 * IER19 register can be seen by any following instructions.
+	 */
+	_ext_ier19 = IT83XX_INTC_EXT_IER19;
 	/* Mask all interrupts, except division by zero and timer-related */
 	val = IDIVZE | BIT(3);
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
@@ -232,10 +238,13 @@ void __ram_code interrupt_enable(void)
 	uint32_t val = IDIVZE;
 
 #ifdef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+	volatile uint8_t _ext_ier19 __unused;
+
 	asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 	asm volatile("dsb");
 	/* Enable interrupt groups in reverse order, starting with group 19 */
 	IT83XX_INTC_EXT_IER19 = BRAM_EC_EXT_REG19;
+	_ext_ier19 = IT83XX_INTC_EXT_IER19;
 	/* Skip group 3, 10 and group 7, same as in interrupt_disable() */
 #endif
 	/* Enable HW2 ~ HW15 and division by zero exception interrupts */
