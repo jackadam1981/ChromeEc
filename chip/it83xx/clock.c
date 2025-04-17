@@ -451,7 +451,11 @@ int clock_ec_wake_from_sleep(void)
 	return ec_sleep;
 }
 
+#ifdef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+void clock_cpu_standby(void)
+#else
 void __ram_code clock_cpu_standby(void)
+#endif
 {
 	/* standby instruction */
 	if (IS_ENABLED(CHIP_CORE_NDS32)) {
@@ -465,6 +469,7 @@ void __ram_code clock_cpu_standby(void)
 		 * point to interrupt_enable() which is called later.
 		 */
 		uint32_t val = BIT(30);
+		volatile uint8_t _ext_ier19 __unused;
 
 		asm volatile("mtsr %0, $INT_MASK" : : "r"(val));
 		asm volatile("dsb");
@@ -473,7 +478,9 @@ void __ram_code clock_cpu_standby(void)
 		 * CPU enters standby state otherwise pending interrupts will
 		 * not wake up CPU.
 		 */
+		BRAM_EC_EXT_REG19 |= BIT(6);
 		IT83XX_INTC_EXT_IER19 = BRAM_EC_EXT_REG19;
+		_ext_ier19 = IT83XX_INTC_EXT_IER19;
 #endif
 		asm("standby wake_grant");
 	} else if (IS_ENABLED(CHIP_CORE_RISCV)) {
