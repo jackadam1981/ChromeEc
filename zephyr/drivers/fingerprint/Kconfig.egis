@@ -16,7 +16,7 @@ if FINGERPRINT_SENSOR_EGIS630
 
 config FINGERPRINT_SENSOR_EGIS630_HEAP_SIZE
 	int "Size of heap for EGIS630 driver"
-	default 20536
+	default 60536
 	help
 	  Size of heap to be used by EGIS private library. The heap must have
 	  enough size to keep finger templates during matching.
