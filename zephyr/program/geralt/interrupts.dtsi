@@ -78,11 +78,6 @@
 			 */
 			handler = "power_signal_interrupt";
 		};
-		int_wp: wp {
-			irq-pin = <&ec_flash_wp_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "switch_interrupt";
-		};
 		int_spi0_cs: spi0-cs {
 			irq-pin = <&spi0_cs>;
 			flags = <GPIO_INT_EDGE_FALLING>;
