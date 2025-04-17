@@ -694,8 +694,14 @@ int pd_get_vdo_ver(int port, enum tcpci_msg_type type)
 	if (disc->identity_discovery != PD_DISC_COMPLETE) {
 		enum pd_rev_type rev = prl_get_rev(port, type);
 
-		if (rev < PD_REV30) {
+		if (rev <= PD_REV20) {
 			return SVDM_VER_1_0;
+		}
+		// Minor field set as appropriate based on whether the
+		// Port is implemented to USB PD Revision 3.1, Version 1.6 (or
+		// newer) or a prior Version.
+		if (rev <= PD_REV30) {
+			return SVDM_VER_2_0;
 		}
 		return SVDM_VER_2_1;
 	}
