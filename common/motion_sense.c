@@ -45,10 +45,10 @@ static atomic_t motion_sense_task_loops;
 static timestamp_t ts_begin_task;
 
 /* motion_sense_task status flag
- * motion_sense_task is running : true
- * motion_sense_task is not running : false
+ * motion_sense_task is running : 1
+ * motion_sense_task is not running : 0
  */
-static bool motion_sense_task_status;
+static atomic_t sensor_stack_runtime_enabled = 1;
 
 /* Minimum time in between running motion sense task loop. */
 unsigned int motion_min_interval = CONFIG_MOTION_MIN_SENSE_WAIT_TIME * MSEC;
@@ -470,6 +470,10 @@ static void motion_sense_shutdown(void)
 	int i;
 	struct motion_sensor_t *sensor;
 
+	if (!sensor_stack_runtime_enabled) {
+		return;
+	}
+
 	motion_sense_print_stats("shutdown");
 
 	sensor_active = SENSOR_ACTIVE_S5;
@@ -497,6 +501,10 @@ static void motion_sense_suspend(void)
 {
 	struct motion_sensor_t *sensor;
 	int i;
+
+	if (!sensor_stack_runtime_enabled) {
+		return;
+	}
 
 	motion_sense_print_stats("suspend");
 
@@ -538,6 +546,10 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 
 static void motion_sense_resume(void)
 {
+	if (!sensor_stack_runtime_enabled) {
+		return;
+	}
+
 	motion_sense_print_stats("resume");
 
 	sensor_active = SENSOR_ACTIVE_S0;
@@ -548,6 +560,10 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume, MOTION_SENSE_HOOK_PRIO);
 
 static void motion_sense_startup(void)
 {
+	if (!sensor_stack_runtime_enabled) {
+		return;
+	}
+
 	/*
 	 * If the AP is already in S0, call the resume hook now.
 	 * We may initialize the sensor 2 times (once in RO, another time in
@@ -895,6 +911,12 @@ static void check_and_queue_gestures(uint32_t *event)
 }
 #endif
 
+void sensor_stack_runtime_disable(void)
+{
+	motion_sense_shutdown();
+	atomic_clear(&sensor_stack_runtime_enabled);
+}
+
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -915,15 +937,13 @@ void motion_sense_task(void *u)
 	if (IS_ENABLED(CONFIG_MOTION_FILL_LPC_SENSE_DATA)) {
 		lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 		set_present(lpc_status);
-	} else if (IS_ENABLED(CONFIG_HOST_INTERFACE_HECI)) {
-		motion_sense_task_status = true;
 	}
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 		motion_sense_fifo_init();
 	}
 
-	while (1) {
+	while (sensor_stack_runtime_enabled) {
 		ts_begin_task = get_time();
 		atomic_add(&motion_sense_task_loops, 1);
 		for (i = 0; i < motion_sensor_count; ++i) {
@@ -1100,7 +1120,8 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 					MOTIONSENSE_MODULE_FLAG_ACTIVE :
 					0;
 		} else if (IS_ENABLED(CONFIG_HOST_INTERFACE_HECI)) {
-			out->dump.module_flags = motion_sense_task_status;
+			out->dump.module_flags = sensor_stack_runtime_enabled !=
+						 0;
 		}
 		out->dump.sensor_count = ALL_MOTION_SENSORS;
 		args->response_size = sizeof(out->dump);
