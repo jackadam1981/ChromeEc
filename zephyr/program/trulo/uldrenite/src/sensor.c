@@ -41,7 +41,18 @@ void lid_accel_interrupt(enum gpio_signal signal)
 
 static void motionsense_init(void)
 {
-	int ret;
+	int ish_enabled;
+	int ret = cros_cbi_get_fw_config(ISH, &ish_enabled);
+
+	if (ret < 0) {
+		LOG_ERR("Failed to load ISH config: %d", ret);
+		return;
+	}
+
+	if (ish_enabled == ISH_DISABLED) {
+		sensor_stack_runtime_disable();
+		return;
+	}
 
 	ret = cros_cbi_get_fw_config(FORM_FACTOR, &sensor_fwconfig);
 	if (ret < 0) {
