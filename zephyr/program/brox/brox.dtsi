@@ -21,8 +21,8 @@
 
 &vcmp0 {
 	status = "okay";
-	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_5MS>;
-	comparison = <IT8XXX2_VCMP_GREATER>;
+
+	comparison = <IT51XXX_VCMP_GREATER>;
 	threshold-mv = <0>;
 	io-channels = <&adc0 0>;
 };
@@ -39,19 +39,15 @@
 &uart2 {
 	status = "okay";
 	current-speed = <115200>;
+	pinctrl-0 = <&uart2_rx_gph1_default
+		     &uart2_tx_gph2_default>;
+	pinctrl-names = "default";
 };
 
 &ite_uart2_wrapper {
 	status = "okay";
-	pinctrl-0 = <&uart2_rx_gpf0_default
-		     &uart2_tx_gpf1_default>;
-	pinctrl-names = "default";
 };
 
 &espi0 {
-	status = "okay";
-};
-
-&sha0 {
 	status = "okay";
 };
