@@ -16,6 +16,24 @@
       "message": "General note. Most of the files are just copied from helipilot. It would be good if we can share these.",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3deb9a_0f8f0862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-04-18T10:44:35Z",
+      "side": 1,
+      "message": "The `helipilot` directory structure is prepared for helipilot-based boards like `buccaneer` and `gwendolin`.\n\nIf I\u0027m not mistaken you need to:\n- Create `gwendolin.dts` file under `fpmcu/helipilot` directory. Your current `gwendolin.dts` looks good, just move it under `helipilot` directory.\n- Add gwendolin\u0027s `dev_key.pem`. You can create directory to keep keys if you want.\n- Add `gwendolin` to `BUILD.py`. You just need to adjust some paths.\n\nPlease note:\n- You reuse `helipilot/prj.conf` file. It only contains configs that are common for all helipilot-based boards.\n- You do not need to create `CONFIG_BOARD_GWENDOLIN` in `fpmcu/Kconfig`, it\u0027s the same as `CONFIG_BOARD_HELIPILOT`. If you think it\u0027s confusing, you can change `CONFIG_BOARD_HELIPILOT` to `CONFIG_BASEBOARD_HELIPILOT`.",
+      "parentUuid": "019ba599_0962299b",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
