@@ -363,17 +363,17 @@ static void show_charging_progress(bool is_full)
 #endif
 
 	dsoc = charge_get_display_charge();
-	if (rv)
-		CPRINTS("Battery %d%% (Display %d.%d %%) / ??h:?? %s%s",
-			curr.batt.state_of_charge, dsoc / 10, dsoc % 10,
-			to_full ? "to full" : "to empty",
-			is_full ? ", not accepting current" : "");
-	else
-		CPRINTS("Battery %d%% (Display %d.%d %%) / %dh:%d %s%s",
-			curr.batt.state_of_charge, dsoc / 10, dsoc % 10,
-			minutes / 60, minutes % 60,
-			to_full ? "to full" : "to empty",
-			is_full ? ", not accepting current" : "");
+	//if (rv)
+		//CPRINTS("Battery %d%% (Display %d.%d %%) / ??h:?? %s%s",
+		//	curr.batt.state_of_charge, dsoc / 10, dsoc % 10,
+		//	to_full ? "to full" : "to empty",
+		//	is_full ? ", not accepting current" : "");
+	//else
+		//CPRINTS("Battery %d%% (Display %d.%d %%) / %dh:%d %s%s",
+		//	curr.batt.state_of_charge, dsoc / 10, dsoc % 10,
+		//	minutes / 60, minutes % 60,
+		//	to_full ? "to full" : "to empty",
+		//	is_full ? ", not accepting current" : "");
 
 	if (IS_ENABLED(CONFIG_EC_EC_COMM_BATTERY_CLIENT))
 		charger_base_show_charge();
@@ -447,8 +447,8 @@ int charge_request(bool use_curr, bool is_full)
 	}
 
 	if (curr.ac) {
-		if (prev_volt != voltage || prev_curr != current)
-			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
+		//if (prev_volt != voltage || prev_curr != current)
+			//CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
 	}
 
 	/*

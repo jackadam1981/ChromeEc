@@ -27,7 +27,7 @@ static void espi_enable_callback(struct ap_power_ev_callback *cb,
 		/* When AP power state becomes known, sync eSPI enable */
 		if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
 			LOG_DBG("AP off; disabling eSPI");
-			espi_it8xxx2_enable_pad_ctrl(espi_device, false);
+			//espi_it8xxx2_enable_pad_ctrl(espi_device, false);
 		}
 		break;
 	case AP_POWER_PRE_INIT:

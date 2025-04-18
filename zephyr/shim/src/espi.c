@@ -674,6 +674,7 @@ static void espi_peripheral_handler(const struct device *dev,
 {
 	uint16_t event_type = event.evt_details;
 
+	printk("[shim-espi]event_type=%x\n",event_type);
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_PORT80) &&
 	    event_type == ESPI_PERIPHERAL_DEBUG_PORT80) {
 		port_80_write(event.evt_data);
