@@ -51,6 +51,24 @@
       "parentUuid": "85fa77af_94d51f46",
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30781586_ffd14b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-04-18T17:36:27Z",
+      "side": 1,
+      "message": "Beyond DPAM testing, we should also check EC builds and run the EC unit tests.\n\n`make runhosttests`\n`make try_build_boards`\nZephyr unit testing.",
+      "parentUuid": "9f7d26c0_5db28feb",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
