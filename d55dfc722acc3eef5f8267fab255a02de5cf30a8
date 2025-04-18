@@ -266,6 +266,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6d3319b_59c85ad5",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "I recommend only keeping the power signals that are required by other devicetree nodes and removing the others.\n\nAny power signals you keep in named-gpios need to add the `no-auto-init` property.  The AP power sequence driver will handle setting up these signals.",
+      "parentUuid": "4b694771_cea9cb66",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e9c5e85_de3227df",
         "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
         "patchSetId": 5

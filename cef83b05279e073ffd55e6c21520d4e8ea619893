@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf5ff4a_c24f0efa",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete `enum-name` - it\u0027s not used with Zephyr power sequencing",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b1ddea_794f67ea",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete if possible, otherwise add `no-auto-int` and drop `enum-name` property which is not used by the Zephyr AP power sequence driver.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c36707c_bec5ec2e",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete if possible",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92737f6_aec3838d",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d6de165_c05fb54a",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549a2312_eb9c970e",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7576c721_05f24212",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-18T18:04:34Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
