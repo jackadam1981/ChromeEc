@@ -47,21 +47,21 @@
 		dbg-label = "SYS_SLP_S0IX_L input from PCH";
 		enum-name = "PWR_SLP_S0";
 		gpios = <&gpioj 5 GPIO_ACTIVE_LOW>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		interrupt-flags = <GPIO_INT_EDGE_RISING>;
 	};
 	pwr-slp-s3-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "EC_SLP_S3_L input from PCH";
 		enum-name = "PWR_SLP_S3";
 		gpios = <&gpioc 6 GPIO_ACTIVE_LOW>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		interrupt-flags = <GPIO_INT_EDGE_RISING>;
 	};
 	pwr-slp-s4-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "EC_SLP_S4_L input from PCH";
 		enum-name = "PWR_SLP_S4";
 		gpios = <&gpioc 4 GPIO_ACTIVE_LOW>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		interrupt-flags = <GPIO_INT_EDGE_RISING>;
 	};
 	pwr-slp-s5-l {
 		compatible = "intel,ap-pwrseq-vw";
@@ -76,7 +76,7 @@
 		dbg-label = "EC_SLP_SUS_L input from PCH";
 		enum-name = "PWR_SLP_SUS";
 		gpios = <&gpioe 5 GPIO_ACTIVE_LOW>;
-		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		interrupt-flags = <GPIO_INT_EDGE_RISING>;
 	};
 	pwr-dsw-pwrok {
 		/* Brox doesn't provide a power good signal for the PP5000 and
@@ -144,7 +144,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "Combined all power good";
 		enum-name = "PWR_ALL_SYS_PWRGD";
-		gpios = <&gpiob 3 0>;
+		gpios = <&gpioe 4 0>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 
