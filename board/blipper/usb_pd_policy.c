@@ -22,6 +22,13 @@ int pd_check_vconn_swap(int port)
 	return chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON);
 }
 
+static void notify_power_change(void)
+{
+	/* Notify host of power info change. */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+DECLARE_DEFERRED(notify_power_change);
+
 void pd_power_supply_reset(int port)
 {
 	if (port != 0)
@@ -31,7 +38,7 @@ void pd_power_supply_reset(int port)
 	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
 
 	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	hook_call_deferred(&notify_power_change_data, 0);
 }
 
 int pd_set_power_supply_ready(int port)
@@ -60,7 +67,7 @@ int pd_set_power_supply_ready(int port)
 		return rv;
 
 	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	hook_call_deferred(&notify_power_change_data, 0);
 
 	return EC_SUCCESS;
 }
