@@ -20,7 +20,7 @@ def register_brox_project(
 
     return register_binman_project(
         project_name=project_name,
-        zephyr_board="it8xxx2/it82002aw",
+        zephyr_board="it51xxx/it51526aw",
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
