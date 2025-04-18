@@ -2949,7 +2949,7 @@ static void enforce_pd_chipset_shutdown_policy_1(int port)
 {
 	LOG_DBG("C%d: Chipset Shutdown Policy 1", port);
 
-	pdc_power_mgmt_set_dual_role(port, PD_DRP_FORCE_SINK);
+	//pdc_power_mgmt_set_dual_role(port, PD_DRP_FORCE_SINK);
 }
 
 static void set_hpd_wake_watch(int port);

@@ -57,6 +57,7 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 }
 
+/*
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 {
 	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ap_xhci_init_done_r))) {
@@ -65,6 +66,7 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_FORCE_SINK;
 	}
 }
+*/
 
 #ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720
 void update_bq25720_input_voltage(void)
