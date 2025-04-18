@@ -485,3 +485,20 @@ void cec_task(void *unused)
 		}
 	}
 }
+
+static int command_check_cec_policy(int argc, const char **argv)
+{
+	int port = 0;
+	for (port = 0; port < CEC_PORT_COUNT; port++) {
+		const struct cec_offline_policy *policy =
+			cec_config[port].offline_policy;
+		while (policy->command != 0 && policy->action != 0) {
+			CPRINTS("command:0x%02x, action:%d", policy->command,
+				policy->action);
+			policy++;
+		}
+	}
+	return EC_RES_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cecpolicy, command_check_cec_policy, NULL,
+			"Show I2C port mapping");
