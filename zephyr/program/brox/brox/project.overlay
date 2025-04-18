@@ -86,3 +86,11 @@ i2c3ALT: &i2c3 {
 		zephyr,deferred-init;
         };
 };
+
+&i2c7 {
+	/delete-property/ scl-gpios;
+};
+
+&i2c8 {
+	/delete-property/ sda-gpios;
+};
