@@ -16,6 +16,24 @@
       "message": "devicetree error: \u0027ccd\u0027 appears in /usbc/port0@0 in /mnt/host/source/src/platform/ec/twister-out-host/native_sim_native/host/pdc/pdc.runtime_port_config.two_pdcs/zephyr/zephyr.dts.pre, but is not declared in \u0027properties:\u0027 in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/usbc/named-usbc-port.yaml\nCMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:303 (execute_process):\n\nPlease check by \"twister -p native_sim/native -s charger/charge.manager\"",
       "revId": "408bd3a846666c0a204326b7d2ad6d85b65a64f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f535ddc0_f556efb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-18T03:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f40d95_f8fdfb7b",
+      "revId": "408bd3a846666c0a204326b7d2ad6d85b65a64f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
