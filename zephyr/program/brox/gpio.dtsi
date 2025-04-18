@@ -69,7 +69,7 @@
 			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
 		};
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
-			gpios = <&gpioksol 2 GPIO_OUTPUT_HIGH>;
+			gpios = <&gpiok 2 GPIO_OUTPUT_HIGH>;
 		};
 
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
@@ -106,11 +106,8 @@
 			/* ADP_DET */
 			<&gpiod 0 0>,
 			/* ec_batt_pres_odl */
-			<&gpioi 7 0>,
-			/* I2C_EC_PMC_PD_SCL */
-			<&gpioh 1 GPIO_INPUT>,
-			/* I2C_EC_PMC_PD_SDA */
-			<&gpioh 2 GPIO_INPUT>;
+			<&gpioi 7 0>;
+
 		};
 };
 
