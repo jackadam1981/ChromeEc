@@ -1268,11 +1268,13 @@ static void handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+	LOG_INF("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
+	LOG_INF("tim-C%d: sink_path_status: 0x%d, status->sink_path_status: %d",
+		port_number, port->sink_path_status, status->sink_path_status);
 	if (port->sink_path_status != status->sink_path_status) {
-		LOG_DBG("C%d: Sink path status change: %d", port_number,
+		LOG_INF("C%d: Sink path status change: %d", port_number,
 			status->sink_path_status);
 		port->sink_path_status = status->sink_path_status;
 	}
@@ -1714,6 +1716,10 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		port->sink_path_to_send =
 			charge_manager_get_active_charge_port() ==
 			config->connector_num;
+
+		LOG_INF("tim-C%d: connector_num=%d, sink_path_to_send=%d",
+			config->connector_num, config->connector_num, port->sink_path_to_send);
+
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_SRC_CAPS)) {
@@ -2280,6 +2286,9 @@ static uint8_t pdc_get_snk_path_en_mask(void)
 {
 	uint8_t snk_path_en_mask = 0;
 
+	LOG_INF("tim-C0: sink_path_status=%d; C1: sink_path_status=%d",
+		pdc_data[0]->port.sink_path_status,pdc_data[1]->port.sink_path_status);
+
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		WRITE_BIT(snk_path_en_mask, port,
 			  pdc_data[port]->port.sink_path_status);
@@ -2380,6 +2389,8 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 
 	LOG_INF("C%d: sink_path_mask=0x%X, selected_port=%d, enable=%d",
 		config->connector_num, sink_path_mask, selected_port, enable);
+
+	LOG_INF("tim-C%d: sink_path_status=%d", config->connector_num, port->sink_path_status);
 
 	if (enable) {
 		if (sink_path_mask == 0) {
@@ -2566,6 +2577,8 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 			(charge_manager_is_seeded() ?
 				 SNK_ATTACHED_SET_SINK_PATH :
 				 SNK_ATTACHED_SYNC_CHARGE_MGR);
+
+		LOG_INF("tim-C: snk_attached_local_state: %d", port->snk_attached_local_state);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SET_SINK_PATH:
 

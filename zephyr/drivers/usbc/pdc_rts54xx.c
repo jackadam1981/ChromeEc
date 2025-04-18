@@ -1820,7 +1820,9 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t byte;
+	const struct pdc_config_t *cfg = data->dev->config;
 
+	LOG_INF("C%d: SET_SINK_PATH = %d", cfg->connector_number, en);
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
