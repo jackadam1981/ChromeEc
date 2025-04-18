@@ -85,7 +85,7 @@
 	kso-gpio {
 		compatible = "cros-ec,col-gpio";
 		col-num = <2>;
-		col-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
+		col-gpios = <&gpiok 2 GPIO_ACTIVE_HIGH>;
 	};
 
 	boot-keys {
@@ -107,33 +107,33 @@
 	factory-test {
 		compatible = "cros-ec,keyboard-factory-test";
 
-		pin1-gpios = <&gpioksoh 4 GPIO_ACTIVE_HIGH>;
-		pin2-gpios = <&gpioksoh 0 GPIO_ACTIVE_HIGH>;
-		pin3-gpios = <&gpioksoh 1 GPIO_ACTIVE_HIGH>;
-		pin4-gpios = <&gpioksoh 3 GPIO_ACTIVE_HIGH>;
-		pin5-gpios = <&gpioksoh 2 GPIO_ACTIVE_HIGH>;
+		pin1-gpios = <&gpiol 4 GPIO_ACTIVE_HIGH>;
+		pin2-gpios = <&gpiol 0 GPIO_ACTIVE_HIGH>;
+		pin3-gpios = <&gpiol 1 GPIO_ACTIVE_HIGH>;
+		pin4-gpios = <&gpiol 3 GPIO_ACTIVE_HIGH>;
+		pin5-gpios = <&gpiol 2 GPIO_ACTIVE_HIGH>;
 		/* 6 nc */
 		/* 7 nc */
-		pin8-gpios = <&gpioksol 5 GPIO_ACTIVE_HIGH>;
-		pin9-gpios = <&gpioksol 6 GPIO_ACTIVE_HIGH>;
+		pin8-gpios = <&gpiok 5 GPIO_ACTIVE_HIGH>;
+		pin9-gpios = <&gpiok 6 GPIO_ACTIVE_HIGH>;
 		/* 10 nc */
-		pin11-gpios = <&gpioksol 3 GPIO_ACTIVE_HIGH>;
-		pin12-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
-		pin13-gpios = <&gpioksi 0 GPIO_ACTIVE_HIGH>;
-		pin14-gpios = <&gpioksol 1 GPIO_ACTIVE_HIGH>;
-		pin15-gpios = <&gpioksol 4 GPIO_ACTIVE_HIGH>;
-		pin16-gpios = <&gpioksi 3 GPIO_ACTIVE_HIGH>;
-		pin17-gpios = <&gpioksi 2 GPIO_ACTIVE_HIGH>;
-		pin18-gpios = <&gpioksol 0 GPIO_ACTIVE_HIGH>;
-		pin19-gpios = <&gpioksi 5 GPIO_ACTIVE_HIGH>;
-		pin20-gpios = <&gpioksi 4 GPIO_ACTIVE_HIGH>;
-		pin21-gpios = <&gpioksol 7 GPIO_ACTIVE_HIGH>;
-		pin22-gpios = <&gpioksi 6 GPIO_ACTIVE_HIGH>;
-		pin23-gpios = <&gpioksi 7 GPIO_ACTIVE_HIGH>;
-		pin24-gpios = <&gpioksi 1 GPIO_ACTIVE_HIGH>;
+		pin11-gpios = <&gpiok 3 GPIO_ACTIVE_HIGH>;
+		pin12-gpios = <&gpiok 2 GPIO_ACTIVE_HIGH>;
+		pin13-gpios = <&gpion 0 GPIO_ACTIVE_HIGH>;
+		pin14-gpios = <&gpiok 1 GPIO_ACTIVE_HIGH>;
+		pin15-gpios = <&gpiok 4 GPIO_ACTIVE_HIGH>;
+		pin16-gpios = <&gpion 3 GPIO_ACTIVE_HIGH>;
+		pin17-gpios = <&gpion 2 GPIO_ACTIVE_HIGH>;
+		pin18-gpios = <&gpiok 0 GPIO_ACTIVE_HIGH>;
+		pin19-gpios = <&gpion 5 GPIO_ACTIVE_HIGH>;
+		pin20-gpios = <&gpion 4 GPIO_ACTIVE_HIGH>;
+		pin21-gpios = <&gpiok 7 GPIO_ACTIVE_HIGH>;
+		pin22-gpios = <&gpion 6 GPIO_ACTIVE_HIGH>;
+		pin23-gpios = <&gpion 7 GPIO_ACTIVE_HIGH>;
+		pin24-gpios = <&gpion 1 GPIO_ACTIVE_HIGH>;
 		/* 25 nc */
-		pin26-gpios = <&gpioksoh 5 GPIO_ACTIVE_HIGH>;
+		pin26-gpios = <&gpiol 5 GPIO_ACTIVE_HIGH>;
 		/* 27 nc */
-		pin28-gpios = <&gpioksoh 6 GPIO_ACTIVE_HIGH>;
+		pin28-gpios = <&gpiol 6 GPIO_ACTIVE_HIGH>;
 	};
 };
