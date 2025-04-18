@@ -2927,7 +2927,7 @@ static void enforce_pd_chipset_suspend_policy_1(int port)
 {
 	LOG_DBG("C%d: Chipset Suspend Policy 1", port);
 
-	pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
+	//pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
 }
 
 /**
@@ -2938,7 +2938,7 @@ static void enforce_pd_chipset_startup_policy_1(int port)
 {
 	LOG_DBG("C%d: Chipset Startup Policy 1", port);
 
-	pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
+	//pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
 }
 
 /**
@@ -2949,7 +2949,7 @@ static void enforce_pd_chipset_shutdown_policy_1(int port)
 {
 	LOG_DBG("C%d: Chipset Shutdown Policy 1", port);
 
-	pdc_power_mgmt_set_dual_role(port, PD_DRP_FORCE_SINK);
+	//pdc_power_mgmt_set_dual_role(port, PD_DRP_FORCE_SINK);
 }
 
 static void set_hpd_wake_watch(int port);
