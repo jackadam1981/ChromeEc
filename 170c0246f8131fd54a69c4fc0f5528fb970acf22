@@ -33,6 +33,24 @@
       "message": "Good work Kamil, I think that\u0027s what we should aim at with unification of handling of svdm version in pd module.\n\nI\u0027m wondering if there is a possibility to ran more extensive tests with devices supporting SVDM version 2.0, as well as devices supporting only usb PD 2.0 - so SVDM version 1.0 and see if these changes lead to any issues.\n\nOne thing to note is that the change does not incorporate handling of SVDM 2.0 and 1.0 objects - it fills them like version 2.1. It theoretically should not lead to any issues, but I think we should test that before merging this CL.",
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7d26c0_5db28feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-04-18T10:43:02Z",
+      "side": 1,
+      "message": "Are there any plans for further tests of this change?",
+      "parentUuid": "85fa77af_94d51f46",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
