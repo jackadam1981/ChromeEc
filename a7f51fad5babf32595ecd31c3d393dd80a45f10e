@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b431f44d_d1e80b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-18T18:02:07Z",
+      "side": 1,
+      "message": "Message sent in chat, but I wanted to have it here too. Can you point to a requirement for this? My understanding is that we don\u0027t want the keyboard to wake the DUT if we\u0027re in tablet mode regardless of power state. If someone opens the DUT to tablet mode and puts it in their backpack we don\u0027t want the keyboard to wake the system.",
+      "revId": "a7f51fad5babf32595ecd31c3d393dd80a45f10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
