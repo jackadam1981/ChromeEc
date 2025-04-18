@@ -1820,11 +1820,13 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t byte;
+	const struct pdc_config_t *cfg = data->dev->config;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
 
+	LOG_INF("tim-C%d: SET_SINK_PATH = %d", cfg->connector_number, en);
 	if (en) {
 		byte = VBSIN_EN_ON;
 	} else {
@@ -2928,6 +2930,9 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			irq_pending_for_idle = true;
 		}
 
+		if (data->cmd == CMD_GET_CONNECTOR_STATUS) {
+			LOG_INF("tim-C%d: wr_buf = %x", cfg->connector_number, data->wr_buf[0]);
+		}
 		k_event_clear(&data->driver_event, events);
 
 		/* We only handle irq on idle. */
