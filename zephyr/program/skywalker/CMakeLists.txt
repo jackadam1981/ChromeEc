@@ -16,3 +16,8 @@ if(DEFINED CONFIG_BOARD_SKYWALKER)
 	project(skywalker)
 	add_subdirectory(skywalker)
 endif()
+
+if(DEFINED CONFIG_BOARD_OBIWAN)
+	project(obiwan)
+	add_subdirectory(obiwan)
+endif()
