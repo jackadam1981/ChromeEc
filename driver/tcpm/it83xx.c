@@ -414,6 +414,8 @@ static void it83xx_select_polarity(enum usbpd_port port,
 		CLEAR_MASK(IT83XX_USBPD_CCGCR(port), BIT(0));
 }
 
+int last_cc_pull;
+extern int print_log;
 static int it83xx_set_cc(enum usbpd_port port, int pull)
 {
 	int enable_cc = 1;
@@ -434,6 +436,13 @@ static int it83xx_set_cc(enum usbpd_port port, int pull)
 	}
 
 	it83xx_enable_cc(port, enable_cc);
+
+	if ((print_log == 1) && (pull != last_cc_pull)) {
+		CPRINTS("p%d cc change to %d(1=Rp, 2=Rd)", port, pull);
+	}
+
+	last_cc_pull = pull;
+
 	return EC_SUCCESS;
 }
 
