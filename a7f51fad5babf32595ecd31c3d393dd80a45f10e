@@ -16,6 +16,24 @@
       "message": "Message sent in chat, but I wanted to have it here too. Can you point to a requirement for this? My understanding is that we don\u0027t want the keyboard to wake the DUT if we\u0027re in tablet mode regardless of power state. If someone opens the DUT to tablet mode and puts it in their backpack we don\u0027t want the keyboard to wake the system.",
       "revId": "a7f51fad5babf32595ecd31c3d393dd80a45f10e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef6a305_63198a06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-04-21T10:04:00Z",
+      "side": 1,
+      "message": "Yes, I agree that the keyboard should not be functional.\nAlthough I didn\u0027t find any references, I conducted some experiments.\n\nAs per the code comments,\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/lid_angle_common.c;l\u003d30\nEC keeps the keyboard enabled in the S0 power state, and the AP manages this.\n\nOn Trulo board,\nmanually verified the keyboard in tablet mode(S0 state), \nfound thar On board keyboard is NOT functional.\n\nAdditionally, I checked the \"ksstate\" value, which is consistent\nbetween the Trulo board and the reference device Brox.\nThis value confirms that the EC is not disabling keyboard functionality in the S0 state.\n\n\u003e\u003e\u003e\u003e\u003e power state is in S0 state\n25-04-21 08:44:08.007 ec:\u003e tabletmode\n25-04-21 08:44:19.642 [8041.888800 clamshell mode]\n25-04-21 08:44:19.642 ec:\u003e ksstate\n25-04-21 08:44:22.380 Keyboard scan disable mask: 0x00000000\n \n\u003e\u003e\u003e\u003e\u003e power state is in S0 state \n25-04-21 08:45:01.588 tabletmode\n25-04-21 08:45:03.353 [8085.762400 tablet mode]\n25-04-21 08:45:03.354 ec:\u003e ksstate\n25-04-21 08:45:06.290 Keyboard scan disable mask: 0x00000000",
+      "parentUuid": "b431f44d_d1e80b3b",
+      "revId": "a7f51fad5babf32595ecd31c3d393dd80a45f10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
