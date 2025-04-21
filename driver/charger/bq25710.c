@@ -155,6 +155,8 @@ static const struct charger_info bq25710_charger_info = {
 static enum ec_error_list bq25710_get_option(int chgnum, int *option);
 static enum ec_error_list bq25710_set_option(int chgnum, int option);
 
+static int charger_vbus[CHARGER_NUM];
+
 static inline int iin_dpm_reg_to_current(int reg)
 {
 	/*
@@ -836,6 +838,62 @@ error:
 	return rv;
 }
 #endif
+
+int bq25710_is_vbus_present(int chgnum)
+{
+	return charger_vbus[chgnum];
+}
+
+bool bq25710_check_vbus_level(int chgnum, enum vbus_level level)
+{
+	int rv, vbus_voltage;
+
+	/*
+	 * Analog reading of VBUS is more accurate and helps reliability when
+	 * doing power role swaps, but if the charger is in LPM with the GPADCs
+	 * disabled then the reading won't update.
+	 *
+	 * Digital VBUS presence (with transitions flagged by STATUS1_CHG_DET
+	 * interrupt) still works when GPADCs are off, and shouldn't otherwise
+	 * impact performance because the GPADCs should be enabled in any
+	 * situation where we're doing a PRS.
+	 */
+	rv = bq25710_get_vbus_voltage(chgnum, chgnum, &vbus_voltage); //only bq25710 support (pujjoniru use bq25720)
+	if (rv == EC_ERROR_NOT_POWERED) {
+		/* VBUS ADC is disabled, use digital presence */
+		switch (level) {
+		case VBUS_PRESENT:
+			return bq25710_is_vbus_present(chgnum);
+		case VBUS_SAFE0V:
+		case VBUS_REMOVED:
+			return !bq25710_is_vbus_present(chgnum);
+		default:
+			CPRINTF("%s: unrecognized vbus_level value: %d\n",
+				__func__, level);
+			return false;
+		}
+	}
+	if (rv != EC_SUCCESS) {
+		/* Unhandled communication error; assume unsatisfied */
+		return false;
+	}
+
+	switch (level) {
+	case VBUS_PRESENT:
+		return vbus_voltage > PD_V_SAFE5V_MIN;
+	case VBUS_SAFE0V:
+		return vbus_voltage < PD_V_SAFE0V_MAX;
+	case VBUS_REMOVED:
+		return vbus_voltage < PD_V_SINK_DISCONNECT_MAX;
+	default:
+		CPRINTF("%s: unrecognized vbus_level value: %d\n", __func__,
+			level);
+		return false;
+	}
+}
+
+
+
 
 static enum ec_error_list bq25710_get_option(int chgnum, int *option)
 {

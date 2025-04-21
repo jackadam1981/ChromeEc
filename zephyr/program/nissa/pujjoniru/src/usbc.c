@@ -6,6 +6,7 @@
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
+#include "driver/charger/bq25710.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
@@ -145,10 +146,25 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	return bq25710_get_vbus_voltage(port, level);
+
+	//return sm5803_check_vbus_level(port, level);
+}
+
+#if 0 //need?
 __override int pd_snk_is_vbus_provided(int port)
 {
-	return ppc_is_vbus_present(port);
+	int chg_det = 0;
+
+	bq25710_get_vbus_voltage(port, &chg_det);
+
+	return chg_det;
+
+	//return ppc_is_vbus_present(port);
 }
+#endif
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {

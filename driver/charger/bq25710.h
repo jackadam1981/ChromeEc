@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BQ25710_H
 #define __CROS_EC_BQ25710_H
 
+#include "usb_pd.h"
+
 /* SMBUS Interface */
 #define BQ25710_SMBUS_ADDR1_FLAGS 0x09
 
@@ -73,5 +75,7 @@ extern const struct charger_drv bq25710_drv;
  * @return EC_SUCCESS or error
  */
 int bq25710_set_min_system_voltage(int chgnum, int mv);
+
+bool bq25710_check_vbus_level(int chgnum, enum vbus_level level);
 
 #endif /* __CROS_EC_BQ25710_H */
