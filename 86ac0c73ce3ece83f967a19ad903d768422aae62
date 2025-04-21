@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8055b1d8_5f76ca20",
+        "filename": "zephyr/program/trulo/uldrenite-ish/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Nit - formatting",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd71244_320110a4",
+        "filename": "zephyr/program/trulo/uldrenite-ish/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Delete blank line.",
+      "fixSuggestions": [
+        {
+          "fixId": "267bd47e_1d3bd60c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/uldrenite-ish/gpio.dtsi",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 25,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2862bb_81fda260",
+        "filename": "zephyr/program/trulo/uldrenite-ish/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Formatting",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba5a38f_345c7506",
+        "filename": "zephyr/program/trulo/uldrenite-ish/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Formatting",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3ca814_1dc11ae5",
+        "filename": "zephyr/program/trulo/uldrenite-ish/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Formatting",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73408ff1_baa60879",
+        "filename": "zephyr/program/trulo/uldrenite-ish/i2c.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Formatting",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d8113f_23b8d704",
+        "filename": "zephyr/program/trulo/uldrenite-ish/project.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Non-blocking - if there are common config options always used for ISH builds, lets find a common location for these definitions that can be shared by all projects.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8aa3313_684c8b74",
+        "filename": "zephyr/program/trulo/uldrenite-ish/src/sensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Use LOG_INF",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f1168d1d_9a30b317",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/uldrenite-ish/src/sensor.c",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": "\t\tLOG_INF(\"Board is Clamshell\");\n"
+            },
+            {
+              "path": "zephyr/program/trulo/uldrenite-ish/src/sensor.c",
+              "range": {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "\t\tLOG_INF(\"Board is Convertible\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39dd57d_60c6b4d9",
+        "filename": "zephyr/program/trulo/uldrenite-ish/src/sensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-21T18:25:42Z",
+      "side": 1,
+      "message": "Can this switch to SYS_INIT()?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
