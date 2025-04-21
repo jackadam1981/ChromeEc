@@ -28,6 +28,7 @@
 #include "usbc_ppc.h"
 #include "vboot.h"
 
+extern int print_log;
 /*
  * USB Type-C DRP with Accessory and Try.SRC module
  *   See Figure 4-16 in Release 1.4 of USB Type-C Spec.
@@ -1312,6 +1313,8 @@ static bool tc_perform_src_hard_reset(int port)
 {
 	switch (tc[port].ps_reset_state) {
 	case PS_STATE0:
+		CPRINTS("c%d HRD STATE0", port);
+
 		/* Remove VBUS */
 		tc_src_power_off(port);
 
@@ -1332,6 +1335,8 @@ static bool tc_perform_src_hard_reset(int port)
 		pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_SRC_RECOVER);
 		return false;
 	case PS_STATE1:
+		CPRINTS("c%d HRD STATE1", port);
+
 		/* Enable VBUS */
 		tc_src_power_on(port);
 
@@ -1346,6 +1351,8 @@ static bool tc_perform_src_hard_reset(int port)
 				PD_POWER_SUPPLY_TURN_ON_DELAY);
 		return false;
 	case PS_STATE2:
+		CPRINTS("c%d HRD STATE2", port);
+
 		/* Tell Policy Engine Hard Reset is complete */
 		pe_ps_reset_complete(port);
 
@@ -2208,6 +2215,8 @@ static void tc_unattached_snk_entry(const int port)
 {
 	enum pd_data_role prev_data_role;
 
+	print_log = 0;
+
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
 		print_current_state(port);
@@ -2787,6 +2796,8 @@ static void tc_unattached_src_entry(const int port)
 {
 	enum pd_data_role prev_data_role;
 
+	print_log = 0;
+
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
 		print_current_state(port);
@@ -3223,6 +3234,7 @@ static void tc_attached_src_run(const int port)
 			new_tc_state = tryWait ? TC_TRY_WAIT_SNK :
 						 TC_UNATTACHED_SNK;
 
+		CPRINTS("c%d detect cc disconnect", port);
 		set_state_tc(port, new_tc_state);
 		return;
 	}
@@ -3249,8 +3261,11 @@ static void tc_attached_src_run(const int port)
 		    !pd_timer_is_expired(port, TC_TIMER_TIMEOUT))
 			return;
 
-		if (tc_perform_src_hard_reset(port))
+		if (tc_perform_src_hard_reset(port)) {
 			TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED);
+			print_log = 0;
+			CPRINTS("c%d hard reset done", port);
+		}
 
 		return;
 	}

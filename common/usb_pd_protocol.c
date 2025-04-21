@@ -4002,7 +4002,7 @@ void pd_task(void *u)
 				    snk_hard_reset_vbus_off) {
 					/* VBUS went high again */
 					set_state(port, PD_STATE_SNK_DISCOVERY);
-					timeout = 10 * MSEC;
+					timeout = 10 * MSEC; //task sleep
 				}
 
 				/*
@@ -4497,7 +4497,7 @@ void pd_task(void *u)
 #endif
 
 			/* reset our own state machine */
-			pd_execute_hard_reset(port);
+			pd_execute_hard_reset(port); // print HARD RST TX
 			timeout = 10 * MSEC;
 			break;
 #ifdef CONFIG_COMMON_RUNTIME
