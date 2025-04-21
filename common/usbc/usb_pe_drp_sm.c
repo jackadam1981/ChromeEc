@@ -2375,7 +2375,12 @@ static void pe_sender_response_msg_exit(int port)
  */
 static void pe_src_startup_entry(int port)
 {
+	const char *mode = "";
+
 	print_current_state(port);
+
+	CPRINTS("C%d: %s%s", port,
+		pe_state_names[get_state_pe(port)], mode);
 
 	/* Reset CapsCounter */
 	pe[port].caps_counter = 0;
@@ -3254,7 +3259,12 @@ static void pe_src_hard_reset_exit(int port)
  */
 static void pe_src_hard_reset_received_entry(int port)
 {
+	const char *mode = "";
+
 	print_current_state(port);
+
+	CPRINTS("C%d: %s%s", port,
+		pe_state_names[get_state_pe(port)], mode);
 
 	/* Start NoResponseTimer */
 	pd_timer_enable(port, PE_TIMER_NO_RESPONSE, PD_T_NO_RESPONSE);
@@ -3283,7 +3293,12 @@ static void pe_src_hard_reset_received_exit(int port)
  */
 static void pe_src_transition_to_default_entry(int port)
 {
+	const char *mode = "";
+
 	print_current_state(port);
+
+	CPRINTS("C%d: %s%s", port,
+		pe_state_names[get_state_pe(port)], mode);
 
 	/* Reset flags */
 	memset(&pe[port].flags_a, 0, sizeof(pe[port].flags_a));
