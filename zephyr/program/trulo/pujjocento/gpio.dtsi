@@ -94,6 +94,8 @@
 	};
 };
 
+/delete-node/ &i2c_ec_i2c_sensor_r;
+
 /* These GPIOS are initialized by the PDC driver */
 &gpio_i2c_ec_pd_int_odl {
 	no-auto-init;
