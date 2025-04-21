@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9f7f8c_96bfdd0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-04-21T03:06:43Z",
+      "side": 1,
+      "message": "One lesson learned from Gothrax is there\u0027s no enough bits in FW_CONFIG for daugher board and touch panel. Please create a separate issue to estimate the number of daughter boards and touch panels. It\u0027s better to add revserved bits in FW_CONFIG for future use.",
+      "revId": "b3af9c4a6796b5d92035530bf58feeb379fa3ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
