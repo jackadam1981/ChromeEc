@@ -288,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ad459e_104a41f7",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. Keeping this pin as it is required by other device tree nodes and added \"no-auto-init\" as mentioned above.",
+      "parentUuid": "a6d3319b_59c85ad5",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "d55dfc722acc3eef5f8267fab255a02de5cf30a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9c5e85_de3227df",

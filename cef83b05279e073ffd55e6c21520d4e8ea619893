@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a874dbff_951c3406",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "cdf5ff4a_c24f0efa",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90b1ddea_794f67ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-18T18:04:34Z",
       "side": 1,
       "message": "Delete if possible, otherwise add `no-auto-int` and drop `enum-name` property which is not used by the Zephyr AP power sequence driver.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "001fedbd_362a42c6",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. This pin will be defined as part of power signals device tree file.",
+      "parentUuid": "90b1ddea_794f67ea",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9da1847_fd599eda",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. This pin will be defined as part of power signals device tree file.",
+      "parentUuid": "9c36707c_bec5ec2e",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b92737f6_aec3838d",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-04-18T18:04:34Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d233b5_69b868b0",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. This pin will be defined as part of power signals device tree file.",
+      "parentUuid": "b92737f6_aec3838d",
       "range": {
         "startLine": 66,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b498e8_40507b69",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. This pin will be defined as part of power signals device tree file.",
+      "parentUuid": "6d6de165_c05fb54a",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "549a2312_eb9c970e",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a852a3ea_2096e8f4",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. This pin will be defined as part of power signals device tree file.",
+      "parentUuid": "549a2312_eb9c970e",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7576c721_05f24212",
@@ -152,6 +296,30 @@
       "writtenOn": "2025-04-18T18:04:34Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "cef83b05279e073ffd55e6c21520d4e8ea619893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b391aa0_a0b9e35a",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-04-21T10:33:57Z",
+      "side": 1,
+      "message": "Acknowledged. This pin will be defined as part of power signals device tree file.",
+      "parentUuid": "7576c721_05f24212",
       "range": {
         "startLine": 101,
         "startChar": 2,
