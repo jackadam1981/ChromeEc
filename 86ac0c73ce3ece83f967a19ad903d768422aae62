@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae8236b_dcf0664f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-04-21T22:04:19Z",
+      "side": 1,
+      "message": "How about coreboot patch? the pin mux have to be configured for ISH GPIO used here.",
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8055b1d8_5f76ca20",
@@ -169,6 +186,29 @@
         "startChar": 0,
         "endLine": 46,
         "endChar": 16
+      },
+      "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7149c37_7577654c",
+        "filename": "zephyr/program/trulo/uldrenite-ish/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-04-21T22:04:19Z",
+      "side": 1,
+      "message": "At Uldrenite schematic, ISH UART1 is used.",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 26
       },
       "revId": "86ac0c73ce3ece83f967a19ad903d768422aae62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
