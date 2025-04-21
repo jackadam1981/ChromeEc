@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb10f779_6a237597",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-21T16:52:30Z",
+      "side": 1,
+      "message": "`usb_mode.c` should not be built at all for PDC-based platforms. I would not expect this CL to have any effect on brox.",
+      "range": {
+        "startLine": 11,
+        "startChar": 58,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "6d9837d39406267eb1ab16f6040f26b6eac2e6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5abe5f06_1f80e0d2",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2025-04-21T06:10:24Z",
       "side": 1,
       "message": "Hi Jignesh, May be good to add a comment here on why hardcoding of speed is required. ie,  regarding your observation about older cables that some of them are not upto date with specification, sending wrong cable speed type. Also, in case, if you have not added your findings about cable speed type observation using ellipys in crossbug  as well as a reference. (NB:I dont have access to crossbug )",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "6d9837d39406267eb1ab16f6040f26b6eac2e6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35039a0_1ef6e9b5",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-21T16:52:30Z",
+      "side": 1,
+      "message": "+1. What effect does this change have on cables that correctly populate the Product VDO?",
+      "parentUuid": "5abe5f06_1f80e0d2",
       "range": {
         "startLine": 340,
         "startChar": 1,
