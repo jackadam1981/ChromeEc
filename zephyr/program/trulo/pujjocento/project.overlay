@@ -24,9 +24,8 @@
 #include "pwm.dtsi"
 #include "temp_sensors.dtsi"
 #include "usb_typec.dtsi"
-#include "usba.dtsi"
 
-/* Trulo overrides follow... */
+/* Pujjocento overrides follow... */
 
 &cbi_flash {
 	/*
