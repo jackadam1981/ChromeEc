@@ -79,11 +79,6 @@
 		};
 	};
 
-	gpio-interrupts {
-		/delete-node/ vol_down;
-		/delete-node/ vol_up;
-	};
-
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
