@@ -69,6 +69,41 @@
       "parentUuid": "9f7d26c0_5db28feb",
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fe2d01_76d48676",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-21T16:47:19Z",
+      "side": 1,
+      "message": "\u003e Zephyr unit testing.\n\nI would go further and suggest that you add a Zephyr test to check the VDM version of DPAM messages, if there is not one already.\n\n\u003e One thing to note is that the change does not incorporate handling of SVDM 2.0 and 1.0 objects - it fills them like version 2.1. It theoretically should not lead to any issues, but I think we should test that before merging this CL.\n\nThere may be a few non-DP devices that will care about VDM content differences between version 2.0 and version 2.1. I\u0027m more specifically concerned about DPAM 2.1 monitors, which depend on 2.0 vs 2.1 content differences for DPAM SVDMs. For either case, @bleung@google.com and @brandon.breitenstein@intel.com may be able to suggest some representative devices to test with.",
+      "parentUuid": "30781586_ffd14b5d",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da67e096_18e3943a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-21T16:47:19Z",
+      "side": 1,
+      "message": "LGTM, but we should test this carefully to avoid breaking DPAM 2.1.",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
