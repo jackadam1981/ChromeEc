@@ -16,6 +16,67 @@
       "message": "Still need to test on a live DUT",
       "revId": "bc3f6013d02486c4790d11aac3e24538a8453a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ba3f80_6575e365",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6486,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-22T20:35:59Z",
+      "side": 1,
+      "message": "Better to print all the possible cases, including `EC_PD_POWER_ROLE_SOURCE`, though the existing implementation doesn\u0027t support them.",
+      "range": {
+        "startLine": 6486,
+        "startChar": 1,
+        "endLine": 6486,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "de340bbd_ba24b87d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6489,
+                "startChar": 0,
+                "endLine": 6489,
+                "endChar": 0
+              },
+              "replacement": "\tcase EC_PD_POWER_ROLE_SOURCE:\n\t\tprintf(\"source-only \");\n\t\tbreak;\n"
+            },
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6502,
+                "startChar": 0,
+                "endLine": 6502,
+                "endChar": 0
+              },
+              "replacement": "\tcase EC_PD_TRY_POWER_ROLE_SINK:\n\t\tprintf(\"trysnk \");\n\t\tbreak;\n"
+            },
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6515,
+                "startChar": 0,
+                "endLine": 6515,
+                "endChar": 0
+              },
+              "replacement": "\tcase EC_PD_DATA_ROLE_DFP:\n\t\tprintf(\"dfp-only \");\n\t\tbreak;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bc3f6013d02486c4790d11aac3e24538a8453a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
