@@ -56,10 +56,4 @@ config CROS_EC_RO_SIZE
 config CROS_EC_RW_MEM_OFF
 	default 0x0
 
-config CROS_EC_RW_SIZE
-	default 0x40000 if SOC_NPCX9M3F || SOC_NPCX9M7FB
-	default 0x30000 if SOC_NPCX9M6F
-	default 0x50000 if SOC_NPCX9M7F
-	default 0x68000 if SOC_NPCX9MFP
-
 endif # SOC_SERIES_NPCX9

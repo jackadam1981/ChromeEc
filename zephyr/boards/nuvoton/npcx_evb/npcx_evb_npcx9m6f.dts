@@ -17,6 +17,22 @@
 #include <nuvoton/npcx9m6f.dtsi>
 #include "npcx_evb.dtsi"
 
+&binman {
+    ec-rw {
+        offset = <0x40000>;
+        size = <0x30000>;
+        pad-byte = <0xff>;
+        rw-fw {
+            type = "section";
+            pad-byte = <0xff>;
+            rw-fwid {
+                offset = <(0x30000 - 32)>;
+                size = <32>;
+            };
+        };
+    };
+};
+
 &uart1 {
 	status = "okay";
 	current-speed = <115200>;
