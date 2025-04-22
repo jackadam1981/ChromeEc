@@ -1,4 +1,4 @@
-# Copyright 2024 The ChromiumOS Authors
+# Copyright 2025 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -8,5 +8,3 @@ zephyr_library_sources("src/sensor.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	"src/keyboard_customization.c"
 )
-zephyr_library_sources_ifdef(
-    CONFIG_PDC_RUNTIME_PORT_CONFIG "src/usbc_runtime.c")
