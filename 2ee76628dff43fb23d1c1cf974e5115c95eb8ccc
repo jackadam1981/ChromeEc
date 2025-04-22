@@ -1,0 +1,66 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b317649_19d276f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-04-22T19:34:25Z",
+      "side": 1,
+      "message": "This change should be neutral. Please check that using `zmake compare-builds --all`",
+      "revId": "2ee76628dff43fb23d1c1cf974e5115c95eb8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8b8ce8_9cbef093",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-04-22T19:34:25Z",
+      "side": 1,
+      "message": "Similar default is already present in [`ec/zephyr/app/ec/Kconfig`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d144;drc\u003d0d7493c005219bb2b2881ab6b33828dc0264aaba).\n\nMaybe you could just remove `config CROS_EC_RW_SIZE` from `Kconfig.npcx9` and `Kconfig.npcx7`?",
+      "fixSuggestions": [
+        {
+          "fixId": "fcfb899d_f4197e26",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+              "range": {
+                "startLine": 62,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2ee76628dff43fb23d1c1cf974e5115c95eb8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
