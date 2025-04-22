@@ -35,8 +35,8 @@ void motion_interrupt(enum gpio_signal signal)
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
-	if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE)
-		bma4xx_interrupt(signal);
+	/* 	if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE)
+			bma4xx_interrupt(signal); */
 }
 
 static void motionsense_init(void)
