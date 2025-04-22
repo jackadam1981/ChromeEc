@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ce3072_66c08484",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-22T08:51:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6d20cd5_c7c0a9da",
+      "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1c7be7_58f00b2f",
@@ -49,6 +67,24 @@
       "writtenOn": "2025-04-10T04:05:09Z",
       "side": 1,
       "message": "I am not familiar with this code: how is it used? Isn\u0027t it redundant with scale/uscale?",
+      "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32f3ea1_187438d1",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-22T08:51:45Z",
+      "side": 1,
+      "message": "I think Francka doesn\u0027t needs it, it\u0027s for chips like the TCS3400.",
+      "parentUuid": "4d1c7be7_58f00b2f",
       "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -84,6 +120,24 @@
           ]
         }
       ],
+      "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a3739f_f2aa8fc8",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-22T08:51:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfed2733_1c7487ad",
       "revId": "fdbf9d4a4ac6ae774c0efe51a71a60e3b0526ce4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
