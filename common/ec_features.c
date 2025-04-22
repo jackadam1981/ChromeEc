@@ -98,7 +98,7 @@ uint32_t get_feature_flags0(void)
 			  | EC_FEATURE_MASK_0(EC_FEATURE_RTC)
 #endif
 #if defined(CONFIG_SPI_FP_PORT) || defined(CONFIG_BOARD_FINGERPRINT)
-			  | EC_FEATURE_MASK_0(EC_FEATURE_FINGERPRINT)
+//			  | EC_FEATURE_MASK_0(EC_FEATURE_FINGERPRINT)
 #endif
 #ifdef HAS_TASK_CENTROIDING
 			  | EC_FEATURE_MASK_0(EC_FEATURE_TOUCHPAD)
@@ -199,6 +199,7 @@ uint32_t get_feature_flags1(void)
 #ifdef CONFIG_KEYBOARD_STRAUSS
 		| EC_FEATURE_MASK_1(EC_FEATURE_STRAUSS)
 #endif
+		| EC_FEATURE_MASK_1(60)
 		;
 	return board_override_feature_flags1(result);
 }
