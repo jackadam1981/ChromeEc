@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b251905d_526533c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-04-22T07:25:11Z",
+      "side": 1,
+      "message": "- Lists unused pins.\n- Add 1.8v flag for 1.8v signals.\n- Fixed issue where hibernation did not work.",
+      "revId": "8bae6bbbb44ca773217b3e6afb8c7abda9b69469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
