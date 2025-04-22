@@ -48,6 +48,10 @@ config CROS_EC_RO_MEM_OFF
 # NPCX99FP: Image size limited by code RAM size (416 KiB)
 
 config CROS_EC_RO_SIZE
+	hex "The size of the RW region"
+	default $(dt_node_int_prop_hex,/binman/wp-ro,size) \
+		if ($(dt_path_enabled,/binman/wp-ro) && \
+		!$(dt_node_str_prop_equals,/binman/wp-ro,size,0x0))
 	default 0x40000 if SOC_NPCX9M3F || SOC_NPCX9M7FB
 	default 0x30000 if SOC_NPCX9M6F
 	default 0x50000 if SOC_NPCX9M7F
