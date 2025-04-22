@@ -170,7 +170,17 @@ int pd_set_power_supply_ready(int port)
 
 __override int pd_snk_is_vbus_provided(int port)
 {
-	return ppc_is_vbus_present(port);
+	int voltage = 0;
+	int rv;
+
+	rv = charger_get_vbus_voltage(port, &voltage);
+
+	if (rv) {
+		CPRINTSUSB("%s rv=%d", __func__, rv);
+		return 0;
+	}
+
+	return voltage > 3670 ? 1 : 0;
 }
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
