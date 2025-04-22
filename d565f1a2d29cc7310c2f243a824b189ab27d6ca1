@@ -16,6 +16,24 @@
       "message": "This is inconsistent withe the rest of the VIF and, I believe, the intended behavior of pujjo. It\u0027s configured to have one 3A port (out of one total port). The values of `Product_Total_Source_Power_mW` and `FR_Swap_Type_C_Current_Capability_As_Initial_Sink` still reflect this. This value should stay at 15W.",
       "revId": "d565f1a2d29cc7310c2f243a824b189ab27d6ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60cdaea9_82f2a246",
+        "filename": "zephyr/program/nissa/pujjo/pujjo1e_vif.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-04-22T05:40:44Z",
+      "side": 1,
+      "message": "+1, we are seeing 1.5A PDO advertisement only when the Ellisys tester is connected. Otherwise with other sink devices, we see 3A PDO. Need to investigate it.",
+      "parentUuid": "4f838877_9efb8f41",
+      "revId": "d565f1a2d29cc7310c2f243a824b189ab27d6ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
