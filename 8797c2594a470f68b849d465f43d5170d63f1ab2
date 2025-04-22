@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6777964b_a7dab2d4",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-22T22:00:58Z",
+      "side": 1,
+      "message": "nit: s/als_clear/als/",
+      "fixSuggestions": [
+        {
+          "fixId": "308df9d1_96e1b9ef",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/francka/motionsense.dtsi",
+              "range": {
+                "startLine": 142,
+                "startChar": 0,
+                "endLine": 143,
+                "endChar": 0
+              },
+              "replacement": "\t\tals: base-als {\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/francka/motionsense.dtsi",
+              "range": {
+                "startLine": 159,
+                "startChar": 0,
+                "endLine": 160,
+                "endChar": 0
+              },
+              "replacement": "\t\tals-sensors \u003d \u003c\u0026als\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/fatcat/francka/motionsense.dtsi",
+              "range": {
+                "startLine": 167,
+                "startChar": 0,
+                "endLine": 168,
+                "endChar": 0
+              },
+              "replacement": "\t\taccel-force-mode-sensors \u003d \u003c\u0026base_accel \u0026als\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8797c2594a470f68b849d465f43d5170d63f1ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
