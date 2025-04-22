@@ -77,6 +77,30 @@
       ],
       "revId": "bc3f6013d02486c4790d11aac3e24538a8453a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b575a6_d788df35",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6486,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-22T21:15:14Z",
+      "side": 1,
+      "message": "Added the rest and re-ordered the case statements to match the enum value order",
+      "parentUuid": "77ba3f80_6575e365",
+      "range": {
+        "startLine": 6486,
+        "startChar": 1,
+        "endLine": 6486,
+        "endChar": 5
+      },
+      "revId": "bc3f6013d02486c4790d11aac3e24538a8453a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
