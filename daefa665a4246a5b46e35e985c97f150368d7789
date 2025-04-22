@@ -16,6 +16,24 @@
       "message": "Should we lower the odr for the bmi sensor too?",
       "revId": "daefa665a4246a5b46e35e985c97f150368d7789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe134b85_bc8af6e8",
+        "filename": "zephyr/program/skyrim/winterhold/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-22T16:18:06Z",
+      "side": 1,
+      "message": "12.5Hz is the minimal frequency we support for the BMI. Lower ODR will disable the FIFO, used to collect the data.",
+      "parentUuid": "a44f68bb_9f7aefdf",
+      "revId": "daefa665a4246a5b46e35e985c97f150368d7789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
