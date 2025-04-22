@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94352c18_77409319",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-04-22T09:18:01Z",
+      "side": 1,
+      "message": "Add at #line64\n```\n\tlux_data \u003d lux_data * drv_data-\u003escale +\n\t\t   lux_data * drv_data-\u003euscale / 10000;\n```",
+      "parentUuid": "39a3e1b7_b99b5527",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4b9a75_fcb54133",
