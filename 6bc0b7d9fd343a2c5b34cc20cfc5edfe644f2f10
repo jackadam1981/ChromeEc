@@ -16,6 +16,24 @@
       "message": "Do we have a test to check if the `response_size` field is valid?",
       "revId": "6bc0b7d9fd343a2c5b34cc20cfc5edfe644f2f10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1570ee15_08810aad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-22T15:35:24Z",
+      "side": 1,
+      "message": "And why the tests passed before? The tests check the response.",
+      "parentUuid": "f5c89e95_a297cfc1",
+      "revId": "6bc0b7d9fd343a2c5b34cc20cfc5edfe644f2f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
