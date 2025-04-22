@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e608e2_585cb47b",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-22T20:47:27Z",
+      "side": 1,
+      "message": "`RO`?",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b32de641_e22447af",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+              "range": {
+                "startLine": 51,
+                "startChar": 0,
+                "endLine": 52,
+                "endChar": 0
+              },
+              "replacement": "\thex \"The size of the RO region\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "60bc1b7b823c8dc3c0d1ef316aad3b7e72f536a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
