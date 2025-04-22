@@ -26,17 +26,18 @@ extern "C" {
 #endif
 
 /** Get fingerprint sensor width. */
-#define FINGERPRINT_SENSOR_RES_X(node_id) DT_PROP(node_id, width)
+#define FINGERPRINT_SENSOR_RES_X(node_id) DT_PROP_BY_IDX(node_id, width, 0)
 
 /** Get fingerprint sensor height. */
-#define FINGERPRINT_SENSOR_RES_Y(node_id) DT_PROP(node_id, height)
+#define FINGERPRINT_SENSOR_RES_Y(node_id) DT_PROP_BY_IDX(node_id, height, 1)
 
 /** Get fingerprint sensor resolution (bits per pixel). */
-#define FINGERPRINT_SENSOR_RES_BPP(node_id) DT_PROP(node_id, bits_per_pixel)
+#define FINGERPRINT_SENSOR_RES_BPP(node_id) \
+	DT_PROP_BY_IDX(node_id, bits_per_pixel, 1)
 
 /** Get fingerprint sensor pixel format. */
 #define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(node_id) \
-	DT_STRING_TOKEN(node_id, v4l2_pixel_format)
+	DT_STRING_TOKEN_BY_IDX(node_id, v4l2_pixel_format, 1)
 
 /** Get size of raw fingerprint image (in bytes). */
 #define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id) \
