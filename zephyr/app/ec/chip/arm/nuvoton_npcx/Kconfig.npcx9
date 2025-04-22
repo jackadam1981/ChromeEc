@@ -31,11 +31,17 @@ config CROS_EC_RAM_BASE
 	default 0x200c0000
 
 config CROS_EC_DATA_RAM_SIZE
+	hex "The total available RAM size for data."
+	default $(add,$(dt_nodelabel_reg_size_int,sram0),4096) \
+		if $(dt_nodelabel_exists,sram0)
 	default 0x00018000 if SOC_NPCX9MFP
 	default 0x00020000 if SOC_NPCX9M7FB
 	default 0x00010000
 
 config CROS_EC_RAM_SIZE
+	hex "The total available RAM size."
+	default $(dt_nodelabel_reg_size_hex,sram0) \
+		if $(dt_nodelabel_exists,sram0)
 	default 0x00017000 if SOC_NPCX9MFP
 	default 0x00020000 if SOC_NPCX9M7FB
 	default 0x0000f800
