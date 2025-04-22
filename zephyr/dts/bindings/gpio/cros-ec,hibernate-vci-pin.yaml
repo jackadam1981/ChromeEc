@@ -27,7 +27,7 @@ properties:
 
   preserve:
     type: boolean
-    description: If present its state will be preserved after exiting
+    description: If present its state will be preserved before entering
       hibernation.
 
   wakeup:
