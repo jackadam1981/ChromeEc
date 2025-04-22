@@ -63,10 +63,6 @@
 		gpio_sen_mode2_ec_ish_int_odl: sen_mode2_ec_ish_int_odl {
 			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_OUTPUT)>;
 		};
-		gpio_en_kb_bl: en_kb_bl {
-			gpios = <&gpioa 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
-			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
-		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpioa 3 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
@@ -129,6 +125,7 @@
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
+			<&gpioa 0 0>,
 			<&gpio9 5 0>,
 			<&gpio5 0 0>,
 			<&gpio5 6 0>,
