@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5de5cdb_142427f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-22T21:57:48Z",
+      "side": 1,
+      "message": "This change impacts a lot of different code paths. Before submitting, we should rerun the whole compliance suite on multiple boards to make sure that this doesn\u0027t cause any regressions in other tests.\n\nMy initial thought is, if you know which board passed this test with the lowest value of tSenderResponse and which board required the highest value to pass, those two boards would probably be sufficient for a general retest.",
+      "revId": "895c1ba59f19a65e8c4cc6582b5770c1de42877e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28097f7_55f411e0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-22T21:57:48Z",
+      "side": 1,
+      "message": "Can you add a comment that this was experimentally determined to pass TEST.PD.PROT.SNK.5 (and I think also SRC.3) on various boards?",
+      "fixSuggestions": [
+        {
+          "fixId": "d77685a8_a539d6aa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/usb_pd.h",
+              "range": {
+                "startLine": 269,
+                "startChar": 0,
+                "endLine": 269,
+                "endChar": 0
+              },
+              "replacement": " * This value was experimentally determined to pass TEST.PD.PROT.SNK.5 and\n * TEST.PD.PROT.SRC.3 on various boards.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "895c1ba59f19a65e8c4cc6582b5770c1de42877e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
