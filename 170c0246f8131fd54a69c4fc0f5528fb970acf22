@@ -122,6 +122,24 @@
       "parentUuid": "92fe2d01_76d48676",
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9d9426_d918dba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-22T16:17:47Z",
+      "side": 1,
+      "message": "The current test organization could use improvement, but at least the majority of the Zephyr tests for DPAM are in [this file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c), and I would guess that\u0027s the right place for this one as well.",
+      "parentUuid": "371ab18c_c2c6945e",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
