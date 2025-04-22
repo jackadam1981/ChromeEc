@@ -355,11 +355,6 @@ static void cros_system_xec_vci_init(void)
 			MCHP_VCI_INFO_GET_POLARITY(pvci->vci_info);
 		uint8_t vci_latch_en =
 			MCHP_VCI_INFO_GET_LATCH_EN(pvci->vci_info);
-		uint8_t vci_clear = !MCHP_VCI_INFO_GET_PRESERVE(pvci->vci_info);
-
-		if (vci_clear) {
-			vci->LATCH_RST |= BIT(id);
-		}
 
 		/* configure VCI register per board design */
 		if (vci_polarity) {
@@ -388,6 +383,11 @@ static void cros_system_xec_configure_vci_in(void)
 	for (size_t id = 0; id < ARRAY_SIZE(app_vci_table); id++) {
 		const struct app_vci_pin *pvci = &app_vci_table[id];
 		uint8_t vci_wakeup_en = MCHP_VCI_INFO_WAKEUP_EN(pvci->vci_info);
+		uint8_t vci_clear = !MCHP_VCI_INFO_GET_PRESERVE(pvci->vci_info);
+
+		if (vci_clear) {
+			vci->LATCH_RST |= BIT(id);
+		}
 
 		/* Only disable those without `wakeup` flag */
 		if (!vci_wakeup_en && id > 0) {
