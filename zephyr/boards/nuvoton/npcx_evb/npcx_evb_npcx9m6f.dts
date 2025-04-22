@@ -18,19 +18,29 @@
 #include "npcx_evb.dtsi"
 
 &binman {
-    ec-rw {
-        offset = <0x40000>;
-        size = <0x30000>;
-        pad-byte = <0xff>;
-        rw-fw {
-            type = "section";
-            pad-byte = <0xff>;
-            rw-fwid {
-                offset = <(0x30000 - 32)>;
-                size = <32>;
-            };
-        };
-    };
+	wp-ro {
+		offset = <0x0>;
+		size = <0x30000>;
+		ec-ro {
+			fmap {
+				offset = <(0x30000 - 0x400)>;
+				/*
+				 * don't specify 'size = <0x400>' here so
+				 * it is auto-assigned to the fmap size.
+				 */
+			};
+		};
+	};
+	ec-rw {
+		offset = <0x30000>;
+		size = <0x30000>;
+		rw-fw {
+			rw-fwid {
+				offset = <(0x30000 - 32)>;
+			};
+		};
+	};
+	pad-byte = <0xff>;
 };
 
 &uart1 {
