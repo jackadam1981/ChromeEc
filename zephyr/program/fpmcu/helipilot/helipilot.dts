@@ -133,10 +133,10 @@
 		reg = <0>;
 		spi-max-frequency = <4000000>;
 
-		width = <160>;
-		height = <160>;
-		bits-per-pixel = <8>;
-		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+		width = <160 80>;
+		height = <160 80>;
+		bits-per-pixel = <8 16>;
+		v4l2-pixel-format = "V4L2_PIX_FMT_GREY", "V4L2_PIX_FMT_GREY";
 
 		irq-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
