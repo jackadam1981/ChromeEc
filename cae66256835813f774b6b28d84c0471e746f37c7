@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d489ebd9_3be93d45",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-23T14:57:50Z",
+      "side": 1,
+      "message": "Because you\u0027ve declared this atomic, use the `atomic_test_bit` API for all reads to `motion_sense_task_current_status`",
+      "range": {
+        "startLine": 478,
+        "startChar": 5,
+        "endLine": 478,
+        "endChar": 37
+      },
+      "revId": "cae66256835813f774b6b28d84c0471e746f37c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
