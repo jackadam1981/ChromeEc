@@ -33,6 +33,11 @@
 		lsm6dsm-int = &base_accel;
 	};
 
+	ec-console {
+		compatible = "ec-console";
+		disabled = "events", "lpc", "hostcmd", "usbcharge";
+	};
+
 	named-gpios {
 		en_pp5000_usb_a1_vbus: en_pp5000_usb_a1_vbus_x {
 			gpios = <&gpiof 5 GPIO_OUTPUT_LOW>;
