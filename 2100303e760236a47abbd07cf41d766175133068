@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73be89c_e567e538",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-23T21:36:44Z",
+      "side": 1,
+      "message": "@CHChang19@nuvoton.com\n\nFor this configuration, can we just read the values from the device tree? Do you need to assign different defaults based on the SOC type?\n\nBy the way, when I add this change, the value of `CROS_EC_RW_SIZE` changed from 0x30000 to 0x40000? Which device tree is associated with this project and which `/binman/ec-rw` path it is reading from?\n\nBest",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0ddccb99_9613be77",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "\tdefault $(dt_node_int_prop_hex,/binman/ec-rw,size)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
