@@ -25,6 +25,14 @@ FAKE_VALUE_FUNC(int, mock_get_logical_addr, int, uint8_t *);
 FAKE_VALUE_FUNC(int, mock_set_logical_addr, int, uint8_t);
 FAKE_VALUE_FUNC(int, mock_send, int, const uint8_t *, uint8_t);
 FAKE_VALUE_FUNC(int, mock_get_received_message, int, uint8_t **, uint8_t *);
+FAKE_VOID_FUNC(cros_cec_enable, int);
+
+int arch_irq_connect_dynamic(unsigned int irq, unsigned int priority,
+			     void (*routine)(const void *parameter),
+			     const void *parameter, uint32_t flags)
+{
+	return 0;
+}
 
 struct cec_common_fixture {
 	const struct cec_drv *cec_0_drv;

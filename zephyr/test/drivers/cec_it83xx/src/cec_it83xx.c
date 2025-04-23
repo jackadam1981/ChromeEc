@@ -8,7 +8,17 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/fff.h>
 #include <zephyr/ztest.h>
+
+FAKE_VOID_FUNC(cros_cec_enable, int);
+
+int arch_irq_connect_dynamic(unsigned int irq, unsigned int priority,
+			     void (*routine)(const void *parameter),
+			     const void *parameter, uint32_t flags)
+{
+	return 0;
+}
 
 /* From chip/it83xx/intc.h, but that file has inline assembly. */
 void cec_interrupt(void);
