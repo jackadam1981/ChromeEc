@@ -16,6 +16,24 @@
       "message": "Hi Tom, and David,\nHave any comment about this? Thank you.",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01da668a_85d9778d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-23T23:52:27Z",
+      "side": 1,
+      "message": "Hi Tom,\nWhen I cherry pick this change and enable for helipilot using this simple change:\n\n```\n~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/program/fpmcu/helipilot/helipilot.dts b/zephyr/program/fpmcu/helipilot/helipilot.dts\nindex fa38cc3248..881c2770bb 100644\n--- a/zephyr/program/fpmcu/helipilot/helipilot.dts\n+++ b/zephyr/program/fpmcu/helipilot/helipilot.dts\n@@ -141,4 +141,9 @@\n                irq-gpios \u003d \u003c\u0026gpiob 0 GPIO_ACTIVE_HIGH\u003e;\n                reset-gpios \u003d \u003c\u0026gpio9 6 GPIO_ACTIVE_LOW\u003e;\n        };\n+};\n+\n+\u0026mdc {\n+       /delete-property/ reg;\n+       reg \u003d \u003c0x4000c000 0x80\u003e;\n };\n\\ No newline at end of file\ndiff --git a/zephyr/program/fpmcu/helipilot/prj.conf b/zephyr/program/fpmcu/helipilot/prj.conf\nindex 0eb009004f..b998d89192 100644\n--- a/zephyr/program/fpmcu/helipilot/prj.conf\n+++ b/zephyr/program/fpmcu/helipilot/prj.conf\n@@ -18,6 +18,9 @@ CONFIG_ENTROPY_GENERATOR\u003dy\n # Set security strength to 256b\n CONFIG_ENTROPY_NPCX_DRBG_SECURITY_STRENGTH_256B\u003dy\n \n+# Enable NPCX RAM Lock\n+CONFIG_NPCX_RAM_LOCK\u003dy\n+\n```\n I get this build error. Am I using it incorrectly or need to add something?\n \n```\n/mnt/host/source/src/platform/ec/zephyr/program/fpmcu/helipilot/prj.conf:22: warning: attempt to assign the value \u0027y\u0027 to the undefined symbol NPCX_RAM_LOCK\n  /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)\n  CMakeLists.txt:7 (find_package)\nerror: Aborting due to Kconfig warnings\n```",
+      "parentUuid": "0e2f7fdf_fccb327f",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
