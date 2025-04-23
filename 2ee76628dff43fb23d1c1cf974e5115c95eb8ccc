@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c45793fc_74c26402",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-23T05:11:10Z",
+      "side": 1,
+      "message": "I am not sure where it is getting the value 0x40000. I need to look into where the path `binman/ec-rw` exist in the dts of `npcx9`. Just to double check, it is this board:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/npcx_evb/npcx9/BUILD.py",
+      "parentUuid": "a2e0a11c_7bfee438",
+      "revId": "2ee76628dff43fb23d1c1cf974e5115c95eb8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce8b8ce8_9cbef093",
         "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
         "patchSetId": 1
@@ -77,6 +95,24 @@
           ]
         }
       ],
+      "revId": "2ee76628dff43fb23d1c1cf974e5115c95eb8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d106380b_456dda8a",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-23T05:11:10Z",
+      "side": 1,
+      "message": "how about just redefining them in [zephyr/program/fpmcu/Kconfig](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/Kconfig) under `if CONFIG_HELIPLOT`\n\n```\nif BOARD_HELIPILOT\n\nconfig CROS_EC_RW_SIZE\n\thex \"The size of the RW region\"\n\tdefault $(dt_node_int_prop_hex,/binman/ec-rw,size)\n```\n\nI tested it and it works. Then we do not have to worry about the other boards because this redefinition is only for fpmcu\n\n```\nCONFIG_CROS_EC_RW_SIZE\u003d0x50000\n```",
+      "parentUuid": "ce8b8ce8_9cbef093",
       "revId": "2ee76628dff43fb23d1c1cf974e5115c95eb8ccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
