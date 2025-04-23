@@ -58,9 +58,12 @@ struct gpio_config {
 #define GPIO_IMPL_CONFIG(id) \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, gpios), (GPIO_CONFIG(id)), ())
 
+#define GPIOS_IMPL_CONFIGS(id) \
+	DT_FOREACH_CHILD(id, GPIO_IMPL_CONFIG)
+
 static const struct gpio_config configs[] = {
 #if DT_NODE_EXISTS(NAMED_GPIOS_NODE)
-	DT_FOREACH_CHILD(NAMED_GPIOS_NODE, GPIO_IMPL_CONFIG)
+	DT_FOREACH_STATUS_OKAY(named_gpios, GPIOS_IMPL_CONFIGS)
 #endif
 };
 
@@ -89,13 +92,43 @@ static const struct gpio_config configs[] = {
 			     &configs[GPIO_SIGNAL(id)].spec;),      \
 		    ())
 
+#define GPIO_PTRS_DEFINE(id)  \
+	DT_FOREACH_CHILD(id, GPIO_PTRS)
+
+
 #if DT_NODE_EXISTS(NAMED_GPIOS_NODE)
-DT_FOREACH_CHILD(NAMED_GPIOS_NODE, GPIO_PTRS)
+DT_FOREACH_STATUS_OKAY(named_gpios, GPIO_PTRS_DEFINE)
 #endif
+
+#define GPIO_COUNT_DEFINE(id) \
+	DT_CHILD_NUM(id),
+
+const int gpios_count[] = {
+	DT_FOREACH_STATUS_OKAY(named_gpios, GPIO_COUNT_DEFINE)
+};
+
+static bool gpio_init[DT_NUM_INST_STATUS_OKAY(named_gpios)];
+
+struct named_gpios_config {
+	int id;
+};
 
 int gpio_is_implemented(enum gpio_signal signal)
 {
-	return signal >= 0 && signal < ARRAY_SIZE(configs);
+	int i_start = 0;
+
+	if (signal < 0 || signal >= ARRAY_SIZE(configs)) {
+		return false;
+	}
+
+	for (int i = 0; i < ARRAY_SIZE(gpios_count); i++) {
+		i_start += gpios_count[i];
+		if (signal < i_start) {
+			return gpio_init[i];
+		}
+	}
+
+	return false;
 }
 
 int gpio_get_level(enum gpio_signal signal)
@@ -274,9 +307,15 @@ const struct gpio_dt_spec *gpio_get_dt_spec(enum gpio_signal signal)
 test_export_static int init_gpios(const struct device *dev)
 {
 	gpio_flags_t flags;
+	const struct named_gpios_config *dev_config = dev->config;
 	bool is_sys_jumped = system_jumped_to_this_image();
+	int i_start = 0;
 
-	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
+	for (int i = 0; i < dev_config->id; i++) {
+		i_start += gpios_count[i];
+	}
+
+	for (int i = i_start; i < i_start + gpios_count[dev_config->id] ; ++i) {
 		int rv;
 
 		/* Skip GPIOs that have set no-auto-init. */
@@ -309,6 +348,7 @@ test_export_static int init_gpios(const struct device *dev)
 		}
 	}
 
+	gpio_init[dev_config->id] = true;
 	/* Configure unused pins in chip driver for better power consumption */
 	if (gpio_config_unused_pins) {
 		int rv;
@@ -325,8 +365,17 @@ test_export_static int init_gpios(const struct device *dev)
 #error "GPIOs must initialize after the kernel default initialization"
 #endif
 #define DT_DRV_COMPAT named_gpios
-DEVICE_DT_INST_DEFINE(0, init_gpios, NULL, NULL, NULL, POST_KERNEL,
-		      CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY, NULL);
+
+#define NAMED_GPIOS_DEFINE(inst)          \
+	const struct named_gpios_config named_gpios_##inst##_config = {  \
+		.id = inst,    \
+	};         \
+	DEVICE_DT_INST_DEFINE(inst, init_gpios, NULL, NULL,   \
+			&named_gpios_##inst##_config, POST_KERNEL,\
+			CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY, NULL);
+
+DT_INST_FOREACH_STATUS_OKAY(NAMED_GPIOS_DEFINE);
+
 
 void gpio_reset(enum gpio_signal signal)
 {

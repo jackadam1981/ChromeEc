@@ -15,9 +15,6 @@
 extern "C" {
 #endif
 
-BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_gpios) == 1,
-	     "only one named-gpios compatible node may be present");
-
 #define NAMED_GPIOS_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(named_gpios)
 
 /*
@@ -61,6 +58,9 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_gpios) == 1,
 #define GPIO_UNIMPL_SIGNAL(id)                       \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, gpios), (), \
 		    (GPIO_SIGNAL_NAME(id) = GPIO_UNIMPLEMENTED, ))
+
+#define GPIO_UNIMPL_DEFINE(id) \
+	DT_FOREACH_CHILD(id, GPIO_UNIMPL_SIGNAL)
 /*
  * Create a list of aliases to allow remapping of aliased names.
  */
@@ -70,16 +70,22 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_gpios) == 1,
 #define GPIO_DT_ALIAS_LIST(id) \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, alias), (GPIO_DT_MK_ALIAS(id)), ())
 
+#define GPIO_DT_ALIAS_DEFINE(id) \
+	DT_FOREACH_CHILD(id, GPIO_DT_ALIAS_LIST)
+
+#define GPIO_ENUM_DEFINE(id)  \
+	DT_FOREACH_CHILD(id, GPIO_IMPL_SIGNAL)
+
 /* clang-format off */
 enum gpio_signal {
 	GPIO_UNIMPLEMENTED = -1,
 #if DT_NODE_EXISTS(NAMED_GPIOS_NODE)
-	DT_FOREACH_CHILD(NAMED_GPIOS_NODE, GPIO_IMPL_SIGNAL)
+	DT_FOREACH_STATUS_OKAY(named_gpios, GPIO_ENUM_DEFINE)
 #endif
 	GPIO_COUNT,
 #if DT_NODE_EXISTS(NAMED_GPIOS_NODE)
-	DT_FOREACH_CHILD(NAMED_GPIOS_NODE, GPIO_UNIMPL_SIGNAL)
-	DT_FOREACH_CHILD(NAMED_GPIOS_NODE, GPIO_DT_ALIAS_LIST)
+	DT_FOREACH_STATUS_OKAY(named_gpios, GPIO_UNIMPL_DEFINE)
+	DT_FOREACH_STATUS_OKAY(named_gpios, GPIO_DT_ALIAS_DEFINE)
 #endif
 	GPIO_LIMIT = 0x0FFF,
 
@@ -161,7 +167,10 @@ struct gpio_dt_spec;
 			     GPIO_SIGNAL(id));),                           \
 		    ())
 
-DT_FOREACH_CHILD(NAMED_GPIOS_NODE, GPIO_DT_PTR_DECL)
+#define GPIOS_DT_PTR_DECL(id)   \
+	DT_FOREACH_CHILD(id, GPIO_DT_PTR_DECL)
+
+DT_FOREACH_STATUS_OKAY(named_gpios, GPIOS_DT_PTR_DECL)
 
 #undef GPIO_DT_PTR_DECL
 

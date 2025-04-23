@@ -1,5 +1,7 @@
 description: Named GPIOs parent node
 
+include: base.yaml
+
 compatible: "named-gpios"
 
 child-binding:
