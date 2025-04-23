@@ -34,6 +34,24 @@
       "parentUuid": "f5c89e95_a297cfc1",
       "revId": "6bc0b7d9fd343a2c5b34cc20cfc5edfe644f2f10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cb91a5_be7056d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-04-23T01:54:19Z",
+      "side": 1,
+      "message": "There is a [bug](https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/zephyr/test/drivers/common/src/utils.c;l\u003d775-776;drc\u003dc689f00e7fd9b1e5ac3ed059868b34c89a653a39) in the test shim, which copies the size of `response_max`, so even if we specify the wrong response size, the test can still pass.\n\nI created a [tracking bug](https://b.corp.google.com/issues/412803807) for fixing this, and whatever bug found after the test fix.\n\nI think it is also good to check the `response_size` as well. Supposedly, we should be able to catch bugs if the response data content does not match our expectations. However, if the expected content is the same as some zero values, we could still miss that. As such, I will add these checks in another series.",
+      "parentUuid": "1570ee15_08810aad",
+      "revId": "6bc0b7d9fd343a2c5b34cc20cfc5edfe644f2f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
