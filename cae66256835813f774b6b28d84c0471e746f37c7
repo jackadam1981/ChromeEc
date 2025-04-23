@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cafd20f_0489bb08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-23T21:02:12Z",
+      "side": 1,
+      "message": "Consider abandoning this CL since we disable the motion sense task by setting the number of sensors present to 0.",
+      "revId": "cae66256835813f774b6b28d84c0471e746f37c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d489ebd9_3be93d45",
