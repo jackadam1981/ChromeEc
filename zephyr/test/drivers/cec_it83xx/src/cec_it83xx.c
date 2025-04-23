@@ -8,7 +8,21 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/fff.h>
 #include <zephyr/ztest.h>
+
+FAKE_VOID_FUNC(cros_cec_enable, int);
+
+static int irq_connect_dynamic_call_count;
+static int irq_connect_dynamic_arg0_val;
+int arch_irq_connect_dynamic(unsigned int irq, unsigned int priority,
+			     void (*routine)(const void *parameter),
+			     const void *parameter, uint32_t flags)
+{
+	irq_connect_dynamic_call_count++;
+	irq_connect_dynamic_arg0_val = irq;
+	return 0;
+}
 
 /* From chip/it83xx/intc.h, but that file has inline assembly. */
 void cec_interrupt(void);
@@ -24,6 +38,10 @@ struct mock_it83xx_cec_regs mock_it83xx_cec_regs;
 static void cec_it83xx_after(void *fixture)
 {
 	const struct cec_drv *drv = cec_config[TEST_PORT].drv;
+
+	RESET_FAKE(cros_cec_enable);
+	irq_connect_dynamic_call_count = 0;
+	irq_connect_dynamic_arg0_val = 0;
 
 	/* Disable CEC after each test to reset driver state */
 	drv->set_enable(TEST_PORT, 0);
@@ -53,26 +71,44 @@ ZTEST_USER(cec_it83xx, test_set_get_enable)
 	uint8_t enable;
 
 	drv->set_enable(TEST_PORT, 1);
+	zassert_equal(cros_cec_enable_fake.call_count, 1);
+	zassert_equal(cros_cec_enable_fake.arg0_val, 1);
+	zassert_equal(irq_connect_dynamic_call_count, 1);
+	zassert_equal(irq_connect_dynamic_arg0_val, IT83XX_IRQ_CEC);
 	drv->get_enable(TEST_PORT, &enable);
 	zassert_equal(enable, 1);
 
 	drv->set_enable(TEST_PORT, 0);
+	zassert_equal(cros_cec_enable_fake.call_count, 2);
+	zassert_equal(cros_cec_enable_fake.arg0_val, 0);
+	zassert_equal(irq_connect_dynamic_call_count, 1);
 	drv->get_enable(TEST_PORT, &enable);
 	zassert_equal(enable, 0);
 
 	/* Enabling when enabled */
 	drv->set_enable(TEST_PORT, 1);
+	zassert_equal(cros_cec_enable_fake.call_count, 3);
+	zassert_equal(cros_cec_enable_fake.arg0_val, 1);
+	zassert_equal(irq_connect_dynamic_call_count, 2);
+	zassert_equal(irq_connect_dynamic_arg0_val, IT83XX_IRQ_CEC);
 	drv->get_enable(TEST_PORT, &enable);
 	zassert_equal(enable, 1);
 	drv->set_enable(TEST_PORT, 1);
+	zassert_equal(cros_cec_enable_fake.call_count, 3);
+	zassert_equal(irq_connect_dynamic_call_count, 2);
 	drv->get_enable(TEST_PORT, &enable);
 	zassert_equal(enable, 1);
 
 	/* Disabling when disabled */
 	drv->set_enable(TEST_PORT, 0);
+	zassert_equal(cros_cec_enable_fake.call_count, 4);
+	zassert_equal(cros_cec_enable_fake.arg0_val, 0);
+	zassert_equal(irq_connect_dynamic_call_count, 2);
 	drv->get_enable(TEST_PORT, &enable);
 	zassert_equal(enable, 0);
 	drv->set_enable(TEST_PORT, 0);
+	zassert_equal(cros_cec_enable_fake.call_count, 4);
+	zassert_equal(irq_connect_dynamic_call_count, 2);
 	drv->get_enable(TEST_PORT, &enable);
 	zassert_equal(enable, 0);
 }

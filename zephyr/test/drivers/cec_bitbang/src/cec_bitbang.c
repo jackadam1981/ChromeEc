@@ -11,7 +11,17 @@
 #include "test/drivers/utils.h"
 #include "timer.h"
 
+#include <zephyr/fff.h>
 #include <zephyr/ztest.h>
+
+FAKE_VOID_FUNC(cros_cec_enable, int);
+
+int arch_irq_connect_dynamic(unsigned int irq, unsigned int priority,
+			     void (*routine)(const void *parameter),
+			     const void *parameter, uint32_t flags)
+{
+	return 0;
+}
 
 #define CEC_GPIO_PORT(name) \
 	DEVICE_DT_GET(DT_GPIO_CTLR(NAMED_GPIOS_GPIO_NODE(name), gpios))
