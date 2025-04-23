@@ -11,6 +11,7 @@
 #include "test/drivers/utils.h"
 #include "timer.h"
 
+#include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
 #define CEC_GPIO_PORT(name) \
