@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6741af5c_5f12f77c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-23T20:27:00Z",
+      "side": 1,
+      "message": "Nit: I\u0027d make this a little bit more verbose, e.g.\n```suggestion\n\t * Note: Some cables correctly specify TBT speed Gen3 but incorrectly\n\t * specify USB speed Gen2. Support these cables by using USB Gen3\n\t * whenever a cable specifies TBT Gen3. See b:401262704.\n```",
+      "range": {
+        "startLine": 339,
+        "startChar": 4,
+        "endLine": 340,
+        "endChar": 28
+      },
+      "revId": "0d1519b919c59be2410da942252ed4443b82b263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
