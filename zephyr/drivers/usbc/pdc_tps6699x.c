@@ -442,13 +442,35 @@ static void tps_set_data_role_prefence(struct pdc_data_t *data)
 		goto error_recovery;
 	}
 
-	/* swap_to_dfp and swap_to_ufp should not both be set */
+	/*
+	 * Either uor.swap_to_dfp or uor.swap_to_ufp should be set. Having both
+	 * set is not allowed per the UCSI spec. SET_UOR can't be sent directly
+	 * as a UCSI command for two reasons.
+	 *  1. If a hard reset occurs while the port is in a SNK power role then
+	 *     there is no mechanism to trigger a data role swap to the desired
+	 *     data role. Setting initiate_swap_to_dfp|ufp instructs the PDC to
+	 *     automatically trigger a data role swap request to the desired
+	 *     data role following the establishment of a new PD contract.
+	 *
+	 *  2. If uor.accept_dr_swap is set to 0, which will usually be the case
+	 *     if the data role is DFP, then the TI PDC will clear the data role
+	 *     capable bit in the SRC/SNK CAP which then causes issues with
+	 *     complicance test TD 4.11.1
+	 *
+	 * So SET_UOR is instead mapped to the port control register which
+	 * provides the required control for data role swaps while still
+	 * allowing compliance tests to pass.
+	 */
 	if (data->uor.swap_to_dfp) {
-		pdc_port_control.initiate_swap_to_dfp = data->uor.swap_to_dfp;
+		pdc_port_control.initiate_swap_to_dfp = 1;
 		pdc_port_control.initiate_swap_to_ufp = 0;
+		pdc_port_control.process_swap_to_dfp = 1;
+		pdc_port_control.process_swap_to_ufp = 0;
 	} else {
-		pdc_port_control.initiate_swap_to_ufp = data->uor.swap_to_ufp;
+		pdc_port_control.initiate_swap_to_ufp = 1;
 		pdc_port_control.initiate_swap_to_dfp = 0;
+		pdc_port_control.process_swap_to_ufp = 1;
+		pdc_port_control.process_swap_to_dfp = 0;
 	}
 
 	/* Write PDC port control */
@@ -738,7 +760,6 @@ static void st_idle_run(void *o)
 			break;
 		case CMD_SET_UOR:
 			tps_set_data_role_prefence(data);
-			task_ucsi(data, UCSI_SET_UOR);
 			break;
 		case CMD_SET_PDR:
 			task_ucsi(data, UCSI_SET_PDR);
