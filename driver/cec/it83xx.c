@@ -470,6 +470,8 @@ static int it83xx_cec_set_enable(int port, uint8_t enable)
 
 		/* Enable alternate function */
 		gpio_config_module(MODULE_CEC, 1);
+#else
+		cros_cec_enable(1);
 #endif
 
 		/* Set logical address to unregistered (default is 0 = TV) */
@@ -483,6 +485,11 @@ static int it83xx_cec_set_enable(int port, uint8_t enable)
 
 		/* Enable CEC interrupt */
 		task_clear_pending_irq(IT83XX_IRQ_CEC);
+#ifdef CONFIG_ZEPHYR
+		irq_connect_dynamic(IT83XX_IRQ_CEC, 0,
+				    (void (*)(const void *))cec_interrupt,
+				    (const void *)port, 0);
+#endif
 		task_enable_irq(IT83XX_IRQ_CEC);
 
 		CPRINTS("CEC%d enabled", port);
@@ -503,6 +510,8 @@ static int it83xx_cec_set_enable(int port, uint8_t enable)
 
 		/* Disable CEC clock */
 		clock_disable_peripheral(CGC_OFFSET_CEC, 0, 0);
+#else
+		cros_cec_enable(0);
 #endif
 
 		cec_state = CEC_STATE_DISABLED;

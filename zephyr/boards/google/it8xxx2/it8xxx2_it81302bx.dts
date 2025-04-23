@@ -7,3 +7,22 @@
 
 #include <ite/it81xx2.dtsi>
 #include "it8xxx2.dtsi"
+
+&pinctrlf {
+	func3-gcr =     <0xf016f7 NO_FUNC 0xf016f0 0xf016f0
+			 NO_FUNC NO_FUNC 0xf016f1 0xf016f1>;
+	func3-en-mask = <0x20    0       0x02     0x02
+			 0       0       0x10     0x10    >;
+};
+
+
+&pinctrl{
+	/* CEC alternate function */
+	cec_gpf0_default: cec_gpf0_default {
+		pinmuxs = <&pinctrlf 0 IT8XXX2_ALT_FUNC_3>;
+	};
+	/* CEC  sleep function */
+	cec_gpf0_sleep: cec_gpf0_sleep {
+		pinmuxs = <&pinctrlf 0 IT8XXX2_ALT_DEFAULT>;
+	};
+};
