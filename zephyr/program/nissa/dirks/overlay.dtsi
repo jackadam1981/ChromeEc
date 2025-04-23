@@ -277,3 +277,7 @@
 &counter0 {
 	status = "okay";
 };
+
+&cros_cec {
+	status = "okay";
+};
