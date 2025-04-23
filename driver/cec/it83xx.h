@@ -42,4 +42,8 @@ extern const struct cec_drv it83xx_cec_drv;
 #include "driver/cec/it83xx_mock.h"
 #endif
 
+#ifdef CONFIG_ZEPHYR
+void cros_cec_enable(int enable);
+#endif
+
 #endif /* __CROS_EC_DRIVER_CEC_IT83XX_H */
