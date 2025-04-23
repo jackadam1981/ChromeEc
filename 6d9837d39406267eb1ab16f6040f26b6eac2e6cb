@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc234be0_128f4b5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-04-23T14:39:29Z",
+      "side": 1,
+      "message": "yes it will not have any impact on PMC-PD based platform.",
+      "parentUuid": "eb10f779_6a237597",
+      "range": {
+        "startLine": 11,
+        "startChar": 58,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "6d9837d39406267eb1ab16f6040f26b6eac2e6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5abe5f06_1f80e0d2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I have updated in the cros-bug with details. There is no impact on the correctly populated product vdo, but ellisys log will continue to show the wrongly populated vdo for some of the older cables.",
       "parentUuid": "5abe5f06_1f80e0d2",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "6d9837d39406267eb1ab16f6040f26b6eac2e6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac33640_8f96742c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-04-23T14:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f294fd_39345fe8",
       "range": {
         "startLine": 340,
         "startChar": 1,
