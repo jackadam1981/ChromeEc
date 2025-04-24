@@ -22,6 +22,30 @@
       },
       "revId": "0d1519b919c59be2410da942252ed4443b82b263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c21cdd3_c6daea8f",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-04-24T12:16:36Z",
+      "side": 1,
+      "message": "modified the comment as suggested. thank you.",
+      "parentUuid": "6741af5c_5f12f77c",
+      "range": {
+        "startLine": 339,
+        "startChar": 4,
+        "endLine": 340,
+        "endChar": 28
+      },
+      "revId": "0d1519b919c59be2410da942252ed4443b82b263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
