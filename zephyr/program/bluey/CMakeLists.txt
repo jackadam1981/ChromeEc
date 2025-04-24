@@ -10,7 +10,9 @@ if(DEFINED CONFIG_BOARD_BLUEY)
 	project(bluey)
 endif()
 
+if(DEFINED CONFIG_BOARD_QUENBI)
+	project(quenbi)
+endif()
+
 zephyr_library_sources("src/switchcap.c")
 zephyr_library_sources("src/chipset.c")
-
-add_subdirectory(${PROJECT_NAME})
