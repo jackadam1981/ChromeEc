@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "0ef353a5a0e375d2c92b36fa986ef0722cbc133f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56226bff_6071730a",
+        "filename": "zephyr/program/trulo/trulo/trulo_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-04-24T14:59:02Z",
+      "side": 1,
+      "message": "Hey Kamil, I think we need to take a broader approach to Snk Caps in Trulo. IIUC, this test is selecting a PDO from a set provided by the tester. And, the requested PDO needs to match the VIF. Is that the issue you are trying to address?\n\nIf we change the VIF here, I think we will just end up with compliance issues in the common checks. These are not the Snk PDOs that Trulo uses.\n\nSee \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/pd_controller/pdc_power_mgmt.c;drc\u003d753ef1ef64abf58c5da908d0b7f46a0e7100f6a2;l\u003d829\n\nand\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/trulo/program.conf;drc\u003dc8adbd2584128e174b8287c4752dc68f3566fd3c;l\u003d92",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 16
+      },
+      "revId": "0ef353a5a0e375d2c92b36fa986ef0722cbc133f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
