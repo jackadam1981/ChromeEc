@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8152c48_34cf4cf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-24T17:09:31Z",
+      "side": 1,
+      "message": "LGTM modulo regression testing.\n\nBTW, I think this CL will conflict (trivially) with the PD 3.0 tSenderResponse CL. So whichever one you submit first, you\u0027ll need to edit the other one to submit it. Assuming they\u0027re each on their own development branch in your local repo, I\u0027d recommending picking one of these CLs into the other branch, resolving any conflicts, and uploading that way. You could also combine them into a single commit if you wanted. They\u0027re very closely related. Up to you.",
+      "revId": "4b3a42f1125c4579cad9eabc16a3dddeac47f64e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
