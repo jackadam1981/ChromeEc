@@ -8,7 +8,7 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.160       | 0.23.160
+[ToT][ToT ebuild]   | 0.24.170       | 0.23.160
 [M136][136 release] | 0.24.160       | 0.23.160
 [M135][135 release] | 0.24.160       | 0.23.140
 [M134][134 release] | 0.24.140       | 0.23.140
@@ -2123,6 +2123,37 @@ Build:   ti50_common_prepvt-15974.B:v0.0.331-0cceb66e
          tock:v0.0.9683-a16ba4f3b
          ms-tpm-20-ref:v0.0.326-45d67aa
          chrome-bot@chromeos-ci-firmware-us-central1-b-x32-0-be1m 2025-02-10 10:15:30
+```
+
+### 0.24.170 Released on 2025-04-24 in M137
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6489487)
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/67](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/67/overview)
+
+Artifacts:
+[15974.66.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware/firmware-ti50-prepvt-15974.B-branch/R129-15974.66.0-1-8717571719869204161/)
+
+
+**Bug Fixes**
+
+*   Fix EFS2 logic to succeed on first attempt
+    [b/327197686](https://b.corp.google.com/issues/327197686)
+*   Update RSU behavior
+    [b/409307940](https://b.corp.google.com/issues/409307940)
+*   Do not re-read straps upon deep sleep resume
+    [b/401254091](https://b.corp.google.com/issues/401254091)
+*   Fix `ccdstate` capitalization of `CCD Ports Blocked`
+    [b/408488622](https://b.corp.google.com/issues/408488622)
+
+```
+Build:   0.24.170/ti50_common_prepvt-15974.B:v0.0.427-3b9707c1
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-7d2295b47
+         ms-tpm-20-ref:v0.0.328-4524d01
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-0-ezo9 2025-04-14 16:19:07
 ```
 
 <!-- Links -->
