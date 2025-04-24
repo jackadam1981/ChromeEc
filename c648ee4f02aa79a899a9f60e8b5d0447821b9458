@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b41ef9e1_c4005b62",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-24T23:00:10Z",
+      "side": 1,
+      "message": "Apologies for the delay in reply here. I discussed this with fsammoura@google.com and mentioned it looked incorrect and should likely be 0x1fc00, but was then sidetracked by other priorities. Digging in further, the reason that the key is  defined at 1ec40 for Zephyr helipilot is consistency with ECOS helipilot:\n\n```\n(cr) ~/chromiumos/src/platform/ec $ dump_fmap -h build/helipilot/ec.bin\n# name                     start       end         size\n...\nWP_RO                      00000000    00020000    00020000\n  EC_RO                      00000000    0001f040    0001f040\n    FR_MAIN                    00000040    0001f040    0001f000\n      KEY_RO                     0001ec40    0001f040    00000400\n      FMAP                       0000d0c0    0000d29c    000001dc\n      RO_FRID                    00000184    000001a4    00000020\n```\n\nBuccaneer also uses the same address in EC. Looking at the npcx9_evb, having ~4KB (4kB-64 bytes) reserved at the end of RO looks to be part of the Nuvoton SOC code or at least consistent with the EVB implementation:\n```\n(cr) ~/chromiumos/src/platform/ec $ dump_fmap -h build/npcx9_evb/ec.bin\n# name                     start       end         size\n...\nWP_RO                      00000000    00040000    00040000\n  EC_RO                      00000000    0003f040    0003f040\n    FR_MAIN                    00000040    0003f040    0003f000\n```\n\nI suggest adding the Nuvoton team (probably CH/Jun) to ask for additional detail here. It doesn\u0027t appear that the address for key RO was defined in the ECOS helipilot board files, making me think the address is at least partially inherited from NPCX code, consistent with the fmap of the Nuvoton EVB.",
+      "parentUuid": "bd1257ac_7145cd97",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9292b941_80ad7f34",
         "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
         "patchSetId": 6
