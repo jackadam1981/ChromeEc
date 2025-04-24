@@ -7,7 +7,7 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* bluey project DTS includes */
+/* quenbi project DTS includes */
 
 #include "../gpios.dtsi"
 #include "../interrupts.dtsi"
@@ -17,5 +17,4 @@
 
 #include "fan.dtsi"
 
-/* bluey overrides follow... */
-
+/* quenbi overrides follow... */
