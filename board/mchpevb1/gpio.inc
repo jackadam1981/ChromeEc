@@ -39,7 +39,7 @@ GPIO_INT(AC_PRESENT, PIN(014), GPIO_INT_BOTH, extpower_interrupt)
 
 /* MEC1701H GPIO_0036/RC_ID2 OK */
 /* Kabylake bringup move to gpio input */
-/* GPIO_INT(WP_L, PIN(036), GPIO_INT_BOTH, switch_interrupt) */
+/* GPIO(WP_L,     PIN(036), GPIO_INPUT)			 */
 
 /* Buffered power button input from PMIC / ROP_EC_PWR_BTN_L_R */
 /* MEC1701H GPIO_0023/GPTP-IN1/MVP_VR_ON OK */

@@ -9,8 +9,8 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Pins for internal flash testing */
-GPIO_INT(RECOVERY_L,       PIN(0, 3), GPIO_INT_BOTH | GPIO_PULL_UP, switch_interrupt)
-GPIO_INT(WP_L,             PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, switch_interrupt)
+GPIO(RECOVERY_L,           PIN(0, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(WP_L,                 PIN(9, 3), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Pins for hibernate testing */
 #ifdef CONFIG_HIBERNATE_PSL

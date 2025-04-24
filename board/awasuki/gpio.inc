@@ -35,7 +35,7 @@ GPIO_INT(USB_C0_CCSBU_OVP_ODL,	PIN(K, 6), GPIO_INT_FALLING | GPIO_PULL_UP, c0_cc
 
 /* Other interrupts */
 GPIO_INT(LID_OPEN,		PIN(F, 3), GPIO_INT_BOTH, lid_interrupt)
-GPIO_INT(EC_WP_OD,		PIN(A, 6), GPIO_INT_BOTH, switch_interrupt)
+GPIO(EC_WP_OD,			PIN(A, 6), GPIO_INPUT)
 GPIO_INT(VBL_PG_OD,		PIN(J, 1), GPIO_INT_FALLING, bl_pg_interrupt)
 GPIO_INT(JACK_DETECT, PIN(I, 6), GPIO_INT_BOTH | GPIO_SEL_1P8V, audio_jack_interrupt)
 
