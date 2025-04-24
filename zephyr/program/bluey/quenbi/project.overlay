@@ -7,7 +7,7 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* bluey project DTS includes */
+/* quenbi project DTS includes */
 
 #include <cros/cbi_flash.dtsi>
 
@@ -18,7 +18,7 @@
 
 #include "fan.dtsi"
 
-/* bluey overrides follow... */
+/* quenbi overrides follow... */
 
 &cbi_flash {
 	/*
