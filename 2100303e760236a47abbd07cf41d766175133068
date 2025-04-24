@@ -40,6 +40,30 @@
       ],
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a614cfa_a0ed4e9e",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-24T06:56:02Z",
+      "side": 1,
+      "message": "The `CROS_EC_RW_SIZE` needs to set to different size for different chips. Such modifications must ensure that the SOC device tree or the board device tree has the corresponding value set.\n\nIf not set otherwise, the default value is read from [binman.dtsi](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/binman.dtsi;drc\u003db5888b9570b46d3330259e8acf09b51d7104695e;l\u003d50). That why the value of `CROS_EC_RW_SIZE` is 0x40000 instead of 0x30000.\n\nHere is the example to update size property. ([Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/helipilot/helipilot.dts;drc\u003d4b7b47d82bc50d7ecbba63d56af8e18cfc875e08;l\u003d48))",
+      "parentUuid": "f73be89c_e567e538",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
