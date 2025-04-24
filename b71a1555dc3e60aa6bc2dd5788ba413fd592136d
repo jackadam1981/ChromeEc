@@ -52,6 +52,24 @@
       "parentUuid": "01da668a_85d9778d",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376e2057_234888bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-04-24T22:07:37Z",
+      "side": 1,
+      "message": "Hi Tom,\\\nI use the same build process, looks like this was user error on my end and it is building fine now. This changes LGTM and I will CR+1. Since @tomhughes had the majority of review comments would like him to approve (CR+2). Thanks",
+      "parentUuid": "f941cfb8_fc00d748",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
