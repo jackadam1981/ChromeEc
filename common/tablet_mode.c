@@ -210,8 +210,7 @@ static void gmr_tablet_switch_interrupt_debounce(void)
 	 * When tablet mode is only decided by the GMR sensor (or
 	 * or substitute, send the tablet_mode change request.
 	 */
-	if (!IS_ENABLED(CONFIG_LID_ANGLE) &&
-	    !IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+	if (!IS_ENABLED(CONFIG_LID_ANGLE)) {
 		tablet_set_mode(gmr_sensor_at_360, TABLET_TRIGGER_LID);
 	}
 
