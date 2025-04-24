@@ -550,11 +550,14 @@ class StateMachine {
    * not possible
    */
   pw::Result<Transaction> BeginTransaction(const State& state) {
+    printk("Attempting transition from %d to %d\n", current_state_, state);
     bool is_valid = config_.IsTransitionAllowed(current_state_, state);
     if (!is_valid) {
+      printk("Invalid transition\n");
       return pw::Result<Transaction>(pw::Status::InvalidArgument());
     }
     if (current_transaction_ != nullptr) {
+      printk("Pending transaction in flight\n");
       return pw::Result<Transaction>(pw::Status::ResourceExhausted());
     }
 
