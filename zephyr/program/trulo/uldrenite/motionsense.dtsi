@@ -12,7 +12,7 @@
 		 * Interrupt bindings for sensor devices.
 		 */
 		lsm6dsm-int = &base_accel;
-		bma4xx-int = &lid_accel;
+		/*bma4xx-int = &lid_accel;*/
 		lis2dw12-int = &base_accel;
 		bmi3xx-int = &base_accel;
 
@@ -184,6 +184,7 @@
 	};
 
 	motionsense-sensor-alt {
+		/*
 		alt_lid_accel: alt-lid-accel {
 			compatible = "cros-ec,bma4xx";
 			status = "okay";
@@ -215,6 +216,7 @@
 				};
 			};
 		};
+		*/
 
 		alt_base_accel: alt-base-accel {
 			compatible = "cros-ec,lsm6dsm-accel";
@@ -313,5 +315,6 @@
 		compatible = "cros-ec,motionsense-sensor-info";
 
 		sensor-irqs = <&int_lid_imu &int_imu>;
+		accel-force-mode-sensors = <&lid_accel>;
 	};
 };
