@@ -926,6 +926,9 @@ void motion_sense_task(void *u)
 	while (1) {
 		ts_begin_task = get_time();
 		atomic_add(&motion_sense_task_loops, 1);
+#ifdef CONFIG_ZEPHYR
+		k_sched_lock();
+#endif
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
 
@@ -938,6 +941,9 @@ void motion_sense_task(void *u)
 				ready_status |= BIT(i);
 			}
 		}
+#ifdef CONFIG_ZEPHYR
+		k_sched_unlock();
+#endif
 		if (IS_ENABLED(CONFIG_GESTURE_DETECTION))
 			check_and_queue_gestures(&event);
 		if (IS_ENABLED(CONFIG_LID_ANGLE)) {
