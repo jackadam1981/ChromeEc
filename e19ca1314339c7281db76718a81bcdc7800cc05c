@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f42d6f6_e9a6cb06",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-04-24T05:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4bfef2_8b5b3b1a",
+      "range": {
+        "startLine": 254,
+        "startChar": 60,
+        "endLine": 256,
+        "endChar": 45
+      },
+      "revId": "e19ca1314339c7281db76718a81bcdc7800cc05c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02dfcdba_ddf5353f",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-04-23T20:34:59Z",
       "side": 1,
       "message": "1. I think you already made this change in the PD 3.0 tSenderResponse CL.\n2. Since we\u0027re changing both PD 2.0 and PD 3.0 values, this comment should be at the top of the whole tSenderResponse section. The location of the non-inaccurate \"minimum value\" comment seems like a good place for this one.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 40
+      },
+      "revId": "e19ca1314339c7281db76718a81bcdc7800cc05c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "275189d8_51b75fad",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-04-24T05:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02dfcdba_ddf5353f",
       "range": {
         "startLine": 269,
         "startChar": 0,
