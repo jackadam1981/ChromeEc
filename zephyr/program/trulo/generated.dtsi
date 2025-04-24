@@ -268,6 +268,12 @@
 	pinctrl-names = "default";
 };
 
+&i2c5_0 {
+	status = "okay";
+	pinctrl-0 = <&i2c5_0_sda_scl_gp33_36>;
+	pinctrl-names = "default";
+};
+
 &i2c6_1 {
 	status = "okay";
 	pinctrl-0 = <&i2c6_1_sda_scl_gpe3_e4>;
@@ -293,6 +299,10 @@
 };
 
 &i2c_ctrl4 {
+	status = "okay";
+};
+
+&i2c_ctrl5 {
 	status = "okay";
 };
 
