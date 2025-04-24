@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2415d419_4e95e38d",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-24T14:52:05Z",
+      "side": 1,
+      "message": "Is it possible to just move the notify below the `host_set_single_event` call? Does this need to be a HECI specific solution?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7853f272_678f5103",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/tablet_mode.c",
+              "range": {
+                "startLine": 96,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "common/tablet_mode.c",
+              "range": {
+                "startLine": 111,
+                "startChar": 0,
+                "endLine": 113,
+                "endChar": 0
+              },
+              "replacement": "\t/*\n\t * Ensure the system is fully awake before calling hook_notify for\n\t * ISH-enabled sensors to prevent HECI errors and I2C errors ISH -\u003eEC.\n\t * See b:408162696\n\t */\n\thook_notify(HOOK_TABLET_MODE_CHANGE);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fd0674861d02061ed502efb64dcbc3f878cb5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
