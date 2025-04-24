@@ -34,6 +34,24 @@
       "parentUuid": "0e2f7fdf_fccb327f",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f941cfb8_fc00d748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-24T02:48:13Z",
+      "side": 1,
+      "message": "Hi David,\nAfter checking, the CONFIG_NPCX_RAM_LOCK doesn\u0027t have any dependencies.\n(src/platform/ec/zephyr/shim/chip/npcx/Kconfig.npcx)\nFollow your changes and build using \"zmake build helipilot --clobber\". The build process did not fail. Can you provide the command you used to test?",
+      "parentUuid": "01da668a_85d9778d",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
