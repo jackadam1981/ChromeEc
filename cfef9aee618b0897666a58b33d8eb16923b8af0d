@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c671d6_d43128aa",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-04-24T22:37:27Z",
+      "side": 1,
+      "message": "it fails on \"bool\" being unknown type",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "db77a051_a7a8766a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/cortex-m/cpu.h",
+              "range": {
+                "startLine": 12,
+                "startChar": 0,
+                "endLine": 12,
+                "endChar": 0
+              },
+              "replacement": "#include \u003cstdbool.h\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cfef9aee618b0897666a58b33d8eb16923b8af0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
