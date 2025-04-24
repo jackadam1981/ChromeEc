@@ -34,6 +34,46 @@
 
 #define OFFSET_UPDATE_PER_TRY 10
 
+/* Depends on the amount of available RAM left in the EC. */
+#define INTERNAL_TRACING_SIZE 256
+
+struct internal_tracing {
+	uint32_t timestamp;
+	uint16_t flags;
+	uint8_t sensor_id;
+};
+
+struct internal_tracing internal_tracing_array[INTERNAL_TRACING_SIZE];
+uint32_t current_interal_tracing;
+
+#define INTERNAL_TRACING_INT_RAISED BIT(0)
+#define INTERNAL_TRACING_INT_SCHED BIT(1)
+#define INTERNAL_TRACING_SAMPLE_ADDED BIT(2)
+#define INTERNAL_TRACING_INT_COMPL BIT(3)
+
+static void internal_add_sample(uint32_t timestamp, uint16_t flags,
+				uint8_t sensor_id)
+{
+	internal_tracing_array[current_interal_tracing].timestamp = timestamp;
+	internal_tracing_array[current_interal_tracing].flags = flags;
+	internal_tracing_array[current_interal_tracing].sensor_id = sensor_id;
+	current_interal_tracing++;
+	current_interal_tracing %= INTERNAL_TRACING_SIZE;
+}
+
+static int internal_tracing_show(int argc, const char **argv)
+{
+	for (int i = 0; i < INTERNAL_TRACING_SIZE; i++) {
+		CPRINTF("%d: ts %d : flags 0x%02X - id %d\n", i,
+			internal_tracing_array[i].timestamp,
+			internal_tracing_array[i].flags,
+			internal_tracing_array[i].sensor_id);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bmi3xx_tracing, internal_tracing_show, "",
+			"BMI3xx internal tracing");
+
 /* Sensor definition */
 STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR)
 void irq_set_orientation(struct motion_sensor_t *s);
@@ -108,6 +148,8 @@ static void irq_set_orientation(struct motion_sensor_t *s)
 test_mockable void bmi3xx_interrupt(enum gpio_signal signal)
 {
 	last_interrupt_timestamp = __hw_clock_source_read();
+	internal_add_sample(last_interrupt_timestamp,
+			    INTERNAL_TRACING_INT_RAISED, 0);
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI3XX_INT_EVENT);
 }
@@ -307,6 +349,10 @@ static void bmi3_parse_fifo_data(struct motion_sensor_t *s,
 						sens_output - motion_sensors;
 					motion_sense_fifo_stage_data(
 						&vect, sens_output, 3, last_ts);
+					internal_add_sample(
+						last_ts,
+						INTERNAL_TRACING_SAMPLE_ADDED,
+						vect.sensor_num);
 				} else {
 					motion_sense_push_raw_xyz(sens_output);
 				}
@@ -335,6 +381,9 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
+
+	internal_add_sample(__hw_clock_source_read(),
+			    INTERNAL_TRACING_INT_SCHED, 0);
 
 	/*
 	 * We have to loop until we see the interrupt status as 0 to avoid
@@ -409,6 +458,9 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
 		motion_sense_fifo_commit_data();
+
+	internal_add_sample(__hw_clock_source_read(),
+			    INTERNAL_TRACING_INT_COMPL, 0);
 
 	return EC_SUCCESS;
 }
