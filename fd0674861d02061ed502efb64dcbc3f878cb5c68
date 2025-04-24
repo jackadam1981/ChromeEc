@@ -74,6 +74,30 @@
       },
       "revId": "fd0674861d02061ed502efb64dcbc3f878cb5c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f34ae0_7906fe0e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-24T15:41:14Z",
+      "side": 1,
+      "message": "I see and since we can\u0027t test on all those older devices this is the less risky option.",
+      "parentUuid": "563d0d21_687863a8",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 39
+      },
+      "revId": "fd0674861d02061ed502efb64dcbc3f878cb5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
