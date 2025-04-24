@@ -10,4 +10,8 @@ if(DEFINED CONFIG_BOARD_BLUEY)
 	project(bluey)
 endif()
 
+if(DEFINED CONFIG_BOARD_QUENBI)
+	project(quenbi)
+endif()
+
 add_subdirectory(${PROJECT_NAME})
