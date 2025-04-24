@@ -75,12 +75,13 @@ static void mp2964_pre_init(struct ap_power_ev_callback *cb,
 	/* Only run this once */
 	ap_power_ev_remove_callback(cb);
 
-	LOG_DBG("attempting to tune PMIC");
+	LOG_WRN("\n\n*******************************\n"
+		"attempting to tune PMIC");
 
 	status = mp2964_tune(rail_a, ARRAY_SIZE(rail_a), rail_b,
 			     ARRAY_SIZE(rail_b));
 
-	LOG_DBG("PMIC update done with all cell setting");
+	LOG_WRN("\n\nPMIC update done with all cell setting");
 
 	if (status != EC_SUCCESS) {
 		LOG_ERR("could not update all settings");

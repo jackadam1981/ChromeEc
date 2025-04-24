@@ -15,7 +15,7 @@ LOG_MODULE_DECLARE(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
 extern "C" int dsp_service_write_requested(struct i2c_target_config*) {
   // We have a new request, clear the buffer.
 
-  LOG_DBG("Taking semaphore...");
+  LOG_DBG("W Taking semaphore...");
   if (k_sem_take(&cros::dsp::service::driver.data_processing_semaphore_,
                  K_NO_WAIT) != 0) {
     LOG_ERR("Can't start a new write at this time");
@@ -29,7 +29,7 @@ extern "C" int dsp_service_write_requested(struct i2c_target_config*) {
 
 extern "C" int dsp_service_write_received(struct i2c_target_config*,
                                           uint8_t in) {
-  LOG_DBG("Taking semaphore...");
+  LOG_DBG("W Taking semaphore...");
   if (k_sem_take(&cros::dsp::service::driver.data_processing_semaphore_,
                  K_NO_WAIT) != 0) {
     LOG_ERR("Can't process more bytes at this time");
