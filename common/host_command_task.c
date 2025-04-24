@@ -510,8 +510,8 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 				    HEX_BUF(args->params, args->params_size));
 		CPRINTS("HC 0x%04x.%d:%s", args->command, args->version,
 			str_buf);
-	} else
-		CPRINTS("HC 0x%04x", args->command);
+	} // else
+	  //  CPRINTS("HC 0x%04x", args->command);
 }
 
 uint16_t host_command_process(struct host_cmd_handler_args *args)

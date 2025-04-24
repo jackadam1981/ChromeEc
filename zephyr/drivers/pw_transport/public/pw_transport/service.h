@@ -113,6 +113,7 @@ class Transport {
     auto transaction = state_machine_.BeginTransaction(
         impl::ServiceState::HAS_STATUS_AND_RESPONSE);
     if (!transaction.ok()) {
+      printk("Can't stage a response right now\n");
       return pw::Status::ResourceExhausted();
     }
 
@@ -122,13 +123,18 @@ class Transport {
           auto serialize_result =
               serialize(response, response_buffer_.FullSpan());
           if (!serialize_result.ok()) {
+            printk("Failed to serialize response\n");
             return serialize_result.status();
           }
 
           response_buffer_.SetSize(serialize_result.size());
 
           // Update the size field
-          return UpdateResponseSize(serialize_result.size());
+          auto update_result = UpdateResponseSize(serialize_result.size());
+          if (!update_result.ok()) {
+            printk("Failed to update response size\n");
+          }
+          return update_result;
         },
         response,
         std::move(serialize));

@@ -11,6 +11,7 @@
 #include <zephyr/kernel.h>
 
 #include "cros/dsp/service/cros_transport.hh"
+#include "cros_cbi.h"
 #include "proto/ec_dsp.pb.h"
 
 #define CROS_DSP_RESPONSE_BUFFER_SIZE 128
@@ -66,13 +67,36 @@ namespace cros::dsp::service {
 #define CROS_DSP_GPIO_ON 1
 #define CROS_DSP_GPIO_OFF 0
 
+struct FwConfigValues {
+  bool is_enabled;
+  enum cbi_fw_config_field_id field_id;
+  enum cbi_fw_config_value_id value_id;
+};
+
+#define DT_INST_FW_CONFIG_VALUES(inst)                                         \
+  COND_CODE_1(                                                                 \
+      DT_NODE_HAS_PROP(DT_DRV_INST(inst), fw_config_disable),                  \
+      ({                                                                       \
+          .is_enabled = true,                                                  \
+          .field_id = DT_STRING_TOKEN(                                         \
+              DT_PARENT(DT_INST_PHANDLE(inst, fw_config_disable)), enum_name), \
+          .value_id = DT_STRING_TOKEN(                                         \
+              DT_INST_PHANDLE(inst, fw_config_disable), enum_name),            \
+      }),                                                                      \
+      ({}))
+
 class Driver {
  public:
   Driver(uint16_t target_address,
          const struct i2c_target_callbacks* target_callbacks,
          const struct device* bus,
-         struct gpio_dt_spec interrupt)
-      : target_cfg_{}, bus_(bus), interrupt_(interrupt), transport_() {
+         struct gpio_dt_spec interrupt,
+         struct FwConfigValues fw_config_values)
+      : target_cfg_{},
+        bus_(bus),
+        interrupt_(interrupt),
+        transport_(),
+        fw_config_values_(fw_config_values) {
     target_cfg_.address = target_address;
     target_cfg_.callbacks = target_callbacks;
   }
@@ -127,6 +151,7 @@ class Driver {
   uint8_t request_buffer_[kRequestBufferSize] = {};
   uint32_t request_buffer_size_ = 0;
   cros_dsp_comms_EcService pending_service_request_ = {};
+  struct FwConfigValues fw_config_values_;
 };
 
 extern Driver driver;

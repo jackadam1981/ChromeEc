@@ -104,7 +104,8 @@ static int calculate_motion_confidence(uint64_t var)
 }
 
 /* Change the motion state and commit the change to AP. */
-void body_detect_change_state(enum body_detect_states state, bool spoof)
+__attribute__((weak)) void
+body_detect_change_state(enum body_detect_states state, bool spoof)
 {
 	if (IS_ENABLED(CONFIG_ACCEL_SPOOF_MODE) && spoof_enable && !spoof)
 		return;
@@ -137,7 +138,7 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 	hook_notify(HOOK_BODY_DETECT_CHANGE);
 }
 
-enum body_detect_states body_detect_get_state(void)
+__attribute__((weak)) enum body_detect_states body_detect_get_state(void)
 {
 	return motion_state;
 }

@@ -21,7 +21,9 @@ LOG_MODULE_DECLARE(dsp_client, CONFIG_DSP_COMMS_LOG_LEVEL);
 /* LCOV_EXCL_START*/
 int cbi_get_board_info(enum cbi_data_tag tag, uint8_t* buf, uint8_t* size) {
   LOG_DBG("remote_cbi.h::cbi_get_board_info()");
-  return cbi_remote_get_board_info(tag, buf, size);
+  int rc = cbi_remote_get_board_info(tag, buf, size);
+  LOG_DBG("    CBI(%d) 0x%08x, rc(%d)", tag, *((uint32_t*)buf), rc);
+  return rc;
 }
 
 void cbi_invalidate_cache(void) {

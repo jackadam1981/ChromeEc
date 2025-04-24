@@ -736,12 +736,15 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 	 */
 	if (!((sensor->state == SENSOR_READY) ||
 	      (sensor->state == SENSOR_INITIALIZED && is_odr_pending))) {
+					printk("    ready? %d, initialized? %d, is_odr_pending? %d\n",
+					sensor->state == SENSOR_READY, sensor->state == SENSOR_INITIALIZED, is_odr_pending);
 		return EC_ERROR_BUSY;
 	}
 
 	if ((*event & TASK_EVENT_MOTION_INTERRUPT_MASK || is_odr_pending) &&
 	    (sensor->drv->irq_handler != NULL)) {
 		ret = sensor->drv->irq_handler(sensor, event);
+		printk("    Calling irq_handler, ret(%d)\n", ret);
 		if (ret == EC_SUCCESS)
 			has_data_read = 1;
 	}
@@ -766,7 +769,11 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 			 */
 			increment_sensor_collection(sensor, ts);
 			ret = motion_sense_read(sensor);
+			if (ret != EC_SUCCESS) {
+				printk("    Failed to read\n");
+			}
 		} else {
+			printk("    Not yet time to read\n");
 			ret = EC_ERROR_BUSY;
 		}
 
@@ -930,11 +937,14 @@ void motion_sense_task(void *u)
 			sensor = &motion_sensors[i];
 
 			/* if the sensor is active in the current power state */
+			printk("[%d] '%s' ready? %d\n", i, sensor->name, SENSOR_ACTIVE(sensor));
 			if (SENSOR_ACTIVE(sensor)) {
 				ret = motion_sense_process(sensor, &event,
 							   &ts_begin_task);
-				if (ret != EC_SUCCESS)
+				if (ret != EC_SUCCESS) {
+					printk("    FAIL to process\n");
 					continue;
+				}
 				ready_status |= BIT(i);
 			}
 		}
@@ -950,6 +960,7 @@ void motion_sense_task(void *u)
 			 * calculation are ready.
 			 */
 			ready_status &= lid_angle_sensors;
+			printk("ready_status=0x%02x, lid_angle_sensors=0x%02x\n", ready_status, lid_angle_sensors);
 			if (ready_status == lid_angle_sensors) {
 				motion_lid_calc();
 				ready_status = 0;
@@ -1090,6 +1101,11 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	void *out_scale;
 	void *out_offset;
 	int16_t out_temp;
+
+	if (motion_sensor_count == 0) {
+		return EC_RES_INVALID_COMMAND;
+	}
+	printk("Motionsense host command: 0x%x\n", in->cmd);
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:

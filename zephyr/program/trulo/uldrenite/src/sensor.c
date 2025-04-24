@@ -44,8 +44,10 @@ void motion_interrupt(enum gpio_signal signal)
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
-	if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE)
+	if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE) {
+		printk("bmi4xx_interrupt()\n");
 		bma4xx_interrupt(signal);
+	}
 }
 
 #ifndef CONFIG_SOC_FAMILY_INTEL_ISH
