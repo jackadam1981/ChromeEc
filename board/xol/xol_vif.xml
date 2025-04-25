@@ -84,8 +84,10 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
-    <vif:Port_Source_Power_Type value="0">Assured</vif:Port_Source_Power_Type>
+    <vif:Product_Total_Source_Power_mW value="30000">30000 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
+    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
+    <vif:Port_Source_Power_Gang_Max_Power value="30000">30000 mW</vif:Port_Source_Power_Gang_Max_Power>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -246,8 +248,10 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
-    <vif:Port_Source_Power_Type value="0">Assured</vif:Port_Source_Power_Type>
+    <vif:Product_Total_Source_Power_mW value="30000">30000 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
+    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
+    <vif:Port_Source_Power_Gang_Max_Power value="30000">30000 mW</vif:Port_Source_Power_Gang_Max_Power>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -408,8 +412,10 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
-    <vif:Port_Source_Power_Type value="0">Assured</vif:Port_Source_Power_Type>
+    <vif:Product_Total_Source_Power_mW value="30000">30000 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
+    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
+    <vif:Port_Source_Power_Gang_Max_Power value="30000">30000 mW</vif:Port_Source_Power_Gang_Max_Power>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
