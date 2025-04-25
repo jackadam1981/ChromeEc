@@ -87,6 +87,24 @@
       "message": "Think more, it seems to be not good to overwrite the node for every board want to use RAM Lock.  \n@Tom Chang: Could you create another node for the RAM lock and push it to the Zephyr upstream?",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d6e3c9e_94146951",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-04-25T02:05:49Z",
+      "side": 1,
+      "message": "And modify this CL to use the newly created node.",
+      "parentUuid": "d06818be_8fe3d056",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
