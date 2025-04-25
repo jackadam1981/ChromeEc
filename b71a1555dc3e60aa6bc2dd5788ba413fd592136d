@@ -105,6 +105,24 @@
       "parentUuid": "d06818be_8fe3d056",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01d0fdd_63cf8022",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-25T05:18:39Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. The [PR](https://github.com/zephyrproject-rtos/zephyr/pull/89061) to add a node for RAM lock configuration has been submitted. This CL will be modified after the PR is merged into the Zephyr upstream.",
+      "parentUuid": "6d6e3c9e_94146951",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
