@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9029c19f_88cedef7",
+        "filename": "zephyr/shim/chip/it8xxx2/cec_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-04-25T10:07:56Z",
+      "side": 1,
+      "message": "Here\u0027s nothing ITE specific about this implementation, right? I\u0027m thinking, instead of implementing it on top of `zephyr/shim/src/cec_bitbang.c` with weak functions, you could implement it directly in a new driver (say in `zephyr/drivers/cdc_counter`, or even next to the other one in `shim/src` really) and then convert the PLATFORM_EC_CEC_BITBANG in a choice so that the counter driver gets picked up onstead of the dummy one?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "bd9a1dbc41ba01b99901cc94f8b171f168563030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
