@@ -9,7 +9,17 @@
 
 /* bluey project DTS includes */
 
+#include <cros/cbi_flash.dtsi>
+
 #include "../gpios.dtsi"
 
 /* bluey overrides follow... */
 
+&cbi_flash {
+	/*
+	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
+	 * EC_RO section. EC_RO section ends at 0x50000 byte which is the offset
+	 */
+	offset = <0x50000>;
+	size = <0x1000>;
+};
