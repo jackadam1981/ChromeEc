@@ -7,9 +7,9 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-#include "../bluey_stub.dtsi"
-
 /* bluey project DTS includes */
+
+#include "../gpios.dtsi"
 
 /* bluey overrides follow... */
 
