@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0da369f_21bd85ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2025-04-26T10:49:46Z",
+      "side": 1,
+      "message": "thanks Keith for reviewing the code. ISH sends I2C message to EC. host_set_single_event well defined function checks all conditions, felt that would be easier than adding extra code other places.",
+      "parentUuid": "b3e5b029_17a946b7",
+      "revId": "fd0674861d02061ed502efb64dcbc3f878cb5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2415d419_4e95e38d",
