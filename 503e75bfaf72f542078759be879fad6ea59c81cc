@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ea94c5_9699d83b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-04-26T12:18:39Z",
+      "side": 1,
+      "message": "I think this change somehow makes the `drivers/drivers.host_cmd.ec_host_cmd` flaky. If I only run `./twister -v -i -p native_sim -p unit_testing -s drivers/drivers.host_cmd.ec_host_cmd`, it passes. However, running `./twister -v -i -p native_sim -p unit_testing` sometimes failed. Need some time to debug this.",
+      "revId": "503e75bfaf72f542078759be879fad6ea59c81cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
