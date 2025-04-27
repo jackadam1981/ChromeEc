@@ -99,3 +99,15 @@
 			<&gpiof 5 0>;
 	};
 };
+
+&pwm0_gpc3 {
+	/delete-property/ drive-open-drain;
+};
+
+&pwm1_gpc2 {
+	/delete-property/ drive-open-drain;
+};
+
+&pwm2_gpc4 {
+	/delete-property/ drive-open-drain;
+};
