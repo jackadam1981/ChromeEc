@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc9a6cc_559fdd4f",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-27T23:41:42Z",
+      "side": 1,
+      "message": "Since this should only occur if misconfigured, do you think it\u0027s safe to crash instead? That would help catch misconfiguration.\n\n```suggestion\n\tk_oops();\n```",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b9711a_2294aee0",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-27T23:41:42Z",
+      "side": 1,
+      "message": "Same as above, maybe this should crash so the misconfiguration is obvious?",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f91b69_d31c8194",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-27T23:41:42Z",
+      "side": 1,
+      "message": "When the interrupt gets set up the port is known, so I think you can avoid this probing completely by making `port` a parameter and passing it from `user_data` in `cec_ext_top_timer_handler`:\n\n```\n\ttop_cfg.callback \u003d cec_ext_top_timer_handler;\n\ttop_cfg.user_data \u003d (void*)((intptr_t)port);\n\t\n\t...\n\t\n\tcec_ext_timer_interrupt((int)((intptr_t)user_data));\t\n```",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb0ec18_22068f76",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-27T23:41:42Z",
+      "side": 1,
+      "message": "Since this doesn\u0027t do anything, it seems like there\u0027s no reason to keep it around.",
+      "fixSuggestions": [
+        {
+          "fixId": "80935296_b54f1e4b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cec_counter/cec_counter.c",
+              "range": {
+                "startLine": 231,
+                "startChar": 0,
+                "endLine": 235,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
