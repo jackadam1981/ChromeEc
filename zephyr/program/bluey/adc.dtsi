@@ -1,0 +1,25 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/adc/adc.h>
+
+/ {
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		vph_pwr {
+			enum-name = "ADC_VPH_PWR";
+			io-channels = <&adc0 11>;
+			mul = <5>;
+			div = <16>;
+		};
+	};
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc0_chan11_gpc7>;
+	pinctrl-names = "default";
+};
