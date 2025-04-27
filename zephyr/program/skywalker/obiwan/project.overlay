@@ -15,6 +15,7 @@
 #include "../usba.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+#include "temp_sensors.dtsi"
 
 / {
 	batteries {
@@ -76,8 +77,6 @@
 			<&gpio3 2 0>,
 			<&gpio3 4 0>, /* Reserved for 5V_PWR_MODE */
 			<&gpio3 5 0>,
-			<&gpio3 7 0>,
-			<&gpio4 1 0>,
 			<&gpio5 0 0>, /* Reserved for PP1800_TCHPAD_EN */
 			<&gpio6 6 0>,
 			<&gpio7 5 0>,
@@ -94,7 +93,6 @@
 			<&gpioa 7 0>,
 			<&gpioc 0 0>,
 			<&gpioc 7 0>,
-			<&gpiof 0 0>,
 			<&gpiof 2 0>,
 			<&gpiof 3 0>,
 			<&gpiof 4 0>,
