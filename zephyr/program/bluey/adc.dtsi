@@ -1,0 +1,36 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/adc/adc.h>
+
+/ {
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		vph_pwr {
+			enum-name = "ADC_VPH_PWR";
+			io-channels = <&adc0 11>;
+			/*
+			 * ADC scaling factors for converting raw ADC values
+			 * to millivolts (mV).
+			 * ADC Reference Voltage: 3.3V
+			 * ADC Resolution: 10-bit (0-1023)
+			 *
+			 * mV_value = (raw_adc_value * multiplier) / divider
+			 *
+			 * Multiplier: 3300 (3.3V * 1000 mV/V)
+			 * Divider:    1024 (2^10)
+			 */
+			mul = <3300>;
+			div = <1024>;
+		};
+	};
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc0_chan11_gpc7>;
+	pinctrl-names = "default";
+};
