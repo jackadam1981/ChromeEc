@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0aa87dd_0b7d3ac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-04-28T04:51:56Z",
+      "side": 1,
+      "message": "most nissa boards disabled \"events\" channel, so this seems okay.",
+      "revId": "7887113321d3eddbe91497f43c1b708ea14c61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f4a621f_758a1d96",
+        "filename": "zephyr/program/corsola/chinchou/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-04-28T04:51:56Z",
+      "side": 1,
+      "message": "use tab instead of whitespace",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "244d5ad8_67951285",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/corsola/chinchou/project.overlay",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7887113321d3eddbe91497f43c1b708ea14c61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
