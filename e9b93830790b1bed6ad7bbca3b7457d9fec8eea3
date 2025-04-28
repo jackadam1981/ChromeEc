@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ba1c81_c23b30ae",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-04-28T17:31:58Z",
+      "side": 1,
+      "message": "nit: Very minor, feel free to ignore.\n\nThe DR swap bit in Src/Snk Caps caused COMMON.CHECK.PD.7 and COMMON.CHECK.PD.12 compliance failures. TD 4.11.1 failed because the DUT rejected a DR swap to DFP.",
+      "range": {
+        "startLine": 940,
+        "startChar": 50,
+        "endLine": 941,
+        "endChar": 34
+      },
+      "revId": "e9b93830790b1bed6ad7bbca3b7457d9fec8eea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
