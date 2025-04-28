@@ -6,7 +6,8 @@
 #ifndef __CROS_EC_POWER_QCOM_H_
 #define __CROS_EC_POWER_QCOM_H_
 
-#if defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280)
+#if defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280) || \
+	defined(CONFIG_CHIPSET_QC_EXP)
 enum power_signal {
 	SC7X80_AP_RST_ASSERTED = 0,
 	SC7X80_PS_HOLD,

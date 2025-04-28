@@ -286,6 +286,13 @@ config PLATFORM_EC_POWERSEQ_SC7280
 	  Enable power sequencing for the Qualcomm Snapdragon SC7280
 	  chipset.
 
+config PLATFORM_EC_POWERSEQ_QC_EXP
+	bool "QC_EXP power sequencing"
+	depends on AP_ARM_QUALCOMM_QC_EXP
+	default y
+	help
+	  Enable power sequencing for the Qualcomm QC_EXP chipset.
+
 config PLATFORM_EC_CONSOLE_CMD_S5_TIMEOUT
 	bool "Console command: s5_timeout"
 	help
