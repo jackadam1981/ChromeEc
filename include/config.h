@@ -4885,6 +4885,13 @@
  */
 #undef CONFIG_USB_PD_DEBUG_LEVEL
 
+/* Build a framework to record custom time intervals and print them out at
+ * convenient points with respect to each USB-C port. This config does not
+ * directly enable any recording. The developer must define the intervals and
+ * choose when to print the results.
+ */
+#undef CONFIG_USB_PD_DEBUG_INTERVALS
+
 /*
  * Set to a nonzero value to delay PD task startup by the given
  * amount of time.
