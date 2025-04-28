@@ -2350,6 +2350,7 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			 * This would remove the effect of the latency from
 			 * propagating the TX status.
 			 */
+			pd_record_timestamp_start(port, PD_INTERVAL_TSENDER_RESPONSE);
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
 					t_sender_response - offset);
 			return PE_MSG_SEND_COMPLETED;
@@ -2731,7 +2732,10 @@ static void pe_src_send_capabilities_run(int port)
 	 *  1) The SenderResponseTimer times out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
+		pd_record_timestamp_end(port, PD_INTERVAL_TSENDER_RESPONSE);
+		pd_record_timestamp_start(port, PD_INTERVAL_HARD_RESET);
 		pe_set_hard_reset(port);
+		pd_record_timestamp_end(port, PD_INTERVAL_HARD_RESET);
 		return;
 	}
 }
@@ -3246,6 +3250,7 @@ static void pe_src_hard_reset_run(int port)
 
 static void pe_src_hard_reset_exit(int port)
 {
+	pd_print_timestamps(port);
 	pd_timer_disable(port, PE_TIMER_PS_HARD_RESET);
 }
 
@@ -5521,6 +5526,52 @@ static void pe_prs_snk_src_source_on_exit(int port)
 {
 	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port, PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
+}
+
+struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
+				[PD_INTERVAL_COUNT] = { 0 };
+const char *pd_ts_name[] = {
+	// "Invalid interval",
+	"Hard Reset",
+	"tSender Response",
+};
+BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts)
+{
+	struct pd_debug_timestamps *debug_ts = &pd_ts[port][interval];
+
+	if (point == PD_START)
+		debug_ts->start = ts;
+	else
+		debug_ts->end = ts;
+}
+
+inline void pd_record_timestamp_start(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_START, get_time());
+}
+
+inline void pd_record_timestamp_end(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_END, get_time());
+}
+
+void pd_print_timestamps(int port)
+{
+	ccprintf("C%d timestamps:\n", port);
+
+	for (int i = 0; i < PD_INTERVAL_COUNT; ++i) {
+		uint32_t start = pd_ts[port][i].start.le.lo;
+		uint32_t end = pd_ts[port][i].end.le.lo;
+		int delta = time_until(start, end);
+
+		ccprintf("%s: %u to %u = %d (%dms)\n", pd_ts_name[i], start,
+			 end, delta, delta / 1000);
+	}
+
+	memset(&pd_ts[port], 0, sizeof(pd_ts[port]));
 }
 
 /**
