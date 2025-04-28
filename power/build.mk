@@ -21,6 +21,7 @@ power-$(CONFIG_CHIPSET_MT8192)+=mt8192.o
 power-$(CONFIG_CHIPSET_CEZANNE)+=amd_x86.o
 power-$(CONFIG_CHIPSET_SC7180)+=qcom.o
 power-$(CONFIG_CHIPSET_SC7280)+=qcom.o
+power-$(CONFIG_CHIPSET_QC_EXP)+=qcom.o
 power-$(CONFIG_CHIPSET_SDM845)+=sdm845.o
 power-$(CONFIG_CHIPSET_SKYLAKE)+=skylake.o intel_x86.o
 power-$(CONFIG_CHIPSET_STONEY)+=amd_x86.o
