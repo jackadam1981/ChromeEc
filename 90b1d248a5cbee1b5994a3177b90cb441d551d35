@@ -22,6 +22,30 @@
       },
       "revId": "90b1d248a5cbee1b5994a3177b90cb441d551d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3172e2e0_3eab5bc1",
+        "filename": "zephyr/program/trulo/trulo-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-04-28T16:13:29Z",
+      "side": 1,
+      "message": "@madhusudanarao.amara@intel.com can you confirm the documentation says 640KB but I\u0027ve seen KB interchanged with KiB before. Can this be set to 0xA0000?",
+      "parentUuid": "7054214f_944b6470",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "90b1d248a5cbee1b5994a3177b90cb441d551d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
