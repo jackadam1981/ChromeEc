@@ -19,6 +19,11 @@
 #include "timer.h"
 #include "util.h"
 
+#if CONFIG_ZEPHYR
+#include <zephyr/logging/log.h>
+LOG_MODULE_DECLARE(test_lschyi);
+#endif
+
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -471,6 +476,10 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 			state.events |= BIT(evt);
 			mutex_unlock(&state.lock);
 		}
+#if CONFIG_ZEPHYR
+		LOG_INF("lschyi: data_size = %d, src->event_type = %d",
+			data_size, src->event_type);
+#endif
 	} while (data_size == -EC_ERROR_BUSY);
 
 	/*
@@ -504,7 +513,9 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 	if (data_size < 0)
 		return EC_RES_ERROR;
 	args->response_size = 1 + data_size;
-
+#if CONFIG_ZEPHYR
+	LOG_INF("lschyi: response_size = %d", args->response_size);
+#endif
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_NEXT_EVENT, mkbp_get_next_event,
