@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8310d78d_b362bdcb",
+        "filename": "zephyr/program/bluey/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-28T16:19:49Z",
+      "side": 1,
+      "message": "`Quenbi`",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6297a61b_fb11bfe3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/Kconfig",
+              "range": {
+                "startLine": 12,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": "\tbool \"Google Quenbi baseboard\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5353f8ba14c0ce86628145d92f81ddc1c098e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bd3725_eb036d22",
+        "filename": "zephyr/program/bluey/quenbi/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-28T16:19:49Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this empty `CMakeLists.txt` file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "5353f8ba14c0ce86628145d92f81ddc1c098e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
