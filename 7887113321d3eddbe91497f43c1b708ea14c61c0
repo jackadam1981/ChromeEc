@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f1ad55_13fde1e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-04-28T06:01:20Z",
+      "side": 1,
+      "message": "Thanks for Ting\u0027s comment.",
+      "parentUuid": "f0aa87dd_0b7d3ac1",
+      "revId": "7887113321d3eddbe91497f43c1b708ea14c61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f4a621f_758a1d96",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "7887113321d3eddbe91497f43c1b708ea14c61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b5dc50_69d700f7",
+        "filename": "zephyr/program/corsola/chinchou/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-04-28T06:01:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4a621f_758a1d96",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
       "revId": "7887113321d3eddbe91497f43c1b708ea14c61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
