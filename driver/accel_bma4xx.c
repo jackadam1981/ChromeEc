@@ -658,6 +658,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	uint32_t irq_timestamp = last_irq_timestamp;
 	bool read_any_data = false;
 	int interrupt_status_reg, fifo_depth;
+	int err;
 
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_BMA4XX_INT_EVENT)) ||
@@ -666,7 +667,12 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	}
 
 	/* Read interrupt status, also clears pending IRQs */
-	RETURN_ERROR(bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg));
+	err = bma4_read8(s, BMA4_INT_STATUS_1, &interrupt_status_reg);
+	if (err) {
+		CPRINTF("bma4xx: %d - unable to read interrupt register: %d\n",
+			s - motion_sensors, err);
+		return err;
+	}
 	if ((interrupt_status_reg &
 	     (BMA4_FFULL_INT | BMA4_FWM_INT | BMA4_ACC_DRDY_INT)) == 0) {
 		return EC_ERROR_NOT_HANDLED;
