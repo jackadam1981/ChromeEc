@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "system.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
 
 #include <stdint.h>
 
@@ -230,6 +231,8 @@ void usb_interrupt(enum gpio_signal signal)
 		port = 1;
 	}
 	tcpci_tcpm_set_int_ts(port, interrupt_time);
+	pd_record_timestamp(port, PD_INTERVAL_INT_TO_INT_TASK, PD_START,
+			    interrupt_time);
 	/* Trigger polling of TCPC in USB-PD task */
 	schedule_deferred_pd_interrupt(port);
 }
