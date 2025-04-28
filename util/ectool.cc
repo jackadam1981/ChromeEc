@@ -21,6 +21,16 @@
 #include "tablet_mode.h"
 #include "usb_pd.h"
 
+/* TODO(b/395723202): These macros from timer.h, included transitively in
+ * usb_pd.h, conflict with constants declared in json_reader.h below. Ideally,
+ * timer.h should use namespaced variables instead of macros to avoid
+ * collisions. Until then, avoid build failures by undefining the conflicting
+ * macros. ectool.cc does not depend on them specifically.
+ */
+#undef SECOND
+#undef MINUTE
+#undef HOUR
+
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
