@@ -127,7 +127,7 @@
 			start = <8>;
 			size = <1>;
 
-			ish-disabled {
+			fw_config_ish_disable: ish-disabled {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "ISH_DISABLED";
 				value = <0>;
