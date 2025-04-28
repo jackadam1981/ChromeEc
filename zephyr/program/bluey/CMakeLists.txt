@@ -10,4 +10,6 @@ if(DEFINED CONFIG_BOARD_BLUEY)
 	project(bluey)
 endif()
 
-add_subdirectory(${PROJECT_NAME})
+zephyr_library_sources("src/switchcap.c")
+
+dd_subdirectory(${PROJECT_NAME})
