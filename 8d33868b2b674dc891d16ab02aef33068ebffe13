@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "488b9dfa_a39fe94b",
+        "filename": "zephyr/drivers/dsp_comms/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-28T17:47:33Z",
+      "side": 1,
+      "message": "```suggestion\n1. Client initiated\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "8d33868b2b674dc891d16ab02aef33068ebffe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eea1b5a_63882a77",
+        "filename": "zephyr/drivers/dsp_comms/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-28T17:47:33Z",
+      "side": 1,
+      "message": "```suggestion\n2. Server initiated\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "8d33868b2b674dc891d16ab02aef33068ebffe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d65bb1_ab7710ba",
+        "filename": "zephyr/drivers/dsp_comms/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-28T17:47:33Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer if you explicitly list the steps for both client and server initiated communication, even if there is some redundancy.\n\nCreate a sub-heading for each, to give the doc some more structure.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "8d33868b2b674dc891d16ab02aef33068ebffe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49591c6b_72246b40",
+        "filename": "zephyr/drivers/dsp_comms/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-28T17:47:33Z",
+      "side": 1,
+      "message": "This image isn\u0027t rendering in gitiles.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "8d33868b2b674dc891d16ab02aef33068ebffe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
