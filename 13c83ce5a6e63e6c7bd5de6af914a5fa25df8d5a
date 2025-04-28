@@ -1,0 +1,88 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a3333c_f210246a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6480,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-28T18:45:34Z",
+      "side": 1,
+      "message": "const ...",
+      "range": {
+        "startLine": 6480,
+        "startChar": 7,
+        "endLine": 6480,
+        "endChar": 13
+      },
+      "revId": "13c83ce5a6e63e6c7bd5de6af914a5fa25df8d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af0dcefe_c1bac04e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6607,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-04-28T18:45:34Z",
+      "side": 1,
+      "message": "\"bad port number\"",
+      "range": {
+        "startLine": 6607,
+        "startChar": 19,
+        "endLine": 6607,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0739ca8e_ebb9c66b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6607,
+                "startChar": 0,
+                "endLine": 6608,
+                "endChar": 0
+              },
+              "replacement": "\t\tfprintf(stderr, \"Bad port number.\\n\");\n"
+            },
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 6648,
+                "startChar": 0,
+                "endLine": 6649,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tfprintf(stderr, \"Bad port number.\\n\");\n"
+            },
+            {
+              "path": "util/ectool.cc",
+              "range": {
+                "startLine": 7011,
+                "startChar": 0,
+                "endLine": 7012,
+                "endChar": 0
+              },
+              "replacement": "\t\tfprintf(stderr, \"Bad port number.\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "13c83ce5a6e63e6c7bd5de6af914a5fa25df8d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
