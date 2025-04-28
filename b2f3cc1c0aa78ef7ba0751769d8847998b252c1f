@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "843f4477_73f39364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-28T15:56:51Z",
+      "side": 1,
+      "message": "The CQ failed because of the format error.\n\nYou can fix it by running:\n    cros format zephyr/test/drivers/common/src/utils.c\nand uploading it.",
+      "revId": "b2f3cc1c0aa78ef7ba0751769d8847998b252c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
