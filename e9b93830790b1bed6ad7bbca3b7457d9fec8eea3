@@ -39,6 +39,30 @@
       },
       "revId": "e9b93830790b1bed6ad7bbca3b7457d9fec8eea3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "105a56f1_05eb6cd6",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-04-28T22:23:05Z",
+      "side": 1,
+      "message": "That\u0027s correct that this is an additional failure. I did link to the bug in the comment, so this additional detail can be found.",
+      "parentUuid": "c1ba1c81_c23b30ae",
+      "range": {
+        "startLine": 940,
+        "startChar": 50,
+        "endLine": 941,
+        "endChar": 34
+      },
+      "revId": "e9b93830790b1bed6ad7bbca3b7457d9fec8eea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
