@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd1ef62_180ca092",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-28T03:17:46Z",
+      "side": 1,
+      "message": "This file doesn\u0027t have any test coverage, so you\u0027ll need to plan how it will be tested.",
+      "revId": "d0abfb3dee5ad27abb3890d093f406fd015fe80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fcb3195_ffc9c26f",
+        "filename": "zephyr/include/drivers/cec_counter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-28T03:17:46Z",
+      "side": 1,
+      "message": "This function was removed.",
+      "fixSuggestions": [
+        {
+          "fixId": "acdbb456_64a2e488",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/drivers/cec_counter.h",
+              "range": {
+                "startLine": 84,
+                "startChar": 0,
+                "endLine": 93,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "d0abfb3dee5ad27abb3890d093f406fd015fe80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
