@@ -21,6 +21,9 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(test_lschyi, LOG_LEVEL_DBG);
+
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/kernel.h>
 #include <zephyr/mgmt/ec_host_cmd/simulator.h>
@@ -593,6 +596,8 @@ int get_next_cec_mkbp_event(struct ec_response_get_next_event_v1 *event)
 bool cec_event_matches(struct ec_response_get_next_event_v1 *event, int port,
 		       enum mkbp_cec_event events)
 {
+	LOG_INF("lschyi: port equal? %d, port = %d", (EC_MKBP_EVENT_CEC_GET_PORT(event->data.cec_events) == port),EC_MKBP_EVENT_CEC_GET_PORT(event->data.cec_events));
+	LOG_INF("lschyi: event equal? %d, events = %d", (EC_MKBP_EVENT_CEC_GET_EVENTS(event->data.cec_events) == events), EC_MKBP_EVENT_CEC_GET_EVENTS(event->data.cec_events));
 	return ((EC_MKBP_EVENT_CEC_GET_PORT(event->data.cec_events) == port) &&
 		(EC_MKBP_EVENT_CEC_GET_EVENTS(event->data.cec_events) ==
 		 events));
@@ -772,9 +777,9 @@ static uint16_t pass_args_to_sim(struct host_cmd_handler_args *args)
 	rv = k_sem_take(&send_called, K_SECONDS(1));
 	zassert_equal(rv, 0, "Send was not called");
 
-	memcpy(args->response, (uint8_t *)tx_buf->buf + TX_HEADER_SIZE,
-	       args->response_max);
 	args->response_size = tx_buf->len - TX_HEADER_SIZE;
+	memcpy(args->response, (uint8_t *)tx_buf->buf + TX_HEADER_SIZE,
+	       args->response_size);
 	tx_header = tx_buf->buf;
 
 	return tx_header->result;
