@@ -83,6 +83,18 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
+void pd_record_timestamp_start(int port, enum pd_debug_interval interval)
+{
+}
+
+void pd_record_timestamp_end(int port, enum pd_debug_interval interval)
+{
+}
+
+void pd_print_timestamps(int port)
+{
+}
+
 void pd_power_supply_reset(int port)
 {
 	mock_set_vbus_enabled(port, false);
