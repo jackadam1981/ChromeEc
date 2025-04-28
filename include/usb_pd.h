@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "timer.h"
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_vdo.h"
@@ -3689,6 +3690,97 @@ __override_proto enum ec_pd_port_location board_get_pd_port_location(int port);
  * @return      Information related connected port partner and cable
  */
 uint8_t get_pd_control_flags(int port);
+
+/* Use interval debugging to time register accesses, state transitions,
+ * effective timeouts, etc. within the TCPM.
+ * 1. Enable CONFIG_USB_PD_DEBUG_INTERVALS for the target.
+ * 2. Add named intervals to enum pd_debug_interval and pd_ts_name.
+ * 3. Add calls to pd_record_timestamp{,_start,_end} at locations bounding each
+ *    of those intervals.
+ * 4. Call pd_print_timestamps at a location that will not disturb the typical
+ *    timing of the TCPM.
+ * Notes:
+ * * Be careful that no intervals will be invalidated by further recording
+ *   between the time of original recording and the time of printing.
+ * * It may not be practical to call pd_record_timestamp_{start,end} at the
+ *   exact time of an event, perhaps because it will not be clear until later
+ *   whether this was the looked-for event. In that case, it may be helpful to
+ *   speculatively save the result of get_time() and then pass that value into
+ *   pd_record_timestamp when its significance is clear.
+ * * On Nuvoton ECs running Zephyr, recorded timestamps have a granularity of
+ *   100 us. Empirically, recording multiple timestamps at a certain location
+ *   does not take long enough to affect the recorded timestamps.
+ * * This framework assumes that the lo-order word of the timer value has not
+ *   rolled over during the measured intervals. At the above granularity, this
+ *   happens approximately once every 1 hour and 11 minutes.
+ */
+
+/* The list of intervals that may be used in timestamp instrumentation. Each
+ * interval should represent an event, the beginning and end of which may be
+ * observed at specific points in the code. Each interval must have a
+ * corresponding string in pd_ts_name.
+ */
+enum pd_debug_interval {
+	/* This interval is unused, but it keeps the size assertion on
+	 * pd_ts_name valid.
+	 */
+	PD_INTERVAL_INVALID,
+	PD_INTERVAL_COUNT,
+};
+
+/* Each validly recorded interval will have a start timestamp and an end
+ * timestamp.
+ */
+enum pd_interval_point {
+	PD_START,
+	PD_END,
+};
+
+struct pd_debug_timestamps {
+	timestamp_t start;
+	timestamp_t end;
+};
+
+/* Record the start of an interval. This is equivalent to
+ * pd_record_timestamp(port, interval, PD_START, get_time()). This function
+ * should be called at the point in the code when the event to be measured
+ * is observed to start.
+ *
+ * @param port     USB-C port number
+ * @param interval The interval to record
+ */
+void pd_record_timestamp_start(int port, enum pd_debug_interval interval);
+
+/* Record the end of an interval. This is equivalent to
+ * pd_record_timestamp(port, interval, PD_END, get_time()). This function should
+ * be called at the point in the code where the event to be measured is observed
+ * to end.
+ *
+ * @param port     USB-C port number
+ * @param interval The interval to record
+ */
+void pd_record_timestamp_end(int port, enum pd_debug_interval interval);
+
+/* Record the start or end of an interval. This function may be called at a
+ * point in the code after the event to be measured starts or ends, based on a
+ * previously noted timestamp.
+ *
+ * @param port     USB-C port number
+ * @param interval The interval to record
+ * @param point    The start or end of the interval
+ * @param ts       The timestamp to record for the start or end
+ */
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts);
+
+/* Print out the recorded intervals for a port. Clear the recorded intervals
+ * after printing. This function should be called at a point in the code where
+ * printing the results will not disturb the intervals to be measured or the
+ * normal operation of the system.
+ *
+ * @param port USB-C port number
+ */
+void pd_print_timestamps(int port);
 
 /****************************************************************************
  * TCPC CC/Rp Management

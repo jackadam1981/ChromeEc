@@ -77,6 +77,15 @@ config PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL
 	  through to 3 will increase the level of debug logging.
 	  If this config is not set, the default level will be set to 1.
 
+config PLATFORM_EC_USB_PD_DEBUG_INTERVALS
+	bool "Whether to build USB PD interval debugging support"
+	default false
+	help
+	  Enable this to build a framework to record custom time intervals and
+	  print them out at convenient points with respect to each USB-C port.
+	  This config does not directly enable any recording. The developer must
+	  define the intervals and choose when to print the results.
+
 config PLATFORM_EC_USB_PD_FLAGS
 	bool "Whether to build USB PD flag support"
 	default 1
