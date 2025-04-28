@@ -1654,6 +1654,28 @@ enum cable_outlet {
 /* Maximum power consumption while in Sink Standby */
 #define PD_SNK_STDBY_MW 2500
 
+enum pd_debug_interval {
+};
+
+enum pd_interval_point {
+	PD_START,
+	PD_END,
+};
+
+struct pd_debug_timestamps {
+	timestamp_t start;
+	timestamp_t end;
+};
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts);
+
+void pd_record_timestamp_start(int port, enum pd_debug_interval interval);
+
+void pd_record_timestamp_end(int port, enum pd_debug_interval interval);
+
+void pd_print_timestamps(int port);
+
 /* --- Policy layer functions --- */
 
 /** Schedules the interrupt handler for the TCPC on a high priority task. */
