@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92bf475a_de2808bd",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-28T02:50:22Z",
+      "side": 1,
+      "message": "For the compiler would fail after remove \"return 0\", I add warning info instead of k_oops.",
+      "parentUuid": "afc9a6cc_559fdd4f",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66b9711a_2294aee0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f547f30_54c94507",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-28T02:50:22Z",
+      "side": 1,
+      "message": "Instead of k_oops, I add warning info here because I got build error after remove \"return 0\".",
+      "parentUuid": "66b9711a_2294aee0",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95f91b69_d31c8194",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-04-27T23:41:42Z",
       "side": 1,
       "message": "When the interrupt gets set up the port is known, so I think you can avoid this probing completely by making `port` a parameter and passing it from `user_data` in `cec_ext_top_timer_handler`:\n\n```\n\ttop_cfg.callback \u003d cec_ext_top_timer_handler;\n\ttop_cfg.user_data \u003d (void*)((intptr_t)port);\n\t\n\t...\n\t\n\tcec_ext_timer_interrupt((int)((intptr_t)user_data));\t\n```",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0756fa_1f6dfd17",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-28T02:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f91b69_d31c8194",
       "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +137,24 @@
           ]
         }
       ],
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "846a4887_58ddcb78",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-28T02:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb0ec18_22068f76",
       "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
