@@ -631,13 +631,13 @@ To disable:
 ### Updating GSC {#updating-cr50}
 
 Production (`MP`) versions of Cr50 firmware use a [minor version][semver] of
-`3`: `0.3.x`. Production firmware versions `0.3.9` or newer support CCD.
+`5`: `0.5.x`. Production firmware versions `0.3.9` or newer support CCD.
 
 Production (`MP`) versions of Ti50 firmware use a [minor version][semver] of
 `23`: `0.23.x`.
 
-Development (`PrePVT`) versions of Cr50 firmware use a minor version of `4`:
-`0.4.x`. Development firmware versions `0.4.9` or newer support CCD.
+Development (`PrePVT`) versions of Cr50 firmware use a minor version of `6`:
+`0.6.x`. Development firmware versions `0.4.9` or newer support CCD.
 
 Development (`PrePVT`) versions of Ti50 firmware use a minor version of `24`:
 `0.24.x`.
@@ -647,16 +647,21 @@ it is a little easier to CCD [`Open`] PrePVT images. You can't run PrePVT images
 on MP devices, so if you're trying to update to PrePVT and it fails try using
 the MP image.
 
+#### Updating GSC From the AP {#update-gsc-from-ap}
 1.  Flash a test image newer than M66.
 
-1.  Enable [Developer Mode] and connect a debug cable ([`Suzy-Q`] or [`Type-C
-    Servo v4`]).
+1.  Enable [Developer Mode] and connect a debug cable ([Suzy-Q] or [Type-C
+    Servo v4]).
 
 1.  Check the running GSC version with `gsctool`:
 
 ```bash
 (dut) $ sudo gsctool -a -f
 
+...
+device: [H1, DT, NT] <-- The "device" is the GSC chip type.
+                         H1 is a cr50 chip.
+                         DT and NT are ti50 chips.
 ...
 RW 0.4.26  <-- The "RW" version is the one to check
 ```
@@ -666,19 +671,89 @@ RW 0.4.26  <-- The "RW" version is the one to check
 *Production (MP) image*:
 
 ```bash
-(dut) $ sudo gsctool -a /opt/google/cr50/firmware/cr50.bin.prod
-(dut) $ sudo gsctool -a /opt/google/ti50/firmware/ti50.bin.prod
+# Run with all MP images. Gsctool will pick the correct image.
+(dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prod
 ```
 
 *Development (PrePVT) image*:
 
 ```bash
-(dut) $ sudo gsctool -a /opt/google/cr50/firmware/cr50.bin.prepvt
-(dut) $ sudo gsctool -a /opt/google/ti50/firmware/ti50.bin.prepvt
+# Run with all PrePVT images. Gsctool will pick the correct image.
+(dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prepvt
 ```
 
-1.  Check the GSC version again to make sure it's either `0.3.X` or `0.4.X`, or
-    check the Ti50 version again to make sure it's either `0.23.X` or `0.24.X`.
+1.  Check the GSC version again. gsctool prints the chip type after `device:` \
+    Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
+    Ti50 DT version - make sure it's either `0.23.X` or `0.24.X`. \
+    Ti50 NT version - make sure it's either `0.33.X` or `0.34.X`.
+
+#### Updating GSC From the chroot {#update-gsc-from-chroot}
+
+This is very similar to updating from the AP, but don't use "-a" as a gsctool
+arg in the chroot.
+
+1.  Install necessary GSC tools and images. This installs the most recent
+    GSC images in /opt/google/{cr50,ti50}/firmware/
+```bash
+(inside chroot) $ sudo emerge chromeos-ti50 chromeos-cr50
+(inside chroot) $ ls /opt/google/cr50/firmware/
+(inside chroot) $ ls /opt/google/ti50/firmware/
+```
+
+1.  Connect a debug cable ([Suzy-Q] or [Type-C Servo v4]).
+
+1.  Find the GSC serial number. Gsctool will need the device serial number if
+    you have multiple CCD devices connected.
+```
+# Find with servo
+SER=$(dut-control -p $PORT ccd_serialname | cut -d : -f 2)
+
+# Example of how to find the serial with lsusb
+# Disconnect the CCD device
+# List connected devices
+lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.start
+# Connect the CCD device
+lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.end
+# Find the serial of new device
+diff /tmp/gsc.devices*
+```
+
+1.  Check the running GSC version and chip type with `gsctool`. You can drop the
+    `-n $SER` if you only have one CCD device connected.
+
+```bash
+(inside chroot) $ sudo gsctool -f -n $SER
+
+...
+device: [H1, DT, NT] <-- The "device" is the GSC chip type.
+                         H1 is a cr50 chip.
+                         DT and NT are ti50 chips.
+...
+RW 0.4.26  <-- The "RW" version is the one to check
+```
+1.  Update GSC using the firmware in the chroot:
+    Select the correct image based on your dut.
+
+*Production (MP) image*:
+
+```bash
+# Supply all of the MP images. gsctool will select the correct one for the
+# chip
+(inside chroot) $ sudo gsctool -n $SER /opt/google/*50/firmware/*prod
+```
+
+*Development (PrePVT) image*:
+
+```bash
+# Supply all of the PrePVT images. gsctool will select the correct one for the
+# chip
+(inside chroot) $ sudo gsctool -n $SER /opt/google/*/firmware/*prepvt
+```
+
+1.  Check the GSC version again. gsctool prints the chip type after `device:` \
+    Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
+    Ti50 DT version - make sure it's either `0.23.X` or `0.24.X`. \
+    Ti50 NT version - make sure it's either `0.33.X` or `0.34.X`.
 
 ### Speed up Flashing the AP {#speed-up-ap-flash}
 
