@@ -64,7 +64,6 @@ config PLATFORM_EC_DSP_RESPONSE_BUFFER_SIZE
 
 config PLATFORM_EC_DSP_REMOTE_BODY_DETECTION
 	bool "Body detection is handled on another MCU"
-	default y if !TEST
 	help
 	  Use the body detection hooks, but the source of truth is on another
 	  MCU. DSP will broadcast events, while the server will receive them.
