@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "timer.h"
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_vdo.h"
@@ -1652,6 +1653,32 @@ enum cable_outlet {
 
 /* Maximum power consumption while in Sink Standby */
 #define PD_SNK_STDBY_MW 2500
+
+enum pd_debug_interval {
+	// PD_INTERVAL_INVALID,
+	PD_INTERVAL_HARD_RESET,
+	PD_INTERVAL_TSENDER_RESPONSE,
+	PD_INTERVAL_COUNT,
+};
+
+enum pd_interval_point {
+	PD_START,
+	PD_END,
+};
+
+struct pd_debug_timestamps {
+	timestamp_t start;
+	timestamp_t end;
+};
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts);
+
+void pd_record_timestamp_start(int port, enum pd_debug_interval interval);
+
+void pd_record_timestamp_end(int port, enum pd_debug_interval interval);
+
+void pd_print_timestamps(int port);
 
 /* --- Policy layer functions --- */
 
