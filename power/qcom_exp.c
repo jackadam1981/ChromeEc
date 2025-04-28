@@ -558,29 +558,6 @@ static void power_off_seq(uint8_t shutdown_event)
 }
 
 /**
- * Check if the power is enough to boot the AP.
- */
-static int power_is_enough(void)
-{
-	timestamp_t poll_deadline;
-
-	/* If powered by adapter only, wait a while for PD negoiation. */
-	poll_deadline = get_time();
-	poll_deadline.val += CAN_BOOT_AP_CHECK_TIMEOUT;
-
-	/*
-	 * Wait for PD negotiation. If a system with drained battery, don't
-	 * waste the time and exit the loop.
-	 */
-	while (!system_can_boot_ap() && !charge_want_shutdown() &&
-	       get_time().val < poll_deadline.val) {
-		crec_usleep(CAN_BOOT_AP_CHECK_WAIT);
-	}
-
-	return system_can_boot_ap() && !charge_want_shutdown();
-}
-
-/**
  * Power on the AP
  *
  * @return EC_SUCCESS or error
@@ -882,45 +859,34 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 	case POWER_G3:
 		boot_from_off = check_for_power_on_event();
-		if (boot_from_off)
-			return POWER_G3S5;
-		break;
-
-	case POWER_G3S5:
-		return POWER_S5;
-
-	case POWER_S5:
-		if (!boot_from_off)
-			boot_from_off = check_for_power_on_event();
-
 		if (boot_from_off) {
 			CPRINTS("power on %d", boot_from_off);
-			return POWER_S5S3;
+			return POWER_G3S5;
 		}
 		break;
-
-	case POWER_S5S3:
+	/*
+	 * For Qualcomm QC_EXP SoCs, the ADSP firmware manages battery
+	 * charging. The Application Processor (AP) must be powered on
+	 * for charging to commence. Consequently, the power-on sequence
+	 * is performed during the G3 to S5 transition.
+	 */
+	case POWER_G3S5:
 		/*
-		 * Wait for power button release before actually boot AP.
-		 * It may be a long-hold power button with volume buttons
-		 * to trigger the recovery button. We don't want AP up
-		 * during the long-hold.
+		 * wait for power button release before actually boot
+		 * ap. it may be a long-hold power button with volume
+		 * buttons to trigger the recovery button. we don't want
+		 * ap up during the long-hold.
 		 */
 		power_button_wait_for_release(-1);
 
-		/* If no enough power, return back to S5. */
-		if (!power_is_enough()) {
-			boot_from_off = 0;
-			return POWER_S5;
-		}
-
-		/* Initialize components to ready state before AP is up. */
+		/* Initialize components to ready state before AP is up.
+		 */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
 		if (power_on_seq() != EC_SUCCESS) {
 			power_off_seq(shutdown_from_on);
 			boot_from_off = 0;
-			return POWER_S5;
+			return POWER_G3;
 		}
 		CPRINTS("AP running ...");
 
@@ -928,10 +894,16 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_STARTUP);
 
 		/*
-		 * Clearing the sleep failure detection tracking on the path
-		 * to S0 to handle any reset conditions.
+		 * Clearing the sleep failure detection tracking on the
+		 * path to S0 to handle any reset conditions.
 		 */
 		power_reset_host_sleep_state();
+		return POWER_S5;
+
+	case POWER_S5:
+		return POWER_S5S3;
+
+	case POWER_S5S3:
 		return POWER_S3;
 
 	case POWER_S3:
