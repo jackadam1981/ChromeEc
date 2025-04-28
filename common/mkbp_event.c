@@ -466,6 +466,8 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		 * event first.
 		 */
 		data_size = src->get_data((uint8_t *)&r->data);
+		CPRINTF("lschyi: src->event_type = %d, data_size = %d\n",
+			src->event_type, data_size);
 		if (data_size == -EC_ERROR_BUSY) {
 			mutex_lock(&state.lock);
 			state.events |= BIT(evt);
@@ -504,6 +506,7 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 	if (data_size < 0)
 		return EC_RES_ERROR;
 	args->response_size = 1 + data_size;
+	CPRINTF("lschyi: response_size = %d\n", args->response_size);
 
 	return EC_RES_SUCCESS;
 }
