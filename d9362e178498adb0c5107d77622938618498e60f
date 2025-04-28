@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3832fc01_fdc21b6e",
+        "filename": "zephyr/Kconfig.tabletmode",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-04-28T02:00:36Z",
+      "side": 1,
+      "message": "Will this CL be update ?",
+      "parentUuid": "ddd21957_8b5b01cb",
+      "revId": "d9362e178498adb0c5107d77622938618498e60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02ca9c00_fd441a4f",
         "filename": "zephyr/program/rauru/hylia/src/board.c",
         "patchSetId": 5
