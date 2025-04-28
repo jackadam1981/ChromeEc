@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3976d3_0996c8c4",
+        "filename": "board/redrix/redrix_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-04-28T16:04:40Z",
+      "side": 1,
+      "message": "I would need to dig to find the exact source of this field, but I\u0027m pretty sure I would have just taken whatever Intel told us about the SoC.",
+      "parentUuid": "3a3d6e09_cee61963",
+      "range": {
+        "startLine": 39,
+        "startChar": 54,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "e64302e960dfed85cbaf654407a012a04fa548e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a0450e_462b16a5",
