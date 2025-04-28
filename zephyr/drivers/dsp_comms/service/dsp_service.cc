@@ -3,8 +3,6 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT cros_dsp_service
-
 #include <pb_decode.h>
 #include <pb_encode.h>
 #include <zephyr/drivers/i2c.h>
@@ -20,6 +18,7 @@
 #include "cros/dsp/service/cros_transport.hh"
 #include "cros/dsp/service/driver.hh"
 #include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "lid_angle.h"
@@ -27,6 +26,10 @@
 #include "proto/ec_dsp.pb.h"
 #include "pw_assert/check.h"
 #include "tablet_mode.h"
+
+#define DT_DRV_COMPAT cros_dsp_service
+
+LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
 
 static_assert(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
               "Must have exactly 1 cros,dsp-service");
@@ -69,8 +72,6 @@ static int init_driver() {
 }
 
 SYS_INIT(init_driver, APPLICATION, 50);
-
-LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
 
 static inline int ParseGetCbiFlagsRequest(
     const cros_dsp_comms_GetCbiFlagsRequest& request,
@@ -275,7 +276,20 @@ bool cros::dsp::service::Driver::HandleDecodedRequest() {
 }
 
 pw::Status cros::dsp::service::Driver::Init() {
-  int rc;
+  int rc = 0;
+#if DT_PROP(DT_DRV_INST(0), allow_runtime_disable)
+  // Check if the FW config is set to the disable value
+  uint32_t ish_enabled;
+
+  rc |= cros_cbi_get_fw_config(ISH, &ish_enabled);
+  PW_CHECK_INT_EQ(rc, 0);
+
+  if (ish_enabled == ISH_DISABLED) {
+    // Match, disable the service
+    LOG_INF("Disabling DSP comms service");
+    return pw::OkStatus();
+  }
+#endif
   k_work_init(&get_cbi_flags_work_, dsp_service_handle_get_cbi_flags_request);
 
   rc = k_sem_init(&data_processing_semaphore_, 1, 1);
