@@ -975,11 +975,49 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 	case POWER_G3:
 		boot_from_off = check_for_power_on_event();
-		if (boot_from_off)
+		if (boot_from_off) {
+			if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP))
+				CPRINTS("power on %d", boot_from_off);
 			return POWER_G3S5;
+		}
 		break;
 
 	case POWER_G3S5:
+		/*
+		 * For Qualcomm QC_EXP SoCs, the ADSP firmware manages battery
+		 * charging. The Application Processor (AP) must be powered on
+		 * for charging to commence. Consequently, the power-on sequence
+		 * is performed during the G3 to S5 transition.
+		 */
+		if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP)) {
+			/*
+			 * wait for power button release before actually boot
+			 * ap. it may be a long-hold power button with volume
+			 * buttons to trigger the recovery button. we don't want
+			 * ap up during the long-hold.
+			 */
+			power_button_wait_for_release(-1);
+
+			/* Initialize components to ready state before AP is up.
+			 */
+			hook_notify(HOOK_CHIPSET_PRE_INIT);
+
+			if (power_on_seq() != EC_SUCCESS) {
+				power_off_seq(shutdown_from_on);
+				boot_from_off = 0;
+				return POWER_G3;
+			}
+			CPRINTS("AP running ...");
+
+			/* Call hooks now that AP is running */
+			hook_notify(HOOK_CHIPSET_STARTUP);
+
+			/*
+			 * Clearing the sleep failure detection tracking on the
+			 * path to S0 to handle any reset conditions.
+			 */
+			power_reset_host_sleep_state();
+		}
 		return POWER_S5;
 
 	case POWER_S5:
@@ -993,6 +1031,8 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5S3:
+		if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP))
+			return POWER_S3;
 		/*
 		 * Wait for power button release before actually boot AP.
 		 * It may be a long-hold power button with volume buttons
