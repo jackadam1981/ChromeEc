@@ -1046,13 +1046,14 @@ static int tps6699x_emul_init(const struct emul *emul,
 {
 	struct tps6699x_emul_data *data = emul->data;
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
-
 	LOG_INF("TPS669X emul init");
 
 	data->common.i2c = parent;
 	data->common.cfg = cfg;
 
 	i2c_common_emul_init(&data->common);
+	gpio_emul_input_set(data->pdc_data.irq_gpios.port,
+			    data->pdc_data.irq_gpios.pin, 1);
 	k_work_init_delayable(&data->pdc_data.delay_work,
 			      delayable_work_handler);
 	k_work_init_delayable(&data->pdc_data.aneg_delay_work,
