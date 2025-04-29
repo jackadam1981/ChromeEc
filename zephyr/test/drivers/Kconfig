@@ -224,6 +224,9 @@ config LINK_TEST_SUITE_RANDOM
 	help
 	  Include the test suite exercising RNG code in the binary.
 
+config LINK_TEST_SUITE_SHIM_ESPI
+	bool "Link and run the eSPI shim tests"
+
 config LINK_TEST_SUITE_SHIM_GPIO_ID
 	bool "Link and run the gpio tests"
 
