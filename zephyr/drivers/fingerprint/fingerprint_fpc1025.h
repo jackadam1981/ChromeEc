@@ -11,11 +11,24 @@
 
 #include <drivers/fingerprint.h>
 
+struct fp_image_frame_params {
+	/* Image frame characteristics */
+	uint32_t frame_size;
+	uint32_t pixel_format; /* using V4L2_PIX_FMT_ */
+	uint16_t width;
+	uint16_t height;
+	uint16_t bpp;
+	/** Type of image capture from enum fp_capture_type. */
+	uint8_t fp_capture_type;
+	uint8_t reserved; /**< padding for alignment */
+};
+
 struct fpc1025_cfg {
 	struct spi_dt_spec spi;
 	struct gpio_dt_spec interrupt;
 	struct gpio_dt_spec reset_pin;
-	struct fingerprint_info info;
+	struct fingerprint_sensor_info sensor_info;
+	struct fp_image_frame_params sensor_image_configs[];
 };
 
 struct fpc1025_data {
