@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2f6639_a07a8f18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-04-29T18:11:54Z",
+      "side": 1,
+      "message": "I guess this is expected since it\u0027s building with the old version of the toolchain, right?\n\n```\ncore/cortex-m/panic.c:413:3: error: inline asm clobber list contains reserved registers: R7 [-Werror,-Winline-asm]\n  413 |                 \"mrs r1, psp\\n\"\n      |                 ^\ncore/cortex-m/panic.c:413:3: note: Reserved registers on the clobber list may not be preserved across the asm statement, and clobbering them may lead to undefined behaviour.\n1 error generated.\nmake[2]: *** [Makefile.rules:636: build/nucleo-h743zi/RW/core/cortex-m/panic.o] Error 1\nmake[1]: *** [Makefile.rules:298: proj-nucleo-h743zi] Error 2\n```",
+      "revId": "d44d7fe1c53525d64344f09991dded362d0877d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
