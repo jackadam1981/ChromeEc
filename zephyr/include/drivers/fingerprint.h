@@ -26,24 +26,51 @@ extern "C" {
 #endif
 
 /** Get fingerprint sensor width. */
-#define FINGERPRINT_SENSOR_RES_X(node_id) DT_PROP(node_id, width)
+#define FINGERPRINT_SENSOR_RES_X(node_id) DT_PROP_BY_IDX(node_id, width, 0)
 
 /** Get fingerprint sensor height. */
-#define FINGERPRINT_SENSOR_RES_Y(node_id) DT_PROP(node_id, height)
+#define FINGERPRINT_SENSOR_RES_Y(node_id) DT_PROP_BY_IDX(node_id, height, 0)
+
+/** Get fingerprint sensor width. */
+#define FINGERPRINT_SENSOR_IMAGE_WIDTH(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, width, idx)
+
+/** Get fingerprint sensor height. */
+#define FINGERPRINT_SENSOR_IMAGE_HEIGHT(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, height, idx)
 
 /** Get fingerprint sensor resolution (bits per pixel). */
-#define FINGERPRINT_SENSOR_RES_BPP(node_id) DT_PROP(node_id, bits_per_pixel)
+#define FINGERPRINT_SENSOR_IMAGE_BPP(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, bits_per_pixel, idx)
 
 /** Get fingerprint sensor pixel format. */
-#define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(node_id) \
-	DT_STRING_TOKEN(node_id, v4l2_pixel_format)
+#define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(node_id, idx) \
+	DT_STRING_TOKEN_BY_IDX(node_id, v4l2_pixel_format, idx)
 
-/** Get size of raw fingerprint image (in bytes). */
-#define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id) \
-	((FINGERPRINT_SENSOR_RES_X(node_id) *       \
-	  FINGERPRINT_SENSOR_RES_Y(node_id) *       \
-	  FINGERPRINT_SENSOR_RES_BPP(node_id)) /    \
-	 8)
+/** Get frame size of raw fingerprint image (in bytes). */
+#define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, frame_size, idx)
+
+// Get the number of configurations (assuming all arrays have the same length)
+#define NUM_CAPTURE_TYPES(node_id) DT_PROP_LEN(node_id, width)
+
+// Get width for a specific configuration index
+#define SENSOR_CONFIG_WIDTH(node_id, idx) DT_PROP_BY_IDX(node_id, width, idx)
+
+// Get height for a specific configuration index
+#define SENSOR_CONFIG_HEIGHT(node_id, idx) DT_PROP_BY_IDX(node_id, height, idx)
+
+// Get bits-per-pixel for a specific configuration index
+#define SENSOR_CONFIG_BPP(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, bits_per_pixel, idx)
+
+// Get frame-size for a specific configuration index
+#define SENSOR_CONFIG_FRAME_SIZE(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, frame_size, idx)
+
+// Get V4L2 pixel format code for a specific configuration index
+#define SENSOR_CONFIG_PIXEL_FORMAT_CODE(node_id, idx) \
+	DT_PROP_BY_IDX(node_id, v4l2_pixel_format_codes, idx)
 
 /** Dead pixels bitmask. */
 #define FINGERPRINT_ERROR_DEAD_PIXELS_MASK GENMASK(9, 0)
@@ -65,18 +92,13 @@ extern "C" {
 #define FINGERPRINT_ERROR_INIT_FAIL BIT(15)
 
 /** Fingerprint sensor information structure. */
-struct fingerprint_info {
+struct fingerprint_sensor_info {
 	/* Sensor identification */
 	uint32_t vendor_id;
 	uint32_t product_id;
 	uint32_t model_id;
 	uint32_t version;
-	/* Image frame characteristics */
-	uint32_t frame_size;
-	uint32_t pixel_format; /* using V4L2_PIX_FMT_ */
-	uint16_t width;
-	uint16_t height;
-	uint16_t bpp;
+	uint16_t num_capture_types;
 	uint16_t errors;
 };
 
@@ -177,10 +199,11 @@ typedef int (*fingerprint_api_config_t)(const struct device *dev,
  * @brief Callback API for getting information about fingerprint sensor.
  *
  * @param dev Fingerprint sensor device.
- * @param info Pointer to fingerprint_info structure where data will be stored.
+ * @param info Pointer to fingerprint_sensor_info structure where data will be
+ * stored.
  */
 typedef int (*fingerprint_api_get_info_t)(const struct device *dev,
-					  struct fingerprint_info *info);
+					  struct fingerprint_sensor_info *info);
 
 /**
  * @typedef fingerprint_api_maintenance_t
@@ -316,7 +339,7 @@ static inline int z_impl_fingerprint_config(const struct device *dev,
  *
  * @param dev  Pointer to the device structure for the fingerprint sensor driver
  *	       instance.
- * @param info Pointer to 'fingerprint_info' structure where data will be
+ * @param info Pointer to 'fingerprint_sensor_info' structure where data will be
  *	       stored.
  *
  * @retval 0 If successful.
@@ -324,10 +347,11 @@ static inline int z_impl_fingerprint_config(const struct device *dev,
  * @retval other negative values indicates driver specific error.
  */
 __syscall int fingerprint_get_info(const struct device *dev,
-				   struct fingerprint_info *info);
+				   struct fingerprint_sensor_info *info);
 
-static inline int z_impl_fingerprint_get_info(const struct device *dev,
-					      struct fingerprint_info *info)
+static inline int
+z_impl_fingerprint_get_info(const struct device *dev,
+			    struct fingerprint_sensor_info *info)
 {
 	const struct fingerprint_driver_api *api =
 		(const struct fingerprint_driver_api *)dev->api;
