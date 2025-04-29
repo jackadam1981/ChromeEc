@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98201267_719f22fc",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-29T11:38:29Z",
+      "side": 1,
+      "message": "Can I add LOW_COVERAGE_REASON in the commit message and add the test in other CLs?",
+      "parentUuid": "8fd1ef62_180ca092",
+      "revId": "d0abfb3dee5ad27abb3890d093f406fd015fe80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fcb3195_ffc9c26f",
         "filename": "zephyr/include/drivers/cec_counter.h",
         "patchSetId": 8
@@ -49,6 +67,24 @@
           ]
         }
       ],
+      "revId": "d0abfb3dee5ad27abb3890d093f406fd015fe80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85074ee_e3bd0d15",
+        "filename": "zephyr/include/drivers/cec_counter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-29T11:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fcb3195_ffc9c26f",
       "revId": "d0abfb3dee5ad27abb3890d093f406fd015fe80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

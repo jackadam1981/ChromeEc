@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "063905fd_f2f18dc9",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-29T11:38:29Z",
+      "side": 1,
+      "message": "If I move port_from_gpio_in inside cec_gpio_interrupt and check if the port is valid before doing anything, is k_oops still needed?",
+      "parentUuid": "0a87d31a_6a564257",
+      "revId": "56d17d2c8361c2cb898d62b4c591fe0d20d6bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95f91b69_d31c8194",
         "filename": "zephyr/drivers/cec_counter/cec_counter.c",
         "patchSetId": 7
