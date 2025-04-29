@@ -111,6 +111,12 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 /* Wait for polling if the switchcap outputs good voltage */
 #define SWITCHCAP_PG_CHECK_WAIT (6 * MSEC)
 
+/* The timeout of the check if the S4C power off is asserted */
+#define S4C_PWR_OFF_CHECK_TIMEOUT (100 * MSEC)
+
+/* Wait for polling if the S4C output is high */
+#define S4C_PWR_OFF_CHECK_WAIT (1 * MSEC)
+
 /*
  * Delay between power-on the system and power-on the PMIC.
  * Some latest PMIC firmware needs this delay longer, for doing a cold
@@ -138,6 +144,12 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
  * a safer value.
  */
 #define AP_RST_TRANSITION_TIMEOUT (450 * MSEC)
+
+/*
+ * TODO: b/416553601: Ensure this value is correct
+ * Delay before disabling VPH_PWR_1A
+ */
+#define DISABLE_SWITCHCAP_DURING_SHUTDOWN_DELAY (10 * MSEC)
 
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
@@ -515,6 +527,21 @@ enum power_state power_chipset_init(void)
 	return init_power_state;
 }
 
+static int wait_for_s4c_power_off(void)
+{
+	timestamp_t poll_deadline;
+
+	poll_deadline = get_time();
+	poll_deadline.val += S4C_PWR_OFF_CHECK_TIMEOUT;
+
+	while (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_s4c_pwr_off_l)) &&
+	       get_time().val < poll_deadline.val) {
+		crec_usleep(S4C_PWR_OFF_CHECK_WAIT);
+		return EC_ERROR_TIMEOUT;
+	}
+	return EC_SUCCESS;
+}
+
 /*****************************************************************************/
 
 /**
@@ -547,6 +574,19 @@ static void power_off_seq(uint8_t shutdown_event)
 	 * switchcap off.
 	 */
 	power_signal_disable_interrupt(GPIO_AP_RST_L);
+
+	/*
+	 * For Chipset QC_EXP, wait for the S4c rail to assert then disable
+	 * switchcap after a delay
+	 */
+	if (EC_SUCCESS == wait_for_s4c_power_off()) {
+		/* Wait for DISABLE_SWITCHCAP_DURING_SHUTDOWN_DELAY
+		 * before switching off all rails.
+		 */
+		crec_usleep(DISABLE_SWITCHCAP_DURING_SHUTDOWN_DELAY);
+		set_system_power(0);
+	} else
+		CPRINTS("S4C_PWR_OFF is not asserted");
 
 	/* Check the switchcap status */
 	if (is_system_powered()) {
