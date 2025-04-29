@@ -316,3 +316,10 @@ BOOL _plat__NvUpdateAllowed(uint32_t handle)
 
 	return TRUE;
 }
+
+void _plat__PCRUpdated(uint32_t index)
+{
+	if (index != 0)
+		return;
+	CPRINTS("PCR0 updated");
+}
