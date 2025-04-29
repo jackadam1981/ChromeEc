@@ -16,6 +16,323 @@
       "message": "flash into rts5915 QA board, the uart working and console command \"timerinfo\" working.",
       "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b5e1f5_654e6338",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "CONFIG_FLASH is defined by Zephyr.  Their are older EC boards that don\u0027t support Zephyr and don\u0027t have this symbol.\n\nUse `#ifdef CONFIG_CROS_FLASH` instead.",
+      "range": {
+        "startLine": 763,
+        "startChar": 4,
+        "endLine": 763,
+        "endChar": 16
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19f07da_c0aa61e7",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "When nesting #ifdefs, add a comment\n```suggestion\n#endif /* CONFIG_EC_PROTECTED_STORAGE_OFF */\n```",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 6
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcfa297_eb234111",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "```suggestion\n#endif /* CONFIG_CROS_FLASH */\n```",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 6
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2a1780_17500789",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "CONFIG_CROS_FLASH",
+      "range": {
+        "startLine": 816,
+        "startChar": 7,
+        "endLine": 816,
+        "endChar": 19
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba08389_fab85749",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "```suggestion\n#endif /* CONFIG_MAPPED_STORAGE */\n#endif /* CONFIG_CROS_FLASH */\n```",
+      "range": {
+        "startLine": 826,
+        "startChar": 0,
+        "endLine": 828,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ee6368_34a82d9e",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the devicetree setting:\n```\n        flash0: flash@20000400 {\n                reg \u003d \u003c 0x20000400 0x4fc00 \u003e;\n        };\n```\n\nLooks like you have Zephyr configured to load the image starting at 0x20000400, and the available size is 319 KB.\n\n319 KB is okay because the flash is 1 MB.  The EC image must be smaller than 1/2 the total flash and smaller than the code RAM.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aea95cf_4ac8c5e6",
+        "filename": "zephyr/boards/google/realtek/pre_dt_board.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "Is this needed?  Does the `minimal-realtek` project compile without this?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa26cd16_92a26d08",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "RO and RW sizes should be the same.  This should be set to the code RAM size of 319 KB.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51a18aa_29237b82",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "These features are already on by default [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d183;drc\u003d0d7493c005219bb2b2881ab6b33828dc0264aaba). They can be deleted.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa4e4f4_22a53e57",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "Is this needed to compile?  This shouldn\u0027t be in the file shared by all Realtek projects.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0f57699e_25161377",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d100a5e_66fab965",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here - only specific EC projects should enable this option.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b88cc3b_5c821372",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "Should this option be enabled in the SOC code in Zephyr upstream instead of here?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503ee46a_217f2e72",
+        "filename": "zephyr/program/minimal/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T22:55:45Z",
+      "side": 1,
+      "message": "The binman node defines the FWID section, so you need to enable this assertion.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
