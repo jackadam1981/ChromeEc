@@ -87,7 +87,7 @@
 			gpios = <&gpio9 7 (GPIO_OUTPUT)>;
 		};
 		gpio_s4c_pwr_off_l: s4c_pwr_off_l {
-			gpios = <&gpioa 1 (GPIO_INPUT)>;
+			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_POWER_GOOD";
 		};
 		/* Reserve only: Control VBUS to USB-C0 port  */
