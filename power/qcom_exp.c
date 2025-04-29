@@ -123,11 +123,11 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /*
  * Delay between the PMIC power drop and power-off the system.
- * Qualcomm measured the entire POFF duration is around 70ms. Setting
- * this delay to the same value as the above power-on sequence, which
- * has much safer margin.
+ *
+ * TODO: b/416553601: Ensure this value is correct
+ * delay before disabling SWITCHCAP
  */
-#define PMIC_POWER_OFF_DELAY (150 * MSEC)
+#define PMIC_POWER_OFF_DELAY (10 * MSEC)
 
 /* The AP_RST_L transition count of a normal AP warm reset */
 #define EXPECTED_AP_RST_TRANSITIONS 3
@@ -536,6 +536,10 @@ static void power_off_seq(uint8_t shutdown_event)
 			/* Do a graceful way to shutdown PMIC/AP first */
 			set_pmic_pwron(0);
 			crec_usleep(PMIC_POWER_OFF_DELAY);
+			/* Once PMIC is power off, Wait for PMIC_POWER_OFF_DELAY
+			 * and disable switchcap
+			 */
+			set_system_power(0);
 		}
 	}
 
