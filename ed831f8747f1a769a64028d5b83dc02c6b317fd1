@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "953a457e_21f16ef4",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:32:06Z",
+      "side": 1,
+      "message": "I think it is `low-falling`. Please confirm.",
+      "range": {
+        "startLine": 246,
+        "startChar": 14,
+        "endLine": 246,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fe67a6d6_2e5e1e6b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 246,
+                "startChar": 0,
+                "endLine": 247,
+                "endChar": 0
+              },
+              "replacement": "\tpsl-in-pol \u003d \"low-falling\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ed831f8747f1a769a64028d5b83dc02c6b317fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4625c62_f3193db4",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:32:06Z",
+      "side": 1,
+      "message": "The `psl_in4_gp02` is used, right?",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 1
+      },
+      "revId": "ed831f8747f1a769a64028d5b83dc02c6b317fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
