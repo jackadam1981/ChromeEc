@@ -21,6 +21,13 @@ register_binman_project(
     dts_overlays=[here / "it8xxx2.dts"],
 )
 
+register_rtk_project(
+    project_name="minimal-realtek",
+    zephyr_board="realtek/rts5912",
+    dts_overlays=[here / "realtek.dts"],
+    kconfig_files=[here / "realtek.conf"],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="minimal-it8xxx2", addr=0xBFFE0)
