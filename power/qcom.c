@@ -151,6 +151,11 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
  */
 #define AP_RST_TRANSITION_TIMEOUT (450 * MSEC)
 
+/*
+ * Delay before disabling VPH_PWR_1A
+ */
+#define DISABLE_VPH_PWR_1A_DELAY (10 * MSEC)
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
@@ -631,7 +636,18 @@ static void power_off_seq(uint8_t shutdown_event)
 		} else {
 			/* Do a graceful way to shutdown PMIC/AP first */
 			set_pmic_pwron(0);
-			crec_usleep(PMIC_POWER_OFF_DELAY);
+			if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP)) {
+				/* TODO: ensure that the switchap_pg condition
+				 * is taken care. Wait for
+				 * DISABLE_VPH_PWR_1A_DELAY before asserting
+				 * ec_en_vph_pwr_1a.
+				 */
+				crec_usleep(DISABLE_VPH_PWR_1A_DELAY);
+				gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(
+							gpio_ec_en_vph_pwr_1a),
+						0);
+			} else
+				crec_usleep(PMIC_POWER_OFF_DELAY);
 		}
 	}
 
