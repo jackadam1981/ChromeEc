@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a2f209_3fe51484",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-29T19:42:02Z",
+      "side": 1,
+      "message": "How is the weak override handled for systems that use CBI set the sensor MCU?  Won\u0027t DSP comms be linked in but sensors are getting driven from the EC?\n\nWould a registered callback make more sense?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "8ba9eda2597952eedf84c25536aa3c3b6cd70dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
