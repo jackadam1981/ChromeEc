@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d97cdb4_d95bd7fd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6480,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-29T00:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a3333c_f210246a",
+      "range": {
+        "startLine": 6480,
+        "startChar": 7,
+        "endLine": 6480,
+        "endChar": 13
+      },
+      "revId": "13c83ce5a6e63e6c7bd5de6af914a5fa25df8d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af0dcefe_c1bac04e",
@@ -81,6 +105,30 @@
           ]
         }
       ],
+      "revId": "13c83ce5a6e63e6c7bd5de6af914a5fa25df8d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29183f9_640ca82b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6607,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-04-29T00:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af0dcefe_c1bac04e",
+      "range": {
+        "startLine": 6607,
+        "startChar": 19,
+        "endLine": 6607,
+        "endChar": 27
+      },
       "revId": "13c83ce5a6e63e6c7bd5de6af914a5fa25df8d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
