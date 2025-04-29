@@ -1,0 +1,21 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config EMUL_COUNTER
+	bool "Emulated counter driver"
+	default y
+	depends on DT_HAS_CROS_COUNTER_EMUL_ENABLED
+	help
+	  Enable the emulated counter module. This module introduces a
+	  functioning counter implementation along with backdoor APIs to
+	  verify and override behavior. Emulator API is available in
+	  zephyr/include/emul/emul_counter.h
+
+if EMUL_COUNTER
+
+module = COUNTER_EMUL
+module-str = counter_emul
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # EMUL_COUNTER

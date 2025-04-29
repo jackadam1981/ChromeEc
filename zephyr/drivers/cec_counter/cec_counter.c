@@ -26,16 +26,16 @@ BUILD_ASSERT(DT_HAS_CHOSEN(cros_ec_cec_counter),
 #define cec_counter_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_cec_counter))
 
 /* Timestamp when the most recent interrupt occurred */
-static timestamp_t interrupt_time;
+test_export_static timestamp_t interrupt_time;
 
 /* Timestamp when the second most recent interrupt occurred */
-static timestamp_t prev_interrupt_time;
+test_export_static timestamp_t prev_interrupt_time;
 
 /* Flag set when a transfer is initiated from the AP */
-static bool transfer_initiated;
+test_export_static bool transfer_initiated;
 
 /* The capture edge we're waiting for */
-static enum cec_cap_edge expected_cap_edge;
+test_export_static enum cec_cap_edge expected_cap_edge;
 
 static int port_from_gpio_in(enum gpio_signal signal)
 {
