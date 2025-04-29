@@ -1,0 +1,57 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if BOARD_REALTEK
+
+if REALTEK_RTS5912_RTMR
+
+config PM
+	default y
+
+config SYS_CLOCK_HW_CYCLES_PER_SEC
+	default 32768
+
+config SYS_CLOCK_TICKS_PER_SEC
+	default 32768
+
+endif # REALTEK_RTS5912_RTMR
+
+#
+# RTS5915:	384KB total SRAM:
+#				From top 0x2000_0000:
+#				28KB SRAM used by chrome-loader
+#				16KB for customer use
+#				0x2000_b400: 256KB code
+#				19KB for customer use
+#				0x2005_0000: 64KB data.
+# 			1MB internal SPI flash
+#				From top eflash 0x0 (mapped reg 0x6000_0000):
+#				0x0 - 0x7_FFFF RW
+#				0x8_0000 - 0xE_FFFF RO
+#				0xF_0000 - 0xF_FFFF chrome-loader
+
+# TODO: b/416020794, make the EC image size as big as the available code RAM. 
+config CROS_EC_PROGRAM_MEMORY_BASE
+	default 0x2000b400
+
+config CROS_EC_RAM_BASE
+	default 0x20050000
+
+# 64KB content buffer
+config CROS_EC_DATA_RAM_SIZE
+	default 0x00010000
+
+config CROS_EC_RAM_SIZE
+	default 0x00010000
+
+config CROS_EC_RO_MEM_OFF
+	default 0
+
+# Image size is configured with binman's property.
+# (CROS_EC_RO_SIZE and CROS_EC_RW_SIZE)
+
+config CROS_EC_RW_MEM_OFF
+	default 0
+
+endif # BOARD_REALTEK
