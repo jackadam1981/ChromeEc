@@ -13,6 +13,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/pm/device.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/sys/util.h>
 
 #include <drivers/fingerprint.h>
 #include <fingerprint/v4l2_types.h>
@@ -268,15 +269,28 @@ static int fpc1025_deinit(const struct device *dev)
 }
 
 static int fpc1025_get_info(const struct device *dev,
-			    struct fingerprint_info *info)
+			    struct fingerprint_sensor_info *info)
 {
 	const struct fpc1025_cfg *cfg = dev->config;
 	struct fpc1025_data *data = dev->data;
 	uint16_t id = 0;
 	int rc;
 
+	for (int i = 0; i < cfg->sensor_info.num_capture_types; ++i) {
+		LOG_INF("The value of bpp is: %d",
+			cfg->sensor_image_configs[i].bpp);
+		LOG_INF("The value of frame size is: %d",
+			cfg->sensor_image_configs[i].frame_size);
+		LOG_INF("The value of width is: %d",
+			cfg->sensor_image_configs[i].width);
+		LOG_INF("The value of height is: %d",
+			cfg->sensor_image_configs[i].height);
+		LOG_INF("The value of pixel format is: %d",
+			cfg->sensor_image_configs[i].pixel_format);
+	}
+
 	/* Copy immutable sensor information to the structure. */
-	memcpy(info, &cfg->info, sizeof(struct fingerprint_info));
+	memcpy(info, &cfg->sensor_info, sizeof(struct fingerprint_sensor_info));
 
 	rc = fpc1025_get_hwid(dev, &id);
 	if (rc) {
@@ -492,12 +506,15 @@ static int fpc1025_init_driver(const struct device *dev)
 			0),                                                    \
 		.interrupt = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),           \
 		.reset_pin = GPIO_DT_SPEC_INST_GET(inst, reset_gpios),         \
-		.info = FPC1025_SENSOR_INFO(inst),                             \
+		.sensor_info = FPC1025_SENSOR_INFO(inst),                      \
+		.sensor_image_configs = { LISTIFY(                             \
+			NUM_CAPTURE_TYPES(DT_DRV_INST(inst)),                  \
+			FPC1025_IMAGE_PARAM_INITIALIZER, (, ), inst) },        \
 	};                                                                     \
-	BUILD_ASSERT(                                                          \
-		CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE >=                        \
-			FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(DT_DRV_INST(inst)), \
-		"FP image buffer size is smaller than raw image size");        \
+	BUILD_ASSERT(CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE >=                   \
+			     FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(               \
+				     DT_DRV_INST(inst), 0),                    \
+		     "FP image buffer size is smaller than raw image size");   \
 	DEVICE_DT_INST_DEFINE(inst, fpc1025_init_driver, NULL,                 \
 			      &fpc1025_data_##inst, &fpc1025_cfg_##inst,       \
 			      POST_KERNEL,                                     \

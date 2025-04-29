@@ -126,11 +126,11 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 test_export_static uint8_t get_sensor_bpp(void)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	ec_response_fp_info info;
+	ec_response_fp_info_v2 info;
 	if (fp_sensor_get_info(&info) < 0) {
 		return EC_ERROR_UNKNOWN;
 	}
-	return info.bpp;
+	return info.image_frame_params[0].bpp;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
@@ -258,7 +258,7 @@ DECLARE_CONSOLE_COMMAND(fpenroll, command_fpenroll, nullptr,
 
 static int command_fpinfo(int argc, const char **argv)
 {
-	ec_response_fp_info info;
+	ec_response_fp_info_v2 info;
 
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
 	if (fp_sensor_get_info(&info) < 0)
@@ -269,19 +269,28 @@ static int command_fpinfo(int argc, const char **argv)
 
 	constexpr int align = 15;
 
-	ccprintf("%*s: 0x%X (%s)\n", align, "Vendor ID", info.vendor_id,
-		 fourcc_to_string(info.vendor_id).c_str());
-	ccprintf("%*s: 0x%X\n", align, "Product ID", info.product_id);
-	ccprintf("%*s: 0x%X\n", align, "Model ID", info.model_id);
-	ccprintf("%*s: 0x%X\n", align, "Version", info.version);
+	ccprintf("%*s: 0x%X (%s)\n", align, "Vendor ID",
+		 info.sensor_info.vendor_id,
+		 fourcc_to_string(info.sensor_info.vendor_id).c_str());
+	ccprintf("%*s: 0x%X\n", align, "Product ID",
+		 info.sensor_info.product_id);
+	ccprintf("%*s: 0x%X\n", align, "Number of Capture Types",
+		 info.sensor_info.num_capture_types);
+	ccprintf("%*s: 0x%X\n", align, "Model ID", info.sensor_info.model_id);
+	ccprintf("%*s: 0x%X\n", align, "Version", info.sensor_info.version);
 
-	ccprintf("%*s: %u x %u %ubpp\n", align, "Sensor (w x h)", info.width,
-		 info.height, info.bpp);
-	ccprintf("%*s: %u\n", align, "Frame Size", info.frame_size);
-	ccprintf("%*s: 0x%X (%s)\n", align, "Pixel Format", info.pixel_format,
-		 fourcc_to_string(info.pixel_format).c_str());
+	ccprintf("%*s: %u x %u %ubpp\n", align, "Sensor (w x h)",
+		 info.image_frame_params[0].width,
+		 info.image_frame_params[0].height,
+		 info.image_frame_params[0].bpp);
+	ccprintf("%*s: %u\n", align, "Frame Size",
+		 info.image_frame_params[0].frame_size);
+	ccprintf("%*s: 0x%X (%s)\n", align, "Pixel Format",
+		 info.image_frame_params[0].pixel_format,
+		 fourcc_to_string(info.image_frame_params[0].pixel_format)
+			 .c_str());
 
-	ccprintf("%*s: 0x%X\n", align, "Error State", info.errors);
+	ccprintf("%*s: 0x%X\n", align, "Error State", info.sensor_info.errors);
 
 	ccprintf("%*s: %s\n", align, "Sensor Strap",
 		 fp_sensor_type_to_str(fpsensor_detect_get_type()));
