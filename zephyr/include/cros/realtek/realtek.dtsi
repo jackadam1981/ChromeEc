@@ -1,0 +1,47 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	chosen {
+		cros-ec,bbram = &bbram;
+	};
+
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x08>;
+			size = <0x04>;
+		};
+		saved-reset-flags {
+			offset = <0x00>;
+			size = <0x04>;
+		};
+		wake {
+			offset = <0x08>;
+			size = <0x04>;
+		};
+		pd0 {
+			offset = <0x04>;
+			size = <0x01>;
+		};
+		pd1 {
+			offset = <0x05>;
+			size = <0x01>;
+		};
+		try_slot {
+			offset = <0x0e>;
+			size = <0x01>;
+		};
+		pd2 {
+			offset = <0x06>;
+			size = <0x01>;
+		};
+		unlock-flash-at-boot {
+			offset = <0x07>;
+			size = <0x01>;
+		};
+	};
+};
