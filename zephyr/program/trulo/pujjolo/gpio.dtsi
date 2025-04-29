@@ -15,12 +15,9 @@
 		/delete-node/ imvp91_vrrdy_r_od;
 		/delete-node/ vccin_aux_r_vid0;
 		/delete-node/ vccin_aux_r_vid1;
-		/delete-node/ imu_int_l;
 		/delete-node/ i2c_ec_pd_int_odl;
 		/delete-node/ voldn_btn_odl;
-		/delete-node/ en_kb_bl;
 		/delete-node/ volup_btn_odl;
-		/delete-node/ voldn_btn_odl;
 		/delete-node/ ccd_mode_odl;
 		/delete-node/ all_sys_pwrgd;
 		/delete-node/ ec_pwr_btn_odl;
@@ -82,6 +79,24 @@
 		};
 	};
 
+	gpio-interrupts {
+        compatible = "cros-ec,gpio-interrupts";
+        int_imu: ec_imu {
+                irq-pin = <&gpio_imu_int_l>;
+                flags = <GPIO_INT_EDGE_FALLING>;
+                handler = "lis2dw12_interrupt";
+        };
+        int_lid_imu: lid_imu {
+                irq-pin = <&gpio_acc_int_l>;
+                flags = <GPIO_INT_EDGE_FALLING>;
+                handler = "lis2dw12_interrupt";
+        };
+        int_tablet_mode: tablet_mode {
+                irq-pin = <&gpio_tablet_mode_l>;
+                flags = <GPIO_INT_EDGE_BOTH>;
+                handler = "gmr_tablet_switch_isr";
+        };
+	};
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
