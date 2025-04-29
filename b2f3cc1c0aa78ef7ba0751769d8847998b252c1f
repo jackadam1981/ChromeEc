@@ -16,6 +16,24 @@
       "message": "The CQ failed because of the format error.\n\nYou can fix it by running:\n    cros format zephyr/test/drivers/common/src/utils.c\nand uploading it.",
       "revId": "b2f3cc1c0aa78ef7ba0751769d8847998b252c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74565c0_1976b9bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-04-29T02:03:03Z",
+      "side": 1,
+      "message": "Hi, it is long story and sorry for these spamming notifications...\nAs the [earlier comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6491008/comments/32ea94c5_9699d83b) I left, the test `drivers/drivers.host_cmd.ec_host_cmd` is flaky, and somehow I cannot reproduce it locally anymore (by running all tests, I can see it sometimes before), yet CQ seems to be still able to reproduce it. As a result, I try to add some debug logs to see values involved in that process with this [testing CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6490835/1). And yes, there is a format issue for that testing CL, but ultimately, I cannot use dry run to run the whole chain in CQ. As a result, I created another [single CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6490836) for debugging this.\n\nSo far, I\u0027ve confirmed that the CEC event is either garbage values, or wrong values when the test failed.",
+      "parentUuid": "843f4477_73f39364",
+      "revId": "b2f3cc1c0aa78ef7ba0751769d8847998b252c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
