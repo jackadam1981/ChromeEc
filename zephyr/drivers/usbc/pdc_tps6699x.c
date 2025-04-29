@@ -51,6 +51,9 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 /** @brief Time between checking TI CMDx register for data ready */
 #define PDC_TI_DATA_READY_TIME_MS (10)
 
+/** @brief Time between checking TI pending IRQ delay */
+#define PDC_TI_PENDING_IRQ_DELAY_TIME_MS (25)
+
 /** @brief Delay after "New Contract as Consumer" interrupt bit set that the
  * TPS6699x will accept SRDY to enable the sink path. See b/358274846.
  */
@@ -546,17 +549,20 @@ static void st_irq_run(void *o)
 
 		/* Inform the subsystem of the event */
 		call_cci_event_cb(data);
+	} else {
+		/* Interrupt is asserted for another port, recheck later. */
+		k_msleep(PDC_TI_PENDING_IRQ_DELAY_TIME_MS);
+	}
 
-		/*
-		 * Check if interrupt is still active. It's possible that the
-		 * PDC will set another bit in the interrupt status register
-		 * between the time when the EC reads this register and clears
-		 * these status bits above. If there is still another interrupt
-		 * pending, then the interrupt line will still be active.
-		 */
-		if (gpio_pin_get_dt(&cfg->irq_gpios)) {
-			k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
-		}
+	/*
+	 * Check if interrupt is still active. It's possible that the
+	 * PDC will set another bit in the interrupt status register
+	 * between the time when the EC reads this register and clears
+	 * these status bits above. If there is still another interrupt
+	 * pending, then the interrupt line will still be active.
+	 */
+	if (gpio_pin_get_dt(&cfg->irq_gpios)) {
+		k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
 	}
 
 	/* All done, transition back to idle state */
