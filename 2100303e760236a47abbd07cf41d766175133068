@@ -64,6 +64,30 @@
       },
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecc86bfa_b27f3dc7",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-04-29T17:52:59Z",
+      "side": 1,
+      "message": "understood. \n\nFor the helipilot example that you mentioned, the [ec-rw size](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/helipilot/helipilot.dts;drc\u003d4b7b47d82bc50d7ecbba63d56af8e18cfc875e08;l\u003d48#:~:text\u003d47-,48,-49) is `0x50000`. We need to overwrite the [CONFIG_CROS_EC_RW_SIZE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/helipilot/prj.conf;l\u003d58#:~:text\u003d57-,58,-59) in the helipilot [prj.conf](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/helipilot/prj.conf) file. \nThe idea behind this CL was to just read the `CONFIG_CROS_EC_RW_SIZE` directly from the dts file. \n\nHowever, it seems if I read it directly, I will bypass the defaults set for the different [SOCs](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9;l\u003d59?q\u003dzephyr%2Fapp%2Fec%2Fchip%2Farm%2Fnuvoton_npcx%2FKconfig.npcx9\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d58-,59,-60).\n\nDo you have any suggestions?\n\nMy understanding is that `helipilot` is the first project that is based on Nuvuton. It redefines the `ec-rw` node. Do you see any issue if in [src/platform/ec/zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9;l\u003d59?q\u003dzephyr%2Fapp%2Fec%2Fchip%2Farm%2Fnuvoton_npcx%2FKconfig.npcx9\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d58-,59,-60), we set the following:\n\n```\nconfig CROS_EC_RW_SIZE\n\thex \"The size of the RW region\"\n\tdefault $(dt_node_int_prop_hex,/binman/ec-rw,size)\n```\n\nDo you have other suggestions based on the `helipilot` example",
+      "parentUuid": "6a614cfa_a0ed4e9e",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
