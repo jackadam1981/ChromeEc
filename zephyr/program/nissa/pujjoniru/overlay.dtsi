@@ -249,6 +249,7 @@
 	pinctrl-0 = <&adc0_ch0_gpi0_default
 		     &adc0_ch2_gpi2_default
 		     &adc0_ch3_gpi3_default
+		     &adc0_ch4_gpi4_default
 		     &adc0_ch6_gpi6_default
 		     &adc0_ch13_gpl0_default
 		     &adc0_ch14_gpl1_default
