@@ -46,6 +46,30 @@
       },
       "revId": "90b1d248a5cbee1b5994a3177b90cb441d551d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b8a64f2_fe4f6e54",
+        "filename": "zephyr/program/trulo/trulo-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2025-04-29T03:54:43Z",
+      "side": 1,
+      "message": "640*1024 bytes. So 0XA0000 is correct.",
+      "parentUuid": "3172e2e0_3eab5bc1",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "90b1d248a5cbee1b5994a3177b90cb441d551d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
