@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5467a9_34246463",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:25:58Z",
+      "side": 1,
+      "message": "There are many reserved pins. Please add comments to differentiate them. Otherwise, people are confused, like this one and the below GPIO70.",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "d90304cbe0e3c7b09b3b7f9ae5b334cb17598c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d4559f_cd9b90f0",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:25:58Z",
+      "side": 1,
+      "message": "I don\u0027t think the KSI/KSO pins need to be defined as GPIOs.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "27d62c84_38b1041e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 51,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 227,
+                "startChar": 0,
+                "endLine": 227,
+                "endChar": 0
+              },
+              "replacement": "\t\tgpio_ec_kso_00: ec_kso_00 {\n\t\t\tgpios \u003d \u003c\u0026gpio3 1 (GPIO_OUTPUT)\u003e;\n\t\t};\n\t\tgpio_ec_kso_03: ec_kso_03 {\n\t\t\tgpios \u003d \u003c\u0026gpio2 6 (GPIO_OUTPUT)\u003e;\n\t\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d90304cbe0e3c7b09b3b7f9ae5b334cb17598c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d631c4b6_c38ddfe0",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:25:58Z",
+      "side": 1,
+      "message": "Use /* */",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b83b88e7_383d59e0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* TODO: configure this pins properly */\n"
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 82,
+                "startChar": 0,
+                "endLine": 83,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/* TODO: Check if Kybd int is what we will use in place of AP EC i2c */\n"
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 86,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* TODO: check if this is correct low/high */\n"
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 101,
+                "startChar": 0,
+                "endLine": 102,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* TODO: check if PWM is configured correctly */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d90304cbe0e3c7b09b3b7f9ae5b334cb17598c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4749e987_d16afdb6",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:25:58Z",
+      "side": 1,
+      "message": "Add a bug number (file one if needed) for every TODO.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "d90304cbe0e3c7b09b3b7f9ae5b334cb17598c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa58c7f4_61731d39",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-29T17:25:58Z",
+      "side": 1,
+      "message": "For the PWM pins, define them as pwm nodes.",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "25fa14ea_ce7f7920",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 101,
+                "startChar": 0,
+                "endLine": 105,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 208,
+                "startChar": 0,
+                "endLine": 211,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 228,
+                "startChar": 0,
+                "endLine": 228,
+                "endChar": 0
+              },
+              "replacement": "\n\tpwm {\n\t\tcompatible \u003d \"pwm-renesas\";\n\t\t#pwm-cells \u003d \u003c2\u003e;\n\t\tstatus \u003d \"okay\";\n\n\t\tfan1_pwm: fan1_pwm {\n\t\t\tgpios \u003d \u003c\u0026gpiob 7 (GPIO_OUTPUT)\u003e;\n\t\t};\n\t\tfan2_pwm: fan2_pwm {\n\t\t\tgpios \u003d \u003c\u0026gpiob 6 (GPIO_OUTPUT)\u003e;\n\t\t};\n\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d90304cbe0e3c7b09b3b7f9ae5b334cb17598c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
