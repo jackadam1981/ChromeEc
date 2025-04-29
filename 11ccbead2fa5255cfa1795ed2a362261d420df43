@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57bb54a6_d524a5b9",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-04-29T23:30:34Z",
+      "side": 1,
+      "message": "This indicates an error in configuration, so logging at error level seems more appropriate.",
+      "revId": "11ccbead2fa5255cfa1795ed2a362261d420df43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
