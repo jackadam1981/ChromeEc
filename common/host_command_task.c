@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "link_defs.h"
 #include "lpc.h"
+#include "panic_trace.h"
 #include "power.h"
 #include "printf.h"
 #include "shared_mem.h"
@@ -475,6 +476,10 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	static int hc_prev_cmd;
 	static int hc_prev_count;
 	static uint64_t hc_prev_time;
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_write_uint16(PANIC_TRACE_TAG_HOST_CMD,
+					 args->command);
 
 	/*
 	 * In normal output mode, skip printing repeats of the same command

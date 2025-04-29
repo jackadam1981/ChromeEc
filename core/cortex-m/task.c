@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "link_defs.h"
 #include "panic.h"
+#include "panic_trace.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -298,6 +299,8 @@ void svc_handler(int desched, task_id_t resched)
 	if (exc == 0xb) {
 		exc_start_time = get_time().le.lo;
 		svc_calls++;
+		if (IS_ENABLED(CONFIG_PANIC_TRACE))
+			panic_trace_write_0(PANIC_TRACE_TAG_SVC_CALL);
 	}
 #endif
 
@@ -326,6 +329,9 @@ void svc_handler(int desched, task_id_t resched)
 	next = __task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
 
 #ifdef CONFIG_TASK_PROFILING
+	if (IS_ENABLED(CONFIG_PANIC_TRACE) && exc != 0xb)
+		panic_trace_write_1(PANIC_TRACE_TAG_IRQ_END, exc - 16);
+
 	/* Track time in interrupts */
 	t = get_time().le.lo;
 	exc_total_time += (t - exc_start_time);
@@ -351,6 +357,8 @@ void svc_handler(int desched, task_id_t resched)
 		/* Switch to new task */
 #ifdef CONFIG_TASK_PROFILING
 	task_switches++;
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_write_1(PANIC_TRACE_TAG_TASK_SWITCH, next - tasks);
 #endif
 	current_task = next;
 	__switchto(current, next);
@@ -373,6 +381,9 @@ void __keep task_start_irq_handler(void *excep_return)
 	 */
 	uint32_t t = get_time().le.lo;
 	int irq = get_interrupt_context() - 16;
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_write_1(PANIC_TRACE_TAG_IRQ_START, irq);
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
@@ -453,6 +464,10 @@ void task_set_event(task_id_t tskid, uint32_t event)
 
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_write_2(PANIC_TRACE_TAG_TASK_SET_EVENT, tskid,
+				    __builtin_ctz(event));
 
 	/* Re-schedule if priorities have changed */
 	if (in_interrupt_context() || !is_interrupt_enabled()) {
@@ -946,6 +961,10 @@ int mutex_try_lock(struct mutex *mtx)
 		}
 	} while (value);
 
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_write_1(PANIC_TRACE_TAG_MUTEX_LOCK,
+				    task_get_current());
+
 	return 1;
 }
 
@@ -962,6 +981,10 @@ void mutex_unlock(struct mutex *mtx)
 	waiters = mtx->waiters;
 	mtx->lock = 0;
 	interrupt_enable();
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE))
+		panic_trace_write_1(PANIC_TRACE_TAG_MUTEX_UNLOCK,
+				    task_get_current());
 
 	while (waiters) {
 		task_id_t id = __fls(waiters);
