@@ -22,6 +22,7 @@
 #include "version.h"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 
 /* Used to control access to NVMEM spaces with different PCR states */
 #define PCR_UPDATE_BOOT_POLICY		BIT(0) /* FWMP/antirollback */
@@ -315,4 +316,11 @@ BOOL _plat__NvUpdateAllowed(uint32_t handle)
 	}
 
 	return TRUE;
+}
+
+void _plat__PCRUpdated(uint32_t index)
+{
+	if (index != 0)
+		return;
+	CPRINTS("PCR0 updated");
 }
