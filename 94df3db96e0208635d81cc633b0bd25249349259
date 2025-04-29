@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77469353_54dea106",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-04-29T07:29:47Z",
+      "side": 1,
+      "message": "move the local variable in the outer loop and merge the two conditions?\n\n\n```",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "94df3db96e0208635d81cc633b0bd25249349259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
