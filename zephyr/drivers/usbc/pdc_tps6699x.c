@@ -346,6 +346,7 @@ static void task_ucsi(struct pdc_data_t *data,
 		      enum ucsi_command_t ucsi_command);
 static void task_raw_ucsi(struct pdc_data_t *data);
 static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data);
+static void tps_check_and_notify_irq(void);
 
 /**
  * @brief PDC port data used in interrupt handler
@@ -546,17 +547,18 @@ static void st_irq_run(void *o)
 
 		/* Inform the subsystem of the event */
 		call_cci_event_cb(data);
-
 		/*
-		 * Check if interrupt is still active. It's possible that the
-		 * PDC will set another bit in the interrupt status register
-		 * between the time when the EC reads this register and clears
-		 * these status bits above. If there is still another interrupt
-		 * pending, then the interrupt line will still be active.
+		 * Check if interrupt is still active from any of the ports. It's
+		 * possible that the PDC will set another bit in the interrupt
+		 * status register of any of the port between the time when EC
+		 * reads this register and clears these status bits above.
+		 * If there is still another interrupt pending, then the interrupt
+		 * line will still be active.
+		 * 
+		 * TODO: refactoring the IRQ handling to be more robust when irq
+		 * being triggered and inside the irq handler.
 		 */
-		if (gpio_pin_get_dt(&cfg->irq_gpios)) {
-			k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
-		}
+		tps_check_and_notify_irq();
 	}
 
 	/* All done, transition back to idle state */
@@ -2761,6 +2763,29 @@ static int pdc_init(const struct device *dev)
 	LOG_INF("TI TPS6699X PDC DRIVER FOR PORT %d", cfg->connector_number);
 
 	return 0;
+}
+
+static void tps_check_and_notify_irq(void)
+{
+	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+		struct pdc_data_t *data = pdc_data[port];
+		struct pdc_config_t const *cfg = data->dev->config;
+		union reg_interrupt pdc_interrupt = { 0 };
+
+		if (!gpio_pin_get_dt(&cfg->irq_gpios)) {
+			break;
+		}
+		/* Read the pending interrupt events */
+		tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
+
+		for (int i = 0; i < sizeof(union reg_interrupt); i++) {
+			if (pdc_interrupt.raw_value[i]) {
+				LOG_DBG("C%d pending interrupt detected", port);
+				k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
+				break;
+			}
+		}
+	}
 }
 
 /* LCOV_EXCL_START - temporary code */
