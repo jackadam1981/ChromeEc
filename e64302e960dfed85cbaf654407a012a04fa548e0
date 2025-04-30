@@ -81,6 +81,24 @@
       "parentUuid": "80a0450e_462b16a5",
       "revId": "e64302e960dfed85cbaf654407a012a04fa548e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8a213d_fbc64009",
+        "filename": "board/redrix/redrix_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-04-30T23:43:43Z",
+      "side": 1,
+      "message": "These are USB4 link states (See https://www.usb.org/sites/default/files/D1T1-5%20-%20USB4%20Logical%20Layer%20-%20Retimer%20-%20Transport.pdf page 62)\n\nWe do support this (https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/4063214)",
+      "parentUuid": "641c2592_6855a703",
+      "revId": "e64302e960dfed85cbaf654407a012a04fa548e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
