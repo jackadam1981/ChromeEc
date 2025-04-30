@@ -82,6 +82,14 @@
 		};
 	};
 
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+		int_pen_det_l: pen_det_l {
+			irq-pin = <&gpio_pen_detect_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pen_detect_interrupt";
+		};
+	}
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
