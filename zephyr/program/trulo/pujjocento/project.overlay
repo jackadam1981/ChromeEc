@@ -6,7 +6,6 @@
 #include <cros/cbi_flash.dtsi>
 
 /* Trulo program common DTS includes */
-#include "../cbi.dtsi"
 #include "../generated.dtsi"
 #include "../i2c.dtsi"
 #include "../power_signals.dtsi"
@@ -21,7 +20,6 @@
 #include "led_policy.dtsi"
 #include "temp_sensors.dtsi"
 #include "usb_typec.dtsi"
-#include "motionsense.dtsi"
 
 
 /* Trulo overrides follow... */
