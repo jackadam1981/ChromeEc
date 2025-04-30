@@ -907,7 +907,7 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 	int ret;
 	uint8_t index, sens_size = 0;
 	uint8_t reg_data[4] = { 0 };
-	int(*sensor_range)[2];
+	int (*sensor_range)[2];
 
 	int acc_sensor_range[4][2] = {
 		{ 2, BMI3_ACC_RANGE_2G },

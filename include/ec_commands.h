@@ -930,7 +930,7 @@ enum host_event_code {
 };
 
 /* Host event mask */
-#define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code)-1)
+#define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code) - 1)
 
 /* clang-format off */
 #define HOST_EVENT_TEXT                                                        \

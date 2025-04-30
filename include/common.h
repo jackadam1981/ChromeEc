@@ -254,7 +254,7 @@
 
 /* There isn't really a better place for this */
 #define C_TO_K(temp_c) ((temp_c) + 273)
-#define K_TO_C(temp_c) ((temp_c)-273)
+#define K_TO_C(temp_c) ((temp_c) - 273)
 /*
  * round_divide is part of math_utils, so you may need to import math_utils.h
  * and link math_utils.o if you use the following macros.
@@ -263,7 +263,7 @@
 	(round_divide(CELSIUS_TO_MILLI_KELVIN(temp_c), 100))
 #define DECI_KELVIN_TO_CELSIUS(temp_dk) \
 	(MILLI_KELVIN_TO_CELSIUS((temp_dk) * 100))
-#define MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk) ((temp_mk)-273150)
+#define MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk) ((temp_mk) - 273150)
 #define MILLI_CELSIUS_TO_MILLI_KELVIN(temp_mc) ((temp_mc) + 273150)
 #define MILLI_KELVIN_TO_KELVIN(temp_mk) (round_divide((temp_mk), 1000))
 #define KELVIN_TO_MILLI_KELVIN(temp_k) ((temp_k) * 1000)

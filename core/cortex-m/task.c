@@ -348,7 +348,7 @@ void svc_handler(int desched, task_id_t resched)
 	if (next == current)
 		return;
 
-		/* Switch to new task */
+	/* Switch to new task */
 #ifdef CONFIG_TASK_PROFILING
 	task_switches++;
 #endif

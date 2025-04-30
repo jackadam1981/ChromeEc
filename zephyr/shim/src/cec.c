@@ -48,7 +48,8 @@ DT_FOREACH_STATUS_OKAY(CEC_BITBANG_COMPAT, CEC_DRV_CONFIG_BITBANG)
 
 #define CEC_CONFIG_IT83XX(node_id)                                  \
 	{                                                           \
-		.drv = &it83xx_cec_drv, .drv_config = NULL,         \
+		.drv = &it83xx_cec_drv,                             \
+		.drv_config = NULL,                                 \
 		.offline_policy = DT_NODE_EXISTS(CEC_POLICY_NODE) ? \
 					  default_cec_policy :      \
 					  NULL,                     \

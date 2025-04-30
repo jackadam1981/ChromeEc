@@ -27,7 +27,7 @@
  * variable), this computes the offset to the start of the image on flash.
  */
 #define RELATIVE_RO(addr) \
-	((addr)-CONFIG_PROGRAM_MEMORY_BASE - CONFIG_RO_MEM_OFF)
+	((addr) - CONFIG_PROGRAM_MEMORY_BASE - CONFIG_RO_MEM_OFF)
 
 /*
  * All internal EC code assumes that offsets are provided relative to

@@ -2167,7 +2167,7 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_SPI_CR1_CPOL BIT(1)
 #define STM32_SPI_CR1_CPHA BIT(0)
 #define STM32_SPI_CR2_FRXTH BIT(12)
-#define STM32_SPI_CR2_DATASIZE(n) (((n)-1) << 8)
+#define STM32_SPI_CR2_DATASIZE(n) (((n) - 1) << 8)
 #define STM32_SPI_CR2_TXEIE BIT(7)
 #define STM32_SPI_CR2_RXNEIE BIT(6)
 #define STM32_SPI_CR2_NSSP BIT(3)
@@ -2323,7 +2323,7 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_ADC1_SMPR1 REG32(STM32_ADC1_BASE + 0x14)
 #define STM32_ADC1_SMPR2 REG32(STM32_ADC1_BASE + 0x18)
 /* Macro to convert enum stm32_adc_smpr to SMP bits of the ADC_SMPR register */
-#define STM32_ADC1_SMPR_SMP(s) ((s)-1)
+#define STM32_ADC1_SMPR_SMP(s) ((s) - 1)
 #define STM32_ADC1_TR REG32(STM32_ADC1_BASE + 0x20)
 #define STM32_ADC1_CHSELR REG32(STM32_ADC1_BASE + 0x28)
 #define STM32_ADC1_DR REG32(STM32_ADC1_BASE + 0x40)

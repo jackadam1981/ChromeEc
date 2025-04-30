@@ -469,16 +469,18 @@ static int fpc1025_init_driver(const struct device *dev)
 	return 0;
 }
 
-#define FPC1025_SENSOR_INFO(inst)                                         \
-	{                                                                 \
-		.vendor_id = FOURCC('F', 'P', 'C', ' '), .product_id = 9, \
-		.model_id = 1, .version = 1,                              \
-		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,       \
-		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(     \
-			DT_DRV_INST(inst)),                               \
-		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),     \
-		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)),    \
-		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),     \
+#define FPC1025_SENSOR_INFO(inst)                                      \
+	{                                                              \
+		.vendor_id = FOURCC('F', 'P', 'C', ' '),               \
+		.product_id = 9,                                       \
+		.model_id = 1,                                         \
+		.version = 1,                                          \
+		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,    \
+		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(  \
+			DT_DRV_INST(inst)),                            \
+		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),  \
+		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)), \
+		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),  \
 	}
 
 #define FPC1025_DEFINE(inst)                                                   \

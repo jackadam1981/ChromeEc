@@ -1704,12 +1704,12 @@ bool charge_prevent_power_on(bool power_button_pressed)
 #endif /* CONFIG_BATTERY_HW_PRESENT_CUSTOM */
 #endif /* CONFIG_CHARGE_MANAGER */
 
-		/*
-		 * Prevent power on if there is no battery nor ac power. This
-		 * happens when the servo is powering the EC to flash it. Only
-		 * include this logic for boards in initial bring up phase since
-		 * this won't happen for released boards.
-		 */
+	/*
+	 * Prevent power on if there is no battery nor ac power. This
+	 * happens when the servo is powering the EC to flash it. Only
+	 * include this logic for boards in initial bring up phase since
+	 * this won't happen for released boards.
+	 */
 #ifdef CONFIG_SYSTEM_UNLOCKED
 	if (!current_batt_params->is_present && !curr.ac)
 		prevent_power_on = 1;
@@ -1910,11 +1910,11 @@ int charge_set_input_current_limit(int ma, int mv)
 		if (prev_input >= ma)
 			return EC_SUCCESS;
 #endif
-			/*
-			 * If the current needs lowered due to PD max power
-			 * considerations, or needs raised for the selected
-			 * active charger chip, fall through to set.
-			 */
+		/*
+		 * If the current needs lowered due to PD max power
+		 * considerations, or needs raised for the selected
+		 * active charger chip, fall through to set.
+		 */
 #endif /* CONFIG_USB_POWER_DELIVERY */
 	}
 

@@ -417,10 +417,10 @@ static int clock_allow_low_power_idle(void)
 	    et_ctrl_regs[EVENT_EXT_TIMER].mask)
 		return 0;
 
-		/*
-		 * If timer is less than 250us to expire, then we don't go to
-		 * sleep mode.
-		 */
+	/*
+	 * If timer is less than 250us to expire, then we don't go to
+	 * sleep mode.
+	 */
 #ifdef IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 	if (EVENT_TIMER_COUNT_TO_US(ext_observation_reg_read(EVENT_EXT_TIMER)) <
 #else

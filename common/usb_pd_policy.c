@@ -940,17 +940,17 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 		return -1;
 #endif
 
-		/*
-		 * TCPMv2: Enable logging of CCD line state CCD_MODE_ODL.
-		 * DisplayPort Alternate mode requires that the SBU lines are
-		 * used for AUX communication. However, in Chromebooks SBU
-		 * signals are repurposed as USB2 signals for CCD. This
-		 * functionality is accomplished by override fets whose state is
-		 * controlled by CCD_MODE_ODL.
-		 *
-		 * This condition helps in debugging unexpected AUX timeout
-		 * issues by indicating the state of the CCD override fets.
-		 */
+	/*
+	 * TCPMv2: Enable logging of CCD line state CCD_MODE_ODL.
+	 * DisplayPort Alternate mode requires that the SBU lines are
+	 * used for AUX communication. However, in Chromebooks SBU
+	 * signals are repurposed as USB2 signals for CCD. This
+	 * functionality is accomplished by override fets whose state is
+	 * controlled by CCD_MODE_ODL.
+	 *
+	 * This condition helps in debugging unexpected AUX timeout
+	 * issues by indicating the state of the CCD override fets.
+	 */
 #ifdef GPIO_CCD_MODE_ODL
 	if (!gpio_get_level(GPIO_CCD_MODE_ODL))
 		CPRINTS("WARNING: Tried to EnterMode DP with [CCD on AUX/SBU]");

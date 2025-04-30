@@ -4930,10 +4930,7 @@ static int cmd_lightbar(int argc, char **argv)
 #define ST_PRM_SIZE(SUBCMD) \
 	(ST_CMD_SIZE + ST_FLD_SIZE(ec_params_motion_sense, SUBCMD))
 #define ST_RSP_SIZE(SUBCMD) ST_FLD_SIZE(ec_response_motion_sense, SUBCMD)
-#define ST_BOTH_SIZES(SUBCMD)                            \
-	{                                                \
-		ST_PRM_SIZE(SUBCMD), ST_RSP_SIZE(SUBCMD) \
-	}
+#define ST_BOTH_SIZES(SUBCMD) { ST_PRM_SIZE(SUBCMD), ST_RSP_SIZE(SUBCMD) }
 
 /*
  * For ectool only, assume no more than 16 sensors.  More advanced
@@ -8295,7 +8292,7 @@ static int get_battery_command_v2(uint8_t index)
 
 static int get_battery_command_v1(uint8_t index)
 {
-	struct ec_params_battery_static_info static_p {
+	struct ec_params_battery_static_info static_p{
 		.index = index,
 	};
 	struct ec_response_battery_static_info_v1 static_r;
@@ -9933,7 +9930,8 @@ struct param_info {
 
 #define FIELD(fname, field, help_str)                                       \
 	{                                                                   \
-		.name = fname, .help = help_str,                            \
+		.name = fname,                                              \
+		.help = help_str,                                           \
 		.size = sizeof(((struct ec_mkbp_config *)NULL)->field),     \
 		.offset = __builtin_offsetof(struct ec_mkbp_config, field), \
 	}

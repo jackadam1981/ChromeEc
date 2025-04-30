@@ -126,7 +126,7 @@
 #define STM32_TIM_DMAR(n) STM32_TIM_REG(n, 0x4C)
 #define STM32_TIM_OR(n) STM32_TIM_REG(n, 0x50)
 
-#define STM32_TIM_CCRx(n, x) STM32_TIM_REG(n, 0x34 + ((x)-1) * 4)
+#define STM32_TIM_CCRx(n, x) STM32_TIM_REG(n, 0x34 + ((x) - 1) * 4)
 
 #define STM32_TIM32_CNT(n) STM32_TIM_REG32(n, 0x24)
 #define STM32_TIM32_ARR(n) STM32_TIM_REG32(n, 0x2C)
