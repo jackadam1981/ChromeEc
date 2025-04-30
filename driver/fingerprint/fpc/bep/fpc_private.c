@@ -285,6 +285,7 @@ __overridable int fp_finger_match(void *templ, uint32_t templ_count,
 
 __overridable int fp_enrollment_begin(void)
 {
+	ccprints("I am in func: %s", __func__);
 	int rc;
 	bio_enrollment_t bio_enroll = enroll_ctx;
 
@@ -297,6 +298,7 @@ __overridable int fp_enrollment_begin(void)
 
 __overridable int fp_enrollment_finish(void *templ)
 {
+	ccprints("I am in func: %s", __func__);
 	int rc;
 	bio_enrollment_t bio_enroll = enroll_ctx;
 	bio_template_t bio_templ = templ;

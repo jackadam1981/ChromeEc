@@ -67,6 +67,7 @@ static int fpc_bep_algorithm_exit(const struct fingerprint_algorithm *const alg)
 
 static int fpc_bep_enroll_start(const struct fingerprint_algorithm *const alg)
 {
+	LOG_INF("I am in func: %s", __func__);
 	struct fpc_bep_data *data = (struct fpc_bep_data *)alg->data;
 	bio_enrollment_t bio_enroll = &data->enroll_ctx;
 	int rc;
@@ -125,6 +126,7 @@ static int fpc_bep_enroll_step(const struct fingerprint_algorithm *const alg,
 static int fpc_bep_enroll_finish(const struct fingerprint_algorithm *const alg,
 				 void *templ)
 {
+	LOG_INF("I am in func: %s", __func__);
 	struct fpc_bep_data *data = (struct fpc_bep_data *)alg->data;
 	bio_enrollment_t bio_enroll = &data->enroll_ctx;
 	bio_template_t bio_templ = templ;

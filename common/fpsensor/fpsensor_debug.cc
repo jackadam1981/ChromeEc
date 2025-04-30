@@ -240,6 +240,9 @@ static int command_fpenroll(int argc, const char **argv)
 		percent = EC_MKBP_FP_ENROLL_PROGRESS(event);
 		CPRINTS("Enroll capture: %s (%d%%)",
 			enroll_str[EC_MKBP_FP_ERRCODE(event) & 3], percent);
+		if (percent == 100) {
+			break;
+		}
 		/* wait for finger release between captures */
 		global_context.sensor_mode = FP_MODE_ENROLL_SESSION |
 					     FP_MODE_FINGER_UP;

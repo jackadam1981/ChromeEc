@@ -102,11 +102,16 @@ static uint32_t fp_process_enroll(void)
 		       EC_MKBP_FP_ERRCODE(EC_MKBP_FP_ERR_ENROLL_INTERNAL);
 	global_context.templ_dirty |= BIT(global_context.templ_valid);
 	if (percent == 100) {
+		ccprints(" I am in func %s, line %d", __func__, __LINE__);
 		res = fp_enrollment_finish(
 			fp_template[global_context.templ_valid]);
 		if (res) {
+			ccprints(" I am in func %s, line %d", __func__,
+				 __LINE__);
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
 		} else {
+			ccprints(" I am in func %s, line %d", __func__,
+				 __LINE__);
 			global_context.template_newly_enrolled =
 				global_context.templ_valid;
 			fp_enable_positive_match_secret(
@@ -119,6 +124,7 @@ static uint32_t fp_process_enroll(void)
 				};
 			global_context.templ_valid++;
 		}
+		ccprints(" I am in func %s, line %d", __func__, __LINE__);
 		global_context.sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
@@ -279,6 +285,8 @@ extern "C" void fp_task(void)
 
 		if (evt & TASK_EVENT_UPDATE_CONFIG) {
 			uint32_t mode = global_context.sensor_mode;
+			ccprints(" I am in func %s, line %d, mode %d", __func__,
+				 __LINE__, mode);
 			/*
 			 * TODO(b/316859625): Remove CONFIG_ZEPHYR block after
 			 * migration to Zephyr is completed.
@@ -293,11 +301,21 @@ extern "C" void fp_task(void)
 			gpio_disable_interrupt(GPIO_FPS_INT);
 #endif
 			if ((mode ^ enroll_session) & FP_MODE_ENROLL_SESSION) {
+				ccprints(" I am in func %s, line %d, mode %d",
+					 __func__, __LINE__, mode);
 				if (mode & FP_MODE_ENROLL_SESSION) {
-					if (fp_enrollment_begin())
+					if (fp_enrollment_begin()) {
+						ccprints(
+							" I am in func %s, line %d, mode %d",
+							__func__, __LINE__,
+							mode);
 						global_context.sensor_mode &=
 							~FP_MODE_ENROLL_SESSION;
+					}
 				} else {
+					ccprints(
+						" I am in func %s, line %d, mode %d",
+						__func__, __LINE__, mode);
 					fp_enrollment_finish(nullptr);
 				}
 				enroll_session = global_context.sensor_mode &
