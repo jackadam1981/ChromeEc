@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed71da96_d3e8b0cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-30T21:44:52Z",
+      "side": 1,
+      "message": "Please chain this CL and CL:6391955 together.  The 2 CLs are related and should be uploaded together.",
+      "revId": "369869d7aa70387e358402f1ff8bef71bdb9a7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb47da9_2482ed1b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-30T21:44:52Z",
+      "side": 1,
+      "message": "Please run `cros format rtkupdate.c` to fix the formating.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "369869d7aa70387e358402f1ff8bef71bdb9a7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79cca387_dc77ce74",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-30T21:44:52Z",
+      "side": 1,
+      "message": "The nesting is too deep.  Create a helper function to make this easier to read.",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e56ee9d5_a0d6e602",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 461,
+                "startChar": 0,
+                "endLine": 461,
+                "endChar": 0
+              },
+              "replacement": "\n/* Function: Send a block of pages */\nint send_pages(int uart_fd, FILE *file, size_t *total_bytes_sent,\n\t       size_t *page)\n{\n\tunsigned char data_buffer[PAGE_SIZE];\n\tint retry \u003d 0;\n\n\tfor (size_t i \u003d 0;\n\t     i \u003c PAGES_PER_ROUND \u0026\u0026 *total_bytes_sent \u003c ftell(file); i++) {\n\t\tsize_t bytes_read \u003d fread(data_buffer, 1, PAGE_SIZE, file);\n\t\tif (bytes_read \u003d\u003d 0) {\n\t\t\tif (feof(file))\n\t\t\t\tbreak; /* End of file */\n\t\t\tperror(\"Failed to read from file\");\n\t\t\treturn -1;\n\t\t}\n\n\t\t/* Calculate SRAM address, incremented per page */\n\t\tuint32_t sram_address \u003d SRAM_BASE_ADDRESS + (i * PAGE_SIZE);\n\n\t\t/* Send this page\u0027s data */\n\t\tif (send_packet_a(uart_fd, 0x09, (bytes_read - 1),\n\t\t\t\t  sram_address, data_buffer) !\u003d 0) {\n\t\t\treturn -1;\n\t\t}\n\n\t\t/* Wait for EC to respond with 0x09 (acknowledgment for\n\t\t * this page) */\n\t\tif (wait_for_response(uart_fd, 0x09, RESPONSE_TIMEOUT) !\u003d 0) {\n\t\t\tDBG_PRINT(\"Failed to receive expected response for data page %zu\\n\",\n\t\t\t\t  *page + 1);\n\t\t\tretry \u003d 1;\n\t\t}\n\n\t\t/* try again */\n\t\tif (retry \u003d\u003d 1) {\n\t\t\tsleep(1);\n\t\t\ttcflush(uart_fd, TCIOFLUSH);\n\n\t\t\t/* Send this page\u0027s data */\n\t\t\tif (send_packet_a(uart_fd, 0x09, (bytes_read - 1),\n\t\t\t\t\t  sram_address, data_buffer) !\u003d 0) {\n\t\t\t\treturn -1;\n\t\t\t}\n\n\t\t\t/* Wait for EC to respond with 0x09\n\t\t\t * (acknowledgment for this page) */\n\t\t\tif (wait_for_response(uart_fd, 0x09,\n\t\t\t\t\t      RESPONSE_TIMEOUT) !\u003d 0) {\n\t\t\t\tprintf(\"Failed to receive expected response for data page %zu\\n\",\n\t\t\t\t       *page + 1);\n\t\t\t\treturn -1;\n\t\t\t}\n\t\t}\n\t\t*total_bytes_sent +\u003d bytes_read;\n\t\tDBG_PRINT(\"Page %zu sent successfully. Total bytes sent: %zu\\n\",\n\t\t\t  *page + 1, *total_bytes_sent);\n\t\t(*page)++;\n\t}\n\treturn 0;\n}\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 466,
+                "startChar": 0,
+                "endLine": 467,
+                "endChar": 0
+              },
+              "replacement": "\tint retry_round;\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 474,
+                "startChar": 0,
+                "endLine": 475,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 508,
+                "startChar": 0,
+                "endLine": 570,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* Send pages */\n\t\tif (send_pages(uart_fd, file, \u0026total_bytes_sent, \u0026page) !\u003d 0) {\n\t\t\tfclose(file);\n\t\t\treturn -1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "369869d7aa70387e358402f1ff8bef71bdb9a7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b52cb11_25a676a5",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-30T21:44:52Z",
+      "side": 1,
+      "message": "Create a helper function to make this easier to read.",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 0
+      },
+      "revId": "369869d7aa70387e358402f1ff8bef71bdb9a7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91be5c2_c3ebedbd",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-04-30T21:44:52Z",
+      "side": 1,
+      "message": "Use `getopt_long()` to process command line arguments.",
+      "range": {
+        "startLine": 742,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bb4fc18f_69c85865",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "#include \u003cgetopt.h\u003e\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 736,
+                "startChar": 0,
+                "endLine": 738,
+                "endChar": 0
+              },
+              "replacement": "\tconst char *method \u003d NULL;\n\tuint32_t spi_start \u003d 0;\n\tconst char *file_name \u003d NULL;\n\tconst char *uart_device \u003d NULL;\n\tint opt;\n\n\tstatic struct option long_options[] \u003d {\n\t\t{\"method\", required_argument, 0, \u0027m\u0027},\n\t\t{\"spi_start\", required_argument, 0, \u0027s\u0027},\n\t\t{\"file\", required_argument, 0, \u0027f\u0027},\n\t\t{\"uart_device\", required_argument, 0, \u0027u\u0027},\n\t\t{0, 0, 0, 0}\n\t};\n\n\twhile ((opt \u003d getopt_long(argc, argv, \"m:s:f:u:\", long_options,\n\t\t\t\t  NULL)) !\u003d -1) {\n\t\tswitch (opt) {\n\t\tcase \u0027m\u0027:\n\t\t\tmethod \u003d optarg;\n\t\t\tbreak;\n\t\tcase \u0027s\u0027:\n\t\t\tspi_start \u003d strtoul(optarg, NULL, 0);\n\t\t\tbreak;\n\t\tcase \u0027f\u0027:\n\t\t\tfile_name \u003d optarg;\n\t\t\tbreak;\n\t\tcase \u0027u\u0027:\n\t\t\tuart_device \u003d optarg;\n\t\t\tbreak;\n\t\tdefault:\n\t\t\tprintf(\"Usage: %s --method \u003cmethod\u003e --spi_start \u003cspi_start\u003e --file \u003cbinary_file\u003e --uart_device \u003cuart_device\u003e\\n\",\n\t\t\t       argv[0]);\n\t\t\treturn 1;\n\t\t}\n\t}\n\n\tif (!method || !file_name || !uart_device) {\n\t\tprintf(\"Missing required arguments\\n\");\n\t\tprintf(\"Usage: %s --method \u003cmethod\u003e --spi_start \u003cspi_start\u003e --file \u003cbinary_file\u003e --uart_device \u003cuart_device\u003e\\n\",\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 742,
+                "startChar": 0,
+                "endLine": 746,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "369869d7aa70387e358402f1ff8bef71bdb9a7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
