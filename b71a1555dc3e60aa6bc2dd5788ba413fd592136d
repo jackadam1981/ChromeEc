@@ -123,6 +123,24 @@
       "parentUuid": "6d6e3c9e_94146951",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238e1e21_83f500bd",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-30T06:09:25Z",
+      "side": 1,
+      "message": "Modify this CL to use the ramlock0 node introduced in the [PR:89061](https://github.com/zephyrproject-rtos/zephyr/pull/89061). This CL depends on the PR:89061 being merged into the Zephyr upstream.",
+      "parentUuid": "c01d0fdd_63cf8022",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
