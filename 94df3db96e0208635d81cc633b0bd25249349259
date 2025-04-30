@@ -22,6 +22,30 @@
       },
       "revId": "94df3db96e0208635d81cc633b0bd25249349259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6448baa_2fb99f88",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-04-30T01:14:18Z",
+      "side": 1,
+      "message": "Sorry! I don\u0027t understand. Do you mean like this?\n```\n\tfor (port \u003d 0; port \u003c CEC_PORT_COUNT; port++) {\n\t\tdrv_config \u003d cec_config[port].drv_config;\n\t\tif (cec_config[port].drv \u003d\u003d \u0026bitbang_cec_drv \u0026\u0026\n\t\t    drv_config-\u003egpio_in \u003d\u003d signal) {\n\t\t\t\tbreak;\n\t\t}\n\t}\n```\nHowever, `cec_config[port].drv_config` might be `it83xx_cec_drv` so I think I can\u0027t move `drv_config \u003d cec_config[port].drv_config` before checking if the driver is `biitbang_cec_drv`.",
+      "parentUuid": "77469353_54dea106",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "94df3db96e0208635d81cc633b0bd25249349259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
