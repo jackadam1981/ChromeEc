@@ -80,8 +80,19 @@
 		gpio_imvp91_vrrdy_r_od: imvp91_vrrdy_r_od {
 			gpios = <&gpio6 6 (GPIO_INPUT)>;
 		};
+		gpio_pen_detect_odl: pen_detect_odl {
+			gpios = <&gpio9 6 (GPIO_INPUT | GPIO_PULL_UP)>;
+		};
 	};
 
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+		int_pen_det_l: pen_det_l {
+			irq-pin = <&gpio_pen_detect_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pen_detect_interrupt";
+		};
+	};
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
