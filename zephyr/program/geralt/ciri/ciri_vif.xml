@@ -79,7 +79,7 @@
     <vif:Type_C_Port_On_Hub value="false" />
     <vif:Type_C_Power_Source value="2">Both</vif:Type_C_Power_Source>
     <vif:Type_C_Sources_VCONN value="true" />
-    <vif:Type_C_Is_Alt_Mode_Controller value="false" />
+    <vif:Type_C_Is_Alt_Mode_Controller value="true" />
     <vif:Type_C_Is_Alt_Mode_Adapter value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
@@ -243,7 +243,7 @@
     <vif:Type_C_Port_On_Hub value="false" />
     <vif:Type_C_Power_Source value="2">Both</vif:Type_C_Power_Source>
     <vif:Type_C_Sources_VCONN value="true" />
-    <vif:Type_C_Is_Alt_Mode_Controller value="false" />
+    <vif:Type_C_Is_Alt_Mode_Controller value="true" />
     <vif:Type_C_Is_Alt_Mode_Adapter value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
