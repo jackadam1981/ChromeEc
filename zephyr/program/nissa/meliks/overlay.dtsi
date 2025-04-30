@@ -278,7 +278,7 @@
 			gpios = <&gpio6 3 GPIO_OUTPUT_LOW>;
 		};
 		gpio_lcd_rst_n: lcd_rst_n {
-			gpios = <&gpioa 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
 
 		gpio_sb_1: sb-1 {
