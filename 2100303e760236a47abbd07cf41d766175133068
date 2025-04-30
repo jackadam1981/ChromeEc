@@ -88,6 +88,30 @@
       },
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91b026c_f9efad06",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-04-30T02:52:08Z",
+      "side": 1,
+      "message": "\u003eHowever, it seems if I read it directly, I will bypass the defaults set for the different SOCs.\n\nThe defaults are set according to the consideration of  MIN(HALF_OF_FLASH_SIZE, CODE_RAM_SIZE) for the different npcx9 chip type.  \n1) for the (EC) projects which use `npcx9m3f/npcx9m7fb`, the \n   `CONFIG_CROS_EC_RW_SIZE ` in Kconfig.npcx9 is the same as the setting in \n    [binman](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/binman.dtsi;l\u003d50) it uses, which is fine.  \n2) for the (EC) projects which use `npcx9m7f`, the `CONFIG_CROS_EC_RW_SIZE ` in \n   Kconfig.npcx9 is the same as the setting in [binman](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/google/npcx9/npcx9_npcx9m7f.dts;l\u003d39) it uses, which is also fine.\n3) There is also no problem for `ncx9mfp` because it is only used in the `Helipilot` project. You can override it as what is needed.\n4) This CL should affects only the project`npcx9` (which is the build for npcx9 evb board) that uses `npcx9m6f` device. It is not the real Chromebook product. \nIt is for Nuvoton to do HW function test only.  \nAs you already found, the `CONFIG_CROS_EC_RW_SIZE` change from `0x30000` to `0x40000` with this change.  \nThis can be easily fixed by override the size in `ec-rw` node like what what is done for [npcx9m7f](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/google/npcx9/npcx9_npcx9m7f.dts;l\u003d39).\n\nIn short, the CL LGTM.",
+      "parentUuid": "ecc86bfa_b27f3dc7",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
