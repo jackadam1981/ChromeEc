@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e39bfc3_c33bd84e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-04-30T15:42:08Z",
+      "side": 1,
+      "message": "upload hooks warned me as well:\n\n```\n      WARNING: core/cortex-m/panic.c is not used in Zephyr EC. There is probably another file in the zephyr/shim directory that needs the same fix that you just made. Alternativly, you might have edited the wrong file.\n```\n\n\nbut `rg` in `platform/ec` and `third_party/zephyr` showed no obvious places that needed to be updated, so i bypassed that",
+      "revId": "ccd9fc4de1c35d27559b0f60fd187303da575fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
