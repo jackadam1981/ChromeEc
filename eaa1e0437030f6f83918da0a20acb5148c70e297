@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e204ba1e_e4e19320",
+        "filename": "zephyr/program/bluey/interrupts.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-04-30T17:19:05Z",
+      "side": 1,
+      "message": "Remove it as the WP interrupt has been deprecated recently (b/411207349).",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "eaa1e0437030f6f83918da0a20acb5148c70e297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
