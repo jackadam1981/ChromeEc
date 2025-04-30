@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a170140_f1ed614d",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b5e1f5_654e6338",
+      "range": {
+        "startLine": 763,
+        "startChar": 4,
+        "endLine": 763,
+        "endChar": 16
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a19f07da_c0aa61e7",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-04-29T22:55:45Z",
       "side": 1,
       "message": "When nesting #ifdefs, add a comment\n```suggestion\n#endif /* CONFIG_EC_PROTECTED_STORAGE_OFF */\n```",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 6
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59cf6ca1_19cb9309",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a19f07da_c0aa61e7",
       "range": {
         "startLine": 780,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fe5888_6f9627c3",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adcfa297_eb234111",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 6
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f2a1780_17500789",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-04-29T22:55:45Z",
       "side": 1,
       "message": "CONFIG_CROS_FLASH",
+      "range": {
+        "startLine": 816,
+        "startChar": 7,
+        "endLine": 816,
+        "endChar": 19
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a6c14e_4066846f",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f2a1780_17500789",
       "range": {
         "startLine": 816,
         "startChar": 7,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c49766_7e05636e",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba08389_fab85749",
+      "range": {
+        "startLine": 826,
+        "startChar": 0,
+        "endLine": 828,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15ee6368_34a82d9e",
@@ -146,6 +266,30 @@
       "writtenOn": "2025-04-29T22:55:45Z",
       "side": 1,
       "message": "This doesn\u0027t match the devicetree setting:\n```\n        flash0: flash@20000400 {\n                reg \u003d \u003c 0x20000400 0x4fc00 \u003e;\n        };\n```\n\nLooks like you have Zephyr configured to load the image starting at 0x20000400, and the available size is 319 KB.\n\n319 KB is okay because the flash is 1 MB.  The EC image must be smaller than 1/2 the total flash and smaller than the code RAM.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f394e88_d1a08b46",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "zephyr upstream #89260 modify the dts:\nflash0: flash@2000B400 {\n\t\treg \u003d \u003c0x2000B400 0x40000\u003e;\n\t};",
+      "parentUuid": "15ee6368_34a82d9e",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44cf4890_91661d5a",
+        "filename": "zephyr/boards/google/realtek/pre_dt_board.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aea95cf_4ac8c5e6",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa26cd16_92a26d08",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ea1844c_ae01e825",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "I use RawBinPacker for minimal-realtek, so I actually don\u0027t need a binman to descript ro and rw",
+      "parentUuid": "aa26cd16_92a26d08",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51a18aa_29237b82",
@@ -215,6 +407,30 @@
       "writtenOn": "2025-04-29T22:55:45Z",
       "side": 1,
       "message": "These features are already on by default [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d183;drc\u003d0d7493c005219bb2b2881ab6b33828dc0264aaba). They can be deleted.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9cc2eb_27b3a2bb",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51a18aa_29237b82",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -266,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26ae404_70b8972d",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Yes, removing this line during compile will cause flash-related fail. After the flash part merge, it will be clear.",
+      "parentUuid": "9fa4e4f4_22a53e57",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d100a5e_66fab965",
@@ -279,6 +519,30 @@
       "writtenOn": "2025-04-29T22:55:45Z",
       "side": 1,
       "message": "This shouldn\u0027t be here - only specific EC projects should enable this option.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2fd528_5c6874b4",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "removing this line during compile will cause flash-related fail. After the flash part merge, it will be clear.",
+      "parentUuid": "4d100a5e_66fab965",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -312,6 +576,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05749b31_45cd4f0b",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b88cc3b_5c821372",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "503ee46a_217f2e72",
@@ -325,6 +613,30 @@
       "writtenOn": "2025-04-29T22:55:45Z",
       "side": 1,
       "message": "The binman node defines the FWID section, so you need to enable this assertion.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 63
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0f459d_c07fa9bc",
+        "filename": "zephyr/program/minimal/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-04-30T18:49:09Z",
+      "side": 1,
+      "message": "I use RawBinPacker for minimal-realtek, so I actually don\u0027t need a binman to descript ro and rw. This will be add with the packers update.",
+      "parentUuid": "503ee46a_217f2e72",
       "range": {
         "startLine": 34,
         "startChar": 0,
