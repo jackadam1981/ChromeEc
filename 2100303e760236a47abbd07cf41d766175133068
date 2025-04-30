@@ -136,6 +136,30 @@
       },
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd94b79_fbf2af1f",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-04-30T05:55:47Z",
+      "side": 1,
+      "message": "You can override it in this file:[npcx_evb_npcx9m6f.dts](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts)",
+      "parentUuid": "d3c5fcfd_76a5bb09",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
