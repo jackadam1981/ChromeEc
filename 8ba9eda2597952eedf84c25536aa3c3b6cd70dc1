@@ -22,6 +22,30 @@
       },
       "revId": "8ba9eda2597952eedf84c25536aa3c3b6cd70dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae359b0_761018e0",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-04-30T18:08:46Z",
+      "side": 1,
+      "message": "The sensors are being driven by the DSP (ISH). The EC needs to know the body state, but has to call the DSP to get the state. The idea of this CL is to keep the `body_detect_states()` API but the EC will have use a different function than this implemented one.\n\nAnother solution would be to not compile `common/body_detection.c` in the EC at all, but another file with the same function name. The `weak` attribute will not be needed then.",
+      "parentUuid": "09a2f209_3fe51484",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "8ba9eda2597952eedf84c25536aa3c3b6cd70dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
