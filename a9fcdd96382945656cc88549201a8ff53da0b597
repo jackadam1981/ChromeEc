@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfb2cf5_f05dd9f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-04-30T12:35:36Z",
+      "side": 1,
+      "message": "can we have a better title for this CL?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b621cfa_aa0c8872",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-04-30T12:35:36Z",
+      "side": 1,
+      "message": "nit: I think this is also unnecessary.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b05b50_bdc2c315",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-04-30T12:35:36Z",
+      "side": 1,
+      "message": "I don\u0027t understand how this change would help pass TEST.PD.PS.SNK.1 COMMON.CHECK.PD.4#1 failure. Please check and let me know if it actually does.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
