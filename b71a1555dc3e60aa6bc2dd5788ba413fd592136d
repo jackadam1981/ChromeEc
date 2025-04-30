@@ -141,6 +141,24 @@
       "parentUuid": "c01d0fdd_63cf8022",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0857fd6e_564cb274",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-04-30T06:14:01Z",
+      "side": 1,
+      "message": "To enable the RAM lock function, the ramlock0 node also needs to be enabled in the device tree.\n```\n\u0026ramlock0 {\n\tstatus \u003d \"okay\";\n};\n```",
+      "parentUuid": "238e1e21_83f500bd",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
