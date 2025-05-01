@@ -7,6 +7,7 @@
 #include "cros_cbi.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "motion_sense.h"
 #include "tablet_mode.h"
 #include "zephyr/kernel.h"
 
@@ -119,6 +120,13 @@ static void *main_sensor_reset(void)
 	fake_form_factor = CONVERTIBLE;
 	fake_base_sensor = BASE_ICM42607;
 	fake_lid_sensor = LID_LIS2DWLTR;
+
+	/* zephyr/program/corsola/woobat/src/sensor.c will set the sensor count
+	 * to 0 if the CBI fw config is set to CLAMSHELL, but there's no way to
+	 * recover the previous sensor count. Before calling hook_notify, we
+	 * should reset the sensor count manually.
+	 */
+	motion_sensor_count = DT_CHILD_NUM_STATUS_OKAY(SENSOR_NODE);
 
 	/* Run init hooks to initialize cbi. */
 	hook_notify(HOOK_INIT);
