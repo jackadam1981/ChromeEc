@@ -160,6 +160,30 @@
       },
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07aa81c1_f6c39cc5",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-01T19:06:42Z",
+      "side": 1,
+      "message": "I made this change. The only difference now is:\n\n```\n(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ diff config_npcx9_ro config_npcx9_ro_mod\n320c320\n\u003c CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE\u003d0x40000\n---\n\u003e CONFIG_PLATFORM_EC_RW_TOTAL_IMAGE_SIZE\u003d0x30000\n```\n\nI believe this config was reading the value from the default dts, now it is reading it from the modified one, which I expect to be correct. Please advise.",
+      "parentUuid": "0fd94b79_fbf2af1f",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
