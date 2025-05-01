@@ -148,6 +148,7 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 	print_body_detect_mode();
 
 	if (IS_ENABLED(CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE) &&
+	    (motion_sense_get_ec_config() == SENSOR_CONFIG_EC_S0) &&
 	    !(IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_BODY_DETECTION) &&
 	      motion_sensor_count == 0)) {
 		host_set_single_event(EC_HOST_EVENT_BODY_DETECT_CHANGE);
