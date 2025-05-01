@@ -132,8 +132,10 @@ body_detect_change_state(enum body_detect_states state, bool spoof)
 	/* state changing log */
 	print_body_detect_mode();
 
-	if (IS_ENABLED(CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE))
+	if (IS_ENABLED(CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE) &&
+	    (motion_sense_get_ec_config() == SENSOR_CONFIG_EC_S0)) {
 		host_set_single_event(EC_HOST_EVENT_BODY_DETECT_CHANGE);
+	}
 
 	hook_notify(HOOK_BODY_DETECT_CHANGE);
 }
