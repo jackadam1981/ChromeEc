@@ -414,7 +414,11 @@ If you suspect the board you are using has this issue, you can try this:
 
 ## Control Hardware Write Protect {#hw-wp}
 
-Control of hardware write protect is restricted by the `OverrideWP` capability.
+Control of hardware write protect is restricted by CCD capabilities. Cr50
+controls access to wp with the `OverrideWP` capability.
+[Ti50 controls wp][hw-wp-ti50] with the `OverrideWP` capability and
+the `AllowUnverifiedRo` capability.
+
 When the capability is allowed, the hardware write protect setting can be
 controlled with the `wp` command in the GSC console. Otherwise, the hardware
 write protect is determined based on the presence of the battery.
@@ -443,7 +447,7 @@ updated, it crashes, the battery completely drains, the battery is removed, or
 power is otherwise lost.
 
 The `atboot` setting is the state of the write protect when GSC boots; it
-defaults to `follow_batt_pres`.
+defaults to `follow_batt_pres` on Cr50 and `forced enabled` on Ti50.
 
 To change the `atboot` setting, add the `atboot` arg to the end of the `wp`
 command:
@@ -471,6 +475,50 @@ Flash WP: forced disabled  <-- Current hardware write protect state
 `disabled`             | Disabled, following battery presence
 
 ### Special Case Devices
+
+#### Ti50 Device {#hw-wp-ti50}
+
+Ti50 devices force enable WP by default. They do not let you change the WP
+setting until `AllowUnverifiedRo` is set to Always and `OverrideWP` is
+accessible. After `AllowUnverifiedRo` is set to Always, Ti50 will start
+following battery presence to control WP.
+
+Steps to change the Ti50 WP settings
+
+1. [CCD Open]
+
+1. Set AllowUnverifiedRo to Always
+```bash
+(dut) $ gsctool -a -I AllowUnverifiedRo:Always
+Tap the power button when prompted
+or
+(ti50 console) $ ccd set AllowUnverifiedRo Always
+```
+
+1. Check WP. Ti50 will start using `follow\_batt\_pres` atboot. WP will still
+   be enabled until Ti50 resets.
+```bash
+(dut) $ gsctool -a -w
+Getting WP
+WP: 00000006
+Flash WP: forced enabled
+ at boot: follow_batt_pres
+or
+(ti50 console) $ wp
+wp
+Flash WP: forced enabled
+ at boot: follow_batt_pres
+```
+
+1. If you need it to immediately start following battery presence, you can set
+   it with:
+```bash
+(dut) $ gsctool -a -w follow_batt_pres
+or
+(ti50 console) $ ccd wp follow_batt_pres
+```
+
+#### Bob
 
 Bob devices have a write protect screw in addition to battery presence. The
 write protect screw will force enable write protect until it's removed. If GSC
@@ -824,6 +872,7 @@ by running [`flashrom`] or `futility` from the device bash prompt.
 [cap]: #cap
 [consoles]: #consoles
 [hw-wp]: #hw-wp
+[hw-wp-ti50]: #hw-wp-ti50
 [`flash_ec`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/util/flash_ec
 [CCD Open]: #ccd-open
 [`flashrom`]: https://chromium.googlesource.com/chromiumos/third_party/flashrom/+/main/README.chromiumos
