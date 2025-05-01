@@ -1,0 +1,172 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82fb059d_dd708a76",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-01T04:06:34Z",
+      "side": 1,
+      "message": "The parameters to this don\u0027t vary, so I think you can use `IRQ_CONNECT`. It\u0027s not possible to test that it\u0027s connected that way, but that doesn\u0027t seem very useful anyway (you really need to test on hardware to verify the IRQ is set up correctly) and you can still use `irq_is_enabled(IT83XX_IRQ_CEC)` to check that the interrupt is enabled.",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 21
+      },
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c11d007_cd2471f0",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-01T04:06:34Z",
+      "side": 1,
+      "message": "I don\u0027t trust casting the parameter type to something different to be stable (since `cec_interrupt` takes no parameters but zephyr passes a void pointer). Add another function that ignores the parameter passed to the ISR and then calls `cec_interrupt`.",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 45
+      },
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e5a342_02a09c89",
+        "filename": "zephyr/shim/chip/it8xxx2/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-01T04:06:34Z",
+      "side": 1,
+      "message": "This is tightly coupled with `it83xx_cec_set_enable`, so I think it\u0027s better to put it in the same file. It\u0027s part of the driver rather than a shim from ECOS functions to Zephyr equivalents, so I don\u0027t think it belongs in the shim directory.",
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147c3bb5_795e8b38",
+        "filename": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-01T04:06:34Z",
+      "side": 1,
+      "message": "Is there a reason this can\u0027t be a `FAKE_VALUE_FUNC()`? (Not that it matters if you use `IRQ_CONNECT` instead.)",
+      "fixSuggestions": [
+        {
+          "fixId": "c69fe93d_6ffd9320",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "FAKE_VALUE_FUNC(int, arch_irq_connect_dynamic, unsigned int,\n\t\tunsigned int, void (*)(const void *), const void *, uint32_t);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 43,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": "\tRESET_FAKE(arch_irq_connect_dynamic);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 78,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(arch_irq_connect_dynamic_fake.call_count, 1);\n\tzassert_equal(arch_irq_connect_dynamic_fake.arg0_val, IT83XX_IRQ_CEC);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 84,
+                "startChar": 0,
+                "endLine": 85,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(arch_irq_connect_dynamic_fake.call_count, 1);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 92,
+                "startChar": 0,
+                "endLine": 94,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(arch_irq_connect_dynamic_fake.call_count, 2);\n\tzassert_equal(arch_irq_connect_dynamic_fake.arg0_val, IT83XX_IRQ_CEC);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 98,
+                "startChar": 0,
+                "endLine": 99,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(arch_irq_connect_dynamic_fake.call_count, 2);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(arch_irq_connect_dynamic_fake.call_count, 2);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+              "range": {
+                "startLine": 111,
+                "startChar": 0,
+                "endLine": 112,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(arch_irq_connect_dynamic_fake.call_count, 2);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
