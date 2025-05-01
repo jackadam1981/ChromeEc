@@ -7,6 +7,7 @@
 #include "cros_cbi.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "motion_sense.h"
 #include "tablet_mode.h"
 #include "zephyr/kernel.h"
 
@@ -119,6 +120,7 @@ static void *main_sensor_reset(void)
 	fake_form_factor = CONVERTIBLE;
 	fake_base_sensor = BASE_ICM42607;
 	fake_lid_sensor = LID_LIS2DWLTR;
+	motion_sensor_count = 3;
 
 	/* Run init hooks to initialize cbi. */
 	hook_notify(HOOK_INIT);
