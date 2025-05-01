@@ -184,38 +184,6 @@
 	};
 
 	motionsense-sensor-alt {
-		alt_lid_accel: alt-lid-accel {
-			compatible = "cros-ec,bma4xx";
-			status = "okay";
-
-			active-mask = "SENSOR_ACTIVE_S0_S3";
-			location = "MOTIONSENSE_LOC_LID";
-			mutex = <&lid_mutex_bma422>;
-			port = <&i2c_ec_i2c_sensor_r>;
-			rot-standard-ref = <&lid_rot_bma422>;
-			default-range = <2>;
-			drv-data = <&bma422_data>;
-			i2c-spi-addr-flags = "BMA4_I2C_ADDR_PRIMARY";
-			alternate-for = <&lid_accel>;
-			bodydetect {
-				compatible = "cros-ec,motionsense-bodydetect";
-				status = "okay";
-				var_noise_factor = <150>;
-				var_threshold = <3000>;
-				confidence_delta = <2900>;
-			};
-			configs {
-				compatible =
-					"cros-ec,motionsense-sensor-config";
-				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-				};
-				ec-s3 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
-				};
-			};
-		};
-
 		alt_base_accel: alt-base-accel {
 			compatible = "cros-ec,lsm6dsm-accel";
 			status = "okay";
