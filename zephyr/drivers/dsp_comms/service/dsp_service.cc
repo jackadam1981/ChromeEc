@@ -306,6 +306,15 @@ pw::Status cros::dsp::service::Driver::Init() {
   });
 
   LOG_INF("DSP Initialization rc=%d", rc);
+  if (rc == 0) {
+    // Start off in notebook mode until DSP has a chance to calculate lid angle
+    if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+      SetNotebookMode(cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK);
+    }
+    /* Poll the GMR states */
+    dsp_service_hook_lid_change();
+    dsp_service_hook_tablet_mode_change();
+  }
 
   return pw::OkStatus();
 }
