@@ -69,6 +69,8 @@ class JobClient:
             "env", {"PATH": "/bin:/usr/bin", "PYTHONPATH": ":".join(sys.path)}
         )
         kwargs.setdefault("pass_fds", [])
+        if x := os.environ.get("CROSTC_ADD_IMPLICIT_CFLAGS_FOR"):
+            kwargs["env"]["CROSTC_ADD_IMPLICIT_CFLAGS_FOR"] = x
         kwargs["env"].update(self.env())
         kwargs["pass_fds"] += self.pass_fds()
 
