@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7a7505_62abd12b",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-05-01T16:20:17Z",
+      "side": 1,
+      "message": "This is a doc link to line 415. Is that what you wanted?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "edfdd6c4_6095ecd0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "docs/case_closed_debugging_gsc.md",
+              "range": {
+                "startLine": 424,
+                "startChar": 0,
+                "endLine": 425,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "1077776123658884d0b0633d8e2509e4912042da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
