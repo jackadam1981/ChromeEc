@@ -184,6 +184,30 @@
       },
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9969ebae_e456ed3e",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-01T19:08:39Z",
+      "side": 1,
+      "message": "`config CROS_EC_RW_SIZE` is defined [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d141?q\u003dplatform%2Fec%2Fzephyr%20config%20CROS_EC_RW_SIZE#:~:text\u003d140-,141,-142). \n\nThere is no need to redefine it.",
+      "parentUuid": "07aa81c1_f6c39cc5",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
