@@ -39,7 +39,9 @@ FAKE_VOID_FUNC(ccd_interrupt, enum gpio_signal);
 #ifndef CONFIG_TEST_SQUIRTLE
 FAKE_VOID_FUNC(x_ec_interrupt, enum gpio_signal);
 #endif
+#ifdef CONFIG_TEST_SQUIRTLE
 FAKE_VOID_FUNC(motion_sensors_check_ssfc);
+#endif
 #else
 FAKE_VOID_FUNC(motion_interrupt, enum gpio_signal);
 #endif

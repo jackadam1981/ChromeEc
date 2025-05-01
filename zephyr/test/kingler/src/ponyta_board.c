@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "keyboard_config.h"
 #include "keyboard_scan.h"
+#include "motion_sense.h"
 #include "tablet_mode.h"
 #include "zephyr/kernel.h"
 
@@ -164,6 +165,7 @@ static void *use_alt_sensor_setup(void)
 	/* Set form factor to CONVERTIBLE to enable motion sense interrupts. */
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_converible;
+	motion_sensor_count = 3;
 	/* Re-initialize CBI */
 	reset();
 
@@ -201,6 +203,7 @@ static void *no_alt_sensor_setup(void)
 	/* Set form factor to CONVERTIBLE to enable motion sense interrupts. */
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_converible;
+	motion_sensor_count = 3;
 	/* Re-initialize CBI */
 	reset();
 
