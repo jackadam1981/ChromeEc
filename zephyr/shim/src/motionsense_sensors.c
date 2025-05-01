@@ -420,6 +420,8 @@ DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
 					.name,                               \
 				motion_sensors_alt[SENSOR_ID(id)].name);     \
 			ENABLE_ALT_MOTION_SENSOR(id);                        \
+			task_set_event(TASK_ID_MOTIONSENSE,                  \
+				       TASK_EVENT_MOTION_ODR_CHANGE);        \
 		}                                                            \
 	} while (0)
 
