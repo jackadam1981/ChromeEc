@@ -20,6 +20,7 @@
 #include "cros/dsp/service/cros_transport.hh"
 #include "cros/dsp/service/driver.hh"
 #include "cros_board_info.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "lid_angle.h"
 #include "lid_switch.h"
@@ -329,14 +330,15 @@ DECLARE_HOOK(HOOK_LID_CHANGE, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 
 void dsp_service_hook_tablet_mode_change() {
-  bool is_in_tablet_mode = tablet_get_mode() != 0;
+  bool is_in_tablet_mode = !gpio_get_level(GPIO_TABLET_MODE_L);
   LOG_DBG("is_in_tablet_mode=%d", is_in_tablet_mode);
   cros::dsp::service::driver.transport_.SetStatusBit(
       cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE, is_in_tablet_mode);
 }
-DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE,
-             dsp_service_hook_tablet_mode_change,
-             HOOK_PRIO_DEFAULT);
+extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
+  dsp_service_hook_tablet_mode_change();
+  gmr_tablet_switch_isr(signal);
+}
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_tablet_mode_change, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_TEST
