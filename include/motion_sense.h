@@ -224,10 +224,8 @@ struct motion_sensor_t {
 	 */
 	struct motion_data_t config[SENSOR_CONFIG_MAX];
 
-#ifdef CONFIG_BODY_DETECTION
 	/* Body detection sensor configuration. */
 	const struct body_detect_params *bd_params;
-#endif
 
 	/* state parameters */
 	enum sensor_state state;
@@ -400,9 +398,7 @@ ec_motion_sensor_fill_values(struct ec_response_motion_sensor_data *dst,
 	dst->data[2] = v[2];
 }
 
-#ifdef CONFIG_TEST
 enum sensor_config motion_sense_get_ec_config(void);
-#endif
 
 #ifdef __cplusplus
 }
