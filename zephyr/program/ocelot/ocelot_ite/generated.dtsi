@@ -48,12 +48,6 @@
 		gpio_bga_pinc1: bga_pinc1 {
 			gpios = <&gpiof 7 (GPIO_INPUT)>;
 		};
-		gpio_bga_pinm2: bga_pinm2 {
-			gpios = <&gpioc 7 (GPIO_INPUT)>;
-		};
-		gpio_bga_pinn1: bga_pinn1 {
-			gpios = <&gpiod 0 (GPIO_INPUT)>;
-		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			// signal name was manually overriden from "bga_pinm1"
 			gpios = <&gpioe 6 (GPIO_INPUT)>;
@@ -298,4 +292,16 @@
 		&kso9_default
 	>;
 	pinctrl-names = "default";
+};
+
+/ {
+	/* Edited manually due to b/415825508 */
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			/* BGA_PINM2 */
+			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* BGA_PINN1 */
+			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+	};
 };
