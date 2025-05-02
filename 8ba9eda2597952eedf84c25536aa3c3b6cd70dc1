@@ -70,6 +70,30 @@
       },
       "revId": "8ba9eda2597952eedf84c25536aa3c3b6cd70dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6363d1eb_b48f6c57",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-02T16:32:45Z",
+      "side": 1,
+      "message": "I\u0027m in favor of avoiding weak functions.  It makes the code harder to debug. A separate file that implements the body detection functions sounds good.",
+      "parentUuid": "331affb4_eaa2af2c",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "8ba9eda2597952eedf84c25536aa3c3b6cd70dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
