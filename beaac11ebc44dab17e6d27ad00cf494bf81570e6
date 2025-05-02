@@ -22,6 +22,30 @@
       },
       "revId": "beaac11ebc44dab17e6d27ad00cf494bf81570e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918a2763_cd442f73",
+        "filename": "zephyr/drivers/dsp_comms/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-02T19:25:47Z",
+      "side": 1,
+      "message": "Green lines were supposed to signal that this is a valid function to call from this state, while red for invalid (will return an error).\n\nI\u0027m not sure what you mean by text as PNG, The UML diagram? I didn\u0027t see a tool for gitiles that renders UML so I created the image. Do you prefer the headers over a UML?",
+      "parentUuid": "bb0bf18f_ac0ef1e3",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "beaac11ebc44dab17e6d27ad00cf494bf81570e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
