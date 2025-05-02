@@ -602,6 +602,15 @@
 #define CONFIG_BATTERY_CUTOFF_TIMEOUT_MSEC 8000
 
 /*
+ * VolumeUp + AC disconnect battery cutoff sequence.
+ * By default 'CONFIG_BATTERY_CUTOFF_VOL_UP' is enabled when
+ * CONFIG_VOLUME_BUTTONS is defined.
+ * Use 'CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED' in board.h to
+ * turn off this capability.
+ */
+#undef CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED
+
+/*
  * The board-specific battery.c implements get and set functions to read and
  * write arbirary vendor-specific parameters stored in the battery.
  * See include/battery.h for prototypes.
@@ -6537,6 +6546,11 @@
 	defined(CONFIG_BATTERY_MAX17055) || defined(CONFIG_BATTERY_MM8013) || \
 	defined(CONFIG_BATTERY_SMART)
 #define CONFIG_BATTERY
+#endif
+
+#if defined(CONFIG_VOLUME_BUTTONS) && \
+	!defined(CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED)
+#define CONFIG_BATTERY_CUTOFF_VOL_UP
 #endif
 
 #if defined(CONFIG_CBI_EEPROM) || defined(CONFIG_CBI_FLASH)
