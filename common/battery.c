@@ -441,7 +441,7 @@ static void ac_change(void)
 		key = keyboard_scan_get_boot_keys() == BIT(BOOT_KEY_REFRESH);
 
 #ifdef CONFIG_VOLUME_BUTTONS
-	if (!key)
+	if (IS_ENABLED(CONFIG_BATTERY_CUTOFF_VOL_UP) && !key)
 		/* Strictly vol-up only. */
 		key = button_get_boot_button() == BIT(BUTTON_VOLUME_UP);
 #endif
