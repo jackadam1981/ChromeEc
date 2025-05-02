@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5a0027a_722ca4db",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-05-02T07:22:24Z",
+      "side": 1,
+      "message": "The `irq_is_enabled(IT83XX_IRQ_CEC)` shows the interrupt is enabled after `task_enable_irq(IT83XX_IRQ_CEC)` but the `cec_interrupt` seems not triggered because I didn\u0027t get \"cec_interrupt\" in EC log after the command \"cec-ctl --playback\" on dirks. (no mater I used `IRQ_CONNECT` or `irq_connect_dynamic`)",
+      "parentUuid": "82fb059d_dd708a76",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 21
+      },
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c11d007_cd2471f0",
         "filename": "driver/cec/it83xx.c",
         "patchSetId": 6
@@ -60,6 +84,24 @@
       "writtenOn": "2025-05-01T04:06:34Z",
       "side": 1,
       "message": "This is tightly coupled with `it83xx_cec_set_enable`, so I think it\u0027s better to put it in the same file. It\u0027s part of the driver rather than a shim from ECOS functions to Zephyr equivalents, so I don\u0027t think it belongs in the shim directory.",
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e71b314_ee04d281",
+        "filename": "zephyr/shim/chip/it8xxx2/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-05-02T07:22:24Z",
+      "side": 1,
+      "message": "Done. I moved it to driver/cec/it83xx.c.",
+      "parentUuid": "38e5a342_02a09c89",
       "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
