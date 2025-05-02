@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0726642c_61315aef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-05-02T05:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bfb2cf5_f05dd9f1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b621cfa_aa0c8872",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-04-30T12:35:36Z",
       "side": 1,
       "message": "nit: I think this is also unnecessary.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d30a2186_66b25d70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-05-02T05:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b621cfa_aa0c8872",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "344707b3_cfe18a20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-05-02T05:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15fedb10_8de90454",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b32dd349_0bb91238",
@@ -107,6 +179,24 @@
       "writtenOn": "2025-04-30T20:41:46Z",
       "side": 1,
       "message": "I think you should have a TEST\u003d line here, and I would have expected `repo upload` to enforce that. Are you uploading some other way?\n\nFor VIFs generally, I think something like `TEST\u003dOpened in VIF Editor 3.11.0 without error` (or whatever the latest version of VIF Editor is) is generally sufficient. If the test results happen to change, that may be worth mentioning, but the VIF should be correct by inspection.",
+      "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9ae357_c59b53b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-05-02T05:42:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b32dd349_0bb91238",
       "revId": "a9fcdd96382945656cc88549201a8ff53da0b597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
