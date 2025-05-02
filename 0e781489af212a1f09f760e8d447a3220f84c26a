@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a1ac4e_58d762e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-02T18:21:22Z",
+      "side": 1,
+      "message": "Nit: It would be nice to split up this CL so that the changes that fix each test are in separate CLs, each with a `TEST\u003dFixed X test`.\n\nAs a bonus, that might lend itself to a higher-level headline for the CL, such as \"Correct data properties\" or \"Correct source power properties.\" \"Modify VIF parameters\" isn\u0027t very informative, but with one big CL, it\u0027s hard to be more specific in the headline.",
+      "revId": "0e781489af212a1f09f760e8d447a3220f84c26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fea8d04_f2b5ccc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-02T18:21:22Z",
+      "side": 1,
+      "message": "Please make sure the resulting file opens cleanly in VIF Editor.",
+      "revId": "0e781489af212a1f09f760e8d447a3220f84c26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
