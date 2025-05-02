@@ -16,6 +16,29 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8716044128780815537) is being automatically retried for the following reasons:\n- Some child builders are now retryable:nissa-cq, rex-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "efb75ce337b9769f857fb362e92da77a1d1e68b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503c992b_85c5e5a5",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-05-02T02:44:46Z",
+      "side": 1,
+      "message": "`default $(add,$(dt_nodelabel_reg_size_hex,sram0),$(dt_nodelabel_reg_size_hex,bootloader_ram))`\n\nThis value varies depending on the chip:\n1) if the node `bootloader_ram` exist, retrieve the size from its `reg` property\n2) else \"0\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "efb75ce337b9769f857fb362e92da77a1d1e68b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
