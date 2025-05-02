@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dbadf80_5c074c2d",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-02T16:50:47Z",
+      "side": 1,
+      "message": "Nit add a blank line and comment header",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "43ce3e02_f9b8f033",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/uldrenite/project.conf",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 63,
+                "endChar": 0
+              },
+              "replacement": "# DSP\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7f0e6cbfddcfbf00f2b2a78833deba7cbcc958f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
