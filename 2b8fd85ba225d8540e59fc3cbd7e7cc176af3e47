@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a22be7a_4eeadd45",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-02T16:13:37Z",
+      "side": 1,
+      "message": "Does the RAM used by the chrome-loader need to be reserved?  Once the EC application is running, can the EC use this memory?\n\nBecause the RTS5915 has 1 MB flash, we should be able to make the EC image size as big as the available code RAM.  This would be 320 KB, minus any RAM sections that have to be reserved for the bootrom or monitor code.",
+      "parentUuid": "2f394e88_d1a08b46",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8aea95cf_4ac8c5e6",
         "filename": "zephyr/boards/google/realtek/pre_dt_board.cmake",
         "patchSetId": 2
