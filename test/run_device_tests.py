@@ -1288,6 +1288,16 @@ def patch_image(test: TestConfig, image_path: str):
         image_file.truncate()
 
 
+def erase_rw(image_path: str):
+    """Replace RW part of the firmware with 0xFF."""
+    with open(image_path, "rb+") as image_file:
+        image = bytearray(image_file.read())
+        write_section(b"", image, "EC_RW")
+        image_file.seek(0)
+        image_file.write(image)
+        image_file.truncate()
+
+
 def readline(
     executor: ThreadPoolExecutor, file: BinaryIO, timeout_secs: int
 ) -> Optional[bytes]:
