@@ -63,6 +63,30 @@
       },
       "revId": "efb75ce337b9769f857fb362e92da77a1d1e68b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3189ae_78482008",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-05-02T06:49:46Z",
+      "side": 1,
+      "message": "\u003e the add function only accepts int, so I cannot use dt_nodelabel_reg_size_hex, but rather dt_nodelabel_reg_size_int.\n\nSorry that I didn\u0027t notice that the add function supports only `int` type. Thanks for the correction.\n\n\u003eSo this default value will be without the if statement if $(dt_nodelabel_exists,sram0\nif this is the case, do we need the other defaults per product?\n\nI think all of the npcx devices should have to define the DT nodes `sram0`.\nMaybe you can remove `if $(dt_nodelabel_exists,sram0`\n\nAs this change directly calculate the size from DT nodes, the following per product defaults can also be remove:\n```\ndefault 0x00018000 if SOC_NPCX9MFP\ndefault 0x00020000 if SOC_NPCX9M7FB\ndefault 0x00010000\n```\n\nBy the way, I just notice that it seems the config `CROS_EC_DATA_RAM_SIZE` is no longer used in the EC repo by searching all the EC source folder.",
+      "parentUuid": "d2313578_73a4e947",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "efb75ce337b9769f857fb362e92da77a1d1e68b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
