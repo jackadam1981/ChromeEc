@@ -5,7 +5,7 @@
 
 / {
 	chosen {
-		cros-ec,keyboard = &kbd0;
+		cros-ec,keyboard = &kbd;
 	};
 };
 
@@ -48,7 +48,7 @@
 	};
 };
 
-&kbd0 {
+&kbd {
 	status = "okay";
 
 	pinctrl-0 = <
