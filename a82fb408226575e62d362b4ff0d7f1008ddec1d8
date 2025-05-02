@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e46e96_a8fceac1",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-05-02T21:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22fd1f2f_09f0a427",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 36
+      },
+      "revId": "a82fb408226575e62d362b4ff0d7f1008ddec1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262672ea_22c27d48",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-02T20:55:34Z",
       "side": 1,
       "message": "`default y if PLATFORM_EC_VOLUME_BUTTONS`",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 58
+      },
+      "revId": "a82fb408226575e62d362b4ff0d7f1008ddec1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3349eee8_d5cdcd75",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-05-02T21:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "262672ea_22c27d48",
       "range": {
         "startLine": 170,
         "startChar": 0,
