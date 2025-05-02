@@ -117,6 +117,24 @@
       "parentUuid": "7d8a213d_fbc64009",
       "revId": "e64302e960dfed85cbaf654407a012a04fa548e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91aa7e2_cab1c33e",
+        "filename": "board/redrix/redrix_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-02T23:00:23Z",
+      "side": 1,
+      "message": "Doh, I forgot to update the commit message. Now it\u0027s wrong in the tree. Hopefully this won\u0027t end up being critical.",
+      "parentUuid": "715968d1_78c9aa02",
+      "revId": "e64302e960dfed85cbaf654407a012a04fa548e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
