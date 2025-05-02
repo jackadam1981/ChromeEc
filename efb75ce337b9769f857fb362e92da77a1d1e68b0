@@ -39,6 +39,30 @@
       },
       "revId": "efb75ce337b9769f857fb362e92da77a1d1e68b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2313578_73a4e947",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-02T05:11:22Z",
+      "side": 1,
+      "message": "the add function only accepts `int`, so I cannot use `dt_nodelabel_reg_size_hex`, but rather `dt_nodelabel_reg_size_int`.\n\nSo this default value will be without the if statement `if $(dt_nodelabel_exists,sram0`\n\nif this is the case, do we need the other defaults per product?",
+      "parentUuid": "503c992b_85c5e5a5",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "efb75ce337b9769f857fb362e92da77a1d1e68b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
