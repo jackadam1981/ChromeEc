@@ -181,8 +181,11 @@ BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
 BUCCANEER_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, "buccaneer_v2.0.26328-821504380b.bin"
 )
-HELIPILOT_IMAGE_PATH = os.path.join(
+HELIPILOT_V24337_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, "helipilot_v2.0.24337-2726e9f149.bin"
+)
+HELIPILOT_V27609_IMAGE_PATH = os.path.join(
+    TEST_ASSETS_BUCKET, "helipilot_v2.0.27609-ac26a0796b.bin"
 )
 
 RangedValue = namedtuple("RangedValue", "nominal range")
@@ -999,7 +1002,8 @@ HELIPILOT_CONFIG = BoardConfig(
         idle=RangedValue(34.8, 7.0), sleep=RangedValue(2.7, 2.5)
     ),
     variants={
-        "helipilot_v2.0.24337": {"ro_image_path": HELIPILOT_IMAGE_PATH},
+        "helipilot_v2.0.24337": {"ro_image_path": HELIPILOT_V24337_IMAGE_PATH},
+        "helipilot_v2.0.27609": {"ro_image_path": HELIPILOT_V27609_IMAGE_PATH},
         "buccaneer_v2.0.26328": {
             "ro_image_path": BUCCANEER_IMAGE_PATH,
             "build_board": "buccaneer",
