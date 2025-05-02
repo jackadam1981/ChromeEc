@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "83738f19_04f8f74a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-02T23:52:04Z",
+      "side": 1,
+      "message": "Can you add the `compare-builds` info? Is this the one you mentioned that passes for everything except one evaluation board? Just make a note of that in the `TEST` comment.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "e5ea7e59bc2d1fdf84b61449685f89d09190d60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "86b2854c_86640d6d",
@@ -31,6 +54,29 @@
       "writtenOn": "2025-05-02T02:19:47Z",
       "side": 1,
       "message": "For EC project convention, The starting position of RW is usually calculated from the offset of half flash address, the suggestion of the change is:\n```\n\u0026binman {                                                                                            \n        wp-ro {                                                                                      \n                offset \u003d \u003c0x0\u003e;                                                                      \n                size \u003d \u003c0x40000\u003e;                                                                                                                                                                                                             \n                ec-ro {                                                                              \n                        fmap {                                                                       \n                                offset \u003d \u003c(0x30000 - 0x400)\u003e;                                        \n                                /*                                                                   \n                                 * don\u0027t specify \u0027size \u003d \u003c0x400\u003e\u0027 here so                            \n                                 * it is auto-assigned to the fmap size.                             \n                                 */                                                                  \n                        };                                                                           \n                };                                                                                   \n        };                                                                                           \n        ec-rw {                                                                                      \n                offset \u003d \u003c0x40000\u003e;                                                                  \n                size \u003d \u003c0x30000\u003e;                                                                    \n                rw-fw {                                                                              \n                        rw-fwid {                                                                    \n                                offset \u003d \u003c(0x30000 - 32)\u003e;                                           \n                        };                                                                           \n                };                                                                                   \n        };                                                                                           \n        pad-byte \u003d \u003c0xff\u003e;                                                                           \n        pad-after \u003d \u003c0x10000\u003e;                                                                       \n};                                                                                                   \n~                                    \n```\n\nNote: with the change, it also needs to change the value in `zephyr/program/npcx_evb/npcx9/BUILD.py` to prevent form compilation error.\n```\n-assert_rw_fwid_DO_NOT_EDIT(project_name\u003d\"npcx9\", addr\u003d0x7ffe0)\n+assert_rw_fwid_DO_NOT_EDIT(project_name\u003d\"npcx9\", addr\u003d0x6ffe0)\n```",
+      "revId": "e5ea7e59bc2d1fdf84b61449685f89d09190d60a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a5fc1ff_d80e476c",
+        "filename": "zephyr/program/npcx_evb/npcx9/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-02T23:52:04Z",
+      "side": 1,
+      "message": "The comment suggests we shouldn\u0027t change this. Does changing this only affect the \"npcx9\" EVB board or is this something used by all of the Nuvoton boards, such as `helipilot`?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 62
+      },
       "revId": "e5ea7e59bc2d1fdf84b61449685f89d09190d60a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
