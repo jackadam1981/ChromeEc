@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22fd1f2f_09f0a427",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-02T20:55:34Z",
+      "side": 1,
+      "message": "Somewhere after the `#include \"board.h\"` you need to assert that CONFIG_VOLUME_BUTTONs is also set.\n\n```\n#if defined (CONFIG_BATTERY_CUTOFF_VOL_UP) \u0026\u0026 \\\n    !defined(CONFIG_VOLUME_BUTTONS\n#error \"....\"\n#endif\n```",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 36
+      },
+      "revId": "a82fb408226575e62d362b4ff0d7f1008ddec1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262672ea_22c27d48",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-02T20:55:34Z",
+      "side": 1,
+      "message": "`default y if PLATFORM_EC_VOLUME_BUTTONS`",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 58
+      },
+      "revId": "a82fb408226575e62d362b4ff0d7f1008ddec1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
