@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0bf18f_ac0ef1e3",
+        "filename": "zephyr/drivers/dsp_comms/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-02T16:38:23Z",
+      "side": 1,
+      "message": "Is there any meaning behind the red vs green edges in the diagram?  Can you add a legend?\nI also don\u0027t understand what you\u0027re trying to describe with the template snippet and the I2C transport snippet.  Capturing text as a PNG is odd.  Can you link to the real code instead?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "beaac11ebc44dab17e6d27ad00cf494bf81570e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
