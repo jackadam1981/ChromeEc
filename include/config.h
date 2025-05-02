@@ -602,6 +602,11 @@
 #define CONFIG_BATTERY_CUTOFF_TIMEOUT_MSEC 8000
 
 /*
+ * Disable VolumeUp + AC disconnect battery cutoff sequence.
+ */
+#undef CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED
+
+/*
  * The board-specific battery.c implements get and set functions to read and
  * write arbirary vendor-specific parameters stored in the battery.
  * See include/battery.h for prototypes.
