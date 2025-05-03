@@ -16,6 +16,23 @@
       "message": "I inverted the logic so I can leverage the dependency checks towards the last half of `config.h`.  Which removes the need to `#undef CONFIG_BATTERY_CUTOFF_VOL_UP`  for any boards that don\u0027t have physical volume buttons.",
       "revId": "cbe6f2749683dd10679f5c22b5a6008c8add7df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2e374b_fb94b7f6",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-05-03T15:31:20Z",
+      "side": 1,
+      "message": "This is the result of running `cp /tmp/new_config_allowed.txt util/config_allowed.txt`",
+      "revId": "cbe6f2749683dd10679f5c22b5a6008c8add7df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
