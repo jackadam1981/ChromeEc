@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62fb1b7d_72f1c786",
+        "filename": "zephyr/program/bluey/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-04T23:37:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8310d78d_b362bdcb",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "5353f8ba14c0ce86628145d92f81ddc1c098e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7bd3725_eb036d22",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-04-28T16:19:49Z",
       "side": 1,
       "message": "I don\u0027t think you need this empty `CMakeLists.txt` file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "5353f8ba14c0ce86628145d92f81ddc1c098e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1213833_7fe351bf",
+        "filename": "zephyr/program/bluey/quenbi/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-04T23:37:48Z",
+      "side": 1,
+      "message": "I think the builder requires this file, I get the following error if this file doesn\u0027t exist\n```\n/mnt/host/source/src/platform/ec/zephyr/program/bluey/quenbi\n  does not contain a CMakeLists.txt file.\n```",
+      "parentUuid": "a7bd3725_eb036d22",
       "range": {
         "startLine": 1,
         "startChar": 0,
