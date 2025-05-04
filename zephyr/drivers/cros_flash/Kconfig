@@ -61,6 +61,17 @@ config CROS_FLASH_XEC_INIT_PRIORITY
 
 endif # CROS_FLASH_XEC
 
+config CROS_FLASH_RTK
+	bool "REALTEK RTS5915 flash driver for the Zephyr shim"
+	depends on DT_HAS_REALTEK_RTK_CROS_FLASH_ENABLED
+	default y
+	select PLATFORM_EC_FLASH_CROS
+	select PLATFORM_EC_SPI_FLASH_REGS
+	help
+	  This option enables the flash driver for the rts5915 chip. We can
+	  access the flash by read, write and erase. The rts5915 flash size
+	  is 1M byte.
+
 config CROS_FLASH
 	bool "Generic cros-flash driver for the Zephyr shim"
 	depends on DT_HAS_CROS_EC_CROS_FLASH_ENABLED
