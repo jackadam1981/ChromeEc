@@ -816,6 +816,9 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 #ifdef CONFIG_CROS_FLASH
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
+#ifdef CONFIG_CROS_EC_HEADER_OFF
+	addr += CONFIG_CROS_EC_HEADER_OFF;
+#endif /* CONFIG_MAPPED_STORAGE */
 	crec_flash_lock_mapped_storage(1);
 	memcpy(&data, (const void *)addr, sizeof(data));
 	crec_flash_lock_mapped_storage(0);
