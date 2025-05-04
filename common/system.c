@@ -41,6 +41,9 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(sys_log, LOG_LEVEL_ERR);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -816,6 +819,10 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 #ifdef CONFIG_CROS_FLASH
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
+#ifdef CONFIG_CROS_EC_HEADER_OFF
+	LOG_ERR("system_get addr = %lx", (unsigned long)addr);
+	addr += CONFIG_CROS_EC_HEADER_OFF;
+#endif /* CONFIG_MAPPED_STORAGE */
 	crec_flash_lock_mapped_storage(1);
 	memcpy(&data, (const void *)addr, sizeof(data));
 	crec_flash_lock_mapped_storage(0);
