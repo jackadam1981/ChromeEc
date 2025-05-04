@@ -68,7 +68,6 @@ def register_ish_project(**kwargs):
 
 def register_rtk_project(**kwargs):
     """Register a project that uses RawBinPacker."""
-    kwargs.setdefault("supported_toolchains", ["coreboot-sdk", "zephyr"])
-    kwargs.setdefault("output_packer", zmake.output_packers.RawBinPacker)
+    kwargs.setdefault("output_packer", zmake.output_packers.RTKBinmanPacker)
     kwargs.setdefault("modules", ["cmsis", "ec"])
-    return _register_project(**kwargs)
+    return register_raw_project(**kwargs)
