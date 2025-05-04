@@ -32,3 +32,4 @@ register_rtk_project(
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="minimal-it8xxx2", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="minimal-npcx9", addr=0x7FFE0)
+assert_rw_fwid_DO_NOT_EDIT(project_name="minimal-realtek", addr=0xCFFE0)
