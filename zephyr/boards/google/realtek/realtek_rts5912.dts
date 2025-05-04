@@ -7,3 +7,49 @@
 
 #include <realtek/ec/rts5912.dtsi>
 #include "realtek.dtsi"
+
+&binman {
+	wp-ro {
+		/*
+		 * wp-ro must match a block protect region supported by
+		 * by the internal flash device. In practice, that's
+		 * 512 KiB starting at address 0.
+		 */
+		offset = <0x0>;
+		/*
+		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
+		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
+		 */
+		size = <0x50000>;
+		ec-ro {
+			fmap {
+				offset = <(0x50000 - 0x400)>;
+				/*
+				 * don't specify 'size = <0x400>' here so
+				 * it is auto-assigned to the fmap size.
+				 */
+			};
+		};
+	};
+	ec-rw {
+		offset = <0x80000>;
+		/*
+		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
+		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
+		 */
+		size = <0x50000>;
+		rw-fw {
+			rw-fwid {
+				/* Fix the lcoation of the FWID to the
+				 * last 32 bytes of the flash. This
+				 * ensures the RW entries in the FMAP
+				 * stored in the RO section of flash
+				 * are always correct.
+				 */
+				offset = <(0x50000 - 32)>;
+			};
+		};
+	};
+	pad-byte = <0xff>;
+	pad-after = <0x30000>;
+};

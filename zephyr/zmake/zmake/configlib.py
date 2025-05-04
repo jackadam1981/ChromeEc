@@ -69,5 +69,6 @@ def register_ish_project(**kwargs):
 
 def register_rtk_project(**kwargs):
     """Register a project that uses RawBinPacker."""
+    kwargs.setdefault("output_packer", zmake.output_packers.RTKBinmanPacker)
     kwargs.setdefault("modules", ["cmsis", "cmsis_6", "ec"])
     return register_raw_project(**kwargs)
