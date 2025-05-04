@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include <cros/binman.dtsi>
+
 / {
 	chosen {
 		cros-ec,bbram = &bbram;
