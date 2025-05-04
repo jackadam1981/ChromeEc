@@ -7,8 +7,16 @@
 
 / {
     chosen {
-		  cros-ec,bbram = &bbram;
+		cros-ec,bbram = &bbram;
+		cros-ec,flash = &eflash;
+		cros-ec,flash-controller = &fiu0;
     };
+
+	soc {
+		fiu0: cros-flash {
+			compatible = "realtek,rtk-cros-flash";
+		};
+	};
 
 	named-bbram-regions {
 		compatible = "named-bbram-regions";

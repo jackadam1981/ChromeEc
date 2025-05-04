@@ -146,6 +146,12 @@ config CROS_EC_RW_SIZE
 		This will be used (along with SYSTEM_RW_MEM_OFF) to determine if the
 		current PC is in the RW section.
 
+config CROS_EC_HEADER_OFF
+	hex "The size of the header of the image"
+	default 0x0
+	help
+		This will be used when read fwid. RTK EC will need a offset.
+
 # By default, a unit test doesn't need shimmed tasks.
 config SHIMMED_TASKS
 	bool "Add support for shimming in platform/ec tasks as Zephyr threads"

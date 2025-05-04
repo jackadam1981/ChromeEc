@@ -48,13 +48,16 @@ config CROS_EC_RAM_SIZE
 config CROS_EC_RO_MEM_OFF
 	default 0
 
-config PLATFORM_EC_FLASH_SIZE_BYTES
-	default 0x100000
-
-# Image size is configured with binman's property.
-# (CROS_EC_RO_SIZE and CROS_EC_RW_SIZE)
+config CROS_EC_RO_SIZE
+	default 0x40000
 
 config CROS_EC_RW_MEM_OFF
 	default 0
+
+config CROS_EC_RW_SIZE
+	default 0x40000
+
+config CROS_EC_HEADER_OFF
+	default 0x20
 
 endif # BOARD_REALTEK
