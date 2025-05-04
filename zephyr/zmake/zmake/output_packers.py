@@ -419,6 +419,46 @@ class MchpPacker(BinmanPacker):
         yield ro_dir / self.second_loader, self.second_loader
 
 
+class RTKBinmanPacker(BinmanPacker):
+    """Packer for RO/RW image to generate a .bin build using FMAP.
+    This expects that the build is setup to generate a
+    zephyr.rts5912.bin for the RO image, which should be packed using
+    realtek's loader format.
+    """
+
+    ro_file = "zephyr.rts5912.bin"
+
+    def _get_max_image_bytes(self, dir_map):
+        ro_dir = dir_map["ro"]
+        rw_dir = dir_map["rw"]
+        ro_size = util.read_kconfig_autoconf_value(
+            ro_dir / "zephyr" / "include" / "generated" / "zephyr",
+            "CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES",
+        )
+        rw_size = util.read_kconfig_autoconf_value(
+            rw_dir / "zephyr" / "include" / "generated" / "zephyr",
+            "CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES",
+        )
+        return max(int(ro_size, 0), int(rw_size, 0))
+
+    # This can probably be removed too and just rely on binman to
+    # check the sizes... see the comment above.
+    def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+        for path, output_file in super().pack_firmware(
+            work_dir,
+            jobclient,
+            dir_map,
+            version_string=version_string,
+        ):
+            if output_file == "ec.bin":
+                yield (
+                    self._check_packed_file_size(path, dir_map),
+                    "ec.bin",
+                )
+            else:
+                yield path, output_file
+
+
 # A dictionary mapping packer config names to classes.
 packer_registry = {
     "binman": BinmanPacker,
@@ -426,4 +466,5 @@ packer_registry = {
     "npcx": NpcxPacker,
     "raw": RawBinPacker,
     "mchp": MchpPacker,
+    "realtek": RTKBinmanPacker,
 }
