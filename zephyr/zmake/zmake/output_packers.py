@@ -418,6 +418,7 @@ class RTKBinmanPacker(BinmanPacker):
     """
 
     ro_file = "zephyr.rts5912.bin"
+    rw_file = "zephyr.rts5912.bin"
 
     def _get_max_image_bytes(self, dir_map):
         ro_dir = dir_map["ro"]
