@@ -48,6 +48,9 @@ config CROS_EC_RAM_SIZE
 config CROS_EC_RO_MEM_OFF
 	default 0
 
+config PLATFORM_EC_FLASH_SIZE_BYTES
+	default 0x100000
+
 # Image size is configured with binman's property.
 # (CROS_EC_RO_SIZE and CROS_EC_RW_SIZE)
 
