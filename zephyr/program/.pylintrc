@@ -9,6 +9,7 @@ additional-builtins=
     register_npcx_project,
     register_raw_project,
     register_ish_project,
+    register_rtk_project,
 good-names=BUILD
 
 # cros lint doesn't inherit the pylintrc from the parent dir.
