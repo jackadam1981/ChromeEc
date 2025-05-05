@@ -31,7 +31,7 @@
 	};
 };
 
-&i2c1 {
+&i2c_1 {
 	pdc_power_p0: rts54-pdc@66 {
 		compatible = "realtek,rts54-pdc";
 		reg = <0x66>;
@@ -45,7 +45,7 @@
 	};
 };
 
-&i2c4 {
+&i2c_4 {
 	charger: isl9238@9 {
 		compatible = "intersil,isl923x";
 		status = "okay";
