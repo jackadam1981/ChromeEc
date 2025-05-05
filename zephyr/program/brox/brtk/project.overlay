@@ -7,8 +7,6 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-#include <cros/cbi_flash.dtsi>
-
 #include "rtk_adc.dtsi"
 #include "brtk.dtsi"
 #include "rtk_fan.dtsi"
