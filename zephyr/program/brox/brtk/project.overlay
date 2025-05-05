@@ -1,0 +1,54 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Brtk program common DTS includes */
+
+/* Arbitrage generates an incorrect node label when using alternate pins.
+ * Create a 2nd node label on I2C3 as a workaround.
+ * TODO: b/310227384 - I2C alternate selection not detected automatically.
+ */
+i2c3ALT: &i2c3 {
+};
+
+#include <cros/cbi_flash.dtsi>
+
+#include "rtk_adc.dtsi"
+#include "brtk.dtsi"
+#include "rtk_fan.dtsi"
+#include "rtk_generated.dtsi"
+#include "rtk_gpio.dtsi"
+#include "rtk_i2c.dtsi"
+#include "rtk_interrupts.dtsi"
+#include "rtk_led_pins.dtsi"
+#include "../led_policy.dtsi"
+#include "rtk_keyboard.dtsi"
+#include "../motionsense.dtsi"
+#include "rtk_power_signals.dtsi"
+#include "../power_signals_gpios.dtsi"
+#include "rtk_pwm.dtsi"
+#include "../temp_sensors.dtsi"
+#include "rtk_usb_typec.dtsi"
+#include "../usba.dtsi"
+#include "../binman.dtsi"
+
+/* Brtk project DTS includes*/
+
+/* Brtk overrides follow... */
+
+/{
+        batteries {
+                default_battery: lgc_ap18c8k {
+                        compatible = "lgc,ap18c8k", "battery-smart";
+                };
+        };
+};
+
+/* These GPIOS are initialized by the PDC driver */
+&gpio_usb_pd_int_odl {
+	no-auto-init;
+};
+&gpio_ec_i2c_pmc_pd_int_odl {
+	no-auto-init;
+};
