@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2d3156_85430a15",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-05T21:38:44Z",
+      "side": 1,
+      "message": "While this change does address the case of an interrupt for a C1 interrupt happening while C0 is processed, there is still a possibility that there could be a C0 interrupt triggered while processing a C1 interrupt again. The underlying issue (weakness) in the current handling is that PDC_IRQ_EVENT can only be posted to either the C0 or C1 thread. It\u0027s only the gpio edge trigger event that can post an event to both threads when the irq callback is executed.\n\nI think we need to look into changing the driver so that a common handler can post events to the correct thread. This should cover all cases.",
+      "fixSuggestions": [
+        {
+          "fixId": "f5020e98_194debc8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/pdc_tps6699x.c",
+              "range": {
+                "startLine": 563,
+                "startChar": 0,
+                "endLine": 563,
+                "endChar": 0
+              },
+              "replacement": "\t *\n\t * TODO: b/328660879 - This approach does not fully address the\n\t * race condition. It is possible for a new interrupt to arrive\n\t * while this thread is processing the current interrupt.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "47127ddfa6879fee233afd149438150a62950972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
