@@ -7,6 +7,7 @@
 #include <dt-bindings/gpio_defines.h>
 #include <dt-bindings/gpio/realtek-gpio.h>
 #include <realtek/ec/rts5912-pinctrl.dtsi>
+#include <cros/vivaldi_kbd_default.dtsi>
 
 #define GPIO_VOLTAGE_1P8 RTS5912_GPIO_VOLTAGE_1V8
 
