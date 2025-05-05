@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6105881a_06f9fb4d",
+        "filename": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-05-05T18:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d88c103_4fd3c7d5",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "22a92fd3158f87461d4fd994a79b1c001f4a9e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7595727f_ca019fff",
@@ -106,6 +130,30 @@
           ]
         }
       ],
+      "revId": "22a92fd3158f87461d4fd994a79b1c001f4a9e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5c6f7d_20c1a3eb",
+        "filename": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-05-05T18:49:15Z",
+      "side": 1,
+      "message": "Thanks for catching this. Updated to 22.5W shared.",
+      "parentUuid": "7595727f_ca019fff",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 78
+      },
       "revId": "22a92fd3158f87461d4fd994a79b1c001f4a9e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
