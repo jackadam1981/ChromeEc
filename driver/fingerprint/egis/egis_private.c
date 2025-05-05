@@ -150,19 +150,7 @@ int fp_sensor_deinit(void)
 	return egis_sensor_deinit();
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
-{
-	uint16_t sensor_id;
-	memcpy(resp, &egis_fp_sensor_info, sizeof(struct ec_response_fp_info));
-	if (egis_get_hwid(&sensor_id) != EGIS_API_OK)
-		return EC_RES_ERROR;
-
-	resp->model_id = sensor_id;
-	resp->errors = errors;
-	return EC_SUCCESS;
-}
-
-int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)
+int fp_sensor_get_info(struct ec_response_fp_info_v2 *resp)
 {
 	uint16_t sensor_id;
 	memcpy(&resp->sensor_info, &egis_sensor_info,
