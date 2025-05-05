@@ -35,6 +35,11 @@ void system_jump_to_booter(void)
 
 	__disable_irq();
 
+	for (int i = 0; i < CONFIG_NUM_IRQS; i++) {
+		NVIC_ClearPendingIRQ(i);
+		NVIC_DisableIRQ(i);
+	}
+
 	/*
 	 * Get memory offset and size for RO/RW regions.
 	 */
