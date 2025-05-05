@@ -24,3 +24,10 @@ config WDT_COUNTER
 	default y
 
 endif # WATCHDOG
+
+if ADC
+
+config PLATFORM_EC_ADC_RESOLUTION
+	default 12
+
+endif # ADC
