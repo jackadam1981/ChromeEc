@@ -13,6 +13,7 @@
 		cros-ec,flash-controller = &fiu0;
 		cros-ec,watchdog = &wdog;
 		cros-ec,watchdog-helper = &wdt_counter;
+		cros-ec,sha= &sha0;
     };
 
 	soc {
