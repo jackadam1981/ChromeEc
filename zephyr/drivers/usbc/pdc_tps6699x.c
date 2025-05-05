@@ -295,6 +295,8 @@ struct pdc_data_t {
 	atomic_t set_rdo_possible;
 	/* Set when SRDY may be used. */
 	atomic_t sink_enable_possible;
+	/* CMD to send to PDC from tps_notify_new_power_contract */
+	enum cmd_t delayable_cmd;
 	/* Should use cached connector status change bits */
 	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
@@ -459,12 +461,18 @@ static void tps_notify_new_power_contract(struct k_work *work)
 	 * - Previous SET_SINK_PATH attempt timed out before seeing new
 	 *   contract.
 	 */
-	if (data->cmd == CMD_SET_SINK_PATH) {
+	if (data->delayable_cmd == CMD_SET_SINK_PATH) {
 		atomic_set(&data->sink_enable_possible, 1);
+		/* Safe now to send CMD_SET_SINK_PATH */
+		data->cmd = CMD_SET_SINK_PATH;
 		k_event_post(&data->pdc_event, PDC_CMD_EVENT);
-	} else if (data->cmd == CMD_SET_RDO) {
+		data->delayable_cmd = CMD_NONE;
+	} else if (data->delayable_cmd == CMD_SET_RDO) {
 		atomic_set(&data->set_rdo_possible, 1);
+		/* Safe now to send CMD_SET_RDO */
+		data->cmd = CMD_SET_RDO;
 		k_event_post(&data->pdc_event, PDC_CMD_EVENT);
+		data->delayable_cmd = CMD_NONE;
 	}
 }
 
@@ -1213,6 +1221,8 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 	if (!atomic_get(&data->set_rdo_possible)) {
 		k_work_reschedule(&data->new_power_contract,
 				  K_MSEC(PDC_TI_SET_SINK_PATH_DELAY_MS));
+		/* Save CMD for callback function */
+		data->delayable_cmd = data->cmd;
 		return;
 	}
 
@@ -1594,6 +1604,8 @@ static void task_srdy(struct pdc_data_t *data)
 			 * contract is seen. Otherwise, it will return an error
 			 * to the caller.
 			 */
+			/* Save CMD for callback function */
+			data->delayable_cmd = data->cmd;
 			k_work_reschedule(
 				&data->new_power_contract,
 				K_MSEC(PDC_TI_SET_SINK_PATH_DELAY_MS));
