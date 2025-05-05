@@ -4,9 +4,11 @@
  */
 
 &adc0 {
-	pinctrl-0 = <&adc0_ch0_gpi0_default
-		     &adc0_ch1_gpi1_default
-		     &adc0_ch4_gpi4_default
-		     &adc0_ch5_gpi5_default>;
+	compatible = "realtek,rts5912-adc";
+	pinctrl-0 = <&adc0_gpio074
+		&adc1_gpio075
+		&adc4_gpio078
+		&adc5_gpio079
+	>;
 	pinctrl-names = "default";
 };
