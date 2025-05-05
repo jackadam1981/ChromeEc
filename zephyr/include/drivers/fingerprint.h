@@ -281,8 +281,8 @@ typedef int (*fingerprint_api_config_t)(const struct device *dev,
  * @brief Callback API for getting information about fingerprint sensor.
  *
  * @param dev Fingerprint sensor device.
- * @param sensor_info Pointer to a struct where the sensor's static information
- * will be stored.
+ * @param sensor_info Pointer to a struct where the sensor's static information will
+ * be stored.
  * @param image_frame_params Pointer to a struct where the sensor's
  * image frame parameters (e.g., width, height, format) will be stored.
  */
