@@ -111,6 +111,30 @@
       },
       "revId": "5353f8ba14c0ce86628145d92f81ddc1c098e582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd13e0e3_538300c5",
+        "filename": "zephyr/program/bluey/quenbi/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-05T17:57:18Z",
+      "side": 1,
+      "message": "It is because the `bluey/CMakeList.txt` adds subdirectory of this `quenbi` project.\n\nRemove the `add_subdirectory(${PROJECT_NAME})` line from that file.",
+      "parentUuid": "d1213833_7fe351bf",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "5353f8ba14c0ce86628145d92f81ddc1c098e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
