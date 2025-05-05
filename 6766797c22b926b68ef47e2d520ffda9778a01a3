@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec85aa8d_8a2f7a74",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-05-05T01:24:49Z",
+      "side": 1,
+      "message": "Yes, the events are flagged in `process_evnets` for EC logs sometimes shows these error message.\n```\n25-05-02 16:20:27.501 ec:~\u003e [113.287994 CEC0 error: events 0x02 state 3]\n25-05-02 16:20:27.564 ec:~\u003e [113.291870 CEC0 error: events 0x04 state 2]\n```",
+      "parentUuid": "8dfa2e78_e0be6be4",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 21
+      },
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c11d007_cd2471f0",
