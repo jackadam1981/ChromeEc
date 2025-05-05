@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3919af_68b89e20",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-05-05T09:06:42Z",
+      "side": 1,
+      "message": "nit: label property is not required",
+      "fixSuggestions": [
+        {
+          "fixId": "d87999c0_a7d8e527",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 12,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "f8891bdd19197a6fb98f5b1c6a79e5c0250f5611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
