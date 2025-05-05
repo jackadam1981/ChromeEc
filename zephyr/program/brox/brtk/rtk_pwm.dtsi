@@ -6,16 +6,14 @@
 /* Keyboard backlight - use a prescaler for operation about 324 Hz */
 &pwm1 {
 	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C6>;
-	pinctrl-0 = <&pwm1_gpa1_default>;
+	pinctrl-0 = <&pwm1_gpio023>;
 	pinctrl-names = "default";
 };
 
 /* Fan - use a separate prescaler for Fan, b:358312912 */
 &pwm6 {
 	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C7>;
-	pinctrl-0 = <&pwm6_gpa6_default>;
+	pinctrl-0 = <&pwm6_gpio029>;
 	pinctrl-names = "default";
 };
 
@@ -24,28 +22,24 @@
  */
 &pwm2 {
 	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm2_gpa2_default>;
+	pinctrl-0 = <&pwm2_gpio025>;
 	pinctrl-names = "default";
 };
 
 &pwm3 {
 	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm3_gpa3_default>;
+	pinctrl-0 = <&pwm3_gpio026>;
 	pinctrl-names = "default";
 };
 
 &pwm4 {
 	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm4_gpa4_default>;
+	pinctrl-0 = <&pwm4_gpio027>;
 	pinctrl-names = "default";
 };
 
 &pwm5 {
 	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm5_gpa5_default>;
+	pinctrl-0 = <&pwm5_gpio028>;
 	pinctrl-names = "default";
 };
