@@ -7,9 +7,14 @@
 
 def register_brox_project(
     project_name,
+    chip="it8xxx2/it82002aw",
     kconfig_files=None,
 ):
     """Register a variant of brox."""
+    register_func = register_binman_project
+    if chip.startswith("realtek"):
+        register_func = register_rtk_project
+
     if kconfig_files is None:
         kconfig_files = [
             # Common to all projects.
@@ -18,9 +23,9 @@ def register_brox_project(
             here / project_name / "project.conf",
         ]
 
-    return register_binman_project(
+    return register_func(
         project_name=project_name,
-        zephyr_board="it8xxx2/it82002aw",
+        zephyr_board=chip,
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
@@ -38,6 +43,19 @@ brox = register_brox_project(
         here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
+        # Common sensor configs
+        here / "motionsense.conf",
+    ],
+)
+
+brtk = register_brox_project(
+    project_name="brtk",
+    chip="realtek/rts5912",
+    kconfig_files=[
+        # Common to all projects.
+        here / "program.conf",
+        # Parent project's config
+        here / "brtk" / "project.conf",
         # Common sensor configs
         here / "motionsense.conf",
     ],
@@ -145,6 +163,7 @@ lotso = register_brox_project(
 # must not change after the first RO release. Not needed for brox-ish since it
 # doesn't use RO+RW
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brtk", addr=0x80404)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-ish-ec", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-tokenized", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="greenbayupoc", addr=0x60098)
