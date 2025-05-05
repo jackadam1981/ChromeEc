@@ -417,13 +417,13 @@ extern "C" void fp_task(void)
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
 }
 
-static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
+static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_info_v2 *r =
 		static_cast<ec_response_fp_info_v2 *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info_v2(r) < 0)
+	if (fp_sensor_get_info(r) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
 
