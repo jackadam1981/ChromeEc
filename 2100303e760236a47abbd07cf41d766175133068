@@ -208,6 +208,30 @@
       },
       "revId": "2100303e760236a47abbd07cf41d766175133068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d426ce88_8b475fa9",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-05T05:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9969ebae_e456ed3e",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "2100303e760236a47abbd07cf41d766175133068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
