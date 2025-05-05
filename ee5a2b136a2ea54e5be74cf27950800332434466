@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd8cf074_1e6b0bea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T16:17:39Z",
+      "side": 1,
+      "message": "Nit: This change also bumps the VIF Editor version, which introduces a giant whitespace change. It\u0027s annoying that that happens at all, but we can\u0027t really do anything about it.\n\nI\u0027d prefer in these cases to have a CL that just bumps the editor version with the minimum change to keep the VIF valid and then another CL that makes the substantive change you were originally intending to make. Go ahead and submit this one, but keep this in mind next time it comes up.",
+      "revId": "ee5a2b136a2ea54e5be74cf27950800332434466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
