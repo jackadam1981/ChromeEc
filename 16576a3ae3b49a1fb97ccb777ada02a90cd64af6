@@ -1,0 +1,75 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1872b1d0_99ad9992",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-05T06:11:01Z",
+      "side": 1,
+      "message": "@chlin56@nuvoton.com\nI thought this should be 0x30000 because `default 0x30000 if SOC_NPCX9M6F`. Can you please confirm?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b714ef0d_9a312d7e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": "\t\tsize \u003d \u003c0x30000\u003e;\n"
+            },
+            {
+              "path": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 36,
+                "endChar": 0
+              },
+              "replacement": "\t\toffset \u003d \u003c0x30000\u003e;\n"
+            },
+            {
+              "path": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\toffset \u003d \u003c(0x30000 - 32)\u003e; /* 0x2FFF0 */\n"
+            },
+            {
+              "path": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": "\tpad-after \u003d \u003c0x0\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "16576a3ae3b49a1fb97ccb777ada02a90cd64af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
