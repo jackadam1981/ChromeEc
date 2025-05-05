@@ -41,6 +41,18 @@ brox = register_brox_project(
     ],
 )
 
+brtk = register_brox_project(
+    project_name="brtk",
+    kconfig_files=[
+        # Common to all projects.
+        here / "program.conf",
+        # Parent project's config
+        here / "brtk" / "project.conf",
+        # Common sensor configs
+        here / "motionsense.conf",
+    ],
+)
+
 register_brox_project(
     project_name="brox-ish-ec",
     kconfig_files=[
@@ -133,6 +145,7 @@ lotso = register_brox_project(
 # must not change after the first RO release. Not needed for brox-ish since it
 # doesn't use RO+RW
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brtk", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-ish-ec", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-tokenized", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="greenbayupoc", addr=0x60098)
