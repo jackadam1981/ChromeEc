@@ -55,21 +55,21 @@
 		compatible = "named-gpios";
 
 		gpio_pg_vccin_aux_od: pg_vccin_aux_od {
-			gpios = <&gpiof 3 GPIO_INPUT>;
+			gpios = <&gpiof 10 GPIO_INPUT>;
 		};
 		gpio_en_pp5000_fan: en_pp5000_fan {
-			gpios = <&gpioj 4 GPIO_INPUT>;
+			gpios = <&gpiof 7 GPIO_INPUT>;
 		};
 		gpio_ec_pch_int_odl: ec_pch_int_odl {
-			gpios = <&gpiog 1 GPIO_ODR_LOW>;
+			gpios = <&gpioh 12 GPIO_ODR_LOW>;
 			enum-name = "GPIO_EC_INT_L";
 		};
 		gpio_ec_kb_bl_en: ec_kb_bl_en {
-			gpios = <&gpioi 2 GPIO_OUTPUT_LOW>;
+			gpios = <&gpioe 12 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
 		};
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
-			gpios = <&gpioksol 2 GPIO_OUTPUT_HIGH>;
+		 	gpios = <&gpioc 11 GPIO_OUTPUT_HIGH>;
 		};
 
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
@@ -79,39 +79,9 @@
 
 		/* EC_PCH_RTCRST_NC */
 		gpio_ec_pch_rtsrst: ec_pch_rtcrst {
-			gpios = <&gpioh 5 GPIO_OUTPUT_LOW>;
+			gpios = <&gpiog 8 GPIO_OUTPUT_LOW>;
 		};
 	};
-
-	unused-pins {
-		compatible = "unused-gpios";
-
-		unused-gpios =
-			/* SPI_EC_DI_BIOS_DO */
-			<&gpiog 5 0>,
-			/* SPI_EC_CS_BIOS_L */
-			<&gpiog 3 0>,
-			/* EC_PCH_PECI */
-			<&gpiof 6 0>,
-			/* SPI_EC_CLK */
-			<&gpiog 7 0>,
-			/* SPI_EC_DO_BIOS_DI */
-			<&gpiog 4 0>,
-			/* EC_EN_IMVP91_NC */
-			<&gpioh 6 0>,
-			/* EC_ESPI_ALERT_L_NC */
-			<&gpiom 6 0>,
-			/* PCBEEP_EC */
-			<&gpioa 7 0>,
-			/* ADP_DET */
-			<&gpiod 0 0>,
-			/* ec_batt_pres_odl */
-			<&gpioi 7 0>,
-			/* I2C_EC_PMC_PD_SCL */
-			<&gpioh 1 GPIO_INPUT>,
-			/* I2C_EC_PMC_PD_SDA */
-			<&gpioh 2 GPIO_INPUT>;
-		};
 };
 
 /* The eSPI shim requires this GPIO nodelabel */
@@ -119,18 +89,18 @@ gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
 };
 
 &gpio_ccd_mode_odl {
-	gpios = <&gpioe 6 GPIO_INPUT>;
+	gpios = <&gpioa 15 GPIO_INPUT>;
 };
 
 &gpio_amp_mute_l {
-	gpios = <&gpioj 6 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+	gpios = <&gpioi 2 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
 };
 
 /* Default PROCHOT high so it's not asserted
  * TODO: b/214509787 - zephyr: subsys/ap_pwrseq: support chipset interface APIs
  */
 &gpio_ec_prochot_odl {
-	gpios = <&gpioi 0 GPIO_ODR_HIGH>;
+	gpios = <&gpioe 10 GPIO_ODR_HIGH>;
 };
 
 &gpio_ec_voldn_btn_odl {
@@ -142,7 +112,7 @@ gpio_ec_pch_wake_odl: &gpio_sen_mode1_ec_pch_wake_odl {
 };
 
 &gpio_ec_wp_odl {
-	gpios = <&gpioj 3 (GPIO_INPUT | GPIO_ACTIVE_LOW) >;
+	gpios = <&gpiof 6 (GPIO_INPUT | GPIO_ACTIVE_LOW) >;
 };
 
 &gpio_acok_ec_od {
