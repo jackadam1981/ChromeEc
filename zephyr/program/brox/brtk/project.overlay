@@ -24,7 +24,6 @@
 #include "../temp_sensors.dtsi"
 #include "rtk_usb_typec.dtsi"
 #include "../usba.dtsi"
-#include "../binman.dtsi"
 
 /* Brtk project DTS includes*/
 
@@ -36,6 +35,15 @@
                         compatible = "lgc,ap18c8k", "battery-smart";
                 };
         };
+};
+
+&cbi_flash {
+	/*
+	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
+	 * EC_RO section. EC_RO section ends at 0x50000 byte which is the offset
+	 */
+	offset = <0x50000>;
+	size = <0x1000>;
 };
 
 /* These GPIOS are initialized by the PDC driver */
