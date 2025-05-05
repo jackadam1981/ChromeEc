@@ -292,14 +292,14 @@ static int cros_flash_rtk_write(const struct device *dev, int offset, int size,
 		return -EINVAL;
 	}
 
+#ifdef CONFIG_WATCHDOG
 	/*
 	 * If the AP sends a sequence of write commands, we may not have time to
 	 * reload the watchdog normally.  Force a reload here to avoid the
 	 * watchdog triggering in the middle of flashing.
 	 */
-	if (IS_ENABLED(CONFIG_WATCHDOG)) {
-		watchdog_reload();
-	}
+	watchdog_reload();
+#endif
 
 	/* Lock physical flash operations */
 	crec_flash_lock_mapped_storage(1);
@@ -343,13 +343,13 @@ static int cros_flash_rtk_erase(const struct device *dev, int offset, int size)
 
 		offset += CONFIG_FLASH_ERASE_SIZE;
 
+#ifdef CONFIG_WATCHDOG
 		/*
 		 * Reload the watchdog timer, so that erasing many flash pages
 		 * doesn't cause a watchdog reset
 		 */
-		if (IS_ENABLED(CONFIG_WATCHDOG)) {
-			watchdog_reload();
-		}
+		watchdog_reload();
+#endif
 	}
 	/* Unlock physical flash operations */
 	crec_flash_lock_mapped_storage(0);

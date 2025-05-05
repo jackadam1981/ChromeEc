@@ -14,3 +14,13 @@ config SYS_CLOCK_TICKS_PER_SEC
 	default 32768
 
 endif # REALTEK_RTS5912_RTMR
+
+if WATCHDOG
+
+config PLATFORM_EC_WATCHDOG_HELPER
+	default y
+
+config WDT_COUNTER
+	default y
+
+endif # WATCHDOG
