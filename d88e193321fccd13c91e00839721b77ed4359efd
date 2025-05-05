@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa0eae2_43d13a37",
+        "filename": "zephyr/program/trulo/pujjolo/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-05-05T07:22:16Z",
+      "side": 1,
+      "message": "Why are there two accessibility and dictate keys?",
+      "fixSuggestions": [
+        {
+          "fixId": "61f6b501_4d45c9f9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjolo/keyboard.dtsi",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 46,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tVIVALDI_TK_ACCESSIBILITY      /* T13 */\n\t\t\tVIVALDI_TK_DICTATE            /* T14 */\n"
+            },
+            {
+              "path": "zephyr/program/trulo/pujjolo/keyboard.dtsi",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 138,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/trulo/pujjolo/keyboard.dtsi",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 190,
+                "endChar": 0
+              },
+              "replacement": "\n\u0026gpio1 {\n\tkso-gpio: kso-gpio {\n\t\tcompatible \u003d \"cros-ec,col-gpio\";\n\t\tcol-num \u003d \u003c2\u003e;\n\t\tcol-gpios \u003d \u003c\u0026gpio1 7 GPIO_ACTIVE_HIGH\u003e;\n\t};\n};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d88e193321fccd13c91e00839721b77ed4359efd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
