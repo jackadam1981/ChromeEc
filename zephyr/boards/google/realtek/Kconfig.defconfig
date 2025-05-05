@@ -60,4 +60,20 @@ config CROS_EC_RW_SIZE
 config CROS_EC_HEADER_OFF
 	default 0x20
 
+if WATCHDOG
+
+config PLATFORM_EC_WATCHDOG_PERIOD_MS
+	default 1600
+
+config PLATFORM_EC_WATCHDOG_WARNING_LEADING_TIME_MS
+	default 500
+
+config PLATFORM_EC_WATCHDOG_HELPER
+	default y
+
+config WDT_COUNTER
+	default y
+
+endif # WATCHDOG
+
 endif # BOARD_REALTEK

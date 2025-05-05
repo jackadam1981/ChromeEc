@@ -813,7 +813,6 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 	 */
 	addr += flash_get_rw_offset(copy);
 
-#ifdef CONFIG_CROS_FLASH
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
 #ifdef CONFIG_CROS_EC_HEADER_OFF
@@ -827,7 +826,6 @@ const struct image_data *system_get_image_data(enum ec_image copy)
 	if (crec_flash_read(addr, sizeof(data), (char *)&data))
 		return NULL;
 #endif /* CONFIG_MAPPED_STORAGE */
-#endif /* CONFIG_CROS_FLASH */
 
 	/* Make sure the version struct cookies match before returning the
 	 * version string. */
