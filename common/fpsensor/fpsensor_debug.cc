@@ -124,21 +124,8 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 	return EC_ERROR_TIMEOUT;
 }
 
-test_export_static uint8_t get_sensor_bpp(void)
-{
-#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	ec_response_fp_info info;
-	if (fp_sensor_get_info(&info) < 0) {
-		return EC_ERROR_UNKNOWN;
-	}
-	return info.bpp;
-#else
-	return EC_ERROR_UNKNOWN;
-#endif
-}
-
-__maybe_unused test_export_static int
-get_image_frame_params(struct fp_image_frame_params *image_frame_params)
+test_export_static uint8_t
+get_image_frame_params(struct fp_image_frame_params &image_frame_params)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
 	if (image_frame_params == nullptr) {
@@ -164,18 +151,12 @@ get_image_frame_params(struct fp_image_frame_params *image_frame_params)
 	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
 		if (info->image_frame_params[i].fp_capture_type ==
 		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
-			*image_frame_params = info->image_frame_params[i];
-			found = true;
+			image_frame_params = info->image_frame_params[i];
 			break;
 		}
 	}
 
 	free(info);
-
-	if (!found) {
-		return EC_ERROR_INVAL;
-	}
-
 	return EC_RES_SUCCESS;
 #else
 	return EC_ERROR_UNKNOWN;
