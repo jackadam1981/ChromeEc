@@ -25,7 +25,6 @@ directory called `renode`:
 Note that the prebuilt version is not automatically in your `PATH`.
 
 [`renode` ebuild]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/app-emulation/renode/
-
 [CIPD]: http://go/luci-cipd
 
 ### Latest Version
@@ -51,8 +50,8 @@ in your `PATH`.
 
 ## Launching Renode
 
-The [`renode-ec-launch`] script is a convenient wrapper to configure and
-run Renode for specific boards. It works both inside and outside the chroot and
+The [`renode-ec-launch`] script is a convenient wrapper to configure and run
+Renode for specific boards. It works both inside and outside the chroot and
 configures the console as `/tmp/renode-uart`.
 
 The script lets you run both EC and Zephyr images, including the "default" image
