@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f6559c7_485ff212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-05T17:38:41Z",
+      "side": 1,
+      "message": "with this test CL, I am able to read the values of the image parameters from the device tree. This is the output of fpinfo:\n\n```\nfpinfo[2.105800 MKBP: The AP is failing to respond because it is sleeping or off]\n\n[2.339000] \u003cinf\u003e cros_fingerprint: The value of bpp is: 8\n[2.343000] \u003cinf\u003e cros_fingerprint: The value of frame size is: 15000\n[2.349000] \u003cinf\u003e cros_fingerprint: The value of width is: 160\n[2.355000] \u003cinf\u003e cros_fingerprint: The value of height is: 165\n[2.360000] \u003cinf\u003e cros_fingerprint: The value of pixel format is: 1497715271\n[2.367000] \u003cinf\u003e cros_fingerprint: The value of bpp is: 16\n[2.372000] \u003cinf\u003e cros_fingerprint: The value of frame size is: 10000\n[2.378000] \u003cinf\u003e cros_fingerprint: The value of width is: 80\n[2.384000] \u003cinf\u003e cros_fingerprint: The value of height is: 85\n[2.389000] \u003cinf\u003e cros_fingerprint: The value of pixel format is: 1497715271\n[2.396000] \u003cinf\u003e cros_fingerprint: The value of bpp is: 32\n[2.401000] \u003cinf\u003e cros_fingerprint: The value of frame size is: 5000\n[2.407000] \u003cinf\u003e cros_fingerprint: The value of width is: 40\n[2.412000] \u003cinf\u003e cros_fingerprint: The value of height is: 45\n[2.418000] \u003cinf\u003e cros_fingerprint: The value of pixel format is: 1497715271\n      Vendor ID: 0x20435046 (FPC )\n     Product ID: 0x9\nNumber of Capture Types: 0x3\n       Model ID: 0x21B\n        Version: 0x1\n Sensor (w x h): 65534 x 65535 47472bpp\n     Frame Size: 0\n   Pixel Format: 0x100A0838 (8...)\n    Error State: 0x3FF\n   Sensor Strap: FPC\n```\n\nI will work on the full integration",
+      "revId": "549d3be028e7b9358e92a6fd16b5c8150238e020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
