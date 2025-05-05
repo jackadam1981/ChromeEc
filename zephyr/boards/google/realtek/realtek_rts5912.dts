@@ -20,7 +20,7 @@
 		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
 		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
 		 */
-		size = <0x50000>;
+		size = <0x60000>;
 		ec-ro {
 			fmap {
 				offset = <(0x50000 - 0x400)>;
