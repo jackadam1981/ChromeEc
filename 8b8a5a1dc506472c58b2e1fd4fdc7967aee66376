@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932efcba_58e2ba10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-05T20:56:55Z",
+      "side": 1,
+      "message": "Does initializing the sensors sooner fix a specific problem?",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "8b8a5a1dc506472c58b2e1fd4fdc7967aee66376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec151a2_05b2f800",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-05T20:56:55Z",
+      "side": 1,
+      "message": "This could use a test.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 57
+      },
+      "revId": "8b8a5a1dc506472c58b2e1fd4fdc7967aee66376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
