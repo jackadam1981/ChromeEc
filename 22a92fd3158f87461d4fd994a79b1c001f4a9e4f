@@ -16,6 +16,98 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "22a92fd3158f87461d4fd994a79b1c001f4a9e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d88c103_4fd3c7d5",
+        "filename": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T18:38:27Z",
+      "side": 1,
+      "message": "Conventionally, we\u0027d put Google and uldrenite here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f85ae514_d6d13fe8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+              "range": {
+                "startLine": 9,
+                "startChar": 0,
+                "endLine": 10,
+                "endChar": 0
+              },
+              "replacement": "  \u003cvif:Vendor_Name\u003eTexas Instruments\u003c/vif:Vendor_Name\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "22a92fd3158f87461d4fd994a79b1c001f4a9e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7595727f_ca019fff",
+        "filename": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T18:38:27Z",
+      "side": 1,
+      "message": "Should this be 22500 mW/Managed?",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 78
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3029d43e_c7d38100",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "    \u003cvif:Product_Total_Source_Power_mW value\u003d\"22500\"\u003e22500 mW\u003c/vif:Product_Total_Source_Power_mW\u003e\n    \u003cvif:Port_Source_Power_Type value\u003d\"1\"\u003eManaged\u003c/vif:Port_Source_Power_Type\u003e\n"
+            },
+            {
+              "path": "zephyr/program/trulo/uldrenite/uldrenite_vif.xml",
+              "range": {
+                "startLine": 253,
+                "startChar": 0,
+                "endLine": 255,
+                "endChar": 0
+              },
+              "replacement": "    \u003cvif:Product_Total_Source_Power_mW value\u003d\"22500\"\u003e22500 mW\u003c/vif:Product_Total_Source_Power_mW\u003e\n    \u003cvif:Port_Source_Power_Type value\u003d\"1\"\u003eManaged\u003c/vif:Port_Source_Power_Type\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "22a92fd3158f87461d4fd994a79b1c001f4a9e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
