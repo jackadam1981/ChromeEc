@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07a9929_84b372f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T17:35:07Z",
+      "side": 1,
+      "message": "As noted on other CLs, \"Modify VIF for Pujjoga board\" is redundant, and the headline could be more descriptive. Something like,\n```\npujjoga_vif: Correct battery max voltage\n\nModify battery Sink_PDO_Max_voltage_value from 15V to 20V.\n...\n```\nwould be appropriate.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "ee5a2b136a2ea54e5be74cf27950800332434466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd8cf074_1e6b0bea",
