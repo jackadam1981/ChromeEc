@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73cd98a_a1dd64d7",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-05T20:52:03Z",
+      "side": 1,
+      "message": "Update the comment to note the difference in behavior when the body detection runs on this MCU vs on a remote DSP.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 58
+      },
+      "revId": "515430fe1f1935db15a912a28885a3d405b7f365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ad57ba_8d9771c5",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-05T20:52:03Z",
+      "side": 1,
+      "message": "If you made a helper for this condition, I think it will help readability here and in `body_detect_send_host_event()`\n```\nstatic bool body_detect_is_remote(void) {\n    return (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_BODY_DETECTION) \u0026\u0026\n\t      motion_sensor_count \u003d\u003d 0);\n};\n```\n\nYou might need to do a macro instead if a helper function.",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "515430fe1f1935db15a912a28885a3d405b7f365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
