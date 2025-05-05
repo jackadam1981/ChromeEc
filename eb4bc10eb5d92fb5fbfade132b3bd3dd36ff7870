@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228387e1_b9d8128d",
+        "filename": "zephyr/program/trulo/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-05-05T07:38:30Z",
+      "side": 1,
+      "message": "Please move this change to board level code, such as pujjolo/gpio.dtsi.",
+      "fixSuggestions": [
+        {
+          "fixId": "3a5f16b2_9286a7eb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/generated.dtsi",
+              "range": {
+                "startLine": 160,
+                "startChar": 0,
+                "endLine": 161,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpio9 6 (GPIO_INPUT)\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "eb4bc10eb5d92fb5fbfade132b3bd3dd36ff7870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
