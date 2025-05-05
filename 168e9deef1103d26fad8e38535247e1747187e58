@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ebe2ca9_44dc5451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-05T17:52:34Z",
+      "side": 1,
+      "message": "Failure similar to https://b.corp.google.com/issues/384810000\n\n```\nchromeos-zephyr-0.0.1-r5397: Wrote map file \u0027/build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5397/work/chromeos-zephyr-0.0.1/build/xivu/packer/image.map\u0027 to show errors\nchromeos-zephyr-0.0.1-r5397: [142/397] Building C object CMakeFiles/app.dir/pujjoniru/src/board.c.obj\nchromeos-zephyr-0.0.1-r5397: Failed to run binman\nchromeos-zephyr-0.0.1-r5397: Traceback (most recent call last):\nchromeos-zephyr-0.0.1-r5397:   File \"/build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5397/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/zmake/zmake/multiproc.py\", line 379, in _run_fn\nchromeos-zephyr-0.0.1-r5397:     result \u003d func()\nchromeos-zephyr-0.0.1-r5397:   File \"/build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5397/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/zmake/zmake/zmake.py\", line 679, in _configure\nchromeos-zephyr-0.0.1-r5397:     self._build(\nchromeos-zephyr-0.0.1-r5397:   File \"/build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5397/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/zmake/zmake/zmake.py\", line 845, in _build\nchromeos-zephyr-0.0.1-r5397:     for output_file, output_name in project.signer.sign(\nchromeos-zephyr-0.0.1-r5397:   File \"/build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5397/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/zmake/zmake/output_packers.py\", line 327, in pack_firmware\nchromeos-zephyr-0.0.1-r5397:     for path, output_file in super().pack_firmware(\nchromeos-zephyr-0.0.1-r5397:   File \"/build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5397/work/chromeos-zephyr-0.0.1/modules/ec/zephyr/zmake/zmake/output_packers.py\", line 241, in pack_firmware\nchromeos-zephyr-0.0.1-r5397:     raise OSError(\"Failed to run binman\")\nchromeos-zephyr-0.0.1-r5397: OSError: Failed to run binman\n```",
+      "revId": "168e9deef1103d26fad8e38535247e1747187e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
