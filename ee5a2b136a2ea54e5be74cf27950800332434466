@@ -39,6 +39,58 @@
       "message": "Nit: This change also bumps the VIF Editor version, which introduces a giant whitespace change. It\u0027s annoying that that happens at all, but we can\u0027t really do anything about it.\n\nI\u0027d prefer in these cases to have a CL that just bumps the editor version with the minimum change to keep the VIF valid and then another CL that makes the substantive change you were originally intending to make. Go ahead and submit this one, but keep this in mind next time it comes up.",
       "revId": "ee5a2b136a2ea54e5be74cf27950800332434466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a14733d_81aa87a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T20:48:42Z",
+      "side": 1,
+      "message": "When I changed the field to 20V on both ports, the test passed on both ports.",
+      "revId": "ee5a2b136a2ea54e5be74cf27950800332434466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b032527_6bad9e22",
+        "filename": "zephyr/program/nissa/pujjoga/pujjoga_vif.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T20:48:42Z",
+      "side": 1,
+      "message": "This one needs to be updated too. That will be true of most port-specific VIF fields that we change.",
+      "fixSuggestions": [
+        {
+          "fixId": "303c25f2_4bbcb69d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/pujjoga/pujjoga_vif.xml",
+              "range": {
+                "startLine": 316,
+                "startChar": 0,
+                "endLine": 317,
+                "endChar": 0
+              },
+              "replacement": "        \u003cvif:Snk_PDO_Max_Voltage value\u003d\"400\"\u003e20000 mV (Factor \u003d 50)\u003c/vif:Snk_PDO_Max_Voltage\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ee5a2b136a2ea54e5be74cf27950800332434466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
