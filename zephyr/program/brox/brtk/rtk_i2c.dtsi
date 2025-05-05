@@ -3,48 +3,71 @@
  * found in the LICENSE file.
  */
 
-&i2c1 {
-	pinctrl-0 = <&i2c1_clk_gpc1_default
-		     &i2c1_data_gpc2_default>;
+&i2c_0 {
+	pinctrl-0 = <&i2c00_clk_gpio094
+		     &i2c00_data_gpio095>;
+	pinctrl-names = "default";
+
+	label = "I2C_PORT_SENSOR";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c_1 {
+	pinctrl-0 = <&i2c01_clk_gpio118
+		     &i2c01_data_gpio119>;
 	pinctrl-names = "default";
 
 	label = "I2C_PORT_PD";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
 };
 
-&i2c3 {
-	pinctrl-0 = <&i2c3_clk_gph1_default
-		     &i2c3_data_gph2_default>;
+&i2c_3 {
+	pinctrl-0 = <&i2c03_clk_gpio100
+		     &i2c03_data_gpio101>;
 	pinctrl-names = "default";
 
 	label = "I2C_PORT_PMC_PD";
 	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
-&i2c4 {
-	pinctrl-0 = <&i2c4_clk_gpe0_default
-		     &i2c4_data_gpe7_default>;
+&i2c_4 {
+	pinctrl-0 = <&i2c04_clk_gpio017
+		     &i2c04_data_gpio018>;
 	pinctrl-names = "default";
 
 	label = "I2C_PORT_CHARGER";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
 };
 
-&i2c5 {
-	pinctrl-0 = <&i2c5_clk_gpe1_default
-		     &i2c5_data_gpe2_default>;
-	pinctrl-names = "default";
-
-	scl-gpios = <&gpioe 1 0>;
-	sda-gpios = <&gpioe 2 0>;
-
-	label = "I2C_PORT_SENSOR";
-	clock-frequency = <I2C_BITRATE_FAST>;
-};
-
 &i2c_i2c_ec_pmc_pd {
 	status = "disabled";
 };
-&i2c3 {
+
+&i2c_3 {
 	status = "disabled";
+};
+
+&i2c_0_wrapper {
+	label = "I2C_PORT_SENSOR";
+	status = "okay";
+	sda-gpio-pin = <95>;
+	scl-gpio-pin = <94>;
+};
+&i2c_1_wrapper {
+	label = "I2C_PORT_PD";
+	status = "okay";
+	scl-gpio-pin = <118>;
+	sda-gpio-pin = <119>;
+};
+&i2c_3_wrapper {
+	label = "I2C_PORT_PMC_PD";
+	status = "disabled";
+	scl-gpio-pin = <100>;
+	sda-gpio-pin = <101>;
+};
+&i2c_4_wrapper {
+	label = "I2C_PORT_CHARGER";
+	status = "okay";
+	scl-gpio-pin = <17>;
+	sda-gpio-pin = <18>;
 };
