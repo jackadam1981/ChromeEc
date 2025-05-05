@@ -1897,6 +1897,15 @@ static void st_task_wait_run(void *o)
 	switch (data->running_ucsi_cmd) {
 	case UCSI_GET_CAPABILITY:
 		offset = 1;
+		struct capability_t *cp =
+			(struct capability_t *)&cmd_data.data[offset];
+		/*
+		 * TODO(b/414863461) get_pd_message is not being set by the PDC,
+		 * but this is required for the kernel UCSI driver to trigger it
+		 * sending UCSI_GET_PD_MESSAGE for populating discovery
+		 * information.
+		 */
+		cp->bmOptionalFeatures.get_pd_message = 1;
 		len = sizeof(struct capability_t);
 		break;
 	case UCSI_GET_CONNECTOR_CAPABILITY:
