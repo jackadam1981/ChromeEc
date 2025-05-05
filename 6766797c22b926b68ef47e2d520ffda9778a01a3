@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dfa2e78_e0be6be4",
+        "filename": "driver/cec/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-05T00:55:37Z",
+      "side": 1,
+      "message": "Logging from interrupts might not work well, but if you can see events being flagged in `process_events` (which runs outside of interrupt context) that should indicate the interrupt is being handled as expected.",
+      "parentUuid": "ae8bc834_03b5744c",
+      "range": {
+        "startLine": 489,
+        "startChar": 2,
+        "endLine": 489,
+        "endChar": 21
+      },
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c11d007_cd2471f0",
         "filename": "driver/cec/it83xx.c",
         "patchSetId": 6
@@ -231,6 +255,24 @@
           ]
         }
       ],
+      "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea9fb1f_dd44f7d4",
+        "filename": "zephyr/test/drivers/cec_it83xx/src/cec_it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-05T00:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "147c3bb5_795e8b38",
       "revId": "6766797c22b926b68ef47e2d520ffda9778a01a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
