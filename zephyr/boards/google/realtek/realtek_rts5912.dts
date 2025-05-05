@@ -8,6 +8,8 @@
 #include <realtek/ec/rts5912.dtsi>
 #include "realtek.dtsi"
 
+#include <cros/cbi_flash.dtsi>
+
 &binman {
 	wp-ro {
 		/*
@@ -23,12 +25,16 @@
 		size = <0x50000>;
 		ec-ro {
 			fmap {
-				offset = <(0x50000 - 0x400)>;
+				offset = <(0x50000 - 0x1000 - 0x400)>;
 				/*
 				 * don't specify 'size = <0x400>' here so
 				 * it is auto-assigned to the fmap size.
 				 */
 			};
+		};
+		cbi_flash: cbi {
+			offset = <(0x50000 - 0x1000)>;
+			size = <0x1000>;
 		};
 	};
 	ec-rw {
