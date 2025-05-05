@@ -70,6 +70,30 @@
       ],
       "revId": "16576a3ae3b49a1fb97ccb777ada02a90cd64af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20bb4204_5a20bcbd",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-05-05T07:15:46Z",
+      "side": 1,
+      "message": "You are right.  `size \u003d \u003c0x30000\u003e;` is more reasonable.  \nNote that if you add `pad-after \u003d \u003c0x10000\u003e;` the output ec.bin will be 512KB; if add `pad-after \u003d \u003c0x0\u003e;`, the the output ec.bin will be 448KB. The last 64KB are not paded.",
+      "parentUuid": "1872b1d0_99ad9992",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "16576a3ae3b49a1fb97ccb777ada02a90cd64af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
