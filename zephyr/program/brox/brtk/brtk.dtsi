@@ -28,3 +28,7 @@
 &espi0 {
 	status = "okay";
 };
+
+&sha0 {
+	status = "okay";
+};
