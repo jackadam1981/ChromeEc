@@ -91,6 +91,154 @@
       ],
       "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53b8db2_4f1fc297",
+        "filename": "board/cr50/check_pcr0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-05-05T22:52:00Z",
+      "side": 1,
+      "message": "is this thing cleared on deep sleep? any chance to get garbage here after it? shouldn\u0027t matter for PCR0, but I\u0027d rather not risk.",
+      "parentUuid": "b4332307_15c87d5f",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e98ebc3b_49f3f2ea",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-05-05T22:52:00Z",
+      "side": 1,
+      "message": "nit: rename to `config_enabled` or similar",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "48dd295a_5f785416",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": "\tuint32_t config_enabled;\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 58,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "\t\t.config_enabled \u003d PCR_UPDATE_BOOT_POLICY,\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "\t\t.config_enabled \u003d PCR_UPDATE_BOOT_POLICY |\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "\t\t.config_enabled \u003d PCR_UPDATE_BOOT_POLICY |\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 90,
+                "startChar": 0,
+                "endLine": 91,
+                "endChar": 0
+              },
+              "replacement": "\t\t.config_enabled \u003d PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST,\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "\t\t.config_enabled \u003d PCR_UPDATE_BOOT_POLICY,\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 313,
+                "startChar": 0,
+                "endLine": 314,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif (pcr_configs[i].config_enabled \u0026 space)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2010c7b9_83d61e05",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-05-05T22:52:00Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be first? only apply all other checks if the current PCR may require triggering EC_RST. and then all other checks to follow (that FWMP is actually blocking dev mode and that this particular board id requires reset).\n\nso the entire new logic shall be\n\n```\n#ifdef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC\nif (pcr_config_enabled(PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST)\n    \u0026\u0026 !board_fwmp_allows_boot_policy_update()\n    \u0026\u0026 board_id_fwmp_resets_ec_in_rec_dev()) {\n        CPRINTS(\"pcr: block rec+dev\");\n        board_reboot_ec();\n}\n#endif\n```\n\notherwise, keeping it at the top-level in _plat__PCRUpdated() will confuse us if we add more actions on PCR changes (and it\u0027s likely we\u0027ll have more actions on PCR10 changes in the future).",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 60
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
