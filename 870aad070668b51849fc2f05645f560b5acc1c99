@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58f2bb9_cabf9ace",
+        "filename": "board/xol/xol_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T23:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796fd2e9_57e7e680",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "870aad070668b51849fc2f05645f560b5acc1c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c13fdd0_5729f483",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a17f43_716277a6",
+        "filename": "board/xol/xol_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T23:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c13fdd0_5729f483",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "870aad070668b51849fc2f05645f560b5acc1c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6c3b14b_e863311f",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-05-05T20:37:49Z",
       "side": 1,
       "message": "I thought there are only 2 USB-C ports on Xol?",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 31
+      },
+      "revId": "870aad070668b51849fc2f05645f560b5acc1c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc47ec9_bf2d01ce",
+        "filename": "board/xol/xol_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-05T23:41:22Z",
+      "side": 1,
+      "message": "Done. I based this on xol\u0027s slightly weird EC config, sight unseen. But xol does only have 2 ports, and I think the config is just idiosyncratic.",
+      "parentUuid": "b6c3b14b_e863311f",
       "range": {
         "startLine": 421,
         "startChar": 0,
