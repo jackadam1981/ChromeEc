@@ -49,12 +49,12 @@ def register_it8xxx2_project(
     )
 
 
-def register_mchp_project(
+def register_mec172x_project(
     project_name,
     extra_kconfig_files=(),
 ):
     """Register an microchip based variant of ocelot."""
-    register_binman_project(
+    register_mchp_project(
         project_name=project_name,
         zephyr_board="mec172x/mec172x_nsz/mec1727",
         dts_overlays=[
@@ -83,7 +83,7 @@ register_it8xxx2_project(
 )
 
 # For use on SKU4
-register_mchp_project(
+register_mec172x_project(
     project_name="ocelot_microchip",
 )
 
