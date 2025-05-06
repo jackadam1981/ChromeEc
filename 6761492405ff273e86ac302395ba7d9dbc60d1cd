@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c27a2e_cc07c0de",
+        "filename": "board/cr50/check_pcr0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-05-06T16:47:02Z",
+      "side": 1,
+      "message": "These seem like they should be sequential values instead of bits since the value seem mutually exclusive with each other.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "6761492405ff273e86ac302395ba7d9dbc60d1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
