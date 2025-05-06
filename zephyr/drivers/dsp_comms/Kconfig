@@ -18,7 +18,7 @@ source "subsys/logging/Kconfig.template.log_config"
 
 config PLATFORM_EC_DSP_INIT_PRIORITY
 	int "Initialization priority for the DSP comms drivers"
-	default 99
+	default 80
 	help
 	  Initialization priority for the DSP comms drivers (service and
 	  clients).
@@ -61,5 +61,11 @@ config PLATFORM_EC_DSP_RESPONSE_BUFFER_SIZE
 	  When a result is generated from the DSP service, this is the buffer
 	  that is used to store it until the client reads it. It must be big
 	  enough for the largest encoded response.
+
+config PLATFORM_EC_DSP_REMOTE_BODY_DETECTION
+	bool "Body detection is handled on another MCU"
+	help
+	  Use the body detection hooks, but the source of truth is on another
+	  MCU. DSP will broadcast events, while the server will receive them.
 
 endif # PLATFORM_EC_DSP_COMMS

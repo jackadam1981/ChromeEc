@@ -50,7 +50,7 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif
 
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		if (xhci_stat) {
 			pdc_power_mgmt_set_dual_role(i, PD_DRP_TOGGLE_ON);
 		}
@@ -65,3 +65,16 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_FORCE_SINK;
 	}
 }
+
+#ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720
+void update_bq25720_input_voltage(void)
+{
+	/* b:397587463 set input voltage to 3.2V to prevent charger entering
+	 * VINDPM mode */
+	i2c_write16(chg_chips[CHARGER_SOLO].i2c_port,
+		    chg_chips[CHARGER_SOLO].i2c_addr_flags,
+		    BQ25710_REG_INPUT_VOLTAGE, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
+#endif

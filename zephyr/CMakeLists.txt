@@ -44,17 +44,22 @@ if(DEFINED CONFIG_PLATFORM_EC AND EXISTS "${EDT_PICKLE}")
     message(FATAL_ERROR "led_policy.py failed with return code: ${ret}")
   endif()
 
-  message(STATUS "Generating component manifest file")
-  set(CME_SCRIPT ${PLATFORM_EC}/zephyr/scripts/cme.py)
-  set(CMD_CME ${PYTHON_EXECUTABLE} ${CME_SCRIPT}
-    --zephyr-base ${ZEPHYR_BASE}
-    --edt-pickle ${EDT_PICKLE}
-    --manifest-file "${CMAKE_BINARY_DIR}/zephyr/component_manifest.json"
-    ${EXTRA_EC_VERSION_FLAGS_LIST}
-  )
-  execute_process(COMMAND ${CMD_CME} RESULT_VARIABLE ret)
-  if(NOT "${ret}" STREQUAL "0")
-    message(FATAL_ERROR "cme.py failed with return code: ${ret}")
+  if(NOT DEFINED CONFIG_PLATFORM_EC_DETACHABLE_BASE AND
+    NOT DEFINED CONFIG_FINGERPRINT_SENSOR AND
+    DEFINED CONFIG_PLATFORM_EC_I2C)
+
+    message(STATUS "Generating component manifest file")
+    set(CME_SCRIPT ${PLATFORM_EC}/zephyr/scripts/cme.py)
+    set(CMD_CME ${PYTHON_EXECUTABLE} ${CME_SCRIPT}
+      --zephyr-base ${ZEPHYR_BASE}
+      --edt-pickle ${EDT_PICKLE}
+      --manifest-file "${CMAKE_BINARY_DIR}/zephyr/component_manifest.json"
+      ${EXTRA_EC_VERSION_FLAGS_LIST}
+    )
+    execute_process(COMMAND ${CMD_CME} RESULT_VARIABLE ret)
+    if(NOT "${ret}" STREQUAL "0")
+      message(FATAL_ERROR "cme.py failed with return code: ${ret}")
+    endif()
   endif()
 endif()
 
@@ -490,6 +495,8 @@ if (CONFIG_PLATFORM_EC_HIBERNATE AND CONFIG_AP_PWRSEQ AND NOT DEFINED CONFIG_EMU
 endif ()
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PANIC
                                                 "${PLATFORM_EC}/common/panic_output.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PRESERVED_RING_BUF "${PLATFORM_EC}/common/preserved_ring_buf.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PANIC_LOG "${PLATFORM_EC}/common/panic_log.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PSE_LTC4291
                                                 "${PLATFORM_EC}/driver/pse_ltc4291.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_RSA
@@ -519,6 +526,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SWITCH
                                                 "${PLATFORM_EC}/common/switch.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SWITCHCAP_LN9310
                                                 "${PLATFORM_EC}/driver/ln9310.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SPI_FLASH_REGS
+                                                "${PLATFORM_EC}/common/spi_flash_reg.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_STM_MEMS_COMMON
                                                 "${PLATFORM_EC}/driver/stm_mems_common.c")
 
@@ -655,9 +664,6 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_DP_HPD_GPIO
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_VDM_AP_CONTROL
                                                 "${PLATFORM_EC}/common/usbc/ap_vdm_control.c")
 
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PRL_SM
-                                                "${PLATFORM_EC}/common/usbc/usb_prl_sm.c")
-
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPM_ANX7447
                                                 "${PLATFORM_EC}/driver/tcpm/anx7447.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TCPM_CCGXXF
@@ -737,6 +743,7 @@ add_subdirectory("app")
 add_subdirectory("drivers")
 add_subdirectory("emul")
 add_subdirectory("fake")
+add_subdirectory("libc")
 add_subdirectory("mock")
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 add_subdirectory_ifdef(CONFIG_HW_TEST_ON "test/hwtest")

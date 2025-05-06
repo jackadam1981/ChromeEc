@@ -59,10 +59,8 @@
  *	};
  * };
  */
-#define ACCELGYRO_ALS_DRV_DATA(id)                         \
-	{                                                  \
-		ALS_CALIBRATION_SET(DT_CHILD(id, als_cal)) \
-	}
+#define ACCELGYRO_ALS_DRV_DATA(id) \
+	{ ALS_CALIBRATION_SET(DT_CHILD(id, als_cal)) }
 
 #define RGB_CAL_RGB_SET_SCALE(id) .scale = ACCELGYRO_ALS_CHANNEL_SCALE(id),
 
@@ -119,12 +117,13 @@
  *	};
  * };
  */
-#define ACCELGYRO_RGB_CALIBRATION(id)                                 \
-	{                                                             \
-		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_x), X)       \
-		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_y), Y)       \
-		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_z), Z).irt = \
-			INT_TO_FP(DT_PROP(id, irt)),                  \
+#define ACCELGYRO_RGB_CALIBRATION(id)                                        \
+	{                                                                    \
+		RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_x), X)              \
+			RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_y), Y)      \
+				RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_z), \
+						    Z)                       \
+					.irt = INT_TO_FP(DT_PROP(id, irt)),  \
 	}
 
 #endif /* __ZEPHYR_SHIM_SRC_MOTIONSENSE_DRIVER_DRVDATA_ACCELGYRO_H */

@@ -17,7 +17,7 @@
 			pdc = <&pdc_power_p0>;
 			policy = <&cros_policy>;
 		};
-		usbc_port1: port0@1 {
+		usbc_port1: port1@1 {
 			compatible = "named-usbc-port";
 			reg = <1>;
 			pdc = <&pdc_power_p1>;
@@ -25,7 +25,6 @@
 		};
 		ppm-driver {
 			compatible = "ucsi-ppm";
-			lpm = <&pdc_power_p0 &pdc_power_p1>;
 		};
 	};
 };
@@ -39,12 +38,15 @@
 		reg = <0x20>;
 		/* EC_PD_INT */
 		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+		zephyr,deferred-init;
 	};
 	pdc_power_p1: tps6699-pdc@24 {
 		compatible = "ti,tps6699-pdc";
 		reg = <0x24>;
 		/* EC_PD_INT */
 		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+		no-fw-update;
+		zephyr,deferred-init;
 	};
 };
 

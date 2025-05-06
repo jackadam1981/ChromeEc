@@ -49,7 +49,7 @@ static int print_in_int = CONFIG_PORT80_PRINT_IN_INT;
 static void port80_dump_buffer(void);
 DECLARE_DEFERRED(port80_dump_buffer);
 
-void port_80_write(int data)
+test_mockable void port_80_write(int data)
 {
 	char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];
 

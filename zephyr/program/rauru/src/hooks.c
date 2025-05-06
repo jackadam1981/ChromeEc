@@ -39,6 +39,24 @@ static void rauru_common_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 
+#ifdef CONFIG_PDC_POWER_MGMT_USB_MUX
+static bool is_pr_swap_needed(int port)
+{
+	return pd_get_power_role(port) == PD_ROLE_SINK &&
+	       charge_manager_get_active_charge_port() != port;
+}
+
+static void swap_to_src(void)
+{
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		if (is_pr_swap_needed(i)) {
+			pdc_power_mgmt_request_swap_to_src(i);
+		}
+	}
+}
+DECLARE_DEFERRED(swap_to_src);
+#endif
+
 /* USB-A */
 void xhci_interrupt(enum gpio_signal signal)
 {
@@ -70,6 +88,7 @@ void xhci_interrupt(enum gpio_signal signal)
 		 */
 		if (xhci_stat) {
 			pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
+			pd_resume_check_pr_swap_needed(i);
 		} else if (tc_is_attached_src(i)) {
 			/*
 			 * This is a AP reset S0->S0 transition.
@@ -81,6 +100,15 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif /* defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
 	  defined(CONFIG_PDC_POWER_MGMT_USB_MUX) */
+
+#ifdef CONFIG_PDC_POWER_MGMT_USB_MUX
+	/* pdc_power_mgmt_request_swap_to_src is a blocking function, call
+	 * it in hook task instead of IRQ context
+	 */
+	if (xhci_stat) {
+		hook_call_deferred(&swap_to_src_data, 0);
+	}
+#endif
 }
 
 #if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
@@ -104,4 +132,17 @@ static void fan_low_rpm(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, fan_low_rpm, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_INIT, fan_low_rpm, HOOK_PRIO_LAST);
+#endif
+
+#ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720
+void update_bq25720_input_voltage(void)
+{
+	/* b:397587463 set input voltage to 3.2V to prevent charger entering
+	 * VINDPM mode */
+	i2c_write16(chg_chips[CHARGER_SOLO].i2c_port,
+		    chg_chips[CHARGER_SOLO].i2c_addr_flags,
+		    BQ25710_REG_INPUT_VOLTAGE, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, update_bq25720_input_voltage, HOOK_PRIO_DEFAULT);
 #endif

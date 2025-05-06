@@ -6,6 +6,7 @@ cmake_minimum_required(VERSION 3.20.5)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 target_sources(app PRIVATE
+	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/dp_alt_mode.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/i2c.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hibernate.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hooks.c
@@ -14,4 +15,10 @@ target_sources(app PRIVATE
 if(DEFINED CONFIG_BOARD_SKYWALKER)
 	project(skywalker)
 	add_subdirectory(skywalker)
+elseif(DEFINED CONFIG_BOARD_LUUKE)
+	project(luuke)
+	add_subdirectory(luuke)
+elseif(DEFINED CONFIG_BOARD_OBIWAN)
+	project(obiwan)
+	add_subdirectory(obiwan)
 endif()

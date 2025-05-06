@@ -18,7 +18,7 @@
 namespace cros::dsp::util {
 
 template <typename ValueType, typename ClassType>
-constexpr size_t OffsetOf(const ValueType ClassType::*member) {
+constexpr size_t OffsetOf(const ValueType ClassType::* member) {
   std::aligned_storage<sizeof(ClassType), alignof(ClassType)> obj_memory;
   ClassType* obj = reinterpret_cast<ClassType*>(&obj_memory);
   return reinterpret_cast<size_t>(&(obj->*member)) -
@@ -26,13 +26,13 @@ constexpr size_t OffsetOf(const ValueType ClassType::*member) {
 }
 
 template <typename ValueType, typename ClassType>
-ClassType* ContainerOf(void* ptr, ValueType ClassType::*member) {
+ClassType* ContainerOf(void* ptr, ValueType ClassType::* member) {
   return reinterpret_cast<ClassType*>(reinterpret_cast<char*>(ptr) -
                                       OffsetOf(member));
 }
 
 template <typename ValueType, typename ClassType>
-const ClassType* ContainerOf(const void* ptr, ValueType ClassType::*member) {
+const ClassType* ContainerOf(const void* ptr, ValueType ClassType::* member) {
   return reinterpret_cast<const ClassType*>(reinterpret_cast<const char*>(ptr) -
                                             OffsetOf(member));
 }

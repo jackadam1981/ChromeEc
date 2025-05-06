@@ -32,14 +32,10 @@ enum usbc_port {
 	USBC_PORT_COUNT
 };
 
-#define device_dt(gpio_name)                                              \
-	{                                                                 \
-		.port = DEVICE_DT_GET(                                    \
-			DT_GPIO_CTLR(DT_NODELABEL(gpio_name), gpios)),    \
-		.pin = DT_GPIO_PIN(DT_NODELABEL(gpio_name), gpios),       \
-		.dt_flags = 0xFF &                                        \
-			    DT_GPIO_FLAGS(DT_NODELABEL(gpio_name), gpios) \
-	}
+#define device_dt(gpio_name)                                                   \
+	{ .port = DEVICE_DT_GET(DT_GPIO_CTLR(DT_NODELABEL(gpio_name), gpios)), \
+	  .pin = DT_GPIO_PIN(DT_NODELABEL(gpio_name), gpios),                  \
+	  .dt_flags = 0xFF & DT_GPIO_FLAGS(DT_NODELABEL(gpio_name), gpios) }
 
 /* TCPC AIC GPIO devices */
 const struct gpio_dt_spec tcpc_aic_gpios_device[] = {

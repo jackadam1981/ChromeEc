@@ -22,10 +22,10 @@
 LOG_MODULE_REGISTER(ucsi_ppm_test, LOG_LEVEL_DBG);
 
 #define DT_PPM_DRV DT_INST(0, ucsi_ppm)
-#define NUM_PORTS DT_PROP_LEN(DT_PPM_DRV, lpm)
+#define NUM_PORTS DT_NUM_INST_STATUS_OKAY(named_usbc_port)
 #define PDC_WAIT_FOR_ITERATIONS 30
 #define PDC_EMUL_NODE DT_NODELABEL(pdc_emul1)
-#define PDC_EMUL_PORT USBC_PORT_FROM_DRIVER_NODE(PDC_EMUL_NODE, pdc)
+#define PDC_EMUL_PORT USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_EMUL_NODE)
 #define PPM_CONNECTOR_NUM (PDC_EMUL_PORT + 1)
 #define SYNC_CMD_TIMEOUT_MS 2000
 
@@ -49,6 +49,12 @@ static void host_cmd_pdc_reset(void *fixture)
 	ppm_dev = drv->get_ppm_dev(pdc);
 	emul_pdc_reset(emul);
 	emul_pdc_disconnect(emul);
+
+	/* Ensure the PDC driver has finished its own internal initialization
+	 * steps. Wait for up to 5 seconds. */
+	zassert_true(WAIT_FOR(pdc_is_init_done(pdc_dev), (5 * USEC_PER_SEC),
+			      k_sleep(K_MSEC(100))),
+		     "Timed out waiting for PDC driver to be ready.");
 }
 
 ZTEST_SUITE(ucsi_ppm, NULL, NULL, host_cmd_pdc_reset, NULL, NULL);

@@ -14,6 +14,7 @@
 #include "ec_commands.h"
 #include "ucsi_v3.h"
 #include "usb_pd.h"
+#include "usbc/utils.h"
 
 #include <errno.h>
 
@@ -46,6 +47,47 @@ extern "C" {
 #define PDC_FWVER_GET_PATCH(fwver) ((fwver) & 0xFF)
 
 #define PDC_FWVER_INVALID (0xFFFFFFFF)
+
+#define NODE_MATCHES(node1, node2) IS_EQ(DT_DEP_ORD(node1), DT_DEP_ORD(node2))
+
+#define COMPARE_PDC_ARRAY_MEMBER(usbc_id, prop, idx, target)                  \
+	COND_CODE_1(NODE_MATCHES(DT_PROP_BY_IDX(usbc_id, prop, idx), target), \
+		    (USBC_PORT_NEW(usbc_id)), ())
+
+#define GET_USBC_PORT_IF_PDC_IN_LIST(usbc_id, target)                      \
+	DT_FOREACH_PROP_ELEM_VARGS(usbc_id, pdc, COMPARE_PDC_ARRAY_MEMBER, \
+				   target)
+
+/**
+ * @brief Given a devicetree node, return the USB-C port number that references
+ * the devicetree node.
+ *
+ * Usage:
+ *	usbc_port0: port0@0 {
+ *		compatible = "named-usbc-port";
+ *		reg = < 0x0 >;
+ *		chg = < &charger >;
+ *		pdc = < &pdc_power_p0 >;
+ *	};
+ *	usbc_port1: port1@1 {
+ *		compatible = "named-usbc-port";
+ *		reg = < 0x1 >;
+ *		pdc = < &pdc_power_p1 >;
+ *	};
+ *	&i2c{
+ *		pdc_power_p1: driver@88 {
+ *			compatible = "my-driver";
+ *		}
+ *      };
+ *
+ *
+ * @param target Devicetree node to search for
+ * @param prop named-usbc-port property to check
+ * @returns USB-C port number
+ */
+#define USBC_PORT_FROM_PDC_DRIVER_NODE(target)        \
+	DT_FOREACH_STATUS_OKAY_VARGS(named_usbc_port, \
+				     GET_USBC_PORT_IF_PDC_IN_LIST, target)
 
 /**
  * @brief Power Delivery Controller Information
@@ -88,11 +130,12 @@ enum pdc_bus_type {
  * @brief Bus info for PDC chip. This gets exposed via host command to enable
  *        passthrough access to the PDC from AP during firmware updates.
  */
-struct pdc_bus_info_t {
+struct pdc_hw_config_t {
 	enum pdc_bus_type bus_type;
 	union {
 		struct i2c_dt_spec i2c;
 	};
+	bool ccd;
 };
 
 /**
@@ -107,12 +150,29 @@ struct get_pdo_t {
 	bool updating;
 };
 
+/**
+ * Used with pdc_get_sbu_mux_mode() / pdc_set_sbu_mux_mode()
+ */
+enum pdc_sbu_mux_mode {
+	/** SBU mux mode is invalid or unknown */
+	PDC_SBU_MUX_MODE_INVALID = -1,
+	/** The SBU mux behaves normally (switches to debug path when a debug
+	 *  accessory is attached, or connected to AP for alternate modes) */
+	PDC_SBU_MUX_MODE_NORMAL = 0,
+	/** The SBU mux is forced into the debug path unconditionally. Used when
+	 *  CCD must be kept alive. This is not cleared unless explicitly set
+	 *  back to PDC_SBU_MUX_MODE_NORMAL or the PDC reboots. */
+	PDC_SBU_MUX_MODE_FORCE_DBG,
+	PDC_SBU_MUX_MODE_MAX,
+};
+
 struct pdc_callback;
 
 /**
  * @typedef
  * @brief These are the API function types
  */
+typedef void (*pdc_start_thread_t)(const struct device *dev);
 typedef int (*pdc_get_ucsi_version_t)(const struct device *dev,
 				      uint16_t *version);
 typedef int (*pdc_reset_t)(const struct device *dev);
@@ -147,8 +207,8 @@ typedef int (*pdc_get_rdo_t)(const struct device *dev, uint32_t *rdo);
 typedef int (*pdc_set_rdo_t)(const struct device *dev, uint32_t rdo);
 typedef int (*pdc_get_info_t)(const struct device *dev, struct pdc_info_t *info,
 			      bool live);
-typedef int (*pdc_get_bus_info_t)(const struct device *dev,
-				  struct pdc_bus_info_t *info);
+typedef int (*pdc_get_hw_config_t)(const struct device *dev,
+				   struct pdc_hw_config_t *config);
 typedef int (*pdc_get_current_pdo_t)(const struct device *dev, uint32_t *pdo);
 typedef int (*pdc_read_power_level_t)(const struct device *dev);
 typedef int (*pdc_set_power_level_t)(const struct device *dev,
@@ -186,6 +246,10 @@ typedef int (*pdc_get_lpm_ppm_info_t)(const struct device *dev,
 typedef int (*pdc_set_frs_t)(const struct device *dev, bool enable);
 typedef int (*pdc_get_attention_vdo_t)(const struct device *dev,
 				       union get_attention_vdo_t *vdo);
+typedef int (*pdc_get_sbu_mux_mode_t)(const struct device *dev,
+				      enum pdc_sbu_mux_mode *mode);
+typedef int (*pdc_set_sbu_mux_mode_t)(const struct device *dev,
+				      enum pdc_sbu_mux_mode mode);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -193,6 +257,7 @@ typedef int (*pdc_get_attention_vdo_t)(const struct device *dev,
  * These are for internal use only, so skip these in public documentation.
  */
 __subsystem struct pdc_driver_api {
+	pdc_start_thread_t start_thread;
 	pdc_is_init_done_t is_init_done;
 	pdc_get_ucsi_version_t get_ucsi_version;
 	pdc_reset_t reset;
@@ -215,7 +280,7 @@ __subsystem struct pdc_driver_api {
 	pdc_set_rdo_t set_rdo;
 	pdc_read_power_level_t read_power_level;
 	pdc_get_info_t get_info;
-	pdc_get_bus_info_t get_bus_info;
+	pdc_get_hw_config_t get_hw_config;
 	pdc_set_power_level_t set_power_level;
 	pdc_reconnect_t reconnect;
 	pdc_get_current_flash_bank_t get_current_flash_bank;
@@ -233,10 +298,27 @@ __subsystem struct pdc_driver_api {
 	pdc_get_lpm_ppm_info_t get_lpm_ppm_info;
 	pdc_set_frs_t set_frs;
 	pdc_get_attention_vdo_t get_attention_vdo;
+	pdc_get_sbu_mux_mode_t get_sbu_mux_mode;
+	pdc_set_sbu_mux_mode_t set_sbu_mux_mode;
 };
 /**
  * @endcond
  */
+
+/**
+ * @brief Starts the PDC driver thread
+ *
+ * @param dev PDC device structure pointer
+ */
+static inline void pdc_start_thread(const struct device *dev)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	__ASSERT(api->start_thread != NULL, "START_THREAD is not optional");
+
+	return api->start_thread(dev);
+}
 
 /**
  * @brief Tests if the PDC driver init process is complete
@@ -714,23 +796,23 @@ static inline int pdc_get_info(const struct device *dev,
 }
 
 /**
- * @brief Get bus interface info about the PDC
+ * @brief Get bus interface hw config about the PDC
  *
  * @param dev PDC device structure pointer
- * @param info Output struct for bus info
+ * @param config Output struct for hw config
  *
  * @retval 0 on success
  * @retval -EINVAL if info pointer is NULL
  */
-static inline int pdc_get_bus_info(const struct device *dev,
-				   struct pdc_bus_info_t *info)
+static inline int pdc_get_hw_config(const struct device *dev,
+				    struct pdc_hw_config_t *config)
 {
 	const struct pdc_driver_api *api =
 		(const struct pdc_driver_api *)dev->api;
 
-	__ASSERT(api->get_bus_info != NULL, "GET_INFO is not optional");
+	__ASSERT(api->get_hw_config != NULL, "GET_INFO is not optional");
 
-	return api->get_bus_info(dev, info);
+	return api->get_hw_config(dev, config);
 }
 
 /**
@@ -1346,6 +1428,48 @@ static inline int pdc_get_attention_vdo(const struct device *dev,
 	}
 
 	return api->get_attention_vdo(dev, vdo);
+}
+
+/**
+ * @brief Vendor command to query current SBU mux operational mode
+ * @param dev PDC device structure pointer
+ * @param mode Output pointer for current mode to be written to
+ * @return 0 on success, or negative error code
+ */
+static inline int pdc_get_sbu_mux_mode(const struct device *dev,
+				       enum pdc_sbu_mux_mode *mode)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->get_sbu_mux_mode == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->get_sbu_mux_mode(dev, mode);
+}
+
+/**
+ * @brief Vendor command to set the SBU mux operational mode
+ * @param dev PDC device structure pointer
+ * @param mode Mode to set the SBU mux to
+ * @return 0 on success, or negative error code
+ */
+static inline int pdc_set_sbu_mux_mode(const struct device *dev,
+				       enum pdc_sbu_mux_mode mode)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (mode < 0 || mode >= PDC_SBU_MUX_MODE_MAX) {
+		return -EINVAL;
+	}
+
+	if (api->set_sbu_mux_mode == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_sbu_mux_mode(dev, mode);
 }
 
 #ifdef __cplusplus

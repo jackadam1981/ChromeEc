@@ -28,7 +28,7 @@
 LOG_MODULE_REGISTER(pdc_non_pd_policy);
 
 #define PDC_NODE_PORT0 DT_NODELABEL(pdc_emul1)
-#define TEST_USBC_PORT0 USBC_PORT_FROM_DRIVER_NODE(PDC_NODE_PORT0, pdc)
+#define TEST_USBC_PORT0 USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_NODE_PORT0)
 
 #define CHARGE_DETECT_DELAY_MS (CHARGE_DETECT_DELAY / 1000)
 
@@ -86,9 +86,9 @@ static inline struct ec_response_usb_pd_power_info host_cmd_power_info(int port)
  */
 ZTEST_USER_F(non_pd_policy, test_non_pd_sinking)
 {
-	union connector_status_t connector_status;
+	union connector_status_t connector_status = { 0 };
 	struct ec_response_usb_pd_power_info response;
-	union conn_status_change_bits_t connector_change;
+	union conn_status_change_bits_t connector_change = { 0 };
 
 	struct {
 		enum power_operation_mode_t power_operation_mode;

@@ -32,7 +32,7 @@ LOG_MODULE_REGISTER(test_pdc_api, LOG_LEVEL_INF);
 static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 static const struct device *dev = DEVICE_DT_GET(RTS5453P_NODE);
 static const uint8_t connector_number =
-	USBC_PORT_FROM_DRIVER_NODE(RTS5453P_NODE, pdc) + 1;
+	USBC_PORT_FROM_PDC_DRIVER_NODE(RTS5453P_NODE) + 1;
 static bool test_cc_cb_called;
 static union cci_event_t test_cc_cb_cci;
 
@@ -154,9 +154,9 @@ ZTEST_USER(pdc_api, test_get_error_status)
 
 ZTEST_USER(pdc_api, test_get_connector_status)
 {
-	union connector_status_t in, out;
-	union conn_status_change_bits_t in_conn_status_change_bits;
-	union conn_status_change_bits_t out_conn_status_change_bits;
+	union connector_status_t in = { 0 }, out = { 0 };
+	union conn_status_change_bits_t in_conn_status_change_bits = { 0 };
+	union conn_status_change_bits_t out_conn_status_change_bits = { 0 };
 
 	in_conn_status_change_bits.external_supply_change = 1;
 	in_conn_status_change_bits.connector_partner = 1;
@@ -211,7 +211,9 @@ ZTEST_USER(pdc_api, test_set_uor)
 	k_sleep(K_MSEC(SLEEP_MS));
 	zassert_ok(emul_pdc_get_uor(emul, &out));
 
-	zassert_equal(out.raw_value, in.raw_value);
+	zassert_equal(out.swap_to_dfp, in.swap_to_dfp);
+	zassert_equal(out.swap_to_ufp, in.swap_to_ufp);
+	zassert_equal(out.accept_dr_swap, in.accept_dr_swap);
 }
 
 ZTEST_USER(pdc_api, test_set_pdr)
@@ -279,7 +281,7 @@ ZTEST_USER(pdc_api, test_get_bus_voltage)
 	uint32_t mv_units = 50;
 	uint32_t expected_voltage_mv = 5000;
 	uint16_t out = 0;
-	union connector_status_t in;
+	union connector_status_t in = { 0 };
 
 	in.voltage_scale = 10; /* 50 mv units*/
 	in.voltage_reading = expected_voltage_mv / mv_units;
@@ -730,6 +732,36 @@ ZTEST_USER(pdc_api, test_execute_ucsi_cmd)
 	zassert_equal(out->raw_value, in.raw_value);
 }
 
+ZTEST_USER(pdc_api, test_get_sbu_mux_mode)
+{
+	/* Null pointer error */
+	zassert_equal(-EINVAL, pdc_get_sbu_mux_mode(dev, NULL));
+}
+
+ZTEST_USER(pdc_api, test_set_sbu_mux_mode)
+{
+	/* Invalid mode */
+	zassert_equal(-EINVAL,
+		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_INVALID));
+}
+
+ZTEST_USER(pdc_api, test_get_sbu_mux_mode_access_error)
+{
+	int rv;
+	enum pdc_sbu_mux_mode mode = PDC_SBU_MUX_MODE_NORMAL;
+
+	/* Invalid access */
+	rv = emul_pdc_set_cmd_error(emul, true);
+	if (rv != -ENOSYS) {
+		zassert_ok(pdc_get_sbu_mux_mode(dev, &mode));
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_equal(mode, PDC_SBU_MUX_MODE_INVALID,
+			      "Expect PDC_SBU_MUX_MODE_INVALID (%d), Get (%d)",
+			      PDC_SBU_MUX_MODE_INVALID, mode);
+		emul_pdc_set_cmd_error(emul, false);
+	}
+}
+
 /*
  * Suspended tests - ensure API calls behave correctly when PDC communication
  * is suspended.
@@ -801,4 +833,19 @@ ZTEST_USER(pdc_api_suspended, test_get_lpm_ppm_info)
 
 	/* Read should return busy because comms are blocked */
 	zassert_equal(-EBUSY, pdc_get_lpm_ppm_info(dev, &out));
+}
+
+ZTEST_USER(pdc_api_suspended, test_get_sbu_mux_mode)
+{
+	enum pdc_sbu_mux_mode mode;
+
+	/* Read should return busy because comms are blocked */
+	zassert_equal(-EBUSY, pdc_get_sbu_mux_mode(dev, &mode));
+}
+
+ZTEST_USER(pdc_api_suspended, test_set_sbu_mux_mode)
+{
+	/* Set should return busy because comms are blocked */
+	zassert_equal(-EBUSY,
+		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_FORCE_DBG));
 }

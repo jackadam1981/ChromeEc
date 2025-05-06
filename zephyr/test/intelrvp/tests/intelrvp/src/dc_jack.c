@@ -47,14 +47,10 @@ struct charge_port_info port_info = {
 	.voltage = 0,
 };
 
-#define device_dt(gpio_name)                                              \
-	{                                                                 \
-		.port = DEVICE_DT_GET(                                    \
-			DT_GPIO_CTLR(DT_NODELABEL(gpio_name), gpios)),    \
-		.pin = DT_GPIO_PIN(DT_NODELABEL(gpio_name), gpios),       \
-		.dt_flags = 0xFF &                                        \
-			    DT_GPIO_FLAGS(DT_NODELABEL(gpio_name), gpios) \
-	}
+#define device_dt(gpio_name)                                                   \
+	{ .port = DEVICE_DT_GET(DT_GPIO_CTLR(DT_NODELABEL(gpio_name), gpios)), \
+	  .pin = DT_GPIO_PIN(DT_NODELABEL(gpio_name), gpios),                  \
+	  .dt_flags = 0xFF & DT_GPIO_FLAGS(DT_NODELABEL(gpio_name), gpios) }
 
 const struct gpio_dt_spec dc_jack_gpio_device = device_dt(std_adp_prsnt);
 

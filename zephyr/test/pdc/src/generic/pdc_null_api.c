@@ -53,6 +53,11 @@ void assert_post_action(const char *file, unsigned int line)
 		zassert_true(0, "Assert did not happen"); \
 	} while (0)
 
+ZTEST(pdc_api_null_check, test_pdc_start_thread)
+{
+	EXPECT_ASSERT(pdc_start_thread(&fake_pdc));
+}
+
 ZTEST(pdc_api_null_check, test_pdc_is_init_done)
 {
 	EXPECT_ASSERT(pdc_is_init_done(&fake_pdc));
@@ -134,9 +139,9 @@ ZTEST(pdc_api_null_check, test_pdc_get_info)
 	EXPECT_ASSERT(pdc_get_info(&fake_pdc, NULL, false));
 }
 
-ZTEST(pdc_api_null_check, test_pdc_get_bus_info)
+ZTEST(pdc_api_null_check, test_pdc_get_hw_config)
 {
-	EXPECT_ASSERT(pdc_get_bus_info(&fake_pdc, NULL));
+	EXPECT_ASSERT(pdc_get_hw_config(&fake_pdc, NULL));
 }
 
 ZTEST(pdc_api_null_check, test_pdc_get_rdo)
@@ -317,6 +322,23 @@ ZTEST(pdc_api_null_check, test_pdc_get_drp_mode)
 {
 	enum drp_mode_t drp_mode;
 	int rv = pdc_get_drp_mode(&fake_pdc, &drp_mode);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
+ZTEST(pdc_api_null_check, test_pdc_get_sbu_mux_mode)
+{
+	enum pdc_sbu_mux_mode mode;
+	int rv = pdc_get_sbu_mux_mode(&fake_pdc, &mode);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
+ZTEST(pdc_api_null_check, test_pdc_set_sbu_mux_mode)
+{
+	int rv = pdc_set_sbu_mux_mode(&fake_pdc, PDC_SBU_MUX_MODE_NORMAL);
 
 	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
 		      -ENOSYS);

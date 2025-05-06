@@ -23,22 +23,27 @@
 #define AUTO_EP_IN 0x80
 #define AUTO_EP_OUT 0x00
 
-#define INITIALIZER_IF(num_ep, iface_class, iface_subclass, iface_proto)      \
-	{                                                                     \
-		.bLength = sizeof(struct usb_if_descriptor),                  \
-		.bDescriptorType = USB_DESC_INTERFACE, .bInterfaceNumber = 0, \
-		.bAlternateSetting = 0, .bNumEndpoints = num_ep,              \
-		.bInterfaceClass = iface_class,                               \
-		.bInterfaceSubClass = iface_subclass,                         \
-		.bInterfaceProtocol = iface_proto, .iInterface = 0,           \
+#define INITIALIZER_IF(num_ep, iface_class, iface_subclass, iface_proto) \
+	{                                                                \
+		.bLength = sizeof(struct usb_if_descriptor),             \
+		.bDescriptorType = USB_DESC_INTERFACE,                   \
+		.bInterfaceNumber = 0,                                   \
+		.bAlternateSetting = 0,                                  \
+		.bNumEndpoints = num_ep,                                 \
+		.bInterfaceClass = iface_class,                          \
+		.bInterfaceSubClass = iface_subclass,                    \
+		.bInterfaceProtocol = iface_proto,                       \
+		.iInterface = 0,                                         \
 	}
 
-#define INITIALIZER_IF_EP(addr, attr, mps)                              \
-	{                                                               \
-		.bLength = sizeof(struct usb_ep_descriptor),            \
-		.bDescriptorType = USB_DESC_ENDPOINT,                   \
-		.bEndpointAddress = addr, .bmAttributes = attr,         \
-		.wMaxPacketSize = sys_cpu_to_le16(mps), .bInterval = 1, \
+#define INITIALIZER_IF_EP(addr, attr, mps)                   \
+	{                                                    \
+		.bLength = sizeof(struct usb_ep_descriptor), \
+		.bDescriptorType = USB_DESC_ENDPOINT,        \
+		.bEndpointAddress = addr,                    \
+		.bmAttributes = attr,                        \
+		.wMaxPacketSize = sys_cpu_to_le16(mps),      \
+		.bInterval = 1,                              \
 	}
 
 struct hid_dev_t {

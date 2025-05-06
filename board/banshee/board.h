@@ -80,6 +80,9 @@
 #define CONFIG_HOSTCMD_I2C_CONTROL
 
 #define CONFIG_USBC_PPC_SYV682X
+/* Avoid spurious OCP. */
+#undef CONFIG_SYV682X_HV_ILIM
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
 #define CONFIG_USB_PD_PPC
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */
@@ -200,7 +203,7 @@
 #include "usbc_config.h"
 
 /* I2C access in polling mode before task is initialized */
-#define CONFIG_I2C_BITBANG
+#define CONFIG_I2C_BITBANG_CROS_EC
 
 enum banshee_bitbang_i2c_channel {
 	I2C_BITBANG_CHAN_BRD_ID,
