@@ -263,6 +263,30 @@
       },
       "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba93763_8b812206",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-05-06T16:33:09Z",
+      "side": 1,
+      "message": "even so, let\u0027s still collect it in a single if statement (or nested ifs, but I don\u0027t see a reason) or extract all those there checks in a function (assert_ecrst_if_pcr_state_not_allowed()) and call it from PCR value changed hook. we will have other things that we will need to do in this hook.",
+      "parentUuid": "da0b1343_0ea1a7f9",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 60
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
