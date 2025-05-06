@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737f1e71_873beb16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-06T22:05:55Z",
+      "side": 1,
+      "message": "Low coverage reason should not be the same bug as the feature. Please create and assign a dedicated bug for adding this coverage. We will need test coverage over `src/board_power.c`, but it can probably be easily adapted from a similar project.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 57
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28d22c4_a04f0a1e",
+        "filename": "zephyr/program/ocelot/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-06T22:05:55Z",
+      "side": 1,
+      "message": "Do you intend for `src/board_power.c` to be shared by all Ocelot boards? (It is okay to limit it to ocelot_microchip for now)",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda18619_8ba420c9",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/include/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-06T22:05:55Z",
+      "side": 1,
+      "message": "It would be easier to read the devicetree if these values were inserted into `power_signals.dtsi` directly. This header adds a level of indirection.\n\nYou can remove this `board.h` header and relocate `power_signals.dtsi` to `ocelot_microchip/power_signals.dtsi` and make it mchp-specific. We will copy and adapt `power_signals.dtsi` to the other builds later. I\u0027m willing to trade extra repetition here for readability and to avoid too much cross-referencing.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44324ced_30797aab",
+        "filename": "zephyr/program/ocelot/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-06T22:05:55Z",
+      "side": 1,
+      "message": "The `#ifdef CONFIG_AP_PWRSEQ_DRIVER` guards can be removed (here and the other uses below). `CONFIG_AP_PWRSEQ_DRIVER` is enabled by default, and we\u0027ll want to use the Zephyr AP power sequencing driver for all Ocelot boards.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
