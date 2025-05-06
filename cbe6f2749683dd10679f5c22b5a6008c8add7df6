@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f206d9ab_5ffb500b",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-05-06T00:53:25Z",
+      "side": 1,
+      "message": "Yeah, that will remove any need for the inheritance/dependency from `CONFIG_VOLUME_BUTTONS` in `config.h`.  Do we want that?",
+      "parentUuid": "bb42d556_ab47a33a",
+      "range": {
+        "startLine": 447,
+        "startChar": 6,
+        "endLine": 447,
+        "endChar": 47
+      },
+      "revId": "cbe6f2749683dd10679f5c22b5a6008c8add7df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b2e374b_fb94b7f6",
