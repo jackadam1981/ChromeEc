@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f8c197_244241c6",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-06T01:06:46Z",
+      "side": 1,
+      "message": "Why is it needed?\nalt_sensor_init() that trigger this macro is hooked on HOOK_INIT, while the first init is done on hook HOOK_CHIPSET_RESUME. I am reluctant to initialize the sensor on HOOK_INIT as we don\u0027t know yet if the i2c bus are set correctly.",
+      "revId": "de8f0ed587c0c07e81df81bed5bfb0ce5f71a6ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
