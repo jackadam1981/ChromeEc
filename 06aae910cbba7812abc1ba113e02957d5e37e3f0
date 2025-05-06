@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392a564b_bcd609ad",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-06T00:51:41Z",
+      "side": 1,
+      "message": "Is the concern a floating GPIO will trigger zombie interrupts? Can it happen if only a subset of the sensors are enabled?",
+      "revId": "06aae910cbba7812abc1ba113e02957d5e37e3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
