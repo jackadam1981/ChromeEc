@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2a9611_84a5f0fd",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "This should also be deleted.",
+      "range": {
+        "startLine": 763,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 24
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0065dbf6_d53dc015",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "Zephyr defines this macro.  You don\u0027t need to redefine it.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5d70e114_63e47939",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a0c278_cfb0087a",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "Use the compatible string `realtek_rts5912_watchdog`",
+      "range": {
+        "startLine": 33,
+        "startChar": 64,
+        "endLine": 33,
+        "endChar": 68
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41aca593_ec8eeb20",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "These need a volatile attribute.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ebd62a_3dfc4340",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "These helper macros are not needed.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd9a22d_6c095989",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "dev-\u003edata;",
+      "range": {
+        "startLine": 131,
+        "startChar": 37,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cc3320fb_25e8244d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 131,
+                "startChar": 0,
+                "endLine": 132,
+                "endChar": 0
+              },
+              "replacement": "\tstruct cros_system_rtk_data *data \u003d dev-\u003edata;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5a3977_b8a823b7",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "dev-\u003edata;",
+      "range": {
+        "startLine": 138,
+        "startChar": 37,
+        "endLine": 138,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1ea9688e_921a4067",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 138,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": "\tstruct cros_system_rtk_data *data \u003d dev-\u003edata;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e96659_c7e7f0a3",
+        "filename": "zephyr/include/cros/realtek/realtek.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:34:27Z",
+      "side": 1,
+      "message": "Can you allocate this space using the linker instead?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
