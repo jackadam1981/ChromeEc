@@ -1,0 +1,888 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc8e854_e8428df1",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Only the RO image should need the header.  You can set `CONFIG_RO_STORAGE_OFF` to adjust for the RO image image header.",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474524ef_07178abd",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "The original code had the wrong indentation.  Can you add hard tabs to the existing lines?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ecc8ef_5ec47797",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Not needed. There is already CONFIG_RO_STORAGE_OFF and CONFIG_RW_STORAGE_OFF available to set this offset.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c69e4e_717cbb17",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "depends on DT_HAS_REALTEK_RTK_CROS_FLASH_ENABLED",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ddd6ec3e_b85f1ff5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/Kconfig",
+              "range": {
+                "startLine": 66,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": "\tdepends on DT_HAS_REALTEK_RTK_CROS_FLASH_ENABLED\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6600b6_abc9c2cb",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Create a macro instead of magic number.",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03dc2ad9_79b5ac14",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Line length too long.  Please use `repo upload --cbr .` instead of `git push` so that the pre-submit checks are run.\nhttps://www.chromium.org/chromium-os/developer-library/guides/development/contributing/#upload-changes",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 79
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8c03db_36d1f144",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Nit - use braces on all conditions",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a72afe1e_ca4f3d14",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 137,
+                "startChar": 0,
+                "endLine": 138,
+                "endChar": 0
+              },
+              "replacement": "\tif (enable) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 139,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27cd965c_409c6487",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Add braces",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "49e9c970_27fd7a75",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 146,
+                "startChar": 0,
+                "endLine": 147,
+                "endChar": 0
+              },
+              "replacement": "\tif (write_protect_is_asserted()) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 148,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f0470d_de6528a5",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Add braces",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5b9c3196_8872fe45",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 183,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": "\tif (offset + bytes \u003e CONFIG_FLASH_SIZE_BYTES) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 185,
+                "startChar": 0,
+                "endLine": 185,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 192,
+                "startChar": 0,
+                "endLine": 192,
+                "endChar": 0
+              },
+              "replacement": "\t{\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 193,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 195,
+                "startChar": 0,
+                "endLine": 196,
+                "endChar": 0
+              },
+              "replacement": "\tif (MAX(start, offset) \u003c MIN(start + len, offset + bytes)) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 197,
+                "startChar": 0,
+                "endLine": 197,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 208,
+                "startChar": 0,
+                "endLine": 209,
+                "endChar": 0
+              },
+              "replacement": "\tif (offset + bytes \u003e CONFIG_FLASH_SIZE_BYTES) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 210,
+                "startChar": 0,
+                "endLine": 210,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 216,
+                "endChar": 0
+              },
+              "replacement": "\t{\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 217,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": "\tif (offset + bytes \u003e CONFIG_FLASH_SIZE_BYTES) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 226,
+                "startChar": 0,
+                "endLine": 226,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 229,
+                "startChar": 0,
+                "endLine": 230,
+                "endChar": 0
+              },
+              "replacement": "\t    MIN(addr_prot_start + addr_prot_length, offset + bytes)) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 231,
+                "startChar": 0,
+                "endLine": 231,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 256,
+                "startChar": 0,
+                "endLine": 257,
+                "endChar": 0
+              },
+              "replacement": "\tif (all_protected) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 258,
+                "startChar": 0,
+                "endLine": 258,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 260,
+                "startChar": 0,
+                "endLine": 261,
+                "endChar": 0
+              },
+              "replacement": "\tif (flash_check_prot_range(offset, size)) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 262,
+                "startChar": 0,
+                "endLine": 262,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 274,
+                "startChar": 0,
+                "endLine": 274,
+                "endChar": 0
+              },
+              "replacement": "\t{\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 275,
+                "startChar": 0,
+                "endLine": 275,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 298,
+                "startChar": 0,
+                "endLine": 299,
+                "endChar": 0
+              },
+              "replacement": "\tif (all_protected) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 300,
+                "startChar": 0,
+                "endLine": 300,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 302,
+                "startChar": 0,
+                "endLine": 303,
+                "endChar": 0
+              },
+              "replacement": "\tif (flash_check_prot_range(offset, size)) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 304,
+                "startChar": 0,
+                "endLine": 304,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 328,
+                "startChar": 0,
+                "endLine": 329,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (ret) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 330,
+                "startChar": 0,
+                "endLine": 330,
+                "endChar": 0
+              },
+              "replacement": "\t\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 338,
+                "startChar": 0,
+                "endLine": 338,
+                "endChar": 0
+              },
+              "replacement": "\t\t{\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 339,
+                "startChar": 0,
+                "endLine": 339,
+                "endChar": 0
+              },
+              "replacement": "\t\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 373,
+                "startChar": 0,
+                "endLine": 374,
+                "endChar": 0
+              },
+              "replacement": "\tif (rv \u003d\u003d EC_ERROR_ACCESS_DENIED) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 375,
+                "startChar": 0,
+                "endLine": 376,
+                "endChar": 0
+              },
+              "replacement": "\t} else if (rv) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 377,
+                "startChar": 0,
+                "endLine": 377,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 385,
+                "startChar": 0,
+                "endLine": 386,
+                "endChar": 0
+              },
+              "replacement": "\tif (rv) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 387,
+                "startChar": 0,
+                "endLine": 387,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 389,
+                "startChar": 0,
+                "endLine": 390,
+                "endChar": 0
+              },
+              "replacement": "\tif (all_protected) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 391,
+                "startChar": 0,
+                "endLine": 391,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 409,
+                "startChar": 0,
+                "endLine": 410,
+                "endChar": 0
+              },
+              "replacement": "\tif (new_flags \u0026 EC_FLASH_PROTECT_ALL_AT_BOOT) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 411,
+                "startChar": 0,
+                "endLine": 411,
+                "endChar": 0
+              },
+              "replacement": "\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29339573_2d135795",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Convert to LOG_DBG",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "57dfa5ba_be1a393c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 279,
+                "startChar": 0,
+                "endLine": 280,
+                "endChar": 0
+              },
+              "replacement": "\tLOG_DBG(\"fwrite %x, %x\", offset, size);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6eaa139_45bd23a0",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "This needs to set the protection bits in the flash.  The `all_protected` status is lost after the code does a system jump.",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 20
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb5d7b1_9f4aeb1d",
+        "filename": "zephyr/linker/rtk-lfw.ld",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "The `__lfw_text_start` and `__lfw_text_end` symbols aren\u0027t used. Delete.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71733cc1_359e2acb",
+        "filename": "zephyr/program/minimal/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "This is unrelated to the flash support.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1909e975_670fe623",
+        "filename": "zephyr/shim/chip/rtk/include/flash_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Realtek includes a real SPI flash device and has a hardware protection.\n\nI don\u0027t think the CONFIG_PLATFORM_EC_FLASH_PSTATE_BANK will ever be used with Realtek.  Delete this block.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1edb9f_5d9b5e21",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "This file needs formatting.  The pre-submit checks tell you the command to run fix format errors.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccb0454_8b4dbf18",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Extract this address from the devicetree.  Example [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-bloonchipper/ec/zephyr/shim/chip/mchp/system_download_from_flash.c;l\u003d14;drc\u003d2621ffd41ad3900ac0103523f6e1ae3f58aa08f9)",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e302b1a_9e1823f1",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "This comment was copied from NPCX.  How does this work for Realtek?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 59
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98e09f4_93c6ea8e",
+        "filename": "zephyr/shim/chip/rtk/system_external_storage.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:18:06Z",
+      "side": 1,
+      "message": "Delete or use LOG_DBG",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
