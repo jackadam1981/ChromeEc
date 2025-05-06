@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cc44f47_bb75f5e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-06T03:22:04Z",
+      "side": 1,
+      "message": "I don\u0027t know to say that this is 100% needed. The issue I found here was when I was collecting samples and would get a host command in between sensor collections. While I believe that your fix does fix the root cause of the timestamps, this also explains the long delays we some times see between the interrupt and processing.\n\nAgain, I don\u0027t think this is 100% necessary. Nothing broke without this change per-say. But I did notice that we context switched during the sample gathering.",
+      "parentUuid": "733bb370_ca4937fc",
+      "revId": "341776774defe7b54f454c0d51f1ec2fd31995df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48b31a5b_aac9467e",
         "filename": "common/motion_sense.c",
         "patchSetId": 13
@@ -59,6 +77,24 @@
           ]
         }
       ],
+      "revId": "341776774defe7b54f454c0d51f1ec2fd31995df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d75778_b3443480",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-06T03:22:04Z",
+      "side": 1,
+      "message": "The issue is that there is no scheduler lock/unlock in ecos so we can\u0027t use IS_ENABLED in common/ and directly call Zephyr functions. That\u0027s why I had to use the ifdef.",
+      "parentUuid": "48b31a5b_aac9467e",
       "revId": "341776774defe7b54f454c0d51f1ec2fd31995df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
