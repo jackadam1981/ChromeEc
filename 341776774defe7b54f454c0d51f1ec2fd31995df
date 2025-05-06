@@ -1,0 +1,66 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "733bb370_ca4937fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-06T00:49:20Z",
+      "side": 1,
+      "message": "Why is it needed? Which test is failing? Did you try the ToT fixes that fixes the timestamp and timestamp spreading?",
+      "revId": "341776774defe7b54f454c0d51f1ec2fd31995df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b31a5b_aac9467e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-06T00:49:20Z",
+      "side": 1,
+      "message": "`#ifdef` is frown upon, use IS_ENABLED instead.",
+      "fixSuggestions": [
+        {
+          "fixId": "0d27d259_9ff25c12",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/motion_sense.c",
+              "range": {
+                "startLine": 929,
+                "startChar": 0,
+                "endLine": 932,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (IS_ENABLED(CONFIG_ZEPHYR))\n\t\t\tk_sched_lock();\n"
+            },
+            {
+              "path": "common/motion_sense.c",
+              "range": {
+                "startLine": 944,
+                "startChar": 0,
+                "endLine": 947,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (IS_ENABLED(CONFIG_ZEPHYR))\n\t\t\tk_sched_unlock();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "341776774defe7b54f454c0d51f1ec2fd31995df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
