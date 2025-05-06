@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ef2bcdc_8d08fab8",
+        "filename": "board/cr50/check_pcr0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-05-06T17:02:12Z",
+      "side": 1,
+      "message": "on a 2nd though: looks like we shouldn\u0027t be caching it, esp over deep sleep.\nPCR0 is allowed to be extended only once per AP boot. each time a PCR0 value might be different (sometimes we try booting in normal, sometimes in recovery). so we shouldn\u0027t cache the checked_fwmp_ec_reset status from the previous AP boot. and caching it within the same AP boot is not needed: PCR0 is extended only once.\n\nadditionally, trying to boot in an unallowed mode should be rare. it\u0027s ok to take time and calculate everything when it happens.\n\nso, I suggest just dropping `static` and starting with `int checked_fwmp_ec_reset \u003d 0;` every time. which also means no need for early return check `if (checked_fwmp_ec_reset) return checked_fwmp_ec_reset \u003d\u003d FWMP_RESETS_EC_IN_REC_DEV;`",
+      "parentUuid": "01ca361b_6c6a5ecf",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e98ebc3b_49f3f2ea",
         "filename": "board/cr50/tpm2/platform.c",
         "patchSetId": 5
