@@ -163,6 +163,12 @@ config LINK_TEST_SUITE_PANIC_OUTPUT
 config LINK_TEST_SUITE_PANIC_REASON
 	bool "Link and test the panic_reason tests"
 
+config LINK_TEST_SUITE_PANIC_LOG
+	bool "Link and test the panic log tests"
+
+config LINK_TEST_SUITE_PRESERVED_RING_BUF
+	bool "Link and test the preserved ring buf tests"
+
 config LINK_TEST_SUITE_POWER_HOST_SLEEP
 	bool "Link and run the power/host_sleep.c specific tests"
 
@@ -217,6 +223,9 @@ config LINK_TEST_SUITE_RANDOM
 	bool "Link and run random (trng) tests"
 	help
 	  Include the test suite exercising RNG code in the binary.
+
+config LINK_TEST_SUITE_SHIM_ESPI
+	bool "Link and run the eSPI shim tests"
 
 config LINK_TEST_SUITE_SHIM_GPIO_ID
 	bool "Link and run the gpio tests"

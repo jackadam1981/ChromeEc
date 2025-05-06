@@ -296,6 +296,12 @@ class Zmake:
             project_names,
             all_projects=all_projects,
         )
+
+        if len(projects) > 1:
+            # Turn on job names for multi-project builds so build logs can be
+            # clearly distinguished.
+            zmake.multiproc.LogWriter.set_job_name_logging(True)
+
         for project in projects:
             project_build_dir = (
                 pathlib.Path(build_dir) / project.config.project_name
@@ -424,6 +430,11 @@ class Zmake:
         if (len(project_names)) == 0 and not all_projects:
             self.logger.info("No projects to compare, exiting.")
             return 0
+
+        if len(project_names) > 1:
+            # Turn on job names for multi-project comparisons so build logs
+            # can be clearly distinguished.
+            zmake.multiproc.LogWriter.set_job_name_logging(True)
 
         self.logger.info("Compare zephyr builds")
 
@@ -560,9 +571,9 @@ class Zmake:
                         module_paths["nanopb"]
                     )
                 if ec_version_flags:
-                    default_cmake_defs[
-                        "EXTRA_EC_VERSION_FLAGS"
-                    ] = util.repr_command(ec_version_flags)
+                    default_cmake_defs["EXTRA_EC_VERSION_FLAGS"] = (
+                        util.repr_command(ec_version_flags)
+                    )
                 base_config = zmake.build_config.BuildConfig(
                     cmake_defs=default_cmake_defs
                 )
@@ -612,7 +623,9 @@ class Zmake:
                 if not generated_include_dir.exists():
                     generated_include_dir.mkdir()
                 self.logger.info(
-                    "Building %s in %s.", project.config.project_name, build_dir
+                    "[%s] Building in %s.",
+                    project.config.project_name,
+                    build_dir,
                 )
                 # To reconstruct a Project object later, we need to know the
                 # name and project directory.
@@ -682,7 +695,7 @@ class Zmake:
             if config_json_file.is_file():
                 if config_json_file.read_text() == config_json:
                     self.logger.info(
-                        "Skip reconfiguring %s:%s due to previous cmake run of "
+                        "[%s:%s] Skip reconfiguring due to previous cmake run of "
                         "equivalent configuration.  Run with --clobber if this "
                         "optimization is undesired.",
                         project.config.project_name,
@@ -700,7 +713,7 @@ class Zmake:
                 shutil.rmtree(output_dir)
 
             self.logger.info(
-                "Configuring %s:%s.",
+                "[%s:%s] Configuring.",
                 project.config.project_name,
                 build_name,
             )
@@ -725,6 +738,7 @@ class Zmake:
                 cipd_install_dir = str(protoc_path_obj.parent.parent)
                 env["PW_PIGWEED_CIPD_INSTALL_DIR"] = cipd_install_dir
 
+            env["CROSTC_USER_ACKNOWLEDGES_THAT_RISCV_IS_EXPERIMENTAL"] = "1"
             kconfig_file = build_dir / f"kconfig-{build_name}.conf"
             proc = config.popen_cmake(
                 self.jobserver,
@@ -877,10 +891,15 @@ class Zmake:
             if coverage:
                 cmd.append("all.libraries")
             self.logger.info(
-                "Building %s:%s: %s",
+                "[%s:%s] Building: %s",
                 project.config.project_name,
                 build_name,
                 util.repr_command(cmd),
+            )
+            # TODO(b/239619222): Filter os.environ for ninja.
+            ninja_env = os.environ.copy()
+            ninja_env["CROSTC_USER_ACKNOWLEDGES_THAT_RISCV_IS_EXPERIMENTAL"] = (
+                "1"
             )
             proc = self.jobserver.popen(
                 cmd,
@@ -888,8 +907,7 @@ class Zmake:
                 stderr=subprocess.PIPE,
                 encoding="utf-8",
                 errors="replace",
-                # TODO(b/239619222): Filter os.environ for ninja.
-                env=os.environ,
+                env=ninja_env,
             )
             job_id = f"{project.config.project_name}:{build_name}"
             dirs[build_name].mkdir(parents=True, exist_ok=True)

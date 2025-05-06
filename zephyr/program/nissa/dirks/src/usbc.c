@@ -3,10 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
 #include "board.h"
 #include "charge_state.h"
 #include "chipset.h"
 #include "driver/charger/sm5803.h"
+#include "driver/retimer/ps8811.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
@@ -36,7 +38,7 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-int extpower_is_present(void)
+__override int extpower_is_present(void)
 {
 	/*
 	 * There's no battery, so running this method implies we have power.
@@ -145,8 +147,32 @@ int pd_snk_is_vbus_provided(int port)
 	return ppc_is_vbus_present(port);
 }
 
-void pd_set_input_current_limit(int port, uint32_t max_ma,
-				uint32_t supply_voltage)
+__override int board_get_vbus_voltage(int port)
 {
-	/* Need this to build */
+	return adc_read_channel(ADC_VBUS);
 }
+
+/* USB-A ports */
+enum usba_port { USBA_PORT_A1, USBA_PORT_COUNT };
+const struct usb_mux usba_ps8811[] = {
+	[USBA_PORT_A1] = {
+		.usb_port = USBA_PORT_A1,
+		.i2c_port = I2C_PORT_NODELABEL(i2c4),
+		.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS0,
+	},
+};
+
+void usba_retimer_init(void)
+{
+	int rv;
+	const struct usb_mux *me = &usba_ps8811[USBA_PORT_A1];
+
+	/* Set offset 0x66 value 0x20 */
+	rv = ps8811_i2c_write(me, PS8811_REG_PAGE1,
+			      PS8811_REG1_USB_CHAN_A_SWING, 0x20);
+
+	if (rv) {
+		LOG_WRN("A1: PS8811 retimer response fail!");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, usba_retimer_init, HOOK_PRIO_DEFAULT);

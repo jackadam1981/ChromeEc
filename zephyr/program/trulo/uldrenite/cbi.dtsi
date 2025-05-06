@@ -106,6 +106,39 @@
 				value = <1>;
 			};
 		};
+		usbc-ports {
+			enum-name = "USBC_PORTS";
+			start = <7>;
+			size = <1>;
+
+			two-ports {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "TWO_PORTS";
+				value = <0>;
+			};
+			one-port {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "ONE_PORT";
+				value = <1>;
+			};
+		};
+		ish {
+			enum-name = "ISH";
+			start = <8>;
+			size = <1>;
+
+			ish-disabled {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "ISH_DISABLED";
+				value = <0>;
+				default;
+			};
+			ish-enabled {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "ISH_ENABLED";
+				value = <1>;
+			};
+		};
 	};
 	cbi-ssfc {
 		compatible = "cros-ec,cbi-ssfc";
@@ -114,17 +147,22 @@
 		 */
 		base-sensor {
 			enum-name = "BASE_SENSOR";
-			size = <1>;
-			base_sensor_lis2dw12: lis2dw12 {
+			size = <3>;
+			base_sensor_0: lis2dw12 {
 				compatible = "cros-ec,cbi-ssfc-value";
 				status = "okay";
 				value = <0>;
 				default;
 			};
-			base_sensor_lsm6dsm: lsm6dsm {
+			base_sensor_1: lsm6dsm {
 				compatible = "cros-ec,cbi-ssfc-value";
 				status = "okay";
 				value = <1>;
+			};
+			base_sensor_2: bmi323 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <2>;
 			};
 		};
 	};

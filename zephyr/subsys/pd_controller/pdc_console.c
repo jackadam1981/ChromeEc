@@ -22,7 +22,7 @@ static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 	char *e;
 
 	*port = strtoul(arg_val, &e, 0);
-	if (*e || *port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
+	if (*e || *port >= pdc_power_mgmt_get_usb_pd_port_count()) {
 		shell_error(sh, "Invalid port");
 		return -EINVAL;
 	}
@@ -523,6 +523,29 @@ static void pdc_console_get_suspend_or_resume(size_t idx,
 
 SHELL_DYNAMIC_CMD_CREATE(dsub_suspend_or_resume,
 			 pdc_console_get_suspend_or_resume);
+
+/**
+ * @brief Tab-completion of "normal" or "debug" for the SBU mux subcommand
+ */
+static void pdc_console_get_normal_or_debug(size_t idx,
+					    struct shell_static_entry *entry)
+{
+	entry->syntax = NULL;
+	entry->handler = NULL;
+	entry->help = NULL;
+	entry->subcmd = NULL;
+
+	switch (idx) {
+	case 0:
+		entry->syntax = "normal";
+		return;
+	case 1:
+		entry->syntax = "debug";
+		return;
+	}
+}
+
+SHELL_DYNAMIC_CMD_CREATE(dsub_sbu_mux_modes, pdc_console_get_normal_or_debug);
 /* LCOV_EXCL_STOP */
 
 static int cmd_pdc_comms_state(const struct shell *sh, size_t argc, char **argv)
@@ -669,11 +692,82 @@ static int cmd_pdc_srccaps(const struct shell *sh, size_t argc, char **argv)
 	return 0;
 }
 
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+/**
+ * @brief Return a string representation for an `enum pdc_sbu_mux_mode` value
+ */
+static const char *sbu_mux_mode_to_str(enum pdc_sbu_mux_mode mode)
+{
+	switch (mode) {
+	case PDC_SBU_MUX_MODE_NORMAL:
+		return "NORMAL";
+	case PDC_SBU_MUX_MODE_FORCE_DBG:
+		return "FORCE_DEBUG";
+	default:
+		return "Bad Value";
+	}
+}
+
+/**
+ * @brief Get or set the PDC's SBU mux operating mode (normal or forced to debug
+ *        for CCD keepalive)
+ */
+static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
+				char **argv)
+{
+	enum pdc_sbu_mux_mode mode;
+	int ccd_port;
+	int rv;
+
+	if (argc < 2) {
+		/* Get current mode and exit */
+		rv = pdc_power_mgmt_get_sbu_mux_mode(&mode, &ccd_port);
+
+		if (rv == -ENOTSUP) {
+			shell_error(sh, "No CCD port specified in devicetree");
+			return rv;
+		} else if (rv < 0) {
+			shell_error(sh, "Error getting SBU mux mode: %d", rv);
+			return rv;
+		}
+
+		shell_info(sh, "CCD Port: C%d, Mode: %s (%d)", ccd_port,
+			   sbu_mux_mode_to_str(mode), mode);
+
+		return 0;
+	}
+
+	if (!strncmp(argv[1], "normal", strlen("normal"))) {
+		mode = PDC_SBU_MUX_MODE_NORMAL;
+	} else if (!strncmp(argv[1], "debug", strlen("debug"))) {
+		mode = PDC_SBU_MUX_MODE_FORCE_DBG;
+	} else {
+		shell_error(sh, "Invalid value");
+		return -EINVAL;
+	}
+
+	rv = pdc_power_mgmt_set_sbu_mux_mode(mode);
+
+	if (rv == -ENOTSUP) {
+		shell_error(sh, "No CCD port specified in devicetree");
+		return rv;
+	} else if (rv < 0) {
+		shell_error(sh, "Error setting SBU mux mode: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "Set CCD port (C%d) SBU mux mode to %s (%d)",
+		   pdc_power_mgmt_get_ccd_port(), sbu_mux_mode_to_str(mode),
+		   mode);
+	return 0;
+}
+#endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
+
 #ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
 /* LCOV_EXCL_START - non-shipping code */
 extern int tps_pdc_do_firmware_update(void);
 
-static int cmd_pdc_fwupdate(const struct shell *sh, size_t argc, char **argv)
+static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
 {
 	int rv;
 
@@ -769,11 +863,18 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Get Vconn state for a port\n"
 		      "Usage: pdc vconn <port>",
 		      cmd_vconn_state, 2, 0),
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+	SHELL_CMD_ARG(sbumux, &dsub_sbu_mux_modes,
+		      "Get or set the SBU mux mode "
+		      "(for PDC-driven CCD boards only)\n"
+		      "Usage: pdc sbumux [normal|debug]",
+		      cmd_pdc_sbu_mux_mode, 1, 1),
+#endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 #ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
-	SHELL_CMD_ARG(fwupdate, NULL,
+	SHELL_CMD_ARG(fwup_ti, NULL,
 		      "Updates TPS6699x firmware\n"
-		      "Usage pdc fwupdate",
-		      cmd_pdc_fwupdate, 1, 0),
+		      "Usage pdc fwup_ti",
+		      cmd_pdc_ti_fwupdate, 1, 0),
 #endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,

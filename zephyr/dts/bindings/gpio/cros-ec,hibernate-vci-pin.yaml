@@ -27,5 +27,10 @@ properties:
 
   preserve:
     type: boolean
-    description: If present its state will be preserved after exiting
+    description: If present its state will be preserved before entering
+      hibernation.
+
+  wakeup:
+    type: boolean
+    description: If present this input will wake system up once entered in
       hibernation.

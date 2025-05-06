@@ -31,13 +31,13 @@ bool navi_is_more_efficient(int curr_mv, int prev_mv, int batt_mv, int batt_mw,
 	    (prev_mv < 15000 || curr_mv <= prev_mv)) {
 		return true;
 	} else {
-		return ABS(curr_mv - batt_mv) < ABS(prev_mv - batt_mv);
+		return false;
 	}
 }
 
 __override struct dps_config_t dps_config = {
-	.k_less_pwr = 93,
-	.k_more_pwr = 96,
+	.k_less_pwr = 26,
+	.k_more_pwr = 50,
 	.k_sample = 1,
 	.k_window = 3,
 	.t_stable = 10 * USEC_PER_SEC,

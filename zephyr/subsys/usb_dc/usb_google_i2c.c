@@ -49,22 +49,27 @@ struct usb_google_i2c_config {
 	struct usb_ep_descriptor if0_in_ep;
 } __packed;
 
-#define INITIALIZER_IF(num_ep, iface_class, iface_subclass, iface_proto)      \
-	{                                                                     \
-		.bLength = sizeof(struct usb_if_descriptor),                  \
-		.bDescriptorType = USB_DESC_INTERFACE, .bInterfaceNumber = 0, \
-		.bAlternateSetting = 0, .bNumEndpoints = num_ep,              \
-		.bInterfaceClass = iface_class,                               \
-		.bInterfaceSubClass = iface_subclass,                         \
-		.bInterfaceProtocol = iface_proto, .iInterface = 0,           \
+#define INITIALIZER_IF(num_ep, iface_class, iface_subclass, iface_proto) \
+	{                                                                \
+		.bLength = sizeof(struct usb_if_descriptor),             \
+		.bDescriptorType = USB_DESC_INTERFACE,                   \
+		.bInterfaceNumber = 0,                                   \
+		.bAlternateSetting = 0,                                  \
+		.bNumEndpoints = num_ep,                                 \
+		.bInterfaceClass = iface_class,                          \
+		.bInterfaceSubClass = iface_subclass,                    \
+		.bInterfaceProtocol = iface_proto,                       \
+		.iInterface = 0,                                         \
 	}
 
-#define INITIALIZER_IF_EP(addr, attr, mps)                              \
-	{                                                               \
-		.bLength = sizeof(struct usb_ep_descriptor),            \
-		.bDescriptorType = USB_DESC_ENDPOINT,                   \
-		.bEndpointAddress = addr, .bmAttributes = attr,         \
-		.wMaxPacketSize = sys_cpu_to_le16(mps), .bInterval = 0, \
+#define INITIALIZER_IF_EP(addr, attr, mps)                   \
+	{                                                    \
+		.bLength = sizeof(struct usb_ep_descriptor), \
+		.bDescriptorType = USB_DESC_ENDPOINT,        \
+		.bEndpointAddress = addr,                    \
+		.bmAttributes = attr,                        \
+		.wMaxPacketSize = sys_cpu_to_le16(mps),      \
+		.bInterval = 0,                              \
 	}
 
 /* Coreboot only parses the first interface descriptor for boot keyboard

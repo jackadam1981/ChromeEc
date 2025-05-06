@@ -10,13 +10,10 @@
 #include "registers.h"
 #include "util.h"
 
-#define IRQ_GROUP(n, cpu_ints...)                                            \
-	{                                                                    \
-		(uint32_t) & CONCAT2(IT83XX_INTC_ISR, n) - IT83XX_INTC_BASE, \
-			(uint32_t) & CONCAT2(IT83XX_INTC_IER, n) -           \
-					     IT83XX_INTC_BASE,               \
-			##cpu_ints                                           \
-	}
+#define IRQ_GROUP(n, cpu_ints...)                                    \
+	{ (uint32_t)&CONCAT2(IT83XX_INTC_ISR, n) - IT83XX_INTC_BASE, \
+	  (uint32_t)&CONCAT2(IT83XX_INTC_IER, n) - IT83XX_INTC_BASE, \
+	  ##cpu_ints }
 
 static const struct {
 	uint8_t isr_off;

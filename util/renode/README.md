@@ -3,6 +3,8 @@
 This directory holds the configuration files for Renode and this doc, which
 provides a quick-start for Renode and EC.
 
+[TOC]
+
 ## Installing Renode
 
 The ChromeOS chroot has a [`renode` ebuild] that is considered the "stable"
@@ -23,7 +25,6 @@ directory called `renode`:
 Note that the prebuilt version is not automatically in your `PATH`.
 
 [`renode` ebuild]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/app-emulation/renode/
-
 [CIPD]: http://go/luci-cipd
 
 ### Latest Version
@@ -49,8 +50,8 @@ in your `PATH`.
 
 ## Launching Renode
 
-The [`renode-ec-launch`] script is a convenient wrapper to configure and
-run Renode for specific boards. It works both inside and outside the chroot and
+The [`renode-ec-launch`] script is a convenient wrapper to configure and run
+Renode for specific boards. It works both inside and outside the chroot and
 configures the console as `/tmp/renode-uart`.
 
 The script lets you run both EC and Zephyr images, including the "default" image
@@ -150,3 +151,16 @@ Action            | Renode command for `bloonchipper`
 Note, you can just type `sysbus`, `sysbus.gpioPortB`, or
 `sysbus.gpioPortB.GPIO_WP` to learn more about these modules and the available
 functions.
+
+## Highlights
+
+With Renode, we've found and prevented several bugs. Here are a few highlights:
+
+*   [Toolchain uprev that Renode CQ prevented from breaking EC](https://issuetracker.google.com/409027503)
+*   [Upstream Zephyr change that Renode CQ prevented from breaking EC](http://b/389761200)
+*   [jump data pointer not initialized](http://b/291940520)
+*   [`libcxx` change that broke EC](http://b/363082822)
+
+It is also
+[easier for non-firmware developers to debug issues](http://b/363082822#comment12),
+since they don't need hardware.

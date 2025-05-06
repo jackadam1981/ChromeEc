@@ -374,7 +374,6 @@ if(DEFINED CONFIG_BOARD_PUJJONIRU)
 	zephyr_include_directories("pujjoniru/include")
 	zephyr_library_sources(
 			"pujjoniru/src/board.c"
-			"pujjoniru/src/sub_board.c"
 			"pujjoniru/src/board_touchpanel.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "pujjoniru/src/usbc.c")
@@ -404,8 +403,33 @@ if(DEFINED CONFIG_BOARD_DIRKS)
 	project(dirks)
 	zephyr_include_directories("dirks/include")
 	zephyr_library_sources(
+			"dirks/src/barrel_jack.c"
 			"dirks/src/led.c"
 			"dirks/src/hdmi.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "dirks/src/usbc.c")
+endif()
+if(DEFINED CONFIG_BOARD_MELIKS)
+	project(meliks)
+	zephyr_include_directories("meliks/include")
+	zephyr_library_sources(
+			"meliks/src/led.c"
+			"meliks/src/board.c"
+			"meliks/src/battery.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "meliks/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "meliks/src/charger.c")
+endif()
+if(DEFINED CONFIG_BOARD_EPIC)
+	project(epic)
+	zephyr_library_sources(
+			"epic/src/hdmi.c"
+			"epic/src/usb_mux_config.c"
+			"epic/src/form_factor.c"
+			"epic/src/sub_board.c"
+			"epic/src/thermal.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "epic/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "epic/src/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "epic/src/fan.c")
 endif()

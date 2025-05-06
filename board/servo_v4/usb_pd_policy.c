@@ -34,7 +34,7 @@
 #define DUT_PDO_FIXED_FLAGS \
 	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
 
-#define VBUS_UNCHANGED(curr, pend, new) (curr == new &&pend == new)
+#define VBUS_UNCHANGED(curr, pend, new) (curr == new && pend == new)
 
 /* Macros to config the PD role */
 #define CONF_SET_CLEAR(c, set, clear) ((c | (set)) & ~(clear))
