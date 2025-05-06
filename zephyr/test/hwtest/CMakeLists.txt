@@ -12,12 +12,14 @@ zephyr_library_sources_ifdef(CONFIG_HW_TEST_BORINGSSL_CRYPTO src/boringssl_crypt
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_CORTEXM_FPU src/cortexm_fpu.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_CRC ${PLATFORM_EC}/zephyr/test/crc/main.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_EXCEPTION src/exception.cc)
+zephyr_library_sources_ifdef(CONFIG_HW_TEST_EXIT ${PLATFORM_EC}/zephyr/test/lib/src/exit.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FLASH_PHYSICAL src/flash_physical.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FLASH_WRITE_PROTECT src/flash_write_protect.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FP_TRANSPORT src/fp_transport.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL src/fpsensor_auth_crypto_stateful.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_AUTH_CRYPTO_STATELESS src/fpsensor_auth_crypto_stateless.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_CRYPTO src/fpsensor_crypto.cc)
+zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_DEBUG ${PLATFORM_EC}/zephyr/test/fingerprint/task/src/fpsensor_debug.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_HW src/fpsensor_hw.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_UTILS ${PLATFORM_EC}/zephyr/test/fingerprint/task/src/fpsensor_utils.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FTRAPV src/ftrapv.c)
@@ -45,6 +47,7 @@ zephyr_library_sources_ifdef(CONFIG_HW_TEST_UNALIGNED_ACCESS src/unaligned_acces
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_UNALIGNED_ACCESS_BENCHMARK src/unaligned_access_benchmark.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_UTILS ${PLATFORM_EC}/zephyr/test/utils/src/utils.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_UTILS_STR ${PLATFORM_EC}/zephyr/test/utils/src/utils_str.c)
+zephyr_library_sources_ifdef(CONFIG_HW_TEST_WATCHDOG src/watchdog.cc)
 
 # Create an external lib for tests. The Zephyr build doesn't allow using
 # try/throw instructions, when exceptions are disabled.
