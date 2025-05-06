@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935ec363_718455c3",
+        "filename": "zephyr/program/brox/brtk/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:44:28Z",
+      "side": 0,
+      "message": "Instead of copying this entire file, create a file `ite.conf` in the parent directory and add `ite.conf` as a `kconfig_files` for the existing ITE projects.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "dfe081e3fc10738bc457c7b53fd424c86828053d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
