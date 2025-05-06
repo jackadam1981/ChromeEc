@@ -23,7 +23,8 @@
 #define CONFIG_CHIPSET_RESUME_INIT_HOOK
 
 #define CONFIG_MP2964
-#define CONFIG_FEATURE_FINCH
+#define CONFIG_KEYBOARD_STRAUSS
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_ACCELS
@@ -67,11 +68,11 @@
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* PD */
-#define PD_OPERATING_POWER_MW 15000
-#define PD_MAX_POWER_MW 60000
-#define PD_MAX_CURRENT_MA 3000
-#define PD_MAX_VOLTAGE_MV 20000
-#define PD_PREFER_HIGH_VOLTAGE
+#define CONFIG_USB_PD_OPERATING_POWER_MW 15000
+#define CONFIG_USB_PD_MAX_POWER_MW 60000
+#define CONFIG_USB_PD_MAX_CURRENT_MA 3000
+#define CONFIG_USB_PD_MAX_VOLTAGE_MV 20000
+#define CONFIG_USB_PD_PREFER_HIGH_VOLTAGE
 
 /*
  * Macros for GPIO signals used in common code that don't match the
@@ -165,6 +166,7 @@
 /* Keyboard */
 #define KEYBOARD_COLS_MAX 18
 #define CONFIG_KEYBOARD_KEYPAD
+#define KEYBOARD_DEFAULT_COL_VOL_UP 12
 
 /* Remove bringup features */
 #undef CONFIG_CMD_POWERINDEBUG
@@ -176,7 +178,7 @@
 #include "usbc_config.h"
 
 /* I2C access in polling mode before task is initialized */
-#define CONFIG_I2C_BITBANG
+#define CONFIG_I2C_BITBANG_CROS_EC
 
 enum banshee_bitbang_i2c_channel {
 	I2C_BITBANG_CHAN_BRD_ID,
