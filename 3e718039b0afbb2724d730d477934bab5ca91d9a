@@ -45,6 +45,29 @@
       },
       "revId": "3e718039b0afbb2724d730d477934bab5ca91d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b324db9a_453e839e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:49:58Z",
+      "side": 1,
+      "message": "On all these CLs - update the commit message with a summary of the change.\n\nhttps://www.chromium.org/chromium-os/developer-library/guides/development/contributing/#commit-messages",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "3e718039b0afbb2724d730d477934bab5ca91d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
