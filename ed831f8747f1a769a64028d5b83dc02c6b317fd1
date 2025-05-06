@@ -87,6 +87,30 @@
       },
       "revId": "ed831f8747f1a769a64028d5b83dc02c6b317fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d09e32e_05a99407",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-06T16:23:54Z",
+      "side": 1,
+      "message": "+Louis and Brain to confirm. I recall 4 PSL INs will be used. The new one is a backup solution of SYSOK.",
+      "parentUuid": "a2b33d15_688d23c4",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 1
+      },
+      "revId": "ed831f8747f1a769a64028d5b83dc02c6b317fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
