@@ -34,6 +34,60 @@
       ],
       "revId": "f8891bdd19197a6fb98f5b1c6a79e5c0250f5611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "367c3360_6c99620c",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-05-06T02:55:44Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "7f3919af_68b89e20",
+      "fixSuggestions": [
+        {
+          "fixId": "d048488c_9ba0c5ed",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 12,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "f8891bdd19197a6fb98f5b1c6a79e5c0250f5611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73097580_86201561",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-05-06T02:55:44Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "7f3919af_68b89e20",
+      "revId": "f8891bdd19197a6fb98f5b1c6a79e5c0250f5611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
