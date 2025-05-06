@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb7c2c6_08ad4913",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T19:10:26Z",
+      "side": 1,
+      "message": "Please delete this statement.  It is not accurate - the EC image can be larger than 256KB.",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2945d466_e4fdb2fc",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T19:10:26Z",
+      "side": 1,
+      "message": "These should be added to a minimal-realtek file instead.  This file sets the default setting for all projects using the Realtek EC.   We don\u0027t want to enable system unlocked or disable host commands as defaults.\n\nCreate a file `program/minimal/realtek.conf` to make these changes. You also to update BUILD.py to pass in `kconfig_files\u003dhere / \"realtek.conf\"` to your register project call.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4dd533b_f8991549",
+        "filename": "zephyr/program/minimal/BUILD.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T19:10:26Z",
+      "side": 1,
+      "message": "See my comment in realtek_rts5912_defconfig.  Add `kconfig_files\u003d[here / \"realtek.conf\"]`",
+      "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
