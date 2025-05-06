@@ -16,6 +16,24 @@
       "message": "Since ISH is required on pujjolo, do you still need to enable motion sensor on EC?",
       "revId": "29d1bdfe1523de09b6105f10c5afa31d9eaea845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac26046_7b69d3e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-05-06T02:55:15Z",
+      "side": 1,
+      "message": "Since the sensor is connected only to the EC, not the PCH, we still enable it on the EC.",
+      "parentUuid": "bc97c3eb_5d5fa614",
+      "revId": "29d1bdfe1523de09b6105f10c5afa31d9eaea845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
