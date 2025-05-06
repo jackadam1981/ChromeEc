@@ -239,6 +239,30 @@
       },
       "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0b1343_0ea1a7f9",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-05-06T12:49:57Z",
+      "side": 1,
+      "message": "I ordered the checks shortest check to longest check since this is going to happen every boot.\n\nIf pcr_config_enabled is checked first, then every board will have to check the entire PCR0 value against the known hashes every time pcr0 is updated.\n\nboard_id_fwmp_resets_ec_in_rec_dev caches it\u0027s value, so checking it first is very quick.",
+      "parentUuid": "2010c7b9_83d61e05",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 60
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
