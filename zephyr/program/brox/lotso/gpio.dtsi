@@ -45,7 +45,7 @@
 			gpios = <&gpiob 3 GPIO_INPUT>;
 		};
 		gpio_amp_mute_l: amp_mute_l {
-			gpios = <&gpioj 6 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+			gpios = <&gpioa 2 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_bat_disconnect_ec_odl: bat_disconnect_ec_odl {
 			gpios = <&gpioc 0 GPIO_ODR_LOW>;
@@ -89,7 +89,7 @@
 			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
 		};
 		gpio_ec_kso_02_inv: ec_kso_02_inv {
-			gpios = <&gpioksol 2 GPIO_OUTPUT_HIGH>;
+			gpios = <&gpiok 2 GPIO_OUTPUT_HIGH>;
 		};
 		gpio_sen_mode2_ec_pch_int_odl: sen_mode2_ec_pch_int_odl {
 			gpios = <&gpiog 1 GPIO_ODR_LOW>;
@@ -99,7 +99,7 @@
 			gpios = <&gpiob 5 GPIO_OUTPUT>;
 		};
 		gpio_ec_pch_pwr_btn_odl: ec_pch_pwr_btn_odl {
-			gpios = <&gpiob 2 GPIO_ODR_LOW>;
+			#gpios = <&gpiob 2 GPIO_ODR_LOW>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_ec_pch_rtcrst: ec_pch_rtcrst {
@@ -226,16 +226,12 @@
 			<&gpioh 6 0>,
 			/* EC_ESPI_ALERT_L_NC */
 			<&gpiom 6 0>,
-			/* LED_STA2_N */
-			<&gpioa 2 0>,
+
 			/* PCBEEP_EC */
 			<&gpioa 7 0>,
 			/* USB3_REDRIVER_PD */
-			<&gpiod 7 0>,
-			/* I2C_EC_PMC_PD_SCL */
-			<&gpioh 1 GPIO_INPUT>,
-			/* I2C_EC_PMC_PD_SDA */
-			<&gpioh 2 GPIO_INPUT>;
+			<&gpiod 7 0>;
+
 		};
 };
 
