@@ -16,6 +16,24 @@
       "message": "Is the concern a floating GPIO will trigger zombie interrupts? Can it happen if only a subset of the sensors are enabled?",
       "revId": "06aae910cbba7812abc1ba113e02957d5e37e3f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef0d1c6_9c73e6f8",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-06T03:17:28Z",
+      "side": 1,
+      "message": "Yes, the extra interrupts after we have set the sensor count to 0 was causing an unaligned access crash. Regardless, there\u0027s no need to wake if we have no sensors.\n\nI was tempted to map the interrupts to the sensors and check the sensor\u0027s status to see if it\u0027s enabled before skipping this way we could have partial values here. But the long term plan is to use upstream Zephyr drivers anyway and they already associate the interrupt with the driver directly so it seemed like a waste of time right now.",
+      "parentUuid": "392a564b_bcd609ad",
+      "revId": "06aae910cbba7812abc1ba113e02957d5e37e3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
