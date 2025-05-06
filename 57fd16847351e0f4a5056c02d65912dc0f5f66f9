@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0c07fa_ffd3b964",
+        "filename": "board/cr50/tpm2/trusty_storage_mac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2025-05-06T16:59:24Z",
+      "side": 1,
+      "message": "TODO: remove",
+      "fixSuggestions": [
+        {
+          "fixId": "edf25cb5_dafee40a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/cr50/tpm2/trusty_storage_mac.c",
+              "range": {
+                "startLine": 138,
+                "startChar": 0,
+                "endLine": 138,
+                "endChar": 0
+              },
+              "replacement": "\t/* TODO(b/330768888): Remove debug print */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "57fd16847351e0f4a5056c02d65912dc0f5f66f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
