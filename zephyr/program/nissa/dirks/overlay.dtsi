@@ -40,11 +40,6 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "adp_connect_interrupt";
 		};
-		int_cec_bitbang: cec_bitbang {
-			irq-pin = <&gpio_hdmi2_cec_in>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "cec_gpio_interrupt";
-		};
 	};
 
 	unused-pins {
