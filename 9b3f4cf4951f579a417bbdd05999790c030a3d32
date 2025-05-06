@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09363a98_50da9b82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-06T21:27:55Z",
+      "side": 1,
+      "message": "I recommend also testing the other ocelot builds when updating the project files to catch possible issues before uploading. You can run `zmake --projects-dir zephyr/program/ocelot/ build --all` to do so. Otherwise you\u0027ll have to wait on the CI to do so.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "9b3f4cf4951f579a417bbdd05999790c030a3d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
