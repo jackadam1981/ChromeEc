@@ -34,6 +34,24 @@
       "parentUuid": "392a564b_bcd609ad",
       "revId": "06aae910cbba7812abc1ba113e02957d5e37e3f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cebf44d_30db19d9",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-06T18:27:03Z",
+      "side": 1,
+      "message": "Add document saying that this isn\u0027t an ideal solution because it\u0027s all or nothing. Look into asserting if the list length is \u003e number of sensors?",
+      "parentUuid": "2ef0d1c6_9c73e6f8",
+      "revId": "06aae910cbba7812abc1ba113e02957d5e37e3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
