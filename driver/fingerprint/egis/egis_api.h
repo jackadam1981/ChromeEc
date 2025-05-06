@@ -15,7 +15,6 @@
 extern "C" {
 #endif
 
-#if (defined(CONFIG_FP_SENSOR_EGIS630))
 #define FP_SENSOR_HWID_EGIS 630
 #define FP_SENSOR_RES_X_EGIS 80
 #define FP_SENSOR_RES_Y_EGIS 64
@@ -23,16 +22,6 @@ extern "C" {
 #define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024)
 #define FP_MAX_FINGER_COUNT_EGIS 3
 #define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 15
-#else
-#define FP_SENSOR_HWID_EGIS 600
-#define FP_SENSOR_RES_X_EGIS 0
-#define FP_SENSOR_RES_Y_EGIS 0
-#define FP_SENSOR_IMAGE_SIZE_EGIS \
-	(FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS * sizeof(uint16_t))
-#define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (0)
-#define FP_MAX_FINGER_COUNT_EGIS 0
-#define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 0
-#endif
 
 #define FP_SENSOR_IMAGE_OFFSET_EGIS (0)
 #define FP_SENSOR_RES_BPP_EGIS (8)
@@ -74,6 +63,36 @@ typedef enum {
 	EGIS_API_ERROR_EMFP_LIB_FAIL = -19,
 	EGIS_API_ERROR = -20,
 } egis_api_return_t;
+
+/**
+ * enum egis_capture_mode_t - Specifies the "mode" when capturing images.
+ *
+ * @EGIS_CAPTURE_VENDOR_FORMAT: Capture normal images with 8-bits per pixel
+ * output
+ * @EGIS_CAPTURE_BLACK_PXL_TEST: Capture for check dark pixel test with 16-bits
+ * per pixel output
+ * @EGIS_CAPTURE_WHITE_PXL_TEST: Capture for check white pixel test with 16-bits
+ * per pixel output
+ * @EGIS_CAPTURE_DEFECT_PXL_TEST: Capture for check defect pixel test with
+ * 16-bits per pixel output
+ * @EGIS_CAPTURE_NOISE_TEST: Capture for check noise test with 16-bits per pixel
+ * output
+ * @EGIS_CAPTURE_ABNORMAL_TEST: Capture for check abnormal pixel test with
+ * 16-bits per pixel output
+ * @EGIS_CAPTURE_RV_INT_TEST: Capture for RV test with 16-bits per pixel output
+ * @EGIS_CAPTURE_TYPE_MAX: End of enum
+ *
+ */
+typedef enum {
+	EGIS_CAPTURE_NORMAL_FORMAT = 0,
+	EGIS_CAPTURE_BLACK_PXL_TEST = 1,
+	EGIS_CAPTURE_WHITE_PXL_TEST = 2,
+	EGIS_CAPTURE_DEFECT_PXL_TEST = 3,
+	EGIS_CAPTURE_NOISE_TEST = 4,
+	EGIS_CAPTURE_ABNORMAL_TEST = 5,
+	EGIS_CAPTURE_RV_INT_TEST = 6,
+	EGIS_CAPTURE_TYPE_MAX,
+} egis_capture_mode_t;
 
 /**
  * @brief Get the fingerprint sensor HWID

@@ -155,8 +155,14 @@ enum cmd_t {
 	CMD_GET_CURRENT_PDO,
 	/** CMD_IS_VCONN_SOURCING */
 	CMD_IS_VCONN_SOURCING,
+	/** CMD_GET_SBU_MUX_MODE */
+	CMD_GET_SBU_MUX_MODE,
+	/** CMD_SET_SBU_MUX_MODE */
+	CMD_SET_SBU_MUX_MODE,
 	/** CMD_RAW_UCSI */
 	CMD_RAW_UCSI,
+	/** Set data role swap options */
+	CMD_SET_DRS,
 };
 
 /**
@@ -193,6 +199,8 @@ struct pdc_config_t {
 	void (*create_thread)(const struct device *dev);
 	/** If true, do not apply PDC FW updates to this port */
 	bool no_fw_update;
+	/** Whether or not this port supports CCD */
+	bool ccd;
 };
 
 /**
@@ -291,6 +299,8 @@ struct pdc_data_t {
 	bool use_cached_conn_status_change;
 	/* Cached connector status for this connector. */
 	union connector_status_t cached_conn_status;
+	/* sbumux mode */
+	enum pdc_sbu_mux_mode sbumux_mode;
 	/* Raw UCSI data to send. */
 	union reg_data raw_ucsi_cmd_data;
 };
@@ -310,19 +320,19 @@ static const char *const state_names[] = {
 static const struct smf_state states[];
 
 static void cmd_set_drp_mode(struct pdc_data_t *data);
+static void cmd_set_drs(struct pdc_data_t *data);
 static void cmd_get_drp_mode(struct pdc_data_t *data);
 static void cmd_set_tpc_rp(struct pdc_data_t *data);
 static void cmd_set_frs(struct pdc_data_t *data);
 static void cmd_get_rdo(struct pdc_data_t *data);
 static void cmd_set_rdo(struct pdc_data_t *data);
-static void cmd_set_src_pdos(struct pdc_data_t *data);
-static void cmd_set_snk_pdos(struct pdc_data_t *data);
 static void cmd_get_ic_status(struct pdc_data_t *data);
 static int cmd_get_ic_status_sync_internal(struct pdc_config_t const *cfg,
 					   struct pdc_info_t *info);
 static void cmd_get_vdo(struct pdc_data_t *data);
 static void cmd_get_identity_discovery(struct pdc_data_t *data);
 static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data);
+static void cmd_get_sbu_mux_mode(struct pdc_data_t *data);
 static void cmd_update_retimer(struct pdc_data_t *data);
 static void cmd_get_current_pdo(struct pdc_data_t *data);
 static void cmd_is_vconn_sourcing(struct pdc_data_t *data);
@@ -331,6 +341,7 @@ static void task_srdy(struct pdc_data_t *data);
 static void task_dbfg(struct pdc_data_t *data);
 static void task_aneg(struct pdc_data_t *data);
 static void task_disc(struct pdc_data_t *data);
+static void task_sbud(struct pdc_data_t *data);
 static void task_ucsi(struct pdc_data_t *data,
 		      enum ucsi_command_t ucsi_command);
 static void task_raw_ucsi(struct pdc_data_t *data);
@@ -703,10 +714,7 @@ static void st_idle_run(void *o)
 			task_ucsi(data, UCSI_GET_PDOS);
 			break;
 		case CMD_SET_PDOS:
-			if (data->pdo_type == SOURCE_PDO)
-				cmd_set_src_pdos(data);
-			else
-				cmd_set_snk_pdos(data);
+			task_ucsi(data, UCSI_SET_PDOS);
 			break;
 		case CMD_GET_CONNECTOR_STATUS:
 		case CMD_GET_VBUS_VOLTAGE:
@@ -775,8 +783,17 @@ static void st_idle_run(void *o)
 		case CMD_IS_VCONN_SOURCING:
 			cmd_is_vconn_sourcing(data);
 			break;
+		case CMD_SET_SBU_MUX_MODE:
+			task_sbud(data);
+			break;
+		case CMD_GET_SBU_MUX_MODE:
+			cmd_get_sbu_mux_mode(data);
+			break;
 		case CMD_RAW_UCSI:
 			task_raw_ucsi(data);
+			break;
+		case CMD_SET_DRS:
+			cmd_set_drs(data);
 		}
 	}
 }
@@ -895,6 +912,71 @@ static void cmd_set_drp_mode(struct pdc_data_t *data)
 	return;
 }
 
+static void cmd_set_drs(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_port_control pdc_port_control;
+	int rv;
+
+	/* Read PDC port control */
+	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("Read port control failed");
+		goto error_recovery;
+	}
+
+	/*
+	 * Either uor.swap_to_dfp or uor.swap_to_ufp should be set. Having both
+	 * set is not allowed per the UCSI spec. SET_UOR can't be sent directly
+	 * as a UCSI command for two reasons.
+	 *  1. If a hard reset occurs while the port is in a SNK power role then
+	 *     there is no mechanism to trigger a data role swap to the desired
+	 *     data role. Setting initiate_swap_to_dfp|ufp instructs the PDC to
+	 *     automatically trigger a data role swap request to the desired
+	 *     data role following the establishment of a new PD contract.
+	 *
+	 *  2. If uor.accept_dr_swap is set to 0, which will usually be the case
+	 *     if the data role is DFP, then the TI PDC will clear the data role
+	 *     capable bit in the SRC/SNK CAP which then causes issues with
+	 *     complicance test TD 4.11.1
+	 *
+	 * So SET_UOR is instead mapped to the port control register which
+	 * provides the required control for data role swaps while still
+	 * allowing compliance tests to pass.
+	 */
+	if (data->uor.swap_to_dfp) {
+		pdc_port_control.initiate_swap_to_dfp = 1;
+		pdc_port_control.initiate_swap_to_ufp = 0;
+	} else {
+		pdc_port_control.initiate_swap_to_ufp = 1;
+		pdc_port_control.initiate_swap_to_dfp = 0;
+	}
+
+	/* Always want to accept a request to swap to DFP */
+	pdc_port_control.process_swap_to_dfp = 1;
+	/* accept_dr_swap control applies to either DFP or UFP */
+	pdc_port_control.process_swap_to_ufp = data->uor.accept_dr_swap;
+
+	/* Write PDC port control */
+	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Write port control failed");
+		goto error_recovery;
+	}
+
+	/* Command has completed */
+	data->cci_event.command_completed = 1;
+	/* Inform the system of the event */
+	call_cci_event_cb(data);
+
+	/* Transition to idle state */
+	set_state(data, ST_IDLE);
+	return;
+
+error_recovery:
+	set_state(data, ST_ERROR_RECOVERY);
+}
+
 static void cmd_get_drp_mode(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -973,92 +1055,6 @@ static void cmd_set_frs(struct pdc_data_t *data)
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
 	if (rv) {
 		LOG_ERR("Write port control failed");
-		goto error_recovery;
-	}
-
-	/* Command has completed */
-	data->cci_event.command_completed = 1;
-	/* Inform the system of the event */
-	call_cci_event_cb(data);
-
-	/* Transition to idle state */
-	set_state(data, ST_IDLE);
-	return;
-
-error_recovery:
-	set_state(data, ST_ERROR_RECOVERY);
-}
-
-static void cmd_set_src_pdos(struct pdc_data_t *data)
-{
-	struct pdc_config_t const *cfg = data->dev->config;
-	union reg_transmit_source_capabilities pdc_tx_src_capabilities;
-	int rv;
-
-	/* Support SPR only */
-	if (data->num_pdos == 0 || data->num_pdos > 7)
-		goto error_recovery;
-
-	/* Read PDC Transmit Source Capabilities */
-	rv = tps_rw_transmit_source_capabilities(
-		&cfg->i2c, &pdc_tx_src_capabilities, I2C_MSG_READ);
-	if (rv) {
-		LOG_ERR("Read transmit source capabilities failed");
-		goto error_recovery;
-	}
-
-	pdc_tx_src_capabilities.number_of_valid_pdos = data->num_pdos;
-	memcpy(pdc_tx_src_capabilities.spr_tx_source_pdo, data->pdos,
-	       sizeof(uint32_t) * data->num_pdos);
-
-	/* Write PDC Transmit Source Capabilities */
-	rv = tps_rw_transmit_source_capabilities(
-		&cfg->i2c, &pdc_tx_src_capabilities, I2C_MSG_WRITE);
-	if (rv) {
-		LOG_ERR("Write transmit source capabilities failed");
-		goto error_recovery;
-	}
-
-	/* Command has completed */
-	data->cci_event.command_completed = 1;
-	/* Inform the system of the event */
-	call_cci_event_cb(data);
-
-	/* Transition to idle state */
-	set_state(data, ST_IDLE);
-	return;
-
-error_recovery:
-	set_state(data, ST_ERROR_RECOVERY);
-}
-
-static void cmd_set_snk_pdos(struct pdc_data_t *data)
-{
-	struct pdc_config_t const *cfg = data->dev->config;
-	union reg_transmit_sink_capabilities pdc_tx_snk_capabilities;
-	int rv;
-
-	/* Support SPR only */
-	if (data->num_pdos == 0 || data->num_pdos > 7)
-		goto error_recovery;
-
-	/* Read PDC Transmit Sink Capabilities */
-	rv = tps_rw_transmit_sink_capabilities(
-		&cfg->i2c, &pdc_tx_snk_capabilities, I2C_MSG_READ);
-	if (rv) {
-		LOG_ERR("Read transmit sink capabilities failed");
-		goto error_recovery;
-	}
-
-	pdc_tx_snk_capabilities.number_of_valid_pdos = data->num_pdos;
-	memcpy(pdc_tx_snk_capabilities.spr_tx_sink_pdo, data->pdos,
-	       sizeof(uint32_t) * data->num_pdos);
-
-	/* Write PDC Transmit Sink Capabilities */
-	rv = tps_rw_transmit_sink_capabilities(
-		&cfg->i2c, &pdc_tx_snk_capabilities, I2C_MSG_WRITE);
-	if (rv) {
-		LOG_ERR("Write transmit sink capabilities failed");
 		goto error_recovery;
 	}
 
@@ -1508,6 +1504,35 @@ error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
 }
 
+static void cmd_get_sbu_mux_mode(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_status status;
+	enum pdc_sbu_mux_mode *mode = (enum pdc_sbu_mux_mode *)data->user_buf;
+
+	int rv;
+
+	rv = tps_rd_status_reg(&cfg->i2c, &status);
+	if (rv) {
+		LOG_ERR("Failed to read status reg (%d)", rv);
+		*mode = PDC_SBU_MUX_MODE_INVALID;
+		goto error_recovery;
+	}
+
+	*mode = status.sbumux_mode;
+
+	/* Command has completed */
+	data->cci_event.command_completed = 1;
+	/* Inform the system of the event */
+	call_cci_event_cb(data);
+
+	set_state(data, ST_IDLE);
+	return;
+
+error_recovery:
+	set_state(data, ST_ERROR_RECOVERY);
+}
+
 static int write_task_cmd(struct pdc_config_t const *cfg,
 			  enum command_task task, union reg_data *cmd_data)
 {
@@ -1640,6 +1665,23 @@ static void task_aneg(struct pdc_data_t *data)
 	return;
 }
 
+static void task_sbud(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_data cmd_data;
+	int rv;
+
+	cmd_data.data[0] = data->sbumux_mode;
+	rv = write_task_cmd(cfg, COMMAND_TASK_SBUD, &cmd_data);
+	if (rv) {
+		set_state(data, ST_ERROR_RECOVERY);
+		return;
+	}
+
+	set_state(data, ST_TASK_WAIT);
+	return;
+}
+
 static void task_disc(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -1662,6 +1704,7 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_data cmd_data;
+	union ucsi_set_pdos_t *ucsi_pdos;
 	int rv;
 
 	/* Set the currently running UCSI command. */
@@ -1712,6 +1755,23 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 		cmd_data.data[2] |= (data->uor.swap_to_dfp << 7);
 		cmd_data.data[3] = (data->uor.swap_to_ufp |
 				    (data->uor.accept_dr_swap << 1));
+		break;
+	case CMD_SET_PDOS:
+		/* ucsi_set_pdos starts with connector number */
+		ucsi_pdos = (union ucsi_set_pdos_t *)&cmd_data.data[2];
+		/* SRC or SNK PDO */
+		ucsi_pdos->pdo_type = data->pdo_type;
+		/* Number of PDOs being set */
+		ucsi_pdos->number_of_pdos = data->num_pdos;
+		/* No chunking, so index is always 0 */
+		ucsi_pdos->data_index = 0;
+		/* No chunking, so always end of message */
+		ucsi_pdos->end_of_message = 1;
+		/* PDOs to send start at cmd_data[8] */
+		memcpy(&cmd_data.data[8], data->pdos,
+		       data->num_pdos * sizeof(uint32_t));
+		/* Update Data Length to reflect number of PDOs */
+		cmd_data.data[1] = data->num_pdos * sizeof(uint32_t);
 		break;
 	case CMD_SET_PDR:
 		cmd_data.data[2] |= (data->pdr.swap_to_src << 7);
@@ -2091,6 +2151,25 @@ static int tps_set_fast_role_swap(const struct device *dev, bool enable)
 	return tps_post_command(dev, CMD_SET_FRS, NULL);
 }
 
+static int tps_set_sbu_mux_mode(const struct device *dev,
+				enum pdc_sbu_mux_mode mode)
+{
+	struct pdc_data_t *data = dev->data;
+
+	data->sbumux_mode = mode;
+
+	return tps_post_command(dev, CMD_SET_SBU_MUX_MODE, NULL);
+}
+
+static int tps_get_sbu_mux_mode(const struct device *dev,
+				enum pdc_sbu_mux_mode *mode)
+{
+	if (mode == NULL)
+		return -EINVAL;
+
+	return tps_post_command(dev, CMD_GET_SBU_MUX_MODE, mode);
+}
+
 static int tps_set_sink_path(const struct device *dev, bool en)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2219,18 +2298,19 @@ static int tps_get_info(const struct device *dev, struct pdc_info_t *info,
 	return tps_post_command(dev, CMD_GET_IC_STATUS, info);
 }
 
-static int tps_get_bus_info(const struct device *dev,
-			    struct pdc_bus_info_t *info)
+static int tps_get_hw_config(const struct device *dev,
+			     struct pdc_hw_config_t *config)
 {
 	const struct pdc_config_t *cfg =
 		(const struct pdc_config_t *)dev->config;
 
-	if (info == NULL) {
+	if (config == NULL) {
 		return -EINVAL;
 	}
 
-	info->bus_type = PDC_BUS_TYPE_I2C;
-	info->i2c = cfg->i2c;
+	config->bus_type = PDC_BUS_TYPE_I2C;
+	config->i2c = cfg->i2c;
+	config->ccd = cfg->ccd;
 
 	return 0;
 }
@@ -2258,7 +2338,7 @@ static int tps_set_uor(const struct device *dev, union uor_t uor)
 
 	data->uor = uor;
 
-	return tps_post_command(dev, CMD_SET_UOR, NULL);
+	return tps_post_command(dev, CMD_SET_DRS, NULL);
 }
 
 static int tps_set_pdr(const struct device *dev, union pdr_t pdr)
@@ -2396,6 +2476,13 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 	return 0;
 }
 
+static void tps_start_thread(const struct device *dev)
+{
+	struct pdc_data_t *data = dev->data;
+
+	k_thread_start(data->thread);
+}
+
 static bool tps_is_init_done(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2452,6 +2539,7 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 }
 
 static DEVICE_API(pdc, pdc_driver_api) = {
+	.start_thread = tps_start_thread,
 	.is_init_done = tps_is_init_done,
 	.get_ucsi_version = tps_get_ucsi_version,
 	.reset = tps_pdc_reset,
@@ -2475,7 +2563,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_handler_cb = tps_set_handler_cb,
 	.read_power_level = tps_read_power_level,
 	.get_info = tps_get_info,
-	.get_bus_info = tps_get_bus_info,
+	.get_hw_config = tps_get_hw_config,
 	.set_power_level = tps_set_power_level,
 	.reconnect = tps_reconnect,
 	.get_cable_property = tps_get_cable_property,
@@ -2490,6 +2578,8 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.update_retimer = tps_update_retimer_mode,
 	.execute_ucsi_cmd = tps_execute_ucsi_cmd,
 	.set_frs = tps_set_fast_role_swap,
+	.set_sbu_mux_mode = tps_set_sbu_mux_mode,
+	.get_sbu_mux_mode = tps_get_sbu_mux_mode,
 };
 
 static int pdc_interrupt_mask_init(struct pdc_data_t *data)
@@ -2509,6 +2599,24 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 	};
 
 	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
+}
+
+static int pdc_port_control_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_port_control pdc_port_control = {
+		.typec_current = 1,
+		.process_swap_to_sink = 1,
+		.process_swap_to_source = 1,
+		.automatic_cap_request = 1,
+		.auto_alert_enable = 1,
+		.process_swap_to_dfp = 1,
+		.automatic_id_request = 1,
+		.fr_swap_enabled = 1,
+		.deglitch_cnt_lo = 6,
+	};
+
+	return tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
 }
 
 static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
@@ -2636,6 +2744,11 @@ static int pdc_init(const struct device *dev)
 		LOG_ERR("Reset autonegotiate_sink reg failed");
 		return rv;
 	}
+	rv = pdc_port_control_init(data);
+	if (rv < 0) {
+		LOG_ERR("Write port control failed");
+		return rv;
+	}
 	rv = pdc_exit_dead_battery(data);
 	if (rv < 0) {
 		LOG_ERR("Clear dead battery flag failed");
@@ -2685,8 +2798,8 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 	}
 }
 
-#define PDC_DEFINE(inst)                                                       \
-	K_THREAD_STACK_DEFINE(thread_stack_area_##inst,                        \
+#define TPS6699X_PDC_DEFINE(inst)                                              \
+	K_THREAD_STACK_DEFINE(tps6699x_thread_stack_area_##inst,               \
 			      CONFIG_USBC_PDC_TPS6699X_STACK_SIZE);            \
                                                                                \
 	static void create_thread_##inst(const struct device *dev)             \
@@ -2694,11 +2807,12 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		struct pdc_data_t *data = dev->data;                           \
                                                                                \
 		data->thread = k_thread_create(                                \
-			&data->thread_data, thread_stack_area_##inst,          \
-			K_THREAD_STACK_SIZEOF(thread_stack_area_##inst),       \
+			&data->thread_data, tps6699x_thread_stack_area_##inst, \
+			K_THREAD_STACK_SIZEOF(                                 \
+				tps6699x_thread_stack_area_##inst),            \
 			tps_thread, (void *)dev, 0, 0,                         \
 			CONFIG_USBC_PDC_TPS6699X_THREAD_PRIORITY, K_ESSENTIAL, \
-			K_NO_WAIT);                                            \
+			K_FOREVER);                                            \
 		k_thread_name_set(data->thread, "TPS6699X" STRINGIFY(inst));   \
 	}                                                                      \
                                                                                \
@@ -2711,7 +2825,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.i2c = I2C_DT_SPEC_INST_GET(inst),                             \
 		.irq_gpios = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),           \
 		.connector_number =                                            \
-			USBC_PORT_FROM_DRIVER_NODE(DT_DRV_INST(inst), pdc),    \
+			USBC_PORT_FROM_PDC_DRIVER_NODE(DT_DRV_INST(inst)),     \
 		.bits.command_completed = 0, /* Reserved on TI */              \
 		.bits.external_supply_change = 1,                              \
 		.bits.power_operation_mode_change = 1,                         \
@@ -2731,14 +2845,15 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.bits.sink_path_status_change = 1,                             \
 		.create_thread = create_thread_##inst,                         \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),              \
+		.ccd = DT_INST_PROP(inst, ccd),                                \
 	};                                                                     \
                                                                                \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,          \
 			      &pdc_config##inst, POST_KERNEL,                  \
-			      CONFIG_APPLICATION_INIT_PRIORITY,                \
+			      CONFIG_PDC_DRIVER_INIT_PRIORITY,                 \
 			      &pdc_driver_api);
 
-DT_INST_FOREACH_STATUS_OKAY(PDC_DEFINE)
+DT_INST_FOREACH_STATUS_OKAY(TPS6699X_PDC_DEFINE)
 
 #ifdef CONFIG_ZTEST
 

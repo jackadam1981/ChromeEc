@@ -15,6 +15,7 @@
 #include <cstring>
 #include <limits>
 
+#include "ap_power/ap_power_events.h"
 #include "cros/dsp/client.h"
 #include "cros_board_info.h"
 #include "hooks.h"
@@ -64,19 +65,33 @@ inline bool IsFlagSet(const pw_transport_Status& status, uint64_t bit) {
 }
 
 class DspComms : public ::testing::Test {
- protected:
-  DspComms() {
+ private:
+  static void OneTimeInit() {
+    static bool is_initialized = false;
+    if (is_initialized) {
+      return;
+    }
+    ap_power_ev_send_callbacks(AP_POWER_STARTUP);
+    PW_ASSERT(0 == device_init(kClient));
     // We have to poke any CBI value to make sure that it was
     // initialized
     uint32_t ver;
     cbi_get_board_version(&ver);
+    is_initialized = true;
   }
+
+ protected:
+  DspComms() = default;
+
   void SetUp() override {
     // RESET_FAKE(crec_flash_unprotected_read);
 
     // crec_flash_unprotected_read_fake.custom_fake =
     // crec_flash_physical_read; FFF_RESET_HISTORY(); Set default
     // values
+
+    OneTimeInit();
+    cbi_create();
 
     ClearTransport();
 

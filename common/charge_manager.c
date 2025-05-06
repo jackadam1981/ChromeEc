@@ -18,6 +18,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
+#include "task.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "typec_control.h"
@@ -26,6 +27,7 @@
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "zephyr/include/usbc/pdc_dpm.h"
 #ifdef CONFIG_ZEPHYR
 #include "zephyr/include/usbc/pdc_power_mgmt.h"
 #endif
@@ -41,6 +43,8 @@
 /* Timeout for delayed override power swap, allow for 500ms extra */
 #define POWER_SWAP_TIMEOUT \
 	(PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + PD_T_SAFE_0V + 500 * MSEC)
+
+K_MUTEX_DEFINE(cm_refresh);
 
 /*
  * Default charge supplier priority
@@ -246,7 +250,7 @@ DECLARE_HOOK(HOOK_INIT, charge_manager_init, HOOK_PRIO_INIT_CHARGE_MANAGER);
 #else
 BUILD_ASSERT(CONFIG_CHARGE_MANAGER_SYS_INIT_PRIORITY <
 		     CONFIG_PDC_POWER_MGMT_INIT_PRIORITY,
-	     "The charge manager initialization must be higher priortity than "
+	     "The charge manager initialization must be higher priority than "
 	     "the PDC power management");
 
 /* When CONFIG_USB_PDC_POWER_MGMT is used, we need to init the
@@ -302,10 +306,20 @@ int charge_manager_get_pd_current_uncapped(void)
  * @param port	Charge port.
  * @return	Charge current (mA).
  */
-__maybe_unused static int charge_manager_get_source_current(int port)
+static int charge_manager_get_source_current(int port)
 {
 	if (!is_pd_port(port))
 		return 0;
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
+		/* TCPMv2 policy manager tracks sourcing levels. */
+		return dpm_get_source_current(port);
+	}
+
+	if (IS_ENABLED(CONFIG_USB_PDC_POWER_MGMT)) {
+		/* PDC policy manager tracks sourcing levels. */
+		return pdc_dpm_get_source_current(port);
+	}
 
 	switch (source_port_rp[port]) {
 	case TYPEC_RP_3A0:
@@ -482,13 +496,8 @@ charge_manager_fill_power_info(int port,
 			r->meas.voltage_max = 0;
 			r->meas.voltage_now =
 				r->role == USB_PD_PORT_POWER_SOURCE ? 5000 : 0;
-			/* TCPMv2 tracks source-out current in the DPM */
-			if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
-				r->meas.current_max =
-					dpm_get_source_current(port);
-			else
-				r->meas.current_max =
-					charge_manager_get_source_current(port);
+			r->meas.current_max =
+				charge_manager_get_source_current(port);
 			r->max_power = 0;
 		} else {
 			r->type = USB_CHG_TYPE_NONE;
@@ -803,12 +812,16 @@ static void charge_manager_refresh(void)
 	int ceil;
 	int power_changed = 0;
 
+	mutex_lock(&cm_refresh);
+
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_port(&new_port, &new_supplier);
 
-		if (!left_safe_mode && new_port == CHARGE_PORT_NONE)
+		if (!left_safe_mode && new_port == CHARGE_PORT_NONE) {
+			mutex_unlock(&cm_refresh);
 			return;
+		}
 
 		/*
 		 * If the port and the supplier are the same, don't (attempt to)
@@ -1041,6 +1054,8 @@ static void charge_manager_refresh(void)
 		/* notify host of power info change */
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
+
+	mutex_unlock(&cm_refresh);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1301,11 +1316,13 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	if (!is_valid_port(port))
 		return;
 
+	mutex_lock(&cm_refresh);
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
 			hook_call_deferred(&charge_manager_refresh_data, 0);
 	}
+	mutex_unlock(&cm_refresh);
 }
 
 void charge_manager_force_ceil(int port, int ceil)

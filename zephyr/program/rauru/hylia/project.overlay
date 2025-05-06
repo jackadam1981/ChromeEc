@@ -20,7 +20,7 @@
 #include "led.dtsi"
 #include "motionsense.dtsi"
 #include "temp.dtsi"
-#include "usbc.dtsi"
+#include "../pdc.dtsi"
 
 / {
 	gpio-interrupts {
@@ -38,6 +38,11 @@
 			irq-pin = <&gpio_lid_360_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "gmr_tablet_switch_isr";
+		};
+		int_ap_bl_en: int_ap_bl_en{
+			irq-pin = <&gpio_ap_bl_en_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "ap_bl_en_interrupt";
 		};
 	};
 

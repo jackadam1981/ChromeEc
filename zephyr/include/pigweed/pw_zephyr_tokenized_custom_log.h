@@ -36,6 +36,6 @@
 #define PW_LOG_TOKENIZED_MODULE_BITS 12
 
 #define PW_EC_CHANNEL_TO_FLAG(channel) ((channel) + 1)
-#define PW_FLAG_TO_EC_CHANNEL(flag) ((enum console_channel)((flag)-1))
+#define PW_FLAG_TO_EC_CHANNEL(flag) ((enum console_channel)((flag) - 1))
 
 #endif /* __PW_ZEPHYR_TOKENIZED_CUSTOM_LOG_H */

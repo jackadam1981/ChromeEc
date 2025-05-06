@@ -55,6 +55,11 @@ SPECIAL_BOARDS = [
     "brox",
     "brox-sku4",
     "rauru",
+    # Fatcat/Felino variants
+    "fatcat_npcx9m7f",
+    "fatcat_it82002aw",
+    "felino",
+    "francka",
     # Nissa variants
     "nereid",
     "nivviks",

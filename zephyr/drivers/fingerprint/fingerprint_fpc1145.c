@@ -32,6 +32,27 @@ enum fpc1145_cmd {
 	FPC1145_CMD_HW_ID = 0xFC,
 };
 
+int convert_fp_capture_type_to_fpc_capture_type(
+	enum fingerprint_capture_type mode)
+{
+	switch (mode) {
+	case FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT:
+		return FPC_CAPTURE_VENDOR_FORMAT;
+	case FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE:
+		return FPC_CAPTURE_SIMPLE_IMAGE;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN0:
+		return FPC_CAPTURE_PATTERN0;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN1:
+		return FPC_CAPTURE_PATTERN1;
+	case FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST:
+		return FPC_CAPTURE_QUALITY_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_RESET_TEST:
+		return FPC_CAPTURE_RESET_TEST;
+	default:
+		return -EINVAL;
+	}
+}
+
 /* Minimum reset duration */
 #define FP_SENSOR_RESET_DURATION_US (10 * USEC_PER_MSEC)
 /* Maximum number of attempts to initialise the sensor */
@@ -403,21 +424,30 @@ BUILD_ASSERT(FINGERPRINT_SENSOR_SCAN_TOO_FAST == FPC_SENSOR_TOO_FAST);
 BUILD_ASSERT(FINGERPRINT_SENSOR_SCAN_LOW_SENSOR_COVERAGE ==
 	     FPC_SENSOR_LOW_COVERAGE);
 
-static int fpc1145_acquire_image(const struct device *dev, int mode,
+static int fpc1145_acquire_image(const struct device *dev,
+				 enum fingerprint_capture_type capture_type,
 				 uint8_t *image_buf, size_t image_buf_size)
 {
 	int rc;
+
+	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
+		return -EINVAL;
+
+	rc = convert_fp_capture_type_to_fpc_capture_type(capture_type);
+
+	if (rc < 0) {
+		LOG_ERR("Unsupported capture_type %d provided", capture_type);
+		return rc;
+	}
 
 	if (!IS_ENABLED(CONFIG_HAVE_FPC1145_PRIVATE_DRIVER)) {
 		return -ENOTSUP;
 	}
 
-	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
-		return -EINVAL;
-
-	rc = fp_sensor_acquire_image_with_mode(image_buf, mode);
+	rc = fp_sensor_acquire_image_with_mode(image_buf, rc);
 	if (rc < 0) {
-		LOG_ERR("Failed to acquire image with mode %d: %d", mode, rc);
+		LOG_ERR("Failed to acquire image with capture_type %d: %d",
+			capture_type, rc);
 		return rc;
 	}
 
@@ -519,16 +549,18 @@ static int fpc1145_init_driver(const struct device *dev)
 	return 0;
 }
 
-#define FPC1145_SENSOR_INFO(inst)                                         \
-	{                                                                 \
-		.vendor_id = FOURCC('F', 'P', 'C', ' '), .product_id = 9, \
-		.model_id = 1, .version = 1,                              \
-		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,       \
-		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(     \
-			DT_DRV_INST(inst)),                               \
-		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),     \
-		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)),    \
-		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),     \
+#define FPC1145_SENSOR_INFO(inst)                                      \
+	{                                                              \
+		.vendor_id = FOURCC('F', 'P', 'C', ' '),               \
+		.product_id = 9,                                       \
+		.model_id = 1,                                         \
+		.version = 1,                                          \
+		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,    \
+		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(  \
+			DT_DRV_INST(inst)),                            \
+		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),  \
+		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)), \
+		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),  \
 	}
 
 /* The sensor context is uncached as it contains the SPI buffers, which is

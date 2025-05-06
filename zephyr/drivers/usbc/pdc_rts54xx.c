@@ -6,8 +6,8 @@
 /*
  * Realtek RTS545x Power Delivery Controller Driver
  */
-
 #include "drivers/ucsi_v3.h"
+#include "pdc_rts54xx.h"
 
 #include <assert.h>
 #include <string.h>
@@ -22,7 +22,8 @@
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/sys_clock.h>
-LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
+#include "usbc/pdc_power_mgmt.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -80,30 +81,6 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #define VBSIN_EN_ON 0x43
 #define VBSIN_EN_OFF 0x40
 
-/**
- * @brief Offsets of data fields in the GET_IC_STATUS response
- *
- * These are based on the Realtek spec version 3.3.25.
- *
- * "Data Byte 0" is the first byte after "Byte Count" and is available
- * at .rd_buf[1].
- */
-#define RTS54XX_GET_IC_STATUS_RUNNING_FLASH_CODE 1
-#define RTS54XX_GET_IC_STATUS_FWVER_MAJOR_OFFSET 4
-#define RTS54XX_GET_IC_STATUS_FWVER_MINOR_OFFSET 5
-#define RTS54XX_GET_IC_STATUS_FWVER_PATCH_OFFSET 6
-#define RTS54XX_GET_IC_STATUS_VID_L 10
-#define RTS54XX_GET_IC_STATUS_VID_H 11
-#define RTS54XX_GET_IC_STATUS_PID_L 12
-#define RTS54XX_GET_IC_STATUS_PID_H 13
-#define RTS54XX_GET_IC_STATUS_RUNNING_FLASH_BANK 15
-#define RTS54XX_GET_IC_STATUS_PD_REV_MAJOR_OFFSET 23
-#define RTS54XX_GET_IC_STATUS_PD_REV_MINOR_OFFSET 24
-#define RTS54XX_GET_IC_STATUS_PD_VER_MAJOR_OFFSET 25
-#define RTS54XX_GET_IC_STATUS_PD_VER_MINOR_OFFSET 26
-#define RTS54XX_GET_IC_STATUS_PROG_NAME_STR 27
-#define RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN 12
-
 /*
  * Constants for SET_PDO
  */
@@ -114,12 +91,6 @@ LOG_MODULE_REGISTER(pdc_rts54, LOG_LEVEL_INF);
 #define RTS54XX_SET_PD_CMD_MAX_LENGTH      \
 	(RTS54XX_SET_PDO_CMD_BASE_LENGTH + \
 	 sizeof(uint32_t) * RTS54XX_SET_PDO_MAX_PDO_COUNT)
-
-/* FW project name length should not exceed the max length supported in struct
- * pdc_info_t
- */
-BUILD_ASSERT(RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN <=
-	     (sizeof(((struct pdc_info_t *)0)->project_name) - 1));
 
 /**
  * @brief Macro to transition to init or idle state and return
@@ -143,10 +114,6 @@ BUILD_ASSERT(RTS54XX_GET_IC_STATUS_PROG_NAME_STR_LEN <=
  */
 #define NUM_PDC_RTS54XX_PORTS DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)
 
-/**
- * @brief RTS54XX I2C block read command
- */
-#define RTS54XX_BLOCK_READ_CMD 0x80
 /**
  * @brief SMbus Command struct for Realtek commands
  */
@@ -208,33 +175,8 @@ static const struct smbus_cmd_t RTS_UCSI_GET_LPM_PPM_INFO = { 0x0E, 0x03,
 							      0x22 };
 static const struct smbus_cmd_t RTS_UCSI_GET_ATTENTION_VDO = { 0x0E, 0x03,
 							       0x16 };
-
-/**
- * @brief PDC Command states
- */
-enum cmd_sts_t {
-	/** Command has not been started */
-	CMD_BUSY = 0,
-	/** Command has completed */
-	CMD_DONE = 1,
-	/** Command has been started but has not completed */
-	CMD_DEFERRED = 2,
-	/** Command completed with error. Send GET_ERROR_STATUS for details */
-	CMD_ERROR = 3
-};
-
-/**
- * @brief Ping Status of the PDC
- */
-union ping_status_t {
-	struct {
-		/** Command status */
-		uint8_t cmd_sts : 2;
-		/** Length of data read to read */
-		uint8_t data_len : 6;
-	};
-	uint8_t raw_value;
-};
+__maybe_unused static const struct smbus_cmd_t RTS_SET_SBU_MUX_MODE = { 0x30,
+									0x01 };
 
 /**
  * @brief States of the main state machine
@@ -357,6 +299,10 @@ enum cmd_t {
 	CMD_GET_LPM_PPM_INFO,
 	/** CMD_GET_ATTENTION_VDO */
 	CMD_GET_ATTENTION_VDO,
+	/** CMD_GET_SBU_MUX_MODE */
+	CMD_GET_SBU_MUX_MODE,
+	/** CMD_SET_SBU_MUX_MODE */
+	CMD_SET_SBU_MUX_MODE,
 };
 
 /**
@@ -375,6 +321,10 @@ struct pdc_config_t {
 	void (*create_thread)(const struct device *dev);
 	/** If true, do not apply PDC FW updates to this port */
 	bool no_fw_update;
+	/** Whether or not this port supports CCD */
+	bool ccd;
+	/** Pointer to the device-specific callback function */
+	gpio_callback_handler_t callback_handler;
 };
 
 /**
@@ -490,6 +440,8 @@ static const char *const cmd_names[] = {
 	[CMD_RAW_UCSI] = "CMD_RAW_UCSI",
 	[CMD_GET_LPM_PPM_INFO] = "CMD_GET_LPM_PPM_INFO",
 	[CMD_GET_ATTENTION_VDO] = "CMD_GET_ATTENTION_VDO",
+	[CMD_GET_SBU_MUX_MODE] = "CMD_GET_SBU_MUX_MODE",
+	[CMD_SET_SBU_MUX_MODE] = "CMD_SET_SBU_MUX_MODE",
 };
 
 /**
@@ -507,9 +459,8 @@ static const char *const state_names[] = {
 	[ST_SUSPENDED] = "PDC_SUSPENDED",
 };
 
-static const struct device *irq_shared_port;
-static int irq_share_pin;
-static bool irq_init_done;
+static struct gpio_dt_spec
+	rts54xx_irq_list[DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)];
 static const struct smf_state states[];
 static int rts54_enable(const struct device *dev);
 static int rts54_reset(const struct device *dev);
@@ -525,11 +476,6 @@ static int rts54_get_error_status(const struct device *dev,
  * @brief PDC port data used in interrupt handler
  */
 static struct pdc_data_t *pdc_data[CONFIG_USB_PD_PORT_MAX_COUNT];
-
-/**
- * @brief Pointer to thread specific k_event that handles interrupts.
- */
-static struct k_event *irq_event;
 
 static enum state_t get_state(struct pdc_data_t *data)
 {
@@ -940,7 +886,7 @@ static void handle_irqs(struct pdc_data_t *data)
 	 * This assumes that this driver is valid for all PD controllers on the
 	 * system.
 	 */
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		/*
 		 * Read the Alert Response Address to determine
 		 * which port generated the interrupt.
@@ -951,8 +897,16 @@ static void handle_irqs(struct pdc_data_t *data)
 		}
 
 		/* Search for port with matching I2C address */
-		for (int j = 0; j < CONFIG_USB_PD_PORT_MAX_COUNT; j++) {
+		for (int j = 0; j < pdc_power_mgmt_get_usb_pd_port_count();
+		     j++) {
 			struct pdc_data_t *pdc_int_data = pdc_data[j];
+
+			if (pdc_int_data == NULL ||
+			    !device_is_ready(pdc_int_data->dev)) {
+				/* This PDC is not initialized. Ignore it. */
+				continue;
+			}
+
 			const struct pdc_config_t *cfg =
 				pdc_int_data->dev->config;
 
@@ -1132,13 +1086,12 @@ static void st_ping_status_run(void *o)
 			set_state(data, ST_ERROR_RECOVERY);
 		} else {
 			/*
-			 * If Busy, then set this cci.busy to a 1b
-			 * and all other fields to zero.
+			 * If Busy, then set this cci.busy to a 1b and all other
+			 * fields to zero. Only notify subsystem of busy event
+			 * for the first time.
 			 */
-			if (data->cci_event.busy == 0) {
-				/* Only notify subsystem of busy event once */
+			if (data->ping_retry_counter == 1) {
 				data->cci_event.busy = 1;
-
 				/* Notify system of status change */
 				call_cci_event_cb(data);
 			}
@@ -1234,7 +1187,7 @@ static void st_read_run(void *o)
 
 	/*
 	 * The data->user_buf is checked for NULL before a command is queued.
-	 * The check here gauards against an eronious ping_status indicating
+	 * The check here guards against an erroneous ping_status indicating
 	 * data is available for a command that doesn't send data.
 	 */
 	if (!data->user_buf) {
@@ -1274,41 +1227,7 @@ static void st_read_run(void *o)
 	case CMD_GET_IC_STATUS: {
 		struct pdc_info_t *info = (struct pdc_info_t *)data->user_buf;
 
-		/* Realtek Is running flash code: Data Byte0 */
-		info->is_running_flash_code =
-			data->rd_buf[RTS54XX_GET_IC_STATUS_RUNNING_FLASH_CODE];
-
-		/* Realtek FW main version: Data Byte3..5 */
-		info->fw_version =
-			data->rd_buf[RTS54XX_GET_IC_STATUS_FWVER_MAJOR_OFFSET]
-				<< 16 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_FWVER_MINOR_OFFSET]
-				<< 8 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_FWVER_PATCH_OFFSET];
-
-		/* Realtek VID: Data Byte9..10 (little-endian) */
-		info->vid = data->rd_buf[RTS54XX_GET_IC_STATUS_VID_H] << 8 |
-			    data->rd_buf[RTS54XX_GET_IC_STATUS_VID_L];
-
-		/* Realtek PID: Data Byte11..12 (little-endian) */
-		info->pid = data->rd_buf[RTS54XX_GET_IC_STATUS_PID_H] << 8 |
-			    data->rd_buf[RTS54XX_GET_IC_STATUS_PID_L];
-
-		/* Realtek Running flash bank offset: Data Byte14 */
-		info->running_in_flash_bank =
-			data->rd_buf[RTS54XX_GET_IC_STATUS_RUNNING_FLASH_BANK];
-
-		/* Realtek PD Revision: Data Byte22..23 (big-endian) */
-		info->pd_revision =
-			data->rd_buf[RTS54XX_GET_IC_STATUS_PD_REV_MAJOR_OFFSET]
-				<< 8 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_PD_REV_MINOR_OFFSET];
-
-		/* Realtek PD Version: Data Byte24..25 (big-endian) */
-		info->pd_version =
-			data->rd_buf[RTS54XX_GET_IC_STATUS_PD_VER_MAJOR_OFFSET]
-				<< 8 |
-			data->rd_buf[RTS54XX_GET_IC_STATUS_PD_VER_MINOR_OFFSET];
+		rts54xx_unpack_get_ic_status_response(data->rd_buf, info);
 
 		/* Project name string is supported on version >= 0.3.x */
 		memcpy(info->project_name,
@@ -1426,13 +1345,39 @@ static void st_read_run(void *o)
 		}
 		break;
 	}
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+	case CMD_GET_SBU_MUX_MODE: {
+		/* This is parsing a partial GET_IC_STATUS response (offset of
+		 * 39, 1 byte) */
+
+		enum pdc_sbu_mux_mode *mode_out =
+			(enum pdc_sbu_mux_mode *)data->user_buf;
+		uint8_t raw_mode = data->rd_buf[offset];
+
+		switch (raw_mode) {
+		case RTS54XX_GET_IC_STATUS_SBU_MUX_MODE_NORMAL:
+			*mode_out = PDC_SBU_MUX_MODE_NORMAL;
+			break;
+		case RTS54XX_GET_IC_STATUS_SBU_MUX_MODE_FORCE_DBG:
+			*mode_out = PDC_SBU_MUX_MODE_FORCE_DBG;
+			break;
+		default:
+			*mode_out = PDC_SBU_MUX_MODE_INVALID;
+			LOG_ERR("C%d: Unknown raw SBU mux value: 0x%02x",
+				cfg->connector_number, raw_mode);
+			break;
+		}
+
+		break;
+	}
+#endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 	default:
 		/* No preprocessing needed for the user data */
 		memcpy(data->user_buf, data->rd_buf + offset, len);
 	}
 
 	/* Clear the read buffer */
-	memset(data->rd_buf, 0, 256);
+	memset(data->rd_buf, 0, sizeof(data->rd_buf));
 
 	/*
 	 * Set cci.data_len. This will be zero if no
@@ -2181,18 +2126,19 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 				  ARRAY_SIZE(payload), (uint8_t *)info);
 }
 
-static int rts54_get_bus_info(const struct device *dev,
-			      struct pdc_bus_info_t *info)
+static int rts54_get_hw_config(const struct device *dev,
+			       struct pdc_hw_config_t *config)
 {
 	const struct pdc_config_t *cfg =
 		(const struct pdc_config_t *)dev->config;
 
-	if (info == NULL) {
+	if (config == NULL) {
 		return -EINVAL;
 	}
 
-	info->bus_type = PDC_BUS_TYPE_I2C;
-	info->i2c = cfg->i2c;
+	config->bus_type = PDC_BUS_TYPE_I2C;
+	config->i2c = cfg->i2c;
+	config->ccd = cfg->ccd;
 
 	return 0;
 }
@@ -2457,6 +2403,13 @@ static int rts54_get_pch_data_status(const struct device *dev, uint8_t port_num,
 	return 0;
 }
 
+static void rts54_start_thread(const struct device *dev)
+{
+	struct pdc_data_t *data = dev->data;
+
+	k_thread_start(data->thread);
+}
+
 static bool rts54_is_init_done(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2694,7 +2647,67 @@ static int rts54_get_attention_vdo(const struct device *dev,
 				  ARRAY_SIZE(payload), (uint8_t *)vdo);
 }
 
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+static int rts54_get_sbu_mux_mode(const struct device *dev,
+				  enum pdc_sbu_mux_mode *mode)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (mode == NULL) {
+		return -EINVAL;
+	}
+
+	/* SBU mux mode is encoded in an extension of the GET_IC_STATUS
+	 * response. Read one byte starting at an offset of 38. */
+	uint8_t payload[] = {
+		GET_IC_STATUS.cmd,
+		GET_IC_STATUS.len,
+		/* Subtract one to account for leading length byte in response
+		 */
+		RTS54XX_GET_IC_STATUS_SBU_MUX_MODE_OFFSET - 1,
+		0x00,
+		1,
+	};
+
+	return rts54_post_command(dev, CMD_GET_SBU_MUX_MODE, payload,
+				  ARRAY_SIZE(payload), (uint8_t *)mode);
+}
+
+static int rts54_set_sbu_mux_mode(const struct device *dev,
+				  enum pdc_sbu_mux_mode mode)
+{
+	struct pdc_data_t *data = dev->data;
+	uint8_t setting;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	switch (mode) {
+	case PDC_SBU_MUX_MODE_NORMAL:
+		setting = 0;
+		break;
+	case PDC_SBU_MUX_MODE_FORCE_DBG:
+		setting = 1;
+		break;
+	default:
+		return -ERANGE;
+	}
+
+	uint8_t payload[] = { RTS_SET_SBU_MUX_MODE.cmd,
+			      RTS_SET_SBU_MUX_MODE.len, setting };
+
+	return rts54_post_command(dev, CMD_SET_SBU_MUX_MODE, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+#endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
+
 static DEVICE_API(pdc, pdc_driver_api) = {
+	.start_thread = rts54_start_thread,
 	.is_init_done = rts54_is_init_done,
 	.get_ucsi_version = rts54_get_ucsi_version,
 	.reset = rts54_pdc_reset,
@@ -2717,7 +2730,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_handler_cb = rts54_set_handler_cb,
 	.read_power_level = rts54_read_power_level,
 	.get_info = rts54_get_info,
-	.get_bus_info = rts54_get_bus_info,
+	.get_hw_config = rts54_get_hw_config,
 	.set_power_level = rts54_set_power_level,
 	.reconnect = rts54_reconnect,
 	.update_retimer = rts54_set_retimer_update_mode,
@@ -2734,19 +2747,18 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.get_lpm_ppm_info = rts54_get_lpm_ppm_info,
 	.set_frs = rts54_set_frs,
 	.get_attention_vdo = rts54_get_attention_vdo,
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+	.get_sbu_mux_mode = rts54_get_sbu_mux_mode,
+	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,
+#endif /* define(CONFIG_USBC_PDC_DRIVEN_CCD) */
 };
-
-static void pdc_interrupt_callback(const struct device *dev,
-				   struct gpio_callback *cb, uint32_t pins)
-{
-	k_event_post(irq_event, RTS54XX_IRQ_EVENT);
-}
 
 static int pdc_init(const struct device *dev)
 {
 	const struct pdc_config_t *cfg = dev->config;
 	struct pdc_data_t *data = dev->data;
 	int rv;
+	bool irq_init_done = false;
 
 	rv = i2c_is_ready_dt(&cfg->i2c);
 	if (rv < 0) {
@@ -2762,19 +2774,27 @@ static int pdc_init(const struct device *dev)
 
 	k_event_init(&data->driver_event);
 
+	for (int i = 0; i < ARRAY_SIZE(rts54xx_irq_list); i++) {
+		if (rts54xx_irq_list[i].port == cfg->irq_gpios.port &&
+		    rts54xx_irq_list[i].pin == cfg->irq_gpios.pin) {
+			irq_init_done = true;
+			break;
+		}
+
+		if (rts54xx_irq_list[i].port == NULL) {
+			rts54xx_irq_list[i] = cfg->irq_gpios;
+			break;
+		}
+	}
+
 	if (!irq_init_done) {
-		irq_shared_port = cfg->irq_gpios.port;
-		irq_share_pin = cfg->irq_gpios.pin;
-
-		irq_event = &data->driver_event;
-
 		rv = gpio_pin_configure_dt(&cfg->irq_gpios, GPIO_INPUT);
 		if (rv < 0) {
 			LOG_ERR("Unable to configure GPIO");
 			return rv;
 		}
 
-		gpio_init_callback(&data->gpio_cb, pdc_interrupt_callback,
+		gpio_init_callback(&data->gpio_cb, cfg->callback_handler,
 				   BIT(cfg->irq_gpios.pin));
 
 		rv = gpio_add_callback(cfg->irq_gpios.port, &data->gpio_cb);
@@ -2791,14 +2811,7 @@ static int pdc_init(const struct device *dev)
 		}
 
 		/* Trigger IRQ on startup to read any pending interrupts */
-		k_event_post(irq_event, RTS54XX_IRQ_EVENT);
-		irq_init_done = true;
-	} else {
-		if (irq_shared_port != cfg->irq_gpios.port ||
-		    irq_share_pin != cfg->irq_gpios.pin) {
-			LOG_ERR("All rts54xx ports must use the same interrupt");
-			return -EINVAL;
-		}
+		k_event_post(&data->driver_event, RTS54XX_IRQ_EVENT);
 	}
 
 	k_mutex_init(&data->mtx);
@@ -2857,8 +2870,8 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 	}
 }
 
-#define PDC_DEFINE(inst)                                                      \
-	K_THREAD_STACK_DEFINE(thread_stack_area_##inst,                       \
+#define RTS54xx_PDC_DEFINE(inst)                                              \
+	K_THREAD_STACK_DEFINE(rts54xx_thread_stack_area_##inst,               \
 			      CONFIG_USBC_PDC_RTS54XX_STACK_SIZE);            \
                                                                               \
 	static void create_thread_##inst(const struct device *dev)            \
@@ -2866,21 +2879,30 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		struct pdc_data_t *data = dev->data;                          \
                                                                               \
 		data->thread = k_thread_create(                               \
-			&data->thread_data, thread_stack_area_##inst,         \
-			K_THREAD_STACK_SIZEOF(thread_stack_area_##inst),      \
+			&data->thread_data, rts54xx_thread_stack_area_##inst, \
+			K_THREAD_STACK_SIZEOF(                                \
+				rts54xx_thread_stack_area_##inst),            \
 			rts54xx_thread, (void *)dev, 0, 0,                    \
 			CONFIG_USBC_PDC_RTS54XX_THREAD_PRIORITY, K_ESSENTIAL, \
-			K_NO_WAIT);                                           \
+			K_FOREVER);                                           \
 		k_thread_name_set(data->thread, "RTS54XX" STRINGIFY(inst));   \
 	}                                                                     \
                                                                               \
 	static struct pdc_data_t pdc_data_##inst;                             \
                                                                               \
+	static void pdc_interrupt_callback##inst(const struct device *dev,    \
+						 struct gpio_callback *cb,    \
+						 uint32_t pins)               \
+	{                                                                     \
+		k_event_post(&pdc_data_##inst.driver_event,                   \
+			     RTS54XX_IRQ_EVENT);                              \
+	}                                                                     \
+                                                                              \
 	static const struct pdc_config_t pdc_config##inst = {                 \
 		.i2c = I2C_DT_SPEC_INST_GET(inst),                            \
 		.irq_gpios = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),          \
 		.connector_number =                                           \
-			USBC_PORT_FROM_DRIVER_NODE(DT_DRV_INST(inst), pdc),   \
+			USBC_PORT_FROM_PDC_DRIVER_NODE(DT_DRV_INST(inst)),    \
 		.bits.command_completed = 1,                                  \
 		.bits.external_supply_change = 1,                             \
 		.bits.power_operation_mode_change = 1,                        \
@@ -2900,14 +2922,16 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.bits.sink_path_status_change = 1,                            \
 		.create_thread = create_thread_##inst,                        \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),             \
+		.ccd = DT_INST_PROP(inst, ccd),                               \
+		.callback_handler = pdc_interrupt_callback##inst,             \
 	};                                                                    \
                                                                               \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,         \
 			      &pdc_config##inst, POST_KERNEL,                 \
-			      CONFIG_APPLICATION_INIT_PRIORITY,               \
+			      CONFIG_PDC_DRIVER_INIT_PRIORITY,                \
 			      &pdc_driver_api);
 
-DT_INST_FOREACH_STATUS_OKAY(PDC_DEFINE)
+DT_INST_FOREACH_STATUS_OKAY(RTS54xx_PDC_DEFINE)
 
 #ifdef CONFIG_ZTEST
 

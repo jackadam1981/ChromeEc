@@ -223,12 +223,45 @@ static void tps699x_emul_get_cable_property(struct tps6699x_emul_pdc_data *data)
 	memcpy(&data->reg_val[REG_DATA_FOR_CMD1], &data->response, 5 + 1);
 }
 
+static void tps6699x_emul_ucsi_set_pdos(struct tps6699x_emul_pdc_data *data,
+					uint8_t *data_reg)
+{
+	enum pdo_type_t pdo_type;
+	enum pdo_offset_t pdo_offset;
+	enum pdo_source_t source;
+	const uint32_t *pdos;
+	uint8_t num_pdos;
+	union ucsi_set_pdos_t *ucsi_pdos;
+
+	/* ucsi_set_pdos starts with connector number */
+	ucsi_pdos = (union ucsi_set_pdos_t *)&data_reg[2];
+	/* SRC or SNK PDO */
+	pdo_type = ucsi_pdos->pdo_type;
+	/* Number of PDOs being set */
+	num_pdos = ucsi_pdos->number_of_pdos;
+	/* UCSI_SET_PDOS uses index value */
+	pdo_offset = ucsi_pdos->data_index;
+	/* SET_PDOS is only used to update the lpm PDOs */
+	source = LPM_PDO;
+
+	/* pdo data starts at bit 64 of the message */
+	pdos = (const uint32_t *)&data_reg[8];
+
+	/* Verifiy that length byte is set to number of pdos * 4 */
+	zassert_equal(data_reg[1], num_pdos * sizeof(uint32_t));
+
+	if (emul_pdc_pdo_set_direct(&data->pdo, pdo_type, pdo_offset, num_pdos,
+				    source, pdos)) {
+		LOG_ERR("pdc_pdo_set_direct failed");
+	}
+}
+
 static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 				      uint8_t *data_reg)
 {
 	/* For all UCSI commands, the first 3 data fields are
 	 * the UCSI command (8 bits),
-	 * the data length (8 bits, always 0), and
+	 * the data length (8 bits, always 0),except for SET_PDOS, and
 	 * the connector number (7 bits, must correspond to the same port as
 	 * this data register.
 	 * Subsequent fields vary depending on the command.
@@ -236,7 +269,9 @@ static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 	enum ucsi_command_t cmd = data_reg[0];
 	uint8_t data_len = data_reg[1];
 
-	zassert_equal(data_len, 0);
+	if (cmd != UCSI_SET_PDOS) {
+		zassert_equal(data_len, 0);
+	}
 	/* TODO(b/345292002): Validate connector number field. */
 
 	LOG_INF("UCSI command 0x%X", cmd);
@@ -273,6 +308,9 @@ static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 		tps699x_emul_get_cable_property(data);
 		break;
 	case UCSI_READ_POWER_LEVEL:
+		break;
+	case UCSI_SET_PDOS:
+		tps6699x_emul_ucsi_set_pdos(data, data_reg);
 		break;
 	default:
 		LOG_WRN("tps6699x_emul: Unimplemented UCSI command %#04x", cmd);
@@ -357,6 +395,34 @@ static void tps6699x_emul_handle_disc(struct tps6699x_emul_pdc_data *data,
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 }
 
+static int tps6699x_emul_handle_sbud(struct tps6699x_emul_pdc_data *data,
+				     uint8_t *data_reg)
+{
+	if (!atomic_test_bit(data->features,
+			     EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE)) {
+		/* Command does not exist. */
+		LOG_ERR("This commands requires EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE");
+		data_reg[0] = TASK_REJECTED;
+		return -EINVAL;
+	}
+
+	uint8_t mode = data_reg[0];
+
+	LOG_INF("SET_SBU_MUX_MODE mode=0x%02x", mode);
+
+	/* LCOV_EXCL_START - Internal emul error checking */
+	if (!(mode == 0x00 || mode == 0x01)) {
+		LOG_ERR("SET_SBU_MUX_MODE: invalid mode 0x%02x", mode);
+		return -EINVAL;
+	}
+	/* LCOV_EXCL_STOP */
+
+	data->reg_val[REG_STATUS][3] = mode << 2;
+	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
+
+	return 0;
+}
+
 static void delayable_work_handler(struct k_work *w)
 {
 	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
@@ -393,6 +459,9 @@ static void tps6699x_emul_handle_command(struct tps6699x_emul_pdc_data *data,
 	case COMMAND_TASK_DISC:
 		tps6699x_emul_handle_disc(data, data_reg);
 		break;
+	case COMMAND_TASK_SBUD:
+		tps6699x_emul_handle_sbud(data, data_reg);
+		break;
 	default: {
 		char task_str[5] = {
 			((char *)&task)[0],
@@ -422,6 +491,18 @@ tps6699x_emul_handle_port_control(struct tps6699x_emul_pdc_data *data,
 	if (data->port_control.fr_swap_enabled != pc->fr_swap_enabled) {
 		data->frs_configured = true;
 	}
+
+	/*
+	 * The tps6699x driver doesn't send the UCSI_SET_UOR cmd to control data
+	 * role swaps because this command doesn't allow to specify allowing
+	 * data role swap requests based on the current data role (b/393455660).
+	 * Instead data role swap policy is controlled using the port control
+	 * register. Need to update the uor data struct here so that the current
+	 * emulated data role is reflected correctly.
+	 */
+	data->uor.swap_to_dfp = pc->initiate_swap_to_dfp;
+	data->uor.swap_to_ufp = pc->initiate_swap_to_ufp;
+	data->uor.accept_dr_swap = pc->process_swap_to_ufp;
 
 	data->port_control = *pc;
 }
@@ -1058,6 +1139,74 @@ static int tps6699x_emul_get_frs(const struct emul *target, bool *enabled)
 	return 0;
 }
 
+static int tps6699x_emul_get_data_role_preference(const struct emul *target,
+						  int *swap_to_dfp,
+						  int *swap_to_ufp)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	const union reg_port_control *pdc_port_control =
+		(const union reg_port_control *)data->reg_val[REG_PORT_CONTROL];
+
+	*swap_to_dfp = pdc_port_control->initiate_swap_to_dfp;
+	*swap_to_ufp = pdc_port_control->initiate_swap_to_ufp;
+
+	return 0;
+}
+
+/* LCOV_EXCL_START - Emulator backend functionality only */
+static bool is_feature_flag_supported(enum emul_pdc_feature_flag feature)
+{
+	switch (feature) {
+	case EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE:
+		return true;
+	default:
+		return false;
+	}
+}
+
+static int emul_tps6699x_set_feature_flag(const struct emul *target,
+					  enum emul_pdc_feature_flag feature)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (!is_feature_flag_supported(feature)) {
+		LOG_ERR("Setting invalid feature flag %d", feature);
+		return -ENOTSUP;
+	}
+
+	LOG_INF("Setting feature flag %d", feature);
+	atomic_set_bit(data->features, feature);
+	return 0;
+}
+
+static int emul_tps6699x_clear_feature_flag(const struct emul *target,
+					    enum emul_pdc_feature_flag feature)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (!is_feature_flag_supported(feature)) {
+		LOG_ERR("Clearing invalid feature flag %d", feature);
+		return -ENOTSUP;
+	}
+
+	LOG_INF("Clearing feature flag %d", feature);
+	atomic_clear_bit(data->features, feature);
+	return 0;
+}
+
+static void emul_tps6699x_reset_feature_flags(const struct emul *target)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	atomic_clear(data->features);
+}
+/* LCOV_EXCL_STOP */
+
 static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.reset = emul_tps6699x_reset,
 	.set_response_delay = emul_tps6699x_set_response_delay,
@@ -1087,6 +1236,10 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.set_vconn_sourcing = tps6699x_emul_set_vconn_sourcing,
 	.set_cmd_error = tps6699x_emul_set_cmd_error,
 	.get_frs = tps6699x_emul_get_frs,
+	.get_data_role_preference = tps6699x_emul_get_data_role_preference,
+	.set_feature_flag = emul_tps6699x_set_feature_flag,
+	.clear_feature_flag = emul_tps6699x_clear_feature_flag,
+	.reset_feature_flags = emul_tps6699x_reset_feature_flags,
 };
 
 /* clang-format off */
@@ -1104,7 +1257,7 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 		.pdc_data = { \
 			.irq_gpios = GPIO_DT_SPEC_INST_GET(n, irq_gpios), \
 		}, \
-		.port = USBC_PORT_FROM_DRIVER_NODE(DT_DRV_INST(n), pdc), \
+		.port = USBC_PORT_FROM_PDC_DRIVER_NODE(DT_DRV_INST(n)), \
 	}; \
 	static const struct i2c_common_emul_cfg tps6699x_emul_cfg_##n = { \
 		.dev_label = DT_NODE_FULL_NAME(DT_DRV_INST(n)), \

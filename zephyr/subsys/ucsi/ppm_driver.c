@@ -25,8 +25,6 @@ LOG_MODULE_REGISTER(ppm, LOG_LEVEL_INF);
 
 #define DT_DRV_COMPAT ucsi_ppm
 #define UCSI_7BIT_PORTMASK(p) ((p) & 0x7F)
-#define DT_PPM_DRV DT_INST(0, DT_DRV_COMPAT)
-#define NUM_PORTS DT_PROP_LEN(DT_PPM_DRV, lpm)
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "Exactly one instance of ucsi-ppm should be defined.");
@@ -84,25 +82,17 @@ struct ucsi_commands_t ucsi_commands[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(ucsi_commands) == UCSI_CMD_MAX,
 	     "Not all UCSI commands are handled.");
-
-#define PHANDLE_TO_DEV(node_id, prop, idx) \
-	[idx] = DEVICE_DT_GET(DT_PHANDLE_BY_IDX(node_id, prop, idx)),
-
-struct ppm_config {
-	const struct device *lpm[NUM_PORTS];
-	uint8_t active_port_count;
-};
-static const struct ppm_config ppm_config = {
-	.lpm = { DT_FOREACH_PROP_ELEM(DT_PPM_DRV, lpm, PHANDLE_TO_DEV) },
-	.active_port_count = NUM_PORTS,
-};
-
 struct ppm_data {
 	struct ucsi_ppm_device *ppm_dev;
-	union connector_status_t port_status[NUM_PORTS] __aligned(4);
+	union connector_status_t
+		port_status[CONFIG_USB_PD_PORT_MAX_COUNT] __aligned(4);
 	struct pdc_callback cc_cb;
 	struct pdc_callback ci_cb;
 	union cci_event_t cci_event;
+	/** References to the PDC drivers for each port. */
+	const struct device *lpm[CONFIG_USB_PD_PORT_MAX_COUNT];
+	/** Number of active USB-C ports on this system. */
+	uint8_t active_port_count;
 };
 static struct ppm_data ppm_data;
 
@@ -122,9 +112,9 @@ static struct ucsi_ppm_device *ucsi_ppm_get_ppm_dev(const struct device *device)
 
 static int ucsi_get_active_port_count(const struct device *dev)
 {
-	const struct ppm_config *cfg = (const struct ppm_config *)dev->config;
+	struct ppm_data *data = (struct ppm_data *)dev->data;
 
-	return cfg->active_port_count;
+	return data->active_port_count;
 }
 
 #define SYNC_CMD_TIMEOUT_MSEC 2000
@@ -214,9 +204,8 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 				     struct ucsi_control_t *control,
 				     uint8_t *lpm_data_out)
 {
-	const struct ppm_config *cfg =
-		(const struct ppm_config *)device->config;
 	struct ppm_data *data = (struct ppm_data *)device->data;
+	const struct device *lpm;
 	uint8_t ucsi_command = control->command;
 	uint8_t conn; /* 1:port=0, 2:port=1, ... */
 	uint8_t data_size;
@@ -267,9 +256,20 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 		conn = 1;
 	}
 
-	if (conn == 0 || conn > NUM_PORTS) {
+	/* `conn` is a 1-based port number. C0 = 1, C1 = 2, etc */
+	if (conn == 0 || conn > data->active_port_count) {
 		LOG_ERR("Invalid conn=%d", conn);
 		return -ERANGE;
+	}
+
+	lpm = data->lpm[conn - 1];
+
+	/* Ensure the PDC for this port is fully initialized. */
+	if (!pdc_is_init_done(lpm)) {
+		LOG_ERR("Cannot execute UCSI command 0x%02x: PDC not active (conn=%d)",
+			ucsi_command, conn);
+
+		return -ENOTCONN;
 	}
 
 	/* Some commands should get intercepted and handled directly via the PDC
@@ -291,8 +291,8 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 	timeout = sys_timepoint_calc(K_MSEC(SYNC_CMD_TIMEOUT_MSEC));
 	k_event_clear(&ppm_event, PPM_EVENT_ALL);
 	do {
-		rv = pdc_execute_ucsi_cmd(cfg->lpm[conn - 1], ucsi_command,
-					  data_size, control->command_specific,
+		rv = pdc_execute_ucsi_cmd(lpm, ucsi_command, data_size,
+					  control->command_specific,
 					  lpm_data_out, &data->cc_cb);
 
 		if (rv == 0) {
@@ -400,9 +400,10 @@ static void ppm_ci_cb(const struct device *dev,
 	LOG_DBG("%s: CCI=0x%08x", __func__, cci_event.raw_value);
 
 	if (cci_event.connector_change == 0 ||
-	    cci_event.connector_change > NUM_PORTS) {
+	    cci_event.connector_change > data->active_port_count) {
 		LOG_WRN("%s: Received CI on invalid connector = %u (port_count=%u)",
-			__func__, cci_event.connector_change, NUM_PORTS);
+			__func__, cci_event.connector_change,
+			data->active_port_count);
 		return;
 	}
 
@@ -418,14 +419,36 @@ static struct ucsi_pd_driver ppm_drv = {
 
 test_export_static int ppm_init(const struct device *device)
 {
-	const struct ppm_config *cfg =
-		(const struct ppm_config *)device->config;
 	struct ppm_data *data = (struct ppm_data *)device->data;
 	const struct ucsi_pd_driver *drv = device->api;
 
+	/* Check that referenced PDC (LPM) drivers are ready. If none are ready,
+	 * fail initialization of this driver. The PPM can continue to function
+	 * if only a subset of the PDC drivers are ready.
+	 */
+
+	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
+	if (port_count == 0) {
+		LOG_ERR("No USB-C ports active. Cannot initialize PPM.");
+		return -ENODEV;
+	}
+
+	for (uint8_t i = 0; i < port_count; i++) {
+		data->lpm[i] = pdc_power_mgmt_get_port_pdc_driver(i);
+
+		/* It is pdc_power_mgmt's responsibility to prepare the PDC
+		 * drivers. The PPM initializes after pdc_power_mgmt. */
+		__ASSERT(device_is_ready(data->lpm[i]),
+			 "PDC driver for C%u is not ready or NULL", i);
+	}
+
+	LOG_INF("PPM driver found %u USB-C ports", port_count);
+	data->active_port_count = port_count;
+
 	/* Initialize the PPM. */
 	data->ppm_dev = ppm_data_init(drv, device, data->port_status,
-				      cfg->active_port_count);
+				      data->active_port_count);
 	if (!data->ppm_dev) {
 		LOG_ERR("Failed to open PPM");
 		return -ENODEV;
@@ -437,9 +460,7 @@ test_export_static int ppm_init(const struct device *device)
 	 * returned by the PDM.
 	 */
 	data->ci_cb.handler = ppm_ci_cb;
-	for (int i = 0; i < cfg->active_port_count; i++) {
-		pdc_power_mgmt_register_ppm_callback(&data->ci_cb);
-	}
+	pdc_power_mgmt_register_ppm_callback(&data->ci_cb);
 
 	data->cc_cb.handler = ppm_cc_cb;
 
@@ -447,5 +468,14 @@ test_export_static int ppm_init(const struct device *device)
 
 	return 0;
 }
-DEVICE_DT_INST_DEFINE(0, &ppm_init, NULL, &ppm_data, &ppm_config, POST_KERNEL,
-		      CONFIG_PDC_POWER_MGMT_INIT_PRIORITY, &ppm_drv);
+DEVICE_DT_INST_DEFINE(0, &ppm_init, NULL, &ppm_data, NULL, POST_KERNEL,
+		      CONFIG_UCSI_PPM_INIT_PRIORITY, &ppm_drv);
+
+/* Enforce initialization order constraints. The PPM driver depends on
+ * pdc_power_mgmt drivers having finished initialization to ensure the
+ * underlying PDC device(s) have been fully configured and are stable.
+ */
+
+BUILD_ASSERT(CONFIG_UCSI_PPM_INIT_PRIORITY >
+		     CONFIG_PDC_POWER_MGMT_INIT_PRIORITY,
+	     "PPM must init after pdc_power_mgmt");

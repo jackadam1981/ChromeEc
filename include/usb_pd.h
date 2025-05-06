@@ -31,7 +31,7 @@ extern "C" {
  */
 #if defined(HAS_TASK_PD_C0) && defined(CONFIG_USB_PD_PORT_MAX_COUNT)
 #define PD_PORT_TO_TASK_ID(port) (TASK_ID_PD_C0 + (port))
-#define TASK_ID_TO_PD_PORT(id) ((id)-TASK_ID_PD_C0)
+#define TASK_ID_TO_PD_PORT(id) ((id) - TASK_ID_PD_C0)
 #else
 #define PD_PORT_TO_TASK_ID(port) -1 /* stub task ID */
 #define TASK_ID_TO_PD_PORT(id) 0

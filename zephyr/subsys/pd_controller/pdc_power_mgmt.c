@@ -71,6 +71,11 @@ LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
 #define PDC_CMD_TIMEOUT_MS 2000
 
 /**
+ * @brief Time to wait for typec only devices (Non PD) to settle
+ */
+#define TYPEC_ONLY_SINK_DEBOUNCE_TIME_US (1000 * USEC_PER_MSEC)
+
+/**
  * @brief maximum number of times to try and send a command, or wait for a
  * public API command to execute (Time is 2s)
  *
@@ -170,6 +175,10 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_FRS,
 	/** CMD_PDC_GET_ATTENTION_VDO */
 	CMD_PDC_GET_ATTENTION_VDO,
+	/** CMD_PDC_GET_SBU_MUX_MODE */
+	CMD_PDC_GET_SBU_MUX_MODE,
+	/** CMD_PDC_SET_SBU_MUX_MODE */
+	CMD_PDC_SET_SBU_MUX_MODE,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -224,17 +233,16 @@ struct send_cmd_t {
 enum snk_attached_local_state_t {
 	/** SNK_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SNK_ATTACHED_GET_CONNECTOR_CAPABILITY,
-	/** SNK_ATTACHED_GET_CABLE_PROPERTY */
-	SNK_ATTACHED_GET_CABLE_PROPERTY,
 	/** SNK_ATTACHED_SET_DR_SWAP_POLICY */
 	SNK_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SNK_ATTACHED_SET_PR_SWAP_POLICY */
 	SNK_ATTACHED_SET_PR_SWAP_POLICY,
-	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_DISABLE_FRS */
 	SNK_ATTACHED_DISABLE_FRS,
 	/** SNK_ATTACHED_GET_PDOS */
 	SNK_ATTACHED_GET_PDOS,
+	/** SNK_ATTACHED_READ_POWER_LEVEL */
+	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_GET_VDO */
 	SNK_ATTACHED_GET_VDO,
 	/** SNK_ATTACHED_GET_RDO */
@@ -247,6 +255,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_START_CHARGING,
 	/** SNK_ATTACHED_GET_SINK_PDO */
 	SNK_ATTACHED_GET_SINK_PDO,
+	/** SNK_ATTACHED_GET_CABLE_PROPERTY */
+	SNK_ATTACHED_GET_CABLE_PROPERTY,
 	/** SNK_ATTACHED_RUN */
 	SNK_ATTACHED_RUN,
 };
@@ -259,8 +269,6 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_SET_SINK_PATH_OFF,
 	/** SRC_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SRC_ATTACHED_GET_CONNECTOR_CAPABILITY,
-	/** SRC_ATTACHED_GET_CABLE_PROPERTY */
-	SRC_ATTACHED_GET_CABLE_PROPERTY,
 	/** SRC_ATTACHED_SET_DR_SWAP_POLICY */
 	SRC_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SRC_ATTACHED_SET_PR_SWAP_POLICY */
@@ -269,6 +277,8 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_READ_POWER_LEVEL,
 	/** SRC_ATTACHED_GET_VDO */
 	SRC_ATTACHED_GET_VDO,
+	/** SRC_ATTACHED_GET_CABLE_PROPERTY */
+	SRC_ATTACHED_GET_CABLE_PROPERTY,
 	/** SRC_ATTACHED_RUN */
 	SRC_ATTACHED_RUN,
 };
@@ -392,6 +402,8 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_LPM_PPM_INFO] = "PDC_GET_LPM_PPM_INFO",
 	[CMD_PDC_SET_FRS] = "PDC_SET_FRS",
 	[CMD_PDC_GET_ATTENTION_VDO] = "PDC_GET_ATTENTION_VDO",
+	[CMD_PDC_GET_SBU_MUX_MODE] = "PDC_GET_SBU_MUX_MODE",
+	[CMD_PDC_SET_SBU_MUX_MODE] = "PDC_SET_SBU_MUX_MODE",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -410,6 +422,7 @@ static const char *const pdc_state_names[] = {
 	[PDC_SRC_TYPEC_ONLY] = "TypeCSrcAttached",
 	[PDC_SNK_TYPEC_ONLY] = "TypeCSnkAttached",
 	[PDC_SUSPENDED] = "Suspended",
+	[PDC_DISABLED] = "Disabled",
 	[PDC_INVALID] = "PDC Invalid",
 };
 
@@ -731,6 +744,8 @@ struct pdc_port_t {
 	/** SET_DRP variable used with CMD_SET_DRP */
 	enum drp_mode_t drp;
 	enum drp_mode_t drp_read;
+	/** Used by CMD_PDC_SET_SBU_MUX_MODE / CMD_PDC_GET_SBU_MUX_MODE */
+	enum pdc_sbu_mux_mode sbu_mux_mode;
 	/** Callback */
 	struct pdc_callback cc_cb;
 	struct pdc_callback ci_cb;
@@ -870,6 +885,7 @@ static bool should_suspend(struct pdc_port_t *port)
 
 	/* No need to transition */
 	case PDC_SUSPENDED:
+	case PDC_DISABLED:
 		return false;
 
 	case PDC_INVALID:
@@ -932,7 +948,7 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 			K_THREAD_STACK_SIZEOF(my_stack_area_##inst),         \
 			pdc_thread, (void *)dev, 0, 0,                       \
 			CONFIG_PDC_POWER_MGMT_THREAD_PRIORTY, K_ESSENTIAL,   \
-			K_NO_WAIT);                                          \
+			K_FOREVER);                                          \
 		k_thread_name_set(data->thread,                              \
 				  "PDC Power Mgmt" STRINGIFY(inst));         \
 	}                                                                    \
@@ -940,7 +956,9 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 	static struct pdc_data_t data_##inst = {                             \
 		.port.dev = DEVICE_DT_INST_GET(inst), /* Initial policy read \
 							 from device tree */ \
-		.port.pdc = DEVICE_DT_GET(DT_INST_PROP(inst, pdc)),          \
+		.port.pdc = COND_CODE_1(                                     \
+			CONFIG_PDC_RUNTIME_PORT_CONFIG, (NULL),              \
+			DEVICE_DT_GET(DT_INST_PROP_BY_IDX(inst, pdc, 0))),   \
 		.port.una_policy.tcc = DT_STRING_TOKEN(                      \
 			DT_INST_PROP(inst, policy), unattached_rp_value),    \
 		.port.una_policy.cc_mode = DT_STRING_TOKEN(                  \
@@ -961,6 +979,15 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 			      CONFIG_PDC_POWER_MGMT_INIT_PRIORITY, NULL);
 
 DT_INST_FOREACH_STATUS_OKAY(PDC_SUBSYS_INIT)
+
+/* Enforce initialization order constraints. This driver depends on the PDC
+ * driver(s) and also charge manager (the latter is enforced by
+ * `common/charge_manager.c`)
+ */
+
+BUILD_ASSERT(CONFIG_PDC_POWER_MGMT_INIT_PRIORITY >
+		     CONFIG_PDC_DRIVER_INIT_PRIORITY,
+	     "pdc_power_mgmt must init after PDC drivers");
 
 #define PDC_DATA_INIT(inst) [USBC_PORT_NEW(DT_DRV_INST(inst))] = &data_##inst,
 
@@ -1108,7 +1135,7 @@ static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd)
 	/* Don't send if still in init state */
 	enum pdc_state_t s = get_pdc_state(port);
 
-	if (s == PDC_INIT || s == PDC_SUSPENDED) {
+	if (s == PDC_INIT || s == PDC_SUSPENDED || s == PDC_DISABLED) {
 		return -ENOTCONN;
 	}
 
@@ -1894,13 +1921,8 @@ static void pdc_src_attached_run(void *obj)
 		return;
 	case SRC_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->src_attached_local_state =
-			SRC_ATTACHED_GET_CABLE_PROPERTY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
-	case SRC_ATTACHED_GET_CABLE_PROPERTY:
-		port->src_attached_local_state =
 			SRC_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SRC_ATTACHED_SET_DR_SWAP_POLICY:
 		port->src_attached_local_state =
@@ -1929,8 +1951,13 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SRC_ATTACHED_GET_VDO:
-		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		port->src_attached_local_state =
+			SRC_ATTACHED_GET_CABLE_PROPERTY;
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
+		return;
+	case SRC_ATTACHED_GET_CABLE_PROPERTY:
+		port->src_attached_local_state = SRC_ATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
 		return;
 	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
@@ -1972,6 +1999,92 @@ static void pdc_snk_attached_entry(void *obj)
 	}
 }
 
+static void pdc_print_pdo_info(int port, struct pdc_pdos_t *pdo)
+{
+	uint32_t max_ma, max_mv, max_mw, unused;
+
+	for (int i = 0; i < PDO_NUM; i++) {
+		pd_extract_pdo_power_unclamped(pdo->pdos[i], &max_ma, &max_mv,
+					       &unused);
+		max_mw = max_ma * max_mv / 1000;
+		LOG_INF("C%d: PDO%d: %08x, %d %d %d", port, i + 1, pdo->pdos[i],
+			max_mv, max_ma, max_mw);
+	}
+}
+
+static bool pdc_snk_policy_is_pdo_same(struct pdc_port_t *port,
+				       uint32_t selected_pdo, int pdo_index)
+{
+	return (port->snk_policy.pdo == selected_pdo &&
+		port->snk_policy.pdo_index == (pdo_index + 1));
+}
+
+static void
+pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
+			      struct pdc_snk_attached_policy_t *snk_policy)
+{
+	uint32_t max_ma, max_mv, max_mw, max_mw_pdo, unused;
+	uint32_t flags = RDO_COMM_CAP;
+
+	/* Get the unclamped PDO voltage and current to determine
+	 * whether we need to set the capability mismatch bit if
+	 * less power is offered than our operating requirement.
+	 */
+	pd_extract_pdo_power_unclamped(snk_policy->pdo, &max_ma, &max_mv,
+				       &unused);
+	max_mw_pdo = max_ma * max_mv / 1000;
+	if (max_mw_pdo < pdc_max_operating_power) {
+		flags |= RDO_CAP_MISMATCH;
+	}
+
+	/* Extract Current, Voltage, and calculate Power. Current is
+	 * clamped to the board maximum here so that the RDO and charge
+	 * manager are given the correct board operating current.
+	 */
+	pd_extract_pdo_power(snk_policy->pdo, &max_ma, &max_mv, &unused);
+	max_mw = max_ma * max_mv / 1000;
+
+	/* Set RDO to send */
+	if ((snk_policy->pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+		snk_policy->rdo_to_send =
+			RDO_BATT(snk_policy->pdo_index, max_mw, max_mw, flags);
+	} else {
+		/* Fixed or variable RDO. */
+		snk_policy->rdo_to_send =
+			RDO_FIXED(snk_policy->pdo_index, max_ma, max_ma, flags);
+	}
+
+	LOG_INF("Send RDO: %d", RDO_POS(snk_policy->rdo_to_send));
+	queue_internal_cmd(port, CMD_PDC_SET_RDO);
+}
+
+static void pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
+{
+	const struct pdc_config_t *const config = port->dev->config;
+	int pdo_index = 0;
+	uint32_t selected_pdo;
+
+	pdc_print_pdo_info(config->connector_num, &port->snk_policy.src);
+
+	pdo_index = pd_select_best_pdo(PDO_NUM, port->snk_policy.src.pdos,
+				       pdc_max_request_mv, &selected_pdo);
+
+	if (pdc_snk_policy_is_pdo_same(port, selected_pdo, pdo_index)) {
+		/* Selected PDO didn't change - no need to send RDO */
+		LOG_INF("C%d: Retaining PDO[%d]=0x%08X", config->connector_num,
+			pdo_index, selected_pdo);
+		return;
+	}
+
+	/* Store the selected PDO. Convert the PDO number to 1-based
+	 * indexing.
+	 */
+	port->snk_policy.pdo = port->snk_policy.src.pdos[pdo_index];
+	port->snk_policy.pdo_index = pdo_index + 1;
+
+	pdc_snk_attached_send_set_rdo(port, &port->snk_policy);
+}
+
 /**
  * @brief Run sink attached state.
  */
@@ -1979,10 +2092,7 @@ static void pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
-	uint32_t max_ma, max_mv, max_mw, max_mw_pdo, unused;
-	uint32_t flags;
-	int pdo_index = 0;
-	uint32_t selected_pdo;
+	uint32_t max_ma, max_mv, max_mw;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2025,13 +2135,8 @@ static void pdc_snk_attached_run(void *obj)
 	switch (port->snk_attached_local_state) {
 	case SNK_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->snk_attached_local_state =
-			SNK_ATTACHED_GET_CABLE_PROPERTY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
-	case SNK_ATTACHED_GET_CABLE_PROPERTY:
-		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
 		port->snk_attached_local_state =
@@ -2043,7 +2148,7 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return;
 	case SNK_ATTACHED_SET_PR_SWAP_POLICY:
-		port->snk_attached_local_state = SNK_ATTACHED_READ_POWER_LEVEL;
+		port->snk_attached_local_state = SNK_ATTACHED_DISABLE_FRS;
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){
 			.accept_pr_swap =
@@ -2054,10 +2159,6 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_UPDATE_ALLOW_PR_SWAP);
-		return;
-	case SNK_ATTACHED_READ_POWER_LEVEL:
-		port->snk_attached_local_state = SNK_ATTACHED_DISABLE_FRS;
-		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SNK_ATTACHED_DISABLE_FRS:
 		/* Always disable FRS by default. The source policy manager
@@ -2097,70 +2198,12 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
 		return;
 	case SNK_ATTACHED_EVALUATE_PDOS:
+		pdc_snk_attached_evaluate_pdos(port);
+		port->snk_attached_local_state = SNK_ATTACHED_READ_POWER_LEVEL;
+		return;
+	case SNK_ATTACHED_READ_POWER_LEVEL:
 		port->snk_attached_local_state = SNK_ATTACHED_START_CHARGING;
-		flags = RDO_COMM_CAP;
-
-		for (int i = 0; i < PDO_NUM; i++) {
-			pd_extract_pdo_power_unclamped(
-				port->snk_policy.src.pdos[i], &max_ma, &max_mv,
-				&unused);
-			max_mw = max_ma * max_mv / 1000;
-			LOG_INF("PDO%d: %08x, %d %d %d", i + 1,
-				port->snk_policy.src.pdos[i], max_mv, max_ma,
-				max_mw);
-		}
-
-		pdo_index =
-			pd_select_best_pdo(PDO_NUM, port->snk_policy.src.pdos,
-					   pdc_max_request_mv, &selected_pdo);
-
-		if (port->snk_policy.pdo == selected_pdo &&
-		    port->snk_policy.pdo_index == (pdo_index + 1)) {
-			/* Selected PDO didn't change - no need to send RDO */
-			LOG_INF("C%d: Retaining PDO[%d]=0x%08X",
-				config->connector_num, pdo_index, selected_pdo);
-			return;
-		}
-
-		/* Store the selected PDO. Convert the PDO number to 1-based
-		 * indexing.
-		 */
-		port->snk_policy.pdo = port->snk_policy.src.pdos[pdo_index];
-		port->snk_policy.pdo_index = pdo_index + 1;
-
-		/* Get the unclamped PDO voltage and current to determine
-		 * whether we need to set the capability mismatch bit if
-		 * less power is offered than our operating requirement.
-		 */
-		pd_extract_pdo_power_unclamped(selected_pdo, &max_ma, &max_mv,
-					       &unused);
-		max_mw_pdo = max_ma * max_mv / 1000;
-		if (max_mw_pdo < pdc_max_operating_power) {
-			flags |= RDO_CAP_MISMATCH;
-		}
-
-		/* Extract Current, Voltage, and calculate Power. Current is
-		 * clamped to the board maximum here so that the RDO and charge
-		 * manager are given the correct board operating current.
-		 */
-		pd_extract_pdo_power(selected_pdo, &max_ma, &max_mv, &unused);
-		max_mw = max_ma * max_mv / 1000;
-
-		/* Set RDO to send */
-		if ((port->snk_policy.pdo & PDO_TYPE_MASK) ==
-		    PDO_TYPE_BATTERY) {
-			port->snk_policy.rdo_to_send =
-				RDO_BATT(port->snk_policy.pdo_index, max_mw,
-					 max_mw, flags);
-		} else {
-			/* Fixed or variable RDO. */
-			port->snk_policy.rdo_to_send =
-				RDO_FIXED(port->snk_policy.pdo_index, max_ma,
-					  max_ma, flags);
-		}
-
-		LOG_INF("Send RDO: %d", RDO_POS(port->snk_policy.rdo_to_send));
-		queue_internal_cmd(port, CMD_PDC_SET_RDO);
+		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return;
 	case SNK_ATTACHED_START_CHARGING:
 		max_ma = MIN(PDO_FIXED_CURRENT(port->snk_policy.pdo),
@@ -2209,7 +2252,8 @@ static void pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state =
 				SNK_ATTACHED_GET_SINK_PDO;
 		} else {
-			port->snk_attached_local_state = SNK_ATTACHED_RUN;
+			port->snk_attached_local_state =
+				SNK_ATTACHED_GET_CABLE_PROPERTY;
 		}
 
 		/* Test if battery should be charged from this port */
@@ -2218,7 +2262,8 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return;
 	case SNK_ATTACHED_GET_SINK_PDO:
-		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		port->snk_attached_local_state =
+			SNK_ATTACHED_GET_CABLE_PROPERTY;
 
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS)) {
 			/*
@@ -2241,7 +2286,10 @@ static void pdc_snk_attached_run(void *obj)
 		}
 		/* If !CONFIG_PLATFORM_EC_USB_PD_FRS, fallthrough */
 		__fallthrough;
-
+	case SNK_ATTACHED_GET_CABLE_PROPERTY:
+		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		return;
 	case SNK_ATTACHED_RUN:
 		/* Hard Reset could disable Sink FET. Re-enable it */
 		if (atomic_get(&port->hard_reset_sent)) {
@@ -2410,6 +2458,12 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		rv = pdc_get_lpm_ppm_info(port->pdc, port->lpm_ppm_info);
+		break;
+	case CMD_PDC_GET_SBU_MUX_MODE:
+		rv = pdc_get_sbu_mux_mode(port->pdc, &port->sbu_mux_mode);
+		break;
+	case CMD_PDC_SET_SBU_MUX_MODE:
+		rv = pdc_set_sbu_mux_mode(port->pdc, port->sbu_mux_mode);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
@@ -2641,7 +2695,8 @@ static void pdc_src_typec_only_entry(void *obj)
 		 * k_timer_start call always resets the timer status.
 		 */
 		k_timer_start(&port->typec_only_timer,
-			      K_USEC(PD_T_SINK_WAIT_CAP), K_NO_WAIT);
+			      K_USEC(TYPEC_ONLY_SINK_DEBOUNCE_TIME_US),
+			      K_NO_WAIT);
 
 		if (IS_ENABLED(CONFIG_PDC_POWER_MGMT_USB_MUX)) {
 			usb_mux_set(
@@ -2913,9 +2968,11 @@ static void clear_hpd_wake_watch(int port);
  */
 static void pdc_apply_power_state_policy(struct k_work *work)
 {
+	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
 		LOG_INF("PD: AP is ON: apply 'startup' followed by 'resume'");
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_startup_policy_1(i);
 			/*
 			 * Setting the dual role state clears the policy flag
@@ -2930,13 +2987,13 @@ static void pdc_apply_power_state_policy(struct k_work *work)
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
 		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_suspend_policy_1(i);
 			set_hpd_wake_watch(i);
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		LOG_INF("PD: AP is OFF: apply 'shutdown' policy");
-		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_shutdown_policy_1(i);
 		}
 	}
@@ -2952,7 +3009,9 @@ static K_WORK_DELAYABLE_DEFINE(pdc_apply_power_state_policy_work,
  */
 static bool pdc_all_ports_ready(void)
 {
-	for (uint8_t i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+	int num_ports = pdc_power_mgmt_get_usb_pd_port_count();
+
+	for (uint8_t i = 0; i < num_ports; i++) {
 		if (!pdc_is_init_done(pdc_data[i]->port.pdc)) {
 			return false;
 		}
@@ -3061,7 +3120,20 @@ static const struct smf_state pdc_states[] = {
 						NULL, NULL),
 	[PDC_SUSPENDED] = SMF_CREATE_STATE(pdc_suspended_entry,
 					   pdc_suspended_run, NULL, NULL, NULL),
+	[PDC_DISABLED] = SMF_CREATE_STATE(NULL, NULL, NULL, NULL, NULL),
 };
+
+/**
+ * @brief Used to validate port numbers passed into the public API functions
+ *
+ *        Do not use for internal checks since port counts are not known until
+ *        all pdc_power_mgmt devices initialize.
+ */
+static bool is_pdc_port_valid(int port)
+{
+	return (port >= 0) && (port < pdc_power_mgmt_get_usb_pd_port_count()) &&
+	       (get_pdc_state(&pdc_data[port]->port) != PDC_DISABLED);
+}
 
 /**
  * @brief CCI event handler call back
@@ -3148,13 +3220,42 @@ static int pdc_subsys_init(const struct device *dev)
 	const struct pdc_config_t *const config = dev->config;
 	int rv;
 
-	/* Make sure PD Controller is ready */
-	if (!device_is_ready(port->pdc)) {
-		LOG_ERR("PDC not ready");
-		k_oops();
-		/* Unreachable */
-		return -ENODEV;
+	const struct device *pdc =
+		pdc_power_mgmt_get_port_pdc_driver(config->connector_num);
+
+#ifdef CONFIG_PDC_RUNTIME_PORT_CONFIG
+	/* Runtime-defined PDC configuration. Need to initialize this PDC
+	 * driver here manually. */
+
+	uint8_t active_port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
+	if (config->connector_num >= active_port_count || pdc == NULL) {
+		LOG_ERR("C%d: Port disabled per board configuration "
+			"(total active ports: %u)",
+			config->connector_num, active_port_count);
+
+		goto disable_port;
 	}
+
+	/* Try initializing this driver */
+	rv = device_init(pdc);
+	if (rv) {
+		LOG_ERR("C%d: Cannot initialize PDC: %d (PDC %p %s). "
+			"Disabling this port",
+			config->connector_num, rv, pdc,
+			pdc->name ? pdc->name : "<no name>");
+		goto disable_port;
+	}
+#else /* !defined(CONFIG_PDC_RUNTIME_PORT_CONFIG) */
+	/* Static PDC configuration. Make sure the assigned PDC is ready. */
+
+	if (!device_is_ready(pdc)) {
+		LOG_ERR("C%d: PDC is not ready", config->connector_num);
+		goto disable_port;
+	}
+#endif /* !defined(CONFIG_PDC_RUNTIME_PORT_CONFIG) */
+
+	port->pdc = pdc;
 
 	init_port_variables(port, false);
 	port->drp = port->una_policy.drp_mode;
@@ -3187,6 +3288,33 @@ static int pdc_subsys_init(const struct device *dev)
 	config->create_thread(dev);
 
 	return 0;
+
+disable_port:
+	/* Prevent sending public API commands. Note: we never create a
+	 * driver thread in this code path, so nothing will happen for
+	 * this port. */
+	smf_set_initial(&port->ctx, &pdc_states[PDC_DISABLED]);
+
+	return -ENODEV;
+}
+
+/**
+ * @brief Start the PDC subsystem and the PDC driver threads
+ */
+void pdc_subsys_start(void)
+{
+	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+		if (!is_pdc_port_valid(port)) {
+			/* Skip over inactive ports */
+			continue;
+		}
+
+		/* Start the PDC driver threads */
+		pdc_start_thread(pdc_data[port]->port.pdc);
+
+		/* Start the PDC power management threads */
+		k_thread_start(pdc_data[port]->thread);
+	}
 }
 
 /**
@@ -3209,6 +3337,10 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 	case CMD_PDC_GET_DRP:
 		__fallthrough;
 	case CMD_PDC_GET_LPM_PPM_INFO:
+		__fallthrough;
+	case CMD_PDC_GET_SBU_MUX_MODE:
+		__fallthrough;
+	case CMD_PDC_SET_SBU_MUX_MODE:
 		return true;
 	default:
 		return false;
@@ -3284,11 +3416,6 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	return 0;
 }
 
-bool is_pdc_port_valid(int port)
-{
-	return (port >= 0) && (port < CONFIG_USB_PD_PORT_MAX_COUNT);
-}
-
 /**
  * PDC Power Management Public API
  */
@@ -3319,10 +3446,40 @@ test_mockable bool pdc_power_mgmt_is_connected(int port)
 	return pdc_data[port]->port.attached_state != UNATTACHED_STATE;
 }
 
+#ifndef CONFIG_PDC_RUNTIME_PORT_CONFIG
+/*
+ * When static port config is used (normal), each named-usbc-port must have
+ * only one PDC phandle entry, and it must not be marked zephyr,deferred-init.
+ */
+#define CHECK_NAMED_USBC_PORT(inst)                                  \
+	BUILD_ASSERT(1 == DT_INST_PROP_LEN(inst, pdc));              \
+	BUILD_ASSERT(0 == DT_PROP(DT_INST_PROP_BY_IDX(inst, pdc, 0), \
+				  zephyr_deferred_init));
+
+#ifndef CONFIG_ZTEST
+/* Only enforce this on real builds so tests can try some failure scenarios */
+DT_INST_FOREACH_STATUS_OKAY(CHECK_NAMED_USBC_PORT)
+#endif /* !defined(CONFIG_ZTEST) */
+
+/* Find the associated PDC driver using static devicetree information */
+const struct device *pdc_power_mgmt_get_port_pdc_driver(int port)
+{
+	if (port < 0 || port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
+		return NULL;
+	}
+
+	/* This array is statically initialized and should always have the
+	 * correct data */
+	return pdc_data[port]->port.pdc;
+}
+
+/* Note: this is defined in pdc_runtime_port_config.c when
+ * CONFIG_PDC_RUNTIME_PORT_CONFIG is enabled */
 uint8_t pdc_power_mgmt_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
+#endif /* !defined(CONFIG_PDC_RUNTIME_PORT_CONFIG) */
 
 int pdc_power_mgmt_set_active_charge_port(int charge_port)
 {
@@ -3341,7 +3498,7 @@ int pdc_power_mgmt_set_active_charge_port(int charge_port)
 	 * charge port and adjust their sink paths accordingly.
 	 */
 
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		atomic_set_bit(pdc_data[i]->port.snk_policy.flags,
 			       SNK_POLICY_SET_ACTIVE_CHARGE_PORT);
 	}
@@ -3366,8 +3523,10 @@ uint8_t pdc_power_mgmt_get_task_state(int port)
 {
 	enum pdc_state_t indicated_state, actual_state;
 
-	if (!is_pdc_port_valid(port)) {
-		return PDC_UNATTACHED;
+	if (port < 0 || port >= CONFIG_USB_PD_PORT_MAX_COUNT) {
+		/* Ports outside of this range are never valid and would exceed
+		 * the bounds of `pdc_data`. */
+		return PDC_INVALID;
 	}
 
 	actual_state = get_pdc_state(&pdc_data[port]->port);
@@ -3740,6 +3899,11 @@ test_mockable const char *pdc_power_mgmt_get_task_state_name(int port)
 test_mockable void pdc_power_mgmt_set_dual_role(int port,
 						enum pd_dual_role_states state)
 {
+	if (!is_pdc_port_valid(port)) {
+		LOG_ERR("%s called with bad port C%d.", __func__, port);
+		return;
+	}
+
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
 
 	LOG_INF("C%d: pdc_power_mgmt_set_dual_role: set role to %d", port,
@@ -4006,13 +4170,14 @@ test_mockable int pdc_power_mgmt_get_lpm_ppm_info(int port,
 	return 0;
 }
 
-int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info)
+int pdc_power_mgmt_get_hw_config(int port,
+				 struct pdc_hw_config_t *pdc_hw_config)
 {
 	/* This operation is handled synchronously within the driver based on
 	 * compile-time data. No need to block or go through the state machine.
 	 */
 
-	return pdc_get_bus_info(pdc_data[port]->port.pdc, pdc_bus_info);
+	return pdc_get_hw_config(pdc_data[port]->port.pdc, pdc_hw_config);
 }
 
 int pdc_power_mgmt_get_rev(int port, enum tcpci_msg_type type)
@@ -4245,6 +4410,8 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 	int status = 0;
 	static bool current_comms_status = true;
 
+	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
 	if (enable_comms) {
 		if (current_comms_status == true) {
 			/* Comms are already enabled */
@@ -4252,7 +4419,12 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		}
 
 		/* Resume and reset the driver layer */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
+			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
+				/* Ignore disabled ports */
+				continue;
+			}
+
 			ret = pdc_set_comms_state(pdc_data[p]->port.pdc, true);
 			if (ret) {
 				LOG_ERR("Cannot resume port C%d driver: %d", p,
@@ -4264,7 +4436,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		/* Release each PDC state machine. A reset is performed when
 		 * exiting the suspended state.
 		 */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			atomic_set(&pdc_data[p]->port.suspend, 0);
 		}
 
@@ -4283,12 +4455,17 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		/* Request each port's PDC state machine to enter the suspend
 		 * state.
 		 */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
 			atomic_set(&pdc_data[p]->port.suspend, 1);
 		}
 
 		/* Wait for each PDC state machine to enter suspended state */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
+			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
+				/* Ignore disabled ports */
+				continue;
+			}
+
 			ret = WAIT_FOR(get_pdc_state(&pdc_data[p]->port) ==
 					       PDC_SUSPENDED,
 				       SUSPEND_TIMEOUT_USEC,
@@ -4302,7 +4479,12 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 		}
 
 		/* Suspend the driver layer */
-		for (int p = 0; p < CONFIG_USB_PD_PORT_MAX_COUNT; p++) {
+		for (int p = 0; p < port_count; p++) {
+			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
+				/* Ignore disabled ports */
+				continue;
+			}
+
 			ret = pdc_set_comms_state(pdc_data[p]->port.pdc, false);
 
 			if (ret) {
@@ -4607,7 +4789,11 @@ int pdc_power_mgmt_register_ppm_callback(const struct pdc_callback *callback)
 	struct pdc_port_t *pdc;
 	int port;
 
-	for (port = 0; port < pdc_power_mgmt_get_usb_pd_port_count(); ++port) {
+	/* The callback can safely be applied to all port structs, even inactive
+	 * ones. Use the CONFIG_USB_PD_PORT_MAX_COUNT constant instead of
+	 * pdc_power_mgmt_get_usb_pd_port_count() to make this function safe to
+	 * call before initialization is complete. */
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
 		pdc = &pdc_data[port]->port;
 		pdc->ppm_ci_cb = callback;
 	}
@@ -4621,7 +4807,11 @@ int pdc_power_mgmt_register_board_callback(enum pdc_power_mgmt_board_cb_t type,
 	struct pdc_port_t *pdc;
 	int port;
 
-	for (port = 0; port < pdc_power_mgmt_get_usb_pd_port_count(); ++port) {
+	/* The callback can safely be applied to all port structs, even inactive
+	 * ones. Use the CONFIG_USB_PD_PORT_MAX_COUNT constant instead of
+	 * pdc_power_mgmt_get_usb_pd_port_count() to make this function safe to
+	 * call before initialization is complete. */
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
 		pdc = &pdc_data[port]->port;
 		switch (type) {
 		case PDC_BOARD_CB_UNATTACH:
@@ -4665,6 +4855,67 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 
 	return rv;
 }
+
+int pdc_power_mgmt_get_ccd_port(void)
+{
+	struct pdc_hw_config_t pdc_hw_config;
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		const struct pdc_config_t *cfg = pdc_data[i]->port.dev->config;
+		pdc_power_mgmt_get_hw_config(i, &pdc_hw_config);
+
+		if (pdc_hw_config.ccd) {
+			return cfg->connector_num;
+		}
+	}
+
+	return -1;
+}
+
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+test_mockable int pdc_power_mgmt_get_sbu_mux_mode(enum pdc_sbu_mux_mode *mode,
+						  int *port_num)
+{
+	if (mode == NULL) {
+		return -EINVAL;
+	}
+
+	int port = pdc_power_mgmt_get_ccd_port();
+
+	if (port < 0) {
+		LOG_ERR("%s: No CCD port specified in devicetree", __func__);
+		return -ENOTSUP;
+	}
+
+	if (port_num) {
+		*port_num = port;
+	}
+
+	/* Block until command completes */
+	if (public_api_block(port, CMD_PDC_GET_SBU_MUX_MODE)) {
+		return -EIO;
+	}
+
+	*mode = pdc_data[port]->port.sbu_mux_mode;
+	return 0;
+}
+
+test_mockable int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode)
+{
+	int port = pdc_power_mgmt_get_ccd_port();
+
+	if (port < 0) {
+		LOG_ERR("%s: No CCD port specified in devicetree", __func__);
+		return -ENOTSUP;
+	}
+
+	pdc_data[port]->port.sbu_mux_mode = mode;
+
+	LOG_INF("C%d: Setting SBU mux mode to %d", port, mode);
+
+	/* Block until command completes */
+	return public_api_block(port, CMD_PDC_SET_SBU_MUX_MODE);
+}
+#endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
 #ifdef CONFIG_ZTEST
 

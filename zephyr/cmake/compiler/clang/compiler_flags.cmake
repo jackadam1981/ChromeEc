@@ -28,3 +28,22 @@ set_compiler_property(PROPERTY no_position_independent
                       -fno-PIC
                       -fno-PIE
 )
+
+# b/401022418 Newer versions of Clang produce some warnings. Until we have
+# fixes for those, turn the warnings off.
+set_compiler_property(APPEND PROPERTY warning_base
+  -Wno-main
+  -Wno-unknown-warning-option
+  -Wno-arm-interrupt-vfp-clobber
+  -Wno-extra
+)
+
+if("${ARCH}" STREQUAL "riscv")
+  # TODO(b/409614368): The ChromeOS LLVM RISC-V baremetal toolchain is using the
+  # wrong C++ header search path.
+  set_property(TARGET compiler-cpp APPEND PROPERTY required "-nostdinc++")
+  set_property(TARGET compiler-cpp APPEND PROPERTY required "-I/usr/${CROSS_COMPILE_TARGET}/usr/include/c++/v1/")
+  # TODO(b/410086538): _GNU_SOURCE needs to be defined for libc++ built with
+  # newlib as C library.
+  set_property(TARGET compiler-cpp APPEND PROPERTY required "-D_GNU_SOURCE")
+endif()

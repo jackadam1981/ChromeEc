@@ -396,7 +396,8 @@ stub_send_response_callback(struct host_cmd_handler_args *args)
 #define BUILD_HOST_COMMAND(CMD, VERSION, RESPONSE, PARAMS)          \
 	{                                                           \
 		.send_response = stub_send_response_callback,       \
-		.command = (CMD), .version = (VERSION),             \
+		.command = (CMD),                                   \
+		.version = (VERSION),                               \
 		COND_CODE_0(IS_EMPTY(PARAMS),                       \
 			    (.params = &(PARAMS),                   \
 			     .params_size = sizeof(PARAMS)),        \

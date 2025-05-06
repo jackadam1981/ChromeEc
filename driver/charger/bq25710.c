@@ -117,7 +117,7 @@
 	 CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC)
 #define CHARGING_CURRENT_TO_REG(CUR) \
 	((CUR) * CONFIG_CHARGER_BQ25710_SENSE_RESISTOR / DEFAULT_SENSE_RESISTOR)
-#define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV)-32)
+#define VMIN_AP_VSYS_TH2_TO_REG(DV) ((DV) - 32)
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
