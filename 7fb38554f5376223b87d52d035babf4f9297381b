@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300450c1_9fd655f1",
+        "filename": "zephyr/program/brox/brtk/rtk_generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-06T20:47:37Z",
+      "side": 1,
+      "message": "Delete - this comment - the file is not auto-generated for Realtek.  I also suggest renaming to `rtk_gpio.dtsi` to avoid confusion.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 45
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b10b5796_376f63e3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/brtk/rtk_generated.dtsi",
+              "range": {
+                "startLine": 4,
+                "startChar": 0,
+                "endLine": 6,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7fb38554f5376223b87d52d035babf4f9297381b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
