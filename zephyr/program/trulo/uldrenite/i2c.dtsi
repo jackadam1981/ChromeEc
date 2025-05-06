@@ -14,8 +14,12 @@
 
 		i2c_ec_i2c_sensor_r: ec_i2c_sensor_r {
 			i2c-port = <&i2c1_0>;
-			enum-names = "I2C_PORT_SENSOR",
-						 "I2C_PORT_MP2964";
+			enum-names = "I2C_PORT_SENSOR";
+		};
+
+		i2c_ec_i2c_mp2964: ec_i2c_mp2964 {
+			i2c-port = <&i2c5_0>;
+			enum-names = "I2C_PORT_MP2964";
 		};
 	};
 };
@@ -38,8 +42,8 @@
 	};
 };
 
-&i2c1_0 {
-	label = "I2C_SENSOR";
+&i2c5_0 {
+	label = "I2C_PORT_MP2964";
 	clock-frequency = <I2C_BITRATE_FAST>;
 	pmic_mp2964: pmic_mp2964@20 {
 			compatible = "mps,mp2964";
