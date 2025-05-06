@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e2fa17_9fd719b0",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-06T23:31:48Z",
+      "side": 1,
+      "message": "It seems redundant to list the modules here as well as at the end of message.",
+      "range": {
+        "startLine": 393,
+        "startChar": 43,
+        "endLine": 393,
+        "endChar": 53
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c777d7b9_540d8843",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/update_release_branch.py",
+              "range": {
+                "startLine": 393,
+                "startChar": 0,
+                "endLine": 394,
+                "endChar": 0
+              },
+              "replacement": "            \"Defaults to all known modules if not specified. \"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "124ac7b0cd8857f7ddcb549c710c1a088c182c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
