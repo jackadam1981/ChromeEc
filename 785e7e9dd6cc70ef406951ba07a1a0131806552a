@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5769adbf_b41c9351",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-06T17:29:27Z",
+      "side": 1,
+      "message": "I don\u0027t see this referenced elsewhere in this CL. Do we need to enable this struct member?",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 44
+      },
+      "revId": "785e7e9dd6cc70ef406951ba07a1a0131806552a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
