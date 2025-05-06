@@ -75,6 +75,10 @@
 #   name: "infra/python/wheels/ruamel_yaml_clib/${vpython_platform}"
 #   version: "version:0.2.8"
 # >
+# wheel: <
+#   name: "infra/python/wheels/unidiff-py2_py3"
+#   version: "version:0.7.5"
+# >
 # [VPYTHON:END]
 
 import unittest
@@ -88,7 +92,7 @@ except ImportError:
 import zephyr_check_compliance
 
 
-# pylint:disable=protected-access,no-self-use
+# pylint:disable=protected-access
 
 
 class TestZephyrCheckCompliance(unittest.TestCase):
