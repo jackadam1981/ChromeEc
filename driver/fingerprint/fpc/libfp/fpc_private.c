@@ -20,6 +20,7 @@
 #include "timer.h"
 #include "util.h"
 
+#include <errno.h>
 #include <stddef.h>
 #include <string.h>
 
@@ -76,6 +77,27 @@ enum fpc_cmd {
 	FPC_CMD_SOFT_RESET = 0xF8,
 	FPC_CMD_HW_ID = 0xFC,
 };
+
+enum fpc_capture_type
+convert_fp_capture_type_to_fpc_capture_type(enum fp_capture_type mode)
+{
+	switch (mode) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+		return FPC_CAPTURE_VENDOR_FORMAT;
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return FPC_CAPTURE_SIMPLE_IMAGE;
+	case FP_CAPTURE_PATTERN0:
+		return FPC_CAPTURE_PATTERN0;
+	case FP_CAPTURE_PATTERN1:
+		return FPC_CAPTURE_PATTERN1;
+	case FP_CAPTURE_QUALITY_TEST:
+		return FPC_CAPTURE_QUALITY_TEST;
+	case FP_CAPTURE_RESET_TEST:
+		return FPC_CAPTURE_RESET_TEST;
+	default:
+		return FPC_CAPTURE_TYPE_INVALID;
+	}
+}
 
 /* Maximum size of a sensor command SPI transfer */
 #define MAX_CMD_SPI_TRANSFER_SIZE 3
@@ -340,14 +362,16 @@ int fp_maintenance(void)
 	return fpc_fp_maintenance(&errors);
 }
 
-int fp_acquire_image_with_mode(uint8_t *image_data, int mode)
+int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type)
 {
-	return fp_sensor_acquire_image_with_mode(image_data, mode);
-}
+	enum fpc_capture_type rc =
+		convert_fp_capture_type_to_fpc_capture_type(capture_type);
 
-int fp_acquire_image(uint8_t *image_data)
-{
-	return fp_sensor_acquire_image(image_data);
+	if (rc == FPC_CAPTURE_TYPE_INVALID) {
+		CPRINTS("Unsupported capture_type %d provided", capture_type);
+		return -EINVAL;
+	}
+	return fp_sensor_acquire_image_with_mode(image_data, rc);
 }
 
 enum finger_state fp_finger_status(void)

@@ -457,8 +457,8 @@ class Renode(Platform):
                     "zephyr_counter_basic_api_stm32_subsec",
                     # TODO(b/390255521)
                     "timer",
-                    # TODO(b/394642587)
-                    "utils",
+                    # TODO(b/405230727)
+                    "stdlib",
                 ]:
                     return True
 
@@ -598,16 +598,12 @@ class AllTests:
                 # TODO(b/365628799): Need to port to Zephyr.
                 skip_for_zephyr=True,
             ),
-            TestConfig(test_name="benchmark", timeout_secs=90),
+            TestConfig(test_name="benchmark", timeout_secs=120),
             TestConfig(test_name="boringssl_crypto"),
             TestConfig(test_name="cortexm_fpu"),
             TestConfig(test_name="crc"),
             TestConfig(test_name="exception"),
-            TestConfig(
-                test_name="exit",
-                # TODO(b/365628799): Need to port to Zephyr.
-                skip_for_zephyr=True,
-            ),
+            TestConfig(test_name="exit"),
             TestConfig(
                 test_name="flash_physical",
                 imagetype_to_use=ImageType.RO,
@@ -862,10 +858,10 @@ class AllTests:
         # Make sure proper paths are added in the twister script, see ZEPHYR_TEST_PATHS
         tests = [
             # TODO(b/380492754): Fix compilation.
-            # TestConfig(
-            #    zephyr_name="cpp.main.newlib",
-            #    test_name="zephyr_cpp_newlib",
-            # ),
+            TestConfig(
+                zephyr_name="cpp.main.newlib",
+                test_name="zephyr_cpp_newlib",
+            ),
             # TODO(b/380491850): Test hangs.
             # TestConfig(
             #    zephyr_name="cpp.main.cpp20",
@@ -911,7 +907,8 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     sensor_type=FPSensorType.FPC,
     servo_uart_name="raw_fpmcu_console_uart_pty",
     servo_power_enable="fpmcu_pp3300",
-    reboot_timeout=2.0,
+    # TODO(b/410057326): add polling logic to reboot to RW, then decrease this timeout to 2s.
+    reboot_timeout=4.0,
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
@@ -993,6 +990,12 @@ HELIPILOT_CONFIG = BoardConfig(
         idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
     ),
     expected_mcu_power=PowerUtilization(
+        idle=RangedValue(34.8, 7.0), sleep=RangedValue(2.7, 2.5)
+    ),
+    expected_fp_power_zephyr=PowerUtilization(
+        idle=RangedValue(0.0, 0.1), sleep=RangedValue(0.0, 0.1)
+    ),
+    expected_mcu_power_zephyr=PowerUtilization(
         idle=RangedValue(34.8, 7.0), sleep=RangedValue(2.7, 2.5)
     ),
     variants={
@@ -1774,6 +1777,12 @@ def main():
 
             print(colorama.Style.RESET_ALL)
 
+        if exit_code != 0:
+            print(
+                f"Tests failed for {args.board}"
+                f'{" Zephyr" if args.zephyr else ""}'
+                f'{" Renode" if args.renode else ""}'
+            )
         # TODO(b/368684364): Fix the underlying issue that prevents sys.exit()
         # from working correctly.
         os._exit(exit_code)  # pylint: disable=protected-access

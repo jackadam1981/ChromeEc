@@ -98,7 +98,7 @@ static void lid_init(void)
 	if (raw_lid_open())
 		debounced_lid_open = 1;
 
-		/* Enable interrupts, now that we've initialized */
+	/* Enable interrupts, now that we've initialized */
 #define LID_GPIO(gpio) gpio_enable_interrupt(gpio);
 	CONFIG_LID_SWITCH_GPIO_LIST
 #undef LID_GPIO

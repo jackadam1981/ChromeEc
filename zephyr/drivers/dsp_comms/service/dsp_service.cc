@@ -15,6 +15,8 @@
 
 #include <cstddef>
 
+#include "ap_power/ap_power.h"
+#include "body_detection.h"
 #include "cros/dsp/service/cros_transport.hh"
 #include "cros/dsp/service/driver.hh"
 #include "cros_board_info.h"
@@ -49,7 +51,21 @@ Driver driver(DT_INST_REG_ADDR(0),
 
 }  // namespace cros::dsp::service
 
-int init_driver() { return cros::dsp::service::driver.Init().ok() ? 0 : -1; }
+static void dsp_service_startup(struct ap_power_ev_callback* cb,
+                                struct ap_power_ev_data) {
+  /* Only run this once */
+  ap_power_ev_remove_callback(cb);
+
+  cros::dsp::service::driver.Init().IgnoreError();
+}
+
+static int init_driver() {
+  static struct ap_power_ev_callback cb;
+
+  ap_power_ev_init_callback(&cb, dsp_service_startup, AP_POWER_STARTUP);
+  ap_power_ev_add_callback(&cb);
+  return 0;
+}
 
 SYS_INIT(init_driver, APPLICATION, 50);
 
@@ -228,10 +244,27 @@ bool cros::dsp::service::Driver::HandleDecodedRequest() {
       SetNotebookMode(pending_service_request_.request
                           .notify_notebook_mode_change.new_mode);
       return false;
+#ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_BODY_DETECTION
+    case cros_dsp_comms_EcService_notify_body_detection_change_tag:
+      LOG_DBG("GOT: NotifyBodyDetectionChangeRequest");
+      body_detect_change_state(
+          pending_service_request_.request.notify_body_detection_change.on_body
+              ? BODY_DETECTION_ON_BODY
+              : BODY_DETECTION_OFF_BODY,
+          false);
+      return false;
+#endif
     case cros_dsp_comms_EcService_get_cbi_flags_tag:
       LOG_DBG("Scheduling get_cbi_flags_work");
       k_work_submit(&get_cbi_flags_work_);
       return true;
+    case cros_dsp_comms_EcService_reset_connection_tag:
+      LOG_DBG("Resetting connection");
+      // The connection is reset so flush all the pending messages from the old
+      // session.
+      while (transport_.ReadNextMessage().status().ok()) {
+      }
+      return false;
     default:
       LOG_WRN("Unsupported request type");
       cros::dsp::service::driver.transport_.SetStatusBit(
@@ -267,11 +300,21 @@ pw::Status cros::dsp::service::Driver::Init() {
       int rc = gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_ON);
       LOG_DBG("asserting GPIO (%d)", rc);
     } else {
-      gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_OFF);
+      int rc = gpio_pin_set_dt(&this->interrupt_, CROS_DSP_GPIO_OFF);
+      LOG_DBG("deasserting GPIO (%d)", rc);
     }
   });
 
   LOG_INF("DSP Initialization rc=%d", rc);
+  if (rc == 0) {
+    // Start off in notebook mode until DSP has a chance to calculate lid angle
+    if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+      SetNotebookMode(cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK);
+    }
+    /* Poll the GMR states */
+    dsp_service_hook_lid_change();
+    dsp_service_hook_tablet_mode_change();
+  }
 
   return pw::OkStatus();
 }

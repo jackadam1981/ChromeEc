@@ -93,7 +93,13 @@ static inline void print_tablet_mode(void)
 static void notify_tablet_mode_change(void)
 {
 	print_tablet_mode();
-	hook_notify(HOOK_TABLET_MODE_CHANGE);
+	/*
+	 * Ensure the system is fully awake before calling hook_notify for
+	 * ISH-enabled sensors to prevent HECI errors and I2C errors ISH ->EC.
+	 * See b:408162696
+	 */
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_HOST_INTERFACE_HECI))
+		hook_notify(HOOK_TABLET_MODE_CHANGE);
 
 	/*
 	 * When tablet mode changes, send an event to ACPI to retrieve
@@ -101,6 +107,9 @@ static void notify_tablet_mode_change(void)
 	 */
 	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOST_INTERFACE_HECI))
+		hook_notify(HOOK_TABLET_MODE_CHANGE);
 }
 
 void tablet_set_mode(int mode, uint32_t trigger)
@@ -336,6 +345,8 @@ static enum ec_status tablet_mode_command(struct host_cmd_handler_args *args)
 	case TABLET_MODE_FORCE_CLAMSHELL:
 		tablet_mode = 0;
 		tablet_mode_forced = true;
+		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
+			lid_angle_peripheral_enable(1);
 		break;
 	default:
 		CPRINTS("Invalid EC_CMD_SET_TABLET_MODE parameter: %d",
