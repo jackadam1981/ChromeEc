@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb618cac_e8e965c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-07T17:04:58Z",
+      "side": 1,
+      "message": "I would split the CL in 2: one fix the unit tests, the other fix the issue when there are no motion sensors.",
+      "revId": "37096808f44881315eb3687924fb56165fe79ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
