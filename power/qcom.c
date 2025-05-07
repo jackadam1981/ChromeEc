@@ -1094,6 +1094,8 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 
 		if (shutdown_from_on) {
 			CPRINTS("power off %d", shutdown_from_on);
+			if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP))
+				return POWER_S5G3;
 			return POWER_S3S5;
 		}
 
@@ -1200,6 +1202,28 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
+		if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP)) {
+			cancel_power_button_timer();
+
+			/* Call hooks before we drop power rails */
+			hook_notify(HOOK_CHIPSET_SHUTDOWN);
+
+			power_off_seq(shutdown_from_on);
+			CPRINTS("power shutdown complete");
+
+			/* Call hooks after we drop power rails */
+			hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
+
+			shutdown_from_on = 0;
+
+			/*
+			 * Wait forever for the release of the power button;
+			 * otherwise, this power button press will then trigger
+			 * a power-on in G3.
+			 */
+			power_button_wait_for_release(-1);
+			power_button_was_pressed = 0;
+		}
 		return POWER_G3;
 
 	default:
