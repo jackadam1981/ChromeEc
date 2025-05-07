@@ -83,6 +83,11 @@ class JobClient:
             "JAVA_HOME",
             "JDK_HOME",
             "JAVAC",
+            # This hook enables b/403315166 to work. Please see that bug for the
+            # design doc and motivation pertaining to this. The 'implicit flags'
+            # should just be targeted `-Wno-error=` which follow-up bugs get
+            # filed for automatically.
+            "CROSTC_ADD_IMPLICIT_CFLAGS_FOR",
         ]:
             if keep_env in os.environ:
                 env.setdefault(keep_env, os.environ[keep_env])
