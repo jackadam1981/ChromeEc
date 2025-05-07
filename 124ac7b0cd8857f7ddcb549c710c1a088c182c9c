@@ -40,6 +40,72 @@
       ],
       "revId": "124ac7b0cd8857f7ddcb549c710c1a088c182c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b065b0da_edc7ab25",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-07T23:24:20Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f9e2fa17_9fd719b0",
+      "range": {
+        "startLine": 393,
+        "startChar": 43,
+        "endLine": 393,
+        "endChar": 53
+      },
+      "revId": "124ac7b0cd8857f7ddcb549c710c1a088c182c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994b6a36_15316b5d",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-07T23:24:20Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f9e2fa17_9fd719b0",
+      "range": {
+        "startLine": 393,
+        "startChar": 43,
+        "endLine": 393,
+        "endChar": 53
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9762948d_e0bf1ec3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/update_release_branch.py",
+              "range": {
+                "startLine": 393,
+                "startChar": 0,
+                "endLine": 394,
+                "endChar": 0
+              },
+              "replacement": "            \"Defaults to all known modules if not specified. \"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "124ac7b0cd8857f7ddcb549c710c1a088c182c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
