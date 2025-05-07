@@ -22,6 +22,23 @@
       },
       "revId": "ebb7d91973fb7f05414f290cc8aad70d26f4915e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fe8f5e_400b6898",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-05-07T01:47:50Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8715585662463320273) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.vell.hw.fingerprint-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "ebb7d91973fb7f05414f290cc8aad70d26f4915e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
