@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc894037_da799c35",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1709,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-07T19:03:25Z",
+      "side": 0,
+      "message": "Are these getting initialized appropriately elsewhere?",
+      "range": {
+        "startLine": 1708,
+        "startChar": 0,
+        "endLine": 1709,
+        "endChar": 43
+      },
+      "revId": "caf77650038fec7a13273d6ff1af0f08c74614f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
