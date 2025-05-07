@@ -75,25 +75,16 @@ def register_mchp_project(
 # For use on SKU1 and SKU2
 register_npcx9_project(
     project_name="ocelot_nuvoton",
-    extra_kconfig_files=[
-        here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
-    ],
 )
 
 # For use on SKU3
 register_it8xxx2_project(
     project_name="ocelot_ite",
-    extra_kconfig_files=[
-        here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
-    ],
 )
 
 # For use on SKU4
 register_mchp_project(
     project_name="ocelot_microchip",
-    extra_kconfig_files=[
-        here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
-    ],
 )
 
 
