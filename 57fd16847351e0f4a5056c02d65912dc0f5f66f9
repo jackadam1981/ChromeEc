@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae023b0_a6d72070",
+        "filename": "board/cr50/tpm2/trusty_storage_mac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2025-05-07T17:57:34Z",
+      "side": 1,
+      "message": "Yes, refactored to use `g_*` const variables for this.",
+      "parentUuid": "11d2f8b0_e7eb881a",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "57fd16847351e0f4a5056c02d65912dc0f5f66f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa0c07fa_ffd3b964",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9202a66e_b08c408a",
+        "filename": "board/cr50/tpm2/trusty_storage_mac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2025-05-07T17:57:34Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "fa0c07fa_ffd3b964",
+      "revId": "57fd16847351e0f4a5056c02d65912dc0f5f66f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33714baf_84be763e",
@@ -72,6 +114,30 @@
       "writtenOn": "2025-05-06T19:11:19Z",
       "side": 1,
       "message": "use VENDOR_RC_BOGUS_ARGS",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "57fd16847351e0f4a5056c02d65912dc0f5f66f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497e7f06_39b41259",
+        "filename": "board/cr50/tpm2/trusty_storage_mac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2025-05-07T17:57:34Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "33714baf_84be763e",
       "range": {
         "startLine": 141,
         "startChar": 9,
