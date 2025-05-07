@@ -67,7 +67,7 @@
 			gpios = <&gpio6 3 (GPIO_INPUT)>;
 		};
 		gpio_ec_en_pp5000: ec_en_pp5000 {
-			gpios = <&gpio4 0 (GPIO_OUTPUT)>;
+			gpios = <&gpio4 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 			enum-name = "GPIO_EN_PP5000";
 		};
 		gpio_kybd_int: kybd_int {
