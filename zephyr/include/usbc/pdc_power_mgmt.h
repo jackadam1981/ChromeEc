@@ -16,6 +16,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include <zephyr/device.h>
 #include <zephyr/sys/atomic.h>
 
 #include <drivers/pdc.h>
@@ -45,8 +46,10 @@ enum pdc_state_t {
 	PDC_SRC_TYPEC_ONLY,
 	/** PDC_SNK_TYPEC_ONLY */
 	PDC_SNK_TYPEC_ONLY,
-	/** Stop operation */
+	/** Pause operation temporarily (e.g. during FW update) */
 	PDC_SUSPENDED,
+	/** Permanently disabled (e.g. PDC driver not present) */
+	PDC_DISABLED,
 
 	/** Initial value, a placeholder state before entering init state */
 	PDC_INVALID,
@@ -66,6 +69,11 @@ enum pdc_power_mgmt_board_cb_t {
 	/** State count. Always leave as last item. */
 	PDC_BOARD_CB_COUNT,
 };
+
+/**
+ * @brief Start the PDC subsystem and the PDC driver threads
+ */
+void pdc_subsys_start(void);
 
 /**
  * @brief Get the state of the port partner connection
@@ -344,14 +352,15 @@ void pdc_power_mgmt_request_data_swap(int port);
 int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info, bool live);
 
 /**
- * @brief Query bus info from PDC used to access the chip
+ * @brief Query hw config from PDC used to access the chip
  *
  * @param port USB-C port number
- * @param pdc_info Output struct for bus info
+ * @param pdc_hw_config Output struct for hw config
  *
  * @retval 0 if successful or error code
  */
-int pdc_power_mgmt_get_bus_info(int port, struct pdc_bus_info_t *pdc_bus_info);
+int pdc_power_mgmt_get_hw_config(int port,
+				 struct pdc_hw_config_t *pdc_hw_config);
 
 /**
  * @brief Get current PD Revision
@@ -710,5 +719,42 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port);
  */
 int pdc_power_mgmt_get_connector_status_for_ppm(
 	int port, union connector_status_t *connector_status);
+
+/**
+ * @brief Find an active port with CCD enabled based on devicetree properties
+ *
+ * @return port number if found
+ * @return -1 if no marked CCD port found
+ */
+int pdc_power_mgmt_get_ccd_port(void);
+
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+/**
+ * @brief Reads the current SBU mux operating mode. This targets the port with
+ *        the `ccd` property in the devicetree.
+ *
+ * @param mode Output pointer for current mode to be written to
+ * @param port_num Optional output pointer to get the number of the CCD port
+ * @return 0 on success, or negative error code
+ */
+int pdc_power_mgmt_get_sbu_mux_mode(enum pdc_sbu_mux_mode *mode, int *port_num);
+
+/**
+ * @brief Sets the SBU mux operating mode. This targets the port with the `ccd`
+ *        property in the devicetree.
+ *
+ * @param mode Output pointer for current mode to be written to
+ * @return 0 on success, or negative error code
+ */
+int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode);
+#endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
+
+/**
+ * @brief Get a handle to the PDC (LPM) driver serving a given port
+ *
+ * @return NULL if port is disabled or invalid
+ * @return Device pointer on success
+ */
+const struct device *pdc_power_mgmt_get_port_pdc_driver(int port);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

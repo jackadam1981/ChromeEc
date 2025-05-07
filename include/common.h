@@ -207,7 +207,9 @@
  * Attribute that will generate a compiler warning if the return value is not
  * used.
  */
+#ifndef __warn_unused_result
 #define __warn_unused_result __attribute__((warn_unused_result))
+#endif
 
 /**
  * @brief Attribute used to annotate intentional fallthrough between switch
@@ -227,7 +229,9 @@
  * See https://clang.llvm.org/docs/AttributeReference.html#noreturn-noreturn and
  * https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-noreturn-function-attribute.
  */
+#ifndef __noreturn
 #define __noreturn __attribute__((noreturn))
+#endif
 
 /*
  * Macros for combining bytes into larger integers. _LE and _BE signify little
@@ -250,7 +254,7 @@
 
 /* There isn't really a better place for this */
 #define C_TO_K(temp_c) ((temp_c) + 273)
-#define K_TO_C(temp_c) ((temp_c)-273)
+#define K_TO_C(temp_c) ((temp_c) - 273)
 /*
  * round_divide is part of math_utils, so you may need to import math_utils.h
  * and link math_utils.o if you use the following macros.
@@ -259,7 +263,7 @@
 	(round_divide(CELSIUS_TO_MILLI_KELVIN(temp_c), 100))
 #define DECI_KELVIN_TO_CELSIUS(temp_dk) \
 	(MILLI_KELVIN_TO_CELSIUS((temp_dk) * 100))
-#define MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk) ((temp_mk)-273150)
+#define MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk) ((temp_mk) - 273150)
 #define MILLI_CELSIUS_TO_MILLI_KELVIN(temp_mc) ((temp_mc) + 273150)
 #define MILLI_KELVIN_TO_KELVIN(temp_mk) (round_divide((temp_mk), 1000))
 #define KELVIN_TO_MILLI_KELVIN(temp_k) ((temp_k) * 1000)
