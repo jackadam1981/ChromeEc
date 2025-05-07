@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeffeb77_f0ff2794",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-05-07T08:55:11Z",
+      "side": 1,
+      "message": "Yes, it uses patch 9, which is the same as patch 10.",
+      "parentUuid": "e434745b_7c8c64f2",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "15f8eafec1a5c3f13b54b98b4f73bfbc36dcdb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96413b3_9bfad0d7",
@@ -101,6 +125,30 @@
           ]
         }
       ],
+      "revId": "15f8eafec1a5c3f13b54b98b4f73bfbc36dcdb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55b7a29_3c0b41ab",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-05-07T08:55:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e96413b3_9bfad0d7",
+      "range": {
+        "startLine": 385,
+        "startChar": 57,
+        "endLine": 385,
+        "endChar": 60
+      },
       "revId": "15f8eafec1a5c3f13b54b98b4f73bfbc36dcdb7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
