@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce4da08_d5e1601a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-05-07T16:13:17Z",
+      "side": 1,
+      "message": "please address the nits, otherwise LGTM.",
+      "revId": "6c36934d91aaca8de3eeb03bb677f4672a17285a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b22959f_a8879fda",
@@ -32,6 +49,29 @@
           ]
         }
       ],
+      "revId": "6c36934d91aaca8de3eeb03bb677f4672a17285a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "169294f0_c4b2a226",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-05-07T16:13:17Z",
+      "side": 1,
+      "message": "Minor nit, but we should capitalize UCSI",
+      "range": {
+        "startLine": 1904,
+        "startChar": 37,
+        "endLine": 1904,
+        "endChar": 41
+      },
       "revId": "6c36934d91aaca8de3eeb03bb677f4672a17285a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
