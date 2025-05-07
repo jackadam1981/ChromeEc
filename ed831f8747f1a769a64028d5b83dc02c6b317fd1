@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da288b0a_51ea390c",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-07T20:17:28Z",
+      "side": 1,
+      "message": "The signal source CBLPWR# is active low but through a FET to invert it to active high. So don\u0027t need any change here.",
+      "parentUuid": "953a457e_21f16ef4",
+      "range": {
+        "startLine": 246,
+        "startChar": 14,
+        "endLine": 246,
+        "endChar": 27
+      },
+      "revId": "ed831f8747f1a769a64028d5b83dc02c6b317fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4625c62_f3193db4",
@@ -127,6 +151,30 @@
       "side": 1,
       "message": "Sure, @ljung@google.com @brianfields@google.com please confirm.",
       "parentUuid": "4d09e32e_05a99407",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 1
+      },
+      "revId": "ed831f8747f1a769a64028d5b83dc02c6b317fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1921af_f9b4a980",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-07T20:17:28Z",
+      "side": 1,
+      "message": "Confirmed NC.",
+      "parentUuid": "716bec77_50ebec96",
       "range": {
         "startLine": 247,
         "startChar": 0,
