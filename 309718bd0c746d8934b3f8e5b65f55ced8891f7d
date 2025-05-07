@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9f5439_55ce6f06",
+        "filename": "zephyr/program/trulo/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-07T17:59:29Z",
+      "side": 1,
+      "message": "This file is created using the arbitrage tool and should not be edited directly. It reflects the trulo reference schematics. If those have changed, then we can regenerate this file accordingly. If this change is being made in hw for uldrenite, then the i2c modicfications should be done in an uldrenite specific overlay.",
+      "fixSuggestions": [
+        {
+          "fixId": "3a810122_c323a2cd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/generated.dtsi",
+              "range": {
+                "startLine": 271,
+                "startChar": 0,
+                "endLine": 277,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/trulo/generated.dtsi",
+              "range": {
+                "startLine": 305,
+                "startChar": 0,
+                "endLine": 309,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "309718bd0c746d8934b3f8e5b65f55ced8891f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb0c21d_821dc165",
+        "filename": "zephyr/program/trulo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-07T17:59:29Z",
+      "side": 1,
+      "message": "Unless this reflects the trulo paper reference schematics, this change should be captured in a uldrenite specific overlay.",
+      "fixSuggestions": [
+        {
+          "fixId": "97fb2f18_2207eb30",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/i2c.dtsi",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "309718bd0c746d8934b3f8e5b65f55ced8891f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
