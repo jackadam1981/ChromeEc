@@ -901,6 +901,14 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5:
+		if (!shutdown_from_on)
+			shutdown_from_on = check_for_power_off_event();
+
+		if (shutdown_from_on) {
+			CPRINTS("power off %d", shutdown_from_on);
+			return POWER_S5G3;
+		}
+
 		return POWER_S5S3;
 
 	case POWER_S5S3:
@@ -911,7 +919,6 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 			shutdown_from_on = check_for_power_off_event();
 
 		if (shutdown_from_on) {
-			CPRINTS("power off %d", shutdown_from_on);
 			return POWER_S3S5;
 		}
 
@@ -996,6 +1003,9 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S5:
+		return POWER_S5;
+
+	case POWER_S5G3:
 		cancel_power_button_timer();
 
 		/* Call hooks before we drop power rails */
@@ -1010,14 +1020,12 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		shutdown_from_on = 0;
 
 		/*
-		 * Wait forever for the release of the power button; otherwise,
-		 * this power button press will then trigger a power-on in S5.
+		 * Wait forever for the release of the power button;
+		 * otherwise, this power button press will then trigger
+		 * a power-on in G3.
 		 */
 		power_button_wait_for_release(-1);
 		power_button_was_pressed = 0;
-		return POWER_S5;
-
-	case POWER_S5G3:
 		return POWER_G3;
 
 	default:
