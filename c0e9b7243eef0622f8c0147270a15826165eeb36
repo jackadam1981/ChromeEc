@@ -22,6 +22,23 @@
       },
       "revId": "c0e9b7243eef0622f8c0147270a15826165eeb36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1211dd_70b83bce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-05-07T01:12:31Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8715596929851954177) is being automatically retried for the following reasons:\n- Some child builders are now retryable:brya-bazel-lite-cq, brya-cq, build-cq-code-coverage-brya-cq, build-cq-rust-code-coverage-brya-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "c0e9b7243eef0622f8c0147270a15826165eeb36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
