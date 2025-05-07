@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809db672_a3cfd5e8",
+        "filename": "zephyr/program/ocelot/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-07T05:09:08Z",
+      "side": 1,
+      "message": "This I2C config can vary between boards, I recommend merging this file in to `ocelot_microchip/i2c.dtsi`",
+      "revId": "ea06fdfd57c5eb64f61ced8ca424bc006259ac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2095562_ee06dcb9",
+        "filename": "zephyr/program/ocelot/ocelot_ite/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-07T05:09:08Z",
+      "side": 1,
+      "message": "Why is this off for ITE and implicitly left enabled for the nuvoton board?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "ea06fdfd57c5eb64f61ced8ca424bc006259ac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
