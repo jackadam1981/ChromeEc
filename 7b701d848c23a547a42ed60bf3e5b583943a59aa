@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03729a5_57f3023c",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-07T18:16:39Z",
+      "side": 1,
+      "message": "not used.",
+      "range": {
+        "startLine": 329,
+        "startChar": 55,
+        "endLine": 329,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d9754eb0_1b75fd0b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "driver/charger/bq25710.c",
+              "range": {
+                "startLine": 329,
+                "startChar": 0,
+                "endLine": 330,
+                "endChar": 0
+              },
+              "replacement": "static void bq257x0_init_input_charge_current_senesing(int *reg)\n"
+            },
+            {
+              "path": "driver/charger/bq25710.c",
+              "range": {
+                "startLine": 363,
+                "startChar": 0,
+                "endLine": 364,
+                "endChar": 0
+              },
+              "replacement": "\tbq257x0_init_input_charge_current_senesing(\u0026reg);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7b701d848c23a547a42ed60bf3e5b583943a59aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
