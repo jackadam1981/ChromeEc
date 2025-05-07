@@ -81,7 +81,7 @@ class FakeJobserver(zmake.jobserver.GNUMakeJobServer):
         super().__init__(jobs=2)
         self.fnames = fnames
 
-    def get_job(self):  # pylint: disable=no-self-use
+    def get_job(self):
         """Fake implementation of get_job(), which returns a real JobHandle()"""
         return zmake.jobserver.JobHandle(unittest.mock.Mock())
 
@@ -96,11 +96,19 @@ class FakeJobserver(zmake.jobserver.GNUMakeJobServer):
                 new_cmd = ["cat", filename]
                 break
         else:
+<<<<<<< HEAD   (dbe2c6 servo:  Update owners to use the hwtools OWNERS group.)
             raise Exception(f'No pattern matched "{" ".join(cmd)}"')
         kwargs["env"] = {}
         return super().popen(new_cmd, **kwargs)
+||||||| BASE
+            raise Exception(f'No pattern matched "{" ".join(cmd)}"')
+        return super().popen(new_cmd, env=env, **kwargs)
+=======
+            raise ValueError(f'No pattern matched "{" ".join(cmd)}"')
+        return super().popen(new_cmd, env=env, **kwargs)
+>>>>>>> BRANCH (e8cc01 body_detection: Handle runtime disabling of motionsense)
 
-    def env(self):  # pylint: disable=no-self-use
+    def env(self):
         """Runs test commands with an empty environment for simpler logs."""
         return {}
 
@@ -176,12 +184,12 @@ class TestFilters:
         # TODO: Remove sets and figure out how to check the lines are in the
         # right order.
         expected = {
-            "Configuring fakeproject:rw.",
-            "Configuring fakeproject:ro.",
-            f"Building fakeproject in {tmp_path}/ec/build/zephyr/fakeproject.",
-            "Building fakeproject:ro: /usr/bin/ninja -C "
+            "[fakeproject:rw] Configuring.",
+            "[fakeproject:ro] Configuring.",
+            f"[fakeproject] Building in {tmp_path}/ec/build/zephyr/fakeproject.",
+            "[fakeproject:ro] Building: /usr/bin/ninja -C "
             f"{tmp_path / 'ec/build/zephyr/fakeproject/build'}-ro",
-            "Building fakeproject:rw: /usr/bin/ninja -C "
+            "[fakeproject:rw] Building: /usr/bin/ninja -C "
             f"{tmp_path / 'ec/build/zephyr/fakeproject/build'}-rw",
         }
         for suffix in ["ro", "rw"]:
@@ -189,7 +197,7 @@ class TestFilters:
                 get_test_filepath(f"{suffix}_INFO"), encoding="utf-8"
             ) as file:
                 for line in file:
-                    expected.add(f"[fakeproject:{suffix}]{line.strip()}")
+                    expected.add(f"[fakeproject:{suffix}] {line.strip()}")
         # This produces an easy-to-read diff if there is a difference
         assert expected == set(recs)
 
@@ -230,6 +238,7 @@ class TestFilters:
         )
 
         dt_errs = [rec for rec in recs if "adc" in rec]
+        assert dt_errs
         assert (
             "devicetree error: 'adc' is marked as required" in list(dt_errs)[0]
         )
