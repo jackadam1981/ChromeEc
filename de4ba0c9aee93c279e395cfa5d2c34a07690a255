@@ -34,6 +34,60 @@
       ],
       "revId": "de4ba0c9aee93c279e395cfa5d2c34a07690a255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920462a1_576208e4",
+        "filename": "zephyr/program/trulo/pujjolo/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-05-07T08:10:19Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "74ce36cc_cc3b7655",
+      "fixSuggestions": [
+        {
+          "fixId": "f6ae1eb5_041c5dfa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjolo/gpio.dtsi",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "de4ba0c9aee93c279e395cfa5d2c34a07690a255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a3fe09_ce5bcd24",
+        "filename": "zephyr/program/trulo/pujjolo/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-05-07T08:10:19Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "74ce36cc_cc3b7655",
+      "revId": "de4ba0c9aee93c279e395cfa5d2c34a07690a255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
