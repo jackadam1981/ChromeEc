@@ -90,6 +90,14 @@
 	};
 };
 
+&i2c7 {
+	/delete-property/ scl-gpios;
+};
+
+&i2c8 {
+	/delete-property/ sda-gpios;
+};
+
 &adc0 {
 	pinctrl-0 = <&adc0_ch0_gpi0_default
 		     &adc0_ch1_gpi1_default
