@@ -16,6 +16,173 @@
       "message": "I would split the CL in 2: one fix the unit tests, the other fix the issue when there are no motion sensors.",
       "revId": "37096808f44881315eb3687924fb56165fe79ef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1793c11_ab483e7e",
+        "filename": "zephyr/test/kingler/src/fakes.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-07T17:14:47Z",
+      "side": 1,
+      "message": "Replace with #else",
+      "fixSuggestions": [
+        {
+          "fixId": "8d645144_1b61fa0c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/kingler/src/fakes.c",
+              "range": {
+                "startLine": 41,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": "#else\n"
+            }
+          ]
+        }
+      ],
+      "revId": "37096808f44881315eb3687924fb56165fe79ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98adb815_bb1e84f7",
+        "filename": "zephyr/test/kingler/src/ponyta_board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-07T17:14:47Z",
+      "side": 1,
+      "message": "needed when motion_sensors if fully used?",
+      "fixSuggestions": [
+        {
+          "fixId": "2be95290_50f38fe3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/kingler/src/ponyta_board.c",
+              "range": {
+                "startLine": 168,
+                "startChar": 0,
+                "endLine": 169,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/test/kingler/src/ponyta_board.c",
+              "range": {
+                "startLine": 206,
+                "startChar": 0,
+                "endLine": 207,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "37096808f44881315eb3687924fb56165fe79ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d87899_b8a47063",
+        "filename": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-07T17:14:47Z",
+      "side": 1,
+      "message": "Reset `motion_sensor_count\u003d0;`?",
+      "revId": "37096808f44881315eb3687924fb56165fe79ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5a220b_6dc5784d",
+        "filename": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-07T17:14:47Z",
+      "side": 1,
+      "message": "Is it needed when the `motion_sensors` array is properly initialized? We do set `motion_sensors` in `shim/src/motionsense_sensors.c` by default.",
+      "fixSuggestions": [
+        {
+          "fixId": "ec6928d7_14b52ed4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "37096808f44881315eb3687924fb56165fe79ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50d4e2c_c16b14ec",
+        "filename": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-05-07T17:14:47Z",
+      "side": 1,
+      "message": "Set `motion_sensor_count\u003d3;`?",
+      "fixSuggestions": [
+        {
+          "fixId": "90631c61_6867a9d2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/krabby/src/fwconfig_tentacruel.c",
+              "range": {
+                "startLine": 157,
+                "startChar": 0,
+                "endLine": 157,
+                "endChar": 0
+              },
+              "replacement": "\tmotion_sensor_count \u003d 3;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "37096808f44881315eb3687924fb56165fe79ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
