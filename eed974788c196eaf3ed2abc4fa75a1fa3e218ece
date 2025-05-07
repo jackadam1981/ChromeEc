@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d9e66b0_fc684854",
+        "filename": "zephyr/program/ocelot/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-07T21:28:02Z",
+      "side": 1,
+      "message": "+1 to make it project specific as of now. Later, once all the board specific codes are upstreamed, we can bring all the common items togethor. Also, why not use the board_power.c from intelrvp/ptlrvp/src/board_power.c , like in fatcat? Why not the small differences  can be distinguished with ifdef configs  in intelrvp/ptlrvp/src/board_power.c  itself?",
+      "parentUuid": "d28d22c4_a04f0a1e",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dda18619_8ba420c9",
         "filename": "zephyr/program/ocelot/ocelot_microchip/include/board.h",
         "patchSetId": 1
@@ -72,6 +96,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5c13402_d89da283",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/include/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-07T21:28:02Z",
+      "side": 1,
+      "message": "In case, if reusing power_signals.dtsi from intel/ptlrvp/, how about defining under project specific overlay file too as in fatcat?",
+      "parentUuid": "dda18619_8ba420c9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3266210_e4d7fe5c",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-07T21:28:02Z",
+      "side": 1,
+      "message": "Why not reuse the dtsi files from intelrvp/ptlrvp/interrupts.dtsi  \u0026 intelrvp/ptlrvp/power_signals.dtsi ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44324ced_30797aab",
         "filename": "zephyr/program/ocelot/src/board_power.c",
         "patchSetId": 1
@@ -88,6 +159,29 @@
         "startChar": 0,
         "endLine": 13,
         "endChar": 30
+      },
+      "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c517fe68_7f34ccf1",
+        "filename": "zephyr/program/ocelot/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-07T21:28:02Z",
+      "side": 1,
+      "message": "As this is the only major difference with  intelrvp/ptlrvp/src/board_power.c,\nWhy not use some config as below  and use same file from ptlrvp\n\n#if defined(CONFIG_BOARD_OCELOT_MCHP)\n                power_signal_set(PWR_EN_PP3300_A, 1);\n                /* Turn on the PP5000_PRIM rail. */\n                k_msleep(10);\n                power_signal_set(PWR_EN_PP5000_A, 1);\n                \n#else\n                power_signal_set(PWR_EN_PP5000_A, 1);\n                /* Turn on the PP3300_PRIM rail. */\n                power_signal_set(PWR_EN_PP3300_A, 1);\n#endif",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 39
       },
       "revId": "eed974788c196eaf3ed2abc4fa75a1fa3e218ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
