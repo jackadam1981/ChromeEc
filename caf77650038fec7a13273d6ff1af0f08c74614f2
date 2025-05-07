@@ -22,6 +22,30 @@
       },
       "revId": "caf77650038fec7a13273d6ff1af0f08c74614f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ffab56_13c5cb37",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1709,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-05-07T19:04:40Z",
+      "side": 0,
+      "message": "They get initialized to 0 since it\u0027s a global variable. See 1687.",
+      "parentUuid": "bc894037_da799c35",
+      "range": {
+        "startLine": 1708,
+        "startChar": 0,
+        "endLine": 1709,
+        "endChar": 43
+      },
+      "revId": "caf77650038fec7a13273d6ff1af0f08c74614f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
