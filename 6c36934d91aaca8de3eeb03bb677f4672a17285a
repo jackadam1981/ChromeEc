@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ef9083_09143002",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-07T23:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b22959f_a8879fda",
+      "revId": "6c36934d91aaca8de3eeb03bb677f4672a17285a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "169294f0_c4b2a226",
@@ -66,6 +84,30 @@
       "writtenOn": "2025-05-07T16:13:17Z",
       "side": 1,
       "message": "Minor nit, but we should capitalize UCSI",
+      "range": {
+        "startLine": 1904,
+        "startChar": 37,
+        "endLine": 1904,
+        "endChar": 41
+      },
+      "revId": "6c36934d91aaca8de3eeb03bb677f4672a17285a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0120c66_ab8925e7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-07T23:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "169294f0_c4b2a226",
       "range": {
         "startLine": 1904,
         "startChar": 37,
