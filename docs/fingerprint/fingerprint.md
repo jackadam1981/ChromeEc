@@ -342,7 +342,7 @@ measuring power.
 <!-- mdformat on -->
 
 ```bash
-(chroot) $ dut-control -t 60 ppvar_fp_mw ppvar_fp_mv ppvar_mcu_mw ppvar_mcu_mv pp1800_fp_mw pp1800_fp_mv
+(chroot) $ dut-control -t 60 pp3300_fp_mw pp3300_fp_mv pp3300_mcu_mw pp3300_mcu_mv pp1800_fp_mw pp1800_fp_mv
 ```
 
 **Firmware Version**:
@@ -355,14 +355,14 @@ measuring power.
 ```
 
 ```
-@@           NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
-@@   sample_msecs   2379    25.2017  3.1648    38.4002    19.7706
-@@   pp1800_fp_mv   2379  1792.0303  0.4911  1800.0000  1792.0000
-@@   pp1800_fp_mw   2379     0.0000  0.0000     0.0000     0.0000
-@@    ppvar_fp_mv   2379  3268.7314  1.6473  3272.0000  3264.0000
-@@    ppvar_fp_mw   2379     0.7081  0.5254     3.1751     0.1000
-@@   ppvar_mcu_mv   2379  3256.0000  0.0000  3256.0000  3256.0000
-@@   ppvar_mcu_mw   2379    16.0525  0.1395    17.1917    15.8893
+@@            NAME  COUNT    AVERAGE   STDDEV        MAX        MIN
+@@    sample_msecs    474   126.5655  10.8408   194.7887    99.1549
+@@    pp1800_fp_mv    474  1824.5350   0.3807  1825.6836  1823.7305
+@@    pp1800_fp_mw    474     0.0239   0.0397     0.3177     0.0000
+@@    pp3300_fp_mv    474  3271.7625   0.4338  3273.4375  3270.0195
+@@    pp3300_fp_mw    474     0.0608   0.1013     0.8886     0.0000
+@@   pp3300_mcu_mv    474  3271.7852   0.4396  3273.4375  3270.5078
+@@   pp3300_mcu_mw    474    20.8023   0.2471    21.5990    19.6064
 ```
 
 #### MCU in low power mode (suspend)
@@ -372,14 +372,14 @@ measuring power.
 ```
 
 ```
-@@           NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
-@@   sample_msecs   2359    25.4208  3.2038    38.8474    19.5994
-@@   pp1800_fp_mv   2359  1792.0712  0.7514  1800.0000  1792.0000
-@@   pp1800_fp_mw   2359     0.0000  0.0000     0.0000     0.0000
-@@    ppvar_fp_mv   2359  3270.5553  1.9529  3276.0000  3268.0000
-@@    ppvar_fp_mw   2359     0.6903  0.5118     3.1751     0.1000
-@@   ppvar_mcu_mv   2359  3256.0000  0.0000  3256.0000  3256.0000
-@@   ppvar_mcu_mw   2359     0.5296  0.3512     7.0330     0.2605
+@@            NAME  COUNT    AVERAGE  STDDEV        MAX        MIN
+@@    sample_msecs    477   125.9021  9.9399   183.9058    98.8910
+@@    pp1800_fp_mv    477  1824.5228  0.3376  1825.6836  1823.7305
+@@    pp1800_fp_mw    477     0.0219  0.0344     0.2285     0.0000
+@@    pp3300_fp_mv    477  3271.5591  0.4193  3272.9492  3270.5078
+@@    pp3300_fp_mw    477     0.0646  0.0953     0.6885     0.0000
+@@   pp3300_mcu_mv    477  3271.6533  0.4335  3272.9492  3270.5078
+@@   pp3300_mcu_mw    477     1.3446  1.9869    44.4578     0.5694
 ```
 
 ### Icetower v3
