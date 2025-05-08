@@ -145,8 +145,11 @@ int watchdog_init(void)
 	IT83XX_ETWD_EWDCNTLHR = (wdt_count >> 8) & 0xff;
 	IT83XX_ETWD_EWDCNTLLR = wdt_count & 0xff;
 
-	/* Lock access to watchdog registers. */
-	IT83XX_ETWD_ETWCFG = 0x3f;
+	/*
+	 * Do not lock access to watchdog registers, because
+	 * we might want to change them later in RW image.
+	 * see b:416109671 for context. 
+	 */
 
 	return EC_SUCCESS;
 }
