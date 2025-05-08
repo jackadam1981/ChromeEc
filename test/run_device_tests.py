@@ -915,8 +915,8 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
-    fp_power_supply="ppvar_fp_mw",
-    mcu_power_supply="ppvar_mcu_mw",
+    fp_power_supply="pp3300_fp_mw",
+    mcu_power_supply="pp3300_mcu_mw",
     expected_fp_power=PowerUtilization(
         idle=RangedValue(0.71, 0.53), sleep=RangedValue(0.69, 0.51)
     ),
