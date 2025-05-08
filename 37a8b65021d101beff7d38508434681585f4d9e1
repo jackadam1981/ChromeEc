@@ -88,6 +88,24 @@
       "parentUuid": "8ff937c1_9f3389f2",
       "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14080bdb_dfc76ffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-08T18:26:21Z",
+      "side": 1,
+      "message": "I think I see what the CQ is trying to do. It\u0027s cherry-picking the first two changes and then trying to do \"git merge\" for the merge commit. That ends up causing conflicts since the first two CLs are part of the merge. I think things should work if the two reverts are submitted first, but I\u0027m guessing we\u0027ll get the original build failure that required the revert with those.",
+      "parentUuid": "7f425ab4_5439e0d8",
+      "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
