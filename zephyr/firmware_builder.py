@@ -63,8 +63,6 @@ SPECIAL_BOARDS = [
     # Nissa variants
     "nereid",
     "nivviks",
-    "orisa",
-    "orisa-ish",
     # Trulo variants
     "trulo",
     "trulo-ti",
