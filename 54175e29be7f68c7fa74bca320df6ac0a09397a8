@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d9778d_de0cdba5",
+        "filename": "zephyr/shim/include/cec_bitbang_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-05-08T03:07:20Z",
+      "side": 1,
+      "message": "The interleaved conditions here are confusing to me.\n\n```suggestion\n#if DT_NODE_HAS_STATUS(DT_CHOSEN(cros_ec_cec_counter), okay) \u0026\u0026 !defined(CONFIG_TEST)\n#include \u003czephyr/drivers/counter.h\u003e\n#define cec_counter_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_cec_counter))\n#define CEC_US_TO_TICKS(t) counter_us_to_ticks(cec_counter_dev, t)\n#define CEC_TICKS_TO_US(ticks) counter_ticks_to_us(cec_counter_dev, ticks);\n#else\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "54175e29be7f68c7fa74bca320df6ac0a09397a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
