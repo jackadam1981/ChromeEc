@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea050bfa_95361277",
+        "filename": "zephyr/program/ocelot/ocelot_ite/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-08T02:00:10Z",
+      "side": 1,
+      "message": "does the latest arb generate all this or did you manually edit?\nif this is manual, it would be better to put in gpios.dtsi or a\nseparate keyboard.dtsi.",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b5e6f384_da0844d6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_ite/generated.dtsi",
+              "range": {
+                "startLine": 265,
+                "startChar": 0,
+                "endLine": 326,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "1e22317c744ae15fae8f6193139a94c97300ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
