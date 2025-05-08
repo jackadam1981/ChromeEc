@@ -70,6 +70,24 @@
       "parentUuid": "e2e1921c_c7079d1e",
       "revId": "29d1bdfe1523de09b6105f10c5afa31d9eaea845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d2a5a4_88fe0836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1490062
+      },
+      "writtenOn": "2025-05-08T11:03:11Z",
+      "side": 1,
+      "message": "EE plans to change the sensor to connect to PCH in EVT, I think we can hold on this CL for now, after EE provides formal announcement than we can proceed it either abandon it or keep it, thanks.",
+      "parentUuid": "98a93a64_b235b8f2",
+      "revId": "29d1bdfe1523de09b6105f10c5afa31d9eaea845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
