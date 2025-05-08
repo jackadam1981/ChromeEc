@@ -34,6 +34,24 @@
       ],
       "revId": "421afc1ed48e5cb05665f41b710125525f558827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090a9bf4_888abdde",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-05-08T14:40:11Z",
+      "side": 1,
+      "message": "oh it\u0027s a cherrypick, nevermind, not worth adding delta for this",
+      "parentUuid": "abb28292_98c49c62",
+      "revId": "421afc1ed48e5cb05665f41b710125525f558827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
