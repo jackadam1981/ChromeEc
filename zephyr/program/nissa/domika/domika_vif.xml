@@ -27,7 +27,7 @@
     <vif:PD_Port_Type value="4">DRP</vif:PD_Port_Type>
     <vif:Type_C_State_Machine value="2">DRP</vif:Type_C_State_Machine>
     <vif:Port_Battery_Powered value="true" />
-    <vif:BC_1_2_Support value="2">Charging Port</vif:BC_1_2_Support>
+    <vif:BC_1_2_Support value="0">None</vif:BC_1_2_Support>
     <vif:Captive_Cable value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;General PD-->
@@ -86,10 +86,10 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Product_Total_Source_Power_mW value="22500">22500 mW</vif:Product_Total_Source_Power_mW>
     <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
-    <vif:Port_Source_Power_Gang>Port_Source_Power_Gang</vif:Port_Source_Power_Gang>
-    <vif:Port_Source_Power_Gang_Max_Power value="15000">15000 mW</vif:Port_Source_Power_Gang_Max_Power>
+    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
+    <vif:Port_Source_Power_Gang_Max_Power value="22500">22500 mW</vif:Port_Source_Power_Gang_Max_Power>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -100,10 +100,6 @@
     <vif:Host_Is_Embedded value="false" />
     <vif:Host_Suspend_Supported value="true" />
     <vif:Is_DFP_On_Hub value="false" />
-    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <!--;Battery Charging 1.2-->
-    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:BC_1_2_Charging_Port_Type value="1">CDP</vif:BC_1_2_Charging_Port_Type>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -197,7 +193,7 @@
     <vif:PD_Port_Type value="4">DRP</vif:PD_Port_Type>
     <vif:Type_C_State_Machine value="2">DRP</vif:Type_C_State_Machine>
     <vif:Port_Battery_Powered value="true" />
-    <vif:BC_1_2_Support value="2">Charging Port</vif:BC_1_2_Support>
+    <vif:BC_1_2_Support value="0">None</vif:BC_1_2_Support>
     <vif:Captive_Cable value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;General PD-->
@@ -256,8 +252,10 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
-    <vif:Port_Source_Power_Type value="0">Assured</vif:Port_Source_Power_Type>
+    <vif:Product_Total_Source_Power_mW value="22500">22500 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
+    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
+    <vif:Port_Source_Power_Gang_Max_Power value="22500">22500 mW</vif:Port_Source_Power_Gang_Max_Power>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -269,17 +267,13 @@
     <vif:Host_Suspend_Supported value="true" />
     <vif:Is_DFP_On_Hub value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <!--;Battery Charging 1.2-->
-    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:BC_1_2_Charging_Port_Type value="1">CDP</vif:BC_1_2_Charging_Port_Type>
-    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Power_As_Source value="15000">15000 mW</vif:PD_Power_As_Source>
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="false" />
     <vif:Sends_Pings value="false" />
-    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
+    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
@@ -338,7 +332,7 @@
     <vif:Accepts_PR_Swap_As_Snk value="true" />
     <vif:Requests_PR_Swap_As_Src value="true" />
     <vif:Requests_PR_Swap_As_Snk value="true" />
-    <vif:FR_Swap_Supported_As_Initial_Sink value="false" />
+    <vif:FR_Swap_Supported_As_Initial_Sink value="true" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;SOP Discover ID-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
