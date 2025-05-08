@@ -918,16 +918,16 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     fp_power_supply="pp3300_fp_mw",
     mcu_power_supply="pp3300_mcu_mw",
     expected_fp_power=PowerUtilization(
-        idle=RangedValue(0.71, 0.53), sleep=RangedValue(0.69, 0.51)
+        idle=RangedValue(0.06, 0.02), sleep=RangedValue(0.06, 0.02)
     ),
     expected_mcu_power=PowerUtilization(
-        idle=RangedValue(16.05, 0.14 * 2), sleep=RangedValue(0.53, 0.35 * 2)
+        idle=RangedValue(20.81, 0.14 * 2), sleep=RangedValue(1.25, 0.35 * 2)
     ),
     expected_fp_power_zephyr=PowerUtilization(
-        idle=RangedValue(0.17, 0.04), sleep=RangedValue(0.17, 0.04)
+        idle=RangedValue(0.06, 0.02), sleep=RangedValue(0.06, 0.02)
     ),
     expected_mcu_power_zephyr=PowerUtilization(
-        idle=RangedValue(14.10, 0.14 * 2), sleep=RangedValue(0.28, 0.04)
+        idle=RangedValue(17.6, 0.14 * 2), sleep=RangedValue(0.38, 0.04)
     ),
     variants={
         "bloonchipper_v2.0.4277": {
