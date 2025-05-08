@@ -913,6 +913,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		return POWER_S5S3;
 
 	case POWER_S5S3:
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_3v_s3_en), 1);
 		return POWER_S3;
 
 	case POWER_S3:
@@ -975,6 +976,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S0S3:
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_3v_s3_en), 0);
 		cancel_power_button_timer();
 
 		/*
