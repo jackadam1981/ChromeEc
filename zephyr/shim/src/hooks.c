@@ -108,7 +108,7 @@ static int zephyr_shim_setup_hooks(void)
 	/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
 	if (rv < 0)
 		work_queue_error(&hook_seconds_work_data, rv);
-		/* LCOV_EXCL_STOP */
+	/* LCOV_EXCL_STOP */
 #endif /* CONFIG_PLATFORM_EC_HOOK_SECOND */
 
 	/* Startup the HOOK_TICK recurring work */

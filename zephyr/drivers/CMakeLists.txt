@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+add_subdirectory(cec_counter)
 add_subdirectory(cros_displight)
 add_subdirectory(cros_flash)
 add_subdirectory(cros_kb_raw)
@@ -20,6 +21,7 @@ add_subdirectory(boot_keys)
 add_subdirectory(runtime_keys)
 add_subdirectory(vivaldi_kbd)
 add_subdirectory(prochot_vcmp)
+add_subdirectory(aic)
 if(DEFINED ZEPHYR_PIGWEED_MODULE_DIR)
   add_subdirectory(pw_fsm)
   add_subdirectory(pw_transport)

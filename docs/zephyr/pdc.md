@@ -18,21 +18,10 @@ See [zephyr/drivers/usbc/](https://chromium.googlesource.com/chromiumos/platform
 [zephyr/subsys/pd_controller/pdc_power_mgmt.c](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/subsys/pd_controller/pdc_power_mgmt.c)
 
 ### State Machine Diagram
-![PDC Power Management State Machine](pdc_power_mgmt_state_diagram.png)
+[PDC Power Management State Machine](pdc_diagrams/pdc_power_mgmt_state_diagram.md)
 
 ## Call Flows
 
-### PDC Attach Sequence
-A generic call flow for when a device is plugged into PDC port to illustrate
-the communication between PDC, DRIVER, and Power Management modules.
-
-*Note: Between step 9 and 13, the connector status is NOT valid yet, as the driver
- has not populated the structure until step 13.  Power Mgmt is not informed of this
- until step 15.*
-![PDC Attach Sequence](pdc_attach_sequence.png)
-
-### PDC Public Request
-A generic call flow for when console or host requests are made to PDC Power Management.
-
-*Note: Public requests are handled after policies have been applied and completed!*
-![PDC Public Request](pdc_public_req.png)
+ * [Attach Sequence](pdc_diagrams/pdc_attach_sequence.md)
+ * [Public Request](pdc_diagrams/pdc_public_request.md)
+ * [Dead Battery](pdc_diagrams/pdc_dead_battery_two_ports.md)

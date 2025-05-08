@@ -32,6 +32,9 @@
 };
 
 / {
+	chosen {
+		cros-ec,sha = &symcr;
+	};
 	named-gpios {
 		/delete-node/  ec-jtag-tms;
 	};
@@ -42,18 +45,10 @@
 	};
 };
 
-
-/* TODO:  Remove this when b/393403088 is resolved.
- */
-&pd_pow_i2c {
-    /delete-node/ rts54-pdc@68;
+&symcr {
+	status = "okay";
 };
 
-/ {
-    usbc-ports {
-        /delete-node/ port2@2;
-        ppm-driver {
-            lpm = <&pd_pow_port0 &pd_pow_port1>;
-        };
-    };
+&rom_api {
+	status = "okay";
 };

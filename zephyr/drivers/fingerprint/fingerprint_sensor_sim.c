@@ -98,7 +98,8 @@ static int fp_simulator_set_mode(const struct device *dev,
 	return 0;
 }
 
-static int fp_simulator_acquire_image(const struct device *dev, int mode,
+static int fp_simulator_acquire_image(const struct device *dev,
+				      enum fingerprint_capture_type mode,
 				      uint8_t *image_buf, size_t image_buf_size)
 {
 	const struct fp_simulator_cfg *config = dev->config;
@@ -138,8 +139,10 @@ static int fp_simulator_init_driver(const struct device *dev)
 
 #define FP_SIMULATOR_SENSOR_INFO(inst)                                         \
 	{                                                                      \
-		.vendor_id = FOURCC('C', 'r', 'O', 'S'), .product_id = 0,      \
-		.model_id = 0, .version = 0,                                   \
+		.vendor_id = FOURCC('C', 'r', 'O', 'S'),                       \
+		.product_id = 0,                                               \
+		.model_id = 0,                                                 \
+		.version = 0,                                                  \
 		.frame_size =                                                  \
 			FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(DT_DRV_INST(inst)), \
 		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(          \
