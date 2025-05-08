@@ -22,6 +22,30 @@
       },
       "revId": "54175e29be7f68c7fa74bca320df6ac0a09397a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "879e6d91_ace18bb5",
+        "filename": "zephyr/shim/include/cec_bitbang_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-05-08T03:35:23Z",
+      "side": 1,
+      "message": "Done. For cec_counter_dev is used in cec_counter.c, I moved it out of the if condition.",
+      "parentUuid": "17d9778d_de0cdba5",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "54175e29be7f68c7fa74bca320df6ac0a09397a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
