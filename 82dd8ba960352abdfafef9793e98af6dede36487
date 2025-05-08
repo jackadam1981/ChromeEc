@@ -16,6 +16,23 @@
       "message": "Print a message if the ETWCFG register is locked.\n@robbarnes@google.com @bmbm@google.com please revisit.",
       "revId": "82dd8ba960352abdfafef9793e98af6dede36487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df992bd_e865907d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-08T02:54:29Z",
+      "side": 1,
+      "message": "I did a similar change in cl:6522169 but yours is better. I\u0027ll rebase mine on top of yours then.",
+      "revId": "82dd8ba960352abdfafef9793e98af6dede36487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
