@@ -262,9 +262,8 @@
 	pulses-per-round = <2>;
 };
 
-&cros_kb_raw {
+&kbd {
 	status = "okay";
-	/* No KSO2 (it's inverted and implemented by GPIO) */
 	pinctrl-0 = <
 		&ksi0_default
 		&ksi1_default
@@ -283,6 +282,7 @@
 		&kso16_default
 		&kso17_default
 		&kso1_default
+		&kso2_default
 		&kso3_default
 		&kso4_default
 		&kso5_default
@@ -291,7 +291,36 @@
 		&kso8_default
 		&kso9_default
 	>;
-	pinctrl-names = "default";
+	pinctrl-1 = <
+		&ksi0_sleep
+		&ksi1_sleep
+		&ksi2_sleep
+		&ksi4_sleep
+		&ksi5_sleep
+		&ksi6_sleep
+		&ksi7_sleep
+		&kso0_sleep
+		&kso10_sleep
+		&kso11_sleep
+		&kso12_sleep
+		&kso13_sleep
+		&kso14_sleep
+		&kso15_sleep
+		&kso16_sleep
+		&kso17_sleep
+		&kso1_sleep
+		&kso2_sleep
+		&kso3_sleep
+		&kso4_sleep
+		&kso5_sleep
+		&kso6_sleep
+		&kso7_sleep
+		&kso8_sleep
+		&kso9_sleep
+	>;
+	pinctrl-names = "default", "sleep";
+	row-size = <7>;
+	col-size = <18>;
 };
 
 / {
