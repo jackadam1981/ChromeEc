@@ -16,6 +16,24 @@
       "message": "Should we merge this CL (and the next one) before merge commit to make sure that `firmware-fpmcu-bloonchipper-release` branch (one of the merge commit parents) state is the same as [commit from main branch that was used in previous merge commit](https://chromium.googlesource.com/chromiumos/platform/ec/+/67bd3f7476dec12d438818fb1bd30776cb96fc0f)?\n\nI think, this will reduce risk of merge conflicts. On the other hand, if everything applies cleanly, it won\u0027t matter.",
       "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fbd340_ab9dd2d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-08T16:39:05Z",
+      "side": 1,
+      "message": "Unresolving",
+      "parentUuid": "bfc16773_ef61707f",
+      "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
