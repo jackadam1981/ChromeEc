@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd92762_0c3ed726",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-08T22:05:40Z",
+      "side": 1,
+      "message": "@bettytseng@google.com I see values for both `pp3300_fp_mw` and `pp1800_fp_mw`. Looks like one is `VCC` and one is `VCCIO`?",
+      "range": {
+        "startLine": 918,
+        "startChar": 21,
+        "endLine": 918,
+        "endChar": 33
+      },
+      "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
