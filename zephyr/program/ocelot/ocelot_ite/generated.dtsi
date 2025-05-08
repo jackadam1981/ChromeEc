@@ -183,6 +183,15 @@
 			i2c-port = <&i2c5>;
 		};
 	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			/* BGA_PINM2 */
+			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* BGA_PINN1 */
+			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+	};
 };
 
 &adc0 {
@@ -321,16 +330,4 @@
 	pinctrl-names = "default", "sleep";
 	row-size = <7>;
 	col-size = <18>;
-};
-
-/ {
-	/* Edited manually due to b/415825508 */
-	unused-pins {
-		compatible = "unused-gpios";
-		unused-gpios =
-			/* BGA_PINM2 */
-			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
-			/* BGA_PINN1 */
-			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
-	};
 };
