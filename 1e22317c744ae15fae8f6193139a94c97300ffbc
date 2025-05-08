@@ -40,6 +40,30 @@
       ],
       "revId": "1e22317c744ae15fae8f6193139a94c97300ffbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dcc5528_cdadbbd0",
+        "filename": "zephyr/program/ocelot/ocelot_ite/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-08T16:58:12Z",
+      "side": 1,
+      "message": "This comes from dev version of Arbitrage - see http://b/414860778#comment6",
+      "parentUuid": "ea050bfa_95361277",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 4
+      },
+      "revId": "1e22317c744ae15fae8f6193139a94c97300ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
