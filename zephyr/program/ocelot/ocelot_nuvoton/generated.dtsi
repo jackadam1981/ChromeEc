@@ -82,14 +82,11 @@
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_ec_soc_rec_switch_odl: ec_soc_rec_switch_odl {
-			gpios = <&gpiof 5 (GPIO_INPUT)>;
+			gpios = <&gpiof 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_ec_soc_rsmrst_l_r: ec_soc_rsmrst_l_r {
 			gpios = <&gpio9 5 (GPIO_INPUT)>;
 			enum-name = "GPIO_PCH_RSMRST_L";
-		};
-		gpio_ec_soc_rtcrst_odl: ec_soc_rtcrst_odl {
-			gpios = <&gpioc 7 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		gpio_ec_soc_wake_ls_odl: ec_soc_wake_ls_odl {
 			gpios = <&gpio3 2 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
@@ -151,6 +148,10 @@
 		};
 		gpio_virtual_battery: virtual_battery {
 			gpios = <&gpio8 0 (GPIO_INPUT)>;
+		};
+		gpio_wp_odl: wp_odl {
+			// signal name was manually overriden from "ec_soc_rtcrst_odl"
+			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 		};
 	};
 

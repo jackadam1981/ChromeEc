@@ -14,15 +14,10 @@
 /* ocelot_nuvoton overrides follow... */
 / {
 	aliases {
-		gpio-wp = &gpio_c_ec_wp_odl;
+		gpio-wp = &gpio_wp_odl;
 	};
 
 	named-gpios {
-		/* Fix the write protect pin assignement */
-		/delete-node/ ec_soc_rtcrst_odl;
-		gpio_c_ec_wp_odl: c_ec_wp_odl {
-			gpios = <&gpioc 7 GPIO_INPUT>;
-		};
 		/* unimplemented GPIOs */
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
