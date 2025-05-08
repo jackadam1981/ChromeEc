@@ -34,6 +34,24 @@
       "parentUuid": "bfc16773_ef61707f",
       "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d6c458_90bfafe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-08T17:14:43Z",
+      "side": 1,
+      "message": "\u003e I think, this will reduce risk of merge conflicts. \n\nFor future merges, I think it will end up being the same since the resulting code is equivalent, but I agree that it makes more sense to do the revert in the `firmware-fpmcu-bloonchipper-release` branch and then do the merge. I updated the CLs to do this and checked that the top commits of the two chains are equivalent (new commit: `ef9d4804deabc891056af24e69f7a636344ede47`, old commit: `262b583911d4419b75c6f651bd3cbba4b5566f2b`):\n\n```\ngit diff ef9d4804deabc891056af24e69f7a636344ede47..262b583911d4419b75c6f651bd3cbba4b5566f2b\n```",
+      "parentUuid": "f9fbd340_ab9dd2d2",
+      "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
