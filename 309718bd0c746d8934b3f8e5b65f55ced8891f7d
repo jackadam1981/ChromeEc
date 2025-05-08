@@ -46,6 +46,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c614544_c220f2e5",
+        "filename": "zephyr/program/trulo/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T06:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9f5439_55ce6f06",
+      "revId": "309718bd0c746d8934b3f8e5b65f55ced8891f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cb0c21d_821dc165",
@@ -77,6 +95,24 @@
           ]
         }
       ],
+      "revId": "309718bd0c746d8934b3f8e5b65f55ced8891f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72573b02_d958f0ba",
+        "filename": "zephyr/program/trulo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T06:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb0c21d_821dc165",
       "revId": "309718bd0c746d8934b3f8e5b65f55ced8891f7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
