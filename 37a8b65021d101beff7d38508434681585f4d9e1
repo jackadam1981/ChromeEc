@@ -52,6 +52,24 @@
       "parentUuid": "f9fbd340_ab9dd2d2",
       "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff937c1_9f3389f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-08T17:30:20Z",
+      "side": 1,
+      "message": "Hmm, the CQ is [not happy with this](https://ci.chromium.org/ui/p/chromeos/builders/cq/fullcheckout-presubmit/b8715419928023770033/overview). It looks like it\u0027s failing when trying to do a merge of the merge CL:\n\n```\nExecuting command [\n  \u0027/b/s/w/ir/cipd_bin_packages/git\u0027,\n  \u0027merge\u0027,\n  \u0027ef9d4804deabc891056af24e69f7a636344ede47\u0027,\n  \u0027-m\u0027,\n  \u0027merge gerrit changes\u0027,\n]\n```",
+      "parentUuid": "90d6c458_90bfafe3",
+      "revId": "37a8b65021d101beff7d38508434681585f4d9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
