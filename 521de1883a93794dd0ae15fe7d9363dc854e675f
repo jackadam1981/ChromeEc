@@ -16,6 +16,24 @@
       "message": "was the intention to add CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED here?",
       "revId": "521de1883a93794dd0ae15fe7d9363dc854e675f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d36b5a2_4b7df8a4",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-05-08T17:41:49Z",
+      "side": 1,
+      "message": "As a result from compiling different versions of this config flag, the compiler recommended running `cp /tmp/new_config_allowed.txt util/config_allowed.txt` which made these changes.",
+      "parentUuid": "002e5b2d_0556f6de",
+      "revId": "521de1883a93794dd0ae15fe7d9363dc854e675f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
