@@ -34,6 +34,9 @@ known_modules = {
     "egis": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "egis"
     ),
+    "elan": lambda name, checkout: (
+        checkout / "src" / "platform" / "fingerprint" / "elan"
+    ),
     "fpc": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "fpc"
     ),
