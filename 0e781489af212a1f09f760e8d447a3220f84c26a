@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "135ed541_1fc2e5d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-05-08T09:28:15Z",
+      "side": 1,
+      "message": "I have split this CL into 2.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6522248",
+      "parentUuid": "66a1ac4e_58d762e3",
+      "revId": "0e781489af212a1f09f760e8d447a3220f84c26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fea8d04_f2b5ccc7",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-05-02T18:21:22Z",
       "side": 1,
       "message": "Please make sure the resulting file opens cleanly in VIF Editor.",
+      "revId": "0e781489af212a1f09f760e8d447a3220f84c26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bf318d8_0647afe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-05-08T09:28:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0fea8d04_f2b5ccc7",
       "revId": "0e781489af212a1f09f760e8d447a3220f84c26a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
