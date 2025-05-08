@@ -18,6 +18,8 @@
 
 /* Enter critical period or not. */
 static atomic_t wdt_warning_fired;
+/*  */
+static atomic_t in_watchdog_extension_period;
 
 /*
  * We use WDT_EXT_TIMER to trigger an interrupt just before the watchdog timer
@@ -68,6 +70,25 @@ void watchdog_warning_irq(void)
 	/* Reset warning timer. */
 	IT83XX_ETWD_ETXCTRL(WDT_EXT_TIMER) = 0x03;
 
+#if defined(CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION)
+	/*
+	 * On the first invocation set in_watchdog_extension_period=1, reload
+	 * the watchdog and return to effectively extend the watchdog timeout.
+	 */
+
+	if (!atomic_add(&in_watchdog_extension_period, 1)) {
+		/* Restart the watchdog timer. */
+		IT83XX_ETWD_EWDKEYR = ITE83XX_WATCHDOG_MAGIC_WORD;
+
+		/*
+		 * Restart warning timer to allow more time for the watchdog,
+		 * Effectively increasing watchdog timeout by
+		 * CONFIG_AUX_TIMER_PERIOD_MS (CONFIG_AUX_TIMER_PERIOD_MS)
+		 */
+		watchdog_set_warning_timer(ITE83XX_WATCHDOG_WARNING_MS, 0);
+	}
+#endif
+
 #if defined(CHIP_CORE_NDS32)
 	/*
 	 * The IPC (Interruption Program Counter) is the shadow stack register
@@ -83,6 +104,13 @@ void watchdog_warning_irq(void)
 #elif defined(CHIP_CORE_RISCV)
 	panic_printf("Pre-WDT warning! MEPC:%08x RA:%08x TASK_ID:%d\n",
 		     get_mepc(), ira, task_get_current());
+#endif
+
+#if defined(CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION)
+	panic_printf(
+		"Locked watchdog workaround: Skip to extend WDT by %d ms\n",
+		ITE83XX_WATCHDOG_WARNING_MS);
+	return;
 #endif
 
 	if (!atomic_add(&wdt_warning_fired, 1)) {
@@ -108,6 +136,8 @@ void watchdog_reload(void)
 		/* Reset warning timer to default if watchdog is touched. */
 		watchdog_set_warning_timer(ITE83XX_WATCHDOG_WARNING_MS, 0);
 	}
+
+	atomic_clear(&in_watchdog_extension_period);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_SYSJUMP, watchdog_reload, HOOK_PRIO_LAST);
