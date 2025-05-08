@@ -45,7 +45,7 @@
 		/* 320 kB used for RW - helipilot ECOS flash size */
 		ec-rw {
 			offset = <0x40000>;
-			size = <0x50000>;
+			size = <0x40000>;
 			rw-fw {
 				/*
 				 * Clang doesn't emit STT_SECTION symbols (also
@@ -77,16 +77,16 @@
  *           │              │
  *           │              │
  *           │   Data RAM   │
- *           │     188KB    │
+ *           │     252KB    │
  *           │              │
  *           │              │
- * 0x100A8000├──────────────┤0x200A8000
+ * 0x100A8000├──────────────┤0x20098000
  *           │              │
  *           │              │
  *           │              │
  *           │              │
  *           │   Code RAM   │
- *           │     320KB    │
+ *           │     256KB    │
  *           │              │
  *           │              │
  *           │              │
@@ -95,15 +95,15 @@
  * 0x10058000└──────────────┘
  */
 &flash0 {
-    reg = <0x10058000 DT_SIZE_K(320)>;
+    reg = <0x10058000 DT_SIZE_K(256)>;
 };
 
 /delete-node/ &sram0;
 
 / {
-	sram0: memory@200a8000 {
+	sram0: memory@20098000 {
 		compatible = "mmio-sram";
-		reg = <0x200A8000 DT_SIZE_K(188)>;
+		reg = <0x20098000 DT_SIZE_K(252)>;
 	};
 };
 
@@ -129,13 +129,13 @@
 
 &spip0 {
 	fp_sensor: fpc1025@0 {
-		compatible = "fpc,fpc1025";
+		compatible = "elan,elan80sg";
 		reg = <0>;
 		spi-max-frequency = <4000000>;
 
-		width = <160>;
-		height = <160>;
-		bits-per-pixel = <8>;
+		width = <80>;
+		height = <80>;
+		bits-per-pixel = <16>;
 		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 
 		irq-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
