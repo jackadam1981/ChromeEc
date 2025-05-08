@@ -1073,8 +1073,11 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5S3:
-		if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP))
+		if (IS_ENABLED(CONFIG_CHIPSET_QC_EXP)) {
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_ec_3v_s3_en), 1);
 			return POWER_S3;
+		}
 		/*
 		 * Wait for power button release before actually boot AP.
 		 * It may be a long-hold power button with volume buttons
