@@ -29,8 +29,8 @@ LOG_MODULE_REGISTER(elan80sg_pal, LOG_LEVEL_INF);
 
 K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_ELAN80SG_HEAP_SIZE);
 
-static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE] __uncached;
-static uint8_t rx_buf[ELAN_SPI_RX_BUF_SIZE] __uncached;
+static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE]; //__uncached;
+static uint8_t rx_buf[ELAN_SPI_RX_BUF_SIZE]; // __uncached;
 
 int __unused elan_write_cmd(uint8_t fp_cmd)
 {
@@ -44,8 +44,6 @@ int __unused elan_write_cmd(uint8_t fp_cmd)
 	const struct spi_buf read_buf[1] = { { .buf = rx_buf, .len = 2 } };
 	const struct spi_buf_set tx = { .buffers = write_buf, .count = 1 };
 	const struct spi_buf_set rx = { .buffers = read_buf, .count = 1 };
-
-	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
 
 	int err = spi_transceive_dt(&cfg->spi, &tx, &rx);
 
@@ -84,26 +82,23 @@ int __unused elan_read_cmd(uint8_t fp_cmd, uint8_t *regdata)
 	return err;
 }
 
-int __unused elan_spi_transaction(uint8_t *tx, int tx_len, uint8_t *rx,
-				  int rx_len)
+int __unused elan_spi_transaction(uint8_t *tx_data, int tx_len,
+				  uint8_t *rx_data, int rx_len)
 {
 	memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
 	memset(rx_buf, 0, ELAN_SPI_RX_BUF_SIZE);
 
-	memcpy(tx_buf, tx, ELAN_SPI_TX_BUF_SIZE));
+	memcpy(tx_buf, tx_data, tx_len);
 
-	const struct spi_buf write_buf[2] = {
-		{ .buf = tx_buf, .len = ELAN_SPI_TX_BUF_SIZE },
-		{ .buf = NULL, .len = ELAN_SPI_RX_BUF_SIZE }
-	};
-	const struct spi_buf read_buf[2] = {
-		{ .buf = NULL, .len = ELAN_SPI_TX_BUF_SIZE },
-		{ .buf = rx_buf, .len = ELAN_SPI_RX_BUF_SIZE }
-	};
+	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
+	const struct spi_buf write_buf[] = { { .buf = tx_buf, .len = tx_len },
+					     { .buf = NULL, .len = rx_len } };
+	const struct spi_buf read_buf[] = { { .buf = NULL, .len = tx_len },
+					    { .buf = rx_buf, .len = rx_len } };
 	const struct spi_buf_set tx = { .buffers = write_buf,
-					.count = ARRAY_SIZE(tx_buf) };
+					.count = ARRAY_SIZE(write_buf) };
 	const struct spi_buf_set rx = { .buffers = read_buf,
-					.count = ARRAY_SIZE(rx_buf) };
+					.count = ARRAY_SIZE(read_buf) };
 
 	int err = spi_transceive_dt(&cfg->spi, &tx, &rx);
 
@@ -113,15 +108,13 @@ int __unused elan_spi_transaction(uint8_t *tx, int tx_len, uint8_t *rx,
 		return -EIO;
 	}
 
-	memcpy(rx, rx_buf, rx_len);
+	memcpy(rx_data, rx_buf, rx_len);
 
 	return err;
 }
 
 int __unused elan_write_register(uint8_t regaddr, uint8_t regdata)
 {
-	int ret = 0;
-
 	memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
 	memset(rx_buf, 0, ELAN_SPI_RX_BUF_SIZE);
 
@@ -230,6 +223,7 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 		memset(rx_buf, 0, ELAN_SPI_RX_BUF_SIZE);
 		tx_buf[0] = START_READ_IMAGE;
 
+		const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
 		const struct spi_buf write_buf[2] = {
 			{ .buf = tx_buf, .len = ELAN_SPI_TX_BUF_SIZE },
 			{ .buf = NULL, .len = ELAN_SPI_RX_BUF_SIZE }
@@ -299,7 +293,7 @@ int __unused elan_fp_maintenance(uint16_t *error_state)
 	uint32_t end;
 
 	if (error_state == NULL)
-		return EC_ERROR_INVAL;
+		return -EINVAL;
 
 	/* Initial status */
 	*error_state &= 0xFC00;
@@ -315,23 +309,25 @@ int __unused elan_fp_maintenance(uint16_t *error_state)
 		 * are covered (i.e., finger is on sensor).
 		 */
 		LOGE_SA("Failed to run maintenance: %d", rv);
-		return EC_ERROR_HW_INTERNAL;
+		return -ENOTSUP;
 	}
 	/*
 	 * Reset the number of dead pixels before any update.
 	 */
-	*error_state &= ~FP_ERROR_DEAD_PIXELS_MASK;
-	*error_state |= FP_ERROR_DEAD_PIXELS(MIN(
-		sensor_info.num_defective_pixels, FP_ERROR_DEAD_PIXELS_MAX));
+	*error_state &= ~FINGERPRINT_ERROR_DEAD_PIXELS_MASK;
+	*error_state |= FINGERPRINT_ERROR_DEAD_PIXELS(
+		MIN(sensor_info.num_defective_pixels,
+		    FINGERPRINT_ERROR_DEAD_PIXELS_MAX));
 	LOGE_SA("num_defective_pixels: %d", sensor_info.num_defective_pixels);
 	LOGE_SA("sensor_error_code: %d", sensor_info.sensor_error_code);
 
-	return EC_SUCCESS;
+	return 0;
 }
 
 int __unused elan_set_hv_chip(bool state)
 {
 	int ret = 0;
+	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
 
 	memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
 	memset(rx_buf, 0, ELAN_SPI_RX_BUF_SIZE);
@@ -400,18 +396,18 @@ int __unused elan_set_hv_chip(bool state)
 		tx_buf[0] = 0x0B;
 		tx_buf[1] = 0x02;
 
-		const struct spi_buf write_buf[2] = {
+		const struct spi_buf write_buf_2[] = {
 			{ .buf = tx_buf, .len = 2 }, { .buf = NULL, .len = 2 }
 		};
-		const struct spi_buf read_buf[2] = {
+		const struct spi_buf read_buf_2[] = {
 			{ .buf = NULL, .len = 2 }, { .buf = rx_buf, .len = 2 }
 		};
-		const struct spi_buf_set tx = { .buffers = write_buf,
-						.count = ARRAY_SIZE(tx_buf) };
-		const struct spi_buf_set rx = { .buffers = read_buf,
-						.count = ARRAY_SIZE(rx_buf) };
+		const struct spi_buf_set tx_2 = { .buffers = write_buf_2,
+						  .count = ARRAY_SIZE(tx_buf) };
+		const struct spi_buf_set rx_2 = { .buffers = read_buf_2,
+						  .count = ARRAY_SIZE(rx_buf) };
 
-		ret |= spi_transceive_dt(&cfg->spi, &tx, &rx);
+		ret |= spi_transceive_dt(&cfg->spi, &tx_2, &rx_2);
 
 		if (ret != 0) {
 			LOG_ERR("spi_write FAILED: in func: %s with retval = %d\n",
@@ -425,8 +421,7 @@ int __unused elan_set_hv_chip(bool state)
 
 int __unused elan_usleep(unsigned int us)
 {
-	k_usleep(us);
-	return;
+	return k_usleep(us);
 }
 
 void *__unused elan_malloc(uint32_t size)
@@ -456,10 +451,20 @@ void __unused elan_log_var(const char *format, ...)
 	va_start(vl, format);
 	vsnprintf(printf_buffer, sizeof(printf_buffer), format, vl);
 	va_end(vl);
-	LOG_INF("%s", print_buffer);
+	LOG_INF("%s", printf_buffer);
 }
 
 uint32_t __unused elan_get_tick(void)
 {
 	return k_ticks_to_ms_near32(k_uptime_ticks());
+}
+
+void __unused elan_sensor_set_rst(bool state)
+{
+	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
+	int ret = gpio_pin_set_dt(&cfg->reset_pin, state ? 1 : 0);
+
+	if (ret < 0) {
+		LOG_ERR("Failed to set FP reset pin, status: %d", ret);
+	}
 }

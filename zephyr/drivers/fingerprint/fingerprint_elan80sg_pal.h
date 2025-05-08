@@ -111,8 +111,8 @@ int __unused elan_read_cmd(uint8_t fp_cmd, uint8_t *regdata);
  * @return 0 on success.
  *         negative value on error.
  */
-int __unused elan_spi_transaction(uint8_t *tx, int tx_len, uint8_t *rx,
-				  int rx_len);
+int __unused elan_spi_transaction(uint8_t *tx_data, int tx_len,
+				  uint8_t *rx_data, int rx_len);
 
 /**
  * @brief Write fp register data to sensor

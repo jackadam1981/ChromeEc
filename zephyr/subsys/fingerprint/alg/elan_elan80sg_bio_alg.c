@@ -2,11 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <zephyr/drivers/fingerprint/fingerprint_elan80sg_private.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
 #include <fingerprint/fingerprint_alg.h>
-#include <fingerprint/fingerprint_egis630_private.h>
 
 LOG_MODULE_REGISTER(elan_elan80sg_alg, LOG_LEVEL_INF);
 
@@ -48,7 +48,7 @@ elan_elan80sg_enroll_step(const struct fingerprint_algorithm *const alg,
 	}
 
 	LOG_INF("========%s=======\n", __func__);
-	return elan_enroll(image, completion);
+	return elan_enroll((uint8_t *)image, completion);
 }
 
 static int
@@ -74,7 +74,8 @@ static int elan_elan80sg_match(const struct fingerprint_algorithm *const alg,
 
 	int res;
 	LOG_INF("========%s=======\n", __func__);
-	res = elan_match(templ, templ_count, image, match_index, update_bitmap);
+	res = elan_match(templ, templ_count, (uint8_t *)image, match_index,
+			 update_bitmap);
 	if (res == FP_MATCH_RESULT_MATCH)
 		res = elan_template_update(templ, *match_index);
 

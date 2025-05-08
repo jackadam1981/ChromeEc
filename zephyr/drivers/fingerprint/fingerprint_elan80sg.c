@@ -3,10 +3,10 @@
  * found in the LICENSE file.
  */
 
-#include <cerrno>
 #define DT_DRV_COMPAT elan_elan80sg
 
 #include "fingerprint_elan80sg.h"
+#include "fingerprint_elan80sg_pal.h"
 #include "fingerprint_elan80sg_private.h"
 
 #include <assert.h>
@@ -22,8 +22,8 @@
 
 LOG_MODULE_REGISTER(cros_fingerprint, LOG_LEVEL_INF);
 
-static enum elan_capture_type
-convert_fp_capture_mode_to_elan_get_image_type(enum fp_capture_type mode)
+static enum elan_capture_type convert_fp_capture_mode_to_elan_get_image_type(
+	enum fingerprint_capture_type mode)
 {
 	switch (mode) {
 	case FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT:
@@ -62,11 +62,9 @@ static int elan80sg_get_hwid(const struct device *dev, uint16_t *id)
 	return 0;
 }
 
-static int elan80sg_check_hwid(const struct device *dev, uint16_t *id)
+static int elan80sg_check_hwid(const struct device *dev)
 {
-	const struct elan80sg_cfg *cfg = dev->config;
 	struct elan80sg_data *data = dev->data;
-
 	uint16_t id = 0;
 	int status;
 
@@ -117,24 +115,16 @@ static int elan80sg_init(const struct device *dev)
 {
 	LOG_INF("========%s=======\n", __func__);
 
-	const struct elan80sg_cfg *cfg = dev->config;
 	struct elan80sg_data *data = dev->data;
 	int rc;
 
 	data->errors = FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN;
 
 	elan_execute_reset();
-	if (IS_ENABLED(CONFIG_HAVE_ELAN80SG_PRIVATE_DRIVER)) {
-		rc = elan_alg_param_setting();
-		if (rc != 0) {
-			return rc;
-		}
-	} else {
-		return -EINVAL;
-	}
+	elan_alg_param_setting();
 	elan_set_hv_chip(1);
 
-	int rc = elan_check_hwid();
+	rc = elan80sg_check_hwid(dev);
 	if (rc != 0) {
 		data->errors |= FINGERPRINT_ERROR_INIT_FAIL;
 		return 0;
@@ -182,7 +172,7 @@ static int elan80sg_get_info(const struct device *dev,
 	}
 
 	info->model_id = id;
-	info->errors = errors;
+	info->errors = data->errors;
 
 	return 0;
 }
@@ -261,7 +251,8 @@ static int elan80sg_set_mode(const struct device *dev,
 	return rc;
 }
 
-static int elan80sg_acquire_image(const struct device *dev, int mode,
+static int elan80sg_acquire_image(const struct device *dev,
+				  enum fingerprint_capture_type capture_type,
 				  uint8_t *image_buf, size_t image_buf_size)
 {
 	LOG_INF("========%s=======\n", __func__);
@@ -275,16 +266,17 @@ static int elan80sg_acquire_image(const struct device *dev, int mode,
 	}
 
 	enum elan_capture_type rc =
-		convert_fp_capture_mode_to_elan_get_image_type(mode);
+		convert_fp_capture_mode_to_elan_get_image_type(capture_type);
 
 	if (rc == ELAN_CAPTURE_TYPE_INVALID) {
-		LOG_ERR("Unsupported mode %d provided", mode);
+		LOG_ERR("Unsupported capture_type %d provided", capture_type);
 		return -EINVAL;
 	}
 
-	rc = fp_sensor_acquire_image_with_mode(image_buf, rc);
+	rc = elan_sensor_acquire_image_with_mode(image_buf, rc);
 	if (rc < 0) {
-		LOG_ERR("Failed to acquire image with mode %d: %d", mode, rc);
+		LOG_ERR("Failed to acquire image with mode %d: %d",
+			capture_type, rc);
 		return rc;
 	}
 
@@ -295,7 +287,7 @@ static int elan80sg_finger_status(const struct device *dev)
 {
 	LOG_INF("========%s=======\n", __func__);
 
-	int rc;
+	enum finger_state rc;
 
 	if (!IS_ENABLED(CONFIG_HAVE_ELAN80SG_PRIVATE_DRIVER)) {
 		return -ENOTSUP;

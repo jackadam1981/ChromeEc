@@ -8,6 +8,8 @@
 #ifndef ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_PRIVATE_H_
 #define ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_PRIVATE_H_
 
+#include <stdint.h>
+
 #define FP_SENSOR_HWID_ELAN 0x4f4f
 
 /* ELAN error codes */
@@ -125,6 +127,7 @@ int elan_enrollment_begin(void);
  *   low image quality
  * - EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE when image could not be used due to
  *   finger covering too little area of the sensor
+ */
 int elan_enroll(uint8_t *image, int *completion);
 
 /**
@@ -152,9 +155,11 @@ int elan_enroll(uint8_t *image, int *completion);
  */
 int elan_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
 
-#define FINGER_NONE 0
-#define FINGER_PARTIAL 1
-#define FINGER_PRESENT 2
+enum finger_state {
+	FINGER_NONE = 0, /**< No finger detected. */
+	FINGER_PARTIAL = 1, /**< Partial finger detected. */
+	FINGER_PRESENT = 2, /**< Finger fully present on the sensor. */
+};
 
 /**
  * Returns the status of the finger on the sensor.
