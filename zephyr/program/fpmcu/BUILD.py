@@ -56,7 +56,7 @@ helipilot = register_fpmcu_variant(
     zephyr_board="google_quincy",
     register_func=register_npcx_project,
     variant_modules=["cmsis"],
-    variant_optional_modules=["fpc"],
+    variant_optional_modules=["elan"],
     variant_dts_overlays=[
         here / "helipilot" / "helipilot.dts",
     ],
