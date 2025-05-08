@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c573824_24aec1fe",
+        "filename": "zephyr/program/ocelot/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-08T11:52:12Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com, based on reference from other platform like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/intelrvp/ptlrvp/i2c.dtsi , I have considered to keep program specific I2C config common across different platforms so that same can be reuse. \n\nPlease let me know if you still consider it to merge.",
+      "parentUuid": "809db672_a3cfd5e8",
+      "revId": "ea06fdfd57c5eb64f61ced8ca424bc006259ac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2095562_ee06dcb9",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-05-07T05:09:08Z",
       "side": 1,
       "message": "Why is this off for ITE and implicitly left enabled for the nuvoton board?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "ea06fdfd57c5eb64f61ced8ca424bc006259ac92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38776517_d3014646",
+        "filename": "zephyr/program/ocelot/ocelot_ite/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-08T11:52:12Z",
+      "side": 1,
+      "message": "For nuvoton, I2C configuration is already enabled. Hence only disabled for ITE.",
+      "parentUuid": "f2095562_ee06dcb9",
       "range": {
         "startLine": 12,
         "startChar": 0,
