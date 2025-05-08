@@ -11,5 +11,6 @@ if(DEFINED CONFIG_BOARD_BLUEY)
 endif()
 
 zephyr_library_sources("src/switchcap.c")
+zephyr_library_sources("src/chipset.c")
 
 add_subdirectory(${PROJECT_NAME})
