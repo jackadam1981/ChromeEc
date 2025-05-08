@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e78f8c7_996155db",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-08T20:17:25Z",
+      "side": 1,
+      "message": "Why is this necessary? The option is defined in other file, we are only adding our default here.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "473522df5d4706d1505bd363ee6fe9101373db06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
