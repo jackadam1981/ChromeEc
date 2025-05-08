@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb28292_98c49c62",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-05-08T11:07:27Z",
+      "side": 1,
+      "message": "`default n` is the default, no need to specify it",
+      "fixSuggestions": [
+        {
+          "fixId": "d6a96f4a_c1c9d514",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/Kconfig.battery",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 172,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "421afc1ed48e5cb05665f41b710125525f558827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
