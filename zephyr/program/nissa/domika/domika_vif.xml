@@ -42,9 +42,7 @@
     <vif:SOP_PP_Capable value="true" />
     <vif:SOP_P_Debug_Capable value="false" />
     <vif:SOP_PP_Debug_Capable value="false" />
-    <vif:Manufacturer_Info_Supported_Port value="true" />
-    <vif:Manufacturer_Info_VID_Port value="6353">18D1</vif:Manufacturer_Info_VID_Port>
-    <vif:Manufacturer_Info_PID_Port value="20570">505A</vif:Manufacturer_Info_PID_Port>
+    <vif:Manufacturer_Info_Supported_Port value="false" />
     <vif:Chunking_Implemented_SOP value="true" />
     <vif:Unchunked_Extended_Messages_Supported value="false" />
     <vif:Security_Msgs_Supported_SOP value="false" />
@@ -212,9 +210,7 @@
     <vif:SOP_PP_Capable value="true" />
     <vif:SOP_P_Debug_Capable value="false" />
     <vif:SOP_PP_Debug_Capable value="false" />
-    <vif:Manufacturer_Info_Supported_Port value="true" />
-    <vif:Manufacturer_Info_VID_Port value="6353">18D1</vif:Manufacturer_Info_VID_Port>
-    <vif:Manufacturer_Info_PID_Port value="20570">505A</vif:Manufacturer_Info_PID_Port>
+    <vif:Manufacturer_Info_Supported_Port value="false" />
     <vif:Chunking_Implemented_SOP value="true" />
     <vif:Unchunked_Extended_Messages_Supported value="false" />
     <vif:Security_Msgs_Supported_SOP value="false" />
