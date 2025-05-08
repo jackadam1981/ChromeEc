@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d228a4e_3dccbacd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2025-05-08T23:32:05Z",
+      "side": 1,
+      "message": "Jett, you asked if any development of HyperDebug was pending.\n\nThis made me realize that once or twize, the OpenTitan team has asked me if HyperDebug would be able to generate a 96MHz reference clock, in case they needed it for brinup of engineering silicon that had not gone through the normal factory configuration process.\n\nThe STM32L5 MCU does have three independent PLL circuits, one of which is used to generate the 110MHz core clock.  But I found that digital audio functionality can be used to output clocks from the other two PLL circuits, which enables about 10 pins to be able to generate frequencies that are not divisor of the core clock frequency.\n\nIn relation to that work, I also noticed that HyperDebug currently can only rely on an internal RC-oscillator for its clock, which makes it quite jittery.  If we ever run our ot STM32 demo boards, and have to manufacture HyperDebug base-boards ourselves, then populating the X3 with a 16MHz crystal would offer much better clock stability.  And avoid +/- 1% uncertainty on all timing measurements done by HyperDebug.\n\nI do not know if any of the above will ever be relevant, but I thought that I would throw these two patches out here.  Whether we want to merge them right away, so that they do not rot, or just keep them in Gerrit, I will let you decide.",
+      "revId": "108e691ac6d1367e429a73d760eb5824ff9333fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
