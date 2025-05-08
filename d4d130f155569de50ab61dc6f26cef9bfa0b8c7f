@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a52fab0_33a888c7",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f767f398_55f111d6",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6bb9353_5b39642d",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee2d669_539fdae2",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6bb9353_5b39642d",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0367712_154bebd3",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-05-05T23:04:06Z",
       "side": 1,
       "message": "This can be simplified to:\n```\n#ifdef CONFIG_PLATFoRM_EC_POWER_BUTTON_DEBOUNCE\n\tif (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {\n\t\thook_call_deferred(\u0026power_button_change_deferred_data,\n\t\t\t\t   power_button.debounce_us_ap_off);\n\t} else {\n\t\thook_call_deferred(\u0026power_button_change_deferred_data,\n\t\t\t\t   power_button.debounce_us_ap_on);\n\t}\n\n#else\n```",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 5
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51aa5d4f_dd4e09c0",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0367712_154bebd3",
       "range": {
         "startLine": 227,
         "startChar": 0,
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddf5860_38a418e3",
+        "filename": "include/button.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e38b3330_423d68ee",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc7c5570_e4ad1d5b",
@@ -141,6 +237,30 @@
       "writtenOn": "2025-05-05T23:04:06Z",
       "side": 1,
       "message": "This Kconfig is better described as a power button debounce.\n\n```suggestion\nconfig PLATFORM_EC_POWER_BUTTON_DEBOUNCE\n\tbool \"Power button debounce\"\n\thelp\n\t  Configure the debounce of the power button separate from the\n\t  the other buttons in the system.  When this is enable, you must\n\t  also configure the debounce time used when the AP is \n\t  powered on and when the AP is powered off.\n```",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 68
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa466a1a_c24e0ce7",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc7c5570_e4ad1d5b",
       "range": {
         "startLine": 746,
         "startChar": 0,
@@ -174,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80893a3_579fe857",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9a079d_072c17db",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 764,
+        "endChar": 0
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4dfd4a6_f39f85a4",
@@ -187,6 +331,30 @@
       "writtenOn": "2025-05-05T23:04:06Z",
       "side": 1,
       "message": "This feature will only be available on Zephyr EC projects.  There is no need to create mapping from the Zephyr Kconfig namespace to the legacy EC namespace.\n\nDelete the changes in config_chip.h",
+      "range": {
+        "startLine": 1159,
+        "startChar": 0,
+        "endLine": 1173,
+        "endChar": 0
+      },
+      "revId": "d4d130f155569de50ab61dc6f26cef9bfa0b8c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7c4cdd_758ecc18",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-05-08T07:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4dfd4a6_f39f85a4",
       "range": {
         "startLine": 1159,
         "startChar": 0,
