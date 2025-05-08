@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33e2d27_818c0df3",
+        "filename": "zephyr/program/ocelot/interrupts.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-08T20:43:32Z",
+      "side": 1,
+      "message": "The interrupt GPIOs are all named slightly differently for each of the boards. Let\u0027s move this file under `ocelot_microchip/` as well.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
