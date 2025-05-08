@@ -16,6 +16,47 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "f0e9a52383af95bd3362f1ff412a92181f65e2d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27b6fa9_b0469e55",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2757,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-08T22:41:24Z",
+      "side": 1,
+      "message": "Ideally, this function should be called from the gpio irq callback function and at the end of st_irq_run as it currently is. We could think of this as a future refactoring improvement. I think it would be good to add some comment here similar to what has now been deleted to explain why at the end of st_irq_run, this function is being called to read the ti-pdc irq status registers for both ports.",
+      "range": {
+        "startLine": 2757,
+        "startChar": 12,
+        "endLine": 2757,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6a76f992_bc4ce8b2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/usbc/pdc_tps6699x.c",
+              "range": {
+                "startLine": 2757,
+                "startChar": 0,
+                "endLine": 2757,
+                "endChar": 0
+              },
+              "replacement": "/* TODO(b/361000000): This function should be called from the gpio irq callback\n * function and at the end of st_irq_run as it currently is.\n */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f0e9a52383af95bd3362f1ff412a92181f65e2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
