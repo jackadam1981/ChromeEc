@@ -70,6 +70,30 @@
       },
       "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca2c572_7e07e971",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2025-05-09T07:41:00Z",
+      "side": 1,
+      "message": "Yes, measuring both values will make the result be more accurate.",
+      "parentUuid": "0b83320a_22e71866",
+      "range": {
+        "startLine": 918,
+        "startChar": 21,
+        "endLine": 918,
+        "endChar": 33
+      },
+      "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
