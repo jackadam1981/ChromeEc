@@ -22,6 +22,30 @@
       },
       "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1154ef6_4b4d59ce",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2025-05-09T01:40:26Z",
+      "side": 1,
+      "message": "Correct, for FPC1025 and Elan 80SG, who utilize both powers, PP3300_FP serves as VCCIO and PP1800_FP as VCC. But for Egis\u0027s sensor, it only utilizes PP3300_FP.",
+      "parentUuid": "1dd92762_0c3ed726",
+      "range": {
+        "startLine": 918,
+        "startChar": 21,
+        "endLine": 918,
+        "endChar": 33
+      },
+      "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
