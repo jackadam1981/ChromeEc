@@ -16,6 +16,24 @@
       "message": "@bettytseng@google.com Any idea why the `pp3300_mcu_mw` is higher on v4 when running the same firmware version? The numbers are still small, so it probably doesn\u0027t matter too much.",
       "revId": "54dc6e70fd0e7fd837a123f27f571244a0726a55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd22a7a_8adfc4bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570622
+      },
+      "writtenOn": "2025-05-09T02:06:06Z",
+      "side": 1,
+      "message": "Comparing the schematics of v3 and v4, the most probable cause for observed differences is the different current sensor ICs, as the PP3300_MUC usage remains largely unchanged between two versions. Specifically, v4 employs the more accurate PAC1954T-E/4MX (offset: ±25uV, gain error: 0.1%, 1-LSB step size: 1.4uV, 16-bit resolution) compared to v3\u0027s INA3221AIRGVR (offset: ±80uV, gain error: 0.25%, 1-LSB step size: 40uV, 13-bit resolution).\"",
+      "parentUuid": "2ae272ec_dd525dac",
+      "revId": "54dc6e70fd0e7fd837a123f27f571244a0726a55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
