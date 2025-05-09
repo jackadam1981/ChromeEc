@@ -46,6 +46,30 @@
       },
       "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b83320a_22e71866",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-09T05:48:10Z",
+      "side": 1,
+      "message": "@bettytseng@google.com So do we need to measure both values and add them to reflect real power consumption of a FP sensor?",
+      "parentUuid": "d1154ef6_4b4d59ce",
+      "range": {
+        "startLine": 918,
+        "startChar": 21,
+        "endLine": 918,
+        "endChar": 33
+      },
+      "revId": "2293dcbedd2b4d27b205df9249da8bdcd31e6e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
