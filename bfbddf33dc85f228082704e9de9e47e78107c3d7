@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9943e68b_aeaf8b6f",
+        "filename": "board/cr50/tpm2/trusty_storage_mac.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-05-09T18:49:12Z",
+      "side": 1,
+      "message": "add a BUILD_ASSERT that the tdp var name and td var name are the same size.",
+      "fixSuggestions": [
+        {
+          "fixId": "52239db7_4391325f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/cr50/tpm2/trusty_storage_mac.c",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "BUILD_ASSERT(sizeof(g_trusty_tdp_var_name) \u003d\u003d sizeof(g_trusty_td_var_name));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bfbddf33dc85f228082704e9de9e47e78107c3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
