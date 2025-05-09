@@ -25,6 +25,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.utils:
     timeout: 500
@@ -77,6 +80,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/tps6699x.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.generic.api_null_check:
     timeout: 300
@@ -278,6 +284,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.ppm_console:
     extra_configs:
@@ -321,6 +330,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.runtime_port_config.one_pdc:
     extra_configs:
@@ -330,6 +342,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.runtime_port_config.discontiguous:
     extra_configs:
@@ -339,6 +354,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.runtime_port_config.two_pdcs:
     extra_configs:
@@ -348,3 +366,6 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
