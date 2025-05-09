@@ -60,6 +60,30 @@
       ],
       "revId": "a40c63d6cffdd33ce32b3fe4438d2454851898af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe1402c_ef6c674e",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-09T09:08:13Z",
+      "side": 1,
+      "message": "Yes, It is useful for identifying which SKU has which EC as per build matrix used. So I feel to keep these comments.",
+      "parentUuid": "0b560ced_1efdda40",
+      "range": {
+        "startLine": 75,
+        "startChar": 13,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "a40c63d6cffdd33ce32b3fe4438d2454851898af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
