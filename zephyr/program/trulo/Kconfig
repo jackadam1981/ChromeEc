@@ -20,6 +20,12 @@ config BOARD_PUJJOLO
 	  Build Google Pujjolo reference board.  This board uses an Intel TWL SoC
 	  and Nuvoton EC
 
+config BOARD_PUJJOQUINCE
+	bool "Google Pujjoquince Board"
+	help
+	  Build Google Pujjoquince reference board.  This board uses an Intel
+	  TWL SoC and Nuvoton EC
+
 config BOARD_ULDRENITE
 	bool "Google Uldrenite Board"
 	help
