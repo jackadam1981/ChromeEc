@@ -34,6 +34,24 @@
       "parentUuid": "9fa2edee_49f51b3a",
       "revId": "c813db354ed14e8700eb807b1162175acf5647b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c7034c_63ee8d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3748868
+      },
+      "writtenOn": "2025-05-09T19:41:59Z",
+      "side": 1,
+      "message": "@honscheid@google.com Jeremy is evaluating flakiness of tests. We must fix these tests or disable them. If you would like to keep them around, please provide some estimate of the risk to disabling them, as well as a timeline for fixing them.\n\n@jbettis@chromium.org similarly, please provide some data showing the long-term impact of having these tests enabled, to document this decision.",
+      "parentUuid": "9fa2edee_49f51b3a",
+      "revId": "c813db354ed14e8700eb807b1162175acf5647b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
