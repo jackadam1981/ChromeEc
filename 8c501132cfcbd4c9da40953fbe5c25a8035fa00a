@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3396563_394577d4",
+        "filename": "zephyr/program/ocelot/interrupts.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-09T09:56:00Z",
+      "side": 1,
+      "message": "I will take care this too if we are considering power_signals and other files to keep separately for microchip as we are discussing in comment: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6516872/comment/bb5bbc7c_e8d00c19/\n\nor other way is to redefine these gpios for other boards in project.overlay file whatever is different. \n\n@honscheid@google.com and @caveh@chromium.org, Please confirm on the same.",
+      "parentUuid": "a33e2d27_818c0df3",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb5bbc7c_e8d00c19",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-05-08T22:21:40Z",
       "side": 1,
       "message": "would it make sense to move this file up one level and call it something like\nwclrvp_power_signals? with the exception of the GPIO defs which can move to\nproject.overlay, the rest will be common among the 3 ECs, right?",
+      "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf905f51_48a02338",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-09T09:56:00Z",
+      "side": 1,
+      "message": "Hi @caveh@chromium.org, This change is made as per @honscheid@google.com suggestion mentioned in comment: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6516872/comment/dda18619_8ba420c9/ \n\n@caveh@chromium.org / @honscheid@google.com, Please confirm what is suggested here to consider.",
+      "parentUuid": "bb5bbc7c_e8d00c19",
       "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
