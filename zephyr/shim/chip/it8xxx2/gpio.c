@@ -38,10 +38,14 @@ int gpio_config_unused_pins(void)
 		 * IOs cause the leakage current. Set unused pins as input with
 		 * internal PU to prevent extra power consumption.
 		 */
-		if (unused_pin_configs[i].flags == 0)
+		if (unused_pin_configs[i].flags == 0) {
 			flags = GPIO_INPUT | GPIO_PULL_UP;
-		else
+		} else if (unused_pin_configs[i].flags == 1) {
+			LOG_ERR("[gpio]unused_pin_configs i=%d",unused_pin_configs[i].flags);
+			flags = GPIO_DISCONNECTED;
+		} else {
 			flags = unused_pin_configs[i].flags;
+		}
 
 		rv = gpio_pin_configure(dev, unused_pin_configs[i].pin, flags);
 
