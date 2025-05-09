@@ -14,6 +14,7 @@
 #include "../gpios.dtsi"
 #include "../interrupts.dtsi"
 #include "../adc.dtsi"
+#include "../fan.dtsi"
 
 /* bluey overrides follow... */
 
