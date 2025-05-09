@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa2edee_49f51b3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-09T15:40:16Z",
+      "side": 1,
+      "message": "Are these causing build failures and what are the consequences of leaving them enabled? These tests validate a complex new feature that several boards are relying on right now. I\u0027d like to keep them running while we figure out the coverage glitch.",
+      "revId": "c813db354ed14e8700eb807b1162175acf5647b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
