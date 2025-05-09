@@ -25,8 +25,8 @@
 		tp-ec-typec-sink-disable2{
 			gpios = <&pca95xx_1 11  GPIO_INPUT>;
 		};
-		pd-aic-detect-slot-id {
-			gpios = <&pca95xx_1 10  GPIO_INPUT>;
+		pd_pow_detect: pd-aic-detect-slot-id {
+			gpios = <&pca95xx_1 10  (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		tp-ec-io1-1 {
 			gpios = <&pca95xx_1 9  GPIO_INPUT>;
@@ -55,8 +55,8 @@
 		mod-tcss2-detect {
 			gpios = <&pca95xx_1 1  GPIO_INPUT>;
 		};
-		mod-tcss1-detect {
-			gpios = <&pca95xx_1 0  GPIO_INPUT>;
+		pd_pow_p2_detect: mod-tcss1-detect {
+			gpios = <&pca95xx_1 0  (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 
 		/* KBD IOEX configuration, IOEX present on GSC AIC */
