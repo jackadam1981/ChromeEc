@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b752ce6_9880d3b6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-09T18:00:28Z",
+      "side": 1,
+      "message": "b:358035069 shows PROT.SRC.2 and other SenderResponseTimer tests passing on awasuki. I think that\u0027s good enough to submit this CL as an incremental improvement.",
+      "parentUuid": "478f41ef_aff50a9d",
+      "revId": "e19ca1314339c7281db76718a81bcdc7800cc05c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4bfef2_8b5b3b1a",
