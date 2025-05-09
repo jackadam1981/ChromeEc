@@ -22,6 +22,11 @@ if(DEFINED CONFIG_BOARD_PUJJOLO)
 	add_subdirectory(pujjolo)
 endif()
 
+if(DEFINED CONFIG_BOARD_PUJJOQUINCE)
+	project(pujjoquince)
+	add_subdirectory(pujjoquince)
+endif()
+
 if(DEFINED CONFIG_BOARD_ULDRENITE)
 	project(uldrenite)
 	add_subdirectory(uldrenite)
