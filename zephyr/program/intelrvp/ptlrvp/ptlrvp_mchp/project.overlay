@@ -73,3 +73,15 @@
           row-size = <8>;
           col-size = <13>;
 };
+
+&pd_pow_port0 {
+	zephyr,deferred-init;
+};
+
+&pd_pow_port1 {
+	zephyr,deferred-init;
+};
+
+&pd_pow_port2 {
+	zephyr,deferred-init;
+};
