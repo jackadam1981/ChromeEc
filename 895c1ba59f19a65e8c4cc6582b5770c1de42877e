@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aee56dc_cd5433e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-09T17:58:20Z",
+      "side": 1,
+      "message": "This passed all of the SenderResponseTimer tests on awasuki in b:358035069. I think that makes this CL an incremental improvement, and we can go ahead and submit it.",
+      "parentUuid": "d5de5cdb_142427f3",
+      "revId": "895c1ba59f19a65e8c4cc6582b5770c1de42877e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b28097f7_55f411e0",
