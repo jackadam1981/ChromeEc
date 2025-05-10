@@ -1,4 +1,4 @@
-/* Copyright 2024 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -44,10 +44,6 @@
 			VIVALDI_TK_ACCESSIBILITY        /* T13 */
 			VIVALDI_TK_DICTATE              /* T14 */
 		>;
-		capabilities = <(VIVALDI_KEYBD_CAP_FUNCTION_KEYS |
-				VIVALDI_KEYBD_CAP_NUMERIC_KEYPAD |
-				VIVALDI_KEYBD_CAP_SCRNLOCK_KEY |
-				VIVALDI_KEYBD_CAP_ASSISTANT_KEY)>;
 	};
 };
 
@@ -120,17 +116,17 @@
 		0xff  /* C4 */
 		0xff  /* C5 */
 		0xff  /* C6 */
-		0xa0  /* C7 */
+		0xa4  /* C7 */
 		0xff  /* C8 */
 		0xf7  /* C9 */
-		0x01  /* C10 */
+		0x55  /* C10 */
 		0xff  /* C11 */
 		0xff  /* C12 */
 		0x40  /* C13 */
 		0x0a  /* C14 */
 		0x40  /* C15 */
-		0x01  /* C16 */
-		0xc4  /* C17 */
+		0xff  /* C16 */
+		0xff  /* C17 */
 	>;
 
 	kso-gpio {
