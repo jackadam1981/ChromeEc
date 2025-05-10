@@ -81,6 +81,24 @@
       "parentUuid": "bb5bbc7c_e8d00c19",
       "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b554af_19668379",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-10T00:36:14Z",
+      "side": 1,
+      "message": "Google needs to sync internally on how we wish to structure this project directory (keep boards separate vs share portions of the DT). It\u0027s kind of a new approach to be placing the RVP w/ multiple AICs and future WCL boards all together. I want to brainstorm a solution that keeps the DTs tidy and not overly interdependent but does not involve excessive duplication. \n\nWould you opposed if I download these changes, pull in and reconcile some ITE/NCPX stuff, and reupload a CL stack?",
+      "parentUuid": "bf905f51_48a02338",
+      "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
