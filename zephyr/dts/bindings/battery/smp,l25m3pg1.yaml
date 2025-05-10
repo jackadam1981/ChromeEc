@@ -2,21 +2,21 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-description: "COSMX L25X3PG1"
-compatible: "cosmx,l25x3pg1"
+description: "SMP L25M3PG1"
+compatible: "smp,l25m3pg1"
 
 include: battery-smart.yaml
 
 properties:
   enum-name:
     type: string
-    default: "cosmx,l25x3pg1"
+    default: "smp,l25m3pg1"
 
   # Fuel gauge
   manuf_name:
-    default: "COSMX"
+    default: "SMP"
   device_name:
-    default: "L25X3PG1"
+    default: "L25M3PG1"
   ship_mode_reg_addr:
     default: 0x34
   ship_mode_reg_data:
@@ -38,7 +38,7 @@ properties:
   voltage_min:
     default: 9000
   precharge_current:
-    default: 226
+    default: 223
   start_charging_min_c:
     default: 0
   start_charging_max_c:
