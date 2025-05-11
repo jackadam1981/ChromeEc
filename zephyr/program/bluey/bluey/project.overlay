@@ -26,3 +26,11 @@
 	offset = <0x50000>;
 	size = <0x1000>;
 };
+
+/* AP interface */
+&shi0 {
+	status = "okay";
+	pinctrl-0 = <&shi_gp46_47_53_55>;
+	pinctrl-1 = <&shi_gpio_gp46_47_53_55>;
+	pinctrl-names = "default", "sleep";
+};
