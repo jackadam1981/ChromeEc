@@ -42,5 +42,10 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "power_signal_interrupt";
 		};
+		int_sys_rst: sys_rst {
+			irq-pin = <&gpio_sys_rst_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "chipset_sys_rst_interrupt";
+		};
 	};
 };
