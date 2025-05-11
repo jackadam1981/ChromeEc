@@ -164,6 +164,12 @@ static timestamp_t power_off_deadline;
 /* Force AP power on (used for recovery keypress) */
 static int auto_power_on;
 
+/* 1 if long warm reset is going on */
+static char long_warm_reset = 0;
+
+/* 1 if the system was powered on before going into long warm reset sequence */
+static int restore_power_on = 0;
+
 enum power_request_t {
 	POWER_REQ_NONE,
 	POWER_REQ_OFF,
@@ -365,6 +371,54 @@ static int wait_pmic_pwron(int enable, unsigned int timeout)
 		return EC_ERROR_UNKNOWN;
 	}
 	return EC_SUCCESS;
+}
+
+void sys_rst_timer_expired(struct k_timer *timer_id)
+{
+	/*
+	 * Timer expired before SYS_RST_ODL deasserted perform a
+	 * long warm reset
+	 */
+	power_request = POWER_REQ_OFF;
+	long_warm_reset = 1;
+	/*
+	 * Preserve the AP's power-on state so it can be reinstated once the
+	 * long warm reset sequence is complete.
+	 */
+	restore_power_on = is_pmic_pwron();
+	task_wake(TASK_ID_CHIPSET);
+}
+K_TIMER_DEFINE(sys_rst_timer, sys_rst_timer_expired, NULL);
+
+void chipset_sys_rst_interrupt(enum gpio_signal signal)
+{
+	/*
+	 * long warm reset sequence completes once SYS_RST_ODL deasserts.
+	 */
+	if (long_warm_reset &&
+	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_sys_rst_odl))) {
+		long_warm_reset = 0;
+		if (restore_power_on) {
+			power_request = POWER_REQ_ON;
+			restore_power_on = 0;
+			task_wake(TASK_ID_CHIPSET);
+		}
+	} else {
+		/*
+		 * Start a 20ms timer if sys_rst_odl is asserted
+		 * 1. if the timer expiers before the sys_rst_odl pin is
+		 * deasserted perform a long warm reset sequence
+		 * 2. if the SYS_RST_ODL deasserted before the timer expires
+		 * request a EC initiated warm reset
+		 */
+		if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_sys_rst_odl))) {
+			k_timer_start(&sys_rst_timer, K_MSEC(20), K_NO_WAIT);
+		} else {
+			k_timer_stop(&sys_rst_timer);
+			power_request = POWER_REQ_WARM_RESET;
+			task_wake(TASK_ID_CHIPSET);
+		}
+	}
 }
 
 /**
