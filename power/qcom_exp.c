@@ -130,6 +130,9 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
  */
 #define PMIC_POWER_OFF_DELAY (150 * MSEC)
 
+/* Timeout to trigger the long warm reset sequence. */
+#define LONG_WARM_RESET_SEQ_TRIGGER_TIMEOUT (20 * MSEC)
+
 /* The AP_RST_L transition count of a normal AP warm reset */
 #define EXPECTED_AP_RST_TRANSITIONS 3
 
@@ -156,12 +159,23 @@ static timestamp_t power_off_deadline;
 /* Force AP power on (used for recovery keypress) */
 static int auto_power_on;
 
+/* 1 if long warm reset is going on */
+static char long_warm_reset;
+
+/*
+ *  Stores the power_state before performing long warm reset
+ *  This variable is initialized to 0 i.e. POWER_G3
+ */
+static enum power_state power_state_before_warm_reset;
+
 enum power_request_t {
 	POWER_REQ_NONE,
 	POWER_REQ_OFF,
 	POWER_REQ_ON,
 	POWER_REQ_COLD_RESET,
 	POWER_REQ_WARM_RESET,
+	POWER_REQ_ON_LONG_WARM_RESET,
+	POWER_REQ_OFF_LONG_WARM_RESET,
 
 	POWER_REQ_COUNT,
 };
@@ -175,6 +189,7 @@ enum power_off_event_t {
 	POWER_OFF_CANCEL,
 	POWER_OFF_BY_POWER_BUTTON_PRESSED,
 	POWER_OFF_BY_LONG_PRESS,
+	POWER_OFF_BY_LONG_WARM_RESET,
 	POWER_OFF_BY_POWER_GOOD_LOST,
 	POWER_OFF_BY_POWER_REQ_OFF,
 	POWER_OFF_BY_POWER_REQ_RESET,
@@ -190,6 +205,7 @@ enum power_on_event_t {
 	POWER_ON_BY_AUTO_POWER_ON,
 	POWER_ON_BY_AC_ON,
 	POWER_ON_BY_LID_OPEN,
+	POWER_ON_BY_LONG_WARM_RESET,
 	POWER_ON_BY_POWER_BUTTON_PRESSED,
 	POWER_ON_BY_POWER_REQ_ON,
 	POWER_ON_BY_POWER_REQ_RESET,
@@ -370,6 +386,61 @@ static int wait_pmic_pwron(int enable, unsigned int timeout)
 		return EC_ERROR_UNKNOWN;
 	}
 	return EC_SUCCESS;
+}
+
+static void sys_rst_timer_expired(void)
+{
+	/*
+	 * Timer expired before SYS_RST_ODL deasserted perform a
+	 * long warm reset
+	 */
+	power_request = POWER_REQ_OFF_LONG_WARM_RESET;
+	long_warm_reset = 1;
+	/*
+	 * Preserve the AP's power-on state so it can be reinstated once the
+	 * long warm reset sequence is complete.
+	 */
+	power_state_before_warm_reset = power_get_state();
+	task_wake(TASK_ID_CHIPSET);
+}
+DECLARE_DEFERRED(sys_rst_timer_expired);
+
+void chipset_sys_rst_interrupt(enum gpio_signal signal)
+{
+	/*
+	 * Start a timer for LONG_WARM_RESET_SEQ_TRIGGER_TIMEOUT, if SYS_RST_ODL
+	 * is asserted
+	 * 1. if the timer expiers before the SYS_RST_ODL pin is
+	 * deasserted perform a long warm reset sequence
+	 * 2. if the SYS_RST_ODL deasserted before the timer expires
+	 * request a EC initiated warm reset
+	 */
+
+	if (!gpio_get_level(GPIO_WARM_RESET_L)) {
+		hook_call_deferred(&sys_rst_timer_expired_data,
+				   LONG_WARM_RESET_SEQ_TRIGGER_TIMEOUT);
+	} else {
+		if (long_warm_reset) {
+			/*
+			 * long warm reset sequence completes once SYS_RST_ODL
+			 * deasserts.
+			 */
+			long_warm_reset = 0;
+			if (power_state_before_warm_reset == POWER_S0) {
+				power_request = POWER_REQ_ON_LONG_WARM_RESET;
+				power_state_before_warm_reset = POWER_G3;
+				task_wake(TASK_ID_CHIPSET);
+			}
+		} else {
+			/*
+			 * Cancel timer, since SYS_RST_ODL asserted before
+			 * timeout.
+			 */
+			hook_call_deferred(&sys_rst_timer_expired_data, -1);
+			power_request = POWER_REQ_WARM_RESET;
+			task_wake(TASK_ID_CHIPSET);
+		}
+	}
 }
 
 /**
@@ -603,6 +674,8 @@ static uint8_t check_for_power_on_event(void)
 
 	if (power_request == POWER_REQ_ON) {
 		ret = POWER_ON_BY_POWER_REQ_ON;
+	} else if (power_request == POWER_REQ_ON_LONG_WARM_RESET) {
+		ret = POWER_ON_BY_LONG_WARM_RESET;
 	} else if (power_request == POWER_REQ_COLD_RESET) {
 		ret = POWER_ON_BY_POWER_REQ_RESET;
 	} else if (auto_power_on) {
@@ -649,9 +722,15 @@ static uint8_t check_for_power_off_event(void)
 	} else if (power_request == POWER_REQ_COLD_RESET) {
 		/*
 		 * The power_request flag will be cleared later
-		 * in check_for_power_on_event() in S5.
+		 * in check_for_power_on_event() in G3.
 		 */
 		return POWER_OFF_BY_POWER_REQ_RESET;
+	} else if (power_request == POWER_REQ_OFF_LONG_WARM_RESET) {
+		/*
+		 * The power_request flag will be cleared later
+		 * during the check_for_power_on_event in G3.
+		 */
+		return POWER_OFF_BY_LONG_WARM_RESET;
 	}
 	/* Clear invalid request */
 	power_request = POWER_REQ_NONE;
