@@ -472,7 +472,7 @@ static int set_system_power(int enable)
  *
  * @return EC_SUCCESS or error
  */
-static int set_pmic_pwron(int enable)
+static int set_pmic_pwron(int enable, uint8_t event)
 {
 	int ret;
 
@@ -507,11 +507,22 @@ static int set_pmic_pwron(int enable)
 	 * falls back to the next functions, which cuts off the system power.
 	 */
 
-	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+	/* Allows signal passthrough after power state transitions,
+	 * ensuring the PMIC's power sequence remains undisturbed for QC_EXP
+	 * SoCs.
+	 */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_lid_open_od),
+			gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_lid_open)));
+	gpio_pin_set_dt(
+		GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_acok),
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_acok_od_z5)));
+	if (event == POWER_ON_BY_POWER_BUTTON_PRESSED)
+		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
 	if (!enable)
 		gpio_set_level(GPIO_PMIC_RESIN_L, 0);
 	ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
-	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+	if (event == POWER_ON_BY_POWER_BUTTON_PRESSED)
+		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
 	if (!enable)
 		gpio_set_level(GPIO_PMIC_RESIN_L, 1);
 
@@ -618,7 +629,7 @@ static void power_off_seq(uint8_t shutdown_event)
 			CPRINTS("Warning: POWER_GOOD up again after lost");
 		} else {
 			/* Do a graceful way to shutdown PMIC/AP first */
-			set_pmic_pwron(0);
+			set_pmic_pwron(0, shutdown_event);
 			crec_usleep(PMIC_POWER_OFF_DELAY);
 		}
 	}
@@ -656,7 +667,7 @@ static void power_off_seq(uint8_t shutdown_event)
  *
  * @return EC_SUCCESS or error
  */
-static int power_on_seq(void)
+static int power_on_seq(uint8_t poweron_event)
 {
 	int ret;
 
@@ -667,7 +678,7 @@ static int power_on_seq(void)
 	/* Enable signal interrupts */
 	power_signal_enable_interrupt(GPIO_AP_RST_L);
 
-	ret = set_pmic_pwron(1);
+	ret = set_pmic_pwron(1, poweron_event);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("POWER_GOOD not seen in time");
 		return ret;
@@ -977,7 +988,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		 */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
-		if (power_on_seq() != EC_SUCCESS) {
+		if (power_on_seq(boot_from_off) != EC_SUCCESS) {
 			power_off_seq(shutdown_from_on);
 			boot_from_off = 0;
 			return POWER_G3;
