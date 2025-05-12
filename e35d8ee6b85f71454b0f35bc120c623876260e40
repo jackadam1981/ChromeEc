@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb4b26c_a2949e1c",
+        "filename": "common/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "It is a Zephyr config. Using it outside of the `/zephyr` directory is a layer violation.\n\nI understand your intention. The constants `CONFIG_EC_PROTECTED_STORAGE_OFF` and `CONFIG_EC_WRITABLE_STORAGE_OFF` come from the `binman`\u0027s `wp_ro` and `ec-rw` nodes. I saw the following CL defined the `binman` node. You might shift the CL order.\n\nAnd the constants `CONFIG_RO_STORAGE_OFF` and `CONFIG_RW_STORAGE_OFF` are chip specific, and the RTK chip should have its own values, which should be defined in the Zephyr shim layer, i.e. `zephyr/shim/chip/`.",
+      "range": {
+        "startLine": 763,
+        "startChar": 7,
+        "endLine": 763,
+        "endChar": 24
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2bc4fd7_53ddf7b8",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "17KB, that ends up to 0x2000_b400 below?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5393760f_bdc3c747",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "Nit: Make the format consistent and aligned, like\n\t\t\t\t\t0x2000_0000 - 0x2000_7000: chrome-loader (28KB)\n\t\t\t\t\t0x2000_7000 - 0x2000_b000: customer use (16KB)\n\t\t\t\t\t0x2000_b400 - 0x2004_b400: code (256KB)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4e721364_56abc072",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/Kconfig.defconfig",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "#\t\t\t\t0x2000_0000 - 0x2000_7000: chrome-loader (28KB)\n#\t\t\t\t0x2000_7000 - 0x2000_b000: customer use (16KB)\n#\t\t\t\t0x2000_b400 - 0x2004_b400: code (256KB)\n#\t\t\t\t0x2004_b400 - 0x2005_0000: customer use (19KB)\n#\t\t\t\t0x2005_0000 - 0x2006_0000: data (64KB)\n"
+            },
+            {
+              "path": "zephyr/boards/google/realtek/Kconfig.defconfig",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "#\t\t\t\t0x6000_0000 - 0x6007_FFFF: RW\n#\t\t\t\t0x6008_0000 - 0x600E_FFFF: RO\n#\t\t\t\t0x600F_0000 - 0x600F_FFFF: chrome-loader\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6d47d1_fe1c60df",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "This and the below configs are related to the EC app, instead of the Zephyr board. They should be defined in the `zephyr/app/ec/chip/` directory.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "00cb5eb0_0667e667",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/Kconfig.defconfig",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15149d7f_cfcc0945",
+        "filename": "zephyr/include/cros/realtek/realtek.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "Nit: Use tabs for alignment.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bd76c286_65ac0237",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/cros/realtek/realtek.dtsi",
+              "range": {
+                "startLine": 7,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "\tchosen {\n"
+            },
+            {
+              "path": "zephyr/include/cros/realtek/realtek.dtsi",
+              "range": {
+                "startLine": 9,
+                "startChar": 0,
+                "endLine": 10,
+                "endChar": 0
+              },
+              "replacement": "\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780fe71f_6ae1098e",
+        "filename": "zephyr/program/minimal/BUILD.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "Just don\u0027t add this commented line in this CL.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 73
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ac4921b1_bafbc5d3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/minimal/BUILD.py",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbea5644_ec4d0583",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "Remove these lines as the `register_raw_project()` defaults the same values.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "824ac832_a4920d02",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/configlib.py",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 73,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/zmake/zmake/configlib.py",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "    return register_raw_project(**kwargs)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f343bda_2fcd1b37",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:08:01Z",
+      "side": 1,
+      "message": "Call `register_raw_project()` per the comment of this method.",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "602f38a7_23c3d8be",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/zmake/zmake/configlib.py",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "    return register_raw_project(**kwargs)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
