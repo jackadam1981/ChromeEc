@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeae1c6b_5d2922d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-12T22:32:32Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "358eda9b_25e407ad",
+      "revId": "74627073c49c8f57984dac0629a200ba8dac3429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650e5769_7d87162f",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70e3001_e3cae527",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-12T22:32:32Z",
+      "side": 1,
+      "message": "This assumes modular tcss power rail rework is in place.",
+      "parentUuid": "650e5769_7d87162f",
+      "revId": "74627073c49c8f57984dac0629a200ba8dac3429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae5a0fb_56833018",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-05-12T15:24:15Z",
       "side": 1,
       "message": "Is there really a use case for checking port 0/1 separately?",
+      "revId": "74627073c49c8f57984dac0629a200ba8dac3429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c10afa0_36414f25",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/usbc_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-12T22:32:32Z",
+      "side": 1,
+      "message": "I do not think so, but just in case PD AIC is not present.",
+      "parentUuid": "0ae5a0fb_56833018",
       "revId": "74627073c49c8f57984dac0629a200ba8dac3429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
