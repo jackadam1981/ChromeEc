@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208eb418_a1bc7997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-12T08:43:01Z",
+      "side": 1,
+      "message": "[The warning](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/kernel/CMakeLists.txt;l\u003d176-182;drc\u003d9602f3cc64071cd7cd9862581006499e8bbc3e9c) is only printed if the default `CONFIG_HEAP_MEM_POOL_SIZE` was changed. [Here](https://github.com/zephyrproject-rtos/zephyr/blob/e1f258d8e21f30d9272b65bf59a0030519adf82e/kernel/Kconfig#L757-L763) is how `HEAP_MEM_POOL_ADD_SIZE_` configs work.\n\nHow about adding\n```\nconfig HEAP_MEM_POOL_ADD_SIZE_BORINGSSL\n  def_int 64\n  help\n    Your description why we need it.\n```\nto [BoringSSL Kconfig](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/third_party/boringssl/Kconfig)? Please note that we may still want to keep `CONFIG_HEAP_MEM_POOL_SIZE` here to get warning if memory requirements change.",
+      "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
