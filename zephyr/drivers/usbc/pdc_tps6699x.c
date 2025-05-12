@@ -18,7 +18,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/smf.h>
-LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
+LOG_MODULE_REGISTER(tps6699x, LOG_LEVEL_DBG);
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
 #include "usbc/utils.h"
@@ -349,6 +349,8 @@ static void task_ucsi(struct pdc_data_t *data,
 static void task_raw_ucsi(struct pdc_data_t *data);
 static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data);
 static void tps_check_and_notify_irq(void);
+static int write_task_cmd(struct pdc_config_t const *cfg,
+			  enum command_task task, union reg_data *cmd_data);
 
 /**
  * @brief PDC port data used in interrupt handler
@@ -525,6 +527,30 @@ static void st_irq_run(void *o)
 		}
 
 		if (pdc_interrupt.plug_insert_or_removal) {
+			if (!pdc_interrupt
+				     .ucsi_connector_status_change_notification) {
+				union reg_data cmd_data;
+				union connector_status_t *cs;
+
+				memset(cmd_data.data, 0, sizeof(cmd_data.data));
+				/* Byte 0: UCSI Command Code */
+				cmd_data.data[0] = UCSI_GET_CONNECTOR_STATUS;
+				/* Byte 1: Data length per UCSI spec */
+				cmd_data.data[1] = 0;
+				/* Connector Number: Byte 2, bits 6:0. Bit 7 is
+				 * reserved */
+				cmd_data.data[2] = cfg->connector_number + 1;
+				write_task_cmd(cfg, COMMAND_TASK_UCSI,
+					       &cmd_data);
+				k_msleep(100);
+				tps_rw_data_for_cmd1(&cfg->i2c, &cmd_data,
+						     I2C_MSG_READ);
+				cs = (union connector_status_t *)&cmd_data
+					     .data[1];
+				LOG_INF("C%d: Ret %x, CONNECTOR_STATUS_Change bits: 0x%04x",
+					cfg->connector_number, cmd_data.data[0],
+					cs->raw_conn_status_change_bits);
+			}
 			atomic_set(&data->set_rdo_possible, 0);
 			atomic_set(&data->sink_enable_possible, 0);
 		}
@@ -612,6 +638,7 @@ static void st_init_run(void *o)
 
 	/* Set PDC notifications */
 	data->cmd = CMD_SET_NOTIFICATION_ENABLE;
+	LOG_INF("CMD_SET_NOTIFICATION_ENABLE");
 	/*
 	 * Need to post PDC_CMD_EVENT so the command isn't cleared in
 	 * st_idle_entry
@@ -1723,6 +1750,7 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 
 	/* Set the currently running UCSI command. */
 	data->running_ucsi_cmd = ucsi_command;
+	LOG_INF("ucsi cmd: %x", data->running_ucsi_cmd);
 
 	memset(cmd_data.data, 0, sizeof(cmd_data.data));
 	/* Byte 0: UCSI Command Code */
@@ -1908,6 +1936,7 @@ static void st_task_wait_run(void *o)
 		break;
 	}
 
+	LOG_INF("ucsi cmd done: %x", data->running_ucsi_cmd);
 	switch (data->running_ucsi_cmd) {
 	case UCSI_GET_CAPABILITY:
 		offset = 1;
