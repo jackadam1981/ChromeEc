@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "128b153e_5fe59de0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-12T02:09:29Z",
+      "side": 1,
+      "message": "Hi @tomhughes@chromium.org and @davidmcross@google.com,\nThe changes have been updated. Can you take a look at it? Thanks.",
+      "parentUuid": "376e2057_234888bc",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d06818be_8fe3d056",
         "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
         "patchSetId": 2
@@ -157,6 +175,24 @@
       "side": 1,
       "message": "To enable the RAM lock function, the ramlock0 node also needs to be enabled in the device tree.\n```\n\u0026ramlock0 {\n\tstatus \u003d \"okay\";\n};\n```",
       "parentUuid": "238e1e21_83f500bd",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ff6bc5_04e796fd",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-12T02:09:29Z",
+      "side": 1,
+      "message": "The PR adding a node for the RAM lock has been downstreamed as https://https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6505436.",
+      "parentUuid": "0857fd6e_564cb274",
       "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
