@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52403be2_7b4b2e0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T16:52:34Z",
+      "side": 1,
+      "message": "This make",
+      "revId": "cb5f7d487a91763bf17d3331779d5365102af635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf1a3d9_14c89df9",
+        "filename": "power/qcom.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T16:52:34Z",
+      "side": 1,
+      "message": "It is treated as a special case; I expect many like this will be added. For better maintainability, better to refactor the logic to treat the new sequence equally. Or  fork the sequence to a new file to reduce the risk of breaking existing sequences.",
+      "range": {
+        "startLine": 979,
+        "startChar": 7,
+        "endLine": 979,
+        "endChar": 40
+      },
+      "revId": "cb5f7d487a91763bf17d3331779d5365102af635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
