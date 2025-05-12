@@ -21,4 +21,11 @@ config BORINGSSL_HARDWARE_ENTROPY
 	  This option enables support for providing entropy to BoringSSL.
 	  Entropy comes from hardware RNG selected in DTS.
 
+config HEAP_MEM_POOL_ADD_SIZE_BORINGSSL
+	def_int 64
+	help
+      This option specifies the additional size (in bytes) to allocate when
+	  initializing the BoringSSL memory pool. BoringSSL stores one pointer per
+	  thread so 64 bytes seems to be enough.
+
 endif
