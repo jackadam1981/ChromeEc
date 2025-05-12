@@ -51,6 +51,7 @@ int motion_sense_probe(enum sensor_alt_id alt_idx);
 void motion_sensors_check_ssfc(void);
 
 #define ENABLE_ALT_MOTION_SENSOR(alt_id)                               \
+	LOG_INF("motion_sensors[%d] = motion_sensors_alt[%d]", SENSOR_ID(DT_PHANDLE(alt_id, alternate_for)), SENSOR_ID(alt_id));\
 	motion_sensors[SENSOR_ID(DT_PHANDLE(alt_id, alternate_for))] = \
 		motion_sensors_alt[SENSOR_ID(alt_id)];
 
