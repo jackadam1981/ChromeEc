@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23a9319_5e35d293",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-12T19:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb7c2c6_08ad4913",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2945d466_e4fdb2fc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332893e5_4df6ed34",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-12T19:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2945d466_e4fdb2fc",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4dd533b_f8991549",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-05-06T19:10:26Z",
       "side": 1,
       "message": "See my comment in realtek_rts5912_defconfig.  Add `kconfig_files\u003d[here / \"realtek.conf\"]`",
+      "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4fc280_b72e190a",
+        "filename": "zephyr/program/minimal/BUILD.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-12T19:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4dd533b_f8991549",
       "revId": "2c721342507effbb9cb73878c7bddbbad55351ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

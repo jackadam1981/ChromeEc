@@ -348,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51af8836_4e9e0552",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-12T19:07:12Z",
+      "side": 1,
+      "message": "I add a comment for it, and we can return to this after the ram discussion is finished.",
+      "parentUuid": "157ff038_ca0fe705",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2b8fd85ba225d8540e59fc3cbd7e7cc176af3e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aea95cf_4ac8c5e6",
