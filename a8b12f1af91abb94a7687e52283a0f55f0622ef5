@@ -3,6 +3,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d794cd77_dc6a9b4e",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T22:17:26Z",
+      "side": 1,
+      "message": "Don\u0027t overwrite this Kconfig. The Kconfig defaults to the reg\u0027s size of the `cros-ec,flash` node in the dts. Define the dts node instead.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "22ef76f4_199965f1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/Kconfig.defconfig",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 53,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16c2f11d_7fc0862f",
         "filename": "zephyr/boards/google/realtek/realtek.dtsi",
         "patchSetId": 6
