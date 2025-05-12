@@ -33,6 +33,10 @@
 #include "timer.h"
 #include "util.h"
 
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(motion_sense, LOG_LEVEL_DBG);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
@@ -57,6 +61,7 @@ STATIC_IF(CONFIG_CMD_ACCEL_INFO) int accel_disp;
 #define SENSOR_ACTIVE(_sensor) (sensor_active & (_sensor)->active_mask)
 
 mutex_t g_sensor_mutex;
+mutex_t init_mutex;
 
 /*
  * Current power level (S0, S3, S5, ...)
@@ -296,13 +301,17 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 #endif /* HAS_TASK_CONSOLE */
 
 	/* Initialize accelerometers. */
+	LOG_DBG("Initializing sensor[%d] %s %p", (int)(sensor - motion_sensors),
+		sensor->name, sensor);
 	do {
 		ret = sensor->drv->init(sensor);
 	} while ((ret != EC_SUCCESS) && (--cnt > 0));
 
 	if (ret != EC_SUCCESS) {
+		LOG_DBG("Initialization error");
 		sensor->state = SENSOR_INIT_ERROR;
 	} else {
+		LOG_DBG("Initialization success");
 		sensor->state = SENSOR_INITIALIZED;
 	}
 
@@ -347,6 +356,8 @@ static void motion_sense_switch_sensor_rate(void)
 
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
+		LOG_DBG("updating sensor rate sensor[%d] %p: SENSOR_ACTIVE:%d, state:%d",
+			i, sensor, SENSOR_ACTIVE(sensor), sensor->state);
 		if (SENSOR_ACTIVE(sensor)) {
 			/*
 			 * Initialize or just back the odr/range previously
@@ -383,6 +394,7 @@ static void motion_sense_switch_sensor_rate(void)
 			mutex_lock(&g_sensor_mutex);
 			sensor->collection_rate = 0;
 			mutex_unlock(&g_sensor_mutex);
+			LOG_DBG("Resetting sensor %s", sensor->name);
 			sensor->state = SENSOR_NOT_INITIALIZED;
 		}
 	}
@@ -540,10 +552,32 @@ static void motion_sense_resume(void)
 	motion_sense_print_stats("resume");
 
 	sensor_active = SENSOR_ACTIVE_S0;
-	hook_call_deferred(&motion_sense_switch_sensor_rate_data,
-			   CONFIG_MOTION_SENSE_RESUME_DELAY_US);
+	motion_sense_force_reinit();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume, MOTION_SENSE_HOOK_PRIO);
+
+void motion_sense_force_reinit(void)
+{
+// #ifdef CONFIG_ZEPHYR
+// 	static struct k_work_sync work_sync;
+
+// 	struct k_work_delayable *work =
+// 		motion_sense_switch_sensor_rate_data.work;
+
+// 	LOG_DBG("Forcing re-init, waiting on mutex");
+// 	sensor_active = SENSOR_ACTIVE_S0;
+// 	mutex_lock(&init_mutex);
+// 	LOG_DBG("lock aquired");
+// 	k_work_flush_delayable(work, &work_sync);
+// 	hook_call_deferred(&motion_sense_switch_sensor_rate_data, 0);
+// 	k_work_flush_delayable(work, &work_sync);
+// 	mutex_unlock(&init_mutex);
+// 	LOG_DBG("lock release");
+// #else
+	hook_call_deferred(&motion_sense_switch_sensor_rate_data,
+			   CONFIG_MOTION_SENSE_RESUME_DELAY_US);
+// #endif
+}
 
 static void motion_sense_startup(void)
 {
@@ -925,6 +959,9 @@ void motion_sense_task(void *u)
 	while (1) {
 		ts_begin_task = get_time();
 		atomic_add(&motion_sense_task_loops, 1);
+#ifdef CONFIG_ZEPHYR
+		k_sched_lock();
+#endif
 		for (i = 0; i < motion_sensor_count; ++i) {
 			sensor = &motion_sensors[i];
 
@@ -937,6 +974,9 @@ void motion_sense_task(void *u)
 				ready_status |= BIT(i);
 			}
 		}
+#ifdef CONFIG_ZEPHYR
+		k_sched_unlock();
+#endif
 		if (IS_ENABLED(CONFIG_GESTURE_DETECTION))
 			check_and_queue_gestures(&event);
 		if (IS_ENABLED(CONFIG_LID_ANGLE)) {
@@ -1055,15 +1095,21 @@ static struct motion_sensor_t *host_sensor_id_to_real_sensor(int host_id)
 {
 	struct motion_sensor_t *sensor;
 
-	if (host_id >= motion_sensor_count)
+	if (host_id >= motion_sensor_count) {
+		LOG_DBG("Invalid host_id(%d) >= motion_sensor_count(%d)",
+			host_id, motion_sensor_count);
 		return NULL;
+	}
 	sensor = &motion_sensors[host_id];
 
 	/* if sensor is powered and initialized, return match */
-	if (SENSOR_ACTIVE(sensor) && (sensor->state == SENSOR_READY))
+	if (SENSOR_ACTIVE(sensor) && (sensor->state == SENSOR_READY ||
+				      sensor->state == SENSOR_INITIALIZED))
 		return sensor;
 
 	/* If no match then the EC currently doesn't support ID received. */
+	LOG_DBG("SENSOR_ACTIVE: %d, sensor->state=%d", SENSOR_ACTIVE(sensor),
+		sensor->state);
 	return NULL;
 }
 
@@ -1071,9 +1117,14 @@ static struct motion_sensor_t *host_sensor_id_to_motion_sensor(int host_id)
 {
 	/* Return the info for the first sensor that support some gestures. */
 	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
-	    (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID))
+	    (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID)) {
+		LOG_DBG("CONFIG_BODY_DETECTION_SENSOR=%d",
+			CONFIG_BODY_DETECTION_SENSOR);
+		LOG_DBG("CONFIG_GESTURE_DETECTION_MASK=0x%04x",
+			(uint32_t)CONFIG_GESTURE_DETECTION_MASK);
 		return host_sensor_id_to_real_sensor(
 			__builtin_ctz(CONFIG_GESTURE_DETECTION_MASK));
+	}
 	return host_sensor_id_to_real_sensor(host_id);
 }
 
@@ -1143,10 +1194,16 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_INFO:
+		LOG_DBG("Waiting on mutex");
+		mutex_lock(&init_mutex);
 		sensor = host_sensor_id_to_motion_sensor(
 			in->sensor_odr.sensor_num);
-		if (sensor == NULL)
+		LOG_DBG("MOTIONSENSE_CMD_INFO [%d] %p",
+			in->sensor_odr.sensor_num, sensor);
+		if (sensor == NULL) {
+			mutex_unlock(&init_mutex);
 			return EC_RES_INVALID_PARAM;
+		}
 
 		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
 		    MOTION_SENSE_ACTIVITY_SENSOR_ID >= 0 &&
@@ -1177,6 +1234,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 					MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB;
 			args->response_size = sizeof(out->info_4);
 		}
+		mutex_unlock(&init_mutex);
 		break;
 
 	case MOTIONSENSE_CMD_EC_RATE:

@@ -394,6 +394,8 @@ ec_motion_sensor_fill_values(struct ec_response_motion_sensor_data *dst,
 
 enum sensor_config motion_sense_get_ec_config(void);
 
+void motion_sense_force_reinit(void);
+
 #ifdef __cplusplus
 }
 #endif
