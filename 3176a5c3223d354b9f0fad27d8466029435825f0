@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532ec134_2ca9727b",
+        "filename": "power/qcom.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-12T17:06:02Z",
+      "side": 1,
+      "message": "Any difference between this new function and the above path of `set_pmic_pwron(0)`, which calls `wait_pmic_pwron()`?",
+      "range": {
+        "startLine": 677,
+        "startChar": 19,
+        "endLine": 677,
+        "endChar": 43
+      },
+      "revId": "3176a5c3223d354b9f0fad27d8466029435825f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
