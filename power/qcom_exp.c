@@ -252,6 +252,12 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal)
 
 static void lid_event(void)
 {
+#ifdef CONFIG_PLATFORM_EC_PMIC_MIRRORS_EC_POWER_SIGNAL
+	if (board_is_switchcap_power_good())
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_lid_open_od),
+			gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_lid_open)));
+#endif
 	/* Power task only cares about lid-open events */
 	if (!lid_is_open())
 		return;
@@ -263,12 +269,25 @@ DECLARE_HOOK(HOOK_LID_CHANGE, lid_event, HOOK_PRIO_DEFAULT);
 
 static void powerbtn_changed(void)
 {
+#ifdef CONFIG_PLATFORM_EC_PMIC_MIRRORS_EC_POWER_SIGNAL
+	if (board_is_switchcap_power_good())
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_pwr_btn),
+				gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+					gpio_pwr_btn_odl)));
+
+#endif
 	task_wake(TASK_ID_CHIPSET);
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_changed, HOOK_PRIO_DEFAULT);
 
 static void power_ac_changed(void)
 {
+#ifdef CONFIG_PLATFORM_EC_PMIC_MIRRORS_EC_POWER_SIGNAL
+	if (board_is_switchcap_power_good())
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_acok),
+				gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+					gpio_acok_od_z5)));
+#endif
 	/* Power task only cares when the external power is connected */
 	if (!extpower_is_present())
 		return;
