@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02f612d7_12ce5e86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-12T16:29:51Z",
+      "side": 1,
+      "message": "I added the explanation in the bug (https://b.corp.google.com/issues/416330651#comment7). This is the CL that introduced the change:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6472692\n\nAll configs that start with CONFIG_HEAP_MEM_POOL_ADD_SIZE_* are added and compared against  CONFIG_HEAP_MEM_POOL_SIZE.\n\nThis is the script that does that from the CMakeLists.txt file:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/kernel/CMakeLists.txt;l\u003d179;bpv\u003d0",
+      "parentUuid": "d58353db_1844a19e",
+      "revId": "df22818a4ca77d82f6979ff721da473a06203b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4173cca_5614c135",
         "filename": "zephyr/program/fpmcu/prj.conf",
         "patchSetId": 1
