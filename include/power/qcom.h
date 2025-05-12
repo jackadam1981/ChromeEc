@@ -35,4 +35,9 @@ void board_set_switchcap_power(int enable);
 int board_is_switchcap_enabled(void);
 int board_is_switchcap_power_good(void);
 
+#if defined(CONFIG_PLATFORM_EC_PMIC_PASSTHRU_POWER_SIGNALS)
+void passthru_lid_open_to_pmic(void);
+void passthru_ac_on_to_pmic(void);
+#endif
+
 #endif /* __CROS_EC_POWER_QCOM_H_ */

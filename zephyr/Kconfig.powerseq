@@ -280,6 +280,14 @@ config PLATFORM_EC_PP3700_DISCHARGE_TIME_MS
 	  This implies that whenever AP shutdown, AP has to stay in the
 	  shutdown state for at least PP3700_DISCHARGE_TIME_MS.
 
+config PLATFORM_EC_PMIC_PASSTHRU_POWER_SIGNALS
+	bool "Enable Support to mirror EC power signals to the PMIC power signals"
+	depends on PLATFORM_EC_POWERSEQ_QC_EXP
+	help
+	Enables a passthrough from the EC power signals to the PMIC power signals
+	when the switch-cap power is active. This mechanism ensures that the PMIC's
+	power signal flow remain undisturbed.
+
 config PLATFORM_EC_POWERSEQ_SC7180
 	bool "SC7180 power sequencing"
 	depends on AP_ARM_QUALCOMM_SC7180
