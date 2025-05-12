@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d58353db_1844a19e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-12T16:24:42Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why we started getting the warning. You were able to confirm that it only started failure recently because you had to `repo sync` to see it. The [`CMakeLists.txt`](https://github.com/zephyrproject-rtos/zephyr/blame/252f8fefe03db52f52fe8cecbb0029f265d6311b/kernel/CMakeLists.txt#L175-L182) check was [added in 2023](https://github.com/zephyrproject-rtos/zephyr/commit/3fbf12487c6c01c488210bc56b0f342f07098df9), so it\u0027s not new. I guess the only other thing that could have changed is one of the [`CONFIG_HEAP_MEM_POOL_ADD_SIZE_`](https://github.com/zephyrproject-rtos/zephyr/blame/252f8fefe03db52f52fe8cecbb0029f265d6311b/kernel/CMakeLists.txt#L167) values. Were there any upstream changes recently that changed those?",
+      "parentUuid": "09931d56_d9f7d5dd",
+      "revId": "df22818a4ca77d82f6979ff721da473a06203b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4173cca_5614c135",
         "filename": "zephyr/program/fpmcu/prj.conf",
         "patchSetId": 1
