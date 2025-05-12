@@ -252,6 +252,10 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal)
 
 static void lid_event(void)
 {
+#ifdef CONFIG_PLATFORM_EC_PMIC_MIRRORS_EC_POWER_SIGNAL
+	if (board_is_switchcap_power_good())
+		mirror_lid_open_to_pmic();
+#endif
 	/* Power task only cares about lid-open events */
 	if (!lid_is_open())
 		return;
@@ -263,12 +267,20 @@ DECLARE_HOOK(HOOK_LID_CHANGE, lid_event, HOOK_PRIO_DEFAULT);
 
 static void powerbtn_changed(void)
 {
+#ifdef CONFIG_PLATFORM_EC_PMIC_MIRRORS_EC_POWER_SIGNAL
+	if (board_is_switchcap_power_good())
+		mirror_powerbtn_to_pmic();
+#endif
 	task_wake(TASK_ID_CHIPSET);
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_changed, HOOK_PRIO_DEFAULT);
 
 static void power_ac_changed(void)
 {
+#ifdef CONFIG_PLATFORM_EC_PMIC_MIRRORS_EC_POWER_SIGNAL
+	if (board_is_switchcap_power_good())
+		mirror_ac_on_to_pmic();
+#endif
 	/* Power task only cares when the external power is connected */
 	if (!extpower_is_present())
 		return;
@@ -477,7 +489,7 @@ static int set_system_power(int enable)
  *
  * @return EC_SUCCESS or error
  */
-static int set_pmic_pwron(int enable)
+static int set_pmic_pwron(int enable, uint8_t event)
 {
 	int ret;
 
@@ -491,9 +503,12 @@ static int set_pmic_pwron(int enable)
 
 	/*
 	 * Power-on sequence:
-	 * 1. Hold down PMIC_KPD_PWR_ODL, which is a power-on trigger
-	 * 2. PMIC supplies power to POWER_GOOD
-	 * 3. Release PMIC_KPD_PWR_ODL
+	 *
+	 * 1. If power_on due to AC ON, pass-through the ACOK signal to the
+	 *    PMIC.
+	 * 2. Else hold down PMIC_KPD_PWR_ODL, which is a power-on trigger
+	 * 3. PMIC supplies power to POWER_GOOD
+	 * 4. Release PMIC_KPD_PWR_ODL
 	 *
 	 * Power-off sequence:
 	 * 1. Hold down PMIC_KPD_PWR_ODL and PMIC_RESIN_L, which is a power-off
@@ -509,14 +524,20 @@ static int set_pmic_pwron(int enable)
 	 * falls back to the next functions, which cuts off the system power.
 	 */
 
-	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
-	if (!enable)
-		gpio_set_level(GPIO_PMIC_RESIN_L, 0);
-	ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
-	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
-	if (!enable)
-		gpio_set_level(GPIO_PMIC_RESIN_L, 1);
-
+	if (enable && event == POWER_ON_BY_AC_ON) {
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_acok),
+				gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+					gpio_acok_od_z5)));
+		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
+	} else {
+		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+		if (!enable)
+			gpio_set_level(GPIO_PMIC_RESIN_L, 0);
+		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
+		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+		if (!enable)
+			gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+	}
 	return ret;
 }
 
@@ -596,7 +617,7 @@ static void power_off_seq(uint8_t shutdown_event)
 			CPRINTS("Warning: POWER_GOOD up again after lost");
 		} else {
 			/* Do a graceful way to shutdown PMIC/AP first */
-			set_pmic_pwron(0);
+			set_pmic_pwron(0, shutdown_event);
 			crec_usleep(PMIC_POWER_OFF_DELAY);
 		}
 	}
@@ -622,7 +643,7 @@ static void power_off_seq(uint8_t shutdown_event)
  *
  * @return EC_SUCCESS or error
  */
-static int power_on_seq(void)
+static int power_on_seq(uint8_t poweron_event)
 {
 	int ret;
 
@@ -633,7 +654,7 @@ static int power_on_seq(void)
 	/* Enable signal interrupts */
 	power_signal_enable_interrupt(GPIO_AP_RST_L);
 
-	ret = set_pmic_pwron(1);
+	ret = set_pmic_pwron(1, poweron_event);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("POWER_GOOD not seen in time");
 		return ret;
@@ -946,7 +967,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		/* Initialize components to ready state before AP is up. */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
-		if (power_on_seq() != EC_SUCCESS) {
+		if (power_on_seq(boot_from_off) != EC_SUCCESS) {
 			power_off_seq(shutdown_from_on);
 			boot_from_off = 0;
 			return POWER_G3;
