@@ -34,6 +34,24 @@
       "parentUuid": "208eb418_a1bc7997",
       "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19b8371_5bbe375d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-12T16:44:02Z",
+      "side": 1,
+      "message": "From the comment in our original `prj.conf`:\n\n```\nCONFIG_PTHREAD_KEY allocates memory from kernel memory pool to store thread\nlocal data. BoringSSL stores one pointer per thread, so 64 bytes seems to be\nenough\n```\n\n[The upstream CL](https://crrev.com/c/6472692) that added `HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS`:\n\n```\n`pthread_setspecific` requires a stack in order to allocate the\n`struct pthread_key_data` data structure. On 64 bit systems this data\nstructure is 32 bytes, resulting in 160 bytes usage for the default 5\nsupported threads.\n```\n\nAre these two referring to the same thing (thread-specific data)? If so, we may not need to add a separate config for BoringSSL, since it would already be counted for in `HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS`.",
+      "parentUuid": "bb5d564f_99880af4",
+      "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
