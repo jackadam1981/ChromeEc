@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df63962_522f57a0",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-13T15:12:27Z",
+      "side": 1,
+      "message": "\"the AP is on (S3 and above).\"",
+      "range": {
+        "startLine": 760,
+        "startChar": 3,
+        "endLine": 760,
+        "endChar": 13
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d18c491a_774085d0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/Kconfig",
+              "range": {
+                "startLine": 760,
+                "startChar": 0,
+                "endLine": 761,
+                "endChar": 0
+              },
+              "replacement": "\t  the AP is on (S0ix or S0).\n"
+            }
+          ]
+        }
+      ],
+      "revId": "24fd9fda9915d7f0bc23ee479b4ea9630ded5f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc47b948_2cbceb65",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-13T15:12:27Z",
+      "side": 1,
+      "message": "the AP is off (S5 and below).",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 768,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "572a717c_7b8c27cc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/Kconfig",
+              "range": {
+                "startLine": 768,
+                "startChar": 0,
+                "endLine": 769,
+                "endChar": 0
+              },
+              "replacement": "\t  the AP is off (S5 and below).\n"
+            }
+          ]
+        }
+      ],
+      "revId": "24fd9fda9915d7f0bc23ee479b4ea9630ded5f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
