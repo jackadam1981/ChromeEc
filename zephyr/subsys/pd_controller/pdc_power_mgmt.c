@@ -928,8 +928,13 @@ static bool should_suspend(struct pdc_port_t *port)
 	case PDC_SRC_TYPEC_ONLY:
 		return true;
 
-	/* Wait for operation to finish. */
+	/* Allow suspend from the init state if an error has occurred. This
+	 * allows suspending when the the PDC is stuck in a bootloader mode
+	 * and GET_CONNECTOR_STATUS is repeatedly failing. */
 	case PDC_INIT:
+		return (port->cmd->error != 0);
+
+	/* Wait for operation to finish. */
 	case PDC_SEND_CMD_START:
 	case PDC_SEND_CMD_WAIT:
 		return false;
