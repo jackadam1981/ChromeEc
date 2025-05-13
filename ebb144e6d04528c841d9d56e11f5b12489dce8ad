@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc3e3a7_bbd4a150",
+        "filename": "zephyr/program/bluey/adc.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-13T20:48:24Z",
+      "side": 1,
+      "message": "I don\u0027t think these are the correct values for the voltage divider.\n\n+Louis and Brian",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "ebb144e6d04528c841d9d56e11f5b12489dce8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
