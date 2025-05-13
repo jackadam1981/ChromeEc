@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4079092_72b5490f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-13T19:46:32Z",
+      "side": 1,
+      "message": "Nit - mention that CROS_EC_RW/RO_SIZE will fall back on the declaration in `zephyr/app/ec/Kconfig` which is where the DT property is being referenced.",
+      "range": {
+        "startLine": 11,
+        "startChar": 51,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "80a6562c25efefe45dee515f352a8adc68924a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0199758e_a7f84e38",
+        "filename": "zephyr/program/npcx_evb/npcx9/BUILD.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-13T19:46:32Z",
+      "side": 1,
+      "message": "I assume this is this okay to modify since it is just an eval board? Confirm we\u0027ve never shipped anything based on this code?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 62
+      },
+      "revId": "80a6562c25efefe45dee515f352a8adc68924a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
