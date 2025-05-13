@@ -2138,7 +2138,6 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	if (port_discovery_dr_swap_policy(
 		    port, pe[port].data_role,
 		    PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP))) {
-		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 
 		pd_dpm_request(port, DPM_REQUEST_DR_SWAP);
