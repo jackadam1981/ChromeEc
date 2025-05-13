@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a907993a_aa672b69",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-13T19:40:50Z",
+      "side": 1,
+      "message": "Interesting point. What would prevent this to run if the handler context is stuck?",
+      "parentUuid": "db8601d1_2bbf14c2",
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8c5b3bf_f13af867",
         "filename": "chip/it83xx/watchdog.c",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2025-05-13T18:54:49Z",
       "side": 1,
       "message": "pet",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8602fe8e_204e70af",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-13T19:40:50Z",
+      "side": 1,
+      "message": "The whole phrase was copied from watchdog_reload function.. should I change that one too?",
+      "parentUuid": "f8c5b3bf_f13af867",
       "range": {
         "startLine": 80,
         "startChar": 14,
@@ -109,6 +151,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d71ea0_7492862e",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-13T19:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757f8bed_709ff2bd",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f749aab0_16d9f095",
@@ -122,6 +188,30 @@
       "writtenOn": "2025-05-13T18:54:49Z",
       "side": 1,
       "message": "Probably better to move this code down and keep the normal warning print.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac454aa_dfafc5ab",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-13T19:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f749aab0_16d9f095",
       "range": {
         "startLine": 90,
         "startChar": 2,
