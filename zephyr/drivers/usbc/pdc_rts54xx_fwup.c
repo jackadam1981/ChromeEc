@@ -28,6 +28,7 @@ LOG_MODULE_REGISTER(pdc_rts54_fwup, LOG_LEVEL_INF);
 #define RTS54XX_RESET_DELAY K_MSEC(5000)
 
 #define RTS54XX_VENDOR_CMD 0x01
+#define RTS54XX_ERASE_FLASH_CMD 0x03
 #define RTS54XX_RESET_TO_FLASH_CMD 0x05
 #define RTS54XX_FLASH_WRITE_0_64K_CMD 0x04
 #define RTS54XX_FLASH_WRITE_64K_128K_CMD 0x06
@@ -35,6 +36,10 @@ LOG_MODULE_REGISTER(pdc_rts54_fwup, LOG_LEVEL_INF);
 #define RTS54XX_FLASH_WRITE_192K_256K_CMD 0x14
 #define RTS54XX_VALIDATE_ISP_CMD 0x16
 #define RTS54XX_GET_IC_STATUS_CMD 0x3A
+
+/** Number of GET_IC_STATUS bytes that can be requested while running in ROM
+ *  code */
+#define RTS54XX_GET_IC_STATUS_SAFE_READ_LEN 20
 
 static struct {
 	const struct device *pdc_dev;
@@ -147,8 +152,8 @@ static int rts54xx_get_ic_status(const struct i2c_dt_spec *i2c,
 				 struct pdc_info_t *info)
 {
 	uint8_t get_ic_status[] = { RTS54XX_GET_IC_STATUS_CMD, 3, 0x00, 0x00,
-				    0x1F };
-	uint8_t rx_buffer[31] = { 0 };
+				    RTS54XX_GET_IC_STATUS_SAFE_READ_LEN };
+	uint8_t rx_buffer[RTS54XX_GET_IC_STATUS_SAFE_READ_LEN] = { 0 };
 	union ping_status_t ping_status;
 	int rv;
 
@@ -164,9 +169,7 @@ static int rts54xx_get_ic_status(const struct i2c_dt_spec *i2c,
 		return rv;
 	}
 
-	rv = rts54xx_block_in_transfer(
-		i2c, MIN(ARRAY_SIZE(rx_buffer), ping_status.data_len),
-		rx_buffer);
+	rv = rts54xx_block_in_transfer(i2c, ARRAY_SIZE(rx_buffer), rx_buffer);
 	if (rv) {
 		LOG_ERR("GET_IC_STATUS block in transfer failed: %d (ping=0x%02x)",
 			rv, ping_status.raw_value);
@@ -191,6 +194,16 @@ static int rts54xx_enable_flash_access(const struct i2c_dt_spec *i2c)
 static int rts54xx_disable_flash_access(const struct i2c_dt_spec *i2c)
 {
 	return rts54xx_vendor_cmd_enable(i2c);
+}
+
+static int rts54xx_erase_flash(const struct i2c_dt_spec *i2c)
+{
+	uint8_t flash_erase[] = { RTS54XX_ERASE_FLASH_CMD, 3, 0xDA, 0x0B,
+				  0x00 };
+	union ping_status_t ping_status;
+
+	return rts54xx_block_out_transfer(i2c, ARRAY_SIZE(flash_erase),
+					  flash_erase, &ping_status);
 }
 
 static int rts54xx_validate_flash(const struct i2c_dt_spec *i2c)
@@ -330,6 +343,7 @@ static int pdc_rts54xx_fwup_start(const struct device *dev)
 		return rv;
 	}
 
+	LOG_INF("Getting PDC IC status");
 	rv = rts54xx_get_ic_status(&ctx.pdc_i2c, &ctx.chip_info);
 	if (rv) {
 		LOG_ERR("Cannot get IC status: %d", rv);
@@ -349,6 +363,18 @@ static int pdc_rts54xx_fwup_start(const struct device *dev)
 	if (rv) {
 		LOG_ERR("Cannot enable flash access: %d", rv);
 		return rv;
+	}
+
+	if (ctx.chip_info.is_running_flash_code == false) {
+		/* In the ROM code update flow, perform an erase of the flash
+		 * to clear out any potentially corrupt firmware.
+		 */
+		LOG_INF("ROM mode: Erasing flash.");
+		rv = rts54xx_erase_flash(&ctx.pdc_i2c);
+		if (rv) {
+			LOG_ERR("Cannot erase flash: %d", rv);
+			return rv;
+		}
 	}
 
 	/* Ready for FW transfer */
@@ -424,12 +450,25 @@ static int pdc_rts54xx_fwup_finish(void)
 		return rv;
 	}
 
-	/* Validate new image */
-	LOG_INF("Validating new FW");
-	rv = rts54xx_validate_flash(&ctx.pdc_i2c);
-	if (rv) {
-		LOG_ERR("FW validation failed: %d", rv);
-		return rv;
+	if (ctx.chip_info.is_running_flash_code) {
+		/* Validate new image. This feature is only available when
+		 * running from flash code */
+		LOG_INF("Validating new FW");
+		rv = rts54xx_validate_flash(&ctx.pdc_i2c);
+		if (rv) {
+			LOG_ERR("FW validation failed: %d", rv);
+			return rv;
+		}
+	} else {
+		LOG_INF("ROM code: skipping validation step.");
+
+		/* TODO: in ROM mode, validation is performed by reading the
+		 * flash back and comparing the images. The built-in validation
+		 * SMbus command is not supported. For now, rely on the ROM code
+		 * to check the CRC32 of the image after reset. If the image was
+		 * transferred incorrectly, the chip will remain in ROM code and
+		 * the user can try to re-flash.
+		 */
 	}
 
 	/* Reset the PDC */
