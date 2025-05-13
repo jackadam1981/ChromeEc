@@ -48,6 +48,7 @@
  * the USB Power Delivery Specification.
  */
 
+int dump = 0;
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
@@ -1852,6 +1853,7 @@ static bool sink_dpm_requests(int port)
 		return false;
 
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+	CPRINTS("c%d sink_dpm() set PE_FLAGS_LOCALLY_INITIATED_AMS", port);
 
 	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP)) {
 		pe_set_dpm_curr_request(port, DPM_REQUEST_PR_SWAP);
@@ -2138,7 +2140,14 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	if (port_discovery_dr_swap_policy(
 		    port, pe[port].data_role,
 		    PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP))) {
+		/*
+		 * If we recieve message from Port partner (SRC) and before check
+		 * DPM_REQUEST_DR_SWAP, then we will wait SNKTXOK in prl state
+		 * when respond to Port partner message, so it's too early to set
+		 * waiting SNKTXOK flag in here.
+		 */
 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+		CPRINTS("c%d port_discovery() set PE_FLAGS_LOCALLY_INITIATED_AMS", port);
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 
 		pd_dpm_request(port, DPM_REQUEST_DR_SWAP);
@@ -2375,6 +2384,7 @@ static void pe_sender_response_msg_exit(int port)
  */
 static void pe_src_startup_entry(int port)
 {
+	dump = 0;
 	print_current_state(port);
 
 	/* Reset CapsCounter */
@@ -3320,6 +3330,7 @@ static void pe_src_transition_to_default_run(int port)
  */
 static void pe_snk_startup_entry(int port)
 {
+	dump = 0;
 	print_current_state(port);
 
 	/* Reset the protocol layer */
@@ -3862,6 +3873,7 @@ static void pe_snk_transition_sink_exit(int port)
  */
 static void pe_snk_ready_entry(int port)
 {
+	dump = 0;
 	if (get_last_state_pe(port) != PE_SNK_EPR_KEEP_ALIVE) {
 		print_current_state(port);
 	}
@@ -4003,6 +4015,7 @@ static void pe_snk_ready_run(int port)
 					     PE_PRS_SNK_SRC_EVALUATE_SWAP);
 				return;
 			case PD_CTRL_DR_SWAP:
+				dump = 1;
 				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
 					pe_set_hard_reset(port);
 				else
@@ -4918,6 +4931,9 @@ static void pe_drs_evaluate_swap_entry(int port)
 		 * messages, in case the port partner transitioned faster.
 		 */
 		prl_set_data_role_check(port, false);
+		if (dump == 1) {
+			CPRINTS("c%d pe evaluate accept", port);
+		}
 	} else {
 		/*
 		 * PE_DRS_UFP_DFP_Reject_Swap and PE_DRS_DFP_UFP_Reject_Swap
@@ -4931,6 +4947,10 @@ static void pe_drs_evaluate_swap_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+
+		if (dump == 1) {
+			CPRINTS("c%d PE_FLAGS_TX_COMPLETE", port);
+		}
 
 		/* Accept Message sent. Transtion to PE_DRS_Change */
 		if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
@@ -5644,6 +5664,7 @@ __maybe_unused static void pe_frs_snk_src_start_ams_entry(int port)
 
 	/* Inform Protocol Layer this is start of AMS */
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+	CPRINTS("c%d pe_frs() set PE_FLAGS_LOCALLY_INITIATED_AMS", port);
 
 	/* Shared PRS/FRS code, indicate FRS path */
 	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
