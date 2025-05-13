@@ -16,6 +16,24 @@
       "message": "Jett, you asked if any development of HyperDebug was pending.\n\nThis made me realize that once or twize, the OpenTitan team has asked me if HyperDebug would be able to generate a 96MHz reference clock, in case they needed it for brinup of engineering silicon that had not gone through the normal factory configuration process.\n\nThe STM32L5 MCU does have three independent PLL circuits, one of which is used to generate the 110MHz core clock.  But I found that digital audio functionality can be used to output clocks from the other two PLL circuits, which enables about 10 pins to be able to generate frequencies that are not divisor of the core clock frequency.\n\nIn relation to that work, I also noticed that HyperDebug currently can only rely on an internal RC-oscillator for its clock, which makes it quite jittery.  If we ever run our ot STM32 demo boards, and have to manufacture HyperDebug base-boards ourselves, then populating the X3 with a 16MHz crystal would offer much better clock stability.  And avoid +/- 1% uncertainty on all timing measurements done by HyperDebug.\n\nI do not know if any of the above will ever be relevant, but I thought that I would throw these two patches out here.  Whether we want to merge them right away, so that they do not rot, or just keep them in Gerrit, I will let you decide.",
       "revId": "108e691ac6d1367e429a73d760eb5824ff9333fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575136e6_1d9f1abe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-05-13T16:57:09Z",
+      "side": 1,
+      "message": "I am little concerned about adding this code in case it has edge cases we didn\u0027t think about. I wouldn\u0027t want to add instability to hyperdebug firmware. However, if you very confident that this won\u0027t affect the normal operation of hyperdebug firmware, then I think we could merge it. What are your thoughts?",
+      "parentUuid": "6d228a4e_3dccbacd",
+      "revId": "108e691ac6d1367e429a73d760eb5824ff9333fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
