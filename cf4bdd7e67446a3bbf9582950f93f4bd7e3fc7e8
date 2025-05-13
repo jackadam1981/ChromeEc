@@ -70,6 +70,24 @@
       "parentUuid": "f19b8371_5bbe375d",
       "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5134649b_ee420324",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-13T12:13:42Z",
+      "side": 1,
+      "message": "Let me explain what is going on here (I feel responsible for the mess 😊)\n\nLet\u0027s start with my [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5439565) (merged 11 April 2024) that enabled posix threads:\n- `CONFIG_PTHREAD_KEY allocates memory from kernel memory pool to store thread\nlocal data.`. This sentence refers to [this allocation in pthread_setspecific()](https://github.com/zephyrproject-rtos/zephyr/blob/2a207879d121db203611f2c7d1a77c8226d1bf37/lib/posix/options/key.c#L210-L211) (the link is checkout to some commit from April 2024, but ToT is the same) and it\u0027s correct.\n- `BoringSSL stores one pointer per thread, so 64 bytes seems to be\nenough`, it refers to [this code from BoringSSL](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/crypto/thread_pthread.c;l\u003d126-132;drc\u003d04c3d40f0695b07b9795e8a69a3babeab52b861f). This is also correct, but it\u0027s misleading because it suggests that BoringSSL allocates memory for its pointers on the kernel memory pool. In fact, BoringSSL calls `malloc()` (provided by Newlib which uses separate heap) for each thread and stores pointer returned by `malloc()` in thread local data, using `pthread_setspecific()`. The `64 bytes seems to be enough` part refers to allocation of `struct pthread_key_data` on the kernel memory pool.\n- Before enabling pthreads, the kernel memory pool was not used (CONFIG_HEAP_MEM_POOL_SIZE was 0), so [k_malloc() was not defined](https://github.com/zephyrproject-rtos/zephyr/blob/2a207879d121db203611f2c7d1a77c8226d1bf37/kernel/mempool.c#L75-L91) that\u0027s how I found it - enabling pthreads caused undefined reference linker errors.\n- [Patch that adds HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS](https://github.com/zephyrproject-rtos/zephyr/pull/88538/commits/65805a367b3429ee936cdd872ee83aa0cb57aa57) has bad description - `pthread_setspecific()` requires **heap**, not **stack**.\n\nTom is right, `HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS` and `CONFIG_HEAP_MEM_POOL_SIZE\u003d64` were about thread local data. I was wrong, we don\u0027t need https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6536016. I was thinking that `pthread_setspecific()` performs some temporary allocations on stacks and bigger stack is necessary. Sorry for bad suggestion.\n\nWhat we can do (in a separate CL) is to reduce `CONFIG_POSIX_THREAD_THREADS_MAX` to 1 or 2 and reduce `HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS` to 64 bytes. What do you think?",
+      "parentUuid": "d332df9d_2506ca5e",
+      "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
