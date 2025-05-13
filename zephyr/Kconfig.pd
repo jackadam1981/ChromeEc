@@ -69,7 +69,7 @@ config PLATFORM_EC_USB_PD_DEBUG_LEVEL
 
 config PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL
 	int "Initial debug level to use"
-	default 1
+	default 2
 	help
 	  Sets the initial value of the debug level to use, while
 	  still allowing the debug level to be changed using 'pd dump'.

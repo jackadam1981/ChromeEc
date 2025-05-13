@@ -48,6 +48,7 @@
  * the USB Power Delivery Specification.
  */
 
+int dump = 0;
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
@@ -2375,6 +2376,7 @@ static void pe_sender_response_msg_exit(int port)
  */
 static void pe_src_startup_entry(int port)
 {
+	dump = 0;
 	print_current_state(port);
 
 	/* Reset CapsCounter */
@@ -3320,6 +3322,7 @@ static void pe_src_transition_to_default_run(int port)
  */
 static void pe_snk_startup_entry(int port)
 {
+	dump = 0;
 	print_current_state(port);
 
 	/* Reset the protocol layer */
@@ -3862,6 +3865,7 @@ static void pe_snk_transition_sink_exit(int port)
  */
 static void pe_snk_ready_entry(int port)
 {
+	dump = 0;
 	if (get_last_state_pe(port) != PE_SNK_EPR_KEEP_ALIVE) {
 		print_current_state(port);
 	}
@@ -4003,6 +4007,7 @@ static void pe_snk_ready_run(int port)
 					     PE_PRS_SNK_SRC_EVALUATE_SWAP);
 				return;
 			case PD_CTRL_DR_SWAP:
+				dump = 1;
 				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
 					pe_set_hard_reset(port);
 				else
@@ -4918,6 +4923,7 @@ static void pe_drs_evaluate_swap_entry(int port)
 		 * messages, in case the port partner transitioned faster.
 		 */
 		prl_set_data_role_check(port, false);
+		CPRINTS("c%d evaluate accept", port);
 	} else {
 		/*
 		 * PE_DRS_UFP_DFP_Reject_Swap and PE_DRS_DFP_UFP_Reject_Swap
@@ -4932,13 +4938,15 @@ static void pe_drs_evaluate_swap_run(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
+		CPRINTS("c%d PE_FLAGS_TX_COMPLETE", port);
+
 		/* Accept Message sent. Transtion to PE_DRS_Change */
 		if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
 			PE_CLR_FLAG(port, PE_FLAGS_ACCEPT);
 			set_state_pe(port, PE_DRS_CHANGE);
 		} else {
 			/*
-			 * Message sent. Transition back to PE_SRC_Ready or
+			 * Reject Message sent. Transition back to PE_SRC_Ready or
 			 * PE_SNK_Ready.
 			 */
 			pe_set_ready_state(port);
