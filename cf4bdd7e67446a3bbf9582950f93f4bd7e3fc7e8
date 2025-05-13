@@ -52,6 +52,24 @@
       "parentUuid": "bb5d564f_99880af4",
       "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d332df9d_2506ca5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-13T09:42:02Z",
+      "side": 1,
+      "message": "(Jumping in because Firas pinged me)\n\nFrom the [release note](https://github.com/zephyrproject-rtos/zephyr/blob/main/doc/releases/release-notes-3.7.rst#id175) CONFIG_PTHREAD_KEY is renamed to CONFIG_POSIX_THREADS, so yes I think they refer to the same thing.\n\nBut the original comment also mentioned that `BoringSSL stores one pointer per thread`, if this comment is still valid, you\u0027ll need `HEAP_MEM_POOL_ADD_SIZE_BORINGSSL` for these pointers.",
+      "parentUuid": "f19b8371_5bbe375d",
+      "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
