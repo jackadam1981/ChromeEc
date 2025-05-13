@@ -16,6 +16,24 @@
       "message": "As noted in b/ #comment6,\n\u003e\"we should have overridden NPCX_RAM_SIZE to exclude the booter block (+0x1000) in the helipilot board header at the same time this change was made.\"\n\nI don\u0027t think we should make a change here which impacts all npcx9 boards. I do think we should override NPCX_RAM_SIZE in the helipilot board file to define it as:\n```\n#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE)\n```\nand leave the other logic in place. We should likely also add at least one of @patrykd and/or @dawidn for input",
       "revId": "e272a9fbc9cd5ea4286b1e1002ec3fda46ede434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "320c6abb_46da3e23",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-13T22:59:27Z",
+      "side": 0,
+      "message": "@chlin56@nuvoton.com and team. Please review and provide your input here as well. My concern is that this CL would impact all Nuvoton boards and I\u0027d like to either limit the impact of the proposed change to helipilot or get confirmation from you that it is equally applicable to all Nuvoton boards. Thanks",
+      "parentUuid": "d180e644_b65d2f6e",
+      "revId": "e272a9fbc9cd5ea4286b1e1002ec3fda46ede434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
