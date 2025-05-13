@@ -99,7 +99,7 @@
 
 /* Override default NPCX_RAM_SIZE because we're excluding a block. */
 #undef NPCX_RAM_SIZE
-#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
+#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE)
 #elif defined(CHIP_VARIANT_NPCX9M6F)
 /* 192KB RAM for FW code */
 #define NPCX_PROGRAM_MEMORY_SIZE (192 * 1024)
@@ -126,7 +126,7 @@
 
 /* Override default NPCX_RAM_SIZE because we're excluding a block. */
 #undef NPCX_RAM_SIZE
-#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
+#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE)
 #else
 #error "Unsupported chip variant"
 #endif
