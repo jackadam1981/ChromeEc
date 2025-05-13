@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7af45b_c206aaa2",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-13T21:09:16Z",
+      "side": 1,
+      "message": "Why are these pins not mapped?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bdf4ff95_bccc716f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 220,
+                "startChar": 0,
+                "endLine": 223,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 224,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpio5 1 (GPIO_INPUT)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 227,
+                "startChar": 0,
+                "endLine": 227,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpio5 2 (GPIO_INPUT)\u003e;\n"
+            },
+            {
+              "path": "zephyr/program/bluey/gpios.dtsi",
+              "range": {
+                "startLine": 230,
+                "startChar": 0,
+                "endLine": 230,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026gpio5 3 (GPIO_INPUT)\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c84f38_cb41e17b",
+        "filename": "zephyr/program/bluey/src/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-13T21:09:16Z",
+      "side": 1,
+      "message": "I don\u0027t think VPH_PWR is 1V. Should be 3.8V and some margin could be applied. Louis and Brian could confirm.",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8b968e3d_90694653",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/src/switchcap.c",
+              "range": {
+                "startLine": 14,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": "/* TODO: This value needs to be 3800mV, currently set to 300mV for testing */\n"
+            },
+            {
+              "path": "zephyr/program/bluey/src/switchcap.c",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_en_vph_pwr), enable);\n"
+            },
+            {
+              "path": "zephyr/program/bluey/src/switchcap.c",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 25,
+                "endChar": 0
+              },
+              "replacement": "\treturn gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_en_vph_pwr));\n"
+            },
+            {
+              "path": "zephyr/program/bluey/src/switchcap.c",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "\tCPRINTS(\"switchcap VPH power ADC value\u003d%d\", adc_value);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
