@@ -437,6 +437,8 @@ ZTEST(craask, test_alt_sensor_base_lsm6dso)
 	/* sensor_enable_irqs enable the interrupt int_imu */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 
+	clamshell_mode = false;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -469,6 +471,8 @@ ZTEST(craask, test_alt_sensor_base_bmi323)
 	/* sensor_enable_irqs enable the interrupt int_imu */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 
+	clamshell_mode = false;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -496,11 +500,14 @@ ZTEST(craask, test_alt_sensor_base_bma422)
 	/* Initial ssfc data for BMA422 base sensor. */
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = 0x20;
+
 	cros_cbi_ssfc_init();
 
 	/* sensor_enable_irqs enable the interrupt int_imu */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 
+	clamshell_mode = false;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -533,6 +540,8 @@ ZTEST(craask, test_alt_sensor_lid_lis2dw12)
 	/* sensor_enable_irqs enable the interrupt int_lid_accel */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_accel));
 
+	clamshell_mode = false;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -563,6 +572,8 @@ ZTEST(craask, test_alt_sensor_lid_bma422)
 	/* sensor_enable_irqs enable the interrupt int_lid_accel */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_accel));
 
+	clamshell_mode = false;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
