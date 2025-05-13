@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d1e4d88_d8512139",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-13T19:49:01Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "80a6562c25efefe45dee515f352a8adc68924a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0199758e_a7f84e38",
         "filename": "zephyr/program/npcx_evb/npcx9/BUILD.py",
         "patchSetId": 10
