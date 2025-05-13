@@ -106,6 +106,24 @@
       "parentUuid": "5134649b_ee420324",
       "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d1087e_1172f365",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-13T18:56:53Z",
+      "side": 1,
+      "message": "I have a question:\n- Is my understanding correct. Every time we need to store a pointer returned in thread local data, we need to allocate a new `struct pthread_key_data` using k_malloc?\n- Are we assuming here that BoringSSL is the only library that calls `pthread_setspecific()` to store a pointer in thread local data? Is this the reason why we enabled the POSIX_THREADS config to begin this i.e. only for the purpose of handling the BoringSSL requirement?",
+      "parentUuid": "dbaaa396_b67aa6c9",
+      "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
