@@ -70,7 +70,8 @@
 /* JEDEC SPI Flash commands */
 #define SPI_CMD_PAGE_PROGRAM 0x02
 #define SPI_CMD_WRITE_DISABLE 0x04
-#define SPI_CMD_READ_STATUS 0x05
+#define SPI_CMD_READ_STATUS 0x05   /* get status bit S7~S0  */
+#define SPI_CMD_READ_STATUS_H 0x35 /* get status bit s15~s8 */
 #define SPI_CMD_WRITE_ENABLE 0x06
 #define SPI_CMD_FAST_READ 0x0B
 #define SPI_CMD_CHIP_ERASE 0x60
@@ -131,6 +132,7 @@ struct iteflash_config {
 	const struct i2c_interface *i2c_if;
 	size_t range_base;
 	size_t range_size;
+	int get_status;
 };
 
 struct common_hnd {
@@ -921,6 +923,30 @@ static int spi_flash_set_erase_page(struct common_hnd *chnd, int page,
 
 	return ret;
 }
+
+/**/
+static int spi_checkstatus_h(struct common_hnd *chnd, const char *desc)
+{
+        uint8_t reg = 0xff;
+        int ret = -EIO;
+
+        if (spi_flash_command_short(chnd, SPI_CMD_READ_STATUS_H,
+                                    "read status for s15-s8") < 0) {
+                fprintf(stderr, "spi_checkstatus_h err : %s\n", desc);
+		return ret;
+        }
+
+        if (i2c_byte_transfer(chnd, I2C_DATA_ADDR, &reg, 0, 1) < 0) {
+                fprintf(stderr, "Flash polling busy cleared FAILED\n");
+		return ret;
+        }
+
+	ret = reg;
+	printf("\n\rSPI Check Status S15-s8 = %02x\n\r",reg);
+
+        return ret;
+}
+
 
 /* Poll SPI Flash Read Status register until BUSY is reset */
 static int spi_poll_busy(struct common_hnd *chnd, const char *desc)
@@ -2163,6 +2189,7 @@ static const struct option longopts[] = { { "block-write-size", 1, 0, 'b' },
 					  { "range", 1, 0, 'R' },
 					  { "read", 1, 0, 'r' },
 					  { "send-waveform", 1, 0, 'W' },
+					  { "get-status", 0, 0, 'S' },
 					  { "serial", 1, 0, 's' },
 					  { "vendor", 1, 0, 'v' },
 					  { "write", 1, 0, 'w' },
@@ -2257,7 +2284,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 	int opt, idx, ret = 0;
 
 	while (!ret &&
-	       (opt = getopt_long(argc, argv, "?b:c:D:dehi:mp:R:r:s:uv:W:w:Zz",
+	       (opt = getopt_long(argc, argv, "?b:c:D:dehi:mp:R:r:Ss:uv:W:w:Zz",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'b':
@@ -2313,6 +2340,9 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 			ret = strdup_with_errmsg(optarg, &conf->input_filename,
 						 "-r / --read");
 			break;
+		case 'S':
+			conf->get_status=1;
+			break;	
 		case 's':
 			ret = strdup_with_errmsg(optarg, &conf->usb_serial,
 						 "-s / --serial");
@@ -2389,6 +2419,7 @@ int main(int argc, char **argv)
 			.usb_interface = SERVO_INTERFACE,
 			.verify = 1,
 			.i2c_if = &ftdi_i2c_interface,
+			.get_status = 0,
 		},
 	};
 
@@ -2439,6 +2470,11 @@ int main(int argc, char **argv)
 	dbgr_reset_gpio(&chnd);
 
 	check_flashid(&chnd);
+
+	if(chnd.conf.get_status) {
+		spi_checkstatus_h(&chnd,"SPI Check Status S15-S8");
+		goto return_after_init;
+	}
 
 	ret = post_waveform_work(&chnd);
 	if (ret)
