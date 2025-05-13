@@ -99,6 +99,24 @@
       "parentUuid": "bf905f51_48a02338",
       "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d991c7_3af681ce",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-13T11:34:33Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com / @caveh@chromium.org , I have reconsidered all the review comments and documented proposed ocelot source tree structure based on my understanding here. \n\nhttps://docs.google.com/document/d/1Q6wHIbnUksY6JsUzjY49w7_kgqg4byTEQVSbTKuNHME/edit?tab\u003dt.0\n\nPlease review it once and provide me your inputs on the same.",
+      "parentUuid": "06b554af_19668379",
+      "revId": "8c501132cfcbd4c9da40953fbe5c25a8035fa00a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
