@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0212b63a_38a7cdc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-13T20:10:07Z",
+      "side": 1,
+      "message": "done. Please let me know if the commit message is clearer now.",
+      "parentUuid": "a4079092_72b5490f",
+      "range": {
+        "startLine": 11,
+        "startChar": 51,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "80a6562c25efefe45dee515f352a8adc68924a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d1e4d88_d8512139",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-13T19:49:01Z",
       "side": 1,
       "message": "Why is this needed?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "80a6562c25efefe45dee515f352a8adc68924a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2df5c5_2d31fc64",
+        "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb_npcx9m6f.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-13T20:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d1e4d88_d8512139",
       "range": {
         "startLine": 44,
         "startChar": 0,
