@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ad412a_23488270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-13T14:34:47Z",
+      "side": 1,
+      "message": "This is much better than what I was working on. I was going to update `host_sensor_id_to_motion_sensor()` to check if `__builtin_ctz(CONFIG_GESTURE_DETECTION_MASK) \u003c motion_sensor_count` and return `NULL` if not.",
+      "revId": "9a5d89b55cf9fb4254ef6377f27d9f5f4c8fb492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
