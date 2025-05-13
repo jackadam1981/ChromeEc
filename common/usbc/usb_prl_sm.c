@@ -434,6 +434,8 @@ GEN_NOT_SUPPORTED(TCH_REPORT_ERROR);
 /* To store the time stamp when TCPC sets TX Complete Success */
 static timestamp_t tcpc_tx_success_ts[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+extern int dump;
+
 /* Set the protocol transmit statemachine to a new state. */
 static void set_state_prl_tx(const int port,
 			     const enum usb_prl_tx_state new_state)
@@ -923,6 +925,9 @@ static void prl_tx_wait_for_message_request_run(const int port)
 				PRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);
 				set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
 			} else {
+				if (dump == 1) {
+					CPRINTS("c%d tx PRL_FLAGS_WAIT_SINK_OK", port);
+				}
 				PRL_TX_SET_FLAG(port, PRL_FLAGS_WAIT_SINK_OK);
 				set_state_prl_tx(port, PRL_TX_SNK_START_AMS);
 			}
@@ -944,6 +949,9 @@ static void prl_tx_wait_for_message_request_run(const int port)
 		 * Message pending (except Soft Reset)
 		 */
 		else {
+			if (dump == 1) {
+				CPRINTS("c%d tx pass ACCEPT to phy", port);
+			}
 			/* NOTE: PRL_TX_Construct_Message State embedded here */
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
