@@ -13,72 +13,104 @@
 
 	named-gpios {
 		/delete-node/ acok_od;
-		/delete-node/ amp_mute_l;
-		/delete-node/ charger_vap_otg_en;
-		/delete-node/ ec_pmc_pd_int_odl;
-		/delete-node/ gsc_ec_pwr_btn_odl;
-		/delete-node/ ec_tris_l;
-		/delete-node/ en_kb_bl;
-		/delete-node/ en_pp5000_pen_x;
-		/delete-node/ gsc_ec_pwr_btn_odl;
+		/delete-node/ ec_edp_bl_en_od;
 		/delete-node/ imvp91_vrrdy_r_od;
-		/delete-node/ pdc_rst;
-		/delete-node/ pen_detect_odl;
-		/delete-node/ vccin_aux_r_vid0;
-		/delete-node/ vccin_aux_r_vid1;
+		/delete-node/ ec_soc_vccst_pwrgd_od;
 		/delete-node/ all_sys_pwrgd;
+		/delete-node/ pg_pp5000_z1_od;
+		/delete-node/ ccd_mode_odl;
+		/delete-node/ ec_soc_wake_odl;
+		/delete-node/ en_kb_bl;
+		/delete-node/ i2c_ec_pd_int_odl;
+		/delete-node/ ec_pmc_pd_int_odl;
 		/delete-node/ volup_btn_odl;
 		/delete-node/ voldn_btn_odl;
-		/delete-node/ pg_pp5000_z1_od;
 		/delete-node/ acc_int_l;
 		/delete-node/ imu_int_l;
 		/delete-node/ tablet_mode_l;
+		/delete-node/ gsc_ec_pwr_btn_odl;
+		/delete-node/ ec_pwr_btn_odl;
+		/delete-node/ ec_tris_l;
+		/delete-node/ en_z1_rails;
 
 		gpio_ec_acok_od: ec_acok_od {
 			gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_AC_PRESENT";
 		};
-		gpio_ec_i2c_pmc_pd_int_odl: ec_i2c_pmc_pd_int_odl {
-			gpios = <&gpio3 6 GPIO_INPUT>;
-		};
 		gpio_ec_edp_bl_en_od: ec_edp_bl_en_od {
 			gpios = <&gpiod 3 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
-		gpio_imvp91_vrrdy_od: imvp91_vrrdy_od {
-			gpios = <&gpio4 3 GPIO_INPUT>;
+		gpio_imvp91_vrrdy_r_od: imvp91_vrrdy_r_od {
+			gpios = <&gpio6 6 GPIO_INPUT>;
+			no-auto-init;
 		};
-		gpio_vccin_aux_vid0: vccin_aux_vid0 {
-			gpios = <&gpio9 2 GPIO_INPUT>;
-		};
-		gpio_vccin_aux_vid1: vccin_aux_vid1 {
-			gpios = <&gpioe 3 GPIO_INPUT>;
+		gpio_ec_soc_vccst_pwrgd_od: ec_soc_vccst_pwrgd_od {
+			gpios = <&gpioa 4 (GPIO_ODR_HIGH)>;
 		};
 		gpio_all_sys_pwrgd: all_sys_pwrgd {
 			gpios = <&gpioa 7 GPIO_INPUT>;
 		};
-		gpio_soc_enbkl: soc_enbkl {
-			gpios = <&gpioc 7 GPIO_INPUT>;
-		};
-		gpio_spok_5v: spok_5v {
+		gpio_pg_pp5000_z1_od: pg_pp5000_z1_od {
 			gpios = <&gpio4 2 GPIO_INPUT>;
 		};
-		gpio_tchpad_lid_close: tchpad_lid_close {
-			gpios = <&gpio6 3 GPIO_OUTPUT>;
+		gpio_ec_tchscr_report_en: ec_tchscr_report_en {
+			gpios = <&gpio8 6 GPIO_OUTPUT>;
 		};
 		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
 			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_sen_mode2_ec_ish_int_odl: sen_mode2_ec_ish_int_odl {
+			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_OUTPUT)>;
+		};
+		gpio_en_kb_bl: en_kb_bl {
+			gpios = <&gpioa 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
+		};
+		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
+			gpios = <&gpioa 3 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_i2c_ec_pd_int_odl: i2c_ec_pd_int_odl {
+			gpios = <&gpio0 2 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_pmc_pd_int_odl: ec_pmc_pd_int_odl {
+			gpios = <&gpio7 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_i2c_ec_pd1_int_odl: i2c_ec_pd1_int_odl {
+			gpios = <&gpioe 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_pmc_pd1_int_odl: ec_pmc_pd1_int_odl {
+			gpios = <&gpioe 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_fan_tach: fan_tach {
+			gpios = <&gpio9 3 GPIO_INPUT_PULL_UP>;
+		};
+		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
+			gpios = <&gpioc 6 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
+			gpios = <&gpio0 0 GPIO_INPUT>;
 		};
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
 		gpio_ec_entering_rw: ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
 	};
+
+	pwr-imvp9-vrrdy-od {
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "VRRDY input from IMVP9";
+		enum-name = "PWR_IMVP9_VRRDY";
+		gpios = <&gpio6 6 0>;
+	};
+
 	gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";
 
 		int_power_button: power_button {
-			irq-pin = <&gpio_ec_pwr_btn_odl>;
+			irq-pin = <&gpio_gsc_ec_pwr_btn_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "power_button_interrupt";
 		};
@@ -93,51 +125,29 @@
 			handler = "extpower_interrupt";
 		};
 	};
+
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
-		    <&gpio7 4 0>,
 			<&gpio9 5 0>,
 			<&gpio5 0 0>,
 			<&gpio5 6 0>,
-			<&gpio3 2 0>,
-			<&gpio3 3 0>,
-			<&gpio3 5 0>,
-			<&gpio3 6 0>,
-			<&gpio6 6 0>,
-			<&gpio7 3 0>,
-			<&gpio8 6 0>,
-			<&gpio9 1 0>,
-			<&gpio9 3 0>,
-			<&gpio9 6 0>,
-			<&gpioa 0 0>,
-			<&gpioa 2 0>,
-			<&gpioa 3 0>,
-			<&gpiob 7 0>,
-			<&gpioc 0 0>,
-			<&gpioc 6 0>,
 			<&gpiod 5 0>,
-			<&gpiod 6 0>,
-			<&gpiod 7 0>,
-			<&gpioe 2 0>,
-			<&gpioe 4 0>,
-			<&gpiof 4 0>,
-			<&gpiof 5 0>;
+			<&gpioa 2 0>;
 	};
-};
-&pwm1 {
-	status = "disabled";
-};
-
-&pwm6 {
-	status = "disabled";
 };
 
 /* These GPIOS are initialized by the PDC driver */
 &gpio_i2c_ec_pd_int_odl {
 	no-auto-init;
 };
-&gpio_ec_i2c_pmc_pd_int_odl {
+&gpio_ec_pmc_pd_int_odl {
+	no-auto-init;
+};
+&gpio_i2c_ec_pd1_int_odl {
+	no-auto-init;
+};
+&gpio_ec_pmc_pd1_int_odl {
 	no-auto-init;
 };
 
