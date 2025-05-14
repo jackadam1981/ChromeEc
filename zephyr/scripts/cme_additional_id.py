@@ -31,6 +31,7 @@ ADDITIONAL_DICTIONARY = {
             None,
             {
                 "reg": "0x3A",
+                "write_data": "0x3 0x0 0x0 0x26",
                 "bytes": 0,
             },
             {
@@ -47,6 +48,7 @@ ADDITIONAL_DICTIONARY = {
             None,
             {
                 "reg": "0x3A",
+                "write_data": "0x3 0x0 0x0 0x26",
                 "bytes": 0,
             },
             {
@@ -63,6 +65,7 @@ ADDITIONAL_DICTIONARY = {
             None,
             {
                 "reg": "0x3A",
+                "write_data": "0x3 0x0 0x0 0x26",
                 "bytes": 0,
             },
             {
@@ -79,6 +82,7 @@ ADDITIONAL_DICTIONARY = {
             0,
             {
                 "reg": "0x3A",
+                "write_data": "0x3 0x0 0x0 0x26",
                 "bytes": 0,
             },
             {
@@ -95,6 +99,7 @@ ADDITIONAL_DICTIONARY = {
             1,
             {
                 "reg": "0x3A",
+                "write_data": "0x3 0x0 0x0 0x26",
                 "bytes": 0,
             },
             {
@@ -111,6 +116,7 @@ ADDITIONAL_DICTIONARY = {
             None,
             {
                 "reg": "0x3A",
+                "write_data": "0x3 0x0 0x0 0x26",
                 "bytes": 0,
             },
             {
