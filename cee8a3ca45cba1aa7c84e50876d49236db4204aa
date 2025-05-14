@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a369db_10b28823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-14T23:17:38Z",
+      "side": 1,
+      "message": "Please add copyright headers to all files and run the pre-submit checks before uploading.\n\nUse `repo upload --cbr .` to automatically run the pre-submit checks before the change is uploaded.\nhttps://www.chromium.org/chromium-os/developer-library/guides/development/contributing/#upload-changes",
+      "revId": "cee8a3ca45cba1aa7c84e50876d49236db4204aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
