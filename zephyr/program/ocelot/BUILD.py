@@ -81,6 +81,29 @@ def register_mec172x_project(
     )
 
 
+def register_rtk59_project(
+    project_name,
+    extra_kconfig_files=(),
+):
+    """Register an realtek based variant of ocelot."""
+    register_rtk_project(
+        project_name=project_name,
+        zephyr_board="realtek/rts5912",
+        dts_overlays=[
+            here / project_name / "project.overlay",
+        ],
+        kconfig_files=[
+            # Common to all projects.
+            here / "program.conf",
+            # Project-specific KConfig customization.
+            here / project_name / "project.conf",
+            # Additional project-specific KConfig customization.
+            *extra_kconfig_files,
+        ],
+        modules=["cmsis", "cmsis_6", "ec"],
+    )
+
+
 # For use on RVP SKU1 and SKU2
 register_npcx9_project(
     project_name="ocelotrvp-npcx",
@@ -117,8 +140,17 @@ register_ish_project(
     ],
 )
 
+# For realtek
+register_rtk59_project(
+    project_name="ojal",
+    extra_kconfig_files=[
+        here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
+    ],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-mchp", addr=0x40318)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ojal", addr=0xCFFE0)
