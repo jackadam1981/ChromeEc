@@ -16,6 +16,23 @@
       "message": "My 2 cents:\n- Have you discussed that with the ChromeOS Security Team? I think that changing crypto implementation provider is a big change and you should get approval for that.\n- All crypto operations should be properly abstracted, so we can have more implementations than the BoringSSL and Nuvoton without adding many ifdefs to the fingerprint code.",
       "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89ec8c3_2104f791",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-14T15:25:25Z",
+      "side": 1,
+      "message": "how much savings do we get?",
+      "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
