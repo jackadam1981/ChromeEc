@@ -154,13 +154,13 @@ bool board_ap_power_check_power_rails_enabled(void)
 }
 #else
 #ifndef CONFIG_EMUL_AP_PWRSEQ_DRIVER
-/* This is called by AP Power Sequence driver only when AP exits S0 or S0IX */
+/* This is called by AP Power Sequence driver only when AP exits S0 or S0ix */
 static void board_ap_power_cb(const struct device *dev,
 			      const enum ap_pwrseq_state entry,
 			      const enum ap_pwrseq_state exit)
 {
-	if (entry == AP_POWER_STATE_S0IX) {
-		/* Avoid enabling signals when entering S0IX */
+	if (entry == AP_POWER_STATE_S0ix) {
+		/* Avoid enabling signals when entering S0ix */
 		return;
 	}
 	power_signal_enable(PWR_DSW_PWROK);
@@ -173,7 +173,7 @@ static int board_ap_power_init(void)
 	static struct ap_pwrseq_state_callback exit_cb = {
 		.cb = board_ap_power_cb,
 		.states_bit_mask =
-			(BIT(AP_POWER_STATE_S0) | BIT(AP_POWER_STATE_S0IX)),
+			(BIT(AP_POWER_STATE_S0) | BIT(AP_POWER_STATE_S0ix)),
 	};
 
 	ap_pwrseq_register_state_exit_callback(ap_pwrseq_dev, &exit_cb);
@@ -217,8 +217,8 @@ static int board_ap_power_g3_run(void *data)
 	return 1;
 }
 
-AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_g3_entry,
-			  board_ap_power_g3_run, NULL);
+AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_g3_entry, board_ap_power_g3_run,
+			  NULL);
 
 static int board_ap_power_s0_run(void *data)
 {
@@ -237,7 +237,7 @@ static int board_ap_power_s0_run(void *data)
 	return 0;
 }
 
-AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_S0, NULL, board_ap_power_s0_run, NULL);
+AP_POWER_APP_STATE_DEFINE(S0, NULL, board_ap_power_s0_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 int board_power_signal_get(enum power_signal signal)

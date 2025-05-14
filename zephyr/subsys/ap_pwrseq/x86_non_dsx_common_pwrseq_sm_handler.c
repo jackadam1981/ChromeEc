@@ -824,8 +824,8 @@ static int x86_non_dsx_g3_exit(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_G3, x86_non_dsx_g3_entry,
-			   x86_non_dsx_g3_run, x86_non_dsx_g3_exit);
+AP_POWER_ARCH_STATE_DEFINE(G3, x86_non_dsx_g3_entry, x86_non_dsx_g3_run,
+			   x86_non_dsx_g3_exit);
 
 static int x86_non_dsx_s5_entry(void *data)
 {
@@ -880,8 +880,8 @@ static int x86_non_dsx_s5_exit(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S5, x86_non_dsx_s5_entry,
-			   x86_non_dsx_s5_run, x86_non_dsx_s5_exit);
+AP_POWER_ARCH_STATE_DEFINE(S5, x86_non_dsx_s5_entry, x86_non_dsx_s5_run,
+			   x86_non_dsx_s5_exit);
 
 static int x86_non_dsx_s4_run(void *data)
 {
@@ -904,7 +904,7 @@ static int x86_non_dsx_s4_run(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S4, NULL, x86_non_dsx_s4_run, NULL);
+AP_POWER_ARCH_STATE_DEFINE(S4, NULL, x86_non_dsx_s4_run, NULL);
 
 static int x86_non_dsx_s3_run(void *data)
 {
@@ -925,7 +925,7 @@ static int x86_non_dsx_s3_run(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S3, NULL, x86_non_dsx_s3_run, NULL);
+AP_POWER_ARCH_STATE_DEFINE(S3, NULL, x86_non_dsx_s3_run, NULL);
 
 static int x86_non_dsx_s0_run(void *data)
 {
@@ -935,7 +935,7 @@ static int x86_non_dsx_s0_run(void *data)
 #if CONFIG_AP_PWRSEQ_S0IX
 	if (ap_power_sleep_get_notify() == AP_POWER_SLEEP_SUSPEND &&
 	    power_signals_on(IN_PCH_SLP_S0)) {
-		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0IX);
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0ix);
 	} else if (ap_power_sleep_get_notify() == AP_POWER_SLEEP_RESUME) {
 		ap_power_sleep_notify_transition(AP_POWER_SLEEP_RESUME);
 	}
@@ -944,7 +944,7 @@ static int x86_non_dsx_s0_run(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S0, NULL, x86_non_dsx_s0_run, NULL);
+AP_POWER_ARCH_STATE_DEFINE(S0, NULL, x86_non_dsx_s0_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 #ifdef CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND

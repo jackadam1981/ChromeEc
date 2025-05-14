@@ -92,8 +92,7 @@ static int board_ap_power_action_g3_run(void *data)
 {
 	return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S5);
 }
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL,
-			      board_ap_power_action_g3_run, NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(G3, NULL, board_ap_power_action_g3_run, NULL);
 
 static void ap_change_state_to_s5(void)
 {

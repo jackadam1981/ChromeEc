@@ -73,7 +73,7 @@ static int board_ap_power_action_g3_run(void *data)
 	return !power_signal_get(PWR_EN_PP3300_A);
 }
 
-AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
+AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_action_g3_entry,
 			  board_ap_power_action_g3_run, NULL);
 
 int board_power_signal_get(enum power_signal signal)
