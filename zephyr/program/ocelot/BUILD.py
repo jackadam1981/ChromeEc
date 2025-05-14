@@ -169,4 +169,4 @@ register_rtk59_project(
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-mchp", addr=0x40318)
-assert_rw_fwid_DO_NOT_EDIT(project_name="ojal", addr=0x80404)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ojal", addr=0xCFFE0)
