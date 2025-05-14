@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b515be3a_1c85b552",
+        "filename": "zephyr/program/trulo/pujjocento/usb_typec.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-05-14T07:36:57Z",
+      "side": 0,
+      "message": "since the pdc is not right, why not change it at another CLs?",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "0502762a6bdf8e0f52388325b26d42762706bc79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
