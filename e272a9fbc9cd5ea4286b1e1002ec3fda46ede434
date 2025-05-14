@@ -34,6 +34,24 @@
       "parentUuid": "d180e644_b65d2f6e",
       "revId": "e272a9fbc9cd5ea4286b1e1002ec3fda46ede434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c078a0_59988240",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-05-14T05:20:59Z",
+      "side": 0,
+      "message": "This setting is for `npcx9m3f` chip. It is used by EC project but FPMCU.\nPlease keep this setting of `npcx9m3f` chip.  \n`NPCX_RAM_SIZ` is the total RAM size (320 KB) supported by the `npcx9m3f`.\nBecause `NPCX_PROGRAM_MEMORY_SIZE` reduces 4K in line 92, it needs to add 4k back here.",
+      "parentUuid": "320c6abb_46da3e23",
+      "revId": "e272a9fbc9cd5ea4286b1e1002ec3fda46ede434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
