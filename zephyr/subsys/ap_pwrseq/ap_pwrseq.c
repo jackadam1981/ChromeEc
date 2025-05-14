@@ -56,14 +56,14 @@ struct ap_pwrseq_data {
 			     ())))
 
 static const char *const ap_pwrseq_state_str[AP_POWER_STATE_COUNT] = {
-	"AP_POWER_STATE_UNINIT",
-	"AP_POWER_STATE_G3",
-	"AP_POWER_STATE_S5",
-	"AP_POWER_STATE_S4",
-	"AP_POWER_STATE_S3",
-	"AP_POWER_STATE_S2",
-	"AP_POWER_STATE_S1",
-	"AP_POWER_STATE_S0",
+	"UNINIT",
+	"G3",
+	"S5",
+	"S4",
+	"S3",
+	"S2",
+	"S1",
+	"S0",
 	DT_FOREACH_STATUS_OKAY(
 		ap_pwrseq_sub_states,
 		AP_PWRSEQ_EACH_SUB_STATE_STR_DEF_NODE_CHILD_DEFINE)
@@ -189,7 +189,8 @@ static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
 			if (cur_state == new_state) {
 				break;
 			}
-			LOG_INF("%s -> %s", ap_pwrseq_get_state_str(cur_state),
+			LOG_INF("Power state: %s -> %s",
+				ap_pwrseq_get_state_str(cur_state),
 				ap_pwrseq_get_state_str(new_state));
 
 			ap_pwrseq_send_exit_callback(dev, new_state, cur_state);
