@@ -140,7 +140,7 @@ bool ap_power_in_or_transitioning_to_state(enum ap_power_state_mask state_mask)
 	case AP_POWER_STATE_S4:
 		return state_mask & AP_POWER_STATE_SUSPEND;
 #if CONFIG_AP_PWRSEQ_S0IX
-	case AP_POWER_STATE_S0IX:
+	case AP_POWER_STATE_S0ix:
 		return state_mask & AP_POWER_STATE_STANDBY;
 #endif
 	case AP_POWER_STATE_S0:

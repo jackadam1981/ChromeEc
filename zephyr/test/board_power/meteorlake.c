@@ -180,13 +180,11 @@ static int chipset_ap_power_action_g3_run(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL,
-			      chipset_ap_power_action_g3_run, NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(G3, NULL, chipset_ap_power_action_g3_run, NULL);
 
 #if CONFIG_AP_PWRSEQ_S0IX
-AP_POWER_CHIPSET_SUB_STATE_DEFINE(AP_POWER_STATE_S0IX, NULL,
-				  x86_non_dsx_mtl_s0ix_run, NULL,
-				  AP_POWER_STATE_S0);
+AP_POWER_CHIPSET_SUB_STATE_DEFINE(S0ix, NULL, x86_non_dsx_mtl_s0ix_run, NULL,
+				  S0);
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 #endif
 

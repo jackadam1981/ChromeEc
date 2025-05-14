@@ -278,7 +278,7 @@ AP_POWER_SM_HANDLER_DECL(exit);
 		.actions =                                                    \
 			AP_POWER_SM_CREATE_STATE(name, app, entry, run, exit, \
 						 &chipset_##name##_actions),  \
-		.state = name                                                 \
+		.state = AP_POWER_STATE_##name                                \
 	}
 
 /**
@@ -304,7 +304,7 @@ AP_POWER_SM_HANDLER_DECL(exit);
 		.actions = AP_POWER_SM_CREATE_STATE(name, chipset, entry, run, \
 						    exit,                      \
 						    &arch_##parent##_actions), \
-		.state = name                                                  \
+		.state = AP_POWER_STATE_##name                                 \
 	}
 
 /**
@@ -330,7 +330,7 @@ AP_POWER_SM_HANDLER_DECL(exit);
 		.actions =                                                     \
 			AP_POWER_SM_CREATE_STATE(name, app, entry, run, exit,  \
 						 &chipset_##parent##_actions), \
-		.state = name                                                  \
+		.state = AP_POWER_STATE_##name                                 \
 	}
 
 /**

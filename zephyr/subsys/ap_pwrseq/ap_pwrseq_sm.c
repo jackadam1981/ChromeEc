@@ -57,7 +57,7 @@ struct ap_pwrseq_sm_data {
 	const struct ap_pwrseq_smf __weak app_state_##name = {                \
 		.actions = SMF_CREATE_STATE(NULL, NULL, NULL,                 \
 					    &chipset_##name##_actions, NULL), \
-		.state = name                                                 \
+		.state = AP_POWER_STATE_##name                                \
 	};
 
 #define AP_POWER_STATE_WEAK_DEFINE(name)         \
@@ -65,35 +65,36 @@ struct ap_pwrseq_sm_data {
 	AP_POWER_CHIPSET_STATE_WEAK_DEFINE(name) \
 	AP_POWER_APP_STATE_WEAK_DEFINE(name)
 
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_G3)
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S5)
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S4)
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S3)
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S2)
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S1)
-AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S0)
+AP_POWER_STATE_WEAK_DEFINE(G3)
+AP_POWER_STATE_WEAK_DEFINE(S5)
+AP_POWER_STATE_WEAK_DEFINE(S4)
+AP_POWER_STATE_WEAK_DEFINE(S3)
+AP_POWER_STATE_WEAK_DEFINE(S2)
+AP_POWER_STATE_WEAK_DEFINE(S1)
+AP_POWER_STATE_WEAK_DEFINE(S0)
 
-#define AP_PWRSEQ_STATE_DEFINE(name) [name] = &app_state_##name
+#define AP_PWRSEQ_STATE_DEFINE(name) [AP_POWER_STATE_##name] = &app_state_##name
 
 /* Sub States defines */
-#define AP_PWRSEQ_APP_SUB_STATE_DEFINE(state) [state] = &app_state_##state,
+#define AP_PWRSEQ_APP_SUB_STATE_DEFINE(state) \
+	[AP_POWER_STATE_##state] = &app_state_##state,
 
 #define AP_PWRSEQ_APP_SUB_STATE_DEFINE_(state) \
 	AP_PWRSEQ_APP_SUB_STATE_DEFINE(state)
 
 #define AP_PWRSEQ_EACH_APP_SUB_STATE_NODE_DEFINE__(node_id, prop, idx) \
 	AP_PWRSEQ_APP_SUB_STATE_DEFINE_(                               \
-		DT_CAT6(node_id, _P_, prop, _IDX_, idx, _STRING_UPPER_TOKEN))
+		DT_CAT6(node_id, _P_, prop, _IDX_, idx, _STRING_TOKEN))
 
 #define AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE(state) \
-	[state] = &chipset_##state##_actions,
+	[AP_POWER_STATE_##state] = &chipset_##state##_actions,
 
 #define AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE_(state) \
 	AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE(state)
 
 #define AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE__(node_id, prop, idx) \
 	AP_PWRSEQ_EACH_CHIPSET_SUB_STATE_NODE_DEFINE_(                     \
-		DT_CAT6(node_id, _P_, prop, _IDX_, idx, _STRING_UPPER_TOKEN))
+		DT_CAT6(node_id, _P_, prop, _IDX_, idx, _STRING_TOKEN))
 
 #define AP_PWRSEQ_EACH_SUB_STATE_NODE_CHILD_DEFINE(node_id)                   \
 	COND_CODE_1(                                                          \
@@ -114,13 +115,13 @@ AP_POWER_STATE_WEAK_DEFINE(AP_POWER_STATE_S0)
  * correspond to `enum ap_pwrseq_state`.
  **/
 static const struct ap_pwrseq_smf *ap_pwrseq_states[AP_POWER_STATE_COUNT] = {
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_G3),
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_S5),
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_S4),
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_S3),
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_S2),
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_S1),
-	AP_PWRSEQ_STATE_DEFINE(AP_POWER_STATE_S0),
+	AP_PWRSEQ_STATE_DEFINE(G3),
+	AP_PWRSEQ_STATE_DEFINE(S5),
+	AP_PWRSEQ_STATE_DEFINE(S4),
+	AP_PWRSEQ_STATE_DEFINE(S3),
+	AP_PWRSEQ_STATE_DEFINE(S2),
+	AP_PWRSEQ_STATE_DEFINE(S1),
+	AP_PWRSEQ_STATE_DEFINE(S0),
 	DT_FOREACH_STATUS_OKAY(ap_pwrseq_sub_states,
 			       AP_PWRSEQ_EACH_SUB_STATE_NODE_CHILD_DEFINE)
 };
