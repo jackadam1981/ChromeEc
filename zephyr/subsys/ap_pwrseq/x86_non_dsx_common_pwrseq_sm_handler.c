@@ -371,11 +371,15 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_G3S5:
-		if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
-		    PWRSEQ_G3S5_UP_VALUE)
+		/* TODO: It is workaround for keep in S5 state */
+		/*if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
+		    PWRSEQ_G3S5_UP_VALUE)*/
 			return SYS_POWER_STATE_S5;
-		else
+		/*else
+		{
+			LOG_INF("return SYS_POWER_STATE_S5G3");
 			return SYS_POWER_STATE_S5G3;
+		}*/
 
 	case SYS_POWER_STATE_S5:
 		/* In S5 make sure no more signal lost */
@@ -406,7 +410,10 @@ static int common_pwr_sm_run(int state)
 		 *    which may set the START_FROM_G3 flag.
 		 */
 		if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) == 0)
+		{
+			LOG_INF("AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)");
 			return SYS_POWER_STATE_S5G3;
+		}
 		else if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) > 0) {
 			/*
 			 * Test and set timer running flag.
@@ -428,6 +435,7 @@ static int common_pwr_sm_run(int state)
 				/* Timer is expired */
 				atomic_clear_bit(flags,
 						 S5_INACTIVE_TIMER_RUNNING);
+				LOG_INF("Timer is expired");
 				return SYS_POWER_STATE_S5G3;
 			}
 		}
