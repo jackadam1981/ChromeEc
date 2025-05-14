@@ -46,6 +46,30 @@
       },
       "revId": "00a679126dce6044330c61d6f8a33c32ffcbbbac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8d7c2f_b44fede5",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T17:52:41Z",
+      "side": 0,
+      "message": "Per the bug discussion, I\u0027m OK with merging this, contingent upon future refactoring.",
+      "parentUuid": "d235f873_bc2744d2",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "00a679126dce6044330c61d6f8a33c32ffcbbbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

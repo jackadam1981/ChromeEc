@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cae621_4728b06f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T17:52:41Z",
+      "side": 1,
+      "message": "Per bug discussion, can you update this?\n\n`BUG\u003db:401262704,b:390043287,b:\u003cnew bug ID for Gen4 support\u003e,b:\u003cnew bug ID for code cleanup\u003e`",
+      "revId": "9c6de15b1a8ccf3a82c90146556a8dcf43ea4119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "32cf7433_438ba35b",
@@ -49,6 +66,41 @@
       "writtenOn": "2025-04-28T15:56:31Z",
       "side": 1,
       "message": "As described in detail on the bug, I believe this change probably breaks USB4 Gen4. I think the cable speed calculation (at least) should be refactored to be more obviously correct.",
+      "revId": "9c6de15b1a8ccf3a82c90146556a8dcf43ea4119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07421f1_22739ae0",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T17:52:41Z",
+      "side": 1,
+      "message": "Can you add a to do here something like this?\n\n\"TODO b/\u003cnew Gen4 bug ID\u003e: This caps the USB speed at Gen3, even when the port and cable support Gen4. Add proper Gen4 support to this conversion.\"",
+      "fixSuggestions": [
+        {
+          "fixId": "a16b3c3c_59d0b757",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/usbc/usb_mode.c",
+              "range": {
+                "startLine": 342,
+                "startChar": 0,
+                "endLine": 342,
+                "endChar": 0
+              },
+              "replacement": "\t * TODO(b/322138588): This caps the USB speed at Gen3, even when the\n\t * port and cable support Gen4. Add proper Gen4 support to this\n\t * conversion.\n"
+            }
+          ]
+        }
+      ],
       "revId": "9c6de15b1a8ccf3a82c90146556a8dcf43ea4119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
