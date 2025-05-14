@@ -40,6 +40,30 @@
       ],
       "revId": "fc2ab29a682173efb57d5620465735242a9010e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "275cfc8d_3861b982",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-14T15:15:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06389f24_d1e2cdf2",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 50
+      },
+      "revId": "fc2ab29a682173efb57d5620465735242a9010e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
