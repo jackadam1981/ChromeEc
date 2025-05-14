@@ -106,7 +106,7 @@
     <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
-    <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
+    <vif:Port_Managed_Guaranteed_Type value="1">Guaranteed Capability</vif:Port_Managed_Guaranteed_Type>
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="1">Under-Voltage Response</vif:PD_OCP_Method>
