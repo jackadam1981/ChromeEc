@@ -24,15 +24,15 @@ struct ap_pwrseq_smf {
 #define AP_POWER_STATE_DECL(state)                               \
 	extern const struct smf_state arch_##state##_actions;    \
 	extern const struct smf_state chipset_##state##_actions; \
-	extern const struct ap_pwrseq_smf app_state_##name;
+	extern const struct ap_pwrseq_smf app_state_##state;
 
-AP_POWER_STATE_DECL(AP_POWER_STATE_G3)
-AP_POWER_STATE_DECL(AP_POWER_STATE_S5)
-AP_POWER_STATE_DECL(AP_POWER_STATE_S4)
-AP_POWER_STATE_DECL(AP_POWER_STATE_S3)
-AP_POWER_STATE_DECL(AP_POWER_STATE_S2)
-AP_POWER_STATE_DECL(AP_POWER_STATE_S1)
-AP_POWER_STATE_DECL(AP_POWER_STATE_S0)
+AP_POWER_STATE_DECL(G3)
+AP_POWER_STATE_DECL(S5)
+AP_POWER_STATE_DECL(S4)
+AP_POWER_STATE_DECL(S3)
+AP_POWER_STATE_DECL(S2)
+AP_POWER_STATE_DECL(S1)
+AP_POWER_STATE_DECL(S0)
 
 /**
  * Makes visible `struct ap_pwrseq_smf` declarations for defined substates

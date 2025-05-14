@@ -148,15 +148,15 @@ static int board_ap_power_g3_run(void *data)
 	return 1;
 }
 
-AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_g3_entry,
-			  board_ap_power_g3_run, NULL);
+AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_g3_entry, board_ap_power_g3_run,
+			  NULL);
 
 static int board_ap_power_s0_run(void *data)
 {
 	return 0;
 }
 
-AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_S0, NULL, board_ap_power_s0_run, NULL);
+AP_POWER_APP_STATE_DEFINE(S0, NULL, board_ap_power_s0_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 int board_power_signal_get(enum power_signal signal)
