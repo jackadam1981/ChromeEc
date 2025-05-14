@@ -1715,6 +1715,9 @@ bool charge_prevent_power_on(bool power_button_pressed)
 		prevent_power_on = 1;
 #endif /* CONFIG_SYSTEM_UNLOCKED */
 
+	/* TODO: WA for power on */
+	prevent_power_on = 0;
+
 	return prevent_power_on != 0;
 }
 
