@@ -16,6 +16,24 @@
       "message": "This setting is for `npcx9mfp` chip which is used for Helipilot.\nI understand you need to modified this line because the `CONFIG_DATA_RAM_SIZE` and `NPCX_PROGRAM_MEMORY_SIZE` are overridden in baseboard/helipilot/base_board.h. \nAnd it already takes the 4K into account, so you don\u0027t need to add it back here.\n\nBut for consistency, could you also help correct the default in line 124 and 125 in this file to:\n```\n#define CONFIG_DATA_RAM_SIZE (96 * 1024)\n#define CONFIG_RAM_SIZE (CONFIG_DATA_RAM_SIZE - 0x1000)\n```",
       "revId": "1632b16cc4c7c10e19682bc97c140a2766e4f5d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "855e4ed6_b7a8f851",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-14T18:16:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53cfd6b0_88193c94",
+      "revId": "1632b16cc4c7c10e19682bc97c140a2766e4f5d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
