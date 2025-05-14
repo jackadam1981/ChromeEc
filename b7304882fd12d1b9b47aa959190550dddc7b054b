@@ -1,0 +1,256 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdce7962_bd0ba1a3",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "Nit: I take this \"20\" to refer to SVDM version 2.0, as distinct from such things as DP 2.0 and DPAM 2.0, for which no products were ever released. You might want to update some of the naming in this suite to make that clear, since there are similar numbers floating around that refer to DP, DPAM, or USB.",
+      "range": {
+        "startLine": 272,
+        "startChar": 22,
+        "endLine": 272,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8a5c678a_6e1aee76",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/testcase.yaml",
+              "range": {
+                "startLine": 272,
+                "startChar": 0,
+                "endLine": 273,
+                "endChar": 0
+              },
+              "replacement": "  drivers.usbc_dp_mode_svdm_20:\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31bd2bd7_9ccf14d2",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "I think this should conventionally be `ZEPHYR_TEST_DRIVERS_USBC_DP_MODE_INCLUDE_USBC_DP_MODE_H_`.",
+      "range": {
+        "startLine": 6,
+        "startChar": 33,
+        "endLine": 6,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "26dc18e2_60581972",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "#ifndef ZEPHYR_TEST_DRIVERS_USBC_DP_MODE_INCLUDE_USBC_DP_MODE_H_\n#define ZEPHYR_TEST_DRIVERS_USBC_DP_MODE_INCLUDE_USBC_DP_MODE_H_\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+              "range": {
+                "startLine": 52,
+                "startChar": 0,
+                "endLine": 53,
+                "endChar": 0
+              },
+              "replacement": "#endif /* ZEPHYR_TEST_DRIVERS_USBC_DP_MODE_INCLUDE_USBC_DP_MODE_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b50c6b2_e027c2bb",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "Hardware version and firmware version are the fields for the cable VDOs. (IDK why this is different than the UFP VDO.)",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb5667b_2d45ce23",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "This would indicate DPAM 2.1. For DPAM 2.0, it should be 0. (There may actually be cables in the wild that incorrectly set this combination of bits, and we should ignore this field based on the SVDM version, but that would be a different test than the one I think you\u0027re aiming for here.)",
+      "fixSuggestions": [
+        {
+          "fixId": "5b8776af_00ed519a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 54,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "\t\tDPAM_VER_VDO(0x0);\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 166,
+                "startChar": 0,
+                "endLine": 167,
+                "endChar": 0
+              },
+              "replacement": "\t\tDPAM_VER_VDO(0x0);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f1c712_a35cb53e",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "These functions largely duplicate code in the DPAM 2.1 tests. I think these functions could be parameterized by the SVDM version, and then each set of tests could call the common functions with the appropriate version.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edb5d22_655e37e1",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "This tests that the EC conveys the discovery information faithfully from the partner/cable to the AP, but that should already be covered by existing tests. The more important thing to test here is that we enter DP mode properly in the presence of both SVDM 2.0/1.0 and SVDM 2.1. You can see tests of mode entry for various cable types in `usbc_dp_mode.c`, where we check the mux state at the end of the mode entry sequence as as proxy for mode entry having worked.\n\nLooking through those mode entry tests reveals some gaps in the existing tests. We don\u0027t necessarily have to cover them right now, but we might end up covering some of them incidentally for the purpose of this CL. I\u0027ll list them here for discussion:\n1. The existing tests check DP mode entry by checking the mux state. However, the process is different at the protocol level between DPAM 2.1 and 2.0. Specifically, the TCPM should attempt to Enter Mode on SOP\u0027 and maybe SOP\u0027\u0027 for cables supporting DPAM 2.1. In DPAM \u003c2.1, cable mode entry is implicit. Therefore, we should expect to see different cable traffic in the message log between DPAM 2.1 and older.\n   Right now, we\u0027re not checking that traffic at all.\n2. DPAM 2.1 cables are defined to fall back gracefully to implicit cable mode entry when the partner does not explicitly Enter Mode on SOP\u0027/SOP\u0027\u0027. In the existing tests, I think this is the code path that we\u0027re exercising, because the existing tests don\u0027t define cable Enter Mode/Status/Config ACKs. I expect that if we look at the message logs for the DPAM 2.1 tests, we\u0027ll see Enter Mode NAKs from the cable and the TCPM moving on.\n   We should also be exercising the path where the cable ACKs Enter Mode and checking that the traffic makes sense.",
+      "fixSuggestions": [
+        {
+          "fixId": "c1ff7aab_eda0264d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 147,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "ZTEST_F(usbc_dp_mode_20, test_dp_mode_20)\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 172,
+                "startChar": 0,
+                "endLine": 172,
+                "endChar": 0
+              },
+              "replacement": "\t/* TODO: Add tests to verify that the DP mode is entered and exited\n\t * correctly.\n\t */\n\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 176,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "\t/* Verify SOP discovery. This is a sanity check to ensure that the\n\t * discovery information is correctly conveyed to the AP.\n\t */\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 202,
+                "startChar": 0,
+                "endLine": 203,
+                "endChar": 0
+              },
+              "replacement": "\t/* Verify SOP\u0027 discovery. This is a sanity check to ensure that the\n\t * discovery information is correctly conveyed to the AP.\n\t */\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+              "range": {
+                "startLine": 228,
+                "startChar": 0,
+                "endLine": 228,
+                "endChar": 0
+              },
+              "replacement": "\n\t/* TODO: Add tests to verify that the DP status is correctly reported. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

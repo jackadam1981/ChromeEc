@@ -140,6 +140,57 @@
       "parentUuid": "371ab18c_c2c6945e",
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05d060e_807eefd9",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:51:45Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer to keep these in this file and not rely on transitive includes from the shared header.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "aed15bd1_1424ec05",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "#include \u003cdrivers/emul.h\u003e\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "#include \u003czephyr/sys/util.h\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
