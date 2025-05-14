@@ -47,7 +47,7 @@ translate_ap_power_state(enum ap_pwrseq_state ap_power_state)
 	case AP_POWER_STATE_S3:
 		return POWER_S3;
 #if CONFIG_AP_PWRSEQ_S0IX
-	case AP_POWER_STATE_S0IX:
+	case AP_POWER_STATE_S0ix:
 		return POWER_S0ix;
 #endif
 	default:
