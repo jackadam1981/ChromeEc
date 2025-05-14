@@ -19,4 +19,9 @@ if(DEFINED CONFIG_BOARD_OCELOT_MICROCHIP)
 	zephyr_library_sources("src/board_power.c")
 endif()
 
+if(DEFINED CONFIG_BOARD_OCELOT_RTK)
+	project(ocelot_rtk)
+	# zephyr_library_sources("src/board_power.c")
+endif()
+
 add_subdirectory(${PROJECT_NAME})

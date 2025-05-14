@@ -71,6 +71,28 @@ def register_mec172x_project(
         modules=["cmsis", "ec"],
     )
 
+def register_rtk59_project(
+    project_name,
+    extra_kconfig_files=(),
+):
+    """Register an realtek based variant of ocelot."""
+    register_rtk_project(
+        project_name=project_name,
+        zephyr_board="realtek/rts5912",
+        dts_overlays=[
+            here / project_name / "project.overlay",
+        ],
+        kconfig_files=[
+            # Common to all projects.
+            here / "program.conf",
+            # Project-specific KConfig customization.
+            here / project_name / "project.conf",
+            # Additional project-specific KConfig customization.
+            *extra_kconfig_files,
+        ],
+        modules=["cmsis", "ec"],
+    )
+
 
 # For use on SKU1 and SKU2
 register_npcx9_project(
@@ -87,9 +109,14 @@ register_mec172x_project(
     project_name="ocelot_microchip",
 )
 
+# For realtek
+register_rtk59_project(
+    project_name="ocelot_rtk",
+)
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_nuvoton", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_microchip", addr=0x40318)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_rtk", addr=0xcffe0)

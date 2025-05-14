@@ -1,50 +1,46 @@
-/* Copyright 2023 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+
+/ {
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_charger: ec_i2c_charger {
+			i2c-port = <&i2c_0>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+		i2c_ec_i2c_sensor: ec_i2c_sensor {
+			i2c-port = <&i2c_1>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+		i2c_ec_i2c_pdc: ec_i2c_pdc {
+			i2c-port = <&i2c_3>;
+			enum-names = "I2C_PORT_PD";
+		};
+	};
+};
 
 &i2c_0 {
 	pinctrl-0 = <&i2c00_clk_gpio094
 		     &i2c00_data_gpio095>;
 	pinctrl-names = "default";
-
-	label = "I2C_PORT_SENSOR";
-	clock-frequency = <I2C_BITRATE_FAST>;
+	status = "okay";
 };
 
 &i2c_1 {
 	pinctrl-0 = <&i2c01_clk_gpio118
 		     &i2c01_data_gpio119>;
 	pinctrl-names = "default";
-
-	label = "I2C_PORT_PD";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
+	status = "okay";
 };
 
 &i2c_3 {
 	pinctrl-0 = <&i2c03_clk_gpio100
 		     &i2c03_data_gpio101>;
 	pinctrl-names = "default";
-
-	label = "I2C_PORT_PMC_PD";
-	clock-frequency = <I2C_BITRATE_FAST>;
-};
-
-&i2c_4 {
-	pinctrl-0 = <&i2c04_clk_gpio017
-		     &i2c04_data_gpio018>;
-	pinctrl-names = "default";
-
-	label = "I2C_PORT_CHARGER";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
-};
-
-&i2c_i2c_ec_pmc_pd {
-	status = "disabled";
-};
-
-&i2c_3 {
-	status = "disabled";
+	status = "okay";
 };
 
 &i2c_0_wrapper {
@@ -53,24 +49,15 @@
 	sda-gpio-pin = <95>;
 	scl-gpio-pin = <94>;
 };
-
 &i2c_1_wrapper {
 	label = "I2C_PORT_PD";
 	status = "okay";
 	scl-gpio-pin = <118>;
 	sda-gpio-pin = <119>;
 };
-
 &i2c_3_wrapper {
 	label = "I2C_PORT_PMC_PD";
-	status = "disabled";
+	status = "okay";
 	scl-gpio-pin = <100>;
 	sda-gpio-pin = <101>;
-};
-
-&i2c_4_wrapper {
-	label = "I2C_PORT_CHARGER";
-	status = "okay";
-	scl-gpio-pin = <17>;
-	sda-gpio-pin = <18>;
 };

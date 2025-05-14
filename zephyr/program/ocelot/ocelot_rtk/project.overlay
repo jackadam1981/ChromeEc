@@ -1,0 +1,22 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* ocelot program common DTS includes */
+
+//#include <cros/integrated_fwid.dtsi>
+
+/* ocelot_nuvoton project DTS includes */
+
+#include "adc.dtsi"
+#include "battery.dtsi"
+#include "fan.dtsi"
+#include "gpio.dtsi"
+#include "i2c.dtsi"
+#include "keyboard.dtsi"
+#include "led_pins.dtsi"
+#include "overlay.dtsi"
+//#include "power_signals.dtsi"
+#include "pwm.dtsi"
+#include "usbc.dtsi"
