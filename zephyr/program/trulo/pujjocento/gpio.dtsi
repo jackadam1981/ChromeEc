@@ -26,7 +26,6 @@
 		/delete-node/ all_sys_pwrgd;
 		/delete-node/ volup_btn_odl;
 		/delete-node/ voldn_btn_odl;
-		/delete-node/ en_pp5000_vbus;
 		/delete-node/ pg_pp5000_z1_od;
 		/delete-node/ acc_int_l;
 		/delete-node/ imu_int_l;
@@ -60,9 +59,6 @@
 		};
 		gpio_ec_cbi_wp: ec_cbi_wp {
 			gpios = <&gpio7 4 GPIO_OUTPUT>;
-		};
-		gpio_en_usb_a0_vbus: en_usb_a0_vbus {
-			gpios = <&gpiod 4 GPIO_OUTPUT>;
 		};
 		gpio_spok_5v: spok_5v {
 			gpios = <&gpio4 2 GPIO_INPUT>;
