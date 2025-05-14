@@ -4,10 +4,6 @@
  */
 
  / {
-	aliases {
-		gpio-cbi-wp = &gpio_ec_cbi_wp;
-	};
-
 	named-gpios {
 		/delete-node/ acok_od;
 		/delete-node/ amp_mute_l;
@@ -57,9 +53,6 @@
 		gpio_soc_enbkl: soc_enbkl {
 			gpios = <&gpioc 7 GPIO_INPUT>;
 		};
-		gpio_ec_cbi_wp: ec_cbi_wp {
-			gpios = <&gpio7 4 GPIO_OUTPUT>;
-		};
 		gpio_spok_5v: spok_5v {
 			gpios = <&gpio4 2 GPIO_INPUT>;
 		};
@@ -83,6 +76,7 @@
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
+		    <&gpio7 4 0>,
 			<&gpio9 5 0>,
 			<&gpio5 0 0>,
 			<&gpio5 6 0>,
