@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a7c2f9_6a71f03b",
+        "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-05-14T08:54:22Z",
+      "side": 1,
+      "message": "the new code remove the function, please remove this change, 6476568: switch: Do not report the WP switch over memmap | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6476568",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "e076bd62133fa92769e64842fa6b6cbc58407107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
