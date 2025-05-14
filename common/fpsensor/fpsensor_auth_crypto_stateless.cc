@@ -8,17 +8,21 @@
 #include "crypto/elliptic_curve_key.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
+#include "sha256.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/ecdh.h"
 #include "openssl/obj_mac.h"
 #include "openssl/rand.h"
-#include "sha256.h"
+#endif
 
 #include <algorithm>
 #include <array>
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 std::optional<fp_elliptic_curve_public_key>
 create_pubkey_from_ec_key(const EC_KEY &key)
 {
@@ -39,10 +43,30 @@ create_pubkey_from_ec_key(const EC_KEY &key)
 	std::copy(pubkey_data.get() + 1,
 		  pubkey_data.get() + 1 + sizeof(pubkey.x) + sizeof(pubkey.y),
 		  pubkey_ptr);
-
 	return pubkey;
 }
+#else
 
+const uint16_t pubkey_x = 32;
+const uint16_t pubkey_y = 32;
+uint32_t *pubkey = (uint32_t *)malloc(sizeof(uint32_t) * (pubkey_x + pubkey_y));
+
+std::uint32_t *create_pubkey_from_ec_key(const uint32_t &key)
+{
+	/* POINT_CONVERSION_UNCOMPRESSED indicates that the point is encoded as
+	 * z||x||y, where z is the octet 0x04. */
+	/*uint8_t *data = nullptr;
+	uint8_t* pubkey_data = (uint8_t *)&(pubkey);
+	uint8_t* pubkey_ptr = reinterpret_cast<uint8_t *>(&pubkey);
+	std::copy(pubkey_data[0] + 1,
+		  pubkey_data[0] + 1 + 32 + 32,
+		  pubkey_ptr);*/
+
+	return (uint32_t *)(&pubkey);
+}
+#endif
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY>
 create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey)
 {
@@ -73,7 +97,20 @@ create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey)
 
 	return key;
 }
+#else
+const uint16_t ec_key_x = 32;
+const uint16_t ec_key_y = 32;
+uint32_t *ec_key_pub =
+	(uint32_t *)malloc(sizeof(uint32_t) * (ec_key_x + ec_key_y));
 
+std::uint32_t *
+create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey)
+{
+	return (uint32_t *)&ec_key_pub;
+}
+#endif
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 						   size_t privkey_size)
 {
@@ -89,7 +126,18 @@ bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 
 	return key;
 }
+#else
+uint32_t *ec_key_priv =
+	(uint32_t *)malloc(sizeof(uint32_t) * (ec_key_x + ec_key_y));
 
+std::uint32_t *create_ec_key_from_privkey(const uint8_t *privkey,
+					  size_t privkey_size)
+{
+	return (uint32_t *)&ec_key_priv;
+}
+#endif
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 					       const EC_KEY &public_key,
 					       uint8_t *shared_secret,
@@ -107,6 +155,15 @@ enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 
 	return EC_SUCCESS;
 }
+#else
+enum ec_error_list generate_ecdh_shared_secret(const std::uint32_t &private_key,
+					       const std::uint32_t &public_key,
+					       uint8_t *shared_secret,
+					       uint8_t share_secret_size)
+{
+	return EC_SUCCESS;
+}
+#endif
 
 enum ec_error_list
 generate_gsc_session_key(std::span<const uint8_t> auth_nonce,
@@ -135,6 +192,7 @@ enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
 	std::span<const uint8_t> gsc_session_key, std::span<const uint8_t> iv,
 	std::span<uint8_t> data)
 {
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	if (gsc_session_key.size() != 32 || iv.size() != AES_BLOCK_SIZE) {
 		return EC_ERROR_INVAL;
 	}
@@ -153,7 +211,7 @@ enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
 	std::array<uint8_t, AES_BLOCK_SIZE> ecount_buf;
 	AES_ctr128_encrypt(data.data(), data.data(), data.size(), &aes_key,
 			   aes_iv.data(), ecount_buf.data(), &block_num);
-
+#endif
 	return EC_SUCCESS;
 }
 
@@ -162,6 +220,7 @@ enum ec_error_list encrypt_data_with_ecdh_key_in_place(
 	std::span<uint8_t> data, std::span<uint8_t> iv,
 	struct fp_elliptic_curve_public_key &out_pubkey)
 {
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	if (iv.size() != AES_BLOCK_SIZE) {
 		return EC_ERROR_INVAL;
 	}
@@ -213,6 +272,6 @@ enum ec_error_list encrypt_data_with_ecdh_key_in_place(
 	/* The AES CTR uses the same function for encryption & decryption. */
 	AES_ctr128_encrypt(data.data(), data.data(), data.size(), &aes_key,
 			   aes_iv.data(), ecount_buf.data(), &block_num);
-
+#endif
 	return EC_SUCCESS;
 }

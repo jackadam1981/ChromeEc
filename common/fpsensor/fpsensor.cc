@@ -23,7 +23,6 @@
 #include "host_command.h"
 #include "link_defs.h"
 #include "mkbp_event.h"
-#include "openssl/mem.h"
 #include "scoped_fast_cpu.h"
 #include "sha256.h"
 #include "spi.h"
@@ -32,6 +31,10 @@
 #include "trng.h"
 #include "util.h"
 #include "watchdog.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
+#include "openssl/mem.h"
+#endif
 
 #include <array>
 #include <variant>
@@ -675,7 +678,9 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 	if (bytes_are_trivial(positive_match_salt.data(),
 			      positive_match_salt.size_bytes())) {
 		CPRINTS("fgr%d: Trivial positive match salt.", idx);
+#ifdef CONFIG_BORINGSSL_CRYPTO
 		OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
+#endif
 		return EC_RES_INVALID_PARAM;
 	}
 	std::ranges::copy(positive_match_salt,

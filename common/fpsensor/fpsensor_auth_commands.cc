@@ -13,11 +13,14 @@
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
 #include "fpsensor/fpsensor_template_state.h"
-#include "openssl/mem.h"
-#include "openssl/rand.h"
 #include "scoped_fast_cpu.h"
 #include "sha256.h"
 #include "util.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
+#include "openssl/mem.h"
+#include "openssl/rand.h"
+#endif
 
 #include <algorithm>
 #include <array>
@@ -60,6 +63,7 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
 	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
@@ -70,13 +74,26 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 					     FP_AES_KEY_ENC_METADATA_VERSION,
 					     global_context.user_id,
 					     global_context.tpm_seed);
+#else
+	std::uint32_t *ecdh_key = generate_elliptic_curve_key();
+	if (ecdh_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	std::optional<fp_encrypted_private_key> encrypted_private_key =
+		create_encrypted_private_key(*ecdh_key,
+					     FP_AES_KEY_ENC_METADATA_VERSION,
+					     global_context.user_id,
+					     global_context.tpm_seed);
+#endif
+
 	if (!encrypted_private_key.has_value()) {
 		CPRINTS("pairing_keygen: Failed to fill response encrypted private key");
 		return EC_RES_UNAVAILABLE;
 	}
 
 	r->encrypted_private_key = encrypted_private_key.value();
-
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	std::optional<fp_elliptic_curve_public_key> pubkey =
 		create_pubkey_from_ec_key(*ecdh_key);
 	if (!pubkey.has_value()) {
@@ -84,6 +101,12 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 	}
 
 	r->pubkey = pubkey.value();
+#else
+	std::uint32_t *pubkey = create_pubkey_from_ec_key(*ecdh_key);
+	if (pubkey == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+#endif
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -101,7 +124,7 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 		args->response);
 
 	ScopedFastCpu fast_cpu;
-
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	bssl::UniquePtr<EC_KEY> private_key = decrypt_private_key(
 		params->encrypted_private_key, global_context.user_id,
 		global_context.tpm_seed);
@@ -114,7 +137,19 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	if (public_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
+#else
+	uint32_t *private_key = decrypt_private_key(
+		params->encrypted_private_key, global_context.user_id,
+		global_context.tpm_seed);
+	if (private_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
 
+	uint32_t *public_key = create_ec_key_from_pubkey(params->peers_pubkey);
+	if (public_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+#endif
 	enum ec_error_list ret = generate_ecdh_shared_secret(
 		*private_key, *public_key, r->encrypted_pairing_key.data,
 		sizeof(r->encrypted_pairing_key.data));
@@ -186,7 +221,9 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 		fp_reset_context();
 	}
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	RAND_bytes(auth_nonce.data(), auth_nonce.size());
+#endif
 
 	std::ranges::copy(auth_nonce, r->nonce);
 
@@ -325,14 +362,18 @@ static enum ec_status unlock_template(uint16_t idx)
 				  global_context.user_id,
 				  global_context.tpm_seed) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
+#ifdef CONFIG_BORINGSSL_CRYPTO
 		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+#endif
 		return EC_RES_UNAVAILABLE;
 	}
 
 	if (aes_128_gcm_decrypt(key, enc_buffer, enc_buffer, enc_info.nonce,
 				enc_info.tag) != EC_SUCCESS) {
 		fp_clear_finger_context(idx);
+#ifdef CONFIG_BORINGSSL_CRYPTO
 		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+#endif
 		return EC_RES_UNAVAILABLE;
 	}
 
@@ -341,7 +382,9 @@ static enum ec_status unlock_template(uint16_t idx)
 	global_context.template_states[idx] = fp_decrypted_template_state{
 		.user_id = global_context.user_id,
 	};
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
+#endif
 	return EC_RES_SUCCESS;
 }
 
