@@ -8344,7 +8344,7 @@ struct ec_params_fp_mode {
 
 struct ec_response_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
-} __ec_align4;
+} __aligned(4);
 
 /* Retrieve Fingerprint sensor information */
 #define EC_CMD_FP_INFO 0x0403
