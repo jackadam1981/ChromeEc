@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d31df7_8b4bec1b",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-14T21:29:04Z",
+      "side": 1,
+      "message": "Add a prefix to avoid name conflicts.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e143406d_2f15dba8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/power/qcom.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "\tQC_EXP_AP_RST_ASSERTED \u003d 0,\n\tQC_EXP_PS_HOLD,\n\tQC_EXP_POWER_GOOD,\n\tQC_EXP_AP_SUSPEND,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c5d19cc7feb7ebcf1f22aace2048d207805e08a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
