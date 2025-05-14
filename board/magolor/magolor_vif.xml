@@ -58,7 +58,7 @@
     <vif:DR_Swap_To_UFP_Supported value="false" />
     <vif:VCONN_Swap_To_On_Supported value="true" />
     <vif:VCONN_Swap_To_Off_Supported value="true" />
-    <vif:Responds_To_Discov_SOP_UFP value="true" />
+    <vif:Responds_To_Discov_SOP_UFP value="false" />
     <vif:Responds_To_Discov_SOP_DFP value="true" />
     <vif:Attempts_Discov_SOP value="true" />
     <vif:Power_Interruption_Available value="0">No Interruption Possible</vif:Power_Interruption_Available>
@@ -222,7 +222,7 @@
     <vif:DR_Swap_To_UFP_Supported value="false" />
     <vif:VCONN_Swap_To_On_Supported value="true" />
     <vif:VCONN_Swap_To_Off_Supported value="true" />
-    <vif:Responds_To_Discov_SOP_UFP value="true" />
+    <vif:Responds_To_Discov_SOP_UFP value="false" />
     <vif:Responds_To_Discov_SOP_DFP value="true" />
     <vif:Attempts_Discov_SOP value="true" />
     <vif:Power_Interruption_Available value="0">No Interruption Possible</vif:Power_Interruption_Available>
@@ -233,8 +233,8 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:Type_C_Can_Act_As_Host value="true" />
     <vif:Type_C_Can_Act_As_Device value="false" />
-    <vif:Type_C_Implements_Try_SRC value="false" />
-    <vif:Type_C_Implements_Try_SNK value="true" />
+    <vif:Type_C_Implements_Try_SRC value="true" />
+    <vif:Type_C_Implements_Try_SNK value="false" />
     <vif:Type_C_Supports_Audio_Accessory value="false" />
     <vif:Type_C_Is_VCONN_Powered_Accessory value="false" />
     <vif:Type_C_Is_Debug_Target_SRC value="true" />
