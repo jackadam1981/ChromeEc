@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcdb5be_51c9e36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-14T18:22:52Z",
+      "side": 1,
+      "message": "Just some nits. Please fix them.",
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c331b0b3_b34153db",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-14T18:22:52Z",
+      "side": 1,
+      "message": "Nit: Make them all lower cases.",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a89d23ca_9c9e6bf1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 10,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": "#\t\t0x2000_0000 - 0x2000_7000: chrome-loader (28 kb)\n#\t\t0x2000_7000 - 0x2000_b3e0: customer use (16 kb)\n#\t\t0x2000_b3e0 - 0x2004_b400: code (256 kb + 20B header)\n#\t\t0x2004_b400 - 0x2005_0000: customer use (19 kb)\n#\t\t0x2005_0000 - 0x2006_0000: customer use (64 kb)\n"
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": "#\t\t0x6000_0000 - 0x6007_ffff: RO\n#\t\t0x6008_0000 - 0x600f_ffff: RW\n"
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "\tdefault 0x10000\n"
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "\tdefault 0x10000\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffeb5f06_da381a21",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-14T18:22:52Z",
+      "side": 1,
+      "message": "Nit: Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 19,
+        "startChar": 77,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a8d83b2a_574eb7fa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "# TODO: b/416020794, make the EC image size as big as the available code RAM.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16ba859_f440734f",
+        "filename": "zephyr/program/minimal/realtek.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-14T18:22:52Z",
+      "side": 1,
+      "message": "Nit: Add a space after #.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a93f0114_10fff452",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/minimal/realtek.conf",
+              "range": {
+                "startLine": 8,
+                "startChar": 0,
+                "endLine": 9,
+                "endChar": 0
+              },
+              "replacement": "# For limited function, need remove when flash enable (CL:6508707)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
