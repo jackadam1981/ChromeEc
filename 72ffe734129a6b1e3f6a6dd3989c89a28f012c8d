@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91ea7ba_ea0f9562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T17:11:43Z",
+      "side": 1,
+      "message": "FYI, the no-3A setting comes from the [corsola ITE base config](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/ite_program.conf;l\u003d65;drc\u003dbd46523a00f5121b1f4165e6bd307457d8fd6c38), and the only model that overrides that is wugtrio. If we make VIFs for more corsola ITE variants, they\u0027ll also have this slightly unusual setup.\n\nsquirtle and steelix are NPCX variants, so they have the typical single 3A port and the typical VIF settings. You can check the chip of a variant in the [build file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/corsola/BUILD.py).",
+      "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932db068_ca9cf1c1",
+        "filename": "zephyr/program/corsola/veluza/veluza_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T17:11:43Z",
+      "side": 1,
+      "message": "Probably for another CL: This should be 1.5A to match the rest of the source properties.",
+      "fixSuggestions": [
+        {
+          "fixId": "58ddd910_f3d24f67",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/corsola/veluza/veluza_vif.xml",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "    \u003cvif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value\u003d\"1\"\u003e1.5A @ 5V\u003c/vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
