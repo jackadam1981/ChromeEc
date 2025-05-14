@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb498fc_dd66fa42",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-14T23:16:17Z",
+      "side": 1,
+      "message": "Is it necessary to rename the enum symbol too? I thought we were only concerned about the string name that is written in logs.",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8e1970c6_f159f9ca",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/ap_power/ap_pwrseq_sm_defs.h",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "\textern const struct ap_pwrseq_smf app_state_##state;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "af431726a8b8e2b736ba3bc1693a30bc4eceff26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bde5fe_b9923c1b",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-14T23:16:17Z",
+      "side": 1,
+      "message": "Remove the extra dash in case there are tests trying to match this log",
+      "range": {
+        "startLine": 192,
+        "startChar": 11,
+        "endLine": 192,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5a6a9086_41e63cce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+              "range": {
+                "startLine": 192,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tLOG_INF(\"Power state: %s -\u003e %s\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "af431726a8b8e2b736ba3bc1693a30bc4eceff26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
