@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d650aa4_969425f2",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-14T19:03:56Z",
+      "side": 1,
+      "message": "do we expect all variants to be purely VW or is this more of an RVP design choice?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "63f22110_0f29a694",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/program.conf",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "# TODO: b/330789889 - Check if VW is the only option for Ocelot\n"
+            }
+          ]
+        }
+      ],
+      "revId": "57db3cbac760727431504fdb94880b1a76421ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
