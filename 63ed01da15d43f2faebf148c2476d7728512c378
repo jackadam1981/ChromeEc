@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d434ea90_71707e80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-14T22:22:18Z",
+      "side": 1,
+      "message": "This can be fixed alternatively using this method:\n\n```\nstatic enum ec_status fp_command_mode(struct host_cmd_handler_args *args)\n{\n\tconst auto *p \u003d static_cast\u003cconst ec_params_fp_mode *\u003e(args-\u003eparams);\n\tauto *r \u003d static_cast\u003cec_response_fp_mode *\u003e(args-\u003eresponse);\n\n\tuint32_t temp_mode;\n\tenum ec_status ret \u003d fp_set_sensor_mode(p-\u003emode, \u0026temp_mode);\n\n\tif (ret \u003d\u003d EC_RES_SUCCESS) {\n\t\tr-\u003emode \u003d temp_mode;\n\t\targs-\u003eresponse_size \u003d sizeof(*r);\n\t}\n\n\treturn ret;\n}\nDECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));\n```",
+      "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
