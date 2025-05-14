@@ -343,7 +343,7 @@ bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 /* Add an extra sensor. We may need to add more */
 #ifdef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID \
-	(motion_sensor_count > 0 ? motion_sensor_count : -1)
+	(motion_sensor_count > 0 ? (int)motion_sensor_count : -1)
 #else
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
 #endif
