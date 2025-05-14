@@ -20,6 +20,77 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7342eb4_0c7abae7",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-14T18:26:36Z",
+      "side": 1,
+      "message": "Nit: 6fff (lower cases); the below lines are similar.",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b0b69afb_0cf77a66",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 10,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": "#\t\t0x2000_0000 - 0x2000_6fff: chrome-loader (28KB)\n#\t\t0x2000_7000 - 0x2000_b3df: customer use (16KB)\n#\t\t0x2000_b3e0 - 0x2004_b3ff: code (256KB + 20B header)\n#\t\t0x2004_b400 - 0x2004_ffff: customer use (19KB)\n#\t\t0x2005_0000 - 0x2005_ffff: customer use (64KB)\n"
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "# TODO: b/416020794, make the EC image size as big as the available code RAM.\n"
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "# 64KB data buffer\n"
+            },
+            {
+              "path": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "# 64KB stack buffer\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c331b0b3_b34153db",
         "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
         "patchSetId": 12
