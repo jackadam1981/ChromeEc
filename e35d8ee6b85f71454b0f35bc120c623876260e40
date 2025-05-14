@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90950ecb_de26d75e",
+        "filename": "common/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "I add dummy config in minimal/realtek.conf to define CONFIG_PLATFORM_EC_MAPPED_STORAGE_BASE.",
+      "parentUuid": "6eb4b26c_a2949e1c",
+      "range": {
+        "startLine": 763,
+        "startChar": 7,
+        "endLine": 763,
+        "endChar": 24
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2bc4fd7_53ddf7b8",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-12T22:08:01Z",
       "side": 1,
       "message": "17KB, that ends up to 0x2000_b400 below?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4b349c_35d934f2",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "0x7000 - 0xB3E0, around 16KB.",
+      "parentUuid": "e2bc4fd7_53ddf7b8",
       "range": {
         "startLine": 24,
         "startChar": 5,
@@ -98,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fa10ab_fa5918cf",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5393760f_bdc3c747",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed6d47d1_fe1c60df",
@@ -135,6 +207,30 @@
           ]
         }
       ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e142fdca_c98bae7b",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed6d47d1_fe1c60df",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
       "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +286,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d385824_dc45ab9e",
+        "filename": "zephyr/include/cros/realtek/realtek.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15149d7f_cfcc0945",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "780fe71f_6ae1098e",
@@ -227,6 +347,30 @@
           ]
         }
       ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e952ad_3199981e",
+        "filename": "zephyr/program/minimal/BUILD.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780fe71f_6ae1098e",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 73
+      },
       "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -282,6 +426,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8100a10e_15a0369c",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbea5644_ec4d0583",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f343bda_2fcd1b37",
@@ -319,6 +487,30 @@
           ]
         }
       ],
+      "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827a0c5b_82a89b03",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-14T14:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f343bda_2fcd1b37",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 28
+      },
       "revId": "e35d8ee6b85f71454b0f35bc120c623876260e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
