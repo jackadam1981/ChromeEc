@@ -51,6 +51,23 @@
       ],
       "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c207cf19_7a878c9e",
+        "filename": "zephyr/program/corsola/veluza/veluza_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-05-14T17:20:53Z",
+      "side": 1,
+      "message": "As port maximum power is 15W and source power is set to 7.5W. Shouldn\u0027t it be considered a \"Managed Capability port\"? I am wondering if the configuration is a valid one?",
+      "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
