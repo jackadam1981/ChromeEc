@@ -29,6 +29,11 @@ if(DEFINED CONFIG_BOARD_OCELOTRVP_MCHP)
 	zephyr_library_sources("src/rvp_usbc_runtime.c")
 endif()
 
+if(DEFINED CONFIG_BOARD_OJAL)
+	project(ojal)
+	zephyr_library_sources("ojal/src/board_power.c")
+endif()
+
 zephyr_include_directories("include/")
 
 zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
