@@ -33,6 +33,42 @@
       "message": "how much savings do we get?",
       "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bfe40c_d4ff12ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-14T22:55:57Z",
+      "side": 1,
+      "message": "* No, this is just an evaluation/feasibility study at this stage, please see b/407280228#comment2 for background. \n* Agreed, if we decide to actually use additional crypto libraries, a clean abstraction layer should be created. Happy to do that work if and when we more strongly consider adding crypto library options to FPS",
+      "parentUuid": "e2fb9d77_e5f08d93",
+      "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe235f5_d82ac715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-14T22:55:57Z",
+      "side": 1,
+      "message": "72 kB",
+      "parentUuid": "d89ec8c3_2104f791",
+      "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
