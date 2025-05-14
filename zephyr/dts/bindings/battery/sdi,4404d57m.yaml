@@ -1,22 +1,22 @@
-# Copyright 2023 The ChromiumOS Authors
+# Copyright 2025 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 description: "SDI battery"
-compatible: "sdi,4404d57"
+compatible: "sdi,4404d57m"
 
 include: battery-smart.yaml
 
 properties:
   enum-name:
     type: string
-    default: "sdi,4404d57"
+    default: "sdi,4404d57m"
 
   # Fuel gauge
   manuf_name:
     default: "SDI"
   device_name:
-    default: "4404D57"
+    default: "4404D57M"
   ship_mode_reg_addr:
     default: 0x00
   ship_mode_reg_data:
@@ -37,7 +37,7 @@ properties:
 
   # Battery info
   voltage_max:
-    default: 8600
+    default: 8700
   voltage_normal:
     default: 7700
   voltage_min:
