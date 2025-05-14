@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a7398d9_b77bda8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-14T16:52:18Z",
+      "side": 1,
+      "message": "After this CL, what will be missing to establish correct logic for SVDM version?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdce7962_bd0ba1a3",
         "filename": "zephyr/test/drivers/testcase.yaml",
         "patchSetId": 6
