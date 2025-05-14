@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb34cb97_367149af",
+        "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3685612
+      },
+      "writtenOn": "2025-05-14T08:14:34Z",
+      "side": 1,
+      "message": "This code was originally based on trulo/trulo.dtsi. Now hibernate is configured in PLATFORM_EC_HIBERNATE_PSL mode, so LID_OPEN_OD/EC_PWR_BTN_ODL/ACOK_EC_OD needs to be configured in psl mode. When compiling, it conflicts with hibernate-wake-pins in trulo/trulo.dtsi, so the reference to trulo/trulo.dtsi file is deleted and its necessary configuration is moved to pujjocento/gpio.dtsi file.",
+      "parentUuid": "6568c730_43b8363b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "d6fb387c82609493ebf9300f7253f2283ad47efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "456f9ee3_b75538b8",
         "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31f14404_f63d13a9",
+        "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 3685612
+      },
+      "writtenOn": "2025-05-14T08:14:34Z",
+      "side": 1,
+      "message": "answer as above",
+      "parentUuid": "456f9ee3_b75538b8",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 4
+      },
+      "revId": "d6fb387c82609493ebf9300f7253f2283ad47efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49aa7a81_e94dd75b",
         "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2025-05-14T07:40:37Z",
       "side": 1,
       "message": "why we add this config in the cl?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "d6fb387c82609493ebf9300f7253f2283ad47efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30076fe5_1590e63e",
+        "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 3685612
+      },
+      "writtenOn": "2025-05-14T08:14:34Z",
+      "side": 1,
+      "message": "answer as above",
+      "parentUuid": "49aa7a81_e94dd75b",
       "range": {
         "startLine": 169,
         "startChar": 0,
