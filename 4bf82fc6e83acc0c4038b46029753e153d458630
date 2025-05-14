@@ -70,6 +70,30 @@
       ],
       "revId": "4bf82fc6e83acc0c4038b46029753e153d458630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267f9e1f_d7e0acee",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80sg_bio_alg.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-14T15:20:28Z",
+      "side": 1,
+      "message": "The print out is done in the EC firmware. I was translating things 1:1\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d197#:~:text\u003d196-,197,-198",
+      "parentUuid": "cb02aedf_407da07a",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 42
+      },
+      "revId": "4bf82fc6e83acc0c4038b46029753e153d458630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
