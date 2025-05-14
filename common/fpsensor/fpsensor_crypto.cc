@@ -6,14 +6,17 @@
 #include "crypto/cleanse_wrapper.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
-#include "openssl/aead.h"
-#include "openssl/evp.h"
-#include "openssl/hkdf.h"
-#include "openssl/mem.h"
 #include "otp_key.h"
 #include "rollback.h"
 #include "sha256.h"
 #include "util.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
+#include "openssl/aead.h"
+#include "openssl/evp.h"
+#include "openssl/hkdf.h"
+#include "openssl/mem.h"
+#endif
 
 #include <stdbool.h>
 
@@ -31,8 +34,8 @@ constexpr uint8_t IKM_SIZE_BYTES =
 BUILD_ASSERT(IKM_SIZE_BYTES == 64);
 #endif
 
-#if !defined(CONFIG_BORINGSSL_CRYPTO) || !defined(CONFIG_ROLLBACK_SECRET_SIZE)
-#error "fpsensor requires CONFIG_BORINGSSL_CRYPTO and ROLLBACK_SECRET_SIZE"
+#if !defined(CONFIG_ROLLBACK_SECRET_SIZE)
+#error "fpsensor requires CONFIG_ROLLBACK_SECRET_SIZE"
 #endif
 
 test_export_static enum ec_error_list
@@ -94,9 +97,13 @@ bool hkdf_sha256_impl(std::span<uint8_t> out_key, std::span<const uint8_t> ikm,
 		      std::span<const uint8_t> salt,
 		      std::span<const uint8_t> info)
 {
+#ifdef CONFIG_BORINGSSL_CRPTO
 	return HKDF(out_key.data(), out_key.size(), EVP_sha256(), ikm.data(),
 		    ikm.size(), salt.data(), salt.size(), info.data(),
 		    info.size());
+#else
+	return true;
+#endif
 }
 
 test_mockable bool hkdf_sha256(std::span<uint8_t> out_key,
@@ -185,6 +192,7 @@ enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
 		return EC_ERROR_INVAL;
 	}
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	bssl::ScopedEVP_AEAD_CTX ctx;
 	int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(),
 				    key.data(), key.size(), tag.size(),
@@ -193,7 +201,6 @@ enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
 		CPRINTS("Failed to initialize encryption context");
 		return EC_ERROR_UNKNOWN;
 	}
-
 	size_t out_tag_size = 0;
 	std::span<uint8_t> extra_input; /* no extra input */
 	std::span<uint8_t> additional_data; /* no additional data */
@@ -211,6 +218,7 @@ enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
 			out_tag_size, tag.size());
 		return EC_ERROR_UNKNOWN;
 	}
+#endif
 	return EC_SUCCESS;
 }
 
@@ -225,6 +233,7 @@ enum ec_error_list aes_128_gcm_decrypt(std::span<const uint8_t> key,
 		return EC_ERROR_INVAL;
 	}
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	bssl::ScopedEVP_AEAD_CTX ctx;
 	int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_128_gcm(),
 				    key.data(), key.size(), tag.size(),
@@ -243,6 +252,6 @@ enum ec_error_list aes_128_gcm_decrypt(std::span<const uint8_t> key,
 		CPRINTS("Failed to decrypt");
 		return EC_ERROR_UNKNOWN;
 	}
-
+#endif
 	return EC_SUCCESS;
 }

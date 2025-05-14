@@ -4,7 +4,6 @@
 
 config PLATFORM_EC_FINGERPRINT
 	bool "Support for fingerprint authentication subsystem"
-	depends on BORINGSSL_CRYPTO
 	depends on FULL_LIBCPP_SUPPORTED
 	select HAS_TASK_FPSENSOR
 	help

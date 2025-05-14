@@ -16,10 +16,13 @@
 #include "fpsensor_driver.h"
 #include "fpsensor_matcher.h"
 #include "host_command.h"
-#include "openssl/mem.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
+#include "openssl/mem.h"
+#endif
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/shell/shell.h>
@@ -84,9 +87,11 @@ __test_only void fp_task_simulate(void)
 
 void fp_clear_finger_context(uint16_t idx)
 {
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
 	OPENSSL_cleanse(global_context.fp_positive_match_salt[idx],
 			sizeof(global_context.fp_positive_match_salt[0]));
+#endif
 	global_context.template_states[idx] = std::monostate();
 }
 
@@ -96,10 +101,12 @@ void fp_reset_context()
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(global_context.user_id.data(),
 			sizeof(global_context.user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
+#endif
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
 }
@@ -112,7 +119,9 @@ void fp_reset_context()
 static void _fp_clear_context(void)
 {
 	fp_reset_context();
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
+#endif
 	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
 }
