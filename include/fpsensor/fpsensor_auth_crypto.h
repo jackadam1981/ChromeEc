@@ -9,7 +9,9 @@
 #define __CROS_EC_FPSENSOR_FPSENSOR_AUTH_CRYPTO_H
 
 #include "ec_commands.h"
+#ifdef CONFIG_BORINGSSL_CRYPTO
 #include "openssl/ec.h"
+#endif
 
 #include <optional>
 #include <span>
@@ -23,9 +25,12 @@
  * @return @p fp_elliptic_curve_public_key on success
  * @return std::nullopt on error
  */
+#ifdef CONFIG_BORINGSSL_CRYPTO
 std::optional<fp_elliptic_curve_public_key>
 create_pubkey_from_ec_key(const EC_KEY &key);
-
+#else
+std::uint32_t *create_pubkey_from_ec_key(const uint32_t &key);
+#endif
 /**
  * Create a boringssl @EC_KEY from the @p fp_elliptic_curve_public_key content.
  *
@@ -34,9 +39,13 @@ create_pubkey_from_ec_key(const EC_KEY &key);
  * @return @p EC_KEY on success
  * @return nullptr on error
  */
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY>
 create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey);
-
+#else
+std::uint32_t *
+create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey);
+#endif
 /**
  * Create a boringssl @EC_KEY from a private key.
  *
@@ -45,8 +54,13 @@ create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey);
  * @return @p EC_KEY on success
  * @return nullptr on error
  */
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 						   size_t privkey_size);
+#else
+std::uint32_t *create_ec_key_from_privkey(const uint8_t *privkey,
+					  size_t privkey_size);
+#endif
 
 /**
  * Encrypt the data in place with a specific version of encryption method and
@@ -85,10 +99,17 @@ encrypt_data_in_place(uint16_t version,
  * @return @p fp_encrypted_private_key on success
  * @return std::nullopt on error
  */
+#ifdef CONFIG_BORINGSSL_CRYPTO
 std::optional<fp_encrypted_private_key> create_encrypted_private_key(
 	const EC_KEY &key, uint16_t version,
 	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
+#else
+std::optional<fp_encrypted_private_key> create_encrypted_private_key(
+	std::uint32_t &key, uint16_t version,
+	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
+#endif
 
 /**
  * Decrypt the encrypted data.
@@ -124,10 +145,17 @@ decrypt_data(const struct fp_auth_command_encryption_metadata &info,
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY> decrypt_private_key(
 	const struct fp_encrypted_private_key &encrypted_private_key,
 	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
+#else
+std::uint32_t *decrypt_private_key(
+	const struct fp_encrypted_private_key &encrypted_private_key,
+	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
+#endif
 
 /**
  * Generate the ECDH shared secret from private key and public key.
@@ -140,10 +168,17 @@ bssl::UniquePtr<EC_KEY> decrypt_private_key(
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
+#ifdef CONFIG_BORINGSSL_CRYPTO
 enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 					       const EC_KEY &public_key,
 					       uint8_t *shared_secret,
 					       uint8_t share_secret_size);
+#else
+enum ec_error_list generate_ecdh_shared_secret(const std::uint32_t &private_key,
+					       const std::uint32_t &public_key,
+					       uint8_t *shared_secret,
+					       uint8_t share_secret_size);
+#endif
 
 /**
  * Generate a gsc_session_key that is derived from auth nonce, GSC nonce and

@@ -8,7 +8,9 @@
 #ifndef __CROS_EC_CRYPTO_CLEANSE_WRAPPER_H
 #define __CROS_EC_CRYPTO_CLEANSE_WRAPPER_H
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 #include "openssl/mem.h"
+#endif
 
 #include <type_traits>
 #include <utility>
@@ -38,7 +40,9 @@ template <typename T> class CleanseWrapper : public T {
 	/* Clean the data. */
 	~CleanseWrapper()
 	{
+#ifdef CONFIG_BORINGSSL_CRYPTO
 		OPENSSL_cleanse(this, sizeof(*this));
+#endif
 	}
 };
 

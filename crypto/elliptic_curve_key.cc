@@ -4,10 +4,18 @@
  */
 
 #include "crypto/elliptic_curve_key.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 #include "openssl/ec_key.h"
 #include "openssl/mem.h"
 #include "openssl/obj_mac.h"
+#else
+#include <stdint.h>
 
+#include <malloc.h>
+#endif
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY> generate_elliptic_curve_key()
 {
 	bssl::UniquePtr<EC_KEY> key(
@@ -22,3 +30,12 @@ bssl::UniquePtr<EC_KEY> generate_elliptic_curve_key()
 
 	return key;
 }
+#else
+uint32_t *generate_elliptic_curve_key()
+{
+	uint32_t const key_size = 128;
+	uint32_t *key = (uint32_t *)(malloc(key_size));
+
+	return key;
+}
+#endif

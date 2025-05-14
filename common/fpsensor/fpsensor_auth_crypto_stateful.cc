@@ -13,9 +13,12 @@
 #include "fpsensor/fpsensor_auth_crypto.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
+
+#ifdef CONFIG_BORINGSSL_CRYPTO
 #include "openssl/bn.h"
 #include "openssl/mem.h"
 #include "openssl/rand.h"
+#endif
 
 #include <array>
 
@@ -31,8 +34,10 @@ encrypt_data_in_place(uint16_t version,
 	}
 
 	info.struct_version = version;
+#ifdef CONFIG_BORINGSSL_CRYPTO
 	RAND_bytes(info.nonce, sizeof(info.nonce));
 	RAND_bytes(info.encryption_salt, sizeof(info.encryption_salt));
+#endif
 
 	FpEncryptionKey enc_key;
 	enum ec_error_list ret = derive_encryption_key(
@@ -50,6 +55,7 @@ encrypt_data_in_place(uint16_t version,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 std::optional<fp_encrypted_private_key> create_encrypted_private_key(
 	const EC_KEY &key, uint16_t version,
 	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
@@ -69,6 +75,17 @@ std::optional<fp_encrypted_private_key> create_encrypted_private_key(
 
 	return enc_key;
 }
+#else
+std::optional<fp_encrypted_private_key> create_encrypted_private_key(
+	std::uint32_t &key, uint16_t version,
+	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
+{
+	fp_encrypted_private_key enc_key;
+
+	return enc_key;
+}
+#endif
 
 enum ec_error_list
 decrypt_data(const struct fp_auth_command_encryption_metadata &info,
@@ -103,6 +120,7 @@ decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_BORINGSSL_CRYPTO
 bssl::UniquePtr<EC_KEY> decrypt_private_key(
 	const struct fp_encrypted_private_key &encrypted_private_key,
 	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
@@ -121,3 +139,15 @@ bssl::UniquePtr<EC_KEY> decrypt_private_key(
 
 	return create_ec_key_from_privkey(privkey.data(), privkey.size());
 }
+#else
+std::uint32_t *decrypt_private_key(
+	const struct fp_encrypted_private_key &encrypted_private_key,
+	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
+{
+	uint8_t privkey[sizeof(encrypted_private_key.data)];
+
+	return (uint32_t *)create_ec_key_from_privkey(
+		privkey, sizeof(encrypted_private_key.data));
+}
+#endif
