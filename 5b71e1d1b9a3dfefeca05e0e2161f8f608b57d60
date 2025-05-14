@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c2d353_fbc0674f",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-14T08:56:01Z",
+      "side": 1,
+      "message": "55536 bytes !\u003d 64kB, which one is correct?",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "5b71e1d1b9a3dfefeca05e0e2161f8f608b57d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b15abf_52a36d3a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-14T08:56:01Z",
+      "side": 1,
+      "message": "This approach has several disadvantages and is dangerous. Why not using `vprintk()` like we do for FPC1025?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 30
+      },
+      "revId": "5b71e1d1b9a3dfefeca05e0e2161f8f608b57d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
