@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cda97fe_8706734e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-05-14T21:18:56Z",
+      "side": 1,
+      "message": "Do we want to have the \"reg\" as the first byte and \"write_data\" as the rest of the bytes? or should the whole thing just be one data string?\n\nAlso, do we prefer to store the whole thing as a string to be put into the command as-is? or should it be formated as a single hex number?",
+      "revId": "5dae5656136f192a30624467743ae971c376449c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
