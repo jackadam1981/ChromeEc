@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "541e3fd6_bee692bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-14T20:12:46Z",
+      "side": 1,
+      "message": "Can you add the exact error message?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7b725901_b9c919ef",
@@ -14,6 +37,29 @@
       "writtenOn": "2025-05-14T19:06:02Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdf3256_7c96b074",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-14T20:12:46Z",
+      "side": 1,
+      "message": "At first glance, this looks like a false positive since `cros_flash_npcx_get_status_reg` should be initializing it.\n\nIt would be good to check whether the call to `cros_flash_npcx_get_status_reg` could fail; in that case it would be uninitialized.\n\n@chlin56@nuvoton.com, can you comment?\n\nIt shouldn\u0027t hurt to initialize; it\u0027s in a loop, but correctness is more important than optimization.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 18
+      },
       "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
