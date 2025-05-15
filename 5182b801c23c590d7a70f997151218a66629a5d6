@@ -110,6 +110,30 @@
       },
       "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea46f77b_9cf26d0c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-05-15T08:46:20Z",
+      "side": 1,
+      "message": "`cros_flash_npcx_get_status_reg ` could fail in some exception cases, ex:\n1. user provide NULL buffer for input or output buffer\n2. the flash controller is locked.\n\nIMO, checking the return value of `cros_flash_npcx_get_status_reg`  and return immediately if the return value is not 0 should be more robust.",
+      "parentUuid": "8cdf3256_7c96b074",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
