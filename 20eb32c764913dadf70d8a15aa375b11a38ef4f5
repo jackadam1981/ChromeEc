@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df413e7d_b4178841",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:56:20Z",
+      "side": 1,
+      "message": "As a followup CL (unrelated to your change), I think this could be more clearly written as:\n\n```suggestion\n\tint wait_period \u003d 10; /* 10 us period t0 check status register */\n\tint timeout \u003d (10 * USEC_PER_SEC) / wait_period; /* 10 seconds */\n\n\tdo {\n\t\tuint8_t reg \u003d 0;\n\n\t\tint ret \u003d cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR,\n\t\t\t\t\t\t\t \u0026reg);\n\t\tif (ret !\u003d 0) {\n\t\t\treturn ret;\n\t\t}\n\n\t\tif ((reg \u0026 SPI_NOR_WIP_BIT) \u003d\u003d 0)\n\t\t\treturn 0;\n\t\tk_usleep(wait_period);\n\t} while (--timeout); /* Wait for busy bit clear */\n\n        return -ETIMEDOUT;\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "20eb32c764913dadf70d8a15aa375b11a38ef4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
