@@ -11,7 +11,6 @@
 #include "zephyr/toolchain.h"
 #define DT_DRV_COMPAT named_usbc_port
 
-#include "battery.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "drivers/ucsi_v3.h"
@@ -2089,8 +2088,7 @@ pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
 			RDO_FIXED(snk_policy->pdo_index, max_ma, max_ma, flags);
 	}
 
-	LOG_INF("Send RDO: %d, battery_is_present=%d",
-		RDO_POS(snk_policy->rdo_to_send), battery_is_present());
+	LOG_INF("Send RDO: %d", RDO_POS(snk_policy->rdo_to_send));
 	queue_internal_cmd(port, CMD_PDC_SET_RDO);
 }
 
@@ -2191,14 +2189,6 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 
 		/* Remain in current state until only one sink path is enabled*/
 		return false;
-	}
-
-	/* if sink path is enabled, battery is not present, and AP is ON,
-	 * do not send RDO. Proceed to seed charge manager with current RDO.
-	 */
-	if (port->sink_path_status && battery_is_present() == BP_NO &&
-	    !chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
-		return true;
 	}
 
 	/* Only one sink path is enabled, safe to update RDO */
