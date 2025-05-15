@@ -68,7 +68,7 @@ def register_mec172x_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
-        modules=["cmsis", "ec"],
+        modules=["cmsis", "cmsis_6", "ec"],
     )
 
 
