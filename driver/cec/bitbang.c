@@ -569,6 +569,7 @@ void cec_event_cap(int port)
 	int t;
 	int data;
 
+	CPRINTS("cap: state=%d", port_data->state);
 	switch (port_data->state) {
 	case CEC_STATE_IDLE:
 		/* A falling edge during idle, likely a start bit */
