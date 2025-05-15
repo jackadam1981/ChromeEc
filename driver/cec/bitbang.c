@@ -405,7 +405,7 @@ static void enter_state(int port, enum cec_state new_state)
 				 * recent one.
 				 */
 				if (port_data->rx.received_message_available)
-					DEBUG_CPRINTS(
+					CPRINTS(
 						"CEC%d: received message not "
 						"read out, discarding",
 						port);
@@ -538,6 +538,7 @@ void cec_event_timeout(int port)
 		enter_state(port, CEC_STATE_FOLLOWER_ACK_VERIFY);
 		break;
 	case CEC_STATE_FOLLOWER_ACK_VERIFY:
+		CPRINTS("timeout: ACK_VERIFY");
 		if (port_data->rx.broadcast_nak)
 			enter_state(port, CEC_STATE_IDLE);
 		else
@@ -571,6 +572,7 @@ void cec_event_cap(int port)
 
 	switch (port_data->state) {
 	case CEC_STATE_IDLE:
+		CPRINTS("cap: IDLE");
 		/* A falling edge during idle, likely a start bit */
 		enter_state(port, CEC_STATE_FOLLOWER_START_LOW);
 		break;
@@ -586,6 +588,7 @@ void cec_event_cap(int port)
 		enter_state(port, CEC_STATE_FOLLOWER_START_LOW);
 		break;
 	case CEC_STATE_FOLLOWER_START_LOW:
+		CPRINTS("cap: START_LOW");
 		/* Rising edge of start bit, validate low time */
 		t = cec_tmr_cap_get(port);
 		if (VALID_LOW(START_BIT, t)) {
@@ -599,6 +602,7 @@ void cec_event_cap(int port)
 		}
 		break;
 	case CEC_STATE_FOLLOWER_START_HIGH:
+		CPRINTS("cap: START_HIGH");
 		if (VALID_HIGH(START_BIT, port_data->rx.low_ticks,
 			       cec_tmr_cap_get(port)))
 			enter_state(port, CEC_STATE_FOLLOWER_HEADER_INIT_LOW);
@@ -608,6 +612,7 @@ void cec_event_cap(int port)
 	case CEC_STATE_FOLLOWER_HEADER_INIT_LOW:
 	case CEC_STATE_FOLLOWER_HEADER_DEST_LOW:
 	case CEC_STATE_FOLLOWER_DATA_LOW:
+		CPRINTS("cap: DATA_LOW");
 		t = cec_tmr_cap_get(port);
 		if (VALID_LOW(DATA_ZERO, t)) {
 			port_data->rx.low_ticks = t;
@@ -622,6 +627,7 @@ void cec_event_cap(int port)
 		}
 		break;
 	case CEC_STATE_FOLLOWER_HEADER_INIT_HIGH:
+		CPRINTS("cap: HEADER_INIT_HIGH");
 		t = cec_tmr_cap_get(port);
 		data = cec_transfer_get_bit(&port_data->rx.transfer);
 		if (VALID_DATA_HIGH(data, port_data->rx.low_ticks, t)) {
@@ -637,6 +643,7 @@ void cec_event_cap(int port)
 		}
 		break;
 	case CEC_STATE_FOLLOWER_HEADER_DEST_HIGH:
+		CPRINTS("cap: HEADER_DEST_HIGH");
 		t = cec_tmr_cap_get(port);
 		data = cec_transfer_get_bit(&port_data->rx.transfer);
 		if (VALID_DATA_HIGH(data, port_data->rx.low_ticks, t)) {
@@ -651,6 +658,7 @@ void cec_event_cap(int port)
 		}
 		break;
 	case CEC_STATE_FOLLOWER_EOM_LOW:
+		CPRINTS("cap: EOM_LOW");
 		t = cec_tmr_cap_get(port);
 		if (VALID_LOW(DATA_ZERO, t)) {
 			port_data->rx.low_ticks = t;
@@ -665,6 +673,7 @@ void cec_event_cap(int port)
 		}
 		break;
 	case CEC_STATE_FOLLOWER_EOM_HIGH:
+		CPRINTS("cap: EOM_HIGH");
 		t = cec_tmr_cap_get(port);
 		data = port_data->rx.eom;
 		if (VALID_DATA_HIGH(data, port_data->rx.low_ticks, t))
@@ -673,9 +682,11 @@ void cec_event_cap(int port)
 			enter_state(port, CEC_STATE_IDLE);
 		break;
 	case CEC_STATE_FOLLOWER_ACK_LOW:
+		CPRINTS("cap: CEC ACK_LOW");
 		enter_state(port, CEC_STATE_FOLLOWER_ACK_FINISH);
 		break;
 	case CEC_STATE_FOLLOWER_ACK_FINISH:
+		CPRINTS("cap: CEC ACK_FINISH");
 		enter_state(port, CEC_STATE_FOLLOWER_DATA_LOW);
 		break;
 	case CEC_STATE_FOLLOWER_DATA_HIGH:
