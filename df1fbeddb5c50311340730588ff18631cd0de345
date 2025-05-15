@@ -99,6 +99,24 @@
       "parentUuid": "ad24b7f0_a6addcd0",
       "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8bd461_12b7fde6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-15T08:08:42Z",
+      "side": 1,
+      "message": "So you are assuming that the Egis library will be always including the pal `driver/fingerprint/egis/platform/inc/plat_mem.h` header?",
+      "parentUuid": "4558feb8_6168cc8c",
+      "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
