@@ -74,16 +74,13 @@ static int cros_flash_npcx_wait_ready(const struct device *dev)
 			return ret;
 		}
 
-		if ((reg & SPI_NOR_WIP_BIT) == 0)
-			break;
+		if ((reg & SPI_NOR_WIP_BIT) == 0) {
+			return 0;
+		}
 		k_usleep(wait_period);
 	} while (--timeout); /* Wait for busy bit clear */
 
-	if (timeout) {
-		return 0;
-	} else {
-		return -ETIMEDOUT;
-	}
+	return -ETIMEDOUT;
 }
 
 /* Check the BUSY bit is cleared and WE bit is set */
