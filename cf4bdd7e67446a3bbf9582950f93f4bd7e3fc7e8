@@ -124,6 +124,24 @@
       "parentUuid": "dbaaa396_b67aa6c9",
       "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ba896d_f58bf2aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:23:32Z",
+      "side": 1,
+      "message": "\u003e  Every time we need to store a pointer returned in thread local data, we need to allocate a new struct pthread_key_data using k_malloc?\n\n`pthread_setspecific` lets you store a single `void*` for each thread in the system associated with a `key` of type `pthread_key_data`. In the Zephyr implementation of `pthread_setspecific`, it [does an allocation for every unique \u003c`key`, thread\u003e pair](https://github.com/zephyrproject-rtos/zephyr/blob/9c2983926a4c95d6896d0c9aa63dfcc9c42a6d97/lib/posix/options/key.c#L210-L211):\n\n```\nkey_data \u003d k_malloc(sizeof(struct pthread_key_data));\n```\n\n\u003e Are we assuming here that BoringSSL is the only library that calls `pthread_setspecific()` to store a pointer in thread local data?\n\nTechnically anything can call `pthread_setspecific`. As Patryk pointed out, we know that [BoringSSL calls it](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/crypto/thread_pthread.c;l\u003d126-132;drc\u003d04c3d40f0695b07b9795e8a69a3babeab52b861f). It uses a [single `pthread_key` called `g_thread_local_key`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/crypto/thread_pthread.c;l\u003d98-107;drc\u003d04c3d40f0695b07b9795e8a69a3babeab52b861f).\n\nNote that since you could have other code that creates its own `key` with `pthread_key_create`, it would be possible to try to allocate more than `sizeof(struct pthread_key_data)` * `num_threads`, but it looks like you would correctly get an [error in that case](https://github.com/zephyrproject-rtos/zephyr/blob/9c2983926a4c95d6896d0c9aa63dfcc9c42a6d97/lib/posix/options/key.c#L213-L217).\n\nSince we think that BoringSSL is the only code calling `pthread_setspecific`, I think Patryk\u0027s suggestion as a followup sounds good:\n\n\u003e What we can do (in a separate CL) is to reduce CONFIG_POSIX_THREAD_THREADS_MAX to 1 or 2 and reduce HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS to 64 bytes.",
+      "parentUuid": "41d1087e_1172f365",
+      "revId": "cf4bdd7e67446a3bbf9582950f93f4bd7e3fc7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

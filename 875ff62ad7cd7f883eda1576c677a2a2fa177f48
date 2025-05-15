@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "328070ee_0a2ef4af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:23:32Z",
+      "side": 1,
+      "message": "```suggestion\nIncrease the size for CONFIG_HEAP_MEM_POOL_SIZE from 64 to 256 to\nsilence a warning that the config is less than the required minimum.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "875ff62ad7cd7f883eda1576c677a2a2fa177f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a78add34_27a53e5d",
@@ -14,6 +37,29 @@
       "writtenOn": "2025-05-13T18:26:32Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "875ff62ad7cd7f883eda1576c677a2a2fa177f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f734ea_dc832af0",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:23:32Z",
+      "side": 1,
+      "message": "```suggestion\n# pthread_setspecific (enabled with CONFIG_POSIX_THREADS) allocates memory from\n# kernel memory pool to store thread local data of\n# sizeof(struct pthread_key_data) bytes for every unique \u003ckey, thread\u003e:\n# https://github.com/zephyrproject-rtos/zephyr/blob/9c2983926a4c95d6896d0c9aa63dfcc9c42a6d97/lib/posix/options/key.c#L210-L211\n# The only use of pthread_setspecific that we have is in BoringSSL, which uses a\n# single pthread_key_t:\n# https://crsrc.org/o/src/third_party/boringssl/crypto/thread_pthread.c;l\u003d98-107;drc\u003d04c3d40f0695b07b9795e8a69a3babeab52b861f.\n# However, HEAP_MEM_POOL_ADD_SIZE_POSIX_THREADS, defaults to 256, which forces\n# that as a minimum value due to this logic:\n# https://github.com/zephyrproject-rtos/zephyr/blob/e1f258d8e21f30d9272b65bf59a0030519adf82e/kernel/Kconfig#L757-L763\n```",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 41
+      },
       "revId": "875ff62ad7cd7f883eda1576c677a2a2fa177f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
