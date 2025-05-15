@@ -21,6 +21,7 @@ def register_npcx9_project(
             here / "program.conf",
             # Project-specific KConfig customization.
             here / project_name / "project.conf",
+            here / project_name / "pd.conf",
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
