@@ -14,6 +14,7 @@ endif()
 
 if(DEFINED CONFIG_BOARD_OCELOTRVP_NPCX)
 	project(ocelotrvp-npcx)
+	zephyr_library_sources("src/rvp_board_power.c")
 	zephyr_library_sources("src/rvp_keyboard_customization.c")
 endif()
 
