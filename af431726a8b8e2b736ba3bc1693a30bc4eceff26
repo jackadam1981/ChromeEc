@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "342a2259_3bb26cd4",
+        "filename": "zephyr/include/ap_power/ap_pwrseq_sm_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-15T21:46:26Z",
+      "side": 1,
+      "message": "enum names are not changing at all, is just the way the macros are handling the `state` name input.\nNote that macros are modified to add the `AP_POWER_STATE_` prefix to match enum name.\nGood catch on the suggestion.",
+      "parentUuid": "fdb498fc_dd66fa42",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "af431726a8b8e2b736ba3bc1693a30bc4eceff26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76bde5fe_b9923c1b",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "af431726a8b8e2b736ba3bc1693a30bc4eceff26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "870f63f3_078f6af1",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-15T21:46:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76bde5fe_b9923c1b",
+      "range": {
+        "startLine": 192,
+        "startChar": 11,
+        "endLine": 192,
+        "endChar": 35
+      },
       "revId": "af431726a8b8e2b736ba3bc1693a30bc4eceff26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
