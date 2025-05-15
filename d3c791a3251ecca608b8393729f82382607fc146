@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20bda65_484f7da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-15T23:51:55Z",
+      "side": 1,
+      "message": "Once the restructuring of files in oceot_microchip is finalised, we can further make the corresponding changes easily based on these CLs. Right now, i have limited the changes specific to ocelot_nuvoton alone here and has pushed the changes that was tested with N-1 Si on RVP.",
+      "revId": "d3c791a3251ecca608b8393729f82382607fc146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
