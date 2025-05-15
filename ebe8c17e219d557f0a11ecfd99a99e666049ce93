@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60871a6c_4b9addcd",
+        "filename": "zephyr/program/skywalker/yoda/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-05-15T08:12:44Z",
+      "side": 1,
+      "message": "indent.",
+      "fixSuggestions": [
+        {
+          "fixId": "0e878fea_f7cdd856",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/skywalker/yoda/project.overlay",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "\t\tcompatible \u003d \"cros-ec,gpio-interrupts\";\n"
+            },
+            {
+              "path": "zephyr/program/skywalker/yoda/project.overlay",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "\t\tint_imu: ec-imu {\n\t\t\tirq-pin \u003d \u003c\u0026gpio_imu_int_ec_l\u003e;\n\t\t\tflags \u003d \u003cGPIO_INT_EDGE_FALLING\u003e;\n\t\t\thandler \u003d \"lis2dw12_interrupt\";\n\t\t};\n\t\tint_lid_imu: lid-imu {\n\t\t\tirq-pin \u003d \u003c\u0026gpio_lid_accel_int_ec_l\u003e;\n\t\t\tflags \u003d \u003cGPIO_INT_EDGE_FALLING\u003e;\n\t\t\thandler \u003d \"lis2dw12_interrupt\";\n\t\t};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ebe8c17e219d557f0a11ecfd99a99e666049ce93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
