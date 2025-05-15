@@ -89,6 +89,14 @@ tach_fan: &tach1 {};
 			gpios = <&gpiod 7 (GPIO_OUTPUT_HIGH)>;
 		};
 	};
+	/* Hibernate wake pins */
+	hibernate-wake-pins {
+		compatible = "cros-ec,hibernate-wake-pins";
+			wakeup-irqs = <
+				&int_ac_present
+				&int_power_button
+			>;
+	};
 };
 
 
