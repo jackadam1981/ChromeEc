@@ -68,7 +68,12 @@ static int cros_flash_npcx_wait_ready(const struct device *dev)
 	do {
 		uint8_t reg;
 
-		cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR, &reg);
+		int ret = cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR,
+							 &reg);
+		if (ret != 0) {
+			return ret;
+		}
+
 		if ((reg & SPI_NOR_WIP_BIT) == 0)
 			break;
 		k_usleep(wait_period);
