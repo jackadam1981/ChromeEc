@@ -6,6 +6,7 @@
 /* ocelot program common DTS includes */
 
 #include <cros/integrated_fwid.dtsi>
+#include <cros/cbi_flash.dtsi>
 
 /* ocelotrvp-npcx project DTS includes */
 #include "generated.dtsi"
@@ -41,6 +42,8 @@ all_sys_pwrgd: &gpio_all_sys_pwrgd {};
 gpio_fan_control: &gpio_en_pp5000_fan {};
 pwm_fan: &pwm0 {};
 tach_fan: &tach1 {};
+gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_ls_odl {};
+cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_fan.dtsi"
@@ -48,6 +51,40 @@ tach_fan: &tach1 {};
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_usbc.dtsi"
 #include "../rvp_keyboard.dtsi"
+#include "../rvp_usbc.dtsi"
+#include "../gsc_board.dtsi"
+
+/* Power Signals */
+#define PWR_EN_PP3300_S5 &gpio4 1
+#define PWR_EN_PP5000_S5 &gpio7 6
+#define PWR_RSMRST_PWRGD &gpio7 2
+#define PWR_EC_PCH_RSMRST &gpio9 5
+#define PWR_SLP_S0 &gpiob 0
+#define PWR_PCH_PWROK &gpio6 1
+#define PWR_ALL_SYS_PWRGD &gpio6 3
+ 
+#include "power_signals.dtsi"
+
+&it8801_mfd {
+	irq-gpios = <&gpio7 0 GPIO_ACTIVE_LOW>;
+};
+
+/* Required for flashing */
+&cbi_flash {
+	/*
+	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
+	 * EC_RO section. EC_RO section ends at 0x50000 byte which is the offset
+	 */
+	offset = <0x50000>;
+	size = <0x1000>;
+};
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
 
 /* ocelotrvp-npcx overrides follow... */
 / {
