@@ -22,6 +22,30 @@
       },
       "revId": "20eb32c764913dadf70d8a15aa375b11a38ef4f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b37b9f_1914c979",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-15T22:22:56Z",
+      "side": 1,
+      "message": "I created this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6553194/1",
+      "parentUuid": "df413e7d_b4178841",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "20eb32c764913dadf70d8a15aa375b11a38ef4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
