@@ -16,6 +16,23 @@
       "message": "with this change:\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      323132 B       320 KB     98.61%\n             RAM:      159424 B       188 KB     82.81%\n        IDT_LIST:          0 GB        32 KB      0.00%\n```\nand the console commands available are:\n```\nfpmcu:~$ help\n\nAvailable commands:\n  chan\n  feat\n  flashchip\n  flashinfo\n  fpcapture\n  fpclear\n  fpdownload\n  fpenroll\n  fpinfo\n  fpmaintenance\n  fpmatch\n  fpupload\n  gpioget\n  gpioset\n  help\n  hostevent\n  idlestats\n  kernel\n  panicinfo\n  reboot\n  rollbackinfo\n  rwsiginfo\n  shmem\n  syslock\n  version\n```\n\nwithout this change:\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      325920 B       320 KB     99.46%\n             RAM:      159552 B       188 KB     82.88%\n        IDT_LIST:          0 GB        32 KB      0.00%\n```\nand the available console commands are:\n```\nhelp\n\nAvailable commands:\n  chan\n  feat\n  flashchip\n  flashinfo\n  flashwp\n  fpcapture\n  fpclear\n  fpdownload\n  fpenroll\n  fpinfo\n  fpmaintenance\n  fpmatch\n  fpupload\n  gpioget\n  gpioset\n  help\n  hostevent\n  idlestats\n  kernel\n  md\n  panicinfo\n  reboot\n  rollbackinfo\n  rw\n  rwsiginfo\n  shmem\n  sysinfo\n  sysjump\n  syslock\n  version\nfpmcu:~$ \n```",
       "revId": "a69c1f18dfa7037220fa91a50292445def6a9773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a808e6_f7913d2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-15T20:43:19Z",
+      "side": 1,
+      "message": "hello David, \n\nCan you add the memory savings in the commit message. Please also add the disabled console commands",
+      "revId": "a69c1f18dfa7037220fa91a50292445def6a9773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
