@@ -173,6 +173,30 @@
       },
       "revId": "be99b868f7746d3a9521c519bd80eff417730087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4629083c_9c35cfde",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:53:06Z",
+      "side": 1,
+      "message": "By \"POR\", do you mean the original version of the code before this change? (To me POR means \"Plan of record\", which doesn\u0027t mean that.)\n\nAssuming that\u0027s the case, then yes your analysis is correct:\n\n\u003e This would cause the loop to break prematurely and falsely indicate that the flash is ready, even though the status read actually failed.",
+      "parentUuid": "acacd1c1_1afe9c5c",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "be99b868f7746d3a9521c519bd80eff417730087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
