@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5322f6ef_bee16479",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:26:25Z",
+      "side": 1,
+      "message": "You can declare here",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f839da3b_8771bccb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+              "range": {
+                "startLine": 72,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": "\t\tint ret \u003d cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR,\n\t\t\t\t\t\t\t \u0026reg);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "be99b868f7746d3a9521c519bd80eff417730087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b369a1b_4831f63b",
         "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
         "patchSetId": 2
@@ -48,6 +99,30 @@
           ]
         }
       ],
+      "revId": "be99b868f7746d3a9521c519bd80eff417730087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9430cd_f23f1fae",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:26:25Z",
+      "side": 1,
+      "message": "\u003e What exactly are we trying to check here? \n\nIt looks like it\u0027s looping until the \"write in progress\" bit is cleared. i.e., the write has completed.",
+      "parentUuid": "0b369a1b_4831f63b",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 28
+      },
       "revId": "be99b868f7746d3a9521c519bd80eff417730087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
