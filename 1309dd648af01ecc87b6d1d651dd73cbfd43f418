@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd099af_fd42faa4",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T16:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27aa962b_8b7dd229",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 83
+      },
+      "revId": "1309dd648af01ecc87b6d1d651dd73cbfd43f418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de40207a_d43658d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-15T15:14:52Z",
       "side": 1,
       "message": "This size should be 0x50000 because of the fmap location below.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "1309dd648af01ecc87b6d1d651dd73cbfd43f418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a585400_0b9825d6",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T16:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de40207a_d43658d7",
       "range": {
         "startLine": 20,
         "startChar": 10,
