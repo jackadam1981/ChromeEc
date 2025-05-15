@@ -87,6 +87,24 @@
       "parentUuid": "1fe235f5_d82ac715",
       "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36716ee1_14e59145",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T18:21:02Z",
+      "side": 1,
+      "message": "Updated the CL to remove these from helipilot Zephyr and found an additional savings of 920 bytes (252452 - 251532). The compiler may have optimized at least some of this functionality out when boringssl was removed\n\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      251532 B       320 KB     76.76%\n             RAM:      155456 B       188 KB     80.75%\n        IDT_LIST:          0 GB        32 KB      0.00%\n```",
+      "parentUuid": "809c8527_772066e6",
+      "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
