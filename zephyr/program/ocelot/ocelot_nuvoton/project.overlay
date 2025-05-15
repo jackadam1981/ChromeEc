@@ -34,10 +34,14 @@ smc_lid_n: &gpio_lid_open {};
 pwrbtn: &gpio_ec_mech_pwr_btn_l {};
 gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_ls_odl {};
 cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
+gpio_fan_control: &gpio_en_pp5000_fan {};
+pwm_fan: &pwm0 {};
+tach_fan: &tach1 {};
 
 /* PD Interrupts */
 #define PD_POW_IRQ_GPIO &gpiof 0
 
+#include "fan.dtsi"
 #include "i2c.dtsi"
 #include "interrupts.dtsi"
 #include "pd.dtsi"
