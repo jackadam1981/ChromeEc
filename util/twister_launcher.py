@@ -210,9 +210,9 @@ def find_modules(mod_dir: Path) -> list:
 
     modules = []
     for child in mod_dir.iterdir():
-        # TODO: skip the cmsis_6 module until support is fully downstreamed
-        if child.name == "cmsis_6":
-            continue
+        # TODO: use a static list here instead of finding modules automatically
+        # so we don't unintentionally use new modules that are
+        # missing support files
         if child.is_dir() and (child / "zephyr" / "module.yml").exists():
             modules.append(child.resolve())
     return modules
