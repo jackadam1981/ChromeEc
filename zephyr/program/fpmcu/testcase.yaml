@@ -146,7 +146,6 @@ tests:
   ram_lock:
     extra_configs:
     - CONFIG_HW_TEST_RAM_LOCK=y
-    - CONFIG_NPCX_RAM_LOCK=y
     extra_conf_files:
     - prj_hw_tests.conf
   restricted_console:
