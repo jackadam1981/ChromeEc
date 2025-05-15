@@ -40,6 +40,30 @@
       ],
       "revId": "57db3cbac760727431504fdb94880b1a76421ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aed1960_bc0b3f38",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-15T10:40:42Z",
+      "side": 1,
+      "message": "Added comment as this is not confirmed yet.",
+      "parentUuid": "0d650aa4_969425f2",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "57db3cbac760727431504fdb94880b1a76421ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
