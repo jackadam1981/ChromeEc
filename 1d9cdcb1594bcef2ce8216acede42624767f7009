@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdcc20c_b641b5b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T20:00:15Z",
+      "side": 1,
+      "message": "[FAILED] chromiumos/platform/ec: _check_change_has_no_branch_field\n    This checkout does not use BRANCH\u003d fields.  Delete them.\n\n[FAILED] chromiumos/platform/ec: branch_check\n    BRANCH is optional in this repository.  Specifying BRANCH\u003dnone is not useful.  Remove this line.",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5e58cb_d06a0105",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T20:00:15Z",
+      "side": 1,
+      "message": "[FAILED] chromiumos/platform/ec: _check_change_has_no_signoff_field\n    This checkout does not use Signed-off-by: tags.  Delete them.",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6354f710_f1797adb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T20:00:15Z",
+      "side": 1,
+      "message": "Please run upload hooks when submitting changes, this failed several formatting checks which need to be fixed with:\n\ncros format zephyr/shim/chip/npcx/ram_lock.c zephyr/shim/core/cortex-m/mpu.c zephyr/test/hwtest/src/ram_lock.c",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e386b236_cac26889",
+        "filename": "zephyr/shim/core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T20:00:15Z",
+      "side": 1,
+      "message": "[FAILED] chromiumos/platform/ec: _check_no_long_lines\n    Found lines longer than the limit (first 5 shown):\n    zephyr/shim/core/cortex-m/mpu.c, line 27, 85 chars, over 80 chars\n    zephyr/shim/core/cortex-m/mpu.c, line 28, 83 chars, over 80 chars",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 83
+      },
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a692186_c3315e71",
+        "filename": "zephyr/test/hwtest/src/ram_lock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T20:00:15Z",
+      "side": 1,
+      "message": "[FAILED] chromiumos/platform/ec: _check_no_long_lines\n    Found lines longer than the limit (first 5 shown):\n\n    zephyr/test/hwtest/src/ram_lock.c, line 248, 102 chars, over 80 chars",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
