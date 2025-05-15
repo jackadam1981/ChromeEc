@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8bd6c8_97392335",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-15T23:13:44Z",
+      "side": 1,
+      "message": "the definitive test would be to run suite:faft_ec to check if\nthe tests are now happy. some of the DTS tests that haven\u0027t been\nupdated similarly fail because they\nscan for \"S0\" instead of \"AP_POWER_STATE_S0\", etc.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "a4a4faae014c4dafae3b855e1e7893d9419598ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
