@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bdd044_1c4c5f07",
+        "filename": "zephyr/program/corsola/veluza/veluza_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-05-15T03:44:53Z",
+      "side": 1,
+      "message": "For this change, I have created another CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6550317.",
+      "parentUuid": "932db068_ca9cf1c1",
+      "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c207cf19_7a878c9e",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "@alevkoy@chromium.org did not see your FYI comment in this CL. Then port maximum power must also be 7.5W right?",
       "parentUuid": "c207cf19_7a878c9e",
+      "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5b0a58_e995f647",
+        "filename": "zephyr/program/corsola/veluza/veluza_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-05-15T03:44:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "84500202_61902d31",
       "revId": "72ffe734129a6b1e3f6a6dd3989c89a28f012c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
