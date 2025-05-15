@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68613768_57f0edcb",
+        "filename": "zephyr/program/trulo/pujjocento/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-05-15T06:46:39Z",
+      "side": 1,
+      "message": "Only this line is required. Other sensor related configs can be removed.",
+      "fixSuggestions": [
+        {
+          "fixId": "c08cb5d2_fe0a3daa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjocento/project.conf",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/trulo/pujjocento/project.conf",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "e10f991291d95fa60a536a6433dac55d200477f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
