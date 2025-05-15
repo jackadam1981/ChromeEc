@@ -27,6 +27,7 @@
 		};
 	};
 	/* TODO: move to a separate file when full PDC support added. */
+/*	Commented out on adding pd.dtsi/usbc.dtsi in nuvoton *
 	usbc {
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -35,7 +36,7 @@
 			reg = <0>;
 			chg = <&charger>;
 		};
-	};
+	};*/
 };
 
 &i2c_port_pd1 {
