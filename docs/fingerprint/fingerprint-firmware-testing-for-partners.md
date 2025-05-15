@@ -103,6 +103,12 @@ To run the entire suite, use this command in your chroot:
 tast run <IP> '("group:fingerprint-cq")'
 ```
 
+Note that when run by partners, FpUpdater test is expected to fail with the following error:
+
+```bash
+Required data file nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin missing: failed to download gs://chromeos-test-assets-private...
+```
+
 <!-- Links -->
 
 [servo debugger]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo.md
