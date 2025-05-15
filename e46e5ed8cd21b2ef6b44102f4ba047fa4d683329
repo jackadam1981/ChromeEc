@@ -69,6 +69,24 @@
       "parentUuid": "d89ec8c3_2104f791",
       "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809c8527_772066e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-15T06:16:11Z",
+      "side": 1,
+      "message": "How much do we get if you disable the POSIX API (used only by BoringSSL)?\n```\nCONFIG_POSIX_READER_WRITER_LOCKS\nCONFIG_POSIX_TIMERS\nCONFIG_POSIX_THREADS\n```",
+      "parentUuid": "1fe235f5_d82ac715",
+      "revId": "e46e5ed8cd21b2ef6b44102f4ba047fa4d683329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
