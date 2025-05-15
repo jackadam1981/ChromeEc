@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad64b301_86ade1af",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-15T00:13:57Z",
+      "side": 1,
+      "message": "Worth testing to confirm the behavior. Maybe add a note for future engineer.",
+      "parentUuid": "a907993a_aa672b69",
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8c5b3bf_f13af867",
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "The whole phrase was copied from watchdog_reload function.. should I change that one too?",
       "parentUuid": "f8c5b3bf_f13af867",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc5a174_20fab5b8",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-15T00:13:57Z",
+      "side": 1,
+      "message": "not important.",
+      "parentUuid": "8602fe8e_204e70af",
       "range": {
         "startLine": 80,
         "startChar": 14,
