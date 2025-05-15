@@ -142,3 +142,7 @@
 		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
 	};
 };
+
+&ramlock0 {
+    status = "okay";
+ };
