@@ -64,11 +64,17 @@ static int cros_flash_npcx_wait_ready(const struct device *dev)
 {
 	int wait_period = 10; /* 10 us period t0 check status register */
 	int timeout = (10 * USEC_PER_SEC) / wait_period; /* 10 seconds */
+	int ret;
 
 	do {
 		uint8_t reg = 0;
 
-		cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR, &reg);
+		ret = cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR,
+						     &reg);
+		if (ret != 0) {
+			return ret;
+		}
+
 		if ((reg & SPI_NOR_WIP_BIT) == 0)
 			break;
 		k_usleep(wait_period);
