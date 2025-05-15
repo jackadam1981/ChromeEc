@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f05b8762_177e33f8",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T08:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7342eb4_0c7abae7",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c331b0b3_b34153db",
@@ -160,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c88f23_8429be2c",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T08:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c331b0b3_b34153db",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffeb5f06_da381a21",
@@ -201,6 +249,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0130673_4b73131a",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T08:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffeb5f06_da381a21",
+      "range": {
+        "startLine": 19,
+        "startChar": 77,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b16ba859_f440734f",
@@ -238,6 +310,30 @@
           ]
         }
       ],
+      "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b8aa863_b0335601",
+        "filename": "zephyr/program/minimal/realtek.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T08:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b16ba859_f440734f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
       "revId": "d3337c15fa0e19d0040c3b8ea059471a252ead2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
