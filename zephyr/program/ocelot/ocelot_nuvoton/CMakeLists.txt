@@ -6,3 +6,5 @@ zephyr_include_directories("../../intelrvp/include")
 
 zephyr_library_sources("src/board_power.c")
 zephyr_library_sources("../../intelrvp/src/dc_jack.c")
+zephyr_library_sources("../../intelrvp/src/intel_rvp_board_id.c")
+zephyr_library_sources("../../intelrvp/ptlrvp/src/board_id.c")
