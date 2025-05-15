@@ -30,6 +30,7 @@ known_modules = {
     ),
     "hal_stm32": third_party_module,
     "cmsis": third_party_module,
+    "cmsis_6": third_party_module,
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
     "egis": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "egis"
