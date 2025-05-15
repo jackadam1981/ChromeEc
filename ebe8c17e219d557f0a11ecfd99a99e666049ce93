@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7139a1a_0ce072ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-15T09:59:36Z",
+      "side": 1,
+      "message": "from skywalker?",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "ebe8c17e219d557f0a11ecfd99a99e666049ce93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd874a4a_1c41ed1c",
+        "filename": "zephyr/program/skywalker/yoda/motionsense.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-15T09:59:36Z",
+      "side": 1,
+      "message": "The lis2dw12 driver only allows one INT event, so one of the sensors must be configured in polling mode",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ebe8c17e219d557f0a11ecfd99a99e666049ce93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60871a6c_4b9addcd",
         "filename": "zephyr/program/skywalker/yoda/project.overlay",
         "patchSetId": 4
