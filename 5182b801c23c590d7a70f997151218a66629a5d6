@@ -158,6 +158,30 @@
       },
       "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "004a18f7_0ab9e8fc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T16:44:16Z",
+      "side": 1,
+      "message": "\u003e IMO, checking the return value of `cros_flash_npcx_get_status_reg` and return immediately if the return value is not 0 should be more robust.\n\nI agree; this is a good idea.",
+      "parentUuid": "ea46f77b_9cf26d0c",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
