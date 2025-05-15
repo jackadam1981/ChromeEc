@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce7bbf8_b35c0045",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T11:25:02Z",
+      "side": 1,
+      "message": "The dts node will need flash driver of zephyr driver, so I add it with cl:6508707",
+      "parentUuid": "d794cd77_dc6a9b4e",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16c2f11d_7fc0862f",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-05-06T19:29:32Z",
       "side": 1,
       "message": "Should this be part of CL:6497973?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "916d99e5_0b264bba",
+        "filename": "zephyr/boards/google/realtek/realtek.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T11:25:02Z",
+      "side": 1,
+      "message": "espi will dafault disabled in zephyr driver.",
+      "parentUuid": "16c2f11d_7fc0862f",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -88,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fb587c_c57a552a",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T11:25:02Z",
+      "side": 1,
+      "message": "yes, the RO at 0x80000 is for write protect with 2nd bootloader. In VF, we only no more need 2nd bootloader, so we can put RO back to 0x0.",
+      "parentUuid": "6b3bdb93_a6fd358a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9c179c6_c93bcd46",
@@ -101,6 +173,30 @@
       "writtenOn": "2025-05-06T19:29:32Z",
       "side": 1,
       "message": "This size and the fmap offset don\u0027t agree.\nOn CL:6497973, you set the image size to 256 KB.  This size should match the largest EC image size that Realtek can support.",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fe3646_8837b3de",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T11:25:02Z",
+      "side": 1,
+      "message": "I add a comment for it, and we can return to this after the ram discussion (b/416020794) is finished.",
+      "parentUuid": "b9c179c6_c93bcd46",
       "range": {
         "startLine": 19,
         "startChar": 10,
@@ -134,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4718dc75_5f130edc",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T11:25:02Z",
+      "side": 1,
+      "message": "I add a comment for it, and we can return to this after the ram discussion (b/416020794) is finished.",
+      "parentUuid": "738806d2_e7fbbe63",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c44a2869_874ba619",
@@ -147,6 +267,30 @@
       "writtenOn": "2025-05-06T19:29:32Z",
       "side": 1,
       "message": "This includes the header for the bootrom.  Does the RW image need this or can you use the `zephyr.bin\u0027 file. here instead?",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 34
+      },
+      "revId": "a8b12f1af91abb94a7687e52283a0f55f0622ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecddf11_4994547c",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T11:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c44a2869_874ba619",
       "range": {
         "startLine": 421,
         "startChar": 0,
