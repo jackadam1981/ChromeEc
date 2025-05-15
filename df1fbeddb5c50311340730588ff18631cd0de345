@@ -66,6 +66,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e738f3a6_7e2c3469",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-15T16:48:18Z",
+      "side": 1,
+      "message": "It seems that this function is already called during the initialization process to printout the algorithm version, so there is no need to duplicate this:\n\n```\n[0.113000] \u003cinf\u003e cros_fingerprint: Start init\nfpmcu:~$ EGIS algorithm version is: 1.4.3.16.82\nfpmcu:~$ [0.163000] \u003cinf\u003e egis630_pal: \u003cegis_sensor_init:131\u003e Egis\nfpmcu:~$ [0.167000] \u003cinf\u003e egis630_pal: \u003cegis_sensor_init:134\u003e Reg 0xFD 1 1E 6 \nfpmcu:~$ [0.174000] \u003cinf\u003e egis630_pal: \u003cisensor_set_recovery_flag_ec630:62\u003e  0 \nfpmcu:~$ [0.189000] \u003cinf\u003e egis630_pal: \u003cec630_do_vbt_adjust_for_delta_sensing:726\u003e  [VBT] : HW 132 width X height : 81 X 65 \nfpmcu:~$ [0.267000] \u003cinf\u003e egis630_pal: \u003cec630_img_get_11th_min:686\u003e  11th : 3006 \nfpmcu:~$ [0.273000] \u003cinf\u003e egis630_pal: \u003cec630_calibrate_sensor_mode:836\u003e  delta_cal : gain \u003d 24 : ret \u003d 0 \nfpmcu:~$ [0.283000] \u003cinf\u003e egis630_pal: \u003cec630_calibration_data_backup:450\u003e  [VBT] 130 [Gain] 24 \nfpmcu:~$ [0.294000] \u003cinf\u003e egis630_pal: \u003cec630_set_vbt:392\u003e  set vbt : 130, ret 0 \nfpmcu:~$ [0.300000] \u003cinf\u003e egis630_pal: \u003cec630_calibration_data_backup:450\u003e  [VBT] 130 [Gain] 24 \nfpmcu:~$ [0.313000] \u003cinf\u003e egis630_pal: \u003cisensor_calibrate_ec630:1671\u003e  isensor_calibrate 0 ret 0 \nfpmcu:~$ [0.398000] \u003cinf\u003e egis630_pal: \u003cec630_convert_mean_to_fod_voltage:985\u003e  FOD Voltage \u003d 1690. (vbt \u003d 130 )( detect_gain \u003d 1 )(mean \nfpmcu:~$ [0.411000] \u003cinf\u003e egis630_pal: \u003cisensor_get_calibration_data_ec630:1681\u003e  data_buf_size 552, req_size 552 \nfpmcu:~$ [0.428000] \u003cinf\u003e egis630_pal: \u003cec630_do_vbt_adjust_for_delta_sensing:726\u003e  [VBT] : HW 132 width X height : 81 X 65 \nfpmcu:~$ [0.506000] \u003cinf\u003e egis630_pal: \u003cec630_img_get_11th_min:686\u003e  11th : 3090 \nfpmcu:~$ [0.512000] \u003cinf\u003e egis630_pal: \u003cec630_calibrate_sensor_mode:836\u003e  delta_cal : gain \u003d 24 : ret \u003d 0 \nfpmcu:~$ [0.522000] \u003cinf\u003e egis630_pal: \u003cec630_calibration_data_backup:450\u003e  [VBT] 130 [Gain] 24 \nfpmcu:~$ [0.531000] \u003cinf\u003e egis630_pal: \u003cisensor_calibrate_ec630:1671\u003e  isensor_calibrate 2 ret 0 \nfpmcu:~$ [0.543000] \u003cinf\u003e egis630_pal: \u003cec630_convert_mean_to_fod_voltage:985\u003e  FOD Voltage \u003d 1691. (vbt \u003d 130 )( detect_gain \u003d 1 )(mean \nfpmcu:~$ [0.557000] \u003cinf\u003e egis630_pal: \u003cec630_set_scan_mode:1104\u003e \nfpmcu:~$ [0.563000] \u003cinf\u003e egis630_pal: \u003cec630_set_vbt:392\u003e  set vbt : 130, ret 0 \nfpmcu:~$ [0.571000] \u003cinf\u003e egis630_pal: \u003cec630_set_scan_mode:1104\u003e \nfpmcu:~$ [0.578000] \u003cinf\u003e egis630_pal: \u003cec630_set_vbt:392\u003e  set vbt : 130, ret 0 \nfpmcu:~$ [0.596000] \u003cinf\u003e egis630_pal: \u003cec6xx_sensor_get_frame:1224\u003e  h X w 65 X 81 : g_ext_row 0 : num_frame 1 : vbt 130 : gain 24 \nfpmcu:~$ [0.668000] \u003cinf\u003e egis630_pal: \u003cec630_img_cal:488\u003e  max 5847 ; min 1932 ; mean 3949 \nfpmcu:~$ [0.679000] \u003cinf\u003e egis630_pal: \u003cec630_convert_mean_to_fod_voltage:985\u003e  FOD Voltage \u003d 1689. (vbt \u003d 130 )( detect_gain \u003d 1 )(mean \nfpmcu:~$ [0.698000] \u003cinf\u003e egis630_pal: \u003cisensor_calibrate_ec630:1671\u003e  isensor_calibrate 1 ret 0 \nfpmcu:~$ [0.709000] \u003cinf\u003e egis630_pal: \u003cec630_sensor_power_down_mode:649\u003e [POWER] power down ret 0\nfpmcu:~$ [0.717000] \u003cinf\u003e egis630_pal: Error~! \u003c:0\u003e set_debug_level 4\nfpmcu:~$ [0.723000] \u003cinf\u003e egis630_pal: \u003cemf_connect_select_chip:965\u003e  GIT_SHA1 \u003d UNKNOWN\nfpmcu:~$ [0.731000] \u003cinf\u003e egis630_pal: \u003cisensor_set_recovery_flag_ec630:62\u003e  0 \nfpmcu:~$ [0.742000] \u003cinf\u003e egis630_pal: \u003cec630_sensor_power_down_mode:649\u003e [POWER] power up ret 0\nfpmcu:~$ [0.755000] \u003cinf\u003e egis630_pal: \u003cec630_do_vbt_adjust_for_delta_sensing:726\u003e  [VBT] : HW 132 width X height : 81 X 65 \nfpmcu:~$ [0.833000] \u003cinf\u003e egis630_pal: \u003cec630_img_get_11th_min:686\u003e  11th : 2987 \nfpmcu:~$ [0.840000] \u003cinf\u003e egis630_pal: \u003cec630_calibrate_sensor_mode:836\u003e  delta_cal : gain \u003d 24 : ret \u003d 0 \nfpmcu:~$ [0.849000] \u003cinf\u003e egis630_pal: \u003cec630_calibration_data_backup:450\u003e  [VBT] 130 [Gain] 24 \nfpmcu:~$ [0.860000] \u003cinf\u003e egis630_pal: \u003cec630_set_vbt:392\u003e  set vbt : 130, ret 0 \nfpmcu:~$ [0.867000] \u003cinf\u003e egis630_pal: \u003cec630_calibration_data_backup:450\u003e  [VBT] 130 [Gain] 24 \nfpmcu:~$ [0.879000] \u003cinf\u003e egis630_pal: \u003cisensor_calibrate_ec630:1671\u003e  isensor_calibrate 0 ret 0 \nfpmcu:~$ [0.891000] \u003cinf\u003e egis630_pal: \u003cec630_sensor_power_down_mode:649\u003e [POWER] power down ret 0\nfpmcu:~$ [0.898000] \u003cinf\u003e egis630_pal: \u003cemf_connect_select_chip:972\u003e  algorithm version: 1.4.3.16.82\nfpmcu:~$ [0.907000] \u003cinf\u003e egis630_pal: \u003c_connect_select_chip:935\u003e chip \u003d 630, g_ec6xx_sensor_width \u003d 80, g_ec6xx_sensor_height\u003d64\nfpmcu:~$ [0.918000] \u003cinf\u003e cros_fingerprint: End init\n```",
+      "parentUuid": "80b25e5a_42fb57de",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad24b7f0_a6addcd0",
