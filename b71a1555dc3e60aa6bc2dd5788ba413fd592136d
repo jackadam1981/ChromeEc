@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2cfae94_d5cc7dd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-15T20:03:52Z",
+      "side": 1,
+      "message": "I\u0027ve tested this change with helipilot as part of the chain that I added aronund this CL. Everything looks good to me with the exception of the commented formatting errors",
+      "parentUuid": "128b153e_5fe59de0",
+      "revId": "b71a1555dc3e60aa6bc2dd5788ba413fd592136d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d06818be_8fe3d056",
         "filename": "zephyr/boards/nuvoton/npcx_evb/npcx_evb.dtsi",
         "patchSetId": 2
