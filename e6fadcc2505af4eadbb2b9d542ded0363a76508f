@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39891967_17ae01e9",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc8e854_e8428df1",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474524ef_07178abd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd4c32b_7b89c95c",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474524ef_07178abd",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45ecc8ef_5ec47797",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-05-06T20:18:06Z",
       "side": 1,
       "message": "Not needed. There is already CONFIG_RO_STORAGE_OFF and CONFIG_RW_STORAGE_OFF available to set this offset.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6033cd0b_594017d2",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ecc8ef_5ec47797",
       "range": {
         "startLine": 157,
         "startChar": 0,
@@ -111,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8a68b3_a6d2e3b1",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82c69e4e_717cbb17",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d6600b6_abc9c2cb",
@@ -134,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d32e90f_adc4adbd",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d6600b6_abc9c2cb",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03dc2ad9_79b5ac14",
@@ -147,6 +267,30 @@
       "writtenOn": "2025-05-06T20:18:06Z",
       "side": 1,
       "message": "Line length too long.  Please use `repo upload --cbr .` instead of `git push` so that the pre-submit checks are run.\nhttps://www.chromium.org/chromium-os/developer-library/guides/development/contributing/#upload-changes",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 79
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a2f45a_0903284a",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "[PASSED] repohooks passed",
+      "parentUuid": "03dc2ad9_79b5ac14",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -208,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "240600df_60dc9c41",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8c03db_36d1f144",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27cd965c_409c6487",
@@ -255,6 +423,30 @@
           ]
         }
       ],
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e23009d_2ab3b9e4",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27cd965c_409c6487",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
       "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -660,6 +852,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5273425_949480a5",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f0470d_de6528a5",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29339573_2d135795",
@@ -701,6 +917,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f55e754_d718c837",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29339573_2d135795",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 43
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6eaa139_45bd23a0",
@@ -714,6 +954,30 @@
       "writtenOn": "2025-05-06T20:18:06Z",
       "side": 1,
       "message": "This needs to set the protection bits in the flash.  The `all_protected` status is lost after the code does a system jump.",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 20
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a1c2ff_9981eea3",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "the WP will add in zephyr and here in followed CLs. (b/390237764)",
+      "parentUuid": "b6eaa139_45bd23a0",
       "range": {
         "startLine": 419,
         "startChar": 0,
@@ -747,6 +1011,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e622946_f840efbc",
+        "filename": "zephyr/linker/rtk-lfw.ld",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb5d7b1_9f4aeb1d",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71733cc1_359e2acb",
@@ -760,6 +1048,30 @@
       "writtenOn": "2025-05-06T20:18:06Z",
       "side": 1,
       "message": "This is unrelated to the flash support.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b30da36_8f338fe6",
+        "filename": "zephyr/program/minimal/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71733cc1_359e2acb",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -793,6 +1105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8645fd_7304c8d8",
+        "filename": "zephyr/shim/chip/rtk/include/flash_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1909e975_670fe623",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1edb9f_5d9b5e21",
@@ -806,6 +1142,30 @@
       "writtenOn": "2025-05-06T20:18:06Z",
       "side": 1,
       "message": "This file needs formatting.  The pre-submit checks tell you the command to run fix format errors.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecb97a8_359c29c4",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1edb9f_5d9b5e21",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -839,6 +1199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ec5211_0fecabf6",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "the WDT will add at CL:6513728, I add TODO for it, and will change to device tree at CL:6513728.",
+      "parentUuid": "0ccb0454_8b4dbf18",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e302b1a_9e1823f1",
@@ -862,6 +1246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54de58d7_1e7e249a",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e302b1a_9e1823f1",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 59
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c98e09f4_93c6ea8e",
@@ -875,6 +1283,30 @@
       "writtenOn": "2025-05-06T20:18:06Z",
       "side": 1,
       "message": "Delete or use LOG_DBG",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "e6fadcc2505af4eadbb2b9d542ded0363a76508f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f09c19_d3fb086a",
+        "filename": "zephyr/shim/chip/rtk/system_external_storage.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-15T13:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c98e09f4_93c6ea8e",
       "range": {
         "startLine": 57,
         "startChar": 0,
