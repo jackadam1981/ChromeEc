@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e293185_c759291d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T23:19:50Z",
+      "side": 1,
+      "message": "Thanks for checking compare builds!\n\nHowever, this is the version that checks EC. Since this is Zephyr code, you\u0027ll need to use `zmake compare-builds`.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "c30fdbdb83375a247164fbf39768844030568a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
