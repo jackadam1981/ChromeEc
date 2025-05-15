@@ -149,6 +149,30 @@
       },
       "revId": "be99b868f7746d3a9521c519bd80eff417730087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acacd1c1_1afe9c5c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-15T21:42:25Z",
+      "side": 1,
+      "message": "understood.\nIn the POR implementation, if `reg` is initialized to `0` by default, and then `cros_flash_npcx_get_status_reg` fails without updating `reg` (e.g., due to an underlying communication error during power-on reset), the do-while loop in `cros_flash_npcx_wait_ready` would then evaluate (`reg \u0026 SPI_NOR_WIP_BIT`) as (0 \u0026 1), which is 0. This would cause the loop to break prematurely and falsely indicate that the flash is ready, even though the status read actually failed.",
+      "parentUuid": "ea9430cd_f23f1fae",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "be99b868f7746d3a9521c519bd80eff417730087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
