@@ -6,10 +6,67 @@
 /* ocelot program common DTS includes */
 
 #include <cros/integrated_fwid.dtsi>
+#include <cros/cbi_flash.dtsi>
 
 /* ocelot_nuvoton project DTS includes */
 #include "generated.dtsi"
+
+/* Power Signals */
+#define PWR_EN_PP3300_S5 &gpio4 1
+#define PWR_EN_PP5000_S5 &gpio7 6
+#define PWR_RSMRST_PWRGD &gpio7 2
+#define PWR_EC_PCH_RSMRST &gpio9 5
+#define PWR_SLP_S0 &gpiob 0
+#define PWR_PCH_PWROK &gpio6 1
+#define PWR_ALL_SYS_PWRGD &gpio6 3
+
+en_pp3300_a: &gpio_en_s5_rails {};
+en_pp5000_s5: &gpio_en_pp5000_s5 {};
+rsmrst_pwrgd: &gpio_ec_rsmrst_odl {};
+ec_pch_rsmrst_l: &gpio_ec_soc_rsmrst_l_r {};
+pch_slp_s0_n: &gpio_sys_slp_s0ix_l {};
+ec_pch_pwrok_od: &gpio_soc_pwrok_r {};
+all_sys_pwrgd: &gpio_all_sys_pwrgd {};
+gpio_pdc_pow_irq: &gpio_usb_pd_int_ls_odl {};
+bc_acok: &gpio_acok_od {};
+std_adp_prsnt: &gpio_adp_det {};
+smc_lid_n: &gpio_lid_open {};
+pwrbtn: &gpio_ec_mech_pwr_btn_l {};
+gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_ls_odl {};
+cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
+
+/* PD Interrupts */
+#define PD_POW_IRQ_GPIO &gpiof 0
+
 #include "i2c.dtsi"
+#include "interrupts.dtsi"
+#include "pd.dtsi"
+#include "usbc.dtsi"
+#include "../../intelrvp/ptlrvp/power_signals.dtsi"
+#include "../../intelrvp/ptlrvp/gsc_board.dtsi"
+#include "../../intelrvp/ptlrvp/battery.dtsi"
+#include "../../intelrvp/ptlrvp/ioex_gpio.dtsi"
+
+&it8801_mfd {
+	irq-gpios = <&gpio7 0 GPIO_ACTIVE_LOW>;
+};
+
+/* Required for flashing */
+&cbi_flash {
+	/*
+	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
+	 * EC_RO section. EC_RO section ends at 0x50000 byte which is the offset
+	 */
+	offset = <0x50000>;
+	size = <0x1000>;
+};
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
 
 /* ocelot_nuvoton overrides follow... */
 / {
@@ -18,10 +75,11 @@
 	};
 
 	named-gpios {
-		/* unimplemented GPIOs */
-		entering-rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
+		/* STD_ADPT_CNTRL_GPIO */
+                gpio_adp_en_q: adp_en_q {
+                        /* Keep low to prioritize AC brick power source selection */
+                        gpios = <&gpio6 6 (GPIO_OUTPUT_LOW)>;
+                };
 	};
 };
 
