@@ -80,6 +80,10 @@ cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
                         /* Keep low to prioritize AC brick power source selection */
                         gpios = <&gpio6 6 (GPIO_OUTPUT_LOW)>;
                 };
+		/* For Power to typeA USB. Required for USB detection */
+		gpio_type_a_pow: type_a_pow {
+			gpios = <&gpiod 7 (GPIO_OUTPUT_HIGH)>;
+		};
 	};
 };
 
