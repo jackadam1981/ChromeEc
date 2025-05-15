@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82637634_acd74572",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-15T16:09:15Z",
+      "side": 1,
+      "message": "Done. Added detailed error message for the other CLs.",
+      "parentUuid": "4ae25eeb_089b9118",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "5182b801c23c590d7a70f997151218a66629a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7b725901_b9c919ef",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
