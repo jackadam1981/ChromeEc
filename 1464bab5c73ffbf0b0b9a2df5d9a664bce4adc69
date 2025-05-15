@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e65b4d_e829bcb9",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "To make this easier to follow, the node name should match the `enum-name` property.  The `enum-name` is what is used by the AP power sequence driver.\n\nOption 1:\n```\n\tpwr-en-pp3300-a {\n```\n\nAlternately, if you want to capture the net name, you could use the net name as the node name, but create a node label matching the enum.\n\nOption 2:\n```\n\tpwr_en_pp3300_a: ec-pg3 {\n\n```\n\nThe variant (microchip/nuvoton/ite) overlay can reference power signal using the node label \n\n```\n\u0026pwr_en_pp330_a {\n\tgpios \u003d \u003cMCHP_GPIO_DECODE_226 GPIO_ACTIVE_HIGH\u003e;\n};\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35afc82_7d6602be",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "`EC_PG3` doesn\u0027t enable a primary 3.3 rail - this looks to be a power good signal input to the Silego chip.  Can you clarify this?",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e852641_eb0d6192",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "If using option 2: `pwr_en_pp4000_a: v5a-vr-en`",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd044dd_f4fc6d05",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "`pwr_rsmrst_pwrgd: rsmrst-pwrgd-ec-n`",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a2dc85_93ee9d92",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "The EC can\u0027t reset the AP?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4fea3e_4858e733",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "Schematic calls this `EC_PG3` - is this a load switch?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e0d85c_221c1f5a",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-15T21:06:27Z",
+      "side": 1,
+      "message": "Non-blocking comment - this is required for PTL and all later chipsets, correct?\n\nCan this be moved into some common PTL+ power sequence handler?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
