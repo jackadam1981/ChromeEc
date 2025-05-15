@@ -22,6 +22,30 @@
       },
       "revId": "c30fdbdb83375a247164fbf39768844030568a47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29360aac_46dceedb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-15T23:50:47Z",
+      "side": 1,
+      "message": "Thanks for bringing this to my attention. I completely forgot that this change is zephyr related. \n\nI removed this check in the commit message. I am getting some boards failing and I need to see if this is real:\n\n```\n(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ zmake compare-builds --all\nFailed projects by diff in binary: nivviks, trulo, ponyta, trulo-ti, uldrenite, uldrenite-ish, nokris, pujjolo\nAll failed projects: [\u0027pujjolo\u0027, \u0027uldrenite-ish\u0027, \u0027trulo\u0027, \u0027uldrenite\u0027, \u0027ponyta\u0027, \u0027trulo-ti\u0027, \u0027nivviks\u0027, \u0027nokris\u0027]\n```",
+      "parentUuid": "2e293185_c759291d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "c30fdbdb83375a247164fbf39768844030568a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
