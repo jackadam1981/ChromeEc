@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d59346_d932a5be",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-15T00:43:27Z",
+      "side": 1,
+      "message": "Added the comment. You\u0027re right - this would work for a process context (tested with \u0027crash watchdog\u0027 console command), but doesn\u0027t help when interrupts are disabled (tested with \u0027crash hang\u0027 command). I\u0027m not too concerned about that as the result of a hard hang like that would still be the same (watchdog) while the extension of the watchdog timer should help when EC needs just a little bit more time to process. I\u0027ve verified manually that the watchdog indeed happens after 2700ms with this extension (comparing to the original 1600ms)",
+      "parentUuid": "ad64b301_86ade1af",
+      "revId": "1b6e867c517757b75033d9afed515abb1bf3dc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8c5b3bf_f13af867",
