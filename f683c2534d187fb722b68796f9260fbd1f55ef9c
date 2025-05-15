@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a63b86c_f463f87b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-15T21:49:56Z",
+      "side": 1,
+      "message": "```suggestion\nplatform/ec/build/zephyr/helipilot/modules/ec/common/fpsensor/fpsensor.cc:514:23:\n\nerror: \u0027void* memset(void*, int, size_t)\u0027 clearing an object of\nnon-trivial type \u0027struct enc_buffer\u0027; use assignment or value\ninitialization instead [-Werror\u003dclass-memaccess]\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "f683c2534d187fb722b68796f9260fbd1f55ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
