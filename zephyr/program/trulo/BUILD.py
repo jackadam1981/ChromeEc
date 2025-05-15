@@ -28,7 +28,7 @@ def register_trulo_project(
         ],
         kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
         inherited_from=["trulo"],
-        modules=["cmsis", "picolibc", "ec", "pigweed", "nanopb"],
+        modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
         **kwargs,
     )
 
@@ -100,7 +100,7 @@ register_ish_project(
         # here / "trulo-ish" / "debug.conf",
         here / "dsp_comms.conf",
     ],
-    modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 register_ish_project(
@@ -115,7 +115,7 @@ register_ish_project(
         # here / "trulo-ish" / "debug.conf",
         here / "dsp_comms.conf",
     ],
-    modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
