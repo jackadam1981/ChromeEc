@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "226c34ba_0537c80c",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/interrupts.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-15T23:23:57Z",
+      "side": 1,
+      "message": "we should also be able to split this file into a common section and an\nEC chip specific section like you\u0027ve done for power_signals.dtsi.",
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4e65b4d_e829bcb9",
         "filename": "zephyr/program/ocelot/power_signals.dtsi",
         "patchSetId": 7
