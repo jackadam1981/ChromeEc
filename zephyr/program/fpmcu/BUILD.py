@@ -32,7 +32,7 @@ bloonchipper = register_fpmcu_variant(
     project_name="bloonchipper",
     zephyr_board="google_dragonclaw",
     register_func=register_binman_project,
-    variant_modules=["hal_stm32", "cmsis"],
+    variant_modules=["hal_stm32", "cmsis", "cmsis_6"],
     variant_optional_modules=["fpc"],
     variant_dts_overlays=[
         here / "bloonchipper" / "bloonchipper.dts",
@@ -55,7 +55,7 @@ helipilot = register_fpmcu_variant(
     project_name="helipilot",
     zephyr_board="google_quincy",
     register_func=register_npcx_project,
-    variant_modules=["cmsis"],
+    variant_modules=["cmsis", "cmsis_6"],
     variant_optional_modules=["fpc"],
     variant_dts_overlays=[
         here / "helipilot" / "helipilot.dts",
