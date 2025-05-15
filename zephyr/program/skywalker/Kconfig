@@ -20,6 +20,12 @@ config BOARD_OBIWAN
 	  Build Google Obiwan board. Obiwan has MediaTek SoC
 	  with Nuvoton NPCX997FB EC.
 
+config BOARD_YODA
+	bool "Google Yoda Board"
+	help
+	  Build Google Yoda board. Yoda has MediaTek SoC
+	  with Nuvoton NPCX997FB EC.
+
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"
