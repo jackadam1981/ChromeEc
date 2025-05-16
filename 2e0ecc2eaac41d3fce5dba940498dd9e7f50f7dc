@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "541978ca_f0365860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-16T19:48:19Z",
+      "side": 1,
+      "message": "let me run `firmware.BatteryCharging` and see what happens as it\nmay well be one of the affected tests (b/417785995).",
+      "parentUuid": "97c374af_694114ce",
+      "revId": "2e0ecc2eaac41d3fce5dba940498dd9e7f50f7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abe71583_24ddcdaa",
         "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
         "patchSetId": 1
