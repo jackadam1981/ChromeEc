@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfff930d_35ed9b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-16T20:24:13Z",
+      "side": 1,
+      "message": "This CL violates the CrOS EC code style. Did you upload with `repo upload` and fix any errors raised by the pre-upload checks?",
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2e39d46_e7fd7aaf",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 1
