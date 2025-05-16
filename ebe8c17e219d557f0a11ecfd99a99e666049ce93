@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c396c2a_54e4c1b8",
+        "filename": "zephyr/program/skywalker/yoda/motionsense.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-05-16T10:20:36Z",
+      "side": 1,
+      "message": "Pujjolo use same config as below cl and it can work normally.\nBoth sensor can read data correctly.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6496250",
+      "parentUuid": "bd874a4a_1c41ed1c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ebe8c17e219d557f0a11ecfd99a99e666049ce93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60871a6c_4b9addcd",
         "filename": "zephyr/program/skywalker/yoda/project.overlay",
         "patchSetId": 4
