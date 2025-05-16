@@ -123,8 +123,25 @@ tbt_to_usb4_speed(int port, enum tbt_compat_cable_speed tbt_speed)
 		pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME);
 
 	if (pd_get_rev(port, TCPCI_MSG_SOP_PRIME) == PD_REV30) {
+		/*
+		 * As per USB TypeC Spec Release 2.4,
+		 * Ref 5.4.3.2.1 Discovering Passive Cables : If the USB Signaling field
+		 * [B2…0] in the Passive Cable VDO response is 010b(USB 3.2 Gen2) but the
+		 * DFP is capable of USB4 Gen3 or higher operation, then the DFP shall use
+		 * the USB PD Alternate Mode process to determine if the cable also can be
+		 * identified as a TBT3 Gen3 cable. Ref Figure 5-1
+		 *
+		 * Ref 5.4.3.2 USB4 Cable Discovery : When a passive cable is identified as a
+		 * USB 3.2 Gen2 cable and the DFP is Gen3 capable,the DFP needs to check
+		 * further using USB PD Alternate Mode process to determine if the cable is a
+		 * Thunderbolt 3 passive cable supporting Gen3.
+		 */
 		if (tbt_speed == TBT_SS_TBT_GEN3)
-			return disc->identity.product_t1.p_rev30.ss;
+			if (disc->identity.product_t1.p_rev30.ss == USB_R30_SS_U32_U40_GEN2)
+				return USB_R30_SS_U40_GEN3;
+			else
+		/* Return with USB4 Gen4 cable speed(80 Gbps) or other higher cable speed.*/
+				return disc->identity.product_t1.p_rev30.ss;
 		else
 			return USB_R30_SS_U32_U40_GEN2;
 	} else {
@@ -345,7 +362,8 @@ uint32_t enter_usb_setup_next_msg(int port, enum tcpci_msg_type *type)
 enum usb_rev30_ss get_usb4_cable_speed(int port)
 {
 	enum tbt_compat_cable_speed tbt_speed = get_tbt_cable_speed(port);
-	enum usb_rev30_ss max_usb4_speed;
+	enum usb_rev30_ss max_usb4_speed, convert_usb4_speed;
+	enum tbt_compat_cable_speed max_board_speed;
 
 	if (tbt_speed < TBT_SS_U31_GEN1)
 		return USB_R30_SS_U2_ONLY;
@@ -354,7 +372,17 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
 	 * speed.
 	 */
-	max_usb4_speed = tbt_to_usb4_speed(port, tbt_speed);
+	convert_usb4_speed = tbt_to_usb4_speed(port, tbt_speed);
+
+	/*
+	 * Adjust the board's maximum speed or the cable's maximum speed, whichever
+	 * is less. For instance, if the board supports TBT3 Gen3/USB4 Gen3 (40 Gbps)
+	 * and the cable speed is USB4 Gen4 (80 Gbps), the speed should be adjusted to
+	 * the board minimum speed(40 Gbps).
+	 */
+	max_board_speed = board_get_max_tbt_speed(port);
+	max_usb4_speed = convert_usb4_speed < (enum usb_rev30_ss)max_board_speed ?
+						convert_usb4_speed : max_board_speed;
 
 	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
 	    pd_get_rev(port, TCPCI_MSG_SOP_PRIME) == PD_REV30) {
