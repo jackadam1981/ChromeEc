@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3c9d66_dbe2f683",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T06:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5623a3df_3a213ec0",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "2c94b7aac83e5bedcb6b4dc7341d95d7eead18d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15dce4b1_14470df2",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-05-15T21:22:57Z",
       "side": 1,
       "message": "Fix the trailing whitespace.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "2c94b7aac83e5bedcb6b4dc7341d95d7eead18d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa0e921_d8d699d5",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T06:23:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15dce4b1_14470df2",
       "range": {
         "startLine": 35,
         "startChar": 0,
