@@ -86,6 +86,29 @@
       "parentUuid": "71e5f081_a5a67b8e",
       "revId": "d3c791a3251ecca608b8393729f82382607fc146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cff38b_3b6e0d5a",
+        "filename": "zephyr/program/ocelot/ocelot_nuvoton/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-16T00:26:24Z",
+      "side": 1,
+      "message": "Hi Tristian,\nThis patch fails with this CL changes -https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6522026 . Hence, I have just made the relevant changes for this file to make this CL\u0027s build for nuvoton passes.\nKSO2 for pinctrl-0 \u0026 pinctrl-1 should be ok. But \u0026kbd \u0026 row size \u0026 column size are causing build errors for nuvoton with no keyboard config enabled. So, could you please regenerate this file as this. You can try to build ocelot_nuvoton with this CL, after removing the changes in this file, to see the error.\nThanks!",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 12
+      },
+      "revId": "d3c791a3251ecca608b8393729f82382607fc146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
